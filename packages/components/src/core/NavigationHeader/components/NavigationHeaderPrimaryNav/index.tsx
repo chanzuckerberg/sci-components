@@ -124,6 +124,27 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   const open = Boolean(anchorEl);
   const drawerOpen = activeDrawerKey !== null;
 
+  // Helper function to wrap dropdown items' onClick handlers
+  // This automatically sets the parent dropdown as active when an item is clicked
+  const wrapDropdownItemsWithActiveKey = (
+    dropdownItems: DropdownItem[],
+    parentKey: T
+  ): DropdownItem[] => {
+    return dropdownItems.map((item: DropdownItem) => {
+      const originalOnClick = item.onClick;
+
+      return {
+        ...item,
+        onClick: (e: React.MouseEvent) => {
+          // Call original onClick if it exists
+          originalOnClick?.(e);
+          // Set the active key to the parent dropdown's key
+          onChange(parentKey);
+        },
+      };
+    });
+  };
+
   function onClose() {
     setAnchorEl(null);
     setActiveDropdownKey(null);
@@ -202,6 +223,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     rest?: Record<string, unknown>
   ) => {
     const isDrawerOpen = drawerOpen && activeDrawerKey === key;
+    const isActive = key === value || isDrawerOpen;
     const { defaultUrl, component, target, rel } = item;
 
     // If defaultUrl is provided without a component, default to anchor tag
@@ -221,7 +243,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         <PrimaryNavItem
           {...rest}
           itemType={item.itemType}
-          active={isDrawerOpen}
+          active={isActive}
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
           sdsStyle="minimal"
@@ -234,11 +256,11 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         >
           <StyledLabel
             itemType={item.itemType}
-            active={isDrawerOpen}
+            active={isActive}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}
           >
-            <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
+            <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
               {label as ReactNode}
             </StyledLabelTextWrapper>
             <StyledLabelTextWrapperShadow
@@ -265,6 +287,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     rest?: Record<string, unknown>
   ) => {
     const isDropdownOpen = open && activeDropdownKey === key;
+    const isActive = key === value || isDropdownOpen;
 
     return (
       <Fragment key={key}>
@@ -272,7 +295,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           {...rest}
           itemType={item.itemType}
           ref={buttonRef}
-          active={isDropdownOpen}
+          active={isActive}
           onClick={(e) => {
             setAnchorEl(e.currentTarget);
             setActiveDropdownKey(key);
@@ -286,11 +309,11 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         >
           <StyledLabel
             itemType={item.itemType}
-            active={isDropdownOpen}
+            active={isActive}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}
           >
-            <StyledLabelTextWrapper active={isDropdownOpen} isNarrow={isNarrow}>
+            <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
               {label as ReactNode}
             </StyledLabelTextWrapper>
             <StyledLabelTextWrapperShadow
@@ -329,7 +352,12 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           disablePortal
         >
           {(() => {
-            const groupedItems = groupItemsBySection(item.items);
+            // Wrap dropdown items to automatically set active key
+            const wrappedItems = wrapDropdownItemsWithActiveKey(
+              item.items,
+              key
+            );
+            const groupedItems = groupItemsBySection(wrappedItems);
             const sections = Object.keys(groupedItems);
             const hasMultipleSections =
               sections.length > 1 || sections.some((section) => section !== "");
@@ -387,7 +415,8 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   };
 
   const renderAccordionItem = (
-    item: DropdownNavigationHeaderPrimaryNavItem<T>
+    item: DropdownNavigationHeaderPrimaryNavItem<T>,
+    key: T
   ) => {
     const labelKebabCase = item.label
       ?.toString()
@@ -396,12 +425,15 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 
     const accordionId = `${labelKebabCase}-dropdown`;
 
+    // Wrap dropdown items to automatically set active key
+    const wrappedItems = wrapDropdownItemsWithActiveKey(item.items, key);
+
     return (
       <AccordionNavItem
         key={accordionId}
         accordionId={accordionId}
         label={item.label}
-        items={item.items}
+        items={wrappedItems}
         expandedAccordion={expandedAccordion}
         setExpandedAccordion={setExpandedAccordion}
         accordionRefs={accordionRefs}
@@ -515,7 +547,8 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           // Narrow/Accordion style
           if (item.itemType === "dropdown" && isNarrow) {
             return renderAccordionItem(
-              item as DropdownNavigationHeaderPrimaryNavItem<T>
+              item as DropdownNavigationHeaderPrimaryNavItem<T>,
+              key
             );
           }
 
@@ -558,9 +591,12 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           >
             {activeDrawerItem &&
               (() => {
-                const groupedItems = groupItemsBySection(
-                  activeDrawerItem.items
+                // Wrap dropdown items to automatically set active key
+                const wrappedItems = wrapDropdownItemsWithActiveKey(
+                  activeDrawerItem.items,
+                  activeDrawerItem.key
                 );
+                const groupedItems = groupItemsBySection(wrappedItems);
                 const sections = Object.keys(groupedItems);
                 const hasMultipleSections =
                   sections.length > 1 ||

@@ -7,11 +7,10 @@ import {
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
   NAVIGATION_HEADER_LOGO_OPTIONS,
   PRODUCTS,
-  SERVICES,
-  BENCHMARKS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
 import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
+import { DrawerStyleDemo } from "./stories/drawerStyle";
 
 export default {
   argTypes: {
@@ -318,93 +317,11 @@ export const DrawerStyle = {
       disablePortal: true,
       disableScrollLock: true,
     },
-    primaryNavItems: [
-      {
-        itemType: "text",
-        key: "home",
-        label: "Home",
-        onClick: () => console.log("Home clicked"),
-      },
-      {
-        itemType: "dropdown",
-        items: PRODUCTS,
-        key: "products",
-        label: "Products",
-        onClick: () => console.log("Products dropdown clicked"),
-        defaultUrl: "https://www.google.com",
-        target: "_blank",
-        rel: "noopener noreferrer",
-        sectionProps: {
-          Repositories: {
-            actions: [
-              {
-                label: "Browse All",
-                href: "/repositories",
-              },
-            ],
-          },
-        },
-      },
-      {
-        itemType: "dropdown",
-        items: SERVICES,
-        key: "services",
-        label: "Services",
-        onClick: () => console.log("Services dropdown clicked"),
-        defaultUrl: "/services",
-        sectionProps: {
-          Training: {
-            actions: [
-              {
-                label: "Primary Action",
-                onClick: () => console.log("Secondary Action clicked"),
-              },
-              {
-                label: "Secondary Action",
-                onClick: () => console.log("Secondary Action clicked"),
-              },
-            ],
-          },
-          Consulting: {
-            actions: [
-              {
-                label: "Read More",
-                href: "/#",
-              },
-            ],
-          },
-        },
-      },
-      {
-        itemType: "dropdown",
-        items: BENCHMARKS,
-        key: "benchmarks",
-        label: "Benchmarks",
-        onClick: () => console.log("Benchmarks dropdown clicked"),
-        defaultUrl: "https://www.google.com",
-        target: "_blank",
-        rel: "noopener noreferrer",
-        sectionProps: {
-          Benchmarks: {
-            colSpan: 2,
-          },
-        },
-      },
-    ],
     scrollElevation: true,
-    secondaryNavItems: [
-      {
-        itemType: "dropdown",
-        items: RESEARCH,
-        key: "research",
-        label: "Research",
-        onClick: () => console.log("Research dropdown clicked"),
-        defaultUrl: "/research",
-      },
-    ],
     showSearch: true,
     title: "My App",
     sdsStyle: "drawer",
+    initialActivePrimaryNavKey: "home",
   },
   parameters: {
     controls: {
@@ -413,7 +330,7 @@ export const DrawerStyle = {
     layout: "fullscreen",
   },
   render: (args: Args, context: StoryContext) => {
-    return <NavigationHeader {...args} theme={context.globals.theme} />;
+    return <DrawerStyleDemo {...args} theme={context.globals.theme} />;
   },
 };
 

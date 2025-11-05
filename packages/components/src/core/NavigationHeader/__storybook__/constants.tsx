@@ -13,7 +13,7 @@ export const NAVIGATION_HEADER_EXCLUDED_CONTROLS = [];
 export const PRODUCTS = (mode: "light" | "dark" = "light") => [
   {
     label: "Browse Datasets",
-    onClick: () => alert("Browse Datasets clicked"),
+    onClick: () => console.log("Browse Datasets clicked"),
     section: "Data",
     details: "Explore all datasets",
     icon: "Search",
@@ -23,53 +23,53 @@ export const PRODUCTS = (mode: "light" | "dark" = "light") => [
   },
   {
     label: "API Reference",
-    onClick: () => alert("API Reference clicked"),
+    onClick: () => console.log("API Reference clicked"),
     section: "Data",
     details: "Use our CLI or API to access data",
     icon: "Code",
   },
   {
     label: "Contribute a Dataset",
-    onClick: () => alert("Contribute a Dataset clicked"),
+    onClick: () => console.log("Contribute a Dataset clicked"),
     section: "Data",
     details: "Share your dataset with the community",
     icon: "Rocket",
   },
   {
     label: "CZ CELL×GENE",
-    onClick: () => alert("CZ CELL×GENE clicked"),
+    onClick: () => console.log("CZ CELL×GENE clicked"),
     section: "Repositories",
     details: "Single-cell multiomic data",
     icon: <CellByGeneIcon innerColor={mode === "dark" ? "white" : "black"} />,
   },
   {
     label: "CryoET",
-    onClick: () => alert("CryoET clicked"),
+    onClick: () => console.log("CryoET clicked"),
     section: "Repositories",
     details: "High-resolution 3D sub-cellular tomograms",
     icon: <CryoEtIcon innerColor={mode === "dark" ? "white" : "black"} />,
   },
   {
     label: "scBaseCamp",
-    onClick: () => alert("scBaseCamp clicked"),
+    onClick: () => console.log("scBaseCamp clicked"),
     section: "Featured Data",
     icon: "Sparkle",
   },
   {
     label: "Billion Cell Project",
-    onClick: () => alert("Billion Cell Project clicked"),
+    onClick: () => console.log("Billion Cell Project clicked"),
     section: "Featured Data",
     icon: "Sparkle",
   },
   {
     label: "CELL×STATE",
-    onClick: () => alert("CELL×STATE clicked"),
+    onClick: () => console.log("CELL×STATE clicked"),
     section: "Featured Data",
     icon: "Sparkle",
   },
   {
     label: "Open Cell Microscopy Images",
-    onClick: () => alert("Open Cell Microscopy Images clicked"),
+    onClick: () => console.log("Open Cell Microscopy Images clicked"),
     section: "Featured Data",
     icon: "Sparkle",
   },
@@ -78,46 +78,46 @@ export const PRODUCTS = (mode: "light" | "dark" = "light") => [
 export const SERVICES = [
   {
     label: "Technical Support",
-    onClick: () => alert("Technical Support clicked"),
+    onClick: () => console.log("Technical Support clicked"),
     section: "Support",
     details: "Get help from our expert team",
     icon: "InfoCircle",
   },
   {
     label: "Community Forum",
-    onClick: () => alert("Community Forum clicked"),
+    onClick: () => console.log("Community Forum clicked"),
     section: "Support",
     details: "Connect with other users and share insights",
     icon: "People",
   },
   {
     label: "Documentation",
-    onClick: () => alert("Documentation clicked"),
+    onClick: () => console.log("Documentation clicked"),
     section: "Support",
     details: "Comprehensive guides and tutorials",
     icon: "Book",
   },
   {
     label: "Workshops",
-    onClick: () => alert("Workshops clicked"),
+    onClick: () => console.log("Workshops clicked"),
     section: "Training",
     details: "Live instructor-led sessions",
     icon: "SpeechBubbles",
   },
   {
     label: "Online Courses",
-    onClick: () => alert("Online Courses clicked"),
+    onClick: () => console.log("Online Courses clicked"),
     section: "Training",
     details: "This item is without an icon",
   },
   {
     label: "Books and Articles",
-    onClick: () => alert("Online Courses clicked"),
+    onClick: () => console.log("Online Courses clicked"),
     section: "Training",
   },
   {
     label: "Custom Development",
-    onClick: () => alert("Custom Development clicked"),
+    onClick: () => console.log("Custom Development clicked"),
     section: "Consulting",
     details:
       "Custom development services for your project needs and goals with a team of experts in the field of single-cell biology and single-cell genomics data analysis.",
@@ -125,13 +125,13 @@ export const SERVICES = [
   },
   {
     label: "Integration Services",
-    onClick: () => alert("Integration Services clicked"),
+    onClick: () => console.log("Integration Services clicked"),
     section: "Consulting",
     icon: "Link",
   },
   {
     label: "Data Analysis Consulting",
-    onClick: () => alert("Data Analysis Consulting clicked"),
+    onClick: () => console.log("Data Analysis Consulting clicked"),
     section: "Consulting",
   },
 ];
@@ -139,7 +139,7 @@ export const SERVICES = [
 export const RESEARCH = [
   {
     label: "Research",
-    onClick: () => alert("Research clicked"),
+    onClick: () => console.log("Research clicked"),
     section: "Research",
     details:
       "Explore data portals, software packages, and hardware from the BioHub Network",
@@ -147,7 +147,7 @@ export const RESEARCH = [
   },
   {
     label: "Tech Blog",
-    onClick: () => alert("Tech Blog clicked"),
+    onClick: () => console.log("Tech Blog clicked"),
     section: "Writing",
     details:
       "Read about recent technology advancements from the BioHub Network",
@@ -158,7 +158,7 @@ export const RESEARCH = [
 export const BENCHMARKS = [
   {
     label: "Benchmark Results",
-    onClick: () => alert("Benchmark Results clicked"),
+    onClick: () => console.log("Benchmark Results clicked"),
     section: "Benchmarks",
     details:
       "Web-based interface to explore and compare model performance on benchmark tasks",
@@ -166,7 +166,7 @@ export const BENCHMARKS = [
   },
   {
     label: "Benchmark Package",
-    onClick: () => alert("Benchmark Package clicked"),
+    onClick: () => console.log("Benchmark Package clicked"),
     section: "Benchmarks",
     details:
       "Modular Python benchmarking package that’s easy to integrate with experiment-tracking tools like TensorBoard or MLflow",
@@ -174,7 +174,7 @@ export const BENCHMARKS = [
   },
   {
     label: "Benchmark CLI",
-    onClick: () => alert("Benchmark CLI clicked"),
+    onClick: () => console.log("Benchmark CLI clicked"),
     section: "Benchmarks",
     details:
       "Command-line tool to reproducibly evaluate models against curated datasets, tasks, and metrics",
