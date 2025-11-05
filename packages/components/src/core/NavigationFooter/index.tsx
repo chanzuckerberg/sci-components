@@ -150,7 +150,7 @@ function NavigationFooter({
         hasInvertedStyle={hasInvertedStyle}
       >
         {logo}
-        <p>{title}</p>
+        {title && <p>{title}</p>}
         {tag && <Tag tagColor={tagColor} label={tag} hover={false} />}
       </StyledLogoWrapper>
     );
