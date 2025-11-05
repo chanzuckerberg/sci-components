@@ -359,6 +359,7 @@ export default function NavigationHeaderSecondaryNav({
         chevronSize="s"
         onClose={onClose}
         sdsStyle={sdsStyle}
+        sectionProps={item.sectionProps}
       />
     );
   };

@@ -1094,15 +1094,18 @@ export const StyledHoverDrawerActions = styled("div", {
   shouldForwardProp: (prop: string) =>
     ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
-  ${(props: CommonThemeProps) => {
+  ${(props: CommonThemeProps & { isNarrow?: boolean }) => {
     const spaces = getSpaces(props);
+    const { isNarrow } = props;
 
     return css`
       display: flex;
       flex-direction: row;
       gap: ${spaces?.xs}px;
       margin-top: ${spaces?.m}px;
-      padding-left: calc(${spaces?.xxl ?? 0}px + ${spaces?.xs ?? 0}px);
+      padding-left: ${isNarrow
+        ? `calc(${spaces?.l}px + ${spaces?.m}px)`
+        : `calc(${spaces?.xxl}px + ${spaces?.xs}px)`};
     `;
   }}
 `;
@@ -1113,6 +1116,7 @@ export const StyledButton = styled(Button)`
 
     return css`
       background-color: ${semanticColors?.base?.backgroundSecondaryInverse};
+      width: fit-content;
     `;
   }}
 `;

@@ -352,23 +352,28 @@ export const DrawerStyle = {
         label: "Services",
         onClick: () => console.log("Services dropdown clicked"),
         defaultUrl: "/services",
-        actions: [
-          {
-            label: "Primary Action",
-            onClick: () => console.log("Secondary Action clicked"),
-            section: "Training",
+        sectionProps: {
+          Training: {
+            actions: [
+              {
+                label: "Primary Action",
+                onClick: () => console.log("Secondary Action clicked"),
+              },
+              {
+                label: "Secondary Action",
+                onClick: () => console.log("Secondary Action clicked"),
+              },
+            ],
           },
-          {
-            label: "Secondary Action",
-            onClick: () => console.log("Secondary Action clicked"),
-            section: "Training",
+          Consulting: {
+            actions: [
+              {
+                label: "Read More",
+                href: "/#",
+              },
+            ],
           },
-          {
-            label: "Read More",
-            section: "Consulting",
-            href: "/#",
-          },
-        ],
+        },
       },
       {
         itemType: "dropdown",

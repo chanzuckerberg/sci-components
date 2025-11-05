@@ -9,8 +9,17 @@ import {
   StyledDivider,
   StyledSectionHeader,
 } from "../style";
-import { EmptyIcon, StyledAccordion } from "../../style";
-import { DropdownItem } from "../NavigationHeaderPrimaryNav";
+import {
+  EmptyIcon,
+  StyledAccordion,
+  StyledButton,
+  StyledHoverDrawerActions,
+} from "../../style";
+import {
+  DropdownItem,
+  ActionItem,
+  SectionProps,
+} from "../NavigationHeaderPrimaryNav";
 import {
   StyledDrawerNavItem,
   StyledDrawerNavItemContent,
@@ -32,6 +41,7 @@ export interface AccordionNavItemProps {
   chevronSize?: "xs" | "s";
   onClose: () => void;
   sdsStyle?: "dropdown" | "drawer";
+  sectionProps?: Record<string, SectionProps>;
 }
 
 // Render nav item for drawer style with icon and caption
@@ -135,6 +145,7 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
     chevronSize = "s",
     onClose,
     sdsStyle = "dropdown",
+    sectionProps,
   } = props;
 
   const isExpanded = expandedAccordion === accordionId;
@@ -182,6 +193,7 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
           const sectionItems = groupedItems[section];
           const showDivider =
             hasMultipleSections && sectionIndex > 0 && sdsStyle !== "drawer";
+          const actions = sectionProps?.[section]?.actions;
 
           return (
             <StyledAccordionSection
@@ -206,6 +218,44 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
                 </StyledSectionHeader>
               )}
               {sectionItems.map((subItem) => renderNavItem(subItem))}
+              {actions && actions.length > 0 && sdsStyle === "drawer" && (
+                <StyledHoverDrawerActions isNarrow={isNarrow}>
+                  {actions.map((action: ActionItem, index: number) => {
+                    const {
+                      label: actionLabel,
+                      onClick,
+                      href,
+                      component,
+                      target,
+                      rel,
+                    } = action;
+
+                    // If href is provided without a component, default to anchor tag
+                    const componentProp = href && !component ? "a" : component;
+
+                    return (
+                      <StyledButton
+                        key={`action-${section || "default"}-${index}`}
+                        sdsStyle="rounded"
+                        sdsType="primary"
+                        onClick={(e) => {
+                          onClick?.(e);
+                          // Only close drawer if action has href (navigation)
+                          if (href) {
+                            onClose();
+                          }
+                        }}
+                        component={componentProp}
+                        href={href}
+                        target={target}
+                        rel={rel}
+                      >
+                        {actionLabel}
+                      </StyledButton>
+                    );
+                  })}
+                </StyledHoverDrawerActions>
+              )}
             </StyledAccordionSection>
           );
         })}

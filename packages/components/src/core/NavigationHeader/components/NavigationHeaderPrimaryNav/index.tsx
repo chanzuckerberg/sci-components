@@ -411,6 +411,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         chevronSize={isNarrow ? "s" : "xs"}
         onClose={onClose}
         sdsStyle={sdsStyle}
+        sectionProps={item.sectionProps}
       />
     );
   };
