@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta, StoryContext } from "@storybook/react-webpack5";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {
@@ -292,7 +292,7 @@ export const DropdownWithSections = {
   args: {
     buttons: [
       {
-        children: "Sing in",
+        children: "Sign in",
         sdsType: "secondary",
       },
       {
@@ -352,6 +352,9 @@ export const DropdownWithSections = {
       expanded: true,
     },
     layout: "fullscreen",
+  },
+  render: (args: Args, context: StoryContext) => {
+    return <NavigationHeader {...args} theme={context.globals.theme} />;
   },
 };
 

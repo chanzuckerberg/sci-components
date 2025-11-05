@@ -71,6 +71,7 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   setExpandedAccordion: (value: string | null) => void;
   accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
   scrollToAccordion?: (accordionId: string) => void;
+  onDrawerStateChange?: (isOpen: boolean) => void;
 }
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
@@ -85,6 +86,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   setExpandedAccordion,
   accordionRefs,
   scrollToAccordion,
+  onDrawerStateChange,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
@@ -148,6 +150,13 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
       }
     };
   }, []);
+
+  // Notify parent when drawer state changes (only for drawer style)
+  useEffect(() => {
+    if (sdsStyle === "drawer" && onDrawerStateChange) {
+      onDrawerStateChange(drawerOpen);
+    }
+  }, [drawerOpen, sdsStyle, onDrawerStateChange]);
 
   useEffect(() => {
     const button = buttonRef.current;

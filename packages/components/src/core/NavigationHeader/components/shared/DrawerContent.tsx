@@ -43,7 +43,7 @@ export default function DrawerContent({
           details,
           icon,
           onClick,
-          ...subItemRest
+          ...restSubItemProps
         } = subItem;
 
         const hasDetails = !!details;
@@ -82,7 +82,7 @@ export default function DrawerContent({
             hasInvertedStyle={hasInvertedStyle}
             hasIcon={hasIcon}
             hasDetails={hasDetails}
-            {...subItemRest}
+            {...restSubItemProps}
           >
             {/* Based on primaryNav: include hasDetails prop */}
             <StyledHoverDrawerItemContent hasDetails={hasDetails}>

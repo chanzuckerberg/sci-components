@@ -118,6 +118,9 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     );
     const accordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
+    // Track if any hover drawer is open (for sdsStyle="drawer")
+    const [isAnyDrawerOpen, setIsAnyDrawerOpen] = useState(false);
+
     useEffect(() => {
       setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
     }, [isMdScreen]);
@@ -161,6 +164,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       },
       [sdsStyle]
     );
+
+    const handleDrawerStateChange = useCallback((isOpen: boolean) => {
+      setIsAnyDrawerOpen(isOpen);
+    }, []);
 
     const checkScrollable = useCallback(() => {
       if (!navRef.current) return;
@@ -266,6 +273,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             setExpandedAccordion={setExpandedAccordion}
             accordionRefs={accordionRefs}
             scrollToAccordion={scrollToAccordion}
+            onDrawerStateChange={handleDrawerStateChange}
           />
         )
       );
@@ -285,6 +293,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             setExpandedAccordion={setExpandedAccordion}
             accordionRefs={accordionRefs}
             scrollToAccordion={scrollToAccordion}
+            onDrawerStateChange={handleDrawerStateChange}
           />
         )
       );
@@ -453,9 +462,13 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const position =
       sdsStyle === "drawer" ? "sticky" : isSticky ? "sticky" : "relative";
 
+    // Disable elevation when drawer style is active and any drawer is open
+    const effectiveScrollElevation =
+      scrollElevation && !(sdsStyle === "drawer" && isAnyDrawerOpen);
+
     return (
       <>
-        <ElevationScroll {...props} shouldElevate={scrollElevation}>
+        <ElevationScroll {...props} shouldElevate={effectiveScrollElevation}>
           <StyledAppBar
             elevation={0}
             hasInvertedStyle={hasInvertedStyle}
@@ -478,7 +491,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             role="dialog"
             aria-label="Navigation menu"
           >
-            <ElevationScroll {...props} shouldElevate={scrollElevation}>
+            <ElevationScroll
+              {...props}
+              shouldElevate={effectiveScrollElevation}
+            >
               <StyledAppBar
                 elevation={10}
                 hasInvertedStyle={hasInvertedStyle}

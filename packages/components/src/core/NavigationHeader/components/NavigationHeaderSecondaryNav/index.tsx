@@ -55,6 +55,7 @@ export interface NavigationHeaderSecondaryNavProps {
   setExpandedAccordion: (value: string | null) => void;
   accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
   scrollToAccordion?: (accordionId: string) => void;
+  onDrawerStateChange?: (isOpen: boolean) => void;
 }
 
 export default function NavigationHeaderSecondaryNav({
@@ -67,6 +68,7 @@ export default function NavigationHeaderSecondaryNav({
   setExpandedAccordion,
   accordionRefs,
   scrollToAccordion,
+  onDrawerStateChange,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
@@ -130,6 +132,13 @@ export default function NavigationHeaderSecondaryNav({
       }
     };
   }, []);
+
+  // Notify parent when drawer state changes (only for drawer style)
+  useEffect(() => {
+    if (sdsStyle === "drawer" && onDrawerStateChange) {
+      onDrawerStateChange(drawerOpen);
+    }
+  }, [drawerOpen, sdsStyle, onDrawerStateChange]);
 
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuWidth, setMenuWidth] = useState<number | string>("100%");

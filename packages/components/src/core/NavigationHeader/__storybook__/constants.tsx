@@ -10,13 +10,16 @@ export const NAVIGATION_HEADER_LOGO_OPTIONS = [
 
 export const NAVIGATION_HEADER_EXCLUDED_CONTROLS = [];
 
-export const PRODUCTS = [
+export const PRODUCTS = (mode: "light" | "dark" = "light") => [
   {
     label: "Browse Datasets",
     onClick: () => alert("Browse Datasets clicked"),
     section: "Data",
     details: "Explore all datasets",
     icon: "Search",
+    href: "https://www.google.com",
+    target: "_blank",
+    component: "a",
   },
   {
     label: "API Reference",
@@ -37,14 +40,14 @@ export const PRODUCTS = [
     onClick: () => alert("CZ CELL×GENE clicked"),
     section: "Repositories",
     details: "Single-cell multiomic data",
-    icon: <CellByGeneIcon />,
+    icon: <CellByGeneIcon innerColor={mode === "dark" ? "white" : "black"} />,
   },
   {
     label: "CryoET",
     onClick: () => alert("CryoET clicked"),
     section: "Repositories",
     details: "High-resolution 3D sub-cellular tomograms",
-    icon: <CryoEtIcon />,
+    icon: <CryoEtIcon innerColor={mode === "dark" ? "white" : "black"} />,
   },
   {
     label: "scBaseCamp",

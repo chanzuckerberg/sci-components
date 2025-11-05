@@ -42,7 +42,8 @@ const doNotForwardProps = [
 ];
 
 export const StyledAppBar = styled(AppBar, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
@@ -77,7 +78,8 @@ const NarrowToolbar = (props: ExtraHeaderProps): SerializedStyles => {
 };
 
 export const StyledToolbar = styled(Toolbar, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const { isNarrow } = props;
@@ -97,7 +99,8 @@ export const StyledToolbar = styled(Toolbar, {
 `;
 
 export const StyledShadowElement = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const shadows = getShadows(props);
@@ -115,7 +118,8 @@ export const StyledShadowElement = styled("div", {
 `;
 
 export const StyledShadowCoverElement = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
@@ -241,7 +245,8 @@ export const StyledWideIconButton = styled(Button, {
 `;
 
 export const StyledLogoLinkWrapper = styled(Link, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   align-items: center;
   display: flex;
@@ -271,7 +276,8 @@ const NarrowTitleContainer = (): SerializedStyles => {
 };
 
 export const StyledTitleContainer = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   display: flex;
   align-items: center;
@@ -296,7 +302,8 @@ export const StyledTitleContainer = styled("div", {
 `;
 
 export const StyledTitleTagWrapper = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
@@ -326,7 +333,8 @@ interface StyledPrimaryNavContainerProps extends CommonThemeProps {
 }
 
 export const StyledPrimaryNavContainer = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   align-items: center;
   display: flex;
@@ -474,7 +482,7 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
     gap: ${spaces?.l}px;
     flex-direction: column-reverse;
     margin-left: 0;
-    margin-top: ${spaces?.xxl}px;
+    margin-top: ${spaces?.xl}px;
     padding: ${spaces?.xl}px 0;
     position: sticky;
     bottom: 0;
@@ -500,7 +508,8 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
 };
 
 export const StyledButtonSection = styled("section", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   display: flex;
   align-items: center;
@@ -521,7 +530,8 @@ export const StyledButtonSection = styled("section", {
 `;
 
 export const StyledDrawer = styled(Drawer, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const colors = getSemanticColors(props);
@@ -542,7 +552,8 @@ export const StyledDrawer = styled(Drawer, {
 `;
 
 export const StyledDrawerContent = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const spaces = getSpaces(props);
@@ -625,7 +636,8 @@ const DrawerAccordionStyles = (
 };
 
 export const StyledAccordion = styled(Accordion, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   padding: 0 !important;
   width: 100%;
@@ -745,7 +757,8 @@ interface StyledSectionDividerProps extends CommonThemeProps {
 }
 
 export const StyledSectionDivider = styled(Divider, {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
+  shouldForwardProp: (prop) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop as string),
 })`
   ${(props: StyledSectionDividerProps) => {
     const semanticColors = getSemanticColors(props);
@@ -764,7 +777,8 @@ export const StyledSectionDivider = styled(Divider, {
 
 // Hover Drawer Components for sdsStyle="drawer"
 export const StyledMegaMenuDrawer = styled(Drawer, {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const { hasInvertedStyle } = props;
@@ -790,15 +804,16 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
       }
 
       .MuiBackdrop-root {
-        background-color: transparent;
-        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(2px);
       }
     `;
   }}
 `;
 
 export const StyledMegaMenuContent = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const { hasInvertedStyle } = props;
@@ -823,7 +838,7 @@ export const StyledMegaMenuContent = styled("div", {
 
 export const StyledHoverDrawerColumn = styled("div", {
   shouldForwardProp: (prop: string) =>
-    !doNotForwardProps.includes(prop) && prop !== "totalColumns",
+    ![...doNotForwardProps, "sdsStyle", "totalColumns"].includes(prop),
 })<ExtraHeaderProps & { totalColumns?: number }>`
   ${(props: ExtraHeaderProps & { totalColumns?: number }) => {
     const spaces = getSpaces(props);
@@ -846,7 +861,8 @@ export const StyledHoverDrawerColumn = styled("div", {
 `;
 
 export const StyledHoverDrawerColumnHeader = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const { hasInvertedStyle } = props;
@@ -865,9 +881,16 @@ export const StyledHoverDrawerColumnHeader = styled("div", {
   }}
 `;
 
-export const StyledHoverDrawerItem = styled("button", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }>`
+export const StyledHoverDrawerItem = styled(
+  Button as unknown as React.ComponentType<
+    Partial<SdsMinimalButtonProps> &
+      ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }
+  >,
+  {
+    shouldForwardProp: (prop: string) =>
+      ![...doNotForwardProps, "sdsStyle"].includes(prop),
+  }
+)<ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }>`
   ${(props: ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }) => {
     const { hasInvertedStyle, hasDetails } = props;
     const semanticColors = getSemanticColors(props);
@@ -876,7 +899,9 @@ export const StyledHoverDrawerItem = styled("button", {
 
     return css`
       border: none;
+      outline: none;
       background: transparent;
+      box-shadow: none;
       justify-content: flex-start;
       text-align: left;
       padding: ${spaces?.s}px ${spaces?.l}px;
@@ -884,8 +909,12 @@ export const StyledHoverDrawerItem = styled("button", {
       border-radius: ${corners?.xl}px;
       min-height: auto;
       width: 100%;
+      white-space: wrap;
 
       &:hover {
+        border: none;
+        outline: none;
+        box-shadow: none;
         cursor: pointer;
         background: ${hasInvertedStyle
           ? semanticColors?.base.fillHoverOnDark
@@ -899,7 +928,8 @@ export const StyledHoverDrawerItem = styled("button", {
 `;
 
 export const StyledHoverDrawerItemContent = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })<ExtraHeaderProps & { hasDetails?: boolean }>`
   ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
     const spaces = getSpaces(props);
@@ -914,7 +944,8 @@ export const StyledHoverDrawerItemContent = styled("div", {
 `;
 
 export const StyledHoverDrawerItemIcon = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })<ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }>`
   ${(props: ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }) => {
     const semanticColors = getSemanticColors(props);
@@ -936,7 +967,8 @@ export const StyledHoverDrawerItemIcon = styled("div", {
 `;
 
 export const StyledHoverDrawerItemText = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${() => {
     return css`
@@ -949,9 +981,10 @@ export const StyledHoverDrawerItemText = styled("div", {
   }}
 `;
 
-export const EmptyIcon = styled("div")<
-  ExtraHeaderProps & { hasDetails?: boolean }
->`
+export const EmptyIcon = styled("div", {
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
+})<ExtraHeaderProps & { hasDetails?: boolean }>`
   ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
     const { hasDetails } = props;
     const spaces = getSpaces(props);
@@ -967,7 +1000,8 @@ export const EmptyIcon = styled("div")<
 `;
 
 export const StyledHoverDrawerItemTitle = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps & { hasDetails?: boolean }) => {
     const { hasInvertedStyle, hasDetails } = props;
@@ -994,7 +1028,8 @@ export const StyledHoverDrawerItemTitle = styled("div", {
 `;
 
 export const StyledHoverDrawerItemDetails = styled("div", {
-  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
     const { hasInvertedStyle } = props;
@@ -1013,6 +1048,9 @@ export const StyledHoverDrawerItemDetails = styled("div", {
   }}
 `;
 
-export const StyledHoverDrawerContainer = styled("div")`
+export const StyledHoverDrawerContainer = styled("div", {
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
+})`
   position: relative;
 `;
