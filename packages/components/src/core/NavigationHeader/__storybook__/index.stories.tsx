@@ -7,6 +7,7 @@ import {
   NAVIGATION_HEADER_LOGO_OPTIONS,
   PRODUCTS,
   SERVICES,
+  BENCHMARKS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
 
@@ -321,13 +322,16 @@ export const DropdownWithSections = {
         defaultUrl: "https://www.google.com",
         target: "_blank",
         rel: "noopener noreferrer",
-        actions: [
-          {
-            label: "Browse All",
-            section: "Repositories",
-            href: "/repositories",
+        sectionProps: {
+          Repositories: {
+            actions: [
+              {
+                label: "Browse All",
+                href: "/repositories",
+              },
+            ],
           },
-        ],
+        },
       },
       {
         itemType: "dropdown",
@@ -355,10 +359,19 @@ export const DropdownWithSections = {
         ],
       },
       {
-        itemType: "text",
-        key: "about",
-        label: "About",
-        onClick: () => console.log("About clicked"),
+        itemType: "dropdown",
+        items: BENCHMARKS,
+        key: "benchmarks",
+        label: "Benchmarks",
+        onClick: () => console.log("Benchmarks dropdown clicked"),
+        defaultUrl: "https://www.google.com",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        sectionProps: {
+          Benchmarks: {
+            colSpan: 2,
+          },
+        },
       },
     ],
     scrollElevation: true,

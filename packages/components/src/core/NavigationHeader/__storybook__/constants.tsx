@@ -154,3 +154,30 @@ export const RESEARCH = [
     icon: "LightBulb",
   },
 ];
+
+export const BENCHMARKS = [
+  {
+    label: "Benchmark Results",
+    onClick: () => alert("Benchmark Results clicked"),
+    section: "Benchmarks",
+    details:
+      "Web-based interface to explore and compare model performance on benchmark tasks",
+    icon: "BarChartVertical3",
+  },
+  {
+    label: "Benchmark Package",
+    onClick: () => alert("Benchmark Package clicked"),
+    section: "Benchmarks",
+    details:
+      "Modular Python benchmarking package that’s easy to integrate with experiment-tracking tools like TensorBoard or MLflow",
+    icon: "Package",
+  },
+  {
+    label: "Benchmark CLI",
+    onClick: () => alert("Benchmark CLI clicked"),
+    section: "Benchmarks",
+    details:
+      "Command-line tool to reproducibly evaluate models against curated datasets, tasks, and metrics",
+    icon: "Cli",
+  },
+];

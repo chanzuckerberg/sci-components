@@ -43,6 +43,7 @@ const doNotForwardProps = [
   "defaultUrl",
   "hasDetails",
   "hasIcon",
+  "sectionProps",
 ];
 
 export const StyledAppBar = styled(AppBar, {

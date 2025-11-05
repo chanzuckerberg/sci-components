@@ -25,6 +25,7 @@ const ButtonDoNotForwardProps = [
   "defaultUrl",
   "hasDetails",
   "hasIcon",
+  "sectionProps",
 ];
 
 const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {

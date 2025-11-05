@@ -1,4 +1,7 @@
 import Icon from "src/core/Icon";
+import styled from "@emotion/styled";
+import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { css } from "@emotion/react";
 import {
   StyledHoverDrawerColumnHeader,
   StyledHoverDrawerItem,
@@ -11,16 +14,42 @@ import {
   StyledHoverDrawerActions,
   StyledButton,
 } from "../../style";
-import { DropdownItem, ActionItem } from "../NavigationHeaderPrimaryNav";
+import {
+  DropdownItem,
+  ActionItem,
+  SectionProps,
+} from "../NavigationHeaderPrimaryNav";
 
 interface DrawerContentProps {
   drawerItems: DropdownItem[];
-  actions?: ActionItem[];
+  sectionProps?: SectionProps;
   section: string;
   hasMultipleSections: boolean;
   hasInvertedStyle?: boolean;
   onItemClick: () => void;
+  showHeader?: boolean;
+  isLastColumn?: boolean;
 }
+
+// Wrapper to add top padding when header is not shown
+const StyledContentWrapper = styled("div")<
+  CommonThemeProps & { needsHeaderPadding: boolean }
+>`
+  ${(props) => {
+    const { needsHeaderPadding } = props;
+    if (!needsHeaderPadding) return css``;
+
+    const spaces = getSpaces(props);
+    // Calculate padding to match header height + margin
+    // fontHeaderM has line-height of 22px, plus margin-bottom of m (12px)
+    const headerHeight = 22; // Line height from fontHeaderM
+    const headerMargin = spaces?.m || 12;
+
+    return css`
+      padding-top: ${headerHeight + headerMargin}px;
+    `;
+  }}
+`;
 
 /**
  * Shared drawer content component used by both NavigationHeaderPrimaryNav and NavigationHeaderSecondaryNav
@@ -28,130 +57,130 @@ interface DrawerContentProps {
  */
 export default function DrawerContent({
   drawerItems,
-  actions,
+  sectionProps,
   section,
   hasMultipleSections,
   hasInvertedStyle,
   onItemClick,
+  showHeader = true,
+  isLastColumn = true,
 }: DrawerContentProps) {
+  const actions = sectionProps?.actions;
+
+  // Function to render a single item
+  const renderItem = (subItem: DropdownItem, index: number) => {
+    const {
+      label: subLabel,
+      details,
+      icon,
+      onClick,
+      ...restSubItemProps
+    } = subItem;
+
+    const hasDetails = !!details;
+    const hasIcon = !!icon;
+    const iconSize = hasDetails ? "l" : "s";
+
+    const renderIcon = () => {
+      // Based on primaryNav: return EmptyIcon when no icon
+      if (!icon) return <EmptyIcon hasDetails={hasDetails} />;
+
+      const iconContent =
+        typeof icon !== "string" ? (
+          icon
+        ) : (
+          // Based on primaryNav: include color="indigo"
+          <Icon sdsIcon={icon} sdsSize={iconSize} color="indigo" />
+        );
+
+      return (
+        <StyledHoverDrawerItemIcon
+          hasDetails={hasDetails}
+          hasInvertedStyle={hasInvertedStyle}
+        >
+          {iconContent}
+        </StyledHoverDrawerItemIcon>
+      );
+    };
+
+    return (
+      <StyledHoverDrawerItem
+        key={`drawer-item-${section || "default"}-${subLabel}-${index}`}
+        onClick={(e) => {
+          onClick?.(e);
+          onItemClick();
+        }}
+        hasInvertedStyle={hasInvertedStyle}
+        hasIcon={hasIcon}
+        hasDetails={hasDetails}
+        {...restSubItemProps}
+      >
+        {/* Based on primaryNav: include hasDetails prop */}
+        <StyledHoverDrawerItemContent hasDetails={hasDetails}>
+          {renderIcon()}
+          <StyledHoverDrawerItemText>
+            <StyledHoverDrawerItemTitle
+              hasDetails={hasDetails}
+              hasInvertedStyle={hasInvertedStyle}
+            >
+              {subLabel}
+            </StyledHoverDrawerItemTitle>
+            {details && (
+              <StyledHoverDrawerItemDetails hasInvertedStyle={hasInvertedStyle}>
+                {details}
+              </StyledHoverDrawerItemDetails>
+            )}
+          </StyledHoverDrawerItemText>
+        </StyledHoverDrawerItemContent>
+      </StyledHoverDrawerItem>
+    );
+  };
+
+  // Need padding if this is part of a multi-column section but not showing header
+  const needsHeaderPadding =
+    hasMultipleSections && !showHeader && section !== "";
+
   return (
     <>
-      {section && hasMultipleSections && (
+      {section && hasMultipleSections && showHeader && (
         <StyledHoverDrawerColumnHeader hasInvertedStyle={hasInvertedStyle}>
           {section}
         </StyledHoverDrawerColumnHeader>
       )}
-      {drawerItems.map((subItem: DropdownItem, index: number) => {
-        const {
-          label: subLabel,
-          details,
-          icon,
-          onClick,
-          ...restSubItemProps
-        } = subItem;
+      <StyledContentWrapper needsHeaderPadding={needsHeaderPadding}>
+        {drawerItems.map(renderItem)}
+      </StyledContentWrapper>
+      {actions && actions.length > 0 && isLastColumn && (
+        <StyledHoverDrawerActions>
+          {actions.map((action: ActionItem, index: number) => {
+            const { label, onClick, href, component, target, rel } = action;
 
-        const hasDetails = !!details;
-        const hasIcon = !!icon;
-        const iconSize = hasDetails ? "l" : "s";
+            // If href is provided without a component, default to anchor tag
+            const componentProp = href && !component ? "a" : component;
 
-        const renderIcon = () => {
-          // Based on primaryNav: return EmptyIcon when no icon
-          if (!icon) return <EmptyIcon hasDetails={hasDetails} />;
-
-          const iconContent =
-            typeof icon !== "string" ? (
-              icon
-            ) : (
-              // Based on primaryNav: include color="indigo"
-              <Icon sdsIcon={icon} sdsSize={iconSize} color="indigo" />
+            return (
+              <StyledButton
+                key={`action-${section || "default"}-${index}`}
+                sdsStyle="rounded"
+                sdsType="primary"
+                onClick={(e) => {
+                  onClick?.(e);
+                  // Only close drawer if action has href (navigation)
+                  if (href) {
+                    onItemClick();
+                  }
+                }}
+                component={componentProp}
+                href={href}
+                target={target}
+                rel={rel}
+              >
+                {label}
+              </StyledButton>
             );
-
-          return (
-            <StyledHoverDrawerItemIcon
-              hasDetails={hasDetails}
-              hasInvertedStyle={hasInvertedStyle}
-            >
-              {iconContent}
-            </StyledHoverDrawerItemIcon>
-          );
-        };
-
-        return (
-          <StyledHoverDrawerItem
-            key={`drawer-item-${section || "default"}-${subLabel}-${index}`}
-            onClick={(e) => {
-              onClick?.(e);
-              onItemClick();
-            }}
-            hasInvertedStyle={hasInvertedStyle}
-            hasIcon={hasIcon}
-            hasDetails={hasDetails}
-            {...restSubItemProps}
-          >
-            {/* Based on primaryNav: include hasDetails prop */}
-            <StyledHoverDrawerItemContent hasDetails={hasDetails}>
-              {renderIcon()}
-              <StyledHoverDrawerItemText>
-                <StyledHoverDrawerItemTitle
-                  hasDetails={hasDetails}
-                  hasInvertedStyle={hasInvertedStyle}
-                >
-                  {subLabel}
-                </StyledHoverDrawerItemTitle>
-                {details && (
-                  <StyledHoverDrawerItemDetails
-                    hasInvertedStyle={hasInvertedStyle}
-                  >
-                    {details}
-                  </StyledHoverDrawerItemDetails>
-                )}
-              </StyledHoverDrawerItemText>
-            </StyledHoverDrawerItemContent>
-          </StyledHoverDrawerItem>
-        );
-      })}
-      {actions &&
-        actions.length > 0 &&
-        (() => {
-          // Filter actions to only show ones that match this section
-          const sectionActions = actions.filter(
-            (action) => action.section === section
-          );
-
-          if (sectionActions.length === 0) return null;
-
-          return (
-            <StyledHoverDrawerActions>
-              {sectionActions.map((action: ActionItem, index: number) => {
-                const { label, onClick, href, component, target, rel } = action;
-
-                // If href is provided without a component, default to anchor tag
-                const componentProp = href && !component ? "a" : component;
-
-                return (
-                  <StyledButton
-                    key={`action-${section || "default"}-${index}`}
-                    sdsStyle="rounded"
-                    sdsType="primary"
-                    onClick={(e) => {
-                      onClick?.(e);
-                      // Only close drawer if action has href (navigation)
-                      if (href) {
-                        onItemClick();
-                      }
-                    }}
-                    component={componentProp}
-                    href={href}
-                    target={target}
-                    rel={rel}
-                  >
-                    {label}
-                  </StyledButton>
-                );
-              })}
-            </StyledHoverDrawerActions>
-          );
-        })()}
+          })}
+        </StyledHoverDrawerActions>
+      )}
     </>
   );
 }

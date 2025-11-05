@@ -30,6 +30,7 @@ const doNotForwardProps = [
   "defaultUrl",
   "hasDetails",
   "hasIcon",
+  "sectionProps",
 ];
 
 const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {

@@ -17,7 +17,12 @@ import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
 import { AccordionDetails } from "src/core/Accordion";
 
-const doNotForwardProps = ["isNarrow", "hasSection", "hasInvertedStyle"];
+const doNotForwardProps = [
+  "isNarrow",
+  "hasSection",
+  "hasInvertedStyle",
+  "sectionProps",
+];
 
 const NarrowStyledSection = (): SerializedStyles => {
   return css`

@@ -14,7 +14,7 @@ import MenuItem from "src/core/MenuItem";
 import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
-import { DropdownItem, ActionItem } from "../NavigationHeaderPrimaryNav";
+import { DropdownItem, SectionProps } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
 import {
   StyledMegaMenuDrawer,
@@ -37,7 +37,7 @@ interface DropdownHeaderSecondaryNavItem
   label: string;
   itemType: "dropdown";
   items: DropdownItem[];
-  actions?: ActionItem[];
+  sectionProps?: Record<string, SectionProps>;
   tag?: string;
   tagColor?: SdsTagColorType;
   defaultUrl?: string;
@@ -483,18 +483,70 @@ export default function NavigationHeaderSecondaryNav({
                   sections.length > 1 ||
                   sections.some((section) => section !== "");
 
-                return sections.map((section) => (
+                // Calculate total columns needed accounting for colSpan
+                const totalColumns = sections.reduce((acc, section) => {
+                  const colSpan =
+                    activeDrawerItem.sectionProps?.[section]?.colSpan || 1;
+                  return acc + colSpan;
+                }, 0);
+
+                // Expand sections into columns
+                const columns: Array<{
+                  section: string;
+                  items: DropdownItem[];
+                  sectionProps?: SectionProps;
+                  showHeader: boolean;
+                  isLastColumn: boolean;
+                }> = [];
+
+                sections.forEach((section) => {
+                  const sectionProps =
+                    activeDrawerItem.sectionProps?.[section] || {};
+                  const colSpan = sectionProps.colSpan || 1;
+                  const sectionItems = groupedItems[section];
+
+                  if (colSpan <= 1) {
+                    // Single column section
+                    columns.push({
+                      section,
+                      items: sectionItems,
+                      sectionProps,
+                      showHeader: true,
+                      isLastColumn: true,
+                    });
+                  } else {
+                    // Multi-column section - split items
+                    const itemsPerColumn = Math.ceil(
+                      sectionItems.length / colSpan
+                    );
+                    for (let i = 0; i < colSpan; i++) {
+                      const start = i * itemsPerColumn;
+                      const end = start + itemsPerColumn;
+                      columns.push({
+                        section,
+                        items: sectionItems.slice(start, end),
+                        sectionProps,
+                        showHeader: i === 0, // Only show header on first column
+                        isLastColumn: i === colSpan - 1, // Only show actions on last column
+                      });
+                    }
+                  }
+                });
+
+                return columns.map((column, index) => (
                   <StyledHoverDrawerColumn
-                    key={`drawer-section-${section || "default"}`}
+                    key={`drawer-column-${column.section}-${index}`}
                     hasInvertedStyle={hasInvertedStyle}
-                    totalColumns={sections.length}
+                    totalColumns={totalColumns}
                   >
                     <DrawerContent
-                      drawerItems={groupedItems[section]}
-                      actions={activeDrawerItem.actions}
-                      section={section}
+                      drawerItems={column.items}
+                      sectionProps={column.sectionProps}
+                      section={column.section}
                       hasMultipleSections={hasMultipleSections}
                       hasInvertedStyle={hasInvertedStyle}
+                      showHeader={column.showHeader}
+                      isLastColumn={column.isLastColumn}
                       onItemClick={() => {
                         setActiveDrawerKey(null);
                         setContentKey(null);
