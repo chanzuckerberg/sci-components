@@ -46,7 +46,7 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   return css`
     border-radius: ${corners?.l}px;
     justify-content: start;
-    padding: ${spaces?.s}px ${spaces?.m}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
     ${innerSdsStyle === "drawer"
       ? css`
           background-color: transparent !important;

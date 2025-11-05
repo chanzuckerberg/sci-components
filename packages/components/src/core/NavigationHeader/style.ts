@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable sonarjs/no-duplicate-string */
 import { AppBar, Divider, Drawer, Toolbar, css } from "@mui/material";
 import {
@@ -619,20 +620,9 @@ const DrawerAccordionStyles = (
         ? semanticColors?.base?.backgroundPrimaryDark
         : semanticColors?.base?.backgroundPrimary};
 
-      &::after {
+      &::before {
         content: "";
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        background-image: linear-gradient(
-          to bottom,
-          ${hasInvertedStyle
-            ? semanticColors?.base?.backgroundPrimaryDark
-            : semanticColors?.base?.backgroundPrimary},
-          transparent
-        );
+        display: none;
       }
     }
   `;
@@ -679,7 +669,7 @@ export const StyledAccordion = styled(Accordion, {
 
     return css`
       .MuiButtonBase-root {
-        padding: ${spaces?.s}px ${spaces?.m}px !important;
+        padding: ${spaces?.s}px ${spaces?.l}px !important;
         border-radius: ${corners?.l}px;
         color: ${textDefaultColor};
 
@@ -690,13 +680,41 @@ export const StyledAccordion = styled(Accordion, {
         &[aria-expanded="true"] {
           position: sticky;
           border-radius: ${corners?.l}px;
-          top: calc(48px + ${spaces?.m}px);
+          top: calc(48px + ${spaces?.s}px);
           z-index: 11;
           backdrop-filter: blur(8px);
           color: ${textOpenColor};
           background-color: ${hasInvertedStyle
             ? semanticColors?.base?.fillPressedOnDark
             : semanticColors?.base?.fillPressed};
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: -${spaces?.s}px;
+            left: -${spaces?.l ?? 0 * 2}px;
+            right: -${spaces?.l ?? 0 * 2}px;
+            bottom: 0;
+            background-color: ${hasInvertedStyle
+              ? semanticColors?.base?.backgroundPrimaryDark
+              : semanticColors?.base?.backgroundPrimary};
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-image: linear-gradient(
+              to bottom,
+              ${hasInvertedStyle
+                ? semanticColors?.base?.backgroundPrimaryDark
+                : semanticColors?.base?.backgroundPrimary},
+              transparent
+            );
+          }
 
           .MuiAccordionSummary-content {
             ${fontBodySemiboldL(props)}
