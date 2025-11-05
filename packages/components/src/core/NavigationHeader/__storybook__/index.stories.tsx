@@ -321,6 +321,13 @@ export const DropdownWithSections = {
         defaultUrl: "https://www.google.com",
         target: "_blank",
         rel: "noopener noreferrer",
+        actions: [
+          {
+            label: "Browse All",
+            section: "Repositories",
+            href: "/repositories",
+          },
+        ],
       },
       {
         itemType: "dropdown",
@@ -329,6 +336,23 @@ export const DropdownWithSections = {
         label: "Services",
         onClick: () => console.log("Services dropdown clicked"),
         defaultUrl: "/services",
+        actions: [
+          {
+            label: "Primary Action",
+            onClick: () => console.log("Secondary Action clicked"),
+            section: "Training",
+          },
+          {
+            label: "Secondary Action",
+            onClick: () => console.log("Secondary Action clicked"),
+            section: "Training",
+          },
+          {
+            label: "Read More",
+            section: "Consulting",
+            href: "/#",
+          },
+        ],
       },
       {
         itemType: "text",

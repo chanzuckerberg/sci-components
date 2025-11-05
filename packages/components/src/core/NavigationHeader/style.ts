@@ -932,6 +932,10 @@ export const StyledHoverDrawerItem = styled(
       width: 100%;
       white-space: wrap;
 
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
       &:hover {
         border: none;
         outline: none;
@@ -1065,6 +1069,33 @@ export const StyledHoverDrawerItemDetails = styled("div", {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
+    `;
+  }}
+`;
+
+export const StyledHoverDrawerActions = styled("div", {
+  shouldForwardProp: (prop: string) =>
+    ![...doNotForwardProps, "sdsStyle"].includes(prop),
+})`
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+
+    return css`
+      display: flex;
+      flex-direction: row;
+      gap: ${spaces?.xs}px;
+      margin-top: ${spaces?.m}px;
+      padding-left: calc(${spaces?.xxl ?? 0}px + ${spaces?.xs ?? 0}px);
+    `;
+  }}
+`;
+
+export const StyledButton = styled(Button)`
+  ${(props: CommonThemeProps & SdsButtonProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return css`
+      background-color: ${semanticColors?.base?.backgroundSecondaryOnDark};
     `;
   }}
 `;

@@ -49,10 +49,21 @@ export interface DropdownItem {
   target?: string;
 }
 
+export interface ActionItem {
+  label: ReactNode;
+  section?: string;
+  onClick?: (event: React.MouseEvent) => void;
+  href?: string;
+  component?: React.ElementType;
+  target?: string;
+  rel?: string;
+}
+
 interface DropdownNavigationHeaderPrimaryNavItem<T extends string>
   extends BaseNavigationHeaderPrimaryNavItem<T> {
   itemType: "dropdown";
   items: DropdownItem[];
+  actions?: ActionItem[];
   defaultUrl?: string;
   component?: React.ElementType;
   target?: string;
@@ -543,6 +554,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                   >
                     <DrawerContent
                       drawerItems={groupedItems[section]}
+                      actions={activeDrawerItem.actions}
                       section={section}
                       hasMultipleSections={hasMultipleSections}
                       hasInvertedStyle={hasInvertedStyle}

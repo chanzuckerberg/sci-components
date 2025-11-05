@@ -8,11 +8,14 @@ import {
   StyledHoverDrawerItemTitle,
   StyledHoverDrawerItemDetails,
   EmptyIcon,
+  StyledHoverDrawerActions,
+  StyledButton,
 } from "../../style";
-import { DropdownItem } from "../NavigationHeaderPrimaryNav";
+import { DropdownItem, ActionItem } from "../NavigationHeaderPrimaryNav";
 
 interface DrawerContentProps {
   drawerItems: DropdownItem[];
+  actions?: ActionItem[];
   section: string;
   hasMultipleSections: boolean;
   hasInvertedStyle?: boolean;
@@ -25,6 +28,7 @@ interface DrawerContentProps {
  */
 export default function DrawerContent({
   drawerItems,
+  actions,
   section,
   hasMultipleSections,
   hasInvertedStyle,
@@ -106,6 +110,48 @@ export default function DrawerContent({
           </StyledHoverDrawerItem>
         );
       })}
+      {actions &&
+        actions.length > 0 &&
+        (() => {
+          // Filter actions to only show ones that match this section
+          const sectionActions = actions.filter(
+            (action) => action.section === section
+          );
+
+          if (sectionActions.length === 0) return null;
+
+          return (
+            <StyledHoverDrawerActions>
+              {sectionActions.map((action: ActionItem, index: number) => {
+                const { label, onClick, href, component, target, rel } = action;
+
+                // If href is provided without a component, default to anchor tag
+                const componentProp = href && !component ? "a" : component;
+
+                return (
+                  <StyledButton
+                    key={`action-${section || "default"}-${index}`}
+                    sdsStyle="rounded"
+                    sdsType="primary"
+                    onClick={(e) => {
+                      onClick?.(e);
+                      // Only close drawer if action has href (navigation)
+                      if (href) {
+                        onItemClick();
+                      }
+                    }}
+                    component={componentProp}
+                    href={href}
+                    target={target}
+                    rel={rel}
+                  >
+                    {label}
+                  </StyledButton>
+                );
+              })}
+            </StyledHoverDrawerActions>
+          );
+        })()}
     </>
   );
 }

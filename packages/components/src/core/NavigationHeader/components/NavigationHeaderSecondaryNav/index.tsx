@@ -14,7 +14,7 @@ import MenuItem from "src/core/MenuItem";
 import { SdsMinimalButtonProps } from "src/core/Button";
 import { SDSTheme } from "src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
-import { DropdownItem } from "../NavigationHeaderPrimaryNav";
+import { DropdownItem, ActionItem } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
 import {
   StyledMegaMenuDrawer,
@@ -37,6 +37,7 @@ interface DropdownHeaderSecondaryNavItem
   label: string;
   itemType: "dropdown";
   items: DropdownItem[];
+  actions?: ActionItem[];
   tag?: string;
   tagColor?: SdsTagColorType;
   defaultUrl?: string;
@@ -490,6 +491,7 @@ export default function NavigationHeaderSecondaryNav({
                   >
                     <DrawerContent
                       drawerItems={groupedItems[section]}
+                      actions={activeDrawerItem.actions}
                       section={section}
                       hasMultipleSections={hasMultipleSections}
                       hasInvertedStyle={hasInvertedStyle}
