@@ -39,6 +39,10 @@ interface DropdownHeaderSecondaryNavItem
   items: DropdownItem[];
   tag?: string;
   tagColor?: SdsTagColorType;
+  defaultUrl?: string;
+  component?: React.ElementType;
+  target?: string;
+  rel?: string;
 }
 
 export type NavigationHeaderSecondaryNavItem =
@@ -161,6 +165,10 @@ export default function NavigationHeaderSecondaryNav({
     rest?: Record<string, unknown>
   ) => {
     const isDrawerOpen = drawerOpen && activeDrawerKey === itemKey;
+    const { defaultUrl, component, target, rel, onClick } = item;
+
+    // If defaultUrl is provided without a component, default to anchor tag
+    const componentProp = defaultUrl && !component ? "a" : component;
 
     return (
       <StyledHoverDrawerContainer
@@ -173,7 +181,12 @@ export default function NavigationHeaderSecondaryNav({
           hasInvertedStyle={hasInvertedStyle}
           open={isDrawerOpen}
           isNarrow={isNarrow}
-          sdsStyle={sdsStyle}
+          // sdsStyle={sdsStyle as unknown as undefined}
+          onClick={onClick}
+          component={componentProp}
+          href={defaultUrl}
+          target={target}
+          rel={rel}
         >
           <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
             {label}
@@ -215,7 +228,7 @@ export default function NavigationHeaderSecondaryNav({
           hasInvertedStyle={hasInvertedStyle}
           open={isDropdownOpen}
           isNarrow={isNarrow}
-          sdsStyle={sdsStyle}
+          // sdsStyle={sdsStyle as unknown as undefined}
           onClick={(event) => {
             setAnchorEl(event.currentTarget);
             setActiveDropdownKey(itemKey);
@@ -357,7 +370,7 @@ export default function NavigationHeaderSecondaryNav({
         hasInvertedStyle={hasInvertedStyle}
         open={false}
         isNarrow={isNarrow}
-        sdsStyle={sdsStyle}
+        // sdsStyle={sdsStyle as unknown as undefined}
       >
         {label}
         {tag && (

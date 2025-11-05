@@ -11,10 +11,21 @@ import {
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Tag from "src/core/Tag";
+import Button, { SdsMinimalButtonProps } from "src/core/Button";
 
-export type StyledTextItemProps = ExtraHeaderProps & { open: boolean };
+export type StyledTextItemProps = ExtraHeaderProps & {
+  open: boolean;
+  sdsStyle?: "dropdown" | "drawer";
+};
 
-const ButtonDoNotForwardProps = ["isNarrow"];
+const ButtonDoNotForwardProps = [
+  "isNarrow",
+  "sdsStyle",
+  "open",
+  "defaultUrl",
+  "hasDetails",
+  "hasIcon",
+];
 
 const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
   const { hasInvertedStyle, open } = props;
@@ -38,9 +49,15 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
   `;
 };
 
-export const StyledTextItem = styled("button", {
-  shouldForwardProp: (prop: string) => !ButtonDoNotForwardProps.includes(prop),
-})<StyledTextItemProps>`
+export const StyledTextItem = styled(
+  Button as unknown as React.ComponentType<
+    Partial<SdsMinimalButtonProps> & StyledTextItemProps
+  >,
+  {
+    shouldForwardProp: (prop: string) =>
+      !ButtonDoNotForwardProps.includes(prop),
+  }
+)<StyledTextItemProps>`
   ${fontBodyMediumS}
 
   justify-content: flex-start;

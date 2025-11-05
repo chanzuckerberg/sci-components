@@ -39,6 +39,9 @@ const doNotForwardProps = [
   "showSearch",
   "logoLinkComponent",
   "logoLinkProps",
+  "defaultUrl",
+  "hasDetails",
+  "hasIcon",
 ];
 
 export const StyledAppBar = styled(AppBar, {

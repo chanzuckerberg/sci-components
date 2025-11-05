@@ -119,7 +119,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const accordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
     // Track if any hover drawer is open (for sdsStyle="drawer")
-    const [isAnyDrawerOpen, setIsAnyDrawerOpen] = useState(false);
+    // Use separate state for primary and secondary nav to avoid race conditions
+    const [isPrimaryDrawerOpen, setIsPrimaryDrawerOpen] = useState(false);
+    const [isSecondaryDrawerOpen, setIsSecondaryDrawerOpen] = useState(false);
+    const isAnyDrawerOpen = isPrimaryDrawerOpen || isSecondaryDrawerOpen;
 
     useEffect(() => {
       setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
@@ -165,8 +168,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       [sdsStyle]
     );
 
-    const handleDrawerStateChange = useCallback((isOpen: boolean) => {
-      setIsAnyDrawerOpen(isOpen);
+    const handlePrimaryDrawerStateChange = useCallback((isOpen: boolean) => {
+      setIsPrimaryDrawerOpen(isOpen);
+    }, []);
+
+    const handleSecondaryDrawerStateChange = useCallback((isOpen: boolean) => {
+      setIsSecondaryDrawerOpen(isOpen);
     }, []);
 
     const checkScrollable = useCallback(() => {
@@ -273,7 +280,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             setExpandedAccordion={setExpandedAccordion}
             accordionRefs={accordionRefs}
             scrollToAccordion={scrollToAccordion}
-            onDrawerStateChange={handleDrawerStateChange}
+            onDrawerStateChange={handlePrimaryDrawerStateChange}
           />
         )
       );
@@ -293,7 +300,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             setExpandedAccordion={setExpandedAccordion}
             accordionRefs={accordionRefs}
             scrollToAccordion={scrollToAccordion}
-            onDrawerStateChange={handleDrawerStateChange}
+            onDrawerStateChange={handleSecondaryDrawerStateChange}
           />
         )
       );

@@ -318,6 +318,9 @@ export const DropdownWithSections = {
         key: "products",
         label: "Products",
         onClick: () => console.log("Products dropdown clicked"),
+        defaultUrl: "https://www.google.com",
+        target: "_blank",
+        rel: "noopener noreferrer",
       },
       {
         itemType: "dropdown",
@@ -325,6 +328,7 @@ export const DropdownWithSections = {
         key: "services",
         label: "Services",
         onClick: () => console.log("Services dropdown clicked"),
+        defaultUrl: "/services",
       },
       {
         itemType: "text",
@@ -341,6 +345,7 @@ export const DropdownWithSections = {
         key: "research",
         label: "Research",
         onClick: () => console.log("Research dropdown clicked"),
+        defaultUrl: "/research",
       },
     ],
     showSearch: true,

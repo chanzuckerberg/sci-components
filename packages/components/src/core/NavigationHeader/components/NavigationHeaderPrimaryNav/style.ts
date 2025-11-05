@@ -27,6 +27,9 @@ const doNotForwardProps = [
   "isNarrow",
   "hasSection",
   "innerSdsStyle",
+  "defaultUrl",
+  "hasDetails",
+  "hasIcon",
 ];
 
 const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {

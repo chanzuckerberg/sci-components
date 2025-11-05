@@ -53,6 +53,10 @@ interface DropdownNavigationHeaderPrimaryNavItem<T extends string>
   extends BaseNavigationHeaderPrimaryNavItem<T> {
   itemType: "dropdown";
   items: DropdownItem[];
+  defaultUrl?: string;
+  component?: React.ElementType;
+  target?: string;
+  rel?: string;
 }
 
 export type NavigationHeaderPrimaryNavItem<T extends string> =
@@ -175,6 +179,15 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     rest?: Record<string, unknown>
   ) => {
     const isDrawerOpen = drawerOpen && activeDrawerKey === key;
+    const { defaultUrl, component, target, rel } = item;
+
+    // If defaultUrl is provided without a component, default to anchor tag
+    const componentProp = defaultUrl && !component ? "a" : component;
+
+    const handleClick = (e: React.MouseEvent) => {
+      onChange(key);
+      parentOnClick?.(e);
+    };
 
     return (
       <StyledHoverDrawerContainer
@@ -189,11 +202,12 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
           sdsStyle="minimal"
-          onClick={(e) => {
-            onChange(key);
-            parentOnClick?.(e);
-          }}
+          onClick={handleClick}
           innerSdsStyle={sdsStyle}
+          component={componentProp}
+          href={defaultUrl}
+          target={target}
+          rel={rel}
         >
           <StyledLabel
             itemType={item.itemType}

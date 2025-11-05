@@ -9,7 +9,13 @@ import {
   getSpaces,
 } from "src/core/styles";
 
-const doNotForwardProps = ["hasInvertedStyle", "hasCaption", "iconSize"];
+const doNotForwardProps = [
+  "hasInvertedStyle",
+  "hasCaption",
+  "iconSize",
+  "hasDetails",
+  "hasIcon",
+];
 
 export const StyledDrawerNavItem = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
