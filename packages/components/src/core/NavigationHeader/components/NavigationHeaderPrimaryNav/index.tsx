@@ -91,6 +91,7 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
   scrollToAccordion?: (accordionId: string) => void;
   onDrawerStateChange?: (isOpen: boolean) => void;
+  topOffset?: number;
 }
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
@@ -106,6 +107,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   accordionRefs,
   scrollToAccordion,
   onDrawerStateChange,
+  topOffset = 0,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
@@ -529,6 +531,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           hideBackdrop={false}
           disableScrollLock
           transitionDuration={225}
+          topOffset={topOffset}
           SlideProps={{
             onMouseEnter: cancelDrawerClose,
             onMouseLeave: onDrawerClose,

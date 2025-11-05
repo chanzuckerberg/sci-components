@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta, StoryContext } from "@storybook/react-webpack5";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
@@ -10,6 +11,7 @@ import {
   BENCHMARKS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
+import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
 
 export default {
   argTypes: {
@@ -82,6 +84,16 @@ export default {
       table: {
         defaultValue: {
           summary: "true",
+        },
+      },
+    },
+    topComponentSlot: {
+      control: { type: "object" },
+      description:
+        "A React node to render above the navigation header (e.g., a banner). The navigation will automatically calculate the offset based on this component's height and position itself below it. When the component is dismissed or changes size, the navigation adjusts automatically.",
+      table: {
+        defaultValue: {
+          summary: "-",
         },
       },
     },
@@ -397,6 +409,79 @@ export const DrawerStyle = {
   },
   render: (args: Args, context: StoryContext) => {
     return <NavigationHeader {...args} theme={context.globals.theme} />;
+  },
+};
+
+// With Top Component Slot (Banner Example)
+
+export const WithTopComponent = {
+  args: {
+    buttons: [
+      {
+        children: "Sign in",
+        sdsType: "secondary",
+      },
+      {
+        children: "My Profile",
+        icon: "Person",
+        onClick: () => alert("clicked on my profile"),
+      },
+    ],
+    menuProps: {
+      disablePortal: true,
+      disableScrollLock: true,
+    },
+    primaryNavItems: [
+      {
+        itemType: "text",
+        key: "home",
+        label: "Home",
+        onClick: () => console.log("Home clicked"),
+      },
+      {
+        itemType: "dropdown",
+        items: PRODUCTS,
+        key: "products",
+        label: "Products",
+        onClick: () => console.log("Products dropdown clicked"),
+        defaultUrl: "https://www.google.com",
+        target: "_blank",
+        rel: "noopener noreferrer",
+        sectionProps: {
+          Repositories: {
+            actions: [
+              {
+                label: "Browse All",
+                href: "/repositories",
+              },
+            ],
+          },
+        },
+      },
+    ],
+    scrollElevation: true,
+    secondaryNavItems: [
+      {
+        itemType: "dropdown",
+        items: RESEARCH,
+        key: "research",
+        label: "Research",
+        onClick: () => console.log("Research dropdown clicked"),
+        defaultUrl: "/research",
+      },
+    ],
+    showSearch: false,
+    title: "My App",
+    sdsStyle: "drawer",
+  },
+  parameters: {
+    controls: {
+      expanded: true,
+    },
+    layout: "fullscreen",
+  },
+  render: (args: Args, context: StoryContext) => {
+    return <WithTopComponentSlotDemo {...args} theme={context.globals.theme} />;
   },
 };
 

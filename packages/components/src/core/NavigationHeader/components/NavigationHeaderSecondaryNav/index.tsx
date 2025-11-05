@@ -61,6 +61,7 @@ export interface NavigationHeaderSecondaryNavProps {
   accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
   scrollToAccordion?: (accordionId: string) => void;
   onDrawerStateChange?: (isOpen: boolean) => void;
+  topOffset?: number;
 }
 
 export default function NavigationHeaderSecondaryNav({
@@ -74,6 +75,7 @@ export default function NavigationHeaderSecondaryNav({
   accordionRefs,
   scrollToAccordion,
   onDrawerStateChange,
+  topOffset = 0,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
@@ -462,6 +464,7 @@ export default function NavigationHeaderSecondaryNav({
           hideBackdrop={false}
           disableScrollLock
           transitionDuration={225}
+          topOffset={topOffset}
           SlideProps={{
             onMouseEnter: cancelDrawerClose,
             onMouseLeave: onDrawerClose,

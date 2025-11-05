@@ -30,6 +30,7 @@ export interface NavigationHeaderProps<T extends string = string>
   menuProps?: Partial<MenuProps>;
   sdsStyle?: "dropdown" | "drawer";
   isSticky?: boolean;
+  topComponentSlot?: ReactNode;
 }
 
 export type IconButtonProps = SdsIconButtonProps & { children?: string };

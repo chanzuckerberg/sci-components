@@ -46,6 +46,12 @@ const doNotForwardProps = [
   "sectionProps",
 ];
 
+export const StyledTopComponentSlot = styled("div")`
+  position: sticky;
+  top: 0;
+  z-index: 1300;
+`;
+
 export const StyledAppBar = styled(AppBar, {
   shouldForwardProp: (prop: string) =>
     ![...doNotForwardProps, "sdsStyle"].includes(prop),
@@ -800,22 +806,23 @@ export const StyledSectionDivider = styled(Divider, {
 // Hover Drawer Components for sdsStyle="drawer"
 export const StyledMegaMenuDrawer = styled(Drawer, {
   shouldForwardProp: (prop: string) =>
-    ![...doNotForwardProps, "sdsStyle"].includes(prop),
+    ![...doNotForwardProps, "sdsStyle", "topOffset"].includes(prop),
 })`
-  ${(props: ExtraHeaderProps) => {
-    const { hasInvertedStyle } = props;
+  ${(props: ExtraHeaderProps & { topOffset?: number }) => {
+    const { hasInvertedStyle, topOffset = 0 } = props;
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return css`
       pointer-events: none;
+      top: ${topOffset}px;
 
       .MuiDrawer-paper {
         background-color: ${hasInvertedStyle
           ? semanticColors?.base.backgroundPrimaryDark
           : semanticColors?.base.backgroundPrimary};
         height: auto;
-        max-height: calc(100vh);
+        max-height: calc(100vh - ${topOffset}px);
         overflow: visible;
         pointer-events: auto;
         box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
@@ -823,11 +830,13 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
         padding: ${spaces?.xl ? spaces?.xl + 48 : 48}px ${spaces?.xl}px
           ${spaces?.xxl}px;
         transform: translateY(48px);
+        top: ${topOffset}px;
       }
 
       .MuiBackdrop-root {
         background-color: rgba(0, 0, 0, 0.05);
         backdrop-filter: blur(2px);
+        top: ${topOffset}px;
       }
     `;
   }}

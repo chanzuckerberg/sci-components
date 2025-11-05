@@ -27,6 +27,7 @@ import {
   StyledWideIconButton,
   StyledDrawerContent,
   StyledSectionDivider,
+  StyledTopComponentSlot,
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
@@ -74,9 +75,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       drawerOpen: controlledDrawerOpen,
       setDrawerOpen: onDrawerOpenChange,
       isSticky = true,
+      topComponentSlot,
       ...rest
     } = props;
     const navRef = useRef<HTMLDivElement>(null);
+    const topSlotRef = useRef<HTMLDivElement>(null);
+    const [topOffset, setTopOffset] = useState(0);
 
     const theme = useTheme();
     const mode = getMode({ theme });
@@ -127,6 +131,30 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     useEffect(() => {
       setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
     }, [isMdScreen]);
+
+    // Measure the height of the topComponentSlot
+    useEffect(() => {
+      if (!topComponentSlot || !topSlotRef.current) {
+        setTopOffset(0);
+        return;
+      }
+
+      const measureHeight = () => {
+        if (topSlotRef.current) {
+          const height = topSlotRef.current.getBoundingClientRect().height;
+          setTopOffset(height);
+        }
+      };
+
+      // Measure immediately
+      measureHeight();
+
+      // Set up ResizeObserver to track size changes
+      const resizeObserver = new ResizeObserver(measureHeight);
+      resizeObserver.observe(topSlotRef.current);
+
+      return () => resizeObserver.disconnect();
+    }, [topComponentSlot]);
 
     const scrollToAccordion = useCallback(
       (accordionId: string) => {
@@ -281,6 +309,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             accordionRefs={accordionRefs}
             scrollToAccordion={scrollToAccordion}
             onDrawerStateChange={handlePrimaryDrawerStateChange}
+            topOffset={topOffset}
           />
         )
       );
@@ -301,6 +330,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             accordionRefs={accordionRefs}
             scrollToAccordion={scrollToAccordion}
             onDrawerStateChange={handleSecondaryDrawerStateChange}
+            topOffset={topOffset}
           />
         )
       );
@@ -475,6 +505,11 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
     return (
       <>
+        {topComponentSlot && (
+          <StyledTopComponentSlot ref={topSlotRef}>
+            {topComponentSlot}
+          </StyledTopComponentSlot>
+        )}
         <ElevationScroll {...props} shouldElevate={effectiveScrollElevation}>
           <StyledAppBar
             elevation={0}
@@ -483,6 +518,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             aria-label="Main navigation"
             tabIndex={0}
             position={position}
+            style={{ top: topOffset }}
             {...rest}
           >
             {headerContent}
@@ -509,6 +545,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
                 aria-label="Main navigation"
                 tabIndex={0}
                 position={position}
+                style={{ top: topOffset }}
                 {...rest}
               >
                 {headerContent}
