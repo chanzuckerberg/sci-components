@@ -350,7 +350,11 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                     </StyledSectionHeader>
                   )}
                   {sectionItems.map((subItem: DropdownItem) => {
-                    const { label: subLabel, onClick } = subItem;
+                    const {
+                      label: subLabel,
+                      onClick,
+                      ...sectionSubItemRestProps
+                    } = subItem;
                     return (
                       <MenuItem
                         key={`menu-item-${subLabel}`}
@@ -360,6 +364,8 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
                         }}
                         sdsType="action"
                         sx={{ minWidth: menuWidth }}
+                        {...sectionSubItemRestProps}
+                        icon={undefined}
                       >
                         {subLabel}
                       </MenuItem>

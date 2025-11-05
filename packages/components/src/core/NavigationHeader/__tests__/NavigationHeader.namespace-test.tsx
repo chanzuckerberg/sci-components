@@ -61,7 +61,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       showSearch={true}
       tag="Beta"
       tagColor="beta"
-      position="sticky"
+      isSticky={true}
       scrollElevation={true}
     />
   );

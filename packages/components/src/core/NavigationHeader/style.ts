@@ -675,7 +675,7 @@ export const StyledAccordion = styled(Accordion, {
       : semanticColors?.base.ornamentSecondaryPressed;
 
     return css`
-      .MuiButtonBase-root {
+      & > .MuiButtonBase-root {
         padding: ${spaces?.s}px ${spaces?.l}px !important;
         border-radius: ${corners?.l}px;
         color: ${textDefaultColor};
@@ -759,7 +759,18 @@ export const StyledAccordion = styled(Accordion, {
         margin-top: ${sdsStyle === "drawer" ? spaces?.s : spaces?.xxs}px;
 
         .MuiButtonBase-root {
-          padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px ${spaces?.xl}px !important;
+          ${sdsStyle === "drawer"
+            ? css`
+                padding: ${spaces?.s}px 0 !important;
+              `
+            : css`
+                padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px
+                  ${spaces?.xl}px !important;
+              `}
+
+          svg {
+            color: ${semanticColors?.accent?.ornament};
+          }
 
           .primary-text {
             color: ${hasInvertedStyle
@@ -1072,13 +1083,13 @@ export const StyledHoverDrawerItemDetails = styled("div", {
 
     return css`
       ${fontBodyXs(props)}
-      color: ${hasInvertedStyle
-        ? semanticColors?.base.textSecondaryOnDark
-        : semanticColors?.base.textSecondary};
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
+      color: ${hasInvertedStyle
+        ? semanticColors?.base.textSecondaryOnDark
+        : semanticColors?.base.textSecondary};
     `;
   }}
 `;
@@ -1105,7 +1116,7 @@ export const StyledButton = styled(Button)`
     const semanticColors = getSemanticColors(props);
 
     return css`
-      background-color: ${semanticColors?.base?.backgroundSecondaryOnDark};
+      background-color: ${semanticColors?.base?.backgroundSecondaryInverse};
     `;
   }}
 `;

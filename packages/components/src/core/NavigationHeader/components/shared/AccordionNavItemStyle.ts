@@ -8,6 +8,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "src/core/styles";
+import Button from "src/core/Button";
 
 const doNotForwardProps = [
   "hasInvertedStyle",
@@ -18,7 +19,7 @@ const doNotForwardProps = [
   "sdsStyle",
 ];
 
-export const StyledDrawerNavItem = styled("div", {
+export const StyledDrawerNavItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(
@@ -36,13 +37,28 @@ export const StyledDrawerNavItem = styled("div", {
 
     return css`
       display: flex;
+      justify-content: start;
+      background-color: transparent !important;
+      background-image: none !important;
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
       align-items: center;
+      text-align: left;
       gap: ${spaces?.l}px;
-      padding: ${spaces?.s}px 0;
+      padding: ${spaces?.s}px 0 !important;
       cursor: pointer;
       border-radius: 8px;
       transition: background-color 150ms;
       color: ${textColor};
+
+      &:hover {
+        background-color: transparent;
+        background-image: none;
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
     `;
   }}
 `;
@@ -104,10 +120,12 @@ export const StyledDrawerNavItemCaption = styled("div", {
     return css`
       ${fontBodyXs(props)}
       color: ${captionColor};
-      overflow: hidden;
-      text-overflow: ellipsis;
       white-space: normal;
       line-height: 20px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
     `;
   }}
 `;

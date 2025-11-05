@@ -40,7 +40,13 @@ function renderDrawerStyleItem(
   hasInvertedStyle: boolean | undefined,
   onClose: () => void
 ) {
-  const { label: dropdownItemLabel, details, icon, onClick } = subItem;
+  const {
+    label: dropdownItemLabel,
+    details,
+    icon,
+    onClick,
+    ...restProps
+  } = subItem;
   const hasCaption = !!details;
   const iconSize = hasCaption ? "l" : "s";
 
@@ -65,6 +71,8 @@ function renderDrawerStyleItem(
       onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
+      sdsStyle="minimal"
+      {...restProps}
     >
       {!icon && <EmptyIcon hasDetails={hasCaption} />}
       {icon && (
@@ -95,7 +103,7 @@ function renderDrawerStyleItem(
 
 // Render nav item for dropdown style (simple menu item)
 function renderDropdownStyleItem(subItem: DropdownItem, onClose: () => void) {
-  const { label: dropdownItemLabel, onClick } = subItem;
+  const { label: dropdownItemLabel, onClick, ...restProps } = subItem;
 
   return (
     <MenuItem
@@ -105,26 +113,30 @@ function renderDropdownStyleItem(subItem: DropdownItem, onClose: () => void) {
         onClose();
       }}
       sdsType="action"
+      {...restProps}
+      icon={undefined}
     >
       {dropdownItemLabel}
     </MenuItem>
   );
 }
 
-export default function AccordionNavItem({
-  accordionId,
-  label,
-  items,
-  expandedAccordion,
-  setExpandedAccordion,
-  accordionRefs,
-  scrollToAccordion,
-  hasInvertedStyle,
-  isNarrow,
-  chevronSize = "s",
-  onClose,
-  sdsStyle = "dropdown",
-}: AccordionNavItemProps) {
+export default function AccordionNavItem(props: AccordionNavItemProps) {
+  const {
+    accordionId,
+    label,
+    items,
+    expandedAccordion,
+    setExpandedAccordion,
+    accordionRefs,
+    scrollToAccordion,
+    hasInvertedStyle,
+    isNarrow,
+    chevronSize = "s",
+    onClose,
+    sdsStyle = "dropdown",
+  } = props;
+
   const isExpanded = expandedAccordion === accordionId;
 
   const handleAccordionChange = () => {
