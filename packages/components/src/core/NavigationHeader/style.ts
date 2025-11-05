@@ -757,12 +757,14 @@ export const StyledAccordion = styled(Accordion, {
         .MuiButtonBase-root {
           ${sdsStyle === "drawer"
             ? css`
-                padding: ${spaces?.s}px 0 !important;
+                padding: ${spaces?.s}px 0;
               `
             : css`
                 padding: ${spaces?.s}px ${spaces?.m}px ${spaces?.s}px
-                  ${spaces?.xl}px !important;
+                  ${spaces?.xl}px;
               `}
+
+          width: 100%;
 
           svg {
             color: ${semanticColors?.accent?.ornament};
@@ -1113,10 +1115,12 @@ export const StyledHoverDrawerActions = styled("div", {
 export const StyledButton = styled(Button)`
   ${(props: CommonThemeProps & SdsButtonProps) => {
     const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
 
     return css`
       background-color: ${semanticColors?.base?.backgroundSecondaryInverse};
-      width: fit-content;
+      width: fit-content !important;
+      padding: ${spaces?.s}px ${spaces?.m}px !important;
     `;
   }}
 `;
