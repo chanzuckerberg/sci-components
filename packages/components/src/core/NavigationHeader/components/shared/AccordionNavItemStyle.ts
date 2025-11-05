@@ -15,6 +15,7 @@ const doNotForwardProps = [
   "iconSize",
   "hasDetails",
   "hasIcon",
+  "sdsStyle",
 ];
 
 export const StyledDrawerNavItem = styled("div", {
@@ -46,7 +47,9 @@ export const StyledDrawerNavItem = styled("div", {
   }}
 `;
 
-export const StyledDrawerNavItemContent = styled("div")`
+export const StyledDrawerNavItemContent = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
 
@@ -61,7 +64,9 @@ export const StyledDrawerNavItemContent = styled("div")`
   }}
 `;
 
-export const StyledDrawerNavItemText = styled("div")`
+export const StyledDrawerNavItemText = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(
     props: CommonThemeProps & {
       hasDetails?: boolean;
@@ -86,7 +91,9 @@ export const StyledDrawerNavItemText = styled("div")`
   }}
 `;
 
-export const StyledDrawerNavItemCaption = styled("div")`
+export const StyledDrawerNavItemCaption = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
   ${(props: CommonThemeProps & { hasInvertedStyle?: boolean }) => {
     const semanticColors = getSemanticColors(props);
 

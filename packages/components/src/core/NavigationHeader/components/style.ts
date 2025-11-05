@@ -22,6 +22,7 @@ const doNotForwardProps = [
   "hasSection",
   "hasInvertedStyle",
   "sectionProps",
+  "sdsStyle",
 ];
 
 const NarrowStyledSection = (): SerializedStyles => {
@@ -136,7 +137,7 @@ export const StyledAccordionSection = styled("div", {
 
     if (sdsStyle === "drawer") {
       return css`
-        border-radius: ${corners?.l}px;
+        border-radius: ${corners?.xl}px;
         padding: ${spaces?.l}px;
         background-color: ${hasInvertedStyle
           ? semanticColors?.base?.backgroundSecondaryOnDark
