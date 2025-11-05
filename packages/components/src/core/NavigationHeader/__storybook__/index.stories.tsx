@@ -195,7 +195,7 @@ export default {
   title: "Components/NavigationHeader",
 } as Meta;
 
-export const Default = {
+export const DropdownStyle = {
   args: {
     buttons: [
       { children: "Label", sdsType: "primary" },
@@ -289,7 +289,7 @@ export const Default = {
 
 // Dropdown with Sections Demo
 
-export const DropdownWithSections = {
+export const DrawerStyle = {
   args: {
     buttons: [
       {
