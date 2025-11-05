@@ -86,6 +86,7 @@ export default function NavigationHeaderSecondaryNav({
   const [activeDrawerKey, setActiveDrawerKey] = useState<string | null>(null);
   const theme: SDSTheme = useTheme();
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hoverEnterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [contentKey, setContentKey] = useState<string | null>(null);
   const [isContentFading, setIsContentFading] = useState(false);
 
@@ -102,6 +103,11 @@ export default function NavigationHeaderSecondaryNav({
   }
 
   function onDrawerClose() {
+    // Clear any pending hover enter timeout
+    if (hoverEnterTimeoutRef.current) {
+      clearTimeout(hoverEnterTimeoutRef.current);
+    }
+    // Clear any existing close timeout
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
     }
@@ -112,20 +118,29 @@ export default function NavigationHeaderSecondaryNav({
   }
 
   function onDrawerOpen(key: string) {
+    // Clear any pending close timeout
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
     }
 
-    // If drawer is already open with different content, fade out then change
+    // If drawer is already open with different content, add a delay before changing
     if (activeDrawerKey !== null && activeDrawerKey !== key) {
-      setIsContentFading(true);
-      setTimeout(() => {
-        setActiveDrawerKey(key);
-        setContentKey(key);
-        setIsContentFading(false);
-      }, 150);
+      // Clear any pending hover enter timeout
+      if (hoverEnterTimeoutRef.current) {
+        clearTimeout(hoverEnterTimeoutRef.current);
+      }
+
+      // Wait 50ms before changing content
+      hoverEnterTimeoutRef.current = setTimeout(() => {
+        setIsContentFading(true);
+        setTimeout(() => {
+          setActiveDrawerKey(key);
+          setContentKey(key);
+          setIsContentFading(false);
+        }, 150);
+      }, 100);
     } else {
-      // First time opening or reopening same drawer
+      // First time opening or reopening same drawer - open immediately
       setActiveDrawerKey(key);
       setContentKey(key);
       setIsContentFading(false);
@@ -142,6 +157,9 @@ export default function NavigationHeaderSecondaryNav({
     return () => {
       if (hoverTimeoutRef.current) {
         clearTimeout(hoverTimeoutRef.current);
+      }
+      if (hoverEnterTimeoutRef.current) {
+        clearTimeout(hoverEnterTimeoutRef.current);
       }
     };
   }, []);
