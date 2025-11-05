@@ -92,6 +92,7 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   scrollToAccordion?: (accordionId: string) => void;
   onDrawerStateChange?: (isOpen: boolean) => void;
   topOffset?: number;
+  onClose?: () => void;
 }
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
@@ -108,6 +109,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   scrollToAccordion,
   onDrawerStateChange,
   topOffset = 0,
+  onClose: onCloseProp,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
@@ -125,6 +127,10 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   function onClose() {
     setAnchorEl(null);
     setActiveDropdownKey(null);
+    // Close mobile drawer when in narrow mode
+    if (isNarrow) {
+      onCloseProp?.();
+    }
   }
 
   function onDrawerClose() {

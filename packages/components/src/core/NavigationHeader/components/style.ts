@@ -25,10 +25,13 @@ const doNotForwardProps = [
   "sdsStyle",
 ];
 
-const NarrowStyledSection = (): SerializedStyles => {
+const NarrowStyledSection = (props: CommonThemeProps): SerializedStyles => {
+  const spaces = getSpaces(props);
+
   return css`
     align-items: start;
     flex-direction: column;
+    margin-top: ${spaces?.m}px;
   `;
 };
 
@@ -45,7 +48,7 @@ export const StyledSection = styled("section", {
     return css`
       column-gap: ${spaces?.m}px;
       row-gap: ${spaces?.s}px;
-      ${isNarrow && NarrowStyledSection()}
+      ${isNarrow && NarrowStyledSection(props)}
     `;
   }}
 `;

@@ -391,7 +391,7 @@ export const StyledSearch = styled(InputSearch, {
 
     return css`
       max-width: ${isNarrow ? "100%" : "320px"};
-      padding: ${isNarrow ? `${spaces?.m}px 0 ${spaces?.l}px` : ""};
+      padding-top: ${isNarrow ? `${spaces?.m}px` : 0};
       .MuiInputBase-root {
         color: ${hasInvertedStyle
           ? semanticColors?.base.textPrimaryOnDark
@@ -603,6 +603,7 @@ const DrawerAccordionStyles = (
   const { hasInvertedStyle } = props;
 
   const semanticColors = getSemanticColors(props);
+  const spaces = getSpaces(props);
   const textOpenColor = hasInvertedStyle
     ? semanticColors?.base.textPrimaryOnDark
     : semanticColors?.base.textPrimary;
@@ -619,18 +620,13 @@ const DrawerAccordionStyles = (
     &[aria-expanded="true"] {
       position: sticky;
       border-radius: 0;
-      top: 48px;
+      top: calc(48px + ${spaces?.s}px);
       z-index: 11;
       backdrop-filter: blur(0px);
       color: ${textOpenColor};
       background-color: ${hasInvertedStyle
         ? semanticColors?.base?.backgroundPrimaryDark
         : semanticColors?.base?.backgroundPrimary};
-
-      &::before {
-        content: "";
-        display: none;
-      }
     }
   `;
 };

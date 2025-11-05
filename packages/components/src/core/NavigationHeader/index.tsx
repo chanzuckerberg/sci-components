@@ -310,6 +310,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             scrollToAccordion={scrollToAccordion}
             onDrawerStateChange={handlePrimaryDrawerStateChange}
             topOffset={topOffset}
+            onClose={() => setDrawerOpen(false)}
           />
         )
       );
@@ -331,6 +332,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             scrollToAccordion={scrollToAccordion}
             onDrawerStateChange={handleSecondaryDrawerStateChange}
             topOffset={topOffset}
+            onClose={() => setDrawerOpen(false)}
           />
         )
       );
@@ -357,9 +359,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       const fullWidth = dimensions.isNarrow ? { width: "100%" } : undefined;
 
       if (React.isValidElement(buttonProps)) {
+        const originalOnClick = buttonProps.props?.onClick;
+        const enhancedOnClick = dimensions.isNarrow
+          ? (e: React.MouseEvent<HTMLElement>) => {
+              originalOnClick?.(e as React.MouseEvent<HTMLButtonElement>);
+              setDrawerOpen(false);
+            }
+          : originalOnClick;
+
         return React.cloneElement(buttonProps as React.ReactElement, {
           hasInvertedStyle,
           key,
+          onClick: enhancedOnClick,
           sx: {
             ...(buttonProps.props?.sx || {}),
             ...fullWidth,
@@ -389,21 +400,32 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       buttonProps: ButtonProps,
       key: string,
       fullWidth: { width: string } | undefined
-    ) => (
-      <StyledNarrowIconButton
-        key={key}
-        sx={fullWidth}
-        isAllCaps={false}
-        startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
-        hasInvertedStyle={hasInvertedStyle}
-        {...buttonProps}
-        sdsStyle="minimal"
-        sdsType="secondary"
-        isNarrow={dimensions.isNarrow}
-      >
-        {buttonProps.children}
-      </StyledNarrowIconButton>
-    );
+    ) => {
+      const originalOnClick = buttonProps.onClick;
+      const enhancedOnClick = dimensions.isNarrow
+        ? (e: React.MouseEvent<HTMLElement>) => {
+            originalOnClick?.(e as React.MouseEvent<HTMLButtonElement>);
+            setDrawerOpen(false);
+          }
+        : originalOnClick;
+
+      return (
+        <StyledNarrowIconButton
+          key={key}
+          sx={fullWidth}
+          isAllCaps={false}
+          startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
+          hasInvertedStyle={hasInvertedStyle}
+          {...buttonProps}
+          onClick={enhancedOnClick}
+          sdsStyle="minimal"
+          sdsType="secondary"
+          isNarrow={dimensions.isNarrow}
+        >
+          {buttonProps.children}
+        </StyledNarrowIconButton>
+      );
+    };
 
     const renderWideIconButton = (
       buttonProps: IconButtonProps,
@@ -427,16 +449,27 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       buttonProps: ButtonProps,
       key: string,
       fullWidth: { width: string } | undefined
-    ) => (
-      <StyledHeaderButton
-        key={key}
-        sx={fullWidth}
-        {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
-        sdsStyle="rounded"
-        hasInvertedStyle={hasInvertedStyle}
-        isNarrow={dimensions.isNarrow}
-      />
-    );
+    ) => {
+      const originalOnClick = buttonProps.onClick;
+      const enhancedOnClick = dimensions.isNarrow
+        ? (e: React.MouseEvent<HTMLElement>) => {
+            originalOnClick?.(e as React.MouseEvent<HTMLButtonElement>);
+            setDrawerOpen(false);
+          }
+        : originalOnClick;
+
+      return (
+        <StyledHeaderButton
+          key={key}
+          sx={fullWidth}
+          {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+          onClick={enhancedOnClick}
+          sdsStyle="rounded"
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={dimensions.isNarrow}
+        />
+      );
+    };
 
     const renderHeaderContent = () => {
       const logoNode = renderLogoNode();

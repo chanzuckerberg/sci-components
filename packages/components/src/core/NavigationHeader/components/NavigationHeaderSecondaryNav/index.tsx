@@ -62,6 +62,7 @@ export interface NavigationHeaderSecondaryNavProps {
   scrollToAccordion?: (accordionId: string) => void;
   onDrawerStateChange?: (isOpen: boolean) => void;
   topOffset?: number;
+  onClose?: () => void;
 }
 
 export default function NavigationHeaderSecondaryNav({
@@ -76,6 +77,7 @@ export default function NavigationHeaderSecondaryNav({
   scrollToAccordion,
   onDrawerStateChange,
   topOffset = 0,
+  onClose: onCloseProp,
 }: NavigationHeaderSecondaryNavProps) {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [activeDropdownKey, setActiveDropdownKey] = useState<string | null>(
@@ -93,6 +95,10 @@ export default function NavigationHeaderSecondaryNav({
   function onClose() {
     setAnchorEl(null);
     setActiveDropdownKey(null);
+    // Close mobile drawer when in narrow mode
+    if (isNarrow) {
+      onCloseProp?.();
+    }
   }
 
   function onDrawerClose() {
