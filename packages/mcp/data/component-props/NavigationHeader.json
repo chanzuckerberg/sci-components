@@ -29,6 +29,10 @@
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
+      "topComponentSlot": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
       "primaryNavItems": {
         "type": "NavigationHeaderPrimaryNavItem<string>[]",
         "isRequired": false
