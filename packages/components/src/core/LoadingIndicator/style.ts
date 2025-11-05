@@ -51,13 +51,13 @@ const tag = (props: CommonThemeProps): SerializedStyles => {
   return css`
     ${fontCapsXxxxs(props)}
 
-    background-color: ${semanticColors?.info?.surfaceSecondary};
+    background-color: ${semanticColors?.accent?.surfaceSecondary};
     border-radius: ${corners?.rounded}px;
-    color: ${semanticColors?.info?.text};
+    color: ${semanticColors?.accent?.textAction};
 
     svg {
       path {
-        fill: ${semanticColors?.info?.ornament};
+        fill: ${semanticColors?.accent?.ornament};
       }
     }
   `;

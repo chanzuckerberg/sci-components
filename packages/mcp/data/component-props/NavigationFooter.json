@@ -1,9 +1,10 @@
 {
   "NavigationFooter": {
     "props": {
-      "hasInvertedStyle": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+      "backgroundAppearance": {
+        "type": "\"matchBackground\" | \"dark\"",
+        "isRequired": false,
+        "defaultValue": "matchBackground"
       },
       "images": {
         "type": "FooterImage[]",

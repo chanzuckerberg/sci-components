@@ -1,8 +1,8 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
 import Icon from "src/core/Icon";
-import CustomSdsIcon from "./customSdsIcon";
-import CustomSvgIcon from "./customSvgIcon";
+import CustomSdsIcon from "./svg/customSdsIcon";
+import CustomSvgIcon from "./svg/customSvgIcon";
 
 export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
   {

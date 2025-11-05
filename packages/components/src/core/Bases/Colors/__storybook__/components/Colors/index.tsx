@@ -50,12 +50,16 @@ const Colors = (props: SemanticColorsProps): JSX.Element => {
         if (v === "transparent") return;
 
         if (type === "semantic" && v.length > 7) {
+          const alphaHex = v.slice(-2);
+          const alphaDecimal = parseInt(alphaHex, 16);
+          const opacityPercent = Math.round((alphaDecimal / 255) * 100);
+
           return (
             <Color
               key={k}
               group={groupName}
               value={v}
-              semanticName={`${flattenColors[v.slice(0, -2)]} (28% opacity)`}
+              semanticName={`${flattenColors[v.slice(0, -2)]} (${opacityPercent}% opacity)`}
               shade={k}
               prefix={prefix}
             />

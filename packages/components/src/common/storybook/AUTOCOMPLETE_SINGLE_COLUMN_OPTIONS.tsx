@@ -1,8 +1,8 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
 import Tag from "src/core/Tag";
-import CustomSdsIcon from "./customSdsIcon";
-import CustomSvgIcon from "./customSvgIcon";
+import CustomSdsIcon from "./svg/customSdsIcon";
+import CustomSvgIcon from "./svg/customSvgIcon";
 
 export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   {

@@ -1,6 +1,6 @@
 import { action } from "storybook/actions";
-import CustomSdsIcon from "src/common/storybook/customSdsIcon";
-import CustomSvgIcon from "src/common/storybook/customSvgIcon";
+import CustomSdsIcon from "src/common/storybook/svg/customSdsIcon";
+import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
 import { SDSSizes, SDSTypes } from "src/core/ButtonIcon/__storybook__/types";
 
 export const BUTTON_EXCLUDED_CONTROLS = [

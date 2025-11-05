@@ -3,23 +3,35 @@ import {
   CommonThemeProps,
   fontBodyMediumL,
   fontBodyMediumS,
+  fontBodySemiboldM,
   fontBodySemiboldL,
   fontBodySemiboldS,
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
+  getCorners,
 } from "src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
 import ListSubheader from "src/core/List/components/ListSubheader";
 import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
+import { AccordionDetails } from "src/core/Accordion";
 
-const doNotForwardProps = ["isNarrow", "hasSection", "hasInvertedStyle"];
+const doNotForwardProps = [
+  "isNarrow",
+  "hasSection",
+  "hasInvertedStyle",
+  "sectionProps",
+  "sdsStyle",
+];
 
-const NarrowStyledSection = (): SerializedStyles => {
+const NarrowStyledSection = (props: CommonThemeProps): SerializedStyles => {
+  const spaces = getSpaces(props);
+
   return css`
     align-items: start;
     flex-direction: column;
+    margin-top: ${spaces?.m}px;
   `;
 };
 
@@ -35,8 +47,8 @@ export const StyledSection = styled("section", {
 
     return css`
       column-gap: ${spaces?.m}px;
-
-      ${isNarrow && NarrowStyledSection()}
+      row-gap: ${spaces?.s}px;
+      ${isNarrow && NarrowStyledSection(props)}
     `;
   }}
 `;
@@ -45,7 +57,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: ExtraHeaderProps) => {
-    const { isNarrow, hasInvertedStyle } = props;
+    const { isNarrow, hasInvertedStyle, sdsStyle } = props;
 
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
@@ -53,7 +65,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
     function getBackgroundColor() {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base.backgroundPrimaryInverse
+          ? semanticColors?.base.backgroundPrimaryDark
           : semanticColors?.base.backgroundPrimary;
       }
 
@@ -63,11 +75,22 @@ export const StyledSectionHeader = styled(ListSubheader, {
     function getTextColor() {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base.textSecondaryInverse
+          ? semanticColors?.base.textSecondaryOnDark
           : semanticColors?.base.textSecondary;
       }
 
       return semanticColors?.base?.textSecondary;
+    }
+
+    if (sdsStyle === "drawer") {
+      return css`
+        ${fontBodySemiboldM(props)}
+        top: 0;
+        color: ${getTextColor()} !important;
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: ${spaces?.xxs}px !important;
+      `;
     }
 
     return css`
@@ -79,6 +102,54 @@ export const StyledSectionHeader = styled(ListSubheader, {
         padding: ${spaces?.xxs}px ${isNarrow ? spaces?.xl : spaces?.xs}px;
         margin-bottom: 0;
       }
+    `;
+  }}
+`;
+
+export const StyledAccordionDetails = styled(AccordionDetails, {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(props: CommonThemeProps & { sdsStyle?: "dropdown" | "drawer" }) => {
+    const { sdsStyle } = props;
+    const spaces = getSpaces(props);
+
+    return css`
+      ${sdsStyle === "drawer" &&
+      css`
+        display: flex;
+        flex-direction: column;
+        gap: ${spaces?.m}px;
+      `}
+    `;
+  }}
+`;
+
+export const StyledAccordionSection = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${(
+    props: CommonThemeProps & {
+      sdsStyle?: "dropdown" | "drawer";
+      hasInvertedStyle?: boolean;
+    }
+  ) => {
+    const { sdsStyle, hasInvertedStyle } = props;
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
+
+    if (sdsStyle === "drawer") {
+      return css`
+        border-radius: ${corners?.xl}px;
+        padding: ${spaces?.l}px;
+        background-color: ${hasInvertedStyle
+          ? semanticColors?.base?.backgroundSecondaryOnDark
+          : semanticColors?.base?.backgroundSecondary};
+      `;
+    }
+
+    return css`
+      padding: 0;
     `;
   }}
 `;
@@ -100,13 +171,13 @@ export const StyledDivider = styled(Divider, {
 
     // Calculate margin based on section and narrow state
     const getMarginBottom = () => {
-      return hasSection ? spaces?.s : isNarrow ? 0 : spaces?.xxs;
+      return hasSection ? spaces?.s : spaces?.xxs;
     };
 
     const getBorderColor = () => {
       if (isNarrow) {
         return hasInvertedStyle
-          ? semanticColors?.base?.dividerInverse
+          ? semanticColors?.base?.dividerOnDark
           : semanticColors?.base?.divider;
       }
 
@@ -118,7 +189,7 @@ export const StyledDivider = styled(Divider, {
         position: relative;
         margin: 0 0 ${getMarginBottom()}px;
         border-bottom: solid 1px ${getBorderColor()};
-        padding-bottom: ${isNarrow ? 0 : spaces?.xxs}px;
+        padding-bottom: ${spaces?.xxs}px;
       }
     `;
   }}

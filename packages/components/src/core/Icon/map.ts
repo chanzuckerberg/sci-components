@@ -2,6 +2,7 @@ import { FC } from "react";
 import { ReactComponent as IconBacteriaLarge } from "../../common/svgs/IconBacteriaLarge.svg";
 import { ReactComponent as IconBacteriaSmall } from "../../common/svgs/IconBacteriaSmall.svg";
 import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svgs/IconBarChartHorizontal3Small.svg";
+import { ReactComponent as IconBarChartVertical3Large } from "../../common/svgs/IconBarChartVertical3Large.svg";
 import { ReactComponent as IconBarChartVertical3Small } from "../../common/svgs/IconBarChartVertical3Small.svg";
 import { ReactComponent as IconBarChartVertical4Small } from "../../common/svgs/IconBarChartVertical4Small.svg";
 import { ReactComponent as IconBookLarge } from "../../common/svgs/IconBookLarge.svg";
@@ -23,6 +24,7 @@ import { ReactComponent as IconChevronUpSmall } from "../../common/svgs/IconChev
 import { ReactComponent as IconChevronUp2Small } from "../../common/svgs/IconChevronUp2Small.svg";
 import { ReactComponent as IconCirclesOverlap2Large } from "../../common/svgs/IconCirclesOverlap2Large.svg";
 import { ReactComponent as IconCirclesOverlap2Small } from "../../common/svgs/IconCirclesOverlap2Small.svg";
+import { ReactComponent as IconCliLarge } from "../../common/svgs/IconCliLarge.svg";
 import { ReactComponent as IconCodeLarge } from "../../common/svgs/IconCodeLarge.svg";
 import { ReactComponent as IconCodeSmall } from "../../common/svgs/IconCodeSmall.svg";
 import { ReactComponent as IconCompassLarge } from "../../common/svgs/IconCompassLarge.svg";
@@ -81,6 +83,7 @@ import { ReactComponent as IconLockSmall } from "../../common/svgs/IconLockSmall
 import { ReactComponent as IconMinusSmall } from "../../common/svgs/IconMinusSmall.svg";
 import { ReactComponent as IconOpenSmall } from "../../common/svgs/IconOpenSmall.svg";
 import { ReactComponent as IconPauseLarge } from "../../common/svgs/IconPauseLarge.svg";
+import { ReactComponent as IconPackageLarge } from "../../common/svgs/IconPackageLarge.svg";
 import { ReactComponent as IconPeopleLarge } from "../../common/svgs/IconPeopleLarge.svg";
 import { ReactComponent as IconPeopleSmall } from "../../common/svgs/IconPeopleSmall.svg";
 import { ReactComponent as IconPercentageSmall } from "../../common/svgs/IconPercentageSmall.svg";
@@ -151,7 +154,7 @@ import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSma
 export interface IconNameToSizes {
   Bacteria: "xs" | "s" | "l" | "xl";
   BarChartHorizontal3: "xs" | "s";
-  BarChartVertical3: "xs" | "s";
+  BarChartVertical3: "xs" | "s" | "l" | "xl";
   BarChartVertical4: "xs" | "s";
   Book: "xs" | "s" | "l" | "xl";
   Check: "xs" | "s";
@@ -165,6 +168,7 @@ export interface IconNameToSizes {
   ChevronUp: "xs" | "s" | "l" | "xl";
   ChevronUp2: "xs" | "s";
   CirclesOverlap2: "xs" | "s" | "l" | "xl";
+  Cli: "l" | "xl";
   Code: "xs" | "s" | "l" | "xl";
   Compass: "l" | "xl";
   Copy: "xs" | "s" | "l" | "xl";
@@ -210,6 +214,7 @@ export interface IconNameToSizes {
   LockCircle: "xs" | "s";
   Minus: "xs" | "s";
   Open: "xs" | "s";
+  Package: "l" | "xl";
   Pause: "l" | "xl";
   People: "xs" | "s" | "l" | "xl";
   Percentage: "xs" | "s";
@@ -286,7 +291,7 @@ export const iconMap: Props = {
     smallIcon: IconBarChartHorizontal3Small,
   },
   BarChartVertical3: {
-    largeIcon: null,
+    largeIcon: IconBarChartVertical3Large,
     smallIcon: IconBarChartVertical3Small,
   },
   BarChartVertical4: {
@@ -340,6 +345,10 @@ export const iconMap: Props = {
   CirclesOverlap2: {
     largeIcon: IconCirclesOverlap2Large,
     smallIcon: IconCirclesOverlap2Small,
+  },
+  Cli: {
+    largeIcon: IconCliLarge,
+    smallIcon: null,
   },
   Code: {
     largeIcon: IconCodeLarge,
@@ -520,6 +529,10 @@ export const iconMap: Props = {
   Open: {
     largeIcon: null,
     smallIcon: IconOpenSmall,
+  },
+  Package: {
+    largeIcon: IconPackageLarge,
+    smallIcon: null,
   },
   Pause: {
     largeIcon: IconPauseLarge,

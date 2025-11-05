@@ -10,12 +10,18 @@ import {
 } from "../style";
 import Menu from "src/core/Menu";
 import MenuItem from "src/core/MenuItem";
-import Icon from "src/core/Icon";
+import Icon, { IconNameToSizes } from "src/core/Icon";
 import { SDSTheme } from "src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
-import { AccordionDetails, AccordionHeader } from "src/core/Accordion";
 import { groupItemsBySection } from "../../utils";
-import { StyledAccordion } from "../../style";
+import {
+  StyledMegaMenuDrawer,
+  StyledMegaMenuContent,
+  StyledHoverDrawerColumn,
+  StyledHoverDrawerContainer,
+} from "../../style";
+import DrawerContent from "../shared/DrawerContent";
+import AccordionNavItem from "../shared/AccordionNavItem";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -33,6 +39,8 @@ export interface TextNavigationHeaderPrimaryNavItem<T extends string>
 
 export interface DropdownItem {
   label: ReactNode;
+  details?: string;
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
   section?: string;
   onClick?: (event: React.MouseEvent) => void;
   component?: React.ElementType;
@@ -41,10 +49,29 @@ export interface DropdownItem {
   target?: string;
 }
 
+export interface ActionItem {
+  label: ReactNode;
+  onClick?: (event: React.MouseEvent) => void;
+  href?: string;
+  component?: React.ElementType;
+  target?: string;
+  rel?: string;
+}
+
+export interface SectionProps {
+  actions?: ActionItem[];
+  colSpan?: number;
+}
+
 interface DropdownNavigationHeaderPrimaryNavItem<T extends string>
   extends BaseNavigationHeaderPrimaryNavItem<T> {
   itemType: "dropdown";
   items: DropdownItem[];
+  sectionProps?: Record<string, SectionProps>;
+  defaultUrl?: string;
+  component?: React.ElementType;
+  target?: string;
+  rel?: string;
 }
 
 export type NavigationHeaderPrimaryNavItem<T extends string> =
@@ -58,6 +85,14 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   items: NavigationHeaderPrimaryNavItem<T>[];
   onChange(value: T): void;
   value: T;
+  sdsStyle?: "dropdown" | "drawer";
+  expandedAccordion: string | null;
+  setExpandedAccordion: (value: string | null) => void;
+  accordionRefs: React.MutableRefObject<Map<string, HTMLDivElement>>;
+  scrollToAccordion?: (accordionId: string) => void;
+  onDrawerStateChange?: (isOpen: boolean) => void;
+  topOffset?: number;
+  onClose?: () => void;
 }
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
@@ -67,19 +102,109 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   items,
   onChange,
   value,
+  sdsStyle = "dropdown",
+  expandedAccordion,
+  setExpandedAccordion,
+  accordionRefs,
+  scrollToAccordion,
+  onDrawerStateChange,
+  topOffset = 0,
+  onClose: onCloseProp,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
   const [anchorEl, setAnchorEl] = useState<Element | null>(null);
   const [activeDropdownKey, setActiveDropdownKey] = useState<T | null>(null);
+  const [activeDrawerKey, setActiveDrawerKey] = useState<T | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [menuWidth, setMenuWidth] = useState<number | string>("100%");
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [contentKey, setContentKey] = useState<T | null>(null);
+  const [isContentFading, setIsContentFading] = useState(false);
 
   const open = Boolean(anchorEl);
+  const drawerOpen = activeDrawerKey !== null;
+
+  // Helper function to wrap dropdown items' onClick handlers
+  // This automatically sets the parent dropdown as active when an item is clicked
+  const wrapDropdownItemsWithActiveKey = (
+    dropdownItems: DropdownItem[],
+    parentKey: T
+  ): DropdownItem[] => {
+    return dropdownItems.map((item: DropdownItem) => {
+      const originalOnClick = item.onClick;
+
+      return {
+        ...item,
+        onClick: (e: React.MouseEvent) => {
+          // Call original onClick if it exists
+          originalOnClick?.(e);
+          // Set the active key to the parent dropdown's key
+          onChange(parentKey);
+        },
+      };
+    });
+  };
 
   function onClose() {
     setAnchorEl(null);
     setActiveDropdownKey(null);
+    // Close mobile drawer when in narrow mode
+    if (isNarrow) {
+      onCloseProp?.();
+    }
   }
+
+  function onDrawerClose() {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDrawerKey(null);
+      setContentKey(null);
+    }, 200);
+  }
+
+  function onDrawerOpen(key: T) {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+
+    // If drawer is already open with different content, fade out then change
+    if (activeDrawerKey !== null && activeDrawerKey !== key) {
+      setIsContentFading(true);
+      setTimeout(() => {
+        setActiveDrawerKey(key);
+        setContentKey(key);
+        setIsContentFading(false);
+      }, 150);
+    } else {
+      // First time opening or reopening same drawer
+      setActiveDrawerKey(key);
+      setContentKey(key);
+      setIsContentFading(false);
+    }
+  }
+
+  function cancelDrawerClose() {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Notify parent when drawer state changes (only for drawer style)
+  useEffect(() => {
+    if (sdsStyle === "drawer" && onDrawerStateChange) {
+      onDrawerStateChange(drawerOpen);
+    }
+  }, [drawerOpen, sdsStyle, onDrawerStateChange]);
 
   useEffect(() => {
     const button = buttonRef.current;
@@ -90,257 +215,468 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     setMenuWidth(button.offsetWidth);
   }, []);
 
-  return (
-    <StyledSection isNarrow={isNarrow}>
-      {items.map((item) => {
-        const {
-          key,
-          label,
-          tag,
-          tagColor,
-          onClick: parentOnClick,
-          ...rest
-        } = item;
-        const isActive = key === value;
-        const isDropdownOpen = open && activeDropdownKey === key;
+  const renderDrawerItem = (
+    item: DropdownNavigationHeaderPrimaryNavItem<T>,
+    key: T,
+    label: ReactNode,
+    parentOnClick?: (e: React.MouseEvent) => void,
+    rest?: Record<string, unknown>
+  ) => {
+    const isDrawerOpen = drawerOpen && activeDrawerKey === key;
+    const isActive = key === value || isDrawerOpen;
+    const { defaultUrl, component, target, rel } = item;
 
-        if (item.itemType === "dropdown" && !isNarrow) {
-          const dropdownItem =
-            item as DropdownNavigationHeaderPrimaryNavItem<T>;
-          return (
-            <Fragment key={key}>
-              <PrimaryNavItem
-                {...rest}
-                itemType={item.itemType}
-                ref={buttonRef}
-                sdsStyle="minimal"
-                active={isDropdownOpen}
-                onClick={(e) => {
-                  setAnchorEl(e.currentTarget);
-                  setActiveDropdownKey(key);
-                  onChange(key);
-                  parentOnClick?.(e);
-                }}
-                hasInvertedStyle={hasInvertedStyle}
-                isNarrow={isNarrow}
-              >
-                <StyledLabel
-                  itemType={item.itemType}
-                  active={isDropdownOpen}
-                  hasInvertedStyle={hasInvertedStyle}
-                  isNarrow={isNarrow}
-                >
-                  <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
-                    {label as ReactNode}
-                  </StyledLabelTextWrapper>
-                  <StyledLabelTextWrapperShadow
-                    aria-hidden="true"
-                    isNarrow={isNarrow}
-                  >
-                    {label as ReactNode}
-                  </StyledLabelTextWrapperShadow>
-                  <Icon
-                    sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
-                    sdsSize="xs"
-                  />
-                </StyledLabel>
-              </PrimaryNavItem>
+    // If defaultUrl is provided without a component, default to anchor tag
+    const componentProp = defaultUrl && !component ? "a" : component;
 
-              <Menu
-                anchorEl={anchorEl}
-                open={isDropdownOpen}
-                onClose={onClose}
-                slotProps={{
-                  paper: {
-                    style: {
-                      marginTop: theme?.app?.spacing?.s,
-                    },
-                  },
-                }}
-                anchorOrigin={{
-                  horizontal: "left",
-                  vertical: "bottom",
-                }}
-                transformOrigin={{
-                  horizontal: "left",
-                  vertical: "top",
-                }}
-                {...menuProps}
-                disablePortal
-              >
-                {(() => {
-                  const groupedItems = groupItemsBySection(dropdownItem.items);
-                  const sections = Object.keys(groupedItems);
-                  const hasMultipleSections =
-                    sections.length > 1 ||
-                    sections.some((section) => section !== "");
+    const handleClick = (e: React.MouseEvent) => {
+      onChange(key);
+      parentOnClick?.(e);
+    };
 
-                  return sections.map((section, sectionIndex) => {
-                    const sectionItems = groupedItems[section];
-                    const showDivider = hasMultipleSections && sectionIndex > 0;
-
-                    return (
-                      <div key={`section-${section || "default"}`}>
-                        {showDivider && (
-                          <StyledDivider
-                            hasSection={!!section}
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          />
-                        )}
-                        {section && hasMultipleSections && (
-                          <StyledSectionHeader
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          >
-                            {section}
-                          </StyledSectionHeader>
-                        )}
-                        {sectionItems.map((subItem: DropdownItem) => {
-                          const {
-                            label: subLabel,
-                            onClick,
-                            ...subItemRest
-                          } = subItem;
-                          return (
-                            <MenuItem
-                              key={`menu-item-${subLabel}`}
-                              onClick={(e) => {
-                                onClick?.(e);
-                                onClose();
-                              }}
-                              sdsType="action"
-                              sx={{ minWidth: menuWidth }}
-                              {...subItemRest}
-                            >
-                              {subLabel}
-                            </MenuItem>
-                          );
-                        })}
-                      </div>
-                    );
-                  });
-                })()}
-              </Menu>
-            </Fragment>
-          );
-        }
-
-        if (item.itemType === "dropdown" && isNarrow) {
-          const dropdownItem =
-            item as DropdownNavigationHeaderPrimaryNavItem<T>;
-          const labelKebabCase = item.label
-            ?.toString()
-            .toLowerCase()
-            .replace(" ", "-");
-          return (
-            <StyledAccordion
-              key={`${labelKebabCase}-dropdown`}
-              id={`${labelKebabCase}-dropdown`}
-              hasInvertedStyle={hasInvertedStyle}
-              isNarrow={isNarrow}
-            >
-              <AccordionHeader chevronSize={isNarrow ? "s" : "xs"}>
-                {item.label}
-              </AccordionHeader>
-              <AccordionDetails>
-                {(() => {
-                  const groupedItems = groupItemsBySection(dropdownItem.items);
-                  const sections = Object.keys(groupedItems);
-                  const hasMultipleSections =
-                    sections.length > 1 ||
-                    sections.some((section) => section !== "");
-
-                  return sections.map((section, sectionIndex) => {
-                    const sectionItems = groupedItems[section];
-                    const showDivider = hasMultipleSections && sectionIndex > 0;
-
-                    return (
-                      <Fragment key={`section-${section || "default"}`}>
-                        {showDivider && (
-                          <StyledDivider
-                            hasSection={!!section}
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          />
-                        )}
-                        {section && hasMultipleSections && (
-                          <StyledSectionHeader
-                            isNarrow={isNarrow}
-                            hasInvertedStyle={hasInvertedStyle}
-                          >
-                            {section}
-                          </StyledSectionHeader>
-                        )}
-                        {sectionItems.map((subItem) => {
-                          const {
-                            label: dropdownItemLabel,
-                            onClick,
-                            ...accordionSubItemRest
-                          } = subItem;
-
-                          return (
-                            <MenuItem
-                              key={`primary-nav-item-${dropdownItemLabel}`}
-                              onClick={(e) => {
-                                onClick?.(e);
-                                onClose();
-                              }}
-                              sdsType="action"
-                              {...accordionSubItemRest}
-                            >
-                              {dropdownItemLabel}
-                            </MenuItem>
-                          );
-                        })}
-                      </Fragment>
-                    );
-                  });
-                })()}
-              </AccordionDetails>
-            </StyledAccordion>
-          );
-        }
-
-        return (
-          <PrimaryNavItem
-            key={key}
-            {...rest}
-            sdsStyle="minimal"
+    return (
+      <StyledHoverDrawerContainer
+        key={key}
+        onMouseEnter={() => onDrawerOpen(key)}
+        onMouseLeave={onDrawerClose}
+      >
+        <PrimaryNavItem
+          {...rest}
+          itemType={item.itemType}
+          active={isActive}
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
+          sdsStyle="minimal"
+          onClick={handleClick}
+          innerSdsStyle={sdsStyle}
+          component={componentProp}
+          href={defaultUrl}
+          target={target}
+          rel={rel}
+        >
+          <StyledLabel
+            itemType={item.itemType}
             active={isActive}
-            onClick={(e) => {
-              onChange(key);
-              (item as TextNavigationHeaderPrimaryNavItem<T>).onClick?.(e);
-            }}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}
           >
-            <StyledLabel
-              active={isActive}
-              hasInvertedStyle={hasInvertedStyle}
+            <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+              {label as ReactNode}
+            </StyledLabelTextWrapper>
+            <StyledLabelTextWrapperShadow
+              aria-hidden="true"
               isNarrow={isNarrow}
             >
-              <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
-                {label as ReactNode}
-              </StyledLabelTextWrapper>
-              <StyledLabelTextWrapperShadow
-                aria-hidden="true"
-                isNarrow={isNarrow}
-              >
-                {label as ReactNode}
-              </StyledLabelTextWrapperShadow>
+              {label as ReactNode}
+            </StyledLabelTextWrapperShadow>
+            <Icon
+              sdsIcon={isDrawerOpen ? "ChevronUp" : "ChevronDown"}
+              sdsSize="xs"
+            />
+          </StyledLabel>
+        </PrimaryNavItem>
+      </StyledHoverDrawerContainer>
+    );
+  };
 
-              {"tag" in item && (
-                <StyledTag
-                  label={tag as string}
-                  color={tagColor as SdsTagColorType}
-                  hover={false}
-                />
-              )}
-            </StyledLabel>
-          </PrimaryNavItem>
-        );
-      })}
-    </StyledSection>
+  const renderDropdownItem = (
+    item: DropdownNavigationHeaderPrimaryNavItem<T>,
+    key: T,
+    label: ReactNode,
+    parentOnClick?: (e: React.MouseEvent) => void,
+    rest?: Record<string, unknown>
+  ) => {
+    const isDropdownOpen = open && activeDropdownKey === key;
+    const isActive = key === value || isDropdownOpen;
+
+    return (
+      <Fragment key={key}>
+        <PrimaryNavItem
+          {...rest}
+          itemType={item.itemType}
+          ref={buttonRef}
+          active={isActive}
+          onClick={(e) => {
+            setAnchorEl(e.currentTarget);
+            setActiveDropdownKey(key);
+            onChange(key);
+            parentOnClick?.(e);
+          }}
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
+          sdsStyle="minimal"
+          innerSdsStyle={sdsStyle}
+        >
+          <StyledLabel
+            itemType={item.itemType}
+            active={isActive}
+            hasInvertedStyle={hasInvertedStyle}
+            isNarrow={isNarrow}
+          >
+            <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+              {label as ReactNode}
+            </StyledLabelTextWrapper>
+            <StyledLabelTextWrapperShadow
+              aria-hidden="true"
+              isNarrow={isNarrow}
+            >
+              {label as ReactNode}
+            </StyledLabelTextWrapperShadow>
+            <Icon
+              sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
+              sdsSize="xs"
+            />
+          </StyledLabel>
+        </PrimaryNavItem>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={isDropdownOpen}
+          onClose={onClose}
+          slotProps={{
+            paper: {
+              style: {
+                marginTop: theme?.app?.spacing?.s,
+              },
+            },
+          }}
+          anchorOrigin={{
+            horizontal: "left",
+            vertical: "bottom",
+          }}
+          transformOrigin={{
+            horizontal: "left",
+            vertical: "top",
+          }}
+          {...menuProps}
+          disablePortal
+        >
+          {(() => {
+            // Wrap dropdown items to automatically set active key
+            const wrappedItems = wrapDropdownItemsWithActiveKey(
+              item.items,
+              key
+            );
+            const groupedItems = groupItemsBySection(wrappedItems);
+            const sections = Object.keys(groupedItems);
+            const hasMultipleSections =
+              sections.length > 1 || sections.some((section) => section !== "");
+
+            return sections.map((section, sectionIndex) => {
+              const sectionItems = groupedItems[section];
+              const showDivider = hasMultipleSections && sectionIndex > 0;
+
+              return (
+                <div key={`section-${section || "default"}`}>
+                  {showDivider && (
+                    <StyledDivider
+                      hasSection={!!section}
+                      isNarrow={isNarrow}
+                      hasInvertedStyle={hasInvertedStyle}
+                    />
+                  )}
+                  {section && hasMultipleSections && (
+                    <StyledSectionHeader
+                      isNarrow={isNarrow}
+                      hasInvertedStyle={hasInvertedStyle}
+                    >
+                      {section}
+                    </StyledSectionHeader>
+                  )}
+                  {sectionItems.map((subItem: DropdownItem) => {
+                    const {
+                      label: subLabel,
+                      onClick,
+                      ...sectionSubItemRestProps
+                    } = subItem;
+                    return (
+                      <MenuItem
+                        key={`menu-item-${subLabel}`}
+                        onClick={(e) => {
+                          onClick?.(e);
+                          onClose();
+                        }}
+                        sdsType="action"
+                        sx={{ minWidth: menuWidth }}
+                        {...sectionSubItemRestProps}
+                        icon={undefined}
+                      >
+                        {subLabel}
+                      </MenuItem>
+                    );
+                  })}
+                </div>
+              );
+            });
+          })()}
+        </Menu>
+      </Fragment>
+    );
+  };
+
+  const renderAccordionItem = (
+    item: DropdownNavigationHeaderPrimaryNavItem<T>,
+    key: T
+  ) => {
+    const labelKebabCase = item.label
+      ?.toString()
+      .toLowerCase()
+      .replace(" ", "-");
+
+    const accordionId = `${labelKebabCase}-dropdown`;
+
+    // Wrap dropdown items to automatically set active key
+    const wrappedItems = wrapDropdownItemsWithActiveKey(item.items, key);
+
+    return (
+      <AccordionNavItem
+        key={accordionId}
+        accordionId={accordionId}
+        label={item.label}
+        items={wrappedItems}
+        expandedAccordion={expandedAccordion}
+        setExpandedAccordion={setExpandedAccordion}
+        accordionRefs={accordionRefs}
+        scrollToAccordion={scrollToAccordion}
+        hasInvertedStyle={hasInvertedStyle}
+        isNarrow={isNarrow}
+        chevronSize={isNarrow ? "s" : "xs"}
+        onClose={onClose}
+        sdsStyle={sdsStyle}
+        sectionProps={item.sectionProps}
+      />
+    );
+  };
+
+  const renderTextItem = (
+    item: TextNavigationHeaderPrimaryNavItem<T>,
+    key: T,
+    label: ReactNode,
+    tag?: string,
+    tagColor?: SdsTagColorType,
+    rest?: Record<string, unknown>
+  ) => {
+    const isActive = key === value;
+
+    return (
+      <PrimaryNavItem
+        key={key}
+        {...rest}
+        active={isActive}
+        sdsStyle="minimal"
+        onClick={(e) => {
+          onChange(key);
+          item.onClick?.(e);
+        }}
+        hasInvertedStyle={hasInvertedStyle}
+        isNarrow={isNarrow}
+        innerSdsStyle={sdsStyle}
+      >
+        <StyledLabel
+          active={isActive}
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={isNarrow}
+        >
+          <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
+            {label as ReactNode}
+          </StyledLabelTextWrapper>
+          <StyledLabelTextWrapperShadow aria-hidden="true" isNarrow={isNarrow}>
+            {label as ReactNode}
+          </StyledLabelTextWrapperShadow>
+
+          {tag && (
+            <StyledTag
+              label={tag as string}
+              color={tagColor as SdsTagColorType}
+              hover={false}
+            />
+          )}
+        </StyledLabel>
+      </PrimaryNavItem>
+    );
+  };
+
+  // Get the active drawer item for rendering shared content
+  const activeDrawerItem = items.find(
+    (item) => item.itemType === "dropdown" && item.key === contentKey
+  ) as DropdownNavigationHeaderPrimaryNavItem<T> | undefined;
+
+  return (
+    <>
+      <StyledSection isNarrow={isNarrow}>
+        {items.map((item) => {
+          const {
+            key,
+            label,
+            tag,
+            tagColor,
+            onClick: parentOnClick,
+            ...rest
+          } = item;
+
+          // Drawer style (hover-based)
+          if (
+            item.itemType === "dropdown" &&
+            !isNarrow &&
+            sdsStyle === "drawer"
+          ) {
+            return renderDrawerItem(
+              item as DropdownNavigationHeaderPrimaryNavItem<T>,
+              key,
+              label,
+              parentOnClick,
+              rest
+            );
+          }
+
+          // Dropdown style (click-based)
+          if (
+            item.itemType === "dropdown" &&
+            !isNarrow &&
+            sdsStyle === "dropdown"
+          ) {
+            return renderDropdownItem(
+              item as DropdownNavigationHeaderPrimaryNavItem<T>,
+              key,
+              label,
+              parentOnClick,
+              rest
+            );
+          }
+
+          // Narrow/Accordion style
+          if (item.itemType === "dropdown" && isNarrow) {
+            return renderAccordionItem(
+              item as DropdownNavigationHeaderPrimaryNavItem<T>,
+              key
+            );
+          }
+
+          // Simple text item
+          return renderTextItem(
+            item as TextNavigationHeaderPrimaryNavItem<T>,
+            key,
+            label,
+            "tag" in item ? (tag as string) : undefined,
+            "tagColor" in item ? (tagColor as SdsTagColorType) : undefined,
+            rest
+          );
+        })}
+      </StyledSection>
+
+      {/* Shared drawer for all hover-based dropdown items */}
+      {sdsStyle === "drawer" && !isNarrow && (
+        <StyledMegaMenuDrawer
+          anchor="top"
+          open={drawerOpen}
+          onClose={() => {
+            setActiveDrawerKey(null);
+            setContentKey(null);
+          }}
+          hasInvertedStyle={hasInvertedStyle}
+          hideBackdrop={false}
+          disableScrollLock
+          transitionDuration={225}
+          topOffset={topOffset}
+          SlideProps={{
+            onMouseEnter: cancelDrawerClose,
+            onMouseLeave: onDrawerClose,
+          }}
+        >
+          <StyledMegaMenuContent
+            hasInvertedStyle={hasInvertedStyle}
+            style={{
+              opacity: isContentFading ? 0 : 1,
+            }}
+          >
+            {activeDrawerItem &&
+              (() => {
+                // Wrap dropdown items to automatically set active key
+                const wrappedItems = wrapDropdownItemsWithActiveKey(
+                  activeDrawerItem.items,
+                  activeDrawerItem.key
+                );
+                const groupedItems = groupItemsBySection(wrappedItems);
+                const sections = Object.keys(groupedItems);
+                const hasMultipleSections =
+                  sections.length > 1 ||
+                  sections.some((section) => section !== "");
+
+                // Calculate total columns needed accounting for colSpan
+                const totalColumns = sections.reduce((acc, section) => {
+                  const colSpan =
+                    activeDrawerItem.sectionProps?.[section]?.colSpan || 1;
+                  return acc + colSpan;
+                }, 0);
+
+                // Expand sections into columns
+                const columns: Array<{
+                  section: string;
+                  items: DropdownItem[];
+                  sectionProps?: SectionProps;
+                  showHeader: boolean;
+                  isLastColumn: boolean;
+                }> = [];
+
+                sections.forEach((section) => {
+                  const sectionProps =
+                    activeDrawerItem.sectionProps?.[section] || {};
+                  const colSpan = sectionProps.colSpan || 1;
+                  const sectionItems = groupedItems[section];
+
+                  if (colSpan <= 1) {
+                    // Single column section
+                    columns.push({
+                      section,
+                      items: sectionItems,
+                      sectionProps,
+                      showHeader: true,
+                      isLastColumn: true,
+                    });
+                  } else {
+                    // Multi-column section - split items
+                    const itemsPerColumn = Math.ceil(
+                      sectionItems.length / colSpan
+                    );
+                    for (let i = 0; i < colSpan; i++) {
+                      const start = i * itemsPerColumn;
+                      const end = start + itemsPerColumn;
+                      columns.push({
+                        section,
+                        items: sectionItems.slice(start, end),
+                        sectionProps,
+                        showHeader: i === 0, // Only show header on first column
+                        isLastColumn: i === colSpan - 1, // Only show actions on last column
+                      });
+                    }
+                  }
+                });
+
+                return columns.map((column, index) => (
+                  <StyledHoverDrawerColumn
+                    key={`drawer-column-${column.section}-${index}`}
+                    hasInvertedStyle={hasInvertedStyle}
+                    totalColumns={totalColumns}
+                  >
+                    <DrawerContent
+                      drawerItems={column.items}
+                      sectionProps={column.sectionProps}
+                      section={column.section}
+                      hasMultipleSections={hasMultipleSections}
+                      hasInvertedStyle={hasInvertedStyle}
+                      showHeader={column.showHeader}
+                      isLastColumn={column.isLastColumn}
+                      onItemClick={() => {
+                        setActiveDrawerKey(null);
+                        setContentKey(null);
+                      }}
+                    />
+                  </StyledHoverDrawerColumn>
+                ));
+              })()}
+          </StyledMegaMenuContent>
+        </StyledMegaMenuDrawer>
+      )}
+    </>
   );
 }

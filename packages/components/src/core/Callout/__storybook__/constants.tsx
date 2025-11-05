@@ -1,5 +1,5 @@
-import CustomSdsIcon from "src/common/storybook/customSdsIcon";
-import CustomSvgIcon from "src/common/storybook/customSvgIcon";
+import CustomSdsIcon from "src/common/storybook/svg/customSdsIcon";
+import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
 
 export const CALLOUT_EXCLUDED_CONTROLS = [
   "autoDismiss",
