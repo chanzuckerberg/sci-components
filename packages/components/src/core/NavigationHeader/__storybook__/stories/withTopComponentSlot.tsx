@@ -46,7 +46,7 @@ export const WithTopComponentSlotDemo = (
     | NavigationHeaderPrimaryNavItem<string>[]
     | undefined;
   const secondaryNavItemsNew = processNavItems(secondaryNavItems) as
-    | NavigationHeaderSecondaryNavItem[]
+    | NavigationHeaderSecondaryNavItem<string>[]
     | undefined;
 
   return (
