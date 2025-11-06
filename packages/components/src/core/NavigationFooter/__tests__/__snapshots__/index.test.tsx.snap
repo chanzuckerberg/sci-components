@@ -37,35 +37,35 @@ exports[`<NavigationFooter /> Default story renders snapshot 1`] = `
       class="css-1rtl18d"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/1"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/2"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/3"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/4"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/5"
         target="_blank"
       >
@@ -83,31 +83,31 @@ exports[`<NavigationFooter /> Default story renders snapshot 1`] = `
       class="css-11c0vhu"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/1"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/2"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/3"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/4"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-p2eu78-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1dg42ge-MuiTypography-root-MuiLink-root"
         href="https://example.com/nav/5"
       >
         Link Item
@@ -179,35 +179,35 @@ exports[`<NavigationFooter /> matches the snapshot 1`] = `
         class="css-1rtl18d"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/1"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/2"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/3"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/4"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-78nem6-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1sbruyx-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/5"
           target="_blank"
         >
@@ -225,31 +225,31 @@ exports[`<NavigationFooter /> matches the snapshot 1`] = `
         class="css-11c0vhu"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/1"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/2"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/3"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-q6r3gj-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nlurq0-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/4"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-p2eu78-MuiTypography-root-MuiLink-root"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1dg42ge-MuiTypography-root-MuiLink-root"
           href="https://example.com/nav/5"
         >
           Link Item
