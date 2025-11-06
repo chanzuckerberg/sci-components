@@ -1,6 +1,7 @@
 import { SdsTagColorType } from "src/core/Tag";
-import { PrimaryNavItem, StyledLabel, StyledTag } from "./style";
-import { ReactNode, useState, useRef, useEffect, Fragment } from "react";
+import { StyledTag } from "./style";
+import { UnifiedNavItem, StyledLabel } from "../shared/UnifiedNavItem";
+import { ReactNode, useEffect, Fragment } from "react";
 import {
   StyledDivider,
   StyledLabelTextWrapper,
@@ -22,6 +23,7 @@ import {
 } from "../../style";
 import DrawerContent from "../shared/DrawerContent";
 import AccordionNavItem from "../shared/AccordionNavItem";
+import { useNavigationState } from "../shared/useNavigationState";
 
 interface BaseNavigationHeaderPrimaryNavItem<T extends string>
   extends Record<string, unknown> {
@@ -112,18 +114,26 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   onClose: onCloseProp,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
-  const [anchorEl, setAnchorEl] = useState<Element | null>(null);
-  const [activeDropdownKey, setActiveDropdownKey] = useState<T | null>(null);
-  const [activeDrawerKey, setActiveDrawerKey] = useState<T | null>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [menuWidth, setMenuWidth] = useState<number | string>("100%");
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const hoverEnterTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [contentKey, setContentKey] = useState<T | null>(null);
-  const [isContentFading, setIsContentFading] = useState(false);
 
-  const open = Boolean(anchorEl);
-  const drawerOpen = activeDrawerKey !== null;
+  const {
+    anchorEl,
+    activeDropdownKey,
+    activeDrawerKey,
+    contentKey,
+    isContentFading,
+    open,
+    drawerOpen,
+    buttonRef,
+    menuWidth,
+    setAnchorEl,
+    setActiveDropdownKey,
+    setActiveDrawerKey,
+    setContentKey,
+    onClose: handleClose,
+    onDrawerClose,
+    onDrawerOpen,
+    cancelDrawerClose,
+  } = useNavigationState<T>();
 
   // Helper function to wrap dropdown items' onClick handlers
   // This automatically sets the parent dropdown as active when an item is clicked
@@ -147,75 +157,12 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   };
 
   function onClose() {
-    setAnchorEl(null);
-    setActiveDropdownKey(null);
+    handleClose();
     // Close mobile drawer when in narrow mode
     if (isNarrow) {
       onCloseProp?.();
     }
   }
-
-  function onDrawerClose() {
-    // Clear any pending hover enter timeout
-    if (hoverEnterTimeoutRef.current) {
-      clearTimeout(hoverEnterTimeoutRef.current);
-    }
-    // Clear any existing close timeout
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-    }
-    hoverTimeoutRef.current = setTimeout(() => {
-      setActiveDrawerKey(null);
-      setContentKey(null);
-    }, 200);
-  }
-
-  function onDrawerOpen(key: T) {
-    // Clear any pending close timeout
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-    }
-
-    // If drawer is already open with different content, add a delay before changing
-    if (activeDrawerKey !== null && activeDrawerKey !== key) {
-      // Clear any pending hover enter timeout
-      if (hoverEnterTimeoutRef.current) {
-        clearTimeout(hoverEnterTimeoutRef.current);
-      }
-
-      // Wait 50ms before changing content
-      hoverEnterTimeoutRef.current = setTimeout(() => {
-        setIsContentFading(true);
-        setTimeout(() => {
-          setActiveDrawerKey(key);
-          setContentKey(key);
-          setIsContentFading(false);
-        }, 150);
-      }, 100);
-    } else {
-      // First time opening or reopening same drawer - open immediately
-      setActiveDrawerKey(key);
-      setContentKey(key);
-      setIsContentFading(false);
-    }
-  }
-
-  function cancelDrawerClose() {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-    }
-  }
-
-  useEffect(() => {
-    return () => {
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
-      if (hoverEnterTimeoutRef.current) {
-        clearTimeout(hoverEnterTimeoutRef.current);
-      }
-    };
-  }, []);
 
   // Notify parent when drawer state changes (only for drawer style)
   useEffect(() => {
@@ -223,15 +170,6 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
       onDrawerStateChange(drawerOpen);
     }
   }, [drawerOpen, sdsStyle, onDrawerStateChange]);
-
-  useEffect(() => {
-    const button = buttonRef.current;
-    if (!button) {
-      return;
-    }
-
-    setMenuWidth(button.offsetWidth);
-  }, []);
 
   const renderDrawerItem = (
     item: DropdownNavigationHeaderPrimaryNavItem<T>,
@@ -258,7 +196,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         onMouseEnter={() => onDrawerOpen(key)}
         onMouseLeave={onDrawerClose}
       >
-        <PrimaryNavItem
+        <UnifiedNavItem
           {...rest}
           itemType={item.itemType}
           active={isActive}
@@ -267,6 +205,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           sdsStyle="minimal"
           onClick={handleClick}
           innerSdsStyle={sdsStyle}
+          navVariant="primary"
           component={componentProp}
           href={defaultUrl}
           target={target}
@@ -277,6 +216,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             active={isActive}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}
+            navVariant="primary"
           >
             <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
               {label as ReactNode}
@@ -292,7 +232,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               sdsSize="xs"
             />
           </StyledLabel>
-        </PrimaryNavItem>
+        </UnifiedNavItem>
       </StyledHoverDrawerContainer>
     );
   };
@@ -309,12 +249,12 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
 
     return (
       <Fragment key={key}>
-        <PrimaryNavItem
+        <UnifiedNavItem
           {...rest}
           itemType={item.itemType}
           ref={buttonRef}
           active={isActive}
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent) => {
             setAnchorEl(e.currentTarget);
             setActiveDropdownKey(key);
             onChange(key);
@@ -324,12 +264,14 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           isNarrow={isNarrow}
           sdsStyle="minimal"
           innerSdsStyle={sdsStyle}
+          navVariant="primary"
         >
           <StyledLabel
             itemType={item.itemType}
             active={isActive}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={isNarrow}
+            navVariant="primary"
           >
             <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
               {label as ReactNode}
@@ -345,7 +287,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
               sdsSize="xs"
             />
           </StyledLabel>
-        </PrimaryNavItem>
+        </UnifiedNavItem>
 
         <Menu
           anchorEl={anchorEl}
@@ -477,23 +419,25 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     const isActive = key === value;
 
     return (
-      <PrimaryNavItem
+      <UnifiedNavItem
         key={key}
         {...rest}
         active={isActive}
         sdsStyle="minimal"
-        onClick={(e) => {
+        onClick={(e: React.MouseEvent) => {
           onChange(key);
           item.onClick?.(e);
         }}
         hasInvertedStyle={hasInvertedStyle}
         isNarrow={isNarrow}
         innerSdsStyle={sdsStyle}
+        navVariant="primary"
       >
         <StyledLabel
           active={isActive}
           hasInvertedStyle={hasInvertedStyle}
           isNarrow={isNarrow}
+          navVariant="primary"
         >
           <StyledLabelTextWrapper active={isActive} isNarrow={isNarrow}>
             {label as ReactNode}
@@ -510,7 +454,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             />
           )}
         </StyledLabel>
-      </PrimaryNavItem>
+      </UnifiedNavItem>
     );
   };
 
@@ -594,7 +538,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           hasInvertedStyle={hasInvertedStyle}
           hideBackdrop={false}
           disableScrollLock
-          transitionDuration={225}
+          transitionDuration={100}
           topOffset={topOffset}
           SlideProps={{
             onMouseEnter: cancelDrawerClose,

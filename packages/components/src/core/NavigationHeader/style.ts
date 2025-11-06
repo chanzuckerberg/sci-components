@@ -876,7 +876,7 @@ export const StyledMegaMenuContent = styled("div", {
       max-width: 1200px;
       margin: 0 auto;
       justify-content: center;
-      transition: opacity 300ms ease-in-out;
+      transition: opacity 150ms ease-in-out;
     `;
   }}
 `;
@@ -977,7 +977,7 @@ export const StyledHoverDrawerItem = styled(
       justify-content: flex-start;
       text-align: left;
       padding: ${spaces?.s}px ${spaces?.l}px;
-      margin-bottom: ${hasDetails ? spaces?.m : 0}px;
+      margin-bottom: ${hasDetails ? spaces?.l : 0}px;
       border-radius: ${corners?.xl}px;
       min-height: auto;
       width: 100%;
@@ -1132,7 +1132,7 @@ export const StyledHoverDrawerActions = styled("div", {
       display: flex;
       flex-direction: row;
       gap: ${spaces?.xs}px;
-      margin-top: ${spaces?.m}px;
+      margin-top: ${spaces?.l}px;
       padding-left: ${isNarrow
         ? `calc(${spaces?.l}px + ${spaces?.m}px)`
         : `calc(${spaces?.xxl}px + ${spaces?.xs}px)`};

@@ -19,7 +19,7 @@ export interface NavigationHeaderProps<T extends string = string>
   primaryNavItems?: NavigationHeaderPrimaryNavItem<T>[];
   primaryNavPosition?: "left" | "right";
   searchProps?: Partial<InputSearchProps>;
-  secondaryNavItems?: NavigationHeaderSecondaryNavItem[];
+  secondaryNavItems?: NavigationHeaderSecondaryNavItem<T>[];
   setActivePrimaryNavKey?(key: string): void;
   showSearch?: boolean;
   tag?: string;

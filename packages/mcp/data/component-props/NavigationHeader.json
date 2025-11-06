@@ -54,7 +54,7 @@
         "isRequired": false
       },
       "secondaryNavItems": {
-        "type": "NavigationHeaderSecondaryNavItem[]",
+        "type": "NavigationHeaderSecondaryNavItem<string>[]",
         "isRequired": false
       },
       "showSearch": {
