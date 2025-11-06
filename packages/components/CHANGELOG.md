@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.16.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.2...@czi-sds/components@22.16.3) (2025-11-06)
+
+### Bug Fixes
+
+- **navigationheader:** fixed drawer items spacings + nav footer colors ([#1040](https://github.com/chanzuckerberg/sci-components/issues/1040)) ([2023bee](https://github.com/chanzuckerberg/sci-components/commit/2023bee335fb661c949ae6ac110be05f3532da87))
+
 ## [22.16.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.1...@czi-sds/components@22.16.2) (2025-11-06)
 
 ### Bug Fixes
