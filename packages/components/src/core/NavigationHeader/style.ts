@@ -848,7 +848,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
       }
 
       .MuiBackdrop-root {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba(0, 0, 0, 0);
         backdrop-filter: blur(2px);
         top: ${topOffset}px;
       }
