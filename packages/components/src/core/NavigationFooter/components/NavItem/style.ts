@@ -73,6 +73,13 @@ export const StyledNavItemLink = styled(Link, {
         text-decoration: none;
       }
 
+      &:active,
+      &:focus {
+        color: ${props.hasInvertedStyle
+          ? semanticColors?.base.textPrimaryOnDark
+          : semanticColors?.accent.textActionPressed};
+      }
+
       ${isNarrow && NarrowNavItemLinkStyles(props)}
     `;
   }}

@@ -82,16 +82,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const topSlotRef = useRef<HTMLDivElement>(null);
     const [topOffset, setTopOffset] = useState(0);
 
-    // Use controlled or uncontrolled active key state
+    // Use hybrid controlled/uncontrolled active key state
+    // Internal state is always maintained, external prop can override
     const [internalActivePrimaryNavKey, setInternalActivePrimaryNavKey] =
       useState("");
     const activePrimaryNavKey =
       controlledActivePrimaryNavKey ?? internalActivePrimaryNavKey;
     const setActivePrimaryNavKey = (key: string) => {
+      // Always update internal state
+      setInternalActivePrimaryNavKey(key);
+      // Also call the callback if provided (for external consumers)
       if (onActivePrimaryNavKeyChange) {
         onActivePrimaryNavKeyChange(key);
-      } else {
-        setInternalActivePrimaryNavKey(key);
       }
     };
 

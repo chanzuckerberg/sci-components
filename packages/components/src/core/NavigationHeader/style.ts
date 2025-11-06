@@ -976,8 +976,8 @@ export const StyledHoverDrawerItem = styled(
       box-shadow: none;
       justify-content: flex-start;
       text-align: left;
-      padding: ${spaces?.s}px ${spaces?.l}px;
-      margin-bottom: ${hasDetails ? spaces?.l : 0}px;
+      padding: ${hasDetails ? spaces?.l : spaces?.m}px ${spaces?.l}px;
+      margin-bottom: ${hasDetails ? spaces?.s : 0}px;
       border-radius: ${corners?.xl}px;
       min-height: auto;
       width: 100%;
