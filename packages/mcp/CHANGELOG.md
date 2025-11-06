@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.8.0...@czi-sds/mcp@0.8.1) (2025-11-06)
+
+### Bug Fixes
+
+- **NavigationHeader:** fix navigation header animations ([#1038](https://github.com/chanzuckerberg/sci-components/issues/1038)) ([023a822](https://github.com/chanzuckerberg/sci-components/commit/023a822e0d72171186c22cca26405a9a410b80cc))
+
 # [0.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.7.0...@czi-sds/mcp@0.8.0) (2025-11-05)
 
 ### Features
