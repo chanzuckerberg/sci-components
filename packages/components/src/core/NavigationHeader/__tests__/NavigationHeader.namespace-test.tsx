@@ -45,6 +45,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       ]}
       secondaryNavItems={[
         {
+          key: "3",
           itemType: "dropdown",
           items: [
             { label: "Item 1", onClick: () => alert("clicked on item 1") },
@@ -53,6 +54,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
           label: "Secondary",
         },
         {
+          key: "4",
           itemType: "text",
           label: "Secondary",
           onClick: () => alert("clicked on secondary"),

@@ -103,7 +103,7 @@ export const DrawerStyleDemo = (
   ];
 
   // Secondary nav items
-  const secondaryNavItems: NavigationHeaderSecondaryNavItem[] = [
+  const secondaryNavItems: NavigationHeaderSecondaryNavItem<string>[] = [
     {
       itemType: "dropdown",
       items: RESEARCH as DropdownItem[],

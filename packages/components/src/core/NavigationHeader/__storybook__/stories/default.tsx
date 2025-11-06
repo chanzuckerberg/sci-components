@@ -68,7 +68,7 @@ export const NavigationHeader = (
     | NavigationHeaderPrimaryNavItem<string>[]
     | undefined;
   const secondaryNavItemsNew = processNavItems(secondaryNavItems) as
-    | NavigationHeaderSecondaryNavItem[]
+    | NavigationHeaderSecondaryNavItem<string>[]
     | undefined;
 
   return (
