@@ -53,6 +53,7 @@
   ],
   "data-viz": [
     "HeatmapChart",
-    "StackedBarChart"
+    "StackedBarChart",
+    "StackedBarChartEcharts"
   ]
 }

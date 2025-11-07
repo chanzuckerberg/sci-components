@@ -9,32 +9,24 @@
       "barHeight": {
         "type": "number",
         "isRequired": false,
-        "description": "Height of the bar in pixels (default: 16)"
+        "description": "Height of the bar in pixels",
+        "defaultValue": 16
       },
       "data": {
         "type": "StackedBarChartDataItem[]",
         "isRequired": true,
-        "description": "Array of data items to visualize in the stacked bar"
-      },
-      "echartsRendererMode": {
-        "type": "\"svg\" | \"canvas\"",
-        "isRequired": false
-      },
-      "height": {
-        "type": "number",
-        "isRequired": true,
-        "description": "Height of the chart in pixels"
+        "description": "Array of data items to display in the stacked bar"
       },
       "showLegend": {
         "type": "\"false\" | \"true\"",
         "isRequired": false,
-        "description": "Whether to show the legend",
-        "defaultValue": false
+        "description": "Whether to show the legend below the chart",
+        "defaultValue": true
       },
       "showLegendValues": {
         "type": "\"false\" | \"true\"",
         "isRequired": false,
-        "description": "Show values in the custom legend",
+        "description": "Whether to show percentage values in the legend",
         "defaultValue": true
       },
       "title": {
@@ -42,16 +34,11 @@
         "isRequired": false,
         "description": "Title to display above the chart"
       },
-      "useCustomLegend": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "Use custom SDS Legend component instead of ECharts built-in legend",
-        "defaultValue": false
-      },
       "width": {
         "type": "number",
-        "isRequired": true,
-        "description": "Width of the chart in pixels"
+        "isRequired": false,
+        "description": "Width of the chart in pixels",
+        "defaultValue": 240
       }
     }
   }

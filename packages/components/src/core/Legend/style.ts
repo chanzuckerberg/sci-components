@@ -35,7 +35,6 @@ export const LegendItem = styled("div")<LegendItemProps>`
     return `
       display: flex;
       align-items: center;
-      gap: ${spaces?.xs}px;
       cursor: pointer;
       transition: background-color 0.2s ease;
       padding: 0 ${spaces?.xxs}px;
@@ -55,16 +54,23 @@ interface LegendIconProps extends CommonThemeProps {
 }
 
 export const LegendIcon = styled("div")<LegendIconProps>`
-  width: 8px;
-  height: 8px;
-  border-radius: ${(props) => {
+  ${(props: LegendIconProps) => {
+    const { color, isDimmed } = props;
+
+    const spaces = getSpaces(props);
     const corners = getCorners(props);
-    return `${corners?.s}px`;
+
+    return `
+      width: 8px;
+      height: 8px;
+      border-radius: ${corners?.s}px;
+      background-color: ${color};
+      flex-shrink: 0;
+      opacity: ${isDimmed ? 0.2 : 1};
+      transition: opacity 0.2s ease;
+      margin-right: ${spaces?.xxs}px;
+    `;
   }};
-  background-color: ${(props) => props.color};
-  flex-shrink: 0;
-  opacity: ${(props) => (props.isDimmed ? 0.2 : 1)};
-  transition: opacity 0.2s ease;
 `;
 
 export const LegendLabel = styled("span")`
@@ -81,8 +87,11 @@ export const LegendValue = styled("span")`
   ${fontBodyXxxxs}
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
     return `
       color: ${semanticColors?.base?.textSecondary};
+      margin-left: ${spaces?.xxxs}px;
     `;
   }};
 `;
