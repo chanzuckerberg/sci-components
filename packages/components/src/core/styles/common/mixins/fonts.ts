@@ -72,18 +72,21 @@ export const fontBodyS = fontBody("s", "regular");
 export const fontBodyXs = fontBody("xs", "regular");
 export const fontBodyXxs = fontBody("xxs", "regular");
 export const fontBodyXxxs = fontBody("xxxs", "regular");
+export const fontBodyXxxxs = fontBody("xxxxs", "regular");
 export const fontBodyMediumL = fontBody("l", "medium");
 export const fontBodyMediumM = fontBody("m", "medium");
 export const fontBodyMediumS = fontBody("s", "medium");
 export const fontBodyMediumXs = fontBody("xs", "medium");
 export const fontBodyMediumXxs = fontBody("xxs", "medium");
 export const fontBodyMediumXxxs = fontBody("xxxs", "medium");
+export const fontBodyMediumXxxxs = fontBody("xxxxs", "medium");
 export const fontBodySemiboldL = fontBody("l", "semibold");
 export const fontBodySemiboldM = fontBody("m", "semibold");
 export const fontBodySemiboldS = fontBody("s", "semibold");
 export const fontBodySemiboldXs = fontBody("xs", "semibold");
 export const fontBodySemiboldXxs = fontBody("xxs", "semibold");
 export const fontBodySemiboldXxxs = fontBody("xxxs", "semibold");
+export const fontBodySemiboldXxxxs = fontBody("xxxxs", "semibold");
 
 export const fontCaps = createFontFunction({
   additionalCss: "text-transform: uppercase;",

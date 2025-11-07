@@ -65,6 +65,8 @@ export * from "./core/InputText";
 export { default as InputText } from "./core/InputText";
 export * from "./core/InputToggle";
 export { default as InputToggle } from "./core/InputToggle";
+export * from "./core/Legend";
+export { default as Legend } from "./core/Legend";
 export * from "./core/Link";
 export { default as Link } from "./core/Link";
 export * from "./core/List";

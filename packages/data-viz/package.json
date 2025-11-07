@@ -59,7 +59,7 @@
     "@mui/icons-material": "^5.15.3",
     "@mui/lab": "^5.0.0-alpha.159",
     "@mui/material": "^5.15.3",
-    "echarts": "^5.4.3",
+    "echarts": "^6.0.0",
     "lodash": "^4.17.21",
     "react": ">=17.0.1",
     "react-dom": ">=17.0.1"
@@ -75,7 +75,7 @@
     "style-dictionary": "^4.1.0"
   },
   "dependencies": {
-    "echarts": "^5.4.3",
+    "echarts": "^6.0.0",
     "lodash": "^4.17.21"
   }
 }

@@ -186,6 +186,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     medium: {
       l: TypographyStyle;
@@ -194,6 +195,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     semibold: {
       l: TypographyStyle;
@@ -202,6 +204,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
   };
   caps: {
