@@ -18,8 +18,10 @@ export interface LegendItemData {
   value?: number | string;
   /**
    * Color for the legend icon
+   * Can be overridden by the colors prop in LegendProps
+   * Falls back to gray if not provided
    */
-  color: string;
+  color?: string;
   /**
    * Disable the legend item (prevents all events)
    * @default false
@@ -32,6 +34,11 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    * Array of legend items to display
    */
   items: LegendItemData[];
+  /**
+   * Optional array of colors to assign to items. If not provided or if the array
+   * is shorter than items, will use the color from the item or fall back to gray.
+   */
+  colors?: string[];
   /**
    * Callback when mouse enters a legend item
    */
@@ -67,6 +74,7 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
 const Legend = (props: LegendProps): JSX.Element => {
   const {
     items,
+    colors,
     onItemMouseEnter,
     onItemMouseLeave,
     onItemClick,
@@ -139,6 +147,9 @@ const Legend = (props: LegendProps): JSX.Element => {
 
   const hasSelection = localSelectedIndices.length > 0;
 
+  // Gray fallback color
+  const fallbackColor = "#999999";
+
   return (
     <LegendContainer {...rest}>
       {items.map((item, index) => {
@@ -155,6 +166,9 @@ const Legend = (props: LegendProps): JSX.Element => {
             ? !isHovered && !isSelected
             : hasSelection && !isSelected;
 
+        // Determine color: use colors prop, then item color, then fallback to gray
+        const itemColor = colors?.[index] || item.color || fallbackColor;
+
         return (
           <LegendItem
             key={`${item.name}-${index}`}
@@ -169,7 +183,7 @@ const Legend = (props: LegendProps): JSX.Element => {
             isSelected={isSelected}
             disabled={item.disabled}
           >
-            <LegendIcon color={item.color} isDimmed={isDimmed} />
+            <LegendIcon color={itemColor} isDimmed={isDimmed} />
             <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
             {showValues && item.value !== undefined && (
               <LegendValue disabled={item.disabled}>

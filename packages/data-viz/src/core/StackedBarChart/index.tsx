@@ -1,5 +1,6 @@
 import { cloneElement, HTMLAttributes, useState } from "react";
 import {
+  getMode,
   Legend,
   SDSTheme,
   Tooltip,
@@ -17,6 +18,7 @@ import {
   StyledStackedBarChartWrapper,
 } from "./style";
 import { useTheme } from "@mui/material";
+import chroma from "chroma-js";
 
 export interface StackedBarChartDataItem {
   /**
@@ -29,8 +31,9 @@ export interface StackedBarChartDataItem {
   value: number;
   /**
    * Color for the segment (hex or CSS color)
+   * If not provided, colors will be automatically generated using cubehelix palette
    */
-  color: string;
+  color?: string;
   /**
    * Unit label to display with the value in amount mode (e.g., "GB", "datasets", "MB")
    * Only shown in legend when mode is "amount"
@@ -172,6 +175,153 @@ const getSegmentOpacity = (
   return 1;
 };
 
+// Helper: Generate colors using cubehelix color scale
+const generateColors = (
+  count: number,
+  isDarkMode: boolean = false
+): string[] => {
+  if (count === 0) return [];
+
+  const colors = chroma
+    .cubehelix()
+    .start(249)
+    .rotations(1)
+    .gamma(0.7)
+    .lightness([0.3, 0.7])
+    .scale()
+    .correctLightness()
+    .colors(count);
+
+  // Reverse colors in dark mode for better contrast
+  return isDarkMode ? colors.reverse() : colors;
+};
+
+// Helper: Build legend items from data with optional remaining segment
+const buildLegendItems = (
+  dataWithPercentages: Array<
+    StackedBarChartDataItem & { percentage: number; color: string }
+  >,
+  options: {
+    mode: "percentage" | "amount";
+    showLegendValues: boolean;
+    unit?: string;
+    hasRemaining: boolean;
+    showLegend: boolean;
+    remainingValue: number;
+    remainingLabel: string;
+    remainingUnit?: string;
+    data: StackedBarChartDataItem[];
+    theme: SDSTheme;
+  }
+): LegendItemData[] => {
+  const {
+    mode,
+    showLegendValues,
+    unit,
+    hasRemaining,
+    showLegend,
+    remainingValue,
+    remainingLabel,
+    remainingUnit,
+    data,
+    theme,
+  } = options;
+
+  const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
+    name: item.name,
+    value: calculateLegendValue(item, mode, showLegendValues, unit),
+    color: item.color,
+    disabled: item.disabled,
+  }));
+
+  // Add remaining item to legend if applicable
+  if (hasRemaining && showLegend) {
+    const effectiveRemainingUnit = remainingUnit || data[0]?.unit || unit || "";
+    const remainingValueDisplay = showLegendValues
+      ? effectiveRemainingUnit
+        ? `${remainingValue} ${effectiveRemainingUnit}`
+        : `${remainingValue}`
+      : undefined;
+
+    legendItems.push({
+      name: remainingLabel,
+      value: remainingValueDisplay,
+      color: theme?.palette?.sds?.base?.backgroundTertiary,
+      disabled: true,
+    });
+  }
+
+  return legendItems;
+};
+
+// Helper: Render a bar segment with optional tooltip
+const renderBarSegment = (
+  item: StackedBarChartDataItem & { percentage: number; color: string },
+  index: number,
+  options: {
+    isFirst: boolean;
+    isLast: boolean;
+    barHeight: number;
+    hoveredIndex: number | null;
+    selectedIndices: number[];
+    onMouseEnter: () => void;
+    onMouseLeave: () => void;
+    onClick: () => void;
+  }
+): JSX.Element => {
+  const {
+    isFirst,
+    isLast,
+    barHeight,
+    hoveredIndex,
+    selectedIndices,
+    onMouseEnter,
+    onMouseLeave,
+    onClick,
+  } = options;
+
+  const barSegment = (
+    <BarSegment
+      color={item.color}
+      percentage={item.percentage}
+      height={barHeight}
+      isFirst={isFirst}
+      isLast={isLast}
+      opacity={getSegmentOpacity(index, hoveredIndex, selectedIndices)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={onClick}
+    />
+  );
+
+  return item.tooltip !== undefined ? (
+    <Tooltip
+      title={null}
+      componentSlot={<TooltipTable {...item.tooltip} />}
+      placement="top"
+      key={`${item.name}-${index}`}
+      hasInvertedStyle={false}
+      open={hoveredIndex === index}
+      disableInteractive={true}
+      PopperProps={{
+        disablePortal: false,
+        modifiers: [
+          {
+            name: "offset",
+            options: {
+              offset: [0, 0],
+            },
+          },
+        ],
+      }}
+    >
+      {barSegment}
+    </Tooltip>
+  ) : (
+    cloneElement(barSegment, { key: `${item.name}-${index}` })
+  );
+};
+
 const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const {
     title,
@@ -196,6 +346,9 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  // Detect dark mode from theme
+  const isDarkMode = getMode({ theme }) === "dark";
+
   // Calculate default badge value
   const defaultBadge = calculateBadgeText(data.length, selectedIndices.length);
   const displayBadge = badge !== undefined ? badge : defaultBadge;
@@ -214,38 +367,33 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     ? (remainingValue / effectiveMaxAmount) * 100
     : 0;
 
-  // Calculate percentages for each segment
-  const dataWithPercentages = data.map((item) => ({
+  // Generate colors if not provided in data
+  const hasColors = data.every((item) => item.color);
+  const generatedColors = !hasColors
+    ? generateColors(data.length, isDarkMode)
+    : [];
+
+  // Calculate percentages and assign colors for each segment
+  const dataWithPercentages = data.map((item, index) => ({
     ...item,
+    color: item.color || generatedColors[index] || "#999999",
     percentage:
       effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
   }));
 
   // Convert data to legend items format
-  const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
-    name: item.name,
-    value: calculateLegendValue(item, mode, showLegendValues, unit),
-    color: item.color,
-    disabled: item.disabled,
-  }));
-
-  // Add remaining item to legend if applicable
-  if (hasRemaining && showLegend) {
-    // Determine unit for remaining: use remainingUnit if provided, otherwise use unit from first item, then global unit
-    const effectiveRemainingUnit = remainingUnit || data[0]?.unit || unit || "";
-    const remainingValueDisplay = showLegendValues
-      ? effectiveRemainingUnit
-        ? `${remainingValue} ${effectiveRemainingUnit}`
-        : `${remainingValue}`
-      : undefined;
-
-    legendItems.push({
-      name: remainingLabel,
-      value: remainingValueDisplay,
-      color: theme?.palette?.sds?.base?.backgroundTertiary,
-      disabled: true, // Remaining segment is not interactive
-    });
-  }
+  const legendItems = buildLegendItems(dataWithPercentages, {
+    mode,
+    showLegendValues,
+    unit,
+    hasRemaining,
+    showLegend,
+    remainingValue,
+    remainingLabel,
+    remainingUnit,
+    data,
+    theme,
+  });
 
   // Handle legend item hover
   const handleLegendItemHover = (item: LegendItemData, index: number) => {
@@ -278,52 +426,18 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const chartContent = (
     <StyledStackedBarChartWrapper>
       <BarContainer width={width}>
-        {dataWithPercentages.map((item, index) => {
-          const isFirst = index === 0;
-          const isLast =
-            index === dataWithPercentages.length - 1 && !hasRemaining;
-
-          const barSegment = (
-            <BarSegment
-              color={item.color}
-              percentage={item.percentage}
-              height={barHeight}
-              isFirst={isFirst}
-              isLast={isLast}
-              opacity={getSegmentOpacity(index, hoveredIndex, selectedIndices)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => handleSegmentClick(index)}
-            />
-          );
-
-          return item.tooltip !== undefined ? (
-            <Tooltip
-              title={null}
-              componentSlot={<TooltipTable {...item.tooltip} />}
-              placement="top"
-              key={`${item.name}-${index}`}
-              hasInvertedStyle={false}
-              open={hoveredIndex === index}
-              disableInteractive={true}
-              PopperProps={{
-                disablePortal: false,
-                modifiers: [
-                  {
-                    name: "offset",
-                    options: {
-                      offset: [0, 0],
-                    },
-                  },
-                ],
-              }}
-            >
-              {barSegment}
-            </Tooltip>
-          ) : (
-            cloneElement(barSegment, { key: `${item.name}-${index}` })
-          );
-        })}
+        {dataWithPercentages.map((item, index) =>
+          renderBarSegment(item, index, {
+            isFirst: index === 0,
+            isLast: index === dataWithPercentages.length - 1 && !hasRemaining,
+            barHeight,
+            hoveredIndex,
+            selectedIndices,
+            onMouseEnter: () => setHoveredIndex(index),
+            onMouseLeave: () => setHoveredIndex(null),
+            onClick: () => handleSegmentClick(index),
+          })
+        )}
         {hasRemaining && (
           <BarSegment
             key="remaining"

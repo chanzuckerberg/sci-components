@@ -2,7 +2,6 @@ export const DOMAIN_DATA = [
   {
     name: "Transcriptomic",
     value: 117,
-    color: "#873b63",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -20,7 +19,6 @@ export const DOMAIN_DATA = [
   {
     name: "Imaging",
     value: 61,
-    color: "#7c62ca",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -39,7 +37,6 @@ export const DOMAIN_DATA = [
   {
     name: "Sequencing",
     value: 34,
-    color: "#40b5ce",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -55,9 +52,8 @@ export const DOMAIN_DATA = [
     },
   },
   {
-    name: "Another",
+    name: "Proteomics",
     value: 15,
-    color: "#66e673",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -74,7 +70,6 @@ export const DOMAIN_DATA = [
   {
     name: "Type",
     value: 130,
-    color: "#e7d574",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -91,13 +86,28 @@ export const DOMAIN_DATA = [
       ],
     },
   },
+  {
+    name: "Prosthetics",
+    value: 130,
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Prosthetics", value: 80 },
+            { label: "Orthotics", value: 15 },
+            { label: "Prosthetic components", value: 35 },
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export const ORGANISM_DATA = [
   {
     name: "H. sapiens",
     value: 322,
-    color: "#e7798b",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -116,7 +126,6 @@ export const ORGANISM_DATA = [
   {
     name: "M. musculus",
     value: 130,
-    color: "#c59345",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -134,7 +143,6 @@ export const ORGANISM_DATA = [
   {
     name: "C. Jacques",
     value: 89,
-    color: "#9aa446",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -151,7 +159,6 @@ export const ORGANISM_DATA = [
   {
     name: "D. melanogaster",
     value: 74,
-    color: "#6ab448",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -170,7 +177,6 @@ export const ORGANISM_DATA = [
   {
     name: "S. cerevisiae",
     value: 27,
-    color: "#00bf9d",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -187,7 +193,6 @@ export const ORGANISM_DATA = [
   {
     name: "D. rerio",
     value: 21,
-    color: "#13c0e4",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -203,7 +208,6 @@ export const ORGANISM_DATA = [
   {
     name: "S. pombe",
     value: 16,
-    color: "#689fdc",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -219,7 +223,6 @@ export const ORGANISM_DATA = [
   {
     name: "A. thaliana",
     value: 11,
-    color: "#997ec7",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -241,7 +244,6 @@ export const TISSUE_DATA = [
   {
     name: "Brain",
     value: 450,
-    color: "#e7798b",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -261,7 +263,6 @@ export const TISSUE_DATA = [
   {
     name: "Heart",
     value: 280,
-    color: "#c59345",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -280,7 +281,6 @@ export const TISSUE_DATA = [
   {
     name: "Liver",
     value: 220,
-    color: "#9aa446",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -297,7 +297,6 @@ export const TISSUE_DATA = [
   {
     name: "Kidney",
     value: 150,
-    color: "#6ab448",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -321,7 +320,6 @@ export const DOMAIN_DATA_AMOUNT = [
   {
     name: "Transcriptomic",
     value: 460,
-    color: "#873b63",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -338,7 +336,6 @@ export const DOMAIN_DATA_AMOUNT = [
   {
     name: "Imaging",
     value: 310,
-    color: "#7c62ca",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -355,7 +352,6 @@ export const DOMAIN_DATA_AMOUNT = [
   {
     name: "Sequencing",
     value: 191,
-    color: "#40b5ce",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -372,7 +368,6 @@ export const DOMAIN_DATA_AMOUNT = [
   {
     name: "Another",
     value: 76,
-    color: "#66e673",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -388,7 +383,6 @@ export const DOMAIN_DATA_AMOUNT = [
   {
     name: "Type Five",
     value: 44,
-    color: "#e7d574",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -409,7 +403,6 @@ export const MIXED_UNIT_DATA = [
     name: "Small files",
     value: 245,
     // Uses global unit
-    color: "#e7798b",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -427,7 +420,6 @@ export const MIXED_UNIT_DATA = [
     name: "Large files",
     value: 1200,
     unit: "MB", // Override global unit with MB
-    color: "#c59345",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -445,7 +437,6 @@ export const MIXED_UNIT_DATA = [
     name: "Cache",
     value: 380,
     // Uses global unit
-    color: "#9aa446",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -465,7 +456,6 @@ export const BUDGET_DATA = [
     name: "Research",
     value: 450,
     unit: "K",
-    color: "#873b63",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -483,7 +473,6 @@ export const BUDGET_DATA = [
     name: "Operations",
     value: 280,
     unit: "K",
-    color: "#7c62ca",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -501,7 +490,6 @@ export const BUDGET_DATA = [
     name: "Development",
     value: 170,
     unit: "K",
-    color: "#40b5ce",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -522,7 +510,6 @@ export const DATA_WITH_DISABLED = [
   {
     name: "Active",
     value: 320,
-    color: "#873b63",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -538,7 +525,6 @@ export const DATA_WITH_DISABLED = [
   {
     name: "Inactive",
     value: 180,
-    color: "#7c62ca",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -554,7 +540,6 @@ export const DATA_WITH_DISABLED = [
   {
     name: "Unknown",
     value: 50,
-    color: "#CCCCCC",
     // This item is disabled - no interactions allowed
     disabled: true,
     tooltip: {
@@ -573,7 +558,6 @@ export const STORAGE_DATA = [
     name: "Documents",
     value: 245,
     unit: "GB",
-    color: "#e7798b",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -591,7 +575,6 @@ export const STORAGE_DATA = [
     name: "Images",
     value: 380,
     unit: "GB",
-    color: "#c59345",
     tooltip: {
       showSectionHeader: false,
       data: [
@@ -609,7 +592,6 @@ export const STORAGE_DATA = [
     name: "Videos",
     value: 125,
     unit: "GB",
-    color: "#9aa446",
     tooltip: {
       showSectionHeader: false,
       data: [
