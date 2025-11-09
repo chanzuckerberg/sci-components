@@ -4,7 +4,13 @@
       "badge": {
         "type": "string",
         "isRequired": false,
-        "description": "Badge text to display next to the title"
+        "description": "Badge text to display next to the title\nIf not provided, defaults to showing item count based on selection:\n- No selection: total count (e.g., \"5\")\n- Partial selection: selected count (e.g., \"3 of 5\")\n- All selected: \"All\""
+      },
+      "hideBadge": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "description": "Hide the badge when true",
+        "defaultValue": false
       },
       "barHeight": {
         "type": "number",
@@ -16,6 +22,28 @@
         "type": "StackedBarChartDataItem[]",
         "isRequired": true,
         "description": "Array of data items to display in the stacked bar"
+      },
+      "maxAmount": {
+        "type": "number",
+        "isRequired": false,
+        "description": "Maximum amount for the bar (used only in \"amount\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment"
+      },
+      "mode": {
+        "type": "\"percentage\" | \"amount\"",
+        "isRequired": false,
+        "description": "Chart mode - controls how segments are calculated\n- \"percentage\": Segments fill entire bar (100%), proportional to their values\n- \"amount\": Segments sized based on actual values relative to maxAmount",
+        "defaultValue": "percentage"
+      },
+      "remainingLabel": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Label for the remaining/unknown segment in amount mode",
+        "defaultValue": "Remaining"
+      },
+      "remainingUnit": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Unit to display with the remaining segment value in amount mode\nIf not provided, uses the unit from the first data item (if available)"
       },
       "showLegend": {
         "type": "\"false\" | \"true\"",
@@ -33,6 +61,11 @@
         "type": "string",
         "isRequired": false,
         "description": "Title to display above the chart"
+      },
+      "unit": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Global unit to display with values in amount mode (e.g., \"GB\", \"datasets\", \"K\")\nIndividual data items can override this with their own unit property\nOnly shown when mode is \"amount\""
       },
       "width": {
         "type": "\"string\" | \"number\"",

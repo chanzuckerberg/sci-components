@@ -23,11 +23,12 @@ export const LegendContainer = styled("div")`
 
 interface LegendItemProps extends CommonThemeProps {
   isSelected?: boolean;
+  disabled?: boolean;
 }
 
 export const LegendItem = styled("div")<LegendItemProps>`
   ${(props: LegendItemProps) => {
-    const { isSelected } = props;
+    const { isSelected, disabled } = props;
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
@@ -35,14 +36,15 @@ export const LegendItem = styled("div")<LegendItemProps>`
     return `
       display: flex;
       align-items: center;
-      cursor: pointer;
+      cursor: ${disabled ? "not-allowed" : "pointer"} !important;
       transition: background-color 0.2s ease;
       padding: 0 ${spaces?.xxs}px;
       border-radius: ${corners?.s}px;
       background-color: ${isSelected ? semanticColors?.base?.backgroundTertiary : "transparent"};
+      pointer-events: ${disabled ? "none" : "auto"};
 
       &:hover {
-        background-color: ${isSelected ? semanticColors?.base?.backgroundTertiary : semanticColors?.base?.backgroundSecondary};
+        background-color: ${disabled ? "transparent" : isSelected ? semanticColors?.base?.backgroundTertiary : semanticColors?.base?.backgroundSecondary};
       }
     `;
   }}
@@ -73,9 +75,13 @@ export const LegendIcon = styled("div")<LegendIconProps>`
   }};
 `;
 
-export const LegendLabel = styled("span")`
+interface LegendTextProps extends CommonThemeProps {
+  disabled?: boolean;
+}
+
+export const LegendLabel = styled("span")<LegendTextProps>`
   ${fontBodyXxxxs}
-  ${(props: CommonThemeProps) => {
+  ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     return `
       color: ${semanticColors?.base?.textPrimary};
@@ -83,9 +89,9 @@ export const LegendLabel = styled("span")`
   }};
 `;
 
-export const LegendValue = styled("span")`
+export const LegendValue = styled("span")<LegendTextProps>`
   ${fontBodyXxxxs}
-  ${(props: CommonThemeProps) => {
+  ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 

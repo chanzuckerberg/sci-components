@@ -36,6 +36,11 @@ export interface StackedBarChartDataItem {
    * Only shown in legend when mode is "amount"
    */
   unit?: string;
+  /**
+   * Disable the item (prevents all events on the corresponding legend item and bar segment)
+   * @default false
+   */
+  disabled?: boolean;
   tooltip: TooltipTableContentProps;
 }
 
@@ -46,8 +51,17 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
   /**
    * Badge text to display next to the title
+   * If not provided, defaults to showing item count based on selection:
+   * - No selection: total count (e.g., "5")
+   * - Partial selection: selected count (e.g., "3 of 5")
+   * - All selected: "All"
    */
   badge?: string;
+  /**
+   * Hide the badge when true
+   * @default false
+   */
+  hideBadge?: boolean;
   /**
    * Array of data items to display in the stacked bar
    */
@@ -115,6 +129,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const {
     title,
     badge,
+    hideBadge = false,
     data,
     width = 240,
     barHeight = 16,
@@ -133,6 +148,25 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const theme = useTheme() as SDSTheme;
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  // Calculate default badge value based on selection state
+  const totalItems = data.length;
+  const selectedCount = selectedIndices.length;
+  let defaultBadge: string;
+
+  if (selectedCount === 0) {
+    // No selection: show total count
+    defaultBadge = `${totalItems}`;
+  } else if (selectedCount === totalItems) {
+    // All selected: show "All"
+    defaultBadge = "All";
+  } else {
+    // Partial selection: show "X of Y"
+    defaultBadge = `${selectedCount} of ${totalItems}`;
+  }
+
+  // Use custom badge if provided, otherwise use calculated default
+  const displayBadge = badge !== undefined ? badge : defaultBadge;
 
   // Calculate total value from data
   const dataTotal = data.reduce((sum, item) => sum + item.value, 0);
@@ -176,6 +210,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       name: item.name,
       value: valueDisplay,
       color: item.color,
+      disabled: item.disabled,
     };
   });
 
@@ -193,6 +228,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       name: remainingLabel,
       value: remainingValueDisplay,
       color: theme?.palette?.sds?.base?.backgroundTertiary,
+      disabled: true, // Remaining segment is not interactive
     });
   }
 
@@ -269,6 +305,19 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
               placement="top"
               key={`${item.name}-${index}`}
               hasInvertedStyle={false}
+              open={hoveredIndex === index}
+              disableInteractive={true}
+              PopperProps={{
+                disablePortal: false,
+                modifiers: [
+                  {
+                    name: "offset",
+                    options: {
+                      offset: [0, 0],
+                    },
+                  },
+                ],
+              }}
             >
               {barSegment}
             </Tooltip>
@@ -285,6 +334,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             isFirst={false}
             isLast={true}
             opacity={1}
+            disabled={true}
           />
         )}
       </BarContainer>
@@ -317,7 +367,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     <ChartWrapper width={width} {...rest}>
       <TitleContainer>
         <ChartTitle>{title}</ChartTitle>
-        {badge ? <StyledBadge>{badge}</StyledBadge> : null}
+        {!hideBadge && <StyledBadge>{displayBadge}</StyledBadge>}
       </TitleContainer>
       {chartContent}
     </ChartWrapper>

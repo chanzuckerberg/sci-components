@@ -10,6 +10,7 @@ import {
   BUDGET_DATA,
   STORAGE_DATA,
   MIXED_UNIT_DATA,
+  DATA_WITH_DISABLED,
 } from "./constants";
 
 export default {
@@ -18,7 +19,14 @@ export default {
       control: {
         type: "text",
       },
-      description: "Badge text to display next to the title",
+      description:
+        "Badge text to display next to the title. If not provided, shows dynamic count based on selection",
+    },
+    hideBadge: {
+      control: {
+        type: "boolean",
+      },
+      description: "Hide the badge when true",
     },
     barHeight: {
       control: {
@@ -106,10 +114,10 @@ export default {
   title: "Data Viz/StackedBarChart",
 } as Meta;
 
-// Default story showcasing all features (percentage mode)
+// Default story showcasing all features (percentage mode with dynamic badge)
 export const Default = {
   args: {
-    badge: "5",
+    // badge not provided - will show dynamic count (e.g., "5")
     barHeight: 16,
     data: DOMAIN_DATA,
     mode: "percentage",
@@ -159,11 +167,11 @@ export const WithoutLegend = {
   },
 };
 
-// With selection functionality
+// With selection functionality (badge shows selection count dynamically)
 export const WithSelection = {
   render: WithSelectionStory,
   args: {
-    badge: "5",
+    // badge not provided - will show "5", "3 of 5", or "All" based on selection
     barHeight: 16,
     data: DOMAIN_DATA,
     mode: "percentage",
@@ -174,11 +182,11 @@ export const WithSelection = {
   },
 };
 
-// Amount-based mode matching Figma design (with global unit)
+// Amount-based mode matching Figma design (with global unit and custom badge)
 export const AmountBasedWithDatasets = {
   render: AmountBasedStory,
   args: {
-    badge: "5",
+    badge: "5 types", // Custom badge
     barHeight: 16,
     data: DOMAIN_DATA_AMOUNT,
     mode: "amount",
@@ -238,6 +246,19 @@ export const AmountBasedMixedUnits = {
     showLegend: true,
     showLegendValues: true,
     title: "File Storage",
+    width: 400,
+  },
+};
+
+// With disabled legend item (no interactions)
+export const WithDisabledItem = {
+  args: {
+    barHeight: 16,
+    data: DATA_WITH_DISABLED,
+    mode: "percentage",
+    showLegend: true,
+    showLegendValues: true,
+    title: "System Status",
     width: 400,
   },
 };

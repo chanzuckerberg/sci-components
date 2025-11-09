@@ -5,7 +5,7 @@ import RawStackedBarChart from "../../index";
 import { DOMAIN_DATA } from "../constants";
 
 export default function WithSelectionStory(args: Args): JSX.Element {
-  const { data = DOMAIN_DATA, badge = undefined, ...rest } = args;
+  const { data = DOMAIN_DATA, ...rest } = args;
   const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
 
   const handleRemoveTag = (indexToRemove: number) => {
@@ -19,11 +19,6 @@ export default function WithSelectionStory(args: Args): JSX.Element {
         data={data}
         selectedIndices={selectedIndices}
         onSelectionChange={setSelectedIndices}
-        badge={
-          selectedIndices.length > 0
-            ? `${selectedIndices.length.toString()} of ${data.length.toString()}`
-            : badge
-        }
       />
 
       <div style={{ marginTop: "40px" }}>

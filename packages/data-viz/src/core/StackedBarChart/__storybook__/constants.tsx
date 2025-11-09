@@ -517,6 +517,57 @@ export const BUDGET_DATA = [
   },
 ];
 
+// Example with disabled items (for the "remaining" segment)
+export const DATA_WITH_DISABLED = [
+  {
+    name: "Active",
+    value: 320,
+    color: "#873b63",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Running processes", value: 180 },
+            { label: "Active connections", value: 140 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Inactive",
+    value: 180,
+    color: "#7c62ca",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Paused processes", value: 100 },
+            { label: "Idle connections", value: 80 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Unknown",
+    value: 50,
+    color: "#CCCCCC",
+    // This item is disabled - no interactions allowed
+    disabled: true,
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [{ label: "Unclassified", value: 50 }],
+        },
+      ],
+    },
+  },
+];
+
 export const STORAGE_DATA = [
   {
     name: "Documents",

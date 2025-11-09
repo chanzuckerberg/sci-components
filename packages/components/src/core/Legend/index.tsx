@@ -20,6 +20,11 @@ export interface LegendItemData {
    * Color for the legend icon
    */
   color: string;
+  /**
+   * Disable the legend item (prevents all events)
+   * @default false
+   */
+  disabled?: boolean;
 }
 
 export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
@@ -84,22 +89,33 @@ const Legend = (props: LegendProps): JSX.Element => {
       ? externalHoveredIndex
       : internalHoveredIndex;
 
-  // Sync local state with prop changes
+  // Sync local state with prop changes (only if values actually changed)
   useEffect(() => {
-    setLocalSelectedIndices(selectedIndices);
+    // Compare stringified versions to avoid infinite loops from reference changes
+    const currentSorted = JSON.stringify([...selectedIndices].sort());
+    const localSorted = JSON.stringify([...localSelectedIndices].sort());
+
+    if (currentSorted !== localSorted) {
+      setLocalSelectedIndices(selectedIndices);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIndices]);
 
   const handleMouseEnter = (item: LegendItemData, index: number) => {
+    if (item.disabled) return; // Prevent event if disabled
     setInternalHoveredIndex(index);
     onItemMouseEnter?.(item, index);
   };
 
   const handleMouseLeave = (item: LegendItemData, index: number) => {
+    if (item.disabled) return; // Prevent event if disabled
     setInternalHoveredIndex(null);
     onItemMouseLeave?.(item, index);
   };
 
   const handleClick = (item: LegendItemData, index: number) => {
+    if (item.disabled) return; // Prevent event if disabled
+
     // Handle selection toggle
     if (onSelectionChange) {
       const isSelected = localSelectedIndices.includes(index);
@@ -144,15 +160,17 @@ const Legend = (props: LegendProps): JSX.Element => {
             onMouseLeave={() => handleMouseLeave(item, index)}
             onClick={() => handleClick(item, index)}
             role="button"
-            tabIndex={0}
+            tabIndex={item.disabled ? -1 : 0}
             aria-label={`${item.name}${item.value ? `: ${item.value}` : ""}`}
             aria-pressed={isSelected}
+            aria-disabled={item.disabled}
             isSelected={isSelected}
+            disabled={item.disabled}
           >
             <LegendIcon color={item.color} isDimmed={isDimmed} />
-            <LegendLabel>{item.name}</LegendLabel>
+            <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
             {showValues && item.value !== undefined && (
-              <LegendValue>
+              <LegendValue disabled={item.disabled}>
                 {typeof item.value === "number"
                   ? item.value.toLocaleString()
                   : item.value}

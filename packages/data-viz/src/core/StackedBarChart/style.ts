@@ -86,6 +86,7 @@ interface BarSegmentProps extends CommonThemeProps {
   isFirst: boolean;
   isLast: boolean;
   opacity: number;
+  disabled?: boolean;
 }
 
 export const BarSegment = styled("div")<BarSegmentProps>`
@@ -94,7 +95,8 @@ export const BarSegment = styled("div")<BarSegmentProps>`
   flex: ${(props) => props.percentage};
   opacity: ${(props) => props.opacity};
   transition: opacity 0.2s ease;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
 
   ${(props: BarSegmentProps) => {
     const corners = getCorners(props);
