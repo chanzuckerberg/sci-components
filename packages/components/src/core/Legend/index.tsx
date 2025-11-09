@@ -146,10 +146,12 @@ const Legend = (props: LegendProps): JSX.Element => {
         const isSelected = localSelectedIndices.includes(index);
 
         // Dim if:
+        // - Never dim disabled items (e.g., remaining segment)
         // - When hovering: dim items that are neither hovered nor selected
         // - When not hovering: dim items that are not selected (if there are selections)
-        const isDimmed =
-          hoveredIndex !== null
+        const isDimmed = item.disabled
+          ? false
+          : hoveredIndex !== null
             ? !isHovered && !isSelected
             : hasSelection && !isSelected;
 
