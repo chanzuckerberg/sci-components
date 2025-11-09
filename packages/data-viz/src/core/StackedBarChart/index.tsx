@@ -125,6 +125,53 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   unit?: string;
 }
 
+// Helper: Calculate badge display text based on selection state
+const calculateBadgeText = (
+  totalItems: number,
+  selectedCount: number
+): string => {
+  if (selectedCount === 0) return `${totalItems}`;
+  if (selectedCount === totalItems) return "All";
+  return `${selectedCount} of ${totalItems}`;
+};
+
+// Helper: Calculate legend value display
+const calculateLegendValue = (
+  item: StackedBarChartDataItem & { percentage: number },
+  mode: "percentage" | "amount",
+  showLegendValues: boolean,
+  globalUnit?: string
+): string | undefined => {
+  if (!showLegendValues) return undefined;
+
+  if (mode === "percentage") {
+    return `${Math.round(item.percentage)}%`;
+  }
+
+  // Amount mode: show value with optional unit
+  const effectiveUnit = item.unit || globalUnit;
+  return effectiveUnit ? `${item.value} ${effectiveUnit}` : `${item.value}`;
+};
+
+// Helper: Get segment opacity based on hover and selection state
+const getSegmentOpacity = (
+  index: number,
+  hoveredIndex: number | null,
+  selectedIndices: number[]
+): number => {
+  const hasSelection = selectedIndices.length > 0;
+
+  if (hoveredIndex !== null) {
+    return hoveredIndex === index || selectedIndices.includes(index) ? 1 : 0.3;
+  }
+
+  if (hasSelection) {
+    return selectedIndices.includes(index) ? 1 : 0.3;
+  }
+
+  return 1;
+};
+
 const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const {
     title,
@@ -149,23 +196,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Calculate default badge value based on selection state
-  const totalItems = data.length;
-  const selectedCount = selectedIndices.length;
-  let defaultBadge: string;
-
-  if (selectedCount === 0) {
-    // No selection: show total count
-    defaultBadge = `${totalItems}`;
-  } else if (selectedCount === totalItems) {
-    // All selected: show "All"
-    defaultBadge = "All";
-  } else {
-    // Partial selection: show "X of Y"
-    defaultBadge = `${selectedCount} of ${totalItems}`;
-  }
-
-  // Use custom badge if provided, otherwise use calculated default
+  // Calculate default badge value
+  const defaultBadge = calculateBadgeText(data.length, selectedIndices.length);
   const displayBadge = badge !== undefined ? badge : defaultBadge;
 
   // Calculate total value from data
@@ -190,29 +222,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   }));
 
   // Convert data to legend items format
-  const legendItems: LegendItemData[] = dataWithPercentages.map((item) => {
-    let valueDisplay: string | undefined;
-
-    if (showLegendValues) {
-      if (mode === "percentage") {
-        valueDisplay = `${Math.round(item.percentage)}%`;
-      } else {
-        // Amount mode: show value with optional unit
-        // Use item's unit if provided, otherwise fall back to global unit
-        const effectiveUnit = item.unit || unit;
-        valueDisplay = effectiveUnit
-          ? `${item.value} ${effectiveUnit}`
-          : `${item.value}`;
-      }
-    }
-
-    return {
-      name: item.name,
-      value: valueDisplay,
-      color: item.color,
-      disabled: item.disabled,
-    };
-  });
+  const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
+    name: item.name,
+    value: calculateLegendValue(item, mode, showLegendValues, unit),
+    color: item.color,
+    disabled: item.disabled,
+  }));
 
   // Add remaining item to legend if applicable
   if (hasRemaining && showLegend) {
@@ -260,22 +275,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     onSelectionChange(newSelectedIndices);
   };
 
-  // Determine if a segment should be dimmed
-  const hasSelection = selectedIndices.length > 0;
-  const getSegmentOpacity = (index: number) => {
-    if (hoveredIndex !== null) {
-      // When hovering: full opacity for hovered and selected, dimmed for others
-      return hoveredIndex === index || selectedIndices.includes(index)
-        ? 1
-        : 0.3;
-    }
-    if (hasSelection) {
-      // When selection exists: full opacity for selected, dimmed for others
-      return selectedIndices.includes(index) ? 1 : 0.3;
-    }
-    return 1;
-  };
-
   const chartContent = (
     <StyledStackedBarChartWrapper>
       <BarContainer width={width}>
@@ -291,7 +290,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
               height={barHeight}
               isFirst={isFirst}
               isLast={isLast}
-              opacity={getSegmentOpacity(index)}
+              opacity={getSegmentOpacity(index, hoveredIndex, selectedIndices)}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleSegmentClick(index)}
