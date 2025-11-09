@@ -1,5 +1,11 @@
-import { HTMLAttributes, useState } from "react";
-import { Legend, type LegendItemData } from "@czi-sds/components";
+import { cloneElement, HTMLAttributes, useState } from "react";
+import {
+  Legend,
+  Tooltip,
+  TooltipTable,
+  type LegendItemData,
+  type TooltipTableContentProps,
+} from "@czi-sds/components";
 import {
   ChartTitle,
   ChartWrapper,
@@ -23,6 +29,7 @@ export interface StackedBarChartDataItem {
    * Color for the segment (hex or CSS color)
    */
   color: string;
+  tooltip: TooltipTableContentProps;
 }
 
 export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
@@ -39,10 +46,10 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    */
   data: StackedBarChartDataItem[];
   /**
-   * Width of the chart in pixels
+   * Width of the chart - accepts any CSS width value (e.g., "100%", "20vw", "300px", or number for pixels)
    * @default 240
    */
-  width?: number;
+  width?: number | string;
   /**
    * Height of the bar in pixels
    * @default 16
@@ -151,9 +158,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           const isFirst = index === 0;
           const isLast = index === dataWithPercentages.length - 1;
 
-          return (
+          const barSegment = (
             <BarSegment
-              key={`${item.name}-${index}`}
               color={item.color}
               percentage={item.percentage}
               height={barHeight}
@@ -165,8 +171,23 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
               onClick={() => handleSegmentClick(index)}
             />
           );
+
+          return item.tooltip !== undefined ? (
+            <Tooltip
+              title={null}
+              componentSlot={<TooltipTable {...item.tooltip} />}
+              placement="top"
+              key={`${item.name}-${index}`}
+              hasInvertedStyle={false}
+            >
+              {barSegment}
+            </Tooltip>
+          ) : (
+            cloneElement(barSegment, { key: `${item.name}-${index}` })
+          );
         })}
       </BarContainer>
+
       {showLegend && (
         <Legend
           items={legendItems}
@@ -175,6 +196,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           onItemMouseLeave={handleLegendItemLeave}
           selectedIndices={selectedIndices}
           onSelectionChange={onSelectionChange}
+          hoveredIndex={hoveredIndex}
         />
       )}
     </StyledStackedBarChartWrapper>

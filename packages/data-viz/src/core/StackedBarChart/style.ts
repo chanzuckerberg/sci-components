@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontCapsXxxxs,
+  fontTabularSemiboldXxxxs,
   fontHeaderS,
   getCorners,
   getSpaces,
@@ -9,13 +9,14 @@ import {
 } from "@czi-sds/components";
 
 interface ChartWrapperProps extends CommonThemeProps {
-  width: number;
+  width: number | string;
 }
 
 export const ChartWrapper = styled("div")<ChartWrapperProps>`
   display: flex;
   flex-direction: column;
-  width: ${(props) => props.width}px;
+  width: ${(props) =>
+    typeof props.width === "number" ? `${props.width}px` : props.width};
 `;
 
 export const TitleContainer = styled("div")`
@@ -43,7 +44,7 @@ export const ChartTitle = styled("div")`
 `;
 
 export const StyledBadge = styled("div")`
-  ${fontCapsXxxxs};
+  ${fontTabularSemiboldXxxxs};
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
@@ -60,12 +61,13 @@ export const StyledBadge = styled("div")`
 `;
 
 interface BarContainerProps extends CommonThemeProps {
-  width: number;
+  width: number | string;
 }
 
 export const BarContainer = styled("div")<BarContainerProps>`
   display: flex;
-  width: ${(props) => props.width}px;
+  width: ${(props) =>
+    typeof props.width === "number" ? `${props.width}px` : props.width};
 
   ${(props: BarContainerProps) => {
     const spaces = getSpaces(props);

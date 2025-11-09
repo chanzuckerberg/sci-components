@@ -53,6 +53,10 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    * @param selectedIndices Array of selected indices
    */
   onSelectionChange?: (selectedIndices: number[]) => void;
+  /**
+   * External control for hovered index (for bidirectional hover with charts)
+   */
+  hoveredIndex?: number | null;
 }
 
 const Legend = (props: LegendProps): JSX.Element => {
@@ -64,12 +68,21 @@ const Legend = (props: LegendProps): JSX.Element => {
     showValues = false,
     selectedIndices = [],
     onSelectionChange,
+    hoveredIndex: externalHoveredIndex,
     ...rest
   } = props;
 
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [internalHoveredIndex, setInternalHoveredIndex] = useState<
+    number | null
+  >(null);
   const [localSelectedIndices, setLocalSelectedIndices] =
     useState<number[]>(selectedIndices);
+
+  // Use external hoveredIndex if provided, otherwise use internal state
+  const hoveredIndex =
+    externalHoveredIndex !== undefined
+      ? externalHoveredIndex
+      : internalHoveredIndex;
 
   // Sync local state with prop changes
   useEffect(() => {
@@ -77,12 +90,12 @@ const Legend = (props: LegendProps): JSX.Element => {
   }, [selectedIndices]);
 
   const handleMouseEnter = (item: LegendItemData, index: number) => {
-    setHoveredIndex(index);
+    setInternalHoveredIndex(index);
     onItemMouseEnter?.(item, index);
   };
 
   const handleMouseLeave = (item: LegendItemData, index: number) => {
-    setHoveredIndex(null);
+    setInternalHoveredIndex(null);
     onItemMouseLeave?.(item, index);
   };
 

@@ -1,25 +1,316 @@
 export const DOMAIN_DATA = [
-  { name: "Transcriptomic", value: 117, color: "#873b63" },
-  { name: "Imaging", value: 61, color: "#7c62ca" },
-  { name: "Sequencing", value: 34, color: "#40b5ce" },
-  { name: "Another", value: 15, color: "#66e673" },
-  { name: "Type", value: 130, color: "#e7d574" },
+  {
+    name: "Transcriptomic",
+    value: 117,
+    color: "#873b63",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Sub-modality", value: 14 },
+            { label: "Another sub-modality", value: 19 },
+            { label: "Modality sub-type here", value: 270 },
+            { label: "Sub-type of modality", value: 93 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Imaging",
+    value: 61,
+    color: "#7c62ca",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Fluorescence microscopy", value: 22 },
+            { label: "Confocal imaging", value: 15 },
+            { label: "Electron microscopy", value: 11 },
+            { label: "Light sheet imaging", value: 8 },
+            { label: "Two-photon microscopy", value: 5 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Sequencing",
+    value: 34,
+    color: "#40b5ce",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "RNA-seq", value: 15 },
+            { label: "DNA-seq", value: 10 },
+            { label: "ChIP-seq", value: 6 },
+            { label: "ATAC-seq", value: 3 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Another",
+    value: 15,
+    color: "#66e673",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Proteomics", value: 8 },
+            { label: "Metabolomics", value: 4 },
+            { label: "Flow cytometry", value: 3 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Type",
+    value: 130,
+    color: "#e7d574",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Single-cell analysis", value: 38 },
+            { label: "Bulk analysis", value: 32 },
+            { label: "Spatial analysis", value: 25 },
+            { label: "Time-series", value: 18 },
+            { label: "Multi-omics", value: 10 },
+            { label: "In situ", value: 7 },
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export const ORGANISM_DATA = [
-  { name: "H. sapiens", value: 3212, color: "#e7798b" },
-  { name: "M. musculus", value: 130, color: "#c59345" },
-  { name: "C. Jacques", value: 89, color: "#9aa446" },
-  { name: "D. melanogaster", value: 74, color: "#6ab448" },
-  { name: "S. cerevisiae", value: 27, color: "#00bf9d" },
-  { name: "D. rerio", value: 21, color: "#13c0e4" },
-  { name: "S. pombe", value: 16, color: "#689fdc" },
-  { name: "A. thaliana", value: 11, color: "#997ec7" },
+  {
+    name: "H. sapiens",
+    value: 322,
+    color: "#e7798b",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Brain tissue", value: 98 },
+            { label: "Blood samples", value: 85 },
+            { label: "Skin tissue", value: 62 },
+            { label: "Liver tissue", value: 45 },
+            { label: "Lung tissue", value: 32 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "M. musculus",
+    value: 130,
+    color: "#c59345",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Brain tissue", value: 52 },
+            { label: "Spleen tissue", value: 38 },
+            { label: "Liver tissue", value: 25 },
+            { label: "Kidney tissue", value: 15 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "C. Jacques",
+    value: 89,
+    color: "#9aa446",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Cell culture", value: 45 },
+            { label: "Colony samples", value: 28 },
+            { label: "Spore samples", value: 16 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "D. melanogaster",
+    value: 74,
+    color: "#6ab448",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Adult stage", value: 25 },
+            { label: "Larval stage", value: 20 },
+            { label: "Embryonic stage", value: 15 },
+            { label: "Pupal stage", value: 9 },
+            { label: "Late embryonic", value: 5 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "S. cerevisiae",
+    value: 27,
+    color: "#00bf9d",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Wild-type strain", value: 15 },
+            { label: "Mutant strains", value: 8 },
+            { label: "Laboratory strains", value: 4 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "D. rerio",
+    value: 21,
+    color: "#13c0e4",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Adult samples", value: 12 },
+            { label: "Embryonic samples", value: 9 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "S. pombe",
+    value: 16,
+    color: "#689fdc",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Wild-type strain", value: 10 },
+            { label: "Mutant strains", value: 6 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "A. thaliana",
+    value: 11,
+    color: "#997ec7",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Leaf tissue", value: 3 },
+            { label: "Root tissue", value: 3 },
+            { label: "Flower tissue", value: 2 },
+            { label: "Seed samples", value: 2 },
+            { label: "Stem tissue", value: 1 },
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export const TISSUE_DATA = [
-  { name: "Brain", value: 450, color: "#e7798b" },
-  { name: "Heart", value: 280, color: "#c59345" },
-  { name: "Liver", value: 220, color: "#9aa446" },
-  { name: "Kidney", value: 150, color: "#6ab448" },
+  {
+    name: "Brain",
+    value: 450,
+    color: "#e7798b",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Cerebral cortex", value: 150 },
+            { label: "Hippocampus", value: 95 },
+            { label: "Cerebellum", value: 80 },
+            { label: "Brainstem", value: 55 },
+            { label: "Thalamus", value: 40 },
+            { label: "Amygdala", value: 30 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Heart",
+    value: 280,
+    color: "#c59345",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Left ventricle", value: 95 },
+            { label: "Right ventricle", value: 75 },
+            { label: "Left atrium", value: 52 },
+            { label: "Right atrium", value: 38 },
+            { label: "Septum", value: 20 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Liver",
+    value: 220,
+    color: "#9aa446",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Right lobe", value: 110 },
+            { label: "Left lobe", value: 75 },
+            { label: "Caudate lobe", value: 35 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Kidney",
+    value: 150,
+    color: "#6ab448",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Cortex", value: 55 },
+            { label: "Medulla", value: 45 },
+            { label: "Renal pelvis", value: 28 },
+            { label: "Glomeruli", value: 12 },
+            { label: "Collecting ducts", value: 10 },
+          ],
+        },
+      ],
+    },
+  },
 ];

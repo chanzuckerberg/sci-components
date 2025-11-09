@@ -43,9 +43,10 @@ export default {
     },
     width: {
       control: {
-        type: "number",
+        type: "text",
       },
-      description: "Width of the chart in pixels",
+      description:
+        "Width of the chart - accepts any CSS width value (e.g., '100%', '20vw', '300px', or number for pixels)",
     },
   },
   component: StackedBarChart,
@@ -119,7 +120,7 @@ export const WithSelection = {
     data: DOMAIN_DATA,
     showLegend: true,
     showLegendValues: true,
-    title: "Domain Distribution",
-    width: 240,
+    title: "Domain",
+    width: "360px",
   },
 };

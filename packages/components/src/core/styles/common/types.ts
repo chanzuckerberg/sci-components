@@ -248,6 +248,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     medium: {
       l: TypographyStyle;
@@ -256,6 +257,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     semibold: {
       l: TypographyStyle;
@@ -264,6 +266,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
   };
   tabular: {
@@ -272,18 +275,21 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     medium: {
       s: TypographyStyle;
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     semibold: {
       s: TypographyStyle;
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
   };
   title: {

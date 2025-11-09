@@ -13,7 +13,7 @@ export default function WithSelectionStory(args: Args): JSX.Element {
   };
 
   return (
-    <div style={{ width: "fit-content" }}>
+    <div style={{ marginTop: 120, marginLeft: 120 }}>
       <RawStackedBarChart
         {...rest}
         data={data}

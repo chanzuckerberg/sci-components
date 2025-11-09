@@ -130,14 +130,17 @@ export const fontTabular = createFontFunction({
   type: "tabular",
 });
 
+export const fontTabularXxxxs = fontTabular("xxxxs", "regular");
 export const fontTabularXxxs = fontTabular("xxxs", "regular");
 export const fontTabularXxs = fontTabular("xxs", "regular");
 export const fontTabularXs = fontTabular("xs", "regular");
 export const fontTabularS = fontTabular("s", "regular");
+export const fontTabularMediumXxxxs = fontTabular("xxxxs", "medium");
 export const fontTabularMediumXxxs = fontTabular("xxxs", "medium");
 export const fontTabularMediumXxs = fontTabular("xxs", "medium");
 export const fontTabularMediumXs = fontTabular("xs", "medium");
 export const fontTabularMediumS = fontTabular("s", "medium");
+export const fontTabularSemiboldXxxxs = fontTabular("xxxxs", "semibold");
 export const fontTabularSemiboldXxxs = fontTabular("xxxs", "semibold");
 export const fontTabularSemiboldXxs = fontTabular("xxs", "semibold");
 export const fontTabularSemiboldXs = fontTabular("xs", "semibold");
@@ -163,18 +166,21 @@ export const fontLinkS = fontLink("s", "regular");
 export const fontLinkXs = fontLink("xs", "regular");
 export const fontLinkXxs = fontLink("xxs", "regular");
 export const fontLinkXxxs = fontLink("xxxs", "regular");
+export const fontLinkXxxxs = fontLink("xxxxs", "regular");
 export const fontLinkMediumL = fontLink("l", "medium");
 export const fontLinkMediumM = fontLink("m", "medium");
 export const fontLinkMediumS = fontLink("s", "medium");
 export const fontLinkMediumXs = fontLink("xs", "medium");
 export const fontLinkMediumXxs = fontLink("xxs", "medium");
 export const fontLinkMediumXxxs = fontLink("xxxs", "medium");
+export const fontLinkMediumXxxxs = fontLink("xxxxs", "medium");
 export const fontLinkSemiboldL = fontLink("l", "semibold");
 export const fontLinkSemiboldM = fontLink("m", "semibold");
 export const fontLinkSemiboldS = fontLink("s", "semibold");
 export const fontLinkSemiboldXs = fontLink("xs", "semibold");
 export const fontLinkSemiboldXxs = fontLink("xxs", "semibold");
 export const fontLinkSemiboldXxxs = fontLink("xxxs", "semibold");
+export const fontLinkSemiboldXxxxs = fontLink("xxxxs", "semibold");
 
 function themeToCss(
   fontTheme: TypographyStyle,

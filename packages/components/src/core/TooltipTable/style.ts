@@ -106,7 +106,7 @@ export const RowLabel = styled(TableCell, {
   ${fontBodyMediumXs}
   ${disabledStyle}
   
-  width: 50%;
+  width: 100%;
   border-bottom: none;
   padding: 0;
 `;
@@ -123,6 +123,7 @@ export const RowValue = styled(TableCell, {
   padding-bottom: 0;
   padding-right: 0 !important;
   border-bottom: none;
+  width: fit-content;
 `;
 
 export const Alert = styled("div")`
