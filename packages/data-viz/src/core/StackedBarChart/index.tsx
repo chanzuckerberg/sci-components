@@ -1,6 +1,7 @@
 import { cloneElement, HTMLAttributes, useState } from "react";
 import {
   Legend,
+  SDSTheme,
   Tooltip,
   TooltipTable,
   type LegendItemData,
@@ -15,6 +16,7 @@ import {
   TitleContainer,
   StyledStackedBarChartWrapper,
 } from "./style";
+import { useTheme } from "@mui/material";
 
 export interface StackedBarChartDataItem {
   /**
@@ -29,6 +31,11 @@ export interface StackedBarChartDataItem {
    * Color for the segment (hex or CSS color)
    */
   color: string;
+  /**
+   * Unit label to display with the value in amount mode (e.g., "GB", "datasets", "MB")
+   * Only shown in legend when mode is "amount"
+   */
+  unit?: string;
   tooltip: TooltipTableContentProps;
 }
 
@@ -73,6 +80,35 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    * Callback when legend selection changes
    */
   onSelectionChange?: (selectedIndices: number[]) => void;
+  /**
+   * Chart mode - controls how segments are calculated
+   * - "percentage": Segments fill entire bar (100%), proportional to their values
+   * - "amount": Segments sized based on actual values relative to maxAmount
+   * @default "percentage"
+   */
+  mode?: "percentage" | "amount";
+  /**
+   * Maximum amount for the bar (used only in "amount" mode)
+   * If not provided, defaults to sum of all values (no remaining segment)
+   * If provided and sum < maxAmount, shows gray "remaining" segment
+   */
+  maxAmount?: number;
+  /**
+   * Label for the remaining/unknown segment in amount mode
+   * @default "Remaining"
+   */
+  remainingLabel?: string;
+  /**
+   * Unit to display with the remaining segment value in amount mode
+   * If not provided, uses the unit from the first data item (if available)
+   */
+  remainingUnit?: string;
+  /**
+   * Global unit to display with values in amount mode (e.g., "GB", "datasets", "K")
+   * Individual data items can override this with their own unit property
+   * Only shown when mode is "amount"
+   */
+  unit?: string;
 }
 
 const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
@@ -86,26 +122,79 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     showLegendValues = true,
     selectedIndices = [],
     onSelectionChange,
+    mode = "percentage",
+    maxAmount,
+    remainingLabel = "Remaining",
+    remainingUnit,
+    unit,
     ...rest
   } = props;
 
+  const theme = useTheme() as SDSTheme;
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Calculate total value
-  const total = data.reduce((sum, item) => sum + item.value, 0);
+  // Calculate total value from data
+  const dataTotal = data.reduce((sum, item) => sum + item.value, 0);
+
+  // Determine the effective max amount
+  const effectiveMaxAmount =
+    mode === "amount" && maxAmount ? maxAmount : dataTotal;
+
+  // Calculate if there's a remaining segment
+  const hasRemaining = mode === "amount" && dataTotal < effectiveMaxAmount;
+  const remainingValue = hasRemaining ? effectiveMaxAmount - dataTotal : 0;
+  const remainingPercentage = hasRemaining
+    ? (remainingValue / effectiveMaxAmount) * 100
+    : 0;
 
   // Calculate percentages for each segment
   const dataWithPercentages = data.map((item) => ({
     ...item,
-    percentage: total > 0 ? (item.value / total) * 100 : 0,
+    percentage:
+      effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
   }));
 
   // Convert data to legend items format
-  const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
-    name: item.name,
-    value: showLegendValues ? `${Math.round(item.percentage)}%` : undefined,
-    color: item.color,
-  }));
+  const legendItems: LegendItemData[] = dataWithPercentages.map((item) => {
+    let valueDisplay: string | undefined;
+
+    if (showLegendValues) {
+      if (mode === "percentage") {
+        valueDisplay = `${Math.round(item.percentage)}%`;
+      } else {
+        // Amount mode: show value with optional unit
+        // Use item's unit if provided, otherwise fall back to global unit
+        const effectiveUnit = item.unit || unit;
+        valueDisplay = effectiveUnit
+          ? `${item.value} ${effectiveUnit}`
+          : `${item.value}`;
+      }
+    }
+
+    return {
+      name: item.name,
+      value: valueDisplay,
+      color: item.color,
+    };
+  });
+
+  // Add remaining item to legend if applicable
+  if (hasRemaining && showLegend) {
+    // Determine unit for remaining: use remainingUnit if provided, otherwise use unit from first item, then global unit
+    const effectiveRemainingUnit = remainingUnit || data[0]?.unit || unit || "";
+    const remainingValueDisplay = showLegendValues
+      ? effectiveRemainingUnit
+        ? `${remainingValue} ${effectiveRemainingUnit}`
+        : `${remainingValue}`
+      : undefined;
+
+    legendItems.push({
+      name: remainingLabel,
+      value: remainingValueDisplay,
+      color: theme?.palette?.sds?.base?.backgroundTertiary,
+    });
+  }
 
   // Handle legend item hover
   const handleLegendItemHover = (item: LegendItemData, index: number) => {
@@ -156,7 +245,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       <BarContainer width={width}>
         {dataWithPercentages.map((item, index) => {
           const isFirst = index === 0;
-          const isLast = index === dataWithPercentages.length - 1;
+          const isLast =
+            index === dataWithPercentages.length - 1 && !hasRemaining;
 
           const barSegment = (
             <BarSegment
@@ -186,6 +276,17 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             cloneElement(barSegment, { key: `${item.name}-${index}` })
           );
         })}
+        {hasRemaining && (
+          <BarSegment
+            key="remaining"
+            color={theme?.palette?.sds?.base?.backgroundTertiary}
+            percentage={remainingPercentage}
+            height={barHeight}
+            isFirst={false}
+            isLast={true}
+            opacity={1}
+          />
+        )}
       </BarContainer>
 
       {showLegend && (

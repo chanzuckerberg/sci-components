@@ -314,3 +314,261 @@ export const TISSUE_DATA = [
     },
   },
 ];
+
+// Amount-based data examples
+// Example using global unit (all items use the same unit)
+export const DOMAIN_DATA_AMOUNT = [
+  {
+    name: "Transcriptomic",
+    value: 460,
+    color: "#873b63",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "RNA-seq", value: 180 },
+            { label: "Microarray", value: 150 },
+            { label: "Single-cell RNA", value: 130 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Imaging",
+    value: 310,
+    color: "#7c62ca",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Fluorescence", value: 150 },
+            { label: "Confocal", value: 100 },
+            { label: "Electron microscopy", value: 60 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Sequencing",
+    value: 191,
+    color: "#40b5ce",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "DNA-seq", value: 100 },
+            { label: "ChIP-seq", value: 55 },
+            { label: "ATAC-seq", value: 36 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Another",
+    value: 76,
+    color: "#66e673",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Proteomics", value: 45 },
+            { label: "Metabolomics", value: 31 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Type Five",
+    value: 44,
+    color: "#e7d574",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Flow cytometry", value: 30 },
+            { label: "Mass spectrometry", value: 14 },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+// Example with mixed units (some items override the global unit)
+export const MIXED_UNIT_DATA = [
+  {
+    name: "Small files",
+    value: 245,
+    // Uses global unit
+    color: "#e7798b",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Documents", value: 120 },
+            { label: "Text files", value: 85 },
+            { label: "Config files", value: 40 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Large files",
+    value: 1200,
+    unit: "MB", // Override global unit with MB
+    color: "#c59345",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Videos", value: 800 },
+            { label: "Images", value: 300 },
+            { label: "Audio", value: 100 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Cache",
+    value: 380,
+    // Uses global unit
+    color: "#9aa446",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Browser cache", value: 200 },
+            { label: "App cache", value: 180 },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+export const BUDGET_DATA = [
+  {
+    name: "Research",
+    value: 450,
+    unit: "K",
+    color: "#873b63",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Equipment", value: 180 },
+            { label: "Personnel", value: 150 },
+            { label: "Materials", value: 120 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Operations",
+    value: 280,
+    unit: "K",
+    color: "#7c62ca",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Facilities", value: 120 },
+            { label: "IT Infrastructure", value: 90 },
+            { label: "Utilities", value: 70 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Development",
+    value: 170,
+    unit: "K",
+    color: "#40b5ce",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Software", value: 80 },
+            { label: "Training", value: 55 },
+            { label: "Consulting", value: 35 },
+          ],
+        },
+      ],
+    },
+  },
+];
+
+export const STORAGE_DATA = [
+  {
+    name: "Documents",
+    value: 245,
+    unit: "GB",
+    color: "#e7798b",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "PDFs", value: 120 },
+            { label: "Word files", value: 85 },
+            { label: "Spreadsheets", value: 40 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Images",
+    value: 380,
+    unit: "GB",
+    color: "#c59345",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "Raw images", value: 220 },
+            { label: "Processed", value: 100 },
+            { label: "Thumbnails", value: 60 },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    name: "Videos",
+    value: 125,
+    unit: "GB",
+    color: "#9aa446",
+    tooltip: {
+      showSectionHeader: false,
+      data: [
+        {
+          dataRows: [
+            { label: "HD videos", value: 85 },
+            { label: "Compressed", value: 40 },
+          ],
+        },
+      ],
+    },
+  },
+];
