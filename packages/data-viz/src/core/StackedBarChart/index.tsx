@@ -235,21 +235,28 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const [autoColorMap, setAutoColorMap] = useState<Map<string, string>>(
     new Map()
   );
+  const [animatedRemainingPercentage, setAnimatedRemainingPercentage] =
+    useState<number>(0);
   const previousProcessedRef = useRef<AnimatedItem[]>([]);
   const previousDataKeysRef = useRef<Set<string>>(new Set());
   const previousColorOptionsRef = useRef<{
     options: typeof colorGeneratorOptions;
     isDarkMode: boolean;
   } | null>(null);
+  const previousRemainingPercentageRef = useRef<number>(0);
 
   // Helper to animate items when removals occur
   const animateItemRemoval = (
     previousItems: AnimatedItem[],
-    nextItems: AnimatedItem[]
+    nextItems: AnimatedItem[],
+    currentRemainingPercentage: number,
+    newRemainingPercentage: number
   ): (() => void) | undefined => {
     if (typeof window === "undefined") {
       setAnimatedItems(nextItems);
       previousProcessedRef.current = nextItems;
+      setAnimatedRemainingPercentage(newRemainingPercentage);
+      previousRemainingPercentageRef.current = newRemainingPercentage;
       return undefined;
     }
 
@@ -274,6 +281,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
     setAnimatedItems(initialItems);
     previousProcessedRef.current = initialItems;
+    // Keep remaining segment at current percentage initially
+    setAnimatedRemainingPercentage(currentRemainingPercentage);
 
     const frameIds: number[] = [];
 
@@ -284,10 +293,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
           const updatedPrev = prev.map((item) => {
             if (removedKeySet.has(item.key)) {
+              // Animate exiting items to 0
               return { ...item, percentage: 0 };
             }
-            const nextItem = nextItemsMap.get(item.key);
-            return nextItem ? { ...nextItem, isExiting: false } : item;
+            // Keep continuing items at their OLD percentages during animation
+            // This prevents the flash/jump
+            return { ...item, isExiting: false };
           });
 
           const addedItems = nextItems.filter(
@@ -296,6 +307,9 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
           return [...updatedPrev, ...addedItems];
         });
+
+        // Animate remaining segment to new percentage
+        setAnimatedRemainingPercentage(newRemainingPercentage);
       });
 
       frameIds.push(secondFrame);
@@ -304,8 +318,11 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     frameIds.push(firstFrame);
 
     const timeoutId = window.setTimeout(() => {
+      // After animation completes, update to the new percentages
       setAnimatedItems(nextItems);
       previousProcessedRef.current = nextItems;
+      setAnimatedRemainingPercentage(newRemainingPercentage);
+      previousRemainingPercentageRef.current = newRemainingPercentage;
     }, 350);
 
     return () => {
@@ -444,10 +461,17 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     if (previousProcessed.length === 0) {
       setAnimatedItems(dataWithPercentages);
       previousProcessedRef.current = dataWithPercentages;
+      setAnimatedRemainingPercentage(remainingPercentage);
+      previousRemainingPercentageRef.current = remainingPercentage;
       return;
     }
 
-    const cleanup = animateItemRemoval(previousProcessed, dataWithPercentages);
+    const cleanup = animateItemRemoval(
+      previousProcessed,
+      dataWithPercentages,
+      previousRemainingPercentageRef.current,
+      remainingPercentage
+    );
 
     if (cleanup) {
       return cleanup;
@@ -455,6 +479,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
     setAnimatedItems(dataWithPercentages);
     previousProcessedRef.current = dataWithPercentages;
+    setAnimatedRemainingPercentage(remainingPercentage);
+    previousRemainingPercentageRef.current = remainingPercentage;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, effectiveMaxAmount, autoColorMap]);
 
@@ -503,7 +529,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const chartContent = (
     <StyledStackedBarChartWrapper>
-      <BarContainer width={width}>
+      <BarContainer width={width} barHeight={barHeight}>
         {animatedItems.map((item, index) =>
           renderBarSegment(item, index, {
             isFirst: index === 0,
@@ -522,9 +548,9 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           <BarSegment
             key="remaining"
             color={theme?.palette?.sds?.base?.backgroundTertiary}
-            percentage={remainingPercentage}
+            percentage={animatedRemainingPercentage}
             height={barHeight}
-            isFirst={false}
+            isFirst={animatedItems.length === 0}
             isLast={true}
             opacity={1}
             disabled={true}

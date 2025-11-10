@@ -62,22 +62,22 @@ export const StyledBadge = styled("div")`
 
 interface BarContainerProps extends CommonThemeProps {
   width: number | string;
+  barHeight: number;
 }
 
 export const BarContainer = styled("div")<BarContainerProps>`
   ${(props: BarContainerProps) => {
-    const { width } = props;
+    const { width, barHeight } = props;
 
-    const spaces = getSpaces(props);
     const corners = getCorners(props);
 
     const finalWidth = typeof width === "number" ? `${width}px` : width;
 
     return `
       display: flex;
-      gap: ${spaces?.xxxs}px;
       border-radius: ${corners?.s}px;
       width: ${finalWidth};
+      height: ${barHeight}px;
     `;
   }}
 `;
@@ -96,6 +96,9 @@ export const BarSegment = styled("div")<BarSegmentProps>`
   ${(props: BarSegmentProps) => {
     const { isFirst, isLast, color, height, percentage, opacity, disabled } =
       props;
+
+    const spaces = getSpaces(props);
+    const gap = spaces?.xxxs || 0;
 
     const getBorderRadius = () => {
       const corners = getCorners(props);
@@ -119,14 +122,19 @@ export const BarSegment = styled("div")<BarSegmentProps>`
       return "";
     };
 
+    // Add gap as margin-right, except for last item
+    // When percentage is 0, margin also becomes 0 (animates away with the segment)
+    const marginRight = !isLast && percentage > 0 ? `${gap}px` : 0;
+
     return `
       background-color: ${color};
       height: ${height}px;
       flex-grow: ${percentage};
       flex-basis: 0;
       flex-shrink: 1;
+      margin-right: ${marginRight};
       opacity: ${opacity};
-      transition: opacity 0.2s ease-in-out, flex-grow 0.25s ease-out;
+      transition: opacity 0.2s ease-in-out, flex-grow 0.25s ease-out, margin-right 0.2s ease-out;
       cursor: ${disabled ? "default" : "pointer"};
       pointer-events: ${disabled ? "none" : "auto"};
       ${getBorderRadius()}
