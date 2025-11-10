@@ -100,12 +100,6 @@ export default {
   component: StackedBarChart,
   tags: ["beta"],
   parameters: {
-    chromatic: {
-      disableSnapshot: true,
-    },
-    snapshot: {
-      skip: true,
-    },
     controls: {
       expanded: true,
     },
