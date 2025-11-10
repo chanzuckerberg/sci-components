@@ -72,6 +72,11 @@
         "isRequired": false,
         "description": "Width of the chart - accepts any CSS width value (e.g., \"100%\", \"20vw\", \"300px\", or number for pixels)",
         "defaultValue": "100%"
+      },
+      "colorGeneratorOptions": {
+        "type": "DiscreteColorGeneratorOptions",
+        "isRequired": false,
+        "description": "Options for the color generator"
       }
     }
   }
