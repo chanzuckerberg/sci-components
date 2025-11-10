@@ -61,7 +61,11 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      # Step 4: Run tests
+      # Step 4: Build components package (required for data-viz package dependency)
+      - name: Build components package
+        run: yarn lerna run build --scope=@czi-sds/components
+
+      # Step 5: Run tests
       - name: Test
         run: yarn test
 

@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Legend /> Default story renders snapshot 1`] = `
+<div
+  class="css-1t849lf"
+>
+  <div
+    aria-label="H. sapiens: 3212"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-1bin2rj"
+      color="#7260ab"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      H. sapiens
+    </span>
+  </div>
+  <div
+    aria-label="M. musculus: 130"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-1blfgrq"
+      color="#a85e9e"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      M. musculus
+    </span>
+  </div>
+  <div
+    aria-label="C. Jacques: 89"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-uv34ao"
+      color="#bf6b7d"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      C. Jacques
+    </span>
+  </div>
+  <div
+    aria-label="D. rerio: 65"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-14ldhtz"
+      color="#b88661"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      D. rerio
+    </span>
+  </div>
+  <div
+    aria-label="M. mulatta: 45"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-g2f25t"
+      color="#a2a05e"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      M. mulatta
+    </span>
+  </div>
+  <div
+    aria-label="P. mirabillis: 34"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-1rdzl6n"
+      color="#8db66e"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      P. mirabillis
+    </span>
+  </div>
+  <div
+    aria-label="V. cholerae: 12"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-v99ocu"
+      color="#7ec69a"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      V. cholerae
+    </span>
+  </div>
+  <div
+    aria-label="Other (17): 40"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-ie7wo8"
+      color="#cabdf1"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      Other (17)
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<Legend /> WithSelection story renders snapshot 1`] = `
+<div
+  style="width: 400px;"
+>
+  <div
+    class="css-1t849lf"
+  >
+    <div
+      aria-label="H. sapiens: 3212"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-1bin2rj"
+        color="#7260ab"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        H. sapiens
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        3,212
+      </span>
+    </div>
+    <div
+      aria-label="M. musculus: 130"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-1blfgrq"
+        color="#a85e9e"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        M. musculus
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        130
+      </span>
+    </div>
+    <div
+      aria-label="C. Jacques: 89"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-uv34ao"
+        color="#bf6b7d"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        C. Jacques
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        89
+      </span>
+    </div>
+    <div
+      aria-label="D. rerio: 65"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-14ldhtz"
+        color="#b88661"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        D. rerio
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        65
+      </span>
+    </div>
+    <div
+      aria-label="M. mulatta: 45"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-g2f25t"
+        color="#a2a05e"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        M. mulatta
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        45
+      </span>
+    </div>
+    <div
+      aria-label="P. mirabillis: 34"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-1rdzl6n"
+        color="#8db66e"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        P. mirabillis
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        34
+      </span>
+    </div>
+    <div
+      aria-label="V. cholerae: 12"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-v99ocu"
+        color="#7ec69a"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        V. cholerae
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        12
+      </span>
+    </div>
+    <div
+      aria-label="Other (17): 40"
+      aria-pressed="false"
+      class="css-r7qg0l"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="css-ie7wo8"
+        color="#cabdf1"
+      />
+      <span
+        class="css-1sjvubj"
+      >
+        Other (17)
+      </span>
+      <span
+        class="css-ncdzc3"
+      >
+        40
+      </span>
+    </div>
+  </div>
+  <div
+    style="margin-top: 40px;"
+  >
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 12px;"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Select All
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-gkrbfh-MuiButtonBase-root-MuiButton-root"
+        data-style="minimal"
+        tabindex="0"
+        type="button"
+      >
+        Clear Selection
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div
+      style="display: flex; flex-wrap: wrap;"
+    />
+  </div>
+</div>
+`;
+
+exports[`<Legend /> WithValues story renders snapshot 1`] = `
+<div
+  class="css-1t849lf"
+>
+  <div
+    aria-label="H. sapiens: 3212"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-1bin2rj"
+      color="#7260ab"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      H. sapiens
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      3,212
+    </span>
+  </div>
+  <div
+    aria-label="M. musculus: 130"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-1blfgrq"
+      color="#a85e9e"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      M. musculus
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      130
+    </span>
+  </div>
+  <div
+    aria-label="C. Jacques: 89"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-uv34ao"
+      color="#bf6b7d"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      C. Jacques
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      89
+    </span>
+  </div>
+  <div
+    aria-label="D. rerio: 65"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-14ldhtz"
+      color="#b88661"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      D. rerio
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      65
+    </span>
+  </div>
+  <div
+    aria-label="M. mulatta: 45"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-g2f25t"
+      color="#a2a05e"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      M. mulatta
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      45
+    </span>
+  </div>
+  <div
+    aria-label="P. mirabillis: 34"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-1rdzl6n"
+      color="#8db66e"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      P. mirabillis
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      34
+    </span>
+  </div>
+  <div
+    aria-label="V. cholerae: 12"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-v99ocu"
+      color="#7ec69a"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      V. cholerae
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      12
+    </span>
+  </div>
+  <div
+    aria-label="Other (17): 40"
+    aria-pressed="false"
+    class="css-r7qg0l"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="css-ie7wo8"
+      color="#cabdf1"
+    />
+    <span
+      class="css-1sjvubj"
+    >
+      Other (17)
+    </span>
+    <span
+      class="css-ncdzc3"
+    >
+      40
+    </span>
+  </div>
+</div>
+`;

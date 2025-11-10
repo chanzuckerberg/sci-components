@@ -72,18 +72,21 @@ export const fontBodyS = fontBody("s", "regular");
 export const fontBodyXs = fontBody("xs", "regular");
 export const fontBodyXxs = fontBody("xxs", "regular");
 export const fontBodyXxxs = fontBody("xxxs", "regular");
+export const fontBodyXxxxs = fontBody("xxxxs", "regular");
 export const fontBodyMediumL = fontBody("l", "medium");
 export const fontBodyMediumM = fontBody("m", "medium");
 export const fontBodyMediumS = fontBody("s", "medium");
 export const fontBodyMediumXs = fontBody("xs", "medium");
 export const fontBodyMediumXxs = fontBody("xxs", "medium");
 export const fontBodyMediumXxxs = fontBody("xxxs", "medium");
+export const fontBodyMediumXxxxs = fontBody("xxxxs", "medium");
 export const fontBodySemiboldL = fontBody("l", "semibold");
 export const fontBodySemiboldM = fontBody("m", "semibold");
 export const fontBodySemiboldS = fontBody("s", "semibold");
 export const fontBodySemiboldXs = fontBody("xs", "semibold");
 export const fontBodySemiboldXxs = fontBody("xxs", "semibold");
 export const fontBodySemiboldXxxs = fontBody("xxxs", "semibold");
+export const fontBodySemiboldXxxxs = fontBody("xxxxs", "semibold");
 
 export const fontCaps = createFontFunction({
   additionalCss: "text-transform: uppercase;",
@@ -127,14 +130,17 @@ export const fontTabular = createFontFunction({
   type: "tabular",
 });
 
+export const fontTabularXxxxs = fontTabular("xxxxs", "regular");
 export const fontTabularXxxs = fontTabular("xxxs", "regular");
 export const fontTabularXxs = fontTabular("xxs", "regular");
 export const fontTabularXs = fontTabular("xs", "regular");
 export const fontTabularS = fontTabular("s", "regular");
+export const fontTabularMediumXxxxs = fontTabular("xxxxs", "medium");
 export const fontTabularMediumXxxs = fontTabular("xxxs", "medium");
 export const fontTabularMediumXxs = fontTabular("xxs", "medium");
 export const fontTabularMediumXs = fontTabular("xs", "medium");
 export const fontTabularMediumS = fontTabular("s", "medium");
+export const fontTabularSemiboldXxxxs = fontTabular("xxxxs", "semibold");
 export const fontTabularSemiboldXxxs = fontTabular("xxxs", "semibold");
 export const fontTabularSemiboldXxs = fontTabular("xxs", "semibold");
 export const fontTabularSemiboldXs = fontTabular("xs", "semibold");
@@ -160,18 +166,21 @@ export const fontLinkS = fontLink("s", "regular");
 export const fontLinkXs = fontLink("xs", "regular");
 export const fontLinkXxs = fontLink("xxs", "regular");
 export const fontLinkXxxs = fontLink("xxxs", "regular");
+export const fontLinkXxxxs = fontLink("xxxxs", "regular");
 export const fontLinkMediumL = fontLink("l", "medium");
 export const fontLinkMediumM = fontLink("m", "medium");
 export const fontLinkMediumS = fontLink("s", "medium");
 export const fontLinkMediumXs = fontLink("xs", "medium");
 export const fontLinkMediumXxs = fontLink("xxs", "medium");
 export const fontLinkMediumXxxs = fontLink("xxxs", "medium");
+export const fontLinkMediumXxxxs = fontLink("xxxxs", "medium");
 export const fontLinkSemiboldL = fontLink("l", "semibold");
 export const fontLinkSemiboldM = fontLink("m", "semibold");
 export const fontLinkSemiboldS = fontLink("s", "semibold");
 export const fontLinkSemiboldXs = fontLink("xs", "semibold");
 export const fontLinkSemiboldXxs = fontLink("xxs", "semibold");
 export const fontLinkSemiboldXxxs = fontLink("xxxs", "semibold");
+export const fontLinkSemiboldXxxxs = fontLink("xxxxs", "semibold");
 
 function themeToCss(
   fontTheme: TypographyStyle,
