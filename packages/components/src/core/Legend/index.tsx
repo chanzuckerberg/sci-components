@@ -122,4 +122,6 @@ const Legend = (props: LegendProps): JSX.Element => {
   );
 };
 
+export type { LegendProps, LegendItemData } from "./Legend.types";
+
 export default Legend;
