@@ -31,10 +31,7 @@ const Legend = (props: LegendProps): JSX.Element => {
   >(null);
 
   // Use external hoveredIndex if provided, otherwise use internal state
-  const hoveredIndex =
-    externalHoveredIndex !== undefined
-      ? externalHoveredIndex
-      : internalHoveredIndex;
+  const hoveredIndex = externalHoveredIndex ?? internalHoveredIndex;
 
   const handleMouseEnter = (item: LegendItemData, index: number) => {
     if (item.disabled) return;
