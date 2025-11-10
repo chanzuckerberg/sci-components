@@ -1840,9 +1840,11 @@ __metadata:
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
     "@figma/code-connect": "npm:^1.3.4"
+    "@types/chroma-js": "npm:^3.1.2"
     "@types/node": "npm:^24.3.0"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
+    chroma-js: "npm:^3.1.2"
     style-dictionary: "npm:^4.1.0"
     ts-node: "npm:^10.9.2"
     tsx: "npm:^4.20.3"

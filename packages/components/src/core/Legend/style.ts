@@ -37,7 +37,7 @@ export const LegendItem = styled("div")<LegendItemProps>`
       display: flex;
       align-items: center;
       cursor: ${disabled ? "not-allowed" : "pointer"} !important;
-      transition: background-color 0.2s ease;
+      transition: background-color 0.2s ease-in-out;
       padding: 0 ${spaces?.xxs}px;
       border-radius: ${corners?.s}px;
       background-color: ${isSelected ? semanticColors?.base?.backgroundTertiary : "transparent"};
@@ -69,7 +69,7 @@ export const LegendIcon = styled("div")<LegendIconProps>`
       background-color: ${color};
       flex-shrink: 0;
       opacity: ${isDimmed ? 0.2 : 1};
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s ease-in-out;
       margin-right: ${spaces?.xxs}px;
     `;
   }};

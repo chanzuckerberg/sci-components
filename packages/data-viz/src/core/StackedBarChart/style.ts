@@ -65,16 +65,19 @@ interface BarContainerProps extends CommonThemeProps {
 }
 
 export const BarContainer = styled("div")<BarContainerProps>`
-  display: flex;
-  width: ${(props) =>
-    typeof props.width === "number" ? `${props.width}px` : props.width};
-
   ${(props: BarContainerProps) => {
+    const { width } = props;
+
     const spaces = getSpaces(props);
     const corners = getCorners(props);
+
+    const finalWidth = typeof width === "number" ? `${width}px` : width;
+
     return `
+      display: flex;
       gap: ${spaces?.xxxs}px;
       border-radius: ${corners?.s}px;
+      width: ${finalWidth};
     `;
   }}
 `;
@@ -90,40 +93,42 @@ interface BarSegmentProps extends CommonThemeProps {
 }
 
 export const BarSegment = styled("div")<BarSegmentProps>`
-  background-color: ${(props) => props.color};
-  height: ${(props) => props.height}px;
-  flex: ${(props) => props.percentage};
-  opacity: ${(props) => props.opacity};
-  transition: opacity 0.2s ease;
-  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
-  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
-
   ${(props: BarSegmentProps) => {
-    const corners = getCorners(props);
-    const borderRadius = corners?.s || 2;
+    const { isFirst, isLast, color, height, percentage, opacity, disabled } =
+      props;
 
-    if (props.isFirst && props.isLast) {
-      // Single segment - round all corners
-      return `
-        border-radius: ${borderRadius}px;
-      `;
-    }
-    if (props.isFirst) {
-      // First segment - round left corners
-      return `
-        border-top-left-radius: ${borderRadius}px;
-        border-bottom-left-radius: ${borderRadius}px;
-      `;
-    }
-    if (props.isLast) {
-      // Last segment - round right corners
-      return `
-        border-top-right-radius: ${borderRadius}px;
-        border-bottom-right-radius: ${borderRadius}px;
-      `;
-    }
-    // Middle segments - no rounding
-    return "";
+    const getBorderRadius = () => {
+      const corners = getCorners(props);
+      const borderRadius = corners?.s;
+
+      if (isFirst && isLast) {
+        return `${borderRadius}px`;
+      }
+      if (isFirst) {
+        return `
+          border-top-left-radius: ${borderRadius}px; 
+          border-bottom-left-radius: ${borderRadius}px;
+        `;
+      }
+      if (isLast) {
+        return `
+          border-top-right-radius: ${borderRadius}px; 
+          border-bottom-right-radius: ${borderRadius}px;
+        `;
+      }
+      return "";
+    };
+
+    return `
+      background-color: ${color};
+      height: ${height}px;
+      flex: ${percentage};
+      opacity: ${opacity};
+      transition: opacity 0.2s ease-in-out;
+      cursor: ${disabled ? "default" : "pointer"};
+      pointer-events: ${disabled ? "none" : "auto"};
+      ${getBorderRadius()}
+    `;
   }}
 `;
 

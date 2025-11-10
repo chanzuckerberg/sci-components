@@ -1,4 +1,4 @@
-import { HTMLAttributes, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   LegendContainer,
   LegendIcon,
@@ -6,70 +6,9 @@ import {
   LegendLabel,
   LegendValue,
 } from "./style";
-
-export interface LegendItemData {
-  /**
-   * Name/label for the legend item
-   */
-  name: string;
-  /**
-   * Value to display (optional)
-   */
-  value?: number | string;
-  /**
-   * Color for the legend icon
-   * Can be overridden by the colors prop in LegendProps
-   * Falls back to gray if not provided
-   */
-  color?: string;
-  /**
-   * Disable the legend item (prevents all events)
-   * @default false
-   */
-  disabled?: boolean;
-}
-
-export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
-  /**
-   * Array of legend items to display
-   */
-  items: LegendItemData[];
-  /**
-   * Optional array of colors to assign to items. If not provided or if the array
-   * is shorter than items, will use the color from the item or fall back to gray.
-   */
-  colors?: string[];
-  /**
-   * Callback when mouse enters a legend item
-   */
-  onItemMouseEnter?: (item: LegendItemData, index: number) => void;
-  /**
-   * Callback when mouse leaves a legend item
-   */
-  onItemMouseLeave?: (item: LegendItemData, index: number) => void;
-  /**
-   * Callback when a legend item is clicked
-   */
-  onItemClick?: (item: LegendItemData, index: number) => void;
-  /**
-   * Whether to show values in the legend
-   * @default false
-   */
-  showValues?: boolean;
-  /**
-   * Array of selected item indices (controlled component)
-   */
-  selectedIndices?: number[];
-  /**
-   * Callback when selection changes
-   * @param selectedIndices Array of selected indices
-   */
-  onSelectionChange?: (selectedIndices: number[]) => void;
-  /**
-   * External control for hovered index (for bidirectional hover with charts)
-   */
-  hoveredIndex?: number | null;
-}
+import { SDSTheme } from "../styles";
+import { useTheme } from "@mui/material";
+import { LegendItemData, LegendProps } from "./Legend.types";
 
 const Legend = (props: LegendProps): JSX.Element => {
   const {
@@ -85,11 +24,11 @@ const Legend = (props: LegendProps): JSX.Element => {
     ...rest
   } = props;
 
+  const theme = useTheme() as SDSTheme;
+
   const [internalHoveredIndex, setInternalHoveredIndex] = useState<
     number | null
   >(null);
-  const [localSelectedIndices, setLocalSelectedIndices] =
-    useState<number[]>(selectedIndices);
 
   // Use external hoveredIndex if provided, otherwise use internal state
   const hoveredIndex =
@@ -97,64 +36,48 @@ const Legend = (props: LegendProps): JSX.Element => {
       ? externalHoveredIndex
       : internalHoveredIndex;
 
-  // Sync local state with prop changes (only if values actually changed)
-  useEffect(() => {
-    // Compare stringified versions to avoid infinite loops from reference changes
-    const currentSorted = JSON.stringify([...selectedIndices].sort());
-    const localSorted = JSON.stringify([...localSelectedIndices].sort());
-
-    if (currentSorted !== localSorted) {
-      setLocalSelectedIndices(selectedIndices);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedIndices]);
-
   const handleMouseEnter = (item: LegendItemData, index: number) => {
-    if (item.disabled) return; // Prevent event if disabled
+    if (item.disabled) return;
     setInternalHoveredIndex(index);
     onItemMouseEnter?.(item, index);
   };
 
   const handleMouseLeave = (item: LegendItemData, index: number) => {
-    if (item.disabled) return; // Prevent event if disabled
+    if (item.disabled) return;
     setInternalHoveredIndex(null);
     onItemMouseLeave?.(item, index);
   };
 
   const handleClick = (item: LegendItemData, index: number) => {
-    if (item.disabled) return; // Prevent event if disabled
+    if (item.disabled) return;
 
-    // Handle selection toggle
     if (onSelectionChange) {
-      const isSelected = localSelectedIndices.includes(index);
+      const isSelected = selectedIndices.includes(index);
       let newSelectedIndices: number[];
 
       if (isSelected) {
-        // Deselect: remove from array
-        newSelectedIndices = localSelectedIndices.filter((i) => i !== index);
+        newSelectedIndices = selectedIndices.filter((i) => i !== index);
       } else {
-        // Select: add to array
-        newSelectedIndices = [...localSelectedIndices, index];
+        newSelectedIndices = [...selectedIndices, index];
       }
 
-      setLocalSelectedIndices(newSelectedIndices);
-      onSelectionChange?.(newSelectedIndices);
+      onSelectionChange(newSelectedIndices);
     }
 
     // Still call the original onClick callback
     onItemClick?.(item, index);
   };
 
-  const hasSelection = localSelectedIndices.length > 0;
+  const hasSelection = selectedIndices.length > 0;
 
   // Gray fallback color
-  const fallbackColor = "#999999";
+  const fallbackColor = theme?.palette?.sds?.base?.ornamentSecondary;
 
   return (
     <LegendContainer {...rest}>
       {items.map((item, index) => {
         const isHovered = hoveredIndex === index;
-        const isSelected = localSelectedIndices.includes(index);
+        const isSelected = selectedIndices.includes(index);
 
         // Dim if:
         // - Never dim disabled items (e.g., remaining segment)

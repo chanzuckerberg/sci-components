@@ -116,3 +116,4 @@ export { default as TooltipCondensed } from "./core/TooltipCondensed";
 export * from "./core/TooltipTable";
 export { default as TooltipTable } from "./core/TooltipTable";
 export * from "./core/styles";
+export * from "./common/helpers/discreteColorGenerator";

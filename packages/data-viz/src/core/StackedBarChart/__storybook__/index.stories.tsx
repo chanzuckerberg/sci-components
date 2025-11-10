@@ -1,17 +1,7 @@
 import { Meta } from "@storybook/react-webpack5";
 import { StackedBarChart } from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";
-import { AmountBasedStory } from "./stories/amountBased";
-import {
-  DOMAIN_DATA,
-  DOMAIN_DATA_AMOUNT,
-  ORGANISM_DATA,
-  TISSUE_DATA,
-  BUDGET_DATA,
-  STORAGE_DATA,
-  MIXED_UNIT_DATA,
-  DATA_WITH_DISABLED,
-} from "./constants";
+import { STACKED_BAR_CHART_DATA } from "./constants";
 
 export default {
   argTypes: {
@@ -110,70 +100,26 @@ export default {
     snapshot: {
       skip: true,
     },
+    controls: {
+      expanded: true,
+    },
   },
   title: "Data Viz/StackedBarChart",
 } as Meta;
 
-// Default story showcasing all features (percentage mode with dynamic badge)
 export const Default = {
   args: {
-    // badge not provided - will show dynamic count (e.g., "5")
-    barHeight: 16,
-    data: DOMAIN_DATA,
-    mode: "percentage",
-    showLegend: true,
-    showLegendValues: true,
+    data: STACKED_BAR_CHART_DATA,
     title: "Domain",
-    width: 240,
+    width: 360,
   },
 };
 
-// With many items (organisms)
-export const WithManyItems = {
-  args: {
-    badge: "8 Organisms",
-    barHeight: 16,
-    data: ORGANISM_DATA,
-    mode: "percentage",
-    showLegend: true,
-    showLegendValues: true,
-    title: "Organism Distribution",
-    width: 600,
-  },
-};
-
-// Without title or badge
-export const WithoutTitle = {
-  args: {
-    barHeight: 16,
-    data: TISSUE_DATA,
-    mode: "percentage",
-    showLegend: true,
-    showLegendValues: true,
-    width: 400,
-  },
-};
-
-// Without legend
-export const WithoutLegend = {
-  args: {
-    badge: "4",
-    barHeight: 16,
-    data: TISSUE_DATA,
-    mode: "percentage",
-    showLegend: false,
-    title: "Tissue Types",
-    width: 400,
-  },
-};
-
-// With selection functionality (badge shows selection count dynamically)
 export const WithSelection = {
   render: WithSelectionStory,
   args: {
-    // badge not provided - will show "5", "3 of 5", or "All" based on selection
     barHeight: 16,
-    data: DOMAIN_DATA,
+    data: STACKED_BAR_CHART_DATA,
     mode: "percentage",
     showLegend: true,
     showLegendValues: true,
@@ -182,83 +128,17 @@ export const WithSelection = {
   },
 };
 
-// Amount-based mode matching Figma design (with global unit and custom badge)
-export const AmountBasedWithDatasets = {
-  render: AmountBasedStory,
+export const AmountBasedWithSelection = {
+  render: WithSelectionStory,
   args: {
-    badge: "5 types", // Custom badge
     barHeight: 16,
-    data: DOMAIN_DATA_AMOUNT,
+    data: STACKED_BAR_CHART_DATA,
     mode: "amount",
-    unit: "datasets", // Global unit applied to all items
+    unit: "datasets",
     showLegend: true,
     showLegendValues: true,
     title: "Domain",
-    width: 240,
-  },
-};
-
-// Amount-based mode with remaining segment (budget)
-export const AmountBased = {
-  render: AmountBasedStory,
-  args: {
-    badge: "$1200K",
-    barHeight: 16,
-    data: BUDGET_DATA,
-    maxAmount: 1200,
-    mode: "amount",
-    remainingLabel: "Unallocated",
-    remainingUnit: "K",
-    showLegend: true,
-    showLegendValues: true,
-    title: "Budget Allocation",
-    width: 400,
-  },
-};
-
-// Amount-based mode with remaining segment (storage)
-export const AmountBasedWithRemaining = {
-  render: AmountBasedStory,
-  args: {
-    badge: "1000 GB",
-    barHeight: 16,
-    data: STORAGE_DATA,
-    maxAmount: 1000, // Total is 750, so 250 GB remaining
-    mode: "amount",
-    remainingLabel: "Available",
-    remainingUnit: "GB",
-    showLegend: true,
-    showLegendValues: true,
-    title: "Storage Usage",
-    width: 400,
-  },
-};
-
-// Amount-based mode with mixed units (global + individual overrides)
-export const AmountBasedMixedUnits = {
-  render: AmountBasedStory,
-  args: {
-    badge: "3 Types",
-    barHeight: 16,
-    data: MIXED_UNIT_DATA,
-    mode: "amount",
-    unit: "GB", // Global unit - most items use this
-    showLegend: true,
-    showLegendValues: true,
-    title: "File Storage",
-    width: 400,
-  },
-};
-
-// With disabled legend item (no interactions)
-export const WithDisabledItem = {
-  args: {
-    barHeight: 16,
-    data: DATA_WITH_DISABLED,
-    mode: "percentage",
-    showLegend: true,
-    showLegendValues: true,
-    title: "System Status",
-    width: 400,
+    width: "360px",
+    maxAmount: 700,
   },
 };

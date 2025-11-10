@@ -1,12 +1,12 @@
-import { cloneElement, HTMLAttributes, useState } from "react";
+import { cloneElement, useState } from "react";
 import {
+  generateDiscreteColors,
   getMode,
   Legend,
   SDSTheme,
   Tooltip,
   TooltipTable,
   type LegendItemData,
-  type TooltipTableContentProps,
 } from "@czi-sds/components";
 import {
   ChartTitle,
@@ -18,115 +18,10 @@ import {
   StyledStackedBarChartWrapper,
 } from "./style";
 import { useTheme } from "@mui/material";
-import chroma from "chroma-js";
-
-export interface StackedBarChartDataItem {
-  /**
-   * Display name for the segment
-   */
-  name: string;
-  /**
-   * Numeric value for the segment
-   */
-  value: number;
-  /**
-   * Color for the segment (hex or CSS color)
-   * If not provided, colors will be automatically generated using cubehelix palette
-   */
-  color?: string;
-  /**
-   * Unit label to display with the value in amount mode (e.g., "GB", "datasets", "MB")
-   * Only shown in legend when mode is "amount"
-   */
-  unit?: string;
-  /**
-   * Disable the item (prevents all events on the corresponding legend item and bar segment)
-   * @default false
-   */
-  disabled?: boolean;
-  tooltip: TooltipTableContentProps;
-}
-
-export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
-  /**
-   * Title to display above the chart
-   */
-  title?: string;
-  /**
-   * Badge text to display next to the title
-   * If not provided, defaults to showing item count based on selection:
-   * - No selection: total count (e.g., "5")
-   * - Partial selection: selected count (e.g., "3 of 5")
-   * - All selected: "All"
-   */
-  badge?: string;
-  /**
-   * Hide the badge when true
-   * @default false
-   */
-  hideBadge?: boolean;
-  /**
-   * Array of data items to display in the stacked bar
-   */
-  data: StackedBarChartDataItem[];
-  /**
-   * Width of the chart - accepts any CSS width value (e.g., "100%", "20vw", "300px", or number for pixels)
-   * @default 240
-   */
-  width?: number | string;
-  /**
-   * Height of the bar in pixels
-   * @default 16
-   */
-  barHeight?: number;
-  /**
-   * Whether to show the legend below the chart
-   * @default true
-   */
-  showLegend?: boolean;
-  /**
-   * Whether to show percentage values in the legend
-   * @default true
-   */
-  showLegendValues?: boolean;
-  /**
-   * Array of selected item indices (controlled component)
-   */
-  selectedIndices?: number[];
-  /**
-   * Callback when legend selection changes
-   */
-  onSelectionChange?: (selectedIndices: number[]) => void;
-  /**
-   * Chart mode - controls how segments are calculated
-   * - "percentage": Segments fill entire bar (100%), proportional to their values
-   * - "amount": Segments sized based on actual values relative to maxAmount
-   * @default "percentage"
-   */
-  mode?: "percentage" | "amount";
-  /**
-   * Maximum amount for the bar (used only in "amount" mode)
-   * If not provided, defaults to sum of all values (no remaining segment)
-   * If provided and sum < maxAmount, shows gray "remaining" segment
-   */
-  maxAmount?: number;
-  /**
-   * Label for the remaining/unknown segment in amount mode
-   * @default "Remaining"
-   */
-  remainingLabel?: string;
-  /**
-   * Unit to display with the remaining segment value in amount mode
-   * If not provided, uses the unit from the first data item (if available)
-   */
-  remainingUnit?: string;
-  /**
-   * Global unit to display with values in amount mode (e.g., "GB", "datasets", "K")
-   * Individual data items can override this with their own unit property
-   * Only shown when mode is "amount"
-   */
-  unit?: string;
-}
+import {
+  StackedBarChartDataItem,
+  StackedBarChartProps,
+} from "./StackedBarChart.types";
 
 // Helper: Calculate badge display text based on selection state
 const calculateBadgeText = (
@@ -173,27 +68,6 @@ const getSegmentOpacity = (
   }
 
   return 1;
-};
-
-// Helper: Generate colors using cubehelix color scale
-const generateColors = (
-  count: number,
-  isDarkMode: boolean = false
-): string[] => {
-  if (count === 0) return [];
-
-  const colors = chroma
-    .cubehelix()
-    .start(249)
-    .rotations(1)
-    .gamma(0.7)
-    .lightness([0.3, 0.7])
-    .scale()
-    .correctLightness()
-    .colors(count);
-
-  // Reverse colors in dark mode for better contrast
-  return isDarkMode ? colors.reverse() : colors;
 };
 
 // Helper: Build legend items from data with optional remaining segment
@@ -328,7 +202,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     badge,
     hideBadge = false,
     data,
-    width = 240,
+    width = "100%",
     barHeight = 16,
     showLegend = true,
     showLegendValues = true,
@@ -351,7 +225,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Calculate default badge value
   const defaultBadge = calculateBadgeText(data.length, selectedIndices.length);
-  const displayBadge = badge !== undefined ? badge : defaultBadge;
+  const displayBadge = badge ? badge : defaultBadge;
 
   // Calculate total value from data
   const dataTotal = data.reduce((sum, item) => sum + item.value, 0);
@@ -370,13 +244,17 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   // Generate colors if not provided in data
   const hasColors = data.every((item) => item.color);
   const generatedColors = !hasColors
-    ? generateColors(data.length, isDarkMode)
+    ? generateDiscreteColors(data.length, isDarkMode)
     : [];
 
   // Calculate percentages and assign colors for each segment
+  // default to ornament secondary color if no color is provided
   const dataWithPercentages = data.map((item, index) => ({
     ...item,
-    color: item.color || generatedColors[index] || "#999999",
+    color:
+      item.color ||
+      generatedColors[index] ||
+      theme?.palette?.sds?.base?.ornamentSecondary,
     percentage:
       effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
   }));
@@ -413,14 +291,15 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     let newSelectedIndices: number[];
 
     if (isSelected) {
-      // Deselect: remove from array
       newSelectedIndices = selectedIndices.filter((i) => i !== index);
     } else {
-      // Select: add to array
       newSelectedIndices = [...selectedIndices, index];
     }
 
-    onSelectionChange(newSelectedIndices);
+    const selectedData = data.filter((item, itemIndex) =>
+      newSelectedIndices.includes(itemIndex)
+    );
+    onSelectionChange(newSelectedIndices, selectedData);
   };
 
   const chartContent = (
@@ -459,7 +338,16 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           onItemMouseEnter={handleLegendItemHover}
           onItemMouseLeave={handleLegendItemLeave}
           selectedIndices={selectedIndices}
-          onSelectionChange={onSelectionChange}
+          onSelectionChange={
+            onSelectionChange
+              ? (newSelectedIndices: number[]) => {
+                  const selectedData = data.filter((item, itemIndex) =>
+                    newSelectedIndices.includes(itemIndex)
+                  );
+                  onSelectionChange(newSelectedIndices, selectedData);
+                }
+              : undefined
+          }
           hoveredIndex={hoveredIndex}
         />
       )}
@@ -480,11 +368,18 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     <ChartWrapper width={width} {...rest}>
       <TitleContainer>
         <ChartTitle>{title}</ChartTitle>
-        {!hideBadge && <StyledBadge>{displayBadge}</StyledBadge>}
+        {!hideBadge && displayBadge && (
+          <StyledBadge>{displayBadge}</StyledBadge>
+        )}
       </TitleContainer>
       {chartContent}
     </ChartWrapper>
   );
 };
+
+export type {
+  StackedBarChartProps,
+  StackedBarChartDataItem,
+} from "./StackedBarChart.types";
 
 export default StackedBarChart;
