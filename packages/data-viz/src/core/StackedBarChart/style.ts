@@ -44,7 +44,7 @@ export const ChartTitle = styled("div")`
 `;
 
 export const StyledBadge = styled("div")`
-  ${fontTabularSemiboldXxxxs};
+  ${fontTabularSemiboldXxxxs}
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
@@ -141,5 +141,5 @@ export const StyledStackedBarChartWrapper = styled("div")`
       flex-direction: column;
       gap: ${spaces?.m}px;
     `;
-  }};
+  }}
 `;

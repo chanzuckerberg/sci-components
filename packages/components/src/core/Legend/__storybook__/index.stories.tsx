@@ -98,3 +98,20 @@ export const WithSelection: Story = {
     showValues: true,
   },
 };
+
+// Test
+
+export const Test = {
+  args: {
+    items: sampleItems,
+    showValues: false,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Parameters<typeof Legend>[0]) => (
+    <DefaultStory {...props} data-testid="legend" />
+  ),
+};

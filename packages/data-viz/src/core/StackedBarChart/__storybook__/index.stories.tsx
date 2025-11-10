@@ -142,3 +142,21 @@ export const AmountBasedWithSelection = {
     maxAmount: 700,
   },
 };
+
+// Test
+
+export const Test = {
+  args: {
+    data: STACKED_BAR_CHART_DATA,
+    title: "Domain",
+    width: 360,
+  },
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (props: Parameters<typeof StackedBarChart>[0]) => (
+    <StackedBarChart {...props} data-testid="stacked-bar-chart" />
+  ),
+};

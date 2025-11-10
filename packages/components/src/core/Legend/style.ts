@@ -18,7 +18,7 @@ export const LegendContainer = styled("div")`
       column-gap: ${spaces?.xxs}px;
       row-gap: ${spaces?.xxxs}px;
     `;
-  }};
+  }}
 `;
 
 interface LegendItemProps extends CommonThemeProps {
@@ -72,7 +72,7 @@ export const LegendIcon = styled("div")<LegendIconProps>`
       transition: opacity 0.2s ease-in-out;
       margin-right: ${spaces?.xxs}px;
     `;
-  }};
+  }}
 `;
 
 interface LegendTextProps extends CommonThemeProps {
@@ -86,7 +86,7 @@ export const LegendLabel = styled("span")<LegendTextProps>`
     return `
       color: ${semanticColors?.base?.textPrimary};
     `;
-  }};
+  }}
 `;
 
 export const LegendValue = styled("span")<LegendTextProps>`
@@ -99,5 +99,5 @@ export const LegendValue = styled("span")<LegendTextProps>`
       color: ${semanticColors?.base?.textSecondary};
       margin-left: ${spaces?.xxxs}px;
     `;
-  }};
+  }}
 `;
