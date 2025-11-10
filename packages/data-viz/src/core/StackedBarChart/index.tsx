@@ -213,6 +213,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingLabel = "Remaining",
     remainingUnit,
     unit,
+    colorGeneratorOptions,
     ...rest
   } = props;
 
@@ -244,7 +245,10 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   // Generate colors if not provided in data
   const hasColors = data.every((item) => item.color);
   const generatedColors = !hasColors
-    ? generateDiscreteColors(data.length, isDarkMode)
+    ? generateDiscreteColors(data.length, {
+        ...(colorGeneratorOptions || {}),
+        isDarkMode,
+      })
     : [];
 
   // Calculate percentages and assign colors for each segment

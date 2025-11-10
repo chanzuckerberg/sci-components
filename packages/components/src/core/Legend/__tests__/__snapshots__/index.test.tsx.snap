@@ -2,7 +2,7 @@
 
 exports[`<Legend /> Default story renders snapshot 1`] = `
 <div
-  class="css-1e5noo5"
+  class="css-1t849lf"
 >
   <div
     aria-label="H. sapiens: 3212"
@@ -12,11 +12,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-wz4vx5"
+      class="css-1bin2rj"
       color="#7260ab"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       H. sapiens
     </span>
@@ -29,11 +29,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1gbravk"
+      class="css-1blfgrq"
       color="#a85e9e"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       M. musculus
     </span>
@@ -46,11 +46,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-153hft1"
+      class="css-uv34ao"
       color="#bf6b7d"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       C. Jacques
     </span>
@@ -63,11 +63,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1bpfkl6"
+      class="css-14ldhtz"
       color="#b88661"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       D. rerio
     </span>
@@ -80,11 +80,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-aw7j6y"
+      class="css-g2f25t"
       color="#a2a05e"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       M. mulatta
     </span>
@@ -97,11 +97,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1hh22u0"
+      class="css-1rdzl6n"
       color="#8db66e"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       P. mirabillis
     </span>
@@ -114,11 +114,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-174x9g7"
+      class="css-v99ocu"
       color="#7ec69a"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       V. cholerae
     </span>
@@ -131,11 +131,11 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-wemy7i"
+      class="css-ie7wo8"
       color="#cabdf1"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       Other (17)
     </span>
@@ -148,7 +148,7 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-1e5noo5"
+    class="css-1t849lf"
   >
     <div
       aria-label="H. sapiens: 3212"
@@ -158,16 +158,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-wz4vx5"
+        class="css-1bin2rj"
         color="#7260ab"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         H. sapiens
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         3,212
       </span>
@@ -180,16 +180,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1gbravk"
+        class="css-1blfgrq"
         color="#a85e9e"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         M. musculus
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         130
       </span>
@@ -202,16 +202,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-153hft1"
+        class="css-uv34ao"
         color="#bf6b7d"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         C. Jacques
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         89
       </span>
@@ -224,16 +224,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1bpfkl6"
+        class="css-14ldhtz"
         color="#b88661"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         D. rerio
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         65
       </span>
@@ -246,16 +246,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-aw7j6y"
+        class="css-g2f25t"
         color="#a2a05e"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         M. mulatta
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         45
       </span>
@@ -268,16 +268,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1hh22u0"
+        class="css-1rdzl6n"
         color="#8db66e"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         P. mirabillis
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         34
       </span>
@@ -290,16 +290,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-174x9g7"
+        class="css-v99ocu"
         color="#7ec69a"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         V. cholerae
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         12
       </span>
@@ -312,16 +312,16 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-wemy7i"
+        class="css-ie7wo8"
         color="#cabdf1"
       />
       <span
-        class="css-ri1y5s"
+        class="css-1sjvubj"
       >
         Other (17)
       </span>
       <span
-        class="css-1ui3kcf"
+        class="css-ncdzc3"
       >
         40
       </span>
@@ -364,7 +364,7 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
 
 exports[`<Legend /> WithValues story renders snapshot 1`] = `
 <div
-  class="css-1e5noo5"
+  class="css-1t849lf"
 >
   <div
     aria-label="H. sapiens: 3212"
@@ -374,16 +374,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-wz4vx5"
+      class="css-1bin2rj"
       color="#7260ab"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       H. sapiens
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       3,212
     </span>
@@ -396,16 +396,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1gbravk"
+      class="css-1blfgrq"
       color="#a85e9e"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       M. musculus
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       130
     </span>
@@ -418,16 +418,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-153hft1"
+      class="css-uv34ao"
       color="#bf6b7d"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       C. Jacques
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       89
     </span>
@@ -440,16 +440,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1bpfkl6"
+      class="css-14ldhtz"
       color="#b88661"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       D. rerio
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       65
     </span>
@@ -462,16 +462,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-aw7j6y"
+      class="css-g2f25t"
       color="#a2a05e"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       M. mulatta
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       45
     </span>
@@ -484,16 +484,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1hh22u0"
+      class="css-1rdzl6n"
       color="#8db66e"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       P. mirabillis
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       34
     </span>
@@ -506,16 +506,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-174x9g7"
+      class="css-v99ocu"
       color="#7ec69a"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       V. cholerae
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       12
     </span>
@@ -528,16 +528,16 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-wemy7i"
+      class="css-ie7wo8"
       color="#cabdf1"
     />
     <span
-      class="css-ri1y5s"
+      class="css-1sjvubj"
     >
       Other (17)
     </span>
     <span
-      class="css-1ui3kcf"
+      class="css-ncdzc3"
     >
       40
     </span>

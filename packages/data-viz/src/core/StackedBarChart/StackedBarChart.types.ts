@@ -1,4 +1,7 @@
-import { TooltipTableContentProps } from "@czi-sds/components";
+import {
+  DiscreteColorGeneratorOptions,
+  TooltipTableContentProps,
+} from "@czi-sds/components";
 import { HTMLAttributes } from "react";
 
 export interface StackedBarChartDataItem {
@@ -110,4 +113,8 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    * Only shown when mode is "amount"
    */
   unit?: string;
+  /**
+   * Options for the color generator
+   */
+  colorGeneratorOptions?: DiscreteColorGeneratorOptions;
 }

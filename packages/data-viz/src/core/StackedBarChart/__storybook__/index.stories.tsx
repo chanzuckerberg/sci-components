@@ -90,6 +90,12 @@ export default {
       description:
         "Width of the chart - accepts any CSS width value (e.g., '100%', '20vw', '300px', or number for pixels)",
     },
+    colorGeneratorOptions: {
+      control: {
+        type: "object",
+      },
+      description: "Options for the color generator",
+    },
   },
   component: StackedBarChart,
   tags: ["beta"],
@@ -107,11 +113,22 @@ export default {
   title: "Data Viz/StackedBarChart",
 } as Meta;
 
+const DEFAULT_COLOR_GENERATOR_OPTIONS = {
+  start: 249,
+  lightness: [0.3, 0.7],
+  correctLightness: true,
+  rotations: 1,
+  gamma: 0.7,
+};
+
 export const Default = {
   args: {
     data: STACKED_BAR_CHART_DATA,
     title: "Domain",
     width: 360,
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -125,6 +142,9 @@ export const WithSelection = {
     showLegendValues: true,
     title: "Domain",
     width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -140,6 +160,9 @@ export const AmountBasedWithSelection = {
     title: "Domain",
     width: "360px",
     maxAmount: 700,
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 

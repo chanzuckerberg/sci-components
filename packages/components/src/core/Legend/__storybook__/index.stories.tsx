@@ -52,7 +52,7 @@ const sampleItems = [
 
 // Helper to generate items with theme-aware colors
 const getSampleItemsWithColors = (isDarkMode: boolean = false) => {
-  const colors = generateDiscreteColors(sampleItems.length, isDarkMode);
+  const colors = generateDiscreteColors(sampleItems.length, { isDarkMode });
   return sampleItems.map((item, index) => ({
     ...item,
     color: colors[index],
