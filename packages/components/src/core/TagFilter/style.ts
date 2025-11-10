@@ -66,6 +66,7 @@ export const StyledTag = styled(Tag)`
       }
 
       &:after {
+        content: "";
         display: none;
       }
     `;

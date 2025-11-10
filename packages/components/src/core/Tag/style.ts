@@ -116,6 +116,7 @@ const rounded = (props: ExtraTagProps): SerializedStyles => {
     padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
+      content: "";
       border-radius: ${corners?.rounded}px;
     }
   `;
@@ -135,6 +136,7 @@ const square = (props: ExtraTagProps): SerializedStyles => {
     padding: ${topBottomPadding}px ${spaces?.s}px;
 
     &:after {
+      content: "";
       border-radius: ${corners?.m}px;
     }
   `;
@@ -282,7 +284,7 @@ function createTypeCss(
 
     &.Mui-focusVisible {
       background-color: ${typeColors.backgroundHover};
-    }x
+    }
   `;
 }
 

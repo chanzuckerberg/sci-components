@@ -1840,9 +1840,11 @@ __metadata:
   resolution: "@czi-sds/components@workspace:packages/components"
   dependencies:
     "@figma/code-connect": "npm:^1.3.4"
+    "@types/chroma-js": "npm:^3.1.2"
     "@types/node": "npm:^24.3.0"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
+    chroma-js: "npm:^3.1.2"
     style-dictionary: "npm:^4.1.0"
     ts-node: "npm:^10.9.2"
     tsx: "npm:^4.20.3"
@@ -1865,10 +1867,12 @@ __metadata:
   resolution: "@czi-sds/data-viz@workspace:packages/data-viz"
   dependencies:
     "@reduxjs/toolkit": "npm:^2.1.0"
+    "@types/chroma-js": "npm:^3.1.2"
     "@types/react": "npm:^18.2.46"
     "@types/react-dom": "npm:^18.2.18"
+    chroma-js: "npm:^3.1.2"
     d3-scale-chromatic: "npm:^3.0.0"
-    echarts: "npm:^5.4.3"
+    echarts: "npm:^6.0.0"
     jest-environment-jsdom: "npm:^29.6.2"
     lodash: "npm:^4.17.21"
     react-redux: "npm:^9.1.0"
@@ -1882,7 +1886,7 @@ __metadata:
     "@mui/icons-material": ^5.15.3
     "@mui/lab": ^5.0.0-alpha.159
     "@mui/material": ^5.15.3
-    echarts: ^5.4.3
+    echarts: ^6.0.0
     lodash: ^4.17.21
     react: ">=17.0.1"
     react-dom: ">=17.0.1"
@@ -1964,6 +1968,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^6.15.0"
     autoprefixer: "npm:^10.4.16"
     axe-core: "npm:^4.8.4"
+    chroma-js: "npm:^3.1.2"
     chromatic: "npm:^10.1.0"
     commitizen: "npm:^4.2.4"
     concurrently: "npm:^8.2.2"
@@ -1971,7 +1976,7 @@ __metadata:
     css-loader: "npm:^6.10.0"
     cz-conventional-changelog: "npm:^3.3.0"
     d3-scale-chromatic: "npm:^3.0.0"
-    echarts: "npm:^5.6.0"
+    echarts: "npm:^6.0.0"
     emotion-theming: "npm:^11.0.0"
     eslint: "npm:^8.56.0"
     eslint-config-airbnb-typescript: "npm:^17.1.0"
@@ -5380,6 +5385,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chroma-js@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "@types/chroma-js@npm:3.1.2"
+  checksum: 10c0/d2a7d9612c5abe3733a113d339eb8158cb36aeeeb571a3c371e81e8f3a682cd70f1649cea521716fbb5d79eb96f585a539b304be44e3fa818bd56b2a05f29f73
+  languageName: node
+  linkType: hard
+
 "@types/concurrently@npm:^7.0.0":
   version: 7.0.0
   resolution: "@types/concurrently@npm:7.0.0"
@@ -7893,6 +7905,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chroma-js@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "chroma-js@npm:3.1.2"
+  checksum: 10c0/145ce9aea91dac81c6158082675084778e8c83e6959032e37fd4ba9b01db9f5c29c520453ec4bab7e87689f12756fcc63821e3c6b866e083ea41d341c7b2bf71
+  languageName: node
+  linkType: hard
+
 "chromatic@npm:^10.1.0":
   version: 10.9.6
   resolution: "chromatic@npm:10.9.6"
@@ -9715,13 +9734,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"echarts@npm:^5.4.3, echarts@npm:^5.6.0":
-  version: 5.6.0
-  resolution: "echarts@npm:5.6.0"
+"echarts@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "echarts@npm:6.0.0"
   dependencies:
     tslib: "npm:2.3.0"
-    zrender: "npm:5.6.1"
-  checksum: 10c0/6d6a2ee88534d1ff0433e935c542237b9896de1c94959f47ebc7e0e9da26f59bf11c91ed6fc135b62ad2786c779ee12bc536fa481e60532dad5b6a2f5167e9ea
+    zrender: "npm:6.0.0"
+  checksum: 10c0/60bbb4f00ac679d2f81d7a0aa684597c8ccc46041c5ae536def4c4bbb85d5557c1653a536ac6e11f42757718ab66e2bbc35d53d795173c50e8541154c8d59bbd
   languageName: node
   linkType: hard
 
@@ -21984,12 +22003,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zrender@npm:5.6.1":
-  version: 5.6.1
-  resolution: "zrender@npm:5.6.1"
+"zrender@npm:6.0.0":
+  version: 6.0.0
+  resolution: "zrender@npm:6.0.0"
   dependencies:
     tslib: "npm:2.3.0"
-  checksum: 10c0/dc1cc570054640cbd8fbb7b92e6252f225319522bfe3e8dc8bf02cc02d414e00a4c8d0a6f89bfc9d96e5e9511fdca94dd3d06bf53690df2b2f12b0fc560ac307
+  checksum: 10c0/c794e05ee969c750de6d17cfff60d9d4e6342d1591cf6ba3e488fb084ac7a0415355fe4aec55f83a400fd4cda63792db0533362455058ac06f6e1343be28d0ce
   languageName: node
   linkType: hard
 
