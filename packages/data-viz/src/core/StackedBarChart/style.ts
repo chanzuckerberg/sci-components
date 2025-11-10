@@ -102,7 +102,7 @@ export const BarSegment = styled("div")<BarSegmentProps>`
       const borderRadius = corners?.s;
 
       if (isFirst && isLast) {
-        return `${borderRadius}px`;
+        return `border-radius: ${borderRadius}px;`;
       }
       if (isFirst) {
         return `
@@ -122,9 +122,11 @@ export const BarSegment = styled("div")<BarSegmentProps>`
     return `
       background-color: ${color};
       height: ${height}px;
-      flex: ${percentage};
+      flex-grow: ${percentage};
+      flex-basis: 0;
+      flex-shrink: 1;
       opacity: ${opacity};
-      transition: opacity 0.2s ease-in-out;
+      transition: opacity 0.2s ease-in-out, flex-grow 0.25s ease-out;
       cursor: ${disabled ? "default" : "pointer"};
       pointer-events: ${disabled ? "none" : "auto"};
       ${getBorderRadius()}

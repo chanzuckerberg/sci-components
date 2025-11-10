@@ -1,4 +1,4 @@
-import { cloneElement, useState } from "react";
+import { cloneElement, useState, useEffect, useRef, useCallback } from "react";
 import {
   generateDiscreteColors,
   getMode,
@@ -22,6 +22,15 @@ import {
   StackedBarChartDataItem,
   StackedBarChartProps,
 } from "./StackedBarChart.types";
+
+// Type for tracking items with animation state
+type AnimatedItem = StackedBarChartDataItem & {
+  percentage: number;
+  color: string;
+  key: string;
+  originalIndex: number;
+  isExiting?: boolean;
+};
 
 // Helper: Calculate badge display text based on selection state
 const calculateBadgeText = (
@@ -72,9 +81,7 @@ const getSegmentOpacity = (
 
 // Helper: Build legend items from data with optional remaining segment
 const buildLegendItems = (
-  dataWithPercentages: Array<
-    StackedBarChartDataItem & { percentage: number; color: string }
-  >,
+  dataWithPercentages: AnimatedItem[],
   options: {
     mode: "percentage" | "amount";
     showLegendValues: boolean;
@@ -130,7 +137,7 @@ const buildLegendItems = (
 
 // Helper: Render a bar segment with optional tooltip
 const renderBarSegment = (
-  item: StackedBarChartDataItem & { percentage: number; color: string },
+  item: AnimatedItem,
   index: number,
   options: {
     isFirst: boolean;
@@ -161,7 +168,11 @@ const renderBarSegment = (
       height={barHeight}
       isFirst={isFirst}
       isLast={isLast}
-      opacity={getSegmentOpacity(index, hoveredIndex, selectedIndices)}
+      opacity={getSegmentOpacity(
+        item.originalIndex,
+        hoveredIndex,
+        selectedIndices
+      )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onClick}
@@ -173,9 +184,9 @@ const renderBarSegment = (
       title={null}
       componentSlot={<TooltipTable {...item.tooltip} />}
       placement="top"
-      key={`${item.name}-${index}`}
+      key={item.key}
       hasInvertedStyle={false}
-      open={hoveredIndex === index}
+      open={hoveredIndex === item.originalIndex}
       disableInteractive={true}
       PopperProps={{
         disablePortal: false,
@@ -192,7 +203,7 @@ const renderBarSegment = (
       {barSegment}
     </Tooltip>
   ) : (
-    cloneElement(barSegment, { key: `${item.name}-${index}` })
+    cloneElement(barSegment, { key: item.key })
   );
 };
 
@@ -220,9 +231,174 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const theme = useTheme() as SDSTheme;
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
+  const [autoColorMap, setAutoColorMap] = useState<Map<string, string>>(
+    new Map()
+  );
+  const previousProcessedRef = useRef<AnimatedItem[]>([]);
+  const previousDataKeysRef = useRef<Set<string>>(new Set());
+  const previousColorOptionsRef = useRef<{
+    options: typeof colorGeneratorOptions;
+    isDarkMode: boolean;
+  } | null>(null);
+
+  // Helper to animate items when removals occur
+  const animateItemRemoval = (
+    previousItems: AnimatedItem[],
+    nextItems: AnimatedItem[]
+  ): (() => void) | undefined => {
+    if (typeof window === "undefined") {
+      setAnimatedItems(nextItems);
+      previousProcessedRef.current = nextItems;
+      return undefined;
+    }
+
+    const nextItemsMap = new Map(nextItems.map((item) => [item.key, item]));
+
+    const removedKeys = previousItems
+      .filter((item) => !nextItemsMap.has(item.key))
+      .map((item) => item.key);
+
+    if (removedKeys.length === 0) {
+      return undefined;
+    }
+
+    const removedKeySet = new Set(removedKeys);
+
+    // Maintain original order so segments don't jump immediately
+    const initialItems = previousItems.map((item) =>
+      removedKeySet.has(item.key)
+        ? { ...item, isExiting: true }
+        : { ...item, isExiting: false }
+    );
+
+    setAnimatedItems(initialItems);
+    previousProcessedRef.current = initialItems;
+
+    const frameIds: number[] = [];
+
+    const firstFrame = requestAnimationFrame(() => {
+      const secondFrame = requestAnimationFrame(() => {
+        setAnimatedItems((prev) => {
+          const prevKeys = new Set(prev.map((item) => item.key));
+
+          const updatedPrev = prev.map((item) => {
+            if (removedKeySet.has(item.key)) {
+              return { ...item, percentage: 0 };
+            }
+            const nextItem = nextItemsMap.get(item.key);
+            return nextItem ? { ...nextItem, isExiting: false } : item;
+          });
+
+          const addedItems = nextItems.filter(
+            (item) => !prevKeys.has(item.key)
+          );
+
+          return [...updatedPrev, ...addedItems];
+        });
+      });
+
+      frameIds.push(secondFrame);
+    });
+
+    frameIds.push(firstFrame);
+
+    const timeoutId = window.setTimeout(() => {
+      setAnimatedItems(nextItems);
+      previousProcessedRef.current = nextItems;
+    }, 350);
+
+    return () => {
+      frameIds.forEach((id) => window.cancelAnimationFrame(id));
+      window.clearTimeout(timeoutId);
+    };
+  };
 
   // Detect dark mode from theme
   const isDarkMode = getMode({ theme }) === "dark";
+
+  // Helper to generate color map for auto items
+  const generateColorMap = useCallback(
+    (items: StackedBarChartDataItem[]): Map<string, string> => {
+      const palette = generateDiscreteColors(items.length, {
+        ...(colorGeneratorOptions || {}),
+        isDarkMode,
+      });
+
+      const newColorMap = new Map<string, string>();
+      items.forEach((item, index) => {
+        newColorMap.set(
+          item.name,
+          palette[index] || theme?.palette?.sds?.base?.ornamentSecondary
+        );
+      });
+
+      return newColorMap;
+    },
+    [colorGeneratorOptions, isDarkMode, theme]
+  );
+
+  // Effect to manage auto-generated colors
+  useEffect(() => {
+    const autoItems = data.filter((item) => !item.color);
+    const currentDataKeys = new Set(data.map((item) => item.name));
+    const previousDataKeys = previousDataKeysRef.current;
+    const previousColorOptions = previousColorOptionsRef.current;
+
+    // Check if color generation options changed
+    const colorOptionsChanged =
+      !previousColorOptions ||
+      previousColorOptions.isDarkMode !== isDarkMode ||
+      JSON.stringify(previousColorOptions.options) !==
+        JSON.stringify(colorGeneratorOptions);
+
+    // Update refs
+    previousDataKeysRef.current = currentDataKeys;
+    previousColorOptionsRef.current = {
+      options: colorGeneratorOptions,
+      isDarkMode,
+    };
+
+    if (autoItems.length === 0) {
+      if (autoColorMap.size > 0) {
+        setAutoColorMap(new Map());
+      }
+      return;
+    }
+
+    const hasNewItems = autoItems.some(
+      (item) => !previousDataKeys.has(item.name)
+    );
+
+    const shouldRegenerateColors =
+      autoColorMap.size === 0 || hasNewItems || colorOptionsChanged;
+
+    if (shouldRegenerateColors) {
+      setAutoColorMap(generateColorMap(autoItems));
+    } else {
+      const autoKeys = new Set(autoItems.map((item) => item.name));
+      const updatedMap = new Map(autoColorMap);
+      let hasChanges = false;
+
+      for (const key of Array.from(updatedMap.keys())) {
+        if (!autoKeys.has(key)) {
+          updatedMap.delete(key);
+          hasChanges = true;
+        }
+      }
+
+      if (hasChanges) {
+        setAutoColorMap(updatedMap);
+      }
+    }
+  }, [
+    data,
+    colorGeneratorOptions,
+    isDarkMode,
+    theme,
+    autoColorMap,
+    generateColorMap,
+  ]);
 
   // Calculate default badge value
   const defaultBadge = calculateBadgeText(data.length, selectedIndices.length);
@@ -242,26 +418,45 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     ? (remainingValue / effectiveMaxAmount) * 100
     : 0;
 
-  // Generate colors if not provided in data
-  const hasColors = data.every((item) => item.color);
-  const generatedColors = !hasColors
-    ? generateDiscreteColors(data.length, {
-        ...(colorGeneratorOptions || {}),
-        isDarkMode,
-      })
-    : [];
-
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
-  const dataWithPercentages = data.map((item, index) => ({
-    ...item,
-    color:
+  const dataWithPercentages: AnimatedItem[] = data.map((item, index) => {
+    const resolvedColor =
       item.color ||
-      generatedColors[index] ||
-      theme?.palette?.sds?.base?.ornamentSecondary,
-    percentage:
-      effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
-  }));
+      autoColorMap.get(item.name) ||
+      theme?.palette?.sds?.base?.ornamentSecondary;
+
+    return {
+      ...item,
+      color: resolvedColor,
+      percentage:
+        effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
+      key: item.name, // Use name as stable key for tracking
+      originalIndex: index, // Track original index for selection
+    };
+  });
+
+  // Handle data changes and animate exits
+  useEffect(() => {
+    const previousProcessed = previousProcessedRef.current;
+
+    // If this is the initial render, just set the items
+    if (previousProcessed.length === 0) {
+      setAnimatedItems(dataWithPercentages);
+      previousProcessedRef.current = dataWithPercentages;
+      return;
+    }
+
+    const cleanup = animateItemRemoval(previousProcessed, dataWithPercentages);
+
+    if (cleanup) {
+      return cleanup;
+    }
+
+    setAnimatedItems(dataWithPercentages);
+    previousProcessedRef.current = dataWithPercentages;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, effectiveMaxAmount, autoColorMap]);
 
   // Convert data to legend items format
   const legendItems = buildLegendItems(dataWithPercentages, {
@@ -309,16 +504,18 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const chartContent = (
     <StyledStackedBarChartWrapper>
       <BarContainer width={width}>
-        {dataWithPercentages.map((item, index) =>
+        {animatedItems.map((item, index) =>
           renderBarSegment(item, index, {
             isFirst: index === 0,
-            isLast: index === dataWithPercentages.length - 1 && !hasRemaining,
+            isLast: index === animatedItems.length - 1 && !hasRemaining,
             barHeight,
             hoveredIndex,
             selectedIndices,
-            onMouseEnter: () => setHoveredIndex(index),
+            onMouseEnter: () =>
+              !item.isExiting && setHoveredIndex(item.originalIndex),
             onMouseLeave: () => setHoveredIndex(null),
-            onClick: () => handleSegmentClick(index),
+            onClick: () =>
+              !item.isExiting && handleSegmentClick(item.originalIndex),
           })
         )}
         {hasRemaining && (

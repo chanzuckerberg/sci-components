@@ -1,6 +1,7 @@
 import { Meta } from "@storybook/react-webpack5";
 import { StackedBarChart } from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";
+import WithDynamicDataStory from "./stories/withDynamicData";
 import { STACKED_BAR_CHART_DATA } from "./constants";
 
 export default {
@@ -154,6 +155,23 @@ export const AmountBasedWithSelection = {
     title: "Domain",
     width: "360px",
     maxAmount: 700,
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
+  },
+};
+
+export const WithExitAnimations = {
+  render: WithDynamicDataStory,
+  args: {
+    barHeight: 16,
+    data: STACKED_BAR_CHART_DATA,
+    mode: "amount",
+    maxAmount: 700,
+    showLegend: true,
+    showLegendValues: true,
+    title: "With exit animations",
+    width: "360px",
     colorGeneratorOptions: {
       ...DEFAULT_COLOR_GENERATOR_OPTIONS,
     },

@@ -30,7 +30,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
         width="360px"
       >
         <div
-          class="css-1os0tgf"
+          class="css-1853ssk"
           color="#7260ab"
           data-mui-internal-clone-element="true"
           height="16"
@@ -38,7 +38,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-ev1vfb"
+          class="css-1ha2t5v"
           color="#ad5f99"
           data-mui-internal-clone-element="true"
           height="16"
@@ -46,7 +46,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-zx48n2"
+          class="css-mcdssh"
           color="#c07371"
           data-mui-internal-clone-element="true"
           height="16"
@@ -54,7 +54,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-10madfl"
+          class="css-sdtsuk"
           color="#ae945d"
           data-mui-internal-clone-element="true"
           height="16"
@@ -62,7 +62,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-120lrfw"
+          class="css-w974zs"
           color="#94af66"
           data-mui-internal-clone-element="true"
           height="16"
@@ -70,7 +70,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-5jue7b"
+          class="css-jqjzwq"
           color="#7fc48f"
           data-mui-internal-clone-element="true"
           height="16"
@@ -78,7 +78,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-1vqlngc"
+          class="css-9ouozc"
           color="#cabdf1"
           data-mui-internal-clone-element="true"
           height="16"
@@ -86,7 +86,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         />
         <div
-          class="css-nl045m"
+          class="css-16x66yq"
           disabled=""
           height="16"
           opacity="1"
@@ -340,7 +340,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         width="360"
       >
         <div
-          class="css-jszq69"
+          class="css-kpv2s2"
           color="#7260ab"
           data-mui-internal-clone-element="true"
           height="16"
@@ -348,7 +348,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-dgq8tn"
+          class="css-1qg0lcw"
           color="#ad5f99"
           data-mui-internal-clone-element="true"
           height="16"
@@ -356,7 +356,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-lg2jpp"
+          class="css-wsj17o"
           color="#c07371"
           data-mui-internal-clone-element="true"
           height="16"
@@ -364,7 +364,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-9wlsta"
+          class="css-8yxv5n"
           color="#ae945d"
           data-mui-internal-clone-element="true"
           height="16"
@@ -372,7 +372,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-m7cp1x"
+          class="css-1w6byv3"
           color="#94af66"
           data-mui-internal-clone-element="true"
           height="16"
@@ -380,7 +380,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1boeiq6"
+          class="css-1yh7pxn"
           color="#7fc48f"
           data-mui-internal-clone-element="true"
           height="16"
@@ -388,7 +388,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-zys4mx"
+          class="css-18g853e"
           color="#cabdf1"
           data-mui-internal-clone-element="true"
           height="16"
@@ -559,6 +559,310 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
 </div>
 `;
 
+exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
+<div
+  style="margin: 150px;"
+>
+  <div
+    class="css-qgcg3"
+    width="360px"
+  >
+    <div
+      class="css-pmr0i2"
+    >
+      <div
+        class="css-1mg4zid"
+      >
+        Domain (with exit animations)
+      </div>
+      <div
+        class="css-1b52koj"
+      >
+        7
+      </div>
+    </div>
+    <div
+      class="css-1jlejkr"
+    >
+      <div
+        class="css-8mrz0y"
+        width="360px"
+      >
+        <div
+          class="css-kpv2s2"
+          color="#7260ab"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1qg0lcw"
+          color="#ad5f99"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-wsj17o"
+          color="#c07371"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-8yxv5n"
+          color="#ae945d"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1w6byv3"
+          color="#94af66"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1yh7pxn"
+          color="#7fc48f"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-18g853e"
+          color="#cabdf1"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+      </div>
+      <div
+        class="css-1t849lf"
+      >
+        <div
+          aria-label="Transcriptomic: 22%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1bin2rj"
+            color="#7260ab"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Transcriptomic
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            22%
+          </span>
+        </div>
+        <div
+          aria-label="Imaging: 11%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-cs2nmc"
+            color="#ad5f99"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Imaging
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            11%
+          </span>
+        </div>
+        <div
+          aria-label="Sequencing: 6%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1kzrvme"
+            color="#c07371"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Sequencing
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            6%
+          </span>
+        </div>
+        <div
+          aria-label="Proteomics: 3%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1cfh2un"
+            color="#ae945d"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Proteomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            3%
+          </span>
+        </div>
+        <div
+          aria-label="Spatial Transcriptomics: 15%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-b6968b"
+            color="#94af66"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Spatial Transcriptomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            15%
+          </span>
+        </div>
+        <div
+          aria-label="Prosthetics: 24%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1xp2461"
+            color="#7fc48f"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Prosthetics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            24%
+          </span>
+        </div>
+        <div
+          aria-label="Epigenomics: 19%"
+          aria-pressed="false"
+          class="css-r7qg0l"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-ie7wo8"
+            color="#cabdf1"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Epigenomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            19%
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 40px;"
+  >
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 12px;"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Remove First
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Remove Last
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Remove Random
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-gkrbfh-MuiButtonBase-root-MuiButton-root"
+        data-style="minimal"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        Reset
+      </button>
+    </div>
+    <div
+      style="font-size: 14px; color: rgb(102, 102, 102);"
+    >
+      Current items: 
+      7
+       / 
+      7
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
 <div
   style="margin: 150px;"
@@ -589,7 +893,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         width="360px"
       >
         <div
-          class="css-jszq69"
+          class="css-kpv2s2"
           color="#7260ab"
           data-mui-internal-clone-element="true"
           height="16"
@@ -597,7 +901,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-dgq8tn"
+          class="css-1qg0lcw"
           color="#ad5f99"
           data-mui-internal-clone-element="true"
           height="16"
@@ -605,7 +909,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-lg2jpp"
+          class="css-wsj17o"
           color="#c07371"
           data-mui-internal-clone-element="true"
           height="16"
@@ -613,7 +917,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-9wlsta"
+          class="css-8yxv5n"
           color="#ae945d"
           data-mui-internal-clone-element="true"
           height="16"
@@ -621,7 +925,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-m7cp1x"
+          class="css-1w6byv3"
           color="#94af66"
           data-mui-internal-clone-element="true"
           height="16"
@@ -629,7 +933,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1boeiq6"
+          class="css-1yh7pxn"
           color="#7fc48f"
           data-mui-internal-clone-element="true"
           height="16"
@@ -637,7 +941,7 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-zys4mx"
+          class="css-18g853e"
           color="#cabdf1"
           data-mui-internal-clone-element="true"
           height="16"
