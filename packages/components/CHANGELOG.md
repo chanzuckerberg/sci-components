@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.17.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.3...@czi-sds/components@22.17.0) (2025-11-10)
+
+### Features
+
+- **StackedBarChart:** implement bar chart in codebase ([#1042](https://github.com/chanzuckerberg/sci-components/issues/1042)) ([bc6078d](https://github.com/chanzuckerberg/sci-components/commit/bc6078d2b3185a8fea305935de43b4583d941f9a))
+
 ## [22.16.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.2...@czi-sds/components@22.16.3) (2025-11-06)
 
 ### Bug Fixes
