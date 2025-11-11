@@ -3,9 +3,10 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Transcriptomic",
     value: 117,
     tooltip: {
-      showSectionHeader: false,
+      showSectionHeader: true,
       data: [
         {
+          label: "Transcriptomic",
           dataRows: [
             { label: "Sub-modality", value: 14 },
             { label: "Another sub-modality", value: 19 },
@@ -20,9 +21,9 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Imaging",
     value: 61,
     tooltip: {
-      showSectionHeader: false,
       data: [
         {
+          label: "Imaging",
           dataRows: [
             { label: "Fluorescence microscopy", value: 22 },
             { label: "Confocal imaging", value: 15 },
@@ -38,9 +39,9 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Sequencing",
     value: 34,
     tooltip: {
-      showSectionHeader: false,
       data: [
         {
+          label: "Sequencing",
           dataRows: [
             { label: "RNA-seq", value: 15 },
             { label: "DNA-seq", value: 10 },
@@ -55,9 +56,9 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Proteomics",
     value: 15,
     tooltip: {
-      showSectionHeader: false,
       data: [
         {
+          label: "Proteomics",
           dataRows: [
             { label: "Proteomics", value: 8 },
             { label: "Metabolomics", value: 4 },
@@ -71,9 +72,9 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Spatial Transcriptomics",
     value: 78,
     tooltip: {
-      showSectionHeader: false,
       data: [
         {
+          label: "Spatial Transcriptomics",
           dataRows: [
             { label: "Spatial transcriptomics", value: 60 },
             { label: "Spatial proteomics", value: 10 },
@@ -88,9 +89,10 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Prosthetics",
     value: 130,
     tooltip: {
-      showSectionHeader: false,
+      showSectionHeader: true,
       data: [
         {
+          label: "Prosthetics",
           dataRows: [
             { label: "Prosthetics", value: 80 },
             { label: "Orthotics", value: 15 },
@@ -104,9 +106,9 @@ export const STACKED_BAR_CHART_DATA = [
     name: "Epigenomics",
     value: 100,
     tooltip: {
-      showSectionHeader: false,
       data: [
         {
+          label: "Epigenomics",
           dataRows: [
             { label: "DNA methylation", value: 30 },
             { label: "Histone modification", value: 20 },

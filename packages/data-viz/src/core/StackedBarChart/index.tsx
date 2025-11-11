@@ -37,8 +37,8 @@ const calculateBadgeText = (
   totalItems: number,
   selectedCount: number
 ): string => {
-  if (selectedCount === 0) return `${totalItems}`;
-  if (selectedCount === totalItems) return "All";
+  if (selectedCount === 0 || selectedCount === totalItems)
+    return `${totalItems}`;
   return `${selectedCount} of ${totalItems}`;
 };
 
@@ -529,7 +529,11 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const chartContent = (
     <StyledStackedBarChartWrapper>
-      <BarContainer width={width} barHeight={barHeight}>
+      <BarContainer
+        width={width}
+        barHeight={barHeight}
+        isEmpty={animatedItems.length === 0}
+      >
         {animatedItems.map((item, index) =>
           renderBarSegment(item, index, {
             isFirst: index === 0,

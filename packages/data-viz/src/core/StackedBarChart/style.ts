@@ -63,13 +63,15 @@ export const StyledBadge = styled("div")`
 interface BarContainerProps extends CommonThemeProps {
   width: number | string;
   barHeight: number;
+  isEmpty: boolean;
 }
 
 export const BarContainer = styled("div")<BarContainerProps>`
   ${(props: BarContainerProps) => {
-    const { width, barHeight } = props;
+    const { width, barHeight, isEmpty } = props;
 
     const corners = getCorners(props);
+    const semanticColors = getSemanticColors(props);
 
     const finalWidth = typeof width === "number" ? `${width}px` : width;
 
@@ -78,6 +80,7 @@ export const BarContainer = styled("div")<BarContainerProps>`
       border-radius: ${corners?.s}px;
       width: ${finalWidth};
       height: ${barHeight}px;
+      background-color: ${isEmpty ? semanticColors?.base?.backgroundTertiary : "transparent"};
     `;
   }}
 `;
@@ -134,7 +137,7 @@ export const BarSegment = styled("div")<BarSegmentProps>`
       flex-shrink: 1;
       margin-right: ${marginRight};
       opacity: ${opacity};
-      transition: opacity 0.2s ease-in-out, flex-grow 0.25s ease-out, margin-right 0.2s ease-out;
+      transition: opacity 0.2s ease-in-out, flex-grow 0.25s ease-in-out, margin-right 0.25s ease-out;
       cursor: ${disabled ? "default" : "pointer"};
       pointer-events: ${disabled ? "none" : "auto"};
       ${getBorderRadius()}
