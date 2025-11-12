@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBodyXxxxs,
+  fontBodyMediumXxxs,
   getCorners,
   getSpaces,
   getSemanticColors,
@@ -80,7 +80,7 @@ interface LegendTextProps extends CommonThemeProps {
 }
 
 export const LegendLabel = styled("span")<LegendTextProps>`
-  ${fontBodyXxxxs}
+  ${fontBodyMediumXxxs}
   ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     return `
@@ -90,7 +90,7 @@ export const LegendLabel = styled("span")<LegendTextProps>`
 `;
 
 export const LegendValue = styled("span")<LegendTextProps>`
-  ${fontBodyXxxxs}
+  ${fontBodyMediumXxxs}
   ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
