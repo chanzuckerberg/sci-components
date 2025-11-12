@@ -100,7 +100,7 @@ describe("<StackedBarChart />", () => {
     expect(screen.queryByText("Badge Text")).not.toBeInTheDocument();
   });
 
-  it("displays 'All' badge when all items are selected", () => {
+  it("displays Count of items in badge when all items are selected", () => {
     render(
       <StackedBarChart
         data={sampleData}
@@ -110,7 +110,7 @@ describe("<StackedBarChart />", () => {
       />
     );
 
-    expect(screen.getByText("All")).toBeInTheDocument();
+    expect(screen.getByText("3")).toBeInTheDocument();
   });
 
   it("displays 'X of Y' badge for partial selection", () => {
