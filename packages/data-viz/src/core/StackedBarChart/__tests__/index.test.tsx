@@ -157,7 +157,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="percentage"
+        mode="porportional"
         showLegendValues
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
@@ -169,11 +169,11 @@ describe("<StackedBarChart />", () => {
     expect(screen.getByText("50%")).toBeInTheDocument();
   });
 
-  it("shows amount values with unit in amount mode", () => {
+  it("shows amount values with unit in cumulative mode", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="amount"
+        mode="cumulative"
         unit="datasets"
         showLegendValues
         data-testid={STACKED_BAR_CHART_TEST_ID}
@@ -197,11 +197,11 @@ describe("<StackedBarChart />", () => {
     expect(screen.queryByText(/\d+%/)).not.toBeInTheDocument();
   });
 
-  it("renders remaining segment in amount mode with maxAmount", () => {
+  it("renders remaining segment in cumulative mode with maxAmount", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="amount"
+        mode="cumulative"
         maxAmount={1000}
         showLegendValues
         data-testid={STACKED_BAR_CHART_TEST_ID}
@@ -217,7 +217,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="amount"
+        mode="cumulative"
         maxAmount={1000}
         remainingLabel="Unknown"
         showLegendValues
@@ -232,7 +232,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="amount"
+        mode="cumulative"
         maxAmount={1000}
         remainingUnit="GB"
         showLegendValues
@@ -410,7 +410,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={dataWithUnits}
-        mode="amount"
+        mode="cumulative"
         unit="KB"
         showLegendValues
         data-testid={STACKED_BAR_CHART_TEST_ID}
@@ -425,7 +425,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="amount"
+        mode="cumulative"
         maxAmount={600}
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
@@ -438,7 +438,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="percentage"
+        mode="porportional"
         maxAmount={1000}
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />

@@ -7,13 +7,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="H. sapiens: 3212"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1bin2rj"
-      color="#7260ab"
+      class="css-sq7aup"
+      color="#8b78c4"
     />
     <span
       class="css-1sjvubj"
@@ -24,13 +24,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="M. musculus: 130"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1blfgrq"
-      color="#a85e9e"
+      class="css-1jmqxoz"
+      color="#bf74b1"
     />
     <span
       class="css-1sjvubj"
@@ -41,13 +41,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="C. Jacques: 89"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-uv34ao"
-      color="#bf6b7d"
+      class="css-1mfad7s"
+      color="#d18090"
     />
     <span
       class="css-1sjvubj"
@@ -58,13 +58,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="D. rerio: 65"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-14ldhtz"
-      color="#b88661"
+      class="css-y1uu4u"
+      color="#c99678"
     />
     <span
       class="css-1sjvubj"
@@ -75,13 +75,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="M. mulatta: 45"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-g2f25t"
-      color="#a2a05e"
+      class="css-8egojt"
+      color="#b7ac72"
     />
     <span
       class="css-1sjvubj"
@@ -92,13 +92,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="P. mirabillis: 34"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1rdzl6n"
-      color="#8db66e"
+      class="css-eeqjok"
+      color="#a3bf7c"
     />
     <span
       class="css-1sjvubj"
@@ -109,13 +109,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="V. cholerae: 12"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-v99ocu"
-      color="#7ec69a"
+      class="css-14kpf9f"
+      color="#93ce98"
     />
     <span
       class="css-1sjvubj"
@@ -126,13 +126,13 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="Other (17): 40"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-ie7wo8"
-      color="#cabdf1"
+      class="css-1vzg0fg"
+      color="#a9d0e6"
     />
     <span
       class="css-1sjvubj"
@@ -153,13 +153,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="H. sapiens: 3212"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1bin2rj"
-        color="#7260ab"
+        class="css-sq7aup"
+        color="#8b78c4"
       />
       <span
         class="css-1sjvubj"
@@ -175,13 +175,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="M. musculus: 130"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1blfgrq"
-        color="#a85e9e"
+        class="css-1jmqxoz"
+        color="#bf74b1"
       />
       <span
         class="css-1sjvubj"
@@ -197,13 +197,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="C. Jacques: 89"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-uv34ao"
-        color="#bf6b7d"
+        class="css-1mfad7s"
+        color="#d18090"
       />
       <span
         class="css-1sjvubj"
@@ -219,13 +219,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="D. rerio: 65"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-14ldhtz"
-        color="#b88661"
+        class="css-y1uu4u"
+        color="#c99678"
       />
       <span
         class="css-1sjvubj"
@@ -241,13 +241,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="M. mulatta: 45"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-g2f25t"
-        color="#a2a05e"
+        class="css-8egojt"
+        color="#b7ac72"
       />
       <span
         class="css-1sjvubj"
@@ -263,13 +263,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="P. mirabillis: 34"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1rdzl6n"
-        color="#8db66e"
+        class="css-eeqjok"
+        color="#a3bf7c"
       />
       <span
         class="css-1sjvubj"
@@ -285,13 +285,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="V. cholerae: 12"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-v99ocu"
-        color="#7ec69a"
+        class="css-14kpf9f"
+        color="#93ce98"
       />
       <span
         class="css-1sjvubj"
@@ -307,13 +307,13 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="Other (17): 40"
       aria-pressed="false"
-      class="css-r7qg0l"
+      class="css-3vx361"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-ie7wo8"
-        color="#cabdf1"
+        class="css-1vzg0fg"
+        color="#a9d0e6"
       />
       <span
         class="css-1sjvubj"
@@ -369,13 +369,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="H. sapiens: 3212"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1bin2rj"
-      color="#7260ab"
+      class="css-sq7aup"
+      color="#8b78c4"
     />
     <span
       class="css-1sjvubj"
@@ -391,13 +391,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="M. musculus: 130"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1blfgrq"
-      color="#a85e9e"
+      class="css-1jmqxoz"
+      color="#bf74b1"
     />
     <span
       class="css-1sjvubj"
@@ -413,13 +413,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="C. Jacques: 89"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-uv34ao"
-      color="#bf6b7d"
+      class="css-1mfad7s"
+      color="#d18090"
     />
     <span
       class="css-1sjvubj"
@@ -435,13 +435,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="D. rerio: 65"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-14ldhtz"
-      color="#b88661"
+      class="css-y1uu4u"
+      color="#c99678"
     />
     <span
       class="css-1sjvubj"
@@ -457,13 +457,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="M. mulatta: 45"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-g2f25t"
-      color="#a2a05e"
+      class="css-8egojt"
+      color="#b7ac72"
     />
     <span
       class="css-1sjvubj"
@@ -479,13 +479,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="P. mirabillis: 34"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1rdzl6n"
-      color="#8db66e"
+      class="css-eeqjok"
+      color="#a3bf7c"
     />
     <span
       class="css-1sjvubj"
@@ -501,13 +501,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="V. cholerae: 12"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-v99ocu"
-      color="#7ec69a"
+      class="css-14kpf9f"
+      color="#93ce98"
     />
     <span
       class="css-1sjvubj"
@@ -523,13 +523,13 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="Other (17): 40"
     aria-pressed="false"
-    class="css-r7qg0l"
+    class="css-3vx361"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-ie7wo8"
-      color="#cabdf1"
+      class="css-1vzg0fg"
+      color="#a9d0e6"
     />
     <span
       class="css-1sjvubj"

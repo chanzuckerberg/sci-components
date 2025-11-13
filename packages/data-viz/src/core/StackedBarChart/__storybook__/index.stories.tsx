@@ -36,21 +36,21 @@ export default {
         type: "number",
       },
       description:
-        "Maximum amount for the bar (used only in 'amount' mode). If not provided, defaults to sum of all values",
+        "Maximum amount for the bar (used only in 'cumulative' mode). If not provided, defaults to sum of all values",
     },
     mode: {
       control: {
         type: "select",
       },
       description:
-        "Chart mode: 'percentage' (segments fill entire bar) or 'amount' (segments sized based on maxAmount)",
-      options: ["percentage", "amount"],
+        "Chart mode: 'porportional' (segments fill entire bar) or 'cumulative' (segments sized based on maxAmount)",
+      options: ["porportional", "cumulative"],
     },
     remainingLabel: {
       control: {
         type: "text",
       },
-      description: "Label for the remaining/unknown segment in amount mode",
+      description: "Label for the remaining/unknown segment in cumulative mode",
     },
     remainingUnit: {
       control: {
@@ -82,7 +82,7 @@ export default {
         type: "text",
       },
       description:
-        "Global unit to display with values in amount mode. Individual data items can override this with their own unit property",
+        "Global unit to display with values in cumulative mode. Individual data items can override this with their own unit property",
     },
     width: {
       control: {
@@ -109,10 +109,10 @@ export default {
 } as Meta;
 
 const DEFAULT_COLOR_GENERATOR_OPTIONS = {
-  start: 249,
-  lightness: [0.3, 0.7],
+  start: 250,
+  lightness: [0.4, 0.7],
   correctLightness: true,
-  rotations: 1,
+  rotations: 0.85,
   gamma: 0.7,
 };
 
@@ -132,7 +132,7 @@ export const WithSelection = {
   args: {
     barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
-    mode: "percentage",
+    mode: "porportional",
     showLegend: true,
     showLegendValues: true,
     title: "Domain",
@@ -148,7 +148,7 @@ export const AmountBasedWithSelection = {
   args: {
     barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
-    mode: "amount",
+    mode: "cumulative",
     unit: "datasets",
     showLegend: true,
     showLegendValues: true,
@@ -166,7 +166,7 @@ export const WithExitAnimations = {
   args: {
     barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
-    mode: "amount",
+    mode: "cumulative",
     maxAmount: 700,
     showLegend: true,
     showLegendValues: true,

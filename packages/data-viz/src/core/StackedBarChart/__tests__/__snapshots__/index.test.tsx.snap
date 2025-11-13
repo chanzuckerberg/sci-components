@@ -30,56 +30,56 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
         width="360px"
       >
         <div
-          class="css-15a0d47"
-          color="#7260ab"
+          class="css-pjhx4n"
+          color="#8b78c4"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1li3p8r"
-          color="#ad5f99"
+          class="css-f2dwgl"
+          color="#c475ac"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-k76zgh"
-          color="#c07371"
+          class="css-1x7shf8"
+          color="#d08786"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1plmzk0"
-          color="#ae945d"
+          class="css-1qhlx2k"
+          color="#c1a273"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1jw6pd"
-          color="#94af66"
+          class="css-s4kmda"
+          color="#aab977"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-no5hon"
-          color="#7fc48f"
+          class="css-1rrcdpo"
+          color="#95cc92"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-ye7j58"
-          color="#cabdf1"
+          class="css-1p3jsrh"
+          color="#a9d0e6"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
@@ -103,8 +103,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-1bin2rj"
-            color="#7260ab"
+            class="css-fdasty"
+            color="#8b78c4"
           />
           <span
             class="css-1sjvubj"
@@ -125,8 +125,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-cs2nmc"
-            color="#ad5f99"
+            class="css-167e66x"
+            color="#c475ac"
           />
           <span
             class="css-1sjvubj"
@@ -147,8 +147,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-1kzrvme"
-            color="#c07371"
+            class="css-1pfbiry"
+            color="#d08786"
           />
           <span
             class="css-1sjvubj"
@@ -169,8 +169,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-1cfh2un"
-            color="#ae945d"
+            class="css-mjzweb"
+            color="#c1a273"
           />
           <span
             class="css-1sjvubj"
@@ -191,8 +191,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-b6968b"
-            color="#94af66"
+            class="css-1a9itgu"
+            color="#aab977"
           />
           <span
             class="css-1sjvubj"
@@ -213,8 +213,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-1xp2461"
-            color="#7fc48f"
+            class="css-podhm1"
+            color="#95cc92"
           />
           <span
             class="css-1sjvubj"
@@ -235,8 +235,8 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           tabindex="0"
         >
           <div
-            class="css-ie7wo8"
-            color="#cabdf1"
+            class="css-189602o"
+            color="#a9d0e6"
           />
           <span
             class="css-1sjvubj"
@@ -340,56 +340,56 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         width="360"
       >
         <div
-          class="css-u5r979"
-          color="#7260ab"
+          class="css-ju3tfv"
+          color="#8b78c4"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-bg4ofs"
-          color="#ad5f99"
+          class="css-zelymr"
+          color="#c475ac"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-qkr12u"
-          color="#c07371"
+          class="css-3orsqd"
+          color="#d08786"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1b3jjgq"
-          color="#ae945d"
+          class="css-ixw05v"
+          color="#c1a273"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-m0i2p1"
-          color="#94af66"
+          class="css-12nkgds"
+          color="#aab977"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1yd0nsn"
-          color="#7fc48f"
+          class="css-1epb59t"
+          color="#95cc92"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-v290kk"
-          color="#cabdf1"
+          class="css-1mxzqmj"
+          color="#a9d0e6"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
@@ -407,8 +407,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1bin2rj"
-            color="#7260ab"
+            class="css-fdasty"
+            color="#8b78c4"
           />
           <span
             class="css-1sjvubj"
@@ -429,8 +429,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-cs2nmc"
-            color="#ad5f99"
+            class="css-167e66x"
+            color="#c475ac"
           />
           <span
             class="css-1sjvubj"
@@ -451,8 +451,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1kzrvme"
-            color="#c07371"
+            class="css-1pfbiry"
+            color="#d08786"
           />
           <span
             class="css-1sjvubj"
@@ -473,8 +473,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1cfh2un"
-            color="#ae945d"
+            class="css-mjzweb"
+            color="#c1a273"
           />
           <span
             class="css-1sjvubj"
@@ -495,8 +495,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-b6968b"
-            color="#94af66"
+            class="css-1a9itgu"
+            color="#aab977"
           />
           <span
             class="css-1sjvubj"
@@ -517,8 +517,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1xp2461"
-            color="#7fc48f"
+            class="css-podhm1"
+            color="#95cc92"
           />
           <span
             class="css-1sjvubj"
@@ -539,8 +539,8 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-ie7wo8"
-            color="#cabdf1"
+            class="css-189602o"
+            color="#a9d0e6"
           />
           <span
             class="css-1sjvubj"
@@ -644,56 +644,56 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
         width="360px"
       >
         <div
-          class="css-15a0d47"
-          color="#7260ab"
+          class="css-pjhx4n"
+          color="#8b78c4"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1li3p8r"
-          color="#ad5f99"
+          class="css-f2dwgl"
+          color="#c475ac"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-k76zgh"
-          color="#c07371"
+          class="css-1x7shf8"
+          color="#d08786"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1plmzk0"
-          color="#ae945d"
+          class="css-1qhlx2k"
+          color="#c1a273"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1jw6pd"
-          color="#94af66"
+          class="css-s4kmda"
+          color="#aab977"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-no5hon"
-          color="#7fc48f"
+          class="css-1rrcdpo"
+          color="#95cc92"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-ye7j58"
-          color="#cabdf1"
+          class="css-1p3jsrh"
+          color="#a9d0e6"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
@@ -717,8 +717,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1bin2rj"
-            color="#7260ab"
+            class="css-fdasty"
+            color="#8b78c4"
           />
           <span
             class="css-1sjvubj"
@@ -739,8 +739,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-cs2nmc"
-            color="#ad5f99"
+            class="css-167e66x"
+            color="#c475ac"
           />
           <span
             class="css-1sjvubj"
@@ -761,8 +761,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1kzrvme"
-            color="#c07371"
+            class="css-1pfbiry"
+            color="#d08786"
           />
           <span
             class="css-1sjvubj"
@@ -783,8 +783,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1cfh2un"
-            color="#ae945d"
+            class="css-mjzweb"
+            color="#c1a273"
           />
           <span
             class="css-1sjvubj"
@@ -805,8 +805,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-b6968b"
-            color="#94af66"
+            class="css-1a9itgu"
+            color="#aab977"
           />
           <span
             class="css-1sjvubj"
@@ -827,8 +827,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1xp2461"
-            color="#7fc48f"
+            class="css-podhm1"
+            color="#95cc92"
           />
           <span
             class="css-1sjvubj"
@@ -849,8 +849,8 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-ie7wo8"
-            color="#cabdf1"
+            class="css-189602o"
+            color="#a9d0e6"
           />
           <span
             class="css-1sjvubj"
@@ -924,56 +924,56 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         width="360px"
       >
         <div
-          class="css-u5r979"
-          color="#7260ab"
+          class="css-ju3tfv"
+          color="#8b78c4"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-bg4ofs"
-          color="#ad5f99"
+          class="css-zelymr"
+          color="#c475ac"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-qkr12u"
-          color="#c07371"
+          class="css-3orsqd"
+          color="#d08786"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1b3jjgq"
-          color="#ae945d"
+          class="css-ixw05v"
+          color="#c1a273"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-m0i2p1"
-          color="#94af66"
+          class="css-12nkgds"
+          color="#aab977"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1yd0nsn"
-          color="#7fc48f"
+          class="css-1epb59t"
+          color="#95cc92"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-v290kk"
-          color="#cabdf1"
+          class="css-1mxzqmj"
+          color="#a9d0e6"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
@@ -991,8 +991,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1bin2rj"
-            color="#7260ab"
+            class="css-fdasty"
+            color="#8b78c4"
           />
           <span
             class="css-1sjvubj"
@@ -1013,8 +1013,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-cs2nmc"
-            color="#ad5f99"
+            class="css-167e66x"
+            color="#c475ac"
           />
           <span
             class="css-1sjvubj"
@@ -1035,8 +1035,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1kzrvme"
-            color="#c07371"
+            class="css-1pfbiry"
+            color="#d08786"
           />
           <span
             class="css-1sjvubj"
@@ -1057,8 +1057,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1cfh2un"
-            color="#ae945d"
+            class="css-mjzweb"
+            color="#c1a273"
           />
           <span
             class="css-1sjvubj"
@@ -1079,8 +1079,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-b6968b"
-            color="#94af66"
+            class="css-1a9itgu"
+            color="#aab977"
           />
           <span
             class="css-1sjvubj"
@@ -1101,8 +1101,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1xp2461"
-            color="#7fc48f"
+            class="css-podhm1"
+            color="#95cc92"
           />
           <span
             class="css-1sjvubj"
@@ -1123,8 +1123,8 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-ie7wo8"
-            color="#cabdf1"
+            class="css-189602o"
+            color="#a9d0e6"
           />
           <span
             class="css-1sjvubj"

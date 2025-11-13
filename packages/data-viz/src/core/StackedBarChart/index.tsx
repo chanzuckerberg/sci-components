@@ -1,4 +1,11 @@
-import { cloneElement, useState, useEffect, useRef, useCallback } from "react";
+import {
+  cloneElement,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import {
   generateDiscreteColors,
   getMode,
@@ -45,13 +52,13 @@ const calculateBadgeText = (
 // Helper: Calculate legend value display
 const calculateLegendValue = (
   item: StackedBarChartDataItem & { percentage: number },
-  mode: "percentage" | "amount",
+  mode: StackedBarChartProps["mode"],
   showLegendValues: boolean,
   globalUnit?: string
 ): string | undefined => {
   if (!showLegendValues) return undefined;
 
-  if (mode === "percentage") {
+  if (mode === "porportional") {
     return `${Math.round(item.percentage)}%`;
   }
 
@@ -83,7 +90,7 @@ const getSegmentOpacity = (
 const buildLegendItems = (
   dataWithPercentages: AnimatedItem[],
   options: {
-    mode: "percentage" | "amount";
+    mode: StackedBarChartProps["mode"];
     showLegendValues: boolean;
     unit?: string;
     hasRemaining: boolean;
@@ -219,7 +226,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     showLegendValues = true,
     selectedIndices = [],
     onSelectionChange,
-    mode = "percentage",
+    mode = "porportional",
     maxAmount,
     remainingLabel = "Remaining",
     remainingUnit,
@@ -408,14 +415,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         setAutoColorMap(updatedMap);
       }
     }
-  }, [
-    data,
-    colorGeneratorOptions,
-    isDarkMode,
-    theme,
-    autoColorMap,
-    generateColorMap,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
 
   // Calculate default badge value
   const defaultBadge = calculateBadgeText(data.length, selectedIndices.length);
@@ -426,10 +427,10 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Determine the effective max amount
   const effectiveMaxAmount =
-    mode === "amount" && maxAmount ? maxAmount : dataTotal;
+    mode === "cumulative" && maxAmount ? maxAmount : dataTotal;
 
   // Calculate if there's a remaining segment
-  const hasRemaining = mode === "amount" && dataTotal < effectiveMaxAmount;
+  const hasRemaining = mode === "cumulative" && dataTotal < effectiveMaxAmount;
   const remainingValue = hasRemaining ? effectiveMaxAmount - dataTotal : 0;
   const remainingPercentage = hasRemaining
     ? (remainingValue / effectiveMaxAmount) * 100
@@ -437,21 +438,24 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
-  const dataWithPercentages: AnimatedItem[] = data.map((item, index) => {
-    const resolvedColor =
-      item.color ||
-      autoColorMap.get(item.name) ||
-      theme?.palette?.sds?.base?.ornamentSecondary;
+  // Memoize to prevent unnecessary recalculations and re-renders
+  const dataWithPercentages: AnimatedItem[] = useMemo(() => {
+    return data.map((item, index) => {
+      const resolvedColor =
+        item.color ||
+        autoColorMap.get(item.name) ||
+        theme?.palette?.sds?.base?.ornamentSecondary;
 
-    return {
-      ...item,
-      color: resolvedColor,
-      percentage:
-        effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
-      key: item.name, // Use name as stable key for tracking
-      originalIndex: index, // Track original index for selection
-    };
-  });
+      return {
+        ...item,
+        color: resolvedColor,
+        percentage:
+          effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
+        key: item.name, // Use name as stable key for tracking
+        originalIndex: index, // Track original index for selection
+      };
+    });
+  }, [data, effectiveMaxAmount, autoColorMap, theme]);
 
   // Handle data changes and animate exits
   useEffect(() => {
@@ -481,51 +485,72 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     previousProcessedRef.current = dataWithPercentages;
     setAnimatedRemainingPercentage(remainingPercentage);
     previousRemainingPercentageRef.current = remainingPercentage;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, effectiveMaxAmount, autoColorMap]);
+  }, [dataWithPercentages, remainingPercentage]);
 
   // Convert data to legend items format
-  const legendItems = buildLegendItems(dataWithPercentages, {
-    mode,
-    showLegendValues,
-    unit,
-    hasRemaining,
-    showLegend,
-    remainingValue,
-    remainingLabel,
-    remainingUnit,
-    data,
-    theme,
-  });
+  const legendItems = useMemo(
+    () =>
+      buildLegendItems(dataWithPercentages, {
+        mode,
+        showLegendValues,
+        unit,
+        hasRemaining,
+        showLegend,
+        remainingValue,
+        remainingLabel,
+        remainingUnit,
+        data,
+        theme,
+      }),
+    [
+      dataWithPercentages,
+      mode,
+      showLegendValues,
+      unit,
+      hasRemaining,
+      showLegend,
+      remainingValue,
+      remainingLabel,
+      remainingUnit,
+      data,
+      theme,
+    ]
+  );
 
   // Handle legend item hover
-  const handleLegendItemHover = (item: LegendItemData, index: number) => {
-    setHoveredIndex(index);
-  };
+  const handleLegendItemHover = useCallback(
+    (item: LegendItemData, index: number) => {
+      setHoveredIndex(index);
+    },
+    []
+  );
 
   // Handle legend item leave
-  const handleLegendItemLeave = () => {
+  const handleLegendItemLeave = useCallback(() => {
     setHoveredIndex(null);
-  };
+  }, []);
 
   // Handle segment click - toggle selection
-  const handleSegmentClick = (index: number) => {
-    if (!onSelectionChange) return;
+  const handleSegmentClick = useCallback(
+    (index: number) => {
+      if (!onSelectionChange) return;
 
-    const isSelected = selectedIndices.includes(index);
-    let newSelectedIndices: number[];
+      const isSelected = selectedIndices.includes(index);
+      let newSelectedIndices: number[];
 
-    if (isSelected) {
-      newSelectedIndices = selectedIndices.filter((i) => i !== index);
-    } else {
-      newSelectedIndices = [...selectedIndices, index];
-    }
+      if (isSelected) {
+        newSelectedIndices = selectedIndices.filter((i) => i !== index);
+      } else {
+        newSelectedIndices = [...selectedIndices, index];
+      }
 
-    const selectedData = data.filter((item, itemIndex) =>
-      newSelectedIndices.includes(itemIndex)
-    );
-    onSelectionChange(newSelectedIndices, selectedData);
-  };
+      const selectedData = data.filter((item, itemIndex) =>
+        newSelectedIndices.includes(itemIndex)
+      );
+      onSelectionChange(newSelectedIndices, selectedData);
+    },
+    [onSelectionChange, selectedIndices, data]
+  );
 
   const chartContent = (
     <StyledStackedBarChartWrapper>
