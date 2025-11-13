@@ -320,7 +320,7 @@ const renderBarSegment = (
       placement="top"
       key={item.key}
       hasInvertedStyle={false}
-      open={hoveredIndex === item.originalIndex}
+      open={hoveredIndex === item.originalIndex && !isHidden}
       disableInteractive={true}
       PopperProps={{
         disablePortal: false,
