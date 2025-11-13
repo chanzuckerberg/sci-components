@@ -96,7 +96,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
         class="css-1t849lf"
       >
         <div
-          aria-label="Transcriptomic: 117 datasets"
+          aria-label="Transcriptomic: 17%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -114,11 +114,11 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            117 datasets
+            17%
           </span>
         </div>
         <div
-          aria-label="Imaging: 61 datasets"
+          aria-label="Imaging: 9%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -136,11 +136,11 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            61 datasets
+            9%
           </span>
         </div>
         <div
-          aria-label="Sequencing: 34 datasets"
+          aria-label="Sequencing: 5%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -158,11 +158,11 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            34 datasets
+            5%
           </span>
         </div>
         <div
-          aria-label="Proteomics: 15 datasets"
+          aria-label="Proteomics: 2%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -180,11 +180,11 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            15 datasets
+            2%
           </span>
         </div>
         <div
-          aria-label="Spatial Transcriptomics: 78 datasets"
+          aria-label="Spatial Transcriptomics: 11%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -202,11 +202,11 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            78 datasets
+            11%
           </span>
         </div>
         <div
-          aria-label="Prosthetics: 130 datasets"
+          aria-label="Prosthetics: 19%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -224,11 +224,11 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            130 datasets
+            19%
           </span>
         </div>
         <div
-          aria-label="Epigenomics: 100 datasets"
+          aria-label="Epigenomics: 14%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -246,12 +246,12 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            100 datasets
+            14%
           </span>
         </div>
         <div
           aria-disabled="true"
-          aria-label="Remaining: 165 datasets"
+          aria-label="Remaining: 24%"
           aria-pressed="false"
           class="css-h7y9mc"
           disabled=""
@@ -271,7 +271,7 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
             class="css-ncdzc3"
             disabled=""
           >
-            165 datasets
+            24%
           </span>
         </div>
       </div>
@@ -316,7 +316,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
 >
   <div
     class="css-qgcg3"
-    width="360"
+    width="360px"
   >
     <div
       class="css-pmr0i2"
@@ -337,7 +337,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
     >
       <div
         class="css-1wtrkdh"
-        width="360"
+        width="360px"
       >
         <div
           class="css-ju3tfv"
@@ -710,7 +710,7 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
         class="css-1t849lf"
       >
         <div
-          aria-label="Transcriptomic: 117"
+          aria-label="Transcriptomic: 17%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -728,11 +728,11 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            117
+            17%
           </span>
         </div>
         <div
-          aria-label="Imaging: 61"
+          aria-label="Imaging: 9%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -750,11 +750,11 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            61
+            9%
           </span>
         </div>
         <div
-          aria-label="Sequencing: 34"
+          aria-label="Sequencing: 5%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -772,11 +772,11 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            34
+            5%
           </span>
         </div>
         <div
-          aria-label="Proteomics: 15"
+          aria-label="Proteomics: 2%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -794,11 +794,11 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            15
+            2%
           </span>
         </div>
         <div
-          aria-label="Spatial Transcriptomics: 78"
+          aria-label="Spatial Transcriptomics: 11%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -816,11 +816,11 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            78
+            11%
           </span>
         </div>
         <div
-          aria-label="Prosthetics: 130"
+          aria-label="Prosthetics: 19%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -838,11 +838,11 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            130
+            19%
           </span>
         </div>
         <div
-          aria-label="Epigenomics: 100"
+          aria-label="Epigenomics: 14%"
           aria-pressed="false"
           class="css-r7qg0l"
           role="button"
@@ -860,12 +860,12 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
           <span
             class="css-ncdzc3"
           >
-            100
+            14%
           </span>
         </div>
         <div
           aria-disabled="true"
-          aria-label="Remaining: 165"
+          aria-label="Remaining: 24%"
           aria-pressed="false"
           class="css-h7y9mc"
           disabled=""
@@ -885,7 +885,7 @@ exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
             class="css-ncdzc3"
             disabled=""
           >
-            165
+            24%
           </span>
         </div>
       </div>

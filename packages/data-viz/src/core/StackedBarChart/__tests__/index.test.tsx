@@ -176,6 +176,7 @@ describe("<StackedBarChart />", () => {
         mode="cumulative"
         unit="datasets"
         showLegendValues
+        legendValueFormat="count"
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
     );
@@ -204,6 +205,7 @@ describe("<StackedBarChart />", () => {
         mode="cumulative"
         maxAmount={1000}
         showLegendValues
+        legendValueFormat="count"
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
     );
@@ -236,6 +238,7 @@ describe("<StackedBarChart />", () => {
         maxAmount={1000}
         remainingUnit="GB"
         showLegendValues
+        legendValueFormat="count"
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
     );
@@ -413,6 +416,7 @@ describe("<StackedBarChart />", () => {
         mode="cumulative"
         unit="KB"
         showLegendValues
+        legendValueFormat="count"
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
     );

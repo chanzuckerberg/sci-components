@@ -57,6 +57,12 @@
         "description": "Whether to show percentage values in the legend",
         "defaultValue": true
       },
+      "legendValueFormat": {
+        "type": "\"percentage\" | \"count\"",
+        "isRequired": false,
+        "description": "Format for legend values\n- \"percentage\": Shows percentage of the item in the bar chart (e.g., \"20%\")\n- \"count\": Shows the count from the data object with the unit defined by the unit prop",
+        "defaultValue": "percentage"
+      },
       "title": {
         "type": "string",
         "isRequired": false,

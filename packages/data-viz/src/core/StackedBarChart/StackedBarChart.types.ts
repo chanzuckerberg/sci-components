@@ -77,6 +77,13 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    */
   showLegendValues?: boolean;
   /**
+   * Format for legend values
+   * - "percentage": Shows percentage of the item in the bar chart (e.g., "20%")
+   * - "count": Shows the count from the data object with the unit defined by the unit prop
+   * @default "percentage"
+   */
+  legendValueFormat?: "percentage" | "count";
+  /**
    * Array of selected item indices (controlled component)
    */
   selectedIndices?: number[];

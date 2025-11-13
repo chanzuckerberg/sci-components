@@ -71,6 +71,14 @@ export default {
       },
       description: "Show percentage values in the custom legend",
     },
+    legendValueFormat: {
+      control: {
+        type: "select",
+      },
+      description:
+        "Format for legend values: 'percentage' shows percentage of the item in the bar chart (e.g., '20%'), 'count' shows the count from the data object with the unit defined by the unit prop",
+      options: ["percentage", "count"],
+    },
     title: {
       control: {
         type: "text",
@@ -120,7 +128,7 @@ export const Default = {
   args: {
     data: STACKED_BAR_CHART_DATA,
     title: "Domain",
-    width: 360,
+    width: "360px",
     colorGeneratorOptions: {
       ...DEFAULT_COLOR_GENERATOR_OPTIONS,
     },

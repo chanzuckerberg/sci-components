@@ -52,17 +52,17 @@ const calculateBadgeText = (
 // Helper: Calculate legend value display
 const calculateLegendValue = (
   item: StackedBarChartDataItem & { percentage: number },
-  mode: StackedBarChartProps["mode"],
   showLegendValues: boolean,
+  legendValueFormat: "percentage" | "count",
   globalUnit?: string
 ): string | undefined => {
   if (!showLegendValues) return undefined;
 
-  if (mode === "porportional") {
+  if (legendValueFormat === "percentage") {
     return `${Math.round(item.percentage)}%`;
   }
 
-  // Amount mode: show value with optional unit
+  // Count format: show value with optional unit
   const effectiveUnit = item.unit || globalUnit;
   return effectiveUnit ? `${item.value} ${effectiveUnit}` : `${item.value}`;
 };
@@ -90,12 +90,13 @@ const getSegmentOpacity = (
 const buildLegendItems = (
   dataWithPercentages: AnimatedItem[],
   options: {
-    mode: StackedBarChartProps["mode"];
     showLegendValues: boolean;
+    legendValueFormat: "percentage" | "count";
     unit?: string;
     hasRemaining: boolean;
     showLegend: boolean;
     remainingValue: number;
+    remainingPercentage: number;
     remainingLabel: string;
     remainingUnit?: string;
     data: StackedBarChartDataItem[];
@@ -103,12 +104,13 @@ const buildLegendItems = (
   }
 ): LegendItemData[] => {
   const {
-    mode,
     showLegendValues,
+    legendValueFormat,
     unit,
     hasRemaining,
     showLegend,
     remainingValue,
+    remainingPercentage,
     remainingLabel,
     remainingUnit,
     data,
@@ -117,19 +119,32 @@ const buildLegendItems = (
 
   const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
     name: item.name,
-    value: calculateLegendValue(item, mode, showLegendValues, unit),
+    value: calculateLegendValue(
+      item,
+      showLegendValues,
+      legendValueFormat,
+      unit
+    ),
     color: item.color,
     disabled: item.disabled,
   }));
 
   // Add remaining item to legend if applicable
   if (hasRemaining && showLegend) {
-    const effectiveRemainingUnit = remainingUnit || data[0]?.unit || unit || "";
-    const remainingValueDisplay = showLegendValues
-      ? effectiveRemainingUnit
+    let remainingValueDisplay: string | undefined;
+
+    if (!showLegendValues) {
+      remainingValueDisplay = undefined;
+    } else if (legendValueFormat === "percentage") {
+      remainingValueDisplay = `${Math.round(remainingPercentage)}%`;
+    } else {
+      // Count format
+      const effectiveRemainingUnit =
+        remainingUnit || data[0]?.unit || unit || "";
+      remainingValueDisplay = effectiveRemainingUnit
         ? `${remainingValue} ${effectiveRemainingUnit}`
-        : `${remainingValue}`
-      : undefined;
+        : `${remainingValue}`;
+    }
 
     legendItems.push({
       name: remainingLabel,
@@ -224,6 +239,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     barHeight = 16,
     showLegend = true,
     showLegendValues = true,
+    legendValueFormat = "percentage",
     selectedIndices = [],
     onSelectionChange,
     mode = "porportional",
@@ -491,12 +507,13 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const legendItems = useMemo(
     () =>
       buildLegendItems(dataWithPercentages, {
-        mode,
         showLegendValues,
+        legendValueFormat,
         unit,
         hasRemaining,
         showLegend,
         remainingValue,
+        remainingPercentage,
         remainingLabel,
         remainingUnit,
         data,
@@ -504,12 +521,13 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       }),
     [
       dataWithPercentages,
-      mode,
       showLegendValues,
+      legendValueFormat,
       unit,
       hasRemaining,
       showLegend,
       remainingValue,
+      remainingPercentage,
       remainingLabel,
       remainingUnit,
       data,
