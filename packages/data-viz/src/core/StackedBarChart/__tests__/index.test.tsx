@@ -157,7 +157,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="porportional"
+        mode="proportional"
         showLegendValues
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />
@@ -442,7 +442,7 @@ describe("<StackedBarChart />", () => {
     render(
       <StackedBarChart
         data={sampleData}
-        mode="porportional"
+        mode="proportional"
         maxAmount={1000}
         data-testid={STACKED_BAR_CHART_TEST_ID}
       />

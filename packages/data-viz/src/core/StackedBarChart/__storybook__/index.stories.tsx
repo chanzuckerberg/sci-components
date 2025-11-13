@@ -42,8 +42,8 @@ export default {
         type: "select",
       },
       description:
-        "Chart mode: 'porportional' (segments fill entire bar) or 'cumulative' (segments sized based on maxAmount)",
-      options: ["porportional", "cumulative"],
+        "Chart mode: 'proportional' (segments fill entire bar) or 'cumulative' (segments sized based on maxAmount)",
+      options: ["proportional", "cumulative"],
     },
     legendValueFormat: {
       control: {
@@ -142,12 +142,12 @@ export const Default = {
   },
 };
 
-export const PorportionalWithSelectionDimBehavior = {
+export const proportionalWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
-    mode: "porportional",
+    mode: "proportional",
     showLegend: true,
     showLegendValues: true,
     title: "Domain",
@@ -177,12 +177,12 @@ export const CumulativeWithSelectionDimBehavior = {
   },
 };
 
-export const PorportionalWithSelectionHideBehavior = {
+export const proportionalWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
-    mode: "porportional",
+    mode: "proportional",
     showLegend: true,
     showLegendValues: true,
     selectionBehavior: "hide",

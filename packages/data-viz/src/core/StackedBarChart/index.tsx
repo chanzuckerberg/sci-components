@@ -355,7 +355,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     selectedIndices = [],
     onSelectionChange,
     selectionBehavior = "dim",
-    mode = "porportional",
+    mode = "proportional",
     maxAmount,
     remainingLabel = "Remaining",
     remainingUnit,

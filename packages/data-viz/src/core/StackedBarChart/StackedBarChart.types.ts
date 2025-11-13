@@ -103,11 +103,11 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   selectionBehavior?: "dim" | "hide";
   /**
    * Chart mode - controls how segments are calculated
-   * - "porportional": Segments fill entire bar (100%), proportional to their values
+   * - "proportional": Segments fill entire bar (100%), proportional to their values
    * - "cumulative": Segments sized based on actual values relative to maxAmount
-   * @default "porportional"
+   * @default "proportional"
    */
-  mode?: "porportional" | "cumulative";
+  mode?: "proportional" | "cumulative";
   /**
    * Maximum amount for the bar (used only in "cumulative" mode)
    * If not provided, defaults to sum of all values (no remaining segment)
