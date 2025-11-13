@@ -88,19 +88,6 @@ export const STACKED_BAR_CHART_DATA = [
   {
     name: "Prosthetics",
     value: 130,
-    tooltip: {
-      showSectionHeader: true,
-      data: [
-        {
-          label: "Prosthetics",
-          dataRows: [
-            { label: "Prosthetics", value: 80 },
-            { label: "Orthotics", value: 15 },
-            { label: "Prosthetic components", value: 35 },
-          ],
-        },
-      ],
-    },
   },
   {
     name: "Epigenomics",

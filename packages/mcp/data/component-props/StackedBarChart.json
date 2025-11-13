@@ -15,7 +15,7 @@
       "barHeight": {
         "type": "number",
         "isRequired": false,
-        "description": "Height of the bar in pixels",
+        "description": "Height of the bar in pixels (minimum 1px)",
         "defaultValue": 16
       },
       "data": {
@@ -33,6 +33,18 @@
         "isRequired": false,
         "description": "Chart mode - controls how segments are calculated\n- \"porportional\": Segments fill entire bar (100%), proportional to their values\n- \"cumulative\": Segments sized based on actual values relative to maxAmount",
         "defaultValue": "porportional"
+      },
+      "legendValueFormat": {
+        "type": "\"percentage\" | \"count\"",
+        "isRequired": false,
+        "description": "Format for legend values\n- \"percentage\": Shows percentage of the item in the bar chart (e.g., \"20%\")\n- \"count\": Shows the count from the data object with the unit defined by the unit prop",
+        "defaultValue": "percentage"
+      },
+      "selectionBehavior": {
+        "type": "\"dim\" | \"hide\"",
+        "isRequired": false,
+        "description": "Behavior to apply when items are selected\n- \"dim\": Non-selected segments become semi-transparent (20% opacity)\n- \"hide\": Non-selected segments are hidden from the bar chart",
+        "defaultValue": "dim"
       },
       "remainingLabel": {
         "type": "string",
@@ -56,12 +68,6 @@
         "isRequired": false,
         "description": "Whether to show percentage values in the legend",
         "defaultValue": true
-      },
-      "legendValueFormat": {
-        "type": "\"percentage\" | \"count\"",
-        "isRequired": false,
-        "description": "Format for legend values\n- \"percentage\": Shows percentage of the item in the bar chart (e.g., \"20%\")\n- \"count\": Shows the count from the data object with the unit defined by the unit prop",
-        "defaultValue": "percentage"
       },
       "title": {
         "type": "string",

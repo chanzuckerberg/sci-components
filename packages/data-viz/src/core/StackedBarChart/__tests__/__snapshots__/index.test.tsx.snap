@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`] = `
+exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders snapshot 1`] = `
 <div
   style="margin: 150px;"
 >
@@ -26,67 +26,72 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
       class="css-1jlejkr"
     >
       <div
-        class="css-1wtrkdh"
+        class="css-1rms5vv"
         width="360px"
       >
         <div
-          class="css-pjhx4n"
+          class="css-1w2q9ln"
           color="#8b78c4"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-f2dwgl"
+          class="css-2apkmf"
           color="#c475ac"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1x7shf8"
+          class="css-18i7ckl"
           color="#d08786"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1qhlx2k"
+          class="css-h7ffnd"
           color="#c1a273"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-s4kmda"
+          class="css-1fxw6u8"
           color="#aab977"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1rrcdpo"
+          class="css-1dyc3s5"
           color="#95cc92"
-          data-mui-internal-clone-element="true"
+          data-hide="false"
           height="16"
           opacity="1"
-          tabindex="0"
         />
         <div
-          class="css-1p3jsrh"
+          class="css-1mgdvo7"
           color="#a9d0e6"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-eqaa9o"
+          class="css-i8z2x8"
           disabled=""
           height="16"
           opacity="1"
@@ -96,14 +101,14 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
         class="css-1t849lf"
       >
         <div
-          aria-label="Transcriptomic: 17%"
+          aria-label="Transcriptomic: 117 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fdasty"
+            class="css-sq7aup"
             color="#8b78c4"
           />
           <span
@@ -114,18 +119,18 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            17%
+            117 datasets
           </span>
         </div>
         <div
-          aria-label="Imaging: 9%"
+          aria-label="Imaging: 61 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-167e66x"
+            class="css-5hjv7d"
             color="#c475ac"
           />
           <span
@@ -136,18 +141,18 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            9%
+            61 datasets
           </span>
         </div>
         <div
-          aria-label="Sequencing: 5%"
+          aria-label="Sequencing: 34 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1pfbiry"
+            class="css-sr6sns"
             color="#d08786"
           />
           <span
@@ -158,18 +163,18 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            5%
+            34 datasets
           </span>
         </div>
         <div
-          aria-label="Proteomics: 2%"
+          aria-label="Proteomics: 15 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-mjzweb"
+            class="css-1duel2g"
             color="#c1a273"
           />
           <span
@@ -180,18 +185,18 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            2%
+            15 datasets
           </span>
         </div>
         <div
-          aria-label="Spatial Transcriptomics: 11%"
+          aria-label="Spatial Transcriptomics: 78 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1a9itgu"
+            class="css-jmbvgn"
             color="#aab977"
           />
           <span
@@ -202,18 +207,18 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            11%
+            78 datasets
           </span>
         </div>
         <div
-          aria-label="Prosthetics: 19%"
+          aria-label="Prosthetics: 130 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-podhm1"
+            class="css-1hpanf"
             color="#95cc92"
           />
           <span
@@ -224,18 +229,18 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            19%
+            130 datasets
           </span>
         </div>
         <div
-          aria-label="Epigenomics: 14%"
+          aria-label="Epigenomics: 100 datasets"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-189602o"
+            class="css-1vzg0fg"
             color="#a9d0e6"
           />
           <span
@@ -246,20 +251,20 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
           <span
             class="css-ncdzc3"
           >
-            14%
+            100 datasets
           </span>
         </div>
         <div
           aria-disabled="true"
-          aria-label="Remaining: 24%"
+          aria-label="Remaining: 165 datasets"
           aria-pressed="false"
-          class="css-h7y9mc"
+          class="css-onaqla"
           disabled=""
           role="button"
           tabindex="-1"
         >
           <div
-            class="css-1qcdcmx"
+            class="css-pc7o78"
           />
           <span
             class="css-1sjvubj"
@@ -271,7 +276,322 @@ exports[`<StackedBarChart /> AmountBasedWithSelection story renders snapshot 1`]
             class="css-ncdzc3"
             disabled=""
           >
-            24%
+            165 datasets
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 40px;"
+  >
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 12px;"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Select All
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-gkrbfh-MuiButtonBase-root-MuiButton-root"
+        data-style="minimal"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        Clear Selection
+      </button>
+    </div>
+    <div
+      style="display: flex; flex-wrap: wrap;"
+    />
+  </div>
+</div>
+`;
+
+exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders snapshot 1`] = `
+<div
+  style="margin: 150px;"
+>
+  <div
+    class="css-qgcg3"
+    width="360px"
+  >
+    <div
+      class="css-pmr0i2"
+    >
+      <div
+        class="css-1mg4zid"
+      >
+        Domain
+      </div>
+      <div
+        class="css-1b52koj"
+      >
+        7
+      </div>
+    </div>
+    <div
+      class="css-1jlejkr"
+    >
+      <div
+        class="css-1rms5vv"
+        width="360px"
+      >
+        <div
+          class="css-1w2q9ln"
+          color="#8b78c4"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-2apkmf"
+          color="#c475ac"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-18i7ckl"
+          color="#d08786"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-h7ffnd"
+          color="#c1a273"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1fxw6u8"
+          color="#aab977"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1dyc3s5"
+          color="#95cc92"
+          data-hide="false"
+          height="16"
+          opacity="1"
+        />
+        <div
+          class="css-1mgdvo7"
+          color="#a9d0e6"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-i8z2x8"
+          disabled=""
+          height="16"
+          opacity="1"
+        />
+      </div>
+      <div
+        class="css-1t849lf"
+      >
+        <div
+          aria-label="Transcriptomic: 117 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-sq7aup"
+            color="#8b78c4"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Transcriptomic
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            117 datasets
+          </span>
+        </div>
+        <div
+          aria-label="Imaging: 61 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-5hjv7d"
+            color="#c475ac"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Imaging
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            61 datasets
+          </span>
+        </div>
+        <div
+          aria-label="Sequencing: 34 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-sr6sns"
+            color="#d08786"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Sequencing
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            34 datasets
+          </span>
+        </div>
+        <div
+          aria-label="Proteomics: 15 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1duel2g"
+            color="#c1a273"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Proteomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            15 datasets
+          </span>
+        </div>
+        <div
+          aria-label="Spatial Transcriptomics: 78 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-jmbvgn"
+            color="#aab977"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Spatial Transcriptomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            78 datasets
+          </span>
+        </div>
+        <div
+          aria-label="Prosthetics: 130 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1hpanf"
+            color="#95cc92"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Prosthetics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            130 datasets
+          </span>
+        </div>
+        <div
+          aria-label="Epigenomics: 100 datasets"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1vzg0fg"
+            color="#a9d0e6"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Epigenomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            100 datasets
+          </span>
+        </div>
+        <div
+          aria-disabled="true"
+          aria-label="Remaining: 165 datasets"
+          aria-pressed="false"
+          class="css-onaqla"
+          disabled=""
+          role="button"
+          tabindex="-1"
+        >
+          <div
+            class="css-pc7o78"
+          />
+          <span
+            class="css-1sjvubj"
+            disabled=""
+          >
+            Remaining
+          </span>
+          <span
+            class="css-ncdzc3"
+            disabled=""
+          >
+            165 datasets
           </span>
         </div>
       </div>
@@ -336,60 +656,65 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
       class="css-1jlejkr"
     >
       <div
-        class="css-1wtrkdh"
+        class="css-1rms5vv"
         width="360px"
       >
         <div
-          class="css-ju3tfv"
+          class="css-hft0y9"
           color="#8b78c4"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-zelymr"
+          class="css-jhkh8y"
           color="#c475ac"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-3orsqd"
+          class="css-yxamq1"
           color="#d08786"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-ixw05v"
+          class="css-3zixr8"
           color="#c1a273"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-12nkgds"
+          class="css-ir5zy8"
           color="#aab977"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1epb59t"
+          class="css-1v80bv4"
           color="#95cc92"
-          data-mui-internal-clone-element="true"
+          data-hide="false"
           height="16"
           opacity="1"
-          tabindex="0"
         />
         <div
-          class="css-1mxzqmj"
+          class="css-53a5rp"
           color="#a9d0e6"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
@@ -402,12 +727,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fdasty"
+            class="css-sq7aup"
             color="#8b78c4"
           />
           <span
@@ -424,12 +749,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-167e66x"
+            class="css-5hjv7d"
             color="#c475ac"
           />
           <span
@@ -446,12 +771,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1pfbiry"
+            class="css-sr6sns"
             color="#d08786"
           />
           <span
@@ -468,12 +793,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-mjzweb"
+            class="css-1duel2g"
             color="#c1a273"
           />
           <span
@@ -490,12 +815,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1a9itgu"
+            class="css-jmbvgn"
             color="#aab977"
           />
           <span
@@ -512,12 +837,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-podhm1"
+            class="css-1hpanf"
             color="#95cc92"
           />
           <span
@@ -534,12 +859,12 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-189602o"
+            class="css-1vzg0fg"
             color="#a9d0e6"
           />
           <span
@@ -559,342 +884,7 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<StackedBarChart /> WithExitAnimations story renders snapshot 1`] = `
-<div>
-  <div
-    style="margin-bottom: 40px;"
-  >
-    <div
-      style="display: flex; gap: 8px; margin-bottom: 12px;"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Remove First
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Remove Last
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Remove Random
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Remove All
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-gkrbfh-MuiButtonBase-root-MuiButton-root"
-        data-style="minimal"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        Reset
-      </button>
-    </div>
-  </div>
-  <div
-    class="css-qgcg3"
-    width="360px"
-  >
-    <div
-      class="css-pmr0i2"
-    >
-      <div
-        class="css-1mg4zid"
-      >
-        With exit animations
-      </div>
-      <div
-        class="css-1b52koj"
-      >
-        7
-      </div>
-    </div>
-    <div
-      class="css-1jlejkr"
-    >
-      <div
-        class="css-1wtrkdh"
-        width="360px"
-      >
-        <div
-          class="css-pjhx4n"
-          color="#8b78c4"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-f2dwgl"
-          color="#c475ac"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-1x7shf8"
-          color="#d08786"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-1qhlx2k"
-          color="#c1a273"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-s4kmda"
-          color="#aab977"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-1rrcdpo"
-          color="#95cc92"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-1p3jsrh"
-          color="#a9d0e6"
-          data-mui-internal-clone-element="true"
-          height="16"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-eqaa9o"
-          disabled=""
-          height="16"
-          opacity="1"
-        />
-      </div>
-      <div
-        class="css-1t849lf"
-      >
-        <div
-          aria-label="Transcriptomic: 17%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-fdasty"
-            color="#8b78c4"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Transcriptomic
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            17%
-          </span>
-        </div>
-        <div
-          aria-label="Imaging: 9%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-167e66x"
-            color="#c475ac"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Imaging
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            9%
-          </span>
-        </div>
-        <div
-          aria-label="Sequencing: 5%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-1pfbiry"
-            color="#d08786"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Sequencing
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            5%
-          </span>
-        </div>
-        <div
-          aria-label="Proteomics: 2%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-mjzweb"
-            color="#c1a273"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Proteomics
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            2%
-          </span>
-        </div>
-        <div
-          aria-label="Spatial Transcriptomics: 11%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-1a9itgu"
-            color="#aab977"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Spatial Transcriptomics
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            11%
-          </span>
-        </div>
-        <div
-          aria-label="Prosthetics: 19%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-podhm1"
-            color="#95cc92"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Prosthetics
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            19%
-          </span>
-        </div>
-        <div
-          aria-label="Epigenomics: 14%"
-          aria-pressed="false"
-          class="css-r7qg0l"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-189602o"
-            color="#a9d0e6"
-          />
-          <span
-            class="css-1sjvubj"
-          >
-            Epigenomics
-          </span>
-          <span
-            class="css-ncdzc3"
-          >
-            14%
-          </span>
-        </div>
-        <div
-          aria-disabled="true"
-          aria-label="Remaining: 24%"
-          aria-pressed="false"
-          class="css-h7y9mc"
-          disabled=""
-          role="button"
-          tabindex="-1"
-        >
-          <div
-            class="css-1qcdcmx"
-          />
-          <span
-            class="css-1sjvubj"
-            disabled=""
-          >
-            Remaining
-          </span>
-          <span
-            class="css-ncdzc3"
-            disabled=""
-          >
-            24%
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
+exports[`<StackedBarChart /> PorportionalWithSelectionDimBehavior story renders snapshot 1`] = `
 <div
   style="margin: 150px;"
 >
@@ -920,60 +910,65 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
       class="css-1jlejkr"
     >
       <div
-        class="css-1wtrkdh"
+        class="css-1rms5vv"
         width="360px"
       >
         <div
-          class="css-ju3tfv"
+          class="css-hft0y9"
           color="#8b78c4"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-zelymr"
+          class="css-jhkh8y"
           color="#c475ac"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-3orsqd"
+          class="css-yxamq1"
           color="#d08786"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-ixw05v"
+          class="css-3zixr8"
           color="#c1a273"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-12nkgds"
+          class="css-ir5zy8"
           color="#aab977"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
           tabindex="0"
         />
         <div
-          class="css-1epb59t"
+          class="css-1v80bv4"
           color="#95cc92"
-          data-mui-internal-clone-element="true"
+          data-hide="false"
           height="16"
           opacity="1"
-          tabindex="0"
         />
         <div
-          class="css-1mxzqmj"
+          class="css-53a5rp"
           color="#a9d0e6"
+          data-hide="false"
           data-mui-internal-clone-element="true"
           height="16"
           opacity="1"
@@ -986,12 +981,12 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fdasty"
+            class="css-sq7aup"
             color="#8b78c4"
           />
           <span
@@ -1008,12 +1003,12 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-167e66x"
+            class="css-5hjv7d"
             color="#c475ac"
           />
           <span
@@ -1030,12 +1025,12 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1pfbiry"
+            class="css-sr6sns"
             color="#d08786"
           />
           <span
@@ -1052,12 +1047,12 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-mjzweb"
+            class="css-1duel2g"
             color="#c1a273"
           />
           <span
@@ -1074,12 +1069,12 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1a9itgu"
+            class="css-jmbvgn"
             color="#aab977"
           />
           <span
@@ -1096,12 +1091,12 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-podhm1"
+            class="css-1hpanf"
             color="#95cc92"
           />
           <span
@@ -1118,12 +1113,296 @@ exports[`<StackedBarChart /> WithSelection story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-r7qg0l"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-189602o"
+            class="css-1vzg0fg"
+            color="#a9d0e6"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Epigenomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            19%
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 40px;"
+  >
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 12px;"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        Select All
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-gkrbfh-MuiButtonBase-root-MuiButton-root"
+        data-style="minimal"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        Clear Selection
+      </button>
+    </div>
+    <div
+      style="display: flex; flex-wrap: wrap;"
+    />
+  </div>
+</div>
+`;
+
+exports[`<StackedBarChart /> PorportionalWithSelectionHideBehavior story renders snapshot 1`] = `
+<div
+  style="margin: 150px;"
+>
+  <div
+    class="css-qgcg3"
+    width="360px"
+  >
+    <div
+      class="css-pmr0i2"
+    >
+      <div
+        class="css-1mg4zid"
+      >
+        Domain
+      </div>
+      <div
+        class="css-1b52koj"
+      >
+        7
+      </div>
+    </div>
+    <div
+      class="css-1jlejkr"
+    >
+      <div
+        class="css-1rms5vv"
+        width="360px"
+      >
+        <div
+          class="css-hft0y9"
+          color="#8b78c4"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-jhkh8y"
+          color="#c475ac"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-yxamq1"
+          color="#d08786"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-3zixr8"
+          color="#c1a273"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-ir5zy8"
+          color="#aab977"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1v80bv4"
+          color="#95cc92"
+          data-hide="false"
+          height="16"
+          opacity="1"
+        />
+        <div
+          class="css-53a5rp"
+          color="#a9d0e6"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+      </div>
+      <div
+        class="css-1t849lf"
+      >
+        <div
+          aria-label="Transcriptomic: 22%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-sq7aup"
+            color="#8b78c4"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Transcriptomic
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            22%
+          </span>
+        </div>
+        <div
+          aria-label="Imaging: 11%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-5hjv7d"
+            color="#c475ac"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Imaging
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            11%
+          </span>
+        </div>
+        <div
+          aria-label="Sequencing: 6%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-sr6sns"
+            color="#d08786"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Sequencing
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            6%
+          </span>
+        </div>
+        <div
+          aria-label="Proteomics: 3%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1duel2g"
+            color="#c1a273"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Proteomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            3%
+          </span>
+        </div>
+        <div
+          aria-label="Spatial Transcriptomics: 15%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-jmbvgn"
+            color="#aab977"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Spatial Transcriptomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            15%
+          </span>
+        </div>
+        <div
+          aria-label="Prosthetics: 24%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1hpanf"
+            color="#95cc92"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Prosthetics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            24%
+          </span>
+        </div>
+        <div
+          aria-label="Epigenomics: 19%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1vzg0fg"
             color="#a9d0e6"
           />
           <span

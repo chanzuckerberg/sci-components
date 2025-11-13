@@ -81,6 +81,7 @@ export const BarContainer = styled("div")<BarContainerProps>`
       width: ${finalWidth};
       height: ${barHeight}px;
       background-color: ${isEmpty ? semanticColors?.base?.backgroundTertiary : "transparent"};
+      overflow: hidden;
     `;
   }}
 `;
@@ -89,45 +90,23 @@ interface BarSegmentProps extends CommonThemeProps {
   color: string;
   percentage: number;
   height: number;
-  isFirst: boolean;
-  isLast: boolean;
   opacity: number;
   disabled?: boolean;
+  isLast: boolean;
+  "data-hide"?: boolean;
 }
 
 export const BarSegment = styled("div")<BarSegmentProps>`
   ${(props: BarSegmentProps) => {
-    const { isFirst, isLast, color, height, percentage, opacity, disabled } =
-      props;
+    const { color, height, percentage, opacity, disabled, isLast } = props;
 
     const spaces = getSpaces(props);
     const gap = spaces?.xxxs || 0;
 
-    const getBorderRadius = () => {
-      const corners = getCorners(props);
-      const borderRadius = corners?.s;
-
-      if (isFirst && isLast) {
-        return `border-radius: ${borderRadius}px;`;
-      }
-      if (isFirst) {
-        return `
-          border-top-left-radius: ${borderRadius}px; 
-          border-bottom-left-radius: ${borderRadius}px;
-        `;
-      }
-      if (isLast) {
-        return `
-          border-top-right-radius: ${borderRadius}px; 
-          border-bottom-right-radius: ${borderRadius}px;
-        `;
-      }
-      return "";
-    };
-
-    // Add gap as margin-right, except for last item
+    // Add gap as margin-right for spacing between segments
     // When percentage is 0, margin also becomes 0 (animates away with the segment)
-    const marginRight = !isLast && percentage > 0 ? `${gap}px` : 0;
+    // Last visible segment also gets no margin
+    const marginRight = percentage > 0 && !isLast ? `${gap}px` : 0;
 
     return `
       background-color: ${color};
@@ -140,7 +119,6 @@ export const BarSegment = styled("div")<BarSegmentProps>`
       transition: opacity 0.2s ease-in-out, flex-grow 0.25s ease-in-out, margin-right 0.25s ease-out;
       cursor: ${disabled ? "default" : "pointer"};
       pointer-events: ${disabled ? "none" : "auto"};
-      ${getBorderRadius()}
     `;
   }}
 `;

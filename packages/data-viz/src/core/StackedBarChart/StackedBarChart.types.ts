@@ -62,7 +62,7 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    */
   width?: number | string;
   /**
-   * Height of the bar in pixels
+   * Height of the bar in pixels (minimum 1px)
    * @default 16
    */
   barHeight?: number;
@@ -94,6 +94,13 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
     selectedIndices: number[],
     selectedData: StackedBarChartDataItem[]
   ) => void;
+  /**
+   * Behavior to apply when items are selected
+   * - "dim": Non-selected segments become semi-transparent (20% opacity)
+   * - "hide": Non-selected segments are hidden from the bar chart
+   * @default "dim"
+   */
+  selectionBehavior?: "dim" | "hide";
   /**
    * Chart mode - controls how segments are calculated
    * - "porportional": Segments fill entire bar (100%), proportional to their values

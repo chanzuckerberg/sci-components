@@ -1,7 +1,6 @@
 import { Meta } from "@storybook/react-webpack5";
 import { StackedBarChart } from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";
-import WithDynamicDataStory from "./stories/withDynamicData";
 import { STACKED_BAR_CHART_DATA } from "./constants";
 
 export default {
@@ -46,6 +45,22 @@ export default {
         "Chart mode: 'porportional' (segments fill entire bar) or 'cumulative' (segments sized based on maxAmount)",
       options: ["porportional", "cumulative"],
     },
+    legendValueFormat: {
+      control: {
+        type: "select",
+      },
+      description:
+        "Format for legend values: 'percentage' shows percentage of the item in the bar chart (e.g., '20%'), 'count' shows the count from the data object with the unit defined by the unit prop",
+      options: ["percentage", "count"],
+    },
+    selectionBehavior: {
+      control: {
+        type: "select",
+      },
+      description:
+        "Behavior to apply when items are selected: 'dim' makes non-selected segments semi-transparent (20% opacity), 'hide' removes non-selected segments from the bar chart",
+      options: ["dim", "hide"],
+    },
     remainingLabel: {
       control: {
         type: "text",
@@ -70,14 +85,6 @@ export default {
         type: "boolean",
       },
       description: "Show percentage values in the custom legend",
-    },
-    legendValueFormat: {
-      control: {
-        type: "select",
-      },
-      description:
-        "Format for legend values: 'percentage' shows percentage of the item in the bar chart (e.g., '20%'), 'count' shows the count from the data object with the unit defined by the unit prop",
-      options: ["percentage", "count"],
     },
     title: {
       control: {
@@ -135,7 +142,7 @@ export const Default = {
   },
 };
 
-export const WithSelection = {
+export const PorportionalWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
@@ -151,7 +158,7 @@ export const WithSelection = {
   },
 };
 
-export const AmountBasedWithSelection = {
+export const CumulativeWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
@@ -163,23 +170,44 @@ export const AmountBasedWithSelection = {
     title: "Domain",
     width: "360px",
     maxAmount: 700,
+    legendValueFormat: "count",
     colorGeneratorOptions: {
       ...DEFAULT_COLOR_GENERATOR_OPTIONS,
     },
   },
 };
 
-export const WithExitAnimations = {
-  render: WithDynamicDataStory,
+export const PorportionalWithSelectionHideBehavior = {
+  render: WithSelectionStory,
+  args: {
+    barHeight: 16,
+    data: STACKED_BAR_CHART_DATA,
+    mode: "porportional",
+    showLegend: true,
+    showLegendValues: true,
+    selectionBehavior: "hide",
+    title: "Domain",
+    width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
+  },
+};
+
+export const CumulativeWithSelectionHideBehavior = {
+  render: WithSelectionStory,
   args: {
     barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
-    maxAmount: 700,
+    unit: "datasets",
     showLegend: true,
     showLegendValues: true,
-    title: "With exit animations",
+    title: "Domain",
     width: "360px",
+    maxAmount: 700,
+    legendValueFormat: "count",
+    selectionBehavior: "hide",
     colorGeneratorOptions: {
       ...DEFAULT_COLOR_GENERATOR_OPTIONS,
     },
