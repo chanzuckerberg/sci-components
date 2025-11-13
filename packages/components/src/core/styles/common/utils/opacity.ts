@@ -22,7 +22,7 @@ export const percentToHex = (percentOpacity: number): string => {
   const alphaValue = Math.round((clampedPercent / 100) * 255);
 
   // Convert to hex and pad with leading zero if needed
-  return alphaValue.toString(16).padStart(2, "0").toUpperCase();
+  return alphaValue.toString(16).padStart(2, "0").toLowerCase();
 };
 
 /**

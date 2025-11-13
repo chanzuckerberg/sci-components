@@ -69,7 +69,7 @@ const StackedBarChartNameSpaceTest = (props: StackedBarChartProps) => {
             tooltip: { showSectionHeader: false, data: [] },
           },
         ]}
-        mode="percentage"
+        mode="porportional"
         selectedIndices={[0, 1]}
         onSelectionChange={(indices, selectedData) =>
           console.log(indices, selectedData)
@@ -101,7 +101,7 @@ const StackedBarChartNameSpaceTest = (props: StackedBarChartProps) => {
             tooltip: { showSectionHeader: false, data: [] },
           },
         ]}
-        mode="amount"
+        mode="cumulative"
         maxAmount={1000}
         unit="GB"
         remainingLabel="Available"

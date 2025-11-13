@@ -161,7 +161,7 @@
           },
           "300": {
             "darkValue": "#6429b2",
-            "value": "#cbbaF8"
+            "value": "#cbbaf8"
           },
           "400": {
             "darkValue": "#9261e6",
@@ -365,7 +365,7 @@
           },
           "background-secondary-on-dark": {
             "darkValue": "{sds.color.primitive.gray.100.darkValue}99",
-            "value": "{sds.color.primitive.gray.700.value}9E"
+            "value": "{sds.color.primitive.gray.700.value}9e"
           },
           "background-secondary-inverse": {
             "darkValue": "{sds.color.primitive.gray.100.darkValue}99",

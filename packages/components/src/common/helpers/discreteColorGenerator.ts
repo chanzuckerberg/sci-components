@@ -8,12 +8,12 @@ export interface DiscreteColorGeneratorOptions {
   isDarkMode?: boolean;
   /**
    * Starting hue in degrees (0-360)
-   * @default 249
+   * @default 250
    */
   start?: number;
   /**
    * Number of rotations around the color wheel
-   * @default 1
+   * @default 0.85
    */
   rotations?: number;
   /**
@@ -23,7 +23,7 @@ export interface DiscreteColorGeneratorOptions {
   gamma?: number;
   /**
    * Lightness range [min, max] (0-1)
-   * @default [0.3, 0.7]
+   * @default [0.4, 0.7]
    */
   lightness?: [number, number];
   /**
@@ -47,10 +47,10 @@ export const generateDiscreteColors = (
 
   const {
     isDarkMode = false,
-    start = 249,
-    rotations = 1,
+    start = 250,
+    rotations = 0.85,
     gamma = 0.7,
-    lightness = [0.3, 0.7],
+    lightness = [0.4, 0.7],
     correctLightness = true,
   } = options;
 
