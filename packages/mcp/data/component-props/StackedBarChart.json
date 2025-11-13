@@ -29,10 +29,10 @@
         "description": "Maximum amount for the bar (used only in \"cumulative\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment"
       },
       "mode": {
-        "type": "\"porportional\" | \"cumulative\"",
+        "type": "\"proportional\" | \"cumulative\"",
         "isRequired": false,
-        "description": "Chart mode - controls how segments are calculated\n- \"porportional\": Segments fill entire bar (100%), proportional to their values\n- \"cumulative\": Segments sized based on actual values relative to maxAmount",
-        "defaultValue": "porportional"
+        "description": "Chart mode - controls how segments are calculated\n- \"proportional\": Segments fill entire bar (100%), proportional to their values\n- \"cumulative\": Segments sized based on actual values relative to maxAmount",
+        "defaultValue": "proportional"
       },
       "legendValueFormat": {
         "type": "\"percentage\" | \"count\"",

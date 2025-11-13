@@ -69,7 +69,7 @@ const StackedBarChartNameSpaceTest = (props: StackedBarChartProps) => {
             tooltip: { showSectionHeader: false, data: [] },
           },
         ]}
-        mode="porportional"
+        mode="proportional"
         selectedIndices={[0, 1]}
         onSelectionChange={(indices, selectedData) =>
           console.log(indices, selectedData)
