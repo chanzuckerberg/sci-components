@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.0...@czi-sds/data-viz@0.14.1) (2025-11-13)
+
+### Bug Fixes
+
+- **StackedBarChart:** Fix stacked bar chart ([#1046](https://github.com/chanzuckerberg/sci-components/issues/1046)) ([532d83d](https://github.com/chanzuckerberg/sci-components/commit/532d83d704192d233f1611ef7516b7f26c1c124c))
+
 # [0.14.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.13.1...@czi-sds/data-viz@0.14.0) (2025-11-10)
 
 ### Features
