@@ -30,7 +30,7 @@
     "sd-generate-breakpoints": "tsx ./src/common/styles-dictionary/scripts/generate-breakpoint-tokens.ts",
     "sd-generate-borders": "tsx ./src/common/styles-dictionary/scripts/generate-border-tokens.ts",
     "sd-generate-design-tokens": "yarn sd-generate-fonts && yarn sd-generate-colors && yarn sd-generate-corners && yarn sd-generate-spaces && yarn sd-generate-shadows && yarn sd-generate-icon-sizes && yarn sd-generate-breakpoints && yarn sd-generate-borders",
-    "sd-build": "yarn sd-generate-design-tokens && node ./src/common/styles-dictionary/build.mjs",
+    "sd-build": "yarn sd-generate-design-tokens && node ./src/common/styles-dictionary/build.mjs && npx prettier --write 'src/common/styles-dictionary/**/*.{css,scss,json}'",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",

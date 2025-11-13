@@ -25,7 +25,7 @@ const DIRNAME = dirname(fileURLToPath(import.meta.url));
    Link: https://css-tricks.com/snippets/css/system-font-stack/
 */
 const INTER_FONT =
-  'var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif';
+  'var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif';
 const CODE_FONT = '"IBM Plex Mono", monospace';
 const INTER_FONT_REF = "{sds.font.inter-font}";
 

@@ -47,7 +47,7 @@ export const SDSLightThemeColors: Colors = {
   purple: {
     "100": "#efeafe",
     "200": "#e4dbfc",
-    "300": "#cbbaF8",
+    "300": "#cbbaf8",
     "400": "#b296f2",
     "500": "#8b54e2",
     "600": "#6526b5",

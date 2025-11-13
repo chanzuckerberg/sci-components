@@ -15,7 +15,7 @@
       "barHeight": {
         "type": "number",
         "isRequired": false,
-        "description": "Height of the bar in pixels",
+        "description": "Height of the bar in pixels (minimum 1px)",
         "defaultValue": 16
       },
       "data": {
@@ -26,24 +26,36 @@
       "maxAmount": {
         "type": "number",
         "isRequired": false,
-        "description": "Maximum amount for the bar (used only in \"amount\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment"
+        "description": "Maximum amount for the bar (used only in \"cumulative\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment"
       },
       "mode": {
-        "type": "\"percentage\" | \"amount\"",
+        "type": "\"porportional\" | \"cumulative\"",
         "isRequired": false,
-        "description": "Chart mode - controls how segments are calculated\n- \"percentage\": Segments fill entire bar (100%), proportional to their values\n- \"amount\": Segments sized based on actual values relative to maxAmount",
+        "description": "Chart mode - controls how segments are calculated\n- \"porportional\": Segments fill entire bar (100%), proportional to their values\n- \"cumulative\": Segments sized based on actual values relative to maxAmount",
+        "defaultValue": "porportional"
+      },
+      "legendValueFormat": {
+        "type": "\"percentage\" | \"count\"",
+        "isRequired": false,
+        "description": "Format for legend values\n- \"percentage\": Shows percentage of the item in the bar chart (e.g., \"20%\")\n- \"count\": Shows the count from the data object with the unit defined by the unit prop",
         "defaultValue": "percentage"
+      },
+      "selectionBehavior": {
+        "type": "\"dim\" | \"hide\"",
+        "isRequired": false,
+        "description": "Behavior to apply when items are selected\n- \"dim\": Non-selected segments become semi-transparent (20% opacity)\n- \"hide\": Non-selected segments are hidden from the bar chart",
+        "defaultValue": "dim"
       },
       "remainingLabel": {
         "type": "string",
         "isRequired": false,
-        "description": "Label for the remaining/unknown segment in amount mode",
+        "description": "Label for the remaining/unknown segment in cumulative mode",
         "defaultValue": "Remaining"
       },
       "remainingUnit": {
         "type": "string",
         "isRequired": false,
-        "description": "Unit to display with the remaining segment value in amount mode\nIf not provided, uses the unit from the first data item (if available)"
+        "description": "Unit to display with the remaining segment value in cumulative mode\nIf not provided, uses the unit from the first data item (if available)"
       },
       "showLegend": {
         "type": "\"false\" | \"true\"",
@@ -65,7 +77,7 @@
       "unit": {
         "type": "string",
         "isRequired": false,
-        "description": "Global unit to display with values in amount mode (e.g., \"GB\", \"datasets\", \"K\")\nIndividual data items can override this with their own unit property\nOnly shown when mode is \"amount\""
+        "description": "Global unit to display with values in cumulative mode (e.g., \"GB\", \"datasets\", \"K\")\nIndividual data items can override this with their own unit property\nOnly shown when mode is \"cumulative\""
       },
       "width": {
         "type": "\"string\" | \"number\"",

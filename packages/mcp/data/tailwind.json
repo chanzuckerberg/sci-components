@@ -1,12 +1,12 @@
 {
   "fontFamily": {
-    "sds-body": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-caps": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "sds-body": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-caps": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
     "sds-code": "\"IBM Plex Mono\", monospace",
-    "sds-header": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-link": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-tabular": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-title": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+    "sds-header": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-link": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-tabular": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-title": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
   },
   "fontSize": {
     "sds-body-l-400-narrow": "16px",
@@ -2965,7 +2965,7 @@
       "sds-color-primitive-green-800": "#001f00",
       "sds-color-primitive-purple-100": "#efeafe",
       "sds-color-primitive-purple-200": "#e4dbfc",
-      "sds-color-primitive-purple-300": "#cbbaF8",
+      "sds-color-primitive-purple-300": "#cbbaf8",
       "sds-color-primitive-purple-400": "#b296f2",
       "sds-color-primitive-purple-500": "#8b54e2",
       "sds-color-primitive-purple-600": "#6526b5",
@@ -3013,7 +3013,7 @@
       "sds-color-semantic-base-background-primary-dark": "#000000",
       "sds-color-semantic-base-background-primary-inverse": "#000000",
       "sds-color-semantic-base-background-secondary": "#ededed66",
-      "sds-color-semantic-base-background-secondary-on-dark": "#3b3b3b9E",
+      "sds-color-semantic-base-background-secondary-on-dark": "#3b3b3b9e",
       "sds-color-semantic-base-background-secondary-inverse": "#3b3b3b",
       "sds-color-semantic-base-background-tertiary": "#ededed",
       "sds-color-semantic-base-border-on-fill": "#ffffff",

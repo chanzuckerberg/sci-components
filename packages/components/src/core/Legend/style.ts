@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBodyXxxxs,
+  fontBodyMediumXxxs,
   getCorners,
   getSpaces,
   getSemanticColors,
@@ -38,7 +38,7 @@ export const LegendItem = styled("div")<LegendItemProps>`
       align-items: center;
       cursor: ${disabled ? "not-allowed" : "pointer"} !important;
       transition: background-color 0.2s ease-in-out;
-      padding: 0 ${spaces?.xxs}px;
+      padding: ${spaces?.xxxs}px ${spaces?.xxs}px;
       border-radius: ${corners?.s}px;
       background-color: ${isSelected ? semanticColors?.base?.backgroundTertiary : "transparent"};
       pointer-events: ${disabled ? "none" : "auto"};
@@ -63,8 +63,8 @@ export const LegendIcon = styled("div")<LegendIconProps>`
     const corners = getCorners(props);
 
     return `
-      width: 8px;
-      height: 8px;
+      width: ${spaces?.m}px;
+      height: ${spaces?.m}px;
       border-radius: ${corners?.s}px;
       background-color: ${color};
       flex-shrink: 0;
@@ -80,7 +80,7 @@ interface LegendTextProps extends CommonThemeProps {
 }
 
 export const LegendLabel = styled("span")<LegendTextProps>`
-  ${fontBodyXxxxs}
+  ${fontBodyMediumXxxs}
   ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     return `
@@ -90,14 +90,14 @@ export const LegendLabel = styled("span")<LegendTextProps>`
 `;
 
 export const LegendValue = styled("span")<LegendTextProps>`
-  ${fontBodyXxxxs}
+  ${fontBodyMediumXxxs}
   ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return `
       color: ${semanticColors?.base?.textSecondary};
-      margin-left: ${spaces?.xxxs}px;
+      margin-left: ${spaces?.xxs}px;
     `;
   }}
 `;
