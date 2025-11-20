@@ -52,7 +52,7 @@ const doNotForwardProps = [
 export const StyledTopComponentSlot = styled("div")`
   position: sticky;
   top: 0;
-  z-index: 1300;
+  z-index: 2100;
 `;
 
 export const StyledAppBar = styled(AppBar, {
@@ -67,7 +67,7 @@ export const StyledAppBar = styled(AppBar, {
       background-image: none;
       max-width: 100%;
       overflow-x: auto;
-      z-index: ${props.theme?.zIndex?.drawer ? props.theme.zIndex.drawer + 10 : 1210};
+      z-index: 2100;
     `;
   }}
 `;
@@ -830,6 +830,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
     return css`
       pointer-events: none;
       top: ${topOffset}px;
+      z-index: 2000;
 
       .MuiDrawer-paper {
         background-color: ${hasInvertedStyle
