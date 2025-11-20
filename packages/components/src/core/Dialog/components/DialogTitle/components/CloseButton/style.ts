@@ -11,7 +11,7 @@ export const StyledButton = styled(Button)`
 
     const spaces = getSpaces(props);
 
-    const right = isSmall ? spaces?.xl : spaces?.xxl;
+    const right = isSmall ? spaces?.xl : spaces?.xxxl;
 
     return `
       right: ${right}px;

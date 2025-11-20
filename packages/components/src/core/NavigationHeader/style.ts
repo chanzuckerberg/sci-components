@@ -307,7 +307,7 @@ export const StyledTitleContainer = styled("div", {
       color: ${props.hasInvertedStyle
         ? colors?.base.textPrimaryOnDark
         : colors?.base.textPrimary};
-      margin-right: ${spaces?.xxl}px;
+      margin-right: ${spaces?.xxxl}px;
       width: 100%;
 
       ${isNarrow && NarrowTitleContainer()}
@@ -365,8 +365,8 @@ export const StyledPrimaryNavContainer = styled("div", {
 
     return css`
       flex-direction: ${isNarrow ? "column" : "row"};
-      gap: ${spaces?.xxl}px;
-      margin-right: ${spaces?.xxl}px;
+      gap: ${spaces?.xxxl}px;
+      margin-right: ${spaces?.xxxl}px;
       flex: 1;
       justify-content: ${showSearch
         ? primaryNavPositionWithSearch
@@ -504,14 +504,14 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
     &::before {
       content: "";
       position: absolute;
-      height: ${spaces?.xxl}px;
+      height: ${spaces?.xxxl}px;
       width: 100%;
       background: linear-gradient(
         to top,
         ${backgroundColor} 0%,
         ${backgroundColor}00 100%
       );
-      top: -${spaces?.xxl}px;
+      top: -${spaces?.xxxl}px;
     }
 
     .MuiButton-icon .MuiSvgIcon-root {
@@ -536,7 +536,7 @@ export const StyledButtonSection = styled("section", {
 
     return css`
       gap: ${spaces?.m}px;
-      margin-left: ${spaces?.xxl}px;
+      margin-left: ${spaces?.xxxl}px;
 
       ${isNarrow && NarrowButtonStyles(props)}
     `;
@@ -842,7 +842,7 @@ export const StyledMegaMenuDrawer = styled(Drawer, {
         box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
         background-image: none;
         padding: ${spaces?.xl ? spaces?.xl + 48 : 48}px ${spaces?.xl}px
-          ${spaces?.xxl}px;
+          ${spaces?.xxxl}px;
         transform: translateY(48px);
         top: ${topOffset}px;
       }
@@ -871,7 +871,7 @@ export const StyledMegaMenuContent = styled("div", {
         : semanticColors?.base.backgroundPrimary};
       display: flex;
       flex-wrap: wrap;
-      gap: ${spaces?.xxl}px;
+      gap: ${spaces?.xxxl}px;
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
@@ -893,7 +893,7 @@ export const StyledHoverDrawerColumn = styled("div", {
     // Account for gaps between columns
     const columnsPerRow = totalColumns > 4 ? 4 : totalColumns;
     const gapCount = columnsPerRow - 1;
-    const columnWidth = `calc((100% - (${gapCount} * ${spaces?.xxl}px)) / ${columnsPerRow})`;
+    const columnWidth = `calc((100% - (${gapCount} * ${spaces?.xxxl}px)) / ${columnsPerRow})`;
 
     return css`
       display: flex;
@@ -1135,7 +1135,7 @@ export const StyledHoverDrawerActions = styled("div", {
       margin-top: ${spaces?.l}px;
       padding-left: ${isNarrow
         ? `calc(${spaces?.l}px + ${spaces?.m}px)`
-        : `calc(${spaces?.xxl}px + ${spaces?.xs}px)`};
+        : `calc(${spaces?.xxxl}px + ${spaces?.xs}px)`};
       flex-wrap: wrap;
     `;
   }}
