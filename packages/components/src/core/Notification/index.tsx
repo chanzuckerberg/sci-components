@@ -6,6 +6,7 @@ import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import { StyledButtonWrapper, StyledNotification } from "./style";
 
 export type NotificationIntentType =
+  | "accent"
   | "info"
   | "negative"
   | "positive"
