@@ -3,7 +3,7 @@
 exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-5p9yqn-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-74o1ef-MuiPaper-root-MuiAppBar-root"
   style="top: 0px;"
   tabindex="0"
 >
@@ -289,7 +289,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
 exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-5p9yqn-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-74o1ef-MuiPaper-root-MuiAppBar-root"
   style="top: 0px;"
   tabindex="0"
 >
@@ -629,7 +629,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
 
 exports[`<NavigationHeader /> WithTopComponent story renders snapshot 1`] = `
 <div
-  class="css-19b3jam"
+  class="css-xwjtpi"
 >
   <div
     class="css-1fd36s4"
@@ -693,7 +693,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
 <DocumentFragment>
   <header
     aria-label="Main navigation"
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-5p9yqn-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-74o1ef-MuiPaper-root-MuiAppBar-root"
     style="top: 0px;"
     tabindex="0"
   >

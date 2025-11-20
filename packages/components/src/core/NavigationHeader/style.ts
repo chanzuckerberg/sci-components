@@ -36,6 +36,8 @@ export interface ExtraHeaderProps extends CommonThemeProps {
   sdsStyle?: "dropdown" | "drawer";
 }
 
+export const TOOLBAR_HEIGHT = 48;
+
 const doNotForwardProps = [
   "hasInvertedStyle",
   "isNarrow",
@@ -102,8 +104,8 @@ export const StyledToolbar = styled(Toolbar, {
 
     return css`
       &.MuiToolbar-root {
-        min-height: 48px;
-        max-height: 48px;
+        min-height: ${TOOLBAR_HEIGHT}px;
+        max-height: ${TOOLBAR_HEIGHT}px;
         padding: ${spaces?.s}px ${spaces?.l}px;
 
         ${isNarrow && NarrowToolbar(props)}
@@ -559,8 +561,8 @@ export const StyledDrawer = styled(Drawer, {
         width: 100%;
         display: flex;
         flex-direction: column;
-        top: ${topOffset}px;
-        height: calc(100% - ${topOffset}px);
+        top: ${topOffset + TOOLBAR_HEIGHT}px;
+        height: calc(100% - ${topOffset + TOOLBAR_HEIGHT}px);
         justify-content: space-between;
       }
     `;
@@ -625,7 +627,7 @@ const DrawerAccordionStyles = (
     &[aria-expanded="true"] {
       position: sticky;
       border-radius: 0;
-      top: calc(48px + ${spaces?.s}px);
+      top: ${spaces?.s}px;
       z-index: 11;
       backdrop-filter: blur(0px);
       color: ${textOpenColor};
