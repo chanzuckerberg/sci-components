@@ -68,6 +68,9 @@ export interface NavigationHeaderSecondaryNavProps<T extends string> {
   onDrawerStateChange?: (isOpen: boolean) => void;
   topOffset?: number;
   onClose?: () => void;
+  onDrawerStyleNavItemHover?: (
+    item: NavigationHeaderSecondaryNavItem<T>
+  ) => void;
 }
 
 export default function NavigationHeaderSecondaryNav<T extends string>({
@@ -83,6 +86,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
   onDrawerStateChange,
   topOffset = 0,
   onClose: onCloseProp,
+  onDrawerStyleNavItemHover,
 }: NavigationHeaderSecondaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
 
@@ -141,7 +145,10 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
     return (
       <StyledHoverDrawerContainer
         key={key}
-        onMouseEnter={() => onDrawerOpen(key)}
+        onMouseEnter={() => {
+          onDrawerStyleNavItemHover?.(item);
+          onDrawerOpen(key);
+        }}
         onMouseLeave={onDrawerClose}
       >
         <UnifiedNavItem

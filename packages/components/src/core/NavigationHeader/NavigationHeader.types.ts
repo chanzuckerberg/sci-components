@@ -29,6 +29,11 @@ export interface NavigationHeaderProps<T extends string = string>
   setDrawerOpen?: (open: boolean) => void;
   menuProps?: Partial<MenuProps>;
   sdsStyle?: "dropdown" | "drawer";
+  onDrawerStyleNavItemHover?: (
+    item:
+      | NavigationHeaderPrimaryNavItem<T>
+      | NavigationHeaderSecondaryNavItem<T>
+  ) => void;
   isSticky?: boolean;
   topComponentSlot?: ReactNode;
 }

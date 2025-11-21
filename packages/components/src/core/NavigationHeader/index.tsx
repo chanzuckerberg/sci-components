@@ -76,6 +76,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       setDrawerOpen: onDrawerOpenChange,
       isSticky = true,
       topComponentSlot,
+      onDrawerStyleNavItemHover,
       ...rest
     } = props;
     const navRef = useRef<HTMLDivElement>(null);
@@ -314,7 +315,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         primaryNavItems.length > 0 && (
           <NavigationHeaderPrimaryNav
             items={primaryNavItems}
-            value={activePrimaryNavKey}
+            value={activePrimaryNavKey as T}
             onChange={setActivePrimaryNavKey}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
@@ -327,6 +328,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             onDrawerStateChange={handlePrimaryDrawerStateChange}
             topOffset={topOffset}
             onClose={() => setDrawerOpen(false)}
+            onDrawerStyleNavItemHover={onDrawerStyleNavItemHover}
           />
         )
       );
@@ -349,6 +351,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             onDrawerStateChange={handleSecondaryDrawerStateChange}
             topOffset={topOffset}
             onClose={() => setDrawerOpen(false)}
+            onDrawerStyleNavItemHover={onDrawerStyleNavItemHover}
           />
         )
       );
