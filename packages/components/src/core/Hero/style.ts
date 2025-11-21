@@ -37,16 +37,16 @@ const getResponsivePadding = (props: StyledHeroProps) => {
   const breakpoints = getBreakpoints(props);
 
   return css`
-    padding: ${spaces?.xxl}px
+    padding: ${spaces?.xxxl}px
       ${overlayContainerMinMargin?.small || HeroMargins.SMALL};
 
     ${breakpoints?.up("md")} {
-      padding: ${spaces?.xxl}px
+      padding: ${spaces?.xxxl}px
         ${overlayContainerMinMargin?.medium || HeroMargins.MEDIUM};
     }
 
     ${breakpoints?.up("lg")} {
-      padding: ${spaces?.xxl}px
+      padding: ${spaces?.xxxl}px
         ${overlayContainerMinMargin?.large || HeroMargins.LARGE};
     }
   `;

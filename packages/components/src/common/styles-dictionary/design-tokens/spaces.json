@@ -1,32 +1,35 @@
 {
   "sds": {
     "space": {
+      "xxxs": {
+        "value": "2px"
+      },
+      "xxs": {
+        "value": "4px"
+      },
+      "xs": {
+        "value": "6px"
+      },
+      "s": {
+        "value": "8px"
+      },
+      "m": {
+        "value": "12px"
+      },
       "default": {
         "value": "12px"
       },
       "l": {
         "value": "16px"
       },
-      "m": {
-        "value": "12px"
-      },
-      "s": {
-        "value": "8px"
-      },
       "xl": {
         "value": "24px"
       },
-      "xs": {
-        "value": "6px"
-      },
       "xxl": {
+        "value": "32px"
+      },
+      "xxxl": {
         "value": "40px"
-      },
-      "xxs": {
-        "value": "4px"
-      },
-      "xxxs": {
-        "value": "2px"
       }
     }
   }
