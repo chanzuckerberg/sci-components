@@ -535,6 +535,7 @@ export function makeThemeOptions(
       appTheme.spacing.l,
       appTheme.spacing.xl,
       appTheme.spacing.xxl,
+      appTheme.spacing.xxxl,
     ],
     transitions: {
       duration: {

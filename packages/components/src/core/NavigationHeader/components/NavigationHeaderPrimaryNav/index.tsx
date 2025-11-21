@@ -95,6 +95,7 @@ export interface NavigationHeaderPrimaryNavProps<T extends string> {
   onDrawerStateChange?: (isOpen: boolean) => void;
   topOffset?: number;
   onClose?: () => void;
+  onDrawerStyleNavItemHover?: (item: NavigationHeaderPrimaryNavItem<T>) => void;
 }
 
 export default function NavigationHeaderPrimaryNav<T extends string>({
@@ -112,6 +113,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
   onDrawerStateChange,
   topOffset = 0,
   onClose: onCloseProp,
+  onDrawerStyleNavItemHover,
 }: NavigationHeaderPrimaryNavProps<T>) {
   const theme: SDSTheme = useTheme();
 
@@ -202,6 +204,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
       <StyledHoverDrawerContainer
         key={key}
         onMouseEnter={() => {
+          onDrawerStyleNavItemHover?.(item);
           if (clickedDrawerKey !== key) {
             onDrawerOpen(key);
           }
