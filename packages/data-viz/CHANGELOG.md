@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.3...@czi-sds/data-viz@0.15.0) (2025-11-21)
+
+### Features
+
+- **spaces:** introduced a new spaces.xxxl variable ([#1055](https://github.com/chanzuckerberg/sci-components/issues/1055)) ([612a055](https://github.com/chanzuckerberg/sci-components/commit/612a055cbdbdf81bd904df8261a34102b4bd5589))
+
+### BREAKING CHANGES
+
+- **spaces:** Teams are required to replace the old spaces.xxl with the new spaces.xxxl variable
+
+- fix(heatmap): removed snapshots for the heatmaop component
+
 ## [0.14.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.2...@czi-sds/data-viz@0.14.3) (2025-11-13)
 
 ### Bug Fixes

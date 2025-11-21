@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.17.1...@czi-sds/components@23.0.0) (2025-11-21)
+
+### Bug Fixes
+
+- **legend:** show background color on legend item when an chart segment is hovered ([#1053](https://github.com/chanzuckerberg/sci-components/issues/1053)) ([3af579c](https://github.com/chanzuckerberg/sci-components/commit/3af579c43d08ec2a8219bf122e5a65e2ec576c76))
+- **NavigationHeader:** Fix NavigationHeader mobile layout bugs and improve hover drawer interaction ([#1052](https://github.com/chanzuckerberg/sci-components/issues/1052)) ([72fd00a](https://github.com/chanzuckerberg/sci-components/commit/72fd00a7a873a1dc97785148a30ef55b094ac2f1))
+
+### Features
+
+- **callout:** added accent intent to Banner, Callout and Notification components ([#1054](https://github.com/chanzuckerberg/sci-components/issues/1054)) ([766607d](https://github.com/chanzuckerberg/sci-components/commit/766607da5c048e5e5b08f507a311d283d72cc1c7))
+- **spaces:** introduced a new spaces.xxxl variable ([#1055](https://github.com/chanzuckerberg/sci-components/issues/1055)) ([612a055](https://github.com/chanzuckerberg/sci-components/commit/612a055cbdbdf81bd904df8261a34102b4bd5589))
+
+### BREAKING CHANGES
+
+- **spaces:** Teams are required to replace the old spaces.xxl with the new spaces.xxxl variable
+
+- fix(heatmap): removed snapshots for the heatmaop component
+
 ## [22.17.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.17.0...@czi-sds/components@22.17.1) (2025-11-13)
 
 ### Bug Fixes
