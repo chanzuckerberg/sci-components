@@ -24,11 +24,12 @@ export const LegendContainer = styled("div")`
 interface LegendItemProps extends CommonThemeProps {
   isSelected?: boolean;
   disabled?: boolean;
+  isHovered?: boolean;
 }
 
 export const LegendItem = styled("div")<LegendItemProps>`
   ${(props: LegendItemProps) => {
-    const { isSelected, disabled } = props;
+    const { isSelected, disabled, isHovered } = props;
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
@@ -40,7 +41,7 @@ export const LegendItem = styled("div")<LegendItemProps>`
       transition: background-color 0.2s ease-in-out;
       padding: ${spaces?.xxxs}px ${spaces?.xxs}px;
       border-radius: ${corners?.s}px;
-      background-color: ${isSelected ? semanticColors?.base?.backgroundTertiary : "transparent"};
+      background-color: ${isSelected ? semanticColors?.base?.backgroundTertiary : isHovered ? semanticColors?.base?.backgroundSecondary : "transparent"};
       pointer-events: ${disabled ? "none" : "auto"};
 
       &:hover {
