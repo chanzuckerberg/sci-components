@@ -46,7 +46,7 @@ export default {
       control: { type: "radio" },
       defaultValue: { summary: "info" },
       description: "The intent of the callout.",
-      options: ["info", "negative", "positive", "notice"],
+      options: ["accent", "info", "negative", "positive", "notice"],
     },
     sdsStyle: {
       control: {

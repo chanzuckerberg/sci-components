@@ -11,7 +11,12 @@ import CalloutExtraContent from "./components/CalloutExtraContent";
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
 
-export type CalloutIntentType = "info" | "negative" | "notice" | "positive";
+export type CalloutIntentType =
+  | "accent"
+  | "info"
+  | "negative"
+  | "notice"
+  | "positive";
 export type CalloutSdsStyleType = "persistent" | "expandable" | "dismissible";
 export interface CalloutProps {
   autoDismiss?: boolean | number;

@@ -1,7 +1,7 @@
 import { SdsTagColorType } from "src/core/Tag";
 import { StyledTag } from "./style";
 import { UnifiedNavItem, StyledLabel } from "../shared/UnifiedNavItem";
-import { ReactNode, useEffect, Fragment } from "react";
+import { ReactNode, useEffect, Fragment, useState } from "react";
 import {
   StyledDivider,
   StyledLabelTextWrapper,
@@ -135,6 +135,8 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     cancelDrawerClose,
   } = useNavigationState<T>();
 
+  const [clickedDrawerKey, setClickedDrawerKey] = useState<T | null>(null);
+
   // Helper function to wrap dropdown items' onClick handlers
   // This automatically sets the parent dropdown as active when an item is clicked
   const wrapDropdownItemsWithActiveKey = (
@@ -188,13 +190,28 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
     const handleClick = (e: React.MouseEvent) => {
       onChange(key);
       parentOnClick?.(e);
+
+      if (drawerOpen) {
+        setActiveDrawerKey(null);
+        setContentKey(null);
+        setClickedDrawerKey(key);
+      }
     };
 
     return (
       <StyledHoverDrawerContainer
         key={key}
-        onMouseEnter={() => onDrawerOpen(key)}
-        onMouseLeave={onDrawerClose}
+        onMouseEnter={() => {
+          if (clickedDrawerKey !== key) {
+            onDrawerOpen(key);
+          }
+        }}
+        onMouseLeave={() => {
+          if (clickedDrawerKey === key) {
+            setClickedDrawerKey(null);
+          }
+          onDrawerClose();
+        }}
       >
         <UnifiedNavItem
           {...rest}

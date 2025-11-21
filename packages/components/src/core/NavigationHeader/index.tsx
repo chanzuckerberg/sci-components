@@ -583,23 +583,8 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             topOffset={topOffset}
             role="dialog"
             aria-label="Navigation menu"
+            disableScrollLock={false}
           >
-            <ElevationScroll
-              {...props}
-              shouldElevate={effectiveScrollElevation}
-            >
-              <StyledAppBar
-                elevation={10}
-                hasInvertedStyle={hasInvertedStyle}
-                ref={mergeRefs([ref, navRef])}
-                aria-label="Main navigation"
-                tabIndex={0}
-                position="sticky"
-                {...rest}
-              >
-                {headerContent}
-              </StyledAppBar>
-            </ElevationScroll>
             <StyledDrawerContent>
               <div>
                 {search}
