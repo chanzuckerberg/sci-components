@@ -342,6 +342,7 @@ export interface Spaces {
   l: number;
   xl: number;
   xxl: number;
+  xxxl: number;
 }
 
 /**

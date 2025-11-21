@@ -3134,14 +3134,15 @@
     }
   },
   "spacing": {
+    "sds-xxxs": "2px",
+    "sds-xxs": "4px",
+    "sds-xs": "6px",
+    "sds-s": "8px",
+    "sds-m": "12px",
     "sds-default": "12px",
     "sds-l": "16px",
-    "sds-m": "12px",
-    "sds-s": "8px",
     "sds-xl": "24px",
-    "sds-xs": "6px",
-    "sds-xxl": "40px",
-    "sds-xxs": "4px",
-    "sds-xxxs": "2px"
+    "sds-xxl": "32px",
+    "sds-xxxl": "40px"
   }
 }

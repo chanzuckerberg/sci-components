@@ -29,7 +29,7 @@ export default {
     },
     intent: {
       control: { type: "inline-radio" },
-      options: ["info", "negative", "positive", "notice"],
+      options: ["accent", "info", "negative", "positive", "notice"],
     },
     sdsIconProps: {
       control: {
@@ -48,6 +48,7 @@ export default {
   },
   component: Banner,
   parameters: {
+    layout: "fullscreen",
     axe: {
       disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
     },
