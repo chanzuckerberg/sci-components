@@ -46,7 +46,7 @@ export default {
     },
     intent: {
       control: { type: "inline-radio" },
-      options: ["info", "negative", "positive", "notice"],
+      options: ["accent", "info", "negative", "positive", "notice"],
     },
     onClose: {
       control: {
