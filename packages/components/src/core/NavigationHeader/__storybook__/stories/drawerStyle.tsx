@@ -117,13 +117,19 @@ export const DrawerStyleDemo = (
   return (
     <>
       <RawNavigationHeader
-        {...rest}
         primaryNavItems={primaryNavItems}
         secondaryNavItems={secondaryNavItems}
         backgroundAppearance={backgroundAppearance}
         title={title}
         activePrimaryNavKey={activePrimaryNavKey}
         setActivePrimaryNavKey={setActivePrimaryNavKey}
+        onDrawerStyleNavItemHover={(item) => {
+          console.log(
+            "NavigationHeader onDrawerStyleNavItemHover called with item:",
+            item
+          );
+        }}
+        {...rest}
       />
       <Container>
         <Box>

@@ -116,6 +116,20 @@ describe("<NavigationHeader />", () => {
     expect(onClickMock).toHaveBeenCalled();
   });
 
+  it("triggers onDrawerStyleNavItemHover when hovering over a drawer item", () => {
+    const onDrawerStyleNavItemHover = jest.fn();
+    const { DrawerStyle } = composeStories(stories);
+
+    render(
+      <DrawerStyle onDrawerStyleNavItemHover={onDrawerStyleNavItemHover} />
+    );
+
+    const productsItem = screen.getAllByText("Products")[0];
+    fireEvent.mouseEnter(productsItem);
+
+    expect(onDrawerStyleNavItemHover).toHaveBeenCalled();
+  });
+
   it("matches the snapshot", () => {
     const { asFragment } = render(<DropdownStyle />);
     expect(asFragment()).toMatchSnapshot();
