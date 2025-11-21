@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.10.0...@czi-sds/mcp@0.11.0) (2025-11-21)
+
+### Features
+
+- **navigationhedaer:** added new onDrawerStyleNavItemHover prop to the NavigationHeader ([#1057](https://github.com/chanzuckerberg/sci-components/issues/1057)) ([6675716](https://github.com/chanzuckerberg/sci-components/commit/6675716ec722a5e50c4a7626f5b9dbe79d2caa5d))
+
 # [0.10.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.9.2...@czi-sds/mcp@0.10.0) (2025-11-21)
 
 ### Features
