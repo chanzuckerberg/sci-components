@@ -102,6 +102,7 @@ const Legend = (props: LegendProps): JSX.Element => {
             aria-disabled={item.disabled}
             isSelected={isSelected}
             disabled={item.disabled}
+            isHovered={isHovered}
           >
             <LegendIcon color={itemColor} isDimmed={isDimmed} />
             <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
