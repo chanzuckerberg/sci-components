@@ -127,7 +127,7 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
               )}
             </div>
           ) : (
-            <div style={{ color: "#999" }}>
+            <div style={{ color: "#767676" }}>
               Hover over a bar segment or legend item
             </div>
           )}
@@ -146,7 +146,7 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
             Event Log (last 10 events):
           </h3>
           {eventLog.length === 0 ? (
-            <div style={{ color: "#999", fontSize: "12px" }}>
+            <div style={{ color: "#767676", fontSize: "12px" }}>
               No events yet. Hover or click on segments or legend items to see
               events.
             </div>
