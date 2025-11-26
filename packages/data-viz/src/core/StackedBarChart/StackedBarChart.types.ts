@@ -95,6 +95,28 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
     selectedData: StackedBarChartDataItem[]
   ) => void;
   /**
+   * Callback when mouse enters a bar segment
+   */
+  onSegmentMouseEnter?: (item: StackedBarChartDataItem, index: number) => void;
+  /**
+   * Callback when mouse leaves a bar segment
+   */
+  onSegmentMouseLeave?: (item: StackedBarChartDataItem, index: number) => void;
+  /**
+   * Callback when mouse enters a legend item
+   */
+  onLegendItemMouseEnter?: (
+    item: StackedBarChartDataItem,
+    index: number
+  ) => void;
+  /**
+   * Callback when mouse leaves a legend item
+   */
+  onLegendItemMouseLeave?: (
+    item: StackedBarChartDataItem,
+    index: number
+  ) => void;
+  /**
    * Behavior to apply when items are selected
    * - "dim": Non-selected segments become semi-transparent (20% opacity)
    * - "hide": Non-selected segments are hidden from the bar chart

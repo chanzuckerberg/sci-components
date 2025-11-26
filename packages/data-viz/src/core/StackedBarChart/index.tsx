@@ -354,6 +354,10 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     legendValueFormat = "percentage",
     selectedIndices = [],
     onSelectionChange,
+    onSegmentMouseEnter,
+    onSegmentMouseLeave,
+    onLegendItemMouseEnter,
+    onLegendItemMouseLeave,
     selectionBehavior = "dim",
     mode = "proportional",
     maxAmount,
@@ -707,10 +711,23 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Handle legend item hover and leave
   const handleLegendItemHover = useCallback(
-    (_item: LegendItemData, index: number) => setHoveredIndex(index),
-    []
+    (_item: LegendItemData, index: number) => {
+      setHoveredIndex(index);
+      if (onLegendItemMouseEnter && data[index]) {
+        onLegendItemMouseEnter(data[index], index);
+      }
+    },
+    [onLegendItemMouseEnter, data]
   );
-  const handleLegendItemLeave = useCallback(() => setHoveredIndex(null), []);
+  const handleLegendItemLeave = useCallback(
+    (_item: LegendItemData, index: number) => {
+      setHoveredIndex(null);
+      if (onLegendItemMouseLeave && data[index]) {
+        onLegendItemMouseLeave(data[index], index);
+      }
+    },
+    [onLegendItemMouseLeave, data]
+  );
 
   // Handle selection change - reusable logic for both segment and legend
   const handleSelectionChange = useCallback(
@@ -770,9 +787,26 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             selectedIndicesSet,
             selectionBehavior,
             isLast: isLastVisible,
-            onMouseEnter: () =>
-              !item.isExiting && setHoveredIndex(item.originalIndex),
-            onMouseLeave: () => setHoveredIndex(null),
+            onMouseEnter: () => {
+              if (!item.isExiting) {
+                setHoveredIndex(item.originalIndex);
+                if (onSegmentMouseEnter && data[item.originalIndex]) {
+                  onSegmentMouseEnter(
+                    data[item.originalIndex],
+                    item.originalIndex
+                  );
+                }
+              }
+            },
+            onMouseLeave: () => {
+              setHoveredIndex(null);
+              if (onSegmentMouseLeave && data[item.originalIndex]) {
+                onSegmentMouseLeave(
+                  data[item.originalIndex],
+                  item.originalIndex
+                );
+              }
+            },
             onClick: () =>
               !item.isExiting && handleSegmentClick(item.originalIndex),
           });

@@ -493,4 +493,179 @@ describe("<StackedBarChart />", () => {
     const chartElement = screen.getByTestId(STACKED_BAR_CHART_TEST_ID);
     expect(chartElement).toHaveAttribute("aria-label", "Test Chart");
   });
+
+  describe("Mouse event handlers", () => {
+    it("calls onSegmentMouseEnter when hovering over a bar segment", () => {
+      const handleSegmentMouseEnter = jest.fn();
+
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          onSegmentMouseEnter={handleSegmentMouseEnter}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      // Get all bar segments (styled divs within BarContainer)
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      // Hover over the first segment
+      fireEvent.mouseEnter(barSegments[0]);
+
+      expect(handleSegmentMouseEnter).toHaveBeenCalledTimes(1);
+      expect(handleSegmentMouseEnter).toHaveBeenCalledWith(sampleData[0], 0);
+    });
+
+    it("calls onSegmentMouseLeave when mouse leaves a bar segment", () => {
+      const handleSegmentMouseLeave = jest.fn();
+
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          onSegmentMouseLeave={handleSegmentMouseLeave}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      // Hover and then leave the first segment
+      fireEvent.mouseEnter(barSegments[0]);
+      fireEvent.mouseLeave(barSegments[0]);
+
+      expect(handleSegmentMouseLeave).toHaveBeenCalledTimes(1);
+      expect(handleSegmentMouseLeave).toHaveBeenCalledWith(sampleData[0], 0);
+    });
+
+    it("calls onLegendItemMouseEnter when hovering over a legend item", () => {
+      const handleLegendItemMouseEnter = jest.fn();
+
+      render(
+        <StackedBarChart
+          data={sampleData}
+          onLegendItemMouseEnter={handleLegendItemMouseEnter}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const firstLegendItem = screen.getByRole(BUTTON_ROLE, {
+        name: /Category A/i,
+      });
+
+      fireEvent.mouseEnter(firstLegendItem);
+
+      expect(handleLegendItemMouseEnter).toHaveBeenCalledTimes(1);
+      expect(handleLegendItemMouseEnter).toHaveBeenCalledWith(sampleData[0], 0);
+    });
+
+    it("calls onLegendItemMouseLeave when mouse leaves a legend item", () => {
+      const handleLegendItemMouseLeave = jest.fn();
+
+      render(
+        <StackedBarChart
+          data={sampleData}
+          onLegendItemMouseLeave={handleLegendItemMouseLeave}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const firstLegendItem = screen.getByRole(BUTTON_ROLE, {
+        name: /Category A/i,
+      });
+
+      fireEvent.mouseEnter(firstLegendItem);
+      fireEvent.mouseLeave(firstLegendItem);
+
+      expect(handleLegendItemMouseLeave).toHaveBeenCalledTimes(1);
+      expect(handleLegendItemMouseLeave).toHaveBeenCalledWith(sampleData[0], 0);
+    });
+
+    it("does not call segment handlers for disabled items", () => {
+      const handleSegmentMouseEnter = jest.fn();
+      const dataWithDisabled = [
+        ...sampleData,
+        { name: "Disabled", value: 50, disabled: true },
+      ];
+
+      const { container } = render(
+        <StackedBarChart
+          data={dataWithDisabled}
+          onSegmentMouseEnter={handleSegmentMouseEnter}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      // Try to hover over the disabled segment (last one)
+      fireEvent.mouseEnter(barSegments[barSegments.length - 1]);
+
+      // Handler should not be called for disabled segment
+      // (disabled segments have pointer-events: none)
+      expect(handleSegmentMouseEnter).not.toHaveBeenCalled();
+    });
+
+    it("works without event handlers (backward compatible)", () => {
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      // Should not throw when hovering without handlers
+      expect(() => {
+        fireEvent.mouseEnter(barSegments[0]);
+        fireEvent.mouseLeave(barSegments[0]);
+      }).not.toThrow();
+    });
+
+    it("calls handlers with correct data for multiple segments", () => {
+      const handleSegmentMouseEnter = jest.fn();
+
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          onSegmentMouseEnter={handleSegmentMouseEnter}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      // Hover over each segment
+      fireEvent.mouseEnter(barSegments[0]);
+      fireEvent.mouseEnter(barSegments[1]);
+      fireEvent.mouseEnter(barSegments[2]);
+
+      expect(handleSegmentMouseEnter).toHaveBeenCalledTimes(3);
+      expect(handleSegmentMouseEnter).toHaveBeenNthCalledWith(
+        1,
+        sampleData[0],
+        0
+      );
+      expect(handleSegmentMouseEnter).toHaveBeenNthCalledWith(
+        2,
+        sampleData[1],
+        1
+      );
+      expect(handleSegmentMouseEnter).toHaveBeenNthCalledWith(
+        3,
+        sampleData[2],
+        2
+      );
+    });
+  });
 });
