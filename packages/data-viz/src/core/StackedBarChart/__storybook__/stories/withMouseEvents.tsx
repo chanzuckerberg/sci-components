@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Args } from "@storybook/react-webpack5";
 import RawStackedBarChart from "../../index";
 import { StackedBarChartDataItem } from "../../StackedBarChart.types";
+import { useTheme } from "@mui/material";
 
 export default function WithMouseEventsStory(args: Args): JSX.Element {
   const { data, ...rest } = args;
@@ -11,6 +12,7 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
     source: "segment" | "legend";
   } | null>(null);
   const [eventLog, setEventLog] = useState<string[]>([]);
+  const theme = useTheme();
 
   const addToLog = (message: string) => {
     setEventLog((prev) => [message, ...prev].slice(0, 10)); // Keep last 10 events
@@ -82,63 +84,70 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
         onLegendItemClick={handleLegendItemClick}
       />
 
-      <div style={{ marginTop: "40px" }}>
+      <div
+        style={{
+          marginTop: "40px",
+          display: "flex",
+          gap: "16px",
+          flexGrow: 1,
+          alignItems: "flex-start",
+        }}
+      >
         <div
           style={{
             padding: "16px",
-            backgroundColor: "#f5f5f5",
+            backgroundColor: theme?.palette?.sds?.base?.backgroundTertiary,
             borderRadius: "8px",
             marginBottom: "16px",
           }}
         >
           <h3 style={{ margin: "0 0 12px 0", fontSize: "14px" }}>
-            Current Hover State:
+            Current Hover State (Hover over a bar segment or legend item):
           </h3>
-          {hoveredSegment ? (
+          <div>
             <div>
-              <div>
-                <strong>Name:</strong> {hoveredSegment.item.name}
-              </div>
-              <div>
-                <strong>Value:</strong> {hoveredSegment.item.value}
-              </div>
-              <div>
-                <strong>Index:</strong> {hoveredSegment.index}
-              </div>
-              <div>
-                <strong>Source:</strong> {hoveredSegment.source}
-              </div>
-              {hoveredSegment.item.color && (
-                <div>
-                  <strong>Color:</strong>{" "}
+              <strong>Name:</strong> {hoveredSegment?.item.name || "-"}
+            </div>
+            <div>
+              <strong>Value:</strong> {hoveredSegment?.item.value || "-"}
+            </div>
+            <div>
+              <strong>Index:</strong> {hoveredSegment?.index || "-"}
+            </div>
+            <div>
+              <strong>Source:</strong> {hoveredSegment?.source || "-"}
+            </div>
+
+            <div>
+              <strong>Custom Color:</strong>{" "}
+              {hoveredSegment?.item.color ? (
+                <>
                   <span
                     style={{
                       display: "inline-block",
                       width: "12px",
                       height: "12px",
                       backgroundColor: hoveredSegment.item.color,
-                      border: "1px solid #ccc",
-                      marginLeft: "4px",
+                      borderRadius: "2px",
+                      margin: "0 4px 0 2px",
                       verticalAlign: "middle",
                     }}
                   />
-                  {hoveredSegment.item.color}
-                </div>
+                  <span>{hoveredSegment.item.color}</span>
+                </>
+              ) : (
+                <span>-</span>
               )}
             </div>
-          ) : (
-            <div style={{ color: "#767676" }}>
-              Hover over a bar segment or legend item
-            </div>
-          )}
+          </div>
         </div>
 
         <div
           style={{
             padding: "16px",
-            backgroundColor: "#f5f5f5",
+            backgroundColor: theme?.palette?.sds?.base?.backgroundTertiary,
             borderRadius: "8px",
-            maxHeight: "200px",
+            maxHeight: "400px",
             overflow: "auto",
           }}
         >
@@ -146,7 +155,7 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
             Event Log (last 10 events):
           </h3>
           {eventLog.length === 0 ? (
-            <div style={{ color: "#767676", fontSize: "12px" }}>
+            <div style={{ fontSize: "12px" }}>
               No events yet. Hover or click on segments or legend items to see
               events.
             </div>

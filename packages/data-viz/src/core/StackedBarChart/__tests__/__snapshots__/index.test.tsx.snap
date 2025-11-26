@@ -1144,12 +1144,37 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
       <h3
         style="margin: 0px 0px 12px 0px; font-size: 14px;"
       >
-        Current Hover State:
+        Current Hover State (Hover over a bar segment or legend item):
       </h3>
-      <div
-        style="color: rgb(153, 153, 153);"
-      >
-        Hover over a bar segment or legend item
+      <div>
+        <div>
+          <strong>
+            Name:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Value:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Index:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Source:
+          </strong>
+           
+          -
+        </div>
       </div>
     </div>
     <div
@@ -1161,7 +1186,7 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         Event Log (last 10 events):
       </h3>
       <div
-        style="color: rgb(153, 153, 153); font-size: 12px;"
+        style="color: rgb(118, 118, 118); font-size: 12px;"
       >
         No events yet. Hover or click on segments or legend items to see events.
       </div>
