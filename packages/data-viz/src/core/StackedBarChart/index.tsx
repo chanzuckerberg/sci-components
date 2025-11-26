@@ -354,6 +354,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     legendValueFormat = "percentage",
     selectedIndices = [],
     onSelectionChange,
+    onSegmentMouseEnter,
+    onSegmentMouseLeave,
+    onLegendItemMouseEnter,
+    onLegendItemMouseLeave,
+    onSegmentClick,
+    onLegendItemClick,
     selectionBehavior = "dim",
     mode = "proportional",
     maxAmount,
@@ -707,10 +713,33 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Handle legend item hover and leave
   const handleLegendItemHover = useCallback(
-    (_item: LegendItemData, index: number) => setHoveredIndex(index),
-    []
+    (_item: LegendItemData, index: number) => {
+      setHoveredIndex(index);
+      if (onLegendItemMouseEnter && data[index]) {
+        onLegendItemMouseEnter(data[index], index);
+      }
+    },
+    [onLegendItemMouseEnter, data]
   );
-  const handleLegendItemLeave = useCallback(() => setHoveredIndex(null), []);
+  const handleLegendItemLeave = useCallback(
+    (_item: LegendItemData, index: number) => {
+      setHoveredIndex(null);
+      if (onLegendItemMouseLeave && data[index]) {
+        onLegendItemMouseLeave(data[index], index);
+      }
+    },
+    [onLegendItemMouseLeave, data]
+  );
+
+  // Handle legend item click
+  const handleLegendItemClickInternal = useCallback(
+    (_item: LegendItemData, index: number) => {
+      if (onLegendItemClick && data[index]) {
+        onLegendItemClick(data[index], index);
+      }
+    },
+    [onLegendItemClick, data]
+  );
 
   // Handle selection change - reusable logic for both segment and legend
   const handleSelectionChange = useCallback(
@@ -725,9 +754,15 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     [onSelectionChange, data]
   );
 
-  // Handle segment click - toggle selection
+  // Handle segment click - toggle selection and call onSegmentClick
   const handleSegmentClick = useCallback(
     (index: number) => {
+      // Call onSegmentClick callback if provided
+      if (onSegmentClick && data[index]) {
+        onSegmentClick(data[index], index);
+      }
+
+      // Handle selection change
       if (!onSelectionChange) return;
 
       const isSelected = selectedIndicesSet.has(index);
@@ -739,6 +774,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     },
     [
       onSelectionChange,
+      onSegmentClick,
+      data,
       selectedIndices,
       selectedIndicesSet,
       handleSelectionChange,
@@ -770,9 +807,26 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             selectedIndicesSet,
             selectionBehavior,
             isLast: isLastVisible,
-            onMouseEnter: () =>
-              !item.isExiting && setHoveredIndex(item.originalIndex),
-            onMouseLeave: () => setHoveredIndex(null),
+            onMouseEnter: () => {
+              if (!item.isExiting) {
+                setHoveredIndex(item.originalIndex);
+                if (onSegmentMouseEnter && data[item.originalIndex]) {
+                  onSegmentMouseEnter(
+                    data[item.originalIndex],
+                    item.originalIndex
+                  );
+                }
+              }
+            },
+            onMouseLeave: () => {
+              setHoveredIndex(null);
+              if (onSegmentMouseLeave && data[item.originalIndex]) {
+                onSegmentMouseLeave(
+                  data[item.originalIndex],
+                  item.originalIndex
+                );
+              }
+            },
             onClick: () =>
               !item.isExiting && handleSegmentClick(item.originalIndex),
           });
@@ -796,6 +850,9 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           showValues={showLegendValues}
           onItemMouseEnter={handleLegendItemHover}
           onItemMouseLeave={handleLegendItemLeave}
+          onItemClick={
+            onLegendItemClick ? handleLegendItemClickInternal : undefined
+          }
           selectedIndices={selectedIndices}
           onSelectionChange={
             onSelectionChange ? handleSelectionChange : undefined

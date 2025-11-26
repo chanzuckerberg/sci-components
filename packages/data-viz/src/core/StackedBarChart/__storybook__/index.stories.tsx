@@ -1,6 +1,7 @@
 import { Meta } from "@storybook/react-webpack5";
 import { StackedBarChart } from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";
+import WithMouseEventsStory from "./stories/withMouseEvents";
 import { STACKED_BAR_CHART_DATA } from "./constants";
 
 export default {
@@ -208,6 +209,21 @@ export const CumulativeWithSelectionHideBehavior = {
     maxAmount: 700,
     legendValueFormat: "count",
     selectionBehavior: "hide",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
+  },
+};
+
+export const WithMouseEvents = {
+  render: WithMouseEventsStory,
+  args: {
+    barHeight: 16,
+    data: STACKED_BAR_CHART_DATA,
+    showLegend: true,
+    showLegendValues: true,
+    title: "Mouse Events Demo",
+    width: "360px",
     colorGeneratorOptions: {
       ...DEFAULT_COLOR_GENERATOR_OPTIONS,
     },
