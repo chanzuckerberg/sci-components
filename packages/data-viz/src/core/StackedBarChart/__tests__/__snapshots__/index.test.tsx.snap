@@ -1163,7 +1163,7 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
       <div
         style="color: rgb(153, 153, 153); font-size: 12px;"
       >
-        No events yet. Hover over segments or legend items to see events.
+        No events yet. Hover or click on segments or legend items to see events.
       </div>
     </div>
   </div>

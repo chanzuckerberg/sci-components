@@ -668,4 +668,209 @@ describe("<StackedBarChart />", () => {
       );
     });
   });
+
+  describe("Click event handlers", () => {
+    it("calls onSegmentClick when clicking a bar segment", () => {
+      const handleSegmentClick = jest.fn();
+
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          onSegmentClick={handleSegmentClick}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      fireEvent.click(barSegments[0]);
+
+      expect(handleSegmentClick).toHaveBeenCalledTimes(1);
+      expect(handleSegmentClick).toHaveBeenCalledWith(sampleData[0], 0);
+    });
+
+    it("calls onSegmentClick for each segment with correct data", () => {
+      const handleSegmentClick = jest.fn();
+
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          onSegmentClick={handleSegmentClick}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      fireEvent.click(barSegments[0]);
+      fireEvent.click(barSegments[1]);
+      fireEvent.click(barSegments[2]);
+
+      expect(handleSegmentClick).toHaveBeenCalledTimes(3);
+      expect(handleSegmentClick).toHaveBeenNthCalledWith(1, sampleData[0], 0);
+      expect(handleSegmentClick).toHaveBeenNthCalledWith(2, sampleData[1], 1);
+      expect(handleSegmentClick).toHaveBeenNthCalledWith(3, sampleData[2], 2);
+    });
+
+    it("calls both onSegmentClick and onSelectionChange when both are provided", () => {
+      const handleSegmentClick = jest.fn();
+      const handleSelectionChange = jest.fn();
+
+      const { container } = render(
+        <StackedBarChart
+          data={sampleData}
+          selectedIndices={[]}
+          onSegmentClick={handleSegmentClick}
+          onSelectionChange={handleSelectionChange}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      fireEvent.click(barSegments[0]);
+
+      expect(handleSegmentClick).toHaveBeenCalledTimes(1);
+      expect(handleSegmentClick).toHaveBeenCalledWith(sampleData[0], 0);
+      expect(handleSelectionChange).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not call onSegmentClick for disabled items", () => {
+      const handleSegmentClick = jest.fn();
+      const dataWithDisabled = [
+        ...sampleData,
+        { name: "Disabled", value: 50, disabled: true },
+      ];
+
+      const { container } = render(
+        <StackedBarChart
+          data={dataWithDisabled}
+          onSegmentClick={handleSegmentClick}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const barSegments = container.querySelectorAll(
+        '[data-testid="stacked-bar-chart"] > div > div > div'
+      );
+
+      // Click the disabled segment (last one)
+      fireEvent.click(barSegments[barSegments.length - 1]);
+
+      expect(handleSegmentClick).not.toHaveBeenCalled();
+    });
+
+    it("calls onLegendItemClick when clicking a legend item", () => {
+      const handleLegendItemClick = jest.fn();
+
+      render(
+        <StackedBarChart
+          data={sampleData}
+          onLegendItemClick={handleLegendItemClick}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const firstLegendItem = screen.getByRole(BUTTON_ROLE, {
+        name: /Category A/i,
+      });
+
+      fireEvent.click(firstLegendItem);
+
+      expect(handleLegendItemClick).toHaveBeenCalledTimes(1);
+      expect(handleLegendItemClick).toHaveBeenCalledWith(sampleData[0], 0);
+    });
+
+    it("calls onLegendItemClick for each legend item with correct data", () => {
+      const handleLegendItemClick = jest.fn();
+
+      render(
+        <StackedBarChart
+          data={sampleData}
+          onLegendItemClick={handleLegendItemClick}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const legendItems = [
+        screen.getByRole(BUTTON_ROLE, { name: /Category A/i }),
+        screen.getByRole(BUTTON_ROLE, { name: /Category B/i }),
+        screen.getByRole(BUTTON_ROLE, { name: /Category C/i }),
+      ];
+
+      legendItems.forEach((item) => fireEvent.click(item));
+
+      expect(handleLegendItemClick).toHaveBeenCalledTimes(3);
+      expect(handleLegendItemClick).toHaveBeenNthCalledWith(
+        1,
+        sampleData[0],
+        0
+      );
+      expect(handleLegendItemClick).toHaveBeenNthCalledWith(
+        2,
+        sampleData[1],
+        1
+      );
+      expect(handleLegendItemClick).toHaveBeenNthCalledWith(
+        3,
+        sampleData[2],
+        2
+      );
+    });
+
+    it("calls both onLegendItemClick and onSelectionChange when both are provided", () => {
+      const handleLegendItemClick = jest.fn();
+      const handleSelectionChange = jest.fn();
+
+      render(
+        <StackedBarChart
+          data={sampleData}
+          selectedIndices={[]}
+          onLegendItemClick={handleLegendItemClick}
+          onSelectionChange={handleSelectionChange}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const firstLegendItem = screen.getByRole(BUTTON_ROLE, {
+        name: /Category A/i,
+      });
+
+      fireEvent.click(firstLegendItem);
+
+      expect(handleLegendItemClick).toHaveBeenCalledTimes(1);
+      expect(handleLegendItemClick).toHaveBeenCalledWith(sampleData[0], 0);
+      expect(handleSelectionChange).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not call onLegendItemClick for disabled items", () => {
+      const handleLegendItemClick = jest.fn();
+      const dataWithDisabled = [
+        { name: "Active", value: 100 },
+        { name: "Disabled", value: 200, disabled: true },
+      ];
+
+      render(
+        <StackedBarChart
+          data={dataWithDisabled}
+          onLegendItemClick={handleLegendItemClick}
+          data-testid={STACKED_BAR_CHART_TEST_ID}
+        />
+      );
+
+      const disabledLegendItem = screen.getByRole(BUTTON_ROLE, {
+        name: /Disabled/i,
+      });
+
+      fireEvent.click(disabledLegendItem);
+
+      expect(handleLegendItemClick).not.toHaveBeenCalled();
+    });
+  });
 });

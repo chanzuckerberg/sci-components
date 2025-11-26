@@ -52,6 +52,19 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
     console.log("Legend Mouse Leave:", { item, index });
   };
 
+  const handleSegmentClick = (item: StackedBarChartDataItem, index: number) => {
+    addToLog(`Segment Click: ${item.name} (index ${index})`);
+    console.log("Segment Click:", { item, index });
+  };
+
+  const handleLegendItemClick = (
+    item: StackedBarChartDataItem,
+    index: number
+  ) => {
+    addToLog(`Legend Click: ${item.name} (index ${index})`);
+    console.log("Legend Click:", { item, index });
+  };
+
   return (
     <div
       style={{
@@ -65,6 +78,8 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
         onSegmentMouseLeave={handleSegmentMouseLeave}
         onLegendItemMouseEnter={handleLegendItemMouseEnter}
         onLegendItemMouseLeave={handleLegendItemMouseLeave}
+        onSegmentClick={handleSegmentClick}
+        onLegendItemClick={handleLegendItemClick}
       />
 
       <div style={{ marginTop: "40px" }}>
@@ -132,7 +147,8 @@ export default function WithMouseEventsStory(args: Args): JSX.Element {
           </h3>
           {eventLog.length === 0 ? (
             <div style={{ color: "#999", fontSize: "12px" }}>
-              No events yet. Hover over segments or legend items to see events.
+              No events yet. Hover or click on segments or legend items to see
+              events.
             </div>
           ) : (
             <ul

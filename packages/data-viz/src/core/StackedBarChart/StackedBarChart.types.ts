@@ -117,6 +117,14 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
     index: number
   ) => void;
   /**
+   * Callback when a bar segment is clicked
+   */
+  onSegmentClick?: (item: StackedBarChartDataItem, index: number) => void;
+  /**
+   * Callback when a legend item is clicked
+   */
+  onLegendItemClick?: (item: StackedBarChartDataItem, index: number) => void;
+  /**
    * Behavior to apply when items are selected
    * - "dim": Non-selected segments become semi-transparent (20% opacity)
    * - "hide": Non-selected segments are hidden from the bar chart
