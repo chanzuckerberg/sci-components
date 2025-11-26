@@ -884,6 +884,326 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
 </div>
 `;
 
+exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
+<div
+  style="margin: 150px;"
+>
+  <div
+    class="css-qgcg3"
+    width="360px"
+  >
+    <div
+      class="css-pmr0i2"
+    >
+      <div
+        class="css-1mg4zid"
+      >
+        Mouse Events Demo
+      </div>
+      <div
+        class="css-1b52koj"
+      >
+        7
+      </div>
+    </div>
+    <div
+      class="css-1jlejkr"
+    >
+      <div
+        class="css-1rms5vv"
+        width="360px"
+      >
+        <div
+          class="css-hft0y9"
+          color="#8b78c4"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-jhkh8y"
+          color="#c475ac"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-yxamq1"
+          color="#d08786"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-3zixr8"
+          color="#c1a273"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-ir5zy8"
+          color="#aab977"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1v80bv4"
+          color="#95cc92"
+          data-hide="false"
+          height="16"
+          opacity="1"
+        />
+        <div
+          class="css-53a5rp"
+          color="#a9d0e6"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="16"
+          opacity="1"
+          tabindex="0"
+        />
+      </div>
+      <div
+        class="css-1t849lf"
+      >
+        <div
+          aria-label="Transcriptomic: 22%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-sq7aup"
+            color="#8b78c4"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Transcriptomic
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            22%
+          </span>
+        </div>
+        <div
+          aria-label="Imaging: 11%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-5hjv7d"
+            color="#c475ac"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Imaging
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            11%
+          </span>
+        </div>
+        <div
+          aria-label="Sequencing: 6%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-sr6sns"
+            color="#d08786"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Sequencing
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            6%
+          </span>
+        </div>
+        <div
+          aria-label="Proteomics: 3%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1duel2g"
+            color="#c1a273"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Proteomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            3%
+          </span>
+        </div>
+        <div
+          aria-label="Spatial Transcriptomics: 15%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-jmbvgn"
+            color="#aab977"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Spatial Transcriptomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            15%
+          </span>
+        </div>
+        <div
+          aria-label="Prosthetics: 24%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1hpanf"
+            color="#95cc92"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Prosthetics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            24%
+          </span>
+        </div>
+        <div
+          aria-label="Epigenomics: 19%"
+          aria-pressed="false"
+          class="css-3vx361"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-1vzg0fg"
+            color="#a9d0e6"
+          />
+          <span
+            class="css-1sjvubj"
+          >
+            Epigenomics
+          </span>
+          <span
+            class="css-ncdzc3"
+          >
+            19%
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 40px; display: flex; gap: 16px; flex-grow: 1; align-items: flex-start;"
+  >
+    <div
+      style="padding: 16px; border-radius: 8px; margin-bottom: 16px;"
+    >
+      <h3
+        style="margin: 0px 0px 12px 0px; font-size: 14px;"
+      >
+        Current Hover State (Hover over a bar segment or legend item):
+      </h3>
+      <div>
+        <div>
+          <strong>
+            Name:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Value:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Index:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Source:
+          </strong>
+           
+          -
+        </div>
+        <div>
+          <strong>
+            Custom Color:
+          </strong>
+           
+          <span>
+            -
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      style="padding: 16px; border-radius: 8px; max-height: 400px; overflow: auto;"
+    >
+      <h3
+        style="margin: 0px 0px 12px 0px; font-size: 14px;"
+      >
+        Event Log (last 10 events):
+      </h3>
+      <div
+        style="font-size: 12px;"
+      >
+        No events yet. Hover or click on segments or legend items to see events.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<StackedBarChart /> proportionalWithSelectionDimBehavior story renders snapshot 1`] = `
 <div
   style="margin: 150px;"
