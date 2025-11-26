@@ -1136,10 +1136,10 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
     </div>
   </div>
   <div
-    style="margin-top: 40px;"
+    style="margin-top: 40px; display: flex; gap: 16px; flex-grow: 1; align-items: flex-start;"
   >
     <div
-      style="padding: 16px; background-color: rgb(245, 245, 245); border-radius: 8px; margin-bottom: 16px;"
+      style="padding: 16px; border-radius: 8px; margin-bottom: 16px;"
     >
       <h3
         style="margin: 0px 0px 12px 0px; font-size: 14px;"
@@ -1175,10 +1175,19 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
            
           -
         </div>
+        <div>
+          <strong>
+            Custom Color:
+          </strong>
+           
+          <span>
+            -
+          </span>
+        </div>
       </div>
     </div>
     <div
-      style="padding: 16px; background-color: rgb(245, 245, 245); border-radius: 8px; max-height: 200px; overflow: auto;"
+      style="padding: 16px; border-radius: 8px; max-height: 400px; overflow: auto;"
     >
       <h3
         style="margin: 0px 0px 12px 0px; font-size: 14px;"
@@ -1186,7 +1195,7 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         Event Log (last 10 events):
       </h3>
       <div
-        style="color: rgb(118, 118, 118); font-size: 12px;"
+        style="font-size: 12px;"
       >
         No events yet. Hover or click on segments or legend items to see events.
       </div>
