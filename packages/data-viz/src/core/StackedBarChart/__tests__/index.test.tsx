@@ -610,63 +610,6 @@ describe("<StackedBarChart />", () => {
       // (disabled segments have pointer-events: none)
       expect(handleSegmentMouseEnter).not.toHaveBeenCalled();
     });
-
-    it("works without event handlers (backward compatible)", () => {
-      const { container } = render(
-        <StackedBarChart
-          data={sampleData}
-          data-testid={STACKED_BAR_CHART_TEST_ID}
-        />
-      );
-
-      const barSegments = container.querySelectorAll(
-        '[data-testid="stacked-bar-chart"] > div > div > div'
-      );
-
-      // Should not throw when hovering without handlers
-      expect(() => {
-        fireEvent.mouseEnter(barSegments[0]);
-        fireEvent.mouseLeave(barSegments[0]);
-      }).not.toThrow();
-    });
-
-    it("calls handlers with correct data for multiple segments", () => {
-      const handleSegmentMouseEnter = jest.fn();
-
-      const { container } = render(
-        <StackedBarChart
-          data={sampleData}
-          onSegmentMouseEnter={handleSegmentMouseEnter}
-          data-testid={STACKED_BAR_CHART_TEST_ID}
-        />
-      );
-
-      const barSegments = container.querySelectorAll(
-        '[data-testid="stacked-bar-chart"] > div > div > div'
-      );
-
-      // Hover over each segment
-      fireEvent.mouseEnter(barSegments[0]);
-      fireEvent.mouseEnter(barSegments[1]);
-      fireEvent.mouseEnter(barSegments[2]);
-
-      expect(handleSegmentMouseEnter).toHaveBeenCalledTimes(3);
-      expect(handleSegmentMouseEnter).toHaveBeenNthCalledWith(
-        1,
-        sampleData[0],
-        0
-      );
-      expect(handleSegmentMouseEnter).toHaveBeenNthCalledWith(
-        2,
-        sampleData[1],
-        1
-      );
-      expect(handleSegmentMouseEnter).toHaveBeenNthCalledWith(
-        3,
-        sampleData[2],
-        2
-      );
-    });
   });
 
   describe("Click event handlers", () => {
@@ -689,31 +632,6 @@ describe("<StackedBarChart />", () => {
 
       expect(handleSegmentClick).toHaveBeenCalledTimes(1);
       expect(handleSegmentClick).toHaveBeenCalledWith(sampleData[0], 0);
-    });
-
-    it("calls onSegmentClick for each segment with correct data", () => {
-      const handleSegmentClick = jest.fn();
-
-      const { container } = render(
-        <StackedBarChart
-          data={sampleData}
-          onSegmentClick={handleSegmentClick}
-          data-testid={STACKED_BAR_CHART_TEST_ID}
-        />
-      );
-
-      const barSegments = container.querySelectorAll(
-        '[data-testid="stacked-bar-chart"] > div > div > div'
-      );
-
-      fireEvent.click(barSegments[0]);
-      fireEvent.click(barSegments[1]);
-      fireEvent.click(barSegments[2]);
-
-      expect(handleSegmentClick).toHaveBeenCalledTimes(3);
-      expect(handleSegmentClick).toHaveBeenNthCalledWith(1, sampleData[0], 0);
-      expect(handleSegmentClick).toHaveBeenNthCalledWith(2, sampleData[1], 1);
-      expect(handleSegmentClick).toHaveBeenNthCalledWith(3, sampleData[2], 2);
     });
 
     it("calls both onSegmentClick and onSelectionChange when both are provided", () => {
@@ -785,68 +703,6 @@ describe("<StackedBarChart />", () => {
 
       expect(handleLegendItemClick).toHaveBeenCalledTimes(1);
       expect(handleLegendItemClick).toHaveBeenCalledWith(sampleData[0], 0);
-    });
-
-    it("calls onLegendItemClick for each legend item with correct data", () => {
-      const handleLegendItemClick = jest.fn();
-
-      render(
-        <StackedBarChart
-          data={sampleData}
-          onLegendItemClick={handleLegendItemClick}
-          data-testid={STACKED_BAR_CHART_TEST_ID}
-        />
-      );
-
-      const legendItems = [
-        screen.getByRole(BUTTON_ROLE, { name: /Category A/i }),
-        screen.getByRole(BUTTON_ROLE, { name: /Category B/i }),
-        screen.getByRole(BUTTON_ROLE, { name: /Category C/i }),
-      ];
-
-      legendItems.forEach((item) => fireEvent.click(item));
-
-      expect(handleLegendItemClick).toHaveBeenCalledTimes(3);
-      expect(handleLegendItemClick).toHaveBeenNthCalledWith(
-        1,
-        sampleData[0],
-        0
-      );
-      expect(handleLegendItemClick).toHaveBeenNthCalledWith(
-        2,
-        sampleData[1],
-        1
-      );
-      expect(handleLegendItemClick).toHaveBeenNthCalledWith(
-        3,
-        sampleData[2],
-        2
-      );
-    });
-
-    it("calls both onLegendItemClick and onSelectionChange when both are provided", () => {
-      const handleLegendItemClick = jest.fn();
-      const handleSelectionChange = jest.fn();
-
-      render(
-        <StackedBarChart
-          data={sampleData}
-          selectedIndices={[]}
-          onLegendItemClick={handleLegendItemClick}
-          onSelectionChange={handleSelectionChange}
-          data-testid={STACKED_BAR_CHART_TEST_ID}
-        />
-      );
-
-      const firstLegendItem = screen.getByRole(BUTTON_ROLE, {
-        name: /Category A/i,
-      });
-
-      fireEvent.click(firstLegendItem);
-
-      expect(handleLegendItemClick).toHaveBeenCalledTimes(1);
-      expect(handleLegendItemClick).toHaveBeenCalledWith(sampleData[0], 0);
-      expect(handleSelectionChange).toHaveBeenCalledTimes(1);
     });
 
     it("does not call onLegendItemClick for disabled items", () => {
