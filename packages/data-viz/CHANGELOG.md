@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.15.0...@czi-sds/data-viz@0.16.0) (2025-11-26)
+
+### Features
+
+- **StackedBarChart:** add mouse event handlers for segments and legend items ([#1059](https://github.com/chanzuckerberg/sci-components/issues/1059)) ([5c4ec79](https://github.com/chanzuckerberg/sci-components/commit/5c4ec79e965bd27defa0b184687a0cd78d7b363a))
+
 # [0.15.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.3...@czi-sds/data-viz@0.15.0) (2025-11-21)
 
 ### Features
