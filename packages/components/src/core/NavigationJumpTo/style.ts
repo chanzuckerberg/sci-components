@@ -2,7 +2,7 @@ import { Tab, Tabs, TabsProps, tabsClasses } from "@mui/material";
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBodyXs,
+  fontBodyMediumXs,
   getCorners,
   getSemanticColors,
   getSpaces,
@@ -63,7 +63,7 @@ export const StyledTabs = styled(Tabs, {
 export const StyledTab = styled(Tab, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontBodyXs}
+  ${fontBodyMediumXs}
 
   ${(props: NavigationJumpToExtraProps) => {
     const spaces = getSpaces(props);
@@ -104,7 +104,7 @@ export const StyledTab = styled(Tab, {
       }
       &.Mui-selected {
         color: ${semanticColors?.base?.textPrimary};
-        font-weight: 500;
+        font-weight: 600;
       }
       &.MuiButtonBase-root {
         text-align: left;
