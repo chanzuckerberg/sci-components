@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import {
   CommonThemeProps,
   fontBodyMediumXs,
+  fontBodyXxxs,
   getBorders,
   getCorners,
   getSemanticColors,
@@ -48,6 +49,23 @@ export const StyledHeaderTitle = styled("div", {
     return `
       color: ${semanticColors?.base?.textPrimary};
       padding-right: ${spaces?.m}px;
+    `;
+  }}
+`;
+
+export const StyledHeaderSubTitle = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${fontBodyXxxs}
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      color: ${semanticColors?.base?.textSecondary};
+      padding-right: ${spaces?.m}px;
+      padding-top: ${spaces?.xxxs}px;
     `;
   }}
 `;
@@ -178,9 +196,15 @@ export const StyledDropdownMenuHeader = styled("div")`
     const semanticColors = getSemanticColors(props);
 
     return `
+      & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
       padding: ${spaces?.xs}px ${spaces?.m}px ${search ? spaces?.xs : spaces?.s}px;
       ${search && `border-bottom: solid 1px ${semanticColors?.base?.divider};`}
     `;

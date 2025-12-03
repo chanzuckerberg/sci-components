@@ -55,6 +55,7 @@ export const StyledCard = styled(Card, {
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
+    const spaces = getSpaces(props);
 
     const flexDirection =
       sdsType === "wide" && visualElementType === "image"
@@ -71,6 +72,7 @@ export const StyledCard = styled(Card, {
         : boundingBox && decorativeBorder;
 
     return css`
+      position: relative;
       display: flex;
       background-color: transparent;
       background-image: none;
@@ -97,13 +99,31 @@ export const StyledCard = styled(Card, {
       ${sdsType === "wide" &&
       showDecorativeBorder &&
       css`
-        border-left: 4px solid ${semanticColors?.accent?.border};
+        border-left: none;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: ${spaces?.xs}px;
+          height: 100%;
+          background-color: ${semanticColors?.accent?.border};
+        }
       `}
 
       ${sdsType === "narrow" &&
       showDecorativeBorder &&
       css`
-        border-top: 4px solid ${semanticColors?.accent?.border};
+        border-top: none;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: ${spaces?.xs}px;
+          width: 100%;
+          background-color: ${semanticColors?.accent?.border};
+        }
       `}
     `;
   }}
