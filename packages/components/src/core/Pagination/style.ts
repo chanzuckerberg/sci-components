@@ -125,7 +125,7 @@ const selectedPageStyle = (props: PaginationExtraProps) => {
       box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderSecondary};
     }
 
-    ${fontTabularSemiboldS(props)};
+    ${fontTabularSemiboldS(props)}
   `;
 };
 
@@ -162,7 +162,7 @@ export const Page = styled("li", {
         margin-right: 0;
       }
 
-      ${selected && selectedPageStyle(props)};
+      ${selected && selectedPageStyle(props)}
       ${focusVisibleA11yStyle(props)}
     `;
   }}

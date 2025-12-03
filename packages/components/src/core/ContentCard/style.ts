@@ -38,6 +38,31 @@ const doNotForwardProps = [
   "classes",
 ];
 
+const getFlexDirection = (
+  sdsType: ContentCardProps["sdsType"],
+  visualElementType: ContentCardProps["visualElementType"] | undefined,
+  imagePosition: ContentCardProps["imagePosition"]
+) => {
+  return sdsType === "wide" && visualElementType === "image"
+    ? imagePosition === "left"
+      ? "row"
+      : "row-reverse"
+    : visualElementType === "icon"
+      ? "row"
+      : "column";
+};
+
+const getShowDecorativeBorder = (
+  visualElementType: ContentCardProps["visualElementType"] | undefined,
+  boundingBox: boolean,
+  decorativeBorder: boolean,
+  imagePadding: boolean
+) => {
+  return visualElementType === "image"
+    ? boundingBox && decorativeBorder && imagePadding
+    : boundingBox && decorativeBorder;
+};
+
 export const StyledCard = styled(Card, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
@@ -57,19 +82,18 @@ export const StyledCard = styled(Card, {
     const shadows = getShadows(props);
     const spaces = getSpaces(props);
 
-    const flexDirection =
-      sdsType === "wide" && visualElementType === "image"
-        ? imagePosition === "left"
-          ? "row"
-          : "row-reverse"
-        : visualElementType === "icon"
-          ? "row"
-          : "column";
+    const flexDirection = getFlexDirection(
+      sdsType,
+      visualElementType,
+      imagePosition
+    );
 
-    const showDecorativeBorder =
-      visualElementType === "image"
-        ? boundingBox && decorativeBorder && imagePadding
-        : boundingBox && decorativeBorder;
+    const showDecorativeBorder = getShowDecorativeBorder(
+      visualElementType,
+      boundingBox,
+      decorativeBorder,
+      imagePadding
+    );
 
     return css`
       position: relative;
@@ -96,34 +120,39 @@ export const StyledCard = styled(Card, {
         background-color: ${semanticColors?.base?.backgroundPrimary};
       `}
 
-      ${sdsType === "wide" &&
-      showDecorativeBorder &&
+      ${showDecorativeBorder &&
       css`
-        border-left: none;
         &:before {
           content: "";
           position: absolute;
           top: 0;
           left: 0;
-          width: ${spaces?.xs}px;
-          height: 100%;
           background-color: ${semanticColors?.accent?.border};
+
+          ${sdsType === "wide" &&
+          css`
+            width: ${spaces?.xs}px;
+            height: 100%;
+          `}
+
+          ${sdsType === "narrow" &&
+          css`
+            height: ${spaces?.xs}px;
+            width: 100%;
+          `}
         }
+      `}
+
+      ${sdsType === "wide" &&
+      showDecorativeBorder &&
+      css`
+        border-left: none;
       `}
 
       ${sdsType === "narrow" &&
       showDecorativeBorder &&
       css`
         border-top: none;
-        &:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: ${spaces?.xs}px;
-          width: 100%;
-          background-color: ${semanticColors?.accent?.border};
-        }
       `}
     `;
   }}
