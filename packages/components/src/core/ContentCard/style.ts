@@ -101,7 +101,7 @@ export const StyledCard = styled(Card, {
       background-color: transparent;
       background-image: none;
       flex-direction: ${flexDirection};
-      overflow: auto;
+      overflow: visible;
       box-shadow: none;
       border-radius: ${corners?.xl}px;
 
@@ -125,20 +125,26 @@ export const StyledCard = styled(Card, {
         &:before {
           content: "";
           position: absolute;
-          top: 0;
-          left: 0;
           background-color: ${semanticColors?.accent?.border};
 
           ${sdsType === "wide" &&
           css`
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
             width: ${spaces?.xs}px;
-            height: 100%;
+            border-top-left-radius: ${corners?.xl}px;
+            border-bottom-left-radius: ${corners?.xl}px;
           `}
 
           ${sdsType === "narrow" &&
           css`
             height: ${spaces?.xs}px;
-            width: 100%;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            border-top-left-radius: ${corners?.xl}px;
+            border-top-right-radius: ${corners?.xl}px;
           `}
         }
       `}
@@ -146,13 +152,15 @@ export const StyledCard = styled(Card, {
       ${sdsType === "wide" &&
       showDecorativeBorder &&
       css`
-        border-left: none;
+        border-top-left-radius: ${corners?.l}px;
+        border-bottom-left-radius: ${corners?.l}px;
       `}
 
       ${sdsType === "narrow" &&
       showDecorativeBorder &&
       css`
-        border-top: none;
+        border-top-left-radius: ${corners?.l}px;
+        border-top-right-radius: ${corners?.l}px;
       `}
     `;
   }}

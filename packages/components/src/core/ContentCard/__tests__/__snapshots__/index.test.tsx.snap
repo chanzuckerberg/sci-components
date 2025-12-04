@@ -2,10 +2,10 @@
 
 exports[`ContentCard Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1a37r9y-MuiPaper-root-MuiCard-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-5ij7l0-MuiPaper-root-MuiCard-root"
 >
   <div
-    class="css-20z69m"
+    class="css-18gd7dc"
   >
     <img
       alt="Content Card Media"
