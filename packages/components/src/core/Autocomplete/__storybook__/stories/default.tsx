@@ -26,7 +26,7 @@ export const Autocomplete = <T extends DefaultAutocompleteOption>(
         options={options}
         search={search}
         getOptionDisabled={(option: T) => {
-          return option.name === "Type: feature request";
+          return !!option.disabled;
         }}
         {...props}
       />

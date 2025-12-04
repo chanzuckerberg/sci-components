@@ -17,6 +17,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     count: 3,
     name: "Status: duplicate",
     section: "name with count",
+    disabled: true,
   },
   {
     count: 5,
@@ -27,6 +28,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     details: "This will not be worked on",
     name: "Status: wont do/fix",
     section: "name with details",
+    disabled: true,
   },
   {
     details: "This is still in progress",

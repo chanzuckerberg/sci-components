@@ -42,6 +42,7 @@ import useDetectUserTabbing from "src/common/helpers/userTabbing";
 interface AutocompleteOptionGeneral {
   name: string; // The name of the autocomplete option.
   section?: string; // An optional section for categorization.
+  disabled?: boolean; // An optional disabled flag.
 }
 
 // (masoudmanson): Represents a basic autocomplete option.
@@ -397,6 +398,7 @@ const AutocompleteBase = <
       count,
       icon,
       sdsIconProps,
+      disabled: optionDisabled,
       ...restOptionProps
     } = option;
     const menuItemLabel = getOptionLabel(option);
@@ -408,7 +410,10 @@ const AutocompleteBase = <
         <StyledMenuItemText>
           {menuItemLabel}
           {details && (
-            <StyledMenuItemDetails className="menuItem-details">
+            <StyledMenuItemDetails
+              disabled={optionDisabled}
+              className="menuItem-details"
+            >
               {details}
             </StyledMenuItemDetails>
           )}
@@ -419,7 +424,7 @@ const AutocompleteBase = <
     return (
       <MenuItem
         column={count}
-        disabled={optionProps["aria-disabled"] === true}
+        disabled={optionDisabled || optionProps["aria-disabled"] === true}
         icon={icon}
         sdsIconProps={sdsIconProps}
         isMultiSelect={multiple}
