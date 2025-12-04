@@ -12,8 +12,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-sq7aup"
-      color="#8b78c4"
+      class="css-zqlnn3"
+      color="#827dc5"
     />
     <span
       class="css-1sjvubj"
@@ -29,8 +29,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1jmqxoz"
-      color="#bf74b1"
+      class="css-bk3n4e"
+      color="#be76b6"
     />
     <span
       class="css-1sjvubj"
@@ -46,8 +46,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1mfad7s"
-      color="#d18090"
+      class="css-i1i05f"
+      color="#d28196"
     />
     <span
       class="css-1sjvubj"
@@ -63,8 +63,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-y1uu4u"
-      color="#c99678"
+      class="css-ja9oqe"
+      color="#cc977c"
     />
     <span
       class="css-1sjvubj"
@@ -80,8 +80,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-8egojt"
-      color="#b7ac72"
+      class="css-1wraiuu"
+      color="#baad74"
     />
     <span
       class="css-1sjvubj"
@@ -97,8 +97,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-eeqjok"
-      color="#a3bf7c"
+      class="css-121us64"
+      color="#a7bf7e"
     />
     <span
       class="css-1sjvubj"
@@ -114,8 +114,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-14kpf9f"
-      color="#93ce98"
+      class="css-aqdqqg"
+      color="#97cf98"
     />
     <span
       class="css-1sjvubj"
@@ -131,8 +131,8 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1vzg0fg"
-      color="#a9d0e6"
+      class="css-l8hcal"
+      color="#a5d3e0"
     />
     <span
       class="css-1sjvubj"
@@ -158,8 +158,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-sq7aup"
-        color="#8b78c4"
+        class="css-zqlnn3"
+        color="#827dc5"
       />
       <span
         class="css-1sjvubj"
@@ -180,8 +180,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1jmqxoz"
-        color="#bf74b1"
+        class="css-bk3n4e"
+        color="#be76b6"
       />
       <span
         class="css-1sjvubj"
@@ -202,8 +202,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1mfad7s"
-        color="#d18090"
+        class="css-i1i05f"
+        color="#d28196"
       />
       <span
         class="css-1sjvubj"
@@ -224,8 +224,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-y1uu4u"
-        color="#c99678"
+        class="css-ja9oqe"
+        color="#cc977c"
       />
       <span
         class="css-1sjvubj"
@@ -246,8 +246,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-8egojt"
-        color="#b7ac72"
+        class="css-1wraiuu"
+        color="#baad74"
       />
       <span
         class="css-1sjvubj"
@@ -268,8 +268,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-eeqjok"
-        color="#a3bf7c"
+        class="css-121us64"
+        color="#a7bf7e"
       />
       <span
         class="css-1sjvubj"
@@ -290,8 +290,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-14kpf9f"
-        color="#93ce98"
+        class="css-aqdqqg"
+        color="#97cf98"
       />
       <span
         class="css-1sjvubj"
@@ -312,8 +312,8 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1vzg0fg"
-        color="#a9d0e6"
+        class="css-l8hcal"
+        color="#a5d3e0"
       />
       <span
         class="css-1sjvubj"
@@ -374,8 +374,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-sq7aup"
-      color="#8b78c4"
+      class="css-zqlnn3"
+      color="#827dc5"
     />
     <span
       class="css-1sjvubj"
@@ -396,8 +396,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1jmqxoz"
-      color="#bf74b1"
+      class="css-bk3n4e"
+      color="#be76b6"
     />
     <span
       class="css-1sjvubj"
@@ -418,8 +418,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1mfad7s"
-      color="#d18090"
+      class="css-i1i05f"
+      color="#d28196"
     />
     <span
       class="css-1sjvubj"
@@ -440,8 +440,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-y1uu4u"
-      color="#c99678"
+      class="css-ja9oqe"
+      color="#cc977c"
     />
     <span
       class="css-1sjvubj"
@@ -462,8 +462,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-8egojt"
-      color="#b7ac72"
+      class="css-1wraiuu"
+      color="#baad74"
     />
     <span
       class="css-1sjvubj"
@@ -484,8 +484,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-eeqjok"
-      color="#a3bf7c"
+      class="css-121us64"
+      color="#a7bf7e"
     />
     <span
       class="css-1sjvubj"
@@ -506,8 +506,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-14kpf9f"
-      color="#93ce98"
+      class="css-aqdqqg"
+      color="#97cf98"
     />
     <span
       class="css-1sjvubj"
@@ -528,8 +528,8 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1vzg0fg"
-      color="#a9d0e6"
+      class="css-l8hcal"
+      color="#a5d3e0"
     />
     <span
       class="css-1sjvubj"
