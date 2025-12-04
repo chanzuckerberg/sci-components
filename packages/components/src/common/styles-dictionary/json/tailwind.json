@@ -3139,7 +3139,7 @@
     "sds-xs": "6px",
     "sds-s": "8px",
     "sds-m": "12px",
-    "sds-default": "12px",
+    "sds-default": "8px",
     "sds-l": "16px",
     "sds-xl": "24px",
     "sds-xxl": "32px",
