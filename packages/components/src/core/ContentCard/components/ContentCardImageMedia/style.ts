@@ -1,4 +1,4 @@
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
 import { ContentCardProps } from "../..";
 import { css, styled } from "@mui/material";
 
@@ -32,10 +32,14 @@ export const StyledImageMediaWrapper = styled("div", {
     } = props;
 
     const spaces = getSpaces(props);
+    const corners = getCorners(props);
 
     return css`
       display: flex;
       align-items: start;
+      border-top-left-radius: calc(${corners?.xl}px - 1px);
+      border-bottom-left-radius: calc(${corners?.xl}px - 1px);
+      overflow: hidden;
 
       ${boundingBox
         ? imagePadding
@@ -70,6 +74,8 @@ export const StyledImageMediaWrapper = styled("div", {
             `}
 
         justify-content: center;
+        border-top-left-radius: calc(${corners?.xl}px - 1px);
+        border-top-right-radius: calc(${corners?.xl}px - 1px);
       `}
     `;
   }}
