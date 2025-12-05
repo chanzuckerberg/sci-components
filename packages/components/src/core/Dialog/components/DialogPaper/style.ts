@@ -34,7 +34,7 @@ export const StyledPaper = styled(Paper, {
       const isSmall = sdsSize === "xs" || sdsSize === "s";
 
       return `
-        background-color: ${semanticColors?.base?.surface};
+        background-color: ${semanticColors?.base?.surfacePrimary};
         background-image: none;
         box-shadow: ${shadows?.l};
         max-height: calc(100vh - ${2 * (spaces?.xxxl || 40)}px);

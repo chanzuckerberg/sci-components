@@ -29,11 +29,12 @@ export interface BaseColor {
   backgroundPrimaryDark: string;
   backgroundPrimaryInverse: string;
   backgroundSecondary: string;
-  backgroundSecondaryOnDark: string;
+  backgroundSecondaryDark: string;
   backgroundSecondaryInverse: string;
   backgroundTertiary: string;
-  surface: string;
-  surfaceOnDark: string;
+  surfacePrimary: string;
+  surfaceSecondary: string;
+  surfacePrimaryDark: string;
   surfaceInverse: string;
   textPrimary: string;
   textPrimaryOnDark: string;
@@ -48,15 +49,13 @@ export interface BaseColor {
   textDisabledOnDark: string;
   textDisabledInverse: string;
   textOnFill: string;
-  fillHover: string;
-  fillHoverOnDark: string;
+  fillInteraction: string;
+  fillInteractionOnDark: string;
   fillHoverInverse: string;
   fillPressed: string;
   fillPressedOnDark: string;
   fillPressedInverse: string;
   fillPrimary: string;
-  fillOpen: string;
-  fillOpenOnDark: string;
   fillOpenInverse: string;
   fillSelected: string;
   fillDisabled: string;
@@ -67,12 +66,10 @@ export interface BaseColor {
   borderPrimaryOnDark: string;
   borderPrimaryInverse: string;
   borderSecondary: string;
-  borderPrimaryHover: string;
-  borderPrimaryHoverOnDark: string;
+  borderPrimaryInteraction: string;
+  borderPrimaryInteractionOnDark: string;
   borderPrimaryHoverInverse: string;
   borderOnFill: string;
-  borderPrimaryPressed: string;
-  borderPrimaryPressedOnDark: string;
   borderPrimaryPressedInverse: string;
   borderPrimaryDisabled: string;
   borderPrimaryDisabledOnDark: string;
@@ -87,11 +84,9 @@ export interface BaseColor {
   ornamentSecondary: string;
   ornamentSecondaryOnDark: string;
   ornamentSecondaryInverse: string;
-  ornamentSecondaryHover: string;
-  ornamentSecondaryHoverOnDark: string;
+  ornamentSecondaryInteraction: string;
+  ornamentSecondaryInteractionOnDark: string;
   ornamentSecondaryHoverInverse: string;
-  ornamentSecondaryPressed: string;
-  ornamentSecondaryPressedOnDark: string;
   ornamentSecondaryPressedInverse: string;
 }
 
