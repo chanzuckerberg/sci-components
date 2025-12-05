@@ -429,7 +429,7 @@ export const StyledSearch = styled(InputSearch, {
         &:hover {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderPrimaryHoverOnDark
+              ? semanticColors?.base?.borderPrimaryInteractionOnDark
               : ""} !important;
           }
 
@@ -447,7 +447,7 @@ export const StyledSearch = styled(InputSearch, {
         &.Mui-focused {
           fieldset {
             border-color: ${hasInvertedStyle
-              ? semanticColors?.base?.borderPrimaryPressedOnDark
+              ? semanticColors?.base?.borderPrimaryInteractionOnDark
               : ""} !important;
           }
 
@@ -674,8 +674,8 @@ export const StyledAccordion = styled(Accordion, {
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryPressedOnDark
-      : semanticColors?.base.ornamentSecondaryPressed;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     return css`
       & > .MuiButtonBase-root {
@@ -741,16 +741,16 @@ export const StyledAccordion = styled(Accordion, {
           width: 100%;
           box-shadow: none;
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillHoverOnDark
-            : semanticColors?.base.fillHover};
+            ? semanticColors?.base.fillInteractionOnDark
+            : semanticColors?.base.fillInteraction};
           color: ${hasInvertedStyle
             ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
 
           svg {
             color: ${hasInvertedStyle
-              ? semanticColors?.base?.ornamentSecondaryHoverOnDark
-              : semanticColors?.base.ornamentSecondaryHover} !important;
+              ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+              : semanticColors?.base.ornamentSecondaryInteraction} !important;
           }
         }
 
@@ -992,8 +992,8 @@ export const StyledHoverDrawerItem = styled(
         box-shadow: none;
         cursor: pointer;
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillHoverOnDark
-          : semanticColors?.base.fillHover};
+          ? semanticColors?.base.fillInteractionOnDark
+          : semanticColors?.base.fillInteraction};
         svg {
           color: ${semanticColors?.accent?.ornament};
         }

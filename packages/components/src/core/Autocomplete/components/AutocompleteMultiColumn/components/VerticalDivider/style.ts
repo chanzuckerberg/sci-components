@@ -27,7 +27,7 @@ export const StyledColumnIcon = styled("span")`
     const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       position: absolute;
       right: -${spaces?.xs}px;
       top: -${spaces?.xxxs}px;

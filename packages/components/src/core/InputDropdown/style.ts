@@ -102,12 +102,13 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      background-color: ${semanticColors?.base?.fillHover};
-      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryHover};
+      background-color: ${semanticColors?.base?.fillInteraction};
+      box-shadow: inset 0 0 0 1px
+        ${semanticColors?.base?.borderPrimaryInteraction};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticColors?.base?.ornamentSecondaryHover};
+        fill: ${semanticColors?.base?.ornamentSecondaryInteraction};
       }
 
       .styled-label {
@@ -121,7 +122,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
       color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticColors?.base?.ornamentSecondaryPressed};
+        fill: ${semanticColors?.base?.ornamentSecondaryInteraction};
       }
     }
 
@@ -175,12 +176,12 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      background-color: ${semanticColors?.base?.fillHover};
+      background-color: ${semanticColors?.base?.fillInteraction};
       border: none;
       color: ${semanticColors?.base?.textPrimary};
 
       path {
-        fill: ${semanticColors?.base?.ornamentSecondaryHover};
+        fill: ${semanticColors?.base?.ornamentSecondaryInteraction};
       }
 
       .styled-label {
@@ -189,7 +190,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
-      background-color: ${semanticColors?.base?.fillHover};
+      background-color: ${semanticColors?.base?.fillInteraction};
       border: none;
     }
   `;
@@ -272,7 +273,7 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
       : ""}
 
     path {
-      fill: ${semanticColors?.base?.ornamentSecondaryPressed};
+      fill: ${semanticColors?.base?.ornamentSecondaryInteraction};
     }
 
     box-shadow: ${sdsStyle === "minimal"
@@ -280,15 +281,15 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
       : `inset 0 0 0 1px ${semanticColors?.[inputColor]?.border}`};
 
     background-color: ${sdsStyle === "minimal"
-      ? semanticColors?.base?.fillOpen
+      ? semanticColors?.base?.fillInteraction
       : "transparent"};
 
     &:hover {
       path {
-        fill: ${semanticColors?.base?.ornamentSecondaryHover};
+        fill: ${semanticColors?.base?.ornamentSecondaryInteraction};
       }
 
-      border-color: ${semanticColors?.base?.borderPrimaryHover};
+      border-color: ${semanticColors?.base?.borderPrimaryInteraction};
     }
   `;
 };
@@ -303,11 +304,13 @@ const applyIntentColor = (
     box-shadow: inset 0 0 0 1px ${semanticColors?.[intent]?.border};
 
     &:hover {
-      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryHover};
+      box-shadow: inset 0 0 0 1px
+        ${semanticColors?.base?.borderPrimaryInteraction};
     }
 
     &:active {
-      box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryPressed};
+      box-shadow: inset 0 0 0 1px
+        ${semanticColors?.base?.borderPrimaryInteraction};
     }
   `;
 };

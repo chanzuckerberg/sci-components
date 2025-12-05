@@ -38,7 +38,7 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:hover {
-      background: ${semanticColors?.base?.fillHover};
+      background: ${semanticColors?.base?.fillInteraction};
       color: ${semanticColors?.accent?.ornamentHover};
 
       svg {
@@ -68,7 +68,7 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:hover {
-      background: ${semanticColors?.base?.fillHover};
+      background: ${semanticColors?.base?.fillInteraction};
       color: ${semanticColors?.accent?.ornamentHover};
 
       svg {
@@ -99,19 +99,19 @@ const tertiary = (props: ButtonIconExtraProps): SerializedStyles => {
 
     &:hover {
       background: none;
-      color: ${semanticColors?.base?.ornamentSecondaryHover};
+      color: ${semanticColors?.base?.ornamentSecondaryInteraction};
 
       svg {
-        color: ${semanticColors?.base?.ornamentSecondaryHover};
+        color: ${semanticColors?.base?.ornamentSecondaryInteraction};
       }
     }
 
     &:active {
       background: none;
-      color: ${semanticColors?.base?.ornamentSecondaryPressed};
+      color: ${semanticColors?.base?.ornamentSecondaryInteraction};
 
       svg {
-        color: ${semanticColors?.base?.ornamentSecondaryPressed};
+        color: ${semanticColors?.base?.ornamentSecondaryInteraction};
       }
     }
   `;

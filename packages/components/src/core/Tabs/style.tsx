@@ -84,8 +84,8 @@ export const StyledTab = styled(RawTab, {
       color: ${semanticColors?.base?.textSecondary};
 
       &:hover {
-        box-shadow: inset 0 -2px 0 0 ${semanticColors?.base?.borderPrimaryHover};
-        background-color: ${semanticColors?.base?.fillOpen};
+        box-shadow: inset 0 -2px 0 0 ${semanticColors?.base?.borderPrimaryInteraction};
+        background-color: ${semanticColors?.base?.fillInteraction};
         border-top-right-radius: ${corners?.l}px;
         border-top-left-radius: ${corners?.l}px;
 

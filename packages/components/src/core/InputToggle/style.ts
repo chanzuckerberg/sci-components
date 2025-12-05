@@ -159,7 +159,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
       }
 
       &:hover {
-        background-color: ${semanticColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillInteraction};
       }
     }
 
@@ -182,7 +182,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
         outline: ${borders?.base?.hover};
 
         .${switchClasses.thumb} {
-          color: ${semanticColors?.base?.ornamentSecondaryHover};
+          color: ${semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }`
     }

@@ -49,7 +49,7 @@ export const StyledAccordionHeader = styled(AccordionSummary, {
       &:hover {
         & .${accordionSummaryClasses.expandIconWrapper} {
           svg {
-            color: ${semanticColors?.base?.ornamentSecondaryHover};
+            color: ${semanticColors?.base?.ornamentSecondaryInteraction};
           }
         }
       }

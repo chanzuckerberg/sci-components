@@ -152,7 +152,7 @@ export const StyledCardActionArea = styled(Button, {
 
       &:hover,
       &:active {
-        background-color: ${semanticColors?.base?.surface};
+        background-color: ${semanticColors?.base?.surfacePrimary};
       }
     `;
   }}

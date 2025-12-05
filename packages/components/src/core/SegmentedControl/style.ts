@@ -34,7 +34,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
       padding: ${spaces?.xxxs}px;
 
       &:hover {
-        box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryHover};
+        box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryInteraction};
       }
 
       .${toggleButtonClasses.root}.${toggleButtonClasses.disabled} {
@@ -42,13 +42,13 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
       }
 
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
-        background-color: ${semanticColors?.base?.fillOpen};
+        background-color: ${semanticColors?.base?.fillInteraction};
         color: ${semanticColors?.accent?.ornamentSelected};
         border-color: ${semanticColors?.base?.borderPrimary};
 
         &:hover {
-          background-color: ${semanticColors?.base?.fillHover};
-          color: ${semanticColors?.base?.ornamentSecondaryHover};
+          background-color: ${semanticColors?.base?.fillInteraction};
+          color: ${semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }
 
@@ -64,8 +64,8 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 
         &:hover {
           border-color: ${semanticColors?.base?.borderPrimary};
-          background-color: ${semanticColors?.base?.fillHover};
-          color: ${semanticColors?.base?.ornamentSecondaryHover};
+          background-color: ${semanticColors?.base?.fillInteraction};
+          color: ${semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }
     `;

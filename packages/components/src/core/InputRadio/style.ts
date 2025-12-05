@@ -166,8 +166,8 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 
       &:hover {
         ${StyledRadioDefaultIcon} {
-          border: 1px solid ${semanticColors?.base?.borderPrimaryHover};  
-          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryInteraction};  
+          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
         }
 
         ${StyledRadioCheckedIcon} {
@@ -177,7 +177,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 
       &:active {
         ${StyledRadioDefaultIcon} {
-          border: 1px solid ${semanticColors?.base?.borderPrimaryPressed};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryInteraction};
         }
 
         ${StyledRadioCheckedIcon} {

@@ -108,7 +108,7 @@ export const StyledPopper = styled(Popper, {
     const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       background-image: none;
       border: ${borders?.none};
       border-radius: ${corners?.l}px;
@@ -133,7 +133,7 @@ export const StyledPaper = styled(Paper, {
       border: none !important;
       outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};
       border-radius: ${corners?.l}px;
-      background-color: ${semanticColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       background-image: none;
       margin: 0;
       padding: 0 0 ${spaces?.xs}px 0;

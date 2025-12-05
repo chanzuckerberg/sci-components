@@ -36,7 +36,7 @@ const dark = (props: TooltipExtraProps): string => {
 
   return css`
     ${fontHeaderXs(props)}
-    background-color: ${semanticColors?.base?.surfaceOnDark};
+    background-color: ${semanticColors?.base?.surfacePrimaryDark};
     color: ${semanticColors?.base?.textPrimaryOnDark};
     padding: ${spaces?.s}px ${spaces?.m}px;
   `;
@@ -48,7 +48,7 @@ const light = (props: TooltipExtraProps): string => {
 
   return css`
     ${fontBodyXs(props)}
-    background-color: ${semanticColors?.base?.surface};
+    background-color: ${semanticColors?.base?.surfacePrimary};
     color: ${semanticColors?.base?.textPrimary};
     padding: ${spaces?.s}px ${spaces?.m}px;
   `;
@@ -144,8 +144,8 @@ export const arrowCss = (props: TooltipExtraProps): string => {
       /* (bethbertozzi): !important is needed to fight inline style */
       left: ${arrowOffset}px !important;
       color: ${hasInvertedStyle || inverted || sdsStyle === "dark"
-        ? semanticColors?.base?.surfaceOnDark
-        : semanticColors?.base?.surface};
+        ? semanticColors?.base?.surfacePrimaryDark
+        : semanticColors?.base?.surfacePrimary};
       &:before {
         box-sizing: border-box;
         width: 12px;

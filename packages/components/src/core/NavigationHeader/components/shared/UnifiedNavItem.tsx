@@ -53,8 +53,8 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
   const corners = getCorners(props);
 
   const ChevronHoverColor = hasInvertedStyle
-    ? semanticColors?.base?.ornamentSecondaryHoverOnDark
-    : semanticColors?.base.ornamentSecondaryHover;
+    ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+    : semanticColors?.base?.ornamentSecondaryInteraction;
 
   return css`
     ${active ? fontBodySemiboldL(props) : fontBodyMediumL(props)}
@@ -82,8 +82,8 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
           `
         : css`
             background: ${hasInvertedStyle
-              ? semanticColors?.base.fillHoverOnDark
-              : semanticColors?.base.fillHover};
+              ? semanticColors?.base.fillInteractionOnDark
+              : semanticColors?.base.fillInteraction};
           `}
       box-shadow: none;
 
@@ -134,12 +134,12 @@ export const UnifiedNavItem = styled(
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverOnDark
-      : semanticColors?.base.ornamentSecondaryHover;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryPressedOnDark
-      : semanticColors?.base.ornamentSecondaryPressed;
+      ? semanticColors?.base.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     return [
       navVariant === "secondary" &&
@@ -168,8 +168,8 @@ export const UnifiedNavItem = styled(
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillHoverOnDark
-            : semanticColors?.base.fillHover} !important;
+            ? semanticColors?.base.fillInteractionOnDark
+            : semanticColors?.base.fillInteraction} !important;
           box-shadow: none;
 
           ${navVariant === "primary" && StyledLabel} {
