@@ -4,7 +4,7 @@ import { ReactElement } from "react";
 import {
   CommonThemeProps,
   fontBodyMediumXs,
-  fontBodyXxxs,
+  fontBodyXxs,
   getBorders,
   getCorners,
   getSemanticColors,
@@ -56,7 +56,7 @@ export const StyledHeaderTitle = styled("div", {
 export const StyledHeaderSubTitle = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${fontBodyXxxs}
+  ${fontBodyXxs}
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
