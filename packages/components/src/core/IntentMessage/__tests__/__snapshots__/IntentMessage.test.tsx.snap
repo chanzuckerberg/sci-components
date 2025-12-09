@@ -5,7 +5,7 @@ exports[`IntentMessage Checkbox story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-3hp9ho"
+    class="css-1s9h6lv"
   >
     <label
       class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-13lzms0-MuiFormControlLabel-root"
@@ -78,7 +78,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-3hp9ho"
+    class="css-1s9h6lv"
   >
     <div>
       <div
@@ -231,7 +231,7 @@ exports[`IntentMessage Password story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-3hp9ho"
+    class="css-1s9h6lv"
   >
     <div>
       <label

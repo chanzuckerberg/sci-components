@@ -26,15 +26,12 @@ export const StyledIntentMessage = styled.div<StyledIntentMessageProps>`
 
     return `
       gap: ${spaces?.xxxs}px;
-      padding-left: ${
-        props.hasBorder ? `${(spaces?.xs || 0) + borderThickness}px` : "0"
-      };
       position: relative;
 
       &::before {
         content: "";
         position: absolute;
-        left: -2px;
+        left: -${(spaces?.xs || 0) + borderThickness}px;
         top: 0;
         bottom: 0;
         width: ${borderThickness}px;
