@@ -27,37 +27,37 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </div>
   </li>
   <li
-    class="css-19n3q9s"
+    class="css-18jp22b"
     tabindex="0"
   >
     1
   </li>
   <li
-    class="css-1otyag2"
+    class="css-12hqbja"
     tabindex="0"
   >
     2
   </li>
   <li
-    class="css-1otyag2"
+    class="css-12hqbja"
     tabindex="0"
   >
     3
   </li>
   <li
-    class="css-1otyag2"
+    class="css-12hqbja"
     tabindex="0"
   >
     4
   </li>
   <li
-    class="css-1otyag2"
+    class="css-12hqbja"
     tabindex="0"
   >
     5
   </li>
   <li
-    class="css-pala74"
+    class="css-1ksmdfk"
   >
     <button
       aria-label="Go to a page"
@@ -87,7 +87,7 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-1otyag2"
+    class="css-12hqbja"
     tabindex="0"
   >
     20
