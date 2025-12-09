@@ -18,6 +18,7 @@ import {
   StyleProps,
   StyledDropdownMenuAutocompleteWrapper,
   StyledDropdownMenuHeader,
+  StyledHeaderSubTitle,
   StyledHeaderTitle,
   StyledPaper,
   StyledPopper,
@@ -46,6 +47,7 @@ interface ExtraDropdownMenuProps extends StyleProps {
   InputBaseProps?: Partial<InputSearchProps>;
   PopperBaseProps?: Partial<PopperProps>;
   title?: React.ReactNode;
+  subTitle?: React.ReactNode;
   headerComponentSlot?: JSX.Element;
   label?: string;
   anchorEl: HTMLElement | null;
@@ -122,6 +124,7 @@ const DropdownMenu = <
     isSearchAutoFocus = true,
     search = false,
     title,
+    subTitle,
     headerComponentSlot,
     label = "Search",
     children,
@@ -186,8 +189,14 @@ const DropdownMenu = <
           >
             {(title || headerComponentSlot) && (
               <StyledDropdownMenuHeader search={search}>
-                {title && <StyledHeaderTitle>{title}</StyledHeaderTitle>}
-                {headerComponentSlot && <>{headerComponentSlot}</>}
+                <div>
+                  {title && <StyledHeaderTitle>{title}</StyledHeaderTitle>}
+                  {headerComponentSlot && <>{headerComponentSlot}</>}
+                </div>
+
+                {title && subTitle && (
+                  <StyledHeaderSubTitle>{subTitle}</StyledHeaderSubTitle>
+                )}
               </StyledDropdownMenuHeader>
             )}
             {anchorEl && (
