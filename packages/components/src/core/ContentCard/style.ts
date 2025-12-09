@@ -38,6 +38,31 @@ const doNotForwardProps = [
   "classes",
 ];
 
+const getFlexDirection = (
+  sdsType: ContentCardProps["sdsType"],
+  visualElementType: ContentCardProps["visualElementType"] | undefined,
+  imagePosition: ContentCardProps["imagePosition"]
+) => {
+  return sdsType === "wide" && visualElementType === "image"
+    ? imagePosition === "left"
+      ? "row"
+      : "row-reverse"
+    : visualElementType === "icon"
+      ? "row"
+      : "column";
+};
+
+const getShowDecorativeBorder = (
+  visualElementType: ContentCardProps["visualElementType"] | undefined,
+  boundingBox: boolean,
+  decorativeBorder: boolean,
+  imagePadding: boolean
+) => {
+  return visualElementType === "image"
+    ? boundingBox && decorativeBorder && imagePadding
+    : boundingBox && decorativeBorder;
+};
+
 export const StyledCard = styled(Card, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
@@ -55,27 +80,28 @@ export const StyledCard = styled(Card, {
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
     const shadows = getShadows(props);
+    const spaces = getSpaces(props);
 
-    const flexDirection =
-      sdsType === "wide" && visualElementType === "image"
-        ? imagePosition === "left"
-          ? "row"
-          : "row-reverse"
-        : visualElementType === "icon"
-          ? "row"
-          : "column";
+    const flexDirection = getFlexDirection(
+      sdsType,
+      visualElementType,
+      imagePosition
+    );
 
-    const showDecorativeBorder =
-      visualElementType === "image"
-        ? boundingBox && decorativeBorder && imagePadding
-        : boundingBox && decorativeBorder;
+    const showDecorativeBorder = getShowDecorativeBorder(
+      visualElementType,
+      boundingBox,
+      decorativeBorder,
+      imagePadding
+    );
 
     return css`
+      position: relative;
       display: flex;
       background-color: transparent;
       background-image: none;
       flex-direction: ${flexDirection};
-      overflow: auto;
+      overflow: visible;
       box-shadow: none;
       border-radius: ${corners?.xl}px;
 
@@ -94,16 +120,47 @@ export const StyledCard = styled(Card, {
         background-color: ${semanticColors?.base?.backgroundPrimary};
       `}
 
+      ${showDecorativeBorder &&
+      css`
+        &:before {
+          content: "";
+          position: absolute;
+          background-color: ${semanticColors?.accent?.border};
+
+          ${sdsType === "wide" &&
+          css`
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            width: ${spaces?.xs}px;
+            border-top-left-radius: ${corners?.xl}px;
+            border-bottom-left-radius: ${corners?.xl}px;
+          `}
+
+          ${sdsType === "narrow" &&
+          css`
+            height: ${spaces?.xs}px;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            border-top-left-radius: ${corners?.xl}px;
+            border-top-right-radius: ${corners?.xl}px;
+          `}
+        }
+      `}
+
       ${sdsType === "wide" &&
       showDecorativeBorder &&
       css`
-        border-left: 4px solid ${semanticColors?.accent?.border};
+        border-top-left-radius: ${corners?.l}px;
+        border-bottom-left-radius: ${corners?.l}px;
       `}
 
       ${sdsType === "narrow" &&
       showDecorativeBorder &&
       css`
-        border-top: 4px solid ${semanticColors?.accent?.border};
+        border-top-left-radius: ${corners?.l}px;
+        border-top-right-radius: ${corners?.l}px;
       `}
     `;
   }}
