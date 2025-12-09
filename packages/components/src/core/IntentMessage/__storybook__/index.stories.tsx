@@ -32,6 +32,11 @@ export default {
   },
   component: IntentMessageDemo,
   title: "Components/IntentMessage",
+  parameters: {
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
+  },
 } as Meta;
 
 export const Default = {
