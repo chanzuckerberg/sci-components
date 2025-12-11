@@ -9,6 +9,8 @@ export interface IntentMessageItem {
 }
 
 export interface IntentMessageProps {
+  autoOrder?: boolean;
+  orderBy?: IntentMessageIntent[];
   children?: React.ReactNode;
   messages?: IntentMessageItem[];
   border?: boolean;

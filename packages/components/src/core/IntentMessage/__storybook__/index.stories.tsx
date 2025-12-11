@@ -26,6 +26,12 @@ const defaultMessages = [
 
 export default {
   argTypes: {
+    autoOrder: {
+      control: { type: "boolean" },
+      defaultValue: { summary: "true" },
+      description:
+        "If true, displays messages in order of severity (negative, notice, positive).",
+    },
     border: {
       control: { type: "boolean" },
       defaultValue: { summary: "false" },
@@ -35,6 +41,12 @@ export default {
       control: { type: "object" },
       defaultValue: defaultMessages,
       description: "Array of messages to display.",
+    },
+    orderBy: {
+      control: { type: "object" },
+      defaultValue: { summary: '["negative", "notice", "positive"]' },
+      description:
+        "Array defining custom priority order for sorting messages. Only used if autoOrder is true.",
     },
   },
   component: IntentMessageDemo,
@@ -48,8 +60,10 @@ export default {
 
 export const Default = {
   args: {
+    autoOrder: true,
     border: true,
     messages: defaultMessages,
+    orderBy: ["negative", "notice", "positive"],
   },
 };
 
@@ -72,7 +86,7 @@ export const Password = {
 export const ScreenshotTest = {
   parameters: {
     controls: {
-      exclude: ["border", "messages"],
+      exclude: ["autoOrder", "border", "messages", "orderBy"],
     },
     snapshot: {
       skip: true,
@@ -88,7 +102,7 @@ export const Test = {
   },
   parameters: {
     controls: {
-      exclude: ["border", "messages"],
+      exclude: ["autoOrder", "border", "messages", "orderBy"],
     },
     snapshot: {
       skip: true,

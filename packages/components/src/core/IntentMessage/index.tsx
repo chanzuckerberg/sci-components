@@ -7,8 +7,21 @@ import {
 } from "./IntentMessage.types";
 import { StyledIntentMessage, StyledMessageItem } from "./style";
 
+const DEFAULT_INTENT_PRIORITY: Record<IntentMessageIntent, number> = {
+  negative: 0,
+  notice: 1,
+  positive: 2,
+};
+
 const IntentMessage = (props: IntentMessageProps): JSX.Element => {
-  const { messages = [], children, border = false, ...rest } = props;
+  const {
+    messages = [],
+    children,
+    border = false,
+    autoOrder = true,
+    orderBy,
+    ...rest
+  } = props;
 
   /**
    * Determines the left border color based on message intent priority.
@@ -48,6 +61,26 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
     }
   };
 
+  const sortedMessages = React.useMemo(() => {
+    if (!autoOrder) return messages;
+
+    const priorities = orderBy
+      ? orderBy.reduce(
+          (acc, intent, index) => {
+            acc[intent] = index;
+            return acc;
+          },
+          {} as Record<IntentMessageIntent, number>
+        )
+      : DEFAULT_INTENT_PRIORITY;
+
+    return [...messages].sort((a, b) => {
+      const priorityA = priorities[a.intent] ?? 999;
+      const priorityB = priorities[b.intent] ?? 999;
+      return priorityA - priorityB;
+    });
+  }, [messages, autoOrder, orderBy]);
+
   return (
     <StyledIntentMessage
       borderIntent={borderColorIntent}
@@ -55,7 +88,7 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
       {...rest}
     >
       {children}
-      {messages.map((message, index) => (
+      {sortedMessages.map((message, index) => (
         <StyledMessageItem key={index} intent={message.intent}>
           {getIcon(message)}
           <span>{message.text}</span>
