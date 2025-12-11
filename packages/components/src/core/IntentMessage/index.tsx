@@ -10,6 +10,16 @@ import { StyledIntentMessage, StyledMessageItem } from "./style";
 const IntentMessage = (props: IntentMessageProps): JSX.Element => {
   const { messages = [], children, border = false, ...rest } = props;
 
+  /**
+   * Determines the left border color based on message intent priority.
+   * When multiple IntentMessage items are rendered together, the border color
+   * corresponds to the highest-priority intent present. Priority order:
+   * 1. negative
+   * 2. notice
+   * 3. positive
+   * For example, if both a negative and a notice intent are included, the border
+   * color will use the negative intent.
+   */
   const hasNegative = messages?.some((m) => m.intent === "negative");
   const hasNotice = messages?.some((m) => m.intent === "notice");
   const hasPositive = messages?.some((m) => m.intent === "positive");
