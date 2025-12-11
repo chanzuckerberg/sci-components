@@ -6,9 +6,16 @@ import { ScreenshotTestDemo } from "./stories/screenshot";
 import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
 
 const defaultMessages = [
-  { intent: "negative", text: "This is a negative message" },
+  {
+    intent: "negative",
+    text: "This is a negative message",
+  },
   { intent: "notice", text: "This is a notice message" },
   { intent: "positive", text: "This is a positive message" },
+  {
+    intent: "positive",
+    text: "This is a very long positive message supposed to be wrapped into multiple lines.",
+  },
   { intent: "notice", text: "With custom SDS icon", icon: "Github" },
   {
     intent: "positive",

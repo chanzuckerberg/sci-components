@@ -48,7 +48,7 @@ exports[`IntentMessage Checkbox story renders snapshot 1`] = `
       </span>
     </label>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
     >
       <div
         class="css-1ft6wgl"
@@ -113,7 +113,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
     >
       <div
         class="css-1ft6wgl"
@@ -135,7 +135,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
     >
       <div
         class="css-1ft6wgl"
@@ -157,7 +157,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
     >
       <div
         class="css-1ft6wgl"
@@ -179,7 +179,29 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          data-file-name="IconCheckCircleSmall"
+          data-testid="IconCheckCircleSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+      <span>
+        This is a very long positive message supposed to be wrapped into multiple lines.
+      </span>
+    </div>
+    <div
+      class="css-l8j1jl"
     >
       <div
         class="css-1ft6wgl"
@@ -201,7 +223,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
     >
       <svg
         aria-hidden="true"
@@ -272,7 +294,7 @@ exports[`IntentMessage Password story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-1mfghco"
+      class="css-l8j1jl"
     >
       <div
         class="css-1ft6wgl"

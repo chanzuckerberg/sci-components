@@ -25,7 +25,7 @@ export const StyledIntentMessage = styled.div<StyledIntentMessageProps>`
       : "transparent";
 
     return `
-      gap: ${spaces?.xxxs}px;
+      gap: ${spaces?.s}px;
       position: relative;
 
       &::before {
@@ -47,7 +47,8 @@ export const StyledMessageItem = styled.div<
 >`
   ${fontBodySemiboldXxxs}
   display: flex;
-  align-items: center;
+  align-items: start;
+
   ${(props) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -58,6 +59,7 @@ export const StyledMessageItem = styled.div<
       color: ${intentColors?.text};
 
       svg {
+        margin-top: ${spaces?.xxxs}px;
         fill: ${intentColors?.ornament};
         path {
           fill: ${intentColors?.ornament};
