@@ -43,6 +43,7 @@ const disabledStyled = (props: RowExtraProps) => {
 
     & span, & div {
       color: ${semanticColors?.base?.textDisabled};
+      background-color: transparent !important;
     }
 
     .cell-component {
