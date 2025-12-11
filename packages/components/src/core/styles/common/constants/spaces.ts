@@ -4,7 +4,7 @@ export const Spaces = {
   xs: 6,
   s: 8,
   m: 12,
-  default: 12,
+  default: 8,
   l: 16,
   xl: 24,
   xxl: 32,
