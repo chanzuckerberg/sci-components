@@ -56,6 +56,9 @@ export const Dropdown = <
       }}
       onOpen={handleOpen}
       onClose={handleClose}
+      getOptionDisabled={(option: T) => {
+        return !!option.disabled;
+      }}
       {...rest}
     />
   );

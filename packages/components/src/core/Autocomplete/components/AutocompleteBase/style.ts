@@ -202,11 +202,12 @@ export const StyledPaper = styled(Paper)`
 
 export const StyledMenuItemDetails = styled("div")`
   ${fontBodyXxs}
-  ${(props) => {
+  ${(props: { disabled?: boolean } & CommonThemeProps) => {
+    const { disabled } = props;
     const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticColors?.base?.textSecondary};
+      color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
       white-space: pre-wrap;
     `;
   }}

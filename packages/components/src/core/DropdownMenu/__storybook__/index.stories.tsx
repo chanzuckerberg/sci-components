@@ -52,6 +52,9 @@ export default {
     title: {
       control: { type: "text" },
     },
+    subTitle: {
+      control: { type: "text" },
+    },
     width: {
       control: { type: "text" },
     },
