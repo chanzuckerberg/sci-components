@@ -23,24 +23,35 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
     ...rest
   } = props;
 
+  const priorities = React.useMemo(() => {
+    return orderBy
+      ? orderBy.reduce(
+          (acc, intent, index) => {
+            acc[intent] = index;
+            return acc;
+          },
+          {} as Record<IntentMessageIntent, number>
+        )
+      : DEFAULT_INTENT_PRIORITY;
+  }, [orderBy]);
+
   /**
    * Determines the left border color based on message intent priority.
    * When multiple IntentMessage items are rendered together, the border color
-   * corresponds to the highest-priority intent present. Priority order:
-   * 1. negative
-   * 2. notice
-   * 3. positive
-   * For example, if both a negative and a notice intent are included, the border
-   * color will use the negative intent.
+   * corresponds to the highest-priority intent present.
    */
-  const hasNegative = messages?.some((m) => m.intent === "negative");
-  const hasNotice = messages?.some((m) => m.intent === "notice");
-  const hasPositive = messages?.some((m) => m.intent === "positive");
+  const borderColorIntent = React.useMemo(() => {
+    if (!messages || messages.length === 0) return undefined;
 
-  let borderColorIntent: IntentMessageIntent | undefined;
-  if (hasNegative) borderColorIntent = "negative";
-  else if (hasNotice) borderColorIntent = "notice";
-  else if (hasPositive) borderColorIntent = "positive";
+    // Find the message with the highest priority (lowest number)
+    const highestPriorityMessage = messages.reduce((prev, current) => {
+      const priorityPrev = priorities[prev.intent] ?? 999;
+      const priorityCurrent = priorities[current.intent] ?? 999;
+      return priorityPrev <= priorityCurrent ? prev : current;
+    });
+
+    return highestPriorityMessage.intent;
+  }, [messages, priorities]);
 
   const getIcon = (item: IntentMessageItem) => {
     const { icon, intent } = item;
@@ -64,22 +75,12 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
   const sortedMessages = React.useMemo(() => {
     if (!autoOrder) return messages;
 
-    const priorities = orderBy
-      ? orderBy.reduce(
-          (acc, intent, index) => {
-            acc[intent] = index;
-            return acc;
-          },
-          {} as Record<IntentMessageIntent, number>
-        )
-      : DEFAULT_INTENT_PRIORITY;
-
     return [...messages].sort((a, b) => {
       const priorityA = priorities[a.intent] ?? 999;
       const priorityB = priorities[b.intent] ?? 999;
       return priorityA - priorityB;
     });
-  }, [messages, autoOrder, orderBy]);
+  }, [messages, autoOrder, priorities]);
 
   return (
     <StyledIntentMessage
