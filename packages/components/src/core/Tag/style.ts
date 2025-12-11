@@ -49,7 +49,6 @@ const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
 
   return css`
     height: unset;
-    margin: 0 ${spaces?.xxs}px ${spaces?.xs}px 0;
 
     .MuiChip-label {
       ${fontBodyXxxs(props)}
@@ -79,7 +78,6 @@ const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
 
   return css`
     height: unset;
-    margin: 0 ${spaces?.xxs}px ${spaces?.xs}px 0;
 
     .MuiChip-label {
       ${fontBodyXs(props)}
@@ -238,7 +236,7 @@ function createTypeCss(
 
     ${type === "secondary" &&
     css`
-      box-shadow: 0 0 0 1px ${typeColors.borderColor};
+      box-shadow: inset 0 0 0 1px ${typeColors.borderColor};
     `}
     background-color: ${typeColors.background};
     position: relative;
