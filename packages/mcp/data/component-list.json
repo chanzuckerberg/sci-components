@@ -27,6 +27,7 @@
     "InputSlider",
     "InputText",
     "InputToggle",
+    "IntentMessage",
     "Legend",
     "Link",
     "List",
