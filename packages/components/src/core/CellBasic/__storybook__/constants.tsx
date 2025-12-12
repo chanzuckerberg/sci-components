@@ -96,7 +96,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_LABELS = [
 export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
   undefined,
   <EmptySlotBottom key="componentSlotBottom-0">Empty Slot</EmptySlotBottom>,
-  <div key="componentSlotBottom-1">
+  <div key="componentSlotBottom-1" style={{ display: "flex", gap: "4px" }}>
     <Tag
       label="lorem ipsum"
       hover={false}
@@ -111,7 +111,10 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       sdsType="secondary"
     />
   </div>,
-  <ButtonIconsGroupBottom key="componentSlotBottom-2">
+  <ButtonIconsGroupBottom
+    key="componentSlotBottom-2"
+    style={{ display: "flex", gap: "4px" }}
+  >
     <StyledButton
       aria-label="Bar Chart Vertical 4"
       icon="BarChartVertical4"
