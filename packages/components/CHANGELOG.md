@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.2.0...@czi-sds/components@23.2.1) (2025-12-12)
+
+### Bug Fixes
+
+- **tags:** fixed tags spacing style in different sds components ([#1071](https://github.com/chanzuckerberg/sci-components/issues/1071)) ([ca0e068](https://github.com/chanzuckerberg/sci-components/commit/ca0e068bdc4aaeb3d724a3b4c251f1714018f91f))
+
 # [23.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.1.0...@czi-sds/components@23.2.0) (2025-12-12)
 
 ### Bug Fixes
