@@ -38,7 +38,7 @@ export default function WithSelectionStory(
             Clear Selection
           </Button>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {selectedIndices.length > 0 &&
             selectedIndices.map((i) => (
               <TagFilter
