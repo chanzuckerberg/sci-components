@@ -43,6 +43,7 @@ const disabledStyled = (props: RowExtraProps) => {
 
     & span, & div {
       color: ${semanticColors?.base?.textDisabled};
+      background-color: transparent !important;
     }
 
     .cell-component {
@@ -51,11 +52,12 @@ const disabledStyled = (props: RowExtraProps) => {
       user-select: none;
       & div {
         color: ${semanticColors?.base?.textDisabled};
-        background-color: ${semanticColors?.base?.backgroundSecondary};
+        background-color: transparent;
       }
 
       & .MuiChip-root {
         background-color: ${semanticColors?.base?.fillDisabled};
+        box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimaryDisabled} !important;
 
         & span {
           color: ${semanticColors?.base?.textDisabled} !important;

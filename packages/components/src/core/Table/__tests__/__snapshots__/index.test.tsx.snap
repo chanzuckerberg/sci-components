@@ -115,7 +115,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-ypxbz3"
       >
         <div
-          class="css-9lvjku"
+          class="css-31331o"
         >
           <div
             class="css-1ft6wgl"
@@ -133,7 +133,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -206,49 +206,53 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-8waqyz"
       >
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
+          style="display: flex; gap: 4px; flex-wrap: wrap;"
         >
-          <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
-            info
-          </span>
-        </div>
-        <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
-        >
-          <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              info
+            </span>
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
-            notice
-          </span>
-        </div>
-        <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
-        >
-          <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              notice
+            </span>
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
-            beta
-          </span>
-        </div>
-        <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
-        >
-          <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              beta
+            </span>
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
-            negative
-          </span>
-        </div>
-        <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
-        >
-          <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              negative
+            </span>
+          </div>
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
-            positive
-          </span>
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              positive
+            </span>
+          </div>
         </div>
       </td>
       <td
@@ -280,7 +284,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-ypxbz3"
       >
         <div
-          class="css-9lvjku"
+          class="css-31331o"
         >
           <div
             class="css-1ft6wgl"
@@ -298,7 +302,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -499,7 +503,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-9fq7hl"
+      class="css-5zi980"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"
@@ -508,7 +512,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         class="cell-component css-ypxbz3"
       >
         <div
-          class="css-9lvjku"
+          class="css-31331o"
         >
           <div
             class="css-1ft6wgl"
@@ -526,7 +530,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-hsguas-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-tm2vot-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"

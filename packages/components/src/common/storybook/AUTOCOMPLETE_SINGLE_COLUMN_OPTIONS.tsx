@@ -105,25 +105,33 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     component: (
       <div>
         Available Labels:
-        <div style={{ marginTop: 10 }}>
+        <div
+          style={{
+            marginTop: 2,
+            marginBottom: 4,
+            display: "flex",
+            gap: 4,
+            flexWrap: "wrap",
+          }}
+        >
           <Tag
             label="bug"
-            sdsStyle="rounded"
-            sdsType="primary"
+            sdsStyle="square"
+            sdsType="secondary"
             color="negative"
             hover={false}
           />
           <Tag
             label="feature"
-            sdsStyle="rounded"
-            sdsType="primary"
+            sdsStyle="square"
+            sdsType="secondary"
             color="positive"
             hover={false}
           />
           <Tag
             label="refactor"
-            sdsStyle="rounded"
-            sdsType="primary"
+            sdsStyle="square"
+            sdsType="secondary"
             color="notice"
             hover={false}
           />
