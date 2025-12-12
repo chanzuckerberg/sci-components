@@ -356,7 +356,7 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      style="display: flex; flex-wrap: wrap;"
+      style="display: flex; flex-wrap: wrap; gap: 4px;"
     />
   </div>
 </div>

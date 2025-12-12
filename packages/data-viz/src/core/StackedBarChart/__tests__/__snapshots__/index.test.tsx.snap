@@ -309,7 +309,7 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
       </button>
     </div>
     <div
-      style="display: flex; flex-wrap: wrap;"
+      style="display: flex; flex-wrap: wrap; gap: 4px;"
     />
   </div>
 </div>
@@ -624,7 +624,7 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
       </button>
     </div>
     <div
-      style="display: flex; flex-wrap: wrap;"
+      style="display: flex; flex-wrap: wrap; gap: 4px;"
     />
   </div>
 </div>
@@ -1482,7 +1482,7 @@ exports[`<StackedBarChart /> proportionalWithSelectionDimBehavior story renders 
       </button>
     </div>
     <div
-      style="display: flex; flex-wrap: wrap;"
+      style="display: flex; flex-wrap: wrap; gap: 4px;"
     />
   </div>
 </div>
@@ -1766,7 +1766,7 @@ exports[`<StackedBarChart /> proportionalWithSelectionHideBehavior story renders
       </button>
     </div>
     <div
-      style="display: flex; flex-wrap: wrap;"
+      style="display: flex; flex-wrap: wrap; gap: 4px;"
     />
   </div>
 </div>
