@@ -13,6 +13,7 @@ export const DROPDOWN_MENU_EXCLUDED_CONTROLS = [
   "options",
   "title",
   "width",
+  "subTitle",
 ];
 
 export const DROPDOWN_MENU_LABEL = "Github Labels";
