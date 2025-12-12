@@ -65,6 +65,8 @@ export * from "./core/InputText";
 export { default as InputText } from "./core/InputText";
 export * from "./core/InputToggle";
 export { default as InputToggle } from "./core/InputToggle";
+export * from "./core/IntentMessage";
+export { default as IntentMessage } from "./core/IntentMessage";
 export * from "./core/Legend";
 export { default as Legend } from "./core/Legend";
 export * from "./core/Link";
