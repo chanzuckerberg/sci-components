@@ -1,0 +1,22 @@
+{
+  "IntentMessage": {
+    "props": {
+      "autoOrder": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "border": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "messages": {
+        "type": "IntentMessageItem[]",
+        "isRequired": false
+      },
+      "orderBy": {
+        "type": "IntentMessageIntent[]",
+        "isRequired": false
+      }
+    }
+  }
+}
