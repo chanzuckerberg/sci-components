@@ -41,8 +41,8 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
   const corners = getCorners(props);
 
   const ChevronHoverColor = hasInvertedStyle
-    ? semanticColors?.base?.ornamentSecondaryHoverOnDark
-    : semanticColors?.base.ornamentSecondaryHover;
+    ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+    : semanticColors?.base.ornamentSecondaryInteraction;
 
   return css`
     border-radius: ${corners?.l}px;
@@ -68,8 +68,8 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
           `
         : css`
             background: ${hasInvertedStyle
-              ? semanticColors?.base.fillHoverOnDark
-              : semanticColors?.base.fillHover};
+              ? semanticColors?.base.fillInteractionOnDark
+              : semanticColors?.base.fillInteraction};
           `}
       box-shadow: none;
 
@@ -105,12 +105,12 @@ export const PrimaryNavItem = styled(Button, {
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverOnDark
-      : semanticColors?.base.ornamentSecondaryHover;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryPressedOnDark
-      : semanticColors?.base.ornamentSecondaryPressed;
+      ? semanticColors?.base.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     return css`
       border: none;
@@ -128,8 +128,8 @@ export const PrimaryNavItem = styled(Button, {
 
       &:hover {
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillHoverOnDark
-          : semanticColors?.base.fillHover} !important;
+          ? semanticColors?.base.fillInteractionOnDark
+          : semanticColors?.base.fillInteraction} !important;
         box-shadow: none;
 
         ${StyledLabel} {

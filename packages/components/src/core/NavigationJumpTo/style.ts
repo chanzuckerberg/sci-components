@@ -91,13 +91,13 @@ export const StyledTab = styled(Tab, {
         left: 0;
         width: ${spaces?.xxxs}px;
         height: 100%;
-        background-color: ${semanticColors?.base?.borderPrimaryHover};
+        background-color: ${semanticColors?.base?.borderPrimaryInteraction};
         display: none;
         border-radius: ${spaces?.xxxs}px;
       }
       &:hover {
         color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillInteraction};
         &:before {
           display: block;
         }
