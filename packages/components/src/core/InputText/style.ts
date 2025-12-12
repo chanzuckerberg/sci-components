@@ -163,7 +163,7 @@ export const StyledInputBase = styled(TextField, {
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.base?.hover};
-        background-color: ${semanticColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillInteraction};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}

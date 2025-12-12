@@ -78,7 +78,7 @@ const hoverStyled = (props: RowExtraProps) => {
 
   return `
     &:hover {
-      background-color: ${semanticColors?.base?.fillHover};
+      background-color: ${semanticColors?.base?.fillInteraction};
     }
   `;
 };

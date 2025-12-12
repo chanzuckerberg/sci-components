@@ -69,7 +69,7 @@ export const StyledSectionHeader = styled(ListSubheader, {
           : semanticColors?.base.backgroundPrimary;
       }
 
-      return semanticColors?.base?.surface;
+      return semanticColors?.base?.surfacePrimary;
     }
 
     function getTextColor() {
@@ -143,7 +143,7 @@ export const StyledAccordionSection = styled("div", {
         border-radius: ${corners?.xl}px;
         padding: ${spaces?.l}px;
         background-color: ${hasInvertedStyle
-          ? semanticColors?.base?.backgroundSecondaryOnDark
+          ? semanticColors?.base?.backgroundSecondaryDark
           : semanticColors?.base?.backgroundSecondary};
       `;
     }
