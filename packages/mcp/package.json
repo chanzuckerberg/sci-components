@@ -1,7 +1,7 @@
 {
   "name": "@czi-sds/mcp",
   "description": "The official MCP server for SDS",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "main": "dist/stdio.js",
   "files": [
     "dist",
