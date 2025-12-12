@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.1.0...@czi-sds/components@23.2.0) (2025-12-12)
+
+### Bug Fixes
+
+- **autocomplete:** fixed a bug with disabled options in the autocomplete and dropdowns ([#1065](https://github.com/chanzuckerberg/sci-components/issues/1065)) ([9ea2f19](https://github.com/chanzuckerberg/sci-components/commit/9ea2f1983367ff1f2350247755d2426a2c362158))
+
+### Features
+
+- **contentcard:** fix border rendering + dropdownmenu: add subtitle support ([#1064](https://github.com/chanzuckerberg/sci-components/issues/1064)) ([a4e62c4](https://github.com/chanzuckerberg/sci-components/commit/a4e62c4ac73bbca3c51a4cd2a7e2ccbe38c2bb75))
+- **intentmessage:** initial implementation ([#1069](https://github.com/chanzuckerberg/sci-components/issues/1069)) ([31b5d4c](https://github.com/chanzuckerberg/sci-components/commit/31b5d4c4fea6fbdf97b9fa5619d276ce20eb9d78))
+
 # [23.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.0.0...@czi-sds/components@23.1.0) (2025-11-21)
 
 ### Features
