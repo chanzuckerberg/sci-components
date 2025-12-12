@@ -3,6 +3,7 @@ import { alpha, Chip, darken } from "@mui/material";
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
+  defaultTheme,
   focusVisibleA11yStyle,
   fontBodyXs,
   fontBodyXxxs,
@@ -11,7 +12,9 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
+  IntentColor,
   SDSPalette,
+  SDSTheme,
 } from "src/core/styles";
 
 export type SdsTagColorType =
@@ -190,10 +193,25 @@ function generatePrimaryTagColors(
   };
 }
 
+function getSecondaryBorderColor(
+  effectiveIntent: string,
+  theme: SDSTheme,
+  intentColors?: IntentColor
+) {
+  if (!theme || !theme.palette)
+    return alpha(intentColors?.border || "#000", 0.6);
+  if (effectiveIntent === "negative" && theme.palette.mode === "dark")
+    return alpha(intentColors?.border || "#000", 0.65);
+  if (effectiveIntent === "notice" && theme.palette.mode === "light")
+    return alpha(intentColors?.border || "#000", 0.85);
+  return alpha(intentColors?.border || "#000", 0.6);
+}
+
 function generateSecondaryTagColors(
   intent: Extract<SdsTagColorType, string> | null,
   colors: string[],
-  semanticColors: SDSPalette | null
+  semanticColors: SDSPalette | null,
+  theme: SDSTheme = defaultTheme
 ) {
   const effectiveIntent = intent || "neutral";
   const intentColors = semanticColors?.[effectiveIntent];
@@ -211,7 +229,7 @@ function generateSecondaryTagColors(
     label: colors.length > 0 ? colors[0] : intentColors?.text,
     borderColor: hasCustomColors
       ? alpha(colors[1], 0.6)
-      : alpha(intentColors?.border || "#000", 0.6),
+      : getSecondaryBorderColor(effectiveIntent, theme, intentColors),
   };
 }
 
@@ -226,7 +244,12 @@ function createTypeCss(
 
   const typeToColors = {
     primary: generatePrimaryTagColors(intent, colors, semanticColors),
-    secondary: generateSecondaryTagColors(intent, colors, semanticColors),
+    secondary: generateSecondaryTagColors(
+      intent,
+      colors,
+      semanticColors,
+      props.theme
+    ),
   };
 
   const typeColors = typeToColors[type];
