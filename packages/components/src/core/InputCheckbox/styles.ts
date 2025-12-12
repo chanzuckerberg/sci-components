@@ -175,7 +175,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
       &:hover {
         ${StyledCheckboxDefaultIcon} {
           border: ${borders?.base?.hover};
-          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
+          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
         }
 
         ${StyledCheckboxCheckedIcon} {

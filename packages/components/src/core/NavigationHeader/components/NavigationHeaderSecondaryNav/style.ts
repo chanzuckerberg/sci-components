@@ -44,8 +44,8 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
     &:hover {
       box-shadow: none;
       background: ${hasInvertedStyle
-        ? semanticColors?.base.fillHoverOnDark
-        : semanticColors?.base.fillHover};
+        ? semanticColors?.base.fillInteractionOnDark
+        : semanticColors?.base.fillInteraction};
     }
   `;
 };
@@ -89,12 +89,12 @@ export const StyledTextItem = styled(
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverOnDark
-      : semanticColors?.base.ornamentSecondaryHover;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryPressedOnDark
-      : semanticColors?.base.ornamentSecondaryPressed;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     return [
       open ? fontBodySemiboldS(props) : fontBodyMediumS(props),
@@ -116,8 +116,8 @@ export const StyledTextItem = styled(
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillHoverOnDark
-            : semanticColors?.base.fillHover};
+            ? semanticColors?.base.fillInteractionOnDark
+            : semanticColors?.base.fillInteraction};
           box-shadow: none;
 
           color: ${hasInvertedStyle
