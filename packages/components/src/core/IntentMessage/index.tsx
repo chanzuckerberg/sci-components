@@ -23,17 +23,20 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
     ...rest
   } = props;
 
-  const priorities = React.useMemo(() => {
-    return orderBy
-      ? orderBy.reduce(
-          (acc, intent, index) => {
-            acc[intent] = index;
-            return acc;
-          },
-          {} as Record<IntentMessageIntent, number>
-        )
-      : DEFAULT_INTENT_PRIORITY;
-  }, [orderBy]);
+  // const priorities = React.useMemo(() => {
+  //   return orderBy
+  //     ? orderBy.reduce(
+  //         (acc, intent, index) => {
+  //           acc[intent] = index;
+  //           return acc;
+  //         },
+  //         {} as Record<IntentMessageIntent, number>
+  //       )
+  //     : DEFAULT_INTENT_PRIORITY;
+  // }, [orderBy]);
+  const priorities = orderBy
+    ? Object.fromEntries(orderBy.map((value, index) => [value, index]))
+    : DEFAULT_INTENT_PRIORITY;
 
   /**
    * Determines the left border color based on message intent priority.
