@@ -53,6 +53,7 @@ export const TestDemo = (props: Args): JSX.Element => {
               data-testid="Child"
               defaultValue="1"
               name="radio-buttons-group"
+              style={{ gap: 8 }}
             >
               <InputRadio label="One" caption="Caption I" value="1" />
               <InputRadio label="Two" caption="Caption II" value="2" />
