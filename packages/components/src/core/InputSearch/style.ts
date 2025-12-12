@@ -149,9 +149,6 @@ export const StyledSearchBase = styled(TextField, {
     const corners = getCorners(props);
 
     return css`
-      margin-top: ${spaces?.m}px;
-      margin-bottom: ${spaces?.m}px;
-      margin-right: ${spaces?.xl}px;
       min-width: 120px;
       display: block;
 

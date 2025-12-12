@@ -445,7 +445,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           Search
         </label>
         <div
-          class="MuiFormControl-root MuiTextField-root css-1r7phst-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root css-atocn5-MuiFormControl-root-MuiTextField-root"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
@@ -849,7 +849,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             Search
           </label>
           <div
-            class="MuiFormControl-root MuiTextField-root css-1r7phst-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root css-atocn5-MuiFormControl-root-MuiTextField-root"
           >
             <div
               class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
