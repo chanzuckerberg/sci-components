@@ -18,10 +18,12 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
       {
         count: 3,
         name: "Status: duplicate",
+        disabled: true,
       },
       {
         count: 5,
         name: "Status: needs information",
+        disabled: true,
       },
       {
         details: "This will not be worked on",

@@ -162,13 +162,12 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
   ${(props: CheckboxExtraProps) => {
     const { disabled } = props;
 
-    const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
     const borders = getBorders(props);
 
     return `
       align-items: start;
-      margin-bottom: ${spaces?.l}px;
+      margin-bottom: 0;
       margin-left: 0;
       margin-right: 0;
       width: fit-content;
@@ -176,7 +175,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
       &:hover {
         ${StyledCheckboxDefaultIcon} {
           border: ${borders?.base?.hover};
-          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
+          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
         }
 
         ${StyledCheckboxCheckedIcon} {

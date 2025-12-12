@@ -8,7 +8,7 @@ import {
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBodyS,
+  fontBodySemiboldXxxs,
   fontBodyXs,
   getBorders,
   getCorners,
@@ -101,13 +101,13 @@ const textArea = (props: InputTextExtraProps): SerializedStyles => {
 
 export const StyledLabel = styled("label")`
   display: block;
-  ${fontBodyS}
+  ${fontBodySemiboldXxxs}
 
   ${(props) => {
     const spaces = getSpaces(props);
 
     return `
-      margin-bottom: ${spaces?.xxs}px;
+      margin-bottom: ${spaces?.s}px;
     `;
   }}
 `;
@@ -125,8 +125,6 @@ export const StyledInputBase = styled(TextField, {
     const corners = getCorners(props);
     const semanticColors = getSemanticColors(props);
     return css`
-      margin-bottom: ${spaces?.l}px;
-      margin-right: ${spaces?.m}px;
       display: block;
 
       .${outlinedInputClasses.root} {
@@ -163,7 +161,7 @@ export const StyledInputBase = styled(TextField, {
       .${outlinedInputClasses.root}:hover
         .${outlinedInputClasses.notchedOutline} {
         border: ${borders?.base?.hover};
-        background-color: ${semanticColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillInteraction};
       }
 
       .${outlinedInputClasses.root}.${outlinedInputClasses.focused}

@@ -4,7 +4,7 @@ import { Args } from "@storybook/react-webpack5";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
       <RawInputSearch
         id="test-round"
         sdsStyle="rounded"
@@ -35,6 +35,6 @@ export const TestDemo = (props: Args): JSX.Element => {
         handleSubmit={action("onSubmit")}
         name="with-error"
       />
-    </>
+    </div>
   );
 };

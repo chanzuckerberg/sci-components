@@ -47,9 +47,9 @@ export const generateDiscreteColors = (
 
   const {
     isDarkMode = false,
-    start = 250,
+    start = 240,
     rotations = 0.85,
-    gamma = 0.7,
+    gamma = 1,
     lightness = [0.4, 0.7],
     correctLightness = true,
   } = options;

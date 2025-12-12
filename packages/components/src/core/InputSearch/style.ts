@@ -76,7 +76,7 @@ const applyIntentColor = (
       .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
         cursor: default;
         svg {
-          color: ${semanticColors?.base?.ornamentSecondaryPressed};
+          color: ${semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }
     }
@@ -149,9 +149,6 @@ export const StyledSearchBase = styled(TextField, {
     const corners = getCorners(props);
 
     return css`
-      margin-top: ${spaces?.m}px;
-      margin-bottom: ${spaces?.m}px;
-      margin-right: ${spaces?.xl}px;
       min-width: 120px;
       display: block;
 
@@ -200,7 +197,8 @@ export const StyledSearchBase = styled(TextField, {
 
           &:hover {
             svg {
-              color: ${semanticColors?.base?.ornamentSecondaryHover} !important;
+              color: ${semanticColors?.base
+                ?.ornamentSecondaryInteraction} !important;
             }
           }
 
@@ -220,7 +218,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.root}:hover {
-        background-color: ${semanticColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillInteraction};
 
         & .${buttonBaseClasses.root}:last-of-type {
           svg {
@@ -228,7 +226,7 @@ export const StyledSearchBase = styled(TextField, {
           }
         }
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.base?.borderPrimaryHover};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryInteraction};
         }
       }
 
@@ -242,13 +240,13 @@ export const StyledSearchBase = styled(TextField, {
         .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {
           cursor: default;
           svg {
-            color: ${semanticColors?.base?.ornamentSecondaryPressed};
+            color: ${semanticColors?.base?.ornamentSecondaryInteraction};
           }
         }
       }
 
       &.user-is-tabbing .${outlinedInputClasses.root}:focus-within {
-        outline: 2px solid ${semanticColors?.base?.borderPrimaryHover};
+        outline: 2px solid ${semanticColors?.base?.borderPrimaryInteraction};
         outline-offset: 1px;
       }
 

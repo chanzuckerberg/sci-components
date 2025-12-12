@@ -36,7 +36,7 @@ const NarrowNavItemLinkStyles = (
         ? semanticColors?.base.textPrimaryOnDark
         : semanticColors?.base.textPrimary};
       background: ${props.hasInvertedStyle
-        ? semanticColors?.base.backgroundSecondaryOnDark
+        ? semanticColors?.base.backgroundSecondaryDark
         : semanticColors?.base.backgroundSecondary};
     }
   `;
@@ -65,11 +65,11 @@ export const StyledNavItemLink = styled(Link, {
 
       &:hover {
         color: ${props.hasInvertedStyle
-          ? semanticColors?.base.textPrimaryOnDark
-          : semanticColors?.base.textPrimary};
+          ? semanticColors?.base?.textPrimaryOnDark
+          : semanticColors?.base?.textPrimary};
         background-color: ${props.hasInvertedStyle
-          ? semanticColors?.base.fillHoverOnDark
-          : semanticColors?.base.fillHover};
+          ? semanticColors?.base?.fillInteractionOnDark
+          : semanticColors?.base?.fillInteraction};
         text-decoration: none;
       }
 

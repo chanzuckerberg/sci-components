@@ -66,7 +66,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       // look at the useDetectUserTabbing hook.
       &[data-user-is-tabbing="true"]:focus-within {
         border-radius: 4px;
-        outline: 2px solid ${semanticColors?.base?.borderPrimaryHover};
+        outline: 2px solid ${semanticColors?.base?.borderPrimaryInteraction};
         outline-offset: 1px;
       }
 
@@ -91,11 +91,11 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             min-height: unset;
 
             &.${autocompleteClasses.focused} {
-              background-color: ${semanticColors?.base?.fillHover};
+              background-color: ${semanticColors?.base?.fillInteraction};
             }
 
             &[aria-selected="true"] {
-              background-color: ${semanticColors?.base?.surface};
+              background-color: ${semanticColors?.base?.surfacePrimary};
             }
 
             &[aria-disabled="true"] {
@@ -103,7 +103,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             }
 
             &[aria-selected="true"].${autocompleteClasses.focused} {
-              background-color: ${semanticColors?.base?.fillHover};
+              background-color: ${semanticColors?.base?.fillInteraction};
             }
           }
 
@@ -117,7 +117,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
         .${autocompleteClasses.groupLabel} {
           top: 0;
           color: ${semanticColors?.base?.textSecondary};
-          background-color: ${semanticColors?.base?.surface};
+          background-color: ${semanticColors?.base?.surfacePrimary};
           padding: 0 ${spaces?.m}px;
         }
 
@@ -190,7 +190,7 @@ export const StyledPaper = styled(Paper)`
     return `
       background-image: none;
       padding: ${spaces?.xs}px 0;
-      background-color: ${semanticColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       border: ${borders?.none};
       outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000", 15)};
       border-radius: ${corners?.l}px;
@@ -202,11 +202,12 @@ export const StyledPaper = styled(Paper)`
 
 export const StyledMenuItemDetails = styled("div")`
   ${fontBodyXxs}
-  ${(props) => {
+  ${(props: { disabled?: boolean } & CommonThemeProps) => {
+    const { disabled } = props;
     const semanticColors = getSemanticColors(props);
 
     return `
-      color: ${semanticColors?.base?.textSecondary};
+      color: ${disabled ? semanticColors?.base?.textDisabled : semanticColors?.base?.textSecondary};
       white-space: pre-wrap;
     `;
   }}

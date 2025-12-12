@@ -1,18 +1,19 @@
-import { FormControl, FormLabel, RadioGroup } from "@mui/material";
+import { FormControl, RadioGroup } from "@mui/material";
 import RawInputRadio from "src/core/InputRadio";
+import { StyledFormLabel } from "./style";
 
 export const TestDemo = (): JSX.Element => {
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label" style={{ color: "black" }}>
+      <StyledFormLabel id="demo-radio-buttons-group-label">
         Ticket Status
-      </FormLabel>
+      </StyledFormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="demo1"
         name="input-radio-group"
         data-testid="radioButtonGroup"
-        sx={{ mt: 5 }}
+        sx={{ mt: 5, gap: "8px" }}
       >
         <RawInputRadio data-testid="inputRadio" label="Blocked" value="demo1" />
         <RawInputRadio

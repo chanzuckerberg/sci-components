@@ -319,7 +319,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
             Title
           </p>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-e9lypu-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -382,7 +382,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
               Primary
             </div>
             <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-e9lypu-MuiChip-root"
+              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
             >
               <span
                 class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -445,7 +445,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           Search
         </label>
         <div
-          class="MuiFormControl-root MuiTextField-root css-1r7phst-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root css-atocn5-MuiFormControl-root-MuiTextField-root"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
@@ -560,7 +560,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       >
         Secondary
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-e9lypu-MuiChip-root"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
         >
           <span
             class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -723,7 +723,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
               Title
             </p>
             <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-e9lypu-MuiChip-root"
+              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
             >
               <span
                 class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -786,7 +786,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
                 Primary
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-e9lypu-MuiChip-root"
+                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
               >
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -849,7 +849,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             Search
           </label>
           <div
-            class="MuiFormControl-root MuiTextField-root css-1r7phst-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root css-atocn5-MuiFormControl-root-MuiTextField-root"
           >
             <div
               class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
@@ -964,7 +964,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         >
           Secondary
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-e9lypu-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
