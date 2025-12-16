@@ -17,6 +17,7 @@ import Icon from "../Icon";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "negative" | "notice" | "positive";
+  label?: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -79,6 +80,8 @@ export const StyledCheckboxCheckedIcon = styled("div")`
 
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props: CheckboxExtraProps) => {
+    const { label } = props;
+
     const spaces = getSpaces(props);
 
     return `
@@ -86,7 +89,7 @@ export const StyledCheckbox = styled(RawCheckbox)`
         ${focusVisibleA11yStyle(props)}
         
         padding: 0;
-        margin-right: ${spaces?.s}px;
+        margin-right: ${label ? spaces?.s : 0}px;
         border-radius: 0;
 
         &:hover {

@@ -26,15 +26,11 @@ Dropdown Menus are used in combination with Dropdown Inputs on napari hub as par
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
-
 **Default**
 
 ---
 
 ---
-
-
 
 **Default + Search**
 
@@ -266,8 +262,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 Storybook
 
-
-
 ---
 
 Dropdown Menus are coupled with Dropdown Inputs, Dropdown Buttons, and in some cases Icon Buttons whenever those elements present the user with options to choose from or selections to make.
@@ -296,8 +290,6 @@ Use the Single-select Dropdown Menu when users are only able to select one item 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
-
 **Default**
 
 ---
@@ -325,8 +317,6 @@ Click on each state below to enter inspect view and get details on its code attr
 Use the Multi-select Dropdown Menu when users are able to select one or more items from the menu. They can be configured to have their Menu Items separated out into different sections or groupings, or have a built-in title; both of these features are established by the `[array]` passed into the `options` prop. Additionally, they can be configured to include a Search Input. See the Data Format section below for details around configuring the `[array]`.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-
 
 **Default**
 
@@ -512,8 +502,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Multi-select Menu Item
 
 Menu Items can be optionally paired with additional clarifying details, with counters that indicate the number of items within that Menu Item's category, or be disabled entirely. These details are established within the `[array]` passed into the `options` prop on the Dropdown Menu component.
@@ -624,8 +612,6 @@ Use the Single-select Dropdown Menu when users are only able to select one item 
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
 
-
-
 **Default**
 
 ---
@@ -648,15 +634,11 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Multi-select Dropdown Menu
 
 Use the Multi-select Dropdown Menu when users are able to select one or more items from the menu. They can be configured to have their Menu Items separated out into different sections or groupings, or have a built-in title; both of these features are established by the `[array]` passed into the `options` prop. Additionally, they can be configured to include a Search Input. See the Data Format section below for details around configuring the `[array]`.
 
 Click on each state below to enter inspect view and get details on its code attributes and any global styles it uses.
-
-
 
 **Default**
 
@@ -850,8 +832,6 @@ Click on each state below to enter inspect view and get details on its code attr
 
 ---
 
-
-
 ### Multi-select Menu Item
 
 Menu Items can be optionally paired with additional clarifying details, with counters that indicate the number of items within that Menu Item's category, or be disabled entirely. These details are established within the `[array]` passed into the `options` prop on the Dropdown Menu component.
@@ -931,5 +911,3 @@ Click on each state below to enter inspect view and get details on its code attr
 ### DropdownMenu
 
 Storybook
-
-
