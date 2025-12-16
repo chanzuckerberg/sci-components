@@ -76,7 +76,10 @@ const config = [
         tsconfig: (resolvedConfig) => ({
           ...resolvedConfig,
           // Exclude SCSS and CSS files from TypeScript's scope.
-          exclude: ["**/*.scss", "**/*.css"]
+          exclude: ["**/*.scss", "**/*.css"],
+          // Use ES2015+ target to preserve native template literals and avoid
+          // __makeTemplateObject helper which causes illegal escape sequence errors
+          target: "ES2015",
         })
       }),
     ],

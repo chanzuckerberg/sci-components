@@ -10,9 +10,9 @@ import {
   CommonThemeProps,
   getSemanticColors,
   getSpaces,
-  fontBodyS,
+  fontBodySemiboldS,
   fontBodyMediumS,
-  fontBodyXs,
+  fontBodySemiboldXs,
   fontBodyMediumXs,
   getCorners,
 } from "src/core/styles";
@@ -84,8 +84,8 @@ export const StyledTab = styled(RawTab, {
       color: ${semanticColors?.base?.textSecondary};
 
       &:hover {
-        box-shadow: inset 0 -2px 0 0 ${semanticColors?.base?.borderPrimaryHover};
-        background-color: ${semanticColors?.base?.fillOpen};
+        box-shadow: inset 0 -2px 0 0 ${semanticColors?.base?.borderPrimaryInteraction};
+        background-color: ${semanticColors?.base?.fillInteraction};
         border-top-right-radius: ${corners?.l}px;
         border-top-left-radius: ${corners?.l}px;
 
@@ -117,7 +117,7 @@ function tabFontMixin(props: TabProps): SerializedStyles | null {
   const { sdsSize } = props;
   const isLarge = sdsSize === "large";
 
-  return isLarge ? fontBodyS(props) : fontBodyXs(props);
+  return isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props);
 }
 
 export const StyledWrapper = styled("div")`
@@ -140,7 +140,7 @@ export const StyledCount = styled("span")`
     const isLarge = sdsSize === "large";
 
     return css`
-      ${isLarge ? fontBodyS(props) : fontBodyXs(props)}
+      ${isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props)}
     `;
   }}
 `;
@@ -151,9 +151,9 @@ export const StyledLabelTextWrapper = styled("span")`
     const isLarge = sdsSize === "large";
 
     return css`
-      ${isLarge ? fontBodyS(props) : fontBodyXs(props)}
+      ${isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props)}
       ${selected &&
-      (isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props))}
+      (isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props))}
       position: absolute;
     `;
   }}
@@ -165,7 +165,7 @@ export const StyledLabelTextWrapperShadow = styled("span")`
     const isLarge = sdsSize === "large";
 
     return css`
-      ${isLarge ? fontBodyMediumS(props) : fontBodyMediumXs(props)}
+      ${isLarge ? fontBodySemiboldS(props) : fontBodySemiboldXs(props)}
       visibility: hidden;
       opacity: 0;
     `;

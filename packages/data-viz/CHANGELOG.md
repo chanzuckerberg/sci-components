@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.16.1...@czi-sds/data-viz@0.16.2) (2025-12-12)
+
+### Bug Fixes
+
+- **tags:** fixed tags spacing style in different sds components ([#1071](https://github.com/chanzuckerberg/sci-components/issues/1071)) ([ca0e068](https://github.com/chanzuckerberg/sci-components/commit/ca0e068bdc4aaeb3d724a3b4c251f1714018f91f))
+
+## [0.16.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.16.0...@czi-sds/data-viz@0.16.1) (2025-12-12)
+
+**Note:** Version bump only for package @czi-sds/data-viz
+
+# [0.16.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.15.0...@czi-sds/data-viz@0.16.0) (2025-11-26)
+
+### Features
+
+- **StackedBarChart:** add mouse event handlers for segments and legend items ([#1059](https://github.com/chanzuckerberg/sci-components/issues/1059)) ([5c4ec79](https://github.com/chanzuckerberg/sci-components/commit/5c4ec79e965bd27defa0b184687a0cd78d7b363a))
+
+# [0.15.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.3...@czi-sds/data-viz@0.15.0) (2025-11-21)
+
+### Features
+
+- **spaces:** introduced a new spaces.xxxl variable ([#1055](https://github.com/chanzuckerberg/sci-components/issues/1055)) ([612a055](https://github.com/chanzuckerberg/sci-components/commit/612a055cbdbdf81bd904df8261a34102b4bd5589))
+
+### BREAKING CHANGES
+
+- **spaces:** Teams are required to replace the old spaces.xxl with the new spaces.xxxl variable
+
+- fix(heatmap): removed snapshots for the heatmaop component
+
+## [0.14.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.2...@czi-sds/data-viz@0.14.3) (2025-11-13)
+
+### Bug Fixes
+
+- **stackedbarchart:** fix not showing tooltips on hidden bar segments ([#1050](https://github.com/chanzuckerberg/sci-components/issues/1050)) ([e90318e](https://github.com/chanzuckerberg/sci-components/commit/e90318eac0a7d82de959816b3d130584aa1fe0b8))
+
+## [0.14.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.1...@czi-sds/data-viz@0.14.2) (2025-11-13)
+
+### Bug Fixes
+
+- **StackedBarChart:** Fix typo in stacked bar chart ([#1048](https://github.com/chanzuckerberg/sci-components/issues/1048)) ([309fbfa](https://github.com/chanzuckerberg/sci-components/commit/309fbfa837dfbe1d7901f2055f88216ee22dbfac))
+
+## [0.14.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.14.0...@czi-sds/data-viz@0.14.1) (2025-11-13)
+
+### Bug Fixes
+
+- **StackedBarChart:** Fix stacked bar chart ([#1046](https://github.com/chanzuckerberg/sci-components/issues/1046)) ([532d83d](https://github.com/chanzuckerberg/sci-components/commit/532d83d704192d233f1611ef7516b7f26c1c124c))
+
+# [0.14.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.13.1...@czi-sds/data-viz@0.14.0) (2025-11-10)
+
+### Features
+
+- **StackedBarChart:** implement bar chart in codebase ([#1042](https://github.com/chanzuckerberg/sci-components/issues/1042)) ([bc6078d](https://github.com/chanzuckerberg/sci-components/commit/bc6078d2b3185a8fea305935de43b4583d941f9a))
+
 ## [0.13.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.13.0...@czi-sds/data-viz@0.13.1) (2025-10-07)
 
 ### Bug Fixes

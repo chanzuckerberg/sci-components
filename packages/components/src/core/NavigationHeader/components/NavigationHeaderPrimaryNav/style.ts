@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
 import {
   getSemanticColors,
   getSpaces,
@@ -8,14 +7,18 @@ import {
   fontBodySemiboldS,
   fontBodySemiboldL,
   fontBodyMediumL,
+  CommonThemeProps,
 } from "src/core/styles";
-import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Tag from "src/core/Tag";
+import Button from "src/core/Button";
 
-interface PrimaryNavItemProps extends ExtraHeaderProps {
+interface PrimaryNavItemProps extends CommonThemeProps {
+  hasInvertedStyle?: boolean;
+  isNarrow?: boolean;
   active?: boolean;
   itemType?: "dropdown" | "text";
+  innerSdsStyle?: "drawer" | "dropdown";
 }
 
 const doNotForwardProps = [
@@ -23,39 +26,56 @@ const doNotForwardProps = [
   "hasInvertedStyle",
   "isNarrow",
   "hasSection",
+  "innerSdsStyle",
+  "defaultUrl",
+  "hasDetails",
+  "hasIcon",
+  "sectionProps",
 ];
 
 const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
-  const { active, hasInvertedStyle } = props;
+  const { active, hasInvertedStyle, innerSdsStyle } = props;
 
   const spaces = getSpaces(props);
   const semanticColors = getSemanticColors(props);
   const corners = getCorners(props);
 
   const ChevronHoverColor = hasInvertedStyle
-    ? semanticColors?.base?.ornamentSecondaryHoverInverse
-    : semanticColors?.base.ornamentSecondaryHover;
+    ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+    : semanticColors?.base.ornamentSecondaryInteraction;
 
   return css`
     border-radius: ${corners?.l}px;
     justify-content: start;
-    padding: ${spaces?.s}px ${spaces?.m}px;
-    background-color: ${active
-      ? hasInvertedStyle
-        ? semanticColors?.base?.fillPressedInverse
-        : semanticColors?.base?.fillPressed
-      : "transparent"};
+    padding: ${spaces?.s}px ${spaces?.l}px;
+    ${innerSdsStyle === "drawer"
+      ? css`
+          background-color: transparent !important;
+        `
+      : css`
+          background-color: ${active
+            ? hasInvertedStyle
+              ? semanticColors?.base?.fillPressedOnDark
+              : semanticColors?.base?.fillPressed
+            : "transparent"};
+        `}
     width: 100%;
 
     &:hover {
-      background: ${hasInvertedStyle
-        ? semanticColors?.base.fillHoverInverse
-        : semanticColors?.base.fillHover};
+      ${innerSdsStyle === "drawer"
+        ? css`
+            background: transparent !important;
+          `
+        : css`
+            background: ${hasInvertedStyle
+              ? semanticColors?.base.fillInteractionOnDark
+              : semanticColors?.base.fillInteraction};
+          `}
       box-shadow: none;
 
       ${StyledLabel} {
         color: ${hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
+          ? semanticColors?.base.textPrimaryOnDark
           : semanticColors?.base.textPrimary};
       }
 
@@ -68,7 +88,7 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
 
 export const PrimaryNavItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})`
+})<PrimaryNavItemProps>`
   display: flex;
   align-items: center;
   min-width: fit-content;
@@ -81,23 +101,24 @@ export const PrimaryNavItem = styled(Button, {
     const corners = getCorners(props);
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryOnDark
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverInverse
-      : semanticColors?.base.ornamentSecondaryHover;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryPressedInverse
-      : semanticColors?.base.ornamentSecondaryPressed;
+      ? semanticColors?.base.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     return css`
+      border: none;
       padding: ${spaces?.xxxs}px ${spaces?.m}px;
       border-radius: ${corners?.l}px;
       background-color: ${active
         ? hasInvertedStyle
-          ? semanticColors?.base?.fillPressedInverse
+          ? semanticColors?.base?.fillPressedOnDark
           : semanticColors?.base?.fillPressed
         : "transparent"};
 
@@ -107,13 +128,13 @@ export const PrimaryNavItem = styled(Button, {
 
       &:hover {
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillHoverInverse
-          : semanticColors?.base.fillHover};
+          ? semanticColors?.base.fillInteractionOnDark
+          : semanticColors?.base.fillInteraction} !important;
         box-shadow: none;
 
         ${StyledLabel} {
           color: ${hasInvertedStyle
-            ? semanticColors?.base.textPrimaryInverse
+            ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
         }
 
@@ -150,11 +171,11 @@ export const StyledLabel = styled("span", {
     const colors = getSemanticColors(props);
 
     const activeColor = hasInvertedStyle
-      ? colors?.base.textPrimaryInverse
+      ? colors?.base.textPrimaryOnDark
       : colors?.base.textPrimary;
 
     const inactiveColor = hasInvertedStyle
-      ? colors?.base.textSecondaryInverse
+      ? colors?.base.textSecondaryOnDark
       : colors?.base.textSecondary;
 
     return [

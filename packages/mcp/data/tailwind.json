@@ -1,12 +1,12 @@
 {
   "fontFamily": {
-    "sds-body": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-caps": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
+    "sds-body": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-caps": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
     "sds-code": "\"IBM Plex Mono\", monospace",
-    "sds-header": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-link": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-tabular": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif",
-    "sds-title": "var(--font-inter),Inter,-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Helvetica,Arial,sans-serif"
+    "sds-header": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-link": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-tabular": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "sds-title": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
   },
   "fontSize": {
     "sds-body-l-400-narrow": "16px",
@@ -45,6 +45,12 @@
     "sds-body-xxxs-500-wide": "11px",
     "sds-body-xxxs-600-narrow": "12px",
     "sds-body-xxxs-600-wide": "11px",
+    "sds-body-xxxxs-400-narrow": "10px",
+    "sds-body-xxxxs-400-wide": "10px",
+    "sds-body-xxxxs-500-narrow": "10px",
+    "sds-body-xxxxs-500-wide": "10px",
+    "sds-body-xxxxs-600-narrow": "10px",
+    "sds-body-xxxxs-600-wide": "10px",
     "sds-caps-xxs-600-narrow": "12px",
     "sds-caps-xxs-600-wide": "12px",
     "sds-caps-xxxs-600-narrow": "11px",
@@ -91,6 +97,12 @@
     "sds-tabular-xxxs-500-wide": "11px",
     "sds-tabular-xxxs-600-narrow": "11px",
     "sds-tabular-xxxs-600-wide": "11px",
+    "sds-tabular-xxxxs-400-narrow": "10px",
+    "sds-tabular-xxxxs-400-wide": "10px",
+    "sds-tabular-xxxxs-500-narrow": "10px",
+    "sds-tabular-xxxxs-500-wide": "10px",
+    "sds-tabular-xxxxs-600-narrow": "10px",
+    "sds-tabular-xxxxs-600-wide": "10px",
     "sds-code-s-400-narrow": "14px",
     "sds-code-s-400-wide": "14px",
     "sds-code-s-500-narrow": "14px",
@@ -144,7 +156,13 @@
     "sds-link-xxxs-500-narrow": "12px",
     "sds-link-xxxs-500-wide": "11px",
     "sds-link-xxxs-600-narrow": "12px",
-    "sds-link-xxxs-600-wide": "11px"
+    "sds-link-xxxs-600-wide": "11px",
+    "sds-link-xxxxs-400-narrow": "10px",
+    "sds-link-xxxxs-400-wide": "10px",
+    "sds-link-xxxxs-500-narrow": "10px",
+    "sds-link-xxxxs-500-wide": "10px",
+    "sds-link-xxxxs-600-narrow": "10px",
+    "sds-link-xxxxs-600-wide": "10px"
   },
   "fontVariantNumeric": {
     "sds-body-l-400-narrow": "normal",
@@ -183,6 +201,12 @@
     "sds-body-xxxs-500-wide": "normal",
     "sds-body-xxxs-600-narrow": "normal",
     "sds-body-xxxs-600-wide": "normal",
+    "sds-body-xxxxs-400-narrow": "normal",
+    "sds-body-xxxxs-400-wide": "normal",
+    "sds-body-xxxxs-500-narrow": "normal",
+    "sds-body-xxxxs-500-wide": "normal",
+    "sds-body-xxxxs-600-narrow": "normal",
+    "sds-body-xxxxs-600-wide": "normal",
     "sds-caps-xxs-600-narrow": "normal",
     "sds-caps-xxs-600-wide": "normal",
     "sds-caps-xxxs-600-narrow": "normal",
@@ -229,6 +253,12 @@
     "sds-tabular-xxxs-500-wide": "tabular-nums",
     "sds-tabular-xxxs-600-narrow": "tabular-nums",
     "sds-tabular-xxxs-600-wide": "tabular-nums",
+    "sds-tabular-xxxxs-400-narrow": "tabular-nums",
+    "sds-tabular-xxxxs-400-wide": "tabular-nums",
+    "sds-tabular-xxxxs-500-narrow": "tabular-nums",
+    "sds-tabular-xxxxs-500-wide": "tabular-nums",
+    "sds-tabular-xxxxs-600-narrow": "tabular-nums",
+    "sds-tabular-xxxxs-600-wide": "tabular-nums",
     "sds-code-s-400-narrow": "normal",
     "sds-code-s-400-wide": "normal",
     "sds-code-s-500-narrow": "normal",
@@ -282,7 +312,13 @@
     "sds-link-xxxs-500-narrow": "normal",
     "sds-link-xxxs-500-wide": "normal",
     "sds-link-xxxs-600-narrow": "normal",
-    "sds-link-xxxs-600-wide": "normal"
+    "sds-link-xxxs-600-wide": "normal",
+    "sds-link-xxxxs-400-narrow": "normal",
+    "sds-link-xxxxs-400-wide": "normal",
+    "sds-link-xxxxs-500-narrow": "normal",
+    "sds-link-xxxxs-500-wide": "normal",
+    "sds-link-xxxxs-600-narrow": "normal",
+    "sds-link-xxxxs-600-wide": "normal"
   },
   "letterSpacing": {
     "sds-body-l-400-narrow": "0px",
@@ -321,6 +357,12 @@
     "sds-body-xxxs-500-wide": "0.06px",
     "sds-body-xxxs-600-narrow": "0.06px",
     "sds-body-xxxs-600-wide": "0.06px",
+    "sds-body-xxxxs-400-narrow": "0.06px",
+    "sds-body-xxxxs-400-wide": "0.06px",
+    "sds-body-xxxxs-500-narrow": "0.06px",
+    "sds-body-xxxxs-500-wide": "0.06px",
+    "sds-body-xxxxs-600-narrow": "0.06px",
+    "sds-body-xxxxs-600-wide": "0.06px",
     "sds-caps-xxs-600-narrow": "0.4px",
     "sds-caps-xxs-600-wide": "0.4px",
     "sds-caps-xxxs-600-narrow": "0.4px",
@@ -367,6 +409,12 @@
     "sds-tabular-xxxs-500-wide": "-0.25px",
     "sds-tabular-xxxs-600-narrow": "-0.25px",
     "sds-tabular-xxxs-600-wide": "-0.25px",
+    "sds-tabular-xxxxs-400-narrow": "-0.25px",
+    "sds-tabular-xxxxs-400-wide": "-0.25px",
+    "sds-tabular-xxxxs-500-narrow": "-0.25px",
+    "sds-tabular-xxxxs-500-wide": "-0.25px",
+    "sds-tabular-xxxxs-600-narrow": "-0.25px",
+    "sds-tabular-xxxxs-600-wide": "-0.25px",
     "sds-code-s-400-narrow": "0px",
     "sds-code-s-400-wide": "0px",
     "sds-code-s-500-narrow": "0px",
@@ -420,7 +468,13 @@
     "sds-link-xxxs-500-narrow": "0.06px",
     "sds-link-xxxs-500-wide": "0.06px",
     "sds-link-xxxs-600-narrow": "0.06px",
-    "sds-link-xxxs-600-wide": "0.06px"
+    "sds-link-xxxs-600-wide": "0.06px",
+    "sds-link-xxxxs-400-narrow": "0.06px",
+    "sds-link-xxxxs-400-wide": "0.06px",
+    "sds-link-xxxxs-500-narrow": "0.06px",
+    "sds-link-xxxxs-500-wide": "0.06px",
+    "sds-link-xxxxs-600-narrow": "0.06px",
+    "sds-link-xxxxs-600-wide": "0.06px"
   },
   "lineHeight": {
     "sds-body-l-400-narrow": "26px",
@@ -459,6 +513,12 @@
     "sds-body-xxxs-500-wide": "16px",
     "sds-body-xxxs-600-narrow": "18px",
     "sds-body-xxxs-600-wide": "16px",
+    "sds-body-xxxxs-400-narrow": "14px",
+    "sds-body-xxxxs-400-wide": "14px",
+    "sds-body-xxxxs-500-narrow": "14px",
+    "sds-body-xxxxs-500-wide": "14px",
+    "sds-body-xxxxs-600-narrow": "14px",
+    "sds-body-xxxxs-600-wide": "14px",
     "sds-caps-xxs-600-narrow": "18px",
     "sds-caps-xxs-600-wide": "18px",
     "sds-caps-xxxs-600-narrow": "16px",
@@ -505,6 +565,12 @@
     "sds-tabular-xxxs-500-wide": "16px",
     "sds-tabular-xxxs-600-narrow": "16px",
     "sds-tabular-xxxs-600-wide": "16px",
+    "sds-tabular-xxxxs-400-narrow": "14px",
+    "sds-tabular-xxxxs-400-wide": "14px",
+    "sds-tabular-xxxxs-500-narrow": "14px",
+    "sds-tabular-xxxxs-500-wide": "14px",
+    "sds-tabular-xxxxs-600-narrow": "14px",
+    "sds-tabular-xxxxs-600-wide": "14px",
     "sds-code-s-400-narrow": "24px",
     "sds-code-s-400-wide": "24px",
     "sds-code-s-500-narrow": "24px",
@@ -558,7 +624,13 @@
     "sds-link-xxxs-500-narrow": "18px",
     "sds-link-xxxs-500-wide": "16px",
     "sds-link-xxxs-600-narrow": "18px",
-    "sds-link-xxxs-600-wide": "16px"
+    "sds-link-xxxs-600-wide": "16px",
+    "sds-link-xxxxs-400-narrow": "14px",
+    "sds-link-xxxxs-400-wide": "14px",
+    "sds-link-xxxxs-500-narrow": "14px",
+    "sds-link-xxxxs-500-wide": "14px",
+    "sds-link-xxxxs-600-narrow": "14px",
+    "sds-link-xxxxs-600-wide": "14px"
   },
   "textDecoration": {
     "sds-body-l-400-narrow": "none",
@@ -597,6 +669,12 @@
     "sds-body-xxxs-500-wide": "none",
     "sds-body-xxxs-600-narrow": "none",
     "sds-body-xxxs-600-wide": "none",
+    "sds-body-xxxxs-400-narrow": "none",
+    "sds-body-xxxxs-400-wide": "none",
+    "sds-body-xxxxs-500-narrow": "none",
+    "sds-body-xxxxs-500-wide": "none",
+    "sds-body-xxxxs-600-narrow": "none",
+    "sds-body-xxxxs-600-wide": "none",
     "sds-caps-xxs-600-narrow": "none",
     "sds-caps-xxs-600-wide": "none",
     "sds-caps-xxxs-600-narrow": "none",
@@ -643,6 +721,12 @@
     "sds-tabular-xxxs-500-wide": "none",
     "sds-tabular-xxxs-600-narrow": "none",
     "sds-tabular-xxxs-600-wide": "none",
+    "sds-tabular-xxxxs-400-narrow": "none",
+    "sds-tabular-xxxxs-400-wide": "none",
+    "sds-tabular-xxxxs-500-narrow": "none",
+    "sds-tabular-xxxxs-500-wide": "none",
+    "sds-tabular-xxxxs-600-narrow": "none",
+    "sds-tabular-xxxxs-600-wide": "none",
     "sds-code-s-400-narrow": "none",
     "sds-code-s-400-wide": "none",
     "sds-code-s-500-narrow": "none",
@@ -696,7 +780,13 @@
     "sds-link-xxxs-500-narrow": "underline",
     "sds-link-xxxs-500-wide": "underline",
     "sds-link-xxxs-600-narrow": "underline",
-    "sds-link-xxxs-600-wide": "underline"
+    "sds-link-xxxs-600-wide": "underline",
+    "sds-link-xxxxs-400-narrow": "underline",
+    "sds-link-xxxxs-400-wide": "underline",
+    "sds-link-xxxxs-500-narrow": "underline",
+    "sds-link-xxxxs-500-wide": "underline",
+    "sds-link-xxxxs-600-narrow": "underline",
+    "sds-link-xxxxs-600-wide": "underline"
   },
   "textTransform": {
     "sds-body-l-400-narrow": "none",
@@ -735,6 +825,12 @@
     "sds-body-xxxs-500-wide": "none",
     "sds-body-xxxs-600-narrow": "none",
     "sds-body-xxxs-600-wide": "none",
+    "sds-body-xxxxs-400-narrow": "none",
+    "sds-body-xxxxs-400-wide": "none",
+    "sds-body-xxxxs-500-narrow": "none",
+    "sds-body-xxxxs-500-wide": "none",
+    "sds-body-xxxxs-600-narrow": "none",
+    "sds-body-xxxxs-600-wide": "none",
     "sds-caps-xxs-600-narrow": "uppercase",
     "sds-caps-xxs-600-wide": "uppercase",
     "sds-caps-xxxs-600-narrow": "uppercase",
@@ -781,6 +877,12 @@
     "sds-tabular-xxxs-500-wide": "none",
     "sds-tabular-xxxs-600-narrow": "none",
     "sds-tabular-xxxs-600-wide": "none",
+    "sds-tabular-xxxxs-400-narrow": "none",
+    "sds-tabular-xxxxs-400-wide": "none",
+    "sds-tabular-xxxxs-500-narrow": "none",
+    "sds-tabular-xxxxs-500-wide": "none",
+    "sds-tabular-xxxxs-600-narrow": "none",
+    "sds-tabular-xxxxs-600-wide": "none",
     "sds-code-s-400-narrow": "none",
     "sds-code-s-400-wide": "none",
     "sds-code-s-500-narrow": "none",
@@ -834,7 +936,13 @@
     "sds-link-xxxs-500-narrow": "none",
     "sds-link-xxxs-500-wide": "none",
     "sds-link-xxxs-600-narrow": "none",
-    "sds-link-xxxs-600-wide": "none"
+    "sds-link-xxxs-600-wide": "none",
+    "sds-link-xxxxs-400-narrow": "none",
+    "sds-link-xxxxs-400-wide": "none",
+    "sds-link-xxxxs-500-narrow": "none",
+    "sds-link-xxxxs-500-wide": "none",
+    "sds-link-xxxxs-600-narrow": "none",
+    "sds-link-xxxxs-600-wide": "none"
   },
   "typography": {
     "sds-body-l-400-narrow": {
@@ -845,9 +953,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "26px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "26px"
       }
     },
     "sds-body-l-400-wide": {
@@ -858,9 +964,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "28px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "28px"
       }
     },
     "sds-body-l-500-narrow": {
@@ -871,9 +975,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "26px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "26px"
       }
     },
     "sds-body-l-500-wide": {
@@ -884,9 +986,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "28px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "28px"
       }
     },
     "sds-body-l-600-narrow": {
@@ -897,9 +997,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "26px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "26px"
       }
     },
     "sds-body-l-600-wide": {
@@ -910,9 +1008,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "28px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "28px"
       }
     },
     "sds-body-m-400-narrow": {
@@ -923,9 +1019,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-m-400-wide": {
@@ -936,9 +1030,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "26px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "26px"
       }
     },
     "sds-body-m-500-narrow": {
@@ -949,9 +1041,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-m-500-wide": {
@@ -962,9 +1052,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "26px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "26px"
       }
     },
     "sds-body-m-600-narrow": {
@@ -975,9 +1063,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-m-600-wide": {
@@ -988,9 +1074,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "26px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "26px"
       }
     },
     "sds-body-s-400-narrow": {
@@ -1001,9 +1085,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-s-400-wide": {
@@ -1014,9 +1096,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-s-500-narrow": {
@@ -1027,9 +1107,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-s-500-wide": {
@@ -1040,9 +1118,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-s-600-narrow": {
@@ -1053,9 +1129,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-s-600-wide": {
@@ -1066,9 +1140,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-body-xs-400-narrow": {
@@ -1079,9 +1151,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-body-xs-400-wide": {
@@ -1092,9 +1162,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-body-xs-500-narrow": {
@@ -1105,9 +1173,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-body-xs-500-wide": {
@@ -1118,9 +1184,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-body-xs-600-narrow": {
@@ -1131,9 +1195,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-body-xs-600-wide": {
@@ -1144,9 +1206,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-body-xxs-400-narrow": {
@@ -1157,9 +1217,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxs-400-wide": {
@@ -1170,9 +1228,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxs-500-narrow": {
@@ -1183,9 +1239,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxs-500-wide": {
@@ -1196,9 +1250,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxs-600-narrow": {
@@ -1209,9 +1261,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxs-600-wide": {
@@ -1222,9 +1272,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxxs-400-narrow": {
@@ -1235,9 +1283,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxxs-400-wide": {
@@ -1248,9 +1294,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0.06px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-body-xxxs-500-narrow": {
@@ -1261,9 +1305,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxxs-500-wide": {
@@ -1274,9 +1316,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0.06px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-body-xxxs-600-narrow": {
@@ -1287,9 +1327,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.06px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-body-xxxs-600-wide": {
@@ -1300,9 +1338,73 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.06px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
+      }
+    },
+    "sds-body-xxxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-body-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px"
       }
     },
     "sds-caps-xxs-600-narrow": {
@@ -1314,7 +1416,6 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "18px",
-        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1327,7 +1428,6 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "18px",
-        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1340,7 +1440,6 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "16px",
-        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1353,7 +1452,6 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "16px",
-        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1366,7 +1464,6 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "16px",
-        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1379,7 +1476,6 @@
         "fontWeight": "600",
         "letterSpacing": "0.4px",
         "lineHeight": "14px",
-        "textDecoration": "none",
         "textTransform": "uppercase"
       }
     },
@@ -1391,9 +1487,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "30px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "30px"
       }
     },
     "sds-header-xxl-600-wide": {
@@ -1404,9 +1498,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "34px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "34px"
       }
     },
     "sds-header-xl-600-narrow": {
@@ -1417,9 +1509,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-header-xl-600-wide": {
@@ -1430,9 +1520,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "30px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "30px"
       }
     },
     "sds-header-l-600-narrow": {
@@ -1443,9 +1531,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "22px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "22px"
       }
     },
     "sds-header-l-600-wide": {
@@ -1456,9 +1542,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-header-m-600-narrow": {
@@ -1469,9 +1553,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-header-m-600-wide": {
@@ -1482,9 +1564,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "22px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "22px"
       }
     },
     "sds-header-s-600-narrow": {
@@ -1495,9 +1575,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.08px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-header-s-600-wide": {
@@ -1508,9 +1586,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.08px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-header-xs-600-narrow": {
@@ -1521,9 +1597,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.08px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-header-xs-600-wide": {
@@ -1534,9 +1608,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.08px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-header-xxs-600-narrow": {
@@ -1547,9 +1619,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.1px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-header-xxs-600-wide": {
@@ -1560,9 +1630,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.1px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-header-xxxs-600-narrow": {
@@ -1573,9 +1641,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.1px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-header-xxxs-600-wide": {
@@ -1586,9 +1652,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0.1px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-tabular-s-400-narrow": {
@@ -1599,9 +1663,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-tabular-s-400-wide": {
@@ -1612,9 +1674,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-tabular-s-500-narrow": {
@@ -1625,9 +1685,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-tabular-s-500-wide": {
@@ -1638,9 +1696,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-tabular-s-600-narrow": {
@@ -1651,9 +1707,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-tabular-s-600-wide": {
@@ -1664,9 +1718,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-tabular-xs-400-narrow": {
@@ -1677,9 +1729,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-tabular-xs-400-wide": {
@@ -1690,9 +1740,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.3px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-tabular-xs-500-narrow": {
@@ -1703,9 +1751,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-tabular-xs-500-wide": {
@@ -1716,9 +1762,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.3px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-tabular-xs-600-narrow": {
@@ -1729,9 +1773,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-tabular-xs-600-wide": {
@@ -1742,9 +1784,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.3px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-tabular-xxs-400-narrow": {
@@ -1755,9 +1795,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-tabular-xxs-400-wide": {
@@ -1768,9 +1806,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-tabular-xxs-500-narrow": {
@@ -1781,9 +1817,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-tabular-xxs-500-wide": {
@@ -1794,9 +1828,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-tabular-xxs-600-narrow": {
@@ -1807,9 +1839,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-tabular-xxs-600-wide": {
@@ -1820,9 +1850,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
-        "lineHeight": "18px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "18px"
       }
     },
     "sds-tabular-xxxs-400-narrow": {
@@ -1833,9 +1861,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-tabular-xxxs-400-wide": {
@@ -1846,9 +1872,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "400",
         "letterSpacing": "-0.25px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-tabular-xxxs-500-narrow": {
@@ -1859,9 +1883,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-tabular-xxxs-500-wide": {
@@ -1872,9 +1894,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "500",
         "letterSpacing": "-0.25px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-tabular-xxxs-600-narrow": {
@@ -1885,9 +1905,7 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
       }
     },
     "sds-tabular-xxxs-600-wide": {
@@ -1898,9 +1916,73 @@
         "fontVariantNumeric": "tabular-nums",
         "fontWeight": "600",
         "letterSpacing": "-0.25px",
-        "lineHeight": "16px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "16px"
+      }
+    },
+    "sds-tabular-xxxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "400",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "500",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
+      }
+    },
+    "sds-tabular-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "tabular-nums",
+        "fontWeight": "600",
+        "letterSpacing": "-0.25px",
+        "lineHeight": "14px"
       }
     },
     "sds-code-s-400-narrow": {
@@ -1911,9 +1993,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-code-s-400-wide": {
@@ -1924,9 +2004,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-code-s-500-narrow": {
@@ -1937,9 +2015,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-code-s-500-wide": {
@@ -1950,9 +2026,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-code-s-600-narrow": {
@@ -1963,9 +2037,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-code-s-600-wide": {
@@ -1976,9 +2048,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "24px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "24px"
       }
     },
     "sds-code-xs-400-narrow": {
@@ -1989,9 +2059,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-code-xs-400-wide": {
@@ -2002,9 +2070,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "400",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-code-xs-500-narrow": {
@@ -2015,9 +2081,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-code-xs-500-wide": {
@@ -2028,9 +2092,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "500",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-code-xs-600-narrow": {
@@ -2041,9 +2103,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-code-xs-600-wide": {
@@ -2054,9 +2114,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "600",
         "letterSpacing": "0px",
-        "lineHeight": "20px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "20px"
       }
     },
     "sds-title-s-700-narrow": {
@@ -2067,9 +2125,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "700",
         "letterSpacing": "0px",
-        "lineHeight": "34px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "34px"
       }
     },
     "sds-title-s-700-wide": {
@@ -2080,9 +2136,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "700",
         "letterSpacing": "0px",
-        "lineHeight": "40px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "40px"
       }
     },
     "sds-title-m-700-narrow": {
@@ -2093,9 +2147,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "700",
         "letterSpacing": "0px",
-        "lineHeight": "40px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "40px"
       }
     },
     "sds-title-m-700-wide": {
@@ -2106,9 +2158,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "700",
         "letterSpacing": "0px",
-        "lineHeight": "50px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "50px"
       }
     },
     "sds-title-l-700-narrow": {
@@ -2119,9 +2169,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "700",
         "letterSpacing": "0px",
-        "lineHeight": "50px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "50px"
       }
     },
     "sds-title-l-700-wide": {
@@ -2132,9 +2180,7 @@
         "fontVariantNumeric": "normal",
         "fontWeight": "700",
         "letterSpacing": "0px",
-        "lineHeight": "64px",
-        "textDecoration": "none",
-        "textTransform": "none"
+        "lineHeight": "64px"
       }
     },
     "sds-link-l-400-narrow": {
@@ -2146,8 +2192,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "26px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-l-400-wide": {
@@ -2159,8 +2204,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "28px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-l-500-narrow": {
@@ -2172,8 +2216,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "26px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-l-500-wide": {
@@ -2185,8 +2228,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "28px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-l-600-narrow": {
@@ -2198,8 +2240,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "26px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-l-600-wide": {
@@ -2211,8 +2252,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "28px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-m-400-narrow": {
@@ -2224,8 +2264,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-m-400-wide": {
@@ -2237,8 +2276,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "26px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-m-500-narrow": {
@@ -2250,8 +2288,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-m-500-wide": {
@@ -2263,8 +2300,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "26px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-m-600-narrow": {
@@ -2276,8 +2312,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-m-600-wide": {
@@ -2289,8 +2324,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "26px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-s-400-narrow": {
@@ -2302,8 +2336,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-s-400-wide": {
@@ -2315,8 +2348,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-s-500-narrow": {
@@ -2328,8 +2360,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-s-500-wide": {
@@ -2341,8 +2372,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-s-600-narrow": {
@@ -2354,8 +2384,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-s-600-wide": {
@@ -2367,8 +2396,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "24px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xs-400-narrow": {
@@ -2380,8 +2408,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "20px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xs-400-wide": {
@@ -2393,8 +2420,7 @@
         "fontWeight": "400",
         "letterSpacing": "0px",
         "lineHeight": "20px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xs-500-narrow": {
@@ -2406,8 +2432,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xs-500-wide": {
@@ -2419,8 +2444,7 @@
         "fontWeight": "500",
         "letterSpacing": "0px",
         "lineHeight": "20px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xs-600-narrow": {
@@ -2432,8 +2456,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xs-600-wide": {
@@ -2445,8 +2468,7 @@
         "fontWeight": "600",
         "letterSpacing": "0px",
         "lineHeight": "20px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxs-400-narrow": {
@@ -2458,8 +2480,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxs-400-wide": {
@@ -2471,8 +2492,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxs-500-narrow": {
@@ -2484,8 +2504,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxs-500-wide": {
@@ -2497,8 +2516,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxs-600-narrow": {
@@ -2510,8 +2528,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxs-600-wide": {
@@ -2523,8 +2540,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxxs-400-narrow": {
@@ -2536,8 +2552,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxxs-400-wide": {
@@ -2549,8 +2564,7 @@
         "fontWeight": "400",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxxs-500-narrow": {
@@ -2562,8 +2576,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxxs-500-wide": {
@@ -2575,8 +2588,7 @@
         "fontWeight": "500",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxxs-600-narrow": {
@@ -2588,8 +2600,7 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "18px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
       }
     },
     "sds-link-xxxs-600-wide": {
@@ -2601,8 +2612,79 @@
         "fontWeight": "600",
         "letterSpacing": "0.06px",
         "lineHeight": "16px",
-        "textDecoration": "underline",
-        "textTransform": "none"
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-400-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-400-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-500-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-500-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "500",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-600-narrow": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
+      }
+    },
+    "sds-link-xxxxs-600-wide": {
+      "css": {
+        "fontFamily": "var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "600",
+        "letterSpacing": "0.06px",
+        "lineHeight": "14px",
+        "textDecoration": "underline"
       }
     }
   },
@@ -2660,6 +2742,14 @@
       "sds-color-primitive-gray-700": "#ededed",
       "sds-color-primitive-gray-800": "#fafafa",
       "sds-color-primitive-gray-900": "#ffffff",
+      "sds-color-primitive-indigo-100": "#1d004d",
+      "sds-color-primitive-indigo-200": "#330296",
+      "sds-color-primitive-indigo-300": "#521ec9",
+      "sds-color-primitive-indigo-400": "#6e4ff9",
+      "sds-color-primitive-indigo-500": "#9785ff",
+      "sds-color-primitive-indigo-600": "#beb5ff",
+      "sds-color-primitive-indigo-700": "#dcd9ff",
+      "sds-color-primitive-indigo-800": "#f1f0ff",
       "sds-color-primitive-green-100": "#082608",
       "sds-color-primitive-green-200": "#063617",
       "sds-color-primitive-green-300": "#10632e",
@@ -2694,74 +2784,89 @@
       "sds-color-primitive-yellow-800": "#ffe6a8",
       "sds-color-primitive-overlay-100": "rgba(0, 0, 0, 0.08)",
       "sds-color-primitive-overlay-200": "rgba(0, 0, 0, 0.03)",
-      "sds-color-semantic-accent-border": "#a2c9ff",
-      "sds-color-semantic-accent-border-focus": "#a2c9ff",
-      "sds-color-semantic-accent-border-hover": "#cde3ff",
-      "sds-color-semantic-accent-border-open": "#a2c9ff",
-      "sds-color-semantic-accent-border-pressed": "#e2eeff",
-      "sds-color-semantic-accent-border-selected": "#a2c9ff",
-      "sds-color-semantic-accent-fill-hover": "#cde3ff",
-      "sds-color-semantic-accent-fill-pressed": "#e2eeff",
-      "sds-color-semantic-accent-fill-primary": "#2876f9",
-      "sds-color-semantic-accent-ornament": "#a2c9ff",
-      "sds-color-semantic-accent-ornament-focus": "#a2c9ff",
-      "sds-color-semantic-accent-ornament-hover": "#cde3ff",
-      "sds-color-semantic-accent-ornament-open": "#a2c9ff",
-      "sds-color-semantic-accent-ornament-pressed": "#e2eeff",
-      "sds-color-semantic-accent-ornament-selected": "#a2c9ff",
-      "sds-color-semantic-accent-surface-primary": "#2876f9",
-      "sds-color-semantic-accent-surface-secondary": "#0f1d4a",
-      "sds-color-semantic-accent-text-action": "#a2c9ff",
-      "sds-color-semantic-accent-text-action-hover": "#cde3ff",
-      "sds-color-semantic-accent-text-action-pressed": "#e2eeff",
+      "sds-color-semantic-accent-border": "#beb5ff",
+      "sds-color-semantic-accent-border-focus": "#beb5ff",
+      "sds-color-semantic-accent-border-hover": "#dcd9ff",
+      "sds-color-semantic-accent-border-open": "#beb5ff",
+      "sds-color-semantic-accent-border-pressed": "#f1f0ff",
+      "sds-color-semantic-accent-border-selected": "#beb5ff",
+      "sds-color-semantic-accent-fill-hover": "#dcd9ff",
+      "sds-color-semantic-accent-fill-pressed": "#f1f0ff",
+      "sds-color-semantic-accent-fill-primary": "#6e4ff9",
+      "sds-color-semantic-accent-ornament": "#beb5ff",
+      "sds-color-semantic-accent-ornament-focus": "#beb5ff",
+      "sds-color-semantic-accent-ornament-hover": "#dcd9ff",
+      "sds-color-semantic-accent-ornament-open": "#beb5ff",
+      "sds-color-semantic-accent-ornament-pressed": "#f1f0ff",
+      "sds-color-semantic-accent-ornament-selected": "#beb5ff",
+      "sds-color-semantic-accent-surface-primary": "#6e4ff9",
+      "sds-color-semantic-accent-surface-secondary": "#1d004d",
+      "sds-color-semantic-accent-text-action": "#beb5ff",
+      "sds-color-semantic-accent-text-action-hover": "#dcd9ff",
+      "sds-color-semantic-accent-text-action-pressed": "#f1f0ff",
       "sds-color-semantic-base-background-primary": "#101010",
-      "sds-color-semantic-base-background-primary-inverse": "#ffffff",
-      "sds-color-semantic-base-background-secondary": "#333333",
-      "sds-color-semantic-base-background-secondary-inverse": "#ededed",
-      "sds-color-semantic-base-background-tertiary": "#494949",
-      "sds-color-semantic-base-border-on-fill": "#000000",
+      "sds-color-semantic-base-background-primary-dark": "#101010",
+      "sds-color-semantic-base-background-primary-inverse": "#101010",
+      "sds-color-semantic-base-background-secondary": "#33333399",
+      "sds-color-semantic-base-background-secondary-dark": "#33333399",
+      "sds-color-semantic-base-background-secondary-inverse": "#33333399",
+      "sds-color-semantic-base-background-tertiary": "#333333",
+      "sds-color-semantic-base-border-on-fill": "#ffffff",
       "sds-color-semantic-base-border-primary": "#cdcdcd",
       "sds-color-semantic-base-border-primary-disabled": "#696969",
-      "sds-color-semantic-base-border-primary-disabled-inverse": "#cdcdcd",
-      "sds-color-semantic-base-border-primary-hover": "#ffffff",
-      "sds-color-semantic-base-border-primary-hover-inverse": "#000000",
-      "sds-color-semantic-base-border-primary-inverse": "#696969",
-      "sds-color-semantic-base-border-primary-pressed": "#ffffff",
-      "sds-color-semantic-base-border-primary-pressed-inverse": "#000000",
+      "sds-color-semantic-base-border-primary-disabled-on-dark": "#696969",
+      "sds-color-semantic-base-border-primary-disabled-inverse": "#696969",
+      "sds-color-semantic-base-border-primary-interaction": "#ffffff",
+      "sds-color-semantic-base-border-primary-interaction-on-dark": "#ffffff",
+      "sds-color-semantic-base-border-primary-hover-inverse": "#ffffff",
+      "sds-color-semantic-base-border-primary-on-dark": "#cdcdcd",
+      "sds-color-semantic-base-border-primary-inverse": "#cdcdcd",
+      "sds-color-semantic-base-border-primary-pressed-inverse": "#ffffff",
       "sds-color-semantic-base-border-secondary": "#696969",
       "sds-color-semantic-base-divider": "#494949",
-      "sds-color-semantic-base-divider-inverse": "#cdcdcd",
-      "sds-color-semantic-base-fill-disabled": "#494949",
-      "sds-color-semantic-base-fill-hover": "#69696994",
-      "sds-color-semantic-base-fill-hover-inverse": "#69696914",
-      "sds-color-semantic-base-fill-open": "#69696994",
-      "sds-color-semantic-base-fill-open-inverse": "#69696914",
-      "sds-color-semantic-base-fill-pressed": "#69696994",
-      "sds-color-semantic-base-fill-pressed-inverse": "#69696914",
+      "sds-color-semantic-base-divider-on-dark": "#494949",
+      "sds-color-semantic-base-divider-inverse": "#494949",
+      "sds-color-semantic-base-fill-disabled": "#333333",
+      "sds-color-semantic-base-fill-interaction": "#69696952",
+      "sds-color-semantic-base-fill-interaction-on-dark": "#69696952",
+      "sds-color-semantic-base-fill-hover-inverse": "#69696952",
+      "sds-color-semantic-base-fill-open-inverse": "#69696952",
+      "sds-color-semantic-base-fill-pressed": "#69696966",
+      "sds-color-semantic-base-fill-pressed-on-dark": "#69696966",
+      "sds-color-semantic-base-fill-pressed-inverse": "#69696952",
       "sds-color-semantic-base-fill-primary": "#333333",
       "sds-color-semantic-base-fill-selected": "#ffffff",
       "sds-color-semantic-base-ornament-disabled": "#696969",
-      "sds-color-semantic-base-ornament-disabled-inverse": "#cdcdcd",
+      "sds-color-semantic-base-ornament-disabled-on-dark": "#696969",
+      "sds-color-semantic-base-ornament-disabled-inverse": "#696969",
       "sds-color-semantic-base-ornament-on-fill": "#ffffff",
       "sds-color-semantic-base-ornament-primary": "#ffffff",
+      "sds-color-semantic-base-ornament-primary-on-dark": "#ffffff",
       "sds-color-semantic-base-ornament-primary-inverse": "#000000",
       "sds-color-semantic-base-ornament-secondary": "#cdcdcd",
-      "sds-color-semantic-base-ornament-secondary-hover": "#ffffff",
-      "sds-color-semantic-base-ornament-secondary-hover-inverse": "#000000",
-      "sds-color-semantic-base-ornament-secondary-inverse": "#696969",
-      "sds-color-semantic-base-ornament-secondary-pressed": "#ffffff",
-      "sds-color-semantic-base-ornament-secondary-pressed-inverse": "#000000",
-      "sds-color-semantic-base-surface": "#333333",
-      "sds-color-semantic-base-surface-inverse": "#ededed",
+      "sds-color-semantic-base-ornament-secondary-interaction": "#ffffff",
+      "sds-color-semantic-base-ornament-secondary-interaction-on-dark": "#ffffff",
+      "sds-color-semantic-base-ornament-secondary-hover-inverse": "#ffffff",
+      "sds-color-semantic-base-ornament-secondary-on-dark": "#cdcdcd",
+      "sds-color-semantic-base-ornament-secondary-inverse": "#cdcdcd",
+      "sds-color-semantic-base-ornament-secondary-pressed-inverse": "#ffffff",
+      "sds-color-semantic-base-surface-primary": "#333333",
+      "sds-color-semantic-base-surface-secondary": "#69696952",
+      "sds-color-semantic-base-surface-primary-dark": "#333333",
+      "sds-color-semantic-base-surface-inverse": "#333333",
       "sds-color-semantic-base-text-disabled": "#696969",
-      "sds-color-semantic-base-text-disabled-inverse": "#cdcdcd",
+      "sds-color-semantic-base-text-disabled-on-dark": "#696969",
+      "sds-color-semantic-base-text-disabled-inverse": "#696969",
       "sds-color-semantic-base-text-on-fill": "#ffffff",
       "sds-color-semantic-base-text-primary": "#ffffff",
+      "sds-color-semantic-base-text-primary-on-dark": "#ffffff",
       "sds-color-semantic-base-text-primary-inverse": "#000000",
       "sds-color-semantic-base-text-secondary": "#cdcdcd",
-      "sds-color-semantic-base-text-secondary-inverse": "#696969",
+      "sds-color-semantic-base-text-secondary-on-dark": "#cdcdcd",
+      "sds-color-semantic-base-text-secondary-inverse": "#cdcdcd",
       "sds-color-semantic-base-text-tertiary": "#949494",
-      "sds-color-semantic-base-text-tertiary-inverse": "#aaaaaa",
+      "sds-color-semantic-base-text-tertiary-on-dark": "#949494",
+      "sds-color-semantic-base-text-tertiary-inverse": "#949494",
       "sds-color-semantic-beta-border": "#cebef8",
       "sds-color-semantic-beta-fill-hover": "#e4dcfc",
       "sds-color-semantic-beta-fill-pressed": "#f0ebfe",
@@ -2837,6 +2942,14 @@
       "sds-color-primitive-gray-700": "#3b3b3b",
       "sds-color-primitive-gray-800": "#1b1b1b",
       "sds-color-primitive-gray-900": "#000000",
+      "sds-color-primitive-indigo-100": "#f1f0ff",
+      "sds-color-primitive-indigo-200": "#dcd9ff",
+      "sds-color-primitive-indigo-300": "#beb5ff",
+      "sds-color-primitive-indigo-400": "#9d8bff",
+      "sds-color-primitive-indigo-500": "#6e4ff9",
+      "sds-color-primitive-indigo-600": "#4e18cc",
+      "sds-color-primitive-indigo-700": "#330296",
+      "sds-color-primitive-indigo-800": "#1d004d",
       "sds-color-primitive-green-100": "#ebf9ed",
       "sds-color-primitive-green-200": "#b9ecc3",
       "sds-color-primitive-green-300": "#7fd693",
@@ -2847,7 +2960,7 @@
       "sds-color-primitive-green-800": "#001f00",
       "sds-color-primitive-purple-100": "#efeafe",
       "sds-color-primitive-purple-200": "#e4dbfc",
-      "sds-color-primitive-purple-300": "#cbbaF8",
+      "sds-color-primitive-purple-300": "#cbbaf8",
       "sds-color-primitive-purple-400": "#b296f2",
       "sds-color-primitive-purple-500": "#8b54e2",
       "sds-color-primitive-purple-600": "#6526b5",
@@ -2871,73 +2984,88 @@
       "sds-color-primitive-yellow-800": "#541700",
       "sds-color-primitive-overlay-100": "rgba(0, 0, 0, 0.08)",
       "sds-color-primitive-overlay-200": "rgba(0, 0, 0, 0.03)",
-      "sds-color-semantic-accent-border": "#1a6cef",
-      "sds-color-semantic-accent-border-focus": "#1a6cef",
-      "sds-color-semantic-accent-border-hover": "#0041b9",
-      "sds-color-semantic-accent-border-open": "#1a6cef",
-      "sds-color-semantic-accent-border-pressed": "#002d90",
-      "sds-color-semantic-accent-border-selected": "#1a6cef",
-      "sds-color-semantic-accent-fill-hover": "#0041b9",
-      "sds-color-semantic-accent-fill-pressed": "#002d90",
-      "sds-color-semantic-accent-fill-primary": "#1a6cef",
-      "sds-color-semantic-accent-ornament": "#1a6cef",
-      "sds-color-semantic-accent-ornament-focus": "#1a6cef",
-      "sds-color-semantic-accent-ornament-hover": "#0041b9",
-      "sds-color-semantic-accent-ornament-open": "#1a6cef",
-      "sds-color-semantic-accent-ornament-pressed": "#002d90",
-      "sds-color-semantic-accent-ornament-selected": "#1a6cef",
-      "sds-color-semantic-accent-surface-primary": "#1a6cef",
-      "sds-color-semantic-accent-surface-secondary": "#edf3fd",
-      "sds-color-semantic-accent-text-action": "#1a6cef",
-      "sds-color-semantic-accent-text-action-hover": "#0041b9",
-      "sds-color-semantic-accent-text-action-pressed": "#002d90",
+      "sds-color-semantic-accent-border": "#6e4ff9",
+      "sds-color-semantic-accent-border-focus": "#6e4ff9",
+      "sds-color-semantic-accent-border-hover": "#4e18cc",
+      "sds-color-semantic-accent-border-open": "#6e4ff9",
+      "sds-color-semantic-accent-border-pressed": "#330296",
+      "sds-color-semantic-accent-border-selected": "#6e4ff9",
+      "sds-color-semantic-accent-fill-hover": "#4e18cc",
+      "sds-color-semantic-accent-fill-pressed": "#330296",
+      "sds-color-semantic-accent-fill-primary": "#6e4ff9",
+      "sds-color-semantic-accent-ornament": "#6e4ff9",
+      "sds-color-semantic-accent-ornament-focus": "#6e4ff9",
+      "sds-color-semantic-accent-ornament-hover": "#4e18cc",
+      "sds-color-semantic-accent-ornament-open": "#6e4ff9",
+      "sds-color-semantic-accent-ornament-pressed": "#330296",
+      "sds-color-semantic-accent-ornament-selected": "#6e4ff9",
+      "sds-color-semantic-accent-surface-primary": "#6e4ff9",
+      "sds-color-semantic-accent-surface-secondary": "#f1f0ff",
+      "sds-color-semantic-accent-text-action": "#6e4ff9",
+      "sds-color-semantic-accent-text-action-hover": "#4e18cc",
+      "sds-color-semantic-accent-text-action-pressed": "#330296",
       "sds-color-semantic-base-background-primary": "#ffffff",
+      "sds-color-semantic-base-background-primary-dark": "#000000",
       "sds-color-semantic-base-background-primary-inverse": "#000000",
-      "sds-color-semantic-base-background-secondary": "#f8f8f8",
+      "sds-color-semantic-base-background-secondary": "#ededed66",
+      "sds-color-semantic-base-background-secondary-dark": "#3b3b3b9e",
       "sds-color-semantic-base-background-secondary-inverse": "#3b3b3b",
       "sds-color-semantic-base-background-tertiary": "#ededed",
       "sds-color-semantic-base-border-on-fill": "#ffffff",
       "sds-color-semantic-base-border-primary": "#767676",
       "sds-color-semantic-base-border-primary-disabled": "#c3c3c3",
+      "sds-color-semantic-base-border-primary-disabled-on-dark": "#767676",
       "sds-color-semantic-base-border-primary-disabled-inverse": "#767676",
-      "sds-color-semantic-base-border-primary-hover": "#000000",
+      "sds-color-semantic-base-border-primary-interaction": "#000000",
+      "sds-color-semantic-base-border-primary-interaction-on-dark": "#ffffff",
       "sds-color-semantic-base-border-primary-hover-inverse": "#ffffff",
+      "sds-color-semantic-base-border-primary-on-dark": "#c3c3c3",
       "sds-color-semantic-base-border-primary-inverse": "#c3c3c3",
-      "sds-color-semantic-base-border-primary-pressed": "#000000",
       "sds-color-semantic-base-border-primary-pressed-inverse": "#ffffff",
       "sds-color-semantic-base-border-secondary": "#c3c3c3",
       "sds-color-semantic-base-divider": "#dfdfdf",
-      "sds-color-semantic-base-divider-inverse": "#767676",
-      "sds-color-semantic-base-fill-disabled": "#dfdfdf",
-      "sds-color-semantic-base-fill-hover": "#c3c3c333",
-      "sds-color-semantic-base-fill-hover-inverse": "#c3c3c357",
-      "sds-color-semantic-base-fill-open": "#c3c3c333",
+      "sds-color-semantic-base-divider-on-dark": "#3b3b3b",
+      "sds-color-semantic-base-divider-inverse": "#3b3b3b",
+      "sds-color-semantic-base-fill-disabled": "#ededed",
+      "sds-color-semantic-base-fill-interaction": "#c3c3c333",
+      "sds-color-semantic-base-fill-interaction-on-dark": "#c3c3c333",
+      "sds-color-semantic-base-fill-hover-inverse": "#c3c3c333",
       "sds-color-semantic-base-fill-open-inverse": "#c3c3c357",
-      "sds-color-semantic-base-fill-pressed": "#c3c3c333",
+      "sds-color-semantic-base-fill-pressed": "#c3c3c34d",
+      "sds-color-semantic-base-fill-pressed-on-dark": "#c3c3c33d",
       "sds-color-semantic-base-fill-pressed-inverse": "#c3c3c357",
       "sds-color-semantic-base-fill-primary": "#ffffff",
       "sds-color-semantic-base-fill-selected": "#000000",
       "sds-color-semantic-base-ornament-disabled": "#c3c3c3",
+      "sds-color-semantic-base-ornament-disabled-on-dark": "#767676",
       "sds-color-semantic-base-ornament-disabled-inverse": "#767676",
       "sds-color-semantic-base-ornament-on-fill": "#ffffff",
       "sds-color-semantic-base-ornament-primary": "#000000",
+      "sds-color-semantic-base-ornament-primary-on-dark": "#ffffff",
       "sds-color-semantic-base-ornament-primary-inverse": "#ffffff",
       "sds-color-semantic-base-ornament-secondary": "#767676",
-      "sds-color-semantic-base-ornament-secondary-hover": "#000000",
+      "sds-color-semantic-base-ornament-secondary-interaction": "#000000",
+      "sds-color-semantic-base-ornament-secondary-interaction-on-dark": "#ffffff",
       "sds-color-semantic-base-ornament-secondary-hover-inverse": "#ffffff",
+      "sds-color-semantic-base-ornament-secondary-on-dark": "#c3c3c3",
       "sds-color-semantic-base-ornament-secondary-inverse": "#c3c3c3",
-      "sds-color-semantic-base-ornament-secondary-pressed": "#000000",
       "sds-color-semantic-base-ornament-secondary-pressed-inverse": "#ffffff",
-      "sds-color-semantic-base-surface": "#ffffff",
+      "sds-color-semantic-base-surface-primary": "#ffffff",
+      "sds-color-semantic-base-surface-secondary": "#c3c3c333",
+      "sds-color-semantic-base-surface-primary-dark": "#000000",
       "sds-color-semantic-base-surface-inverse": "#000000",
       "sds-color-semantic-base-text-disabled": "#c3c3c3",
+      "sds-color-semantic-base-text-disabled-on-dark": "#767676",
       "sds-color-semantic-base-text-disabled-inverse": "#767676",
       "sds-color-semantic-base-text-on-fill": "#ffffff",
       "sds-color-semantic-base-text-primary": "#000000",
+      "sds-color-semantic-base-text-primary-on-dark": "#ffffff",
       "sds-color-semantic-base-text-primary-inverse": "#ffffff",
       "sds-color-semantic-base-text-secondary": "#767676",
+      "sds-color-semantic-base-text-secondary-on-dark": "#c3c3c3",
       "sds-color-semantic-base-text-secondary-inverse": "#c3c3c3",
       "sds-color-semantic-base-text-tertiary": "#a5a5a5",
+      "sds-color-semantic-base-text-tertiary-on-dark": "#969696",
       "sds-color-semantic-base-text-tertiary-inverse": "#969696",
       "sds-color-semantic-beta-border": "#6526b5",
       "sds-color-semantic-beta-fill-hover": "#6526b5",
@@ -2996,14 +3124,15 @@
     }
   },
   "spacing": {
-    "sds-default": "12px",
-    "sds-l": "16px",
-    "sds-m": "12px",
-    "sds-s": "8px",
-    "sds-xl": "24px",
-    "sds-xs": "6px",
-    "sds-xxl": "40px",
+    "sds-xxxs": "2px",
     "sds-xxs": "4px",
-    "sds-xxxs": "2px"
+    "sds-xs": "6px",
+    "sds-s": "8px",
+    "sds-m": "12px",
+    "sds-default": "8px",
+    "sds-l": "16px",
+    "sds-xl": "24px",
+    "sds-xxl": "32px",
+    "sds-xxxl": "40px"
   }
 }

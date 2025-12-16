@@ -27,6 +27,8 @@
     "InputSlider",
     "InputText",
     "InputToggle",
+    "IntentMessage",
+    "Legend",
     "Link",
     "List",
     "LoadingIndicator",
@@ -51,6 +53,7 @@
     "TooltipTable"
   ],
   "data-viz": [
-    "HeatmapChart"
+    "HeatmapChart",
+    "StackedBarChart"
   ]
 }

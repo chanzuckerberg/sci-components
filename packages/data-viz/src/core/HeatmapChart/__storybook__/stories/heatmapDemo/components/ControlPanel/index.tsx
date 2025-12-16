@@ -334,7 +334,6 @@ const ControlPanel = () => {
               sdsStyle="square"
               sdsType="secondary"
               hover={false}
-              style={{ marginTop: 5 }}
             />{" "}
             key!
           </>

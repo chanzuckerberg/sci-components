@@ -2,7 +2,7 @@
 
 exports[`<Tag /> Default story renders snapshot 1`] = `
 <div
-  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-r2x6xm-MuiChip-root"
+  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1tga5af-MuiChip-root"
 >
   <span
     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"

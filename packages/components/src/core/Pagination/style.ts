@@ -1,10 +1,12 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Button from "src/core/Button";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   fontBodyS,
-  fontTabularS,
+  fontTabularMediumS,
+  fontTabularSemiboldS,
   getCorners,
   getSemanticColors,
   getSpaces,
@@ -47,7 +49,7 @@ export const StyledPaginationButton = styled(Button)`
 
       &:hover {
         & .MuiSvgIcon-root {
-          color: ${semanticColors?.base?.ornamentSecondaryHover}
+          color: ${semanticColors?.base?.ornamentSecondaryInteraction}
         }
       }
     `;
@@ -86,10 +88,10 @@ export const StyledPaginationChevronList = styled("li", {
       }
 
       &:hover {
-        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
+        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
 
         & .MuiSvgIcon-root {
-          color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.base?.ornamentSecondaryHover}
+          color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.base?.ornamentSecondaryInteraction}
         }
       }
 
@@ -114,22 +116,23 @@ export const StyledPagination = styled("ul", {
 const selectedPageStyle = (props: PaginationExtraProps) => {
   const semanticColors = getSemanticColors(props);
 
-  return `
-    background-color: ${semanticColors?.base?.fillOpen};
+  return css`
+    background-color: ${semanticColors?.base?.fillInteraction};
     color: ${semanticColors?.base?.textPrimary};
-    font-weight: 500;
     box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderSecondary};
 
     &:hover {
       box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderSecondary};
     }
+
+    ${fontTabularSemiboldS(props)}
   `;
 };
 
 export const Page = styled("li", {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
 })`
-  ${fontTabularS}
+  ${fontTabularMediumS}
 
   ${(props: PaginationExtraProps) => {
     const { selected, sdsStyle } = props;
@@ -137,7 +140,7 @@ export const Page = styled("li", {
     const corners = getCorners(props);
     const semanticColors = getSemanticColors(props);
 
-    return `
+    return css`
       color: ${semanticColors?.base?.textSecondary};
       cursor: pointer;
       list-style: none;
@@ -151,15 +154,15 @@ export const Page = styled("li", {
       border-radius: ${sdsStyle === "round" ? corners?.rounded : corners?.l}px;
       user-select: none;
       &:hover {
-        background-color: ${semanticColors?.base?.fillHover};
+        background-color: ${semanticColors?.base?.fillInteraction};
         color: ${semanticColors?.base?.textPrimary};
       }
 
-      &:nth-last-of-type(-n+2) {
+      &:nth-last-of-type(-n + 2) {
         margin-right: 0;
       }
 
-      ${selected && selectedPageStyle(props)};
+      ${selected && selectedPageStyle(props)}
       ${focusVisibleA11yStyle(props)}
     `;
   }}

@@ -11,6 +11,9 @@ export const StyledChipsWrapper = styled("div")`
 
     return `
       margin-top: ${spaces?.s}px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: ${spaces?.xxs}px;
     `;
   }}
 `;

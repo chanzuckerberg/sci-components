@@ -37,6 +37,10 @@
         "type": "ReactNode",
         "isRequired": false
       },
+      "subTitle": {
+        "type": "ReactNode",
+        "isRequired": false
+      },
       "width": {
         "type": "\"string\" | \"number\" | \"string & {}\"",
         "isRequired": false

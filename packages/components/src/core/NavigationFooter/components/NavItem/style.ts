@@ -33,10 +33,10 @@ const NarrowNavItemLinkStyles = (
 
     &:hover {
       color: ${props.hasInvertedStyle
-        ? semanticColors?.base.textPrimaryInverse
+        ? semanticColors?.base.textPrimaryOnDark
         : semanticColors?.base.textPrimary};
       background: ${props.hasInvertedStyle
-        ? semanticColors?.base.backgroundSecondaryInverse
+        ? semanticColors?.base.backgroundSecondaryDark
         : semanticColors?.base.backgroundSecondary};
     }
   `;
@@ -56,7 +56,7 @@ export const StyledNavItemLink = styled(Link, {
 
     return css`
       color: ${props.hasInvertedStyle
-        ? semanticColors?.base.textSecondaryInverse
+        ? semanticColors?.base.textSecondaryOnDark
         : semanticColors?.base.textSecondary};
       background-color: transparent;
       white-space: nowrap;
@@ -65,12 +65,19 @@ export const StyledNavItemLink = styled(Link, {
 
       &:hover {
         color: ${props.hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
-          : semanticColors?.base.textPrimary};
+          ? semanticColors?.base?.textPrimaryOnDark
+          : semanticColors?.base?.textPrimary};
         background-color: ${props.hasInvertedStyle
-          ? semanticColors?.base.fillHoverInverse
-          : semanticColors?.base.fillHover};
+          ? semanticColors?.base?.fillInteractionOnDark
+          : semanticColors?.base?.fillInteraction};
         text-decoration: none;
+      }
+
+      &:active,
+      &:focus {
+        color: ${props.hasInvertedStyle
+          ? semanticColors?.base.textPrimaryOnDark
+          : semanticColors?.accent.textActionPressed};
       }
 
       ${isNarrow && NarrowNavItemLinkStyles(props)}

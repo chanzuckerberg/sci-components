@@ -23,7 +23,7 @@
         "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`."
       },
       "intent": {
-        "type": "\"info\" | \"negative\" | \"positive\" | \"notice\"",
+        "type": "\"accent\" | \"info\" | \"negative\" | \"positive\" | \"notice\"",
         "isRequired": true
       },
       "onClose": {

@@ -1,8 +1,8 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
 import Tag from "src/core/Tag";
-import CustomSdsIcon from "./customSdsIcon";
-import CustomSvgIcon from "./customSvgIcon";
+import CustomSdsIcon from "./svg/customSdsIcon";
+import CustomSvgIcon from "./svg/customSvgIcon";
 
 export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   {
@@ -17,6 +17,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     count: 3,
     name: "Status: duplicate",
     section: "name with count",
+    disabled: true,
   },
   {
     count: 5,
@@ -27,6 +28,7 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     details: "This will not be worked on",
     name: "Status: wont do/fix",
     section: "name with details",
+    disabled: true,
   },
   {
     details: "This is still in progress",
@@ -103,25 +105,33 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     component: (
       <div>
         Available Labels:
-        <div style={{ marginTop: 10 }}>
+        <div
+          style={{
+            marginTop: 2,
+            marginBottom: 4,
+            display: "flex",
+            gap: 4,
+            flexWrap: "wrap",
+          }}
+        >
           <Tag
             label="bug"
-            sdsStyle="rounded"
-            sdsType="primary"
+            sdsStyle="square"
+            sdsType="secondary"
             color="negative"
             hover={false}
           />
           <Tag
             label="feature"
-            sdsStyle="rounded"
-            sdsType="primary"
+            sdsStyle="square"
+            sdsType="secondary"
             color="positive"
             hover={false}
           />
           <Tag
             label="refactor"
-            sdsStyle="rounded"
-            sdsType="primary"
+            sdsStyle="square"
+            sdsType="secondary"
             color="notice"
             hover={false}
           />

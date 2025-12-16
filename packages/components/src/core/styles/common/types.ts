@@ -26,52 +26,67 @@ export interface AccentColor {
 
 export interface BaseColor {
   backgroundPrimary: string;
+  backgroundPrimaryDark: string;
   backgroundPrimaryInverse: string;
   backgroundSecondary: string;
+  backgroundSecondaryDark: string;
   backgroundSecondaryInverse: string;
   backgroundTertiary: string;
-  surface: string;
+  surfacePrimary: string;
+  surfaceSecondary: string;
+  surfacePrimaryDark: string;
   surfaceInverse: string;
   textPrimary: string;
+  textPrimaryOnDark: string;
   textPrimaryInverse: string;
   textSecondary: string;
+  textSecondaryOnDark: string;
   textSecondaryInverse: string;
   textTertiary: string;
+  textTertiaryOnDark: string;
   textTertiaryInverse: string;
   textDisabled: string;
+  textDisabledOnDark: string;
   textDisabledInverse: string;
   textOnFill: string;
-  fillHover: string;
+  fillInteraction: string;
+  fillInteractionOnDark: string;
   fillHoverInverse: string;
   fillPressed: string;
+  fillPressedOnDark: string;
   fillPressedInverse: string;
   fillPrimary: string;
-  fillOpen: string;
   fillOpenInverse: string;
   fillSelected: string;
   fillDisabled: string;
   divider: string;
+  dividerOnDark: string;
   dividerInverse: string;
   borderPrimary: string;
+  borderPrimaryOnDark: string;
   borderPrimaryInverse: string;
   borderSecondary: string;
-  borderPrimaryHover: string;
+  borderPrimaryInteraction: string;
+  borderPrimaryInteractionOnDark: string;
   borderPrimaryHoverInverse: string;
   borderOnFill: string;
-  borderPrimaryPressed: string;
   borderPrimaryPressedInverse: string;
   borderPrimaryDisabled: string;
+  borderPrimaryDisabledOnDark: string;
   borderPrimaryDisabledInverse: string;
   ornamentDisabled: string;
+  ornamentDisabledOnDark: string;
   ornamentDisabledInverse: string;
   ornamentOnFill: string;
   ornamentPrimary: string;
+  ornamentPrimaryOnDark: string;
   ornamentPrimaryInverse: string;
   ornamentSecondary: string;
+  ornamentSecondaryOnDark: string;
   ornamentSecondaryInverse: string;
-  ornamentSecondaryHover: string;
+  ornamentSecondaryInteraction: string;
+  ornamentSecondaryInteractionOnDark: string;
   ornamentSecondaryHoverInverse: string;
-  ornamentSecondaryPressed: string;
   ornamentSecondaryPressedInverse: string;
 }
 
@@ -166,6 +181,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     medium: {
       l: TypographyStyle;
@@ -174,6 +190,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     semibold: {
       l: TypographyStyle;
@@ -182,6 +199,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
   };
   caps: {
@@ -225,6 +243,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     medium: {
       l: TypographyStyle;
@@ -233,6 +252,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     semibold: {
       l: TypographyStyle;
@@ -241,6 +261,7 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
   };
   tabular: {
@@ -249,18 +270,21 @@ export interface TypographyStyles {
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     medium: {
       s: TypographyStyle;
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
     semibold: {
       s: TypographyStyle;
       xs: TypographyStyle;
       xxs: TypographyStyle;
       xxxs: TypographyStyle;
+      xxxxs: TypographyStyle;
     };
   };
   title: {
@@ -313,6 +337,7 @@ export interface Spaces {
   l: number;
   xl: number;
   xxl: number;
+  xxxl: number;
 }
 
 /**
@@ -340,6 +365,7 @@ export interface Color {
 export interface Colors {
   blue: Color;
   gray: Color;
+  indigo: Color;
   green: Color;
   purple: Color;
   red: Color;

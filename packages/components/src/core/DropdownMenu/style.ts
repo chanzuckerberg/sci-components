@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import {
   CommonThemeProps,
   fontBodyMediumXs,
+  fontBodyXxs,
   getBorders,
   getCorners,
   getSemanticColors,
@@ -48,6 +49,23 @@ export const StyledHeaderTitle = styled("div", {
     return `
       color: ${semanticColors?.base?.textPrimary};
       padding-right: ${spaces?.m}px;
+    `;
+  }}
+`;
+
+export const StyledHeaderSubTitle = styled("div", {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+})`
+  ${fontBodyXxs}
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      color: ${semanticColors?.base?.textSecondary};
+      padding-right: ${spaces?.m}px;
+      padding-top: ${spaces?.xxxs}px;
     `;
   }}
 `;
@@ -108,7 +126,7 @@ export const StyledPopper = styled(Popper, {
     const semanticColors = getSemanticColors(props);
 
     return `
-      background-color: ${semanticColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       background-image: none;
       border: ${borders?.none};
       border-radius: ${corners?.l}px;
@@ -133,7 +151,7 @@ export const StyledPaper = styled(Paper, {
       border: none !important;
       outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};
       border-radius: ${corners?.l}px;
-      background-color: ${semanticColors?.base?.surface};
+      background-color: ${semanticColors?.base?.surfacePrimary};
       background-image: none;
       margin: 0;
       padding: 0 0 ${spaces?.xs}px 0;
@@ -178,9 +196,15 @@ export const StyledDropdownMenuHeader = styled("div")`
     const semanticColors = getSemanticColors(props);
 
     return `
+      & > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
       padding: ${spaces?.xs}px ${spaces?.m}px ${search ? spaces?.xs : spaces?.s}px;
       ${search && `border-bottom: solid 1px ${semanticColors?.base?.divider};`}
     `;

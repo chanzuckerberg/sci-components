@@ -1,14 +1,15 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --sds-border-accent-default: 1px solid #1a6cef;
-    --sds-border-accent-focused: 1px solid #1a6cef;
-    --sds-border-accent-hover: 1px solid #0041b9;
-    --sds-border-accent-open: 1px solid #1a6cef;
-    --sds-border-accent-pressed: 1px solid #002d90;
-    --sds-border-accent-selected: 1px solid #1a6cef;
+    --sds-border-accent-default: 1px solid #6e4ff9;
+    --sds-border-accent-focused: 1px solid #6e4ff9;
+    --sds-border-accent-hover: 1px solid #4e18cc;
+    --sds-border-accent-open: 1px solid #6e4ff9;
+    --sds-border-accent-pressed: 1px solid #330296;
+    --sds-border-accent-selected: 1px solid #6e4ff9;
     --sds-border-base-default: 1px solid #969696;
     --sds-border-base-disabled: 1px solid #c3c3c3;
     --sds-border-base-divider: 1px solid #dfdfdf;
+    --sds-border-base-divider-on-dark: 1px solid #3b3b3b;
     --sds-border-base-divider-inverse: 1px solid #767676;
     --sds-border-base-hover: 1px solid #000000;
     --sds-border-base-inverse: 1px solid #ffffff;
@@ -57,6 +58,14 @@
     --sds-color-primitive-gray-700: #3b3b3b;
     --sds-color-primitive-gray-800: #1b1b1b;
     --sds-color-primitive-gray-900: #000000;
+    --sds-color-primitive-indigo-100: #f1f0ff;
+    --sds-color-primitive-indigo-200: #dcd9ff;
+    --sds-color-primitive-indigo-300: #beb5ff;
+    --sds-color-primitive-indigo-400: #9d8bff;
+    --sds-color-primitive-indigo-500: #6e4ff9;
+    --sds-color-primitive-indigo-600: #4e18cc;
+    --sds-color-primitive-indigo-700: #330296;
+    --sds-color-primitive-indigo-800: #1d004d;
     --sds-color-primitive-green-100: #ebf9ed;
     --sds-color-primitive-green-200: #b9ecc3;
     --sds-color-primitive-green-300: #7fd693;
@@ -91,73 +100,88 @@
     --sds-color-primitive-yellow-800: #541700;
     --sds-color-primitive-overlay-100: rgba(0, 0, 0, 0.08);
     --sds-color-primitive-overlay-200: rgba(0, 0, 0, 0.03);
-    --sds-color-semantic-accent-border: #1a6cef;
-    --sds-color-semantic-accent-border-focus: #1a6cef;
-    --sds-color-semantic-accent-border-hover: #0041b9;
-    --sds-color-semantic-accent-border-open: #1a6cef;
-    --sds-color-semantic-accent-border-pressed: #002d90;
-    --sds-color-semantic-accent-border-selected: #1a6cef;
-    --sds-color-semantic-accent-fill-hover: #0041b9;
-    --sds-color-semantic-accent-fill-pressed: #002d90;
-    --sds-color-semantic-accent-fill-primary: #1a6cef;
-    --sds-color-semantic-accent-ornament: #1a6cef;
-    --sds-color-semantic-accent-ornament-focus: #1a6cef;
-    --sds-color-semantic-accent-ornament-hover: #0041b9;
-    --sds-color-semantic-accent-ornament-open: #1a6cef;
-    --sds-color-semantic-accent-ornament-pressed: #002d90;
-    --sds-color-semantic-accent-ornament-selected: #1a6cef;
-    --sds-color-semantic-accent-surface-primary: #1a6cef;
-    --sds-color-semantic-accent-surface-secondary: #edf3fd;
-    --sds-color-semantic-accent-text-action: #1a6cef;
-    --sds-color-semantic-accent-text-action-hover: #0041b9;
-    --sds-color-semantic-accent-text-action-pressed: #002d90;
+    --sds-color-semantic-accent-border: #6e4ff9;
+    --sds-color-semantic-accent-border-focus: #6e4ff9;
+    --sds-color-semantic-accent-border-hover: #4e18cc;
+    --sds-color-semantic-accent-border-open: #6e4ff9;
+    --sds-color-semantic-accent-border-pressed: #330296;
+    --sds-color-semantic-accent-border-selected: #6e4ff9;
+    --sds-color-semantic-accent-fill-hover: #4e18cc;
+    --sds-color-semantic-accent-fill-pressed: #330296;
+    --sds-color-semantic-accent-fill-primary: #6e4ff9;
+    --sds-color-semantic-accent-ornament: #6e4ff9;
+    --sds-color-semantic-accent-ornament-focus: #6e4ff9;
+    --sds-color-semantic-accent-ornament-hover: #4e18cc;
+    --sds-color-semantic-accent-ornament-open: #6e4ff9;
+    --sds-color-semantic-accent-ornament-pressed: #330296;
+    --sds-color-semantic-accent-ornament-selected: #6e4ff9;
+    --sds-color-semantic-accent-surface-primary: #6e4ff9;
+    --sds-color-semantic-accent-surface-secondary: #f1f0ff;
+    --sds-color-semantic-accent-text-action: #6e4ff9;
+    --sds-color-semantic-accent-text-action-hover: #4e18cc;
+    --sds-color-semantic-accent-text-action-pressed: #330296;
     --sds-color-semantic-base-background-primary: #ffffff;
+    --sds-color-semantic-base-background-primary-dark: #000000;
     --sds-color-semantic-base-background-primary-inverse: #000000;
-    --sds-color-semantic-base-background-secondary: #f8f8f8;
+    --sds-color-semantic-base-background-secondary: #ededed66;
+    --sds-color-semantic-base-background-secondary-dark: #3b3b3b9e;
     --sds-color-semantic-base-background-secondary-inverse: #3b3b3b;
     --sds-color-semantic-base-background-tertiary: #ededed;
     --sds-color-semantic-base-border-on-fill: #ffffff;
     --sds-color-semantic-base-border-primary: #767676;
     --sds-color-semantic-base-border-primary-disabled: #c3c3c3;
+    --sds-color-semantic-base-border-primary-disabled-on-dark: #767676;
     --sds-color-semantic-base-border-primary-disabled-inverse: #767676;
-    --sds-color-semantic-base-border-primary-hover: #000000;
+    --sds-color-semantic-base-border-primary-interaction: #000000;
+    --sds-color-semantic-base-border-primary-interaction-on-dark: #ffffff;
     --sds-color-semantic-base-border-primary-hover-inverse: #ffffff;
+    --sds-color-semantic-base-border-primary-on-dark: #c3c3c3;
     --sds-color-semantic-base-border-primary-inverse: #c3c3c3;
-    --sds-color-semantic-base-border-primary-pressed: #000000;
     --sds-color-semantic-base-border-primary-pressed-inverse: #ffffff;
     --sds-color-semantic-base-border-secondary: #c3c3c3;
     --sds-color-semantic-base-divider: #dfdfdf;
-    --sds-color-semantic-base-divider-inverse: #767676;
-    --sds-color-semantic-base-fill-disabled: #dfdfdf;
-    --sds-color-semantic-base-fill-hover: #c3c3c333;
-    --sds-color-semantic-base-fill-hover-inverse: #c3c3c357;
-    --sds-color-semantic-base-fill-open: #c3c3c333;
+    --sds-color-semantic-base-divider-on-dark: #3b3b3b;
+    --sds-color-semantic-base-divider-inverse: #3b3b3b;
+    --sds-color-semantic-base-fill-disabled: #ededed;
+    --sds-color-semantic-base-fill-interaction: #c3c3c333;
+    --sds-color-semantic-base-fill-interaction-on-dark: #c3c3c333;
+    --sds-color-semantic-base-fill-hover-inverse: #c3c3c333;
     --sds-color-semantic-base-fill-open-inverse: #c3c3c357;
-    --sds-color-semantic-base-fill-pressed: #c3c3c333;
+    --sds-color-semantic-base-fill-pressed: #c3c3c34d;
+    --sds-color-semantic-base-fill-pressed-on-dark: #c3c3c33d;
     --sds-color-semantic-base-fill-pressed-inverse: #c3c3c357;
     --sds-color-semantic-base-fill-primary: #ffffff;
     --sds-color-semantic-base-fill-selected: #000000;
     --sds-color-semantic-base-ornament-disabled: #c3c3c3;
+    --sds-color-semantic-base-ornament-disabled-on-dark: #767676;
     --sds-color-semantic-base-ornament-disabled-inverse: #767676;
     --sds-color-semantic-base-ornament-on-fill: #ffffff;
     --sds-color-semantic-base-ornament-primary: #000000;
+    --sds-color-semantic-base-ornament-primary-on-dark: #ffffff;
     --sds-color-semantic-base-ornament-primary-inverse: #ffffff;
     --sds-color-semantic-base-ornament-secondary: #767676;
-    --sds-color-semantic-base-ornament-secondary-hover: #000000;
+    --sds-color-semantic-base-ornament-secondary-interaction: #000000;
+    --sds-color-semantic-base-ornament-secondary-interaction-on-dark: #ffffff;
     --sds-color-semantic-base-ornament-secondary-hover-inverse: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-on-dark: #c3c3c3;
     --sds-color-semantic-base-ornament-secondary-inverse: #c3c3c3;
-    --sds-color-semantic-base-ornament-secondary-pressed: #000000;
     --sds-color-semantic-base-ornament-secondary-pressed-inverse: #ffffff;
-    --sds-color-semantic-base-surface: #ffffff;
+    --sds-color-semantic-base-surface-primary: #ffffff;
+    --sds-color-semantic-base-surface-secondary: #c3c3c333;
+    --sds-color-semantic-base-surface-primary-dark: #000000;
     --sds-color-semantic-base-surface-inverse: #000000;
     --sds-color-semantic-base-text-disabled: #c3c3c3;
+    --sds-color-semantic-base-text-disabled-on-dark: #767676;
     --sds-color-semantic-base-text-disabled-inverse: #767676;
     --sds-color-semantic-base-text-on-fill: #ffffff;
     --sds-color-semantic-base-text-primary: #000000;
+    --sds-color-semantic-base-text-primary-on-dark: #ffffff;
     --sds-color-semantic-base-text-primary-inverse: #ffffff;
     --sds-color-semantic-base-text-secondary: #767676;
+    --sds-color-semantic-base-text-secondary-on-dark: #c3c3c3;
     --sds-color-semantic-base-text-secondary-inverse: #c3c3c3;
     --sds-color-semantic-base-text-tertiary: #a5a5a5;
+    --sds-color-semantic-base-text-tertiary-on-dark: #969696;
     --sds-color-semantic-base-text-tertiary-inverse: #969696;
     --sds-color-semantic-beta-border: #6526b5;
     --sds-color-semantic-beta-fill-hover: #6526b5;
@@ -368,6 +392,30 @@
       Helvetica, Arial, sans-serif;
     --sds-font-body-xxxs-600-letter-spacing: 0.06px;
     --sds-font-body-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-600-letter-spacing-narrow: 0.06px;
     --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -704,6 +752,36 @@
     --sds-font-link-xxxs-600-letter-spacing-narrow: 0.06px;
     --sds-font-link-xxxs-600-text-decoration: underline;
     --sds-font-link-xxxs-600-text-decoration-narrow: underline;
+    --sds-font-link-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-400-letter-spacing: 0.06px;
+    --sds-font-link-xxxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxxs-400-text-decoration: underline;
+    --sds-font-link-xxxxs-400-text-decoration-narrow: underline;
+    --sds-font-link-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-500-letter-spacing: 0.06px;
+    --sds-font-link-xxxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxxs-500-text-decoration: underline;
+    --sds-font-link-xxxxs-500-text-decoration-narrow: underline;
+    --sds-font-link-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-600-letter-spacing: 0.06px;
+    --sds-font-link-xxxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxxs-600-text-decoration: underline;
+    --sds-font-link-xxxxs-600-text-decoration-narrow: underline;
     --sds-font-tabular-s-400-font: 400 14px/24px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -824,6 +902,36 @@
     --sds-font-tabular-xxxs-600-font-variant-numeric-narrow: tabular-nums;
     --sds-font-tabular-xxxs-600-letter-spacing: -0.25px;
     --sds-font-tabular-xxxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-600-letter-spacing-narrow: -0.25px;
     --sds-font-title-s-700-font: 700 32px/40px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -858,29 +966,31 @@
     --sds-icon-size-xl-width: 32px;
     --sds-icon-size-xs-height: 12px;
     --sds-icon-size-xs-width: 12px;
-    --sds-space-default: 12px;
-    --sds-space-l: 16px;
-    --sds-space-m: 12px;
-    --sds-space-s: 8px;
-    --sds-space-xl: 24px;
-    --sds-space-xs: 6px;
-    --sds-space-xxl: 40px;
-    --sds-space-xxs: 4px;
     --sds-space-xxxs: 2px;
+    --sds-space-xxs: 4px;
+    --sds-space-xs: 6px;
+    --sds-space-s: 8px;
+    --sds-space-m: 12px;
+    --sds-space-default: 8px;
+    --sds-space-l: 16px;
+    --sds-space-xl: 24px;
+    --sds-space-xxl: 32px;
+    --sds-space-xxxl: 40px;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --sds-border-accent-default: 1px solid #a2c9ff;
-    --sds-border-accent-focused: 1px solid #a2c9ff;
-    --sds-border-accent-hover: 1px solid #cde3ff;
-    --sds-border-accent-open: 1px solid #a2c9ff;
-    --sds-border-accent-pressed: 1px solid #e2eeff;
-    --sds-border-accent-selected: 1px solid #a2c9ff;
+    --sds-border-accent-default: 1px solid #beb5ff;
+    --sds-border-accent-focused: 1px solid #beb5ff;
+    --sds-border-accent-hover: 1px solid #dcd9ff;
+    --sds-border-accent-open: 1px solid #beb5ff;
+    --sds-border-accent-pressed: 1px solid #f1f0ff;
+    --sds-border-accent-selected: 1px solid #beb5ff;
     --sds-border-base-default: 1px solid #aaaaaa;
     --sds-border-base-disabled: 1px solid #696969;
     --sds-border-base-divider: 1px solid #494949;
+    --sds-border-base-divider-on-dark: 1px solid #494949;
     --sds-border-base-divider-inverse: 1px solid #cdcdcd;
     --sds-border-base-hover: 1px solid #ffffff;
     --sds-border-base-inverse: 1px solid #000000;
@@ -929,6 +1039,14 @@
     --sds-color-primitive-gray-700: #ededed;
     --sds-color-primitive-gray-800: #fafafa;
     --sds-color-primitive-gray-900: #ffffff;
+    --sds-color-primitive-indigo-100: #1d004d;
+    --sds-color-primitive-indigo-200: #330296;
+    --sds-color-primitive-indigo-300: #521ec9;
+    --sds-color-primitive-indigo-400: #6e4ff9;
+    --sds-color-primitive-indigo-500: #9785ff;
+    --sds-color-primitive-indigo-600: #beb5ff;
+    --sds-color-primitive-indigo-700: #dcd9ff;
+    --sds-color-primitive-indigo-800: #f1f0ff;
     --sds-color-primitive-green-100: #082608;
     --sds-color-primitive-green-200: #063617;
     --sds-color-primitive-green-300: #10632e;
@@ -963,74 +1081,89 @@
     --sds-color-primitive-yellow-800: #ffe6a8;
     --sds-color-primitive-overlay-100: rgba(0, 0, 0, 0.08);
     --sds-color-primitive-overlay-200: rgba(0, 0, 0, 0.03);
-    --sds-color-semantic-accent-border: #a2c9ff;
-    --sds-color-semantic-accent-border-focus: #a2c9ff;
-    --sds-color-semantic-accent-border-hover: #cde3ff;
-    --sds-color-semantic-accent-border-open: #a2c9ff;
-    --sds-color-semantic-accent-border-pressed: #e2eeff;
-    --sds-color-semantic-accent-border-selected: #a2c9ff;
-    --sds-color-semantic-accent-fill-hover: #cde3ff;
-    --sds-color-semantic-accent-fill-pressed: #e2eeff;
-    --sds-color-semantic-accent-fill-primary: #2876f9;
-    --sds-color-semantic-accent-ornament: #a2c9ff;
-    --sds-color-semantic-accent-ornament-focus: #a2c9ff;
-    --sds-color-semantic-accent-ornament-hover: #cde3ff;
-    --sds-color-semantic-accent-ornament-open: #a2c9ff;
-    --sds-color-semantic-accent-ornament-pressed: #e2eeff;
-    --sds-color-semantic-accent-ornament-selected: #a2c9ff;
-    --sds-color-semantic-accent-surface-primary: #2876f9;
-    --sds-color-semantic-accent-surface-secondary: #0f1d4a;
-    --sds-color-semantic-accent-text-action: #a2c9ff;
-    --sds-color-semantic-accent-text-action-hover: #cde3ff;
-    --sds-color-semantic-accent-text-action-pressed: #e2eeff;
+    --sds-color-semantic-accent-border: #beb5ff;
+    --sds-color-semantic-accent-border-focus: #beb5ff;
+    --sds-color-semantic-accent-border-hover: #dcd9ff;
+    --sds-color-semantic-accent-border-open: #beb5ff;
+    --sds-color-semantic-accent-border-pressed: #f1f0ff;
+    --sds-color-semantic-accent-border-selected: #beb5ff;
+    --sds-color-semantic-accent-fill-hover: #dcd9ff;
+    --sds-color-semantic-accent-fill-pressed: #f1f0ff;
+    --sds-color-semantic-accent-fill-primary: #6e4ff9;
+    --sds-color-semantic-accent-ornament: #beb5ff;
+    --sds-color-semantic-accent-ornament-focus: #beb5ff;
+    --sds-color-semantic-accent-ornament-hover: #dcd9ff;
+    --sds-color-semantic-accent-ornament-open: #beb5ff;
+    --sds-color-semantic-accent-ornament-pressed: #f1f0ff;
+    --sds-color-semantic-accent-ornament-selected: #beb5ff;
+    --sds-color-semantic-accent-surface-primary: #6e4ff9;
+    --sds-color-semantic-accent-surface-secondary: #1d004d;
+    --sds-color-semantic-accent-text-action: #beb5ff;
+    --sds-color-semantic-accent-text-action-hover: #dcd9ff;
+    --sds-color-semantic-accent-text-action-pressed: #f1f0ff;
     --sds-color-semantic-base-background-primary: #101010;
-    --sds-color-semantic-base-background-primary-inverse: #ffffff;
-    --sds-color-semantic-base-background-secondary: #333333;
-    --sds-color-semantic-base-background-secondary-inverse: #ededed;
-    --sds-color-semantic-base-background-tertiary: #494949;
-    --sds-color-semantic-base-border-on-fill: #000000;
+    --sds-color-semantic-base-background-primary-dark: #101010;
+    --sds-color-semantic-base-background-primary-inverse: #101010;
+    --sds-color-semantic-base-background-secondary: #33333399;
+    --sds-color-semantic-base-background-secondary-dark: #33333399;
+    --sds-color-semantic-base-background-secondary-inverse: #33333399;
+    --sds-color-semantic-base-background-tertiary: #333333;
+    --sds-color-semantic-base-border-on-fill: #ffffff;
     --sds-color-semantic-base-border-primary: #cdcdcd;
     --sds-color-semantic-base-border-primary-disabled: #696969;
-    --sds-color-semantic-base-border-primary-disabled-inverse: #cdcdcd;
-    --sds-color-semantic-base-border-primary-hover: #ffffff;
-    --sds-color-semantic-base-border-primary-hover-inverse: #000000;
-    --sds-color-semantic-base-border-primary-inverse: #696969;
-    --sds-color-semantic-base-border-primary-pressed: #ffffff;
-    --sds-color-semantic-base-border-primary-pressed-inverse: #000000;
+    --sds-color-semantic-base-border-primary-disabled-on-dark: #696969;
+    --sds-color-semantic-base-border-primary-disabled-inverse: #696969;
+    --sds-color-semantic-base-border-primary-interaction: #ffffff;
+    --sds-color-semantic-base-border-primary-interaction-on-dark: #ffffff;
+    --sds-color-semantic-base-border-primary-hover-inverse: #ffffff;
+    --sds-color-semantic-base-border-primary-on-dark: #cdcdcd;
+    --sds-color-semantic-base-border-primary-inverse: #cdcdcd;
+    --sds-color-semantic-base-border-primary-pressed-inverse: #ffffff;
     --sds-color-semantic-base-border-secondary: #696969;
     --sds-color-semantic-base-divider: #494949;
-    --sds-color-semantic-base-divider-inverse: #cdcdcd;
-    --sds-color-semantic-base-fill-disabled: #494949;
-    --sds-color-semantic-base-fill-hover: #69696994;
-    --sds-color-semantic-base-fill-hover-inverse: #69696914;
-    --sds-color-semantic-base-fill-open: #69696994;
-    --sds-color-semantic-base-fill-open-inverse: #69696914;
-    --sds-color-semantic-base-fill-pressed: #69696994;
-    --sds-color-semantic-base-fill-pressed-inverse: #69696914;
+    --sds-color-semantic-base-divider-on-dark: #494949;
+    --sds-color-semantic-base-divider-inverse: #494949;
+    --sds-color-semantic-base-fill-disabled: #333333;
+    --sds-color-semantic-base-fill-interaction: #69696952;
+    --sds-color-semantic-base-fill-interaction-on-dark: #69696952;
+    --sds-color-semantic-base-fill-hover-inverse: #69696952;
+    --sds-color-semantic-base-fill-open-inverse: #69696952;
+    --sds-color-semantic-base-fill-pressed: #69696966;
+    --sds-color-semantic-base-fill-pressed-on-dark: #69696966;
+    --sds-color-semantic-base-fill-pressed-inverse: #69696952;
     --sds-color-semantic-base-fill-primary: #333333;
     --sds-color-semantic-base-fill-selected: #ffffff;
     --sds-color-semantic-base-ornament-disabled: #696969;
-    --sds-color-semantic-base-ornament-disabled-inverse: #cdcdcd;
+    --sds-color-semantic-base-ornament-disabled-on-dark: #696969;
+    --sds-color-semantic-base-ornament-disabled-inverse: #696969;
     --sds-color-semantic-base-ornament-on-fill: #ffffff;
     --sds-color-semantic-base-ornament-primary: #ffffff;
+    --sds-color-semantic-base-ornament-primary-on-dark: #ffffff;
     --sds-color-semantic-base-ornament-primary-inverse: #000000;
     --sds-color-semantic-base-ornament-secondary: #cdcdcd;
-    --sds-color-semantic-base-ornament-secondary-hover: #ffffff;
-    --sds-color-semantic-base-ornament-secondary-hover-inverse: #000000;
-    --sds-color-semantic-base-ornament-secondary-inverse: #696969;
-    --sds-color-semantic-base-ornament-secondary-pressed: #ffffff;
-    --sds-color-semantic-base-ornament-secondary-pressed-inverse: #000000;
-    --sds-color-semantic-base-surface: #333333;
-    --sds-color-semantic-base-surface-inverse: #ededed;
+    --sds-color-semantic-base-ornament-secondary-interaction: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-interaction-on-dark: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-hover-inverse: #ffffff;
+    --sds-color-semantic-base-ornament-secondary-on-dark: #cdcdcd;
+    --sds-color-semantic-base-ornament-secondary-inverse: #cdcdcd;
+    --sds-color-semantic-base-ornament-secondary-pressed-inverse: #ffffff;
+    --sds-color-semantic-base-surface-primary: #333333;
+    --sds-color-semantic-base-surface-secondary: #69696952;
+    --sds-color-semantic-base-surface-primary-dark: #333333;
+    --sds-color-semantic-base-surface-inverse: #333333;
     --sds-color-semantic-base-text-disabled: #696969;
-    --sds-color-semantic-base-text-disabled-inverse: #cdcdcd;
+    --sds-color-semantic-base-text-disabled-on-dark: #696969;
+    --sds-color-semantic-base-text-disabled-inverse: #696969;
     --sds-color-semantic-base-text-on-fill: #ffffff;
     --sds-color-semantic-base-text-primary: #ffffff;
+    --sds-color-semantic-base-text-primary-on-dark: #ffffff;
     --sds-color-semantic-base-text-primary-inverse: #000000;
     --sds-color-semantic-base-text-secondary: #cdcdcd;
-    --sds-color-semantic-base-text-secondary-inverse: #696969;
+    --sds-color-semantic-base-text-secondary-on-dark: #cdcdcd;
+    --sds-color-semantic-base-text-secondary-inverse: #cdcdcd;
     --sds-color-semantic-base-text-tertiary: #949494;
-    --sds-color-semantic-base-text-tertiary-inverse: #aaaaaa;
+    --sds-color-semantic-base-text-tertiary-on-dark: #949494;
+    --sds-color-semantic-base-text-tertiary-inverse: #949494;
     --sds-color-semantic-beta-border: #cebef8;
     --sds-color-semantic-beta-fill-hover: #e4dcfc;
     --sds-color-semantic-beta-fill-pressed: #f0ebfe;
@@ -1240,6 +1373,30 @@
       Helvetica, Arial, sans-serif;
     --sds-font-body-xxxs-600-letter-spacing: 0.06px;
     --sds-font-body-xxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-400-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-500-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-body-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-body-xxxxs-600-letter-spacing: 0.06px;
+    --sds-font-body-xxxxs-600-letter-spacing-narrow: 0.06px;
     --sds-font-caps-xxs-600-font: 600 12px/18px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -1576,6 +1733,36 @@
     --sds-font-link-xxxs-600-letter-spacing-narrow: 0.06px;
     --sds-font-link-xxxs-600-text-decoration: underline;
     --sds-font-link-xxxs-600-text-decoration-narrow: underline;
+    --sds-font-link-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-400-letter-spacing: 0.06px;
+    --sds-font-link-xxxxs-400-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxxs-400-text-decoration: underline;
+    --sds-font-link-xxxxs-400-text-decoration-narrow: underline;
+    --sds-font-link-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-500-letter-spacing: 0.06px;
+    --sds-font-link-xxxxs-500-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxxs-500-text-decoration: underline;
+    --sds-font-link-xxxxs-500-text-decoration-narrow: underline;
+    --sds-font-link-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-link-xxxxs-600-letter-spacing: 0.06px;
+    --sds-font-link-xxxxs-600-letter-spacing-narrow: 0.06px;
+    --sds-font-link-xxxxs-600-text-decoration: underline;
+    --sds-font-link-xxxxs-600-text-decoration-narrow: underline;
     --sds-font-tabular-s-400-font: 400 14px/24px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -1696,6 +1883,36 @@
     --sds-font-tabular-xxxs-600-font-variant-numeric-narrow: tabular-nums;
     --sds-font-tabular-xxxs-600-letter-spacing: -0.25px;
     --sds-font-tabular-xxxs-600-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-400-font: 400 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-narrow: 400 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-400-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-400-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-400-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-500-font: 500 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-narrow: 500 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-500-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-500-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-500-letter-spacing-narrow: -0.25px;
+    --sds-font-tabular-xxxxs-600-font: 600 10px/14px var(--font-inter), Inter,
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-narrow: 600 10px/14px var(--font-inter),
+      Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric: tabular-nums;
+    --sds-font-tabular-xxxxs-600-font-variant-numeric-narrow: tabular-nums;
+    --sds-font-tabular-xxxxs-600-letter-spacing: -0.25px;
+    --sds-font-tabular-xxxxs-600-letter-spacing-narrow: -0.25px;
     --sds-font-title-s-700-font: 700 32px/40px var(--font-inter), Inter,
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Helvetica, Arial, sans-serif;
@@ -1730,14 +1947,15 @@
     --sds-icon-size-xl-width: 32px;
     --sds-icon-size-xs-height: 12px;
     --sds-icon-size-xs-width: 12px;
-    --sds-space-default: 12px;
-    --sds-space-l: 16px;
-    --sds-space-m: 12px;
-    --sds-space-s: 8px;
-    --sds-space-xl: 24px;
-    --sds-space-xs: 6px;
-    --sds-space-xxl: 40px;
-    --sds-space-xxs: 4px;
     --sds-space-xxxs: 2px;
+    --sds-space-xxs: 4px;
+    --sds-space-xs: 6px;
+    --sds-space-s: 8px;
+    --sds-space-m: 12px;
+    --sds-space-default: 8px;
+    --sds-space-l: 16px;
+    --sds-space-xl: 24px;
+    --sds-space-xxl: 32px;
+    --sds-space-xxxl: 40px;
   }
 }

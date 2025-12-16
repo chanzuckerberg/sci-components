@@ -26,7 +26,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
           sdsStyle: "icon",
         },
       ]}
-      hasInvertedStyle={false}
+      backgroundAppearance="matchBackground"
       logo={<div>Logo</div>}
       logoUrl="https://chanzuckerberg.com"
       primaryNavItems={[
@@ -45,6 +45,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       ]}
       secondaryNavItems={[
         {
+          key: "3",
           itemType: "dropdown",
           items: [
             { label: "Item 1", onClick: () => alert("clicked on item 1") },
@@ -53,6 +54,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
           label: "Secondary",
         },
         {
+          key: "4",
           itemType: "text",
           label: "Secondary",
           onClick: () => alert("clicked on secondary"),
@@ -61,7 +63,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       showSearch={true}
       tag="Beta"
       tagColor="beta"
-      position="sticky"
+      isSticky={true}
       scrollElevation={true}
     />
   );

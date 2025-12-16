@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.2.0...@czi-sds/components@23.2.1) (2025-12-12)
+
+### Bug Fixes
+
+- **tags:** fixed tags spacing style in different sds components ([#1071](https://github.com/chanzuckerberg/sci-components/issues/1071)) ([ca0e068](https://github.com/chanzuckerberg/sci-components/commit/ca0e068bdc4aaeb3d724a3b4c251f1714018f91f))
+
+# [23.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.1.0...@czi-sds/components@23.2.0) (2025-12-12)
+
+### Bug Fixes
+
+- **autocomplete:** fixed a bug with disabled options in the autocomplete and dropdowns ([#1065](https://github.com/chanzuckerberg/sci-components/issues/1065)) ([9ea2f19](https://github.com/chanzuckerberg/sci-components/commit/9ea2f1983367ff1f2350247755d2426a2c362158))
+
+### Features
+
+- **contentcard:** fix border rendering + dropdownmenu: add subtitle support ([#1064](https://github.com/chanzuckerberg/sci-components/issues/1064)) ([a4e62c4](https://github.com/chanzuckerberg/sci-components/commit/a4e62c4ac73bbca3c51a4cd2a7e2ccbe38c2bb75))
+- **intentmessage:** initial implementation ([#1069](https://github.com/chanzuckerberg/sci-components/issues/1069)) ([31b5d4c](https://github.com/chanzuckerberg/sci-components/commit/31b5d4c4fea6fbdf97b9fa5619d276ce20eb9d78))
+
+# [23.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.0.0...@czi-sds/components@23.1.0) (2025-11-21)
+
+### Features
+
+- **navigationhedaer:** added new onDrawerStyleNavItemHover prop to the NavigationHeader ([#1057](https://github.com/chanzuckerberg/sci-components/issues/1057)) ([6675716](https://github.com/chanzuckerberg/sci-components/commit/6675716ec722a5e50c4a7626f5b9dbe79d2caa5d))
+
+# [23.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.17.1...@czi-sds/components@23.0.0) (2025-11-21)
+
+### Bug Fixes
+
+- **legend:** show background color on legend item when an chart segment is hovered ([#1053](https://github.com/chanzuckerberg/sci-components/issues/1053)) ([3af579c](https://github.com/chanzuckerberg/sci-components/commit/3af579c43d08ec2a8219bf122e5a65e2ec576c76))
+- **NavigationHeader:** Fix NavigationHeader mobile layout bugs and improve hover drawer interaction ([#1052](https://github.com/chanzuckerberg/sci-components/issues/1052)) ([72fd00a](https://github.com/chanzuckerberg/sci-components/commit/72fd00a7a873a1dc97785148a30ef55b094ac2f1))
+
+### Features
+
+- **callout:** added accent intent to Banner, Callout and Notification components ([#1054](https://github.com/chanzuckerberg/sci-components/issues/1054)) ([766607d](https://github.com/chanzuckerberg/sci-components/commit/766607da5c048e5e5b08f507a311d283d72cc1c7))
+- **spaces:** introduced a new spaces.xxxl variable ([#1055](https://github.com/chanzuckerberg/sci-components/issues/1055)) ([612a055](https://github.com/chanzuckerberg/sci-components/commit/612a055cbdbdf81bd904df8261a34102b4bd5589))
+
+### BREAKING CHANGES
+
+- **spaces:** Teams are required to replace the old spaces.xxl with the new spaces.xxxl variable
+
+- fix(heatmap): removed snapshots for the heatmaop component
+
+## [22.17.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.17.0...@czi-sds/components@22.17.1) (2025-11-13)
+
+### Bug Fixes
+
+- **StackedBarChart:** Fix stacked bar chart ([#1046](https://github.com/chanzuckerberg/sci-components/issues/1046)) ([532d83d](https://github.com/chanzuckerberg/sci-components/commit/532d83d704192d233f1611ef7516b7f26c1c124c))
+
+# [22.17.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.3...@czi-sds/components@22.17.0) (2025-11-10)
+
+### Features
+
+- **StackedBarChart:** implement bar chart in codebase ([#1042](https://github.com/chanzuckerberg/sci-components/issues/1042)) ([bc6078d](https://github.com/chanzuckerberg/sci-components/commit/bc6078d2b3185a8fea305935de43b4583d941f9a))
+
+## [22.16.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.2...@czi-sds/components@22.16.3) (2025-11-06)
+
+### Bug Fixes
+
+- **navigationheader:** fixed drawer items spacings + nav footer colors ([#1040](https://github.com/chanzuckerberg/sci-components/issues/1040)) ([2023bee](https://github.com/chanzuckerberg/sci-components/commit/2023bee335fb661c949ae6ac110be05f3532da87))
+
+## [22.16.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.1...@czi-sds/components@22.16.2) (2025-11-06)
+
+### Bug Fixes
+
+- **NavigationHeader:** fix navigation header animations ([#1038](https://github.com/chanzuckerberg/sci-components/issues/1038)) ([023a822](https://github.com/chanzuckerberg/sci-components/commit/023a822e0d72171186c22cca26405a9a410b80cc))
+
+## [22.16.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.16.0...@czi-sds/components@22.16.1) (2025-11-05)
+
+### Bug Fixes
+
+- **navigationhedaer:** nav header title ([#1036](https://github.com/chanzuckerberg/sci-components/issues/1036)) ([62d02e1](https://github.com/chanzuckerberg/sci-components/commit/62d02e1cd6f9809969894def63c7edb9a26d6486))
+
+# [22.16.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.15.1...@czi-sds/components@22.16.0) (2025-11-05)
+
+### Features
+
+- **navigationhedaer:** optional header and footer titles ([#1034](https://github.com/chanzuckerberg/sci-components/issues/1034)) ([b4e736b](https://github.com/chanzuckerberg/sci-components/commit/b4e736bdb496fc6643c72c37af1ed4308ab47929))
+
+## [22.15.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.15.0...@czi-sds/components@22.15.1) (2025-11-05)
+
+### Bug Fixes
+
+- **navigationheader:** fix navigation header action buttons style in dark mode ([#1032](https://github.com/chanzuckerberg/sci-components/issues/1032)) ([5fc93c0](https://github.com/chanzuckerberg/sci-components/commit/5fc93c0b6c0aa64c3165f80e49b067ab13ed66c6))
+
+# [22.15.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.14.0...@czi-sds/components@22.15.0) (2025-11-05)
+
+### Features
+
+- **navigationHeader:** implement header navigation drawer style ([#1030](https://github.com/chanzuckerberg/sci-components/issues/1030)) ([476f386](https://github.com/chanzuckerberg/sci-components/commit/476f386eed21ed19dd916dc8863d217dfa9731d1))
+
+# [22.14.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.3...@czi-sds/components@22.14.0) (2025-10-23)
+
+### Bug Fixes
+
+- **dialog:** fix close button size + new tailwind class support for inputs ([#1026](https://github.com/chanzuckerberg/sci-components/issues/1026)) ([5f7e8b1](https://github.com/chanzuckerberg/sci-components/commit/5f7e8b1fc9cd21a9c9309652d9d54d37e478116a))
+
+### Features
+
+- Hero component ([#1018](https://github.com/chanzuckerberg/sci-components/issues/1018)) ([8f7370e](https://github.com/chanzuckerberg/sci-components/commit/8f7370e062df0ddc30ccfddbbf09d7a05dde4cfb))
+- **typography:** Added new xxxxs body and tabular font sizes ([#1028](https://github.com/chanzuckerberg/sci-components/issues/1028)) ([a66e56b](https://github.com/chanzuckerberg/sci-components/commit/a66e56bb95748fd78c146779fe5ddedfbc4f78b8))
+
 ## [22.13.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@22.13.2...@czi-sds/components@22.13.3) (2025-10-15)
 
 ### Bug Fixes

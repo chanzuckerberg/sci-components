@@ -99,7 +99,7 @@ export const StyledTableHeader = styled.div`
         }
 
         & svg {
-          color: ${active ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondaryHover};
+          color: ${active ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }
     `;

@@ -1,7 +1,9 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import React, {
   forwardRef,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -25,6 +27,7 @@ import {
   StyledWideIconButton,
   StyledDrawerContent,
   StyledSectionDivider,
+  StyledTopComponentSlot,
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
@@ -36,6 +39,10 @@ import {
 } from "./NavigationHeader.types";
 import { mergeRefs } from "src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
+import { getMode } from "../styles";
+
+// Time to wait for accordion animation and scroll to complete (includes MUI animation duration + buffer)
+const ACCORDION_SCROLL_DELAY_MS = 500;
 
 const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
   <T extends string = string>(
@@ -43,13 +50,14 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     ref: React.Ref<HTMLDivElement>
   ) => {
     const {
-      activePrimaryNavKey = "",
+      activePrimaryNavKey: controlledActivePrimaryNavKey,
       buttons,
+      sdsStyle = "dropdown",
       menuProps = {
         disableScrollLock: true,
         disablePortal: true,
       },
-      hasInvertedStyle,
+      backgroundAppearance = "matchBackground",
       logo,
       logoUrl,
       logoLinkComponent = "a",
@@ -59,19 +67,53 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       primaryNavPosition = "left",
       searchProps,
       secondaryNavItems,
-      setActivePrimaryNavKey,
+      setActivePrimaryNavKey: onActivePrimaryNavKeyChange,
       showSearch = true,
       tag,
       tagColor,
       title,
       drawerOpen: controlledDrawerOpen,
       setDrawerOpen: onDrawerOpenChange,
+      isSticky = true,
+      topComponentSlot,
+      onDrawerStyleNavItemHover,
       ...rest
     } = props;
     const navRef = useRef<HTMLDivElement>(null);
+    const topSlotRef = useRef<HTMLDivElement>(null);
+    const [topOffset, setTopOffset] = useState(0);
+
+    // Use hybrid controlled/uncontrolled active key state
+    // Internal state is always maintained, external prop can override
+    const [internalActivePrimaryNavKey, setInternalActivePrimaryNavKey] =
+      useState("");
+    const activePrimaryNavKey =
+      controlledActivePrimaryNavKey ?? internalActivePrimaryNavKey;
+    const setActivePrimaryNavKey = (key: string) => {
+      // Always update internal state
+      setInternalActivePrimaryNavKey(key);
+      // Also call the callback if provided (for external consumers)
+      if (onActivePrimaryNavKeyChange) {
+        onActivePrimaryNavKeyChange(key);
+      }
+    };
 
     const theme = useTheme();
+    const mode = getMode({ theme });
     const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+    /**
+     * In Light Mode
+     * - backgroundAppearance: matchBackground would result in the background being light
+     * - backgroundAppearance: dark would result in the background being dark
+     * In Dark Mode
+     * - backgroundAppearance: matchBackground would result in the background being dark
+     * - backgroundAppearance: dark would result in the background being dark
+     */
+    const hasInvertedStyle = useMemo(
+      () => (mode === "light" ? backgroundAppearance === "dark" : false),
+      [backgroundAppearance, mode]
+    );
 
     // Use controlled or uncontrolled drawer state
     const [internalDrawerOpen, setInternalDrawerOpen] = useState(false);
@@ -90,9 +132,93 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       isNarrow: isMdScreen,
     });
 
+    // Shared accordion state for both primary and secondary nav
+    const [expandedAccordion, setExpandedAccordion] = useState<string | null>(
+      null
+    );
+    const accordionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+
+    // Track if any hover drawer is open (for sdsStyle="drawer")
+    // Use separate state for primary and secondary nav to avoid race conditions
+    const [isPrimaryDrawerOpen, setIsPrimaryDrawerOpen] = useState(false);
+    const [isSecondaryDrawerOpen, setIsSecondaryDrawerOpen] = useState(false);
+    const isAnyDrawerOpen = isPrimaryDrawerOpen || isSecondaryDrawerOpen;
+
     useEffect(() => {
       setDimensions((prev) => ({ ...prev, isNarrow: isMdScreen }));
     }, [isMdScreen]);
+
+    // Measure the height of the topComponentSlot
+    useEffect(() => {
+      if (!topComponentSlot || !topSlotRef.current) {
+        setTopOffset(0);
+        return;
+      }
+
+      const measureHeight = () => {
+        if (topSlotRef.current) {
+          const height = topSlotRef.current.getBoundingClientRect().height;
+          setTopOffset(height);
+        }
+      };
+
+      // Measure immediately
+      measureHeight();
+
+      // Set up ResizeObserver to track size changes
+      const resizeObserver = new ResizeObserver(measureHeight);
+      resizeObserver.observe(topSlotRef.current);
+
+      return () => resizeObserver.disconnect();
+    }, [topComponentSlot]);
+
+    const scrollToAccordion = useCallback(
+      (accordionId: string) => {
+        // Wait for accordion animation to complete (MUI default is 300ms)
+        setTimeout(() => {
+          const accordionElement = accordionRefs.current.get(accordionId);
+          if (accordionElement) {
+            const accordionHeader = accordionElement.querySelector(
+              ".MuiAccordionSummary-root"
+            );
+            if (accordionHeader && navRef.current) {
+              // Find the scrollable container (drawer paper for narrow mode)
+              const drawerPaper = accordionElement.closest(".MuiDrawer-paper");
+
+              if (drawerPaper) {
+                // Narrow mode: scroll within the drawer
+                const accordionRect = accordionHeader.getBoundingClientRect();
+                const drawerRect = drawerPaper.getBoundingClientRect();
+                const navRect = navRef.current.getBoundingClientRect();
+
+                // Calculate scroll position: current scroll + accordion position - nav height
+                const currentScroll = drawerPaper.scrollTop;
+                const accordionTop = accordionRect.top - drawerRect.top;
+                const targetScroll =
+                  currentScroll +
+                  accordionTop -
+                  navRect.height -
+                  (sdsStyle === "drawer" ? 0 : 8);
+
+                drawerPaper.scrollTo({
+                  top: Math.max(0, targetScroll),
+                  behavior: "smooth",
+                });
+              }
+            }
+          }
+        }, ACCORDION_SCROLL_DELAY_MS);
+      },
+      [sdsStyle]
+    );
+
+    const handlePrimaryDrawerStateChange = useCallback((isOpen: boolean) => {
+      setIsPrimaryDrawerOpen(isOpen);
+    }, []);
+
+    const handleSecondaryDrawerStateChange = useCallback((isOpen: boolean) => {
+      setIsSecondaryDrawerOpen(isOpen);
+    }, []);
 
     const checkScrollable = useCallback(() => {
       if (!navRef.current) return;
@@ -157,11 +283,13 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         >
           {logo && <StyledLogoWrapper>{logo}</StyledLogoWrapper>}
 
-          <StyledTitleTagWrapper>
-            {title && <p>{title}</p>}
+          {(title || tag) && (
+            <StyledTitleTagWrapper>
+              {title && <p>{title}</p>}
 
-            {tag && <StyledTag color={tagColor} label={tag} hover={false} />}
-          </StyledTitleTagWrapper>
+              {tag && <StyledTag color={tagColor} label={tag} hover={false} />}
+            </StyledTitleTagWrapper>
+          )}
         </StyledTitleContainer>
       );
 
@@ -183,16 +311,24 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
     const renderPrimaryNav = () => {
       return (
-        setActivePrimaryNavKey &&
         primaryNavItems &&
         primaryNavItems.length > 0 && (
           <NavigationHeaderPrimaryNav
             items={primaryNavItems}
-            value={activePrimaryNavKey}
+            value={activePrimaryNavKey as T}
             onChange={setActivePrimaryNavKey}
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
             menuProps={menuProps}
+            sdsStyle={sdsStyle}
+            expandedAccordion={expandedAccordion}
+            setExpandedAccordion={setExpandedAccordion}
+            accordionRefs={accordionRefs}
+            scrollToAccordion={scrollToAccordion}
+            onDrawerStateChange={handlePrimaryDrawerStateChange}
+            topOffset={topOffset}
+            onClose={() => setDrawerOpen(false)}
+            onDrawerStyleNavItemHover={onDrawerStyleNavItemHover}
           />
         )
       );
@@ -207,6 +343,15 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             hasInvertedStyle={hasInvertedStyle}
             isNarrow={dimensions.isNarrow}
             menuProps={menuProps}
+            sdsStyle={sdsStyle}
+            expandedAccordion={expandedAccordion}
+            setExpandedAccordion={setExpandedAccordion}
+            accordionRefs={accordionRefs}
+            scrollToAccordion={scrollToAccordion}
+            onDrawerStateChange={handleSecondaryDrawerStateChange}
+            topOffset={topOffset}
+            onClose={() => setDrawerOpen(false)}
+            onDrawerStyleNavItemHover={onDrawerStyleNavItemHover}
           />
         )
       );
@@ -233,9 +378,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       const fullWidth = dimensions.isNarrow ? { width: "100%" } : undefined;
 
       if (React.isValidElement(buttonProps)) {
+        const originalOnClick = buttonProps.props?.onClick;
+        const enhancedOnClick = dimensions.isNarrow
+          ? (e: React.MouseEvent<HTMLElement>) => {
+              originalOnClick?.(e as React.MouseEvent<HTMLButtonElement>);
+              setDrawerOpen(false);
+            }
+          : originalOnClick;
+
         return React.cloneElement(buttonProps as React.ReactElement, {
           hasInvertedStyle,
           key,
+          onClick: enhancedOnClick,
           sx: {
             ...(buttonProps.props?.sx || {}),
             ...fullWidth,
@@ -265,21 +419,32 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       buttonProps: ButtonProps,
       key: string,
       fullWidth: { width: string } | undefined
-    ) => (
-      <StyledNarrowIconButton
-        key={key}
-        sx={fullWidth}
-        isAllCaps={false}
-        startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
-        hasInvertedStyle={hasInvertedStyle}
-        {...buttonProps}
-        sdsStyle="minimal"
-        sdsType="secondary"
-        isNarrow={dimensions.isNarrow}
-      >
-        {buttonProps.children}
-      </StyledNarrowIconButton>
-    );
+    ) => {
+      const originalOnClick = buttonProps.onClick;
+      const enhancedOnClick = dimensions.isNarrow
+        ? (e: React.MouseEvent<HTMLElement>) => {
+            originalOnClick?.(e as React.MouseEvent<HTMLButtonElement>);
+            setDrawerOpen(false);
+          }
+        : originalOnClick;
+
+      return (
+        <StyledNarrowIconButton
+          key={key}
+          sx={fullWidth}
+          isAllCaps={false}
+          startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
+          hasInvertedStyle={hasInvertedStyle}
+          {...buttonProps}
+          onClick={enhancedOnClick}
+          sdsStyle="minimal"
+          sdsType="secondary"
+          isNarrow={dimensions.isNarrow}
+        >
+          {buttonProps.children}
+        </StyledNarrowIconButton>
+      );
+    };
 
     const renderWideIconButton = (
       buttonProps: IconButtonProps,
@@ -303,16 +468,27 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       buttonProps: ButtonProps,
       key: string,
       fullWidth: { width: string } | undefined
-    ) => (
-      <StyledHeaderButton
-        key={key}
-        sx={fullWidth}
-        {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
-        sdsStyle="rounded"
-        hasInvertedStyle={hasInvertedStyle}
-        isNarrow={dimensions.isNarrow}
-      />
-    );
+    ) => {
+      const originalOnClick = buttonProps.onClick;
+      const enhancedOnClick = dimensions.isNarrow
+        ? (e: React.MouseEvent<HTMLElement>) => {
+            originalOnClick?.(e as React.MouseEvent<HTMLButtonElement>);
+            setDrawerOpen(false);
+          }
+        : originalOnClick;
+
+      return (
+        <StyledHeaderButton
+          key={key}
+          sx={fullWidth}
+          {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+          onClick={enhancedOnClick}
+          sdsStyle="rounded"
+          hasInvertedStyle={hasInvertedStyle}
+          isNarrow={dimensions.isNarrow}
+        />
+      );
+    };
 
     const renderHeaderContent = () => {
       const logoNode = renderLogoNode();
@@ -372,16 +548,29 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     const secondaryNav = renderSecondaryNav();
     const buttonsNode = renderButtonsNode();
 
+    const position =
+      sdsStyle === "drawer" ? "sticky" : isSticky ? "sticky" : "relative";
+
+    // Disable elevation when drawer style is active and any drawer is open
+    const effectiveScrollElevation =
+      scrollElevation && !(sdsStyle === "drawer" && isAnyDrawerOpen);
+
     return (
       <>
-        <ElevationScroll {...props} shouldElevate={scrollElevation}>
+        {topComponentSlot && (
+          <StyledTopComponentSlot ref={topSlotRef}>
+            {topComponentSlot}
+          </StyledTopComponentSlot>
+        )}
+        <ElevationScroll {...props} shouldElevate={effectiveScrollElevation}>
           <StyledAppBar
             elevation={0}
             hasInvertedStyle={hasInvertedStyle}
             ref={mergeRefs([ref, navRef])}
             aria-label="Main navigation"
             tabIndex={0}
-            position="sticky"
+            position={position}
+            style={{ top: topOffset }}
             {...rest}
           >
             {headerContent}
@@ -394,22 +583,11 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             hasInvertedStyle={hasInvertedStyle}
+            topOffset={topOffset}
             role="dialog"
             aria-label="Navigation menu"
+            disableScrollLock={false}
           >
-            <ElevationScroll {...props} shouldElevate={scrollElevation}>
-              <StyledAppBar
-                elevation={10}
-                hasInvertedStyle={hasInvertedStyle}
-                ref={mergeRefs([ref, navRef])}
-                aria-label="Main navigation"
-                tabIndex={0}
-                {...rest}
-                position="sticky"
-              >
-                {headerContent}
-              </StyledAppBar>
-            </ElevationScroll>
             <StyledDrawerContent>
               <div>
                 {search}

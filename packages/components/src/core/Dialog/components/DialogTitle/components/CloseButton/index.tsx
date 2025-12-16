@@ -1,6 +1,4 @@
 import { ForwardedRef, forwardRef } from "react";
-import { ButtonProps } from "src/core/Button";
-import { DialogContext } from "src/core/Dialog/components/common";
 import { StyledButton } from "./style";
 
 const SDS_SIZE_TO_COMPONENT_SIZE: {
@@ -12,28 +10,32 @@ const SDS_SIZE_TO_COMPONENT_SIZE: {
   xs: "small",
 };
 
+interface CloseButtonProps {
+  onClick?: () => void;
+  dialogSize?: "xs" | "s" | "m" | "l";
+  className?: string;
+}
+
 const CloseButton = forwardRef(function CloseButton(
-  props: ButtonProps,
+  props: CloseButtonProps,
   ref: ForwardedRef<HTMLButtonElement | null>
 ) {
-  return (
-    <DialogContext.Consumer>
-      {({ sdsSize }) => {
-        const size = SDS_SIZE_TO_COMPONENT_SIZE[sdsSize];
+  const { dialogSize = "m", onClick, className, ...rest } = props;
 
-        return (
-          <StyledButton
-            aria-label="Close"
-            ref={ref}
-            sdsSize={size}
-            {...props}
-            icon="XMark"
-            sdsStyle="icon"
-            sdsType="tertiary"
-          />
-        );
-      }}
-    </DialogContext.Consumer>
+  const size = SDS_SIZE_TO_COMPONENT_SIZE[dialogSize] ?? "large";
+
+  return (
+    <StyledButton
+      aria-label="Close"
+      ref={ref}
+      onClick={onClick}
+      sdsSize={size}
+      icon="XMark"
+      sdsStyle="icon"
+      sdsType="tertiary"
+      className={className}
+      {...rest}
+    />
   );
 });
 

@@ -12,7 +12,7 @@ global.ResizeObserver = class {
 };
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
-const { Test, Default } = composeStories(stories);
+const { Test, DropdownStyle } = composeStories(stories);
 
 describe("<NavigationHeader />", () => {
   generateSnapshots(stories);
@@ -116,8 +116,22 @@ describe("<NavigationHeader />", () => {
     expect(onClickMock).toHaveBeenCalled();
   });
 
+  it("triggers onDrawerStyleNavItemHover when hovering over a drawer item", () => {
+    const onDrawerStyleNavItemHover = jest.fn();
+    const { DrawerStyle } = composeStories(stories);
+
+    render(
+      <DrawerStyle onDrawerStyleNavItemHover={onDrawerStyleNavItemHover} />
+    );
+
+    const productsItem = screen.getAllByText("Products")[0];
+    fireEvent.mouseEnter(productsItem);
+
+    expect(onDrawerStyleNavItemHover).toHaveBeenCalled();
+  });
+
   it("matches the snapshot", () => {
-    const { asFragment } = render(<Default />);
+    const { asFragment } = render(<DropdownStyle />);
     expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -57,16 +57,26 @@ export const Table = (props: Args): JSX.Element => {
             shouldShowTooltipOnHover={false}
           />
           <CellComponent>
-            {["info", "notice", "beta", "negative", "positive"].map((item) => (
-              <Tag
-                key={item}
-                color={item as SdsTagColorType}
-                label={item as string}
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
-              />
-            ))}
+            <div
+              style={{
+                display: "flex",
+                gap: "4px",
+                flexWrap: "wrap",
+              }}
+            >
+              {["info", "notice", "beta", "negative", "positive"].map(
+                (item) => (
+                  <Tag
+                    key={item}
+                    color={item as SdsTagColorType}
+                    label={item as string}
+                    sdsStyle="rounded"
+                    sdsType="secondary"
+                    hover={false}
+                  />
+                )
+              )}
+            </div>
           </CellComponent>
           <CellBasic
             primaryText="356"

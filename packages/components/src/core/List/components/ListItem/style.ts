@@ -49,9 +49,20 @@ export const StyledListItem = styled(ListItem, {
       const fontWeights = getFontWeights(props);
       const { ordered } = props;
 
+      // (masoudmanson):
+      // IMPORTANT: Do NOT change \\2022 to a literal bullet character (•)!
+      // Using \\2022 (CSS escape for U+2022 bullet) instead of the literal "•" character
+      // prevents "illegal escape sequence" errors in the built JavaScript bundle.
+      // When Rollup bundles this code, a literal • would be converted to \u2022 in the JS string,
+      // which creates an illegal escape sequence. The double backslash (\\2022) properly escapes
+      // through both JavaScript parsing and CSS rendering to produce the bullet character.
+      //
+      // NOTE: This bug existed for a very long time and caused significant performance issues
+      // in production builds when components from this library were used in other projects.
+      // It was finally fixed in Nov 7th, 2025. Please do not reintroduce this issue! Thank you! :D
       return `        
         font-weight: ${fontWeights?.semibold};
-        content: ${ordered ? `counters(section, ".")"."` : `"•"`};
+        content: ${ordered ? `counters(section, ".")"."` : `"\\2022"`};
         margin-right: ${ordered ? spaces?.xs : spaces?.s}px;
       `;
     }}

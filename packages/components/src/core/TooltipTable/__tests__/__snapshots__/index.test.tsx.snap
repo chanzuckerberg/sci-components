@@ -23,12 +23,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 1
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             1
           </td>
@@ -37,12 +37,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 2
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             2
           </td>
@@ -51,12 +51,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 3
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             3
           </td>
@@ -83,12 +83,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 4
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             4
           </td>
@@ -97,12 +97,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 5 
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             5
           </td>
@@ -111,12 +111,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 6
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             6
           </td>
@@ -125,12 +125,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 7
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             7
           </td>
@@ -157,12 +157,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 8
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             8
           </td>
@@ -171,12 +171,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 9
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             9
           </td>
@@ -185,12 +185,12 @@ exports[`<TooltipTable /> Default story renders snapshot 1`] = `
           class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1pj5u4j-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1bgtz3i-MuiTableCell-root"
           >
             Label 10
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-mo86fa-MuiTableCell-root"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-40env5-MuiTableCell-root"
           >
             10
           </td>

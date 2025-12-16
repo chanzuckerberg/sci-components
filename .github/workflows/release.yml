@@ -86,16 +86,18 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: yarn publish:ci
 
+      # Post breaking changes to a Slack channel is temporarily disabled
+      # since the Slack webhook URL is not available in the workflow environment
       # Step 12: Post breaking changes to a Slack channel
-      - name: Post breaking changes to a Slack channel
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SDS_BREAKING_CHANGES_SLACK_WEBHOOK }}
-        uses: act10ns/slack@v1
-        with:
-          status: complete
-          channel: "#sci-design-system-breaking-changes"
-          config: .github/config/slack.yml
-        if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
+      # - name: Post breaking changes to a Slack channel
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SDS_BREAKING_CHANGES_SLACK_WEBHOOK }}
+      #   uses: act10ns/slack@v1
+      #   with:
+      #     status: complete
+      #     channel: "#sci-design-system-breaking-changes"
+      #     config: .github/config/slack.yml
+      #   if: contains(toJson(github.event.commits.*.message), 'BREAKING CHANGE')
 
       # Step 13: Merge prod branch into main
       - name: Create PR to merge prod into main

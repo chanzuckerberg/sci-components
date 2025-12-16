@@ -26,7 +26,7 @@ export const StyledDialogActions = styled(DialogActions, {
         buttonPosition === "right" ? "flex-end" : "flex-start"
       };;
 
-      margin-top: ${isSmall ? spaces?.xl : spaces?.xxl}px;
+      margin-top: ${isSmall ? spaces?.xl : spaces?.xxxl}px;
 
       &.${dialogActionsClasses.spacing} > :not(:first-of-type) {
         margin-left: ${spaces?.m}px;

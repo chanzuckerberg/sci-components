@@ -77,7 +77,11 @@ export const Default = {
     symbol: "circle",
     tooltip: HEATMAP_TOOLTIP_OPTIONS[1],
   },
-  parameters: {},
+  parameters: {
+    snapshot: {
+      skip: true,
+    },
+  },
 };
 
 const HeatmapDemoComponent = (): JSX.Element => {

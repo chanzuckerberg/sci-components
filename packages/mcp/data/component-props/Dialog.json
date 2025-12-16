@@ -6,7 +6,7 @@
         "isRequired": false
       },
       "canClickOutsideClose": {
-        "type": "any",
+        "type": "\"false\" | \"true\"",
         "isRequired": false
       },
       "longContent": {
@@ -14,7 +14,7 @@
         "isRequired": false
       },
       "sdsSize": {
-        "type": "any",
+        "type": "\"s\" | \"m\" | \"xs\" | \"l\"",
         "isRequired": false
       },
       "titleOnClose": {

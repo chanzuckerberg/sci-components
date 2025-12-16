@@ -154,20 +154,19 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
   ${(props: RadioExtraProps) => {
     const { disabled } = props;
 
-    const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       align-items: start;
-      margin-bottom: ${spaces?.l}px;
+      margin-bottom: 0;
       margin-left: 0;
       margin-right: 0;
       width: fit-content;
 
       &:hover {
         ${StyledRadioDefaultIcon} {
-          border: 1px solid ${semanticColors?.base?.borderPrimaryHover};  
-          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillHover};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryInteraction};  
+          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
         }
 
         ${StyledRadioCheckedIcon} {
@@ -177,7 +176,7 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
 
       &:active {
         ${StyledRadioDefaultIcon} {
-          border: 1px solid ${semanticColors?.base?.borderPrimaryPressed};
+          border: 1px solid ${semanticColors?.base?.borderPrimaryInteraction};
         }
 
         ${StyledRadioCheckedIcon} {

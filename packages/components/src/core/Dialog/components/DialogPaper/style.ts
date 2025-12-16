@@ -34,12 +34,12 @@ export const StyledPaper = styled(Paper, {
       const isSmall = sdsSize === "xs" || sdsSize === "s";
 
       return `
-        background-color: ${semanticColors?.base?.surface};
+        background-color: ${semanticColors?.base?.surfacePrimary};
         background-image: none;
         box-shadow: ${shadows?.l};
-        max-height: calc(100vh - ${2 * (spaces?.xxl || 0)}px);
+        max-height: calc(100vh - ${2 * (spaces?.xxxl || 40)}px);
         border-radius: ${corners?.xl}px;
-        padding: ${isSmall ? spaces?.xl : spaces?.xxl}px;
+        padding: ${isSmall ? spaces?.xl : spaces?.xxxl}px;
         outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};
       `;
     }}
@@ -47,7 +47,7 @@ export const StyledPaper = styled(Paper, {
 `;
 
 function paperDimensions(props: StyledPaperProps) {
-  const { sdsSize } = props;
+  const { sdsSize = "m" } = props;
 
   const sizeToDimensions = {
     l: {

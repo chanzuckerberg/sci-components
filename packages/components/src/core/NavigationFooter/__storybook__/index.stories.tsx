@@ -11,8 +11,15 @@ import { NavigationFooterNavItem } from "../NavigationFooter.types";
 
 export default {
   argTypes: {
-    hasInvertedStyle: {
-      control: { type: "boolean" },
+    backgroundAppearance: {
+      control: { type: "inline-radio" },
+      description: "The background appearance of the navigation header.",
+      options: ["matchBackground", "dark"],
+      table: {
+        defaultValue: {
+          summary: "matchBackground",
+        },
+      },
     },
     images: {
       control: { type: "object" },
@@ -62,7 +69,7 @@ export default {
 
 export const Default = {
   args: {
-    hasInvertedStyle: false,
+    backgroundAppearance: "matchBackground",
     images: [
       {
         image: (

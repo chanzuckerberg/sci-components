@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button, { SdsMinimalButtonProps } from "src/core/Button";
 import {
   fontBodyMediumL,
   fontBodyMediumS,
@@ -11,11 +10,23 @@ import {
 } from "src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
+import Tag from "src/core/Tag";
+import Button, { SdsMinimalButtonProps } from "src/core/Button";
 
-export type StyledTextItemProps = ExtraHeaderProps &
-  SdsMinimalButtonProps & { open: boolean };
+export type StyledTextItemProps = ExtraHeaderProps & {
+  open: boolean;
+  sdsStyle?: "dropdown" | "drawer";
+};
 
-const ButtonDoNotForwardProps = ["isNarrow"];
+const ButtonDoNotForwardProps = [
+  "isNarrow",
+  "sdsStyle",
+  "open",
+  "defaultUrl",
+  "hasDetails",
+  "hasIcon",
+  "sectionProps",
+];
 
 const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
   const { hasInvertedStyle, open } = props;
@@ -33,20 +44,30 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
     &:hover {
       box-shadow: none;
       background: ${hasInvertedStyle
-        ? semanticColors?.base.fillHoverInverse
-        : semanticColors?.base.fillHover};
+        ? semanticColors?.base.fillInteractionOnDark
+        : semanticColors?.base.fillInteraction};
     }
   `;
 };
 
-export const StyledTextItem = styled(Button, {
-  shouldForwardProp: (prop: string) => !ButtonDoNotForwardProps.includes(prop),
-})`
+export const StyledTextItem = styled(
+  Button as unknown as React.ComponentType<
+    Partial<SdsMinimalButtonProps> & StyledTextItemProps
+  >,
+  {
+    shouldForwardProp: (prop: string) =>
+      !ButtonDoNotForwardProps.includes(prop),
+  }
+)<StyledTextItemProps>`
   ${fontBodyMediumS}
 
   justify-content: flex-start;
   width: fit-content;
-  min-width: unset;
+  min-width: fit-content;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
 
   ${(props: StyledTextItemProps) => {
     const { hasInvertedStyle, open, isNarrow } = props;
@@ -56,24 +77,24 @@ export const StyledTextItem = styled(Button, {
     const corners = getCorners(props);
 
     const textDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.textSecondaryInverse
+      ? semanticColors?.base.textSecondaryOnDark
       : semanticColors?.base.textSecondary;
 
     const textOpenColor = hasInvertedStyle
-      ? semanticColors?.base.textPrimaryInverse
+      ? semanticColors?.base.textPrimaryOnDark
       : semanticColors?.base.textPrimary;
 
     const ChevronDefaultColor = hasInvertedStyle
-      ? semanticColors?.base.ornamentSecondaryInverse
+      ? semanticColors?.base.ornamentSecondaryOnDark
       : semanticColors?.base.ornamentSecondary;
 
     const ChevronHoverColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryHoverInverse
-      : semanticColors?.base.ornamentSecondaryHover;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     const ChevronOpenColor = hasInvertedStyle
-      ? semanticColors?.base?.ornamentSecondaryPressedInverse
-      : semanticColors?.base.ornamentSecondaryPressed;
+      ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
+      : semanticColors?.base.ornamentSecondaryInteraction;
 
     return [
       open ? fontBodySemiboldS(props) : fontBodyMediumS(props),
@@ -82,7 +103,7 @@ export const StyledTextItem = styled(Button, {
         border-radius: ${corners?.l}px;
         background-color: ${open
           ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedInverse
+            ? semanticColors?.base?.fillPressedOnDark
             : semanticColors?.base?.fillPressed
           : "transparent"};
 
@@ -95,12 +116,12 @@ export const StyledTextItem = styled(Button, {
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillHoverInverse
-            : semanticColors?.base.fillHover};
+            ? semanticColors?.base.fillInteractionOnDark
+            : semanticColors?.base.fillInteraction};
           box-shadow: none;
 
           color: ${hasInvertedStyle
-            ? semanticColors?.base.textPrimaryInverse
+            ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
 
           svg {
@@ -112,4 +133,8 @@ export const StyledTextItem = styled(Button, {
       `,
     ];
   }}
+`;
+
+export const StyledTag = styled(Tag)`
+  margin: 0;
 `;

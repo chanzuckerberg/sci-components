@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/components",
-  "version": "22.13.3",
+  "version": "23.2.1",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.cjs.d.ts",
@@ -30,7 +30,7 @@
     "sd-generate-breakpoints": "tsx ./src/common/styles-dictionary/scripts/generate-breakpoint-tokens.ts",
     "sd-generate-borders": "tsx ./src/common/styles-dictionary/scripts/generate-border-tokens.ts",
     "sd-generate-design-tokens": "yarn sd-generate-fonts && yarn sd-generate-colors && yarn sd-generate-corners && yarn sd-generate-spaces && yarn sd-generate-shadows && yarn sd-generate-icon-sizes && yarn sd-generate-breakpoints && yarn sd-generate-borders",
-    "sd-build": "yarn sd-generate-design-tokens && node ./src/common/styles-dictionary/build.mjs",
+    "sd-build": "yarn sd-generate-design-tokens && node ./src/common/styles-dictionary/build.mjs && npx prettier --write 'src/common/styles-dictionary/**/*.{css,scss,json}'",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
     "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
     "storybook:axeOnly": "axe-storybook --build-dir docs-build",
@@ -76,6 +76,7 @@
   },
   "devDependencies": {
     "@figma/code-connect": "^1.3.4",
+    "@types/chroma-js": "^3.1.2",
     "@tanstack/react-table": "^8.21.3",
     "@types/node": "^24.3.0",
     "@types/react": "^18.2.46",
@@ -84,5 +85,8 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",
     "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "chroma-js": "^3.1.2"
   }
 }

@@ -14,7 +14,7 @@
         "isRequired": false
       },
       "intent": {
-        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\"",
+        "type": "\"accent\" | \"info\" | \"negative\" | \"notice\" | \"positive\"",
         "isRequired": false
       },
       "sdsIconProps": {

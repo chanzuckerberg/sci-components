@@ -8,7 +8,12 @@ import {
   StyledButton,
 } from "./style";
 
-export type BannerIntentType = "info" | "negative" | "notice" | "positive";
+export type BannerIntentType =
+  | "accent"
+  | "info"
+  | "negative"
+  | "notice"
+  | "positive";
 
 export interface BannerProps extends BannerExtraProps {
   children: React.ReactNode;

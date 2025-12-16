@@ -28,16 +28,23 @@ export const StyledLinkItemLink = styled(Link, {
 
     return css`
       color: ${hasInvertedStyle
-        ? semanticColors?.base.textSecondaryInverse
+        ? semanticColors?.base.textSecondaryOnDark
         : semanticColors?.base.textSecondary};
       white-space: nowrap;
       position: relative;
 
       &:hover {
         color: ${hasInvertedStyle
-          ? semanticColors?.base.textPrimaryInverse
+          ? semanticColors?.base.textPrimaryOnDark
           : semanticColors?.base.textPrimary};
         text-decoration: none;
+      }
+
+      &:active,
+      &:focus {
+        color: ${hasInvertedStyle
+          ? semanticColors?.base.textPrimaryOnDark
+          : semanticColors?.accent.textActionPressed};
       }
 
       ${showDivider &&
@@ -52,7 +59,7 @@ export const StyledLinkItemLink = styled(Link, {
           width: 1px;
           margin-left: ${spaces?.s}px;
           background-color: ${hasInvertedStyle
-            ? semanticColors?.base.dividerInverse
+            ? semanticColors?.base.dividerOnDark
             : semanticColors?.base.divider};
         }
       `}
@@ -69,7 +76,7 @@ export const StyledDivider = styled(Divider, {
     return `
       border-color: ${
         props.hasInvertedStyle
-          ? semanticColors?.base.dividerInverse
+          ? semanticColors?.base.dividerOnDark
           : semanticColors?.base.divider
       };
     `;

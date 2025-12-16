@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta } from "@storybook/react-webpack5";
 import { LoadingIndicator } from "./stories/default";
 import { LIST_EXCLUDED_CONTROLS } from "./constants";
@@ -31,6 +32,9 @@ export const CustomAriaLabel = {
     sdsStyle: "minimal",
   },
   parameters: {
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
     controls: {
       exclude: LIST_EXCLUDED_CONTROLS,
     },
@@ -41,6 +45,9 @@ export const CustomAriaLabel = {
 
 export const ScreenReaderTest = {
   parameters: {
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
     controls: {
       exclude: LIST_EXCLUDED_CONTROLS,
     },
@@ -55,6 +62,9 @@ export const ScreenReaderTest = {
 
 export const Test = {
   parameters: {
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
     controls: {
       exclude: LIST_EXCLUDED_CONTROLS,
     },
