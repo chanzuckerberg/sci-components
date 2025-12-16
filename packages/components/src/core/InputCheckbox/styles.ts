@@ -163,7 +163,7 @@ const disabledStyles = (props: CheckboxExtraProps) => {
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
   ${(props: CheckboxExtraProps) => {
-    const { disabled, label } = props;
+    const { disabled } = props;
 
     const semanticColors = getSemanticColors(props);
     const borders = getBorders(props);

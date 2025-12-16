@@ -55,7 +55,7 @@ const PreComposedTableNameSpaceTest = (
           hover: true,
           selected: false,
         }}
-        onRowSelect={(selectedRows) => {
+        onRowSelect={(selectedRows: PreComposedTableDataType[]) => {
           console.log("Selected rows:", selectedRows);
         }}
       />
@@ -78,7 +78,7 @@ const PreComposedTableNameSpaceTest = (
           placement: "right",
         }}
         tableWidth="100%"
-        onRowSelect={(selectedRows) => {
+        onRowSelect={(selectedRows: PreComposedTableDataType[]) => {
           console.log("Mixed config selected:", selectedRows);
         }}
       />
