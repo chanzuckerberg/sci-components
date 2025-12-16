@@ -5,8 +5,8 @@ import {
   ButtonIconsGroupRight,
   EmptySlotBottom,
   EmptySlotRight,
+  StyledButton,
 } from "./style";
-import Button from "src/core/Button";
 
 export const CELL_BASIC_EXCLUDED_CONTROLS = [
   "icon",
@@ -18,7 +18,6 @@ export const CELL_BASIC_EXCLUDED_CONTROLS = [
   "tertiaryText",
   "tertiaryTextWrapLineCount",
   "shouldShowTooltipOnHover",
-  "shouldShowUndelineOnHover",
   "shouldTextWrap",
   "tooltipProps",
   "horizontalAlign",
@@ -56,28 +55,28 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = [
     key="componentSlotRight-1"
   />,
   <ButtonIconsGroupRight key="componentSlotRight-2">
-    <Button
+    <StyledButton
       aria-label="Bar Chart Vertical 4"
       icon="BarChartVertical4"
       sdsSize="small"
       sdsType="primary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Copy"
       icon="Copy"
       sdsSize="small"
       sdsType="primary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Search Lines Horizontal 3"
       icon="SearchLinesHorizontal3"
       sdsSize="small"
       sdsType="primary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Download"
       icon="Download"
       sdsSize="small"
@@ -123,28 +122,28 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       sdsType="tertiary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Copy"
       icon="Copy"
       sdsSize="small"
       sdsType="tertiary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Search Lines Horizontal 3"
       icon="SearchLinesHorizontal3"
       sdsSize="small"
       sdsType="tertiary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Tree Horizontal"
       icon="TreeHorizontal"
       sdsSize="small"
       sdsType="tertiary"
       sdsStyle="icon"
     />
-    <Button
+    <StyledButton
       aria-label="Download"
       icon="Download"
       sdsSize="small"

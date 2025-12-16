@@ -42,7 +42,7 @@ export const stripedStyle = (props: CommonThemeProps) => {
           background-color: ${semanticColors?.base?.backgroundPrimary};
 
           &:before {
-            background-color: ${semanticColors?.base?.fillHover};
+            background-color: ${semanticColors?.base?.fillInteraction};
           }
         }
       }
@@ -65,7 +65,7 @@ export const stripedStyle = (props: CommonThemeProps) => {
           background-color: ${semanticColors?.accent?.surfaceSecondary};
 
           &:before {
-            background-color: ${semanticColors?.base?.fillHover};
+            background-color: ${semanticColors?.base?.fillInteraction};
           }
         }
       }
@@ -136,7 +136,7 @@ export const StyledPinnedHeader = styled("th")`
         width: 100%;
         height: 100%;
         z-index: -1;
-        background-color: ${hover ? semanticColors?.base?.fillHover : "transparent"};
+        background-color: ${hover ? semanticColors?.base?.fillInteraction : "transparent"};
       }
     `;
   }}
