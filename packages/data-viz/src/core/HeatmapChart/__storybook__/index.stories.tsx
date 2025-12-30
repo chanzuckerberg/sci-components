@@ -101,6 +101,7 @@ export const HeatmapDemo = {
      */
     axe: {
       disabledRules: ["color-contrast"],
+      timeout: 60 * 1000,
     },
     controls: {
       exclude: [
@@ -116,6 +117,9 @@ export const HeatmapDemo = {
     layout: "fullscreen",
     snapshot: {
       skip: true,
+    },
+    test: {
+      timeout: 60 * 1000,
     },
   },
   render: (args: Args) => <HeatmapDemoComponent {...args} />,

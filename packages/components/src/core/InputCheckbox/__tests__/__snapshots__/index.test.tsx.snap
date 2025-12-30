@@ -7,6 +7,7 @@ exports[`<InputCheckbox /> Default story renders snapshot 1`] = `
   <span
     class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium css-5zzv6g-MuiButtonBase-root-MuiCheckbox-root"
     intent="default"
+    label="Label"
   >
     <input
       class="PrivateSwitchBase-input css-1m9pwf3"
