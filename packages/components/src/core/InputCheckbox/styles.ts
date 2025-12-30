@@ -81,6 +81,7 @@ export const StyledCheckboxCheckedIcon = styled("div")`
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props: CheckboxExtraProps) => {
     const { label } = props;
+    console.log(props);
 
     const spaces = getSpaces(props);
 

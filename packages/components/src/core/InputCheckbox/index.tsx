@@ -132,6 +132,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
             </StyledCheckboxCheckedIcon>
           }
           intent={intent}
+          label={label}
           {...checkboxProps}
           {...newProps}
         />
