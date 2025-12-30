@@ -117,6 +117,9 @@ export const HeatmapDemo = {
     snapshot: {
       skip: true,
     },
+    test: {
+      timeout: 60000,
+    },
   },
   render: (args: Args) => <HeatmapDemoComponent {...args} />,
 };

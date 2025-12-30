@@ -38,8 +38,8 @@ import {
   StyledPaginationWrapper,
   StyledTableContainer,
   StyledTableWrapper,
+  StyledInputCheckbox,
 } from "./style";
-import InputCheckbox from "../InputCheckbox";
 import {
   calculateTableSizing,
   getCommonPinningStyles,
@@ -139,7 +139,7 @@ const PreComposedTable = <TData extends RowData>({
                   ...pinnedStyle,
                 }}
               >
-                <InputCheckbox
+                <StyledInputCheckbox
                   stage={row.getIsSelected() ? "checked" : "unchecked"}
                   disabled={!row.getCanSelect()}
                   onChange={() => row.toggleSelected()}
@@ -170,7 +170,7 @@ const PreComposedTable = <TData extends RowData>({
                 horizontalAlign="center"
                 style={{ width: `${header.getSize()}px`, ...pinnedStyle }}
               >
-                <InputCheckbox
+                <StyledInputCheckbox
                   stage={stage}
                   onChange={() => table.toggleAllPageRowsSelected()}
                   aria-label="Select all rows"

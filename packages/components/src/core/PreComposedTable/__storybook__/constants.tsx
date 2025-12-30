@@ -208,7 +208,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
         tabularNums
         shouldShowTooltipOnHover={false}
         horizontalAlign="right"
-        extraRightPadding={20}
+        extraRightPadding={props?.column?.getCanSort() ? 20 : 0}
         {...props}
       />
     ),
@@ -228,7 +228,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
         tabularNums
         shouldShowTooltipOnHover={false}
         horizontalAlign="right"
-        extraRightPadding={20}
+        extraRightPadding={props?.column?.getCanSort() ? 20 : 0}
         {...props}
       />
     ),
@@ -246,7 +246,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
       <CellBasic
         primaryText={`$${(getValue() as number).toLocaleString()}`}
         tabularNums
-        extraRightPadding={20}
+        extraRightPadding={props?.column?.getCanSort() ? 20 : 0}
         horizontalAlign="right"
         {...props}
       />
@@ -280,7 +280,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
         tabularNums
         shouldShowTooltipOnHover={false}
         horizontalAlign="right"
-        extraRightPadding={20}
+        extraRightPadding={props?.column?.getCanSort() ? 20 : 0}
         {...props}
       />
     ),

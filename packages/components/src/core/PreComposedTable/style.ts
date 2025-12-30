@@ -7,6 +7,7 @@ import {
 } from "../styles";
 import InputSearch from "../InputSearch";
 import { css } from "@emotion/react";
+import InputCheckbox from "../InputCheckbox";
 
 export const StyledTableContainer = styled.div`
   width: 100%;
@@ -72,6 +73,16 @@ export const stripedStyle = (props: CommonThemeProps) => {
     }
   `;
 };
+
+export const StyledInputCheckbox = styled(InputCheckbox)`
+  ${(props: CommonThemeProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      background-color: ${semanticColors?.base?.backgroundPrimary} !important;
+    `;
+  }}
+`;
 
 export const StyledTableWrapper = styled.div`
   ${(
