@@ -66,9 +66,13 @@ const CellHeaderContent = (
 
   return (
     <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
-      <StyledCellHeaderText shouldTruncate={shouldTruncate}>
-        {children}
-      </StyledCellHeaderText>
+      {typeof children === "string" || typeof children === "number" ? (
+        <StyledCellHeaderText shouldTruncate={shouldTruncate}>
+          {children}
+        </StyledCellHeaderText>
+      ) : (
+        children
+      )}
       {(!hideSortIcon || active) && hover && sortIcon}
     </StyledCellHeaderContainer>
   );

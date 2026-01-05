@@ -8,6 +8,7 @@ import {
 import InputSearch from "../InputSearch";
 import { css } from "@emotion/react";
 import InputCheckbox from "../InputCheckbox";
+import CellComponent from "../CellComponent";
 
 export const StyledTableContainer = styled.div`
   width: 100%;
@@ -77,9 +78,11 @@ export const stripedStyle = (props: CommonThemeProps) => {
 export const StyledInputCheckbox = styled(InputCheckbox)`
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     return `
       background-color: ${semanticColors?.base?.backgroundPrimary} !important;
+      border-radius: ${corners?.s}px !important;
     `;
   }}
 `;
@@ -168,4 +171,8 @@ export const StyledPaginationWrapper = styled.div`
       margin-top: ${spaces?.m}px;
     `;
   }}
+`;
+
+export const StyledSelectionCell = styled(CellComponent)`
+  line-height: 22px !important;
 `;

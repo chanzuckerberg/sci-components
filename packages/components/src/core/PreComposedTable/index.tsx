@@ -31,7 +31,6 @@ import TableHeader from "../TableHeader";
 import TableRow, { TableRowProps } from "../TableRow";
 import CellHeader, { CellHeaderProps } from "../CellHeader";
 import CellBasic from "../CellBasic";
-import CellComponent from "../CellComponent";
 import Pagination, { PaginationProps } from "src/core/Pagination";
 import {
   StyledInputSearch,
@@ -39,6 +38,7 @@ import {
   StyledTableContainer,
   StyledTableWrapper,
   StyledInputCheckbox,
+  StyledSelectionCell,
 } from "./style";
 import {
   calculateTableSizing,
@@ -130,7 +130,7 @@ const PreComposedTable = <TData extends RowData>({
             const pinnedStyle = getCommonPinningStyles(cell.column, table);
 
             return (
-              <CellComponent
+              <StyledSelectionCell
                 horizontalAlign="center"
                 verticalAlign="top"
                 {...props}
@@ -145,7 +145,7 @@ const PreComposedTable = <TData extends RowData>({
                   onChange={() => row.toggleSelected()}
                   aria-label="Select row"
                 />
-              </CellComponent>
+              </StyledSelectionCell>
             );
           },
           enableFiltering: false,
@@ -168,7 +168,11 @@ const PreComposedTable = <TData extends RowData>({
             return (
               <CellHeader
                 horizontalAlign="center"
-                style={{ width: `${header.getSize()}px`, ...pinnedStyle }}
+                style={{
+                  verticalAlign: "middle",
+                  width: `${header.getSize()}px`,
+                  ...pinnedStyle,
+                }}
               >
                 <StyledInputCheckbox
                   stage={stage}
