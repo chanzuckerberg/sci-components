@@ -2,21 +2,21 @@
 
 exports[`<Banner /> Default story renders snapshot 1`] = `
 <div
-  class="css-1fd36s4"
+  class="css-y0v4rx es8mwmv4"
   role="banner"
 >
   <div
-    class="css-1879pua"
+    class="css-ftey50 es8mwmv0"
   >
     <div
-      class="css-dolx02"
+      class="css-dn9tz5 es8mwmv1"
     >
       <div
-        class="css-1ft6wgl"
+        class="css-1obf64m eo7r9jx1"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
           data-file-name="IconInfoCircleSmall"
           data-testid="IconInfoCircleSmall"
           fillcontrast="white"
@@ -31,17 +31,17 @@ exports[`<Banner /> Default story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-f0g2hw-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium es8mwmv2 epxivg20 css-7ukr4d-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"
   >
     <div
-      class="css-1ft6wgl"
+      class="css-1obf64m eo7r9jx1"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
         data-file-name="IconXMarkSmall"
         data-testid="IconXMarkSmall"
         fillcontrast="white"

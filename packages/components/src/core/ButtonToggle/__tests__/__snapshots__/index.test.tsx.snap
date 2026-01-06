@@ -3,17 +3,17 @@
 exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
 <button
   aria-label="button-toggle"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ul4hcs-MuiButtonBase-root-MuiIconButton-root"
+  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium e1ixaumu0 epxivg20 css-16vr00q-MuiButtonBase-root-MuiIconButton-root"
   icon="InfoCircle"
   tabindex="0"
   type="button"
 >
   <div
-    class="css-1ft6wgl"
+    class="css-1obf64m eo7r9jx1"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
       data-file-name="IconInfoCircleLarge"
       data-testid="IconInfoCircleLarge"
       fillcontrast="white"

@@ -2,14 +2,14 @@
 
 exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium css-1roq1kc-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium e6nmh260 css-1m0z5a-MuiSwitch-root"
 >
   <span
-    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked Mui-checked css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase"
+    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked Mui-checked css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
   >
     <input
       checked=""
-      class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+      class="PrivateSwitchBase-input MuiSwitch-input css-1p3z7et-MuiSwitchBase-root"
       type="checkbox"
       value="On"
     />
@@ -28,15 +28,15 @@ exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
 
 exports[`<InputToggle /> Default story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium css-14qipg4-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium e6nmh260 css-j742v1-MuiSwitch-root"
 >
   <span
-    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-byenzh-MuiButtonBase-root-MuiSwitch-switchBase"
+    class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
     width="62"
   >
     <input
       aria-label="Input Toggle"
-      class="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
+      class="PrivateSwitchBase-input MuiSwitch-input css-1p3z7et-MuiSwitchBase-root"
       type="checkbox"
       value="Off"
     />
