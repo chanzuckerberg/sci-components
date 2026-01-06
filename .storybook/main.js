@@ -1,4 +1,4 @@
-import { dirname, join } from "path";
+const { dirname, join } = require("path");
 const { plugins } = require("axe-core");
 
 module.exports = {

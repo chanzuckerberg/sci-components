@@ -3,28 +3,28 @@
 exports[`<TableHeader /> Default story renders snapshot 1`] = `
 <table>
   <thead
-    class="css-1426k2b"
+    class="css-2mfnek eidkt9t0"
   >
     <tr
-      class="css-fitsu2"
+      class="css-yvcc08 e1xspt480"
     >
       <th
-        class="css-bony3j"
+        class="css-229588 e1wz77p71"
       >
         <div
-          class="css-rm9mvq"
+          class="css-96hiq7 e1wz77p73"
         >
           <div
-            class="css-1epiyn2"
+            class="css-1kmjpr5 e1wz77p72"
           >
             Column 1
           </div>
           <div
-            class="css-1ft6wgl"
+            class="css-1obf64m eo7r9jx1"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-136pauu-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1wz77p70 eo7r9jx0 css-1xdaks9-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -37,22 +37,22 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-229588 e1wz77p71"
       >
         <div
-          class="css-rm9mvq"
+          class="css-96hiq7 e1wz77p73"
         >
           <div
-            class="css-1epiyn2"
+            class="css-1kmjpr5 e1wz77p72"
           >
             Column 2
           </div>
           <div
-            class="css-1ft6wgl"
+            class="css-1obf64m eo7r9jx1"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1wz77p70 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -65,22 +65,22 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-bony3j"
+        class="css-229588 e1wz77p71"
       >
         <div
-          class="css-rm9mvq"
+          class="css-96hiq7 e1wz77p73"
         >
           <div
-            class="css-1epiyn2"
+            class="css-1kmjpr5 e1wz77p72"
           >
             Column 3
           </div>
           <div
-            class="css-1ft6wgl"
+            class="css-1obf64m eo7r9jx1"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1wz77p70 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

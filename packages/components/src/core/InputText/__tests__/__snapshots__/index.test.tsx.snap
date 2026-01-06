@@ -3,13 +3,13 @@
 exports[`<InputText /> Default story renders snapshot 1`] = `
 <div>
   <label
-    class="css-1n9rsuo"
+    class="css-i8n32v e1uw011z0"
     for="Test"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1tt8oe4-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root e1uw011z1 css-omglwx-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
@@ -26,10 +26,10 @@ exports[`<InputText /> Default story renders snapshot 1`] = `
       />
       <fieldset
         aria-hidden="true"
-        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-ihdtdm"
+          class="css-1whs34k-MuiNotchedOutlined-root"
         >
           <span
             class="notranslate"

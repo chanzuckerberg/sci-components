@@ -2,37 +2,37 @@
 
 exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
 <div
-  class="css-1x0reya"
+  class="css-1and29 eaimom20"
 >
   <button
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-4uivms-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e1cqfwmi0 euetd0b0 css-157d98g-MuiButtonBase-root-MuiButton-root"
     label="Click Target"
     tabindex="0"
     type="button"
     width="250"
   >
     <span
-      class="css-g6qgry"
+      class="css-1ijc2rk e1cqfwmi5"
     >
       <div>
         <span
-          class="styled-label css-1ubkbz8"
+          class="styled-label css-g71ytf e1cqfwmi2"
         >
           Click Target
         </span>
       </div>
       <span
-        class="css-1pp8466"
+        class="css-4mc30z e1cqfwmi6"
       >
         <div
-          class="css-1ft6wgl"
+          class="css-1obf64m eo7r9jx1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
             data-file-name="IconChevronDownSmall"
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
@@ -49,7 +49,7 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
     />
   </button>
   <div
-    class="css-o9h2vs"
+    class="css-8rv6yn eaimom21"
   />
 </div>
 `;

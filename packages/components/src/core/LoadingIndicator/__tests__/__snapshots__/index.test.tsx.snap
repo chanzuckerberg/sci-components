@@ -3,14 +3,14 @@
 exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
 <div
   aria-label="Loading"
-  class="css-1o5w4es"
+  class="css-11iqrt1 e11x7f5n1"
 >
   <div
-    class="css-1ft6wgl"
+    class="css-1obf64m eo7r9jx1"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -23,7 +23,7 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
   <span
     aria-label="Loading cats list..."
     aria-live="polite"
-    class="css-q6tdx9"
+    class="css-fucilr e11x7f5n0"
     role="status"
   >
     Loading
@@ -34,14 +34,14 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
 exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
 <div
   aria-label="Loading"
-  class="css-1o5w4es"
+  class="css-11iqrt1 e11x7f5n1"
 >
   <div
-    class="css-1ft6wgl"
+    class="css-1obf64m eo7r9jx1"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -53,7 +53,7 @@ exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
   </div>
   <span
     aria-live="polite"
-    class="css-q6tdx9"
+    class="css-fucilr e11x7f5n0"
     role="status"
   >
     Loading

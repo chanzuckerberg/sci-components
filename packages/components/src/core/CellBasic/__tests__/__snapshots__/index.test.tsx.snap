@@ -5,34 +5,34 @@ exports[`<CellBasic /> Default story renders snapshot 1`] = `
   <tbody>
     <tr>
       <td
-        class="css-11b4fo2"
+        class="css-10xaxrk e12hza2g0"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
         tabindex="0"
         width="300px"
       >
         <div
-          class="css-ov1ktg"
+          class="css-k008qs e12hza2g1"
         >
           <div
-            class="css-1ago99h"
+            class="css-8atqhb e12hza2g2"
           >
             <div
-              class="css-7m17a9"
+              class="css-88isd2 e12hza2g4"
             >
               <div
-                class="css-lljn4l"
+                class="css-19a2l1x e12hza2g5"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-7ykbdx"
+              class="css-1no7jni e12hza2g6"
             >
               Secondary Text
             </span>
             <span
-              class="css-7ykbdx"
+              class="css-1no7jni e12hza2g7"
             >
               Tertiary Text
             </span>

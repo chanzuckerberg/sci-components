@@ -2,20 +2,20 @@
 
 exports[`<Pagination /> Default story renders snapshot 1`] = `
 <ul
-  class="css-ijj3wz"
+  class="css-im1obt e14x29ct2"
 >
   <li
-    class="css-mo0uzp"
+    class="css-17io5pz e14x29ct1"
     data-order="first"
     disabled=""
     tabindex="0"
   >
     <div
-      class="css-1ft6wgl"
+      class="css-1obf64m eo7r9jx1"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
         data-file-name="IconChevronLeftSmall"
         data-testid="IconChevronLeftSmall"
         fillcontrast="white"
@@ -27,51 +27,51 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </div>
   </li>
   <li
-    class="css-18jp22b"
+    class="css-fehdfm e14x29ct3"
     tabindex="0"
   >
     1
   </li>
   <li
-    class="css-12hqbja"
+    class="css-11qsnzt e14x29ct3"
     tabindex="0"
   >
     2
   </li>
   <li
-    class="css-12hqbja"
+    class="css-11qsnzt e14x29ct3"
     tabindex="0"
   >
     3
   </li>
   <li
-    class="css-12hqbja"
+    class="css-11qsnzt e14x29ct3"
     tabindex="0"
   >
     4
   </li>
   <li
-    class="css-12hqbja"
+    class="css-11qsnzt e14x29ct3"
     tabindex="0"
   >
     5
   </li>
   <li
-    class="css-1ksmdfk"
+    class="css-yu92xi e14x29ct4"
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1nlgj80-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium e14x29ct0 epxivg20 css-1ibog3p-MuiButtonBase-root-MuiIconButton-root"
       icon="DotsHorizontal"
       tabindex="0"
       type="button"
     >
       <div
-        class="css-1ft6wgl"
+        class="css-1obf64m eo7r9jx1"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
           data-file-name="IconDotsHorizontal3Small"
           data-testid="IconDotsHorizontal3Small"
           fillcontrast="white"
@@ -87,22 +87,22 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </button>
   </li>
   <li
-    class="css-12hqbja"
+    class="css-11qsnzt e14x29ct3"
     tabindex="0"
   >
     20
   </li>
   <li
-    class="css-107opme"
+    class="css-ccaww6 e14x29ct1"
     data-order="last"
     tabindex="0"
   >
     <div
-      class="css-1ft6wgl"
+      class="css-1obf64m eo7r9jx1"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
         data-file-name="IconChevronRightSmall"
         data-testid="IconChevronRightSmall"
         fillcontrast="white"

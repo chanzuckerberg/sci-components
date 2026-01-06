@@ -40,7 +40,7 @@ const preview = {
 
   parameters: {
     // Removes the change background button since it's controlled by the theme toggle
-    backgrounds: { disable: true },
+    backgrounds: { disabled: true },
     options: {
       storySort: {
         method: "alphabetical",

@@ -2,25 +2,25 @@
 
 exports[`<MenuItem /> ActionType story renders snapshot 1`] = `
 <div
-  class="css-1m75yyh"
+  class="css-1hskriy e1hhae2w0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-1w4zklv-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1dwhbdn0 css-13frvx0-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
     <span
-      class="css-bv5fko"
+      class="css-y3sjyp e1dwhbdn1"
     >
       <span
-        class="primary-text css-1k1xg99"
+        class="primary-text css-1831mf5 e1dwhbdn2"
       >
         Text here
       </span>
       <span
-        class="css-1o15svb"
+        class="css-z6j8xt e1dwhbdn4"
       >
         123,456
       </span>
@@ -34,20 +34,20 @@ exports[`<MenuItem /> ActionType story renders snapshot 1`] = `
 
 exports[`<MenuItem /> Default story renders snapshot 1`] = `
 <div
-  class="css-1m75yyh"
+  class="css-1hskriy e1hhae2w0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-1w4zklv-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1dwhbdn0 css-13frvx0-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
     <span
-      class="css-17socgo"
+      class="css-zv3iyt e1dwhbdn5"
     >
       <svg
-        class="css-1a4ncsk"
+        class="css-oa0rwb e1dwhbdn7"
         fill="currentColor"
         height="12"
         viewBox="0 0 12 12"
@@ -62,15 +62,15 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
       </svg>
     </span>
     <span
-      class="css-bv5fko"
+      class="css-y3sjyp e1dwhbdn1"
     >
       <span
-        class="primary-text css-1k1xg99"
+        class="primary-text css-1831mf5 e1dwhbdn2"
       >
         Text here
       </span>
       <span
-        class="css-1o15svb"
+        class="css-z6j8xt e1dwhbdn4"
       >
         123,456
       </span>
