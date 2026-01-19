@@ -50,7 +50,7 @@ export const StyledTag = styled(Tag)`
       &:hover,
       &:focus,
       &:focus-within {
-        background-color: ${semanticColors?.accent?.fillHover};
+        background-color: ${semanticColors?.accent?.fillInteraction};
 
         .MuiChip-label {
           color: ${semanticColors?.base?.textPrimaryInverse} !important;

@@ -35,10 +35,10 @@ export const StyledMenuItem = styled(MenuItem)`
         opacity: 1;
 
         &:hover, &.${menuItemClasses.focusVisible} {
-          background-color: ${semanticColors?.base?.fillInteraction};
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction};
 
           &[aria-selected="true"] {
-            background-color: ${semanticColors?.base?.fillInteraction};
+            background-color: ${semanticColors?.base?.fillPrimaryInteraction};
           }
         }
       }
@@ -55,7 +55,7 @@ export const StyledMenuItem = styled(MenuItem)`
         background-color: unset !important;
 
         &:hover {
-          background-color: ${semanticColors?.base?.fillInteraction} !important;
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction} !important;
         }
 
         ${StyledIcon}, ${DotIcon} {
@@ -68,7 +68,7 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:hover {
-        background-color: ${semanticColors?.base?.fillInteraction};
+        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
         ${StyledIcon}, ${DotIcon} {
           color: ${selected ? semanticColors?.base?.ornamentPrimary : semanticColors?.base?.ornamentSecondary};
         }
@@ -77,7 +77,7 @@ export const StyledMenuItem = styled(MenuItem)`
       &.Mui-selected.MuiListItem-root.MuiListItem-button {
         background-color: ${semanticColors?.base?.surfacePrimary};
         &:hover {
-          background-color: ${semanticColors?.base?.fillInteraction};
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction};
         }
       }
 

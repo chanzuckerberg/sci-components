@@ -172,8 +172,8 @@ export const StyledHeaderButton = styled(Button, {
       box-shadow: inset 0 0 0 1px ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
       color: ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
       &:hover {
-        background-color: ${semanticColors?.accent?.fillHover};
-        box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillHover};
+        background-color: ${semanticColors?.accent?.fillInteraction};
+        box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillInteraction};
         color: ${semanticColors?.base?.textPrimaryOnDark};
       }
     `;
@@ -695,8 +695,8 @@ export const StyledAccordion = styled(Accordion, {
           backdrop-filter: blur(8px);
           color: ${textOpenColor};
           background-color: ${hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed};
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed};
 
           &::before {
             content: "";
@@ -741,8 +741,8 @@ export const StyledAccordion = styled(Accordion, {
           width: 100%;
           box-shadow: none;
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillInteractionOnDark
-            : semanticColors?.base.fillInteraction};
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction};
           color: ${hasInvertedStyle
             ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
@@ -774,7 +774,7 @@ export const StyledAccordion = styled(Accordion, {
           width: 100%;
 
           svg {
-            color: ${semanticColors?.accent?.ornament};
+            color: ${semanticColors?.accent?.foreground};
           }
 
           .primary-text {
@@ -992,10 +992,10 @@ export const StyledHoverDrawerItem = styled(
         box-shadow: none;
         cursor: pointer;
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillInteractionOnDark
-          : semanticColors?.base.fillInteraction};
+          ? semanticColors?.base?.fillPrimaryInteractionOnDark
+          : semanticColors?.base?.fillPrimaryInteraction};
         svg {
-          color: ${semanticColors?.accent?.ornament};
+          color: ${semanticColors?.accent?.foreground};
         }
       }
     `;
@@ -1032,10 +1032,10 @@ export const StyledHoverDrawerItemIcon = styled("div", {
       align-items: center;
       justify-content: center;
       padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
-      color: ${semanticColors?.accent?.ornament};
+      color: ${semanticColors?.accent?.foreground};
 
       svg {
-        color: ${semanticColors?.accent?.ornament};
+        color: ${semanticColors?.accent?.foreground};
       }
     `;
   }}

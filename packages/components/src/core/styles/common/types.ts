@@ -4,12 +4,21 @@ import { CSSProperties } from "react";
 export interface AccentColor {
   surfacePrimary: string;
   surfaceSecondary: string;
+  surfaceSecondaryOnDark: string;
   textAction: string;
   textActionHover: string;
   textActionPressed: string;
   fillHover: string;
   fillPressed: string;
   fillPrimary: string;
+  foreground: string;
+  foregroundOnDark: string;
+  foregroundInteraction: string;
+  foregroundInteractionOnDark: string;
+  foregroundPressed: string;
+  forgroundPressedOnDark: string;
+  foregroundActive: string;
+  fillInteraction: string;
   border: string;
   borderHover: string;
   borderPressed: string;
@@ -49,16 +58,23 @@ export interface BaseColor {
   textDisabledOnDark: string;
   textDisabledInverse: string;
   textOnFill: string;
-  fillInteraction: string;
-  fillInteractionOnDark: string;
+  fillPrimaryInteraction: string;
+  fillPrimaryInteractionOnDark: string;
   fillHoverInverse: string;
-  fillPressed: string;
-  fillPressedOnDark: string;
+  fillPrimaryPressed: string;
+  fillPrimaryPressedOnDark: string;
   fillPressedInverse: string;
   fillPrimary: string;
   fillOpenInverse: string;
   fillSelected: string;
   fillDisabled: string;
+  fillSecondary: string;
+  fillSecondaryInteraction: string;
+  fillSecondaryPressed: string;
+  fillSecondaryOnDark: string;
+  fillSecondaryInteractionOnDark: string;
+  fillSecondaryPressedOnDark: string;
+  fillDisabledOnDark: string;
   divider: string;
   dividerOnDark: string;
   dividerInverse: string;
@@ -74,6 +90,7 @@ export interface BaseColor {
   borderPrimaryDisabled: string;
   borderPrimaryDisabledOnDark: string;
   borderPrimaryDisabledInverse: string;
+  borderSecondaryOnDark: string;
   ornamentDisabled: string;
   ornamentDisabledOnDark: string;
   ornamentDisabledInverse: string;
@@ -100,6 +117,13 @@ export interface IntentColor {
   fillPressed: string;
   border: string;
   ornament: string;
+  foreground: string;
+  foregroundOnDark: string;
+  foregroundInteraction: string;
+  foregroundInteractionOnDark: string;
+  foregroundPressed: string;
+  forgroundPressedOnDark: string;
+  fillInteraction: string;
 }
 
 /**

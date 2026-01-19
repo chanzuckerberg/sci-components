@@ -69,8 +69,8 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
       : css`
           background-color: ${active
             ? hasInvertedStyle
-              ? semanticColors?.base?.fillPressedOnDark
-              : semanticColors?.base?.fillPressed
+              ? semanticColors?.base?.fillPrimaryPressedOnDark
+              : semanticColors?.base?.fillPrimaryPressed
             : "transparent"};
         `}
     width: 100%;
@@ -82,8 +82,8 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
           `
         : css`
             background: ${hasInvertedStyle
-              ? semanticColors?.base.fillInteractionOnDark
-              : semanticColors?.base.fillInteraction};
+              ? semanticColors?.base?.fillPrimaryInteractionOnDark
+              : semanticColors?.base?.fillPrimaryInteraction};
           `}
       box-shadow: none;
 
@@ -149,8 +149,8 @@ export const UnifiedNavItem = styled(
         border-radius: ${corners?.l}px;
         background-color: ${active
           ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed
           : "transparent"};
 
         ${navVariant === "secondary"
@@ -168,8 +168,8 @@ export const UnifiedNavItem = styled(
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillInteractionOnDark
-            : semanticColors?.base.fillInteraction} !important;
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction} !important;
           box-shadow: none;
 
           ${navVariant === "primary" && StyledLabel} {

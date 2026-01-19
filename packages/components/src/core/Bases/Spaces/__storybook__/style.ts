@@ -29,7 +29,7 @@ export const StyledInsetSpacingBox = styled("div")`
       width: ${BoxSize}px;
       height: ${BoxSize}px;
       border: solid ${size}px ${semanticColors?.positive.surfaceSecondary};
-      color: ${semanticColors?.positive?.text};
+      color: ${semanticColors?.positive?.foreground};
       font-size: 10px;
       display: flex;
       align-items: center;
@@ -53,7 +53,7 @@ export const StyledInlineSpacingBox = styled("div")`
       width: ${size}px;
       height: ${BoxSize}px;
       background-color: ${semanticColors?.notice.surfaceSecondary};
-      color: ${semanticColors?.notice?.text};
+      color: ${semanticColors?.notice?.foreground};
       font-size: 10px;
       display: flex;
       align-items: center;
@@ -76,7 +76,7 @@ export const StyledStackedSpacingBox = styled("div")`
       height: ${size}px;
       width: ${BoxSize}px;
       background-color: ${semanticColors?.notice.surfaceSecondary};
-      color: ${semanticColors?.notice?.text};
+      color: ${semanticColors?.notice?.foreground};
       font-size: 10px;
       display: flex;
       align-items: center;

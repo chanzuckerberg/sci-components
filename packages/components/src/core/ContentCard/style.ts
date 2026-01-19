@@ -125,7 +125,7 @@ export const StyledCard = styled(Card, {
         &:before {
           content: "";
           position: absolute;
-          background-color: ${semanticColors?.accent?.border};
+          background-color: ${semanticColors?.accent?.foreground};
 
           ${sdsType === "wide" &&
           css`

@@ -44,8 +44,8 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
     &:hover {
       box-shadow: none;
       background: ${hasInvertedStyle
-        ? semanticColors?.base.fillInteractionOnDark
-        : semanticColors?.base.fillInteraction};
+        ? semanticColors?.base?.fillPrimaryInteractionOnDark
+        : semanticColors?.base?.fillPrimaryInteraction};
     }
   `;
 };
@@ -103,8 +103,8 @@ export const StyledTextItem = styled(
         border-radius: ${corners?.l}px;
         background-color: ${open
           ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed
           : "transparent"};
 
         gap: ${spaces?.xs}px;
@@ -116,8 +116,8 @@ export const StyledTextItem = styled(
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillInteractionOnDark
-            : semanticColors?.base.fillInteraction};
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction};
           box-shadow: none;
 
           color: ${hasInvertedStyle

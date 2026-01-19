@@ -166,11 +166,11 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
       &:hover {
         ${StyledRadioDefaultIcon} {
           border: 1px solid ${semanticColors?.base?.borderPrimaryInteraction};  
-          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
+          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillPrimaryInteraction};
         }
 
         ${StyledRadioCheckedIcon} {
-          background-color: ${semanticColors?.accent?.fillHover};
+          background-color: ${semanticColors?.accent?.fillInteraction};
         }
       }
 

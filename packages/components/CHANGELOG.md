@@ -467,7 +467,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **Updated NavigationJumpTo component:**
   - Removed IndicatorColor prop.
-  - The indicator color is now hardcoded to accent?.borderSelected.
+  - The indicator color is now hardcoded to accent?.foregroundActive.
 
 # [20.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.7.0...@czi-sds/components@20.8.0) (2024-08-22)
 
