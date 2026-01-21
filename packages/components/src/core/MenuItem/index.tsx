@@ -33,14 +33,15 @@ type ModifiedIconNameToSizes = {
 
 /* 
   In the second step we create a TypeScript interface that is a subset of 
-  the IconNameToSizes interface, containing only those icons that can be "xs" or "s" in size.
+  the IconNameToSizes interface, containing only those icons that can be "xxs", "xs" or "s" in size.
 
   As a result, the MenuItem component accepts a bacteria icon with a 
-  size value of "xs" | "s" | "l" | "xl" or a check icon with a size value of "xs" | "s", 
+  size value of "xxs" | "xs" | "s" | "l" | "xl" or a check icon with a size value of "xxs" | "xs" | "s", 
   but not a book icon since it has a size value of "l" | "xl".
  */
 export type IconNameToSmallSizes = {
   [K in keyof ModifiedIconNameToSizes as ModifiedIconNameToSizes[K] extends
+    | "xxs"
     | "xs"
     | "s"
     ? K

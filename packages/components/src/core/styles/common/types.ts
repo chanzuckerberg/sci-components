@@ -402,6 +402,7 @@ export interface IconSize {
 }
 
 export interface IconSizes {
+  xxs: IconSize;
   xs: IconSize;
   s: IconSize;
   l: IconSize;
