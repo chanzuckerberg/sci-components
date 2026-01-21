@@ -21,7 +21,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.indigo[600],
       foregroundInteractionOnDark: appTheme.colors.indigo[300],
       foregroundPressed: appTheme.colors.indigo[700],
-      forgroundPressedOnDark: appTheme.colors.indigo[200],
+      foregroundPressedOnDark: appTheme.colors.indigo[200],
       foregroundActive: appTheme.colors.indigo[500],
       ornament: appTheme.colors.indigo[500],
       ornamentFocus: appTheme.colors.indigo[500],
@@ -134,7 +134,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.purple[700],
       foregroundInteractionOnDark: appTheme.colors.purple[200],
       foregroundPressed: appTheme.colors.purple[800],
-      forgroundPressedOnDark: appTheme.colors.purple[100],
+      foregroundPressedOnDark: appTheme.colors.purple[100],
     },
     info: {
       border: appTheme.colors.blue[600],
@@ -152,7 +152,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.blue[700],
       foregroundInteractionOnDark: appTheme.colors.blue[200],
       foregroundPressed: appTheme.colors.blue[800],
-      forgroundPressedOnDark: appTheme.colors.blue[100],
+      foregroundPressedOnDark: appTheme.colors.blue[100],
     },
     negative: {
       border: appTheme.colors.red[600],
@@ -170,7 +170,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.red[700],
       foregroundInteractionOnDark: appTheme.colors.red[200],
       foregroundPressed: appTheme.colors.red[800],
-      forgroundPressedOnDark: appTheme.colors.red[100],
+      foregroundPressedOnDark: appTheme.colors.red[100],
     },
     neutral: {
       border: appTheme.colors.gray[700],
@@ -188,7 +188,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.gray[800],
       foregroundInteractionOnDark: appTheme.colors.gray[200],
       foregroundPressed: appTheme.colors.gray[900]!,
-      forgroundPressedOnDark: appTheme.colors.gray[100],
+      foregroundPressedOnDark: appTheme.colors.gray[100],
     },
     notice: {
       border: appTheme.colors.yellow[600],
@@ -206,7 +206,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.yellow[700],
       foregroundInteractionOnDark: appTheme.colors.yellow[200],
       foregroundPressed: appTheme.colors.yellow[800],
-      forgroundPressedOnDark: appTheme.colors.yellow[100],
+      foregroundPressedOnDark: appTheme.colors.yellow[100],
     },
     positive: {
       border: appTheme.colors.green[600],
@@ -224,7 +224,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.green[700],
       foregroundInteractionOnDark: appTheme.colors.green[200],
       foregroundPressed: appTheme.colors.green[800],
-      forgroundPressedOnDark: appTheme.colors.green[100],
+      foregroundPressedOnDark: appTheme.colors.green[100],
     },
   };
 };
@@ -247,7 +247,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.indigo[700],
       foregroundInteractionOnDark: appTheme.colors.indigo[700],
       foregroundPressed: appTheme.colors.indigo[800],
-      forgroundPressedOnDark: appTheme.colors.indigo[800],
+      foregroundPressedOnDark: appTheme.colors.indigo[800],
       foregroundActive: appTheme.colors.indigo[600],
       ornament: appTheme.colors.indigo[600],
       ornamentFocus: appTheme.colors.indigo[600],
@@ -363,7 +363,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.purple[700],
       foregroundInteractionOnDark: appTheme.colors.purple[700],
       foregroundPressed: appTheme.colors.purple[800],
-      forgroundPressedOnDark: appTheme.colors.purple[800],
+      foregroundPressedOnDark: appTheme.colors.purple[800],
     },
     info: {
       border: appTheme.colors.blue[600],
@@ -381,7 +381,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.blue[700],
       foregroundInteractionOnDark: appTheme.colors.blue[700],
       foregroundPressed: appTheme.colors.blue[800],
-      forgroundPressedOnDark: appTheme.colors.blue[800],
+      foregroundPressedOnDark: appTheme.colors.blue[800],
     },
     negative: {
       border: appTheme.colors.red[600],
@@ -399,7 +399,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.red[700],
       foregroundInteractionOnDark: appTheme.colors.red[700],
       foregroundPressed: appTheme.colors.red[800],
-      forgroundPressedOnDark: appTheme.colors.red[800],
+      foregroundPressedOnDark: appTheme.colors.red[800],
     },
     neutral: {
       border: appTheme.colors.gray[700],
@@ -417,7 +417,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.gray[800],
       foregroundInteractionOnDark: appTheme.colors.gray[800],
       foregroundPressed: appTheme.colors.gray[900]!,
-      forgroundPressedOnDark: appTheme.colors.gray[900]!,
+      foregroundPressedOnDark: appTheme.colors.gray[900]!,
     },
     notice: {
       border: appTheme.colors.yellow[600],
@@ -435,7 +435,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.yellow[700],
       foregroundInteractionOnDark: appTheme.colors.yellow[700],
       foregroundPressed: appTheme.colors.yellow[800],
-      forgroundPressedOnDark: appTheme.colors.yellow[800],
+      foregroundPressedOnDark: appTheme.colors.yellow[800],
     },
     positive: {
       border: appTheme.colors.green[600],
@@ -453,7 +453,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       foregroundInteraction: appTheme.colors.green[700],
       foregroundInteractionOnDark: appTheme.colors.green[700],
       foregroundPressed: appTheme.colors.green[800],
-      forgroundPressedOnDark: appTheme.colors.green[800],
+      foregroundPressedOnDark: appTheme.colors.green[800],
     },
   };
 };

@@ -16,7 +16,7 @@ export interface AccentColor {
   foregroundInteraction: string;
   foregroundInteractionOnDark: string;
   foregroundPressed: string;
-  forgroundPressedOnDark: string;
+  foregroundPressedOnDark: string;
   foregroundActive: string;
   fillInteraction: string;
   border: string;
@@ -122,7 +122,7 @@ export interface IntentColor {
   foregroundInteraction: string;
   foregroundInteractionOnDark: string;
   foregroundPressed: string;
-  forgroundPressedOnDark: string;
+  foregroundPressedOnDark: string;
   fillInteraction: string;
 }
 

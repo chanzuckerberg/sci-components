@@ -2689,18 +2689,20 @@
     }
   },
   "height": {
+    "sds-icon-xxs": "10px",
+    "sds-icon-xs": "12px",
+    "sds-icon-s": "16px",
     "sds-icon-input": "16px",
     "sds-icon-l": "24px",
-    "sds-icon-s": "16px",
-    "sds-icon-xl": "32px",
-    "sds-icon-xs": "12px"
+    "sds-icon-xl": "32px"
   },
   "width": {
+    "sds-icon-xxs": "10px",
+    "sds-icon-xs": "12px",
+    "sds-icon-s": "16px",
     "sds-icon-input": "16px",
     "sds-icon-l": "24px",
-    "sds-icon-s": "16px",
-    "sds-icon-xl": "32px",
-    "sds-icon-xs": "12px"
+    "sds-icon-xl": "32px"
   },
   "borderRadius": {
     "sds-rounded": "20px",
