@@ -1,4 +1,7 @@
 import { FC } from "react";
+import { ReactComponent as IconArrowsDiagonalInSmall } from "../../common/svgs/IconArrowsDiagonalInSmall.svg";
+import { ReactComponent as IconArrowsDiagonalOutSmall } from "../../common/svgs/IconArrowsDiagonalOutSmall.svg";
+import { ReactComponent as IconArrowsUpDownSmall } from "../../common/svgs/IconArrowsUpDownSmall.svg";
 import { ReactComponent as IconBacteriaLarge } from "../../common/svgs/IconBacteriaLarge.svg";
 import { ReactComponent as IconBacteriaSmall } from "../../common/svgs/IconBacteriaSmall.svg";
 import { ReactComponent as IconBarChartHorizontal3Small } from "../../common/svgs/IconBarChartHorizontal3Small.svg";
@@ -34,9 +37,11 @@ import { ReactComponent as IconCubeLarge } from "../../common/svgs/IconCubeLarge
 import { ReactComponent as IconCubeSmall } from "../../common/svgs/IconCubeSmall.svg";
 import { ReactComponent as IconDNALarge } from "../../common/svgs/IconDNALarge.svg";
 import { ReactComponent as IconDocumentSmall } from "../../common/svgs/IconDocumentSmall.svg";
+import { ReactComponent as IconDotPlotSmall } from "../../common/svgs/IconDotPlotSmall.svg";
 import { ReactComponent as IconDotsHorizontal3Large } from "../../common/svgs/IconDotsHorizontal3Large.svg";
 import { ReactComponent as IconDotsHorizontal3Small } from "../../common/svgs/IconDotsHorizontal3Small.svg";
 import { ReactComponent as IconDownloadLarge } from "../../common/svgs/IconDownloadLarge.svg";
+import { ReactComponent as IconDropletSmall } from "../../common/svgs/IconDropletSmall.svg";
 import { ReactComponent as IconDownloadSmall } from "../../common/svgs/IconDownloadSmall.svg";
 import { ReactComponent as IconEditLarge } from "../../common/svgs/IconEditLarge.svg";
 import { ReactComponent as IconEditSmall } from "../../common/svgs/IconEditSmall.svg";
@@ -55,6 +60,7 @@ import { ReactComponent as IconFlaskLarge } from "../../common/svgs/IconFlaskLar
 import { ReactComponent as IconFlaskPrivateLarge } from "../../common/svgs/IconFlaskPrivateLarge.svg";
 import { ReactComponent as IconFlaskPublicLarge } from "../../common/svgs/IconFlaskPublicLarge.svg";
 import { ReactComponent as IconGearSmall } from "../../common/svgs/IconGearSmall.svg";
+import { ReactComponent as IconGeneSmall } from "../../common/svgs/IconGeneSmall.svg";
 import { ReactComponent as IconGithubSmall } from "../../common/svgs/IconGithubSmall.svg";
 import { ReactComponent as IconGlobeBasicLarge } from "../../common/svgs/IconGlobeBasicLarge.svg";
 import { ReactComponent as IconGlobeSmall } from "../../common/svgs/IconGlobeSmall.svg";
@@ -62,11 +68,15 @@ import { ReactComponent as IconGridLarge } from "../../common/svgs/IconGridLarge
 import { ReactComponent as IconGridPrivateLarge } from "../../common/svgs/IconGridPrivateLarge.svg";
 import { ReactComponent as IconGridPublicLarge } from "../../common/svgs/IconGridPublicLarge.svg";
 import { ReactComponent as IconGridDots3Large } from "../../common/svgs/IconGridDots3Large.svg";
+import { ReactComponent as IconHandOpenSmall } from "../../common/svgs/IconHandOpenSmall.svg";
+import { ReactComponent as IconHandPointerSmall } from "../../common/svgs/IconHandPointerSmall.svg";
 import { ReactComponent as IconHandSmall } from "../../common/svgs/IconHandSmall.svg";
 import { ReactComponent as IconHouseSmall } from "../../common/svgs/IconHouseSmall.svg";
 import { ReactComponent as IconInfoCircleLarge } from "../../common/svgs/IconInfoCircleLarge.svg";
 import { ReactComponent as IconInfoCircleSmall } from "../../common/svgs/IconInfoCircleSmall.svg";
 import { ReactComponent as IconInfoSpeechBubbleLarge } from "../../common/svgs/IconInfoSpeechBubbleLarge.svg";
+import { ReactComponent as IconLabelSmall } from "../../common/svgs/IconLabelSmall.svg";
+import { ReactComponent as IconLassoSmall } from "../../common/svgs/IconLassoSmall.svg";
 import { ReactComponent as IconLifeRingSmall } from "../../common/svgs/IconLifeRingSmall.svg";
 import { ReactComponent as IconLightBulbLarge } from "../../common/svgs/IconLightBulbLarge.svg";
 import { ReactComponent as IconLightBulbSmall } from "../../common/svgs/IconLightBulbSmall.svg";
@@ -80,6 +90,8 @@ import { ReactComponent as IconLoadingSmall } from "../../common/svgs/IconLoadin
 import { ReactComponent as IconLockCircleSmall } from "../../common/svgs/IconLockCircleSmall.svg";
 import { ReactComponent as IconLockLarge } from "../../common/svgs/IconLockLarge.svg";
 import { ReactComponent as IconLockSmall } from "../../common/svgs/IconLockSmall.svg";
+import { ReactComponent as IconMaximizeSmall } from "../../common/svgs/IconMaximizeSmall.svg";
+import { ReactComponent as IconMinimizeSmall } from "../../common/svgs/IconMinimizeSmall.svg";
 import { ReactComponent as IconMinusSmall } from "../../common/svgs/IconMinusSmall.svg";
 import { ReactComponent as IconOpenSmall } from "../../common/svgs/IconOpenSmall.svg";
 import { ReactComponent as IconPauseLarge } from "../../common/svgs/IconPauseLarge.svg";
@@ -89,6 +101,8 @@ import { ReactComponent as IconPeopleSmall } from "../../common/svgs/IconPeopleS
 import { ReactComponent as IconPercentageSmall } from "../../common/svgs/IconPercentageSmall.svg";
 import { ReactComponent as IconPersonLarge } from "../../common/svgs/IconPersonLarge.svg";
 import { ReactComponent as IconPersonSmall } from "../../common/svgs/IconPersonSmall.svg";
+import { ReactComponent as IconPieChartSmall } from "../../common/svgs/IconPieChartSmall.svg";
+import { ReactComponent as IconPieChartXMarkSmall } from "../../common/svgs/IconPieChartXMarkSmall.svg";
 import { ReactComponent as IconPinLocationSmall } from "../../common/svgs/IconPinLocationSmall.svg";
 import { ReactComponent as IconPinSmall } from "../../common/svgs/IconPinSmall.svg";
 import { ReactComponent as IconPlayLarge } from "../../common/svgs/IconPlayLarge.svg";
@@ -123,6 +137,7 @@ import { ReactComponent as IconSparklesLarge } from "../../common/svgs/IconSpark
 import { ReactComponent as IconSparklesSmall } from "../../common/svgs/IconSparklesSmall.svg";
 import { ReactComponent as IconSpeechBubblesLarge } from "../../common/svgs/IconSpeechBubblesLarge.svg";
 import { ReactComponent as IconSquareOnDashedSquareLarge } from "../../common/svgs/IconSquareOnDashedSquareLarge.svg";
+import { ReactComponent as IconSquareOnSquareArrowDownRightSmall } from "../../common/svgs/IconSquareOnSquareArrowDownRightSmall.svg";
 import { ReactComponent as IconStarburstSmall } from "../../common/svgs/IconStarburstSmall.svg";
 import { ReactComponent as IconStarLarge } from "../../common/svgs/IconStarLarge.svg";
 import { ReactComponent as IconTableSmall } from "../../common/svgs/IconTableSmall.svg";
@@ -144,6 +159,7 @@ import { ReactComponent as IconTriangleUpSmall } from "../../common/svgs/IconTri
 import { ReactComponent as IconUpdateLarge } from "../../common/svgs/IconUpdateLarge.svg";
 import { ReactComponent as IconUploadLarge } from "../../common/svgs/IconUploadLarge.svg";
 import { ReactComponent as IconUploadSmall } from "../../common/svgs/IconUploadSmall.svg";
+import { ReactComponent as IconUmapSmall } from "../../common/svgs/IconUmapSmall.svg";
 import { ReactComponent as IconVirusCircleSLarge } from "../../common/svgs/IconVirusCircleSLarge.svg";
 import { ReactComponent as IconVirusLarge } from "../../common/svgs/IconVirusLarge.svg";
 import { ReactComponent as IconWidgetLarge } from "../../common/svgs/IconWidgetLarge.svg";
@@ -152,6 +168,9 @@ import { ReactComponent as IconXMarkLarge } from "../../common/svgs/IconXMarkLar
 import { ReactComponent as IconXMarkSmall } from "../../common/svgs/IconXMarkSmall.svg";
 
 export interface IconNameToSizes {
+  ArrowsDiagonalIn: "xs" | "s";
+  ArrowsDiagonalOut: "xs" | "s";
+  ArrowsUpDown: "xs" | "s";
   Bacteria: "xs" | "s" | "l" | "xl";
   BarChartHorizontal3: "xs" | "s";
   BarChartVertical3: "xs" | "s" | "l" | "xl";
@@ -175,8 +194,10 @@ export interface IconNameToSizes {
   Cube: "xs" | "s" | "l" | "xl";
   DNA: "l" | "xl";
   Document: "xs" | "s";
+  DotPlot: "xs" | "s";
   DotsHorizontal: "xs" | "s" | "l" | "xl";
   Download: "xs" | "s" | "l" | "xl";
+  Droplet: "xs" | "s";
   Edit: "xs" | "s" | "l" | "xl";
   Envelope: "xs" | "s";
   ExclamationMarkCircle: "xs" | "s" | "l" | "xl";
@@ -192,6 +213,7 @@ export interface IconNameToSizes {
   FlaskPrivate: "l" | "xl";
   FlaskPublic: "l" | "xl";
   Gear: "xs" | "s";
+  Gene: "xs" | "s";
   Github: "xs" | "s";
   Globe: "xs" | "s";
   GlobeBasic: "l" | "xl";
@@ -201,8 +223,12 @@ export interface IconNameToSizes {
   GridPublic: "l" | "xl";
   House: "xs" | "s";
   Hand: "xs" | "s";
+  HandOpen: "xs" | "s";
+  HandPointer: "xs" | "s";
   InfoCircle: "xs" | "s" | "l" | "xl";
   InfoSpeechBubble: "l" | "xl";
+  Label: "xs" | "s";
+  Lasso: "xs" | "s";
   LifeRing: "xs" | "s";
   LightBulb: "xs" | "s" | "l" | "xl";
   LinesDashed3Solid1: "xs" | "s";
@@ -212,6 +238,8 @@ export interface IconNameToSizes {
   Loading: "xs" | "s" | "l" | "xl";
   Lock: "xs" | "s" | "l" | "xl";
   LockCircle: "xs" | "s";
+  Maximize: "xs" | "s";
+  Minimize: "xs" | "s";
   Minus: "xs" | "s";
   Open: "xs" | "s";
   Package: "l" | "xl";
@@ -219,6 +247,8 @@ export interface IconNameToSizes {
   People: "xs" | "s" | "l" | "xl";
   Percentage: "xs" | "s";
   Person: "xs" | "s" | "l" | "xl";
+  PieChart: "xs" | "s";
+  PieChartXMark: "xs" | "s";
   Pin: "xs" | "s";
   PinLocation: "xs" | "s";
   Play: "l" | "xl";
@@ -248,6 +278,7 @@ export interface IconNameToSizes {
   Sparkles: "xs" | "s" | "l" | "xl";
   SpeechBubbles: "l" | "xl";
   SquareOnDashedSquare: "l" | "xl";
+  SquareOnSquareArrowDownRight: "xs" | "s";
   Starburst: "xs" | "s";
   Star: "l" | "xl";
   Table: "xs" | "s";
@@ -265,6 +296,7 @@ export interface IconNameToSizes {
   TriangleRight: "xs" | "s";
   TriangleUp: "xs" | "s";
   Update: "l" | "xl";
+  Umap: "xs" | "s";
   Upload: "l" | "xl";
   Virus: "l" | "xl";
   VirusCircleS: "l" | "xl";
@@ -282,6 +314,18 @@ type Props = Record<
 >;
 
 export const iconMap: Props = {
+  ArrowsDiagonalIn: {
+    largeIcon: null,
+    smallIcon: IconArrowsDiagonalInSmall,
+  },
+  ArrowsDiagonalOut: {
+    largeIcon: null,
+    smallIcon: IconArrowsDiagonalOutSmall,
+  },
+  ArrowsUpDown: {
+    largeIcon: null,
+    smallIcon: IconArrowsUpDownSmall,
+  },
   Bacteria: {
     largeIcon: IconBacteriaLarge,
     smallIcon: IconBacteriaSmall,
@@ -374,6 +418,10 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconDocumentSmall,
   },
+  DotPlot: {
+    largeIcon: null,
+    smallIcon: IconDotPlotSmall,
+  },
   DotsHorizontal: {
     largeIcon: IconDotsHorizontal3Large,
     smallIcon: IconDotsHorizontal3Small,
@@ -381,6 +429,10 @@ export const iconMap: Props = {
   Download: {
     largeIcon: IconDownloadLarge,
     smallIcon: IconDownloadSmall,
+  },
+  Droplet: {
+    largeIcon: null,
+    smallIcon: IconDropletSmall,
   },
   Edit: {
     largeIcon: IconEditLarge,
@@ -442,6 +494,10 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconGearSmall,
   },
+  Gene: {
+    largeIcon: null,
+    smallIcon: IconGeneSmall,
+  },
   Github: {
     largeIcon: null,
     smallIcon: IconGithubSmall,
@@ -474,6 +530,14 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconHandSmall,
   },
+  HandOpen: {
+    largeIcon: null,
+    smallIcon: IconHandOpenSmall,
+  },
+  HandPointer: {
+    largeIcon: null,
+    smallIcon: IconHandPointerSmall,
+  },
   House: {
     largeIcon: null,
     smallIcon: IconHouseSmall,
@@ -485,6 +549,14 @@ export const iconMap: Props = {
   InfoSpeechBubble: {
     largeIcon: IconInfoSpeechBubbleLarge,
     smallIcon: null,
+  },
+  Label: {
+    largeIcon: null,
+    smallIcon: IconLabelSmall,
+  },
+  Lasso: {
+    largeIcon: null,
+    smallIcon: IconLassoSmall,
   },
   LifeRing: {
     largeIcon: null,
@@ -522,6 +594,14 @@ export const iconMap: Props = {
     largeIcon: null,
     smallIcon: IconLockCircleSmall,
   },
+  Maximize: {
+    largeIcon: null,
+    smallIcon: IconMaximizeSmall,
+  },
+  Minimize: {
+    largeIcon: null,
+    smallIcon: IconMinimizeSmall,
+  },
   Minus: {
     largeIcon: null,
     smallIcon: IconMinusSmall,
@@ -549,6 +629,14 @@ export const iconMap: Props = {
   Person: {
     largeIcon: IconPersonLarge,
     smallIcon: IconPersonSmall,
+  },
+  PieChart: {
+    largeIcon: null,
+    smallIcon: IconPieChartSmall,
+  },
+  PieChartXMark: {
+    largeIcon: null,
+    smallIcon: IconPieChartXMarkSmall,
   },
   Pin: {
     largeIcon: null,
@@ -666,6 +754,10 @@ export const iconMap: Props = {
     largeIcon: IconSquareOnDashedSquareLarge,
     smallIcon: null,
   },
+  SquareOnSquareArrowDownRight: {
+    largeIcon: null,
+    smallIcon: IconSquareOnSquareArrowDownRightSmall,
+  },
   Star: {
     largeIcon: IconStarLarge,
     smallIcon: null,
@@ -733,6 +825,10 @@ export const iconMap: Props = {
   Update: {
     largeIcon: IconUpdateLarge,
     smallIcon: null,
+  },
+  Umap: {
+    largeIcon: null,
+    smallIcon: IconUmapSmall,
   },
   Upload: {
     largeIcon: IconUploadLarge,
