@@ -325,7 +325,7 @@
             "darkValue": "{sds.color.primitive.indigo.800.darkValue}",
             "value": "{sds.color.primitive.indigo.700.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.indigo.800.darkValue}",
             "value": "{sds.color.primitive.indigo.200.value}"
           },
@@ -729,7 +729,7 @@
             "darkValue": "{sds.color.primitive.purple.800.darkValue}",
             "value": "{sds.color.primitive.purple.800.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.purple.800.darkValue}",
             "value": "{sds.color.primitive.purple.100.value}"
           }
@@ -795,7 +795,7 @@
             "darkValue": "{sds.color.primitive.blue.800.darkValue}",
             "value": "{sds.color.primitive.blue.800.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.blue.800.darkValue}",
             "value": "{sds.color.primitive.blue.100.value}"
           }
@@ -861,7 +861,7 @@
             "darkValue": "{sds.color.primitive.red.800.darkValue}",
             "value": "{sds.color.primitive.red.800.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.red.800.darkValue}",
             "value": "{sds.color.primitive.red.100.value}"
           }
@@ -927,7 +927,7 @@
             "darkValue": "{sds.color.primitive.gray.900.darkValue}",
             "value": "{sds.color.primitive.gray.900.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.gray.900.darkValue}",
             "value": "{sds.color.primitive.gray.100.value}"
           }
@@ -993,7 +993,7 @@
             "darkValue": "{sds.color.primitive.yellow.800.darkValue}",
             "value": "{sds.color.primitive.yellow.800.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.yellow.800.darkValue}",
             "value": "{sds.color.primitive.yellow.100.value}"
           }
@@ -1059,7 +1059,7 @@
             "darkValue": "{sds.color.primitive.green.800.darkValue}",
             "value": "{sds.color.primitive.green.800.value}"
           },
-          "forground-pressed-on-dark": {
+          "foreground-pressed-on-dark": {
             "darkValue": "{sds.color.primitive.green.800.darkValue}",
             "value": "{sds.color.primitive.green.100.value}"
           }
