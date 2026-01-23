@@ -22,7 +22,8 @@ interface CellHeaderContentProps {
 }
 
 interface CellHeaderRawProps
-  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
+  extends Omit<React.HTMLProps<HTMLDivElement>, "as"> {
+  as?: React.ElementType;
   tooltipText?: string;
   tooltipSubtitle?: string;
   shouldShowTooltipOnHover?: boolean;
@@ -65,9 +66,13 @@ const CellHeaderContent = (
 
   return (
     <StyledCellHeaderContainer horizontalAlign={horizontalAlign}>
-      <StyledCellHeaderText shouldTruncate={shouldTruncate}>
-        {children}
-      </StyledCellHeaderText>
+      {typeof children === "string" || typeof children === "number" ? (
+        <StyledCellHeaderText shouldTruncate={shouldTruncate}>
+          {children}
+        </StyledCellHeaderText>
+      ) : (
+        children
+      )}
       {(!hideSortIcon || active) && hover && sortIcon}
     </StyledCellHeaderContainer>
   );
@@ -76,6 +81,7 @@ const CellHeaderContent = (
 const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
   (props, ref): JSX.Element | null => {
     const {
+      as = "th",
       children,
       shouldShowTooltipOnHover = false,
       tooltipProps,
@@ -95,7 +101,7 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
           title={tooltipText}
           {...tooltipProps}
         >
-          <StyledTableHeader ref={ref} hover={hover} {...rest}>
+          <StyledTableHeader as={as} ref={ref} hover={hover} {...rest}>
             <CellHeaderContent {...props} hover={hover}>
               {children}
             </CellHeaderContent>
@@ -104,7 +110,7 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
       );
     }
     return (
-      <StyledTableHeader ref={ref} hover={hover} {...rest}>
+      <StyledTableHeader as={as} ref={ref} hover={hover} {...rest}>
         <CellHeaderContent hover={hover} {...props}>
           {children}
         </CellHeaderContent>

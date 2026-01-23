@@ -23,7 +23,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1y737h3-MuiButtonBase-root-MuiIconButton-root"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1248kqk-MuiButtonBase-root-MuiIconButton-root"
     icon="XMark"
     tabindex="0"
     type="button"
