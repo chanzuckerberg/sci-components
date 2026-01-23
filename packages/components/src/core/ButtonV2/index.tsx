@@ -37,8 +37,8 @@ const ButtonV2 = React.forwardRef(
       <StyledButton
         variant={MUI_VARIANT_MAP[sdsStyle] || variant}
         sdsType={sdsType}
-        {...rest}
         ref={ref}
+        {...rest}
       >
         {children ? <span>{children}</span> : null}
       </StyledButton>

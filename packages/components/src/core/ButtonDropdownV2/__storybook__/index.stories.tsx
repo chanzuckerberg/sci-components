@@ -84,6 +84,12 @@ export const Test = {
     },
   },
   render: (props: Args): JSX.Element => {
-    return <ButtonDropdownV2 data-testid="button-dropdown" {...props} />;
+    return (
+      <ButtonDropdownV2
+        {...props}
+        aria-label="button-dropdown"
+        data-testid="button-dropdown"
+      />
+    );
   },
 };
