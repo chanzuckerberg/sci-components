@@ -885,7 +885,6 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
 `;
 
 exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders snapshot 1`] = `
-exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders snapshot 1`] = `
 <div
   style="margin: 150px;"
 >
@@ -899,7 +898,6 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
       <div
         class="css-1mg4zid"
       >
-        Domain
         Domain
       </div>
       <div

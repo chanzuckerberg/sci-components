@@ -16,6 +16,9 @@ export const BUTTON_EXCLUDED_CONTROLS = [
   "icon",
   "sdsIconProps",
   "isAllCaps",
+  "backgroundOnHover",
+  "size",
+  "children",
 ];
 
 export const BUTTON_SDS_STYLES = ["solid", "outline", "minimal"];

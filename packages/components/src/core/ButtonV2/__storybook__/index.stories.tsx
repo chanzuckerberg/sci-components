@@ -1,5 +1,4 @@
 import { Args, Meta } from "@storybook/react-webpack5";
-import { ScreenshotTestDemo } from "./stories/screenshot";
 import {
   BUTTON_ACTIONS,
   BUTTON_EXCLUDED_CONTROLS,
@@ -69,7 +68,8 @@ export default {
     },
   },
   component: Button,
-  title: "Components/Buttons/ButtonNew",
+  tags: ["beta"],
+  title: "Components/Buttons/ButtonV2",
 } as Meta;
 
 // Default
@@ -78,29 +78,12 @@ export const Default = {
   args: {
     disabled: false,
     icon: "Cube",
-    size: "medium",
+    size: "large",
     sdsStyle: "rounded",
     sdsType: "primary",
     children: "Label",
     backgroundOnHover: true,
   },
-};
-
-// Screenshot Test
-
-export const ScreenshotTest = {
-  parameters: {
-    args: {
-      children: "Label",
-    },
-    controls: {
-      exclude: BUTTON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <ScreenshotTestDemo {...args} />,
 };
 
 // Test

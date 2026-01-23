@@ -3,6 +3,7 @@ export enum SDSWarningTypes {
   ButtonMissingSDSProps = "buttonMissingProps",
   ButtonIconMissingIconProp = "buttonIconMissingIconProp",
   ButtonDropdownMinimal = "buttonDropdownMinimal",
+  ButtonDropdownV2Destructive = "buttonDropdownV2Destructive",
   ButtonToggleMissingIconProp = "buttonToggleMissingIconProp",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
@@ -32,6 +33,11 @@ export const SDS_WARNINGS = {
   [SDSWarningTypes.ButtonDropdownMinimal]: {
     hasWarned: false,
     message: "Warning: Button Dropdowns can not be of type minimal!",
+  },
+  [SDSWarningTypes.ButtonDropdownV2Destructive]: {
+    hasWarned: false,
+    message:
+      "Warning: ButtonDropdownV2 does not support sdsType='destructive'. Use 'primary' or 'secondary' instead.",
   },
   [SDSWarningTypes.ButtonToggleMissingIconProp]: {
     hasWarned: false,

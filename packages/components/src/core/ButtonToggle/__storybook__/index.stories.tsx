@@ -42,7 +42,6 @@ export default {
     },
   },
   component: ButtonToggle,
-  tags: ["beta"],
   title: "Components/Buttons/ButtonToggle",
 } as Meta;
 
