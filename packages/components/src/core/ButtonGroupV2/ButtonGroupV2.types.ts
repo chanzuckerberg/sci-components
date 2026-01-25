@@ -1,0 +1,20 @@
+import { ButtonGroupProps as RawButtonGroupProps } from "@mui/material";
+
+export interface ButtonGroupV2Props
+  extends Omit<RawButtonGroupProps, "variant" | "size"> {
+  /**
+   * The style of the button group.
+   * @default "outline"
+   */
+  sdsStyle?: "outline";
+  /**
+   * The type of the button group that determines the color scheme.
+   * @default "primary"
+   */
+  sdsType?: "primary" | "secondary";
+  /**
+   * The size of the button group.
+   * @default "medium"
+   */
+  size?: "small" | "medium" | "large";
+}

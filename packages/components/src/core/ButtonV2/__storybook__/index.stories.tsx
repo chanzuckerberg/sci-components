@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta } from "@storybook/react-webpack5";
 import {
   BUTTON_ACTIONS,
@@ -9,6 +10,7 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -27,16 +29,6 @@ export default {
         labels: BUTTON_ICON_LABELS,
         type: "select",
       },
-      if: { arg: "sdsStyle", neq: "icon" },
-      mapping: BUTTON_ICON_OPTIONS,
-      options: Object.keys(BUTTON_ICON_OPTIONS),
-    },
-    icon: {
-      control: {
-        labels: BUTTON_ICON_LABELS,
-        type: "select",
-      },
-      if: { arg: "sdsStyle", eq: "icon" },
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
     },
@@ -44,17 +36,17 @@ export default {
     size: {
       control: {
         labels: BUTTON_SDS_SIZE,
-        type: "select",
+        type: INLINE_RADIO,
       },
       mapping: BUTTON_SDS_SIZE,
       options: Object.keys(BUTTON_SDS_SIZE),
     },
     sdsStyle: {
-      control: { type: "select" },
+      control: { type: INLINE_RADIO },
       options: BUTTON_SDS_STYLES,
     },
     sdsType: {
-      control: { type: "select" },
+      control: { type: INLINE_RADIO },
       options: BUTTON_SDS_TYPES,
     },
     startIcon: {
@@ -62,7 +54,6 @@ export default {
         labels: BUTTON_ICON_LABELS,
         type: "select",
       },
-      if: { arg: "sdsStyle", neq: "icon" },
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
     },
@@ -77,7 +68,6 @@ export default {
 export const Default = {
   args: {
     disabled: false,
-    icon: "Cube",
     size: "large",
     sdsStyle: "rounded",
     sdsType: "primary",

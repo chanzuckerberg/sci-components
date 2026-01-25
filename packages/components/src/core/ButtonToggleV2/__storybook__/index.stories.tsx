@@ -7,6 +7,7 @@ import {
   BUTTON_DROPDOWN_ICON_LABELS,
   BUTTON_DROPDOWN_ICON_OPTIONS,
 } from "src/core/ButtonDropdownV2/__storybook__/constants";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -35,22 +36,22 @@ export default {
     },
     size: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["small", "medium", "large"],
     },
     sdsType: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["primary", "secondary"],
     },
     sdsStyle: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["outline", "minimal"],
     },
     sdsStage: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["on", "off"],
     },
   },

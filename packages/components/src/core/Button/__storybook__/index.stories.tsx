@@ -69,6 +69,7 @@ export default {
     },
   },
   component: Button,
+  tags: ["deprecated"],
   title: "Components/Buttons/Button",
 } as Meta;
 

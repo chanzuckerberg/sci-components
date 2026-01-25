@@ -18,7 +18,7 @@ interface ButtonToggleExtraProps
     CommonThemeProps {}
 
 const StageOnStyles = (props: ButtonToggleExtraProps): SerializedStyles => {
-  const { sdsType, sdsStyle } = props;
+  const { sdsType, sdsStyle, backgroundOnHover } = props;
   const semanticColors = getSemanticColors(props);
 
   const contentColor =
@@ -41,7 +41,9 @@ const StageOnStyles = (props: ButtonToggleExtraProps): SerializedStyles => {
         : semanticColors?.base?.ornamentSecondaryInteraction;
 
   return css`
-    background-color: ${backgroundColor};
+    background-color: ${sdsStyle === "minimal" && !backgroundOnHover
+      ? "transparent"
+      : backgroundColor};
     color: ${contentColor};
     svg {
       color: ${ornamentColor};

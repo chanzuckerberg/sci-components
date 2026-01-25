@@ -11,6 +11,7 @@ import {
 import { TestDemo } from "./stories/test";
 import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
 import { DrawerStyleDemo } from "./stories/drawerStyle";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -33,7 +34,7 @@ export default {
       },
     },
     backgroundAppearance: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       description: "The background appearance of the navigation header.",
       options: ["matchBackground", "dark"],
       table: {
@@ -117,7 +118,7 @@ export default {
       },
     },
     sdsStyle: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       description: "Style of the navigation header.",
       options: ["dropdown", "drawer"],
       table: {

@@ -2,6 +2,7 @@
 import { Button, buttonClasses } from "@mui/material";
 import styled from "@emotion/styled";
 import { css, SerializedStyles } from "@emotion/react";
+import { Children, isValidElement, ReactNode } from "react";
 import {
   CommonThemeProps,
   fontBodyMediumL,
@@ -17,9 +18,65 @@ import {
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonV2Props } from "./ButtonV2.types";
 
-const doNotForwardProps = ["sdsType", "sdsSize", "backgroundOnHover"];
+const doNotForwardProps = [
+  "sdsType",
+  "sdsSize",
+  "backgroundOnHover",
+  "iconOnlyChild",
+];
 
-type ButtonExtraProps = ButtonV2Props & CommonThemeProps;
+type ButtonExtraProps = ButtonV2Props &
+  CommonThemeProps & {
+    /**
+     * Internal prop: indicates if the only child is an Icon component.
+     * Computed in ButtonV2 component and passed to styled component.
+     */
+    iconOnlyChild?: boolean;
+  };
+
+/**
+ * Helper function to check if children is a single Icon element (not text or other content).
+ * This detects both the SDS Icon component and raw SVG elements.
+ */
+export const isIconOnlyChild = (children: ReactNode): boolean => {
+  const childArray = Children.toArray(children);
+
+  // Must be exactly one child
+  if (childArray.length !== 1) return false;
+
+  const child = childArray[0];
+  if (!isValidElement(child)) return false;
+
+  // Check if it's an Icon component or SVG element
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const childType = child.type as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const childProps = child.props as any;
+
+  // Check for SVG string type (intrinsic element)
+  if (childType === "svg") return true;
+
+  // Check for SDS Icon component by its specific props (sdsIcon and sdsSize)
+  if (childProps?.sdsIcon !== undefined && childProps?.sdsSize !== undefined) {
+    return true;
+  }
+
+  // Check for Icon component (function or forwardRef component)
+  if (typeof childType === "function") {
+    return childType.name === "Icon" || childType.displayName === "Icon";
+  }
+
+  // Check for forwardRef components (which have a render property)
+  if (typeof childType === "object" && childType !== null) {
+    return (
+      childType.displayName === "Icon" ||
+      childType.render?.name === "Icon" ||
+      childType.render?.displayName === "Icon"
+    );
+  }
+
+  return false;
+};
 
 const GeneralButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   const corners = getCorners(props);
@@ -68,12 +125,14 @@ const LargeButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     variant,
     children,
     theme,
+    iconOnlyChild = false,
   } = props;
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
-  const hasIcon = !!startIcon || !!endIcon;
-  const onlyIcon = hasIcon && !children;
+  const hasIconViaProps = !!startIcon || !!endIcon;
+  const onlyIcon =
+    (hasIconViaProps && !children) || (iconOnlyChild && !hasIconViaProps);
 
   const paddingWide =
     variant === "text"
@@ -123,7 +182,7 @@ const LargeButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     padding: ${paddingWide};
     gap: ${gapWide}px;
 
-    .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+    .${buttonClasses.startIcon}, .${buttonClasses.endIcon}, svg {
       height: ${iconSizeWide}px;
       width: ${iconSizeWide}px;
 
@@ -139,7 +198,7 @@ const LargeButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       padding: ${paddingNarrow};
       gap: ${gapNarrow}px;
 
-      .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+      .${buttonClasses.startIcon}, .${buttonClasses.endIcon}, svg {
         height: ${iconSizeNarrow}px;
         width: ${iconSizeNarrow}px;
 
@@ -160,12 +219,14 @@ const MediumButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     variant,
     children,
     theme,
+    iconOnlyChild = false,
   } = props;
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
-  const hasIcon = !!startIcon || !!endIcon;
-  const onlyIcon = hasIcon && !children;
+  const hasIconViaProps = !!startIcon || !!endIcon;
+  const onlyIcon =
+    (hasIconViaProps && !children) || (iconOnlyChild && !hasIconViaProps);
 
   const paddingWide =
     variant === "text"
@@ -211,7 +272,7 @@ const MediumButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     padding: ${paddingWide};
     gap: ${gapWide}px;
 
-    .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+    .${buttonClasses.startIcon}, .${buttonClasses.endIcon}, svg {
       height: ${iconSizeWide}px;
       width: ${iconSizeWide}px;
 
@@ -227,7 +288,7 @@ const MediumButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       padding: ${paddingNarrow};
       gap: ${gapNarrow}px;
 
-      .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+      .${buttonClasses.startIcon}, .${buttonClasses.endIcon}, svg {
         height: ${iconSizeNarrow}px;
         width: ${iconSizeNarrow}px;
 
@@ -248,12 +309,14 @@ const SmallButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     variant,
     children,
     theme,
+    iconOnlyChild = false,
   } = props;
   const spaces = getSpaces(props);
   const iconSizes = getIconSizes(props);
 
-  const hasIcon = !!startIcon || !!endIcon;
-  const onlyIcon = hasIcon && !children;
+  const hasIconViaProps = !!startIcon || !!endIcon;
+  const onlyIcon =
+    (hasIconViaProps && !children) || (iconOnlyChild && !hasIconViaProps);
 
   const paddingWide =
     variant === "text"
@@ -299,7 +362,7 @@ const SmallButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     padding: ${paddingWide};
     gap: ${gapWide}px;
 
-    .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+    .${buttonClasses.startIcon}, .${buttonClasses.endIcon}, svg {
       height: ${iconSizeWide}px;
       width: ${iconSizeWide}px;
 
@@ -315,7 +378,7 @@ const SmallButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       padding: ${paddingNarrow};
       gap: ${gapNarrow}px;
 
-      .${buttonClasses.startIcon}, .${buttonClasses.endIcon} {
+      .${buttonClasses.startIcon}, .${buttonClasses.endIcon}, svg {
         height: ${iconSizeNarrow}px;
         width: ${iconSizeNarrow}px;
 
@@ -646,6 +709,40 @@ export const StyledButton = styled(Button, {
       ${size === "large" && LargeButtonStyles(props)}
       ${size === "medium" && MediumButtonStyles(props)}
       ${size === "small" && SmallButtonStyles(props)}
+    `;
+  }}
+`;
+
+interface StyledChildrenProps extends CommonThemeProps {
+  size?: "small" | "medium" | "large";
+}
+
+export const StyledChildren = styled("span", {
+  shouldForwardProp: (prop: string) => prop !== "size",
+})<StyledChildrenProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${(props: StyledChildrenProps) => {
+    const { size = "medium", theme } = props;
+    const spaces = getSpaces(props);
+
+    // Gap values matching the button size styles
+    const gapValues = {
+      large: { wide: spaces?.s, narrow: spaces?.s },
+      medium: { wide: spaces?.xs, narrow: spaces?.s },
+      small: { wide: spaces?.xxs, narrow: spaces?.xs },
+    };
+
+    const gap = gapValues[size];
+
+    return css`
+      gap: ${gap.wide}px;
+
+      ${theme?.breakpoints?.down("md")} {
+        gap: ${gap.narrow}px;
+      }
     `;
   }}
 `;

@@ -1,6 +1,6 @@
 import { ButtonProps } from "@mui/material";
 import React, { ForwardedRef } from "react";
-import { StyledButton } from "./style";
+import { isIconOnlyChild, StyledButton, StyledChildren } from "./style";
 import { ButtonV2Props } from "./ButtonV2.types";
 
 export type { ButtonV2Props };
@@ -28,19 +28,27 @@ const ButtonV2 = React.forwardRef(
     const {
       sdsStyle = "solid",
       sdsType = "primary",
+      size = "medium",
       variant = "contained",
       children,
       ...rest
     } = props;
 
+    // Check if the only child is an Icon component (before wrapping in StyledChildren)
+    const iconOnlyChild = isIconOnlyChild(children);
+
     return (
       <StyledButton
         variant={MUI_VARIANT_MAP[sdsStyle] || variant}
         sdsType={sdsType}
+        size={size}
+        iconOnlyChild={iconOnlyChild}
         ref={ref}
         {...rest}
       >
-        {children ? <span>{children}</span> : null}
+        {children ? (
+          <StyledChildren size={size}>{children}</StyledChildren>
+        ) : null}
       </StyledButton>
     );
   }

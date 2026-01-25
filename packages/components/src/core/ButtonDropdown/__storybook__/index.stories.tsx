@@ -41,6 +41,7 @@ export default {
     },
   },
   component: ButtonDropdown,
+  tags: ["deprecated"],
   title: "Components/Buttons/ButtonDropdown",
 } as Meta;
 

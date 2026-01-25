@@ -5,6 +5,7 @@ import {
   BANNER_TEXT,
 } from "./constants";
 import { Banner } from "./stories/default";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -28,7 +29,7 @@ export default {
       options: Object.keys(BANNER_ICON_OPTIONS),
     },
     intent: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["accent", "info", "negative", "positive", "notice"],
     },
     sdsIconProps: {
@@ -37,7 +38,7 @@ export default {
       },
     },
     sdsType: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["primary", "secondary"],
       required: true,
     },
