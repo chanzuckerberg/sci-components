@@ -70,7 +70,7 @@ export default {
   },
   component: Button,
   tags: ["deprecated"],
-  title: "Components/Buttons/Button",
+  title: "Components/Buttons/Legacy/Button",
 } as Meta;
 
 // Default

@@ -1,6 +1,6 @@
 import { ButtonGroupProps as RawButtonGroupProps } from "@mui/material";
 
-export interface ButtonGroupV2Props
+export interface ButtonGroupProps
   extends Omit<RawButtonGroupProps, "variant" | "size"> {
   /**
    * The style of the button group.

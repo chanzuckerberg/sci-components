@@ -6,9 +6,9 @@ import {
   BUTTON_GROUP_ORIENTATIONS,
 } from "./constants";
 import {
-  ButtonGroupV2,
-  ButtonGroupV2DisabledButton,
-  ButtonGroupV2IconOnly,
+  ButtonGroup,
+  ButtonGroupDisabledButton,
+  ButtonGroupIconOnly,
 } from "./stories/default";
 import { TestDemo } from "./stories/test";
 import { INLINE_RADIO } from "src/common/utils";
@@ -39,9 +39,9 @@ export default {
       options: BUTTON_GROUP_SDS_TYPES,
     },
   },
-  component: ButtonGroupV2,
+  component: ButtonGroup,
   tags: ["beta"],
-  title: "Components/Buttons/ButtonGroupV2",
+  title: "Components/Buttons/ButtonGroup",
 } as Meta;
 
 // Default
@@ -64,7 +64,7 @@ export const IconOnly = {
     size: "medium",
     sdsType: "primary",
   },
-  render: (args: Args) => <ButtonGroupV2IconOnly {...args} />,
+  render: (args: Args) => <ButtonGroupIconOnly {...args} />,
 };
 
 // Disabled Button
@@ -75,7 +75,7 @@ export const DisabledButtons = {
     size: "medium",
     sdsType: "primary",
   },
-  render: (args: Args) => <ButtonGroupV2DisabledButton {...args} />,
+  render: (args: Args) => <ButtonGroupDisabledButton {...args} />,
 };
 
 // Test

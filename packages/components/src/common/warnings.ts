@@ -5,7 +5,7 @@ export enum SDSWarningTypes {
   ButtonDropdownMinimal = "buttonDropdownMinimal",
   ButtonDropdownV2Destructive = "buttonDropdownV2Destructive",
   ButtonToggleMissingIconProp = "buttonToggleMissingIconProp",
-  ButtonGroupV2VerticalOrientation = "buttonGroupV2VerticalOrientation",
+  ButtonGroupVerticalOrientation = "ButtonGroupVerticalOrientation",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
   TooltipSubtitle = "tooltipSubtitle",
@@ -44,10 +44,10 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message: "Warning: Button Toggles require an icon prop to be provided.",
   },
-  [SDSWarningTypes.ButtonGroupV2VerticalOrientation]: {
+  [SDSWarningTypes.ButtonGroupVerticalOrientation]: {
     hasWarned: false,
     message:
-      "Warning: ButtonGroupV2 vertical orientation is only available when all buttons are icon-only. Falling back to horizontal orientation.",
+      "Warning: ButtonGroup vertical orientation is only available when all buttons are icon-only. Falling back to horizontal orientation.",
   },
   [SDSWarningTypes.ChipDeprecated]: {
     hasWarned: false,

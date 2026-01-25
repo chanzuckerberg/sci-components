@@ -14,11 +14,11 @@ import {
   getSpaces,
 } from "src/core/styles";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
-import { ButtonGroupV2Props } from "./ButtonGroupV2.types";
+import { ButtonGroupProps } from "./ButtonGroup.types";
 
 const doNotForwardProps = ["sdsType", "sdsStyle"];
 
-type ButtonGroupExtraProps = ButtonGroupV2Props & CommonThemeProps;
+type ButtonGroupExtraProps = ButtonGroupProps & CommonThemeProps;
 
 /**
  * General styles for the ButtonGroup component

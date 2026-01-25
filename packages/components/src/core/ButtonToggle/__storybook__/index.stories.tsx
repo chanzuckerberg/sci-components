@@ -43,7 +43,7 @@ export default {
   },
   component: ButtonToggle,
   tags: ["deprecated"],
-  title: "Components/Buttons/ButtonToggle",
+  title: "Components/Buttons/Legacy/ButtonToggle",
 } as Meta;
 
 // Default

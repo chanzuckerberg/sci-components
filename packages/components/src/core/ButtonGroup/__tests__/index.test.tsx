@@ -7,10 +7,10 @@ const { Test } = composeStories(stories);
 
 const BUTTON_GROUP_TEST_ID = "button-group";
 
-describe("<ButtonGroupV2 />", () => {
+describe("<ButtonGroup />", () => {
   generateSnapshots(stories);
 
-  it("renders ButtonGroupV2 component", () => {
+  it("renders ButtonGroup component", () => {
     render(<Test {...Test.args} />);
     const panelElement = screen.getByTestId(BUTTON_GROUP_TEST_ID);
     expect(panelElement).not.toBeNull();

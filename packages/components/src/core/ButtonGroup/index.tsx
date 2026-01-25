@@ -7,7 +7,7 @@ import React, {
   ReactNode,
 } from "react";
 import { StyledButtonGroup } from "./style";
-import { ButtonGroupV2Props } from "./ButtonGroupV2.types";
+import { ButtonGroupProps } from "./ButtonGroup.types";
 import { isIconOnlyChild } from "src/core/ButtonV2/style";
 import {
   SDSWarningTypes,
@@ -15,7 +15,7 @@ import {
 } from "src/common/warnings";
 import ButtonV2 from "src/core/ButtonV2";
 
-export type { ButtonGroupV2Props };
+export type { ButtonGroupProps };
 
 /**
  * Check if a button element is icon-only (has no text content, only an icon).
@@ -81,16 +81,16 @@ const cloneChildrenWithSize = (
 };
 
 /**
- * ButtonGroupV2 - A group of buttons that can be used to toggle between options.
+ * ButtonGroup - A group of buttons that can be used to toggle between options.
  *
  * Built on top of MUI ButtonGroup component.
  * @see https://mui.com/material-ui/react-button-group/
  *
  * Note: Vertical orientation is only available when all buttons are icon-only.
  */
-const ButtonGroupV2 = React.forwardRef(
+const ButtonGroup = React.forwardRef(
   (
-    props: ButtonGroupV2Props,
+    props: ButtonGroupProps,
     ref: ForwardedRef<HTMLDivElement>
   ): JSX.Element | null => {
     const {
@@ -108,7 +108,7 @@ const ButtonGroupV2 = React.forwardRef(
     // Show warning if user requested vertical but it's not allowed
     if (orientation === "vertical" && !allIconOnly) {
       showWarningIfFirstOccurence(
-        SDSWarningTypes.ButtonGroupV2VerticalOrientation
+        SDSWarningTypes.ButtonGroupVerticalOrientation
       );
     }
 
@@ -130,4 +130,4 @@ const ButtonGroupV2 = React.forwardRef(
   }
 );
 
-export default ButtonGroupV2;
+export default ButtonGroup;
