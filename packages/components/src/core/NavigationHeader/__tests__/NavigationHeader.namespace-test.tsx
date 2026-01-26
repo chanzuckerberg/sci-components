@@ -1,5 +1,6 @@
 import { NavigationHeaderProps, NavigationHeader } from "@czi-sds/components";
 import { useState } from "react";
+import Icon from "src/core/Icon";
 
 const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
@@ -12,18 +13,17 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       buttons={[
         {
           children: "Primary",
-          sdsStyle: "rounded",
+          sdsStyle: "solid",
           sdsType: "primary",
         },
         {
           children: "Secondary",
-          sdsStyle: "rounded",
+          sdsStyle: "solid",
           sdsType: "secondary",
         },
         {
-          children: "My Profile",
-          icon: "Person",
-          sdsStyle: "icon",
+          children: <Icon sdsIcon="Person" sdsSize="s" />,
+          sdsStyle: "minimal",
         },
       ]}
       backgroundAppearance="matchBackground"
