@@ -1,72 +1,72 @@
 import { TOOLTIP_PLACEMENT_STYLES } from "../constants";
 import RawTooltip from "src/core/Tooltip";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 
 export const PlacementDemo = (): JSX.Element => {
   return (
     <div style={TOOLTIP_PLACEMENT_STYLES as React.CSSProperties}>
       <RawTooltip title="Text" placement="top-start" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           top-start
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="top" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           top
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="top-end" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           top-end
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="left-start" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           left-start
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <div />
       <RawTooltip title="Text" placement="right-start" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           right-start
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="left" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           left
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <div />
       <RawTooltip title="Text" placement="right" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           right
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="left-end" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           left-end
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <div />
       <RawTooltip title="Text" placement="right-end" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           right-end
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="bottom-start" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           bottom-start
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="bottom" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           bottom
-        </Button>
+        </ButtonV2>
       </RawTooltip>
       <RawTooltip title="Text" placement="bottom-end" arrow open>
-        <Button sdsStyle="minimal" sdsType="secondary">
+        <ButtonV2 sdsStyle="outline" sdsType="primary" size="large">
           bottom-end
-        </Button>
+        </ButtonV2>
       </RawTooltip>
     </div>
   );

@@ -1,5 +1,6 @@
 import { ForwardedRef, forwardRef } from "react";
 import { StyledButton } from "./style";
+import Icon from "src/core/Icon";
 
 const SDS_SIZE_TO_COMPONENT_SIZE: {
   [key: string]: "small" | "medium" | "large";
@@ -29,13 +30,26 @@ const CloseButton = forwardRef(function CloseButton(
       aria-label="Close"
       ref={ref}
       onClick={onClick}
-      sdsSize={size}
-      icon="XMark"
-      sdsStyle="icon"
-      sdsType="tertiary"
+      size={size}
+      sdsStyle="minimal"
+      sdsType="secondary"
+      backgroundOnHover={false}
       className={className}
       {...rest}
-    />
+    >
+      <Icon
+        sdsIcon="XMark"
+        sdsSize={
+          dialogSize === "xs"
+            ? "s"
+            : dialogSize === "s"
+              ? "l"
+              : dialogSize === "m"
+                ? "l"
+                : "xl"
+        }
+      />
+    </StyledButton>
   );
 });
 

@@ -16,7 +16,7 @@ import {
   StyledHeaderButton,
   StyledLogoLinkWrapper,
   StyledLogoWrapper,
-  StyledNarrowButton,
+  StyledNarrowHamburgerMenuButton,
   StyledNarrowIconButton,
   StyledPrimaryNavContainer,
   StyledSearch,
@@ -31,15 +31,13 @@ import {
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
-import { ButtonProps, SdsButtonProps, SdsMinimalButtonProps } from "../Button";
+import { ButtonV2Props } from "../ButtonV2";
 import Icon from "../Icon";
-import {
-  IconButtonProps,
-  NavigationHeaderProps,
-} from "./NavigationHeader.types";
+import { NavigationHeaderProps } from "./NavigationHeader.types";
 import { mergeRefs } from "src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
 import { getMode } from "../styles";
+import { isIconOnlyChild } from "../ButtonV2/style";
 
 // Time to wait for accordion animation and scroll to complete (includes MUI animation duration + buffer)
 const ACCORDION_SCROLL_DELAY_MS = 500;
@@ -371,7 +369,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderButton = (
-      buttonProps: Partial<ButtonProps> | React.ReactNode,
+      buttonProps: Partial<ButtonV2Props> | React.ReactNode,
       idx: number
     ) => {
       const key = `button-${idx}`;
@@ -398,15 +396,15 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       }
 
       if (typeof buttonProps === "object" && buttonProps !== null) {
-        const buttonPropsObj = buttonProps as ButtonProps;
-        const isIconButton = "icon" in buttonPropsObj;
+        const buttonPropsObj = buttonProps as ButtonV2Props;
+        const isIconButton = isIconOnlyChild(buttonPropsObj.children);
 
-        if (isIconButton && dimensions.isNarrow && buttonPropsObj.icon) {
+        if (isIconButton && dimensions.isNarrow) {
           return renderNarrowIconButton(buttonPropsObj, key, fullWidth);
         }
 
         if (isIconButton && !dimensions.isNarrow) {
-          return renderWideIconButton(buttonPropsObj as IconButtonProps, key);
+          return renderWideIconButton(buttonPropsObj, key);
         }
 
         return renderDefaultButton(buttonPropsObj, key, fullWidth);
@@ -416,7 +414,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderNarrowIconButton = (
-      buttonProps: ButtonProps,
+      buttonProps: ButtonV2Props,
       key: string,
       fullWidth: { width: string } | undefined
     ) => {
@@ -432,13 +430,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         <StyledNarrowIconButton
           key={key}
           sx={fullWidth}
-          isAllCaps={false}
-          startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
           hasInvertedStyle={hasInvertedStyle}
           {...buttonProps}
           onClick={enhancedOnClick}
           sdsStyle="minimal"
           sdsType="secondary"
+          size="large"
           isNarrow={dimensions.isNarrow}
         >
           {buttonProps.children}
@@ -446,26 +443,22 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       );
     };
 
-    const renderWideIconButton = (
-      buttonProps: IconButtonProps,
-      key: string
-    ) => {
+    const renderWideIconButton = (buttonProps: ButtonV2Props, key: string) => {
       return (
         <StyledWideIconButton
           key={key}
           aria-label={String(buttonProps.children)}
           hasInvertedStyle={hasInvertedStyle}
+          sdsStyle="minimal"
+          sdsType="primary"
+          size="large"
           {...buttonProps}
-          sdsStyle="icon"
-          sdsType="secondary"
-          sdsSize="small"
-          icon={buttonProps.icon}
         />
       );
     };
 
     const renderDefaultButton = (
-      buttonProps: ButtonProps,
+      buttonProps: ButtonV2Props,
       key: string,
       fullWidth: { width: string } | undefined
     ) => {
@@ -479,13 +472,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
       return (
         <StyledHeaderButton
+          size="large"
           key={key}
           sx={fullWidth}
-          {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+          {...(buttonProps as ButtonV2Props)}
           onClick={enhancedOnClick}
-          sdsStyle="rounded"
           hasInvertedStyle={hasInvertedStyle}
-          isNarrow={dimensions.isNarrow}
         />
       );
     };
@@ -530,13 +522,19 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           )}
 
           {dimensions.isNarrow && (
-            <StyledNarrowButton
-              sdsType="tertiary"
-              sdsStyle="icon"
-              icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
+            <StyledNarrowHamburgerMenuButton
+              sdsType="secondary"
+              sdsStyle="minimal"
+              size="large"
+              backgroundOnHover={false}
               onClick={() => setDrawerOpen((prev) => !prev)}
               hasInvertedStyle={hasInvertedStyle}
-            />
+            >
+              <Icon
+                sdsSize="l"
+                sdsIcon={drawerOpen ? "XMark" : "LinesHorizontal3"}
+              />
+            </StyledNarrowHamburgerMenuButton>
           )}
         </StyledToolbar>
       );

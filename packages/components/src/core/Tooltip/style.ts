@@ -142,7 +142,7 @@ export const arrowCss = (props: TooltipExtraProps): string => {
   return css`
     &.MuiTooltip-arrow {
       /* (bethbertozzi): !important is needed to fight inline style */
-      left: ${arrowOffset}px !important;
+      ${arrowOffset !== undefined ? `left: ${arrowOffset}px !important;` : ""}
       color: ${hasInvertedStyle || inverted || sdsStyle === "dark"
         ? semanticColors?.base?.surfacePrimaryDark
         : semanticColors?.base?.surfacePrimary};

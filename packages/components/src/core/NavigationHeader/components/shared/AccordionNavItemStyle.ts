@@ -7,8 +7,9 @@ import {
   fontBodyMediumS,
   getSemanticColors,
   getSpaces,
+  getIconSizes,
 } from "src/core/styles";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 
 const doNotForwardProps = [
   "hasInvertedStyle",
@@ -19,7 +20,7 @@ const doNotForwardProps = [
   "sdsStyle",
 ];
 
-export const StyledDrawerNavItem = styled(Button, {
+export const StyledDrawerNavItem = styled(ButtonV2, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(
@@ -30,6 +31,7 @@ export const StyledDrawerNavItem = styled(Button, {
   ) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
+    const iconSizes = getIconSizes(props);
 
     const textColor = props.hasInvertedStyle
       ? semanticColors?.base?.textPrimaryOnDark
@@ -45,12 +47,27 @@ export const StyledDrawerNavItem = styled(Button, {
       box-shadow: none !important;
       align-items: center;
       text-align: left;
-      gap: ${spaces?.l}px;
+      gap: ${spaces?.l}px !important;
       padding: ${spaces?.s}px 0 !important;
+
+      /* Override the gap in ButtonV2's inner StyledChildren span */
+      & > span {
+        gap: ${spaces?.l}px !important;
+      }
       cursor: pointer;
       border-radius: 8px;
       transition: background-color 150ms;
       color: ${textColor};
+      height: unset !important;
+
+      svg {
+        width: ${props.hasCaption
+          ? iconSizes?.l?.width
+          : iconSizes?.s?.width}px !important;
+        height: ${props.hasCaption
+          ? iconSizes?.l?.height
+          : iconSizes?.s?.height}px !important;
+      }
 
       &:hover {
         background-color: transparent;
@@ -72,7 +89,7 @@ export const StyledDrawerNavItemContent = styled("div", {
     return css`
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 0 !important;
       flex: 1;
       min-width: 0;
       padding-top: ${spaces?.xxs}px;
@@ -143,8 +160,8 @@ export const StyledIconWrapper = styled("div", {
 
     return css`
       flex-shrink: 0;
-      width: ${size};
-      height: ${size};
+      width: ${size} !important;
+      height: ${size} !important;
       display: flex;
       align-items: center;
       justify-content: center;

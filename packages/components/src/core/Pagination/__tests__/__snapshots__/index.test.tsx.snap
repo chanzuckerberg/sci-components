@@ -61,26 +61,29 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1nlgj80-MuiButtonBase-root-MuiIconButton-root"
-      icon="DotsHorizontal"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-xyb7vf-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
-      <div
-        class="css-1ft6wgl"
+      <span
+        class="css-ll8hvy"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-          data-file-name="IconDotsHorizontal3Small"
-          data-testid="IconDotsHorizontal3Small"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+        <div
+          class="css-1ft6wgl"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+            data-file-name="IconDotsHorizontal3Small"
+            data-testid="IconDotsHorizontal3Small"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />

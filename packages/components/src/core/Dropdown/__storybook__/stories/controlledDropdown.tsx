@@ -4,7 +4,7 @@ import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import RawDropdown from "src/core/Dropdown";
 
 export const ControlledDropdownDemo = <
@@ -21,7 +21,7 @@ export const ControlledDropdownDemo = <
     [] as unknown as AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>
   );
 
-  const StyledButton = styled(Button)`
+  const StyledButton = styled(ButtonV2)`
     &:focus {
       outline: none;
     }
@@ -34,7 +34,6 @@ export const ControlledDropdownDemo = <
       <StyledButton
         onClick={handleClick}
         sdsStyle="minimal"
-        isAllCaps={false}
         sdsType="secondary"
       >
         Click here to select the first three options

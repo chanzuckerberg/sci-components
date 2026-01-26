@@ -1,12 +1,12 @@
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Button from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import { StyledCallout } from "./style";
 import CalloutTitle from "./components/CalloutTitle";
 import CalloutBody from "./components/CalloutBody";
 import CalloutExtraContent from "./components/CalloutExtraContent";
+import ButtonV2 from "../ButtonV2";
 
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
@@ -101,28 +101,31 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
   const getAction = (collapsed: boolean) => {
     if (sdsStyle === "expandable") {
       return (
-        <Button
+        <ButtonV2
           aria-label={collapsed ? "open" : "close"}
           onClick={() => {
             setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
           }}
-          sdsSize="small"
-          sdsType="tertiary"
-          sdsStyle="icon"
-          icon={collapsed ? "ChevronDown" : "ChevronUp"}
-        />
+          size="large"
+          sdsType="secondary"
+          sdsStyle="minimal"
+          backgroundOnHover={false}
+        >
+          <Icon sdsIcon={collapsed ? "ChevronDown" : "ChevronUp"} sdsSize="s" />
+        </ButtonV2>
       );
     } else if (sdsStyle === "dismissible") {
       return (
-        <Button
+        <ButtonV2
           aria-label="Dismiss"
           onClick={handleClose}
-          sdsSize="small"
-          sdsType="tertiary"
-          sdsStyle="icon"
+          sdsType="secondary"
+          sdsStyle="minimal"
           size="large"
-          icon="XMark"
-        />
+          backgroundOnHover={false}
+        >
+          <Icon sdsIcon="XMark" sdsSize="s" />
+        </ButtonV2>
       );
     }
 

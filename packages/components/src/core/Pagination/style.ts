@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -33,7 +33,7 @@ const doNotForwardProps = [
   "truncateDropdown",
 ];
 
-export const StyledPaginationButton = styled(Button)`
+export const StyledPaginationButton = styled(ButtonV2)`
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
 

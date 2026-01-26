@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
 import React from "react";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import MenuItem from "src/core/MenuItem";
 import RawMenu from "src/core/Menu";
 
@@ -17,17 +17,18 @@ export const Menu = (props: Args): JSX.Element => {
 
   return (
     <div>
-      <Button
+      <ButtonV2
         id="basic-button"
+        size="large"
         sdsStyle="minimal"
-        sdsType="secondary"
+        sdsType="primary"
         onClick={handleClick}
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? true : undefined}
       >
         Click me!
-      </Button>
+      </ButtonV2>
       <RawMenu
         id="basic-menu"
         anchorEl={anchorEl}

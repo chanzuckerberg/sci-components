@@ -1,7 +1,7 @@
 import { AlertProps } from "@mui/lab";
 import { Box, Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
 import { StyledButtonWrapper, StyledNotification } from "./style";
 
@@ -105,14 +105,14 @@ const Notification = ({
             onClose={onClose ? handleClose : undefined}
             action={
               onClose ? (
-                <Button
+                <ButtonV2
                   onClick={handleClose}
-                  sdsSize="small"
-                  sdsType="tertiary"
-                  sdsStyle="icon"
+                  sdsStyle="minimal"
+                  sdsType="secondary"
                   data-testid="notificationCloseButton"
-                  icon="XMark"
-                />
+                >
+                  <Icon sdsIcon="XMark" sdsSize="s" />
+                </ButtonV2>
               ) : null
             }
             icon={getIcon()}
@@ -124,14 +124,14 @@ const Notification = ({
             {children}
             {buttonOnClick !== undefined && (
               <StyledButtonWrapper buttonPosition={buttonPosition}>
-                <Button
+                <ButtonV2
                   sdsStyle="minimal"
-                  sdsType="secondary"
+                  sdsType="primary"
+                  size="medium"
                   onClick={buttonOnClick}
-                  isAllCaps={false}
                 >
                   {buttonText}
-                </Button>
+                </ButtonV2>
               </StyledButtonWrapper>
             )}
           </StyledNotification>

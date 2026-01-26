@@ -1,6 +1,6 @@
 import { CardMedia } from "@mui/material";
 import Icon from "src/core/Icon";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 
 export const CONTENT_CARD_EXCLUDED_CONTROLS = [
   "visualElement",
@@ -30,44 +30,45 @@ export const CONTENT_CARD_EXCLUDED_CONTROLS = [
 // Buttons
 
 export const CONTENT_CARD_BUTTONS_LABELS = [
-  "Rounded Primary",
-  "Rounded Secondary",
-  "Square Primary",
-  "Square Secondary",
+  "Primary",
+  "Secondary",
   "Minimal",
   "Minimal with Icon",
 ];
 
 export const CONTENT_CARD_BUTTONS_OPTIONS = [
-  // Rounded Primary
-  <Button sdsStyle="rounded" sdsType="primary" key="primary">
+  // Primary
+  <ButtonV2
+    size="large"
+    sdsStyle="solid"
+    sdsType="primary"
+    key="square-primary"
+  >
     Primary Button
-  </Button>,
-  // Rounded Secondary
-  <Button sdsStyle="rounded" sdsType="secondary" key="secondary">
+  </ButtonV2>,
+  // Secondary
+  <ButtonV2
+    size="large"
+    sdsStyle="solid"
+    sdsType="secondary"
+    key="square-secondary"
+  >
     Secondary Button
-  </Button>,
-  // Square Primary
-  <Button sdsStyle="square" sdsType="primary" key="square-primary">
-    Primary Button
-  </Button>,
-  // Square Secondary
-  <Button sdsStyle="square" sdsType="secondary" key="square-secondary">
-    Secondary Button
-  </Button>,
+  </ButtonV2>,
   // Minimal
-  <Button sdsStyle="minimal" sdsType="primary" key="minimal">
+  <ButtonV2 size="large" sdsStyle="minimal" sdsType="primary" key="minimal">
     Minimal Button
-  </Button>,
+  </ButtonV2>,
   // Minimal with Icon
-  <Button
+  <ButtonV2
+    size="large"
     sdsStyle="minimal"
     sdsType="primary"
     key="minimal-with-icon"
     endIcon={<Icon sdsIcon="ChevronRight" sdsSize="xs" />}
   >
     Minimal Button
-  </Button>,
+  </ButtonV2>,
 ];
 
 // Images

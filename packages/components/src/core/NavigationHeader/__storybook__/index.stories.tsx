@@ -12,6 +12,7 @@ import { TestDemo } from "./stories/test";
 import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
 import { DrawerStyleDemo } from "./stories/drawerStyle";
 import { INLINE_RADIO } from "src/common/utils";
+import Icon from "src/core/Icon";
 
 export default {
   argTypes: {
@@ -213,11 +214,13 @@ export const DropdownStyle = {
       { children: "Label", sdsType: "primary" },
       {
         children: "Label",
-        sdsType: "secondary",
+        sdsType: "primary",
+        sdsStyle: "outline",
       },
       {
-        children: "Label",
-        icon: "Person",
+        sdsStyle: "minimal",
+        sdsType: "primary",
+        children: <Icon sdsIcon="Person" sdsSize="s" />,
         onClick: () => alert("clicked on my profile"),
       },
     ],
@@ -306,11 +309,14 @@ export const DrawerStyle = {
     buttons: [
       {
         children: "Sign in",
-        sdsType: "secondary",
+        sdsType: "primary",
+        sdsStyle: "outline",
       },
       {
-        children: "My Profile",
-        icon: "Person",
+        sdsStyle: "minimal",
+        sdsType: "secondary",
+        size: "large",
+        children: <Icon sdsIcon="Person" sdsSize="s" />,
         onClick: () => alert("clicked on my profile"),
       },
     ],
@@ -342,11 +348,11 @@ export const WithTopComponent = {
     buttons: [
       {
         children: "Sign in",
-        sdsType: "secondary",
+        sdsType: "primary",
+        sdsStyle: "outline",
       },
       {
-        children: "My Profile",
-        icon: "Person",
+        children: <Icon sdsIcon="Person" sdsSize="s" />,
         onClick: () => alert("clicked on my profile"),
       },
     ],

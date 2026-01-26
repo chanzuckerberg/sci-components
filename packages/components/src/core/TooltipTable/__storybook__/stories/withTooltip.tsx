@@ -1,5 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
+import Icon from "src/core/Icon";
 import Link from "src/core/Link";
 import TooltipCondensed from "src/core/TooltipCondensed";
 import RawTooltipTableContent from "src/core/TooltipTable";
@@ -39,12 +40,14 @@ export const WithinTooltipDemo = (props: Args): JSX.Element => {
             <RawTooltipTableContent {...props} contentAlert={handleAlert()} />
           }
         >
-          <Button
+          <ButtonV2
             aria-label="tooltip test button"
-            sdsStyle="icon"
-            sdsSize="large"
-            icon="ExclamationMarkCircle"
-          />
+            size="large"
+            sdsStyle="minimal"
+            sdsType="primary"
+          >
+            <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+          </ButtonV2>
         </TooltipCondensed>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
 import React, { forwardRef, useRef, useState } from "react";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import {
   InputSearchExtraProps,
   StyledInputAdornment,
@@ -9,6 +9,7 @@ import {
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
 import { EMPTY_OBJECT, cn } from "src/common/utils";
+import Icon from "../Icon";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -136,19 +137,21 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                 position="end"
                 className={cn(endAdornmentClassName)}
               >
-                <Button
+                <ButtonV2
                   aria-label="clear-button"
                   className={cn(
                     "input-search-clear-icon",
                     clearButtonClassName
                   )}
                   onClick={clearInput}
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
+                  sdsType="secondary"
+                  size="small"
+                  sdsStyle="minimal"
                   disabled={disabled}
-                  icon="XMarkCircle"
-                />
+                  backgroundOnHover={false}
+                >
+                  <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                </ButtonV2>
               </StyledInputAdornment>
             ) : null,
             startAdornment: (
@@ -156,16 +159,18 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                 position="start"
                 className={cn(startAdornmentClassName)}
               >
-                <Button
+                <ButtonV2
                   aria-label="search-button"
                   onClick={localHandleSubmit}
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
+                  sdsType="secondary"
+                  size="large"
+                  sdsStyle="minimal"
                   disabled={disabled}
-                  icon="Search"
+                  backgroundOnHover={false}
                   className={cn(searchButtonClassName)}
-                />
+                >
+                  <Icon sdsIcon="Search" sdsSize="s" />
+                </ButtonV2>
               </StyledInputAdornment>
             ),
           }}

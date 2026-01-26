@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import RawDialog from "src/core/Dialog";
 import DialogTitle from "src/core/Dialog/components/DialogTitle";
 import DialogContent from "src/core/Dialog/components/DialogContent";
@@ -21,9 +21,14 @@ export const Dialog = (props: Args): JSX.Element => {
 
   return (
     <>
-      <Button sdsStyle="minimal" sdsType="primary" onClick={handleClick}>
+      <ButtonV2
+        size="large"
+        sdsStyle="minimal"
+        sdsType="primary"
+        onClick={handleClick}
+      >
         Open {sdsSize}
-      </Button>
+      </ButtonV2>
       <RawDialog
         onClose={handleClose}
         open={isOpen}
@@ -54,24 +59,44 @@ export const Dialog = (props: Args): JSX.Element => {
     if (buttonPosition === "left") {
       return (
         <>
-          <Button sdsStyle="square" sdsType="primary" onClick={handleClose}>
+          <ButtonV2
+            size="large"
+            sdsStyle="solid"
+            sdsType="primary"
+            onClick={handleClose}
+          >
             Primary Action
-          </Button>
-          <Button sdsStyle="square" sdsType="secondary" onClick={handleClose}>
+          </ButtonV2>
+          <ButtonV2
+            size="large"
+            sdsStyle="outline"
+            sdsType="primary"
+            onClick={handleClose}
+          >
             Secondary Action
-          </Button>
+          </ButtonV2>
         </>
       );
     }
 
     return (
       <>
-        <Button sdsStyle="square" sdsType="secondary" onClick={handleClose}>
+        <ButtonV2
+          size="large"
+          sdsStyle="outline"
+          sdsType="primary"
+          onClick={handleClose}
+        >
           Secondary Action
-        </Button>
-        <Button sdsStyle="square" sdsType="primary" onClick={handleClose}>
+        </ButtonV2>
+        <ButtonV2
+          size="large"
+          sdsStyle="solid"
+          sdsType="primary"
+          onClick={handleClose}
+        >
           Primary Action
-        </Button>
+        </ButtonV2>
       </>
     );
   }

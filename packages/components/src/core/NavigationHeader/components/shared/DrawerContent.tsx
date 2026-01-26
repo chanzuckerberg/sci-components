@@ -139,7 +139,7 @@ export default function DrawerContent({
             return (
               <StyledButton
                 key={`action-${section || "default"}-${index}`}
-                sdsStyle="rounded"
+                sdsStyle="solid"
                 sdsType="primary"
                 onClick={(e) => {
                   onClick?.(e);

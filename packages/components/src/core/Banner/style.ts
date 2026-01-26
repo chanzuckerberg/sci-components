@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import Button, { ButtonProps } from "src/core/Button";
+import ButtonV2, { ButtonV2Props } from "src/core/ButtonV2";
 import {
   CommonThemeProps,
   fontBodyS,
@@ -13,7 +13,7 @@ export interface BannerExtraProps extends CommonThemeProps {
   intent?: BannerIntentType;
 }
 
-type ButtonType = ButtonProps & {
+type ButtonType = ButtonV2Props & {
   bannerType: string;
 } & CommonThemeProps;
 type IconWrapperType = CommonThemeProps & {
@@ -59,10 +59,13 @@ export const IconWrapper = styled("div", {
 
 const doNotForwardPropsButtonIcon = ["bannerType", "textChild", "intent"];
 
-export const StyledButton = styled(Button as React.ComponentType<ButtonType>, {
-  shouldForwardProp: (prop: string) =>
-    !doNotForwardPropsButtonIcon.includes(prop),
-})`
+export const StyledButton = styled(
+  ButtonV2 as React.ComponentType<ButtonType>,
+  {
+    shouldForwardProp: (prop: string) =>
+      !doNotForwardPropsButtonIcon.includes(prop),
+  }
+)`
   flex: 0 0 auto;
 
   ${(props: ButtonType) => {

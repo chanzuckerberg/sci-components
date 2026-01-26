@@ -200,7 +200,7 @@ export default {
 export const Default = {
   args: {
     boundingBox: true,
-    buttons: [CONTENT_CARD_BUTTONS_OPTIONS[2], CONTENT_CARD_BUTTONS_OPTIONS[5]],
+    buttons: [CONTENT_CARD_BUTTONS_OPTIONS[0], CONTENT_CARD_BUTTONS_OPTIONS[2]],
     buttonsPosition: "left",
     clickableCard: false,
     clickableCardProps: {

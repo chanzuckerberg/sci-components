@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { CardActions, CardActionsProps } from "@mui/material";
-import { ButtonProps } from "src/core/Button";
+import { ButtonV2Props } from "src/core/ButtonV2";
 import { CommonThemeProps, getSpaces } from "src/core/styles";
 
 const doNotForwardProps = ["buttonsPosition"];
@@ -8,7 +8,7 @@ const doNotForwardProps = ["buttonsPosition"];
 export type StyledCardActionsProps = CardActionsProps &
   CommonThemeProps & {
     buttonsPosition?: "left" | "right";
-    children?: Array<React.ReactElement<ButtonProps>>;
+    children?: Array<React.ReactElement<ButtonV2Props>>;
   };
 
 export const StyledCardActions = styled(CardActions, {

@@ -12,7 +12,7 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import { InputSearchProps } from "src/core/InputSearch";
 import {
   InputBaseWrapper,
@@ -21,6 +21,7 @@ import {
   StyledMenuInputSearch,
   StyledMenuItem,
 } from "./style";
+import Icon from "../Icon";
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -123,12 +124,14 @@ const MenuSelect = <
               ...params.InputProps.ref,
               endAdornment: (
                 <InputAdornment position="end">
-                  <Button
-                    sdsType="tertiary"
-                    sdsSize="small"
-                    sdsStyle="icon"
-                    icon="Search"
-                  />
+                  <ButtonV2
+                    size="large"
+                    sdsType="secondary"
+                    sdsStyle="minimal"
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="Search" sdsSize="s" />
+                  </ButtonV2>
                 </InputAdornment>
               ),
               inputProps: params.inputProps,

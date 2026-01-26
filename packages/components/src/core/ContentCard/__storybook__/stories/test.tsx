@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
 import { MEDIUM_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import ContentCard, {
   ContentCardActions,
   ContentCardBody,
@@ -20,9 +20,9 @@ export const TestDemo = (props: Args): JSX.Element => {
     >
       <ContentCardBody>{MEDIUM_LOREM_IPSUM}</ContentCardBody>
       <ContentCardActions>
-        <Button sdsStyle="minimal" sdsType="primary">
+        <ButtonV2 sdsStyle="minimal" sdsType="primary" size="large">
           Button
-        </Button>
+        </ButtonV2>
       </ContentCardActions>
     </ContentCard>
   );

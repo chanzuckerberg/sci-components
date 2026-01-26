@@ -23,7 +23,7 @@ export type { ButtonGroupProps };
  * - It has no children, OR
  * - Its only child is an Icon component
  */
-const isIconOnlyButton = (buttonElement: ReactNode): boolean => {
+export const isIconOnlyButton = (buttonElement: ReactNode): boolean => {
   if (!isValidElement(buttonElement)) return false;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
