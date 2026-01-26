@@ -1,52 +1,28 @@
 import React from "react";
-import { Button, ButtonProps } from "@czi-sds/components";
+import ButtonV2, { ButtonV2Props } from "../index";
 
-const ButtonNameSpaceTest = (props: ButtonProps) => {
+const ButtonNameSpaceTest = (props: ButtonV2Props) => {
   return (
     <>
-      <Button sdsType="primary" sdsStyle="square">
+      <ButtonV2 sdsType="primary" sdsStyle="solid">
         Primary Square Button
-      </Button>
+      </ButtonV2>
 
-      <Button sdsType="secondary" sdsStyle="square">
+      <ButtonV2 sdsType="secondary" sdsStyle="solid">
         Secondary Square Button
-      </Button>
+      </ButtonV2>
 
-      <Button sdsType="destructive" sdsStyle="square">
+      <ButtonV2 sdsType="destructive" sdsStyle="solid">
         Destructive Square Button
-      </Button>
+      </ButtonV2>
 
-      <Button sdsType="primary" sdsStyle="rounded">
-        Primary Rounded Button
-      </Button>
-
-      <Button sdsType="secondary" sdsStyle="square">
-        Secondary Rounded Button
-      </Button>
-
-      <Button sdsType="destructive" sdsStyle="square">
-        Destructive Rounded Button
-      </Button>
-
-      <Button sdsType="primary" sdsStyle="minimal">
+      <ButtonV2 sdsType="primary" sdsStyle="minimal">
         Primary Minimal Button
-      </Button>
+      </ButtonV2>
 
-      <Button sdsType="secondary" sdsStyle="minimal">
+      <ButtonV2 sdsType="secondary" sdsStyle="minimal">
         Secondary Minimal Button
-      </Button>
-
-      <Button sdsType="primary" sdsStyle="icon" icon="Bacteria">
-        Primary Icon Button
-      </Button>
-
-      <Button sdsType="secondary" sdsStyle="icon" icon="Bacteria">
-        Secondary Icon Button
-      </Button>
-
-      <Button sdsType="tertiary" sdsStyle="icon" icon="Bacteria">
-        Tertiary Icon Button
-      </Button>
+      </ButtonV2>
     </>
   );
 };
