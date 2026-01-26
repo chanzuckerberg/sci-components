@@ -9,7 +9,7 @@ export const ButtonGroup = (props: Args): JSX.Element => {
 
   return (
     <RawButtonGroup {...rest} size={size}>
-      <ButtonV2>
+      <ButtonV2 aria-label="Download">
         <Icon sdsIcon="Download" sdsSize="s" />
       </ButtonV2>
       <ButtonV2 startIcon={<Icon sdsIcon="Download" sdsSize="s" />}>
@@ -25,13 +25,13 @@ export const ButtonGroupIconOnly = (props: Args): JSX.Element => {
 
   return (
     <RawButtonGroup {...rest} size={size}>
-      <ButtonV2>
+      <ButtonV2 aria-label="Download">
         <Icon sdsIcon="Download" sdsSize="s" />
       </ButtonV2>
-      <ButtonV2>
+      <ButtonV2 aria-label="Copy">
         <Icon sdsIcon="Copy" sdsSize="s" />
       </ButtonV2>
-      <ButtonV2>
+      <ButtonV2 aria-label="Edit">
         <Icon sdsIcon="Edit" sdsSize="s" />
       </ButtonV2>
     </RawButtonGroup>
@@ -44,146 +44,146 @@ export const ButtonGroupDisabledButton = (props: Args): JSX.Element => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       <RawButtonGroup {...rest} orientation="horizontal" size={size}>
-        <ButtonV2 disabled>
+        <ButtonV2 disabled aria-label="Download">
           <Icon sdsIcon="Download" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Copy">
           <Icon sdsIcon="Copy" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Cube">
           <Icon sdsIcon="Cube" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Github">
           <Icon sdsIcon="Github" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Edit">
           <Icon sdsIcon="Edit" sdsSize="s" />
         </ButtonV2>
       </RawButtonGroup>
 
       <RawButtonGroup {...rest} orientation="horizontal" size={size}>
-        <ButtonV2>
+        <ButtonV2 aria-label="Download">
           <Icon sdsIcon="Download" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Copy">
           <Icon sdsIcon="Copy" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2 disabled>
+        <ButtonV2 disabled aria-label="Cube">
           <Icon sdsIcon="Cube" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Github">
           <Icon sdsIcon="Github" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Edit">
           <Icon sdsIcon="Edit" sdsSize="s" />
         </ButtonV2>
       </RawButtonGroup>
 
       <RawButtonGroup {...rest} orientation="horizontal" size={size}>
-        <ButtonV2>
+        <ButtonV2 aria-label="Download">
           <Icon sdsIcon="Download" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Copy">
           <Icon sdsIcon="Copy" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2 disabled>
+        <ButtonV2 disabled aria-label="Cube">
           <Icon sdsIcon="Cube" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2 disabled>
+        <ButtonV2 disabled aria-label="Github">
           <Icon sdsIcon="Github" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Edit">
           <Icon sdsIcon="Edit" sdsSize="s" />
         </ButtonV2>
       </RawButtonGroup>
 
       <RawButtonGroup {...rest} orientation="horizontal" size={size}>
-        <ButtonV2>
+        <ButtonV2 aria-label="Download">
           <Icon sdsIcon="Download" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Copy">
           <Icon sdsIcon="Copy" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Cube">
           <Icon sdsIcon="Cube" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2>
+        <ButtonV2 aria-label="Github">
           <Icon sdsIcon="Github" sdsSize="s" />
         </ButtonV2>
-        <ButtonV2 disabled>
+        <ButtonV2 disabled aria-label="Edit">
           <Icon sdsIcon="Edit" sdsSize="s" />
         </ButtonV2>
       </RawButtonGroup>
 
       <div style={{ display: "flex", gap: "10px" }}>
         <RawButtonGroup {...rest} orientation="vertical" size={size}>
-          <ButtonV2 disabled>
+          <ButtonV2 disabled aria-label="Download">
             <Icon sdsIcon="Download" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Copy">
             <Icon sdsIcon="Copy" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Cube">
             <Icon sdsIcon="Cube" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Github">
             <Icon sdsIcon="Github" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Edit">
             <Icon sdsIcon="Edit" sdsSize="s" />
           </ButtonV2>
         </RawButtonGroup>
 
         <RawButtonGroup {...rest} orientation="vertical" size={size}>
-          <ButtonV2>
+          <ButtonV2 aria-label="Download">
             <Icon sdsIcon="Download" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Copy">
             <Icon sdsIcon="Copy" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2 disabled>
+          <ButtonV2 disabled aria-label="Cube">
             <Icon sdsIcon="Cube" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Github">
             <Icon sdsIcon="Github" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Edit">
             <Icon sdsIcon="Edit" sdsSize="s" />
           </ButtonV2>
         </RawButtonGroup>
 
         <RawButtonGroup {...rest} orientation="vertical" size={size}>
-          <ButtonV2>
+          <ButtonV2 aria-label="Download">
             <Icon sdsIcon="Download" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Copy">
             <Icon sdsIcon="Copy" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2 disabled>
+          <ButtonV2 disabled aria-label="Cube">
             <Icon sdsIcon="Cube" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2 disabled>
+          <ButtonV2 disabled aria-label="Github">
             <Icon sdsIcon="Github" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Edit">
             <Icon sdsIcon="Edit" sdsSize="s" />
           </ButtonV2>
         </RawButtonGroup>
 
         <RawButtonGroup {...rest} orientation="vertical" size={size}>
-          <ButtonV2>
+          <ButtonV2 aria-label="Download">
             <Icon sdsIcon="Download" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Copy">
             <Icon sdsIcon="Copy" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Cube">
             <Icon sdsIcon="Cube" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2>
+          <ButtonV2 aria-label="Github">
             <Icon sdsIcon="Github" sdsSize="s" />
           </ButtonV2>
-          <ButtonV2 disabled>
+          <ButtonV2 disabled aria-label="Edit">
             <Icon sdsIcon="Edit" sdsSize="s" />
           </ButtonV2>
         </RawButtonGroup>

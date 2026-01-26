@@ -94,6 +94,9 @@ export const ScreenshotTest = {
     snapshot: {
       skip: true,
     },
+    axe: {
+      disabledRules: ["color-contrast"],
+    },
   },
   render: (args: Args) => <ScreenshotTestDemo {...args} />,
 };

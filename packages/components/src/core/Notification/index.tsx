@@ -126,7 +126,7 @@ const Notification = ({
               <StyledButtonWrapper buttonPosition={buttonPosition}>
                 <ButtonV2
                   sdsStyle="minimal"
-                  sdsType="primary"
+                  sdsType="secondary"
                   size="medium"
                   onClick={buttonOnClick}
                 >

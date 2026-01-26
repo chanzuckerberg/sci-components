@@ -1,11 +1,11 @@
 import Icon from "src/core/Icon";
 import Tag from "src/core/Tag";
+import ButtonV2 from "src/core/ButtonV2";
 import {
   ButtonIconsGroupBottom,
   ButtonIconsGroupRight,
   EmptySlotBottom,
   EmptySlotRight,
-  StyledButton,
 } from "./style";
 
 export const CELL_BASIC_EXCLUDED_CONTROLS = [
@@ -55,34 +55,38 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = [
     key="componentSlotRight-1"
   />,
   <ButtonIconsGroupRight key="componentSlotRight-2">
-    <StyledButton
+    <ButtonV2
       aria-label="Bar Chart Vertical 4"
-      icon="BarChartVertical4"
-      sdsSize="small"
+      size="large"
       sdsType="primary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      sdsStyle="minimal"
+    >
+      <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Copy"
-      icon="Copy"
-      sdsSize="small"
       sdsType="primary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      sdsStyle="minimal"
+      size="large"
+    >
+      <Icon sdsIcon="Copy" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Search Lines Horizontal 3"
-      icon="SearchLinesHorizontal3"
-      sdsSize="small"
+      size="large"
       sdsType="primary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      sdsStyle="minimal"
+    >
+      <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Download"
-      icon="Download"
-      sdsSize="small"
+      size="large"
       sdsType="primary"
-      sdsStyle="icon"
-    />
+      sdsStyle="minimal"
+    >
+      <Icon sdsIcon="Download" sdsSize="s" />
+    </ButtonV2>
   </ButtonIconsGroupRight>,
 ];
 
@@ -115,41 +119,51 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
     key="componentSlotBottom-2"
     style={{ display: "flex", gap: "4px" }}
   >
-    <StyledButton
+    <ButtonV2
       aria-label="Bar Chart Vertical 4"
-      icon="BarChartVertical4"
-      sdsSize="small"
-      sdsType="tertiary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
+      <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Copy"
-      icon="Copy"
-      sdsSize="small"
-      sdsType="tertiary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
+      <Icon sdsIcon="Copy" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Search Lines Horizontal 3"
-      icon="SearchLinesHorizontal3"
-      sdsSize="small"
-      sdsType="tertiary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
+      <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Tree Horizontal"
-      icon="TreeHorizontal"
-      sdsSize="small"
-      sdsType="tertiary"
-      sdsStyle="icon"
-    />
-    <StyledButton
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
+      <Icon sdsIcon="TreeHorizontal" sdsSize="s" />
+    </ButtonV2>
+    <ButtonV2
       aria-label="Download"
-      icon="Download"
-      sdsSize="small"
-      sdsType="tertiary"
-      sdsStyle="icon"
-    />
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
+      <Icon sdsIcon="Download" sdsSize="s" />
+    </ButtonV2>
   </ButtonIconsGroupBottom>,
 ];
 

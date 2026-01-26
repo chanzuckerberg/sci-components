@@ -15,7 +15,7 @@ import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
 } from "src/core/Autocomplete";
-import Button from "src/core/Button";
+import ButtonV2 from "src/core/ButtonV2";
 import { InputSearchProps } from "src/core/InputSearch";
 import { StyledInputAdornment } from "src/core/InputSearch/style";
 import { SDSTheme } from "src/core/styles";
@@ -33,6 +33,7 @@ import {
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
 import { VerticalDivider } from "./components/VerticalDivider";
+import Icon from "src/core/Icon";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -227,15 +228,17 @@ const AutocompleteMultiColumn = <
                  * InputSearch's endAdornment, we must also include the clear IconButton here.
                  */}
                 {inputValue && (
-                  <Button
+                  <ButtonV2
                     aria-label="clear-button"
                     className="input-search-clear-icon"
-                    sdsType="tertiary"
-                    sdsSize="small"
-                    sdsStyle="icon"
-                    icon="XMarkCircle"
+                    sdsType="secondary"
+                    size="large"
+                    sdsStyle="minimal"
                     onClick={clearInput}
-                  />
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                  </ButtonV2>
                 )}
               </StyledInputAdornment>
             ),
@@ -246,13 +249,15 @@ const AutocompleteMultiColumn = <
             inputMode: "text",
             startAdornment: (
               <StyledInputAdornment position="start">
-                <Button
+                <ButtonV2
                   aria-label="search-button"
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
-                  icon="Search"
-                />
+                  sdsType="secondary"
+                  size="large"
+                  sdsStyle="minimal"
+                  backgroundOnHover={false}
+                >
+                  <Icon sdsIcon="Search" sdsSize="s" />
+                </ButtonV2>
               </StyledInputAdornment>
             ),
           }}

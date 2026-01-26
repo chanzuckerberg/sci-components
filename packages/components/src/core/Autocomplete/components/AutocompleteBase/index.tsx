@@ -20,8 +20,8 @@ import React, {
   useState,
 } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
-import Button from "src/core/Button";
-import { IconProps } from "src/core/Icon";
+import ButtonV2 from "src/core/ButtonV2";
+import Icon, { IconProps } from "src/core/Icon";
 import { InputSearchProps } from "src/core/InputSearch";
 import { StyledInputAdornment } from "src/core/InputSearch/style";
 import MenuItem, { IconNameToSmallSizes } from "src/core/MenuItem";
@@ -254,7 +254,7 @@ const AutocompleteBase = <
             endAdornment: (
               <StyledInputAdornment position="end">
                 {inputValue && (
-                  <Button
+                  <ButtonV2
                     // (masoudmanson): This is to ensure that the clear button won't be focusable
                     // when the search prop is set to false.
                     tabIndex={search ? 0 : -1}
@@ -263,11 +263,13 @@ const AutocompleteBase = <
                     aria-label="Clear Button"
                     className="input-search-clear-icon"
                     onClick={clearInput}
-                    sdsType="tertiary"
-                    sdsSize="small"
-                    sdsStyle="icon"
-                    icon="XMarkCircle"
-                  />
+                    sdsType="secondary"
+                    size="large"
+                    sdsStyle="minimal"
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                  </ButtonV2>
                 )}
               </StyledInputAdornment>
             ),
@@ -279,18 +281,20 @@ const AutocompleteBase = <
             inputProps: params.inputProps,
             startAdornment: (
               <StyledInputAdornment position="start">
-                <Button
+                <ButtonV2
                   aria-label="Search Button"
                   // (masoudmanson): This is to ensure that the search button won't be focusable
                   // when the search prop is set to false.
                   tabIndex={search ? 0 : -1}
                   aria-hidden={!search}
                   disabled={!search}
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
-                  icon="Search"
-                />
+                  sdsType="secondary"
+                  size="large"
+                  sdsStyle="minimal"
+                  backgroundOnHover={false}
+                >
+                  <Icon sdsIcon="Search" sdsSize="s" />
+                </ButtonV2>
               </StyledInputAdornment>
             ),
           }}

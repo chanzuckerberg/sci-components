@@ -1,39 +1,39 @@
 import React from "react";
-import { Button } from "@mui/material";
 // Note: This will need to be updated when ButtonGroup is exported from @czi-sds/components
 import ButtonGroup, { ButtonGroupProps } from "../index";
+import ButtonV2 from "src/core/ButtonV2";
 
 const ButtonGroupNameSpaceTest = (props: ButtonGroupProps) => {
   return (
     <>
       <ButtonGroup sdsType="primary" size="large">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+        <ButtonV2>One</ButtonV2>
+        <ButtonV2>Two</ButtonV2>
+        <ButtonV2>Three</ButtonV2>
       </ButtonGroup>
 
       <ButtonGroup sdsType="secondary" size="medium">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+        <ButtonV2>One</ButtonV2>
+        <ButtonV2>Two</ButtonV2>
+        <ButtonV2>Three</ButtonV2>
       </ButtonGroup>
 
       <ButtonGroup sdsType="primary" size="small">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+        <ButtonV2>One</ButtonV2>
+        <ButtonV2>Two</ButtonV2>
+        <ButtonV2>Three</ButtonV2>
       </ButtonGroup>
 
       <ButtonGroup sdsType="primary" orientation="vertical">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+        <ButtonV2>One</ButtonV2>
+        <ButtonV2>Two</ButtonV2>
+        <ButtonV2>Three</ButtonV2>
       </ButtonGroup>
 
       <ButtonGroup sdsType="secondary" disabled>
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+        <ButtonV2>One</ButtonV2>
+        <ButtonV2>Two</ButtonV2>
+        <ButtonV2>Three</ButtonV2>
       </ButtonGroup>
     </>
   );
