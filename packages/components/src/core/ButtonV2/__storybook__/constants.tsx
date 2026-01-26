@@ -20,6 +20,7 @@ export const BUTTON_EXCLUDED_CONTROLS = [
   "backgroundOnHover",
   "size",
   "children",
+  "backgroundAppearance",
 ];
 
 export const BUTTON_SDS_STYLES = ["solid", "outline", "minimal"];

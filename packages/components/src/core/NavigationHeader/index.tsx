@@ -388,6 +388,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           hasInvertedStyle,
           key,
           onClick: enhancedOnClick,
+          backgroundAppearance,
           sx: {
             ...(buttonProps.props?.sx || {}),
             ...fullWidth,
@@ -396,7 +397,10 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       }
 
       if (typeof buttonProps === "object" && buttonProps !== null) {
-        const buttonPropsObj = buttonProps as ButtonV2Props;
+        const buttonPropsObj = {
+          ...buttonProps,
+          backgroundAppearance,
+        } as ButtonV2Props;
         const isIconButton = isIconOnlyChild(buttonPropsObj.children);
 
         if (isIconButton && dimensions.isNarrow) {

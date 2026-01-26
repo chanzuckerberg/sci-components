@@ -23,6 +23,7 @@ const doNotForwardProps = [
   "sdsSize",
   "backgroundOnHover",
   "iconOnlyChild",
+  "backgroundAppearance",
 ];
 
 type ButtonExtraProps = ButtonV2Props &
@@ -392,18 +393,26 @@ const SmallButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 };
 
 const PrimaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
-  const { variant, backgroundOnHover = true } = props;
+  const {
+    variant,
+    backgroundOnHover = true,
+    backgroundAppearance = "matchBackground",
+  } = props;
   const semanticColors = getSemanticColors(props);
 
   const contentColor =
     variant === "contained"
       ? semanticColors?.base?.textOnFill
-      : semanticColors?.accent?.foreground;
+      : backgroundAppearance === "dark"
+        ? semanticColors?.accent?.foregroundOnDark
+        : semanticColors?.accent?.foreground;
 
   const ornamentColor =
     variant === "contained"
       ? semanticColors?.base?.ornamentOnFill
-      : semanticColors?.accent?.foreground;
+      : backgroundAppearance === "dark"
+        ? semanticColors?.accent?.foregroundOnDark
+        : semanticColors?.accent?.foreground;
 
   const backgroundColor =
     variant === "contained"
@@ -412,17 +421,19 @@ const PrimaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
   const disabledBackgroundColor =
     variant === "contained"
-      ? semanticColors?.base?.fillDisabled
+      ? backgroundAppearance === "dark"
+        ? semanticColors?.base?.fillDisabledOnDark
+        : semanticColors?.base?.fillDisabled
       : "transparent";
 
   const disabledBorder =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.base?.borderSecondary}`
+      ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.base?.borderPrimaryDisabledOnDark : semanticColors?.base?.borderPrimaryDisabled}`
       : "none";
 
   const boxshadow =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.accent?.foreground}`
+      ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.accent?.foregroundOnDark : semanticColors?.accent?.foreground}`
       : "none";
 
   return css`
@@ -437,81 +448,116 @@ const PrimaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     &:hover {
       color: ${variant === "contained"
         ? semanticColors?.base?.textPrimaryInverse
-        : semanticColors?.accent?.foregroundInteraction};
+        : backgroundAppearance === "dark"
+          ? semanticColors?.accent?.foregroundInteractionOnDark
+          : semanticColors?.accent?.foregroundInteraction};
       background-color: ${variant === "contained"
         ? semanticColors?.accent?.fillInteraction
         : variant === "outlined"
-          ? semanticColors?.accent?.surfaceSecondary
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.accent?.surfaceSecondaryOnDark
+            : semanticColors?.accent?.surfaceSecondary
           : backgroundOnHover
-            ? semanticColors?.base?.fillPrimaryInteraction
+            ? backgroundAppearance === "dark"
+              ? semanticColors?.base?.fillPrimaryInteractionOnDark
+              : semanticColors?.base?.fillPrimaryInteraction
             : "transparent"};
-      box-shadow: ${variant === "text"
-        ? "none"
-        : `inset 0 0 0 1px
-        ${semanticColors?.accent?.foregroundInteraction}`};
+      box-shadow: ${variant === "outlined"
+        ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.accent?.foregroundInteractionOnDark : semanticColors?.accent?.foregroundInteraction}`
+        : "none"};
 
       svg {
         color: ${variant === "contained"
           ? semanticColors?.base?.ornamentPrimaryInverse
-          : semanticColors?.accent?.foregroundInteraction};
+          : backgroundAppearance === "dark"
+            ? semanticColors?.accent?.foregroundInteractionOnDark
+            : semanticColors?.accent?.foregroundInteraction};
       }
     }
 
     &:active {
       color: ${variant === "contained"
         ? semanticColors?.base?.textPrimaryInverse
-        : semanticColors?.accent?.foregroundPressed};
+        : backgroundAppearance === "dark"
+          ? semanticColors?.accent?.foregroundPressedOnDark
+          : semanticColors?.accent?.foregroundPressed};
       background-color: ${variant === "contained"
         ? semanticColors?.accent?.fillPressed
         : variant === "outlined"
-          ? semanticColors?.accent?.surfaceSecondary
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.accent?.surfaceSecondaryOnDark
+            : semanticColors?.accent?.surfaceSecondary
           : backgroundOnHover
-            ? semanticColors?.base?.fillPrimaryPressed
+            ? backgroundAppearance === "dark"
+              ? semanticColors?.base?.fillPrimaryPressedOnDark
+              : semanticColors?.base?.fillPrimaryPressed
             : "transparent"};
-      box-shadow: ${variant === "text"
-        ? "none"
-        : `inset 0 0 0 1px ${semanticColors?.accent?.fillPressed}`};
+      box-shadow: ${variant === "outlined"
+        ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.accent?.foregroundPressedOnDark : semanticColors?.accent?.foregroundPressed}`
+        : "none"};
 
       svg {
         color: ${variant === "contained"
           ? semanticColors?.base?.ornamentPrimaryInverse
-          : semanticColors?.accent?.foregroundPressed};
+          : backgroundAppearance === "dark"
+            ? semanticColors?.accent?.foregroundPressedOnDark
+            : semanticColors?.accent?.foregroundPressed};
       }
     }
 
     &:disabled {
-      color: ${semanticColors?.base?.textDisabled};
+      color: ${backgroundAppearance === "dark"
+        ? semanticColors?.base?.textDisabledOnDark
+        : semanticColors?.base?.textDisabled};
       background-color: ${disabledBackgroundColor};
       box-shadow: ${disabledBorder};
 
       svg {
-        color: ${semanticColors?.base?.ornamentDisabled};
+        color: ${backgroundAppearance === "dark"
+          ? semanticColors?.base?.ornamentDisabledOnDark
+          : semanticColors?.base?.ornamentDisabled};
       }
     }
   `;
 };
 
 const SecondaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
-  const { variant, backgroundOnHover = true } = props;
+  const {
+    variant,
+    backgroundOnHover = true,
+    backgroundAppearance = "matchBackground",
+  } = props;
   const semanticColors = getSemanticColors(props);
   const corners = getCorners(props);
 
   const contentColor =
     variant === "text"
-      ? semanticColors?.base?.textSecondary
-      : semanticColors?.base?.textPrimary;
+      ? backgroundAppearance === "dark"
+        ? semanticColors?.base?.textSecondaryOnDark
+        : semanticColors?.base?.textSecondary
+      : backgroundAppearance === "dark"
+        ? semanticColors?.base?.textPrimaryOnDark
+        : semanticColors?.base?.textPrimary;
   const ornamentColor =
     variant === "text"
-      ? semanticColors?.base?.ornamentSecondary
-      : semanticColors?.base?.ornamentPrimary;
+      ? backgroundAppearance === "dark"
+        ? semanticColors?.base?.ornamentSecondaryOnDark
+        : semanticColors?.base?.ornamentSecondary
+      : backgroundAppearance === "dark"
+        ? semanticColors?.base?.ornamentPrimaryOnDark
+        : semanticColors?.base?.ornamentPrimary;
   const backgroundColor =
     variant === "contained"
-      ? semanticColors?.base?.fillSecondary
+      ? backgroundAppearance === "dark"
+        ? semanticColors?.base?.fillSecondaryOnDark
+        : semanticColors?.base?.fillSecondary
       : "transparent";
 
   const disabledBackgroundColor =
     variant === "contained"
-      ? semanticColors?.base?.fillDisabled
+      ? backgroundAppearance === "dark"
+        ? semanticColors?.base?.fillDisabledOnDark
+        : semanticColors?.base?.fillDisabled
       : "transparent";
 
   const disabledBorder =
@@ -521,7 +567,7 @@ const SecondaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
   const boxshadow =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.base?.borderSecondary}`
+      ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.base?.borderPrimaryDisabledOnDark : semanticColors?.base?.borderPrimaryDisabled}`
       : "none";
 
   return css`
@@ -551,20 +597,30 @@ const SecondaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       }
       &::before {
         background-color: ${variant === "contained"
-          ? semanticColors?.base?.fillSecondaryInteraction
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.base?.fillSecondaryInteractionOnDark
+            : semanticColors?.base?.fillSecondaryInteraction
           : variant === "outlined"
-            ? semanticColors?.base?.fillPrimaryInteraction
+            ? backgroundAppearance === "dark"
+              ? semanticColors?.base?.fillPrimaryInteractionOnDark
+              : semanticColors?.base?.fillPrimaryInteraction
             : backgroundOnHover
-              ? semanticColors?.base?.fillPrimaryInteraction
+              ? backgroundAppearance === "dark"
+                ? semanticColors?.base?.fillPrimaryInteractionOnDark
+                : semanticColors?.base?.fillPrimaryInteraction
               : "transparent"};
       }
       background-color: ${backgroundColor};
       box-shadow: ${variant === "outlined"
-        ? `inset 0 0 0 1px ${semanticColors?.base?.borderSecondary}`
+        ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.base?.borderSecondaryOnDark : semanticColors?.base?.borderSecondary}`
         : "none"};
-      color: ${semanticColors?.base?.textPrimary};
+      color: ${backgroundAppearance === "dark"
+        ? semanticColors?.base?.textPrimaryOnDark
+        : semanticColors?.base?.textPrimary};
       svg {
-        color: ${semanticColors?.base?.ornamentPrimary};
+        color: ${backgroundAppearance === "dark"
+          ? semanticColors?.base?.ornamentPrimaryOnDark
+          : semanticColors?.base?.ornamentPrimary};
       }
     }
 
@@ -575,44 +631,62 @@ const SecondaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
       }
       &::before {
         background-color: ${variant === "contained"
-          ? semanticColors?.base?.fillSecondaryPressed
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.base?.fillSecondaryPressedOnDark
+            : semanticColors?.base?.fillSecondaryPressed
           : variant === "outlined"
-            ? semanticColors?.base?.fillPrimaryPressed
+            ? backgroundAppearance === "dark"
+              ? semanticColors?.base?.fillPrimaryPressedOnDark
+              : semanticColors?.base?.fillPrimaryPressed
             : backgroundOnHover
-              ? semanticColors?.base?.fillPrimaryPressed
+              ? backgroundAppearance === "dark"
+                ? semanticColors?.base?.fillPrimaryPressedOnDark
+                : semanticColors?.base?.fillPrimaryPressed
               : "transparent"};
       }
       background-color: ${backgroundColor};
       box-shadow: ${variant === "outlined"
-        ? `inset 0 0 0 1px ${semanticColors?.base?.borderSecondary}`
+        ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.base?.borderSecondaryOnDark : semanticColors?.base?.borderSecondary}`
         : "none"};
     }
 
     &:disabled {
-      color: ${semanticColors?.base?.textDisabled};
+      color: ${backgroundAppearance === "dark"
+        ? semanticColors?.base?.textDisabledOnDark
+        : semanticColors?.base?.textDisabled};
       background-color: ${disabledBackgroundColor};
       box-shadow: ${disabledBorder};
 
       svg {
-        color: ${semanticColors?.base?.ornamentDisabled};
+        color: ${backgroundAppearance === "dark"
+          ? semanticColors?.base?.ornamentDisabledOnDark
+          : semanticColors?.base?.ornamentDisabled};
       }
     }
   `;
 };
 
 const DestructiveButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
-  const { variant, backgroundOnHover = true } = props;
+  const {
+    variant,
+    backgroundOnHover = true,
+    backgroundAppearance = "matchBackground",
+  } = props;
   const semanticColors = getSemanticColors(props);
 
   const contentColor =
     variant === "contained"
       ? semanticColors?.base?.textOnFill
-      : semanticColors?.negative?.foreground;
+      : backgroundAppearance === "dark"
+        ? semanticColors?.negative?.foregroundOnDark
+        : semanticColors?.negative?.foreground;
 
   const ornamentColor =
     variant === "contained"
       ? semanticColors?.base?.ornamentOnFill
-      : semanticColors?.negative?.foreground;
+      : backgroundAppearance === "dark"
+        ? semanticColors?.negative?.foregroundOnDark
+        : semanticColors?.negative?.foreground;
 
   const backgroundColor =
     variant === "contained"
@@ -621,17 +695,19 @@ const DestructiveButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
   const disabledBackgroundColor =
     variant === "contained"
-      ? semanticColors?.base?.fillDisabled
+      ? backgroundAppearance === "dark"
+        ? semanticColors?.base?.fillDisabledOnDark
+        : semanticColors?.base?.fillDisabled
       : "transparent";
 
   const disabledBorder =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.base?.borderSecondary}`
+      ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.base?.borderPrimaryDisabledOnDark : semanticColors?.base?.borderPrimaryDisabled}`
       : "none";
 
   const boxshadow =
     variant === "outlined"
-      ? `inset 0 0 0 1px ${semanticColors?.negative?.foreground}`
+      ? `inset 0 0 0 1px ${backgroundAppearance === "dark" ? semanticColors?.negative?.foregroundOnDark : semanticColors?.negative?.foreground}`
       : "none";
 
   return css`
@@ -645,49 +721,63 @@ const DestructiveButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
 
     &:hover {
       color: ${variant === "text"
-        ? semanticColors?.negative?.foregroundInteraction
+        ? backgroundAppearance === "dark"
+          ? semanticColors?.negative?.foregroundInteractionOnDark
+          : semanticColors?.negative?.foregroundInteraction
         : semanticColors?.base?.textPrimaryInverse};
       background-color: ${variant === "text"
         ? backgroundOnHover
-          ? semanticColors?.base?.fillPrimaryInteraction
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction
           : "transparent"
         : semanticColors?.negative?.fillInteraction};
       box-shadow: none;
 
       svg {
         color: ${variant === "text"
-          ? semanticColors?.negative?.foregroundInteraction
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.negative?.foregroundInteractionOnDark
+            : semanticColors?.negative?.foregroundInteraction
           : semanticColors?.base?.ornamentPrimaryInverse};
       }
     }
 
     &:active {
       color: ${variant === "text"
-        ? semanticColors?.negative?.foregroundPressed
+        ? backgroundAppearance === "dark"
+          ? semanticColors?.negative?.foregroundPressedOnDark
+          : semanticColors?.negative?.foregroundPressed
         : semanticColors?.base?.textPrimaryInverse};
       background-color: ${variant === "text"
         ? backgroundOnHover
-          ? semanticColors?.base?.fillPrimaryPressed
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed
           : "transparent"
         : semanticColors?.negative?.fillPressed};
-      box-shadow: ${variant === "text"
-        ? "none"
-        : `inset 0 0 0 1px ${semanticColors?.negative?.fillPressed}`};
+      box-shadow: none;
 
       svg {
         color: ${variant === "text"
-          ? semanticColors?.negative?.foregroundPressed
+          ? backgroundAppearance === "dark"
+            ? semanticColors?.negative?.foregroundPressedOnDark
+            : semanticColors?.negative?.foregroundPressed
           : semanticColors?.base?.ornamentPrimaryInverse};
       }
     }
 
     &:disabled {
-      color: ${semanticColors?.base?.textDisabled};
+      color: ${backgroundAppearance === "dark"
+        ? semanticColors?.base?.textDisabledOnDark
+        : semanticColors?.base?.textDisabled};
       background-color: ${disabledBackgroundColor};
       box-shadow: ${disabledBorder};
 
       svg {
-        color: ${semanticColors?.base?.ornamentDisabled};
+        color: ${backgroundAppearance === "dark"
+          ? semanticColors?.base?.ornamentDisabledOnDark
+          : semanticColors?.base?.ornamentDisabled};
       }
     }
   `;

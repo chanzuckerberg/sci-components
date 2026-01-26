@@ -1,18 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonV2 /> Default story renders snapshot 1`] = `
-<button
-  class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary css-1uq32os-MuiButtonBase-root-MuiButton-root"
-  tabindex="0"
-  type="button"
+<div
+  class="css-d5dq0j"
 >
-  <span
-    class="css-ll8hvy"
+  <button
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary css-1arqnw-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
   >
-    Label
-  </span>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
-</button>
+    <span
+      class="css-ll8hvy"
+    >
+      Label
+    </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
 `;

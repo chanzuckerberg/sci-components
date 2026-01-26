@@ -19,6 +19,12 @@ export default {
         type: "boolean",
       },
     },
+    backgroundAppearance: {
+      control: {
+        type: INLINE_RADIO,
+      },
+      options: ["matchBackground", "dark"],
+    },
     children: {
       control: {
         type: "text",
@@ -73,6 +79,7 @@ export const Default = {
     sdsType: "primary",
     children: "Label",
     backgroundOnHover: true,
+    backgroundAppearance: "matchBackground",
   },
 };
 
