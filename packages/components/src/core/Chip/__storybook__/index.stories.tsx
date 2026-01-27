@@ -3,7 +3,7 @@ import React from "react";
 import Chip from "../index";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";
-import Button from "src/core/Button";
+import Button from "src/core/ButtonLegacy";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;

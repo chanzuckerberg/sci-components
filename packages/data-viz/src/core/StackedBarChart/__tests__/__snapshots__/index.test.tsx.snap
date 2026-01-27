@@ -294,7 +294,7 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -309,7 +309,7 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -616,7 +616,7 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -631,7 +631,7 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -1161,7 +1161,7 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -1176,7 +1176,7 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -1452,7 +1452,7 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -1467,7 +1467,7 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         type="button"
       >
         <span
-          class="css-ll8hvy"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>

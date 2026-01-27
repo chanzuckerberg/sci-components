@@ -5,10 +5,6 @@
         "type": "\"matchBackground\" | \"dark\"",
         "isRequired": false
       },
-      "backgroundOnHover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
       "children": {
         "type": "ReactNode",
         "isRequired": false,
