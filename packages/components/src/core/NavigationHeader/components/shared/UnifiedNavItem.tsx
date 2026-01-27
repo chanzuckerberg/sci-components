@@ -11,7 +11,7 @@ import {
   fontBodySemiboldL,
   CommonThemeProps,
 } from "src/core/styles";
-import Button, { SdsMinimalButtonProps } from "src/core/Button";
+import Button, { ButtonProps } from "src/core/Button";
 
 interface UnifiedNavItemProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -74,6 +74,7 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
             : "transparent"};
         `}
     width: 100%;
+    height: unset !important;
 
     &:hover {
       ${innerSdsStyle === "drawer"
@@ -102,7 +103,7 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
 
 export const UnifiedNavItem = styled(
   Button as unknown as React.ComponentType<
-    Partial<SdsMinimalButtonProps> & UnifiedNavItemProps
+    Partial<ButtonProps> & UnifiedNavItemProps
   >,
   {
     shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -113,6 +114,7 @@ export const UnifiedNavItem = styled(
   min-width: fit-content;
   border: none;
   background: transparent;
+  height: unset !important;
 
   ${(props: UnifiedNavItemProps) => {
     const { hasInvertedStyle, isNarrow, active, navVariant } = props;
@@ -159,6 +161,10 @@ export const UnifiedNavItem = styled(
               color: ${active ? textActiveColor : textDefaultColor};
               justify-content: flex-start;
               width: fit-content;
+
+              & > span {
+                gap: ${spaces?.xs}px !important;
+              }
             `
           : ""}
 

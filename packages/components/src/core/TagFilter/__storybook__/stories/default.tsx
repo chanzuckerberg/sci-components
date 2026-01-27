@@ -2,7 +2,7 @@ import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
 import { TAG_FILTER_DEFAULT_STYLES } from "../constants";
 import RawTagFilter from "src/core/TagFilter";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 
 export const TagFilter = (props: Args): JSX.Element => {
   const { label } = props;
@@ -15,7 +15,7 @@ export const TagFilter = (props: Args): JSX.Element => {
   return (
     <div style={TAG_FILTER_DEFAULT_STYLES as React.CSSProperties}>
       <div>
-        <ButtonV2
+        <Button
           disabled={visible}
           onClick={handleShowChip}
           sdsStyle="minimal"
@@ -24,7 +24,7 @@ export const TagFilter = (props: Args): JSX.Element => {
           {visible
             ? "Delete the tag by clicking on its icon"
             : "Click to reset"}
-        </ButtonV2>
+        </Button>
       </div>
 
       <div>

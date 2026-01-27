@@ -6,7 +6,7 @@ import { StyledCallout } from "./style";
 import CalloutTitle from "./components/CalloutTitle";
 import CalloutBody from "./components/CalloutBody";
 import CalloutExtraContent from "./components/CalloutExtraContent";
-import ButtonV2 from "../ButtonV2";
+import Button from "../Button";
 
 const SDS_STAGE_OPEN = "open";
 const SDS_STAGE_CLOSED = "closed";
@@ -101,7 +101,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
   const getAction = (collapsed: boolean) => {
     if (sdsStyle === "expandable") {
       return (
-        <ButtonV2
+        <Button
           aria-label={collapsed ? "open" : "close"}
           onClick={() => {
             setStage(collapsed ? SDS_STAGE_OPEN : SDS_STAGE_CLOSED);
@@ -112,11 +112,11 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
           backgroundOnHover={false}
         >
           <Icon sdsIcon={collapsed ? "ChevronDown" : "ChevronUp"} sdsSize="s" />
-        </ButtonV2>
+        </Button>
       );
     } else if (sdsStyle === "dismissible") {
       return (
-        <ButtonV2
+        <Button
           aria-label="Dismiss"
           onClick={handleClose}
           sdsType="secondary"
@@ -125,7 +125,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
           backgroundOnHover={false}
         >
           <Icon sdsIcon="XMark" sdsSize="s" />
-        </ButtonV2>
+        </Button>
       );
     }
 

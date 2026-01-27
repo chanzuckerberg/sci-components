@@ -1,15 +1,15 @@
 import { Args } from "@storybook/react-webpack5";
 import ButtonToggle from "src/core/ButtonToggle";
+import Icon from "src/core/Icon";
 
 export const TestDemo = (props: Args): JSX.Element => {
-  const { icon } = props;
-
   return (
     <ButtonToggle
+      {...props}
       data-testid="button-toggle"
       aria-label="button-toggle"
-      icon={icon}
-      {...props}
+      sdsStyle="outline"
+      startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
     />
   );
 };

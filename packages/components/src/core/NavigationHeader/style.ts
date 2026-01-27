@@ -27,7 +27,7 @@ import styled from "@emotion/styled";
 import Link from "../Link";
 import { SerializedStyles } from "@emotion/react";
 import Accordion from "../Accordion";
-import ButtonV2, { ButtonV2Props } from "../ButtonV2";
+import Button, { ButtonProps } from "../Button";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -155,9 +155,9 @@ export interface ExtraButtonProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
 }
 
-export const StyledHeaderButton = styled(ButtonV2, {
+export const StyledHeaderButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraButtonProps & ButtonV2Props & { isNarrow?: boolean }>`
+})<ExtraButtonProps & ButtonProps & { isNarrow?: boolean }>`
   ${(props) => {
     const { sdsType, hasInvertedStyle } = props;
 
@@ -183,7 +183,7 @@ export const StyledHeaderButton = styled(ButtonV2, {
 `;
 
 const invertedNarrowButtonStyles = (
-  props: ExtraButtonProps & ButtonV2Props
+  props: ExtraButtonProps & ButtonProps
 ): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
@@ -205,9 +205,9 @@ const invertedNarrowButtonStyles = (
   `;
 };
 
-export const StyledNarrowIconButton = styled(ButtonV2, {
+export const StyledNarrowIconButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraButtonProps & ButtonV2Props & { isNarrow?: boolean }>`
+})<ExtraButtonProps & ButtonProps & { isNarrow?: boolean }>`
   ${(props) => {
     const { hasInvertedStyle, isNarrow } = props;
 
@@ -219,7 +219,7 @@ export const StyledNarrowIconButton = styled(ButtonV2, {
 `;
 
 const invertedWideButtonStyles = (
-  props: ExtraButtonProps & ButtonV2Props
+  props: ExtraButtonProps & ButtonProps
 ): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
@@ -239,9 +239,9 @@ const invertedWideButtonStyles = (
   `;
 };
 
-export const StyledWideIconButton = styled(ButtonV2, {
+export const StyledWideIconButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraButtonProps & ButtonV2Props>`
+})<ExtraButtonProps & ButtonProps>`
   ${(props) => {
     const { hasInvertedStyle } = props;
 
@@ -578,10 +578,10 @@ export const StyledDrawerContent = styled("div", {
   }}
 `;
 
-export const StyledNarrowHamburgerMenuButton = styled(ButtonV2, {
+export const StyledNarrowHamburgerMenuButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${(props: ExtraButtonProps & ButtonV2Props) => {
+  ${(props: ExtraButtonProps & ButtonProps) => {
     const { hasInvertedStyle } = props;
     const iconSizes = getIconSizes(props);
 
@@ -954,8 +954,8 @@ export const StyledHoverDrawerColumnHeader = styled("div", {
 `;
 
 export const StyledHoverDrawerItem = styled(
-  ButtonV2 as unknown as React.ComponentType<
-    Partial<ButtonV2Props> &
+  Button as unknown as React.ComponentType<
+    Partial<ButtonProps> &
       ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }
   >,
   {
@@ -1148,7 +1148,7 @@ export const StyledHoverDrawerActions = styled("div", {
   }}
 `;
 
-export const StyledButton = styled(ButtonV2)<ExtraButtonProps>`
+export const StyledButton = styled(Button)<ExtraButtonProps>`
   ${(props) => {
     const { hasInvertedStyle } = props;
 

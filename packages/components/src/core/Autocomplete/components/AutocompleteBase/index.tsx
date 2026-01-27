@@ -20,7 +20,7 @@ import React, {
   useState,
 } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import Icon, { IconProps } from "src/core/Icon";
 import { InputSearchProps } from "src/core/InputSearch";
 import { StyledInputAdornment } from "src/core/InputSearch/style";
@@ -254,7 +254,7 @@ const AutocompleteBase = <
             endAdornment: (
               <StyledInputAdornment position="end">
                 {inputValue && (
-                  <ButtonV2
+                  <Button
                     // (masoudmanson): This is to ensure that the clear button won't be focusable
                     // when the search prop is set to false.
                     tabIndex={search ? 0 : -1}
@@ -269,7 +269,7 @@ const AutocompleteBase = <
                     backgroundOnHover={false}
                   >
                     <Icon sdsIcon="XMarkCircle" sdsSize="s" />
-                  </ButtonV2>
+                  </Button>
                 )}
               </StyledInputAdornment>
             ),
@@ -281,7 +281,7 @@ const AutocompleteBase = <
             inputProps: params.inputProps,
             startAdornment: (
               <StyledInputAdornment position="start">
-                <ButtonV2
+                <Button
                   aria-label="Search Button"
                   // (masoudmanson): This is to ensure that the search button won't be focusable
                   // when the search prop is set to false.
@@ -294,7 +294,7 @@ const AutocompleteBase = <
                   backgroundOnHover={false}
                 >
                   <Icon sdsIcon="Search" sdsSize="s" />
-                </ButtonV2>
+                </Button>
               </StyledInputAdornment>
             ),
           }}

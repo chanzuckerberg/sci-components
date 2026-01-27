@@ -1,6 +1,10 @@
 {
   "ButtonGroup": {
     "props": {
+      "backgroundAppearance": {
+        "type": "any",
+        "isRequired": false
+      },
       "disabled": {
         "type": "any",
         "isRequired": false

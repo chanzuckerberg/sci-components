@@ -10,7 +10,7 @@ import {
 } from "../styles";
 import { css } from "@emotion/react";
 import { ContentCardProps } from "./index";
-import Button, { SdsMinimalButtonProps } from "../Button";
+import Button, { ButtonProps } from "../Button";
 
 type CardExtraProps = Partial<ContentCardProps> & CommonThemeProps;
 
@@ -170,7 +170,7 @@ type CardActionAreaExtraProps = {
   imagePosition?: ContentCardProps["imagePosition"];
   cardSdsType?: ContentCardProps["sdsType"];
   visualElementType?: ContentCardProps["visualElementType"];
-} & SdsMinimalButtonProps &
+} & ButtonProps &
   CommonThemeProps;
 
 export const StyledCardActionArea = styled(Button, {

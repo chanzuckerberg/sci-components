@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material";
 import { Args } from "@storybook/react-webpack5";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import Icon from "src/core/Icon";
 import { getSemanticColors } from "src/core/styles";
 import RawTooltip from "src/core/Tooltip";
@@ -43,13 +43,13 @@ export const Tooltip = (props: Args): JSX.Element => {
         }}
       >
         <RawTooltip title={title} {...props}>
-          <ButtonV2
+          <Button
             aria-label="tooltip test button"
             sdsStyle="minimal"
             size="large"
           >
             <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
-          </ButtonV2>
+          </Button>
         </RawTooltip>
       </div>
     </div>

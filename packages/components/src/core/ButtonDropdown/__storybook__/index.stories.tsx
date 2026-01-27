@@ -5,16 +5,26 @@ import {
   BUTTON_DROPDOWN_EXCLUDED_CONTROLS,
   BUTTON_DROPDOWN_ICON_LABELS,
   BUTTON_DROPDOWN_ICON_OPTIONS,
-  BUTTON_DROPDOWN_TEXT,
 } from "./constants";
 import { ButtonDropdown } from "./stories/default";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
+    backgroundAppearance: {
+      control: { type: INLINE_RADIO },
+      options: ["matchBackground", "dark"],
+    },
+    backgroundOnHover: {
+      control: { type: "boolean" },
+    },
+    children: {
+      control: { type: "text" },
+    },
     disabled: {
       control: { type: "boolean" },
     },
-    icon: {
+    startIcon: {
       control: {
         labels: BUTTON_DROPDOWN_ICON_LABELS,
         type: "select",
@@ -22,38 +32,40 @@ export default {
       mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
       options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
-    sdsSize: {
+    size: {
       control: {
-        type: "radio",
+        type: INLINE_RADIO,
       },
-      if: { arg: "sdsStyle", eq: "icon" },
       options: ["small", "medium", "large"],
     },
     sdsStyle: {
-      control: { type: "radio" },
-      options: ["rounded", "square", "icon"],
+      control: { type: INLINE_RADIO },
+      options: ["solid", "outline", "minimal"],
       required: true,
     },
     sdsType: {
-      control: { type: "radio" },
-      options: ["primary", "secondary", "tertiary", "destructive"],
+      control: { type: INLINE_RADIO },
+      options: ["primary", "secondary"],
       required: true,
     },
   },
   component: ButtonDropdown,
-  tags: ["deprecated"],
-  title: "Components/Buttons/Legacy/ButtonDropdown",
+  tags: ["beta"],
+  title: "Components/Buttons/ButtonDropdown",
 } as Meta;
 
 // Default
 
 export const Default = {
   args: {
+    backgroundAppearance: "matchBackground",
+    backgroundOnHover: true,
+    children: "Label",
     disabled: false,
-    icon: "Download",
+    startIcon: BUTTON_DROPDOWN_ICON_OPTIONS[0],
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
-    sdsSize: "medium",
-    sdsStyle: "square",
+    size: "large",
+    sdsStyle: "solid",
     sdsType: "primary",
   },
 };
@@ -62,10 +74,12 @@ export const Default = {
 
 export const Test = {
   args: {
+    backgroundAppearance: "matchBackground",
     disabled: false,
-    icon: <Icon sdsIcon="Download" sdsSize="s" />,
+    startIcon: <Icon sdsIcon="Download" sdsSize="s" />,
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
-    sdsStyle: "rounded",
+    sdsStyle: "solid",
+    size: "large",
     sdsType: "primary",
   },
   parameters: {
@@ -78,9 +92,11 @@ export const Test = {
   },
   render: (props: Args): JSX.Element => {
     return (
-      <ButtonDropdown data-testid="button-dropdown" {...props}>
-        {BUTTON_DROPDOWN_TEXT}
-      </ButtonDropdown>
+      <ButtonDropdown
+        {...props}
+        aria-label="button-dropdown"
+        data-testid="button-dropdown"
+      />
     );
   },
 };

@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import styled from "@emotion/styled";
 import { css, SerializedStyles } from "@emotion/react";
 import { ButtonGroup, buttonGroupClasses, buttonClasses } from "@mui/material";
@@ -22,7 +23,7 @@ type ButtonGroupExtraProps = ButtonGroupProps & CommonThemeProps;
 
 /**
  * General styles for the ButtonGroup component
- * Note: We use box-shadow instead of border to control component height
+ * Uses CSS borders for styling (with box-sizing: border-box to maintain dimensions)
  */
 const GeneralButtonGroupStyles = (
   props: ButtonGroupExtraProps
@@ -30,28 +31,14 @@ const GeneralButtonGroupStyles = (
   const corners = getCorners(props);
 
   return css`
-    /* Remove all MUI default borders and margins - we use box-shadow instead */
     .${buttonGroupClasses.grouped} {
-      border: none;
+      box-sizing: border-box;
       border-radius: ${corners?.l}px;
       min-width: fit-content;
       margin-left: 0;
       margin-top: 0;
 
-      &:hover {
-        border: none;
-      }
-
-      &:active {
-        border: none;
-      }
-
-      &:disabled {
-        border: none;
-      }
-
       &:not(:last-of-type) {
-        border: none;
         margin-right: 0;
         margin-bottom: 0;
       }
@@ -81,6 +68,17 @@ const GeneralButtonGroupStyles = (
       border-radius: 0;
     }
 
+    /* Non-first horizontal buttons - no left border to avoid double borders */
+    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type) {
+      border-left: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-left: none;
+      }
+    }
+
     /* Vertical orientation */
     .${buttonGroupClasses.groupedVertical}:first-of-type {
       border-bottom-left-radius: 0;
@@ -97,6 +95,17 @@ const GeneralButtonGroupStyles = (
       ) {
       border-radius: 0;
     }
+
+    /* Non-first vertical buttons - no top border to avoid double borders */
+    .${buttonGroupClasses.groupedVertical}:not(:first-of-type) {
+      border-top: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-top: none;
+      }
+    }
   `;
 };
 
@@ -105,6 +114,7 @@ const GeneralButtonGroupStyles = (
  * Wide: 32px height, fontBodyS (14px), icon S (16x16), padding spaceM (12px), gap spaceS (8px)
  * Wide icon-only: 10px (custom) padding → 36px width
  * Narrow: 40px height, fontBodyL (16px), icon S (16x16), padding spaceL (16px), gap spaceS (8px)
+ * Narrow text+icon: 14px padding
  * Narrow icon-only: 14px (custom) padding → 44px width
  */
 const LargeButtonGroupStyles = (
@@ -172,6 +182,14 @@ const LargeButtonGroupStyles = (
         padding: ${iconOnlyPaddingNarrow};
       }
     }
+
+    /* Text + icon buttons: has startIcon or endIcon */
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}),
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.endIcon}) {
+      ${theme?.breakpoints?.down("md")} {
+        padding: 0 14px;
+      }
+    }
   `;
 };
 
@@ -181,6 +199,7 @@ const LargeButtonGroupStyles = (
  * Wide icon-only: 10px (custom) padding → 32px width
  * Narrow: 32px height, fontBodyM (14px), icon S (16x16), padding spaceM (12px), gap spaceS (8px)
  * Narrow icon-only: 10px (custom) padding → 36px width
+ * Narrow text+icon: 10px padding
  */
 const MediumButtonGroupStyles = (
   props: ButtonGroupExtraProps
@@ -247,12 +266,19 @@ const MediumButtonGroupStyles = (
         padding: ${iconOnlyPaddingNarrow};
       }
     }
+
+    /* Text + icon buttons: has startIcon or endIcon - ensure spaceS (8px) padding on wide screen */
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}),
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.endIcon}) {
+      padding: 0 10px;
+    }
   `;
 };
 
 /**
  * Small size styles based on Figma specs:
  * Wide: 24px height, fontBodyXxxs (11px), icon XXS (10x10), padding spaceS (8px), gap spaceXXS (4px)
+ * Wide text+icon: spaceS (8px) padding
  * Wide icon-only: 8px padding (from Figma button 26x24 with 10x10 icon) → 26px width
  * Narrow: 28px height, fontBodyXS (13px), icon XS (12x12), padding spaceS (8px), gap spaceXS (6px)
  * Narrow icon-only: 10px (custom) padding → 32px width
@@ -322,6 +348,12 @@ const SmallButtonGroupStyles = (
         padding: ${iconOnlyPaddingNarrow};
       }
     }
+
+    /* Text + icon buttons: has startIcon or endIcon - ensure spaceS (8px) padding on wide screen */
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}),
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.endIcon}) {
+      padding: 0 ${spaces?.s}px;
+    }
   `;
 };
 
@@ -334,35 +366,52 @@ const SmallButtonGroupStyles = (
  *
  * Border logic for horizontal ButtonGroup:
  * - First button: all borders (top, bottom, left, right)
- * - Middle buttons: only top and bottom borders
- * - Last button: all borders (top, bottom, left, right)
+ * - Non-first buttons: no left border (to avoid double borders)
+ *
+ * Disabled border logic:
+ * - Horizontal: top/bottom gray, left/right stay active (except outer edges)
+ * - Vertical: left/right gray, top/bottom stay active (except outer edges)
  */
 const PrimaryButtonGroupStyles = (
   props: ButtonGroupExtraProps
 ): SerializedStyles => {
+  const { backgroundAppearance } = props;
   const semanticColors = getSemanticColors(props);
 
-  const defaultColor = semanticColors?.accent?.foreground;
-  const hoverColor = semanticColors?.accent?.foregroundInteraction;
-  const pressedColor = semanticColors?.accent?.foregroundPressed;
-  const disabledColor = semanticColors?.base?.borderPrimaryDisabled;
-
-  // Box-shadow for all borders (first button)
-  const allBorders = (color: string | undefined) => `inset 0 0 0 1px ${color}`;
-
-  // Box-shadow for top, bottom, right borders (horizontal: middle and last buttons - no left)
-  const topBottomRightBorders = (color: string | undefined) =>
-    `inset 0 1px 0 0 ${color}, inset 0 -1px 0 0 ${color}, inset -1px 0 0 0 ${color}`;
-
-  // Box-shadow for left, right, bottom borders (vertical: middle and last buttons - no top)
-  const leftRightBottomBorders = (color: string | undefined) =>
-    `inset 1px 0 0 0 ${color}, inset -1px 0 0 0 ${color}, inset 0 -1px 0 0 ${color}`;
+  const defaultColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.accent?.foregroundOnDark
+      : semanticColors?.accent?.foreground;
+  const hoverColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.accent?.foregroundInteractionOnDark
+      : semanticColors?.accent?.foregroundInteraction;
+  const pressedColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.accent?.foregroundPressedOnDark
+      : semanticColors?.accent?.foregroundPressed;
+  const disabledColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.borderPrimaryDisabledOnDark
+      : semanticColors?.base?.borderPrimaryDisabled;
+  const textDisabledColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.textDisabledOnDark
+      : semanticColors?.base?.textDisabled;
+  const ornamentDisabledColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.ornamentDisabledOnDark
+      : semanticColors?.base?.ornamentDisabled;
+  const hoverBgColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.accent?.surfaceSecondaryOnDark
+      : semanticColors?.accent?.surfaceSecondary;
 
   return css`
-    /* First button - all borders (horizontal) */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type {
+    /* All buttons - base styles */
+    .${buttonGroupClasses.grouped} {
       background-color: transparent;
-      box-shadow: ${allBorders(defaultColor)};
+      border: 1px solid ${defaultColor};
       color: ${defaultColor};
 
       svg {
@@ -371,8 +420,8 @@ const PrimaryButtonGroupStyles = (
 
       &:hover {
         color: ${hoverColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${allBorders(hoverColor)};
+        background-color: ${hoverBgColor};
+        border-color: ${hoverColor};
 
         svg {
           color: ${hoverColor};
@@ -381,154 +430,113 @@ const PrimaryButtonGroupStyles = (
 
       &:active {
         color: ${pressedColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${allBorders(pressedColor)};
+        background-color: ${hoverBgColor};
+        border-color: ${pressedColor};
 
         svg {
           color: ${pressedColor};
-        }
-      }
-
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${allBorders(disabledColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
         }
       }
 
       ${focusVisibleA11yStyle(props)}
     }
 
-    /* Middle and last buttons - top, bottom, right borders (horizontal - no left) */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type) {
+    /* ===== HORIZONTAL ORIENTATION ===== */
+
+    /* First button disabled (horizontal) - left edge gray, right stays active */
+    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled {
+      color: ${textDisabledColor};
       background-color: transparent;
-      box-shadow: ${topBottomRightBorders(defaultColor)};
-      color: ${defaultColor};
+      border: 1px solid ${defaultColor};
+      border-top-color: ${disabledColor};
+      border-bottom-color: ${disabledColor};
+      border-left-color: ${disabledColor};
 
       svg {
-        color: ${defaultColor};
+        color: ${ornamentDisabledColor};
       }
-
-      &:hover {
-        color: ${hoverColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${topBottomRightBorders(hoverColor)};
-
-        svg {
-          color: ${hoverColor};
-        }
-      }
-
-      &:active {
-        color: ${pressedColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${topBottomRightBorders(pressedColor)};
-
-        svg {
-          color: ${pressedColor};
-        }
-      }
-
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${topBottomRightBorders(disabledColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
-        }
-      }
-
-      ${focusVisibleA11yStyle(props)}
     }
 
-    /* First button - all borders (vertical) */
-    .${buttonGroupClasses.groupedVertical}:first-of-type {
-      background-color: transparent;
-      box-shadow: ${allBorders(defaultColor)};
-      color: ${defaultColor};
-
-      svg {
-        color: ${defaultColor};
-      }
-
-      &:hover {
-        color: ${hoverColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${allBorders(hoverColor)};
-
-        svg {
-          color: ${hoverColor};
-        }
-      }
-
-      &:active {
-        color: ${pressedColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${allBorders(pressedColor)};
-
-        svg {
-          color: ${pressedColor};
-        }
-      }
-
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${allBorders(disabledColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
-        }
-      }
-
-      ${focusVisibleA11yStyle(props)}
+    /* First button disabled when next sibling is also disabled - all borders gray */
+    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-right-color: ${disabledColor};
     }
 
-    /* Middle and last buttons - left, right, bottom borders (vertical - no top) */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type) {
+    /* Non-first buttons disabled (horizontal) - right stays active */
+    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled {
+      color: ${textDisabledColor};
       background-color: transparent;
-      box-shadow: ${leftRightBottomBorders(defaultColor)};
-      color: ${defaultColor};
+      border: 1px solid ${defaultColor};
+      border-left: none;
+      border-top-color: ${disabledColor};
+      border-bottom-color: ${disabledColor};
 
       svg {
-        color: ${defaultColor};
+        color: ${ornamentDisabledColor};
       }
+    }
 
-      &:hover {
-        color: ${hoverColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${leftRightBottomBorders(hoverColor)};
+    /* Non-first button disabled when next sibling is also disabled - right border gray */
+    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-right-color: ${disabledColor};
+    }
 
-        svg {
-          color: ${hoverColor};
-        }
+    /* Last button disabled (horizontal) - right edge gray */
+    .${buttonGroupClasses.groupedHorizontal}:last-of-type:disabled {
+      border-right-color: ${disabledColor};
+    }
+
+    /* ===== VERTICAL ORIENTATION ===== */
+
+    /* First button disabled (vertical) - top edge gray, bottom stays active */
+    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled {
+      color: ${textDisabledColor};
+      background-color: transparent;
+      border: 1px solid ${defaultColor};
+      border-left-color: ${disabledColor};
+      border-right-color: ${disabledColor};
+      border-top-color: ${disabledColor};
+
+      svg {
+        color: ${ornamentDisabledColor};
       }
+    }
 
-      &:active {
-        color: ${pressedColor};
-        background-color: ${semanticColors?.accent?.surfaceSecondary};
-        box-shadow: ${leftRightBottomBorders(pressedColor)};
+    /* First button disabled when next sibling is also disabled - all borders gray */
+    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-bottom-color: ${disabledColor};
+    }
 
-        svg {
-          color: ${pressedColor};
-        }
+    /* Non-first buttons disabled (vertical) - bottom stays active */
+    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled {
+      color: ${textDisabledColor};
+      background-color: transparent;
+      border: 1px solid ${defaultColor};
+      border-top: none;
+      border-left-color: ${disabledColor};
+      border-right-color: ${disabledColor};
+
+      svg {
+        color: ${ornamentDisabledColor};
       }
+    }
 
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${leftRightBottomBorders(disabledColor)};
+    /* Non-first button disabled when next sibling is also disabled - bottom border gray */
+    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-bottom-color: ${disabledColor};
+    }
 
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
-        }
-      }
-
-      ${focusVisibleA11yStyle(props)}
+    /* Last button disabled (vertical) - bottom edge gray */
+    .${buttonGroupClasses.groupedVertical}:last-of-type:disabled {
+      border-bottom-color: ${disabledColor};
     }
   `;
 };
@@ -542,198 +550,179 @@ const PrimaryButtonGroupStyles = (
  *
  * Border logic for horizontal ButtonGroup:
  * - First button: all borders (top, bottom, left, right)
- * - Middle and last buttons: top, bottom, right borders (no left)
+ * - Non-first buttons: no left border (to avoid double borders)
+ *
+ * Disabled border logic:
+ * - Horizontal: top/bottom gray, left/right stay active (except outer edges)
+ * - Vertical: left/right gray, top/bottom stay active (except outer edges)
  */
 const SecondaryButtonGroupStyles = (
   props: ButtonGroupExtraProps
 ): SerializedStyles => {
+  const { backgroundAppearance } = props;
   const semanticColors = getSemanticColors(props);
 
-  const defaultColor = semanticColors?.base?.borderSecondary;
-  const disabledColor = semanticColors?.base?.borderPrimaryDisabled;
-
-  // Box-shadow for all borders (first button)
-  const allBorders = (color: string | undefined) => `inset 0 0 0 1px ${color}`;
-
-  // Box-shadow for top, bottom, right borders (horizontal: middle and last buttons - no left)
-  const topBottomRightBorders = (color: string | undefined) =>
-    `inset 0 1px 0 0 ${color}, inset 0 -1px 0 0 ${color}, inset -1px 0 0 0 ${color}`;
-
-  // Box-shadow for left, right, bottom borders (vertical: middle and last buttons - no top)
-  const leftRightBottomBorders = (color: string | undefined) =>
-    `inset 1px 0 0 0 ${color}, inset -1px 0 0 0 ${color}, inset 0 -1px 0 0 ${color}`;
+  const defaultColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.borderSecondaryOnDark
+      : semanticColors?.base?.borderSecondary;
+  const disabledColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.borderPrimaryDisabledOnDark
+      : semanticColors?.base?.borderPrimaryDisabled;
+  const textColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.textPrimaryOnDark
+      : semanticColors?.base?.textPrimary;
+  const textDisabledColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.textDisabledOnDark
+      : semanticColors?.base?.textDisabled;
+  const ornamentColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.ornamentPrimaryOnDark
+      : semanticColors?.base?.ornamentPrimary;
+  const ornamentDisabledColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.ornamentDisabledOnDark
+      : semanticColors?.base?.ornamentDisabled;
+  const hoverBgColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.fillPrimaryInteractionOnDark
+      : semanticColors?.base?.fillPrimaryInteraction;
+  const pressedBgColor =
+    backgroundAppearance === "dark"
+      ? semanticColors?.base?.fillPrimaryPressedOnDark
+      : semanticColors?.base?.fillPrimaryPressed;
 
   return css`
-    /* First button - all borders (horizontal) */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type {
+    /* All buttons - base styles */
+    .${buttonGroupClasses.grouped} {
       background-color: transparent;
-      box-shadow: ${allBorders(defaultColor)};
-      color: ${semanticColors?.base?.textPrimary};
+      border: 1px solid ${defaultColor};
+      color: ${textColor};
 
       svg {
-        color: ${semanticColors?.base?.ornamentPrimary};
+        color: ${ornamentColor};
       }
 
       &:hover {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
-        box-shadow: ${allBorders(defaultColor)};
+        color: ${textColor};
+        background-color: ${hoverBgColor};
 
         svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
+          color: ${ornamentColor};
         }
       }
 
       &:active {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryPressed};
-        box-shadow: ${allBorders(defaultColor)};
+        color: ${textColor};
+        background-color: ${pressedBgColor};
 
         svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
-      }
-
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${allBorders(disabledColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
+          color: ${ornamentColor};
         }
       }
 
       ${focusVisibleA11yStyle(props)}
     }
 
-    /* Middle and last buttons - top, bottom, right borders (horizontal - no left) */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type) {
+    /* ===== HORIZONTAL ORIENTATION ===== */
+
+    /* First button disabled (horizontal) - left edge gray, right stays active */
+    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled {
+      color: ${textDisabledColor};
       background-color: transparent;
-      box-shadow: ${topBottomRightBorders(defaultColor)};
-      color: ${semanticColors?.base?.textPrimary};
+      border: 1px solid ${defaultColor};
+      border-top-color: ${disabledColor};
+      border-bottom-color: ${disabledColor};
+      border-left-color: ${disabledColor};
 
       svg {
-        color: ${semanticColors?.base?.ornamentPrimary};
+        color: ${ornamentDisabledColor};
       }
-
-      &:hover {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
-        box-shadow: ${topBottomRightBorders(defaultColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
-      }
-
-      &:active {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryPressed};
-        box-shadow: ${topBottomRightBorders(defaultColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
-      }
-
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${topBottomRightBorders(disabledColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
-        }
-      }
-
-      ${focusVisibleA11yStyle(props)}
     }
 
-    /* First button - all borders (vertical) */
-    .${buttonGroupClasses.groupedVertical}:first-of-type {
-      background-color: transparent;
-      box-shadow: ${allBorders(defaultColor)};
-      color: ${semanticColors?.base?.textPrimary};
-
-      svg {
-        color: ${semanticColors?.base?.ornamentPrimary};
-      }
-
-      &:hover {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
-        box-shadow: ${allBorders(defaultColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
-      }
-
-      &:active {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryPressed};
-        box-shadow: ${allBorders(defaultColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
-      }
-
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${allBorders(disabledColor)};
-
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
-        }
-      }
-
-      ${focusVisibleA11yStyle(props)}
+    /* First button disabled when next sibling is also disabled - all borders gray */
+    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-right-color: ${disabledColor};
     }
 
-    /* Middle and last buttons - left, right, bottom borders (vertical - no top) */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type) {
+    /* Non-first buttons disabled (horizontal) - right stays active */
+    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled {
+      color: ${textDisabledColor};
       background-color: transparent;
-      box-shadow: ${leftRightBottomBorders(defaultColor)};
-      color: ${semanticColors?.base?.textPrimary};
+      border: 1px solid ${defaultColor};
+      border-left: none;
+      border-top-color: ${disabledColor};
+      border-bottom-color: ${disabledColor};
 
       svg {
-        color: ${semanticColors?.base?.ornamentPrimary};
+        color: ${ornamentDisabledColor};
       }
+    }
 
-      &:hover {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
-        box-shadow: ${leftRightBottomBorders(defaultColor)};
+    /* Non-first button disabled when next sibling is also disabled - right border gray */
+    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-right-color: ${disabledColor};
+    }
 
-        svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
+    /* Last button disabled (horizontal) - right edge gray */
+    .${buttonGroupClasses.groupedHorizontal}:last-of-type:disabled {
+      border-right-color: ${disabledColor};
+    }
+
+    /* ===== VERTICAL ORIENTATION ===== */
+
+    /* First button disabled (vertical) - top edge gray, bottom stays active */
+    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled {
+      color: ${textDisabledColor};
+      background-color: transparent;
+      border: 1px solid ${defaultColor};
+      border-left-color: ${disabledColor};
+      border-right-color: ${disabledColor};
+      border-top-color: ${disabledColor};
+
+      svg {
+        color: ${ornamentDisabledColor};
       }
+    }
 
-      &:active {
-        color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillPrimaryPressed};
-        box-shadow: ${leftRightBottomBorders(defaultColor)};
+    /* First button disabled when next sibling is also disabled - all borders gray */
+    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-bottom-color: ${disabledColor};
+    }
 
-        svg {
-          color: ${semanticColors?.base?.ornamentPrimary};
-        }
+    /* Non-first buttons disabled (vertical) - bottom stays active */
+    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled {
+      color: ${textDisabledColor};
+      background-color: transparent;
+      border: 1px solid ${defaultColor};
+      border-top: none;
+      border-left-color: ${disabledColor};
+      border-right-color: ${disabledColor};
+
+      svg {
+        color: ${ornamentDisabledColor};
       }
+    }
 
-      &:disabled {
-        color: ${semanticColors?.base?.textDisabled};
-        background-color: transparent;
-        box-shadow: ${leftRightBottomBorders(disabledColor)};
+    /* Non-first button disabled when next sibling is also disabled - bottom border gray */
+    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled:has(
+        + .${buttonGroupClasses.grouped}:disabled
+      ) {
+      border-bottom-color: ${disabledColor};
+    }
 
-        svg {
-          color: ${semanticColors?.base?.ornamentDisabled};
-        }
-      }
-
-      ${focusVisibleA11yStyle(props)}
+    /* Last button disabled (vertical) - bottom edge gray */
+    .${buttonGroupClasses.groupedVertical}:last-of-type:disabled {
+      border-bottom-color: ${disabledColor};
     }
   `;
 };

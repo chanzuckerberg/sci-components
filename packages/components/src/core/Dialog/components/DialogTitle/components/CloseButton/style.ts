@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import { CommonThemeProps, getIconSizes, getSpaces } from "src/core/styles";
 
-export const StyledButton = styled(ButtonV2)`
+export const StyledButton = styled(Button)`
   position: absolute;
   height: unset;
 

@@ -1,4 +1,4 @@
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import { StyledPanelHeaderClose } from "./style";
 import Icon from "src/core/Icon";
 
@@ -15,7 +15,7 @@ const PanelHeaderClose = (props: PanelHeaderCloseProps) => {
       {CloseButtonComponent ? (
         CloseButtonComponent
       ) : (
-        <ButtonV2
+        <Button
           sdsStyle="minimal"
           sdsType="secondary"
           aria-label="Panel Toggle"
@@ -23,7 +23,7 @@ const PanelHeaderClose = (props: PanelHeaderCloseProps) => {
           backgroundOnHover={false}
         >
           <Icon sdsIcon="XMark" sdsSize="l" />
-        </ButtonV2>
+        </Button>
       )}
     </StyledPanelHeaderClose>
   );

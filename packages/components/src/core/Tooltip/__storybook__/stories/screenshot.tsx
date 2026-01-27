@@ -9,6 +9,7 @@ import {
 } from "../constants";
 import RawTooltip from "src/core/Tooltip";
 import Button from "src/core/Button";
+import Icon from "src/core/Icon";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   // loop through all SDS_STYLES
@@ -200,12 +201,13 @@ export const ScreenshotTestDemo = (): JSX.Element => {
                   >
                     <Button
                       aria-label="tooltip test button"
-                      sdsStyle="icon"
-                      sdsSize="medium"
-                      icon="ExclamationMarkCircle"
-                      sdsType="tertiary"
+                      sdsStyle="minimal"
+                      size="large"
+                      sdsType="secondary"
                       tabIndex={0}
-                    ></Button>
+                    >
+                      <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+                    </Button>
                   </RawTooltip>
                 </>
               </div>

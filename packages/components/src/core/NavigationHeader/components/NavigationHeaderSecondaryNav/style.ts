@@ -11,7 +11,7 @@ import {
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Tag from "src/core/Tag";
-import Button, { SdsMinimalButtonProps } from "src/core/Button";
+import Button, { ButtonProps } from "src/core/Button";
 
 export type StyledTextItemProps = ExtraHeaderProps & {
   open: boolean;
@@ -52,7 +52,7 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
 
 export const StyledTextItem = styled(
   Button as unknown as React.ComponentType<
-    Partial<SdsMinimalButtonProps> & StyledTextItemProps
+    Partial<ButtonProps> & StyledTextItemProps
   >,
   {
     shouldForwardProp: (prop: string) =>

@@ -1,6 +1,6 @@
 import Icon from "src/core/Icon";
 import Tag from "src/core/Tag";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import {
   ButtonIconsGroupBottom,
   ButtonIconsGroupRight,
@@ -55,38 +55,33 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = [
     key="componentSlotRight-1"
   />,
   <ButtonIconsGroupRight key="componentSlotRight-2">
-    <ButtonV2
+    <Button
       aria-label="Bar Chart Vertical 4"
       size="large"
       sdsType="primary"
       sdsStyle="minimal"
     >
       <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
-      aria-label="Copy"
-      sdsType="primary"
-      sdsStyle="minimal"
-      size="large"
-    >
+    </Button>
+    <Button aria-label="Copy" sdsType="primary" sdsStyle="minimal" size="large">
       <Icon sdsIcon="Copy" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
+    </Button>
+    <Button
       aria-label="Search Lines Horizontal 3"
       size="large"
       sdsType="primary"
       sdsStyle="minimal"
     >
       <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
+    </Button>
+    <Button
       aria-label="Download"
       size="large"
       sdsType="primary"
       sdsStyle="minimal"
     >
       <Icon sdsIcon="Download" sdsSize="s" />
-    </ButtonV2>
+    </Button>
   </ButtonIconsGroupRight>,
 ];
 
@@ -119,7 +114,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
     key="componentSlotBottom-2"
     style={{ display: "flex", gap: "4px" }}
   >
-    <ButtonV2
+    <Button
       aria-label="Bar Chart Vertical 4"
       size="large"
       sdsType="secondary"
@@ -127,8 +122,8 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       backgroundOnHover={false}
     >
       <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
+    </Button>
+    <Button
       aria-label="Copy"
       size="large"
       sdsType="secondary"
@@ -136,8 +131,8 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       backgroundOnHover={false}
     >
       <Icon sdsIcon="Copy" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
+    </Button>
+    <Button
       aria-label="Search Lines Horizontal 3"
       size="large"
       sdsType="secondary"
@@ -145,8 +140,8 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       backgroundOnHover={false}
     >
       <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
+    </Button>
+    <Button
       aria-label="Tree Horizontal"
       size="large"
       sdsType="secondary"
@@ -154,8 +149,8 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       backgroundOnHover={false}
     >
       <Icon sdsIcon="TreeHorizontal" sdsSize="s" />
-    </ButtonV2>
-    <ButtonV2
+    </Button>
+    <Button
       aria-label="Download"
       size="large"
       sdsType="secondary"
@@ -163,7 +158,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
       backgroundOnHover={false}
     >
       <Icon sdsIcon="Download" sdsSize="s" />
-    </ButtonV2>
+    </Button>
   </ButtonIconsGroupBottom>,
 ];
 

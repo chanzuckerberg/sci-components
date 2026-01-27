@@ -1,25 +1,46 @@
 {
   "ButtonToggle": {
     "props": {
+      "backgroundAppearance": {
+        "type": "\"matchBackground\" | \"dark\"",
+        "isRequired": false
+      },
+      "backgroundOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
       "disabled": {
         "type": "\"false\" | \"true\"",
         "isRequired": false,
-        "description": "If `true`, the component is disabled."
+        "description": "If `true`, the component is disabled.",
+        "defaultValue": "false\nfalse"
       },
-      "icon": {
+      "startIcon": {
         "type": "ReactElement",
-        "isRequired": true
+        "isRequired": true,
+        "description": "Element placed before the children."
       },
-      "sdsSize": {
+      "size": {
         "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false,
+        "description": "The size of the component.\n`small` is equivalent to the dense button styling.",
+        "defaultValue": "medium"
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"destructive\"",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"outline\" | \"solid\" | \"minimal\"",
         "isRequired": false
       },
       "sdsStage": {
         "type": "\"off\" | \"on\"",
-        "isRequired": false
-      },
-      "sdsType": {
-        "type": "\"primary\" | \"secondary\"",
         "isRequired": false
       }
     }

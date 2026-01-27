@@ -9,7 +9,7 @@ import {
   getSpaces,
   getIconSizes,
 } from "src/core/styles";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 
 const doNotForwardProps = [
   "hasInvertedStyle",
@@ -20,7 +20,7 @@ const doNotForwardProps = [
   "sdsStyle",
 ];
 
-export const StyledDrawerNavItem = styled(ButtonV2, {
+export const StyledDrawerNavItem = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(
@@ -50,7 +50,7 @@ export const StyledDrawerNavItem = styled(ButtonV2, {
       gap: ${spaces?.l}px !important;
       padding: ${spaces?.s}px 0 !important;
 
-      /* Override the gap in ButtonV2's inner StyledChildren span */
+      /* Override the gap in Button's inner StyledChildren span */
       & > span {
         gap: ${spaces?.l}px !important;
       }

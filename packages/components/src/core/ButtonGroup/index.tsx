@@ -8,12 +8,12 @@ import React, {
 } from "react";
 import { StyledButtonGroup } from "./style";
 import { ButtonGroupProps } from "./ButtonGroup.types";
-import { isIconOnlyChild } from "src/core/ButtonV2/style";
+import { isIconOnlyChild } from "src/core/Button/style";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 
 export type { ButtonGroupProps };
 
@@ -58,21 +58,21 @@ const areAllButtonsIconOnly = (children: ReactNode): boolean => {
 };
 
 /**
- * Check if a React element is a ButtonV2 component.
+ * Check if a React element is a Button component.
  */
-const isButtonV2 = (element: ReactElement): boolean => {
-  return element.type === ButtonV2;
+const isButton = (element: ReactElement): boolean => {
+  return element.type === Button;
 };
 
 /**
- * Clone children and inject the size prop to ButtonV2 components.
+ * Clone children and inject the size prop to Button components.
  */
 const cloneChildrenWithSize = (
   children: ReactNode,
   size: "small" | "medium" | "large"
 ): ReactNode => {
   return Children.map(children, (child) => {
-    if (isValidElement(child) && isButtonV2(child)) {
+    if (isValidElement(child) && isButton(child)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return cloneElement(child as ReactElement<any>, { size });
     }
@@ -95,7 +95,7 @@ const ButtonGroup = React.forwardRef(
   ): JSX.Element | null => {
     const {
       sdsType = "primary",
-      size = "medium",
+      size = "large",
       orientation = "horizontal",
       children,
       ...rest
@@ -112,7 +112,7 @@ const ButtonGroup = React.forwardRef(
       );
     }
 
-    // Clone children and inject size prop to ButtonV2 components
+    // Clone children and inject size prop to Button components
     const childrenWithSize = cloneChildrenWithSize(children, size);
 
     return (

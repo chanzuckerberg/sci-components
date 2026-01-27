@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
 import { useState } from "react";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import RawDialog from "src/core/Dialog";
 import DialogTitle from "src/core/Dialog/components/DialogTitle";
 import DialogContent from "src/core/Dialog/components/DialogContent";
@@ -21,14 +21,14 @@ export const Dialog = (props: Args): JSX.Element => {
 
   return (
     <>
-      <ButtonV2
+      <Button
         size="large"
         sdsStyle="minimal"
         sdsType="primary"
         onClick={handleClick}
       >
-        Open {sdsSize}
-      </ButtonV2>
+        Open {sdsSize.toUpperCase()}
+      </Button>
       <RawDialog
         onClose={handleClose}
         open={isOpen}
@@ -59,44 +59,44 @@ export const Dialog = (props: Args): JSX.Element => {
     if (buttonPosition === "left") {
       return (
         <>
-          <ButtonV2
+          <Button
             size="large"
             sdsStyle="solid"
             sdsType="primary"
             onClick={handleClose}
           >
             Primary Action
-          </ButtonV2>
-          <ButtonV2
+          </Button>
+          <Button
             size="large"
             sdsStyle="outline"
             sdsType="primary"
             onClick={handleClose}
           >
             Secondary Action
-          </ButtonV2>
+          </Button>
         </>
       );
     }
 
     return (
       <>
-        <ButtonV2
+        <Button
           size="large"
           sdsStyle="outline"
           sdsType="primary"
           onClick={handleClose}
         >
           Secondary Action
-        </ButtonV2>
-        <ButtonV2
+        </Button>
+        <Button
           size="large"
           sdsStyle="solid"
           sdsType="primary"
           onClick={handleClose}
         >
           Primary Action
-        </ButtonV2>
+        </Button>
       </>
     );
   }

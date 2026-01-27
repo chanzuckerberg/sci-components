@@ -1,16 +1,16 @@
 import { LinkProps, AppBarProps, MenuProps } from "@mui/material";
 import { ReactNode, ElementType } from "react";
-import { SdsIconButtonProps } from "../Button";
+import { SdsIconButtonLegacyProps } from "../ButtonLegacy";
 import { InputSearchProps } from "../InputSearch";
 import { SdsTagColorType } from "../Tag";
 import { NavigationHeaderPrimaryNavItem } from "./components/NavigationHeaderPrimaryNav";
 import { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
-import { ButtonV2Props } from "../ButtonV2";
+import { ButtonProps } from "../Button";
 
 export interface NavigationHeaderProps<T extends string = string>
   extends Omit<AppBarProps, "position"> {
   activePrimaryNavKey?: string;
-  buttons?: Partial<ButtonV2Props>[] | React.ReactNode[];
+  buttons?: Partial<ButtonProps>[] | React.ReactNode[];
   backgroundAppearance?: "matchBackground" | "dark";
   logo?: ReactNode;
   logoUrl?: string;
@@ -39,4 +39,4 @@ export interface NavigationHeaderProps<T extends string = string>
   topComponentSlot?: ReactNode;
 }
 
-export type IconButtonProps = SdsIconButtonProps & { children?: string };
+export type IconButtonProps = SdsIconButtonLegacyProps & { children?: string };

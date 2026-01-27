@@ -1,6 +1,6 @@
 import { CardMedia } from "@mui/material";
 import Icon from "src/core/Icon";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 
 export const CONTENT_CARD_EXCLUDED_CONTROLS = [
   "visualElement",
@@ -38,29 +38,24 @@ export const CONTENT_CARD_BUTTONS_LABELS = [
 
 export const CONTENT_CARD_BUTTONS_OPTIONS = [
   // Primary
-  <ButtonV2
-    size="large"
-    sdsStyle="solid"
-    sdsType="primary"
-    key="square-primary"
-  >
+  <Button size="large" sdsStyle="solid" sdsType="primary" key="square-primary">
     Primary Button
-  </ButtonV2>,
+  </Button>,
   // Secondary
-  <ButtonV2
+  <Button
     size="large"
     sdsStyle="solid"
     sdsType="secondary"
     key="square-secondary"
   >
     Secondary Button
-  </ButtonV2>,
+  </Button>,
   // Minimal
-  <ButtonV2 size="large" sdsStyle="minimal" sdsType="primary" key="minimal">
+  <Button size="large" sdsStyle="minimal" sdsType="primary" key="minimal">
     Minimal Button
-  </ButtonV2>,
+  </Button>,
   // Minimal with Icon
-  <ButtonV2
+  <Button
     size="large"
     sdsStyle="minimal"
     sdsType="primary"
@@ -68,7 +63,7 @@ export const CONTENT_CARD_BUTTONS_OPTIONS = [
     endIcon={<Icon sdsIcon="ChevronRight" sdsSize="xs" />}
   >
     Minimal Button
-  </ButtonV2>,
+  </Button>,
 ];
 
 // Images

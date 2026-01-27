@@ -1,6 +1,6 @@
 import React, { forwardRef, ReactElement, ReactNode } from "react";
 import { StyledCardActions } from "./style";
-import ButtonV2, { ButtonV2Props } from "src/core/ButtonV2";
+import Button, { ButtonProps } from "src/core/Button";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -15,14 +15,14 @@ export interface ContentCardActionsProps {
     cardActions?: string;
   };
   children:
-    | React.ReactElement<ButtonV2Props>
-    | Array<React.ReactElement<ButtonV2Props>>;
+    | React.ReactElement<ButtonProps>
+    | Array<React.ReactElement<ButtonProps>>;
 }
 
 const isButtonElement = (
   child: ReactNode
-): child is ReactElement<ButtonV2Props> => {
-  if (React.isValidElement(child) && child.type === ButtonV2) {
+): child is ReactElement<ButtonProps> => {
+  if (React.isValidElement(child) && child.type === Button) {
     return true;
   } else {
     showWarningIfFirstOccurence(SDSWarningTypes.ContentCardActionsOnlyButtons);
@@ -90,10 +90,10 @@ const ContentCardActions = forwardRef<HTMLDivElement, ContentCardActionsProps>(
         >
           {[
             React.cloneElement(
-              clickableCardButton as React.ReactElement<ButtonV2Props>,
+              clickableCardButton as React.ReactElement<ButtonProps>,
               {
                 component: "div",
-                ...(clickableCardButton?.props as ButtonV2Props),
+                ...(clickableCardButton?.props as ButtonProps),
               }
             ),
           ]}

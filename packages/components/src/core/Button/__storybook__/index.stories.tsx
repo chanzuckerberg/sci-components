@@ -1,5 +1,5 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta } from "@storybook/react-webpack5";
-import { ScreenshotTestDemo } from "./stories/screenshot";
 import {
   BUTTON_ACTIONS,
   BUTTON_EXCLUDED_CONTROLS,
@@ -10,46 +10,49 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
+    backgroundOnHover: {
+      control: {
+        type: "boolean",
+      },
+    },
+    backgroundAppearance: {
+      control: {
+        type: INLINE_RADIO,
+      },
+      options: ["matchBackground", "dark"],
+    },
+    children: {
+      control: {
+        type: "text",
+      },
+    },
     endIcon: {
       control: {
         labels: BUTTON_ICON_LABELS,
         type: "select",
       },
-      if: { arg: "sdsStyle", neq: "icon" },
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
-    },
-    icon: {
-      control: {
-        labels: BUTTON_ICON_LABELS,
-        type: "select",
-      },
-      if: { arg: "sdsStyle", eq: "icon" },
-      mapping: BUTTON_ICON_OPTIONS,
-      options: Object.keys(BUTTON_ICON_OPTIONS),
-    },
-    isAllCaps: {
-      control: { type: "boolean" },
     },
     onClick: { action: BUTTON_ACTIONS.onClick },
-    sdsSize: {
+    size: {
       control: {
         labels: BUTTON_SDS_SIZE,
-        type: "select",
+        type: INLINE_RADIO,
       },
-      if: { arg: "sdsStyle", eq: "icon" },
       mapping: BUTTON_SDS_SIZE,
       options: Object.keys(BUTTON_SDS_SIZE),
     },
     sdsStyle: {
-      control: { type: "select" },
+      control: { type: INLINE_RADIO },
       options: BUTTON_SDS_STYLES,
     },
     sdsType: {
-      control: { type: "select" },
+      control: { type: INLINE_RADIO },
       options: BUTTON_SDS_TYPES,
     },
     startIcon: {
@@ -57,20 +60,13 @@ export default {
         labels: BUTTON_ICON_LABELS,
         type: "select",
       },
-      if: { arg: "sdsStyle", neq: "icon" },
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
     },
-    text: {
-      control: {
-        type: "text",
-      },
-      if: { arg: "sdsStyle", neq: "icon" },
-    },
   },
   component: Button,
-  tags: ["deprecated"],
-  title: "Components/Buttons/Legacy/Button",
+  tags: ["beta"],
+  title: "Components/Buttons/Button",
 } as Meta;
 
 // Default
@@ -78,29 +74,13 @@ export default {
 export const Default = {
   args: {
     disabled: false,
-    icon: "Cube",
-    sdsSize: "medium",
+    size: "large",
     sdsStyle: "rounded",
     sdsType: "primary",
-    text: "Label",
+    children: "Label",
+    backgroundOnHover: true,
+    backgroundAppearance: "matchBackground",
   },
-};
-
-// Screenshot Test
-
-export const ScreenshotTest = {
-  args: {
-    label: "Label",
-  },
-  parameters: {
-    controls: {
-      exclude: BUTTON_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-  render: (args: Args) => <ScreenshotTestDemo {...args} />,
 };
 
 // Test
@@ -110,7 +90,7 @@ export const Test = {
     disabled: false,
     sdsStyle: "rounded",
     sdsType: "primary",
-    text: "Label",
+    children: "Label",
   },
   parameters: {
     controls: {

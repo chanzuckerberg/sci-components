@@ -38,8 +38,8 @@ export const StyledAccordionHeader = styled(AccordionSummary, {
 
       & .${accordionSummaryClasses.expandIconWrapper} {
         margin-top: ${chevronSize === "xs"
-          ? spaces?.xs
-          : spaces?.xxs}px !important;
+          ? spaces?.s
+          : spaces?.xs}px !important;
 
         svg {
           color: ${semanticColors?.base?.ornamentSecondary};

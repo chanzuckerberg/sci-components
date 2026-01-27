@@ -5,6 +5,7 @@ import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOM
 import { DefaultAutocompleteOption } from "src/core/Autocomplete";
 import Button from "src/core/Button";
 import RawDropdownMenu from "src/core/DropdownMenu";
+import Icon from "src/core/Icon";
 
 export const WithHeaderComponentDemo = <
   T extends DefaultAutocompleteOption,
@@ -38,17 +39,21 @@ export const WithHeaderComponentDemo = <
   const CustomHeaderComponent = () => (
     <div style={{ alignItems: "center", display: "flex", gap: 8 }}>
       <Button
-        sdsStyle="icon"
-        sdsSize="small"
-        icon="InfoCircle"
-        sdsType="tertiary"
-      />
+        sdsStyle="minimal"
+        backgroundOnHover={false}
+        size="large"
+        sdsType="secondary"
+      >
+        <Icon sdsIcon="InfoCircle" sdsSize="s" />
+      </Button>
       <Button
-        sdsStyle="icon"
-        sdsSize="small"
-        icon="Download"
-        sdsType="tertiary"
-      />
+        sdsStyle="minimal"
+        backgroundOnHover={false}
+        size="large"
+        sdsType="secondary"
+      >
+        <Icon sdsIcon="Download" sdsSize="s" />
+      </Button>
     </div>
   );
 

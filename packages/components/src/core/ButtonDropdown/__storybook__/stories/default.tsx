@@ -1,35 +1,40 @@
 import { Args } from "@storybook/react-webpack5";
+import { StyledBackgroundAppearanceWrapper } from "src/core/Button/style";
 import RawButtonDropdown from "src/core/ButtonDropdown";
-import { BUTTON_DROPDOWN_TEXT } from "../constants";
-import {
-  InvalidIconButtonPropsError,
-  InvalidSdsTypeDestructiveError,
-  InvalidSdsTypeTertiaryError,
-} from "src/core/Button/__storybook__/stories/default";
+import Callout from "src/core/Callout";
+
+export const InvalidSdsTypeDestructiveError = (
+  <Callout
+    intent="negative"
+    title="Invalid Props!"
+    body={
+      <>
+        <strong>ButtonDropdown</strong> does not support the{" "}
+        <strong>destructive</strong> type. Please choose either{" "}
+        <strong>primary</strong> or <strong>secondary</strong>.
+      </>
+    }
+  />
+);
 
 export const ButtonDropdown = (props: Args): JSX.Element => {
-  const { sdsStyle, icon, sdsType, ...rest } = props;
+  const { backgroundAppearance, sdsStyle, startIcon, sdsType, ...rest } = props;
 
-  if (sdsStyle === "icon" && icon === undefined) {
-    return InvalidIconButtonPropsError;
-  }
-
-  if (sdsStyle !== "icon" && sdsType === "tertiary") {
-    return InvalidSdsTypeTertiaryError;
-  }
-
-  if (sdsStyle === "icon" && sdsType === "destructive") {
+  if (sdsType === "destructive") {
     return InvalidSdsTypeDestructiveError;
   }
 
   return (
-    <RawButtonDropdown
-      sdsStyle={sdsStyle}
-      icon={icon}
-      sdsType={sdsType}
-      {...rest}
+    <StyledBackgroundAppearanceWrapper
+      backgroundAppearance={props.backgroundAppearance}
     >
-      {BUTTON_DROPDOWN_TEXT}
-    </RawButtonDropdown>
+      <RawButtonDropdown
+        backgroundAppearance={backgroundAppearance}
+        startIcon={startIcon}
+        sdsStyle={sdsStyle}
+        sdsType={sdsType}
+        {...rest}
+      />
+    </StyledBackgroundAppearanceWrapper>
   );
 };

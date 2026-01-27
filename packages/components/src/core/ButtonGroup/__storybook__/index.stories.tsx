@@ -15,6 +15,12 @@ import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
+    backgroundAppearance: {
+      control: {
+        type: INLINE_RADIO,
+      },
+      options: ["matchBackground", "dark"],
+    },
     disabled: {
       control: {
         type: "boolean",
@@ -48,9 +54,10 @@ export default {
 
 export const Default = {
   args: {
+    backgroundAppearance: "matchBackground",
     disabled: false,
     orientation: "horizontal",
-    size: "medium",
+    size: "large",
     sdsType: "primary",
   },
 };
@@ -59,9 +66,10 @@ export const Default = {
 
 export const IconOnly = {
   args: {
+    backgroundAppearance: "matchBackground",
     disabled: false,
     orientation: "horizontal",
-    size: "medium",
+    size: "large",
     sdsType: "primary",
   },
   render: (args: Args) => <ButtonGroupIconOnly {...args} />,
@@ -71,8 +79,9 @@ export const IconOnly = {
 
 export const DisabledButtons = {
   args: {
+    backgroundAppearance: "matchBackground",
     orientation: "horizontal",
-    size: "medium",
+    size: "large",
     sdsType: "primary",
   },
   render: (args: Args) => <ButtonGroupDisabledButton {...args} />,
@@ -82,9 +91,10 @@ export const DisabledButtons = {
 
 export const Test = {
   args: {
+    backgroundAppearance: "matchBackground",
     disabled: false,
     orientation: "horizontal",
-    size: "medium",
+    size: "large",
     sdsType: "primary",
   },
   parameters: {

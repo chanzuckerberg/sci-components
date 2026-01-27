@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
 import React from "react";
-import ButtonV2 from "src/core/ButtonV2";
+import Button from "src/core/Button";
 import MenuItem from "src/core/MenuItem";
 import RawMenu from "src/core/Menu";
 
@@ -17,7 +17,7 @@ export const Menu = (props: Args): JSX.Element => {
 
   return (
     <div>
-      <ButtonV2
+      <Button
         id="basic-button"
         size="large"
         sdsStyle="minimal"
@@ -28,7 +28,7 @@ export const Menu = (props: Args): JSX.Element => {
         aria-expanded={open ? true : undefined}
       >
         Click me!
-      </ButtonV2>
+      </Button>
       <RawMenu
         id="basic-menu"
         anchorEl={anchorEl}

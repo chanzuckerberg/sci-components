@@ -31,13 +31,13 @@ import {
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
-import { ButtonV2Props } from "../ButtonV2";
 import Icon from "../Icon";
 import { NavigationHeaderProps } from "./NavigationHeader.types";
 import { mergeRefs } from "src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
 import { getMode } from "../styles";
-import { isIconOnlyChild } from "../ButtonV2/style";
+import { isIconOnlyChild } from "../Button/style";
+import { ButtonProps } from "../Button";
 
 // Time to wait for accordion animation and scroll to complete (includes MUI animation duration + buffer)
 const ACCORDION_SCROLL_DELAY_MS = 500;
@@ -369,7 +369,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderButton = (
-      buttonProps: Partial<ButtonV2Props> | React.ReactNode,
+      buttonProps: Partial<ButtonProps> | React.ReactNode,
       idx: number
     ) => {
       const key = `button-${idx}`;
@@ -400,7 +400,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         const buttonPropsObj = {
           ...buttonProps,
           backgroundAppearance,
-        } as ButtonV2Props;
+        } as ButtonProps;
         const isIconButton = isIconOnlyChild(buttonPropsObj.children);
 
         if (isIconButton && dimensions.isNarrow) {
@@ -418,7 +418,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderNarrowIconButton = (
-      buttonProps: ButtonV2Props,
+      buttonProps: ButtonProps,
       key: string,
       fullWidth: { width: string } | undefined
     ) => {
@@ -447,7 +447,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       );
     };
 
-    const renderWideIconButton = (buttonProps: ButtonV2Props, key: string) => {
+    const renderWideIconButton = (buttonProps: ButtonProps, key: string) => {
       return (
         <StyledWideIconButton
           key={key}
@@ -462,7 +462,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
     };
 
     const renderDefaultButton = (
-      buttonProps: ButtonV2Props,
+      buttonProps: ButtonProps,
       key: string,
       fullWidth: { width: string } | undefined
     ) => {
@@ -479,7 +479,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           size="large"
           key={key}
           sx={fullWidth}
-          {...(buttonProps as ButtonV2Props)}
+          {...(buttonProps as ButtonProps)}
           onClick={enhancedOnClick}
           hasInvertedStyle={hasInvertedStyle}
         />

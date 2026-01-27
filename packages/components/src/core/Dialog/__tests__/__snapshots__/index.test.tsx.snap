@@ -7,10 +7,10 @@ exports[`<Dialog /> Default story renders snapshot 1`] = `
   type="button"
 >
   <span
-    class="css-ll8hvy"
+    class="css-1am7bo"
   >
     Open 
-    m
+    M
   </span>
   <span
     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -31,7 +31,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 1`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       <div
         class="css-1ft6wgl"
@@ -91,7 +91,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Secondary Action
     </span>
@@ -105,7 +105,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 3`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Primary Action
     </span>
@@ -129,7 +129,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 4`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       <div
         class="css-1ft6wgl"
@@ -189,7 +189,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Secondary Action
     </span>
@@ -203,7 +203,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 6`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Primary Action
     </span>
@@ -227,7 +227,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 7`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       <div
         class="css-1ft6wgl"
@@ -287,7 +287,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Secondary Action
     </span>
@@ -301,7 +301,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 9`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Primary Action
     </span>
@@ -325,7 +325,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 10`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       <div
         class="css-1ft6wgl"
@@ -385,7 +385,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Secondary Action
     </span>
@@ -399,7 +399,7 @@ exports[`<Dialog /> Dialog all sizes match the snapshots 12`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Primary Action
     </span>
@@ -421,7 +421,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Primary Action
     </span>
@@ -435,7 +435,7 @@ exports[`<Dialog /> renders Dialog left positioned buttons 1`] = `
     type="button"
   >
     <span
-      class="css-ll8hvy"
+      class="css-1am7bo"
     >
       Secondary Action
     </span>

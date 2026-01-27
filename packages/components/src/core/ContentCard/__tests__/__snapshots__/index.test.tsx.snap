@@ -59,7 +59,7 @@ exports[`ContentCard Default story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-ll8hvy"
+            class="css-1am7bo"
           >
             Primary Button
           </span>
@@ -73,7 +73,7 @@ exports[`ContentCard Default story renders snapshot 1`] = `
           type="button"
         >
           <span
-            class="css-ll8hvy"
+            class="css-1am7bo"
           >
             Minimal Button
           </span>

@@ -5,6 +5,7 @@ export const BUTTON_GROUP_EXCLUDED_CONTROLS = [
   "size",
   "orientation",
   "disabled",
+  "backgroundAppearance",
 ];
 
 export const BUTTON_GROUP_SDS_STYLES = ["outline"];
