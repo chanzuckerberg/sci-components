@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
 import { ContentCardProps } from "../..";
 import { css, styled } from "@mui/material";
@@ -37,9 +38,14 @@ export const StyledImageMediaWrapper = styled("div", {
     return css`
       display: flex;
       align-items: start;
-      border-top-left-radius: calc(${corners?.xl}px - 1px);
-      border-bottom-left-radius: calc(${corners?.xl}px - 1px);
-      overflow: hidden;
+
+      img {
+        border-radius: ${boundingBox && imagePadding
+          ? 0
+          : imagePosition === "left"
+            ? `calc(${corners?.xl}px - 1px) 0 0 calc(${corners?.xl}px - 1px)`
+            : `0 calc(${corners?.xl}px - 1px) calc(${corners?.xl}px - 1px) 0`};
+      }
 
       ${boundingBox
         ? imagePadding
@@ -52,11 +58,7 @@ export const StyledImageMediaWrapper = styled("div", {
           : css`
               padding: 0;
             `
-        : css`
-            ${imagePosition === "left"
-              ? `padding-right: ${spaces?.xl}px;`
-              : `padding-left: ${spaces?.xl}px;`}
-          `}
+        : null}
 
       ${sdsType === "narrow" &&
       css`
@@ -69,13 +71,15 @@ export const StyledImageMediaWrapper = styled("div", {
             : css`
                 padding: 0;
               `
-          : css`
-              padding-bottom: ${spaces?.xl}px;
-            `}
+          : null}
 
         justify-content: center;
-        border-top-left-radius: calc(${corners?.xl}px - 1px);
-        border-top-right-radius: calc(${corners?.xl}px - 1px);
+
+        img {
+          border-radius: ${boundingBox && imagePadding
+            ? 0
+            : `calc(${corners?.xl}px - 1px) calc(${corners?.xl}px - 1px) 0 0`};
+        }
       `}
     `;
   }}

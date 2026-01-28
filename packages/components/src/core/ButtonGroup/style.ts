@@ -17,7 +17,7 @@ import {
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { ButtonGroupProps } from "./ButtonGroup.types";
 
-const doNotForwardProps = ["sdsType", "sdsStyle"];
+const doNotForwardProps = ["sdsType", "sdsStyle", "backgroundAppearance"];
 
 type ButtonGroupExtraProps = ButtonGroupProps & CommonThemeProps;
 
@@ -35,17 +35,12 @@ const GeneralButtonGroupStyles = (
       box-sizing: border-box;
       border-radius: ${corners?.l}px;
       min-width: fit-content;
-      margin-left: 0;
-      margin-top: 0;
+      z-index: 0;
 
-      &:not(:last-of-type) {
-        margin-right: 0;
-        margin-bottom: 0;
-      }
-
-      &:not(:first-of-type) {
-        margin-left: 0;
-        margin-top: 0;
+      &:hover,
+      &:active,
+      &:focus {
+        z-index: 1;
       }
     }
 
@@ -68,17 +63,6 @@ const GeneralButtonGroupStyles = (
       border-radius: 0;
     }
 
-    /* Non-first horizontal buttons - no left border to avoid double borders */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type) {
-      border-left: none;
-
-      &:hover,
-      &:active,
-      &:focus {
-        border-left: none;
-      }
-    }
-
     /* Vertical orientation */
     .${buttonGroupClasses.groupedVertical}:first-of-type {
       border-bottom-left-radius: 0;
@@ -94,17 +78,6 @@ const GeneralButtonGroupStyles = (
         :last-of-type
       ) {
       border-radius: 0;
-    }
-
-    /* Non-first vertical buttons - no top border to avoid double borders */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type) {
-      border-top: none;
-
-      &:hover,
-      &:active,
-      &:focus {
-        border-top: none;
-      }
     }
   `;
 };
@@ -409,7 +382,8 @@ const PrimaryButtonGroupStyles = (
 
   return css`
     /* All buttons - base styles */
-    .${buttonGroupClasses.grouped} {
+    /* Using && for higher specificity to override Button component's border: none */
+    && .${buttonGroupClasses.grouped} {
       background-color: transparent;
       border: 1px solid ${defaultColor};
       color: ${defaultColor};
@@ -417,34 +391,36 @@ const PrimaryButtonGroupStyles = (
       svg {
         color: ${defaultColor};
       }
+    }
 
-      &:hover {
+    && .${buttonGroupClasses.grouped}:hover {
+      color: ${hoverColor};
+      background-color: ${hoverBgColor};
+      border: 1px solid ${hoverColor};
+
+      svg {
         color: ${hoverColor};
-        background-color: ${hoverBgColor};
-        border-color: ${hoverColor};
-
-        svg {
-          color: ${hoverColor};
-        }
       }
+    }
 
-      &:active {
+    && .${buttonGroupClasses.grouped}:active {
+      color: ${pressedColor};
+      background-color: ${hoverBgColor};
+      border: 1px solid ${pressedColor};
+
+      svg {
         color: ${pressedColor};
-        background-color: ${hoverBgColor};
-        border-color: ${pressedColor};
-
-        svg {
-          color: ${pressedColor};
-        }
       }
+    }
 
+    .${buttonGroupClasses.grouped} {
       ${focusVisibleA11yStyle(props)}
     }
 
     /* ===== HORIZONTAL ORIENTATION ===== */
 
     /* First button disabled (horizontal) - left edge gray, right stays active */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled {
+    && .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -458,14 +434,15 @@ const PrimaryButtonGroupStyles = (
     }
 
     /* First button disabled when next sibling is also disabled - all borders gray */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled:has(
+    &&
+      .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-right-color: ${disabledColor};
     }
 
     /* Non-first buttons disabled (horizontal) - right stays active */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled {
+    && .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -479,21 +456,22 @@ const PrimaryButtonGroupStyles = (
     }
 
     /* Non-first button disabled when next sibling is also disabled - right border gray */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled:has(
+    &&
+      .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-right-color: ${disabledColor};
     }
 
     /* Last button disabled (horizontal) - right edge gray */
-    .${buttonGroupClasses.groupedHorizontal}:last-of-type:disabled {
+    && .${buttonGroupClasses.groupedHorizontal}:last-of-type:disabled {
       border-right-color: ${disabledColor};
     }
 
     /* ===== VERTICAL ORIENTATION ===== */
 
     /* First button disabled (vertical) - top edge gray, bottom stays active */
-    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled {
+    && .${buttonGroupClasses.groupedVertical}:first-of-type:disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -507,14 +485,15 @@ const PrimaryButtonGroupStyles = (
     }
 
     /* First button disabled when next sibling is also disabled - all borders gray */
-    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled:has(
+    &&
+      .${buttonGroupClasses.groupedVertical}:first-of-type:disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-bottom-color: ${disabledColor};
     }
 
     /* Non-first buttons disabled (vertical) - bottom stays active */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled {
+    && .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -528,14 +507,15 @@ const PrimaryButtonGroupStyles = (
     }
 
     /* Non-first button disabled when next sibling is also disabled - bottom border gray */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled:has(
+    &&
+      .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-bottom-color: ${disabledColor};
     }
 
     /* Last button disabled (vertical) - bottom edge gray */
-    .${buttonGroupClasses.groupedVertical}:last-of-type:disabled {
+    && .${buttonGroupClasses.groupedVertical}:last-of-type:disabled {
       border-bottom-color: ${disabledColor};
     }
   `;
@@ -597,7 +577,8 @@ const SecondaryButtonGroupStyles = (
 
   return css`
     /* All buttons - base styles */
-    .${buttonGroupClasses.grouped} {
+    /* Using && for higher specificity to override Button component's border: none */
+    && .${buttonGroupClasses.grouped} {
       background-color: transparent;
       border: 1px solid ${defaultColor};
       color: ${textColor};
@@ -605,32 +586,36 @@ const SecondaryButtonGroupStyles = (
       svg {
         color: ${ornamentColor};
       }
+    }
 
-      &:hover {
-        color: ${textColor};
-        background-color: ${hoverBgColor};
+    && .${buttonGroupClasses.grouped}:hover {
+      color: ${textColor};
+      background-color: ${hoverBgColor};
+      border: 1px solid ${defaultColor};
 
-        svg {
-          color: ${ornamentColor};
-        }
+      svg {
+        color: ${ornamentColor};
       }
+    }
 
-      &:active {
-        color: ${textColor};
-        background-color: ${pressedBgColor};
+    && .${buttonGroupClasses.grouped}:active {
+      color: ${textColor};
+      background-color: ${pressedBgColor};
+      border: 1px solid ${defaultColor};
 
-        svg {
-          color: ${ornamentColor};
-        }
+      svg {
+        color: ${ornamentColor};
       }
+    }
 
+    .${buttonGroupClasses.grouped} {
       ${focusVisibleA11yStyle(props)}
     }
 
     /* ===== HORIZONTAL ORIENTATION ===== */
 
     /* First button disabled (horizontal) - left edge gray, right stays active */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled {
+    && .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -644,14 +629,15 @@ const SecondaryButtonGroupStyles = (
     }
 
     /* First button disabled when next sibling is also disabled - all borders gray */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled:has(
+    &&
+      .${buttonGroupClasses.groupedHorizontal}:first-of-type:disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-right-color: ${disabledColor};
     }
 
     /* Non-first buttons disabled (horizontal) - right stays active */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled {
+    && .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -665,21 +651,22 @@ const SecondaryButtonGroupStyles = (
     }
 
     /* Non-first button disabled when next sibling is also disabled - right border gray */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled:has(
+    &&
+      .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-right-color: ${disabledColor};
     }
 
     /* Last button disabled (horizontal) - right edge gray */
-    .${buttonGroupClasses.groupedHorizontal}:last-of-type:disabled {
+    && .${buttonGroupClasses.groupedHorizontal}:last-of-type:disabled {
       border-right-color: ${disabledColor};
     }
 
     /* ===== VERTICAL ORIENTATION ===== */
 
     /* First button disabled (vertical) - top edge gray, bottom stays active */
-    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled {
+    && .${buttonGroupClasses.groupedVertical}:first-of-type:disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -693,14 +680,15 @@ const SecondaryButtonGroupStyles = (
     }
 
     /* First button disabled when next sibling is also disabled - all borders gray */
-    .${buttonGroupClasses.groupedVertical}:first-of-type:disabled:has(
+    &&
+      .${buttonGroupClasses.groupedVertical}:first-of-type:disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-bottom-color: ${disabledColor};
     }
 
     /* Non-first buttons disabled (vertical) - bottom stays active */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled {
+    && .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled {
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${defaultColor};
@@ -714,14 +702,15 @@ const SecondaryButtonGroupStyles = (
     }
 
     /* Non-first button disabled when next sibling is also disabled - bottom border gray */
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled:has(
+    &&
+      .${buttonGroupClasses.groupedVertical}:not(:first-of-type):disabled:has(
         + .${buttonGroupClasses.grouped}:disabled
       ) {
       border-bottom-color: ${disabledColor};
     }
 
     /* Last button disabled (vertical) - bottom edge gray */
-    .${buttonGroupClasses.groupedVertical}:last-of-type:disabled {
+    && .${buttonGroupClasses.groupedVertical}:last-of-type:disabled {
       border-bottom-color: ${disabledColor};
     }
   `;

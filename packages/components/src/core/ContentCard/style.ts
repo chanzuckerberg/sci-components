@@ -10,7 +10,7 @@ import {
 } from "../styles";
 import { css } from "@emotion/react";
 import { ContentCardProps } from "./index";
-import Button, { ButtonProps } from "../Button";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 type CardExtraProps = Partial<ContentCardProps> & CommonThemeProps;
 
@@ -101,7 +101,7 @@ export const StyledCard = styled(Card, {
       background-color: transparent;
       background-image: none;
       flex-direction: ${flexDirection};
-      overflow: visible;
+      overflow: visible !important;
       box-shadow: none;
       border-radius: ${corners?.xl}px;
 
@@ -126,6 +126,7 @@ export const StyledCard = styled(Card, {
           content: "";
           position: absolute;
           background-color: ${semanticColors?.accent?.foreground};
+          z-index: 10;
 
           ${sdsType === "wide" &&
           css`
@@ -184,6 +185,7 @@ export const StyledCardActionArea = styled(Button, {
     } = props;
 
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
     const flexDirection =
       cardSdsType === "wide"
@@ -204,6 +206,7 @@ export const StyledCardActionArea = styled(Button, {
       margin: 0;
       overflow: auto;
       text-align: unset;
+      border-radius: ${corners?.xl}px;
 
       background-color: ${semanticColors?.base?.backgroundPrimary};
 
@@ -243,7 +246,7 @@ export const StyledCardContent = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: CardExtraProps) => {
-    const { boundingBox = true } = props;
+    const { boundingBox = true, sdsType = "wide", visualElementType } = props;
 
     const spaces = getSpaces(props);
 
@@ -254,10 +257,17 @@ export const StyledCardContent = styled("div", {
       width: 100%;
       height: 100%;
 
-      ${boundingBox &&
-      css`
-        padding: ${spaces?.xl}px;
-      `}
+      ${boundingBox
+        ? css`
+            padding: ${spaces?.xl}px;
+          `
+        : css`
+            padding: ${sdsType === "narrow"
+              ? visualElementType === "image"
+                ? `${spaces?.xl}px 0 0 0`
+                : 0
+              : `0 0 0 ${spaces?.xl}px`};
+          `}
     `;
   }}
 `;
@@ -273,6 +283,7 @@ export const StyledContentCardBody = styled(CardContent, {
       color: ${semanticColors?.base?.textPrimary};
       margin: ${spaces?.l}px 0 0;
       padding: 0;
+      white-space: pre-wrap;
     `;
   }}
 `;

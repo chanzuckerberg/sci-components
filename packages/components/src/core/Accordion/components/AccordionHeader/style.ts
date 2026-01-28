@@ -16,8 +16,6 @@ export const StyledAccordionHeader = styled(AccordionSummary, {
 })`
   ${fontBodySemiboldL}
   ${(props: CommonThemeProps & { chevronSize: "xs" | "s" }) => {
-    const { chevronSize } = props;
-
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
@@ -37,9 +35,7 @@ export const StyledAccordionHeader = styled(AccordionSummary, {
       }
 
       & .${accordionSummaryClasses.expandIconWrapper} {
-        margin-top: ${chevronSize === "xs"
-          ? spaces?.s
-          : spaces?.xs}px !important;
+        margin-top: ${spaces?.xs}px !important;
 
         svg {
           color: ${semanticColors?.base?.ornamentSecondary};

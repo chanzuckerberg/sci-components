@@ -180,6 +180,8 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
           boundingBox={boundingBox}
           clickableCard={clickableCard}
           className={cn(cardContent)}
+          sdsType={dynamicSdsType}
+          visualElementType={visualElementType}
         >
           <ContentCardTitle
             overlineText={overlineText}
@@ -222,7 +224,6 @@ const ContentCard = React.forwardRef<HTMLDivElement, ContentCardProps>(
             // (masoudmanson): The following props are for internal use only and should not be user editable.
             // To prevent users from overriding them, we use the spread operator to pass user provided props
             // to the StyledCardActionArea component on top while hardcoding the rest after it.
-            sdsStyle="minimal"
             cardSdsType={dynamicSdsType}
             visualElementType={visualElementType}
             imagePosition={imagePosition}

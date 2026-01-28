@@ -10,6 +10,7 @@ import {
   CONTENT_CARD_IMAGE_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -38,7 +39,7 @@ export default {
     },
     buttonsPosition: {
       control: {
-        type: "radio",
+        type: INLINE_RADIO,
       },
       description: "Defines the position of the buttons.",
       options: ["left", "right"],
@@ -124,7 +125,7 @@ export default {
     },
     imagePosition: {
       control: {
-        type: "radio",
+        type: INLINE_RADIO,
       },
       description:
         "Defines the position of the image. If the image is not set, this prop will have no effect.",
@@ -159,7 +160,7 @@ export default {
     },
     sdsType: {
       control: {
-        type: "radio",
+        type: INLINE_RADIO,
       },
       description: "Defines the type of card to display.",
       options: ["wide", "narrow"],
@@ -182,7 +183,7 @@ export default {
     },
     visualElementType: {
       control: {
-        type: "select",
+        type: INLINE_RADIO,
       },
       description: "The type of media to display in the card.",
       options: ["image", "icon", "none"],
