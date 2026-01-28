@@ -51,8 +51,8 @@ export default function WithSelectionStory(args: Args): JSX.Element {
         <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
           <Button
             onClick={handleSelectAll}
-            sdsStyle="square"
-            sdsType="secondary"
+            sdsStyle="outline"
+            sdsType="primary"
           >
             Select All
           </Button>

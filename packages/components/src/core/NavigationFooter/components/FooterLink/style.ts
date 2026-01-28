@@ -44,7 +44,7 @@ export const StyledLinkItemLink = styled(Link, {
       &:focus {
         color: ${hasInvertedStyle
           ? semanticColors?.base.textPrimaryOnDark
-          : semanticColors?.accent.textActionPressed};
+          : semanticColors?.accent?.foregroundPressed};
       }
 
       ${showDivider &&

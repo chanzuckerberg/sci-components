@@ -1,0 +1,44 @@
+{
+  "ButtonLegacy": {
+    "props": {
+      "endIcon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Element placed after the children."
+      },
+      "icon": {
+        "type": "ReactElement",
+        "isRequired": true
+      },
+      "isAllCaps": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "sdsSize": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "\"icon\" | \"minimal\" | \"rounded\" | \"square\"",
+        "isRequired": true
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
+        "isRequired": false
+      },
+      "startIcon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Element placed before the children."
+      },
+      "text": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

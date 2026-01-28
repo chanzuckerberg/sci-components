@@ -11,7 +11,7 @@ import {
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
 import Tag from "src/core/Tag";
-import Button, { SdsMinimalButtonProps } from "src/core/Button";
+import Button, { ButtonProps } from "src/core/Button";
 
 export type StyledTextItemProps = ExtraHeaderProps & {
   open: boolean;
@@ -44,15 +44,15 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
     &:hover {
       box-shadow: none;
       background: ${hasInvertedStyle
-        ? semanticColors?.base.fillInteractionOnDark
-        : semanticColors?.base.fillInteraction};
+        ? semanticColors?.base?.fillPrimaryInteractionOnDark
+        : semanticColors?.base?.fillPrimaryInteraction};
     }
   `;
 };
 
 export const StyledTextItem = styled(
   Button as unknown as React.ComponentType<
-    Partial<SdsMinimalButtonProps> & StyledTextItemProps
+    Partial<ButtonProps> & StyledTextItemProps
   >,
   {
     shouldForwardProp: (prop: string) =>
@@ -103,8 +103,8 @@ export const StyledTextItem = styled(
         border-radius: ${corners?.l}px;
         background-color: ${open
           ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed
           : "transparent"};
 
         gap: ${spaces?.xs}px;
@@ -116,8 +116,8 @@ export const StyledTextItem = styled(
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillInteractionOnDark
-            : semanticColors?.base.fillInteraction};
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction};
           box-shadow: none;
 
           color: ${hasInvertedStyle

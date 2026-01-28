@@ -39,7 +39,7 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
     >
       The 
       <strong>
-        ButtnoIcon
+        ButtonIcon
       </strong>
        component is deprecated!
       <br />
@@ -47,12 +47,7 @@ exports[`<ButtonIcon /> Default story renders snapshot 1`] = `
       <strong>
         Button
       </strong>
-       component with
-       
-      <strong>
-        Icon
-      </strong>
-       style instead.
+       component instead.
     </div>
   </div>
   <div

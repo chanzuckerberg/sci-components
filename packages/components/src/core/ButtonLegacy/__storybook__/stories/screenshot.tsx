@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-webpack5";
-import RawButton from "src/core/Button";
+import RawButtonLegacy from "src/core/ButtonLegacy";
 import {
   BUTTON_DISABLED_OPTIONS,
   SCREENSHOT_BUTTON_ICON_OPTIONS,
@@ -219,7 +219,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     <br />
                     <b>{disabled === false ? state : "true"}</b>
                   </h6>
-                  <RawButton
+                  <RawButtonLegacy
                     {...props}
                     data-testid="button"
                     sdsStyle={sdsStyle as SDSStyles[number]}
@@ -231,7 +231,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     key={state}
                   >
                     {BUTTON_TEXT}
-                  </RawButton>
+                  </RawButtonLegacy>
                 </>
               )}
             </div>
@@ -364,7 +364,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     <br />
                     <b>{disabled === false ? state : "true"}</b>
                   </p>
-                  <RawButton
+                  <RawButtonLegacy
                     aria-label={icon}
                     icon={icon as keyof IconNameToSizes}
                     data-testid="button-icon"

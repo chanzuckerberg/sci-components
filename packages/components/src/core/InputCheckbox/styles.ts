@@ -68,7 +68,7 @@ export const StyledCheckboxCheckedIcon = styled("div")`
       height: ${iconSizes?.s.height}px;
       width: ${iconSizes?.s.width}px;
       border-radius: 2px;
-      background-color: ${semanticColors?.accent?.ornament};
+      background-color: ${semanticColors?.accent?.foreground};
 
       ${StyledIcon} {
         fill: ${semanticColors?.base?.ornamentPrimaryInverse};
@@ -175,11 +175,11 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
       &:hover {
         ${StyledCheckboxDefaultIcon} {
           border: ${borders?.base?.hover};
-          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
+          background-color: ${disabled ? "transparent" : semanticColors?.base?.fillPrimaryInteraction};
         }
 
         ${StyledCheckboxCheckedIcon} {
-          background-color: ${semanticColors?.accent?.fillHover};
+          background-color: ${semanticColors?.accent?.fillInteraction};
         }
       }
 

@@ -27,7 +27,7 @@ const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
   const icon = iconMap[sdsIcon] ?? {};
   const { largeIcon, smallIcon } = icon;
 
-  if ((sdsSize === "xs" || sdsSize === "s") && smallIcon) {
+  if ((sdsSize === "xxs" || sdsSize === "xs" || sdsSize === "s") && smallIcon) {
     return (
       <StyledIcon ref={ref}>
         <StyledSvgIcon

@@ -42,12 +42,12 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
       }
 
       .${toggleButtonClasses.root}.${toggleButtonClasses.selected} {
-        background-color: ${semanticColors?.base?.fillInteraction};
-        color: ${semanticColors?.accent?.ornamentSelected};
+        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
+        color: ${semanticColors?.accent?.foregroundActive};
         border-color: ${semanticColors?.base?.borderPrimary};
 
         &:hover {
-          background-color: ${semanticColors?.base?.fillInteraction};
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction};
           color: ${semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }
@@ -64,7 +64,7 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
 
         &:hover {
           border-color: ${semanticColors?.base?.borderPrimary};
-          background-color: ${semanticColors?.base?.fillInteraction};
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction};
           color: ${semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }

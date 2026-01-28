@@ -1,5 +1,5 @@
 import { CardProps } from "@mui/material";
-import { SdsMinimalButtonProps } from "../Button";
+import { ButtonProps } from "../Button";
 import { ReactNode } from "react";
 
 export interface BaseContentCardProps extends CardProps {
@@ -12,7 +12,7 @@ export interface BaseContentCardProps extends CardProps {
   decorativeBorder?: boolean;
   children?: ReactNode;
   clickableCard?: boolean;
-  clickableCardProps?: Partial<SdsMinimalButtonProps>;
+  clickableCardProps?: Partial<ButtonProps>;
   buttonsPosition?: "left" | "right";
   classes?: {
     cardPaper?: string;

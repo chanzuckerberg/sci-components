@@ -1,6 +1,7 @@
 import { Args, Meta } from "@storybook/react-webpack5";
 import { InputDropdown } from "./stories/default";
 import { INPUT_DROPDOWN_EXCLUDED_CONTROLS } from "./constants";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -19,7 +20,7 @@ export default {
     },
     intent: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["default", "negative", "notice", "positive"],
     },
@@ -41,7 +42,7 @@ export default {
     },
     sdsType: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["label", "value"],
     },

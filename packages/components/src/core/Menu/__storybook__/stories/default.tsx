@@ -19,8 +19,9 @@ export const Menu = (props: Args): JSX.Element => {
     <div>
       <Button
         id="basic-button"
+        size="large"
         sdsStyle="minimal"
-        sdsType="secondary"
+        sdsType="primary"
         onClick={handleClick}
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"

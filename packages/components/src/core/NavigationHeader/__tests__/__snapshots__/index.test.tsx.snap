@@ -32,25 +32,28 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
         class="css-95kjxm"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-xor8rn-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-iqhjf8-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-3elcjz"
+            class="css-1am7bo"
           >
-            <div
-              class="css-n5es2b"
+            <span
+              class="css-3elcjz"
             >
-              Home
-            </div>
-            <div
-              aria-hidden="true"
-              class="css-fupqvl"
-            >
-              Home
-            </div>
+              <div
+                class="css-n5es2b"
+              >
+                Home
+              </div>
+              <div
+                aria-hidden="true"
+                class="css-fupqvl"
+              >
+                Home
+              </div>
+            </span>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -60,8 +63,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           class="css-cssveg"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-            data-style="minimal"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
             href="https://www.google.com"
             items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
             rel="noopener noreferrer"
@@ -69,34 +71,38 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
             target="_blank"
           >
             <span
-              class="css-3elcjz"
+              class="css-1am7bo"
             >
-              <div
-                class="css-n5es2b"
+              <span
+                class="css-3elcjz"
               >
-                Products
-              </div>
-              <div
-                aria-hidden="true"
-                class="css-fupqvl"
-              >
-                Products
-              </div>
-              <div
-                class="css-1ft6wgl"
-              >
-                <svg
+                <div
+                  class="css-n5es2b"
+                >
+                  Products
+                </div>
+                <div
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                  data-file-name="IconChevronDownSmall"
-                  data-testid="IconChevronDownSmall"
-                  fillcontrast="white"
-                  focusable="false"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  width="16"
-                />
-              </div>
+                  class="css-fupqvl"
+                >
+                  Products
+                </div>
+                <div
+                  class="css-1ft6wgl"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                    data-file-name="IconChevronDownSmall"
+                    data-testid="IconChevronDownSmall"
+                    fillcontrast="white"
+                    focusable="false"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  />
+                </div>
+              </span>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -107,41 +113,44 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           class="css-cssveg"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-            data-style="minimal"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
             href="/services"
             items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
             tabindex="0"
           >
             <span
-              class="css-3elcjz"
+              class="css-1am7bo"
             >
-              <div
-                class="css-n5es2b"
+              <span
+                class="css-3elcjz"
               >
-                Services
-              </div>
-              <div
-                aria-hidden="true"
-                class="css-fupqvl"
-              >
-                Services
-              </div>
-              <div
-                class="css-1ft6wgl"
-              >
-                <svg
+                <div
+                  class="css-n5es2b"
+                >
+                  Services
+                </div>
+                <div
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                  data-file-name="IconChevronDownSmall"
-                  data-testid="IconChevronDownSmall"
-                  fillcontrast="white"
-                  focusable="false"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  width="16"
-                />
-              </div>
+                  class="css-fupqvl"
+                >
+                  Services
+                </div>
+                <div
+                  class="css-1ft6wgl"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                    data-file-name="IconChevronDownSmall"
+                    data-testid="IconChevronDownSmall"
+                    fillcontrast="white"
+                    focusable="false"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  />
+                </div>
+              </span>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -152,8 +161,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           class="css-cssveg"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-            data-style="minimal"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
             href="https://www.google.com"
             items="[object Object],[object Object],[object Object]"
             rel="noopener noreferrer"
@@ -161,34 +169,38 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
             target="_blank"
           >
             <span
-              class="css-3elcjz"
+              class="css-1am7bo"
             >
-              <div
-                class="css-n5es2b"
+              <span
+                class="css-3elcjz"
               >
-                Benchmarks
-              </div>
-              <div
-                aria-hidden="true"
-                class="css-fupqvl"
-              >
-                Benchmarks
-              </div>
-              <div
-                class="css-1ft6wgl"
-              >
-                <svg
+                <div
+                  class="css-n5es2b"
+                >
+                  Benchmarks
+                </div>
+                <div
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                  data-file-name="IconChevronDownSmall"
-                  data-testid="IconChevronDownSmall"
-                  fillcontrast="white"
-                  focusable="false"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  width="16"
-                />
-              </div>
+                  class="css-fupqvl"
+                >
+                  Benchmarks
+                </div>
+                <div
+                  class="css-1ft6wgl"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                    data-file-name="IconChevronDownSmall"
+                    data-testid="IconChevronDownSmall"
+                    fillcontrast="white"
+                    focusable="false"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  />
+                </div>
+              </span>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -204,38 +216,41 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
         class="css-cssveg"
       >
         <a
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ig92ek-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-in55ab-MuiButtonBase-root-MuiButton-root"
           href="/research"
           items="[object Object],[object Object]"
           tabindex="0"
         >
-          <div
-            class="css-n5es2b"
+          <span
+            class="css-1am7bo"
           >
-            Research
-          </div>
-          <div
-            aria-hidden="true"
-            class="css-fupqvl"
-          >
-            Research
-          </div>
-          <div
-            class="css-1ft6wgl"
-          >
-            <svg
+            <div
+              class="css-n5es2b"
+            >
+              Research
+            </div>
+            <div
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
+              class="css-fupqvl"
+            >
+              Research
+            </div>
+            <div
+              class="css-1ft6wgl"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                data-file-name="IconChevronDownSmall"
+                data-testid="IconChevronDownSmall"
+                fillcontrast="white"
+                focusable="false"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              />
+            </div>
+          </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
@@ -246,37 +261,44 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
       class="css-fxf0kc"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-ruxetd-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-15ly6dk-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        Sign in
+        <span
+          class="css-1am7bo"
+        >
+          Sign in
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
       </button>
       <button
-        aria-label="My Profile"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-4qinyh-MuiButtonBase-root-MuiIconButton-root"
-        icon="Person"
+        aria-label="[object Object]"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-5f1n5q-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        <div
-          class="css-1ft6wgl"
+        <span
+          class="css-1am7bo"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-            data-file-name="IconPersonSmall"
-            data-testid="IconPersonSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-          />
-        </div>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+              data-file-name="IconPersonSmall"
+              data-testid="IconPersonSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -337,100 +359,109 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
         class="css-95kjxm"
       >
         <a
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
           role="button"
           tabindex="0"
         >
           <span
-            class="css-3elcjz"
+            class="css-1am7bo"
           >
-            <div
-              class="css-n5es2b"
+            <span
+              class="css-3elcjz"
             >
-              Primary
-            </div>
-            <div
-              aria-hidden="true"
-              class="css-fupqvl"
-            >
-              Primary
-            </div>
+              <div
+                class="css-n5es2b"
+              >
+                Primary
+              </div>
+              <div
+                aria-hidden="true"
+                class="css-fupqvl"
+              >
+                Primary
+              </div>
+            </span>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </a>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-3elcjz"
+            class="css-1am7bo"
           >
-            <div
-              class="css-n5es2b"
+            <span
+              class="css-3elcjz"
             >
-              Primary
-            </div>
-            <div
-              aria-hidden="true"
-              class="css-fupqvl"
-            >
-              Primary
-            </div>
-            <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
-            >
-              <span
-                class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+              <div
+                class="css-n5es2b"
               >
-                Tag
-              </span>
-            </div>
+                Primary
+              </div>
+              <div
+                aria-hidden="true"
+                class="css-fupqvl"
+              >
+                Primary
+              </div>
+              <div
+                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  Tag
+                </span>
+              </div>
+            </span>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
           items="[object Object],[object Object]"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-3elcjz"
+            class="css-1am7bo"
           >
-            <div
-              class="css-n5es2b"
+            <span
+              class="css-3elcjz"
             >
-              Primary
-            </div>
-            <div
-              aria-hidden="true"
-              class="css-fupqvl"
-            >
-              Primary
-            </div>
-            <div
-              class="css-1ft6wgl"
-            >
-              <svg
+              <div
+                class="css-n5es2b"
+              >
+                Primary
+              </div>
+              <div
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                data-file-name="IconChevronDownSmall"
-                data-testid="IconChevronDownSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
-              />
-            </div>
+                class="css-fupqvl"
+              >
+                Primary
+              </div>
+              <div
+                class="css-1ft6wgl"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                  data-file-name="IconChevronDownSmall"
+                  data-testid="IconChevronDownSmall"
+                  fillcontrast="white"
+                  focusable="false"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  width="16"
+                />
+              </div>
+            </span>
           </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -460,26 +491,29 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
               </span>
               <button
                 aria-label="search-button"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-3px3eh-MuiButtonBase-root-MuiIconButton-root"
-                icon="Search"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-j6a8va-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
-                <div
-                  class="css-1ft6wgl"
+                <span
+                  class="css-1am7bo"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                    data-file-name="IconSearchSmall"
-                    data-testid="IconSearchSmall"
-                    fillcontrast="white"
-                    focusable="false"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    width="16"
-                  />
-                </div>
+                  <div
+                    class="css-1ft6wgl"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                      data-file-name="IconSearchSmall"
+                      data-testid="IconSearchSmall"
+                      fillcontrast="white"
+                      focusable="false"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      width="16"
+                    />
+                  </div>
+                </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
@@ -516,58 +550,64 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       class="css-95kjxm"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ig92ek-MuiButtonBase-root-MuiButton-root"
-        data-style="minimal"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-in55ab-MuiButtonBase-root-MuiButton-root"
         items="[object Object],[object Object]"
         tabindex="0"
         type="button"
       >
-        <div
-          class="css-n5es2b"
+        <span
+          class="css-1am7bo"
         >
-          Secondary
-        </div>
-        <div
-          aria-hidden="true"
-          class="css-fupqvl"
-        >
-          Secondary
-        </div>
-        <div
-          class="css-1ft6wgl"
-        >
-          <svg
+          <div
+            class="css-n5es2b"
+          >
+            Secondary
+          </div>
+          <div
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-            data-file-name="IconChevronDownSmall"
-            data-testid="IconChevronDownSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-          />
-        </div>
+            class="css-fupqvl"
+          >
+            Secondary
+          </div>
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+              data-file-name="IconChevronDownSmall"
+              data-testid="IconChevronDownSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ig92ek-MuiButtonBase-root-MuiButton-root"
-        data-style="minimal"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-in55ab-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        Secondary
-        <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
+        <span
+          class="css-1am7bo"
         >
-          <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+          Secondary
+          <div
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
           >
-            2
-          </span>
-        </div>
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              2
+            </span>
+          </div>
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -577,47 +617,58 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       class="css-fxf0kc"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-arjfgo-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary css-cky7f2-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        Label
         <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-ruxetd-MuiButtonBase-root-MuiButton-root"
-        tabindex="0"
-        type="button"
-      >
-        Label
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
-      <button
-        aria-label="Label"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-4qinyh-MuiButtonBase-root-MuiIconButton-root"
-        icon="Person"
-        tabindex="0"
-        type="button"
-      >
-        <div
-          class="css-1ft6wgl"
+          class="css-1am7bo"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-            data-file-name="IconPersonSmall"
-            data-testid="IconPersonSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-          />
-        </div>
+          Label
+        </span>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-15ly6dk-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="css-1am7bo"
+        >
+          Label
+        </span>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        aria-label="[object Object]"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-18zjxfv-MuiButtonBase-root-MuiButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="css-1am7bo"
+        >
+          <div
+            class="css-1ft6wgl"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+              data-file-name="IconPersonSmall"
+              data-testid="IconPersonSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -661,26 +712,29 @@ exports[`<NavigationHeader /> WithTopComponent story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-f0g2hw-MuiButtonBase-root-MuiIconButton-root"
-      icon="XMark"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-piig03-MuiButtonBase-root-MuiButton-root"
       tabindex="0"
       type="button"
     >
-      <div
-        class="css-1ft6wgl"
+      <span
+        class="css-1am7bo"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-          data-file-name="IconXMarkSmall"
-          data-testid="IconXMarkSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+        <div
+          class="css-1ft6wgl"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+            data-file-name="IconXMarkSmall"
+            data-testid="IconXMarkSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
@@ -741,100 +795,109 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
           class="css-95kjxm"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-            data-style="minimal"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
             role="button"
             tabindex="0"
           >
             <span
-              class="css-3elcjz"
+              class="css-1am7bo"
             >
-              <div
-                class="css-n5es2b"
+              <span
+                class="css-3elcjz"
               >
-                Primary
-              </div>
-              <div
-                aria-hidden="true"
-                class="css-fupqvl"
-              >
-                Primary
-              </div>
+                <div
+                  class="css-n5es2b"
+                >
+                  Primary
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="css-fupqvl"
+                >
+                  Primary
+                </div>
+              </span>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </a>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-            data-style="minimal"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
             <span
-              class="css-3elcjz"
+              class="css-1am7bo"
             >
-              <div
-                class="css-n5es2b"
+              <span
+                class="css-3elcjz"
               >
-                Primary
-              </div>
-              <div
-                aria-hidden="true"
-                class="css-fupqvl"
-              >
-                Primary
-              </div>
-              <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                <div
+                  class="css-n5es2b"
                 >
-                  Tag
-                </span>
-              </div>
+                  Primary
+                </div>
+                <div
+                  aria-hidden="true"
+                  class="css-fupqvl"
+                >
+                  Primary
+                </div>
+                <div
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
+                >
+                  <span
+                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                  >
+                    Tag
+                  </span>
+                </div>
+              </span>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1h0q7xh-MuiButtonBase-root-MuiButton-root"
-            data-style="minimal"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-1p6019h-MuiButtonBase-root-MuiButton-root"
             items="[object Object],[object Object]"
             tabindex="0"
             type="button"
           >
             <span
-              class="css-3elcjz"
+              class="css-1am7bo"
             >
-              <div
-                class="css-n5es2b"
+              <span
+                class="css-3elcjz"
               >
-                Primary
-              </div>
-              <div
-                aria-hidden="true"
-                class="css-fupqvl"
-              >
-                Primary
-              </div>
-              <div
-                class="css-1ft6wgl"
-              >
-                <svg
+                <div
+                  class="css-n5es2b"
+                >
+                  Primary
+                </div>
+                <div
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                  data-file-name="IconChevronDownSmall"
-                  data-testid="IconChevronDownSmall"
-                  fillcontrast="white"
-                  focusable="false"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  width="16"
-                />
-              </div>
+                  class="css-fupqvl"
+                >
+                  Primary
+                </div>
+                <div
+                  class="css-1ft6wgl"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                    data-file-name="IconChevronDownSmall"
+                    data-testid="IconChevronDownSmall"
+                    fillcontrast="white"
+                    focusable="false"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    width="16"
+                  />
+                </div>
+              </span>
             </span>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -864,26 +927,29 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
                 </span>
                 <button
                   aria-label="search-button"
-                  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-3px3eh-MuiButtonBase-root-MuiIconButton-root"
-                  icon="Search"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-j6a8va-MuiButtonBase-root-MuiButton-root"
                   tabindex="0"
                   type="button"
                 >
-                  <div
-                    class="css-1ft6wgl"
+                  <span
+                    class="css-1am7bo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-                      data-file-name="IconSearchSmall"
-                      data-testid="IconSearchSmall"
-                      fillcontrast="white"
-                      focusable="false"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      width="16"
-                    />
-                  </div>
+                    <div
+                      class="css-1ft6wgl"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                        data-file-name="IconSearchSmall"
+                        data-testid="IconSearchSmall"
+                        fillcontrast="white"
+                        focusable="false"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        width="16"
+                      />
+                    </div>
+                  </span>
                   <span
                     class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                   />
@@ -920,58 +986,64 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         class="css-95kjxm"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ig92ek-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-in55ab-MuiButtonBase-root-MuiButton-root"
           items="[object Object],[object Object]"
           tabindex="0"
           type="button"
         >
-          <div
-            class="css-n5es2b"
+          <span
+            class="css-1am7bo"
           >
-            Secondary
-          </div>
-          <div
-            aria-hidden="true"
-            class="css-fupqvl"
-          >
-            Secondary
-          </div>
-          <div
-            class="css-1ft6wgl"
-          >
-            <svg
+            <div
+              class="css-n5es2b"
+            >
+              Secondary
+            </div>
+            <div
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
+              class="css-fupqvl"
+            >
+              Secondary
+            </div>
+            <div
+              class="css-1ft6wgl"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                data-file-name="IconChevronDownSmall"
+                data-testid="IconChevronDownSmall"
+                fillcontrast="white"
+                focusable="false"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              />
+            </div>
+          </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-ig92ek-MuiButtonBase-root-MuiButton-root"
-          data-style="minimal"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-in55ab-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
-          Secondary
-          <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
+          <span
+            class="css-1am7bo"
           >
-            <span
-              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            Secondary
+            <div
+              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary css-1iufekm-MuiChip-root"
             >
-              2
-            </span>
-          </div>
+              <span
+                class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+              >
+                2
+              </span>
+            </div>
+          </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
@@ -981,47 +1053,58 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         class="css-fxf0kc"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-arjfgo-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary css-cky7f2-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
-          Label
           <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
-        <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-ruxetd-MuiButtonBase-root-MuiButton-root"
-          tabindex="0"
-          type="button"
-        >
-          Label
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </button>
-        <button
-          aria-label="Label"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-4qinyh-MuiButtonBase-root-MuiIconButton-root"
-          icon="Person"
-          tabindex="0"
-          type="button"
-        >
-          <div
-            class="css-1ft6wgl"
+            class="css-1am7bo"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-              data-file-name="IconPersonSmall"
-              data-testid="IconPersonSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
+            Label
+          </span>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-15ly6dk-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="css-1am7bo"
+          >
+            Label
+          </span>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          aria-label="[object Object]"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-18zjxfv-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="css-1am7bo"
+          >
+            <div
+              class="css-1ft6wgl"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+                data-file-name="IconPersonSmall"
+                data-testid="IconPersonSmall"
+                fillcontrast="white"
+                focusable="false"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              />
+            </div>
+          </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />

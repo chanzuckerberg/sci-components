@@ -1,0 +1,34 @@
+{
+  "ButtonDropdownV2": {
+    "props": {
+      "backgroundOnHover": {
+        "type": "any",
+        "isRequired": false
+      },
+      "children": {
+        "type": "any",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "any",
+        "isRequired": false
+      },
+      "startIcon": {
+        "type": "any",
+        "isRequired": false
+      },
+      "size": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsStyle": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

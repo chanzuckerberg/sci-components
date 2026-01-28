@@ -6,4 +6,5 @@ export const PANEL_EXCLUDED_CONTROLS = [
   "HeaderComponent",
   "CloseButtonComponent",
   "closeButtonOnClick",
+  "isBackdropClickEnabled",
 ];

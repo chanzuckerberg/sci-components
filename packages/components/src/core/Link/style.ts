@@ -16,23 +16,23 @@ const defaultStyle = (props: LinkProps & CommonThemeProps) => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.accent?.textAction};
+    color: ${semanticColors?.accent?.foreground};
     position: relative;
     text-decoration: none;
     text-underline-offset: 2.5px;
 
     &:hover {
-      color: ${semanticColors?.accent?.textActionHover};
+      color: ${semanticColors?.accent?.foregroundInteraction};
       text-decoration: underline;
     }
 
     &:focus {
-      color: ${semanticColors?.accent?.textActionHover};
+      color: ${semanticColors?.accent?.foregroundInteraction};
       text-decoration: underline;
     }
 
     &:active {
-      color: ${semanticColors?.accent?.textActionPressed};
+      color: ${semanticColors?.accent?.foregroundPressed};
       text-decoration: underline;
     }
   `;

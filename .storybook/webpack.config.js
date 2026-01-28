@@ -1,14 +1,6 @@
 const path = require("path");
 
 module.exports = ({ config }) => {
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    src: [
-      path.resolve(__dirname, "../packages/components/src"),
-      path.resolve(__dirname, "../packages/data-viz/src"),
-    ],
-  };
-
   /**
    * (masoudmanson): Due to a Storybook build issue in production mode, where importing
    * cross-referenced workspace packages fails, this workaround involves falling back
@@ -17,8 +9,16 @@ module.exports = ({ config }) => {
    * Resolving monorepo packages in this manner necessitates a custom SCSS loader for
    * .sss files, as the src/index.ts file of each package includes an import link to the
    * style-dictionary variable files.
+   *
+   * NOTE: Using resolve.alias (not resolve.fallback) because fallback is for Node.js
+   * core module polyfills, not for package path redirection.
    */
-  config.resolve.fallback = {
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    src: [
+      path.resolve(__dirname, "../packages/components/src"),
+      path.resolve(__dirname, "../packages/data-viz/src"),
+    ],
     "@czi-sds/components": path.resolve(
       __dirname,
       "../packages/components/src"

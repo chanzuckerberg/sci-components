@@ -47,7 +47,7 @@ export const StyledTabs = styled(Tabs, {
       overflow: visible;
 
       .${tabsClasses.indicator} {
-        background-color: ${semanticColors?.accent?.borderSelected} !important;
+        background-color: ${semanticColors?.accent?.foregroundActive} !important;
         border-radius: 0;
         left: 0;
         width: 2px;
@@ -97,7 +97,7 @@ export const StyledTab = styled(Tab, {
       }
       &:hover {
         color: ${semanticColors?.base?.textPrimary};
-        background-color: ${semanticColors?.base?.fillInteraction};
+        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
         &:before {
           display: block;
         }

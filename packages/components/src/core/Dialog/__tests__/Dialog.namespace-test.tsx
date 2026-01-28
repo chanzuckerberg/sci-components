@@ -20,10 +20,10 @@ const CellBasicNameSpaceTest = (props: DialogProps) => {
       />
       <DialogContent data-testid="dialog-content">Content Module</DialogContent>
       <DialogActions data-testid="dialog-actions" buttonPosition="left">
-        <Button sdsStyle="square" sdsType="primary" onClick={noop}>
+        <Button sdsStyle="solid" sdsType="primary" onClick={noop}>
           Primary Action
         </Button>
-        <Button sdsStyle="square" sdsType="secondary" onClick={noop}>
+        <Button sdsStyle="solid" sdsType="secondary" onClick={noop}>
           Secondary Action
         </Button>
       </DialogActions>

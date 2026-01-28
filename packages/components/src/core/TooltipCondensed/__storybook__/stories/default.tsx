@@ -1,5 +1,6 @@
 import { Args } from "@storybook/react-webpack5";
 import Button from "src/core/Button";
+import Icon from "src/core/Icon";
 import RawTooltipCondensed from "src/core/TooltipCondensed";
 
 export const TooltipCondensed = (props: Args): JSX.Element => {
@@ -19,11 +20,12 @@ export const TooltipCondensed = (props: Args): JSX.Element => {
           <Button
             aria-label="tooltip condensed test button"
             data-testid="tooltip-hover"
-            icon="ExclamationMarkCircle"
-            sdsSize="large"
-            sdsStyle="icon"
-            sdsType="tertiary"
-          />
+            size="large"
+            sdsStyle="minimal"
+            sdsType="primary"
+          >
+            <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+          </Button>
         </RawTooltipCondensed>
         <p>Hover over the info icon to view the tooltip.</p>
       </div>

@@ -218,7 +218,7 @@ export const StyledSearchBase = styled(TextField, {
       }
 
       .${outlinedInputClasses.root}:hover {
-        background-color: ${semanticColors?.base?.fillInteraction};
+        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
 
         & .${buttonBaseClasses.root}:last-of-type {
           svg {
@@ -234,7 +234,7 @@ export const StyledSearchBase = styled(TextField, {
         outline: none;
 
         .${outlinedInputClasses.notchedOutline} {
-          border: 1px solid ${semanticColors?.accent?.border};
+          border: 1px solid ${semanticColors?.accent?.foreground};
         }
 
         .${inputAdornmentClasses.root} .${buttonBaseClasses.root}:last-of-type {

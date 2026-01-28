@@ -56,13 +56,13 @@ export const StyledMessageItem = styled.div<
 
     return `
       gap: ${spaces?.xs}px;
-      color: ${intentColors?.text};
+      color: ${intentColors?.foreground};
 
       svg {
         margin-top: ${spaces?.xxxs}px;
-        fill: ${intentColors?.ornament};
+        fill: ${intentColors?.foreground};
         path {
-          fill: ${intentColors?.ornament};
+          fill: ${intentColors?.foreground};
         }
       }
     `;

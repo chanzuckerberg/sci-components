@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Args } from "@storybook/react-webpack5";
 import RawPanel from "src/core/Panel";
-import Button from "src/core/Button";
 import { Box, Typography } from "@mui/material";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+import Icon from "src/core/Icon";
+import ButtonToggle from "src/core/ButtonToggle";
 
 export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
   const [open, setOpen] = React.useState(true);
@@ -11,14 +12,15 @@ export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
   return (
     <>
       <Box sx={{ paddingBottom: 4 }}>
-        <Button
-          sdsStyle="icon"
-          sdsSize="medium"
+        <ButtonToggle
+          aria-label="button-toggle"
+          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          size="large"
           sdsType="primary"
-          icon="InfoCircle"
-          onClick={() => {
-            setOpen((prev) => !prev);
-          }}
+          sdsStyle="minimal"
+          onClick={() => setOpen((prev) => !prev)}
+          sdsStage={open ? "on" : "off"}
+          backgroundOnHover
         />
       </Box>
 

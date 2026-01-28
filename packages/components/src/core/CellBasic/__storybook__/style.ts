@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
 import {
   CommonThemeProps,
   fontBodyXxxs,
@@ -25,13 +24,6 @@ export const ButtonIconsGroupRight = styled("div")`
 
 export const ButtonIconsGroupBottom = styled("div")`
   display: inline-flex;
-`;
-
-export const StyledButton = styled(Button)`
-  svg {
-    width: 12px;
-    height: 12px;
-  }
 `;
 
 export const EmptySlotRight = styled("div")`

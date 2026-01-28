@@ -2,10 +2,11 @@ import { Box, useTheme } from "@mui/material";
 import { Args } from "@storybook/react-webpack5";
 import React, { useState } from "react";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import ButtonToggle from "src/core/ButtonToggle";
 import Callout from "src/core/Callout";
 import RawPanel from "src/core/Panel";
 import { PanelProps } from "../../Panel.types";
+import ButtonToggle from "src/core/ButtonToggle";
+import Icon from "src/core/Icon";
 
 const InvalidBasicPanelPropsError = (
   <Callout
@@ -95,11 +96,13 @@ export const Panel = (props: Args): JSX.Element => {
       <Main sdsType={sdsType} open={open} {...props}>
         <ButtonToggle
           aria-label="button-toggle"
-          icon="InfoCircle"
-          sdsSize="medium"
+          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          size="large"
           sdsType="primary"
+          sdsStyle="minimal"
           onClick={() => setOpen((prev) => !prev)}
           sdsStage={open ? "on" : "off"}
+          backgroundOnHover
         />
 
         <p>{LONG_LOREM_IPSUM}</p>
