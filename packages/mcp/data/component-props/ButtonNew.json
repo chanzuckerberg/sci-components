@@ -1,0 +1,47 @@
+{
+  "ButtonNew": {
+    "props": {
+      "backgroundOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
+      "endIcon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Element placed after the children."
+      },
+      "icon": {
+        "type": "any",
+        "isRequired": false
+      },
+      "onClick": {
+        "type": "function",
+        "isRequired": false
+      },
+      "size": {
+        "type": "\"small\" | \"medium\" | \"large\"",
+        "isRequired": false,
+        "description": "The size of the component.\n`small` is equivalent to the dense button styling.",
+        "defaultValue": "medium"
+      },
+      "sdsStyle": {
+        "type": "\"outline\" | \"solid\" | \"minimal\"",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "\"primary\" | \"secondary\" | \"destructive\"",
+        "isRequired": false
+      },
+      "startIcon": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "Element placed before the children."
+      }
+    }
+  }
+}

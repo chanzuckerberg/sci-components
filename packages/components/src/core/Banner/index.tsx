@@ -98,12 +98,14 @@ const Banner = forwardRef(function Banner(
         <StyledButton
           aria-label="Close"
           bannerType={sdsType}
-          sdsType="tertiary"
-          sdsSize="small"
-          sdsStyle="icon"
+          sdsType="secondary"
+          size="large"
+          sdsStyle="minimal"
+          backgroundOnHover={false}
           onClick={handleClose}
-          icon="XMark"
-        />
+        >
+          <Icon sdsIcon="XMark" sdsSize="s" />
+        </StyledButton>
       )}
     </StyledBanner>
   );

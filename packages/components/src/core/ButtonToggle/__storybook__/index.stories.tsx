@@ -1,44 +1,57 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta } from "@storybook/react-webpack5";
 import { ButtonToggle } from "./stories/default";
-import {
-  BUTTON_TOGGLE_EXCLUDED_CONTROLS,
-  BUTTON_TOGGLE_ICON_LABELS,
-  BUTTON_TOGGLE_ICON_OPTIONS,
-} from "./constants";
+import { BUTTON_TOGGLE_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
+import {
+  BUTTON_DROPDOWN_ICON_LABELS,
+  BUTTON_DROPDOWN_ICON_OPTIONS,
+} from "src/core/ButtonDropdown/__storybook__/constants";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
+    backgroundAppearance: {
+      control: { type: INLINE_RADIO },
+      options: ["matchBackground", "dark"],
+    },
+    children: {
+      control: {
+        type: "text",
+      },
+    },
     disabled: {
       control: {
         type: "boolean",
       },
     },
-    icon: {
+    startIcon: {
       control: {
-        labels: BUTTON_TOGGLE_ICON_LABELS,
+        labels: BUTTON_DROPDOWN_ICON_LABELS,
         type: "select",
       },
-      mapping: BUTTON_TOGGLE_ICON_OPTIONS,
-      options: Object.keys(BUTTON_TOGGLE_ICON_OPTIONS),
+      mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
+      options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
-    sdsSize: {
+    size: {
       control: {
-        type: "select",
+        type: INLINE_RADIO,
       },
       options: ["small", "medium", "large"],
     },
-    sdsStage: {
-      control: {
-        type: "radio",
-      },
-      options: ["on", "off"],
-    },
     sdsType: {
       control: {
-        type: "radio",
+        type: INLINE_RADIO,
       },
       options: ["primary", "secondary"],
+    },
+    sdsStyle: {
+      control: { type: INLINE_RADIO },
+      options: ["outline", "minimal"],
+    },
+    sdsStage: {
+      control: { type: INLINE_RADIO },
+      options: ["on", "off"],
     },
   },
   component: ButtonToggle,
@@ -50,11 +63,14 @@ export default {
 
 export const Default = {
   args: {
+    children: "Label",
+    backgroundAppearance: "matchBackground",
     disabled: false,
-    icon: "InfoCircle",
-    sdsSize: "medium",
-    sdsStage: "off",
+    startIcon: BUTTON_DROPDOWN_ICON_OPTIONS[0],
+    size: "large",
     sdsType: "primary",
+    sdsStyle: "outline",
+    sdsStage: "off",
   },
 };
 
@@ -69,5 +85,5 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo icon="InfoCircle" {...args} />,
+  render: (args: Args) => <TestDemo startIcon="InfoCircle" {...args} />,
 };

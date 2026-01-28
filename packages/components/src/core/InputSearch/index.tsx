@@ -9,6 +9,7 @@ import {
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
 import { EMPTY_OBJECT, cn } from "src/common/utils";
+import Icon from "../Icon";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -143,12 +144,14 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                     clearButtonClassName
                   )}
                   onClick={clearInput}
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
+                  sdsType="secondary"
+                  size="small"
+                  sdsStyle="minimal"
                   disabled={disabled}
-                  icon="XMarkCircle"
-                />
+                  backgroundOnHover={false}
+                >
+                  <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                </Button>
               </StyledInputAdornment>
             ) : null,
             startAdornment: (
@@ -159,13 +162,15 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                 <Button
                   aria-label="search-button"
                   onClick={localHandleSubmit}
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
+                  sdsType="secondary"
+                  size="large"
+                  sdsStyle="minimal"
                   disabled={disabled}
-                  icon="Search"
+                  backgroundOnHover={false}
                   className={cn(searchButtonClassName)}
-                />
+                >
+                  <Icon sdsIcon="Search" sdsSize="s" />
+                </Button>
               </StyledInputAdornment>
             ),
           }}

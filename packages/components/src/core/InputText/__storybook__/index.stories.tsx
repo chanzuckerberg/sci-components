@@ -2,6 +2,7 @@ import { Args, Meta } from "@storybook/react-webpack5";
 import { InputText } from "./stories/default";
 import { INPUT_TEXT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -16,7 +17,7 @@ export default {
       required: true,
     },
     intent: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["default", "negative", "notice", "positive"],
     },
     label: {
@@ -26,7 +27,7 @@ export default {
       control: { type: "text" },
     },
     sdsType: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["textField", "textArea"],
     },
     classes: {

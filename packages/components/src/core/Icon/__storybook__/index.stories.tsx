@@ -27,7 +27,7 @@ export default {
     },
     sdsSize: {
       control: { type: "select" },
-      options: ["xs", "s", "l", "xl"],
+      options: ["xxs", "xs", "s", "l", "xl"],
     },
     shade: {
       control: {

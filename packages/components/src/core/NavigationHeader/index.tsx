@@ -16,7 +16,7 @@ import {
   StyledHeaderButton,
   StyledLogoLinkWrapper,
   StyledLogoWrapper,
-  StyledNarrowButton,
+  StyledNarrowHamburgerMenuButton,
   StyledNarrowIconButton,
   StyledPrimaryNavContainer,
   StyledSearch,
@@ -31,15 +31,13 @@ import {
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
-import { ButtonProps, SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import Icon from "../Icon";
-import {
-  IconButtonProps,
-  NavigationHeaderProps,
-} from "./NavigationHeader.types";
+import { NavigationHeaderProps } from "./NavigationHeader.types";
 import { mergeRefs } from "src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
 import { getMode } from "../styles";
+import { isIconOnlyChild } from "../Button/style";
+import { ButtonProps } from "../Button";
 
 // Time to wait for accordion animation and scroll to complete (includes MUI animation duration + buffer)
 const ACCORDION_SCROLL_DELAY_MS = 500;
@@ -390,6 +388,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           hasInvertedStyle,
           key,
           onClick: enhancedOnClick,
+          backgroundAppearance,
           sx: {
             ...(buttonProps.props?.sx || {}),
             ...fullWidth,
@@ -398,15 +397,18 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       }
 
       if (typeof buttonProps === "object" && buttonProps !== null) {
-        const buttonPropsObj = buttonProps as ButtonProps;
-        const isIconButton = "icon" in buttonPropsObj;
+        const buttonPropsObj = {
+          ...buttonProps,
+          backgroundAppearance,
+        } as ButtonProps;
+        const isIconButton = isIconOnlyChild(buttonPropsObj.children);
 
-        if (isIconButton && dimensions.isNarrow && buttonPropsObj.icon) {
+        if (isIconButton && dimensions.isNarrow) {
           return renderNarrowIconButton(buttonPropsObj, key, fullWidth);
         }
 
         if (isIconButton && !dimensions.isNarrow) {
-          return renderWideIconButton(buttonPropsObj as IconButtonProps, key);
+          return renderWideIconButton(buttonPropsObj, key);
         }
 
         return renderDefaultButton(buttonPropsObj, key, fullWidth);
@@ -432,13 +434,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
         <StyledNarrowIconButton
           key={key}
           sx={fullWidth}
-          isAllCaps={false}
-          startIcon={<Icon sdsSize="s" sdsIcon="Person" />}
           hasInvertedStyle={hasInvertedStyle}
           {...buttonProps}
           onClick={enhancedOnClick}
           sdsStyle="minimal"
           sdsType="secondary"
+          size="large"
           isNarrow={dimensions.isNarrow}
         >
           {buttonProps.children}
@@ -446,20 +447,16 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
       );
     };
 
-    const renderWideIconButton = (
-      buttonProps: IconButtonProps,
-      key: string
-    ) => {
+    const renderWideIconButton = (buttonProps: ButtonProps, key: string) => {
       return (
         <StyledWideIconButton
           key={key}
           aria-label={String(buttonProps.children)}
           hasInvertedStyle={hasInvertedStyle}
+          sdsStyle="minimal"
+          sdsType="primary"
+          size="large"
           {...buttonProps}
-          sdsStyle="icon"
-          sdsType="secondary"
-          sdsSize="small"
-          icon={buttonProps.icon}
         />
       );
     };
@@ -479,13 +476,12 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
 
       return (
         <StyledHeaderButton
+          size="large"
           key={key}
           sx={fullWidth}
-          {...(buttonProps as SdsMinimalButtonProps | SdsButtonProps)}
+          {...(buttonProps as ButtonProps)}
           onClick={enhancedOnClick}
-          sdsStyle="rounded"
           hasInvertedStyle={hasInvertedStyle}
-          isNarrow={dimensions.isNarrow}
         />
       );
     };
@@ -530,13 +526,19 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
           )}
 
           {dimensions.isNarrow && (
-            <StyledNarrowButton
-              sdsType="tertiary"
-              sdsStyle="icon"
-              icon={drawerOpen ? "XMark" : "LinesHorizontal3"}
+            <StyledNarrowHamburgerMenuButton
+              sdsType="secondary"
+              sdsStyle="minimal"
+              size="large"
+              backgroundOnHover={false}
               onClick={() => setDrawerOpen((prev) => !prev)}
               hasInvertedStyle={hasInvertedStyle}
-            />
+            >
+              <Icon
+                sdsSize="l"
+                sdsIcon={drawerOpen ? "XMark" : "LinesHorizontal3"}
+              />
+            </StyledNarrowHamburgerMenuButton>
           )}
         </StyledToolbar>
       );

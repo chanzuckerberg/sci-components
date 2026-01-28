@@ -5,7 +5,6 @@ import Callout from "src/core/Callout";
 import RawIcon, { IconNameToSizes, SdsIconWithColor } from "src/core/Icon";
 import {
   CommonThemeProps,
-  fontBodyXs,
   getColors,
   getMode,
   getSemanticColors,
@@ -14,6 +13,8 @@ import {
 } from "src/core/styles";
 import { iconMap } from "src/core/Icon/map";
 import InputSearch from "src/core/InputSearch";
+import Tooltip from "src/core/Tooltip";
+import { IconSizes } from "src/core/styles/common/constants/iconSizes";
 
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {
@@ -25,15 +26,13 @@ const IconBankWrapper = styled("div")`
       display: grid;
       grid-gap: ${spaces?.s}px;
       margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, 210px);
+      grid-template-columns: repeat(auto-fit, 260px);
       margin-top: ${spaces?.m}px;
     `;
   }}
 `;
 
 const IconWrapper = styled("div")`
-  ${fontBodyXs}
-
   ${(props: CommonThemeProps & SdsIconWithColor) => {
     const colors = getColors(props);
     const spaces = getSpaces(props);
@@ -44,14 +43,16 @@ const IconWrapper = styled("div")`
 
     return `
       align-items: center;
-      border-radius: 4px;
+      border-radius: 6px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 8px;
+      padding: 16px 20px;
       position: relative;
       cursor: pointer;
       transition: all .2s;
+      min-height: unset !important;
+      line-height: unset !important;
 
       p {
         margin: ${spaces?.m}px 0 0 0;
@@ -68,13 +69,13 @@ const IconWrapper = styled("div")`
       span.size-tag {
         background-color: ${mode === "light" ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)"};
         font-size: 10px;
-        padding: 0 4px;
+        padding: 0 4px 1px;
         margin: 0 2px;
         border-radius: 2px;
       }
 
       &:hover {
-        border-radius: 4px;
+        border-radius: 8px;
         background-color: ${colors?.[color]?.[shade]};
         border-color: ${colors?.[color]?.[shade]};
         color: ${semanticColors?.base?.textPrimaryInverse};
@@ -101,9 +102,9 @@ const IconWrapper = styled("div")`
       }
 
       div.icon {
-        min-height: 22px;
         display: flex;
         align-items: center;
+        gap: 8px;
       }
 
       div.notification {
@@ -125,7 +126,10 @@ const IconWrapper = styled("div")`
 
 type IconItemProps = {
   sdsIcon: string;
-  innerIcon: [string, FC<CustomSVGProps> | null];
+  innerIcon: {
+    smallIcon: FC<CustomSVGProps> | null;
+    largeIcon: FC<CustomSVGProps> | null;
+  };
 } & SdsIconWithColor;
 
 const IconItem = (props: IconItemProps) => {
@@ -133,9 +137,7 @@ const IconItem = (props: IconItemProps) => {
 
   const [copied, setCopied] = useState(false);
 
-  if (!innerIcon[1]) return null;
-
-  const sdsSize = innerIcon[0] === "smallIcon" ? "s" : "l";
+  const sdsSize = innerIcon.smallIcon ? "s" : "l";
 
   const copyIconNameHandler = (iconName: string) => {
     navigator.clipboard.writeText(iconName);
@@ -149,30 +151,44 @@ const IconItem = (props: IconItemProps) => {
   return (
     <IconWrapper
       color={color}
-      key={sdsIcon + sdsSize}
+      key={sdsIcon + "wrapper"}
       onClick={() => copyIconNameHandler(sdsIcon)}
     >
       <div className="icon">
-        <RawIcon
-          color={color}
-          sdsSize={sdsSize}
-          sdsIcon={sdsIcon as keyof IconNameToSizes}
-        />
+        {[
+          ...(innerIcon.smallIcon ? ["xxs", "xs", "s"] : []),
+          ...(innerIcon.largeIcon ? ["l", "xl"] : []),
+        ].map((size) => {
+          const iconSize = IconSizes[size as keyof typeof IconSizes];
+
+          return (
+            <Tooltip
+              placement="top"
+              title={`Size ${size.toUpperCase()} (${iconSize.height}px \u00D7 ${iconSize.width}px)`}
+              key={size + sdsIcon}
+            >
+              <span>
+                <RawIcon
+                  color={color}
+                  sdsSize={size as "xxs" | "xs" | "s" | "l" | "xl"}
+                  sdsIcon={sdsIcon as keyof IconNameToSizes}
+                />
+              </span>
+            </Tooltip>
+          );
+        })}
       </div>
       <p>{sdsIcon}</p>
       <span>
-        Available sizes{" "}
-        {sdsSize === "s" ? (
-          <>
-            <span className="size-tag">xs</span>
-            <span className="size-tag">s</span>
-          </>
-        ) : (
-          <>
-            <span className="size-tag">l</span>
-            <span className="size-tag">xl</span>
-          </>
-        )}
+        Available sizes
+        {[
+          ...(innerIcon.smallIcon ? ["xxs", "xs", "s"] : []),
+          ...(innerIcon.largeIcon ? ["l", "xl"] : []),
+        ].map((size) => (
+          <span key={sdsIcon + size} className="size-tag">
+            {size}
+          </span>
+        ))}
       </span>
       {copied && (
         <div className="notification">
@@ -216,19 +232,19 @@ export const IconBankDemo = (props: Args): JSX.Element => {
         placeholder="Search icons"
         name="square-input-search"
         onChange={searchIconHandler}
-        sx={{ width: "210px" }}
+        sx={{ width: "260px" }}
       />
       {icons.length ? (
         <IconBankWrapper>
           {icons.map(([sdsIcon, icon]) => {
-            return Object.entries(icon).map((innerIcon) => (
+            return (
               <IconItem
                 color={color}
-                key={sdsIcon + innerIcon[0]}
-                innerIcon={innerIcon}
+                key={sdsIcon}
+                innerIcon={icon}
                 sdsIcon={sdsIcon}
               />
-            ));
+            );
           })}
         </IconBankWrapper>
       ) : (

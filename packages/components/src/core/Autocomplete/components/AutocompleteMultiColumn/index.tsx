@@ -33,6 +33,7 @@ import {
 } from "./style";
 import useDetectUserTabbing from "src/common/helpers/userTabbing";
 import { VerticalDivider } from "./components/VerticalDivider";
+import Icon from "src/core/Icon";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -230,12 +231,14 @@ const AutocompleteMultiColumn = <
                   <Button
                     aria-label="clear-button"
                     className="input-search-clear-icon"
-                    sdsType="tertiary"
-                    sdsSize="small"
-                    sdsStyle="icon"
-                    icon="XMarkCircle"
+                    sdsType="secondary"
+                    size="large"
+                    sdsStyle="minimal"
                     onClick={clearInput}
-                  />
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                  </Button>
                 )}
               </StyledInputAdornment>
             ),
@@ -248,11 +251,13 @@ const AutocompleteMultiColumn = <
               <StyledInputAdornment position="start">
                 <Button
                   aria-label="search-button"
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
-                  icon="Search"
-                />
+                  sdsType="secondary"
+                  size="large"
+                  sdsStyle="minimal"
+                  backgroundOnHover={false}
+                >
+                  <Icon sdsIcon="Search" sdsSize="s" />
+                </Button>
               </StyledInputAdornment>
             ),
           }}

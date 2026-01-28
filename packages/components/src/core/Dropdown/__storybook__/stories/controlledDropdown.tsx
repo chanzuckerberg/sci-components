@@ -34,7 +34,6 @@ export const ControlledDropdownDemo = <
       <StyledButton
         onClick={handleClick}
         sdsStyle="minimal"
-        isAllCaps={false}
         sdsType="secondary"
       >
         Click here to select the first three options

@@ -34,7 +34,7 @@ const Header = () => {
       <HeaderRight>
         <Button
           sdsType="primary"
-          sdsStyle="rounded"
+          sdsStyle="solid"
           endIcon={<Icon sdsIcon="Download" sdsSize="l" />}
           onClick={() => saveAsImage("sds-heatmap")}
         >
@@ -63,11 +63,12 @@ const Header = () => {
         >
           <StyledButton
             aria-label="Download Info"
-            icon="InfoCircle"
-            sdsSize="large"
+            size="large"
             sdsType="secondary"
-            sdsStyle="icon"
-          />
+            sdsStyle="minimal"
+          >
+            <Icon sdsIcon="InfoCircle" sdsSize="l" />
+          </StyledButton>
         </Tooltip>
       </HeaderRight>
     </StyledHeader>

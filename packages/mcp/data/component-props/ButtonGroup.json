@@ -1,0 +1,26 @@
+{
+  "ButtonGroup": {
+    "props": {
+      "backgroundAppearance": {
+        "type": "any",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "any",
+        "isRequired": false
+      },
+      "orientation": {
+        "type": "any",
+        "isRequired": false
+      },
+      "size": {
+        "type": "any",
+        "isRequired": false
+      },
+      "sdsType": {
+        "type": "any",
+        "isRequired": false
+      }
+    }
+  }
+}

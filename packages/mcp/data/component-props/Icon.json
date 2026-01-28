@@ -10,7 +10,7 @@
         "isRequired": true
       },
       "sdsSize": {
-        "type": "\"xs\" | \"s\" | \"l\" | \"xl\"",
+        "type": "\"xxs\" | \"xs\" | \"s\" | \"l\" | \"xl\"",
         "isRequired": true
       },
       "shade": {

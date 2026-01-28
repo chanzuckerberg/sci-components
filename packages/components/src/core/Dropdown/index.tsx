@@ -161,13 +161,18 @@ const DropdownButtons = ({
   onCancel,
 }: DropdownButtonsProps) => {
   const applyButton = (
-    <Button onClick={onApply} sdsStyle="square" sdsType="primary">
+    <Button onClick={onApply} size="large" sdsStyle="solid" sdsType="primary">
       Apply
     </Button>
   );
 
   const cancelButton = (
-    <Button onClick={onCancel} sdsStyle="square" sdsType="secondary">
+    <Button
+      onClick={onCancel}
+      size="large"
+      sdsStyle="outline"
+      sdsType="primary"
+    >
       Cancel
     </Button>
   );

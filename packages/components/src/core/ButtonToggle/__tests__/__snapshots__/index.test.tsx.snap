@@ -1,30 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
-<button
-  aria-label="button-toggle"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ul4hcs-MuiButtonBase-root-MuiIconButton-root"
-  icon="InfoCircle"
-  tabindex="0"
-  type="button"
+<div
+  class="css-154eh9f"
 >
-  <div
-    class="css-1ft6wgl"
+  <button
+    aria-label="button-toggle"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-821i09-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
   >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-      data-file-name="IconInfoCircleLarge"
-      data-testid="IconInfoCircleLarge"
-      fillcontrast="white"
-      focusable="false"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
+    <span
+      class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+    >
+      <div
+        class="css-1ft6wgl"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          data-file-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </span>
+    <span
+      class="css-1am7bo"
+    >
+      Label
+    </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
-  </div>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
-</button>
+  </button>
+</div>
 `;

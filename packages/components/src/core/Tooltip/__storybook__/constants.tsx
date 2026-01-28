@@ -30,6 +30,8 @@ export const TOOLTIP_PLACEMENT_STYLES = {
   gridTemplateColumns: "repeat(3, 130px)",
   gridTemplateRows: "repeat(5, 60px)",
   justifyContent: "center",
+  justifyItems: "center",
+  alignItems: "center",
   padding: "100px",
 };
 

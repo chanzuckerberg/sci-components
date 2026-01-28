@@ -55,8 +55,8 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
       : css`
           background-color: ${active
             ? hasInvertedStyle
-              ? semanticColors?.base?.fillPressedOnDark
-              : semanticColors?.base?.fillPressed
+              ? semanticColors?.base?.fillPrimaryPressedOnDark
+              : semanticColors?.base?.fillPrimaryPressed
             : "transparent"};
         `}
     width: 100%;
@@ -68,8 +68,8 @@ const NarrowPrimaryNavItem = (props: PrimaryNavItemProps): SerializedStyles => {
           `
         : css`
             background: ${hasInvertedStyle
-              ? semanticColors?.base.fillInteractionOnDark
-              : semanticColors?.base.fillInteraction};
+              ? semanticColors?.base?.fillPrimaryInteractionOnDark
+              : semanticColors?.base?.fillPrimaryInteraction};
           `}
       box-shadow: none;
 
@@ -118,8 +118,8 @@ export const PrimaryNavItem = styled(Button, {
       border-radius: ${corners?.l}px;
       background-color: ${active
         ? hasInvertedStyle
-          ? semanticColors?.base?.fillPressedOnDark
-          : semanticColors?.base?.fillPressed
+          ? semanticColors?.base?.fillPrimaryPressedOnDark
+          : semanticColors?.base?.fillPrimaryPressed
         : "transparent"};
 
       svg {
@@ -128,8 +128,8 @@ export const PrimaryNavItem = styled(Button, {
 
       &:hover {
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillInteractionOnDark
-          : semanticColors?.base.fillInteraction} !important;
+          ? semanticColors?.base?.fillPrimaryInteractionOnDark
+          : semanticColors?.base?.fillPrimaryInteraction} !important;
         box-shadow: none;
 
         ${StyledLabel} {

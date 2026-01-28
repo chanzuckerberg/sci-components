@@ -5,6 +5,8 @@ export const toKebabCase = (str: string) =>
 
 export const EMPTY_OBJECT = {};
 
+export const INLINE_RADIO = "inline-radio";
+
 /**
  * (masoudmanson):
  * Utility function to concatenate classNames and filter out falsy values.

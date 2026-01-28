@@ -2,6 +2,7 @@ import { ChipProps } from "@mui/material";
 import React from "react";
 import { StyledTag } from "./style";
 import Button from "../Button";
+import Icon from "../Icon";
 
 export interface SdsTagFilterProps
   extends Omit<ChipProps, "color" | "variant"> {
@@ -24,11 +25,13 @@ const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
       deleteIcon={
         <Button
           aria-label="Delete Tag"
-          icon="XMark"
-          sdsSize="small"
-          sdsType="tertiary"
-          sdsStyle="icon"
-        />
+          sdsStyle="minimal"
+          sdsType="secondary"
+          size="medium"
+          backgroundOnHover={false}
+        >
+          <Icon sdsIcon="XMark" sdsSize="s" />
+        </Button>
       }
       color="info"
     />
