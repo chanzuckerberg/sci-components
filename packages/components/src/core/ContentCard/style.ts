@@ -56,10 +56,14 @@ const getShowDecorativeBorder = (
   visualElementType: ContentCardProps["visualElementType"] | undefined,
   boundingBox: boolean,
   decorativeBorder: boolean,
-  imagePadding: boolean
+  imagePadding: boolean,
+  imagePosition: ContentCardProps["imagePosition"]
 ) => {
   return visualElementType === "image"
-    ? boundingBox && decorativeBorder && imagePadding
+    ? boundingBox &&
+        decorativeBorder &&
+        ((imagePadding && imagePosition === "left") ||
+          imagePosition === "right")
     : boundingBox && decorativeBorder;
 };
 
@@ -92,7 +96,8 @@ export const StyledCard = styled(Card, {
       visualElementType,
       boundingBox,
       decorativeBorder,
-      imagePadding
+      imagePadding,
+      imagePosition
     );
 
     return css`
@@ -187,14 +192,11 @@ export const StyledCardActionArea = styled(Button, {
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
 
-    const flexDirection =
-      cardSdsType === "wide"
-        ? imagePosition === "left"
-          ? "row"
-          : "row-reverse"
-        : visualElementType === "image"
-          ? "column"
-          : "row";
+    const flexDirection = getFlexDirection(
+      cardSdsType,
+      visualElementType,
+      imagePosition
+    );
 
     return `
       display: flex;
@@ -249,6 +251,12 @@ export const StyledCardContent = styled("div", {
     const { boundingBox = true, sdsType = "wide", visualElementType } = props;
 
     const spaces = getSpaces(props);
+    const NoBoundingBoxPadding =
+      sdsType === "narrow"
+        ? visualElementType === "image"
+          ? `${spaces?.xl}px 0 0 0`
+          : 0
+        : `0 0 0 ${spaces?.xl}px`;
 
     return css`
       display: flex;
@@ -262,11 +270,7 @@ export const StyledCardContent = styled("div", {
             padding: ${spaces?.xl}px;
           `
         : css`
-            padding: ${sdsType === "narrow"
-              ? visualElementType === "image"
-                ? `${spaces?.xl}px 0 0 0`
-                : 0
-              : `0 0 0 ${spaces?.xl}px`};
+            padding: ${NoBoundingBoxPadding};
           `}
     `;
   }}

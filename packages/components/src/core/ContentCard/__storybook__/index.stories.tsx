@@ -94,6 +94,7 @@ export default {
       },
       description:
         "If visualElementType is set to `icon`, this prop accepts an icon to be displayed in the card’s media section.",
+      if: { arg: "visualElementType", eq: "icon" },
       mapping: CONTENT_CARD_ICON_OPTIONS,
       options: Object.keys(CONTENT_CARD_ICON_OPTIONS),
       table: {
@@ -107,6 +108,7 @@ export default {
       },
       description:
         "If visualElementType is set to `image`, this prop accepts an image to be displayed in the card’s media section.",
+      if: { arg: "visualElementType", eq: "image" },
       mapping: CONTENT_CARD_IMAGE_OPTIONS,
       options: Object.keys(CONTENT_CARD_IMAGE_OPTIONS),
       table: {
@@ -119,6 +121,7 @@ export default {
       },
       description:
         "If true, the card will include a padding to the image; otherwise, it will not.",
+      if: { arg: "visualElementType", eq: "image" },
       table: {
         defaultValue: { summary: "false" },
       },
@@ -129,6 +132,7 @@ export default {
       },
       description:
         "Defines the position of the image. If the image is not set, this prop will have no effect.",
+      if: { arg: "visualElementType", eq: "image" },
       options: ["left", "right"],
       table: {
         defaultValue: { summary: "left" },
@@ -140,6 +144,7 @@ export default {
       },
       description:
         "Defines the size of the image in pixels, serving as the maximum and minimum boundary for the visual element.",
+      if: { arg: "visualElementType", eq: "image" },
       table: {
         defaultValue: { summary: "300" },
       },
