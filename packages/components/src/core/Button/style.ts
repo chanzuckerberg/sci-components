@@ -814,7 +814,7 @@ export const StyledChildren = styled("span", {
   align-items: center;
 
   ${(props: StyledChildrenProps) => {
-    const { size = "medium", theme } = props;
+    const { size = "large", theme } = props;
     const spaces = getSpaces(props);
 
     // Gap values matching the button size styles

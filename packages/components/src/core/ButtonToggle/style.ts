@@ -16,44 +16,77 @@ const doNotForwardProps = ["sdsStage"];
 
 interface ButtonToggleExtraProps extends ButtonToggleProps, CommonThemeProps {}
 
+/**
+ * Utility to select the appropriate color based on background appearance.
+ * Returns the dark variant when backgroundAppearance is "dark", otherwise returns the light variant.
+ */
+const getAppearanceColor = (
+  lightColor: string | undefined,
+  darkColor: string | undefined,
+  backgroundAppearance: "dark" | "matchBackground"
+): string | undefined => {
+  return backgroundAppearance === "dark" ? darkColor : lightColor;
+};
+
 const StageOnStyles = (props: ButtonToggleExtraProps): SerializedStyles => {
-  const { sdsType, sdsStyle, backgroundOnHover, backgroundAppearance } = props;
+  const {
+    sdsType,
+    sdsStyle,
+    backgroundOnHover,
+    backgroundAppearance = "matchBackground",
+  } = props;
   const semanticColors = getSemanticColors(props);
 
   const contentColor =
     sdsType === "primary"
-      ? backgroundAppearance === "dark"
-        ? semanticColors?.accent?.foregroundOnDark
-        : semanticColors?.accent?.foreground
-      : backgroundAppearance === "dark"
-        ? semanticColors?.base?.textPrimaryOnDark
-        : semanticColors?.base?.textPrimary;
+      ? getAppearanceColor(
+          semanticColors?.accent?.foreground,
+          semanticColors?.accent?.foregroundOnDark,
+          backgroundAppearance
+        )
+      : getAppearanceColor(
+          semanticColors?.base?.textPrimary,
+          semanticColors?.base?.textPrimaryOnDark,
+          backgroundAppearance
+        );
 
   const backgroundColor =
     sdsStyle === "outline" && sdsType === "primary"
-      ? backgroundAppearance === "dark"
-        ? semanticColors?.accent?.surfaceSecondaryOnDark
-        : semanticColors?.accent?.surfaceSecondary
-      : backgroundAppearance === "dark"
-        ? semanticColors?.base?.fillPrimaryInteractionOnDark
-        : semanticColors?.base?.fillPrimaryInteraction;
+      ? getAppearanceColor(
+          semanticColors?.accent?.surfaceSecondary,
+          semanticColors?.accent?.surfaceSecondaryOnDark,
+          backgroundAppearance
+        )
+      : getAppearanceColor(
+          semanticColors?.base?.fillPrimaryInteraction,
+          semanticColors?.base?.fillPrimaryInteractionOnDark,
+          backgroundAppearance
+        );
 
   const ornamentColor =
     sdsStyle === "outline"
       ? sdsType === "primary"
-        ? backgroundAppearance === "dark"
-          ? semanticColors?.accent?.foregroundOnDark
-          : semanticColors?.accent?.foreground
-        : backgroundAppearance === "dark"
-          ? semanticColors?.base?.ornamentPrimaryOnDark
-          : semanticColors?.base?.ornamentPrimary
+        ? getAppearanceColor(
+            semanticColors?.accent?.foreground,
+            semanticColors?.accent?.foregroundOnDark,
+            backgroundAppearance
+          )
+        : getAppearanceColor(
+            semanticColors?.base?.ornamentPrimary,
+            semanticColors?.base?.ornamentPrimaryOnDark,
+            backgroundAppearance
+          )
       : sdsType === "primary"
-        ? backgroundAppearance === "dark"
-          ? semanticColors?.accent?.foregroundOnDark
-          : semanticColors?.accent?.foreground
-        : backgroundAppearance === "dark"
-          ? semanticColors?.base?.ornamentSecondaryInteractionOnDark
-          : semanticColors?.base?.ornamentSecondaryInteraction;
+        ? getAppearanceColor(
+            semanticColors?.accent?.foreground,
+            semanticColors?.accent?.foregroundOnDark,
+            backgroundAppearance
+          )
+        : getAppearanceColor(
+            semanticColors?.base?.ornamentSecondaryInteraction,
+            semanticColors?.base?.ornamentSecondaryInteractionOnDark,
+            backgroundAppearance
+          );
 
   // For secondary variants, Button uses ::before for hover effects
   // So we need to apply the "on" state background to ::before as well

@@ -141,6 +141,7 @@ export default function DrawerContent({
                 key={`action-${section || "default"}-${index}`}
                 sdsStyle="solid"
                 sdsType="primary"
+                size="large"
                 onClick={(e) => {
                   onClick?.(e);
                   // Only close drawer if action has href (navigation)

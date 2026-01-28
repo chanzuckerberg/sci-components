@@ -91,6 +91,7 @@ export const Test = {
     sdsStyle: "rounded",
     sdsType: "primary",
     children: "Label",
+    size: "large",
   },
   parameters: {
     controls: {

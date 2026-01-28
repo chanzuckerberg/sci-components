@@ -28,7 +28,7 @@ const Button = React.forwardRef(
     const {
       sdsStyle = "solid",
       sdsType = "primary",
-      size = "medium",
+      size = "large",
       variant = "contained",
       children,
       ...rest

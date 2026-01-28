@@ -2,13 +2,22 @@ import { ForwardedRef, forwardRef } from "react";
 import { StyledButton } from "./style";
 import Icon from "src/core/Icon";
 
-const SDS_SIZE_TO_COMPONENT_SIZE: {
+const DIALOG_SIZE_TO_BUTTON_SIZE: {
   [key: string]: "small" | "medium" | "large";
 } = {
   l: "large",
   m: "large",
   s: "medium",
   xs: "small",
+};
+
+const DIALOG_SIZE_TO_ICON_SIZE: {
+  [key: string]: "s" | "l" | "xl";
+} = {
+  l: "xl",
+  m: "l",
+  s: "l",
+  xs: "s",
 };
 
 interface CloseButtonProps {
@@ -23,7 +32,8 @@ const CloseButton = forwardRef(function CloseButton(
 ) {
   const { dialogSize = "m", onClick, className, ...rest } = props;
 
-  const size = SDS_SIZE_TO_COMPONENT_SIZE[dialogSize] ?? "large";
+  const size = DIALOG_SIZE_TO_BUTTON_SIZE[dialogSize] ?? "large";
+  const iconSize = DIALOG_SIZE_TO_ICON_SIZE[dialogSize] ?? "l";
 
   return (
     <StyledButton
@@ -37,18 +47,7 @@ const CloseButton = forwardRef(function CloseButton(
       className={className}
       {...rest}
     >
-      <Icon
-        sdsIcon="XMark"
-        sdsSize={
-          dialogSize === "xs"
-            ? "s"
-            : dialogSize === "s"
-              ? "l"
-              : dialogSize === "m"
-                ? "l"
-                : "xl"
-        }
-      />
+      <Icon sdsIcon="XMark" sdsSize={iconSize} />
     </StyledButton>
   );
 });

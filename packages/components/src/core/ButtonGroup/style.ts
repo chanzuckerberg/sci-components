@@ -720,7 +720,7 @@ export const StyledButtonGroup = styled(ButtonGroup, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: ButtonGroupExtraProps) => {
-    const { sdsType = "primary", size = "medium" } = props;
+    const { sdsType = "primary", size = "large" } = props;
 
     return css`
       ${GeneralButtonGroupStyles(props)}

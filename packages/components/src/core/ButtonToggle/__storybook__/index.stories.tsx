@@ -67,7 +67,7 @@ export const Default = {
     backgroundAppearance: "matchBackground",
     disabled: false,
     startIcon: BUTTON_DROPDOWN_ICON_OPTIONS[0],
-    size: "medium",
+    size: "large",
     sdsType: "primary",
     sdsStyle: "outline",
     sdsStage: "off",
