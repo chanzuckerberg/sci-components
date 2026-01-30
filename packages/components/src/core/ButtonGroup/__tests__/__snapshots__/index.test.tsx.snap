@@ -5,7 +5,7 @@ exports[`<ButtonGroup /> Default story renders snapshot 1`] = `
   class="css-154eh9f"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined css-1273dmf-MuiButtonGroup-root"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined css-7z3eqv-MuiButtonGroup-root"
     role="group"
   >
     <button
@@ -96,7 +96,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
     style="display: flex; flex-direction: column; gap: 12px;"
   >
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined css-1273dmf-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined css-7z3eqv-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -244,7 +244,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined css-1273dmf-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined css-7z3eqv-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -392,7 +392,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined css-1273dmf-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined css-7z3eqv-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -538,7 +538,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined css-1273dmf-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined css-7z3eqv-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -689,7 +689,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       style="display: flex; gap: 12px;"
     >
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1bktsrj-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1jcyf71-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -837,7 +837,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1bktsrj-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1jcyf71-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -985,7 +985,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1bktsrj-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1jcyf71-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -1131,7 +1131,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1bktsrj-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical css-1jcyf71-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -1288,7 +1288,7 @@ exports[`<ButtonGroup /> IconOnly story renders snapshot 1`] = `
   class="css-154eh9f"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined css-1273dmf-MuiButtonGroup-root"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined css-7z3eqv-MuiButtonGroup-root"
     role="group"
   >
     <button
