@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.3.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.1...@czi-sds/components@23.3.2) (2026-01-30)
+
+### Bug Fixes
+
+- **buttongroup:** fixed disable buttons styles in the group ([#1086](https://github.com/chanzuckerberg/sci-components/issues/1086)) ([ff63d65](https://github.com/chanzuckerberg/sci-components/commit/ff63d6506cd8975ded51fb6a7f6747d969fff9b8))
+
 ## [23.3.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.0...@czi-sds/components@23.3.1) (2026-01-28)
 
 **Note:** Version bump only for package @czi-sds/components
