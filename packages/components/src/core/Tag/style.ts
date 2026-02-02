@@ -184,12 +184,12 @@ function generatePrimaryTagColors(
       : intentColors?.fillPressed,
     backgroundHover: hasCustomColors
       ? darken(colors[1], 0.15)
-      : intentColors?.fillHover,
+      : intentColors?.fillInteraction,
     iconColor: hasCustomColors
       ? colors[2]
       : semanticColors?.base?.ornamentOnFill,
     label: colors.length > 0 ? colors[0] : semanticColors?.base?.textOnFill,
-    borderColor: alpha(semanticColors?.neutral.border || "#000", 0.6),
+    borderColor: alpha(semanticColors?.neutral?.foreground || "#000", 0.6),
   };
 }
 
@@ -199,12 +199,12 @@ function getSecondaryBorderColor(
   intentColors?: IntentColor
 ) {
   if (!theme || !theme.palette)
-    return alpha(intentColors?.border || "#000", 0.6);
+    return alpha(intentColors?.foreground || "#000", 0.6);
   if (effectiveIntent === "negative" && theme.palette.mode === "dark")
-    return alpha(intentColors?.border || "#000", 0.65);
+    return alpha(intentColors?.foreground || "#000", 0.65);
   if (effectiveIntent === "notice" && theme.palette.mode === "light")
-    return alpha(intentColors?.border || "#000", 0.85);
-  return alpha(intentColors?.border || "#000", 0.6);
+    return alpha(intentColors?.foreground || "#000", 0.85);
+  return alpha(intentColors?.foreground || "#000", 0.6);
 }
 
 function generateSecondaryTagColors(
@@ -224,9 +224,9 @@ function generateSecondaryTagColors(
       : intentColors?.fillPressed,
     backgroundHover: hasCustomColors
       ? darken(colors[1], 0.15)
-      : intentColors?.fillHover,
-    iconColor: hasCustomColors ? colors[2] : intentColors?.ornament,
-    label: colors.length > 0 ? colors[0] : intentColors?.text,
+      : intentColors?.fillInteraction,
+    iconColor: hasCustomColors ? colors[2] : intentColors?.foreground,
+    label: colors.length > 0 ? colors[0] : intentColors?.foreground,
     borderColor: hasCustomColors
       ? alpha(colors[1], 0.6)
       : getSecondaryBorderColor(effectiveIntent, theme, intentColors),

@@ -11,27 +11,30 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="tooltip test button"
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium epxivg20 css-1fkf50x-MuiButtonBase-root-MuiIconButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-vyk8ua-MuiButtonBase-root-MuiButton-root"
       data-mui-internal-clone-element="true"
-      icon="ExclamationMarkCircle"
       tabindex="0"
       type="button"
     >
-      <div
-        class="css-1obf64m eo7r9jx1"
+      <span
+        class="css-12bqywg e1gcweb21"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
-          data-file-name="IconExclamationMarkCircleLarge"
-          data-testid="IconExclamationMarkCircleLarge"
-          fillcontrast="white"
-          focusable="false"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-        />
-      </div>
+        <div
+          class="css-1obf64m eo7r9jx1"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            data-file-name="IconExclamationMarkCircleSmall"
+            data-testid="IconExclamationMarkCircleSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />

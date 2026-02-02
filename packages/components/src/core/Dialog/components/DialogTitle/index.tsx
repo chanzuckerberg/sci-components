@@ -17,8 +17,7 @@ export {
 };
 
 export interface DialogTitleProps
-  extends DialogTitleExtraProps,
-    RawDialogTitleProps {
+  extends DialogTitleExtraProps, RawDialogTitleProps {
   title?: string;
   subtitle?: string;
   overline?: string;

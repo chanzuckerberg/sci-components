@@ -1,5 +1,6 @@
 import Button from "src/core/Button";
 import { StyledPanelHeaderClose } from "./style";
+import Icon from "src/core/Icon";
 
 export interface PanelHeaderCloseProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -15,11 +16,14 @@ const PanelHeaderClose = (props: PanelHeaderCloseProps) => {
         CloseButtonComponent
       ) : (
         <Button
-          sdsStyle="icon"
-          sdsType="tertiary"
-          icon="XMark"
+          sdsStyle="minimal"
+          sdsType="secondary"
           aria-label="Panel Toggle"
-        />
+          size="large"
+          backgroundOnHover={false}
+        >
+          <Icon sdsIcon="XMark" sdsSize="l" />
+        </Button>
       )}
     </StyledPanelHeaderClose>
   );

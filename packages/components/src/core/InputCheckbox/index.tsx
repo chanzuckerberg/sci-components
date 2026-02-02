@@ -12,8 +12,10 @@ import {
 } from "./styles";
 import { EMPTY_OBJECT, cn } from "src/common/utils";
 
-interface CheckboxContentProps
-  extends Omit<MUICheckboxProps, "color" | "defaultChecked" | "indeterminate"> {
+interface CheckboxContentProps extends Omit<
+  MUICheckboxProps,
+  "color" | "defaultChecked" | "indeterminate"
+> {
   caption?: string;
   checkboxProps?: Partial<MUICheckboxProps>;
   intent?: "default" | "negative" | "notice" | "positive";

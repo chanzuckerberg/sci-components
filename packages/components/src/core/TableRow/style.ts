@@ -9,7 +9,8 @@ import {
 } from "src/core/styles";
 
 export interface RowExtraProps
-  extends CommonThemeProps,
+  extends
+    CommonThemeProps,
     Omit<React.HTMLProps<HTMLTableRowElement>, "as" | "rev"> {
   rowHeight?: number;
   useDivider?: boolean;
@@ -78,7 +79,7 @@ const hoverStyled = (props: RowExtraProps) => {
 
   return `
     &:hover {
-      background-color: ${semanticColors?.base?.fillInteraction};
+      background-color: ${semanticColors?.base?.fillPrimaryInteraction};
     }
   `;
 };

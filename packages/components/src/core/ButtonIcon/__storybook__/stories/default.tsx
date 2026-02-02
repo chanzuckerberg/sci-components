@@ -15,10 +15,9 @@ export const ButtonIcon = (props: Args): JSX.Element => {
         icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
         body={
           <>
-            The <strong>ButtnoIcon</strong> component is deprecated!
+            The <strong>ButtonIcon</strong> component is deprecated!
             <br />
-            Please use <strong>Button</strong> component with{" "}
-            <strong>Icon</strong> style instead.
+            Please use <strong>Button</strong> component instead.
           </>
         }
       />

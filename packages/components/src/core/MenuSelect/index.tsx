@@ -21,6 +21,7 @@ import {
   StyledMenuInputSearch,
   StyledMenuItem,
 } from "./style";
+import Icon from "../Icon";
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -124,11 +125,13 @@ const MenuSelect = <
               endAdornment: (
                 <InputAdornment position="end">
                   <Button
-                    sdsType="tertiary"
-                    sdsSize="small"
-                    sdsStyle="icon"
-                    icon="Search"
-                  />
+                    size="large"
+                    sdsType="secondary"
+                    sdsStyle="minimal"
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="Search" sdsSize="s" />
+                  </Button>
                 </InputAdornment>
               ),
               inputProps: params.inputProps,

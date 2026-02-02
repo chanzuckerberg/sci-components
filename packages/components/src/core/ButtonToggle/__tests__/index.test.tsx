@@ -2,7 +2,6 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-webpack5";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import { SDS_WARNINGS, SDSWarningTypes } from "src/common/warnings";
 
 const { Test } = composeStories(stories);
 
@@ -17,8 +16,8 @@ describe("<ButtonToggle />", () => {
     expect(panelElement).not.toBeNull();
   });
 
-  it("renders with different sdsSize values", () => {
-    render(<Test {...Test.args} sdsSize="small" />);
+  it("renders with different size values", () => {
+    render(<Test {...Test.args} size="small" />);
     const smallButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
     expect(smallButton).toBeInTheDocument();
 
@@ -26,7 +25,13 @@ describe("<ButtonToggle />", () => {
     // multiple elements with the same test id in the DOM
     cleanup();
 
-    render(<Test {...Test.args} sdsSize="large" />);
+    render(<Test {...Test.args} size="medium" />);
+    const mediumButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(mediumButton).toBeInTheDocument();
+
+    cleanup();
+
+    render(<Test {...Test.args} size="large" />);
     const largeButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
     expect(largeButton).toBeInTheDocument();
   });
@@ -55,36 +60,39 @@ describe("<ButtonToggle />", () => {
     expect(secondaryButton).toBeInTheDocument();
   });
 
-  it("displays warning when icon is missing", () => {
-    const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
-    render(<Test {...Test.args} icon={undefined} />);
-    expect(warnSpy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        SDS_WARNINGS[SDSWarningTypes.ButtonToggleMissingIconProp].message
-      )
-    );
-    warnSpy.mockRestore();
-  });
+  it("renders with different sdsStyle values", () => {
+    render(<Test {...Test.args} sdsStyle="outline" />);
+    const outlineButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(outlineButton).toBeInTheDocument();
 
-  it("displays an error when an icon doesn't support the ButtonToggle size", () => {
-    const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
-    // (masoudmanson): SlidersHorizontal icon doesn't support the small size
-    // make sure to change this to another icon if the SlidersHorizontal icon is updated
-    const SdsIconWithoutSmallSize = "SlidersHorizontal";
-    render(
-      <Test {...Test.args} sdsSize="small" icon={SdsIconWithoutSmallSize} />
-    );
-    expect(errorSpy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        `Error: Icon ${SdsIconWithoutSmallSize} not found for size s. This is a @czi-sds/components problem.`
-      )
-    );
-    errorSpy.mockRestore();
+    cleanup();
+
+    render(<Test {...Test.args} sdsStyle="minimal" />);
+    const minimalButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(minimalButton).toBeInTheDocument();
   });
 
   it("renders with disabled state", () => {
     render(<Test {...Test.args} disabled={true} />);
     const disabledButton = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
     expect(disabledButton).toBeDisabled();
+  });
+
+  it("renders with startIcon prop", () => {
+    render(<Test {...Test.args} startIcon="InfoCircle" />);
+    const buttonElement = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(buttonElement).toBeInTheDocument();
+  });
+
+  it("renders with backgroundOnHover prop", () => {
+    render(<Test {...Test.args} backgroundOnHover={true} />);
+    const buttonElement = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(buttonElement).toBeInTheDocument();
+
+    cleanup();
+
+    render(<Test {...Test.args} backgroundOnHover={false} />);
+    const buttonWithoutHover = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
+    expect(buttonWithoutHover).toBeInTheDocument();
   });
 });

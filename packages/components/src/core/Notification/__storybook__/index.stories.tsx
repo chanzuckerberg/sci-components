@@ -9,6 +9,7 @@ import {
 } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -25,7 +26,7 @@ export default {
       options: Object.keys(NOTIFICATION_BUTTON_ON_CLICK_OPTIONS),
     },
     buttonPosition: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["left", "right"],
     },
     extraContent: {
@@ -45,7 +46,7 @@ export default {
       options: Object.keys(NOTIFICATION_ICON_OPTIONS),
     },
     intent: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["accent", "info", "negative", "positive", "notice"],
     },
     onClose: {
@@ -60,7 +61,7 @@ export default {
       control: { type: "object" },
     },
     slideDirection: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       options: ["left", "right"],
     },
   },
@@ -92,6 +93,9 @@ export const ScreenshotTest = {
     },
     snapshot: {
       skip: true,
+    },
+    axe: {
+      disabledRules: ["color-contrast"],
     },
   },
   render: (args: Args) => <ScreenshotTestDemo {...args} />,

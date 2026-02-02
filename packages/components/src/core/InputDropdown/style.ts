@@ -2,7 +2,7 @@ import { css, SerializedStyles } from "@emotion/react";
 import { ButtonProps } from "@mui/material";
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
-import Button from "src/core/Button";
+import Button from "@mui/material/Button";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -36,7 +36,8 @@ const intentToColor = {
 };
 
 export interface InputDropdownProps
-  extends CommonThemeProps,
+  extends
+    CommonThemeProps,
     Omit<ButtonProps, (typeof doNotForwardProps)[number]> {
   children?: ReactNode;
   disabled?: boolean;
@@ -102,7 +103,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      background-color: ${semanticColors?.base?.fillInteraction};
+      background-color: ${semanticColors?.base?.fillPrimaryInteraction};
       box-shadow: inset 0 0 0 1px
         ${semanticColors?.base?.borderPrimaryInteraction};
       color: ${semanticColors?.base?.textPrimary};
@@ -118,7 +119,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
 
     &:active {
       background-color: transparent;
-      box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.border};
+      box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.foreground};
       color: ${semanticColors?.base?.textPrimary};
 
       path {
@@ -176,7 +177,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:hover {
-      background-color: ${semanticColors?.base?.fillInteraction};
+      background-color: ${semanticColors?.base?.fillPrimaryInteraction};
       border: none;
       color: ${semanticColors?.base?.textPrimary};
 
@@ -190,7 +191,7 @@ const minimal = (props: InputDropdownProps): SerializedStyles => {
     }
 
     &:active {
-      background-color: ${semanticColors?.base?.fillInteraction};
+      background-color: ${semanticColors?.base?.fillPrimaryInteraction};
       border: none;
     }
   `;
@@ -281,7 +282,7 @@ const isOpen = (props: InputDropdownProps): SerializedStyles => {
       : `inset 0 0 0 1px ${semanticColors?.[inputColor]?.border}`};
 
     background-color: ${sdsStyle === "minimal"
-      ? semanticColors?.base?.fillInteraction
+      ? semanticColors?.base?.fillPrimaryInteraction
       : "transparent"};
 
     &:hover {
@@ -450,7 +451,7 @@ export const StyledCounter = styled("span", {
 
     return `
       background-color: ${semanticColors?.base?.backgroundTertiary};
-      color: ${semanticColors?.accent?.textAction};
+      color: ${semanticColors?.accent?.foreground};
       border-radius: ${corners?.rounded}px;
       padding: 0 ${spaces?.xxs}px;
       margin-left: ${spaces?.xs}px;

@@ -6,18 +6,21 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
 >
   <div>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary euetd0b1 css-onu02m-MuiButtonBase-root-MuiButton-root"
-      data-style="minimal"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-16n8l0c-MuiButtonBase-root-MuiButton-root"
       disabled=""
       tabindex="-1"
       type="button"
     >
-      Delete the tag by clicking on its icon
+      <span
+        class="css-12bqywg e1gcweb21"
+      >
+        Delete the tag by clicking on its icon
+      </span>
     </button>
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary edo86360 em63pca0 css-18gndjy-MuiButtonBase-root-MuiChip-root"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary e16f26e80 e2h2wz80 css-18gndjy-MuiButtonBase-root-MuiChip-root"
       role="none presentation"
       tabindex="0"
     >
@@ -28,26 +31,29 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary epxivg20 css-9g2fzc-MuiButtonBase-root-MuiIconButton-root"
-        icon="XMark"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary e1gcweb20 css-5o3bwi-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        <div
-          class="css-1obf64m eo7r9jx1"
+        <span
+          class="css-12bqywg e1gcweb21"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
-            data-file-name="IconXMarkSmall"
-            data-testid="IconXMarkSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-          />
-        </div>
+          <div
+            class="css-1obf64m eo7r9jx1"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+              data-file-name="IconXMarkSmall"
+              data-testid="IconXMarkSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />

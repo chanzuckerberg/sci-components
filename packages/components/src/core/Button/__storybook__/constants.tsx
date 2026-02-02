@@ -2,6 +2,7 @@ import { action } from "storybook/actions";
 import CustomSdsIcon from "src/common/storybook/svg/customSdsIcon";
 import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
 import { SDSSizes, SDSTypes } from "src/core/ButtonIcon/__storybook__/types";
+import Icon from "src/core/Icon";
 
 export const BUTTON_EXCLUDED_CONTROLS = [
   "endIcon",
@@ -16,28 +17,27 @@ export const BUTTON_EXCLUDED_CONTROLS = [
   "icon",
   "sdsIconProps",
   "isAllCaps",
+  "backgroundOnHover",
+  "size",
+  "children",
+  "backgroundAppearance",
 ];
 
-export const BUTTON_SDS_STYLES = ["rounded", "square", "minimal", "icon"];
+export const BUTTON_SDS_STYLES = ["solid", "outline", "minimal"];
 
 export const BUTTON_SDS_SIZE = ["small", "medium", "large"];
 
-export const BUTTON_SDS_TYPES = [
-  "primary",
-  "secondary",
-  "tertiary",
-  "destructive",
-];
+export const BUTTON_SDS_TYPES = ["primary", "secondary", "destructive"];
 
 export const BUTTON_TEXT = "Label";
 
 export const BUTTON_ICON_OPTIONS = [
   undefined,
-  "XMark",
-  "Download",
-  "Copy",
-  "DotsHorizontal",
-  "Cube",
+  <Icon key="xmark" sdsIcon="XMark" sdsSize="s" />,
+  <Icon key="download" sdsIcon="Download" sdsSize="s" />,
+  <Icon key="copy" sdsIcon="Copy" sdsSize="s" />,
+  <Icon key="dotsHorizontal" sdsIcon="DotsHorizontal" sdsSize="s" />,
+  <Icon key="cube" sdsIcon="Cube" sdsSize="s" />,
   <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
   <CustomSvgIcon key="customIcon" style={{ height: "16px", width: "16px" }} />,
 ];

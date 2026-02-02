@@ -107,12 +107,12 @@ const Notification = ({
               onClose ? (
                 <Button
                   onClick={handleClose}
-                  sdsSize="small"
-                  sdsType="tertiary"
-                  sdsStyle="icon"
+                  sdsStyle="minimal"
+                  sdsType="secondary"
                   data-testid="notificationCloseButton"
-                  icon="XMark"
-                />
+                >
+                  <Icon sdsIcon="XMark" sdsSize="s" />
+                </Button>
               ) : null
             }
             icon={getIcon()}
@@ -127,8 +127,8 @@ const Notification = ({
                 <Button
                   sdsStyle="minimal"
                   sdsType="secondary"
+                  size="medium"
                   onClick={buttonOnClick}
-                  isAllCaps={false}
                 >
                   {buttonText}
                 </Button>

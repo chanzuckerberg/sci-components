@@ -3,13 +3,13 @@
 exports[`<InputText /> Default story renders snapshot 1`] = `
 <div>
   <label
-    class="css-i8n32v e1uw011z0"
+    class="css-i8n32v eqd6wt20"
     for="Test"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root e1uw011z1 css-omglwx-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root eqd6wt21 css-omglwx-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"

@@ -26,22 +26,26 @@ import DrawerContent from "../shared/DrawerContent";
 import AccordionNavItem from "../shared/AccordionNavItem";
 import { useNavigationState } from "../shared/useNavigationState";
 
-interface BaseNavigationHeaderSecondaryNavItem<T extends string>
-  extends Record<string, unknown> {
+interface BaseNavigationHeaderSecondaryNavItem<T extends string> extends Record<
+  string,
+  unknown
+> {
   key: T;
   label: ReactNode;
   onClick?: (e: React.SyntheticEvent) => void;
 }
 
-export interface TextNavigationHeaderSecondaryNavItem<T extends string>
-  extends BaseNavigationHeaderSecondaryNavItem<T> {
+export interface TextNavigationHeaderSecondaryNavItem<
+  T extends string,
+> extends BaseNavigationHeaderSecondaryNavItem<T> {
   itemType: "text";
   tag?: string;
   tagColor?: SdsTagColorType;
 }
 
-interface DropdownNavigationHeaderSecondaryNavItem<T extends string>
-  extends BaseNavigationHeaderSecondaryNavItem<T> {
+interface DropdownNavigationHeaderSecondaryNavItem<
+  T extends string,
+> extends BaseNavigationHeaderSecondaryNavItem<T> {
   itemType: "dropdown";
   items: DropdownItem[];
   sectionProps?: Record<string, SectionProps>;

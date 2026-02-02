@@ -5,13 +5,13 @@ exports[`IntentMessage Checkbox story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-dlpzdj elpt7mb0"
+    class="css-dlpzdj e1hnr7xr0"
   >
     <label
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1tjctxn7 css-23918h-MuiFormControlLabel-root"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd evpp1we7 css-mp7m2b-MuiFormControlLabel-root"
     >
       <span
-        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium e1tjctxn3 css-1b187us-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root"
+        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium evpp1we3 css-1b187us-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root"
         intent="negative"
       >
         <input
@@ -21,7 +21,7 @@ exports[`IntentMessage Checkbox story renders snapshot 1`] = `
           type="checkbox"
         />
         <span
-          class="css-1eb21i e1tjctxn1"
+          class="css-1eb21i evpp1we1"
           font-size="medium"
         />
         <span
@@ -32,15 +32,15 @@ exports[`IntentMessage Checkbox story renders snapshot 1`] = `
         class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
       >
         <span
-          class="css-mkyw9t e1tjctxn4"
+          class="css-mkyw9t evpp1we4"
         >
           <span
-            class="css-w05x42 e1tjctxn5"
+            class="css-w05x42 evpp1we5"
           >
             Input Element Group Label
           </span>
           <span
-            class="css-tk6mw9 e1tjctxn6"
+            class="css-tk6mw9 evpp1we6"
           >
             Caption
           </span>
@@ -48,7 +48,7 @@ exports[`IntentMessage Checkbox story renders snapshot 1`] = `
       </span>
     </label>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"
@@ -78,11 +78,11 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-dlpzdj elpt7mb0"
+    class="css-dlpzdj e1hnr7xr0"
   >
     <div>
       <div
-        class="MuiFormControl-root MuiTextField-root e1uw011z1 css-4o7k19-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root eqd6wt21 css-4o7k19-MuiFormControl-root-MuiTextField-root"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
@@ -113,7 +113,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"
@@ -135,7 +135,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"
@@ -157,7 +157,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"
@@ -179,7 +179,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"
@@ -201,7 +201,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"
@@ -223,7 +223,7 @@ exports[`IntentMessage Default story renders snapshot 1`] = `
       </span>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <svg
         aria-hidden="true"
@@ -253,17 +253,17 @@ exports[`IntentMessage Password story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-dlpzdj elpt7mb0"
+    class="css-dlpzdj e1hnr7xr0"
   >
     <div>
       <label
-        class="css-i8n32v e1uw011z0"
+        class="css-i8n32v eqd6wt20"
         for="password-input"
       >
         Enter a Password
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root e1uw011z1 css-1waym58-MuiFormControl-root-MuiTextField-root"
+        class="MuiFormControl-root MuiTextField-root eqd6wt21 css-1waym58-MuiFormControl-root-MuiTextField-root"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
@@ -294,7 +294,7 @@ exports[`IntentMessage Password story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-16vs889 elpt7mb1"
+      class="css-16vs889 e1hnr7xr1"
     >
       <div
         class="css-1obf64m eo7r9jx1"

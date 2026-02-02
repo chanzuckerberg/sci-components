@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.3.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.1...@czi-sds/components@23.3.2) (2026-01-30)
+
+### Bug Fixes
+
+- **buttongroup:** fixed disable buttons styles in the group ([#1086](https://github.com/chanzuckerberg/sci-components/issues/1086)) ([ff63d65](https://github.com/chanzuckerberg/sci-components/commit/ff63d6506cd8975ded51fb6a7f6747d969fff9b8))
+
+## [23.3.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.0...@czi-sds/components@23.3.1) (2026-01-28)
+
+**Note:** Version bump only for package @czi-sds/components
+
+# [23.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.2.1...@czi-sds/components@23.3.0) (2026-01-21)
+
+### Features
+
+- **icons:** Add CxG icons to SDS ([#1080](https://github.com/chanzuckerberg/sci-components/issues/1080)) ([cd91e3c](https://github.com/chanzuckerberg/sci-components/commit/cd91e3c15ae8828929a118ca90adad2f5bc7b153))
+
 ## [23.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.2.0...@czi-sds/components@23.2.1) (2025-12-12)
 
 ### Bug Fixes
@@ -434,7 +450,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### CHANGES
 
 - **Added support for Dark Mode!**
-
   - Implemented dark mode support across all components and styles.
   - Updated design tokens to include dual Light and Dark Mode values, ensuring seamless theme transitions.
     - Full list of CSS variables can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/css/variables.css).
@@ -443,31 +458,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - Integrated a theme switcher to toggle between Light and Dark Mode in the storybook.
 
 - **Updated Button component:**
-
   - Introduced isAllCaps prop for toggling All Caps in Button labels.
   - Refined hover and pressed states for the minimal variant to align with Dark Mode standards.
 
 - **Updated CellHeader component:**
-
   - When active is set to true, the sortIcon will always be displayed and cannot be hidden with the hideSortIcon prop.
 
 - **Updated InputDropdown component:**
-
   - Removed sdsStage prop.
   - userInput stage is now automatically set if the InputDropdown has a value.
 
 - **Updated Intent Prop on Input Components (InputCheckbox, InputRadio, InputText, InputSearch)**
-
   - Changed intent prop values from "error" and "warning" to "negative" and "notice".
 
 - **Updated InputSearch component:**
-
   - Removed sdsStage prop.
   - userInput stage is now automatically set if the InputSearch has a value.
 
 - **Updated NavigationJumpTo component:**
   - Removed IndicatorColor prop.
-  - The indicator color is now hardcoded to accent?.borderSelected.
+  - The indicator color is now hardcoded to accent?.foregroundActive.
 
 # [20.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@20.7.0...@czi-sds/components@20.8.0) (2024-08-22)
 

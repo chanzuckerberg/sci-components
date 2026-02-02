@@ -7,7 +7,7 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
   <div
     aria-controls="default-story-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters e5urq5h0 css-8tb10p-MuiButtonBase-root-MuiAccordionSummary-root"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters e8nnl4u0 css-8tb10p-MuiButtonBase-root-MuiAccordionSummary-root"
     id="default-story-header"
     role="button"
     tabindex="0"

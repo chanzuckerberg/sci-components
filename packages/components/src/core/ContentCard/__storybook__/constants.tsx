@@ -30,37 +30,33 @@ export const CONTENT_CARD_EXCLUDED_CONTROLS = [
 // Buttons
 
 export const CONTENT_CARD_BUTTONS_LABELS = [
-  "Rounded Primary",
-  "Rounded Secondary",
-  "Square Primary",
-  "Square Secondary",
+  "Primary",
+  "Secondary",
   "Minimal",
   "Minimal with Icon",
 ];
 
 export const CONTENT_CARD_BUTTONS_OPTIONS = [
-  // Rounded Primary
-  <Button sdsStyle="rounded" sdsType="primary" key="primary">
+  // Primary
+  <Button size="large" sdsStyle="solid" sdsType="primary" key="square-primary">
     Primary Button
   </Button>,
-  // Rounded Secondary
-  <Button sdsStyle="rounded" sdsType="secondary" key="secondary">
-    Secondary Button
-  </Button>,
-  // Square Primary
-  <Button sdsStyle="square" sdsType="primary" key="square-primary">
-    Primary Button
-  </Button>,
-  // Square Secondary
-  <Button sdsStyle="square" sdsType="secondary" key="square-secondary">
+  // Secondary
+  <Button
+    size="large"
+    sdsStyle="solid"
+    sdsType="secondary"
+    key="square-secondary"
+  >
     Secondary Button
   </Button>,
   // Minimal
-  <Button sdsStyle="minimal" sdsType="primary" key="minimal">
+  <Button size="large" sdsStyle="minimal" sdsType="primary" key="minimal">
     Minimal Button
   </Button>,
   // Minimal with Icon
   <Button
+    size="large"
     sdsStyle="minimal"
     sdsType="primary"
     key="minimal-with-icon"

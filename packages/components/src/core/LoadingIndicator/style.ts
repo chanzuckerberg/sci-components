@@ -53,11 +53,11 @@ const tag = (props: CommonThemeProps): SerializedStyles => {
 
     background-color: ${semanticColors?.accent?.surfaceSecondary};
     border-radius: ${corners?.rounded}px;
-    color: ${semanticColors?.accent?.textAction};
+    color: ${semanticColors?.accent?.foreground};
 
     svg {
       path {
-        fill: ${semanticColors?.accent?.ornament};
+        fill: ${semanticColors?.accent?.foreground};
       }
     }
   `;

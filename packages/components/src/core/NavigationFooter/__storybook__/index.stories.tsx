@@ -8,11 +8,12 @@ import {
 import { TestDemo } from "./stories/test";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import { NavigationFooterNavItem } from "../NavigationFooter.types";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
     backgroundAppearance: {
-      control: { type: "inline-radio" },
+      control: { type: INLINE_RADIO },
       description: "The background appearance of the navigation header.",
       options: ["matchBackground", "dark"],
       table: {

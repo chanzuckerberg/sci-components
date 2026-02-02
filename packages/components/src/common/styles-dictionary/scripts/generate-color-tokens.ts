@@ -12,7 +12,6 @@ import {
 } from "src/core/styles/common/makeThemeOptions";
 import { Colors, SDSPalette, AppTheme } from "src/core/styles/common/types";
 
-// @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 // Overlay colors that need to be included in primitive tokens

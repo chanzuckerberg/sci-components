@@ -5,15 +5,15 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
   style="width: 280px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon eucttcg0 css-1qwo13b-MuiAutocomplete-root"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon e74ph6c0 css-1qwo13b-MuiAutocomplete-root"
     label="Search by label"
   >
     <div
-      class="css-0 eucttcg1"
+      class="css-0 e74ph6c1"
     >
       <div>
         <label
-          class="css-1509c06 eegaocp0"
+          class="css-1509c06 e1aw2vvx0"
           for="location-search"
         >
           Search by label
@@ -21,7 +21,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
         <div
           aria-hidden="false"
           aria-label="Search Input"
-          class="MuiFormControl-root MuiTextField-root eucttcg2 eegaocp1 css-1lcm0nv-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root e74ph6c2 e1aw2vvx1 css-1lcm0nv-MuiFormControl-root-MuiTextField-root"
           tabindex="0"
         >
           <div
@@ -30,7 +30,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
             inputmode="text"
           >
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall eegaocp2 css-10894y9-MuiInputAdornment-root"
+              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-10894y9-MuiInputAdornment-root"
             >
               <span
                 class="notranslate"
@@ -40,26 +40,29 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
               <button
                 aria-hidden="false"
                 aria-label="Search Button"
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium epxivg20 css-9g2fzc-MuiButtonBase-root-MuiIconButton-root"
-                icon="Search"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-1wgvjz8-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
-                <div
-                  class="css-1obf64m eo7r9jx1"
+                <span
+                  class="css-12bqywg e1gcweb21"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
-                    data-file-name="IconSearchSmall"
-                    data-testid="IconSearchSmall"
-                    fillcontrast="white"
-                    focusable="false"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    width="16"
-                  />
-                </div>
+                  <div
+                    class="css-1obf64m eo7r9jx1"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                      data-file-name="IconSearchSmall"
+                      data-testid="IconSearchSmall"
+                      fillcontrast="white"
+                      focusable="false"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      width="16"
+                    />
+                  </div>
+                </span>
                 <span
                   class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
@@ -80,7 +83,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
               value=""
             />
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall eegaocp2 css-1ajqcii-MuiInputAdornment-root"
+              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-1ajqcii-MuiInputAdornment-root"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"

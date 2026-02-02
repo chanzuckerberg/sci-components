@@ -5,22 +5,22 @@ exports[`<MenuItem /> ActionType story renders snapshot 1`] = `
   class="css-1hskriy e1hhae2w0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1dwhbdn0 css-13frvx0-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1ils8li0 css-5agaez-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
     <span
-      class="css-y3sjyp e1dwhbdn1"
+      class="css-y3sjyp e1ils8li1"
     >
       <span
-        class="primary-text css-1831mf5 e1dwhbdn2"
+        class="primary-text css-1831mf5 e1ils8li2"
       >
         Text here
       </span>
       <span
-        class="css-z6j8xt e1dwhbdn4"
+        class="css-z6j8xt e1ils8li4"
       >
         123,456
       </span>
@@ -37,17 +37,17 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
   class="css-1hskriy e1hhae2w0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1dwhbdn0 css-13frvx0-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1ils8li0 css-5agaez-MuiButtonBase-root-MuiMenuItem-root"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
     <span
-      class="css-zv3iyt e1dwhbdn5"
+      class="css-zv3iyt e1ils8li5"
     >
       <svg
-        class="css-oa0rwb e1dwhbdn7"
+        class="css-oa0rwb e1ils8li7"
         fill="currentColor"
         height="12"
         viewBox="0 0 12 12"
@@ -62,15 +62,15 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
       </svg>
     </span>
     <span
-      class="css-y3sjyp e1dwhbdn1"
+      class="css-y3sjyp e1ils8li1"
     >
       <span
-        class="primary-text css-1831mf5 e1dwhbdn2"
+        class="primary-text css-1831mf5 e1ils8li2"
       >
         Text here
       </span>
       <span
-        class="css-z6j8xt e1dwhbdn4"
+        class="css-z6j8xt e1ils8li4"
       >
         123,456
       </span>

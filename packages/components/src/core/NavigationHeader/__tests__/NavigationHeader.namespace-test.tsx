@@ -1,5 +1,10 @@
-import { NavigationHeaderProps, NavigationHeader } from "@czi-sds/components";
+import {
+  NavigationHeaderProps,
+  NavigationHeader,
+  ButtonProps,
+} from "@czi-sds/components";
 import { useState } from "react";
+import Icon from "src/core/Icon";
 
 const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
@@ -9,23 +14,22 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
       title="Title"
       activePrimaryNavKey={activePrimaryNavKey}
       setActivePrimaryNavKey={setActivePrimaryNavKey}
-      buttons={[
-        {
-          children: "Primary",
-          sdsStyle: "rounded",
-          sdsType: "primary",
-        },
-        {
-          children: "Secondary",
-          sdsStyle: "rounded",
-          sdsType: "secondary",
-        },
-        {
-          children: "My Profile",
-          icon: "Person",
-          sdsStyle: "icon",
-        },
-      ]}
+      buttons={
+        [
+          { children: "Label", sdsType: "primary" },
+          {
+            children: "Label",
+            sdsType: "primary",
+            sdsStyle: "outline",
+          },
+          {
+            sdsStyle: "minimal",
+            sdsType: "primary",
+            children: <Icon sdsIcon="Person" sdsSize="s" />,
+            onClick: () => alert("clicked on my profile"),
+          },
+        ] as Partial<ButtonProps>[]
+      }
       backgroundAppearance="matchBackground"
       logo={<div>Logo</div>}
       logoUrl="https://chanzuckerberg.com"

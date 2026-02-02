@@ -10,7 +10,7 @@ import {
 } from "../styles";
 import { css } from "@emotion/react";
 import { ContentCardProps } from "./index";
-import Button, { SdsMinimalButtonProps } from "../Button";
+import Button, { ButtonProps } from "@mui/material/Button";
 
 type CardExtraProps = Partial<ContentCardProps> & CommonThemeProps;
 
@@ -56,10 +56,14 @@ const getShowDecorativeBorder = (
   visualElementType: ContentCardProps["visualElementType"] | undefined,
   boundingBox: boolean,
   decorativeBorder: boolean,
-  imagePadding: boolean
+  imagePadding: boolean,
+  imagePosition: ContentCardProps["imagePosition"]
 ) => {
   return visualElementType === "image"
-    ? boundingBox && decorativeBorder && imagePadding
+    ? boundingBox &&
+        decorativeBorder &&
+        ((imagePadding && imagePosition === "left") ||
+          imagePosition === "right")
     : boundingBox && decorativeBorder;
 };
 
@@ -92,7 +96,8 @@ export const StyledCard = styled(Card, {
       visualElementType,
       boundingBox,
       decorativeBorder,
-      imagePadding
+      imagePadding,
+      imagePosition
     );
 
     return css`
@@ -101,7 +106,7 @@ export const StyledCard = styled(Card, {
       background-color: transparent;
       background-image: none;
       flex-direction: ${flexDirection};
-      overflow: visible;
+      overflow: visible !important;
       box-shadow: none;
       border-radius: ${corners?.xl}px;
 
@@ -125,7 +130,8 @@ export const StyledCard = styled(Card, {
         &:before {
           content: "";
           position: absolute;
-          background-color: ${semanticColors?.accent?.border};
+          background-color: ${semanticColors?.accent?.foreground};
+          z-index: 10;
 
           ${sdsType === "wide" &&
           css`
@@ -170,7 +176,7 @@ type CardActionAreaExtraProps = {
   imagePosition?: ContentCardProps["imagePosition"];
   cardSdsType?: ContentCardProps["sdsType"];
   visualElementType?: ContentCardProps["visualElementType"];
-} & SdsMinimalButtonProps &
+} & ButtonProps &
   CommonThemeProps;
 
 export const StyledCardActionArea = styled(Button, {
@@ -184,15 +190,13 @@ export const StyledCardActionArea = styled(Button, {
     } = props;
 
     const semanticColors = getSemanticColors(props);
+    const corners = getCorners(props);
 
-    const flexDirection =
-      cardSdsType === "wide"
-        ? imagePosition === "left"
-          ? "row"
-          : "row-reverse"
-        : visualElementType === "image"
-          ? "column"
-          : "row";
+    const flexDirection = getFlexDirection(
+      cardSdsType,
+      visualElementType,
+      imagePosition
+    );
 
     return `
       display: flex;
@@ -204,6 +208,7 @@ export const StyledCardActionArea = styled(Button, {
       margin: 0;
       overflow: auto;
       text-align: unset;
+      border-radius: ${corners?.xl}px;
 
       background-color: ${semanticColors?.base?.backgroundPrimary};
 
@@ -243,9 +248,15 @@ export const StyledCardContent = styled("div", {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
   ${(props: CardExtraProps) => {
-    const { boundingBox = true } = props;
+    const { boundingBox = true, sdsType = "wide", visualElementType } = props;
 
     const spaces = getSpaces(props);
+    const NoBoundingBoxPadding =
+      sdsType === "narrow"
+        ? visualElementType === "image"
+          ? `${spaces?.xl}px 0 0 0`
+          : 0
+        : `0 0 0 ${spaces?.xl}px`;
 
     return css`
       display: flex;
@@ -254,10 +265,13 @@ export const StyledCardContent = styled("div", {
       width: 100%;
       height: 100%;
 
-      ${boundingBox &&
-      css`
-        padding: ${spaces?.xl}px;
-      `}
+      ${boundingBox
+        ? css`
+            padding: ${spaces?.xl}px;
+          `
+        : css`
+            padding: ${NoBoundingBoxPadding};
+          `}
     `;
   }}
 `;
@@ -273,6 +287,7 @@ export const StyledContentCardBody = styled(CardContent, {
       color: ${semanticColors?.base?.textPrimary};
       margin: ${spaces?.l}px 0 0;
       padding: 0;
+      white-space: pre-wrap;
     `;
   }}
 `;

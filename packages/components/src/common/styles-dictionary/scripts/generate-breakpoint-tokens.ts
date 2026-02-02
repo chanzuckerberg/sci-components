@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 
 import { Breakpoints } from "src/core/styles/common/constants/breakpoints";
 
-// @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 // Generate breakpoint tokens from constants

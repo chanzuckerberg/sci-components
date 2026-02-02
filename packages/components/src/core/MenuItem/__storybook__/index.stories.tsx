@@ -5,6 +5,7 @@ import {
 } from "./constants";
 import { MenuItem } from "./stories/default";
 import { ScreenshotTestDemo } from "./stories/screenshot";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
@@ -32,13 +33,13 @@ export default {
     },
     sdsStyle: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["determinate", "indeterminate"],
     },
     sdsType: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["default", "action"],
     },

@@ -13,8 +13,10 @@ import {
 import React from "react";
 import { EMPTY_OBJECT, cn } from "src/common/utils";
 
-export interface RadioContentProps
-  extends Omit<MUIRadioProps, "color" | "defaultChecked"> {
+export interface RadioContentProps extends Omit<
+  MUIRadioProps,
+  "color" | "defaultChecked"
+> {
   caption?: React.ReactNode;
   intent?: "default" | "negative" | "notice" | "positive";
   label?: React.ReactNode;

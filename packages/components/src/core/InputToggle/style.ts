@@ -81,7 +81,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
     }
 
     .${switchClasses.thumb} {
-      color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.accent?.ornament};
+      color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.accent?.foreground};
       margin-left: ${spaces?.m}px;
     }
 
@@ -116,7 +116,7 @@ const toggleOn = (props: InputToggleExtraProps) => {
         outline: ${borders?.accent?.hover};
 
         .${switchClasses.thumb} {
-          color: ${semanticColors?.accent?.ornamentHover};
+          color: ${semanticColors?.accent?.foregroundInteraction};
         }
       }`
     }
@@ -159,7 +159,7 @@ const toggleOff = (props: InputToggleExtraProps) => {
       }
 
       &:hover {
-        background-color: ${semanticColors?.base?.fillInteraction};
+        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
       }
     }
 

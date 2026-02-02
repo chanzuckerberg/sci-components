@@ -3,6 +3,7 @@ import { composeStories } from "@storybook/react-webpack5";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 import Button from "src/core/Button";
+import Icon from "src/core/Icon";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);
@@ -28,12 +29,13 @@ describe("<Panel />", () => {
         HeaderComponent={<p>Header</p>}
         CloseButtonComponent={
           <Button
-            sdsStyle="icon"
-            sdsSize="medium"
+            sdsStyle="minimal"
+            size="large"
             sdsType="secondary"
-            icon="ChevronLeft"
             data-testid="panel-close-button"
-          />
+          >
+            <Icon sdsIcon="ChevronLeft" sdsSize="l" />
+          </Button>
         }
       />
     );
@@ -86,12 +88,13 @@ describe("<Panel />", () => {
         HeaderComponent={<div>Header</div>}
         CloseButtonComponent={
           <Button
-            sdsStyle="icon"
-            sdsSize="medium"
+            sdsStyle="minimal"
+            size="large"
             sdsType="secondary"
-            icon="ChevronLeft"
             data-testid="panel-close-button"
-          />
+          >
+            <Icon sdsIcon="ChevronLeft" sdsSize="l" />
+          </Button>
         }
       />
     );

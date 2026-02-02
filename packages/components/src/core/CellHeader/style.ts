@@ -45,7 +45,7 @@ export const StyledSortingIcon = styled(Icon, {
     return `
       margin-left: ${spaces?.s}px;
       margin-bottom: ${spaces?.xxs}px;
-      color: ${active ? semanticColors?.accent?.ornament : "transparent"};
+      color: ${active ? semanticColors?.accent?.foreground : "transparent"};
       display: ${hideSortIcon ? (active ? "block" : "none") : "block"};
       outline: none !important;
     `;
@@ -74,11 +74,11 @@ export const StyledTableHeader = styled("th", {
     const semanticColors = getSemanticColors(props);
 
     const defaultColor = active
-      ? semanticColors?.accent?.textAction
+      ? semanticColors?.accent?.foreground
       : semanticColors?.base?.textSecondary;
 
     const hoverColor = active
-      ? semanticColors?.accent?.textActionHover
+      ? semanticColors?.accent?.foregroundInteraction
       : semanticColors?.base?.textPrimary;
 
     return `
@@ -102,7 +102,7 @@ export const StyledTableHeader = styled("th", {
         }
 
         & svg {
-          color: ${active ? semanticColors?.accent?.ornamentHover : semanticColors?.base?.ornamentSecondaryInteraction};
+          color: ${active ? semanticColors?.accent?.foregroundInteraction : semanticColors?.base?.ornamentSecondaryInteraction};
         }
       }
     `;

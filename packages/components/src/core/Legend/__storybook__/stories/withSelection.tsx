@@ -25,8 +25,9 @@ export default function WithSelectionStory(
             onClick={() =>
               setSelectedIndices(props.items?.map((item, index) => index) || [])
             }
-            sdsStyle="square"
-            sdsType="secondary"
+            sdsStyle="outline"
+            sdsType="primary"
+            size="large"
           >
             Select All
           </Button>
@@ -34,6 +35,7 @@ export default function WithSelectionStory(
             onClick={() => setSelectedIndices([])}
             sdsStyle="minimal"
             sdsType="secondary"
+            size="large"
           >
             Clear Selection
           </Button>

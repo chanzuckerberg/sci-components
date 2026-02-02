@@ -236,7 +236,7 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
                     return (
                       <StyledButton
                         key={`action-${section || "default"}-${index}`}
-                        sdsStyle="rounded"
+                        sdsStyle="solid"
                         sdsType="primary"
                         onClick={(e) => {
                           onClick?.(e);

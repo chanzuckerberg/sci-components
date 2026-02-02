@@ -1,33 +1,13 @@
 import React, { ForwardedRef } from "react";
-import Button, {
-  ButtonProps,
-  ButtonSize,
-  ButtonTypeMap,
-} from "src/core/Button";
-import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
-import ButtonIcon from "../ButtonIcon";
+import Button from "src/core/Button";
+import Icon from "../Icon";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "src/common/warnings";
+import { ButtonDropdownProps } from "./ButtonDropdown.types";
 
-type SdsProps =
-  | {
-      sdsStyle: "icon";
-      sdsType?: ButtonTypeMap["icon"];
-      icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-      sdsSize?: ButtonSize;
-    }
-  | {
-      sdsStyle: "rounded" | "square";
-      sdsType?: ButtonTypeMap["rounded"];
-      icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-      sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
-      sdsSize?: ButtonSize;
-    };
-
-export type ButtonDropdownProps = ButtonProps & SdsProps;
+export type { ButtonDropdownProps };
 
 /**
  * @see https://mui.com/material-ui/react-button/
@@ -37,41 +17,32 @@ const ButtonDropdown = React.forwardRef(
     props: ButtonDropdownProps,
     ref: ForwardedRef<HTMLButtonElement>
   ): JSX.Element | null => {
-    const { sdsStyle } = props;
+    const { size = "large", sdsType, children, ...rest } = props;
 
-    if (sdsStyle === "icon") {
-      if (!props.icon) {
-        showWarningIfFirstOccurence(SDSWarningTypes.ButtonIconMissingIconProp);
-        return null;
-      }
-      return <ButtonIcon {...props} ref={ref} />;
+    // Runtime check for destructive type (in case TypeScript is bypassed)
+    if ((sdsType as string) === "destructive") {
+      showWarningIfFirstOccurence(SDSWarningTypes.ButtonDropdownV2Destructive);
+      return null;
     }
 
-    if (sdsStyle === "square" || sdsStyle === "rounded") {
-      const iconItem = () => {
-        if (props?.icon) {
-          return typeof props?.icon === "string" ? (
-            <Icon {...props?.sdsIconProps} sdsIcon={props?.icon} sdsSize="s" />
-          ) : (
-            props?.icon
-          );
-        }
-        return null;
-      };
+    const endIcon = children ? (
+      <Icon
+        sdsIcon="ChevronDown"
+        sdsSize={size === "large" ? "s" : size === "medium" ? "xs" : "xxs"}
+      />
+    ) : null;
 
-      return (
-        <Button
-          {...props}
-          endIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" />}
-          sdsStyle={sdsStyle}
-          ref={ref}
-          startIcon={iconItem()}
-        />
-      );
-    }
-
-    showWarningIfFirstOccurence(SDSWarningTypes.ButtonDropdownMinimal);
-    return null;
+    return (
+      <Button
+        {...rest}
+        sdsType={sdsType}
+        endIcon={endIcon}
+        size={size}
+        ref={ref}
+      >
+        {children}
+      </Button>
+    );
   }
 );
 

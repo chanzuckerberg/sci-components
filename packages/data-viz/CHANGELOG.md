@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.17.0...@czi-sds/data-viz@0.17.1) (2026-01-28)
+
+**Note:** Version bump only for package @czi-sds/data-viz
+
+# [0.17.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.16.2...@czi-sds/data-viz@0.17.0) (2026-01-21)
+
+### Features
+
+- **icons:** Add CxG icons to SDS ([#1080](https://github.com/chanzuckerberg/sci-components/issues/1080)) ([cd91e3c](https://github.com/chanzuckerberg/sci-components/commit/cd91e3c15ae8828929a118ca90adad2f5bc7b153))
+
 ## [0.16.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.16.1...@czi-sds/data-viz@0.16.2) (2025-12-12)
 
 ### Bug Fixes

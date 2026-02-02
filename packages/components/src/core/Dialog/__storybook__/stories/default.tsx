@@ -21,8 +21,13 @@ export const Dialog = (props: Args): JSX.Element => {
 
   return (
     <>
-      <Button sdsStyle="minimal" sdsType="primary" onClick={handleClick}>
-        Open {sdsSize}
+      <Button
+        size="large"
+        sdsStyle="minimal"
+        sdsType="primary"
+        onClick={handleClick}
+      >
+        Open {sdsSize.toUpperCase()}
       </Button>
       <RawDialog
         onClose={handleClose}
@@ -54,10 +59,20 @@ export const Dialog = (props: Args): JSX.Element => {
     if (buttonPosition === "left") {
       return (
         <>
-          <Button sdsStyle="square" sdsType="primary" onClick={handleClose}>
+          <Button
+            size="large"
+            sdsStyle="solid"
+            sdsType="primary"
+            onClick={handleClose}
+          >
             Primary Action
           </Button>
-          <Button sdsStyle="square" sdsType="secondary" onClick={handleClose}>
+          <Button
+            size="large"
+            sdsStyle="outline"
+            sdsType="primary"
+            onClick={handleClose}
+          >
             Secondary Action
           </Button>
         </>
@@ -66,10 +81,20 @@ export const Dialog = (props: Args): JSX.Element => {
 
     return (
       <>
-        <Button sdsStyle="square" sdsType="secondary" onClick={handleClose}>
+        <Button
+          size="large"
+          sdsStyle="outline"
+          sdsType="primary"
+          onClick={handleClose}
+        >
           Secondary Action
         </Button>
-        <Button sdsStyle="square" sdsType="primary" onClick={handleClose}>
+        <Button
+          size="large"
+          sdsStyle="solid"
+          sdsType="primary"
+          onClick={handleClose}
+        >
           Primary Action
         </Button>
       </>
