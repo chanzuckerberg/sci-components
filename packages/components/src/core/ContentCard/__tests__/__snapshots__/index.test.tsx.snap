@@ -10,7 +10,7 @@ exports[`ContentCard Default story renders snapshot 1`] = `
     <img
       alt="Content Card Media"
       class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-fq4hyx-MuiCardMedia-root"
-      src="https://picsum.photos/1000"
+      src="https://fastly.picsum.photos/id/623/1000/1000.jpg?hmac=Spxiw6vTHdgANWOoWrsiFqmLk7DftbJvzyaSr-pgpT4"
     />
   </div>
   <div

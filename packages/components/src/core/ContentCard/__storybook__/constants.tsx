@@ -87,11 +87,11 @@ export const CONTENT_CARD_IMAGE_OPTIONS = [
   <CardMedia
     component="img"
     key="image"
-    image="https://picsum.photos/1000"
+    image="https://fastly.picsum.photos/id/397/1000/1000.jpg?hmac=30YOGXbGugCMTve9gtVIFYFCQWN6j8Z0YZqmzwriiow"
     alt="Placeholder Image"
   />,
   "https://placehold.co/300?text=Placeholder Image",
-  "https://picsum.photos/1000",
+  "https://fastly.picsum.photos/id/623/1000/1000.jpg?hmac=Spxiw6vTHdgANWOoWrsiFqmLk7DftbJvzyaSr-pgpT4",
 ];
 
 // Icons
