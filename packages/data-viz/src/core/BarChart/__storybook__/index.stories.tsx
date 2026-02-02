@@ -31,6 +31,7 @@ export default {
       skip: true,
     },
   },
+  tags: ["beta"],
   title: "Data Viz/BarChart [beta]",
 } as Meta;
 
