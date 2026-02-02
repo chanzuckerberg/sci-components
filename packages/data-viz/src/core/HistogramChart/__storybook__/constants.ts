@@ -4,6 +4,12 @@ for (let i = 1; i < 20; i++) {
   HISTOGRAM_DATA.push([i, Math.round(Math.random() * 100)]);
 }
 
+// NEW: Add labels for x-axis
+export const HISTOGRAM_LABELS = Array.from(
+  { length: 19 },
+  (_, i) => `${i * 10}-${(i + 1) * 10}`
+);
+
 export const HISTOGRAM_TOOLTIP_OPTIONS = [
   { show: false },
   {

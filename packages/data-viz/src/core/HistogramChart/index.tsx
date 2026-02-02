@@ -21,19 +21,33 @@ export interface HistogramChartProps
   echartsRendererMode?: "svg" | "canvas";
 }
 
-const HeatmapChart = forwardRef(
+const HistogramChart = forwardRef(
   (
     props: HistogramChartProps,
     ref: ForwardedRef<HTMLDivElement>
     // eslint-disable-next-line sonarjs/cognitive-complexity
   ): JSX.Element => {
     const {
-      width,
-      height,
+      axisPointer,
+      barCategoryGap,
+      barGap,
+      barWidth,
+      barColor,
+      chartTitle,
+      showTitle,
+      data,
+      dataZoom,
       echartsRendererMode = "svg",
-      onEvents,
+      emphasis,
       grid,
+      height,
+      itemStyle,
+      onEvents,
       options,
+      width,
+      xAxisData,
+      xAxisTitle,
+      yAxisTitle,
       ...rest
     } = props;
 
@@ -129,12 +143,26 @@ const HeatmapChart = forwardRef(
 
     // Hook to update chart data and options
     useUpdateChart({
+      axisPointer,
+      barCategoryGap,
+      barGap,
+      barWidth,
+      barColor,
       chart,
+      chartTitle,
+      showTitle,
+      data,
+      dataZoom,
+      emphasis,
       grid,
       height,
+      itemStyle,
       onEvents,
       options,
       width,
+      xAxisData,
+      xAxisTitle,
+      yAxisTitle,
     });
 
     // Render the chart container
@@ -184,4 +212,4 @@ const HeatmapChart = forwardRef(
   }
 );
 
-export default memo(HeatmapChart);
+export default memo(HistogramChart);
