@@ -58,6 +58,9 @@
   ],
   "data-viz": [
     "HeatmapChart",
-    "StackedBarChart"
+    "StackedBarChart",
+    "HistogramChart",
+    "BarChart",
+    "ScatterPlot"
   ]
 }

@@ -9,11 +9,26 @@ export interface UpdateChartProps extends CreateChartOptionsProps {
 }
 
 export function useUpdateChart({
+  axisPointer,
+  barCategoryGap,
+  barGap,
+  barWidth,
+  barColor,
+  chartTitle,
+  showTitle,
   chart,
-  width,
+  data,
+  dataZoom,
+  emphasis,
+  grid,
   height,
-  options,
+  itemStyle,
   onEvents,
+  options,
+  width,
+  xAxisData,
+  xAxisTitle,
+  yAxisTitle,
 }: UpdateChartProps): void {
   const throttledUpdateChart = useMemo(() => {
     return throttle(
@@ -27,9 +42,24 @@ export function useUpdateChart({
         chart.resize();
 
         const chartOptions = createChartOptions({
+          axisPointer,
+          barCategoryGap,
+          barGap,
+          barWidth,
+          barColor,
+          chartTitle,
+          showTitle,
+          data,
+          dataZoom,
+          emphasis,
+          grid,
           height,
+          itemStyle,
           options,
           width,
+          xAxisData,
+          xAxisTitle,
+          yAxisTitle,
         });
 
         chart.setOption(chartOptions, {
@@ -63,7 +93,28 @@ export function useUpdateChart({
       // be executed
       { trailing: true }
     );
-  }, [chart, width, height, options, onEvents]);
+  }, [
+    axisPointer,
+    barCategoryGap,
+    barGap,
+    barWidth,
+    barColor,
+    chartTitle,
+    showTitle,
+    chart,
+    data,
+    dataZoom,
+    emphasis,
+    grid,
+    height,
+    itemStyle,
+    onEvents,
+    options,
+    width,
+    xAxisData,
+    xAxisTitle,
+    yAxisTitle,
+  ]);
 
   useEffect(() => {
     return () => throttledUpdateChart.cancel();
@@ -72,5 +123,27 @@ export function useUpdateChart({
   // Update the charts
   useEffect(() => {
     throttledUpdateChart();
-  }, [chart, throttledUpdateChart, width, height, options, onEvents]);
+  }, [
+    axisPointer,
+    barCategoryGap,
+    barGap,
+    barWidth,
+    barColor,
+    chartTitle,
+    showTitle,
+    chart,
+    data,
+    dataZoom,
+    emphasis,
+    grid,
+    height,
+    itemStyle,
+    onEvents,
+    options,
+    throttledUpdateChart,
+    width,
+    xAxisData,
+    xAxisTitle,
+    yAxisTitle,
+  ]);
 }
