@@ -9,10 +9,22 @@ import pkg from "./package.json" with { type: "json" };
 const config = [
   {
     // External dependencies that should not be bundled into the output to reduce bundle size.
-    external: [
-      ...Object.keys(pkg.peerDependencies || {}),
-      "react/jsx-runtime"
-    ],
+    external: (id) => {
+      // Externalize peer dependencies
+      const peerDeps = Object.keys(pkg.peerDependencies || {});
+      if (peerDeps.some(dep => id === dep || id.startsWith(dep + '/'))) {
+        return true;
+      }
+      // Externalize react/jsx-runtime
+      if (id === 'react/jsx-runtime') {
+        return true;
+      }
+      // Externalize packages that cause .d.mts resolution issues
+      if (id === 'clsx' || id.startsWith('@emotion/') || id.startsWith('@mui/')) {
+        return true;
+      }
+      return false;
+    },
 
     // Entry point for the library
     input: "src/index.ts",
@@ -34,9 +46,21 @@ const config = [
         interop: "auto"
       },
     ],
+    // Suppress "use client" directive warnings from MUI
+    onwarn(warning, warn) {
+      if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
+        return;
+      }
+      warn(warning);
+    },
     plugins: [
       // Handles resolving external dependencies from `node_modules`.
-      resolve(),
+      resolve({
+        // Only resolve JavaScript/TypeScript files, not .d.ts/.d.mts declaration files
+        extensions: ['.mjs', '.js', '.json', '.node', '.ts', '.tsx'],
+        // Exclude 'types' condition to prevent resolving .d.mts files
+        exportConditions: ['import', 'module', 'default']
+      }),
 
       // Convert CommonJS modules (especially from `node_modules`) to ES6.
       commonjs(),
