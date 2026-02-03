@@ -18,14 +18,6 @@ const config = [
       if (peerDeps.some(dep => id === dep || id.startsWith(dep + '/'))) {
         return true;
       }
-      // Externalize react/jsx-runtime
-      if (id === 'react/jsx-runtime') {
-        return true;
-      }
-      // Externalize packages that cause .d.mts resolution issues
-      if (id === 'clsx' || id.startsWith('@emotion/') || id.startsWith('@mui/')) {
-        return true;
-      }
       return false;
     },
 

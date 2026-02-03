@@ -14,6 +14,8 @@ export * from "./core/Button";
 export { default as Button } from "./core/Button";
 export * from "./core/ButtonDropdown";
 export { default as ButtonDropdown } from "./core/ButtonDropdown";
+export * from "./core/ButtonGroup";
+export { default as ButtonGroup } from "./core/ButtonGroup";
 export * from "./core/ButtonIcon";
 export { default as ButtonIcon } from "./core/ButtonIcon";
 export * from "./core/ButtonToggle";

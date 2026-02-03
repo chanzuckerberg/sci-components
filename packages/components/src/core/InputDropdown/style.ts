@@ -1,5 +1,4 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { ButtonProps } from "@mui/material";
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
 import Button from "@mui/material/Button";
@@ -13,6 +12,7 @@ import {
   getSpaces,
   SDSPalette,
 } from "src/core/styles";
+import { ButtonProps } from "../Button";
 
 const doNotForwardProps = [
   "intent",
@@ -60,6 +60,8 @@ export interface InputDropdownProps
   // a React.ComponentType<InputDropdownProps>. This is a workaround until a more
   // permanent solution is implemented.
   style?: React.CSSProperties;
+  startIcon?: ReactNode;
+  size?: ButtonProps["size"];
 }
 
 const labelFontBodyS = fontBody("s", "regular");
