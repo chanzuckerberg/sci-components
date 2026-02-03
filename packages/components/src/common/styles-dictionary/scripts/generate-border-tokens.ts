@@ -8,7 +8,6 @@ import {
   SDSLightThemeColors,
 } from "src/core/styles/common/constants/colors";
 
-// @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 // Create a mapping from color values to primitive token references

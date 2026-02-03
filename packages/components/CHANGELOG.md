@@ -450,7 +450,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### CHANGES
 
 - **Added support for Dark Mode!**
-
   - Implemented dark mode support across all components and styles.
   - Updated design tokens to include dual Light and Dark Mode values, ensuring seamless theme transitions.
     - Full list of CSS variables can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/css/variables.css).
@@ -459,25 +458,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   - Integrated a theme switcher to toggle between Light and Dark Mode in the storybook.
 
 - **Updated Button component:**
-
   - Introduced isAllCaps prop for toggling All Caps in Button labels.
   - Refined hover and pressed states for the minimal variant to align with Dark Mode standards.
 
 - **Updated CellHeader component:**
-
   - When active is set to true, the sortIcon will always be displayed and cannot be hidden with the hideSortIcon prop.
 
 - **Updated InputDropdown component:**
-
   - Removed sdsStage prop.
   - userInput stage is now automatically set if the InputDropdown has a value.
 
 - **Updated Intent Prop on Input Components (InputCheckbox, InputRadio, InputText, InputSearch)**
-
   - Changed intent prop values from "error" and "warning" to "negative" and "notice".
 
 - **Updated InputSearch component:**
-
   - Removed sdsStage prop.
   - userInput stage is now automatically set if the InputSearch has a value.
 

@@ -30,7 +30,7 @@
         "isRequired": false
       },
       "sdsType": {
-        "type": "\"label\" | \"value\"",
+        "type": "\"value\" | \"label\"",
         "isRequired": false
       },
       "shouldPutAColonAfterLabel": {
@@ -39,6 +39,10 @@
       },
       "shouldTruncateMinimalDetails": {
         "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "startIcon": {
+        "type": "ReactNode",
         "isRequired": false
       },
       "style": {

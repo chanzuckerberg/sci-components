@@ -5,14 +5,14 @@ exports[`<CellHeader /> Default story renders snapshot 1`] = `
   <tbody>
     <tr>
       <th
-        class="css-ezzkc2"
+        class="css-2dzp8v e15ir0111"
         direction="desc"
       >
         <div
-          class="css-rm9mvq"
+          class="css-96hiq7 e15ir0113"
         >
           <div
-            class="css-1epiyn2"
+            class="css-1kmjpr5 e15ir0112"
           >
             Header
           </div>

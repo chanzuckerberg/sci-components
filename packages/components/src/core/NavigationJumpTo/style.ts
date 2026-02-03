@@ -11,8 +11,7 @@ import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import { CSSProperties } from "react";
 
 export interface NavigationJumpToExtraProps
-  extends Omit<TabsProps, "onChange">,
-    CommonThemeProps {
+  extends Omit<TabsProps, "onChange">, CommonThemeProps {
   width?: CSSProperties["width"];
   isSubItem?: boolean;
 }

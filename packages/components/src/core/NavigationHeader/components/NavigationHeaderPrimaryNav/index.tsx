@@ -25,15 +25,18 @@ import DrawerContent from "../shared/DrawerContent";
 import AccordionNavItem from "../shared/AccordionNavItem";
 import { useNavigationState } from "../shared/useNavigationState";
 
-interface BaseNavigationHeaderPrimaryNavItem<T extends string>
-  extends Record<string, unknown> {
+interface BaseNavigationHeaderPrimaryNavItem<T extends string> extends Record<
+  string,
+  unknown
+> {
   key: T;
   label: ReactNode;
   onClick?: (e: React.SyntheticEvent) => void;
 }
 
-export interface TextNavigationHeaderPrimaryNavItem<T extends string>
-  extends BaseNavigationHeaderPrimaryNavItem<T> {
+export interface TextNavigationHeaderPrimaryNavItem<
+  T extends string,
+> extends BaseNavigationHeaderPrimaryNavItem<T> {
   itemType: "text";
   tag?: string;
   tagColor?: SdsTagColorType;
@@ -65,8 +68,9 @@ export interface SectionProps {
   colSpan?: number;
 }
 
-interface DropdownNavigationHeaderPrimaryNavItem<T extends string>
-  extends BaseNavigationHeaderPrimaryNavItem<T> {
+interface DropdownNavigationHeaderPrimaryNavItem<
+  T extends string,
+> extends BaseNavigationHeaderPrimaryNavItem<T> {
   itemType: "dropdown";
   items: DropdownItem[];
   sectionProps?: Record<string, SectionProps>;

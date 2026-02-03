@@ -7,8 +7,10 @@ import { NavigationHeaderPrimaryNavItem } from "./components/NavigationHeaderPri
 import { NavigationHeaderSecondaryNavItem } from "./components/NavigationHeaderSecondaryNav";
 import { ButtonProps } from "../Button";
 
-export interface NavigationHeaderProps<T extends string = string>
-  extends Omit<AppBarProps, "position"> {
+export interface NavigationHeaderProps<T extends string = string> extends Omit<
+  AppBarProps,
+  "position"
+> {
   activePrimaryNavKey?: string;
   buttons?: Partial<ButtonProps>[] | React.ReactNode[];
   backgroundAppearance?: "matchBackground" | "dark";

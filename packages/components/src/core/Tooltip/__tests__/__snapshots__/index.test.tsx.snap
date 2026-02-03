@@ -11,20 +11,20 @@ exports[`<Tooltip /> Default story renders snapshot 1`] = `
   >
     <button
       aria-label="tooltip test button"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-xb0rx9-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-vyk8ua-MuiButtonBase-root-MuiButton-root"
       data-mui-internal-clone-element="true"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1am7bo"
+        class="css-12bqywg e1gcweb21"
       >
         <div
-          class="css-1ft6wgl"
+          class="css-1obf64m eo7r9jx1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
             data-file-name="IconExclamationMarkCircleSmall"
             data-testid="IconExclamationMarkCircleSmall"
             fillcontrast="white"

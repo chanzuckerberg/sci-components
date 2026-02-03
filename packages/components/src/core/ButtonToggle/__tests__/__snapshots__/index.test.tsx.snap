@@ -2,11 +2,11 @@
 
 exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
 <div
-  class="css-154eh9f"
+  class="css-pi3gcs e1gcweb22"
 >
   <button
     aria-label="button-toggle"
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-821i09-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary etitc7m0 e1gcweb20 css-8yohbv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
@@ -14,11 +14,11 @@ exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
       class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
     >
       <div
-        class="css-1ft6wgl"
+        class="css-1obf64m eo7r9jx1"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
           data-file-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
           fillcontrast="white"
@@ -30,7 +30,7 @@ exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
       </div>
     </span>
     <span
-      class="css-1am7bo"
+      class="css-12bqywg e1gcweb21"
     >
       Label
     </span>

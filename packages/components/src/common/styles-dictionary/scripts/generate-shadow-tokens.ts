@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 
 import { Shadows } from "src/core/styles/common/constants/shadows";
 
-// @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 // Generate shadow tokens from constants

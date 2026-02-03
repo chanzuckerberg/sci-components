@@ -5,30 +5,30 @@ exports[`<Dropdown /> Default story renders snapshot 1`] = `
   aria-expanded="false"
   aria-haspopup="listbox"
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-qi00m7-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary esj7ztq0 css-82wh6d-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-g6qgry"
+    class="css-1ijc2rk esj7ztq5"
   >
     <div>
       <span
-        class="styled-label css-1ubkbz8"
+        class="styled-label css-g71ytf esj7ztq2"
       >
         Click Target
       </span>
     </div>
     <span
-      class="css-1pp8466"
+      class="css-4mc30z esj7ztq6"
     >
       <div
-        class="css-1ft6wgl"
+        class="css-1obf64m eo7r9jx1"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -51,30 +51,30 @@ exports[`<Dropdown /> MultiColumnWithButtons story renders snapshot 1`] = `
   aria-expanded="false"
   aria-haspopup="listbox"
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-qi00m7-MuiButtonBase-root-MuiButton-root"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary esj7ztq0 css-82wh6d-MuiButtonBase-root-MuiButton-root"
   label="Click Target"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-g6qgry"
+    class="css-1ijc2rk esj7ztq5"
   >
     <div>
       <span
-        class="styled-label css-1ubkbz8"
+        class="styled-label css-g71ytf esj7ztq2"
       >
         Click Target
       </span>
     </div>
     <span
-      class="css-1pp8466"
+      class="css-4mc30z esj7ztq6"
     >
       <div
-        class="css-1ft6wgl"
+        class="css-1obf64m eo7r9jx1"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"

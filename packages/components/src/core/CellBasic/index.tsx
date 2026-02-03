@@ -14,8 +14,10 @@ import {
   TertiaryText,
 } from "./style";
 
-interface CellBasicContentProps
-  extends Omit<React.HTMLProps<HTMLTableCellElement>, "as"> {
+interface CellBasicContentProps extends Omit<
+  React.HTMLProps<HTMLTableCellElement>,
+  "as"
+> {
   primaryText: string;
   primaryTextWrapLineCount?: number;
   secondaryText?: string;
