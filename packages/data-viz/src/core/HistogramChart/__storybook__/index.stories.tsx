@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-webpack5";
 import { HISTOGRAM_TOOLTIP_OPTIONS } from "./constants";
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
 import { HistogramChart } from "./stories/default";
