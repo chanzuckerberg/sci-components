@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 
 import { IconSizes } from "src/core/styles/common/constants/iconSizes";
 
-// @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 // Generate icon size tokens from constants

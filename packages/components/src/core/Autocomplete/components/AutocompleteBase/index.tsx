@@ -66,8 +66,12 @@ export type DefaultAutocompleteOption =
   | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent> // Represents a basic option with optional custom properties.
   | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic>; // Represents an option with a custom component and optional basic properties.
 
-interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
-  extends Omit<StyleProps, "groupBy"> {
+interface ExtraAutocompleteProps<
+  T,
+  Multiple,
+  DisableClearable,
+  FreeSolo,
+> extends Omit<StyleProps, "groupBy"> {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (

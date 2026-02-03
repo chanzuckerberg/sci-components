@@ -1,6 +1,6 @@
 import { CardProps } from "@mui/material";
 import { ButtonProps } from "../Button";
-import { ReactNode } from "react";
+import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 
 export interface BaseContentCardProps extends CardProps {
   sdsType?: "wide" | "narrow";
@@ -12,7 +12,9 @@ export interface BaseContentCardProps extends CardProps {
   decorativeBorder?: boolean;
   children?: ReactNode;
   clickableCard?: boolean;
-  clickableCardProps?: Partial<ButtonProps>;
+  clickableCardProps?: Partial<
+    ButtonProps & { target?: HTMLAttributeAnchorTarget }
+  >;
   buttonsPosition?: "left" | "right";
   classes?: {
     cardPaper?: string;

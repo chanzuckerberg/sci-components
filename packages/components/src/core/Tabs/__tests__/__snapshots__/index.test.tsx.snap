@@ -2,7 +2,7 @@
 
 exports[`<Tabs /> Default story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root css-edivr4-MuiTabs-root"
+  class="MuiTabs-root el8inym0 css-yp8lk-MuiTabs-root"
 >
   <div
     class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -14,19 +14,19 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
     >
       <button
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-8tk79r-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected el8inym1 css-19kk6zo-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t2qed8"
+          class="css-xu7eym el8inym4"
         >
           Upload from Your Computer
         </span>
         <span
           aria-hidden="true"
-          class="css-fupqvl"
+          class="css-1bx20r1 el8inym5"
         >
           Upload from Your Computer
         </span>
@@ -36,29 +36,29 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
       <button
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-8tk79r-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary el8inym1 css-19kk6zo-MuiButtonBase-root-MuiTab-root"
         role="tab"
         tabindex="-1"
         type="button"
       >
         <div
-          class="css-90my5s"
+          class="css-1ho2fv8 el8inym2"
         >
           <div>
             <span
-              class="css-1t2qed8"
+              class="css-xu7eym el8inym4"
             >
               Upload from Base Space
             </span>
             <span
               aria-hidden="true"
-              class="css-fupqvl"
+              class="css-1bx20r1 el8inym5"
             >
               Upload from Base Space
             </span>
           </div>
           <span
-            class="css-1a170p7"
+            class="css-1xdhyk6 el8inym3"
           >
             0
           </span>
@@ -69,7 +69,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
     </div>
     <span
-      class="MuiTabs-indicator css-sadiwf css-1aquho2-MuiTabs-indicator"
+      class="MuiTabs-indicator css-1sekmjn css-1aquho2-MuiTabs-indicator"
       style="left: 0px; width: 0px;"
     />
   </div>

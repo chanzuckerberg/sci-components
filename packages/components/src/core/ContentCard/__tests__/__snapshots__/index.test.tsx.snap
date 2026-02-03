@@ -2,7 +2,7 @@
 
 exports[`ContentCard Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-143jctn-MuiPaper-root-MuiCard-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root eu91wa00 css-5uz7m5-MuiPaper-root-MuiCard-root"
 >
   <div
     class="css-2hv71g"
@@ -10,11 +10,11 @@ exports[`ContentCard Default story renders snapshot 1`] = `
     <img
       alt="Content Card Media"
       class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-fq4hyx-MuiCardMedia-root"
-      src="https://picsum.photos/1000"
+      src="https://fastly.picsum.photos/id/623/1000/1000.jpg?hmac=Spxiw6vTHdgANWOoWrsiFqmLk7DftbJvzyaSr-pgpT4"
     />
   </div>
   <div
-    class="css-ctpobh"
+    class="css-grnr2u eu91wa03"
   >
     <div>
       <div
@@ -43,23 +43,23 @@ exports[`ContentCard Default story renders snapshot 1`] = `
       </p>
     </div>
     <div
-      class="css-6kyaea"
+      class="css-1sb7ptk eu91wa05"
     >
       <div
-        class="MuiCardContent-root css-1xral81-MuiCardContent-root"
+        class="MuiCardContent-root eu91wa04 css-1bgc6iu-MuiCardContent-root"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Urna duis convallis convallis tellus id interdum velit laoreet id. Donec ultrices tincidunt arcu non sodales. Aliquam eleifend mi in nulla posuere.
       </div>
       <div
-        class="MuiCardActions-root MuiCardActions-spacing css-1w4zes7-MuiCardActions-root"
+        class="MuiCardActions-root MuiCardActions-spacing e503gfm0 css-1iz8dza-MuiCardActions-root"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary css-1arqnw-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1gcweb20 css-yjpzgg-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1am7bo"
+            class="css-12bqywg e1gcweb21"
           >
             Primary Button
           </span>
@@ -68,12 +68,12 @@ exports[`ContentCard Default story renders snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-xb0rx9-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-vyk8ua-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1am7bo"
+            class="css-12bqywg e1gcweb21"
           >
             Minimal Button
           </span>

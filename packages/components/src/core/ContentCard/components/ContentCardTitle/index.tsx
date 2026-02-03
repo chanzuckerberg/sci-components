@@ -9,11 +9,10 @@ import {
 import { EMPTY_OBJECT, cn } from "src/common/utils";
 import { BaseContentCardProps } from "src/core/ContentCard/ContentCard.types";
 
-export interface ContentCardTitleProps
-  extends Pick<
-    BaseContentCardProps,
-    "overlineText" | "titleText" | "subtitleText" | "metadataText"
-  > {
+export interface ContentCardTitleProps extends Pick<
+  BaseContentCardProps,
+  "overlineText" | "titleText" | "subtitleText" | "metadataText"
+> {
   classes?: {
     cardHeader?: string;
     cardOverline?: string;

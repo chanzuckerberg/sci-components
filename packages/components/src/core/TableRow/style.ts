@@ -9,7 +9,8 @@ import {
 } from "src/core/styles";
 
 export interface RowExtraProps
-  extends CommonThemeProps,
+  extends
+    CommonThemeProps,
     Omit<React.HTMLProps<HTMLTableRowElement>, "as" | "rev"> {
   rowHeight?: number;
   useDivider?: boolean;

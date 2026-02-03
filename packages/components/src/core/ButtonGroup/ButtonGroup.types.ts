@@ -1,7 +1,9 @@
 import { ButtonGroupProps as RawButtonGroupProps } from "@mui/material";
 
-export interface ButtonGroupProps
-  extends Omit<RawButtonGroupProps, "variant" | "size"> {
+export interface ButtonGroupProps extends Omit<
+  RawButtonGroupProps,
+  "variant" | "size"
+> {
   /**
    * The background appearance of the button group.
    * @default "matchBackground"

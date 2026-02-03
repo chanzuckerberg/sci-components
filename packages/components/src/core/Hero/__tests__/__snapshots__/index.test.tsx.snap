@@ -2,21 +2,21 @@
 
 exports[`<Hero /> Default story renders snapshot 1`] = `
 <section
-  class="css-k150iq"
+  class="css-goa3uz e1fcg0qk0"
 >
   <div
-    class="css-15mzwbv"
+    class="css-f7752x e1fcg0qk6"
   />
   <div
-    class="css-rt82e2"
+    class="css-13hcsw3 e1fcg0qk2"
   >
     <h1
-      class="css-1d31fnh"
+      class="css-8fcdk e1fcg0qk3"
     >
       Header Text
     </h1>
     <p
-      class="css-1mp5y5k"
+      class="css-1bg402l e1fcg0qk4"
     >
       Caption text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
     </p>

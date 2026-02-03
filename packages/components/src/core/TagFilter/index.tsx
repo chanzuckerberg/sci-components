@@ -4,8 +4,10 @@ import { StyledTag } from "./style";
 import Button from "../Button";
 import Icon from "../Icon";
 
-export interface SdsTagFilterProps
-  extends Omit<ChipProps, "color" | "variant"> {
+export interface SdsTagFilterProps extends Omit<
+  ChipProps,
+  "color" | "variant"
+> {
   label: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onDelete: React.EventHandler<any>;

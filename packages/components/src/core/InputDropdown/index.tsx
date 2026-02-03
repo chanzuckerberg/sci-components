@@ -85,6 +85,7 @@ const InputDropdown = (props: InputDropdownProps): JSX.Element => {
       className={cn(rootClassName, className)}
       sdsStyle={sdsStyle}
       aria-label="Dropdown input"
+      size="small"
     >
       <LabelWrapper className={cn(contentWrapperClassName)}>
         <div className={cn(labelDetailsWrapperClassName)}>
