@@ -36,6 +36,10 @@ export default {
       control: { type: "color" },
       description: "Color of the bars",
     },
+    showTitle: {
+      control: { type: "boolean" },
+      description: "Whether to show the chart title",
+    },
   },
   component: HistogramChart,
   parameters: {
@@ -58,6 +62,7 @@ export const Default = {
     tooltip: HISTOGRAM_TOOLTIP_OPTIONS[1],
     barCategoryGap: "0%",
     barGap: "0%",
+    showTitle: true,
   },
   parameters: {},
 };
