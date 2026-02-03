@@ -3,15 +3,22 @@ import RawHistogramChart from "src/core/HistogramChart";
 import { HISTOGRAM_DATA, HISTOGRAM_LABELS } from "../constants";
 
 export const HistogramChart = (props: Args): JSX.Element => {
-  const { barColor, barCategoryGap, barGap, barWidth, tooltip, ...rest } =
-    props;
+  const {
+    barColor,
+    barCategoryGap,
+    barGap,
+    barWidth,
+    tooltip,
+    showTitle,
+    ...rest
+  } = props;
 
   return (
     <RawHistogramChart
       chartTitle="Histogram Chart Title"
       xAxisTitle="X Axis Title"
       yAxisTitle="Y Axis Title"
-      showTitle={true}
+      showTitle={showTitle}
       width={800}
       height={400}
       data={HISTOGRAM_DATA}
