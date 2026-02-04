@@ -33,6 +33,14 @@ export interface CreateChartOptionsProps {
    */
   showTitle?: boolean;
   /**
+   * Whether to show the y-axis grid
+   */
+  showYAxisGrid?: boolean;
+  /**
+   * Whether to show the x-axis grid
+   */
+  showXAxisGrid?: boolean;
+  /**
    * Customize the style of each bar when mouse hovers
    * https://echarts.apache.org/en/option.html#series-bar.emphasis
    */
