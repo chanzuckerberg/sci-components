@@ -1,8 +1,10 @@
 import React, { forwardRef, ReactNode } from "react";
 import { CellComponentExtraProps, StyledCellComponentData } from "./style";
 
-interface CellComponentContentProps
-  extends Omit<React.HTMLProps<HTMLDivElement>, "as"> {
+interface CellComponentContentProps extends Omit<
+  React.HTMLProps<HTMLDivElement>,
+  "as"
+> {
   children?: ReactNode;
   as?: React.ElementType;
 }

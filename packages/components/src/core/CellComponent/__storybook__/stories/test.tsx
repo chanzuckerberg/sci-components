@@ -77,15 +77,19 @@ export const TestDemo = (props: Args): JSX.Element => {
             horizontalAlign="left"
             verticalAlign="top"
           >
-            <div style={{ display: "flex", gap: "8px" }}>
-              <Button sdsStyle="icon" icon="Sparkles" sdsSize="small" />
-              <Button sdsStyle="icon" icon="Gear" sdsSize="small" />
-              <Button
-                sdsStyle="icon"
-                icon="BarChartVertical3"
-                sdsSize="small"
-              />
-              <Button sdsStyle="icon" icon="Download" sdsSize="small" />
+            <div style={{ display: "flex", gap: "0px" }}>
+              <Button sdsStyle="minimal" size="medium">
+                <Icon sdsIcon="Sparkles" sdsSize="xs" />
+              </Button>
+              <Button sdsStyle="minimal" size="medium">
+                <Icon sdsIcon="Gear" sdsSize="xs" />
+              </Button>
+              <Button sdsStyle="minimal" size="medium">
+                <Icon sdsIcon="BarChartVertical3" sdsSize="xs" />
+              </Button>
+              <Button sdsStyle="minimal" size="medium">
+                <Icon sdsIcon="Download" sdsSize="xs" />
+              </Button>
             </div>
           </CellComponent>
         </StyledDashedBorder>
@@ -98,19 +102,21 @@ export const TestDemo = (props: Args): JSX.Element => {
           >
             <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
               <Button
-                sdsStyle="square"
+                sdsStyle="solid"
                 sdsType="primary"
                 startIcon={<Icon sdsIcon="Download" sdsSize="xs" />}
               >
                 Label
               </Button>
-              <Button sdsStyle="icon" icon="Sparkles" sdsSize="small" />
-              <Button
-                sdsStyle="icon"
-                icon="BarChartVertical3"
-                sdsSize="small"
-              />
-              <Button sdsStyle="icon" icon="Download" sdsSize="small" />
+              <Button sdsStyle="solid" size="large">
+                <Icon sdsIcon="Sparkles" sdsSize="xs" />
+              </Button>
+              <Button sdsStyle="solid" size="large">
+                <Icon sdsIcon="BarChartVertical3" sdsSize="xs" />
+              </Button>
+              <Button sdsStyle="solid" size="large">
+                <Icon sdsIcon="Download" sdsSize="xs" />
+              </Button>
             </div>
           </CellComponent>
         </StyledDashedBorder>
@@ -123,14 +129,14 @@ export const TestDemo = (props: Args): JSX.Element => {
           >
             <div style={{ display: "flex", gap: "8px" }}>
               <Button
-                sdsStyle="square"
+                sdsStyle="outline"
                 sdsType="primary"
-                startIcon={<Icon sdsIcon="Download" sdsSize="xs" />}
+                startIcon={<Icon sdsIcon="Sparkle" sdsSize="xs" />}
               >
                 Label
               </Button>
               <Button
-                sdsStyle="square"
+                sdsStyle="outline"
                 sdsType="secondary"
                 startIcon={<Icon sdsIcon="Sparkles" sdsSize="xs" />}
               >

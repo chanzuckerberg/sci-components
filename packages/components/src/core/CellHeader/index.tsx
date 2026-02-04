@@ -21,8 +21,10 @@ interface CellHeaderContentProps {
   shouldTruncate?: boolean;
 }
 
-interface CellHeaderRawProps
-  extends Omit<React.HTMLProps<HTMLDivElement>, "as"> {
+interface CellHeaderRawProps extends Omit<
+  React.HTMLProps<HTMLDivElement>,
+  "as"
+> {
   as?: React.ElementType;
   tooltipText?: string;
   tooltipSubtitle?: string;

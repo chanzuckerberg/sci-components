@@ -17,8 +17,10 @@ import {
 } from "./style";
 import { Link } from "@mui/material";
 
-interface CellBasicContentProps
-  extends Omit<React.HTMLProps<HTMLDivElement>, "as"> {
+interface CellBasicContentProps extends Omit<
+  React.HTMLProps<HTMLDivElement>,
+  "as"
+> {
   primaryText: string;
   primaryTextWrapLineCount?: number;
   secondaryText?: string;

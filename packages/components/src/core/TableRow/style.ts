@@ -84,7 +84,7 @@ const hoverStyled = (props: RowExtraProps) => {
         background-color: ${selected ? semanticColors?.accent?.surfaceSecondary : semanticColors?.base?.backgroundPrimary};
 
         &:before {
-          background-color: ${semanticColors?.base?.fillInteraction};
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction};
         }
       }
     }
@@ -100,7 +100,7 @@ const selectedStyled = (props: RowExtraProps) => {
         background-color: ${semanticColors?.accent?.surfaceSecondary};
       }
 
-      background-color: ${semanticColors?.base?.fillInteraction};
+      background-color: ${semanticColors?.base?.fillPrimaryInteraction};
     }
   `;
 };
