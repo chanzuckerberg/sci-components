@@ -48,6 +48,14 @@ export default {
       control: { type: "number" },
       description: "Chart height in pixels",
     },
+    showYAxisGrid: {
+      control: { type: "boolean" },
+      description: "Show horizontal grid lines from Y-axis ticks",
+    },
+    showXAxisGrid: {
+      control: { type: "boolean" },
+      description: "Show vertical grid lines from X-axis ticks",
+    },
   },
   component: HistogramChart,
   parameters: {
@@ -73,6 +81,8 @@ export const Default = {
     showTitle: true,
     width: 800,
     height: 400,
+    showYAxisGrid: false,
+    showXAxisGrid: false,
   },
   parameters: {},
 };

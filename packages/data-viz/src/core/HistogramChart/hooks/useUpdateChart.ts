@@ -29,6 +29,8 @@ export function useUpdateChart({
   xAxisData,
   xAxisTitle,
   yAxisTitle,
+  showYAxisGrid,
+  showXAxisGrid,
 }: UpdateChartProps): void {
   const throttledUpdateChart = useMemo(() => {
     return throttle(
@@ -60,6 +62,8 @@ export function useUpdateChart({
           xAxisData,
           xAxisTitle,
           yAxisTitle,
+          showYAxisGrid,
+          showXAxisGrid,
         });
 
         chart.setOption(chartOptions, {
@@ -114,6 +118,8 @@ export function useUpdateChart({
     xAxisData,
     xAxisTitle,
     yAxisTitle,
+    showYAxisGrid,
+    showXAxisGrid,
   ]);
 
   useEffect(() => {
@@ -145,5 +151,7 @@ export function useUpdateChart({
     xAxisData,
     xAxisTitle,
     yAxisTitle,
+    showYAxisGrid,
+    showXAxisGrid,
   ]);
 }
