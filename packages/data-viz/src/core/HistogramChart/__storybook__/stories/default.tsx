@@ -10,6 +10,8 @@ export const HistogramChart = (props: Args): JSX.Element => {
     barWidth,
     tooltip,
     showTitle,
+    width = 800,
+    height = 400,
     ...rest
   } = props;
 
@@ -19,8 +21,8 @@ export const HistogramChart = (props: Args): JSX.Element => {
       xAxisTitle="X Axis Title"
       yAxisTitle="Y Axis Title"
       showTitle={showTitle}
-      width={800}
-      height={400}
+      width={width}
+      height={height}
       data={HISTOGRAM_DATA}
       xAxisData={HISTOGRAM_LABELS}
       barCategoryGap={barCategoryGap}
@@ -36,6 +38,8 @@ export const HistogramChart = (props: Args): JSX.Element => {
       }}
       options={{
         tooltip: tooltip,
+        // xAxis: { axisLabel: { rotate: 45 } },
+        // yAxis: { axisLabel: { rotate: 45 } },
       }}
       {...rest}
     />
