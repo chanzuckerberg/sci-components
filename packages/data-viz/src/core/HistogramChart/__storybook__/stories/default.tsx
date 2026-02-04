@@ -12,6 +12,8 @@ export const HistogramChart = (props: Args): JSX.Element => {
     showTitle,
     width = 800,
     height = 400,
+    showYAxisGrid = false,
+    showXAxisGrid = false,
     ...rest
   } = props;
 
@@ -38,8 +40,14 @@ export const HistogramChart = (props: Args): JSX.Element => {
       }}
       options={{
         tooltip: tooltip,
-        // xAxis: { axisLabel: { rotate: 45 } },
-        // yAxis: { axisLabel: { rotate: 45 } },
+        xAxis: {
+          // axisLabel: { rotate: 45 },
+          splitLine: { show: showXAxisGrid },
+        },
+        yAxis: {
+          // axisLabel: { rotate: 45 },
+          splitLine: { show: showYAxisGrid },
+        },
       }}
       {...rest}
     />
