@@ -68,7 +68,7 @@ export default {
   },
   component: PreComposedTable,
   tags: ["beta"],
-  title: "Components/PreComposedTable",
+  title: "Components/Table/PreComposedTable",
 } as Meta;
 
 type Story = StoryObj<typeof PreComposedTable<DataType>>;
