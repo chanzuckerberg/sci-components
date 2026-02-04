@@ -72,6 +72,7 @@ import { ReactComponent as IconHandOpenSmall } from "../../common/svgs/IconHandO
 import { ReactComponent as IconHandPointerSmall } from "../../common/svgs/IconHandPointerSmall.svg";
 import { ReactComponent as IconHandSmall } from "../../common/svgs/IconHandSmall.svg";
 import { ReactComponent as IconHouseSmall } from "../../common/svgs/IconHouseSmall.svg";
+import { ReactComponent as IconImageSmall } from "../../common/svgs/IconImageSmall.svg";
 import { ReactComponent as IconInfoCircleLarge } from "../../common/svgs/IconInfoCircleLarge.svg";
 import { ReactComponent as IconInfoCircleSmall } from "../../common/svgs/IconInfoCircleSmall.svg";
 import { ReactComponent as IconInfoSpeechBubbleLarge } from "../../common/svgs/IconInfoSpeechBubbleLarge.svg";
@@ -225,6 +226,7 @@ export interface IconNameToSizes {
   Hand: "xxs" | "xs" | "s";
   HandOpen: "xxs" | "xs" | "s";
   HandPointer: "xxs" | "xs" | "s";
+  Image: "xxs" | "xs" | "s";
   InfoCircle: "xxs" | "xs" | "s" | "l" | "xl";
   InfoSpeechBubble: "l" | "xl";
   Label: "xxs" | "xs" | "s";
@@ -541,6 +543,10 @@ export const iconMap: Props = {
   House: {
     largeIcon: null,
     smallIcon: IconHouseSmall,
+  },
+  Image: {
+    largeIcon: null,
+    smallIcon: IconImageSmall,
   },
   InfoCircle: {
     largeIcon: IconInfoCircleLarge,
