@@ -40,6 +40,14 @@ export default {
       control: { type: "boolean" },
       description: "Whether to show the chart title",
     },
+    width: {
+      control: { type: "number" },
+      description: "Chart width in pixels",
+    },
+    height: {
+      control: { type: "number" },
+      description: "Chart height in pixels",
+    },
   },
   component: HistogramChart,
   parameters: {
@@ -63,6 +71,8 @@ export const Default = {
     barCategoryGap: "0%",
     barGap: "0%",
     showTitle: true,
+    width: 800,
+    height: 400,
   },
   parameters: {},
 };
