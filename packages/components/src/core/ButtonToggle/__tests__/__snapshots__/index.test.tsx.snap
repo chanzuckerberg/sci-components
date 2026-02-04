@@ -1,30 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
-<button
-  aria-label="button-toggle"
-  class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-ul4hcs-MuiButtonBase-root-MuiIconButton-root"
-  icon="InfoCircle"
-  tabindex="0"
-  type="button"
+<div
+  class="css-pi3gcs e1gcweb22"
 >
-  <div
-    class="css-1ft6wgl"
+  <button
+    aria-label="button-toggle"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary etitc7m0 e1gcweb20 css-8yohbv-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
   >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-      data-file-name="IconInfoCircleLarge"
-      data-testid="IconInfoCircleLarge"
-      fillcontrast="white"
-      focusable="false"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
+    <span
+      class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+    >
+      <div
+        class="css-1obf64m eo7r9jx1"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+          data-file-name="IconDownloadSmall"
+          data-testid="IconDownloadSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </span>
+    <span
+      class="css-12bqywg e1gcweb21"
+    >
+      Label
+    </span>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
-  </div>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
-</button>
+  </button>
+</div>
 `;

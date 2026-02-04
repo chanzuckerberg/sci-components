@@ -25,10 +25,9 @@ import Tag from "../Tag";
 import InputSearch from "../InputSearch";
 import styled from "@emotion/styled";
 import Link from "../Link";
-import Button, { SdsButtonProps, SdsMinimalButtonProps } from "../Button";
 import { SerializedStyles } from "@emotion/react";
-import { IconButtonProps } from "./NavigationHeader.types";
 import Accordion from "../Accordion";
+import Button, { ButtonProps } from "../Button";
 
 export interface ExtraHeaderProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -158,12 +157,9 @@ export interface ExtraButtonProps extends CommonThemeProps {
 
 export const StyledHeaderButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<
-  ExtraButtonProps &
-    (SdsMinimalButtonProps | SdsButtonProps) & { isNarrow?: boolean }
->`
+})<ExtraButtonProps & ButtonProps & { isNarrow?: boolean }>`
   ${(props) => {
-    const { sdsType, hasInvertedStyle, isNarrow } = props;
+    const { sdsType, hasInvertedStyle } = props;
 
     const mode = props?.theme?.palette?.mode || "light";
     const semanticColors = getSemanticColors(props);
@@ -172,8 +168,8 @@ export const StyledHeaderButton = styled(Button, {
       box-shadow: inset 0 0 0 1px ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
       color: ${mode === "light" ? "white" : semanticColors?.accent?.fillPrimary};
       &:hover {
-        background-color: ${semanticColors?.accent?.fillHover};
-        box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillHover};
+        background-color: ${semanticColors?.accent?.fillInteraction};
+        box-shadow: inset 0 0 0 1px ${semanticColors?.accent?.fillInteraction};
         color: ${semanticColors?.base?.textPrimaryOnDark};
       }
     `;
@@ -182,13 +178,12 @@ export const StyledHeaderButton = styled(Button, {
       ${sdsType === "secondary" && hasInvertedStyle
         ? secondaryButtonStyles
         : ""}
-      ${isNarrow && fontBodyL(props)}
     `;
   }}
 `;
 
 const invertedNarrowButtonStyles = (
-  props: ExtraButtonProps & (SdsMinimalButtonProps | SdsButtonProps)
+  props: ExtraButtonProps & ButtonProps
 ): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
@@ -212,10 +207,7 @@ const invertedNarrowButtonStyles = (
 
 export const StyledNarrowIconButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<
-  ExtraButtonProps &
-    (SdsMinimalButtonProps | SdsButtonProps) & { isNarrow?: boolean }
->`
+})<ExtraButtonProps & ButtonProps & { isNarrow?: boolean }>`
   ${(props) => {
     const { hasInvertedStyle, isNarrow } = props;
 
@@ -227,7 +219,7 @@ export const StyledNarrowIconButton = styled(Button, {
 `;
 
 const invertedWideButtonStyles = (
-  props: ExtraButtonProps & IconButtonProps
+  props: ExtraButtonProps & ButtonProps
 ): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
@@ -249,7 +241,7 @@ const invertedWideButtonStyles = (
 
 export const StyledWideIconButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
-})<ExtraButtonProps & IconButtonProps>`
+})<ExtraButtonProps & ButtonProps>`
   ${(props) => {
     const { hasInvertedStyle } = props;
 
@@ -586,15 +578,20 @@ export const StyledDrawerContent = styled("div", {
   }}
 `;
 
-export const StyledNarrowButton = styled(Button, {
+export const StyledNarrowHamburgerMenuButton = styled(Button, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })`
-  ${(props: ExtraButtonProps & IconButtonProps) => {
+  ${(props: ExtraButtonProps & ButtonProps) => {
     const { hasInvertedStyle } = props;
+    const iconSizes = getIconSizes(props);
 
     return css`
       ${hasInvertedStyle && invertedWideButtonStyles(props)}
       margin: 0;
+      svg {
+        width: ${iconSizes?.l?.width}px !important;
+        height: ${iconSizes?.l?.height}px !important;
+      }
     `;
   }}
 `;
@@ -695,8 +692,8 @@ export const StyledAccordion = styled(Accordion, {
           backdrop-filter: blur(8px);
           color: ${textOpenColor};
           background-color: ${hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed};
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed};
 
           &::before {
             content: "";
@@ -741,8 +738,8 @@ export const StyledAccordion = styled(Accordion, {
           width: 100%;
           box-shadow: none;
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillInteractionOnDark
-            : semanticColors?.base.fillInteraction};
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction};
           color: ${hasInvertedStyle
             ? semanticColors?.base.textPrimaryOnDark
             : semanticColors?.base.textPrimary};
@@ -774,7 +771,7 @@ export const StyledAccordion = styled(Accordion, {
           width: 100%;
 
           svg {
-            color: ${semanticColors?.accent?.ornament};
+            color: ${semanticColors?.accent?.foreground};
           }
 
           .primary-text {
@@ -958,7 +955,7 @@ export const StyledHoverDrawerColumnHeader = styled("div", {
 
 export const StyledHoverDrawerItem = styled(
   Button as unknown as React.ComponentType<
-    Partial<SdsMinimalButtonProps> &
+    Partial<ButtonProps> &
       ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }
   >,
   {
@@ -971,6 +968,7 @@ export const StyledHoverDrawerItem = styled(
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
     const spaces = getSpaces(props);
+    const iconSizes = getIconSizes(props);
 
     return css`
       border: none;
@@ -985,6 +983,12 @@ export const StyledHoverDrawerItem = styled(
       min-height: auto;
       width: 100%;
       white-space: wrap;
+      height: unset !important;
+
+      svg {
+        width: ${hasDetails ? iconSizes?.l?.width : iconSizes?.s?.width}px;
+        height: ${hasDetails ? iconSizes?.l?.height : iconSizes?.s?.height}px;
+      }
 
       &:hover {
         border: none;
@@ -992,10 +996,10 @@ export const StyledHoverDrawerItem = styled(
         box-shadow: none;
         cursor: pointer;
         background: ${hasInvertedStyle
-          ? semanticColors?.base.fillInteractionOnDark
-          : semanticColors?.base.fillInteraction};
+          ? semanticColors?.base?.fillPrimaryInteractionOnDark
+          : semanticColors?.base?.fillPrimaryInteraction};
         svg {
-          color: ${semanticColors?.accent?.ornament};
+          color: ${semanticColors?.accent?.foreground};
         }
       }
     `;
@@ -1032,10 +1036,10 @@ export const StyledHoverDrawerItemIcon = styled("div", {
       align-items: center;
       justify-content: center;
       padding: 0 ${hasDetails ? 0 : spaces?.xxs}px;
-      color: ${semanticColors?.accent?.ornament};
+      color: ${semanticColors?.accent?.foreground};
 
       svg {
-        color: ${semanticColors?.accent?.ornament};
+        color: ${semanticColors?.accent?.foreground};
       }
     `;
   }}

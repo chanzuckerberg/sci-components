@@ -139,8 +139,9 @@ export default function DrawerContent({
             return (
               <StyledButton
                 key={`action-${section || "default"}-${index}`}
-                sdsStyle="rounded"
+                sdsStyle="solid"
                 sdsType="primary"
+                size="large"
                 onClick={(e) => {
                   onClick?.(e);
                   // Only close drawer if action has href (navigation)

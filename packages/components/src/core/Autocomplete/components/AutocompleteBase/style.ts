@@ -91,7 +91,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             min-height: unset;
 
             &.${autocompleteClasses.focused} {
-              background-color: ${semanticColors?.base?.fillInteraction};
+              background-color: ${semanticColors?.base?.fillPrimaryInteraction};
             }
 
             &[aria-selected="true"] {
@@ -103,7 +103,7 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
             }
 
             &[aria-selected="true"].${autocompleteClasses.focused} {
-              background-color: ${semanticColors?.base?.fillInteraction};
+              background-color: ${semanticColors?.base?.fillPrimaryInteraction};
             }
           }
 

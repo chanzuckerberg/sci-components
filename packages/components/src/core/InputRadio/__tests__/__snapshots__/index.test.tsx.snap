@@ -7,21 +7,21 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
   role="radiogroup"
 >
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-u7bj4a-MuiFormControlLabel-root"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd el9n8ty7 css-10xe0aj-MuiFormControlLabel-root"
   >
     <span
       caption="Caption"
-      class="MuiButtonBase-root PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary css-1h62c7l-MuiButtonBase-root-MuiRadio-root"
+      class="MuiButtonBase-root PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary el9n8ty3 css-gpqxgm-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
       intent="default"
     >
       <input
-        class="PrivateSwitchBase-input css-1m9pwf3"
+        class="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
         name="radio-buttons-group"
         type="radio"
         value="demo"
       />
       <span
-        class="css-16izi73"
+        class="css-l2s0l7 el9n8ty1"
         font-size="medium"
       />
       <span
@@ -32,16 +32,16 @@ exports[`<InputRadio /> Default story renders snapshot 1`] = `
       class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
     >
       <span
-        class="css-1ddu512"
+        class="css-mkyw9t el9n8ty4"
       >
         <span
-          class="css-1dr5e88"
+          class="css-w05x42 el9n8ty5"
           id="demo-label"
         >
           Label
         </span>
         <span
-          class="css-1mg4zid"
+          class="css-tk6mw9 el9n8ty6"
           id="demo-caption"
         >
           Caption

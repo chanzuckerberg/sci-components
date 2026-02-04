@@ -121,23 +121,23 @@ function createStatusCss(
 
   const statusToColors = {
     beta: {
-      dark: semanticColors?.beta?.text,
+      dark: semanticColors?.beta?.foreground,
       light: semanticColors?.beta?.surfaceSecondary,
     },
     error: {
-      dark: semanticColors?.negative?.text,
+      dark: semanticColors?.negative?.foreground,
       light: semanticColors?.negative?.surfaceSecondary,
     },
     info: {
-      dark: semanticColors?.info?.text,
+      dark: semanticColors?.info?.foreground,
       light: semanticColors?.info?.surfaceSecondary,
     },
     pending: {
-      dark: semanticColors?.neutral?.text,
+      dark: semanticColors?.neutral?.foreground,
       light: semanticColors?.neutral?.surfaceSecondary,
     },
     success: {
-      dark: semanticColors?.positive?.text,
+      dark: semanticColors?.positive?.foreground,
       light: semanticColors?.positive?.surfaceSecondary,
     },
     warning: {

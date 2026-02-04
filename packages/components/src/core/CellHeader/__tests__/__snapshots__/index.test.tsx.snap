@@ -5,25 +5,25 @@ exports[`<CellHeader /> Default story renders snapshot 1`] = `
   <tbody>
     <tr>
       <th
-        class="css-1w3fh4t"
+        class="css-clc80g eamwgm81"
         data-mui-internal-clone-element="true"
         direction="desc"
         tabindex="0"
       >
         <div
-          class="css-rm9mvq"
+          class="css-96hiq7 eamwgm83"
         >
           <div
-            class="css-1epiyn2"
+            class="css-1kmjpr5 eamwgm82"
           >
             Header
           </div>
           <div
-            class="css-1ft6wgl"
+            class="css-1obf64m eo7r9jx1"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11x9hfs-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eamwgm80 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

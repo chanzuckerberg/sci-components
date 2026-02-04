@@ -16,8 +16,7 @@ import { CreateChartOptionsProps } from "./hooks/utils";
 import { ChartContainer } from "./style";
 
 export interface HeatmapChartProps
-  extends HTMLAttributes<HTMLDivElement>,
-    CreateChartOptionsProps {
+  extends HTMLAttributes<HTMLDivElement>, CreateChartOptionsProps {
   echartsRendererMode?: "svg" | "canvas";
 }
 

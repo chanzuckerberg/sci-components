@@ -1,15 +1,27 @@
 {
   "ButtonDropdown": {
     "props": {
+      "backgroundAppearance": {
+        "type": "any",
+        "isRequired": false
+      },
+      "backgroundOnHover": {
+        "type": "any",
+        "isRequired": false
+      },
+      "children": {
+        "type": "any",
+        "isRequired": false
+      },
       "disabled": {
         "type": "any",
         "isRequired": false
       },
-      "icon": {
+      "startIcon": {
         "type": "any",
         "isRequired": false
       },
-      "sdsSize": {
+      "size": {
         "type": "any",
         "isRequired": false
       },

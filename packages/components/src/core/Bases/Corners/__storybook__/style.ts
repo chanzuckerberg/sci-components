@@ -35,8 +35,8 @@ export const StyledCornerBox = styled("div")`
       background-repeat: no-repeat;
       background-image:
         none, // left
-        linear-gradient(90deg, transparent, transparent 50%, ${semanticColors?.accent.border} 50%), // top
-        linear-gradient(180deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 50%, transparent 50%), // right
+        linear-gradient(90deg, transparent, transparent 50%, ${semanticColors?.accent?.foreground} 50%), // top
+        linear-gradient(180deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 50%, transparent 50%), // right
         none // bottom
       ;
 
@@ -59,8 +59,8 @@ export const StyledCornerBox = styled("div")`
         0% {
           background-image:
             none, // left
-            linear-gradient(90deg, transparent, transparent 50%, ${semanticColors?.accent.border} 50%), // top
-            linear-gradient(180deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 50%, transparent 50%), // right
+            linear-gradient(90deg, transparent, transparent 50%, ${semanticColors?.accent?.foreground} 50%), // top
+            linear-gradient(180deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 50%, transparent 50%), // right
             none // bottom
           ;
         }
@@ -68,7 +68,7 @@ export const StyledCornerBox = styled("div")`
           background-image:
             none, // left
             none, // top
-            linear-gradient(180deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 100%, transparent 100%), // right
+            linear-gradient(180deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 100%, transparent 100%), // right
             none // bottom
           ;
         }
@@ -76,8 +76,8 @@ export const StyledCornerBox = styled("div")`
           background-image:
             none, // left
             none, // top
-            linear-gradient(180deg, transparent, transparent 50%, ${semanticColors?.accent.border} 50%), // right
-            linear-gradient(270deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 50%, transparent 50%) // bottom
+            linear-gradient(180deg, transparent, transparent 50%, ${semanticColors?.accent?.foreground} 50%), // right
+            linear-gradient(270deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 50%, transparent 50%) // bottom
           ;
         }
         37.5% {
@@ -85,20 +85,20 @@ export const StyledCornerBox = styled("div")`
             none, // left
             none, // top
             none, // right
-            linear-gradient(270deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 100%, transparent 100%) // bottom
+            linear-gradient(270deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 100%, transparent 100%) // bottom
           ;
         }
         50% {
           background-image:
-            linear-gradient(0deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 50%, transparent 50%), // left
+            linear-gradient(0deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 50%, transparent 50%), // left
             none, // top
             none, // right
-            linear-gradient(270deg, transparent, transparent 50%, ${semanticColors?.accent.border} 50%) // bottom
+            linear-gradient(270deg, transparent, transparent 50%, ${semanticColors?.accent?.foreground} 50%) // bottom
           ;
         }
         62.5% {
           background-image:
-            linear-gradient(0deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 100%), // left
+            linear-gradient(0deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 100%), // left
             none, // top
             none, // right
             none // bottom
@@ -106,8 +106,8 @@ export const StyledCornerBox = styled("div")`
         }
         75% {
           background-image:
-            linear-gradient(0deg, transparent, transparent 50%, ${semanticColors?.accent.border} 50%), // left
-            linear-gradient(90deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 50%, transparent 50%), // top
+            linear-gradient(0deg, transparent, transparent 50%, ${semanticColors?.accent?.foreground} 50%), // left
+            linear-gradient(90deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 50%, transparent 50%), // top
             none, // right
             none // bottom
           ;
@@ -115,7 +115,7 @@ export const StyledCornerBox = styled("div")`
         87.5% {
           background-image:
           none, // left
-          linear-gradient(90deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 100%), // top
+          linear-gradient(90deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 100%), // top
           none, // right
           none // bottom
         ;
@@ -123,8 +123,8 @@ export const StyledCornerBox = styled("div")`
         100% {
           background-image:
             none, // left
-            linear-gradient(90deg, transparent, transparent 50%, ${semanticColors?.accent.border} 50%), // top
-            linear-gradient(180deg, ${semanticColors?.accent.border}, ${semanticColors?.accent.border} 50%, transparent 50%), // right
+            linear-gradient(90deg, transparent, transparent 50%, ${semanticColors?.accent?.foreground} 50%), // top
+            linear-gradient(180deg, ${semanticColors?.accent?.foreground}, ${semanticColors?.accent?.foreground} 50%, transparent 50%), // right
             none // bottom
           ;
         }

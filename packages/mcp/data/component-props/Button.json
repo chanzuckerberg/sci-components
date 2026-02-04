@@ -1,43 +1,46 @@
 {
   "Button": {
     "props": {
+      "backgroundOnHover": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false
+      },
+      "backgroundAppearance": {
+        "type": "\"matchBackground\" | \"dark\"",
+        "isRequired": false
+      },
+      "children": {
+        "type": "ReactNode",
+        "isRequired": false,
+        "description": "The content of the component."
+      },
       "endIcon": {
         "type": "ReactNode",
         "isRequired": false,
         "description": "Element placed after the children."
       },
-      "icon": {
-        "type": "ReactElement",
-        "isRequired": true
-      },
-      "isAllCaps": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
       "onClick": {
         "type": "function",
         "isRequired": false
       },
-      "sdsSize": {
+      "size": {
         "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false
+        "isRequired": false,
+        "description": "The size of the component.\n`small` is equivalent to the dense button styling.",
+        "defaultValue": "medium"
       },
       "sdsStyle": {
-        "type": "\"icon\" | \"minimal\" | \"rounded\" | \"square\"",
-        "isRequired": true
+        "type": "\"outline\" | \"solid\" | \"minimal\"",
+        "isRequired": false
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
+        "type": "\"primary\" | \"secondary\" | \"destructive\"",
         "isRequired": false
       },
       "startIcon": {
         "type": "ReactNode",
         "isRequired": false,
         "description": "Element placed before the children."
-      },
-      "text": {
-        "type": "any",
-        "isRequired": false
       }
     }
   }

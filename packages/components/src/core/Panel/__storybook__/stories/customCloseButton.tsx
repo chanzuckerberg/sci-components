@@ -4,6 +4,8 @@ import RawPanel from "src/core/Panel";
 import Button from "src/core/Button";
 import { Box, Typography } from "@mui/material";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+import Icon from "src/core/Icon";
+import ButtonToggle from "src/core/ButtonToggle";
 
 export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
   const [open, setOpen] = React.useState(true);
@@ -11,14 +13,15 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
   return (
     <>
       <Box sx={{ padding: 4 }}>
-        <Button
-          sdsStyle="icon"
-          sdsSize="medium"
+        <ButtonToggle
+          aria-label="button-toggle"
+          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          size="large"
           sdsType="primary"
-          icon="InfoCircle"
-          onClick={() => {
-            setOpen(true);
-          }}
+          sdsStyle="minimal"
+          onClick={() => setOpen((prev) => !prev)}
+          sdsStage={open ? "on" : "off"}
+          backgroundOnHover
         />
       </Box>
 
@@ -39,13 +42,15 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
         }
         CloseButtonComponent={
           <Button
-            sdsStyle="icon"
-            sdsSize="medium"
-            sdsType="tertiary"
-            icon="ChevronLeft"
+            sdsStyle="minimal"
+            size="large"
+            sdsType="secondary"
             data-testid="panel-close-button"
             aria-label="Panel Toggle"
-          />
+            backgroundOnHover={false}
+          >
+            <Icon sdsIcon="ChevronLeft" sdsSize="l" />
+          </Button>
         }
         data-testid="panel"
         {...props}

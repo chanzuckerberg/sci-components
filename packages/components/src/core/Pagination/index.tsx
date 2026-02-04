@@ -53,11 +53,12 @@ const PaginationPageList = (
           <StyledPaginationButton
             aria-label="Go to a page"
             disabled
-            icon="DotsHorizontal"
-            sdsSize="small"
-            sdsStyle="icon"
-            sdsType="tertiary"
-          />
+            size="small"
+            sdsStyle="minimal"
+            sdsType="primary"
+          >
+            <Icon sdsIcon="DotsHorizontal" sdsSize="s" />
+          </StyledPaginationButton>
         </Page>
       );
     }

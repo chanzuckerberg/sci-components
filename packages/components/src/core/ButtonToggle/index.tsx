@@ -1,19 +1,8 @@
 import React from "react";
-import { ButtonProps } from "@mui/material";
-import { IconNameToSizes } from "../Icon";
-import {
-  SDSWarningTypes,
-  showWarningIfFirstOccurence,
-} from "src/common/warnings";
+import { ButtonToggleProps } from "./ButtonToggle.types";
 import { StyledButtonToggle } from "./style";
 
-export interface ButtonToggleProps extends ButtonProps {
-  disabled?: boolean;
-  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsSize?: "small" | "medium" | "large";
-  sdsStage?: "on" | "off";
-  sdsType?: "primary" | "secondary";
-}
+export type { ButtonToggleProps };
 
 /**
  * @see https://mui.com/material-ui/react-button/
@@ -21,29 +10,17 @@ export interface ButtonToggleProps extends ButtonProps {
 
 const ButtonToggle = React.forwardRef<HTMLButtonElement, ButtonToggleProps>(
   (props, ref) => {
-    const {
-      icon,
-      sdsSize = "medium",
-      sdsStage = "off",
-      sdsType = "primary",
-      ...rest
-    } = props;
+    const { startIcon, ...rest } = props;
 
-    if (icon !== undefined) {
-      return (
-        <StyledButtonToggle
-          icon={icon}
-          sdsType={sdsType}
-          sdsSize={sdsSize}
-          sdsStage={sdsStage}
-          ref={ref}
-          {...rest}
-        />
-      );
-    } else {
-      showWarningIfFirstOccurence(SDSWarningTypes.ButtonToggleMissingIconProp);
-      return null;
-    }
+    return (
+      <StyledButtonToggle
+        {...rest}
+        startIcon={startIcon}
+        endIcon={null}
+        backgroundOnHover
+        ref={ref}
+      />
+    );
   }
 );
 

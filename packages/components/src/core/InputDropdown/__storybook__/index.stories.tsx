@@ -1,6 +1,11 @@
 import { Args, Meta } from "@storybook/react-webpack5";
 import { InputDropdown } from "./stories/default";
 import { INPUT_DROPDOWN_EXCLUDED_CONTROLS } from "./constants";
+import { INLINE_RADIO } from "src/common/utils";
+import {
+  BUTTON_DROPDOWN_ICON_LABELS,
+  BUTTON_DROPDOWN_ICON_OPTIONS,
+} from "src/core/ButtonDropdown/__storybook__/constants";
 
 export default {
   argTypes: {
@@ -19,7 +24,7 @@ export default {
     },
     intent: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["default", "negative", "notice", "positive"],
     },
@@ -41,7 +46,7 @@ export default {
     },
     sdsType: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["label", "value"],
     },
@@ -54,6 +59,14 @@ export default {
       control: {
         type: "boolean",
       },
+    },
+    startIcon: {
+      control: {
+        labels: BUTTON_DROPDOWN_ICON_LABELS,
+        type: "select",
+      },
+      mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
+      options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
     style: {
       control: {

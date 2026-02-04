@@ -3,10 +3,10 @@ import { ButtonToggle, ButtonToggleProps } from "@czi-sds/components";
 const ButtonToggleNameSpaceTest = (props: ButtonToggleProps) => {
   return (
     <ButtonToggle
-      sdsSize="medium"
+      size="medium"
       sdsType="primary"
       sdsStage="off"
-      icon="InfoCircle"
+      startIcon="InfoCircle"
       disabled={false}
     />
   );

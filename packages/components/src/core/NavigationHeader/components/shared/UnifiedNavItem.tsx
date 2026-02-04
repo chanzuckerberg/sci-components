@@ -11,7 +11,7 @@ import {
   fontBodySemiboldL,
   CommonThemeProps,
 } from "src/core/styles";
-import Button, { SdsMinimalButtonProps } from "src/core/Button";
+import Button, { ButtonProps } from "src/core/Button";
 
 interface UnifiedNavItemProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -69,11 +69,12 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
       : css`
           background-color: ${active
             ? hasInvertedStyle
-              ? semanticColors?.base?.fillPressedOnDark
-              : semanticColors?.base?.fillPressed
+              ? semanticColors?.base?.fillPrimaryPressedOnDark
+              : semanticColors?.base?.fillPrimaryPressed
             : "transparent"};
         `}
     width: 100%;
+    height: unset !important;
 
     &:hover {
       ${innerSdsStyle === "drawer"
@@ -82,8 +83,8 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
           `
         : css`
             background: ${hasInvertedStyle
-              ? semanticColors?.base.fillInteractionOnDark
-              : semanticColors?.base.fillInteraction};
+              ? semanticColors?.base?.fillPrimaryInteractionOnDark
+              : semanticColors?.base?.fillPrimaryInteraction};
           `}
       box-shadow: none;
 
@@ -102,7 +103,7 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
 
 export const UnifiedNavItem = styled(
   Button as unknown as React.ComponentType<
-    Partial<SdsMinimalButtonProps> & UnifiedNavItemProps
+    Partial<ButtonProps> & UnifiedNavItemProps
   >,
   {
     shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
@@ -113,6 +114,7 @@ export const UnifiedNavItem = styled(
   min-width: fit-content;
   border: none;
   background: transparent;
+  height: unset !important;
 
   ${(props: UnifiedNavItemProps) => {
     const { hasInvertedStyle, isNarrow, active, navVariant } = props;
@@ -149,8 +151,8 @@ export const UnifiedNavItem = styled(
         border-radius: ${corners?.l}px;
         background-color: ${active
           ? hasInvertedStyle
-            ? semanticColors?.base?.fillPressedOnDark
-            : semanticColors?.base?.fillPressed
+            ? semanticColors?.base?.fillPrimaryPressedOnDark
+            : semanticColors?.base?.fillPrimaryPressed
           : "transparent"};
 
         ${navVariant === "secondary"
@@ -159,6 +161,10 @@ export const UnifiedNavItem = styled(
               color: ${active ? textActiveColor : textDefaultColor};
               justify-content: flex-start;
               width: fit-content;
+
+              & > span {
+                gap: ${spaces?.xs}px !important;
+              }
             `
           : ""}
 
@@ -168,8 +174,8 @@ export const UnifiedNavItem = styled(
 
         &:hover {
           background: ${hasInvertedStyle
-            ? semanticColors?.base.fillInteractionOnDark
-            : semanticColors?.base.fillInteraction} !important;
+            ? semanticColors?.base?.fillPrimaryInteractionOnDark
+            : semanticColors?.base?.fillPrimaryInteraction} !important;
           box-shadow: none;
 
           ${navVariant === "primary" && StyledLabel} {

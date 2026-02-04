@@ -88,7 +88,7 @@ export const StyledPaginationChevronList = styled("li", {
       }
 
       &:hover {
-        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillInteraction};
+        background-color: ${disabled ? "transparent" : semanticColors?.base?.fillPrimaryInteraction};
 
         & .MuiSvgIcon-root {
           color: ${disabled ? semanticColors?.base?.ornamentDisabled : semanticColors?.base?.ornamentSecondaryInteraction}
@@ -117,7 +117,7 @@ const selectedPageStyle = (props: PaginationExtraProps) => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    background-color: ${semanticColors?.base?.fillInteraction};
+    background-color: ${semanticColors?.base?.fillPrimaryInteraction};
     color: ${semanticColors?.base?.textPrimary};
     box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderSecondary};
 
@@ -154,7 +154,7 @@ export const Page = styled("li", {
       border-radius: ${sdsStyle === "round" ? corners?.rounded : corners?.l}px;
       user-select: none;
       &:hover {
-        background-color: ${semanticColors?.base?.fillInteraction};
+        background-color: ${semanticColors?.base?.fillPrimaryInteraction};
         color: ${semanticColors?.base?.textPrimary};
       }
 

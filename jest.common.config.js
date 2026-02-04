@@ -21,11 +21,27 @@ module.exports = {
   transform: {
     "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "../../fileTransformer.js",
-    "^.+\\.tsx?$": [
-      "ts-jest",
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
       {
-        // ts-jest configuration goes here
+        jsc: {
+          parser: {
+            syntax: "typescript",
+            tsx: true,
+          },
+          transform: {
+            react: {
+              runtime: "automatic",
+            },
+          },
+          experimental: {
+            plugins: [["@swc/plugin-emotion", {}]],
+          },
+        },
       },
     ],
   },
+  transformIgnorePatterns: [
+    "/node_modules/(?!(@storybook|@chanzuckerberg/story-utils|storybook)/)",
+  ],
 };

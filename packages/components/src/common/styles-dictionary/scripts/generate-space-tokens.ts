@@ -4,7 +4,6 @@ import { fileURLToPath } from "url";
 
 import { Spaces } from "src/core/styles/common/constants/spaces";
 
-// @ts-expect-error: Build script uses ESM import.meta with tsx
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 
 // Generate space tokens from constants

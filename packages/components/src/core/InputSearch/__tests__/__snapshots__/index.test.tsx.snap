@@ -3,19 +3,19 @@
 exports[`<InputSearch /> Default story renders snapshot 1`] = `
 <div>
   <label
-    class="css-l5xdrx"
+    class="css-1509c06 e1aw2vvx0"
     for="Test"
   >
     Search
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root css-qnw24u-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root e1aw2vvx1 css-1bpykyv-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <div
-        class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall css-3b46cg-MuiInputAdornment-root"
+        class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-10894y9-MuiInputAdornment-root"
       >
         <span
           class="notranslate"
@@ -24,26 +24,29 @@ exports[`<InputSearch /> Default story renders snapshot 1`] = `
         </span>
         <button
           aria-label="search-button"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1b01nn3-MuiButtonBase-root-MuiIconButton-root"
-          icon="Search"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-1wgvjz8-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
-          <div
-            class="css-1ft6wgl"
+          <span
+            class="css-12bqywg e1gcweb21"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-bgw7zo-MuiSvgIcon-root"
-              data-file-name="IconSearchSmall"
-              data-testid="IconSearchSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
+            <div
+              class="css-1obf64m eo7r9jx1"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                data-file-name="IconSearchSmall"
+                data-testid="IconSearchSmall"
+                fillcontrast="white"
+                focusable="false"
+                height="16"
+                viewBox="0 0 16 16"
+                width="16"
+              />
+            </div>
+          </span>
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
@@ -61,10 +64,10 @@ exports[`<InputSearch /> Default story renders snapshot 1`] = `
       />
       <fieldset
         aria-hidden="true"
-        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-ihdtdm"
+          class="css-1whs34k-MuiNotchedOutlined-root"
         >
           <span
             class="notranslate"

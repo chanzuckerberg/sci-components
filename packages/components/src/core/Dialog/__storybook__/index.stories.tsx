@@ -4,12 +4,13 @@ import { DIALOG_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
 import { TestNoTitleOnCloseDemo } from "./stories/testNoTitleOnClose";
 import { TestButtonPositionLeftDemo } from "./stories/testButtonPositionLeft";
+import { INLINE_RADIO } from "src/common/utils";
 
 export default {
   argTypes: {
     buttonPosition: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["left", "right"],
     },
@@ -25,7 +26,7 @@ export default {
     },
     sdsSize: {
       control: {
-        type: "inline-radio",
+        type: INLINE_RADIO,
       },
       options: ["xs", "s", "m", "l"],
     },

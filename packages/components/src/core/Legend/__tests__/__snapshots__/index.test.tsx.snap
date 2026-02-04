@@ -2,21 +2,21 @@
 
 exports[`<Legend /> Default story renders snapshot 1`] = `
 <div
-  class="css-1t849lf"
+  class="css-1f6fg97 e1ws54rk0"
 >
   <div
     aria-label="H. sapiens: 3212"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-x22ruv"
+      class="css-6chbkm e1ws54rk2"
       color="#615da2"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       H. sapiens
     </span>
@@ -24,16 +24,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="M. musculus: 130"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1gzfgth"
+      class="css-kjgeow e1ws54rk2"
       color="#9e5798"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       M. musculus
     </span>
@@ -41,16 +41,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="C. Jacques: 89"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-y5084e"
+      class="css-pglety e1ws54rk2"
       color="#b76278"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       C. Jacques
     </span>
@@ -58,16 +58,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="D. rerio: 65"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-swyc6i"
+      class="css-6cf8on e1ws54rk2"
       color="#b27c5a"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       D. rerio
     </span>
@@ -75,16 +75,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="M. mulatta: 45"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1m0cwsu"
+      class="css-1eb4yf4 e1ws54rk2"
       color="#9e9554"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       M. mulatta
     </span>
@@ -92,16 +92,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="P. mirabillis: 34"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-dj7j88"
+      class="css-1iyj8c1 e1ws54rk2"
       color="#89ab60"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       P. mirabillis
     </span>
@@ -109,16 +109,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="V. cholerae: 12"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1fn5tfx"
+      class="css-1if8w9c e1ws54rk2"
       color="#78bc7f"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       V. cholerae
     </span>
@@ -126,16 +126,16 @@ exports[`<Legend /> Default story renders snapshot 1`] = `
   <div
     aria-label="Other (17): 40"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1cg4952"
+      class="css-2vxfm2 e1ws54rk2"
       color="#8ac2d2"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       Other (17)
     </span>
@@ -148,26 +148,26 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-1t849lf"
+    class="css-1f6fg97 e1ws54rk0"
   >
     <div
       aria-label="H. sapiens: 3212"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-x22ruv"
+        class="css-6chbkm e1ws54rk2"
         color="#615da2"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         H. sapiens
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         3,212
       </span>
@@ -175,21 +175,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="M. musculus: 130"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1gzfgth"
+        class="css-kjgeow e1ws54rk2"
         color="#9e5798"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         M. musculus
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         130
       </span>
@@ -197,21 +197,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="C. Jacques: 89"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-y5084e"
+        class="css-pglety e1ws54rk2"
         color="#b76278"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         C. Jacques
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         89
       </span>
@@ -219,21 +219,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="D. rerio: 65"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-swyc6i"
+        class="css-6cf8on e1ws54rk2"
         color="#b27c5a"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         D. rerio
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         65
       </span>
@@ -241,21 +241,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="M. mulatta: 45"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1m0cwsu"
+        class="css-1eb4yf4 e1ws54rk2"
         color="#9e9554"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         M. mulatta
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         45
       </span>
@@ -263,21 +263,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="P. mirabillis: 34"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-dj7j88"
+        class="css-1iyj8c1 e1ws54rk2"
         color="#89ab60"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         P. mirabillis
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         34
       </span>
@@ -285,21 +285,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="V. cholerae: 12"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1fn5tfx"
+        class="css-1if8w9c e1ws54rk2"
         color="#78bc7f"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         V. cholerae
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         12
       </span>
@@ -307,21 +307,21 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
     <div
       aria-label="Other (17): 40"
       aria-pressed="false"
-      class="css-3vx361"
+      class="css-k26mqz e1ws54rk1"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1cg4952"
+        class="css-2vxfm2 e1ws54rk2"
         color="#8ac2d2"
       />
       <span
-        class="css-1sjvubj"
+        class="css-tk6mw9 e1ws54rk3"
       >
         Other (17)
       </span>
       <span
-        class="css-ncdzc3"
+        class="css-1b78qr4 e1ws54rk4"
       >
         40
       </span>
@@ -334,22 +334,29 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1s4750s-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1gcweb20 css-1yl127d-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        Select All
+        <span
+          class="css-12bqywg e1gcweb21"
+        >
+          Select All
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-gkrbfh-MuiButtonBase-root-MuiButton-root"
-        data-style="minimal"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-16n8l0c-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
-        Clear Selection
+        <span
+          class="css-12bqywg e1gcweb21"
+        >
+          Clear Selection
+        </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
@@ -364,26 +371,26 @@ exports[`<Legend /> WithSelection story renders snapshot 1`] = `
 
 exports[`<Legend /> WithValues story renders snapshot 1`] = `
 <div
-  class="css-1t849lf"
+  class="css-1f6fg97 e1ws54rk0"
 >
   <div
     aria-label="H. sapiens: 3212"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-x22ruv"
+      class="css-6chbkm e1ws54rk2"
       color="#615da2"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       H. sapiens
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       3,212
     </span>
@@ -391,21 +398,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="M. musculus: 130"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1gzfgth"
+      class="css-kjgeow e1ws54rk2"
       color="#9e5798"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       M. musculus
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       130
     </span>
@@ -413,21 +420,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="C. Jacques: 89"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-y5084e"
+      class="css-pglety e1ws54rk2"
       color="#b76278"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       C. Jacques
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       89
     </span>
@@ -435,21 +442,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="D. rerio: 65"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-swyc6i"
+      class="css-6cf8on e1ws54rk2"
       color="#b27c5a"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       D. rerio
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       65
     </span>
@@ -457,21 +464,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="M. mulatta: 45"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1m0cwsu"
+      class="css-1eb4yf4 e1ws54rk2"
       color="#9e9554"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       M. mulatta
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       45
     </span>
@@ -479,21 +486,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="P. mirabillis: 34"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-dj7j88"
+      class="css-1iyj8c1 e1ws54rk2"
       color="#89ab60"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       P. mirabillis
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       34
     </span>
@@ -501,21 +508,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="V. cholerae: 12"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1fn5tfx"
+      class="css-1if8w9c e1ws54rk2"
       color="#78bc7f"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       V. cholerae
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       12
     </span>
@@ -523,21 +530,21 @@ exports[`<Legend /> WithValues story renders snapshot 1`] = `
   <div
     aria-label="Other (17): 40"
     aria-pressed="false"
-    class="css-3vx361"
+    class="css-k26mqz e1ws54rk1"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1cg4952"
+      class="css-2vxfm2 e1ws54rk2"
       color="#8ac2d2"
     />
     <span
-      class="css-1sjvubj"
+      class="css-tk6mw9 e1ws54rk3"
     >
       Other (17)
     </span>
     <span
-      class="css-ncdzc3"
+      class="css-1b78qr4 e1ws54rk4"
     >
       40
     </span>

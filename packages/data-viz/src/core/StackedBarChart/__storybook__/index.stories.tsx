@@ -143,7 +143,7 @@ export const Default = {
   },
 };
 
-export const proportionalWithSelectionDimBehavior = {
+export const ProportionalWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
@@ -178,7 +178,7 @@ export const CumulativeWithSelectionDimBehavior = {
   },
 };
 
-export const proportionalWithSelectionHideBehavior = {
+export const ProportionalWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,

@@ -21,7 +21,7 @@ import React, {
 } from "react";
 import { EMPTY_OBJECT, noop } from "src/common/utils";
 import Button from "src/core/Button";
-import { IconProps } from "src/core/Icon";
+import Icon, { IconProps } from "src/core/Icon";
 import { InputSearchProps } from "src/core/InputSearch";
 import { StyledInputAdornment } from "src/core/InputSearch/style";
 import MenuItem, { IconNameToSmallSizes } from "src/core/MenuItem";
@@ -66,8 +66,12 @@ export type DefaultAutocompleteOption =
   | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent> // Represents a basic option with optional custom properties.
   | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic>; // Represents an option with a custom component and optional basic properties.
 
-interface ExtraAutocompleteProps<T, Multiple, DisableClearable, FreeSolo>
-  extends Omit<StyleProps, "groupBy"> {
+interface ExtraAutocompleteProps<
+  T,
+  Multiple,
+  DisableClearable,
+  FreeSolo,
+> extends Omit<StyleProps, "groupBy"> {
   keepSearchOnSelect?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
   onInputChange?: (
@@ -263,11 +267,13 @@ const AutocompleteBase = <
                     aria-label="Clear Button"
                     className="input-search-clear-icon"
                     onClick={clearInput}
-                    sdsType="tertiary"
-                    sdsSize="small"
-                    sdsStyle="icon"
-                    icon="XMarkCircle"
-                  />
+                    sdsType="secondary"
+                    size="large"
+                    sdsStyle="minimal"
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                  </Button>
                 )}
               </StyledInputAdornment>
             ),
@@ -286,11 +292,13 @@ const AutocompleteBase = <
                   tabIndex={search ? 0 : -1}
                   aria-hidden={!search}
                   disabled={!search}
-                  sdsType="tertiary"
-                  sdsSize="small"
-                  sdsStyle="icon"
-                  icon="Search"
-                />
+                  sdsType="secondary"
+                  size="large"
+                  sdsStyle="minimal"
+                  backgroundOnHover={false}
+                >
+                  <Icon sdsIcon="Search" sdsSize="s" />
+                </Button>
               </StyledInputAdornment>
             ),
           }}

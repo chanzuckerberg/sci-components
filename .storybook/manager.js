@@ -2,7 +2,6 @@
 import React from "react";
 import { addons } from "storybook/manager-api";
 import sdsTheme from "./sds-theme";
-import { defaultConfig, renderLabel } from "storybook-addon-tag-badges";
 
 addons.setConfig({
   theme: sdsTheme,
@@ -99,7 +98,5 @@ addons.setConfig({
         tooltip: "This component is a work in progress",
       },
     },
-    // Include default badges for any other tags
-    ...defaultConfig,
   ],
 });

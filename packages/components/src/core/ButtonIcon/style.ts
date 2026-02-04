@@ -31,27 +31,27 @@ const primary = (props: ButtonIconExtraProps): SerializedStyles => {
   const semanticColors = getSemanticColors(props);
 
   return css`
-    color: ${semanticColors?.accent?.ornament};
+    color: ${semanticColors?.accent?.foreground};
 
     svg {
-      color: ${semanticColors?.accent?.ornament};
+      color: ${semanticColors?.accent?.foreground};
     }
 
     &:hover {
-      background: ${semanticColors?.base?.fillInteraction};
-      color: ${semanticColors?.accent?.ornamentHover};
+      background: ${semanticColors?.base?.fillPrimaryInteraction};
+      color: ${semanticColors?.accent?.foregroundInteraction};
 
       svg {
-        color: ${semanticColors?.accent?.ornamentHover};
+        color: ${semanticColors?.accent?.foregroundInteraction};
       }
     }
 
     &:active {
-      background: ${semanticColors?.base?.fillPressed};
-      color: ${semanticColors?.accent?.ornamentPressed};
+      background: ${semanticColors?.base?.fillPrimaryPressed};
+      color: ${semanticColors?.accent?.foregroundPressed};
 
       svg {
-        color: ${semanticColors?.accent?.ornamentPressed};
+        color: ${semanticColors?.accent?.foregroundPressed};
       }
     }
   `;
@@ -68,20 +68,20 @@ const secondary = (props: ButtonIconExtraProps): SerializedStyles => {
     }
 
     &:hover {
-      background: ${semanticColors?.base?.fillInteraction};
-      color: ${semanticColors?.accent?.ornamentHover};
+      background: ${semanticColors?.base?.fillPrimaryInteraction};
+      color: ${semanticColors?.accent?.foregroundInteraction};
 
       svg {
-        color: ${semanticColors?.accent?.ornamentHover};
+        color: ${semanticColors?.accent?.foregroundInteraction};
       }
     }
 
     &:active {
-      background: ${semanticColors?.base?.fillPressed};
-      color: ${semanticColors?.accent?.ornamentPressed};
+      background: ${semanticColors?.base?.fillPrimaryPressed};
+      color: ${semanticColors?.accent?.foregroundPressed};
 
       svg {
-        color: ${semanticColors?.accent?.ornamentPressed};
+        color: ${semanticColors?.accent?.foregroundPressed};
       }
     }
   `;

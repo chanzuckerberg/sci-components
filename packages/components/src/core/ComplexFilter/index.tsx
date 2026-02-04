@@ -35,9 +35,9 @@ export interface ComplexFilterProps<
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined,
 > extends Omit<
-    DropdownProps<T, Multiple, DisableClearable, FreeSolo>,
-    "onChange" | "label"
-  > {
+  DropdownProps<T, Multiple, DisableClearable, FreeSolo>,
+  "onChange" | "label"
+> {
   label: ReactNode;
   onChange?: (
     options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>

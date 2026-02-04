@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MenuItem from "src/core/MenuItem";
 import { StyledPage, StyledPaginationButton } from "../../style";
 import { StyledPaginationDropdownMenu } from "./style";
+import Icon from "src/core/Icon";
 
 interface PageListDropdownProps {
   pageList: number[];
@@ -27,11 +28,13 @@ const PageListDropdown = (props: PageListDropdownProps) => {
       <StyledPaginationButton
         aria-label="Go to a page"
         onClick={handleClick}
-        icon="DotsHorizontal"
-        sdsSize="small"
-        sdsStyle="icon"
-        sdsType="tertiary"
-      />
+        size="small"
+        sdsStyle="minimal"
+        sdsType="secondary"
+        backgroundOnHover={false}
+      >
+        <Icon sdsIcon="DotsHorizontal" sdsSize="s" />
+      </StyledPaginationButton>
       <StyledPaginationDropdownMenu
         anchorEl={anchorEl}
         keepMounted
@@ -46,6 +49,7 @@ const PageListDropdown = (props: PageListDropdownProps) => {
                 handleClose();
               }}
               key={page}
+              sdsType="action"
             >
               {page}
             </MenuItem>

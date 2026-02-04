@@ -20,7 +20,7 @@ export const TestDemo = (props: Args): JSX.Element => {
     >
       <ContentCardBody>{MEDIUM_LOREM_IPSUM}</ContentCardBody>
       <ContentCardActions>
-        <Button sdsStyle="minimal" sdsType="primary">
+        <Button sdsStyle="minimal" sdsType="primary" size="large">
           Button
         </Button>
       </ContentCardActions>
