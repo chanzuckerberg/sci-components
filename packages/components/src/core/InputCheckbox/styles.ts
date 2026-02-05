@@ -8,6 +8,7 @@ import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getBorders,
+  getCorners,
   getIconSizes,
   getSemanticColors,
   getSpaces,
@@ -83,6 +84,8 @@ export const StyledCheckbox = styled(RawCheckbox)`
     const { label } = props;
 
     const spaces = getSpaces(props);
+    const corners = getCorners(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       &.${checkboxClasses.root} {
@@ -90,7 +93,8 @@ export const StyledCheckbox = styled(RawCheckbox)`
         
         padding: 0;
         margin-right: ${label ? spaces?.s : 0}px;
-        border-radius: 0;
+        border-radius: ${corners?.s}px;
+        background-color: ${semanticColors?.base?.backgroundPrimary} !important;
 
         &:hover {
           background-color: transparent;

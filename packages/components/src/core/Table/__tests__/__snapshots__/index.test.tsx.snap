@@ -378,11 +378,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           role="radiogroup"
         >
           <label
-            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd el9n8ty7 css-oeychc-MuiFormControlLabel-root"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd ebk9nx17 css-1wa6xe9-MuiFormControlLabel-root"
           >
             <span
               caption="Caption I"
-              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary el9n8ty3 css-gpqxgm-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary ebk9nx13 css-7s61p9-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
               intent="default"
             >
               <input
@@ -393,11 +393,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 value="1"
               />
               <div
-                class="css-f2brpt el9n8ty2"
+                class="css-f2brpt ebk9nx12"
                 font-size="medium"
               >
                 <span
-                  class="css-53fb4p el9n8ty0"
+                  class="css-53fb4p ebk9nx10"
                 />
               </div>
               <span
@@ -408,16 +408,16 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
             >
               <span
-                class="css-mkyw9t el9n8ty4"
+                class="css-mkyw9t ebk9nx14"
               >
                 <span
-                  class="css-w05x42 el9n8ty5"
+                  class="css-w05x42 ebk9nx15"
                   id="1-label"
                 >
                   Option I
                 </span>
                 <span
-                  class="css-tk6mw9 el9n8ty6"
+                  class="css-tk6mw9 ebk9nx16"
                   id="1-caption"
                 >
                   Caption I
@@ -426,11 +426,11 @@ exports[`<Table /> Default story renders snapshot 1`] = `
             </span>
           </label>
           <label
-            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd el9n8ty7 css-oeychc-MuiFormControlLabel-root"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd ebk9nx17 css-1wa6xe9-MuiFormControlLabel-root"
           >
             <span
               caption="Caption II"
-              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary el9n8ty3 css-gpqxgm-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary ebk9nx13 css-7s61p9-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root"
               intent="default"
             >
               <input
@@ -440,7 +440,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
                 value="2"
               />
               <span
-                class="css-l2s0l7 el9n8ty1"
+                class="css-l2s0l7 ebk9nx11"
                 font-size="medium"
               />
               <span
@@ -451,16 +451,16 @@ exports[`<Table /> Default story renders snapshot 1`] = `
               class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
             >
               <span
-                class="css-mkyw9t el9n8ty4"
+                class="css-mkyw9t ebk9nx14"
               >
                 <span
-                  class="css-w05x42 el9n8ty5"
+                  class="css-w05x42 ebk9nx15"
                   id="2-label"
                 >
                   Option II
                 </span>
                 <span
-                  class="css-tk6mw9 el9n8ty6"
+                  class="css-tk6mw9 ebk9nx16"
                   id="2-caption"
                 >
                   Caption II

@@ -76,6 +76,7 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
   return css`
     ${labelStyle(props)}
 
+    background-color: ${semanticColors?.base?.backgroundPrimary} !important;
     border: none;
     box-shadow: inset 0 0 0 1px ${semanticColors?.base?.borderPrimary};
     cursor: pointer;
