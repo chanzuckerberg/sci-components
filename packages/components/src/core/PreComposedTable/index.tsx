@@ -4,6 +4,9 @@ import React, {
   useEffect,
   createContext,
   useRef,
+  Fragment,
+  CSSProperties,
+  useCallback,
 } from "react";
 import {
   useReactTable,
@@ -72,7 +75,7 @@ export interface PreComposedTableProps<TData> {
     placement?: "left" | "center" | "right";
   };
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   tableWidth?: string;
   tableRowProps?: Partial<TableRowProps>;
   onRowSelect?: (selectedRows: TData[]) => void;
@@ -121,80 +124,79 @@ const PreComposedTable = <TData extends RowData>({
       (col) => col.id !== SELECT_COLUMN_ID
     );
 
-    if (enableRowSelection) {
-      return [
-        {
-          accessorFn: () => null,
-          cell: (props: CellContext<TData, unknown>) => {
-            const { row, cell } = props;
-            const pinnedStyle = getCommonPinningStyles(cell.column, table);
-
-            return (
-              <StyledSelectionCell
-                horizontalAlign="center"
-                verticalAlign="top"
-                {...props}
-                style={{
-                  width: `${cell.column.getSize()}px`,
-                  ...pinnedStyle,
-                }}
-              >
-                <StyledInputCheckbox
-                  stage={row.getIsSelected() ? "checked" : "unchecked"}
-                  disabled={!row.getCanSelect()}
-                  onChange={() => row.toggleSelected()}
-                  aria-label="Select row"
-                />
-              </StyledSelectionCell>
-            );
-          },
-          enableFiltering: false,
-          enablePinning: false,
-          enableSorting: false,
-          header: ({
-            table,
-            header,
-          }: {
-            table: TanstackTable<TData>;
-            header: Header<TData, unknown>;
-          }) => {
-            const pinnedStyle = getCommonPinningStyles(header.column, table);
-            let stage: "checked" | "unchecked" | "indeterminate" = "unchecked";
-            if (table.getIsAllPageRowsSelected()) {
-              stage = "checked";
-            } else if (table.getIsSomePageRowsSelected()) {
-              stage = "indeterminate";
-            }
-            return (
-              <CellHeader
-                horizontalAlign="center"
-                style={{
-                  verticalAlign: "middle",
-                  width: `${header.getSize()}px`,
-                  ...pinnedStyle,
-                }}
-              >
-                <StyledInputCheckbox
-                  stage={stage}
-                  onChange={() => table.toggleAllPageRowsSelected()}
-                  aria-label="Select all rows"
-                />
-              </CellHeader>
-            );
-          },
-          id: SELECT_COLUMN_ID,
-          meta: {
-            pinning: shouldPinSelectRowToLeft ? ("left" as const) : undefined,
-            verticalAlign: "top" as const,
-          },
-          size: 40,
-        },
-        ...columnsWithoutSelection,
-      ];
+    if (!enableRowSelection) {
+      return columnsWithoutSelection;
     }
 
-    return columnsWithoutSelection;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return [
+      {
+        accessorFn: () => null,
+        cell: (props: CellContext<TData, unknown>) => {
+          const { row, cell, table } = props;
+          const pinnedStyle = getCommonPinningStyles(cell.column, table);
+
+          return (
+            <StyledSelectionCell
+              horizontalAlign="center"
+              verticalAlign="top"
+              {...props}
+              style={{
+                width: `${cell.column.getSize()}px`,
+                ...pinnedStyle,
+              }}
+            >
+              <StyledInputCheckbox
+                stage={row.getIsSelected() ? "checked" : "unchecked"}
+                disabled={!row.getCanSelect()}
+                onChange={() => row.toggleSelected()}
+                aria-label="Select row"
+              />
+            </StyledSelectionCell>
+          );
+        },
+        enableFiltering: false,
+        enablePinning: false,
+        enableSorting: false,
+        header: ({
+          table,
+          header,
+        }: {
+          table: TanstackTable<TData>;
+          header: Header<TData, unknown>;
+        }) => {
+          const pinnedStyle = getCommonPinningStyles(header.column, table);
+          let stage: "checked" | "unchecked" | "indeterminate" = "unchecked";
+          if (table.getIsAllPageRowsSelected()) {
+            stage = "checked";
+          } else if (table.getIsSomePageRowsSelected()) {
+            stage = "indeterminate";
+          }
+          return (
+            <CellHeader
+              horizontalAlign="center"
+              style={{
+                verticalAlign: "middle",
+                width: `${header.getSize()}px`,
+                ...pinnedStyle,
+              }}
+            >
+              <StyledInputCheckbox
+                stage={stage}
+                onChange={() => table.toggleAllPageRowsSelected()}
+                aria-label="Select all rows"
+              />
+            </CellHeader>
+          );
+        },
+        id: SELECT_COLUMN_ID,
+        meta: {
+          pinning: shouldPinSelectRowToLeft ? ("left" as const) : undefined,
+          verticalAlign: "top" as const,
+        },
+        size: 40,
+      },
+      ...columnsWithoutSelection,
+    ];
   }, [columns, enableRowSelection, shouldPinSelectRowToLeft]);
 
   const table = useReactTable({
@@ -225,7 +227,7 @@ const PreComposedTable = <TData extends RowData>({
     },
   });
 
-  const createInitialPinning = React.useCallback(() => {
+  const createInitialPinning = useCallback(() => {
     const initialPinning = {} as ColumnPinningState;
 
     tableColumns.forEach((column) => {
@@ -270,7 +272,7 @@ const PreComposedTable = <TData extends RowData>({
 
   const headers = table.getFlatHeaders();
 
-  React.useLayoutEffect(() => {
+  useEffect(() => {
     if (!tableContainerRef.current) return;
     const resizeObserver = new ResizeObserver((entries) => {
       const entry = entries[0];
@@ -301,7 +303,7 @@ const PreComposedTable = <TData extends RowData>({
           as="div"
           primaryText={cell.getValue() as string}
           shouldShowTooltipOnHover={false}
-          shouldShowUndelineOnHover={false}
+          shouldShowUnderlineOnHover={false}
           verticalAlign={
             cell.column.columnDef.meta?.verticalAlign === "middle"
               ? "center"
@@ -327,7 +329,7 @@ const PreComposedTable = <TData extends RowData>({
           as="div"
           primaryText={String(cell.getValue() || "")}
           shouldShowTooltipOnHover={false}
-          shouldShowUndelineOnHover={false}
+          shouldShowUnderlineOnHover={false}
           style={{
             width: `${cell.column.getSize()}px`,
           }}
@@ -452,11 +454,11 @@ const PreComposedTable = <TData extends RowData>({
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => {
               return (
-                <React.Fragment key={headerGroup.id}>
+                <Fragment key={headerGroup.id}>
                   {headerGroup.headers.map((header: Header<TData, unknown>) => {
                     return renderHeader(header);
                   })}
-                </React.Fragment>
+                </Fragment>
               );
             })}
           </TableHeader>

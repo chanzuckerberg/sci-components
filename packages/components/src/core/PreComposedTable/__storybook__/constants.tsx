@@ -95,7 +95,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
         primaryText={getValue() as string}
         secondaryText={`${getValue() as string} is a test`}
         shouldShowTooltipOnHover={false}
-        shouldShowUndelineOnHover={true}
+        shouldShowUnderlineOnHover={true}
         link="https://www.google.com"
         linkComponent="a"
         linkProps={{
@@ -141,7 +141,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
       <CellBasic
         primaryText={getValue() as string}
         secondaryText={getValue() as string}
-        shouldShowUndelineOnHover={true}
+        shouldShowUnderlineOnHover={true}
         link={`mailto:${getValue() as string}`}
         linkProps={{
           target: "_blank",

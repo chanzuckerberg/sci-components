@@ -91,7 +91,7 @@ export default {
       defaultValue: { summary: "true" },
       description: "Show tooltip on hover",
     },
-    shouldShowUndelineOnHover: {
+    shouldShowUnderlineOnHover: {
       control: { type: "boolean" },
       defaultValue: { summary: "false" },
       description: "Show underline for the primary text on hover",
@@ -162,7 +162,7 @@ export const Default = {
     secondaryText: "Secondary Text",
     secondaryTextWrapLineCount: 1,
     shouldShowTooltipOnHover: true,
-    shouldShowUndelineOnHover: false,
+    shouldShowUnderlineOnHover: false,
     shouldTextWrap: true,
     tabularNums: false,
     tertiaryText: "Tertiary Text",

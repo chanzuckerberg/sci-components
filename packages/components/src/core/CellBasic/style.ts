@@ -18,7 +18,7 @@ export interface CellBasicExtraProps extends CommonThemeProps {
   secondaryTextWrapLineCount?: number;
   tertiaryTextWrapLineCount?: number;
   tabularNums?: boolean;
-  shouldShowUndelineOnHover?: boolean;
+  shouldShowUnderlineOnHover?: boolean;
   isRowHovered?: boolean;
   component?: React.ElementType;
   extraRightPadding?: number;
@@ -34,7 +34,7 @@ const doNotForwardProps = [
   "tertiaryText",
   "shouldTextWrap",
   "shouldShowTooltipOnHover",
-  "shouldShowUndelineOnHover",
+  "shouldShowUnderlineOnHover",
   "isRowHovered",
   "tooltipProps",
   "primaryTextWrapLineCount",
@@ -213,26 +213,31 @@ export const StyledTableData = styled.div`
     const {
       horizontalAlign = "left",
       verticalAlign = "top",
-      shouldShowUndelineOnHover = false,
+      shouldShowUnderlineOnHover = false,
       isRowHovered = false,
       extraRightPadding = 0,
     } = props;
 
     const spaces = getSpaces(props);
+    const paddingRight =
+      horizontalAlign === "right"
+        ? (spaces?.m ?? 0) + extraRightPadding
+        : spaces?.m;
+
     return `
-        padding: ${spaces?.m}px ${horizontalAlign === "right" ? (spaces?.m ?? 0) + extraRightPadding : spaces?.m}px ${spaces?.m}px ${spaces?.m}px !important;
+        padding: ${spaces?.m}px ${paddingRight}px ${spaces?.m}px ${spaces?.m}px !important;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
         overflow: hidden;
 
         &:hover {
           ${PrimaryText} {
-            ${shouldShowUndelineOnHover ? "text-decoration: underline;" : ""}
+            ${shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
           }
         }
 
         ${PrimaryText} {
-          ${isRowHovered && shouldShowUndelineOnHover ? "text-decoration: underline;" : ""}
+          ${isRowHovered && shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
         }
     `;
   }}

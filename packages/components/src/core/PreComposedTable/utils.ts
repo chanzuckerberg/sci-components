@@ -1,4 +1,5 @@
 import { Column, ColumnDef, Header, Table } from "@tanstack/react-table";
+import { CSSProperties } from "react";
 
 export const SELECT_COLUMN_ID = "SdsTableSelectColumn";
 
@@ -105,7 +106,7 @@ export const calculateRightPosition = <DataType>(
 export const getCommonPinningStyles = <DataType>(
   column: Column<DataType, unknown>,
   table: Table<DataType>
-): React.CSSProperties => {
+): CSSProperties => {
   const columnWithPinning = column.columnDef as ColumnDef<DataType>;
   const shouldPin = columnWithPinning.meta?.pinning;
 

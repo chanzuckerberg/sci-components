@@ -45,7 +45,7 @@
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
-      "shouldShowUndelineOnHover": {
+      "shouldShowUnderlineOnHover": {
         "type": "\"false\" | \"true\"",
         "isRequired": false
       },
