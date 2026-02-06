@@ -105,6 +105,8 @@ export * from "./core/Pagination";
 export { default as Pagination } from "./core/Pagination";
 export * from "./core/Panel";
 export { default as Panel } from "./core/Panel";
+export * from "./core/Popover";
+export { default as Popover } from "./core/Popover";
 export * from "./core/SegmentedControl";
 export { default as SegmentedControl } from "./core/SegmentedControl";
 export * from "./core/Table";
