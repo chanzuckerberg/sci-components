@@ -31,7 +31,7 @@ export const stripedStyle = (props: CommonThemeProps) => {
       background-color: ${semanticColors?.base?.backgroundSecondary};
 
       td, th {
-        background-color: ${semanticColors?.base?.backgroundSecondary};
+        background-color: ${semanticColors?.base?.backgroundPrimary};
 
         &::before {
           background-color: ${semanticColors?.base?.backgroundSecondary};
