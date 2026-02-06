@@ -13,7 +13,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
     >
       <div>
         <label
-          class="css-1509c06 e1aw2vvx0"
+          class="css-1509c06 e1vnn4ca0"
           for="location-search"
         >
           Search by label
@@ -21,7 +21,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
         <div
           aria-hidden="false"
           aria-label="Search Input"
-          class="MuiFormControl-root MuiTextField-root e74ph6c2 e1aw2vvx1 css-1lcm0nv-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root e74ph6c2 e1vnn4ca1 css-1qp53oq-MuiFormControl-root-MuiTextField-root"
           tabindex="0"
         >
           <div
@@ -30,7 +30,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
             inputmode="text"
           >
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-10894y9-MuiInputAdornment-root"
+              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1vnn4ca2 css-10894y9-MuiInputAdornment-root"
             >
               <span
                 class="notranslate"
@@ -83,7 +83,7 @@ exports[`<Autocomplete /> Default story renders snapshot 1`] = `
               value=""
             />
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-1ajqcii-MuiInputAdornment-root"
+              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1vnn4ca2 css-1ajqcii-MuiInputAdornment-root"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"

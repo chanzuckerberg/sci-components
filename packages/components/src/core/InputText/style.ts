@@ -126,6 +126,8 @@ export const StyledInputBase = styled(TextField, {
     const semanticColors = getSemanticColors(props);
     return css`
       display: block;
+      background-color: ${semanticColors?.base?.backgroundPrimary} !important;
+      border-radius: ${corners?.l}px;
 
       .${outlinedInputClasses.root} {
         width: 100%;

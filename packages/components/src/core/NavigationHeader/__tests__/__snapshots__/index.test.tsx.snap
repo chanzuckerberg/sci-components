@@ -470,19 +470,19 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       </section>
       <div>
         <label
-          class="css-1509c06 e1aw2vvx0"
+          class="css-1509c06 e1vnn4ca0"
           for="nav-bar-search"
         >
           Search
         </label>
         <div
-          class="MuiFormControl-root MuiTextField-root e1jzgkxb14 e1aw2vvx1 css-10ig1zc-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root e1jzgkxb14 e1vnn4ca1 css-chm3rv-MuiFormControl-root-MuiTextField-root"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-10894y9-MuiInputAdornment-root"
+              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1vnn4ca2 css-10894y9-MuiInputAdornment-root"
             >
               <span
                 class="notranslate"
@@ -906,19 +906,19 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         </section>
         <div>
           <label
-            class="css-1509c06 e1aw2vvx0"
+            class="css-1509c06 e1vnn4ca0"
             for="nav-bar-search"
           >
             Search
           </label>
           <div
-            class="MuiFormControl-root MuiTextField-root e1jzgkxb14 e1aw2vvx1 css-10ig1zc-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root e1jzgkxb14 e1vnn4ca1 css-chm3rv-MuiFormControl-root-MuiTextField-root"
           >
             <div
               class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
             >
               <div
-                class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1aw2vvx2 css-10894y9-MuiInputAdornment-root"
+                class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1vnn4ca2 css-10894y9-MuiInputAdornment-root"
               >
                 <span
                   class="notranslate"

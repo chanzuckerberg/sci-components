@@ -2,7 +2,7 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useNx": true,
   "version": "independent",
-  "npmClient": "npm",
+  "npmClient": "yarn",
   "stream": true,
   "packages": ["packages/*"],
   "command": {

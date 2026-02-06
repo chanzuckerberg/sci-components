@@ -4,7 +4,6 @@ import {
   CommonThemeProps,
   focusVisibleA11yStyle,
   fontHeaderS,
-  getBorders,
   getSemanticColors,
 } from "src/core/styles";
 
@@ -75,10 +74,32 @@ const disabledStyled = (props: RowExtraProps) => {
 };
 
 const hoverStyled = (props: RowExtraProps) => {
+  const { selected } = props;
   const semanticColors = getSemanticColors(props);
 
   return `
     &:hover {
+      td, th {
+        position: relative;
+        background-color: ${selected ? semanticColors?.accent?.surfaceSecondary : semanticColors?.base?.backgroundPrimary};
+
+        &:before {
+          background-color: ${semanticColors?.base?.fillPrimaryInteraction};
+        }
+      }
+    }
+  `;
+};
+
+const selectedStyled = (props: RowExtraProps) => {
+  const semanticColors = getSemanticColors(props);
+
+  return `
+    td, th {
+      &:before {
+        background-color: ${semanticColors?.accent?.surfaceSecondary};
+      }
+
       background-color: ${semanticColors?.base?.fillPrimaryInteraction};
     }
   `;
@@ -100,18 +121,51 @@ export const StyledTableRow = styled("tr", {
     } = props;
 
     const semanticColors = getSemanticColors(props);
-    const borders = getBorders(props);
 
     return `
       align-items: center;
-      border-bottom: ${useDivider ? borders?.base?.table : borders?.none};
+      position: relative;
+      margin: 0;
+      padding: 0;
+      display: table-row;
+
+      ${
+        useDivider &&
+        `
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: ${semanticColors?.base?.borderSecondary};
+            z-index: 1;
+          }
+        `
+      }
+
+      td, th {
+        margin: 0;
+        padding: 0;
+        position: sticky !important;
+        background-color: ${semanticColors?.base?.backgroundPrimary};
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background-color: ${semanticColors?.base?.backgroundPrimary};
+        }
+      }
 
       ${rowHeight ? `max-height: ${rowHeight}px;` : ""}
-
-      ${selected ? `background-color: ${semanticColors?.accent?.surfacePrimary};` : ""}
-
       ${hover && hoverStyled(props)};
-
+      ${selected && selectedStyled(props)};
       ${disabled && disabledStyled(props)}
     `;
   }}

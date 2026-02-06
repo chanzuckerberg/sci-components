@@ -3,19 +3,19 @@
 exports[`<TableHeader /> Default story renders snapshot 1`] = `
 <table>
   <thead
-    class="css-2mfnek eidkt9t0"
+    class="css-yaajp7 e17yfbln0"
   >
     <tr
-      class="css-yvcc08 eqzfpqa0"
+      class="css-5zeqj1 e1dzq46l0"
     >
       <th
-        class="css-229588 e15ir0111"
+        class="css-clc80g eamwgm81"
       >
         <div
-          class="css-96hiq7 e15ir0113"
+          class="css-96hiq7 eamwgm83"
         >
           <div
-            class="css-1kmjpr5 e15ir0112"
+            class="css-1kmjpr5 eamwgm82"
           >
             Column 1
           </div>
@@ -24,7 +24,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e15ir0110 eo7r9jx0 css-1xdaks9-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eamwgm80 eo7r9jx0 css-1xdaks9-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -37,13 +37,13 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-229588 e15ir0111"
+        class="css-clc80g eamwgm81"
       >
         <div
-          class="css-96hiq7 e15ir0113"
+          class="css-96hiq7 eamwgm83"
         >
           <div
-            class="css-1kmjpr5 e15ir0112"
+            class="css-1kmjpr5 eamwgm82"
           >
             Column 2
           </div>
@@ -52,7 +52,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e15ir0110 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eamwgm80 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -65,13 +65,13 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-229588 e15ir0111"
+        class="css-clc80g eamwgm81"
       >
         <div
-          class="css-96hiq7 e15ir0113"
+          class="css-96hiq7 eamwgm83"
         >
           <div
-            class="css-1kmjpr5 e15ir0112"
+            class="css-1kmjpr5 eamwgm82"
           >
             Column 3
           </div>
@@ -80,7 +80,7 @@ exports[`<TableHeader /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e15ir0110 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eamwgm80 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

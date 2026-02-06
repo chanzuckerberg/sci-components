@@ -168,15 +168,15 @@ Create a custom configuration file:
 // evaluation-config.js
 module.exports = {
   weights: {
-    sdsUsage: 0.5,        // Emphasize SDS usage
-    eslint: 0.4,          // Code quality and accessibility (jsx-a11y)
-    designTokens: 0.1,    // Design consistency
+    sdsUsage: 0.5, // Emphasize SDS usage
+    eslint: 0.4, // Code quality and accessibility (jsx-a11y)
+    designTokens: 0.1, // Design consistency
   },
   // Note: TypeScript is pass/fail requirement (not weighted)
   processing: {
-    timeout: 45000,       // 45 second timeout
-    maxConcurrency: 6     // Higher parallelism
-  }
+    timeout: 45000, // 45 second timeout
+    maxConcurrency: 6, // Higher parallelism
+  },
 };
 ```
 
@@ -199,11 +199,11 @@ NODE_OPTIONS="--max-old-space-size=4096" yarn evaluate:batch ./large-codebase
 Create custom plugins by extending `BasePlugin`:
 
 ```javascript
-const { BasePlugin } = require('./plugins.cjs');
+const { BasePlugin } = require("./plugins.cjs");
 
 class CustomPlugin extends BasePlugin {
   constructor() {
-    super('custom-check', 'Custom evaluation logic');
+    super("custom-check", "Custom evaluation logic");
   }
 
   async check(filePath, code) {
@@ -213,7 +213,9 @@ class CustomPlugin extends BasePlugin {
       passed: true,
       score: 1.0,
       duration: Date.now() - startTime,
-      details: { /* custom data */ }
+      details: {
+        /* custom data */
+      },
     };
   }
 }
@@ -259,6 +261,7 @@ scripts/evaluate-code/
 ### Generated Files
 
 Batch evaluations automatically generate timestamped files:
+
 - `evaluation-results-YYYY-MM-DDTHH-MM-SS.json` - Complete data
 - `evaluation-results-YYYY-MM-DDTHH-MM-SS.csv` - Spreadsheet format
 - `evaluation-report-YYYY-MM-DDTHH-MM-SS.html` - Visual report

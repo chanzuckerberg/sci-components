@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {
+  CommonThemeProps,
   fontBodyXxs,
   fontHeaderS,
   getSemanticColors,
@@ -28,6 +29,18 @@ export const StyledStoryBody = styled("span", {
       display: block;
       color: ${semanticColors?.base?.textSecondary};
       padding: ${spaces?.s}px 0;
+    `;
+  }}
+`;
+
+export const StyledDashedBorder = styled("div")`
+  ${(props: CommonThemeProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      border: dashed 1px ${semanticColors?.base?.divider};
+      width: max-content;
+      max-width: 300px;
     `;
   }}
 `;
