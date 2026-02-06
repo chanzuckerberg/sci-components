@@ -117,9 +117,27 @@ const PreComposedTable = <TData extends RowData>({
   const [hoveredRowId, setHoveredRowId] = useState<string | null>(null);
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
-  // Add selection column if enabled and doesn't already exist
+  /** Determines the final set of columns based on two conditions:
+   *   - hasCustomSelectColumn: whether the user provided a column with id === SELECT_COLUMN_ID
+   *   - enableRowSelection: whether row selection is enabled via props
+   *
+   * The four possible states:
+   *   hasCustomSelectColumn | enableRowSelection | Behavior
+   *   --------------------- | ------------------ | -------------------------------------------------------------
+   *   true                  | true               | Return columns as-is (user already provided their own custom select column)
+   *   true                  | false              | Return columnsWithoutSelection (no selection column needed)
+   *   false                 | true               | Prepend our default select column to columnsWithoutSelection
+   *   false                 | false              | Return columnsWithoutSelection (no selection column needed)
+   */
   const tableColumns = useMemo(() => {
-    // First, always filter out any existing selection columns to avoid duplicates
+    const customSelectionColumn = columns.find(
+      (col) => col.id === SELECT_COLUMN_ID
+    );
+
+    if (customSelectionColumn && enableRowSelection) {
+      return columns;
+    }
+
     const columnsWithoutSelection = columns.filter(
       (col) => col.id !== SELECT_COLUMN_ID
     );
