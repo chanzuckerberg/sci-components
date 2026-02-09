@@ -1,7 +1,13 @@
 export const HISTOGRAM_DATA: number[][] = [];
+// Reference distribution - slightly different from main data
+export const HISTOGRAM_REFERENCE_DATA: number[][] = [];
 
 for (let i = 1; i < 20; i++) {
   HISTOGRAM_DATA.push([i, Math.round(Math.random() * 100)]);
+}
+
+for (let i = 1; i < 20; i++) {
+  HISTOGRAM_REFERENCE_DATA.push([i, Math.round(50 + Math.random() * 30)]);
 }
 
 // NEW: Add labels for x-axis

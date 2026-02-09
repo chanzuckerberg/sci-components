@@ -1,6 +1,10 @@
 import { Args } from "@storybook/react";
 import RawHistogramChart from "src/core/HistogramChart";
-import { HISTOGRAM_DATA, HISTOGRAM_LABELS } from "../constants";
+import {
+  HISTOGRAM_DATA,
+  HISTOGRAM_LABELS,
+  HISTOGRAM_REFERENCE_DATA,
+} from "../constants";
 
 export const HistogramChart = (props: Args): JSX.Element => {
   const {
@@ -14,6 +18,8 @@ export const HistogramChart = (props: Args): JSX.Element => {
     height = 400,
     showYAxisGrid = false,
     showXAxisGrid = false,
+    showReference = false,
+    referenceColor,
     ...rest
   } = props;
 
@@ -31,6 +37,8 @@ export const HistogramChart = (props: Args): JSX.Element => {
       barGap={barGap}
       barWidth={barWidth}
       barColor={barColor || "#3366cc"}
+      referenceData={showReference ? HISTOGRAM_REFERENCE_DATA : undefined}
+      referenceColor={referenceColor || "rgba(128, 128, 128, 0.4)"}
       emphasis={{
         itemStyle: {
           color: "#5588ee",

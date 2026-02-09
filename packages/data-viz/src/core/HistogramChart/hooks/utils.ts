@@ -107,6 +107,17 @@ export interface CreateChartOptionsProps {
    */
   yAxisTitle?: string;
   /**
+   * Reference/background distribution data for comparison
+   * Same format as `data` - array of [x, y] pairs
+   */
+  referenceData?: DatasetComponentOption["source"];
+
+  /**
+   * Color of the reference distribution bars
+   * @default "rgba(128, 128, 128, 0.3)"
+   */
+  referenceColor?: BarSeriesOption["color"];
+  /**
    * Event listeners for the chart
    * https://echarts.apache.org/en/api.html#events
    */
@@ -140,6 +151,8 @@ export function createChartOptions(
     xAxisData,
     chartTitle,
     showTitle,
+    referenceData,
+    referenceColor,
   } = props;
 
   const {
@@ -174,6 +187,24 @@ export function createChartOptions(
     dataset: data ? { source: data } : undefined,
     grid: customGrid || defaultGrid,
     series: [
+      // Reference distribution (background) - only if referenceData provided
+      ...(referenceData
+        ? [
+            {
+              type: "bar" as const,
+              data: referenceData,
+              barWidth,
+              barGap: "0%",
+              barCategoryGap: "0%",
+              itemStyle: {
+                color: referenceColor || "rgba(128, 128, 128, 0.3)",
+              },
+              emphasis: { disabled: true },
+              z: 1,
+            },
+          ]
+        : []),
+      // Main distribution (foreground)
       Object.assign(
         {
           emphasis: Object.assign({}, defaultEmphasis, emphasis),
@@ -182,9 +213,10 @@ export function createChartOptions(
             ...itemStyle,
           },
           barWidth,
-          barGap,
+          barGap: referenceData ? "-100%" : barGap,
           barCategoryGap,
           data: data,
+          z: 2,
         },
         normalizeOption(optionsSeries),
         { type: "bar" }

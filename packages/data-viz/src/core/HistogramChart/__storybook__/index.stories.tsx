@@ -56,6 +56,14 @@ export default {
       control: { type: "boolean" },
       description: "Show vertical grid lines from X-axis ticks",
     },
+    referenceColor: {
+      control: { type: "color" },
+      description: "Color of reference distribution bars",
+    },
+    showReference: {
+      control: { type: "boolean" },
+      description: "Whether to show the reference distribution or not",
+    },
   },
   component: HistogramChart,
   parameters: {
@@ -83,6 +91,8 @@ export const Default = {
     height: 400,
     showYAxisGrid: false,
     showXAxisGrid: false,
+    showReference: false,
+    referenceColor: "rgba(128, 128, 128, 0.4)",
   },
   parameters: {},
 };

@@ -48,6 +48,8 @@ const HistogramChart = forwardRef(
       xAxisData,
       xAxisTitle,
       yAxisTitle,
+      referenceData,
+      referenceColor,
       ...rest
     } = props;
 
@@ -163,6 +165,8 @@ const HistogramChart = forwardRef(
       xAxisData,
       xAxisTitle,
       yAxisTitle,
+      referenceData,
+      referenceColor,
     });
 
     // Render the chart container
