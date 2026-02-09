@@ -2,7 +2,7 @@
 
 exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium ecjepug0 css-1m0z5a-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium e1lxcw2a0 css-18e23b6-MuiSwitch-root"
 >
   <span
     class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked Mui-checked css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
@@ -28,7 +28,7 @@ exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
 
 exports[`<InputToggle /> Default story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium ecjepug0 css-j742v1-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium e1lxcw2a0 css-1tsvnpp-MuiSwitch-root"
 >
   <span
     class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"

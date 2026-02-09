@@ -9,7 +9,7 @@ export const server = new McpServer({
     prompts: {},
     resources: {
       subscribe: true,
-      listChanged: true
+      listChanged: true,
     },
     tools: {},
   },

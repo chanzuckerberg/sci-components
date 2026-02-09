@@ -8,6 +8,7 @@ import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getBorders,
+  getCorners,
   getIconSizes,
   getSemanticColors,
   getSpaces,
@@ -17,6 +18,7 @@ import Icon from "../Icon";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "negative" | "notice" | "positive";
+  label?: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -79,15 +81,20 @@ export const StyledCheckboxCheckedIcon = styled("div")`
 
 export const StyledCheckbox = styled(RawCheckbox)`
   ${(props: CheckboxExtraProps) => {
+    const { label } = props;
+
     const spaces = getSpaces(props);
+    const corners = getCorners(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       &.${checkboxClasses.root} {
         ${focusVisibleA11yStyle(props)}
         
         padding: 0;
-        margin-right: ${spaces?.s}px;
-        border-radius: 0;
+        margin-right: ${label ? spaces?.s : 0}px;
+        border-radius: ${corners?.s}px;
+        background-color: ${semanticColors?.base?.backgroundPrimary} !important;
 
         &:hover {
           background-color: transparent;

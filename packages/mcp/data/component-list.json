@@ -46,6 +46,7 @@
     "Pagination",
     "Panel",
     "Popover",
+    "PreComposedTable",
     "SegmentedControl",
     "Table",
     "TableHeader",

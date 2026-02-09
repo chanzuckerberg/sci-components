@@ -6,7 +6,7 @@
         "isRequired": false
       },
       "direction": {
-        "type": "\"asc\" | \"desc\"",
+        "type": "\"desc\" | \"asc\"",
         "isRequired": false
       },
       "hideSortIcon": {

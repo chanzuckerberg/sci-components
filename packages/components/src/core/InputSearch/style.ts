@@ -151,6 +151,8 @@ export const StyledSearchBase = styled(TextField, {
     return css`
       min-width: 120px;
       display: block;
+      background-color: ${semanticColors?.base?.backgroundPrimary} !important;
+      border-radius: ${corners?.l}px;
 
       [type="search"]::-webkit-search-cancel-button {
         -webkit-appearance: none;
