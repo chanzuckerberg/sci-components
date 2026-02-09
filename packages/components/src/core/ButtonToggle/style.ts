@@ -93,30 +93,45 @@ const StageOnStyles = (props: ButtonToggleExtraProps): SerializedStyles => {
   const isSecondary = sdsType === "secondary";
 
   if (isSecondary) {
+    /**
+     * Specificity boost via Emotion's `&&&&` technique.
+     *
+     * Each `&` repeats the component's generated class, producing a selector
+     * like `.css-abc123.css-abc123.css-abc123.css-abc123` — specificity (0,4,0).
+     *
+     * This is needed because ButtonGroup styles its children with
+     * `&& .MuiButtonGroup-grouped` which has specificity (0,3,0).
+     * Without the boost, the sdsStage="on" styles would always lose
+     * the cascade to the ButtonGroup's parent-level overrides.
+     */
     return css`
-      color: ${contentColor};
+      &&&& {
+        color: ${contentColor};
 
-      svg {
-        color: ${ornamentColor};
-      }
+        svg {
+          color: ${ornamentColor};
+        }
 
-      /* Apply "on" state background via ::before to match Button's hover pattern */
-      &::before {
-        background-color: ${sdsStyle === "minimal" && !backgroundOnHover
-          ? "transparent"
-          : backgroundColor};
+        /* Apply "on" state background via ::before to match Button's hover pattern */
+        &::before {
+          background-color: ${sdsStyle === "minimal" && !backgroundOnHover
+            ? "transparent"
+            : backgroundColor};
+        }
       }
     `;
   }
 
   return css`
-    background-color: ${sdsStyle === "minimal" && !backgroundOnHover
-      ? "transparent"
-      : backgroundColor};
-    color: ${contentColor};
+    &&&& {
+      background-color: ${sdsStyle === "minimal" && !backgroundOnHover
+        ? "transparent"
+        : backgroundColor};
+      color: ${contentColor};
 
-    svg {
-      color: ${ornamentColor};
+      svg {
+        color: ${ornamentColor};
+      }
     }
   `;
 };

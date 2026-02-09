@@ -5,11 +5,10 @@ import {
   BUTTON_GROUP_SDS_TYPES,
   BUTTON_GROUP_ORIENTATIONS,
 } from "./constants";
-import {
-  ButtonGroup,
-  ButtonGroupDisabledButton,
-  ButtonGroupIconOnly,
-} from "./stories/default";
+import { ButtonGroup } from "./stories/default";
+import { ButtonGroupIconOnly } from "./stories/iconOnly";
+import { ButtonGroupDisabledButton } from "./stories/disabledButton";
+import { ButtonGroupButtonToggles } from "./stories/buttonToggles";
 import { TestDemo } from "./stories/test";
 import { INLINE_RADIO } from "src/common/utils";
 
@@ -85,6 +84,19 @@ export const DisabledButtons = {
     sdsType: "primary",
   },
   render: (args: Args) => <ButtonGroupDisabledButton {...args} />,
+};
+
+// Button Toggles
+
+export const ButtonToggles = {
+  args: {
+    backgroundAppearance: "matchBackground",
+    disabled: false,
+    orientation: "horizontal",
+    size: "large",
+    sdsType: "primary",
+  },
+  render: (args: Args) => <ButtonGroupButtonToggles {...args} />,
 };
 
 // Test
