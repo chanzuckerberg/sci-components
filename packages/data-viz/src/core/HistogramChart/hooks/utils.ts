@@ -121,6 +121,15 @@ export interface CreateChartOptionsProps {
    * Event listeners for the chart
    * https://echarts.apache.org/en/api.html#events
    */
+  /**
+   * Threshold range to highlight on the chart
+   * Shows a horizontal band between min and max y-values
+   */
+  threshold?: {
+    min: number;
+    max: number;
+    color?: string; // default: "rgba(200, 200, 200, 0.3)"
+  };
   onEvents?: Record<string, (event: unknown, chart: ECharts) => void>;
 }
 /**
@@ -153,6 +162,7 @@ export function createChartOptions(
     showTitle,
     referenceData,
     referenceColor,
+    threshold,
   } = props;
 
   const {
@@ -217,6 +227,15 @@ export function createChartOptions(
           barCategoryGap,
           data: data,
           z: 2,
+          ...(threshold && {
+            markArea: {
+              silent: true,
+              itemStyle: {
+                color: threshold.color || "rgba(200, 200, 200, 0.3)",
+              },
+              data: [[{ yAxis: threshold.min }, { yAxis: threshold.max }]],
+            },
+          }),
         },
         normalizeOption(optionsSeries),
         { type: "bar" }

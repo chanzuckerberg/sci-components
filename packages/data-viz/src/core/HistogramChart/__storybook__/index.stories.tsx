@@ -64,6 +64,18 @@ export default {
       control: { type: "boolean" },
       description: "Whether to show the reference distribution or not",
     },
+    showThreshold: {
+      control: { type: "boolean" },
+      description: "Show threshold indicator band",
+    },
+    thresholdMin: {
+      control: { type: "number" },
+      description: "Minimum y-value for threshold range",
+    },
+    thresholdMax: {
+      control: { type: "number" },
+      description: "Maximum y-value for threshold range",
+    },
   },
   component: HistogramChart,
   parameters: {
@@ -93,6 +105,9 @@ export const Default = {
     showXAxisGrid: false,
     showReference: false,
     referenceColor: "rgba(128, 128, 128, 0.4)",
+    showThreshold: false,
+    thresholdMin: 40,
+    thresholdMax: 60,
   },
   parameters: {},
 };

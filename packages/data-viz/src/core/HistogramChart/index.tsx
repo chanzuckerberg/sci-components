@@ -50,6 +50,7 @@ const HistogramChart = forwardRef(
       yAxisTitle,
       referenceData,
       referenceColor,
+      threshold,
       ...rest
     } = props;
 
@@ -167,6 +168,7 @@ const HistogramChart = forwardRef(
       yAxisTitle,
       referenceData,
       referenceColor,
+      threshold,
     });
 
     // Render the chart container
