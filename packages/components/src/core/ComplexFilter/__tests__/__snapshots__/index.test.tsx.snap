@@ -8,24 +8,24 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary esj7ztq0 css-1uj7z64-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary eayci2a0 css-1bsgozn-MuiButtonBase-root-MuiButton-root"
     label="Click Target"
     tabindex="0"
     type="button"
     width="250"
   >
     <span
-      class="css-1ijc2rk esj7ztq5"
+      class="css-1ijc2rk eayci2a5"
     >
       <div>
         <span
-          class="styled-label css-g71ytf esj7ztq2"
+          class="styled-label css-g71ytf eayci2a2"
         >
           Click Target
         </span>
       </div>
       <span
-        class="css-4mc30z esj7ztq6"
+        class="css-4mc30z eayci2a6"
       >
         <div
           class="css-1obf64m eo7r9jx1"

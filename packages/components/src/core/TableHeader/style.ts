@@ -7,6 +7,8 @@ export const StyledTableHeader = styled("thead")`
 
     return `
       border-bottom: solid 2px ${semanticColors?.base?.borderSecondary};
+      margin: 0;
+      padding: 0;
     `;
   }}
 `;
