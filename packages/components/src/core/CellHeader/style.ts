@@ -61,9 +61,7 @@ const ShouldTruncate = () => {
   `;
 };
 
-export const StyledTableHeader = styled("th", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
+export const StyledTableHeader = styled.div`
   ${fontHeaderS}
   ${focusVisibleA11yStyle}
 
@@ -83,9 +81,8 @@ export const StyledTableHeader = styled("th", {
 
     return `
       color: ${defaultColor};
-      padding: ${spaces?.l}px ${spaces?.m}px;
+      padding: ${spaces?.m}px !important;
       text-align: ${horizontalAlign};
-      min-width: 96px;
       cursor: ${hover ? "pointer" : "default"};
       vertical-align: bottom;
 

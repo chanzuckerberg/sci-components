@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import React from "react";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -17,6 +18,10 @@ export interface CellBasicExtraProps extends CommonThemeProps {
   secondaryTextWrapLineCount?: number;
   tertiaryTextWrapLineCount?: number;
   tabularNums?: boolean;
+  shouldShowUnderlineOnHover?: boolean;
+  isRowHovered?: boolean;
+  component?: React.ElementType;
+  extraRightPadding?: number;
 }
 
 const doNotForwardProps = [
@@ -29,6 +34,8 @@ const doNotForwardProps = [
   "tertiaryText",
   "shouldTextWrap",
   "shouldShowTooltipOnHover",
+  "shouldShowUnderlineOnHover",
+  "isRowHovered",
   "tooltipProps",
   "primaryTextWrapLineCount",
   "secondaryTextWrapLineCount",
@@ -51,26 +58,6 @@ const verticalAlignToFlexMap = {
   center: "center",
   top: "flex-start",
 };
-
-export const StyledTableData = styled("td", {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
-  ${fontBodyS}
-  ${focusVisibleA11yStyle}
-
-  ${(props: CellBasicExtraProps) => {
-    const { horizontalAlign = "left", verticalAlign = "top" } = props;
-
-    const spaces = getSpaces(props);
-
-    return `
-        padding: ${spaces?.l}px ${spaces?.m}px;
-        text-align: ${horizontalAlign};
-        vertical-align: ${verticalAlignCSSMap[verticalAlign]};
-        overflow: hidden;
-    `;
-  }}
-`;
 
 const ShouldWrap = (lineCount: number) => {
   return `
@@ -107,7 +94,7 @@ export const StyledCellIconWrapper = styled("div", {
     const spaces = getSpaces(props);
 
     return `
-      padding-right: ${spaces?.l}px;
+      padding-right: ${spaces?.m}px;
       display: flex;
       flex-direction: column;
       justify-content: ${verticalAlignToFlexMap[iconVerticalAlign]};
@@ -155,13 +142,12 @@ export const SecondaryText = styled("span", {
   ${(props: CellBasicExtraProps) => {
     const { secondaryTextWrapLineCount = 1, tabularNums = false } = props;
 
-    const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       display: block;
       color: ${semanticColors?.base?.textSecondary};
-      padding-top: ${spaces?.xxxs}px;
+      padding-top: 0px;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
 
       ${
@@ -187,7 +173,7 @@ export const TertiaryText = styled("span", {
     return `
       display: block;
       color: ${semanticColors?.base?.textSecondary};
-      padding-top: ${spaces?.s}px;
+      padding-top: ${spaces?.xxxs}px;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
 
       ${
@@ -215,6 +201,55 @@ export const PrimaryTextComponentSlotRightWrapper = styled("div")`
 
     return `
       margin-left: ${spaces?.xs}px;
+    `;
+  }}
+`;
+
+export const StyledTableData = styled.div`
+  ${fontBodyS}
+  ${focusVisibleA11yStyle}
+
+  ${(props: CellBasicExtraProps) => {
+    const {
+      horizontalAlign = "left",
+      verticalAlign = "top",
+      shouldShowUnderlineOnHover = false,
+      isRowHovered = false,
+      extraRightPadding = 0,
+    } = props;
+
+    const spaces = getSpaces(props);
+    const paddingRight =
+      horizontalAlign === "right"
+        ? (spaces?.m ?? 0) + extraRightPadding
+        : spaces?.m;
+
+    return `
+        padding: ${spaces?.m}px ${paddingRight}px ${spaces?.m}px ${spaces?.m}px !important;
+        text-align: ${horizontalAlign};
+        vertical-align: ${verticalAlignCSSMap[verticalAlign]};
+        overflow: hidden;
+
+        &:hover {
+          ${PrimaryText} {
+            ${shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
+          }
+        }
+
+        ${PrimaryText} {
+          ${isRowHovered && shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
+        }
+    `;
+  }}
+`;
+
+export const StyledCellBasicLink = styled("a")`
+  ${(props: CellBasicExtraProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      text-decoration: none;
+      color: ${semanticColors?.base?.textPrimary};
     `;
   }}
 `;

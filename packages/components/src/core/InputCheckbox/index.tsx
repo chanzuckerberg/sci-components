@@ -12,7 +12,7 @@ import {
 } from "./styles";
 import { EMPTY_OBJECT, cn } from "src/common/utils";
 
-interface CheckboxContentProps extends Omit<
+export interface CheckboxContentProps extends Omit<
   MUICheckboxProps,
   "color" | "defaultChecked" | "indeterminate"
 > {
@@ -134,12 +134,13 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
             </StyledCheckboxCheckedIcon>
           }
           intent={intent}
+          label={label}
           {...checkboxProps}
           {...newProps}
         />
       }
       disabled={disabled}
-      label={finalLabel}
+      label={label ? finalLabel : null}
       value={value}
       className={cn(rootClassName, className)}
     />

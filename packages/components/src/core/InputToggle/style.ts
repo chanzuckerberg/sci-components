@@ -24,6 +24,7 @@ const toggle = (props: InputToggleExtraProps) => {
   const corners = getCorners(props);
   const shadows = getShadows(props);
   const iconSizes = getIconSizes(props);
+  const semanticColors = getSemanticColors(props);
 
   return `
     cursor: ${disabled ? "default" : "pointer"};
@@ -33,6 +34,7 @@ const toggle = (props: InputToggleExtraProps) => {
     line-height: 18px;
     padding: 0;
     overflow: visible;
+    background-color: ${semanticColors?.base?.backgroundPrimary} !important;
 
     .${switchClasses.switchBase} {
       ${focusVisibleA11yStyle(props)}
