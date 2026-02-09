@@ -33,6 +33,7 @@ export function useUpdateChart({
   showXAxisGrid,
   referenceData,
   referenceColor,
+  threshold,
 }: UpdateChartProps): void {
   const throttledUpdateChart = useMemo(() => {
     return throttle(
@@ -68,6 +69,7 @@ export function useUpdateChart({
           showXAxisGrid,
           referenceData,
           referenceColor,
+          threshold,
         });
 
         chart.setOption(chartOptions, {
@@ -126,6 +128,7 @@ export function useUpdateChart({
     showXAxisGrid,
     referenceData,
     referenceColor,
+    threshold,
   ]);
 
   useEffect(() => {
@@ -161,5 +164,6 @@ export function useUpdateChart({
     showXAxisGrid,
     referenceData,
     referenceColor,
+    threshold,
   ]);
 }
