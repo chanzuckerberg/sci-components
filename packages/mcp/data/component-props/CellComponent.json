@@ -2,7 +2,7 @@
   "CellComponent": {
     "props": {
       "horizontalAlign": {
-        "type": "\"left\" | \"center\" | \"right\"",
+        "type": "\"center\" | \"left\" | \"right\"",
         "isRequired": false
       },
       "verticalAlign": {

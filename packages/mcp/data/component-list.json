@@ -45,6 +45,7 @@
     "Notification",
     "Pagination",
     "Panel",
+    "PreComposedTable",
     "SegmentedControl",
     "Table",
     "TableHeader",

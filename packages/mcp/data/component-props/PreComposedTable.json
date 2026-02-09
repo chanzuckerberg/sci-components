@@ -1,0 +1,62 @@
+{
+  "PreComposedTable": {
+    "props": {
+      "border": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": true
+      },
+      "columns": {
+        "type": "ColumnDef<TData>[]",
+        "isRequired": true
+      },
+      "enableColumnFiltering": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "enableGlobalFiltering": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "enablePagination": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "enableRowSelection": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "enableSorting": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": false
+      },
+      "onRowSelect": {
+        "type": "(selectedRows: TData[]) => void",
+        "isRequired": false
+      },
+      "paginationConfig": {
+        "type": "any",
+        "isRequired": false
+      },
+      "shouldPinSelectRowToLeft": {
+        "type": "\"false\" | \"true\"",
+        "isRequired": false,
+        "defaultValue": true
+      },
+      "sdsStyle": {
+        "type": "\"lined\" | \"striped\"",
+        "isRequired": false,
+        "defaultValue": "lined"
+      },
+      "tableRowProps": {
+        "type": "Partial<TableRowProps>",
+        "isRequired": false
+      }
+    }
+  }
+}

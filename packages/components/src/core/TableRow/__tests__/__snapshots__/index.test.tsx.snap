@@ -6,24 +6,24 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
 >
   <tbody>
     <tr
-      class="css-166pl2x eqzfpqa0"
+      class="css-nlpmew e1dzq46l0"
       data-mui-internal-clone-element="true"
       tabindex="0"
     >
       <td
-        class="css-10xaxrk e12hza2g0"
+        class="css-awnp6s e1dpxohs9"
       >
         <div
-          class="css-k008qs e12hza2g1"
+          class="css-k008qs e1dpxohs0"
         >
           <div
-            class="css-8atqhb e12hza2g2"
+            class="css-8atqhb e1dpxohs1"
           >
             <div
-              class="css-88isd2 e12hza2g4"
+              class="css-88isd2 e1dpxohs3"
             >
               <div
-                class="css-19a2l1x e12hza2g5"
+                class="css-19a2l1x e1dpxohs4"
               >
                 Primary
               </div>
@@ -32,19 +32,19 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10xaxrk e12hza2g0"
+        class="css-awnp6s e1dpxohs9"
       >
         <div
-          class="css-k008qs e12hza2g1"
+          class="css-k008qs e1dpxohs0"
         >
           <div
-            class="css-8atqhb e12hza2g2"
+            class="css-8atqhb e1dpxohs1"
           >
             <div
-              class="css-88isd2 e12hza2g4"
+              class="css-88isd2 e1dpxohs3"
             >
               <div
-                class="css-19a2l1x e12hza2g5"
+                class="css-19a2l1x e1dpxohs4"
               >
                 Primary
               </div>
@@ -53,19 +53,19 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10xaxrk e12hza2g0"
+        class="css-awnp6s e1dpxohs9"
       >
         <div
-          class="css-k008qs e12hza2g1"
+          class="css-k008qs e1dpxohs0"
         >
           <div
-            class="css-8atqhb e12hza2g2"
+            class="css-8atqhb e1dpxohs1"
           >
             <div
-              class="css-88isd2 e12hza2g4"
+              class="css-88isd2 e1dpxohs3"
             >
               <div
-                class="css-19a2l1x e12hza2g5"
+                class="css-19a2l1x e1dpxohs4"
               >
                 Primary
               </div>
@@ -74,19 +74,19 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10xaxrk e12hza2g0"
+        class="css-awnp6s e1dpxohs9"
       >
         <div
-          class="css-k008qs e12hza2g1"
+          class="css-k008qs e1dpxohs0"
         >
           <div
-            class="css-8atqhb e12hza2g2"
+            class="css-8atqhb e1dpxohs1"
           >
             <div
-              class="css-88isd2 e12hza2g4"
+              class="css-88isd2 e1dpxohs3"
             >
               <div
-                class="css-19a2l1x e12hza2g5"
+                class="css-19a2l1x e1dpxohs4"
               >
                 Primary
               </div>
@@ -95,19 +95,19 @@ exports[`<TableRow /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-10xaxrk e12hza2g0"
+        class="css-awnp6s e1dpxohs9"
       >
         <div
-          class="css-k008qs e12hza2g1"
+          class="css-k008qs e1dpxohs0"
         >
           <div
-            class="css-8atqhb e12hza2g2"
+            class="css-8atqhb e1dpxohs1"
           >
             <div
-              class="css-88isd2 e12hza2g4"
+              class="css-88isd2 e1dpxohs3"
             >
               <div
-                class="css-19a2l1x e12hza2g5"
+                class="css-19a2l1x e1dpxohs4"
               >
                 Primary
               </div>

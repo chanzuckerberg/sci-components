@@ -79,12 +79,14 @@ export const StyledRadioCheckedIcon = styled("div")`
 export const StyledRadioButton = styled(RawRadio)`
   ${(props: RadioExtraProps) => {
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return `
       &.${radioClasses.root} {
         ${focusVisibleA11yStyle(props)}
         margin: 0 ${spaces?.s}px 0 0;
         padding: 0;
+        background-color: ${semanticColors?.base?.backgroundPrimary} !important;
       }
     `;
   }}
