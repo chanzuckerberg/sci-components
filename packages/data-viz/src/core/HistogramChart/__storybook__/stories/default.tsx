@@ -20,6 +20,9 @@ export const HistogramChart = (props: Args): JSX.Element => {
     showXAxisGrid = false,
     showReference = false,
     referenceColor,
+    showThreshold = false,
+    thresholdMin = 40,
+    thresholdMax = 60,
     ...rest
   } = props;
 
@@ -39,6 +42,9 @@ export const HistogramChart = (props: Args): JSX.Element => {
       barColor={barColor || "#3366cc"}
       referenceData={showReference ? HISTOGRAM_REFERENCE_DATA : undefined}
       referenceColor={referenceColor || "rgba(128, 128, 128, 0.4)"}
+      threshold={
+        showThreshold ? { min: thresholdMin, max: thresholdMax } : undefined
+      }
       emphasis={{
         itemStyle: {
           color: "#5588ee",
