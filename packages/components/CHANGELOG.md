@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.4...@czi-sds/components@23.4.0) (2026-02-09)
+
+### Features
+
+- Precomposed table based on Tanstack table ([#984](https://github.com/chanzuckerberg/sci-components/issues/984)) ([a8fa8bd](https://github.com/chanzuckerberg/sci-components/commit/a8fa8bdc035db225052811572147f6d26e8f38f5))
+
 ## [23.3.4](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.3...@czi-sds/components@23.3.4) (2026-02-04)
 
 **Note:** Version bump only for package @czi-sds/components
