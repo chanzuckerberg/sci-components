@@ -1,14 +1,30 @@
 import { ToggleButtonGroupProps } from "@mui/material";
 import React from "react";
+import {
+  SDSWarningTypes,
+  showWarningIfFirstOccurence,
+} from "src/common/warnings";
 import Icon, { IconNameToSizes } from "src/core/Icon";
-import Tooltip from "src/core/Tooltip";
-import { StyledSegmentedControl, StyledToggleButton } from "./style";
+import Tooltip, { TooltipProps } from "src/core/Tooltip";
+import {
+  StyledSegmentedControl,
+  StyledToggleButton,
+  StyledToggleButtonIcon,
+  StyledToggleButtonLabel,
+} from "./style";
 
 // one prop is array of objects: with icon name and tooltip text. They need to make
 // first item in array first button, etc
 export interface SingleButtonDefinition {
   disabled?: boolean;
-  icon: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  label?: string;
+  shouldShowTooltip?: boolean;
+  tooltipProps?: Partial<Omit<TooltipProps, "children">>;
+  /**
+   * @deprecated Use `tooltipProps` instead.
+   * Example: `{ tooltipProps: { title: "My tooltip" } }`
+   */
   tooltipText?: string;
   value: string;
 }
@@ -62,10 +78,31 @@ const SegmentedControl = (props: SegmentedControlProps) => {
       {buttonDefinition.map((button: SingleButtonDefinition) => {
         const {
           icon,
+          label,
+          shouldShowTooltip = true,
+          tooltipProps,
           tooltipText,
           value: buttonValue,
           disabled = false,
         } = button;
+
+        if (tooltipText) {
+          showWarningIfFirstOccurence(
+            SDSWarningTypes.SegmentedControlTooltipTextDeprecated
+          );
+        }
+
+        if (!icon && !label) {
+          showWarningIfFirstOccurence(
+            SDSWarningTypes.SegmentedControlMissingIconOrLabel
+          );
+        }
+
+        if (icon && label) {
+          showWarningIfFirstOccurence(
+            SDSWarningTypes.SegmentedControlIconAndLabelConflict
+          );
+        }
 
         const iconItem = icon ? (
           typeof icon !== "string" ? (
@@ -75,32 +112,42 @@ const SegmentedControl = (props: SegmentedControlProps) => {
           )
         ) : null;
 
+        const buttonContent = label ? (
+          <StyledToggleButtonLabel>{label}</StyledToggleButtonLabel>
+        ) : (
+          <StyledToggleButtonIcon>{iconItem}</StyledToggleButtonIcon>
+        );
+
         const toggleButton = (
           <StyledToggleButton
-            aria-label={tooltipText ?? buttonValue}
+            aria-label={tooltipText ?? label ?? buttonValue}
             value={buttonValue}
             disabled={disabled}
             key={buttonValue}
           >
-            <span tabIndex={-1}>{iconItem}</span>
+            <span tabIndex={-1}>{buttonContent}</span>
           </StyledToggleButton>
         );
 
-        // (masoudmanson): If the button is disabled, we don't want to show the tooltip.
-        return disabled ? (
+        // Resolve the tooltip title: tooltipText takes priority,
+        // then tooltipProps.title, then falls back to buttonValue.
+        const resolvedTitle = tooltipText ?? tooltipProps?.title ?? buttonValue;
+
+        // (masoudmanson): If the button is disabled or shouldShowTooltip
+        // is false, we don't render the tooltip.
+        return disabled || !shouldShowTooltip ? (
           toggleButton
         ) : (
           <Tooltip
-            title={tooltipText ?? buttonValue}
-            sdsStyle="dark"
             arrow
+            {...tooltipProps}
+            title={resolvedTitle}
             key={buttonValue}
           >
             {toggleButton}
           </Tooltip>
         );
       })}
-      ;
     </StyledSegmentedControl>
   );
 };

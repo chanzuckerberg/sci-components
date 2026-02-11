@@ -8,6 +8,7 @@ import styled from "@emotion/styled";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
+  fontBodySemiboldXxs,
   getCorners,
   getSemanticColors,
   getSpaces,
@@ -56,7 +57,6 @@ export const StyledSegmentedControl = styled(ToggleButtonGroup, {
         ${focusVisibleA11yStyle(props)}
         background-color: transparent;
         border: none;
-        line-height: 0px;
         color: ${semanticColors?.base?.ornamentSecondary};
         padding: ${spaces?.xxs}px ${spaces?.m}px;
         border-radius: ${corners?.m}px;
@@ -87,4 +87,14 @@ export const StyledToggleButton = styled(ToggleButton, {
       }
     `;
   }}
+`;
+
+export const StyledToggleButtonIcon = styled("div")`
+  line-height: 0px;
+`;
+
+export const StyledToggleButtonLabel = styled("div")`
+  ${fontBodySemiboldXxs};
+  white-space: nowrap;
+  line-height: 16px !important;
 `;

@@ -77,6 +77,106 @@ export const WithDisabledButton = {
   render: SegmentedControl,
 };
 
+// Label Only
+
+export const LabelOnly = {
+  args: {
+    buttonDefinition: [
+      {
+        label: "Explorer",
+        value: "explorer",
+      },
+      {
+        label: "All Data",
+        value: "all-data",
+      },
+    ],
+  },
+  render: SegmentedControl,
+};
+
+// Label Only With Disabled
+
+export const LabelOnlyWithDisabledButton = {
+  args: {
+    buttonDefinition: [
+      {
+        label: "Explorer",
+        value: "explorer",
+      },
+      {
+        disabled: true,
+        label: "All Data",
+        value: "all-data",
+      },
+      {
+        label: "Summary",
+        value: "summary",
+      },
+    ],
+  },
+  render: SegmentedControl,
+};
+
+// Tooltip Hidden
+
+export const WithTooltipHidden = {
+  args: {
+    buttonDefinition: [
+      {
+        icon: "List",
+        shouldShowTooltip: false,
+        value: "A",
+      },
+      {
+        icon: "Table",
+        shouldShowTooltip: false,
+        value: "B",
+      },
+      {
+        icon: "People",
+        value: "C",
+      },
+    ],
+  },
+  render: SegmentedControl,
+};
+
+// Custom Tooltip Props
+
+export const WithCustomTooltipProps = {
+  args: {
+    buttonDefinition: [
+      {
+        icon: "List",
+        tooltipProps: {
+          subtitle: "View items as a list",
+          title: "List View",
+        },
+        value: "A",
+      },
+      {
+        icon: "Table",
+        tooltipProps: {
+          subtitle: "View items in a table",
+          title: "Table View",
+        },
+        value: "B",
+      },
+      {
+        icon: "People",
+        tooltipText: "People View",
+        tooltipProps: {
+          subtitle: "tooltipText overrides tooltipProps.title",
+          title: "This title is overridden",
+        },
+        value: "C",
+      },
+    ],
+  },
+  render: SegmentedControl,
+};
+
 // Controlled
 
 export const ControlledSegmentedControl = {
