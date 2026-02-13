@@ -37,6 +37,10 @@ const GeneralButtonGroupStyles = (
       min-width: fit-content;
       z-index: 1;
 
+      &::before {
+        border-radius: inherit;
+      }
+
       &:hover,
       &:active,
       &:focus {
@@ -149,10 +153,11 @@ const LargeButtonGroupStyles = (
       }
     }
 
-    /* Icon-only buttons: has svg but no startIcon/endIcon slots */
+    /* Icon-only buttons: has svg but no startIcon/endIcon slots, or startIcon is the only child (e.g. ButtonToggle) */
     .${buttonGroupClasses.grouped}:has(svg):not(
         :has(.${buttonClasses.startIcon})
-      ):not(:has(.${buttonClasses.endIcon})) {
+      ):not(:has(.${buttonClasses.endIcon})),
+    .${buttonGroupClasses.grouped}:has(> .${buttonClasses.startIcon}:only-child) {
       padding: ${iconOnlyPaddingWide};
 
       ${theme?.breakpoints?.down("md")} {
@@ -160,8 +165,10 @@ const LargeButtonGroupStyles = (
       }
     }
 
-    /* Text + icon buttons: has startIcon or endIcon */
-    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}),
+    /* Text + icon buttons: has startIcon or endIcon (excluding icon-only ButtonToggle) */
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}):not(
+        :has(> .${buttonClasses.startIcon}:only-child)
+      ),
     .${buttonGroupClasses.grouped}:has(.${buttonClasses.endIcon}) {
       ${theme?.breakpoints?.down("md")} {
         padding: 0 14px;
@@ -233,10 +240,11 @@ const MediumButtonGroupStyles = (
       }
     }
 
-    /* Icon-only buttons: has svg but no startIcon/endIcon slots */
+    /* Icon-only buttons: has svg but no startIcon/endIcon slots, or startIcon is the only child (e.g. ButtonToggle) */
     .${buttonGroupClasses.grouped}:has(svg):not(
         :has(.${buttonClasses.startIcon})
-      ):not(:has(.${buttonClasses.endIcon})) {
+      ):not(:has(.${buttonClasses.endIcon})),
+    .${buttonGroupClasses.grouped}:has(> .${buttonClasses.startIcon}:only-child) {
       padding: ${iconOnlyPaddingWide};
 
       ${theme?.breakpoints?.down("md")} {
@@ -244,8 +252,10 @@ const MediumButtonGroupStyles = (
       }
     }
 
-    /* Text + icon buttons: has startIcon or endIcon - ensure spaceS (8px) padding on wide screen */
-    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}),
+    /* Text + icon buttons: has startIcon or endIcon (excluding icon-only ButtonToggle) */
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}):not(
+        :has(> .${buttonClasses.startIcon}:only-child)
+      ),
     .${buttonGroupClasses.grouped}:has(.${buttonClasses.endIcon}) {
       padding: 0 10px;
     }
@@ -315,10 +325,11 @@ const SmallButtonGroupStyles = (
       }
     }
 
-    /* Icon-only buttons: has svg but no startIcon/endIcon slots */
+    /* Icon-only buttons: has svg but no startIcon/endIcon slots, or startIcon is the only child (e.g. ButtonToggle) */
     .${buttonGroupClasses.grouped}:has(svg):not(
         :has(.${buttonClasses.startIcon})
-      ):not(:has(.${buttonClasses.endIcon})) {
+      ):not(:has(.${buttonClasses.endIcon})),
+    .${buttonGroupClasses.grouped}:has(> .${buttonClasses.startIcon}:only-child) {
       padding: ${iconOnlyPaddingWide};
 
       ${theme?.breakpoints?.down("md")} {
@@ -326,8 +337,10 @@ const SmallButtonGroupStyles = (
       }
     }
 
-    /* Text + icon buttons: has startIcon or endIcon - ensure spaceS (8px) padding on wide screen */
-    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}),
+    /* Text + icon buttons: has startIcon or endIcon (excluding icon-only ButtonToggle) */
+    .${buttonGroupClasses.grouped}:has(.${buttonClasses.startIcon}):not(
+        :has(> .${buttonClasses.startIcon}:only-child)
+      ),
     .${buttonGroupClasses.grouped}:has(.${buttonClasses.endIcon}) {
       padding: 0 ${spaces?.s}px;
     }
@@ -388,6 +401,7 @@ const PrimaryButtonGroupStyles = (
     && .${buttonGroupClasses.grouped} {
       background-color: transparent;
       border: 1px solid ${defaultColor};
+      box-shadow: none;
       color: ${defaultColor};
 
       svg {
@@ -399,6 +413,7 @@ const PrimaryButtonGroupStyles = (
       color: ${hoverColor};
       background-color: ${hoverBgColor};
       border: 1px solid ${hoverColor};
+      box-shadow: none;
 
       svg {
         color: ${hoverColor};
@@ -409,6 +424,7 @@ const PrimaryButtonGroupStyles = (
       color: ${pressedColor};
       background-color: ${hoverBgColor};
       border: 1px solid ${pressedColor};
+      box-shadow: none;
 
       svg {
         color: ${pressedColor};
@@ -423,6 +439,7 @@ const PrimaryButtonGroupStyles = (
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${disabledColor};
+      box-shadow: none;
 
       svg {
         color: ${ornamentDisabledColor};
@@ -489,6 +506,7 @@ const SecondaryButtonGroupStyles = (
     && .${buttonGroupClasses.grouped} {
       background-color: transparent;
       border: 1px solid ${defaultColor};
+      box-shadow: none;
       color: ${textColor};
 
       svg {
@@ -500,6 +518,7 @@ const SecondaryButtonGroupStyles = (
       color: ${textColor};
       background-color: ${hoverBgColor};
       border: 1px solid ${defaultColor};
+      box-shadow: none;
 
       svg {
         color: ${ornamentColor};
@@ -510,6 +529,7 @@ const SecondaryButtonGroupStyles = (
       color: ${textColor};
       background-color: ${pressedBgColor};
       border: 1px solid ${defaultColor};
+      box-shadow: none;
 
       svg {
         color: ${ornamentColor};
@@ -524,6 +544,7 @@ const SecondaryButtonGroupStyles = (
       color: ${textDisabledColor};
       background-color: transparent;
       border: 1px solid ${disabledColor};
+      box-shadow: none;
 
       svg {
         color: ${ornamentDisabledColor};

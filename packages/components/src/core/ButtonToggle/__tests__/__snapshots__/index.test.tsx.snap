@@ -6,7 +6,7 @@ exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
 >
   <button
     aria-label="button-toggle"
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary etitc7m0 e1gcweb20 css-8yohbv-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary ekcxi420 e1gcweb20 css-8yohbv-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
