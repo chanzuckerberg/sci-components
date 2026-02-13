@@ -94,7 +94,7 @@ export const StyledToggleButtonIcon = styled("div")`
 `;
 
 export const StyledToggleButtonLabel = styled("div")`
-  ${fontBodyMediumS};
+  ${fontBodyMediumS}
   white-space: nowrap;
   line-height: 16px !important;
 `;

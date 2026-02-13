@@ -28,7 +28,7 @@ export const StyledPopover = styled(Popover)`
         outline: 1px solid ${addOpacityToHex(semanticColors?.base?.borderSecondary || "#000000", 15)};
         box-shadow: ${shadows?.m};
         box-sizing: border-box;
-        z-index: ${props?.theme?.zIndex?.popover ?? 1400};
+        z-index: ${props?.theme?.zIndex?.tooltip ?? 1400};
       `;
     }}
   }
