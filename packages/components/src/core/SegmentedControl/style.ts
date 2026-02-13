@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
-  fontBodySemiboldXxs,
+  fontBodyMediumS,
   getCorners,
   getSemanticColors,
   getSpaces,
@@ -94,7 +94,7 @@ export const StyledToggleButtonIcon = styled("div")`
 `;
 
 export const StyledToggleButtonLabel = styled("div")`
-  ${fontBodySemiboldXxs};
+  ${fontBodyMediumS};
   white-space: nowrap;
   line-height: 16px !important;
 `;
