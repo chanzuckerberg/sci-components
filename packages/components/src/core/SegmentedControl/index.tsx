@@ -114,8 +114,10 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
         const buttonContent = label ? (
           <StyledToggleButtonLabel>{label}</StyledToggleButtonLabel>
-        ) : (
+        ) : iconItem ? (
           <StyledToggleButtonIcon>{iconItem}</StyledToggleButtonIcon>
+        ) : (
+          <StyledToggleButtonLabel>{buttonValue}</StyledToggleButtonLabel>
         );
 
         const toggleButton = (
