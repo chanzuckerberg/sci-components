@@ -114,8 +114,10 @@ const SegmentedControl = (props: SegmentedControlProps) => {
 
         const buttonContent = label ? (
           <StyledToggleButtonLabel>{label}</StyledToggleButtonLabel>
-        ) : (
+        ) : iconItem ? (
           <StyledToggleButtonIcon>{iconItem}</StyledToggleButtonIcon>
+        ) : (
+          <StyledToggleButtonLabel>{buttonValue}</StyledToggleButtonLabel>
         );
 
         const toggleButton = (
@@ -130,8 +132,9 @@ const SegmentedControl = (props: SegmentedControlProps) => {
         );
 
         // Resolve the tooltip title: tooltipText takes priority,
-        // then tooltipProps.title, then falls back to buttonValue.
-        const resolvedTitle = tooltipText ?? tooltipProps?.title ?? buttonValue;
+        // then tooltipProps.title, then label, then falls back to buttonValue.
+        const resolvedTitle =
+          tooltipText ?? tooltipProps?.title ?? label ?? buttonValue;
 
         // (masoudmanson): If the button is disabled or shouldShowTooltip
         // is false, we don't render the tooltip.
