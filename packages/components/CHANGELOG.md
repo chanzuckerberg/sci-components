@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.4.0...@czi-sds/components@23.5.0) (2026-02-14)
+
+### Bug Fixes
+
+- **buttontoggle:** fix buttontoggles styles in buttongroups ([#1093](https://github.com/chanzuckerberg/sci-components/issues/1093)) ([51b1eb7](https://github.com/chanzuckerberg/sci-components/commit/51b1eb7b237aaac13b865b4ebe87ce7233b72040))
+
+### Features
+
+- **popover:** added a new Popover component to SDS ([#1092](https://github.com/chanzuckerberg/sci-components/issues/1092)) ([5a10800](https://github.com/chanzuckerberg/sci-components/commit/5a1080014512bd02209d42c8caef308f26283b03))
+- **SegmentedControl:** Add label-only variant and tooltip customization ([#1095](https://github.com/chanzuckerberg/sci-components/issues/1095)) ([0154cb9](https://github.com/chanzuckerberg/sci-components/commit/0154cb9c536136a31ce61f6f346cc122f2b5cc2e))
+
 # [23.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.3.4...@czi-sds/components@23.4.0) (2026-02-09)
 
 ### Features
