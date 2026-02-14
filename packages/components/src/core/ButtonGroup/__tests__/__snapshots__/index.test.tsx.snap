@@ -1,11 +1,139 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<ButtonGroup /> ButtonToggles story renders snapshot 1`] = `
+<div
+  class="css-pi3gcs e1gcweb22"
+>
+  <div
+    class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
+    role="group"
+  >
+    <button
+      aria-label="Search"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary ekcxi420 e1gcweb20 MuiButtonGroup-firstButton css-8yohbv-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+      >
+        <div
+          class="css-1obf64m eo7r9jx1"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            data-file-name="IconSearchSmall"
+            data-testid="IconSearchSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      aria-label="Copy"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary ekcxi420 e1gcweb20 MuiButtonGroup-middleButton css-8yohbv-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+      >
+        <div
+          class="css-1obf64m eo7r9jx1"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            data-file-name="IconCopySmall"
+            data-testid="IconCopySmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      aria-label="Code"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary ekcxi420 e1gcweb20 MuiButtonGroup-middleButton css-8yohbv-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+      >
+        <div
+          class="css-1obf64m eo7r9jx1"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            data-file-name="IconCodeSmall"
+            data-testid="IconCodeSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      aria-label="Cube"
+      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary ekcxi420 e1gcweb20 MuiButtonGroup-lastButton css-8yohbv-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+      >
+        <div
+          class="css-1obf64m eo7r9jx1"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            data-file-name="IconCubeSmall"
+            data-testid="IconCubeSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
+
 exports[`<ButtonGroup /> Default story renders snapshot 1`] = `
 <div
   class="css-pi3gcs e1gcweb22"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined e1ojg7kw0 css-7iwjon-MuiButtonGroup-root"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
     role="group"
   >
     <button
@@ -96,7 +224,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
     style="display: flex; flex-direction: column; gap: 12px;"
   >
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1ojg7kw0 css-7iwjon-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -244,7 +372,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1ojg7kw0 css-7iwjon-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -392,7 +520,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1ojg7kw0 css-7iwjon-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -538,7 +666,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1ojg7kw0 css-7iwjon-MuiButtonGroup-root"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
       role="group"
     >
       <button
@@ -689,7 +817,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
       style="display: flex; gap: 12px;"
     >
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1ojg7kw0 css-1o3cobt-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e10zalnj0 css-1hqwjdq-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -837,7 +965,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1ojg7kw0 css-1o3cobt-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e10zalnj0 css-1hqwjdq-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -985,7 +1113,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1ojg7kw0 css-1o3cobt-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e10zalnj0 css-1hqwjdq-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -1131,7 +1259,7 @@ exports[`<ButtonGroup /> DisabledButtons story renders snapshot 1`] = `
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1ojg7kw0 css-1o3cobt-MuiButtonGroup-root"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e10zalnj0 css-1hqwjdq-MuiButtonGroup-root"
         role="group"
       >
         <button
@@ -1288,7 +1416,7 @@ exports[`<ButtonGroup /> IconOnly story renders snapshot 1`] = `
   class="css-pi3gcs e1gcweb22"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined e1ojg7kw0 css-7iwjon-MuiButtonGroup-root"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined e10zalnj0 css-1txwuy2-MuiButtonGroup-root"
     role="group"
   >
     <button

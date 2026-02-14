@@ -13,6 +13,9 @@ export enum SDSWarningTypes {
   TooltipInvertStyle = "tooltipInvertStyle",
   ContentCardActionsOnlyButtons = "contentCardActionsOnlyButtons",
   ClickableContentCardNumberOfButtons = "clickableContentCardNumberOfButtons",
+  SegmentedControlTooltipTextDeprecated = "segmentedControlTooltipTextDeprecated",
+  SegmentedControlMissingIconOrLabel = "segmentedControlMissingIconOrLabel",
+  SegmentedControlIconAndLabelConflict = "segmentedControlIconAndLabelConflict",
 }
 
 export const SDS_WARNINGS = {
@@ -81,6 +84,24 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: Clickable Content Cards can only have one or no buttons!",
+  },
+  [SDSWarningTypes.SegmentedControlTooltipTextDeprecated]: {
+    hasWarned: false,
+    message:
+      'Warning: "tooltipText" in SegmentedControl buttonDefinition is deprecated. ' +
+      'Please use "tooltipProps" instead. Example: { tooltipProps: { title: "My tooltip" } }',
+  },
+  [SDSWarningTypes.SegmentedControlMissingIconOrLabel]: {
+    hasWarned: false,
+    message:
+      'Warning: Each SegmentedControl button must have either an "icon" or a "label" prop. ' +
+      "A button was found with neither.",
+  },
+  [SDSWarningTypes.SegmentedControlIconAndLabelConflict]: {
+    hasWarned: false,
+    message:
+      'Warning: Each SegmentedControl button should have either an "icon" or a "label", ' +
+      "not both. Please use only one per button.",
   },
 };
 
