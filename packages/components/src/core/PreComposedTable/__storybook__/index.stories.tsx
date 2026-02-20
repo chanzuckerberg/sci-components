@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Args, Meta, StoryObj } from "@storybook/react-webpack5";
-import PreComposedTable from "../index";
+import PreComposedTable, { PreComposedTableRef } from "../index";
 import {
   COLUMNS_DEFINITION,
+  COLUMNS_WITH_CUSTOM_FILTERS,
+  COLUMNS_WITH_SELECTIVE_FILTERS,
   DataType,
   SAMPLE_DATA,
   TABLE_ON_ROW_SELECT_OPTIONS,
 } from "./constants";
+import Button from "src/core/Button";
 
 export default {
   argTypes: {
@@ -60,6 +63,11 @@ export default {
       control: "inline-radio",
       description: "Style of the table",
       options: ["lined", "striped"],
+    },
+    tableOptions: {
+      control: "object",
+      description:
+        "Pass-through TanStack Table options. Any option from useReactTable can be provided here (e.g. autoResetPageIndex, globalFilterFn, meta, etc.).",
     },
     tableRowProps: {
       control: "object",
@@ -134,6 +142,195 @@ export const FixedWidth: Story = {
     enableSorting: true,
     paginationConfig: { pageSize: 10 },
     tableWidth: "600px",
+  },
+  render: ({ data: _data, columns: _columns, ...args }: Args) => (
+    <PreComposedTable data={_data} columns={_columns} {...args} />
+  ),
+};
+
+const ColumnFilteringDemo = () => {
+  const [columnFilters, setColumnFilters] = useState<
+    { id: string; value: unknown }[]
+  >([]);
+
+  return (
+    <PreComposedTable<DataType>
+      data={SAMPLE_DATA}
+      columns={COLUMNS_DEFINITION}
+      enableColumnFiltering
+      enableSorting
+      tableWidth="100%"
+      tableOptions={{
+        onColumnFiltersChange: (updater) => {
+          const next =
+            typeof updater === "function" ? updater(columnFilters) : updater;
+          setColumnFilters(next);
+          console.log("Column filters changed:", next);
+        },
+        state: { columnFilters },
+      }}
+    />
+  );
+};
+
+export const WithColumnFiltering: Story = {
+  render: () => <ColumnFilteringDemo />,
+};
+
+export const WithSelectiveColumnFiltering: Story = {
+  args: {
+    columns: COLUMNS_WITH_SELECTIVE_FILTERS,
+    data: SAMPLE_DATA,
+    enableColumnFiltering: true,
+    enablePagination: false,
+    enableRowSelection: true,
+    enableSorting: true,
+    tableWidth: "100%",
+  },
+  render: ({ data: _data, columns: _columns, ...args }: Args) => (
+    <PreComposedTable data={_data} columns={_columns} {...args} />
+  ),
+};
+
+const TableActionsDemo = () => {
+  const tableRef = useRef<PreComposedTableRef<DataType>>(null);
+
+  return (
+    <div>
+      <div style={{ marginBottom: 16 }}>
+        <p style={{ margin: "0 0 8px" }}>
+          Use the <code>ref</code> prop to access the underlying TanStack Table
+          instance. This gives you full control over sorting, filtering,
+          pagination, row selection, and more.
+        </p>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <Button
+            sdsStyle="outline"
+            sdsType="primary"
+            size="small"
+            onClick={() => tableRef.current?.table.resetColumnFilters()}
+          >
+            Clear All Filters
+          </Button>
+          <Button
+            sdsStyle="outline"
+            sdsType="primary"
+            size="small"
+            onClick={() => tableRef.current?.table.resetSorting()}
+          >
+            Reset Sorting
+          </Button>
+          <Button
+            sdsStyle="outline"
+            sdsType="primary"
+            size="small"
+            onClick={() => tableRef.current?.table.toggleAllRowsSelected(true)}
+          >
+            Select All Rows
+          </Button>
+          <Button
+            sdsStyle="outline"
+            sdsType="primary"
+            size="small"
+            onClick={() => tableRef.current?.table.toggleAllRowsSelected(false)}
+          >
+            Deselect All Rows
+          </Button>
+          <Button
+            sdsStyle="outline"
+            sdsType="secondary"
+            size="small"
+            onClick={() => {
+              tableRef.current?.table.resetColumnFilters();
+              tableRef.current?.table.resetSorting();
+              tableRef.current?.table.toggleAllRowsSelected(false);
+            }}
+          >
+            Reset Everything
+          </Button>
+        </div>
+      </div>
+      <PreComposedTable<DataType>
+        ref={tableRef}
+        data={SAMPLE_DATA}
+        columns={COLUMNS_DEFINITION}
+        enableColumnFiltering
+        enableSorting
+        enableRowSelection
+        enablePagination
+        paginationConfig={{ pageSize: 5 }}
+        tableWidth="100%"
+      />
+    </div>
+  );
+};
+
+export const WithTableActions: Story = {
+  render: () => <TableActionsDemo />,
+};
+
+const TableOptionsDemo = () => {
+  const tableRef = useRef<PreComposedTableRef<DataType>>(null);
+
+  return (
+    <div>
+      <div style={{ marginBottom: 16 }}>
+        <p style={{ margin: "0 0 8px" }}>
+          Use the <code>tableOptions</code> prop to pass any TanStack Table
+          option directly to the underlying table instance. This example uses{" "}
+          <code>autoResetPageIndex: false</code> so filtering does not jump back
+          to page 1, and <code>debugTable: true</code> to show console output.
+        </p>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <Button
+            sdsStyle="outline"
+            sdsType="primary"
+            size="small"
+            onClick={() => tableRef.current?.table.resetColumnFilters()}
+          >
+            Clear All Filters
+          </Button>
+          <Button
+            sdsStyle="outline"
+            sdsType="primary"
+            size="small"
+            onClick={() => tableRef.current?.table.resetSorting()}
+          >
+            Reset Sorting
+          </Button>
+        </div>
+      </div>
+      <PreComposedTable<DataType>
+        ref={tableRef}
+        data={SAMPLE_DATA}
+        columns={COLUMNS_DEFINITION}
+        enableColumnFiltering
+        enableSorting
+        enableRowSelection
+        enablePagination
+        paginationConfig={{ pageSize: 3 }}
+        tableWidth="100%"
+        tableOptions={{
+          autoResetPageIndex: false,
+          debugTable: true,
+        }}
+      />
+    </div>
+  );
+};
+
+export const WithTableOptions: Story = {
+  render: () => <TableOptionsDemo />,
+};
+
+export const WithCustomColumnFilters: Story = {
+  args: {
+    columns: COLUMNS_WITH_CUSTOM_FILTERS,
+    data: SAMPLE_DATA,
+    enableColumnFiltering: true,
+    enableSorting: true,
+    enableRowSelection: true,
+    tableWidth: "100%",
   },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
