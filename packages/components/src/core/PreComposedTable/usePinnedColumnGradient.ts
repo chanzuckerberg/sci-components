@@ -29,6 +29,13 @@ export function usePinnedColumnGradient<TData extends RowData>(
       lastLeftPinnedColumnId:
         leftPinned.length > 0 ? leftPinned[leftPinned.length - 1].id : null,
     };
+
+    // (masoudmanson): `columns` is included as a dependency even though only
+    // `table.getAllColumns()`is called inside the callback. The TanStack
+    // Table `table` object can be a stable reference that doesn't change
+    // identity when column definitions change, so `columns` acts as a
+    // reactivity signal to ensure this memo recomputes.
+    //
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [table, columns]);
 

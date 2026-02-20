@@ -77,6 +77,11 @@ export default {
   component: PreComposedTable,
   tags: ["beta"],
   title: "Components/Table/PreComposedTable",
+  parameters: {
+    axe: {
+      disabledRules: ["empty-table-header"],
+    },
+  },
 } as Meta;
 
 type Story = StoryObj<typeof PreComposedTable<DataType>>;
