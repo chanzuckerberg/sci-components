@@ -121,6 +121,7 @@ export const StyledTableWrapper = styled.div`
 
       td,
       th {
+        --pinned-gradient-base: transparent;
         --pinned-gradient-bg: ${semanticColors?.base?.backgroundPrimary};
         --pinned-gradient-overlay: transparent;
       }
@@ -140,11 +141,25 @@ export const StyledTableWrapper = styled.div`
       `
         tbody tr:nth-of-type(odd) td,
         tbody tr:nth-of-type(odd) th {
+          --pinned-gradient-base: ${semanticColors?.base?.backgroundPrimary};
           --pinned-gradient-bg: ${semanticColors?.base?.backgroundSecondary};
+        }
+
+        tbody tr:nth-of-type(odd):hover td,
+        tbody tr:nth-of-type(odd):hover th {
+          --pinned-gradient-base: transparent;
+          --pinned-gradient-bg: ${semanticColors?.base?.backgroundPrimary};
         }
 
         tbody tr[aria-selected="true"]:nth-of-type(odd) td,
         tbody tr[aria-selected="true"]:nth-of-type(odd) th {
+          --pinned-gradient-base: transparent;
+          --pinned-gradient-bg: ${semanticColors?.accent?.surfaceSecondary};
+        }
+
+        tbody tr[aria-selected="true"]:nth-of-type(odd):hover td,
+        tbody tr[aria-selected="true"]:nth-of-type(odd):hover th {
+          --pinned-gradient-base: transparent;
           --pinned-gradient-bg: ${semanticColors?.accent?.surfaceSecondary};
         }
       `}
@@ -168,7 +183,11 @@ export const StyledTableWrapper = styled.div`
             var(--pinned-gradient-overlay),
             var(--pinned-gradient-overlay)
           ),
-          linear-gradient(var(--pinned-gradient-bg), var(--pinned-gradient-bg));
+          linear-gradient(var(--pinned-gradient-bg), var(--pinned-gradient-bg)),
+          linear-gradient(
+            var(--pinned-gradient-base),
+            var(--pinned-gradient-base)
+          );
         -webkit-mask-image: linear-gradient(to right, black, transparent);
         mask-image: linear-gradient(to right, black, transparent);
       }
@@ -181,7 +200,11 @@ export const StyledTableWrapper = styled.div`
             var(--pinned-gradient-overlay),
             var(--pinned-gradient-overlay)
           ),
-          linear-gradient(var(--pinned-gradient-bg), var(--pinned-gradient-bg));
+          linear-gradient(var(--pinned-gradient-bg), var(--pinned-gradient-bg)),
+          linear-gradient(
+            var(--pinned-gradient-base),
+            var(--pinned-gradient-base)
+          );
         -webkit-mask-image: linear-gradient(to left, black, transparent);
         mask-image: linear-gradient(to left, black, transparent);
       }

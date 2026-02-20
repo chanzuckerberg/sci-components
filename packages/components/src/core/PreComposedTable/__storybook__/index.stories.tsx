@@ -153,13 +153,14 @@ export const FixedWidth: Story = {
   ),
 };
 
-const ColumnFilteringDemo = () => {
+const ColumnFilteringDemo = (props: Args) => {
   const [columnFilters, setColumnFilters] = useState<
     { id: string; value: unknown }[]
   >([]);
 
   return (
     <PreComposedTable<DataType>
+      {...props}
       data={SAMPLE_DATA}
       columns={COLUMNS_DEFINITION}
       enableColumnFiltering
@@ -179,7 +180,7 @@ const ColumnFilteringDemo = () => {
 };
 
 export const WithColumnFiltering: Story = {
-  render: () => <ColumnFilteringDemo />,
+  render: (props: Args) => <ColumnFilteringDemo {...props} />,
 };
 
 export const WithSelectiveColumnFiltering: Story = {
