@@ -11,6 +11,8 @@ export const StyledPanelHeaderClose = styled("div")`
     align-items: center;
 
     button {
+      height: auto !important;
+      
       svg {
         width: ${iconSizes?.l?.width}px;
         height: ${iconSizes?.l?.height}px;
