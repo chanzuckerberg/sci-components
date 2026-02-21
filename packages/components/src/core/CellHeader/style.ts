@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  focusVisibleA11yStyle,
   fontHeaderS,
   getSemanticColors,
   getSpaces,
@@ -63,7 +62,6 @@ const ShouldTruncate = () => {
 
 export const StyledTableHeader = styled.div`
   ${fontHeaderS}
-  ${focusVisibleA11yStyle}
 
   ${(props: CellHeaderExtraProps) => {
     const { active = false, horizontalAlign = "left", hover = true } = props;
@@ -80,6 +78,7 @@ export const StyledTableHeader = styled.div`
       : semanticColors?.base?.textPrimary;
 
     return `
+      outline: none;
       color: ${defaultColor};
       padding: ${spaces?.m}px !important;
       text-align: ${horizontalAlign};

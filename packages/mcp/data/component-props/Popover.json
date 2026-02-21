@@ -1,133 +1,17 @@
 {
   "Popover": {
     "props": {
-      "open": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": true,
-        "description": "If `true`, the component is shown."
-      },
-      "action": {
-        "type": "\"(instance: PopoverActions) => void\" | \"RefObject<PopoverActions>\"",
-        "isRequired": false,
-        "description": "A ref for imperative actions.\nIt currently only supports updatePosition() action."
-      },
-      "anchorEl": {
-        "type": "\"Element\" | \"() => Element\" | \"PopoverVirtualElement\" | \"() => PopoverVirtualElement\"",
-        "isRequired": false,
-        "description": "An HTML element, [PopoverVirtualElement](/material-ui/react-popover/#virtual-element),\nor a function that returns either.\nIt's used to set the position of the popover."
-      },
       "anchorOrigin": {
         "type": "PopoverOrigin",
         "isRequired": false,
         "description": "This is the point on the anchor where the popover's\n`anchorEl` will attach to. This is not used when the\nanchorReference is 'anchorPosition'.\n\nOptions:\nvertical: [top, center, bottom];\nhorizontal: [left, center, right].",
         "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}"
       },
-      "anchorPosition": {
-        "type": "PopoverPosition",
-        "isRequired": false,
-        "description": "This is the position that may be used to set the position of the popover.\nThe coordinates are relative to the application's client area."
-      },
-      "anchorReference": {
-        "type": "\"anchorEl\" | \"anchorPosition\" | \"none\"",
-        "isRequired": false,
-        "description": "This determines which anchor prop to refer to when setting\nthe position of the popover.",
-        "defaultValue": "anchorEl"
-      },
-      "BackdropComponent": {
-        "type": "\"ComponentClass<BackdropProps, any>\" | \"FunctionComponent<BackdropProps>\"",
-        "isRequired": false,
-        "description": "A backdrop component. This prop enables custom backdrop rendering.\n@deprecated Use `slots.backdrop` instead. While this prop currently works, it will be removed in the next major version.\nUse the `slots.backdrop` prop to make your application ready for the next version of Material UI.",
-        "defaultValue": "styled(Backdrop, {\nname: MuiModal,\nslot: Backdrop,\noverridesResolver: (props, styles) => {\nreturn styles.backdrop;\n},\n})({\nzIndex: -1,\n})"
-      },
-      "BackdropProps": {
-        "type": "Partial<BackdropProps>",
-        "isRequired": false,
-        "description": "Props applied to the [`Backdrop`](/material-ui/api/backdrop/) element.\n@deprecated Use `slotProps.backdrop` instead."
-      },
-      "children": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The content of the component."
-      },
-      "classes": {
-        "type": "Partial<PopoverClasses>",
-        "isRequired": false,
-        "description": "Override or extend the styles applied to the component."
-      },
-      "container": {
-        "type": "\"Element\" | \"() => Element\"",
-        "isRequired": false,
-        "description": "An HTML element, component instance, or function that returns either.\nThe `container` will passed to the Modal component.\n\nBy default, it uses the body of the anchorEl's top-level document object,\nso it's simply `document.body` most of the time."
-      },
-      "disableScrollLock": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "description": "Disable the scroll lock behavior.",
-        "defaultValue": false
-      },
-      "elevation": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The elevation of the popover.",
-        "defaultValue": 8
-      },
-      "marginThreshold": {
-        "type": "number",
-        "isRequired": false,
-        "description": "Specifies how close to the edge of the window the popover can appear.\nIf null, the popover will not be constrained by the window.",
-        "defaultValue": 16
-      },
-      "onClose": {
-        "type": "\"backdropClick\" | \"escapeKeyDown\"",
-        "isRequired": false,
-        "description": "Callback fired when the component requests to be closed.\nThe `reason` parameter can optionally be used to control the response to `onClose`."
-      },
-      "PaperProps": {
-        "type": "Partial<PaperProps<ElementType<any, keyof IntrinsicElements>>>",
-        "isRequired": false,
-        "description": "Props applied to the [`Paper`](/material-ui/api/paper/) element.\n\nThis prop is an alias for `slotProps.paper` and will be overriden by it if both are used.\n@deprecated Use `slotProps.paper` instead.",
-        "defaultValue": {}
-      },
-      "slotProps": {
-        "type": "{ root?: SlotComponentProps",
-        "isRequired": false,
-        "description": "The extra props for the slot components.\nYou can override the existing props or add new ones.",
-        "defaultValue": {}
-      },
-      "slots": {
-        "type": "{ root?: ElementType",
-        "isRequired": false,
-        "description": "The components used for each slot inside.",
-        "defaultValue": {}
-      },
-      "sx": {
-        "type": "\"SystemCssProperties<Theme>\" | \"CSSPseudoSelectorProps<Theme>\" | \"CSSSelectorObjectOrCssVariables<Theme>\" | \"(theme: Theme) => SystemStyleObject<Theme>\" | \"readonly (boolean | SystemStyleObject<Theme> | ((theme: Theme) => SystemStyleObject<Theme>))[]\"",
-        "isRequired": false,
-        "description": "The system prop that allows defining system overrides as well as additional CSS styles."
-      },
       "transformOrigin": {
         "type": "PopoverOrigin",
         "isRequired": false,
         "description": "This is the point on the popover which\nwill attach to the anchor's origin.\n\nOptions:\nvertical: [top, center, bottom, x(px)];\nhorizontal: [left, center, right, x(px)].",
         "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}"
-      },
-      "TransitionComponent": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The component used for the transition.\n[Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.",
-        "defaultValue": "Grow"
-      },
-      "transitionDuration": {
-        "type": "\"number\" | \"{ appear?: number; enter?: number; exit?: number; }\" | \"{ appear?: number; enter?: number; exit?: number; }\" | \"auto\"",
-        "isRequired": false,
-        "description": "Set to 'auto' to automatically calculate transition time based on height.",
-        "defaultValue": "auto"
-      },
-      "TransitionProps": {
-        "type": "TransitionProps",
-        "isRequired": false,
-        "description": "Props applied to the transition element.\nBy default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.",
-        "defaultValue": {}
       }
     }
   }
