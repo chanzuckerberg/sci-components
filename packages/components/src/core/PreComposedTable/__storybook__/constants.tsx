@@ -101,7 +101,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
         primaryText={getValue() as string}
         secondaryText={`${getValue() as string} is a test`}
         shouldShowTooltipOnHover={false}
-        shouldShowUnderlineOnHover={true}
+        shouldShowUnderlineOnHover
         link="https://www.google.com"
         linkComponent="a"
         linkProps={{

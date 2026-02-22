@@ -234,12 +234,12 @@ export const StyledTableData = styled.div`
 
         &:hover {
           ${PrimaryText} {
-            ${shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
+            ${shouldShowUnderlineOnHover ? "text-decoration: underline !important;" : ""}
           }
         }
 
         ${PrimaryText} {
-          ${isRowHovered && shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
+          ${isRowHovered && shouldShowUnderlineOnHover ? "text-decoration: underline !important;" : ""}
         }
     `;
   }}

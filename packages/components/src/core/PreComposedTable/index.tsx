@@ -594,6 +594,7 @@ const PreComposedTableInner = <TData extends RowData>(
                 onMouseLeave={() => setHoveredRowId(null)}
                 selected={row.getIsSelected()}
                 aria-selected={row.getIsSelected()}
+                className="group"
                 {...tableRowProps}
               >
                 {row.getVisibleCells().map((cell: Cell<TData, unknown>) => {
