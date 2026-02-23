@@ -31,6 +31,7 @@ import {
   TableOptions,
   RowData,
   CellContext,
+  Updater,
 } from "@tanstack/react-table";
 
 import Table from "../Table";
@@ -240,6 +241,63 @@ const PreComposedTableInner = <TData extends RowData>(
     ];
   }, [columns, enableRowSelection, shouldPinSelectRowToLeft]);
 
+  const {
+    onSortingChange: externalOnSortingChange,
+    onRowSelectionChange: externalOnRowSelectionChange,
+    onColumnVisibilityChange: externalOnColumnVisibilityChange,
+    onColumnPinningChange: externalOnColumnPinningChange,
+    onGlobalFilterChange: externalOnGlobalFilterChange,
+    onPaginationChange: externalOnPaginationChange,
+  } = tableOptions ?? {};
+
+  const handleSortingChange = useCallback(
+    (updater: Updater<SortingState>) => {
+      setSorting(updater);
+      externalOnSortingChange?.(updater);
+    },
+    [externalOnSortingChange]
+  );
+
+  const handleRowSelectionChange = useCallback(
+    (updater: Updater<RowSelectionState>) => {
+      setRowSelection(updater);
+      externalOnRowSelectionChange?.(updater);
+    },
+    [externalOnRowSelectionChange]
+  );
+
+  const handleColumnVisibilityChange = useCallback(
+    (updater: Updater<VisibilityState>) => {
+      setColumnVisibility(updater);
+      externalOnColumnVisibilityChange?.(updater);
+    },
+    [externalOnColumnVisibilityChange]
+  );
+
+  const handleColumnPinningChange = useCallback(
+    (updater: Updater<ColumnPinningState>) => {
+      setColumnPinning(updater);
+      externalOnColumnPinningChange?.(updater);
+    },
+    [externalOnColumnPinningChange]
+  );
+
+  const handleGlobalFilterChange = useCallback(
+    (updater: Updater<string>) => {
+      setGlobalFilter(updater);
+      externalOnGlobalFilterChange?.(updater);
+    },
+    [externalOnGlobalFilterChange]
+  );
+
+  const handlePaginationChange = useCallback(
+    (updater: Updater<PaginationState>) => {
+      setPagination(updater);
+      externalOnPaginationChange?.(updater);
+    },
+    [externalOnPaginationChange]
+  );
+
   const table = useReactTable({
     ...tableOptions,
     columns: tableColumns,
@@ -252,12 +310,12 @@ const PreComposedTableInner = <TData extends RowData>(
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    onColumnPinningChange: setColumnPinning,
-    onColumnVisibilityChange: setColumnVisibility,
-    onGlobalFilterChange: setGlobalFilter,
-    onPaginationChange: setPagination,
-    onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
+    onColumnPinningChange: handleColumnPinningChange,
+    onColumnVisibilityChange: handleColumnVisibilityChange,
+    onGlobalFilterChange: handleGlobalFilterChange,
+    onPaginationChange: handlePaginationChange,
+    onRowSelectionChange: handleRowSelectionChange,
+    onSortingChange: handleSortingChange,
     state: {
       columnPinning,
       columnVisibility,
