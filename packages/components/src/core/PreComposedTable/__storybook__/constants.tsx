@@ -647,3 +647,24 @@ export const TABLE_ON_ROW_SELECT_OPTIONS = [
   },
   undefined,
 ];
+
+export const PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS = [
+  "data",
+  "border",
+  "tableWidth",
+  "tableRowProps",
+  "columns",
+  "tableOptions",
+  "onRowSelect",
+  "paginationConfig",
+  "shouldPinSelectRowToLeft",
+  "sdsStyle",
+  "enableColumnFiltering",
+  "enableGlobalFiltering",
+  "enablePagination",
+  "enableRowSelection",
+  "enableSorting",
+  "enableRowPinning",
+  "tableMaxHeight",
+  "enableStickyHeader",
+];

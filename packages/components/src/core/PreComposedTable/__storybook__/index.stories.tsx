@@ -6,6 +6,7 @@ import {
   COLUMNS_WITH_CUSTOM_FILTERS,
   COLUMNS_WITH_SELECTIVE_FILTERS,
   DataType,
+  PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
   SAMPLE_DATA,
   TABLE_ON_ROW_SELECT_OPTIONS,
 } from "./constants";
@@ -116,6 +117,11 @@ export const WithGlobalFiltering: Story = {
     enableSorting: true,
     tableWidth: "100%",
   },
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
+  },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
   ),
@@ -132,6 +138,11 @@ export const WithPagination: Story = {
     paginationConfig: { pageSize: 3 },
     tableWidth: "100%",
   },
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
+  },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
   ),
@@ -147,6 +158,11 @@ export const FixedWidth: Story = {
     enableSorting: true,
     paginationConfig: { pageSize: 10 },
     tableWidth: "600px",
+  },
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
   },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
@@ -180,6 +196,11 @@ const ColumnFilteringDemo = (props: Args) => {
 };
 
 export const WithColumnFiltering: Story = {
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
+  },
   render: (props: Args) => <ColumnFilteringDemo {...props} />,
 };
 
@@ -193,12 +214,17 @@ export const WithSelectiveColumnFiltering: Story = {
     enableSorting: true,
     tableWidth: "100%",
   },
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
+  },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
   ),
 };
 
-const TableActionsDemo = () => {
+const TableActionsDemo = (props: Args) => {
   const tableRef = useRef<PreComposedTableRef<DataType>>(null);
 
   return (
@@ -266,16 +292,22 @@ const TableActionsDemo = () => {
         enablePagination
         paginationConfig={{ pageSize: 5 }}
         tableWidth="100%"
+        {...props}
       />
     </div>
   );
 };
 
 export const WithTableActions: Story = {
-  render: () => <TableActionsDemo />,
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
+  },
+  render: (props: Args) => <TableActionsDemo {...props} />,
 };
 
-const TableOptionsDemo = () => {
+const TableOptionsDemo = (props: Args) => {
   const tableRef = useRef<PreComposedTableRef<DataType>>(null);
 
   return (
@@ -320,13 +352,19 @@ const TableOptionsDemo = () => {
           autoResetPageIndex: false,
           debugTable: true,
         }}
+        {...props}
       />
     </div>
   );
 };
 
 export const WithTableOptions: Story = {
-  render: () => <TableOptionsDemo />,
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
+  },
+  render: (props: Args) => <TableOptionsDemo {...props} />,
 };
 
 export const WithCustomColumnFilters: Story = {
@@ -337,6 +375,11 @@ export const WithCustomColumnFilters: Story = {
     enableSorting: true,
     enableRowSelection: true,
     tableWidth: "100%",
+  },
+  parameters: {
+    controls: {
+      exclude: PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS,
+    },
   },
   render: ({ data: _data, columns: _columns, ...args }: Args) => (
     <PreComposedTable data={_data} columns={_columns} {...args} />
