@@ -20,18 +20,6 @@ export default {
       mapping: HISTOGRAM_TOOLTIP_OPTIONS,
       options: Object.keys(HISTOGRAM_TOOLTIP_OPTIONS),
     },
-    barCategoryGap: {
-      control: { type: "text" },
-      description: "Gap between bar categories (e.g., '0%', '20%')",
-    },
-    barGap: {
-      control: { type: "text" },
-      description: "Gap between bars in same category",
-    },
-    barWidth: {
-      control: { type: "text" },
-      description: "Width of bars (e.g., '80%', 20)",
-    },
     barColor: {
       control: { type: "color" },
       description: "Color of the bars",
@@ -96,8 +84,6 @@ export const Default = {
   args: {
     echartsRendererMode: "svg",
     tooltip: HISTOGRAM_TOOLTIP_OPTIONS[1],
-    barCategoryGap: "0%",
-    barGap: "0%",
     showTitle: true,
     width: 800,
     height: 400,

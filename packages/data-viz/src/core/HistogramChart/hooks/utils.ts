@@ -1,11 +1,15 @@
 import {
   AxisPointerComponentOption,
   BarSeriesOption,
+  CustomSeriesRenderItemParams,
+  CustomSeriesRenderItemAPI,
   DataZoomComponentOption,
   DatasetComponentOption,
   ECharts,
   EChartsOption,
 } from "echarts";
+
+export type HistogramBin = [binStart: number, binEnd: number, count: number];
 
 export interface CreateChartOptionsProps {
   /**
@@ -15,9 +19,9 @@ export interface CreateChartOptionsProps {
   axisPointer?: EChartsOption["axisPointer"];
   /**
    * The data array for the histogram
-   * Can be array of numbers [1, 2, 3] or array of [x, y] pairs [[0, 10], [1, 20]]
+   * Array of [binStart, binEnd, count] triples, e.g. [[0, 10, 5], [10, 20, 12]]
    */
-  data?: DatasetComponentOption["source"];
+  data?: HistogramBin[];
   /**
    * For zooming/panning large datasets
    * https://echarts.apache.org/en/option.html#dataZoom
@@ -108,7 +112,7 @@ export interface CreateChartOptionsProps {
   yAxisTitle?: string;
   /**
    * Reference/background distribution data for comparison
-   * Same format as `data` - array of [x, y] pairs
+   * Array of [binStart, binEnd, count] triples — can have different bin sizes than `data`
    */
   referenceData?: DatasetComponentOption["source"];
 
@@ -142,6 +146,57 @@ function normalizeOption<T>(
   return Array.isArray(option) ? option[0] : option;
 }
 
+function createRenderItem(fillColor: string) {
+  return (
+    params: CustomSeriesRenderItemParams,
+    api: CustomSeriesRenderItemAPI
+  ) => {
+    const x0 = api.value!(0) as number;
+    const x1 = api.value!(1) as number;
+    const y = api.value!(2) as number;
+
+    const pBottom = api.coord!([x0, 0]);
+    const pTop = api.coord!([x0, y]);
+    const pRight = api.coord!([x1, 0]);
+
+    const left = Math.round(pBottom[0]);
+    const right = Math.round(pRight[0]);
+    const bottom = Math.round(pBottom[1]);
+    const top = Math.round(pTop[1]);
+
+    const width = Math.max(1, right - left);
+    const height = Math.max(0, bottom - top);
+
+    return {
+      type: "rect" as const,
+      shape: { x: left, y: top, width, height },
+      style: api.style!({
+        fill: fillColor,
+        stroke: fillColor,
+        lineWidth: 1,
+      }),
+    };
+  };
+}
+
+function computeXAxisBounds(
+  data: HistogramBin[] | undefined,
+  referenceData: DatasetComponentOption["source"] | undefined
+): { min: number; max: number } | null {
+  if (!Array.isArray(data) || data.length === 0) return null;
+
+  let xMin = data[0][0];
+  let xMax = data[data.length - 1][1];
+
+  if (Array.isArray(referenceData) && referenceData.length > 0) {
+    const refBins = referenceData as HistogramBin[];
+    xMin = Math.min(xMin, refBins[0][0]);
+    xMax = Math.max(xMax, refBins[refBins.length - 1][1]);
+  }
+
+  return { min: xMin, max: xMax };
+}
+
 export function createChartOptions(
   props: CreateChartOptionsProps
 ): EChartsOption {
@@ -152,14 +207,12 @@ export function createChartOptions(
     emphasis,
     grid: gridProp,
     itemStyle,
-    barWidth,
     barColor,
-    barGap = "0%",
-    barCategoryGap = "0%",
     options,
-    xAxisData,
     chartTitle,
     showTitle,
+    showXAxisGrid,
+    showYAxisGrid,
     referenceData,
     referenceColor,
     threshold,
@@ -169,8 +222,8 @@ export function createChartOptions(
     defaultAxisPointer,
     defaultDataZoom,
     defaultEmphasis,
-    defaultGrid,
     defaultXAxis,
+    defaultGrid,
     defaultYAxis,
   } = generateDefaultValues(props);
 
@@ -186,6 +239,15 @@ export function createChartOptions(
     ...optionsRest
   } = options || {};
 
+  // Snap x-axis bounds to the data range so that every bar fits fully inside
+  // the grid area. Without this, ECharts auto-picks "nice" round tick values
+  // which may end before the last bin edge, causing a clipped 1px line artifact.
+  const xAxisBounds = computeXAxisBounds(data, referenceData);
+  if (xAxisBounds) {
+    defaultXAxis.min = xAxisBounds.min;
+    defaultXAxis.max = xAxisBounds.max;
+  }
+
   return {
     animation: false,
     title:
@@ -194,21 +256,18 @@ export function createChartOptions(
         : chartTitle,
     axisPointer: axisPointer || optionsAxisPointer || defaultAxisPointer,
     dataZoom: dataZoom || optionsDataZoom || defaultDataZoom,
-    dataset: data ? { source: data } : undefined,
     grid: customGrid || defaultGrid,
     series: [
       // Reference distribution (background) - only if referenceData provided
       ...(referenceData
         ? [
             {
-              type: "bar" as const,
+              type: "custom" as const,
               data: referenceData,
-              barWidth,
-              barGap: "0%",
-              barCategoryGap: "0%",
-              itemStyle: {
-                color: referenceColor || "rgba(128, 128, 128, 0.3)",
-              },
+              clip: true,
+              renderItem: createRenderItem(
+                (referenceColor as string) || "rgba(128, 128, 128, 0.3)"
+              ),
               emphasis: { disabled: true },
               z: 1,
             },
@@ -217,39 +276,43 @@ export function createChartOptions(
       // Main distribution (foreground)
       Object.assign(
         {
-          emphasis: Object.assign({}, defaultEmphasis, emphasis),
-          itemStyle: {
-            ...(barColor && { color: barColor }),
-            ...itemStyle,
-          },
-          barWidth,
-          barGap: referenceData ? "-100%" : barGap,
-          barCategoryGap,
+          type: "custom" as const,
           data: data,
+          clip: true,
+          renderItem: createRenderItem(
+            (itemStyle?.color as string) || (barColor as string) || "#7a7a7a"
+          ),
+          emphasis: Object.assign({}, defaultEmphasis, emphasis),
           z: 2,
-          ...(threshold && {
-            markArea: {
-              silent: true,
-              itemStyle: {
-                color: threshold.color || "rgba(200, 200, 200, 0.3)",
-              },
-              data: [[{ yAxis: threshold.min }, { yAxis: threshold.max }]],
-            },
-          }),
+          markArea: threshold
+            ? {
+                silent: true,
+                itemStyle: {
+                  color: threshold.color || "rgba(200, 200, 200, 0.3)",
+                },
+                data: [[{ yAxis: threshold.min }, { yAxis: threshold.max }]],
+              }
+            : { data: [] },
         },
-        normalizeOption(optionsSeries),
-        { type: "bar" }
+        normalizeOption(optionsSeries)
       ),
     ] as EChartsOption["series"],
     xAxis: [
       Object.assign(
         {},
         defaultXAxis,
-        xAxisData ? { data: xAxisData } : {},
+        { splitLine: { show: showXAxisGrid ?? true } },
         normalizeOption(optionsXAxis)
       ),
     ],
-    yAxis: [Object.assign({}, defaultYAxis, normalizeOption(optionsYAxis))],
+    yAxis: [
+      Object.assign(
+        {},
+        defaultYAxis,
+        { splitLine: { show: showYAxisGrid ?? true } },
+        normalizeOption(optionsYAxis)
+      ),
+    ],
     ...optionsRest,
   };
 }
@@ -267,7 +330,7 @@ function generateDefaultValues(props: CreateChartOptionsProps) {
     triggerOn: "mousemove",
   } as AxisPointerComponentOption;
 
-  const defaultXAxis = {
+  const defaultXAxis: Record<string, unknown> = {
     type: "value" as const,
     axisLine: { show: true },
     axisTick: { show: true },

@@ -16,8 +16,7 @@ import { CreateChartOptionsProps } from "./hooks/utils";
 import { ChartContainer } from "./style";
 
 export interface HistogramChartProps
-  extends HTMLAttributes<HTMLDivElement>,
-    CreateChartOptionsProps {
+  extends HTMLAttributes<HTMLDivElement>, CreateChartOptionsProps {
   echartsRendererMode?: "svg" | "canvas";
 }
 
@@ -35,6 +34,8 @@ const HistogramChart = forwardRef(
       barColor,
       chartTitle,
       showTitle,
+      showXAxisGrid,
+      showYAxisGrid,
       data,
       dataZoom,
       echartsRendererMode = "svg",
@@ -154,6 +155,8 @@ const HistogramChart = forwardRef(
       chart,
       chartTitle,
       showTitle,
+      showXAxisGrid,
+      showYAxisGrid,
       data,
       dataZoom,
       emphasis,
