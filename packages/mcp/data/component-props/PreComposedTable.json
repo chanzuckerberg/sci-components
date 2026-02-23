@@ -2,41 +2,35 @@
   "PreComposedTable": {
     "props": {
       "border": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": true
+        "type": "any",
+        "isRequired": false
       },
       "columns": {
-        "type": "ColumnDef<TData>[]",
-        "isRequired": true
+        "type": "any",
+        "isRequired": false
       },
       "enableColumnFiltering": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": false
+        "type": "any",
+        "isRequired": false
       },
       "enableGlobalFiltering": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": false
+        "type": "any",
+        "isRequired": false
       },
       "enablePagination": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": false
+        "type": "any",
+        "isRequired": false
       },
       "enableRowSelection": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": false
+        "type": "any",
+        "isRequired": false
       },
       "enableSorting": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": false
+        "type": "any",
+        "isRequired": false
       },
       "onRowSelect": {
-        "type": "(selectedRows: TData[]) => void",
+        "type": "any",
         "isRequired": false
       },
       "paginationConfig": {
@@ -44,17 +38,19 @@
         "isRequired": false
       },
       "shouldPinSelectRowToLeft": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
-        "defaultValue": true
+        "type": "any",
+        "isRequired": false
       },
       "sdsStyle": {
-        "type": "\"lined\" | \"striped\"",
-        "isRequired": false,
-        "defaultValue": "lined"
+        "type": "any",
+        "isRequired": false
+      },
+      "tableOptions": {
+        "type": "any",
+        "isRequired": false
       },
       "tableRowProps": {
-        "type": "Partial<TableRowProps>",
+        "type": "any",
         "isRequired": false
       }
     }

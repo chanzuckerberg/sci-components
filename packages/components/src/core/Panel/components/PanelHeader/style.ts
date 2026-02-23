@@ -3,8 +3,7 @@ import { CommonThemeProps, getSpaces } from "src/core/styles";
 import { PanelHeaderProps } from ".";
 
 export interface ExtraPanelHeaderProps
-  extends CommonThemeProps,
-    PanelHeaderProps {}
+  extends CommonThemeProps, PanelHeaderProps {}
 
 export const StyledPanelHeader = styled("div")`
   ${(props: ExtraPanelHeaderProps) => {

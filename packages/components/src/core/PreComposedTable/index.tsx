@@ -4,6 +4,8 @@ import React, {
   useEffect,
   createContext,
   useRef,
+  useImperativeHandle,
+  forwardRef,
   Fragment,
   CSSProperties,
   useCallback,
@@ -15,6 +17,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   flexRender,
+  Column,
   ColumnDef,
   SortingState,
   RowSelectionState,
@@ -25,8 +28,10 @@ import {
   Row,
   Cell,
   Table as TanstackTable,
+  TableOptions,
   RowData,
   CellContext,
+  Updater,
 } from "@tanstack/react-table";
 
 import Table from "../Table";
@@ -42,12 +47,16 @@ import {
   StyledTableWrapper,
   StyledInputCheckbox,
   StyledSelectionCell,
+  StyledFilterRow,
+  StyledFilterCell,
 } from "./style";
 import {
   calculateTableSizing,
   getCommonPinningStyles,
   SELECT_COLUMN_ID,
 } from "./utils";
+import InputSearch from "../InputSearch";
+import { usePinnedColumnGradient } from "./usePinnedColumnGradient";
 
 // Declaration merging to add pinning to ColumnDef.meta
 declare module "@tanstack/react-table" {
@@ -58,6 +67,10 @@ declare module "@tanstack/react-table" {
     isGrow?: boolean;
     widthPercentage?: number;
     headerCellProps?: Partial<CellHeaderProps>;
+    filterComponent?: (props: {
+      column: Column<TData, unknown>;
+      table: TanstackTable<TData>;
+    }) => React.ReactNode;
   }
 }
 
@@ -80,6 +93,13 @@ export interface PreComposedTableProps<TData> {
   tableRowProps?: Partial<TableRowProps>;
   onRowSelect?: (selectedRows: TData[]) => void;
   sdsStyle?: "lined" | "striped";
+  tableOptions?: Partial<
+    Omit<TableOptions<TData & RowData>, "data" | "columns" | "getCoreRowModel">
+  >;
+}
+
+export interface PreComposedTableRef<TData extends RowData = RowData> {
+  table: TanstackTable<TData>;
 }
 
 // Create context for row hover state
@@ -87,24 +107,28 @@ export const RowHoverContext = createContext<{ isRowHovered: boolean }>({
   isRowHovered: false,
 });
 
-const PreComposedTable = <TData extends RowData>({
-  data,
-  columns,
-  border = true,
-  enableSorting = false,
-  enableRowSelection = false,
-  shouldPinSelectRowToLeft = true,
-  enablePagination = false,
-  enableColumnFiltering = false,
-  enableGlobalFiltering = false,
-  paginationConfig,
-  className,
-  style,
-  tableWidth = "100%",
-  onRowSelect,
-  tableRowProps,
-  sdsStyle = "lined",
-}: PreComposedTableProps<TData>) => {
+const PreComposedTableInner = <TData extends RowData>(
+  {
+    data,
+    columns,
+    border = true,
+    enableSorting = false,
+    enableRowSelection = false,
+    shouldPinSelectRowToLeft = true,
+    enablePagination = false,
+    enableColumnFiltering = false,
+    enableGlobalFiltering = false,
+    paginationConfig,
+    className,
+    style,
+    tableWidth = "100%",
+    onRowSelect,
+    tableRowProps,
+    sdsStyle = "lined",
+    tableOptions,
+  }: PreComposedTableProps<TData>,
+  ref: React.Ref<PreComposedTableRef<TData>>
+) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -217,10 +241,67 @@ const PreComposedTable = <TData extends RowData>({
     ];
   }, [columns, enableRowSelection, shouldPinSelectRowToLeft]);
 
+  const {
+    onSortingChange: externalOnSortingChange,
+    onRowSelectionChange: externalOnRowSelectionChange,
+    onColumnVisibilityChange: externalOnColumnVisibilityChange,
+    onColumnPinningChange: externalOnColumnPinningChange,
+    onGlobalFilterChange: externalOnGlobalFilterChange,
+    onPaginationChange: externalOnPaginationChange,
+  } = tableOptions ?? {};
+
+  const handleSortingChange = useCallback(
+    (updater: Updater<SortingState>) => {
+      setSorting(updater);
+      externalOnSortingChange?.(updater);
+    },
+    [externalOnSortingChange]
+  );
+
+  const handleRowSelectionChange = useCallback(
+    (updater: Updater<RowSelectionState>) => {
+      setRowSelection(updater);
+      externalOnRowSelectionChange?.(updater);
+    },
+    [externalOnRowSelectionChange]
+  );
+
+  const handleColumnVisibilityChange = useCallback(
+    (updater: Updater<VisibilityState>) => {
+      setColumnVisibility(updater);
+      externalOnColumnVisibilityChange?.(updater);
+    },
+    [externalOnColumnVisibilityChange]
+  );
+
+  const handleColumnPinningChange = useCallback(
+    (updater: Updater<ColumnPinningState>) => {
+      setColumnPinning(updater);
+      externalOnColumnPinningChange?.(updater);
+    },
+    [externalOnColumnPinningChange]
+  );
+
+  const handleGlobalFilterChange = useCallback(
+    (updater: Updater<string>) => {
+      setGlobalFilter(updater);
+      externalOnGlobalFilterChange?.(updater);
+    },
+    [externalOnGlobalFilterChange]
+  );
+
+  const handlePaginationChange = useCallback(
+    (updater: Updater<PaginationState>) => {
+      setPagination(updater);
+      externalOnPaginationChange?.(updater);
+    },
+    [externalOnPaginationChange]
+  );
+
   const table = useReactTable({
+    ...tableOptions,
     columns: tableColumns,
     data,
-    debugTable: true,
     enableColumnFilters: enableColumnFiltering,
     enableGlobalFilter: enableGlobalFiltering,
     enableRowSelection: enableRowSelection,
@@ -229,12 +310,12 @@ const PreComposedTable = <TData extends RowData>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    onColumnPinningChange: setColumnPinning,
-    onColumnVisibilityChange: setColumnVisibility,
-    onGlobalFilterChange: setGlobalFilter,
-    onPaginationChange: setPagination,
-    onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
+    onColumnPinningChange: handleColumnPinningChange,
+    onColumnVisibilityChange: handleColumnVisibilityChange,
+    onGlobalFilterChange: handleGlobalFilterChange,
+    onPaginationChange: handlePaginationChange,
+    onRowSelectionChange: handleRowSelectionChange,
+    onSortingChange: handleSortingChange,
     state: {
       columnPinning,
       columnVisibility,
@@ -242,8 +323,11 @@ const PreComposedTable = <TData extends RowData>({
       pagination,
       rowSelection,
       sorting,
+      ...tableOptions?.state,
     },
   });
+
+  useImperativeHandle(ref, () => ({ table }), [table]);
 
   const createInitialPinning = useCallback(() => {
     const initialPinning = {} as ColumnPinningState;
@@ -308,6 +392,11 @@ const PreComposedTable = <TData extends RowData>({
     };
   }, [headers, table]);
 
+  const { tableWrapperRef, getPinnedEdge } = usePinnedColumnGradient(
+    table,
+    tableColumns
+  );
+
   const renderCell = (cell: Cell<TData, unknown>, row: Row<TData>) => {
     const isRowHovered = hoveredRowId === row.id;
     const isPinned = cell.column.columnDef.meta?.pinning;
@@ -364,6 +453,7 @@ const PreComposedTable = <TData extends RowData>({
       return (
         <RowHoverContext.Provider key={cell.id} value={{ isRowHovered }}>
           <td
+            data-pinned-edge={getPinnedEdge(cell.column.id)}
             style={{
               ...pinnedStyle,
               width: `${cell.column.getSize()}px`,
@@ -390,21 +480,87 @@ const PreComposedTable = <TData extends RowData>({
     );
   };
 
+  const renderFilterCell = (header: Header<TData, unknown>) => {
+    const column = header.column;
+    const isPinned = column.columnDef.meta?.pinning;
+    const pinnedStyle = getCommonPinningStyles(column, table);
+    const isSelectionColumn = column.id === SELECT_COLUMN_ID;
+
+    const cellStyle = {
+      ...(isPinned ? pinnedStyle : {}),
+      width: `${column.getSize()}px`,
+    };
+
+    const pinnedEdge = isPinned ? getPinnedEdge(column.id) : undefined;
+
+    const customFilter = column.columnDef.meta?.filterComponent;
+    if (customFilter && !isSelectionColumn) {
+      return (
+        <StyledFilterCell
+          key={`filter-${header.id}`}
+          data-pinned-edge={pinnedEdge}
+          style={cellStyle}
+        >
+          {customFilter({ column, table })}
+        </StyledFilterCell>
+      );
+    }
+
+    const canFilter = column.getCanFilter() && !isSelectionColumn;
+    if (!canFilter) {
+      return (
+        <StyledFilterCell
+          key={`filter-${header.id}`}
+          data-pinned-edge={pinnedEdge}
+          style={cellStyle}
+        />
+      );
+    }
+
+    return (
+      <StyledFilterCell
+        key={`filter-${header.id}`}
+        data-pinned-edge={pinnedEdge}
+        style={cellStyle}
+      >
+        <InputSearch
+          id={`filter-${column.id}`}
+          label={`Filter ${typeof column.columnDef.header === "string" ? column.columnDef.header : column.id}`}
+          placeholder="Search"
+          sdsStyle="square"
+          value={(column.getFilterValue() as string) ?? ""}
+          onChange={(e) => column.setFilterValue(e.target.value || undefined)}
+        />
+      </StyledFilterCell>
+    );
+  };
+
+  const renderFilterRow = () => {
+    const flatHeaders = table.getFlatHeaders();
+    return (
+      <StyledFilterRow>
+        {flatHeaders.map((header) => renderFilterCell(header))}
+      </StyledFilterRow>
+    );
+  };
+
   const renderHeader = (header: Header<TData, unknown>) => {
     const isSortable = enableSorting && header.column.getCanSort();
     const isSorted = header.column.getIsSorted();
     const sortDirection = header.column.getIsSorted() as "asc" | "desc";
     const isPinned = header.column.columnDef.meta?.pinning;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { ref, ...headerCellProps } =
+    const { ref: headerCellRef, ...headerCellProps } =
       header.column.columnDef.meta?.headerCellProps || {};
     const pinnedStyle = getCommonPinningStyles(header.column, table);
+    const pinnedEdge = isPinned ? getPinnedEdge(header.column.id) : undefined;
 
     if (typeof header.column.columnDef.header === "string") {
       return (
         <CellHeader
           key={header.id}
           colSpan={header.colSpan}
+          data-pinned-edge={pinnedEdge}
           style={{
             ...(isPinned ? pinnedStyle : {}),
             width: `${header.getSize()}px`,
@@ -421,6 +577,7 @@ const PreComposedTable = <TData extends RowData>({
     } else if (header.column.columnDef.header) {
       return flexRender(header.column.columnDef.header, {
         ...header.getContext(),
+        "data-pinned-edge": pinnedEdge,
         key: header.id,
         style: {
           ...(isPinned ? pinnedStyle : {}),
@@ -433,6 +590,7 @@ const PreComposedTable = <TData extends RowData>({
         <CellHeader
           key={header.id}
           colSpan={header.colSpan}
+          data-pinned-edge={pinnedEdge}
           style={{
             ...(isPinned ? pinnedStyle : {}),
             width: `${header.getSize()}px`,
@@ -467,9 +625,15 @@ const PreComposedTable = <TData extends RowData>({
         </div>
       )}
 
-      <StyledTableWrapper border={border} sdsStyle={sdsStyle}>
+      <StyledTableWrapper
+        ref={tableWrapperRef as React.Ref<HTMLDivElement>}
+        border={border}
+        sdsStyle={sdsStyle}
+      >
         <Table>
-          <TableHeader>
+          <TableHeader
+            filterRow={enableColumnFiltering ? renderFilterRow() : undefined}
+          >
             {table.getHeaderGroups().map((headerGroup) => {
               return (
                 <Fragment key={headerGroup.id}>
@@ -488,6 +652,7 @@ const PreComposedTable = <TData extends RowData>({
                 onMouseLeave={() => setHoveredRowId(null)}
                 selected={row.getIsSelected()}
                 aria-selected={row.getIsSelected()}
+                className="group"
                 {...tableRowProps}
               >
                 {row.getVisibleCells().map((cell: Cell<TData, unknown>) => {
@@ -515,5 +680,13 @@ const PreComposedTable = <TData extends RowData>({
     </StyledTableContainer>
   );
 };
+
+const PreComposedTable = forwardRef(PreComposedTableInner) as <
+  TData extends RowData,
+>(
+  props: PreComposedTableProps<TData> & {
+    ref?: React.Ref<PreComposedTableRef<TData>>;
+  }
+) => JSX.Element;
 
 export default PreComposedTable;

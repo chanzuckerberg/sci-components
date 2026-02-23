@@ -1,10 +1,5 @@
 import styled from "@emotion/styled";
-import {
-  CommonThemeProps,
-  focusVisibleA11yStyle,
-  fontBodyS,
-  getSpaces,
-} from "src/core/styles";
+import { CommonThemeProps, fontBodyS, getSpaces } from "src/core/styles";
 
 export interface CellComponentExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";
@@ -13,13 +8,13 @@ export interface CellComponentExtraProps extends CommonThemeProps {
 
 export const StyledCellComponentData = styled.div`
   ${fontBodyS}
-  ${focusVisibleA11yStyle}
 
   ${(props: CellComponentExtraProps) => {
     const spaces = getSpaces(props);
     const { horizontalAlign = "left", verticalAlign = "top" } = props;
 
     return `
+      outline: none;
       align-items: center;
       text-align: ${horizontalAlign};
       vertical-align: ${verticalAlign};

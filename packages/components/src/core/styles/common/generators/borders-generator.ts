@@ -31,7 +31,7 @@ export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
         "default"
       ),
       hover: createBorder("indigo", isDarkMode ? 700 : 600, "solid", "default"),
-      open: createBorder("indigo", isDarkMode ? 600 : 500, "solid", "default"),
+      open: createBorder("indigo", isDarkMode ? 800 : 700, "solid", "default"),
       pressed: createBorder(
         "indigo",
         isDarkMode ? 800 : 700,
@@ -40,13 +40,13 @@ export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
       ),
       selected: createBorder(
         "indigo",
-        isDarkMode ? 600 : 500,
+        isDarkMode ? 800 : 700,
         "solid",
         "default"
       ),
     },
     base: {
-      default: createBorder("gray", 500, "solid", "default"),
+      default: createBorder("gray", 600, "solid", "default"),
       disabled: createBorder("gray", 300, "solid", "default"),
       divider: createBorder("gray", 200, "solid", "default"),
       dividerOnDark: createBorder(
@@ -81,9 +81,9 @@ export const createAppThemeBorders = (colors: Colors, isDarkMode: boolean) => {
       thick: createBorder("red", 600, "solid", "thick"),
     },
     neutral: {
-      default: createBorder("gray", 500, "solid", "default"),
-      extraThick: createBorder("gray", 500, "solid", "extraThick"),
-      thick: createBorder("gray", 500, "solid", "thick"),
+      default: createBorder("gray", 700, "solid", "default"),
+      extraThick: createBorder("gray", 700, "solid", "extraThick"),
+      thick: createBorder("gray", 700, "solid", "thick"),
     },
     none: "none",
     notice: {

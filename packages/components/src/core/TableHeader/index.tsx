@@ -4,17 +4,19 @@ import { StyledTableHeader } from "./style";
 
 export interface TableHeaderProps {
   children: React.ReactNode;
+  filterRow?: React.ReactNode;
 }
 
 const TableHeader = forwardRef<HTMLTableElement["tHead"], TableHeaderProps>(
   (props: TableHeaderProps, ref): JSX.Element | null => {
-    const { children } = props;
+    const { children, filterRow } = props;
 
     return (
-      <StyledTableHeader ref={ref} {...props}>
+      <StyledTableHeader ref={ref} hasFilterRow={!!filterRow} {...props}>
         <TableRow hover={false} shouldShowTooltipOnHover={false}>
           {children}
         </TableRow>
+        {filterRow}
       </StyledTableHeader>
     );
   }

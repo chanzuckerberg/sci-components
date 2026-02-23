@@ -118,6 +118,104 @@ export const StyledTableWrapper = styled.div`
           }
         }
       }
+
+      td,
+      th {
+        --pinned-gradient-base: transparent;
+        --pinned-gradient-bg: ${semanticColors?.base?.backgroundPrimary};
+        --pinned-gradient-overlay: transparent;
+      }
+
+      tbody tr:hover td,
+      tbody tr:hover th {
+        --pinned-gradient-overlay: ${semanticColors?.base
+          ?.fillPrimaryInteraction};
+      }
+
+      tbody tr[aria-selected="true"] td,
+      tbody tr[aria-selected="true"] th {
+        --pinned-gradient-bg: ${semanticColors?.accent?.surfaceSecondary};
+      }
+
+      ${sdsStyle === "striped" &&
+      `
+        tbody tr:nth-of-type(odd) td,
+        tbody tr:nth-of-type(odd) th {
+          --pinned-gradient-base: ${semanticColors?.base?.backgroundPrimary};
+          --pinned-gradient-bg: ${semanticColors?.base?.backgroundSecondary};
+        }
+
+        tbody tr:nth-of-type(odd):hover td,
+        tbody tr:nth-of-type(odd):hover th {
+          --pinned-gradient-base: transparent;
+          --pinned-gradient-bg: ${semanticColors?.base?.backgroundPrimary};
+        }
+
+        tbody tr[aria-selected="true"]:nth-of-type(odd) td,
+        tbody tr[aria-selected="true"]:nth-of-type(odd) th {
+          --pinned-gradient-base: transparent;
+          --pinned-gradient-bg: ${semanticColors?.accent?.surfaceSecondary};
+        }
+
+        tbody tr[aria-selected="true"]:nth-of-type(odd):hover td,
+        tbody tr[aria-selected="true"]:nth-of-type(odd):hover th {
+          --pinned-gradient-base: transparent;
+          --pinned-gradient-bg: ${semanticColors?.accent?.surfaceSecondary};
+        }
+      `}
+
+      [data-pinned-edge]::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 24px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      [data-pinned-edge="left"]::after {
+        right: 0;
+        transform: translateX(100%);
+        background:
+          linear-gradient(
+            var(--pinned-gradient-overlay),
+            var(--pinned-gradient-overlay)
+          ),
+          linear-gradient(var(--pinned-gradient-bg), var(--pinned-gradient-bg)),
+          linear-gradient(
+            var(--pinned-gradient-base),
+            var(--pinned-gradient-base)
+          );
+        -webkit-mask-image: linear-gradient(to right, black, transparent);
+        mask-image: linear-gradient(to right, black, transparent);
+      }
+
+      [data-pinned-edge="right"]::after {
+        left: 0;
+        transform: translateX(-100%);
+        background:
+          linear-gradient(
+            var(--pinned-gradient-overlay),
+            var(--pinned-gradient-overlay)
+          ),
+          linear-gradient(var(--pinned-gradient-bg), var(--pinned-gradient-bg)),
+          linear-gradient(
+            var(--pinned-gradient-base),
+            var(--pinned-gradient-base)
+          );
+        -webkit-mask-image: linear-gradient(to left, black, transparent);
+        mask-image: linear-gradient(to left, black, transparent);
+      }
+
+      &[data-scrolled-left="true"] [data-pinned-edge="left"]::after {
+        opacity: 1;
+      }
+
+      &[data-scrolled-right="true"] [data-pinned-edge="right"]::after {
+        opacity: 1;
+      }
     `;
   }}
 `;
@@ -175,4 +273,40 @@ export const StyledPaginationWrapper = styled.div`
 
 export const StyledSelectionCell = styled(CellComponent)`
   line-height: 22px !important;
+`;
+
+export const StyledFilterRow = styled("tr")`
+  ${(props: CommonThemeProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+      border: none;
+      box-shadow: none;
+
+      td, th {
+        background-color: ${semanticColors?.base?.backgroundPrimary};
+      }
+
+      &:after {
+        display: none !important;
+      }
+
+      &:hover {
+        background-color: ${semanticColors?.base?.backgroundPrimary};
+      }
+    `;
+  }}
+`;
+
+export const StyledFilterCell = styled("th")`
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+
+    return `
+      padding: 0 ${spaces?.s}px ${spaces?.s}px;
+      vertical-align: middle;
+      width: 100%;
+    `;
+  }}
 `;

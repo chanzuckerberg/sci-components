@@ -105,11 +105,28 @@ export const StyledHeaderComponent = styled("div")`
       top: 0;
       z-index: 1000;
       background-color: ${semanticColors?.base?.backgroundPrimary};
-      padding-bottom: ${spaces?.xl}px;
+      padding-bottom: ${spaces?.m}px;
+      margin-bottom: ${spaces?.m}px;
       padding-top: ${spaces?.xl}px;
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: center;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: ${spaces?.xl}px;
+        transform: translateY(100%);
+        background: linear-gradient(
+          to bottom,
+          ${semanticColors?.base?.backgroundPrimary},
+          transparent
+        );
+        pointer-events: none;
+      }
     `;
   }}
 `;
