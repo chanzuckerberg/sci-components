@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.5.0...@czi-sds/components@23.6.0) (2026-02-23)
+
+### Features
+
+- **precomposedtable:** added column filtering ([#1099](https://github.com/chanzuckerberg/sci-components/issues/1099)) ([eb54c15](https://github.com/chanzuckerberg/sci-components/commit/eb54c1570c4c0e6169bee93c71eed2c8370048b9))
+
 # [23.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.4.0...@czi-sds/components@23.5.0) (2026-02-14)
 
 ### Bug Fixes
