@@ -49,6 +49,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       disabled,
       classes = EMPTY_OBJECT,
       className,
+      value: propValue,
       ...rest
     } = props;
 
@@ -79,15 +80,22 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       (ref ? ref : inputRef) as React.RefObject<HTMLElement>
     );
 
-    const [value, setValue] = useState<string>("");
+    const [internalValue, setInternalValue] = useState<string>("");
+
+    const isControlled = propValue !== undefined;
+    const value = isControlled ? String(propValue ?? "") : internalValue;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
+      if (!isControlled) {
+        setInternalValue(event.target.value);
+      }
       if (onChange) onChange(event);
     };
 
     const clearInput = () => {
-      setValue("");
+      if (!isControlled) {
+        setInternalValue("");
+      }
 
       if (handleSubmit) handleSubmit("");
 
