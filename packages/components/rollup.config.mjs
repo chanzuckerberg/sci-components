@@ -7,6 +7,7 @@ import del from "rollup-plugin-delete";
 import ts from "rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import { babel } from "@rollup/plugin-babel";
 import pkg from "./package.json" with { type: "json" };
 
 const config = [
@@ -97,6 +98,15 @@ const config = [
           // __makeTemplateObject helper which causes illegal escape sequence errors
           target: "ES2015",
         })
+      }),
+
+      // Add __emotion_base to styled components so component selectors work
+      // in non-webpack bundlers (Vite/esbuild) without requiring consumers
+      // to run the Emotion plugin themselves.
+      babel({
+        babelHelpers: "bundled",
+        plugins: [["@emotion/babel-plugin", { sourceMap: false, autoLabel: "never" }]],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       }),
     ],
   },
