@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import React from "react";
 import {
   CommonThemeProps,
-  focusVisibleA11yStyle,
   fontBodyS,
   fontBodyXxs,
   getSemanticColors,
@@ -124,6 +123,7 @@ export const PrimaryText = styled("div", {
     return `
       display: block;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
+      white-space: pre-wrap;
       
       ${
         props.shouldTextWrap
@@ -149,6 +149,7 @@ export const SecondaryText = styled("span", {
       color: ${semanticColors?.base?.textSecondary};
       padding-top: 0px;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
+      white-space: pre-wrap;
 
       ${
         props.shouldTextWrap
@@ -175,6 +176,7 @@ export const TertiaryText = styled("span", {
       color: ${semanticColors?.base?.textSecondary};
       padding-top: ${spaces?.xxxs}px;
       font-variant-numeric: ${tabularNums ? TABULAR_NUMS : "normal"};
+      white-space: pre-wrap;
 
       ${
         props.shouldTextWrap
@@ -207,7 +209,6 @@ export const PrimaryTextComponentSlotRightWrapper = styled("div")`
 
 export const StyledTableData = styled.div`
   ${fontBodyS}
-  ${focusVisibleA11yStyle}
 
   ${(props: CellBasicExtraProps) => {
     const {
@@ -225,6 +226,7 @@ export const StyledTableData = styled.div`
         : spaces?.m;
 
     return `
+        outline: none;
         padding: ${spaces?.m}px ${paddingRight}px ${spaces?.m}px ${spaces?.m}px !important;
         text-align: ${horizontalAlign};
         vertical-align: ${verticalAlignCSSMap[verticalAlign]};
@@ -232,12 +234,12 @@ export const StyledTableData = styled.div`
 
         &:hover {
           ${PrimaryText} {
-            ${shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
+            ${shouldShowUnderlineOnHover ? "text-decoration: underline !important;" : ""}
           }
         }
 
         ${PrimaryText} {
-          ${isRowHovered && shouldShowUnderlineOnHover ? "text-decoration: underline;" : ""}
+          ${isRowHovered && shouldShowUnderlineOnHover ? "text-decoration: underline !important;" : ""}
         }
     `;
   }}

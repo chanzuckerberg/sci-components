@@ -318,4 +318,142 @@ describe("PreComposedTable", () => {
     expect(screen.queryByText("John Doe")).not.toBeInTheDocument();
     expect(screen.getByText("Jane Smith")).toBeInTheDocument();
   });
+
+  describe("column filtering", () => {
+    it("shows filter row when enableColumnFiltering is true", () => {
+      render(
+        <PreComposedTable
+          data={SAMPLE_DATA}
+          columns={SAMPLE_COLUMNS}
+          enableColumnFiltering={true}
+        />
+      );
+
+      expect(screen.getByLabelText("Filter Name")).toBeInTheDocument();
+      expect(screen.getByLabelText("Filter Email")).toBeInTheDocument();
+      expect(screen.getByLabelText("Filter Age")).toBeInTheDocument();
+    });
+
+    it("does not show filter row when enableColumnFiltering is false", () => {
+      render(
+        <PreComposedTable
+          data={SAMPLE_DATA}
+          columns={SAMPLE_COLUMNS}
+          enableColumnFiltering={false}
+        />
+      );
+
+      expect(screen.queryByLabelText("Filter Name")).not.toBeInTheDocument();
+    });
+
+    it("filters data when typing in a column filter", async () => {
+      const user = userEvent.setup();
+
+      render(
+        <PreComposedTable
+          data={SAMPLE_DATA}
+          columns={SAMPLE_COLUMNS}
+          enableColumnFiltering={true}
+        />
+      );
+
+      const nameFilter = screen.getByLabelText("Filter Name");
+      await user.type(nameFilter, "John");
+
+      await waitFor(() => {
+        expect(screen.getByText("John Doe")).toBeInTheDocument();
+        expect(screen.queryByText("Jane Smith")).not.toBeInTheDocument();
+      });
+    });
+
+    it("renders empty filter cell for columns with enableColumnFilter false", () => {
+      const columnsWithDisabledFilter: ColumnDef<(typeof SAMPLE_DATA)[0]>[] = [
+        {
+          accessorKey: "name",
+          header: "Name",
+        },
+        {
+          accessorKey: "email",
+          enableColumnFilter: false,
+          header: "Email",
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+        },
+      ];
+
+      render(
+        <PreComposedTable
+          data={SAMPLE_DATA}
+          columns={columnsWithDisabledFilter}
+          enableColumnFiltering={true}
+        />
+      );
+
+      expect(screen.getByLabelText("Filter Name")).toBeInTheDocument();
+      expect(screen.queryByLabelText("Filter Email")).not.toBeInTheDocument();
+      expect(screen.getByLabelText("Filter Age")).toBeInTheDocument();
+    });
+
+    it("renders custom filter component from meta.filterComponent", () => {
+      const columnsWithCustomFilter: ColumnDef<(typeof SAMPLE_DATA)[0]>[] = [
+        {
+          accessorKey: "name",
+          header: "Name",
+          meta: {
+            filterComponent: () => (
+              <div data-testid="custom-filter">Custom Filter</div>
+            ),
+          },
+        },
+        {
+          accessorKey: "email",
+          header: "Email",
+        },
+      ];
+
+      render(
+        <PreComposedTable
+          data={SAMPLE_DATA}
+          columns={columnsWithCustomFilter}
+          enableColumnFiltering={true}
+        />
+      );
+
+      expect(screen.getByTestId("custom-filter")).toBeInTheDocument();
+      expect(screen.getByLabelText("Filter Email")).toBeInTheDocument();
+    });
+
+    it("works with column pinning", () => {
+      const pinnedColumnsWithFilter: ColumnDef<(typeof SAMPLE_DATA)[0]>[] = [
+        {
+          accessorKey: "name",
+          header: "Name",
+          meta: { pinning: "left" },
+        },
+        {
+          accessorKey: "email",
+          header: "Email",
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          meta: { pinning: "right" },
+        },
+      ];
+
+      render(
+        <PreComposedTable
+          data={SAMPLE_DATA}
+          columns={pinnedColumnsWithFilter}
+          enableColumnFiltering={true}
+        />
+      );
+
+      expect(screen.getByLabelText("Filter Name")).toBeInTheDocument();
+      expect(screen.getByLabelText("Filter Email")).toBeInTheDocument();
+      expect(screen.getByLabelText("Filter Age")).toBeInTheDocument();
+    });
+  });
 });

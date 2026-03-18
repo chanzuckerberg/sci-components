@@ -5,32 +5,32 @@ exports[`<Table /> Default story renders snapshot 1`] = `
   class="css-w9ojh9 ed9hyz90"
 >
   <thead
-    class="css-yaajp7 e17yfbln0"
+    class="css-nlegif ei9dat00"
   >
     <tr
       class="css-5zeqj1 e1dzq46l0"
     >
       <th
-        class="css-1peol21 eamwgm81"
+        class="css-1qs9i8h e1mc2aue1"
       >
         <div
-          class="css-13tkrsj eamwgm83"
+          class="css-13tkrsj e1mc2aue3"
         >
           <div
-            class="css-1kmjpr5 eamwgm82"
+            class="css-1kmjpr5 e1mc2aue2"
           >
             Category
           </div>
         </div>
       </th>
       <th
-        class="css-clc80g eamwgm81"
+        class="css-1m7amdb e1mc2aue1"
       >
         <div
-          class="css-96hiq7 eamwgm83"
+          class="css-96hiq7 e1mc2aue3"
         >
           <div
-            class="css-1kmjpr5 eamwgm82"
+            class="css-1kmjpr5 e1mc2aue2"
           >
             Active Header
           </div>
@@ -39,7 +39,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eamwgm80 eo7r9jx0 css-1xdaks9-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1mc2aue0 eo7r9jx0 css-1xdaks9-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -52,13 +52,13 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-clc80g eamwgm81"
+        class="css-1m7amdb e1mc2aue1"
       >
         <div
-          class="css-96hiq7 eamwgm83"
+          class="css-96hiq7 e1mc2aue3"
         >
           <div
-            class="css-1kmjpr5 eamwgm82"
+            class="css-1kmjpr5 e1mc2aue2"
           >
             A very long table header title to test sort icon positioning
           </div>
@@ -67,7 +67,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eamwgm80 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1mc2aue0 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -80,26 +80,26 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-era4qx eamwgm81"
+        class="css-1ifpxfp e1mc2aue1"
       >
         <div
-          class="css-96hiq7 eamwgm83"
+          class="css-96hiq7 e1mc2aue3"
         >
           <div
-            class="css-1kmjpr5 eamwgm82"
+            class="css-1kmjpr5 e1mc2aue2"
           >
             Component
           </div>
         </div>
       </th>
       <th
-        class="css-o67lti eamwgm81"
+        class="css-p4yrr2 e1mc2aue1"
       >
         <div
-          class="css-10u3ako eamwgm83"
+          class="css-10u3ako e1mc2aue3"
         >
           <div
-            class="css-1kmjpr5 eamwgm82"
+            class="css-1kmjpr5 e1mc2aue2"
           >
             Right Aligned and Not sortable
           </div>
@@ -112,7 +112,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       class="css-nlpmew e1dzq46l0"
     >
       <td
-        class="cell-component css-1k9ihy4 e17e76c30"
+        class="cell-component css-l5oq7f e19rtnm10"
       >
         <div
           class="css-1fgdywr e1vkpcto0"
@@ -144,27 +144,27 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-awnp6s e1dpxohs9"
+        class="css-1pkypx3 epry5529"
         data-mui-internal-clone-element="true"
         tabindex="0"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-88isd2 e1dpxohs3"
+              class="css-88isd2 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-60bpko e1dpxohs5"
+              class="css-v7m90i epry5525"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </span>
@@ -172,30 +172,30 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-awnp6s e1dpxohs9"
+        class="css-1pkypx3 epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-88isd2 e1dpxohs3"
+              class="css-88isd2 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1k9c7e2 e1dpxohs5"
+              class="css-1qs522g epry5525"
             >
               Secondary Text
             </span>
             <span
-              class="css-1no7jni e1dpxohs6"
+              class="css-9o3tg7 epry5526"
             >
               Tertiary Text
             </span>
@@ -203,7 +203,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-1nhxrjw e17e76c30"
+        class="cell-component css-zey5in e19rtnm10"
       >
         <div
           style="display: flex; gap: 4px; flex-wrap: wrap;"
@@ -256,19 +256,19 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-t2d7c1 e1dpxohs9"
+        class="css-1uugzd2 epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-ktcuz5 e1dpxohs3"
+              class="css-ktcuz5 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 356
               </div>
@@ -281,7 +281,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       class="css-nlpmew e1dzq46l0"
     >
       <td
-        class="cell-component css-1k9ihy4 e17e76c30"
+        class="cell-component css-l5oq7f e19rtnm10"
       >
         <div
           class="css-1fgdywr e1vkpcto0"
@@ -313,30 +313,30 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-awnp6s e1dpxohs9"
+        class="css-1pkypx3 epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-88isd2 e1dpxohs3"
+              class="css-88isd2 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1k9c7e2 e1dpxohs5"
+              class="css-1qs522g epry5525"
             >
               Secondary Text
             </span>
             <span
-              class="css-1no7jni e1dpxohs6"
+              class="css-9o3tg7 epry5526"
             >
               Tertiary Text
             </span>
@@ -344,25 +344,25 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-awnp6s e1dpxohs9"
+        class="css-1pkypx3 epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-88isd2 e1dpxohs3"
+              class="css-88isd2 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1k9c7e2 e1dpxohs5"
+              class="css-1qs522g epry5525"
             >
               Secondary Text
             </span>
@@ -370,7 +370,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-1nhxrjw e17e76c30"
+        class="cell-component css-zey5in e19rtnm10"
       >
         <div
           aria-labelledby="demo-radio-buttons-group-label"
@@ -471,30 +471,30 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-t2d7c1 e1dpxohs9"
+        class="css-1uugzd2 epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-ktcuz5 e1dpxohs3"
+              class="css-ktcuz5 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 1,234
               </div>
             </div>
             <span
-              class="css-1k9c7e2 e1dpxohs5"
+              class="css-1qs522g epry5525"
             >
               2,344,000
             </span>
             <span
-              class="css-1no7jni e1dpxohs6"
+              class="css-9o3tg7 epry5526"
             >
               12.5%
             </span>
@@ -509,7 +509,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
       tabindex="0"
     >
       <td
-        class="cell-component css-1k9ihy4 e17e76c30"
+        class="cell-component css-l5oq7f e19rtnm10"
       >
         <div
           class="css-1fgdywr e1vkpcto0"
@@ -541,30 +541,30 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1a564ta e1dpxohs9"
+        class="css-p017pn epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-88isd2 e1dpxohs3"
+              class="css-88isd2 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1k9c7e2 e1dpxohs5"
+              class="css-1qs522g epry5525"
             >
               Secondary Text
             </span>
             <span
-              class="css-1no7jni e1dpxohs6"
+              class="css-9o3tg7 epry5526"
             >
               Tertiary Text
             </span>
@@ -572,19 +572,19 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1a564ta e1dpxohs9"
+        class="css-p017pn epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-88isd2 e1dpxohs3"
+              class="css-88isd2 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 Primary Text
               </div>
@@ -593,7 +593,7 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-12kimmj e17e76c30"
+        class="cell-component css-1kv4lx8 e19rtnm10"
       >
         <div
           class="css-1obf64m eo7r9jx1"
@@ -612,19 +612,19 @@ exports[`<Table /> Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-8x0tn9 e1dpxohs9"
+        class="css-1p244lc epry5529"
       >
         <div
-          class="css-k008qs e1dpxohs0"
+          class="css-k008qs epry5520"
         >
           <div
-            class="css-8atqhb e1dpxohs1"
+            class="css-8atqhb epry5521"
           >
             <div
-              class="css-ktcuz5 e1dpxohs3"
+              class="css-ktcuz5 epry5523"
             >
               <div
-                class="css-19a2l1x e1dpxohs4"
+                class="css-1kd7bb2 epry5524"
               >
                 0.4
               </div>
