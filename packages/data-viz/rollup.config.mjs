@@ -4,16 +4,18 @@ import del from "rollup-plugin-delete";
 import ts from "rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import { babel } from "@rollup/plugin-babel";
 import pkg from "./package.json" with { type: "json" };
-
-const peerDeps = Object.keys(pkg.peerDependencies || {});
 
 const config = [
   {
     // External dependencies that should not be bundled into the output to reduce bundle size.
     external: (id) => {
-      return peerDeps.some(dep => id === dep || id.startsWith(dep + '/'));
+      // Externalize peer dependencies
+      const peerDeps = Object.keys(pkg.peerDependencies || {});
+      if (peerDeps.some(dep => id === dep || id.startsWith(dep + '/'))) {
+        return true;
+      }
+      return false;
     },
 
     // Entry point for the library
@@ -73,17 +75,6 @@ const config = [
           // Exclude SCSS and CSS files from TypeScript's scope.
           exclude: ["**/*.scss", "**/*.css"]
         })
-      }),
-
-      // Add `target` to styled components so component selectors work
-      // in non-webpack bundlers (Vite/esbuild) without requiring consumers
-      // to run the Emotion plugin themselves.
-      babel({
-        babelHelpers: "bundled",
-        babelrc: false,
-        configFile: false,
-        plugins: [["@emotion/babel-plugin", { sourceMap: false, autoLabel: "never" }]],
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
       }),
     ],
   },
