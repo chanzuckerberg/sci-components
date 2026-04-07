@@ -98,26 +98,26 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         />
       </div>
       <div
-        class="css-1uir9iw ezuih624"
+        class="css-1t849lf"
       >
         <div
           aria-label="Transcriptomic: 117 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-t5e1h9 ezuih622"
+            class="css-x22ruv"
             color="#615da2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Transcriptomic
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             117 datasets
           </span>
@@ -125,21 +125,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         <div
           aria-label="Imaging: 61 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-12pw4lu ezuih622"
+            class="css-dsuyix"
             color="#a45894"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Imaging
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             61 datasets
           </span>
@@ -147,21 +147,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         <div
           aria-label="Sequencing: 34 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fbu34u ezuih622"
+            class="css-czzm89"
             color="#b96a6c"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Sequencing
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             34 datasets
           </span>
@@ -169,21 +169,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         <div
           aria-label="Proteomics: 15 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-20hsnx ezuih622"
+            class="css-1ss24ox"
             color="#a98954"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Proteomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             15 datasets
           </span>
@@ -191,21 +191,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         <div
           aria-label="Spatial Transcriptomics: 78 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-2n91cl ezuih622"
+            class="css-4qfsgu"
             color="#90a45a"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             78 datasets
           </span>
@@ -213,21 +213,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         <div
           aria-label="Prosthetics: 130 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-wgkrvp ezuih622"
+            class="css-wik39d"
             color="#7ab978"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Prosthetics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             130 datasets
           </span>
@@ -235,21 +235,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         <div
           aria-label="Epigenomics: 100 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-16fln6q ezuih622"
+            class="css-1cg4952"
             color="#8ac2d2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Epigenomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             100 datasets
           </span>
@@ -258,22 +258,22 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
           aria-disabled="true"
           aria-label="Remaining: 165 datasets"
           aria-pressed="false"
-          class="css-753bgj ezuih623"
+          class="css-onaqla"
           disabled=""
           role="button"
           tabindex="-1"
         >
           <div
-            class="css-c94mwr ezuih622"
+            class="css-pc7o78"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
             disabled=""
           >
             Remaining
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
             disabled=""
           >
             165 datasets
@@ -289,12 +289,12 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1oky39u-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-1djz83l-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -303,13 +303,13 @@ exports[`<StackedBarChart /> CumulativeWithSelectionDimBehavior story renders sn
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-e5rw20-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-bf43t5-MuiButtonBase-root-MuiButton-root"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -420,26 +420,26 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         />
       </div>
       <div
-        class="css-1uir9iw ezuih624"
+        class="css-1t849lf"
       >
         <div
           aria-label="Transcriptomic: 117 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-t5e1h9 ezuih622"
+            class="css-x22ruv"
             color="#615da2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Transcriptomic
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             117 datasets
           </span>
@@ -447,21 +447,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         <div
           aria-label="Imaging: 61 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-12pw4lu ezuih622"
+            class="css-dsuyix"
             color="#a45894"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Imaging
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             61 datasets
           </span>
@@ -469,21 +469,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         <div
           aria-label="Sequencing: 34 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fbu34u ezuih622"
+            class="css-czzm89"
             color="#b96a6c"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Sequencing
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             34 datasets
           </span>
@@ -491,21 +491,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         <div
           aria-label="Proteomics: 15 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-20hsnx ezuih622"
+            class="css-1ss24ox"
             color="#a98954"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Proteomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             15 datasets
           </span>
@@ -513,21 +513,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         <div
           aria-label="Spatial Transcriptomics: 78 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-2n91cl ezuih622"
+            class="css-4qfsgu"
             color="#90a45a"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             78 datasets
           </span>
@@ -535,21 +535,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         <div
           aria-label="Prosthetics: 130 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-wgkrvp ezuih622"
+            class="css-wik39d"
             color="#7ab978"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Prosthetics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             130 datasets
           </span>
@@ -557,21 +557,21 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         <div
           aria-label="Epigenomics: 100 datasets"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-16fln6q ezuih622"
+            class="css-1cg4952"
             color="#8ac2d2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Epigenomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             100 datasets
           </span>
@@ -580,22 +580,22 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
           aria-disabled="true"
           aria-label="Remaining: 165 datasets"
           aria-pressed="false"
-          class="css-753bgj ezuih623"
+          class="css-onaqla"
           disabled=""
           role="button"
           tabindex="-1"
         >
           <div
-            class="css-c94mwr ezuih622"
+            class="css-pc7o78"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
             disabled=""
           >
             Remaining
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
             disabled=""
           >
             165 datasets
@@ -611,12 +611,12 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1oky39u-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-1djz83l-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -625,13 +625,13 @@ exports[`<StackedBarChart /> CumulativeWithSelectionHideBehavior story renders s
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-e5rw20-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-bf43t5-MuiButtonBase-root-MuiButton-root"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -736,26 +736,26 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         />
       </div>
       <div
-        class="css-1uir9iw ezuih624"
+        class="css-1t849lf"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-t5e1h9 ezuih622"
+            class="css-x22ruv"
             color="#615da2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Transcriptomic
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             22%
           </span>
@@ -763,21 +763,21 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-12pw4lu ezuih622"
+            class="css-dsuyix"
             color="#a45894"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Imaging
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             11%
           </span>
@@ -785,21 +785,21 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fbu34u ezuih622"
+            class="css-czzm89"
             color="#b96a6c"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Sequencing
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             6%
           </span>
@@ -807,21 +807,21 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-20hsnx ezuih622"
+            class="css-1ss24ox"
             color="#a98954"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Proteomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             3%
           </span>
@@ -829,21 +829,21 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-2n91cl ezuih622"
+            class="css-4qfsgu"
             color="#90a45a"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             15%
           </span>
@@ -851,21 +851,21 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-wgkrvp ezuih622"
+            class="css-wik39d"
             color="#7ab978"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Prosthetics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             24%
           </span>
@@ -873,21 +873,21 @@ exports[`<StackedBarChart /> Default story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-16fln6q ezuih622"
+            class="css-1cg4952"
             color="#8ac2d2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Epigenomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             19%
           </span>
@@ -990,26 +990,26 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         />
       </div>
       <div
-        class="css-1uir9iw ezuih624"
+        class="css-1t849lf"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-t5e1h9 ezuih622"
+            class="css-x22ruv"
             color="#615da2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Transcriptomic
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             22%
           </span>
@@ -1017,21 +1017,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-12pw4lu ezuih622"
+            class="css-dsuyix"
             color="#a45894"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Imaging
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             11%
           </span>
@@ -1039,21 +1039,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fbu34u ezuih622"
+            class="css-czzm89"
             color="#b96a6c"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Sequencing
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             6%
           </span>
@@ -1061,21 +1061,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-20hsnx ezuih622"
+            class="css-1ss24ox"
             color="#a98954"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Proteomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             3%
           </span>
@@ -1083,21 +1083,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-2n91cl ezuih622"
+            class="css-4qfsgu"
             color="#90a45a"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             15%
           </span>
@@ -1105,21 +1105,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-wgkrvp ezuih622"
+            class="css-wik39d"
             color="#7ab978"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Prosthetics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             24%
           </span>
@@ -1127,21 +1127,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-16fln6q ezuih622"
+            class="css-1cg4952"
             color="#8ac2d2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Epigenomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             19%
           </span>
@@ -1156,12 +1156,12 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1oky39u-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-1djz83l-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -1170,13 +1170,13 @@ exports[`<StackedBarChart /> ProportionalWithSelectionDimBehavior story renders 
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-e5rw20-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-bf43t5-MuiButtonBase-root-MuiButton-root"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -1281,26 +1281,26 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         />
       </div>
       <div
-        class="css-1uir9iw ezuih624"
+        class="css-1t849lf"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-t5e1h9 ezuih622"
+            class="css-x22ruv"
             color="#615da2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Transcriptomic
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             22%
           </span>
@@ -1308,21 +1308,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-12pw4lu ezuih622"
+            class="css-dsuyix"
             color="#a45894"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Imaging
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             11%
           </span>
@@ -1330,21 +1330,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fbu34u ezuih622"
+            class="css-czzm89"
             color="#b96a6c"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Sequencing
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             6%
           </span>
@@ -1352,21 +1352,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-20hsnx ezuih622"
+            class="css-1ss24ox"
             color="#a98954"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Proteomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             3%
           </span>
@@ -1374,21 +1374,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-2n91cl ezuih622"
+            class="css-4qfsgu"
             color="#90a45a"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             15%
           </span>
@@ -1396,21 +1396,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-wgkrvp ezuih622"
+            class="css-wik39d"
             color="#7ab978"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Prosthetics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             24%
           </span>
@@ -1418,21 +1418,21 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-16fln6q ezuih622"
+            class="css-1cg4952"
             color="#8ac2d2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Epigenomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             19%
           </span>
@@ -1447,12 +1447,12 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1oky39u-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary css-1djz83l-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Select All
         </span>
@@ -1461,13 +1461,13 @@ exports[`<StackedBarChart /> ProportionalWithSelectionHideBehavior story renders
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-e5rw20-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary css-bf43t5-MuiButtonBase-root-MuiButton-root"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1tgbnky et5j5k1"
+          class="css-1am7bo"
         >
           Clear Selection
         </span>
@@ -1572,26 +1572,26 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         />
       </div>
       <div
-        class="css-1uir9iw ezuih624"
+        class="css-1t849lf"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-t5e1h9 ezuih622"
+            class="css-x22ruv"
             color="#615da2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Transcriptomic
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             22%
           </span>
@@ -1599,21 +1599,21 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-12pw4lu ezuih622"
+            class="css-dsuyix"
             color="#a45894"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Imaging
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             11%
           </span>
@@ -1621,21 +1621,21 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-fbu34u ezuih622"
+            class="css-czzm89"
             color="#b96a6c"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Sequencing
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             6%
           </span>
@@ -1643,21 +1643,21 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-20hsnx ezuih622"
+            class="css-1ss24ox"
             color="#a98954"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Proteomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             3%
           </span>
@@ -1665,21 +1665,21 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-2n91cl ezuih622"
+            class="css-4qfsgu"
             color="#90a45a"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             15%
           </span>
@@ -1687,21 +1687,21 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-wgkrvp ezuih622"
+            class="css-wik39d"
             color="#7ab978"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Prosthetics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             24%
           </span>
@@ -1709,21 +1709,21 @@ exports[`<StackedBarChart /> WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-17x82zm ezuih623"
+          class="css-3vx361"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-16fln6q ezuih622"
+            class="css-1cg4952"
             color="#8ac2d2"
           />
           <span
-            class="css-18rci7n ezuih621"
+            class="css-1sjvubj"
           >
             Epigenomics
           </span>
           <span
-            class="css-13c1g3o ezuih620"
+            class="css-ncdzc3"
           >
             19%
           </span>
