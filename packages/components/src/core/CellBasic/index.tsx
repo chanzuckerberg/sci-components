@@ -1,6 +1,6 @@
 import React, { forwardRef, useContext } from "react";
 import Tooltip, { TooltipProps } from "src/core/Tooltip";
-import { RowHoverContext } from "src/core/PreComposedTable";
+import { RowHoverContext } from "src/core/PreComposedTable/RowHoverContext";
 import {
   CellBasicExtraProps,
   PrimaryText,
