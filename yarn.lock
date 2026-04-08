@@ -1868,7 +1868,6 @@ __metadata:
     jest: "npm:^29.7.0"
     lerna: "npm:^8.0.1"
     lint-staged: "npm:^15.2.0"
-    lodash: "npm:^4.17.21"
     postcss: "npm:^8.4.35"
     postcss-flexbugs-fixes: "npm:^5.0.2"
     prettier: "npm:^3.1.1"
