@@ -9,10 +9,10 @@ import {
   getSpaces,
 } from "src/core/styles";
 import { ExposedNotificationProps } from ".";
+import Button from "../Button";
 
 interface NotificationExtraProps
-  extends CommonThemeProps,
-    ExposedNotificationProps {}
+  extends CommonThemeProps, ExposedNotificationProps {}
 
 interface NotificationButtonWrapperProps extends CommonThemeProps {
   buttonPosition?: "left" | "right";
@@ -111,6 +111,18 @@ export const StyledButtonWrapper = styled("div")`
     return `
       display: flex;
       justify-content: ${buttonPosition === "left" ? "flex-start" : "flex-end"};
+    `;
+  }}
+`;
+
+export const StyledCloseButton = styled(Button)`
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+
+    return `
+      position: absolute;
+      right: ${spaces?.m}px;
+      top: ${spaces?.m}px;
     `;
   }}
 `;
