@@ -3,7 +3,11 @@ import { Box, Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Button from "src/core/Button";
 import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
-import { StyledButtonWrapper, StyledNotification } from "./style";
+import {
+  StyledButtonWrapper,
+  StyledCloseButton,
+  StyledNotification,
+} from "./style";
 
 export type NotificationIntentType =
   | "accent"
@@ -105,14 +109,15 @@ const Notification = ({
             onClose={onClose ? handleClose : undefined}
             action={
               onClose ? (
-                <Button
+                <StyledCloseButton
                   onClick={handleClose}
                   sdsStyle="minimal"
                   sdsType="secondary"
                   data-testid="notificationCloseButton"
+                  backgroundOnHover={false}
                 >
                   <Icon sdsIcon="XMark" sdsSize="s" />
-                </Button>
+                </StyledCloseButton>
               ) : null
             }
             icon={getIcon()}
