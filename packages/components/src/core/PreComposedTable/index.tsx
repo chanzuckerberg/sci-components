@@ -2,7 +2,6 @@ import React, {
   useState,
   useMemo,
   useEffect,
-  createContext,
   useRef,
   useImperativeHandle,
   forwardRef,
@@ -57,6 +56,7 @@ import {
 } from "./utils";
 import InputSearch from "../InputSearch";
 import { usePinnedColumnGradient } from "./usePinnedColumnGradient";
+import { RowHoverContext } from "./RowHoverContext";
 
 // Declaration merging to add pinning to ColumnDef.meta
 declare module "@tanstack/react-table" {
@@ -101,11 +101,6 @@ export interface PreComposedTableProps<TData> {
 export interface PreComposedTableRef<TData extends RowData = RowData> {
   table: TanstackTable<TData>;
 }
-
-// Create context for row hover state
-export const RowHoverContext = createContext<{ isRowHovered: boolean }>({
-  isRowHovered: false,
-});
 
 const PreComposedTableInner = <TData extends RowData>(
   {
@@ -689,4 +684,5 @@ const PreComposedTable = forwardRef(PreComposedTableInner) as <
   }
 ) => JSX.Element;
 
+export { RowHoverContext } from "./RowHoverContext";
 export default PreComposedTable;

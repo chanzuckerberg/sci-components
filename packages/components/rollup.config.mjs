@@ -7,6 +7,7 @@ import del from "rollup-plugin-delete";
 import ts from "rollup-plugin-ts";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import { babel } from "@rollup/plugin-babel";
 import pkg from "./package.json" with { type: "json" };
 
 const config = [
@@ -87,8 +88,39 @@ const config = [
         ],
       }),
 
+      // Run @emotion/babel-plugin BEFORE TypeScript compilation so it sees
+      // the original styled() calls and can add component selector targets.
+      // Two instances needed: isTSX must be true for .tsx but not .ts files.
+      babel({
+        babelHelpers: "bundled",
+        babelrc: false,
+        configFile: false,
+        include: [/\.tsx$/],
+        plugins: [
+          ["@babel/plugin-syntax-typescript", { isTSX: true }],
+          ["@emotion/babel-plugin", { sourceMap: false, autoLabel: "never" }]
+        ],
+        extensions: [".tsx"]
+      }),
+      babel({
+        babelHelpers: "bundled",
+        babelrc: false,
+        configFile: false,
+        include: [/\.ts$/],
+        plugins: [
+          "@babel/plugin-syntax-typescript",
+          ["@emotion/babel-plugin", { sourceMap: false, autoLabel: "never" }]
+        ],
+        extensions: [".ts"]
+      }),
+
       // Handle TypeScript compilation with custom configurations.
       ts({
+        // Skip type-checking: @emotion/babel-plugin adds { target } arguments
+        // to styled() calls which changes TypeScript overload resolution,
+        // producing false-positive type errors. Type-checking is enforced
+        // separately via tsc / CI.
+        transpileOnly: true,
         tsconfig: (resolvedConfig) => ({
           ...resolvedConfig,
           // Exclude SCSS and CSS files from TypeScript's scope.
