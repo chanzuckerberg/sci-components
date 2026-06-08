@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.6.0...@czi-sds/components@23.7.0) (2026-06-08)
+
+### Bug Fixes
+
+- **notification:** fix close button position and styles ([#1131](https://github.com/chanzuckerberg/sci-components/issues/1131)) ([c6c2af3](https://github.com/chanzuckerberg/sci-components/commit/c6c2af3f04936e7f1da0c3da3be78cc521e98b9e))
+
+### Features
+
+- add Emotion babel plugin to Rollup build (Vite support) ([#1109](https://github.com/chanzuckerberg/sci-components/issues/1109)) ([6b3d55c](https://github.com/chanzuckerberg/sci-components/commit/6b3d55c1503d0df1b0d37b1e60045938a79196aa))
+- bump MUI peer dep minimums for React 19 support ([#1133](https://github.com/chanzuckerberg/sci-components/issues/1133)) ([49b3b9a](https://github.com/chanzuckerberg/sci-components/commit/49b3b9a0f3ec7787cfb1cdbd299602debb07c4c2))
+
 # [23.6.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.5.0...@czi-sds/components@23.6.0) (2026-02-23)
 
 ### Features

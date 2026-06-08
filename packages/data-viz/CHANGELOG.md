@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.17.2...@czi-sds/data-viz@0.18.0) (2026-06-08)
+
+### Features
+
+- add Emotion babel plugin to Rollup build (Vite support) ([#1109](https://github.com/chanzuckerberg/sci-components/issues/1109)) ([6b3d55c](https://github.com/chanzuckerberg/sci-components/commit/6b3d55c1503d0df1b0d37b1e60045938a79196aa))
+- bump MUI peer dep minimums for React 19 support ([#1133](https://github.com/chanzuckerberg/sci-components/issues/1133)) ([49b3b9a](https://github.com/chanzuckerberg/sci-components/commit/49b3b9a0f3ec7787cfb1cdbd299602debb07c4c2))
+
 ## [0.17.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.17.1...@czi-sds/data-viz@0.17.2) (2026-02-03)
 
 **Note:** Version bump only for package @czi-sds/data-viz
