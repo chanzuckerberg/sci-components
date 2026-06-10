@@ -1,5 +1,5 @@
 import { Box, Container, useTheme } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
 import { getSemanticColors } from "src/core/styles";
 import RawNavigationHeader, {

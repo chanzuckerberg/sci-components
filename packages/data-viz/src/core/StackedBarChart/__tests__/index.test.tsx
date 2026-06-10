@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { render, screen, fireEvent } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 import StackedBarChart from "../index";

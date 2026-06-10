@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawHero from "src/core/Hero";
 import { DemoContentSlot } from "../../style";
 

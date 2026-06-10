@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import { StyledBordersWrapper } from "./style";
 import { Template } from "./stories/default";
 

@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Notification } from "./stories/default";
 import {
   NOTIFICATION_BUTTON_ON_CLICK_OPTIONS,

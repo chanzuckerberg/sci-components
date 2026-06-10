@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Hero } from "./stories/default";
 import {
   HERO_BACKGROUND_FILL_LABELS,

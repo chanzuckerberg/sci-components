@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React, { useState } from "react";
 import RawButtonGroup from "src/core/ButtonGroup";
 import ButtonToggle from "src/core/ButtonToggle";

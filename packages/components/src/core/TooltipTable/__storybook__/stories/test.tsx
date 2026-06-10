@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawTooltipTableContent from "src/core/TooltipTable";
 import { TOOLTIP_TABLE_DATA } from "../constants";
 

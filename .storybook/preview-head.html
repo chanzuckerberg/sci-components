@@ -8,3 +8,25 @@
   href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
   rel="stylesheet"
 />
+<style>
+  /*
+   * Honor the user's reduced-motion preference by disabling transitions and
+   * animations. This is an accessibility best practice.
+   *
+   * It is also REQUIRED for the CI accessibility tests (`yarn storybook:axeOnly`,
+   * via axe-storybook-testing) to pass. axe enables reduced-motion and samples
+   * each story immediately after it renders, so without this, animated elements
+   * are captured mid-transition. That produces flaky failures - false-positive
+   * color-contrast violations and, for animation-heavy stories, test timeouts.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>

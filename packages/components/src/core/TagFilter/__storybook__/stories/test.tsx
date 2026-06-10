@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawTagFilter from "src/core/TagFilter";
 
 export const TestDemo = (props: Args): JSX.Element => {

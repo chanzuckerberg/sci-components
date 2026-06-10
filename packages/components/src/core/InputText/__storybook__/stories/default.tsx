@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawInputText from "src/core/InputText";
 
 export const InputText = (props: Args): JSX.Element => {

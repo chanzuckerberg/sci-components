@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { IntentMessageDemo } from "./stories/default";
 import { CheckboxDemo } from "./stories/checkbox";
 import { PasswordDemo } from "./stories/password";

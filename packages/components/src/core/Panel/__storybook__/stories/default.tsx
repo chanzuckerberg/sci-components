@@ -1,5 +1,5 @@
 import { Box, useTheme } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React, { useState } from "react";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
 import Callout from "src/core/Callout";

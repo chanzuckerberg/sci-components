@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { PAGINATION_EXCLUDED_CONTROLS } from "./constants";
 import { Pagination } from "./stories/default";
 import { TestDemo } from "./stories/test";

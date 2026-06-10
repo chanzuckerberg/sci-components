@@ -1,7 +1,7 @@
 import { CheckCircleOutline } from "@mui/icons-material";
 import { Snackbar, Button as MUIButton } from "@mui/material";
 import styled from "@emotion/styled";
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import React from "react";
 import Button from "src/core/ButtonLegacy";
 import { defaultTheme } from "src/core/styles/common/defaultTheme";

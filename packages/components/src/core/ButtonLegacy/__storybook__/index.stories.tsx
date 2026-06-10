@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import {
   BUTTON_ACTIONS,

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Args, Meta, StoryObj } from "@storybook/react-webpack5";
+import { Args, Meta, StoryObj } from "@storybook/react-vite";
 import PreComposedTable, { PreComposedTableRef } from "../index";
 import {
   COLUMNS_DEFINITION,

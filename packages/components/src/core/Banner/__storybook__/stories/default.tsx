@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawBanner from "src/core/Banner";
 
 export const Banner = (props: Args): JSX.Element => {

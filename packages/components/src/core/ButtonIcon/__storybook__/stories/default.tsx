@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawButtonIcon from "src/core/ButtonIcon";
 import Callout from "src/core/Callout";
 import Icon from "src/core/Icon";

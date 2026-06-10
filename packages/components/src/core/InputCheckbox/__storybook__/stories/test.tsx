@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { INPUT_CHECKBOX_TEST_STYLES } from "../constants";
 import { InputCheckbox } from "./default";
 import RawInputCheckbox from "src/core/InputCheckbox";

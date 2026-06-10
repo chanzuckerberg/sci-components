@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import LoadingIndicator from "src/core/LoadingIndicator";
 import { Dropdown } from "./stories/default";
 import {

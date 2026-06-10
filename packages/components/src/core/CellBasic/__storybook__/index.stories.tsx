@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { CellBasic } from "./stories/default";
 import {
   CELL_BASIC_EXCLUDED_CONTROLS,

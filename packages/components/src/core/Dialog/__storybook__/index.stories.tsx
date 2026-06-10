@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Dialog } from "./stories/default";
 import { DIALOG_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";

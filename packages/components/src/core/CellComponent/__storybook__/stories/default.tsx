@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawCellComponent from "src/core/CellComponent";
 
 export const CellComponent = (props: Args): JSX.Element => {

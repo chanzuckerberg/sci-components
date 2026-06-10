@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
 import RawTabs, { Tab } from "src/core/Tabs";
 

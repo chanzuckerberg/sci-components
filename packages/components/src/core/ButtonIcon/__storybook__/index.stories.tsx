@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import RawButtonIcon from "src/core/ButtonIcon";
 import { ButtonIcon } from "./stories/default";
 import {

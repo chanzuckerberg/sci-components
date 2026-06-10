@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React from "react";
 import RawButtonLegacy from "src/core/ButtonLegacy";
 import Callout from "src/core/Callout";

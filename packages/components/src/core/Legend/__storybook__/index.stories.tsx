@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react-webpack5";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { useTheme } from "@mui/material";
 import DefaultStory from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";

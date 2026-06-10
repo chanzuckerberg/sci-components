@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import ButtonToggle from "src/core/ButtonToggle";
 import Icon from "src/core/Icon";
 

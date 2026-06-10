@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawLoadingIndicator from "src/core/LoadingIndicator";
 
 export const LoadingIndicator = (props: Args): JSX.Element => {

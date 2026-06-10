@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   TAG_COLORS,
   TAG_COLOR_CONTRAST_RULE,

@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawButtonLegacy from "src/core/ButtonLegacy";
 import {
   BUTTON_DISABLED_OPTIONS,

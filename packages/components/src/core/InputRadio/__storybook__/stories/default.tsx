@@ -1,5 +1,5 @@
 import { RadioGroup } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawInputRadio from "src/core/InputRadio";
 
 export const InputRadio = (props: Args): JSX.Element => {

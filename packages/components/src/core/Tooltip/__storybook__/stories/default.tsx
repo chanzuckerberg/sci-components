@@ -1,5 +1,5 @@
 import { useTheme } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import Button from "src/core/Button";
 import Icon from "src/core/Icon";
 import { getSemanticColors } from "src/core/styles";

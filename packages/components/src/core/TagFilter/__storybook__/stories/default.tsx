@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
 import { TAG_FILTER_DEFAULT_STYLES } from "../constants";
 import RawTagFilter from "src/core/TagFilter";

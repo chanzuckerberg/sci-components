@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { NavigationJumpTo } from "./stories/default";
 import {
   NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE,

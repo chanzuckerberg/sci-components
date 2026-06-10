@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawNavigationJumpTo from "src/core/NavigationJumpTo";
 
 export const TestDemo = (props: Args): JSX.Element => {

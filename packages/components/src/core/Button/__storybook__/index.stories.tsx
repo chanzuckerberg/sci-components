@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   BUTTON_ACTIONS,
   BUTTON_EXCLUDED_CONTROLS,

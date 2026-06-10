@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   COMPLEX_FILTER_EXCLUDED_CONTROLS,
   COMPLEX_FILTER_ON_CHANGE_OPTIONS,

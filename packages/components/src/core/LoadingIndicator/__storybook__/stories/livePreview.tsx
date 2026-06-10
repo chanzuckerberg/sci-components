@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { LIST_LIVE_PREVIEW_STYLES } from "../constants";
 import RawLoadingIndicator from "src/core/LoadingIndicator";
 import { useTheme } from "@mui/material";

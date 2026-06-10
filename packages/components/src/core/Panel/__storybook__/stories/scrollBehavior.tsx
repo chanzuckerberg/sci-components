@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawPanel from "src/core/Panel";
 import { Box, Typography } from "@mui/material";
 import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";

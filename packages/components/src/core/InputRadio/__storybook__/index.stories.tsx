@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { InputRadio } from "./stories/default";
 import { TestDemo } from "./stories/test";
 import { INPUT_RADIO_EXCLUDED_CONTROLS } from "./constants";

@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta, StoryContext } from "@storybook/react-webpack5";
+import { Args, Meta, StoryContext } from "@storybook/react-vite";
 import { NavigationHeader } from "./stories/default";
 import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
 import {

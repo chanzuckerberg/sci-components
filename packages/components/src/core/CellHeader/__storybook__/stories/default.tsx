@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
 import RawCellHeader, { CellHeaderDirection } from "src/core/CellHeader";
 

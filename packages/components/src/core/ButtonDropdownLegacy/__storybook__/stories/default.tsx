@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawButtonDropdownLegacy from "src/core/ButtonDropdownLegacy";
 import { BUTTON_DROPDOWN_TEXT } from "../constants";
 import {

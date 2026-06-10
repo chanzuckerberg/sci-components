@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { LoadingIndicator } from "./stories/default";
 import { LIST_EXCLUDED_CONTROLS } from "./constants";
 import { LivePreviewDemo } from "./stories/livePreview";

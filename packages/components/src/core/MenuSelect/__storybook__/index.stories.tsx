@@ -5,7 +5,7 @@ import {
   AutocompleteCloseReason,
   AutocompleteInputChangeReason,
 } from "@mui/material/useAutocomplete";
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import React, { SyntheticEvent, useState } from "react";
 import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
 import Callout from "src/core/Callout";

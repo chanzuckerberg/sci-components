@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { CellComponent } from "./stories/default";
 import { CELL_COMPONENT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";

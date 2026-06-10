@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { InputDropdown } from "./stories/default";
 import { INPUT_DROPDOWN_EXCLUDED_CONTROLS } from "./constants";
 import { INLINE_RADIO } from "src/common/utils";

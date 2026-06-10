@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import React from "react";
 import Chip from "../index";
 import Callout from "src/core/Callout";

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { Button, TagFilter } from "@czi-sds/components";
 import RawStackedBarChart from "../../index";
 import { StackedBarChartDataItem } from "../../StackedBarChart.types";

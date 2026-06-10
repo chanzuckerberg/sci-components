@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 

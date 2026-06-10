@@ -1,5 +1,5 @@
 import { useTheme } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React from "react";
 import Button from "src/core/Button";
 import RawPopover from "src/core/Popover";

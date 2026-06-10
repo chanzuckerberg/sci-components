@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { INPUT_SEARCH_EXCLUDED_CONTROLS } from "./constants";
 import { InputSearch } from "./stories/default";
 import { TestDemo } from "./stories/test";

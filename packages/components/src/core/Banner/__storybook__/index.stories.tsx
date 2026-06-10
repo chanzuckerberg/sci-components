@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   BANNER_EXCLUDED_CONTROLS,
   BANNER_ICON_OPTIONS,

@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawCellHeader from "src/core/CellHeader";
 
 export const TestDemo = (props: Args): JSX.Element => (

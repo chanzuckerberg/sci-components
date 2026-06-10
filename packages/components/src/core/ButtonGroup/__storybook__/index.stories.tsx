@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   BUTTON_GROUP_EXCLUDED_CONTROLS,
   BUTTON_GROUP_SDS_SIZE,

@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   MENU_ITEM_EXCLUDED_CONTROLS,
   MENU_ITEM_ICON_OPTIONS,

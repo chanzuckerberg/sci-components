@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { CellComponent } from "./default";
 import {
   StyledDashedBorder,

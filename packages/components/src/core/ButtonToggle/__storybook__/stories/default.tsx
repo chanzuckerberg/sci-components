@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { StyledBackgroundAppearanceWrapper } from "src/core/Button/style";
 import RawButtonToggle from "src/core/ButtonToggle";
 

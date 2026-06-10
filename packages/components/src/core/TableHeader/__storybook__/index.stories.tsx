@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { TableHeader } from "./stories/default";
 import { TestDemo } from "./stories/test";
 

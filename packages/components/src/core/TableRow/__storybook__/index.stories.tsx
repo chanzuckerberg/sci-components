@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { TableRow } from "./stories/default";
 import { TABLE_ROW_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
