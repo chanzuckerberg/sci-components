@@ -1,18 +1,18 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<TagFilter /> Default story renders snapshot 1`] = `
+exports[`<TagFilter /> > Default story renders snapshot 1`] = `
 <div
-  style="display: inline-grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
+  style="display: inline-grid; grid-column-gap: 24px; grid-row-gap: 24px; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
 >
   <div>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-16n8l0c-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-hgha7i-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
       disabled=""
       tabindex="-1"
       type="button"
     >
       <span
-        class="css-12bqywg e1gcweb21"
+        class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
       >
         Delete the tag by clicking on its icon
       </span>
@@ -20,7 +20,7 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary e16f26e80 e2h2wz80 css-18gndjy-MuiButtonBase-root-MuiChip-root"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary e19crzu0 esrfbz40 css-77bmon-MuiButtonBase-root-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag-StyledTag-StyledTag"
       role="none presentation"
       tabindex="0"
     >
@@ -31,19 +31,19 @@ exports[`<TagFilter /> Default story renders snapshot 1`] = `
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary e1gcweb20 css-5o3bwi-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary et5j5k2 css-ddkfnw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
         >
           <div
-            class="css-1obf64m eo7r9jx1"
+            class="css-1d5hom7-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconXMarkSmall"
               data-testid="IconXMarkSmall"
               fillcontrast="white"

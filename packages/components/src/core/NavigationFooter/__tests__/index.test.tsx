@@ -22,7 +22,7 @@ const { Test, Default } = composeStories(stories);
 describe("<NavigationFooter />", () => {
   beforeEach(() => {
     // Clear any previous renders
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   generateSnapshots(stories);

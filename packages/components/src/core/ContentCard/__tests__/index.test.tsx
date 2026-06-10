@@ -64,7 +64,7 @@ describe("ContentCard", () => {
   });
 
   it("renders clickable card", () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     render(<Test clickableCard onClick={onClick} />);
     const card = screen.getByTestId(CONTENT_CARD_TEST_ID);
     fireEvent.click(card);

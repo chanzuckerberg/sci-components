@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Panel /> Default story renders snapshot 1`] = `
+exports[`<Panel /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiDrawer-root MuiDrawer-docked edtsu480 css-v3g7tz-MuiDrawer-docked"
+  class="MuiDrawer-root MuiDrawer-docked ejokiai1 css-ewnuyy-MuiDrawer-docked-StyledDrawer-basicPanelStyles-StyledDrawer"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-12i7wg6-MuiPaper-root-MuiDrawer-paper"
-    style="visibility: hidden; webkit-transform: translateX(-0px); transform: translateX(-0px);"
+    style="visibility: hidden; -webkit-transform: translateX(-0px); transform: translateX(-0px);"
   >
     <div
       class="MuiBox-root css-gblytq"

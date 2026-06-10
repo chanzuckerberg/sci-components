@@ -39,7 +39,7 @@ describe("<Banner />", () => {
   });
 
   it("executes callback on close", () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     render(<Test {...Test.args} onClose={onClose} />);
 
     const closeButton = screen.getByRole("button");

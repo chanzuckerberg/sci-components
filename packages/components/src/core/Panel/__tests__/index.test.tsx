@@ -79,7 +79,7 @@ describe("<Panel />", () => {
   });
 
   it("calls the onClick handler when close button is clicked", () => {
-    const handleClose = jest.fn();
+    const handleClose = vi.fn();
 
     render(
       <Test

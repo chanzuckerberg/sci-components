@@ -73,7 +73,10 @@
     "./packages/**/src/**/*",
     "./packages/**/scripts/**/*",
     ".eslintrc.js",
-    "./scripts/**/*"
+    "./scripts/**/*",
+    "vitest.setup.ts",
+    "vitest.shared.ts",
+    "./packages/**/vitest.config.ts"
   ],
   "exclude": [
     "node_modules",

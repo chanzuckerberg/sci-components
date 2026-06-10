@@ -70,6 +70,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@chromatic-com/storybook"),
     getAbsolutePath("@storybook/addon-docs"),
     getAbsolutePath("storybook-addon-tag-badges"),
+    getAbsolutePath("@storybook/addon-vitest"),
   ],
 
   framework: {

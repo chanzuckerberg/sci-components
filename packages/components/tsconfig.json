@@ -5,7 +5,7 @@
     "outDir": "./dist",
     "composite": true
   },
-  "include": ["./src/**/*", "jest.setup.ts", "../../.eslintrc.js"],
+  "include": ["./src/**/*", "../../.eslintrc.js"],
   "exclude": ["node_modules", "**/*.scss", "**/*.css"],
   "references": []
 }

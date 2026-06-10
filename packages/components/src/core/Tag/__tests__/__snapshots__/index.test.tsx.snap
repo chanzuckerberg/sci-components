@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Tag /> Default story renders snapshot 1`] = `
+exports[`<Tag /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e2h2wz80 css-qd9jwa-MuiChip-root"
+  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-192o8i9-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag"
 >
   <span
     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"

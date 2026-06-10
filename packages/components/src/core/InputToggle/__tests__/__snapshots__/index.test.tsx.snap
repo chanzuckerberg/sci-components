@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
+exports[`<InputToggle /> > Controlled story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium e1lxcw2a0 css-18e23b6-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium efvmhqy0 css-r9pf8c-MuiSwitch-root-Toggle"
 >
   <span
     class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked Mui-checked css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
@@ -26,9 +26,9 @@ exports[`<InputToggle /> Controlled story renders snapshot 1`] = `
 </span>
 `;
 
-exports[`<InputToggle /> Default story renders snapshot 1`] = `
+exports[`<InputToggle /> > Default story renders snapshot 1`] = `
 <span
-  class="MuiSwitch-root MuiSwitch-sizeMedium e1lxcw2a0 css-1tsvnpp-MuiSwitch-root"
+  class="MuiSwitch-root MuiSwitch-sizeMedium efvmhqy0 css-yoh8cq-MuiSwitch-root-Toggle"
 >
   <span
     class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"

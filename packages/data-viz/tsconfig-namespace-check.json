@@ -5,8 +5,7 @@
     "src/**/*.tsx",
     "src/**/*.d.ts",
     "src/common/**/*",
-    "src/core/**/*",
-    "jest.setup.ts",
+    "src/core/**/*"
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -16,8 +15,7 @@
       "src/*": ["src/*"]
     },
     "types": [
-      "jest",
-      "@testing-library/jest-dom",
+      "vitest/globals",
       "node"
     ]
   }

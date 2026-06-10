@@ -1,26 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<MenuItem /> ActionType story renders snapshot 1`] = `
+exports[`<MenuItem /> > ActionType story renders snapshot 1`] = `
 <div
-  class="css-1hskriy e1hhae2w0"
+  class="css-dyfsrh-DemoWrapper e1d4dpqk0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1ils8li0 css-5agaez-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-5gpooo-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
     <span
-      class="css-y3sjyp e1ils8li1"
+      class="css-x8io9u-ContentWrapper eanvvd47"
     >
       <span
-        class="primary-text css-1831mf5 e1ils8li2"
+        class="primary-text css-t02v0g-TextWrapper eanvvd46"
       >
         Text here
       </span>
       <span
-        class="css-z6j8xt e1ils8li4"
+        class="css-1sh6xjd-ColumnWrapper eanvvd44"
       >
         123,456
       </span>
@@ -32,22 +32,22 @@ exports[`<MenuItem /> ActionType story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<MenuItem /> Default story renders snapshot 1`] = `
+exports[`<MenuItem /> > Default story renders snapshot 1`] = `
 <div
-  class="css-1hskriy e1hhae2w0"
+  class="css-dyfsrh-DemoWrapper e1d4dpqk0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1ils8li0 css-5agaez-MuiButtonBase-root-MuiMenuItem-root"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-5gpooo-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
     tabindex="-1"
   >
     <span
-      class="css-zv3iyt e1ils8li5"
+      class="css-s7c4e0-StyledIconWrapper eanvvd43"
     >
       <svg
-        class="css-oa0rwb e1ils8li7"
+        class="css-14b7qq1-DotIcon eanvvd41"
         fill="currentColor"
         height="12"
         viewBox="0 0 12 12"
@@ -62,15 +62,15 @@ exports[`<MenuItem /> Default story renders snapshot 1`] = `
       </svg>
     </span>
     <span
-      class="css-y3sjyp e1ils8li1"
+      class="css-x8io9u-ContentWrapper eanvvd47"
     >
       <span
-        class="primary-text css-1831mf5 e1ils8li2"
+        class="primary-text css-t02v0g-TextWrapper eanvvd46"
       >
         Text here
       </span>
       <span
-        class="css-z6j8xt e1ils8li4"
+        class="css-1sh6xjd-ColumnWrapper eanvvd44"
       >
         123,456
       </span>

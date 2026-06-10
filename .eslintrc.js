@@ -5,7 +5,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    jest: true,
+    "@vitest/env": true,
     node: true,
   },
   // Specifies the ESLint parser
@@ -58,7 +58,7 @@ module.exports = {
     // Allows for the parsing of modern ECMAScript features
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "sonarjs", "jest", "jsx-a11y"],
+  plugins: ["@typescript-eslint", "react", "sonarjs", "@vitest", "jsx-a11y"],
   rules: {
     "@typescript-eslint/ban-types": [
       "error",
