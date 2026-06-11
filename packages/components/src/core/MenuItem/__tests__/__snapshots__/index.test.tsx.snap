@@ -5,7 +5,7 @@ exports[`<MenuItem /> > ActionType story renders snapshot 1`] = `
   class="css-dyfsrh-DemoWrapper e1d4dpqk0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-r82c9j-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-rhhfy4-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
@@ -25,9 +25,6 @@ exports[`<MenuItem /> > ActionType story renders snapshot 1`] = `
         123,456
       </span>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </li>
 </div>
 `;
@@ -37,7 +34,7 @@ exports[`<MenuItem /> > Default story renders snapshot 1`] = `
   class="css-dyfsrh-DemoWrapper e1d4dpqk0"
 >
   <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-r82c9j-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
+    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-rhhfy4-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
     data-testid="MenuItem"
     name="Text here"
     role="menuitem"
@@ -75,9 +72,6 @@ exports[`<MenuItem /> > Default story renders snapshot 1`] = `
         123,456
       </span>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </li>
 </div>
 `;

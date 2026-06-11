@@ -22,7 +22,6 @@ NOTE: Since most of the czi-sds components are built on top of Material UI's equ
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@mui/base"
   "@mui/icons-material"
   "@mui/lab"
   "@mui/material"
@@ -34,10 +33,10 @@ To install @czi-sds/components and the dependencies:
 
 ```
 // with npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @mui/lab react react-dom
 
 // with yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @mui/lab react react-dom
 ```
 
 ## Yarn scripts

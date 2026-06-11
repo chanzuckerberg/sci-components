@@ -8,15 +8,15 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
     class="css-f1w972-StyledIntentMessage em85jr71"
   >
     <label
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e79l7n50 css-1eqad7d-MuiFormControlLabel-root-StyledFormControlLabel"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e79l7n50 css-1jhu33w-MuiFormControlLabel-root-StyledFormControlLabel"
     >
       <span
-        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium e79l7n54 css-144y6oi-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root-StyledCheckbox"
+        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium e79l7n54 css-czzhzi-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root-StyledCheckbox"
         intent="negative"
         label="Input Element Group Label"
       >
         <input
-          class="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+          class="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
           data-indeterminate="false"
           id="checkbox-demo"
           type="checkbox"
@@ -25,12 +25,9 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
           class="css-12udfv5-StyledCheckboxDefaultIcon e79l7n56"
           font-size="medium"
         />
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </span>
       <span
-        class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
       >
         <span
           class="css-13fz3c5-StyledLabelContainer e79l7n53"
@@ -56,7 +53,7 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconExclamationMarkCircleSmall"
           data-testid="IconExclamationMarkCircleSmall"
           fillcontrast="white"
@@ -83,27 +80,28 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
   >
     <div>
       <div
-        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-l1b3ge-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
+        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-s3hvzc-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
       >
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-quhxjy-MuiInputBase-root-MuiOutlinedInput-root"
         >
           <input
             aria-invalid="false"
             aria-label="Input Label"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
             id="input-example"
             placeholder="Input placeholder"
             type="text"
           />
           <fieldset
             aria-hidden="true"
-            class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
+            class="MuiOutlinedInput-notchedOutline css-18p5xg2-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
           >
             <legend
-              class="css-1whs34k-MuiNotchedOutlined-root"
+              class="css-1nf2c5d-MuiNotchedOutlined-root"
             >
               <span
+                aria-hidden="true"
                 class="notranslate"
               >
                 ​
@@ -121,7 +119,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconExclamationMarkCircleSmall"
           data-testid="IconExclamationMarkCircleSmall"
           fillcontrast="white"
@@ -143,7 +141,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconExclamationMarkCircleSmall"
           data-testid="IconExclamationMarkCircleSmall"
           fillcontrast="white"
@@ -165,7 +163,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconGithubSmall"
           data-testid="IconGithubSmall"
           fillcontrast="white"
@@ -187,7 +185,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconCheckCircleSmall"
           data-testid="IconCheckCircleSmall"
           fillcontrast="white"
@@ -209,7 +207,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconCheckCircleSmall"
           data-testid="IconCheckCircleSmall"
           fillcontrast="white"
@@ -228,7 +226,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-z0z4e8-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1iggtbh-MuiSvgIcon-root"
         focusable="false"
         viewBox="0 0 512 512"
       >
@@ -264,27 +262,28 @@ exports[`IntentMessage > Password story renders snapshot 1`] = `
         Enter a Password
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-s5hjd1-MuiFormControl-root-MuiTextField-root-StyledInputBase-applyIntentColor-StyledInputBase"
+        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-142poz6-MuiFormControl-root-MuiTextField-root-StyledInputBase-applyIntentColor-StyledInputBase"
       >
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-quhxjy-MuiInputBase-root-MuiOutlinedInput-root"
         >
           <input
             aria-invalid="false"
             aria-label="Enter a Password"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
             id="password-input"
             placeholder="Password"
             type="password"
           />
           <fieldset
             aria-hidden="true"
-            class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
+            class="MuiOutlinedInput-notchedOutline css-18p5xg2-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
           >
             <legend
-              class="css-1whs34k-MuiNotchedOutlined-root"
+              class="css-1nf2c5d-MuiNotchedOutlined-root"
             >
               <span
+                aria-hidden="true"
                 class="notranslate"
               >
                 ​
@@ -302,7 +301,7 @@ exports[`IntentMessage > Password story renders snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconExclamationMarkCircleSmall"
           data-testid="IconExclamationMarkCircleSmall"
           fillcontrast="white"

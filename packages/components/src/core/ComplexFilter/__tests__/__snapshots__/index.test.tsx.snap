@@ -8,7 +8,7 @@ exports[`<ComplexFilter /> > Default story renders snapshot 1`] = `
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-uiqo66-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-kl0fd9-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
     label="Click Target"
     tabindex="0"
     type="button"
@@ -32,7 +32,7 @@ exports[`<ComplexFilter /> > Default story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconChevronDownSmall"
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
@@ -44,9 +44,6 @@ exports[`<ComplexFilter /> > Default story renders snapshot 1`] = `
         </div>
       </span>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <div
     class="css-kgsrq1-StyledChipsWrapper e1ml0skk0"

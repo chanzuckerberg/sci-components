@@ -9,6 +9,13 @@ import pkg from "./package.json" with { type: "json" };
 
 // External dependencies that should not be bundled into the output to reduce bundle size.
 const external = (id) => {
+  // Externalize the entire MUI scope. Peer deps only list the top-level MUI
+  // packages, but their types transitively reference siblings like
+  // `@mui/system` and `@mui/utils`. From v6 onward those packages' `.d.ts`
+  // files use `export { default } from "..."` re-exports that the declaration
+  // bundler cannot inline, so they must stay external (consumers receive them
+  // transitively via `@mui/material`).
+  if (id === "@mui" || id.startsWith("@mui/")) return true;
   // Externalize peer dependencies
   const peerDeps = Object.keys(pkg.peerDependencies || {});
   return peerDeps.some((dep) => id === dep || id.startsWith(dep + "/"));

@@ -8,7 +8,7 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
     class="css-1foce20-StyledTopSection e1s7ulzi5"
   >
     <a
-      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-hq7sr4-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
+      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-2m4ale-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
       href="https://example.com"
     >
       <div
@@ -23,10 +23,10 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
           Logo Name
         </p>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-5krk2r-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-1t63sc5-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
         >
           <span
-            class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
           >
             Beta
           </span>
@@ -37,35 +37,35 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
       class="css-16ug2xi-StyledNavSection e1s7ulzi6"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
         href="https://example.com/nav/1"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
         href="https://example.com/nav/2"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
         href="https://example.com/nav/3"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
         href="https://example.com/nav/4"
         target="_blank"
       >
         Nav Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
         href="https://example.com/nav/5"
         target="_blank"
       >
@@ -74,7 +74,7 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
     </div>
   </div>
   <hr
-    class="MuiDivider-root MuiDivider-fullWidth eoqhglp0 css-1u86avd-MuiDivider-root-StyledDivider"
+    class="MuiDivider-root MuiDivider-fullWidth eoqhglp0 css-1qk0rfj-MuiDivider-root-StyledDivider"
   />
   <div
     class="css-15fy4r9-StyledBottomSection e1s7ulzi0"
@@ -83,31 +83,31 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
       class="css-cc475o-StyledLinkSection e1s7ulzi4"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
         href="https://example.com/nav/1"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
         href="https://example.com/nav/2"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
         href="https://example.com/nav/3"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
         href="https://example.com/nav/4"
       >
         Link Item
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-u83utc-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-hj0ku2-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
         href="https://example.com/nav/5"
       >
         Link Item
@@ -117,7 +117,7 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
       class="css-1r68hkw-StyledImageSection e1s7ulzi2"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-hq7sr4-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-2m4ale-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
         href="https://example.com/1"
       >
         <div
@@ -127,7 +127,7 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
         </div>
       </a>
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-hq7sr4-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-2m4ale-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
         href="https://example.com/2"
       >
         <div
@@ -150,7 +150,7 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
       class="css-1foce20-StyledTopSection e1s7ulzi5"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-hq7sr4-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-2m4ale-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
         href="https://example.com"
       >
         <div
@@ -165,10 +165,10 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
             Logo Name
           </p>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-5krk2r-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-1t63sc5-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
           >
             <span
-              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+              class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
             >
               Beta
             </span>
@@ -179,35 +179,35 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
         class="css-16ug2xi-StyledNavSection e1s7ulzi6"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
           href="https://example.com/nav/1"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
           href="https://example.com/nav/2"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
           href="https://example.com/nav/3"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
           href="https://example.com/nav/4"
           target="_blank"
         >
           Nav Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1mth3jf-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1esv1b90 ecbcrkq0 css-1n2wp25-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledNavItemLink"
           href="https://example.com/nav/5"
           target="_blank"
         >
@@ -216,7 +216,7 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
       </div>
     </div>
     <hr
-      class="MuiDivider-root MuiDivider-fullWidth eoqhglp0 css-1u86avd-MuiDivider-root-StyledDivider"
+      class="MuiDivider-root MuiDivider-fullWidth eoqhglp0 css-1qk0rfj-MuiDivider-root-StyledDivider"
     />
     <div
       class="css-15fy4r9-StyledBottomSection e1s7ulzi0"
@@ -225,31 +225,31 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
         class="css-cc475o-StyledLinkSection e1s7ulzi4"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
           href="https://example.com/nav/1"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
           href="https://example.com/nav/2"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
           href="https://example.com/nav/3"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-1cpuzkj-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-t11p5k-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
           href="https://example.com/nav/4"
         >
           Link Item
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-u83utc-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover eoqhglp1 ecbcrkq0 css-hj0ku2-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLinkItemLink"
           href="https://example.com/nav/5"
         >
           Link Item
@@ -259,7 +259,7 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
         class="css-1r68hkw-StyledImageSection e1s7ulzi2"
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-hq7sr4-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-2m4ale-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
           href="https://example.com/1"
         >
           <div
@@ -269,7 +269,7 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
           </div>
         </a>
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-hq7sr4-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover ecbcrkq0 css-2m4ale-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink"
           href="https://example.com/2"
         >
           <div

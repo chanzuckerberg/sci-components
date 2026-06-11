@@ -2,7 +2,7 @@ import {
   AutocompleteChangeDetails,
   AutocompleteChangeReason,
   AutocompleteValue,
-} from "@mui/base";
+} from "@mui/material/useAutocomplete";
 import { useCallback, useEffect, useState } from "react";
 import { AutocompleteMultiColumnOption } from "@components/src/core/Autocomplete";
 import AutocompleteBase, {

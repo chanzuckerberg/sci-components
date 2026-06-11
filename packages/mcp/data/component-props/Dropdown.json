@@ -54,7 +54,7 @@
       "options": {
         "type": "\"readonly T[]\" | \"AutocompleteSingleColumnOption<T>[]\" | \"AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]\"",
         "isRequired": true,
-        "description": "Array of options."
+        "description": "A list of options that will be shown in the Autocomplete."
       },
       "search": {
         "type": "\"false\" | \"true\"",

@@ -9,16 +9,16 @@ exports[`<InputText /> > Default story renders snapshot 1`] = `
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root e178j4nw0 css-1yrme1m-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
+    class="MuiFormControl-root MuiTextField-root e178j4nw0 css-1nkwvqn-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
   >
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-quhxjy-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="false"
         aria-label="Label"
         autocomplete="off"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
         id="Test"
         name="input-text-name"
         placeholder="Value"
@@ -26,12 +26,13 @@ exports[`<InputText /> > Default story renders snapshot 1`] = `
       />
       <fieldset
         aria-hidden="true"
-        class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
+        class="MuiOutlinedInput-notchedOutline css-18p5xg2-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-1whs34k-MuiNotchedOutlined-root"
+          class="css-1nf2c5d-MuiNotchedOutlined-root"
         >
           <span
+            aria-hidden="true"
             class="notranslate"
           >
             ​

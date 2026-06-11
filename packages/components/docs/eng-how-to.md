@@ -24,7 +24,6 @@ yarn add @czi-sds/components
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@mui/base"
   "@mui/icons-material"
   "@mui/lab"
   "@mui/material"
@@ -36,10 +35,10 @@ To install the dependencies:
 
 ```
 // with npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @mui/lab react react-dom
 
 // with yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/base @mui/material @mui/icons-material @mui/lab react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @mui/lab react react-dom
 ```
 
 ## Usage

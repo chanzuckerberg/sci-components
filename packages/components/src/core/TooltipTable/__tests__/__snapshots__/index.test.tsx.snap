@@ -2,7 +2,7 @@
 
 exports[`<TooltipTable /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiTableContainer-root epg5fse5 css-7cn2vm-MuiTableContainer-root-StyledTableContainer"
+  class="MuiTableContainer-root epg5fse5 css-x3hpcg-MuiTableContainer-root-StyledTableContainer"
 >
   <div
     class="css-iu3zfo-Section epg5fse4"
@@ -14,49 +14,49 @@ exports[`<TooltipTable /> > Default story renders snapshot 1`] = `
       Section 1
     </div>
     <table
-      class="MuiTable-root css-rqglhn-MuiTable-root"
+      class="MuiTable-root css-1xwxv7r-MuiTable-root"
     >
       <tbody
-        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        class="MuiTableBody-root css-gmh7jj-MuiTableBody-root"
       >
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 1
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             1
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 2
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             2
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 3
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             3
           </td>
@@ -74,63 +74,63 @@ exports[`<TooltipTable /> > Default story renders snapshot 1`] = `
       Section 2
     </div>
     <table
-      class="MuiTable-root css-rqglhn-MuiTable-root"
+      class="MuiTable-root css-1xwxv7r-MuiTable-root"
     >
       <tbody
-        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        class="MuiTableBody-root css-gmh7jj-MuiTableBody-root"
       >
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 4
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             4
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 5 
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             5
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 6
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             6
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 7
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             7
           </td>
@@ -148,49 +148,49 @@ exports[`<TooltipTable /> > Default story renders snapshot 1`] = `
       Section 3
     </div>
     <table
-      class="MuiTable-root css-rqglhn-MuiTable-root"
+      class="MuiTable-root css-1xwxv7r-MuiTable-root"
     >
       <tbody
-        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        class="MuiTableBody-root css-gmh7jj-MuiTableBody-root"
       >
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 8
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             8
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 9
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             9
           </td>
         </tr>
         <tr
-          class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          class="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
         >
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-p1zaee-MuiTableCell-root-RowLabel"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall epg5fse2 css-1xx0dxa-MuiTableCell-root-RowLabel"
           >
             Label 10
           </td>
           <td
-            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-14wiu5-MuiTableCell-root-RowValue"
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall epg5fse1 css-smcriy-MuiTableCell-root-RowValue"
           >
             10
           </td>
@@ -209,7 +209,7 @@ exports[`<TooltipTable /> > WithinTooltip story renders snapshot 1`] = `
   >
     <button
       aria-label="tooltip test button"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-14eops5-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1gtff9l-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       data-mui-internal-clone-element="true"
       tabindex="0"
       type="button"
@@ -222,7 +222,7 @@ exports[`<TooltipTable /> > WithinTooltip story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconExclamationMarkCircleSmall"
             data-testid="IconExclamationMarkCircleSmall"
             fillcontrast="white"
@@ -233,9 +233,6 @@ exports[`<TooltipTable /> > WithinTooltip story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </div>
 </div>

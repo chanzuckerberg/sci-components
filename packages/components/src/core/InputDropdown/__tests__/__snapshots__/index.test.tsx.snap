@@ -4,7 +4,7 @@ exports[`<InputDropdown /> > Default story renders snapshot 1`] = `
 <div>
   <button
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-ry0h6r-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-la8p4-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
     data-testid="InputDropdown"
     label="Label"
     tabindex="0"
@@ -28,7 +28,7 @@ exports[`<InputDropdown /> > Default story renders snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconChevronDownSmall"
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
@@ -40,9 +40,6 @@ exports[`<InputDropdown /> > Default story renders snapshot 1`] = `
         </div>
       </span>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;

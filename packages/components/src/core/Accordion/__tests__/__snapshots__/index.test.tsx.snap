@@ -2,59 +2,64 @@
 
 exports[`<Accordion /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters eyyglju0 css-11xoru2-MuiPaper-root-MuiAccordion-root-StyledAccordion-StyledAccordion"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters eyyglju0 css-5ioun9-MuiPaper-root-MuiAccordion-root-StyledAccordion-StyledAccordion"
+  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
 >
-  <div
-    aria-controls="default-story-content"
-    aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters e12j6am41 css-ilo3sf-MuiButtonBase-root-MuiAccordionSummary-root-StyledAccordionHeader-StyledAccordionHeader"
-    id="default-story-header"
-    role="button"
-    tabindex="0"
+  <h3
+    class="MuiAccordion-heading css-cy7rkm-MuiAccordion-heading"
   >
-    <div
-      class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-eqpfi5-MuiAccordionSummary-content"
+    <button
+      aria-controls="default-story-content"
+      aria-expanded="false"
+      class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters e12j6am41 css-1l1bwks-MuiButtonBase-root-MuiAccordionSummary-root-StyledAccordionHeader-StyledAccordionHeader"
+      id="default-story-header"
+      tabindex="0"
+      type="button"
     >
-      Accordion Header
-    </div>
-    <div
-      class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
-    >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <span
+        class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-yfrx4k-MuiAccordionSummary-content"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconChevronDownSmall"
-          data-testid="IconChevronDownSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
-    </div>
-  </div>
+        Accordion Header
+      </span>
+      <span
+        class="MuiAccordionSummary-expandIconWrapper css-1wqf3nl-MuiAccordionSummary-expandIconWrapper"
+      >
+        <div
+          class="css-1q8yjse-StyledIcon emi0zh40"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            data-file-name="IconChevronDownSmall"
+            data-testid="IconChevronDownSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
+    </button>
+  </h3>
   <div
-    class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+    class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-cwrbtg-MuiCollapse-root"
     style="min-height: 0px;"
   >
     <div
-      class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+      class="MuiCollapse-wrapper MuiCollapse-vertical css-1x6hinx-MuiCollapse-wrapper"
     >
       <div
-        class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+        class="MuiCollapse-wrapperInner MuiCollapse-vertical css-1i4ywhz-MuiCollapse-wrapperInner"
       >
         <div
           aria-labelledby="default-story-header"
-          class="MuiAccordion-region"
+          class="MuiAccordion-region css-at4ued-MuiAccordion-region"
           id="default-story-content"
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root e1kfnxah0 css-di2wxh-MuiAccordionDetails-root-StyledAccordionDetails-StyledAccordionDetails"
+            class="MuiAccordionDetails-root e1kfnxah0 css-fe87gk-MuiAccordionDetails-root-StyledAccordionDetails-StyledAccordionDetails"
             id="default-story-content"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

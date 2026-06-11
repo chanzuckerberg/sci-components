@@ -25,7 +25,6 @@ const doNotForwardProps = [
   "closeButtonOnClick",
   "CloseButtonComponent",
   "isBackdropClickEnabled",
-  "slotProps",
 ];
 
 const basicPanelStyles = (props: PanelExtraProps): SerializedStyles => {

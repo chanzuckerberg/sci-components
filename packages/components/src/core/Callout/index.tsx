@@ -1,5 +1,4 @@
-import { AlertProps } from "@mui/lab";
-import { Grow } from "@mui/material";
+import { AlertProps, Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
 import { StyledCallout } from "./style";
