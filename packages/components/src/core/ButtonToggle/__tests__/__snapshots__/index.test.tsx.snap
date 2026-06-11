@@ -2,11 +2,11 @@
 
 exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
 <div
-  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <button
     aria-label="button-toggle"
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-f7i8f7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-8ba2q6-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
     tabindex="0"
     type="button"
   >
@@ -30,7 +30,7 @@ exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
       </div>
     </span>
     <span
-      class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
     >
       Label
     </span>

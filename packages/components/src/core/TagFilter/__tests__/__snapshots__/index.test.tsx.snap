@@ -6,13 +6,13 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
 >
   <div>
     <button
-      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-s054fq-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
       disabled=""
       tabindex="-1"
       type="button"
     >
       <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         Delete the tag by clicking on its icon
       </span>
@@ -31,12 +31,12 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary et5j5k2 css-46ca41-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary et5j5k2 css-xhz0g7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"

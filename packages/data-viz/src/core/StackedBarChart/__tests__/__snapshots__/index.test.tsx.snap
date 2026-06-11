@@ -289,24 +289,24 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1y6q75o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Select All
         </span>
       </button>
       <button
-        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-s054fq-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Clear Selection
         </span>
@@ -608,24 +608,24 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1y6q75o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Select All
         </span>
       </button>
       <button
-        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-s054fq-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Clear Selection
         </span>
@@ -1150,24 +1150,24 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1y6q75o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Select All
         </span>
       </button>
       <button
-        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-s054fq-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Clear Selection
         </span>
@@ -1438,24 +1438,24 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
       style="display: flex; gap: 8px; margin-bottom: 12px;"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1y6q75o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Select All
         </span>
       </button>
       <button
-        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-s054fq-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           Clear Selection
         </span>

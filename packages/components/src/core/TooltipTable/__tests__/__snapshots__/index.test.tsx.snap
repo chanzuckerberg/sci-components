@@ -209,13 +209,13 @@ exports[`<TooltipTable /> > WithinTooltip story renders snapshot 1`] = `
   >
     <button
       aria-label="tooltip test button"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1gtff9l-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1kzxwx6-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       data-mui-internal-clone-element="true"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"

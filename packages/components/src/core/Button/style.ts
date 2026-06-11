@@ -88,6 +88,17 @@ const GeneralButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
     white-space: nowrap;
     min-width: fit-content;
 
+    &::before {
+      /*
+       * (MUI v7+): When a startIcon (or start-positioned loading indicator) is
+       * present, MUI adds a zero-width-space "::before" pseudo-element to
+       * preserve the text baseline. Because the SDS button root is a flex
+       * container with a "gap", that empty pseudo-element becomes a flex item
+       * and introduces an extra gap to the left of the startIcon.
+       */
+      display: none;
+    }
+
     &:hover {
       border: none;
     }
@@ -573,6 +584,10 @@ const SecondaryButtonStyles = (props: ButtonExtraProps): SerializedStyles => {
   return css`
     &::before {
       content: "";
+      /* Re-enable the pseudo-element hidden by GeneralButtonStyles; the
+       * secondary button uses "::before" as an absolutely-positioned background
+       * overlay (it is removed from flex flow, so it adds no startIcon gap). */
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
