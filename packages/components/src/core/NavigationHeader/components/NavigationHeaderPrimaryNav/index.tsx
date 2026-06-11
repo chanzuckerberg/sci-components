@@ -234,6 +234,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           href={defaultUrl}
           target={target}
           rel={rel}
+          size="medium"
         >
           <StyledLabel
             itemType={item.itemType}
@@ -289,6 +290,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
           sdsStyle="minimal"
           innerSdsStyle={sdsStyle}
           navVariant="primary"
+          size="medium"
         >
           <StyledLabel
             itemType={item.itemType}
@@ -456,6 +458,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
         isNarrow={isNarrow}
         innerSdsStyle={sdsStyle}
         navVariant="primary"
+        size="medium"
       >
         <StyledLabel
           active={isActive}

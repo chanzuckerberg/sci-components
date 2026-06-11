@@ -32,7 +32,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
         class="css-v5o7zy e1szsfg80"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-17x9ul4-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-1oxa8py-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
@@ -63,7 +63,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           class="css-79elbk e1jzgkxb35"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
             href="https://www.google.com"
             items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
             rel="noopener noreferrer"
@@ -113,7 +113,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           class="css-79elbk e1jzgkxb35"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
             href="/services"
             items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
             tabindex="0"
@@ -161,7 +161,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           class="css-79elbk e1jzgkxb35"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
             href="https://www.google.com"
             items="[object Object],[object Object],[object Object]"
             rel="noopener noreferrer"
@@ -216,7 +216,7 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
         class="css-79elbk e1jzgkxb35"
       >
         <a
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-v4yuu4-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
           href="/research"
           items="[object Object],[object Object]"
           tabindex="0"
@@ -359,7 +359,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
         class="css-v5o7zy e1szsfg80"
       >
         <a
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
           role="button"
           tabindex="0"
         >
@@ -387,7 +387,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           />
         </a>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >
@@ -424,7 +424,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
           items="[object Object],[object Object]"
           tabindex="0"
           type="button"
@@ -550,7 +550,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       class="css-v5o7zy e1szsfg80"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-v4yuu4-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
         items="[object Object],[object Object]"
         tabindex="0"
         type="button"
@@ -590,7 +590,7 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-v4yuu4-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="button"
       >
@@ -795,7 +795,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
           class="css-v5o7zy e1szsfg80"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
             role="button"
             tabindex="0"
           >
@@ -823,7 +823,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             />
           </a>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
@@ -860,7 +860,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-6frunh-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
             items="[object Object],[object Object]"
             tabindex="0"
             type="button"
@@ -986,7 +986,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         class="css-v5o7zy e1szsfg80"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-v4yuu4-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
           items="[object Object],[object Object]"
           tabindex="0"
           type="button"
@@ -1026,7 +1026,7 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-v4yuu4-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
           tabindex="0"
           type="button"
         >

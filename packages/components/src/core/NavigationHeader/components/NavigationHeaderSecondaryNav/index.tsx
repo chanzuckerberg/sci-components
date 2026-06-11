@@ -168,6 +168,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           href={defaultUrl}
           target={target}
           rel={rel}
+          size="medium"
         >
           <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
             {label as ReactNode}
@@ -209,6 +210,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
             setActiveDropdownKey(key);
             parentOnClick?.(e);
           }}
+          size="medium"
         >
           <StyledLabelTextWrapper active={isDropdownOpen} isNarrow={isNarrow}>
             {label as ReactNode}
@@ -353,6 +355,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
         isNarrow={isNarrow}
         sdsStyle="minimal"
         navVariant="secondary"
+        size="medium"
       >
         {label as ReactNode}
         {tag && (
