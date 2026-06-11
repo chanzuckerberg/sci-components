@@ -7,7 +7,7 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { addOpacityToHex } from "../styles/common/utils/opacity";
 
 export const StyledPopover = styled(Popover)`

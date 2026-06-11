@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import { Menu } from "./stories/default";
 
 export default {

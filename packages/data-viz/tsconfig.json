@@ -3,9 +3,13 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist",
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@data-viz/src/*": ["./src/*"],
+      "@components/src/*": ["../components/src/*"]
+    }
   },
-  "include": ["./src/**/*", "jest.setup.ts", "../../.eslintrc.js"],
+  "include": ["./src/**/*", "../../.eslintrc.js"],
   "exclude": ["node_modules", "**/*.scss", "**/*.css"],
   "references": []
 }

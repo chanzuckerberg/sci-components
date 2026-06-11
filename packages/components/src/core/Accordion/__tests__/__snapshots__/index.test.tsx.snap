@@ -1,13 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Accordion /> Default story renders snapshot 1`] = `
+exports[`<Accordion /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters escj8oa0 css-lgr9qu-MuiPaper-root-MuiAccordion-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters eyyglju0 css-11xoru2-MuiPaper-root-MuiAccordion-root-StyledAccordion-StyledAccordion"
 >
   <div
     aria-controls="default-story-content"
     aria-expanded="false"
-    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters e8nnl4u0 css-8tb10p-MuiButtonBase-root-MuiAccordionSummary-root"
+    class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters e12j6am41 css-ilo3sf-MuiButtonBase-root-MuiAccordionSummary-root-StyledAccordionHeader-StyledAccordionHeader"
     id="default-story-header"
     role="button"
     tabindex="0"
@@ -21,11 +21,11 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
       class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
     >
       <div
-        class="css-1obf64m eo7r9jx1"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -54,7 +54,7 @@ exports[`<Accordion /> Default story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root e1gzlo0w0 css-n3vpvm-MuiAccordionDetails-root"
+            class="MuiAccordionDetails-root e1kfnxah0 css-di2wxh-MuiAccordionDetails-root-StyledAccordionDetails-StyledAccordionDetails"
             id="default-story-content"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

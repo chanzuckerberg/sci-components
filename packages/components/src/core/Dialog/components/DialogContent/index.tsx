@@ -1,7 +1,7 @@
 import { DialogContentProps as RawDialogContentProps } from "@mui/material";
 import { forwardRef } from "react";
 import { StyledDialogContent } from "./style";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export type DialogContentProps = RawDialogContentProps & {
   classes?: {

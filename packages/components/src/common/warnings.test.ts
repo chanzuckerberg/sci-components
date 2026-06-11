@@ -1,15 +1,16 @@
+import { type MockInstance } from "vitest";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 
 export {};
 
 describe("showWarningIfFirstOccurence", () => {
-  let consoleWarnSpy: jest.SpyInstance;
+  let consoleWarnSpy: MockInstance;
 
   beforeEach(() => {
-    consoleWarnSpy = jest.spyOn(console, "warn");
+    consoleWarnSpy = vi.spyOn(console, "warn");
   });
 
   it("shows warning on first call", () => {

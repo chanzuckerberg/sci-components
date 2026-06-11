@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawMenuItem from "src/core/MenuItem";
+import { Args } from "@storybook/react-vite";
+import RawMenuItem from "@components/src/core/MenuItem";
 import { DemoWrapper } from "../style";
 
 export const MenuItem = (props: Args): JSX.Element => {

@@ -1,11 +1,11 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   BANNER_EXCLUDED_CONTROLS,
   BANNER_ICON_OPTIONS,
   BANNER_TEXT,
 } from "./constants";
 import { Banner } from "./stories/default";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

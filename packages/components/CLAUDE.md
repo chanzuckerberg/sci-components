@@ -414,20 +414,26 @@ export const Default = {
 
 ## Build System
 
-### Rollup Configuration
+### Rolldown Configuration
 
 - **Input:** `src/index.ts` - Main package entry
 - **Outputs:** Both CommonJS and ESM formats
-- **Banner:** `"use client";` directive for Next.js compatibility
+- **Banner:** `"use client";` directive for Next.js compatibility (JS output only)
 - **External:** All peer dependencies excluded from bundle
+- **TypeScript/JSX:** Transpiled natively via Oxc (no separate TS plugin)
+- **CommonJS/Node resolution:** Handled natively by Rolldown (no `@rollup/plugin-commonjs` / `@rollup/plugin-node-resolve`)
 
 ### Key Plugins
 
-- `rollup-plugin-ts` - TypeScript compilation
+- `rolldown-plugin-dts` - TypeScript declaration (`.d.ts`) generation
+- `@rolldown/plugin-babel` + `@emotion/babel-plugin` - Emotion compile-time transform (styled-component selectors)
 - `@svgr/rollup` - SVG to React component transformation
-- `rollup-plugin-css-only` - CSS extraction
-- `rollup-plugin-bundle-scss` - SCSS bundling
-- `rollup-plugin-copy` - Asset copying (tailwind.json)
+- `rollup-plugin-copy` - Asset copying (tailwind.json, variables.css, variables.scss)
+- `rollup-plugin-delete` - Cleans `dist` before building
+
+CSS/SCSS are imported as side effects in `src/index.ts`; Rolldown treats those
+extensions as empty modules (`moduleTypes`) and the generated `variables.css` /
+`variables.scss` are copied into `dist` (Rolldown dropped CSS bundling support).
 
 ## Development Guidelines
 

@@ -12,5 +12,5 @@ export const StyledContainer = styled("div", {
 
 export const StyledHeatmapWrapper = styled("div")`
   position: relative;
-  margin-left: ${Y_AXIS_WIDTH}px;
+  margin-left: ${Y_AXIS_WIDTH - 10}px;
 `;

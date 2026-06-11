@@ -4,7 +4,7 @@ import {
   AutocompleteValue,
 } from "@mui/base";
 import { useCallback, useEffect, useState } from "react";
-import { AutocompleteMultiColumnOption } from "src/core/Autocomplete";
+import { AutocompleteMultiColumnOption } from "@components/src/core/Autocomplete";
 import AutocompleteBase, {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,

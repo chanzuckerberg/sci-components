@@ -5,7 +5,7 @@ import {
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export const StyledMenu = styled(Menu)`
   & {

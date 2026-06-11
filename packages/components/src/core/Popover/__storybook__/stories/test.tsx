@@ -1,7 +1,7 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React from "react";
-import Button from "src/core/Button";
-import RawPopover from "src/core/Popover";
+import Button from "@components/src/core/Button";
+import RawPopover from "@components/src/core/Popover";
 
 export const TestDemo = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(

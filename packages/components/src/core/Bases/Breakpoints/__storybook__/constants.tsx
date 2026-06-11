@@ -1,5 +1,5 @@
 import { Breakpoint } from "@mui/material";
-import { Breakpoints } from "src/core/styles/common/constants/breakpoints";
+import { Breakpoints } from "@components/src/core/styles/common/constants/breakpoints";
 
 export const BREAKPOINTS_USAGE: Record<Breakpoint, string> = {
   lg: "Large breakpoint can be used for all large displays.",

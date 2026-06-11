@@ -1,23 +1,23 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
+exports[`<NavigationHeader /> > DrawerStyle story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky e1jzgkxb1 css-16ammj1-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky e1bn4x3g34 css-1km1s24-MuiPaper-root-MuiAppBar-root-StyledAppBar"
   style="top: 0px;"
   tabindex="0"
 >
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular e1jzgkxb2 css-1qca7cz-MuiToolbar-root"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular e1bn4x3g33 css-tw0g88-MuiToolbar-root-StyledToolbar"
   >
     <a
-      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1jzgkxb8 e1jts3e70 css-842582-MuiTypography-root-MuiLink-root"
+      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1bn4x3g27 ecbcrkq0 css-j4g8ja-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLogoLinkWrapper"
     >
       <div
-        class="css-oqlvc3 e1jzgkxb10"
+        class="css-d4qctl-StyledTitleContainer e1bn4x3g25"
       >
         <div
-          class="css-lktalz e1jzgkxb11"
+          class="css-1pjyetm-StyledTitleTagWrapper e1bn4x3g24"
         >
           <p>
             My App
@@ -26,30 +26,30 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
       </div>
     </a>
     <div
-      class="css-udi0f9 e1jzgkxb13"
+      class="css-19hl789-StyledPrimaryNavContainer e1bn4x3g22"
     >
       <section
-        class="css-v5o7zy e1szsfg80"
+        class="css-pirabh-StyledSection-StyledSection e13tbovl6"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-1oxa8py-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-fjil8i-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <span
-              class="css-1ylsujs ei1tb9o1"
+              class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
             >
               <div
-                class="css-1o3iwi4 e1szsfg85"
+                class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
               >
                 Home
               </div>
               <div
                 aria-hidden="true"
-                class="css-1bx20r1 e1szsfg86"
+                class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
               >
                 Home
               </div>
@@ -60,10 +60,10 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           />
         </button>
         <div
-          class="css-79elbk e1jzgkxb35"
+          class="css-16cw766-StyledHoverDrawerContainer e1bn4x3g0"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
             href="https://www.google.com"
             items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
             rel="noopener noreferrer"
@@ -71,28 +71,28 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
             target="_blank"
           >
             <span
-              class="css-12bqywg e1gcweb21"
+              class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
             >
               <span
-                class="css-1ylsujs ei1tb9o1"
+                class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
               >
                 <div
-                  class="css-1o3iwi4 e1szsfg85"
+                  class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
                 >
                   Products
                 </div>
                 <div
                   aria-hidden="true"
-                  class="css-1bx20r1 e1szsfg86"
+                  class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
                 >
                   Products
                 </div>
                 <div
-                  class="css-1obf64m eo7r9jx1"
+                  class="css-1q8yjse-StyledIcon emi0zh40"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                     data-file-name="IconChevronDownSmall"
                     data-testid="IconChevronDownSmall"
                     fillcontrast="white"
@@ -110,37 +110,37 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           </a>
         </div>
         <div
-          class="css-79elbk e1jzgkxb35"
+          class="css-16cw766-StyledHoverDrawerContainer e1bn4x3g0"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
             href="/services"
             items="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
             tabindex="0"
           >
             <span
-              class="css-12bqywg e1gcweb21"
+              class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
             >
               <span
-                class="css-1ylsujs ei1tb9o1"
+                class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
               >
                 <div
-                  class="css-1o3iwi4 e1szsfg85"
+                  class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
                 >
                   Services
                 </div>
                 <div
                   aria-hidden="true"
-                  class="css-1bx20r1 e1szsfg86"
+                  class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
                 >
                   Services
                 </div>
                 <div
-                  class="css-1obf64m eo7r9jx1"
+                  class="css-1q8yjse-StyledIcon emi0zh40"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                     data-file-name="IconChevronDownSmall"
                     data-testid="IconChevronDownSmall"
                     fillcontrast="white"
@@ -158,10 +158,10 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
           </a>
         </div>
         <div
-          class="css-79elbk e1jzgkxb35"
+          class="css-16cw766-StyledHoverDrawerContainer e1bn4x3g0"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
             href="https://www.google.com"
             items="[object Object],[object Object],[object Object]"
             rel="noopener noreferrer"
@@ -169,28 +169,28 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
             target="_blank"
           >
             <span
-              class="css-12bqywg e1gcweb21"
+              class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
             >
               <span
-                class="css-1ylsujs ei1tb9o1"
+                class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
               >
                 <div
-                  class="css-1o3iwi4 e1szsfg85"
+                  class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
                 >
                   Benchmarks
                 </div>
                 <div
                   aria-hidden="true"
-                  class="css-1bx20r1 e1szsfg86"
+                  class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
                 >
                   Benchmarks
                 </div>
                 <div
-                  class="css-1obf64m eo7r9jx1"
+                  class="css-1q8yjse-StyledIcon emi0zh40"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                     data-file-name="IconChevronDownSmall"
                     data-testid="IconChevronDownSmall"
                     fillcontrast="white"
@@ -210,37 +210,37 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
       </section>
     </div>
     <section
-      class="css-v5o7zy e1szsfg80"
+      class="css-pirabh-StyledSection-StyledSection e13tbovl6"
     >
       <div
-        class="css-79elbk e1jzgkxb35"
+        class="css-16cw766-StyledHoverDrawerContainer e1bn4x3g0"
       >
         <a
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-12njv1n-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem-UnifiedNavItem"
           href="/research"
           items="[object Object],[object Object]"
           tabindex="0"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <div
-              class="css-1o3iwi4 e1szsfg85"
+              class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
             >
               Research
             </div>
             <div
               aria-hidden="true"
-              class="css-1bx20r1 e1szsfg86"
+              class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
             >
               Research
             </div>
             <div
-              class="css-1obf64m eo7r9jx1"
+              class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
@@ -258,15 +258,15 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
       </div>
     </section>
     <section
-      class="css-1wqw7la e1jzgkxb15"
+      class="css-1xgwlqi-StyledButtonSection e1bn4x3g20"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1jzgkxb5 e1gcweb20 css-1h8umtp-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1bn4x3g30 et5j5k2 css-1n4xhz9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledHeaderButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           Sign in
         </span>
@@ -276,19 +276,19 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
       </button>
       <button
         aria-label="[object Object]"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1jzgkxb7 e1gcweb20 css-htzwzl-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1bn4x3g28 et5j5k2 css-13z2n84-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledWideIconButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           <div
-            class="css-1obf64m eo7r9jx1"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconPersonSmall"
               data-testid="IconPersonSmall"
               fillcontrast="white"
@@ -308,25 +308,25 @@ exports[`<NavigationHeader /> DrawerStyle story renders snapshot 1`] = `
 </header>
 `;
 
-exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
+exports[`<NavigationHeader /> > DropdownStyle story renders snapshot 1`] = `
 <header
   aria-label="Main navigation"
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky e1jzgkxb1 css-16ammj1-MuiPaper-root-MuiAppBar-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky e1bn4x3g34 css-1km1s24-MuiPaper-root-MuiAppBar-root-StyledAppBar"
   style="top: 0px;"
   tabindex="0"
 >
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular e1jzgkxb2 css-1qca7cz-MuiToolbar-root"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular e1bn4x3g33 css-tw0g88-MuiToolbar-root-StyledToolbar"
   >
     <a
-      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1jzgkxb8 e1jts3e70 css-842582-MuiTypography-root-MuiLink-root"
+      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1bn4x3g27 ecbcrkq0 css-j4g8ja-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLogoLinkWrapper"
       href="https://chanzuckerberg.com"
     >
       <div
-        class="css-oqlvc3 e1jzgkxb10"
+        class="css-d4qctl-StyledTitleContainer e1bn4x3g25"
       >
         <div
-          class="css-70qvj9 e1jzgkxb9"
+          class="css-1m21yd3-StyledLogoWrapper e1bn4x3g26"
         >
           <div
             style="align-items: center; display: flex; font-size: 10px; font-weight: normal; height: 24px; justify-content: center; width: 50px;"
@@ -335,13 +335,13 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           </div>
         </div>
         <div
-          class="css-lktalz e1jzgkxb11"
+          class="css-1pjyetm-StyledTitleTagWrapper e1bn4x3g24"
         >
           <p>
             Title
           </p>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e1jzgkxb12 e2h2wz80 css-6q3dh6-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e1bn4x3g23 esrfbz40 css-hvtshh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -353,30 +353,30 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       </div>
     </a>
     <div
-      class="css-udi0f9 e1jzgkxb13"
+      class="css-19hl789-StyledPrimaryNavContainer e1bn4x3g22"
     >
       <section
-        class="css-v5o7zy e1szsfg80"
+        class="css-pirabh-StyledSection-StyledSection e13tbovl6"
       >
         <a
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
           role="button"
           tabindex="0"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <span
-              class="css-1ylsujs ei1tb9o1"
+              class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
             >
               <div
-                class="css-1o3iwi4 e1szsfg85"
+                class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
               >
                 Primary
               </div>
               <div
                 aria-hidden="true"
-                class="css-1bx20r1 e1szsfg86"
+                class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
               >
                 Primary
               </div>
@@ -387,29 +387,29 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           />
         </a>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <span
-              class="css-1ylsujs ei1tb9o1"
+              class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
             >
               <div
-                class="css-1o3iwi4 e1szsfg85"
+                class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
               >
                 Primary
               </div>
               <div
                 aria-hidden="true"
-                class="css-1bx20r1 e1szsfg86"
+                class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
               >
                 Primary
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e8dom8s1 e2h2wz80 css-6q3dh6-MuiChip-root"
+                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary etq4jsl1 esrfbz40 css-n8zrq8-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
               >
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -424,34 +424,34 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
           items="[object Object],[object Object]"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <span
-              class="css-1ylsujs ei1tb9o1"
+              class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
             >
               <div
-                class="css-1o3iwi4 e1szsfg85"
+                class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
               >
                 Primary
               </div>
               <div
                 aria-hidden="true"
-                class="css-1bx20r1 e1szsfg86"
+                class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
               >
                 Primary
               </div>
               <div
-                class="css-1obf64m eo7r9jx1"
+                class="css-1q8yjse-StyledIcon emi0zh40"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                   data-file-name="IconChevronDownSmall"
                   data-testid="IconChevronDownSmall"
                   fillcontrast="white"
@@ -470,19 +470,19 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       </section>
       <div>
         <label
-          class="css-1509c06 e1vnn4ca0"
+          class="css-11su3a8-StyledLabel e1h1uy4z2"
           for="nav-bar-search"
         >
           Search
         </label>
         <div
-          class="MuiFormControl-root MuiTextField-root e1jzgkxb14 e1vnn4ca1 css-chm3rv-MuiFormControl-root-MuiTextField-root"
+          class="MuiFormControl-root MuiTextField-root e1bn4x3g21 e1h1uy4z1 css-1b4gs1z-MuiFormControl-root-MuiTextField-root-StyledSearchBase-rounded-StyledSearchBase-StyledSearch"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
           >
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1vnn4ca2 css-10894y9-MuiInputAdornment-root"
+              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-cusln8-MuiInputAdornment-root-StyledInputAdornment"
             >
               <span
                 class="notranslate"
@@ -491,19 +491,19 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
               </span>
               <button
                 aria-label="search-button"
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-1wgvjz8-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1xt4pop-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
                 tabindex="0"
                 type="button"
               >
                 <span
-                  class="css-12bqywg e1gcweb21"
+                  class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
                 >
                   <div
-                    class="css-1obf64m eo7r9jx1"
+                    class="css-1q8yjse-StyledIcon emi0zh40"
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                       data-file-name="IconSearchSmall"
                       data-testid="IconSearchSmall"
                       fillcontrast="white"
@@ -547,34 +547,34 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       </div>
     </div>
     <section
-      class="css-v5o7zy e1szsfg80"
+      class="css-pirabh-StyledSection-StyledSection e13tbovl6"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-12njv1n-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem-UnifiedNavItem"
         items="[object Object],[object Object]"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           <div
-            class="css-1o3iwi4 e1szsfg85"
+            class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
           >
             Secondary
           </div>
           <div
             aria-hidden="true"
-            class="css-1bx20r1 e1szsfg86"
+            class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
           >
             Secondary
           </div>
           <div
-            class="css-1obf64m eo7r9jx1"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -590,16 +590,16 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-12njv1n-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem-UnifiedNavItem"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           Secondary
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e1gpqfcy1 e2h2wz80 css-6q3dh6-MuiChip-root"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary es7myp0 esrfbz40 css-l6hxs0-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -614,15 +614,15 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       </button>
     </section>
     <section
-      class="css-1wqw7la e1jzgkxb15"
+      class="css-1xgwlqi-StyledButtonSection e1bn4x3g20"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1jzgkxb5 e1gcweb20 css-gxh6yd-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1bn4x3g30 et5j5k2 css-1po1g5k-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledHeaderButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           Label
         </span>
@@ -631,12 +631,12 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1jzgkxb5 e1gcweb20 css-1h8umtp-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1bn4x3g30 et5j5k2 css-1n4xhz9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledHeaderButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           Label
         </span>
@@ -646,19 +646,19 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
       </button>
       <button
         aria-label="[object Object]"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1jzgkxb7 e1gcweb20 css-1ba85bd-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1bn4x3g28 et5j5k2 css-8je3a5-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledWideIconButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-12bqywg e1gcweb21"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           <div
-            class="css-1obf64m eo7r9jx1"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconPersonSmall"
               data-testid="IconPersonSmall"
               fillcontrast="white"
@@ -678,26 +678,26 @@ exports[`<NavigationHeader /> DropdownStyle story renders snapshot 1`] = `
 </header>
 `;
 
-exports[`<NavigationHeader /> WithTopComponent story renders snapshot 1`] = `
+exports[`<NavigationHeader /> > WithTopComponent story renders snapshot 1`] = `
 <div
-  class="css-164p1nz e1jzgkxb0"
+  class="css-1wkjy9m-StyledTopComponentSlot e1bn4x3g35"
 >
   <div
-    class="css-y0v4rx es8mwmv4"
+    class="css-1k5sc26-StyledBanner e15g05660"
     role="banner"
   >
     <div
-      class="css-ftey50 es8mwmv0"
+      class="css-13f9v10-Centered e15g05664"
     >
       <div
-        class="css-dn9tz5 es8mwmv1"
+        class="css-kj3c67-IconWrapper e15g05663"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconInfoCircleSmall"
             data-testid="IconInfoCircleSmall"
             fillcontrast="white"
@@ -712,19 +712,19 @@ exports[`<NavigationHeader /> WithTopComponent story renders snapshot 1`] = `
     </div>
     <button
       aria-label="Close"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary es8mwmv2 e1gcweb20 css-3aqmlc-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e15g05662 et5j5k2 css-csuk1e-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-12bqywg e1gcweb21"
+        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconXMarkSmall"
             data-testid="IconXMarkSmall"
             fillcontrast="white"
@@ -743,26 +743,26 @@ exports[`<NavigationHeader /> WithTopComponent story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<NavigationHeader /> matches the snapshot 1`] = `
+exports[`<NavigationHeader /> > matches the snapshot 1`] = `
 <DocumentFragment>
   <header
     aria-label="Main navigation"
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky e1jzgkxb1 css-16ammj1-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky e1bn4x3g34 css-1km1s24-MuiPaper-root-MuiAppBar-root-StyledAppBar"
     style="top: 0px;"
     tabindex="0"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular e1jzgkxb2 css-1qca7cz-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular e1bn4x3g33 css-tw0g88-MuiToolbar-root-StyledToolbar"
     >
       <a
-        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1jzgkxb8 e1jts3e70 css-842582-MuiTypography-root-MuiLink-root"
+        class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover e1bn4x3g27 ecbcrkq0 css-j4g8ja-MuiTypography-root-MuiLink-root-StyledLink-defaultStyle-StyledLink-StyledLogoLinkWrapper"
         href="https://chanzuckerberg.com"
       >
         <div
-          class="css-oqlvc3 e1jzgkxb10"
+          class="css-d4qctl-StyledTitleContainer e1bn4x3g25"
         >
           <div
-            class="css-70qvj9 e1jzgkxb9"
+            class="css-1m21yd3-StyledLogoWrapper e1bn4x3g26"
           >
             <div
               style="align-items: center; display: flex; font-size: 10px; font-weight: normal; height: 24px; justify-content: center; width: 50px;"
@@ -771,13 +771,13 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            class="css-lktalz e1jzgkxb11"
+            class="css-1pjyetm-StyledTitleTagWrapper e1bn4x3g24"
           >
             <p>
               Title
             </p>
             <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e1jzgkxb12 e2h2wz80 css-6q3dh6-MuiChip-root"
+              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e1bn4x3g23 esrfbz40 css-hvtshh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
             >
               <span
                 class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -789,30 +789,30 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         </div>
       </a>
       <div
-        class="css-udi0f9 e1jzgkxb13"
+        class="css-19hl789-StyledPrimaryNavContainer e1bn4x3g22"
       >
         <section
-          class="css-v5o7zy e1szsfg80"
+          class="css-pirabh-StyledSection-StyledSection e13tbovl6"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
             role="button"
             tabindex="0"
           >
             <span
-              class="css-12bqywg e1gcweb21"
+              class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
             >
               <span
-                class="css-1ylsujs ei1tb9o1"
+                class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
               >
                 <div
-                  class="css-1o3iwi4 e1szsfg85"
+                  class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
                 >
                   Primary
                 </div>
                 <div
                   aria-hidden="true"
-                  class="css-1bx20r1 e1szsfg86"
+                  class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
                 >
                   Primary
                 </div>
@@ -823,29 +823,29 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             />
           </a>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
             tabindex="0"
             type="button"
           >
             <span
-              class="css-12bqywg e1gcweb21"
+              class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
             >
               <span
-                class="css-1ylsujs ei1tb9o1"
+                class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
               >
                 <div
-                  class="css-1o3iwi4 e1szsfg85"
+                  class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
                 >
                   Primary
                 </div>
                 <div
                   aria-hidden="true"
-                  class="css-1bx20r1 e1szsfg86"
+                  class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
                 >
                   Primary
                 </div>
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e8dom8s1 e2h2wz80 css-6q3dh6-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary etq4jsl1 esrfbz40 css-n8zrq8-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
                 >
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -860,34 +860,34 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-12oozbf-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-1m6giw9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem"
             items="[object Object],[object Object]"
             tabindex="0"
             type="button"
           >
             <span
-              class="css-12bqywg e1gcweb21"
+              class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
             >
               <span
-                class="css-1ylsujs ei1tb9o1"
+                class="css-ne3aa0-StyledLabel-StyledLabel e810m80"
               >
                 <div
-                  class="css-1o3iwi4 e1szsfg85"
+                  class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
                 >
                   Primary
                 </div>
                 <div
                   aria-hidden="true"
-                  class="css-1bx20r1 e1szsfg86"
+                  class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
                 >
                   Primary
                 </div>
                 <div
-                  class="css-1obf64m eo7r9jx1"
+                  class="css-1q8yjse-StyledIcon emi0zh40"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                     data-file-name="IconChevronDownSmall"
                     data-testid="IconChevronDownSmall"
                     fillcontrast="white"
@@ -906,19 +906,19 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         </section>
         <div>
           <label
-            class="css-1509c06 e1vnn4ca0"
+            class="css-11su3a8-StyledLabel e1h1uy4z2"
             for="nav-bar-search"
           >
             Search
           </label>
           <div
-            class="MuiFormControl-root MuiTextField-root e1jzgkxb14 e1vnn4ca1 css-chm3rv-MuiFormControl-root-MuiTextField-root"
+            class="MuiFormControl-root MuiTextField-root e1bn4x3g21 e1h1uy4z1 css-1b4gs1z-MuiFormControl-root-MuiTextField-root-StyledSearchBase-rounded-StyledSearchBase-StyledSearch"
           >
             <div
               class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
             >
               <div
-                class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1vnn4ca2 css-10894y9-MuiInputAdornment-root"
+                class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-cusln8-MuiInputAdornment-root-StyledInputAdornment"
               >
                 <span
                   class="notranslate"
@@ -927,19 +927,19 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
                 </span>
                 <button
                   aria-label="search-button"
-                  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-1wgvjz8-MuiButtonBase-root-MuiButton-root"
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1xt4pop-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
                   tabindex="0"
                   type="button"
                 >
                   <span
-                    class="css-12bqywg e1gcweb21"
+                    class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
                   >
                     <div
-                      class="css-1obf64m eo7r9jx1"
+                      class="css-1q8yjse-StyledIcon emi0zh40"
                     >
                       <svg
                         aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                         data-file-name="IconSearchSmall"
                         data-testid="IconSearchSmall"
                         fillcontrast="white"
@@ -983,34 +983,34 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         </div>
       </div>
       <section
-        class="css-v5o7zy e1szsfg80"
+        class="css-pirabh-StyledSection-StyledSection e13tbovl6"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-12njv1n-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem-UnifiedNavItem"
           items="[object Object],[object Object]"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <div
-              class="css-1o3iwi4 e1szsfg85"
+              class="css-10l24hl-StyledLabelTextWrapper-StyledLabelTextWrapper e13tbovl1"
             >
               Secondary
             </div>
             <div
               aria-hidden="true"
-              class="css-1bx20r1 e1szsfg86"
+              class="css-kik51h-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e13tbovl0"
             >
               Secondary
             </div>
             <div
-              class="css-1obf64m eo7r9jx1"
+              class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconChevronDownSmall"
                 data-testid="IconChevronDownSmall"
                 fillcontrast="white"
@@ -1026,16 +1026,16 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary ei1tb9o0 e1gcweb20 css-kjy7da-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e810m81 et5j5k2 css-12njv1n-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-MediumButtonStyles-StyledButton-UnifiedNavItem-UnifiedNavItem-UnifiedNavItem"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             Secondary
             <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary e1gpqfcy1 e2h2wz80 css-6q3dh6-MuiChip-root"
+              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary es7myp0 esrfbz40 css-l6hxs0-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
             >
               <span
                 class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -1050,15 +1050,15 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         </button>
       </section>
       <section
-        class="css-1wqw7la e1jzgkxb15"
+        class="css-1xgwlqi-StyledButtonSection e1bn4x3g20"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1jzgkxb5 e1gcweb20 css-gxh6yd-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1bn4x3g30 et5j5k2 css-1po1g5k-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledHeaderButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             Label
           </span>
@@ -1067,12 +1067,12 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1jzgkxb5 e1gcweb20 css-1h8umtp-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary e1bn4x3g30 et5j5k2 css-1n4xhz9-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledHeaderButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             Label
           </span>
@@ -1082,19 +1082,19 @@ exports[`<NavigationHeader /> matches the snapshot 1`] = `
         </button>
         <button
           aria-label="[object Object]"
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1jzgkxb7 e1gcweb20 css-1ba85bd-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1bn4x3g28 et5j5k2 css-8je3a5-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledWideIconButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             <div
-              class="css-1obf64m eo7r9jx1"
+              class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconPersonSmall"
                 data-testid="IconPersonSmall"
                 fillcontrast="white"

@@ -1,8 +1,8 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
 import { TAG_FILTER_DEFAULT_STYLES } from "../constants";
-import RawTagFilter from "src/core/TagFilter";
-import Button from "src/core/Button";
+import RawTagFilter from "@components/src/core/TagFilter";
+import Button from "@components/src/core/Button";
 
 export const TagFilter = (props: Args): JSX.Element => {
   const { label } = props;

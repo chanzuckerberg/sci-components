@@ -8,7 +8,7 @@ import {
   Title,
   Overline,
 } from "./style";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export {
   Subtitle as DialogTitleSubtitle,

@@ -1,11 +1,11 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   MENU_ITEM_EXCLUDED_CONTROLS,
   MENU_ITEM_ICON_OPTIONS,
 } from "./constants";
 import { MenuItem } from "./stories/default";
 import { ScreenshotTestDemo } from "./stories/screenshot";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

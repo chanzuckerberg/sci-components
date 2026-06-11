@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Accordion } from "./stories/default";
 import { ACCORDION_EXCLUDED_CONTROLS } from "./constants";
 

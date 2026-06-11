@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import {
   MENU_ITEM_COLUMN_OPTIONS,
   MENU_ITEM_DISABLED_OPTIONS,
@@ -8,7 +8,7 @@ import {
   MENU_ITEM_SDS_STYLE_OPTIONS,
   MENU_ITEM_SELECTED_OPTIONS,
 } from "../constants";
-import RawMenuItem, { MenuItemProps } from "src/core/MenuItem";
+import RawMenuItem, { MenuItemProps } from "@components/src/core/MenuItem";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   const DISPLAY_CONTENTS: React.CSSProperties = {

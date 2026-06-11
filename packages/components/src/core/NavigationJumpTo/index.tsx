@@ -6,8 +6,8 @@ import React, {
   CSSProperties,
   useMemo,
 } from "react";
-import useScrollStopListener from "src/common/helpers/scrollStop";
-import { toKebabCase } from "src/common/utils";
+import useScrollStopListener from "@components/src/common/helpers/scrollStop";
+import { toKebabCase } from "@components/src/common/utils";
 import { NavigationJumpToExtraProps, StyledTab, StyledTabs } from "./style";
 import useInView from "./useIntersection";
 

@@ -9,7 +9,7 @@ import {
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface ChipExtraProps extends CommonThemeProps {
   size?: "small" | "medium";

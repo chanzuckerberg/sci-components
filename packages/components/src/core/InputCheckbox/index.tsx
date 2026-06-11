@@ -10,7 +10,7 @@ import {
   StyledIcon,
   StyledLabelContainer,
 } from "./styles";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export interface CheckboxContentProps extends Omit<
   MUICheckboxProps,

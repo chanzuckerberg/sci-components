@@ -1,5 +1,5 @@
-import { Args, Meta } from "@storybook/react-webpack5";
-import Icon from "src/core/Icon";
+import { Args, Meta } from "@storybook/react-vite";
+import Icon from "@components/src/core/Icon";
 import {
   BUTTON_DROPDOWN_ACTIONS,
   BUTTON_DROPDOWN_EXCLUDED_CONTROLS,

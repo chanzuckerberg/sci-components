@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { Dialog } from "./default";
 
 export function TestDemo(props: Args): JSX.Element {

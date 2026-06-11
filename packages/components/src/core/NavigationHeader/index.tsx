@@ -33,7 +33,7 @@ import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav"
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
 import Icon from "../Icon";
 import { NavigationHeaderProps } from "./NavigationHeader.types";
-import { mergeRefs } from "src/common/utils";
+import { mergeRefs } from "@components/src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
 import { getMode } from "../styles";
 import { isIconOnlyChild } from "../Button/style";

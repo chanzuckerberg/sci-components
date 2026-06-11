@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { InputCheckbox } from "./stories/default";
 import {
   INPUT_CHECKBOX_EXCLUDED_CONTROLS,

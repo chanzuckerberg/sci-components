@@ -1,12 +1,12 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
 import RawNavigationHeader, {
   NavigationHeaderPrimaryNavItem,
   NavigationHeaderSecondaryNavItem,
-} from "src/core/NavigationHeader";
-import Banner from "src/core/Banner";
+} from "@components/src/core/NavigationHeader";
+import Banner from "@components/src/core/Banner";
 import { Box, Container } from "@mui/material";
-import { EXTRA_LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+import { EXTRA_LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 
 export const WithTopComponentSlotDemo = (
   props: Args & { theme: "light" | "dark" }

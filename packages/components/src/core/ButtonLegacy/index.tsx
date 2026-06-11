@@ -3,11 +3,11 @@ import React, { ForwardedRef, HTMLAttributeAnchorTarget } from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 import { StyledButton, StyledButtonLegacy, StyledMinimalButton } from "./style";
 import ButtonIcon from "../ButtonIcon";
 import { IconNameToSizes, IconProps } from "../Icon";
-import { filterProps } from "src/common/utils";
+import { filterProps } from "@components/src/common/utils";
 
 export type ButtonLegacyType =
   | "primary"

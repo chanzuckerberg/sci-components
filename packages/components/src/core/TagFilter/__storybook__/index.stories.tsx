@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { TagFilter } from "./stories/default";
 import { TAG_FILTER_EXCLUDED_CONTROLS } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";

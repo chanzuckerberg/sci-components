@@ -1,7 +1,7 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React from "react";
-import RawTag from "src/core/Tag";
-import { ExtraTagProps } from "src/core/Tag/style";
+import RawTag from "@components/src/core/Tag";
+import { ExtraTagProps } from "@components/src/core/Tag/style";
 import {
   TAG_DISPLAY_CONTENTS_STYLES,
   TAG_SDS_STYLES,

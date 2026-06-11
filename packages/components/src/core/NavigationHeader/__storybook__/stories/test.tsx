@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import RawNavigationHeader from "src/core/NavigationHeader";
+import RawNavigationHeader from "@components/src/core/NavigationHeader";
 
 export const TestDemo = (props: Args): JSX.Element => {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");

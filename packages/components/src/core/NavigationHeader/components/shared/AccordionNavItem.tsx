@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { AccordionHeader } from "src/core/Accordion";
-import MenuItem from "src/core/MenuItem";
-import Icon, { IconNameToSizes } from "src/core/Icon";
+import { AccordionHeader } from "@components/src/core/Accordion";
+import MenuItem from "@components/src/core/MenuItem";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import { groupItemsBySection } from "../../utils";
 import {
   StyledAccordionDetails,

@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import RawSegmentedControl from "src/core/SegmentedControl";
+import RawSegmentedControl from "@components/src/core/SegmentedControl";
 
 export const ControlledSegmentedControlDemo = (props: Args): JSX.Element => {
   const { buttonDefinition, ...rest } = props;

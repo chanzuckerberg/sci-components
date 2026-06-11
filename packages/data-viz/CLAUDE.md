@@ -179,7 +179,7 @@ __storybook__/
 
 ## Build Configuration
 
-### Rollup Setup
+### Rolldown Setup
 
 Simpler than the components package, focused on ECharts integration:
 

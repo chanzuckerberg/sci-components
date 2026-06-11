@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { Shadows } from "src/core/styles/common/constants/shadows";
+import { Shadows } from "@components/src/core/styles/common/constants/shadows";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

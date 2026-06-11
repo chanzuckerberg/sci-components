@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import { forwardRef, useRef, useState } from "react";
 import { TabPanelProps } from "@mui/base";
-import { Args } from "@storybook/react-webpack5";
-import InputSlider from "src/core/InputSlider";
-import RawNavigationJumpTo from "src/core/NavigationJumpTo";
+import { Args } from "@storybook/react-vite";
+import InputSlider from "@components/src/core/InputSlider";
+import RawNavigationJumpTo from "@components/src/core/NavigationJumpTo";
 
 interface TabPanelPropsExtra extends TabPanelProps {
   sdsDemoHeight: number;

@@ -1,4 +1,4 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import RawStackedBarChart from "../../index";
 import { STACKED_BAR_CHART_DATA } from "../constants";
 

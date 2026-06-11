@@ -1,14 +1,14 @@
 import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
 import React, { forwardRef, useRef, useState } from "react";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 import {
   InputSearchExtraProps,
   StyledInputAdornment,
   StyledLabel,
   StyledSearchBase,
 } from "./style";
-import useDetectUserTabbing from "src/common/helpers/userTabbing";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 import Icon from "../Icon";
 
 export interface AccessibleInputSearchProps {

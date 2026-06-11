@@ -1,9 +1,9 @@
-import { Args } from "@storybook/react-webpack5";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
-import Link from "src/core/Link";
-import TooltipCondensed from "src/core/TooltipCondensed";
-import RawTooltipTableContent from "src/core/TooltipTable";
+import { Args } from "@storybook/react-vite";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
+import Link from "@components/src/core/Link";
+import TooltipCondensed from "@components/src/core/TooltipCondensed";
+import RawTooltipTableContent from "@components/src/core/TooltipTable";
 
 export const WithinTooltipDemo = (props: Args): JSX.Element => {
   const { contentAlert } = props;

@@ -1,12 +1,12 @@
 import { AutocompleteValue } from "@mui/material/useAutocomplete";
 import React, { ReactNode, useCallback, useState } from "react";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
 import Dropdown, {
   DropdownProps,
   DropdownInputDropdown,
   DropdownPopper,
-} from "src/core/Dropdown";
-import { InputDropdownProps as InputDropdownPropsType } from "src/core/InputDropdown";
+} from "@components/src/core/Dropdown";
+import { InputDropdownProps as InputDropdownPropsType } from "@components/src/core/InputDropdown";
 import Chips from "./components/Chips";
 import { StyledChipsWrapper, Wrapper } from "./style";
 import { checkIfSingleColumn } from "./utils";

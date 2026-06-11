@@ -14,7 +14,7 @@ import ContentCardTitle, {
 import ContentCardActions, {
   ContentCardActionsProps,
 } from "./components/ContentCardActions";
-import { EMPTY_OBJECT, mergeRefs, cn } from "src/common/utils";
+import { EMPTY_OBJECT, mergeRefs, cn } from "@components/src/common/utils";
 import ContentCardImageMedia from "./components/ContentCardImageMedia";
 import {
   CONTENT_CARD_DEFAULT_IMAGE_MEDIA_SIZE,

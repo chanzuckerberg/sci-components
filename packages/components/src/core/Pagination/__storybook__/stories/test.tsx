@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawPagination from "src/core/Pagination";
+import { Args } from "@storybook/react-vite";
+import RawPagination from "@components/src/core/Pagination";
 
 export const TestDemo = (props: Args): JSX.Element => (
   <div>

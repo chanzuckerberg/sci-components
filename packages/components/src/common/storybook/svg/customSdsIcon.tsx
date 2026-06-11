@@ -1,4 +1,4 @@
-import Icon, { IconProps } from "src/core/Icon";
+import Icon, { IconProps } from "@components/src/core/Icon";
 
 /**
  * CustomSdsIcon is an Icon component built on top of the core SDS Icon.

@@ -4,7 +4,7 @@ import {
   fontCodeXs,
   getColors,
   getFontWeights,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 interface IStyledVariableProps extends CommonThemeProps {
   type?: "css" | "sass" | "none";

@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React from "react";
-import RawButton from "src/core/Button";
+import RawButton from "@components/src/core/Button";
 import { StyledBackgroundAppearanceWrapper } from "../../style";
 
 export const Button = (props: Args): JSX.Element => {

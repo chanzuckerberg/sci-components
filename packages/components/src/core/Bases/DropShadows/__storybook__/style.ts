@@ -4,7 +4,7 @@ import {
   CommonThemeProps,
   fontCodeXs,
   getFontWeights,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 const SHADOW_BOX_BOX_SIZE_PX = 60;
 

@@ -7,7 +7,7 @@ import {
   fontBodyXxs,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 const doNotForwardProps = ["chevronSize", "hasInvertedStyle"];
 

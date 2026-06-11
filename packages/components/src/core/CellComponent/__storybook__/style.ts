@@ -5,7 +5,7 @@ import {
   fontHeaderS,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 const doNotForwardProps = ["horizontalAlign", "verticalAlign"];
 

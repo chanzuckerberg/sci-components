@@ -4,7 +4,7 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export const StyledVerticalDivider = styled("div")`
   ${(props: CommonThemeProps) => {

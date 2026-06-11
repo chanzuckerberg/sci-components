@@ -8,12 +8,12 @@ import React, {
 } from "react";
 import { StyledButtonGroup } from "./style";
 import { ButtonGroupProps } from "./ButtonGroup.types";
-import { isIconOnlyChild } from "src/core/Button/style";
+import { isIconOnlyChild } from "@components/src/core/Button/style";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
-import Button from "src/core/Button";
+} from "@components/src/common/warnings";
+import Button from "@components/src/core/Button";
 
 export type { ButtonGroupProps };
 

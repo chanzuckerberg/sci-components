@@ -1,15 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<InputText /> Default story renders snapshot 1`] = `
+exports[`<InputText /> > Default story renders snapshot 1`] = `
 <div>
   <label
-    class="css-i8n32v e1kdwj5j0"
+    class="css-r2sf0y-StyledLabel e178j4nw1"
     for="Test"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root e1kdwj5j1 css-1srbd8d-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root e178j4nw0 css-1yrme1m-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"

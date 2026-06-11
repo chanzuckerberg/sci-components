@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawCellComponent from "src/core/CellComponent";
+import { Args } from "@storybook/react-vite";
+import RawCellComponent from "@components/src/core/CellComponent";
 
 export const CellComponent = (props: Args): JSX.Element => {
   const { horizontalAlign, verticalAlign, children } = props;

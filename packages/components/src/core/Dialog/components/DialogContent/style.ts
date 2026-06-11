@@ -1,6 +1,6 @@
 import { DialogContent } from "@mui/material";
 import styled from "@emotion/styled";
-import { fontBodyS } from "src/core/styles";
+import { fontBodyS } from "@components/src/core/styles";
 
 const doNotForwardProps = ["sdsSize"];
 

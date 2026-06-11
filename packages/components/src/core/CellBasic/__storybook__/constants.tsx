@@ -1,6 +1,6 @@
-import Icon from "src/core/Icon";
-import Tag from "src/core/Tag";
-import Button from "src/core/Button";
+import Icon from "@components/src/core/Icon";
+import Tag from "@components/src/core/Tag";
+import Button from "@components/src/core/Button";
 import {
   ButtonIconsGroupBottom,
   ButtonIconsGroupRight,

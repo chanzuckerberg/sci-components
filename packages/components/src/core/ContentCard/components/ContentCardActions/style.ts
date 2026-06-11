@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { CardActions, CardActionsProps } from "@mui/material";
-import { ButtonProps } from "src/core/Button";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { ButtonProps } from "@components/src/core/Button";
+import { CommonThemeProps, getSpaces } from "@components/src/core/styles";
 
 const doNotForwardProps = ["buttonsPosition"];
 

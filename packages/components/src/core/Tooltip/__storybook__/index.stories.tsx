@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Tooltip } from "./stories/default";
 import {
   TOOLTIP_COMPONENT_SLOT_OPTIONS,

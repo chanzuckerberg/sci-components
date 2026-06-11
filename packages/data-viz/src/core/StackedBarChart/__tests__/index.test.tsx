@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { render, screen, fireEvent } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 import StackedBarChart from "../index";
@@ -247,7 +247,7 @@ describe("<StackedBarChart />", () => {
   });
 
   it("calls onSelectionChange when segment is clicked", () => {
-    const handleSelectionChange = jest.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <StackedBarChart
@@ -268,7 +268,7 @@ describe("<StackedBarChart />", () => {
   });
 
   it("deselects item when clicking selected item", () => {
-    const handleSelectionChange = jest.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <StackedBarChart
@@ -289,7 +289,7 @@ describe("<StackedBarChart />", () => {
   });
 
   it("supports multi-selection", () => {
-    const handleSelectionChange = jest.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <StackedBarChart
@@ -496,7 +496,7 @@ describe("<StackedBarChart />", () => {
 
   describe("Mouse event handlers", () => {
     it("calls onSegmentMouseEnter when hovering over a bar segment", () => {
-      const handleSegmentMouseEnter = jest.fn();
+      const handleSegmentMouseEnter = vi.fn();
 
       const { container } = render(
         <StackedBarChart
@@ -519,7 +519,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("calls onSegmentMouseLeave when mouse leaves a bar segment", () => {
-      const handleSegmentMouseLeave = jest.fn();
+      const handleSegmentMouseLeave = vi.fn();
 
       const { container } = render(
         <StackedBarChart
@@ -542,7 +542,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("calls onLegendItemMouseEnter when hovering over a legend item", () => {
-      const handleLegendItemMouseEnter = jest.fn();
+      const handleLegendItemMouseEnter = vi.fn();
 
       render(
         <StackedBarChart
@@ -563,7 +563,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("calls onLegendItemMouseLeave when mouse leaves a legend item", () => {
-      const handleLegendItemMouseLeave = jest.fn();
+      const handleLegendItemMouseLeave = vi.fn();
 
       render(
         <StackedBarChart
@@ -585,7 +585,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("does not call segment handlers for disabled items", () => {
-      const handleSegmentMouseEnter = jest.fn();
+      const handleSegmentMouseEnter = vi.fn();
       const dataWithDisabled = [
         ...sampleData,
         { name: "Disabled", value: 50, disabled: true },
@@ -614,7 +614,7 @@ describe("<StackedBarChart />", () => {
 
   describe("Click event handlers", () => {
     it("calls onSegmentClick when clicking a bar segment", () => {
-      const handleSegmentClick = jest.fn();
+      const handleSegmentClick = vi.fn();
 
       const { container } = render(
         <StackedBarChart
@@ -635,8 +635,8 @@ describe("<StackedBarChart />", () => {
     });
 
     it("calls both onSegmentClick and onSelectionChange when both are provided", () => {
-      const handleSegmentClick = jest.fn();
-      const handleSelectionChange = jest.fn();
+      const handleSegmentClick = vi.fn();
+      const handleSelectionChange = vi.fn();
 
       const { container } = render(
         <StackedBarChart
@@ -660,7 +660,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("does not call onSegmentClick for disabled items", () => {
-      const handleSegmentClick = jest.fn();
+      const handleSegmentClick = vi.fn();
       const dataWithDisabled = [
         ...sampleData,
         { name: "Disabled", value: 50, disabled: true },
@@ -685,7 +685,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("calls onLegendItemClick when clicking a legend item", () => {
-      const handleLegendItemClick = jest.fn();
+      const handleLegendItemClick = vi.fn();
 
       render(
         <StackedBarChart
@@ -706,7 +706,7 @@ describe("<StackedBarChart />", () => {
     });
 
     it("does not call onLegendItemClick for disabled items", () => {
-      const handleLegendItemClick = jest.fn();
+      const handleLegendItemClick = vi.fn();
       const dataWithDisabled = [
         { name: "Active", value: 100 },
         { name: "Disabled", value: 200, disabled: true },

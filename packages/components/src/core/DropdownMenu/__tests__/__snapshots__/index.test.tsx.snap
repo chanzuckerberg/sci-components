@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<DropdownMenu /> Default story renders snapshot 1`] = `
+exports[`<DropdownMenu /> > Default story renders snapshot 1`] = `
 <div
   style="margin: 16px 0px 0px 24px;"
 />
 `;
 
-exports[`<DropdownMenu /> MultiColumn story renders snapshot 1`] = `
+exports[`<DropdownMenu /> > MultiColumn story renders snapshot 1`] = `
 <div
   style="margin: 16px 0px 0px 24px;"
 />

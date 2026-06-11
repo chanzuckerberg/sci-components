@@ -7,13 +7,13 @@ import {
   InputAdornment,
 } from "@mui/material";
 import React, { useState } from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
-import Button from "src/core/Button";
-import { InputSearchProps } from "src/core/InputSearch";
+} from "@components/src/common/warnings";
+import Button from "@components/src/core/Button";
+import { InputSearchProps } from "@components/src/core/InputSearch";
 import {
   InputBaseWrapper,
   StyleProps,

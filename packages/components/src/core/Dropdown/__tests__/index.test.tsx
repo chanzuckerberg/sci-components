@@ -1,9 +1,9 @@
 import { generateSnapshots, wait } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import * as stories from "../__storybook__/index.stories";
-import LoadingIndicator from "src/core/LoadingIndicator";
+import LoadingIndicator from "@components/src/core/LoadingIndicator";
 
 const { Test } = composeStories(stories);
 

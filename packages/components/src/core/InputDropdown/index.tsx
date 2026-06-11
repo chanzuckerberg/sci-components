@@ -1,4 +1,4 @@
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 import {
   IconWrapper,
   LabelWrapper,
@@ -9,7 +9,7 @@ import {
   StyledInputDropdown,
   StyledLabel,
 } from "./style";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export type InputDropdownProps = SdsInputDropdownProps & {
   classes?: {

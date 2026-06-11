@@ -1,14 +1,14 @@
 import React from "react";
 import { Column, ColumnDef, RowData } from "@tanstack/react-table";
-import Button from "src/core/Button";
-import CellBasic from "src/core/CellBasic";
-import CellComponent from "src/core/CellComponent";
-import CellHeader from "src/core/CellHeader";
-import Icon from "src/core/Icon";
-import InputText from "src/core/InputText";
-import Link from "src/core/Link";
-import Tag from "src/core/Tag";
-import Dropdown from "src/core/Dropdown";
+import Button from "@components/src/core/Button";
+import CellBasic from "@components/src/core/CellBasic";
+import CellComponent from "@components/src/core/CellComponent";
+import CellHeader from "@components/src/core/CellHeader";
+import Icon from "@components/src/core/Icon";
+import InputText from "@components/src/core/InputText";
+import Link from "@components/src/core/Link";
+import Tag from "@components/src/core/Tag";
+import Dropdown from "@components/src/core/Dropdown";
 import { AutocompleteValue } from "@mui/material";
 
 export interface DataType {

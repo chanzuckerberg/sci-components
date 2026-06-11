@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { CommonThemeProps, getSpaces } from "@components/src/core/styles";
 
 export const Wrapper = styled("div")`
   min-width: 150px;

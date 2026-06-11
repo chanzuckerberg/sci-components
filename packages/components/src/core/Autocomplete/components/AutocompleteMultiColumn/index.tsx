@@ -14,11 +14,11 @@ import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
-} from "src/core/Autocomplete";
-import Button from "src/core/Button";
-import { InputSearchProps } from "src/core/InputSearch";
-import { StyledInputAdornment } from "src/core/InputSearch/style";
-import { SDSTheme } from "src/core/styles";
+} from "@components/src/core/Autocomplete";
+import Button from "@components/src/core/Button";
+import { InputSearchProps } from "@components/src/core/InputSearch";
+import { StyledInputAdornment } from "@components/src/core/InputSearch/style";
+import { SDSTheme } from "@components/src/core/styles";
 import {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
@@ -31,9 +31,9 @@ import {
   StyledPaper,
   StyledPopper,
 } from "./style";
-import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
 import { VerticalDivider } from "./components/VerticalDivider";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,

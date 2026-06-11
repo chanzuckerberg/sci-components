@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Link } from "./stories/default";
 import { LINK_EXCLUDED_CONTROLS } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";

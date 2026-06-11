@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 
@@ -39,7 +39,7 @@ describe("<Banner />", () => {
   });
 
   it("executes callback on close", () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     render(<Test {...Test.args} onClose={onClose} />);
 
     const closeButton = screen.getByRole("button");

@@ -3,9 +3,9 @@ import React from "react";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
-import Icon, { IconNameToSizes } from "src/core/Icon";
-import Tooltip, { TooltipProps } from "src/core/Tooltip";
+} from "@components/src/common/warnings";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
+import Tooltip, { TooltipProps } from "@components/src/core/Tooltip";
 import {
   StyledSegmentedControl,
   StyledToggleButton,

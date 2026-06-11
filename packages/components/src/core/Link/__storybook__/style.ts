@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { fontBodyS } from "src/core/styles";
+import { fontBodyS } from "@components/src/core/styles";
 
 export const StyledWrapper = styled("div")`
   ${fontBodyS}

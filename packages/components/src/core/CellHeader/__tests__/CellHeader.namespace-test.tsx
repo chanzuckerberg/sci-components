@@ -1,6 +1,6 @@
 import { CellHeader, CellHeaderProps } from "@czi-sds/components";
 import React from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const CellBasicNameSpaceTest = (props: CellHeaderProps) => {
   return (

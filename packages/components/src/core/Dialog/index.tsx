@@ -6,7 +6,7 @@ import React, { ComponentType, forwardRef } from "react";
 import DialogPaper, { DialogPaperProps } from "./components/DialogPaper";
 import DialogTitle from "./components/DialogTitle";
 import DialogActions from "./components/DialogActions";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export interface DialogExtraProps {
   canClickOutsideClose?: boolean;

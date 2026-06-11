@@ -1,5 +1,5 @@
-import CellHeader from "src/core/CellHeader";
-import RawTableHeader from "src/core/TableHeader";
+import CellHeader from "@components/src/core/CellHeader";
+import RawTableHeader from "@components/src/core/TableHeader";
 
 export const TestDemo = (): JSX.Element => (
   <table>

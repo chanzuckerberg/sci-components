@@ -14,8 +14,8 @@ import {
   getShadows,
   getSpaces,
   fontBodyMediumS,
-} from "src/core/styles";
-import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+} from "@components/src/core/styles";
+import { focusVisibleA11yStyle } from "@components/src/core/styles/common/mixins/a11y";
 
 export interface AccordionExtraProps extends CommonThemeProps {
   useDivider?: boolean;

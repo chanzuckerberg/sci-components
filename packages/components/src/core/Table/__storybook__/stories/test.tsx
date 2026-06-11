@@ -1,6 +1,6 @@
-import CellBasic from "src/core/CellBasic";
-import RawTable from "src/core/Table";
-import TableRow from "src/core/TableRow";
+import CellBasic from "@components/src/core/CellBasic";
+import RawTable from "@components/src/core/Table";
+import TableRow from "@components/src/core/TableRow";
 
 export const TestDemo = (): JSX.Element => (
   <RawTable data-testid="Table">

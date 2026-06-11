@@ -1,5 +1,5 @@
 import React, { ForwardedRef, forwardRef, useState } from "react";
-import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
+import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
 import {
   BannerExtraProps,
   Centered,

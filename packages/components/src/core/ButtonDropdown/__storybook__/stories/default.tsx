@@ -1,7 +1,7 @@
-import { Args } from "@storybook/react-webpack5";
-import { StyledBackgroundAppearanceWrapper } from "src/core/Button/style";
-import RawButtonDropdown from "src/core/ButtonDropdown";
-import Callout from "src/core/Callout";
+import { Args } from "@storybook/react-vite";
+import { StyledBackgroundAppearanceWrapper } from "@components/src/core/Button/style";
+import RawButtonDropdown from "@components/src/core/ButtonDropdown";
+import Callout from "@components/src/core/Callout";
 
 export const InvalidSdsTypeDestructiveError = (
   <Callout

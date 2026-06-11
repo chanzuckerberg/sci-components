@@ -1,6 +1,6 @@
 import { AutocompleteValue } from "@mui/base";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
-import TagFilter from "src/core/TagFilter";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
+import TagFilter from "@components/src/core/TagFilter";
 import { checkIfSingleColumn } from "../../utils";
 
 interface Props<

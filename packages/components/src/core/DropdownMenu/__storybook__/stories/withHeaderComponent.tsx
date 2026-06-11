@@ -1,11 +1,11 @@
 import { AutocompleteValue } from "@mui/base";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useEffect, useRef, useState } from "react";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
-import Button from "src/core/Button";
-import RawDropdownMenu from "src/core/DropdownMenu";
-import Icon from "src/core/Icon";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
+import Button from "@components/src/core/Button";
+import RawDropdownMenu from "@components/src/core/DropdownMenu";
+import Icon from "@components/src/core/Icon";
 
 export const WithHeaderComponentDemo = <
   T extends DefaultAutocompleteOption,

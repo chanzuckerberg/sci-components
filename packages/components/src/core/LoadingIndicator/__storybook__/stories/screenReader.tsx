@@ -1,7 +1,7 @@
 import { FormControlLabel } from "@mui/material";
 import { useState } from "react";
-import InputToggle from "src/core/InputToggle";
-import RawLoadingIndicator from "src/core/LoadingIndicator";
+import InputToggle from "@components/src/core/InputToggle";
+import RawLoadingIndicator from "@components/src/core/LoadingIndicator";
 
 export const ScreenReaderDemo = (): JSX.Element => {
   const [loading, setLoading] = useState(true);

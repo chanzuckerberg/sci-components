@@ -1,5 +1,5 @@
 import { FormControl, RadioGroup } from "@mui/material";
-import RawInputRadio from "src/core/InputRadio";
+import RawInputRadio from "@components/src/core/InputRadio";
 import { StyledFormLabel } from "./style";
 
 export const TestDemo = (): JSX.Element => {

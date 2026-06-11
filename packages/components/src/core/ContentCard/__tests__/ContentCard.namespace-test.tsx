@@ -5,7 +5,7 @@ import {
   ContentCardBody,
   ContentCardProps,
 } from "@czi-sds/components";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 
 export const ContentCardNameSpaceTest = (props: ContentCardProps) => {
   return (

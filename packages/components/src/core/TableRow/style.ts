@@ -5,7 +5,7 @@ import {
   focusVisibleA11yStyle,
   fontHeaderS,
   getSemanticColors,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface RowExtraProps
   extends

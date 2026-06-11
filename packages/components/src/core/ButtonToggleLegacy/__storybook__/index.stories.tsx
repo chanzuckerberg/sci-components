@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { ButtonToggleLegacy } from "./stories/default";
 import {
   BUTTON_TOGGLE_EXCLUDED_CONTROLS,

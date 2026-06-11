@@ -1,9 +1,9 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);
@@ -79,7 +79,7 @@ describe("<Panel />", () => {
   });
 
   it("calls the onClick handler when close button is clicked", () => {
-    const handleClose = jest.fn();
+    const handleClose = vi.fn();
 
     render(
       <Test

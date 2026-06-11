@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Tabs /> Default story renders snapshot 1`] = `
+exports[`<Tabs /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root el8inym0 css-yp8lk-MuiTabs-root"
+  class="MuiTabs-root e17gk7oo5 css-1ps943r-MuiTabs-root-StyledTabs"
 >
   <div
     class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -14,19 +14,19 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
     >
       <button
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected el8inym1 css-19kk6zo-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected e17gk7oo4 css-1qodc9p-MuiButtonBase-root-MuiTab-root-StyledTab-StyledTab"
         role="tab"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-xu7eym el8inym4"
+          class="css-1dk6axg-StyledLabelTextWrapper-StyledLabelTextWrapper e17gk7oo1"
         >
           Upload from Your Computer
         </span>
         <span
           aria-hidden="true"
-          class="css-1bx20r1 el8inym5"
+          class="css-131f6lm-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e17gk7oo0"
         >
           Upload from Your Computer
         </span>
@@ -36,29 +36,29 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
       <button
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary el8inym1 css-19kk6zo-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary e17gk7oo4 css-1qodc9p-MuiButtonBase-root-MuiTab-root-StyledTab-StyledTab"
         role="tab"
         tabindex="-1"
         type="button"
       >
         <div
-          class="css-1ho2fv8 el8inym2"
+          class="css-1ahca87-StyledWrapper-StyledWrapper e17gk7oo3"
         >
           <div>
             <span
-              class="css-xu7eym el8inym4"
+              class="css-1dk6axg-StyledLabelTextWrapper-StyledLabelTextWrapper e17gk7oo1"
             >
               Upload from Base Space
             </span>
             <span
               aria-hidden="true"
-              class="css-1bx20r1 el8inym5"
+              class="css-131f6lm-StyledLabelTextWrapperShadow-StyledLabelTextWrapperShadow e17gk7oo0"
             >
               Upload from Base Space
             </span>
           </div>
           <span
-            class="css-1xdhyk6 el8inym3"
+            class="css-w50gte-StyledCount-StyledCount e17gk7oo2"
           >
             0
           </span>
@@ -69,7 +69,7 @@ exports[`<Tabs /> Default story renders snapshot 1`] = `
       </button>
     </div>
     <span
-      class="MuiTabs-indicator css-1sekmjn css-1aquho2-MuiTabs-indicator"
+      class="MuiTabs-indicator css-pvwr1x-TabIndicator css-1aquho2-MuiTabs-indicator"
       style="left: 0px; width: 0px;"
     />
   </div>

@@ -19,13 +19,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { EMPTY_OBJECT, noop } from "src/common/utils";
-import Button from "src/core/Button";
-import Icon, { IconProps } from "src/core/Icon";
-import { InputSearchProps } from "src/core/InputSearch";
-import { StyledInputAdornment } from "src/core/InputSearch/style";
-import MenuItem, { IconNameToSmallSizes } from "src/core/MenuItem";
-import { SDSTheme } from "src/core/styles";
+import { EMPTY_OBJECT, noop } from "@components/src/common/utils";
+import Button from "@components/src/core/Button";
+import Icon, { IconProps } from "@components/src/core/Icon";
+import { InputSearchProps } from "@components/src/core/InputSearch";
+import { StyledInputAdornment } from "@components/src/core/InputSearch/style";
+import MenuItem, { IconNameToSmallSizes } from "@components/src/core/MenuItem";
+import { SDSTheme } from "@components/src/core/styles";
 import {
   InputBaseWrapper,
   StyleProps,
@@ -35,7 +35,7 @@ import {
   StyledMenuItemText,
   StyledPaper,
 } from "./style";
-import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
 
 // (thuang): This requires option to have a `name` property.
 // (masoudmanson): Represents a generic autocomplete option with common properties.

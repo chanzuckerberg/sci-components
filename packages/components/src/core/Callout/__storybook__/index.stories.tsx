@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import { CALLOUT_ICON_OPTIONS, CALLOUT_SDS_STYLE_OPTIONS } from "./constants";
 import { Callout } from "./stories/default";
 

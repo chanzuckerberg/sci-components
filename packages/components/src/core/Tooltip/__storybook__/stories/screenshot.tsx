@@ -7,9 +7,9 @@ import {
   TOOLTIP_SUBTITLE_OPTIONS,
   TOOLTIP_WIDTH_OPTIONS,
 } from "../constants";
-import RawTooltip from "src/core/Tooltip";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
+import RawTooltip from "@components/src/core/Tooltip";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   // loop through all SDS_STYLES

@@ -111,11 +111,15 @@ describe("PreComposedTable", () => {
         style={{ border: "2px solid red" }}
       />
     );
-    expect(container.firstChild).toHaveStyle("border: 2px solid red");
+    // jsdom serializes the named color to rgb; assert the computed form so the
+    // matcher's expected value matches `getComputedStyle` output.
+    expect(container.firstChild).toHaveStyle(
+      "border: 2px solid rgb(255, 0, 0)"
+    );
   });
 
   it("handles row selection callbacks", async () => {
-    const onRowSelect = jest.fn();
+    const onRowSelect = vi.fn();
     const user = userEvent.setup();
 
     render(

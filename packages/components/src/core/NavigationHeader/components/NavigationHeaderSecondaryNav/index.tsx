@@ -8,11 +8,11 @@ import {
 } from "../style";
 import { StyledTag } from "./style";
 import { UnifiedNavItem } from "../shared/UnifiedNavItem";
-import { SdsTagColorType } from "src/core/Tag";
-import Menu from "src/core/Menu";
-import Icon from "src/core/Icon";
-import MenuItem from "src/core/MenuItem";
-import { SDSTheme } from "src/core/styles";
+import { SdsTagColorType } from "@components/src/core/Tag";
+import Menu from "@components/src/core/Menu";
+import Icon from "@components/src/core/Icon";
+import MenuItem from "@components/src/core/MenuItem";
+import { SDSTheme } from "@components/src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
 import { DropdownItem, SectionProps } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";

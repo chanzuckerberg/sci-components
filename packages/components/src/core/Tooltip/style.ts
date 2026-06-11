@@ -11,7 +11,7 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { addOpacityToHex } from "../styles/common/utils/opacity";
 
 export interface TooltipExtraProps extends CommonThemeProps {

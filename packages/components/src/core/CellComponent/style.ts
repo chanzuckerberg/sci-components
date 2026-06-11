@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, fontBodyS, getSpaces } from "src/core/styles";
+import {
+  CommonThemeProps,
+  fontBodyS,
+  getSpaces,
+} from "@components/src/core/styles";
 
 export interface CellComponentExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "center" | "right";

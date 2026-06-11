@@ -1,6 +1,6 @@
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
-import RawLink from "src/core/Link";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
+import RawLink from "@components/src/core/Link";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   const FONT_WEIGHTS = ["normal", "bold"];

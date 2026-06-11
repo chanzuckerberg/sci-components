@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
+exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
 <div
-  class="css-pi3gcs e1gcweb22"
+  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <button
     aria-label="button-toggle"
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary ekcxi420 e1gcweb20 css-8yohbv-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-16yi61s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
     tabindex="0"
     type="button"
   >
@@ -14,11 +14,11 @@ exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
       class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
     >
       <div
-        class="css-1obf64m eo7r9jx1"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
           fillcontrast="white"
@@ -30,7 +30,7 @@ exports[`<ButtonToggle /> Default story renders snapshot 1`] = `
       </div>
     </span>
     <span
-      class="css-12bqywg e1gcweb21"
+      class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       Label
     </span>

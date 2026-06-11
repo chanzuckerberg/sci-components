@@ -1,5 +1,5 @@
 import React from "react";
-import Icon, { IconNameToSizes } from "src/core/Icon";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import {
   IntentMessageIntent,
   IntentMessageItem,

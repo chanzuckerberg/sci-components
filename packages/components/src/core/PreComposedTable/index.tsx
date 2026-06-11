@@ -38,7 +38,7 @@ import TableHeader from "../TableHeader";
 import TableRow, { TableRowProps } from "../TableRow";
 import CellHeader, { CellHeaderProps } from "../CellHeader";
 import CellBasic from "../CellBasic";
-import Pagination, { PaginationProps } from "src/core/Pagination";
+import Pagination, { PaginationProps } from "@components/src/core/Pagination";
 import {
   StyledInputSearch,
   StyledPaginationWrapper,

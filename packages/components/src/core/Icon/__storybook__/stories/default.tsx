@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawIcon from "src/core/Icon";
+import { Args } from "@storybook/react-vite";
+import RawIcon from "@components/src/core/Icon";
 
 export const Icon = (props: Args): JSX.Element => {
   const { sdsIcon, sdsSize, ...rest } = props;

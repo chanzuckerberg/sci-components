@@ -1,29 +1,29 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<CellHeader /> Default story renders snapshot 1`] = `
+exports[`<CellHeader /> > Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr>
       <th
-        class="css-1m7amdb e1mc2aue1"
+        class="css-248xwi-StyledTableHeader eyijci12"
         data-mui-internal-clone-element="true"
         direction="desc"
         tabindex="0"
       >
         <div
-          class="css-96hiq7 e1mc2aue3"
+          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-1kmjpr5 e1mc2aue2"
+            class="css-g2t64b-StyledCellHeaderText eyijci11"
           >
             Header
           </div>
           <div
-            class="css-1obf64m eo7r9jx1"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1mc2aue0 eo7r9jx0 css-17nhz1u-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1hqvqsg-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

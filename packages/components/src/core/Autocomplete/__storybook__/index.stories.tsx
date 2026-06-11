@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   AUTOCOMPLETE_DATA_OPTIONS,
   AUTOCOMPLETE_EXCLUDED_CONTROLS,
@@ -9,8 +9,8 @@ import {
 import { Autocomplete } from "./stories/default";
 import { TestDemo } from "./stories/test";
 import { ControlledOpenDemo } from "./stories/controlledOpen";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
 
 export default {
   argTypes: {

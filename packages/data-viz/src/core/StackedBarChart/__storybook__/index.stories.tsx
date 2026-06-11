@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import { StackedBarChart } from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";
 import WithMouseEventsStory from "./stories/withMouseEvents";

@@ -1,6 +1,6 @@
 import { AppBarProps, css, useScrollTrigger, useTheme } from "@mui/material";
 import React from "react";
-import { CommonThemeProps } from "src/core/styles";
+import { CommonThemeProps } from "@components/src/core/styles";
 
 interface ElevationScrollProps extends CommonThemeProps, AppBarProps {
   window?: () => Window;

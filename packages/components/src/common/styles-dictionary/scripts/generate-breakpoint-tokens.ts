@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { Breakpoints } from "src/core/styles/common/constants/breakpoints";
+import { Breakpoints } from "@components/src/core/styles/common/constants/breakpoints";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

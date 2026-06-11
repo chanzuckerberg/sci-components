@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import TableRow from "src/core/TableRow";
+import TableRow from "@components/src/core/TableRow";
 import { StyledTableHeader } from "./style";
 
 export interface TableHeaderProps {

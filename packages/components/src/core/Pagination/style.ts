@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 import {
   CommonThemeProps,
   focusVisibleA11yStyle,
@@ -10,7 +10,7 @@ import {
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface PaginationExtraProps extends CommonThemeProps {
   sdsStyle?: "round" | "square";

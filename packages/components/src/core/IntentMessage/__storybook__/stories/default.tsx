@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
-import IntentMessage from "src/core/IntentMessage";
-import InputText from "src/core/InputText";
+import { Args } from "@storybook/react-vite";
+import IntentMessage from "@components/src/core/IntentMessage";
+import InputText from "@components/src/core/InputText";
 
 export const IntentMessageDemo = (props: Args): JSX.Element => {
   return (

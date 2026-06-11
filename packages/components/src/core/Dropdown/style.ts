@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { CommonThemeProps, getSpaces } from "@components/src/core/styles";
 
 interface StyleProps extends CommonThemeProps {
   buttonPosition: "left" | "right";

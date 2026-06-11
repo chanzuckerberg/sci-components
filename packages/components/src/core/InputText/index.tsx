@@ -1,8 +1,8 @@
 import { TextFieldProps as RawTextFieldProps } from "@mui/material";
 import { forwardRef, useRef } from "react";
 import { InputTextExtraProps, StyledInputBase, StyledLabel } from "./style";
-import useDetectUserTabbing from "src/common/helpers/userTabbing";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 interface AccessibleInputTextProps {
   label: React.ReactNode;

@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
+exports[`<LoadingIndicator /> > CustomAriaLabel story renders snapshot 1`] = `
 <div
   aria-label="Loading"
-  class="css-11iqrt1 e5nf1qh1"
+  class="css-14f0y2v-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
 >
   <div
-    class="css-1obf64m eo7r9jx1"
+    class="css-1q8yjse-StyledIcon emi0zh40"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -23,7 +23,7 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
   <span
     aria-label="Loading cats list..."
     aria-live="polite"
-    class="css-fucilr e5nf1qh0"
+    class="css-knm78x-StyledText egvgfho1"
     role="status"
   >
     Loading
@@ -31,17 +31,17 @@ exports[`<LoadingIndicator /> CustomAriaLabel story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
+exports[`<LoadingIndicator /> > Default story renders snapshot 1`] = `
 <div
   aria-label="Loading"
-  class="css-11iqrt1 e5nf1qh1"
+  class="css-14f0y2v-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
 >
   <div
-    class="css-1obf64m eo7r9jx1"
+    class="css-1q8yjse-StyledIcon emi0zh40"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -53,7 +53,7 @@ exports[`<LoadingIndicator /> Default story renders snapshot 1`] = `
   </div>
   <span
     aria-live="polite"
-    class="css-fucilr e5nf1qh0"
+    class="css-knm78x-StyledText egvgfho1"
     role="status"
   >
     Loading

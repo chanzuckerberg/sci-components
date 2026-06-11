@@ -1,5 +1,5 @@
 import { FormLabel, styled } from "@mui/material";
-import { fontBodySemiboldXxxs } from "src/core/styles";
+import { fontBodySemiboldXxxs } from "@components/src/core/styles";
 
 export const StyledFormLabel = styled(FormLabel)`
   ${fontBodySemiboldXxxs}

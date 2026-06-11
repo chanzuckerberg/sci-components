@@ -1,11 +1,11 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import Button from "src/core/Button";
-import RawDialog from "src/core/Dialog";
-import DialogTitle from "src/core/Dialog/components/DialogTitle";
-import DialogContent from "src/core/Dialog/components/DialogContent";
-import DialogActions from "src/core/Dialog/components/DialogActions";
-import { EXTRA_LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+import Button from "@components/src/core/Button";
+import RawDialog from "@components/src/core/Dialog";
+import DialogTitle from "@components/src/core/Dialog/components/DialogTitle";
+import DialogContent from "@components/src/core/Dialog/components/DialogContent";
+import DialogActions from "@components/src/core/Dialog/components/DialogActions";
+import { EXTRA_LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 
 export const Dialog = (props: Args): JSX.Element => {
   const {

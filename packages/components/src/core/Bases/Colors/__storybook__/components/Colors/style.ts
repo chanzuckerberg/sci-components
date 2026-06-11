@@ -8,7 +8,7 @@ import {
   getCorners,
   getFontWeights,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 interface IStyledDivProps extends CommonThemeProps {
   backgroundColor: string;

@@ -1,8 +1,8 @@
-import { Args } from "@storybook/react-webpack5";
-import Tag from "src/core/Tag";
+import { Args } from "@storybook/react-vite";
+import Tag from "@components/src/core/Tag";
 import { DROPDOWN_MENU_LIVE_PREVIEW_LABELS } from "../constants";
 import { DropdownMenu } from "./default";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   const TITLE_OPTIONS = [undefined, "Sample title text"];

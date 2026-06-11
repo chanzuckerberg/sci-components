@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<InputSlider /> Default story renders snapshot 1`] = `
+exports[`<InputSlider /> > Default story renders snapshot 1`] = `
 <div
   style="height: 180px; margin-left: 20px; margin-top: 15px; width: 180px;"
 >
   <span
-    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium ejpzb5j0 css-u4wdr6-MuiSlider-root"
+    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-r2yh87-MuiSlider-root-StyledSlider"
   >
     <span
       class="MuiSlider-rail css-7o8aqz-MuiSlider-rail"
@@ -68,7 +68,7 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
         max="100"
         min="0"
         step="5"
-        style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+        style="border: 0px; clip: rect(0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
         type="range"
         value="75"
       />
@@ -91,12 +91,12 @@ exports[`<InputSlider /> Default story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<InputSlider /> RangeSlider story renders snapshot 1`] = `
+exports[`<InputSlider /> > RangeSlider story renders snapshot 1`] = `
 <div
   style="height: 180px; margin-left: 20px; margin-top: 15px; width: 180px;"
 >
   <span
-    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium ejpzb5j0 css-u4wdr6-MuiSlider-root"
+    class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-r2yh87-MuiSlider-root-StyledSlider"
   >
     <span
       class="MuiSlider-rail css-7o8aqz-MuiSlider-rail"
@@ -159,7 +159,7 @@ exports[`<InputSlider /> RangeSlider story renders snapshot 1`] = `
         max="100"
         min="0"
         step="5"
-        style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+        style="border: 0px; clip: rect(0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
         type="range"
         value="15"
       />
@@ -193,7 +193,7 @@ exports[`<InputSlider /> RangeSlider story renders snapshot 1`] = `
         max="100"
         min="0"
         step="5"
-        style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+        style="border: 0px; clip: rect(0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
         type="range"
         value="85"
       />

@@ -1,6 +1,6 @@
 import { memo, useRef } from "react";
-import { NavigationFooterNavItem } from "src/core/NavigationFooter/NavigationFooter.types";
-import { useLastInRow } from "src/common/helpers/useLastInRow";
+import { NavigationFooterNavItem } from "@components/src/core/NavigationFooter/NavigationFooter.types";
+import { useLastInRow } from "@components/src/common/helpers/useLastInRow";
 import FooterLink from "../FooterLink";
 import { StyledMobileLinkRow } from "../../style";
 

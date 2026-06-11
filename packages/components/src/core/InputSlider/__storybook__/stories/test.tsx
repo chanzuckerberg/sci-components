@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState, useEffect } from "react";
-import RawInputSlider from "src/core/InputSlider";
+import RawInputSlider from "@components/src/core/InputSlider";
 import {
   INPUT_SLIDER_GENERATE_CUSTOM_MARKS,
   INPUT_SLIDER_LIVE_PREVIEW_ROW_STYLES,

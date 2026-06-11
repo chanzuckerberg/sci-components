@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { IconSizes } from "src/core/styles/common/constants/iconSizes";
+import { IconSizes } from "@components/src/core/styles/common/constants/iconSizes";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

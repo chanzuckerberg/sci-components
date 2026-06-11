@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { FC, useState } from "react";
-import Callout from "src/core/Callout";
-import RawIcon, { IconNameToSizes, SdsIconWithColor } from "src/core/Icon";
+import Callout from "@components/src/core/Callout";
+import RawIcon, {
+  IconNameToSizes,
+  SdsIconWithColor,
+} from "@components/src/core/Icon";
 import {
   CommonThemeProps,
   getColors,
@@ -10,11 +13,11 @@ import {
   getSemanticColors,
   getSpaces,
   getTypography,
-} from "src/core/styles";
-import { iconMap } from "src/core/Icon/map";
-import InputSearch from "src/core/InputSearch";
-import Tooltip from "src/core/Tooltip";
-import { IconSizes } from "src/core/styles/common/constants/iconSizes";
+} from "@components/src/core/styles";
+import { iconMap } from "@components/src/core/Icon/map";
+import InputSearch from "@components/src/core/InputSearch";
+import Tooltip from "@components/src/core/Tooltip";
+import { IconSizes } from "@components/src/core/styles/common/constants/iconSizes";
 
 const IconBankWrapper = styled("div")`
   ${(props: CommonThemeProps) => {

@@ -1,5 +1,9 @@
 import { css } from "@emotion/css";
-import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
+import {
+  CommonThemeProps,
+  getCorners,
+  getSpaces,
+} from "@components/src/core/styles";
 
 export interface TooltipCondensedExtraProps extends CommonThemeProps {
   indicator?: boolean;

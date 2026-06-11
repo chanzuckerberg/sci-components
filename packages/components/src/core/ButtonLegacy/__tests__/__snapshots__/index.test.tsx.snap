@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<button /> Default story renders snapshot 1`] = `
+exports[`<button /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard e1my76kr0 css-1rym0cu-MuiPaper-root-MuiAlert-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard ez44obe0 css-1q0gklo-MuiPaper-root-MuiAlert-root-StyledCallout"
   intent="negative"
   role="alert"
   style="opacity: 1; transform: none; transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
@@ -11,11 +11,11 @@ exports[`<button /> Default story renders snapshot 1`] = `
     class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
   >
     <div
-      class="css-1obf64m eo7r9jx1"
+      class="css-1q8yjse-StyledIcon emi0zh40"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
         data-file-name="IconExclamationMarkCircleSmall"
         data-testid="IconExclamationMarkCircleSmall"
         fillcontrast="white"
@@ -30,12 +30,12 @@ exports[`<button /> Default story renders snapshot 1`] = `
     class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
   >
     <div
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root en4lqxk0 css-1ffx3si-MuiTypography-root-MuiAlertTitle-root"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root e183mai80 css-1tf21ue-MuiTypography-root-MuiAlertTitle-root-StyledCalloutTitle"
     >
       Deprecated!
     </div>
     <div
-      class="css-zmjdh4 eb6utqp0"
+      class="css-v6lit4-StyledCalloutBody e1uu77bg0"
     >
       The 
       <strong>
