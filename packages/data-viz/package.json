@@ -43,8 +43,8 @@
     }
   },
   "scripts": {
-    "build": "rollup -c",
-    "build-watch": "rollup -c -w",
+    "build": "rolldown -c",
+    "build-watch": "rolldown -c --watch",
     "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "test": "vitest run",

@@ -3,7 +3,7 @@
 exports[`<TableHeader /> > Default story renders snapshot 1`] = `
 <table>
   <thead
-    class="css-jz7kpq-StyledTableHeader ekv406h0"
+    class="css-16b9bk4-StyledTableHeader ekv406h0"
   >
     <tr
       class="css-1lwppi3-StyledTableRow euwrjwp0"
@@ -20,11 +20,11 @@ exports[`<TableHeader /> > Default story renders snapshot 1`] = `
             Column 1
           </div>
           <div
-            class="css-n1y1zf-StyledIcon emi0zh40"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-18u1o51-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1xupbug-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -48,11 +48,11 @@ exports[`<TableHeader /> > Default story renders snapshot 1`] = `
             Column 2
           </div>
           <div
-            class="css-n1y1zf-StyledIcon emi0zh40"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-t4do04-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1hqvqsg-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -76,11 +76,11 @@ exports[`<TableHeader /> > Default story renders snapshot 1`] = `
             Column 3
           </div>
           <div
-            class="css-n1y1zf-StyledIcon emi0zh40"
+            class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-t4do04-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1hqvqsg-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

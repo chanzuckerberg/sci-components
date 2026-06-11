@@ -13,8 +13,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "yarn sd-build && rollup -c",
-    "build-watch": "rollup -c -w",
+    "build": "yarn sd-build && rolldown -c",
+    "build-watch": "rolldown -c --watch",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build",
     "test-storybook": "test-storybook",

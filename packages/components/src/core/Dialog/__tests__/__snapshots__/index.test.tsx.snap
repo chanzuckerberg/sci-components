@@ -26,7 +26,7 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 1`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-1xgdrcn-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-13qun6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
@@ -34,11 +34,11 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 1`] = `
       class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconXMarkSmall"
           data-testid="IconXMarkSmall"
           fillcontrast="white"
@@ -124,7 +124,7 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 4`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-qxen6s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-1mfbjum-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
@@ -132,11 +132,11 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 4`] = `
       class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconXMarkLarge"
           data-testid="IconXMarkLarge"
           fillcontrast="white"
@@ -222,7 +222,7 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 7`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-1c6607h-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-s2nu29-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
@@ -230,11 +230,11 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 7`] = `
       class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconXMarkLarge"
           data-testid="IconXMarkLarge"
           fillcontrast="white"
@@ -320,7 +320,7 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 10`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-1c6607h-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-s2nu29-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
@@ -328,11 +328,11 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 10`] = `
       class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconXMarkLarge"
           data-testid="IconXMarkLarge"
           fillcontrast="white"

@@ -13,11 +13,11 @@ exports[`<ButtonDropdown /> > Default story renders snapshot 1`] = `
       class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
           fillcontrast="white"
@@ -37,11 +37,11 @@ exports[`<ButtonDropdown /> > Default story renders snapshot 1`] = `
       class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeLarge css-z4rqyd-MuiButton-endIcon"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"

@@ -22,7 +22,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
   ],
   // Excludes config files from linting
-  ignorePatterns: ["rollup.config.mjs"],
+  ignorePatterns: ["rolldown.config.mjs"],
   // this is to disable
   // no-unused-var, no-extraneous-dependencies and prettier
   // rules in all ComponentName.namespace.tsx files

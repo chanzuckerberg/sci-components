@@ -21,11 +21,11 @@ exports[`<Accordion /> > Default story renders snapshot 1`] = `
       class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
     >
       <div
-        class="css-n1y1zf-StyledIcon emi0zh40"
+        class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -54,7 +54,7 @@ exports[`<Accordion /> > Default story renders snapshot 1`] = `
           role="region"
         >
           <div
-            class="MuiAccordionDetails-root e1kfnxah0 css-15okx-MuiAccordionDetails-root-StyledAccordionDetails-StyledAccordionDetails"
+            class="MuiAccordionDetails-root e1kfnxah0 css-di2wxh-MuiAccordionDetails-root-StyledAccordionDetails-StyledAccordionDetails"
             id="default-story-content"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

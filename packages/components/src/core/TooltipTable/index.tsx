@@ -16,7 +16,9 @@ export type { TooltipTableContentProps };
 /**
  * @see https://mui.com/material-ui/react-table/
  */
-const TooltipTableContent = (props: TooltipTableContentProps): JSX.Element => {
+export const TooltipTableContent = (
+  props: TooltipTableContentProps
+): JSX.Element => {
   const {
     contentAlert,
     data,
