@@ -1,0 +1,3 @@
+import{c as e,i as t}from"./preload-helper-DbRxMUml.js";import{Kr as n,Xn as r,Y as i,Zn as a,cr as o,t as s}from"./iframe-DI6qETgL.js";import{n as c,r as l,t as u}from"./warnings-DdHhhR49.js";import{n as d,t as f}from"./ButtonIcon-DSsFNgLW.js";var p,m,h=t((()=>{a(),d(),s(),p=[`sdsStage`],m=r(f,{shouldForwardProp:e=>!p.includes(e),target:`e1lze9fz0`})(e=>{let{sdsStage:t}=e,n=i(e);return`
+      background-color: ${t===`on`?n?.base?.fillPrimaryInteraction:`transparent`};
+    `},`;`)})),g,_,v,y=t((()=>{g=e(n()),c(),h(),_=o(),v=g.forwardRef((e,t)=>{let{icon:n,sdsSize:r=`medium`,sdsStage:i=`off`,sdsType:a=`primary`,...o}=e;return n===void 0?(l(u.ButtonToggleMissingIconProp),null):(0,_.jsx)(m,{icon:n,sdsType:a,sdsSize:r,sdsStage:i,ref:t,...o})})}));export{y as n,v as t};

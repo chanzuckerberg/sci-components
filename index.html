@@ -60,7 +60,9 @@
     
     <link href="./sb-addons/tag-badges-6/manager-bundle.js" rel="modulepreload" />
     
-    <link href="./sb-addons/storybook-7/manager-bundle.js" rel="modulepreload" />
+    <link href="./sb-addons/vitest-7/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-8/manager-bundle.js" rel="modulepreload" />
       <meta property="og:description" content="Science Design System by CZI" />
 <meta property="og:title" content="Science Design System" />
 <link
@@ -202,7 +204,8 @@
     margin-top: 1px;
   }
 </style>
- 
+
+<script>window.__CHROMATIC_STORYBOOK_ID__ = "fa569548e24f40802b1191107b38bd6b2d6a2c863d6733a0579f552637c5c1bd";</script> 
 
     <style>
       #storybook-root[hidden] {
@@ -220,18 +223,20 @@
       
         
           window['FEATURES'] = {
-  "argTypeTargetsV7": true,
-  "legacyDecoratorFileOrder": false,
-  "disallowImplicitActionsInRenderV8": true,
-  "viewport": true,
-  "highlight": true,
-  "controls": true,
-  "interactions": true,
   "actions": true,
+  "argTypeTargetsV7": true,
   "backgrounds": true,
-  "outline": true,
+  "changeDetection": true,
+  "componentsManifest": false,
+  "controls": true,
+  "disallowImplicitActionsInRenderV8": true,
+  "highlight": true,
+  "interactions": true,
+  "legacyDecoratorFileOrder": false,
   "measure": true,
-  "sidebarOnboardingChecklist": true
+  "outline": true,
+  "sidebarOnboardingChecklist": true,
+  "viewport": true
 };
         
       
@@ -262,11 +267,11 @@
         
       
         
-          window['STORYBOOK_BUILDER'] = "webpack5";
+          window['STORYBOOK_BUILDER'] = "vite";
         
       
         
-          window['STORYBOOK_FRAMEWORK'] = "react-webpack5";
+          window['STORYBOOK_FRAMEWORK'] = "react-vite";
         
       
         
@@ -296,7 +301,9 @@
       
         import './sb-addons/tag-badges-6/manager-bundle.js';
       
-        import './sb-addons/storybook-7/manager-bundle.js';
+        import './sb-addons/vitest-7/manager-bundle.js';
+      
+        import './sb-addons/storybook-8/manager-bundle.js';
       
 
       import './sb-manager/runtime.js';
