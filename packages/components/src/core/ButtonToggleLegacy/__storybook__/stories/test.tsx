@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import ButtonToggleLegacy from "src/core/ButtonToggleLegacy";
+import ButtonToggleLegacy from "@components/src/core/ButtonToggleLegacy";
 
 export const TestDemo = (props: Args): JSX.Element => {
   const { icon } = props;

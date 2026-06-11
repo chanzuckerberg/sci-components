@@ -14,8 +14,8 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
-import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+} from "@components/src/core/styles";
+import { focusVisibleA11yStyle } from "@components/src/core/styles/common/mixins/a11y";
 import { ButtonProps } from "./Button.types";
 
 const doNotForwardProps = [

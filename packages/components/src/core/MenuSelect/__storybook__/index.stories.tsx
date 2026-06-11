@@ -8,16 +8,16 @@ import {
 import { Args, Meta } from "@storybook/react-vite";
 import React, { SyntheticEvent, useState } from "react";
 import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import {
   CommonThemeProps,
   getColors,
   getCorners,
   getShadows,
-} from "src/core/styles";
-import TagFilter from "src/core/TagFilter";
+} from "@components/src/core/styles";
+import TagFilter from "@components/src/core/TagFilter";
 
 const StyledPopper = styled(Popper)`
   ${(props: CommonThemeProps) => {

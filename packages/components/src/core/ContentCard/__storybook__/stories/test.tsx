@@ -1,11 +1,11 @@
 import { Args } from "@storybook/react-vite";
-import { MEDIUM_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Button from "src/core/Button";
+import { MEDIUM_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Button from "@components/src/core/Button";
 import ContentCard, {
   ContentCardActions,
   ContentCardBody,
-} from "src/core/ContentCard";
-import Icon from "src/core/Icon";
+} from "@components/src/core/ContentCard";
+import Icon from "@components/src/core/Icon";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

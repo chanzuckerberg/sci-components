@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
 import { Fragment } from "react";
-import RawTagFilter from "src/core/TagFilter";
+import RawTagFilter from "@components/src/core/TagFilter";
 import { TAG_FILTER_LABEL_STYLE, TAG_FILTER_PSEUDO_STATES } from "../constants";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {

@@ -2,10 +2,10 @@ import { AutocompleteValue } from "@mui/base";
 import styled from "@emotion/styled";
 import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
-import Button from "src/core/Button";
-import RawDropdown from "src/core/Dropdown";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
+import Button from "@components/src/core/Button";
+import RawDropdown from "@components/src/core/Dropdown";
 
 export const ControlledDropdownDemo = <
   T extends DefaultAutocompleteOption,

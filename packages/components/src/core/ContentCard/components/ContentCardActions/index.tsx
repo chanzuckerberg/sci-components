@@ -1,12 +1,12 @@
 import React, { forwardRef, ReactElement, ReactNode } from "react";
 import { StyledCardActions } from "./style";
-import Button, { ButtonProps } from "src/core/Button";
+import Button, { ButtonProps } from "@components/src/core/Button";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 import { ContentCardProps } from "../..";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export interface ContentCardActionsProps {
   buttonsPosition?: "left" | "right";

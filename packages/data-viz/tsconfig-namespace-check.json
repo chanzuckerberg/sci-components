@@ -12,11 +12,9 @@
     "target": "es2019",
     "lib": ["es2019", "dom"],
     "paths": {
-      "src/*": ["src/*"]
+      "@data-viz/src/*": ["src/*"],
+      "@components/src/*": ["../components/src/*"]
     },
-    "types": [
-      "vitest/globals",
-      "node"
-    ]
+    "types": ["vitest/globals", "node"]
   }
 }

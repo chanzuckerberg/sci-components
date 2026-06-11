@@ -2,7 +2,7 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import { SDS_WARNINGS, SDSWarningTypes } from "src/common/warnings";
+import { SDS_WARNINGS, SDSWarningTypes } from "@components/src/common/warnings";
 
 const { Test } = composeStories(stories);
 

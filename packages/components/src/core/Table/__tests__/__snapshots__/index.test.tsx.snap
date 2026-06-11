@@ -5,41 +5,41 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
   class="css-yhqzn2-StyledTable e2lqryt0"
 >
   <thead
-    class="css-jwor8u-StyledTableHeader ekv406h0"
+    class="css-jz7kpq-StyledTableHeader ekv406h0"
   >
     <tr
-      class="css-idd3mo-StyledTableRow euwrjwp0"
+      class="css-1lwppi3-StyledTableRow euwrjwp0"
     >
       <th
-        class="css-1nwboy-StyledTableHeader eyijci12"
+        class="css-n4krcj-StyledTableHeader eyijci12"
       >
         <div
-          class="css-1n9l25l-StyledCellHeaderContainer eyijci10"
+          class="css-lxy8ce-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-avzykc-StyledCellHeaderText eyijci11"
+            class="css-g2t64b-StyledCellHeaderText eyijci11"
           >
             Category
           </div>
         </div>
       </th>
       <th
-        class="css-rz07lo-StyledTableHeader eyijci12"
+        class="css-248xwi-StyledTableHeader eyijci12"
       >
         <div
-          class="css-1v6t311-StyledCellHeaderContainer eyijci10"
+          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-avzykc-StyledCellHeaderText eyijci11"
+            class="css-g2t64b-StyledCellHeaderText eyijci11"
           >
             Active Header
           </div>
           <div
-            class="css-1d5hom7-StyledIcon emi0zh40"
+            class="css-n1y1zf-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-ur4odx-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-18u1o51-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -52,22 +52,22 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-rz07lo-StyledTableHeader eyijci12"
+        class="css-248xwi-StyledTableHeader eyijci12"
       >
         <div
-          class="css-1v6t311-StyledCellHeaderContainer eyijci10"
+          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-avzykc-StyledCellHeaderText eyijci11"
+            class="css-g2t64b-StyledCellHeaderText eyijci11"
           >
             A very long table header title to test sort icon positioning
           </div>
           <div
-            class="css-1d5hom7-StyledIcon emi0zh40"
+            class="css-n1y1zf-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-19x4tt3-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-t4do04-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"
@@ -80,26 +80,26 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </th>
       <th
-        class="css-8p6y54-StyledTableHeader eyijci12"
+        class="css-1ojj6rc-StyledTableHeader eyijci12"
       >
         <div
-          class="css-1v6t311-StyledCellHeaderContainer eyijci10"
+          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-avzykc-StyledCellHeaderText eyijci11"
+            class="css-g2t64b-StyledCellHeaderText eyijci11"
           >
             Component
           </div>
         </div>
       </th>
       <th
-        class="css-1tg5587-StyledTableHeader eyijci12"
+        class="css-5zqrvi-StyledTableHeader eyijci12"
       >
         <div
-          class="css-18gg28h-StyledCellHeaderContainer eyijci10"
+          class="css-1itna59-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-avzykc-StyledCellHeaderText eyijci11"
+            class="css-g2t64b-StyledCellHeaderText eyijci11"
           >
             Right Aligned and Not sortable
           </div>
@@ -109,20 +109,20 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
   </thead>
   <tbody>
     <tr
-      class="css-ml5lwh-StyledTableRow euwrjwp0"
+      class="css-tf7l01-StyledTableRow euwrjwp0"
     >
       <td
-        class="cell-component css-1p1wuuv-StyledCellComponentData e173l55i0"
+        class="cell-component css-r3dzfi-StyledCellComponentData e173l55i0"
       >
         <div
           class="css-1w62mu0-StyledIconCell e1dckcjm0"
         >
           <div
-            class="css-1d5hom7-StyledIcon emi0zh40"
+            class="css-n1y1zf-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconFlaskLarge"
               data-testid="IconFlaskLarge"
               fillcontrast="white"
@@ -133,7 +133,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -144,27 +144,27 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1hosedd-StyledTableData ekxclbn1"
+        class="css-1hch2nr-StyledTableData ekxclbn1"
         data-mui-internal-clone-element="true"
         tabindex="0"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-19w18hh-PrimaryTextWrapper ekxclbn7"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-olfa78-SecondaryText ekxclbn5"
+              class="css-1mjghk5-SecondaryText ekxclbn5"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </span>
@@ -172,30 +172,30 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1hosedd-StyledTableData ekxclbn1"
+        class="css-1hch2nr-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-19w18hh-PrimaryTextWrapper ekxclbn7"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-le3ecl-SecondaryText ekxclbn5"
+              class="css-b64je1-SecondaryText ekxclbn5"
             >
               Secondary Text
             </span>
             <span
-              class="css-7fncso-TertiaryText ekxclbn4"
+              class="css-1e8m411-TertiaryText ekxclbn4"
             >
               Tertiary Text
             </span>
@@ -203,13 +203,13 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-17gk11d-StyledCellComponentData e173l55i0"
+        class="cell-component css-bhlbar-StyledCellComponentData e173l55i0"
       >
         <div
           style="display: flex; gap: 4px; flex-wrap: wrap;"
         >
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -218,7 +218,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -227,7 +227,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -236,7 +236,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -245,7 +245,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -256,19 +256,19 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-p4ghik-StyledTableData ekxclbn1"
+        class="css-k0xr9r-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-ub25lm-PrimaryTextWrapper ekxclbn7"
+              class="css-oig0j5-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 356
               </div>
@@ -278,20 +278,20 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-ml5lwh-StyledTableRow euwrjwp0"
+      class="css-tf7l01-StyledTableRow euwrjwp0"
     >
       <td
-        class="cell-component css-1p1wuuv-StyledCellComponentData e173l55i0"
+        class="cell-component css-r3dzfi-StyledCellComponentData e173l55i0"
       >
         <div
           class="css-1w62mu0-StyledIconCell e1dckcjm0"
         >
           <div
-            class="css-1d5hom7-StyledIcon emi0zh40"
+            class="css-n1y1zf-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconDownloadLarge"
               data-testid="IconDownloadLarge"
               fillcontrast="white"
@@ -302,7 +302,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -313,30 +313,30 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1hosedd-StyledTableData ekxclbn1"
+        class="css-1hch2nr-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-19w18hh-PrimaryTextWrapper ekxclbn7"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-le3ecl-SecondaryText ekxclbn5"
+              class="css-b64je1-SecondaryText ekxclbn5"
             >
               Secondary Text
             </span>
             <span
-              class="css-7fncso-TertiaryText ekxclbn4"
+              class="css-1e8m411-TertiaryText ekxclbn4"
             >
               Tertiary Text
             </span>
@@ -344,25 +344,25 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-1hosedd-StyledTableData ekxclbn1"
+        class="css-1hch2nr-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-19w18hh-PrimaryTextWrapper ekxclbn7"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-le3ecl-SecondaryText ekxclbn5"
+              class="css-b64je1-SecondaryText ekxclbn5"
             >
               Secondary Text
             </span>
@@ -370,7 +370,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-17gk11d-StyledCellComponentData e173l55i0"
+        class="cell-component css-bhlbar-StyledCellComponentData e173l55i0"
       >
         <div
           aria-labelledby="demo-radio-buttons-group-label"
@@ -378,11 +378,11 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
           role="radiogroup"
         >
           <label
-            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-df5jl4-MuiFormControlLabel-root-StyledFormControlLabel"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-19p1yqt-MuiFormControlLabel-root-StyledFormControlLabel"
           >
             <span
               caption="Caption I"
-              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-1ldv88v-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary Mui-checked MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-bc87rc-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
               intent="default"
             >
               <input
@@ -393,11 +393,11 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
                 value="1"
               />
               <div
-                class="css-1hjz74s-StyledRadioCheckedIcon e1miyzh35"
+                class="css-yyqfk5-StyledRadioCheckedIcon e1miyzh35"
                 font-size="medium"
               >
                 <span
-                  class="css-13siorh-StyledRadioDot e1miyzh37"
+                  class="css-1cl9s94-StyledRadioDot e1miyzh37"
                 />
               </div>
               <span
@@ -408,16 +408,16 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
               class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
             >
               <span
-                class="css-1vdlzzw-StyledLabelContainer e1miyzh33"
+                class="css-wwdqb2-StyledLabelContainer e1miyzh33"
               >
                 <span
-                  class="css-13xzy2u-StyledRadioLabel e1miyzh32"
+                  class="css-13zqtbz-StyledRadioLabel e1miyzh32"
                   id="1-label"
                 >
                   Option I
                 </span>
                 <span
-                  class="css-3z4qa5-StyledRadioCaption e1miyzh31"
+                  class="css-1pivzuf-StyledRadioCaption e1miyzh31"
                   id="1-caption"
                 >
                   Caption I
@@ -426,11 +426,11 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             </span>
           </label>
           <label
-            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-df5jl4-MuiFormControlLabel-root-StyledFormControlLabel"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-19p1yqt-MuiFormControlLabel-root-StyledFormControlLabel"
           >
             <span
               caption="Caption II"
-              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-1ldv88v-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
+              class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-bc87rc-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
               intent="default"
             >
               <input
@@ -440,7 +440,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
                 value="2"
               />
               <span
-                class="css-1ow0o30-StyledRadioDefaultIcon e1miyzh36"
+                class="css-1s7nbnj-StyledRadioDefaultIcon e1miyzh36"
                 font-size="medium"
               />
               <span
@@ -451,16 +451,16 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
               class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
             >
               <span
-                class="css-1vdlzzw-StyledLabelContainer e1miyzh33"
+                class="css-wwdqb2-StyledLabelContainer e1miyzh33"
               >
                 <span
-                  class="css-13xzy2u-StyledRadioLabel e1miyzh32"
+                  class="css-13zqtbz-StyledRadioLabel e1miyzh32"
                   id="2-label"
                 >
                   Option II
                 </span>
                 <span
-                  class="css-3z4qa5-StyledRadioCaption e1miyzh31"
+                  class="css-1pivzuf-StyledRadioCaption e1miyzh31"
                   id="2-caption"
                 >
                   Caption II
@@ -471,30 +471,30 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-p4ghik-StyledTableData ekxclbn1"
+        class="css-k0xr9r-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-ub25lm-PrimaryTextWrapper ekxclbn7"
+              class="css-oig0j5-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 1,234
               </div>
             </div>
             <span
-              class="css-le3ecl-SecondaryText ekxclbn5"
+              class="css-b64je1-SecondaryText ekxclbn5"
             >
               2,344,000
             </span>
             <span
-              class="css-7fncso-TertiaryText ekxclbn4"
+              class="css-1e8m411-TertiaryText ekxclbn4"
             >
               12.5%
             </span>
@@ -503,23 +503,23 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="css-1x8dmnd-StyledTableRow euwrjwp0"
+      class="css-f1hbv6-StyledTableRow euwrjwp0"
       data-mui-internal-clone-element="true"
       disabled=""
       tabindex="0"
     >
       <td
-        class="cell-component css-1p1wuuv-StyledCellComponentData e173l55i0"
+        class="cell-component css-r3dzfi-StyledCellComponentData e173l55i0"
       >
         <div
           class="css-1w62mu0-StyledIconCell e1dckcjm0"
         >
           <div
-            class="css-1d5hom7-StyledIcon emi0zh40"
+            class="css-n1y1zf-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconVirusLarge"
               data-testid="IconVirusLarge"
               fillcontrast="white"
@@ -530,7 +530,7 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-ajbuen-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-vl6wwh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
           >
             <span
               class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
@@ -541,30 +541,30 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-jzmxst-StyledTableData ekxclbn1"
+        class="css-1s6t06f-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-19w18hh-PrimaryTextWrapper ekxclbn7"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-le3ecl-SecondaryText ekxclbn5"
+              class="css-b64je1-SecondaryText ekxclbn5"
             >
               Secondary Text
             </span>
             <span
-              class="css-7fncso-TertiaryText ekxclbn4"
+              class="css-1e8m411-TertiaryText ekxclbn4"
             >
               Tertiary Text
             </span>
@@ -572,19 +572,19 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-jzmxst-StyledTableData ekxclbn1"
+        class="css-1s6t06f-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-19w18hh-PrimaryTextWrapper ekxclbn7"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
@@ -593,14 +593,14 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="cell-component css-rmuw09-StyledCellComponentData e173l55i0"
+        class="cell-component css-13ajetg-StyledCellComponentData e173l55i0"
       >
         <div
-          class="css-1d5hom7-StyledIcon emi0zh40"
+          class="css-n1y1zf-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconBacteriaLarge"
             data-testid="IconBacteriaLarge"
             fillcontrast="white"
@@ -612,19 +612,19 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         </div>
       </td>
       <td
-        class="css-hd5uuf-StyledTableData ekxclbn1"
+        class="css-17soa78-StyledTableData ekxclbn1"
       >
         <div
-          class="css-1hqky5a-StyledCellContent ekxclbn10"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-1uyug9h-StyledCellContentWrapper ekxclbn9"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-ub25lm-PrimaryTextWrapper ekxclbn7"
+              class="css-oig0j5-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-4v9o8a-PrimaryText ekxclbn6"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 0.4
               </div>

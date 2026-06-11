@@ -1,5 +1,5 @@
 import { Args, Meta } from "@storybook/react-vite";
-import RawButtonIcon from "src/core/ButtonIcon";
+import RawButtonIcon from "@components/src/core/ButtonIcon";
 import { ButtonIcon } from "./stories/default";
 import {
   BUTTON_ICON_EXCLUDED_CONTROLS,

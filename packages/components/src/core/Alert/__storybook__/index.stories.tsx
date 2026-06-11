@@ -3,11 +3,11 @@ import { Snackbar, Button as MUIButton } from "@mui/material";
 import styled from "@emotion/styled";
 import { Args, Meta } from "@storybook/react-vite";
 import React from "react";
-import Button from "src/core/ButtonLegacy";
-import { defaultTheme } from "src/core/styles/common/defaultTheme";
+import Button from "@components/src/core/ButtonLegacy";
+import { defaultTheme } from "@components/src/core/styles/common/defaultTheme";
 import Alert from "../index";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
 
 const DismissButton = styled(MUIButton)`
   margin-left: -${defaultTheme.spacing(3)}px;

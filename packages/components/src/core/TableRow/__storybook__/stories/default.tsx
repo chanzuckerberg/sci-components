@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
-import CellBasic from "src/core/CellBasic";
-import RawTableRow from "src/core/TableRow";
+import CellBasic from "@components/src/core/CellBasic";
+import RawTableRow from "@components/src/core/TableRow";
 
 export const TableRow = (props: Args): JSX.Element => {
   return (

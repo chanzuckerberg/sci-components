@@ -1,10 +1,10 @@
 import { Args } from "@storybook/react-vite";
-import { MEDIUM_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Button from "src/core/Button";
+import { MEDIUM_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Button from "@components/src/core/Button";
 import RawContentCard, {
   ContentCardActions,
   ContentCardBody,
-} from "src/core/ContentCard";
+} from "@components/src/core/ContentCard";
 
 export const ContentCard = (props: Args): JSX.Element => {
   const { buttons, visualElementType, ...rest } = props;

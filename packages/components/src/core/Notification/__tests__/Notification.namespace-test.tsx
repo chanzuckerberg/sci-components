@@ -1,6 +1,6 @@
 import { Notification, NotificationProps } from "@czi-sds/components";
 import React from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const NotificationNameSpaceTest = (props: NotificationProps) => {
   return (

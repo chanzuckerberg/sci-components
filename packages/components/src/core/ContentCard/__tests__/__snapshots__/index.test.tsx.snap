@@ -51,15 +51,15 @@ exports[`ContentCard > Default story renders snapshot 1`] = `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Urna duis convallis convallis tellus id interdum velit laoreet id. Donec ultrices tincidunt arcu non sodales. Aliquam eleifend mi in nulla posuere.
       </div>
       <div
-        class="MuiCardActions-root MuiCardActions-spacing ewfyato0 css-17rg5d2-MuiCardActions-root-StyledCardActions"
+        class="MuiCardActions-root MuiCardActions-spacing ewfyato0 css-aztqxg-MuiCardActions-root-StyledCardActions"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 css-pmdhma-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             Primary Button
           </span>
@@ -68,12 +68,12 @@ exports[`ContentCard > Default story renders snapshot 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-tzt8ro-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-14eops5-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
+            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
           >
             Minimal Button
           </span>

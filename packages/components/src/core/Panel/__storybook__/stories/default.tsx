@@ -1,12 +1,12 @@
 import { Box, useTheme } from "@mui/material";
 import { Args } from "@storybook/react-vite";
 import React, { useState } from "react";
-import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Callout from "src/core/Callout";
-import RawPanel from "src/core/Panel";
+import { LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Callout from "@components/src/core/Callout";
+import RawPanel from "@components/src/core/Panel";
 import { PanelProps } from "../../Panel.types";
-import ButtonToggle from "src/core/ButtonToggle";
-import Icon from "src/core/Icon";
+import ButtonToggle from "@components/src/core/ButtonToggle";
+import Icon from "@components/src/core/Icon";
 
 const InvalidBasicPanelPropsError = (
   <Callout

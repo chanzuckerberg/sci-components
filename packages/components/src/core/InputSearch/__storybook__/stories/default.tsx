@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawInputSearch from "src/core/InputSearch";
+import RawInputSearch from "@components/src/core/InputSearch";
 
 export const InputSearch = (props: Args): JSX.Element => {
   const { id, placeholder, label, disabled, sdsStyle, intent, ...rest } = props;

@@ -1,12 +1,12 @@
 import { Box, Container, useTheme } from "@mui/material";
 import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import { getSemanticColors } from "src/core/styles";
+import { getSemanticColors } from "@components/src/core/styles";
 import RawNavigationHeader, {
   NavigationHeaderPrimaryNavItem,
   NavigationHeaderSecondaryNavItem,
-} from "src/core/NavigationHeader";
-import { EXTRA_LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+} from "@components/src/core/NavigationHeader";
+import { EXTRA_LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 
 export const CustomNavigationLogo = (): JSX.Element => {
   const theme = useTheme();

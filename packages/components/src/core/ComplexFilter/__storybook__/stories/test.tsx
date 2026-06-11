@@ -1,8 +1,8 @@
 import { Args } from "@storybook/react-vite";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { noop } from "src/common/utils";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
-import RawComplexFilter from "src/core/ComplexFilter";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { noop } from "@components/src/common/utils";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
+import RawComplexFilter from "@components/src/core/ComplexFilter";
 
 export const TestDemo = <T extends DefaultAutocompleteOption>(
   props: Args

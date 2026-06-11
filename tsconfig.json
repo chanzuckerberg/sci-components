@@ -37,21 +37,12 @@
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
     "paths": {
       /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-      "@czi-sds/components": [
-        "./packages/components/src/*"
-      ],
-      "@czi-sds/data-viz": [
-        "./packages/data-viz/src/*"
-      ],
-      "@czi-sds/mcp": [
-        "./packages/mcp/src/*"
-      ],
-      "src/*": [
-        "./src/*"
-      ],
-      "react": [
-        "./node_modules/@types/react"
-      ]
+      "@czi-sds/components": ["./packages/components/src/*"],
+      "@czi-sds/data-viz": ["./packages/data-viz/src/*"],
+      "@czi-sds/mcp": ["./packages/mcp/src/*"],
+      "@components/src/*": ["./packages/components/src/*"],
+      "@data-viz/src/*": ["./packages/data-viz/src/*"],
+      "react": ["./node_modules/@types/react"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */

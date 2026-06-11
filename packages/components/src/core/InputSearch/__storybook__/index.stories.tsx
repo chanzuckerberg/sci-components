@@ -2,7 +2,7 @@ import { Args, Meta } from "@storybook/react-vite";
 import { INPUT_SEARCH_EXCLUDED_CONTROLS } from "./constants";
 import { InputSearch } from "./stories/default";
 import { TestDemo } from "./stories/test";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

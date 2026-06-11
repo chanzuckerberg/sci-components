@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawPagination from "src/core/Pagination";
+import RawPagination from "@components/src/core/Pagination";
 
 export const TestDemo = (props: Args): JSX.Element => (
   <div>

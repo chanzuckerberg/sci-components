@@ -4,8 +4,8 @@ import {
   NOTIFICATION_INTENT_OPTIONS,
   NOTIFICATION_SCREENSHOT_BUTTON_ON_CLICK_OPTIONS,
 } from "../constants";
-import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import RawNotification from "src/core/Notification";
+import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import RawNotification from "@components/src/core/Notification";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   // loop through all INTENT_OPTIONS

@@ -9,8 +9,8 @@ import {
   convertToKebabCase,
   copyToClipboard,
   pickTextColorBasedOnBgColor,
-} from "src/core/Bases/utils";
-import { getMode } from "src/core/styles";
+} from "@components/src/core/Bases/utils";
+import { getMode } from "@components/src/core/styles";
 
 interface ColorComponentProps {
   group: string;

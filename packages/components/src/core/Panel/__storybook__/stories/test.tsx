@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawPanel from "src/core/Panel";
+import RawPanel from "@components/src/core/Panel";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

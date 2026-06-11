@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { css, Divider } from "@mui/material";
-import Link from "src/core/Link";
+import Link from "@components/src/core/Link";
 import {
   CommonThemeProps,
   fontBodyXxs,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 interface FooterLinkStyleProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;

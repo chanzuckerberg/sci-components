@@ -10,7 +10,7 @@ import {
   CONTENT_CARD_IMAGE_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

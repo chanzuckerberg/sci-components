@@ -1,9 +1,9 @@
 import { useTheme } from "@mui/material";
 import { Args } from "@storybook/react-vite";
 import React from "react";
-import Button from "src/core/Button";
-import RawPopover from "src/core/Popover";
-import { SDSTheme } from "src/core/styles";
+import Button from "@components/src/core/Button";
+import RawPopover from "@components/src/core/Popover";
+import { SDSTheme } from "@components/src/core/styles";
 
 export const Popover = (props: Args): JSX.Element => {
   const theme = useTheme<SDSTheme>();

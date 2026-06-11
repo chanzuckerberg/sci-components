@@ -15,7 +15,7 @@ import {
   IntentColor,
   SDSPalette,
   SDSTheme,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export type SdsTagColorType =
   | "info"

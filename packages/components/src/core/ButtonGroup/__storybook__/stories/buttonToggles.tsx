@@ -1,9 +1,9 @@
 import { Args } from "@storybook/react-vite";
 import React, { useState } from "react";
-import RawButtonGroup from "src/core/ButtonGroup";
-import ButtonToggle from "src/core/ButtonToggle";
-import Icon from "src/core/Icon";
-import { StyledBackgroundAppearanceWrapper } from "src/core/Button/style";
+import RawButtonGroup from "@components/src/core/ButtonGroup";
+import ButtonToggle from "@components/src/core/ButtonToggle";
+import Icon from "@components/src/core/Icon";
+import { StyledBackgroundAppearanceWrapper } from "@components/src/core/Button/style";
 
 const BUTTON_TOGGLES = [
   { ariaLabel: "Search", icon: "Search" },

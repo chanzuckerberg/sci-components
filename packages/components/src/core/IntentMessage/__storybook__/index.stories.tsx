@@ -3,7 +3,7 @@ import { IntentMessageDemo } from "./stories/default";
 import { CheckboxDemo } from "./stories/checkbox";
 import { PasswordDemo } from "./stories/password";
 import { ScreenshotTestDemo } from "./stories/screenshot";
-import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
+import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
 
 const defaultMessages = [
   {

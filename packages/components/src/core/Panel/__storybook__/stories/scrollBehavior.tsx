@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Args } from "@storybook/react-vite";
-import RawPanel from "src/core/Panel";
+import RawPanel from "@components/src/core/Panel";
 import { Box, Typography } from "@mui/material";
-import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Icon from "src/core/Icon";
-import ButtonToggle from "src/core/ButtonToggle";
+import { LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Icon from "@components/src/core/Icon";
+import ButtonToggle from "@components/src/core/ButtonToggle";
 
 export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
   const [open, setOpen] = React.useState(true);

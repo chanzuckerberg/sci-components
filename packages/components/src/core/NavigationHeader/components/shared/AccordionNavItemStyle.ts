@@ -8,8 +8,8 @@ import {
   getSemanticColors,
   getSpaces,
   getIconSizes,
-} from "src/core/styles";
-import Button from "src/core/Button";
+} from "@components/src/core/styles";
+import Button from "@components/src/core/Button";
 
 const doNotForwardProps = [
   "hasInvertedStyle",

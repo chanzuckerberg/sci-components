@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT } from "@data-viz/src/common/utils";
 import { useUpdateChart } from "./hooks/useUpdateChart";
 import { CreateChartOptionsProps } from "./hooks/utils";
 import { ChartContainer } from "./style";

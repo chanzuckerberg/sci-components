@@ -17,7 +17,6 @@ Ready to dive in? 🤿🐠🐟🦈
 1. Take a quick tour of all existing components and see the different ways we use to style the MUI components. We will also cover the different styling strategies in details in the [styling section](#styling)
 
 1. Once you’re ready to test your new shiny component in your product project (IDseq, Aspen, etc.), do the following steps:
-
    1. Make sure your new component is exported in `src/index.ts`
 
    1. `yarn build` to compile the components, generate their Typescript definitions, and export them as `index.cjs.js` and `index.esm.js` in `/dist` folder

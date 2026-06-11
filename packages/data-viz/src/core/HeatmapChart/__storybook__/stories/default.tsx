@@ -7,7 +7,7 @@ import {
   HEATMAP_NUMBERS,
   HEATMAP_SIZE,
 } from "../constants";
-import RawHeatmapChart from "src/core/HeatmapChart";
+import RawHeatmapChart from "@data-viz/src/core/HeatmapChart";
 import { ScatterSeriesOption } from "echarts";
 
 export const HeatmapChart = (props: Args): JSX.Element => {

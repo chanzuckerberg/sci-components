@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
-import ButtonToggle from "src/core/ButtonToggle";
-import Icon from "src/core/Icon";
+import ButtonToggle from "@components/src/core/ButtonToggle";
+import Icon from "@components/src/core/Icon";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

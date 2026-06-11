@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
-import IntentMessage from "src/core/IntentMessage";
-import InputText from "src/core/InputText";
+import IntentMessage from "@components/src/core/IntentMessage";
+import InputText from "@components/src/core/InputText";
 
 export const PasswordDemo = (props: Args): JSX.Element => {
   return (

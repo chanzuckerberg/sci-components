@@ -2,11 +2,11 @@
 
 exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
 <div
-  class="css-1hpyp9h-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <button
     aria-label="button-toggle"
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-f2tvj1-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-16yi61s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
     tabindex="0"
     type="button"
   >
@@ -14,11 +14,11 @@ exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
       class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
     >
       <div
-        class="css-1d5hom7-StyledIcon emi0zh40"
+        class="css-n1y1zf-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconDownloadSmall"
           data-testid="IconDownloadSmall"
           fillcontrast="white"
@@ -30,7 +30,7 @@ exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
       </div>
     </span>
     <span
-      class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
+      class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       Label
     </span>

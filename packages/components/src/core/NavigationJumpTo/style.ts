@@ -6,8 +6,8 @@ import {
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
-import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+} from "@components/src/core/styles";
+import { focusVisibleA11yStyle } from "@components/src/core/styles/common/mixins/a11y";
 import { CSSProperties } from "react";
 
 export interface NavigationJumpToExtraProps

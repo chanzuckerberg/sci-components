@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawCellHeader from "src/core/CellHeader";
+import RawCellHeader from "@components/src/core/CellHeader";
 
 export const TestDemo = (props: Args): JSX.Element => (
   <table>

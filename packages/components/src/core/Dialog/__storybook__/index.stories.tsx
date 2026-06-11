@@ -4,7 +4,7 @@ import { DIALOG_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
 import { TestNoTitleOnCloseDemo } from "./stories/testNoTitleOnClose";
 import { TestButtonPositionLeftDemo } from "./stories/testButtonPositionLeft";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

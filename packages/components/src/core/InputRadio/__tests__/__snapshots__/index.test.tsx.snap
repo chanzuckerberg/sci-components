@@ -7,11 +7,11 @@ exports[`<InputRadio /> > Default story renders snapshot 1`] = `
   role="radiogroup"
 >
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-1mviqnl-MuiFormControlLabel-root-StyledFormControlLabel"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-110bnni-MuiFormControlLabel-root-StyledFormControlLabel"
   >
     <span
       caption="Caption"
-      class="MuiButtonBase-root PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-1ldv88v-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
+      class="MuiButtonBase-root PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-bc87rc-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
       intent="default"
     >
       <input
@@ -21,7 +21,7 @@ exports[`<InputRadio /> > Default story renders snapshot 1`] = `
         value="demo"
       />
       <span
-        class="css-1ow0o30-StyledRadioDefaultIcon e1miyzh36"
+        class="css-1s7nbnj-StyledRadioDefaultIcon e1miyzh36"
         font-size="medium"
       />
       <span
@@ -32,16 +32,16 @@ exports[`<InputRadio /> > Default story renders snapshot 1`] = `
       class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
     >
       <span
-        class="css-1vdlzzw-StyledLabelContainer e1miyzh33"
+        class="css-wwdqb2-StyledLabelContainer e1miyzh33"
       >
         <span
-          class="css-13xzy2u-StyledRadioLabel e1miyzh32"
+          class="css-13zqtbz-StyledRadioLabel e1miyzh32"
           id="demo-label"
         >
           Label
         </span>
         <span
-          class="css-3z4qa5-StyledRadioCaption e1miyzh31"
+          class="css-1pivzuf-StyledRadioCaption e1miyzh31"
           id="demo-caption"
         >
           Caption

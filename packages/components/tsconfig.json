@@ -3,7 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist",
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@components/src/*": ["./src/*"],
+      "@data-viz/src/*": ["../data-viz/src/*"]
+    }
   },
   "include": ["./src/**/*", "../../.eslintrc.js"],
   "exclude": ["node_modules", "**/*.scss", "**/*.css"],

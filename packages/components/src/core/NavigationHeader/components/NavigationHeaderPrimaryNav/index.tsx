@@ -1,4 +1,4 @@
-import { SdsTagColorType } from "src/core/Tag";
+import { SdsTagColorType } from "@components/src/core/Tag";
 import { StyledTag } from "./style";
 import { UnifiedNavItem, StyledLabel } from "../shared/UnifiedNavItem";
 import { ReactNode, useEffect, Fragment, useState } from "react";
@@ -9,10 +9,10 @@ import {
   StyledSection,
   StyledSectionHeader,
 } from "../style";
-import Menu from "src/core/Menu";
-import MenuItem from "src/core/MenuItem";
-import Icon, { IconNameToSizes } from "src/core/Icon";
-import { SDSTheme } from "src/core/styles";
+import Menu from "@components/src/core/Menu";
+import MenuItem from "@components/src/core/MenuItem";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
+import { SDSTheme } from "@components/src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
 import { groupItemsBySection } from "../../utils";
 import {

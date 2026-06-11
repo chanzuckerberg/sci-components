@@ -1,15 +1,15 @@
 import { RadioGroup } from "@mui/material";
 import { Args } from "@storybook/react-vite";
-import CellBasic from "src/core/CellBasic";
-import CellComponent from "src/core/CellComponent";
-import CellHeader from "src/core/CellHeader";
-import Icon from "src/core/Icon";
-import InputRadio from "src/core/InputRadio";
-import TableHeader from "src/core/TableHeader";
-import TableRow from "src/core/TableRow";
-import Tag from "src/core/Tag";
-import { SdsTagColorType } from "src/core/Tag/style";
-import RawTable from "src/core/Table";
+import CellBasic from "@components/src/core/CellBasic";
+import CellComponent from "@components/src/core/CellComponent";
+import CellHeader from "@components/src/core/CellHeader";
+import Icon from "@components/src/core/Icon";
+import InputRadio from "@components/src/core/InputRadio";
+import TableHeader from "@components/src/core/TableHeader";
+import TableRow from "@components/src/core/TableRow";
+import Tag from "@components/src/core/Tag";
+import { SdsTagColorType } from "@components/src/core/Tag/style";
+import RawTable from "@components/src/core/Table";
 import { StyledIconCell } from "../style";
 
 export const Table = (props: Args): JSX.Element => {

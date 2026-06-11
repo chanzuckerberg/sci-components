@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import InputDropdown from "src/core/InputDropdown";
+import InputDropdown from "@components/src/core/InputDropdown";
 
 export const StyledInputDropdownLive1 = styled(InputDropdown)`
   position: relative !important;

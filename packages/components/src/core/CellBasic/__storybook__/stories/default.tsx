@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawCellBasic from "src/core/CellBasic";
+import RawCellBasic from "@components/src/core/CellBasic";
 
 export const CellBasic = (props: Args): JSX.Element => {
   return (

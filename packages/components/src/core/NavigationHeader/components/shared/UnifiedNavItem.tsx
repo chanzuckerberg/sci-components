@@ -10,8 +10,8 @@ import {
   fontBodyMediumL,
   fontBodySemiboldL,
   CommonThemeProps,
-} from "src/core/styles";
-import Button, { ButtonProps } from "src/core/Button";
+} from "@components/src/core/styles";
+import Button, { ButtonProps } from "@components/src/core/Button";
 
 interface UnifiedNavItemProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;

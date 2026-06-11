@@ -3,14 +3,14 @@
 exports[`<LoadingIndicator /> > CustomAriaLabel story renders snapshot 1`] = `
 <div
   aria-label="Loading"
-  class="css-1gj5auq-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
+  class="css-14f0y2v-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
 >
   <div
-    class="css-1d5hom7-StyledIcon emi0zh40"
+    class="css-n1y1zf-StyledIcon emi0zh40"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -23,7 +23,7 @@ exports[`<LoadingIndicator /> > CustomAriaLabel story renders snapshot 1`] = `
   <span
     aria-label="Loading cats list..."
     aria-live="polite"
-    class="css-3l1hkm-StyledText egvgfho1"
+    class="css-knm78x-StyledText egvgfho1"
     role="status"
   >
     Loading
@@ -34,14 +34,14 @@ exports[`<LoadingIndicator /> > CustomAriaLabel story renders snapshot 1`] = `
 exports[`<LoadingIndicator /> > Default story renders snapshot 1`] = `
 <div
   aria-label="Loading"
-  class="css-1gj5auq-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
+  class="css-14f0y2v-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
 >
   <div
-    class="css-1d5hom7-StyledIcon emi0zh40"
+    class="css-n1y1zf-StyledIcon emi0zh40"
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -53,7 +53,7 @@ exports[`<LoadingIndicator /> > Default story renders snapshot 1`] = `
   </div>
   <span
     aria-live="polite"
-    class="css-3l1hkm-StyledText egvgfho1"
+    class="css-knm78x-StyledText egvgfho1"
     role="status"
   >
     Loading

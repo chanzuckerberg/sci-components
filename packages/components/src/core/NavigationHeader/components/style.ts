@@ -10,12 +10,12 @@ import {
   getSemanticColors,
   getSpaces,
   getCorners,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
-import ListSubheader from "src/core/List/components/ListSubheader";
+import ListSubheader from "@components/src/core/List/components/ListSubheader";
 import { Divider } from "@mui/material";
 import { ExtraHeaderProps } from "../style";
-import { AccordionDetails } from "src/core/Accordion";
+import { AccordionDetails } from "@components/src/core/Accordion";
 
 const doNotForwardProps = [
   "isNarrow",

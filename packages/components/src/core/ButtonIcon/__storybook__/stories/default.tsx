@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
-import RawButtonIcon from "src/core/ButtonIcon";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
+import RawButtonIcon from "@components/src/core/ButtonIcon";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
 
 export const ButtonIcon = (props: Args): JSX.Element => {
   const { icon, ...rest } = props;

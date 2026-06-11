@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import RawInputCheckbox from "src/core/InputCheckbox";
+import RawInputCheckbox from "@components/src/core/InputCheckbox";
 
 export const InputCheckbox = (props: Args): JSX.Element => {
   const { disabled } = props;

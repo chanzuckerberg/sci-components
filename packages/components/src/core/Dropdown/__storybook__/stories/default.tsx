@@ -1,9 +1,9 @@
 import { AutocompleteValue } from "@mui/material";
 import { Args } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
-import RawDropdown from "src/core/Dropdown";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
+import RawDropdown from "@components/src/core/Dropdown";
 
 export const Dropdown = <
   T extends DefaultAutocompleteOption,

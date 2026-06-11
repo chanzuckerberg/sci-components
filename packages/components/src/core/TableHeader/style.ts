@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getSemanticColors } from "src/core/styles";
+import {
+  CommonThemeProps,
+  getSemanticColors,
+} from "@components/src/core/styles";
 
 export const StyledTableHeader = styled("thead")`
   ${(props: { hasFilterRow?: boolean } & CommonThemeProps) => {

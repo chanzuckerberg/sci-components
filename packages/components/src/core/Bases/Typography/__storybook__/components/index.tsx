@@ -1,12 +1,12 @@
 import { useTheme, TypographyStyle, AccordionDetails } from "@mui/material";
-import { getTypography, CommonThemeProps } from "src/core/styles";
-import Table from "src/core/Table";
-import TableHeader from "src/core/TableHeader";
-import CellHeader from "src/core/CellHeader";
-import TableRow from "src/core/TableRow";
-import CellComponent from "src/core/CellComponent";
-import { copyToClipboard } from "src/core/Bases/utils";
-import { StyledVariable } from "src/core/Bases/style";
+import { getTypography, CommonThemeProps } from "@components/src/core/styles";
+import Table from "@components/src/core/Table";
+import TableHeader from "@components/src/core/TableHeader";
+import CellHeader from "@components/src/core/CellHeader";
+import TableRow from "@components/src/core/TableRow";
+import CellComponent from "@components/src/core/CellComponent";
+import { copyToClipboard } from "@components/src/core/Bases/utils";
+import { StyledVariable } from "@components/src/core/Bases/style";
 import {
   StyledSampleText,
   StyledCssProperties,
@@ -22,7 +22,7 @@ import {
   formatCssProperties,
   sortTypographyItems,
 } from "./utils";
-import Accordion, { AccordionHeader } from "src/core/Accordion";
+import Accordion, { AccordionHeader } from "@components/src/core/Accordion";
 
 interface TypographyProps {
   categories?: Array<

@@ -7,7 +7,7 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface ButtonIconExtraProps extends CommonThemeProps {
   disabled?: boolean;

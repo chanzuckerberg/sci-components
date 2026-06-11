@@ -13,46 +13,6 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 const COMPONENTS_SRC = resolve(currentDir, "../packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "../packages/data-viz/src");
 
-/**
- * (migration): Replicates the previous webpack `resolve.alias.src` array behavior.
- *
- * In webpack, `src` resolved against multiple roots (components/src, data-viz/src).
- * Vite aliases cannot map a single key to multiple directories, so this plugin
- * mirrors the tsconfig `src/*` semantics: a `src/...` import is resolved against
- * the package that owns the importing file first, then the remaining roots.
- */
-function sdsSrcResolver(): Plugin {
-  const roots = [COMPONENTS_SRC, DATA_VIZ_SRC];
-
-  return {
-    name: "sds-src-alias",
-    enforce: "pre",
-    async resolveId(source, importer) {
-      if (source !== "src" && !source.startsWith("src/")) return null;
-
-      const sub = source === "src" ? "" : source.slice("src/".length);
-
-      const ordered = importer
-        ? [...roots].sort((a, b) => {
-            const aOwns = importer.startsWith(a) ? 0 : 1;
-            const bOwns = importer.startsWith(b) ? 0 : 1;
-            return aOwns - bOwns;
-          })
-        : roots;
-
-      for (const root of ordered) {
-        const candidate = sub ? join(root, sub) : root;
-        const resolved = await this.resolve(candidate, importer, {
-          skipSelf: true,
-        });
-        if (resolved) return resolved;
-      }
-
-      return null;
-    },
-  };
-}
-
 const config: StorybookConfig = {
   stories: [
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
@@ -118,21 +78,60 @@ const config: StorybookConfig = {
           ref: true,
           titleProp: true,
         },
-      }),
-      sdsSrcResolver()
+      })
     );
 
     /**
-     * Resolve cross-referenced workspace packages to their source so Storybook
-     * does not depend on prebuilt `dist` output (mirrors the previous webpack
-     * alias workaround).
+     * Resolve cross-referenced workspace packages and the per-package
+     * `@components/src` / `@data-viz/src` path aliases to their source so
+     * Storybook does not depend on prebuilt `dist` output (mirrors the tsconfig
+     * `paths` mappings). The `@czi-sds/*` aliases map the published package names
+     * to source for dev/test only; they are distinct from the internal aliases
+     * (e.g. cross-package imports are externalized in the production build).
      */
     viteConfig.resolve = viteConfig.resolve ?? {};
-    viteConfig.resolve.alias = {
-      ...viteConfig.resolve.alias,
-      "@czi-sds/components": COMPONENTS_SRC,
-      "@czi-sds/data-viz": DATA_VIZ_SRC,
-    };
+    viteConfig.resolve.alias = [
+      ...normalizeAlias(viteConfig.resolve.alias),
+      { find: /^@components\/src\//, replacement: `${COMPONENTS_SRC}/` },
+      { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
+      { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
+      { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+    ];
+
+    /**
+     * (migration): Force Vite's dependency pre-bundling to crawl every story up
+     * front. Under the `@storybook/addon-vitest` browser runner, stories are
+     * imported dynamically per-test, so the initial dep scan misses deps that
+     * only certain heavy stories pull in (e.g. ECharts, react-table, deep MUI
+     * submodules). Those deps are then optimized mid-run, which makes Vite reload
+     * and breaks in-flight dynamic imports with "Failed to fetch dynamically
+     * imported module" (most visible on a cold cache, e.g. CI). Seeding
+     * `optimizeDeps.entries` with the stories glob pre-bundles everything in the
+     * first pass. See storybookjs/storybook#34042 and vitest-dev/vitest#8471.
+     */
+    viteConfig.optimizeDeps = viteConfig.optimizeDeps ?? {};
+    const existingEntries = viteConfig.optimizeDeps.entries;
+    const normalizedEntries =
+      existingEntries === undefined
+        ? []
+        : Array.isArray(existingEntries)
+          ? existingEntries
+          : [existingEntries];
+    viteConfig.optimizeDeps.entries = [
+      ...normalizedEntries,
+      `${COMPONENTS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
+      `${DATA_VIZ_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
+    ];
+    /**
+     * Pre-bundle bare-import subpaths that Vite's scanner cannot reach by
+     * crawling source/stories alone, so they aren't optimized mid-run. Notably
+     * `@emotion/styled` resolves to its `/base` entry at runtime, which would
+     * otherwise be discovered late and trigger a reload.
+     */
+    viteConfig.optimizeDeps.include = [
+      ...(viteConfig.optimizeDeps.include ?? []),
+      "@emotion/styled/base",
+    ];
 
     return viteConfig;
   },
@@ -142,4 +141,19 @@ export default config;
 
 function getAbsolutePath(value: string): string {
   return dirname(require.resolve(join(value, "package.json")));
+}
+
+type AliasEntry = { find: string | RegExp; replacement: string };
+
+/**
+ * Vite's `resolve.alias` may be an object map or an array of `{ find, replacement }`
+ * entries. Normalize whatever Storybook provides into the array form so we can
+ * safely append regex-based aliases (object maps don't support RegExp keys).
+ */
+function normalizeAlias(alias: unknown): AliasEntry[] {
+  if (!alias) return [];
+  if (Array.isArray(alias)) return alias as AliasEntry[];
+  return Object.entries(alias as Record<string, string>).map(
+    ([find, replacement]) => ({ find, replacement })
+  );
 }

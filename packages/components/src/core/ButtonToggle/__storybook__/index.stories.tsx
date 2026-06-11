@@ -6,8 +6,8 @@ import { TestDemo } from "./stories/test";
 import {
   BUTTON_DROPDOWN_ICON_LABELS,
   BUTTON_DROPDOWN_ICON_OPTIONS,
-} from "src/core/ButtonDropdown/__storybook__/constants";
-import { INLINE_RADIO } from "src/common/utils";
+} from "@components/src/core/ButtonDropdown/__storybook__/constants";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

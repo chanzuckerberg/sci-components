@@ -4,7 +4,7 @@ import {
   checkboxClasses,
 } from "@mui/material";
 import styled from "@emotion/styled";
-import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+import { focusVisibleA11yStyle } from "@components/src/core/styles/common/mixins/a11y";
 import {
   CommonThemeProps,
   getBorders,
@@ -12,7 +12,7 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { SDSPalette, fontBodyXs, fontBodyXxs } from "../styles";
 import Icon from "../Icon";
 

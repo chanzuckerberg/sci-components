@@ -1,7 +1,7 @@
 import { AlertProps } from "@mui/lab";
 import { Grow } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
+import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
 import { StyledCallout } from "./style";
 import CalloutTitle from "./components/CalloutTitle";
 import CalloutBody from "./components/CalloutBody";

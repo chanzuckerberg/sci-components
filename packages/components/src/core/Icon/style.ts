@@ -7,11 +7,12 @@ import {
   getColors,
   getIconSizes,
   getMode,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { IconNameToSizes } from "./map";
 
-export interface IconExtraProps<IconName extends keyof IconNameToSizes>
-  extends CommonThemeProps {
+export interface IconExtraProps<
+  IconName extends keyof IconNameToSizes,
+> extends CommonThemeProps {
   className?: string;
   sdsIcon: IconName;
   sdsSize: IconNameToSizes[IconName];

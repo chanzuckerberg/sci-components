@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawTooltip from "src/core/Tooltip";
+import RawTooltip from "@components/src/core/Tooltip";
 
 export const TestDemo = (props: Args): JSX.Element => {
   const { title, ...rest } = props;

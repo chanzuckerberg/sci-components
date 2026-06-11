@@ -1,9 +1,9 @@
 import { Args } from "@storybook/react-vite";
 import React from "react";
-import RawButtonGroup from "src/core/ButtonGroup";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
-import { StyledBackgroundAppearanceWrapper } from "src/core/Button/style";
+import RawButtonGroup from "@components/src/core/ButtonGroup";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
+import { StyledBackgroundAppearanceWrapper } from "@components/src/core/Button/style";
 
 export const ButtonGroupIconOnly = (props: Args): JSX.Element => {
   const { size, ...rest } = props;

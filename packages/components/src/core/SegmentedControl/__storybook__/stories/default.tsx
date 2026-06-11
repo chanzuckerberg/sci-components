@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawSegmentedControl from "src/core/SegmentedControl";
+import RawSegmentedControl from "@components/src/core/SegmentedControl";
 
 export const SegmentedControl = (props: Args): JSX.Element => {
   const { buttonDefinition, ...rest } = props;

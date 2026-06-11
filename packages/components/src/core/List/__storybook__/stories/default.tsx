@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
-import RawList from "src/core/List";
-import ListSubheader from "src/core/List/components/ListSubheader";
-import ListItem from "src/core/List/components/ListItem";
+import RawList from "@components/src/core/List";
+import ListSubheader from "@components/src/core/List/components/ListSubheader";
+import ListItem from "@components/src/core/List/components/ListItem";
 
 export const List = (props: Args): JSX.Element => {
   return (

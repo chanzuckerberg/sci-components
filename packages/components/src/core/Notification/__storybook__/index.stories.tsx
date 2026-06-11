@@ -9,7 +9,7 @@ import {
 } from "./constants";
 import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

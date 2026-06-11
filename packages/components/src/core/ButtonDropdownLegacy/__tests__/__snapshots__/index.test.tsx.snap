@@ -2,7 +2,7 @@
 
 exports[`<ButtonDropdown /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard ez44obe0 css-3p5985-MuiPaper-root-MuiAlert-root-StyledCallout"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard ez44obe0 css-1q0gklo-MuiPaper-root-MuiAlert-root-StyledCallout"
   intent="negative"
   role="alert"
   style="opacity: 1; transform: none; transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
@@ -11,11 +11,11 @@ exports[`<ButtonDropdown /> > Default story renders snapshot 1`] = `
     class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
   >
     <div
-      class="css-1d5hom7-StyledIcon emi0zh40"
+      class="css-n1y1zf-StyledIcon emi0zh40"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
         data-file-name="IconExclamationMarkCircleSmall"
         data-testid="IconExclamationMarkCircleSmall"
         fillcontrast="white"
@@ -30,12 +30,12 @@ exports[`<ButtonDropdown /> > Default story renders snapshot 1`] = `
     class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
   >
     <div
-      class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root e183mai80 css-1dry8jj-MuiTypography-root-MuiAlertTitle-root-StyledCalloutTitle"
+      class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root e183mai80 css-1tf21ue-MuiTypography-root-MuiAlertTitle-root-StyledCalloutTitle"
     >
       Deprecated!
     </div>
     <div
-      class="css-1ozei0v-StyledCalloutBody e1uu77bg0"
+      class="css-1p5pqkx-StyledCalloutBody e1uu77bg0"
     >
       The 
       <strong>

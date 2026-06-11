@@ -126,6 +126,8 @@
     "namespace-check": "lerna run namespace-check",
     "prepare": "husky install",
     "lint": "lerna run lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "build": "lerna run build --scope=@czi-sds/components && lerna run build --ignore=@czi-sds/components",
     "ci": "yarn install",
     "version:ci": "HUSKY=0 lerna version --yes --conventional-commits",

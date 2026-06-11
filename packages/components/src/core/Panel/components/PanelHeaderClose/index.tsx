@@ -1,6 +1,6 @@
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 import { StyledPanelHeaderClose } from "./style";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 export interface PanelHeaderCloseProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;

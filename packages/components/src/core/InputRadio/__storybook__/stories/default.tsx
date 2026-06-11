@@ -1,6 +1,6 @@
 import { RadioGroup } from "@mui/material";
 import { Args } from "@storybook/react-vite";
-import RawInputRadio from "src/core/InputRadio";
+import RawInputRadio from "@components/src/core/InputRadio";
 
 export const InputRadio = (props: Args): JSX.Element => {
   const { caption, label, ...rest } = props;

@@ -1,6 +1,6 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 import CustomSdsIcon from "./svg/customSdsIcon";
 import CustomSvgIcon from "./svg/customSvgIcon";
 

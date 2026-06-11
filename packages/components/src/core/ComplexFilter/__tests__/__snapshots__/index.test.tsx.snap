@@ -2,37 +2,37 @@
 
 exports[`<ComplexFilter /> > Default story renders snapshot 1`] = `
 <div
-  class="css-17sinw6-Wrapper e1ml0skk1"
+  class="css-na2oy-Wrapper e1ml0skk1"
 >
   <button
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-p1t1pn-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-uiqo66-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
     label="Click Target"
     tabindex="0"
     type="button"
     width="250"
   >
     <span
-      class="css-8xk94y-LabelWrapper e7sskkf1"
+      class="css-xyy11f-LabelWrapper e7sskkf1"
     >
       <div>
         <span
-          class="styled-label css-c4gsv0-StyledLabel e7sskkf4"
+          class="styled-label css-elsexs-StyledLabel e7sskkf4"
         >
           Click Target
         </span>
       </div>
       <span
-        class="css-1srrr36-IconWrapper e7sskkf0"
+        class="css-1b4ed00-IconWrapper e7sskkf0"
       >
         <div
-          class="css-1d5hom7-StyledIcon emi0zh40"
+          class="css-n1y1zf-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconChevronDownSmall"
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
@@ -49,7 +49,7 @@ exports[`<ComplexFilter /> > Default story renders snapshot 1`] = `
     />
   </button>
   <div
-    class="css-4q4kes-StyledChipsWrapper e1ml0skk0"
+    class="css-kgsrq1-StyledChipsWrapper e1ml0skk0"
   />
 </div>
 `;

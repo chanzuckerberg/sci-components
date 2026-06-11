@@ -1,6 +1,6 @@
 import { FormControl } from "@mui/material";
 import { Args } from "@storybook/react-vite";
-import RawInputText from "src/core/InputText";
+import RawInputText from "@components/src/core/InputText";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

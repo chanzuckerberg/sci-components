@@ -1,13 +1,13 @@
 import { useTheme } from "@mui/material";
-import CellComponent from "src/core/CellComponent";
-import CellHeader from "src/core/CellHeader";
-import Table from "src/core/Table";
-import TableHeader from "src/core/TableHeader";
-import TableRow from "src/core/TableRow";
-import { Borders, getBorders, getMode } from "src/core/styles";
+import CellComponent from "@components/src/core/CellComponent";
+import CellHeader from "@components/src/core/CellHeader";
+import Table from "@components/src/core/Table";
+import TableHeader from "@components/src/core/TableHeader";
+import TableRow from "@components/src/core/TableRow";
+import { Borders, getBorders, getMode } from "@components/src/core/styles";
 import { StyledBorderBox } from "../style";
-import { StyledVariable } from "src/core/Bases/style";
-import { copyToClipboard } from "src/core/Bases/utils";
+import { StyledVariable } from "@components/src/core/Bases/style";
+import { copyToClipboard } from "@components/src/core/Bases/utils";
 
 export const Template = () => {
   const theme = useTheme();

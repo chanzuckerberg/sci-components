@@ -1,6 +1,6 @@
-import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
 
 export const DROPDOWN_MENU_EXCLUDED_CONTROLS = [
   "keepSearchOnSelect",

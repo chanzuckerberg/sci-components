@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import InputSearch from "src/core/InputSearch";
+import InputSearch from "@components/src/core/InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
@@ -16,8 +16,8 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-} from "src/core/styles";
-import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
+} from "@components/src/core/styles";
+import { addOpacityToHex } from "@components/src/core/styles/common/utils/opacity";
 import { DefaultAutocompleteOption } from ".";
 
 export interface StyleProps extends CommonThemeProps {

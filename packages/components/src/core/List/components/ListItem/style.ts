@@ -6,7 +6,7 @@ import {
   fontBody,
   getFontWeights,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 const fontBodyL = fontBody("l");
 const fontBodyM = fontBody("m");

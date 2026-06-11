@@ -1,6 +1,8 @@
 import { Args } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
-import RawCellHeader, { CellHeaderDirection } from "src/core/CellHeader";
+import RawCellHeader, {
+  CellHeaderDirection,
+} from "@components/src/core/CellHeader";
 
 export const CellHeader = (props: Args): JSX.Element => {
   const { direction, ...rest } = props;

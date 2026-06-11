@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawNotification from "src/core/Notification";
+import RawNotification from "@components/src/core/Notification";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

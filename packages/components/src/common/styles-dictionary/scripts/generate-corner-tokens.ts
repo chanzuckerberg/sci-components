@@ -2,7 +2,7 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { Corners } from "src/core/styles/common/constants/corners";
+import { Corners } from "@components/src/core/styles/common/constants/corners";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

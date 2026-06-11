@@ -1,7 +1,7 @@
 import { AutocompleteValue } from "@mui/material";
 import { useMemo, useState } from "react";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
-import RawDropdown from "src/core/Dropdown";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
+import RawDropdown from "@components/src/core/Dropdown";
 
 export const PopperPlacementDemo = <
   T extends DefaultAutocompleteOption,

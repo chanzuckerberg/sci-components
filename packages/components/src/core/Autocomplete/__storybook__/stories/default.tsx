@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import RawAutocomplete from "src/core/Autocomplete";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import RawAutocomplete from "@components/src/core/Autocomplete";
 import { AUTOCOMPLETE_WRAPPER_STYLES } from "../constants";
 
 export const Autocomplete = <T extends DefaultAutocompleteOption>(

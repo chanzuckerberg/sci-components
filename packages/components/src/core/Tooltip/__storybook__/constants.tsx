@@ -1,4 +1,4 @@
-import Link from "src/core/Link";
+import Link from "@components/src/core/Link";
 import { TooltipExtraProps } from "../style";
 import { CustomComponentSlot } from "./stories/default";
 

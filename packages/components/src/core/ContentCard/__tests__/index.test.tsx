@@ -2,7 +2,7 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 import ContentCardActions from "../components/ContentCardActions";
 import { ContentCardBody } from "..";
 

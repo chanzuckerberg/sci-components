@@ -10,7 +10,7 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

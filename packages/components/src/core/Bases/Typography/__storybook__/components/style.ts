@@ -13,7 +13,7 @@ import {
   fontTabular,
   fontTitle,
   fontLink,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 interface StyledSampleTextProps extends CommonThemeProps {
   mixinName: string;

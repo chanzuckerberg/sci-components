@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
-import Link from "src/core/Link";
-import RawTooltipTableContent from "src/core/TooltipTable";
+import Link from "@components/src/core/Link";
+import RawTooltipTableContent from "@components/src/core/TooltipTable";
 
 export const TooltipTableContent = (props: Args): JSX.Element => {
   const { contentAlert } = props;

@@ -1,8 +1,8 @@
 import { Args } from "@storybook/react-vite";
 import { TABS_LIVE_PREVIEW_WRAPPER_STYLES } from "../constants";
 import { Tabs } from "./default";
-import { noop } from "src/common/utils";
-import Tag from "src/core/Tag";
+import { noop } from "@components/src/common/utils";
+import Tag from "@components/src/core/Tag";
 import { StyledTabCountWrapper } from "../style";
 
 export function TestDemo(props: Args): JSX.Element {

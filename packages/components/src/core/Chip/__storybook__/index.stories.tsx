@@ -1,9 +1,9 @@
 import { Args, Meta } from "@storybook/react-vite";
 import React from "react";
 import Chip from "../index";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
-import Button from "src/core/ButtonLegacy";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
+import Button from "@components/src/core/ButtonLegacy";
 
 const Demo = (props: Args): JSX.Element => {
   const { size, isRounded } = props;

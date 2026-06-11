@@ -2,7 +2,7 @@ import { Args, Meta } from "@storybook/react-vite";
 import { CellComponent } from "./stories/default";
 import { CELL_COMPONENT_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
-import InputToggle from "src/core/InputToggle";
+import InputToggle from "@components/src/core/InputToggle";
 
 export default {
   argTypes: {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MenuItem from "src/core/MenuItem";
+import MenuItem from "@components/src/core/MenuItem";
 import { StyledPage, StyledPaginationButton } from "../../style";
 import { StyledPaginationDropdownMenu } from "./style";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 interface PageListDropdownProps {
   pageList: number[];

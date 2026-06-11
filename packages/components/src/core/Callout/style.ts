@@ -12,8 +12,8 @@ import {
   getPalette,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
-import { CalloutProps as MainCalloutProps } from "src/core/Callout";
+} from "@components/src/core/styles";
+import { CalloutProps as MainCalloutProps } from "@components/src/core/Callout";
 
 interface CalloutExtraProps extends CommonThemeProps, MainCalloutProps {
   collapsed?: boolean;

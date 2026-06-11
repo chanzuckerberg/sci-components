@@ -1,8 +1,8 @@
 import { Args } from "@storybook/react-vite";
 import React from "react";
-import RawButtonLegacy from "src/core/ButtonLegacy";
-import Callout from "src/core/Callout";
-import Icon, { IconNameToSizes } from "src/core/Icon";
+import RawButtonLegacy from "@components/src/core/ButtonLegacy";
+import Callout from "@components/src/core/Callout";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 
 const ButtonIconSizeToSdsIconSize = {
   large: "xl",

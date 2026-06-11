@@ -1,5 +1,5 @@
 import { Args } from "@storybook/react-vite";
-import RawHero from "src/core/Hero";
+import RawHero from "@components/src/core/Hero";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

@@ -11,7 +11,7 @@ import {
   StyledRadioLabel,
 } from "./style";
 import React from "react";
-import { EMPTY_OBJECT, cn } from "src/common/utils";
+import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 
 export interface RadioContentProps extends Omit<
   MUIRadioProps,

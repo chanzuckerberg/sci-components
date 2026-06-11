@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
-import RawTooltipCondensed from "src/core/TooltipCondensed";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
+import RawTooltipCondensed from "@components/src/core/TooltipCondensed";
 
 export const TooltipCondensed = (props: Args): JSX.Element => {
   const { title, indicator } = props;

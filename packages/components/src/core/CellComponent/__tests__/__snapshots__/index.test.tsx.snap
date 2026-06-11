@@ -5,14 +5,14 @@ exports[`<CellComponent /> > Default story renders snapshot 1`] = `
   <tbody>
     <tr>
       <td
-        class="cell-component css-rmuw09-StyledCellComponentData e173l55i0"
+        class="cell-component css-13ajetg-StyledCellComponentData e173l55i0"
         data-testid="CellComponent"
       >
         <p>
           This is a Cell Component with a toggle!
         </p>
         <span
-          class="MuiSwitch-root MuiSwitch-sizeMedium efvmhqy0 css-yoh8cq-MuiSwitch-root-Toggle"
+          class="MuiSwitch-root MuiSwitch-sizeMedium efvmhqy0 css-1dyb9g2-MuiSwitch-root-Toggle"
         >
           <span
             class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"

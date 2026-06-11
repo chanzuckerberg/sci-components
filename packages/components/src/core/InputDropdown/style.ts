@@ -11,7 +11,7 @@ import {
   getSemanticColors,
   getSpaces,
   SDSPalette,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { ButtonProps } from "../Button";
 
 const doNotForwardProps = [

@@ -1,4 +1,4 @@
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 import {
   StyledHoverDrawerColumnHeader,
   StyledHoverDrawerItem,

@@ -8,7 +8,7 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface LoadingIndicatorProps extends CommonThemeProps {
   sdsStyle: "minimal" | "tag";

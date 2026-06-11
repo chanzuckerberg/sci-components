@@ -10,7 +10,7 @@ import {
   SAMPLE_DATA,
   TABLE_ON_ROW_SELECT_OPTIONS,
 } from "./constants";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 
 export default {
   argTypes: {

@@ -2,7 +2,7 @@ import { type MockInstance } from "vitest";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 
 export {};
 

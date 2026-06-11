@@ -1,4 +1,4 @@
-import { Color as ColorType, getColors } from "src/core/styles";
+import { Color as ColorType, getColors } from "@components/src/core/styles";
 import Color from "./color";
 import { StyledColorGroupTitle, StyledColorsWrapper } from "./style";
 import { useTheme } from "@mui/material";

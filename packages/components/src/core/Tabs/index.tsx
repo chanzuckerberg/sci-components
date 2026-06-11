@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
 import { TabProps as RawTabProps, useTheme } from "@mui/material";
 import React, { ReactNode, forwardRef, useContext, useMemo } from "react";
-import { SDSTheme } from "src/core/styles/common/types";
-import { getSemanticColors } from "src/core/styles";
+import { SDSTheme } from "@components/src/core/styles/common/types";
+import { getSemanticColors } from "@components/src/core/styles";
 import { TabsContext } from "./components/common";
 import {
   StyledCount,

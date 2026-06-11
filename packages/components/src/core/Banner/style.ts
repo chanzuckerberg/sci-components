@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
-import Button, { ButtonProps } from "src/core/Button";
+import Button, { ButtonProps } from "@components/src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { BannerIntentType } from "./index";
 
 export interface BannerExtraProps extends CommonThemeProps {

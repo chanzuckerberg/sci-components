@@ -5,7 +5,7 @@ import {
   BANNER_TEXT,
 } from "./constants";
 import { Banner } from "./stories/default";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

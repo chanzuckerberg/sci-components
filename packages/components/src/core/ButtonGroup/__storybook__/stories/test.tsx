@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
 import React from "react";
-import RawButtonGroup from "src/core/ButtonGroup";
-import Button from "src/core/Button";
+import RawButtonGroup from "@components/src/core/ButtonGroup";
+import Button from "@components/src/core/Button";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

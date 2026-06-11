@@ -2,7 +2,7 @@
 
 exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root MuiTabs-vertical e1svjln41 css-1phl90c-MuiTabs-root-StyledTabs"
+  class="MuiTabs-root MuiTabs-vertical e1svjln41 css-1ifsuhh-MuiTabs-root-StyledTabs"
 >
   <div
     class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -17,7 +17,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-1"
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-1.-nav-item"
         role="tab"
         tabindex="0"
@@ -31,7 +31,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-1-1"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-1.1.-subnav-item"
         role="tab"
         tabindex="0"
@@ -45,7 +45,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-1-2"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-1.2.-subnav-item"
         role="tab"
         tabindex="0"
@@ -59,7 +59,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-2"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-2.-nav-item"
         role="tab"
         tabindex="0"
@@ -73,7 +73,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-3"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-3.-nav-item"
         role="tab"
         tabindex="0"
@@ -87,7 +87,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-3-1"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-3.1.-subnav-item"
         role="tab"
         tabindex="0"
@@ -101,7 +101,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-4"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-4.-nav-item"
         role="tab"
         tabindex="0"
@@ -115,7 +115,7 @@ exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
       <button
         aria-controls="navigation-panel-5"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-5.-a-long-title-for-this-item-that-will-wrap-to-the-next-line-if-the-component-width-is-not-enough."
         role="tab"
         tabindex="0"
@@ -149,7 +149,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
       Section panel height:
     </p>
     <span
-      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-1qpa008-MuiSlider-root-StyledSlider"
+      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-zwesq6-MuiSlider-root-StyledSlider"
     >
       <span
         class="MuiSlider-rail css-7o8aqz-MuiSlider-rail"
@@ -266,7 +266,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
       class="MuiBox-root css-1nbic85"
     >
       <div
-        class="MuiTabs-root MuiTabs-vertical e1svjln41 css-tecav7-MuiTabs-root-StyledTabs"
+        class="MuiTabs-root MuiTabs-vertical e1svjln41 css-1mjpt7i-MuiTabs-root-StyledTabs"
       >
         <div
           class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -281,7 +281,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
             <button
               aria-controls="navigation-panel-1"
               aria-selected="true"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-1"
               role="tab"
               tabindex="0"
@@ -295,7 +295,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
             <button
               aria-controls="navigation-panel-2"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-2"
               role="tab"
               tabindex="0"
@@ -309,7 +309,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
             <button
               aria-controls="navigation-panel-3"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-3"
               role="tab"
               tabindex="0"
@@ -323,7 +323,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
             <button
               aria-controls="navigation-panel-4"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-4"
               role="tab"
               tabindex="0"
@@ -337,7 +337,7 @@ exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
             <button
               aria-controls="navigation-panel-5"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1h3t44c-MuiButtonBase-root-MuiTab-root-StyledTab"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1g5k8zj-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-5"
               role="tab"
               tabindex="0"

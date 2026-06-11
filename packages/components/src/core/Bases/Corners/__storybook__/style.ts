@@ -4,7 +4,7 @@ import {
   fontCodeXs,
   getFontWeights,
   getSemanticColors,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export const StyledCornersWrapper = styled("div")`
   max-width: 100%;

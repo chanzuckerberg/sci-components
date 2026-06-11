@@ -3,7 +3,7 @@ import { ChipProps as RawChipProps } from "@mui/material";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 import { ChipExtraProps, StyledChip } from "./style";
 
 type ChipProps = ChipExtraProps & RawChipProps;

@@ -1,7 +1,7 @@
 import { CheckboxProps, InputCheckbox } from "@czi-sds/components";
 import { FormControlLabel } from "@mui/material";
 import React from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const InputCheckboxNameSpaceTest = (props: CheckboxProps) => {
   return (

@@ -8,7 +8,7 @@ import {
   MENU_ITEM_SDS_STYLE_OPTIONS,
   MENU_ITEM_SELECTED_OPTIONS,
 } from "../constants";
-import RawMenuItem, { MenuItemProps } from "src/core/MenuItem";
+import RawMenuItem, { MenuItemProps } from "@components/src/core/MenuItem";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   const DISPLAY_CONTENTS: React.CSSProperties = {

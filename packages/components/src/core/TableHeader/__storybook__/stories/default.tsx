@@ -1,6 +1,6 @@
 import { Args } from "@storybook/react-vite";
-import CellHeader from "src/core/CellHeader";
-import RawTableHeader from "src/core/TableHeader";
+import CellHeader from "@components/src/core/CellHeader";
+import RawTableHeader from "@components/src/core/TableHeader";
 
 export const TableHeader = (props: Args): JSX.Element => {
   return (

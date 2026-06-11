@@ -1,14 +1,14 @@
 import { SerializedStyles } from "@emotion/react";
 import styled from "@emotion/styled";
 import { css } from "@mui/material";
-import Link from "src/core/Link";
+import Link from "@components/src/core/Link";
 import {
   CommonThemeProps,
   fontBodyMediumS,
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 interface NavItemStyleProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;

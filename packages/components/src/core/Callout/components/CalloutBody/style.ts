@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, fontBodyXs, getSpaces } from "src/core/styles";
+import {
+  CommonThemeProps,
+  fontBodyXs,
+  getSpaces,
+} from "@components/src/core/styles";
 
 export const StyledCalloutBody = styled("div")`
   ${fontBodyXs}

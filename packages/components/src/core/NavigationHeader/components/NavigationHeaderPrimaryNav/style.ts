@@ -8,10 +8,10 @@ import {
   fontBodySemiboldL,
   fontBodyMediumL,
   CommonThemeProps,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { css, SerializedStyles } from "@emotion/react";
-import Tag from "src/core/Tag";
-import Button from "src/core/Button";
+import Tag from "@components/src/core/Tag";
+import Button from "@components/src/core/Button";
 
 interface PrimaryNavItemProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;

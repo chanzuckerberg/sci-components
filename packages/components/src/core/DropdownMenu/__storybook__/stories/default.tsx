@@ -1,8 +1,8 @@
 import { Args } from "@storybook/react-vite";
 import React, { useEffect, useRef } from "react";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
-import RawDropdownMenu from "src/core/DropdownMenu";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
+import RawDropdownMenu from "@components/src/core/DropdownMenu";
 import { DROPDOWN_MENU_POPPER_POSITION } from "../constants";
 
 export const DropdownMenu = <

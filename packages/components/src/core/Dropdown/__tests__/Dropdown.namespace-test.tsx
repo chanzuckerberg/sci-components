@@ -4,7 +4,7 @@ import {
   DropdownPopper,
   DropdownProps,
 } from "@czi-sds/components";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const OPTIONS = [
   {

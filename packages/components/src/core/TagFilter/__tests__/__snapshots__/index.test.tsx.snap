@@ -6,13 +6,13 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
 >
   <div>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-hgha7i-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1w42tps-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
       disabled=""
       tabindex="-1"
       type="button"
     >
       <span
-        class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
+        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
       >
         Delete the tag by clicking on its icon
       </span>
@@ -20,7 +20,7 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary e19crzu0 esrfbz40 css-77bmon-MuiButtonBase-root-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag-StyledTag-StyledTag"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary e19crzu0 esrfbz40 css-13u6gy6-MuiButtonBase-root-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag-StyledTag-StyledTag"
       role="none presentation"
       tabindex="0"
     >
@@ -31,19 +31,19 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary et5j5k2 css-ddkfnw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary et5j5k2 css-yvrwkz-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
+          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
         >
           <div
-            class="css-1d5hom7-StyledIcon emi0zh40"
+            class="css-n1y1zf-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconXMarkSmall"
               data-testid="IconXMarkSmall"
               fillcontrast="white"

@@ -4,8 +4,8 @@ import { useState } from "react";
 import RawNavigationHeader, {
   NavigationHeaderPrimaryNavItem,
   NavigationHeaderSecondaryNavItem,
-} from "src/core/NavigationHeader";
-import { EXTRA_LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+} from "@components/src/core/NavigationHeader";
+import { EXTRA_LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 import { PRODUCTS, SERVICES, BENCHMARKS, RESEARCH } from "../constants";
 import { DropdownItem } from "../../components/NavigationHeaderPrimaryNav";
 

@@ -2,21 +2,21 @@
 
 exports[`<Banner /> > Default story renders snapshot 1`] = `
 <div
-  class="css-er128h-StyledBanner e15g05660"
+  class="css-1k5sc26-StyledBanner e15g05660"
   role="banner"
 >
   <div
-    class="css-pqum14-Centered e15g05664"
+    class="css-13f9v10-Centered e15g05664"
   >
     <div
-      class="css-75zie9-IconWrapper e15g05663"
+      class="css-kj3c67-IconWrapper e15g05663"
     >
       <div
-        class="css-1d5hom7-StyledIcon emi0zh40"
+        class="css-n1y1zf-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconInfoCircleSmall"
           data-testid="IconInfoCircleSmall"
           fillcontrast="white"
@@ -31,19 +31,19 @@ exports[`<Banner /> > Default story renders snapshot 1`] = `
   </div>
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e15g05662 et5j5k2 css-9oaz15-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e15g05662 et5j5k2 css-csuk1e-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1l85sdm-StyledChildren-StyledChildren et5j5k1"
+      class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
     >
       <div
-        class="css-1d5hom7-StyledIcon emi0zh40"
+        class="css-n1y1zf-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-m7rge5-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-5nwkmw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconXMarkSmall"
           data-testid="IconXMarkSmall"
           fillcontrast="white"

@@ -1,5 +1,5 @@
 import babel from "@rolldown/plugin-babel";
-import { dirname, join, resolve } from "path";
+import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import type { Plugin } from "vite";
@@ -10,46 +10,6 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 const COMPONENTS_SRC = resolve(currentDir, "packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "packages/data-viz/src");
 const SETUP_FILE = resolve(currentDir, "vitest.setup.ts");
-
-/**
- * (migration): Mirrors the `sdsSrcResolver` plugin in `.storybook/main.ts`.
- *
- * Replicates the previous webpack `resolve.alias.src` (and Jest
- * `moduleDirectories: ["node_modules", "<rootDir>"]`) behavior: a `src/...`
- * import resolves against the package that owns the importing file first, then
- * the remaining roots.
- */
-function sdsSrcResolver(): Plugin {
-  const roots = [COMPONENTS_SRC, DATA_VIZ_SRC];
-
-  return {
-    name: "sds-src-alias",
-    enforce: "pre",
-    async resolveId(source, importer) {
-      if (source !== "src" && !source.startsWith("src/")) return null;
-
-      const sub = source === "src" ? "" : source.slice("src/".length);
-
-      const ordered = importer
-        ? [...roots].sort((a, b) => {
-            const aOwns = importer.startsWith(a) ? 0 : 1;
-            const bOwns = importer.startsWith(b) ? 0 : 1;
-            return aOwns - bOwns;
-          })
-        : roots;
-
-      for (const root of ordered) {
-        const candidate = sub ? join(root, sub) : root;
-        const resolved = await this.resolve(candidate, importer, {
-          skipSelf: true,
-        });
-        if (resolved) return resolved;
-      }
-
-      return null;
-    },
-  };
-}
 
 const ASSET_EXTENSION_RE =
   /\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$/;
@@ -122,13 +82,20 @@ export function createVitestConfig(packageRoot: string) {
       }),
       react(),
       sdsTestAssetStub(),
-      sdsSrcResolver(),
     ],
     resolve: {
-      alias: {
-        "@czi-sds/components": COMPONENTS_SRC,
-        "@czi-sds/data-viz": DATA_VIZ_SRC,
-      },
+      /**
+       * Array form (not an object map) so the per-package `@components/src` /
+       * `@data-viz/src` path aliases can use RegExp prefixes, mirroring the
+       * tsconfig `paths` mappings and the Storybook Vite aliases. The `@czi-sds/*`
+       * aliases resolve the published package names to source for tests only.
+       */
+      alias: [
+        { find: /^@components\/src\//, replacement: `${COMPONENTS_SRC}/` },
+        { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
+        { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
+        { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+      ],
     },
     test: {
       root: packageRoot,

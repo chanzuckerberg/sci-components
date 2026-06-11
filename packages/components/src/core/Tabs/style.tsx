@@ -15,7 +15,7 @@ import {
   fontBodySemiboldXs,
   fontBodyMediumXs,
   getCorners,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { SdsSize } from "./components/common";
 
 export type TabsProps = RawTabsProps & {

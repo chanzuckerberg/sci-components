@@ -17,7 +17,7 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 type IntentType = "negative" | "notice" | "positive";
 export interface InputSearchExtraProps extends CommonThemeProps {

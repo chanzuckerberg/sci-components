@@ -5,7 +5,7 @@ import {
   fontCapsXxxxs,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface StyleProps extends CommonThemeProps {
   count?: number;

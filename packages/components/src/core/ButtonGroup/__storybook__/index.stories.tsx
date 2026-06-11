@@ -10,7 +10,7 @@ import { ButtonGroupIconOnly } from "./stories/iconOnly";
 import { ButtonGroupDisabledButton } from "./stories/disabledButton";
 import { ButtonGroupButtonToggles } from "./stories/buttonToggles";
 import { TestDemo } from "./stories/test";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

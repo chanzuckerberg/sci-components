@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
-import RawButtonToggleLegacy from "src/core/ButtonToggleLegacy";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
+import RawButtonToggleLegacy from "@components/src/core/ButtonToggleLegacy";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
 
 export const ButtonToggleLegacy = (props: Args): JSX.Element => {
   const { icon } = props;

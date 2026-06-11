@@ -2,8 +2,8 @@ import { Args } from "@storybook/react-vite";
 import RawAccordion, {
   AccordionDetails,
   AccordionHeader,
-} from "src/core/Accordion";
-import { EXTRA_SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
+} from "@components/src/core/Accordion";
+import { EXTRA_SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 
 export const Accordion = (props: Args): JSX.Element => {
   const { id, subtitle, useDivider, togglePosition } = props;

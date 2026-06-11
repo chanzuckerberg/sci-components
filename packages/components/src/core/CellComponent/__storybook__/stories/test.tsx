@@ -5,13 +5,13 @@ import {
   StyledStoryBody,
   StyledStoryHeading,
 } from "../style";
-import Tag from "src/core/Tag";
+import Tag from "@components/src/core/Tag";
 import { RadioGroup } from "@mui/material";
-import InputRadio from "src/core/InputRadio";
+import InputRadio from "@components/src/core/InputRadio";
 import { CELL_COMPONENT_TEST_PLACEMENT_STYLES } from "../constants";
-import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
+import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (

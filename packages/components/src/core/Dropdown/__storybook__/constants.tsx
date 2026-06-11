@@ -1,6 +1,6 @@
-import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { noop } from "src/common/utils";
+import { AUTOCOMPLETE_MULTI_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_MULTI_COLUMN_OPTIONS";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { noop } from "@components/src/common/utils";
 
 export const DROPDOWN_EXCLUDED_CONTROLS = [
   "buttonPosition",
