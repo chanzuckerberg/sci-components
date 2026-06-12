@@ -45,7 +45,6 @@ export default {
     },
   },
   component: ButtonGroup,
-  tags: ["beta"],
   title: "Components/Buttons/ButtonGroup",
 } as Meta;
 

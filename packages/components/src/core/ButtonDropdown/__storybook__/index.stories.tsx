@@ -50,7 +50,6 @@ export default {
     },
   },
   component: ButtonDropdown,
-  tags: ["beta"],
   title: "Components/Buttons/ButtonDropdown",
 } as Meta;
 

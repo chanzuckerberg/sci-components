@@ -115,7 +115,6 @@ export default {
     },
   },
   component: StackedBarChart,
-  tags: ["beta"],
   parameters: {
     controls: {
       expanded: true,

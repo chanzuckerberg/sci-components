@@ -5,11 +5,11 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
   style="width: 280px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon eelfr3l5 css-yvslh0-MuiAutocomplete-root-StyledAutocompleteBase"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon eelfr3l5 css-vzklrk-MuiAutocomplete-root-StyledAutocompleteBase"
     label="Search by label"
   >
     <div
-      class="css-1632u22-InputBaseWrapper eelfr3l4"
+      class="css-bgfxc7-InputBaseWrapper eelfr3l4"
     >
       <div>
         <label
@@ -21,7 +21,7 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
         <div
           aria-hidden="false"
           aria-label="Search Input"
-          class="MuiFormControl-root MuiTextField-root eelfr3l3 e1h1uy4z1 css-calipf-MuiFormControl-root-MuiTextField-root-StyledSearchBase-StyledSearchBase-StyledMenuInputSearch"
+          class="MuiFormControl-root MuiTextField-root eelfr3l3 e1h1uy4z1 css-1wuqu1p-MuiFormControl-root-MuiTextField-root-StyledSearchBase-StyledSearchBase-StyledMenuInputSearch"
           tabindex="0"
         >
           <div

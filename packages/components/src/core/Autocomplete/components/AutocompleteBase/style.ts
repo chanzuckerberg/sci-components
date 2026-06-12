@@ -175,6 +175,7 @@ export const InputBaseWrapper = styled("div", {
 export const StyledMenuInputSearch = styled(InputSearch, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })<{ search: boolean }>`
+  background-color: transparent !important;
   margin: 0;
   .MuiInputBase-root {
     width: 100%;

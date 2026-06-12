@@ -15,12 +15,15 @@ import {
   useTheme,
 } from "@mui/material";
 import React, {
+  forwardRef,
   ReactNode,
   SyntheticEvent,
   useCallback,
+  useMemo,
   useRef,
   useState,
 } from "react";
+import { useForkRef } from "@mui/material/utils";
 import { EMPTY_OBJECT, noop } from "@components/src/common/utils";
 import Button from "@components/src/core/Button";
 import Icon, { IconProps } from "@components/src/core/Icon";
@@ -158,6 +161,11 @@ const AutocompleteBase = <
   // removed in favor of `slots.paper`/`slots.popper`.
   const defaultPopperComponent = useDefaultPopperComponent();
 
+  // (masoudmanson): Holds the listbox DOM node so we can preserve its scroll
+  // position across selections (see defaultOnChange for the full explanation).
+  const listboxNodeRef = useRef<HTMLUListElement | null>(null);
+  const defaultListboxComponent = useDefaultListboxComponent(listboxNodeRef);
+
   return (
     <StyledAutocompleteBase
       ref={ref}
@@ -205,13 +213,18 @@ const AutocompleteBase = <
        */
       onInputChange={defaultOnInputChange}
       disabled={disabled || !search}
+      /**
+       * (masoudmanson): Preserves the listbox scroll position across selections.
+       * Placed after spreading props so it always wraps the consumer's onChange.
+       */
+      onChange={defaultOnChange}
       slots={{
         paper: StyledPaper,
         popper: defaultPopperComponent,
         // (v9): MUI's MenuItem now requires a MenuList/Menu context. The default
         // Autocomplete listbox is a plain <ul>, so render the listbox as a
         // MenuList to provide that context to the option MenuItems.
-        listbox: MenuList,
+        listbox: defaultListboxComponent,
         ...props.slots,
       }}
     />
@@ -238,6 +251,56 @@ const AutocompleteBase = <
         />
       );
     }, []);
+  }
+
+  /**
+   * (masoudmanson): A memoized listbox component is required for the same reason
+   * as the Popper above: recreating the component on every render remounts the
+   * listbox and loses its scroll position. The wrapper renders a MenuList (to
+   * provide the Menu context the option MenuItems need) while also capturing the
+   * listbox DOM node so we can restore its scroll after a selection.
+   */
+  function useDefaultListboxComponent(
+    nodeRef: React.MutableRefObject<HTMLUListElement | null>
+  ) {
+    return useMemo(
+      () =>
+        forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLElement>>(
+          function Listbox(listboxProps, forwardedRef) {
+            const handleRef = useForkRef(forwardedRef, nodeRef);
+            return <MenuList {...listboxProps} ref={handleRef} />;
+          }
+        ),
+      // (masoudmanson): nodeRef is a stable ref object, so an empty dependency
+      // array keeps the component identity constant across renders.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      []
+    );
+  }
+
+  function defaultOnChange(
+    event: React.SyntheticEvent,
+    value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) {
+    /**
+     * (masoudmanson): When the popup stays open after a selection (e.g. multi-select
+     * or `disableCloseOnSelect`), MUI re-syncs its highlighted option and forces
+     * `listbox.scrollTop = 0` once the highlight resets to -1. Because the listbox now
+     * renders as a MenuList (the scrollable region), this snaps the list back to the
+     * top on every selection. We capture the scroll position here and restore it on the
+     * next animation frame, after MUI's re-renders and effects have settled.
+     */
+    if (listboxNodeRef.current) {
+      const scrollTopToRestore = listboxNodeRef.current.scrollTop;
+      requestAnimationFrame(() => {
+        if (listboxNodeRef.current) {
+          listboxNodeRef.current.scrollTop = scrollTopToRestore;
+        }
+      });
+    }
+    props.onChange?.(event, value, reason, details);
   }
 
   function defaultRenderInput(params: AutocompleteRenderInputParams) {
