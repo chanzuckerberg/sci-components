@@ -8,7 +8,7 @@ export const MenuItem = (props: Args): JSX.Element => {
   return (
     <DemoWrapper>
       {/* (v9): MUI MenuItem requires a Menu/MenuList context. */}
-      <MenuList>
+      <MenuList disablePadding>
         <RawMenuItem data-testid="MenuItem" {...props}>
           {name}
         </RawMenuItem>
