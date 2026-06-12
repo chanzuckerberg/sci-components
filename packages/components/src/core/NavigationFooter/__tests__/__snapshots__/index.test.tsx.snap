@@ -23,10 +23,10 @@ exports[`<NavigationFooter /> > Default story renders snapshot 1`] = `
           Logo Name
         </p>
         <div
-          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-1t63sc5-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
+          class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-dulezi-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
         >
           <span
-            class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+            class="MuiChip-label css-1dybbl5-MuiChip-label"
           >
             Beta
           </span>
@@ -165,10 +165,10 @@ exports[`<NavigationFooter /> > matches the snapshot 1`] = `
             Logo Name
           </p>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-1t63sc5-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-dulezi-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag"
           >
             <span
-              class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+              class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
               Beta
             </span>

@@ -19,7 +19,7 @@ exports[`<InputToggle /> > Controlled story renders snapshot 1`] = `
     />
   </span>
   <span
-    class="MuiSwitch-track css-1kf3qur-MuiSwitch-track"
+    class="MuiSwitch-track css-pm6g3f-MuiSwitch-track"
   />
 </span>
 `;
@@ -33,6 +33,7 @@ exports[`<InputToggle /> > Default story renders snapshot 1`] = `
     width="62"
   >
     <input
+      aria-label="Input Toggle"
       class="PrivateSwitchBase-input MuiSwitch-input css-12xagqm-MuiSwitchBase-root"
       role="switch"
       type="checkbox"
@@ -43,7 +44,7 @@ exports[`<InputToggle /> > Default story renders snapshot 1`] = `
     />
   </span>
   <span
-    class="MuiSwitch-track css-1kf3qur-MuiSwitch-track"
+    class="MuiSwitch-track css-pm6g3f-MuiSwitch-track"
   />
 </span>
 `;

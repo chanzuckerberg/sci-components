@@ -7,7 +7,9 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   AutocompleteValue,
+  AutocompleteValueOrFreeSoloValueMapping,
   AutocompleteProps as MuiAutocompleteProps,
+  MenuList,
   Popper,
   PopperProps,
   useTheme,
@@ -134,7 +136,7 @@ const AutocompleteBase = <
     noOptionsText = "No options",
     onInputChange = noop,
     renderOption = defaultRenderOption,
-    renderTags = defaultRenderTags,
+    renderValue = defaultRenderValue,
     search = false,
     clearOnBlur = false,
     blurOnSelect = !multiple,
@@ -152,18 +154,20 @@ const AutocompleteBase = <
 
   useDetectUserTabbing(ref);
 
+  // (v9): MUI Autocomplete's `PaperComponent`/`PopperComponent` props were
+  // removed in favor of `slots.paper`/`slots.popper`.
+  const defaultPopperComponent = useDefaultPopperComponent();
+
   return (
     <StyledAutocompleteBase
       ref={ref}
       clearOnBlur={clearOnBlur}
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
-      renderTags={renderTags}
+      renderValue={renderValue}
       loading={loading}
       loadingText={loadingText}
       noOptionsText={noOptionsText}
-      PaperComponent={StyledPaper}
-      PopperComponent={useDefaultPopperComponent()}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}
@@ -201,6 +205,15 @@ const AutocompleteBase = <
        */
       onInputChange={defaultOnInputChange}
       disabled={disabled || !search}
+      slots={{
+        paper: StyledPaper,
+        popper: defaultPopperComponent,
+        // (v9): MUI's MenuItem now requires a MenuList/Menu context. The default
+        // Autocomplete listbox is a plain <ul>, so render the listbox as a
+        // MenuList to provide that context to the option MenuItems.
+        listbox: MenuList,
+        ...props.slots,
+      }}
     />
   );
 
@@ -239,7 +252,7 @@ const AutocompleteBase = <
           aria-hidden={!search}
           label={label}
           placeholder={label}
-          ref={params.InputProps.ref}
+          ref={params.slotProps.input.ref}
           search={search}
           // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
           onKeyDown={(event) => {
@@ -247,60 +260,62 @@ const AutocompleteBase = <
               event.stopPropagation();
             }
           }}
-          InputProps={{
-            /**
-             * (mmoore): passing only the ref along to InputProps to prevent
-             * default MUI arrow from rendering in search input.
-             * renderInput strips InputProps, so we explicitly pass end adornment here
-             */
-            ...params.InputProps.ref,
-            "aria-hidden": !search,
-            endAdornment: (
-              <StyledInputAdornment position="end">
-                {inputValue && (
+          slotProps={{
+            htmlInput: params.slotProps.htmlInput,
+            input: {
+              /**
+               * (mmoore): passing only the ref along to the input slot to prevent
+               * default MUI arrow from rendering in search input.
+               * renderInput strips the input slot, so we explicitly pass end adornment here
+               */
+              ...params.slotProps.input.ref,
+              "aria-hidden": !search,
+              endAdornment: (
+                <StyledInputAdornment position="end">
+                  {inputValue && (
+                    <Button
+                      // (masoudmanson): This is to ensure that the clear button won't be focusable
+                      // when the search prop is set to false.
+                      tabIndex={search ? 0 : -1}
+                      aria-hidden={!search}
+                      disabled={!search}
+                      aria-label="Clear Button"
+                      className="input-search-clear-icon"
+                      onClick={clearInput}
+                      sdsType="secondary"
+                      size="large"
+                      sdsStyle="minimal"
+                      backgroundOnHover={false}
+                    >
+                      <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    </Button>
+                  )}
+                </StyledInputAdornment>
+              ),
+              /**
+               * (thuang): Works with css caret-color: "transparent" to hide
+               * mobile keyboard
+               */
+              inputMode: search ? "text" : "none",
+              startAdornment: (
+                <StyledInputAdornment position="start">
                   <Button
-                    // (masoudmanson): This is to ensure that the clear button won't be focusable
+                    aria-label="Search Button"
+                    // (masoudmanson): This is to ensure that the search button won't be focusable
                     // when the search prop is set to false.
                     tabIndex={search ? 0 : -1}
                     aria-hidden={!search}
                     disabled={!search}
-                    aria-label="Clear Button"
-                    className="input-search-clear-icon"
-                    onClick={clearInput}
                     sdsType="secondary"
                     size="large"
                     sdsStyle="minimal"
                     backgroundOnHover={false}
                   >
-                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    <Icon sdsIcon="Search" sdsSize="s" />
                   </Button>
-                )}
-              </StyledInputAdornment>
-            ),
-            /**
-             * (thuang): Works with css caret-color: "transparent" to hide
-             * mobile keyboard
-             */
-            inputMode: search ? "text" : "none",
-            inputProps: params.inputProps,
-            startAdornment: (
-              <StyledInputAdornment position="start">
-                <Button
-                  aria-label="Search Button"
-                  // (masoudmanson): This is to ensure that the search button won't be focusable
-                  // when the search prop is set to false.
-                  tabIndex={search ? 0 : -1}
-                  aria-hidden={!search}
-                  disabled={!search}
-                  sdsType="secondary"
-                  size="large"
-                  sdsStyle="minimal"
-                  backgroundOnHover={false}
-                >
-                  <Icon sdsIcon="Search" sdsSize="s" />
-                </Button>
-              </StyledInputAdornment>
-            ),
+                </StyledInputAdornment>
+              ),
+            },
           }}
           intent={intent}
           {...InputBaseProps}
@@ -385,11 +400,17 @@ const AutocompleteBase = <
     return option.toString();
   }
 
-  function defaultIsOptionEqualToValue(option: T, val: T): boolean {
-    return option.name === val.name;
+  function defaultIsOptionEqualToValue(
+    option: T,
+    val: AutocompleteValueOrFreeSoloValueMapping<T, FreeSolo>
+  ): boolean {
+    // (v9): With freeSolo, `val` can be a raw string in addition to an option.
+    return typeof val === "object" && val !== null && "name" in val
+      ? option.name === val.name
+      : option.name === val;
   }
 
-  function defaultRenderTags() {
+  function defaultRenderValue() {
     return null;
   }
 

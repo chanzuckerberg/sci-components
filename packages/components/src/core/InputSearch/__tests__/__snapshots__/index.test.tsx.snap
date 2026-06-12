@@ -3,19 +3,19 @@
 exports[`<InputSearch /> > Default story renders snapshot 1`] = `
 <div>
   <label
-    class="css-11su3a8-StyledLabel e1h1uy4z2"
+    class="css-1galnip-StyledLabel e1h1uy4z2"
     for="Test"
   >
     Search
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root e1h1uy4z1 css-uafgmo-MuiFormControl-root-MuiTextField-root-StyledSearchBase-StyledSearchBase"
+    class="MuiFormControl-root MuiTextField-root e1h1uy4z1 css-3psgb9-MuiFormControl-root-MuiTextField-root-StyledSearchBase-StyledSearchBase"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <div
-        class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-1377dcz-MuiInputAdornment-root-StyledInputAdornment"
+        class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-1urstgn-MuiInputAdornment-root-StyledInputAdornment"
       >
         <span
           aria-hidden="true"
@@ -25,7 +25,7 @@ exports[`<InputSearch /> > Default story renders snapshot 1`] = `
         </span>
         <button
           aria-label="search-button"
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-18h7dp0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-18h7dp0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
@@ -53,7 +53,7 @@ exports[`<InputSearch /> > Default story renders snapshot 1`] = `
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart css-vnfkv6-MuiInputBase-input-MuiOutlinedInput-input"
+        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch css-vnfkv6-MuiInputBase-input-MuiOutlinedInput-input"
         id="Test"
         name="input-search-name"
         placeholder="Search"

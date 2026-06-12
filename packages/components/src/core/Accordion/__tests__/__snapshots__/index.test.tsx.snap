@@ -17,7 +17,7 @@ exports[`<Accordion /> > Default story renders snapshot 1`] = `
       type="button"
     >
       <span
-        class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-yfrx4k-MuiAccordionSummary-content"
+        class="MuiAccordionSummary-content css-yfrx4k-MuiAccordionSummary-content"
       >
         Accordion Header
       </span>

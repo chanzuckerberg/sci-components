@@ -5,15 +5,15 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
   style="width: 280px;"
 >
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon eelfr3l5 css-12iq2e2-MuiAutocomplete-root-StyledAutocompleteBase"
+    class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon eelfr3l5 css-yvslh0-MuiAutocomplete-root-StyledAutocompleteBase"
     label="Search by label"
   >
     <div
-      class="css-12qb2o1-InputBaseWrapper eelfr3l4"
+      class="css-1632u22-InputBaseWrapper eelfr3l4"
     >
       <div>
         <label
-          class="css-11su3a8-StyledLabel e1h1uy4z2"
+          class="css-1galnip-StyledLabel e1h1uy4z2"
           for="location-search"
         >
           Search by label
@@ -21,7 +21,7 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
         <div
           aria-hidden="false"
           aria-label="Search Input"
-          class="MuiFormControl-root MuiTextField-root eelfr3l3 e1h1uy4z1 css-tiff6q-MuiFormControl-root-MuiTextField-root-StyledSearchBase-StyledSearchBase-StyledMenuInputSearch"
+          class="MuiFormControl-root MuiTextField-root eelfr3l3 e1h1uy4z1 css-calipf-MuiFormControl-root-MuiTextField-root-StyledSearchBase-StyledSearchBase-StyledMenuInputSearch"
           tabindex="0"
         >
           <div
@@ -30,7 +30,7 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
             inputmode="text"
           >
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-1377dcz-MuiInputAdornment-root-StyledInputAdornment"
+              class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-1urstgn-MuiInputAdornment-root-StyledInputAdornment"
             >
               <span
                 aria-hidden="true"
@@ -41,7 +41,7 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
               <button
                 aria-hidden="false"
                 aria-label="Search Button"
-                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-18h7dp0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-18h7dp0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
                 tabindex="0"
                 type="button"
               >
@@ -72,7 +72,7 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
               aria-invalid="false"
               autocapitalize="none"
               autocomplete="off"
-              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-1dg7i3d-MuiInputBase-input-MuiOutlinedInput-input"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiAutocomplete-input MuiAutocomplete-inputFocused css-1dg7i3d-MuiInputBase-input-MuiOutlinedInput-input"
               id="autocomplete-demo"
               placeholder="Search by label"
               role="combobox"
@@ -81,7 +81,7 @@ exports[`<Autocomplete /> > Default story renders snapshot 1`] = `
               value=""
             />
             <div
-              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-190fhhq-MuiInputAdornment-root-StyledInputAdornment"
+              class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeSmall e1h1uy4z0 css-1w0ym0y-MuiInputAdornment-root-StyledInputAdornment"
             >
               <p
                 class="MuiTypography-root MuiTypography-body1 css-1ro85z9-MuiTypography-root"

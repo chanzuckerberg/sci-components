@@ -6,7 +6,7 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
 >
   <div>
     <button
-      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
       disabled=""
       tabindex="-1"
       type="button"
@@ -20,18 +20,18 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable MuiChip-deletableColorPrimary MuiChip-filledPrimary e19crzu0 esrfbz40 css-1rui6dx-MuiButtonBase-root-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag-StyledTag-StyledTag"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable e19crzu0 esrfbz40 css-au4g5-MuiButtonBase-root-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag-StyledTag-StyledTag"
       role="none presentation"
       tabindex="0"
     >
       <span
-        class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+        class="MuiChip-label css-1dybbl5-MuiChip-label"
       >
         TagFilter
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiChip-deleteIcon MuiChip-deleteIconMedium MuiChip-deleteIconColorPrimary MuiChip-deleteIconFilledColorPrimary et5j5k2 css-xhz0g7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary MuiChip-deleteIcon et5j5k2 css-xhz0g7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >

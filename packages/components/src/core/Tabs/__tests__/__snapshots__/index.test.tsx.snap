@@ -9,7 +9,7 @@ exports[`<Tabs /> > Default story renders snapshot 1`] = `
     style="overflow: hidden; margin-bottom: 0px;"
   >
     <div
-      class="MuiTabs-list MuiTabs-flexContainer css-hzcega-MuiTabs-list"
+      class="MuiTabs-list css-hzcega-MuiTabs-list"
       role="tablist"
     >
       <button
@@ -63,7 +63,7 @@ exports[`<Tabs /> > Default story renders snapshot 1`] = `
       </button>
     </div>
     <span
-      class="MuiTabs-indicator css-pvwr1x-TabIndicator css-pvwr1x-TabIndicator css-1qltlow-MuiTabs-indicator"
+      class="MuiTabs-indicator css-162du2h-TabIndicator css-1qltlow-MuiTabs-indicator"
       style="left: 0px; width: 0px;"
     />
   </div>

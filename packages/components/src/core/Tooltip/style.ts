@@ -28,6 +28,12 @@ export interface TooltipExtraProps extends CommonThemeProps {
   width?: "default" | "wide";
   textAlign?: "left" | "center" | "right";
   componentSlot?: React.ReactNode;
+  /**
+   * (v9): MUI removed the Tooltip `PopperComponent` prop in favor of
+   * `slots.popper`. We keep `PopperComponent` as an SDS prop for backward
+   * compatibility and map it to `slots.popper` internally.
+   */
+  PopperComponent?: React.ElementType;
 }
 
 const dark = (props: TooltipExtraProps): string => {
@@ -160,45 +166,78 @@ export const arrowCss = (props: TooltipExtraProps): string => {
  * default placement which is calculated by javascript
  */
 export const StyledPopper = styled(Popper)`
+  /*
+   * (v9): MUI v9 keeps the tooltip popper's base styles (z-index and
+   * pointer-events) inside its internal "Popper" slot. Because SDS replaces
+   * the popper slot with this component, those styles are lost. Without
+   * pointer-events: none, a non-interactive popper (e.g. followCursor) sits
+   * under the cursor/trigger and steals hover, making the tooltip flicker on
+   * and off. We re-apply them here and only enable pointer-events for
+   * interactive tooltips.
+   */
+  z-index: ${(props: TooltipExtraProps) =>
+    props?.theme?.zIndex?.tooltip ?? 1500};
+  pointer-events: none;
+
+  &.MuiTooltip-popperInteractive {
+    pointer-events: auto;
+  }
+
   &[data-popper-placement*="top"] .MuiTooltip-arrow {
+    top: auto !important;
+    bottom: 0 !important;
     width: 24px !important;
     height: 12px !important;
     margin-bottom: -12px !important;
+    margin-left: -2px !important;
     &:before {
-      transform: rotate(45deg) translate(0px, -2px);
+      transform-origin: center;
+      transform: rotate(45deg) translate(-5px, -7px);
       border-bottom-right-radius: 2px;
       box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1);
     }
   }
 
   &[data-popper-placement*="bottom"] .MuiTooltip-arrow {
+    top: 0 !important;
+    bottom: auto !important;
     width: 24px !important;
     height: 12px !important;
     margin-top: -12px !important;
+    margin-left: -2px !important;
     &:before {
-      transform: rotate(45deg) translate(-1px, 2px);
+      transform-origin: center;
+      transform: rotate(45deg) translate(6px, 4px);
       border-top-left-radius: 2px;
       box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.1);
     }
   }
 
   &[data-popper-placement*="left"] .MuiTooltip-arrow {
+    left: auto !important;
+    right: 0 !important;
     width: 12px !important;
-    height: 16px !important;
+    height: 24px !important;
     margin-right: -12px !important;
+    margin-top: 4px !important;
     &:before {
-      transform: rotate(45deg) translate(-1px, 1px);
+      transform-origin: center;
+      transform: rotate(45deg) translate(-3px, 6px);
       border-top-right-radius: 2px;
       box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
     }
   }
 
   &[data-popper-placement*="right"] .MuiTooltip-arrow {
+    left: 0 !important;
+    right: auto !important;
     width: 12px !important;
-    height: 16px !important;
+    height: 24px !important;
     margin-left: -12px !important;
+    margin-top: 2px !important;
     &:before {
-      transform: rotate(45deg) translate(4px, 2px);
+      transform-origin: center;
+      transform: rotate(45deg) translate(9px, 0px);
       border-bottom-left-radius: 2px;
       box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.1);
     }

@@ -61,7 +61,7 @@ exports[`<Pagination /> > Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e61vbx4 et5j5k2 css-15ng4ux-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledPaginationButton"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e61vbx4 et5j5k2 css-15ng4ux-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledPaginationButton"
       tabindex="0"
       type="button"
     >

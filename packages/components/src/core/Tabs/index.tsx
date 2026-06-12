@@ -42,7 +42,11 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 
     return (
       <TabsContext.Provider value={contextValue}>
-        <StyledTabs TabIndicatorProps={indicatorProps} ref={ref} {...rest} />
+        <StyledTabs
+          slotProps={{ indicator: indicatorProps }}
+          ref={ref}
+          {...rest}
+        />
       </TabsContext.Provider>
     );
   }

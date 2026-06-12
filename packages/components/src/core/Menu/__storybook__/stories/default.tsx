@@ -35,8 +35,10 @@ export const Menu = (props: Args): JSX.Element => {
         keepMounted
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
+        slotProps={{
+          list: {
+            "aria-labelledby": "basic-button",
+          },
         }}
         role="listbox"
         {...props}

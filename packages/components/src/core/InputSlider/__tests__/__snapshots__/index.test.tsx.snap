@@ -8,7 +8,7 @@ exports[`<InputSlider /> > Default story renders snapshot 1`] = `
     class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-1w488r-MuiSlider-root-StyledSlider"
   >
     <span
-      class="MuiSlider-rail css-r64h58-MuiSlider-rail"
+      class="MuiSlider-rail css-hat6nr-MuiSlider-rail"
     />
     <span
       class="MuiSlider-track css-xvk2i-MuiSlider-track"
@@ -54,7 +54,7 @@ exports[`<InputSlider /> > Default story renders snapshot 1`] = `
       100
     </span>
     <span
-      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb"
+      class="MuiSlider-thumb MuiSlider-thumb css-14k2rm-MuiSlider-thumb"
       data-index="0"
       style="left: 75%;"
     >
@@ -99,7 +99,7 @@ exports[`<InputSlider /> > RangeSlider story renders snapshot 1`] = `
     class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-1w488r-MuiSlider-root-StyledSlider"
   >
     <span
-      class="MuiSlider-rail css-r64h58-MuiSlider-rail"
+      class="MuiSlider-rail css-hat6nr-MuiSlider-rail"
     />
     <span
       class="MuiSlider-track css-xvk2i-MuiSlider-track"
@@ -145,7 +145,7 @@ exports[`<InputSlider /> > RangeSlider story renders snapshot 1`] = `
       100
     </span>
     <span
-      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb"
+      class="MuiSlider-thumb MuiSlider-thumb css-14k2rm-MuiSlider-thumb"
       data-index="0"
       style="left: 15%;"
     >
@@ -179,7 +179,7 @@ exports[`<InputSlider /> > RangeSlider story renders snapshot 1`] = `
       </span>
     </span>
     <span
-      class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb"
+      class="MuiSlider-thumb MuiSlider-thumb css-14k2rm-MuiSlider-thumb"
       data-index="1"
       style="left: 85%;"
     >

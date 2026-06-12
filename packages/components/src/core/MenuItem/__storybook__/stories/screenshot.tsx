@@ -1,3 +1,4 @@
+import { MenuList } from "@mui/material";
 import { Args } from "@storybook/react-vite";
 import {
   MENU_ITEM_COLUMN_OPTIONS,
@@ -252,8 +253,15 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
       <div style={DISPLAY_CONTENTS}>
         {MENU_ITEM_PSEUDO_STATES.map((state) => {
           return (
-            // to pass a11y, this container div must have role of "menu" since it contains components with roles of "menuitem"
-            <div role="menu" style={LEVEL_STYLE} key={state}>
+            // to pass a11y, this container must have role of "menu" since it contains components with roles of "menuitem".
+            // (v9): use MenuList (rendered as a div) so the MenuItem gets the required Menu/MenuList context.
+            <MenuList
+              role="menu"
+              component="div"
+              disablePadding
+              style={LEVEL_STYLE}
+              key={state}
+            >
               {/* removes irrelevant disabled iterations: when combined with all pseudo-states except default, `disabled=false` is impossible */}
               {(disabled === false ||
                 (disabled === true && state === "default")) && (
@@ -278,7 +286,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                   </RawMenuItem>
                 </>
               )}
-            </div>
+            </MenuList>
           );
         })}
       </div>

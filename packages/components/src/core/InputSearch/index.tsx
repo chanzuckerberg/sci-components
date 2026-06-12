@@ -138,49 +138,51 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           id={id}
           ref={ref ? ref : inputRef}
           className={cn(inputClassName, className)}
-          // passed to mui Input
-          InputProps={{
-            endAdornment: value ? (
-              <StyledInputAdornment
-                position="end"
-                className={cn(endAdornmentClassName)}
-              >
-                <Button
-                  aria-label="clear-button"
-                  className={cn(
-                    "input-search-clear-icon",
-                    clearButtonClassName
-                  )}
-                  onClick={clearInput}
-                  sdsType="secondary"
-                  size="small"
-                  sdsStyle="minimal"
-                  disabled={disabled}
-                  backgroundOnHover={false}
+          // passed to mui Input slot (v9: InputProps -> slotProps.input)
+          slotProps={{
+            input: {
+              endAdornment: value ? (
+                <StyledInputAdornment
+                  position="end"
+                  className={cn(endAdornmentClassName)}
                 >
-                  <Icon sdsIcon="XMarkCircle" sdsSize="s" />
-                </Button>
-              </StyledInputAdornment>
-            ) : null,
-            startAdornment: (
-              <StyledInputAdornment
-                position="start"
-                className={cn(startAdornmentClassName)}
-              >
-                <Button
-                  aria-label="search-button"
-                  onClick={localHandleSubmit}
-                  sdsType="secondary"
-                  size="large"
-                  sdsStyle="minimal"
-                  disabled={disabled}
-                  backgroundOnHover={false}
-                  className={cn(searchButtonClassName)}
+                  <Button
+                    aria-label="clear-button"
+                    className={cn(
+                      "input-search-clear-icon",
+                      clearButtonClassName
+                    )}
+                    onClick={clearInput}
+                    sdsType="secondary"
+                    size="small"
+                    sdsStyle="minimal"
+                    disabled={disabled}
+                    backgroundOnHover={false}
+                  >
+                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                  </Button>
+                </StyledInputAdornment>
+              ) : null,
+              startAdornment: (
+                <StyledInputAdornment
+                  position="start"
+                  className={cn(startAdornmentClassName)}
                 >
-                  <Icon sdsIcon="Search" sdsSize="s" />
-                </Button>
-              </StyledInputAdornment>
-            ),
+                  <Button
+                    aria-label="search-button"
+                    onClick={localHandleSubmit}
+                    sdsType="secondary"
+                    size="large"
+                    sdsStyle="minimal"
+                    disabled={disabled}
+                    backgroundOnHover={false}
+                    className={cn(searchButtonClassName)}
+                  >
+                    <Icon sdsIcon="Search" sdsSize="s" />
+                  </Button>
+                </StyledInputAdornment>
+              ),
+            },
           }}
           type="search"
           variant="outlined"

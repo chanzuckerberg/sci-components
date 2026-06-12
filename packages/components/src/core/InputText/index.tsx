@@ -86,7 +86,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
         <StyledInputBase
           className={cn(inputClassName, className)}
           ref={ref ? ref : inputRef}
-          inputProps={inputProps}
+          slotProps={{ htmlInput: inputProps }}
           type="text"
           multiline={sdsType === "textArea"}
           minRows={sdsType === "textArea" ? 4 : 2}

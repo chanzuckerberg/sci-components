@@ -2,7 +2,7 @@
 
 exports[`<ButtonIcon /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard ez44obe0 css-1x9srip-MuiPaper-root-MuiAlert-root-StyledCallout"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standard ez44obe0 css-1x9srip-MuiPaper-root-MuiAlert-root-StyledCallout"
   intent="negative"
   role="alert"
   style="--Paper-shadow: none; opacity: 1; transform: none; transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"

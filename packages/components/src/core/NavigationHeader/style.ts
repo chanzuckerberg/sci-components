@@ -1,6 +1,13 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable sonarjs/no-duplicate-string */
-import { AppBar, Divider, Drawer, Toolbar, css } from "@mui/material";
+import {
+  AppBar,
+  accordionSummaryClasses,
+  Divider,
+  Drawer,
+  Toolbar,
+  css,
+} from "@mui/material";
 import {
   CommonThemeProps,
   fontBodyMediumL,
@@ -652,7 +659,7 @@ export const StyledAccordion = styled(Accordion, {
   }
 
   ${(props: ExtraHeaderProps) => {
-    const { hasInvertedStyle, sdsStyle = "dropdown" } = props;
+    const { hasInvertedStyle, sdsStyle = "dropdown", isNarrow } = props;
 
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
@@ -675,8 +682,9 @@ export const StyledAccordion = styled(Accordion, {
       : semanticColors?.base.ornamentSecondaryInteraction;
 
     return css`
-      & > .MuiButtonBase-root {
-        padding: ${spaces?.s}px ${spaces?.l}px !important;
+      && .${accordionSummaryClasses.root} {
+        padding: ${isNarrow ? spaces?.xs : spaces?.s}px
+          ${isNarrow ? spaces?.m : spaces?.l}px;
         border-radius: ${corners?.l}px;
         color: ${textDefaultColor};
 

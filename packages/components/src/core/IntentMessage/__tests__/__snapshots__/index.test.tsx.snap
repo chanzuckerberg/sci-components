@@ -80,7 +80,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
   >
     <div>
       <div
-        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-s3hvzc-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
+        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-40c1y1-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-quhxjy-MuiInputBase-root-MuiOutlinedInput-root"
@@ -88,7 +88,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
           <input
             aria-invalid="false"
             aria-label="Input Label"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
+            class="MuiInputBase-input MuiOutlinedInput-input css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
             id="input-example"
             placeholder="Input placeholder"
             type="text"
@@ -256,13 +256,13 @@ exports[`IntentMessage > Password story renders snapshot 1`] = `
   >
     <div>
       <label
-        class="css-r2sf0y-StyledLabel e178j4nw1"
+        class="css-1kzrxod-StyledLabel e178j4nw1"
         for="password-input"
       >
         Enter a Password
       </label>
       <div
-        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-142poz6-MuiFormControl-root-MuiTextField-root-StyledInputBase-applyIntentColor-StyledInputBase"
+        class="MuiFormControl-root MuiTextField-root e178j4nw0 css-fgql2i-MuiFormControl-root-MuiTextField-root-StyledInputBase-applyIntentColor-StyledInputBase"
       >
         <div
           class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-quhxjy-MuiInputBase-root-MuiOutlinedInput-root"
@@ -270,7 +270,7 @@ exports[`IntentMessage > Password story renders snapshot 1`] = `
           <input
             aria-invalid="false"
             aria-label="Enter a Password"
-            class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
+            class="MuiInputBase-input MuiOutlinedInput-input css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
             id="password-input"
             placeholder="Password"
             type="password"

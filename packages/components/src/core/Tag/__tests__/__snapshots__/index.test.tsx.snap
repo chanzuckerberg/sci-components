@@ -2,10 +2,10 @@
 
 exports[`<Tag /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-filledPrimary esrfbz40 css-d5i38o-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag"
+  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-135watv-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag"
 >
   <span
-    class="MuiChip-label MuiChip-labelMedium css-1dybbl5-MuiChip-label"
+    class="MuiChip-label css-1dybbl5-MuiChip-label"
   >
     Label
   </span>

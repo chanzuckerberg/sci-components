@@ -40,7 +40,7 @@ const DropdownNameSpaceTest = <
       search
       onClose={noop}
       InputDropdownProps={{ sdsStyle: "square" }}
-      PopperComponent={DropdownPopper}
+      slots={{ popper: DropdownPopper }}
     />
   );
 };

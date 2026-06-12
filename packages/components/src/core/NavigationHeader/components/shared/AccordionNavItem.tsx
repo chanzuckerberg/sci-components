@@ -1,3 +1,4 @@
+import { MenuList } from "@mui/material";
 import { ReactNode } from "react";
 import { AccordionHeader } from "@components/src/core/Accordion";
 import MenuItem from "@components/src/core/MenuItem";
@@ -217,7 +218,13 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
                   {section}
                 </StyledSectionHeader>
               )}
-              {sectionItems.map((subItem) => renderNavItem(subItem))}
+              {sdsStyle === "drawer" ? (
+                sectionItems.map((subItem) => renderNavItem(subItem))
+              ) : (
+                <MenuList>
+                  {sectionItems.map((subItem) => renderNavItem(subItem))}
+                </MenuList>
+              )}
               {actions && actions.length > 0 && sdsStyle === "drawer" && (
                 <StyledHoverDrawerActions isNarrow={isNarrow}>
                   {actions.map((action: ActionItem, index: number) => {
