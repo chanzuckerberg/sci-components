@@ -1,1 +1,0 @@
-import{i as e}from"./preload-helper-DbRxMUml.js";import{cr as t}from"./iframe-DI6qETgL.js";import{n,t as r}from"./Icon-BvRFwTEr.js";function i(e){let{sdsIcon:t=`Bacteria`,sdsSize:n=`l`,color:i=`blue`,shade:o=400,...s}=e;return(0,a.jsx)(r,{sdsIcon:t,sdsSize:n,color:i,shade:o,...s})}var a,o=e((()=>{n(),a=t()}));export{o as n,i as t};

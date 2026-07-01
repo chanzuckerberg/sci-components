@@ -1,3 +1,0 @@
-import{i as e}from"./preload-helper-DbRxMUml.js";import{T as t,Xn as n,Z as r,Zn as i,bn as a,cr as o,st as s,t as c}from"./iframe-DI6qETgL.js";var l,u,d=e((()=>{i(),s(),c(),l=t(`m`),u=n(a,{target:`ed4d6mk0`})(`&.MuiListSubheader-root{`,l,` line-height:unset;color:unset;`,e=>`
-        margin-bottom: ${r(e)?.l}px;
-      `,`;}`)})),f,p,m=e((()=>{d(),f=o(),p=e=>(0,f.jsx)(u,{disableGutters:!0,...e})}));export{m as n,p as t};
