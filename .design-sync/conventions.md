@@ -57,7 +57,8 @@ Read before composing: `components/<group>/<Name>/<Name>.prompt.md` (usage + rea
 `<Name>.d.ts` (full types), `<Name>.html` (rendered variants), and `guidelines/` (the DS's own
 usage docs). The component list spans buttons, inputs, dropdowns, table (data tables), and
 composite components (Dialog, Panel, Tabs, Tooltip, Callout, Banner, Notification, Hero,
-ContentCard, …).
+ContentCard, …), plus ECharts-based data visualization (`HeatmapChart`, `StackedBarChart` from the
+`@czi-sds/data-viz` sibling package — also on `window.SDS`).
 
 ## Idiomatic example
 

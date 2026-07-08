@@ -6,7 +6,7 @@
   "globalName": "SDS",
   "storybookStatic": ".design-sync/sb-reference",
   "buildCmd": "node .yarn/releases/yarn-4.1.0.cjs build",
-  "extraEntries": ["../../.design-sync/preview-provider.jsx"],
+  "extraEntries": ["../../.design-sync/preview-provider.jsx", "../data-viz/dist/index.esm.js"],
   "provider": { "component": "SDSPreviewProvider" },
   "readmeHeader": ".design-sync/conventions.md",
   "overrides": {

@@ -129,9 +129,20 @@ Converter: `--node-modules node_modules` (repo root — react is hoisted there, 
 
 - Token/foundation showcase stories: Borders, Breakpoints, Colors, Corners, DropShadows, Spaces,
   Typography (design-token docs, not components — [TITLE_UNMAPPED], correctly dropped).
-- **HeatmapChart, StackedBarChart** belong to `@czi-sds/data-viz` — handled in a separate pass
-  into the same project (data-viz depends on components; single-package converter runs them
-  separately).
+## data-viz fold-in ([GENERAL])
+
+- **[GENERAL] @czi-sds/data-viz (HeatmapChart, StackedBarChart) folded into this same project via
+  `cfg.extraEntries: "../data-viz/dist/index.esm.js"`.** The converter is single-package, but
+  extraEntries merges the data-viz dist exports onto window.SDS, so their storybook titles
+  ("Data Viz/HeatmapChart", "Data Viz/StackedBarChart") get discovered as components 50 & 51 with
+  no titleMap needed. ECharts is `external` in the data-viz dist but esbuild bundles it into
+  _ds_bundle.js (bundle grew ~1MB). Both render faithfully — StackedBarChart (all 6 graded stories
+  match) and HeatmapChart (Default scatter + the full redux-connected Heatmap Demo with controls
+  sidebar). Caveats: (a) their `.d.ts`/`.prompt.md` are extracted from the main components dist,
+  so data-viz types are partial/stubbed (the components render correctly regardless); (b)
+  HeatmapChart demo data (scatter dots, Perlin cells) is not seeded, so exact pixels vary per
+  capture — graded on chart structure/palette, which match. Rebuild data-viz dist
+  (`yarn build`) before re-syncing.
 
 ## Re-sync risks
 
