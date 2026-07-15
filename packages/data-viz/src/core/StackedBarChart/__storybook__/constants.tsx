@@ -1,4 +1,6 @@
-export const STACKED_BAR_CHART_DATA = [
+import { StackedBarChartDataItem } from "../StackedBarChart.types";
+
+export const STACKED_BAR_CHART_DATA: StackedBarChartDataItem[] = [
   {
     name: "Transcriptomic",
     value: 117,
@@ -109,3 +111,31 @@ export const STACKED_BAR_CHART_DATA = [
     },
   },
 ];
+
+/**
+ * Alternate datasets for exercising segment resize/enter/exit animations by
+ * switching the `data` control in Storybook.
+ */
+
+// Same categories as STACKED_BAR_CHART_DATA with different values, so every
+// segment resizes in place.
+export const STACKED_BAR_CHART_DATA_UPDATED_VALUES: StackedBarChartDataItem[] =
+  STACKED_BAR_CHART_DATA.map((item, index) => ({
+    ...item,
+    value: [40, 190, 12, 88, 25, 47, 210][index] ?? item.value,
+  }));
+
+// Subset of categories, so removed segments animate out.
+export const STACKED_BAR_CHART_DATA_FEWER_CATEGORIES: StackedBarChartDataItem[] =
+  STACKED_BAR_CHART_DATA.filter((item) =>
+    ["Transcriptomic", "Imaging", "Epigenomics"].includes(item.name)
+  );
+
+// Superset of categories, so added segments animate in.
+export const STACKED_BAR_CHART_DATA_MORE_CATEGORIES: StackedBarChartDataItem[] =
+  [
+    ...STACKED_BAR_CHART_DATA,
+    { name: "Electrophysiology", value: 55 },
+    { name: "Behavioral", value: 28 },
+    { name: "Genomics", value: 145 },
+  ];
