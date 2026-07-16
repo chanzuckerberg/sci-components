@@ -174,8 +174,7 @@
   },
   "resolutions": {
     "browserslist-generator": "^3.0.0",
-    "vite": "8.0.16",
-    "vite/rolldown": "1.0.1"
+    "vite": "8.0.16"
   },
   "engines": {
     "node": ">=22.0.0",
