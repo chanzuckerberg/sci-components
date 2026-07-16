@@ -29,7 +29,6 @@ import {
   StackedBarChartDataItem,
   StackedBarChartProps,
 } from "./StackedBarChart.types";
-import { difference } from "lodash";
 
 // Type for tracking items with animation state
 type AnimatedItem = StackedBarChartDataItem & {
@@ -270,7 +269,6 @@ const buildLegendItems = (
 // Helper: Render a bar segment with optional tooltip
 const renderBarSegment = (
   item: AnimatedItem,
-  index: number,
   options: {
     barHeight: number;
     hoveredIndex: number | null;
@@ -299,7 +297,7 @@ const renderBarSegment = (
   const barSegment = (
     <BarSegment
       color={item.color}
-      percentage={item.percentage}
+      percentage={item.isEntering || item.isExiting ? 0 : item.percentage}
       height={barHeight}
       opacity={getSegmentOpacity(
         item.originalIndex,
@@ -307,7 +305,6 @@ const renderBarSegment = (
         selectedIndicesSet,
         selectionBehavior
       )}
-      isTransitioning={item.isEntering}
       isLast={isLast}
       data-hide={isHidden}
       onMouseEnter={onMouseEnter}
@@ -385,6 +382,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   );
   const [animatedRemainingPercentage, setAnimatedRemainingPercentage] =
     useState<number>(0);
+  const [isRemainingExiting, setIsRemainingExiting] = useState(false);
   const previousProcessedRef = useRef<AnimatedItem[]>([]);
   const previousDataKeysRef = useRef<Set<string>>(new Set());
   const previousColorOptionsRef = useRef<{
@@ -501,7 +499,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
-  // Memoize to prevent unnecessary recalculations and re-renders
   const dataWithPercentages: AnimatedItem[] = useMemo(() => {
     return data.map((item, index) => {
       const resolvedColor =
@@ -524,55 +521,58 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Handle data change animations for enters/exits.
   useEffect(() => {
-    const previousItems = previousProcessedRef.current;
+    const prevItems = previousProcessedRef.current;
     const nextItems = dataWithPercentages;
+    const nextItemsMap = new Map(nextItems.map((item) => [item.key, item]));
 
-    const removedKeys = new Set(
-      difference(
-        previousItems.map((item) => item.key),
-        nextItems.map((item) => item.key)
-      )
-    );
-
-    // First, merge all segments to animate addition + removal.
-    const allMergedItems = previousItems.map((item) => ({
-      ...item,
-      isExiting: removedKeys.has(item.key),
-    }));
-    let currentInsertionIndex = 0;
-    for (const item of nextItems) {
-      const existingIndex = previousItems.findIndex(
-        (previousItem) => previousItem.key === item.key
-      );
-      if (existingIndex === -1) {
-        allMergedItems.splice(currentInsertionIndex, 0, {
-          ...item,
-          isEntering: true,
-        });
-      } else {
-        currentInsertionIndex = existingIndex + 1;
-      }
-    }
-    setAnimatedItems(allMergedItems);
-    setAnimatedRemainingPercentage(remainingPercentage);
-    previousProcessedRef.current = nextItems;
-
-    if (removedKeys.size === 0) {
+    // If this is the initial render, just set the items
+    if (prevItems.length === 0) {
+      setAnimatedItems(nextItems);
+      setAnimatedRemainingPercentage(remainingPercentage);
+      previousProcessedRef.current = nextItems;
       return;
     }
 
-    // Second, cleanup removed bars after animation paint.
-    const frameIds: number[] = [];
-    const firstFrame = requestAnimationFrame(() => {
-      const secondFrame = requestAnimationFrame(() => {
-        setAnimatedItems(nextItems);
-      });
-      frameIds.push(secondFrame);
-    });
-    frameIds.push(firstFrame);
+    // 1. Prepare for animation (added segments are 0-width).
+    const step1Items = [...prevItems];
+    let currentInsertionIndex = 0;
+    for (const item of nextItems) {
+      const step1Index = step1Items.findIndex(
+        (step1Item) => step1Item.key === item.key
+      );
+      if (step1Index === -1) {
+        step1Items.splice(currentInsertionIndex, 0, {
+          ...item,
+          isEntering: true,
+        });
+        currentInsertionIndex++;
+      } else {
+        currentInsertionIndex = step1Index + 1;
+      }
+    }
+    setAnimatedItems(step1Items);
+
+    // 2. Animate to final state (removed segments are 0 width).
+    const timeoutIds: number[] = [];
+    timeoutIds.push(
+      window.setTimeout(() => {
+        const step2Items = step1Items.map(
+          (item) => nextItemsMap.get(item.key) ?? { ...item, isExiting: true }
+        );
+        setAnimatedItems(step2Items);
+        setAnimatedRemainingPercentage(remainingPercentage);
+        // 3. Final state (removed segments gone)
+        timeoutIds.push(
+          window.setTimeout(() => {
+            setAnimatedItems(nextItems);
+            previousProcessedRef.current = nextItems;
+          }, 350)
+        );
+      }, 0)
+    );
 
     return () => {
-      frameIds.forEach((id) => window.cancelAnimationFrame(id));
+      timeoutIds.forEach((id) => window.clearTimeout(id));
     };
   }, [dataWithPercentages, remainingPercentage]);
 
@@ -740,7 +740,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       >
         {styledItems.map((item, index) => {
           const isLastVisible = index === lastVisibleIndex && !hasRemaining;
-          return renderBarSegment(item, index, {
+          return renderBarSegment(item, {
             barHeight,
             hoveredIndex,
             selectedIndicesSet,
@@ -770,7 +770,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
               !item.isExiting && handleSegmentClick(item.originalIndex),
           });
         })}
-        {hasRemaining && (
+        {previousProcessedRef.current.length > 0 && (
           <BarSegment
             key="remaining"
             color={theme?.palette?.sds?.base?.backgroundTertiary}
@@ -778,7 +778,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             height={barHeight}
             isLast={true}
             opacity={1}
-            isTransitioning={false}
             disabled={true}
           />
         )}

@@ -91,7 +91,6 @@ interface BarSegmentProps extends CommonThemeProps {
   percentage: number;
   height: number;
   opacity: number;
-  isTransitioning: boolean;
   disabled?: boolean;
   isLast: boolean;
   "data-hide"?: boolean;
@@ -99,15 +98,7 @@ interface BarSegmentProps extends CommonThemeProps {
 
 export const BarSegment = styled("div")<BarSegmentProps>`
   ${(props: BarSegmentProps) => {
-    const {
-      color,
-      height,
-      percentage,
-      opacity,
-      isTransitioning,
-      disabled,
-      isLast,
-    } = props;
+    const { color, height, percentage, opacity, disabled, isLast } = props;
 
     const spaces = getSpaces(props);
     const gap = spaces?.xxxs || 0;
@@ -120,7 +111,7 @@ export const BarSegment = styled("div")<BarSegmentProps>`
     return `
       background-color: ${color};
       height: ${height}px;
-      flex-grow: ${isTransitioning ? 0 : percentage};
+      flex-grow: ${percentage};
       flex-basis: 0;
       flex-shrink: 1;
       margin-right: ${marginRight};
