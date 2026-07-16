@@ -125,17 +125,25 @@ export const STACKED_BAR_CHART_DATA_UPDATED_VALUES: StackedBarChartDataItem[] =
     value: [40, 190, 12, 88, 25, 47, 210][index] ?? item.value,
   }));
 
-// Subset of categories, so removed segments animate out.
+// Net fewer categories, but also introduces a new one, so removed segments
+// animate out while an added segment animates in.
 export const STACKED_BAR_CHART_DATA_FEWER_CATEGORIES: StackedBarChartDataItem[] =
-  STACKED_BAR_CHART_DATA.filter((item) =>
-    ["Transcriptomic", "Imaging", "Epigenomics"].includes(item.name)
-  );
+  [
+    ...STACKED_BAR_CHART_DATA.filter((item) =>
+      ["Transcriptomic", "Imaging", "Epigenomics"].includes(item.name)
+    ),
+    { name: "Electrophysiology", value: 55 },
+  ];
 
-// Superset of categories, so added segments animate in.
+// Net more categories, but also drops some defaults, so added segments
+// animate in while removed segments animate out.
 export const STACKED_BAR_CHART_DATA_MORE_CATEGORIES: StackedBarChartDataItem[] =
   [
-    ...STACKED_BAR_CHART_DATA,
+    ...STACKED_BAR_CHART_DATA.filter(
+      (item) => !["Prosthetics", "Sequencing"].includes(item.name)
+    ),
     { name: "Electrophysiology", value: 55 },
     { name: "Behavioral", value: 28 },
     { name: "Genomics", value: 145 },
+    { name: "Metabolomics", value: 42 },
   ];
