@@ -382,7 +382,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   );
   const [animatedRemainingPercentage, setAnimatedRemainingPercentage] =
     useState<number>(0);
-  const [isRemainingExiting, setIsRemainingExiting] = useState(false);
   const previousProcessedRef = useRef<AnimatedItem[]>([]);
   const previousDataKeysRef = useRef<Set<string>>(new Set());
   const previousColorOptionsRef = useRef<{
