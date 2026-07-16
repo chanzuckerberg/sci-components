@@ -154,7 +154,7 @@ const DEFAULT_COLOR_GENERATOR_OPTIONS = {
 
 export const Default = {
   args: {
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     title: "Domain",
     width: "360px",
     colorGeneratorOptions: {
@@ -167,7 +167,7 @@ export const ProportionalWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     mode: "proportional",
     showLegend: true,
     showLegendValues: true,
@@ -183,7 +183,7 @@ export const CumulativeWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
     unit: "datasets",
     showLegend: true,
@@ -202,7 +202,7 @@ export const ProportionalWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     mode: "proportional",
     showLegend: true,
     showLegendValues: true,
@@ -219,7 +219,7 @@ export const CumulativeWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
     barHeight: 16,
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
     unit: "datasets",
     showLegend: true,
@@ -239,7 +239,7 @@ export const WithMouseEvents = {
   render: WithMouseEventsStory,
   args: {
     barHeight: 16,
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     showLegend: true,
     showLegendValues: true,
     title: "Mouse Events Demo",
@@ -254,7 +254,7 @@ export const WithMouseEvents = {
 
 export const Test = {
   args: {
-    data: "default",
+    data: STACKED_BAR_CHART_DATA,
     title: "Domain",
     width: 360,
   },
