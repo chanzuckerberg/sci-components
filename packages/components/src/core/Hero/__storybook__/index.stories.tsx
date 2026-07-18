@@ -168,7 +168,6 @@ export default {
       description: "The text alignment of the header text",
     },
   },
-  tags: ["beta"],
   component: Hero,
   title: "Components/Hero",
 } as Meta;

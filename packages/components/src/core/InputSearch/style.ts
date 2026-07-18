@@ -212,7 +212,7 @@ export const StyledSearchBase = styled(TextField, {
         }
       }
 
-      .${inputBaseClasses.inputSizeSmall} {
+      .${inputBaseClasses.sizeSmall} > .${inputBaseClasses.input} {
         ${fontBodyXs(props)}
         padding: ${spaces?.xs}px ${spaces?.s}px;
         height: unset;

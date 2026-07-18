@@ -65,7 +65,6 @@ export default {
     },
   },
   component: Button,
-  tags: ["beta"],
   title: "Components/Buttons/Button",
 } as Meta;
 

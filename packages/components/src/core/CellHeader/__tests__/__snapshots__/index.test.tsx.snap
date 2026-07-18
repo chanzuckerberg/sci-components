@@ -23,7 +23,7 @@ exports[`<CellHeader /> > Default story renders snapshot 1`] = `
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1hqvqsg-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1va415t-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
               data-file-name="IconChevronDownSmall"
               data-testid="IconChevronDownSmall"
               fillcontrast="white"

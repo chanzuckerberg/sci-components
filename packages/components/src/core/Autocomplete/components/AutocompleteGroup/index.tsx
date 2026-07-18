@@ -2,7 +2,7 @@ import {
   AutocompleteChangeDetails,
   AutocompleteChangeReason,
   AutocompleteValue,
-} from "@mui/base";
+} from "@mui/material/useAutocomplete";
 import { useCallback, useEffect, useState } from "react";
 import { AutocompleteMultiColumnOption } from "@components/src/core/Autocomplete";
 import AutocompleteBase, {
@@ -77,7 +77,6 @@ const AutocompleteGroup = <
     InputBaseProps,
     popperOpen,
     inputValue,
-    PaperComponent,
     ...rest
   } = props;
 
@@ -139,7 +138,6 @@ const AutocompleteGroup = <
         onChange={handleChange}
         value={multiple ? pendingValue : value}
         search={false}
-        PaperComponent={PaperComponent}
         {...rest}
         {...autocompleteProps.props}
         // (masoudmanson): groupBy option is disabled on MultiColumn dropdowns

@@ -24,6 +24,7 @@ const doNotForwardProps = [
   "value",
   "sdsStyle",
   "multiple",
+  "getOptionDisabled",
 ];
 
 type IntentType = "negative" | "notice" | "positive";

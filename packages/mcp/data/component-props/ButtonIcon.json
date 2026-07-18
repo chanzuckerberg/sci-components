@@ -5,7 +5,7 @@
         "type": "\"false\" | \"true\"",
         "isRequired": false,
         "description": "If `true`, the component is disabled.",
-        "defaultValue": "false\nfalse"
+        "defaultValue": false
       },
       "icon": {
         "type": "ReactElement",

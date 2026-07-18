@@ -8,10 +8,11 @@ import Icon from "@components/src/core/Icon";
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);
 
-const PAPER_ROOT_CLASS_NAME = "MuiPaper-root";
-const MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME = "MuiDrawer-paperAnchorLeft";
-const MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME = "MuiDrawer-paperAnchorRight";
-const MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME = "MuiDrawer-paperAnchorBottom";
+// (v9): MUI moved the anchor class off the paper onto the Drawer root
+// (`MuiDrawer-paperAnchorLeft` -> `MuiDrawer-anchorLeft` on the root).
+const MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME = "MuiDrawer-anchorLeft";
+const MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME = "MuiDrawer-anchorRight";
+const MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME = "MuiDrawer-anchorBottom";
 
 describe("<Panel />", () => {
   generateSnapshots(stories);
@@ -60,22 +61,19 @@ describe("<Panel />", () => {
   it("applies the correct position based on the 'position' prop", () => {
     const { rerender } = render(<Test position="left" />);
 
-    let panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME);
+    expect(screen.getByTestId("panel")).toHaveClass(
+      MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME
+    );
 
     rerender(<Test position="right" />);
-    panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME);
+    expect(screen.getByTestId("panel")).toHaveClass(
+      MUI_DRAWER_ANCHOR_RIGHT_CLASS_NAME
+    );
 
     rerender(<Test sdsType="overlay" position="bottom" />);
-    panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME);
+    expect(screen.getByTestId("panel")).toHaveClass(
+      MUI_DRAWER_ANCHOR_BOTTOM_CLASS_NAME
+    );
   });
 
   it("calls the onClick handler when close button is clicked", () => {
@@ -108,12 +106,10 @@ describe("<Panel />", () => {
   it("renders with default 'sdsType' and 'position' props", () => {
     render(<Test />);
 
-    const panelElementPaper = screen
-      .getByTestId("panel")
-      .getElementsByClassName(PAPER_ROOT_CLASS_NAME)[0];
-
     // Default props: sdsType should be 'basic' and position should be 'left'
-    expect(panelElementPaper).toHaveClass(MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME);
+    expect(screen.getByTestId("panel")).toHaveClass(
+      MUI_DRAWER_ANCHOR_LEFT_CLASS_NAME
+    );
   });
 
   it("does not accept position='bottom' for sdsType='basic', should default to position='left'", () => {

@@ -7,18 +7,23 @@ import {
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
   AutocompleteValue,
+  AutocompleteValueOrFreeSoloValueMapping,
   AutocompleteProps as MuiAutocompleteProps,
+  MenuList,
   Popper,
   PopperProps,
   useTheme,
 } from "@mui/material";
 import React, {
+  forwardRef,
   ReactNode,
   SyntheticEvent,
   useCallback,
+  useMemo,
   useRef,
   useState,
 } from "react";
+import { useForkRef } from "@mui/material/utils";
 import { EMPTY_OBJECT, noop } from "@components/src/common/utils";
 import Button from "@components/src/core/Button";
 import Icon, { IconProps } from "@components/src/core/Icon";
@@ -134,7 +139,7 @@ const AutocompleteBase = <
     noOptionsText = "No options",
     onInputChange = noop,
     renderOption = defaultRenderOption,
-    renderTags = defaultRenderTags,
+    renderValue = defaultRenderValue,
     search = false,
     clearOnBlur = false,
     blurOnSelect = !multiple,
@@ -152,18 +157,25 @@ const AutocompleteBase = <
 
   useDetectUserTabbing(ref);
 
+  // (v9): MUI Autocomplete's `PaperComponent`/`PopperComponent` props were
+  // removed in favor of `slots.paper`/`slots.popper`.
+  const defaultPopperComponent = useDefaultPopperComponent();
+
+  // (masoudmanson): Holds the listbox DOM node so we can preserve its scroll
+  // position across selections (see defaultOnChange for the full explanation).
+  const listboxNodeRef = useRef<HTMLUListElement | null>(null);
+  const defaultListboxComponent = useDefaultListboxComponent(listboxNodeRef);
+
   return (
     <StyledAutocompleteBase
       ref={ref}
       clearOnBlur={clearOnBlur}
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
-      renderTags={renderTags}
+      renderValue={renderValue}
       loading={loading}
       loadingText={loadingText}
       noOptionsText={noOptionsText}
-      PaperComponent={StyledPaper}
-      PopperComponent={useDefaultPopperComponent()}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       isOptionEqualToValue={isOptionEqualToValue}
@@ -201,6 +213,20 @@ const AutocompleteBase = <
        */
       onInputChange={defaultOnInputChange}
       disabled={disabled || !search}
+      /**
+       * (masoudmanson): Preserves the listbox scroll position across selections.
+       * Placed after spreading props so it always wraps the consumer's onChange.
+       */
+      onChange={defaultOnChange}
+      slots={{
+        paper: StyledPaper,
+        popper: defaultPopperComponent,
+        // (v9): MUI's MenuItem now requires a MenuList/Menu context. The default
+        // Autocomplete listbox is a plain <ul>, so render the listbox as a
+        // MenuList to provide that context to the option MenuItems.
+        listbox: defaultListboxComponent,
+        ...props.slots,
+      }}
     />
   );
 
@@ -227,6 +253,56 @@ const AutocompleteBase = <
     }, []);
   }
 
+  /**
+   * (masoudmanson): A memoized listbox component is required for the same reason
+   * as the Popper above: recreating the component on every render remounts the
+   * listbox and loses its scroll position. The wrapper renders a MenuList (to
+   * provide the Menu context the option MenuItems need) while also capturing the
+   * listbox DOM node so we can restore its scroll after a selection.
+   */
+  function useDefaultListboxComponent(
+    nodeRef: React.MutableRefObject<HTMLUListElement | null>
+  ) {
+    return useMemo(
+      () =>
+        forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLElement>>(
+          function Listbox(listboxProps, forwardedRef) {
+            const handleRef = useForkRef(forwardedRef, nodeRef);
+            return <MenuList {...listboxProps} ref={handleRef} />;
+          }
+        ),
+      // (masoudmanson): nodeRef is a stable ref object, so an empty dependency
+      // array keeps the component identity constant across renders.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      []
+    );
+  }
+
+  function defaultOnChange(
+    event: React.SyntheticEvent,
+    value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>,
+    reason: AutocompleteChangeReason,
+    details?: AutocompleteChangeDetails<T>
+  ) {
+    /**
+     * (masoudmanson): When the popup stays open after a selection (e.g. multi-select
+     * or `disableCloseOnSelect`), MUI re-syncs its highlighted option and forces
+     * `listbox.scrollTop = 0` once the highlight resets to -1. Because the listbox now
+     * renders as a MenuList (the scrollable region), this snaps the list back to the
+     * top on every selection. We capture the scroll position here and restore it on the
+     * next animation frame, after MUI's re-renders and effects have settled.
+     */
+    if (listboxNodeRef.current) {
+      const scrollTopToRestore = listboxNodeRef.current.scrollTop;
+      requestAnimationFrame(() => {
+        if (listboxNodeRef.current) {
+          listboxNodeRef.current.scrollTop = scrollTopToRestore;
+        }
+      });
+    }
+    props.onChange?.(event, value, reason, details);
+  }
+
   function defaultRenderInput(params: AutocompleteRenderInputParams) {
     return (
       <InputBaseWrapper search={search}>
@@ -239,7 +315,7 @@ const AutocompleteBase = <
           aria-hidden={!search}
           label={label}
           placeholder={label}
-          ref={params.InputProps.ref}
+          ref={params.slotProps.input.ref}
           search={search}
           // (masoudmanson): This prevents Backspace from deselecting selected dropdown options.
           onKeyDown={(event) => {
@@ -247,60 +323,62 @@ const AutocompleteBase = <
               event.stopPropagation();
             }
           }}
-          InputProps={{
-            /**
-             * (mmoore): passing only the ref along to InputProps to prevent
-             * default MUI arrow from rendering in search input.
-             * renderInput strips InputProps, so we explicitly pass end adornment here
-             */
-            ...params.InputProps.ref,
-            "aria-hidden": !search,
-            endAdornment: (
-              <StyledInputAdornment position="end">
-                {inputValue && (
+          slotProps={{
+            htmlInput: params.slotProps.htmlInput,
+            input: {
+              /**
+               * (mmoore): passing only the ref along to the input slot to prevent
+               * default MUI arrow from rendering in search input.
+               * renderInput strips the input slot, so we explicitly pass end adornment here
+               */
+              ...params.slotProps.input.ref,
+              "aria-hidden": !search,
+              endAdornment: (
+                <StyledInputAdornment position="end">
+                  {inputValue && (
+                    <Button
+                      // (masoudmanson): This is to ensure that the clear button won't be focusable
+                      // when the search prop is set to false.
+                      tabIndex={search ? 0 : -1}
+                      aria-hidden={!search}
+                      disabled={!search}
+                      aria-label="Clear Button"
+                      className="input-search-clear-icon"
+                      onClick={clearInput}
+                      sdsType="secondary"
+                      size="large"
+                      sdsStyle="minimal"
+                      backgroundOnHover={false}
+                    >
+                      <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    </Button>
+                  )}
+                </StyledInputAdornment>
+              ),
+              /**
+               * (thuang): Works with css caret-color: "transparent" to hide
+               * mobile keyboard
+               */
+              inputMode: search ? "text" : "none",
+              startAdornment: (
+                <StyledInputAdornment position="start">
                   <Button
-                    // (masoudmanson): This is to ensure that the clear button won't be focusable
+                    aria-label="Search Button"
+                    // (masoudmanson): This is to ensure that the search button won't be focusable
                     // when the search prop is set to false.
                     tabIndex={search ? 0 : -1}
                     aria-hidden={!search}
                     disabled={!search}
-                    aria-label="Clear Button"
-                    className="input-search-clear-icon"
-                    onClick={clearInput}
                     sdsType="secondary"
                     size="large"
                     sdsStyle="minimal"
                     backgroundOnHover={false}
                   >
-                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    <Icon sdsIcon="Search" sdsSize="s" />
                   </Button>
-                )}
-              </StyledInputAdornment>
-            ),
-            /**
-             * (thuang): Works with css caret-color: "transparent" to hide
-             * mobile keyboard
-             */
-            inputMode: search ? "text" : "none",
-            inputProps: params.inputProps,
-            startAdornment: (
-              <StyledInputAdornment position="start">
-                <Button
-                  aria-label="Search Button"
-                  // (masoudmanson): This is to ensure that the search button won't be focusable
-                  // when the search prop is set to false.
-                  tabIndex={search ? 0 : -1}
-                  aria-hidden={!search}
-                  disabled={!search}
-                  sdsType="secondary"
-                  size="large"
-                  sdsStyle="minimal"
-                  backgroundOnHover={false}
-                >
-                  <Icon sdsIcon="Search" sdsSize="s" />
-                </Button>
-              </StyledInputAdornment>
-            ),
+                </StyledInputAdornment>
+              ),
+            },
           }}
           intent={intent}
           {...InputBaseProps}
@@ -385,11 +463,17 @@ const AutocompleteBase = <
     return option.toString();
   }
 
-  function defaultIsOptionEqualToValue(option: T, val: T): boolean {
-    return option.name === val.name;
+  function defaultIsOptionEqualToValue(
+    option: T,
+    val: AutocompleteValueOrFreeSoloValueMapping<T, FreeSolo>
+  ): boolean {
+    // (v9): With freeSolo, `val` can be a raw string in addition to an option.
+    return typeof val === "object" && val !== null && "name" in val
+      ? option.name === val.name
+      : option.name === val;
   }
 
-  function defaultRenderTags() {
+  function defaultRenderValue() {
     return null;
   }
 

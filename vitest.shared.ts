@@ -101,6 +101,18 @@ export function createVitestConfig(packageRoot: string) {
       root: packageRoot,
       environment: "jsdom",
       globals: true,
+      /**
+       * (v9): Process MUI and react-transition-group through Vite instead of
+       * letting Node's native ESM loader resolve them. MUI v9's ESM build does a
+       * directory import (`react-transition-group/TransitionGroupContext`) that
+       * Node's ESM resolver rejects ("Directory import is not supported"); Vite's
+       * resolver handles it. Inlining these deps fixes the test module loading.
+       */
+      server: {
+        deps: {
+          inline: [/@mui\//, /react-transition-group/],
+        },
+      },
       setupFiles: [SETUP_FILE],
       include: ["src/**/*.{test,spec}.{ts,tsx}"],
       exclude: [

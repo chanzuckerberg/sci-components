@@ -1,4 +1,4 @@
-import { AlertProps } from "@mui/lab";
+import { AlertProps } from "@mui/material";
 import { StyledAlert } from "./style";
 
 /**

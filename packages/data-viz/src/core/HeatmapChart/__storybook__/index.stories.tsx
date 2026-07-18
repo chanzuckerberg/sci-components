@@ -51,7 +51,6 @@ export default {
     },
   },
   component: HeatmapChart,
-  tags: ["beta"],
   parameters: {
     chromatic: {
       disableSnapshot: true,

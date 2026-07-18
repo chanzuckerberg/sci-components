@@ -85,6 +85,10 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
+          /* (v9): the listbox now renders as a MenuList, which (unlike MUI's
+             default AutocompleteListbox) has no overflow. Restore it so the
+             listbox is the scrollable region instead of the Paper. */
+          overflow: auto;
           padding: 0 ${groupBy ? 0 : spaces?.xs}px;
 
           .${autocompleteClasses.option} {
@@ -171,6 +175,7 @@ export const InputBaseWrapper = styled("div", {
 export const StyledMenuInputSearch = styled(InputSearch, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })<{ search: boolean }>`
+  background-color: transparent !important;
   margin: 0;
   .MuiInputBase-root {
     width: 100%;

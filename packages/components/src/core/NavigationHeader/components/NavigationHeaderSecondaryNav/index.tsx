@@ -451,9 +451,11 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           disableScrollLock
           transitionDuration={100}
           topOffset={topOffset}
-          SlideProps={{
-            onMouseEnter: cancelDrawerClose,
-            onMouseLeave: onDrawerClose,
+          slotProps={{
+            transition: {
+              onMouseEnter: cancelDrawerClose,
+              onMouseLeave: onDrawerClose,
+            },
           }}
         >
           <StyledMegaMenuContent

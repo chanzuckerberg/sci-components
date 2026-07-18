@@ -3,19 +3,19 @@
 exports[`<InputRadio /> > Default story renders snapshot 1`] = `
 <div
   aria-labelledby="demo-radio-buttons-group-label"
-  class="MuiFormGroup-root MuiRadioGroup-root css-dmmspl-MuiFormGroup-root"
+  class="MuiFormGroup-root MuiRadioGroup-root css-1mac7pt-MuiFormGroup-root"
   role="radiogroup"
 >
   <label
-    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-110bnni-MuiFormControlLabel-root-StyledFormControlLabel"
+    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e1miyzh30 css-ekq3zi-MuiFormControlLabel-root-StyledFormControlLabel"
   >
     <span
       caption="Caption"
-      class="MuiButtonBase-root PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-bc87rc-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
+      class="MuiButtonBase-root MuiRadio-root MuiRadio-colorPrimary PrivateSwitchBase-root MuiRadio-root MuiRadio-colorPrimary MuiRadio-root MuiRadio-colorPrimary e1miyzh34 css-152e4sh-MuiButtonBase-root-MuiSwitchBase-root-MuiRadio-root-StyledRadioButton"
       intent="default"
     >
       <input
-        class="PrivateSwitchBase-input css-1p3z7et-MuiSwitchBase-root"
+        class="PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
         name="radio-buttons-group"
         type="radio"
         value="demo"
@@ -24,12 +24,9 @@ exports[`<InputRadio /> > Default story renders snapshot 1`] = `
         class="css-1s7nbnj-StyledRadioDefaultIcon e1miyzh36"
         font-size="medium"
       />
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </span>
     <span
-      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
     >
       <span
         class="css-wwdqb2-StyledLabelContainer e1miyzh33"

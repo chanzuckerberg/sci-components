@@ -115,7 +115,6 @@ const Tooltip = forwardRef(function Tooltip(
       classes={{ arrow, tooltip }}
       leaveDelay={leaveDelay}
       title={content}
-      PopperComponent={PopperComponent}
       // (masoudmanson): Setting tabIndex to 0 makes the tooltip component
       // focusable and allows keyboard navigation.
       tabIndex={0}
@@ -125,6 +124,9 @@ const Tooltip = forwardRef(function Tooltip(
       // the arrow is always rendered.
       arrow={true}
       {...rest}
+      slots={{
+        popper: PopperComponent,
+      }}
     />
   );
 });

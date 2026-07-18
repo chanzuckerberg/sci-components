@@ -1,4 +1,4 @@
-import { AutocompleteValue } from "@mui/base";
+import { AutocompleteValue } from "@mui/material/useAutocomplete";
 import styled from "@emotion/styled";
 import { Args } from "@storybook/react-vite";
 import { useState } from "react";

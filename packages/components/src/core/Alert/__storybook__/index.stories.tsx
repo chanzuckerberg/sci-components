@@ -1,4 +1,4 @@
-import { CheckCircleOutline } from "@mui/icons-material";
+import { CheckCircleOutlined } from "@mui/icons-material";
 import { Snackbar, Button as MUIButton } from "@mui/material";
 import styled from "@emotion/styled";
 import { Args, Meta } from "@storybook/react-vite";
@@ -39,7 +39,7 @@ const Demo = (props: Args): JSX.Element => {
           </>
         }
       />
-      <Alert icon={<CheckCircleOutline />} onClose={() => {}} {...props}>
+      <Alert icon={<CheckCircleOutlined />} onClose={() => {}} {...props}>
         {text}
       </Alert>
     </>

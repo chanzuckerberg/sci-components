@@ -33,6 +33,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       hideLabel,
       classes = EMPTY_OBJECT,
       className,
+      slotProps: userSlotProps,
       ...rest
     } = props;
 
@@ -59,8 +60,18 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
       (ref ? ref : inputRef) as React.RefObject<HTMLElement>
     );
 
-    const inputProps = {
-      "aria-label": `${label}`,
+    // Merge the SDS default slot props with any consumer-provided slot props so
+    // overrides still take effect while preserving the SDS defaults (e.g. the
+    // generated `aria-label` on the htmlInput slot, which is required for the
+    // input's accessible name). Consumer values win on conflict.
+    const mergedSlotProps = {
+      ...userSlotProps,
+      htmlInput: {
+        "aria-label": `${label}`,
+        ...(typeof userSlotProps?.htmlInput === "object"
+          ? userSlotProps.htmlInput
+          : {}),
+      },
     };
 
     if (!id || !label) {
@@ -86,7 +97,7 @@ const InputText = forwardRef<HTMLInputElement, InputTextProps>(
         <StyledInputBase
           className={cn(inputClassName, className)}
           ref={ref ? ref : inputRef}
-          inputProps={inputProps}
+          slotProps={mergedSlotProps}
           type="text"
           multiline={sdsType === "textArea"}
           minRows={sdsType === "textArea" ? 4 : 2}

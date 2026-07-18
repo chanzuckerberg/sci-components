@@ -38,7 +38,7 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
   return css`
     ${open ? fontBodySemiboldL(props) : fontBodyMediumL(props)}
     border-radius: ${corners?.l}px;
-    padding: ${spaces?.s}px ${spaces?.m}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
     width: 100%;
 
     &:hover {

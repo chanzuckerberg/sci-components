@@ -322,16 +322,18 @@ const renderBarSegment = (
       hasInvertedStyle={false}
       open={hoveredIndex === item.originalIndex && !isHidden}
       disableInteractive={true}
-      PopperProps={{
-        disablePortal: false,
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset: [0, 0],
+      slotProps={{
+        popper: {
+          disablePortal: false,
+          modifiers: [
+            {
+              name: "offset",
+              options: {
+                offset: [0, 0],
+              },
             },
-          },
-        ],
+          ],
+        },
       }}
     >
       {barSegment}

@@ -20,7 +20,7 @@
         "defaultValue": "bottom"
       },
       "textAlign": {
-        "type": "\"left\" | \"right\" | \"center\"",
+        "type": "\"center\" | \"right\" | \"left\"",
         "isRequired": false
       },
       "title": {

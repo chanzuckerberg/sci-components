@@ -10,7 +10,7 @@ exports[`<LoadingIndicator /> > CustomAriaLabel story renders snapshot 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"
@@ -41,7 +41,7 @@ exports[`<LoadingIndicator /> > Default story renders snapshot 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
       data-file-name="IconLoadingLarge"
       data-testid="IconLoadingLarge"
       fillcontrast="white"

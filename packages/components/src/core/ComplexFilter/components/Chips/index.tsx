@@ -1,4 +1,4 @@
-import { AutocompleteValue } from "@mui/base";
+import { AutocompleteValue } from "@mui/material/useAutocomplete";
 import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
 import TagFilter from "@components/src/core/TagFilter";
 import { checkIfSingleColumn } from "../../utils";

@@ -21,6 +21,14 @@ const SLOT_PROPS = {
   backdrop: {
     invisible: true,
   },
+  // (masoudmanson): From MUI v6+, the temporary Drawer's paper renders with
+  // `role="dialog"` and `aria-modal="true"`, which requires an accessible name.
+  // Provide a default `aria-label` so the Panel doesn't trigger the
+  // `aria-dialog-name` accessibility violation. Consumers can override it via
+  // `slotProps.paper`.
+  paper: {
+    "aria-label": "Panel",
+  },
 };
 
 /**
@@ -34,7 +42,27 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
     width,
     ModalProps,
     isBackdropClickEnabled = false,
+    slotProps: userSlotProps,
+    ...rest
   } = props;
+
+  // Merge the SDS default slot props with any consumer-provided slot props so
+  // overrides (e.g. a custom `aria-label`/`aria-labelledby` on the paper slot)
+  // still take effect while preserving the SDS defaults.
+  const mergedSlotProps = {
+    ...SLOT_PROPS,
+    ...userSlotProps,
+    backdrop: {
+      ...SLOT_PROPS.backdrop,
+      ...(typeof userSlotProps?.backdrop === "object"
+        ? userSlotProps.backdrop
+        : {}),
+    },
+    paper: {
+      ...SLOT_PROPS.paper,
+      ...(typeof userSlotProps?.paper === "object" ? userSlotProps.paper : {}),
+    },
+  };
 
   const drawerWidth =
     width ??
@@ -64,8 +92,9 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
      * the 'anchor' prop must always be set to our predefined value.
      */
     <StyledDrawer
-      {...props}
+      {...rest}
       ref={ref}
+      sdsType={sdsType}
       anchor={drawerAnchor}
       variant={drawerVariant}
       width={drawerWidth}
@@ -83,7 +112,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
         // not lock the page scroll when it is open.
         disableScrollLock: true,
       }}
-      slotProps={SLOT_PROPS}
+      slotProps={mergedSlotProps}
       hideBackdrop={!isBackdropClickEnabled}
     >
       {isOverlayPanelProps(props) && (

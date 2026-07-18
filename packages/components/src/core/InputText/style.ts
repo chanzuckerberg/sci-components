@@ -91,7 +91,7 @@ const textArea = (props: InputTextExtraProps): SerializedStyles => {
     .${outlinedInputClasses.multiline} {
       padding: ${spaces?.xxs}px;
 
-      > .${outlinedInputClasses.inputMultiline} {
+      > .${outlinedInputClasses.input} {
         padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
         resize: both;
       }
@@ -133,7 +133,7 @@ export const StyledInputBase = styled(TextField, {
         width: 100%;
       }
 
-      .${outlinedInputClasses.inputSizeSmall} {
+      .${outlinedInputClasses.sizeSmall} > .${outlinedInputClasses.input} {
         ${fontBodyXs(props)}
         padding: ${spaces?.xs}px ${spaces?.m}px;
         height: unset;

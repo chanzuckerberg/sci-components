@@ -2,27 +2,27 @@
 
 exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
 <div
-  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
     role="group"
   >
     <button
       aria-label="Search"
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-firstButton css-16yi61s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-firstButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
-        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+        class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconSearchSmall"
             data-testid="IconSearchSmall"
             fillcontrast="white"
@@ -33,25 +33,22 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
     <button
       aria-label="Copy"
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-16yi61s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
-        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+        class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconCopySmall"
             data-testid="IconCopySmall"
             fillcontrast="white"
@@ -62,25 +59,22 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
     <button
       aria-label="Code"
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-16yi61s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
-        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+        class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconCodeSmall"
             data-testid="IconCodeSmall"
             fillcontrast="white"
@@ -91,25 +85,22 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
     <button
       aria-label="Cube"
-      class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-lastButton css-16yi61s-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-lastButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
-        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
+        class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconCubeSmall"
             data-testid="IconCubeSmall"
             fillcontrast="white"
@@ -120,9 +111,6 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </div>
 </div>
@@ -130,27 +118,52 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
 
 exports[`<ButtonGroup /> > Default story renders snapshot 1`] = `
 <div
-  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
     role="group"
   >
     <button
       aria-label="Download"
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            data-file-name="IconDownloadSmall"
+            data-testid="IconDownloadSmall"
+            fillcontrast="white"
+            focusable="false"
+            height="16"
+            viewBox="0 0 16 16"
+            width="16"
+          />
+        </div>
+      </span>
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
+      >
+        <div
+          class="css-1q8yjse-StyledIcon emi0zh40"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconDownloadSmall"
             data-testid="IconDownloadSmall"
             fillcontrast="white"
@@ -162,55 +175,21 @@ exports[`<ButtonGroup /> > Default story renders snapshot 1`] = `
         </div>
       </span>
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      >
+        Label
+      </span>
     </button>
     <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge css-htszrh-MuiButton-startIcon"
-      >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconDownloadSmall"
-            data-testid="IconDownloadSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
-          />
-        </div>
-      </span>
-      <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         Label
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
-    </button>
-    <button
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
-      tabindex="0"
-      type="button"
-    >
-      <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
-      >
-        Label
-      </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </div>
 </div>
@@ -218,31 +197,31 @@ exports[`<ButtonGroup /> > Default story renders snapshot 1`] = `
 
 exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
 <div
-  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
     style="display: flex; flex-direction: column; gap: 12px;"
   >
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
       role="group"
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconDownloadSmall"
               data-testid="IconDownloadSmall"
               fillcontrast="white"
@@ -256,19 +235,19 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCopySmall"
               data-testid="IconCopySmall"
               fillcontrast="white"
@@ -279,25 +258,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCubeSmall"
               data-testid="IconCubeSmall"
               fillcontrast="white"
@@ -308,25 +284,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconGithubSmall"
               data-testid="IconGithubSmall"
               fillcontrast="white"
@@ -337,25 +310,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconEditSmall"
               data-testid="IconEditSmall"
               fillcontrast="white"
@@ -366,30 +336,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
       role="group"
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconDownloadSmall"
               data-testid="IconDownloadSmall"
               fillcontrast="white"
@@ -400,25 +367,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCopySmall"
               data-testid="IconCopySmall"
               fillcontrast="white"
@@ -429,26 +393,23 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCubeSmall"
               data-testid="IconCubeSmall"
               fillcontrast="white"
@@ -462,19 +423,19 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconGithubSmall"
               data-testid="IconGithubSmall"
               fillcontrast="white"
@@ -485,25 +446,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconEditSmall"
               data-testid="IconEditSmall"
               fillcontrast="white"
@@ -514,30 +472,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
       role="group"
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconDownloadSmall"
               data-testid="IconDownloadSmall"
               fillcontrast="white"
@@ -548,25 +503,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCopySmall"
               data-testid="IconCopySmall"
               fillcontrast="white"
@@ -577,26 +529,23 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCubeSmall"
               data-testid="IconCubeSmall"
               fillcontrast="white"
@@ -610,20 +559,20 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconGithubSmall"
               data-testid="IconGithubSmall"
               fillcontrast="white"
@@ -637,19 +586,19 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconEditSmall"
               data-testid="IconEditSmall"
               fillcontrast="white"
@@ -660,30 +609,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
     </div>
     <div
-      class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+      class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
       role="group"
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconDownloadSmall"
               data-testid="IconDownloadSmall"
               fillcontrast="white"
@@ -694,25 +640,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCopySmall"
               data-testid="IconCopySmall"
               fillcontrast="white"
@@ -723,25 +666,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconCubeSmall"
               data-testid="IconCubeSmall"
               fillcontrast="white"
@@ -752,25 +692,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconGithubSmall"
               data-testid="IconGithubSmall"
               fillcontrast="white"
@@ -781,26 +718,23 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
             />
           </div>
         </span>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
         >
           <div
             class="css-1q8yjse-StyledIcon emi0zh40"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
               data-file-name="IconEditSmall"
               data-testid="IconEditSmall"
               fillcontrast="white"
@@ -817,25 +751,25 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       style="display: flex; gap: 12px;"
     >
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1jymmfx0 css-7zo4d6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical MuiButtonGroup-colorPrimary e1jymmfx0 css-hswxp6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
         role="group"
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconDownloadSmall"
                 data-testid="IconDownloadSmall"
                 fillcontrast="white"
@@ -849,19 +783,19 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCopySmall"
                 data-testid="IconCopySmall"
                 fillcontrast="white"
@@ -872,25 +806,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCubeSmall"
                 data-testid="IconCubeSmall"
                 fillcontrast="white"
@@ -901,25 +832,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconGithubSmall"
                 data-testid="IconGithubSmall"
                 fillcontrast="white"
@@ -930,25 +858,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconEditSmall"
                 data-testid="IconEditSmall"
                 fillcontrast="white"
@@ -959,30 +884,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1jymmfx0 css-7zo4d6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical MuiButtonGroup-colorPrimary e1jymmfx0 css-hswxp6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
         role="group"
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconDownloadSmall"
                 data-testid="IconDownloadSmall"
                 fillcontrast="white"
@@ -993,25 +915,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCopySmall"
                 data-testid="IconCopySmall"
                 fillcontrast="white"
@@ -1022,26 +941,23 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCubeSmall"
                 data-testid="IconCubeSmall"
                 fillcontrast="white"
@@ -1055,19 +971,19 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconGithubSmall"
                 data-testid="IconGithubSmall"
                 fillcontrast="white"
@@ -1078,25 +994,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconEditSmall"
                 data-testid="IconEditSmall"
                 fillcontrast="white"
@@ -1107,30 +1020,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1jymmfx0 css-7zo4d6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical MuiButtonGroup-colorPrimary e1jymmfx0 css-hswxp6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
         role="group"
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconDownloadSmall"
                 data-testid="IconDownloadSmall"
                 fillcontrast="white"
@@ -1141,25 +1051,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCopySmall"
                 data-testid="IconCopySmall"
                 fillcontrast="white"
@@ -1170,26 +1077,23 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCubeSmall"
                 data-testid="IconCubeSmall"
                 fillcontrast="white"
@@ -1203,20 +1107,20 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconGithubSmall"
                 data-testid="IconGithubSmall"
                 fillcontrast="white"
@@ -1230,19 +1134,19 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconEditSmall"
                 data-testid="IconEditSmall"
                 fillcontrast="white"
@@ -1253,30 +1157,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
       </div>
       <div
-        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical e1jymmfx0 css-7zo4d6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+        class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-vertical MuiButtonGroup-colorPrimary e1jymmfx0 css-hswxp6-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
         role="group"
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconDownloadSmall"
                 data-testid="IconDownloadSmall"
                 fillcontrast="white"
@@ -1287,25 +1188,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCopySmall"
                 data-testid="IconCopySmall"
                 fillcontrast="white"
@@ -1316,25 +1214,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconCubeSmall"
                 data-testid="IconCubeSmall"
                 fillcontrast="white"
@@ -1345,25 +1240,22 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconGithubSmall"
                 data-testid="IconGithubSmall"
                 fillcontrast="white"
@@ -1374,26 +1266,23 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
               />
             </div>
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary Mui-disabled MuiButtonGroup-grouped MuiButtonGroup-groupedVertical MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedVertical MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             <div
               class="css-1q8yjse-StyledIcon emi0zh40"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
                 data-file-name="IconEditSmall"
                 data-testid="IconEditSmall"
                 fillcontrast="white"
@@ -1413,27 +1302,27 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
 
 exports[`<ButtonGroup /> > IconOnly story renders snapshot 1`] = `
 <div
-  class="css-lhi16i-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
-    class="MuiButtonGroup-root MuiButtonGroup-outlined e1jymmfx0 css-jss9h4-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
+    class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
     role="group"
   >
     <button
       aria-label="Download"
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconDownloadSmall"
             data-testid="IconDownloadSmall"
             fillcontrast="white"
@@ -1444,25 +1333,22 @@ exports[`<ButtonGroup /> > IconOnly story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
     <button
       aria-label="Copy"
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconCopySmall"
             data-testid="IconCopySmall"
             fillcontrast="white"
@@ -1473,25 +1359,22 @@ exports[`<ButtonGroup /> > IconOnly story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
     <button
       aria-label="Edit"
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-1j7y4iw-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1t5yxjj-StyledChildren-StyledChildren et5j5k1"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconEditSmall"
             data-testid="IconEditSmall"
             fillcontrast="white"
@@ -1502,9 +1385,6 @@ exports[`<ButtonGroup /> > IconOnly story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </div>
 </div>

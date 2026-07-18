@@ -5,30 +5,30 @@ exports[`<Dropdown /> > Default story renders snapshot 1`] = `
   aria-expanded="false"
   aria-haspopup="listbox"
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-ry0h6r-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e7sskkf6 css-77yboc-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
   label="Click Target"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-xyy11f-LabelWrapper e7sskkf1"
+    class="css-huc8g0-LabelWrapper e7sskkf1"
   >
     <div>
       <span
-        class="styled-label css-elsexs-StyledLabel e7sskkf4"
+        class="styled-label css-48h137-StyledLabel e7sskkf4"
       >
         Click Target
       </span>
     </div>
     <span
-      class="css-1b4ed00-IconWrapper e7sskkf0"
+      class="css-p524c5-IconWrapper e7sskkf0"
     >
       <div
         class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -40,9 +40,6 @@ exports[`<Dropdown /> > Default story renders snapshot 1`] = `
       </div>
     </span>
   </span>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
 </button>
 `;
 
@@ -51,30 +48,30 @@ exports[`<Dropdown /> > MultiColumnWithButtons story renders snapshot 1`] = `
   aria-expanded="false"
   aria-haspopup="listbox"
   aria-label="Dropdown input"
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary e7sskkf6 css-ry0h6r-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e7sskkf6 css-77yboc-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
   label="Click Target"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-xyy11f-LabelWrapper e7sskkf1"
+    class="css-huc8g0-LabelWrapper e7sskkf1"
   >
     <div>
       <span
-        class="styled-label css-elsexs-StyledLabel e7sskkf4"
+        class="styled-label css-48h137-StyledLabel e7sskkf4"
       >
         Click Target
       </span>
     </div>
     <span
-      class="css-1b4ed00-IconWrapper e7sskkf0"
+      class="css-p524c5-IconWrapper e7sskkf0"
     >
       <div
         class="css-1q8yjse-StyledIcon emi0zh40"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-1rowxxw-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
           data-file-name="IconChevronDownSmall"
           data-testid="IconChevronDownSmall"
           fillcontrast="white"
@@ -86,8 +83,5 @@ exports[`<Dropdown /> > MultiColumnWithButtons story renders snapshot 1`] = `
       </div>
     </span>
   </span>
-  <span
-    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-  />
 </button>
 `;
