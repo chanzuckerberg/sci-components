@@ -728,6 +728,12 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           opacity="1"
           tabindex="0"
         />
+        <div
+          class="css-12bzoa6-BarSegment eja2e931"
+          disabled=""
+          height="16"
+          opacity="1"
+        />
       </div>
       <div
         class="css-1bg97cd-LegendContainer ezuih624"
@@ -981,6 +987,12 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           height="16"
           opacity="1"
           tabindex="0"
+        />
+        <div
+          class="css-12bzoa6-BarSegment eja2e931"
+          disabled=""
+          height="16"
+          opacity="1"
         />
       </div>
       <div
@@ -1270,6 +1282,12 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           opacity="1"
           tabindex="0"
         />
+        <div
+          class="css-12bzoa6-BarSegment eja2e931"
+          disabled=""
+          height="16"
+          opacity="1"
+        />
       </div>
       <div
         class="css-1bg97cd-LegendContainer ezuih624"
@@ -1557,6 +1575,12 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           height="16"
           opacity="1"
           tabindex="0"
+        />
+        <div
+          class="css-12bzoa6-BarSegment eja2e931"
+          disabled=""
+          height="16"
+          opacity="1"
         />
       </div>
       <div

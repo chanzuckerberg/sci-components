@@ -123,3 +123,12 @@ packages/components/ai_task_docs/*
 
 # SWC
 .swc/
+
+# design-sync (claude.ai/design) — transient build/verify state
+.design-sync/sb-reference/
+.design-sync/learnings/
+.design-sync/.cache/
+.design-sync/node_modules
+.ds-sync/
+ds-bundle/
+.design-sync/diag.mjs
