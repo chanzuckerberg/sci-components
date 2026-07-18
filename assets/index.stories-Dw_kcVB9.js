@@ -1,0 +1,52 @@
+import{c as e,i as t}from"./preload-helper-usAeo7Bx.js";import{Aa as n,Gi as r,Ti as i,ct as a,ji as o}from"./iframe-ZT52KRhI.js";import{n as s,t as c}from"./Icon-CXgj2pi8.js";import{a as l,n as u}from"./utils-CHt6irz9.js";import{n as d,t as f}from"./Callout-CoKAp_EW.js";import{i as p,n as m,r as h,t as g}from"./Button-DpLCbr9e.js";import{n as _,t as v}from"./ButtonGroup-CTl5L2C0.js";import{n as y,t as b}from"./ButtonToggle-B0O9dOpk.js";var x,S,C,w,T=t((()=>{x=[`onClick`,`sdsStyle`,`sdsType`,`size`,`orientation`,`disabled`,`backgroundAppearance`],S=[`small`,`medium`,`large`],C=[`primary`,`secondary`],w=[`horizontal`,`vertical`]})),E,D,O=t((()=>{n(),_(),m(),s(),p(),d(),E=r(),D=e=>{let{size:t,orientation:n,...r}=e;return(0,E.jsxs)(h,{backgroundAppearance:e.backgroundAppearance,children:[n===`vertical`&&(0,E.jsx)(f,{intent:`notice`,title:`Notice!`,sdsStyle:`persistent`,icon:(0,E.jsx)(c,{sdsIcon:`InfoCircle`,sdsSize:`s`}),body:(0,E.jsxs)(E.Fragment,{children:[`The `,(0,E.jsx)(`strong`,{children:`Vertical`}),` orientation is only available when all buttons are icon-only!`,(0,E.jsx)(`br`,{}),`Please use the `,(0,E.jsx)(`strong`,{children:`Horizontal`}),` orientation instead.`]})}),(0,E.jsxs)(v,{...r,size:t,children:[(0,E.jsx)(g,{"aria-label":`Download`,children:(0,E.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,E.jsx)(g,{startIcon:(0,E.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`}),children:`Label`}),(0,E.jsx)(g,{children:`Label`})]})]})}})),k,A,j=t((()=>{n(),_(),m(),s(),p(),k=r(),A=e=>{let{size:t,...n}=e;return(0,k.jsx)(h,{backgroundAppearance:e.backgroundAppearance,children:(0,k.jsxs)(v,{...n,size:t,children:[(0,k.jsx)(g,{"aria-label":`Download`,children:(0,k.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,k.jsx)(g,{"aria-label":`Copy`,children:(0,k.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,k.jsx)(g,{"aria-label":`Edit`,children:(0,k.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]})})}})),M,N,P=t((()=>{n(),_(),m(),s(),p(),a(),M=r(),N=e=>{let{size:t,...n}=e,r=i(),a=t===`small`?`8px`:t===`medium`?`10px`:`12px`,s=t===`small`?`10px`:t===`medium`?`12px`:`14px`,l=o(r?.breakpoints?.down(`md`))?s:a;return(0,M.jsx)(h,{backgroundAppearance:e.backgroundAppearance,children:(0,M.jsxs)(`div`,{style:{display:`flex`,flexDirection:`column`,gap:l},children:[(0,M.jsxs)(v,{...n,orientation:`horizontal`,size:t,children:[(0,M.jsx)(g,{disabled:!0,"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(v,{...n,orientation:`horizontal`,size:t,children:[(0,M.jsx)(g,{"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(v,{...n,orientation:`horizontal`,size:t,children:[(0,M.jsx)(g,{"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(v,{...n,orientation:`horizontal`,size:t,children:[(0,M.jsx)(g,{"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(`div`,{style:{display:`flex`,gap:l},children:[(0,M.jsxs)(v,{...n,orientation:`vertical`,size:t,children:[(0,M.jsx)(g,{disabled:!0,"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(v,{...n,orientation:`vertical`,size:t,children:[(0,M.jsx)(g,{"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(v,{...n,orientation:`vertical`,size:t,children:[(0,M.jsx)(g,{"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]}),(0,M.jsxs)(v,{...n,orientation:`vertical`,size:t,children:[(0,M.jsx)(g,{"aria-label":`Download`,children:(0,M.jsx)(c,{sdsIcon:`Download`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Copy`,children:(0,M.jsx)(c,{sdsIcon:`Copy`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Cube`,children:(0,M.jsx)(c,{sdsIcon:`Cube`,sdsSize:`s`})}),(0,M.jsx)(g,{"aria-label":`Github`,children:(0,M.jsx)(c,{sdsIcon:`Github`,sdsSize:`s`})}),(0,M.jsx)(g,{disabled:!0,"aria-label":`Edit`,children:(0,M.jsx)(c,{sdsIcon:`Edit`,sdsSize:`s`})})]})]})]})})}})),F,I,L,R,z=t((()=>{F=e(n()),_(),y(),s(),p(),I=r(),L=[{ariaLabel:`Search`,icon:`Search`},{ariaLabel:`Copy`,icon:`Copy`},{ariaLabel:`Code`,icon:`Code`},{ariaLabel:`Cube`,icon:`Cube`}],R=e=>{let{size:t,...n}=e,[r,i]=(0,F.useState)({}),a=e=>{i(t=>({...t,[e]:!t[e]}))};return(0,I.jsx)(h,{backgroundAppearance:e.backgroundAppearance,children:(0,I.jsx)(v,{...n,size:t,children:L.map(({ariaLabel:t,icon:n})=>(0,I.jsx)(b,{"aria-label":t,startIcon:(0,I.jsx)(c,{sdsIcon:n,sdsSize:`s`}),sdsStage:r[t]?`on`:`off`,sdsStyle:`outline`,sdsType:e.sdsType,onClick:()=>a(t),backgroundAppearance:e.backgroundAppearance},t))})})}})),B,V,H=t((()=>{n(),_(),m(),B=r(),V=e=>(0,B.jsxs)(v,{...e,"data-testid":`button-group`,children:[(0,B.jsx)(g,{"data-testid":`button-group-button-1`,children:`One`}),(0,B.jsx)(g,{"data-testid":`button-group-button-2`,children:`Two`}),(0,B.jsx)(g,{"data-testid":`button-group-button-3`,children:`Three`})]})})),U,W,G,K,q,J,Y,X;t((()=>{T(),O(),j(),P(),z(),H(),l(),U=r(),W={argTypes:{backgroundAppearance:{control:{type:u},options:[`matchBackground`,`dark`]},disabled:{control:{type:`boolean`}},orientation:{control:{type:u},options:w},size:{control:{type:u},options:S},sdsType:{control:{type:u},options:C}},component:D,tags:[`beta`],title:`Components/Buttons/ButtonGroup`},G={args:{backgroundAppearance:`matchBackground`,disabled:!1,orientation:`horizontal`,size:`large`,sdsType:`primary`}},K={args:{backgroundAppearance:`matchBackground`,disabled:!1,orientation:`horizontal`,size:`large`,sdsType:`primary`},render:e=>(0,U.jsx)(A,{...e})},q={args:{backgroundAppearance:`matchBackground`,orientation:`horizontal`,size:`large`,sdsType:`primary`},render:e=>(0,U.jsx)(N,{...e})},J={args:{backgroundAppearance:`matchBackground`,disabled:!1,orientation:`horizontal`,size:`large`,sdsType:`primary`},render:e=>(0,U.jsx)(R,{...e})},Y={args:{backgroundAppearance:`matchBackground`,disabled:!1,orientation:`horizontal`,size:`large`,sdsType:`primary`},parameters:{controls:{exclude:x},snapshot:{skip:!0}},render:e=>(0,U.jsx)(V,{...e})},G.parameters={...G.parameters,docs:{...G.parameters?.docs,source:{originalSource:`{
+  args: {
+    backgroundAppearance: "matchBackground",
+    disabled: false,
+    orientation: "horizontal",
+    size: "large",
+    sdsType: "primary"
+  }
+}`,...G.parameters?.docs?.source}}},K.parameters={...K.parameters,docs:{...K.parameters?.docs,source:{originalSource:`{
+  args: {
+    backgroundAppearance: "matchBackground",
+    disabled: false,
+    orientation: "horizontal",
+    size: "large",
+    sdsType: "primary"
+  },
+  render: (args: Args) => <ButtonGroupIconOnly {...args} />
+}`,...K.parameters?.docs?.source}}},q.parameters={...q.parameters,docs:{...q.parameters?.docs,source:{originalSource:`{
+  args: {
+    backgroundAppearance: "matchBackground",
+    orientation: "horizontal",
+    size: "large",
+    sdsType: "primary"
+  },
+  render: (args: Args) => <ButtonGroupDisabledButton {...args} />
+}`,...q.parameters?.docs?.source}}},J.parameters={...J.parameters,docs:{...J.parameters?.docs,source:{originalSource:`{
+  args: {
+    backgroundAppearance: "matchBackground",
+    disabled: false,
+    orientation: "horizontal",
+    size: "large",
+    sdsType: "primary"
+  },
+  render: (args: Args) => <ButtonGroupButtonToggles {...args} />
+}`,...J.parameters?.docs?.source}}},Y.parameters={...Y.parameters,docs:{...Y.parameters?.docs,source:{originalSource:`{
+  args: {
+    backgroundAppearance: "matchBackground",
+    disabled: false,
+    orientation: "horizontal",
+    size: "large",
+    sdsType: "primary"
+  },
+  parameters: {
+    controls: {
+      exclude: BUTTON_GROUP_EXCLUDED_CONTROLS
+    },
+    snapshot: {
+      skip: true
+    }
+  },
+  render: (args: Args) => <TestDemo {...args} />
+}`,...Y.parameters?.docs?.source}}},X=[`Default`,`IconOnly`,`DisabledButtons`,`ButtonToggles`,`Test`]}))();export{J as ButtonToggles,G as Default,q as DisabledButtons,K as IconOnly,Y as Test,X as __namedExportsOrder,W as default};
