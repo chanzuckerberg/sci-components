@@ -1,0 +1,3 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";import{Fi as t,Ii as n,Li as r,T as i,Z as a,ct as o,t as s,xr as c}from"./iframe-DocVhSSI.js";var l,u,d=e((()=>{r(),o(),s(),l=i(`m`),u=n(c,{target:`ed4d6mk0`})(`&.MuiListSubheader-root{`,l,` line-height:unset;color:unset;`,e=>`
+        margin-bottom: ${a(e)?.l}px;
+      `,`;}`)})),f,p,m=e((()=>{d(),f=t(),p=e=>(0,f.jsx)(u,{disableGutters:!0,...e})}));export{m as n,p as t};

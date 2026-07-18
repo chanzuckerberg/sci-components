@@ -1,0 +1,13 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Fi as n,Ii as r,Li as i,Qa as a,Z as o,_r as s,cn as c,ct as l,gn as u,t as d,yi as f}from"./iframe-DocVhSSI.js";import{n as p,t as m}from"./Icon-CQ-y6cAL.js";import{n as h,r as g,t as _}from"./warnings-Bvvuj_n2.js";import{a as v,s as y}from"./utils-BxIa431Z.js";import{n as b,t as x}from"./Button-CfkvkcRt.js";import{n as S,t as C}from"./InputSearch-C1NfFN_U.js";import{n as w,t as T}from"./MenuItem-DZQJDrqI.js";var E,D,O,k,A,j=e((()=>{i(),l(),S(),w(),d(),E=r(T,{target:`ezmiyu43`})({name:`1d3w5wq`,styles:`width:100%`}),D=[`search`,`InputBaseProps`,`keepSearchOnSelect`],O=r(s,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu42`})(({search:e})=>!e&&`height: 0; margin: 0 !important;`,` width:100%;`),k=r(`div`,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu41`})(e=>{let{search:t}=e;return t?`
+      margin: ${o(e)?.s}px;
+    `:`
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        margin: 0;
+      `},`;`),A=r(C,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu40`})(`&&{margin:0;caret-color:`,({search:e})=>e?`auto`:`transparent`,`;.`,f.root,`{width:100%;padding:0;padding-right:14px!important;}}`)})),M,N,P,F=e((()=>{l(),M=t(a()),v(),h(),b(),j(),p(),N=n(),P=e=>{let{keepSearchOnSelect:t=!0,multiple:n=!1,getOptionLabel:r=v,renderValue:i=b,renderOption:a=S,disableCloseOnSelect:o=n,noOptionsText:s=`No options`,search:l=!1,InputBaseProps:d={},onInputChange:f=y}=e,[p,h]=(0,M.useState)(``);return g(_.MenuSelectDeprecated),(0,N.jsx)(O,{clearOnBlur:!1,open:!0,disableCloseOnSelect:o,disablePortal:!0,renderValue:i,noOptionsText:s,renderOption:a,slots:{listbox:c},getOptionLabel:r,inputValue:p,renderInput:e=>(0,N.jsx)(k,{search:l,children:(0,N.jsx)(A,{id:`location-search`,label:`Search for a location`,placeholder:`Search`,ref:e.slotProps.input.ref,search:l,autoFocus:!0,onKeyDown:e=>{e.key===`Backspace`&&e.stopPropagation()},slotProps:{htmlInput:e.slotProps.htmlInput,input:{inputMode:l?`text`:`none`,...e.slotProps.input.ref,endAdornment:(0,N.jsx)(u,{position:`end`,children:(0,N.jsx)(x,{size:`large`,sdsType:`secondary`,sdsStyle:`minimal`,backgroundOnHover:!1,children:(0,N.jsx)(m,{sdsIcon:`Search`,sdsSize:`s`})})})}},...d})}),...e,onInputChange:(e,n,r)=>{e&&e.type===`blur`?h(``):(r!==`reset`||r===`reset`&&!t)&&h(n),f&&f(e,n,r)}});function v(e){return typeof e==`object`&&`name`in e?e.name:e.toString()}function b(){return null}function S(e,t,{selected:r}){return(0,N.jsx)(E,{component:`li`,isMultiSelect:n,selected:r,...e,children:t.name})}}}));export{F as n,P as t};
