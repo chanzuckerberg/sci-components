@@ -36,7 +36,8 @@ type AnimatedItem = StackedBarChartDataItem & {
   color: string;
   key: string;
   originalIndex: number;
-  isExiting?: boolean;
+  isEntering: boolean;
+  isExiting: boolean;
 };
 
 // Helper: Calculate badge display text based on selection state
@@ -268,7 +269,6 @@ const buildLegendItems = (
 // Helper: Render a bar segment with optional tooltip
 const renderBarSegment = (
   item: AnimatedItem,
-  index: number,
   options: {
     barHeight: number;
     hoveredIndex: number | null;
@@ -297,7 +297,7 @@ const renderBarSegment = (
   const barSegment = (
     <BarSegment
       color={item.color}
-      percentage={item.percentage}
+      percentage={item.isEntering || item.isExiting ? 0 : item.percentage}
       height={barHeight}
       opacity={getSegmentOpacity(
         item.originalIndex,
@@ -388,96 +388,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     options: typeof colorGeneratorOptions;
     isDarkMode: boolean;
   } | null>(null);
-  const previousRemainingPercentageRef = useRef<number>(0);
-
-  // Animate items when removals occur
-  const animateItemRemoval = useCallback(
-    (
-      previousItems: AnimatedItem[],
-      nextItems: AnimatedItem[],
-      currentRemainingPercentage: number,
-      newRemainingPercentage: number
-    ): (() => void) | undefined => {
-      if (typeof window === "undefined") {
-        setAnimatedItems(nextItems);
-        previousProcessedRef.current = nextItems;
-        setAnimatedRemainingPercentage(newRemainingPercentage);
-        previousRemainingPercentageRef.current = newRemainingPercentage;
-        return undefined;
-      }
-
-      const nextItemsMap = new Map(nextItems.map((item) => [item.key, item]));
-
-      const removedKeys = previousItems
-        .filter((item) => !nextItemsMap.has(item.key))
-        .map((item) => item.key);
-
-      if (removedKeys.length === 0) {
-        return undefined;
-      }
-
-      const removedKeySet = new Set(removedKeys);
-
-      // Maintain original order so segments don't jump immediately
-      const initialItems = previousItems.map((item) =>
-        removedKeySet.has(item.key)
-          ? { ...item, isExiting: true }
-          : { ...item, isExiting: false }
-      );
-
-      setAnimatedItems(initialItems);
-      previousProcessedRef.current = initialItems;
-      // Keep remaining segment at current percentage initially
-      setAnimatedRemainingPercentage(currentRemainingPercentage);
-
-      const frameIds: number[] = [];
-
-      const firstFrame = requestAnimationFrame(() => {
-        const secondFrame = requestAnimationFrame(() => {
-          setAnimatedItems((prev) => {
-            const prevKeys = new Set(prev.map((item) => item.key));
-
-            const updatedPrev = prev.map((item) => {
-              if (removedKeySet.has(item.key)) {
-                // Animate exiting items to 0
-                return { ...item, percentage: 0 };
-              }
-              // Keep continuing items at their OLD percentages during animation
-              // This prevents the flash/jump
-              return { ...item, isExiting: false };
-            });
-
-            const addedItems = nextItems.filter(
-              (item) => !prevKeys.has(item.key)
-            );
-
-            return [...updatedPrev, ...addedItems];
-          });
-
-          // Animate remaining segment to new percentage
-          setAnimatedRemainingPercentage(newRemainingPercentage);
-        });
-
-        frameIds.push(secondFrame);
-      });
-
-      frameIds.push(firstFrame);
-
-      const timeoutId = window.setTimeout(() => {
-        // After animation completes, update to the new percentages
-        setAnimatedItems(nextItems);
-        previousProcessedRef.current = nextItems;
-        setAnimatedRemainingPercentage(newRemainingPercentage);
-        previousRemainingPercentageRef.current = newRemainingPercentage;
-      }, 350);
-
-      return () => {
-        frameIds.forEach((id) => window.cancelAnimationFrame(id));
-        window.clearTimeout(timeoutId);
-      };
-    },
-    []
-  );
 
   // Detect dark mode from theme
   const isDarkMode = useMemo(() => getMode({ theme }) === "dark", [theme]);
@@ -588,7 +498,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
-  // Memoize to prevent unnecessary recalculations and re-renders
   const dataWithPercentages: AnimatedItem[] = useMemo(() => {
     return data.map((item, index) => {
       const resolvedColor =
@@ -603,39 +512,68 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
         key: item.name, // Use name as stable key for tracking
         originalIndex: index, // Track original index for selection
+        isEntering: false,
+        isExiting: false,
       };
     });
   }, [data, effectiveMaxAmount, autoColorMap, theme]);
 
-  // Handle data changes and animate exits
+  // Handle data change animations for enters/exits.
   useEffect(() => {
-    const previousProcessed = previousProcessedRef.current;
+    const prevItems = previousProcessedRef.current;
+    const nextItems = dataWithPercentages;
+    const nextItemsMap = new Map(nextItems.map((item) => [item.key, item]));
 
     // If this is the initial render, just set the items
-    if (previousProcessed.length === 0) {
-      setAnimatedItems(dataWithPercentages);
-      previousProcessedRef.current = dataWithPercentages;
+    if (prevItems.length === 0) {
+      setAnimatedItems(nextItems);
       setAnimatedRemainingPercentage(remainingPercentage);
-      previousRemainingPercentageRef.current = remainingPercentage;
+      previousProcessedRef.current = nextItems;
       return;
     }
 
-    const cleanup = animateItemRemoval(
-      previousProcessed,
-      dataWithPercentages,
-      previousRemainingPercentageRef.current,
-      remainingPercentage
+    // 1. Prepare for animation (added segments are 0-width).
+    const step1Items = [...prevItems];
+    let currentInsertionIndex = 0;
+    for (const item of nextItems) {
+      const step1Index = step1Items.findIndex(
+        (step1Item) => step1Item.key === item.key
+      );
+      if (step1Index === -1) {
+        step1Items.splice(currentInsertionIndex, 0, {
+          ...item,
+          isEntering: true,
+        });
+        currentInsertionIndex++;
+      } else {
+        currentInsertionIndex = step1Index + 1;
+      }
+    }
+    setAnimatedItems(step1Items);
+
+    // 2. Animate to final state (removed segments are 0 width).
+    const timeoutIds: number[] = [];
+    timeoutIds.push(
+      window.setTimeout(() => {
+        const step2Items = step1Items.map(
+          (item) => nextItemsMap.get(item.key) ?? { ...item, isExiting: true }
+        );
+        setAnimatedItems(step2Items);
+        setAnimatedRemainingPercentage(remainingPercentage);
+        // 3. Final state (removed segments gone)
+        timeoutIds.push(
+          window.setTimeout(() => {
+            setAnimatedItems(nextItems);
+            previousProcessedRef.current = nextItems;
+          }, 350)
+        );
+      }, 0)
     );
 
-    if (cleanup) {
-      return cleanup;
-    }
-
-    setAnimatedItems(dataWithPercentages);
-    previousProcessedRef.current = dataWithPercentages;
-    setAnimatedRemainingPercentage(remainingPercentage);
-    previousRemainingPercentageRef.current = remainingPercentage;
-  }, [dataWithPercentages, remainingPercentage, animateItemRemoval]);
+    return () => {
+      timeoutIds.forEach((id) => window.clearTimeout(id));
+    };
+  }, [dataWithPercentages, remainingPercentage]);
 
   // Create a Set for O(1) lookups of selected indices
   const selectedIndicesSet = useMemo(
@@ -801,7 +739,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       >
         {styledItems.map((item, index) => {
           const isLastVisible = index === lastVisibleIndex && !hasRemaining;
-          return renderBarSegment(item, index, {
+          return renderBarSegment(item, {
             barHeight,
             hoveredIndex,
             selectedIndicesSet,
@@ -831,7 +769,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
               !item.isExiting && handleSegmentClick(item.originalIndex),
           });
         })}
-        {hasRemaining && (
+        {previousProcessedRef.current.length > 0 && (
           <BarSegment
             key="remaining"
             color={theme?.palette?.sds?.base?.backgroundTertiary}

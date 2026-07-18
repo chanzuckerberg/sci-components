@@ -2,7 +2,24 @@ import { Meta } from "@storybook/react-vite";
 import { StackedBarChart } from "./stories/default";
 import WithSelectionStory from "./stories/withSelection";
 import WithMouseEventsStory from "./stories/withMouseEvents";
-import { STACKED_BAR_CHART_DATA } from "./constants";
+import {
+  STACKED_BAR_CHART_DATA,
+  STACKED_BAR_CHART_DATA_FEWER_CATEGORIES,
+  STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
+  STACKED_BAR_CHART_DATA_UPDATED_VALUES,
+} from "./constants";
+
+/**
+ * Named datasets for the `data` select control. Switching datasets in the
+ * Controls panel swaps the `data` prop on the mounted chart, which exercises
+ * the segment animations (resize, enter, exit).
+ */
+const DATA_OPTIONS = {
+  default: STACKED_BAR_CHART_DATA,
+  default2: STACKED_BAR_CHART_DATA_UPDATED_VALUES,
+  fewerCategories: STACKED_BAR_CHART_DATA_FEWER_CATEGORIES,
+  moreCategories: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
+};
 
 export default {
   argTypes: {
@@ -27,9 +44,12 @@ export default {
     },
     data: {
       control: {
-        type: "object",
+        type: "select",
       },
-      description: "Array of data items with name, value, and color properties",
+      description:
+        "Array of data items with name, value, and color properties. Switch datasets to test the segment animations",
+      mapping: DATA_OPTIONS,
+      options: Object.keys(DATA_OPTIONS),
     },
     maxAmount: {
       control: {
