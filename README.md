@@ -2,6 +2,8 @@
 
 The Science Design System (SDS) brings consistency and universal standards to CZI’s science products by offering a library of high quality, reusable components that deliver predictable, accessible and easy to learn experiences. Our goal is to democratize access to tools and technologies for scientists.
 
+> This root README is the source of truth for SDS docs. The [`packages/components`](./packages/components/README.md) and [`packages/data-viz`](./packages/data-viz/README.md) READMEs are short npm-facing summaries that link back here.
+
 ## Design System Documentation
 
 `@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spaces`, `typography`, etc., so you can leverage the theme properly in your application.
@@ -10,11 +12,17 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Installation
 
-[NPM Package](https://www.npmjs.com/package/czi-sds/components)
+[NPM Package](https://www.npmjs.com/package/@czi-sds/components)
 
-**Currently SDS uses Material UI v5**
+**Currently SDS uses Material UI v9**
 
 NOTE: Since most of the czi-sds components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://mui.com/) to learn about what you can do with the components. Many czi-sds components are style wrappers that pass props through to the MUI component without modifying them.
+
+## Migrating to SDS 24.0.0
+
+SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [MIGRATION.md](./MIGRATION.md).
+
+That guide covers dependency updates, MUI import and prop API changes (`slots` / `slotProps`), SDS-specific call-site updates, icon renames, and a verification checklist.
 
 `@czi-sds/components` installs without direct dependencies to prevent version errors. Please ensure the following peer dependencies are also installed:
 
