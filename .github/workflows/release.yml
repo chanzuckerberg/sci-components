@@ -18,13 +18,13 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js and Cache yarn
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
           cache: "yarn" # Cache Yarn dependencies for faster builds
@@ -75,7 +75,7 @@ jobs:
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore(release): Publish"
           branch: ${{ github.head_ref }}
@@ -104,7 +104,7 @@ jobs:
         id: createpr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           script: |
             const ownerAndRepo = '${{ github.repository }}';
@@ -160,7 +160,7 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           ref: prod
@@ -189,6 +189,6 @@ jobs:
     steps:
       # Step 1: Create a GitHub release for the latest version
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: "${{ matrix.cfg.name }}@${{ matrix.cfg.version }}"
