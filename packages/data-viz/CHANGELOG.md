@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.18.0...@czi-sds/data-viz@0.19.0) (2026-07-18)
+
+### Features
+
+- **data-viz:** Improve stacked bar chart animation logic ([#1145](https://github.com/chanzuckerberg/sci-components/issues/1145)) ([d55ceac](https://github.com/chanzuckerberg/sci-components/commit/d55ceacb9163a1151b221f3984619128fe8de659))
+- MUI upgrade v5 => v7 => v9 ([#1138](https://github.com/chanzuckerberg/sci-components/issues/1138)) ([88600a8](https://github.com/chanzuckerberg/sci-components/commit/88600a80e7cf8bbd5cb2dd32e28bb7cd2529ab5d))
+
 # [0.18.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.17.2...@czi-sds/data-viz@0.18.0) (2026-06-08)
 
 ### Features
