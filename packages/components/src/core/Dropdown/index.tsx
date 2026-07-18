@@ -77,7 +77,12 @@ type CustomAutocompleteProps<
   FreeSolo extends boolean | undefined,
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput"
+  // (options): MUI's AutocompleteProps and ExtraDropdownProps both declare
+  // `options` with different shapes. Intersecting them yields an unsatisfiable
+  // type, so we drop MUI's declaration and let ExtraDropdownProps own it (it
+  // supports both single- and multi-column option shapes that SDS routes at
+  // runtime via `"options" in options[0]`).
+  "renderInput" | "options"
 >;
 
 export type DropdownProps<

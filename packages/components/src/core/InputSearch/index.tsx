@@ -50,6 +50,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
       classes = EMPTY_OBJECT,
       className,
       value: propValue,
+      slotProps: userSlotProps,
       ...rest
     } = props;
 
@@ -138,8 +139,13 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
           id={id}
           ref={ref ? ref : inputRef}
           className={cn(inputClassName, className)}
-          // passed to mui Input slot (v9: InputProps -> slotProps.input)
+          // passed to mui Input slot (v9: InputProps -> slotProps.input).
+          // Spread consumer slotProps first, then re-apply the SDS-managed
+          // `input` slot so its search/clear adornments are preserved. Consumer
+          // `input` props are merged in last so overrides still take effect
+          // without wiping the adornments.
           slotProps={{
+            ...userSlotProps,
             input: {
               endAdornment: value ? (
                 <StyledInputAdornment
@@ -182,6 +188,9 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                   </Button>
                 </StyledInputAdornment>
               ),
+              ...(typeof userSlotProps?.input === "object"
+                ? userSlotProps.input
+                : {}),
             },
           }}
           type="search"
