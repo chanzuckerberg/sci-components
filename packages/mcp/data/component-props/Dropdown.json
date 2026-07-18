@@ -52,9 +52,8 @@
         "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
       },
       "options": {
-        "type": "\"readonly T[]\" | \"AutocompleteSingleColumnOption<T>[]\" | \"AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]\"",
-        "isRequired": true,
-        "description": "A list of options that will be shown in the Autocomplete."
+        "type": "\"AutocompleteSingleColumnOption<T>[]\" | \"AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]\"",
+        "isRequired": true
       },
       "search": {
         "type": "\"false\" | \"true\"",
