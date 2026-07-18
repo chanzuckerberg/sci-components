@@ -4,24 +4,24 @@ exports[`<InputDropdown /> > Default story renders snapshot 1`] = `
 <div>
   <button
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e7sskkf6 css-la8p4-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e7sskkf6 css-77yboc-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
     data-testid="InputDropdown"
     label="Label"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-xyy11f-LabelWrapper e7sskkf1"
+      class="css-huc8g0-LabelWrapper e7sskkf1"
     >
       <div>
         <span
-          class="styled-label css-elsexs-StyledLabel e7sskkf4"
+          class="styled-label css-48h137-StyledLabel e7sskkf4"
         >
           Label
         </span>
       </div>
       <span
-        class="css-1b4ed00-IconWrapper e7sskkf0"
+        class="css-p524c5-IconWrapper e7sskkf0"
       >
         <div
           class="css-1q8yjse-StyledIcon emi0zh40"
