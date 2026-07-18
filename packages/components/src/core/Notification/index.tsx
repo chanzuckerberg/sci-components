@@ -1,8 +1,7 @@
-import { AlertProps } from "@mui/lab";
-import { Box, Slide } from "@mui/material";
+import { AlertProps, Box, Slide } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Button from "src/core/Button";
-import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
+import Button from "@components/src/core/Button";
+import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
 import {
   StyledButtonWrapper,
   StyledCloseButton,

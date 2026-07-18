@@ -7,11 +7,11 @@ import {
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { ExtraHeaderProps } from "../../style";
 import { css, SerializedStyles } from "@emotion/react";
-import Tag from "src/core/Tag";
-import Button, { ButtonProps } from "src/core/Button";
+import Tag from "@components/src/core/Tag";
+import Button, { ButtonProps } from "@components/src/core/Button";
 
 export type StyledTextItemProps = ExtraHeaderProps & {
   open: boolean;
@@ -38,7 +38,7 @@ const NarrowStyledTextItem = (props: StyledTextItemProps): SerializedStyles => {
   return css`
     ${open ? fontBodySemiboldL(props) : fontBodyMediumL(props)}
     border-radius: ${corners?.l}px;
-    padding: ${spaces?.s}px ${spaces?.m}px;
+    padding: ${spaces?.s}px ${spaces?.l}px;
     width: 100%;
 
     &:hover {

@@ -1,141 +1,117 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<NavigationJumpTo /> Default story renders snapshot 1`] = `
+exports[`<NavigationJumpTo /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiTabs-root MuiTabs-vertical ezsvn70 css-15rls5v-MuiTabs-root"
+  class="MuiTabs-root MuiTabs-vertical e1svjln41 css-g3vuwc-MuiTabs-root-StyledTabs"
 >
   <div
-    class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+    class="MuiTabs-scroller MuiTabs-fixed css-s2t35c-MuiTabs-scroller"
     style="overflow: hidden; margin-right: 0px;"
   >
     <div
       aria-label="navigation-jump-to"
       aria-orientation="vertical"
-      class="MuiTabs-flexContainer MuiTabs-flexContainerVertical css-lfwcke-MuiTabs-flexContainer"
+      class="MuiTabs-list MuiTabs-vertical css-1ondbrm-MuiTabs-list"
       role="tablist"
     >
       <button
         aria-controls="navigation-panel-1"
         aria-selected="true"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-1.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         1. Nav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-1-1"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-1.1.-subnav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         1.1. Subnav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-1-2"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-1.2.-subnav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         1.2. Subnav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-2"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-2.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         2. Nav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-3"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-3.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         3. Nav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-3-1"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-3.1.-subnav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         3.1. Subnav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-4"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-4.-nav-item"
         role="tab"
         tabindex="0"
         type="button"
       >
         4. Nav Item
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
       <button
         aria-controls="navigation-panel-5"
         aria-selected="false"
-        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
         id="navigation-tab-5.-a-long-title-for-this-item-that-will-wrap-to-the-next-line-if-the-component-width-is-not-enough."
         role="tab"
         tabindex="0"
         type="button"
       >
         5. A long title for this item that will wrap to the next line if the component width is not enough.
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </button>
     </div>
     <span
-      class="MuiTabs-indicator css-10d9dml-MuiTabs-indicator"
+      class="MuiTabs-indicator css-oewvya-MuiTabs-indicator"
       style="top: 0px; height: 0px;"
     />
   </div>
 </div>
 `;
 
-exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
+exports[`<NavigationJumpTo /> > JumpToNavDemo story renders snapshot 1`] = `
 <div
   class="MuiBox-root css-0"
 >
@@ -149,95 +125,95 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
       Section panel height:
     </p>
     <span
-      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium ejpzb5j0 css-wapl4l-MuiSlider-root"
+      class="MuiSlider-root MuiSlider-marked MuiSlider-colorPrimary MuiSlider-sizeMedium embkalj0 css-4khnl3-MuiSlider-root-StyledSlider"
     >
       <span
-        class="MuiSlider-rail css-7o8aqz-MuiSlider-rail"
+        class="MuiSlider-rail css-hat6nr-MuiSlider-rail"
       />
       <span
-        class="MuiSlider-track css-ttgsjq-MuiSlider-track"
+        class="MuiSlider-track css-xvk2i-MuiSlider-track"
         style="left: 0%; width: 80%;"
       />
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-16kozi8-MuiSlider-mark"
         data-index="0"
         style="left: 0%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-swtyag-MuiSlider-markLabel"
         data-index="0"
         style="left: 0%;"
       >
         20
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-16kozi8-MuiSlider-mark"
         data-index="1"
         style="left: 20%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-swtyag-MuiSlider-markLabel"
         data-index="1"
         style="left: 20%;"
       >
         40
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-16kozi8-MuiSlider-mark"
         data-index="2"
         style="left: 40%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-swtyag-MuiSlider-markLabel"
         data-index="2"
         style="left: 40%;"
       >
         60
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-16kozi8-MuiSlider-mark"
         data-index="3"
         style="left: 60%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-swtyag-MuiSlider-markLabel"
         data-index="3"
         style="left: 60%;"
       >
         80
       </span>
       <span
-        class="MuiSlider-mark MuiSlider-markActive css-z5sdnj-MuiSlider-mark"
+        class="MuiSlider-mark MuiSlider-markActive css-16kozi8-MuiSlider-mark"
         data-index="4"
         style="left: 80%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-1ucwjgd-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel MuiSlider-markLabelActive css-swtyag-MuiSlider-markLabel"
         data-index="4"
         style="left: 80%;"
       >
         100
       </span>
       <span
-        class="MuiSlider-mark css-hzp7sc-MuiSlider-mark"
+        class="MuiSlider-mark css-lq5hqx-MuiSlider-mark"
         data-index="5"
         style="left: 100%;"
       />
       <span
         aria-hidden="true"
-        class="MuiSlider-markLabel MuiSlider-markLabel css-1bvr8oc-MuiSlider-markLabel"
+        class="MuiSlider-markLabel MuiSlider-markLabel css-1qb795b-MuiSlider-markLabel"
         data-index="5"
         style="left: 100%;"
       >
         120
       </span>
       <span
-        class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-cp2j25-MuiSlider-thumb"
+        class="MuiSlider-thumb MuiSlider-thumb css-14k2rm-MuiSlider-thumb"
         data-index="0"
         style="left: 80%;"
       >
@@ -252,7 +228,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
           max="120"
           min="20"
           step="1"
-          style="border: 0px; height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
+          style="border: 0px; clip: rect(0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"
           type="range"
           value="100"
         />
@@ -266,91 +242,76 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
       class="MuiBox-root css-1nbic85"
     >
       <div
-        class="MuiTabs-root MuiTabs-vertical ezsvn70 css-1lptmd5-MuiTabs-root"
+        class="MuiTabs-root MuiTabs-vertical e1svjln41 css-svxukp-MuiTabs-root-StyledTabs"
       >
         <div
-          class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+          class="MuiTabs-scroller MuiTabs-fixed css-s2t35c-MuiTabs-scroller"
           style="overflow: hidden; margin-right: 0px;"
         >
           <div
             aria-label="navigation-jump-to"
             aria-orientation="vertical"
-            class="MuiTabs-flexContainer MuiTabs-flexContainerVertical css-lfwcke-MuiTabs-flexContainer"
+            class="MuiTabs-list MuiTabs-vertical css-1ondbrm-MuiTabs-list"
             role="tablist"
           >
             <button
               aria-controls="navigation-panel-1"
               aria-selected="true"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth Mui-selected e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-1"
               role="tab"
               tabindex="0"
               type="button"
             >
               Section 1
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
             <button
               aria-controls="navigation-panel-2"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-2"
               role="tab"
               tabindex="0"
               type="button"
             >
               Section 2
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
             <button
               aria-controls="navigation-panel-3"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-3"
               role="tab"
               tabindex="0"
               type="button"
             >
               Section 3
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
             <button
               aria-controls="navigation-panel-4"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-4"
               role="tab"
               tabindex="0"
               type="button"
             >
               Section 4
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
             <button
               aria-controls="navigation-panel-5"
               aria-selected="false"
-              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth ezsvn71 css-1f1ypo3-MuiButtonBase-root-MuiTab-root"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary MuiTab-fullWidth e1svjln40 css-1ggo4uf-MuiButtonBase-root-MuiTab-root-StyledTab"
               id="navigation-tab-section-5"
               role="tab"
               tabindex="0"
               type="button"
             >
               Section 5
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
           <span
-            class="MuiTabs-indicator css-10d9dml-MuiTabs-indicator"
+            class="MuiTabs-indicator css-oewvya-MuiTabs-indicator"
             style="top: 0px; height: 0px;"
           />
         </div>
@@ -369,7 +330,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
         >
           Section #1
           <p
-            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+            style="font-size: 14px; margin: 5px 0px 0px;"
           >
             height: 
             100
@@ -387,7 +348,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
         >
           Section #2
           <p
-            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+            style="font-size: 14px; margin: 5px 0px 0px;"
           >
             height: 
             100
@@ -405,7 +366,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
         >
           Section #3
           <p
-            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+            style="font-size: 14px; margin: 5px 0px 0px;"
           >
             height: 
             100
@@ -423,7 +384,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
         >
           Section #4
           <p
-            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+            style="font-size: 14px; margin: 5px 0px 0px;"
           >
             height: 
             100
@@ -441,7 +402,7 @@ exports[`<NavigationJumpTo /> JumpToNavDemo story renders snapshot 1`] = `
         >
           Section #5
           <p
-            style="font-size: 14px; margin: 5px 0px 0px 0px;"
+            style="font-size: 14px; margin: 5px 0px 0px;"
           >
             height: 
             100

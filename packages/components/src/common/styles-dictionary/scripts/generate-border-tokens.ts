@@ -2,11 +2,11 @@ import { writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { createAppThemeBorders } from "src/core/styles/common/generators/borders-generator";
+import { createAppThemeBorders } from "@components/src/core/styles/common/generators/borders-generator";
 import {
   SDSDarkThemeColors,
   SDSLightThemeColors,
-} from "src/core/styles/common/constants/colors";
+} from "@components/src/core/styles/common/constants/colors";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

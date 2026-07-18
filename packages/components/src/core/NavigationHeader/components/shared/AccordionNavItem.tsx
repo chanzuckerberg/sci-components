@@ -1,7 +1,8 @@
+import { MenuList } from "@mui/material";
 import { ReactNode } from "react";
-import { AccordionHeader } from "src/core/Accordion";
-import MenuItem from "src/core/MenuItem";
-import Icon, { IconNameToSizes } from "src/core/Icon";
+import { AccordionHeader } from "@components/src/core/Accordion";
+import MenuItem from "@components/src/core/MenuItem";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import { groupItemsBySection } from "../../utils";
 import {
   StyledAccordionDetails,
@@ -217,7 +218,13 @@ export default function AccordionNavItem(props: AccordionNavItemProps) {
                   {section}
                 </StyledSectionHeader>
               )}
-              {sectionItems.map((subItem) => renderNavItem(subItem))}
+              {sdsStyle === "drawer" ? (
+                sectionItems.map((subItem) => renderNavItem(subItem))
+              ) : (
+                <MenuList>
+                  {sectionItems.map((subItem) => renderNavItem(subItem))}
+                </MenuList>
+              )}
               {actions && actions.length > 0 && sdsStyle === "drawer" && (
                 <StyledHoverDrawerActions isNarrow={isNarrow}>
                   {actions.map((action: ActionItem, index: number) => {

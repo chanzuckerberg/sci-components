@@ -1,24 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<InputText /> Default story renders snapshot 1`] = `
+exports[`<InputText /> > Default story renders snapshot 1`] = `
 <div>
   <label
-    class="css-i8n32v e1kdwj5j0"
+    class="css-1kzrxod-StyledLabel e178j4nw1"
     for="Test"
   >
     Label
   </label>
   <div
-    class="MuiFormControl-root MuiTextField-root e1kdwj5j1 css-1srbd8d-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root e178j4nw0 css-1fwyxsq-MuiFormControl-root-MuiTextField-root-StyledInputBase-StyledInputBase"
   >
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall css-quhxjy-MuiInputBase-root-MuiOutlinedInput-root"
     >
       <input
         aria-invalid="false"
         aria-label="Label"
         autocomplete="off"
-        class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input"
+        class="MuiInputBase-input MuiOutlinedInput-input css-1pzfmz2-MuiInputBase-input-MuiOutlinedInput-input"
         id="Test"
         name="input-text-name"
         placeholder="Value"
@@ -26,12 +26,13 @@ exports[`<InputText /> Default story renders snapshot 1`] = `
       />
       <fieldset
         aria-hidden="true"
-        class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
+        class="MuiOutlinedInput-notchedOutline css-18p5xg2-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
       >
         <legend
-          class="css-1whs34k-MuiNotchedOutlined-root"
+          class="css-1nf2c5d-MuiNotchedOutlined-root"
         >
           <span
+            aria-hidden="true"
             class="notranslate"
           >
             ​

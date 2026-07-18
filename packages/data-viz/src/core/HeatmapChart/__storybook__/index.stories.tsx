@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   HEATMAP_AXIS_POINTER_OPTIONS,
   HEATMAP_TOOLTIP_OPTIONS,
@@ -51,7 +51,6 @@ export default {
     },
   },
   component: HeatmapChart,
-  tags: ["beta"],
   parameters: {
     chromatic: {
       disableSnapshot: true,

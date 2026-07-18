@@ -1,10 +1,10 @@
-import { AutocompleteValue } from "@mui/base";
-import { Args } from "@storybook/react-webpack5";
+import { AutocompleteValue } from "@mui/material/useAutocomplete";
+import { Args } from "@storybook/react-vite";
 import { useEffect, useState } from "react";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
-import Callout from "src/core/Callout";
-import DropdownMenu from "src/core/DropdownMenu";
-import RawInputDropdown from "src/core/InputDropdown";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
+import Callout from "@components/src/core/Callout";
+import DropdownMenu from "@components/src/core/DropdownMenu";
+import RawInputDropdown from "@components/src/core/InputDropdown";
 
 type DisableClearable = false;
 type FreeSolo = false;

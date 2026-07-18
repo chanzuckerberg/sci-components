@@ -3,7 +3,7 @@ import {
   AutocompleteChangeReason,
   AutocompleteCloseReason,
   AutocompleteValue,
-} from "@mui/base";
+} from "@mui/material/useAutocomplete";
 import { PopperProps } from "@mui/material";
 import React, { ReactElement } from "react";
 import AutocompleteBase, {

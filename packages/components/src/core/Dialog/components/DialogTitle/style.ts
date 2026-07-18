@@ -9,7 +9,7 @@ import {
   fontHeaderXl,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { DialogExtraProps } from "../..";
 
 export interface DialogTitleExtraProps extends CommonThemeProps {

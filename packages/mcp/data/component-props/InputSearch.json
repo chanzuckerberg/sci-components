@@ -13,7 +13,7 @@
         "description": "The id of the `input` element.\nUse this prop to make `label` and `helperText` accessible for screen readers."
       },
       "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
+        "type": "\"negative\" | \"notice\" | \"positive\" | \"default\"",
         "isRequired": false
       },
       "label": {

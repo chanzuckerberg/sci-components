@@ -13,8 +13,8 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
-import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+} from "@components/src/core/styles";
+import { focusVisibleA11yStyle } from "@components/src/core/styles/common/mixins/a11y";
 import { ButtonGroupProps } from "./ButtonGroup.types";
 
 const doNotForwardProps = ["sdsType", "sdsStyle", "backgroundAppearance"];
@@ -33,7 +33,7 @@ const GeneralButtonGroupStyles = (
   return css`
     .${buttonGroupClasses.grouped} {
       box-sizing: border-box;
-      border-radius: ${corners?.l}px;
+      border-radius: 0;
       min-width: fit-content;
       z-index: 1;
 
@@ -53,39 +53,26 @@ const GeneralButtonGroupStyles = (
     }
 
     /* First button - round left corners only (horizontal) */
-    .${buttonGroupClasses.groupedHorizontal}:first-of-type {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+    &.${buttonGroupClasses.horizontal} > .${buttonGroupClasses.firstButton} {
+      border-top-left-radius: ${corners?.l}px;
+      border-bottom-left-radius: ${corners?.l}px;
     }
 
     /* Last button - round right corners only (horizontal) */
-    .${buttonGroupClasses.groupedHorizontal}:last-of-type {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-    /* Middle buttons - no border radius (horizontal) */
-    .${buttonGroupClasses.groupedHorizontal}:not(:first-of-type):not(
-        :last-of-type
-      ) {
-      border-radius: 0;
+    &.${buttonGroupClasses.horizontal} > .${buttonGroupClasses.lastButton} {
+      border-top-right-radius: ${corners?.l}px;
+      border-bottom-right-radius: ${corners?.l}px;
     }
 
     /* Vertical orientation */
-    .${buttonGroupClasses.groupedVertical}:first-of-type {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+    &.${buttonGroupClasses.vertical} > .${buttonGroupClasses.firstButton} {
+      border-top-left-radius: ${corners?.l}px;
+      border-top-right-radius: ${corners?.l}px;
     }
 
-    .${buttonGroupClasses.groupedVertical}:last-of-type {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-
-    .${buttonGroupClasses.groupedVertical}:not(:first-of-type):not(
-        :last-of-type
-      ) {
-      border-radius: 0;
+    &.${buttonGroupClasses.vertical} > .${buttonGroupClasses.lastButton} {
+      border-bottom-right-radius: ${corners?.l}px;
+      border-bottom-left-radius: ${corners?.l}px;
     }
   `;
 };

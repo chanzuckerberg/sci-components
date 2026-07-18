@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { NavigationFooter } from "./stories/default";
 import {
   ExampleLogo,
@@ -6,9 +6,9 @@ import {
   NAVIGATION_FOOTER_LOGO_OPTIONS,
 } from "./constants";
 import { TestDemo } from "./stories/test";
-import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
+import { TAG_PANEL_COLORS } from "@components/src/core/Tag/__storybook__/constants";
 import { NavigationFooterNavItem } from "../NavigationFooter.types";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {

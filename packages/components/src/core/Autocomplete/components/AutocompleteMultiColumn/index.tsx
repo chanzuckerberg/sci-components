@@ -14,11 +14,11 @@ import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
-} from "src/core/Autocomplete";
-import Button from "src/core/Button";
-import { InputSearchProps } from "src/core/InputSearch";
-import { StyledInputAdornment } from "src/core/InputSearch/style";
-import { SDSTheme } from "src/core/styles";
+} from "@components/src/core/Autocomplete";
+import Button from "@components/src/core/Button";
+import { InputSearchProps } from "@components/src/core/InputSearch";
+import { StyledInputAdornment } from "@components/src/core/InputSearch/style";
+import { SDSTheme } from "@components/src/core/styles";
 import {
   AutocompleteBaseProps,
   DefaultAutocompleteOption,
@@ -31,9 +31,9 @@ import {
   StyledPaper,
   StyledPopper,
 } from "./style";
-import useDetectUserTabbing from "src/common/helpers/userTabbing";
+import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
 import { VerticalDivider } from "./components/VerticalDivider";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -214,52 +214,54 @@ const AutocompleteMultiColumn = <
           ref={anchorRef}
           search={search}
           onKeyDown={handleInputKeyDown}
-          InputProps={{
-            /**
-             * (mmoore): passing only the ref along to InputProps to prevent
-             * default MUI arrow from rendering in search input.
-             * renderInput strips InputProps, so we explicitly pass end adornment here
-             */
-            ...InputBaseProps?.ref,
-            endAdornment: (
-              <StyledInputAdornment position="end">
-                {/**
-                 * (masoudmanson): Because the Autocomplete component overrides the
-                 * InputSearch's endAdornment, we must also include the clear IconButton here.
-                 */}
-                {inputValue && (
+          slotProps={{
+            input: {
+              /**
+               * (mmoore): passing only the ref along to the input slot to prevent
+               * default MUI arrow from rendering in search input.
+               * renderInput strips the input slot, so we explicitly pass end adornment here
+               */
+              ...InputBaseProps?.ref,
+              endAdornment: (
+                <StyledInputAdornment position="end">
+                  {/**
+                   * (masoudmanson): Because the Autocomplete component overrides the
+                   * InputSearch's endAdornment, we must also include the clear IconButton here.
+                   */}
+                  {inputValue && (
+                    <Button
+                      aria-label="clear-button"
+                      className="input-search-clear-icon"
+                      sdsType="secondary"
+                      size="large"
+                      sdsStyle="minimal"
+                      onClick={clearInput}
+                      backgroundOnHover={false}
+                    >
+                      <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    </Button>
+                  )}
+                </StyledInputAdornment>
+              ),
+              /**
+               * (thuang): Works with css caret-color: "transparent" to hide
+               * mobile keyboard
+               */
+              inputMode: "text",
+              startAdornment: (
+                <StyledInputAdornment position="start">
                   <Button
-                    aria-label="clear-button"
-                    className="input-search-clear-icon"
+                    aria-label="search-button"
                     sdsType="secondary"
                     size="large"
                     sdsStyle="minimal"
-                    onClick={clearInput}
                     backgroundOnHover={false}
                   >
-                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    <Icon sdsIcon="Search" sdsSize="s" />
                   </Button>
-                )}
-              </StyledInputAdornment>
-            ),
-            /**
-             * (thuang): Works with css caret-color: "transparent" to hide
-             * mobile keyboard
-             */
-            inputMode: "text",
-            startAdornment: (
-              <StyledInputAdornment position="start">
-                <Button
-                  aria-label="search-button"
-                  sdsType="secondary"
-                  size="large"
-                  sdsStyle="minimal"
-                  backgroundOnHover={false}
-                >
-                  <Icon sdsIcon="Search" sdsSize="s" />
-                </Button>
-              </StyledInputAdornment>
-            ),
+                </StyledInputAdornment>
+              ),
+            },
           }}
           {...InputBaseProps}
         />
@@ -306,7 +308,7 @@ const AutocompleteMultiColumn = <
                     }}
                     popperOpen={popperOpen}
                     inputValue={inputValue}
-                    PaperComponent={StyledPaper}
+                    slots={{ paper: StyledPaper }}
                     {...rest}
                   />
                   {index < options.length - 1 && (

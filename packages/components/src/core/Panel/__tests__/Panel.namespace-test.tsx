@@ -1,6 +1,6 @@
 import React from "react";
 import { Panel, PanelProps } from "@czi-sds/components";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const PanelNameSpaceTest = (props: PanelProps) => {
   return (

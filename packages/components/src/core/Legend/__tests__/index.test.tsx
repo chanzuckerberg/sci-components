@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { render, screen, fireEvent } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 import Legend from "../index";
@@ -114,7 +114,7 @@ describe("<Legend />", () => {
   });
 
   it("calls onItemClick when an item is clicked", () => {
-    const handleClick = jest.fn();
+    const handleClick = vi.fn();
 
     render(
       <Legend
@@ -132,7 +132,7 @@ describe("<Legend />", () => {
   });
 
   it("calls onItemMouseEnter when hovering over an item", () => {
-    const handleMouseEnter = jest.fn();
+    const handleMouseEnter = vi.fn();
 
     render(
       <Legend
@@ -150,7 +150,7 @@ describe("<Legend />", () => {
   });
 
   it("calls onItemMouseLeave when mouse leaves an item", () => {
-    const handleMouseLeave = jest.fn();
+    const handleMouseLeave = vi.fn();
 
     render(
       <Legend
@@ -168,7 +168,7 @@ describe("<Legend />", () => {
   });
 
   it("handles selection changes via onSelectionChange", () => {
-    const handleSelectionChange = jest.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <Legend
@@ -187,7 +187,7 @@ describe("<Legend />", () => {
   });
 
   it("deselects an item when clicking a selected item", () => {
-    const handleSelectionChange = jest.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <Legend
@@ -206,7 +206,7 @@ describe("<Legend />", () => {
   });
 
   it("supports multi-selection", () => {
-    const handleSelectionChange = jest.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <Legend
@@ -240,9 +240,9 @@ describe("<Legend />", () => {
   });
 
   it("does not trigger events on disabled items", () => {
-    const handleClick = jest.fn();
-    const handleMouseEnter = jest.fn();
-    const handleMouseLeave = jest.fn();
+    const handleClick = vi.fn();
+    const handleMouseEnter = vi.fn();
+    const handleMouseLeave = vi.fn();
 
     const itemsWithDisabled = [
       { name: "Disabled Item", value: 100, disabled: true },
@@ -341,8 +341,8 @@ describe("<Legend />", () => {
   });
 
   it("calls both onItemClick and onSelectionChange when both are provided", () => {
-    const handleClick = jest.fn();
-    const handleSelectionChange = jest.fn();
+    const handleClick = vi.fn();
+    const handleSelectionChange = vi.fn();
 
     render(
       <Legend

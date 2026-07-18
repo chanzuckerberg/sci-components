@@ -6,7 +6,7 @@ import {
   fontBodyXxs,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 export interface CellBasicExtraProps extends CommonThemeProps {
   horizontalAlign?: "left" | "right";

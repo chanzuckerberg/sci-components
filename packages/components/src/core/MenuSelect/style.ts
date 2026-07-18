@@ -1,8 +1,8 @@
 import { Autocomplete, inputBaseClasses } from "@mui/material";
 import styled from "@emotion/styled";
-import InputSearch from "src/core/InputSearch";
-import MenuItem from "src/core/MenuItem";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import InputSearch from "@components/src/core/InputSearch";
+import MenuItem from "@components/src/core/MenuItem";
+import { CommonThemeProps, getSpaces } from "@components/src/core/styles";
 
 export const StyledMenuItem = styled(MenuItem)`
   width: 100%;

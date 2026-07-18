@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
-import Button from "src/core/Button";
-import { CommonThemeProps, getIconSizes, getSpaces } from "src/core/styles";
+import Button from "@components/src/core/Button";
+import {
+  CommonThemeProps,
+  getIconSizes,
+  getSpaces,
+} from "@components/src/core/styles";
 
 export const StyledButton = styled(Button)`
   position: absolute;

@@ -1,22 +1,19 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Button /> Default story renders snapshot 1`] = `
+exports[`<Button /> > Default story renders snapshot 1`] = `
 <div
-  class="css-pi3gcs e1gcweb22"
+  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1gcweb20 css-yjpzgg-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-12bqywg e1gcweb21"
+      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
     >
       Label
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;

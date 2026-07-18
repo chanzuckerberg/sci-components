@@ -1,20 +1,21 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentCard Default story renders snapshot 1`] = `
+exports[`ContentCard > Default story renders snapshot 1`] = `
 <div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root eu91wa00 css-5uz7m5-MuiPaper-root-MuiCard-root"
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root e1dovfyq5 css-1csddsx-MuiPaper-root-MuiCard-root-StyledCard-StyledCard-StyledCard"
+  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
 >
   <div
     class="css-2hv71g"
   >
     <img
       alt="Content Card Media"
-      class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-fq4hyx-MuiCardMedia-root"
+      class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-yu52sd-MuiCardMedia-root"
       src="https://fastly.picsum.photos/id/623/1000/1000.jpg?hmac=Spxiw6vTHdgANWOoWrsiFqmLk7DftbJvzyaSr-pgpT4"
     />
   </div>
   <div
-    class="css-grnr2u eu91wa03"
+    class="css-1wtvfe5-StyledCardContent-StyledCardContent-StyledCardContent e1dovfyq2"
   >
     <div>
       <div
@@ -43,43 +44,37 @@ exports[`ContentCard Default story renders snapshot 1`] = `
       </p>
     </div>
     <div
-      class="css-1sb7ptk eu91wa05"
+      class="css-1vhqu98-StyledCardContentAligner e1dovfyq0"
     >
       <div
-        class="MuiCardContent-root eu91wa04 css-1bgc6iu-MuiCardContent-root"
+        class="MuiCardContent-root e1dovfyq1 css-16xsys2-MuiCardContent-root-StyledContentCardBody"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Urna duis convallis convallis tellus id interdum velit laoreet id. Donec ultrices tincidunt arcu non sodales. Aliquam eleifend mi in nulla posuere.
       </div>
       <div
-        class="MuiCardActions-root MuiCardActions-spacing e503gfm0 css-1iz8dza-MuiCardActions-root"
+        class="MuiCardActions-root MuiCardActions-spacing ewfyato0 css-1qmxp6y-MuiCardActions-root-StyledCardActions"
       >
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary e1gcweb20 css-yjpzgg-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             Primary Button
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
         <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary e1gcweb20 css-vyk8ua-MuiButtonBase-root-MuiButton-root"
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1kzxwx6-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-12bqywg e1gcweb21"
+            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
           >
             Minimal Button
           </span>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
         </button>
       </div>
     </div>

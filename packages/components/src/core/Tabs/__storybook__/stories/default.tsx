@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import RawTabs, { Tab } from "src/core/Tabs";
+import RawTabs, { Tab } from "@components/src/core/Tabs";
 
 export const Tabs = (props: Args): JSX.Element => {
   const { items, ...args } = props;

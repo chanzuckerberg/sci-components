@@ -1,7 +1,11 @@
 import { css } from "@emotion/react";
 import { AccordionDetails } from "@mui/material";
 import styled from "@emotion/styled";
-import { CommonThemeProps, fontBodyS, getSpaces } from "src/core/styles";
+import {
+  CommonThemeProps,
+  fontBodyS,
+  getSpaces,
+} from "@components/src/core/styles";
 
 export const StyledAccordionDetails = styled(AccordionDetails)`
   ${fontBodyS}

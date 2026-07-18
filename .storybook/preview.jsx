@@ -41,11 +41,19 @@ const preview = {
   parameters: {
     // Removes the change background button since it's controlled by the theme toggle
     backgrounds: { disabled: true },
+
     options: {
       storySort: {
         method: "alphabetical",
         order: ["Bases", "Components", "Data Viz", "Deprecated"],
       },
+    },
+
+    a11y: {
+      // 'todo' - show a11y violations in the test UI only
+      // 'error' - fail CI on a11y violations
+      // 'off' - skip a11y checks entirely
+      test: "todo",
     },
   },
 

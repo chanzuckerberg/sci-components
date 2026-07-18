@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getCorners } from "src/core/styles";
+import { CommonThemeProps, getCorners } from "@components/src/core/styles";
 
 const BORDER_BOX_BORDER_WIDTH_PX = 1,
   BORDER_BOX_BOX_SIZE_PX = 60;

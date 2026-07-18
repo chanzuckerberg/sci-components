@@ -1,8 +1,8 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import { SDS_WARNINGS, SDSWarningTypes } from "src/common/warnings";
+import { SDS_WARNINGS, SDSWarningTypes } from "@components/src/common/warnings";
 
 const { Test } = composeStories(stories);
 
@@ -56,7 +56,7 @@ describe("<ButtonToggle />", () => {
   });
 
   it("displays warning when icon is missing", () => {
-    const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
     render(<Test {...Test.args} icon={undefined} />);
     expect(warnSpy).toHaveBeenCalledWith(
       expect.stringContaining(
@@ -67,7 +67,7 @@ describe("<ButtonToggle />", () => {
   });
 
   it("displays an error when an icon doesn't support the ButtonToggle size", () => {
-    const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
     // (masoudmanson): SlidersHorizontal icon doesn't support the small size
     // make sure to change this to another icon if the SlidersHorizontal icon is updated
     const SdsIconWithoutSmallSize = "SlidersHorizontal";

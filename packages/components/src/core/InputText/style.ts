@@ -14,8 +14,8 @@ import {
   getCorners,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
-import { focusVisibleA11yStyle } from "src/core/styles/common/mixins/a11y";
+} from "@components/src/core/styles";
+import { focusVisibleA11yStyle } from "@components/src/core/styles/common/mixins/a11y";
 
 type IntentType = "negative" | "notice" | "positive";
 export interface InputTextExtraProps extends CommonThemeProps {
@@ -91,7 +91,7 @@ const textArea = (props: InputTextExtraProps): SerializedStyles => {
     .${outlinedInputClasses.multiline} {
       padding: ${spaces?.xxs}px;
 
-      > .${outlinedInputClasses.inputMultiline} {
+      > .${outlinedInputClasses.input} {
         padding: ${spaces?.xxs}px ${spaces?.m}px ${spaces?.m}px;
         resize: both;
       }
@@ -133,7 +133,7 @@ export const StyledInputBase = styled(TextField, {
         width: 100%;
       }
 
-      .${outlinedInputClasses.inputSizeSmall} {
+      .${outlinedInputClasses.sizeSmall} > .${outlinedInputClasses.input} {
         ${fontBodyXs(props)}
         padding: ${spaces?.xs}px ${spaces?.m}px;
         height: unset;

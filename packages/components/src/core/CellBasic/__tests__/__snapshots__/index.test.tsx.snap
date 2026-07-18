@@ -1,38 +1,38 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<CellBasic /> Default story renders snapshot 1`] = `
+exports[`<CellBasic /> > Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr>
       <td
-        class="css-1pkypx3 epry5529"
+        class="css-1hch2nr-StyledTableData ekxclbn1"
         data-mui-internal-clone-element="true"
         data-testid="CellBasic"
         tabindex="0"
         width="300px"
       >
         <div
-          class="css-k008qs epry5520"
+          class="css-tf05b2-StyledCellContent ekxclbn10"
         >
           <div
-            class="css-8atqhb epry5521"
+            class="css-1bmzp1t-StyledCellContentWrapper ekxclbn9"
           >
             <div
-              class="css-88isd2 epry5523"
+              class="css-12dltft-PrimaryTextWrapper ekxclbn7"
             >
               <div
-                class="css-1kd7bb2 epry5524"
+                class="css-cckp73-PrimaryText ekxclbn6"
               >
                 Primary Text
               </div>
             </div>
             <span
-              class="css-1qs522g epry5525"
+              class="css-b64je1-SecondaryText ekxclbn5"
             >
               Secondary Text
             </span>
             <span
-              class="css-9o3tg7 epry5526"
+              class="css-1e8m411-TertiaryText ekxclbn4"
             >
               Tertiary Text
             </span>

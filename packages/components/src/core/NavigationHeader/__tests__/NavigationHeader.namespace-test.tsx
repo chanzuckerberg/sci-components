@@ -4,7 +4,7 @@ import {
   ButtonProps,
 } from "@czi-sds/components";
 import { useState } from "react";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");

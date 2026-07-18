@@ -17,7 +17,7 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 type IntentType = "negative" | "notice" | "positive";
 export interface InputSearchExtraProps extends CommonThemeProps {
@@ -212,7 +212,7 @@ export const StyledSearchBase = styled(TextField, {
         }
       }
 
-      .${inputBaseClasses.inputSizeSmall} {
+      .${inputBaseClasses.sizeSmall} > .${inputBaseClasses.input} {
         ${fontBodyXs(props)}
         padding: ${spaces?.xs}px ${spaces?.s}px;
         height: unset;

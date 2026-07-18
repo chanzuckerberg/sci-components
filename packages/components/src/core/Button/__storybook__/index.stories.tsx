@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   BUTTON_ACTIONS,
   BUTTON_EXCLUDED_CONTROLS,
@@ -10,7 +10,7 @@ import {
   BUTTON_ICON_OPTIONS,
 } from "./constants";
 import { Button } from "./stories/default";
-import { INLINE_RADIO } from "src/common/utils";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {
@@ -65,7 +65,6 @@ export default {
     },
   },
   component: Button,
-  tags: ["beta"],
   title: "Components/Buttons/Button",
 } as Meta;
 

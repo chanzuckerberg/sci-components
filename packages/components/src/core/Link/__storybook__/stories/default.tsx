@@ -1,7 +1,7 @@
-import { Args } from "@storybook/react-webpack5";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
-import RawLink from "src/core/Link";
+import { Args } from "@storybook/react-vite";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
+import RawLink from "@components/src/core/Link";
 
 export const Link = (props: Args): JSX.Element => {
   const { sdsStyle } = props;

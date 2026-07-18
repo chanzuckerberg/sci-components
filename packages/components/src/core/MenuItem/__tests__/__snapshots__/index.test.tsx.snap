@@ -1,83 +1,89 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<MenuItem /> ActionType story renders snapshot 1`] = `
+exports[`<MenuItem /> > ActionType story renders snapshot 1`] = `
 <div
-  class="css-1hskriy e1hhae2w0"
+  class="css-dyfsrh-DemoWrapper e1d4dpqk0"
 >
-  <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1ils8li0 css-5agaez-MuiButtonBase-root-MuiMenuItem-root"
-    data-testid="MenuItem"
-    name="Text here"
-    role="menuitem"
+  <ul
+    class="MuiList-root css-54zhjy-MuiList-root"
+    role="menu"
     tabindex="-1"
   >
-    <span
-      class="css-y3sjyp e1ils8li1"
+    <li
+      class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-rhhfy4-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
+      data-testid="MenuItem"
+      name="Text here"
+      role="menuitem"
+      tabindex="0"
     >
       <span
-        class="primary-text css-1831mf5 e1ils8li2"
+        class="css-1n9ctx1-ContentWrapper eanvvd47"
       >
-        Text here
+        <span
+          class="primary-text css-thmp3l-TextWrapper eanvvd46"
+        >
+          Text here
+        </span>
+        <span
+          class="css-124og80-ColumnWrapper eanvvd44"
+        >
+          123,456
+        </span>
       </span>
-      <span
-        class="css-z6j8xt e1ils8li4"
-      >
-        123,456
-      </span>
-    </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
-  </li>
+    </li>
+  </ul>
 </div>
 `;
 
-exports[`<MenuItem /> Default story renders snapshot 1`] = `
+exports[`<MenuItem /> > Default story renders snapshot 1`] = `
 <div
-  class="css-1hskriy e1hhae2w0"
+  class="css-dyfsrh-DemoWrapper e1d4dpqk0"
 >
-  <li
-    class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters e1ils8li0 css-5agaez-MuiButtonBase-root-MuiMenuItem-root"
-    data-testid="MenuItem"
-    name="Text here"
-    role="menuitem"
+  <ul
+    class="MuiList-root css-54zhjy-MuiList-root"
+    role="menu"
     tabindex="-1"
   >
-    <span
-      class="css-zv3iyt e1ils8li5"
-    >
-      <svg
-        class="css-oa0rwb e1ils8li7"
-        fill="currentColor"
-        height="12"
-        viewBox="0 0 12 12"
-        width="12"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="6"
-          cy="6"
-          r="2"
-        />
-      </svg>
-    </span>
-    <span
-      class="css-y3sjyp e1ils8li1"
+    <li
+      class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-rhhfy4-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
+      data-testid="MenuItem"
+      name="Text here"
+      role="menuitem"
+      tabindex="0"
     >
       <span
-        class="primary-text css-1831mf5 e1ils8li2"
+        class="css-1lf0xyc-StyledIconWrapper eanvvd43"
       >
-        Text here
+        <svg
+          class="css-h1xpme-DotIcon eanvvd41"
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 12 12"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="6"
+            cy="6"
+            r="2"
+          />
+        </svg>
       </span>
       <span
-        class="css-z6j8xt e1ils8li4"
+        class="css-1n9ctx1-ContentWrapper eanvvd47"
       >
-        123,456
+        <span
+          class="primary-text css-thmp3l-TextWrapper eanvvd46"
+        >
+          Text here
+        </span>
+        <span
+          class="css-124og80-ColumnWrapper eanvvd44"
+        >
+          123,456
+        </span>
       </span>
-    </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
-  </li>
+    </li>
+  </ul>
 </div>
 `;

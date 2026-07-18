@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 
@@ -35,8 +35,8 @@ describe("<NavigationJumpTo />", () => {
             getAttribute: () => {
               return "test-item-1";
             },
-            scrollIntoView: jest.fn(),
-            setAttribute: jest.fn(),
+            scrollIntoView: vi.fn(),
+            setAttribute: vi.fn(),
           },
         },
         title: "Item 1",
@@ -47,8 +47,8 @@ describe("<NavigationJumpTo />", () => {
             getAttribute: () => {
               return "test-item-1";
             },
-            scrollIntoView: jest.fn(),
-            setAttribute: jest.fn(),
+            scrollIntoView: vi.fn(),
+            setAttribute: vi.fn(),
           },
         },
         title: "Item 2",

@@ -1,7 +1,9 @@
 import React from "react";
-import IntentMessage, { IntentMessageItem } from "src/core/IntentMessage";
-import InputText from "src/core/InputText";
-import InputCheckbox from "src/core/InputCheckbox";
+import IntentMessage, {
+  IntentMessageItem,
+} from "@components/src/core/IntentMessage";
+import InputText from "@components/src/core/InputText";
+import InputCheckbox from "@components/src/core/InputCheckbox";
 
 const sampleMessages: IntentMessageItem[] = [
   { intent: "negative", text: "Negative message" },

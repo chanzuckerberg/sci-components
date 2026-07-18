@@ -5,20 +5,16 @@
     "src/**/*.tsx",
     "src/**/*.d.ts",
     "src/common/**/*",
-    "src/core/**/*",
-    "jest.setup.ts"
+    "src/core/**/*"
   ],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es2019",
     "lib": ["es2019", "dom"],
     "paths": {
-      "src/*": ["src/*"]
+      "@components/src/*": ["src/*"],
+      "@data-viz/src/*": ["../data-viz/src/*"]
     },
-    "types": [
-      "jest",
-      "@testing-library/jest-dom",
-      "node"
-    ]
+    "types": ["vitest/globals", "node"]
   }
 }

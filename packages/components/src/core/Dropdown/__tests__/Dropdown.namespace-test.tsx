@@ -4,7 +4,7 @@ import {
   DropdownPopper,
   DropdownProps,
 } from "@czi-sds/components";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const OPTIONS = [
   {
@@ -40,7 +40,7 @@ const DropdownNameSpaceTest = <
       search
       onClose={noop}
       InputDropdownProps={{ sdsStyle: "square" }}
-      PopperComponent={DropdownPopper}
+      slots={{ popper: DropdownPopper }}
     />
   );
 };

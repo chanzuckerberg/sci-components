@@ -1,5 +1,5 @@
-import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Icon from "src/core/Icon";
+import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Icon from "@components/src/core/Icon";
 import {
   CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS,
   CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS,

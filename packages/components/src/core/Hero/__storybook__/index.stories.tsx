@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Hero } from "./stories/default";
 import {
   HERO_BACKGROUND_FILL_LABELS,
@@ -168,7 +168,6 @@ export default {
       description: "The text alignment of the header text",
     },
   },
-  tags: ["beta"],
   component: Hero,
   title: "Components/Hero",
 } as Meta;

@@ -1,10 +1,10 @@
 import { FormControlLabel } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import InputToggle from "src/core/InputToggle";
-import RawNotification from "src/core/Notification";
-import { TooltipTableContent } from "src/core/TooltipTable/__storybook__/stories/default";
+import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import InputToggle from "@components/src/core/InputToggle";
+import RawNotification from "@components/src/core/Notification";
+import { TooltipTableContent } from "@components/src/core/TooltipTable/__storybook__/stories/default";
 
 export const Notification = (props: Args): JSX.Element => {
   const {

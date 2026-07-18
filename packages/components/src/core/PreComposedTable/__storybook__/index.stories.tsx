@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Args, Meta, StoryObj } from "@storybook/react-webpack5";
+import { Args, Meta, StoryObj } from "@storybook/react-vite";
 import PreComposedTable, { PreComposedTableRef } from "../index";
 import {
   COLUMNS_DEFINITION,
@@ -10,7 +10,7 @@ import {
   SAMPLE_DATA,
   TABLE_ON_ROW_SELECT_OPTIONS,
 } from "./constants";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 
 export default {
   argTypes: {

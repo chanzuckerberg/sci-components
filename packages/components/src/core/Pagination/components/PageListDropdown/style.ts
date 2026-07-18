@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import Menu from "src/core/Menu";
+import Menu from "@components/src/core/Menu";
 
 export const StyledPaginationDropdownMenu = styled(Menu)`
   & .MuiPaper-root {

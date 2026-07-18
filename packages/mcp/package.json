@@ -25,8 +25,8 @@
     "generate:zeroheight-export": "tsx scripts/export-zeroheight-pages.ts",
     "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props",
     "prebuild": "yarn generate:all",
-    "build": "yarn prebuild && tsup && chmod 755 dist/stdio.js",
-    "dev": "tsup --watch",
+    "build": "yarn prebuild && rolldown -c && chmod 755 dist/stdio.js",
+    "dev": "rolldown -c --watch",
     "inspect": "node scripts/inspect.js",
     "inspect:dev": "npx @modelcontextprotocol/inspector npx tsx src/stdio.ts",
     "serve": "tsx --watch src/http.ts"
@@ -58,7 +58,7 @@
     "@types/express": "^5.0.3",
     "@types/fs-extra": "^11.0.4",
     "react-docgen-typescript": "^2.4.0",
-    "tsup": "^8.5.0",
+    "rolldown": "^1.0.1",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2"
   },

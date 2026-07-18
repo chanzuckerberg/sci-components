@@ -1,4 +1,4 @@
-import Icon, { IconNameToSizes } from "src/core/Icon";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import ButtonIcon from "../..";
 import {
   BUTTON_ICON_DISABLED_OPTIONS,
@@ -7,7 +7,7 @@ import {
   BUTTON_ICON_SDS_TYPES,
 } from "../constants";
 import { SDSSizes, SDSTypes } from "../types";
-import Callout from "src/core/Callout";
+import Callout from "@components/src/core/Callout";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   const DISPLAY_CONTENTS: React.CSSProperties = {

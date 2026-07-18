@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 
@@ -64,7 +64,7 @@ describe("<NavigationHeader />", () => {
   });
 
   it("changes the active primary navigation item when clicked", () => {
-    const setActivePrimaryNavKey = jest.fn();
+    const setActivePrimaryNavKey = vi.fn();
 
     render(
       <Test
@@ -102,7 +102,7 @@ describe("<NavigationHeader />", () => {
   });
 
   it("renders buttons and handles button clicks correctly", () => {
-    const onClickMock = jest.fn();
+    const onClickMock = vi.fn();
 
     render(
       <Test
@@ -117,7 +117,7 @@ describe("<NavigationHeader />", () => {
   });
 
   it("triggers onDrawerStyleNavItemHover when hovering over a drawer item", () => {
-    const onDrawerStyleNavItemHover = jest.fn();
+    const onDrawerStyleNavItemHover = vi.fn();
     const { DrawerStyle } = composeStories(stories);
 
     render(

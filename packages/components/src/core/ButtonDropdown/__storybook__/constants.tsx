@@ -1,7 +1,7 @@
 import { action } from "storybook/actions";
-import CustomSdsIcon from "src/common/storybook/svg/customSdsIcon";
-import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
-import Icon from "src/core/Icon";
+import CustomSdsIcon from "@components/src/common/storybook/svg/customSdsIcon";
+import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
+import Icon from "@components/src/core/Icon";
 
 export const BUTTON_DROPDOWN_EXCLUDED_CONTROLS = [
   "disabled",

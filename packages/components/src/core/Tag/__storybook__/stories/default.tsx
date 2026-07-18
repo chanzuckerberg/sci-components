@@ -1,7 +1,7 @@
-import { Args } from "@storybook/react-webpack5";
-import Callout from "src/core/Callout";
-import Icon, { IconNameToSizes } from "src/core/Icon";
-import RawTag from "src/core/Tag";
+import { Args } from "@storybook/react-vite";
+import Callout from "@components/src/core/Callout";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
+import RawTag from "@components/src/core/Tag";
 
 export const Tag = (props: Args): JSX.Element => {
   const { label, sdsSize, icon } = props;

@@ -1,14 +1,14 @@
 import { Remove } from "@mui/icons-material";
 import { MenuItem, menuItemClasses, MenuItemProps } from "@mui/material";
 import styled from "@emotion/styled";
-import { fontBodyXs } from "src/core/styles/common/mixins/fonts";
+import { fontBodyXs } from "@components/src/core/styles/common/mixins/fonts";
 import {
   CommonThemeProps,
   getCorners,
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import Icon from "../Icon";
 
 export interface MenuItemExtraProps extends CommonThemeProps, MenuItemProps {}

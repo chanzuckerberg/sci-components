@@ -1,6 +1,6 @@
 import { DialogActions, dialogActionsClasses } from "@mui/material";
 import styled from "@emotion/styled";
-import { CommonThemeProps, getSpaces } from "src/core/styles";
+import { CommonThemeProps, getSpaces } from "@components/src/core/styles";
 import { DialogTitleExtraProps } from "../DialogTitle/style";
 
 export interface DialogActionsExtraProps extends CommonThemeProps {

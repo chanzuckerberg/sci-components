@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   TOOLTIP_TABLE_DATA,
   TOOLTIP_TABLE_EXCLUDED_CONTROLS,

@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import CellByGeneIcon from "src/common/storybook/svg/CellByGeneIcon";
-import CryoEtIcon from "src/common/storybook/svg/CryoEtIcon";
+import CellByGeneIcon from "@components/src/common/storybook/svg/CellByGeneIcon";
+import CryoEtIcon from "@components/src/common/storybook/svg/CryoEtIcon";
 import { CustomNavigationLogo } from "./stories/default";
 
 export const NAVIGATION_HEADER_LOGO_OPTIONS = [

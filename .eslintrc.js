@@ -5,7 +5,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    jest: true,
+    "@vitest/env": true,
     node: true,
   },
   // Specifies the ESLint parser
@@ -22,7 +22,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
   ],
   // Excludes config files from linting
-  ignorePatterns: ["rollup.config.mjs"],
+  ignorePatterns: ["rolldown.config.mjs"],
   // this is to disable
   // no-unused-var, no-extraneous-dependencies and prettier
   // rules in all ComponentName.namespace.tsx files
@@ -58,7 +58,7 @@ module.exports = {
     // Allows for the parsing of modern ECMAScript features
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "sonarjs", "jest", "jsx-a11y"],
+  plugins: ["@typescript-eslint", "react", "sonarjs", "@vitest", "jsx-a11y"],
   rules: {
     "@typescript-eslint/ban-types": [
       "error",

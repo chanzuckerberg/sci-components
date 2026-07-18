@@ -1,5 +1,8 @@
 import { TypographyStyle } from "@mui/material";
-import { copyToClipboard, convertToKebabCase } from "src/core/Bases/utils";
+import {
+  copyToClipboard,
+  convertToKebabCase,
+} from "@components/src/core/Bases/utils";
 
 export interface TypographyItemData {
   category: "body" | "header" | "code" | "caps" | "tabular" | "title" | "link";

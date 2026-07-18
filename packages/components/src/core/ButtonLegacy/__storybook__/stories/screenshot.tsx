@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawButtonLegacy from "src/core/ButtonLegacy";
+import { Args } from "@storybook/react-vite";
+import RawButtonLegacy from "@components/src/core/ButtonLegacy";
 import {
   BUTTON_DISABLED_OPTIONS,
   SCREENSHOT_BUTTON_ICON_OPTIONS,
@@ -16,8 +16,8 @@ import {
   SDSSizes,
   SDSStyles,
   SDSTypes,
-} from "src/core/ButtonIcon/__storybook__/types";
-import Icon, { IconNameToSizes } from "src/core/Icon";
+} from "@components/src/core/ButtonIcon/__storybook__/types";
+import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 
 export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   const topLevel: React.CSSProperties = {

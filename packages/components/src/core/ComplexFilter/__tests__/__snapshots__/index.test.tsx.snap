@@ -1,38 +1,38 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
+exports[`<ComplexFilter /> > Default story renders snapshot 1`] = `
 <div
-  class="css-1and29 eaimom20"
+  class="css-na2oy-Wrapper e1ml0skk1"
 >
   <button
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-label="Dropdown input"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary eayci2a0 css-1bsgozn-MuiButtonBase-root-MuiButton-root"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e7sskkf6 css-rdledc-MuiButtonBase-root-MuiButton-root-StyledInputDropdown-labelStyle-inputDropdownStyles-square-StyledInputDropdown"
     label="Click Target"
     tabindex="0"
     type="button"
     width="250"
   >
     <span
-      class="css-1ijc2rk eayci2a5"
+      class="css-huc8g0-LabelWrapper e7sskkf1"
     >
       <div>
         <span
-          class="styled-label css-g71ytf eayci2a2"
+          class="styled-label css-48h137-StyledLabel e7sskkf4"
         >
           Click Target
         </span>
       </div>
       <span
-        class="css-4mc30z eayci2a6"
+        class="css-p524c5-IconWrapper e7sskkf0"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconChevronDownSmall"
             data-testid="IconChevronDownSmall"
             fillcontrast="white"
@@ -44,12 +44,9 @@ exports[`<ComplexFilter /> Default story renders snapshot 1`] = `
         </div>
       </span>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <div
-    class="css-8rv6yn eaimom21"
+    class="css-kgsrq1-StyledChipsWrapper e1ml0skk0"
   />
 </div>
 `;

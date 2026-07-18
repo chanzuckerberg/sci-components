@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { Tabs } from "./stories/default";
 import { TABS_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";

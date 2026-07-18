@@ -1,9 +1,9 @@
 import { useTheme } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
-import Button from "src/core/Button";
-import Icon from "src/core/Icon";
-import { getSemanticColors } from "src/core/styles";
-import RawTooltip from "src/core/Tooltip";
+import { Args } from "@storybook/react-vite";
+import Button from "@components/src/core/Button";
+import Icon from "@components/src/core/Icon";
+import { getSemanticColors } from "@components/src/core/styles";
+import RawTooltip from "@components/src/core/Tooltip";
 
 export const CustomComponentSlot = (): JSX.Element => {
   const theme = useTheme();

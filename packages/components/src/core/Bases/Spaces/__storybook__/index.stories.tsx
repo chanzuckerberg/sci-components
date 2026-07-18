@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import { StyledSpacingWrapper } from "./style";
 import { Template } from "./stories/default";
 

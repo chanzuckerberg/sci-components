@@ -10,8 +10,8 @@ import {
   fontBodyMediumL,
   fontBodySemiboldL,
   CommonThemeProps,
-} from "src/core/styles";
-import Button, { ButtonProps } from "src/core/Button";
+} from "@components/src/core/styles";
+import Button, { ButtonProps } from "@components/src/core/Button";
 
 interface UnifiedNavItemProps extends CommonThemeProps {
   hasInvertedStyle?: boolean;
@@ -59,8 +59,7 @@ const NarrowNavItemStyles = (props: UnifiedNavItemProps): SerializedStyles => {
   return css`
     ${active ? fontBodySemiboldL(props) : fontBodyMediumL(props)}
     border-radius: ${corners?.l}px;
-    padding: ${spaces?.s}px
-      ${navVariant === "primary" ? spaces?.l : spaces?.m}px;
+    padding: ${spaces?.xs}px ${spaces?.m}px !important;
     ${navVariant === "primary" ? "justify-content: start;" : ""}
     ${innerSdsStyle === "drawer"
       ? css`

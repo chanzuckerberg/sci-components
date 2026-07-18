@@ -7,7 +7,7 @@ import {
   fontHeaderXl,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 
 const doNotForwardProps = [
   "visualElement",

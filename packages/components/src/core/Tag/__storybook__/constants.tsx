@@ -1,7 +1,7 @@
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 import { ExtraTagProps } from "../style";
 import { WbSunny } from "@mui/icons-material";
-import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
+import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
 import { action } from "storybook/actions";
 
 export const TAG_EXCLUDED_CONTROLS = [

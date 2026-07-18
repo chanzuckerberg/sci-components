@@ -5,12 +5,16 @@ import { fileURLToPath } from "url";
 import {
   SDSLightThemeColors,
   SDSDarkThemeColors,
-} from "src/core/styles/common/constants/colors";
+} from "@components/src/core/styles/common/constants/colors";
 import {
   SDSPaletteLight,
   SDSPaletteDark,
-} from "src/core/styles/common/makeThemeOptions";
-import { Colors, SDSPalette, AppTheme } from "src/core/styles/common/types";
+} from "@components/src/core/styles/common/makeThemeOptions";
+import {
+  Colors,
+  SDSPalette,
+  AppTheme,
+} from "@components/src/core/styles/common/types";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

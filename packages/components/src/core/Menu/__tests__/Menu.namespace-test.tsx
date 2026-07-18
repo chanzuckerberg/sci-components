@@ -1,6 +1,6 @@
 import { Menu, MenuItem, MenuProps } from "@czi-sds/components";
 import React from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const MenuNameSpaceTest = (props: MenuProps) => {
   return (

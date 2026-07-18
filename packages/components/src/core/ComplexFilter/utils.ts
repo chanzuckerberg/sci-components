@@ -1,4 +1,4 @@
-import { DefaultAutocompleteOption } from "src/core/Autocomplete";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
 
 export const checkIfSingleColumn = <T extends DefaultAutocompleteOption>(
   value: unknown

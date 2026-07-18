@@ -1,7 +1,7 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);

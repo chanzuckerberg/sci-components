@@ -1,6 +1,6 @@
 import { TOOLTIP_PLACEMENT_STYLES } from "../constants";
-import RawTooltip from "src/core/Tooltip";
-import Button from "src/core/Button";
+import RawTooltip from "@components/src/core/Tooltip";
+import Button from "@components/src/core/Button";
 
 export const PlacementDemo = (): JSX.Element => {
   return (

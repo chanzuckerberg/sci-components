@@ -17,7 +17,6 @@ Ready to dive in? 🤿🐠🐟🦈
 1. Take a quick tour of all existing components and see the different ways we use to style the MUI components. We will also cover the different styling strategies in details in the [styling section](#styling)
 
 1. Once you’re ready to test your new shiny component in your product project (IDseq, Aspen, etc.), do the following steps:
-
    1. Make sure your new component is exported in `src/index.ts`
 
    1. `yarn build` to compile the components, generate their Typescript definitions, and export them as `index.cjs.js` and `index.esm.js` in `/dist` folder
@@ -135,7 +134,7 @@ To generate a stylesheet in a new language, update the [config.json](../src/comm
 }
 ```
 
-Once the config has been updated, run `sd-build` to generate the new stylesheet. Import it at the top of [index.ts](../src/index.ts). Update and install any plugins needed by rollup to support the new file type. Set the output for new files to be `variables.language-format` where `language-format` is the file type. This will allow rollup to bundle the new stylesheet and make it available for import.
+Once the config has been updated, run `sd-build` to generate the new stylesheet. Import it at the top of [index.ts](../src/index.ts). Set the output for new files to be `variables.language-format` where `language-format` is the file type. Because Rolldown does not bundle CSS, the build treats stylesheet imports as empty modules (`moduleTypes` in [rolldown.config.mjs](../rolldown.config.mjs)) and copies the generated stylesheet into `dist` via `rollup-plugin-copy`; add the new file to that plugin's `targets` so it is shipped and available for import.
 
 ## Testing
 

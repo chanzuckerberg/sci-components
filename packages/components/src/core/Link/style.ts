@@ -7,7 +7,7 @@ import {
   fontBodyS,
   fontBodyXs,
   getSemanticColors,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { LinkProps } from ".";
 
 const doNotForwardProps = ["sdsStyle", "sdsSize", "fontWeight"];

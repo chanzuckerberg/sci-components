@@ -1,7 +1,7 @@
 import React from "react";
 // Note: This will need to be updated when ButtonGroup is exported from @czi-sds/components
 import ButtonGroup, { ButtonGroupProps } from "../index";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 
 const ButtonGroupNameSpaceTest = (props: ButtonGroupProps) => {
   return (

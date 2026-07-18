@@ -1,5 +1,9 @@
 /* eslint-disable sonarjs/cognitive-complexity */
-import { CommonThemeProps, getCorners, getSpaces } from "src/core/styles";
+import {
+  CommonThemeProps,
+  getCorners,
+  getSpaces,
+} from "@components/src/core/styles";
 import { ContentCardProps } from "../..";
 import { css, styled } from "@mui/material";
 

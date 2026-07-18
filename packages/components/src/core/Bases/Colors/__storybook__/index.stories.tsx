@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import { PrimitiveColorsTemplate } from "./stories/primitiveColors";
 import { SemanticColorsTemplate } from "./stories/semanticColors";
 

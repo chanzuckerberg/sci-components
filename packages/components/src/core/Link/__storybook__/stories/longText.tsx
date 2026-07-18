@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
-import { LONG_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import Callout from "src/core/Callout";
-import Icon from "src/core/Icon";
-import RawLink from "src/core/Link";
+import { LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
+import RawLink from "@components/src/core/Link";
 
 export const LongerTextDemo = (): JSX.Element => {
   return (

@@ -1,12 +1,12 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   COMPLEX_FILTER_EXCLUDED_CONTROLS,
   COMPLEX_FILTER_ON_CHANGE_OPTIONS,
 } from "./constants";
 import { ComplexFilter } from "./stories/default";
 import { TestDemo } from "./stories/test";
-import { AUTOCOMPLETE_DATA_OPTIONS } from "src/core/Autocomplete/__storybook__/constants";
-import { DROPDOWN_BUTTON_POSITION_OPTIONS } from "src/core/Dropdown/__storybook__/constants";
+import { AUTOCOMPLETE_DATA_OPTIONS } from "@components/src/core/Autocomplete/__storybook__/constants";
+import { DROPDOWN_BUTTON_POSITION_OPTIONS } from "@components/src/core/Dropdown/__storybook__/constants";
 
 export default {
   argTypes: {

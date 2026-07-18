@@ -1,6 +1,6 @@
 import { CardMedia } from "@mui/material";
-import Icon from "src/core/Icon";
-import Button from "src/core/Button";
+import Icon from "@components/src/core/Icon";
+import Button from "@components/src/core/Button";
 
 export const CONTENT_CARD_EXCLUDED_CONTROLS = [
   "visualElement",

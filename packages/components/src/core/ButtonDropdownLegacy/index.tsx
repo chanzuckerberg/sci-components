@@ -3,13 +3,13 @@ import ButtonLegacy, {
   ButtonLegacyProps,
   ButtonLegacySize,
   ButtonLegacyTypeMap,
-} from "src/core/ButtonLegacy";
-import Icon, { IconNameToSizes, IconProps } from "src/core/Icon";
+} from "@components/src/core/ButtonLegacy";
+import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
 import ButtonIcon from "../ButtonIcon";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 
 type SdsLegacyProps =
   | {

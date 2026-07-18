@@ -1,5 +1,5 @@
-import { Args, Meta } from "@storybook/react-webpack5";
-import RawIcon from "src/core/Icon";
+import { Args, Meta } from "@storybook/react-vite";
+import RawIcon from "@components/src/core/Icon";
 import { Icon } from "./stories/default";
 import { IconBankDemo } from "./stories/iconBank";
 

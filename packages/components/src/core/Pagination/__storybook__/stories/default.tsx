@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import RawPagination from "src/core/Pagination";
+import RawPagination from "@components/src/core/Pagination";
 
 export const Pagination = (props: Args): JSX.Element => {
   const { pageSize, totalCount, siblingCount, truncateDropdown, sdsStyle } =

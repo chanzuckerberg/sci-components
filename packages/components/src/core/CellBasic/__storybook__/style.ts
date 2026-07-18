@@ -4,7 +4,7 @@ import {
   fontBodyXxxs,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import CellBasic from "..";
 
 export const ButtonIconsGroupRight = styled("div")`

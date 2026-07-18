@@ -7,7 +7,7 @@ import {
   LineHeightValues,
   LetterSpacingValues,
   TypographyCategories,
-} from "src/core/styles/common/constants/typography";
+} from "@components/src/core/styles/common/constants/typography";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
 

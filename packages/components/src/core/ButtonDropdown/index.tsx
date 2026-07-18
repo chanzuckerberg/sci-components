@@ -1,10 +1,10 @@
 import React, { ForwardedRef } from "react";
-import Button from "src/core/Button";
+import Button from "@components/src/core/Button";
 import Icon from "../Icon";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 import { ButtonDropdownProps } from "./ButtonDropdown.types";
 
 export type { ButtonDropdownProps };

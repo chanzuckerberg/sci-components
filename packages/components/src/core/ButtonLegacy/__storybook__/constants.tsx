@@ -1,7 +1,10 @@
 import { action } from "storybook/actions";
-import CustomSdsIcon from "src/common/storybook/svg/customSdsIcon";
-import CustomSvgIcon from "src/common/storybook/svg/customSvgIcon";
-import { SDSSizes, SDSTypes } from "src/core/ButtonIcon/__storybook__/types";
+import CustomSdsIcon from "@components/src/common/storybook/svg/customSdsIcon";
+import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
+import {
+  SDSSizes,
+  SDSTypes,
+} from "@components/src/core/ButtonIcon/__storybook__/types";
 
 export const BUTTON_EXCLUDED_CONTROLS = [
   "endIcon",

@@ -1,13 +1,13 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { ButtonToggle } from "./stories/default";
 import { BUTTON_TOGGLE_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
 import {
   BUTTON_DROPDOWN_ICON_LABELS,
   BUTTON_DROPDOWN_ICON_OPTIONS,
-} from "src/core/ButtonDropdown/__storybook__/constants";
-import { INLINE_RADIO } from "src/common/utils";
+} from "@components/src/core/ButtonDropdown/__storybook__/constants";
+import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {
@@ -55,7 +55,6 @@ export default {
     },
   },
   component: ButtonToggle,
-  tags: ["beta"],
   title: "Components/Buttons/ButtonToggle",
 } as Meta;
 

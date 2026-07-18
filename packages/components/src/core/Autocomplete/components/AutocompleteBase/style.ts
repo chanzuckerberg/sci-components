@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import styled from "@emotion/styled";
 import { ReactElement } from "react";
-import InputSearch from "src/core/InputSearch";
+import InputSearch from "@components/src/core/InputSearch";
 import {
   CommonThemeProps,
   fontBodyXxs,
@@ -16,8 +16,8 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-} from "src/core/styles";
-import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
+} from "@components/src/core/styles";
+import { addOpacityToHex } from "@components/src/core/styles/common/utils/opacity";
 import { DefaultAutocompleteOption } from ".";
 
 export interface StyleProps extends CommonThemeProps {
@@ -85,6 +85,10 @@ export const StyledAutocompleteBase = styled(Autocomplete, {
       & + .${autocompleteClasses.popper} > .${autocompleteClasses.paper} {
         .${autocompleteClasses.listbox} {
           max-height: 40vh;
+          /* (v9): the listbox now renders as a MenuList, which (unlike MUI's
+             default AutocompleteListbox) has no overflow. Restore it so the
+             listbox is the scrollable region instead of the Paper. */
+          overflow: auto;
           padding: 0 ${groupBy ? 0 : spaces?.xs}px;
 
           .${autocompleteClasses.option} {
@@ -171,6 +175,7 @@ export const InputBaseWrapper = styled("div", {
 export const StyledMenuInputSearch = styled(InputSearch, {
   shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
 })<{ search: boolean }>`
+  background-color: transparent !important;
   margin: 0;
   .MuiInputBase-root {
     width: 100%;

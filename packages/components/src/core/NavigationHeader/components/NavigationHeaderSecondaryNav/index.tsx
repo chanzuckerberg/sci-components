@@ -8,11 +8,11 @@ import {
 } from "../style";
 import { StyledTag } from "./style";
 import { UnifiedNavItem } from "../shared/UnifiedNavItem";
-import { SdsTagColorType } from "src/core/Tag";
-import Menu from "src/core/Menu";
-import Icon from "src/core/Icon";
-import MenuItem from "src/core/MenuItem";
-import { SDSTheme } from "src/core/styles";
+import { SdsTagColorType } from "@components/src/core/Tag";
+import Menu from "@components/src/core/Menu";
+import Icon from "@components/src/core/Icon";
+import MenuItem from "@components/src/core/MenuItem";
+import { SDSTheme } from "@components/src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
 import { DropdownItem, SectionProps } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
@@ -168,6 +168,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           href={defaultUrl}
           target={target}
           rel={rel}
+          size="medium"
         >
           <StyledLabelTextWrapper active={isDrawerOpen} isNarrow={isNarrow}>
             {label as ReactNode}
@@ -209,6 +210,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
             setActiveDropdownKey(key);
             parentOnClick?.(e);
           }}
+          size="medium"
         >
           <StyledLabelTextWrapper active={isDropdownOpen} isNarrow={isNarrow}>
             {label as ReactNode}
@@ -353,6 +355,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
         isNarrow={isNarrow}
         sdsStyle="minimal"
         navVariant="secondary"
+        size="medium"
       >
         {label as ReactNode}
         {tag && (
@@ -448,9 +451,11 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           disableScrollLock
           transitionDuration={100}
           topOffset={topOffset}
-          SlideProps={{
-            onMouseEnter: cancelDrawerClose,
-            onMouseLeave: onDrawerClose,
+          slotProps={{
+            transition: {
+              onMouseEnter: cancelDrawerClose,
+              onMouseLeave: onDrawerClose,
+            },
           }}
         >
           <StyledMegaMenuContent

@@ -4,7 +4,7 @@ import {
   fontBodySemiboldXxxs,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { IntentMessageIntent } from "./IntentMessage.types";
 
 interface StyledIntentMessageProps extends CommonThemeProps {

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CommonThemeProps, getIconSizes } from "src/core/styles";
+import { CommonThemeProps, getIconSizes } from "@components/src/core/styles";
 
 export const StyledPanelHeaderClose = styled("div")`
   ${(props: CommonThemeProps) => {

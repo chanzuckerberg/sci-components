@@ -1,36 +1,34 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<CellComponent /> Default story renders snapshot 1`] = `
+exports[`<CellComponent /> > Default story renders snapshot 1`] = `
 <table>
   <tbody>
     <tr>
       <td
-        class="cell-component css-1kv4lx8 e19rtnm10"
+        class="cell-component css-z123il-StyledCellComponentData e173l55i0"
         data-testid="CellComponent"
       >
         <p>
           This is a Cell Component with a toggle!
         </p>
         <span
-          class="MuiSwitch-root MuiSwitch-sizeMedium e1lxcw2a0 css-1tsvnpp-MuiSwitch-root"
+          class="MuiSwitch-root MuiSwitch-sizeMedium efvmhqy0 css-1eqodmj-MuiSwitch-root-Toggle"
         >
           <span
-            class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-1wh25oe-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
+            class="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqlqb4-MuiButtonBase-root-MuiSwitchBase-root-MuiSwitch-switchBase"
           >
             <input
-              class="PrivateSwitchBase-input MuiSwitch-input css-1p3z7et-MuiSwitchBase-root"
+              class="PrivateSwitchBase-input MuiSwitch-input css-12xagqm-MuiSwitchBase-root"
+              role="switch"
               type="checkbox"
               value="Off"
             />
             <span
-              class="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
-            />
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              class="MuiSwitch-thumb css-1mw77bv-MuiSwitch-thumb"
             />
           </span>
           <span
-            class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+            class="MuiSwitch-track css-pm6g3f-MuiSwitch-track"
           />
         </span>
       </td>

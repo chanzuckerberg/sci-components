@@ -1,5 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
-import { composeStories } from "@storybook/react-webpack5";
+import { composeStories } from "@storybook/react-vite";
 import { render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 
@@ -22,7 +22,7 @@ const { Test, Default } = composeStories(stories);
 describe("<NavigationFooter />", () => {
   beforeEach(() => {
     // Clear any previous renders
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   generateSnapshots(stories);

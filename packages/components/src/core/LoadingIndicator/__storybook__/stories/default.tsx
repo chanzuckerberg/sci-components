@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawLoadingIndicator from "src/core/LoadingIndicator";
+import { Args } from "@storybook/react-vite";
+import RawLoadingIndicator from "@components/src/core/LoadingIndicator";
 
 export const LoadingIndicator = (props: Args): JSX.Element => {
   const { sdsStyle } = props;

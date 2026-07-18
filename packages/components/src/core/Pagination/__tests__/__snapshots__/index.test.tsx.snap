@@ -1,21 +1,21 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<Pagination /> Default story renders snapshot 1`] = `
+exports[`<Pagination /> > Default story renders snapshot 1`] = `
 <ul
-  class="css-im1obt eeoanq62"
+  class="css-e7ujim-StyledPagination e61vbx2"
 >
   <li
-    class="css-17io5pz eeoanq61"
+    class="css-1hvygon-StyledPaginationChevronList e61vbx3"
     data-order="first"
     disabled=""
     tabindex="0"
   >
     <div
-      class="css-1obf64m eo7r9jx1"
+      class="css-1q8yjse-StyledIcon emi0zh40"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
         data-file-name="IconChevronLeftSmall"
         data-testid="IconChevronLeftSmall"
         fillcontrast="white"
@@ -27,53 +27,53 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
     </div>
   </li>
   <li
-    class="css-fehdfm eeoanq63"
+    class="css-xlc3d1-Page-selectedPageStyle-Page e61vbx1"
     tabindex="0"
   >
     1
   </li>
   <li
-    class="css-11qsnzt eeoanq63"
+    class="css-cg06y2-Page-Page e61vbx1"
     tabindex="0"
   >
     2
   </li>
   <li
-    class="css-11qsnzt eeoanq63"
+    class="css-cg06y2-Page-Page e61vbx1"
     tabindex="0"
   >
     3
   </li>
   <li
-    class="css-11qsnzt eeoanq63"
+    class="css-cg06y2-Page-Page e61vbx1"
     tabindex="0"
   >
     4
   </li>
   <li
-    class="css-11qsnzt eeoanq63"
+    class="css-cg06y2-Page-Page e61vbx1"
     tabindex="0"
   >
     5
   </li>
   <li
-    class="css-yu92xi eeoanq64"
+    class="css-lj7v6u-Page-Page-StyledPage e61vbx0"
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary eeoanq60 e1gcweb20 css-1d9oaea-MuiButtonBase-root-MuiButton-root"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e61vbx4 et5j5k2 css-15ng4ux-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledPaginationButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-12bqywg e1gcweb21"
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconDotsHorizontal3Small"
             data-testid="IconDotsHorizontal3Small"
             fillcontrast="white"
@@ -84,28 +84,25 @@ exports[`<Pagination /> Default story renders snapshot 1`] = `
           />
         </div>
       </span>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </li>
   <li
-    class="css-11qsnzt eeoanq63"
+    class="css-cg06y2-Page-Page e61vbx1"
     tabindex="0"
   >
     20
   </li>
   <li
-    class="css-ccaww6 eeoanq61"
+    class="css-1ufgxwc-StyledPaginationChevronList e61vbx3"
     data-order="last"
     tabindex="0"
   >
     <div
-      class="css-1obf64m eo7r9jx1"
+      class="css-1q8yjse-StyledIcon emi0zh40"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
         data-file-name="IconChevronRightSmall"
         data-testid="IconChevronRightSmall"
         fillcontrast="white"

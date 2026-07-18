@@ -7,7 +7,7 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-} from "src/core/styles";
+} from "@components/src/core/styles";
 import { ExposedNotificationProps } from ".";
 import Button from "../Button";
 

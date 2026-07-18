@@ -1,15 +1,15 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > ControlledSegmentedControl story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="List A"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -19,14 +19,14 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -38,14 +38,11 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List B"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -55,14 +52,14 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -74,14 +71,11 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List C"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -91,14 +85,14 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -110,14 +104,11 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List D"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -127,14 +118,14 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -146,23 +137,20 @@ exports[`<SegmentedControl /> ControlledSegmentedControl story renders snapshot 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;
 
-exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > Default story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="List A"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -172,14 +160,14 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -191,14 +179,11 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List B"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -208,14 +193,14 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -227,14 +212,11 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List C"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -244,14 +226,14 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -263,14 +245,11 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List D"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -280,14 +259,14 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -299,23 +278,20 @@ exports[`<SegmentedControl /> Default story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;
 
-exports[`<SegmentedControl /> LabelOnly story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > LabelOnly story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="Explorer"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -325,19 +301,16 @@ exports[`<SegmentedControl /> LabelOnly story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1jqi1yq eae5jnj3"
+        class="css-x16u66-StyledToggleButtonLabel enkxsnk0"
       >
         Explorer
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="All Data"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -347,28 +320,25 @@ exports[`<SegmentedControl /> LabelOnly story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1jqi1yq eae5jnj3"
+        class="css-x16u66-StyledToggleButtonLabel enkxsnk0"
       >
         All Data
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;
 
-exports[`<SegmentedControl /> LabelOnlyWithDisabledButton story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > LabelOnlyWithDisabledButton story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="Explorer"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -378,19 +348,16 @@ exports[`<SegmentedControl /> LabelOnlyWithDisabledButton story renders snapshot
       tabindex="-1"
     >
       <div
-        class="css-1jqi1yq eae5jnj3"
+        class="css-x16u66-StyledToggleButtonLabel enkxsnk0"
       >
         Explorer
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="All Data"
     aria-pressed="false"
-    class="MuiButtonBase-root Mui-disabled MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-disabled MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-hvt96j-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root Mui-disabled MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-disabled MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-13rkrdy-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     disabled=""
     tabindex="-1"
     type="button"
@@ -400,7 +367,7 @@ exports[`<SegmentedControl /> LabelOnlyWithDisabledButton story renders snapshot
       tabindex="-1"
     >
       <div
-        class="css-1jqi1yq eae5jnj3"
+        class="css-x16u66-StyledToggleButtonLabel enkxsnk0"
       >
         All Data
       </div>
@@ -409,7 +376,7 @@ exports[`<SegmentedControl /> LabelOnlyWithDisabledButton story renders snapshot
   <button
     aria-label="Summary"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -419,28 +386,25 @@ exports[`<SegmentedControl /> LabelOnlyWithDisabledButton story renders snapshot
       tabindex="-1"
     >
       <div
-        class="css-1jqi1yq eae5jnj3"
+        class="css-x16u66-StyledToggleButtonLabel enkxsnk0"
       >
         Summary
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;
 
-exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > WithCustomTooltipProps story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="A"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -450,14 +414,14 @@ exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -469,14 +433,11 @@ exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="B"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -486,14 +447,14 @@ exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconTableSmall"
             data-testid="IconTableSmall"
             fillcontrast="white"
@@ -505,14 +466,11 @@ exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="People View"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -522,14 +480,14 @@ exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] 
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconPeopleSmall"
             data-testid="IconPeopleSmall"
             fillcontrast="white"
@@ -541,23 +499,20 @@ exports[`<SegmentedControl /> WithCustomTooltipProps story renders snapshot 1`] 
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;
 
-exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > WithDisabledButton story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="List A"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -567,14 +522,14 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconLinesHorizontal3Small"
             data-testid="IconLinesHorizontal3Small"
             fillcontrast="white"
@@ -586,14 +541,11 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List B"
     aria-pressed="false"
-    class="MuiButtonBase-root Mui-disabled MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-disabled MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-hvt96j-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root Mui-disabled MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-disabled MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-13rkrdy-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     disabled=""
     tabindex="-1"
     type="button"
@@ -603,14 +555,14 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconLinesHorizontal3Small"
             data-testid="IconLinesHorizontal3Small"
             fillcontrast="white"
@@ -626,7 +578,7 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
   <button
     aria-label="List C"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -636,14 +588,14 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconLinesHorizontal3Small"
             data-testid="IconLinesHorizontal3Small"
             fillcontrast="white"
@@ -655,14 +607,11 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="List D"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -672,14 +621,14 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconLinesHorizontal3Small"
             data-testid="IconLinesHorizontal3Small"
             fillcontrast="white"
@@ -691,23 +640,20 @@ exports[`<SegmentedControl /> WithDisabledButton story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;
 
-exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
+exports[`<SegmentedControl /> > WithTooltipHidden story renders snapshot 1`] = `
 <div
   aria-label="Segmented Control"
-  class="MuiToggleButtonGroup-root eae5jnj0 css-f6x3vz-MuiToggleButtonGroup-root"
+  class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal enkxsnk3 css-yv1myi-MuiToggleButtonGroup-root-StyledSegmentedControl"
   role="group"
 >
   <button
     aria-label="A"
     aria-pressed="true"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-firstButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-firstButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     tabindex="0"
     type="button"
     value="A"
@@ -716,14 +662,14 @@ exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconListSmall"
             data-testid="IconListSmall"
             fillcontrast="white"
@@ -735,14 +681,11 @@ exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="B"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-middleButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-middleButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     tabindex="0"
     type="button"
     value="B"
@@ -751,14 +694,14 @@ exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconTableSmall"
             data-testid="IconTableSmall"
             fillcontrast="white"
@@ -770,14 +713,11 @@ exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
   <button
     aria-label="C"
     aria-pressed="false"
-    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard eae5jnj1 MuiToggleButtonGroup-lastButton css-1734yn4-MuiButtonBase-root-MuiToggleButton-root"
+    class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-sizeSmall MuiToggleButton-standard enkxsnk2 MuiToggleButtonGroup-lastButton css-s7ufx0-MuiButtonBase-root-MuiToggleButton-root-StyledToggleButton"
     data-mui-internal-clone-element="true"
     tabindex="0"
     type="button"
@@ -787,14 +727,14 @@ exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
       tabindex="-1"
     >
       <div
-        class="css-1xfguvh eae5jnj2"
+        class="css-azgjuf-StyledToggleButtonIcon enkxsnk1"
       >
         <div
-          class="css-1obf64m eo7r9jx1"
+          class="css-1q8yjse-StyledIcon emi0zh40"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eo7r9jx0 css-hx3qru-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
             data-file-name="IconPeopleSmall"
             data-testid="IconPeopleSmall"
             fillcontrast="white"
@@ -806,9 +746,6 @@ exports[`<SegmentedControl /> WithTooltipHidden story renders snapshot 1`] = `
         </div>
       </div>
     </span>
-    <span
-      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-    />
   </button>
 </div>
 `;

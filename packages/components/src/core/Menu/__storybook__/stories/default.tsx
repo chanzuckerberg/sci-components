@@ -1,8 +1,8 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import React from "react";
-import Button from "src/core/Button";
-import MenuItem from "src/core/MenuItem";
-import RawMenu from "src/core/Menu";
+import Button from "@components/src/core/Button";
+import MenuItem from "@components/src/core/MenuItem";
+import RawMenu from "@components/src/core/Menu";
 
 export const Menu = (props: Args): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState<Element | null>(null);
@@ -35,8 +35,10 @@ export const Menu = (props: Args): JSX.Element => {
         keepMounted
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
+        slotProps={{
+          list: {
+            "aria-labelledby": "basic-button",
+          },
         }}
         role="listbox"
         {...props}

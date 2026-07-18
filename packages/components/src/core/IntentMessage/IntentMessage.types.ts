@@ -1,4 +1,4 @@
-import { IconNameToSizes } from "src/core/Icon";
+import { IconNameToSizes } from "@components/src/core/Icon";
 
 export type IntentMessageIntent = "negative" | "notice" | "positive";
 

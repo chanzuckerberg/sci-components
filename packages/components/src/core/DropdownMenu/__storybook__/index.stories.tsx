@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import {
   DROPDOWN_MENU_DATA_OPTIONS,
   DROPDOWN_MENU_EXCLUDED_CONTROLS,

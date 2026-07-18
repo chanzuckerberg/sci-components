@@ -1,6 +1,6 @@
 import { Pagination, PaginationProps } from "@czi-sds/components";
 import React from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 const PaginationNameSpaceTest = (props: PaginationProps) => {
   return (

@@ -1,8 +1,8 @@
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { LIST_LIVE_PREVIEW_STYLES } from "../constants";
-import RawLoadingIndicator from "src/core/LoadingIndicator";
+import RawLoadingIndicator from "@components/src/core/LoadingIndicator";
 import { useTheme } from "@mui/material";
-import { getSpaces } from "src/core/styles";
+import { getSpaces } from "@components/src/core/styles";
 
 export const LivePreviewDemo = (props: Args): JSX.Element => {
   const theme = useTheme();

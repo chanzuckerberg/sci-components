@@ -1,19 +1,20 @@
 import {
-  AutocompleteFreeSoloValueMapping,
   AutocompleteInputChangeReason,
   AutocompleteProps,
   AutocompleteRenderInputParams,
   AutocompleteRenderOptionState,
+  AutocompleteValueOrFreeSoloValueMapping,
   InputAdornment,
+  MenuList,
 } from "@mui/material";
 import React, { useState } from "react";
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
-import Button from "src/core/Button";
-import { InputSearchProps } from "src/core/InputSearch";
+} from "@components/src/common/warnings";
+import Button from "@components/src/core/Button";
+import { InputSearchProps } from "@components/src/core/InputSearch";
 import {
   InputBaseWrapper,
   StyleProps,
@@ -70,7 +71,7 @@ const MenuSelect = <
     keepSearchOnSelect = true,
     multiple = false,
     getOptionLabel = defaultGetOptionLabel,
-    renderTags = defaultRenderTags,
+    renderValue = defaultRenderValue,
     renderOption = defaultRenderOption,
     disableCloseOnSelect = multiple,
     noOptionsText = "No options",
@@ -89,9 +90,12 @@ const MenuSelect = <
       open
       disableCloseOnSelect={disableCloseOnSelect}
       disablePortal
-      renderTags={renderTags}
+      renderValue={renderValue}
       noOptionsText={noOptionsText}
       renderOption={renderOption}
+      // (v9): render the listbox as a MenuList so option MenuItems have the
+      // required Menu/MenuList context.
+      slots={{ listbox: MenuList }}
       getOptionLabel={getOptionLabel}
       inputValue={inputValue}
       renderInput={(params: AutocompleteRenderInputParams) => (
@@ -100,7 +104,7 @@ const MenuSelect = <
             id="location-search"
             label="Search for a location"
             placeholder="Search"
-            ref={params.InputProps.ref}
+            ref={params.slotProps.input.ref}
             search={search}
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
@@ -110,31 +114,33 @@ const MenuSelect = <
                 event.stopPropagation();
               }
             }}
-            InputProps={{
-              /**
-               * (thuang): Works with css caret-color: "transparent" to hide
-               * mobile keyboard
-               */
-              inputMode: search ? "text" : "none",
-              /**
-               * (mmoore): passing only the ref along to InputProps to prevent
-               * default MUI arrow from rendering in search input.
-               * renderInput strips InputProps, so we explicitly pass end adornment here
-               */
-              ...params.InputProps.ref,
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Button
-                    size="large"
-                    sdsType="secondary"
-                    sdsStyle="minimal"
-                    backgroundOnHover={false}
-                  >
-                    <Icon sdsIcon="Search" sdsSize="s" />
-                  </Button>
-                </InputAdornment>
-              ),
-              inputProps: params.inputProps,
+            slotProps={{
+              htmlInput: params.slotProps.htmlInput,
+              input: {
+                /**
+                 * (thuang): Works with css caret-color: "transparent" to hide
+                 * mobile keyboard
+                 */
+                inputMode: search ? "text" : "none",
+                /**
+                 * (mmoore): passing only the ref along to the input slot to prevent
+                 * default MUI arrow from rendering in search input.
+                 * renderInput strips the input slot, so we explicitly pass end adornment here
+                 */
+                ...params.slotProps.input.ref,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Button
+                      size="large"
+                      sdsType="secondary"
+                      sdsStyle="minimal"
+                      backgroundOnHover={false}
+                    >
+                      <Icon sdsIcon="Search" sdsSize="s" />
+                    </Button>
+                  </InputAdornment>
+                ),
+              },
             }}
             {...InputBaseProps}
           />
@@ -160,13 +166,13 @@ const MenuSelect = <
   );
 
   function defaultGetOptionLabel(
-    option: T | AutocompleteFreeSoloValueMapping<FreeSolo>
+    option: AutocompleteValueOrFreeSoloValueMapping<T, FreeSolo>
   ): string {
     if (typeof option === "object" && "name" in option) return option.name;
     return option.toString();
   }
 
-  function defaultRenderTags() {
+  function defaultRenderValue() {
     return null;
   }
 

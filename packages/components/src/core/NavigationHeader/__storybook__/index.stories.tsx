@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Args, Meta, StoryContext } from "@storybook/react-webpack5";
+import { Args, Meta, StoryContext } from "@storybook/react-vite";
 import { NavigationHeader } from "./stories/default";
-import { TAG_PANEL_COLORS } from "src/core/Tag/__storybook__/constants";
+import { TAG_PANEL_COLORS } from "@components/src/core/Tag/__storybook__/constants";
 import {
   RESEARCH,
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
@@ -11,8 +11,8 @@ import {
 import { TestDemo } from "./stories/test";
 import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
 import { DrawerStyleDemo } from "./stories/drawerStyle";
-import { INLINE_RADIO } from "src/common/utils";
-import Icon from "src/core/Icon";
+import { INLINE_RADIO } from "@components/src/common/utils";
+import Icon from "@components/src/core/Icon";
 
 export default {
   argTypes: {

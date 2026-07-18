@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import { TooltipCondensed } from "./stories/default";
 import { TOOLTIP_CONDENSED_EXCLUDED_CONTROLS } from "./constants";
 

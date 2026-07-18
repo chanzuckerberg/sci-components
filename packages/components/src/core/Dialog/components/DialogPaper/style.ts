@@ -6,8 +6,8 @@ import {
   getSemanticColors,
   getShadows,
   getSpaces,
-} from "src/core/styles";
-import { addOpacityToHex } from "src/core/styles/common/utils/opacity";
+} from "@components/src/core/styles";
+import { addOpacityToHex } from "@components/src/core/styles/common/utils/opacity";
 import { DialogTitleExtraProps } from "../DialogTitle/style";
 
 export interface StyledPaperProps extends CommonThemeProps, PaperProps {

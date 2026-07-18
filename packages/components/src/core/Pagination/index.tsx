@@ -8,7 +8,7 @@ import {
   StyledPaginationChevronList,
 } from "./style";
 import { usePagination } from "./usePagination";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 export interface PaginationInternalProps {
   onPageChange: (page: number) => void;

@@ -1,8 +1,8 @@
-import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
+import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
 import { AUTOCOMPLETE_WRAPPER_STYLES } from "../constants";
-import { Args } from "@storybook/react-webpack5";
-import RawAutocomplete from "src/core/Autocomplete";
+import { Args } from "@storybook/react-vite";
+import RawAutocomplete from "@components/src/core/Autocomplete";
 
 export const TestDemo = (props: Args): JSX.Element => {
   const {

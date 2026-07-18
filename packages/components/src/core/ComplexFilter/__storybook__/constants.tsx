@@ -1,4 +1,4 @@
-import { noop } from "src/common/utils";
+import { noop } from "@components/src/common/utils";
 
 export const COMPLEX_FILTER_EXCLUDED_CONTROLS = [
   "label",

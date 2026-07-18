@@ -1,5 +1,5 @@
-import { Args, Meta } from "@storybook/react-webpack5";
-import LoadingIndicator from "src/core/LoadingIndicator";
+import { Args, Meta } from "@storybook/react-vite";
+import LoadingIndicator from "@components/src/core/LoadingIndicator";
 import { Dropdown } from "./stories/default";
 import {
   DROPDOWN_BUTTON_POSITION_OPTIONS,
@@ -13,7 +13,7 @@ import { ControlledDropdownDemo } from "./stories/controlledDropdown";
 import { TestDemo } from "./stories/test";
 import { InsideModalDemo } from "./stories/insideModal";
 import { PopperPlacementDemo } from "./stories/popperPlacement";
-import { AUTOCOMPLETE_ACTION_TYPE_OPTIONS } from "src/common/storybook/AUTOCOMPLETE_ACTION_TYPE_OPTIONS";
+import { AUTOCOMPLETE_ACTION_TYPE_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_ACTION_TYPE_OPTIONS";
 
 export default {
   argTypes: {

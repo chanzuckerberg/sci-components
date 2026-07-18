@@ -4,7 +4,7 @@ import { IconNameToSizes } from "../Icon";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
-} from "src/common/warnings";
+} from "@components/src/common/warnings";
 import { StyledButtonToggleLegacy } from "./style";
 
 export interface ButtonToggleLegacyProps extends ButtonProps {

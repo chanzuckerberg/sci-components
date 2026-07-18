@@ -12,19 +12,22 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { EMPTY_OBJECT } from "src/common/utils";
+import { EMPTY_OBJECT } from "@components/src/common/utils";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteSingleColumnOption,
   DefaultAutocompleteOption,
-} from "src/core/Autocomplete";
+} from "@components/src/core/Autocomplete";
 import DropdownMenu, {
   DropdownMenuProps as SdsDropdownMenuProps,
-} from "src/core/DropdownMenu";
-import { StyledPaper, StyledPopper } from "src/core/DropdownMenu/style";
+} from "@components/src/core/DropdownMenu";
+import {
+  StyledPaper,
+  StyledPopper,
+} from "@components/src/core/DropdownMenu/style";
 import InputDropdown, {
   InputDropdownProps as InputDropdownPropsType,
-} from "src/core/InputDropdown";
+} from "@components/src/core/InputDropdown";
 import { StyledButtonsWrapper } from "./style";
 import Button from "../Button";
 
@@ -74,7 +77,12 @@ type CustomAutocompleteProps<
   FreeSolo extends boolean | undefined,
 > = Omit<
   AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-  "renderInput"
+  // (options): MUI's AutocompleteProps and ExtraDropdownProps both declare
+  // `options` with different shapes. Intersecting them yields an unsatisfiable
+  // type, so we drop MUI's declaration and let ExtraDropdownProps own it (it
+  // supports both single- and multi-column option shapes that SDS routes at
+  // runtime via `"options" in options[0]`).
+  "renderInput" | "options"
 >;
 
 export type DropdownProps<

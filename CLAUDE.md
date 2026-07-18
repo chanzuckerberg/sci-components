@@ -68,7 +68,7 @@ This is a Lerna monorepo with two packages: `@czi-sds/components` and `@czi-sds/
 
 ### Build System
 
-- **Rollup** for bundling (ESM and CJS outputs)
+- **Rolldown** for bundling (ESM and CJS outputs)
 - **TypeScript** with strict configuration
 - **Style Dictionary** for design token compilation
 - **SWC** for fast compilation in Storybook

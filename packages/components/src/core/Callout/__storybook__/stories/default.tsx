@@ -1,10 +1,10 @@
 import { Box, FormControlLabel } from "@mui/material";
-import { Args } from "@storybook/react-webpack5";
+import { Args } from "@storybook/react-vite";
 import { useState } from "react";
-import RawCallout from "src/core/Callout";
-import InputToggle from "src/core/InputToggle";
-import { SHORT_LOREM_IPSUM } from "src/common/storybook/loremIpsum";
-import TooltipTableContent from "src/core/TooltipTable";
+import RawCallout from "@components/src/core/Callout";
+import InputToggle from "@components/src/core/InputToggle";
+import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
+import TooltipTableContent from "@components/src/core/TooltipTable";
 
 export const Callout = (props: Args): JSX.Element => {
   const { intent, autoDismiss, ...rest } = props;

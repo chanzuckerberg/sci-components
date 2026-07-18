@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
-import { IconNameToSizes } from "src/core/Icon";
-import Tooltip, { TooltipProps } from "src/core/Tooltip";
+import { IconNameToSizes } from "@components/src/core/Icon";
+import Tooltip, { TooltipProps } from "@components/src/core/Tooltip";
 import {
   CellHeaderExtraProps,
   StyledCellHeaderContainer,

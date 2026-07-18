@@ -1,5 +1,5 @@
-import { Args } from "@storybook/react-webpack5";
-import RawHero from "src/core/Hero";
+import { Args } from "@storybook/react-vite";
+import RawHero from "@components/src/core/Hero";
 import { DemoContentSlot } from "../../style";
 
 export const FullFeaturedDemo = (props: Args): JSX.Element => {

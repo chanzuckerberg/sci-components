@@ -9,11 +9,13 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { SyntheticEvent, useMemo, CSSProperties } from "react";
-import { EMPTY_OBJECT, noop } from "src/common/utils";
-import Autocomplete, { AutocompleteProps } from "src/core/Autocomplete";
-import { DefaultAutocompleteOption } from "src/core/Autocomplete/components/AutocompleteBase";
-import { InputSearchProps } from "src/core/InputSearch";
-import { SDSTheme } from "src/core/styles";
+import { EMPTY_OBJECT, noop } from "@components/src/common/utils";
+import Autocomplete, {
+  AutocompleteProps,
+} from "@components/src/core/Autocomplete";
+import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
+import { InputSearchProps } from "@components/src/core/InputSearch";
+import { SDSTheme } from "@components/src/core/styles";
 import {
   StyleProps,
   StyledDropdownMenuAutocompleteWrapper,

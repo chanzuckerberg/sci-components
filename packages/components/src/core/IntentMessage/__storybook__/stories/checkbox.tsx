@@ -1,6 +1,6 @@
-import { Args } from "@storybook/react-webpack5";
-import IntentMessage from "src/core/IntentMessage";
-import InputCheckbox from "src/core/InputCheckbox";
+import { Args } from "@storybook/react-vite";
+import IntentMessage from "@components/src/core/IntentMessage";
+import InputCheckbox from "@components/src/core/InputCheckbox";
 
 export const CheckboxDemo = (props: Args): JSX.Element => {
   const { messages } = props;

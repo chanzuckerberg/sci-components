@@ -7,8 +7,8 @@ import {
   getIconSizes,
   getSemanticColors,
   getSpaces,
-} from "src/core/styles";
-import Tag from "src/core/Tag";
+} from "@components/src/core/styles";
+import Tag from "@components/src/core/Tag";
 
 export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;

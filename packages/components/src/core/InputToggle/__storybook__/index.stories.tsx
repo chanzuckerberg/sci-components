@@ -1,4 +1,4 @@
-import { Args, Meta } from "@storybook/react-webpack5";
+import { Args, Meta } from "@storybook/react-vite";
 import RawInputToggle from "../index";
 import { InputToggle } from "./stories/default";
 import { INPUT_TOGGLE_EXCLUDED_CONTROLS } from "./constants";

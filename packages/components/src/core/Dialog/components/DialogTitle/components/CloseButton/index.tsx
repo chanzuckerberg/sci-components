@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from "react";
 import { StyledButton } from "./style";
-import Icon from "src/core/Icon";
+import Icon from "@components/src/core/Icon";
 
 const DIALOG_SIZE_TO_BUTTON_SIZE: {
   [key: string]: "small" | "medium" | "large";

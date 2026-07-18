@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Legend from "../../index";
-import TagFilter from "src/core/TagFilter";
-import Button from "src/core/Button";
+import TagFilter from "@components/src/core/TagFilter";
+import Button from "@components/src/core/Button";
 
 export default function WithSelectionStory(
   props: Parameters<typeof Legend>[0]
