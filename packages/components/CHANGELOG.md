@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.7.0...@czi-sds/components@23.8.0) (2026-07-18)
+
+### Bug Fixes
+
+- **navigationheader:** fix chevron icon sizes ([#1136](https://github.com/chanzuckerberg/sci-components/issues/1136)) ([1438379](https://github.com/chanzuckerberg/sci-components/commit/1438379a4d34bfde996f16706fa69b9b494b4e78))
+
+### Features
+
+- MUI upgrade v5 => v7 => v9 ([#1138](https://github.com/chanzuckerberg/sci-components/issues/1138)) ([88600a8](https://github.com/chanzuckerberg/sci-components/commit/88600a80e7cf8bbd5cb2dd32e28bb7cd2529ab5d))
+
 # [23.7.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.6.0...@czi-sds/components@23.7.0) (2026-06-08)
 
 ### Bug Fixes
