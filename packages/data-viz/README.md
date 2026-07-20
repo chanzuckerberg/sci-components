@@ -34,7 +34,7 @@ yarn add @czi-sds/data-viz @czi-sds/components @emotion/css @emotion/react @emot
 
 The `@czi-sds/data-viz` release that ships with SDS `24.0.0` also requires Material UI v9. If you are upgrading from an older SDS / data-viz version, follow the step-by-step guide:
 
-→ [MIGRATION.md](https://github.com/chanzuckerberg/sci-components/blob/main/MIGRATION.md)
+→ [Migration guide](https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-24.0.0.md)
 
 ## Links
 
