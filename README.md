@@ -18,9 +18,9 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 NOTE: Since most of the czi-sds components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://mui.com/) to learn about what you can do with the components. Many czi-sds components are style wrappers that pass props through to the MUI component without modifying them.
 
-## Migrating to SDS 23.8.0 (Material UI v9)
+## Migrating to SDS 24.0.0 (Material UI v9)
 
-SDS `23.8.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-23.8.0.md](./migration-docs/migrate-to-23.8.0.md). If a newer version of SDS is published, install that one instead — the same MUI v9 migration steps apply.
+SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-24.0.0.md](./migration-docs/migrate-to-24.0.0.md). If a newer version of SDS is published, install that one instead — the same MUI v9 migration steps apply.
 
 That guide covers dependency updates, MUI import and prop API changes (`slots` / `slotProps`), SDS-specific call-site updates, icon renames, and a verification checklist.
 
