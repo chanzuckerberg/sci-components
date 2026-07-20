@@ -1,6 +1,6 @@
-# Migration Guide: SDS 23.8.0 (Material UI v9)
+# Migration Guide: SDS 24.0.0 (Material UI v9)
 
-This guide is for upgrading **older versions of SDS** to **`@czi-sds/components@23.8.0`** (and the matching `@czi-sds/data-viz` release). That major moves the MUI peer dependency from **Material UI v5** to **Material UI v9**. This is a **breaking release**.
+This guide is for upgrading **older versions of SDS** to **`@czi-sds/components@24.0.0`** (and the matching `@czi-sds/data-viz` release). That major moves the MUI peer dependency from **Material UI v5** to **Material UI v9**. This is a **breaking release**.
 
 > The SDS components themselves have been fully migrated internally. Most of the work in this guide is about (1) your project's dependencies and (2) any MUI props or types you pass _through_ SDS components or import directly from MUI.
 
@@ -28,19 +28,19 @@ This guide is for upgrading **older versions of SDS** to **`@czi-sds/components@
 
 ## For AI coding agents — read first
 
-> **⚠️ Target the latest SDS version, not necessarily `23.8.0`.** `23.8.0` is the **first** release on the Material UI v9 peer-dependency line and is used throughout this guide as the reference version. Before you start, check the latest published version:
+> **⚠️ Target the latest SDS version, not necessarily `24.0.0`.** `24.0.0` is the **first** release on the Material UI v9 peer-dependency line and is used throughout this guide as the reference version. Before you start, check the latest published version:
 >
 > ```bash
 > npm view @czi-sds/components version
 > ```
 >
-> If a newer `@czi-sds/components` (and the matching `@czi-sds/data-viz`) is available, install **that** version instead — every migration step in this guide still applies, since any version `>= 23.8.0` is on MUI v9. Substitute the latest version wherever `23.8.0` appears below. Only pin to `23.8.0` if the latest version fails to install or introduces changes not covered here.
+> If a newer `@czi-sds/components` (and the matching `@czi-sds/data-viz`) is available, install **that** version instead — every migration step in this guide still applies, since any version `>= 24.0.0` is on MUI v9. Substitute the latest version wherever `24.0.0` appears below. Only pin to `24.0.0` if the latest version fails to install or introduces changes not covered here.
 
-You are upgrading a **consumer project** that depends on `@czi-sds/components` (and possibly `@czi-sds/data-viz`) from an older SDS version to **`@czi-sds/components@23.8.0` or later**, which moves the MUI peer dependency from **v5 to v9**. Follow this playbook top to bottom. Do not stop at the first error — collect and fix all categories below, then verify.
+You are upgrading a **consumer project** that depends on `@czi-sds/components` (and possibly `@czi-sds/data-viz`) from an older SDS version to **`@czi-sds/components@24.0.0` or later**, which moves the MUI peer dependency from **v5 to v9**. Follow this playbook top to bottom. Do not stop at the first error — collect and fix all categories below, then verify.
 
 ### Objective
 
-Make the consumer project install **SDS 23.8.0** + MUI v9 peer deps and compile, build, and test cleanly, by updating **only the consumer's own code and config** to the new APIs described in this guide.
+Make the consumer project install **SDS 24.0.0** + MUI v9 peer deps and compile, build, and test cleanly, by updating **only the consumer's own code and config** to the new APIs described in this guide.
 
 ### Operating rules (guardrails)
 
@@ -78,9 +78,9 @@ Work through these once, top to bottom. The order matters: deps must change **be
 
 ## At a glance
 
-| Area                  | Before                        | After (SDS 23.8.0)                                                                                                                                        |
+| Area                  | Before                        | After (SDS 24.0.0)                                                                                                                                        |
 | --------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@czi-sds/components` | `< 24` (MUI v5 peers)         | `23.8.0` (MUI v9 peers)                                                                                                                                   |
+| `@czi-sds/components` | `< 24` (MUI v5 peers)         | `24.0.0` (MUI v9 peers)                                                                                                                                   |
 | `@mui/material`       | `^5.16.8`                     | `^9.0.0`                                                                                                                                                  |
 | `@mui/icons-material` | `^5.16.8`                     | `^9.0.0`                                                                                                                                                  |
 | `@mui/base`           | `5.0.0-beta.70`               | **removed** (merged into `@mui/material`)                                                                                                                 |
@@ -116,7 +116,7 @@ Decision rules derived from the above:
 - **Next.js present** ⇒ also bump `@mui/material-nextjs` ([Step 1](#step-1--update-dependencies)).
 - **`@mui/base` imports** ⇒ always migrate off `@mui/base` and uninstall it ([Step 3](#step-3--update-mui-imports-muibase-removed-alert-left-muilab)).
 - **`@mui/lab` imports** ⇒ do **not** uninstall yet. After moving `Alert` / `AlertProps` to `@mui/material` ([Step 3](#step-3--update-mui-imports-muibase-removed-alert-left-muilab)), re-check: remove `@mui/lab` only if nothing still imports from it. Keep (and bump to a v9-compatible version) if the app still uses other lab exports (e.g. `Timeline`, `LoadingButton`).
-- Record the current SDS version so you can confirm it moved to **`@czi-sds/components@23.8.0`** after install.
+- Record the current SDS version so you can confirm it moved to **`@czi-sds/components@24.0.0`** after install.
 
 ---
 
@@ -126,10 +126,10 @@ SDS peer dependencies changed. Update your `package.json` to install MUI v9 and 
 
 ```bash
 # with npm
-npm i @czi-sds/components@23.8.0 @emotion/css @emotion/react @emotion/styled @mui/material@^9 @mui/icons-material@^9 react react-dom
+npm i @czi-sds/components@24.0.0 @emotion/css @emotion/react @emotion/styled @mui/material@^9 @mui/icons-material@^9 react react-dom
 
 # with yarn
-yarn add @czi-sds/components@23.8.0 @emotion/css @emotion/react @emotion/styled @mui/material@^9 @mui/icons-material@^9 react react-dom
+yarn add @czi-sds/components@24.0.0 @emotion/css @emotion/react @emotion/styled @mui/material@^9 @mui/icons-material@^9 react react-dom
 ```
 
 Always remove `@mui/base`:
@@ -173,7 +173,7 @@ react                 (>=18)
 react-dom             (>=18)
 ```
 
-> If you use `@czi-sds/data-viz`, bump it to the release published with SDS 23.8.0 — it has the same MUI v9 peer-dependency requirements.
+> If you use `@czi-sds/data-viz`, bump it to the release published with SDS 24.0.0 — it has the same MUI v9 peer-dependency requirements.
 
 ---
 
@@ -568,7 +568,7 @@ rg -n "@mui/lab" --glob '!**/node_modules/**'    # expect: none, OR only intenti
 
 Then confirm each item:
 
-- [ ] `@czi-sds/components` is on `23.8.0` (or a compatible `^24` release) in `package.json`.
+- [ ] `@czi-sds/components` is on `24.0.0` (or a compatible `^24` release) in `package.json`.
 - [ ] `@mui/material` and `@mui/icons-material` are on `^9` in `package.json`.
 - [ ] `@mui/base` is removed from `package.json`.
 - [ ] `@mui/lab` decision applied: removed if unused after the `Alert` / `AlertProps` move; kept and bumped to a v9-compatible major if anything still imports from it.
