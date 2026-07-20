@@ -1,7 +1,7 @@
 ## Summary
 
 **Structural Element (Base, Gene, DNA, Chromosome or Cell)**
-Github issue: [#XXXX](link)
+Jira issue: [#XXXX](link)
 
 Copy issue description here
 
@@ -12,5 +12,5 @@ Copy issue description here
 - [ ] Tests written
 - [ ] Semantic Variables from `defaultTheme.ts` used wherever possible
 - [ ] If updating an existing component, depreciate flag has been used where necessary
-- [ ] ZeroHeight Documents updated
+- [ ] Documents updated
 - [ ] Chromatic build verified by @chanzuckerberg/sds-design

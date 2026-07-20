@@ -13,13 +13,13 @@ jobs:
     steps:
       # Step 1: Checkout the repository code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       # Step 2: Set up Node.js environment and cache Yarn dependencies
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version-file: ".node-version" # Specify the Node.js version from '.node-version' file
           cache: "yarn" # Cache Yarn dependencies for faster builds
@@ -30,7 +30,7 @@ jobs:
 
       # Step 4: Publish the project to Chromatic
       - name: Publish to Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@v17
         with:
           token: ${{ secrets.GITHUB_TOKEN }} # Authenticate using the GitHub token
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }} # Provide the Chromatic project token for authentication
