@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.9.0...@czi-sds/components@24.0.0) (2026-07-20)
+
+### Features
+
+- **release:** release ([#1152](https://github.com/chanzuckerberg/sci-components/issues/1152)) ([2496bb5](https://github.com/chanzuckerberg/sci-components/commit/2496bb56e31e04fcaf1f326f63ff99468ea403b9))
+
+### BREAKING CHANGES
+
+- **release:** MUI v9 upgrades
+
+# [23.9.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.8.0...@czi-sds/components@23.9.0) (2026-07-20)
+
+### Features
+
+- **release:** release ([#1149](https://github.com/chanzuckerberg/sci-components/issues/1149)) ([7977726](https://github.com/chanzuckerberg/sci-components/commit/797772606829a4421e77cfb2e25c815962154509))
+
 # [23.8.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.7.0...@czi-sds/components@23.8.0) (2026-07-18)
 
 ### Bug Fixes

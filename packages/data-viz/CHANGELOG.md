@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.19.0...@czi-sds/data-viz@0.20.0) (2026-07-20)
+
+### Features
+
+- **release:** release ([#1149](https://github.com/chanzuckerberg/sci-components/issues/1149)) ([7977726](https://github.com/chanzuckerberg/sci-components/commit/797772606829a4421e77cfb2e25c815962154509))
+
 # [0.19.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.18.0...@czi-sds/data-viz@0.19.0) (2026-07-18)
 
 ### Features
