@@ -30,7 +30,7 @@ yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/ma
 
 ## Migrating to SDS 24.0.0
 
-SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. Follow the step-by-step guide to upgrade your SDS version:
+SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. Follow the step-by-step guide to upgrade the SDS version:
 
 → [Migration guide](https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-24.0.0.md)
 
