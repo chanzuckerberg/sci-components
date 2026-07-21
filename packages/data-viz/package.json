@@ -53,6 +53,7 @@
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
   },
   "peerDependencies": {
+    "@czi-sds/components": "^24.0.0",
     "@emotion/css": "^11.11.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
