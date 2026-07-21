@@ -1894,6 +1894,7 @@ __metadata:
     simplex-noise: "npm:^4.0.1"
     style-dictionary: "npm:^4.1.0"
   peerDependencies:
+    "@czi-sds/components": ^24.0.0
     "@emotion/css": ^11.11.2
     "@emotion/react": ^11.11.3
     "@emotion/styled": ^11.11.0
