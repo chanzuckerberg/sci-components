@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@1.0.0...@czi-sds/data-viz@1.0.1) (2026-07-22)
+
+**Note:** Version bump only for package @czi-sds/data-viz
+
+# [1.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.21.0...@czi-sds/data-viz@1.0.0) (2026-07-22)
+
+**Note:** Graduates @czi-sds/data-viz to 1.0.0. Identical in content to 0.21.0, which shipped the breaking peer dependency change below.
+
+# [0.21.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.20.1...@czi-sds/data-viz@0.21.0) (2026-07-22)
+
+### Features
+
+- **release:** release data-viz 1.0.0 ([#1158](https://github.com/chanzuckerberg/sci-components/issues/1158)) ([9ffc0fd](https://github.com/chanzuckerberg/sci-components/commit/9ffc0fda1b5a450caa13444bd87987fa8aab1802))
+
+### BREAKING CHANGES
+
+- **release:** @czi-sds/components@^24.0.0 is now a required peer dependency of @czi-sds/data-viz; @emotion/css, @emotion/react, and @mui/icons-material are no longer peer dependencies.
+
 ## [0.20.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.20.0...@czi-sds/data-viz@0.20.1) (2026-07-22)
 
 **Note:** Version bump only for package @czi-sds/data-viz
