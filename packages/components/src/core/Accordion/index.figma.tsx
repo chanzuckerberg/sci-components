@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import Accordion from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  Accordion,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8339-14285",
   {
     props: {
@@ -38,14 +38,14 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <Accordion
         id="accordion-example"
         disabled={props.disabled}
         useDivider={props.useDivider}
         togglePosition={props.togglePosition}
       >
         <div>Accordion content here</div>
-      </Index>
+      </Accordion>
     ),
   }
 );

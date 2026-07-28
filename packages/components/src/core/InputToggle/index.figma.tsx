@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import InputToggle from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  InputToggle,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8801%3A19187",
   {
     props: {
@@ -21,6 +21,6 @@ figma.connect(
       // No matching props could be found for these Figma properties:
       // "sdsStage": figma.boolean('sdsStage')
     },
-    example: (props) => <Index disabled={props.disabled} />,
+    example: (props) => <InputToggle disabled={props.disabled} />,
   }
 );

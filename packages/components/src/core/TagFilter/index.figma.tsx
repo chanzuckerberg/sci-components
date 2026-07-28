@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import TagFilter from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -11,7 +11,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  TagFilter,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=1834%3A564",
   {
     props: {
@@ -22,6 +22,6 @@ figma.connect(
       //   "pressed": "pressed"
       // })
     },
-    example: (_props) => <Index label="Filter label" onDelete={() => {}} />,
+    example: (_props) => <TagFilter label="Filter label" onDelete={() => {}} />,
   }
 );

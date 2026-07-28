@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import NavigationJumpTo from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -11,7 +11,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  NavigationJumpTo,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8938%3A9938",
   {
     props: {
@@ -52,6 +52,6 @@ figma.connect(
       //   "seventh": "seventh"
       // })
     },
-    example: (_props) => <Index items={[]} />,
+    example: (_props) => <NavigationJumpTo items={[]} />,
   }
 );

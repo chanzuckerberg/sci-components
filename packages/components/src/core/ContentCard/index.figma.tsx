@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import ContentCard from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  ContentCard,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=15429%3A36061",
   {
     props: {
@@ -58,7 +58,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <ContentCard
         square={props.square}
         image={props.image}
         visualElementType="image"

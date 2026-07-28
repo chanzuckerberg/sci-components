@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import Tabs from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  Tabs,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=9088%3A17404",
   {
     props: {
@@ -44,6 +44,6 @@ figma.connect(
       // }),
       // "disabled": figma.boolean('disabled?')
     },
-    example: (props) => <Index underlined={props.underlined} />,
+    example: (props) => <Tabs underlined={props.underlined} />,
   }
 );

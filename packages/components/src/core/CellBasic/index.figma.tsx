@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import CellBasic from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  CellBasic,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=9021%3A26589",
   {
     props: {
@@ -42,7 +42,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <CellBasic
         horizontalAlign={props.horizontalAlign}
         verticalAlign={props.verticalAlign}
         iconVerticalAlign={props.iconVerticalAlign}

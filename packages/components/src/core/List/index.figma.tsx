@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import List from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  List,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=3395%3A61013",
   {
     props: {
@@ -28,6 +28,6 @@ figma.connect(
       //   "fontL": "fontl"
       // })
     },
-    example: (props) => <Index ordered={props.ordered} />,
+    example: (props) => <List ordered={props.ordered} />,
   }
 );

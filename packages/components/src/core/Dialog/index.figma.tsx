@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import Dialog from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -11,7 +11,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  Dialog,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=9166%3A15154",
   {
     props: {
@@ -34,6 +34,6 @@ figma.connect(
       //   "text": "text"
       // })
     },
-    example: (_props) => <Index open={true} />,
+    example: (_props) => <Dialog open={true} />,
   }
 );

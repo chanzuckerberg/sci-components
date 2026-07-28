@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import Pagination from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  Pagination,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=6867%3A25911",
   {
     props: {
@@ -51,7 +51,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <Pagination
         sdsStyle={props.sdsStyle}
         onPageChange={() => {}}
         onNextPage={() => {}}

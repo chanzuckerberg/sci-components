@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import LoadingIndicator from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  LoadingIndicator,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=387%3A14",
   {
     props: {
@@ -20,6 +20,6 @@ figma.connect(
         tag: "tag",
       }),
     },
-    example: (props) => <Index sdsStyle={props.sdsStyle} />,
+    example: (props) => <LoadingIndicator sdsStyle={props.sdsStyle} />,
   }
 );

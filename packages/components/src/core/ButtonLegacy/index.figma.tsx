@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import ButtonLegacy from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  ButtonLegacy,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8136%3A15986",
   {
     props: {
@@ -58,7 +58,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <ButtonLegacy
         disabled={props.disabled}
         type={props.type}
         sdsStyle="rounded"
@@ -66,7 +66,7 @@ figma.connect(
         isAllCaps={props.isAllCaps}
       >
         Button Text
-      </Index>
+      </ButtonLegacy>
     ),
   }
 );

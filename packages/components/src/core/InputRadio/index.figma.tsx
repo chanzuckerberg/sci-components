@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import InputRadio from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  InputRadio,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8793%3A19098",
   {
     props: {
@@ -33,7 +33,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index intent={props.intent} disabled={props.disabled} />
+      <InputRadio intent={props.intent} disabled={props.disabled} />
     ),
   }
 );

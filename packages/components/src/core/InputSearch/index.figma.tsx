@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import InputSearch from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  InputSearch,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8895%3A46442",
   {
     props: {
@@ -35,7 +35,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <InputSearch
         disabled={props.disabled}
         variant="outlined"
         label="Search Label"

@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import TooltipTable from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  TooltipTable,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=3258%3A61211",
   {
     props: {
@@ -24,6 +24,6 @@ figma.connect(
       //   "3 sections": "3-sections"
       // })
     },
-    example: (props) => <Index showSectionHeader={props.showSectionHeader} />,
+    example: (props) => <TooltipTable showSectionHeader={props.showSectionHeader} />,
   }
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import CellHeader from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  CellHeader,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=5618%3A13366",
   {
     props: {
@@ -40,7 +40,7 @@ figma.connect(
       // "textWrap": figma.boolean('textWrap?')
     },
     example: (props) => (
-      <Index
+      <CellHeader
         default={props.default}
         hideSortIcon={props.hideSortIcon}
         horizontalAlign={props.horizontalAlign}
@@ -48,7 +48,7 @@ figma.connect(
         direction={props.direction}
       >
         Header Text
-      </Index>
+      </CellHeader>
     ),
   }
 );

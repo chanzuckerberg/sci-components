@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import InputCheckbox from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  InputCheckbox,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8784%3A18915",
   {
     props: {
@@ -32,7 +32,7 @@ figma.connect(
       // "showIntentMessage": figma.boolean('showIntentMessage?')
     },
     example: (props) => (
-      <Index
+      <InputCheckbox
         intent={props.intent}
         stage={props.stage}
         disabled={props.disabled}

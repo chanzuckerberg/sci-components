@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import Panel from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  Panel,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=14517%3A10035",
   {
     props: {
@@ -27,6 +27,6 @@ figma.connect(
       //   "overlay": "overlay"
       // })
     },
-    example: (props) => <Index sdsType="basic" position={props.position} />,
+    example: (props) => <Panel sdsType="basic" position={props.position} />,
   }
 );

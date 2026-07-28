@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import ButtonDropdownLegacy from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  ButtonDropdownLegacy,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=8133%3A14931",
   {
     props: {
@@ -44,14 +44,14 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <ButtonDropdownLegacy
         disabled={props.disabled}
         icon={props.icon}
         sdsStyle="rounded"
         sdsType={props.sdsType}
       >
         Button Text
-      </Index>
+      </ButtonDropdownLegacy>
     ),
   }
 );

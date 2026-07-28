@@ -132,3 +132,7 @@ packages/components/ai_task_docs/*
 .ds-sync/
 ds-bundle/
 .design-sync/diag.mjs
+cc-*.txt
+*.figma.tsx.parked
+cc-*.txt
+*.figma.tsx.parked

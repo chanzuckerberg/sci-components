@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import MenuItem from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  MenuItem,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=4162%3A45488",
   {
     props: {
@@ -30,7 +30,7 @@ figma.connect(
       // "icon": figma.instance('↪️ icon')
     },
     example: (props) => (
-      <Index
+      <MenuItem
         disabled={props.disabled}
         selected={props.selected}
         icon={props.icon}
