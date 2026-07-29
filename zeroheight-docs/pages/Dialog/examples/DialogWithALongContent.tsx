@@ -1,20 +1,20 @@
-// Most minimal Dialog (just has the basic requirements)
+// The paper is capped at the viewport height, so DialogContent scrolls on its
+// own and the title and action buttons stay in place.
 
 import { useState } from "react";
 import {
   Button,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
+  DialogContent,
+  DialogTitle,
 } from "@czi-sds/components";
 
-function App() {
-  const [isOpen, setIsOpen] = useState(true);
+const PARAGRAPH =
+  "Explore a diverse range of topics, from fundamental principles to advanced techniques, as we aim to empower you with knowledge that transcends boundaries. Whether you are a novice eager to build a strong foundation or a seasoned professional staying at the forefront of your industry, this material is your gateway to honing your expertise.";
 
-  function handleClick() {
-    setIsOpen(true);
-  }
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleClose() {
     setIsOpen(false);
@@ -22,39 +22,33 @@ function App() {
 
   return (
     <div className="app">
-      <Button sdsStyle="minimal" sdsType="primary" onClick={handleClick}>
+      <Button
+        sdsStyle="solid"
+        sdsType="primary"
+        onClick={() => setIsOpen(true)}
+      >
         Open Dialog
       </Button>
-      <Dialog onClose={handleClose} open={isOpen} sdsSize="xs">
+
+      <Dialog open={isOpen} onClose={handleClose} sdsSize="s">
         <DialogTitle
-          title="Learning"
-          subtitle="Learning Resources"
+          title="Terms of use"
+          subtitle="Last updated January 2025"
           onClose={handleClose}
         />
         <DialogContent>
-          Embark on a fulfilling journey of continuous improvement with our vast
-          repository of valuable learning resources. Within this dedicated
-          section, you'll find an extensive collection of meticulously crafted
-          tutorials, comprehensive guides, and thought-provoking articles
-          meticulously designed to enrich your skill set and provide profound
-          insights into your field of interest. Explore a diverse range of
-          topics, from fundamental principles to advanced techniques, as we aim
-          to empower you with knowledge that transcends boundaries. Whether
-          you're a novice eager to build a strong foundation or a seasoned
-          professional seeking to stay at the forefront of your industry, our
-          treasure trove of educational materials is your gateway to honing your
-          expertise. Unlock your potential, expand your horizons, and stay ahead
-          of the curve by immersing yourself in this wealth of knowledge. We
-          believe that continuous learning is the key to personal and
-          professional growth, and we're excited to accompany you on this
-          educational journey, every step of the way.
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((section) => (
+            <p key={section}>
+              {section}. {PARAGRAPH}
+            </p>
+          ))}
         </DialogContent>
-        <DialogActions buttonPosition="left">
-          <Button sdsType="primary" onClick={handleClose}>
-            Primary Action
+        <DialogActions>
+          <Button sdsStyle="outline" sdsType="primary" onClick={handleClose}>
+            Decline
           </Button>
-          <Button sdsType="secondary" onClick={handleClose}>
-            Secondary Action
+          <Button sdsStyle="solid" sdsType="primary" onClick={handleClose}>
+            Accept
           </Button>
         </DialogActions>
       </Dialog>

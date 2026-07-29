@@ -66,12 +66,9 @@
   <li><p>Subtitle text below the title</p></li>
   <li><p>Artwork above the title (logo, icon, or illustration)</p></li>
 </ul>
-<p>
-  There are four size options, each with a fixed width and minimum height
-  (except for xs which has no minimum height):
-</p>
+<p>There are four size options, each with a fixed width and minimum height:</p>
 <ul class="zeroheight-bullet-list">
-  <li><p>xs —width: 400px</p></li>
+  <li><p>xs —width: 400px, min-height: 160px</p></li>
   <li><p>s —width: 600px, min-height: 400px</p></li>
   <li><p>m —width: 900px, min-height: 480px</p></li>
   <li><p>l —width: 1200px, min-height: 600px</p></li>
@@ -456,15 +453,6 @@
   </figure>
 </div>
 <h2>Code</h2>
-<div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    The code examples below must install dependencies before displaying and may
-    take extra time to load
-  </p>
-</div>
 <h2>Dialog</h2>
 <h3>SDS Source Code</h3>
 <p>
@@ -477,15 +465,16 @@
   .
 </p>
 <p>
-  The Dialog component is accompanied by a number of other accessory components
-  that can be used to help compose dialogs, but they are not required:
+  A Dialog is composed from four accessory components. They all ship from
+  <strong>@czi-sds/components</strong>
+  and live in the Dialog folder:
 </p>
 <ul class="zeroheight-bullet-list">
   <li>
     <p>
-      Main Dialog component
+      DialogTitle renders the overline, title, subtitle, and close button
       <a
-        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog"
+        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog/components/DialogTitle"
       >
         source code
       </a>
@@ -493,9 +482,9 @@
   </li>
   <li>
     <p>
-      DialogActions
+      DialogContent holds the body copy and scrolls when the content overflows
       <a
-        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogActions"
+        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog/components/DialogContent"
       >
         source code
       </a>
@@ -503,9 +492,9 @@
   </li>
   <li>
     <p>
-      DialogContent
+      DialogActions lays out the action buttons in the footer
       <a
-        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogContent"
+        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog/components/DialogActions"
       >
         source code
       </a>
@@ -513,39 +502,90 @@
   </li>
   <li>
     <p>
-      DialogPaper
+      DialogPaper is the surface the Dialog is drawn on. It is applied for you,
+      so you only need it when you want to restyle the surface
       <a
-        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogPaper"
-      >
-        source code
-      </a>
-    </p>
-  </li>
-  <li>
-    <p>
-      DialogTitle
-      <a
-        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/DialogTitle"
+        href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog/components/DialogPaper"
       >
         source code
       </a>
     </p>
   </li>
 </ul>
+<p>
+  Dialog passes its
+  <strong>sdsSize</strong>
+  down to DialogPaper, DialogTitle, and DialogActions automatically, so you set
+  the size once on Dialog. DialogContent does not take a size.
+</p>
 <h3>SDS vs MUI</h3>
 <p>
-  The SDS Dialog component is built on top of MUI's Dialog component. SDS's
-  Dialog passes a styled version of the Paper component (DialogPaper) to the
-  PaperComponent prop. You can further style this DialogPaper component and pass
-  it to your SDS Dialog via the PaperComponent prop (a prop of SDS Dialog) if
-  needed.
+  The SDS Dialog is built on top of MUI's Dialog. The following props differ in
+  whether and how they work:
 </p>
-<p>
-  The SDS Dialog does
-  <strong>not</strong>
-  support the fullScreen prop that the MUI component has (which allows dialogs
-  to overtake the full screen).
-</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>fullScreen</strong>
+      <strong>:</strong>
+      Has no effect in SDS. DialogPaper sets a fixed width per
+      <strong>sdsSize</strong>
+      that wins over the MUI full screen styles.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>maxWidth</strong>
+      <strong>and</strong>
+      <strong>fullWidth</strong>
+      <strong>:</strong>
+      Have no effect in SDS, for the same reason. Use
+      <strong>sdsSize</strong>
+      to pick a width.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>PaperComponent</strong>
+      <strong>:</strong>
+      Defaults to DialogPaper. A replacement receives the
+      <strong>sdsSize</strong>
+      prop, so it should accept DialogPaperProps.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>onClose</strong>
+      <strong>:</strong>
+      Keeps the MUI signature, but SDS swallows the call when
+      <strong>canClickOutsideClose</strong>
+      is false and the reason is backdropClick or escapeKeyDown.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>classes</strong>
+      <strong>:</strong>
+      SDS accepts its own shape here rather than the MUI slot classes. Only
+      <strong>root</strong>
+      and
+      <strong>paper</strong>
+      are applied; the
+      <strong>title</strong>
+      and
+      <strong>actions</strong>
+      keys are declared in the type but never used. Pass a class to DialogTitle
+      or DialogActions directly instead.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>DialogComponent</strong>
+      <strong>:</strong>
+      Declared in DialogExtraProps but not wired up, so passing it does nothing.
+    </p>
+  </li>
+</ul>
 <h3>MUI Documentation</h3>
 <p>
   Documentation for the underlying MUI component can be found
@@ -569,31 +609,14 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>canClickOutsideClose</p></td>
+    <td><p>open</p></td>
     <td><p>bool</p></td>
-    <td><p>false</p></td>
+    <td><p>-</p></td>
     <td>
       <p>
-        A boolean prop that determines whether clicking outside of the Dialog
-        should trigger its closure.
+        Required. If true, the Dialog is shown. The Dialog is a controlled
+        component, so you own this state.
       </p>
-    </td>
-  </tr>
-  <tr>
-    <td><p>onClose</p></td>
-    <td><p>func</p></td>
-    <td><p>function(event: object, reason: string) =&gt; void</p></td>
-    <td>
-      <p>
-        A callback function that is invoked when the Dialog is closed. It
-        receives two parameters:
-      </p>
-      <ul class="zeroheight-bullet-list">
-        <li><p>event&nbsp;The event source of the callback.</p></li>
-        <li>
-          <p>reason&nbsp;Can be:&nbsp;escapeKeyDown,&nbsp;backdropClick</p>
-        </li>
-      </ul>
     </td>
   </tr>
   <tr>
@@ -604,8 +627,63 @@
       <p>| "m"</p>
       <p>| "l"</p>
     </td>
-    <td><p>m</p></td>
-    <td><p>Controls the size of the Dialog component.</p></td>
+    <td><p>"m"</p></td>
+    <td>
+      <p>
+        Sets a fixed width and a minimum height: xs is 400 × 160px, s is 600 ×
+        400px, m is 900 × 480px, and l is 1200 × 600px. It also drives the
+        padding and the title type scale, and is forwarded to DialogPaper,
+        DialogTitle, and DialogActions.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>canClickOutsideClose</p></td>
+    <td><p>bool</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        When false, onClose is not called for a backdrop click or the Esc key,
+        which makes the Dialog persistent. Give those Dialogs an action button
+        that closes them.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onClose</p></td>
+    <td><p>(event: object, reason: string) =&gt; void</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>Called when the Dialog requests to be closed. It receives:</p>
+      <ul class="zeroheight-bullet-list">
+        <li><p>event&nbsp;The event source of the callback.</p></li>
+        <li>
+          <p>reason&nbsp;Can be:&nbsp;escapeKeyDown,&nbsp;backdropClick</p>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><p>PaperComponent</p></td>
+    <td><p>ComponentType&lt;DialogPaperProps&gt;</p></td>
+    <td><p>DialogPaper</p></td>
+    <td>
+      <p>
+        The surface the Dialog is drawn on. A replacement receives sdsSize along
+        with the usual Paper props.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>classes</p></td>
+    <td><p>{ root?: string; paper?: string }</p></td>
+    <td><p>{}</p></td>
+    <td>
+      <p>
+        Class names for the Dialog root and the paper surface. The title and
+        actions keys exist in the type but are not applied.
+      </p>
+    </td>
   </tr>
 </table>
 <h4>DialogTitle Props</h4>
@@ -621,42 +699,76 @@
     <td><p>title</p></td>
     <td><p>string</p></td>
     <td><p>-</p></td>
-    <td>
-      <p>
-        This prop represents the title text to be displayed in the Dialog
-        component.
-      </p>
-    </td>
+    <td><p>The title text of the Dialog.</p></td>
   </tr>
   <tr>
     <td><p>subtitle</p></td>
     <td><p>string</p></td>
     <td><p>-</p></td>
+    <td><p>Secondary text rendered below the title.</p></td>
+  </tr>
+  <tr>
+    <td><p>overline</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
     <td>
       <p>
-        The subtitle prop allows you to include additional descriptive text
-        beneath the title within the Dialog.
+        Small text rendered above the title. Use it for the step count in a
+        multi-step workflow.
       </p>
     </td>
   </tr>
   <tr>
     <td><p>onClose</p></td>
-    <td><p>func</p></td>
-    <td><p>function(event: object, reason: string) =&gt; void</p></td>
+    <td><p>() =&gt; void</p></td>
+    <td><p>-</p></td>
     <td>
       <p>
-        When the onClose prop is set, it results in the appearance of a small x
-        icon in the top-right corner of the Dialog. This x icon provides users
-        with a visual cue to close the Dialog, and clicking on it invokes the
-        specified onClose function.
+        Setting this renders the close button in the top-right corner and calls
+        the function when it is clicked. Omit it for a persistent Dialog. This
+        signature takes no arguments, unlike onClose on Dialog.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>open</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
-    <td><p>If&nbsp;true, the component is shown.</p></td>
+    <td><p>children</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Replaces the entire built-in layout, including the close button, so
+        title, subtitle, overline, and onClose are ignored when children are
+        present. Use DialogTitleOverline, DialogTitleTitle, and
+        DialogTitleSubtitle to keep the SDS type styles.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsSize</p></td>
+    <td>
+      <p>"xs"</p>
+      <p>| "s"</p>
+      <p>| "m"</p>
+      <p>| "l"</p>
+    </td>
+    <td><p>from Dialog</p></td>
+    <td>
+      <p>
+        Injected by Dialog. Set it only when you render DialogTitle outside of a
+        Dialog.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>classes</p></td>
+    <td>
+      <p>
+        { root?: string; title?: string; subtitle?: string; overline?: string;
+        closeButton?: string }
+      </p>
+    </td>
+    <td><p>{}</p></td>
+    <td><p>Class names for the individual parts of the title block.</p></td>
   </tr>
 </table>
 <h4>DialogActions Props</h4>
@@ -671,46 +783,102 @@
   <tr>
     <td><p>buttonPosition</p></td>
     <td><p>"left" | "right"</p></td>
-    <td><p>left</p></td>
+    <td><p>"right"</p></td>
     <td>
       <p>
-        Specifies the position of action buttons within the Dialog component. It
-        can be set to either left or right , allowing you to control the
-        alignment of these buttons.
+        Aligns the action buttons in the footer. Order the buttons so the
+        primary action sits on the outside: last for right, first for left.
       </p>
     </td>
   </tr>
+  <tr>
+    <td><p>sdsSize</p></td>
+    <td>
+      <p>"xs"</p>
+      <p>| "s"</p>
+      <p>| "m"</p>
+      <p>| "l"</p>
+    </td>
+    <td><p>from Dialog</p></td>
+    <td>
+      <p>Injected by Dialog. It controls the gap above the button row.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>classes</p></td>
+    <td><p>{ root?: string }</p></td>
+    <td><p>{}</p></td>
+    <td><p>Class name for the actions row.</p></td>
+  </tr>
 </table>
+<h4>DialogContent Props</h4>
+<p>
+  DialogContent takes the MUI DialogContent props plus a classes object with a
+  root key. It applies the SDS body type styles and removes the MUI padding;
+  everything else is passed straight through.
+</p>
 <h3>Code examples</h3>
 <h4>Default Dialog</h4>
-<p>This example has the minimum props needed for the Dialog component.</p>
-<div class="zeroheight-example" data-example="Dialog/DefaultDialog"></div>
-<h4>Dialog with canclickOutsideClose set as false</h4>
 <p>
-  This example demonstrates a Dialog component that remains open even when
-  clicked outside of the Dialog.
+  The minimum setup: a title, some content, and the open state you control. The
+  onClose on DialogTitle renders the close button, and the one on Dialog handles
+  the backdrop click and the Esc key.
 </p>
-<div
-  class="zeroheight-example"
-  data-example="Dialog/DialogWithCanclickOutsideCloseSetAsFalse"
-></div>
+<div class="zeroheight-example" data-example="Dialog/DefaultDialog"></div>
+<h4>Dialog Sizes</h4>
+<p>
+  Each sdsSize sets a fixed width and a minimum height. The height still grows
+  with the content, and the padding and title type scale with the size.
+</p>
+<div class="zeroheight-example" data-example="Dialog/DialogSizes"></div>
 <h4>Dialog with Action Buttons</h4>
 <p>
-  This example demonstrates a Dialog component that features action Buttons
-  located in the dialog's footer.
+  DialogActions places the buttons in the footer, right aligned by default, so
+  the primary action is listed last.
 </p>
 <div
   class="zeroheight-example"
   data-example="Dialog/DialogWithActionButtons"
 ></div>
-<h4>Dialog with a long content</h4>
+<h4>Dialog with Left-Aligned Buttons</h4>
 <p>
-  This example showcases a Dialog component with lengthy content. To manage the
-  display of this extended content, SDS intelligently adds scroll functionality
-  to the dialogContent area. This ensures that users can easily access any
-  Dialog action buttons that may be present.
+  Setting buttonPosition to left moves the button row to the other side. List
+  the primary action first so it stays on the outside edge.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Dialog/DialogWithLeftAlignedButtons"
+></div>
+<h4>Persistent Dialog</h4>
+<p>
+  Passing canClickOutsideClose as false ignores both the backdrop click and the
+  Esc key. Leaving onClose off DialogTitle also hides the close button, so the
+  action buttons are the only way out and the Dialog needs at least one.
+</p>
+<div class="zeroheight-example" data-example="Dialog/PersistentDialog"></div>
+<h4>Multi-step Dialog</h4>
+<p>
+  The overline is the place for a step count. Keep every step in the same size
+  Dialog, and make the workflow persistent so progress cannot be lost by
+  accident.
+</p>
+<div class="zeroheight-example" data-example="Dialog/MultiStepDialog"></div>
+<h4>Dialog with a Long Content</h4>
+<p>
+  The paper is capped at the viewport height, so DialogContent scrolls on its
+  own while the title and the action buttons stay in place.
 </p>
 <div
   class="zeroheight-example"
   data-example="Dialog/DialogWithALongContent"
+></div>
+<h4>Dialog with a Custom Title</h4>
+<p>
+  Passing children to DialogTitle replaces the built-in layout, which is how you
+  add artwork above the title. The close button is part of that layout, so it
+  goes away too.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Dialog/DialogWithCustomTitle"
 ></div>

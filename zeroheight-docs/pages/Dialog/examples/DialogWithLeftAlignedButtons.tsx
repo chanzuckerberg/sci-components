@@ -1,5 +1,5 @@
-// DialogActions aligns its buttons to the right by default, so the primary
-// action goes last.
+// `buttonPosition="left"` flips the alignment, so the primary action is listed
+// first to keep it closest to the left edge.
 
 import { useState } from "react";
 import {
@@ -29,20 +29,20 @@ function App() {
 
       <Dialog open={isOpen} onClose={handleClose} sdsSize="s">
         <DialogTitle
-          title="Share this collection"
-          subtitle="Anyone with the link can view it"
+          title="Delete this analysis?"
+          subtitle="This action cannot be undone"
           onClose={handleClose}
         />
         <DialogContent>
-          Sharing generates a public link. You can revoke access at any time
-          from the collection settings.
+          The analysis and all of its results will be permanently removed from
+          the project.
         </DialogContent>
-        <DialogActions>
+        <DialogActions buttonPosition="left">
+          <Button sdsStyle="solid" sdsType="destructive" onClick={handleClose}>
+            Delete
+          </Button>
           <Button sdsStyle="outline" sdsType="primary" onClick={handleClose}>
             Cancel
-          </Button>
-          <Button sdsStyle="solid" sdsType="primary" onClick={handleClose}>
-            Share
           </Button>
         </DialogActions>
       </Dialog>

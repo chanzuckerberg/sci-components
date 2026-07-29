@@ -1,35 +1,32 @@
-// Most minimal Dialog (just has the basic requirements)
+// A dismissible Dialog: passing `onClose` to DialogTitle renders the close
+// button, and `onClose` on Dialog handles the backdrop click and the Esc key.
 
 import { useState } from "react";
 import {
   Button,
   Dialog,
-  DialogTitle,
   DialogContent,
-  DialogActions,
+  DialogTitle,
 } from "@czi-sds/components";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  function handleClick() {
-    setIsOpen(true);
-  }
-
-  function handleClose() {
-    setIsOpen(false);
-  }
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="app">
-      <Button sdsStyle="minimal" sdsType="primary" onClick={handleClick}>
+      <Button
+        sdsStyle="solid"
+        sdsType="primary"
+        onClick={() => setIsOpen(true)}
+      >
         Open Dialog
       </Button>
-      <Dialog onClose={handleClose} open={isOpen} sdsSize="xs">
+
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <DialogTitle
-          title="Learning"
-          subtitle="Learning Resources"
-          onClose={handleClose}
+          title="Learning Resources"
+          subtitle="Tutorials, guides, and articles"
+          onClose={() => setIsOpen(false)}
         />
         <DialogContent>
           Embark on a journey of continuous improvement with our treasure trove
