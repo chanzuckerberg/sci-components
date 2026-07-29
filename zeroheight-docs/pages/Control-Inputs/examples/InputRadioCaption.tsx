@@ -3,7 +3,7 @@ import { InputRadio } from "@czi-sds/components";
 function App() {
   return (
     <div className="app">
-      <InputRadio caption="Caption" label="Label" />
+      <InputRadio caption="Caption" label="Label" value="label" />
     </div>
   );
 }

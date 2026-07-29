@@ -24,6 +24,7 @@ function App() {
       <Box sx={{ width: 200 }}>
         <InputSlider
           aria-label="Label"
+          defaultValue={50}
           marks={generateCustomMarks(0, 100)}
           min={0}
           max={100}

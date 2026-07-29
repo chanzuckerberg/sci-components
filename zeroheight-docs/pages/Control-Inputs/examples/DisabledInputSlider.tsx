@@ -5,7 +5,14 @@ function App() {
   return (
     <div className="app">
       <Box sx={{ width: 200 }}>
-        <InputSlider aria-label="Label" defaultValue={50} />
+        <InputSlider
+          aria-label="Label"
+          defaultValue={40}
+          marks
+          step={20}
+          valueLabelDisplay="on"
+          disabled
+        />
       </Box>
     </div>
   );

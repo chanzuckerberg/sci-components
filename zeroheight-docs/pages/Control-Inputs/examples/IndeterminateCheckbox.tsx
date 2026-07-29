@@ -1,52 +1,45 @@
 import { useState } from "react";
-import { Box } from "@mui/material";
 import { InputCheckbox } from "@czi-sds/components";
+
+const CHILDREN = ["Child 1", "Child 2"];
 
 function App() {
   const [checked, setChecked] = useState([true, false]);
 
-  const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, event.target.checked]);
-  };
-
-  const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([event.target.checked, checked[1]]);
-  };
-
-  const handleChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked([checked[0], event.target.checked]);
-  };
-
-  const children = (
-    <Box sx={{ display: "flex", flexDirection: "column", ml: 6 }}>
-      <InputCheckbox
-        label="Child 1"
-        checkboxProps={{
-          checked: checked[0],
-          onChange: handleChange2,
-        }}
-      />
-      <InputCheckbox
-        label="Child 2"
-        checkboxProps={{
-          checked: checked[1],
-          onChange: handleChange3,
-        }}
-      />
-    </Box>
-  );
+  const allChecked = checked.every(Boolean);
+  const someChecked = checked.some(Boolean);
 
   return (
     <div className="app">
       <InputCheckbox
         label="Parent"
-        checkboxProps={{
-          checked: checked[0] && checked[1],
-          indeterminate: checked[0] !== checked[1],
-          onChange: handleChange1,
-        }}
+        stage={
+          allChecked ? "checked" : someChecked ? "indeterminate" : "unchecked"
+        }
+        onChange={() => setChecked(checked.map(() => !allChecked))}
       />
-      {children}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginLeft: "24px",
+        }}
+      >
+        {CHILDREN.map((label, index) => (
+          <InputCheckbox
+            key={label}
+            label={label}
+            stage={checked[index] ? "checked" : "unchecked"}
+            onChange={() =>
+              setChecked((previous) =>
+                previous.map((value, position) =>
+                  position === index ? !value : value
+                )
+              )
+            }
+          />
+        ))}
+      </div>
     </div>
   );
 }
