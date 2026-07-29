@@ -631,37 +631,121 @@
   </figure>
 </div>
 <h2>Code</h2>
-<div
-  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    Code details coming soon
-  </p>
-</div>
-<div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    The code examples below must install dependencies before displaying and may
-    take extra time to load
-  </p>
-</div>
 <h2>Hero</h2>
 <h3>SDS Source Code</h3>
-<p>The component's source code in the SDS codebase can be found here.</p>
-<h3>SDS vs MUI</h3>
-<p>[update this section]</p>
-<h3>MUI Documentation</h3>
 <p>
-  Documentation for the underlying MUI [update] component can be found here.
+  The Hero component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Hero/index.tsx"
+  >
+    here
+  </a>
+  .
 </p>
+<h3>Anatomy</h3>
+<p>
+  Hero is not built on a MUI component. It renders a single
+  <strong>&lt;section&gt;</strong>
+  with the layers stacked inside it, so there is no MUI API underneath and no
+  subcomponents to import:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      The background, from
+      <strong>backgroundFill</strong>
+      . A string is applied as a background color; a node is rendered into a
+      full-bleed container where any img or video is stretched to cover the
+      section.
+    </p>
+  </li>
+  <li>
+    <p>
+      The darkening mask, from
+      <strong>darkeningMask</strong>
+      , which sits above the background and below everything else.
+    </p>
+  </li>
+  <li>
+    <p>
+      The overlay media layer, from
+      <strong>overlayMedia</strong>
+      , positioned on its own so it does not follow the text.
+    </p>
+  </li>
+  <li>
+    <p>
+      The content block, made of the
+      <strong>headerText</strong>
+      heading, the
+      <strong>captionText</strong>
+      paragraph, and a slot holding
+      <strong>children</strong>
+      .
+    </p>
+  </li>
+  <li>
+    <p>
+      The vignette, from
+      <strong>darkeningVignette</strong>
+      , drawn on top of everything along the top edge.
+    </p>
+  </li>
+</ul>
+<p>
+  <strong>headerText</strong>
+  renders as an
+  <strong>h1</strong>
+  , so use one Hero per page and keep the rest of the page's headings below it.
+</p>
+<h3>Layout notes</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      The side padding is driven by the viewport, not by the width of the Hero:
+      24px below 512px, 40px from 512px, and 120px from 1024px, which are the
+      SDS sm, md, and lg breakpoints. The top and bottom padding is always 40px.
+      In these previews the Hero is narrower than the viewport, so you are
+      seeing the large breakpoint padding inside a small box.
+    </p>
+  </li>
+  <li>
+    <p>
+      There is no built-in maximum width on the content area. Use
+      <strong>overlayContentWidth</strong>
+      when the text should not span the full section.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>heroHeight</strong>
+      is ignored below 512px, where the section always falls back to
+      fit-content.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>darkeningMask</strong>
+      on its own changes nothing, because
+      <strong>darkeningMaskOpacity</strong>
+      defaults to 0. Set both.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>hasInvertTextColor</strong>
+      only applies to the header and the caption. Content passed as children
+      keeps its own colors.
+    </p>
+  </li>
+</ul>
 <h3>Props</h3>
 <p>
-  Any custom SDS props and MUI props required for implementation are found on
-  the table below. See the MUI documentation for additional optional props.
+  Hero owns all of these props. Anything else, such as
+  <strong>className</strong>
+  or event handlers, is spread onto the section element.
 </p>
+<h4>Content</h4>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -669,6 +753,276 @@
     <td><p>Default</p></td>
     <td><p>Description</p></td>
   </tr>
+  <tr>
+    <td><p>headerText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The headline. Rendered as an h1 and omitted entirely when not provided.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>headerFontSize</p></td>
+    <td>
+      <p>"s"</p>
+      <p>| "m"</p>
+      <p>| "l"</p>
+    </td>
+    <td><p>"m"</p></td>
+    <td><p>The type scale of the headline.</p></td>
+  </tr>
+  <tr>
+    <td><p>captionText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Supporting copy rendered below the headline.</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Rendered in a full-width slot below the caption. Use it for buttons,
+        links, or a search field.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>hasInvertTextColor</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Switches the headline and caption to the inverse text color for use on
+        dark backgrounds.
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Layout</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>heroHeight</p></td>
+    <td><p>string</p></td>
+    <td><p>"fit-content"</p></td>
+    <td>
+      <p>
+        Any CSS height. Below a 512px viewport it is ignored and the section
+        falls back to fit-content.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlayContentPosition</p></td>
+    <td>
+      <p>
+        "top-left" | "top" | "top-right" | "left" | "center" | "right" |
+        "bottom-left" | "bottom" | "bottom-right"
+      </p>
+    </td>
+    <td><p>"center"</p></td>
+    <td>
+      <p>
+        Where the content block sits inside the section. Only visible when the
+        section is taller or wider than the content.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlayContentWidth</p></td>
+    <td><p>string</p></td>
+    <td><p>"100%"</p></td>
+    <td>
+      <p>Any CSS width for the content block, for example "60%" or "640px".</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>textAlignment</p></td>
+    <td><p>"left" | "center" | "right"</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Aligns the text within the content block, which starts at the leading
+        edge when the prop is unset. This is separate from
+        overlayContentPosition, which moves the block itself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlayContainerMinMargin</p></td>
+    <td><p>{ small: number; medium: number; large: number }</p></td>
+    <td><p>24px / 40px / 120px</p></td>
+    <td>
+      <p>
+        Overrides the side padding at each breakpoint. The value is written
+        straight into CSS, so it needs a unit. The number type in the signature
+        is wrong: a plain number produces an invalid declaration and the side
+        padding drops to zero.
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Background and media</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>backgroundFill</p></td>
+    <td><p>string | ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A string becomes the background color, so any CSS color or gradient
+        works. A node is rendered full-bleed behind the content, and an img or
+        video inside it is scaled to cover the section.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>darkeningMask</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Adds a solid layer over the background. Pair it with
+        darkeningMaskOpacity, which is 0 by default.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>darkeningMaskColor</p></td>
+    <td><p>string</p></td>
+    <td><p>"#000000"</p></td>
+    <td><p>The color of that layer.</p></td>
+  </tr>
+  <tr>
+    <td><p>darkeningMaskOpacity</p></td>
+    <td><p>number</p></td>
+    <td><p>0</p></td>
+    <td><p>The opacity of that layer, from 0 to 1.</p></td>
+  </tr>
+  <tr>
+    <td><p>darkeningVignette</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Draws a 40px gradient along the top edge, above the content, so a
+        transparent header navigation stays legible.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlayMedia</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A media layer above the background and independent of the text block. An
+        img or video inside it is scaled to cover the layer.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlayMediaPosition</p></td>
+    <td>
+      <p>
+        "top-left" | "top" | "top-right" | "left" | "center" | "right" |
+        "bottom-left" | "bottom" | "bottom-right"
+      </p>
+    </td>
+    <td><p>"center"</p></td>
+    <td><p>Where that layer sits inside the section.</p></td>
+  </tr>
+  <tr>
+    <td><p>overlayMediaMaxWidth</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sets the width of the media layer outright rather than a maximum,
+        despite the name. Without it the layer has no width.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlayMediaMaxHeight</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Sets the height of the media layer, with the same caveat.</p></td>
+  </tr>
+  <tr>
+    <td><p>overlayMediaMargin</p></td>
+    <td>
+      <p>string | { small: string; medium: string; large: string }</p>
+    </td>
+    <td><p>"0"</p></td>
+    <td>
+      <p>
+        A margin shorthand for the media layer. Pass the object form to vary it
+        by breakpoint: small below md, medium below lg, large above.
+      </p>
+    </td>
+  </tr>
 </table>
 <h3>Code examples</h3>
-<div class="zeroheight-example" data-example="Hero/CodeExamples"></div>
+<h4>Default Hero</h4>
+<p>
+  A headline, a caption, and a background color. With no heroHeight the section
+  is as tall as its content plus the 40px of top and bottom padding.
+</p>
+<div class="zeroheight-example" data-example="Hero/DefaultHero"></div>
+<h4>Header Sizes</h4>
+<p>
+  headerFontSize picks the type scale for the headline. The caption is fixed and
+  does not change with it.
+</p>
+<div class="zeroheight-example" data-example="Hero/HeroHeaderSizes"></div>
+<h4>Hero with a Background Image</h4>
+<p>
+  Passing a node to backgroundFill renders it full-bleed behind the content. The
+  darkening mask keeps the text readable, and it needs both darkeningMask and a
+  darkeningMaskOpacity above zero.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Hero/HeroWithBackgroundImage"
+></div>
+<h4>Content Position and Alignment</h4>
+<p>
+  overlayContentPosition moves the whole content block within the section, while
+  textAlignment aligns the text inside that block. Both need room to be visible,
+  which comes from heroHeight and overlayContentWidth.
+</p>
+<div class="zeroheight-example" data-example="Hero/HeroContentPosition"></div>
+<h4>Hero with a Call to Action</h4>
+<p>
+  Children render in a slot below the caption. That slot keeps its own colors,
+  so hasInvertTextColor does not reach the buttons.
+</p>
+<div class="zeroheight-example" data-example="Hero/HeroWithCallToAction"></div>
+<h4>Hero with Overlay Media</h4>
+<p>
+  Overlay media is positioned independently of the text, so narrow the content
+  block with overlayContentWidth to keep the two from overlapping.
+</p>
+<div class="zeroheight-example" data-example="Hero/HeroWithOverlayMedia"></div>
+<h4>Hero with a Vignette</h4>
+<p>
+  The vignette is a 40px gradient along the top edge, meant to sit behind a
+  transparent header navigation.
+</p>
+<div class="zeroheight-example" data-example="Hero/HeroWithVignette"></div>
