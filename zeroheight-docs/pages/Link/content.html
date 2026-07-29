@@ -2,6 +2,18 @@
   Links are interactive elements that, when clicked, navigate the user away from
   the page they are currently viewing to another page or screen.
 </p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>For engineers:</strong>
+    the
+    <strong>Link</strong>
+    component is deprecated and should not be used in new code. Build links from
+    an anchor plus the SDS link type styles instead — see the Link typography
+    section under Code below.
+  </p>
+</div>
 <h2>Guidelines</h2>
 <h2>Overview</h2>
 <table class="zeroheight-table">
@@ -260,37 +272,291 @@
   </figure>
 </div>
 <h2>Code</h2>
-<div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    The code examples below must install dependencies before displaying and may
-    take extra time to load
-  </p>
-</div>
-<h2>Link</h2>
-<h3>SDS Source Code</h3>
+<h2>Link typography</h2>
 <p>
-  The component's source code in the SDS codebase can be found
+  There is no Link component to reach for. A link is an anchor — or whatever
+  element your router gives you — carrying the
+  <strong>link</strong>
+  type style and the accent text action colors. That keeps links as text rather
+  than as a component, which is what lets them sit inline in a sentence.
+</p>
+<p>
+  The link type styles are part of SDS typography. You can see them all in the
   <a
-    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Link"
+    href="https://chanzuckerberg.github.io/sci-components/?path=/story/bases-typography--link-typography"
+  >
+    Link Typography
+  </a>
+  story, and the definitions live
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/styles/common/mixins/fonts.ts"
   >
     here
   </a>
   .
 </p>
-<h3>MUI Documentation</h3>
+<h3>The type style</h3>
 <p>
-  Documentation for the underlying MUI component can be found
-  <a href="https://mui.com/material-ui/react-link/">here</a>
-  . There are no differences between the SDS and MUI component.
+  Link styles carry the same metrics as body copy at every size, plus a
+  permanent
+  <strong>text-decoration: underline</strong>
+  . The underline is the point: it marks the link without relying on color
+  alone, so it also satisfies the contrast requirement on surfaces where the
+  accent color is hard to distinguish from the surrounding text.
 </p>
+<p>
+  Three weights are available for every size: regular (400), medium (500), and
+  semibold (600). In Emotion, the mixins are named
+  <strong>fontLink{Size}</strong>
+  ,
+  <strong>fontLinkMedium{Size}</strong>
+  , and
+  <strong>fontLinkSemibold{Size}</strong>
+  , for example
+  <strong>fontLinkS</strong>
+  or
+  <strong>fontLinkSemiboldXs</strong>
+  . Outside Emotion, each one is also a CSS and SCSS variable named
+  <strong>--sds-font-link-{size}-{weight}-font</strong>
+  (with matching
+  <strong>-letter-spacing</strong>
+  and
+  <strong>-text-decoration</strong>
+  variables), and a Tailwind font class.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Mixin</p></td>
+    <td><p>CSS / SCSS variable</p></td>
+    <td><p>Wide</p></td>
+    <td><p>Narrow</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkL</p></td>
+    <td>
+      <p>--sds-font-link-l-400-font</p>
+      <p>$sds-font-link-l-400-font</p>
+    </td>
+    <td><p>18px / 28px</p></td>
+    <td><p>16px / 26px</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkM</p></td>
+    <td>
+      <p>--sds-font-link-m-400-font</p>
+      <p>$sds-font-link-m-400-font</p>
+    </td>
+    <td><p>16px / 26px</p></td>
+    <td><p>14px / 24px</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkS</p></td>
+    <td>
+      <p>--sds-font-link-s-400-font</p>
+      <p>$sds-font-link-s-400-font</p>
+    </td>
+    <td><p>14px / 24px</p></td>
+    <td><p>14px / 24px</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkXs</p></td>
+    <td>
+      <p>--sds-font-link-xs-400-font</p>
+      <p>$sds-font-link-xs-400-font</p>
+    </td>
+    <td><p>13px / 20px</p></td>
+    <td><p>13px / 20px</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkXxs</p></td>
+    <td>
+      <p>--sds-font-link-xxs-400-font</p>
+      <p>$sds-font-link-xxs-400-font</p>
+    </td>
+    <td><p>12px / 18px</p></td>
+    <td><p>12px / 18px</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkXxxs</p></td>
+    <td>
+      <p>--sds-font-link-xxxs-400-font</p>
+      <p>$sds-font-link-xxxs-400-font</p>
+    </td>
+    <td><p>11px / 16px</p></td>
+    <td><p>12px / 18px</p></td>
+  </tr>
+  <tr>
+    <td><p>fontLinkXxxxs</p></td>
+    <td>
+      <p>--sds-font-link-xxxxs-400-font</p>
+      <p>$sds-font-link-xxxxs-400-font</p>
+    </td>
+    <td><p>10px / 14px</p></td>
+    <td><p>10px / 14px</p></td>
+  </tr>
+</table>
+<p>
+  Swap the
+  <strong>400</strong>
+  in a variable name for
+  <strong>500</strong>
+  or
+  <strong>600</strong>
+  to get the medium or semibold weight of the same size.
+</p>
+<h3>Color</h3>
+<p>
+  Take the color from the accent text action tokens, which is what makes a link
+  read as interactive:
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>State</p></td>
+    <td><p>Selector</p></td>
+    <td><p>CSS variable</p></td>
+  </tr>
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>getSemanticColors(props).accent.textAction</p></td>
+    <td><p>--sds-color-semantic-accent-text-action</p></td>
+  </tr>
+  <tr>
+    <td><p>Hover</p></td>
+    <td><p>getSemanticColors(props).accent.textActionHover</p></td>
+    <td><p>--sds-color-semantic-accent-text-action-hover</p></td>
+  </tr>
+  <tr>
+    <td><p>Pressed</p></td>
+    <td><p>getSemanticColors(props).accent.textActionPressed</p></td>
+    <td><p>--sds-color-semantic-accent-text-action-pressed</p></td>
+  </tr>
+</table>
+<p>
+  On a fill or an image where that accent color has too little contrast, use the
+  dashed treatment described in the guidelines above instead: keep the link the
+  same color as the paragraph it sits in (
+  <strong>color: inherit</strong>
+  ), swap the underline for
+  <strong>underline dashed</strong>
+  , and turn it solid on hover.
+</p>
+<h3>Notes</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      Use a real
+      <strong>&lt;a href&gt;</strong>
+      , or your router's link component, so the browser gives you keyboard
+      focus, middle-click, and the right role for free.
+    </p>
+  </li>
+  <li>
+    <p>
+      Add the
+      <strong>focusVisibleA11yStyle</strong>
+      mixin for the SDS focus ring, which is what every SDS component uses.
+    </p>
+  </li>
+  <li>
+    <p>
+      If the element keeps the user on the page — opening a Dialog, toggling
+      something, submitting — it is a
+      <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/2224d8">
+        Button – Minimal
+      </a>
+      , not a link.
+    </p>
+  </li>
+</ul>
+<h3>Code examples</h3>
+<h4>An SDS link</h4>
+<p>
+  The pattern to copy: an anchor with the link type style, the accent text
+  action colors, and the SDS focus ring.
+</p>
+<div class="zeroheight-example" data-example="Link/LinkTypography"></div>
+<h4>Sizes and weights</h4>
+<p>
+  Match the link's size to the copy around it. Semibold is for links that need
+  to stand out on their own, such as a call to action at the end of a card.
+</p>
+<div class="zeroheight-example" data-example="Link/LinkTypographySizes"></div>
+<h4>Dashed link on a low-contrast surface</h4>
+<p>
+  On an accent fill the link takes the paragraph's color and relies on the
+  dashed underline, which goes solid on hover and on focus.
+</p>
+<div class="zeroheight-example" data-example="Link/DashedLink"></div>
+<h2>Deprecated: the Link component</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Do not use this in new code.</strong>
+    The
+    <strong>Link</strong>
+    component still ships, and its story sits under
+    <strong>Deprecated</strong>
+    in this Storybook. It is documented here only so that existing usages can be
+    migrated.
+  </p>
+</div>
+<p>
+  It wrapped MUI's Link, offered two sizes and a bold weight, and underlined
+  only on hover in its default style. Its source is
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Link"
+  >
+    here
+  </a>
+  and the underlying
+  <a href="https://mui.com/material-ui/react-link/">MUI documentation</a>
+  still applies to the props it passed through.
+</p>
+<h3>Migrating away from it</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Old prop</p></td>
+    <td><p>Replace with</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsSize="s"</p></td>
+    <td><p>fontLinkS</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsSize="xs"</p></td>
+    <td><p>fontLinkXs</p></td>
+  </tr>
+  <tr>
+    <td><p>fontWeight="bold"</p></td>
+    <td>
+      <p>
+        The semibold mixin for the size, such as fontLinkSemiboldS. The
+        component's "bold" was 600, which SDS calls semibold.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle="default"</p></td>
+    <td>
+      <p>
+        The link type style plus the accent text action colors. Note the
+        difference: the component only underlined on hover, whereas the type
+        style is underlined in every state.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle="dashed"</p></td>
+    <td>
+      <p>
+        color: inherit with text-decoration: underline dashed, going solid on
+        hover, as in the last example above.
+      </p>
+    </td>
+  </tr>
+</table>
 <h3>Props</h3>
-<p>
-  Any custom SDS props and MUI props required for implementation are found on
-  the table below. See the MUI documentation for additional optional props.
-</p>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -307,16 +573,18 @@
     <td><p>"default"</p></td>
     <td>
       <p>
-        The style of underline corresponding to the text-decoration CSS
-        property. Default is underline.
+        "default" underlines on hover, focus, and press only; "dashed" is
+        underlined dashed at rest and solid on interaction.
       </p>
     </td>
   </tr>
   <tr>
     <td><p>sdsSize</p></td>
     <td><p>"xs" | "s"</p></td>
-    <td><p>"xs"</p></td>
-    <td><p>The font size of the Link component</p></td>
+    <td><p>"s"</p></td>
+    <td>
+      <p>The font size, taken from the body scale rather than the link one.</p>
+    </td>
   </tr>
   <tr>
     <td><p>fontWeight</p></td>
@@ -325,16 +593,6 @@
       <p>| "bold"</p>
     </td>
     <td><p>"normal"</p></td>
-    <td><p>The font weight of the Link component.</p></td>
+    <td><p>Maps to font-weight 400 and 600.</p></td>
   </tr>
 </table>
-<h3>Code examples</h3>
-<h4>Link – Default</h4>
-<p>This example has the minimum props needed for the Link component.</p>
-<div class="zeroheight-example" data-example="Link/LinkDefault"></div>
-<h4>Link – Dashed</h4>
-<p>
-  This example demonstrates the use of a the dashed variant of the Link
-  component embedded within a sentence.
-</p>
-<div class="zeroheight-example" data-example="Link/LinkDashed"></div>
