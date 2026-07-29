@@ -1,26 +1,22 @@
-import { List, ListItem } from "@czi-sds/components";
+// An unordered list is the default: no props needed on List or ListItem. The
+// subheader goes through MUI's subheader prop, with disableSticky so it scrolls
+// with the content.
+
+import { List, ListItem, ListSubheader } from "@czi-sds/components";
 
 function App() {
   return (
-    <div className="app">
-      <List>
-        <ListItem fontSize="l" marginBottom="s">
-          fontSize=l marginBottom=s
-        </ListItem>
-        <ListItem fontSize="m" marginBottom="s">
-          fontSize=m marginBottom=s
-        </ListItem>
-        <ListItem fontSize="s" marginBottom="xs">
-          fontSize=s marginBottom=xs
-        </ListItem>
-        <ListItem fontSize="xs" marginBottom="xs">
-          fontSize=xs marginBottom=xs
-        </ListItem>
-        <ListItem fontSize="xxs" marginBottom="xs">
-          fontSize=xxs marginBottom=xs
-        </ListItem>
-        <ListItem fontSize="xxxs" marginBottom="xxs">
-          fontSize=xxxs marginBottom=xxs
+    <div className="app" style={{ maxWidth: "460px" }}>
+      <List
+        subheader={
+          <ListSubheader disableSticky>Before you upload</ListSubheader>
+        }
+      >
+        <ListItem>Files must be gzipped FASTQ or BAM.</ListItem>
+        <ListItem>Every sample needs a unique identifier.</ListItem>
+        <ListItem>
+          Reads shorter than 30 bases are dropped during processing, so trim
+          them beforehand if you want to keep them.
         </ListItem>
       </List>
     </div>
