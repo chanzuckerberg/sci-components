@@ -707,6 +707,50 @@
   </a>
   .
 </p>
+<h3>Anatomy</h3>
+<p>
+  A ContentCard takes its text through props rather than through composition:
+  overlineText, titleText, subtitleText, and metadataText are rendered in that
+  order, each with its own styling. Children are for everything below that text
+  block.
+</p>
+<p>
+  Alongside the card itself, the package exports the pieces used to fill those
+  children:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>ContentCardBody</strong>
+      : wraps body copy so it picks up the card's body styling.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>ContentCardActions</strong>
+      : holds the card's buttons. It accepts SDS Button elements only, and
+      anything else is dropped with a warning. The card injects buttonsPosition
+      into it, so alignment is set on the card rather than here.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>ContentCardMedia</strong>
+      : MUI's CardMedia, re-exported for building an image element by hand
+      instead of passing a URL to the image prop.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong
+        >ContentCardOverline, ContentCardTitle, ContentCardSubtitle,
+        ContentCardMetadata</strong
+      >
+      : the styled text elements the card uses internally, exported for reuse in
+      custom layouts. Prefer the matching props for ordinary cards.
+    </p>
+  </li>
+</ul>
 <h3>MUI Documentation</h3>
 <p>
   Documentation for the underlying MUI Card component can be found
@@ -726,13 +770,27 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
+    <td><p>visualElementType</p></td>
+    <td><p>"image" | "icon" | "none"</p></td>
+    <td><p>"none"</p></td>
+    <td>
+      <p>
+        <strong>Required.</strong>
+        Specifies what type of visual element to render on the card: an image,
+        an icon, or none. It also narrows which visual props are accepted, so
+        image props are only available on an image card and icon on an icon
+        card.
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td><p>boundingBox</p></td>
     <td><p>boolean</p></td>
     <td><p>true</p></td>
     <td>
       <p>
         If true, wraps content and visuals inside a bounded layout with
-        background and padding.
+        background and padding. It is forced on when clickableCard is true.
       </p>
     </td>
   </tr>
@@ -764,7 +822,14 @@
     <td><p>decorativeBorder</p></td>
     <td><p>boolean</p></td>
     <td><p>false</p></td>
-    <td><p>If true, shows a decorative border around the card.</p></td>
+    <td>
+      <p>
+        If true, draws an accent bar along the leading edge of the card: down
+        the left side of a wide card, across the top of a narrow one. It
+        requires boundingBox, and on an image card it only appears when the
+        image is on the right, or on the left with imagePadding.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>children</p></td>
@@ -782,17 +847,21 @@
     <td><p>boolean</p></td>
     <td><p>false</p></td>
     <td>
-      <p>If true, wraps the card with an action area and makes it clickable.</p>
+      <p>
+        If true, wraps the card with an action area and makes it clickable.
+        Because the card then is a button, ContentCardActions keeps only its
+        first button and renders it as a div.
+      </p>
     </td>
   </tr>
   <tr>
     <td><p>clickableCardProps</p></td>
-    <td><p>Partial&lt;SdsMinimalButtonProps&gt;</p></td>
+    <td><p>Partial&lt;ButtonProps &amp; { target?: string }&gt;</p></td>
     <td><p>-</p></td>
     <td>
       <p>
         Props forwarded to the clickable card wrapper when clickableCard is
-        true.
+        true, including href and target to make the whole card a link.
       </p>
     </td>
   </tr>
@@ -856,7 +925,9 @@
     <td>
       <p>
         Determines the card layout style. wide shows the image and content side
-        by side, narrow stacks them vertically.
+        by side, narrow stacks them vertically. The card watches its own width
+        and switches to narrow on its own once it drops below roughly 595px, so
+        this prop sets the layout it uses when there is room.
       </p>
     </td>
   </tr>
@@ -872,25 +943,84 @@
     <td><p>-</p></td>
     <td><p>The main title text of the card.</p></td>
   </tr>
-  <tr>
-    <td><p>visualElementType</p></td>
-    <td><p>"image" | "icon" | "none"</p></td>
-    <td><p>"none"</p></td>
-    <td>
-      <p>
-        Specifies what type of visual element to render on the card: an image,
-        an icon, or none.
-      </p>
-    </td>
-  </tr>
 </table>
 <h3>Code examples</h3>
+<h4><strong>Default Content Card</strong></h4>
+<p>
+  This example has the minimum props needed for the ContentCard component.
+  visualElementType is the only required prop, and it must be set even when the
+  card has no visual.
+</p>
 <div
-  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    Due to a bug in Zeroheight we are unable to publish code examples at this
-    time; we will update this section once a fix is released.
-  </p>
-</div>
+  class="zeroheight-example"
+  data-example="Content-Card/DefaultContentCard"
+></div>
+<h4>Text slots</h4>
+<p>
+  This example shows the four text props and the order they render in, with body
+  copy passed as children.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/ContentCardTextSlots"
+></div>
+<h4>Content Card with an image</h4>
+<p>
+  This example shows an image card in both image positions. The image prop takes
+  either a URL string or a CardMedia element, imageSize sets the width of the
+  image area, and imagePadding insets the image instead of letting it meet the
+  card border.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/ContentCardWithAnImage"
+></div>
+<h4>Content Card with an icon</h4>
+<p>
+  This example swaps the image for an icon. The image and icon props are
+  mutually exclusive, and which one is available follows visualElementType.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/ContentCardWithAnIcon"
+></div>
+<h4>Narrow Content Card</h4>
+<p>
+  This example shows the narrow layout, which stacks the visual above the
+  content and suits card grids. A wide card also switches to this layout on its
+  own once it is rendered below roughly 595px.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/NarrowContentCard"
+></div>
+<h4>Content Card with actions</h4>
+<p>
+  This example adds a button row through ContentCardActions, which accepts SDS
+  Button elements only. Alignment comes from buttonsPosition on the card.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/ContentCardWithActions"
+></div>
+<h4>Clickable Content Card</h4>
+<p>
+  This example makes the whole card a single click target. clickableCardProps is
+  forwarded to the wrapper, so the card can act as a link, and only the first
+  button in ContentCardActions survives, since a button cannot be nested inside
+  another button.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/ClickableContentCard"
+></div>
+<h4>Bounding box and decorative border</h4>
+<p>
+  This example shows the two framing options: the accent bar added by
+  decorativeBorder, and a card with boundingBox turned off so it sits directly
+  on the page.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Content-Card/ContentCardBoundingBox"
+></div>

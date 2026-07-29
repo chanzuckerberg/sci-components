@@ -3,3 +3,11 @@ export const PREVIEW_CLASS = "zeroheight-example-preview";
 
 /** Expand/collapse control inside a code block's caption bar. */
 export const TOGGLE_CLASS = "zeroheight-code-toggle";
+
+/**
+ * Storybook's opt-out from the typography it applies to bare elements across a
+ * docs page. Previews render real components, so the whole subtree around one
+ * carries this class — including the placeholder the preview is portaled into,
+ * which would otherwise pass the docs body font down by inheritance.
+ */
+export const SB_UNSTYLED_CLASS = "sb-unstyled";

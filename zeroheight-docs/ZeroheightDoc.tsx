@@ -1,9 +1,19 @@
 import styled from "@emotion/styled";
 import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import { createPortal } from "react-dom";
-import { TOGGLE_CLASS } from "./constants";
+import { PREVIEW_CLASS, SB_UNSTYLED_CLASS, TOGGLE_CLASS } from "./constants";
 import { highlightBlock } from "./highlight";
 import { ZeroheightExample } from "./ZeroheightExample";
+
+/**
+ * Live previews are portaled into this container, so the prose styles below
+ * would otherwise cascade onto the real components inside them (a card title is
+ * a `<p>`, an icon is an `<svg>`). Every bare element selector carries this
+ * guard so previews render exactly as the components do in a story.
+ * `:where()` keeps the guard at zero specificity, leaving the prose cascade as
+ * it was.
+ */
+const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
 
 /**
  * Scoped container for rendering raw ZeroHeight HTML inside a Storybook docs
@@ -23,60 +33,57 @@ const Container = styled.div`
   max-width: 960px;
   margin: 0 auto;
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1${OUTSIDE_PREVIEW},
+    h2${OUTSIDE_PREVIEW},
+    h3${OUTSIDE_PREVIEW},
+    h4${OUTSIDE_PREVIEW},
+    h5${OUTSIDE_PREVIEW},
+    h6${OUTSIDE_PREVIEW} {
     line-height: 1.25;
     margin: 1.6em 0 0.6em;
     font-weight: 600;
   }
 
-  h1 {
+  h1${OUTSIDE_PREVIEW} {
     font-size: 2rem;
   }
-  h2 {
+  h2${OUTSIDE_PREVIEW} {
     font-size: 1.5rem;
     padding-bottom: 0.3em;
     border-bottom: 1px solid rgba(128, 128, 128, 0.3);
   }
-  h3 {
+  h3${OUTSIDE_PREVIEW} {
     font-size: 1.25rem;
   }
 
-  p {
+  p${OUTSIDE_PREVIEW} {
     margin: 0.75em 0;
   }
 
-  a {
+  a${OUTSIDE_PREVIEW} {
     color: #0b6cccff;
     text-decoration: none;
   }
-  a:hover {
+  a${OUTSIDE_PREVIEW}:hover {
     text-decoration: underline;
   }
 
-  img,
-  svg,
-  video {
+  img${OUTSIDE_PREVIEW}, svg${OUTSIDE_PREVIEW}, video${OUTSIDE_PREVIEW} {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
   }
 
-  ul,
-  ol {
+  ul${OUTSIDE_PREVIEW}, ol${OUTSIDE_PREVIEW} {
     padding-left: 1.5em;
     margin: 0.75em 0;
   }
-  li {
+  li${OUTSIDE_PREVIEW} {
     margin: 0.25em 0;
   }
 
   /* Inline code keeps a subtle, theme-agnostic chip look. */
-  code {
+  code${OUTSIDE_PREVIEW} {
     font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
     background: rgba(128, 128, 128, 0.15);
     padding: 0.15em 0.35em;
@@ -114,17 +121,17 @@ const Container = styled.div`
     border-radius: 6px;
     padding: 0.75em 1em;
   }
-  figure {
+  figure${OUTSIDE_PREVIEW} {
     margin: 0;
   }
 
-  figure > pre {
+  figure > pre${OUTSIDE_PREVIEW} {
     padding: 20px !important;
   }
 
   /* The language label sits as a compact header bar on top of the code and
      doubles as an expand/collapse toggle. */
-  figcaption {
+  figcaption${OUTSIDE_PREVIEW} {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -189,7 +196,7 @@ const Container = styled.div`
 
   /* Fenced code blocks use a fixed dark "editor" surface in both light and
      dark docs so highlighted snippets read consistently and clearly as code. */
-  pre {
+  pre${OUTSIDE_PREVIEW} {
     margin: 1.25em 0;
     background: #0d1117;
     color: #c9d1d9;
@@ -204,17 +211,20 @@ const Container = styled.div`
   }
   /* Reset margins when the pre lives inside a snippet/figure so the caption
      bar and code read as one seamless block. */
-  figure pre,
-  .zeroheight-code-snippet pre,
-  .zeroheight-live-code pre {
+  figure
+    pre${OUTSIDE_PREVIEW},
+    .zeroheight-code-snippet
+    pre${OUTSIDE_PREVIEW},
+    .zeroheight-live-code
+    pre${OUTSIDE_PREVIEW} {
     margin: 0;
     padding: 16px 20px;
   }
-  figcaption + pre {
+  figcaption + pre${OUTSIDE_PREVIEW} {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  pre code {
+  pre code${OUTSIDE_PREVIEW} {
     font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
     background: none;
     padding: 0;
@@ -280,7 +290,7 @@ const Container = styled.div`
     font-weight: 600;
   }
 
-  blockquote {
+  blockquote${OUTSIDE_PREVIEW} {
     margin: 1em 0;
     padding: 0.25em 1em;
     border-left: 3px solid rgba(128, 128, 128, 0.4);
@@ -288,38 +298,37 @@ const Container = styled.div`
     opacity: 0.9;
   }
 
-  table {
+  table${OUTSIDE_PREVIEW} {
     border-collapse: collapse;
     width: 100%;
     margin: 1em 0;
     font-size: 0.9rem;
   }
-  th,
-  td {
+  th${OUTSIDE_PREVIEW}, td${OUTSIDE_PREVIEW} {
     border: 1px solid rgba(128, 128, 128, 0.3);
     padding: 0.35em 0.6em;
     text-align: left;
     vertical-align: top;
   }
   /* ZeroHeight wraps most cell text in <p>; drop its margins so rows stay tight. */
-  th > p,
-  td > p {
+  th > p${OUTSIDE_PREVIEW}, td > p${OUTSIDE_PREVIEW} {
     margin: 0.15em 0;
   }
-  th > p:first-of-type,
-  td > p:first-of-type {
+  th
+    > p${OUTSIDE_PREVIEW}:first-of-type,
+    td
+    > p${OUTSIDE_PREVIEW}:first-of-type {
     margin-top: 0;
   }
-  th > p:last-of-type,
-  td > p:last-of-type {
+  th > p${OUTSIDE_PREVIEW}:last-of-type, td > p${OUTSIDE_PREVIEW}:last-of-type {
     margin-bottom: 0;
   }
-  th {
+  th${OUTSIDE_PREVIEW} {
     background: rgba(128, 128, 128, 0.12);
     font-weight: 600;
   }
 
-  hr {
+  hr${OUTSIDE_PREVIEW} {
     border: none;
     border-top: 1px solid rgba(128, 128, 128, 0.3);
     margin: 1.5em 0;
@@ -394,7 +403,9 @@ export function ZeroheightDoc({ html }: ZeroheightDocProps): ReactElement {
         root.querySelectorAll<HTMLElement>(".zeroheight-example[data-example]")
       ).flatMap((node) => {
         const { example } = node.dataset;
-        return example ? [{ id: example, node }] : [];
+        if (!example) return [];
+        node.classList.add(SB_UNSTYLED_CLASS);
+        return [{ id: example, node }];
       })
     );
   }, [html]);

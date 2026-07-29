@@ -22,7 +22,7 @@ import {
   getSemanticColors,
   type CommonThemeProps,
 } from "@components/src/core/styles";
-import { PREVIEW_CLASS, TOGGLE_CLASS } from "./constants";
+import { PREVIEW_CLASS, SB_UNSTYLED_CLASS, TOGGLE_CLASS } from "./constants";
 import { highlightBlock } from "./highlight";
 
 /**
@@ -94,6 +94,16 @@ const PreviewSurface = styled.div<CommonThemeProps>`
       border-bottom: none;
       border-radius: ${corners?.l}px ${corners?.l}px 0 0;
       overflow: auto;
+
+      /* Stories get this reset from the <CssBaseline /> in .storybook/preview.jsx,
+         which docs pages never render. Components count on it: a padded
+         \`width: 100%\` content box otherwise overflows its own card. */
+      box-sizing: border-box;
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
 
       .app {
         padding: 50px;
@@ -269,7 +279,7 @@ export function ZeroheightExample({
   }
 
   return (
-    <div className="zeroheight-example-block">
+    <div className={`zeroheight-example-block ${SB_UNSTYLED_CLASS}`}>
       <ThemeProvider theme={theme}>
         <EmotionThemeProvider theme={theme}>
           <PreviewSurface className={PREVIEW_CLASS}>
