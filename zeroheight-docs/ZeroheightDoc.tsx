@@ -108,8 +108,8 @@ const Container = styled.div`
   .zeroheight-code-snippet figure,
   .zeroheight-live-code figure,
   .zeroheight-example-block figure {
-    background: rgb(31, 41, 56);
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
+    border: 1px solid #dfdfdf;
   }
 
   .zeroheight-design-upload figcaption {
@@ -139,11 +139,9 @@ const Container = styled.div`
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: #8b949e;
-    background: rgb(22, 28, 39);
+    color: rgb(49, 49, 49);
     padding: 0.7em 1.5em;
-    border: 1px solid rgba(240, 246, 252, 0.1);
-    border-bottom: none;
+    border: none;
     border-radius: 0;
   }
   /* The caption bar's contents become a button so the block can be expanded and
@@ -164,7 +162,7 @@ const Container = styled.div`
     user-select: none;
   }
   .${TOGGLE_CLASS}:hover {
-    color: #c9d1d9;
+    color: #000;
   }
   .${TOGGLE_CLASS}:focus-visible {
     outline: 2px solid #58a6ff;
