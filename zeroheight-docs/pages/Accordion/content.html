@@ -309,7 +309,18 @@
     <td><p>id</p></td>
     <td><p>string</p></td>
     <td><p>-</p></td>
-    <td><p>A unique id for each accordion item.</p></td>
+    <td>
+      <p>
+        Required. A unique id for each accordion item, also used to derive the
+        ids that link the header and its content for screen readers.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>defaultExpanded</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>Render the accordion already expanded on first paint.</p></td>
   </tr>
   <tr>
     <td><p>disabled</p></td>
@@ -332,25 +343,35 @@
     <td><p>Position of the toggle chevron icon.</p></td>
   </tr>
   <tr>
-    <td><p>subtitle</p></td>
-    <td><p>string</p></td>
-    <td><p>-</p></td>
-    <td>
-      <p>
-        A text that will be displayed as a subtitle beneath the accordion title.
-      </p>
-    </td>
-  </tr>
-  <tr>
     <td><p>useDivider</p></td>
     <td><p>bool</p></td>
     <td><p>false</p></td>
     <td><p>Display a divider line between accordion items.</p></td>
   </tr>
+  <tr>
+    <td><p>subtitle</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Set on AccordionHeader. A text that will be displayed as a subtitle
+        beneath the accordion title.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>chevronSize</p></td>
+    <td>
+      <p>"xs"</p>
+      <p>| "s"</p>
+    </td>
+    <td><p>xs</p></td>
+    <td><p>Set on AccordionHeader. Size of the toggle chevron icon.</p></td>
+  </tr>
 </table>
 <p>
-  There are more props that can be used with the InputDropdown component, via
-  those available to
+  There are more props that can be used with the Accordion component, via those
+  available to
   <a href="https://mui.com/material-ui/api/accordion/#props">MUI's</a>
   <a href="https://mui.com/material-ui/api/accordion/#props">Accordion</a>
   <a href="https://mui.com/material-ui/api/accordion/#props">component.</a>
@@ -376,4 +397,22 @@
 <div
   class="zeroheight-example"
   data-example="Accordion/AccordionWithDisabledItem"
+></div>
+<h4>Accordion with left toggle</h4>
+<p>
+  This example moves the toggle chevron before the header text, which reads
+  better in a wide container.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Accordion/AccordionWithLeftToggle"
+></div>
+<h4>Accordion expanded by default</h4>
+<p>
+  This example opens on first render and uses the larger of the two chevron
+  sizes.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Accordion/AccordionExpandedByDefault"
 ></div>

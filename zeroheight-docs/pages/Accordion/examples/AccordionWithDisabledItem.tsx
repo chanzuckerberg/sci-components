@@ -1,4 +1,4 @@
-// Most minimal InputDropdown (just has the basic requirements)
+// A group of Accordions where the second one cannot be opened
 
 import {
   Accordion,
@@ -9,7 +9,7 @@ import {
 function App() {
   return (
     <div className="app">
-      <Accordion id="accordion-1" useDivider={true} togglePosition="right">
+      <Accordion id="accordion-1" useDivider>
         <AccordionHeader subtitle="Explore the functionalities of our amazing product">
           Product Features
         </AccordionHeader>
@@ -21,16 +21,8 @@ function App() {
           can revolutionize the way you work.
         </AccordionDetails>
       </Accordion>
-      <Accordion
-        disabled={true}
-        id="accordion-2"
-        useDivider={true}
-        togglePosition="right"
-      >
-        <AccordionHeader
-          id={`accordion-2-header`}
-          subtitle="Answers to commonly asked questions about our service"
-        >
+      <Accordion id="accordion-2" useDivider disabled>
+        <AccordionHeader subtitle="Answers to commonly asked questions about our service">
           FAQ Section
         </AccordionHeader>
         <AccordionDetails>
@@ -42,12 +34,8 @@ function App() {
           experience.
         </AccordionDetails>
       </Accordion>
-
-      <Accordion id="accordion-3" useDivider={false} togglePosition="right">
-        <AccordionHeader
-          id={`accordion-3-header`}
-          subtitle="Enhance your skills with our collection of educational materials"
-        >
+      <Accordion id="accordion-3">
+        <AccordionHeader subtitle="Enhance your skills with our collection of educational materials">
           Learning Resources
         </AccordionHeader>
         <AccordionDetails>

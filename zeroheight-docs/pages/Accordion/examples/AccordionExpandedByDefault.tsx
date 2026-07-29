@@ -1,4 +1,4 @@
-// Most minimal Accordion (just has the basic requirements)
+// An Accordion that is already open on first render
 
 import {
   Accordion,
@@ -9,8 +9,8 @@ import {
 function App() {
   return (
     <div className="app">
-      <Accordion id="accordion-1">
-        <AccordionHeader>Accordion Header</AccordionHeader>
+      <Accordion id="accordion-1" defaultExpanded>
+        <AccordionHeader chevronSize="xs">Accordion Header</AccordionHeader>
         <AccordionDetails>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           malesuada lacus ex, sit amet blandit leo lobortis eget.
