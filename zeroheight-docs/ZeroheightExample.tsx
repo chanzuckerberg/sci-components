@@ -190,7 +190,7 @@ class ExampleErrorBoundary extends Component<
 /** The extracted `App.tsx`, shown below its live preview and collapsible. */
 function ExampleSource({ id }: { id: string }): ReactElement {
   const [source, setSource] = useState<string | null>(null);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const codeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
