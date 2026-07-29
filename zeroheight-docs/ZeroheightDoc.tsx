@@ -188,19 +188,18 @@ const Container = styled.div`
     display: none;
   }
   figure[data-collapsed] > figcaption {
-    border-bottom: 1px solid rgba(240, 246, 252, 0.1);
     border-radius: 0 0 6px 6px;
   }
 
-  /* Fenced code blocks use a fixed dark "editor" surface in both light and
-     dark docs so highlighted snippets read consistently and clearly as code. */
+  /* Fenced code blocks use a light "editor" surface, a shade off the docs page
+     so highlighted snippets still read as code. */
   pre${OUTSIDE_PREVIEW} {
     margin: 1.25em 0;
-    background: #0d1117;
-    color: #c9d1d9;
+    background: #f6f8fa;
+    color: #24292f;
     padding: 1.25em 1.5em;
     border-radius: 6px;
-    border: 1px solid rgba(240, 246, 252, 0.1);
+    border: 1px solid #dfdfdf;
     overflow: auto;
     font-size: 0.85rem;
     line-height: 1.5;
@@ -217,6 +216,8 @@ const Container = styled.div`
     pre${OUTSIDE_PREVIEW} {
     margin: 0;
     padding: 16px 20px;
+    /* The figure already draws the block's outline. */
+    border: none;
   }
   figcaption + pre${OUTSIDE_PREVIEW} {
     border-top-left-radius: 0;
@@ -230,32 +231,32 @@ const Container = styled.div`
     font-size: inherit;
   }
 
-  /* highlight.js token palette (GitHub Dark), scoped to this container. */
+  /* highlight.js token palette (GitHub Light), scoped to this container. */
   .hljs-comment,
   .hljs-code,
   .hljs-quote {
-    color: #8b949e;
+    color: #6e7781;
     font-style: italic;
   }
   .hljs-keyword,
   .hljs-doctag,
   .hljs-formula {
-    color: #ff7b72;
+    color: #cf222e;
   }
   .hljs-subst {
-    color: #c9d1d9;
+    color: #24292f;
   }
   .hljs-string,
   .hljs-meta .hljs-string,
   .hljs-regexp,
   .hljs-addition {
-    color: #a5d6ff;
+    color: #0a3069;
   }
   .hljs-title,
   .hljs-title.class_,
   .hljs-title.function_,
   .hljs-section {
-    color: #d2a8ff;
+    color: #8250df;
   }
   .hljs-attr,
   .hljs-attribute,
@@ -269,17 +270,17 @@ const Container = styled.div`
   .hljs-selector-id,
   .hljs-meta,
   .hljs-property {
-    color: #79c0ff;
+    color: #0550ae;
   }
   .hljs-built_in,
   .hljs-symbol,
   .hljs-bullet {
-    color: #ffa657;
+    color: #953800;
   }
   .hljs-tag,
   .hljs-name,
   .hljs-selector-tag {
-    color: #7ee787;
+    color: #116329;
   }
   .hljs-emphasis {
     font-style: italic;
