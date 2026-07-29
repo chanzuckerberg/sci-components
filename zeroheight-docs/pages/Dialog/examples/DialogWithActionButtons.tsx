@@ -36,10 +36,10 @@ function App() {
           deepen your understanding.
         </DialogContent>
         <DialogActions buttonPosition="right">
-          <Button sdsStyle="square" sdsType="secondary" onClick={handleClose}>
+          <Button sdsType="secondary" onClick={handleClose}>
             Secondary Action
           </Button>
-          <Button sdsStyle="square" sdsType="primary" onClick={handleClose}>
+          <Button sdsType="primary" onClick={handleClose}>
             Primary Action
           </Button>
         </DialogActions>

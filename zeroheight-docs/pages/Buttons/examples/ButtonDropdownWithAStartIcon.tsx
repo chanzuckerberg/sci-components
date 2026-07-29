@@ -4,9 +4,8 @@ function App() {
   return (
     <div className="app">
       <ButtonDropdown
-        icon={<Icon sdsIcon="Bacteria" sdsSize="s" />}
-        sdsType="primary"
-        sdsStyle="square"
+        sdsType="secondary"
+        startIcon={<Icon sdsIcon="Bacteria" sdsSize="s" />}
       >
         Bacteria Types
       </ButtonDropdown>

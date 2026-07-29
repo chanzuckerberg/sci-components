@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Panel } from "@czi-sds/components";
+import { Button, Icon, Panel } from "@czi-sds/components";
 import { Box, Typography } from "@mui/material";
 
 function App() {
@@ -11,10 +11,8 @@ function App() {
     <div className="app">
       <Button
         sdsType="primary"
-        sdsStyle="icon"
-        icon="InfoCircle"
+        startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
         onClick={() => setOpen((prev) => !prev)}
-        aria-label="Panel Toggle"
       >
         Toggle Panel
       </Button>

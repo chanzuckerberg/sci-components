@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Panel } from "@czi-sds/components";
+import { Button, Icon, Panel } from "@czi-sds/components";
 import { Box, Typography } from "@mui/material";
 
 function App() {
@@ -9,22 +9,21 @@ function App() {
 
   const CloseButton = (
     <Button
-      sdsStyle="icon"
-      sdsSize="small"
+      sdsStyle="minimal"
       sdsType="secondary"
-      icon="ChevronDown"
+      size="small"
       aria-label="Panel Toggle"
-    />
+    >
+      <Icon sdsIcon="ChevronDown" sdsSize="xs" />
+    </Button>
   );
 
   return (
     <div className="app">
       <Button
         sdsType="primary"
-        sdsStyle="icon"
-        icon="InfoCircle"
+        startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
         onClick={() => setOpen((prev) => !prev)}
-        aria-label="Panel Toggle"
       >
         Toggle Panel
       </Button>

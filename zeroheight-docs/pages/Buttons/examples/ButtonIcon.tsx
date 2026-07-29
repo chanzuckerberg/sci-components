@@ -2,13 +2,18 @@ import { Button, Icon } from "@czi-sds/components";
 
 function App() {
   return (
-    <div className="app">
+    <div className="app" style={{ display: "flex", gap: "16px" }}>
       <Button
         sdsType="secondary"
-        sdsStyle="square"
         startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
       >
         Download
+      </Button>
+      <Button
+        sdsType="secondary"
+        endIcon={<Icon sdsIcon="ChevronRight" sdsSize="s" />}
+      >
+        Next
       </Button>
     </div>
   );

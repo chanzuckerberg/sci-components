@@ -26,7 +26,7 @@ function App() {
           informed about unexpected situations that require attention.
         </Callout>
       ) : (
-        <Button onClick={handleClick} sdsType="primary" sdsStyle="rounded">
+        <Button onClick={handleClick} sdsType="primary">
           Reset Callout
         </Button>
       )}

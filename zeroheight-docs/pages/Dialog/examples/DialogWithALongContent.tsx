@@ -50,10 +50,10 @@ function App() {
           educational journey, every step of the way.
         </DialogContent>
         <DialogActions buttonPosition="left">
-          <Button sdsStyle="square" sdsType="primary" onClick={handleClose}>
+          <Button sdsType="primary" onClick={handleClose}>
             Primary Action
           </Button>
-          <Button sdsStyle="square" sdsType="secondary" onClick={handleClose}>
+          <Button sdsType="secondary" onClick={handleClose}>
             Secondary Action
           </Button>
         </DialogActions>

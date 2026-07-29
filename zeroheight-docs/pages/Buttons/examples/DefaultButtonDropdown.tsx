@@ -3,9 +3,7 @@ import { ButtonDropdown } from "@czi-sds/components";
 function App() {
   return (
     <div className="app">
-      <ButtonDropdown sdsType="primary" sdsStyle="square">
-        Label
-      </ButtonDropdown>
+      <ButtonDropdown>Label</ButtonDropdown>
     </div>
   );
 }

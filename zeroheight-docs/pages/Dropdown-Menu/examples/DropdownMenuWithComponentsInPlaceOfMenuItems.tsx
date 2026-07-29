@@ -11,11 +11,7 @@ import {
 
 const MENU_ITEMS: DefaultDropdownMenuOption[] = [
   {
-    component: (
-      <Button sdsStyle="square" sdsType="primary">
-        Button
-      </Button>
-    ),
+    component: <Button sdsType="primary">Button</Button>,
     name: "Button component",
     section: "Button component",
   },
