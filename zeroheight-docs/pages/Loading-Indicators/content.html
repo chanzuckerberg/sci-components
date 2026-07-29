@@ -131,15 +131,6 @@
   </figure>
 </div>
 <h2>Code</h2>
-<div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    The code examples below must install dependencies before displaying and may
-    take extra time to load
-  </p>
-</div>
 <h2>LoadingIndicator</h2>
 <h3>SDS Source Code</h3>
 <p>
@@ -151,10 +142,92 @@
   </a>
   .
 </p>
+<h3>Behavior notes</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      The component reads exactly two props,
+      <strong>sdsStyle</strong>
+      and
+      <strong>aria-label</strong>
+      , and ignores everything else. There is no className, style, id, children,
+      or data attribute to pass, and no ref to take, so wrap it in an element of
+      your own for layout, spacing, or centering.
+    </p>
+  </li>
+  <li>
+    <p>
+      The visible label is the hard-coded word
+      <em>Loading</em>
+      . It cannot be changed or translated, so a wait that needs different copy
+      needs a line of your own text beside the indicator.
+    </p>
+  </li>
+  <li>
+    <p>
+      Both variants stand 32px tall and sit
+      <em>inline-flex</em>
+      , so they line up with adjacent text rather than filling their container.
+    </p>
+  </li>
+  <li>
+    <p>
+      Internally there is 4px of padding and nothing more. The 16px of clearance
+      the spacing guideline above asks for is yours to add on the surrounding
+      element.
+    </p>
+  </li>
+  <li>
+    <p>
+      The spinner is animated inside the SVG itself, not with CSS, so it keeps
+      spinning under
+      <em>prefers-reduced-motion</em>
+      and there is no prop to stop it.
+    </p>
+  </li>
+  <li>
+    <p>
+      The label sits in a
+      <em>role="status"</em>
+      ,
+      <em>aria-live="polite"</em>
+      region, so it announces itself when it mounts. Render it when the wait
+      starts and unmount it when the wait ends: nothing is announced on removal,
+      so the content that replaces it has to carry the result.
+    </p>
+  </li>
+</ul>
+<h3>The two variants</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td><p>Type</p></td>
+    <td><p>Color</p></td>
+    <td><p>Spinner</p></td>
+  </tr>
+  <tr>
+    <td><p>"minimal"</p></td>
+    <td><p>fontBodyS, sentence case</p></td>
+    <td>
+      <p>Text base.textSecondary, spinner base.ornamentSecondary, no fill</p>
+    </td>
+    <td><p>16px</p></td>
+  </tr>
+  <tr>
+    <td><p>"tag"</p></td>
+    <td><p>fontCapsXxxxs, all caps</p></td>
+    <td>
+      <p>
+        Text and spinner accent.foreground on an accent.surfaceSecondary pill
+      </p>
+    </td>
+    <td><p>24px</p></td>
+  </tr>
+</table>
 <h3>Props</h3>
 <p>
-  Any custom SDS props and MUI props required for implementation are found on
-  the table below. See the MUI documentation for additional optional props.
+  The component takes no MUI props. Its full surface is the table below; any
+  other prop is a type error.
 </p>
 <table class="zeroheight-table">
   <tr>
@@ -169,14 +242,60 @@
       <p>"minimal"</p>
       <p>| "tag"</p>
     </td>
-    <td><p>-</p></td>
-    <td><p>Specifies the style and look of the loading element.</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Chooses between the two variants above. It has no default: leaving it
+        out is a type error, and an indicator built without it renders unstyled.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>aria-label</p></td>
+    <td><p>string</p></td>
+    <td><p>undefined</p></td>
+    <td>
+      <p>
+        Replaces what a screen reader announces for the status region, for
+        example "Loading cell types". The visible text still reads "Loading".
+        Without it, assistive technology announces the visible word.
+      </p>
+    </td>
   </tr>
 </table>
 <h3>Code examples</h3>
 <h4>LoadingIndicator – Minimal</h4>
-<p>This example shows the minimal variant of the LoadingIndicator.</p>
+<p>
+  Use the minimal variant when part of a page is still filling in, such as the
+  body of an Accordion or the rows of a Table.
+</p>
 <div
   class="zeroheight-example"
   data-example="Loading-Indicators/LoadingIndicatorMinimal"
+></div>
+<h4>LoadingIndicator – Tag</h4>
+<p>Use the tag variant when a whole page or view has not arrived yet.</p>
+<div
+  class="zeroheight-example"
+  data-example="Loading-Indicators/LoadingIndicatorTag"
+></div>
+<h4>Naming what is loading</h4>
+<p>
+  The two indicators below look identical, but the second announces "Loading
+  cell types" instead of "Loading". Name the thing being loaded whenever more
+  than one wait can be in flight.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Loading-Indicators/LoadingIndicatorAriaLabel"
+></div>
+<h4>Loading a region on demand</h4>
+<p>
+  Swapping the indicator in for the content it is standing in for, which is what
+  gives the status region something to announce, and what gives the wait a
+  visible end.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Loading-Indicators/LoadingIndicatorInContext"
 ></div>
