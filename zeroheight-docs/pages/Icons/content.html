@@ -5,19 +5,19 @@
 </p>
 <h3>Icon Component and Sizes</h3>
 <p>
-  Any icons used in the UI should be added using the Icon component; it contains
-  two props, sdsIcon and sdsSize.
+  Any icons used in the UI should be added using the Icon component. Two props
+  are required, sdsIcon and sdsSize, and two more are optional, color and shade.
 </p>
 <p>
-  The first prop, sdsIcon, is the name of the icon to be displayed. It is built
-  as an enum and thus only accepts strings that contain icon names found in the
-  design system.
+  The first prop, sdsIcon, is the name of the icon to be displayed. It only
+  accepts the icon names that exist in the design system, and the names are
+  case-sensitive.
 </p>
 <p>
   The second prop, sdsSize, dictates the size of the icon to be displayed. There
-  are four icon sizes available and each icon has a pre-established set of sizes
-  available to it. The icon name passed into the sdsIcon prop will limit which
-  sizes are available to be passed into the sdsSize prop.
+  are five sizes, and each icon has a pre-established set of sizes available to
+  it. The icon name passed into the sdsIcon prop will limit which sizes are
+  available to be passed into the sdsSize prop.
 </p>
 <table class="zeroheight-table">
   <tr>
@@ -155,12 +155,15 @@
         class="zeroheight-image"
       />
     </td>
-    <td><p>iconSizeXl</p></td>
+    <td>
+      <p>--sds-icon-size-xl-height</p>
+      <p>--sds-icon-size-xl-width</p>
+    </td>
     <td>
       <p>height: 32px</p>
       <p>width: 32px</p>
     </td>
-    <td><p>extraLarge</p></td>
+    <td><p>"xl"</p></td>
   </tr>
   <tr>
     <td>
@@ -169,12 +172,15 @@
         class="zeroheight-image"
       />
     </td>
-    <td><p>iconSizeL</p></td>
+    <td>
+      <p>--sds-icon-size-l-height</p>
+      <p>--sds-icon-size-l-width</p>
+    </td>
     <td>
       <p>height: 24px</p>
       <p>width: 24px</p>
     </td>
-    <td><p>large</p></td>
+    <td><p>"l"</p></td>
   </tr>
   <tr>
     <td>
@@ -183,12 +189,15 @@
         class="zeroheight-image"
       />
     </td>
-    <td><p>iconSizeS</p></td>
+    <td>
+      <p>--sds-icon-size-s-height</p>
+      <p>--sds-icon-size-s-width</p>
+    </td>
     <td>
       <p>height: 16px</p>
       <p>width: 16px</p>
     </td>
-    <td><p>small</p></td>
+    <td><p>"s"</p></td>
   </tr>
   <tr>
     <td>
@@ -197,1235 +206,199 @@
         class="zeroheight-image"
       />
     </td>
-    <td><p>iconSizeXs</p></td>
+    <td>
+      <p>--sds-icon-size-xs-height</p>
+      <p>--sds-icon-size-xs-width</p>
+    </td>
     <td>
       <p>height: 12px</p>
       <p>width: 12px</p>
     </td>
-    <td><p>extraSmall</p></td>
+    <td><p>"xs"</p></td>
   </tr>
 </table>
-<h3>Icons</h3>
 <p>
-  The table below provides a visual of each icon, its name to be passed in the
-  sdsIcon prop, as well as the sizes available to be passed in the sdsSize prop.
+  There is a fifth size below these, xxs at 10px, exposed as
+  <strong>--sds-icon-size-xxs-height</strong>
+  and
+  <strong>--sds-icon-size-xxs-width</strong>
+  . Every variable above is also published as an SCSS variable, for example
+  <strong>$sds-icon-size-l-height</strong>
+  , and is available from the theme through the getIconSizes selector.
 </p>
+<h3>Icon Bank</h3>
+<p>
+  The
+  <a
+    href="https://chanzuckerberg.github.io/sci-components/?path=/story/components-icon--icon-bank"
+  >
+    Icon Bank
+  </a>
+  is the complete list of icons. It is generated from the icon map itself, so it
+  is always current: every icon is shown in each size it supports, hovering a
+  glyph names that size and its dimensions, and clicking a tile copies the name
+  for the sdsIcon prop. Use the search field at the top to filter by name.
+</p>
+<h2>Code</h2>
+<h2>Icon</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The Icon component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Icon/index.tsx"
+  >
+    here
+  </a>
+  . The list of icon names and the sizes each one supports lives in
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Icon/map.ts"
+  >
+    map.ts
+  </a>
+  .
+</p>
+<h3>How it works</h3>
+<p>
+  Icon renders an SVG through MUI's SvgIcon, picking one of two drawings based
+  on the size you ask for: xxs, xs, and s use the 16px artwork, while l and xl
+  use the 24px artwork. Both are then scaled to the exact dimensions of the
+  size. This is why the sizes are not interchangeable across icons; an icon that
+  only ships the large artwork cannot be rendered at s.
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      The types tie the two props together. Passing a size an icon does not
+      support is a TypeScript error, and at runtime it logs an error to the
+      console and renders nothing at all rather than falling back to another
+      size.
+    </p>
+  </li>
+  <li>
+    <p>
+      The icon is wrapped in a div with display: contents, so it does not add a
+      box to the layout and the SVG behaves as a direct child of whatever
+      contains it.
+    </p>
+  </li>
+  <li>
+    <p>
+      The color comes from the SDS palette, not from the surrounding text color,
+      and it defaults to indigo. Pair Icon with a component like Button or
+      MenuItem when the icon should follow that component's state colors.
+    </p>
+  </li>
+  <li>
+    <p>
+      The SVG has no title or label of its own. When an icon carries meaning on
+      its own, put the label on the interactive element around it, for example
+      an aria-label on an icon-only Button.
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
 <table class="zeroheight-table">
   <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsIcon</p></td>
+    <td><p>keyof IconNameToSizes</p></td>
+    <td><p>-</p></td>
     <td>
-      <p><strong>Bacteria</strong></p>
+      <p>
+        Required. The name of the icon, as listed in the Icon Bank. Names are
+        case-sensitive, for example XMark and LightBulb.
+      </p>
     </td>
+  </tr>
+  <tr>
+    <td><p>sdsSize</p></td>
     <td>
-      <p><strong>Bar Charts</strong></p>
+      <p>"xxs" (10px)</p>
+      <p>| "xs" (12px)</p>
+      <p>| "s" (16px)</p>
+      <p>| "l" (24px)</p>
+      <p>| "xl" (32px)</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. Which sizes are accepted depends on the icon named in sdsIcon.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>color</p></td>
+    <td>
+      <p>"blue" | "gray" | "green" | "purple" | "indigo" | "red" | "yellow"</p>
+    </td>
+    <td><p>"indigo"</p></td>
+    <td>
+      <p>
+        A hue from the SDS palette. Note that this is the SDS color prop, not
+        the MUI one, and it does not accept a CSS color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shade</p></td>
+    <td><p>100 | 200 | 300 | 400 | 500 | 600 | 700 | 800</p></td>
+    <td><p>500 in light mode, 600 in dark mode</p></td>
+    <td><p>The step within the chosen hue.</p></td>
+  </tr>
+  <tr>
+    <td><p>className</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Applied to the SVG. Useful for overriding the fill from a parent
+        component.
+      </p>
     </td>
   </tr>
 </table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Bacteria</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/977ee06be46da4d2.png" alt="Bacteria" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>BarChartHorizontal3</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/35c3740c7bb27fea.png"
-        alt="BarChartHorizontal3"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>BarChartVertical3</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/15cc1b36a5cf08fa.png"
-        alt="BarChartVertical3"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>BarChartVertical4</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/877f062bd246fba1.png"
-        alt="BarChartVertical4"
-      />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Book</strong></p>
-    </td>
-    <td>
-      <p><strong>Checks</strong></p>
-    </td>
-    <td>
-      <p><strong>Chevrons</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Book</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/c02fcfdd1d4478e0.png" alt="Book" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Check</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/7d6c0a7225f52341.png" alt="Check" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>CheckCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/06b8213912230404.png" alt="CheckCircle" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronDown</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/00f6ad117742f167.png" alt="ChevronDown" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Chevrons</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronDown2</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/fe59dfc966036627.png" alt="ChevronDown2" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronLeft</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/3a6a3288c5ae7828.png" alt="ChevronLeft" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronLeft2</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/c9436a604a33aa14.png" alt="ChevronLeft2" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronRight</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/38ff60d6cd9408a8.png" alt="ChevronRight" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Chevrons</strong></p>
-    </td>
-    <td>
-      <p><strong>Circles</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronRight2</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/0241ba633a662070.png" alt="ChevronRight2" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronUp</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/7af890270b788cd2.png" alt="ChevronUp" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ChevronUp2</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/478b00366180b496.png" alt="ChevronUp2" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>CirclesOverlap2</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/8ca2ec84847b76f7.png"
-        alt="CirclesOverlap2"
-      />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Code</strong></p>
-    </td>
-    <td>
-      <p><strong>Compass</strong></p>
-    </td>
-    <td>
-      <p><strong>Copy</strong></p>
-    </td>
-    <td>
-      <p><strong>Cube</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Code</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/413aa96340253110.png" alt="Code" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Compass</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ae8c6c9c3f74e9d9.png" alt="Compass" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Copy</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/91f1dcd7a5e5edab.png" alt="Copy" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Cube</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/e45f7f0b3565a636.png" alt="Cube" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>DNA</strong></p>
-    </td>
-    <td>
-      <p><strong>Document</strong></p>
-    </td>
-    <td>
-      <p><strong>Dots</strong></p>
-    </td>
-    <td>
-      <p><strong>Download</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>DNA</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/0bd9b9878afb8291.png" alt="DNA" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Document</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/50970f051354dbb4.png" alt="Document" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>DotsHorizontal3</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/832fbf434dff90d4.png"
-        alt="DotsHorizontal3"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Download</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ae88cbda2f1ba761.png" alt="Download" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Edit</strong></p>
-    </td>
-    <td>
-      <p><strong>Envelope</strong></p>
-    </td>
-    <td>
-      <p><strong>Exclamation Marks</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Edit</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/5172e3b1ae2d6290.png" alt="Edit" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Envelope</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/e7afe6fb8bb9e55d.png" alt="Envelope" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ExclamationmarkCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/4aec63aded6ede1e.png"
-        alt="ExclamationmarkCircle"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ExclamationmarkSpeechBubble</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/b182502eb338d82c.png"
-        alt="ExclamationmarkSpeechBubble"
-      />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Eyes</strong></p>
-    </td>
-    <td>
-      <p><strong>Filter</strong></p>
-    </td>
-    <td>
-      <p><strong>Flags</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>EyeClosed</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/937e360000257b39.png" alt="EyeClosed" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>EyeOpen</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/fec99b9ec86a5a9a.png" alt="EyeOpen" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Filter</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/965b027b9e6316e4.png" alt="Filter" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>FlagCheck</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/f1a0c746654d2d04.png" alt="FlagCheck" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Flags</strong></p>
-    </td>
-    <td>
-      <p><strong>Flasks</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>FlagOutline</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/e6f87420a6a0c43e.png" alt="FlagOutline" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>FlagQuestionmark</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/b650b467a328d47b.png"
-        alt="FlagQuestionmark"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>FlagXmark</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/b5bbd4023b826614.png" alt="FlagXmark" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Flask</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/14190df41046e469.png" alt="Flask" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Flasks</strong></p>
-    </td>
-    <td>
-      <p><strong>Gear</strong></p>
-    </td>
-    <td>
-      <p><strong>Github</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>FlaskPrivate</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/928f5bf51b7f760e.png" alt="FlaskPrivate" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>FlaskPublic</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/7ba43cbd5e83c20e.png" alt="FlaskPublic" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Gear</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/a1671f2a04029d33.png" alt="Gear" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Github</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/85008b7ebc396dbe.png" alt="Github" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Globes</strong></p>
-    </td>
-    <td>
-      <p><strong>Grids</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Globe</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/2a99aafb2e2e4596.png" alt="Globe" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>GlobeBasic</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/e0234c0757e88794.png" alt="GlobeBasic" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Grid</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ce5b1aef34dee9bb.png" alt="Grid" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>GridDots3</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/17d32894e1c55367.png" alt="GridDots3" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Grids</strong></p>
-    </td>
-    <td>
-      <p><strong>House</strong></p>
-    </td>
-    <td>
-      <p><strong>Info</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>GridPrivate</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/5035134167341917.png" alt="GridPrivate" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>GridPublic</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/f4c8b96de542cbea.png" alt="GridPublic" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>House</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/2d04bd1a2a36359d.png" alt="House" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>InfoCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/b7ca3df5a9eb346f.png" alt="InfoCircle" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Info</strong></p>
-    </td>
-    <td>
-      <p><strong>Life Ring</strong></p>
-    </td>
-    <td>
-      <p><strong>Lightbulb</strong></p>
-    </td>
-    <td>
-      <p><strong>Lines</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>InfoSpeechBubble</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/e4bbe50ebd92476e.png"
-        alt="InfoSpeechBubble"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>LifeRing</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/4a65e8658ae358bb.png" alt="LifeRing" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Lightbulb</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/5cfa0e05a919a834.png" alt="Lightbulb" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>LinesDashed3Solid1</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/b414df009120efb6.png"
-        alt="LinesDashed3Solid1"
-      />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Lines</strong></p>
-    </td>
-    <td>
-      <p><strong>Link</strong></p>
-    </td>
-    <td>
-      <p><strong>List</strong></p>
-    </td>
-    <td>
-      <p><strong>Loading</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>LinesHorizontal3</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/caa40ffaf6f7262b.png"
-        alt="LinesHorizontal3"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Link</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ef137242b1aead99.png" alt="Link" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>List</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/c9e04be0a9a8718b.png" alt="List" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Loading</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ed96216f77ccb576.png" alt="Loading" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Locks</strong></p>
-    </td>
-    <td>
-      <p><strong>Minus</strong></p>
-    </td>
-    <td>
-      <p><strong>Open</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Lock</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/32c70caa61ab5f14.png" alt="Lock" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>LockCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/7f4397f73638105b.png" alt="LockCircle" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Minus</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/6ec44ba611256d10.png" alt="Minus" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Open</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/847ae5deb5394de9.png" alt="Open" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Pause</strong></p>
-    </td>
-    <td>
-      <p><strong>People</strong></p>
-    </td>
-    <td>
-      <p><strong>Percentage</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Pause</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/d2ac39de5736f784.png" alt="Pause" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>People</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/01cc9cbd99c3ba1c.png" alt="People" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Person</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/c727023379cd522c.png" alt="Person" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Percentage</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/6601bd1b66ebc24a.png" alt="Percentage" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Pins</strong></p>
-    </td>
-    <td>
-      <p><strong>Play</strong></p>
-    </td>
-    <td>
-      <p><strong>Pluses</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Pin</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/f41f3a845d69e233.png" alt="Pin" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>PinLocation</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/2f5e3f2bdc71dc3d.png" alt="PinLocation" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Play</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/9c695616121ae884.png" alt="Play" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Plus</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/2939a972b101db90.png" alt="Plus" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Pluses</strong></p>
-    </td>
-    <td>
-      <p><strong>Projects</strong></p>
-    </td>
-    <td>
-      <p><strong>Puzzle Piece</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>PlusCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/53c09779e7e3d533.png" alt="PlusCircle" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ProjectPrivate</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/9b548e745438ab7a.png" alt="ProjectPrivate" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ProjectPublic</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/61ae1c7e581ee250.png" alt="ProjectPublic" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>PuzzlePiece</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/1b3c6345875675d2.png" alt="PuzzlePiece" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Question Marks</strong></p>
-    </td>
-    <td>
-      <p><strong>Quote</strong></p>
-    </td>
-    <td>
-      <p><strong>Read</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Questionmark</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ad852102ab83932a.png" alt="Questionmark" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>QuestionMarkCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/4f20d40046928cbb.png"
-        alt="QuestionMarkCircle"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Quote</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/29a5bb8f7eac1d7f.png" alt="Quote" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Read</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/6ecccb87eb595223.png" alt="Read" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Refresh</strong></p>
-    </td>
-    <td>
-      <p><strong>Report</strong></p>
-    </td>
-    <td>
-      <p><strong>Rocket</strong></p>
-    </td>
-    <td>
-      <p><strong>Rotate</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Refresh</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/fa519d1a95ddeea0.png" alt="Refresh" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Report</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/fab6158773beb4fa.png" alt="Report" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Rocket</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/996517968557294b.png" alt="Rocket" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>RotateLeft</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ad1ee29d2896a5ce.png" alt="RotateLeft" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Rotate</strong></p>
-    </td>
-    <td>
-      <p><strong>Save</strong></p>
-    </td>
-    <td>
-      <p><strong>Scale</strong></p>
-    </td>
-    <td>
-      <p><strong>Scatter Plot</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>RotateRight</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/b822327001dad5ab.png" alt="RotateRight" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Save</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/90febe867425ea53.png" alt="Save" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Scale</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/d971e1b7f26fb609.png" alt="Scale" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ScatterPlot</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/d5b4312e34257c1f.png" alt="ScatterPlot" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Search</strong></p>
-    </td>
-    <td>
-      <p><strong>Send</strong></p>
-    </td>
-    <td>
-      <p><strong>Share</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Search</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/cdbdbc19c604f207.png" alt="Search" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>SearchLinesHorizontal3</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/3d775b406cdd838e.png"
-        alt="SearchLinesHorizontal3"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Send</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/096ddb1b6fe16376.png" alt="Send" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Share</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/53e6d20883570b68.png" alt="Share" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Sliders</strong></p>
-    </td>
-    <td>
-      <p><strong>Speech Bubbles</strong></p>
-    </td>
-    <td>
-      <p><strong>Squares</strong></p>
-    </td>
-    <td>
-      <p><strong>Stars</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>SlidersHorizontal</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/08fef175e69793c5.png"
-        alt="SlidersHorizontal"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>SpeechBubbles</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/9e5c96da2d2aaedc.png" alt="SpeechBubbles" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>SquareOnDashedSquare</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/bdd0765216077f5b.png"
-        alt="SquareOnDashedSquare"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Star</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/ab8e8ebd2dc5a50d.png" alt="Star" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Stars</strong></p>
-    </td>
-    <td>
-      <p><strong>Table</strong></p>
-    </td>
-    <td>
-      <p><strong>Thumbs</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Starburst</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/0181c3cf0dd8f654.png" alt="Starburst" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Table</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/5a6572e9d5bbd139.png" alt="Table" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ThumbsDown</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/b9245c6c5110a4c8.png" alt="ThumbsDown" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>ThumbsUp</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/179626e27bc2a179.png" alt="ThumbsUp" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Trash Can</strong></p>
-    </td>
-    <td>
-      <p><strong>Trees</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TrashCan</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/8e08cb56a84907a6.png" alt="TrashCan" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TreeDendogram</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/895a9a7a192cc0d2.png" alt="TreeDendogram" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TreeHorizontal</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/51eda3ef4024786c.png" alt="TreeHorizontal" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TreeHorizontalPrivate</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/5f3b02089a784f80.png"
-        alt="TreeHorizontalPrivate"
-      />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Trees</strong></p>
-    </td>
-    <td>
-      <p><strong>Triangles</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TreeHorizontalPublic</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/6a20cfe32aa533be.png"
-        alt="TreeHorizontalPublic"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TreeHorizontalTopRightFilled</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img
-        src="/zeroheight-assets/9c15edf158166386.png"
-        alt="TreeHorizontalTopRightFilled"
-      />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TreeVertical</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/8017666b9ce06546.png" alt="TreeVertical" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TriangleDown</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/65801c8b87b47ec3.png" alt="TriangleDown" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Triangles</strong></p>
-    </td>
-    <td>
-      <p><strong>Update</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TriangleLeft</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/8457bfaac12f2477.png" alt="TriangleLeft" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TriangleRight</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/59334c9841fd2e22.png" alt="TriangleRight" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>TriangleUp</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/b8c3178fbfc9acf5.png" alt="TriangleUp" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Update</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/3baeaaea5e5825c5.png" alt="Update" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>Upload</strong></p>
-    </td>
-    <td>
-      <p><strong>Viruses</strong></p>
-    </td>
-    <td>
-      <p><strong>Widget</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Upload</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/8a572d71e33aaaa9.png" alt="Upload" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Virus</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/1a34eefae8e204f0.png" alt="Virus" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>VirusCoV2</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/6ac905a55dc1fe68.png" alt="VirusCoV2" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Widget</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/f6b4e00dea32a79b.png" alt="Widget" />
-    </figure>
-  </figure>
-</div>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p><strong>X Marks</strong></p>
-    </td>
-  </tr>
-</table>
-<div
-  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
->
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>Xmark</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/fd7440d8d7ce8d2a.png" alt="Xmark" />
-    </figure>
-  </figure>
-  <figure class="zeroheight-design-upload" role="group">
-    <figcaption><strong>XmarkCircle</strong></figcaption>
-    <figure class="zeroheight-design-upload-image">
-      <img src="/zeroheight-assets/e11aa7104a164c89.png" alt="XmarkCircle" />
-    </figure>
-  </figure>
-</div>
+<h3>Code examples</h3>
+<h4>Default Icon</h4>
+<p>
+  sdsIcon and sdsSize are the only required props. With no color set, the icon
+  renders in indigo.
+</p>
+<div class="zeroheight-example" data-example="Icons/DefaultIcon"></div>
+<h4>Icon Sizes</h4>
+<p>
+  The five sizes, shown with an icon that supports all of them. Below s the 16px
+  artwork is scaled down, and at l and xl a separate, more detailed drawing is
+  used.
+</p>
+<div class="zeroheight-example" data-example="Icons/IconSizes"></div>
+<h4>Sizes Are Per Icon</h4>
+<p>
+  Some icons ship only the small artwork and some only the large. Asking for a
+  size an icon does not have fails to compile, and renders nothing at runtime.
+</p>
+<div class="zeroheight-example" data-example="Icons/IconAvailableSizes"></div>
+<h4>Icon Colors</h4>
+<p>
+  color picks the hue and shade picks the step within it. Both come from the SDS
+  palette rather than from the surrounding text color.
+</p>
+<div class="zeroheight-example" data-example="Icons/IconColors"></div>
+<h4>Icons in Components</h4>
+<p>
+  When an icon is passed to another SDS component, that component controls the
+  size and the color, so leave color off and let it inherit the component's
+  states.
+</p>
+<div class="zeroheight-example" data-example="Icons/IconsInComponents"></div>
+<h4>Accessible Icon-only Controls</h4>
+<p>
+  The SVG carries no accessible name, so an icon on its own needs a label on the
+  control around it. Next to visible text the icon is decorative and needs
+  nothing.
+</p>
+<div class="zeroheight-example" data-example="Icons/AccessibleIcons"></div>
