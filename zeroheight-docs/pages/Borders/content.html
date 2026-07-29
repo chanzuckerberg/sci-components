@@ -1,0 +1,373 @@
+<p>
+  Borders are the lines that go around elements to help contain them while
+  visually communicating to users an element's usage, status, or intent.
+</p>
+<h3>Types of Borders</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Border Type</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/06f8dfac19776c95.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Standard Border</p></td>
+    <td>
+      <p>
+        Base style for all borders. Borders are used on secondary buttons, input
+        fields, modals, dropdown menus, etc.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/73777c4a786f4cba.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Dashed Border</p></td>
+    <td>
+      <p>
+        Dashed borders are used in file upload/drag and drop containers and
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/78d741-text-links/t/677879"
+          >Dashed Links</a
+        >
+        .
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Base Borders</h3>
+<p>
+  These borders are used throughout the SDS whenever borders in Base colors are
+  needed.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variables</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/153fd5349f330b6d.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Default</p></td>
+    <td>
+      <p>--sds-border-base-default</p>
+      <p>$sds-border-base-default</p>
+    </td>
+    <td><p>1px solid #999999</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/2b36932f8bee41e1.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Hover</p></td>
+    <td>
+      <p>--sds-border-base-hover</p>
+      <p>$sds-border-base-hover</p>
+    </td>
+    <td><p>1px solid #000000</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/8ce614035832bfab.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Disabled</p></td>
+    <td>
+      <p>--sds-border-base-disabled</p>
+      <p>$sds-border-base-disabled</p>
+    </td>
+    <td><p>1px solid #cccccc</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/20ebc16a59b8fef3.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Table borders only</p></td>
+    <td>
+      <p>--sds-border-base-table</p>
+      <p>$sds-border-base-table</p>
+    </td>
+    <td><p>1px solid #cccccc</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/f64f4aec7af5de85.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Dividers only (&lt;hr&gt;)</p></td>
+    <td>
+      <p>--sds-border-base-divider</p>
+      <p>$sds-border-base-divider</p>
+    </td>
+    <td><p>1px solid #eaeaea</p></td>
+  </tr>
+</table>
+<h3>Link Borders</h3>
+<p>Use this border type when implementing links with a dashed underline.</p>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variables</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/31f88f2240a3e4d3.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Dashed link (default state)</p></td>
+    <td>
+      <p>--sds-border-link-dashed</p>
+      <p>$sds-border-link-dashed</p>
+    </td>
+    <td><p>1px dashed</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/c3d11c8ea6a738bb.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Dashed link (hover and pressed states)</p></td>
+    <td>
+      <p>--sds-border-link-solid</p>
+      <p>$sds-border-link-solid</p>
+    </td>
+    <td><p>1px solid</p></td>
+  </tr>
+</table>
+<h3>Accent Borders</h3>
+<p>
+  These borders are used throughout the SDS whenever borders in Accent colors
+  are needed.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variables</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/98cb7ed5db65a5aa.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Default</p></td>
+    <td>
+      <p>--sds-border-accent-default</p>
+      <p>$sds-border-accent-default</p>
+    </td>
+    <td><p>1px solid #0b68f8</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/be0e2f41bb9436f5.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Hover</p></td>
+    <td>
+      <p>--sds-border-accent-hover</p>
+      <p>$sds-border-accent-hover</p>
+    </td>
+    <td><p>1px solid #0142a4</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/373c676e177b4204.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Disabled</p></td>
+    <td>
+      <p>--sds-border-accent-disabled</p>
+      <p>$sds-border-accent-disabled</p>
+    </td>
+    <td><p>1px solid #a6c9ff</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/423602269aac3a6d.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Default (dashed)</p></td>
+    <td>
+      <p>--sds-border-accent-dashed</p>
+      <p>$sds-border-accent-dashed</p>
+    </td>
+    <td><p>1px dashed #0b68f8</p></td>
+  </tr>
+</table>
+<h3>Intent Borders</h3>
+<p>
+  These borders are used on elements when needing to communicate a specific
+  intent as indicated in the
+  <em>Intent</em>
+  column.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Intent</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variables</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5a83df38db27fbd8.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Beta</p></td>
+    <td>
+      <p>--sds-border-beta-default</p>
+      <p>$sds-border-beta-default</p>
+    </td>
+    <td><p>1px solid #7a41ce</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/05fd6a8b8a4f8347.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Info</p></td>
+    <td>
+      <p>--sds-border-info-default</p>
+      <p>$sds-border-info-default</p>
+    </td>
+    <td><p>1px solid #0b68f8</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/19ae85a7b2b1d425.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Negative</p></td>
+    <td>
+      <p>--sds-border-negative-default</p>
+      <p>$sds-border-negative-default</p>
+    </td>
+    <td><p>1px solid #dc132c</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5f1d62fa69168720.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Neutral</p></td>
+    <td>
+      <p>--sds-border-neutral-default</p>
+      <p>$sds-border-neutral-default</p>
+    </td>
+    <td><p>1px solid #999999</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/4ff1890e34df8c4b.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Notice</p></td>
+    <td>
+      <p>--sds-border-notice-default</p>
+      <p>$sds-border-notice-default</p>
+    </td>
+    <td><p>1px solid #f5a623</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/f93d4756d20cf943.png"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Positive</p></td>
+    <td>
+      <p>--sds-border-positive-default</p>
+      <p>$sds-border-positive-default</p>
+    </td>
+    <td><p>1px solid #3cb371</p></td>
+  </tr>
+</table>

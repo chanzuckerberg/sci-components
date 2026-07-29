@@ -1,0 +1,799 @@
+<p>
+  Hero is located at the top of the page above all other content and features
+  key information and visuals which can include images or videos, headlines, and
+  calls-to-action including Buttons and Links.
+</p>
+<h2>Guidelines</h2>
+<h2>Overview</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/475c8516ea175c92.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<p>
+  The Hero component was designed to support a wide range of potential product
+  needs, giving teams flexibility to implement content in their applications as
+  desired. Teams can fill the background with their visual of choice (image,
+  video, color, gradient, etc.), overlay any combination of elements (text,
+  image, buttons, links, etc.) on top of their chosen background, as well as
+  turn on a darkening mask to make text easier to read and / or a darkening
+  vignette positioned at the top of the container to make the transition from
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f"
+  >
+    Header Navigation
+  </a>
+  to Hero visually smooth.
+</p>
+<p>
+  Hero has been built to ensure any overlay elements (text, images, videos,
+  etc.) are constrained to a content area that is centered on the page; this is
+  especially necessary when viewed on wide screens. Overlay elements can be
+  freely arranged within this content area. The max-width of this area and its
+  left and right padding are dictated by
+  <a href="https://sds.czi.design/009eaf17b/p/071935">Breakpoint</a>
+  . When displayed at Small and Medium Breakpoints, the max-width of the content
+  area is 100% of the screen width with left and right padding of 24px on Small
+  Breakpoints and 40px on Medium Breakpoints.
+</p>
+<p>
+  When displayed at Large Breakpoints, the content area has a max-width of
+  1024px and left and right padding of 120px. This means that the width of the
+  content area will be dictated by the width of the screen minus the left and
+  right padding of 120px up until that value is greater than 1024px. Once the
+  width of the screen goes beyond that value, the viewable area will be set at
+  1024px.
+</p>
+<p>
+  For example: if the screen is 1200px wide, the width of the content area would
+  be 960px (1200px-120px-120px = 960px). If, however, the screen is 1500px wide,
+  the width of the content area would max out and be 1024px (1500px-120px-120px
+  = 1260px) since 1260px is larger than 1024px, and thus a width of 1024px would
+  be used for the content area. This ensures that, even when viewed on extra
+  wide displays, the overlay content will always be viewable by users.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Breakpoint: Large</p></td>
+    <td><p>Breakpoint: Medium</p></td>
+    <td><p>Breakpoint: Small</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Hero_large</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0e2a68e645ca57e9.png"
+        alt="Preview_Guidelines_Hero_large"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Hero_medium</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b1dfb9fbe803a54f.png"
+        alt="Preview_Guidelines_Hero_medium"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Hero_small</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/72295afe8b0608b4.png"
+        alt="Preview_Guidelines_Hero_small"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Background Fill Options</h4>
+<p>
+  The Hero component background can be filled with any CSS color, including
+  gradients, or any type of media such as images, videos, GIFs, etc.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Color</p></td>
+    <td><p>Media</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_background_color</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/216d79222c50b973.png"
+        alt="Hero_background_color"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_background_image</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/09985a8f089231b2.png"
+        alt="Hero_background_image"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Darkening Mask</h4>
+<p>
+  The darkening mask is an overlay element used to subtly dim the Hero's
+  background, thereby enhancing the visibility and focus on the overlay
+  elements; the mask's opacity can be set by the team implementing it.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>Enabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_darkening mask_false</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ffdf079954f90da8.png"
+        alt="Hero_darkening mask_false"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_darkening mask_true</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/be9fb23a789a691a.png"
+        alt="Hero_darkening mask_true"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Darkening Vignette</h4>
+<p>
+  The darkening vignette is an overlay element positioned at the top of Hero
+  that subtly fades from solid to transparent, smoothing the transition from the
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/5552ba-navigation/t/eb02cec74f"
+  >
+    Header Navigation
+  </a>
+  to the Hero background.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>Enabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_darkening vignette_false</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a4c3a8a4ddce421a.png"
+        alt="Hero_darkening vignette_false"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_darkening vignette_true</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7aa789722630cc7c.png"
+        alt="Hero_darkening vignette_true"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Content Visibility</h4>
+<p>
+  Overlay content elements (title text, caption text, and content slot) can be
+  used or not depending on teams' needs; the examples below show one element
+  hidden at a time to demonstrate, but any combination of elements can be used.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>All elements displayed</p></td>
+    <td><p>Title hidden</p></td>
+    <td><p>Caption hidden</p></td>
+    <td><p>Content slot hidden</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_all visible</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4d248a44c9414b25.png"
+        alt="Hero_overlay content_options_all visible"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_no title</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/78321186fb1bd14c.png"
+        alt="Hero_overlay content_options_no title"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_no caption</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ad44c3e046f29682.png"
+        alt="Hero_overlay content_options_no caption"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_no slot</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c0077e0f331db107.png"
+        alt="Hero_overlay content_options_no slot"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Text Alignment Options</h4>
+<p>Alignment settings apply to both title and caption text.</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Left-aligned</p></td>
+    <td><p>Center-aligned</p></td>
+    <td><p>Right-aligned</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay text_alignment_left-aligned</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/771fcbd439049c62.png"
+        alt="Hero_overlay text_alignment_left-aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay text_alignment_center-aligned</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/82058f3202e6cdd0.png"
+        alt="Hero_overlay text_alignment_center-aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay text_alignment_right-aligned</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bb64621899c92879.png"
+        alt="Hero_overlay text_alignment_right-aligned"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Content Position</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Top-left</p></td>
+    <td><p>Top</p></td>
+    <td><p>Top-right</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_top-left</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e5f781cb7239d4df.png"
+        alt="Hero_overlay content_position_top-left"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay content_position_top</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/151dc93761f98b53.png"
+        alt="Hero_overlay content_position_top"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_top-right</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/49487474070cbc8e.png"
+        alt="Hero_overlay content_position_top-right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Left</p></td>
+    <td><p>Center</p></td>
+    <td><p>Right</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay content_position_left</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0c11dce11c2d02df.png"
+        alt="Hero_overlay content_position_left"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_center</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c648ca0014e69061.png"
+        alt="Hero_overlay content_position_center"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_right</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2c9316c6645ba1c9.png"
+        alt="Hero_overlay content_position_right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Bottom-left</p></td>
+    <td><p>Bottom</p></td>
+    <td><p>Bottom-right</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_bottom-left</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c2c53995276db468.png"
+        alt="Hero_overlay content_position_bottom-left"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_bottom</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bfbd55249846adfc.png"
+        alt="Hero_overlay content_position_bottom"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_bottom-right</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f74d83a42ec66fb2.png"
+        alt="Hero_overlay content_position_bottom-right"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Media Options</h4>
+<p>
+  In addition to overlay content, media (images, videos, GIFs, etc.) can be
+  optionally overlayed on top of the Hero component's background; it can take
+  whatever size or shape teams need.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Overlay media hidden</p></td>
+    <td><p>Overlay media displayed</p></td>
+    <td><p>Larger overlay media</p></td>
+    <td><p>Smaller overlay media</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_false</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9b8418ade8071cf5.png"
+        alt="Hero_overlay image_false"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_true</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2b59ce01c4c79e1f.png"
+        alt="Hero_overlay image_true"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_true_larger</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/283233de72574fad.png"
+        alt="Hero_overlay image_true_larger"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_true_smaller</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b8e8ef52100cd15c.png"
+        alt="Hero_overlay image_true_smaller"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Media Position</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Top-left</p></td>
+    <td><p>Top</p></td>
+    <td><p>Top-right</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_top-left</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/934eb560987d1913.png"
+        alt="Hero_overlay image_position_top-left"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_top</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4638a46389094e05.png"
+        alt="Hero_overlay image_position_top"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_top-right</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d08c1c7935927be1.png"
+        alt="Hero_overlay image_position_top-right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Left</p></td>
+    <td><p>Center</p></td>
+    <td><p>Right</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_left</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/555653c02313673f.png"
+        alt="Hero_overlay image_position_left"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_center</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d96d1dae18fe62aa.png"
+        alt="Hero_overlay image_position_center"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_right</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/abaf762908af9b16.png"
+        alt="Hero_overlay image_position_right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Bottom-left</p></td>
+    <td><p>Bottom</p></td>
+    <td><p>Bottom-right</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_bottom-left</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bf158eb56b68cfb0.png"
+        alt="Hero_overlay image_position_bottom-left"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_bottom</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8c60c6647db7f70f.png"
+        alt="Hero_overlay image_position_bottom"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_bottom-right</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bfcdb72f30d5b649.png"
+        alt="Hero_overlay image_position_bottom-right"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Code details coming soon
+  </p>
+</div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>Hero</h2>
+<h3>SDS Source Code</h3>
+<p>The component's source code in the SDS codebase can be found here.</p>
+<h3>SDS vs MUI</h3>
+<p>[update this section]</p>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI [update] component can be found here.
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">// Most minimal Callout (just has the basic requirements)
+      
+import { Callout, CalloutTitle } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Callout
+        intent="info"
+      &gt;
+        &lt;CalloutTitle&gt;Callout box&lt;/CalloutTitle&gt;
+        The Callout Box component is a versatile UI element designed to draw attention to important 
+        information or messages within your interface. With its clean and elegant design, the 
+        Callout Box helps highlight key content, alerts, or contextual details. 
+      &lt;/Callout&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Callout&lt;/title&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

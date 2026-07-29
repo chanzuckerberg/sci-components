@@ -124,6 +124,9 @@ packages/components/ai_task_docs/*
 # SWC
 .swc/
 
+# ZeroHeight -> Storybook import build cache (generated docs are committed)
+zeroheight-docs/.cache.json
+
 # design-sync (claude.ai/design) — transient build/verify state
 .design-sync/sb-reference/
 .design-sync/learnings/

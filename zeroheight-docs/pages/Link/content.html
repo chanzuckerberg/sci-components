@@ -1,0 +1,600 @@
+<p>
+  Links are interactive elements that, when clicked, navigate the user away from
+  the page they are currently viewing to another page or screen.
+</p>
+<h2>Guidelines</h2>
+<h2>Overview</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/626530922b605d48.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Link Variants</h3>
+<p>
+  There are two Link variants available to use depending on the background on
+  top of which they are placed and whether that background provides enough
+  contrast for Link – Default to be seen. Links can be used inline or separate
+  from a paragraph of text.
+</p>
+<p>
+  Though visually similar to
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/2224d8"
+    >Button – Minimal</a
+  >
+  , Links navigate the user away from the page they are currently viewing to
+  another page. This is in contrast to Button – Minimal, which keeps the user on
+  the same page and facilitates on-screen actions such as opening
+  <a href="https://sds.czi.design/009eaf17b/p/707b97">Dialogs</a>
+  or indicating less-emphasized actions.
+</p>
+<p>
+  Links come in two sizes: fontXs and fontS to align with SDS' most common body
+  copy font sizes.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    When including an inline Link in your Figma designs, styles must be manually
+    applied as there is no way to save the Link style in Figma as a text style.
+    Use the Link Figma component for links that are not inline.
+  </p>
+</div>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Link_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d6032897fd319592.png"
+        alt="Preview_Link_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Link_Dashed</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9bcd657b545e476d.png"
+        alt="Preview_Link_Dashed"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=link--default"
+  width="848"
+  height="89.2933349609375"
+  title="Default"
+></iframe>
+<hr />
+<h3>Link – Default</h3>
+<p>
+  Use Link – Default only when the Link is placed on surface-primary,
+  surface-secondary, or surface-tertiary backgrounds to ensure there is enough
+  contrast to pass visual accessibility standards, otherwise use
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/78d741-link/t/75fc4d"
+    >Link – Dashed</a
+  >
+  .
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Default Visual Example_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1aa3df642f75f0a3.png"
+        alt="Default Visual Example_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Default Visual Example_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cc45659f1992b7eb.png"
+        alt="Default Visual Example_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Default visual example_Pressed</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0a72bad9c58abc79.png"
+        alt="Default visual example_Pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Link – Dashed</h3>
+<p>
+  Use Link – Dashed when the Link is placed on a background where the Link –
+  Default does not provide enough contrast to pass visual accessibility
+  standards. The color of the link and its underline should match the color of
+  the text used in the paragraph it is placed within, see
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/78d741-link/t/36fc01"
+    >Color R</a
+  >
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/78d741-link/t/36fc01">ules</a>
+  below.
+</p>
+<p>
+  See
+  <a href="https://sds.czi.design/009eaf17b/p/220fd1">Borders</a>
+  section for Link Underline details.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b088537d5b0f11c1.png"
+        alt="Dashed Visual Example_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c1ef54501c46612c.png"
+        alt="Dashed Visual Example_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Pressed</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bb619646fc26e426.png"
+        alt="Dashed Visual Example_Pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Color Rules</h4>
+<p>
+  The color of Link – Dashed and its underline should match the color of the
+  text used in the paragraph it is placed within.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Primary Text</p></td>
+    <td><p>Secondary Text</p></td>
+    <td><p>On-fill Text</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Black Text</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/60d53e8a71024b54.png"
+        alt="Dashed Visual Example_Black Text"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Gray500 text</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4200bf4db943abd9.png"
+        alt="Dashed Visual Example_Gray500 text"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_White text</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1ee394dc8db86259.png"
+        alt="Dashed Visual Example_White text"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Link Spacing Rules</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The underline for Link – Dashed is spaced lower than the default
+    text-decoration underline.
+  </p>
+</div>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dashed Text Link spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/dfd0e23598524996.png"
+        alt="Dashed Text Link spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>Link</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Link"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-link/">here</a>
+  . There are no differences between the SDS and MUI component.
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"default"</p>
+      <p>| "dashed"</p>
+    </td>
+    <td><p>"default"</p></td>
+    <td>
+      <p>
+        The style of underline corresponding to the text-decoration CSS
+        property. Default is underline.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsSize</p></td>
+    <td><p>"xs" | "s"</p></td>
+    <td><p>"xs"</p></td>
+    <td><p>The font size of the Link component</p></td>
+  </tr>
+  <tr>
+    <td><p>fontWeight</p></td>
+    <td>
+      <p>"normal"</p>
+      <p>| "bold"</p>
+    </td>
+    <td><p>"normal"</p></td>
+    <td><p>The font weight of the Link component.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Link – Default</h4>
+<p>This example has the minimum props needed for the Link component.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Link } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Link href="#"&gt;
+        Science Design System
+      &lt;/Link&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Link – Dashed</h4>
+<p>
+  This example demonstrates the use of a the dashed variant of the Link
+  component embedded within a sentence.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Link, getSemanticColors } from "@czi-sds/components";
+import { styled, useTheme } from "@mui/material";
+import "./styles.css";
+
+function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({theme});
+  
+  const StyledParagraph = styled("p")`
+    background-color: ${semanticColors?.accent?.surfacePrimary};
+    padding: 10px;
+  `;
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;StyledParagraph&gt;
+        Lorem ipsum{" "}
+        &lt;Link href="#" sdsStyle="dashed"&gt;
+          dolor sit apsidy
+        &lt;/Link&gt;{" "}
+        consectetur, adipisicing elit.
+      &lt;/StyledParagraph&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

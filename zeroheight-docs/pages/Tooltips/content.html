@@ -1,0 +1,1737 @@
+<p>
+  Tooltips are used throughout the UI and appear whenever users hover over
+  elements that require additional context, instructions, or details.
+</p>
+<h2>Guidelines</h2>
+<h2>Tooltip Components</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        Tooltips are always used in conjunction with other elements when there
+        is a need to further clarify the element's function, provide
+        instructions, or display additional details to the user. The variant
+        used depends on the element that triggers it and where it's located in
+        the interface.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to variant:</strong></p>
+      <p>
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/337a89"
+          >Tooltip</a
+        >
+      </p>
+      <p>
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/1920a4"
+        >
+          Condensed Tooltip
+        </a>
+      </p>
+      <p>
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/06d7fc"
+          >Table Tooltip</a
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Visual Preview</h3>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0d7d06b639b605e3.png"
+        alt="Preview_Guidelines_Tooltip"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_TooltipCondensed</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1d590b7f87e78db6.png"
+        alt="Preview_Guidelines_TooltipCondensed"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_TooltipTable</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8c0656cd6efe564d.png"
+        alt="Preview_Guidelines_TooltipTable"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Tooltip</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/4b0fca2f1876e3f1.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Tooltip Types</h3>
+<p>There are two available Tooltip types: Short and Long.</p>
+<p>
+  Each Tooltip type can optionally be displayed using an inverted color scheme
+  for better contrast on certain backgrounds.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Short</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/ad5b48b9070a130d.png" alt="Tooltip_Short" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Long</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/c4d5bc8c64c2c284.png" alt="Tooltip_Long" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=tooltip--default"
+  width="848"
+  height="308.86627197265625"
+  title="Default"
+></iframe>
+<hr />
+<h3>Tooltip – Short</h3>
+<p>
+  Use in conjunction with action UI elements like
+  <a href="https://sds.czi.design/009eaf17b/p/47778c">Buttons</a>
+  or
+  <a href="https://sds.czi.design/009eaf17b/p/16c065">Segmented Control</a>
+  to display information about interacting with that element.
+</p>
+<p>
+  A subtitle may be added to communicate additional details, like instructions
+  for using the element connected to the Tooltip.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (inverted)</p></td>
+    <td><p>Default + Subtitle</p></td>
+    <td><p>Default + Subtitle (inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Short_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/aaaa22cb8a67d883.png"
+        alt="Tooltip_Short_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Short_inverted</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2b53097e3798f5ed.png"
+        alt="Tooltip_Short_inverted"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Short_Subtitle_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/adf4eb665f8a1ec5.png"
+        alt="Tooltip_Short_Subtitle_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Short_Subtitle_inverted</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d89842422842a61c.png"
+        alt="Tooltip_Short_Subtitle_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tooltip – Long</h3>
+<p>
+  Use to display supplementary information like definitions, instructions, or
+  expanded details which require more space for text. The width can be increased
+  up to 550px.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Long</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/c4d5bc8c64c2c284.png" alt="Tooltip_Long" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip_Long_inverted</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c2b8f276d6111e5d.png"
+        alt="Tooltip_Long_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tooltip Spacing</h3>
+<p>
+  The Tooltip and its triggering element have a standard margin between them.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b74a3eb0a89818cf.png"
+        alt="Tooltip spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Placement Variations</h3>
+<p>
+  A Tooltip appears in one of twelve positions relative to the element it is
+  tied to. For example, a position of bottom will appear
+  <strong>below</strong>
+  the trigger element.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Bottom-start</p></td>
+    <td><p>Bottom</p></td>
+    <td><p>Bottom-end</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/699707bff66faf27.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/61440d49a4c53fbb.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/d824f07382ea7f5a.png" alt="Tooltip" />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Left-start</p></td>
+    <td><p>Left</p></td>
+    <td><p>Left-end</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/dcc68587313ae1a9.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/7a9501789052efc1.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/7e98ed821330f918.png" alt="Tooltip" />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Right-start</p></td>
+    <td><p>Right</p></td>
+    <td><p>Right-end</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/2a87497825a392e1.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/ff33c9b07fa30f79.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/f2eaaa740830d39f.png" alt="Tooltip" />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Top-start</p></td>
+    <td><p>Top</p></td>
+    <td><p>Top-end</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/0707b72ca493443a.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/2f50a64b8aba8169.png" alt="Tooltip" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/9405c38ead480900.png" alt="Tooltip" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Condensed Tooltip</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/4b0fca2f1876e3f1.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=tooltipcondensed--default"
+  width="848"
+  height="248"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  Use Condensed Tooltip to display small amounts of text, not full sentences or
+  descriptions. It's similar to a label, but only viewable on hover — most often
+  used in data visualizations and
+  <a href="https://sds.czi.design/009eaf17b/p/1647a1">Tables</a>
+  .
+</p>
+<p>
+  The Condensed Tooltip is positioned relative to the user's cursor rather than
+  its triggering element. A colored indicator can be included in the Tooltip to
+  help clarify what element the Tooltip is related to.
+</p>
+<p>
+  The Condensed Tooltip can optionally be displayed using an inverted color
+  scheme for better contrast on certain backgrounds.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (inverted)</p></td>
+    <td><p>Default + Indicator</p></td>
+    <td><p>Default + Indicator (inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>TooltipCondensed_No Indicator_default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0076c25afae8a888.png"
+        alt="TooltipCondensed_No Indicator_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>TooltipCondensed_No Indicator_inverted</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/111e860cc74b54cb.png"
+        alt="TooltipCondensed_No Indicator_inverted"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>TooltipCondensed_Indicator_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/28014b1e7f7485d6.png"
+        alt="TooltipCondensed_Indicator_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>TooltipCondensed_Indicator_inverted</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/15a9d40516c84c6f.png"
+        alt="TooltipCondensed_Indicator_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Condensed Tooltip Spacing</h3>
+<p>
+  The Condensed Tooltip and its triggering element have a standard margin
+  between them.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Condensed Tooltip spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/41e38fec99b3f4ca.png"
+        alt="Condensed Tooltip spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Table Tooltip</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/4b0fca2f1876e3f1.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=tooltiptable--live-preview"
+  width="848"
+  height="248"
+  title="Live Preview"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  Use Table Tooltip to display complex information that benefits from being
+  shown in a table format. A Table Tooltip can contain as many sections as
+  necessary and can optionally include section headers.
+</p>
+<p>By default, Item values are aligned right but can be aligned left.</p>
+<p>
+  The Table Tooltip is positioned relative to the user's cursor rather than its
+  triggering element
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>1 Section</p></td>
+    <td><p>1 Section + Section Headers</p></td>
+    <td><p>2 Sections + Section Headers</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Tooltip_One Section</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/41407f0a334fb7ee.png"
+        alt="Table Tooltip_One Section"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Table Tooltip_One Section_Section Headers</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/36eb8809b7fac747.png"
+        alt="Table Tooltip_One Section_Section Headers"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Table Tooltip_Two Sections_No Headers</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/315a33fddf91c4c5.png"
+        alt="Table Tooltip_Two Sections_No Headers"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Tooltip Spacing</h3>
+<p>
+  The Table Tooltip and its triggering element have a standard margin between
+  them.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Tooltip spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e682827ffbc56086.png"
+        alt="Table Tooltip spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<h2>Tooltip Components</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        Tooltips are always used in conjunction with other elements when there
+        is a need to further clarify the element's function, provide
+        instructions, or display additional details to the user. The variant
+        used depends on the element that triggers it and where it's located in
+        the interface.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to variant:</strong></p>
+      <p>
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/873716"
+          >Tooltip</a
+        >
+      </p>
+      <p>
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/413038"
+        >
+          TooltipCondensed
+        </a>
+      </p>
+      <p>
+        <a
+          href="https://sds.czi.design/009eaf17b/v/0/p/74af45-tooltips/t/29ba6c"
+          >TooltipTable</a
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Visual Preview</h3>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_Tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6a2b428b980867bd.png"
+        alt="Preview_Code_Tooltip"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_TooltipCondensed</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/af05af68f7aae8c3.png"
+        alt="Preview_Code_TooltipCondensed"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_TooltipTable</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d48645b378fb425b.png"
+        alt="Preview_Code_TooltipTable"
+      />
+    </figure>
+  </figure>
+</div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<hr />
+<h2>Tooltip</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Tooltip/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The SDS Tooltip component has a number of preset options in addition to, or
+  that modify, the MUI options:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>sdsStyle</strong>
+      <strong>:</strong>
+      This prop takes either light (the default if not specified), or dark. Each
+      of these "unlocks" additional options for other props; see below bullets:
+    </p>
+    <ul class="zeroheight-bullet-list">
+      <li>
+        <p>
+          <strong>width</strong>
+          <strong>:</strong>
+          SDS Tooltip's width prop accepts "default"(unsurprisingly, the
+          default!) which limits the maximum width to 250px. Additionally, only
+          if sdsStyle="light" then it also accepts a value of "wide", which
+          translates to a maximum width of 550px. Compare these string options
+          to MUI's width prop, which takes a number for the width in pixels.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>subtitle</strong>
+          <strong>:</strong>
+          This SDS-specific prop is only available for dark-styled Tooltips
+          (sdsStyle="dark") . It takes a string value that displays below the
+          text set by the title prop.
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      <strong>arrowOffset</strong>
+      <strong>:</strong>
+      This SDS-only prop takes a negative or positive value equivalent to the
+      number of pixels by which to move the arrow (if arrow={true}) either left
+      or right, respectively. It is possible though for this to move the arrow
+      outside of the Tooltip edge itself, so be aware of the width setting as
+      well as the length of text within the Tooltip.
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-tooltip/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>arrow</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>If&nbsp;true, adds an arrow to the tooltip.</p></td>
+  </tr>
+  <tr>
+    <td><p>arrowOffset</p></td>
+    <td><p>number</p></td>
+    <td><p>0</p></td>
+    <td>
+      <p>
+        ArrowOffset changes the position of the tooltip arrow and can be any
+        numeric value within [-120, 120]. Exceeding the tooltip width removes
+        the arrow.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>placement</p></td>
+    <td>
+      <p>"bottom-start"</p>
+      <p>| "bottom"</p>
+      <p>| "bottom-end"</p>
+      <p>| "left-start"</p>
+      <p>| "left"</p>
+      <p>| "left-end"</p>
+      <p>| "right-start"</p>
+      <p>| "right"</p>
+      <p>| "right-end"</p>
+      <p>| "top-start"</p>
+      <p>| "top"</p>
+      <p>| "top-end"</p>
+    </td>
+    <td><p>"bottom"</p></td>
+    <td><p>Tooltip placement.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td><p>"light" | "dark"</p></td>
+    <td><p>"light"</p></td>
+    <td><p>Style of the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>subtitle</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Tooltip subtitle text.</p></td>
+  </tr>
+  <tr>
+    <td><p>title</p></td>
+    <td><p>Node</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Tooltip title. Zero-length titles string, undefined, null and false are
+        never displayed.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>width</p></td>
+    <td><p>"default" | "wide"</p></td>
+    <td><p>"default"</p></td>
+    <td><p>If set to wide, the tooltip is wider.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Tooltip – Dark</strong></h4>
+<p>
+  This example demonstrates a dark-themed Tooltip that includes both a title and
+  a subtitle.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ButtonIcon, Tooltip } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tooltip 
+        arrow 
+        sdsStyle="dark"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi." 
+        title="Tooltip title" 
+      &gt;
+        &lt;ButtonIcon
+          sdsType="secondary"
+          sdsSize="large"
+          sdsIcon="InfoCircle"
+        /&gt;
+      &lt;/Tooltip&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4><strong>Tooltip – Light</strong></h4>
+<p>This example showcases a light-themed Tooltip.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ButtonIcon, Tooltip } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tooltip 
+        arrow 
+        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi." 
+      &gt;
+        &lt;ButtonIcon
+          sdsType="secondary"
+          sdsSize="large"
+          sdsIcon="InfoCircle"
+        /&gt;
+      &lt;/Tooltip&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<p><strong>Tooltip for disabled components</strong></p>
+<p>
+  This example demonstrates how to add a tooltip to a disabled component,
+  commonly a button.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note for Tooltips on</strong>
+    <strong>Disabled</strong>
+    <strong>elements</strong>
+  </p>
+  <p>
+    If the tooltip wraps a disabled component, please make sure to wrap the
+    children in a &lt;span&gt; tag.
+  </p>
+  <p>
+    <a href="https://mui.com/components/tooltips/#disabled-elements">
+      https://mui.com/components/tooltips/#disabled-elements
+    </a>
+  </p>
+</div>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ButtonIcon, Tooltip } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tooltip 
+        arrow 
+        title="This Button is disabled!" 
+      &gt;
+        &lt;span&gt;
+          &lt;ButtonIcon
+            sdsType="secondary"
+            sdsSize="large"
+            sdsIcon="Widget"
+            disabled
+          /&gt;
+        &lt;/span&gt;
+      &lt;/Tooltip&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>TooltipCondensed</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TooltipCondensed/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  Like the regular SDS Tooltip component, the TooltipCondensed component is
+  built on MUI's Tooltip component, and has its own SDS-specific props and
+  options (which are different from SDS's Tooltip component's SDS-only options):
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>indicator</strong>
+      <strong>:</strong>
+      This boolean prop determines whether or not the Tooltip text should be
+      preceded by a colored dot.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>indicatorColor</strong>
+      <strong>:</strong>
+      Sets the color of the indicator, if included.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>followCursor</strong>
+      <strong>:</strong>
+      Additionally, TooltipCondensed has the followCursor behavior, and setting
+      the followCursor prop to false has no effect.
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-tooltip/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>indicator</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        This boolean prop determines whether or not the Tooltip text should be
+        preceded by a colored dot.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>indicatorColor</p></td>
+    <td><p>color</p></td>
+    <td><p>-</p></td>
+    <td><p>Sets the color of the indicator, if included.</p></td>
+  </tr>
+  <tr>
+    <td><p>title</p></td>
+    <td><p>Node</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Tooltip title. Zero-length titles string, undefined, null and false are
+        never displayed.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>TooltipCondensed with indicator</h4>
+<p>
+  This example illustrates the minimum required props to render TooltipCondensed
+  with an indicator.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ButtonIcon, TooltipCondensed } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;TooltipCondensed 
+        indicator
+        indicatorColor="DodgerBlue"
+        title="Tooltip title" 
+      &gt;
+        &lt;ButtonIcon
+          sdsType="secondary"
+          sdsSize="large"
+          sdsIcon="InfoCircle"
+        /&gt;
+      &lt;/TooltipCondensed&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>TooltipTable</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TooltipTable/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The SDS TooltipTable is built off of the MUI Tooltip component, but it has a
+  built-in way to add tabular data:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong></strong>
+      <strong>data</strong>
+      <strong>:</strong>
+      This prop takes an array of objects to be formatted within the
+      TooltipTable with two columns, one for label and one for value.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>itemAlign</strong>
+      <strong>:</strong>
+      This prop specific to SDS positions the value contents of each row either
+      the right or left of their column.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>contentAlert</strong>
+      <strong>:</strong>
+      This SDS-specific prop takes a value of String (a message), Element (such
+      as a link), or None (the default).
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-tooltip/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>contentAlert</p></td>
+    <td><p>string | JSX.Element</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        This SDS-specific prop takes a value of String (a message), Element
+        (such as a link), or None (the default)
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>data</p></td>
+    <td>
+      <p>Array&lt;{</p>
+      <p>label?: string;</p>
+      <p>dataRows: {</p>
+      <p>label: string;</p>
+      <p>value: string | number;</p>
+      <p>}[];</p>
+      <p>disabled?: boolean;</p>
+      <p>}&gt;</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        This prop takes an array of objects to be formatted within the
+        TooltipTable with two columns, one for label and one for value.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>itemAlign</p></td>
+    <td><p>"left" | "right"</p></td>
+    <td><p>"right"</p></td>
+    <td>
+      <p>
+        This prop specific to SDS positions the value contents of each row
+        either the right or left of their column.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Default TooltipTable</h4>
+<p>This example showcases the implementation of a TooltipTable component.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ButtonIcon, Tooltip, TooltipTable } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const data = [
+    {
+      dataRows: [
+        { label: "First", value: 1 },
+        { label: "Second", value: 2 },
+      ],
+      label: "Section 1",
+    },
+    {
+      dataRows: [
+        { label: "Third", value: 3 },
+      ],
+      label: "Section 2",
+    }
+  ];
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tooltip 
+        arrow 
+        title={
+          &lt;TooltipTable itemAlign="right" data={data} /&gt;
+        } 
+        placement="right-end"
+      &gt;
+        &lt;ButtonIcon
+          sdsType="secondary"
+          sdsSize="large"
+          sdsIcon="InfoCircle"
+        /&gt;
+      &lt;/Tooltip&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

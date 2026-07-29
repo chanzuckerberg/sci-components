@@ -1,0 +1,5820 @@
+<p>
+  Tables are used to store and visually organize data and other content into a
+  series of cells grouped into a collection of rows and columns, helping users
+  better understand and analyze a given set of information.
+</p>
+<h2>Guidelines</h2>
+<h2>Table Components</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        Tables are built by combining Header Cells with Basic or Component
+        Cells, providing flexibility for teams to create Tables that house any
+        type of content their product's require. Tables can be sorted, either
+        ascending or descending, by clicking on any Header Cell that has sorting
+        enabled.
+      </p>
+      <p>
+        To avoid slow loading speeds in Tables that contain large amounts of
+        data, they should be split across multiple pages; incorporate a
+        Pagination component to help users navigate between the pages of
+        multi-page Tables.
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/p/543108">Filters</a>
+        are often used in conjunction with Tables, allowing users to manipulate
+        what content is viewable in the Table by the parameters indicated in the
+        Filter.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to element:</strong></p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/777c08"
+          >Table Anatomy</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c"
+          >Basic Cell</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b"
+          >Component Cell</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/255d36"
+          >Header Cell</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1"
+          >Table Row</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2"
+          >Table Header</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/891710"
+          >Pagination</a
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Visual Preview</h3>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_CellBasic</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cb2c954784635621.png"
+        alt="Preview_Guidelines_CellBasic"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_CellComponent</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/284bb5ab900728a6.png"
+        alt="Preview_Guidelines_CellComponent"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_CellHeader</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f28cb24f2adff30c.png"
+        alt="Preview_Guidelines_CellHeader"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_TableRow</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a7052bed01c82b58.png"
+        alt="Preview_Guidelines_TableRow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_TableHeader</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0e7dac48f0bcf7f7.png"
+        alt="Preview_Guidelines_TableHeader"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Pagination</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a886ba36aec5888f.png"
+        alt="Preview_Guidelines_Pagination"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Anatomy</h3>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Anatomy</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/81368b04107a5eda.png" alt="Table Anatomy" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Basic Cell</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-cellbasic--default"
+  width="848"
+  height="192.5390625"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  The Basic Cell is intended to be filled with strings of text or numerical
+  values. A range of elements can be included alongside text, such as
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73"
+    >Icon Buttons</a
+  >
+  or
+  <a href="https://sds.czi.design/009eaf17b/p/39dc34">Tags</a>
+  , to provide additional actions users can take in relation to the content
+  within the cell.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Secondary text</p></td>
+    <td><p>Default + Secondary text + Tertiary text</p></td>
+    <td><p>Default (right aligned)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell_left aligned_primary</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e99e20584d4ae306.png"
+        alt="Basic Cell_left aligned_primary"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Basic Cell_left aligned_primary + secondary</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d3ab5e3d5d9e3128.png"
+        alt="Basic Cell_left aligned_primary + secondary"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Basic Cell_left aligned_primary + secondary + tertiary</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/044bca56506b57d0.png"
+        alt="Basic Cell_left aligned_primary + secondary + tertiary"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell_right aligned</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c56ae684aa05edba.png"
+        alt="Basic Cell_right aligned"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default (wrapped)</p></td>
+    <td><p>Hover (truncated) + Tooltip</p></td>
+    <td><p>Basic Cell + Icon</p></td>
+    <td><p>Basic Cell + Tag</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell_wrap</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1a1b374ea641da6e.png"
+        alt="Basic Cell_wrap"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell_truncate</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2e7ca88e6988ee76.png"
+        alt="Basic Cell_truncate"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell + Icon</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9a29befcfc7d3bc9.png"
+        alt="Basic Cell + Icon"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell + Tag</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f08f570996651842.png"
+        alt="Basic Cell + Tag"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Basic Cell Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Multiple Basic and/or Component Cells are placed beside each other
+  to create a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1"
+    >Table Row</a
+  >
+  . Stack Table Rows below a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2"
+    >Table Header</a
+  >
+  to create a full Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Basic Cell_spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5f16e58dca8bd489.png"
+        alt="Basic Cell_spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Component Cell</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-cellcomponent--default"
+  width="848"
+  height="189.1796875"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  Component Cells can accept any type of element, including any combination or
+  number of components, but should not be used to display text strings (use a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c"
+    >Basic Cell</a
+  >
+  for this). Most commonly it is used to hold
+  <a href="https://sds.czi.design/009eaf17b/p/47778c">Buttons</a>
+  ,
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/54c33d"
+    >Toggles</a
+  >
+  , and
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/70a4ba"
+  >
+    Checkbox Inputs
+  </a>
+  .
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Filled (left aligned)</p></td>
+    <td><p>Filled (center aligned)</p></td>
+    <td><p>Filled (right aligned)</p></td>
+    <td><p>Filled (fit contents)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Component Cell_empty_left aligned</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a6aac314058f5fa8.png"
+        alt="Component Cell_empty_left aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Component Cell_filled_left aligned</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ca2b5e8f8b4d70ab.png"
+        alt="Component Cell_filled_left aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Component Cell_filled_center aligned</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2af586b55dc70b1e.png"
+        alt="Component Cell_filled_center aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Component Cell_filled_right aligned</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/451b154e2212887c.png"
+        alt="Component Cell_filled_right aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Component Cell_filled_fit contents</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bef1dedff2128d6f.png"
+        alt="Component Cell_filled_fit contents"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Component Cell Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Multiple Basic and/or Component Cells are placed beside each other
+  to create a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1"
+    >Table Row</a
+  >
+  . Stack Table Rows below a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2"
+    >Table Header</a
+  >
+  to create a full Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Component Cell_spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d1efe39dcaa4baaf.png"
+        alt="Component Cell_spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Header Cell</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-cellheader--default"
+  width="848"
+  height="87.859375"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  Header Cells are placed at the top of Table columns and serve as the header
+  for the content found in the cells below it. The Header Cell's horizontal
+  alignment should match the text position of the
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c"
+    >Basic</a
+  >
+  or
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b"
+    >Component Cell</a
+  >
+  below it. For Basic or Component Cells with centered-aligned content, the
+  Header Cell should be left aligned. Header Cells' vertical alignment is
+  centered and cannot be adjusted.
+</p>
+<p>
+  Users are able to manually sort columns in ascending or descending order by
+  clicking on the Header Cell. On first click, the Table will rearrange itself
+  and sort in the direction indicated on the sort icon. A second click and the
+  sort direction will flip. A third click and the content will return to its
+  non-sorted order.
+</p>
+<p>
+  Each Header Cell can have an optional
+  <a href="https://sds.czi.design/009eaf17b/p/74af45">Tooltip</a>
+  appear when hovered over. This can be used to display supplemental information
+  or help further define the contents of the column below it.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (center aligned)</p></td>
+    <td><p>Default (right aligned)</p></td>
+    <td><p>Hover + Tooltip</p></td>
+    <td><p>Active (ascending)</p></td>
+    <td><p>Active (descending)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Header Cell_left aligned_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/79566d2a068bfeeb.png"
+        alt="Header Cell_left aligned_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Header Cell_center aligned_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/054cc3ce2320e9c7.png"
+        alt="Header Cell_center aligned_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Header Cell_right aligned_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b6f6c22950d6a091.png"
+        alt="Header Cell_right aligned_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Header Cell_left aligned_tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9693cc6daf7d6533.png"
+        alt="Header Cell_left aligned_tooltip"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Header Cell_right aligned_ascending</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7af5b8448b8ff043.png"
+        alt="Header Cell_right aligned_ascending"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Header Cell_left aligned_descending</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6ad22a4b64694fb9.png"
+        alt="Header Cell_left aligned_descending"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Header Cell Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Multiple Header Cells are placed beside each other to create a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2"
+    >Table Header</a
+  >
+  . Stack
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1"
+    >Table Rows</a
+  >
+  below a Table Header to create a full Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Header Cell spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c8dba006cec41152.png"
+        alt="Header Cell spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Table Row</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-tablerow--default"
+  width="848"
+  height="115.9296875"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  A Table Row is a container filled with multiple
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/79452c"
+    >Basic</a
+  >
+  or
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b"
+    >Component Cells</a
+  >
+  placed side-by-side to form a row of different, but related pieces of
+  information, for example, data related to a collected sample.
+</p>
+<p>
+  The Table Row also has its own set of props that control how the row as a
+  whole behaves. For example, Table Rows can have
+  <a href="https://sds.czi.design/009eaf17b/p/74af45">Tooltips</a>
+  enabled on them that appear when the row is hovered over, communicating
+  information about an entire row to users. Be sure to only enable Tooltips on
+  either the row or cell and not both, so users don't trigger two Tooltips
+  simultaneously.
+</p>
+<p>
+  Additionally,
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/86b757"
+  >
+    Checkbox Inputs
+  </a>
+  can be placed within a Component Cell in the first column of a row, giving
+  users the ability to select entire rows and complete bulk actions on them,
+  such as downloading, editing, etc. See the
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/59ed88"
+    >Table Row Actions</a
+  >
+  section below for more details.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (no divider)</p></td>
+    <td><p>Hover + Tooltip</p></td>
+    <td><p>Selected</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>TableRow_default_divider</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5530f84369b05686.png"
+        alt="TableRow_default_divider"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>TableRow_default_no divider</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ca410489041de170.png"
+        alt="TableRow_default_no divider"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>TableRow_hover + tooltip</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6842e8702bb1c235.png"
+        alt="TableRow_hover + tooltip"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>TableRow_selected</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/951a4cb2ce823c8f.png"
+        alt="TableRow_selected"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>TableRow_disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b96274d0b9e602b2.png"
+        alt="TableRow_disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Row Actions</h3>
+<p>
+  Table Rows may have actions tied to them, such as the ability to edit, delete,
+  download, etc. Users complete these actions by clicking on corresponding
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73"
+    >Icon Buttons</a
+  >
+  that are placed within a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/066d0b"
+    >Component Cell</a
+  >
+  in the final column at the end of a Table Row (1). Table Row Actions can
+  either be exposed on hover or can be persistent in the Table at all times.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Row actions_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ee5f26b81a86d53b.png"
+        alt="Table Row actions_default"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overflow Menu</h4>
+<p>
+  An overflow Icon Button, represented by the
+  <a href="https://sds.czi.design/009eaf17b/p/529e08">DotsHorizontal3</a>
+  icon (2), can be used to surface a
+  <a href="https://sds.czi.design/009eaf17b/p/42bdf2">Dropdown Menu</a>
+  (3) that contains additional actions. This should be used in instances where a
+  large number of actions are needed (generally more than three) or the designer
+  wants to save space in wide Tables that contain many columns.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Row actions_overflow</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/62a269088228bf73.png"
+        alt="Table Row actions_overflow"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Bulk Actions</h4>
+<p>
+  Tables can be designed to allow users to complete actions across multiple
+  Table Rows at the same time, known as bulk actions. Similar to row actions,
+  bulk actions are completed by clicking on corresponding
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73"
+    >Icon Buttons</a
+  >
+  that are located at the top right of the Table, above the
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/82449e"
+    >Table Header</a
+  >
+  ; they should be inactive when no rows are selected (4).
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Bulk Table Row actions_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bd25f4a5e070fa75.png"
+        alt="Bulk Table Row actions_default"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Selectable Rows</h4>
+<p>
+  To make Table Rows selectable, designers must include
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/70a4ba"
+  >
+    Checkbox Inputs
+  </a>
+  in the first column of the row (5). It is recommended that only once rows are
+  selected should applicable bulk action
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73"
+    >Icon Buttons</a
+  >
+  become enabled, allowing users to take action across all selected rows (6).
+  How this functionality is implemented is ultimately up to the product team.
+  Add a counter to indicate how many rows have been selected (7).
+</p>
+<p>
+  Because actions taken at the row level will impact stored data in the
+  application, row and bulk actions are completely controlled by the application
+  itself and not the SDS component.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Bulk Table Row actions_selected</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/974b5bb300067547.png"
+        alt="Bulk Table Row actions_selected"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Row Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Stack Table Rows below a
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/6460c2"
+    >Table Header</a
+  >
+  to create a full Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Row spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3054887ad51e7b06.png"
+        alt="Table Row spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Table Header</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-tableheader--default"
+  width="848"
+  height="114.345458984375"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  A Table Header is a container filled with multiple
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/255d36"
+    >Header Cells</a
+  >
+  placed side-by-side to form a header row. This row is placed at the top of a
+  Table with each Header Cell serving as the column header for the content below
+  it; a 2px border should be placed below it. There can only be one Table Header
+  per Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Header</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/7bca1c83df77fb4b.png" alt="Table Header" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Header Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Stack
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1"
+    >Table Rows</a
+  >
+  below a Table Header to create a full Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Table Header spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4115377b6384e27b.png"
+        alt="Table Header spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Pagination</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=table-pagination--default"
+  width="848"
+  height="93.734375"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  Large Tables may have long loading times. To mitigate this, Tables can be
+  split across multiple pages with the addition of a Pagination component to
+  navigate between these pages. Place the Pagination component below the final
+  Table Row on each page. It is right-aligned by default, but can optionally be
+  center or left-aligned.
+</p>
+<p>
+  Users are able to click on any page number to jump immediately to that page;
+  otherwise they can use the forward and back
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/47778c-buttons/t/73bd73"
+    >Icon Buttons</a
+  >
+  to navigate page-by-page. For Tables that are longer than seven pages,
+  ellipses are displayed to represent any additional pages not viewable. When
+  enabled, the ellipses between page numbers can be clicked on, allowing users
+  to select a page to jump to via a
+  <a href="https://sds.czi.design/009eaf17b/p/42bdf2">Dropdown Menu</a>
+  . When disabled, the ellipses will still be visible but not interactive.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (square)</p></td>
+    <td><p>Hover</p></td>
+    <td>
+      <p>Default</p>
+      <p>(ellipsis disabled)</p>
+    </td>
+    <td>
+      <p>Default</p>
+      <p>(ellipsis enabled)</p>
+    </td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Pagination_default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/70923cc0af16c8aa.png"
+        alt="Pagination_default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Pagination_default_square</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6676a03a0e4f5f5e.png"
+        alt="Pagination_default_square"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Pagination_hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a86fe4f6f54889ca.png"
+        alt="Pagination_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Pagination_truncated dropdown_false</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d28d5d642292d852.png"
+        alt="Pagination_truncated dropdown_false"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Pagination_truncated dropdown_true</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/04a4b21cc474d0d5.png"
+        alt="Pagination_truncated dropdown_true"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Pagination Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Place Pagination below the final
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/8432d1"
+    >Table Row</a
+  >
+  on each page of the Table.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Pagination_spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/58a6ed2ca87513e1.png"
+        alt="Pagination_spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<h2>Table Components</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        Tables are built by combining CellHeader with CellBasic or
+        CellComponent, providing flexibility for teams to create Tables that
+        house any type of content their product's require. Tables can be sorted,
+        either ascending or descending, by clicking on any CellHeader that has
+        sorting enabled.
+      </p>
+      <p>
+        To avoid slow loading speeds in Tables that contain large amounts of
+        data, they should be split across multiple pages; incorporate Pagination
+        to help users navigate between the pages of multi-page Tables.
+      </p>
+      <p>
+        Filters are often used in conjunction with Tables, allowing users to
+        manipulate what content is viewable in the Table by the parameters
+        indicated in the Filter.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to component:</strong></p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/703189"
+          >CellBasic</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/440ac7"
+          >CellComponent</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/03de1b"
+          >CellHeader</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/4163d9"
+          >TableRow</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/86a541"
+          >Pagination</a
+        >
+      </p>
+      <p>PreComposedTable</p>
+    </td>
+  </tr>
+</table>
+<h3>Visual Preview</h3>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_CellBasic</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2a0363649effab7c.png"
+        alt="Preview_Code_CellBasic"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_CellComponent</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/54a739e7dd8e0f85.png"
+        alt="Preview_Code_CellComponent"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_CellHeader</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/56478b8360b09a7f.png"
+        alt="Preview_Code_CellHeader"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_TableRow</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/23460be2c0dc1b04.png"
+        alt="Preview_Code_TableRow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_Pagination</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/49250a17ae2d9c89.png"
+        alt="Preview_Code_Pagination"
+      />
+    </figure>
+  </figure>
+</div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<hr />
+<h2>CellBasic</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellBasic/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>horizontalAlign</p></td>
+    <td>
+      <p>"left"</p>
+      <p>| "center"</p>
+      <p>| "right"</p>
+    </td>
+    <td><p>"left"</p></td>
+    <td><p>Horizontal alignment of cell content.</p></td>
+  </tr>
+  <tr>
+    <td><p>icon</p></td>
+    <td><p>Node</p></td>
+    <td><p>-</p></td>
+    <td><p>Places an icon at the left side of the cell component.</p></td>
+  </tr>
+  <tr>
+    <td><p>iconVerticalAlign</p></td>
+    <td>
+      <p>"top"</p>
+      <p>| "center"</p>
+      <p>| "bottom"</p>
+    </td>
+    <td><p>"top"</p></td>
+    <td><p>Vertical alignment of the icon component.</p></td>
+  </tr>
+  <tr>
+    <td><p>primaryText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Primary text value.</p></td>
+  </tr>
+  <tr>
+    <td><p>primaryTextWrapLineCount</p></td>
+    <td><p>number</p></td>
+    <td><p>3</p></td>
+    <td><p>Number of text wrap lines for primary text.</p></td>
+  </tr>
+  <tr>
+    <td><p>primaryTextComponentSlotBottom</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>null</p></td>
+    <td>
+      <p>
+        Component slot below primary text. This will only show if there is no
+        secondary or tertiary text. Remove the default values of secondary and
+        tertiary text to see this in action.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>primaryTextComponentSlotRight</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>null</p></td>
+    <td><p>Component slot to the right of primary text</p></td>
+  </tr>
+  <tr>
+    <td><p>secondaryText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Secondary Text.</p></td>
+  </tr>
+  <tr>
+    <td><p>secondaryTextWrapLineCount</p></td>
+    <td><p>number</p></td>
+    <td><p>1</p></td>
+    <td><p>Number of text wrap lines for secondary text.</p></td>
+  </tr>
+  <tr>
+    <td><p>tertiaryText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Tertiary Text.</p></td>
+  </tr>
+  <tr>
+    <td><p>tertiaryTextWrapLineCount</p></td>
+    <td><p>number</p></td>
+    <td><p>1</p></td>
+    <td><p>Number of text wrap lines for tertiary text.</p></td>
+  </tr>
+  <tr>
+    <td><p>shouldShowTooltipOnHover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>When set to true, a tooltip will be shown on cell hover.</p></td>
+  </tr>
+  <tr>
+    <td><p>shouldTextWrap</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        When set to true, wraps the content texts by the number of defined wrap
+        line numbers.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>tooltipProps</p></td>
+    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td><p>{}</p></td>
+    <td>
+      <p>These props will be directly passed to the Tooltip component.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>verticalAlign</p></td>
+    <td>
+      <p>"top"</p>
+      <p>| "center"</p>
+      <p>| "bottom"</p>
+    </td>
+    <td><p>"top"</p></td>
+    <td><p>Vertical alignment of the cell content.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Default CellBasic</h4>
+<p>
+  This example demonstrates the minimum required props for rendering a CellBasic
+  component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}
+
+table {
+  border: dashed 1px #eee;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { CellBasic } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;table&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+            /&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>CellBasic with Icon and Text Wrap</h4>
+<p>
+  This example highlights a CellBasic component featuring an SDS icon and
+  lengthy texts for Primary, Secondary, and Tertiary content, all thoughtfully
+  wrapped for optimal presentation.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { CellBasic, Icon } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const TableCellStyle = {
+    border: "dashed 1px #eee",
+    maxWidth: 160,
+    width: 160,
+  };
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;table&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;
+            &lt;CellBasic
+              primaryText="Primary Text that is longer than expected."
+              secondaryText="Secondary Text that is londer than expected."
+              tertiaryText="Tertiary Text that is lonegrt than expected."
+              icon={&lt;Icon sdsIcon="Bacteria" sdsSize="l" sdsType="static" color="notice" /&gt;}
+              style={TableCellStyle}
+              tooltipProps={{
+                placement: "right",
+                sdsStyle: "light"
+              }}
+            /&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>CellComponent</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellComponent/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>horizontalAlign</p></td>
+    <td>
+      <p>"left"</p>
+      <p>| "center"</p>
+      <p>| "right"</p>
+    </td>
+    <td><p>"left"</p></td>
+    <td><p>Specifies the horizontal alignment of the cell content.</p></td>
+  </tr>
+  <tr>
+    <td><p>verticalAlign</p></td>
+    <td>
+      <p>"top"</p>
+      <p>| "center"</p>
+      <p>| "bottom"</p>
+    </td>
+    <td><p>"top"</p></td>
+    <td><p>Specifies the vertical alignment of the cell content.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default CellComponent</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  CellComponent component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}
+
+table {
+  border: dashed 1px #eee;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { CellComponent, InputToggle } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;table&gt;
+        &lt;tbody&gt;
+          &lt;tr&gt;
+            &lt;CellComponent&gt;
+              &lt;InputToggle /&gt;
+            &lt;/CellComponent&gt;
+          &lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>CellHeader</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellHeader/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>active</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>When true, the component is in active state.</p></td>
+  </tr>
+  <tr>
+    <td><p>hover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        By default, the component is not interactive and does not have a hover
+        state. When set to true, it displays a sortIcon and changes color on
+        hover.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>direction</p></td>
+    <td><p>"asc" | "desc"</p></td>
+    <td><p>"desc"</p></td>
+    <td><p>Changes the chevron icon based on the sort direction.</p></td>
+  </tr>
+  <tr>
+    <td><p>hideSortIcon</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>If set to true, the sort icon becomes hidden.</p></td>
+  </tr>
+  <tr>
+    <td><p>horizontalAlign</p></td>
+    <td>
+      <p>"left"</p>
+      <p>| "center"</p>
+      <p>| "right"</p>
+    </td>
+    <td><p>"left"</p></td>
+    <td><p>Horizontally aligns the component's content.</p></td>
+  </tr>
+  <tr>
+    <td><p>shouldShowTooltipOnHover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>When true, show a tooltip on component hover.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>The content of the tooltip.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipProps</p></td>
+    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td><p>{}</p></td>
+    <td><p>These props are directly passed to the tooltip component.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default CellHeader</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  CellHeader component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}
+
+table {
+  border: dashed 1px #eee;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { CellHeader } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;CellHeader&gt;
+              Header
+            &lt;/CellHeader&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>TableRow</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableRow/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>When true, the row is disabled.</p></td>
+  </tr>
+  <tr>
+    <td><p>hover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>When true, the component has a hover style.</p></td>
+  </tr>
+  <tr>
+    <td><p>selected</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>When true, component is in the selected state.</p></td>
+  </tr>
+  <tr>
+    <td><p>rowHeight</p></td>
+    <td><p>number</p></td>
+    <td><p>-</p></td>
+    <td><p>Sets a maximum height for the table row.</p></td>
+  </tr>
+  <tr>
+    <td><p>shouldShowTooltipOnHover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>When true, a tooltip shows up on component hover.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipProps</p></td>
+    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td><p>{}</p></td>
+    <td><p>These props are directly passed to the tooltip component.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Tooltip text.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipSubtitle</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Toltip subtitle.</p></td>
+  </tr>
+  <tr>
+    <td><p>useDivider</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>If set to true, shows a bottom border under the table row.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default TableRow</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a TableRow
+  component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { TableRow, CellBasic } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;table&gt;
+        &lt;tbody&gt;
+          &lt;TableRow&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+          &lt;/TableRow&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>TableHeader</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableHeader/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Code examples</h3>
+<h4><strong>Default TableHeader</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  TableHeader component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { TableRow, CellHeader } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;table&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;CellHeader&gt;
+              Header
+            &lt;/CellHeader&gt;
+            &lt;CellHeader&gt;
+              Header
+            &lt;/CellHeader&gt;
+            &lt;CellHeader&gt;
+              Header
+            &lt;/CellHeader&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>Pagination</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Pagination/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>onPageChange</p></td>
+    <td><p>(page: number) =&gt; void;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>A callback function triggered when the page number is changed.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onNextPage</p></td>
+    <td><p>() =&gt; void;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A callback function triggered when the "Next" page button is clicked.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onPreviousPage</p></td>
+    <td><p>() =&gt; void;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A callback function triggered when the "Previous" page button is
+        clicked.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>pageSize</p></td>
+    <td><p>number</p></td>
+    <td><p>-</p></td>
+    <td><p>Specifies the number of items to be shown on each page.</p></td>
+  </tr>
+  <tr>
+    <td><p>siblingCount</p></td>
+    <td><p>number</p></td>
+    <td><p>1</p></td>
+    <td><p>Specifies the number of siblings for each page number.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"rounded"</p>
+      <p>| "square"</p>
+    </td>
+    <td><p>"rounded"</p></td>
+    <td><p>The style of the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>totalCount</p></td>
+    <td><p>number</p></td>
+    <td><p>-</p></td>
+    <td><p>Total number of items to be paginated.</p></td>
+  </tr>
+  <tr>
+    <td><p>truncateDropdown</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>If true, a dropdown menu is shown for hidden page numbers.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default Pagination</strong></h4>
+<p>
+  This example showcases a Pagination component with the minimum required props.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Pagination } from "@czi-sds/components";
+import { useState } from "react";
+import "./styles.css";
+
+function App() {
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;Pagination
+        pageSize={5}
+        onPageChange={(page: number) =&gt; {
+          setCurrentPage(page);
+        }}
+        onNextPage={() =&gt; setCurrentPage(currentPage + 1)}
+        onPreviousPage={() =&gt; setCurrentPage(currentPage - 1)}
+        totalCount={250}
+        siblingCount={2}
+        currentPage={currentPage}
+        truncateDropdown
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<hr />
+<h2>Table</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Table/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Code examples</h3>
+<h4><strong>Default Table</strong></h4>
+<p>
+  This example demonstrates a Table that utilizes all SDS Table-related
+  components, providing a comprehensive showcase of their functionalities and
+  features.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { 
+  CellBasic, 
+  CellComponent, 
+  CellHeader,
+  Icon, 
+  InputRadio,  
+  Tag, 
+  Table, 
+  TableRow, 
+  TableHeader 
+} from "@czi-sds/components";
+import { styled, RadioGroup, FormControlLabel } from "@mui/material";
+import "./styles.css";
+
+function App() {
+  
+  const StyledIconCell = styled("div")`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  `;
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          &lt;CellHeader horizontalAlign="center" hideSortIcon&gt;
+            Category
+          &lt;/CellHeader&gt;
+          &lt;CellHeader active&gt;Active Header&lt;/CellHeader&gt;
+          &lt;CellHeader&gt;
+            A very long table header title to test sort icon positioning
+          &lt;/CellHeader&gt;
+          &lt;CellHeader hideSortIcon&gt;Component&lt;/CellHeader&gt;
+          &lt;CellHeader horizontalAlign="right" hideSortIcon&gt;
+            Right Aligned and Not sortable
+          &lt;/CellHeader&gt;
+        &lt;/TableHeader&gt;
+        &lt;tbody&gt;
+          &lt;TableRow&gt;
+            &lt;CellComponent verticalAlign="center" horizontalAlign="center"&gt;
+              &lt;StyledIconCell&gt;
+                &lt;Icon sdsSize="xl" sdsIcon="Flask" sdsType="static" /&gt;
+                &lt;Tag
+                  color="info"
+                  label="Chemistry"
+                  sdsStyle="rounded"
+                  sdsType="secondary"
+                /&gt;
+              &lt;/StyledIconCell&gt;
+            &lt;/CellComponent&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              secondaryTextWrapLineCount={2}
+              shouldTextWrap
+            /&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              tertiaryText="Tertiary Text"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+            &lt;CellComponent&gt;
+              {["info", "notice", "beta", "negative", "positive"].map((item) =&gt; (
+                &lt;Tag
+                  key={item}
+                  color={item as SdsTagColorType}
+                  label={item as string}
+                  sdsStyle="rounded"
+                  sdsType="secondary"
+                /&gt;
+              ))}
+            &lt;/CellComponent&gt;
+            &lt;CellBasic
+              primaryText="356"
+              horizontalAlign="right"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+          &lt;/TableRow&gt;
+          &lt;TableRow&gt;
+            &lt;CellComponent verticalAlign="center" horizontalAlign="center"&gt;
+              &lt;StyledIconCell&gt;
+                &lt;Icon sdsSize="xl" sdsIcon="Download" sdsType="static" /&gt;
+                &lt;Tag
+                  color="info"
+                  label="Downloadable Content"
+                  sdsStyle="rounded"
+                  sdsType="secondary"
+                /&gt;
+              &lt;/StyledIconCell&gt;
+            &lt;/CellComponent&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              tertiaryText="Tertiary Text"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+            &lt;CellComponent&gt;
+              &lt;RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                name="radio-buttons-group"
+                defaultValue="1"
+              &gt;
+                &lt;InputRadio label="Option I" caption="Caption I" value="1" /&gt;
+                &lt;InputRadio label="Option II" caption="Caption II" value="2" /&gt;
+              &lt;/RadioGroup&gt;
+            &lt;/CellComponent&gt;
+            &lt;CellBasic
+              primaryText="1,234"
+              secondaryText="2,344,000"
+              tertiaryText="12.5%"
+              horizontalAlign="right"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+          &lt;/TableRow&gt;
+          &lt;TableRow
+            disabled
+            shouldShowTooltipOnHover
+            tooltipText="This row is DISABLED!"
+            tooltipSubtitle="Tooltip subtitle"
+          &gt;
+            &lt;CellComponent verticalAlign="center" horizontalAlign="center"&gt;
+              &lt;StyledIconCell&gt;
+                &lt;Icon sdsSize="xl" sdsIcon="Bacteria" sdsType="static" /&gt;
+                &lt;Tag
+                  color="negative"
+                  label="Disease"
+                  sdsStyle="rounded"
+                  sdsType="secondary"
+                /&gt;
+              &lt;/StyledIconCell&gt;
+            &lt;/CellComponent&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              secondaryText="Secondary Text"
+              tertiaryText="Tertiary Text"
+              shouldShowTooltipOnHover={false}
+              verticalAlign="center"
+            /&gt;
+            &lt;CellBasic
+              primaryText="Primary Text"
+              shouldShowTooltipOnHover={false}
+              verticalAlign="center"
+            /&gt;
+            &lt;CellComponent verticalAlign="center"&gt;
+              &lt;Icon sdsSize="l" sdsIcon="Virus" sdsType="static" /&gt;
+            &lt;/CellComponent&gt;
+            &lt;CellBasic
+              primaryText="0.4"
+              horizontalAlign="right"
+              verticalAlign="center"
+              shouldShowTooltipOnHover={false}
+            /&gt;
+          &lt;/TableRow&gt;
+        &lt;/tbody&gt;
+      &lt;/Table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h2>PreComposedTable</h2>
+<p>
+  This component is a fully-featured, composable table built on top of TanStack
+  Table with built-in support for sorting, pagination, row selection, filtering,
+  column pinning, and responsive sizing
+</p>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Table/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>data</p></td>
+    <td><p>TData[]</p></td>
+    <td><p>-</p></td>
+    <td><p>Array of data objects to display in the table rows</p></td>
+  </tr>
+  <tr>
+    <td><p>columns</p></td>
+    <td><p>ColumnDef&lt;TData&gt;[]</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Column definitions that specify how data should be rendered and behave
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>enableSorting</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>Enables sorting functionality for table columns</p></td>
+  </tr>
+  <tr>
+    <td><p>enableRowSelection</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>Adds checkboxes for row selection with select-all functionality</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shouldPinSelectRowToLeft</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>Pins the row selection column to the left/right side of the table</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>enablePagination</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>Enables pagination controls at the bottom of the table</p></td>
+  </tr>
+  <tr>
+    <td><p>enableGlobalFiltering</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>Displays a search input that filters across all columns</p></td>
+  </tr>
+  <tr>
+    <td><p>paginationConfig</p></td>
+    <td>
+      <p>
+        Partial&lt;PaginationProps&gt; &amp; { placement?: "left" | "center" |
+        "right" }
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Config object for pagination settings including placement and page size
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>className</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>CSS class name to apply to the table container</p></td>
+  </tr>
+  <tr>
+    <td><p>style</p></td>
+    <td><p>React.CSSProperties</p></td>
+    <td><p>-</p></td>
+    <td><p>Inline styles to apply to the table container</p></td>
+  </tr>
+  <tr>
+    <td><p>tableWidth</p></td>
+    <td><p>string</p></td>
+    <td><p>100%</p></td>
+    <td><p>Sets the width of the table container</p></td>
+  </tr>
+  <tr>
+    <td><p>tableRowProps</p></td>
+    <td><p>Partial&lt;TableRowProps&gt;</p></td>
+    <td><p>-</p></td>
+    <td><p>Additional props to pass to each table row component</p></td>
+  </tr>
+  <tr>
+    <td><p>onRowSelect</p></td>
+    <td><p>(selectedRows: TData[]) =&gt; void</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Callback triggered when row selection changes; receives array of
+        selected row data
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>Component Recipes</h2>
+<h2>Table Recipes</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        These component recipes show a few of the more complex approaches
+        available for customizing Tables.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to recipe:</strong></p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/46319a"
+          >Text-only Table</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/490982">
+          Table with a custom sorting function
+        </a>
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/770a4e">
+          Table with custom Tooltips
+        </a>
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/969aef">
+          Table with virtualized rows
+        </a>
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/16881f">
+          Editable Table Cells with Access to Internal Data
+        </a>
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/41b699">
+          Table with Front-End Pagination
+        </a>
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/1647a1-tables/t/011922">
+          Table with Back-End Pagination
+        </a>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text-only Table</h4>
+<p>This shows a table that is made up entirely of BasicCells.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  width: 90%;
+  margin: auto;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import * as React from "react";
+import {
+  CellBasic,
+  CellHeader,
+  TableHeader,
+  TableRow,
+  Table,
+} from "@czi-sds/components";
+import "./styles.css";
+
+import {
+  CellContext,
+  HeaderContext,
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+
+type Person = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  birthdate: string;
+  visits: number;
+  status: string;
+  progress: number;
+};
+
+const defaultData: Person[] = [
+  {
+    firstName: "Tanner",
+    lastName: "Linsley",
+    age: 24,
+    birthdate: "26 October 1997",
+    visits: 100,
+    status: "In Relationship",
+    progress: 50,
+  },
+  {
+    firstName: "Tandy",
+    lastName: "Miller",
+    age: 40,
+    birthdate: "14 July 1982",
+    visits: 40,
+    status: "Single",
+    progress: 80,
+  },
+  {
+    firstName: "Joe",
+    lastName: "Dirte",
+    age: 45,
+    birthdate: "25 February 1977",
+    visits: 20,
+    status: "Complicated",
+    progress: 10,
+  },
+];
+
+function createHeaderCell(
+  header: HeaderContext&lt;Person, unknown&gt;,
+  name: string
+) {
+  return (
+    &lt;CellHeader
+      hideSortIcon
+      horizontalAlign={header.header.id === "progress" ? "right" : "left"}
+    &gt;
+      {header.header.isPlaceholder ? "" : name}
+    &lt;/CellHeader&gt;
+  );
+}
+
+function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
+  return (
+    &lt;CellBasic
+      primaryText={cell.getValue() as string}
+      shouldShowTooltipOnHover={false}
+    /&gt;
+  );
+}
+
+const columnHelper = createColumnHelper&lt;Person&gt;();
+
+const columns = [
+  columnHelper.accessor("firstName", {
+    cell: (cell) =&gt; createBodyCell(cell),
+    header: (header) =&gt; createHeaderCell(header, "First Name"),
+  }),
+  columnHelper.accessor((row) =&gt; row.lastName, {
+    id: "lastName",
+    cell: (cell) =&gt; createBodyCell(cell),
+    header: (header) =&gt; createHeaderCell(header, "Last Name"),
+  }),
+  columnHelper.accessor("age", {
+    cell: (cell) =&gt; (
+      &lt;CellBasic
+        key={cell.cell.id}
+        primaryText={cell.getValue().toString()}
+        secondaryText={cell.row.original.birthdate}
+        shouldShowTooltipOnHover={false}
+      /&gt;
+    ),
+    header: (header) =&gt; createHeaderCell(header, "Age"),
+  }),
+  columnHelper.accessor("visits", {
+    cell: (cell) =&gt; createBodyCell(cell),
+    header: (header) =&gt; createHeaderCell(header, "Visits"),
+  }),
+  columnHelper.accessor("status", {
+    cell: (cell) =&gt; createBodyCell(cell),
+    header: (header) =&gt; createHeaderCell(header, "Status"),
+  }),
+  columnHelper.accessor("progress", {
+    cell: (cell) =&gt; (
+      &lt;CellBasic
+        key={cell.cell.id}
+        primaryText={cell.getValue().toString()}
+        secondaryText={`${cell.getValue()} ± 5%`}
+        shouldShowTooltipOnHover={false}
+        horizontalAlign="right"
+      /&gt;
+    ),
+    header: (header) =&gt; createHeaderCell(header, "Profile Progress"),
+  }),
+];
+
+function App() {
+  const [data] = React.useState(() =&gt; [...defaultData]);
+
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          {table.getFlatHeaders().map((header) =&gt; (
+            &lt;React.Fragment key={header.id}&gt;
+              {flexRender(header.column.columnDef.header, header.getContext())}
+            &lt;/React.Fragment&gt;
+          ))}
+        &lt;/TableHeader&gt;
+        &lt;tbody&gt;
+          {table.getRowModel().rows.map((row) =&gt; (
+            &lt;TableRow key={row.id}&gt;
+              {row.getVisibleCells().map((cell) =&gt; (
+                &lt;React.Fragment key={cell.id}&gt;
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                &lt;/React.Fragment&gt;
+              ))}
+            &lt;/TableRow&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/Table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Table with a custom sorting function</h4>
+<p>
+  In this example, a Table is presented with various columns, each employing
+  default sorting mechanisms defined by react-table. However, the LastName
+  column stands out as it utilizes a custom sorting function named sortByLength,
+  which is specifically defined in the code. This customization allows for
+  distinct sorting behavior in the "LastName" column compared to the rest of the
+  Table.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.actions-list {
+  display: flex;
+  justify-content: end;
+  list-style: none;
+
+  &amp; li {
+    margin-right: 8px;
+
+    &amp; .MuiButtonBase-root {
+      outline: 0;
+    }
+
+    &amp;:last-child {
+      margin-right: 0;
+    }
+  }
+}
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import {
+  CellBasic,
+  CellHeader,
+  TableHeader,
+  TableRow,
+  Table,
+  CellHeaderDirection,
+  Icon,
+  CellComponent,
+  ButtonIcon,
+  Button,
+  Tag,
+} from "@czi-sds/components";
+import {
+  CellContext,
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  HeaderContext,
+  Row,
+  SortingFn,
+  SortingState,
+  useReactTable,
+} from "@tanstack/react-table";
+import { faker } from "@faker-js/faker";
+import "./styles.css";
+
+type Person = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  visits: number;
+  status: "relationship" | "complicated" | "single";
+  createdAt: Date;
+  subRows?: Person[];
+};
+
+const newPerson = (): Person =&gt; {
+  return {
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    age: faker.number.int(96),
+    visits: faker.number.int(1000),
+    createdAt: faker.date.between({
+      from: new Date("2001-01-01"),
+      to: new Date(),
+    }),
+    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
+      "relationship",
+      "complicated",
+      "single",
+    ])[0]!,
+  };
+};
+
+function makeData(...lens: number[]) {
+  const makeDataLevel = (depth = 0): Person[] =&gt; {
+    const len = lens[depth]!;
+    return [...Array(len)].map((): Person =&gt; {
+      return {
+        ...newPerson(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
+      };
+    });
+  };
+
+  return makeDataLevel();
+}
+
+declare module "@tanstack/table-core" {
+  interface SortingFns {
+    sortByLength: SortingFn&lt;unknown&gt;;
+  }
+}
+
+function createHeaderCell(
+  header: HeaderContext&lt;Person, unknown&gt;,
+  name: string
+) {
+  return (
+    &lt;CellHeader
+      colSpan={header.header.colSpan}
+      direction={
+        header.column.getIsSorted()
+          ? (header.column.getIsSorted() as CellHeaderDirection)
+          : undefined
+      }
+      active={!!header.column.getIsSorted()}
+      onClick={header.column.getToggleSortingHandler()}
+      hideSortIcon={header.header.id === "actions" ? true : false}
+      horizontalAlign={header.header.id === "actions" ? "right" : "left"}
+    &gt;
+      {name}
+    &lt;/CellHeader&gt;
+  );
+}
+
+function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
+  return (
+    &lt;CellBasic
+      primaryText={cell.getValue() as string}
+      horizontalAlign={cell.column.id === "progress" ? "center" : "left"}
+      verticalAlign="center"
+      shouldShowTooltipOnHover={false}
+    /&gt;
+  );
+}
+
+function App() {
+  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
+  const data = React.useState(() =&gt; makeData(20))[0];
+
+  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
+    () =&gt; [
+      {
+        accessorKey: "firstName",
+        id: "firstName",
+        cell: (cell) =&gt; (
+          &lt;CellBasic
+            primaryText={cell.getValue() as string}
+            icon={&lt;Icon sdsSize="s" sdsIcon="person" sdsType="static" /&gt;}
+            verticalAlign="center"
+            iconVerticalAlign="center"
+            shouldShowTooltipOnHover={false}
+          /&gt;
+        ),
+        header: (header) =&gt; createHeaderCell(header, "First Name"),
+      },
+      {
+        accessorFn: (row) =&gt; row.lastName,
+        id: "lastName",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; (
+          &lt;CellHeader
+            colSpan={header.header.colSpan}
+            direction={
+              header.column.getIsSorted()
+                ? (header.column.getIsSorted() as CellHeaderDirection)
+                : undefined
+            }
+            active={!!header.column.getIsSorted()}
+            onClick={header.column.getToggleSortingHandler()}
+            shouldShowTooltipOnHover
+            tooltipText="This column uses a custom sorting function."
+            tooltipSubtitle="Sorts items based on their length."
+          &gt;
+            Last Name
+          &lt;/CellHeader&gt;
+        ),
+        sortingFn: "sortByLength",
+      },
+      {
+        accessorKey: "age",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Age"),
+      },
+      {
+        accessorKey: "status",
+        id: "status",
+        cell: (cell) =&gt; (
+          &lt;CellComponent verticalAlign="center"&gt;
+            &lt;Tag
+              label={cell.cell.getValue() as string}
+              color={
+                cell.cell.getValue() === "single"
+                  ? "notice"
+                  : cell.cell.getValue() === "relationship"
+                  ? "positive"
+                  : "negative"
+              }
+              sdsStyle="rounded"
+              sdsType="secondary"
+              hover={false}
+            /&gt;
+          &lt;/CellComponent&gt;
+        ),
+        header: (header) =&gt; createHeaderCell(header, "Status"),
+      },
+      {
+        accessorKey: "createdAt",
+        cell: (cell) =&gt; (
+          &lt;CellBasic
+            primaryText={(cell.getValue() as Date).getFullYear().toString()}
+            secondaryText={(cell.getValue() as Date).toLocaleString("en-us", {
+              month: "long",
+              day: "numeric",
+            })}
+            tooltipProps={{
+              title: (cell.getValue() as Date).toLocaleString("en-us"),
+              sdsStyle: "dark",
+              leaveDelay: 0,
+              leaveTouchDelay: 0,
+            }}
+            verticalAlign="center"
+            horizontalAlign="left"
+          /&gt;
+        ),
+        header: (header) =&gt; createHeaderCell(header, "Created At"),
+      },
+      {
+        id: "actions",
+        accessorKey: "actions",
+        cell: () =&gt; (
+          &lt;CellComponent horizontalAlign="right" verticalAlign="center"&gt;
+            &lt;ul className="actions-list"&gt;
+              &lt;li&gt;
+                &lt;Button
+                  sdsStyle="icon"
+                  icon="TreeHorizontal"
+                  sdsSize="small"
+                  sdsType="secondary"
+                /&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;Button
+                  sdsStyle="icon"
+                  icon="BarChartVertical3"
+                  sdsSize="small"
+                  sdsType="secondary"
+                /&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;Button
+                  sdsStyle="icon"
+                  icon="Download"
+                  sdsSize="small"
+                  on
+                  sdsType="secondary"
+                /&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;Button
+                  sdsStyle="icon"
+                  icon="DotsHorizontal"
+                  sdsSize="small"
+                  sdsType="secondary"
+                /&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/CellComponent&gt;
+        ),
+        header: (header) =&gt; createHeaderCell(header, "Actions"),
+        enableSorting: false,
+      },
+    ],
+    []
+  );
+
+  const table = useReactTable({
+    data,
+    columns,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    debugTable: true,
+    sortingFns: {
+      sortByLength: (
+        rowA: Row&lt;Person&gt;,
+        rowB: Row&lt;Person&gt;,
+        columnId: string
+      ): number =&gt; {
+        const a: string = rowA.getValue(columnId);
+        const b: string = rowB.getValue(columnId);
+
+        if (a.length &gt; b.length) return 1;
+        if (a.length &lt; b.length) return -1;
+        return 0;
+      },
+    },
+  });
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          {table.getFlatHeaders().map((header) =&gt; (
+            &lt;React.Fragment key={header.id}&gt;
+              {flexRender(header.column.columnDef.header, header.getContext())}
+            &lt;/React.Fragment&gt;
+          ))}
+        &lt;/TableHeader&gt;
+        &lt;tbody&gt;
+          {table
+            .getRowModel()
+            .rows.slice(0, 10)
+            .map((row) =&gt; {
+              return (
+                &lt;TableRow key={row.id}&gt;
+                  {row.getVisibleCells().map((cell) =&gt; (
+                    &lt;React.Fragment key={cell.id}&gt;
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    &lt;/React.Fragment&gt;
+                  ))}
+                &lt;/TableRow&gt;
+              );
+            })}
+        &lt;/tbody&gt;
+      &lt;/Table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Table with custom Tooltips</h4>
+<p>This shows a Table with custom Tooltips.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 16px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import * as React from "react";
+import {
+  CellBasic,
+  CellHeader,
+  TableHeader,
+  TableRow,
+  Table,
+  CellComponent,
+  Tag,
+} from "@czi-sds/components";
+import {
+  CellContext,
+  HeaderContext,
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import "./styles.css";
+
+type Person = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  birthdate: string;
+  visits: number;
+  status: string;
+  progress: number;
+};
+
+const defaultData: Person[] = [
+  {
+    firstName: "Tanner",
+    lastName: "Linsley",
+    age: 24,
+    birthdate: "26 October 1997",
+    visits: 100,
+    status: "In Relationship",
+    progress: 50,
+  },
+  {
+    firstName: "Tandy",
+    lastName: "Miller",
+    age: 40,
+    birthdate: "14 July 1982",
+    visits: 40,
+    status: "Single",
+    progress: 80,
+  },
+  {
+    firstName: "Joe",
+    lastName: "Dirte",
+    age: 45,
+    birthdate: "25 February 1977",
+    visits: 20,
+    status: "Complicated",
+    progress: 10,
+  },
+];
+
+function createHeaderCell(
+  header: HeaderContext&lt;Person, unknown&gt;,
+  name: string
+) {
+  return (
+    &lt;CellHeader
+      hideSortIcon
+      horizontalAlign={header.header.id === "progress" ? "right" : "left"}
+    &gt;
+      {header.header.isPlaceholder ? "" : name}
+    &lt;/CellHeader&gt;
+  );
+}
+
+function createBodyCell(info: CellContext&lt;Person, unknown&gt;) {
+  return (
+    &lt;CellBasic
+      primaryText={info.getValue() as string}
+      shouldShowTooltipOnHover={false}
+    /&gt;
+  );
+}
+
+const columnHelper = createColumnHelper&lt;Person&gt;();
+
+const columns = [
+  columnHelper.accessor("firstName", {
+    cell: (info) =&gt; createBodyCell(info),
+    header: (header) =&gt; createHeaderCell(header, "First Name"),
+  }),
+  columnHelper.accessor("lastName", {
+    cell: (info) =&gt; createBodyCell(info),
+    header: (header) =&gt; createHeaderCell(header, "Last Name"),
+  }),
+  columnHelper.accessor("age", {
+    cell: (info) =&gt; (
+      &lt;CellBasic
+        key={info.cell.id}
+        primaryText={info.cell.getValue().toString()}
+        secondaryText={info.cell.row.original.birthdate}
+        tooltipProps={{
+          sdsStyle: "dark",
+          leaveTouchDelay: 0,
+          leaveDelay: 0,
+          subtitle: "",
+          title: info.cell.row.original.birthdate,
+        }}
+      /&gt;
+    ),
+    header: (header) =&gt; createHeaderCell(header, "Age"),
+  }),
+  columnHelper.accessor("visits", {
+    cell: (info) =&gt; createBodyCell(info),
+    header: (header) =&gt; createHeaderCell(header, "Visits"),
+  }),
+  columnHelper.accessor("status", {
+    cell: (info) =&gt; (
+      &lt;CellComponent verticalAlign="center" key={info.cell.id}&gt;
+        &lt;Tag
+          label={info.cell.getValue() as string}
+          color={
+            info.cell.getValue() === "Single"
+              ? "notice"
+              : info.cell.getValue() === "In Relationship"
+              ? "positive"
+              : "negative"
+          }
+          sdsStyle="rounded"
+          sdsType="secondary"
+          hover={false}
+        /&gt;
+      &lt;/CellComponent&gt;
+    ),
+    header: (header) =&gt; createHeaderCell(header, "Status"),
+  }),
+  columnHelper.accessor("progress", {
+    cell: (info) =&gt; (
+      &lt;CellBasic
+        key={info.cell.id}
+        primaryText={info.cell.getValue().toString()}
+        secondaryText={`${info.cell.getValue()} ± 5%`}
+        horizontalAlign="right"
+        tooltipProps={{
+          sdsStyle: "dark",
+          leaveTouchDelay: 0,
+          leaveDelay: 0,
+          title: `Profile Progress`,
+        }}
+      /&gt;
+    ),
+    header: (header) =&gt; createHeaderCell(header, "Profile Progress"),
+  }),
+];
+
+function App() {
+  const [data] = React.useState(() =&gt; [...defaultData]);
+
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          {table.getFlatHeaders().map((header) =&gt; (
+            &lt;React.Fragment key={header.id}&gt;
+              {flexRender(header.column.columnDef.header, header.getContext())}
+            &lt;/React.Fragment&gt;
+          ))}
+        &lt;/TableHeader&gt;
+        &lt;tbody&gt;
+          {table.getRowModel().rows.map((row) =&gt; (
+            &lt;TableRow key={row.id}&gt;
+              {row.getVisibleCells().map((cell) =&gt; (
+                &lt;React.Fragment key={cell.id}&gt;
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                &lt;/React.Fragment&gt;
+              ))}
+            &lt;/TableRow&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/Table&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Table with virtualized rows</h4>
+<p>
+  This example showcases a Table that implements virtualization for its rows,
+  optimizing performance and rendering efficiency when dealing with a large
+  amount of data.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  position: relative;
+  padding: 10px;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: 350px;
+  overflow: auto;
+}
+
+thead {
+  background: white;
+  box-shadow: 0 0 10px #ccc;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.fetched {
+  font-size: 18px;
+  padding: 25px 35px;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  Row,
+  SortingState,
+  ColumnSort,
+  useReactTable,
+  HeaderContext,
+  CellContext,
+} from "@tanstack/react-table";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useVirtual } from "react-virtual";
+import {
+  CellBasic,
+  CellHeader,
+  CellHeaderDirection,
+  Table,
+  TableHeader,
+  TableRow,
+  Tag,
+  CellComponent,
+} from "@czi-sds/components";
+import { faker } from "@faker-js/faker";
+import "./styles.css";
+
+const fetchSize = 20;
+
+type Person = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+  status: "relationship" | "complicated" | "single";
+};
+
+type PersonApiResponse = {
+  data: Person[];
+  meta: {
+    totalRowCount: number;
+  };
+};
+
+const newPerson = (index: number): Person =&gt; {
+  return {
+    id: index + 1,
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    age: faker.number.int(40),
+    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
+      "relationship",
+      "complicated",
+      "single",
+    ])[0]!,
+  };
+};
+
+function makeData(...lens: number[]) {
+  const makeDataLevel = (depth = 0): Person[] =&gt; {
+    const len = lens[depth]!;
+    return [...Array(len)].map((_, d): Person =&gt; {
+      return {
+        ...newPerson(d),
+      };
+    });
+  };
+
+  return makeDataLevel();
+}
+
+const data = makeData(1000);
+
+//simulates a backend api
+const fetchData = (start: number, size: number, sorting: SortingState) =&gt; {
+  const dbData = [...data];
+  if (sorting.length) {
+    const sort = sorting[0] as ColumnSort;
+    const { id, desc } = sort as { id: keyof Person; desc: boolean };
+    dbData.sort((a, b) =&gt; {
+      if (desc) {
+        return a[id] &lt; b[id] ? 1 : -1;
+      }
+      return a[id] &gt; b[id] ? 1 : -1;
+    });
+  }
+
+  return {
+    data: dbData.slice(start, start + size),
+    meta: {
+      totalRowCount: dbData.length,
+    },
+  };
+};
+
+function createHeaderCell(cell: HeaderContext&lt;Person, unknown&gt;, name: string) {
+  return (
+    &lt;CellHeader
+      direction={
+        cell.header.column.getIsSorted()
+          ? (cell.header.column.getIsSorted() as CellHeaderDirection)
+          : undefined
+      }
+      active={!!cell.header.column.getIsSorted()}
+      onClick={cell.header.column.getToggleSortingHandler()}
+    &gt;
+      {name}
+    &lt;/CellHeader&gt;
+  );
+}
+
+function createBodyCell(info: CellContext&lt;Person, unknown&gt;) {
+  return (
+    &lt;CellBasic
+      primaryText={info.getValue() as string}
+      shouldShowTooltipOnHover={false}
+    /&gt;
+  );
+}
+
+function App() {
+  //we need a reference to the scrolling element for logic down below
+  const tableContainerRef = React.useRef&lt;HTMLDivElement&gt;(null);
+
+  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
+
+  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
+    () =&gt; [
+      {
+        accessorKey: "id",
+        cell: (info) =&gt; createBodyCell(info),
+        header: (info) =&gt; createHeaderCell(info, "ID"),
+      },
+      {
+        accessorKey: "firstName",
+        cell: (info) =&gt; createBodyCell(info),
+        header: (info) =&gt; createHeaderCell(info, "First Name"),
+      },
+      {
+        accessorFn: (row) =&gt; row.lastName,
+        id: "lastName",
+        cell: (info) =&gt; createBodyCell(info),
+        header: (info) =&gt; createHeaderCell(info, "Last Name"),
+      },
+      {
+        accessorKey: "age",
+        cell: (info) =&gt; createBodyCell(info),
+        header: (info) =&gt; createHeaderCell(info, "Age"),
+      },
+      {
+        accessorKey: "status",
+        header: (info) =&gt; createHeaderCell(info, "Status"),
+        cell: (info) =&gt; {
+          return (
+            &lt;CellComponent verticalAlign="center" key={info.cell.id}&gt;
+              &lt;Tag
+                label={info.cell.getValue() as string}
+                color={
+                  info.cell.getValue() === "single"
+                    ? "notice"
+                    : info.cell.getValue() === "relationship"
+                    ? "positive"
+                    : "negative"
+                }
+                sdsStyle="rounded"
+                sdsType="secondary"
+                hover={false}
+              /&gt;
+            &lt;/CellComponent&gt;
+          );
+        },
+      },
+    ],
+    []
+  );
+
+  //react-query has an useInfiniteQuery hook just for this situation!
+  const { data, fetchNextPage, isFetching, isLoading } =
+    useInfiniteQuery&lt;PersonApiResponse&gt;(
+      ["table-data", sorting], //adding sorting state as key causes table to reset and fetch from new beginning upon sort
+      async ({ pageParam = 0 }) =&gt; {
+        const start = pageParam * fetchSize;
+        const fetchedData = fetchData(start, fetchSize, sorting); //pretend api call
+        return fetchedData;
+      },
+      {
+        getNextPageParam: (_lastGroup, groups) =&gt; groups.length,
+        keepPreviousData: true,
+        refetchOnWindowFocus: false,
+      }
+    );
+
+  //we must flatten the array of arrays from the useInfiniteQuery hook
+  const flatData = React.useMemo(
+    () =&gt; data?.pages?.flatMap((page) =&gt; page.data) ?? [],
+    [data]
+  );
+  const totalDBRowCount = data?.pages?.[0]?.meta?.totalRowCount ?? 0;
+  const totalFetched = flatData.length;
+
+  //called on scroll and possibly on mount to fetch more data as the user scrolls and reaches bottom of table
+  const fetchMoreOnBottomReached = React.useCallback(
+    (containerRefElement?: HTMLDivElement | null) =&gt; {
+      if (containerRefElement) {
+        const { scrollHeight, scrollTop, clientHeight } = containerRefElement;
+
+        //once the user has scrolled within 300px of the bottom of the table, fetch more data if there is any
+        if (
+          scrollHeight - scrollTop - clientHeight &lt; 300 &amp;&amp;
+          !isFetching &amp;&amp;
+          totalFetched &lt; totalDBRowCount
+        ) {
+          fetchNextPage();
+        }
+      }
+    },
+    [fetchNextPage, isFetching, totalFetched, totalDBRowCount]
+  );
+
+  //a check on mount and after a fetch to see if the table is already scrolled to the bottom and immediately needs to fetch more data
+  React.useEffect(() =&gt; {
+    fetchMoreOnBottomReached(tableContainerRef.current);
+  }, [fetchMoreOnBottomReached]);
+
+  const table = useReactTable({
+    data: flatData,
+    columns,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  const { rows } = table.getRowModel();
+
+  //Virtualizing is optional, but might be necessary if we are going to potentially have hundreds or thousands of rows
+  const rowVirtualizer = useVirtual({
+    parentRef: tableContainerRef,
+    size: rows.length,
+    overscan: 10,
+  });
+  const { virtualItems: virtualRows, totalSize } = rowVirtualizer;
+  const paddingTop = virtualRows.length &gt; 0 ? virtualRows?.[0]?.start || 0 : 0;
+  const paddingBottom =
+    virtualRows.length &gt; 0
+      ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
+      : 0;
+
+  if (isLoading) {
+    return &lt;&gt;Loading...&lt;/&gt;;
+  }
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;div
+        className="container"
+        onScroll={(e) =&gt; fetchMoreOnBottomReached(e.target as HTMLDivElement)}
+        ref={tableContainerRef}
+      &gt;
+        &lt;Table&gt;
+          {table.getHeaderGroups().map((headerGroup) =&gt; (
+            &lt;TableHeader key={headerGroup.id}&gt;
+              {headerGroup.headers.map((header) =&gt; (
+                &lt;React.Fragment key={header.id}&gt;
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
+                &lt;/React.Fragment&gt;
+              ))}
+            &lt;/TableHeader&gt;
+          ))}
+          &lt;tbody&gt;
+            {paddingTop &gt; 0 &amp;&amp; (
+              &lt;tr&gt;
+                &lt;td style={{ height: `${paddingTop}px` }} /&gt;
+              &lt;/tr&gt;
+            )}
+            {virtualRows.map((virtualRow) =&gt; {
+              const row = rows[virtualRow.index] as Row&lt;Person&gt;;
+              return (
+                &lt;TableRow key={row.id}&gt;
+                  {row.getVisibleCells().map((cell) =&gt; (
+                    &lt;React.Fragment key={cell.id}&gt;
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    &lt;/React.Fragment&gt;
+                  ))}
+                &lt;/TableRow&gt;
+              );
+            })}
+            {paddingBottom &gt; 0 &amp;&amp; (
+              &lt;tr&gt;
+                &lt;td style={{ height: `${paddingBottom}px` }} /&gt;
+              &lt;/tr&gt;
+            )}
+          &lt;/tbody&gt;
+        &lt;/Table&gt;
+      &lt;/div&gt;
+      &lt;div className="fetched"&gt;
+        Fetched {flatData.length} of {totalDBRowCount} Rows.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Editable Table Cells with Access to Internal Data</h4>
+<p>
+  This example demonstrates how to access the internal data management state in
+  a Table. Table cells are&nbsp;
+  <strong>Editable</strong>
+  , click on a cell to start editing (Changes will apply on blur!)
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.actions {
+  margin: 20px 0;
+}
+
+.log {
+  margin: 20px 0;
+  padding: 0 15px;
+  border: solid 1px #eee;
+}
+
+.log pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  word-break: break-word;
+}
+
+.editable-input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import {
+  CellBasic,
+  CellHeader,
+  TableHeader,
+  TableRow,
+  Table,
+  Button,
+  Icon,
+  getSemanticColors,
+} from "@czi-sds/components";
+import {
+  CellContext,
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  RowData,
+  useReactTable,
+} from "@tanstack/react-table";
+import { useTheme } from "@mui/material";
+import { faker } from "@faker-js/faker";
+import "./styles.css";
+
+type StatusTypes = "relationship" | "complicated" | "single";
+
+type Person = {
+  [key: string]: unknown;
+  firstName: string;
+  lastName: string;
+  age: number;
+  visits: number;
+  progress: number;
+  status: StatusTypes;
+  subRows?: Person[];
+};
+
+const newPerson = (): Person =&gt; {
+  return {
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    age: faker.number.int(40),
+    visits: faker.number.int(1000),
+    progress: faker.number.int(100),
+    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
+      "relationship",
+      "complicated",
+      "single",
+    ])[0]!,
+  };
+};
+
+function makeData(...lens: number[]) {
+  const makeDataLevel = (depth = 0): Person[] =&gt; {
+    const len = lens[depth]!;
+    return [...Array(len)].map((): Person =&gt; {
+      return {
+        ...newPerson(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
+      };
+    });
+  };
+
+  return makeDataLevel();
+}
+
+declare module "@tanstack/react-table" {
+  interface TableMeta&lt;TData extends RowData&gt; {
+    updateData: (rowIndex: number, columnId: string, value: TData) =&gt; void;
+  }
+}
+
+const CellEditor = (cell: CellContext&lt;Person, unknown&gt;) =&gt; {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({theme});
+  
+  const initialValue = cell.getValue();
+  // We need to keep and update the state of the cell normally
+  const [value, setValue] = React.useState(initialValue);
+
+  // When the input is blurred, we'll call our table meta's updateData function
+  const onBlur = () =&gt; {
+    cell.table.options.meta?.updateData(cell.row.index, cell.column.id, value as Person);
+  };
+
+  // If the initialValue is changed external, sync it up with our state
+  React.useEffect(() =&gt; {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  return (
+    &lt;input
+      className="editable-input"
+      value={value as string}
+      onChange={(e) =&gt; setValue(e.target.value)}
+      onBlur={onBlur}
+      style={{ color: semanticColors?.base?.textPrimary }}
+    /&gt;
+  );
+}
+
+// Give our default column cell renderer editing superpowers!
+const defaultColumn: Partial&lt;ColumnDef&lt;Person&gt;&gt; = {
+  cell: CellEditor,
+};
+
+const defaultColumns: ColumnDef&lt;Person&gt;[] = [
+  {
+    accessorKey: "firstName",
+    header: "First Name",
+  },
+  {
+    accessorKey: "lastName",
+    header: "Last Name",
+  },
+  {
+    accessorKey: "age",
+    header: "Age",
+  },
+  {
+    accessorKey: "visits",
+    header: "Visits",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "progress",
+    header: "Profile Progress",
+  },
+];
+
+function App() {
+  const [log, setLog] = React.useState("");
+  const [data, setData] = React.useState(() =&gt; makeData(3));
+  const [columns] = React.useState&lt;typeof defaultColumns&gt;(() =&gt; [
+    ...defaultColumns,
+  ]);
+
+  // Create the table and pass your options
+  const table = useReactTable({
+    data,
+    columns,
+    defaultColumn,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    // Provide our updateData function to our table meta
+    meta: {
+      updateData: (rowIndex, columnId, value) =&gt; {
+        setData(
+          (
+            old: Person[] // Specify the type of 'old' as Person[]
+          ) =&gt;
+            old.map((row, index) =&gt; {
+              if (index === rowIndex) {
+                const oldValue = row[columnId]; // No need for type assertion
+                setLog(
+                  `Row index: ${rowIndex}\nColumn Id: ${columnId}\nOld value: ${oldValue}\nNew value: ${value}`
+                );
+                return {
+                  ...row,
+                  [columnId]: value,
+                };
+              }
+              return row;
+            })
+        );
+      },
+    },
+  });
+
+  // Manage your own state
+  const [state, setState] = React.useState(table.initialState);
+
+  // Change table data
+  const changeTableData = () =&gt; {
+    setData(() =&gt; makeData(5));
+    setLog("");
+  };
+
+  // Override the state managers for the table to your own
+  table.setOptions((prev) =&gt; ({
+    ...prev,
+    state,
+    onStateChange: setState,
+    // These are just table options, so if things
+    // need to change based on your state, you can
+    // derive them here
+  }));
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          {table.getHeaderGroups().map((headerGroup) =&gt;
+            headerGroup.headers.map((header) =&gt; (
+              &lt;CellHeader key={header.id} hideSortIcon&gt;
+                {flexRender(
+                  header.column.columnDef.header,
+                  header.getContext()
+                )}
+              &lt;/CellHeader&gt;
+            ))
+          )}
+        &lt;/TableHeader&gt;
+        &lt;tbody&gt;
+          {table.getRowModel().rows.map((row) =&gt; (
+            &lt;TableRow key={row.id}&gt;
+              {row.getVisibleCells().map((cell) =&gt; (
+                &lt;CellBasic
+                  key={cell.id}
+                  primaryText={
+                    flexRender(
+                      cell.column.columnDef.cell,
+                      cell.getContext()
+                    ) as string
+                  }
+                  shouldShowTooltipOnHover={false}
+                /&gt;
+              ))}
+            &lt;/TableRow&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/Table&gt;
+
+      &lt;div className="actions"&gt;
+        &lt;Button
+          startIcon={&lt;Icon sdsIcon="refresh" sdsSize="s" sdsType="button" /&gt;}
+          sdsStyle="rounded"
+          sdsType="primary"
+          onClick={changeTableData}
+        &gt;
+          Change table data
+        &lt;/Button&gt;
+      &lt;/div&gt;
+
+      {log &amp;&amp; (
+        &lt;div className="log"&gt;
+          &lt;h4&gt;Cell Value Update Log:&lt;/h4&gt;
+          &lt;pre&gt;{log}&lt;/pre&gt;
+        &lt;/div&gt;
+      )}
+
+      {data &amp;&amp; (
+        &lt;div className="log"&gt;
+          &lt;h4&gt;Table data:&lt;/h4&gt;
+          &lt;pre&gt;{JSON.stringify(data, null, 2)}&lt;/pre&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Table with Front-End Pagination</h4>
+<p>
+  This example uses front-end Pagination to show table data in multiple pages.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 16px;
+}
+
+button {
+  outline: none !important;
+}
+
+#pagination-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 15px 0;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import {
+  CellBasic,
+  CellHeader,
+  TableHeader,
+  TableRow,
+  Table,
+  CellHeaderDirection,
+  CellComponent,
+  Tag,
+  Pagination,
+} from "@czi-sds/components";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  getPaginationRowModel,
+  SortingState,
+  useReactTable,
+  PaginationState,
+  HeaderContext,
+  CellContext,
+} from "@tanstack/react-table";
+import { faker } from "@faker-js/faker";
+import "./styles.css";
+
+type Person = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  visits: number;
+  progress: number;
+  status: "relationship" | "complicated" | "single";
+  subRows?: Person[];
+};
+
+const newPerson = (): Person =&gt; {
+  return {
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    age: faker.number.int(96),
+    visits: faker.number.int(1000),
+    progress: faker.number.int(100),
+    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
+      "relationship",
+      "complicated",
+      "single",
+    ])[0]!,
+  };
+};
+
+function makeData(...lens: number[]) {
+  const makeDataLevel = (depth = 0): Person[] =&gt; {
+    const len = lens[depth]!;
+    return [...Array(len)].map((): Person =&gt; {
+      return {
+        ...newPerson(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
+      };
+    });
+  };
+
+  return makeDataLevel();
+}
+
+function App() {
+  const DATA_COUNT = 99;
+  const PAGE_SIZE = 3;
+  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
+  const data = React.useState(() =&gt; makeData(DATA_COUNT))[0];
+
+  const [{ pageIndex, pageSize }, setPagination] =
+    React.useState&lt;PaginationState&gt;({
+      pageIndex: 0,
+      pageSize: PAGE_SIZE,
+    });
+
+  function createHeaderCell(
+    header: HeaderContext&lt;Person, unknown&gt;,
+    name: string
+  ) {
+    return (
+      &lt;CellHeader
+        key={header.header.id}
+        colSpan={header.header.colSpan}
+        direction={
+          header.column.getIsSorted()
+            ? (header.column.getIsSorted() as CellHeaderDirection)
+            : undefined
+        }
+        active={!!header.column.getIsSorted()}
+        onClick={header.column.getToggleSortingHandler()}
+        horizontalAlign={header.header.id === "createdAt" ? "right" : "left"}
+        shouldShowTooltipOnHover={true}
+        tooltipText={name}
+        tooltipProps={{
+          enterDelay: 2000,
+          enterNextDelay: 2000,
+        }}
+      &gt;
+        {name}
+      &lt;/CellHeader&gt;
+    );
+  }
+
+  function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
+    return (
+      &lt;CellBasic
+        key={cell.cell.id}
+        primaryText={cell.getValue() as string}
+        horizontalAlign={cell.column.id === "progress" ? "center" : "left"}
+        verticalAlign="center"
+        shouldShowTooltipOnHover={true}
+      /&gt;
+    );
+  }
+
+  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
+    () =&gt; [
+      {
+        accessorKey: "firstName",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "First Name"),
+      },
+      {
+        accessorKey: "lastName",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Last Name"),
+      },
+      {
+        accessorKey: "age",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Age"),
+      },
+      {
+        accessorKey: "visits",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Visits"),
+      },
+      {
+        accessorKey: "status",
+        cell: (cell) =&gt; (
+          &lt;CellComponent key={cell.cell.id} verticalAlign="center"&gt;
+            &lt;Tag
+              label={cell.getValue() as string}
+              color={
+                cell.cell.getValue() === "single"
+                  ? "notice"
+                  : cell.cell.getValue() === "relationship"
+                  ? "positive"
+                  : "negative"
+              }
+              sdsStyle="rounded"
+              sdsType="secondary"
+            /&gt;
+          &lt;/CellComponent&gt;
+        ),
+        header: (header) =&gt; createHeaderCell(header, "Status"),
+      },
+      {
+        accessorKey: "progress",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Profile Progress"),
+      },
+    ],
+    []
+  );
+
+  const pagination = React.useMemo(
+    () =&gt; ({
+      pageIndex,
+      pageSize,
+    }),
+    [pageIndex, pageSize]
+  );
+
+  const table = useReactTable({
+    data,
+    columns,
+    state: {
+      sorting,
+      pagination,
+    },
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    debugTable: true,
+  });
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          {table.getFlatHeaders().map((header) =&gt; (
+            &lt;React.Fragment key={header.id}&gt;
+              {flexRender(header.column.columnDef.header, header.getContext())}
+            &lt;/React.Fragment&gt;
+          ))}
+        &lt;/TableHeader&gt;
+        &lt;tbody&gt;
+          {table.getRowModel().rows.map((row) =&gt; {
+            return (
+              &lt;TableRow key={row.id}&gt;
+                {row.getVisibleCells().map((cell) =&gt; (
+                  &lt;React.Fragment key={cell.id}&gt;
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  &lt;/React.Fragment&gt;
+                ))}
+              &lt;/TableRow&gt;
+            );
+          })}
+        &lt;/tbody&gt;
+      &lt;/Table&gt;
+      &lt;div id="pagination-wrapper"&gt;
+        &lt;Pagination
+          sdsStyle="round"
+          pageSize={table.getState().pagination.pageSize}
+          onPageChange={(page: number) =&gt; {
+            table.setPageIndex(page - 1);
+          }}
+          onNextPage={() =&gt; table.nextPage()}
+          onPreviousPage={() =&gt; table.previousPage()}
+          totalCount={DATA_COUNT}
+          siblingCount={1}
+          currentPage={table.getState().pagination.pageIndex + 1}
+          truncateDropdown
+        /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Table with Back-End Pagination</h4>
+<p>
+  This example illustrates a Table that implements back-end pagination by
+  utilizing mocked data retrieved through a query function built with the
+  react-query package.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 16px;
+}
+
+button {
+  outline: none !important;
+}
+
+#pagination-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.table-data-loading {
+  display: flex;
+  align-items: center;
+}
+
+.table-data-loading small {
+  font-size: 12px;
+  padding-left: 5px;
+  color: #888;
+}
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import {
+  CellBasic,
+  CellHeader,
+  TableHeader,
+  TableRow,
+  Table,
+  CellHeaderDirection,
+  CellComponent,
+  Tag,
+  Pagination,
+  Icon,
+} from "@czi-sds/components";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  getPaginationRowModel,
+  SortingState,
+  useReactTable,
+  PaginationState,
+  CellContext,
+  HeaderContext,
+} from "@tanstack/react-table";
+import "./styles.css";
+import { styled } from "@mui/material";
+import { faker } from "@faker-js/faker";
+
+export type Person = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  visits: number;
+  progress: number;
+  status: "relationship" | "complicated" | "single";
+  subRows?: Person[];
+};
+
+const DATA_COUNT = 198;
+
+const newPerson = (): Person =&gt; {
+  return {
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    age: faker.number.int(40),
+    visits: faker.number.int(1000),
+    progress: faker.number.int(100),
+    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
+      "relationship",
+      "complicated",
+      "single",
+    ])[0]!,
+  };
+};
+
+function makeData(...lens: number[]) {
+  const makeDataLevel = (depth = 0): Person[] =&gt; {
+    const len = lens[depth]!;
+    return [...Array(len)].map((): Person =&gt; {
+      return {
+        ...newPerson(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
+      };
+    });
+  };
+
+  return makeDataLevel();
+}
+
+const data = makeData(DATA_COUNT);
+
+async function fetchData(options: { pageIndex: number; pageSize: number }) {
+  // Simulate some network latency
+  await new Promise((r) =&gt; setTimeout(r, 500));
+
+  return {
+    rows: data.slice(
+      options.pageIndex * options.pageSize,
+      (options.pageIndex + 1) * options.pageSize
+    ),
+    pageCount: Math.ceil(data.length / options.pageSize),
+  };
+}
+
+function App() {
+  const PAGE_SIZE = 3;
+  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
+
+  const [{ pageIndex, pageSize }, setPagination] =
+    React.useState&lt;PaginationState&gt;({
+      pageIndex: 0,
+      pageSize: PAGE_SIZE,
+    });
+
+  const fetchDataOptions = {
+    pageIndex,
+    pageSize,
+  };
+
+  const dataQuery = useQuery(
+    ["data", fetchDataOptions],
+    () =&gt; fetchData(fetchDataOptions),
+    { keepPreviousData: true }
+  );
+
+  const defaultData = React.useMemo(() =&gt; [], []);
+
+  function createHeaderCell(
+    header: HeaderContext&lt;Person, unknown&gt;,
+    name: string
+  ) {
+    return (
+      &lt;CellHeader
+        key={header.header.id}
+        colSpan={header.header.colSpan}
+        direction={
+          header.column.getIsSorted()
+            ? (header.column.getIsSorted() as CellHeaderDirection)
+            : undefined
+        }
+        active={!!header.column.getIsSorted()}
+        onClick={header.column.getToggleSortingHandler()}
+        horizontalAlign={header.header.id === "createdAt" ? "right" : "left"}
+        shouldShowTooltipOnHover={true}
+        tooltipText={name}
+        tooltipProps={{
+          enterDelay: 2000,
+          enterNextDelay: 2000,
+        }}
+      &gt;
+        {name}
+      &lt;/CellHeader&gt;
+    );
+  }
+
+  function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
+    return (
+      &lt;CellBasic
+        key={cell.cell.id}
+        primaryText={cell.getValue() as string}
+        horizontalAlign={cell.column.id === "progress" ? "center" : "left"}
+        verticalAlign="center"
+        shouldShowTooltipOnHover={true}
+      /&gt;
+    );
+  }
+
+  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
+    () =&gt; [
+      {
+        accessorKey: "firstName",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "First Name"),
+      },
+      {
+        accessorKey: "lastName",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Last Name"),
+      },
+      {
+        accessorKey: "age",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Age"),
+      },
+      {
+        accessorKey: "visits",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Visits"),
+      },
+      {
+        accessorKey: "status",
+        cell: (cell) =&gt; (
+          &lt;CellComponent key={cell.cell.id} verticalAlign="center"&gt;
+            &lt;Tag
+              label={cell.getValue() as string}
+              color={
+                cell.cell.getValue() === "single"
+                  ? "notice"
+                  : cell.cell.getValue() === "relationship"
+                  ? "positive"
+                  : "negative"
+              }
+              sdsStyle="rounded"
+              sdsType="secondary"
+            /&gt;
+          &lt;/CellComponent&gt;
+        ),
+        header: (header) =&gt; createHeaderCell(header, "Status"),
+      },
+      {
+        accessorKey: "progress",
+        cell: (cell) =&gt; createBodyCell(cell),
+        header: (header) =&gt; createHeaderCell(header, "Profile Progress"),
+      },
+    ],
+    []
+  );
+
+  const pagination = React.useMemo(
+    () =&gt; ({
+      pageIndex,
+      pageSize,
+    }),
+    [pageIndex, pageSize]
+  );
+
+  const table = useReactTable({
+    data: dataQuery.data?.rows ?? defaultData,
+    columns,
+    state: {
+      sorting,
+      pagination,
+    },
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: true,
+    autoResetAll: false,
+    debugTable: true,
+  });
+
+  const StyledTableBody = styled("tbody")`
+    ${dataQuery.isFetching ? `opacity: .3; filter: grayscale(1)` : null}
+  `;
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;Table&gt;
+        &lt;TableHeader&gt;
+          {table.getFlatHeaders().map((header) =&gt; (
+            &lt;React.Fragment key={header.id}&gt;
+              {flexRender(header.column.columnDef.header, header.getContext())}
+            &lt;/React.Fragment&gt;
+          ))}
+        &lt;/TableHeader&gt;
+        &lt;StyledTableBody&gt;
+          {table.getRowModel().rows.map((row) =&gt; {
+            return (
+              &lt;TableRow key={row.id}&gt;
+                {row.getVisibleCells().map((cell) =&gt; (
+                  &lt;React.Fragment key={cell.id}&gt;
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  &lt;/React.Fragment&gt;
+                ))}
+              &lt;/TableRow&gt;
+            );
+          })}
+        &lt;/StyledTableBody&gt;
+      &lt;/Table&gt;
+      &lt;div id="pagination-wrapper"&gt;
+        &lt;Pagination
+          sdsStyle="round"
+          pageSize={table.getState().pagination.pageSize}
+          onPageChange={(page: number) =&gt; {
+            table.setPageIndex(page - 1);
+          }}
+          onNextPage={() =&gt; table.nextPage()}
+          onPreviousPage={() =&gt; table.previousPage()}
+          totalCount={DATA_COUNT}
+          siblingCount={1}
+          currentPage={table.getState().pagination.pageIndex + 1}
+          truncateDropdown
+        /&gt;
+        {dataQuery.isFetching ? (
+          &lt;div className="table-data-loading"&gt;
+            &lt;Icon sdsIcon="Loading" sdsSize="l" sdsType="static" /&gt;
+            &lt;small&gt; Fetching Table Data ...&lt;/small&gt;
+          &lt;/div&gt;
+        ) : null}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const queryClient = new QueryClient();
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;QueryClientProvider client={queryClient}&gt;
+            &lt;CssBaseline /&gt;
+            &lt;App /&gt;
+          &lt;/QueryClientProvider&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

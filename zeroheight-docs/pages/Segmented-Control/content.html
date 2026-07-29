@@ -1,0 +1,604 @@
+<p>
+  Segmented Control allows users to toggle between different views within an
+  on-screen element such as viewing the same set of data in table or tree
+  format.
+</p>
+<h2>Guidelines</h2>
+<h2>Overview</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/84b520c64005507c.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=segmentedcontrol--default"
+  width="848"
+  height="98.17529296875"
+  title="Default"
+></iframe>
+<hr />
+<p>
+  Segmented Control allows users to switch between different views of an
+  on-screen element. There must be a minimum of two and can be up to four
+  segments.
+</p>
+<p>
+  <a href="https://sds.czi.design/009eaf17b/p/529e08">Icons</a>
+  are used to communicate what will be shown on screen when that segment is
+  clicked. When hovered over, each segment displays
+  <a href="https://sds.czi.design/009eaf17b/p/74af45-tooltips/t/07fde2"
+    >Tooltip – Dark</a
+  >
+  to communicate what the icon represents. Any small variant icon can be used as
+  a segment indicator.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default / Active</p></td>
+    <td><p>Hover</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Segmented Control_Default_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/015a8d143e4aab1b.png"
+        alt="Segmented Control_Default_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Segmented Control_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cf137c821316d4b6.png"
+        alt="Segmented Control_Hover"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Segmented Control Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Segmented Control Spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f838c3e7c3465112.png"
+        alt="Segmented Control Spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>SegmentedControl</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/SegmentedControl/index.stories.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The following props are available to MUI's ToggleButtonGroup but not SDS's
+  SegementedControl:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>exclusive</strong>
+      <strong>:</strong>
+      This boolean prop determines whether just a single button within the
+      control group can be selected at a time (default) or whether multiple can
+      be. SDS'sSegmentedControl is an exclusive control only, and setting
+      exclusive to false has no effect.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>size</strong>
+      <strong>:</strong>
+      Has no effect for SDS's SegmentedControl
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-toggle-button/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>buttonDefinition</p></td>
+    <td>
+      <p>{</p>
+      <p>disabled?: boolean;</p>
+      <p>iconName: string;</p>
+      <p>tooltipText: string;</p>
+      <p>value: string;</p>
+      <p>}[]</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>An array of items containing an icon name and a tooltip text.</p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default SegmentedControl</strong></h4>
+<p>
+  This example demonstrates the most basic usage of the SegmentedControl
+  component with default props.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { SegmentedControl } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const buttonDefinition = [
+    {
+      icon: "List",
+      tooltipText: "List A",
+      value: "A",
+    },
+    {
+      icon: "List",
+      tooltipText: "List B",
+      value: "B",
+    },
+    {
+      icon: "List",
+      tooltipText: "List C",
+      value: "C",
+    },
+  ];
+  return (
+    &lt;div className="app"&gt;
+      &lt;SegmentedControl buttonDefinition={buttonDefinition}/&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4><strong>Controlled SegmentedControl</strong></h4>
+<p>This example shows a controlled SegmentedControl component.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { useState } from "react";
+import { SegmentedControl } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const [value, setValue] = useState("B");
+  const buttonDefinition = [
+    {
+      icon: "List",
+      tooltipText: "List A",
+      value: "A",
+    },
+    {
+      icon: "List",
+      tooltipText: "List B",
+      value: "B",
+    },
+    {
+      icon: "List",
+      tooltipText: "List C",
+      value: "C",
+    },
+  ];
+  return (
+    &lt;div className="app"&gt;
+      &lt;SegmentedControl 
+        buttonDefinition={buttonDefinition} 
+        value={value} 
+        onChange={(e, newValue) =&gt; setValue(newValue)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4><strong>SegmentedControl with disabled items</strong></h4>
+<p>
+  This example shows a SegmentedControl component that has one disabled item.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { SegmentedControl } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const buttonDefinition = [
+    {
+      icon: "List",
+      tooltipText: "List A",
+      value: "A",
+    },
+    {
+      disabled: true,
+      icon: "List",
+      tooltipText: "List B",
+      value: "B",
+    },
+    {
+      icon: "List",
+      tooltipText: "List C",
+      value: "C",
+    },
+  ];
+  return (
+    &lt;div className="app"&gt;
+      &lt;SegmentedControl buttonDefinition={buttonDefinition}/&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

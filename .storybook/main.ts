@@ -18,7 +18,14 @@ const config: StorybookConfig = {
   stories: [
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
+    // Standalone docs-only pages imported from ZeroHeight (see
+    // packages/mcp/scripts/import-zeroheight-storybook.ts).
+    "../zeroheight-docs/**/*.mdx",
   ],
+
+  // Serve locally-downloaded ZeroHeight images at /zeroheight-assets so the
+  // imported HTML docs render without relying on ZeroHeight's expiring URLs.
+  staticDirs: [{ from: "../zeroheight-docs/assets", to: "/zeroheight-assets" }],
 
   core: {
     disableWhatsNewNotifications: true,

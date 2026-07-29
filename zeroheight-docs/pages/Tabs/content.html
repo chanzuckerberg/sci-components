@@ -1,0 +1,938 @@
+<p>
+  Tabs allow users to switch between different sets of information or content
+  that is related to one overarching category while staying on the same page.
+</p>
+<h2>Guidelines</h2>
+<h2>Overview</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/37cd58716d5250d9.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Tabs Sizes</h3>
+<p>
+  There are two sizes of Tabs available for use which is determined by their
+  location in the UI, the key difference being the size of the text on each Tab.
+  Each size can include a counter to indicate the number of items on that Tab’s
+  screen such as when used as part of
+  <a href="https://sds.czi.design/009eaf17b/p/543108">Filter</a>
+  results. They can also be paired with an underline that spans the width of the
+  entire div the tab group is placed within to provide visual separation between
+  the Tabs and the content beneath them.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tabs_Large</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/86857dafb07ef463.png" alt="Tabs_Large" />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tabs_Small</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/24f96af36dad8efa.png" alt="Tabs_Small" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=tabs--default"
+  width="848"
+  height="122.17529296875"
+  title="Default"
+></iframe>
+<hr />
+<h3>Tabs – Large</h3>
+<p>
+  Tabs – Large is used at a top level within the UI. If a secondary layer of
+  tabbing is needed, use
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/0887dd-tabs/t/21cff3"
+    >Tabs – Small</a
+  >
+  .
+</p>
+<p>
+  Include a counter when necessary to indicate the number of viewable items
+  available when navigating to that Tab's screen.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Active</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Large_No Underline_No Count_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6faaa4e0df5c0c3f.png"
+        alt="Large_No Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_No Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5982119e7f15320c.png"
+        alt="Large_No Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_No Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9d57eb57ec27902b.png"
+        alt="Large_No Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Large_No Underline_No Count_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e51311e47ebcd37b.png"
+        alt="Large_No Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3fa195b055fde3b8.png"
+        alt="Large_No Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8055e62d1d518421.png"
+        alt="Large_No Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/57a295615dd32c49.png"
+        alt="Large_No Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ee3b00ac83beafa5.png"
+        alt="Large_No Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1385803a24da414a.png"
+        alt="Large_Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/fedd43b3b4bae729.png"
+        alt="Large_Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b15c3f347e6c8993.png"
+        alt="Large_Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a5a8486ec3b42b76.png"
+        alt="Large_Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3cd84f704a822d0f.png"
+        alt="Large_Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1aa5b8834bdfea6c.png"
+        alt="Large_Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bb82aa9f0677bab5.png"
+        alt="Large_Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/bb326178155761e6.png"
+        alt="Large_Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tabs – Small</h3>
+<p>
+  Tabs – Small is an alternative size to be used only in conjunction with Tabs –
+  Large when a secondary layer of tabbing is needed.
+</p>
+<p>
+  Include a counter when necessary to indicate the number of viewable items
+  available when navigating to that Tab's screen.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Active</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Small_No Underline_No Count_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9fb84a15698cb49e.png"
+        alt="Small_No Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_No Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/27472038984bbafc.png"
+        alt="Small_No Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_No Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/385b358fff6cf19d.png"
+        alt="Small_No Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Small_No Underline_No Count_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4ec3aab8f12d47cd.png"
+        alt="Small_No Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5382e8ece5133b99.png"
+        alt="Small_No Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/68dc6d5b5e758278.png"
+        alt="Small_No Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/096fff412c841595.png"
+        alt="Small_No Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5b40ae32e37e1b20.png"
+        alt="Small_No Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5f6d4719118c2a02.png"
+        alt="Small_Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6eed7f44583bbc17.png"
+        alt="Small_Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2f17014f881b55fd.png"
+        alt="Small_Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b6d63eb65c38e76c.png"
+        alt="Small_Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8cf5f7b941de948d.png"
+        alt="Small_Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ad7c271db8bbf17a.png"
+        alt="Small_Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0f63189461c3b647.png"
+        alt="Small_Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Disabled</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2c142c0c11b76ee7.png"
+        alt="Small_Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tabs Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Tabs Spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/1ee3745a8ad50834.png" alt="Tabs Spacing" />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>Tabs</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Tabs/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The SDS Tabs component is built on the MUI Tabs component, but the SDS version
+  has a few additional props to provide stylistic options that fit within the
+  SDS designs:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>sdsSize</strong>
+      <strong>:</strong>
+      Takes large (default) or small as values, and sizes the Tabs component and
+      its label text accordingly
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>underlined</strong>
+      <strong>:</strong>
+      This boolean prop extends a light gray underline beneath the whole of the
+      Tabs component when true; without this prop, only the selected tab has an
+      underline of the primary color
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>count, metadata, and / or component:</strong>
+      Each individual tab within the Tabs component can be assigned a count, via
+      a prop associated to that tab's position, such as tabOneCount for the
+      first tab. These props take a number value to represent a count, but they
+      can also take text or even another component, for example:
+    </p>
+  </li>
+</ul>
+<p>count={123}</p>
+<p>count={"Hello!"}</p>
+<p>tabThreeCount={&lt;Tag /&gt;} ﻿ ﻿</p>
+<p>
+  This
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/0887dd-tabs/t/91eda2"
+    >example</a
+  >
+  demonstrates passing a ReactNode as the count prop to a Tabs component.
+</p>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-tabs/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsSize</p></td>
+    <td>
+      <p>"small"</p>
+      <p>| "large"</p>
+    </td>
+    <td><p>"large"</p></td>
+    <td><p>Specifies the size of the Tab element.</p></td>
+  </tr>
+  <tr>
+    <td><p>underlined</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        when set to true, adds a gray bottom border to the tab group, providing
+        a distinctive visual effect.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Tabs – Large</h4>
+<p>This example demonstrates a Tabs group with a larger visual style.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { useState, SyntheticEvent } from "react";
+import { Tabs, Tab } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const [value, setValue] = useState(0);
+
+  const handleTabsChange = (_: SyntheticEvent, tabsValue: unknown) =&gt; {
+    setValue(tabsValue as number);
+  };
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tabs value={value} sdsSize="large" onChange={handleTabsChange}&gt;
+        &lt;Tab label="First Tab"/&gt;
+        &lt;Tab label="Second Tab"/&gt;
+      &lt;/Tabs&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Tabs – Small</h4>
+<p>This example showcases a Tabs group with a smaller visual style.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { useState, SyntheticEvent } from "react";
+import { Tabs, Tab } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const [value, setValue] = useState(0);
+
+  const handleTabsChange = (_: SyntheticEvent, tabsValue: unknown) =&gt; {
+    setValue(tabsValue as number);
+  };
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tabs value={value} sdsSize="small" onChange={handleTabsChange}&gt;
+        &lt;Tab label="First Tab"/&gt;
+        &lt;Tab label="Second Tab"/&gt;
+      &lt;/Tabs&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Tabs with count, text, and component</h4>
+<p>
+  This example shows an underlined Tabs group where the last tab includes a
+  custom Tag component alongside the count.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { useState, SyntheticEvent } from "react";
+import { Tabs, Tab, Tag } from "@czi-sds/components";
+import { styled } from "@mui/material";
+import "./styles.css";
+
+function App() {
+  const [value, setValue] = useState(0);
+
+  const handleTabsChange = (_: SyntheticEvent, tabsValue: unknown) =&gt; {
+    setValue(tabsValue as number);
+  };
+
+  const CountWrapper = styled("span")`
+    margin-right: 5px;
+  `;
+  
+  function BetaTagWithCount() {
+    return (
+      &lt;&gt;
+        &lt;CountWrapper&gt;14&lt;/CountWrapper&gt;
+        &lt;Tag label="BETA" color="beta" sdsStyle="rounded" sdsType="secondary" /&gt;
+      &lt;/&gt;
+    );
+  }
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;Tabs value={value} sdsSize="large" onChange={handleTabsChange} underlined&gt;
+        &lt;Tab label="First Tab" count="4" /&gt;
+        &lt;Tab label="Second Tab" count="20" /&gt;
+        &lt;Tab label="Third Tab" count={&lt;BetaTagWithCount /&gt;} /&gt;
+      &lt;/Tabs&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

@@ -1,0 +1,1125 @@
+<p>
+  Filters are used to narrow down large amounts of data based on specific
+  criteria, helping users hone in on specific datasets within the product.
+</p>
+<h2>Guidelines</h2>
+<h2>Filter Components</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        There are two Filter components available to use depending on the
+        filtering needs of the dataset. Simple Filter is used when the dataset
+        has few filters and there is space within the layout to fit them all,
+        whereas Complex Filter is used when there are many filters needed to fit
+        into one layout, necessitating a more compact design.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to component:</strong></p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/827ed8"
+          >Simple Filter</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/862461"
+          >Complex Filter</a
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Visual Preview</h3>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Filter_Simple</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3cad85e81276fc48.png"
+        alt="Preview_Guidelines_Filter_Simple"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Filter_Complex</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/15bb826413fd80be.png"
+        alt="Preview_Guidelines_Filter_Complex"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Simple Filter</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/e9f21ed111d3eb26.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/5e09615187e6f3d7.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/86a3c2a60649a538.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Live instance for Simple Filter will be added soon.
+  </p>
+</div>
+<hr />
+<h3>Overview</h3>
+<p>
+  Use Simple Filter when there are only a few filter categories or a few options
+  per category needed for a given dataset. Simple Filter is comprised of a label
+  combined with an input that is Single-select (
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/8537bd"
+    >Radio Input</a
+  >
+  ), Multi-select (
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/70fe02"
+    >Checkbox Input</a
+  >
+  ), or a Range (
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/21aea3"
+    >Slider</a
+  >
+  ) depending on the filtering needs of the dataset. It has all of the options
+  for each filter exposed in the UI and viewable by the user. Users can filter
+  using any combination of Filter options presented to them—see the
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/085e46"
+    >Filtering Logic</a
+  >
+  section below for an overview of how applied Filters affect the dataset being
+  filtered.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Single-select</p></td>
+    <td><p>Multi-select</p></td>
+    <td><p>Range</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Simple Filter_Single-select</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a08fd1dcb1724fd6.png"
+        alt="Simple Filter_Single-select"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Simple Filter_Multi-select</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/418c58629aaa9a96.png"
+        alt="Simple Filter_Multi-select"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Simple Filter_Range</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b83104c7d3e6399d.png"
+        alt="Simple Filter_Range"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Simple Filter example</h3>
+<p>
+  The example below shows Simple Filters being used as part of a Basic Panel
+  (documentation to come) in CZ ID.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Simple Filter_Example</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e86f20017416e7be.png"
+        alt="Simple Filter_Example"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Simple Filter Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Simple Filter Spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cb1d783dd108fd95.png"
+        alt="Simple Filter Spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Complex Filter</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/e9f21ed111d3eb26.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/5e09615187e6f3d7.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/1afdc9e86f437755.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=complexfilter--default"
+  width="848"
+  height="248"
+  title="Default"
+></iframe>
+<hr />
+<h3>Overview</h3>
+<p>
+  Use Complex Filter when there are many filters needed to fit into one layout,
+  necessitating a more compact design than
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/0694ae"
+    >Simple Filter</a
+  >
+  allows for. Complex Filter is comprised of a
+  <a href="https://sds.czi.design/009eaf17b/p/1004b1">Dropdown Input</a>
+  , which serves as a trigger, combined with a
+  <a href="https://sds.czi.design/009eaf17b/p/42bdf2">Dropdown Menu</a>
+  which displays the available filter options. After the user selects a filter
+  option,
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/39dc34-tags/t/70a4ba"
+    >Filter Tag</a
+  >
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/39dc34-tags/t/70a4ba">s</a>
+  are added below the Dropdown Input to display the active filter selections.
+</p>
+<p>
+  The Dropdown Menu triggered when the Dropdown Input is clicked can be
+  Single-select, Multi-select, or a Range (
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/548a3d-control-inputs/t/21aea3"
+    >Slider</a
+  >
+  ) depending on the needs of the dataset. Users can filter using any
+  combination of Filter options presented to them—see the
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/085e46"
+    >Filtering Logi</a
+  >
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/085e46">c</a>
+  section below for an overview of how applied Filters affect the dataset being
+  filtered on.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Single-select</p></td>
+    <td><p>Single-select + Search</p></td>
+    <td><p>Multi-select</p></td>
+    <td><p>Multi-select + Search</p></td>
+    <td><p>Range</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Input_Single-select</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/68cdc6d97f9a1af4.png"
+        alt="Complex Filter_Input_Single-select"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Complex Filter_Input_Single-select + Search</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/fe08ac4bbb365606.png"
+        alt="Complex Filter_Input_Single-select + Search"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Input_Multi-select</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0640767fcf195ee0.png"
+        alt="Complex Filter_Input_Multi-select"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Complex Filter_Input_Multi-select + Search</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/995b9f6d413c5f14.png"
+        alt="Complex Filter_Input_Multi-select + Search"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Input_Range</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/284f9915daee8deb.png"
+        alt="Complex Filter_Input_Range"
+      />
+    </figure>
+  </figure>
+</div>
+<h4><strong>Complex Filter states</strong></h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Closed</p></td>
+    <td><p>Open</p></td>
+    <td><p>Active</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Closed</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/488554bf80598400.png"
+        alt="Complex Filter_Closed"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Open</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1cb3c4e7520847eb.png"
+        alt="Complex Filter_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Active</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/dc7d223c7ae0dfd7.png"
+        alt="Complex Filter_Active"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Complex Filter example</h3>
+<p>
+  The example below shows Complex Filters being used as part of a Basic Panel
+  (documentation to come) in CZ ID.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Example</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/29bf4768ffa0c973.png"
+        alt="Complex Filter_Example"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Complex Filter Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Follow spacing rules for
+  <a href="https://sds.czi.design/009eaf17b/p/42bdf2">Dropdown Menus</a>
+  for spacing guidance for the Complex Filter Input.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Complex Filter_Spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b40e277bfd372f3d.png"
+        alt="Complex Filter_Spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Filtering Logic</h3>
+<p>
+  Filtering logic is handled at the product level, however, this section offers
+  some suggestions for best practices to consider when establishing filtering
+  logic.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-row zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Between filter categories: use "AND"</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/38842a4f4fbb77f7.png"
+        alt='Between filter categories: use "AND"'
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Within filter categories: use "OR"</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5025e7100bcb256f.png"
+        alt='Within filter categories: use "OR"'
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<h2>Filter Components</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <p>
+        There are two Filter components available to use depending on the
+        filtering needs of the dataset. SimpleFilter is used when the dataset
+        has few filters and there is space within the layout to fit them all,
+        whereas ComplexFilter is used when there are many filters needed to fit
+        into one layout, necessitating a more compact design.
+      </p>
+    </td>
+    <td>
+      <p><strong>Jump to component:</strong></p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/87d16c"
+          >SimpleFilter</a
+        >
+      </p>
+      <p>
+        <a href="https://sds.czi.design/009eaf17b/v/0/p/543108-filters/t/23d380"
+          >ComplexFilter</a
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Visual Preview</h3>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_Filter_Simple</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/abbbee07b42c87a9.png"
+        alt="Preview_Code_Filter_Simple"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Code_Filter_Complex</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6dcade803eeb0421.png"
+        alt="Preview_Code_Filter_Complex"
+      />
+    </figure>
+  </figure>
+</div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<hr />
+<h2>SimpleFilter</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Code details for SimpleFilter will be added soon.
+  </p>
+</div>
+<hr />
+<h2>ComplexFilter</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ComplexFilter/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The&nbsp;ComplexFilter
+  is&nbsp;not&nbsp;directly&nbsp;based&nbsp;on&nbsp;any&nbsp;MUI&nbsp;component,&nbsp;but&nbsp;it&nbsp;does&nbsp;use&nbsp;the
+  <a
+    href="https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menu/b/177008/t/550be2"
+  >
+    SDS&nbsp;
+  </a>
+  <a
+    href="https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menu/b/177008/t/550be2"
+  >
+    Dropdown
+  </a>
+  <a
+    href="https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menu/b/177008/t/550be2"
+  >
+    component
+  </a>
+  ,&nbsp;which&nbsp;in turn is&nbsp;ultimately&nbsp;based&nbsp;on&nbsp;
+  <a href="https://mui.com/material-ui/react-autocomplete/">MUI's&nbsp;</a>
+  <a href="https://mui.com/material-ui/react-autocomplete/">Autocomplete</a>
+  <a href="https://mui.com/material-ui/react-autocomplete/">component</a>
+  . As such, props that are available to either SDS's Dropdown and / or MUI's
+  Autocomplete can be passed to ComplexFilter as such:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>DropdownMenuProps</strong>
+      <strong>:</strong>
+      use this prop to pass MUIAutocomplete-specific props to ComplexFilter
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>InputDropdownProps</strong>
+      <strong>:</strong>
+      use this prop to pass SDS InputDropdown-specific props to ComplexFilter
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found in
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>isTriggerChangeOnOptionClick</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Determines whether changes are triggered in real-time upon clicking an
+        option
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>keepSearchOnSelect</p></td>
+    <td><p>bool</p></td>
+    <td></td>
+    <td>
+      <p>
+        Maintains a search input when a user selects an option (only if multiple
+        selections are allowed via the multiple prop; otherwise the dropdown
+        closes upon selection)
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>label</p></td>
+    <td><p>string</p></td>
+    <td><p>""</p></td>
+    <td><p>Sets the label of filter, shown both when closed and open</p></td>
+  </tr>
+  <tr>
+    <td><p>multiple</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Defines whether multiple selections or can be made from the filter
+        simultaneously or only one
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onChange</p></td>
+    <td><p>func</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>Function to set what happens when a new value is set via the filter</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>search</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Provides a search bar at the top of the filter from which users can
+        narrow the list of menu items
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code Examples</h3>
+<h4>Default ComplexFilter</h4>
+<p>
+  This examples demonstrates the minimum props needed to render a ComplexFilter.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ComplexFilter, DefaultDropdownMenuOption } from "@czi-sds/components";
+import "./styles.css";
+
+const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+  {
+    name: "Fruit: Apple",
+    section: "Fruit",
+    count: 10
+  },
+  {
+    name: "Fruit: Cherry",
+    section: "Fruit",
+    count: 150
+  },
+  {
+    name: "Fruit: Orange",
+    section: "Fruit",
+    count: 15
+  },
+  {
+    name: "Vegetable: Carrot",
+    section: "Vegetable",
+    count: 34
+  },
+  {
+    name: "Vegetable: Kale",
+    section: "Vegetable"
+  },
+  {
+    name: "Vegetable: Lettuce",
+    section: "Vegetable"
+  },
+];
+
+function App() {
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;ComplexFilter
+        label="Filter Label"
+        onChange={() =&gt; {}}
+        options={MENU_ITEMS}
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Multi select ComplexFilter with Search</h4>
+<p>
+  This example showcases a ComplexFilter component featuring InputSearch for
+  filtering menu items. Users have the flexibility to select multiple options to
+  refine their selections.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ComplexFilter, DefaultDropdownMenuOption } from "@czi-sds/components";
+import "./styles.css";
+
+const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+  {
+    name: "Fruit: Apple",
+    section: "Fruit",
+    count: 10
+  },
+  {
+    name: "Fruit: Cherry",
+    section: "Fruit",
+    count: 150
+  },
+  {
+    name: "Fruit: Orange",
+    section: "Fruit",
+    count: 15
+  },
+  {
+    name: "Vegetable: Carrot",
+    section: "Vegetable",
+    count: 34
+  },
+  {
+    name: "Vegetable: Kale",
+    section: "Vegetable"
+  },
+  {
+    name: "Vegetable: Lettuce",
+    section: "Vegetable"
+  },
+];
+
+function App() {
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;ComplexFilter
+        label="Filter Label"
+        onChange={() =&gt; {}}
+        options={MENU_ITEMS}
+        DropdownMenuProps={{
+          groupBy: (option: DefaultDropdownMenuOption) =&gt;
+            option.section as string,
+        }}
+        multiple
+        search
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>ComplexFilter with realtime selection changes</h4>
+<p>
+  This example showcases the functionality that enables the dropdown selections
+  to be instantly reflected in the tags in real-time. This is achieved by
+  utilizing the isTriggerChangeOnOptionClick prop.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ComplexFilter, DefaultDropdownMenuOption } from "@czi-sds/components";
+import "./styles.css";
+
+const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+  {
+    name: "Fruit: Apple",
+    section: "Fruit",
+    count: 10
+  },
+  {
+    name: "Fruit: Cherry",
+    section: "Fruit",
+    count: 150
+  },
+  {
+    name: "Fruit: Orange",
+    section: "Fruit",
+    count: 15
+  },
+  {
+    name: "Vegetable: Carrot",
+    section: "Vegetable",
+    count: 34
+  },
+  {
+    name: "Vegetable: Kale",
+    section: "Vegetable"
+  },
+  {
+    name: "Vegetable: Lettuce",
+    section: "Vegetable"
+  },
+];
+
+function App() {
+  
+  return (
+    &lt;div className="app"&gt;
+      &lt;ComplexFilter
+        label="Filter Label"
+        onChange={() =&gt; {}}
+        options={MENU_ITEMS}
+        DropdownMenuProps={{
+          groupBy: (option: DefaultDropdownMenuOption) =&gt;
+            option.section as string,
+        }}
+        multiple
+        search
+        isTriggerChangeOnOptionClick
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

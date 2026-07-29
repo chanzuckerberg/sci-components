@@ -1,0 +1,902 @@
+<p>
+  Content Cards are used throughout the UI to present information in a visually
+  organized format that highlights key information or details in a way that is
+  scannable and easy to digest.
+</p>
+<h2>Guidelines</h2>
+<h2>Overview</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/475c8516ea175c92.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Content Card Variants</h3>
+<p>
+  Content Cards come in two different variants: Narrow and Wide. When viewed on
+  <a href="https://sds.czi.design/009eaf17b/p/071935">narrow screens</a>
+  , such as a mobile device, the Narrow variant is automatically displayed.
+  Teams can decide how many cards they wish to arrange horizontally and / or
+  vertically on a page.
+</p>
+<p>
+  Teams can individually control each element on Content Card including having
+  two slots (one next to the Title text and one in the body of the card) that
+  can be filled with whatever content is needed, providing maximum flexibility
+  and serving a wide range of use cases.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Content Card_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7bb26d5d6ef3efe5.png"
+        alt="Preview_Guidelines_Content Card_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Content Card_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cdeb3545f9af1ed7.png"
+        alt="Preview_Guidelines_Content Card_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<hr />
+<h3>Content Card – Wide</h3>
+<p>
+  Content Card – Wide has the text and body content arranged horizontally beside
+  the visual element and is best used by itself or beside one other Content
+  Card; if more than two Content Cards need to be displayed horizontally beside
+  each other, use the
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/006dbc-content-card/t/page-72e266-77693596-33affd-18"
+  >
+    Narrow
+  </a>
+  variant. When the width of the container the Content Card is placed within is
+  reduced to less than 600px, the Wide variant will automatically convert to a
+  Narrow variant.
+</p>
+<p>
+  All text elements (overline text, title text, subtitle text, metadata text,
+  body text) are optional and any combination of these elements can be used as
+  teams see necessary.
+</p>
+<p>
+  The visual element on the Content Card can be an image, an
+  <a href="https://sds.czi.design/009eaf17b/p/529e08">icon</a>
+  , or not used at all. When displaying an image, teams set the width of the
+  image in pixels and its height will automatically adjust as needed based on
+  the overall space available to the Content Card on the page. The image can
+  either be displayed with padding around it or extended to the edge of the
+  Content Card's container. The image can be positioned on the left or right
+  side of the Content Card.
+</p>
+<p>
+  Teams can choose whether to display the Content Card with a bounding box, with
+  a decorative border, as well as determine the position of and how many
+  <a href="https://sds.czi.design/009eaf17b/p/47778c">Buttons</a>
+  , if any, are included. For Content Cards with one or zero Buttons, the
+  Content Card itself can function as a Button.
+</p>
+<h4>Visual Element Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Image</p></td>
+    <td><p>Icon</p></td>
+    <td><p>None</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Visual Element_Image_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1aede1ffee0f5ece.png"
+        alt="Content Card_Visual Element_Image_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Visual Element_Icon_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/886e69e77d9b59e6.png"
+        alt="Content Card_Visual Element_Icon_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Visual Element_None_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/90f1e1caedbc344d.png"
+        alt="Content Card_Visual Element_None_Wide"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Image Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Image left (padding)</p></td>
+    <td><p>Image left (no padding)</p></td>
+    <td><p>Image right (padding)</p></td>
+    <td><p>Image right (no padding)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Image Option_Left_Padding_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8f3e8cf761074410.png"
+        alt="Content Card_Image Option_Left_Padding_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Image Option_Left_No Padding_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/33746bac6001cf01.png"
+        alt="Content Card_Image Option_Left_No Padding_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Image Option_Right_Padding_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9733db5bdcec33cc.png"
+        alt="Content Card_Image Option_Right_Padding_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Image Option_Right_No Padding_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7e1ecbc47c91e218.png"
+        alt="Content Card_Image Option_Right_No Padding_Wide"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Content Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Text</p></td>
+    <td><p>Slot</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Content Card_Content_Text_Wide</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/419500406a40f385.png"
+        alt="Content Card_Content_Text_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Content Card_Content_Slot_Wide</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b433b0383fbaf347.png"
+        alt="Content Card_Content_Slot_Wide"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Additional Options</h4>
+<p>
+  All of the following options are available regardless of whether the image is
+  positioned on the left or right side of the Content Card
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>With decorative border</p></td>
+    <td><p>Without decorative border</p></td>
+    <td><p>With bounding box</p></td>
+    <td><p>Without bounding box</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Buttons Left_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8c128321bf0ebbfd.png"
+        alt="Content Card_Additional Option_Buttons Left_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_No Decorative Border_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8e7a14efcf225e58.png"
+        alt="Content Card_Additional Option_No Decorative Border_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Bounding Box_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/18ddbe423cb933e0.png"
+        alt="Content Card_Additional Option_Bounding Box_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_No Bounding Box_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b945cf9d920fcd09.png"
+        alt="Content Card_Additional Option_No Bounding Box_Wide"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Left-aligned Buttons</p></td>
+    <td><p>Right-aligned Buttons</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Decorative Border_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f94f1c46511006ef.png"
+        alt="Content Card_Additional Option_Decorative Border_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Buttons Right_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3d353b956eadfab9.png"
+        alt="Content Card_Additional Option_Buttons Right_Wide"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Interaction States</h4>
+<p>
+  For Content Cards with one or zero Buttons, the Content Card itself can
+  function as a Button.
+</p>
+<p>
+  The following states are used regardless of whether there is a visual element
+  included on the Content Card and, if the visual element is an image,
+  regardless of whether it is positioned on the left or right side of the
+  Content Card.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Interaction States_Default_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/22f750f5f3b1db3f.png"
+        alt="Content Card_Interaction States_Default_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Interaction States_Hover_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5d160e803eadb3ad.png"
+        alt="Content Card_Interaction States_Hover_Wide"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Interaction States_Pressed_Wide</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/14836dad1033a4ad.png"
+        alt="Content Card_Interaction States_Pressed_Wide"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Content Card – Narrow</h3>
+<p>
+  Content Card – Narrow has the text and body content arranged vertically below
+  the visual element and is best used beside two or more other Content Cards.
+  When viewed on
+  <a href="https://sds.czi.design/009eaf17b/p/071935">narrow screens</a>
+  , such as a mobile device, any horizontally arranged Content Cards will wrap
+  to stack in a single column.
+</p>
+<p>
+  All text elements (overline text, title text, subtitle text, metadata text,
+  body text) are optional and any combination of these elements can be used as
+  teams see necessary.
+</p>
+<p>
+  The Narrow variant can either use an image as a visual element or not contain
+  a visual element at all. Teams set the height of the image in pixels and its
+  width will automatically adjust as needed based on the overall space available
+  to the Content Card on the page. The image can either be displayed with
+  padding around it or extended to the edge of the Content Card's container.
+</p>
+<p>
+  Teams can choose whether to display the Content Card with a bounding box, with
+  a decorative border, as well as determine the position of and how many
+  <a href="https://sds.czi.design/009eaf17b/p/47778c">Buttons</a>
+  , if any, are included. For Content Cards with one or zero Buttons, the
+  Content Card itself can function as a Button.
+</p>
+<h4>Visual Element Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Image</p></td>
+    <td><p>Icon</p></td>
+    <td><p>None</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Visual Element_Image_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2b3615ec44e33763.png"
+        alt="Content Card_Visual Element_Image_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Visual Element_Icon_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1e580928678f4ec4.png"
+        alt="Content Card_Visual Element_Icon_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Visual Element_None_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/12ef59470c71951b.png"
+        alt="Content Card_Visual Element_None_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Image Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Padding</p></td>
+    <td><p>No Padding</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Image Option_Padding_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/364573516d51d64b.png"
+        alt="Content Card_Image Option_Padding_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Image Option_No Padding_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/591adf0dda978f92.png"
+        alt="Content Card_Image Option_No Padding_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Content Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Text</p></td>
+    <td><p>Slot</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Content Card_Content_Text_Narrow</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c16a6814a4d74025.png"
+        alt="Content Card_Content_Text_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Content Card_Content_Slot_Narrow</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ade374200d6acbef.png"
+        alt="Content Card_Content_Slot_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Additional Options</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>With decorative border</p></td>
+    <td><p>Without decorative border</p></td>
+    <td><p>With bounding box</p></td>
+    <td><p>Without bounding box</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Decorative Border_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e79b9ff11d309f45.png"
+        alt="Content Card_Additional Option_Decorative Border_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong
+        >Content Card_Additional Option_No Decorative Border_Narrow</strong
+      >
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6c0b9067b0b427df.png"
+        alt="Content Card_Additional Option_No Decorative Border_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Bounding Box_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5717d64fb9b8963b.png"
+        alt="Content Card_Additional Option_Bounding Box_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_No Bounding Box_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/03cec6cf2dffec20.png"
+        alt="Content Card_Additional Option_No Bounding Box_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Left-aligned Buttons</p></td>
+    <td><p>Right-aligned Buttons</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Buttons Left_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/37e35b845d729f36.png"
+        alt="Content Card_Additional Option_Buttons Left_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Additional Option_Buttons Right_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5f19b6e336c8284b.png"
+        alt="Content Card_Additional Option_Buttons Right_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Interaction States</h4>
+<p>
+  For Content Cards with one or zero Buttons, the Content Card itself can
+  function as a Button.
+</p>
+<p>
+  The following states are used regardless of whether there is a visual element
+  included on the Content Card.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Interaction States_Default_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/709dac56e3c3b61c.png"
+        alt="Content Card_Interaction States_Default_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Interaction States_Hover_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6808a370497eb990.png"
+        alt="Content Card_Interaction States_Hover_Narrow"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Content Card_Interaction States_Pressed_Narrow</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d71b867d105db5b1.png"
+        alt="Content Card_Interaction States_Pressed_Narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Content Card Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Content Card Spacing (SDS)</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8866474caf891fa3.png"
+        alt="Content Card Spacing (SDS)"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>Content Card</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/ContentCard"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI Card component can be found
+  <a href="https://mui.com/material-ui/react-card/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>boundingBox</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        If true, wraps content and visuals inside a bounded layout with
+        background and padding.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>buttonsPosition</p></td>
+    <td><p>"left" |"right"</p></td>
+    <td><p>"left"</p></td>
+    <td>
+      <p>
+        Determines the alignment of buttons in the ContentCardActions component.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>classes</p></td>
+    <td><p>object</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Custom class names for different card sub-sections (e.g., cardPaper,
+        cardTitle, cardActions, etc.). Could be used to style the component with
+        TailwindCss. Full list of available class names are:cardPaper,
+        cardContent, cardHeader, cardMedia, cardOverline, cardTitle,
+        cardSubtitle, cardMetadata, cardActions, clickableCardButton
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>decorativeBorder</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>If true, shows a decorative border around the card.</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The content to be displayed inside the card body, including custom
+        components and ContentCardActions.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>clickableCard</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>If true, wraps the card with an action area and makes it clickable.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>clickableCardProps</p></td>
+    <td><p>Partial&lt;SdsMinimalButtonProps&gt;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props forwarded to the clickable card wrapper when clickableCard is
+        true.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>icon</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>The icon displayed in the card when visualElementType is icon.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>image</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>The image displayed in the card when visualElementType is image.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>imagePadding</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>If true, applies padding around the image inside the card.</p></td>
+  </tr>
+  <tr>
+    <td><p>imagePosition</p></td>
+    <td><p>"left" | "right"</p></td>
+    <td><p>"left"</p></td>
+    <td><p>Position of the image in the card layout (left or right).</p></td>
+  </tr>
+  <tr>
+    <td><p>imageSize</p></td>
+    <td><p>number</p></td>
+    <td><p>300</p></td>
+    <td>
+      <p>Width of the image area in pixels when visualElementType is image.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>metadataText</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Optional metadata text, usually used for extra context like date or
+        author.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>overlineText</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>A small overline text displayed above the title.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsType</p></td>
+    <td><p>"wide" | "narrow"</p></td>
+    <td><p>"wide"</p></td>
+    <td>
+      <p>
+        Determines the card layout style. wide shows the image and content side
+        by side, narrow stacks them vertically.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>subtitleText</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>Optional subtitle text displayed below the title.</p></td>
+  </tr>
+  <tr>
+    <td><p>titleText</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>The main title text of the card.</p></td>
+  </tr>
+  <tr>
+    <td><p>visualElementType</p></td>
+    <td><p>"image" | "icon" | "none"</p></td>
+    <td><p>"none"</p></td>
+    <td>
+      <p>
+        Specifies what type of visual element to render on the card: an image,
+        an icon, or none.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<div
+  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Due to a bug in Zeroheight we are unable to publish code examples at this
+    time; we will update this section once a fix is released.
+  </p>
+</div>

@@ -1,0 +1,811 @@
+<p>
+  Banners are used to communicate product status updates to users, allowing the
+  product teams to provide important information to their users.
+</p>
+<h2>Guidelines</h2>
+<h2>Overview</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/a14332143217b29f.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/626530922b605d48.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Banner Variants</h3>
+<p>
+  Banners communicate product status updates such as system maintenance, new
+  features, known product bugs or issues. etc. and should not be used to respond
+  to actions the user has taken within the product; use a
+  <a href="https://sds.czi.design/009eaf17b/p/72e266">Callout</a>
+  or
+  <a href="https://sds.czi.design/009eaf17b/p/56981d">Notification</a>
+  for these purposes.
+</p>
+<p>
+  There are two Banner variants: a primary Banner if only one Banner is needed
+  and a secondary Banner if two or more Banners need to be shown at one time.
+  This allows multiple Banners to be stacked together while maintaining the
+  ability to differentiate between them.
+</p>
+<p>
+  Both Banner variants can optionally be set to be manually dismissible by the
+  user, allowing them to hide the Banner from view once it has been read.
+</p>
+<p>Banners span the full width of the page.</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Banner_Primary</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/120a6f60de2189e1.png"
+        alt="Preview_Guidelines_Banner_Primary"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Banner_Secondary</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/04ee196b79959c49.png"
+        alt="Preview_Guidelines_Banner_Secondary"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=banner--default"
+  width="848"
+  height="144.6197509765625"
+  title="Default"
+></iframe>
+<hr />
+<h3>Banner – Primary</h3>
+<p>
+  Use Banner – Primary in instances where only one Banner will be used on the
+  page. If using multiple, it should be the first or top Banner used, followed
+  by the secondary variant. Continue alternating variants for as many Banners as
+  are needed. This ensures the Banners can be differentiated without the need
+  for space or divider lines between them.
+</p>
+<p>
+  If additional context or information is needed beyond the space available on
+  the Banner, it is recommended that a
+  <a href="https://sds.czi.design/009eaf17b/p/78d741">Link</a>
+  to an additional page with this information is included on the Banner which
+  can be inserted using the optional content slot.
+</p>
+<p>
+  When the information being communicated on the Banner is intended to remain
+  persistent on the screen and is not manually dismissible by the user, use a
+  persistent Banner. To allow the user to manually dismiss the Banner, use a
+  dismissible Banner.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default (Persistent)</p></td>
+    <td><p>Default (Dismissible)</p></td>
+    <td><p>Hover (Dismissible)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Persistent_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e5c10bf86f85ed35.png"
+        alt="Banner_Primary_Persistent_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Dismissible_Default</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/aac2b6f6003ff1f8.png"
+        alt="Banner_Primary_Dismissible_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Dismissible_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/025923b46ee8593a.png"
+        alt="Banner_Primary_Dismissible_Hover"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Banner – Secondary</h3>
+<p>
+  Use only when accompanied by the primary variant. If using multiple, Banner –
+  Secondary should be the second Banner used, followed by the primary variant.
+  Continue alternating variants for as many Banners as are needed. This ensures
+  the Banners can be differentiated without the need for space or divider lines
+  between them.
+</p>
+<p>
+  If additional context or information is needed beyond the space available on
+  the Banner, it is recommended that a
+  <a href="https://sds.czi.design/009eaf17b/p/78d741">Link</a>
+  to an additional page with this information is included on the Banner which
+  can be inserted using the optional content slot.
+</p>
+<p>
+  When the information being communicated on the Banner is intended to remain
+  persistent on the screen and is not manually dismissible by the user, use a
+  persistent Banner. To allow the user to manually dismiss the Banner, use a
+  dismissible Banner.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default (Persistent)</p></td>
+    <td><p>Default (Dismissible)</p></td>
+    <td><p>Hover (Dismissible)</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Banner_Secondary_Persistent_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/33765f318f410ad9.png"
+        alt="Banner_Secondary_Persistent_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Banner_Secondary_Dismissible_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2ed4bcbf544d77f2.png"
+        alt="Banner_Secondary_Dismissible_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Secondary_Dismissible_Hover</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/03adaa3286ec14c7.png"
+        alt="Banner_Secondary_Dismissible_Hover"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Banner Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img src="/zeroheight-assets/2156776c66fade22.png" alt="Banner spacing" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Intent Variations</h3>
+<p>
+  There are four different intents that Banners can communicate: Info, Negative,
+  Notice, and Positive. Each intent is communicated using color and iconography.
+</p>
+<p>
+  Each intent is demonstrated below using the Dismissible variant for reference.
+  Regardless of variant, the colors and icons used are the same.
+</p>
+<h4>Primary</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Info</p></td>
+    <td><p>Negative</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Positive</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Intent_Info</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cdaf7ec23aca7168.png"
+        alt="Banner_Primary_Intent_Info"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Intent_Negative</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/056624901006100a.png"
+        alt="Banner_Primary_Intent_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Intent_Notice</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/43bc94c54494311d.png"
+        alt="Banner_Primary_Intent_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Primary_Intent_Positive</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/796f38a6662f7a70.png"
+        alt="Banner_Primary_Intent_Positive"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Secondary</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Info</p></td>
+    <td><p>Negative</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Positive</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Secondary_Intent_Info</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/97425f3684f1b27e.png"
+        alt="Banner_Secondary_Intent_Info"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Secondary_Intent_Negative</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8cce5b1b13094f70.png"
+        alt="Banner_Secondary_Intent_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Secondary_Intent_Notice</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e92533f639e6f3a1.png"
+        alt="Banner_Secondary_Intent_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Banner_Secondary_Intent_Positive</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ce5eee72c562dd2d.png"
+        alt="Banner_Secondary_Intent_Positive"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>Banner</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Banner/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>dismissed</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>If&nbsp;true, the banner has been dismissed by the user.</p></td>
+  </tr>
+  <tr>
+    <td><p>dismissible</p></td>
+    <td><p>bool</p></td>
+    <td><p>true</p></td>
+    <td><p>If&nbsp;true, the banner can be dismissed by the user.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsType</p></td>
+    <td>
+      <p>"primary"</p>
+      <p>| "secondary"</p>
+    </td>
+    <td><p>primary</p></td>
+    <td>
+      <p>
+        The primary variant has a 400 background color and white text color.
+      </p>
+      <p>
+        The secondary variant has a 100 background color and primary text color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>icon</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The icon to be displayed within the banner. If not provided, aInfoCircle
+        icon will be displayed.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>intent</p></td>
+    <td><p>"info" | "notice" | "negative" | "positive"</p></td>
+    <td><p>info</p></td>
+    <td><p>The intent color of the Banner component</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsIconProps</p></td>
+    <td><p>Partial&lt;IconProps&gt;</p></td>
+    <td><p>-</p></td>
+    <td><p>Additional props to be passed to the icon component.</p></td>
+  </tr>
+  <tr>
+    <td><p>onClose</p></td>
+    <td><p>fn</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Callback fired when the component requests to be closed. When provided
+        and no action prop is set, a close icon button is displayed that
+        triggers the callback when clicked.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        function(event: React.SyntheticEvent) =&gt; void
+      </p>
+      <ul class="zeroheight-bullet-list">
+        <li><p>event The event source of the callback.</p></li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Default Banner</h4>
+<p>This example has the minimum props needed for the Banner component.</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Banner } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Banner sdsType="primary"&gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      &lt;/Banner&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Persistent Banner</h4>
+<p>
+  This example showcases a Banner component that cannot be closed or dismissed.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Banner } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;Banner sdsType="primary" dismissible={false}&gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      &lt;/Banner&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Banner with a custom background color</h4>
+<p>
+  This example shows how to implement a Banner component with a custom
+  background color.&nbsp;
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { styled } from "@mui/material/styles";
+import { Banner } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  const StyledBanner = styled(Banner)`
+    background-color: Crimson;
+  `;
+  return (
+    &lt;div className="app"&gt;
+      &lt;StyledBanner sdsType="primary"&gt;
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      &lt;/StyledBanner&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

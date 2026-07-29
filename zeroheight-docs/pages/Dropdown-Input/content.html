@@ -1,0 +1,2338 @@
+<p>
+  Dropdown Inputs are elements that trigger Dropdown Menus to open, enabling
+  users to make selections and communicate choices in the UI.
+</p>
+<h2>Guidelines</h2>
+<h2>Dropdown Input Component</h2>
+<table class="zeroheight-table">
+  <tr>
+    <td>
+      <img
+        src="/zeroheight-assets/5086e1f0ffb605fb.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Figma</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/c93be620e1398797.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>Meets Accessibility</p></td>
+    <td>
+      <img
+        src="/zeroheight-assets/fcdf1ffd5b52804c.svg"
+        class="zeroheight-image"
+      />
+    </td>
+    <td><p>In Code</p></td>
+  </tr>
+</table>
+<h3>Dropdown Input Types</h3>
+<p>
+  There are two Dropdown Input types designers can use depending on whether
+  their design calls for the input field's label to be inside the input itself (
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/1004b1-dropdown-input/t/755eb7"
+    >Label</a
+  >
+  variant) or if an external label will be used with an accompanying Dropdown
+  Input (
+  <a
+    href="https://sds.czi.design/009eaf17b/v/0/p/1004b1-dropdown-input/t/721a06"
+    >Value</a
+  >
+  variant).
+</p>
+<p>
+  On click, Dropdown Inputs always trigger a
+  <a href="https://sds.czi.design/009eaf17b/p/42bdf2">Dropdown Menu</a>
+  to open.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The external field label shown as part of the Value variant visual below is
+    for demonstration purposes only and is not built into the component itself;
+    a separate label must be added to achieve this in product.
+  </p>
+</div>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_InputDropdown_Label</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/fe3faa495056eb7f.png"
+        alt="Preview_Guidelines_InputDropdown_Label"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_InputDropdown_Value</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3ec64e83d0d530d3.png"
+        alt="Preview_Guidelines_InputDropdown_Value"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Live Instance</h3>
+<p>
+  Interact with the live instance below and adjust the available props to better
+  conceptualize how it will appear in product:
+</p>
+<iframe
+  class="zeroheight-storybook-native-embed"
+  src="https://chanzuckerberg.github.io/sci-components/iframe.html?id=inputs-inputdropdown--default"
+  width="848"
+  height="203"
+  title="Default"
+></iframe>
+<hr />
+<h3>Dropdown Input – Label</h3>
+<p>
+  The Label variant functions as both the field label
+  <strong>and</strong>
+  the input field itself from which users make their selections. Before a
+  selection is made, only the field label is displayed inside the input; after
+  the user makes a selection, the selected value appears alongside the label
+  inside the input field.
+</p>
+<p>
+  In instances where users can select more than one value, a counter showing the
+  number of selections made is shown beside the label (this feature is limited
+  to the rounded and square variants only). In cases where the designer does not
+  want the value to appear in the input field after a selection is made (such as
+  when using in combination with
+  <a href="https://sds.czi.design/009eaf17b/v/0/p/39dc34-tags/t/70a4ba"
+    >Filter Tags</a
+  >
+  ), this feature can be disabled.
+</p>
+<p>
+  Optionally, Intent Messages can be displayed to further communicate why a
+  Negative or Notice intent was triggered.
+</p>
+<h4>Rounded</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Open</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5625f452f9de4ada.png"
+        alt="InputDropdown_Label_Rounded_No Value_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e4aa2ae3fb66c086.png"
+        alt="InputDropdown_Label_Rounded_No Value_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0af500ac1851eed8.png"
+        alt="InputDropdown_Label_Rounded_No Value_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/adc44c2f8413cb49.png"
+        alt="InputDropdown_Label_Rounded_No Value_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/10b791b41d3fde92.png"
+        alt="InputDropdown_Label_Rounded_Value_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/034787ac874613ee.png"
+        alt="InputDropdown_Label_Rounded_Value_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/07276e06d7d7f336.png"
+        alt="InputDropdown_Label_Rounded_Value_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/afb533c784511384.png"
+        alt="InputDropdown_Label_Rounded_Value_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/fc9a24e2b2f512d3.png"
+        alt="InputDropdown_Label_Rounded_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/fe84eca22d134ae2.png"
+        alt="InputDropdown_Label_Rounded_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/50af38741e0c4aa8.png"
+        alt="InputDropdown_Label_Rounded_Count_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a2a9f7a4305ce8e6.png"
+        alt="InputDropdown_Label_Rounded_Count_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<p><em>Intent Variations</em></p>
+<p>
+  Use Negative to communicate when a user has entered an incorrect or incomplete
+  response and Notice when a user's response needs attention. Optionally, Intent
+  Messages can be displayed to further communicate why a Negative or Notice
+  intent was triggered. For more information see
+  <a href="https://sds.czi.design/009eaf17b/p/88e8a7">Intents</a>
+  .
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Negative</p></td>
+    <td><p>Negative + Intent Message</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Notice + Intent Message</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/03bf02fab5ae9afc.png"
+        alt="InputDropdown_Label_Rounded_No Value_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c079dba5912ebccf.png"
+        alt="InputDropdown_Label_Rounded_No Value_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/30e0e9fe221a099d.png"
+        alt="InputDropdown_Label_Rounded_No Value_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_No Value_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/57fd9d9d45fb4e35.png"
+        alt="InputDropdown_Label_Rounded_No Value_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1e9979abae6fd8e8.png"
+        alt="InputDropdown_Label_Rounded_Value_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ac894ee6475f0666.png"
+        alt="InputDropdown_Label_Rounded_Value_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/24f779d67970f241.png"
+        alt="InputDropdown_Label_Rounded_Value_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Value_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5fb8f6a20df37f72.png"
+        alt="InputDropdown_Label_Rounded_Value_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6b5ce73c7ddcdeb3.png"
+        alt="InputDropdown_Label_Rounded_Count_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e3c2db9d967bec13.png"
+        alt="InputDropdown_Label_Rounded_Count_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8c7bc9a88a986c01.png"
+        alt="InputDropdown_Label_Rounded_Count_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Rounded_Count_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/cd2caa7586da7859.png"
+        alt="InputDropdown_Label_Rounded_Count_Notice + Message"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Square</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Open</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9ae3cda138e881c4.png"
+        alt="InputDropdown_Label_Square_No Value_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a490d01162cc5326.png"
+        alt="InputDropdown_Label_Square_No Value_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2c955b8dba6a4b58.png"
+        alt="InputDropdown_Label_Square_No Value_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1afe2c2f1a44fae8.png"
+        alt="InputDropdown_Label_Square_No Value_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/2fa71ca35d0b26fc.png"
+        alt="InputDropdown_Label_Square_Value_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ee78a349b268b609.png"
+        alt="InputDropdown_Label_Square_Value_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9cdf8e9c6c9572c1.png"
+        alt="InputDropdown_Label_Square_Value_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d459943eccb0778b.png"
+        alt="InputDropdown_Label_Square_Value_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/618a6ba46b1a656e.png"
+        alt="InputDropdown_Label_Square_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f1a3f2ecc7e86e60.png"
+        alt="InputDropdown_Label_Square_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/10a61bf3cad552f3.png"
+        alt="InputDropdown_Label_Square_Count_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/600580e580052f2e.png"
+        alt="InputDropdown_Label_Square_Count_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<p><em>Intent Variations</em></p>
+<p>
+  Use Negative to communicate when a user has entered an incorrect or incomplete
+  response and Notice when a user's response needs attention. Optionally, Intent
+  Messages can be displayed to further communicate why a Negative or Notice
+  intent was triggered. For more information see
+  <a href="https://sds.czi.design/009eaf17b/p/88e8a7">Intents</a>
+  .
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Negative</p></td>
+    <td><p>Negative + Intent Message</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Notice + Intent Message</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/efb8dc1bfd95ad39.png"
+        alt="InputDropdown_Label_Square_No Value_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d391176c56bab84e.png"
+        alt="InputDropdown_Label_Square_No Value_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b5529f57f4e2535e.png"
+        alt="InputDropdown_Label_Square_No Value_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_No Value_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e08b88cc38b05771.png"
+        alt="InputDropdown_Label_Square_No Value_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d0fcbf197dacca7b.png"
+        alt="InputDropdown_Label_Square_Value_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/493e4877cb868d13.png"
+        alt="InputDropdown_Label_Square_Value_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6aec986e4b846469.png"
+        alt="InputDropdown_Label_Square_Value_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Value_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a67045d4b4567989.png"
+        alt="InputDropdown_Label_Square_Value_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b0999b69aef18ccf.png"
+        alt="InputDropdown_Label_Square_Count_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e150605fe1e7d0fc.png"
+        alt="InputDropdown_Label_Square_Count_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/8d976f0bd0f101bf.png"
+        alt="InputDropdown_Label_Square_Count_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Square_Count_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/d31ddf8dd5599f1f.png"
+        alt="InputDropdown_Label_Square_Count_Notice + Message"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Minimal</h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Open</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_No Value_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e2b223371c04ff95.png"
+        alt="InputDropdown_Label_Minimal_No Value_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_No Value_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3c3af0c682ae0ef9.png"
+        alt="InputDropdown_Label_Minimal_No Value_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_No Value_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/dfd81d49a783064c.png"
+        alt="InputDropdown_Label_Minimal_No Value_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_No Value_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/c587cc0147d7a809.png"
+        alt="InputDropdown_Label_Minimal_No Value_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_Value_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a061e72084c7b254.png"
+        alt="InputDropdown_Label_Minimal_Value_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_Value_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3d58e4f60de6f26c.png"
+        alt="InputDropdown_Label_Minimal_Value_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_Value_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a88b2b9806402b75.png"
+        alt="InputDropdown_Label_Minimal_Value_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Label_Minimal_Value_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4e2f57907ad67c5e.png"
+        alt="InputDropdown_Label_Minimal_Value_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Input – Value</h3>
+<p>
+  Use the Value variant when designs call for the input label to be a separate
+  (external) HTML element from the input itself. Before a selection is made, the
+  input should display a prompt instructing users to make a selection; after the
+  user makes a selection, the selected value replaces the prompt in the input
+  field.
+</p>
+<p>
+  Additionally, detail text can be included with each value to communicate
+  additional information to the user such as providing a sub-label or clarifying
+  information.
+</p>
+<p>
+  Optionally, Intent Messages can be displayed to further communicate why a
+  Negative or Notice intent was triggered.
+</p>
+<h4><strong>Rounded</strong></h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Open</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/dc813e2bdbcb81d9.png"
+        alt="InputDropdown_Value_Rounded_No Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/35bd4a7f08fb71bc.png"
+        alt="InputDropdown_Value_Rounded_No Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f98028f2d8d5ac47.png"
+        alt="InputDropdown_Value_Rounded_No Details_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ea38184fee27a49a.png"
+        alt="InputDropdown_Value_Rounded_No Details_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ba7b13eec7e04092.png"
+        alt="InputDropdown_Value_Rounded_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/753c4f28458b0598.png"
+        alt="InputDropdown_Value_Rounded_Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/0008cd276e32d86b.png"
+        alt="InputDropdown_Value_Rounded_Details_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/ca1686fbf3042090.png"
+        alt="InputDropdown_Value_Rounded_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<p><em>Intent Variations</em></p>
+<p>
+  Use Negative to communicate when a user has entered an incorrect or incomplete
+  response and Notice when a user's response needs attention. Optionally, Intent
+  Messages can be displayed to further communicate why a Negative or Notice
+  intent was triggered. For more information see
+  <a href="https://sds.czi.design/009eaf17b/p/88e8a7">Intents</a>
+  .
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Negative</p></td>
+    <td><p>Negative + Intent Message</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Notice + Intent Message</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/a1e500d8a581e2d9.png"
+        alt="InputDropdown_Value_Rounded_No Details_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/87eaac7712f0c58e.png"
+        alt="InputDropdown_Value_Rounded_No Details_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9ed88628f0d5c763.png"
+        alt="InputDropdown_Value_Rounded_No Details_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_No Details_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/339c51b170c2d2cf.png"
+        alt="InputDropdown_Value_Rounded_No Details_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/4d498801c9344900.png"
+        alt="InputDropdown_Value_Rounded_Details_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/80c483cead68907a.png"
+        alt="InputDropdown_Value_Rounded_Details_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/72ab06c214efbf8b.png"
+        alt="InputDropdown_Value_Rounded_Details_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Rounded_Details_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1c17e7ecfb75a5c7.png"
+        alt="InputDropdown_Value_Rounded_Details_Notice + Message"
+      />
+    </figure>
+  </figure>
+</div>
+<h4><strong>Square</strong></h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Open</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e263b1d27c6444e6.png"
+        alt="InputDropdown_Value_Square_No Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/645065bafa91588f.png"
+        alt="InputDropdown_Value_Square_No Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f7a66329b5e467ca.png"
+        alt="InputDropdown_Value_Square_No Details_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/43f2b17befaf6bc0.png"
+        alt="InputDropdown_Value_Square_No Details_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/f79b9f3a48c1ac0f.png"
+        alt="InputDropdown_Value_Square_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/e97ef501091dbcc7.png"
+        alt="InputDropdown_Value_Square_Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/07d07d640df46dc8.png"
+        alt="InputDropdown_Value_Square_Details_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/1b8ea946cb633770.png"
+        alt="InputDropdown_Value_Square_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<p><em>Intent Variations</em></p>
+<p>
+  Use Negative to communicate when a user has entered an incorrect or incomplete
+  response and Notice when a user's response needs attention. Optionally, Intent
+  Messages can be displayed to further communicate why a Negative or Notice
+  intent was triggered. For more information see
+  <a href="https://sds.czi.design/009eaf17b/p/88e8a7">Intents</a>
+  .
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Negative</p></td>
+    <td><p>Negative + Intent Message</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Notice + Intent Message</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/5267e04d5eeaacc5.png"
+        alt="InputDropdown_Value_Square_No Details_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/972d903cd87f367e.png"
+        alt="InputDropdown_Value_Square_No Details_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/558825365da287f6.png"
+        alt="InputDropdown_Value_Square_No Details_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_No Details_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9a4ef99b02f6731f.png"
+        alt="InputDropdown_Value_Square_No Details_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Negative</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/81a755553fcaeb16.png"
+        alt="InputDropdown_Value_Square_Details_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Negative + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/17282552b325fd4a.png"
+        alt="InputDropdown_Value_Square_Details_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Notice</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7d98c3e9ced529c0.png"
+        alt="InputDropdown_Value_Square_Details_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Square_Details_Notice + Message</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/b83f83db9112b3b8.png"
+        alt="InputDropdown_Value_Square_Details_Notice + Message"
+      />
+    </figure>
+  </figure>
+</div>
+<h4><strong>Minimal</strong></h4>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Open</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_No Details_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/3d11d43d438ebff8.png"
+        alt="InputDropdown_Value_Minimal_No Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_No Details_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/dd6566827f9169fa.png"
+        alt="InputDropdown_Value_Minimal_No Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_No Details_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/9ac2264e76375580.png"
+        alt="InputDropdown_Value_Minimal_No Details_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_No Details_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/65fee1f8c24b438e.png"
+        alt="InputDropdown_Value_Minimal_No Details_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_Details_Default</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/93684ce9996111dd.png"
+        alt="InputDropdown_Value_Minimal_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_Details_Hover</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/25a1acdfa27b9517.png"
+        alt="InputDropdown_Value_Minimal_Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_Details_Open</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7b80322a334fde85.png"
+        alt="InputDropdown_Value_Minimal_Details_Open"
+      />
+    </figure>
+  </figure>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption>
+      <strong>InputDropdown_Value_Minimal_Details_Disabled</strong>
+    </figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/7eed4c1d95bd204a.png"
+        alt="InputDropdown_Value_Minimal_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Input Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="zeroheight-design-uploads zeroheight-item-layout-column zeroheight-component-alignment-center"
+>
+  <figure class="zeroheight-design-upload" role="group">
+    <figcaption><strong>Dropdown Input spacing</strong></figcaption>
+    <figure class="zeroheight-design-upload-image">
+      <img
+        src="/zeroheight-assets/6448271503f1383e.png"
+        alt="Dropdown Input spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<p>&nbsp;</p>
+<h2>Code</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The code examples below must install dependencies before displaying and may
+    take extra time to load
+  </p>
+</div>
+<h2>InputDropdown</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputDropdown/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The SDS's InputDropdown component utilizes MUI's Button component as its
+  foundation but introduces some SDS-specific enhancements. Below, the key
+  distinctions between the SDS's InputDropdown and MUI's Button are outlined:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>Variation</strong>
+      : MUI's Button offers a variant prop to define different visual styles for
+      buttons. SDS's InputDropdown, however, uses the sdsStyle prop instead,
+      providing the ability to select between three variants: square, rounded,
+      or minimal.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Color</strong>
+      : In MUI's Button, the button's color can be modified using the color
+      prop. SDS's InputDropdown deviates from this and introduces the intent
+      prop. This prop provides the ability to choose between default, warning,
+      and error colors, depending on the state of the InputDropdown.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Size</strong>
+      : While MUI's Button provides a size prop for adjusting the button's size,
+      SDS's InputDropdown does not offer this capability. The size of the
+      InputDropdown component remains fixed and cannot be altered through props.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Icon</strong>
+      : Unlike MUI's Button, which supports custom icons, SDS's InputDropdown
+      does not accept external icon components. Instead, SDS's InputDropdown
+      incorporates a built-in Chevron icon, which is an integral part of the
+      component and cannot be replaced.
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-button/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>counter</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        If multiple set to true, this number shows the number of selected menu
+        items.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>details</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>A text showing details for the selected menu item.</p></td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>If&nbsp;true, the component is disabled.</p></td>
+  </tr>
+  <tr>
+    <td><p>intent</p></td>
+    <td>
+      <p>"default"</p>
+      <p>| "negative"</p>
+      <p>| "notice"</p>
+      <p>| "positive"</p>
+    </td>
+    <td><p>default</p></td>
+    <td><p>The color of the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>label</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>The label of the Input Button.</p></td>
+  </tr>
+  <tr>
+    <td><p>multiple</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Allows users to select multiple menu items.multiple=true cannot be used
+        with the minimum variant.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onClick</p></td>
+    <td><p>func</p></td>
+    <td><p>(event: React.MouseEvent&lt;HTMLElement&gt;) =&gt; void</p></td>
+    <td><p>Sets what happens when a user clicks on the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"minimal"</p>
+      <p>| "square"</p>
+      <p>| "rounded"</p>
+    </td>
+    <td><p>square</p></td>
+    <td><p>The visual appearance of the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsType</p></td>
+    <td>
+      <p>"label"</p>
+      <p>| "value"</p>
+    </td>
+    <td><p>label</p></td>
+    <td>
+      <p>
+        The label variant includes the label within the input field and
+        showcases the selected menu item as additional details or sets the
+        counter when in multi-select mode.
+      </p>
+      <p>
+        The value variant replaces the label with the selected value directly
+        within the input field. The detailed information is then displayed in a
+        separate section dedicated to displaying additional details. However,
+        it's important to note that the value variant cannot be used in
+        conjunction with multi-select mode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shouldPutAColonAfterLabel</p></td>
+    <td><p>bool</p></td>
+    <td><p>true</p></td>
+    <td><p>If true, a colon (:) will be added after the label or value.</p></td>
+  </tr>
+  <tr>
+    <td><p>shouldTruncateMinimalDetails</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        If true, the details section of the minimal variant displays a truncated
+        one-liner with an ellipsis (...), if false the details section expands
+        to multiple lines for a comprehensive display.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>value</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The value that will be displayed in the component for the value variant.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  There are more props that can be used with the InputDropdown component, via
+  those available to
+  <a href="https://mui.com/material-ui/api/autocomplete/#props">MUI's</a>
+  <a href="https://mui.com/material-ui/api/autocomplete/#props">Button</a>
+  <a href="https://mui.com/material-ui/api/autocomplete/#props">component</a>
+  .
+</p>
+<h3>Code Examples</h3>
+<h4>Default InputDropdown</h4>
+<p>
+  This example has the minimum props needed for the InputDropdown component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">// Most minimal InputDropdown (just has the basic requirements)
+      
+import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { InputDropdown } from "@czi-sds/components";
+import "./styles.css";
+
+function App() {
+  return (
+    &lt;div className="app"&gt;
+      &lt;InputDropdown label="Label"/&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-1 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>MUI Tip:</strong>
+    To ensure the InputDropdown button expands to fit the width of its
+    container, users can utilize the fullWidth prop provided by MUI. When set to
+    true, the fullWidth prop enables the InputDropdown button to occupy the
+    entire available width within its parent container.
+  </p>
+</div>
+<h4>InputDropdown combined with a multi-select Dropdown</h4>
+<p>
+  Below is an example demonstrating the combined utilization of the
+  InputDropdown component and a multi-select Dropdown component. The Dropdown
+  allows multiple selections, while the InputDropdown features a square variant.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { InputDropdown, DropdownMenu, noop } from "@czi-sds/components";
+import "./styles.css";
+
+const options = [
+  {
+    details: "Details",
+    name: "Menu Item 1",
+  },
+  {
+    details: "A very long Details for the second Menu Item",
+    name: "Menu Item 2",
+  },
+  {
+    name: "Menu Item 3",
+  },
+];
+
+function App() {
+  const [anchorEl, setAnchorEl] = useState&lt;HTMLElement | null&gt;(null);
+  const [open, setOpen] = useState(false);
+  const [details, setDetials] = useState&lt;string&gt;();
+  const [counter, setCounter] = useState&lt;string&gt;();
+  const [inputDropdownValue, setInputDropdownValue] = useState&lt;string&gt;();
+  const [value, setValue] = useState&lt;
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  &gt;([]);
+  const [pendingValue, setPendingValue] = useState&lt;
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  &gt;([]);
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;InputDropdown 
+        label="Label"
+        onClick={handleClick}
+        sdsStyle="square"
+        multiple
+        value={inputDropdownValue}
+        counter={counter}
+      /&gt;
+      &lt;DropdownMenu
+        open={open}
+        anchorEl={anchorEl}
+        onClose={noop}
+        onChange={handleChange}
+        search={false}
+        multiple
+        disableCloseOnSelect
+        options={options}
+        value={pendingValue}
+        onClickAway={handleClickAway}
+      /&gt;
+    &lt;/div&gt;
+  );
+
+  function handleClick(event: React.MouseEvent&lt;HTMLElement&gt;) {
+    if (open) {
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
+  };
+
+  function handleChange(
+    _: React.SyntheticEvent&lt;Element, Event&gt;,
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  ){
+    setPendingValue(newValue);
+    setCounter((newValue as DefaultDropdownMenuOption[])?.length.toString());
+  };
+
+  function handleClickAway(){
+    if (open) {
+      setOpen(false);
+    }
+    setValue(pendingValue);
+  };
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Rounded InputDropdown combined with a single select Dropdown</h4>
+<p>
+  Below is an example demonstrating the combined utilization of the default
+  label variant InputDropdown component and a single-select Dropdown component.
+</p>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { InputDropdown, DropdownMenu, noop } from "@czi-sds/components";
+import "./styles.css";
+
+const options = [
+  {
+    details: "Details",
+    name: "Menu Item 1",
+  },
+  {
+    details: "A very long Details for the second Menu Item",
+    name: "Menu Item 2",
+  },
+  {
+    name: "Menu Item 3",
+  },
+];
+
+function App() {
+  const [anchorEl, setAnchorEl] = useState&lt;HTMLElement | null&gt;(null);
+  const [open, setOpen] = useState(false);
+  const [details, setDetials] = useState&lt;string&gt;();
+  const [inputDropdownValue, setInputDropdownValue] = useState&lt;string&gt;();
+  const [value, setValue] = useState&lt;
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  &gt;(null);
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;InputDropdown 
+        label="Label"
+        onClick={handleClick}
+        sdsStyle="rounded"
+        multiple={false}
+        value={inputDropdownValue}
+      /&gt;
+      &lt;DropdownMenu
+        open={open}
+        anchorEl={anchorEl}
+        onClose={noop}
+        onChange={handleChange}
+        search={false}
+        multiple={false}
+        disableCloseOnSelect
+        options={options}
+        value={value}
+        onClickAway={handleClickAway}
+      /&gt;
+    &lt;/div&gt;
+  );
+
+  function handleClick(event: React.MouseEvent&lt;HTMLElement&gt;) {
+    if (open) {
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
+  };
+
+  function handleChange(
+    _: React.SyntheticEvent&lt;Element, Event&gt;,
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  ){
+    setOpen(false);
+    setValue(newValue);
+
+    if (newValue) {
+      setInputDropdownValue(newValue.name);
+
+      if (newValue?.details) setDetials(newValue?.details);
+      else setDetials(undefined);
+    } else {
+      setDetials(undefined);
+      setInputDropdownValue(undefined);
+    }
+  };
+
+  function handleClickAway(){
+    if (open) {
+      setOpen(false);
+    }
+  };
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>
+<h4>Minimal InputDropdown combined with a single-select Dropdown</h4>
+<p>
+  An example of the combined use of the value variation InputDropdown component
+  and a single-select Dropdown component is shown below.&nbsp;
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Warning:</strong>
+    The value variant can not be used in conjunction with the multi-select
+    Dropdowns. If you set sdsType="value" and multiple="true", the component
+    will default to showing a label and a counter instead.
+  </p>
+</div>
+<div class="zeroheight-live-code">
+  <figure>
+    <figcaption>/styles.css</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-css">body {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.app {
+  padding: 20px;
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>tsconfig.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "include": [
+    "./**/*"
+  ],
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "dom", "es2015" ],
+    "jsx": "react-jsx"
+  }
+}</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/App.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { InputDropdown, DropdownMenu, noop } from "@czi-sds/components";
+import "./styles.css";
+
+const options = [
+  {
+    details: "Details",
+    name: "Menu Item 1",
+  },
+  {
+    details: "A very long Details for the second Menu Item",
+    name: "Menu Item 2",
+  },
+  {
+    name: "Menu Item 3",
+  },
+];
+
+function App() {
+  const [anchorEl, setAnchorEl] = useState&lt;HTMLElement | null&gt;(null);
+  const [open, setOpen] = useState(false);
+  const [details, setDetials] = useState&lt;string&gt;();
+  const [inputDropdownValue, setInputDropdownValue] = useState&lt;string&gt;();
+  const [value, setValue] = useState&lt;
+    DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  &gt;(null);
+
+  return (
+    &lt;div className="app"&gt;
+      &lt;InputDropdown 
+        label="Label"
+        onClick={handleClick}
+        sdsType="value"
+        sdsStyle="minimal"
+        multiple={false}
+        details={details}
+        value={inputDropdownValue}
+        style={{ maxWidth: 250 }}
+      /&gt;
+      &lt;DropdownMenu
+        open={open}
+        anchorEl={anchorEl}
+        onClose={noop}
+        onChange={handleChange}
+        search={false}
+        multiple={false}
+        disableCloseOnSelect
+        options={options}
+        value={value}
+        onClickAway={handleClickAway}
+      /&gt;
+    &lt;/div&gt;
+  );
+
+  function handleClick(event: React.MouseEvent&lt;HTMLElement&gt;) {
+    if (open) {
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
+  };
+
+  function handleChange(
+    _: React.SyntheticEvent&lt;Element, Event&gt;,
+    newValue: DefaultDropdownMenuOption | DefaultDropdownMenuOption[] | null
+  ){
+    setOpen(false);
+    setValue(newValue);
+
+    if (newValue) {
+      setInputDropdownValue(newValue.name);
+
+      if (newValue?.details) setDetials(newValue?.details);
+      else setDetials(undefined);
+    } else {
+      setDetials(undefined);
+      setInputDropdownValue(undefined);
+    }
+  };
+
+  function handleClickAway(){
+    if (open) {
+      setOpen(false);
+    }
+  };
+}
+
+export default App;</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/index.tsx</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
+import { createRoot } from "react-dom/client";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import { Theme } from "@czi-sds/components";
+import CssBaseline from "@mui/material/CssBaseline";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import App from "./App";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+const RootApp = () =&gt; {
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const theme = prefersDarkMode ? Theme("dark") : Theme("light");
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;App /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+};
+
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;RootApp /&gt;
+  &lt;/React.StrictMode&gt;
+);
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/public/index.html</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+    &lt;link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </figure>
+  <figure>
+    <figcaption>/package.json</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{"dependencies":{"react":"^18.0.0","react-dom":"^18.0.0","react-scripts":"^4.0.0"},"devDependencies":{"@types/react":"^18.0.0","@types/react-dom":"^18.0.0","typescript":"^4.0.0"},"main":"/index.tsx"}</code></pre>
+  </figure>
+</div>

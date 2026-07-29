@@ -75,6 +75,7 @@
     "eslint-plugin-sonarjs": "^0.23.0",
     "eslint-plugin-storybook": "^10.5.2",
     "express": "^5.1.0",
+    "highlight.js": "^11.11.1",
     "husky": "^8.0.3",
     "jsdom": "^29.1.1",
     "lerna": "^8.0.1",
@@ -136,6 +137,7 @@
     "mcp:inspect:dev": "yarn workspace @czi-sds/mcp inspect:dev",
     "mcp:serve": "yarn workspace @czi-sds/mcp serve",
     "mcp:release": "yarn workspace @czi-sds/mcp release",
+    "docs:zeroheight": "yarn workspace @czi-sds/mcp generate:zeroheight-docs",
     "evaluate:code": "node scripts/evaluate-code/index.cjs",
     "evaluate:batch": "node scripts/evaluate-code/index.cjs --batch",
     "evaluate:test": "jest scripts/evaluate-code/evaluate.test.cjs"
