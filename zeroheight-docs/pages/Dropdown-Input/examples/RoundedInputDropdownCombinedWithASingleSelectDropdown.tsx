@@ -1,0 +1,93 @@
+import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import {
+  InputDropdown,
+  DropdownMenu,
+  DefaultDropdownMenuOption,
+} from "@czi-sds/components";
+
+const options = [
+  {
+    details: "Details",
+    name: "Menu Item 1",
+  },
+  {
+    details: "A very long Details for the second Menu Item",
+    name: "Menu Item 2",
+  },
+  {
+    name: "Menu Item 3",
+  },
+];
+
+function App() {
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [open, setOpen] = useState(false);
+  const [details, setDetials] = useState<string>();
+  const [inputDropdownValue, setInputDropdownValue] = useState<string>();
+  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(null);
+
+  return (
+    <div className="app">
+      <InputDropdown
+        label="Label"
+        onClick={handleClick}
+        sdsStyle="rounded"
+        multiple={false}
+        value={inputDropdownValue}
+      />
+      <DropdownMenu<DefaultDropdownMenuOption, false, false, false>
+        open={open}
+        anchorEl={anchorEl}
+        onClose={() => {}}
+        onChange={handleChange}
+        search={false}
+        multiple={false}
+        disableCloseOnSelect
+        options={options}
+        value={value}
+        onClickAway={handleClickAway}
+      />
+    </div>
+  );
+
+  function handleClick(event: React.MouseEvent<HTMLElement>) {
+    if (open) {
+      setOpen(false);
+
+      if (anchorEl) {
+        anchorEl.focus();
+      }
+
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    }
+  }
+
+  function handleChange(
+    _: React.SyntheticEvent<Element, Event>,
+    newValue: DefaultDropdownMenuOption | null
+  ) {
+    setOpen(false);
+    setValue(newValue);
+
+    if (newValue) {
+      setInputDropdownValue(newValue.name);
+
+      if (newValue?.details) setDetials(newValue?.details);
+      else setDetials(undefined);
+    } else {
+      setDetials(undefined);
+      setInputDropdownValue(undefined);
+    }
+  }
+
+  function handleClickAway() {
+    if (open) {
+      setOpen(false);
+    }
+  }
+}
+
+export default App;

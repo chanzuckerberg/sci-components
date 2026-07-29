@@ -36,6 +36,22 @@ module.exports = {
       },
     },
     {
+      /**
+       * Code examples imported from the ZeroHeight styleguide. They are rendered
+       * live and typechecked, but their source is shown verbatim in the docs, so
+       * we keep it as published instead of rewriting it to house style.
+       */
+      files: ["zeroheight-docs/pages/**/examples/*.tsx"],
+      rules: {
+        "@typescript-eslint/no-shadow": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "import/no-duplicates": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/no-unescaped-entities": "off",
+        "sonarjs/no-duplicate-string": "off",
+      },
+    },
+    {
       files: ["**/*.cjs"],
       parserOptions: {
         sourceType: "script",

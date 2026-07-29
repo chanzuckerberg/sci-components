@@ -1,23 +1,9 @@
 import styled from "@emotion/styled";
-import hljs from "highlight.js/lib/core";
-import bash from "highlight.js/lib/languages/bash";
-import css from "highlight.js/lib/languages/css";
-import javascript from "highlight.js/lib/languages/javascript";
-import json from "highlight.js/lib/languages/json";
-import typescript from "highlight.js/lib/languages/typescript";
-import xml from "highlight.js/lib/languages/xml";
-import { useEffect, useRef, type ReactElement } from "react";
-
-// Register only the languages the imported ZeroHeight docs actually use
-// (tsx, json, html, css, js, sh) to keep the Storybook bundle lean.
-hljs.registerLanguage("typescript", typescript);
-hljs.registerLanguage("javascript", javascript);
-hljs.registerLanguage("xml", xml); // provides the `html` alias
-hljs.registerLanguage("css", css);
-hljs.registerLanguage("json", json);
-hljs.registerLanguage("bash", bash); // provides the `sh` alias
-// ZeroHeight tags React snippets as `tsx`; map it onto the TypeScript grammar.
-hljs.registerAliases(["tsx"], { languageName: "typescript" });
+import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
+import { createPortal } from "react-dom";
+import { TOGGLE_CLASS } from "./constants";
+import { highlightBlock } from "./highlight";
+import { ZeroheightExample } from "./ZeroheightExample";
 
 /**
  * Scoped container for rendering raw ZeroHeight HTML inside a Storybook docs
@@ -103,21 +89,37 @@ const Container = styled.div`
      wrapper spacing (figure carries a large default browser margin) and let
      the snippet own the vertical rhythm. */
   .zeroheight-code-snippet,
-  .zeroheight-live-code {
+  .zeroheight-live-code,
+  .zeroheight-example-block {
     margin: 1.25em 0;
     border-radius: 6px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0px;
   }
   .zeroheight-code-snippet figure,
-  .zeroheight-live-code figure {
-    background: #0d1117;
+  .zeroheight-live-code figure,
+  .zeroheight-example-block figure {
+    background: rgb(31, 41, 56);
     border-radius: 6px;
+  }
+
+  .zeroheight-design-upload figcaption {
+    display: none !important;
+  }
+
+  .zeroheight-example-error {
+    border: 1px solid rgba(248, 81, 73, 0.4);
+    border-radius: 6px;
+    padding: 0.75em 1em;
   }
   figure {
     margin: 0;
+  }
+
+  figure > pre {
+    padding: 20px !important;
   }
 
   /* The language label sits as a compact header bar on top of the code and
@@ -131,25 +133,38 @@ const Container = styled.div`
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: #8b949e;
-    background: #161b22;
+    background: rgb(22, 28, 39);
     padding: 0.7em 1.5em;
     border: 1px solid rgba(240, 246, 252, 0.1);
     border-bottom: none;
-    border-radius: 6px 6px 0 0;
+    border-radius: 0;
   }
-  figcaption[role="button"] {
+  /* The caption bar's contents become a button so the block can be expanded and
+     collapsed from the keyboard. */
+  .${TOGGLE_CLASS} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
     cursor: pointer;
     user-select: none;
   }
-  figcaption[role="button"]:hover {
+  .${TOGGLE_CLASS}:hover {
     color: #c9d1d9;
   }
-  figcaption[role="button"]:focus-visible {
+  .${TOGGLE_CLASS}:focus-visible {
     outline: 2px solid #58a6ff;
-    outline-offset: -2px;
+    outline-offset: 2px;
   }
   /* Chevron affordance: points down when expanded, right when collapsed. */
-  figcaption[role="button"]::after {
+  .${TOGGLE_CLASS}::after {
     content: "";
     flex: none;
     width: 0.5em;
@@ -160,7 +175,7 @@ const Container = styled.div`
     transform: rotate(135deg);
     transition: transform 0.15s ease;
   }
-  figure[data-collapsed] > figcaption[role="button"]::after {
+  figure[data-collapsed] .${TOGGLE_CLASS}::after {
     transform: rotate(45deg);
   }
   /* Collapsed: hide the code and round the caption into a standalone bar. */
@@ -169,7 +184,7 @@ const Container = styled.div`
   }
   figure[data-collapsed] > figcaption {
     border-bottom: 1px solid rgba(240, 246, 252, 0.1);
-    border-radius: 6px;
+    border-radius: 0 0 6px 6px;
   }
 
   /* Fenced code blocks use a fixed dark "editor" surface in both light and
@@ -315,83 +330,49 @@ export interface ZeroheightDocProps {
   html: string;
 }
 
-function gcd(a: number, b: number): number {
-  return b === 0 ? a : gcd(b, a % b);
-}
-
-/**
- * ZeroHeight exports code with tight, inconsistent indentation (often 1–2
- * spaces per level). Detect a block's base indent unit and re-scale every line
- * to 4 spaces per level so nesting reads clearly.
- */
-function reindentToFour(code: string): string {
-  const lines = code.split("\n");
-  const indents = lines
-    .filter((line) => line.trim() !== "")
-    .map((line) => /^ */.exec(line)?.[0].length ?? 0)
-    .filter((count) => count > 0);
-
-  const unit = indents.reduce((acc, count) => gcd(acc, count), 0);
-  if (unit === 0) return code; // no indentation to normalize
-
-  return lines
-    .map((line) => {
-      const [, spaces = "", rest = ""] = /^( *)(.*)$/.exec(line) ?? [];
-      if (rest === "") return "";
-      const level = Math.round(spaces.length / unit);
-      return " ".repeat(level * 4) + rest;
-    })
-    .join("\n");
-}
-
-/** Clean up and syntax-highlight a single `<pre><code>` block in place. */
-function highlightBlock(block: HTMLElement): void {
-  if (block.dataset.highlighted) return;
-
-  // ZeroHeight exports code with a blank line between nearly every statement;
-  // strip whitespace-only lines (and trailing whitespace) so snippets read
-  // compactly before we highlight them.
-  const compact = (block.textContent ?? "")
-    .split("\n")
-    .map((line) => line.replace(/\s+$/, ""))
-    .filter((line) => line.trim() !== "")
-    .join("\n");
-
-  // Normalize the (often 1–2 space) indentation to 4 spaces per level.
-  block.textContent = reindentToFour(compact);
-
-  hljs.highlightElement(block);
-}
-
 /** Turn a code figure's caption bar into an accessible expand/collapse toggle. */
 function makeFigureCollapsible(figure: HTMLElement): void {
   const caption = figure.querySelector<HTMLElement>(":scope > figcaption");
   if (!caption || caption.dataset.collapsible) return;
   caption.dataset.collapsible = "true";
-  caption.setAttribute("role", "button");
-  caption.setAttribute("tabindex", "0");
-  caption.setAttribute("aria-expanded", "true");
 
-  const toggle = (): void => {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = TOGGLE_CLASS;
+  button.setAttribute("aria-expanded", "true");
+  button.append(...Array.from(caption.childNodes));
+  caption.append(button);
+
+  button.addEventListener("click", () => {
     const collapsed = figure.toggleAttribute("data-collapsed");
-    caption.setAttribute("aria-expanded", String(!collapsed));
-  };
-
-  caption.addEventListener("click", toggle);
-  caption.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggle();
-    }
+    button.setAttribute("aria-expanded", String(!collapsed));
   });
+}
+
+interface ExampleSlot {
+  id: string;
+  node: HTMLElement;
 }
 
 /**
  * Renders full-fidelity ZeroHeight page HTML (with locally-served images) that
  * was imported by `scripts/import-zeroheight-storybook.ts`.
+ *
+ * Code examples are not part of the HTML: each one is an empty
+ * `<div class="zeroheight-example" data-example="...">` placeholder that we
+ * portal a live <ZeroheightExample /> into. Portals target nodes inside
+ * `Container`, so the scoped styles above still apply to them.
  */
 export function ZeroheightDoc({ html }: ZeroheightDocProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [slots, setSlots] = useState<ExampleSlot[]>([]);
+
+  /**
+   * Stable payload: React re-sets `innerHTML` whenever this object's identity
+   * changes, which would wipe the highlighted markup and the portalled examples
+   * every time the slot state below updates.
+   */
+  const innerHtml = useMemo(() => ({ __html: html }), [html]);
 
   useEffect(() => {
     const root = containerRef.current;
@@ -399,18 +380,34 @@ export function ZeroheightDoc({ html }: ZeroheightDocProps): ReactElement {
 
     // The HTML is injected via dangerouslySetInnerHTML, so highlight.js can't
     // auto-run on mount; enhance the freshly-rendered code blocks by hand.
-    root.querySelectorAll<HTMLElement>("pre code").forEach(highlightBlock);
+    root
+      .querySelectorAll<HTMLElement>("pre code")
+      .forEach((block) => highlightBlock(block));
     root
       .querySelectorAll<HTMLElement>(
         ".zeroheight-code-snippet > figure, .zeroheight-live-code > figure"
       )
       .forEach(makeFigureCollapsible);
+
+    setSlots(
+      Array.from(
+        root.querySelectorAll<HTMLElement>(".zeroheight-example[data-example]")
+      ).flatMap((node) => {
+        const { example } = node.dataset;
+        return example ? [{ id: example, node }] : [];
+      })
+    );
   }, [html]);
 
-  // eslint-disable-next-line react/no-danger -- content is generated at build
-  // time from our own trusted ZeroHeight export, not user input.
   return (
-    <Container ref={containerRef} dangerouslySetInnerHTML={{ __html: html }} />
+    <>
+      {/* eslint-disable-next-line react/no-danger -- content is generated at
+          build time from our own trusted ZeroHeight export, not user input. */}
+      <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
+      {slots.map(({ id, node }) =>
+        createPortal(<ZeroheightExample id={id} />, node, id)
+      )}
+    </>
   );
 }
 

@@ -1,0 +1,23 @@
+{
+  /*
+   * Typechecks the documentation code examples under `zeroheight-docs/` against
+   * the components source. The root `tsc` run cannot do this: a dependency ships
+   * typings our TypeScript version fails to parse, and TypeScript reports no
+   * semantic diagnostics at all when syntactic ones exist.
+   *
+   * Usage: npx tsc --noEmit -p tsconfig.zeroheight-check.json
+   */
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "declaration": false,
+    // The examples run in a browser, not in the library's ES5 output.
+    "lib": ["dom", "es2022"]
+  },
+  "include": [
+    "./zeroheight-docs/**/*.tsx",
+    "./zeroheight-docs/**/*.d.ts",
+    // Ambient SVG/global types the components source relies on.
+    "./packages/components/src/**/*.d.ts"
+  ]
+}
