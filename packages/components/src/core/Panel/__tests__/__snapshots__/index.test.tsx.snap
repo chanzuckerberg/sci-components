@@ -2,7 +2,7 @@
 
 exports[`<Panel /> > Default story renders snapshot 1`] = `
 <div
-  class="MuiDrawer-root MuiDrawer-anchorLeft MuiDrawer-docked ejokiai1 css-racqzl-MuiDrawer-docked-StyledDrawer-basicPanelStyles-StyledDrawer"
+  class="MuiDrawer-root MuiDrawer-anchorLeft MuiDrawer-docked ejokiai1 css-pr9e4k-MuiDrawer-docked-StyledDrawer-basicPanelStyles-StyledDrawer"
 >
   <div
     aria-label="Panel"

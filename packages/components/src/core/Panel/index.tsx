@@ -7,6 +7,7 @@ import {
   BasicPanelProps,
   PANEL_BASIC_MIN_WIDTH_PX,
   PANEL_OVERLAY_MIN_WIDTH_PX,
+  PANEL_TRANSITION_DURATION_MS,
   PanelProps,
 } from "./Panel.types";
 
@@ -43,6 +44,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
     ModalProps,
     isBackdropClickEnabled = false,
     slotProps: userSlotProps,
+    transitionDuration = PANEL_TRANSITION_DURATION_MS,
     ...rest
   } = props;
 
@@ -98,6 +100,7 @@ const Panel = React.forwardRef<HTMLDivElement, PanelProps>((props, ref) => {
       anchor={drawerAnchor}
       variant={drawerVariant}
       width={drawerWidth}
+      transitionDuration={transitionDuration}
       ModalProps={{
         ...ModalProps,
         // (masoudmanson): Set disableEnforceFocus: true to prevent the Drawer from forcing

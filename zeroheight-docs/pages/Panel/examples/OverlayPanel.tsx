@@ -6,9 +6,14 @@
 // Panel fixes itself to the edge of the viewport, which on this page is the edge
 // of the docs rather than of the example. ModalProps.container renders it inside
 // Stage instead, which is why the panel waits for that node to exist, and
-// Stage's transform makes it the box that fixed positioning resolves against. A
-// real page wants the viewport and needs none of this; the padding on Stage just
-// stands in for the spacing a page's own content would have.
+// Stage's transform makes it the box that fixed positioning resolves against.
+// The transition needs the same node, or it measures its slide against the
+// window and spends most of the animation outside the frame. Stage clips with
+// overflow: clip rather than hidden, because a hidden box is one the browser can
+// scroll: it would scroll the frame to reveal the panel as the panel takes focus
+// on its way in, dragging the example's own content sideways. A real page wants
+// the viewport and needs none of this; the padding on Stage just stands in for
+// the spacing a page's own content would have.
 
 import {
   Button,
@@ -31,7 +36,7 @@ const Stage = styled.div<CommonThemeProps>`
     return `
       color: ${semanticColors?.base?.textPrimary};
       height: 340px;
-      overflow: hidden;
+      overflow: clip;
       padding: 50px;
       transform: translateZ(0);
     `;
@@ -74,6 +79,7 @@ function App() {
             open={open}
             position="right"
             sdsType="overlay"
+            slotProps={{ transition: { container: stage } }}
           >
             Collection date, tissue, and the rest of the record for whichever
             row the page has selected.

@@ -3,8 +3,9 @@
 // you pass, so the replacement needs no onClick of its own. The wrapper also
 // forces any icon inside a button to 24px, so sdsSize on it has no effect.
 //
-// Stage and ModalProps.container are here only to keep the panel inside the
-// example frame, as in the examples above.
+// Stage, ModalProps.container and the transition's container are here only to
+// keep the panel and its slide inside the example frame, as in the examples
+// above.
 
 import {
   Button,
@@ -27,7 +28,7 @@ const Stage = styled.div<CommonThemeProps>`
     return `
       color: ${semanticColors?.base?.textPrimary};
       height: 340px;
-      overflow: hidden;
+      overflow: clip;
       padding: 50px;
       transform: translateZ(0);
     `;
@@ -90,6 +91,7 @@ function App() {
             open={open}
             position="right"
             sdsType="overlay"
+            slotProps={{ transition: { container: stage } }}
             width={360}
           >
             Colour scale, point size, and the other controls for the plot.

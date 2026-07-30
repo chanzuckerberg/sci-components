@@ -24,7 +24,7 @@ const PANEL_WIDTH = 280;
 
 const Stage = styled.div`
   height: 320px;
-  overflow: hidden;
+  overflow: clip;
   transform: translateZ(0);
 `;
 

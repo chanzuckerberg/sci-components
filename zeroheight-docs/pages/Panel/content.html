@@ -298,6 +298,17 @@
   </li>
   <li>
     <p>
+      <strong>Motion the SDS theme does not shorten:</strong>
+      every MUI transition reads its length from the theme, and SDS sets those
+      lengths short — 20ms in, 10ms out — for the small elements that make up
+      most of the system. A panel is far too large to cross the screen in a
+      frame, so it keeps MUI's own drawer timings of 225ms in and 195ms out.
+      <strong>transitionDuration</strong>
+      overrides either direction.
+    </p>
+  </li>
+  <li>
+    <p>
       <strong>Focus and scrolling stay with the page:</strong>
       SDS forces
       <em>disableEnforceFocus</em>
@@ -379,6 +390,22 @@
       <em>aria-hidden-focus</em>
       rule reports a violation against it. SDS suppresses that rule for the
       Panel's stories while waiting on a fix upstream.
+    </p>
+  </li>
+  <li>
+    <p>
+      The panel slides from the edge it is anchored to over 225ms, and back out
+      over 195ms.
+      <strong>transitionDuration</strong>
+      changes both, or either one on its own with
+      <em>{ enter, exit }</em>
+      . These are MUI's own drawer timings rather than the SDS theme's, which
+      are set short for smaller elements and leave a panel looking like it jumps
+      into place. Note that SDS leaves MUI's
+      <em>motion.reducedMotion</em>
+      setting at "never", so the animation plays regardless of the reader's
+      reduced-motion preference; an application that wants to honour it can set
+      that theme option to "system".
     </p>
   </li>
 </ul>
@@ -519,6 +546,24 @@
     </td>
   </tr>
   <tr>
+    <td><p>transitionDuration</p></td>
+    <td>
+      <p>number |</p>
+      <p>{ appear?: number,</p>
+      <p>enter?: number,</p>
+      <p>exit?: number }</p>
+    </td>
+    <td><p>{ enter: 225, exit: 195 }</p></td>
+    <td>
+      <p>
+        How long the panel takes to slide in and out, in milliseconds. The Panel
+        keeps MUI's drawer timings instead of the much shorter ones in the SDS
+        theme, which a surface this large arrives too quickly to read as motion.
+        Pass 0 for no animation.
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td><p>ModalProps</p></td>
     <td><p>ModalProps</p></td>
     <td><p>-</p></td>
@@ -554,8 +599,9 @@
     A panel fixes itself to an edge of the viewport, which on this page means an
     edge of the docs rather than of the example. Each example below therefore
     holds its panel inside its own frame, with a wrapper that fixed positioning
-    resolves against and, for the overlay panels, a container for the portal.
-    None of that belongs in an application.
+    resolves against and, for the overlay panels, a container for the portal and
+    another for the transition, so the panel slides the width of the frame
+    rather than of the window. None of that belongs in an application.
   </p>
 </div>
 <h4>Basic panel</h4>
@@ -597,5 +643,16 @@
 <div
   class="zeroheight-example"
   data-example="Panel/OverlayPanelCustomClose"
+  data-example-padding="none"
+></div>
+<h4>Changing the animation speed</h4>
+<p>
+  transitionDuration times the slide. Each button below reopens the same panel
+  at a different setting, from the 225ms default to none at all, and the example
+  holds the setting while the panel closes so the way out matches the way in.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="Panel/OverlayPanelTransition"
   data-example-padding="none"
 ></div>
