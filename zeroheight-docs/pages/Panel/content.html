@@ -233,84 +233,152 @@
   </figure>
 </div>
 <h2>Code</h2>
-<div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    The code examples below must install dependencies before displaying and may
-    take extra time to load
-  </p>
-</div>
 <h2>Panel</h2>
 <h3>SDS Source Code</h3>
 <p>The component's source code in the SDS codebase can be found here.</p>
 <h3>SDS vs MUI</h3>
-<p>
-  The SDS Panel component is built upon the MUI Drawer component, but with
-  several key differences:
-</p>
+<p>The SDS Panel wraps the MUI Drawer, with these differences:</p>
 <ul class="zeroheight-bullet-list">
   <li>
     <p>
-      <strong>Variant vs sdsType:</strong>
-      In MUI’s Drawer, the variant prop determines the type of drawer (e.g.,
-      persistent, temporary). However, in SDS’s Panel, this is replaced by the
-      sdsType prop, which takes two values: "basic" and "overlay".
+      <strong>sdsType instead of variant:</strong>
+      MUI picks the kind of drawer with
+      <em>variant</em>
+      ; SDS picks it with
+      <strong>sdsType</strong>
+      , which takes two of the three MUI variants.
     </p>
     <ul class="zeroheight-bullet-list">
-      <li><p>"basic" corresponds to MUI’s persistent drawer.</p></li>
-      <li><p>"overlay" corresponds to MUI’s temporary drawer.</p></li>
+      <li><p>"basic" is MUI's persistent drawer.</p></li>
+      <li><p>"overlay" is MUI's temporary drawer.</p></li>
     </ul>
   </li>
   <li>
     <p>
-      <strong>Position vs Anchor</strong>
-      : Unlike MUI’s Drawer, which uses the anchor prop to determine the
-      placement of the drawer (left, right, top, or bottom), the SDS Panel uses
-      a position prop.
+      <strong>position instead of anchor:</strong>
+      MUI's
+      <em>anchor</em>
+      takes four edges. SDS narrows it to
+      <strong>position</strong>
+      : "left" or "right" for a basic panel, plus "bottom" for an overlay. A
+      basic panel asked for "bottom" is anchored left instead, and TypeScript
+      rejects the combination up front.
     </p>
-    <ul class="zeroheight-bullet-list">
-      <li>
-        <p>The "basic" Panel can only be positioned to the left or right.</p>
-      </li>
-      <li>
-        <p>
-          The "overlay" Panel can be positioned to the left, right, or bottom.
-        </p>
-      </li>
-    </ul>
   </li>
   <li>
     <p>
-      <strong>Width Prop:</strong>
-      The SDS Panel allows control over the width of the panel using the width
-      prop.
+      <strong>width:</strong>
+      MUI leaves the drawer's size to your own styles. SDS takes a
+      <strong>width</strong>
+      and defaults it to 240px for a basic panel and 320px for an overlay. Along
+      the bottom edge it sets the height instead, since the panel spans the
+      screen. Either way the panel will not go below its type's default in
+      either direction, so smaller values have no effect.
     </p>
-    <ul class="zeroheight-bullet-list">
-      <li>
-        <p>
-          The default width is
-          <strong>240px</strong>
-          for the "basic" panel.
-        </p>
-      </li>
-      <li>
-        <p>
-          The default width is
-          <strong>320px</strong>
-          for the "overlay" panel.
-        </p>
-      </li>
-    </ul>
   </li>
   <li>
     <p>
-      <strong>Custom Header and Close Button Components:</strong>
-      The "overlay" Panel in SDS introduces two additional props that are not
-      available in MUI’s Drawer: headerComponent and closeButtonComponent. These
-      allow for custom components to be rendered in the panel’s header section,
-      providing greater flexibility for design and functionality.
+      <strong>A header row on the overlay:</strong>
+      an overlay panel always draws a close button, and
+      <strong>HeaderComponent</strong>
+      fills the space beside it. Both live in a bar that sticks to the top of
+      the panel while its content scrolls under a short gradient. A basic panel
+      has no such bar and no close control of its own.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>A backdrop you opt into:</strong>
+      MUI's temporary drawer always lays a visible backdrop over the page. SDS
+      hides it, so the page behind an overlay panel stays legible and clickable.
+      <strong>isBackdropClickEnabled</strong>
+      brings back an invisible one, which gives you a click-outside target
+      without dimming anything.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Focus and scrolling stay with the page:</strong>
+      SDS forces
+      <em>disableEnforceFocus</em>
+      and
+      <em>disableScrollLock</em>
+      on the underlying Modal, so an open panel neither traps the keyboard nor
+      freezes the page's scrollbar. Anything else you pass through
+      <em>ModalProps</em>
+      is kept. The paper also gets a default
+      <em>aria-label</em>
+      of "Panel", which
+      <em>slotProps.paper</em>
+      can replace.
+    </p>
+  </li>
+</ul>
+<h3>Behavior notes</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      Nothing about a basic panel is automatic: it does not close itself, and it
+      does not move the page's content. Put a control on the page to toggle
+      <strong>open</strong>
+      , and shift your content by the same width you gave the panel so the two
+      do not overlap.
+    </p>
+  </li>
+  <li>
+    <p>
+      An overlay panel closes through two separate props.
+      <strong>closeButtonOnClick</strong>
+      fires from the header's close button;
+      <strong>onClose</strong>
+      fires on Escape, and on a click outside the panel when
+      <strong>isBackdropClickEnabled</strong>
+      is set. Set both to the same handler, or the panel will only close one
+      way.
+    </p>
+  </li>
+  <li>
+    <p>
+      The close button is drawn whether or not you handle it, so an overlay
+      panel without
+      <strong>closeButtonOnClick</strong>
+      offers a control that does nothing.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>closeButtonOnClick</strong>
+      is attached to the wrapper around the close button rather than to the
+      button itself, so a
+      <strong>CloseButtonComponent</strong>
+      needs no click handler of its own. That wrapper also sizes any icon inside
+      a button to 24px, which overrides
+      <em>sdsSize</em>
+      on the icon.
+    </p>
+  </li>
+  <li>
+    <p>
+      Two basic panels can be open at once, one on each side, because each is
+      part of the page's layout. Overlay panels are not, so a second one opens
+      over the first rather than beside it; the guidance above asks for one at a
+      time.
+    </p>
+  </li>
+  <li>
+    <p>
+      An overlay panel takes focus when it opens but does not keep it, so Escape
+      only reaches the panel while focus is still inside. Once the reader clicks
+      or tabs back into the page, the close button and the backdrop are the only
+      ways out.
+    </p>
+  </li>
+  <li>
+    <p>
+      Because an overlay panel deliberately does not trap focus, MUI's
+      <em>aria-hidden-focus</em>
+      rule reports a violation against it. SDS suppresses that rule for the
+      Panel's stories while waiting on a fix upstream.
     </p>
   </li>
 </ul>
@@ -335,26 +403,38 @@
   <tr>
     <td><p>sdsType</p></td>
     <td><p>"basic" | "overlay"</p></td>
-    <td><p>"basic"</p></td>
+    <td><p>- (required)</p></td>
     <td>
       <p>
-        "basic" corresponds to a persistent drawer, and "overlay" corresponds to
-        a temporary drawer.
+        "basic" sits in the page and stays until you close it; "overlay" floats
+        over the page with a header and close button. It also decides which of
+        the props below apply, so TypeScript needs it spelled out even though
+        the component falls back to "basic".
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>open</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Whether the panel is showing. The panel never changes this itself, so
+        hold it in your own state.
       </p>
     </td>
   </tr>
   <tr>
     <td><p>position</p></td>
     <td>
-      <p>"left" |</p>
-      <p>"right" |</p>
-      <p>"bottom" (only for overlay)</p>
+      <p>"left" | "right" |</p>
+      <p>"bottom" (overlay only)</p>
     </td>
     <td><p>"left"</p></td>
     <td>
       <p>
-        Determines the panel’s position. The "basic" panel supports only "left"
-        and "right", while the "overlay" panel also supports "bottom".
+        Which edge the panel is attached to. A basic panel takes "left" or
+        "right"; an overlay adds "bottom".
       </p>
     </td>
   </tr>
@@ -362,85 +442,160 @@
     <td><p>width</p></td>
     <td><p>number | string</p></td>
     <td>
-      <p>"240px" (basic) |</p>
-      <p>"320px" (overlay)</p>
+      <p>240 (basic)</p>
+      <p>320 (overlay)</p>
     </td>
-    <td><p>Specifies the width of the panel.&nbsp;</p></td>
-  </tr>
-  <tr>
-    <td><p>headerComponent</p></td>
-    <td><p>React.ReactNode</p></td>
-    <td><p>undefined</p></td>
     <td>
       <p>
-        For the "overlay" panel only, this prop allows you to pass a custom
-        component to be rendered as the panel’s header.
+        How wide the panel is, or how tall it is when positioned along the
+        bottom. Numbers are read as pixels. Values below the default are
+        ignored, since the panel keeps that as its minimum in both directions.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>closeButtonComponent</p></td>
+    <td><p>HeaderComponent</p></td>
     <td><p>React.ReactNode</p></td>
-    <td>
-      <p>&lt;Button</p>
-      <p>sdsStyle="icon"</p>
-      <p>sdsType="tertiary"</p>
-      <p>icon="XMark"</p>
-      <p>aria-label="Panel Toggle"</p>
-      <p>/&gt;</p>
-    </td>
+    <td><p>-</p></td>
     <td>
       <p>
-        For the "overlay" panel only, this prop allows you to pass a custom
-        component to be rendered as the close button.
+        Overlay only. Fills the header bar beside the close button. Leave it out
+        and the bar holds the close button alone.
       </p>
     </td>
   </tr>
   <tr>
     <td><p>closeButtonOnClick</p></td>
     <td><p>React.MouseEventHandler&lt;HTMLDivElement&gt;</p></td>
-    <td><p>undefined</p></td>
+    <td><p>-</p></td>
     <td>
       <p>
-        For the "overlay" panel only, this is the onClick event handler for the
-        close button.
+        Overlay only. Runs when the header's close control is clicked. Without
+        it, the control does nothing.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>CloseButtonComponent</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td>
+      <p>&lt;Button</p>
+      <p>sdsStyle="minimal"</p>
+      <p>sdsType="secondary"</p>
+      <p>size="large"</p>
+      <p>backgroundOnHover={false}</p>
+      <p>aria-label="Panel Toggle"&gt;</p>
+      <p>&lt;Icon sdsIcon="XMark" sdsSize="l" /&gt;</p>
+      <p>&lt;/Button&gt;</p>
+    </td>
+    <td>
+      <p>
+        Overlay only. Replaces the close button. Clicks are handled by the
+        wrapper around it, so it needs no handler of its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>isBackdropClickEnabled</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Overlay only in practice. Adds an invisible backdrop so a click outside
+        the panel reaches onClose. Left off, clicks pass through to the page.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onClose</p></td>
+    <td><p>(event, reason) =&gt; void</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        MUI's Drawer callback, fired on a backdrop click and on Escape while
+        focus is inside the panel. It does not fire for the header's close
+        button, which reports through closeButtonOnClick.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>ModalProps</p></td>
+    <td><p>ModalProps</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Modal behind an overlay panel, except for
+        disableEnforceFocus and disableScrollLock, which SDS pins to true.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>slotProps</p></td>
+    <td><p>DrawerProps["slotProps"]</p></td>
+    <td>
+      <p>{ backdrop: { invisible: true },</p>
+      <p>paper: { aria-label: "Panel" } }</p>
+    </td>
+    <td>
+      <p>
+        Merged with the SDS defaults slot by slot, so a paper aria-label or
+        aria-labelledby of your own replaces the default name while the rest of
+        the defaults survive.
       </p>
     </td>
   </tr>
 </table>
 <h3>Code examples</h3>
-<h4>Basic Panel</h4>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    A panel fixes itself to an edge of the viewport, which on this page means an
+    edge of the docs rather than of the example. Each example below therefore
+    holds its panel inside its own frame, with a wrapper that fixed positioning
+    resolves against and, for the overlay panels, a container for the portal.
+    None of that belongs in an application.
+  </p>
+</div>
+<h4>Basic panel</h4>
 <p>
-  This example demonstrates the most basic usage of the Panel component with
-  default props.
+  A persistent panel on the left, with the page's content shifted by the same
+  width so the two do not overlap.
 </p>
-<div class="zeroheight-example" data-example="Panel/BasicPanel"></div>
-<p><strong>Overlay Panel</strong></p>
+<div
+  class="zeroheight-example"
+  data-example="Panel/BasicPanel"
+  data-example-padding="none"
+></div>
+<h4>Overlay panel</h4>
 <p>
-  This example shows how to use the Panel component as an overlay. The overlay
-  version allows the panel to slide in over the existing content, typically used
-  for side panels or modal-like interactions. It can be triggered by a button or
-  any other interactive element.
+  An overlay panel on the right with a header, the default close button, and
+  isBackdropClickEnabled so a click outside closes it through onClose.
 </p>
-<div class="zeroheight-example" data-example="Panel/BasicPanel2"></div>
-<p><strong>Overlay Panel with Custom Header (opens from right)</strong></p>
+<div
+  class="zeroheight-example"
+  data-example="Panel/OverlayPanel"
+  data-example-padding="none"
+></div>
+<h4>Overlay panel along the bottom</h4>
 <p>
-  This example demonstrates how to implement an overlay Panel with a custom
-  header component. The panel still retains the overlay behavior, sliding over
-  the existing content when triggered.
+  The bottom position spans the full width, and the width prop becomes the
+  panel's height. This one has no backdrop, so clicks outside it land on the
+  page underneath.
 </p>
-<div class="zeroheight-example" data-example="Panel/BasicPanel3"></div>
+<div
+  class="zeroheight-example"
+  data-example="Panel/OverlayPanelBottom"
+  data-example-padding="none"
+></div>
+<h4>Overlay panel with a custom close control</h4>
 <p>
-  <strong
-    >Overlay Panel with a Custom Closing Button (opens from bottom)</strong
-  >
+  CloseButtonComponent replaces the X with anything you like, and the header
+  holds more than a title.
 </p>
-<p>
-  This example demonstrates how to implement an overlay Panel with a custom
-  close button. Instead of using the default close functionality, the close
-  button can be customized to match specific design requirements or to add
-  additional features, such as custom icons, animations, or styling. The panel
-  will still function as an overlay, sliding over the current content, but with
-  enhanced control over how it is closed.
-</p>
-<div class="zeroheight-example" data-example="Panel/BasicPanel4"></div>
+<div
+  class="zeroheight-example"
+  data-example="Panel/OverlayPanelCustomClose"
+  data-example-padding="none"
+></div>
