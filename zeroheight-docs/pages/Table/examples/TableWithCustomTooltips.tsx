@@ -98,7 +98,6 @@ const columns = [
         primaryText={info.cell.getValue().toString()}
         secondaryText={info.cell.row.original.birthdate}
         tooltipProps={{
-          sdsStyle: "dark",
           leaveTouchDelay: 0,
           leaveDelay: 0,
           subtitle: "",
@@ -140,7 +139,6 @@ const columns = [
         secondaryText={`${info.cell.getValue()} ± 5%`}
         horizontalAlign="right"
         tooltipProps={{
-          sdsStyle: "dark",
           leaveTouchDelay: 0,
           leaveDelay: 0,
           title: `Profile Progress`,

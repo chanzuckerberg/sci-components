@@ -1231,8 +1231,16 @@
 >
   <p>
     <strong>Note:</strong>
-    The code examples below must install dependencies before displaying and may
-    take extra time to load
+    The Table components are presentational: they render the markup and the
+    styling, and leave sorting, filtering and paging to whatever manages your
+    data. The examples on this page use
+    <a href="https://tanstack.com/table/latest">TanStack Table</a>
+    for that, as does PreComposedTable internally, and two of the recipes add
+    <a href="https://tanstack.com/query/latest">TanStack Query</a>
+    and
+    <a href="https://tanstack.com/virtual/latest">TanStack Virtual</a>
+    for fetching and virtualization. None of them ship with SDS — install the
+    ones you need alongside it.
   </p>
 </div>
 <hr />
@@ -1260,20 +1268,82 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
+    <td><p>as</p></td>
+    <td><p>React.ElementType</p></td>
+    <td><p>"td"</p></td>
+    <td>
+      <p>
+        The element the cell renders as. Use "th" for a row header cell inside
+        tbody.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>extraRightPadding</p></td>
+    <td><p>number</p></td>
+    <td><p>0</p></td>
+    <td>
+      <p>
+        Extra pixels of right padding, added only when horizontalAlign is
+        "right". Useful for leaving room for a scrollbar or a pinned column
+        edge.
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td><p>horizontalAlign</p></td>
     <td>
       <p>"left"</p>
-      <p>| "center"</p>
       <p>| "right"</p>
     </td>
     <td><p>"left"</p></td>
-    <td><p>Horizontal alignment of cell content.</p></td>
+    <td>
+      <p>
+        Horizontal alignment of cell content. There is no "center" — use
+        CellComponent if a cell needs centered content.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>icon</p></td>
-    <td><p>Node</p></td>
+    <td><p>React.ReactElement&lt;CustomSVGProps&gt;</p></td>
     <td><p>-</p></td>
-    <td><p>Places an icon at the left side of the cell component.</p></td>
+    <td>
+      <p>
+        Places an icon to the left of the cell text. Expects an SDS Icon or
+        another SVG element.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>link</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Wraps the cell content in an anchor pointing here. The text keeps the
+        cell's own color rather than link styling.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>linkComponent</p></td>
+    <td><p>React.ElementType</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The component the link renders as, for routers that supply their own
+        link (React Router's Link, for example).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>linkProps</p></td>
+    <td>
+      <p>React.AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Props passed to the anchor rendered by link.</p></td>
   </tr>
   <tr>
     <td><p>iconVerticalAlign</p></td>
@@ -1343,7 +1413,24 @@
     <td><p>shouldShowTooltipOnHover</p></td>
     <td><p>boolean</p></td>
     <td><p>true</p></td>
-    <td><p>When set to true, a tooltip will be shown on cell hover.</p></td>
+    <td>
+      <p>
+        When true the cell is wrapped in a Tooltip whose title is primaryText
+        and whose subtitle is secondaryText. Turn it off for cells whose text is
+        already fully visible, otherwise every cell in the table has a tooltip.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shouldShowUnderlineOnHover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Underlines primaryText on hover. Inside a PreComposedTable the underline
+        also appears when any cell in the row is hovered.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>shouldTextWrap</p></td>
@@ -1351,17 +1438,31 @@
     <td><p>true</p></td>
     <td>
       <p>
-        When set to true, wraps the content texts by the number of defined wrap
-        line numbers.
+        When true, each text clamps to its wrap line count. When false, text
+        stays on one line and truncates with an ellipsis instead.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>tabularNums</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Renders digits at a fixed width so numbers line up column to column.
+        Worth turning on for any numeric column.
       </p>
     </td>
   </tr>
   <tr>
     <td><p>tooltipProps</p></td>
     <td><p>Partial&lt;TooltipProps&gt;</p></td>
-    <td><p>{}</p></td>
+    <td><p>-</p></td>
     <td>
-      <p>These props will be directly passed to the Tooltip component.</p>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the cell sets (title,
+        subtitle, arrow, dark style, no leave delay).
+      </p>
     </td>
   </tr>
   <tr>
@@ -1375,6 +1476,10 @@
     <td><p>Vertical alignment of the cell content.</p></td>
   </tr>
 </table>
+<p>
+  Anything else you pass, such as colSpan, style or a data attribute, lands on
+  the rendered td.
+</p>
 <h3>Code examples</h3>
 <h4>Default CellBasic</h4>
 <p>
@@ -1417,6 +1522,23 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
+    <td><p>as</p></td>
+    <td><p>React.ElementType</p></td>
+    <td><p>"td"</p></td>
+    <td><p>The element the cell renders as.</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The cell's content. Unlike CellBasic, which takes text through
+        primaryText, this cell renders whatever you put inside it.
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td><p>horizontalAlign</p></td>
     <td>
       <p>"left"</p>
@@ -1437,6 +1559,11 @@
     <td><p>Specifies the vertical alignment of the cell content.</p></td>
   </tr>
 </table>
+<p>
+  Anything else you pass, such as colSpan, width, onClick or a data attribute,
+  lands on the rendered td. The cell also carries the class name cell-component,
+  which TableRow uses to switch off pointer events inside a disabled row.
+</p>
 <h3>Code examples</h3>
 <h4><strong>Default CellComponent</strong></h4>
 <p>
@@ -1472,31 +1599,51 @@
     <td><p>active</p></td>
     <td><p>boolean</p></td>
     <td><p>false</p></td>
-    <td><p>When true, the component is in active state.</p></td>
-  </tr>
-  <tr>
-    <td><p>hover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
     <td>
       <p>
-        By default, the component is not interactive and does not have a hover
-        state. When set to true, it displays a sortIcon and changes color on
-        hover.
+        Marks this column as the one currently sorted: the label and chevron
+        take the accent color. It does not sort anything on its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>as</p></td>
+    <td><p>React.ElementType</p></td>
+    <td><p>"th"</p></td>
+    <td><p>The element the header cell renders as.</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. A string or number is wrapped in the header's own text
+        styling; anything else is rendered as given.
       </p>
     </td>
   </tr>
   <tr>
     <td><p>direction</p></td>
-    <td><p>"asc" | "desc"</p></td>
+    <td><p>CellHeaderDirection ("asc" | "desc")</p></td>
     <td><p>"desc"</p></td>
-    <td><p>Changes the chevron icon based on the sort direction.</p></td>
+    <td>
+      <p>
+        Which chevron to draw: up for "asc", down for "desc". It also sets the
+        icon's aria-label.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>hideSortIcon</p></td>
     <td><p>boolean</p></td>
     <td><p>false</p></td>
-    <td><p>If set to true, the sort icon becomes hidden.</p></td>
+    <td>
+      <p>
+        Leaves the chevron out for columns that cannot be sorted. An active
+        header keeps its chevron even with this set.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>horizontalAlign</p></td>
@@ -1506,27 +1653,82 @@
       <p>| "right"</p>
     </td>
     <td><p>"left"</p></td>
-    <td><p>Horizontally aligns the component's content.</p></td>
+    <td><p>Horizontally aligns the label and its chevron.</p></td>
+  </tr>
+  <tr>
+    <td><p>hover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Makes the header interactive: it takes a pointer cursor, reacts to
+        hover, renders the sort chevron and allows the tooltip. A header left at
+        the default draws no chevron and shows no tooltip even if the other
+        sorting props are set, so set this on every sortable column.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onClick</p></td>
+    <td><p>React.MouseEventHandler</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Where sorting is actually wired up — with TanStack Table, pass
+        column.getToggleSortingHandler().
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>shouldShowTooltipOnHover</p></td>
     <td><p>boolean</p></td>
-    <td><p>true</p></td>
-    <td><p>When true, show a tooltip on component hover.</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Wraps the header in a Tooltip. It only takes effect while hover is also
+        true.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shouldTruncate</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Keeps a long label on one line and truncates it with an ellipsis instead
+        of wrapping.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>tooltipText</p></td>
     <td><p>string</p></td>
+    <td><p>""</p></td>
+    <td><p>The tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipSubtitle</p></td>
+    <td><p>string</p></td>
     <td><p>-</p></td>
-    <td><p>The content of the tooltip.</p></td>
+    <td><p>A second line below the tooltip's title.</p></td>
   </tr>
   <tr>
     <td><p>tooltipProps</p></td>
     <td><p>Partial&lt;TooltipProps&gt;</p></td>
-    <td><p>{}</p></td>
-    <td><p>These props are directly passed to the tooltip component.</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the header sets
+        (arrow, top-start placement, dark style).
+      </p>
+    </td>
   </tr>
 </table>
+<p>
+  Anything else you pass, such as colSpan, scope or a data attribute, lands on
+  the rendered th.
+</p>
 <h3>Code examples</h3>
 <h4><strong>Default CellHeader</strong></h4>
 <p>
@@ -1559,60 +1761,97 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>Required. The row's cells.</p></td>
+  </tr>
+  <tr>
     <td><p>disabled</p></td>
     <td><p>boolean</p></td>
     <td><p>false</p></td>
-    <td><p>When true, the row is disabled.</p></td>
+    <td>
+      <p>
+        Grays the row out and stops pointer events inside its CellComponents, so
+        controls in the row cannot be used. Tags and icons in the row are dimmed
+        to match.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>hover</p></td>
     <td><p>boolean</p></td>
     <td><p>true</p></td>
-    <td><p>When true, the component has a hover style.</p></td>
-  </tr>
-  <tr>
-    <td><p>selected</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
-    <td><p>When true, component is in the selected state.</p></td>
+    <td>
+      <p>
+        Gives the row a hover background, and is also required for its tooltip
+        to appear. TableHeader sets it to false for the header row.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>rowHeight</p></td>
     <td><p>number</p></td>
     <td><p>-</p></td>
-    <td><p>Sets a maximum height for the table row.</p></td>
+    <td><p>Caps the row's height, in pixels.</p></td>
+  </tr>
+  <tr>
+    <td><p>selected</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Gives the row's cells the accent surface used for selection. It is
+        styling only; it sets no ARIA state.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>shouldShowTooltipOnHover</p></td>
     <td><p>boolean</p></td>
     <td><p>true</p></td>
-    <td><p>When true, a tooltip shows up on component hover.</p></td>
-  </tr>
-  <tr>
-    <td><p>tooltipProps</p></td>
-    <td><p>Partial&lt;TooltipProps&gt;</p></td>
-    <td><p>{}</p></td>
-    <td><p>These props are directly passed to the tooltip component.</p></td>
+    <td>
+      <p>
+        Wraps the row in a Tooltip, but only while hover is also true. On its
+        own it shows nothing: a row tooltip needs tooltipText as well.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>tooltipText</p></td>
     <td><p>string</p></td>
     <td><p>-</p></td>
-    <td><p>Tooltip text.</p></td>
+    <td><p>The tooltip's title.</p></td>
   </tr>
   <tr>
     <td><p>tooltipSubtitle</p></td>
     <td><p>string</p></td>
     <td><p>-</p></td>
-    <td><p>Toltip subtitle.</p></td>
+    <td><p>A second line below the tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipProps</p></td>
+    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the row sets (arrow,
+        dark style).
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>useDivider</p></td>
     <td><p>boolean</p></td>
     <td><p>true</p></td>
-    <td><p>If set to true, shows a bottom border under the table row.</p></td>
+    <td><p>Draws the 1px divider along the bottom of the row.</p></td>
   </tr>
 </table>
+<p>
+  Anything else you pass, such as onClick, className or a data attribute, lands
+  on the rendered tr. Note that a row tooltip and a cell tooltip will both fire,
+  so turn off shouldShowTooltipOnHover on the cells of a row that has its own.
+</p>
 <h3>Code examples</h3>
 <h4><strong>Default TableRow</strong></h4>
 <p>
@@ -1632,6 +1871,44 @@
   </a>
   .
 </p>
+<h3>Props</h3>
+<p>
+  TableHeader renders the thead and the header row inside it, so its children
+  are header cells rather than a row. It has two props of its own.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. The header cells, normally CellHeaders. They are wrapped in a
+        TableRow with hover and tooltips switched off, so do not pass a tr
+        yourself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>filterRow</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A second row rendered below the header row, inside the same thead, for
+        per-column filter controls. Pass a tr of cells. Supplying it also
+        changes the border on the header row above. PreComposedTable uses this
+        for its column filtering.
+      </p>
+    </td>
+  </tr>
+</table>
 <h3>Code examples</h3>
 <h4><strong>Default TableHeader</strong></h4>
 <p>
@@ -1693,39 +1970,80 @@
     </td>
   </tr>
   <tr>
+    <td><p>currentPage</p></td>
+    <td><p>number</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. The page to mark as current, counted from 1. Pagination keeps
+        no page state of its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td><p>pageSize</p></td>
     <td><p>number</p></td>
     <td><p>-</p></td>
-    <td><p>Specifies the number of items to be shown on each page.</p></td>
-  </tr>
-  <tr>
-    <td><p>siblingCount</p></td>
-    <td><p>number</p></td>
-    <td><p>1</p></td>
-    <td><p>Specifies the number of siblings for each page number.</p></td>
-  </tr>
-  <tr>
-    <td><p>sdsStyle</p></td>
     <td>
-      <p>"rounded"</p>
-      <p>| "square"</p>
+      <p>
+        Required. How many items fit on a page, which together with totalCount
+        gives the number of pages. Must be at least 1; a smaller value throws.
+      </p>
     </td>
-    <td><p>"rounded"</p></td>
-    <td><p>The style of the component.</p></td>
   </tr>
   <tr>
     <td><p>totalCount</p></td>
     <td><p>number</p></td>
     <td><p>-</p></td>
-    <td><p>Total number of items to be paginated.</p></td>
+    <td>
+      <p>
+        Required. Total number of items being paged through — the whole set, not
+        the current page.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>siblingCount</p></td>
+    <td><p>number</p></td>
+    <td><p>1</p></td>
+    <td>
+      <p>
+        How many page numbers to keep on each side of the current page before
+        the rest collapse into an ellipsis.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"round"</p>
+      <p>| "square"</p>
+    </td>
+    <td><p>"round"</p></td>
+    <td>
+      <p>
+        Whether the page and chevron targets are circles or rounded squares.
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>truncateDropdown</p></td>
     <td><p>boolean</p></td>
     <td><p>true</p></td>
-    <td><p>If true, a dropdown menu is shown for hidden page numbers.</p></td>
+    <td>
+      <p>
+        When true the ellipsis is a menu of the pages it stands for. When false
+        it is a disabled placeholder, and those pages can only be reached by
+        stepping through with the chevrons.
+      </p>
+    </td>
   </tr>
 </table>
+<p>
+  Pagination is always controlled: it reports what was clicked and renders
+  whatever currentPage you hand back. It renders nothing at all when currentPage
+  is 0 or when there are fewer than two pages to show.
+</p>
 <h3>Code examples</h3>
 <h4><strong>Default Pagination</strong></h4>
 <p>
@@ -1743,6 +2061,13 @@
     here
   </a>
   .
+</p>
+<h3>Props</h3>
+<p>
+  Table is a styled table element: full width, collapsed borders, automatic
+  layout. Its only prop is children, and anything else you pass lands on the
+  table element. Compose it the way you would plain HTML — a TableHeader for the
+  head, a tbody of TableRows for the body.
 </p>
 <h3>Code examples</h3>
 <h4><strong>Default Table</strong></h4>
@@ -1762,7 +2087,7 @@
 <p>
   The component's source code in the SDS codebase can be found
   <a
-    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Table/index.tsx"
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/PreComposedTable/index.tsx"
   >
     here
   </a>
@@ -1770,8 +2095,9 @@
 </p>
 <h3>Props</h3>
 <p>
-  Any custom SDS props and MUI props required for implementation are found on
-  the table below.
+  PreComposedTable is generic over your row type, so data and columns are typed
+  together. It owns the table state — sorting, selection, filtering, pagination,
+  pinning — and every feature is off unless you switch it on.
 </p>
 <table class="zeroheight-table">
   <tr>
@@ -1797,17 +2123,56 @@
     </td>
   </tr>
   <tr>
+    <td><p>border</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>Draws the border around the scrolling table area</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"lined"</p>
+      <p>| "striped"</p>
+    </td>
+    <td><p>"lined"</p></td>
+    <td>
+      <p>
+        Whether rows are separated by dividers or by alternating backgrounds
+      </p>
+    </td>
+  </tr>
+  <tr>
     <td><p>enableSorting</p></td>
     <td><p>boolean</p></td>
     <td><p>false</p></td>
-    <td><p>Enables sorting functionality for table columns</p></td>
+    <td>
+      <p>
+        Makes column headers sortable, wiring each one's chevron and click
+        handler for you
+      </p>
+    </td>
   </tr>
   <tr>
     <td><p>enableRowSelection</p></td>
     <td><p>boolean</p></td>
     <td><p>false</p></td>
     <td>
-      <p>Adds checkboxes for row selection with select-all functionality</p>
+      <p>
+        Adds a checkbox column with select-all. To control that column yourself,
+        include one with the id "SdsTableSelectColumn" and it will be used
+        instead of the generated one
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>enableColumnFiltering</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Adds a filter row under the header. Each column gets a search input
+        unless its meta supplies a filterComponent
+      </p>
     </td>
   </tr>
   <tr>
@@ -1841,7 +2206,10 @@
     <td><p>-</p></td>
     <td>
       <p>
-        Config object for pagination settings including placement and page size
+        Passed through to Pagination, plus a placement for the controls, which
+        sit on the right by default. pageSize also sets the initial page size,
+        which is 10 otherwise. Changing this object resets the table to the
+        first page
       </p>
     </td>
   </tr>
@@ -1877,6 +2245,112 @@
       <p>
         Callback triggered when row selection changes; receives array of
         selected row data
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>tableOptions</p></td>
+    <td>
+      <p>
+        Partial&lt;Omit&lt;TableOptions&lt;TData&gt;, "data" | "columns" |
+        "getCoreRowModel"&gt;&gt;
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Escape hatch to the underlying TanStack table. Anything here is merged
+        into its options, and a state you supply overrides the one the component
+        keeps — which is how you drive sorting or pagination from outside. The
+        row models and change handlers are always the component's own
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  The component also takes a ref, which exposes the TanStack table instance as
+  <strong>ref.current.table</strong> for anything the props do not cover.
+</p>
+<h3>Column meta</h3>
+<p>
+  Layout and pinning are set per column through the standard TanStack column
+  definition's meta field, which SDS extends with the following. Everything else
+  in a column definition — accessorKey, header, cell, enableSorting, size,
+  minSize, maxSize, filterFn — behaves as TanStack documents it, and a header or
+  cell given as a plain string is rendered as a CellHeader or CellBasic for you.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>pinning</p></td>
+    <td>
+      <p>"left"</p>
+      <p>| "right"</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sticks the column to that edge while the table scrolls sideways, with a
+        gradient at the edge once there is something hidden behind it
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>verticalAlign</p></td>
+    <td>
+      <p>"top"</p>
+      <p>| "middle"</p>
+      <p>| "bottom"</p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Vertical alignment of the column's cells</p></td>
+  </tr>
+  <tr>
+    <td><p>widthPercentage</p></td>
+    <td><p>number</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The column's share of the table width, as a percentage rather than a
+        fixed size
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>isGrow</p></td>
+    <td><p>boolean</p></td>
+    <td><p>-</p></td>
+    <td><p>Lets this column absorb whatever width the others leave over</p></td>
+  </tr>
+  <tr>
+    <td><p>headerCellProps</p></td>
+    <td><p>Partial&lt;CellHeaderProps&gt;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props for the CellHeader generated from a string header, for tooltips,
+        alignment or truncation
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>filterComponent</p></td>
+    <td>
+      <p>
+        (props: { column: Column&lt;TData&gt;; table: Table&lt;TData&gt; })
+        =&gt; React.ReactNode
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Replaces the default search input in this column's filter cell, for a
+        select or a range instead
       </p>
     </td>
   </tr>
@@ -1932,333 +2406,22 @@
   </tr>
 </table>
 <h4>Text-only Table</h4>
-<p>This shows a table that is made up entirely of BasicCells.</p>
+<p>
+  A table made up entirely of CellBasics, with headers that sort nothing and so
+  set hideSortIcon.
+</p>
 <div class="zeroheight-example" data-example="Table/TextOnlyTable"></div>
 <h4>Table with a custom sorting function</h4>
 <p>
-  In this example, a Table is presented with various columns, each employing
-  default sorting mechanisms defined by react-table. However, the LastName
-  column stands out as it utilizes a custom sorting function named sortByLength,
-  which is specifically defined in the code. This customization allows for
-  distinct sorting behavior in the "LastName" column compared to the rest of the
-  Table.
+  Every column here sorts on click through TanStack Table's own comparators,
+  except Last Name, which is given a sortingFn of its own that orders names by
+  length rather than alphabetically. Note that each sortable header sets hover,
+  without which CellHeader draws no sort chevron.
 </p>
-<div class="zeroheight-live-code">
-  <figure>
-    <figcaption>/App.tsx</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
-import {
-  CellBasic,
-  CellHeader,
-  TableHeader,
-  TableRow,
-  Table,
-  CellHeaderDirection,
-  Icon,
-  CellComponent,
-  ButtonIcon,
-  Button,
-  Tag,
-} from "@czi-sds/components";
-import {
-  CellContext,
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  HeaderContext,
-  Row,
-  SortingFn,
-  SortingState,
-  useReactTable,
-} from "@tanstack/react-table";
-import { faker } from "@faker-js/faker";
-import "./styles.css";
-
-type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  status: "relationship" | "complicated" | "single";
-  createdAt: Date;
-  subRows?: Person[];
-};
-
-const newPerson = (): Person =&gt; {
-  return {
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    age: faker.number.int(96),
-    visits: faker.number.int(1000),
-    createdAt: faker.date.between({
-      from: new Date("2001-01-01"),
-      to: new Date(),
-    }),
-    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
-      "relationship",
-      "complicated",
-      "single",
-    ])[0]!,
-  };
-};
-
-function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] =&gt; {
-    const len = lens[depth]!;
-    return [...Array(len)].map((): Person =&gt; {
-      return {
-        ...newPerson(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
-}
-
-declare module "@tanstack/table-core" {
-  interface SortingFns {
-    sortByLength: SortingFn&lt;unknown&gt;;
-  }
-}
-
-function createHeaderCell(
-  header: HeaderContext&lt;Person, unknown&gt;,
-  name: string
-) {
-  return (
-    &lt;CellHeader
-      colSpan={header.header.colSpan}
-      direction={
-        header.column.getIsSorted()
-          ? (header.column.getIsSorted() as CellHeaderDirection)
-          : undefined
-      }
-      active={!!header.column.getIsSorted()}
-      onClick={header.column.getToggleSortingHandler()}
-      hideSortIcon={header.header.id === "actions" ? true : false}
-      horizontalAlign={header.header.id === "actions" ? "right" : "left"}
-    &gt;
-      {name}
-    &lt;/CellHeader&gt;
-  );
-}
-
-function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
-  return (
-    &lt;CellBasic
-      primaryText={cell.getValue() as string}
-      horizontalAlign={cell.column.id === "progress" ? "center" : "left"}
-      verticalAlign="center"
-      shouldShowTooltipOnHover={false}
-    /&gt;
-  );
-}
-
-function App() {
-  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
-  const data = React.useState(() =&gt; makeData(20))[0];
-
-  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
-    () =&gt; [
-      {
-        accessorKey: "firstName",
-        id: "firstName",
-        cell: (cell) =&gt; (
-          &lt;CellBasic
-            primaryText={cell.getValue() as string}
-            icon={&lt;Icon sdsSize="s" sdsIcon="person" sdsType="static" /&gt;}
-            verticalAlign="center"
-            iconVerticalAlign="center"
-            shouldShowTooltipOnHover={false}
-          /&gt;
-        ),
-        header: (header) =&gt; createHeaderCell(header, "First Name"),
-      },
-      {
-        accessorFn: (row) =&gt; row.lastName,
-        id: "lastName",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; (
-          &lt;CellHeader
-            colSpan={header.header.colSpan}
-            direction={
-              header.column.getIsSorted()
-                ? (header.column.getIsSorted() as CellHeaderDirection)
-                : undefined
-            }
-            active={!!header.column.getIsSorted()}
-            onClick={header.column.getToggleSortingHandler()}
-            shouldShowTooltipOnHover
-            tooltipText="This column uses a custom sorting function."
-            tooltipSubtitle="Sorts items based on their length."
-          &gt;
-            Last Name
-          &lt;/CellHeader&gt;
-        ),
-        sortingFn: "sortByLength",
-      },
-      {
-        accessorKey: "age",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Age"),
-      },
-      {
-        accessorKey: "status",
-        id: "status",
-        cell: (cell) =&gt; (
-          &lt;CellComponent verticalAlign="center"&gt;
-            &lt;Tag
-              label={cell.cell.getValue() as string}
-              color={
-                cell.cell.getValue() === "single"
-                  ? "notice"
-                  : cell.cell.getValue() === "relationship"
-                  ? "positive"
-                  : "negative"
-              }
-              sdsStyle="rounded"
-              sdsType="secondary"
-              hover={false}
-            /&gt;
-          &lt;/CellComponent&gt;
-        ),
-        header: (header) =&gt; createHeaderCell(header, "Status"),
-      },
-      {
-        accessorKey: "createdAt",
-        cell: (cell) =&gt; (
-          &lt;CellBasic
-            primaryText={(cell.getValue() as Date).getFullYear().toString()}
-            secondaryText={(cell.getValue() as Date).toLocaleString("en-us", {
-              month: "long",
-              day: "numeric",
-            })}
-            tooltipProps={{
-              title: (cell.getValue() as Date).toLocaleString("en-us"),
-              sdsStyle: "dark",
-              leaveDelay: 0,
-              leaveTouchDelay: 0,
-            }}
-            verticalAlign="center"
-            horizontalAlign="left"
-          /&gt;
-        ),
-        header: (header) =&gt; createHeaderCell(header, "Created At"),
-      },
-      {
-        id: "actions",
-        accessorKey: "actions",
-        cell: () =&gt; (
-          &lt;CellComponent horizontalAlign="right" verticalAlign="center"&gt;
-            &lt;ul className="actions-list"&gt;
-              &lt;li&gt;
-                &lt;Button
-                  sdsStyle="icon"
-                  icon="TreeHorizontal"
-                  sdsSize="small"
-                  sdsType="secondary"
-                /&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;Button
-                  sdsStyle="icon"
-                  icon="BarChartVertical3"
-                  sdsSize="small"
-                  sdsType="secondary"
-                /&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;Button
-                  sdsStyle="icon"
-                  icon="Download"
-                  sdsSize="small"
-                  on
-                  sdsType="secondary"
-                /&gt;
-              &lt;/li&gt;
-              &lt;li&gt;
-                &lt;Button
-                  sdsStyle="icon"
-                  icon="DotsHorizontal"
-                  sdsSize="small"
-                  sdsType="secondary"
-                /&gt;
-              &lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/CellComponent&gt;
-        ),
-        header: (header) =&gt; createHeaderCell(header, "Actions"),
-        enableSorting: false,
-      },
-    ],
-    []
-  );
-
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-    },
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    debugTable: true,
-    sortingFns: {
-      sortByLength: (
-        rowA: Row&lt;Person&gt;,
-        rowB: Row&lt;Person&gt;,
-        columnId: string
-      ): number =&gt; {
-        const a: string = rowA.getValue(columnId);
-        const b: string = rowB.getValue(columnId);
-
-        if (a.length &gt; b.length) return 1;
-        if (a.length &lt; b.length) return -1;
-        return 0;
-      },
-    },
-  });
-  return (
-    &lt;div className="app"&gt;
-      &lt;Table&gt;
-        &lt;TableHeader&gt;
-          {table.getFlatHeaders().map((header) =&gt; (
-            &lt;React.Fragment key={header.id}&gt;
-              {flexRender(header.column.columnDef.header, header.getContext())}
-            &lt;/React.Fragment&gt;
-          ))}
-        &lt;/TableHeader&gt;
-        &lt;tbody&gt;
-          {table
-            .getRowModel()
-            .rows.slice(0, 10)
-            .map((row) =&gt; {
-              return (
-                &lt;TableRow key={row.id}&gt;
-                  {row.getVisibleCells().map((cell) =&gt; (
-                    &lt;React.Fragment key={cell.id}&gt;
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    &lt;/React.Fragment&gt;
-                  ))}
-                &lt;/TableRow&gt;
-              );
-            })}
-        &lt;/tbody&gt;
-      &lt;/Table&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default App;
-</code></pre>
-  </figure>
-</div>
+<div
+  class="zeroheight-example"
+  data-example="Table/TableWithCustomSorting"
+></div>
 <h4>Table with custom Tooltips</h4>
 <p>This shows a Table with custom Tooltips.</p>
 <div
@@ -2267,1131 +2430,45 @@ export default App;
 ></div>
 <h4>Table with virtualized rows</h4>
 <p>
-  This example showcases a Table that implements virtualization for its rows,
-  optimizing performance and rendering efficiency when dealing with a large
-  amount of data.
+  A thousand rows in a scroll container with only the visible ones in the DOM,
+  using @tanstack/react-virtual to decide which rows to draw and
+  @tanstack/react-query to fetch the next batch as the scroller nears its end.
+  The spacer rows above and below the window are what keep the scrollbar
+  proportional.
 </p>
-<div class="zeroheight-live-code">
-  <figure>
-    <figcaption>/App.tsx</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
-
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  Row,
-  SortingState,
-  ColumnSort,
-  useReactTable,
-  HeaderContext,
-  CellContext,
-} from "@tanstack/react-table";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useVirtual } from "react-virtual";
-import {
-  CellBasic,
-  CellHeader,
-  CellHeaderDirection,
-  Table,
-  TableHeader,
-  TableRow,
-  Tag,
-  CellComponent,
-} from "@czi-sds/components";
-import { faker } from "@faker-js/faker";
-import "./styles.css";
-
-const fetchSize = 20;
-
-type Person = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
-  status: "relationship" | "complicated" | "single";
-};
-
-type PersonApiResponse = {
-  data: Person[];
-  meta: {
-    totalRowCount: number;
-  };
-};
-
-const newPerson = (index: number): Person =&gt; {
-  return {
-    id: index + 1,
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    age: faker.number.int(40),
-    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
-      "relationship",
-      "complicated",
-      "single",
-    ])[0]!,
-  };
-};
-
-function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] =&gt; {
-    const len = lens[depth]!;
-    return [...Array(len)].map((_, d): Person =&gt; {
-      return {
-        ...newPerson(d),
-      };
-    });
-  };
-
-  return makeDataLevel();
-}
-
-const data = makeData(1000);
-
-//simulates a backend api
-const fetchData = (start: number, size: number, sorting: SortingState) =&gt; {
-  const dbData = [...data];
-  if (sorting.length) {
-    const sort = sorting[0] as ColumnSort;
-    const { id, desc } = sort as { id: keyof Person; desc: boolean };
-    dbData.sort((a, b) =&gt; {
-      if (desc) {
-        return a[id] &lt; b[id] ? 1 : -1;
-      }
-      return a[id] &gt; b[id] ? 1 : -1;
-    });
-  }
-
-  return {
-    data: dbData.slice(start, start + size),
-    meta: {
-      totalRowCount: dbData.length,
-    },
-  };
-};
-
-function createHeaderCell(cell: HeaderContext&lt;Person, unknown&gt;, name: string) {
-  return (
-    &lt;CellHeader
-      direction={
-        cell.header.column.getIsSorted()
-          ? (cell.header.column.getIsSorted() as CellHeaderDirection)
-          : undefined
-      }
-      active={!!cell.header.column.getIsSorted()}
-      onClick={cell.header.column.getToggleSortingHandler()}
-    &gt;
-      {name}
-    &lt;/CellHeader&gt;
-  );
-}
-
-function createBodyCell(info: CellContext&lt;Person, unknown&gt;) {
-  return (
-    &lt;CellBasic
-      primaryText={info.getValue() as string}
-      shouldShowTooltipOnHover={false}
-    /&gt;
-  );
-}
-
-function App() {
-  //we need a reference to the scrolling element for logic down below
-  const tableContainerRef = React.useRef&lt;HTMLDivElement&gt;(null);
-
-  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
-
-  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
-    () =&gt; [
-      {
-        accessorKey: "id",
-        cell: (info) =&gt; createBodyCell(info),
-        header: (info) =&gt; createHeaderCell(info, "ID"),
-      },
-      {
-        accessorKey: "firstName",
-        cell: (info) =&gt; createBodyCell(info),
-        header: (info) =&gt; createHeaderCell(info, "First Name"),
-      },
-      {
-        accessorFn: (row) =&gt; row.lastName,
-        id: "lastName",
-        cell: (info) =&gt; createBodyCell(info),
-        header: (info) =&gt; createHeaderCell(info, "Last Name"),
-      },
-      {
-        accessorKey: "age",
-        cell: (info) =&gt; createBodyCell(info),
-        header: (info) =&gt; createHeaderCell(info, "Age"),
-      },
-      {
-        accessorKey: "status",
-        header: (info) =&gt; createHeaderCell(info, "Status"),
-        cell: (info) =&gt; {
-          return (
-            &lt;CellComponent verticalAlign="center" key={info.cell.id}&gt;
-              &lt;Tag
-                label={info.cell.getValue() as string}
-                color={
-                  info.cell.getValue() === "single"
-                    ? "notice"
-                    : info.cell.getValue() === "relationship"
-                    ? "positive"
-                    : "negative"
-                }
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
-              /&gt;
-            &lt;/CellComponent&gt;
-          );
-        },
-      },
-    ],
-    []
-  );
-
-  //react-query has an useInfiniteQuery hook just for this situation!
-  const { data, fetchNextPage, isFetching, isLoading } =
-    useInfiniteQuery&lt;PersonApiResponse&gt;(
-      ["table-data", sorting], //adding sorting state as key causes table to reset and fetch from new beginning upon sort
-      async ({ pageParam = 0 }) =&gt; {
-        const start = pageParam * fetchSize;
-        const fetchedData = fetchData(start, fetchSize, sorting); //pretend api call
-        return fetchedData;
-      },
-      {
-        getNextPageParam: (_lastGroup, groups) =&gt; groups.length,
-        keepPreviousData: true,
-        refetchOnWindowFocus: false,
-      }
-    );
-
-  //we must flatten the array of arrays from the useInfiniteQuery hook
-  const flatData = React.useMemo(
-    () =&gt; data?.pages?.flatMap((page) =&gt; page.data) ?? [],
-    [data]
-  );
-  const totalDBRowCount = data?.pages?.[0]?.meta?.totalRowCount ?? 0;
-  const totalFetched = flatData.length;
-
-  //called on scroll and possibly on mount to fetch more data as the user scrolls and reaches bottom of table
-  const fetchMoreOnBottomReached = React.useCallback(
-    (containerRefElement?: HTMLDivElement | null) =&gt; {
-      if (containerRefElement) {
-        const { scrollHeight, scrollTop, clientHeight } = containerRefElement;
-
-        //once the user has scrolled within 300px of the bottom of the table, fetch more data if there is any
-        if (
-          scrollHeight - scrollTop - clientHeight &lt; 300 &amp;&amp;
-          !isFetching &amp;&amp;
-          totalFetched &lt; totalDBRowCount
-        ) {
-          fetchNextPage();
-        }
-      }
-    },
-    [fetchNextPage, isFetching, totalFetched, totalDBRowCount]
-  );
-
-  //a check on mount and after a fetch to see if the table is already scrolled to the bottom and immediately needs to fetch more data
-  React.useEffect(() =&gt; {
-    fetchMoreOnBottomReached(tableContainerRef.current);
-  }, [fetchMoreOnBottomReached]);
-
-  const table = useReactTable({
-    data: flatData,
-    columns,
-    state: {
-      sorting,
-    },
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-  });
-
-  const { rows } = table.getRowModel();
-
-  //Virtualizing is optional, but might be necessary if we are going to potentially have hundreds or thousands of rows
-  const rowVirtualizer = useVirtual({
-    parentRef: tableContainerRef,
-    size: rows.length,
-    overscan: 10,
-  });
-  const { virtualItems: virtualRows, totalSize } = rowVirtualizer;
-  const paddingTop = virtualRows.length &gt; 0 ? virtualRows?.[0]?.start || 0 : 0;
-  const paddingBottom =
-    virtualRows.length &gt; 0
-      ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
-      : 0;
-
-  if (isLoading) {
-    return &lt;&gt;Loading...&lt;/&gt;;
-  }
-
-  return (
-    &lt;div className="app"&gt;
-      &lt;div
-        className="container"
-        onScroll={(e) =&gt; fetchMoreOnBottomReached(e.target as HTMLDivElement)}
-        ref={tableContainerRef}
-      &gt;
-        &lt;Table&gt;
-          {table.getHeaderGroups().map((headerGroup) =&gt; (
-            &lt;TableHeader key={headerGroup.id}&gt;
-              {headerGroup.headers.map((header) =&gt; (
-                &lt;React.Fragment key={header.id}&gt;
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                &lt;/React.Fragment&gt;
-              ))}
-            &lt;/TableHeader&gt;
-          ))}
-          &lt;tbody&gt;
-            {paddingTop &gt; 0 &amp;&amp; (
-              &lt;tr&gt;
-                &lt;td style={{ height: `${paddingTop}px` }} /&gt;
-              &lt;/tr&gt;
-            )}
-            {virtualRows.map((virtualRow) =&gt; {
-              const row = rows[virtualRow.index] as Row&lt;Person&gt;;
-              return (
-                &lt;TableRow key={row.id}&gt;
-                  {row.getVisibleCells().map((cell) =&gt; (
-                    &lt;React.Fragment key={cell.id}&gt;
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    &lt;/React.Fragment&gt;
-                  ))}
-                &lt;/TableRow&gt;
-              );
-            })}
-            {paddingBottom &gt; 0 &amp;&amp; (
-              &lt;tr&gt;
-                &lt;td style={{ height: `${paddingBottom}px` }} /&gt;
-              &lt;/tr&gt;
-            )}
-          &lt;/tbody&gt;
-        &lt;/Table&gt;
-      &lt;/div&gt;
-      &lt;div className="fetched"&gt;
-        Fetched {flatData.length} of {totalDBRowCount} Rows.
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default App;
-</code></pre>
-  </figure>
-</div>
+<div
+  class="zeroheight-example"
+  data-example="Table/TableWithVirtualizedRows"
+></div>
 <h4>Editable Table Cells with Access to Internal Data</h4>
 <p>
-  This example demonstrates how to access the internal data management state in
-  a Table. Table cells are&nbsp;
-  <strong>Editable</strong>
-  , click on a cell to start editing (Changes will apply on blur!)
+  Editing reaches the data above the table through TanStack Table's meta object.
+  Click a cell to edit it; the change is written back on blur, and the log below
+  records what moved. Note that the editable cells are CellComponents rather
+  than CellBasics, since CellBasic renders text rather than children.
 </p>
-<div class="zeroheight-live-code">
-  <figure>
-    <figcaption>/App.tsx</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
-import {
-  CellBasic,
-  CellHeader,
-  TableHeader,
-  TableRow,
-  Table,
-  Button,
-  Icon,
-  getSemanticColors,
-} from "@czi-sds/components";
-import {
-  CellContext,
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  RowData,
-  useReactTable,
-} from "@tanstack/react-table";
-import { useTheme } from "@mui/material";
-import { faker } from "@faker-js/faker";
-import "./styles.css";
-
-type StatusTypes = "relationship" | "complicated" | "single";
-
-type Person = {
-  [key: string]: unknown;
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  progress: number;
-  status: StatusTypes;
-  subRows?: Person[];
-};
-
-const newPerson = (): Person =&gt; {
-  return {
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    age: faker.number.int(40),
-    visits: faker.number.int(1000),
-    progress: faker.number.int(100),
-    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
-      "relationship",
-      "complicated",
-      "single",
-    ])[0]!,
-  };
-};
-
-function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] =&gt; {
-    const len = lens[depth]!;
-    return [...Array(len)].map((): Person =&gt; {
-      return {
-        ...newPerson(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
-}
-
-declare module "@tanstack/react-table" {
-  interface TableMeta&lt;TData extends RowData&gt; {
-    updateData: (rowIndex: number, columnId: string, value: TData) =&gt; void;
-  }
-}
-
-const CellEditor = (cell: CellContext&lt;Person, unknown&gt;) =&gt; {
-  const theme = useTheme();
-  const semanticColors = getSemanticColors({theme});
-  
-  const initialValue = cell.getValue();
-  // We need to keep and update the state of the cell normally
-  const [value, setValue] = React.useState(initialValue);
-
-  // When the input is blurred, we'll call our table meta's updateData function
-  const onBlur = () =&gt; {
-    cell.table.options.meta?.updateData(cell.row.index, cell.column.id, value as Person);
-  };
-
-  // If the initialValue is changed external, sync it up with our state
-  React.useEffect(() =&gt; {
-    setValue(initialValue);
-  }, [initialValue]);
-
-  return (
-    &lt;input
-      className="editable-input"
-      value={value as string}
-      onChange={(e) =&gt; setValue(e.target.value)}
-      onBlur={onBlur}
-      style={{ color: semanticColors?.base?.textPrimary }}
-    /&gt;
-  );
-}
-
-// Give our default column cell renderer editing superpowers!
-const defaultColumn: Partial&lt;ColumnDef&lt;Person&gt;&gt; = {
-  cell: CellEditor,
-};
-
-const defaultColumns: ColumnDef&lt;Person&gt;[] = [
-  {
-    accessorKey: "firstName",
-    header: "First Name",
-  },
-  {
-    accessorKey: "lastName",
-    header: "Last Name",
-  },
-  {
-    accessorKey: "age",
-    header: "Age",
-  },
-  {
-    accessorKey: "visits",
-    header: "Visits",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    accessorKey: "progress",
-    header: "Profile Progress",
-  },
-];
-
-function App() {
-  const [log, setLog] = React.useState("");
-  const [data, setData] = React.useState(() =&gt; makeData(3));
-  const [columns] = React.useState&lt;typeof defaultColumns&gt;(() =&gt; [
-    ...defaultColumns,
-  ]);
-
-  // Create the table and pass your options
-  const table = useReactTable({
-    data,
-    columns,
-    defaultColumn,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    // Provide our updateData function to our table meta
-    meta: {
-      updateData: (rowIndex, columnId, value) =&gt; {
-        setData(
-          (
-            old: Person[] // Specify the type of 'old' as Person[]
-          ) =&gt;
-            old.map((row, index) =&gt; {
-              if (index === rowIndex) {
-                const oldValue = row[columnId]; // No need for type assertion
-                setLog(
-                  `Row index: ${rowIndex}\nColumn Id: ${columnId}\nOld value: ${oldValue}\nNew value: ${value}`
-                );
-                return {
-                  ...row,
-                  [columnId]: value,
-                };
-              }
-              return row;
-            })
-        );
-      },
-    },
-  });
-
-  // Manage your own state
-  const [state, setState] = React.useState(table.initialState);
-
-  // Change table data
-  const changeTableData = () =&gt; {
-    setData(() =&gt; makeData(5));
-    setLog("");
-  };
-
-  // Override the state managers for the table to your own
-  table.setOptions((prev) =&gt; ({
-    ...prev,
-    state,
-    onStateChange: setState,
-    // These are just table options, so if things
-    // need to change based on your state, you can
-    // derive them here
-  }));
-
-  return (
-    &lt;div className="app"&gt;
-      &lt;Table&gt;
-        &lt;TableHeader&gt;
-          {table.getHeaderGroups().map((headerGroup) =&gt;
-            headerGroup.headers.map((header) =&gt; (
-              &lt;CellHeader key={header.id} hideSortIcon&gt;
-                {flexRender(
-                  header.column.columnDef.header,
-                  header.getContext()
-                )}
-              &lt;/CellHeader&gt;
-            ))
-          )}
-        &lt;/TableHeader&gt;
-        &lt;tbody&gt;
-          {table.getRowModel().rows.map((row) =&gt; (
-            &lt;TableRow key={row.id}&gt;
-              {row.getVisibleCells().map((cell) =&gt; (
-                &lt;CellBasic
-                  key={cell.id}
-                  primaryText={
-                    flexRender(
-                      cell.column.columnDef.cell,
-                      cell.getContext()
-                    ) as string
-                  }
-                  shouldShowTooltipOnHover={false}
-                /&gt;
-              ))}
-            &lt;/TableRow&gt;
-          ))}
-        &lt;/tbody&gt;
-      &lt;/Table&gt;
-
-      &lt;div className="actions"&gt;
-        &lt;Button
-          startIcon={&lt;Icon sdsIcon="refresh" sdsSize="s" sdsType="button" /&gt;}
-          sdsStyle="rounded"
-          sdsType="primary"
-          onClick={changeTableData}
-        &gt;
-          Change table data
-        &lt;/Button&gt;
-      &lt;/div&gt;
-
-      {log &amp;&amp; (
-        &lt;div className="log"&gt;
-          &lt;h4&gt;Cell Value Update Log:&lt;/h4&gt;
-          &lt;pre&gt;{log}&lt;/pre&gt;
-        &lt;/div&gt;
-      )}
-
-      {data &amp;&amp; (
-        &lt;div className="log"&gt;
-          &lt;h4&gt;Table data:&lt;/h4&gt;
-          &lt;pre&gt;{JSON.stringify(data, null, 2)}&lt;/pre&gt;
-        &lt;/div&gt;
-      )}
-    &lt;/div&gt;
-  );
-}
-
-export default App;
-</code></pre>
-  </figure>
-</div>
+<div
+  class="zeroheight-example"
+  data-example="Table/TableWithEditableCells"
+></div>
 <h4>Table with Front-End Pagination</h4>
 <p>
-  This example uses front-end Pagination to show table data in multiple pages.
+  All the rows are in memory and TanStack Table slices them, so paging is only a
+  change of pageIndex. Pagination counts pages from 1 while TanStack counts from
+  0, which is the one thing to keep straight when wiring the two together.
 </p>
-<div class="zeroheight-live-code">
-  <figure>
-    <figcaption>/App.tsx</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
-import {
-  CellBasic,
-  CellHeader,
-  TableHeader,
-  TableRow,
-  Table,
-  CellHeaderDirection,
-  CellComponent,
-  Tag,
-  Pagination,
-} from "@czi-sds/components";
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
-  SortingState,
-  useReactTable,
-  PaginationState,
-  HeaderContext,
-  CellContext,
-} from "@tanstack/react-table";
-import { faker } from "@faker-js/faker";
-import "./styles.css";
-
-type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  progress: number;
-  status: "relationship" | "complicated" | "single";
-  subRows?: Person[];
-};
-
-const newPerson = (): Person =&gt; {
-  return {
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    age: faker.number.int(96),
-    visits: faker.number.int(1000),
-    progress: faker.number.int(100),
-    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
-      "relationship",
-      "complicated",
-      "single",
-    ])[0]!,
-  };
-};
-
-function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] =&gt; {
-    const len = lens[depth]!;
-    return [...Array(len)].map((): Person =&gt; {
-      return {
-        ...newPerson(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
-}
-
-function App() {
-  const DATA_COUNT = 99;
-  const PAGE_SIZE = 3;
-  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
-  const data = React.useState(() =&gt; makeData(DATA_COUNT))[0];
-
-  const [{ pageIndex, pageSize }, setPagination] =
-    React.useState&lt;PaginationState&gt;({
-      pageIndex: 0,
-      pageSize: PAGE_SIZE,
-    });
-
-  function createHeaderCell(
-    header: HeaderContext&lt;Person, unknown&gt;,
-    name: string
-  ) {
-    return (
-      &lt;CellHeader
-        key={header.header.id}
-        colSpan={header.header.colSpan}
-        direction={
-          header.column.getIsSorted()
-            ? (header.column.getIsSorted() as CellHeaderDirection)
-            : undefined
-        }
-        active={!!header.column.getIsSorted()}
-        onClick={header.column.getToggleSortingHandler()}
-        horizontalAlign={header.header.id === "createdAt" ? "right" : "left"}
-        shouldShowTooltipOnHover={true}
-        tooltipText={name}
-        tooltipProps={{
-          enterDelay: 2000,
-          enterNextDelay: 2000,
-        }}
-      &gt;
-        {name}
-      &lt;/CellHeader&gt;
-    );
-  }
-
-  function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
-    return (
-      &lt;CellBasic
-        key={cell.cell.id}
-        primaryText={cell.getValue() as string}
-        horizontalAlign={cell.column.id === "progress" ? "center" : "left"}
-        verticalAlign="center"
-        shouldShowTooltipOnHover={true}
-      /&gt;
-    );
-  }
-
-  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
-    () =&gt; [
-      {
-        accessorKey: "firstName",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "First Name"),
-      },
-      {
-        accessorKey: "lastName",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Last Name"),
-      },
-      {
-        accessorKey: "age",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Age"),
-      },
-      {
-        accessorKey: "visits",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Visits"),
-      },
-      {
-        accessorKey: "status",
-        cell: (cell) =&gt; (
-          &lt;CellComponent key={cell.cell.id} verticalAlign="center"&gt;
-            &lt;Tag
-              label={cell.getValue() as string}
-              color={
-                cell.cell.getValue() === "single"
-                  ? "notice"
-                  : cell.cell.getValue() === "relationship"
-                  ? "positive"
-                  : "negative"
-              }
-              sdsStyle="rounded"
-              sdsType="secondary"
-            /&gt;
-          &lt;/CellComponent&gt;
-        ),
-        header: (header) =&gt; createHeaderCell(header, "Status"),
-      },
-      {
-        accessorKey: "progress",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Profile Progress"),
-      },
-    ],
-    []
-  );
-
-  const pagination = React.useMemo(
-    () =&gt; ({
-      pageIndex,
-      pageSize,
-    }),
-    [pageIndex, pageSize]
-  );
-
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-      pagination,
-    },
-    onPaginationChange: setPagination,
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    debugTable: true,
-  });
-
-  return (
-    &lt;div className="app"&gt;
-      &lt;Table&gt;
-        &lt;TableHeader&gt;
-          {table.getFlatHeaders().map((header) =&gt; (
-            &lt;React.Fragment key={header.id}&gt;
-              {flexRender(header.column.columnDef.header, header.getContext())}
-            &lt;/React.Fragment&gt;
-          ))}
-        &lt;/TableHeader&gt;
-        &lt;tbody&gt;
-          {table.getRowModel().rows.map((row) =&gt; {
-            return (
-              &lt;TableRow key={row.id}&gt;
-                {row.getVisibleCells().map((cell) =&gt; (
-                  &lt;React.Fragment key={cell.id}&gt;
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  &lt;/React.Fragment&gt;
-                ))}
-              &lt;/TableRow&gt;
-            );
-          })}
-        &lt;/tbody&gt;
-      &lt;/Table&gt;
-      &lt;div id="pagination-wrapper"&gt;
-        &lt;Pagination
-          sdsStyle="round"
-          pageSize={table.getState().pagination.pageSize}
-          onPageChange={(page: number) =&gt; {
-            table.setPageIndex(page - 1);
-          }}
-          onNextPage={() =&gt; table.nextPage()}
-          onPreviousPage={() =&gt; table.previousPage()}
-          totalCount={DATA_COUNT}
-          siblingCount={1}
-          currentPage={table.getState().pagination.pageIndex + 1}
-          truncateDropdown
-        /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default App;
-</code></pre>
-  </figure>
-</div>
+<div
+  class="zeroheight-example"
+  data-example="Table/TableWithFrontEndPagination"
+></div>
 <h4>Table with Back-End Pagination</h4>
 <p>
-  This example illustrates a Table that implements back-end pagination by
-  utilizing mocked data retrieved through a query function built with the
-  react-query package.
+  Only one page of rows exists on the client, so manualPagination stops the
+  table from slicing and the row count arrives with the data. The request is
+  faked with a delay, and keepPreviousData holds the current page on screen
+  while the next one loads.
 </p>
-<div class="zeroheight-live-code">
-  <figure>
-    <figcaption>/App.tsx</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import {
-  CellBasic,
-  CellHeader,
-  TableHeader,
-  TableRow,
-  Table,
-  CellHeaderDirection,
-  CellComponent,
-  Tag,
-  Pagination,
-  Icon,
-} from "@czi-sds/components";
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
-  SortingState,
-  useReactTable,
-  PaginationState,
-  CellContext,
-  HeaderContext,
-} from "@tanstack/react-table";
-import "./styles.css";
-import { styled } from "@mui/material";
-import { faker } from "@faker-js/faker";
-
-export type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  progress: number;
-  status: "relationship" | "complicated" | "single";
-  subRows?: Person[];
-};
-
-const DATA_COUNT = 198;
-
-const newPerson = (): Person =&gt; {
-  return {
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    age: faker.number.int(40),
-    visits: faker.number.int(1000),
-    progress: faker.number.int(100),
-    status: faker.helpers.shuffle&lt;Person["status"]&gt;([
-      "relationship",
-      "complicated",
-      "single",
-    ])[0]!,
-  };
-};
-
-function makeData(...lens: number[]) {
-  const makeDataLevel = (depth = 0): Person[] =&gt; {
-    const len = lens[depth]!;
-    return [...Array(len)].map((): Person =&gt; {
-      return {
-        ...newPerson(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
-}
-
-const data = makeData(DATA_COUNT);
-
-async function fetchData(options: { pageIndex: number; pageSize: number }) {
-  // Simulate some network latency
-  await new Promise((r) =&gt; setTimeout(r, 500));
-
-  return {
-    rows: data.slice(
-      options.pageIndex * options.pageSize,
-      (options.pageIndex + 1) * options.pageSize
-    ),
-    pageCount: Math.ceil(data.length / options.pageSize),
-  };
-}
-
-function App() {
-  const PAGE_SIZE = 3;
-  const [sorting, setSorting] = React.useState&lt;SortingState&gt;([]);
-
-  const [{ pageIndex, pageSize }, setPagination] =
-    React.useState&lt;PaginationState&gt;({
-      pageIndex: 0,
-      pageSize: PAGE_SIZE,
-    });
-
-  const fetchDataOptions = {
-    pageIndex,
-    pageSize,
-  };
-
-  const dataQuery = useQuery(
-    ["data", fetchDataOptions],
-    () =&gt; fetchData(fetchDataOptions),
-    { keepPreviousData: true }
-  );
-
-  const defaultData = React.useMemo(() =&gt; [], []);
-
-  function createHeaderCell(
-    header: HeaderContext&lt;Person, unknown&gt;,
-    name: string
-  ) {
-    return (
-      &lt;CellHeader
-        key={header.header.id}
-        colSpan={header.header.colSpan}
-        direction={
-          header.column.getIsSorted()
-            ? (header.column.getIsSorted() as CellHeaderDirection)
-            : undefined
-        }
-        active={!!header.column.getIsSorted()}
-        onClick={header.column.getToggleSortingHandler()}
-        horizontalAlign={header.header.id === "createdAt" ? "right" : "left"}
-        shouldShowTooltipOnHover={true}
-        tooltipText={name}
-        tooltipProps={{
-          enterDelay: 2000,
-          enterNextDelay: 2000,
-        }}
-      &gt;
-        {name}
-      &lt;/CellHeader&gt;
-    );
-  }
-
-  function createBodyCell(cell: CellContext&lt;Person, unknown&gt;) {
-    return (
-      &lt;CellBasic
-        key={cell.cell.id}
-        primaryText={cell.getValue() as string}
-        horizontalAlign={cell.column.id === "progress" ? "center" : "left"}
-        verticalAlign="center"
-        shouldShowTooltipOnHover={true}
-      /&gt;
-    );
-  }
-
-  const columns = React.useMemo&lt;ColumnDef&lt;Person&gt;[]&gt;(
-    () =&gt; [
-      {
-        accessorKey: "firstName",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "First Name"),
-      },
-      {
-        accessorKey: "lastName",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Last Name"),
-      },
-      {
-        accessorKey: "age",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Age"),
-      },
-      {
-        accessorKey: "visits",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Visits"),
-      },
-      {
-        accessorKey: "status",
-        cell: (cell) =&gt; (
-          &lt;CellComponent key={cell.cell.id} verticalAlign="center"&gt;
-            &lt;Tag
-              label={cell.getValue() as string}
-              color={
-                cell.cell.getValue() === "single"
-                  ? "notice"
-                  : cell.cell.getValue() === "relationship"
-                  ? "positive"
-                  : "negative"
-              }
-              sdsStyle="rounded"
-              sdsType="secondary"
-            /&gt;
-          &lt;/CellComponent&gt;
-        ),
-        header: (header) =&gt; createHeaderCell(header, "Status"),
-      },
-      {
-        accessorKey: "progress",
-        cell: (cell) =&gt; createBodyCell(cell),
-        header: (header) =&gt; createHeaderCell(header, "Profile Progress"),
-      },
-    ],
-    []
-  );
-
-  const pagination = React.useMemo(
-    () =&gt; ({
-      pageIndex,
-      pageSize,
-    }),
-    [pageIndex, pageSize]
-  );
-
-  const table = useReactTable({
-    data: dataQuery.data?.rows ?? defaultData,
-    columns,
-    state: {
-      sorting,
-      pagination,
-    },
-    onPaginationChange: setPagination,
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    manualPagination: true,
-    autoResetAll: false,
-    debugTable: true,
-  });
-
-  const StyledTableBody = styled("tbody")`
-    ${dataQuery.isFetching ? `opacity: .3; filter: grayscale(1)` : null}
-  `;
-
-  return (
-    &lt;div className="app"&gt;
-      &lt;Table&gt;
-        &lt;TableHeader&gt;
-          {table.getFlatHeaders().map((header) =&gt; (
-            &lt;React.Fragment key={header.id}&gt;
-              {flexRender(header.column.columnDef.header, header.getContext())}
-            &lt;/React.Fragment&gt;
-          ))}
-        &lt;/TableHeader&gt;
-        &lt;StyledTableBody&gt;
-          {table.getRowModel().rows.map((row) =&gt; {
-            return (
-              &lt;TableRow key={row.id}&gt;
-                {row.getVisibleCells().map((cell) =&gt; (
-                  &lt;React.Fragment key={cell.id}&gt;
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  &lt;/React.Fragment&gt;
-                ))}
-              &lt;/TableRow&gt;
-            );
-          })}
-        &lt;/StyledTableBody&gt;
-      &lt;/Table&gt;
-      &lt;div id="pagination-wrapper"&gt;
-        &lt;Pagination
-          sdsStyle="round"
-          pageSize={table.getState().pagination.pageSize}
-          onPageChange={(page: number) =&gt; {
-            table.setPageIndex(page - 1);
-          }}
-          onNextPage={() =&gt; table.nextPage()}
-          onPreviousPage={() =&gt; table.previousPage()}
-          totalCount={DATA_COUNT}
-          siblingCount={1}
-          currentPage={table.getState().pagination.pageIndex + 1}
-          truncateDropdown
-        /&gt;
-        {dataQuery.isFetching ? (
-          &lt;div className="table-data-loading"&gt;
-            &lt;Icon sdsIcon="Loading" sdsSize="l" sdsType="static" /&gt;
-            &lt;small&gt; Fetching Table Data ...&lt;/small&gt;
-          &lt;/div&gt;
-        ) : null}
-      &lt;/div&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default App;
-</code></pre>
-  </figure>
-</div>
+<div
+  class="zeroheight-example"
+  data-example="Table/TableWithBackEndPagination"
+></div>

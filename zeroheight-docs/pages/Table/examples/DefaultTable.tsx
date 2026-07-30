@@ -27,8 +27,12 @@ function App() {
           <CellHeader horizontalAlign="center" hideSortIcon>
             Category
           </CellHeader>
-          <CellHeader active>Active Header</CellHeader>
-          <CellHeader>
+          {/* hover is what puts the sort chevron in the DOM; without it a header
+              is inert and shows no sorting affordance at all. */}
+          <CellHeader active hover>
+            Active Header
+          </CellHeader>
+          <CellHeader hover>
             A very long table header title to test sort icon positioning
           </CellHeader>
           <CellHeader hideSortIcon>Component</CellHeader>
