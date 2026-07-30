@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import { createPortal } from "react-dom";
 import { PREVIEW_CLASS, SB_UNSTYLED_CLASS, TOGGLE_CLASS } from "./constants";
 import { highlightBlock } from "./highlight";
-import { ZeroheightExample } from "./ZeroheightExample";
+import { ZeroheightExample, type ExamplePadding } from "./ZeroheightExample";
 
 /**
  * Live previews are portaled into this container, so the prose styles below
@@ -360,6 +360,7 @@ function makeFigureCollapsible(figure: HTMLElement): void {
 interface ExampleSlot {
   id: string;
   node: HTMLElement;
+  padding: ExamplePadding;
 }
 
 /**
@@ -369,7 +370,9 @@ interface ExampleSlot {
  * Code examples are not part of the HTML: each one is an empty
  * `<div class="zeroheight-example" data-example="...">` placeholder that we
  * portal a live <ZeroheightExample /> into. Portals target nodes inside
- * `Container`, so the scoped styles above still apply to them.
+ * `Container`, so the scoped styles above still apply to them. A placeholder can
+ * add `data-example-padding="none"` to drop the preview's inset, which suits
+ * page-width components.
  */
 export function ZeroheightDoc({ html }: ZeroheightDocProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -401,10 +404,16 @@ export function ZeroheightDoc({ html }: ZeroheightDocProps): ReactElement {
       Array.from(
         root.querySelectorAll<HTMLElement>(".zeroheight-example[data-example]")
       ).flatMap((node) => {
-        const { example } = node.dataset;
+        const { example, examplePadding } = node.dataset;
         if (!example) return [];
         node.classList.add(SB_UNSTYLED_CLASS);
-        return [{ id: example, node }];
+        return [
+          {
+            id: example,
+            node,
+            padding: examplePadding === "none" ? "none" : "default",
+          } satisfies ExampleSlot,
+        ];
       })
     );
   }, [html]);
@@ -414,8 +423,8 @@ export function ZeroheightDoc({ html }: ZeroheightDocProps): ReactElement {
       {/* eslint-disable-next-line react/no-danger -- content is generated at
           build time from our own trusted ZeroHeight export, not user input. */}
       <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
-      {slots.map(({ id, node }) =>
-        createPortal(<ZeroheightExample id={id} />, node, id)
+      {slots.map(({ id, node, padding }) =>
+        createPortal(<ZeroheightExample id={id} padding={padding} />, node, id)
       )}
     </>
   );

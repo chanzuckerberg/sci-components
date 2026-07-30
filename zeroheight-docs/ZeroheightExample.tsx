@@ -82,7 +82,7 @@ function useThemeMode(): ThemeMode {
  * sandbox stylesheets provided (page padding, a smaller `h1`) and takes its
  * background from the SDS theme so previews read correctly in both modes.
  */
-const PreviewSurface = styled.div<CommonThemeProps>`
+const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
   ${(props) => {
     const semanticColors = getSemanticColors(props);
     const corners = getCorners(props);
@@ -106,7 +106,7 @@ const PreviewSurface = styled.div<CommonThemeProps>`
       }
 
       .app {
-        padding: 50px;
+        padding: ${props.padded ? "50px" : "0"};
       }
     `;
   }}
@@ -243,9 +243,17 @@ function ExampleSource({ id }: { id: string }): ReactElement {
   );
 }
 
+export type ExamplePadding = "default" | "none";
+
 export interface ZeroheightExampleProps {
   /** `<Page>/<Name>`, e.g. `Accordion/DefaultAccordion`. */
   id: string;
+  /**
+   * How much room the preview leaves around the example. `"none"` suits
+   * components that span the full width of a page, such as NavigationHeader,
+   * which read as inset boxes rather than page furniture when padded.
+   */
+  padding?: ExamplePadding;
 }
 
 /**
@@ -256,6 +264,7 @@ export interface ZeroheightExampleProps {
  */
 export function ZeroheightExample({
   id,
+  padding = "default",
 }: ZeroheightExampleProps): ReactElement {
   const mode = useThemeMode();
   const theme = useMemo(() => Theme(mode), [mode]);
@@ -282,7 +291,10 @@ export function ZeroheightExample({
     <div className={`zeroheight-example-block ${SB_UNSTYLED_CLASS}`}>
       <ThemeProvider theme={theme}>
         <EmotionThemeProvider theme={theme}>
-          <PreviewSurface className={PREVIEW_CLASS}>
+          <PreviewSurface
+            className={PREVIEW_CLASS}
+            padded={padding === "default"}
+          >
             {css ? <style>{css}</style> : null}
             <ExampleErrorBoundary id={id}>
               <Suspense fallback={null}>
