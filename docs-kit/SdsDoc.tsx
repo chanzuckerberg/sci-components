@@ -1,10 +1,19 @@
+import {
+  Global,
+  ThemeProvider as EmotionThemeProvider,
+  type CSSObject,
+} from "@emotion/react";
 import styled from "@emotion/styled";
+import { ThemeProvider } from "@mui/material/styles";
 import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import { createPortal } from "react-dom";
+import NavigationJumpTo from "@components/src/core/NavigationJumpTo";
+import { Theme } from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
 import { PREVIEW_CLASS, SB_UNSTYLED_CLASS, TOGGLE_CLASS } from "./constants";
 import { highlightBlock } from "./highlight";
 import { SdsExample, type ExamplePadding } from "./SdsExample";
+import { useThemeMode } from "./useThemeMode";
 
 /**
  * Live previews are portaled into this container, so the prose styles below
@@ -18,6 +27,16 @@ const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
 
 /** Column count of a labelled design-upload grid, set from its header row. */
 const UPLOAD_COLUMNS_PROPERTY = "--zh-upload-columns";
+
+/** Anchor list in the imported HTML that declares a page's jump-to sidebar. */
+const JUMP_TO_CLASS = "zeroheight-jump-to";
+
+const SIDEBAR_WIDTH = 176;
+const SIDEBAR_GAP = 40;
+const PROSE_WIDTH = 960;
+
+/** Below this the sidebar has nowhere left to go, so the two columns stack. */
+const STACK_BELOW = 840;
 
 /**
  * Scoped container for rendering raw documentation HTML inside a Storybook docs
@@ -34,8 +53,11 @@ const Container = styled.div`
     sans-serif;
   line-height: 1.6;
   color: inherit;
-  max-width: 960px;
-  margin: 0 auto;
+  /* Shrinks below its ideal width rather than crowding the sidebar, which is
+     what keeps the pair readable on a narrow window. */
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: ${PROSE_WIDTH}px;
 
   h1${OUTSIDE_PREVIEW},
     h2${OUTSIDE_PREVIEW},
@@ -446,10 +468,72 @@ const Container = styled.div`
     border-top: 1px solid rgba(128, 128, 128, 0.3);
     margin: 1.5em 0;
   }
+
+  /* The list a page's sidebar is built from. It is hidden once the sidebar
+     renders, so this styles the fallback: a section whose id went missing
+     leaves the list in the flow, where it still works as plain anchors. */
+  .${JUMP_TO_CLASS}:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    margin: 1.25em 0;
+  }
 `;
+
+/**
+ * Prose and, where a page declares one, its jump-to sidebar. The columns are
+ * left to stretch to the taller of the two: the nav sticks itself, and a column
+ * only as tall as the nav would give it nothing to travel down.
+ */
+const Layout = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${SIDEBAR_GAP}px;
+
+  @media (max-width: ${STACK_BELOW}px) {
+    flex-direction: column;
+  }
+`;
+
+const Sidebar = styled.aside`
+  flex: 0 0 ${SIDEBAR_WIDTH}px;
+
+  /* Stacked, the nav leads the page rather than trailing the whole of it. */
+  @media (max-width: ${STACK_BELOW}px) {
+    flex: none;
+    order: -1;
+    width: 100%;
+  }
+`;
+
+/**
+ * Storybook sizes a docs page for prose alone, leaving the sidebar no room of
+ * its own. Widen the column that holds it, and only there: the selector matches
+ * on the declaration itself, so every other docs page keeps its width.
+ */
+const wideDocsColumn: CSSObject = {
+  [`.sbdocs-content:has(.${JUMP_TO_CLASS})`]: {
+    maxWidth: PROSE_WIDTH + SIDEBAR_GAP + SIDEBAR_WIDTH,
+  },
+};
 
 export interface SdsDocProps {
   html: string;
+}
+
+/**
+ * A section of the page, as <NavigationJumpTo /> takes it. The component binds
+ * an item to its section through a ref rather than an id, and these sections
+ * live in HTML that is injected wholesale, so the "refs" are made by hand from
+ * the elements found in it.
+ */
+interface JumpToTarget {
+  elementRef: { current: HTMLElement | null };
+  title: string;
+}
+
+interface JumpToItem extends JumpToTarget {
+  subItems?: JumpToTarget[];
 }
 
 interface ExampleSlot {
@@ -494,6 +578,50 @@ function claimSnippets(root: HTMLElement): SnippetSlot[] {
     node.classList.add(SB_UNSTYLED_CLASS);
     return [slot];
   });
+}
+
+/**
+ * Read a page's sidebar off the anchor list it declares:
+ *
+ *   <nav class="zeroheight-jump-to">
+ *     <a href="#dropdown">Dropdown</a>
+ *     <a href="#menu-item" data-sub>Menu Item</a>
+ *   </nav>
+ *
+ * An anchor marked `data-sub` nests under the one above it, the single level of
+ * grouping the component offers, which is how a page carrying two jump lists
+ * gets by with one sidebar.
+ *
+ * An anchor whose section is missing is dropped rather than pointed at nothing.
+ * Should that leave nothing to show, the list itself stays visible and keeps
+ * working, so a mistyped id costs the page its sidebar and not its navigation.
+ */
+function collectJumpTo(root: HTMLElement): JumpToItem[] {
+  const nav = root.querySelector<HTMLElement>(`nav.${JUMP_TO_CLASS}`);
+  if (!nav) return [];
+
+  const items: JumpToItem[] = [];
+
+  nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+    const id = decodeURIComponent(anchor.getAttribute("href")?.slice(1) ?? "");
+    const section = id
+      ? root.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
+      : null;
+    const title = anchor.textContent?.trim();
+    if (!section || !title) return;
+
+    const target: JumpToTarget = { elementRef: { current: section }, title };
+    const parent = items[items.length - 1];
+
+    if (anchor.hasAttribute("data-sub") && parent) {
+      parent.subItems = [...(parent.subItems ?? []), target];
+    } else {
+      items.push(target);
+    }
+  });
+
+  nav.hidden = items.length > 0;
+  return items;
 }
 
 /**
@@ -573,6 +701,12 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const [slots, setSlots] = useState<ExampleSlot[]>([]);
   const [snippets, setSnippets] = useState<SnippetSlot[]>([]);
+  const [jumpTo, setJumpTo] = useState<JumpToItem[]>([]);
+
+  // The sidebar is an SDS component on a page that has no theme of its own:
+  // Storybook's decorators wrap stories, not the docs content around them.
+  const mode = useThemeMode();
+  const theme = useMemo(() => Theme(mode), [mode]);
 
   /**
    * Stable payload: React re-sets `innerHTML` whenever this object's identity
@@ -586,6 +720,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
     if (!root) return;
 
     layoutDesignUploads(root);
+    setJumpTo(collectJumpTo(root));
     setSnippets(claimSnippets(root));
 
     // Anything left is a bare block the import did not wrap in a snippet, so it
@@ -615,9 +750,25 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
 
   return (
     <>
-      {/* eslint-disable-next-line react/no-danger -- content is generated at
-          build time from our own trusted ZeroHeight export, not user input. */}
-      <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
+      <Global styles={wideDocsColumn} />
+      <Layout>
+        {/* eslint-disable-next-line react/no-danger -- content is generated at
+            build time from our own trusted ZeroHeight export, not user input. */}
+        <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
+        {jumpTo.length > 0 && (
+          <Sidebar className={SB_UNSTYLED_CLASS}>
+            <ThemeProvider theme={theme}>
+              <EmotionThemeProvider theme={theme}>
+                <NavigationJumpTo
+                  aria-label="On this page"
+                  items={jumpTo}
+                  width={`${SIDEBAR_WIDTH}px`}
+                />
+              </EmotionThemeProvider>
+            </ThemeProvider>
+          </Sidebar>
+        )}
+      </Layout>
       {slots.map(({ id, node, padding }) =>
         createPortal(<SdsExample id={id} padding={padding} />, node, id)
       )}

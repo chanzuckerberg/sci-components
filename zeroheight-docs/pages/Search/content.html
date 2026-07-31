@@ -4,56 +4,32 @@
   their data by a keyword. This allows users to take action on the available
   data without the distraction of irrelevant information.
 </p>
-<h2>Search Flow Types</h2>
-<table class="zeroheight-table zeroheight-table-borderless">
-  <tr>
-    <td>
-      <p>
-        There are three general flow patterns recommended when considering
-        adding search or filter functionality to products. Each of these follows
-        the same four basic steps:
-      </p>
-      <ol class="zeroheight-ordered-list">
-        <li><p>User types in a keyword</p></li>
-        <li><p>Search is initiated</p></li>
-        <li><p>Results are displayed</p></li>
-        <li><p>User takes action on the results</p></li>
-      </ol>
-      <p>
-        Although the general steps followed are universal, the implementation
-        choices made on how each step is accomplished, most notably how the
-        results are displayed, are what differentiate each flow type.
-      </p>
-    </td>
-    <td>
-      <p><strong>Jump to flow type:</strong></p>
-      <p>
-        <a
-          href="./?path=/docs/design-documentation-cells-search--docs"
-          target="_top"
-        >
-          On-page Results flow
-        </a>
-      </p>
-      <p>
-        <a
-          href="./?path=/docs/design-documentation-cells-search--docs"
-          target="_top"
-        >
-          Results Dropdown flow
-        </a>
-      </p>
-      <p>
-        <a
-          href="./?path=/docs/design-documentation-cells-search--docs"
-          target="_top"
-        >
-          Results Page flow
-        </a>
-      </p>
-    </td>
-  </tr>
-</table>
+<nav class="zeroheight-jump-to">
+  <a href="#search-flow-types">Search Flow Types</a>
+  <a href="#on-page-results" data-sub>On-page Results flow</a>
+  <a href="#results-dropdown" data-sub>Results Dropdown flow</a>
+  <a href="#results-page" data-sub>Results Page flow</a>
+  <a href="#other-considerations">Other Considerations</a>
+  <a href="#combining-search-types" data-sub>Combining Search Types</a>
+  <a href="#supporting-user-behavior" data-sub>Supporting User Behavior</a>
+</nav>
+<h2 id="search-flow-types">Search Flow Types</h2>
+<p>
+  There are three general flow patterns recommended when considering adding
+  search or filter functionality to products. Each of these follows the same
+  four basic steps:
+</p>
+<ol class="zeroheight-ordered-list">
+  <li><p>User types in a keyword</p></li>
+  <li><p>Search is initiated</p></li>
+  <li><p>Results are displayed</p></li>
+  <li><p>User takes action on the results</p></li>
+</ol>
+<p>
+  Although the general steps followed are universal, the implementation choices
+  made on how each step is accomplished, most notably how the results are
+  displayed, are what differentiate each flow type.
+</p>
 <h3>Flow Types</h3>
 <table class="zeroheight-table">
   <tr>
@@ -96,7 +72,7 @@
   </tr>
 </table>
 <hr />
-<h2>On-page Results</h2>
+<h2 id="on-page-results">On-page Results</h2>
 <p>
   Search results are displayed on the current page by filtering down the visible
   content within the searchable area(s) to show matches only. This search is the
@@ -279,7 +255,7 @@
   </li>
 </ul>
 <hr />
-<h2>Results Dropdown</h2>
+<h2 id="results-dropdown">Results Dropdown</h2>
 <p>
   Search results are displayed inside a
   <a
@@ -436,7 +412,7 @@
   </figure>
 </div>
 <hr />
-<h2>Results Page</h2>
+<h2 id="results-page">Results Page</h2>
 <p>
   Search results are displayed on a different page than where the search was
   originally initiated. Depending on the use case, this may be a unique
@@ -661,51 +637,24 @@
     </figure>
   </figure>
 </div>
-<h2>Other Considerations</h2>
-<table class="zeroheight-table">
-  <tr>
-    <td>
-      <p>
-        Search is a complex component, and is highly subjective to each
-        product's use case. While it's impossible to support and document every
-        use case, here is a collection of patterns that may be useful to
-        consider when implementing it.
-      </p>
-      <p>
-        The patterns detailed below have not been developed by the SDS team and
-        are simply examples pulled from products that utilize the SDS
-        components.
-      </p>
-      <p>
-        <strong
-          >Please consider the information in this section as inspiration
-          only.</strong
-        >
-      </p>
-    </td>
-    <td>
-      <p><strong>Jump to pattern:</strong></p>
-      <p>
-        <a
-          href="./?path=/docs/design-documentation-cells-search--docs"
-          target="_top"
-        >
-          Combining Search Types
-        </a>
-      </p>
-      <p>
-        <a
-          href="./?path=/docs/design-documentation-cells-search--docs"
-          target="_top"
-        >
-          Supporting User Behavior
-        </a>
-      </p>
-    </td>
-  </tr>
-</table>
+<h2 id="other-considerations">Other Considerations</h2>
+<p>
+  Search is a complex component, and is highly subjective to each product's use
+  case. While it's impossible to support and document every use case, here is a
+  collection of patterns that may be useful to consider when implementing it.
+</p>
+<p>
+  The patterns detailed below have not been developed by the SDS team and are
+  simply examples pulled from products that utilize the SDS components.
+</p>
+<p>
+  <strong
+    >Please consider the information in this section as inspiration
+    only.</strong
+  >
+</p>
 <hr />
-<h2>Combining Search Types</h2>
+<h2 id="combining-search-types">Combining Search Types</h2>
 <p>
   Depending on the use case, there may be a need to combine multiple flow types.
   How to do this is highly variable depending on each product's workflow,
@@ -769,7 +718,7 @@
   </figure>
 </div>
 <hr />
-<h2>Patterns to Support User Behavior</h2>
+<h2 id="supporting-user-behavior">Patterns to Support User Behavior</h2>
 <p>
   Below are some example behavior patterns worth considering to help support
   users in their searching. Evaluate if implementing these will help users’

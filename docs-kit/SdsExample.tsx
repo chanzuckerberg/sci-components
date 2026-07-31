@@ -15,8 +15,6 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
-import { GLOBALS_UPDATED } from "storybook/internal/core-events";
-import { addons } from "storybook/preview-api";
 import {
   Theme,
   getCorners,
@@ -26,6 +24,7 @@ import {
 } from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
 import { PREVIEW_CLASS, SB_UNSTYLED_CLASS } from "./constants";
+import { useThemeMode, type ThemeMode } from "./useThemeMode";
 
 /**
  * Registry of the example apps referenced by the `data-example` placeholders in
@@ -66,37 +65,6 @@ const exampleStyles = {
     { eager: true, import: "default", query: "?raw" }
   ),
 };
-
-type ThemeMode = "light" | "dark";
-
-/**
- * Storybook's toolbar theme, as seen from a docs page. Decorators (and their
- * globals) only wrap stories, so the SDS theme provider from
- * `.storybook/preview.jsx` never reaches MDX docs content; we read the global
- * ourselves and provide the theme around each preview instead.
- */
-function useThemeMode(): ThemeMode {
-  const [mode, setMode] = useState<ThemeMode>(() => {
-    const globals = new URLSearchParams(window.location.search).get("globals");
-    return /(?:^|;)theme:dark(?:;|$)/.test(globals ?? "") ? "dark" : "light";
-  });
-
-  useEffect(() => {
-    const channel = addons.getChannel();
-    const onGlobalsUpdated = ({
-      globals,
-    }: {
-      globals?: { theme?: string };
-    }): void => {
-      if (globals?.theme) setMode(globals.theme === "dark" ? "dark" : "light");
-    };
-
-    channel.on(GLOBALS_UPDATED, onGlobalsUpdated);
-    return () => channel.off(GLOBALS_UPDATED, onGlobalsUpdated);
-  }, []);
-
-  return mode;
-}
 
 /**
  * Themed surface the example renders on. It reproduces the little the original
