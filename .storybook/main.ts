@@ -25,6 +25,7 @@ const config: StorybookConfig = {
      */
     "../packages/components/src/**/__storybook__/docs/*.mdx",
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/data-viz/src/**/__storybook__/docs/*.mdx",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
     // Standalone design pages imported from ZeroHeight (see
     // packages/mcp/scripts/import-zeroheight-storybook.ts).
@@ -139,6 +140,7 @@ const config: StorybookConfig = {
       `${COMPONENTS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
       `${DATA_VIZ_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
       `${COMPONENTS_SRC}/**/__storybook__/docs/*.mdx`,
+      `${DATA_VIZ_SRC}/**/__storybook__/docs/*.mdx`,
     ];
     /**
      * Pre-bundle bare-import subpaths that Vite's scanner cannot reach by

@@ -1,0 +1,216 @@
+<h1>Data Viz</h1>
+<p>
+  Charting components for the Science Design System, built on Apache ECharts and
+  themed with the SDS design tokens.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>A separate package:</strong>
+    the components in this section ship as @czi-sds/data-viz, not as part of
+    @czi-sds/components. Charts pull in ECharts, which is large and not needed
+    by most apps, so they are versioned and installed on their own.
+    @czi-sds/data-viz is built on top of @czi-sds/components and requires it at
+    runtime.
+  </p>
+</div>
+<h2>Installation</h2>
+<p>NPM Package:</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-sh">// with npm
+npm i @czi-sds/data-viz
+// with yarn
+yarn add @czi-sds/data-viz</code></pre>
+  </figure>
+</div>
+<p>
+  Like @czi-sds/components, the package declares its dependencies as peer
+  dependencies to prevent duplicate copies of React, Material UI, and the design
+  system itself. Please ensure the following are also installed:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>JSON</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "@czi-sds/components": "^24.0.0",
+  "@emotion/styled": "^11.11.0",
+  "@mui/material": "^9.0.0",
+  "echarts": "^6.0.0",
+  "lodash": "^4.17.21",
+  "react": "&gt;=18.0.0",
+  "react-dom": "&gt;=18.0.0"
+}</code></pre>
+  </figure>
+</div>
+<p>To install the package together with its peer dependencies:</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-sh">// with npm
+npm i @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material echarts lodash react react-dom
+// with yarn
+yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material echarts lodash react react-dom</code></pre>
+  </figure>
+</div>
+<p>
+  @czi-sds/components brings peer dependencies of its own (@emotion/css,
+  @emotion/react, @mui/icons-material, and @tanstack/react-table). The
+  <a
+    href="./?path=/docs/design-documentation-sds-overview-getting-started--docs"
+    target="_top"
+  >
+    Getting Started
+  </a>
+  page covers that install and the theme setup both packages rely on.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Upgrading an existing app?</strong>
+    The data-viz release that ships alongside SDS 24.0.0 moves to Material UI v9
+    and ECharts v6. The
+    <a
+      href="https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-24.0.0.md"
+    >
+      migration guide
+    </a>
+    covers the dependency updates and the API changes that come with them.
+  </p>
+</div>
+<h2>Usage</h2>
+<p>
+  Charts read colors, spacing, and typography from the SDS theme, so they need
+  the same providers as the rest of the design system. Wrap your app once, as
+  described in
+  <a
+    href="./?path=/docs/design-documentation-sds-overview-getting-started--docs"
+    target="_top"
+  >
+    Getting Started
+  </a>
+  , and then import charts the way you import any other SDS component:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { StackedBarChart } from "@czi-sds/data-viz";
+
+const DATA = [
+  { name: "Biology", value: 320 },
+  { name: "Chemistry", value: 210 },
+  { name: "Physics", value: 170 },
+];
+
+export function DomainBreakdown() {
+  return (
+    &lt;StackedBarChart
+      data={DATA}
+      title="Domain"
+      width="360px"
+      showLegend
+      showLegendValues
+    /&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<p>
+  Charts compose with @czi-sds/components, so surrounding layout and controls
+  come from the main package:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Button } from "@czi-sds/components";
+import { HeatmapChart } from "@czi-sds/data-viz";
+
+export function ExpressionPanel() {
+  return (
+    &lt;div&gt;
+      &lt;Button onClick={handleExport} sdsStyle="rounded" sdsType="primary"&gt;
+        Export
+      &lt;/Button&gt;
+      &lt;HeatmapChart
+        width={800}
+        height={600}
+        data={data}
+        xAxisData={genes}
+        yAxisData={cellTypes}
+        encode={{ x: "geneIndex", y: "cellTypeIndex" }}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<h2>Components</h2>
+<p>
+  The package currently ships two charts. Each has its own page in this section
+  with props and interactive stories.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Component</p></td>
+    <td><p>Use it for</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/story/data-viz-heatmapchart--default" target="_top">
+          HeatmapChart
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        A matrix of values across two categorical axes, such as gene expression
+        by cell type. Handles very large datasets through a camera that renders
+        only the visible window.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/data-viz-stackedbarchart--default"
+          target="_top"
+        >
+          StackedBarChart
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        A single bar split into labelled segments, for showing the composition
+        of a total either proportionally or against a known maximum. Supports
+        selection and an optional legend.
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>Contributing</h2>
+<p>
+  The package source lives in
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/data-viz"
+  >
+    packages/data-viz
+  </a>
+  of the SDS repository, and the
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/docs/contribution.md"
+  >
+    contribution guidelines
+  </a>
+  apply here as they do to the main package. For a new chart type or a change to
+  an existing one, post in the
+  <a href="https://czi-sci.slack.com/archives/C032S43KKFV">
+    #sci-design-system-support
+  </a>
+  channel in Slack.
+</p>

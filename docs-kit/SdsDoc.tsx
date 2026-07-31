@@ -875,10 +875,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
   const [snippets, setSnippets] = useState<SnippetSlot[]>([]);
   const [jumpTo, setJumpTo] = useState<JumpToItem[]>([]);
 
-  // The sidebar is an SDS component on a page that has no theme of its own:
-  // Storybook's decorators wrap stories, not the docs content around them.
-  const mode = useThemeMode();
-  const theme = useMemo(() => Theme(mode), [mode]);
+  const theme = useMemo(() => Theme("light"), []);
 
   /**
    * Stable payload: React re-sets `innerHTML` whenever this object's identity
