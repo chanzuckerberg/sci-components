@@ -6,7 +6,7 @@ import { ComponentList } from "../src/lib/types.js";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const ignoredComponents = ["Bases", "styles"];
+const ignoredComponents = ["Bases", "Deprecated", "styles"];
 
 function scanComponentsPackage(): string[] {
   const components: string[] = [];

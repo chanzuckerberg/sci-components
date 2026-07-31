@@ -143,20 +143,30 @@
    * (masoudmanson): Deprecated components live under the "Deprecated" story
    * title prefix, so every one of their sidebar nodes carries a data-item-id of
    * "deprecated" (the category header) or one prefixed with "deprecated-"
-   * (components, stories and their docs pages). The color matches the
-   * "Deprecated" tag badge configured in manager.js.
+   * (components, stories and their docs pages). The Overview page is excluded
+   * because it documents the deprecations rather than being deprecated itself.
+   * The color matches the "Deprecated" tag badge configured in manager.js.
    */
   #storybook-explorer-menu
     .sidebar-subheading[data-item-id="deprecated"]
     button,
-  #storybook-explorer-menu [data-item-id^="deprecated-"],
-  #storybook-explorer-menu [data-item-id^="deprecated-"] a,
-  #storybook-explorer-menu [data-item-id^="deprecated-"] button {
+  #storybook-explorer-menu
+    [data-item-id^="deprecated-"]:not([data-item-id^="deprecated-overview"]),
+  #storybook-explorer-menu
+    [data-item-id^="deprecated-"]:not([data-item-id^="deprecated-overview"])
+    a,
+  #storybook-explorer-menu
+    [data-item-id^="deprecated-"]:not([data-item-id^="deprecated-overview"])
+    button {
     color: #c61128 !important;
   }
 
-  #storybook-explorer-menu [data-item-id^="deprecated-"] a,
-  #storybook-explorer-menu [data-item-id^="deprecated-"] > button {
+  #storybook-explorer-menu
+    [data-item-id^="deprecated-"]:not([data-item-id^="deprecated-overview"])
+    a,
+  #storybook-explorer-menu
+    [data-item-id^="deprecated-"]:not([data-item-id^="deprecated-overview"])
+    > button {
     text-decoration: line-through !important;
   }
 </style>

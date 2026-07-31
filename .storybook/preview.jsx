@@ -123,6 +123,7 @@ const preview = {
           "Components",
           "Data Viz",
           "Deprecated",
+          ["Overview", "*"],
         ],
       },
     },
