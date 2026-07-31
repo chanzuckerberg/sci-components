@@ -71,10 +71,7 @@ const CustomPopper = styled(Popper)`
     `;
   }}
 
-  // Step 2/3: Modify or add to the Popper component's base styles (copied in above) 
-  // by putting your custom styles at the end:
-  
-  border-color: rebeccapurple;
+  border-color: purple;
   border-style: dotted;
   border-width: 15px !important;
 `;
