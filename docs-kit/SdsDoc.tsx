@@ -51,7 +51,7 @@ const Container = styled.div`
   h2${OUTSIDE_PREVIEW} {
     font-size: 1.5rem;
     padding-bottom: 0.3em;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+    border-bottom: none;
   }
   h3${OUTSIDE_PREVIEW} {
     font-size: 1.25rem;
@@ -59,6 +59,22 @@ const Container = styled.div`
 
   p${OUTSIDE_PREVIEW} {
     margin: 0.75em 0;
+  }
+
+  /* A design page opens with its title followed by a one-line summary. The two
+     read as a unit, so the title loses its top margin and the summary is set
+     larger and dimmer than body copy to separate it from the prose below. */
+  > h1:first-child {
+    font-size: 2.75rem;
+    margin-top: 0;
+  }
+  > h1:first-child + p {
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: #888;
+    margin: 0.5em 0 1.5em;
   }
 
   a${OUTSIDE_PREVIEW} {
