@@ -616,7 +616,7 @@ function writeLandingPage(titles: string[]): void {
 
   const mdx = `import { Meta } from "@storybook/addon-docs/blocks";
 
-<Meta title="Documentation/Overview" />
+<Meta title="Design Documentation/Overview" />
 
 # Documentation
 
