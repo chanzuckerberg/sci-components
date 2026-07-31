@@ -16,6 +16,9 @@ import { SdsExample, type ExamplePadding } from "./SdsExample";
  */
 const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
 
+/** Column count of a labelled design-upload grid, set from its header row. */
+const UPLOAD_COLUMNS_PROPERTY = "--zh-upload-columns";
+
 /**
  * Scoped container for rendering raw documentation HTML inside a Storybook docs
  * page. Styles are intentionally theme-agnostic (colors inherit, borders use
@@ -132,8 +135,70 @@ const Container = styled.div`
     border: 1px solid #dfdfdf;
   }
 
+  /* A group of exported design screenshots. ZeroHeight's own stylesheet is not
+     part of the export, so the layout its class names describe is rebuilt here:
+     the "column" variant sets the figures side by side, "row" stacks them. */
+  .zeroheight-design-uploads {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px 24px;
+    margin: 1.25em 0;
+  }
+  .zeroheight-design-uploads.zeroheight-item-layout-row {
+    flex-direction: column;
+  }
+  /* A block introduced by a row of column labels ("Light Mode" | "Dark Mode")
+     becomes a real grid, so each figure sits under the cell that names it. The
+     column count is read off that header row by layoutDesignUploads below. */
+  .zeroheight-design-uploads[data-zh-headed] {
+    display: grid;
+    grid-template-columns: repeat(
+      var(${UPLOAD_COLUMNS_PROPERTY}, 1),
+      minmax(0, 1fr)
+    );
+    justify-items: center;
+  }
+  /* One figure under a multi-column header is a single wide image, not the
+     first of a set. */
+  .zeroheight-design-uploads[data-zh-headed]
+    > .zeroheight-design-upload:only-child {
+    grid-column: 1 / -1;
+  }
+  .zeroheight-design-upload {
+    min-width: 0;
+    max-width: 100%;
+  }
   .zeroheight-design-upload figcaption {
     display: none !important;
+  }
+  .zeroheight-design-upload-image {
+    display: flex;
+    justify-content: center;
+  }
+  /* The labels belong to the figures directly beneath them, so the pair closes
+     up into one unit. */
+  table[data-zh-upload-header] {
+    margin-bottom: 0;
+  }
+  table[data-zh-upload-header="even"] {
+    table-layout: fixed;
+  }
+  table[data-zh-upload-header] + .zeroheight-design-uploads {
+    margin-top: 0.5em;
+  }
+
+  /* An inline reference to a design token: a colour swatch followed by the
+     token's name. */
+  .zeroheight-token-mention {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+  .zeroheight-token-mention svg {
+    flex: none;
+    border-radius: 0;
   }
 
   .zeroheight-example-error {
@@ -425,6 +490,68 @@ function claimSnippets(root: HTMLElement): SnippetSlot[] {
 }
 
 /**
+ * A design-upload block is often introduced by a small table whose single row
+ * labels the columns the figures below fill ("Light Mode" | "Dark Mode"). The
+ * label row is the last one in that table.
+ *
+ * Nothing in the markup distinguishes such a table from an ordinary one that
+ * happens to sit above a block, so the figures having to divide evenly into the
+ * columns stands in for that: it holds for every labelled block in the docs and
+ * rules out the data tables that precede an unrelated block.
+ */
+function headerColumns(uploads: HTMLElement): number | null {
+  const table = uploads.previousElementSibling;
+  if (!(table instanceof HTMLTableElement)) return null;
+
+  const columns = table.rows[table.rows.length - 1]?.cells.length ?? 0;
+  const figures = uploads.querySelectorAll(".zeroheight-design-upload").length;
+  if (columns < 1 || figures < 1 || figures % columns !== 0) return null;
+
+  return columns;
+}
+
+/**
+ * Restore the two things ZeroHeight's design-upload blocks lost on export,
+ * neither of which can be recovered in CSS alone:
+ *
+ * - The grid a labelled block is laid out on, which the block's header row
+ *   defines rather than the block itself.
+ * - The scale of the screenshots. They are 2x exports carrying no intrinsic
+ *   scale, so at natural size every one of them renders twice as large as it
+ *   was designed. Only the rasters are affected; the SVG assets are 1x.
+ */
+function layoutDesignUploads(root: HTMLElement): void {
+  root
+    .querySelectorAll<HTMLElement>(".zeroheight-design-uploads")
+    .forEach((uploads) => {
+      const columns = headerColumns(uploads);
+      if (columns === null) return;
+
+      const table = uploads.previousElementSibling as HTMLTableElement;
+      uploads.style.setProperty(UPLOAD_COLUMNS_PROPERTY, String(columns));
+      uploads.dataset.zhHeaded = "";
+      // A label row on its own can be split into even columns to line up with
+      // the grid. Where the table has further rows, their content decides the
+      // widths and the labels only loosely track the figures.
+      table.dataset.zhUploadHeader = table.rows.length === 1 ? "even" : "";
+    });
+
+  root
+    .querySelectorAll<HTMLImageElement>(
+      '.zeroheight-design-upload-image img[src$=".png"]'
+    )
+    .forEach((image) => {
+      const halve = () => {
+        if (image.naturalWidth)
+          image.style.width = `${image.naturalWidth / 2}px`;
+      };
+
+      if (image.complete) halve();
+      else image.addEventListener("load", halve, { once: true });
+    });
+}
+
+/**
  * Renders full-fidelity documentation page HTML (with locally-served images),
  * one-time imported from ZeroHeight and now maintained by hand in this repo.
  *
@@ -451,6 +578,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
     const root = containerRef.current;
     if (!root) return;
 
+    layoutDesignUploads(root);
     setSnippets(claimSnippets(root));
 
     // Anything left is a bare block the import did not wrap in a snippet, so it
