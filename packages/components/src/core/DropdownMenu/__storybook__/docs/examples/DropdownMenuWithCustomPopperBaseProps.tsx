@@ -1,36 +1,32 @@
-// DropdownMenu with customized `isOptionEqualToValue`
+// DropdownMenu with custom `PopperBaseProps`
 
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
-import { DropdownMenu, DefaultDropdownMenuOption } from "@czi-sds/components";
+import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
-type MenuItem = DefaultDropdownMenuOption & { id: string };
-
-function optionIdEqualToValueId(option: MenuItem, value: MenuItem) {
-  return option.id === value.id;
-}
-
-const MENU_ITEMS: MenuItem[] = [
+const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
     name: "Menu item 1",
-    id: "one",
   },
   {
     name: "Menu item 2",
-    id: "two",
   },
   {
     name: "Menu item 3",
-    id: "three",
   },
   {
     name: "Longer menu item than the others",
-    id: "four",
   },
 ];
 
-const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
-
-function handleClickAway() {}
+const POPPER_BASE_PROPS = {
+  className: "popper",
+  sx: {
+    width: 500,
+    borderColor: "salmon",
+    borderWidth: 10,
+  },
+  popperOptions: { strategy: "absolute" as const },
+};
 
 function App() {
   const ref = useRef(null);
@@ -41,15 +37,14 @@ function App() {
   }, [ref.current]);
 
   return (
-    <div className="app" style={{ paddingLeft: "10px" }}>
+    <div className="app">
       <div ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just Zeroheight glue code
-        <DropdownMenu<MenuItem, false, false, false>
+        <DropdownMenu
           PopperBaseProps={POPPER_BASE_PROPS}
           anchorEl={ref.current}
-          isOptionEqualToValue={optionIdEqualToValueId}
-          onClickAway={handleClickAway}
+          onClickAway={function handleClickAway() {}}
           open
           options={MENU_ITEMS}
         />

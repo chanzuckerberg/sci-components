@@ -517,64 +517,89 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithGroupedSections"
 ></div>
-<h4>DropdownMenu with menu items that have count, icon, and / or details</h4>
+<h3>Recipes</h3>
 <p>
-  Each MenuItem provided to DropdownMenu can optionally include count, details
-  and sdsIcon properties.&nbsp;
+  These recipes show a few of the more complex approaches available for
+  customizing Dropdown Menus.
+</p>
+<h4>DropdownMenu with customized isOptionEqualToValue</h4>
+<p>
+  The isOptionEqualToValue prop changes how a selected value is compared against
+  the available options. By default option.name === val.name is used. In the
+  custom example below, the id property is used instead of the name property.
 </p>
 <p>
-  The count property takes a number which is displayed to the right of the menu
-  item text, with built-in spacing to its left (to prevent the menu item's text
-  from running into it).
-</p>
-<p>
-  Add a text string to the details property to display text below the menu
-  item’s main text.
-</p>
-<p>
-  sdsIcon can be passed the name of any icon in the SDS codebase and it will
-  automatically render the icon to the left of the menu item’s text; if an
-  invalid name is passed, the menu item will render the same as if no icon were
-  passed to it. The sdsIconProps prop can be added to a menu item with an icon
-  to provide more specifics like a classNameor color.
+  This is a MUI prop; learn more in the
+  <a href="https://mui.com/material-ui/api/autocomplete/#props"
+    >Autocomplete API</a
+  >
+  .
 </p>
 <div
   class="zeroheight-example"
-  data-example="core/DropdownMenu/DropdownMenuWithMenuItemsThatHaveCountIconAndOrDetails"
+  data-example="core/DropdownMenu/DropdownMenuWithCustomizedIsOptionEqualToValue"
 ></div>
-<h4>DropdownMenu with components in place of menu items</h4>
+<h4>DropdownMenu with customized onChange prop</h4>
 <p>
-  In place of the text normally shown for a menu item, a custom component can be
-  to displayed instead.
+  The optional onChange prop specifies what happens when a new selection is
+  made.
 </p>
 <p>
-  Any existing SDS component (must be imported) can be provided to the menu
-  item's object (within the array passed to the options prop), via the component
-  property. HTML elements (like the wrapper &lt;div&gt; surrounding the three
-  Tag components in the example below) can also be used.
+  In the example below, onChange has been modified such that making a new
+  selection logs the value and reason to the console.
 </p>
 <p>
-  These custom menu items can optionally be assigned metadata just like regular
-  menu items, including section, count, and sdsIcon and sdsIconProps.
+  This is a MUI prop; learn more in the
+  <a href="https://mui.com/material-ui/api/autocomplete/#props"
+    >Autocomplete API</a
+  >
+  .
 </p>
-<div
-  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
->
-  <p>
-    <strong>Warning:</strong>
-    Currently, there is a bug preventing the details property from rendering
-    when used in combination with a custom component in place of a menu item;
-    see issue
-    <a href="https://github.com/chanzuckerberg/sci-components/issues/522"
-      >#522</a
-    >
-    for
-    <em>details</em>
-    (pun intended!).
-  </p>
-</div>
 <div
   class="zeroheight-example"
-  data-example="core/DropdownMenu/DropdownMenuWithComponentsInPlaceOfMenuItems"
+  data-example="core/DropdownMenu/DropdownMenuWithCustomizedOnChangeProp"
+></div>
+<h4>DropdownMenu with custom PopperBaseProps</h4>
+<p>
+  PopperBaseProps is an SDS-specific prop made for passing custom props to the
+  Popper component, which is included as part of the DropdownMenu component.
+</p>
+<p>
+  The Popper component is part of MUI; learn more in the
+  <a href="https://mui.com/material-ui/api/popper/">Popper documentation</a>
+  , and see all the props available to pass to it on the
+  <a href="https://mui.com/material-ui/api/popper/">Popper API page</a>
+  .
+</p>
+<p>
+  The example below passes the Popper a className prop and additionally uses the
+  sx prop to make style changes (learn more on the
+  <a href="https://mui.com/system/getting-started/the-sx-prop/">MUI</a>
+  <a href="https://mui.com/system/getting-started/the-sx-prop/">sx</a>
+  <a href="https://mui.com/system/getting-started/the-sx-prop/"
+    >documentation page</a
+  >
+  ).
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/DropdownMenu/DropdownMenuWithCustomPopperBaseProps"
+></div>
+<h4>DropdownMenu with custom Popper component</h4>
+<p>
+  In addition to modifying the Popper's styles via PopperBaseProps above, the
+  styles for the Popper component can be overwritten more directly with
+  styled().
+</p>
+<p>
+  To get all the default SDS styles used for Popper, first copy them into a
+  custom-styled Popper (from within
+  sci-components/packages/components/src/core/DropdownMenu/style.ts file). Then
+  replace and / or follow up those styles with custom styles. The example below
+  includes comments for each of these steps within CustomPopper.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/DropdownMenu/DropdownMenuWithCustomPopperComponent"
 ></div>
 <hr />

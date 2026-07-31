@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
 import {
   InputDropdown,
   DropdownMenu,
-  DefaultDropdownMenuOption,
+  DefaultAutocompleteOption,
 } from "@czi-sds/components";
 
 const options = [
@@ -24,7 +24,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [details, setDetials] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
-  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(null);
+  const [value, setValue] = useState<DefaultAutocompleteOption | null>(null);
 
   return (
     <div className="app">
@@ -38,7 +38,7 @@ function App() {
         value={inputDropdownValue}
         style={{ maxWidth: 250 }}
       />
-      <DropdownMenu<DefaultDropdownMenuOption, false, false, false>
+      <DropdownMenu<DefaultAutocompleteOption, false, false, false>
         open={open}
         anchorEl={anchorEl}
         onClose={() => {}}
@@ -70,7 +70,7 @@ function App() {
 
   function handleChange(
     _: React.SyntheticEvent<Element, Event>,
-    newValue: DefaultDropdownMenuOption | null
+    newValue: DefaultAutocompleteOption | null
   ) {
     setOpen(false);
     setValue(newValue);

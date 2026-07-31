@@ -3,12 +3,12 @@
 import React, { SyntheticEvent, useState, useRef } from "react";
 import {
   DropdownMenu,
-  DefaultDropdownMenuOption,
+  DefaultAutocompleteOption,
   InputDropdown,
 } from "@czi-sds/components";
 
 function App() {
-  const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+  const MENU_ITEMS: DefaultAutocompleteOption[] = [
     {
       name: "Menu item 1",
     },
@@ -22,7 +22,7 @@ function App() {
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<DefaultDropdownMenuOption | null>(null);
+  const [value, setValue] = useState<DefaultAutocompleteOption | null>(null);
 
   function handleClick(event: SyntheticEvent<HTMLElement>) {
     if (open) {
@@ -39,7 +39,7 @@ function App() {
 
   function handleChange(
     _: SyntheticEvent,
-    newValue: DefaultDropdownMenuOption | null
+    newValue: DefaultAutocompleteOption | null
   ) {
     setOpen(false);
     setValue(newValue);
@@ -57,7 +57,7 @@ function App() {
         sdsType="label"
         sdsStyle="minimal"
       />
-      <DropdownMenu<DefaultDropdownMenuOption, false, false, false>
+      <DropdownMenu<DefaultAutocompleteOption, false, false, false>
         options={MENU_ITEMS}
         anchorEl={anchorEl}
         open={!!open}

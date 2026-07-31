@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
 import {
   InputDropdown,
   DropdownMenu,
-  DefaultDropdownMenuOption,
+  DefaultAutocompleteOption,
 } from "@czi-sds/components";
 
 const options = [
@@ -25,8 +25,8 @@ function App() {
   const [details, setDetials] = useState<string>();
   const [counter, setCounter] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
-  const [value, setValue] = useState<DefaultDropdownMenuOption[]>([]);
-  const [pendingValue, setPendingValue] = useState<DefaultDropdownMenuOption[]>(
+  const [value, setValue] = useState<DefaultAutocompleteOption[]>([]);
+  const [pendingValue, setPendingValue] = useState<DefaultAutocompleteOption[]>(
     []
   );
 
@@ -40,7 +40,7 @@ function App() {
         value={inputDropdownValue}
         counter={counter}
       />
-      <DropdownMenu<DefaultDropdownMenuOption, true, false, false>
+      <DropdownMenu<DefaultAutocompleteOption, true, false, false>
         open={open}
         anchorEl={anchorEl}
         onClose={() => {}}
@@ -72,7 +72,7 @@ function App() {
 
   function handleChange(
     _: React.SyntheticEvent<Element, Event>,
-    newValue: DefaultDropdownMenuOption[]
+    newValue: DefaultAutocompleteOption[]
   ) {
     setPendingValue(newValue);
     setCounter(newValue.length.toString());

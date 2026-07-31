@@ -1,9 +1,9 @@
 // DropdownMenu with customized `onInputChange`
 
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
-import { DropdownMenu, DefaultDropdownMenuOption } from "@czi-sds/components";
+import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
-const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
     name: "Menu item 1",
   },
@@ -45,7 +45,7 @@ function App() {
   }, [ref.current]);
 
   return (
-    <div className="app" style={{ paddingLeft: "10px" }}>
+    <div className="app">
       <div ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just Zeroheight glue code

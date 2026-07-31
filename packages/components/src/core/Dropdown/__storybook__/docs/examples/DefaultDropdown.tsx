@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
-import { Dropdown, DefaultDropdownMenuOption } from "@czi-sds/components";
+import { Dropdown, DefaultAutocompleteOption } from "@czi-sds/components";
 
-const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
     name: "Menu item 1",
   },

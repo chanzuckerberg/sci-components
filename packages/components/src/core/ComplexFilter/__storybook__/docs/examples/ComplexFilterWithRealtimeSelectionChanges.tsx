@@ -1,6 +1,6 @@
-import { ComplexFilter, DefaultDropdownMenuOption } from "@czi-sds/components";
+import { ComplexFilter, DefaultAutocompleteOption } from "@czi-sds/components";
 
-const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
     name: "Fruit: Apple",
     section: "Fruit",
@@ -39,7 +39,7 @@ function App() {
         onChange={() => {}}
         options={MENU_ITEMS}
         DropdownMenuProps={{
-          groupBy: (option: DefaultDropdownMenuOption) =>
+          groupBy: (option: DefaultAutocompleteOption) =>
             option.section as string,
         }}
         multiple

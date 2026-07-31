@@ -1,9 +1,9 @@
 // Dropdown with grouped sections
 
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
-import { DropdownMenu, DefaultDropdownMenuOption } from "@czi-sds/components";
+import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
-const MENU_ITEMS: DefaultDropdownMenuOption[] = [
+const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
     name: "Menu item A.1",
     section: "Section A",
@@ -42,8 +42,8 @@ const MENU_ITEMS: DefaultDropdownMenuOption[] = [
  * In this example, we're grouping by the last character of the item name
  */
 const SORTED_ITEMS = [...MENU_ITEMS].sort((a, b) => {
-  const aLastLetter = a.name.at(-1) ?? "";
-  const bLastLetter = b.name.at(-1) ?? "";
+  const aLastLetter = a.name.slice(-1);
+  const bLastLetter = b.name.slice(-1);
 
   if (aLastLetter < bLastLetter) {
     return -1;
@@ -54,8 +54,8 @@ const SORTED_ITEMS = [...MENU_ITEMS].sort((a, b) => {
   return 0;
 });
 
-function groupBy(option: DefaultDropdownMenuOption) {
-  return option.name.at(-1) ?? "";
+function groupBy(option: DefaultAutocompleteOption) {
+  return option.name.slice(-1);
 }
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
@@ -71,7 +71,7 @@ function App() {
   }, [ref.current]);
 
   return (
-    <div className="app" style={{ paddingLeft: "10px" }}>
+    <div className="app">
       <div ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just Zeroheight glue code

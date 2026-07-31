@@ -7,11 +7,13 @@ import {
   lazy,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ComponentType,
   type ErrorInfo,
   type ReactElement,
   type ReactNode,
+  type RefObject,
 } from "react";
 import { GLOBALS_UPDATED } from "storybook/internal/core-events";
 import { addons } from "storybook/preview-api";
@@ -20,6 +22,7 @@ import {
   getCorners,
   getSemanticColors,
   type CommonThemeProps,
+  type SDSTheme,
 } from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
 import { PREVIEW_CLASS, SB_UNSTYLED_CLASS } from "./constants";
@@ -113,6 +116,10 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
       border-radius: ${corners?.l}px ${corners?.l}px 0 0;
       overflow: auto;
 
+      /* Containing block for the overlays the previews open, so that a menu is
+         placed and measured against this box rather than the page. */
+      position: relative;
+
       /* Stories get this reset from the <CssBaseline /> in .storybook/preview.jsx,
          which docs pages never render. Components count on it: a padded
          \`width: 100%\` content box otherwise overflows its own card. */
@@ -193,6 +200,133 @@ function scopeCss(css: string, scope: string): string {
   }
 
   return scoped;
+}
+
+/**
+ * The SDS theme, with the previews' one departure from how a component behaves
+ * in an app: Popper keeps its overlay in place instead of sending it through a
+ * portal to the end of `<body>`.
+ *
+ * A portalled menu is positioned over the whole page and belongs to no preview
+ * in particular, so it cannot be framed with the example that opened it and
+ * lands on the prose below instead. Keeping it in place puts it inside the
+ * surface, where it is bounded and can be measured. Components read this from
+ * the theme, so the examples stay as they would be written in an app.
+ */
+function previewTheme(mode: ThemeMode): SDSTheme {
+  const base = Theme(mode);
+
+  return {
+    ...base,
+    components: {
+      ...base.components,
+      MuiPopper: {
+        ...base.components?.MuiPopper,
+        defaultProps: {
+          ...base.components?.MuiPopper?.defaultProps,
+          disablePortal: true,
+        },
+      },
+    },
+  };
+}
+
+/** Room left around an overlay so it does not sit flush against the frame. */
+const OVERLAY_GUTTER = 16;
+
+/**
+ * How far the overlays a preview opened reach past the room it has for them,
+ * above and below.
+ *
+ * An overlay is positioned rather than laid out, so it contributes nothing to
+ * the surface's own height. With an empty div for an anchor, as these examples
+ * use, that leaves nothing to hold the frame open and the menu covers whatever
+ * follows it. Measuring the overlays gives the surface a height to take.
+ *
+ * Both directions matter, because a menu that has no room beneath it flips and
+ * opens upwards, and the surface would clip it. Room above is made by padding
+ * the surface, which carries the anchor down and the overlay with it.
+ */
+function overlayOverflow(surface: HTMLElement): {
+  above: number;
+  below: number;
+} {
+  const box = surface.getBoundingClientRect();
+  const overlays = Array.from(
+    surface.querySelectorAll<HTMLElement>(".MuiPopper-root")
+  ).filter((overlay) => overlay.getBoundingClientRect().height > 0);
+
+  const tops = overlays.map((o) => o.getBoundingClientRect().top);
+  const bottoms = overlays.map((o) => o.getBoundingClientRect().bottom);
+
+  const highest = Math.min(box.top, ...tops.map((t) => t - OVERLAY_GUTTER));
+  const lowest = Math.max(
+    box.top + surface.scrollHeight,
+    ...bottoms.map((b) => b + OVERLAY_GUTTER)
+  );
+
+  return {
+    above: box.top - highest,
+    below: lowest - box.top - surface.clientHeight,
+  };
+}
+
+/**
+ * An overlay is mounted and then positioned over the frames following the
+ * example's own render, so a single measurement would read it mid-flight. These
+ * are the points, in milliseconds, at which the fit is retaken.
+ */
+const SETTLE_DELAYS = [0, 50, 150, 400, 1000];
+
+/**
+ * Reserve room in the preview for the overlays its example opens, so they are
+ * framed with it rather than spilling over the prose below.
+ *
+ * The surface only ever grows, which is what keeps this convergent: each fit
+ * moves the overlays it just made room for, prompting another, and with no room
+ * left to add the measurements agree and it settles.
+ */
+function useFitContent(ref: RefObject<HTMLElement | null>): void {
+  useEffect(() => {
+    const surface = ref.current;
+    if (!surface) return;
+
+    const timers: number[] = [];
+
+    const fit = (): void => {
+      const { above, below } = overlayOverflow(surface);
+
+      if (above > 1) {
+        const padding = parseFloat(getComputedStyle(surface).paddingTop);
+        surface.style.paddingTop = `${padding + above}px`;
+      }
+
+      if (below > 1) {
+        surface.style.minHeight = `${surface.clientHeight + below}px`;
+      }
+    };
+
+    const settle = (): void => {
+      timers.splice(0).forEach(clearTimeout);
+      SETTLE_DELAYS.forEach((delay) =>
+        timers.push(window.setTimeout(fit, delay))
+      );
+    };
+
+    // An overlay opened later, from a click target say, arrives as a new node
+    // under the surface.
+    const observer = new MutationObserver(settle);
+    observer.observe(surface, { childList: true, subtree: true });
+
+    settle();
+    window.addEventListener("resize", settle);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      observer.disconnect();
+      window.removeEventListener("resize", settle);
+    };
+  }, [ref]);
 }
 
 class ExampleErrorBoundary extends Component<
@@ -282,7 +416,9 @@ export function SdsExample({
   padding = "default",
 }: SdsExampleProps): ReactElement {
   const mode = useThemeMode();
-  const theme = useMemo(() => Theme(mode), [mode]);
+  const theme = useMemo(() => previewTheme(mode), [mode]);
+  const surfaceRef = useRef<HTMLDivElement>(null);
+  useFitContent(surfaceRef);
 
   const Example = useMemo(() => {
     const load = exampleLoaders[`${modulePath(id)}.tsx`];
@@ -309,6 +445,7 @@ export function SdsExample({
           <PreviewSurface
             className={PREVIEW_CLASS}
             padded={padding === "default"}
+            ref={surfaceRef}
           >
             {css ? <style>{css}</style> : null}
             <ExampleErrorBoundary id={id}>
