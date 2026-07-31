@@ -276,3 +276,117 @@
     </td>
   </tr>
 </table>
+<h2>Code examples</h2>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    PreComposedTable runs on
+    <a href="https://tanstack.com/table/latest">TanStack Table</a>, which SDS
+    takes as a peer dependency — install <strong>@tanstack/react-table</strong>
+    alongside it. Column definitions are TanStack's own, so anything its docs
+    describe applies here too.
+  </p>
+</div>
+<h3>Default</h3>
+<p>
+  Data, columns, and the features you want switched on — here sorting, row
+  selection and pagination — with Name pinned to the left edge and Actions to
+  the right. A column left as a plain accessor is drawn as a CellHeader and a
+  CellBasic, while the cells that render something else forward the element and
+  width they are handed. Note that data, columns and paginationConfig sit
+  outside the component so their identity is stable: a new paginationConfig
+  object sends the table back to its first page.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/DefaultPreComposedTable"
+></div>
+<h3>With global filtering</h3>
+<p>
+  enableGlobalFiltering puts a search input above the table that matches across
+  every column at once. The table holds the search term itself, so there is
+  nothing to wire up.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithGlobalFiltering"
+></div>
+<h3>With pagination</h3>
+<p>
+  The same table paged three rows at a time. paginationConfig takes Pagination's
+  own props, so pageSize sets the size of every page and placement moves the
+  controls, which sit on the right by default.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithPagination"
+></div>
+<h3>Fixed width</h3>
+<p>
+  tableWidth pins the table to 600px rather than letting it fill its container.
+  The columns need more room than that, so the table scrolls sideways while the
+  pinned Name and Actions columns hold their edges.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableFixedWidth"
+></div>
+<h3>With column filtering</h3>
+<p>
+  enableColumnFiltering adds a row of search inputs under the header, one per
+  column. The filters are held above the table here rather than inside it:
+  state.columnFilters and onColumnFiltersChange passed through tableOptions
+  override the state the component keeps, which is what makes them yours to
+  read, persist or reset.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithColumnFiltering"
+></div>
+<h3>With selective column filtering</h3>
+<p>
+  Not every column has to take part in the filter row. Status replaces its input
+  with a Dropdown through meta.filterComponent and matches on equality rather
+  than the default substring search, while Salary and Start Date opt out
+  altogether with enableColumnFilter: false.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithSelectiveColumnFiltering"
+></div>
+<h3>With custom column filters</h3>
+<p>
+  Every filter here is a component of its own: a Dropdown for Status, and a pair
+  of number inputs for Salary and Projects matched with TanStack's inNumberRange
+  filter. A filter component is called rather than mounted, so it holds no state
+  of its own — it reads column.getFilterValue() and writes
+  column.setFilterValue().
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithCustomColumnFilters"
+></div>
+<h3>With table actions</h3>
+<p>
+  The ref exposes the TanStack table as ref.current.table, which covers what the
+  props do not: clearing filters, selecting rows from outside the table, paging
+  programmatically. It is an imperative handle rather than state, so the toolbar
+  calls into it from its click handlers.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithTableActions"
+></div>
+<h3>With table options</h3>
+<p>
+  tableOptions is merged into the underlying TanStack table's options, so
+  anything useReactTable accepts can be set through it. This one passes
+  autoResetPageIndex: false, so filtering leaves you on the page you were
+  reading instead of returning you to the first.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/PreComposedTable/PreComposedTableWithTableOptions"
+></div>
