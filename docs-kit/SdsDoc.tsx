@@ -404,7 +404,7 @@ function claimSnippets(root: HTMLElement): SnippetSlot[] {
 
 /**
  * Renders full-fidelity documentation page HTML (with locally-served images),
- * originally imported by `scripts/import-zeroheight-storybook.ts`.
+ * one-time imported from ZeroHeight and now maintained by hand in this repo.
  *
  * Code examples are not part of the HTML: each one is an empty
  * `<div class="zeroheight-example" data-example="...">` placeholder that we
