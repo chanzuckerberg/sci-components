@@ -28,6 +28,9 @@ const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
 /** Column count of a labelled design-upload grid, set from its header row. */
 const UPLOAD_COLUMNS_PROPERTY = "--zh-upload-columns";
 
+/** Name, Type, Default, Description: the shape every props table is written in. */
+const PROPS_TABLE_COLUMNS = 4;
+
 /**
  * Sections a page needs before its contents are worth a sidebar of their own.
  * Under this the nav lists most of what is on screen already.
@@ -567,6 +570,34 @@ const Container = styled.div`
     vertical-align: middle;
   }
 
+  /* Props tables, marked by the pass below. Left to size themselves they follow
+     their content, so a component whose defaults happen to be long (a code
+     sample, a path into the source) hands that column half the table and leaves
+     the descriptions in a gutter. Fixing the layout spends the width on the
+     column that carries the prose, and gives every component's table the same
+     proportions. Breaking words is what keeps the narrow columns honest, since
+     a fixed column cannot widen to fit an unbroken path or type union. */
+  && table[data-zh-props] {
+    table-layout: fixed;
+  }
+  && table[data-zh-props] th,
+  && table[data-zh-props] td {
+    overflow-wrap: break-word;
+  }
+  /* The name column is the widest of the three because it is the one whose
+     content cannot be abbreviated: a prop is as long as it is named, and the
+     longest here run to thirty characters. */
+  && table[data-zh-props] tr > :nth-child(1) {
+    width: 22%;
+  }
+  && table[data-zh-props] tr > :nth-child(2),
+  && table[data-zh-props] tr > :nth-child(3) {
+    width: 16%;
+  }
+  && table[data-zh-props] tr > :nth-child(4) {
+    width: 46%;
+  }
+
   hr${OUTSIDE_PREVIEW} {
     border: none;
     border-top: 1px solid rgba(128, 128, 128, 0.3);
@@ -803,6 +834,30 @@ function layoutDesignUploads(root: HTMLElement): void {
 }
 
 /**
+ * Mark the tables that document a component's props, so the styles above can
+ * give the description column the room it needs.
+ *
+ * They are not distinguished in the markup: every table carries the same class,
+ * and a props table is simply one whose header row ends in "Description". That
+ * holds for all of them, and matches nothing else in the docs, the other
+ * four-column tables being token and design references with headings of their
+ * own.
+ */
+function markPropsTables(root: HTMLElement): void {
+  root
+    .querySelectorAll<HTMLTableElement>("table.zeroheight-table")
+    .forEach((table) => {
+      const header = table.rows[0];
+      if (header?.cells.length !== PROPS_TABLE_COLUMNS) return;
+
+      const last = header.cells[header.cells.length - 1];
+      if (last?.textContent?.trim().toLowerCase() === "description") {
+        table.dataset.zhProps = "";
+      }
+    });
+}
+
+/**
  * Renders full-fidelity documentation page HTML (with locally-served images),
  * one-time imported from ZeroHeight and now maintained by hand in this repo.
  *
@@ -846,6 +901,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
     if (!root) return;
 
     layoutDesignUploads(root);
+    markPropsTables(root);
 
     const contents = collectContents(root);
     const listed = contents.reduce(

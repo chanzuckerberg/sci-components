@@ -2,7 +2,6 @@ import { CellBasic, Icon } from "@czi-sds/components";
 
 function App() {
   const TableCellStyle = {
-    border: "dashed 1px #eee",
     maxWidth: 160,
     width: 160,
   };
