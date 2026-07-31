@@ -632,6 +632,7 @@ const Sidebar = styled.aside`
 
   /* Stacked, the nav leads the page rather than trailing the whole of it. */
   @media (max-width: ${STACK_BELOW}px) {
+    display: none;
     flex: none;
     order: -1;
     width: 100%;
