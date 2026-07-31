@@ -138,4 +138,25 @@
     background-size: cover;
     margin-top: 1px;
   }
+
+  /*
+   * (masoudmanson): Deprecated components live under the "Deprecated" story
+   * title prefix, so every one of their sidebar nodes carries a data-item-id of
+   * "deprecated" (the category header) or one prefixed with "deprecated-"
+   * (components, stories and their docs pages). The color matches the
+   * "Deprecated" tag badge configured in manager.js.
+   */
+  #storybook-explorer-menu
+    .sidebar-subheading[data-item-id="deprecated"]
+    button,
+  #storybook-explorer-menu [data-item-id^="deprecated-"],
+  #storybook-explorer-menu [data-item-id^="deprecated-"] a,
+  #storybook-explorer-menu [data-item-id^="deprecated-"] button {
+    color: #c61128 !important;
+  }
+
+  #storybook-explorer-menu [data-item-id^="deprecated-"] a,
+  #storybook-explorer-menu [data-item-id^="deprecated-"] > button {
+    text-decoration: line-through !important;
+  }
 </style>

@@ -41,7 +41,6 @@ export default {
     },
   },
   component: ButtonDropdownLegacy,
-  tags: ["deprecated"],
   title: "Deprecated/ButtonDropdownLegacy",
 } as Meta;
 

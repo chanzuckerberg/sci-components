@@ -54,7 +54,6 @@ export default {
     },
   },
   component: Demo,
-  tags: ["deprecated"],
   title: "Deprecated/Alert",
 } as Meta;
 
