@@ -24,3 +24,92 @@
   features.
 </p>
 <div class="zeroheight-example" data-example="core/Table/DefaultTable"></div>
+<h3>Recipes</h3>
+<p>
+  These recipes show a few of the more complex approaches available for
+  customizing Tables.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The Table components are presentational: they render the markup and the
+    styling, and leave sorting, filtering and paging to whatever manages your
+    data. The recipes below use
+    <a href="https://tanstack.com/table/latest">TanStack Table</a>
+    for that, as does PreComposedTable internally, and two of them add
+    <a href="https://tanstack.com/query/latest">TanStack Query</a>
+    and
+    <a href="https://tanstack.com/virtual/latest">TanStack Virtual</a>
+    for fetching and virtualization. None of them ship with SDS — install the
+    ones you need alongside it.
+  </p>
+</div>
+<h4>Text-only Table</h4>
+<p>
+  A table made up entirely of CellBasics, with headers that sort nothing and so
+  set hideSortIcon.
+</p>
+<div class="zeroheight-example" data-example="core/Table/TextOnlyTable"></div>
+<h4>Table with a custom sorting function</h4>
+<p>
+  Every column here sorts on click through TanStack Table's own comparators,
+  except Last Name, which is given a sortingFn of its own that orders names by
+  length rather than alphabetically. Note that each sortable header sets hover,
+  without which CellHeader draws no sort chevron.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/Table/TableWithCustomSorting"
+></div>
+<h4>Table with custom Tooltips</h4>
+<p>This shows a Table with custom Tooltips.</p>
+<div
+  class="zeroheight-example"
+  data-example="core/Table/TableWithCustomTooltips"
+></div>
+<h4>Table with virtualized rows</h4>
+<p>
+  A thousand rows in a scroll container with only the visible ones in the DOM,
+  using @tanstack/react-virtual to decide which rows to draw and
+  @tanstack/react-query to fetch the next batch as the scroller nears its end.
+  The spacer rows above and below the window are what keep the scrollbar
+  proportional.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/Table/TableWithVirtualizedRows"
+></div>
+<h4>Editable Table Cells with Access to Internal Data</h4>
+<p>
+  Editing reaches the data above the table through TanStack Table's meta object.
+  Click a cell to edit it; the change is written back on blur, and the log below
+  records what moved. Note that the editable cells are CellComponents rather
+  than CellBasics, since CellBasic renders text rather than children.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/Table/TableWithEditableCells"
+></div>
+<h4>Table with Front-End Pagination</h4>
+<p>
+  All the rows are in memory and TanStack Table slices them, so paging is only a
+  change of pageIndex. Pagination counts pages from 1 while TanStack counts from
+  0, which is the one thing to keep straight when wiring the two together.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/Table/TableWithFrontEndPagination"
+></div>
+<h4>Table with Back-End Pagination</h4>
+<p>
+  Only one page of rows exists on the client, so manualPagination stops the
+  table from slicing and the row count arrives with the data. The request is
+  faked with a delay, and keepPreviousData holds the current page on screen
+  while the next one loads.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/Table/TableWithBackEndPagination"
+></div>
