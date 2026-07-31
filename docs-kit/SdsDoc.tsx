@@ -105,6 +105,62 @@ const Container = styled.div`
     margin: 0.5em 0 1.5em;
   }
 
+  /* The cover the documentation opens on: the design system's name and summary
+     set in the clear half of the SDS illustration. The artwork fills the panel
+     and is anchored by its centre, so the drawing holds the same place in it at
+     any page width, and the copy is kept to the space beside it.
+
+     Doubling the container class outbids Storybook's own docs rules, which
+     reach these pages because the imported HTML sits outside .sb-unstyled. */
+  && .zeroheight-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 420px;
+    margin: 0 0 1.5em;
+    padding: 0 56px;
+    border-radius: 8px;
+    /* The illustration is drawn on a white plate, so the panel carries that
+       surface and sets its own dark copy rather than inheriting the page's. */
+    background: url("/zeroheight-assets/sds-cover.png") center / cover no-repeat
+      #fff;
+    color: #14161a;
+  }
+  /* The drawing starts 58% of the way across the artwork, so the copy stops
+     short of that and the two never meet. */
+  && .zeroheight-cover > * {
+    max-width: 56%;
+  }
+  && .zeroheight-cover h1 {
+    /* Storybook's docs stylesheet reaches the headings on these pages, so the
+       system's own typeface is named here rather than left to inherit. */
+    font-family: "Inter", sans-serif;
+    font-size: 3rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  && .zeroheight-cover p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #4a4f54;
+    margin: 1em 0 0;
+  }
+
+  /* Half a panel this narrow no longer holds a readable line, so the cover goes
+     typographic and the illustration steps aside. */
+  @media (max-width: 700px) {
+    && .zeroheight-cover {
+      min-height: 0;
+      padding: 40px 32px;
+      background-image: none;
+    }
+    && .zeroheight-cover > * {
+      max-width: 100%;
+    }
+  }
+
   a${OUTSIDE_PREVIEW} {
     color: #0b6cccff;
     text-decoration: none;
