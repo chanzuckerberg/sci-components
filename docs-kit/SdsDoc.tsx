@@ -433,6 +433,13 @@ const Container = styled.div`
   && .zeroheight-table-borderless td:first-child {
     padding-left: 0;
   }
+  /* Rows that pair an icon with a block of text, the icon alone in its cell.
+     Centre them, so a tall paragraph does not leave its icon stranded up at the
+     top. Rows holding prose in every cell keep the top alignment set above,
+     which is what lines their opening words up with each other. */
+  && .zeroheight-table-borderless tr:has(> td > img:only-child) > td {
+    vertical-align: middle;
+  }
 
   hr${OUTSIDE_PREVIEW} {
     border: none;
