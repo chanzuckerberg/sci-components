@@ -7,7 +7,7 @@
 </p>
 <h2>For Designers</h2>
 <h2>Overview</h2>
-<table class="zeroheight-table">
+<table class="zeroheight-table zeroheight-table-borderless">
   <tr>
     <td>
       <p>
@@ -35,9 +35,7 @@
     </td>
     <td>
       <p>
-        <strong>Jump to</strong>
-        <strong>s</strong>
-        <strong>ection:</strong>
+        <strong>Jump to section:</strong>
       </p>
       <p>
         <a
@@ -245,7 +243,7 @@
 <p></p>
 <h2>For Engineers</h2>
 <h2>Overview</h2>
-<table class="zeroheight-table">
+<table class="zeroheight-table zeroheight-table-borderless">
   <tr>
     <td>
       <p>
@@ -293,212 +291,209 @@
   <figure>
     <figcaption>Shell</figcaption>
     <pre><code class="zeroheight-codeblock-content language-sh">// with npm
-
-npm i czifui
-
-
-
+npm i @czi-sds/components
 // with yarn
-
-yarn add czifui</code></pre>
+yarn add @czi-sds/components</code></pre>
   </figure>
 </div>
-<p>SDS currently uses Material UI v5</p>
+<p>SDS currently uses Material UI v9.</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Upgrading an existing app?</strong>
+    SDS 24.0.0 is a breaking release that moves the Material UI peer dependency
+    from v5 to v9. The
+    <a
+      href="https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-24.0.0.md"
+    >
+      migration guide
+    </a>
+    covers the dependency updates, the MUI slots and slotProps API changes, icon
+    renames, and a verification checklist.
+  </p>
+</div>
 <p>
-  czifui installs without direct dependencies to prevent version errors. Please
-  ensure the following peer dependencies are also installed:
+  @czi-sds/components installs without direct dependencies to prevent version
+  errors. Please ensure the following peer dependencies are also installed:
 </p>
 <div class="zeroheight-code-snippet">
   <figure>
-    <figcaption>HTML</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-html">"@emotion/css"
-
- "@emotion/react"
-
- "@emotion/styled"
-
- "@material-ui/core"
-
- "@material-ui/icons"
-
- "@material-ui/lab"
-
- "react"
-
- "react-dom"</code></pre>
+    <figcaption>JSON</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-json">{
+  "@emotion/css": "^11.11.2",
+  "@emotion/react": "^11.11.3",
+  "@emotion/styled": "^11.11.0",
+  "@mui/icons-material": "^9.0.0",
+  "@mui/material": "^9.0.0",
+  "@tanstack/react-table": "^8.21.3",
+  "react": "&gt;=18.0.0",
+  "react-dom": "&gt;=18.0.0"
+}</code></pre>
   </figure>
 </div>
-<p>To install the dependencies:</p>
+<p>To install the package together with its peer dependencies:</p>
 <div class="zeroheight-code-snippet">
   <figure>
     <figcaption>Shell</figcaption>
     <pre><code class="zeroheight-codeblock-content language-sh">// with npm
-
-npm i @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom
-
-
-
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @tanstack/react-table react react-dom
 // with yarn
-
-yarn add @emotion/css @emotion/react @emotion/styled @material-ui/core @material-ui/icons @material-ui/lab react react-dom</code></pre>
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @tanstack/react-table react react-dom</code></pre>
   </figure>
+</div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>On React 18 or below:</strong>
+    Material UI ships react-is v19. Pin react-is to match your React version to
+    avoid runtime errors in prop-type checks — use resolutions for Yarn, or
+    overrides for npm and pnpm.
+  </p>
 </div>
 <hr />
 <h3>Usage</h3>
-<p>czifui comes with four main exports that help you build your app:</p>
-<ol class="zeroheight-ordered-list">
-  <li>
-    <p>
-      <strong>Components</strong>
-      - Accessible and reusable components
-    </p>
-  </li>
-</ol>
+<p>
+  @czi-sds/components comes with five main exports that help you build your app.
+</p>
+<p><strong>1. Components</strong> — accessible and reusable components.</p>
 <div class="zeroheight-code-snippet">
   <figure>
-    <figcaption>JavaScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-js">import React from "react";
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { Button } from "@czi-sds/components";
 
-import { Button } from "czifui";
-
-&lt;Button onClick={actions.onClick} sdsStyle="rounded" sdsType="primary"&gt;
-
- {text}
-
-&lt;/Button&gt;;</code></pre>
+export function SaveButton() {
+  return (
+    &lt;Button onClick={handleSave} sdsStyle="rounded" sdsType="primary"&gt;
+      Save
+    &lt;/Button&gt;
+  );
+}</code></pre>
   </figure>
 </div>
 <p>
-  2.
-  <strong>Mixins</strong>
-  - Grouped styles defined by the design system
+  <strong>2. Mixins</strong>
+  — grouped styles defined by the design system.
 </p>
 <div class="zeroheight-code-snippet">
   <figure>
-    <figcaption>JavaScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-js">import styled from "@emotion/styled";
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import styled from "@emotion/styled";
+import Typography from "@mui/material/Typography";
+import { fontHeaderXl } from "@czi-sds/components";
 
-import { Typography } from "@material-ui/core";
-
-import { fontHeaderXL } from "czifui";
-
-
-
-export const Title - styled(Typography)`
-
- ${fontHeaderXl}
-
-
-
- // which compiles to:
-
- font-size: 22px;
-
- font-weight: 600;
-
- letter-spacing: 0.3px;
-
- line-height: 30px;
-
+export const Title = styled(Typography)`
+  ${fontHeaderXl}
+  // On a wide viewport this compiles to:
+  // font-family: Inter;
+  // font-size: 22px;
+  // font-weight: 600;
+  // letter-spacing: 0px;
+  // line-height: 30px;
 `;</code></pre>
   </figure>
 </div>
 <p>
-  3.
-  <strong>Selectors</strong>
-  - Helper functions that return theme variables based on passed props
+  <strong>3. Selectors</strong>
+  — helper functions that read theme variables from the passed props.
 </p>
 <div class="zeroheight-code-snippet">
   <figure>
-    <figcaption>JavaScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-js">import { css, SerializedStyles } from "@emotion/react";
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import styled from "@emotion/styled";
+import {
+  getSemanticColors,
+  getSpaces,
+  type CommonThemeProps,
+} from "@czi-sds/components";
 
-import styled from "@emotion/styled";
-
-import { getColors, getCorners } from "czifui";
-
-
-
-export const Tag = styled.div`
-
- // This is a callback function that returns more CSS rules, but the only way
-
- // to access the custom theme object
-
-   ${(props) =&gt; {
-
-    // getColors() is a selector that picks out colors from the theme object
-
-    const colors = getColors(props);
-
-    // getSpaces() is a selector that picks out spacings from the theme object
-
-    const spacings = getSpaces(props);
-
-
+export const Row = styled.div&lt;CommonThemeProps&gt;`
+  // A callback is the only way to reach the custom theme object.
+  ${(props) =&gt; {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
 
     return `
-
-     background-color: ${colors?.gray[500]};
-
-     padding-bottom: ${spacings?.m}px;
-
-     margin-bottom: ${spacings?.xxl}px;
-
+      background-color: ${semanticColors?.base?.backgroundSecondary};
+      color: ${semanticColors?.base?.textPrimary};
+      gap: ${spaces?.s}px;
+      padding: ${spaces?.m}px;
     `;
-
-   }}
-
+  }}
 `;</code></pre>
   </figure>
 </div>
 <p>
-  4.
-  <strong>CSS &amp; SCSS Variables</strong>
-  - Variables for the defaultTheme to use if your app doesn't support
-  @emotion/styled
+  <strong>4. CSS and SCSS variables</strong>
+  — for apps that do not use @emotion/styled.
 </p>
 <div class="zeroheight-code-snippet">
   <figure>
     <figcaption>CSS</figcaption>
     <pre><code class="zeroheight-codeblock-content language-css">// with SCSS variables
+@import "~@czi-sds/components/dist/variables";
 
-@import "~czifui/dist/variables";
-
-
-
-.button-primary {
-
- background-color: $sds-color-primary-400;
-
- padding: $sds-spaces-xxs;
-
+.card {
+  background-color: $sds-color-semantic-base-background-primary;
+  color: $sds-color-semantic-base-text-primary;
+  padding: $sds-space-m;
 }
 
-
-
 // with CSS variables
-
-.button-primary {
-
- background-color: var(--sds-color-primary-400);
-
- padding: var(--sds-spaces-xxs);
-
+.card {
+  background-color: var(--sds-color-semantic-base-background-primary);
+  color: var(--sds-color-semantic-base-text-primary);
+  padding: var(--sds-space-m);
 }</code></pre>
   </figure>
 </div>
-<h4>Default Theme</h4>
 <p>
-  To use the default theme in your React application, complete the following:
+  <strong>5. Tailwind config</strong>
+  — a Tailwind-compliant version of the design tokens.
 </p>
-<p>1. Add the following HTML to your index.html at the &lt;head&gt;section:</p>
+<p>First import the SDS config into your application's Tailwind config:</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>JavaScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-js">// tailwind.config.js
+const sds = require("@czi-sds/components/dist/tailwind.json");
+
+module.exports = {
+  mode: "jit",
+  content: ["./src/**/*.{tsx,scss}"],
+  theme: {
+    extend: sds,
+  },
+};</code></pre>
+  </figure>
+</div>
+<p>
+  You can then use the SDS Tailwind classes in your app. Spacing and typography
+  are exposed directly, while colors are grouped by mode under light and dark:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">export function Hello() {
+  return (
+    &lt;p className="px-sds-l py-sds-s font-sds-body text-sds-body-s-400-wide"&gt;
+      Hello, World!
+    &lt;/p&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<h4>Theme setup</h4>
+<p>
+  SDS ships light and dark themes. To use them in your React application,
+  complete the following:
+</p>
+<p>1. Add the SDS fonts to the &lt;head&gt; section of your index.html:</p>
 <div class="zeroheight-code-snippet">
   <figure>
     <figcaption>HTML</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-html">// installs the sds font from google fonts
-
-&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+    <pre><code class="zeroheight-codeblock-content language-html">&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
 &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
 &lt;link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
@@ -511,44 +506,64 @@ export const Tag = styled.div`
   </figure>
 </div>
 <p>
-  2. Import the default theme object and use it in Material UI's
-  &lt;ThemeProvider /&gt;:
+  2. Wrap your app in Material UI's ThemeProvider and Emotion's ThemeProvider.
+  StyledEngineProvider with injectFirst lets your own styles override MUI's:
 </p>
 <div class="zeroheight-code-snippet">
   <figure>
-    <figcaption>JavaScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-js">import { defaultTheme } from "czifui";
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { defaultTheme } from "@czi-sds/components";
 
-import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-
-import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-
-
-
-&lt;StylesProvider injectFirst&gt;
-
- &lt;EmotionThemeProvider theme={defaultTheme}&gt;
-
+&lt;StyledEngineProvider injectFirst&gt;
   &lt;ThemeProvider theme={defaultTheme}&gt;
-
-   &lt;YourApp /&gt;
-
+    &lt;EmotionThemeProvider theme={defaultTheme}&gt;
+      &lt;CssBaseline /&gt;
+      &lt;YourApp /&gt;
+    &lt;/EmotionThemeProvider&gt;
   &lt;/ThemeProvider&gt;
-
- &lt;/EmotionThemeProvider&gt;
-
-&lt;/StylesProvider&gt;;</code></pre>
+&lt;/StyledEngineProvider&gt;;</code></pre>
   </figure>
 </div>
 <p>
-  3.&nbsp; If you need to override the default SDS theme, please follow the
-  instructions
-  <a
-    href="https://github.com/chanzuckerberg/sci-components/blob/main/docs/how-to-override-default-theme.md"
-  >
-    here
+  defaultTheme is the light theme. To switch modes at runtime, build the theme
+  with the Theme helper, which takes "light" or "dark":
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { useMemo, useState } from "react";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Theme } from "@czi-sds/components";
+
+export function App() {
+  const [mode, setMode] = useState&lt;"light" | "dark"&gt;("light");
+  const theme = useMemo(() =&gt; Theme(mode), [mode]);
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;YourApp /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<p>
+  3. To build a theme from your own color palette, pass it through
+  makeSdsSemanticAppTheme and makeThemeOptions. See the
+  <a href="https://github.com/chanzuckerberg/sci-components#theme-system">
+    Theme System guide
   </a>
-  .
+  for the full example.
 </p>
 <hr />
 <h3>Contributing to the SDS</h3>
@@ -577,7 +592,7 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
   <li>
     <p>
       Post the component request to the
-      <a href="https://czi-sci.slack.com/archives/C032S43KKFV)."
+      <a href="https://czi-sci.slack.com/archives/C032S43KKFV"
         >#sci-design-system-support</a
       >
       channel in Slack using the following request template to ensure all of the

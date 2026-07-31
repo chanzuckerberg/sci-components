@@ -347,6 +347,28 @@ const Container = styled.div`
     font-weight: 600;
   }
 
+  /* Opt-in modifier for tables used purely for layout (an icon beside a block of
+     text, say) rather than to present data. Add it alongside the base class:
+     <table class="zeroheight-table zeroheight-table-borderless">. The grid drops
+     away and the first column lines up with the surrounding prose.
+
+     Doubling the container class outbids Storybook's own docs table rules, which
+     reach these pages because the imported HTML sits outside .sb-unstyled. */
+  && .zeroheight-table-borderless tr,
+  && .zeroheight-table-borderless th,
+  && .zeroheight-table-borderless td {
+    border: none;
+    background: none;
+  }
+  && .zeroheight-table-borderless th,
+  && .zeroheight-table-borderless td {
+    padding: 0.5em 0.6em;
+  }
+  && .zeroheight-table-borderless th:first-child,
+  && .zeroheight-table-borderless td:first-child {
+    padding-left: 0;
+  }
+
   hr${OUTSIDE_PREVIEW} {
     border: none;
     border-top: 1px solid rgba(128, 128, 128, 0.3);
