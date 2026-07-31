@@ -1,0 +1,515 @@
+<h1>HeatmapChart</h1>
+<p>
+  A grid of cells coloured by value, for matrices too large to read as a table.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Ships separately:</strong>
+    HeatmapChart comes from @czi-sds/data-viz, not @czi-sds/components, and it
+    needs ECharts alongside it. See the
+    <a href="./?path=/docs/data-viz-overview--docs" target="_top">
+      Data Viz overview
+    </a>
+    for installation and peer dependencies.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/HeatmapChart/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>How it is built</h2>
+<p>
+  HeatmapChart is a thin React wrapper around an
+  <a href="https://echarts.apache.org/en/index.html">Apache ECharts</a>
+  instance. It is not ECharts' heatmap series: it is a scatter series drawn on
+  two category axes, one symbol per cell. That is what lets a cell be a square,
+  a rounded square, or a circle whose diameter carries a second measurement, as
+  a dot plot.
+</p>
+<p>Three consequences of that design are worth knowing before you start:</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>The props are ECharts' vocabulary, not the SDS one.</strong>
+      itemStyle, emphasis, symbolSize, grid, and axisPointer are passed through
+      to the underlying option object, and the ECharts documentation is the
+      reference for each of them. The chart takes nothing from the SDS theme —
+      color scales are yours to supply.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>It renders to SVG by default.</strong>
+      That keeps text crisp and elements inspectable, and is the right choice up
+      to a few thousand cells. Beyond that, switch
+      <em>echartsRendererMode</em>
+      to canvas, and reach for the camera below.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Animation is off and updates are throttled to 100ms.</strong>
+      The component is memoised and resizes the chart before each update, so
+      passing new data on every frame is safe; it will coalesce.
+    </p>
+  </li>
+</ul>
+<h2>Sizing</h2>
+<p>
+  <strong>width</strong>
+  and
+  <strong>height</strong>
+  are required, in pixels, and the component throws if either is missing or zero
+  — ECharts cannot initialise into a box with no area. The chart does not
+  measure its container, so a responsive heatmap means measuring the container
+  yourself and passing the result down.
+</p>
+<p>
+  The grid fills those dimensions exactly, which makes cell size a matter of
+  arithmetic: pick the pixel size a cell should be and multiply by the number of
+  categories on each axis. Sizing the container to anything else stretches the
+  cells rather than clipping them.
+</p>
+<h2>Data and encoding</h2>
+<p>
+  <strong>data</strong>
+  is a flat array of cells, one per position in the grid, and each cell is an
+  object of whatever shape suits the data.
+  <strong>encode</strong>
+  names the two fields that place it:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">const data = [
+  { geneIndex: 0, cellTypeIndex: 0, percentage: 0.5 },
+  { geneIndex: 1, cellTypeIndex: 0, percentage: 0.8 },
+];
+
+&lt;HeatmapChart
+  data={data}
+  encode={{ x: "geneIndex", y: "cellTypeIndex" }}
+  xAxisData={genes}
+  yAxisData={cellTypes}
+  width={genes.length * 20}
+  height={cellTypes.length * 20}
+/&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  <strong>xAxisData</strong>
+  and
+  <strong>yAxisData</strong>
+  are the categories themselves, as strings, numbers, or objects with a value
+  and a textStyle. The values a cell is encoded on are indices into them, so the
+  two must line up: a cell whose geneIndex is 4 lands on the fifth entry of
+  xAxisData.
+</p>
+<p>
+  Everything else a cell carries — an expression level, a count, a p-value — is
+  invisible until something draws it. That is the job of
+  <strong>itemStyle</strong>
+  and
+  <strong>symbolSize</strong>
+  , both of which accept a callback that receives the data item, so the color
+  scale and the size scale are yours to define. Without an itemStyle every cell
+  is black, and symbolSize defaults to 5 pixels.
+</p>
+<h2>The camera</h2>
+<p>
+  A heatmap of any real size cannot be rendered whole.
+  <strong>camera</strong>
+  turns on a window over the grid, given in cells rather than pixels, and only
+  the cells inside it are drawn:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">&lt;HeatmapChart
+  camera={{ active: true, width: 40, height: 20 }}
+  width={40 * CELL_PX}
+  height={20 * CELL_PX}
+  {...rest}
+/&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  Underneath it is ECharts'
+  <em>dataZoom</em>
+  with the zoom locked, which is why the interactions are the ones dataZoom
+  provides: dragging pans the window, and the wheel scrolls it vertically. The
+  window starts at the origin of the grid, and defaults to 40 cells wide by 20
+  tall when the sizes are left out. Size the container to the window, not to the
+  data.
+</p>
+<h2>Escape hatches</h2>
+<p>
+  The named props cover the common cases; everything else in ECharts is reached
+  through
+  <strong>options</strong>
+  , which is merged into the generated option object. Tooltips, visual maps, and
+  axis labels all arrive this way. The merge is shallow and treats a few keys
+  specially, which is worth knowing when an option appears to be ignored:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <em>xAxis</em>
+      ,
+      <em>yAxis</em>
+      and
+      <em>series</em>
+      are merged one level deep over the chart's defaults, and only the first
+      entry of each is read. Passing an object replaces the matching default key
+      outright, so
+      <em>axisLabel</em>
+      given to xAxis replaces the whole default axisLabel rather than adding to
+      it.
+    </p>
+  </li>
+  <li>
+    <p>
+      <em>axisPointer</em>
+      and
+      <em>dataZoom</em>
+      accept either a single object, applied to both axes, or a two-entry array
+      for the x and y axes separately. dataZoom is only applied when the camera
+      is active, since otherwise there is no window for it to describe.
+    </p>
+  </li>
+  <li>
+    <p>
+      <em>grid</em>
+      has a prop of its own, which takes either an option object or a function
+      receiving the computed default — useful for insetting the grid to make
+      room for axis labels while keeping the sizing the chart worked out.
+    </p>
+  </li>
+  <li>
+    <p>
+      Every other key in options is spread over the result untouched, and wins.
+    </p>
+  </li>
+</ul>
+<div
+  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Do not use the dataZoom prop.</strong>
+    The type still advertises it, but the component never forwards it and it
+    ends up on the container div instead, where React will warn about an unknown
+    attribute. Pass dataZoom inside options, with the camera active.
+  </p>
+</div>
+<h2>Behavior and accessibility</h2>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      The chart is a single SVG or canvas element with no accessible name, no
+      roles, and no tab stop. Assistive technology can see nothing in it, and a
+      keyboard cannot reach a cell, so a heatmap needs a text equivalent
+      alongside it — a summary of what it shows, or the same numbers reachable
+      as a table.
+    </p>
+  </li>
+  <li>
+    <p>
+      Axis labels are drawn at font size 0 by default, and the x axis is rotated
+      90 degrees. The charts this was built for pair the grid with their own
+      scrollable axis components, which is why the built-in labels start hidden;
+      a small heatmap can turn them back on through options, as the example
+      below does.
+    </p>
+  </li>
+  <li>
+    <p>
+      Hover draws a border around the cell under the pointer — white and 4px on
+      a square, black and 2px on a circle — and never scales it. Pass
+      <strong>emphasis</strong>
+      to change that.
+    </p>
+  </li>
+  <li>
+    <p>
+      Tooltips are ECharts' own HTML tooltips, positioned over the chart and
+      built from a formatter you write. They are pointer-only, and they are not
+      the SDS Tooltip.
+    </p>
+  </li>
+  <li>
+    <p>
+      Handlers in
+      <strong>onEvents</strong>
+      are rebound whenever the chart updates, and rebinding removes every
+      listener registered for that event name. If you also attach listeners to
+      the ECharts instance yourself, expect them to be dropped; attach them
+      through onEvents instead.
+    </p>
+  </li>
+  <li>
+    <p>
+      Color is the whole message in a heatmap. Pick a sequential scale that
+      survives being read by someone with a color vision deficiency, keep it
+      consistent between charts that will be compared, and make the scale itself
+      visible — a legend or a visualMap through options — since the component
+      does not draw one.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Any remaining props are spread onto the container div, so className, id, and
+  data-testid work as usual, and the component forwards its ref to that div.
+  Every option below that names an ECharts concept links to the ECharts
+  documentation for the shape it takes.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>data</p></td>
+    <td><p>DatasetComponentOption["source"]</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The cells, as a flat array of objects whose fields are named by encode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>xAxisData</p></td>
+    <td>
+      <p>(string | number |</p>
+      <p>{ value, textStyle })[]</p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The categories along the x axis. A cell's encoded x value is an index
+        into this array.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>yAxisData</p></td>
+    <td>
+      <p>(string | number |</p>
+      <p>{ value, textStyle })[]</p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>The categories along the y axis.</p></td>
+  </tr>
+  <tr>
+    <td><p>width</p></td>
+    <td><p>number</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Width of the chart in pixels. Must be greater than zero; the component
+        throws otherwise.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>height</p></td>
+    <td><p>number</p></td>
+    <td><p>- (required)</p></td>
+    <td><p>Height of the chart in pixels, under the same rule.</p></td>
+  </tr>
+  <tr>
+    <td><p>encode</p></td>
+    <td><p>{ x: string; y: string }</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Which fields of a data item place it on each axis. Omitting it leaves
+        ECharts to guess from the field order.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>symbol</p></td>
+    <td>
+      <p>"rect"</p>
+      <p>| "roundRect"</p>
+      <p>| "circle"</p>
+    </td>
+    <td><p>"rect"</p></td>
+    <td>
+      <p>
+        The shape of a cell. Circles turn the grid into a dot plot, where
+        diameter can carry a second measurement.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>symbolSize</p></td>
+    <td>
+      <p>number | number[]</p>
+      <p>| ((value, params)</p>
+      <p>=&gt; number | number[])</p>
+    </td>
+    <td><p>5</p></td>
+    <td>
+      <p>
+        Cell size in pixels: one number, a [width, height] pair, or a callback
+        given the data item. Set it to the cell pitch for a solid grid.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>itemStyle</p></td>
+    <td><p>ScatterSeriesOption["itemStyle"]</p></td>
+    <td><p>solid black</p></td>
+    <td>
+      <p>
+        How a cell is painted. Its color accepts a callback receiving the data
+        item, which is how a value becomes a color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>emphasis</p></td>
+    <td><p>ScatterSeriesOption["emphasis"]</p></td>
+    <td><p>a 2–4px border</p></td>
+    <td><p>How a cell is drawn while the pointer is over it.</p></td>
+  </tr>
+  <tr>
+    <td><p>camera</p></td>
+    <td>
+      <p>{ active: boolean;</p>
+      <p>width: number;</p>
+      <p>height: number }</p>
+    </td>
+    <td><p>40 × 20 when active</p></td>
+    <td>
+      <p>
+        Renders only a window of the grid, measured in cells, and lets the
+        pointer pan it. Sizes are ignored unless active is true.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>axisPointer</p></td>
+    <td><p>EChartsOption["axisPointer"]</p></td>
+    <td><p>hidden</p></td>
+    <td>
+      <p>
+        The crosshair following the pointer. One object applies to both axes; a
+        two-entry array configures them separately.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>grid</p></td>
+    <td>
+      <p>EChartsOption["grid"]</p>
+      <p>| ((defaultGrid) =&gt;</p>
+      <p>EChartsOption["grid"])</p>
+    </td>
+    <td><p>fills the container</p></td>
+    <td>
+      <p>
+        Where the plotting area sits inside the container. The function form
+        receives the computed default, for insetting it without recomputing the
+        size.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>options</p></td>
+    <td><p>EChartsOption</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Anything else ECharts understands, merged over the generated options.
+        See the merge rules above.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onEvents</p></td>
+    <td>
+      <p>Record&lt;string,</p>
+      <p>(event: unknown,</p>
+      <p>chart: ECharts) =&gt; void&gt;</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        ECharts event listeners by name. Each handler gets the raw event, whose
+        data property is the cell, and the chart instance.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>echartsRendererMode</p></td>
+    <td><p>"svg" | "canvas"</p></td>
+    <td><p>"svg"</p></td>
+    <td>
+      <p>
+        Which renderer ECharts initialises with. Canvas copes better with very
+        large grids. Changing it rebuilds the chart.
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>Code examples</h2>
+<h3><strong>Default HeatmapChart</strong></h3>
+<p>
+  The smallest complete heatmap: cells, two axes, a size, and an itemStyle that
+  turns each value into a color.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/HeatmapChart/DefaultHeatmapChart"
+></div>
+<h3>Dot plot</h3>
+<p>
+  Circles sized by one measurement and coloured by another, which is the form
+  this chart is most often used in: expression by cell type, with the diameter
+  carrying the share of cells expressing the gene.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartDotPlot"
+></div>
+<h3>Axis labels and a tooltip</h3>
+<p>
+  Labels turned back on through options, with the grid inset to make room for
+  them, and an ECharts tooltip naming the cell under the pointer.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartWithAxesAndTooltip"
+></div>
+<h3>Large grids and the camera</h3>
+<p>
+  A 4,800-cell grid rendered 240 cells at a time. Drag to move the window, or
+  use the wheel to travel down it.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartWithCamera"
+></div>
+<h3>Events</h3>
+<p>
+  A click handler through onEvents, reading the cell back out of the ECharts
+  event.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartWithEvents"
+></div>
