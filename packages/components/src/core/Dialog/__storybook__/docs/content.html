@@ -1,5 +1,5 @@
-<h2>Dialog</h2>
-<h3>SDS Source Code</h3>
+<h1>Dialog</h1>
+<h2>Source Code</h2>
 <p>
   The Dialog component's source code in the SDS codebase can be found
   <a
@@ -63,7 +63,7 @@
   down to DialogPaper, DialogTitle, and DialogActions automatically, so you set
   the size once on Dialog. DialogContent does not take a size.
 </p>
-<h3>SDS vs MUI</h3>
+<h2>SDS vs MUI</h2>
 <p>
   The SDS Dialog is built on top of MUI's Dialog. The following props differ in
   whether and how they work:
@@ -131,7 +131,7 @@
     </p>
   </li>
 </ul>
-<h3>MUI Documentation</h3>
+<h2>MUI Documentation</h2>
 <p>
   Documentation for the underlying MUI component can be found
   <a href="https://mui.com/material-ui/react-dialog/#scrolling-long-content"
@@ -139,12 +139,12 @@
   >
   .
 </p>
-<h3>Props</h3>
+<h2>Props</h2>
 <p>
   Any custom SDS props and MUI props required for implementation are found on
   the table below. See the MUI documentation for additional optional props.
 </p>
-<h4>Dialog Props</h4>
+<h3>Dialog Props</h3>
 <p>Props table for the Dialog component.</p>
 <table class="zeroheight-table">
   <tr>
@@ -231,7 +231,7 @@
     </td>
   </tr>
 </table>
-<h4>DialogTitle Props</h4>
+<h3>DialogTitle Props</h3>
 <p>Props table for the DialogTitle component.</p>
 <table class="zeroheight-table">
   <tr>
@@ -316,7 +316,7 @@
     <td><p>Class names for the individual parts of the title block.</p></td>
   </tr>
 </table>
-<h4>DialogActions Props</h4>
+<h3>DialogActions Props</h3>
 <p>Props table for the DialogActions component.</p>
 <table class="zeroheight-table">
   <tr>
@@ -356,27 +356,27 @@
     <td><p>Class name for the actions row.</p></td>
   </tr>
 </table>
-<h4>DialogContent Props</h4>
+<h3>DialogContent Props</h3>
 <p>
   DialogContent takes the MUI DialogContent props plus a classes object with a
   root key. It applies the SDS body type styles and removes the MUI padding;
   everything else is passed straight through.
 </p>
-<h3>Code examples</h3>
-<h4>Default Dialog</h4>
+<h2>Code examples</h2>
+<h3>Default Dialog</h3>
 <p>
   The minimum setup: a title, some content, and the open state you control. The
   onClose on DialogTitle renders the close button, and the one on Dialog handles
   the backdrop click and the Esc key.
 </p>
 <div class="zeroheight-example" data-example="core/Dialog/DefaultDialog"></div>
-<h4>Dialog Sizes</h4>
+<h3>Dialog Sizes</h3>
 <p>
   Each sdsSize sets a fixed width and a minimum height. The height still grows
   with the content, and the padding and title type scale with the size.
 </p>
 <div class="zeroheight-example" data-example="core/Dialog/DialogSizes"></div>
-<h4>Dialog with Action Buttons</h4>
+<h3>Dialog with Action Buttons</h3>
 <p>
   DialogActions places the buttons in the footer, right aligned by default, so
   the primary action is listed last.
@@ -385,7 +385,7 @@
   class="zeroheight-example"
   data-example="core/Dialog/DialogWithActionButtons"
 ></div>
-<h4>Dialog with Left-Aligned Buttons</h4>
+<h3>Dialog with Left-Aligned Buttons</h3>
 <p>
   Setting buttonPosition to left moves the button row to the other side. List
   the primary action first so it stays on the outside edge.
@@ -394,7 +394,7 @@
   class="zeroheight-example"
   data-example="core/Dialog/DialogWithLeftAlignedButtons"
 ></div>
-<h4>Persistent Dialog</h4>
+<h3>Persistent Dialog</h3>
 <p>
   Passing canClickOutsideClose as false ignores both the backdrop click and the
   Esc key. Leaving onClose off DialogTitle also hides the close button, so the
@@ -404,7 +404,7 @@
   class="zeroheight-example"
   data-example="core/Dialog/PersistentDialog"
 ></div>
-<h4>Multi-step Dialog</h4>
+<h3>Multi-step Dialog</h3>
 <p>
   The overline is the place for a step count. Keep every step in the same size
   Dialog, and make the workflow persistent so progress cannot be lost by
@@ -414,7 +414,7 @@
   class="zeroheight-example"
   data-example="core/Dialog/MultiStepDialog"
 ></div>
-<h4>Dialog with a Long Content</h4>
+<h3>Dialog with a Long Content</h3>
 <p>
   The paper is capped at the viewport height, so DialogContent scrolls on its
   own while the title and the action buttons stay in place.
@@ -423,7 +423,7 @@
   class="zeroheight-example"
   data-example="core/Dialog/DialogWithALongContent"
 ></div>
-<h4>Dialog with a Custom Title</h4>
+<h3>Dialog with a Custom Title</h3>
 <p>
   Passing children to DialogTitle replaces the built-in layout, which is how you
   add artwork above the title. The close button is part of that layout, so it

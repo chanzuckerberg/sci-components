@@ -28,8 +28,11 @@ const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
 /** Column count of a labelled design-upload grid, set from its header row. */
 const UPLOAD_COLUMNS_PROPERTY = "--zh-upload-columns";
 
-/** Anchor list in the imported HTML that declares a page's jump-to sidebar. */
-const JUMP_TO_CLASS = "zeroheight-jump-to";
+/**
+ * Sections a page needs before its contents are worth a sidebar of their own.
+ * Under this the nav lists most of what is on screen already.
+ */
+const MIN_CONTENTS_ITEMS = 3;
 
 const SIDEBAR_WIDTH = 176;
 const SIDEBAR_GAP = 40;
@@ -221,6 +224,51 @@ const Container = styled.div`
   .zeroheight-token-mention svg {
     flex: none;
     border-radius: 0;
+  }
+
+  /* The row of statuses an element's page opens with: "In Figma", "In Code"
+     and the like, each marked by an icon saying how far along that part of the
+     element is. A status is written as data — <li data-status="ready"> — and
+     the mark is drawn from here, so the three states the pages use are named
+     in one place and read as the key on the Element Status Tracker page has
+     them: ready to use, some variants available, work happening currently.
+
+     Doubling the container class outbids Storybook's own docs list rules,
+     which reach these pages because the imported HTML sits outside
+     .sb-unstyled. */
+  && .zeroheight-status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em 2.3em;
+    margin: 1.5em 0 2em;
+    padding: 0;
+    list-style: none;
+  }
+  && .zeroheight-status > li {
+    display: flex;
+    align-items: center;
+    gap: 1.25em;
+    margin: 0;
+  }
+  && .zeroheight-status > li::before {
+    content: "";
+    flex: none;
+    width: 0.9em;
+    height: 0.9em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  && .zeroheight-status > li[data-status="ready"]::before {
+    background-image: url("/zeroheight-assets/status-ready.svg");
+  }
+  && .zeroheight-status > li[data-status="partial"]::before {
+    background-image: url("/zeroheight-assets/status-partial.svg");
+  }
+  && .zeroheight-status > li[data-status="in-progress"]::before {
+    background-image: url("/zeroheight-assets/status-in-progress.svg");
   }
 
   .zeroheight-example-error {
@@ -468,16 +516,6 @@ const Container = styled.div`
     border-top: 1px solid rgba(128, 128, 128, 0.3);
     margin: 1.5em 0;
   }
-
-  /* The list a page's sidebar is built from. It is hidden once the sidebar
-     renders, so this styles the fallback: a section whose id went missing
-     leaves the list in the flow, where it still works as plain anchors. */
-  .${JUMP_TO_CLASS}:not([hidden]) {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
-    margin: 1.25em 0;
-  }
 `;
 
 /**
@@ -498,6 +536,13 @@ const Layout = styled.div`
 const Sidebar = styled.aside`
   flex: 0 0 ${SIDEBAR_WIDTH}px;
 
+  /* A long contents list would otherwise run past the bottom of a short window
+     with its last sections out of reach, so the stuck nav scrolls on its own. */
+  > * {
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+
   /* Stacked, the nav leads the page rather than trailing the whole of it. */
   @media (max-width: ${STACK_BELOW}px) {
     flex: none;
@@ -509,10 +554,10 @@ const Sidebar = styled.aside`
 /**
  * Storybook sizes a docs page for prose alone, leaving the sidebar no room of
  * its own. Widen the column that holds it, and only there: the selector matches
- * on the declaration itself, so every other docs page keeps its width.
+ * the marker the layout carries, so a page with no sidebar keeps its width.
  */
 const wideDocsColumn: CSSObject = {
-  [`.sbdocs-content:has(.${JUMP_TO_CLASS})`]: {
+  ".sbdocs-content:has([data-sds-contents])": {
     maxWidth: PROSE_WIDTH + SIDEBAR_GAP + SIDEBAR_WIDTH,
   },
 };
@@ -580,47 +625,62 @@ function claimSnippets(root: HTMLElement): SnippetSlot[] {
   });
 }
 
+/** An id for a section, from its heading, unique within the page. */
+function uniqueId(title: string, taken: Set<string>): string {
+  const base =
+    title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/^-+|-+$/g, "") || "section";
+
+  let id = base;
+  for (let suffix = 2; taken.has(id); suffix += 1) id = `${base}-${suffix}`;
+
+  taken.add(id);
+  return id;
+}
+
 /**
- * Read a page's sidebar off the anchor list it declares:
+ * The page's contents, read off its own headings: an `h2` is a section and the
+ * `h3`s under it are its subsections, which is the single level of nesting
+ * <NavigationJumpTo /> offers. Headings the export left before any `h2` (a page
+ * built entirely of `h3`s, say) stand as sections in their own right.
  *
- *   <nav class="zeroheight-jump-to">
- *     <a href="#dropdown">Dropdown</a>
- *     <a href="#menu-item" data-sub>Menu Item</a>
- *   </nav>
- *
- * An anchor marked `data-sub` nests under the one above it, the single level of
- * grouping the component offers, which is how a page carrying two jump lists
- * gets by with one sidebar.
- *
- * An anchor whose section is missing is dropped rather than pointed at nothing.
- * Should that leave nothing to show, the list itself stays visible and keeps
- * working, so a mistyped id costs the page its sidebar and not its navigation.
+ * Each heading is also given the id it lacks, both to anchor the nav item and
+ * to leave the section addressable.
  */
-function collectJumpTo(root: HTMLElement): JumpToItem[] {
-  const nav = root.querySelector<HTMLElement>(`nav.${JUMP_TO_CLASS}`);
-  if (!nav) return [];
-
+function collectContents(root: HTMLElement): JumpToItem[] {
+  const taken = new Set(
+    Array.from(root.querySelectorAll<HTMLElement>("[id]"), (node) => node.id)
+  );
   const items: JumpToItem[] = [];
+  let inSection = false;
 
-  nav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
-    const id = decodeURIComponent(anchor.getAttribute("href")?.slice(1) ?? "");
-    const section = id
-      ? root.querySelector<HTMLElement>(`#${CSS.escape(id)}`)
-      : null;
-    const title = anchor.textContent?.trim();
-    if (!section || !title) return;
-
-    const target: JumpToTarget = { elementRef: { current: section }, title };
-    const parent = items[items.length - 1];
-
-    if (anchor.hasAttribute("data-sub") && parent) {
-      parent.subItems = [...(parent.subItems ?? []), target];
-    } else {
-      items.push(target);
+  root.querySelectorAll<HTMLElement>("h2, h3").forEach((heading) => {
+    const title = heading.textContent?.trim();
+    // A live example renders real components, whose own headings belong to the
+    // example and not to the page. They mount after this runs, but the
+    // placeholders they fill are already here.
+    if (!title || heading.closest(`.zeroheight-example, .${PREVIEW_CLASS}`)) {
+      return;
     }
+
+    if (!heading.id) heading.id = uniqueId(title, taken);
+
+    const target: JumpToTarget = { elementRef: { current: heading }, title };
+    const section = items[items.length - 1];
+
+    if (heading.tagName === "H3" && inSection && section) {
+      section.subItems = [...(section.subItems ?? []), target];
+      return;
+    }
+
+    items.push(target);
+    inSection = heading.tagName === "H2";
   });
 
-  nav.hidden = items.length > 0;
   return items;
 }
 
@@ -715,12 +775,28 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
    */
   const innerHtml = useMemo(() => ({ __html: html }), [html]);
 
+  /**
+   * Whether to widen the column, decided from the markup rather than from the
+   * pass below, which runs too late to spare the page a second layout. The two
+   * agree: the nav lists one item per heading.
+   */
+  const hasContents = useMemo(
+    () => (html.match(/<h[23][\s>]/g) ?? []).length >= MIN_CONTENTS_ITEMS,
+    [html]
+  );
+
   useEffect(() => {
     const root = containerRef.current;
     if (!root) return;
 
     layoutDesignUploads(root);
-    setJumpTo(collectJumpTo(root));
+
+    const contents = collectContents(root);
+    const listed = contents.reduce(
+      (total, item) => total + 1 + (item.subItems?.length ?? 0),
+      0
+    );
+    setJumpTo(listed >= MIN_CONTENTS_ITEMS ? contents : []);
     setSnippets(claimSnippets(root));
 
     // Anything left is a bare block the import did not wrap in a snippet, so it
@@ -751,7 +827,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
   return (
     <>
       <Global styles={wideDocsColumn} />
-      <Layout>
+      <Layout data-sds-contents={hasContents || undefined}>
         {/* eslint-disable-next-line react/no-danger -- content is generated at
             build time from our own trusted ZeroHeight export, not user input. */}
         <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />

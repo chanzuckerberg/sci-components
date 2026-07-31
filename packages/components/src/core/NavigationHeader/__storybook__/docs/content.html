@@ -1,5 +1,5 @@
-<h2>NavigationHeader</h2>
-<h3>SDS Source Code</h3>
+<h1>NavigationHeader</h1>
+<h2>Source Code</h2>
 <p>
   The component's source code in the SDS codebase can be found
   <a
@@ -9,7 +9,7 @@
   </a>
   .
 </p>
-<h3>Behavior notes</h3>
+<h2>Behavior notes</h2>
 <ul class="zeroheight-bullet-list">
   <li>
     <p>
@@ -99,7 +99,7 @@
     </p>
   </li>
 </ul>
-<h3>Dropdown style and drawer style</h3>
+<h2>Dropdown style and drawer style</h2>
 <p>
   <strong>sdsStyle</strong>
   picks between two ways of opening a dropdown nav item, and it changes which
@@ -147,7 +147,7 @@
   the same split applies there: icons and section actions only appear when
   sdsStyle is "drawer".
 </p>
-<h3>Props</h3>
+<h2>Props</h2>
 <p>
   Any custom SDS props and MUI props required for implementation are found on
   the table below. See the MUI documentation for additional optional props.
@@ -413,7 +413,7 @@
   minus its position prop, so the remaining AppBar and DOM props reach the
   underlying element.
 </p>
-<h3>NavigationHeaderPrimaryNavItem and NavigationHeaderSecondaryNavItem</h3>
+<h2>NavigationHeaderPrimaryNavItem and NavigationHeaderSecondaryNavItem</h2>
 <p>
   Primary and secondary items share the same shape. Both are a union keyed on
   <strong>itemType</strong>
@@ -515,7 +515,7 @@
     <td><p>Link plumbing for defaultUrl.</p></td>
   </tr>
 </table>
-<h3>DropdownItem</h3>
+<h2>DropdownItem</h2>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -588,7 +588,7 @@
     </td>
   </tr>
 </table>
-<h3>SectionProps and ActionItem</h3>
+<h2>SectionProps and ActionItem</h2>
 <p>
   Keyed by section name on a dropdown item's
   <strong>sectionProps</strong>
@@ -619,7 +619,7 @@
     <td><p>How many columns of the panel this section occupies.</p></td>
   </tr>
 </table>
-<h3>Code examples</h3>
+<h2>Code examples</h2>
 <div
   class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
 >
@@ -634,7 +634,7 @@
     drawer-style one below does.
   </p>
 </div>
-<h4>Default header</h4>
+<h3>Default header</h3>
 <p>
   A dropdown-style header with a logo, title, tag, a text item and a dropdown
   item, one secondary item, and two buttons.
@@ -644,7 +644,7 @@
   data-example="core/NavigationHeader/NavigationHeaderDefault"
   data-example-padding="none"
 ></div>
-<h4>Grouped dropdown items</h4>
+<h3>Grouped dropdown items</h3>
 <p>
   Giving items a section name groups them under headings with a divider between
   groups. Only the label and the section are used in this style, so there is no
@@ -655,7 +655,7 @@
   data-example="core/NavigationHeader/NavigationHeaderSections"
   data-example-padding="none"
 ></div>
-<h4>Drawer style on a dark header</h4>
+<h3>Drawer style on a dark header</h3>
 <p>
   Hovering the nav item opens a panel instead of a menu, and this is the style
   that renders item icons and the section's actions. The panel is a MUI Drawer
@@ -668,7 +668,7 @@
   data-example="core/NavigationHeader/NavigationHeaderDrawer"
   data-example-padding="none"
 ></div>
-<h4>Banner above the header</h4>
+<h3>Banner above the header</h3>
 <p>
   The header sits below whatever topComponentSlot holds and re-measures it when
   it changes, so dismissing this banner closes the gap.

@@ -1,5 +1,5 @@
-<h2>Tabs</h2>
-<h3>SDS Source Code</h3>
+<h1>Tabs</h1>
+<h2>Source Code</h2>
 <p>
   The component's source code in the SDS codebase can be found
   <a
@@ -9,7 +9,7 @@
   </a>
   .
 </p>
-<h3>SDS vs MUI</h3>
+<h2>SDS vs MUI</h2>
 <p>
   SDS Tabs wraps MUI's Tabs, and SDS Tab wraps MUI's Tab. Both are exported from
   the library and are used together — a Tab has to be a direct child of a Tabs
@@ -97,13 +97,13 @@
     </p>
   </li>
 </ul>
-<h3>MUI Documentation</h3>
+<h2>MUI Documentation</h2>
 <p>
   Documentation for the underlying MUI component can be found
   <a href="https://mui.com/material-ui/react-tabs/">here</a>
   .
 </p>
-<h3>Behavior and accessibility</h3>
+<h2>Behavior and accessibility</h2>
 <ul class="zeroheight-bullet-list">
   <li>
     <p>
@@ -187,7 +187,7 @@
     </p>
   </li>
 </ul>
-<h3>Props</h3>
+<h2>Props</h2>
 <p>
   Any custom SDS props and MUI props required for implementation are found on
   the table below. See the MUI documentation for additional optional props.
@@ -281,7 +281,7 @@
     </td>
   </tr>
 </table>
-<h4>Tab</h4>
+<h3>Tab</h3>
 <p>
   One tab in the group. Beyond the props below it takes MUI's Tab props and the
   attributes of the button it renders.
@@ -367,21 +367,21 @@
     </td>
   </tr>
 </table>
-<h3>Code examples</h3>
-<h4>Tabs – Large</h4>
+<h2>Code examples</h2>
+<h3>Tabs – Large</h3>
 <p>
   The default size, for the top level of a screen. The selection is held in the
   page's state and written back from onChange, which is what a Tabs group needs
   to respond to a click.
 </p>
 <div class="zeroheight-example" data-example="core/Tabs/TabsLarge"></div>
-<h4>Tabs – Small</h4>
+<h3>Tabs – Small</h3>
 <p>
   A group at the small size, which drops the label text to 13px. It is meant for
   a second layer of tabbing rather than on its own.
 </p>
 <div class="zeroheight-example" data-example="core/Tabs/TabsSmall"></div>
-<h4>Tabs with count, text, and component</h4>
+<h3>Tabs with count, text, and component</h3>
 <p>
   count takes any node: a number, a count of 0 on an empty tab, and a number
   paired with a Tag on the last tab. The group is underlined, which separates it
@@ -391,14 +391,14 @@
   class="zeroheight-example"
   data-example="core/Tabs/TabsWithCountTextAndComponent"
 ></div>
-<h4>Tabs with panels</h4>
+<h3>Tabs with panels</h3>
 <p>
   The wiring between a tab and the content it reveals, which the component
   leaves to you: matching ids on each Tab and its panel, role="tabpanel" on the
   panel, and only the selected panel rendered.
 </p>
 <div class="zeroheight-example" data-example="core/Tabs/TabsWithPanels"></div>
-<h4>A disabled tab</h4>
+<h3>A disabled tab</h3>
 <p>
   A tab whose content is not ready yet. It stays in the strip, greyed out, and
   both the pointer and the arrow keys pass over it.
@@ -407,7 +407,7 @@
   class="zeroheight-example"
   data-example="core/Tabs/TabsWithDisabledTab"
 ></div>
-<h4>Two levels of tabs</h4>
+<h3>Two levels of tabs</h3>
 <p>
   A large group over a small one, which is the pairing the small size exists
   for. Each level keeps its own state, and the second level resets when the

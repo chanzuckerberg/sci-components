@@ -1,5 +1,5 @@
-<h2>Content Card</h2>
-<h3>SDS Source Code</h3>
+<h1>Content Card</h1>
+<h2>Source Code</h2>
 <p>
   The component's source code in the SDS codebase can be found
   <a
@@ -9,7 +9,7 @@
   </a>
   .
 </p>
-<h3>Anatomy</h3>
+<h2>Anatomy</h2>
 <p>
   A ContentCard takes its text through props rather than through composition:
   overlineText, titleText, subtitleText, and metadataText are rendered in that
@@ -53,13 +53,13 @@
     </p>
   </li>
 </ul>
-<h3>MUI Documentation</h3>
+<h2>MUI Documentation</h2>
 <p>
   Documentation for the underlying MUI Card component can be found
   <a href="https://mui.com/material-ui/react-card/">here</a>
   .
 </p>
-<h3>Props</h3>
+<h2>Props</h2>
 <p>
   Any custom SDS props and MUI props required for implementation are found on
   the table below. See the MUI documentation for additional optional props.
@@ -246,8 +246,8 @@
     <td><p>The main title text of the card.</p></td>
   </tr>
 </table>
-<h3>Code examples</h3>
-<h4><strong>Default Content Card</strong></h4>
+<h2>Code examples</h2>
+<h3><strong>Default Content Card</strong></h3>
 <p>
   This example has the minimum props needed for the ContentCard component.
   visualElementType is the only required prop, and it must be set even when the
@@ -257,7 +257,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/DefaultContentCard"
 ></div>
-<h4>Text slots</h4>
+<h3>Text slots</h3>
 <p>
   This example shows the four text props and the order they render in, with body
   copy passed as children.
@@ -266,7 +266,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/ContentCardTextSlots"
 ></div>
-<h4>Content Card with an image</h4>
+<h3>Content Card with an image</h3>
 <p>
   This example shows an image card in both image positions. The image prop takes
   either a URL string or a CardMedia element, imageSize sets the width of the
@@ -277,7 +277,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/ContentCardWithAnImage"
 ></div>
-<h4>Content Card with an icon</h4>
+<h3>Content Card with an icon</h3>
 <p>
   This example swaps the image for an icon. The image and icon props are
   mutually exclusive, and which one is available follows visualElementType.
@@ -286,7 +286,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/ContentCardWithAnIcon"
 ></div>
-<h4>Narrow Content Card</h4>
+<h3>Narrow Content Card</h3>
 <p>
   This example shows the narrow layout, which stacks the visual above the
   content and suits card grids. A wide card also switches to this layout on its
@@ -296,7 +296,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/NarrowContentCard"
 ></div>
-<h4>Content Card with actions</h4>
+<h3>Content Card with actions</h3>
 <p>
   This example adds a button row through ContentCardActions, which accepts SDS
   Button elements only. Alignment comes from buttonsPosition on the card.
@@ -305,7 +305,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/ContentCardWithActions"
 ></div>
-<h4>Clickable Content Card</h4>
+<h3>Clickable Content Card</h3>
 <p>
   This example makes the whole card a single click target. clickableCardProps is
   forwarded to the wrapper, so the card can act as a link, and only the first
@@ -316,7 +316,7 @@
   class="zeroheight-example"
   data-example="core/ContentCard/ClickableContentCard"
 ></div>
-<h4>Bounding box and decorative border</h4>
+<h3>Bounding box and decorative border</h3>
 <p>
   This example shows the two framing options: the accent bar added by
   decorativeBorder, and a card with boundingBox turned off so it sits directly

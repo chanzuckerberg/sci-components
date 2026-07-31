@@ -1,5 +1,5 @@
-<h2>IntentMessage</h2>
-<h3>SDS Source Code</h3>
+<h1>IntentMessage</h1>
+<h2>Source Code</h2>
 <p>
   The IntentMessage component's source code in the SDS codebase can be found
   <a
@@ -9,7 +9,7 @@
   </a>
   .
 </p>
-<h3>How it differs from Figma</h3>
+<h2>How it differs from Figma</h2>
 <p>
   The guidelines above describe two Figma constructs: an Intent Message built
   into every Input, and a standalone Intent Indicator that wraps an Input. In
@@ -41,7 +41,7 @@
     </p>
   </li>
 </ul>
-<h3>Behavior notes</h3>
+<h2>Behavior notes</h2>
 <ul class="zeroheight-bullet-list">
   <li>
     <p>
@@ -95,8 +95,8 @@
     </p>
   </li>
 </ul>
-<h3>Props</h3>
-<h4>IntentMessage Props</h4>
+<h2>Props</h2>
+<h3>IntentMessage Props</h3>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -173,7 +173,7 @@
   are all type errors even though the component would spread them onto its
   wrapper. Put them on an element of your own around it instead.
 </p>
-<h4>IntentMessageItem</h4>
+<h3>IntentMessageItem</h3>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -210,8 +210,8 @@
     </td>
   </tr>
 </table>
-<h3>Code examples</h3>
-<h4>Default Intent Message</h4>
+<h2>Code examples</h2>
+<h3>Default Intent Message</h3>
 <p>
   The usual shape: the Input as children, one message, and the border turned on.
   The Input carries the same intent so its own styling matches.
@@ -220,7 +220,7 @@
   class="zeroheight-example"
   data-example="core/IntentMessage/DefaultIntentMessage"
 ></div>
-<h4>The Three Intents</h4>
+<h3>The Three Intents</h3>
 <p>
   Each intent has its own color and default icon. These are rendered without
   children to show the message row on its own.
@@ -229,7 +229,7 @@
   class="zeroheight-example"
   data-example="core/IntentMessage/IntentMessageIntents"
 ></div>
-<h4>Stacked Messages</h4>
+<h3>Stacked Messages</h3>
 <p>
   Several messages can describe one Input. Both of these are given the same
   array; the first sorts by severity, the second has autoOrder off and keeps the
@@ -239,7 +239,7 @@
   class="zeroheight-example"
   data-example="core/IntentMessage/StackedIntentMessages"
 ></div>
-<h4>Custom Ordering</h4>
+<h3>Custom Ordering</h3>
 <p>
   orderBy changes the ranking. Reversing it here moves the positive message to
   the top and switches the border to the positive color.
@@ -248,7 +248,7 @@
   class="zeroheight-example"
   data-example="core/IntentMessage/IntentMessageOrderBy"
 ></div>
-<h4>Custom Icons</h4>
+<h3>Custom Icons</h3>
 <p>
   An icon can be given by name or as an element. Names are rendered at xs, so
   pass an element when you need a different size.
@@ -257,7 +257,7 @@
   class="zeroheight-example"
   data-example="core/IntentMessage/IntentMessageCustomIcons"
 ></div>
-<h4>Announcing the Message</h4>
+<h3>Announcing the Message</h3>
 <p>
   To connect the message to the Input for assistive technology, keep them as
   siblings and reference the message container from the Input's

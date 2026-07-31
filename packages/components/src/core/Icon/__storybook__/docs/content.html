@@ -1,5 +1,5 @@
-<h2>Icon</h2>
-<h3>SDS Source Code</h3>
+<h1>Icon</h1>
+<h2>Source Code</h2>
 <p>
   The Icon component's source code in the SDS codebase can be found
   <a
@@ -15,7 +15,7 @@
   </a>
   .
 </p>
-<h3>How it works</h3>
+<h2>How it works</h2>
 <p>
   Icon renders an SVG through MUI's SvgIcon, picking one of two drawings based
   on the size you ask for: xxs, xs, and s use the 16px artwork, while l and xl
@@ -54,7 +54,7 @@
     </p>
   </li>
 </ul>
-<h3>Props</h3>
+<h2>Props</h2>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -120,21 +120,21 @@
     </td>
   </tr>
 </table>
-<h3>Code examples</h3>
-<h4>Default Icon</h4>
+<h2>Code examples</h2>
+<h3>Default Icon</h3>
 <p>
   sdsIcon and sdsSize are the only required props. With no color set, the icon
   renders in indigo.
 </p>
 <div class="zeroheight-example" data-example="core/Icon/DefaultIcon"></div>
-<h4>Icon Sizes</h4>
+<h3>Icon Sizes</h3>
 <p>
   The five sizes, shown with an icon that supports all of them. Below s the 16px
   artwork is scaled down, and at l and xl a separate, more detailed drawing is
   used.
 </p>
 <div class="zeroheight-example" data-example="core/Icon/IconSizes"></div>
-<h4>Sizes Are Per Icon</h4>
+<h3>Sizes Are Per Icon</h3>
 <p>
   Some icons ship only the small artwork and some only the large. Asking for a
   size an icon does not have fails to compile, and renders nothing at runtime.
@@ -143,13 +143,13 @@
   class="zeroheight-example"
   data-example="core/Icon/IconAvailableSizes"
 ></div>
-<h4>Icon Colors</h4>
+<h3>Icon Colors</h3>
 <p>
   color picks the hue and shade picks the step within it. Both come from the SDS
   palette rather than from the surrounding text color.
 </p>
 <div class="zeroheight-example" data-example="core/Icon/IconColors"></div>
-<h4>Icons in Components</h4>
+<h3>Icons in Components</h3>
 <p>
   When an icon is passed to another SDS component, that component controls the
   size and the color, so leave color off and let it inherit the component's
@@ -159,7 +159,7 @@
   class="zeroheight-example"
   data-example="core/Icon/IconsInComponents"
 ></div>
-<h4>Accessible Icon-only Controls</h4>
+<h3>Accessible Icon-only Controls</h3>
 <p>
   The SVG carries no accessible name, so an icon on its own needs a label on the
   control around it. Next to visible text the icon is decorative and needs

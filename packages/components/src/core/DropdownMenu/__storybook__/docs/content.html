@@ -1,5 +1,5 @@
-<h2>DropdownMenu</h2>
-<h3>SDS Source Code</h3>
+<h1>DropdownMenu</h1>
+<h2>Source Code</h2>
 <p>
   The component's source code in the SDS codebase can be found
   <a
@@ -9,7 +9,7 @@
   </a>
   .
 </p>
-<h3>SDS vs MUI</h3>
+<h2>SDS vs MUI</h2>
 <p>
   Both SDS's DropdownMenu and MUI's Autocomplete have huge API surfaces, so it
   is not practical to list every way in which they differ (in part because the
@@ -58,13 +58,13 @@
     </p>
   </li>
 </ul>
-<h3>MUI Documentation</h3>
+<h2>MUI Documentation</h2>
 <p>
   Documentation for the underlying MUI Autocomplete component can be found
   <a href="https://mui.com/material-ui/react-autocomplete/">here</a>
   .
 </p>
-<h3>Props</h3>
+<h2>Props</h2>
 <p>
   Any custom SDS props and MUI props required for implementation are found on
   the table below. See the MUI documentation for additional optional props.
@@ -318,8 +318,8 @@
     dropdown.
   </p>
 </div>
-<h3>Code Examples</h3>
-<h4>Default DropdownMenu</h4>
+<h2>Code Examples</h2>
+<h3>Default DropdownMenu</h3>
 <p>
   This example has the minimum props and menu item metadata needed for the
   DropdownMenu.
@@ -362,7 +362,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DefaultDropdownMenu"
 ></div>
-<h4>DropdownMenu with custom click target</h4>
+<h3>DropdownMenu with custom click target</h3>
 <p>
   The example below shows how DropdownMenu can be used in conjunction with a
   click target component (in this case, the InputDropdown component). When the
@@ -373,7 +373,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithCustomClickTarget"
 ></div>
-<h4>DropdownMenu with search</h4>
+<h3>DropdownMenu with search</h3>
 <p>
   An InputSearch component can be incorporated into the DropdownMenu component
   by passing it the search prop.
@@ -422,7 +422,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithSearch"
 ></div>
-<h4>DropdownMenu with multi-select</h4>
+<h3>DropdownMenu with multi-select</h3>
 <p>
   You can allow users to select multiple menu items by passing the DropdownMenu
   component the multiple prop. MenuItems will be shifted further to the right to
@@ -436,11 +436,11 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithMultiSelect"
 ></div>
-<h4>
+<h3>
   Dropdown with search and multi-select; does
   <em>not</em>
   maintain searched query upon selection of a menu item
-</h4>
+</h3>
 <p>
   If search is included in the DropdownMenu, by default the search input will be
   maintained when a user selects a MenuItem (if multiple selections are allowed;
@@ -478,7 +478,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownWithSearchAndMultiSelectDoesNotMaintainSearchedQueryUponSelectionOfAMenuItem"
 ></div>
-<h4>DropdownMenu with grouped sections</h4>
+<h3>DropdownMenu with grouped sections</h3>
 <p>MenuItems can be displayed in groups with a label.</p>
 <p>
   This requires passing DropdownMenu the groupBy prop to group options under the
@@ -517,12 +517,12 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithGroupedSections"
 ></div>
-<h3>Recipes</h3>
+<h2>Recipes</h2>
 <p>
   These recipes show a few of the more complex approaches available for
   customizing Dropdown Menus.
 </p>
-<h4>DropdownMenu with customized isOptionEqualToValue</h4>
+<h3>DropdownMenu with customized isOptionEqualToValue</h3>
 <p>
   The isOptionEqualToValue prop changes how a selected value is compared against
   the available options. By default option.name === val.name is used. In the
@@ -539,7 +539,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithCustomizedIsOptionEqualToValue"
 ></div>
-<h4>DropdownMenu with customized onChange prop</h4>
+<h3>DropdownMenu with customized onChange prop</h3>
 <p>
   The optional onChange prop specifies what happens when a new selection is
   made.
@@ -559,7 +559,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithCustomizedOnChangeProp"
 ></div>
-<h4>DropdownMenu with custom PopperBaseProps</h4>
+<h3>DropdownMenu with custom PopperBaseProps</h3>
 <p>
   PopperBaseProps is an SDS-specific prop made for passing custom props to the
   Popper component, which is included as part of the DropdownMenu component.
@@ -585,7 +585,7 @@
   class="zeroheight-example"
   data-example="core/DropdownMenu/DropdownMenuWithCustomPopperBaseProps"
 ></div>
-<h4>DropdownMenu with custom Popper component</h4>
+<h3>DropdownMenu with custom Popper component</h3>
 <p>
   In addition to modifying the Popper's styles via PopperBaseProps above, the
   styles for the Popper component can be overwritten more directly with

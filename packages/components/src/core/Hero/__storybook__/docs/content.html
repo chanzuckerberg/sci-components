@@ -1,5 +1,5 @@
-<h2>Hero</h2>
-<h3>SDS Source Code</h3>
+<h1>Hero</h1>
+<h2>Source Code</h2>
 <p>
   The Hero component's source code in the SDS codebase can be found
   <a
@@ -9,7 +9,7 @@
   </a>
   .
 </p>
-<h3>Anatomy</h3>
+<h2>Anatomy</h2>
 <p>
   Hero is not built on a MUI component. It renders a single
   <strong>&lt;section&gt;</strong>
@@ -65,7 +65,7 @@
   <strong>h1</strong>
   , so use one Hero per page and keep the rest of the page's headings below it.
 </p>
-<h3>Layout notes</h3>
+<h2>Layout notes</h2>
 <ul class="zeroheight-bullet-list">
   <li>
     <p>
@@ -106,13 +106,13 @@
     </p>
   </li>
 </ul>
-<h3>Props</h3>
+<h2>Props</h2>
 <p>
   Hero owns all of these props. Anything else, such as
   <strong>className</strong>
   or event handlers, is spread onto the section element.
 </p>
-<h4>Content</h4>
+<h3>Content</h3>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -169,7 +169,7 @@
     </td>
   </tr>
 </table>
-<h4>Layout</h4>
+<h3>Layout</h3>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -238,7 +238,7 @@
     </td>
   </tr>
 </table>
-<h4>Background and media</h4>
+<h3>Background and media</h3>
 <table class="zeroheight-table">
   <tr>
     <td><p>Name</p></td>
@@ -345,20 +345,20 @@
     </td>
   </tr>
 </table>
-<h3>Code examples</h3>
-<h4>Default Hero</h4>
+<h2>Code examples</h2>
+<h3>Default Hero</h3>
 <p>
   A headline, a caption, and a background color. With no heroHeight the section
   is as tall as its content plus the 40px of top and bottom padding.
 </p>
 <div class="zeroheight-example" data-example="core/Hero/DefaultHero"></div>
-<h4>Header Sizes</h4>
+<h3>Header Sizes</h3>
 <p>
   headerFontSize picks the type scale for the headline. The caption is fixed and
   does not change with it.
 </p>
 <div class="zeroheight-example" data-example="core/Hero/HeroHeaderSizes"></div>
-<h4>Hero with a Background Image</h4>
+<h3>Hero with a Background Image</h3>
 <p>
   Passing a node to backgroundFill renders it full-bleed behind the content. The
   darkening mask keeps the text readable, and it needs both darkeningMask and a
@@ -368,7 +368,7 @@
   class="zeroheight-example"
   data-example="core/Hero/HeroWithBackgroundImage"
 ></div>
-<h4>Content Position and Alignment</h4>
+<h3>Content Position and Alignment</h3>
 <p>
   overlayContentPosition moves the whole content block within the section, while
   textAlignment aligns the text inside that block. Both need room to be visible,
@@ -378,7 +378,7 @@
   class="zeroheight-example"
   data-example="core/Hero/HeroContentPosition"
 ></div>
-<h4>Hero with a Call to Action</h4>
+<h3>Hero with a Call to Action</h3>
 <p>
   Children render in a slot below the caption. That slot keeps its own colors,
   so hasInvertTextColor does not reach the buttons.
@@ -387,7 +387,7 @@
   class="zeroheight-example"
   data-example="core/Hero/HeroWithCallToAction"
 ></div>
-<h4>Hero with Overlay Media</h4>
+<h3>Hero with Overlay Media</h3>
 <p>
   Overlay media is positioned independently of the text, so narrow the content
   block with overlayContentWidth to keep the two from overlapping.
@@ -396,7 +396,7 @@
   class="zeroheight-example"
   data-example="core/Hero/HeroWithOverlayMedia"
 ></div>
-<h4>Hero with a Vignette</h4>
+<h3>Hero with a Vignette</h3>
 <p>
   The vignette is a 40px gradient along the top edge, meant to sit behind a
   transparent header navigation.
