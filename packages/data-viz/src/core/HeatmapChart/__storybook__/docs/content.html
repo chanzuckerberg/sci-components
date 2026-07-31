@@ -209,6 +209,117 @@
     attribute. Pass dataZoom inside options, with the camera active.
   </p>
 </div>
+<h2>Downloading the chart</h2>
+<p>
+  There is no download prop. Exporting is something the ECharts instance does,
+  so the work is getting hold of it: the ref the component forwards points at
+  the container ECharts was initialised on, and
+  <em>getInstanceByDom</em>
+  trades that element for the chart. From there,
+  <em>getDataURL</em>
+  returns the picture as a data URL and an anchor turns it into a file:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { useRef } from "react";
+import { getInstanceByDom } from "echarts";
+import { HeatmapChart } from "@czi-sds/data-viz";
+
+const containerRef = useRef&lt;HTMLDivElement&gt;(null);
+
+function download() {
+  const container = containerRef.current;
+  const chart = container &amp;&amp; getInstanceByDom(container);
+
+  if (!chart) return;
+
+  const url = chart.getDataURL({ pixelRatio: 2, type: "png" });
+
+  if (!url) return;
+
+  const link = document.createElement("a");
+  link.download = "heatmap.png";
+  link.href = url;
+  link.click();
+}
+
+&lt;HeatmapChart ref={containerRef} {...rest} /&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  Look the instance up when the download is triggered rather than caching it.
+  Changing
+  <strong>echartsRendererMode</strong>
+  disposes the chart and builds a new one on the same element, and a cached
+  reference would be exporting one that no longer exists.
+</p>
+<p>Three things decide what comes out:</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>The renderer decides the format, not the type option.</strong>
+      An SVG chart can only export SVG, and a canvas chart can only export a
+      raster; asking a canvas chart for
+      <em>type: "svg"</em>
+      produces a PNG with a misleading name. Derive the file extension from
+      echartsRendererMode, as the example below does, or fix the renderer and
+      the extension together.
+    </p>
+  </li>
+  <li>
+    <p>
+      <em>pixelRatio</em>
+      and
+      <em>backgroundColor</em>
+      only apply on the canvas path — 2 or 3 for a print-resolution PNG, and a
+      colour if the default transparent background will not do. An SVG export
+      ignores both and keeps the chart's own background.
+      <em>excludeComponents</em>
+      takes the names of components to hide while exporting, such as a toolbox.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Only what is rendered is exported.</strong>
+      With the camera active, the export contains the window, not the whole
+      grid. Exporting everything means rendering everything: turn the camera off
+      for the export, and expect it to cost what drawing the full grid costs.
+    </p>
+  </li>
+</ul>
+<p>
+  A heatmap is often assembled from more than one chart — the grid, plus the
+  separate charts drawing its axis labels. ECharts can composite them into a
+  single image, but only once they are in a connected group:
+</p>
+<div class="zeroheight-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="zeroheight-codeblock-content language-tsx">import { connect, getInstanceByDom } from "echarts";
+
+// Once, after every chart has been initialised.
+connect([heatmap, xAxisChart, yAxisChart]);
+
+// Lays the group out by where each chart sits on screen.
+const url = heatmap.getConnectedDataURL({
+  connectedBackgroundColor: "white",
+  pixelRatio: 2,
+  type: "png",
+});</code></pre>
+  </figure>
+</div>
+<p>
+  <em>getConnectedDataURL</em>
+  falls back to
+  <em>getDataURL</em>
+  when the chart is not in a connected group, so a single chart can call either.
+  That is what the
+  <a href="./?path=/story/data-viz-heatmapchart--heatmap-demo" target="_top">
+    heatmap demo
+  </a>
+  does — its download button calls getConnectedDataURL on the grid alone.
+</p>
 <h2>Behavior and accessibility</h2>
 <ul class="zeroheight-bullet-list">
   <li>
@@ -503,6 +614,16 @@
 <div
   class="zeroheight-example"
   data-example="data-viz/HeatmapChart/HeatmapChartWithCamera"
+></div>
+<h3>Downloading</h3>
+<p>
+  A download button that exports the chart itself, and a renderer switch to show
+  the format following it: SVG out of the SVG renderer, PNG out of the canvas
+  one.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/HeatmapChart/DownloadHeatmapChart"
 ></div>
 <h3>Events</h3>
 <p>
