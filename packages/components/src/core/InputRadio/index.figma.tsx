@@ -16,7 +16,6 @@ figma.connect(
     props: {
       // These props were automatically mapped based on your linked code:
       intent: figma.enum("intent", {
-        default: "default",
         negative: "negative",
         notice: "notice",
       }),

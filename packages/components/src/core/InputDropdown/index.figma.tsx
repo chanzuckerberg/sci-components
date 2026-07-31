@@ -20,7 +20,6 @@ figma.connect(
         disabled: true,
       }),
       intent: figma.enum("intent", {
-        default: "default",
         negative: "negative",
         notice: "notice",
       }),
