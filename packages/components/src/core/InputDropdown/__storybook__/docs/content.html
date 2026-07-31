@@ -1,0 +1,256 @@
+<h2>InputDropdown</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputDropdown/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The SDS's InputDropdown component utilizes MUI's Button component as its
+  foundation but introduces some SDS-specific enhancements. Below, the key
+  distinctions between the SDS's InputDropdown and MUI's Button are outlined:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>Variation</strong>
+      : MUI's Button offers a variant prop to define different visual styles for
+      buttons. SDS's InputDropdown, however, uses the sdsStyle prop instead,
+      providing the ability to select between three variants: square, rounded,
+      or minimal.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Color</strong>
+      : In MUI's Button, the button's color can be modified using the color
+      prop. SDS's InputDropdown deviates from this and introduces the intent
+      prop. This prop provides the ability to choose between default, warning,
+      and error colors, depending on the state of the InputDropdown.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Size</strong>
+      : While MUI's Button provides a size prop for adjusting the button's size,
+      SDS's InputDropdown does not offer this capability. The size of the
+      InputDropdown component remains fixed and cannot be altered through props.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Icon</strong>
+      : Unlike MUI's Button, which supports custom icons, SDS's InputDropdown
+      does not accept external icon components. Instead, SDS's InputDropdown
+      incorporates a built-in Chevron icon, which is an integral part of the
+      component and cannot be replaced.
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-button/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>counter</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        If multiple set to true, this number shows the number of selected menu
+        items.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>details</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>A text showing details for the selected menu item.</p></td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>If&nbsp;true, the component is disabled.</p></td>
+  </tr>
+  <tr>
+    <td><p>intent</p></td>
+    <td>
+      <p>"default"</p>
+      <p>| "negative"</p>
+      <p>| "notice"</p>
+      <p>| "positive"</p>
+    </td>
+    <td><p>default</p></td>
+    <td><p>The color of the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>label</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>The label of the Input Button.</p></td>
+  </tr>
+  <tr>
+    <td><p>multiple</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Allows users to select multiple menu items.multiple=true cannot be used
+        with the minimum variant.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onClick</p></td>
+    <td><p>func</p></td>
+    <td><p>(event: React.MouseEvent&lt;HTMLElement&gt;) =&gt; void</p></td>
+    <td><p>Sets what happens when a user clicks on the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"minimal"</p>
+      <p>| "square"</p>
+      <p>| "rounded"</p>
+    </td>
+    <td><p>square</p></td>
+    <td><p>The visual appearance of the component.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsType</p></td>
+    <td>
+      <p>"label"</p>
+      <p>| "value"</p>
+    </td>
+    <td><p>label</p></td>
+    <td>
+      <p>
+        The label variant includes the label within the input field and
+        showcases the selected menu item as additional details or sets the
+        counter when in multi-select mode.
+      </p>
+      <p>
+        The value variant replaces the label with the selected value directly
+        within the input field. The detailed information is then displayed in a
+        separate section dedicated to displaying additional details. However,
+        it's important to note that the value variant cannot be used in
+        conjunction with multi-select mode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shouldPutAColonAfterLabel</p></td>
+    <td><p>bool</p></td>
+    <td><p>true</p></td>
+    <td><p>If true, a colon (:) will be added after the label or value.</p></td>
+  </tr>
+  <tr>
+    <td><p>shouldTruncateMinimalDetails</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        If true, the details section of the minimal variant displays a truncated
+        one-liner with an ellipsis (...), if false the details section expands
+        to multiple lines for a comprehensive display.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>value</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The value that will be displayed in the component for the value variant.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  There are more props that can be used with the InputDropdown component, via
+  those available to
+  <a href="https://mui.com/material-ui/api/autocomplete/#props">MUI's</a>
+  <a href="https://mui.com/material-ui/api/autocomplete/#props">Button</a>
+  <a href="https://mui.com/material-ui/api/autocomplete/#props">component</a>
+  .
+</p>
+<h3>Code Examples</h3>
+<h4>Default InputDropdown</h4>
+<p>
+  This example has the minimum props needed for the InputDropdown component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputDropdown/DefaultInputDropdown"
+></div>
+<div
+  class="zeroheight-callout zeroheight-callout-background-1 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>MUI Tip:</strong>
+    To ensure the InputDropdown button expands to fit the width of its
+    container, users can utilize the fullWidth prop provided by MUI. When set to
+    true, the fullWidth prop enables the InputDropdown button to occupy the
+    entire available width within its parent container.
+  </p>
+</div>
+<h4>InputDropdown combined with a multi-select Dropdown</h4>
+<p>
+  Below is an example demonstrating the combined utilization of the
+  InputDropdown component and a multi-select Dropdown component. The Dropdown
+  allows multiple selections, while the InputDropdown features a square variant.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputDropdown/InputDropdownCombinedWithAMultiSelectDropdown"
+></div>
+<h4>Rounded InputDropdown combined with a single select Dropdown</h4>
+<p>
+  Below is an example demonstrating the combined utilization of the default
+  label variant InputDropdown component and a single-select Dropdown component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputDropdown/RoundedInputDropdownCombinedWithASingleSelectDropdown"
+></div>
+<h4>Minimal InputDropdown combined with a single-select Dropdown</h4>
+<p>
+  An example of the combined use of the value variation InputDropdown component
+  and a single-select Dropdown component is shown below.&nbsp;
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Warning:</strong>
+    The value variant can not be used in conjunction with the multi-select
+    Dropdowns. If you set sdsType="value" and multiple="true", the component
+    will default to showing a label and a counter instead.
+  </p>
+</div>
+<div
+  class="zeroheight-example"
+  data-example="core/InputDropdown/MinimalInputDropdownCombinedWithASingleSelectDropdown"
+></div>

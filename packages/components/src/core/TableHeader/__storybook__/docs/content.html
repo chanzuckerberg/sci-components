@@ -1,0 +1,60 @@
+<h2>TableHeader</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableHeader/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  TableHeader renders the thead and the header row inside it, so its children
+  are header cells rather than a row. It has two props of its own.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. The header cells, normally CellHeaders. They are wrapped in a
+        TableRow with hover and tooltips switched off, so do not pass a tr
+        yourself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>filterRow</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A second row rendered below the header row, inside the same thead, for
+        per-column filter controls. Pass a tr of cells. Supplying it also
+        changes the border on the header row above. PreComposedTable uses this
+        for its column filtering.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default TableHeader</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  TableHeader component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/TableHeader/DefaultTableHeader"
+></div>
+<hr />

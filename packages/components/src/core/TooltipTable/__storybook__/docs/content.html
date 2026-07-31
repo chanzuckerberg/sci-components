@@ -1,0 +1,184 @@
+<h2>TooltipTable</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TooltipTable/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  TooltipTable is not a tooltip. It is the content that goes inside one: a
+  two-column table of labels and values built on MUI's Table, exported as
+  <em>TooltipTable</em>
+  and named
+  <em>TooltipTableContent</em>
+  in the source. It has no trigger, no hover behavior and no popper of its own,
+  so it does nothing on its own — pass it to a tooltip's
+  <em>componentSlot</em>
+  and let the tooltip do the showing. What it adds:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>data:</strong>
+      the sections. Each one takes a
+      <em>label</em>
+      , a list of
+      <em>dataRows</em>
+      of label and value, and an optional
+      <em>disabled</em>
+      flag. Sections are separated by a divider, in the order given.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>itemAlign:</strong>
+      whether the values sit at the right of their column, which lines numbers
+      up, or at the left.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>showSectionHeader:</strong>
+      whether the section labels are drawn at all. The dividers stay either way.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>contentAlert:</strong>
+      a line above the whole table, as a string or an element, for a caveat
+      about the numbers below it.
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-table/">here</a>
+  .
+</p>
+<h3>Behavior and accessibility</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      Put it in
+      <em>componentSlot</em>
+      , not
+      <em>title</em>
+      . A tooltip wraps its title in a paragraph, and a table inside a paragraph
+      is invalid HTML that React reports as an error in the console.
+    </p>
+  </li>
+  <li>
+    <p>
+      Give the tooltip
+      <em>hasInvertedStyle={false}</em>
+      . The table is designed for a light surface, which is what the design
+      shows and what keeps the section labels readable.
+    </p>
+  </li>
+  <li>
+    <p>
+      The table asks for at least 224px and a tooltip stops at 250px, so there
+      is almost no slack: long row labels wrap and push the table into a
+      scrollbar. Keeping labels to a word or two matters more here than anywhere
+      else.
+      <em>width="wide"</em>
+      on the tooltip buys room for a table that genuinely needs it.
+    </p>
+  </li>
+  <li>
+    <p>
+      A disabled section is drawn in the disabled text colour and nothing more:
+      it is still read out in full, so the reason it is dimmed has to come from
+      somewhere else, such as the contentAlert above it.
+    </p>
+  </li>
+  <li>
+    <p>
+      Everything in a tooltip disappears with the pointer, and a real table of
+      numbers is often worth putting on the page instead.
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>data</p></td>
+    <td>
+      <p>Array&lt;{</p>
+      <p>label?: string;</p>
+      <p>dataRows: {</p>
+      <p>label: string;</p>
+      <p>value: string | number;</p>
+      <p>}[];</p>
+      <p>disabled?: boolean;</p>
+      <p>}&gt;</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The sections, drawn in order and separated by dividers. A section's
+        label heads it, its dataRows fill it, and disabled greys the whole
+        block.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>itemAlign</p></td>
+    <td><p>"left" | "right"</p></td>
+    <td><p>"right"</p></td>
+    <td>
+      <p>
+        Which side of its column each value sits on. Right lines numbers up with
+        each other.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>showSectionHeader</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        Whether section labels are drawn. False hides all of them; the dividers
+        between sections stay.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>contentAlert</p></td>
+    <td><p>string | JSX.Element</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A note above the whole table, for a caveat about the numbers. Takes an
+        element, so it can hold a link.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Default TooltipTable</h4>
+<p>
+  The table inside a condensed tooltip in the lighter scheme, which is what
+  pairs it with a chart or a table cell that the pointer moves across.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/TooltipTable/DefaultTooltipTable"
+></div>

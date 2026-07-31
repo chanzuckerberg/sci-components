@@ -1,0 +1,289 @@
+<h2>Button</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Button/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The following props are available to MUI's Button component, but produce no
+  effect (or unexpected effects) for SDS's Button component, so
+  <strong>it is recommended to not use them</strong>
+  :
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>variant</strong>
+      <strong>:</strong>
+      This prop is intended to set the Button to either text only, contained, or
+      outlined. With SDS's Button, they do not function as described in the MUI
+      documentation; however, similar effects, specific to SDS's styles, can be
+      achieved through a combination of the SDS-only props: sdsStyle and sdsType
+      (see details below).
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>color</strong>
+      <strong>:</strong>
+      SDS's Button does not support the colors or intents that would be expected
+      through this prop. However, the sdsType prop can be used to set the button
+      color as primary, secondary, or destructive.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>disableElevation</strong>
+      <strong>:</strong>
+      The SDS Button component doesn't have a visual "elevation" or shadowed
+      treatment by default (which this prop disables for MUI's Button). Setting
+      disableElevation={false} will not render the MUI default elevation
+      treatment.
+    </p>
+  </li>
+</ul>
+<p>
+  Icons can be used in both MUI and SDS Button component, but are called in
+  slightly different ways:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>startIcon</strong>
+      <strong></strong>
+      and
+      <strong></strong>
+      <strong>endIcon</strong>
+      <strong>:</strong>
+      Both of these props are supported by both MUI and SDS's Buttons. However,
+      MUI expects the prop to receive an individual icon as its own component
+      (for example startIcon={&lt;DeleteIcon /&gt;}), whereas SDS takes the Icon
+      component which references which specific icon to call, as one of its
+      props, as such:
+    </p>
+  </li>
+</ul>
+<p>startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</p>
+<p>
+  To render an icon-only button, pass a single Icon component as the button's
+  child instead of using startIcon or endIcon. The Button detects the icon-only
+  child and adjusts its padding to stay square. Remember to give the button an
+  aria-label, since it has no text for screen readers to announce:
+</p>
+<p>
+  &lt;Button aria-label="Download"&gt;&lt;Icon sdsIcon="Download" sdsSize="s"
+  /&gt;&lt;/Button&gt;
+</p>
+<p>
+  SDS's Button has additional props to allow flexibility while maintaining the
+  SDS styles:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>sdsStyle</strong>
+      <strong>:</strong>
+      takes solid (default, filled), outline, or minimal as values
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>sdsType</strong>
+      <strong>:</strong>
+      takes primary (default), secondary, or destructive as values, and sets the
+      color scheme within the chosen style
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>size</strong>
+      <strong>:</strong>
+      MUI's size prop is supported and takes small, medium, or large (default),
+      driving the button's height, padding, type ramp, and icon size
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI Button component can be found
+  <a href="https://mui.com/material-ui/react-button/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the tables below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"solid"</p>
+      <p>| "outline"</p>
+      <p>| "minimal"</p>
+    </td>
+    <td><p>"solid"</p></td>
+    <td>
+      <p>
+        Style of the button, in descending order of emphasis. Solid is filled,
+        outline draws a 1px border over a transparent background, and minimal is
+        text only.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsType</p></td>
+    <td>
+      <p>"primary"</p>
+      <p>| "secondary"</p>
+      <p>| "destructive"</p>
+    </td>
+    <td><p>"primary"</p></td>
+    <td>
+      <p>
+        Color scheme of the button within the chosen style. Primary uses the
+        accent color, secondary is neutral, and destructive signals an
+        irreversible action.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>size</p></td>
+    <td>
+      <p>"small"</p>
+      <p>| "medium"</p>
+      <p>| "large"</p>
+    </td>
+    <td><p>"large"</p></td>
+    <td>
+      <p>
+        Size of the button. Drives the height, padding, type ramp, and icon
+        size, each of which also adapts at the md breakpoint.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>backgroundOnHover</p></td>
+    <td><p>bool</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        Only applies when sdsStyle is minimal. When false, the button drops its
+        padding and renders no background on hover or press, so it sits flush
+        with surrounding text.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>backgroundAppearance</p></td>
+    <td><p>"matchBackground" | "dark"</p></td>
+    <td><p>"matchBackground"</p></td>
+    <td>
+      <p>
+        Tells the button which surface it sits on so it can pick colors with
+        enough contrast. Set it to dark when the button is placed on a dark
+        background in light mode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>startIcon</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An icon placed before the label. Pass the SDS Icon component, for
+        example &lt;Icon sdsIcon="Download" sdsSize="s" /&gt;.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>endIcon</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>An icon placed after the label.</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The button label. Passing a single Icon component as the only child
+        renders an icon-only button, which the component detects and pads
+        symmetrically.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>Disables the button when set to true.</p></td>
+  </tr>
+  <tr>
+    <td><p>onClick</p></td>
+    <td><p>(event: React.MouseEvent) =&gt; void</p></td>
+    <td><p>-</p></td>
+    <td><p>Callback fired when the button is clicked.</p></td>
+  </tr>
+  <tr>
+    <td><p>href</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Renders the button as an anchor pointing at the given URL. Pair it with
+        target to control where the link opens.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default Button</strong></h4>
+<p>
+  This example has the minimum props needed for the Button component. Without
+  any SDS props it renders as a large, solid, primary button.
+</p>
+<div class="zeroheight-example" data-example="core/Button/DefaultButton"></div>
+<h4>Button styles</h4>
+<p>
+  This example shows the three styles available through sdsStyle, from most to
+  least emphasis.
+</p>
+<div class="zeroheight-example" data-example="core/Button/ButtonStyles"></div>
+<h4>Button types</h4>
+<p>
+  This example shows the three color schemes available through sdsType. Each one
+  can be combined with any of the styles above.
+</p>
+<div class="zeroheight-example" data-example="core/Button/ButtonTypes"></div>
+<h4>Button sizes</h4>
+<p>This example shows the three sizes available through the size prop.</p>
+<div class="zeroheight-example" data-example="core/Button/ButtonSizes"></div>
+<h4>Button + Icon</h4>
+<p>
+  This example shows a Secondary button component with an icon, placed before
+  the label with startIcon and after it with endIcon.
+</p>
+<div class="zeroheight-example" data-example="core/Button/ButtonIcon"></div>
+<h4>Icon Button</h4>
+<p>
+  This example shows icon-only buttons, created by passing a single Icon
+  component as the button's child. Each one needs an aria-label, since there is
+  no text for screen readers to announce.
+</p>
+<div class="zeroheight-example" data-example="core/Button/IconButton"></div>
+<hr />

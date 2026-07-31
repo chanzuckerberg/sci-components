@@ -1,0 +1,148 @@
+<h2>TagFilter</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TagFilter/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  TagFilter is built on the SDS Tag, and so on MUI's Chip, but it exists for one
+  job: showing which
+  <a href="https://sds.czi.design/009eaf17b/p/543108">Filters</a>
+  are applied and letting them be taken off again. It has one appearance and no
+  style props:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>onDelete is required.</strong>
+      MUI treats it as the switch that decides whether a chip can be deleted;
+      here the delete control is always there, so the handler has to be.
+      Removing the tag from your own state is what makes it disappear.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The look is fixed:</strong>
+      the accent fill, the square shape, the small semibold label and the 12px
+      X. Tag's
+      <em>sdsStyle</em>
+      ,
+      <em>sdsType</em>
+      ,
+      <em>sdsSize</em>
+      and
+      <em>color</em>
+      are not part of the type, and MUI's
+      <em>variant</em>
+      is not either.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The X cannot be swapped:</strong>
+      SDS applies its own
+      <em>deleteIcon</em>
+      — an SDS Button holding the XMark icon — after your props, so a
+      <em>deleteIcon</em>
+      of your own is ignored without a warning.
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-chip/">here</a>
+  .
+</p>
+<h3>Behavior and accessibility</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      There are two ways to remove a filter, and both are reachable from the
+      keyboard: the X is a button that answers Enter, and the tag itself answers
+      Backspace and Delete. That also means each filter tag is two tab stops.
+    </p>
+  </li>
+  <li>
+    <p>
+      The X button is named "Delete Tag" on every filter tag, and the name
+      cannot be changed. The label beside it is read as plain text rather than
+      as part of the button, so a row of filters is worth wrapping in a group
+      with a name of its own — the example below uses
+      <em>role="group"</em>
+      with an
+      <em>aria-label</em>
+      — to say what the buttons are removing.
+    </p>
+  </li>
+  <li>
+    <p>
+      The tag carries
+      <em>role="none presentation"</em>
+      , so it contributes no semantics of its own. Adding an
+      <em>onClick</em>
+      does not change that: the tag becomes clickable to the pointer while still
+      announcing nothing, so leave the clicking to the X.
+    </p>
+  </li>
+  <li>
+    <p>
+      Like a Tag, a filter tag does not wrap: a long filter value is cut off
+      with an ellipsis. Keep the values short, or shorten them yourself so the
+      part that survives is the part that matters.
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>label</p></td>
+    <td><p>string</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The filter's text. Cut off with an ellipsis when there is not room for
+        it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onDelete</p></td>
+    <td><p>(event) =&gt; void</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Runs when the X is clicked or activated, and when Backspace or Delete is
+        pressed on the tag. Drop the filter from your state here; the component
+        does not remove itself.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Default TagFilter</h4>
+<p>
+  A row of applied filters, each removing itself from the page's state through
+  onDelete. The row is a named group, which gives the identical "Delete Tag"
+  buttons some context.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/TagFilter/DefaultTagFilter"
+></div>

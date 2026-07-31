@@ -13,12 +13,20 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 const COMPONENTS_SRC = resolve(currentDir, "../packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "../packages/data-viz/src");
+const DOCS_KIT = resolve(currentDir, "../docs-kit");
 
 const config: StorybookConfig = {
   stories: [
+    /**
+     * Per-component code documentation, attached to each component's stories.
+     * It is listed first on purpose: `storySort` treats entries that share a
+     * title as equal, so the sidebar falls back to indexing order within a
+     * component, and this is what puts "Documentation" above the stories.
+     */
+    "../packages/components/src/**/__storybook__/docs/*.mdx",
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
-    // Standalone docs-only pages imported from ZeroHeight (see
+    // Standalone design pages imported from ZeroHeight (see
     // packages/mcp/scripts/import-zeroheight-storybook.ts).
     "../zeroheight-docs/**/*.mdx",
   ],
@@ -104,6 +112,7 @@ const config: StorybookConfig = {
       { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
       { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
       { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+      { find: /^@sds-docs\//, replacement: `${DOCS_KIT}/` },
     ];
 
     /**
@@ -129,6 +138,7 @@ const config: StorybookConfig = {
       ...normalizedEntries,
       `${COMPONENTS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
       `${DATA_VIZ_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
+      `${COMPONENTS_SRC}/**/__storybook__/docs/*.mdx`,
     ];
     /**
      * Pre-bundle bare-import subpaths that Vite's scanner cannot reach by

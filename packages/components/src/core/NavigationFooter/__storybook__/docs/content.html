@@ -1,0 +1,272 @@
+<h2>NavigationFooter</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/NavigationFooter"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Behavior notes</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      The footer is two rows. The top row is the logo, title, and tag on one
+      side with
+      <strong>navItems</strong>
+      beside them; below a divider, the bottom row is
+      <strong>navLinks</strong>
+      on one side and
+      <strong>images</strong>
+      on the other.
+    </p>
+  </li>
+  <li>
+    <p>
+      The two link lists are styled differently on purpose.
+      <strong>navItems</strong>
+      are the prominent destinations; the
+      <strong>navLinks</strong>
+      run in a single line with dividers drawn between them, which is where
+      policy and contact links belong.
+    </p>
+  </li>
+  <li>
+    <p>
+      Like the header, the footer decides on its own when to go narrow, below
+      512px or whenever its content no longer fits. In the narrow layout the
+      links wrap into rows and the component drops the divider at the end of
+      each row.
+    </p>
+  </li>
+  <li>
+    <p>
+      There is no
+      <em>hasInvertedStyle</em>
+      prop here either;
+      <strong>backgroundAppearance</strong>
+      is the one to reach for, and it only changes anything in light mode.
+    </p>
+  </li>
+  <li>
+    <p>
+      The props are the whole surface: NavigationFooterProps does not extend the
+      DOM attributes, so there is no className, style, or ref to pass.
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>backgroundAppearance</p></td>
+    <td>
+      <p>"matchBackground"</p>
+      <p>| "dark"</p>
+    </td>
+    <td><p>"matchBackground"</p></td>
+    <td>
+      <p>
+        "dark" puts the footer on a dark surface and inverts its text and
+        dividers, in light mode only.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>images</p></td>
+    <td><p>FooterImage[]</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An array of images displayed in the footer. Each item includes an image,
+        optional link URL, and component.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>logo</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The logo displayed in the footer. Can be any valid React node such as an
+        image, icon, or SVG.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>logoUrl</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>If provided, clicking the logo will navigate to this URL.</p></td>
+  </tr>
+  <tr>
+    <td><p>logoComponent</p></td>
+    <td><p>ElementType</p></td>
+    <td><p>"a"</p></td>
+    <td>
+      <p>
+        Specifies the component to use for the logo link. Defaults to an anchor
+        tag.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>logoLinkProps</p></td>
+    <td><p>Record&lt;string, unknown&gt;</p></td>
+    <td><p>-</p></td>
+    <td><p>Additional props passed to the logo link component.</p></td>
+  </tr>
+  <tr>
+    <td><p>navItems</p></td>
+    <td><p>NavigationFooterNavItem[]</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The prominent links on the top row, next to the logo. They are headings,
+        not body text, and get no dividers.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>navLinks</p></td>
+    <td><p>NavigationFooterNavItem[]</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The smaller links on the bottom row, drawn in one line with dividers
+        between them.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>tag</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>A small label displayed next to the title.</p></td>
+  </tr>
+  <tr>
+    <td><p>tagColor</p></td>
+    <td>
+      <p>"info" | "positive"</p>
+      <p>| "notice" | "negative"</p>
+      <p>| "neutral" | "beta"</p>
+      <p>| [string, string]</p>
+      <p>| [string, string, string]</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The Tag's color. A tuple sets the label, background, and icon colors by
+        hand.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>title</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>The main title displayed in the footer.</p></td>
+  </tr>
+</table>
+<h3>FooterImage</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>image</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The image element to be displayed. Can be an icon, image, SVG, or any
+        ReactNode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>url</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Optional URL to navigate to when the image is clicked.</p></td>
+  </tr>
+  <tr>
+    <td><p>component</p></td>
+    <td><p>ElementType</p></td>
+    <td><p>"a"</p></td>
+    <td>
+      <p>Custom link component to use for navigation (e.g., a router link).</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>linkProps</p></td>
+    <td><p>Record&lt;string, unknown&gt;</p></td>
+    <td><p>-</p></td>
+    <td><p>Additional props passed to the link component.</p></td>
+  </tr>
+</table>
+<h3>NavigationFooterNavItem</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>label</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>The text label displayed for the navigation item.</p></td>
+  </tr>
+  <tr>
+    <td><p>url</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>Optional URL the item links to.</p></td>
+  </tr>
+  <tr>
+    <td><p>component</p></td>
+    <td><p>ElementType</p></td>
+    <td><p>"a"</p></td>
+    <td><p>Custom component to render the link (e.g., Next.js Link).</p></td>
+  </tr>
+  <tr>
+    <td><p>linkProps</p></td>
+    <td><p>Record&lt;string, unknown&gt;</p></td>
+    <td><p>-</p></td>
+    <td><p>Props forwarded to the link component.</p></td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>Default footer</h4>
+<p>
+  A footer with all four content areas filled: logo with title and tag, the
+  prominent nav items, the bottom row of links, and an image beside them.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/NavigationFooter/NavigationFooterDefault"
+  data-example-padding="none"
+></div>
+<h4>Dark footer</h4>
+<p>
+  The same structure on a dark surface, with the text and dividers inverted.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/NavigationFooter/NavigationFooterDark"
+  data-example-padding="none"
+></div>
+<hr />

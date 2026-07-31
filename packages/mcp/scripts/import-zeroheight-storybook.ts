@@ -7,7 +7,12 @@
  * decommissioned, so this is not part of an ongoing sync: once ZeroHeight is
  * gone the generated content in `zeroheight-docs/` (which is committed) becomes
  * the canonical source and should be edited directly. This script is retained
- * only for provenance and to allow a final re-import before shutdown.
+ * only for provenance.
+ *
+ * Re-running it is no longer safe without manual reconciliation: the "Code" half
+ * of each page has since been split out per component into
+ * `packages/components/src/core/<Component>/__storybook__/docs/` (see
+ * `scripts/split-code-docs.ts`), and a re-import would restore it here.
  */
 import crypto from "crypto";
 import fs from "fs";
@@ -598,12 +603,12 @@ async function writePage(
   );
 
   const mdx = `import { Meta } from "@storybook/addon-docs/blocks";
-import { ZeroheightDoc } from "../../ZeroheightDoc";
+import { SdsDoc } from "@sds-docs/SdsDoc";
 import html from "./content.html?raw";
 
 <Meta title=${JSON.stringify(title)} />
 
-<ZeroheightDoc html={html} />
+<SdsDoc html={html} />
 `;
   fs.writeFileSync(path.join(pageDir, "index.mdx"), mdx, "utf8");
 }
@@ -625,6 +630,10 @@ migrated (a one-time import) from the SDS ZeroHeight styleguide, which is being
 decommissioned. They are now self-contained (all images are bundled locally) and
 are the canonical source going forward: edit the \`.mdx\` / \`content.html\` files
 under \`zeroheight-docs/pages/\` directly. Use the sidebar to browse.
+
+These pages cover design guidance only. Implementation documentation for a
+component — props, SDS vs MUI differences, and live code examples — lives with
+the component itself, under its "Documentation" tab in the Components section.
 
 ## Pages
 

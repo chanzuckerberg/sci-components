@@ -1,0 +1,142 @@
+<h2>MenuItem</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/MenuItem/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>column</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The column prop determines the content displayed in the right column of
+        the menu item. This content can be customized to provide additional
+        information or context for the menu item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>node</p></td>
+    <td><p>-</p></td>
+    <td><p>Main content of the MenuItem.</p></td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        When set to true, the disabled prop indicates that the menu item is
+        disabled and not interactable.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>isMultiSelect</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        When true, designates that the menu item supports multi-select
+        functionality.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsIcon</p></td>
+    <td><p>func</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Allows you to provide a custom SDS icon component to be displayed within
+        the menu item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsIconProps</p></td>
+    <td><p>func</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Enables you to pass additional props to customize the SDS icon within
+        the menu item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"determinate"</p>
+      <p>| "indeterminate"</p>
+    </td>
+    <td><p>"determinate"</p></td>
+    <td>
+      <p>
+        Determines the style of the menu item, whether it is determinate or
+        indeterminate.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>selected</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        When set to true, the selected prop signifies that the menu item is
+        currently selected.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code Examples</h3>
+<h4><strong>Default MenuItem</strong></h4>
+<p>This example shows the minimum props needed for rendering a MenuItem.</p>
+<div
+  class="zeroheight-example"
+  data-example="core/MenuItem/DefaultMenuItem"
+></div>
+<h4><strong>Multi-Select MenuItem with Icon</strong></h4>
+<p>
+  This example showcases a multi-select MenuItem component featuring an SDS Icon
+  and a distinct column value.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-1 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>SDS Tip:</strong>
+    MenuItem exclusively accepts SDS Icons in xs and s sizes. To explore a
+    comprehensive list of SDS icons and their available sizes, refer to the
+    <a
+      href="https://chanzuckerberg.github.io/sci-components/?path=/story/components-icon--icon-bank"
+    >
+      IconBank page
+    </a>
+    within Storybook.
+  </p>
+</div>
+<div
+  class="zeroheight-example"
+  data-example="core/MenuItem/MultiSelectMenuItemWithIcon"
+></div>

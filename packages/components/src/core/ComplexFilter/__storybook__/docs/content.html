@@ -1,0 +1,154 @@
+<h2>ComplexFilter</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ComplexFilter/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The&nbsp;ComplexFilter
+  is&nbsp;not&nbsp;directly&nbsp;based&nbsp;on&nbsp;any&nbsp;MUI&nbsp;component,&nbsp;but&nbsp;it&nbsp;does&nbsp;use&nbsp;the
+  <a
+    href="https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menu/b/177008/t/550be2"
+  >
+    SDS&nbsp;
+  </a>
+  <a
+    href="https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menu/b/177008/t/550be2"
+  >
+    Dropdown
+  </a>
+  <a
+    href="https://czi.zeroheight.com/styleguide/s/66099/p/42bdf2-dropdown-menu/b/177008/t/550be2"
+  >
+    component
+  </a>
+  ,&nbsp;which&nbsp;in turn is&nbsp;ultimately&nbsp;based&nbsp;on&nbsp;
+  <a href="https://mui.com/material-ui/react-autocomplete/">MUI's&nbsp;</a>
+  <a href="https://mui.com/material-ui/react-autocomplete/">Autocomplete</a>
+  <a href="https://mui.com/material-ui/react-autocomplete/">component</a>
+  . As such, props that are available to either SDS's Dropdown and / or MUI's
+  Autocomplete can be passed to ComplexFilter as such:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>DropdownMenuProps</strong>
+      <strong>:</strong>
+      use this prop to pass MUIAutocomplete-specific props to ComplexFilter
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>InputDropdownProps</strong>
+      <strong>:</strong>
+      use this prop to pass SDS InputDropdown-specific props to ComplexFilter
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found in
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>isTriggerChangeOnOptionClick</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Determines whether changes are triggered in real-time upon clicking an
+        option
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>keepSearchOnSelect</p></td>
+    <td><p>bool</p></td>
+    <td></td>
+    <td>
+      <p>
+        Maintains a search input when a user selects an option (only if multiple
+        selections are allowed via the multiple prop; otherwise the dropdown
+        closes upon selection)
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>label</p></td>
+    <td><p>string</p></td>
+    <td><p>""</p></td>
+    <td><p>Sets the label of filter, shown both when closed and open</p></td>
+  </tr>
+  <tr>
+    <td><p>multiple</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Defines whether multiple selections or can be made from the filter
+        simultaneously or only one
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onChange</p></td>
+    <td><p>func</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>Function to set what happens when a new value is set via the filter</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>search</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Provides a search bar at the top of the filter from which users can
+        narrow the list of menu items
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code Examples</h3>
+<h4>Default ComplexFilter</h4>
+<p>
+  This examples demonstrates the minimum props needed to render a ComplexFilter.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/ComplexFilter/DefaultComplexFilter"
+></div>
+<h4>Multi select ComplexFilter with Search</h4>
+<p>
+  This example showcases a ComplexFilter component featuring InputSearch for
+  filtering menu items. Users have the flexibility to select multiple options to
+  refine their selections.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/ComplexFilter/MultiSelectComplexFilterWithSearch"
+></div>
+<h4>ComplexFilter with realtime selection changes</h4>
+<p>
+  This example showcases the functionality that enables the dropdown selections
+  to be instantly reflected in the tags in real-time. This is achieved by
+  utilizing the isTriggerChangeOnOptionClick prop.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/ComplexFilter/ComplexFilterWithRealtimeSelectionChanges"
+></div>

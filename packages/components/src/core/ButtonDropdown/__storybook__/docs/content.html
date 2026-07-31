@@ -1,0 +1,144 @@
+<h2>ButtonDropdown</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ButtonDropdown/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The SDS ButtonDropdown component is the regular Button component with a
+  ChevronDown icon added after the label text, via the MUI endIcon prop. The
+  chevron is only added when the button has a label, and its size follows the
+  size prop. A startIcon is optional; when used, it takes the Icon component,
+  which references the specific icon to call as one of its props, like so:
+</p>
+<p>startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</p>
+<p>
+  whereas MUI expects the prop to receive an individual icon as its own
+  component (for example startIcon={&lt;DeleteIcon /&gt;}).
+</p>
+<p>
+  Because ButtonDropdown renders a Button, it accepts every Button prop except
+  sdsType, which is narrowed to primary and secondary: a dropdown trigger is
+  never a destructive action, and passing destructive logs a warning and renders
+  nothing. The same MUI caveats as Button apply, so variant, color, and
+  disableElevation are all best avoided.
+</p>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-button/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td>
+      <p>"solid"</p>
+      <p>| "outline"</p>
+      <p>| "minimal"</p>
+    </td>
+    <td><p>"solid"</p></td>
+    <td><p>Style of the button. Same values as Button.</p></td>
+  </tr>
+  <tr>
+    <td><p>sdsType</p></td>
+    <td><p>"primary" | "secondary"</p></td>
+    <td><p>"primary"</p></td>
+    <td>
+      <p>
+        Color scheme of the button. Unlike Button, destructive is not supported.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>size</p></td>
+    <td>
+      <p>"small"</p>
+      <p>| "medium"</p>
+      <p>| "large"</p>
+    </td>
+    <td><p>"large"</p></td>
+    <td>
+      <p>Size of the button. Also sets the size of the trailing chevron.</p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>startIcon</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An optional icon placed before the label. Pass the SDS Icon component,
+        for example &lt;Icon sdsIcon="Download" sdsSize="s" /&gt;.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The button label. The trailing chevron is only rendered when a label is
+        present.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>Disables the button when set to true.</p></td>
+  </tr>
+  <tr>
+    <td><p>onClick</p></td>
+    <td><p>(event: React.MouseEvent) =&gt; void</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Callback fired when the button is clicked. Typically used to open the
+        associated menu.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Every other Button prop, such as backgroundOnHover and backgroundAppearance,
+  is supported and behaves identically here.
+</p>
+<h3>Code examples</h3>
+<h4><strong>Default ButtonDropdown</strong></h4>
+<p>
+  This example has the minimum props needed for the ButtonDropdown component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/ButtonDropdown/DefaultButtonDropdown"
+></div>
+<h4>ButtonDropdown with a start icon</h4>
+<p>
+  This example shows how to incorporate a starting icon within a ButtonDropdown
+  component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/ButtonDropdown/ButtonDropdownWithAStartIcon"
+></div>
+<hr />

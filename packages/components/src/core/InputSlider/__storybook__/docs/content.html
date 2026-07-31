@@ -1,0 +1,273 @@
+<h2>InputSlider</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputSlider/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  The following props and options differ in how they function across MUI's
+  Slider component versus SDS's InputSlider component:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>orientation</strong>
+      <strong>:</strong>
+      Has no effect in SDS. The component always renders horizontally, and
+      overrides anything you pass.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>size</strong>
+      <strong>and</strong>
+      <strong>color</strong>
+      <strong>:</strong>
+      Have no effect in SDS. The rail, track, and thumb are styled from the
+      theme.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>aria-label</strong>
+      <strong>and</strong>
+      <strong>getAriaLabel</strong>
+      <strong>:</strong>
+      SDS labels the thumbs for you. A range slider gets "Minimum value" and
+      "Maximum value"; a single-thumb slider uses your
+      <strong>aria-label</strong>
+      , falling back to "Slider value". Pass
+      <strong>getAriaLabel</strong>
+      to take over completely.
+    </p>
+  </li>
+</ul>
+<p>
+  These are some of the common props that can be used for both the MUI Slider
+  component and the SDS InputSlider component:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>value</strong>
+      <strong>and</strong>
+      <strong>defaultValue</strong>
+      <strong>:</strong>
+      A number renders one thumb. An array of two numbers renders a range with
+      two thumbs, as in the "Range InputSlider" example below.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>step</strong>
+      <strong>:</strong>
+      Sets the step distance between selectable stops (and relatedly, if this
+      prop is left out, the slider is continuous, rather than discrete)
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>marks</strong>
+      <strong>:</strong>
+      When present and set to true, invokes the default marks style. When passed
+      a rich array (of objects containing the value and the custom label to show
+      at that value), sets marks and labels only at the positions specified by
+      the array. See the "InputSlider with custom Marks" example below.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>valueLabelDisplay</strong>
+      <strong>:</strong>
+      This prop determines whether and when the value label is displayed, and
+      takes the following props: auto (the value label will display when the
+      thumb is hovered or focused), on (labels display persistently), or off
+      (default; labels are never displayed).
+    </p>
+  </li>
+</ul>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-slider/">here</a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>defaultValue</p></td>
+    <td><p>Array&lt;number&gt; |&nbsp;number</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The default value. Use when the component is not controlled. An array of
+        two numbers renders a range slider.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>value</p></td>
+    <td><p>Array&lt;number&gt; |&nbsp;number</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The value of the slider. Use with&nbsp;onChange&nbsp;to control the
+        component.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onChange</p></td>
+    <td><p>(event, value, activeThumb) =&gt; void</p></td>
+    <td><p>-</p></td>
+    <td><p>Called as the user drags a thumb.</p></td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>bool</p></td>
+    <td><p>false</p></td>
+    <td><p>If&nbsp;true, the component is disabled.</p></td>
+  </tr>
+  <tr>
+    <td><p>marks</p></td>
+    <td><p>bool |&nbsp;Array&lt;{ value, label }&gt;</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Marks indicate predetermined values to which the user can move the
+        slider. If&nbsp;true&nbsp;the marks are spaced according the value of
+        the&nbsp;step&nbsp;prop. If an array, it should contain objects
+        with&nbsp;value&nbsp;and an optional&nbsp;label&nbsp;keys.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>max</p></td>
+    <td><p>number</p></td>
+    <td><p>100</p></td>
+    <td>
+      <p>
+        The maximum allowed value of the slider. Should not be equal to min.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>min</p></td>
+    <td><p>number</p></td>
+    <td><p>0</p></td>
+    <td>
+      <p>
+        The minimum allowed value of the slider. Should not be equal to max.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>orientation</p></td>
+    <td><p>"horizontal"</p></td>
+    <td><p>"horizontal"</p></td>
+    <td>
+      <p>
+        Fixed by SDS. The component sets this itself, so a vertical slider is
+        not available.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>step</p></td>
+    <td><p>number</p></td>
+    <td><p>1</p></td>
+    <td>
+      <p>
+        The granularity with which the slider can step through values. (A
+        "discrete" slider.) The&nbsp;min&nbsp;prop serves as the origin for the
+        valid values. We recommend (max - min) to be evenly divisible by the
+        step.
+      </p>
+      <p>
+        When step is&nbsp;null, the thumb can only be slid onto marks provided
+        with the&nbsp;marks&nbsp;prop.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>valueLabelDisplay</p></td>
+    <td>
+      <p>"auto"</p>
+      <p>|&nbsp;"off"</p>
+      <p>|&nbsp;"on"</p>
+    </td>
+    <td><p>off</p></td>
+    <td>
+      <p>Controls when the value label is displayed:</p>
+      <ul class="zeroheight-bullet-list">
+        <li>
+          <p>
+            auto&nbsp;the value label will display when the thumb is hovered or
+            focused.
+          </p>
+        </li>
+        <li><p>on&nbsp;will display persistently.</p></li>
+        <li><p>off&nbsp;will never display.</p></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><p>aria-label</p></td>
+    <td><p>string</p></td>
+    <td><p>"Slider value"</p></td>
+    <td>
+      <p>
+        Labels the thumb of a single-value slider. Range sliders label their two
+        thumbs "Minimum value" and "Maximum value" instead.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4><strong>Default InputSlider</strong></h4>
+<p>This example has the minimum props needed for the InputSlider component.</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputSlider/DefaultInputSlider"
+></div>
+<h4>InputSlider with custom Marks</h4>
+<p>
+  This example shows an InputSlider component that features custom marks
+  precisely positioned at 0%, 50%, and 100% of the slider's value.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputSlider/InputSliderWithCustomMarks"
+></div>
+<h4>Range InputSlider</h4>
+<p>Passing an array of two numbers renders a range with a thumb at each end.</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputSlider/RangeInputSlider"
+></div>
+<h4>Disabled InputSlider</h4>
+<p>
+  A disabled slider dims the track, thumb, marks, and value label, and ignores
+  pointer and keyboard input.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/InputSlider/DisabledInputSlider"
+></div>
+<hr />

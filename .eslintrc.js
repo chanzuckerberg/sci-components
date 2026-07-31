@@ -37,11 +37,21 @@ module.exports = {
     },
     {
       /**
-       * Code examples imported from the ZeroHeight styleguide. They are rendered
-       * live and typechecked, but their source is shown verbatim in the docs, so
-       * we keep it as published instead of rewriting it to house style.
+       * Documentation code examples. They are rendered live and typechecked, but
+       * their source is shown verbatim in the docs, so we keep it as published
+       * instead of rewriting it to house style.
+       *
+       * They are typechecked by `tsconfig.docs-check.json` rather than by the
+       * package they live in (they import `@czi-sds/components` the way a
+       * consumer does), so the parser needs that project to resolve types here.
        */
-      files: ["zeroheight-docs/pages/**/examples/*.tsx"],
+      files: [
+        "zeroheight-docs/pages/**/examples/*.tsx",
+        "packages/**/src/**/__storybook__/docs/examples/*.tsx",
+      ],
+      parserOptions: {
+        project: path.resolve(__dirname, "./tsconfig.docs-check.json"),
+      },
       rules: {
         "@typescript-eslint/no-shadow": "off",
         "@typescript-eslint/no-unused-vars": "off",

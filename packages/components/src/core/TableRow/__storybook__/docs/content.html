@@ -1,0 +1,126 @@
+<h2>TableRow</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableRow/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td><p>Required. The row's cells.</p></td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Grays the row out and stops pointer events inside its CellComponents, so
+        controls in the row cannot be used. Tags and icons in the row are dimmed
+        to match.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>hover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        Gives the row a hover background, and is also required for its tooltip
+        to appear. TableHeader sets it to false for the header row.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>rowHeight</p></td>
+    <td><p>number</p></td>
+    <td><p>-</p></td>
+    <td><p>Caps the row's height, in pixels.</p></td>
+  </tr>
+  <tr>
+    <td><p>selected</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Gives the row's cells the accent surface used for selection. It is
+        styling only; it sets no ARIA state.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>shouldShowTooltipOnHover</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        Wraps the row in a Tooltip, but only while hover is also true. On its
+        own it shows nothing: a row tooltip needs tooltipText as well.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>tooltipText</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>The tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipSubtitle</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td><p>A second line below the tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td><p>tooltipProps</p></td>
+    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the row sets (arrow,
+        dark style).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>useDivider</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>Draws the 1px divider along the bottom of the row.</p></td>
+  </tr>
+</table>
+<p>
+  Anything else you pass, such as onClick, className or a data attribute, lands
+  on the rendered tr. Note that a row tooltip and a cell tooltip will both fire,
+  so turn off shouldShowTooltipOnHover on the cells of a row that has its own.
+</p>
+<h3>Code examples</h3>
+<h4><strong>Default TableRow</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a TableRow
+  component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/TableRow/DefaultTableRow"
+></div>
+<hr />

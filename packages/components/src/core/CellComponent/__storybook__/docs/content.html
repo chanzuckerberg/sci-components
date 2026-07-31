@@ -1,0 +1,77 @@
+<h2>CellComponent</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellComponent/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>as</p></td>
+    <td><p>React.ElementType</p></td>
+    <td><p>"td"</p></td>
+    <td><p>The element the cell renders as.</p></td>
+  </tr>
+  <tr>
+    <td><p>children</p></td>
+    <td><p>React.ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The cell's content. Unlike CellBasic, which takes text through
+        primaryText, this cell renders whatever you put inside it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>horizontalAlign</p></td>
+    <td>
+      <p>"left"</p>
+      <p>| "center"</p>
+      <p>| "right"</p>
+    </td>
+    <td><p>"left"</p></td>
+    <td><p>Specifies the horizontal alignment of the cell content.</p></td>
+  </tr>
+  <tr>
+    <td><p>verticalAlign</p></td>
+    <td>
+      <p>"top"</p>
+      <p>| "center"</p>
+      <p>| "bottom"</p>
+    </td>
+    <td><p>"top"</p></td>
+    <td><p>Specifies the vertical alignment of the cell content.</p></td>
+  </tr>
+</table>
+<p>
+  Anything else you pass, such as colSpan, width, onClick or a data attribute,
+  lands on the rendered td. The cell also carries the class name cell-component,
+  which TableRow uses to switch off pointer events inside a disabled row.
+</p>
+<h3>Code examples</h3>
+<h4><strong>Default CellComponent</strong></h4>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  CellComponent component.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/CellComponent/DefaultCellComponent"
+></div>
+<hr />

@@ -1,0 +1,160 @@
+<h2>TooltipCondensed</h2>
+<h3>SDS Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TooltipCondensed/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  TooltipCondensed is the SDS Tooltip with tighter padding and a fixed set of
+  behaviors, for labelling something in a dense surface such as a chart or a
+  table cell. It takes every Tooltip prop, including
+  <em>hasInvertedStyle</em>
+  ,
+  <em>subtitle</em>
+  and
+  <em>componentSlot</em>
+  , and adds two of its own:
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>indicator:</strong>
+      draws a 12px round dot before the text, for tying the tooltip to a series
+      in a chart or a colour in a legend.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>indicatorColor:</strong>
+      the dot's colour, given as a CSS colour rather than an SDS name, so read
+      the one you want off the theme. With
+      <em>indicator</em>
+      but no colour the dot still takes up its space and stays invisible.
+    </p>
+  </li>
+</ul>
+<p>
+  Five props are applied after yours and so cannot be changed:
+  <em>followCursor</em>
+  , which is what makes the tooltip track the pointer rather than anchor to the
+  element;
+  <em>placement="right-end"</em>
+  ;
+  <em>arrow={false}</em>
+  ; and
+  <em>enterDelay</em>
+  and
+  <em>leaveDelay</em>
+  of 50ms each, which keep it from flickering as the pointer crosses a dense
+  chart. Passing a placement or an arrow of your own is silently ignored.
+</p>
+<h3>MUI Documentation</h3>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-tooltip/">here</a>
+  .
+</p>
+<h3>Behavior and accessibility</h3>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      Because it follows the cursor, this tooltip is a pointer-only affordance.
+      It still opens on focus, but it then appears wherever the pointer happens
+      to be, so anything it says has to exist elsewhere for a keyboard or screen
+      reader user.
+    </p>
+  </li>
+  <li>
+    <p>
+      Keep the text to a label — a value, a count, a name. Full sentences belong
+      in a Tooltip, and rows of numbers belong in a TooltipTable passed through
+      componentSlot.
+    </p>
+  </li>
+  <li>
+    <p>
+      The dot carries no meaning on its own. Whatever it encodes needs to be
+      legible from the text beside it too.
+    </p>
+  </li>
+</ul>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>title</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The label to show. Pass null when the content is coming through
+        componentSlot instead.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>indicator</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>Draws a 12px round dot before the text.</p></td>
+  </tr>
+  <tr>
+    <td><p>indicatorColor</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The dot's colour, as a CSS colour. Without it the dot occupies its space
+        but cannot be seen.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>hasInvertedStyle</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        Inherited from Tooltip. False gives the lighter scheme, which is what
+        the table tooltip uses.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>componentSlot</p></td>
+    <td><p>ReactNode</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Inherited from Tooltip, and how a TooltipTable is placed inside a
+        condensed tooltip.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Code examples</h3>
+<h4>TooltipCondensed with indicator</h4>
+<p>
+  A condensed tooltip on a table cell, with a coloured dot, and a second one in
+  the lighter scheme. Both follow the pointer as it moves across the cell.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="core/TooltipCondensed/TooltipCondensedWithIndicator"
+></div>
+<hr />
