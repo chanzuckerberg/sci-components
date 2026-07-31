@@ -1,0 +1,554 @@
+<h1>StackedBarChart</h1>
+<p>
+  A single horizontal bar split into labelled segments, for showing what a total
+  is made of.
+</p>
+<div
+  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+>
+  <p>
+    <strong>Ships separately:</strong>
+    StackedBarChart comes from @czi-sds/data-viz, not @czi-sds/components. See
+    the
+    <a href="./?path=/docs/data-viz-overview--docs" target="_top">
+      Data Viz overview
+    </a>
+    for installation and peer dependencies.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/StackedBarChart/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>How it is built</h2>
+<p>
+  Unlike HeatmapChart, this chart does not use ECharts. It is plain DOM: the bar
+  is a flex row of divs whose flex-grow carries each segment's share, so the
+  chart inherits SDS colors and spacing directly and animates with CSS. Two
+  things come from @czi-sds/components: the
+  <a href="./?path=/story/components-legend--default" target="_top">Legend</a>
+  below the bar, and the
+  <a href="./?path=/docs/components-tooltiptable--documentation" target="_top">
+    TooltipTable
+  </a>
+  a segment opens when its data item carries a tooltip.
+</p>
+<h2>Modes</h2>
+<p>
+  <strong>mode</strong>
+  decides what the full width of the bar means, and it is the first thing to
+  settle when adding the chart.
+</p>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      <strong>proportional</strong>
+      (the default) treats the data as the whole. Segments are sized against the
+      sum of the values and always fill the bar, so the chart reads as a
+      breakdown: how the total splits, not how large it is.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>cumulative</strong>
+      sizes segments against
+      <em>maxAmount</em>
+      instead, so the bar reads as progress towards a known total. When the
+      values add up to less than maxAmount, the gap is drawn as a grey
+      "Remaining" segment, which is labelled with
+      <em>remainingLabel</em>
+      and is never interactive. Leaving maxAmount off makes the mode behave like
+      proportional, since the sum becomes the maximum and no gap is left.
+    </p>
+  </li>
+</ul>
+<p>
+  Values are only ever shown in the legend, never on the bar, and only when
+  <strong>showLegendValues</strong>
+  is on. In proportional mode the natural format is the default
+  <em>percentage</em>
+  ; a cumulative bar usually wants
+  <em>legendValueFormat="count"</em>
+  with a
+  <em>unit</em>
+  , so the legend reads "117 datasets" rather than a share of a total the reader
+  cannot see.
+</p>
+<h2>Selection</h2>
+<p>
+  Selection is controlled: the chart renders whatever
+  <strong>selectedIndices</strong>
+  holds and never changes it itself. Clicking a segment or a legend item calls
+  <strong>onSelectionChange</strong>
+  with the indices it thinks should be selected next, and the parent decides
+  what to do with them. Without that callback the chart is inert — clicks still
+  reach
+  <em>onSegmentClick</em>
+  and
+  <em>onLegendItemClick</em>
+  , but nothing is ever selected.
+</p>
+<p>
+  <strong>selectionBehavior</strong>
+  chooses what a selection does to the bar. <em>dim</em> drops everything
+  unselected to 20% opacity, keeping the shape of the whole intact.
+  <em>hide</em>
+  removes unselected segments instead: in proportional mode the remaining ones
+  regrow to fill the bar, and in cumulative mode they keep their size and the
+  Remaining segment absorbs the difference.
+</p>
+<p>
+  The badge beside the title tracks all of this on its own — the total when
+  nothing is selected, "3 of 7" during a partial selection — unless you pass
+  <strong>badge</strong>
+  to say otherwise or
+  <strong>hideBadge</strong>
+  to remove it. It is drawn only when there is a
+  <strong>title</strong>
+  to sit next to.
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="zeroheight-bullet-list">
+  <li>
+    <p>
+      Legend items are the accessible way into the chart. Each is a
+      <em>role="button"</em>
+      with a tab stop and an accessible name built from its label and value, and
+      it reports its selected state through
+      <em>aria-pressed</em>
+      . They do not respond to Enter or Space, though, so keyboard users can
+      reach the legend but cannot select from it. Where selection matters, give
+      the chart a keyboard path of its own, as the example below does with a
+      button.
+    </p>
+  </li>
+  <li>
+    <p>
+      Bar segments are pointer-only: they carry no role and take no focus, so
+      everything they offer — hover, click, tooltip — has to be reachable
+      somewhere else too. They are also thin by default (16px), which makes them
+      a small target.
+    </p>
+  </li>
+  <li>
+    <p>
+      Nothing about a segment is conveyed by anything except its color, so the
+      legend is what makes the chart readable. Turning
+      <strong>showLegend</strong>
+      off leaves a bar that cannot be interpreted at all unless the surrounding
+      page names the parts.
+    </p>
+  </li>
+  <li>
+    <p>
+      Colors are generated when data items do not carry their own, using the
+      cubehelix palette from generateDiscreteColors and adapting to the light
+      and dark themes. The palette is regenerated whenever a new category
+      appears, so a category's color is stable while the data holds still but
+      not across datasets. Pass
+      <strong>color</strong>
+      on each item where a category must always look the same, or tune the
+      generated set with
+      <strong>colorGeneratorOptions</strong>
+      .
+    </p>
+  </li>
+  <li>
+    <p>
+      Segments are keyed by
+      <strong>name</strong>
+      , which is what lets them animate in, out, and resize when the data
+      changes. Two items sharing a name confuse that tracking, so names must be
+      unique within a chart.
+    </p>
+  </li>
+  <li>
+    <p>
+      A data item may set
+      <strong>disabled</strong>
+      to opt out of every interaction, on both its segment and its legend item.
+      Passing an empty
+      <strong>data</strong>
+      array is safe: the bar is drawn as an empty grey track.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  The chart spreads any remaining props onto its root div, so standard HTML
+  attributes such as className, id, and data-testid work as usual.
+</p>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>data</p></td>
+    <td><p>StackedBarChartDataItem[]</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The segments, in the order they are drawn. See the table below for the
+        shape of an item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>mode</p></td>
+    <td>
+      <p>"proportional"</p>
+      <p>| "cumulative"</p>
+    </td>
+    <td><p>"proportional"</p></td>
+    <td>
+      <p>
+        Whether the bar shows a breakdown of the data (segments always fill it)
+        or progress towards maxAmount.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>maxAmount</p></td>
+    <td><p>number</p></td>
+    <td><p>sum of values</p></td>
+    <td>
+      <p>
+        Cumulative mode only. The value the full bar represents. Any difference
+        between it and the sum of the data is drawn as the Remaining segment.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>title</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A heading above the bar. It is also what makes room for the badge; with
+        no title, no badge is drawn.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>badge</p></td>
+    <td><p>string</p></td>
+    <td><p>the selection count</p></td>
+    <td>
+      <p>
+        Overrides the badge text, which otherwise counts the data and the
+        selection ("7", or "3 of 7").
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>hideBadge</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td><p>Removes the badge, leaving the title on its own.</p></td>
+  </tr>
+  <tr>
+    <td><p>width</p></td>
+    <td><p>number | string</p></td>
+    <td><p>"100%"</p></td>
+    <td>
+      <p>
+        Any CSS width; a number is read as pixels. It sets the width of the
+        whole chart, legend included.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>barHeight</p></td>
+    <td><p>number</p></td>
+    <td><p>16</p></td>
+    <td>
+      <p>
+        Height of the bar in pixels. Values below 1 are clamped to 1, so the bar
+        cannot disappear.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>showLegend</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td>
+      <p>
+        Draws the legend below the bar. It is the only place segment names
+        appear, and the only part of the chart a keyboard can reach.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>showLegendValues</p></td>
+    <td><p>boolean</p></td>
+    <td><p>true</p></td>
+    <td><p>Shows each item's value beside its name in the legend.</p></td>
+  </tr>
+  <tr>
+    <td><p>legendValueFormat</p></td>
+    <td>
+      <p>"percentage"</p>
+      <p>| "count"</p>
+    </td>
+    <td><p>"percentage"</p></td>
+    <td>
+      <p>
+        percentage shows the segment's share of the bar, rounded. count shows
+        the raw value followed by the item's unit, or the chart's unit if the
+        item has none.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>unit</p></td>
+    <td><p>string</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The unit appended to counted values, for items that do not carry one of
+        their own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>remainingLabel</p></td>
+    <td><p>string</p></td>
+    <td><p>"Remaining"</p></td>
+    <td><p>Name of the grey gap segment in cumulative mode.</p></td>
+  </tr>
+  <tr>
+    <td><p>remainingUnit</p></td>
+    <td><p>string</p></td>
+    <td><p>the chart's unit</p></td>
+    <td><p>A unit for the Remaining segment's value alone.</p></td>
+  </tr>
+  <tr>
+    <td><p>selectedIndices</p></td>
+    <td><p>number[]</p></td>
+    <td><p>[]</p></td>
+    <td>
+      <p>
+        Indices into data that are currently selected. The chart is controlled:
+        it draws this and never changes it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onSelectionChange</p></td>
+    <td>
+      <p>(indices: number[],</p>
+      <p>items: StackedBarChartDataItem[])</p>
+      <p>=&gt; void</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Called with the next selection when a segment or legend item is clicked.
+        Without it, clicking selects nothing.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>selectionBehavior</p></td>
+    <td>
+      <p>"dim"</p>
+      <p>| "hide"</p>
+    </td>
+    <td><p>"dim"</p></td>
+    <td>
+      <p>
+        What a selection does to the unselected segments: fade them to 20%
+        opacity, or drop them from the bar and let the rest take the space.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>colorGeneratorOptions</p></td>
+    <td><p>DiscreteColorGeneratorOptions</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Tunes the generated palette (start hue, rotations, lightness range,
+        gamma). Items with their own color are untouched by it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onSegmentClick</p></td>
+    <td>
+      <p>(item, index) =&gt; void</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Fires on a segment click, alongside any selection change rather than
+        instead of it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>onLegendItemClick</p></td>
+    <td>
+      <p>(item, index) =&gt; void</p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>The same, for a click on a legend item.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>onSegmentMouseEnter</p>
+      <p>onSegmentMouseLeave</p>
+    </td>
+    <td>
+      <p>(item, index) =&gt; void</p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Hover on the bar. The chart already syncs its own hover highlight
+        between bar and legend; these are for driving something outside it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>onLegendItemMouseEnter</p>
+      <p>onLegendItemMouseLeave</p>
+    </td>
+    <td>
+      <p>(item, index) =&gt; void</p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>The same, for hover on a legend item.</p></td>
+  </tr>
+</table>
+<h3>StackedBarChartDataItem</h3>
+<table class="zeroheight-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td><p>name</p></td>
+    <td><p>string</p></td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The segment's label in the legend, and the key the animations track it
+        by. Must be unique within the chart.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>value</p></td>
+    <td><p>number</p></td>
+    <td><p>- (required)</p></td>
+    <td><p>The quantity the segment stands for.</p></td>
+  </tr>
+  <tr>
+    <td><p>color</p></td>
+    <td><p>string</p></td>
+    <td><p>generated</p></td>
+    <td>
+      <p>
+        Any CSS color. Without it the segment takes a generated palette color,
+        which can shift as categories come and go.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>unit</p></td>
+    <td><p>string</p></td>
+    <td><p>the chart's unit</p></td>
+    <td>
+      <p>
+        A unit for this item's counted value, for data that mixes units across
+        categories.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>disabled</p></td>
+    <td><p>boolean</p></td>
+    <td><p>false</p></td>
+    <td>
+      <p>
+        Takes the segment and its legend item out of every interaction: no
+        hover, no tooltip, no selection.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>tooltip</p></td>
+    <td><p>TooltipTableContentProps</p></td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Content for a TooltipTable shown above the segment on hover. Use it for
+        the breakdown behind the number; a segment without it has no tooltip.
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>Code examples</h2>
+<h3><strong>Default StackedBarChart</strong></h3>
+<p>
+  A proportional bar: values become shares of the whole, the legend reads them
+  as percentages, and the badge counts the categories.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/StackedBarChart/DefaultStackedBarChart"
+></div>
+<h3>Cumulative mode</h3>
+<p>
+  The same data measured against a known maximum, so the bar reads as progress
+  and the gap left over is drawn as Remaining. Counted values need a unit to
+  mean anything.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/StackedBarChart/CumulativeStackedBarChart"
+></div>
+<h3>Selection</h3>
+<p>
+  One selection driving two charts, so the difference between dim and hide is
+  visible in a single pass. Selection lives in the parent; the buttons show how
+  to change it from outside the chart, which is also what gives the keyboard a
+  way in.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/StackedBarChart/SelectableStackedBarChart"
+></div>
+<h3>Segment tooltips</h3>
+<p>
+  A data item carrying tooltip content opens a TooltipTable on hover, which is
+  where the detail behind a segment belongs.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/StackedBarChart/StackedBarChartWithTooltips"
+></div>
+<h3>Colors</h3>
+<p>
+  Explicit colors beside a generated palette. Give the categories that must stay
+  recognisable a color of their own, and tune the rest through
+  colorGeneratorOptions.
+</p>
+<div
+  class="zeroheight-example"
+  data-example="data-viz/StackedBarChart/StackedBarChartColors"
+></div>

@@ -2,12 +2,12 @@
   /*
    * Typechecks the documentation code examples — both the design-page examples
    * under `zeroheight-docs/` and the per-component ones living in each
-   * component's `__storybook__/docs/examples` folder — against the components
-   * source. The root `tsc` run cannot do this: a dependency ships typings our
+   * component's `__storybook__/docs/examples` folder — against the package
+   * sources. The root `tsc` run cannot do this: a dependency ships typings our
    * TypeScript version fails to parse, and TypeScript reports no semantic
-   * diagnostics at all when syntactic ones exist. The components package
-   * excludes the examples from its own config because they import
-   * `@czi-sds/components`, which only resolves from here.
+   * diagnostics at all when syntactic ones exist. The components and data-viz
+   * packages exclude the examples from their own configs because they import
+   * `@czi-sds/components` and `@czi-sds/data-viz`, which only resolve from here.
    *
    * Usage: npx tsc --noEmit -p tsconfig.docs-check.json
    */
@@ -23,6 +23,7 @@
     "./docs-kit/**/*.d.ts",
     "./zeroheight-docs/**/*.tsx",
     "./packages/components/src/**/__storybook__/docs/examples/*.tsx",
+    "./packages/data-viz/src/**/__storybook__/docs/examples/*.tsx",
     // Ambient SVG/global types the components source relies on.
     "./packages/components/src/**/*.d.ts"
   ]

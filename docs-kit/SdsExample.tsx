@@ -28,13 +28,13 @@ import { useThemeMode, type ThemeMode } from "./useThemeMode";
 
 /**
  * Registry of the example apps referenced by the `data-example` placeholders in
- * the docs HTML. They live in two places: alongside the design pages under
+ * the docs HTML. They live in three places: alongside the design pages under
  * `zeroheight-docs/pages/`, and alongside each component's own code docs under
- * `packages/components/src/core/`. Globs are lazy so every example is code-split
- * into its own chunk instead of shipping with every docs page. Companion CSS is
- * loaded eagerly as raw text (it is only a handful of small files) and injected
- * scoped to the preview, so page-level selectors such as `thead { ... }` cannot
- * leak into the docs page around it.
+ * `packages/components/src/core/` and `packages/data-viz/src/core/`. Globs are
+ * lazy so every example is code-split into its own chunk instead of shipping
+ * with every docs page. Companion CSS is loaded eagerly as raw text (it is only
+ * a handful of small files) and injected scoped to the preview, so page-level
+ * selectors such as `thead { ... }` cannot leak into the docs page around it.
  */
 const exampleLoaders = {
   ...import.meta.glob<{ default: ComponentType }>(
@@ -42,6 +42,9 @@ const exampleLoaders = {
   ),
   ...import.meta.glob<{ default: ComponentType }>(
     "../packages/components/src/core/**/__storybook__/docs/examples/*.tsx"
+  ),
+  ...import.meta.glob<{ default: ComponentType }>(
+    "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.tsx"
   ),
 };
 const sourceLoaders = {
@@ -53,6 +56,10 @@ const sourceLoaders = {
     "../packages/components/src/core/**/__storybook__/docs/examples/*.tsx",
     { import: "default", query: "?raw" }
   ),
+  ...import.meta.glob<string>(
+    "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.tsx",
+    { import: "default", query: "?raw" }
+  ),
 };
 const exampleStyles = {
   ...import.meta.glob<string>("../zeroheight-docs/pages/*/examples/*.css", {
@@ -62,6 +69,10 @@ const exampleStyles = {
   }),
   ...import.meta.glob<string>(
     "../packages/components/src/core/**/__storybook__/docs/examples/*.css",
+    { eager: true, import: "default", query: "?raw" }
+  ),
+  ...import.meta.glob<string>(
+    "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.css",
     { eager: true, import: "default", query: "?raw" }
   ),
 };
@@ -107,17 +118,22 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
 
 /**
  * Resolve an example id to its glob key, minus the file extension. Ids come in
- * two shapes: `<Page>/<Name>` for an example that belongs to a design page, and
- * `core/<Component>/<Name>` for one that belongs to a component's code docs.
+ * three shapes: `<Page>/<Name>` for an example that belongs to a design page,
+ * `core/<Component>/<Name>` for one that belongs to a component's code docs,
+ * and `data-viz/<Component>/<Name>` for one belonging to a chart's code docs.
  * The component part may itself be nested, as in `core/Bases/Typography/<Name>`.
  */
 function modulePath(id: string): string {
   const segments = id.split("/");
   const name = segments[segments.length - 1];
+  const component = segments.slice(1, -1).join("/");
 
   if (segments[0] === "core") {
-    const component = segments.slice(1, -1).join("/");
     return `../packages/components/src/core/${component}/__storybook__/docs/examples/${name}`;
+  }
+
+  if (segments[0] === "data-viz") {
+    return `../packages/data-viz/src/core/${component}/__storybook__/docs/examples/${name}`;
   }
 
   return `../zeroheight-docs/pages/${segments[0]}/examples/${name}`;
@@ -361,8 +377,9 @@ export type ExamplePadding = "default" | "none";
 
 export interface SdsExampleProps {
   /**
-   * `<Page>/<Name>` (e.g. `Theming/DarkModeByDefault`) or
-   * `core/<Component>/<Name>` (e.g. `core/Accordion/DefaultAccordion`).
+   * `<Page>/<Name>` (e.g. `Theming/DarkModeByDefault`),
+   * `core/<Component>/<Name>` (e.g. `core/Accordion/DefaultAccordion`), or
+   * `data-viz/<Component>/<Name>` (e.g. `data-viz/StackedBarChart/Default`).
    */
   id: string;
   /**
