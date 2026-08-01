@@ -8,12 +8,15 @@ import { ThemeProvider } from "@mui/material/styles";
 import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import { createPortal } from "react-dom";
 import NavigationJumpTo from "@components/src/core/NavigationJumpTo";
-import { Theme } from "@components/src/core/styles";
+import {
+  Theme,
+  getSemanticColors,
+  type CommonThemeProps,
+} from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
 import { PREVIEW_CLASS, SB_UNSTYLED_CLASS, TOGGLE_CLASS } from "./constants";
 import { highlightBlock } from "./highlight";
 import { SdsExample, type ExamplePadding } from "./SdsExample";
-import { useThemeMode } from "./useThemeMode";
 
 /**
  * Live previews are portaled into this container, so the prose styles below
@@ -50,7 +53,7 @@ const STACK_BELOW = 840;
  * translucent `currentColor`) so the content reads correctly regardless of the
  * docs background or the light/dark theme toggle.
  */
-const Container = styled.div`
+const Container = styled.div<CommonThemeProps>`
   font-family:
     "Inter",
     -apple-system,
@@ -541,6 +544,20 @@ const Container = styled.div`
     font-weight: 600;
   }
 
+  /* Storybook's docs stylesheet stripes these tables for us, but against a grey
+     of its own choosing. Restate the band as the SDS surface the design system
+     stripes with. The layout tables below opt out, their rows carrying no
+     background at all.
+
+     Doubling the container class outbids that rule, which reaches these pages
+     because the imported HTML sits outside .sb-unstyled. */
+  &&
+    table${OUTSIDE_PREVIEW}:not(.zeroheight-table-borderless)
+    tr:nth-of-type(2n) {
+    background-color: ${(props) =>
+      getSemanticColors(props)?.base?.backgroundSecondary};
+  }
+
   /* Opt-in modifier for tables used purely for layout (an icon beside a block of
      text, say) rather than to present data. Add it alongside the base class:
      <table class="zeroheight-table zeroheight-table-borderless">. The grid drops
@@ -875,6 +892,11 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
   const [snippets, setSnippets] = useState<SnippetSlot[]>([]);
   const [jumpTo, setJumpTo] = useState<JumpToItem[]>([]);
 
+  /*
+   * Pinned to light: the toolbar's theme reaches the previews (which paint their
+   * own surface) but not the docs page around them, whose canvas and prose stay
+   * light in both modes. A dark surface here would sit on a light page.
+   */
   const theme = useMemo(() => Theme("light"), []);
 
   /**
@@ -937,24 +959,25 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
   return (
     <>
       <Global styles={wideDocsColumn} />
-      <Layout data-sds-contents={hasContents || undefined}>
-        {/* eslint-disable-next-line react/no-danger -- content is generated at
-            build time from our own trusted ZeroHeight export, not user input. */}
-        <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
-        {jumpTo.length > 0 && (
-          <Sidebar className={SB_UNSTYLED_CLASS}>
-            <ThemeProvider theme={theme}>
-              <EmotionThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <EmotionThemeProvider theme={theme}>
+          <Layout data-sds-contents={hasContents || undefined}>
+            {/* eslint-disable-next-line react/no-danger -- content is generated
+                at build time from our own trusted ZeroHeight export, not user
+                input. */}
+            <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
+            {jumpTo.length > 0 && (
+              <Sidebar className={SB_UNSTYLED_CLASS}>
                 <NavigationJumpTo
                   aria-label="On this page"
                   items={jumpTo}
                   width={`${SIDEBAR_WIDTH}px`}
                 />
-              </EmotionThemeProvider>
-            </ThemeProvider>
-          </Sidebar>
-        )}
-      </Layout>
+              </Sidebar>
+            )}
+          </Layout>
+        </EmotionThemeProvider>
+      </ThemeProvider>
       {slots.map(({ id, node, padding }) =>
         createPortal(<SdsExample id={id} padding={padding} />, node, id)
       )}
