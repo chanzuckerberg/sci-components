@@ -8,11 +8,10 @@
     "src/core/**/*"
   ],
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es2019",
     "lib": ["es2019", "dom"],
     "paths": {
-      "@data-viz/src/*": ["src/*"],
+      "@data-viz/src/*": ["./src/*"],
       "@components/src/*": ["../components/src/*"]
     },
     "types": ["vitest/globals", "node"]

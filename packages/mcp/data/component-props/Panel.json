@@ -13,6 +13,12 @@
         "type": "\"overlay\" | \"basic\"",
         "isRequired": true
       },
+      "transitionDuration": {
+        "type": "\"number\" | \"{ appear?: number; enter?: number; exit?: number; }\"",
+        "isRequired": false,
+        "description": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object.",
+        "defaultValue": "{\nenter: theme.transitions.duration.enteringScreen,\nexit: theme.transitions.duration.leavingScreen,\n}"
+      },
       "width": {
         "type": "\"string\" | \"number\"",
         "isRequired": false
