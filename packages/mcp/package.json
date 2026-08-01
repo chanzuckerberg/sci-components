@@ -28,7 +28,7 @@
     "build": "yarn prebuild && rolldown -c && chmod 755 dist/stdio.js",
     "dev": "rolldown -c --watch",
     "inspect": "node scripts/inspect.js",
-    "inspect:dev": "npx @modelcontextprotocol/inspector npx tsx src/stdio.ts",
+    "inspect:dev": "npx -y @modelcontextprotocol/inspector@latest npx tsx src/stdio.ts",
     "serve": "tsx --watch src/http.ts"
   },
   "bin": {
