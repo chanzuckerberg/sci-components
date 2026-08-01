@@ -199,7 +199,11 @@ function createInlineConverter(): (html: string) => string {
     service
       .turndown(html)
       .replace(/\s*\n+\s*/g, " ")
-      .replace(/\|/g, "\\|")
+      // A pipe would end the cell early, so it has to be escaped — and so does
+      // the backslash itself, otherwise a literal `\|` in the source would
+      // escape our escape and split the row. Both are replaced in one pass so
+      // the backslashes added here are not re-escaped.
+      .replace(/[\\|]/g, "\\$&")
       .trim();
 }
 
