@@ -79,11 +79,8 @@ const createColorToReferenceMap = (
     Object.keys(primitiveColors[colorFamily]).forEach((shade) => {
       const { value, darkValue } = primitiveColors[colorFamily][shade];
 
-      // Map light colors to their .value references
-      lightColorMap.set(
-        value,
-        `{sds.color.primitive.${colorFamily}.${shade}.value}`
-      );
+      // Map light colors to their token references
+      lightColorMap.set(value, `{sds.color.primitive.${colorFamily}.${shade}}`);
 
       // Map dark colors to their .darkValue references
       darkColorMap.set(
@@ -99,8 +96,7 @@ const createColorToReferenceMap = (
 // Helper function to handle colors with opacity
 const handleOpacityColor = (
   colorValue: string,
-  targetMap: Map<string, string>,
-  isDark: boolean
+  targetMap: Map<string, string>
 ): string | null => {
   if (colorValue.length < 8) {
     return null;
@@ -118,10 +114,7 @@ const handleOpacityColor = (
     return null;
   }
 
-  return baseReference.replace(
-    isDark ? ".darkValue}" : ".value}",
-    isDark ? `.darkValue}${potentialOpacity}` : `.value}${potentialOpacity}`
-  );
+  return `${baseReference}${potentialOpacity}`;
 };
 
 // Convert a color value to a primitive token reference
@@ -136,7 +129,7 @@ const convertColorToReference = (
   const targetMap = isDark ? colorMaps.darkColorMap : colorMaps.lightColorMap;
 
   // Try to handle opacity colors first
-  const opacityResult = handleOpacityColor(colorValue, targetMap, isDark);
+  const opacityResult = handleOpacityColor(colorValue, targetMap);
   if (opacityResult) {
     return opacityResult;
   }
