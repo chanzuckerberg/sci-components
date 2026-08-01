@@ -8,7 +8,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 SDS Tooltip wraps MUI's Tooltip, composes the content out of its own props rather than taking it whole, and pins the parts of MUI's API the design has an opinion about. What it adds and changes:
 
-- **hasInvertedStyle:** true by default, which is the dark tooltip: a black surface with white semibold text. Set it to false for the light one — a white surface, a hairline outline, and body text. Mind the vocabulary: the design above calls the light tooltip the default and the dark one inverted, while the component ships dark unless asked otherwise.
+- **hasInvertedStyle:** true by default, which is the dark tooltip: a black surface with white semibold text. Set it to false for the light one: a white surface, a hairline outline, and body text. Mind the vocabulary: the design above calls the light tooltip the default and the dark one inverted, while the component ships dark unless asked otherwise.
 
 - **title and subtitle:** SDS builds the content itself, wrapping title and then subtitle in paragraphs of its own, so title is not the free-form node MUI's is. subtitle is the smaller, dimmer second line and works on either style, despite a leftover warning in the codebase claiming it is dark-only. A tooltip with no title, subtitle or componentSlot renders nothing and leaves its child alone.
 
@@ -16,13 +16,13 @@ SDS Tooltip wraps MUI's Tooltip, composes the content out of its own props rathe
 
 - **width:** "default" caps the tooltip at 250px, "wide" at 550px and switches the text to the left. Compare MUI, which has no width prop of its own. The design pairs the wide width with the light tooltip; in code it applies to both, and logs a warning about being light-only either way.
 
-- **textAlign:** overrides the alignment each width picks for itself — centred at the default width, left when wide.
+- **textAlign:** overrides the alignment each width picks for itself: centred at the default width, left when wide.
 
 - **arrowOffset:** not an offset but a position: the number becomes the arrow's _left_ in pixels, measured from the tooltip's left edge, replacing the one the positioning engine worked out. Values past the tooltip's own width put the arrow out of sight.
 
 - **arrow is on:** MUI defaults to no arrow; SDS turns it on for every tooltip. It can still be turned back off with _arrow={false}_, though the design always draws one.
 
-- **sdsStyle and inverted are deprecated.** Both are earlier spellings of hasInvertedStyle — _sdsStyle="dark"_ matches the default and _sdsStyle="light"_ matches _hasInvertedStyle={false}_. Reach for hasInvertedStyle and ignore the console: because the component gives sdsStyle a default of "dark" before checking whether it was passed, both the deprecation warning and the wide-width warning are logged for every tooltip, whatever props you gave it. The same stale default is why the 500ms delay the code has in mind for light tooltips only takes effect if you pass the deprecated _sdsStyle="light"_ alongside _hasInvertedStyle={false}_; on its own, a light tooltip closes as promptly as a dark one.
+- **sdsStyle and inverted are deprecated.** Both are earlier spellings of hasInvertedStyle: _sdsStyle="dark"_ matches the default and _sdsStyle="light"_ matches _hasInvertedStyle={false}_. Reach for hasInvertedStyle and ignore the console: because the component gives sdsStyle a default of "dark" before checking whether it was passed, both the deprecation warning and the wide-width warning are logged for every tooltip, whatever props you gave it. The same stale default is why the 500ms delay the code has in mind for light tooltips only takes effect if you pass the deprecated _sdsStyle="light"_ alongside _hasInvertedStyle={false}_; on its own, a light tooltip closes as promptly as a dark one.
 
 - **The popper is SDS's:** it carries the arrow's shape and its position for all twelve placements, and it arrives through _PopperComponent_, which SDS keeps as a prop name of its own after MUI moved to _slots.popper_. SDS fills in _slots_ last, so a _slots_ object of your own is dropped; pass PopperComponent instead.
 
@@ -38,7 +38,7 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - Tooltips are interactive: the pointer can travel from the trigger, across the 14px gap, and onto the tooltip without it closing, which is what makes a link inside one reachable. MUI's _disableInteractive_ turns that off, and with it any chance of clicking what the tooltip holds.
 
-- A disabled element fires no pointer events, so a tooltip attached to one never opens. Wrap the child in a _<span>_ to give the tooltip something that reports hovers. The span inherits the _tabIndex={0}_ SDS adds, so it becomes a tab stop and the tooltip still opens on focus — which is the only route left, given that the disabled control cannot take focus itself.
+- A disabled element fires no pointer events, so a tooltip attached to one never opens. Wrap the child in a _<span>_ to give the tooltip something that reports hovers. The span inherits the _tabIndex={0}_ SDS adds, so it becomes a tab stop and the tooltip still opens on focus. That is the only route left, given that the disabled control cannot take focus itself.
 
 - The tooltip renders in a portal at the end of the document, so it is not clipped by whatever it sits inside and does not need room reserved for it.
 
@@ -132,7 +132,7 @@ The light tooltip, which has to be asked for with hasInvertedStyle={false}, show
 //
 // width="wide" lifts the cap from 250px to 550px and switches the text to the left,
 // which is what longer explanations need. It logs a warning saying wide is for light
-// tooltips only — the check is broken and fires whichever style you use, so it can
+// tooltips only. The check is broken and fires whichever style you use, so it can
 // be ignored here.
 
 import {
@@ -228,7 +228,7 @@ export default App;
 
 ### **Placement and the arrow**
 
-Four of the twelve placements, and what arrowOffset does to the arrow — it sets a position rather than nudging one.
+Four of the twelve placements, and what arrowOffset does to the arrow: it sets a position rather than nudging one.
 
 **Example: TooltipPlacement**
 
@@ -345,7 +345,7 @@ Content that is not a string goes in componentSlot, under the title. The pointer
 ```tsx
 // componentSlot takes anything React can render and puts it under the title and
 // subtitle, with 12px between them. It is the way to get something other than text
-// into a tooltip — a legend, a thumbnail, a link — because title and subtitle are
+// into a tooltip (a legend, a thumbnail, a link) because title and subtitle are
 // each wrapped in a paragraph, so a table or a div passed to title produces invalid
 // HTML.
 //
@@ -498,7 +498,7 @@ If the tooltip wraps a disabled component, please make sure to wrap the children
 //
 // The span works for the keyboard too, without any extra work: SDS puts tabIndex={0}
 // on whatever a tooltip wraps, so the span becomes a tab stop of its own and the
-// tooltip opens when it takes focus — which is the one route left, since the disabled
+// tooltip opens when it takes focus. That is the one route left, since the disabled
 // button itself cannot be focused.
 
 import { Button, Tooltip } from "@czi-sds/components";

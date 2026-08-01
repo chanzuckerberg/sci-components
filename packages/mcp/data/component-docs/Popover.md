@@ -30,11 +30,11 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - A Popover is built on MUI's Modal. It renders in a portal at the end of the document, traps focus while it is open, hides the rest of the page from assistive technology, and locks the page's scroll. It is a modal surface that happens to be anchored, not a floating layer over a page that carries on as normal.
 
-- The backdrop is invisible but present, so a click anywhere outside the popover is caught by it rather than by whatever is underneath. _onClose_ is called with the event and a reason — _"backdropClick"_ or _"escapeKeyDown"_ — and closing is left to you, since the open state is yours.
+- The backdrop is invisible but present, so a click anywhere outside the popover is caught by it rather than by whatever is underneath. _onClose_ is called with the event and a reason: _"backdropClick"_ or _"escapeKeyDown"_. Closing is left to you, since the open state is yours.
 
 - **anchorEl has to be state, not a ref.** The popover measures the anchor while rendering, so it needs a render to happen once the element is known. Storing the trigger in a ref leaves the popover with nothing to measure on the first open.
 
-- Nothing at all is rendered while _open_ is false, so the content is mounted fresh on each open and its state starts over. Pass _keepMounted_ to keep it in the document instead — worth it when the content is expensive to build or has to stay findable by an in-page search.
+- Nothing at all is rendered while _open_ is false, so the content is mounted fresh on each open and its state starts over. Pass _keepMounted_ to keep it in the document instead, worth it when the content is expensive to build or has to stay findable by an in-page search.
 
 - The position is worked out when the popover opens and again on window resize; it does not follow its anchor. Page scroll is locked while it is open, so this is usually enough, but an anchor inside a box that scrolls on its own can be scrolled away from its popover.
 
@@ -243,7 +243,7 @@ Anything React can render goes on the paper. A popover holding more than a sente
 // Two things have to be decided for content this size. The width, because a
 // popover is otherwise as wide as its content: slotProps.paper is the way in, and
 // sx works there because SDS sets no width of its own. And the room around it,
-// which the content adds — the paper's 6px and 12px come from a selector on the
+// which the content adds: the paper's 6px and 12px come from a selector on the
 // popover's root that outranks an sx on the paper, so they are there to build on
 // rather than to replace.
 //
@@ -354,7 +354,7 @@ With anchorReference set to "anchorPosition" the popover is placed at a point ra
 // measure, only where the pointer was.
 //
 // anchorPosition is read in viewport coordinates, so clientX and clientY go
-// straight in — no scroll offset, and no bounding rect. Everything else works as
+// straight in: no scroll offset, and no bounding rect. Everything else works as
 // before, including the 8px the SDS transformOrigin subtracts, which is why the
 // popover opens just below the cursor rather than under it.
 //

@@ -3,9 +3,9 @@
 //
 // Pointing at a bar sets hoveredIndex, which highlights the matching legend
 // item. Pointing at a legend item fires onItemMouseEnter, which the parent turns
-// into a highlight on the bar. hoveredIndex only ever adds a highlight — the
+// into a highlight on the bar. hoveredIndex only ever adds a highlight (the
 // legend still tracks its own hover, and null means "nothing from outside"
-// rather than "clear it" — so the two never fight over the same item.
+// rather than "clear it"), so the two never fight over the same item.
 //
 // The bar here is four divs sized by flex-grow, deliberately plain: it stands in
 // for whatever chart the legend is a key to. For a real stacked bar, reach for

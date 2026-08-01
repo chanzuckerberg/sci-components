@@ -10,11 +10,11 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 Legend has no MUI base. It is a flex row of divs that wraps, where each item is a swatch, a label, and an optional value, styled from SDS spacing and semantic colors. It draws nothing but itself: it holds no chart, and it is up to the page to keep the legend and whatever it describes in the same order and the same colors.
 
-It is also what StackedBarChart renders below its bar. Reach for Legend directly when the chart is your own — an ECharts plot, a map, a set of swatches in a table — and you want its key to match the rest of the system.
+It is also what StackedBarChart renders below its bar. Reach for Legend directly when the chart is your own (an ECharts plot, a map, a set of swatches in a table) and you want its key to match the rest of the system.
 
 ## Items and colors
 
-**items** is the whole content of the legend, drawn in the order given. Each item needs a _name_ and may carry a _value_, a _color_, and _disabled_. An item's index is its identity everywhere else in the API — selection, hover, and every callback are indices into this array — so items are positional and names need not be unique.
+**items** is the whole content of the legend, drawn in the order given. Each item needs a _name_ and may carry a _value_, a _color_, and _disabled_. An item's index is its identity everywhere else in the API: selection, hover, and every callback are indices into this array. Items are therefore positional and names need not be unique.
 
 A swatch takes the first color it finds: the entry at its index in the **colors** prop, then the item's own _color_, then a grey fallback from the theme. The colors prop is for a palette computed for the whole set at once, which is what _generateDiscreteColors_ produces and what needs regenerating when the theme changes; a color on the item is for a category that must always look the same. A short colors array is fine, since each index falls through on its own.
 
@@ -22,7 +22,7 @@ Values are only drawn when **showValues** is on and the item has one. Numbers go
 
 ## Selection and hover
 
-Selection is controlled. The legend draws whatever **selectedIndices** holds and never changes it: clicking an item calls **onSelectionChange** with that index toggled in or out, and the parent decides what to do with it. Without the callback the legend is inert — clicks still reach _onItemClick_, but nothing is ever selected.
+Selection is controlled. The legend draws whatever **selectedIndices** holds and never changes it: clicking an item calls **onSelectionChange** with that index toggled in or out, and the parent decides what to do with it. Without the callback the legend is inert: clicks still reach _onItemClick_, but nothing is ever selected.
 
 Once anything is selected, the swatches of unselected items drop to 20% opacity. Hovering overrides that while the pointer is down the row: the hovered item and the selected ones stay solid, everything else dims. Labels never dim, so the legend stays readable as a list whatever is highlighted.
 
@@ -34,9 +34,9 @@ Once anything is selected, the swatches of unselected items drop to 20% opacity.
 
 - Every item is a button whether or not anything listens, so a legend used purely as a key still invites a click that does nothing. That is worth weighing against the alternative of drawing the key by hand.
 
-- Color is the only thing tying an item to the mark it names. Where the marks are close in hue, or the chart is read by someone who cannot separate them, the values in the legend are what make it interpretable — which is a reason to turn showValues on rather than leave it to the chart.
+- Color is the only thing tying an item to the mark it names. Where the marks are close in hue, or the chart is read by someone who cannot separate them, the values in the legend are what make it interpretable, which is a reason to turn showValues on rather than leave it to the chart.
 
-- A disabled item takes no pointer events at all: no hover, no click, no dimming when its neighbours are selected. It is drawn exactly like the others, so anything a reader should know about it has to be in its name — "Other (17)", "Remaining" — and it keeps its tab stop out of the tab order.
+- A disabled item takes no pointer events at all: no hover, no click, no dimming when its neighbours are selected. It is drawn exactly like the others, so anything a reader should know about it has to be in its name: "Other (17)", "Remaining". It also keeps its tab stop out of the tab order.
 
 - The legend wraps to as many rows as it needs and has no width of its own, so it takes the width of its container. Constrain that container to keep it the same width as the chart it belongs to.
 
@@ -214,8 +214,8 @@ Selection lives in the parent, so the same state can filter a list beside the le
 // Selection is controlled: the legend draws whatever selectedIndices holds and
 // asks the parent to change it through onSelectionChange, which is called with
 // the clicked index toggled in or out. Because the state lives in the parent,
-// the same selection can drive something else on the page — here, the list of
-// datasets beside it.
+// the same selection can drive something else on the page. Here, that is the
+// list of datasets beside it.
 //
 // Selected items keep a filled background and their swatch at full opacity,
 // while everything unselected fades. Hovering wins over that for as long as the
@@ -285,7 +285,7 @@ function App() {
 
   const summary = selectedIndices.length
     ? selectedIndices.map((index) => ITEMS[index].name).join(", ")
-    : "Nothing selected — showing all modalities.";
+    : "Nothing selected: showing all modalities.";
 
   return (
     <div className="app">
@@ -336,9 +336,9 @@ hoveredIndex and the hover callbacks wired in both directions, so pointing at a 
 //
 // Pointing at a bar sets hoveredIndex, which highlights the matching legend
 // item. Pointing at a legend item fires onItemMouseEnter, which the parent turns
-// into a highlight on the bar. hoveredIndex only ever adds a highlight — the
+// into a highlight on the bar. hoveredIndex only ever adds a highlight (the
 // legend still tracks its own hover, and null means "nothing from outside"
-// rather than "clear it" — so the two never fight over the same item.
+// rather than "clear it"), so the two never fight over the same item.
 //
 // The bar here is four divs sized by flex-grow, deliberately plain: it stands in
 // for whatever chart the legend is a key to. For a real stacked bar, reach for

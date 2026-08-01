@@ -9,8 +9,8 @@
   >
   is the official debugging client for MCP servers. It connects to the server
   the same way an editor would and lets you call tools by hand, which makes it
-  the fastest way to see exactly what an agent receives — without an agent in
-  the way deciding what to call and paraphrasing the result.
+  the fastest way to see exactly what an agent receives, without an agent in the
+  way deciding what to call and paraphrasing the result.
 </p>
 <p>
   It has two modes. The <strong>UI</strong> is for exploring, and the
@@ -73,7 +73,7 @@
   </li>
   <li>
     <p>
-      Read the raw response. Check the shape and not just the content — a tool
+      Read the raw response. Check the shape and not just the content: a tool
       that returns an error message inside a successful response still looks
       like a success to the client.
     </p>
@@ -125,8 +125,9 @@
 </div>
 <p>
   Pass <code>--tool-arg</code> once per argument. Because the output is JSON, it
-  pipes into <code>jq</code> or <code>node</code> for assertions — useful for
-  confirming that a change to the generation scripts did what you expected:
+  pipes into <code>jq</code> or <code>node</code> for assertions, which is
+  useful for confirming that a change to the generation scripts did what you
+  expected:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -181,8 +182,8 @@
   Tools are only registered if they appear in the <code>tools</code> array in
   <code>src/tools/index.ts</code>. If it is there and still missing, check
   whether the tool's <code>disabled()</code> hook is returning true, and whether
-  its <code>ctx()</code> threw during startup — a throw there fails
-  registration, and the reason will be in the Notifications pane.
+  its <code>ctx()</code> threw during startup: a throw there fails registration,
+  and the reason will be in the Notifications pane.
 </p>
 
 <h3>A tool reports that data files are not found</h3>

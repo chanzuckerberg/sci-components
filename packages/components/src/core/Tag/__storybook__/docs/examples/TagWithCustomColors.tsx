@@ -2,7 +2,7 @@
 // [label, background] or [label, background, icon].
 //
 // The two-value form does not touch the icon, which stays white and disappears on
-// a light background — the first tag below. A tag with an icon wants the
+// a light background (the first tag below). A tag with an icon wants the
 // three-value form, and the contrast of whatever colors you pick is on you, since
 // SDS only guarantees it for its own intents.
 

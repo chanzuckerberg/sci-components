@@ -3,8 +3,8 @@
 // with its own state, and the second level resets when the first one changes, so a
 // section never opens on a sub-tab that was chosen somewhere else.
 //
-// Each group brings its own spacing — 24px under the large one, 12px over the
-// small one — and those margins collapse into a single 24px gap between the two
+// Each group brings its own spacing (24px under the large one, 12px over the
+// small one), and those margins collapse into a single 24px gap between the two
 // strips, so neither level needs margins added or taken away here.
 
 import { Tab, Tabs } from "@czi-sds/components";

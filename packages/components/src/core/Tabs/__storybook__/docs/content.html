@@ -12,7 +12,7 @@
 <h2>SDS vs MUI</h2>
 <p>
   SDS Tabs wraps MUI's Tabs, and SDS Tab wraps MUI's Tab. Both are exported from
-  the library and are used together — a Tab has to be a direct child of a Tabs
+  the library and are used together: a Tab has to be a direct child of a Tabs
   group. The differences from MUI are these:
 </p>
 <ul class="sds-doc-bullet-list">
@@ -20,10 +20,10 @@
     <p>
       <strong>sdsSize:</strong>
       takes large (default) or small, and sets both the size of the label text
-      on every tab in the group — 14px for large, 13px for small — and the
-      spacing around the group: 16px above and 24px below at the large size,
-      12px on both sides at the small size. It reaches the tabs through context,
-      so it belongs on the group; a Tab cannot ask for a size of its own.
+      on every tab in the group (14px for large, 13px for small) and the spacing
+      around the group: 16px above and 24px below at the large size, 12px on
+      both sides at the small size. It reaches the tabs through context, so it
+      belongs on the group; a Tab cannot ask for a size of its own.
     </p>
   </li>
   <li>
@@ -38,8 +38,8 @@
     <p>
       <strong>count on a Tab:</strong>
       a value drawn after the label, saying how many items wait on that tab's
-      screen. It is a prop on each Tab, not on the group, and it takes any node
-      — a number, a string, or a component such as a
+      screen. It is a prop on each Tab, not on the group, and it takes any node:
+      a number, a string, or a component such as a
       <a
         href="./?path=/docs/design-documentation-genes-tags--docs"
         target="_top"
@@ -61,8 +61,8 @@
   <li>
     <p>
       <strong>The indicator is fixed:</strong>
-      SDS styles the selected tab's underline itself — 2px, in the accent color
-      — so MUI's
+      SDS styles the selected tab's underline itself (2px, in the accent color),
+      so MUI's
       <em>indicatorColor</em>
       and
       <em>textColor</em>
@@ -173,7 +173,7 @@
     <p>
       A tab's accessible name is its label followed by whatever
       <strong>count</strong>
-      renders, so a count of 0 is announced as part of the name — "Contributors
+      renders, so a count of 0 is announced as part of the name: "Contributors
       0". Keep a count short enough to read that way.
     </p>
   </li>
@@ -310,7 +310,7 @@
     <td><p>-</p></td>
     <td>
       <p>
-        A value drawn after the label — a number, a string, or a component. 0 is
+        A value drawn after the label: a number, a string, or a component. 0 is
         drawn rather than dropped, and whatever renders joins the tab's
         accessible name.
       </p>

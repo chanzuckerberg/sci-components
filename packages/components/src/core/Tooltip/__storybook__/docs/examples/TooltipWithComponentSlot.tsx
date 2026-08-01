@@ -1,6 +1,6 @@
 // componentSlot takes anything React can render and puts it under the title and
 // subtitle, with 12px between them. It is the way to get something other than text
-// into a tooltip — a legend, a thumbnail, a link — because title and subtitle are
+// into a tooltip (a legend, a thumbnail, a link) because title and subtitle are
 // each wrapped in a paragraph, so a table or a div passed to title produces invalid
 // HTML.
 //

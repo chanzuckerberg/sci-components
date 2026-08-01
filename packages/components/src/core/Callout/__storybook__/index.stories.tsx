@@ -79,7 +79,7 @@ export default {
 export const Default = {
   args: {
     autoDismiss: false,
-    body: "Callout text — replace the content here and the height of the component will adjust automatically.",
+    body: "Callout text. Replace the content here and the height of the component will adjust automatically.",
     title: "The callout title goes here",
   },
 };

@@ -1,7 +1,7 @@
 // A thousand rows behind a scroll container, with only the visible ones in the DOM.
 // Two libraries do the work: @tanstack/react-virtual measures the scroller and
 // reports which rows to draw, and @tanstack/react-query fetches the next batch as
-// the scroller nears its end. The Table components themselves are unchanged — the
+// the scroller nears its end. The Table components themselves are unchanged: the
 // spacer rows above and below the window are what keep the scrollbar honest.
 //
 // estimateSize has to be close to a real row's height or the scrollbar drifts as it

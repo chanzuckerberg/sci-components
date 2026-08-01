@@ -22,7 +22,7 @@ The SDS Panel wraps the MUI Drawer, with these differences:
 
 - **A backdrop you opt into:** MUI's temporary drawer always lays a visible backdrop over the page. SDS hides it, so the page behind an overlay panel stays legible and clickable. **isBackdropClickEnabled** brings back an invisible one, which gives you a click-outside target without dimming anything.
 
-- **Motion the SDS theme does not shorten:** every MUI transition reads its length from the theme, and SDS sets those lengths short — 20ms in, 10ms out — for the small elements that make up most of the system. A panel is far too large to cross the screen in a frame, so it keeps MUI's own drawer timings of 225ms in and 195ms out. **transitionDuration** overrides either direction.
+- **Motion the SDS theme does not shorten:** every MUI transition reads its length from the theme, and SDS sets those lengths short (20ms in, 10ms out) for the small elements that make up most of the system. A panel is far too large to cross the screen in a frame, so it keeps MUI's own drawer timings of 225ms in and 195ms out. **transitionDuration** overrides either direction.
 
 - **Focus and scrolling stay with the page:** SDS forces _disableEnforceFocus_ and _disableScrollLock_ on the underlying Modal, so an open panel neither traps the keyboard nor freezes the page's scrollbar. Anything else you pass through _ModalProps_ is kept. The paper also gets a default _aria-label_ of "Panel", which _slotProps.paper_ can replace.
 

@@ -7,7 +7,7 @@
 // every time any column changes.
 //
 // One search field sits above all the columns and filters them together.
-// groupBy is ignored here — sections and columns do not combine.
+// groupBy is ignored here: sections and columns do not combine.
 //
 // open is set here only so the columns are visible on the page.
 

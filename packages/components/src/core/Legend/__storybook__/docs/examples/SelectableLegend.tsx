@@ -1,8 +1,8 @@
 // Selection is controlled: the legend draws whatever selectedIndices holds and
 // asks the parent to change it through onSelectionChange, which is called with
 // the clicked index toggled in or out. Because the state lives in the parent,
-// the same selection can drive something else on the page — here, the list of
-// datasets beside it.
+// the same selection can drive something else on the page. Here, that is the
+// list of datasets beside it.
 //
 // Selected items keep a filled background and their swatch at full opacity,
 // while everything unselected fades. Hovering wins over that for as long as the
@@ -72,7 +72,7 @@ function App() {
 
   const summary = selectedIndices.length
     ? selectedIndices.map((index) => ITEMS[index].name).join(", ")
-    : "Nothing selected — showing all modalities.";
+    : "Nothing selected: showing all modalities.";
 
   return (
     <div className="app">

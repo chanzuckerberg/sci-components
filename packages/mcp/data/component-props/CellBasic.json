@@ -7,7 +7,7 @@
       },
       "horizontalAlign": {
         "defaultValue": "left",
-        "description": "Horizontal alignment of cell content. There is no \"center\" — use CellComponent if a cell needs centered content.",
+        "description": "Horizontal alignment of cell content. There is no \"center\". Use CellComponent if a cell needs centered content.",
         "isRequired": false,
         "type": "\"left\" | \"right\""
       },

@@ -6,17 +6,17 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## SDS vs MUI
 
-SDS Tabs wraps MUI's Tabs, and SDS Tab wraps MUI's Tab. Both are exported from the library and are used together — a Tab has to be a direct child of a Tabs group. The differences from MUI are these:
+SDS Tabs wraps MUI's Tabs, and SDS Tab wraps MUI's Tab. Both are exported from the library and are used together: a Tab has to be a direct child of a Tabs group. The differences from MUI are these:
 
-- **sdsSize:** takes large (default) or small, and sets both the size of the label text on every tab in the group — 14px for large, 13px for small — and the spacing around the group: 16px above and 24px below at the large size, 12px on both sides at the small size. It reaches the tabs through context, so it belongs on the group; a Tab cannot ask for a size of its own.
+- **sdsSize:** takes large (default) or small, and sets both the size of the label text on every tab in the group (14px for large, 13px for small) and the spacing around the group: 16px above and 24px below at the large size, 12px on both sides at the small size. It reaches the tabs through context, so it belongs on the group; a Tab cannot ask for a size of its own.
 
 - **underlined:** runs a divider under the full width of the group when true, separating the tabs from the content below them. Without it only the selected tab is underlined, in the accent color.
 
-- **count on a Tab:** a value drawn after the label, saying how many items wait on that tab's screen. It is a prop on each Tab, not on the group, and it takes any node — a number, a string, or a component such as a Tag. A count of 0 is drawn rather than dropped.
+- **count on a Tab:** a value drawn after the label, saying how many items wait on that tab's screen. It is a prop on each Tab, not on the group, and it takes any node: a number, a string, or a component such as a Tag. A count of 0 is drawn rather than dropped.
 
 - **The label is rendered twice:** each tab carries a second, hidden copy of its label set in semibold, which holds the width the label will need once the tab is selected and its text turns semibold. It is why selecting a tab does not shift the strip. The copy is hidden from assistive technology, but it is in the DOM, so a test looking for a tab's text by content finds two nodes.
 
-- **The indicator is fixed:** SDS styles the selected tab's underline itself — 2px, in the accent color — so MUI's _indicatorColor_ and _textColor_ have no visible effect. That styling arrives through _slotProps.indicator_, so passing your own _slotProps_ replaces it and leaves the indicator with MUI's default appearance.
+- **The indicator is fixed:** SDS styles the selected tab's underline itself (2px, in the accent color), so MUI's _indicatorColor_ and _textColor_ have no visible effect. That styling arrives through _slotProps.indicator_, so passing your own _slotProps_ replaces it and leaves the indicator with MUI's default appearance.
 
 - **Only a horizontal, full-width strip is supported:** SDS turns off the clipping that MUI's scroller relies on, so _variant="scrollable"_ neither clips nor scrolls: too many tabs spill out of a narrow container rather than scrolling inside it. Setting _orientation="vertical"_ stacks the tabs but leaves the indicator drawn as a horizontal underline. Keep the group horizontal and keep the number of tabs to what fits.
 
@@ -40,7 +40,7 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - **aria-label** on the group lands on the tablist and names the set of tabs. Worth setting, since a screen reader otherwise announces an unnamed tab list.
 
-- A tab's accessible name is its label followed by whatever **count** renders, so a count of 0 is announced as part of the name — "Contributors 0". Keep a count short enough to read that way.
+- A tab's accessible name is its label followed by whatever **count** renders, so a count of 0 is announced as part of the name: "Contributors 0". Keep a count short enough to read that way.
 
 - A **disabled** tab keeps its place in the strip but cannot be clicked, and the arrow keys skip past it. It says that a section exists but is not ready; a section that does not apply at all is better left out of the group.
 
@@ -62,15 +62,15 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 One tab in the group. Beyond the props below it takes MUI's Tab props and the attributes of the button it renders.
 
-| Name          | Type            | Default               | Description                                                                                                                                               |
-| ------------- | --------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| label         | React.ReactNode | -                     | The tab's text, and its accessible name. Rendered twice, once visibly and once hidden in semibold to hold the width the selected state needs.             |
-| count         | React.ReactNode | -                     | A value drawn after the label — a number, a string, or a component. 0 is drawn rather than dropped, and whatever renders joins the tab's accessible name. |
-| value         | any             | position in the group | Identifies the tab in the group's value and onChange. Worth setting when the set of tabs can change.                                                      |
-| disabled      | boolean         | false                 | Greys the tab out and takes it out of reach of the pointer and the arrow keys, while leaving it in the strip.                                             |
-| id            | string          | -                     | The tab's id, for a panel's aria-labelledby to point at. Not generated for you.                                                                           |
-| aria-controls | string          | -                     | The id of the panel this tab reveals.                                                                                                                     |
-| selected      | boolean         | -                     | Set by the group from its value, and used to draw the label in semibold. Not something to pass yourself.                                                  |
+| Name          | Type            | Default               | Description                                                                                                                                              |
+| ------------- | --------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| label         | React.ReactNode | -                     | The tab's text, and its accessible name. Rendered twice, once visibly and once hidden in semibold to hold the width the selected state needs.            |
+| count         | React.ReactNode | -                     | A value drawn after the label: a number, a string, or a component. 0 is drawn rather than dropped, and whatever renders joins the tab's accessible name. |
+| value         | any             | position in the group | Identifies the tab in the group's value and onChange. Worth setting when the set of tabs can change.                                                     |
+| disabled      | boolean         | false                 | Greys the tab out and takes it out of reach of the pointer and the arrow keys, while leaving it in the strip.                                            |
+| id            | string          | -                     | The tab's id, for a panel's aria-labelledby to point at. Not generated for you.                                                                          |
+| aria-controls | string          | -                     | The id of the panel this tab reveals.                                                                                                                    |
+| selected      | boolean         | -                     | Set by the group from its value, and used to draw the label in semibold. Not something to pass yourself.                                                 |
 
 ## Code examples
 
@@ -122,7 +122,7 @@ A group at the small size, which drops the label text to 13px. It is meant for a
 ```tsx
 // The small size drops the label text from 14px to 13px and tightens the spacing
 // around the group to 12px. It is meant for a second layer of tabbing underneath a
-// large group, not on its own — see the two levels example further down.
+// large group, not on its own. See the two levels example further down.
 //
 // sdsSize reaches every Tab through context, so it is set once on the group. A
 // Tab cannot ask for a different size than the group it sits in.
@@ -165,7 +165,7 @@ count takes any node: a number, a count of 0 on an empty tab, and a number paire
 ```tsx
 // count sits after a tab's label and says how many items wait on that tab's
 // screen. It takes any node, not just a number, so it can carry text or a whole
-// component — the last tab below pairs a number with a Tag.
+// component. The last tab below pairs a number with a Tag.
 //
 // A count of 0 is drawn rather than dropped, which is what makes an empty tab
 // read as empty rather than as unknown. Whatever count renders becomes part of
@@ -353,7 +353,7 @@ A tab whose content is not ready yet. It stays in the strip, greyed out, and bot
 // skip past it.
 //
 // A tab is worth disabling when its content is not ready yet rather than not
-// available at all — otherwise leave it out of the group.
+// available at all. Otherwise leave it out of the group.
 
 import { Tab, Tabs } from "@czi-sds/components";
 import { SyntheticEvent, useState } from "react";
@@ -391,8 +391,8 @@ A large group over a small one, which is the pairing the small size exists for. 
 // with its own state, and the second level resets when the first one changes, so a
 // section never opens on a sub-tab that was chosen somewhere else.
 //
-// Each group brings its own spacing — 24px under the large one, 12px over the
-// small one — and those margins collapse into a single 24px gap between the two
+// Each group brings its own spacing (24px under the large one, 12px over the
+// small one), and those margins collapse into a single 24px gap between the two
 // strips, so neither level needs margins added or taken away here.
 
 import { Tab, Tabs } from "@czi-sds/components";

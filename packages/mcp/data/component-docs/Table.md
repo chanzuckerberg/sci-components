@@ -6,7 +6,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## Props
 
-Table is a styled table element: full width, collapsed borders, automatic layout. Its only prop is children, and anything else you pass lands on the table element. Compose it the way you would plain HTML — a TableHeader for the head, a tbody of TableRows for the body.
+Table is a styled table element: full width, collapsed borders, automatic layout. Its only prop is children, and anything else you pass lands on the table element. Compose it the way you would plain HTML: a TableHeader for the head, a tbody of TableRows for the body.
 
 ## Code examples
 
@@ -196,7 +196,7 @@ export default App;
 
 These recipes show a few of the more complex approaches available for customizing Tables.
 
-**Note:** The Table components are presentational: they render the markup and the styling, and leave sorting, filtering and paging to whatever manages your data. The recipes below use [TanStack Table](https://tanstack.com/table/latest) for that, as does PreComposedTable internally, and two of them add [TanStack Query](https://tanstack.com/query/latest) and [TanStack Virtual](https://tanstack.com/virtual/latest) for fetching and virtualization. None of them ship with SDS — install the ones you need alongside it.
+**Note:** The Table components are presentational: they render the markup and the styling, and leave sorting, filtering and paging to whatever manages your data. The recipes below use [TanStack Table](https://tanstack.com/table/latest) for that, as does PreComposedTable internally, and two of them add [TanStack Query](https://tanstack.com/query/latest) and [TanStack Virtual](https://tanstack.com/virtual/latest) for fetching and virtualization. None of them ship with SDS. Install the ones you need alongside it.
 
 ### Text-only Table
 
@@ -869,7 +869,7 @@ A thousand rows in a scroll container with only the visible ones in the DOM, usi
 // A thousand rows behind a scroll container, with only the visible ones in the DOM.
 // Two libraries do the work: @tanstack/react-virtual measures the scroller and
 // reports which rows to draw, and @tanstack/react-query fetches the next batch as
-// the scroller nears its end. The Table components themselves are unchanged — the
+// the scroller nears its end. The Table components themselves are unchanged: the
 // spacer rows above and below the window are what keep the scrollbar honest.
 //
 // estimateSize has to be close to a real row's height or the scrollbar drifts as it

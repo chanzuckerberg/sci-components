@@ -1,6 +1,6 @@
 // TagFilter is the tag that comes off: onDelete is required, and removing the tag
 // from your own state is what makes it disappear. Everything about how it looks is
-// fixed — the accent fill, the square shape, and the small X — so there are no
+// fixed (the accent fill, the square shape, and the small X), so there are no
 // style props to pass.
 //
 // Both the tag and its X are focusable, so each filter is two tab stops: Backspace

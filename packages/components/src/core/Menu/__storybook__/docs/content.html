@@ -75,8 +75,8 @@
   <li>
     <p>
       <strong>Its children are SDS MenuItems.</strong>
-      Menu draws the surface and nothing within it, so the appearance of a row —
-      its icon, its right hand column, its selected state — belongs to
+      Menu draws the surface and nothing within it, so the appearance of a row
+      (its icon, its right hand column, its selected state) belongs to
       <a
         href="./?path=/docs/components-dropdowns-menuitem--documentation"
         target="_top"
@@ -155,13 +155,14 @@
   <li>
     <p>
       <em>onClose</em>
-      is called with the event and a reason —
+      is called with the event and a reason:
       <em>"backdropClick"</em>
       ,
       <em>"escapeKeyDown"</em>
       , or
       <em>"tabKeyDown"</em>
-      — but never for a click on an item. Closing on selection is the item's own
+      . It is never called for a click on an item. Closing on selection is the
+      item's own
       <em>onClick</em>
       , which is what lets a menu of toggles stay open while several are set.
     </p>

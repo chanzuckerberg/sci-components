@@ -39,7 +39,7 @@
     <p>
       <strong>sdsSize:</strong>
       s (default) or l, which is the pair of sizes the design carries rather
-      than MUI's small and medium. A large tag must have an icon — TypeScript
+      than MUI's small and medium. A large tag must have an icon: TypeScript
       rejects
       <em>sdsSize="l"</em>
       without one.
@@ -114,8 +114,7 @@
       is on by default, a tag that only labels something still darkens under the
       pointer and shows a pointer cursor, which reads as clickable.
       <em>hover={false}</em>
-      settles that, at the cost of all pointer events — so do not combine it
-      with
+      settles that, at the cost of all pointer events, so do not combine it with
       <em>onClick</em>
       , which would leave the tag reachable by keyboard but dead to the mouse.
     </p>
@@ -138,8 +137,8 @@
   </li>
   <li>
     <p>
-      Icons are drawn at a fixed size — 12px in a small tag, 24px in a large one
-      — whatever size the Icon itself asks for, so match the Icon's
+      Icons are drawn at a fixed size (12px in a small tag, 24px in a large one)
+      whatever size the Icon itself asks for, so match the Icon's
       <em>sdsSize</em>
       to the tag: s or xs for a small tag, l for a large one. Some icons exist
       at only one of those sizes, Star and Virus among them, and asking for one
@@ -153,8 +152,8 @@
       leaves the icon white rather than coloring it with the label, so it
       vanishes on a light fill; a tag with an icon wants the three-value form.
       On a secondary tag, custom colors also draw the border in the fill color,
-      which hides it. Contrast is yours to check — SDS only guarantees it for
-      its own intents.
+      which hides it. Contrast is yours to check. SDS only guarantees it for its
+      own intents.
     </p>
   </li>
 </ul>
@@ -199,7 +198,7 @@
         The tag's intent, given either as one of the six names or as CSS colors:
       </p>
       <ol class="sds-doc-ordered-list">
-        <li><p>[label color, background color] — the icon stays white</p></li>
+        <li><p>[label color, background color]: the icon stays white</p></li>
         <li><p>[label color, background color, icon color]</p></li>
       </ol>
     </td>
@@ -288,7 +287,7 @@
     <td>
       <p>
         MUI's prop. Adds a delete control, drawn with MUI's Cancel icon rather
-        than the SDS X — use TagFilter for a removable tag instead.
+        than the SDS X. Use TagFilter for a removable tag instead.
       </p>
     </td>
   </tr>

@@ -8,7 +8,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 The SDS SegmentedControl wraps MUI's ToggleButtonGroup, with these differences:
 
-- **buttonDefinition instead of children:** MUI expects you to write a ToggleButton per segment. SDS builds them from an array instead, one entry per segment in array order, and the segments it builds are the control's only children — anything you nest inside a SegmentedControl is dropped without a warning.
+- **buttonDefinition instead of children:** MUI expects you to write a ToggleButton per segment. SDS builds them from an array instead, one entry per segment in array order, and the segments it builds are the control's only children. Anything you nest inside a SegmentedControl is dropped without a warning.
 
 - **Tooltips are built in:** each segment is wrapped in an SDS Tooltip unless you turn it off with **shouldShowTooltip**, which is what carries the meaning of an icon-only segment. In MUI you would add the tooltip yourself.
 
@@ -36,7 +36,7 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - Tooltips appear on hover and on keyboard focus, which is what makes an icon-only control usable from the keyboard. Disabled segments show no tooltip at all.
 
-- The control is sized to its segments and does not wrap or shrink, so a long set of labels overflows a narrow container rather than reflowing. The design guidance above — two to four segments — keeps that from happening.
+- The control is sized to its segments and does not wrap or shrink, so a long set of labels overflows a narrow container rather than reflowing. The design guidance above (two to four segments) keeps that from happening.
 
 - Segments are ordinary buttons, so Tab moves through them one at a time rather than treating the group as a single stop, and Space or Enter selects.
 
@@ -81,7 +81,7 @@ Three icon segments, left uncontrolled so the control tracks the selection itsel
 //
 // Icons are drawn at the small size, so only icons that have 16px artwork can be
 // used here. Nothing else on an icon segment is readable, so its value becomes
-// both the tooltip and the accessible name — which is why the values below read
+// both the tooltip and the accessible name, which is why the values below read
 // as words rather than as codes.
 
 import {

@@ -23,8 +23,8 @@
       Dropdown
     </a>
     adds the click target too. Use Autocomplete directly when the list belongs
-    somewhere a popper cannot go — inside a panel, a dialog body, or a layout
-    you are placing yourself.
+    somewhere a popper cannot go: inside a panel, a dialog body, or a layout you
+    are placing yourself.
   </p>
 </div>
 <h2>Source Code</h2>
@@ -62,7 +62,7 @@
       <em>renderValue</em>
       , so the field keeps showing its label and the checkmarks in the list are
       the only indication. Reporting the selection belongs to whatever sits
-      above — an InputDropdown, a set of Tags, your own summary.
+      above: an InputDropdown, a set of Tags, your own summary.
     </p>
   </li>
   <li>
@@ -175,8 +175,8 @@ options={[
   </figure>
 </div>
 <p>
-  The value follows the same split. A single column reports what MUI reports —
-  an option, or an array of them for a multi-select. Multiple columns report a
+  The value follows the same split. A single column reports what MUI reports: an
+  option, or an array of them for a multi-select. Multiple columns report a
   record keyed by column name, with each column's own value inside it, and the
   handler receives the whole record whenever any column changes.
 </p>
@@ -192,7 +192,7 @@ options={[
   <strong>search</strong>
   is what gives the component a visible, focusable text field. It is off by
   default, and when it is off the input is not merely hidden but clipped and
-  disabled — which also means there is nothing left to click, and the list can
+  disabled, which also means there is nothing left to click, and the list can
   only be opened by a parent through
   <strong>open</strong>
   . That is the arrangement DropdownMenu uses, and the reason a bare
@@ -208,7 +208,7 @@ options={[
   and
   <em>onClickAway</em>
   to hear when the component would like to open and close. Both are advisory
-  when open is controlled — the list stays where your state puts it.
+  when open is controlled. The list stays where your state puts it.
 </p>
 <p>
   Filtering is MUI's, matching against
@@ -259,7 +259,7 @@ options={[
       The input is labelled by
       <em>label</em>
       , which is used as both the visible label and the placeholder. It is worth
-      writing as an instruction — "Search cell types" rather than "Search".
+      writing as an instruction: "Search cell types" rather than "Search".
     </p>
   </li>
   <li>
@@ -630,8 +630,8 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
 ></div>
 <h3>Multi-select</h3>
 <p>
-  Selecting several options, with the selection read back out above the list —
-  the component will not show it in the field.
+  Selecting several options, with the selection read back out above the list.
+  The component will not show it in the field.
 </p>
 <div
   class="sds-doc-example"

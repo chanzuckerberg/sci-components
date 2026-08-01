@@ -17,8 +17,8 @@
 <h2>Props</h2>
 <p>
   PreComposedTable is generic over your row type, so data and columns are typed
-  together. It owns the table state — sorting, selection, filtering, pagination,
-  pinning — and every feature is off unless you switch it on.
+  together. It owns the table state (sorting, selection, filtering, pagination,
+  pinning), and every feature is off unless you switch it on.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -182,7 +182,7 @@
       <p>
         Escape hatch to the underlying TanStack table. Anything here is merged
         into its options, and a state you supply overrides the one the component
-        keeps — which is how you drive sorting or pagination from outside. The
+        keeps, which is how you drive sorting or pagination from outside. The
         row models and change handlers are always the component's own
       </p>
     </td>
@@ -196,8 +196,8 @@
 <p>
   Layout and pinning are set per column through the standard TanStack column
   definition's meta field, which SDS extends with the following. Everything else
-  in a column definition — accessorKey, header, cell, enableSorting, size,
-  minSize, maxSize, filterFn — behaves as TanStack documents it, and a header or
+  in a column definition (accessorKey, header, cell, enableSorting, size,
+  minSize, maxSize, filterFn) behaves as TanStack documents it, and a header or
   cell given as a plain string is rendered as a CellHeader or CellBasic for you.
 </p>
 <table class="sds-doc-table">
@@ -284,15 +284,15 @@
     <strong>Note:</strong>
     PreComposedTable runs on
     <a href="https://tanstack.com/table/latest">TanStack Table</a>, which SDS
-    takes as a peer dependency — install <strong>@tanstack/react-table</strong>
+    takes as a peer dependency. Install <strong>@tanstack/react-table</strong>
     alongside it. Column definitions are TanStack's own, so anything its docs
     describe applies here too.
   </p>
 </div>
 <h3>Default</h3>
 <p>
-  Data, columns, and the features you want switched on — here sorting, row
-  selection and pagination — with Name pinned to the left edge and Actions to
+  Data, columns, and the features you want switched on (here sorting, row
+  selection and pagination), with Name pinned to the left edge and Actions to
   the right. A column left as a plain accessor is drawn as a CellHeader and a
   CellBasic, while the cells that render something else forward the element and
   width they are handed. Note that data, columns and paginationConfig sit
@@ -361,7 +361,7 @@
   Every filter here is a component of its own: a Dropdown for Status, and a pair
   of number inputs for Salary and Projects matched with TanStack's inNumberRange
   filter. A filter component is called rather than mounted, so it holds no state
-  of its own — it reads column.getFilterValue() and writes
+  of its own: it reads column.getFilterValue() and writes
   column.setFilterValue().
 </p>
 <div

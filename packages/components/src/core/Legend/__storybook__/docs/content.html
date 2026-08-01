@@ -26,8 +26,8 @@
   <a href="./?path=/docs/data-viz-stackedbarchart--documentation" target="_top">
     StackedBarChart
   </a>
-  renders below its bar. Reach for Legend directly when the chart is your own —
-  an ECharts plot, a map, a set of swatches in a table — and you want its key to
+  renders below its bar. Reach for Legend directly when the chart is your own
+  (an ECharts plot, a map, a set of swatches in a table) and you want its key to
   match the rest of the system.
 </p>
 <h2>Items and colors</h2>
@@ -42,8 +42,8 @@
   <em>color</em>
   , and
   <em>disabled</em>
-  . An item's index is its identity everywhere else in the API — selection,
-  hover, and every callback are indices into this array — so items are
+  . An item's index is its identity everywhere else in the API: selection,
+  hover, and every callback are indices into this array. Items are therefore
   positional and names need not be unique.
 </p>
 <p>
@@ -73,7 +73,7 @@
   holds and never changes it: clicking an item calls
   <strong>onSelectionChange</strong>
   with that index toggled in or out, and the parent decides what to do with it.
-  Without the callback the legend is inert — clicks still reach
+  Without the callback the legend is inert: clicks still reach
   <em>onItemClick</em>
   , but nothing is ever selected.
 </p>
@@ -121,7 +121,7 @@
     <p>
       Color is the only thing tying an item to the mark it names. Where the
       marks are close in hue, or the chart is read by someone who cannot
-      separate them, the values in the legend are what make it interpretable —
+      separate them, the values in the legend are what make it interpretable,
       which is a reason to turn showValues on rather than leave it to the chart.
     </p>
   </li>
@@ -129,8 +129,8 @@
     <p>
       A disabled item takes no pointer events at all: no hover, no click, no
       dimming when its neighbours are selected. It is drawn exactly like the
-      others, so anything a reader should know about it has to be in its name —
-      "Other (17)", "Remaining" — and it keeps its tab stop out of the tab
+      others, so anything a reader should know about it has to be in its name:
+      "Other (17)", "Remaining". It also keeps its tab stop out of the tab
       order.
     </p>
   </li>

@@ -22,7 +22,7 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - Because it follows the cursor, this tooltip is a pointer-only affordance. It still opens on focus, but it then appears wherever the pointer happens to be, so anything it says has to exist elsewhere for a keyboard or screen reader user.
 
-- Keep the text to a label — a value, a count, a name. Full sentences belong in a Tooltip, and rows of numbers belong in a TooltipTable passed through componentSlot.
+- Keep the text to a label: a value, a count, a name. Full sentences belong in a Tooltip, and rows of numbers belong in a TooltipTable passed through componentSlot.
 
 - The dot carries no meaning on its own. Whatever it encodes needs to be legible from the text beside it too.
 
@@ -49,7 +49,7 @@ A condensed tooltip on a table cell, with a coloured dot, and a second one in th
 ```tsx
 // TooltipCondensed is the label-sized tooltip for dense surfaces: charts, table
 // cells, anywhere a full sentence would be too much. It follows the cursor instead
-// of anchoring to the element, and it locks that down — followCursor, placement,
+// of anchoring to the element, and it locks that down: followCursor, placement,
 // arrow, and the enter and leave delays are all applied after your props, so passing
 // placement or arrow here changes nothing.
 //

@@ -117,11 +117,11 @@
       The backdrop is invisible but present, so a click anywhere outside the
       popover is caught by it rather than by whatever is underneath.
       <em>onClose</em>
-      is called with the event and a reason —
+      is called with the event and a reason:
       <em>"backdropClick"</em>
       or
       <em>"escapeKeyDown"</em>
-      — and closing is left to you, since the open state is yours.
+      . Closing is left to you, since the open state is yours.
     </p>
   </li>
   <li>
@@ -139,8 +139,8 @@
       is false, so the content is mounted fresh on each open and its state
       starts over. Pass
       <em>keepMounted</em>
-      to keep it in the document instead — worth it when the content is
-      expensive to build or has to stay findable by an in-page search.
+      to keep it in the document instead, worth it when the content is expensive
+      to build or has to stay findable by an in-page search.
     </p>
   </li>
   <li>

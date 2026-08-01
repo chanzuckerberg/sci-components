@@ -50,7 +50,7 @@
       <strong>The X cannot be swapped:</strong>
       SDS applies its own
       <em>deleteIcon</em>
-      — an SDS Button holding the XMark icon — after your props, so a
+      (an SDS Button holding the XMark icon) after your props, so a
       <em>deleteIcon</em>
       of your own is ignored without a warning.
     </p>
@@ -76,11 +76,12 @@
       The X button is named "Delete Tag" on every filter tag, and the name
       cannot be changed. The label beside it is read as plain text rather than
       as part of the button, so a row of filters is worth wrapping in a group
-      with a name of its own — the example below uses
+      with a name of its own, to say what the buttons are removing. The example
+      below uses
       <em>role="group"</em>
       with an
       <em>aria-label</em>
-      — to say what the buttons are removing.
+      .
     </p>
   </li>
   <li>

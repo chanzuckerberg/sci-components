@@ -4,7 +4,7 @@
 //
 // Icons are drawn at the small size, so only icons that have 16px artwork can be
 // used here. Nothing else on an icon segment is readable, so its value becomes
-// both the tooltip and the accessible name — which is why the values below read
+// both the tooltip and the accessible name, which is why the values below read
 // as words rather than as codes.
 
 import {

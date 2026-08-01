@@ -1,9 +1,9 @@
-// An icon goes on the leading edge of a tag, and the large size requires one —
+// An icon goes on the leading edge of a tag, and the large size requires one:
 // TypeScript rejects sdsSize="l" without it.
 //
 // The tag draws whatever icon it is given at a fixed size: 12px in a small tag,
 // 24px in a large one. Match the Icon's own sdsSize to that so the artwork is
-// drawn at the size it was made for — s or xs for a small tag, l for a large one.
+// drawn at the size it was made for: s or xs for a small tag, l for a large one.
 // Not every icon exists at both sizes: Virus below is large-only, so asking for it
 // at a small size renders nothing and logs an error.
 

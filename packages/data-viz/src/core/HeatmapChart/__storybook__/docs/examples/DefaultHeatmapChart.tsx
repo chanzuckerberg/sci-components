@@ -1,8 +1,8 @@
 // A heatmap needs four things: the cells, the two axes they are indexed
 // against, and pixel dimensions for the canvas they are drawn on. Each cell is
 // an object of whatever shape suits the data, and encode says which of its
-// fields places it on each axis — here x and y, but they could just as well be
-// geneIndex and cellTypeIndex.
+// fields places it on each axis. Here they are x and y, but they could just as
+// well be geneIndex and cellTypeIndex.
 //
 // Nothing about a cell's value reaches the chart on its own. The value becomes
 // visible because itemStyle colors each symbol from it, which is also why the

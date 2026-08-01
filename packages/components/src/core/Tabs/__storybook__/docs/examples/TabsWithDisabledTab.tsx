@@ -3,7 +3,7 @@
 // skip past it.
 //
 // A tab is worth disabling when its content is not ready yet rather than not
-// available at all — otherwise leave it out of the group.
+// available at all. Otherwise leave it out of the group.
 
 import { Tab, Tabs } from "@czi-sds/components";
 import { SyntheticEvent, useState } from "react";

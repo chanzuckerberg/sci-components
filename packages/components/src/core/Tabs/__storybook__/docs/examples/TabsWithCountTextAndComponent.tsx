@@ -1,6 +1,6 @@
 // count sits after a tab's label and says how many items wait on that tab's
 // screen. It takes any node, not just a number, so it can carry text or a whole
-// component — the last tab below pairs a number with a Tag.
+// component. The last tab below pairs a number with a Tag.
 //
 // A count of 0 is drawn rather than dropped, which is what makes an empty tab
 // read as empty rather than as unknown. Whatever count renders becomes part of

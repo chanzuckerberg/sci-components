@@ -4,7 +4,7 @@
 //
 // The span works for the keyboard too, without any extra work: SDS puts tabIndex={0}
 // on whatever a tooltip wraps, so the span becomes a tab stop of its own and the
-// tooltip opens when it takes focus — which is the one route left, since the disabled
+// tooltip opens when it takes focus. That is the one route left, since the disabled
 // button itself cannot be focused.
 
 import { Button, Tooltip } from "@czi-sds/components";

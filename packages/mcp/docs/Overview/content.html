@@ -1,10 +1,10 @@
 <h1>MCP Server</h1>
 <p>
-  <code>@czi-sds/mcp</code> is the official Model Context Protocol server for
-  the Science Design System. It gives an AI coding agent first-hand knowledge of
-  SDS — every component's props, its written documentation with runnable
-  examples, and the full set of design tokens — so the agent writes code against
-  what the library actually exposes instead of guessing from its training data.
+  @czi-sds/mcp is the official Model Context Protocol server for the Science
+  Design System. It gives an AI coding agent first-hand knowledge of SDS: every
+  component's props, its written documentation with runnable examples, and the
+  full set of design tokens. The agent writes code against what the library
+  actually exposes instead of guessing from its training data.
 </p>
 <p>
   The Model Context Protocol is an open standard for connecting assistants to
@@ -108,7 +108,7 @@
   The server ships its answers rather than computing them. Everything under
   <code>data/</code> is generated from this repository at build time and
   published inside the package, so a request costs a file read and no network
-  call at all — and the answers always describe the version of SDS you
+  call at all. The answers also always describe the version of SDS you
   installed, not whatever is on <code>main</code>.
 </p>
 <table class="sds-doc-table">
@@ -171,8 +171,8 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <a href="./?path=/docs/mcp-server-installation--docs">Installation</a> —
-      connect the server to Cursor, Claude Code, Claude Desktop or VS Code.
+      <a href="./?path=/docs/mcp-server-installation--docs">Installation</a>
+      connects the server to Cursor, Claude Code, Claude Desktop or VS Code.
     </p>
   </li>
   <li>
@@ -180,7 +180,7 @@
       <a href="./?path=/docs/mcp-server-tools-and-resources--docs"
         >Tools and Resources</a
       >
-      — the full reference for what the server exposes.
+      is the full reference for what the server exposes.
     </p>
   </li>
   <li>
@@ -188,7 +188,7 @@
       <a href="./?path=/docs/mcp-server-testing-with-the-inspector--docs"
         >Testing with the Inspector</a
       >
-      — exercise the server by hand while developing it.
+      covers exercising the server by hand while developing it.
     </p>
   </li>
 </ul>

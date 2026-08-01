@@ -4,7 +4,7 @@
 //
 // width="wide" lifts the cap from 250px to 550px and switches the text to the left,
 // which is what longer explanations need. It logs a warning saying wide is for light
-// tooltips only — the check is broken and fires whichever style you use, so it can
+// tooltips only. The check is broken and fires whichever style you use, so it can
 // be ignored here.
 
 import {

@@ -20,7 +20,7 @@ SDS Menu is a thin wrapper around MUI's Menu. **MenuProps** is MUI's own type re
 
 - **The list loses its own padding,** so the space around the items is the paper's inset alone and the first and last item sit as close to the edge as the ones on either side.
 
-- **Its children are SDS MenuItems.** Menu draws the surface and nothing within it, so the appearance of a row — its icon, its right hand column, its selected state — belongs to MenuItem.
+- **Its children are SDS MenuItems.** Menu draws the surface and nothing within it, so the appearance of a row (its icon, its right hand column, its selected state) belongs to MenuItem.
 
 **SDS Tip:** Reach for Menu when the choices are commands, or a short list of options anchored to a trigger. When the user is picking a value that the trigger should then display, and especially when the list needs search, sections, or Apply and Cancel buttons, use Dropdown instead.
 
@@ -54,7 +54,7 @@ const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
 - A Menu is a Popover holding a list, and a Popover is built on MUI's Modal. It renders in a portal at the end of the document, traps focus while it is open, hides the rest of the page from assistive technology, and locks the page's scroll.
 
-- _onClose_ is called with the event and a reason — _"backdropClick"_, _"escapeKeyDown"_, or _"tabKeyDown"_ — but never for a click on an item. Closing on selection is the item's own _onClick_, which is what lets a menu of toggles stay open while several are set.
+- _onClose_ is called with the event and a reason: _"backdropClick"_, _"escapeKeyDown"_, or _"tabKeyDown"_. It is never called for a click on an item. Closing on selection is the item's own _onClick_, which is what lets a menu of toggles stay open while several are set.
 
 - **anchorEl has to be state, not a ref.** The menu measures the anchor while rendering, so it needs a render to happen once the element is known. Storing the trigger in a ref leaves the menu with nothing to measure on the first open.
 

@@ -24,17 +24,17 @@ Values are only ever shown in the legend, never on the bar, and only when **show
 
 ## Selection
 
-Selection is controlled: the chart renders whatever **selectedIndices** holds and never changes it itself. Clicking a segment or a legend item calls **onSelectionChange** with the indices it thinks should be selected next, and the parent decides what to do with them. Without that callback the chart is inert — clicks still reach _onSegmentClick_ and _onLegendItemClick_, but nothing is ever selected.
+Selection is controlled: the chart renders whatever **selectedIndices** holds and never changes it itself. Clicking a segment or a legend item calls **onSelectionChange** with the indices it thinks should be selected next, and the parent decides what to do with them. Without that callback the chart is inert: clicks still reach _onSegmentClick_ and _onLegendItemClick_, but nothing is ever selected.
 
 **selectionBehavior** chooses what a selection does to the bar. _dim_ drops everything unselected to 20% opacity, keeping the shape of the whole intact. _hide_ removes unselected segments instead: in proportional mode the remaining ones regrow to fill the bar, and in cumulative mode they keep their size and the Remaining segment absorbs the difference.
 
-The badge beside the title tracks all of this on its own — the total when nothing is selected, "3 of 7" during a partial selection — unless you pass **badge** to say otherwise or **hideBadge** to remove it. It is drawn only when there is a **title** to sit next to.
+The badge beside the title tracks all of this on its own (the total when nothing is selected, "3 of 7" during a partial selection) unless you pass **badge** to say otherwise or **hideBadge** to remove it. It is drawn only when there is a **title** to sit next to.
 
 ## Behavior and accessibility
 
 - Legend items are the accessible way into the chart. Each is a _role="button"_ with a tab stop and an accessible name built from its label and value, and it reports its selected state through _aria-pressed_. They do not respond to Enter or Space, though, so keyboard users can reach the legend but cannot select from it. Where selection matters, give the chart a keyboard path of its own, as the example below does with a button.
 
-- Bar segments are pointer-only: they carry no role and take no focus, so everything they offer — hover, click, tooltip — has to be reachable somewhere else too. They are also thin by default (16px), which makes them a small target.
+- Bar segments are pointer-only: they carry no role and take no focus, so everything they offer (hover, click, tooltip) has to be reachable somewhere else too. They are also thin by default (16px), which makes them a small target.
 
 - Nothing about a segment is conveyed by anything except its color, so the legend is what makes the chart readable. Turning **showLegend** off leaves a bar that cannot be interpreted at all unless the surrounding page names the parts.
 

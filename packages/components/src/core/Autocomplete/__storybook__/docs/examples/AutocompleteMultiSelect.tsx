@@ -1,6 +1,6 @@
 // multiple keeps the list open after each pick and marks the chosen options
 // with a checkmark. It does not show them in the input: the field always shows
-// its label, because that is the parent's job in SDS — a DropdownMenu sits
+// its label, because that is the parent's job in SDS: a DropdownMenu sits
 // under an InputDropdown that reports the selection.
 //
 // Making it controlled is the way to read the selection out. The handler is

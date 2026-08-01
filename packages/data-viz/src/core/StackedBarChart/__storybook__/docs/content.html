@@ -87,7 +87,7 @@
   holds and never changes it itself. Clicking a segment or a legend item calls
   <strong>onSelectionChange</strong>
   with the indices it thinks should be selected next, and the parent decides
-  what to do with them. Without that callback the chart is inert — clicks still
+  what to do with them. Without that callback the chart is inert: clicks still
   reach
   <em>onSegmentClick</em>
   and
@@ -104,8 +104,8 @@
   Remaining segment absorbs the difference.
 </p>
 <p>
-  The badge beside the title tracks all of this on its own — the total when
-  nothing is selected, "3 of 7" during a partial selection — unless you pass
+  The badge beside the title tracks all of this on its own (the total when
+  nothing is selected, "3 of 7" during a partial selection) unless you pass
   <strong>badge</strong>
   to say otherwise or
   <strong>hideBadge</strong>
@@ -131,7 +131,7 @@
   <li>
     <p>
       Bar segments are pointer-only: they carry no role and take no focus, so
-      everything they offer — hover, click, tooltip — has to be reachable
+      everything they offer (hover, click, tooltip) has to be reachable
       somewhere else too. They are also thin by default (16px), which makes them
       a small target.
     </p>

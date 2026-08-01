@@ -3,7 +3,7 @@
 // navigates, not for one that only labels something.
 //
 // Every tag darkens under the pointer and shows a pointer cursor by default,
-// including one that does nothing. hover={false} turns that off — and with it all
+// including one that does nothing. hover={false} turns that off, and with it all
 // pointer events, so a static tag stops looking clickable, but it also stops
 // answering the mouse and stops triggering a Tooltip wrapped around it.
 

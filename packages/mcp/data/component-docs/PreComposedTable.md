@@ -8,33 +8,33 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## Props
 
-PreComposedTable is generic over your row type, so data and columns are typed together. It owns the table state — sorting, selection, filtering, pagination, pinning — and every feature is off unless you switch it on.
+PreComposedTable is generic over your row type, so data and columns are typed together. It owns the table state (sorting, selection, filtering, pagination, pinning), and every feature is off unless you switch it on.
 
-| Name                     | Type                                                                         | Default | Description                                                                                                                                                                                                                                                                          |
-| ------------------------ | ---------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| data                     | TData[]                                                                      | -       | Array of data objects to display in the table rows                                                                                                                                                                                                                                   |
-| columns                  | ColumnDef<TData>[]                                                           | -       | Column definitions that specify how data should be rendered and behave                                                                                                                                                                                                               |
-| border                   | boolean                                                                      | true    | Draws the border around the scrolling table area                                                                                                                                                                                                                                     |
-| sdsStyle                 | "lined" \| "striped"                                                         | "lined" | Whether rows are separated by dividers or by alternating backgrounds                                                                                                                                                                                                                 |
-| enableSorting            | boolean                                                                      | false   | Makes column headers sortable, wiring each one's chevron and click handler for you                                                                                                                                                                                                   |
-| enableRowSelection       | boolean                                                                      | false   | Adds a checkbox column with select-all. To control that column yourself, include one with the id "SdsTableSelectColumn" and it will be used instead of the generated one                                                                                                             |
-| enableColumnFiltering    | boolean                                                                      | false   | Adds a filter row under the header. Each column gets a search input unless its meta supplies a filterComponent                                                                                                                                                                       |
-| shouldPinSelectRowToLeft | boolean                                                                      | true    | Pins the row selection column to the left/right side of the table                                                                                                                                                                                                                    |
-| enablePagination         | boolean                                                                      | false   | Enables pagination controls at the bottom of the table                                                                                                                                                                                                                               |
-| enableGlobalFiltering    | boolean                                                                      | false   | Displays a search input that filters across all columns                                                                                                                                                                                                                              |
-| paginationConfig         | Partial<PaginationProps> & { placement?: "left" \| "center" \| "right" }     | -       | Passed through to Pagination, plus a placement for the controls, which sit on the right by default. pageSize also sets the initial page size, which is 10 otherwise. Changing this object resets the table to the first page                                                         |
-| className                | string                                                                       | -       | CSS class name to apply to the table container                                                                                                                                                                                                                                       |
-| style                    | React.CSSProperties                                                          | -       | Inline styles to apply to the table container                                                                                                                                                                                                                                        |
-| tableWidth               | string                                                                       | 100%    | Sets the width of the table container                                                                                                                                                                                                                                                |
-| tableRowProps            | Partial<TableRowProps>                                                       | -       | Additional props to pass to each table row component                                                                                                                                                                                                                                 |
-| onRowSelect              | (selectedRows: TData[]) => void                                              | -       | Callback triggered when row selection changes; receives array of selected row data                                                                                                                                                                                                   |
-| tableOptions             | Partial<Omit<TableOptions<TData>, "data" \| "columns" \| "getCoreRowModel">> | -       | Escape hatch to the underlying TanStack table. Anything here is merged into its options, and a state you supply overrides the one the component keeps — which is how you drive sorting or pagination from outside. The row models and change handlers are always the component's own |
+| Name                     | Type                                                                         | Default | Description                                                                                                                                                                                                                                                                         |
+| ------------------------ | ---------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| data                     | TData[]                                                                      | -       | Array of data objects to display in the table rows                                                                                                                                                                                                                                  |
+| columns                  | ColumnDef<TData>[]                                                           | -       | Column definitions that specify how data should be rendered and behave                                                                                                                                                                                                              |
+| border                   | boolean                                                                      | true    | Draws the border around the scrolling table area                                                                                                                                                                                                                                    |
+| sdsStyle                 | "lined" \| "striped"                                                         | "lined" | Whether rows are separated by dividers or by alternating backgrounds                                                                                                                                                                                                                |
+| enableSorting            | boolean                                                                      | false   | Makes column headers sortable, wiring each one's chevron and click handler for you                                                                                                                                                                                                  |
+| enableRowSelection       | boolean                                                                      | false   | Adds a checkbox column with select-all. To control that column yourself, include one with the id "SdsTableSelectColumn" and it will be used instead of the generated one                                                                                                            |
+| enableColumnFiltering    | boolean                                                                      | false   | Adds a filter row under the header. Each column gets a search input unless its meta supplies a filterComponent                                                                                                                                                                      |
+| shouldPinSelectRowToLeft | boolean                                                                      | true    | Pins the row selection column to the left/right side of the table                                                                                                                                                                                                                   |
+| enablePagination         | boolean                                                                      | false   | Enables pagination controls at the bottom of the table                                                                                                                                                                                                                              |
+| enableGlobalFiltering    | boolean                                                                      | false   | Displays a search input that filters across all columns                                                                                                                                                                                                                             |
+| paginationConfig         | Partial<PaginationProps> & { placement?: "left" \| "center" \| "right" }     | -       | Passed through to Pagination, plus a placement for the controls, which sit on the right by default. pageSize also sets the initial page size, which is 10 otherwise. Changing this object resets the table to the first page                                                        |
+| className                | string                                                                       | -       | CSS class name to apply to the table container                                                                                                                                                                                                                                      |
+| style                    | React.CSSProperties                                                          | -       | Inline styles to apply to the table container                                                                                                                                                                                                                                       |
+| tableWidth               | string                                                                       | 100%    | Sets the width of the table container                                                                                                                                                                                                                                               |
+| tableRowProps            | Partial<TableRowProps>                                                       | -       | Additional props to pass to each table row component                                                                                                                                                                                                                                |
+| onRowSelect              | (selectedRows: TData[]) => void                                              | -       | Callback triggered when row selection changes; receives array of selected row data                                                                                                                                                                                                  |
+| tableOptions             | Partial<Omit<TableOptions<TData>, "data" \| "columns" \| "getCoreRowModel">> | -       | Escape hatch to the underlying TanStack table. Anything here is merged into its options, and a state you supply overrides the one the component keeps, which is how you drive sorting or pagination from outside. The row models and change handlers are always the component's own |
 
 The component also takes a ref, which exposes the TanStack table instance as **ref.current.table** for anything the props do not cover.
 
 ## Column meta
 
-Layout and pinning are set per column through the standard TanStack column definition's meta field, which SDS extends with the following. Everything else in a column definition — accessorKey, header, cell, enableSorting, size, minSize, maxSize, filterFn — behaves as TanStack documents it, and a header or cell given as a plain string is rendered as a CellHeader or CellBasic for you.
+Layout and pinning are set per column through the standard TanStack column definition's meta field, which SDS extends with the following. Everything else in a column definition (accessorKey, header, cell, enableSorting, size, minSize, maxSize, filterFn) behaves as TanStack documents it, and a header or cell given as a plain string is rendered as a CellHeader or CellBasic for you.
 
 | Name            | Type                                                                       | Default | Description                                                                                                                           |
 | --------------- | -------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,11 +47,11 @@ Layout and pinning are set per column through the standard TanStack column defin
 
 ## Code examples
 
-**Note:** PreComposedTable runs on [TanStack Table](https://tanstack.com/table/latest), which SDS takes as a peer dependency — install **@tanstack/react-table** alongside it. Column definitions are TanStack's own, so anything its docs describe applies here too.
+**Note:** PreComposedTable runs on [TanStack Table](https://tanstack.com/table/latest), which SDS takes as a peer dependency. Install **@tanstack/react-table** alongside it. Column definitions are TanStack's own, so anything its docs describe applies here too.
 
 ### Default
 
-Data, columns, and the features you want switched on — here sorting, row selection and pagination — with Name pinned to the left edge and Actions to the right. A column left as a plain accessor is drawn as a CellHeader and a CellBasic, while the cells that render something else forward the element and width they are handed. Note that data, columns and paginationConfig sit outside the component so their identity is stable: a new paginationConfig object sends the table back to its first page.
+Data, columns, and the features you want switched on (here sorting, row selection and pagination), with Name pinned to the left edge and Actions to the right. A column left as a plain accessor is drawn as a CellHeader and a CellBasic, while the cells that render something else forward the element and width they are handed. Note that data, columns and paginationConfig sit outside the component so their identity is stable: a new paginationConfig object sends the table back to its first page.
 
 **Example: DefaultPreComposedTable**
 
@@ -61,7 +61,7 @@ Data, columns, and the features you want switched on — here sorting, row selec
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
@@ -392,7 +392,7 @@ enableGlobalFiltering puts a search input above the table that matches across ev
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
@@ -718,7 +718,7 @@ The same table paged three rows at a time. paginationConfig takes Pagination's o
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
@@ -1049,7 +1049,7 @@ tableWidth pins the table to 600px rather than letting it fill its container. Th
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
@@ -1386,7 +1386,7 @@ enableColumnFiltering adds a row of search inputs under the header, one per colu
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
@@ -1941,7 +1941,7 @@ export default App;
 
 ### With custom column filters
 
-Every filter here is a component of its own: a Dropdown for Status, and a pair of number inputs for Salary and Projects matched with TanStack's inNumberRange filter. A filter component is called rather than mounted, so it holds no state of its own — it reads column.getFilterValue() and writes column.setFilterValue().
+Every filter here is a component of its own: a Dropdown for Status, and a pair of number inputs for Salary and Projects matched with TanStack's inNumberRange filter. A filter component is called rather than mounted, so it holds no state of its own: it reads column.getFilterValue() and writes column.setFilterValue().
 
 **Example: PreComposedTableWithCustomColumnFilters**
 
@@ -1954,7 +1954,7 @@ Every filter here is a component of its own: a Dropdown for Status, and a pair o
 // A filter component is called as a plain function rather than mounted, so it
 // holds no state: it reads the current value from column.getFilterValue() and
 // writes the next one with column.setFilterValue(), which is also what lets
-// something outside the table — a Clear filters button, say — reset it.
+// something outside the table (a Clear filters button, say) reset it.
 
 import {
   CellBasic,
@@ -2212,7 +2212,7 @@ The ref exposes the TanStack table as ref.current.table, which covers what the p
 ```tsx
 // The WithTableActions story: the ref exposes the underlying TanStack table as
 // ref.current.table, which is the escape hatch for everything the props do not
-// cover — clearing filters, selecting rows from outside the table, paging
+// cover: clearing filters, selecting rows from outside the table, paging
 // programmatically, reading the filtered rows back out.
 //
 // It is an imperative handle rather than state, so reading from it during
@@ -2221,7 +2221,7 @@ The ref exposes the TanStack table as ref.current.table, which covers what the p
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
@@ -2609,7 +2609,7 @@ tableOptions is merged into the underlying TanStack table's options, so anything
 
 ```tsx
 // The WithTableOptions story: tableOptions is merged into the underlying
-// TanStack table's options, so anything useReactTable accepts can be set here —
+// TanStack table's options, so anything useReactTable accepts can be set here:
 // meta, filter functions, debugTable, and the rest.
 //
 // This one sets autoResetPageIndex: false, so filtering the table leaves you on
@@ -2617,7 +2617,7 @@ tableOptions is merged into the underlying TanStack table's options, so anything
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.

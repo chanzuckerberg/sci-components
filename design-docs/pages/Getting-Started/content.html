@@ -34,7 +34,7 @@
 <h4>Library structure</h4>
 <p>
   Instead of consolidating all elements into the same Figma library, the SDS
-  team has broken out each element type into separate libraries—SDS Bases, SDS
+  team has broken out each element type into separate libraries: SDS Bases, SDS
   Typography, SDS Icons, and SDS Components. Each of these libraries can be
   turned on or off depending on the needs of the individual product team. This
   ensures product designers' project files aren't cluttered with unnecessary
@@ -240,7 +240,7 @@ yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/ma
   <p>
     <strong>On React 18 or below:</strong>
     Material UI ships react-is v19. Pin react-is to match your React version to
-    avoid runtime errors in prop-type checks — use resolutions for Yarn, or
+    avoid runtime errors in prop-type checks. Use resolutions for Yarn, or
     overrides for npm and pnpm.
   </p>
 </div>
@@ -249,7 +249,7 @@ yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/ma
 <p>
   @czi-sds/components comes with five main exports that help you build your app.
 </p>
-<p><strong>1. Components</strong> — accessible and reusable components.</p>
+<p><strong>1. Components</strong>: accessible and reusable components.</p>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
@@ -264,10 +264,7 @@ export function SaveButton() {
 }</code></pre>
   </figure>
 </div>
-<p>
-  <strong>2. Mixins</strong>
-  — grouped styles defined by the design system.
-</p>
+<p><strong>2. Mixins</strong>: grouped styles defined by the design system.</p>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
@@ -287,8 +284,8 @@ export const Title = styled(Typography)`
   </figure>
 </div>
 <p>
-  <strong>3. Selectors</strong>
-  — helper functions that read theme variables from the passed props.
+  <strong>3. Selectors</strong>: helper functions that read theme variables from
+  the passed props.
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -317,8 +314,8 @@ export const Row = styled.div&lt;CommonThemeProps&gt;`
   </figure>
 </div>
 <p>
-  <strong>4. CSS and SCSS variables</strong>
-  — for apps that do not use @emotion/styled.
+  <strong>4. CSS and SCSS variables</strong>: for apps that do not use
+  @emotion/styled.
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -341,8 +338,8 @@ export const Row = styled.div&lt;CommonThemeProps&gt;`
   </figure>
 </div>
 <p>
-  <strong>5. Tailwind config</strong>
-  — a Tailwind-compliant version of the design tokens.
+  <strong>5. Tailwind config</strong>: a Tailwind-compliant version of the
+  design tokens.
 </p>
 <p>First import the SDS config into your application's Tailwind config:</p>
 <div class="sds-doc-code-snippet">

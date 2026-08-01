@@ -3,7 +3,7 @@
     "props": {
       "color": {
         "defaultValue": "neutral",
-        "description": "The tag's intent, given either as one of the six names or as CSS colors: [label color, background color] — the icon stays white [label color, background color, icon color]",
+        "description": "The tag's intent, given either as one of the six names or as CSS colors: [label color, background color]: the icon stays white [label color, background color, icon color]",
         "isRequired": false,
         "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
       },

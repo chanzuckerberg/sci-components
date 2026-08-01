@@ -65,7 +65,7 @@
         "type": "\"lined\" | \"striped\""
       },
       "tableOptions": {
-        "description": "Escape hatch to the underlying TanStack table. Anything here is merged into its options, and a state you supply overrides the one the component keeps — which is how you drive sorting or pagination from outside. The row models and change handlers are always the component's own",
+        "description": "Escape hatch to the underlying TanStack table. Anything here is merged into its options, and a state you supply overrides the one the component keeps, which is how you drive sorting or pagination from outside. The row models and change handlers are always the component's own",
         "isRequired": false,
         "type": "Partial<Omit<TableOptions<TData>, \"data\" | \"columns\" | \"getCoreRowModel\">>"
       },

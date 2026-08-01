@@ -6,7 +6,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## SDS vs MUI
 
-TooltipTable is not a tooltip. It is the content that goes inside one: a two-column table of labels and values built on MUI's Table, exported as _TooltipTable_ and named _TooltipTableContent_ in the source. It has no trigger, no hover behavior and no popper of its own, so it does nothing on its own — pass it to a tooltip's _componentSlot_ and let the tooltip do the showing. What it adds:
+TooltipTable is not a tooltip. It is the content that goes inside one: a two-column table of labels and values built on MUI's Table, exported as _TooltipTable_ and named _TooltipTableContent_ in the source. It has no trigger, no hover behavior and no popper of its own, so it does nothing on its own. Pass it to a tooltip's _componentSlot_ and let the tooltip do the showing. What it adds:
 
 - **data:** the sections. Each one takes a _label_, a list of _dataRows_ of label and value, and an optional _disabled_ flag. Sections are separated by a divider, in the order given.
 
@@ -52,8 +52,8 @@ The table inside a condensed tooltip in the lighter scheme, which is what pairs 
 **Example: DefaultTooltipTable**
 
 ```tsx
-// TooltipTable is not a tooltip. It is the content — a two-column table of labels
-// and values, grouped into sections — that goes inside one.
+// TooltipTable is not a tooltip. It is the content (a two-column table of labels
+// and values, grouped into sections) that goes inside one.
 //
 // It belongs in componentSlot rather than title, because title wraps whatever it is
 // given in a paragraph, and a table inside a paragraph is invalid HTML that React
@@ -62,7 +62,7 @@ The table inside a condensed tooltip in the lighter scheme, which is what pairs 
 // hasInvertedStyle={false} so the numbers sit on a light surface.
 //
 // The table asks for at least 224px and the tooltip caps out at 250px, so the two
-// only just fit. Long labels are what break the layout first — keep them short.
+// only just fit. Long labels are what break the layout first, so keep them short.
 
 import {
   TooltipCondensed,

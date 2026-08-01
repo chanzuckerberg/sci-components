@@ -6,7 +6,7 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Design System Documentation
 
-`@czi-sds/components` implements the Science Design System, which is documented in [Storybook](https://chanzuckerberg.github.io/sci-components/). Every component has a Documentation page covering how it differs from the MUI component it wraps, its props, and a runnable example of each variation. The design foundations — colors, spacing, typography, and the rest — live under Design Documentation, and it's worth getting familiar with the **theme variables** they describe so you can leverage the theme properly in your application.
+`@czi-sds/components` implements the Science Design System, which is documented in [Storybook](https://chanzuckerberg.github.io/sci-components/). Every component has a Documentation page covering how it differs from the MUI component it wraps, its props, and a runnable example of each variation. The design foundations (colors, spacing, typography, and the rest) live under Design Documentation, and it's worth getting familiar with the **theme variables** they describe so you can leverage the theme properly in your application.
 
 The documentation is authored in this repository, so it ships and versions with the code.
 
@@ -20,7 +20,7 @@ NOTE: Since most of the czi-sds components are built on top of Material UI's equ
 
 ## Migrating to SDS 24.0.0 (Material UI v9)
 
-SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-24.0.0.md](./migration-docs/migrate-to-24.0.0.md). If a newer version of SDS is published, install that one instead — the same MUI v9 migration steps apply.
+SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-24.0.0.md](./migration-docs/migrate-to-24.0.0.md). If a newer version of SDS is published, install that one instead. The same MUI v9 migration steps apply.
 
 That guide covers dependency updates, MUI import and prop API changes (`slots` / `slotProps`), SDS-specific call-site updates, icon renames, and a verification checklist.
 

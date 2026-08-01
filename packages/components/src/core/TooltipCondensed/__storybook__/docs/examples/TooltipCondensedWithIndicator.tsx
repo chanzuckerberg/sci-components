@@ -1,6 +1,6 @@
 // TooltipCondensed is the label-sized tooltip for dense surfaces: charts, table
 // cells, anywhere a full sentence would be too much. It follows the cursor instead
-// of anchoring to the element, and it locks that down — followCursor, placement,
+// of anchoring to the element, and it locks that down: followCursor, placement,
 // arrow, and the enter and leave delays are all applied after your props, so passing
 // placement or arrow here changes nothing.
 //

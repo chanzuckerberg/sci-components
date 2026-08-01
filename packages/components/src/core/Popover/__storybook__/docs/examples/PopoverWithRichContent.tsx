@@ -4,7 +4,7 @@
 // Two things have to be decided for content this size. The width, because a
 // popover is otherwise as wide as its content: slotProps.paper is the way in, and
 // sx works there because SDS sets no width of its own. And the room around it,
-// which the content adds — the paper's 6px and 12px come from a selector on the
+// which the content adds: the paper's 6px and 12px come from a selector on the
 // popover's root that outranks an sx on the paper, so they are there to build on
 // rather than to replace.
 //

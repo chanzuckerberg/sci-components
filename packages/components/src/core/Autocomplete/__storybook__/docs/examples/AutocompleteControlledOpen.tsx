@@ -1,7 +1,7 @@
 // Without search there is no visible field, so the list has to be opened from
 // outside: pass open, and use onClick and onClickAway to keep it in step with
-// whatever does the opening. This is the arrangement DropdownMenu wraps up —
-// reach for it first, and do this only when you need the list somewhere a
+// whatever does the opening. This is the arrangement DropdownMenu wraps up.
+// Reach for it first, and do this only when you need the list somewhere a
 // popper cannot go.
 //
 // onClick fires when the component asks to open, onClickAway when it asks to

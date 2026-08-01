@@ -1,6 +1,6 @@
 // The WithTableActions story: the ref exposes the underlying TanStack table as
 // ref.current.table, which is the escape hatch for everything the props do not
-// cover — clearing filters, selecting rows from outside the table, paging
+// cover: clearing filters, selecting rows from outside the table, paging
 // programmatically, reading the filtered rows back out.
 //
 // It is an imperative handle rather than state, so reading from it during
@@ -9,7 +9,7 @@
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.

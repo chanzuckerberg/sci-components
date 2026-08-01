@@ -6,7 +6,7 @@
 // A filter component is called as a plain function rather than mounted, so it
 // holds no state: it reads the current value from column.getFilterValue() and
 // writes the next one with column.setFilterValue(), which is also what lets
-// something outside the table — a Clear filters button, say — reset it.
+// something outside the table (a Clear filters button, say) reset it.
 
 import {
   CellBasic,

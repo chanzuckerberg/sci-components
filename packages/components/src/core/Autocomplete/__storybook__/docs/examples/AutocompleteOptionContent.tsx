@@ -1,5 +1,5 @@
-// Beyond its name, an option can carry a count, a line of details, and an icon
-// — either an SDS icon name, styled through sdsIconProps, or an element of your
+// Beyond its name, an option can carry a count, a line of details, and an icon:
+// either an SDS icon name, styled through sdsIconProps, or an element of your
 // own. The MenuItem the list renders lays all of that out.
 //
 // An option can instead carry a component, and then it renders that in place of

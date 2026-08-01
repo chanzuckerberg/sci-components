@@ -1,5 +1,5 @@
-// TooltipTable is not a tooltip. It is the content — a two-column table of labels
-// and values, grouped into sections — that goes inside one.
+// TooltipTable is not a tooltip. It is the content (a two-column table of labels
+// and values, grouped into sections) that goes inside one.
 //
 // It belongs in componentSlot rather than title, because title wraps whatever it is
 // given in a paragraph, and a table inside a paragraph is invalid HTML that React
@@ -8,7 +8,7 @@
 // hasInvertedStyle={false} so the numbers sit on a light surface.
 //
 // The table asks for at least 224px and the tooltip caps out at 250px, so the two
-// only just fit. Long labels are what break the layout first — keep them short.
+// only just fit. Long labels are what break the layout first, so keep them short.
 
 import {
   TooltipCondensed,

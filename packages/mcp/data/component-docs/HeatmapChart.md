@@ -14,7 +14,7 @@ HeatmapChart is a thin React wrapper around an [Apache ECharts](https://echarts.
 
 Three consequences of that design are worth knowing before you start:
 
-- **The props are ECharts' vocabulary, not the SDS one.** itemStyle, emphasis, symbolSize, grid, and axisPointer are passed through to the underlying option object, and the ECharts documentation is the reference for each of them. The chart takes nothing from the SDS theme — color scales are yours to supply.
+- **The props are ECharts' vocabulary, not the SDS one.** itemStyle, emphasis, symbolSize, grid, and axisPointer are passed through to the underlying option object, and the ECharts documentation is the reference for each of them. The chart takes nothing from the SDS theme: color scales are yours to supply.
 
 - **It renders to SVG by default.** That keeps text crisp and elements inspectable, and is the right choice up to a few thousand cells. Beyond that, switch _echartsRendererMode_ to canvas, and reach for the camera below.
 
@@ -22,7 +22,7 @@ Three consequences of that design are worth knowing before you start:
 
 ## Sizing
 
-**width** and **height** are required, in pixels, and the component throws if either is missing or zero — ECharts cannot initialise into a box with no area. The chart does not measure its container, so a responsive heatmap means measuring the container yourself and passing the result down.
+**width** and **height** are required, in pixels, and the component throws if either is missing or zero: ECharts cannot initialise into a box with no area. The chart does not measure its container, so a responsive heatmap means measuring the container yourself and passing the result down.
 
 The grid fills those dimensions exactly, which makes cell size a matter of arithmetic: pick the pixel size a cell should be and multiply by the number of categories on each axis. Sizing the container to anything else stretches the cells rather than clipping them.
 
@@ -50,7 +50,7 @@ const data = [
 
 **xAxisData** and **yAxisData** are the categories themselves, as strings, numbers, or objects with a value and a textStyle. The values a cell is encoded on are indices into them, so the two must line up: a cell whose geneIndex is 4 lands on the fifth entry of xAxisData.
 
-Everything else a cell carries — an expression level, a count, a p-value — is invisible until something draws it. That is the job of **itemStyle** and **symbolSize**, both of which accept a callback that receives the data item, so the color scale and the size scale are yours to define. Without an itemStyle every cell is black, and symbolSize defaults to 5 pixels.
+Everything else a cell carries (an expression level, a count, a p-value) is invisible until something draws it. That is the job of **itemStyle** and **symbolSize**, both of which accept a callback that receives the data item, so the color scale and the size scale are yours to define. Without an itemStyle every cell is black, and symbolSize defaults to 5 pixels.
 
 ## The camera
 
@@ -77,7 +77,7 @@ The named props cover the common cases; everything else in ECharts is reached th
 
 - _axisPointer_ and _dataZoom_ accept either a single object, applied to both axes, or a two-entry array for the x and y axes separately. dataZoom is only applied when the camera is active, since otherwise there is no window for it to describe.
 
-- _grid_ has a prop of its own, which takes either an option object or a function receiving the computed default — useful for insetting the grid to make room for axis labels while keeping the sizing the chart worked out.
+- _grid_ has a prop of its own, which takes either an option object or a function receiving the computed default. That is useful for insetting the grid to make room for axis labels while keeping the sizing the chart worked out.
 
 - Every other key in options is spread over the result untouched, and wins.
 
@@ -121,11 +121,11 @@ Three things decide what comes out:
 
 - **The renderer decides the format, not the type option.** An SVG chart can only export SVG, and a canvas chart can only export a raster; asking a canvas chart for _type: "svg"_ produces a PNG with a misleading name. Derive the file extension from echartsRendererMode, as the example below does, or fix the renderer and the extension together.
 
-- _pixelRatio_ and _backgroundColor_ only apply on the canvas path — 2 or 3 for a print-resolution PNG, and a colour if the default transparent background will not do. An SVG export ignores both and keeps the chart's own background. _excludeComponents_ takes the names of components to hide while exporting, such as a toolbox.
+- _pixelRatio_ and _backgroundColor_ only apply on the canvas path: 2 or 3 for a print-resolution PNG, and a colour if the default transparent background will not do. An SVG export ignores both and keeps the chart's own background. _excludeComponents_ takes the names of components to hide while exporting, such as a toolbox.
 
 - **Only what is rendered is exported.** With the camera active, the export contains the window, not the whole grid. Exporting everything means rendering everything: turn the camera off for the export, and expect it to cost what drawing the full grid costs.
 
-A heatmap is often assembled from more than one chart — the grid, plus the separate charts drawing its axis labels. ECharts can composite them into a single image, but only once they are in a connected group:
+A heatmap is often assembled from more than one chart: the grid, plus the separate charts drawing its axis labels. ECharts can composite them into a single image, but only once they are in a connected group:
 
 **React TypeScript**
 
@@ -143,21 +143,21 @@ const url = heatmap.getConnectedDataURL({
 });
 ```
 
-_getConnectedDataURL_ falls back to _getDataURL_ when the chart is not in a connected group, so a single chart can call either. That is what the heatmap demo does — its download button calls getConnectedDataURL on the grid alone.
+_getConnectedDataURL_ falls back to _getDataURL_ when the chart is not in a connected group, so a single chart can call either. That is what the heatmap demo does: its download button calls getConnectedDataURL on the grid alone.
 
 ## Behavior and accessibility
 
-- The chart is a single SVG or canvas element with no accessible name, no roles, and no tab stop. Assistive technology can see nothing in it, and a keyboard cannot reach a cell, so a heatmap needs a text equivalent alongside it — a summary of what it shows, or the same numbers reachable as a table.
+- The chart is a single SVG or canvas element with no accessible name, no roles, and no tab stop. Assistive technology can see nothing in it, and a keyboard cannot reach a cell, so a heatmap needs a text equivalent alongside it: a summary of what it shows, or the same numbers reachable as a table.
 
 - Axis labels are drawn at font size 0 by default, and the x axis is rotated 90 degrees. The charts this was built for pair the grid with their own scrollable axis components, which is why the built-in labels start hidden; a small heatmap can turn them back on through options, as the example below does.
 
-- Hover draws a border around the cell under the pointer — white and 4px on a square, black and 2px on a circle — and never scales it. Pass **emphasis** to change that.
+- Hover draws a border around the cell under the pointer (white and 4px on a square, black and 2px on a circle) and never scales it. Pass **emphasis** to change that.
 
 - Tooltips are ECharts' own HTML tooltips, positioned over the chart and built from a formatter you write. They are pointer-only, and they are not the SDS Tooltip.
 
 - Handlers in **onEvents** are rebound whenever the chart updates, and rebinding removes every listener registered for that event name. If you also attach listeners to the ECharts instance yourself, expect them to be dropped; attach them through onEvents instead.
 
-- Color is the whole message in a heatmap. Pick a sequential scale that survives being read by someone with a color vision deficiency, keep it consistent between charts that will be compared, and make the scale itself visible — a legend or a visualMap through options — since the component does not draw one.
+- Color is the whole message in a heatmap. Pick a sequential scale that survives being read by someone with a color vision deficiency, keep it consistent between charts that will be compared, and make the scale itself visible (a legend or a visualMap through options), since the component does not draw one.
 
 ## Props
 
@@ -194,8 +194,8 @@ The smallest complete heatmap: cells, two axes, a size, and an itemStyle that tu
 // A heatmap needs four things: the cells, the two axes they are indexed
 // against, and pixel dimensions for the canvas they are drawn on. Each cell is
 // an object of whatever shape suits the data, and encode says which of its
-// fields places it on each axis — here x and y, but they could just as well be
-// geneIndex and cellTypeIndex.
+// fields places it on each axis. Here they are x and y, but they could just as
+// well be geneIndex and cellTypeIndex.
 //
 // Nothing about a cell's value reaches the chart on its own. The value becomes
 // visible because itemStyle colors each symbol from it, which is also why the
@@ -459,7 +459,7 @@ A 4,800-cell grid rendered 240 cells at a time. Drag to move the window, or use 
 // affordable, and it is worth turning on well before the browser starts to
 // struggle.
 //
-// The container is sized to the window, not to the data — camera.width and
+// The container is sized to the window, not to the data: camera.width and
 // camera.height are counted in cells, so the pixel size is that count times
 // whatever a cell should measure. Get this wrong and the cells stretch: the
 // grid always fills the container it is given.

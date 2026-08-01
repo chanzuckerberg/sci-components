@@ -2,7 +2,7 @@
 
 The searchable list of options behind every SDS dropdown: a MUI Autocomplete rendered as SDS MenuItems, in one column or several.
 
-**Most applications want DropdownMenu instead.** Autocomplete is the list itself, with no popper of its own and no trigger. DropdownMenu wraps it in a popper anchored to an element you choose, and Dropdown adds the click target too. Use Autocomplete directly when the list belongs somewhere a popper cannot go — inside a panel, a dialog body, or a layout you are placing yourself.
+**Most applications want DropdownMenu instead.** Autocomplete is the list itself, with no popper of its own and no trigger. DropdownMenu wraps it in a popper anchored to an element you choose, and Dropdown adds the click target too. Use Autocomplete directly when the list belongs somewhere a popper cannot go: inside a panel, a dialog body, or a layout you are placing yourself.
 
 ## Source Code
 
@@ -14,7 +14,7 @@ SDS Autocomplete wraps [MUI Autocomplete](https://mui.com/material-ui/react-auto
 
 - **Options render as SDS MenuItems** inside a MenuList, which is where the checkmarks, counts, details, icons, and disabled styling come from. Supplying your own _renderOption_ replaces all of it.
 
-- **The selection is never drawn in the input.** MUI shows chips for a multi-select; SDS returns null from _renderValue_, so the field keeps showing its label and the checkmarks in the list are the only indication. Reporting the selection belongs to whatever sits above — an InputDropdown, a set of Tags, your own summary.
+- **The selection is never drawn in the input.** MUI shows chips for a multi-select; SDS returns null from _renderValue_, so the field keeps showing its label and the checkmarks in the list are the only indication. Reporting the selection belongs to whatever sits above: an InputDropdown, a set of Tags, your own summary.
 
 - **The input is an SDS InputSearch** with a search button and a clear button, built by the component. Reach it through _InputBaseProps_ rather than _renderInput_, which SDS already uses.
 
@@ -49,15 +49,15 @@ options={[
 ]}
 ```
 
-The value follows the same split. A single column reports what MUI reports — an option, or an array of them for a multi-select. Multiple columns report a record keyed by column name, with each column's own value inside it, and the handler receives the whole record whenever any column changes.
+The value follows the same split. A single column reports what MUI reports: an option, or an array of them for a multi-select. Multiple columns report a record keyed by column name, with each column's own value inside it, and the handler receives the whole record whenever any column changes.
 
 A columns array of length one collapses back to a single list, so a variable number of columns needs no special casing. _groupBy_ is ignored once there is more than one column: sections and columns do not combine.
 
 ## Search, and who opens the list
 
-**search** is what gives the component a visible, focusable text field. It is off by default, and when it is off the input is not merely hidden but clipped and disabled — which also means there is nothing left to click, and the list can only be opened by a parent through **open**. That is the arrangement DropdownMenu uses, and the reason a bare Autocomplete with no props appears to do nothing.
+**search** is what gives the component a visible, focusable text field. It is off by default, and when it is off the input is not merely hidden but clipped and disabled, which also means there is nothing left to click, and the list can only be opened by a parent through **open**. That is the arrangement DropdownMenu uses, and the reason a bare Autocomplete with no props appears to do nothing.
 
-So there are two working configurations: give it _search_ and let it manage itself, or control _open_ from outside and use _onClick_ and _onClickAway_ to hear when the component would like to open and close. Both are advisory when open is controlled — the list stays where your state puts it.
+So there are two working configurations: give it _search_ and let it manage itself, or control _open_ from outside and use _onClick_ and _onClickAway_ to hear when the component would like to open and close. Both are advisory when open is controlled. The list stays where your state puts it.
 
 Filtering is MUI's, matching against _getOptionLabel_, which defaults to the option's name; pass _filterOptions_ to change how matching works. When nothing matches, _noOptionsText_ is shown. For a multi-select, _keepSearchOnSelect_ leaves the typed text in place after each pick so several matches for one search can be selected without retyping it.
 
@@ -71,7 +71,7 @@ Filtering is MUI's, matching against _getOptionLabel_, which defaults to the opt
 
 - With _search_ off there is no keyboard path into the component at all: the input is disabled and aria-hidden along with its two buttons, and the options carry a tabindex of -1. Anything built on that mode has to provide its own keyboard route to the list.
 
-- The input is labelled by _label_, which is used as both the visible label and the placeholder. It is worth writing as an instruction — "Search cell types" rather than "Search".
+- The input is labelled by _label_, which is used as both the visible label and the placeholder. It is worth writing as an instruction: "Search cell types" rather than "Search".
 
 - Because the input never shows the selection, a selection that is not reported anywhere else is invisible to someone who cannot see the checkmarks. Pair the list with a summary of what is chosen.
 
@@ -192,14 +192,14 @@ export default App;
 
 ### Multi-select
 
-Selecting several options, with the selection read back out above the list — the component will not show it in the field.
+Selecting several options, with the selection read back out above the list. The component will not show it in the field.
 
 **Example: AutocompleteMultiSelect**
 
 ```tsx
 // multiple keeps the list open after each pick and marks the chosen options
 // with a checkmark. It does not show them in the input: the field always shows
-// its label, because that is the parent's job in SDS — a DropdownMenu sits
+// its label, because that is the parent's job in SDS: a DropdownMenu sits
 // under an InputDropdown that reports the selection.
 //
 // Making it controlled is the way to read the selection out. The handler is
@@ -292,7 +292,7 @@ groupBy splits the same list into labelled sections.
 
 ```tsx
 // groupBy sorts the list into labelled sections. It reads whatever the callback
-// returns, so section is only a convention — any field, or a value computed on
+// returns, so section is only a convention: any field, or a value computed on
 // the spot, will do.
 //
 // The list is not reordered for you: options are grouped in the order they
@@ -344,8 +344,8 @@ Counts, details, icons, a disabled row, and an option that renders a component o
 **Example: AutocompleteOptionContent**
 
 ```tsx
-// Beyond its name, an option can carry a count, a line of details, and an icon
-// — either an SDS icon name, styled through sdsIconProps, or an element of your
+// Beyond its name, an option can carry a count, a line of details, and an icon:
+// either an SDS icon name, styled through sdsIconProps, or an element of your
 // own. The MenuItem the list renders lays all of that out.
 //
 // An option can instead carry a component, and then it renders that in place of
@@ -439,7 +439,7 @@ Two lists side by side under one search field, and the record-shaped value they 
 // every time any column changes.
 //
 // One search field sits above all the columns and filters them together.
-// groupBy is ignored here — sections and columns do not combine.
+// groupBy is ignored here: sections and columns do not combine.
 //
 // open is set here only so the columns are visible on the page.
 
@@ -543,8 +543,8 @@ The configuration DropdownMenu is built on: no input of its own, opened and clos
 ```tsx
 // Without search there is no visible field, so the list has to be opened from
 // outside: pass open, and use onClick and onClickAway to keep it in step with
-// whatever does the opening. This is the arrangement DropdownMenu wraps up —
-// reach for it first, and do this only when you need the list somewhere a
+// whatever does the opening. This is the arrangement DropdownMenu wraps up.
+// Reach for it first, and do this only when you need the list somewhere a
 // popper cannot go.
 //
 // onClick fires when the component asks to open, onClickAway when it asks to

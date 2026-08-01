@@ -41,7 +41,7 @@
       <strong>The props are ECharts' vocabulary, not the SDS one.</strong>
       itemStyle, emphasis, symbolSize, grid, and axisPointer are passed through
       to the underlying option object, and the ECharts documentation is the
-      reference for each of them. The chart takes nothing from the SDS theme —
+      reference for each of them. The chart takes nothing from the SDS theme:
       color scales are yours to supply.
     </p>
   </li>
@@ -67,8 +67,8 @@
   <strong>width</strong>
   and
   <strong>height</strong>
-  are required, in pixels, and the component throws if either is missing or zero
-  — ECharts cannot initialise into a box with no area. The chart does not
+  are required, in pixels, and the component throws if either is missing or
+  zero: ECharts cannot initialise into a box with no area. The chart does not
   measure its container, so a responsive heatmap means measuring the container
   yourself and passing the result down.
 </p>
@@ -114,7 +114,7 @@
   xAxisData.
 </p>
 <p>
-  Everything else a cell carries — an expression level, a count, a p-value — is
+  Everything else a cell carries (an expression level, a count, a p-value) is
   invisible until something draws it. That is the job of
   <strong>itemStyle</strong>
   and
@@ -189,8 +189,8 @@
     <p>
       <em>grid</em>
       has a prop of its own, which takes either an option object or a function
-      receiving the computed default — useful for insetting the grid to make
-      room for axis labels while keeping the sizing the chart worked out.
+      receiving the computed default. That is useful for insetting the grid to
+      make room for axis labels while keeping the sizing the chart worked out.
     </p>
   </li>
   <li>
@@ -272,7 +272,7 @@ function download() {
       <em>pixelRatio</em>
       and
       <em>backgroundColor</em>
-      only apply on the canvas path — 2 or 3 for a print-resolution PNG, and a
+      only apply on the canvas path: 2 or 3 for a print-resolution PNG, and a
       colour if the default transparent background will not do. An SVG export
       ignores both and keeps the chart's own background.
       <em>excludeComponents</em>
@@ -289,7 +289,7 @@ function download() {
   </li>
 </ul>
 <p>
-  A heatmap is often assembled from more than one chart — the grid, plus the
+  A heatmap is often assembled from more than one chart: the grid, plus the
   separate charts drawing its axis labels. ECharts can composite them into a
   single image, but only once they are in a connected group:
 </p>
@@ -318,7 +318,7 @@ const url = heatmap.getConnectedDataURL({
   <a href="./?path=/story/data-viz-heatmapchart--heatmap-demo" target="_top">
     heatmap demo
   </a>
-  does — its download button calls getConnectedDataURL on the grid alone.
+  does: its download button calls getConnectedDataURL on the grid alone.
 </p>
 <h2>Behavior and accessibility</h2>
 <ul class="sds-doc-bullet-list">
@@ -327,8 +327,8 @@ const url = heatmap.getConnectedDataURL({
       The chart is a single SVG or canvas element with no accessible name, no
       roles, and no tab stop. Assistive technology can see nothing in it, and a
       keyboard cannot reach a cell, so a heatmap needs a text equivalent
-      alongside it — a summary of what it shows, or the same numbers reachable
-      as a table.
+      alongside it: a summary of what it shows, or the same numbers reachable as
+      a table.
     </p>
   </li>
   <li>
@@ -342,8 +342,8 @@ const url = heatmap.getConnectedDataURL({
   </li>
   <li>
     <p>
-      Hover draws a border around the cell under the pointer — white and 4px on
-      a square, black and 2px on a circle — and never scales it. Pass
+      Hover draws a border around the cell under the pointer (white and 4px on a
+      square, black and 2px on a circle) and never scales it. Pass
       <strong>emphasis</strong>
       to change that.
     </p>
@@ -370,7 +370,7 @@ const url = heatmap.getConnectedDataURL({
       Color is the whole message in a heatmap. Pick a sequential scale that
       survives being read by someone with a color vision deficiency, keep it
       consistent between charts that will be compared, and make the scale itself
-      visible — a legend or a visualMap through options — since the component
+      visible (a legend or a visualMap through options), since the component
       does not draw one.
     </p>
   </li>

@@ -20,7 +20,7 @@
       <strong>buttonDefinition instead of children:</strong>
       MUI expects you to write a ToggleButton per segment. SDS builds them from
       an array instead, one entry per segment in array order, and the segments
-      it builds are the control's only children — anything you nest inside a
+      it builds are the control's only children. Anything you nest inside a
       SegmentedControl is dropped without a warning.
     </p>
   </li>
@@ -144,7 +144,7 @@
     <p>
       The control is sized to its segments and does not wrap or shrink, so a
       long set of labels overflows a narrow container rather than reflowing. The
-      design guidance above — two to four segments — keeps that from happening.
+      design guidance above (two to four segments) keeps that from happening.
     </p>
   </li>
   <li>

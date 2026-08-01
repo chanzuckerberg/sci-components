@@ -3,7 +3,7 @@
 // measure, only where the pointer was.
 //
 // anchorPosition is read in viewport coordinates, so clientX and clientY go
-// straight in — no scroll offset, and no bounding rect. Everything else works as
+// straight in: no scroll offset, and no bounding rect. Everything else works as
 // before, including the 8px the SDS transformOrigin subtracts, which is why the
 // popover opens just below the cursor rather than under it.
 //

@@ -19,7 +19,7 @@
         "type": "number"
       },
       "totalCount": {
-        "description": "Required. Total number of items being paged through — the whole set, not the current page.",
+        "description": "Required. Total number of items being paged through: the whole set, not the current page.",
         "isRequired": true,
         "type": "number"
       },

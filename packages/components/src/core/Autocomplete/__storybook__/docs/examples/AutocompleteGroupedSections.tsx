@@ -1,5 +1,5 @@
 // groupBy sorts the list into labelled sections. It reads whatever the callback
-// returns, so section is only a convention — any field, or a value computed on
+// returns, so section is only a convention: any field, or a value computed on
 // the spot, will do.
 //
 // The list is not reordered for you: options are grouped in the order they

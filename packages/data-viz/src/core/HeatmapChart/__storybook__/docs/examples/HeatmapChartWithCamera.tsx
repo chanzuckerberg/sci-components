@@ -4,7 +4,7 @@
 // affordable, and it is worth turning on well before the browser starts to
 // struggle.
 //
-// The container is sized to the window, not to the data — camera.width and
+// The container is sized to the window, not to the data: camera.width and
 // camera.height are counted in cells, so the pixel size is that count times
 // whatever a cell should measure. Get this wrong and the cells stretch: the
 // grid always fills the container it is given.

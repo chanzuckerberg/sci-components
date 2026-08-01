@@ -10,7 +10,7 @@
 //
 // A column left as a plain accessor is drawn as a CellHeader and a CellBasic.
 // A renderer of your own is handed the element and the width to draw with as
-// `as` and `style`, and forwards both — without `as` it renders a second <td>
+// `as` and `style`, and forwards both. Without `as` it renders a second <td>
 // inside the one the table already drew. A header renderer is handed
 // `data-pinned-edge` too, which is what tells a pinned header to draw its
 // gradient.
