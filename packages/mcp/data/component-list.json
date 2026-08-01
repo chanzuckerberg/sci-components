@@ -58,9 +58,5 @@
     "TooltipCondensed",
     "TooltipTable"
   ],
-  "data-viz": [
-    "HeatmapChart",
-    "Overview",
-    "StackedBarChart"
-  ]
+  "data-viz": ["HeatmapChart", "StackedBarChart"]
 }

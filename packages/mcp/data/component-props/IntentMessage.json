@@ -20,11 +20,7 @@
         "type": "IntentMessageItem[]"
       },
       "orderBy": {
-        "defaultValue": [
-          "negative",
-          "notice",
-          "positive"
-        ],
+        "defaultValue": ["negative", "notice", "positive"],
         "description": "Replaces the default severity ranking. It affects the sort order and, because it defines what counts as most severe, the border color as well, which means it still applies when autoOrder is false.",
         "isRequired": false,
         "type": "IntentMessageIntent[]"

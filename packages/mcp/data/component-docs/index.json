@@ -184,11 +184,6 @@
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/Notification/__storybook__/docs/content.html"
   },
-  "Overview": {
-    "file": "Overview.md",
-    "package": "@czi-sds/data-viz",
-    "source": "packages/data-viz/src/core/Overview/__storybook__/docs/content.html"
-  },
   "Pagination": {
     "file": "Pagination.md",
     "package": "@czi-sds/components",
