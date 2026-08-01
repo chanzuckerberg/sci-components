@@ -2,31 +2,37 @@
   "InputCheckbox": {
     "props": {
       "caption": {
-        "type": "string",
-        "isRequired": false
+        "description": "The caption of the InputCheckbox appears beneath the label in a lighter text color.",
+        "isRequired": false,
+        "type": "string"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, the component is disabled.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "Colors the border of the empty box. The checked box always uses the accent color.",
+        "isRequired": false,
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\""
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The label of the InputCheckbox. When omitted, the box renders on its own with no label element.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "stage": {
-        "type": "\"indeterminate\" | \"checked\" | \"unchecked\"",
-        "isRequired": false
+        "description": "Sets the state of the checkbox. It overrides checked, so a checkbox with a stage only changes when you recompute the stage from an onChange handler. Omit it to let the checkbox manage its own state.",
+        "isRequired": false,
+        "type": "\"checked\" | \"indeterminate\" | \"unchecked\""
       },
       "classes": {
-        "type": "complex",
+        "defaultValue": {},
+        "description": "Override or extend the styles applied to the component.",
         "isRequired": false,
-        "description": "Override or extend the styles applied to the component."
+        "type": "complex"
       }
     }
   }

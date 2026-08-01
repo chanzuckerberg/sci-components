@@ -2,26 +2,34 @@
   "Panel": {
     "props": {
       "isBackdropClickEnabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Overlay only in practice. Adds an invisible backdrop so a click outside the panel reaches onClose. Left off, clicks pass through to the page.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "position": {
-        "type": "\"bottom\" | \"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Which edge the panel is attached to. A basic panel takes \"left\" or \"right\"; an overlay adds \"bottom\".",
+        "isRequired": false,
+        "type": "\"bottom\" | \"left\" | \"right\""
       },
       "sdsType": {
-        "type": "\"overlay\" | \"basic\"",
-        "isRequired": true
+        "defaultValue": "- (required)",
+        "description": "\"basic\" sits in the page and stays until you close it; \"overlay\" floats over the page with a header and close button. It also decides which of the props below apply, so TypeScript needs it spelled out even though the component falls back to \"basic\".",
+        "isRequired": true,
+        "type": "\"overlay\" | \"basic\""
       },
       "transitionDuration": {
-        "type": "\"number\" | \"{ appear?: number; enter?: number; exit?: number; }\"",
-        "isRequired": false,
+        "defaultValue": "{\nenter: theme.transitions.duration.enteringScreen,\nexit: theme.transitions.duration.leavingScreen,\n}",
         "description": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object.",
-        "defaultValue": "{\nenter: theme.transitions.duration.enteringScreen,\nexit: theme.transitions.duration.leavingScreen,\n}"
+        "isRequired": false,
+        "type": "number | { appear?: number; enter?: number; exit?: number; }"
       },
       "width": {
-        "type": "\"string\" | \"number\"",
-        "isRequired": false
+        "defaultValue": "240 (basic) 320 (overlay)",
+        "description": "How wide the panel is, or how tall it is when positioned along the bottom. Numbers are read as pixels. Values below the default are ignored, since the panel keeps that as its minimum in both directions.",
+        "isRequired": false,
+        "type": "string | number"
       }
     }
   }

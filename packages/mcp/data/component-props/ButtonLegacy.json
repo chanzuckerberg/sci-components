@@ -2,42 +2,42 @@
   "ButtonLegacy": {
     "props": {
       "endIcon": {
-        "type": "ReactNode",
+        "description": "Element placed after the children.",
         "isRequired": false,
-        "description": "Element placed after the children."
+        "type": "ReactNode"
       },
       "icon": {
-        "type": "ReactElement",
-        "isRequired": true
+        "isRequired": true,
+        "type": "ReactElement"
       },
       "isAllCaps": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "onClick": {
-        "type": "function",
-        "isRequired": false
+        "isRequired": false,
+        "type": "function"
       },
       "sdsSize": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsStyle": {
-        "type": "\"icon\" | \"minimal\" | \"rounded\" | \"square\"",
-        "isRequired": true
+        "isRequired": true,
+        "type": "\"square\" | \"rounded\" | \"icon\" | \"minimal\""
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\" | \"destructive\" | \"tertiary\""
       },
       "startIcon": {
-        "type": "ReactNode",
+        "description": "Element placed before the children.",
         "isRequired": false,
-        "description": "Element placed before the children."
+        "type": "ReactNode"
       },
       "text": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       }
     }
   }

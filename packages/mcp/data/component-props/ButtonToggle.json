@@ -2,42 +2,48 @@
   "ButtonToggle": {
     "props": {
       "backgroundAppearance": {
-        "type": "\"matchBackground\" | \"dark\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
       },
       "children": {
-        "type": "ReactNode",
+        "description": "The content of the component.",
         "isRequired": false,
-        "description": "The content of the component."
+        "type": "ReactNode"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, the component is disabled.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "startIcon": {
-        "type": "ReactElement",
+        "description": "Element placed before the children.",
         "isRequired": true,
-        "description": "Element placed before the children."
+        "type": "ReactElement"
       },
       "size": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false,
+        "defaultValue": "medium",
         "description": "The size of the component.\n`small` is equivalent to the dense button styling.",
-        "defaultValue": "medium"
+        "isRequired": false,
+        "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\" | \"destructive\"",
-        "isRequired": false
+        "defaultValue": "primary",
+        "description": "Color scheme of the button. Primary uses the accent color in the on stage, secondary stays neutral.",
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\" | \"destructive\""
       },
       "sdsStyle": {
-        "type": "\"outline\" | \"solid\" | \"minimal\"",
-        "isRequired": false
+        "defaultValue": "solid",
+        "description": "Style of the button. ButtonToggle inherits Button's default of solid, but toggles are designed around outline and minimal, so set one of those explicitly.",
+        "isRequired": false,
+        "type": "\"outline\" | \"solid\" | \"minimal\""
       },
       "sdsStage": {
-        "type": "\"off\" | \"on\"",
-        "isRequired": false
+        "defaultValue": "off",
+        "description": "Controls the toggle stage. The component is fully controlled, so keep this value in state and update it from onClick.",
+        "isRequired": false,
+        "type": "\"off\" | \"on\""
       }
     }
   }

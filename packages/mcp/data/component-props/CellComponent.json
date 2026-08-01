@@ -2,16 +2,20 @@
   "CellComponent": {
     "props": {
       "horizontalAlign": {
-        "type": "\"center\" | \"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Specifies the horizontal alignment of the cell content.",
+        "isRequired": false,
+        "type": "\"center\" | \"left\" | \"right\""
       },
       "verticalAlign": {
-        "type": "\"center\" | \"top\" | \"bottom\"",
-        "isRequired": false
+        "defaultValue": "top",
+        "description": "Specifies the vertical alignment of the cell content.",
+        "isRequired": false,
+        "type": "\"center\" | \"bottom\" | \"top\""
       },
       "width": {
-        "type": "\"string\" | \"number\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "string | number"
       }
     }
   }

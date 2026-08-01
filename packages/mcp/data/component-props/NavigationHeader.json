@@ -2,76 +2,103 @@
   "NavigationHeader": {
     "props": {
       "buttons": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Actions at the right end of the bar. Prop objects render as SDS Buttons; elements are cloned with the header's appearance applied. An icon-only button gets an aria-label from its child, and in the narrow layout every button goes full width and closes the drawer when clicked.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "menuProps": {
-        "type": "Partial<MenuProps>",
-        "isRequired": false
+        "defaultValue": "{ disableScrollLock: true, disablePortal: true }",
+        "description": "Props for the dropdown menus. Passing this replaces the default object rather than merging with it.",
+        "isRequired": false,
+        "type": "Partial<MenuProps>"
       },
       "backgroundAppearance": {
-        "type": "\"matchBackground\" | \"dark\"",
-        "isRequired": false
+        "defaultValue": "matchBackground",
+        "description": "\"dark\" puts the header on a dark surface and inverts its contents. It only changes anything in light mode.",
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
       },
       "logo": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The logo displayed in the header. Can be an image, icon, svg or any ReactNode.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "logoLinkComponent": {
-        "type": "\"symbol\" | \"object\" | \"style\" | \"div\" | \"clipPath\" | \"filter\" | \"marker\" | \"mask\" | \"p\" | \"header\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | \"ComponentClass",
-        "isRequired": false
+        "defaultValue": "a",
+        "description": "Specifies the component to use for the logo link.",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
       },
       "logoUrl": {
-        "type": "string",
-        "isRequired": false
+        "description": "URL for the logo link. If provided, clicking the logo navigates to this URL.",
+        "isRequired": false,
+        "type": "string"
       },
       "isSticky": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Whether the header sticks to the top on scroll. Ignored when sdsStyle is \"drawer\", which is always sticky, and best left alone alongside topComponentSlot.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "topComponentSlot": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Content rendered above the header, such as a Banner. The header measures it and offsets its own sticky top to match.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "primaryNavItems": {
-        "type": "NavigationHeaderPrimaryNavItem<string>[]",
-        "isRequired": false
+        "description": "List of items for the primary navigation section.",
+        "isRequired": false,
+        "type": "NavigationHeaderPrimaryNavItem<string>[]"
       },
       "primaryNavPosition": {
-        "type": "\"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Position of the primaryNavItems list. If set to \"left\", the items appear to the left of the search bar. If set to \"right\", they are positioned next to the secondaryNavItems on the right.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "sdsStyle": {
-        "type": "\"dropdown\" | \"drawer\"",
-        "isRequired": false
+        "defaultValue": "dropdown",
+        "description": "How dropdown nav items open, and which parts of their data are used. See the comparison above.",
+        "isRequired": false,
+        "type": "\"dropdown\" | \"drawer\""
       },
       "scrollElevation": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Controls whether a shadow is shown under the Nav when scrolling.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "searchProps": {
-        "type": "\"Partial<FilledTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>\" | \"Partial<OutlinedTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>\" | \"Partial<StandardTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>\"",
-        "isRequired": false
+        "description": "Props passed to the search input component.",
+        "isRequired": false,
+        "type": "Partial<OutlinedTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps> | Partial<StandardTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps> | Partial<FilledTextFieldProps & AccessibleInputSearchProps & InputSearchExtraProps>"
       },
       "secondaryNavItems": {
-        "type": "NavigationHeaderSecondaryNavItem<string>[]",
-        "isRequired": false
+        "description": "List of items for the secondary navigation section.",
+        "isRequired": false,
+        "type": "NavigationHeaderSecondaryNavItem<string>[]"
       },
       "showSearch": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Whether to display the search input in the header.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "tag": {
-        "type": "string",
-        "isRequired": false
+        "description": "A small label displayed next to the title.",
+        "isRequired": false,
+        "type": "string"
       },
       "tagColor": {
-        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
-        "isRequired": false
+        "defaultValue": "neutral",
+        "description": "The color of the tag label.",
+        "isRequired": false,
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
       },
       "title": {
-        "type": "string",
-        "isRequired": false
+        "description": "The main title displayed in the header.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

@@ -2,93 +2,97 @@
   "StackedBarChart": {
     "props": {
       "badge": {
-        "type": "string",
+        "defaultValue": "the selection count",
+        "description": "Badge text to display next to the title\nIf not provided, defaults to showing item count based on selection:\n- No selection: total count (e.g., \"5\")\n- Partial selection: selected count (e.g., \"3 of 5\")\n- All selected: \"All\"",
         "isRequired": false,
-        "description": "Badge text to display next to the title\nIf not provided, defaults to showing item count based on selection:\n- No selection: total count (e.g., \"5\")\n- Partial selection: selected count (e.g., \"3 of 5\")\n- All selected: \"All\""
+        "type": "string"
       },
       "hideBadge": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "Hide the badge when true",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "barHeight": {
-        "type": "number",
-        "isRequired": false,
+        "defaultValue": 16,
         "description": "Height of the bar in pixels (minimum 1px)",
-        "defaultValue": 16
+        "isRequired": false,
+        "type": "number"
       },
       "data": {
-        "type": "StackedBarChartDataItem[]",
+        "defaultValue": "- (required)",
+        "description": "Array of data items to display in the stacked bar",
         "isRequired": true,
-        "description": "Array of data items to display in the stacked bar"
+        "type": "StackedBarChartDataItem[]"
       },
       "maxAmount": {
-        "type": "number",
+        "defaultValue": "sum of values",
+        "description": "Maximum amount for the bar (used only in \"cumulative\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment",
         "isRequired": false,
-        "description": "Maximum amount for the bar (used only in \"cumulative\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment"
+        "type": "number"
       },
       "mode": {
-        "type": "\"proportional\" | \"cumulative\"",
-        "isRequired": false,
+        "defaultValue": "proportional",
         "description": "Chart mode - controls how segments are calculated\n- \"proportional\": Segments fill entire bar (100%), proportional to their values\n- \"cumulative\": Segments sized based on actual values relative to maxAmount",
-        "defaultValue": "proportional"
+        "isRequired": false,
+        "type": "\"proportional\" | \"cumulative\""
       },
       "legendValueFormat": {
-        "type": "\"percentage\" | \"count\"",
-        "isRequired": false,
+        "defaultValue": "percentage",
         "description": "Format for legend values\n- \"percentage\": Shows percentage of the item in the bar chart (e.g., \"20%\")\n- \"count\": Shows the count from the data object with the unit defined by the unit prop",
-        "defaultValue": "percentage"
+        "isRequired": false,
+        "type": "\"count\" | \"percentage\""
       },
       "selectionBehavior": {
-        "type": "\"dim\" | \"hide\"",
-        "isRequired": false,
+        "defaultValue": "dim",
         "description": "Behavior to apply when items are selected\n- \"dim\": Non-selected segments become semi-transparent (20% opacity)\n- \"hide\": Non-selected segments are hidden from the bar chart",
-        "defaultValue": "dim"
+        "isRequired": false,
+        "type": "\"dim\" | \"hide\""
       },
       "remainingLabel": {
-        "type": "string",
-        "isRequired": false,
+        "defaultValue": "Remaining",
         "description": "Label for the remaining/unknown segment in cumulative mode",
-        "defaultValue": "Remaining"
+        "isRequired": false,
+        "type": "string"
       },
       "remainingUnit": {
-        "type": "string",
+        "defaultValue": "the charts unit",
+        "description": "Unit to display with the remaining segment value in cumulative mode\nIf not provided, uses the unit from the first data item (if available)",
         "isRequired": false,
-        "description": "Unit to display with the remaining segment value in cumulative mode\nIf not provided, uses the unit from the first data item (if available)"
+        "type": "string"
       },
       "showLegend": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": true,
         "description": "Whether to show the legend below the chart",
-        "defaultValue": true
+        "isRequired": false,
+        "type": "boolean"
       },
       "showLegendValues": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": true,
         "description": "Whether to show percentage values in the legend",
-        "defaultValue": true
+        "isRequired": false,
+        "type": "boolean"
       },
       "title": {
-        "type": "string",
+        "description": "Title to display above the chart",
         "isRequired": false,
-        "description": "Title to display above the chart"
+        "type": "string"
       },
       "unit": {
-        "type": "string",
+        "description": "Global unit to display with values in cumulative mode (e.g., \"GB\", \"datasets\", \"K\")\nIndividual data items can override this with their own unit property\nOnly shown when mode is \"cumulative\"",
         "isRequired": false,
-        "description": "Global unit to display with values in cumulative mode (e.g., \"GB\", \"datasets\", \"K\")\nIndividual data items can override this with their own unit property\nOnly shown when mode is \"cumulative\""
+        "type": "string"
       },
       "width": {
-        "type": "\"string\" | \"number\"",
-        "isRequired": false,
+        "defaultValue": "100%",
         "description": "Width of the chart - accepts any CSS width value (e.g., \"100%\", \"20vw\", \"300px\", or number for pixels)",
-        "defaultValue": "100%"
+        "isRequired": false,
+        "type": "string | number"
       },
       "colorGeneratorOptions": {
-        "type": "DiscreteColorGeneratorOptions",
+        "description": "Options for the color generator",
         "isRequired": false,
-        "description": "Options for the color generator"
+        "type": "DiscreteColorGeneratorOptions"
       }
     }
   }

@@ -2,48 +2,56 @@
   "DropdownMenu": {
     "props": {
       "ClickAwayListenerProps": {
-        "type": "Partial<ClickAwayListenerProps>",
-        "isRequired": false
+        "isRequired": false,
+        "type": "Partial<ClickAwayListenerProps>"
       },
       "groupBy": {
-        "type": "any",
-        "isRequired": false
+        "description": "Groups menu items according to their assigned section",
+        "isRequired": false,
+        "type": "func"
       },
       "keepSearchOnSelect": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Maintains a search input when a user selects a menu item (only if multiple selections are allowed via the multiple prop; otherwise the dropdown closes upon selection)",
+        "isRequired": false,
+        "type": "boolean"
       },
       "label": {
-        "type": "string",
-        "isRequired": false
+        "isRequired": false,
+        "type": "string"
       },
       "multiple": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Allows user to select multiple menu items; see more in the MUI Autocomplete API",
+        "isRequired": false,
+        "type": "bool"
       },
       "open": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "options": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "search": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Provides a search bar at the top of the menu from which users can narrow the list of menu items",
+        "isRequired": false,
+        "type": "boolean"
       },
       "title": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Sets a heading for the menu",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "subTitle": {
-        "type": "ReactNode",
-        "isRequired": false
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "width": {
-        "type": "\"string\" | \"number\" | \"string & {}\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "string | number | string & {}"
       }
     }
   }

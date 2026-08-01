@@ -2,32 +2,40 @@
   "Banner": {
     "props": {
       "dismissed": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "description": "If true, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state; pass a value to control it yourself.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "dismissible": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "If true, the banner can be dismissed by the user. This is what controls whether the close button is rendered.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "icon": {
-        "type": "ReactElement",
-        "isRequired": false
+        "description": "The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, positive shows CheckCircle, negative and notice show ExclamationMarkCircle, and every other intent shows InfoCircle.",
+        "isRequired": false,
+        "type": "ReactElement"
       },
       "intent": {
-        "type": "\"accent\" | \"info\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
+        "defaultValue": "info",
+        "description": "The intent color of the Banner component, which also selects the default icon.",
+        "isRequired": false,
+        "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\""
       },
       "sdsIconProps": {
-        "type": "IconProps<string | number | symbol>",
-        "isRequired": false
+        "description": "Additional props to be passed to the icon component.",
+        "isRequired": false,
+        "type": "IconProps<string | number | symbol>"
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\"",
-        "isRequired": true
+        "description": "Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.",
+        "isRequired": true,
+        "type": "\"primary\" | \"secondary\""
       },
       "textChild": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": true,
+        "type": "any"
       }
     }
   }

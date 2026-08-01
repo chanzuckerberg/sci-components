@@ -2,36 +2,46 @@
   "ButtonDropdown": {
     "props": {
       "backgroundAppearance": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
       },
       "backgroundOnHover": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "children": {
-        "type": "any",
-        "isRequired": false
+        "description": "The button label. The trailing chevron is only rendered when a label is present.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "disabled": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Disables the button when set to true.",
+        "isRequired": false,
+        "type": "bool"
       },
       "startIcon": {
-        "type": "any",
-        "isRequired": false
+        "description": "An optional icon placed before the label. Pass the SDS Icon component, for example <Icon sdsIcon=\"Download\" sdsSize=\"s\" />.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "size": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "large",
+        "description": "Size of the button. Also sets the size of the trailing chevron.",
+        "isRequired": false,
+        "type": "\"small\" | \"medium\" | \"large\""
       },
       "sdsStyle": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "solid",
+        "description": "Style of the button. Same values as Button.",
+        "isRequired": true,
+        "type": "\"solid\" | \"outline\" | \"minimal\""
       },
       "sdsType": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "primary",
+        "description": "Color scheme of the button. Unlike Button, destructive is not supported.",
+        "isRequired": true,
+        "type": "\"primary\" | \"secondary\""
       }
     }
   }

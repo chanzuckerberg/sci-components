@@ -2,32 +2,44 @@
   "Autocomplete": {
     "props": {
       "groupBy": {
-        "type": "any",
-        "isRequired": false
+        "description": "If provided, the options will be grouped under the returned string.\nThe groupBy value is also used as the text for group headings when `renderGroup` is not provided.\n@param option The Autocomplete option.\n@returns",
+        "isRequired": false,
+        "type": "(option: T) => string"
       },
       "intent": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "Validation styling on the search field. Single column only; the multi-column field does not take it.",
+        "isRequired": false,
+        "type": "InputSearchProps"
       },
       "keepSearchOnSelect": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "For a multi-select, leaves the typed text in place after a selection instead of clearing it.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "label": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "Label Search (columns)",
+        "description": "The search field's label and placeholder.",
+        "isRequired": false,
+        "type": "string"
       },
       "multiple": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If `true`, `value` must be an array and the menu will support multiple selections.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "onChange": {
-        "type": "FormEventHandler<HTMLDivElement>",
-        "isRequired": false
+        "description": "Fired on every selection change with the whole value. details.option is the one that just changed.",
+        "isRequired": false,
+        "type": "AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo> | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>"
       },
       "options": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "- (required)",
+        "description": "The options, or an array of named columns each with their own options.",
+        "isRequired": true,
+        "type": "T[] | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]"
       }
     }
   }

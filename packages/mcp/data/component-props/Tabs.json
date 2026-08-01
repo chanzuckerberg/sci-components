@@ -2,16 +2,20 @@
   "Tabs": {
     "props": {
       "items": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "sdsSize": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "large",
+        "description": "The size of the label text on every tab in the group, and the spacing around the group.",
+        "isRequired": false,
+        "type": "\"large\" | \"small\""
       },
       "underlined": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Draws a divider along the full width of the group, below the tabs; the selected tab's indicator sits on top of it.",
+        "isRequired": false,
+        "type": "boolean"
       }
     }
   }

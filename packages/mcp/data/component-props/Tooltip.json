@@ -2,35 +2,43 @@
   "Tooltip": {
     "props": {
       "arrowOffset": {
-        "type": "number",
-        "isRequired": false
+        "description": "Sets the arrow's left position, in pixels from the tooltip's left edge, instead of letting it be calculated. Values past the tooltip's width move the arrow out of sight.",
+        "isRequired": false,
+        "type": "number"
       },
       "componentSlot": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Content below the text, with 12px above it when there is text. The place for anything that is not a string, including TooltipTable.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "hasInvertedStyle": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "True is the dark tooltip: a black surface with white semibold text. False is the light one, with a hairline outline and body text.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "placement": {
-        "type": "complex",
-        "isRequired": false,
+        "defaultValue": "bottom",
         "description": "Tooltip placement.",
-        "defaultValue": "bottom"
+        "isRequired": false,
+        "type": "\"bottom\" | \"left\" | \"right\" | \"top\" | \"auto\" | \"auto-start\" | \"auto-end\" | \"top-start\" | \"top-end\" | \"bottom-start\" | \"bottom-end\" | \"right-start\" | \"right-end\" | \"left-start\" | \"left-end\""
       },
       "textAlign": {
-        "type": "\"center\" | \"right\" | \"left\"",
-        "isRequired": false
+        "defaultValue": "center, or left when wide",
+        "description": "Overrides the alignment the width would pick.",
+        "isRequired": false,
+        "type": "\"center\" | \"left\" | \"right\""
       },
       "title": {
-        "type": "ReactNode",
+        "description": "Tooltip title. Zero-length titles string, undefined, null and false are never displayed.",
         "isRequired": false,
-        "description": "Tooltip title. Zero-length titles string, undefined, null and false are never displayed."
+        "type": "ReactNode"
       },
       "width": {
-        "type": "\"default\" | \"wide\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "Caps the tooltip at 250px or 550px. Wide also left-aligns the text. It logs a warning about being light-only whichever style it is used with.",
+        "isRequired": false,
+        "type": "\"default\" | \"wide\""
       }
     }
   }

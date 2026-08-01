@@ -2,56 +2,72 @@
   "InputDropdown": {
     "props": {
       "counter": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "If multiple set to true, this number shows the number of selected menu items.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "classes": {
-        "type": "complex",
-        "isRequired": false
+        "isRequired": false,
+        "type": "complex"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "The color of the component.",
+        "isRequired": false,
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\""
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": true
+        "description": "The label of the Input Button.",
+        "isRequired": true,
+        "type": "ReactNode"
       },
       "multiple": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Allows users to select multiple menu items.multiple=true cannot be used with the minimum variant.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "sdsStyle": {
-        "type": "\"minimal\" | \"square\" | \"rounded\"",
-        "isRequired": false
+        "defaultValue": "square",
+        "description": "The visual appearance of the component.",
+        "isRequired": false,
+        "type": "\"square\" | \"rounded\" | \"minimal\""
       },
       "sdsType": {
-        "type": "\"value\" | \"label\"",
-        "isRequired": false
+        "defaultValue": "label",
+        "description": "The label variant includes the label within the input field and showcases the selected menu item as additional details or sets the counter when in multi-select mode. The value variant replaces the label with the selected value directly within the input field. The detailed information is then displayed in a separate section dedicated to displaying additional details. However, it's important to note that the value variant cannot be used in conjunction with multi-select mode.",
+        "isRequired": false,
+        "type": "\"label\" | \"value\""
       },
       "shouldPutAColonAfterLabel": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "If true, a colon (:) will be added after the label or value.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "shouldTruncateMinimalDetails": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, the details section of the minimal variant displays a truncated one-liner with an ellipsis (...), if false the details section expands to multiple lines for a comprehensive display.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "startIcon": {
-        "type": "ReactNode",
-        "isRequired": false
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "style": {
-        "type": "CSSProperties",
-        "isRequired": false
+        "isRequired": false,
+        "type": "CSSProperties"
       },
       "width": {
-        "type": "string",
-        "isRequired": false
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

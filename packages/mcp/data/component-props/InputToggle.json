@@ -2,21 +2,28 @@
   "InputToggle": {
     "props": {
       "disabled": {
-        "type": "\"false\" | \"true\"",
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
         "isRequired": false,
-        "description": "If `true`, the component is disabled."
+        "type": "boolean"
       },
       "offLabel": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "Off",
+        "description": "The text displayed within the InputToggle when it's off.",
+        "isRequired": false,
+        "type": "string"
       },
       "onLabel": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "On",
+        "description": "The text displayed within the InputToggle when it's on.",
+        "isRequired": false,
+        "type": "string"
       },
       "width": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 62,
+        "description": "Controls the width of the InputToggle element, in pixels. Increase it when custom labels do not fit.",
+        "isRequired": false,
+        "type": "number"
       }
     }
   }

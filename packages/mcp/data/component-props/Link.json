@@ -2,16 +2,22 @@
   "Link": {
     "props": {
       "fontWeight": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "normal",
+        "description": "Maps to font-weight 400 and 600.",
+        "isRequired": false,
+        "type": "\"normal\" | \"bold\""
       },
       "sdsSize": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "s",
+        "description": "The font size, taken from the body scale rather than the link one.",
+        "isRequired": false,
+        "type": "\"s\" | \"xs\""
       },
       "sdsStyle": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "\"default\" underlines on hover, focus, and press only; \"dashed\" is underlined dashed at rest and solid on interaction.",
+        "isRequired": false,
+        "type": "\"default\" | \"dashed\""
       }
     }
   }

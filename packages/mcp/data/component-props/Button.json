@@ -2,45 +2,54 @@
   "Button": {
     "props": {
       "backgroundOnHover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Only applies when sdsStyle is minimal. When false, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "backgroundAppearance": {
-        "type": "\"matchBackground\" | \"dark\"",
-        "isRequired": false
+        "defaultValue": "matchBackground",
+        "description": "Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to dark when the button is placed on a dark background in light mode.",
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
       },
       "children": {
-        "type": "ReactNode",
+        "description": "The content of the component.",
         "isRequired": false,
-        "description": "The content of the component."
+        "type": "ReactNode"
       },
       "endIcon": {
-        "type": "ReactNode",
+        "description": "Element placed after the children.",
         "isRequired": false,
-        "description": "Element placed after the children."
+        "type": "ReactNode"
       },
       "onClick": {
-        "type": "function",
-        "isRequired": false
+        "description": "Callback fired when the button is clicked.",
+        "isRequired": false,
+        "type": "function"
       },
       "size": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false,
+        "defaultValue": "medium",
         "description": "The size of the component.\n`small` is equivalent to the dense button styling.",
-        "defaultValue": "medium"
+        "isRequired": false,
+        "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsStyle": {
-        "type": "\"outline\" | \"solid\" | \"minimal\"",
-        "isRequired": false
+        "defaultValue": "solid",
+        "description": "Style of the button, in descending order of emphasis. Solid is filled, outline draws a 1px border over a transparent background, and minimal is text only.",
+        "isRequired": false,
+        "type": "\"outline\" | \"solid\" | \"minimal\""
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\" | \"destructive\"",
-        "isRequired": false
+        "defaultValue": "primary",
+        "description": "Color scheme of the button within the chosen style. Primary uses the accent color, secondary is neutral, and destructive signals an irreversible action.",
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\" | \"destructive\""
       },
       "startIcon": {
-        "type": "ReactNode",
+        "description": "Element placed before the children.",
         "isRequired": false,
-        "description": "Element placed before the children."
+        "type": "ReactNode"
       }
     }
   }

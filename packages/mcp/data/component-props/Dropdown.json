@@ -2,66 +2,77 @@
   "Dropdown": {
     "props": {
       "DropdownMenuProps": {
-        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>",
-        "isRequired": false
+        "isRequired": false,
+        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>"
       },
       "InputDropdownProps": {
-        "type": "InputDropdownPropsType",
-        "isRequired": false
+        "description": "These props are directly passed to the underlying InputDropdown component, customizing its behavior.",
+        "isRequired": false,
+        "type": "InputDropdownPropsType"
       },
       "buttonPosition": {
-        "type": "\"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Specifies the position of the Apply/Cancel buttons at the Dropdown footer.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "buttons": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "When set to true, a set of Apply/Cancel buttons will be displayed at the Dropdown footer.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "closeOnBlur": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When set to true, the Dropdown will automatically close when a click occurs outside of it.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, the component is disabled.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "isSearchAutoFocus": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": true
+        "description": "The label of the Dropdown.",
+        "isRequired": true,
+        "type": "ReactNode"
       },
       "multiple": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, `value` must be an array and the menu will support multiple selections.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "onChange": {
-        "type": "(event: SyntheticEvent",
+        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details",
         "isRequired": false,
-        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details"
+        "type": "(event: SyntheticEvent"
       },
       "onClose": {
-        "type": "\"(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void\" | \"(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void\"",
+        "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`.",
         "isRequired": false,
-        "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`."
+        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void"
       },
       "options": {
-        "type": "\"AutocompleteSingleColumnOption<T>[]\" | \"AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]\"",
-        "isRequired": true
+        "description": "An array of options to be displayed as MenuItems within the Dropdown.",
+        "isRequired": true,
+        "type": "AutocompleteSingleColumnOption<T>[] | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]"
       },
       "search": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When set to true, a search input is displayed at the top of the Dropdown for filtering options.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "title": {
-        "type": "ReactNode",
-        "isRequired": false
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

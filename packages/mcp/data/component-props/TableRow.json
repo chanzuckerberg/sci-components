@@ -2,40 +2,54 @@
   "TableRow": {
     "props": {
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Grays the row out and stops pointer events inside its CellComponents, so controls in the row cannot be used. Tags and icons in the row are dimmed to match.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "hover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Gives the row a hover background, and is also required for its tooltip to appear. TableHeader sets it to false for the header row.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "rowHeight": {
-        "type": "number",
-        "isRequired": false
+        "description": "Caps the row's height, in pixels.",
+        "isRequired": false,
+        "type": "number"
       },
       "selected": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Gives the row's cells the accent surface used for selection. It is styling only; it sets no ARIA state.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "shouldShowTooltipOnHover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Wraps the row in a Tooltip, but only while hover is also true. On its own it shows nothing: a row tooltip needs tooltipText as well.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "tooltipProps": {
-        "type": "TooltipProps",
-        "isRequired": false
+        "description": "Passed to the Tooltip, and overrides the defaults the row sets (arrow, dark style).",
+        "isRequired": false,
+        "type": "TooltipProps"
       },
       "tooltipSubtitle": {
-        "type": "string",
-        "isRequired": false
+        "description": "A second line below the tooltip's title.",
+        "isRequired": false,
+        "type": "string"
       },
       "tooltipText": {
-        "type": "string",
-        "isRequired": false
+        "description": "The tooltip's title.",
+        "isRequired": false,
+        "type": "string"
       },
       "useDivider": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Draws the 1px divider along the bottom of the row.",
+        "isRequired": false,
+        "type": "boolean"
       }
     }
   }

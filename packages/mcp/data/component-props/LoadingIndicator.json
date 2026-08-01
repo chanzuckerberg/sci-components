@@ -2,8 +2,10 @@
   "LoadingIndicator": {
     "props": {
       "sdsStyle": {
-        "type": "\"minimal\" | \"tag\"",
-        "isRequired": true
+        "defaultValue": "- (required)",
+        "description": "Chooses between the two variants above. It has no default: leaving it out is a type error, and an indicator built without it renders unstyled.",
+        "isRequired": true,
+        "type": "\"minimal\" | \"tag\""
       }
     }
   }

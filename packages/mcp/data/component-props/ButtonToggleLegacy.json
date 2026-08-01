@@ -2,25 +2,25 @@
   "ButtonToggleLegacy": {
     "props": {
       "disabled": {
-        "type": "\"false\" | \"true\"",
+        "description": "If `true`, the component is disabled.",
         "isRequired": false,
-        "description": "If `true`, the component is disabled."
+        "type": "boolean"
       },
       "icon": {
-        "type": "ReactElement",
-        "isRequired": true
+        "isRequired": true,
+        "type": "ReactElement"
       },
       "sdsSize": {
-        "type": "\"small\" | \"medium\" | \"large\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsStage": {
-        "type": "\"off\" | \"on\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"off\" | \"on\""
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\""
       }
     }
   }

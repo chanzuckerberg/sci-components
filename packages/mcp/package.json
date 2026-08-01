@@ -58,6 +58,7 @@
     "@types/express": "^5.0.3",
     "@types/fs-extra": "^11.0.4",
     "@types/turndown": "^5.0.6",
+    "node-html-parser": "^9.0.1",
     "react-docgen-typescript": "^2.4.0",
     "rolldown": "^1.0.1",
     "tsx": "^4.20.3",

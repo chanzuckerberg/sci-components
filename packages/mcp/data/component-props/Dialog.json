@@ -2,24 +2,28 @@
   "Dialog": {
     "props": {
       "buttonPosition": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "right",
+        "description": "Aligns the action buttons in the footer. Order the buttons so the primary action sits on the outside: last for right, first for left.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "canClickOutsideClose": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When false, onClose is not called for a backdrop click or the Esc key, which makes the Dialog persistent. Give those Dialogs an action button that closes them.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "longContent": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "sdsSize": {
-        "type": "\"s\" | \"m\" | \"xs\" | \"l\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"s\" | \"m\" | \"xs\" | \"l\""
       },
       "titleOnClose": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       }
     }
   }

@@ -2,20 +2,32 @@
   "IntentMessage": {
     "props": {
       "autoOrder": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Sorts the messages by intent rather than using the order of the array. Set it to false to preserve your order.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "border": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Draws a 2px vertical bar to the left of the wrapper, colored by the most severe intent in messages. This is the Intent Indicator from the guidelines.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "messages": {
-        "type": "IntentMessageItem[]",
-        "isRequired": false
+        "defaultValue": [],
+        "description": "The messages to display, each with its own intent. See the table below for the shape of an item.",
+        "isRequired": false,
+        "type": "IntentMessageItem[]"
       },
       "orderBy": {
-        "type": "IntentMessageIntent[]",
-        "isRequired": false
+        "defaultValue": [
+          "negative",
+          "notice",
+          "positive"
+        ],
+        "description": "Replaces the default severity ranking. It affects the sort order and, because it defines what counts as most severe, the border color as well, which means it still applies when autoOrder is false.",
+        "isRequired": false,
+        "type": "IntentMessageIntent[]"
       }
     }
   }

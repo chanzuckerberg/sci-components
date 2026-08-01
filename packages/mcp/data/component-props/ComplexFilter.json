@@ -2,45 +2,53 @@
   "ComplexFilter": {
     "props": {
       "DropdownMenuProps": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "InputDropdownProps": {
-        "type": "InputDropdownPropsType",
+        "defaultValue": "{ sdsStyle: minimal }",
         "isRequired": false,
-        "defaultValue": "{ sdsStyle: minimal }"
+        "type": "InputDropdownPropsType"
       },
       "isTriggerChangeOnOptionClick": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Determines whether changes are triggered in real-time upon clicking an option",
+        "isRequired": false,
+        "type": "bool"
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Sets the label of filter, shown both when closed and open",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "multiple": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Defines whether multiple selections or can be made from the filter simultaneously or only one",
+        "isRequired": false,
+        "type": "bool"
       },
       "onChange": {
-        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void",
-        "isRequired": false
+        "description": "Function to set what happens when a new value is set via the filter",
+        "isRequired": false,
+        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void"
       },
       "options": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "search": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Provides a search bar at the top of the filter from which users can narrow the list of menu items",
+        "isRequired": false,
+        "type": "bool"
       },
       "buttonPosition": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "buttons": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       }
     }
   }

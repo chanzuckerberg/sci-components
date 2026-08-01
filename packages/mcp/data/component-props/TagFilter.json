@@ -2,9 +2,10 @@
   "TagFilter": {
     "props": {
       "label": {
-        "type": "string",
+        "defaultValue": "- (required)",
+        "description": "The content of the component.",
         "isRequired": true,
-        "description": "The content of the component."
+        "type": "string"
       }
     }
   }

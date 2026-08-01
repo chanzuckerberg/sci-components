@@ -2,37 +2,47 @@
   "Callout": {
     "props": {
       "autoDismiss": {
-        "type": "\"number\" | \"false\" | \"true\"",
-        "isRequired": false
+        "description": "Dismisses the Callout on a timer. A number sets the delay in milliseconds, and true uses 8000. Leave it unset to keep the Callout visible until it is dismissed another way.",
+        "isRequired": false,
+        "type": "number | false | true"
       },
       "body": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The Callout body, shown beneath the title.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "hideBody": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If set to true, hides the Callout body and centers the icon against the remaining content.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "hideTitle": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If set to true, hides the Callout title.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "icon": {
-        "type": "ReactNode",
+        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`.",
         "isRequired": false,
-        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`."
+        "type": "ReactNode"
       },
       "intent": {
-        "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": true
+        "description": "Required. Sets both the color of the component and the icon it defaults to.",
+        "isRequired": true,
+        "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\""
       },
       "sdsStyle": {
-        "type": "\"persistent\" | \"expandable\" | \"dismissible\"",
-        "isRequired": false
+        "defaultValue": "persistent",
+        "description": "Defines the style of the Callout: - \"persistent\": Cannot be closed. - \"expandable\": Includes a chevron icon that toggles the children in and out of view. - \"dismissible\": Includes an “x” icon for manual dismissal.",
+        "isRequired": false,
+        "type": "\"dismissible\" | \"persistent\" | \"expandable\""
       },
       "title": {
-        "type": "string",
-        "isRequired": false
+        "description": "The Callout title.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

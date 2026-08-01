@@ -2,56 +2,77 @@
   "PreComposedTable": {
     "props": {
       "border": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Draws the border around the scrolling table area",
+        "isRequired": false,
+        "type": "boolean"
       },
       "columns": {
-        "type": "any",
-        "isRequired": false
+        "description": "Column definitions that specify how data should be rendered and behave",
+        "isRequired": false,
+        "type": "ColumnDef<TData>[]"
       },
       "enableColumnFiltering": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Adds a filter row under the header. Each column gets a search input unless its meta supplies a filterComponent",
+        "isRequired": false,
+        "type": "boolean"
       },
       "enableGlobalFiltering": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Displays a search input that filters across all columns",
+        "isRequired": false,
+        "type": "boolean"
       },
       "enablePagination": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Enables pagination controls at the bottom of the table",
+        "isRequired": false,
+        "type": "boolean"
       },
       "enableRowSelection": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Adds a checkbox column with select-all. To control that column yourself, include one with the id \"SdsTableSelectColumn\" and it will be used instead of the generated one",
+        "isRequired": false,
+        "type": "boolean"
       },
       "enableSorting": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Makes column headers sortable, wiring each one's chevron and click handler for you",
+        "isRequired": false,
+        "type": "boolean"
       },
       "onRowSelect": {
-        "type": "any",
-        "isRequired": false
+        "description": "Callback triggered when row selection changes; receives array of selected row data",
+        "isRequired": false,
+        "type": "(selectedRows: TData[]) => void"
       },
       "paginationConfig": {
-        "type": "any",
-        "isRequired": false
+        "description": "Passed through to Pagination, plus a placement for the controls, which sit on the right by default. pageSize also sets the initial page size, which is 10 otherwise. Changing this object resets the table to the first page",
+        "isRequired": false,
+        "type": "Partial<PaginationProps> & { placement?: \"left\" | \"center\" | \"right\" }"
       },
       "shouldPinSelectRowToLeft": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Pins the row selection column to the left/right side of the table",
+        "isRequired": false,
+        "type": "boolean"
       },
       "sdsStyle": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "lined",
+        "description": "Whether rows are separated by dividers or by alternating backgrounds",
+        "isRequired": false,
+        "type": "\"lined\" | \"striped\""
       },
       "tableOptions": {
-        "type": "any",
-        "isRequired": false
+        "description": "Escape hatch to the underlying TanStack table. Anything here is merged into its options, and a state you supply overrides the one the component keeps — which is how you drive sorting or pagination from outside. The row models and change handlers are always the component's own",
+        "isRequired": false,
+        "type": "Partial<Omit<TableOptions<TData>, \"data\" | \"columns\" | \"getCoreRowModel\">>"
       },
       "tableRowProps": {
-        "type": "any",
-        "isRequired": false
+        "description": "Additional props to pass to each table row component",
+        "isRequired": false,
+        "type": "Partial<TableRowProps>"
       }
     }
   }

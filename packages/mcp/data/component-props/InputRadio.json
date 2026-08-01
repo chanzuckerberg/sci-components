@@ -2,30 +2,37 @@
   "InputRadio": {
     "props": {
       "caption": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The caption of the InputRadio appears beneath the label in a lighter text color.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
         "isRequired": false,
-        "description": "If `true`, the component is disabled."
+        "type": "boolean"
       },
       "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "Colors the border of the empty circle. The selected radio always uses the accent color.",
+        "isRequired": false,
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\""
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The label of the InputRadio.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "stage": {
-        "type": "\"checked\" | \"unchecked\"",
-        "isRequired": false
+        "description": "Sets the radio as checked or unchecked, overriding checked. Omit it inside a RadioGroup, which drives the selection itself.",
+        "isRequired": false,
+        "type": "\"checked\" | \"unchecked\""
       },
       "classes": {
-        "type": "complex",
+        "defaultValue": {},
+        "description": "Override or extend the styles applied to the component.",
         "isRequired": false,
-        "description": "Override or extend the styles applied to the component."
+        "type": "complex"
       }
     }
   }

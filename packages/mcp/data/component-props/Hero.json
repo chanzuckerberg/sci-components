@@ -2,80 +2,111 @@
   "Hero": {
     "props": {
       "backgroundFill": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "A string becomes the background color, so any CSS color or gradient works. A node is rendered full-bleed behind the content, and an img or video inside it is scaled to cover the section.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "captionText": {
-        "type": "string",
-        "isRequired": false
+        "description": "Supporting copy rendered below the headline.",
+        "isRequired": false,
+        "type": "string"
       },
       "darkeningMask": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Adds a solid layer over the background. Pair it with darkeningMaskOpacity, which is 0 by default.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "darkeningMaskColor": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "#000000",
+        "description": "The color of that layer.",
+        "isRequired": false,
+        "type": "string"
       },
       "darkeningMaskOpacity": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 0,
+        "description": "The opacity of that layer, from 0 to 1.",
+        "isRequired": false,
+        "type": "number"
       },
       "darkeningVignette": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Draws a 40px gradient along the top edge, above the content, so a transparent header navigation stays legible.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "hasInvertTextColor": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Switches the headline and caption to the inverse text color for use on dark backgrounds.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "headerFontSize": {
-        "type": "\"s\" | \"m\" | \"l\"",
-        "isRequired": false
+        "defaultValue": "m",
+        "description": "The type scale of the headline.",
+        "isRequired": false,
+        "type": "\"s\" | \"m\" | \"l\""
       },
       "headerText": {
-        "type": "string",
-        "isRequired": false
+        "description": "The headline. Rendered as an h1 and omitted entirely when not provided.",
+        "isRequired": false,
+        "type": "string"
       },
       "heroHeight": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "fit-content",
+        "description": "Any CSS height. Below a 512px viewport it is ignored and the section falls back to fit-content.",
+        "isRequired": false,
+        "type": "string"
       },
       "overlayContainerMinMargin": {
-        "type": "{ small: number; medium: number; large: number; }",
-        "isRequired": false
+        "defaultValue": "24px / 40px / 120px",
+        "description": "Overrides the side padding at each breakpoint. The value is written straight into CSS, so it needs a unit. The number type in the signature is wrong: a plain number produces an invalid declaration and the side padding drops to zero.",
+        "isRequired": false,
+        "type": "{ small: number; medium: number; large: number; }"
       },
       "overlayContentWidth": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "100%",
+        "description": "Any CSS width for the content block, for example \"60%\" or \"640px\".",
+        "isRequired": false,
+        "type": "string"
       },
       "overlayContentPosition": {
-        "type": "\"left\" | \"center\" | \"right\" | \"top-left\" | \"top\" | \"top-right\" | \"bottom-left\" | \"bottom\" | \"bottom-right\"",
-        "isRequired": false
+        "defaultValue": "center",
+        "description": "Where the content block sits inside the section. Only visible when the section is taller or wider than the content.",
+        "isRequired": false,
+        "type": "\"center\" | \"bottom\" | \"left\" | \"right\" | \"top\" | \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\""
       },
       "overlayMedia": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "A media layer above the background and independent of the text block. An img or video inside it is scaled to cover the layer.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "overlayMediaPosition": {
-        "type": "\"left\" | \"center\" | \"right\" | \"top-left\" | \"top\" | \"top-right\" | \"bottom-left\" | \"bottom\" | \"bottom-right\"",
-        "isRequired": false
+        "defaultValue": "center",
+        "description": "Where that layer sits inside the section.",
+        "isRequired": false,
+        "type": "\"center\" | \"bottom\" | \"left\" | \"right\" | \"top\" | \"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\""
       },
       "overlayMediaMaxHeight": {
-        "type": "string",
-        "isRequired": false
+        "description": "Sets the height of the media layer, with the same caveat.",
+        "isRequired": false,
+        "type": "string"
       },
       "overlayMediaMaxWidth": {
-        "type": "string",
-        "isRequired": false
+        "description": "Sets the width of the media layer outright rather than a maximum, despite the name. Without it the layer has no width.",
+        "isRequired": false,
+        "type": "string"
       },
       "overlayMediaMargin": {
-        "type": "\"string\" | \"{ small: string; medium: string; large: string; }\"",
-        "isRequired": false
+        "defaultValue": "0",
+        "description": "A margin shorthand for the media layer. Pass the object form to vary it by breakpoint: small below md, medium below lg, large above.",
+        "isRequired": false,
+        "type": "string | { small: string; medium: string; large: string; }"
       },
       "textAlignment": {
-        "type": "\"left\" | \"center\" | \"right\"",
-        "isRequired": false
+        "description": "Aligns the text within the content block, which starts at the leading edge when the prop is unset. This is separate from overlayContentPosition, which moves the block itself.",
+        "isRequired": false,
+        "type": "\"center\" | \"left\" | \"right\""
       }
     }
   }

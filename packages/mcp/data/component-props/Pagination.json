@@ -2,24 +2,32 @@
   "Pagination": {
     "props": {
       "pageSize": {
-        "type": "number",
-        "isRequired": true
+        "description": "Required. How many items fit on a page, which together with totalCount gives the number of pages. Must be at least 1; a smaller value throws.",
+        "isRequired": true,
+        "type": "number"
       },
       "sdsStyle": {
-        "type": "\"round\" | \"square\"",
-        "isRequired": false
+        "defaultValue": "round",
+        "description": "Whether the page and chevron targets are circles or rounded squares.",
+        "isRequired": false,
+        "type": "\"square\" | \"round\""
       },
       "siblingCount": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 1,
+        "description": "How many page numbers to keep on each side of the current page before the rest collapse into an ellipsis.",
+        "isRequired": false,
+        "type": "number"
       },
       "totalCount": {
-        "type": "number",
-        "isRequired": true
+        "description": "Required. Total number of items being paged through — the whole set, not the current page.",
+        "isRequired": true,
+        "type": "number"
       },
       "truncateDropdown": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When true the ellipsis is a menu of the pages it stands for. When false it is a disabled placeholder, and those pages can only be reached by stepping through with the chevrons.",
+        "isRequired": false,
+        "type": "boolean"
       }
     }
   }

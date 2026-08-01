@@ -2,41 +2,50 @@
   "NavigationFooter": {
     "props": {
       "backgroundAppearance": {
-        "type": "\"matchBackground\" | \"dark\"",
+        "defaultValue": "matchBackground",
+        "description": "\"dark\" puts the footer on a dark surface and inverts its text and dividers, in light mode only.",
         "isRequired": false,
-        "defaultValue": "matchBackground"
+        "type": "\"matchBackground\" | \"dark\""
       },
       "images": {
-        "type": "FooterImage[]",
-        "isRequired": false
+        "description": "An array of images displayed in the footer. Each item includes an image, optional link URL, and component.",
+        "isRequired": false,
+        "type": "FooterImage[]"
       },
       "logo": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The logo displayed in the footer. Can be any valid React node such as an image, icon, or SVG.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "logoUrl": {
-        "type": "string",
-        "isRequired": false
+        "description": "If provided, clicking the logo will navigate to this URL.",
+        "isRequired": false,
+        "type": "string"
       },
       "navItems": {
-        "type": "NavigationFooterNavItem[]",
-        "isRequired": false
+        "description": "The prominent links on the top row, next to the logo. They are headings, not body text, and get no dividers.",
+        "isRequired": false,
+        "type": "NavigationFooterNavItem[]"
       },
       "navLinks": {
-        "type": "NavigationFooterNavItem[]",
-        "isRequired": false
+        "description": "The smaller links on the bottom row, drawn in one line with dividers between them.",
+        "isRequired": false,
+        "type": "NavigationFooterNavItem[]"
       },
       "tag": {
-        "type": "string",
-        "isRequired": false
+        "description": "A small label displayed next to the title.",
+        "isRequired": false,
+        "type": "string"
       },
       "tagColor": {
-        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
-        "isRequired": false
+        "description": "The Tag's color. A tuple sets the label, background, and icon colors by hand.",
+        "isRequired": false,
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
       },
       "title": {
-        "type": "string",
-        "isRequired": false
+        "description": "The main title displayed in the footer.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

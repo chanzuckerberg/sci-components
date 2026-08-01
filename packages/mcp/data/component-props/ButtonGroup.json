@@ -2,24 +2,34 @@
   "ButtonGroup": {
     "props": {
       "backgroundAppearance": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "matchBackground",
+        "description": "The background appearance of the button group.",
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
       },
       "disabled": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "orientation": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "horizontal",
+        "description": "The component orientation (layout flow direction).",
+        "isRequired": false,
+        "type": "\"horizontal\" | \"vertical\""
       },
       "size": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "medium",
+        "description": "The size of the button group.",
+        "isRequired": false,
+        "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsType": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "primary",
+        "description": "The type of the button group that determines the color scheme.",
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\""
       }
     }
   }

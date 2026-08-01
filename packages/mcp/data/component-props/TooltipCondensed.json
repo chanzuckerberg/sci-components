@@ -2,16 +2,21 @@
   "TooltipCondensed": {
     "props": {
       "hasInvertedStyle": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Inherited from Tooltip. False gives the lighter scheme, which is what the table tooltip uses.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "indicator": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Draws a 12px round dot before the text.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "indicatorColor": {
-        "type": "any",
-        "isRequired": false
+        "description": "The dot's colour, as a CSS colour. Without it the dot occupies its space but cannot be seen.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }
