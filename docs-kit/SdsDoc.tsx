@@ -868,7 +868,7 @@ function markPropsTables(root: HTMLElement): void {
 
       const last = header.cells[header.cells.length - 1];
       if (last?.textContent?.trim().toLowerCase() === "description") {
-        table.dataset.zhProps = "";
+        table.dataset.sdsDocProps = "";
       }
     });
 }

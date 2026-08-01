@@ -30,6 +30,8 @@ const config: StorybookConfig = {
     // Standalone design pages: the foundations, and the design half of each
     // component's documentation.
     "../design-docs/**/*.mdx",
+    // Guide to the MCP server, kept in the package it documents.
+    "../packages/mcp/docs/**/*.mdx",
   ],
 
   // The images the docs reference are committed alongside them and served from
