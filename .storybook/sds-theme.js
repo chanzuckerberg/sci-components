@@ -34,8 +34,7 @@ export default create({
   inputBorderRadius: 4,
 
   brandTitle: "Science Design System",
-  brandUrl:
-    "https://zeroheight.com/009eaf17b/v/latest/p/349f6a-science-design-system",
+  brandUrl: "https://chanzuckerberg.github.io/sci-components/",
   brandImage: logo,
   brandTarget: "_blank",
 });

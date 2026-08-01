@@ -1,0 +1,1183 @@
+<h1>Navigation</h1>
+<p>
+  Navigation components enable users to move around an application, either
+  between pages or within the same page, and help facilitate users' abilities to
+  find relevant content and tools.
+</p>
+<h2>Navigation Components</h2>
+<p>
+  Header and Footer Navigation provide the primary means for users to move
+  between the top-level pages of an application as well as access important
+  sections and links to relevant external content; they always sit at the top
+  and bottom of the page respectively.
+</p>
+<p>
+  Jump-to Navigation enables users to move between main sections on a single
+  page, making it easy for users to traverse large amounts of content.
+</p>
+<h3>Visual Preview</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_NavigationHeader</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/615f822d7fe5a8b1.png"
+        alt="Preview_Guidelines_NavigationHeader"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_NavigationFooter</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/9eeaf822aeb28226.png"
+        alt="Preview_Guidelines_NavigationFooter"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_NavigationJumpTo</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/fa3978047754498f.png"
+        alt="Preview_Guidelines_NavigationJumpTo"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Header Navigation</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Header Navigation Anatomy</h3>
+<p>Header Navigation contains the following elements:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Logo – when clicked, brings users back to the main landing page of the
+      application
+    </p>
+  </li>
+  <li>
+    <p>
+      Primary navigation group – contains navigation items that serve as the way
+      users move between the main pages of the application
+    </p>
+  </li>
+  <li>
+    <p>
+      Secondary navigation group – contains navigation items that are used to
+      link out to relevant external sites, help or FAQ pages, tutorials,
+      additional resources, etc.
+    </p>
+    <ul class="sds-doc-bullet-list">
+      <li>
+        <p>
+          Optionally, secondary navigation items can display sub-navigation
+          items when additional navigation options within the same category are
+          needed
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      <a
+        href="./?path=/docs/design-documentation-genes-buttons--docs"
+        target="_top"
+        >Buttons</a
+      >
+      – can be used for application-level tasks, account login and management,
+      etc.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a
+        href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+        target="_top"
+      >
+        Search Input
+      </a>
+      – searches across the entire application
+    </p>
+  </li>
+</ul>
+<p>
+  All elements besides the logo section are optional and their usage should be
+  determined by the application's information architecture.
+</p>
+<p>
+  Header Navigation can optionally be displayed using an inverted color scheme
+  for better contrast or for stylistic reasons.
+</p>
+<h4>Wide</h4>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationHeader anatomy_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c83e0f1c0a2254de.png"
+        alt="NavigationHeader anatomy_wide"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Narrow</h4>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationHeader anatomy_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4de537a37b63c524.png"
+        alt="NavigationHeader anatomy_narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Header Navigation Types</h3>
+<p>
+  Once implemented into an application, the type displayed is determined by the
+  component itself: narrow below 512px, and narrow at any width where the bar's
+  contents no longer fit. There is no prop for moving that threshold, so the way
+  to keep the wide layout longer is to give the header less to fit.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationHeader_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c32c51d9026577d1.png"
+        alt="NavigationHeader_wide"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationHeader_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6f886aaafbc57c6c.png"
+        alt="NavigationHeader_narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Header Navigation – Wide</h3>
+<p>
+  Use Wide when pages are being displayed at a
+  <strong>Large</strong>
+  or
+  <strong>Medium</strong>
+  breakpoint (though in some cases
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Header Navigation – Narrow
+  </a>
+  may be preferable for Medium breakpoints; see
+  <a
+    href="./?path=/docs/design-documentation-bases-responsive-design--docs"
+    target="_top"
+    >Responsive Design</a
+  >
+  for more information).
+</p>
+<p>
+  The arrangement of the primary navigation group and the
+  <a
+    href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+    target="_top"
+  >
+    Search Input
+  </a>
+  can be flipped depending on the application's navigation needs.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationHeader_wide_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/534d13661e90d9e6.png"
+        alt="NavigationHeader_wide_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationHeader_wide_inverted</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6647289eb6804a7d.png"
+        alt="NavigationHeader_wide_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Primary Navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (expandable)</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Hover (expandable)</p></td>
+    <td><p>Selected</p></td>
+    <td><p>Open (expandable)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_wide_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f3cb0282101c24c2.png"
+        alt="NavigationHeader_NavItem_Primary_wide_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_wide_default_expandable</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/b040975531245450.png"
+        alt="NavigationHeader_NavItem_Primary_wide_default_expandable"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_wide_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/744db18f95b61b6f.png"
+        alt="NavigationHeader_NavItem_Primary_wide_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_wide__hover_expandable</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/85092670db685567.png"
+        alt="NavigationHeader_NavItem_Primary_wide__hover_expandable"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_wide_active</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/8f26c6aa2f42016f.png"
+        alt="NavigationHeader_NavItem_Primary_wide_active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_wide_active_expandable</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/fa46d5ff5f773c1a.png"
+        alt="NavigationHeader_NavItem_Primary_wide_active_expandable"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Secondary Navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (expandable)</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Hover (expandable)</p></td>
+    <td><p>Pressed</p></td>
+    <td><p>Open (expandable)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_wide_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/073342e939c7024d.png"
+        alt="NavigationHeader_NavItem_Secondary_wide_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Secondary_wide_expandable_default</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/dc382eb6859701c5.png"
+        alt="NavigationHeader_NavItem_Secondary_wide_expandable_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_wide_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/610983e190aa417e.png"
+        alt="NavigationHeader_NavItem_Secondary_wide_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_wide_expandable_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/3e019578e489d1d1.png"
+        alt="NavigationHeader_NavItem_Secondary_wide_expandable_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_wide_pressed</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/b0794c320ff617e2.png"
+        alt="NavigationHeader_NavItem_Secondary_wide_pressed"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_wide_expandable_open</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/01170dcb437a864f.png"
+        alt="NavigationHeader_NavItem_Secondary_wide_expandable_open"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Header Navigation – Narrow</h3>
+<p>
+  Use Narrow when pages are being displayed at a
+  <strong>Small</strong>
+  breakpoint (though in some cases a Header Navigation – Narrow may be
+  preferable for Medium breakpoints; see
+  <a
+    href="./?path=/docs/design-documentation-bases-responsive-design--docs"
+    target="_top"
+    >Responsive Design</a
+  >
+  for more information).
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default (closed)</p></td>
+    <td><p>Default (closed; inverted)</p></td>
+    <td><p>Default (open)</p></td>
+    <td><p>Default (open; inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_narrow_closed_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/ee06bf2478e54a0b.png"
+        alt="NavigationHeader_narrow_closed_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_narrow_closed_inverted</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4f8649e84e298ecd.png"
+        alt="NavigationHeader_narrow_closed_inverted"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_narrow_open_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/805cdf72dbeeda7e.png"
+        alt="NavigationHeader_narrow_open_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_narrow_open_inverted</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/dd44decdff0b2865.png"
+        alt="NavigationHeader_narrow_open_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Primary Navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (collapsed)</p></td>
+    <td><p>Default (expanded)</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Hover (collapsed)</p></td>
+    <td><p>Hover (expanded)</p></td>
+    <td><p>Active</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_narrow_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/24772eef97bf6ce8.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Primary_narrow_default_expandable</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/33ab89e9cf235e48.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_default_expandable"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_narrow_default_expanded</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/7f36596c1dfe5d09.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_default_expanded"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_narrow_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/bf381bc74422486c.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Primary_narrow_hover_expandable_closed</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/5d74fefce4f172b3.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_hover_expandable_closed"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Primary_narrow_hover_expandable_open</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/8eda7e3200a2d316.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_hover_expandable_open"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Primary_narrow_active</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/5960d2cb0050df23.png"
+        alt="NavigationHeader_NavItem_Primary_narrow_active"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Primary Sub-navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavSubitem_Primary_narrow_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/55f16e595222e132.png"
+        alt="NavigationHeader_NavSubitem_Primary_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavSubitem_Primary_narrow_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/58913ac613d98270.png"
+        alt="NavigationHeader_NavSubitem_Primary_narrow_hover"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Secondary Navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (collapsed)</p></td>
+    <td><p>Default (expanded)</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Hover (collapsed)</p></td>
+    <td><p>Hover (expanded)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_narrow_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6d14d3a74228f50c.png"
+        alt="NavigationHeader_NavItem_Secondary_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Secondary_narrow_expandable_closed_default</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/e11449c031ca8ba2.png"
+        alt="NavigationHeader_NavItem_Secondary_narrow_expandable_closed_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Secondary_narrow_expandable_open_default</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/92f4a4137298f36c.png"
+        alt="NavigationHeader_NavItem_Secondary_narrow_expandable_open_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavItem_Secondary_narrow_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/313f0978181f708b.png"
+        alt="NavigationHeader_NavItem_Secondary_narrow_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Secondary_narrow_expandable_closed_hover</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/21b0afcac57b0139.png"
+        alt="NavigationHeader_NavItem_Secondary_narrow_expandable_closed_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong
+        >NavigationHeader_NavItem_Secondary_narrow_expandable_open_hover</strong
+      >
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2dbc0952932fc33c.png"
+        alt="NavigationHeader_NavItem_Secondary_narrow_expandable_open_hover"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Secondary Sub-navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavSubitem_Secondary_narrow_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d7fb104b501b88ce.png"
+        alt="NavigationHeader_NavSubitem_Secondary_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationHeader_NavSubitem_Secondary_narrow_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/91a559deeb4527e1.png"
+        alt="NavigationHeader_NavSubitem_Secondary_narrow_hover"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Footer Navigation</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Footer Navigation Anatomy</h3>
+<p>Footer Navigation contains the following elements:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Primary logo – when clicked, brings users back to the main landing page of
+      the application
+    </p>
+  </li>
+  <li>
+    <p>
+      Secondary logo group – for logos of partner institutions or other entities
+    </p>
+  </li>
+  <li>
+    <p>
+      Navigation group – contains navigation items that serve as the way users
+      move between the pages of the application
+    </p>
+    <ul class="sds-doc-bullet-list">
+      <li>
+        <p>
+          It is recommended, though not required, that the Navigation Items in
+          Navigation Footer match the Navigation Items found in the
+          <a
+            href="./?path=/docs/design-documentation-dna-navigation--docs"
+            target="_top"
+          >
+            Primary Navigation
+          </a>
+          group in Navigation Header, making for unified navigation across the
+          application
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      Link group – contains links to tertiary pages like Terms of Service,
+      Privacy Policies, etc.
+    </p>
+  </li>
+</ul>
+<p>
+  All elements besides the logo section are optional and their usage should be
+  determined by the application's information architecture.
+</p>
+<p>
+  Header Navigation can optionally be displayed using an inverted color scheme
+  for better contrast or for stylistic reasons.
+</p>
+<h4>Wide</h4>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter anatomy_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/06b864acdffd659a.png"
+        alt="NavigationFooter anatomy_wide"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Narrow</h4>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter anatomy_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c21cf0e065042bd0.png"
+        alt="NavigationFooter anatomy_narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Footer Navigation Types</h3>
+<p>
+  Once implemented into an application, the Footer Navigation type displayed
+  will be automatically determined by the user's viewport width; the point at
+  which one type is displayed over the other can be manually adjusted in code.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/3d7c79fa83cc6d23.png"
+        alt="NavigationFooter_wide"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f6dc276928c086d7.png"
+        alt="NavigationFooter_narrow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Footer Navigation – Wide</h3>
+<p>
+  Use Wide when pages are being displayed at a
+  <strong>Large</strong>
+  or
+  <strong>Medium</strong>
+  breakpoint (though in some cases
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Footer Navigation – Narrow
+  </a>
+  may be preferable for Medium breakpoints; see
+  <a
+    href="./?path=/docs/design-documentation-bases-responsive-design--docs"
+    target="_top"
+    >Responsive Design</a
+  >
+  for more information).
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter_wide_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/342f235a73088f87.png"
+        alt="NavigationFooter_wide_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter_wide_inverted</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f636d7b87da8aad6.png"
+        alt="NavigationFooter_wide_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_NavItem_wide_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/ed1cb37d62588ed5.png"
+        alt="NavigationFooter_NavItem_wide_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_NavItem_wide_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/e3a14644cbe9804e.png"
+        alt="NavigationFooter_NavItem_wide_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_NavItem_wide_pressed</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2fd5c21b5852d8af.png"
+        alt="NavigationFooter_NavItem_wide_pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Link Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_LinkItem_wide_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/53d53a5eef83bd1d.png"
+        alt="NavigationFooter_LinkItem_wide_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_LinkItem_wide_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/b08ef8d0d74d8ed0.png"
+        alt="NavigationFooter_LinkItem_wide_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_LinkItem_wide_pressed</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/399a481f4f87be46.png"
+        alt="NavigationFooter_LinkItem_wide_pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Footer Navigation – Narrow</h3>
+<p>
+  Use Narrow when pages are being displayed at a
+  <strong>Small</strong>
+  breakpoint (though in some cases a Footer Navigation – Narrow may be
+  preferable for Medium breakpoints; see
+  <a
+    href="./?path=/docs/design-documentation-bases-responsive-design--docs"
+    target="_top"
+    >Responsive Design</a
+  >
+  for more information).
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (inverted)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter_narrow_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/5a3b14ed09a990ad.png"
+        alt="NavigationFooter_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>NavigationFooter_narrow_inverted</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c254f4aabd80af20.png"
+        alt="NavigationFooter_narrow_inverted"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Navigation Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_NavItem_narrow_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/5061617557ee41e9.png"
+        alt="NavigationFooter_NavItem_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_NavItem_narrow_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/30dd7ee31933349f.png"
+        alt="NavigationFooter_NavItem_narrow_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_NavItem_narrow_pressed</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/e2322faccfad7831.png"
+        alt="NavigationFooter_NavItem_narrow_pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Link Items</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_LinkItem_narrow_default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/49c3b879f0dcedbe.png"
+        alt="NavigationFooter_LinkItem_narrow_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_LinkItem_narrow_hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/a79da030cc05a3da.png"
+        alt="NavigationFooter_LinkItem_narrow_hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>NavigationFooter_LinkItem_narrow_pressed</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/94e097ff9c8203a8.png"
+        alt="NavigationFooter_LinkItem_narrow_pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Jump-to Navigation</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  The Jump-to Navigation component can contain as many Nav Items as necessary
+  though must have a minimum of two. Each Nav Item is tied to a a section of the
+  page and functions as a jump link to that page section. It is positioned on
+  the right side of the page, anchored to the top of the page’s first paragraph
+  and remains sticky on the page as the user scrolls; once the user scrolls into
+  a new section, the active indicator on that section is highlighted until the
+  user scrolls beyond it and into the next (or previous) at which point the
+  indictor moves again. When the user clicks on any of the Nav Items, the page
+  will smooth scroll to that section of the page.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default / Active</p></td>
+    <td><p>Hover</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Jump-to Nav_Default_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d4e8d0c29d240db8.png"
+        alt="Jump-to Nav_Default_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Jump-to Nav_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/a2b9fcb49490e276.png" alt="Jump-to Nav_Hover" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Jump-to Navigation Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Jump-to Navigation spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/667cfb60689d6760.png"
+        alt="Jump-to Navigation spacing"
+      />
+    </figure>
+  </figure>
+</div>

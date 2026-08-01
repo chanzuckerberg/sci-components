@@ -29,7 +29,7 @@ import { SdsExample, type ExamplePadding } from "./SdsExample";
 const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
 
 /** Column count of a labelled design-upload grid, set from its header row. */
-const UPLOAD_COLUMNS_PROPERTY = "--zh-upload-columns";
+const UPLOAD_COLUMNS_PROPERTY = "--sds-doc-upload-columns";
 
 /** Name, Type, Default, Description: the shape every props table is written in. */
 const PROPS_TABLE_COLUMNS = 4;
@@ -118,7 +118,7 @@ const Container = styled.div<CommonThemeProps>`
 
      Doubling the container class outbids Storybook's own docs rules, which
      reach these pages because the imported HTML sits outside .sb-unstyled. */
-  && .zeroheight-cover {
+  && .sds-doc-cover {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,16 +128,16 @@ const Container = styled.div<CommonThemeProps>`
     border-radius: 8px;
     /* The illustration is drawn on a white plate, so the panel carries that
        surface and sets its own dark copy rather than inheriting the page's. */
-    background: url("/zeroheight-assets/sds-cover.png") center / cover no-repeat
+    background: url("/design-assets/sds-cover.png") center / cover no-repeat
       #fff;
     color: #14161a;
   }
   /* The drawing starts 58% of the way across the artwork, so the copy stops
      short of that and the two never meet. */
-  && .zeroheight-cover > * {
+  && .sds-doc-cover > * {
     max-width: 56%;
   }
-  && .zeroheight-cover h1 {
+  && .sds-doc-cover h1 {
     /* Storybook's docs stylesheet reaches the headings on these pages, so the
        system's own typeface is named here rather than left to inherit. */
     font-family: "Inter", sans-serif;
@@ -147,7 +147,7 @@ const Container = styled.div<CommonThemeProps>`
     margin: 0;
     text-wrap: balance;
   }
-  && .zeroheight-cover p {
+  && .sds-doc-cover p {
     font-size: 1.125rem;
     line-height: 1.6;
     color: #4a4f54;
@@ -157,12 +157,12 @@ const Container = styled.div<CommonThemeProps>`
   /* Half a panel this narrow no longer holds a readable line, so the cover goes
      typographic and the illustration steps aside. */
   @media (max-width: 700px) {
-    && .zeroheight-cover {
+    && .sds-doc-cover {
       min-height: 0;
       padding: 40px 32px;
       background-image: none;
     }
-    && .zeroheight-cover > * {
+    && .sds-doc-cover > * {
       max-width: 100%;
     }
   }
@@ -198,13 +198,13 @@ const Container = styled.div<CommonThemeProps>`
     font-size: 0.9em;
   }
 
-  /* ZeroHeight wraps snippets as
-     .zeroheight-code-snippet > figure > (figcaption + pre). Normalize the
+  /* Snippets are written as
+     .sds-doc-code-snippet > figure > (figcaption + pre). Normalize the
      wrapper spacing (figure carries a large default browser margin) and let
      the snippet own the vertical rhythm. */
-  .zeroheight-code-snippet,
-  .zeroheight-live-code,
-  .zeroheight-example-block {
+  .sds-doc-code-snippet,
+  .sds-doc-live-code,
+  .sds-doc-example-block {
     margin: 1.25em 0;
     border-radius: 6px;
     overflow: hidden;
@@ -212,20 +212,20 @@ const Container = styled.div<CommonThemeProps>`
     flex-direction: column;
     gap: 0px;
   }
-  .zeroheight-code-snippet figure {
+  .sds-doc-code-snippet figure {
     border-radius: 6px;
     border: 1px solid #dfdfdf;
   }
-  .zeroheight-live-code figure,
-  .zeroheight-example-block figure {
+  .sds-doc-live-code figure,
+  .sds-doc-example-block figure {
     border-radius: 0 0 6px 6px;
     border: 1px solid #dfdfdf;
   }
 
-  /* A group of exported design screenshots. ZeroHeight's own stylesheet is not
-     part of the export, so the layout its class names describe is rebuilt here:
-     the "column" variant sets the figures side by side, "row" stacks them. */
-  .zeroheight-design-uploads {
+  /* A group of design screenshots. Only the class names came across with the
+     markup, so the layout they describe is rebuilt here: the "column" variant
+     sets the figures side by side, "row" stacks them. */
+  .sds-doc-design-uploads {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -233,13 +233,13 @@ const Container = styled.div<CommonThemeProps>`
     gap: 16px 24px;
     margin: 1.25em 0;
   }
-  .zeroheight-design-uploads.zeroheight-item-layout-row {
+  .sds-doc-design-uploads.sds-doc-item-layout-row {
     flex-direction: column;
   }
   /* A block introduced by a row of column labels ("Light Mode" | "Dark Mode")
      becomes a real grid, so each figure sits under the cell that names it. The
      column count is read off that header row by layoutDesignUploads below. */
-  .zeroheight-design-uploads[data-zh-headed] {
+  .sds-doc-design-uploads[data-sds-doc-headed] {
     display: grid;
     grid-template-columns: repeat(
       var(${UPLOAD_COLUMNS_PROPERTY}, 1),
@@ -249,41 +249,41 @@ const Container = styled.div<CommonThemeProps>`
   }
   /* One figure under a multi-column header is a single wide image, not the
      first of a set. */
-  .zeroheight-design-uploads[data-zh-headed]
-    > .zeroheight-design-upload:only-child {
+  .sds-doc-design-uploads[data-sds-doc-headed]
+    > .sds-doc-design-upload:only-child {
     grid-column: 1 / -1;
   }
-  .zeroheight-design-upload {
+  .sds-doc-design-upload {
     min-width: 0;
     max-width: 100%;
   }
-  .zeroheight-design-upload figcaption {
+  .sds-doc-design-upload figcaption {
     display: none !important;
   }
-  .zeroheight-design-upload-image {
+  .sds-doc-design-upload-image {
     display: flex;
     justify-content: center;
   }
   /* The labels belong to the figures directly beneath them, so the pair closes
      up into one unit. */
-  table[data-zh-upload-header] {
+  table[data-sds-doc-upload-header] {
     margin-bottom: 0;
   }
-  table[data-zh-upload-header="even"] {
+  table[data-sds-doc-upload-header="even"] {
     table-layout: fixed;
   }
-  table[data-zh-upload-header] + .zeroheight-design-uploads {
+  table[data-sds-doc-upload-header] + .sds-doc-design-uploads {
     margin-top: 0.5em;
   }
 
   /* An inline reference to a design token: a colour swatch followed by the
      token's name. */
-  .zeroheight-token-mention {
+  .sds-doc-token-mention {
     display: inline-flex;
     align-items: center;
     gap: 0.3em;
   }
-  .zeroheight-token-mention svg {
+  .sds-doc-token-mention svg {
     flex: none;
     border-radius: 0;
   }
@@ -298,7 +298,7 @@ const Container = styled.div<CommonThemeProps>`
      Doubling the container class outbids Storybook's own docs list rules,
      which reach these pages because the imported HTML sits outside
      .sb-unstyled. */
-  && .zeroheight-status {
+  && .sds-doc-status {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -308,13 +308,13 @@ const Container = styled.div<CommonThemeProps>`
     padding: 0;
     list-style: none;
   }
-  && .zeroheight-status > li {
+  && .sds-doc-status > li {
     display: flex;
     align-items: center;
     gap: 1.25em;
     margin: 0;
   }
-  && .zeroheight-status > li::before {
+  && .sds-doc-status > li::before {
     content: "";
     flex: none;
     width: 0.9em;
@@ -323,17 +323,17 @@ const Container = styled.div<CommonThemeProps>`
     background-repeat: no-repeat;
     background-size: contain;
   }
-  && .zeroheight-status > li[data-status="ready"]::before {
-    background-image: url("/zeroheight-assets/status-ready.svg");
+  && .sds-doc-status > li[data-status="ready"]::before {
+    background-image: url("/design-assets/status-ready.svg");
   }
-  && .zeroheight-status > li[data-status="partial"]::before {
-    background-image: url("/zeroheight-assets/status-partial.svg");
+  && .sds-doc-status > li[data-status="partial"]::before {
+    background-image: url("/design-assets/status-partial.svg");
   }
-  && .zeroheight-status > li[data-status="in-progress"]::before {
-    background-image: url("/zeroheight-assets/status-in-progress.svg");
+  && .sds-doc-status > li[data-status="in-progress"]::before {
+    background-image: url("/design-assets/status-in-progress.svg");
   }
 
-  .zeroheight-example-error {
+  .sds-doc-example-error {
     border: 1px solid rgba(248, 81, 73, 0.4);
     border-radius: 6px;
     padding: 0.75em 1em;
@@ -427,9 +427,9 @@ const Container = styled.div<CommonThemeProps>`
      bar and code read as one seamless block. */
   figure
     pre${OUTSIDE_PREVIEW},
-    .zeroheight-code-snippet
+    .sds-doc-code-snippet
     pre${OUTSIDE_PREVIEW},
-    .zeroheight-live-code
+    .sds-doc-live-code
     pre${OUTSIDE_PREVIEW} {
     margin: 0;
     padding: 16px 20px;
@@ -526,7 +526,7 @@ const Container = styled.div<CommonThemeProps>`
     text-align: left;
     vertical-align: top;
   }
-  /* ZeroHeight wraps most cell text in <p>; drop its margins so rows stay tight. */
+  /* Most cell text is wrapped in <p>; drop its margins so rows stay tight. */
   th > p${OUTSIDE_PREVIEW}, td > p${OUTSIDE_PREVIEW} {
     margin: 0.15em 0;
   }
@@ -551,39 +551,37 @@ const Container = styled.div<CommonThemeProps>`
 
      Doubling the container class outbids that rule, which reaches these pages
      because the imported HTML sits outside .sb-unstyled. */
-  &&
-    table${OUTSIDE_PREVIEW}:not(.zeroheight-table-borderless)
-    tr:nth-of-type(2n) {
+  && table${OUTSIDE_PREVIEW}:not(.sds-doc-table-borderless) tr:nth-of-type(2n) {
     background-color: ${(props) =>
       getSemanticColors(props)?.base?.backgroundSecondary};
   }
 
   /* Opt-in modifier for tables used purely for layout (an icon beside a block of
      text, say) rather than to present data. Add it alongside the base class:
-     <table class="zeroheight-table zeroheight-table-borderless">. The grid drops
+     <table class="sds-doc-table sds-doc-table-borderless">. The grid drops
      away and the first column lines up with the surrounding prose.
 
      Doubling the container class outbids Storybook's own docs table rules, which
      reach these pages because the imported HTML sits outside .sb-unstyled. */
-  && .zeroheight-table-borderless tr,
-  && .zeroheight-table-borderless th,
-  && .zeroheight-table-borderless td {
+  && .sds-doc-table-borderless tr,
+  && .sds-doc-table-borderless th,
+  && .sds-doc-table-borderless td {
     border: none;
     background: none;
   }
-  && .zeroheight-table-borderless th,
-  && .zeroheight-table-borderless td {
+  && .sds-doc-table-borderless th,
+  && .sds-doc-table-borderless td {
     padding: 0.5em 0.6em;
   }
-  && .zeroheight-table-borderless th:first-child,
-  && .zeroheight-table-borderless td:first-child {
+  && .sds-doc-table-borderless th:first-child,
+  && .sds-doc-table-borderless td:first-child {
     padding-left: 0;
   }
   /* Rows that pair an icon with a block of text, the icon alone in its cell.
      Centre them, so a tall paragraph does not leave its icon stranded up at the
      top. Rows holding prose in every cell keep the top alignment set above,
      which is what lines their opening words up with each other. */
-  && .zeroheight-table-borderless tr:has(> td > img:only-child) > td {
+  && .sds-doc-table-borderless tr:has(> td > img:only-child) > td {
     vertical-align: middle;
   }
 
@@ -594,24 +592,24 @@ const Container = styled.div<CommonThemeProps>`
      column that carries the prose, and gives every component's table the same
      proportions. Breaking words is what keeps the narrow columns honest, since
      a fixed column cannot widen to fit an unbroken path or type union. */
-  && table[data-zh-props] {
+  && table[data-sds-doc-props] {
     table-layout: fixed;
   }
-  && table[data-zh-props] th,
-  && table[data-zh-props] td {
+  && table[data-sds-doc-props] th,
+  && table[data-sds-doc-props] td {
     overflow-wrap: break-word;
   }
   /* The name column is the widest of the three because it is the one whose
      content cannot be abbreviated: a prop is as long as it is named, and the
      longest here run to thirty characters. */
-  && table[data-zh-props] tr > :nth-child(1) {
+  && table[data-sds-doc-props] tr > :nth-child(1) {
     width: 22%;
   }
-  && table[data-zh-props] tr > :nth-child(2),
-  && table[data-zh-props] tr > :nth-child(3) {
+  && table[data-sds-doc-props] tr > :nth-child(2),
+  && table[data-sds-doc-props] tr > :nth-child(3) {
     width: 16%;
   }
-  && table[data-zh-props] tr > :nth-child(4) {
+  && table[data-sds-doc-props] tr > :nth-child(4) {
     width: 46%;
   }
 
@@ -710,7 +708,7 @@ interface SnippetSlot {
 function claimSnippets(root: HTMLElement): SnippetSlot[] {
   return Array.from(
     root.querySelectorAll<HTMLElement>(
-      ".zeroheight-code-snippet, .zeroheight-live-code"
+      ".sds-doc-code-snippet, .sds-doc-live-code"
     )
   ).flatMap((node, index) => {
     const block = node.querySelector("code");
@@ -768,7 +766,7 @@ function collectContents(root: HTMLElement): JumpToItem[] {
     // A live example renders real components, whose own headings belong to the
     // example and not to the page. They mount after this runs, but the
     // placeholders they fill are already here.
-    if (!title || heading.closest(`.zeroheight-example, .${PREVIEW_CLASS}`)) {
+    if (!title || heading.closest(`.sds-doc-example, .${PREVIEW_CLASS}`)) {
       return;
     }
 
@@ -804,15 +802,15 @@ function headerColumns(uploads: HTMLElement): number | null {
   if (!(table instanceof HTMLTableElement)) return null;
 
   const columns = table.rows[table.rows.length - 1]?.cells.length ?? 0;
-  const figures = uploads.querySelectorAll(".zeroheight-design-upload").length;
+  const figures = uploads.querySelectorAll(".sds-doc-design-upload").length;
   if (columns < 1 || figures < 1 || figures % columns !== 0) return null;
 
   return columns;
 }
 
 /**
- * Restore the two things ZeroHeight's design-upload blocks lost on export,
- * neither of which can be recovered in CSS alone:
+ * Restore the two things the design-upload blocks cannot express in their
+ * markup, neither of which can be recovered in CSS alone:
  *
  * - The grid a labelled block is laid out on, which the block's header row
  *   defines rather than the block itself.
@@ -822,7 +820,7 @@ function headerColumns(uploads: HTMLElement): number | null {
  */
 function layoutDesignUploads(root: HTMLElement): void {
   root
-    .querySelectorAll<HTMLElement>(".zeroheight-design-uploads")
+    .querySelectorAll<HTMLElement>(".sds-doc-design-uploads")
     .forEach((uploads) => {
       const columns = headerColumns(uploads);
       if (columns === null) return;
@@ -838,7 +836,7 @@ function layoutDesignUploads(root: HTMLElement): void {
 
   root
     .querySelectorAll<HTMLImageElement>(
-      '.zeroheight-design-upload-image img[src$=".png"]'
+      '.sds-doc-design-upload-image img[src$=".png"]'
     )
     .forEach((image) => {
       const halve = () => {
@@ -863,7 +861,7 @@ function layoutDesignUploads(root: HTMLElement): void {
  */
 function markPropsTables(root: HTMLElement): void {
   root
-    .querySelectorAll<HTMLTableElement>("table.zeroheight-table")
+    .querySelectorAll<HTMLTableElement>("table.sds-doc-table")
     .forEach((table) => {
       const header = table.rows[0];
       if (header?.cells.length !== PROPS_TABLE_COLUMNS) return;
@@ -877,10 +875,10 @@ function markPropsTables(root: HTMLElement): void {
 
 /**
  * Renders full-fidelity documentation page HTML (with locally-served images),
- * one-time imported from ZeroHeight and now maintained by hand in this repo.
+ * which is committed to this repo and maintained by hand.
  *
  * Code examples are not part of the HTML: each one is an empty
- * `<div class="zeroheight-example" data-example="...">` placeholder that we
+ * `<div class="sds-doc-example" data-example="...">` placeholder that we
  * portal a live <SdsExample /> into. Portals target nodes inside `Container`, so
  * the scoped styles above still apply to them. A placeholder can add
  * `data-example-padding="none"` to drop the preview's inset, which suits
@@ -940,7 +938,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
 
     setSlots(
       Array.from(
-        root.querySelectorAll<HTMLElement>(".zeroheight-example[data-example]")
+        root.querySelectorAll<HTMLElement>(".sds-doc-example[data-example]")
       ).flatMap((node) => {
         const { example, examplePadding } = node.dataset;
         if (!example) return [];
@@ -962,9 +960,9 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
       <ThemeProvider theme={theme}>
         <EmotionThemeProvider theme={theme}>
           <Layout data-sds-contents={hasContents || undefined}>
-            {/* eslint-disable-next-line react/no-danger -- content is generated
-                at build time from our own trusted ZeroHeight export, not user
-                input. */}
+            {/* eslint-disable-next-line react/no-danger -- content is bundled
+                at build time from documentation committed to this repo, not
+                user input. */}
             <Container ref={containerRef} dangerouslySetInnerHTML={innerHtml} />
             {jumpTo.length > 0 && (
               <Sidebar className={SB_UNSTYLED_CLASS}>

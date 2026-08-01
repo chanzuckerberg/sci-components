@@ -6,9 +6,9 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Design System Documentation
 
-`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spaces`, `typography`, etc., so you can leverage the theme properly in your application.
+`@czi-sds/components` implements the Science Design System, which is documented in [Storybook](https://chanzuckerberg.github.io/sci-components/). Every component has a Documentation page covering how it differs from the MUI component it wraps, its props, and a runnable example of each variation. The design foundations — colors, spacing, typography, and the rest — live under Design Documentation, and it's worth getting familiar with the **theme variables** they describe so you can leverage the theme properly in your application.
 
-![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
+The documentation is authored in this repository, so it ships and versions with the code.
 
 ## Installation
 

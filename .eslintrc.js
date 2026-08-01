@@ -46,7 +46,7 @@ module.exports = {
        * consumer does), so the parser needs that project to resolve types here.
        */
       files: [
-        "zeroheight-docs/pages/**/examples/*.tsx",
+        "design-docs/pages/**/examples/*.tsx",
         "packages/**/src/**/__storybook__/docs/examples/*.tsx",
       ],
       parserOptions: {
@@ -128,6 +128,7 @@ module.exports = {
           __dirname,
           path.resolve(__dirname, "./packages/components"),
           path.resolve(__dirname, "./packages/data-viz"),
+          path.resolve(__dirname, "./packages/mcp"),
         ],
         peerDependencies: true,
       },

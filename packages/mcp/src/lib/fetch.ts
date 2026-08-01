@@ -1,41 +1,49 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { ComponentList, TailwindTokens } from "./types.js";
+import { ComponentDocsIndex, ComponentList, TailwindTokens } from "./types.js";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
+
+/**
+ * Locates a file under `data/`. The server runs both from source via tsx and
+ * from the bundle in `dist/`, which sit at different depths, and may also be
+ * started from the package root.
+ */
+function resolveDataPath(relativePath: string): string | null {
+  const candidates = [
+    path.join(dirname, "../../data", relativePath), // From src/lib in dev
+    path.join(dirname, "../data", relativePath), // From dist in prod
+    path.join(process.cwd(), "data", relativePath), // From current working directory
+  ];
+
+  return candidates.find((candidate) => fs.existsSync(candidate)) ?? null;
+}
+
+function readDataFile(relativePath: string, missingHint: string): string {
+  const dataPath = resolveDataPath(relativePath);
+
+  if (!dataPath) {
+    throw new Error(
+      `${relativePath} not found in any expected location. ${missingHint}`
+    );
+  }
+
+  return fs.readFileSync(dataPath, "utf-8");
+}
 
 /**
  * Gets all component names from both packages
  */
 export async function getAllComponentNames(): Promise<ComponentList> {
   try {
-    // Try multiple paths to support both dev (tsx) and prod (built) environments
-    const possiblePaths = [
-      path.join(dirname, "../../data/component-list.json"), // From src/lib in dev
-      path.join(dirname, "../data/component-list.json"), // From dist in prod
-      path.join(process.cwd(), "data/component-list.json"), // From current working directory
-    ];
-
-    let dataPath = "";
-    for (const p of possiblePaths) {
-      if (fs.existsSync(p)) {
-        dataPath = p;
-        break;
-      }
-    }
-
-    if (!dataPath) {
-      throw new Error(
-        "Component list not found in any expected location. Please run 'yarn generate:components-list' first."
-      );
-    }
-
-    const fileContent = fs.readFileSync(dataPath, "utf-8");
-    const componentList: ComponentList = JSON.parse(fileContent);
-
-    return componentList;
+    return JSON.parse(
+      readDataFile(
+        "component-list.json",
+        "Please run 'yarn generate:components-list' first."
+      )
+    );
   } catch (error) {
     throw new Error(
       `Failed to load component list: ${
@@ -67,20 +75,7 @@ export async function fetchComponentProps(
   component: string
 ): Promise<ComponentPropsResult> {
   try {
-    // Try multiple paths for component props
-    const propsPaths = [
-      path.join(dirname, `../../data/component-props/${component}.json`), // From src/lib in dev
-      path.join(dirname, `../data/component-props/${component}.json`), // From dist in prod
-      path.join(process.cwd(), `data/component-props/${component}.json`), // From current working directory
-    ];
-
-    let propsPath = "";
-    for (const p of propsPaths) {
-      if (fs.existsSync(p)) {
-        propsPath = p;
-        break;
-      }
-    }
+    const propsPath = resolveDataPath(`component-props/${component}.json`);
 
     if (!propsPath) {
       // Return a message if props file doesn't exist
@@ -93,8 +88,7 @@ export async function fetchComponentProps(
       };
     }
 
-    const fileContent = fs.readFileSync(propsPath, "utf-8");
-    return JSON.parse(fileContent);
+    return JSON.parse(fs.readFileSync(propsPath, "utf-8"));
   } catch (error) {
     throw new Error(
       `Failed to load props for ${component}: ${
@@ -104,50 +98,38 @@ export async function fetchComponentProps(
   }
 }
 
-export async function fetchComponentPropsStorybook(
-  component: string
-): Promise<ComponentPropsResult> {
+/**
+ * Gets the index of components that have generated documentation
+ */
+export async function getComponentDocsIndex(): Promise<ComponentDocsIndex> {
   try {
-    // Try multiple paths for component props
-    const propsPaths = [
-      path.join(
-        dirname,
-        `../../data/component-props-storybook/${component}-storybook.json`
-      ), // From src/lib in dev
-      path.join(
-        dirname,
-        `../data/component-props-storybook/${component}-storybook.json`
-      ), // From dist in prod
-      path.join(
-        process.cwd(),
-        `data/component-props-storybook/${component}-storybook.json`
-      ), // From current working directory
-    ];
-
-    let propsPath = "";
-    for (const p of propsPaths) {
-      if (fs.existsSync(p)) {
-        propsPath = p;
-        break;
-      }
-    }
-
-    if (!propsPath) {
-      // Return a message if props file doesn't exist
-      return {
-        [component]: {
-          message:
-            "Props information not available for this component. Run 'yarn generate:component-props' to generate props data.",
-          props: {},
-        },
-      };
-    }
-
-    const fileContent = fs.readFileSync(propsPath, "utf-8");
-    return JSON.parse(fileContent);
+    return JSON.parse(
+      readDataFile(
+        "component-docs/index.json",
+        "Please run 'yarn generate:component-docs' first."
+      )
+    );
   } catch (error) {
     throw new Error(
-      `Failed to load props for ${component}: ${
+      `Failed to load component docs index: ${
+        error instanceof Error ? error.message : `Unknown error ${error}`
+      }`
+    );
+  }
+}
+
+/**
+ * Fetches the generated documentation markdown for a specific component
+ */
+export async function fetchComponentDocs(file: string): Promise<string> {
+  try {
+    return readDataFile(
+      `component-docs/${file}`,
+      "Please run 'yarn generate:component-docs' first."
+    );
+  } catch (error) {
+    throw new Error(
+      `Failed to load documentation from ${file}: ${
         error instanceof Error ? error.message : "Unknown error"
       }`
     );
@@ -159,31 +141,12 @@ export async function fetchComponentPropsStorybook(
  */
 export async function fetchTailwindTokens(): Promise<TailwindTokens> {
   try {
-    // Try multiple paths to support both dev (tsx) and prod (built) environments
-    const possiblePaths = [
-      path.join(dirname, "../../data/tailwind.json"), // From src/lib in dev
-      path.join(dirname, "../data/tailwind.json"), // From dist in prod
-      path.join(process.cwd(), "data/tailwind.json"), // From current working directory
-    ];
-
-    let dataPath = "";
-    for (const p of possiblePaths) {
-      if (fs.existsSync(p)) {
-        dataPath = p;
-        break;
-      }
-    }
-
-    if (!dataPath) {
-      throw new Error(
-        "Component list not found in any expected location. Please run 'yarn generate:tailwind-tokens' first."
-      );
-    }
-
-    const fileContent = fs.readFileSync(dataPath, "utf-8");
-    const tailwindTokens: TailwindTokens = JSON.parse(fileContent);
-
-    return tailwindTokens;
+    return JSON.parse(
+      readDataFile(
+        "tailwind.json",
+        "Please run 'yarn generate:tailwind-tokens' first."
+      )
+    );
   } catch (error) {
     throw new Error(
       `Failed to load tailwind tokens: ${

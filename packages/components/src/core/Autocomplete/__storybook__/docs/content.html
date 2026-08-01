@@ -4,7 +4,7 @@
   rendered as SDS MenuItems, in one column or several.
 </p>
 <div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
     <strong>Most applications want DropdownMenu instead.</strong>
@@ -45,7 +45,7 @@
   MUI documents it. What SDS adds is a house style and a set of defaults that
   suit dropdowns rather than form fields:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>Options render as SDS MenuItems</strong>
@@ -108,7 +108,7 @@
   is judged on by default, so names should be unique within a list. Beyond that
   an option comes in one of two shapes, and the type will not let you mix them:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       A
@@ -161,10 +161,10 @@
   <em>icon</em>
   drawn on the divider that follows it:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">// One column
+    <pre><code class="sds-doc-codeblock-content language-tsx">// One column
 options={[{ name: "Brain" }, { name: "Lung" }]}
 
 // Two columns
@@ -223,7 +223,7 @@ options={[
   search can be selected without retyping it.
 </p>
 <h2>Behavior and accessibility</h2>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       A single-select closes and blurs on selection. A multi-select stays open,
@@ -271,7 +271,7 @@ options={[
   </li>
 </ul>
 <div
-  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
 >
   <p>
     <strong>count and icon do nothing at the top level.</strong>
@@ -287,10 +287,10 @@ options={[
   the component's generics and declare the handler with the matching type, and
   both sides line up:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import {
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
   Autocomplete,
   type AutocompleteSingleColumnOnChange,
   type DefaultAutocompleteOption,
@@ -331,7 +331,7 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
   changes. Everything else is passed through to MUI Autocomplete; see the MUI
   documentation for the rest.
 </p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td>
       <p><strong>Name</strong></p>
@@ -625,7 +625,7 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
   carry nothing but a name.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Autocomplete/DefaultAutocomplete"
 ></div>
 <h3>Multi-select</h3>
@@ -634,13 +634,13 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
   the component will not show it in the field.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Autocomplete/AutocompleteMultiSelect"
 ></div>
 <h3>Grouped sections</h3>
 <p>groupBy splits the same list into labelled sections.</p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Autocomplete/AutocompleteGroupedSections"
 ></div>
 <h3>What an option can show</h3>
@@ -649,7 +649,7 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
   of its own instead of a label.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Autocomplete/AutocompleteOptionContent"
 ></div>
 <h3>Multiple columns</h3>
@@ -658,7 +658,7 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
   they report.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Autocomplete/AutocompleteMultiColumn"
 ></div>
 <h3>Controlled open, without a search field</h3>
@@ -667,6 +667,6 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
   closed by the parent.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Autocomplete/AutocompleteControlledOpen"
 ></div>

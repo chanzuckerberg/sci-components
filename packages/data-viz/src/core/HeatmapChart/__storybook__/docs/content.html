@@ -3,7 +3,7 @@
   A grid of cells coloured by value, for matrices too large to read as a table.
 </p>
 <div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
     <strong>Ships separately:</strong>
@@ -35,7 +35,7 @@
   a dot plot.
 </p>
 <p>Three consequences of that design are worth knowing before you start:</p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>The props are ECharts' vocabulary, not the SDS one.</strong>
@@ -86,10 +86,10 @@
   <strong>encode</strong>
   names the two fields that place it:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">const data = [
+    <pre><code class="sds-doc-codeblock-content language-tsx">const data = [
   { geneIndex: 0, cellTypeIndex: 0, percentage: 0.5 },
   { geneIndex: 1, cellTypeIndex: 0, percentage: 0.8 },
 ];
@@ -130,10 +130,10 @@
   turns on a window over the grid, given in cells rather than pixels, and only
   the cells inside it are drawn:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">&lt;HeatmapChart
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;HeatmapChart
   camera={{ active: true, width: 40, height: 20 }}
   width={40 * CELL_PX}
   height={20 * CELL_PX}
@@ -159,7 +159,7 @@
   axis labels all arrive this way. The merge is shallow and treats a few keys
   specially, which is worth knowing when an option appears to be ignored:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <em>xAxis</em>
@@ -200,7 +200,7 @@
   </li>
 </ul>
 <div
-  class="zeroheight-callout zeroheight-callout-background-4 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
 >
   <p>
     <strong>Do not use the dataZoom prop.</strong>
@@ -219,10 +219,10 @@
   <em>getDataURL</em>
   returns the picture as a data URL and an anchor turns it into a file:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import { useRef } from "react";
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { useRef } from "react";
 import { getInstanceByDom } from "echarts";
 import { HeatmapChart } from "@czi-sds/data-viz";
 
@@ -255,7 +255,7 @@ function download() {
   reference would be exporting one that no longer exists.
 </p>
 <p>Three things decide what comes out:</p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>The renderer decides the format, not the type option.</strong>
@@ -293,10 +293,10 @@ function download() {
   separate charts drawing its axis labels. ECharts can composite them into a
   single image, but only once they are in a connected group:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import { connect, getInstanceByDom } from "echarts";
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { connect, getInstanceByDom } from "echarts";
 
 // Once, after every chart has been initialised.
 connect([heatmap, xAxisChart, yAxisChart]);
@@ -321,7 +321,7 @@ const url = heatmap.getConnectedDataURL({
   does — its download button calls getConnectedDataURL on the grid alone.
 </p>
 <h2>Behavior and accessibility</h2>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       The chart is a single SVG or canvas element with no accessible name, no
@@ -382,7 +382,7 @@ const url = heatmap.getConnectedDataURL({
   Every option below that names an ECharts concept links to the ECharts
   documentation for the shape it takes.
 </p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -584,7 +584,7 @@ const url = heatmap.getConnectedDataURL({
   turns each value into a color.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="data-viz/HeatmapChart/DefaultHeatmapChart"
 ></div>
 <h3>Dot plot</h3>
@@ -594,7 +594,7 @@ const url = heatmap.getConnectedDataURL({
   carrying the share of cells expressing the gene.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="data-viz/HeatmapChart/HeatmapChartDotPlot"
 ></div>
 <h3>Axis labels and a tooltip</h3>
@@ -603,7 +603,7 @@ const url = heatmap.getConnectedDataURL({
   them, and an ECharts tooltip naming the cell under the pointer.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="data-viz/HeatmapChart/HeatmapChartWithAxesAndTooltip"
 ></div>
 <h3>Large grids and the camera</h3>
@@ -612,7 +612,7 @@ const url = heatmap.getConnectedDataURL({
   use the wheel to travel down it.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="data-viz/HeatmapChart/HeatmapChartWithCamera"
 ></div>
 <h3>Downloading</h3>
@@ -622,7 +622,7 @@ const url = heatmap.getConnectedDataURL({
   one.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="data-viz/HeatmapChart/DownloadHeatmapChart"
 ></div>
 <h3>Events</h3>
@@ -631,6 +631,6 @@ const url = heatmap.getConnectedDataURL({
   event.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="data-viz/HeatmapChart/HeatmapChartWithEvents"
 ></div>

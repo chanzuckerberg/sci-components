@@ -21,7 +21,7 @@
   and everything in the MUI documentation applies. What SDS contributes is two
   positioning defaults and the styling of the paper the items sit on:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>anchorOrigin:</strong>
@@ -88,7 +88,7 @@
   </li>
 </ul>
 <div
-  class="zeroheight-callout zeroheight-callout-background-1 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
 >
   <p>
     <strong>SDS Tip:</strong>
@@ -124,10 +124,10 @@
   . Holding the anchor element in state covers all three, since whether there is
   an anchor is also whether the menu is open.
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">const [anchorEl, setAnchorEl] = useState&lt;HTMLElement | null&gt;(null);
+    <pre><code class="sds-doc-codeblock-content language-tsx">const [anchorEl, setAnchorEl] = useState&lt;HTMLElement | null&gt;(null);
 
 &lt;Button onClick={(event) =&gt; setAnchorEl(event.currentTarget)}&gt;Open Menu&lt;/Button&gt;
 
@@ -143,7 +143,7 @@
   </figure>
 </div>
 <h2>Behavior and accessibility</h2>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       A Menu is a Popover holding a list, and a Popover is built on MUI's Modal.
@@ -250,7 +250,7 @@
   working, and those whose SDS defaults differ from MUI's, are listed below. See
   the MUI documentation for the rest.
 </p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -405,7 +405,7 @@
   an onClose that clears it. The items are commands, so each one clears the
   anchor as well and the menu closes behind it.
 </p>
-<div class="zeroheight-example" data-example="core/Menu/DefaultMenu"></div>
+<div class="sds-doc-example" data-example="core/Menu/DefaultMenu"></div>
 <h3><strong>Menu placement</strong></h3>
 <p>
   A menu wider than its trigger, or one opened from something near the edge of
@@ -413,7 +413,7 @@
   right edge of the anchor with the right edge of the menu moves it there
   without any positioning code of your own.
 </p>
-<div class="zeroheight-example" data-example="core/Menu/MenuPlacement"></div>
+<div class="sds-doc-example" data-example="core/Menu/MenuPlacement"></div>
 <h3><strong>Menu with selectable items</strong></h3>
 <p>
   Selection state lives outside the menu. Passing
@@ -424,6 +424,6 @@
   handlers keeps the menu open so several options can be set in one visit.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Menu/MenuWithSelectableItems"
 ></div>

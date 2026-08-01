@@ -14,7 +14,7 @@
   <strong>@czi-sds/components</strong>
   and live in the Dialog folder:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       DialogTitle renders the overline, title, subtitle, and close button
@@ -68,7 +68,7 @@
   The SDS Dialog is built on top of MUI's Dialog. The following props differ in
   whether and how they work:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>fullScreen</strong>
@@ -146,7 +146,7 @@
 </p>
 <h3>Dialog Props</h3>
 <p>Props table for the Dialog component.</p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -200,7 +200,7 @@
     <td><p>-</p></td>
     <td>
       <p>Called when the Dialog requests to be closed. It receives:</p>
-      <ul class="zeroheight-bullet-list">
+      <ul class="sds-doc-bullet-list">
         <li><p>event&nbsp;The event source of the callback.</p></li>
         <li>
           <p>reason&nbsp;Can be:&nbsp;escapeKeyDown,&nbsp;backdropClick</p>
@@ -233,7 +233,7 @@
 </table>
 <h3>DialogTitle Props</h3>
 <p>Props table for the DialogTitle component.</p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -318,7 +318,7 @@
 </table>
 <h3>DialogActions Props</h3>
 <p>Props table for the DialogActions component.</p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -369,20 +369,20 @@
   onClose on DialogTitle renders the close button, and the one on Dialog handles
   the backdrop click and the Esc key.
 </p>
-<div class="zeroheight-example" data-example="core/Dialog/DefaultDialog"></div>
+<div class="sds-doc-example" data-example="core/Dialog/DefaultDialog"></div>
 <h3>Dialog Sizes</h3>
 <p>
   Each sdsSize sets a fixed width and a minimum height. The height still grows
   with the content, and the padding and title type scale with the size.
 </p>
-<div class="zeroheight-example" data-example="core/Dialog/DialogSizes"></div>
+<div class="sds-doc-example" data-example="core/Dialog/DialogSizes"></div>
 <h3>Dialog with Action Buttons</h3>
 <p>
   DialogActions places the buttons in the footer, right aligned by default, so
   the primary action is listed last.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Dialog/DialogWithActionButtons"
 ></div>
 <h3>Dialog with Left-Aligned Buttons</h3>
@@ -391,7 +391,7 @@
   the primary action first so it stays on the outside edge.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Dialog/DialogWithLeftAlignedButtons"
 ></div>
 <h3>Persistent Dialog</h3>
@@ -400,27 +400,21 @@
   Esc key. Leaving onClose off DialogTitle also hides the close button, so the
   action buttons are the only way out and the Dialog needs at least one.
 </p>
-<div
-  class="zeroheight-example"
-  data-example="core/Dialog/PersistentDialog"
-></div>
+<div class="sds-doc-example" data-example="core/Dialog/PersistentDialog"></div>
 <h3>Multi-step Dialog</h3>
 <p>
   The overline is the place for a step count. Keep every step in the same size
   Dialog, and make the workflow persistent so progress cannot be lost by
   accident.
 </p>
-<div
-  class="zeroheight-example"
-  data-example="core/Dialog/MultiStepDialog"
-></div>
+<div class="sds-doc-example" data-example="core/Dialog/MultiStepDialog"></div>
 <h3>Dialog with a Long Content</h3>
 <p>
   The paper is capped at the viewport height, so DialogContent scrolls on its
   own while the title and the action buttons stay in place.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Dialog/DialogWithALongContent"
 ></div>
 <h3>Dialog with a Custom Title</h3>
@@ -430,6 +424,6 @@
   goes away too.
 </p>
 <div
-  class="zeroheight-example"
+  class="sds-doc-example"
   data-example="core/Dialog/DialogWithCustomTitle"
 ></div>

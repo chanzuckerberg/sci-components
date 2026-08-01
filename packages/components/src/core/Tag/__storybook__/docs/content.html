@@ -18,7 +18,7 @@
   >
   is the tag that can be removed. The differences from MUI are these:
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>sdsStyle:</strong>
@@ -97,7 +97,7 @@
   .
 </p>
 <h2>Behavior and accessibility</h2>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       A plain tag is a div holding its label, with no role and no tab stop, and
@@ -163,7 +163,7 @@
   Any custom SDS props and MUI props required for implementation are found on
   the table below. See the MUI documentation for additional optional props.
 </p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -198,7 +198,7 @@
       <p>
         The tag's intent, given either as one of the six names or as CSS colors:
       </p>
-      <ol class="zeroheight-ordered-list">
+      <ol class="sds-doc-ordered-list">
         <li><p>[label color, background color] — the icon stays white</p></li>
         <li><p>[label color, background color, icon color]</p></li>
       </ol>
@@ -299,38 +299,35 @@
   A tag with nothing but a label, next to the same tag asking for the rounded
   shape the design guidance prefers.
 </p>
-<div class="zeroheight-example" data-example="core/Tag/DefaultTag"></div>
+<div class="sds-doc-example" data-example="core/Tag/DefaultTag"></div>
 <h3>Intents</h3>
 <p>
   The six intents, drawn as primary and then as secondary. A tag left without a
   color is neutral.
 </p>
-<div class="zeroheight-example" data-example="core/Tag/TagIntents"></div>
+<div class="sds-doc-example" data-example="core/Tag/TagIntents"></div>
 <h3>Tag + Icon</h3>
 <p>
   A large tag, which has to carry an icon, beside a small one. Each uses an Icon
   whose own size matches the size the tag will draw it at.
 </p>
-<div class="zeroheight-example" data-example="core/Tag/TagIcon"></div>
+<div class="sds-doc-example" data-example="core/Tag/TagIcon"></div>
 <h3>Tag with custom colors</h3>
 <p>
   Colors given as a tuple, for a tag the intents do not cover. The two-value
   form leaves the icon white, so a tag with an icon wants all three.
 </p>
-<div
-  class="zeroheight-example"
-  data-example="core/Tag/TagWithCustomColors"
-></div>
+<div class="sds-doc-example" data-example="core/Tag/TagWithCustomColors"></div>
 <h3>Clickable and static tags</h3>
 <p>
   A tag with an onClick behaves as a button for both the pointer and the
   keyboard. A tag that only labels something uses hover={false} so it stops
   looking clickable.
 </p>
-<div class="zeroheight-example" data-example="core/Tag/InteractiveTag"></div>
+<div class="sds-doc-example" data-example="core/Tag/InteractiveTag"></div>
 <h3>A label with no room</h3>
 <p>
   What a long label does in a narrow container, and the Tooltip that keeps the
   truncated text reachable.
 </p>
-<div class="zeroheight-example" data-example="core/Tag/TagWithLongLabel"></div>
+<div class="sds-doc-example" data-example="core/Tag/TagWithLongLabel"></div>

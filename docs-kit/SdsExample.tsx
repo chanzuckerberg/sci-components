@@ -29,7 +29,7 @@ import { useThemeMode, type ThemeMode } from "./useThemeMode";
 /**
  * Registry of the example apps referenced by the `data-example` placeholders in
  * the docs HTML. They live in three places: alongside the design pages under
- * `zeroheight-docs/pages/`, and alongside each component's own code docs under
+ * `design-docs/pages/`, and alongside each component's own code docs under
  * `packages/components/src/core/` and `packages/data-viz/src/core/`. Globs are
  * lazy so every example is code-split into its own chunk instead of shipping
  * with every docs page. Companion CSS is loaded eagerly as raw text (it is only
@@ -38,7 +38,7 @@ import { useThemeMode, type ThemeMode } from "./useThemeMode";
  */
 const exampleLoaders = {
   ...import.meta.glob<{ default: ComponentType }>(
-    "../zeroheight-docs/pages/*/examples/*.tsx"
+    "../design-docs/pages/*/examples/*.tsx"
   ),
   ...import.meta.glob<{ default: ComponentType }>(
     "../packages/components/src/core/**/__storybook__/docs/examples/*.tsx"
@@ -48,7 +48,7 @@ const exampleLoaders = {
   ),
 };
 const sourceLoaders = {
-  ...import.meta.glob<string>("../zeroheight-docs/pages/*/examples/*.tsx", {
+  ...import.meta.glob<string>("../design-docs/pages/*/examples/*.tsx", {
     import: "default",
     query: "?raw",
   }),
@@ -62,7 +62,7 @@ const sourceLoaders = {
   ),
 };
 const exampleStyles = {
-  ...import.meta.glob<string>("../zeroheight-docs/pages/*/examples/*.css", {
+  ...import.meta.glob<string>("../design-docs/pages/*/examples/*.css", {
     eager: true,
     import: "default",
     query: "?raw",
@@ -136,7 +136,7 @@ function modulePath(id: string): string {
     return `../packages/data-viz/src/core/${component}/__storybook__/docs/examples/${name}`;
   }
 
-  return `../zeroheight-docs/pages/${segments[0]}/examples/${name}`;
+  return `../design-docs/pages/${segments[0]}/examples/${name}`;
 }
 
 function findMatchingBrace(css: string, start: number): number {
@@ -336,7 +336,7 @@ class ExampleErrorBoundary extends Component<
     const { error } = this.state;
     if (error) {
       return (
-        <p className="zeroheight-example-error">
+        <p className="sds-doc-example-error">
           This example failed to render: {error.message}
         </p>
       );
@@ -417,14 +417,14 @@ export function SdsExample({
 
   if (!Example) {
     return (
-      <p className="zeroheight-example-error">
+      <p className="sds-doc-example-error">
         Missing example module for <code>{id}</code>.
       </p>
     );
   }
 
   return (
-    <div className={`zeroheight-example-block ${SB_UNSTYLED_CLASS}`}>
+    <div className={`sds-doc-example-block ${SB_UNSTYLED_CLASS}`}>
       <ThemeProvider theme={theme}>
         <EmotionThemeProvider theme={theme}>
           <PreviewSurface

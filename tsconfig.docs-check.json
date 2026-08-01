@@ -1,7 +1,7 @@
 {
   /*
    * Typechecks the documentation code examples — both the design-page examples
-   * under `zeroheight-docs/` and the per-component ones living in each
+   * under `design-docs/` and the per-component ones living in each
    * component's `__storybook__/docs/examples` folder — against the package
    * sources. The root `tsc` run cannot do this: a dependency ships typings our
    * TypeScript version fails to parse, and TypeScript reports no semantic
@@ -21,7 +21,7 @@
   "include": [
     "./docs-kit/**/*.tsx",
     "./docs-kit/**/*.d.ts",
-    "./zeroheight-docs/**/*.tsx",
+    "./design-docs/**/*.tsx",
     "./packages/components/src/**/__storybook__/docs/examples/*.tsx",
     "./packages/data-viz/src/**/__storybook__/docs/examples/*.tsx",
     // Ambient SVG/global types the components source relies on.

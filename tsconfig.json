@@ -67,7 +67,7 @@
     "./scripts/**/*",
     "./docs-kit/**/*.tsx",
     "./docs-kit/**/*.d.ts",
-    "./zeroheight-docs/**/*.tsx",
+    "./design-docs/**/*.tsx",
     "vitest.setup.ts",
     "vitest.shared.ts",
     "./packages/**/vitest.config.ts"

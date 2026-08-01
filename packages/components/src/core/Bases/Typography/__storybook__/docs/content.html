@@ -16,10 +16,10 @@
   The typography variables in the sds tailwind.json file are defined as objects
   with detailed CSS properties, for example:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>JSON</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-json">{
+    <pre><code class="sds-doc-codeblock-content language-json">{
   "fontFamily": {
     "sds-body": "\"Inter\", sans-serif",
     ...
@@ -71,10 +71,10 @@
 <p>
   To use these variables, import them into your Tailwind configuration file.
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>JavaScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-js">const sds = require("@czi-sds/components/dist/tailwind.json");
+    <pre><code class="sds-doc-codeblock-content language-js">const sds = require("@czi-sds/components/dist/tailwind.json");
 
 module.exports = {
   theme: {
@@ -94,10 +94,10 @@ module.exports = {
   and use them within the tailwind classes to achieve the desired typography
   styles:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">&lt;div class="font-sds-header text-sds-header-l-600-wide leading-sds-header-l-600-wide"&gt;
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;div class="font-sds-header text-sds-header-l-600-wide leading-sds-header-l-600-wide"&gt;
   &lt;p&gt;This text uses the SDS header style.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
   </figure>
@@ -111,7 +111,7 @@ module.exports = {
   To utilize SDS typography variables in your Tailwind CSS setup, follow these
   steps:
 </p>
-<ol class="zeroheight-ordered-list">
+<ol class="sds-doc-ordered-list">
   <li>
     <p><strong>Set Up Your Tailwind Configuration</strong></p>
   </li>
@@ -120,10 +120,10 @@ module.exports = {
   To integrate SDS typography variables, import the tailwind.json file from SDS
   into your tailwind.config.js file:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>JavaScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-js">const sds = require("@czi-sds/components/dist/tailwind.json");
+    <pre><code class="sds-doc-codeblock-content language-js">const sds = require("@czi-sds/components/dist/tailwind.json");
 const typography = require('@tailwindcss/typography');
 
 module.exports = {
@@ -136,7 +136,7 @@ module.exports = {
 };</code></pre>
   </figure>
 </div>
-<ol class="zeroheight-ordered-list">
+<ol class="sds-doc-ordered-list">
   <li>
     <p><strong>Apply SDS Typography in Components</strong></p>
   </li>
@@ -146,10 +146,10 @@ module.exports = {
   components using Tailwind’s prose class. To apply a specific SDS typography
   style, use the corresponding prose-* variant:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">&lt;div class="prose prose-sds-body-xxxs-400-narrow"&gt;
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;div class="prose prose-sds-body-xxxs-400-narrow"&gt;
   &lt;p&gt;This text uses the custom typography style for narrow body text.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
   </figure>

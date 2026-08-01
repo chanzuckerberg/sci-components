@@ -10,7 +10,7 @@ export interface CodeFigureProps {
   /** highlight.js language, e.g. `tsx` or `json`. */
   language: string;
   collapsedByDefault?: boolean;
-  /** See `highlightBlock`: on for ZeroHeight-exported snippets, off for files. */
+  /** See `highlightBlock`: on for snippets inlined in the docs, off for files. */
   compact?: boolean;
 }
 

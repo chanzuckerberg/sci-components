@@ -23,7 +23,7 @@
   size. This is why the sizes are not interchangeable across icons; an icon that
   only ships the large artwork cannot be rendered at s.
 </p>
-<ul class="zeroheight-bullet-list">
+<ul class="sds-doc-bullet-list">
   <li>
     <p>
       The types tie the two props together. Passing a size an icon does not
@@ -55,7 +55,7 @@
   </li>
 </ul>
 <h2>Props</h2>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
     <td><p>Type</p></td>
@@ -126,43 +126,37 @@
   sdsIcon and sdsSize are the only required props. With no color set, the icon
   renders in indigo.
 </p>
-<div class="zeroheight-example" data-example="core/Icon/DefaultIcon"></div>
+<div class="sds-doc-example" data-example="core/Icon/DefaultIcon"></div>
 <h3>Icon Sizes</h3>
 <p>
   The five sizes, shown with an icon that supports all of them. Below s the 16px
   artwork is scaled down, and at l and xl a separate, more detailed drawing is
   used.
 </p>
-<div class="zeroheight-example" data-example="core/Icon/IconSizes"></div>
+<div class="sds-doc-example" data-example="core/Icon/IconSizes"></div>
 <h3>Sizes Are Per Icon</h3>
 <p>
   Some icons ship only the small artwork and some only the large. Asking for a
   size an icon does not have fails to compile, and renders nothing at runtime.
 </p>
-<div
-  class="zeroheight-example"
-  data-example="core/Icon/IconAvailableSizes"
-></div>
+<div class="sds-doc-example" data-example="core/Icon/IconAvailableSizes"></div>
 <h3>Icon Colors</h3>
 <p>
   color picks the hue and shade picks the step within it. Both come from the SDS
   palette rather than from the surrounding text color.
 </p>
-<div class="zeroheight-example" data-example="core/Icon/IconColors"></div>
+<div class="sds-doc-example" data-example="core/Icon/IconColors"></div>
 <h3>Icons in Components</h3>
 <p>
   When an icon is passed to another SDS component, that component controls the
   size and the color, so leave color off and let it inherit the component's
   states.
 </p>
-<div
-  class="zeroheight-example"
-  data-example="core/Icon/IconsInComponents"
-></div>
+<div class="sds-doc-example" data-example="core/Icon/IconsInComponents"></div>
 <h3>Accessible Icon-only Controls</h3>
 <p>
   The SVG carries no accessible name, so an icon on its own needs a label on the
   control around it. Next to visible text the icon is decorative and needs
   nothing.
 </p>
-<div class="zeroheight-example" data-example="core/Icon/AccessibleIcons"></div>
+<div class="sds-doc-example" data-example="core/Icon/AccessibleIcons"></div>

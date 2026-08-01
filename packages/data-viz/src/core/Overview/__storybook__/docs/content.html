@@ -4,7 +4,7 @@
   themed with the SDS design tokens.
 </p>
 <div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
     <strong>A separate package:</strong>
@@ -17,10 +17,10 @@
 </div>
 <h2>Installation</h2>
 <p>NPM Package:</p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>Shell</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-sh">// with npm
+    <pre><code class="sds-doc-codeblock-content language-sh">// with npm
 npm i @czi-sds/data-viz
 // with yarn
 yarn add @czi-sds/data-viz</code></pre>
@@ -31,10 +31,10 @@ yarn add @czi-sds/data-viz</code></pre>
   dependencies to prevent duplicate copies of React, Material UI, and the design
   system itself. Please ensure the following are also installed:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>JSON</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-json">{
+    <pre><code class="sds-doc-codeblock-content language-json">{
   "@czi-sds/components": "^24.0.0",
   "@emotion/styled": "^11.11.0",
   "@mui/material": "^9.0.0",
@@ -46,10 +46,10 @@ yarn add @czi-sds/data-viz</code></pre>
   </figure>
 </div>
 <p>To install the package together with its peer dependencies:</p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>Shell</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-sh">// with npm
+    <pre><code class="sds-doc-codeblock-content language-sh">// with npm
 npm i @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material echarts lodash react react-dom
 // with yarn
 yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material echarts lodash react react-dom</code></pre>
@@ -67,7 +67,7 @@ yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material ech
   page covers that install and the theme setup both packages rely on.
 </p>
 <div
-  class="zeroheight-callout zeroheight-callout-background-3 zeroheight-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
     <strong>Upgrading an existing app?</strong>
@@ -94,10 +94,10 @@ yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material ech
   </a>
   , and then import charts the way you import any other SDS component:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import { StackedBarChart } from "@czi-sds/data-viz";
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { StackedBarChart } from "@czi-sds/data-viz";
 
 const DATA = [
   { name: "Biology", value: 320 },
@@ -122,10 +122,10 @@ export function DomainBreakdown() {
   Charts compose with @czi-sds/components, so surrounding layout and controls
   come from the main package:
 </p>
-<div class="zeroheight-code-snippet">
+<div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="zeroheight-codeblock-content language-tsx">import { Button } from "@czi-sds/components";
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Button } from "@czi-sds/components";
 import { HeatmapChart } from "@czi-sds/data-viz";
 
 export function ExpressionPanel() {
@@ -152,7 +152,7 @@ export function ExpressionPanel() {
   The package currently ships two charts. Each has its own page in this section
   with props and interactive stories.
 </p>
-<table class="zeroheight-table">
+<table class="sds-doc-table">
   <tr>
     <td><p>Component</p></td>
     <td><p>Use it for</p></td>

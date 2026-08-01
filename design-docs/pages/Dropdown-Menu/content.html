@@ -1,0 +1,1165 @@
+<h1>Dropdown Menu</h1>
+<p>
+  Dropdown Menus are coupled with Dropdown Inputs, Dropdown Buttons, and in some
+  cases Icon Buttons whenever those elements present the user with options to
+  choose from or selections to make.
+</p>
+<h2>Dropdown Menu Components</h2>
+<p>
+  Dropdown Menus offer the user options to adjust or select. The Menu Items
+  found within the Dropdown Menu have multiple format options.
+</p>
+<p>
+  Dropdown Menus can be configured to include a
+  <a
+    href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+    target="_top"
+  >
+    Search Input
+  </a>
+  , have their Menu Items separated out into different sections or groupings,
+  have a built-in title, or any combination of these features.
+</p>
+<p>
+  Dropdown Menus require a trigger element, such as a
+  <a
+    href="./?path=/docs/design-documentation-genes-dropdown-input--docs"
+    target="_top"
+    >Dropdown Input</a
+  >
+  ,
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Dropdown Button</a
+  >
+  , or
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Button</a
+  >
+  , to open the menu.
+</p>
+<p>
+  Dropdown is a component created as a combination of Dropdown Menu and a
+  trigger element to help make Dropdown Menu easier for developers to implement.
+</p>
+<h3>Visual Preview</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Dropdown</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4c43796feeb63d83.png"
+        alt="Preview_Guidelines_Dropdown"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_DropdownMenu</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/98875b1747471da0.png"
+        alt="Preview_Guidelines_DropdownMenu"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_MenuItem</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2fd387f9c08adff3.png"
+        alt="Preview_Guidelines_MenuItem"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Dropdown</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Overview</h3>
+<p>
+  Dropdown is a component that exists only in the codebase (not in Figma) that
+  is a combination of
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Dropdown Menu</a
+  >
+  and a trigger element to help make Dropdown Menu easier for developers to
+  implement. Trigger elements can be
+  <a
+    href="./?path=/docs/design-documentation-genes-dropdown-input--docs"
+    target="_top"
+    >Dropdown Inputs</a
+  >
+  ,
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Dropdown Buttons</a
+  >
+  , or
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Buttons</a
+  >
+  .
+</p>
+<p>
+  Dropdown bundles Dropdown Input with Dropdown Menu into a single component
+  with all of the necessary React handlers set up to speed up the implementation
+  process. Since there is no equivalent component in Figma, designers must
+  manually combine Dropdown Menu with their chosen trigger element.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dropdown_visual</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/3a0b3a4a6373ae98.png" alt="Dropdown_visual" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Dropdown Menu</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Dropdown Menu Types</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu types_Single-select</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/275be4cfd810f3c0.png"
+        alt="DropdownMenu types_Single-select"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu types_Multi-select</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/a8284e64f8e7fcfd.png"
+        alt="DropdownMenu types_Multi-select"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu types_Action</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/12be31d77e228350.png"
+        alt="DropdownMenu types_Action"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu types_Multi-column</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/8f9c4f4b58bc3ee1.png"
+        alt="DropdownMenu types_Multi-column"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Menu – Single-select</h3>
+<p>
+  Use Single-select when users are only able to select one item from the menu.
+  They can be configured to have their
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Menu Items</a
+  >
+  separated out into different sections or groupings, have a built-in title at
+  the top of the menu, include a
+  <a
+    href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+    target="_top"
+    >Search Input</a
+  >
+  allowing users to easily find specific Menu Items, or a combination of all
+  three.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Title</p></td>
+    <td><p>Default + Search</p></td>
+    <td><p>Default + Sections</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu_Single-select_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/3663523340137f58.png"
+        alt="DropdownMenu_Single-select_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Single-select_Default + Title</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/7454c7ad83e56ec5.png"
+        alt="DropdownMenu_Single-select_Default + Title"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Single-select_Default + Search</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/65073a17f34162a0.png"
+        alt="DropdownMenu_Single-select_Default + Search"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Single-select_Default + Sections</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/09bdee4ebcef3504.png"
+        alt="DropdownMenu_Single-select_Default + Sections"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Menu – Multi-select</h3>
+<p>
+  Use Multi-select when users are able to select one or more items from the
+  menu. They can be configured to have their
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Menu Items</a
+  >
+  separated out into different sections or groupings, have a built-in title at
+  the top of the menu, include a
+  <a
+    href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+    target="_top"
+    >Search Input</a
+  >
+  allowing users to easily find specific Menu Items, include confirmation and
+  cancel Buttons at the bottom of the menu, or a combination of all four.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Title</p></td>
+    <td><p>Default + Search</p></td>
+    <td><p>Default + Sections</p></td>
+    <td><p>Default + Buttons</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu_Multi-select_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/05b2b309f2fc4aef.png"
+        alt="DropdownMenu_Multi-select_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-select_Default + Title</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/71acde6b69e906b9.png"
+        alt="DropdownMenu_Multi-select_Default + Title"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-select_Default + Search</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/a212876dc1822543.png"
+        alt="DropdownMenu_Multi-select_Default + Search"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-select_Default + Sections</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/133156547488789c.png"
+        alt="DropdownMenu_Multi-select_Default + Sections"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-select_Default + Buttons</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6d635c05c107a4e9.png"
+        alt="DropdownMenu_Multi-select_Default + Buttons"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Menu – Action</h3>
+<p>
+  Use Action when upon selection an action is triggered in the UI; when
+  selected, the Dropdown Menu closes and the selected action is performed. They
+  can be configured to have their
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Menu Items</a
+  >
+  separated out into different sections or groupings, have a built-in title at
+  the top of the menu, include a
+  <a
+    href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+    target="_top"
+    >Search Input</a
+  >
+  allowing users to easily find specific Menu Items, or a combination of all
+  three.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Title</p></td>
+    <td><p>Default + Search</p></td>
+    <td><p>Default + Sections</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu_Action_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/e28eff73554ce7cf.png"
+        alt="DropdownMenu_Action_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Action_Default + Title</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/26b6318082672f95.png"
+        alt="DropdownMenu_Action_Default + Title"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Action_Default + Search</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0d055a6891da4896.png"
+        alt="DropdownMenu_Action_Default + Search"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Action_Default + Sections</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/185ee0e940649d6f.png"
+        alt="DropdownMenu_Action_Default + Sections"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Menu – Multi-column</h3>
+<p>
+  Use Multi-column when there is a need to separate
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Menu Items</a
+  >
+  across multiple columns. Columns can be dependent or independent of each
+  other. With dependent columns, Menu Item selections made in one column will
+  affect the Menu Items in the others, such as reducing the number of Menu Items
+  visible in neighboring columns; use
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+  >
+    Indeterminate Menu Item
+  </a>
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >s</a
+  >
+  when some, but not all sub-options have been made in a subsequent column. With
+  independent columns, Menu Item selections made in one column will have no
+  effect on the Menu Items in other columns.
+</p>
+<p>
+  The same configurations are available in the Multi-column variant as the
+  Single-column including a built-in title at the top of the menu, a
+  <a
+    href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+    target="_top"
+    >Search Input</a
+  >
+  , section names at the top of each column, confirmation and cancel Buttons at
+  the bottom of the menu, or a combination of all four. There can only be one
+  section per column. Additionally, a
+  <a href="./?path=/docs/design-documentation-bases-icons--docs" target="_top"
+    >Chevron</a
+  >
+  icon can be placed between columns to help communicate the relationship
+  between them.
+</p>
+<p>Multi-column Dropdown Menus can be Single- or Multi-select.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Title</p></td>
+    <td><p>Default + Search</p></td>
+    <td><p>Default + Buttons</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>DropdownMenu_Multi-column_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2313beedc4355d6a.png"
+        alt="DropdownMenu_Multi-column_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-column_Default + Title</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/41306d811a02a81c.png"
+        alt="DropdownMenu_Multi-column_Default + Title"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-column_Default + Search</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2da335fa1c1b0bd6.png"
+        alt="DropdownMenu_Multi-column_Default + Search"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>DropdownMenu_Multi-column_Default + Buttons</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/7db5159de0017d58.png"
+        alt="DropdownMenu_Multi-column_Default + Buttons"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dropdown Menu Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dropdown Menu Spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/ea4a8ebad7ab9291.png"
+        alt="Dropdown Menu Spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Menu Item</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Menu Item Types</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_singleSelect</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f456008d621d4eb0.png"
+        alt="MenuItem_singleSelect"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_multiSelect</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2917bc6aee875d43.png"
+        alt="MenuItem_multiSelect"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_indeterminate</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/997f4bdc9de8e170.png"
+        alt="MenuItem_indeterminate"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Menu Item – Single-select</h3>
+<p>
+  Single-select Menu Items are used in Dropdown Menus where only one item can be
+  selected at a time. They can optionally be paired with additional clarifying
+  details or counters that indicate the number of items within that Menu Item's
+  category.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Selected</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Default_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/fcee735f5717a802.png"
+        alt="MenuItem_SingleSelect_Default_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Default_Hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c9d446570682d44f.png"
+        alt="MenuItem_SingleSelect_Default_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Default_Selected</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6e7835cc6fccd8aa.png"
+        alt="MenuItem_SingleSelect_Default_Selected"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Default_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/14cdb08e6aed07cb.png"
+        alt="MenuItem_SingleSelect_Default_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Count_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/8212a5193f3f05c0.png"
+        alt="MenuItem_SingleSelect_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_SingleSelect_Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0452e0c00993f305.png"
+        alt="MenuItem_SingleSelect_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Count_Selected</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/59364dce68326548.png"
+        alt="MenuItem_SingleSelect_Count_Selected"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Count_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4701653602451157.png"
+        alt="MenuItem_SingleSelect_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Details_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c5f7dc3491ad5d02.png"
+        alt="MenuItem_SingleSelect_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Details_Hover</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/ff7ddf3a6b50cf1e.png"
+        alt="MenuItem_SingleSelect_Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Details_Selected</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/9aac61dfb9558c27.png"
+        alt="MenuItem_SingleSelect_Details_Selected"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Details_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/408e241b1fb1ac0e.png"
+        alt="MenuItem_SingleSelect_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Menu Item – Multi-select</h3>
+<h4>Determinate</h4>
+<p>
+  Multi-select Menu Items are used in Dropdown Menus where multiple items can be
+  selected at a time. The determinate variant should be used in Single-column
+  Dropdown Menus or in Multi-column Dropdown Menus to communicate that all
+  possible sub-options have been selected. Optionally They can optionally be
+  paired with additional clarifying details or with counters that indicate the
+  number of items within that Menu Item's category.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Selected</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6e5b280856362d5e.png"
+        alt="MenuItem_MultiSelect_Default_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Hover_Determinate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/cf6071d123900cc0.png"
+        alt="MenuItem_MultiSelect_Default_Hover_Determinate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Selected_Determinate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/90f18d74d95caf00.png"
+        alt="MenuItem_MultiSelect_Default_Selected_Determinate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/64a63ace556ced89.png"
+        alt="MenuItem_MultiSelect_Default_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_MultiSelect_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/43c2328162959686.png"
+        alt="MenuItem_MultiSelect_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Count_Hover_Determinate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0a45afd4fe006cc5.png"
+        alt="MenuItem_MultiSelect_Count_Hover_Determinate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Count_Selected_Determinate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6b8f41eba8402cee.png"
+        alt="MenuItem_MultiSelect_Count_Selected_Determinate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Count_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/967d1bcb89aa13b7.png"
+        alt="MenuItem_MultiSelect_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/afb9f3d68903c571.png"
+        alt="MenuItem_MultiSelect_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Hover_Determinate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2b308e716bdf9e63.png"
+        alt="MenuItem_MultiSelect_Details_Hover_Determinate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Selected_Determinate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/33f18152dc7d2b70.png"
+        alt="MenuItem_MultiSelect_Details_Selected_Determinate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/23ddb32c3fc104e6.png"
+        alt="MenuItem_MultiSelect_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Indeterminate</h4>
+<p>
+  Indeterminate Multi-select Menu Items are used
+  <strong>only</strong>
+  in Multi-column Dropdown Menus when there is a need to show when some, but not
+  all sub-options have been selected. They can optionally be paired with
+  additional clarifying details or with counters that indicate the number of
+  items within that Menu Item's category.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Selected</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6e5b280856362d5e.png"
+        alt="MenuItem_MultiSelect_Default_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Hover_Indeterminate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/49ba6845f9436776.png"
+        alt="MenuItem_MultiSelect_Default_Hover_Indeterminate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Selected_Indeterminate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0f6f4c183873ca3c.png"
+        alt="MenuItem_MultiSelect_Default_Selected_Indeterminate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Default_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/64a63ace556ced89.png"
+        alt="MenuItem_MultiSelect_Default_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_MultiSelect_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/43c2328162959686.png"
+        alt="MenuItem_MultiSelect_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Count_Hover_Indeterminate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4e891382c792eb78.png"
+        alt="MenuItem_MultiSelect_Count_Hover_Indeterminate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Count_Selected_Indeterminate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/074cd81d50745212.png"
+        alt="MenuItem_MultiSelect_Count_Selected_Indeterminate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Count_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/967d1bcb89aa13b7.png"
+        alt="MenuItem_MultiSelect_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/afb9f3d68903c571.png"
+        alt="MenuItem_MultiSelect_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Hover_Indeterminate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/58f77b82b73d4252.png"
+        alt="MenuItem_MultiSelect_Details_Hover_Indeterminate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Selected_Indeterminate</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/27da35ff97d87155.png"
+        alt="MenuItem_MultiSelect_Details_Selected_Indeterminate"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_MultiSelect_Details_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/23ddb32c3fc104e6.png"
+        alt="MenuItem_MultiSelect_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Menu Item – Action</h3>
+<p>
+  Action Menu Items are used in Dropdown Menus where upon selection an action is
+  triggered in the UI. They can optionally be paired with additional clarifying
+  details or counters that indicate the number of items within that Menu Item's
+  category.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Default_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/19ba5ae5fa03cc64.png"
+        alt="MenuItem_Action_Default_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Default_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1f80aff44716f57e.png"
+        alt="MenuItem_Action_Default_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Default_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/75082eff5972431e.png"
+        alt="MenuItem_Action_Default_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1423063492d00261.png"
+        alt="MenuItem_Action_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/219476cdcfe59168.png"
+        alt="MenuItem_Action_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/aebe32c4d74befe3.png"
+        alt="MenuItem_Action_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Details_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/de6fee814e492d94.png"
+        alt="MenuItem_Action_Details_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Details_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/e8b97b9f69811cef.png"
+        alt="MenuItem_Action_Details_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>MenuItem_Action_Details_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/8fa710e46da6f9c4.png"
+        alt="MenuItem_Action_Details_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Menu Item with Icon</h3>
+<p>All Menu Item variants can be optionally displayed with an icon.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default + Icon</p></td>
+    <td><p>Default + Count + Icon</p></td>
+    <td><p>Default + Details + Icon</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Default + Icon_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/6ca4858e4fbc2846.png"
+        alt="MenuItem_SingleSelect_Default + Icon_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Count + Icon_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/5e7a65c68bca3e34.png"
+        alt="MenuItem_SingleSelect_Count + Icon_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>MenuItem_SingleSelect_Details + Icon_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c14276962767255d.png"
+        alt="MenuItem_SingleSelect_Details + Icon_Default"
+      />
+    </figure>
+  </figure>
+</div>

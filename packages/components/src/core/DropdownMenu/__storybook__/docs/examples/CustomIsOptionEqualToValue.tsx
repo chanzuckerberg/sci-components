@@ -44,7 +44,7 @@ function App() {
     <div className="app">
       <div ref={ref} />
       {open && (
-        // 👇 Only pay attention to the props here, everything else is just Zeroheight glue code
+        // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu<MenuItem, false, false, false>
           PopperBaseProps={POPPER_BASE_PROPS}
           anchorEl={ref.current}

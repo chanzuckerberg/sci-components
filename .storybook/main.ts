@@ -27,14 +27,14 @@ const config: StorybookConfig = {
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
     "../packages/data-viz/src/**/__storybook__/docs/*.mdx",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
-    // Standalone design pages imported from ZeroHeight (see
-    // packages/mcp/scripts/import-zeroheight-storybook.ts).
-    "../zeroheight-docs/**/*.mdx",
+    // Standalone design pages: the foundations, and the design half of each
+    // component's documentation.
+    "../design-docs/**/*.mdx",
   ],
 
-  // Serve locally-downloaded ZeroHeight images at /zeroheight-assets so the
-  // imported HTML docs render without relying on ZeroHeight's expiring URLs.
-  staticDirs: [{ from: "../zeroheight-docs/assets", to: "/zeroheight-assets" }],
+  // The images the docs reference are committed alongside them and served from
+  // /design-assets.
+  staticDirs: [{ from: "../design-docs/assets", to: "/design-assets" }],
 
   core: {
     disableWhatsNewNotifications: true,

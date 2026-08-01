@@ -1,8 +1,8 @@
 /** Live preview surface wrapped around an extracted code example. */
-export const PREVIEW_CLASS = "zeroheight-example-preview";
+export const PREVIEW_CLASS = "sds-doc-example-preview";
 
 /** Expand/collapse control inside a code block's caption bar. */
-export const TOGGLE_CLASS = "zeroheight-code-toggle";
+export const TOGGLE_CLASS = "sds-doc-code-toggle";
 
 /**
  * Storybook's opt-out from the typography it applies to bare elements across a
