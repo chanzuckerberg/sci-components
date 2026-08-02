@@ -7,18 +7,20 @@
 <h3>Icon Component and Sizes</h3>
 <p>
   Any icons used in the UI should be added using the Icon component. Two props
-  are required, sdsIcon and sdsSize, and two more are optional, color and shade.
+  are required, <code>sdsIcon</code> and <code>sdsSize</code>, and two more are
+  optional, <code>color</code> and <code>shade</code>.
 </p>
 <p>
-  The first prop, sdsIcon, is the name of the icon to be displayed. It only
-  accepts the icon names that exist in the design system, and the names are
-  case-sensitive.
+  The first prop, <code>sdsIcon</code>, is the name of the icon to be displayed.
+  It only accepts the icon names that exist in the design system, and the names
+  are case-sensitive.
 </p>
 <p>
-  The second prop, sdsSize, dictates the size of the icon to be displayed. There
-  are five sizes, and each icon has a pre-established set of sizes available to
-  it. The icon name passed into the sdsIcon prop will limit which sizes are
-  available to be passed into the sdsSize prop.
+  The second prop, <code>sdsSize</code>, dictates the size of the icon to be
+  displayed. There are five sizes, and each icon has a pre-established set of
+  sizes available to it. The icon name passed into the <code>sdsIcon</code> prop
+  will limit which sizes are available to be passed into the
+  <code>sdsSize</code> prop.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -163,7 +165,7 @@
   the icon set within the design system). In these cases, an svg of the icon
   should always be used and its size should be set using one of the sizing
   variables below. The dimensions established with these variables align to the
-  dimensions used by the sdsSize prop on the Icon component.
+  dimensions used by the <code>sdsSize</code> prop on the Icon component.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -185,64 +187,70 @@
       <img src="/design-assets/80c1134e54807454.svg" class="sds-doc-image" />
     </td>
     <td>
-      <p>--sds-icon-size-xl-height</p>
-      <p>--sds-icon-size-xl-width</p>
+      <p><code>--sds-icon-size-xl-height</code></p>
+      <p><code>--sds-icon-size-xl-width</code></p>
     </td>
     <td>
-      <p>height: 32px</p>
-      <p>width: 32px</p>
+      <p><code>height: 32px</code></p>
+      <p><code>width: 32px</code></p>
     </td>
-    <td><p>"xl"</p></td>
+    <td>
+      <p><code>"xl"</code></p>
+    </td>
   </tr>
   <tr>
     <td>
       <img src="/design-assets/988930ede5997cb9.svg" class="sds-doc-image" />
     </td>
     <td>
-      <p>--sds-icon-size-l-height</p>
-      <p>--sds-icon-size-l-width</p>
+      <p><code>--sds-icon-size-l-height</code></p>
+      <p><code>--sds-icon-size-l-width</code></p>
     </td>
     <td>
-      <p>height: 24px</p>
-      <p>width: 24px</p>
+      <p><code>height: 24px</code></p>
+      <p><code>width: 24px</code></p>
     </td>
-    <td><p>"l"</p></td>
+    <td>
+      <p><code>"l"</code></p>
+    </td>
   </tr>
   <tr>
     <td>
       <img src="/design-assets/d1a6c6873b3be73f.svg" class="sds-doc-image" />
     </td>
     <td>
-      <p>--sds-icon-size-s-height</p>
-      <p>--sds-icon-size-s-width</p>
+      <p><code>--sds-icon-size-s-height</code></p>
+      <p><code>--sds-icon-size-s-width</code></p>
     </td>
     <td>
-      <p>height: 16px</p>
-      <p>width: 16px</p>
+      <p><code>height: 16px</code></p>
+      <p><code>width: 16px</code></p>
     </td>
-    <td><p>"s"</p></td>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
   </tr>
   <tr>
     <td>
       <img src="/design-assets/dee740109f2130b3.svg" class="sds-doc-image" />
     </td>
     <td>
-      <p>--sds-icon-size-xs-height</p>
-      <p>--sds-icon-size-xs-width</p>
+      <p><code>--sds-icon-size-xs-height</code></p>
+      <p><code>--sds-icon-size-xs-width</code></p>
     </td>
     <td>
-      <p>height: 12px</p>
-      <p>width: 12px</p>
+      <p><code>height: 12px</code></p>
+      <p><code>width: 12px</code></p>
     </td>
-    <td><p>"xs"</p></td>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
   </tr>
 </table>
 <p>
-  There is a fifth size below these, xxs at 10px, exposed as
-  <strong>--sds-icon-size-xxs-height</strong>
-  and
-  <strong>--sds-icon-size-xxs-width</strong>
-  . Every variable above is also published as an SCSS variable, for example
-  <strong>$sds-icon-size-l-height</strong>
-  , and is available from the theme through the getIconSizes selector.
+  There is a fifth size below these, <code>xxs</code> at <code>10px</code>,
+  exposed as <code>--sds-icon-size-xxs-height</code> and
+  <code>--sds-icon-size-xxs-width</code>. Every variable above is also published
+  as an SCSS variable, for example <code>$sds-icon-size-l-height</code>, and is
+  available from the theme through the <code>getIconSizes</code> selector.
 </p>

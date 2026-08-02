@@ -56,17 +56,11 @@
 </div>
 <p>
   Because Semantic Color variables are scoped to individual UI elements, a
-  single Primitive Color variable, such as
-  <em>blue500</em>
-  (Light Mode) or
-  <em>blue600</em>
-  (Dark Mode), can be mapped to a range of Semantic Color variables like
-  <em>Accent.border</em>
-  ,
-  <em>Accent.ornament</em>
-  ,
-  <em>Accent.text-action</em>
-  , etc. since all of these elements are the same color.
+  single Primitive Color variable, such as <code>blue500</code> (Light Mode) or
+  <code>blue600</code> (Dark Mode), can be mapped to a range of Semantic Color
+  variables like <code>Accent.border</code>, <code>Accent.ornament</code>,
+  <code>Accent.text-action</code>, etc. since all of these elements are the same
+  color.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -194,32 +188,21 @@
   between content.
 </p>
 <p>
-  <em>Background-primary</em>
-  is used for the empty space that a page's content is placed upon (i.e., the
-  page's main or base-level background).
-  <em>Background-secondary</em>
-  and
-  <em>background-tertiary</em>
+  <code>Background-primary</code> is used for the empty space that a page's
+  content is placed upon (i.e., the page's main or base-level background).
+  <code>Background-secondary</code> and <code>background-tertiary</code>
   are used when additional hierarchy is needed within one layer.
 </p>
 <p>
   Always implement the Background Colors in order, such that
-  <em>background-secondary</em>
-  is layered on top of
-  <em>background-primary</em>
-  and
-  <em>background-tertiary</em>
-  is layered on top of
-  <em>background-secondary</em>
-  ; never layer
-  <em>background-tertiary</em>
-  directly on top of
-  <em>background-primary</em>
-  .
+  <code>background-secondary</code> is layered on top of
+  <code>background-primary</code> and <code>background-tertiary</code> is
+  layered on top of <code>background-secondary</code>; never layer
+  <code>background-tertiary</code> directly on top of
+  <code>background-primary</code>.
 </p>
 <p>
-  Use
-  <em>surface</em>
+  Use <code>surface</code>
   for elements that are placed at a higher elevation than the page's main
   content such as the case with
   <a
@@ -235,10 +218,8 @@
 </p>
 <p>
   When greater visual contrast is needed use
-  <em>background-primary-inverse, background-secondary-inverse,</em>
-  and
-  <em>surface-inverse</em>
-  .
+  <code>background-primary-inverse</code>,
+  <code>background-secondary-inverse</code>, and <code>surface-inverse</code>.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -279,7 +260,9 @@
     <td><p>CSS / SCSS Variables</p></td>
   </tr>
   <tr>
-    <td><p>background-primary</p></td>
+    <td>
+      <p><code>background-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -320,16 +303,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-background-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-background-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-background-primary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-background-primary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-background-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-background-primary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>background-secondary</p></td>
+    <td>
+      <p><code>background-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -371,16 +361,24 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-background-secondary
+        <code>--sds-color-semantic-component-base-background-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-background-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-background-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-background-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-background-secondary-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>background-tertiary</p></td>
+    <td>
+      <p><code>background-tertiary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -422,16 +420,22 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-background-tertiary
+        <code>--sds-color-semantic-component-base-background-tertiary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-background-tertiary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-background-tertiary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-background-tertiary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-background-tertiary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>background-primary-inverse</p></td>
+    <td>
+      <p><code>background-primary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -473,20 +477,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-background-primary-inverse
+        <code
+          >--sds-color-semantic-component-base-background-primary-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-background-primary-inverse
+        <code
+          >$sds-color-semantic-component-base-background-primary-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-background-primary-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-background-primary-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>background-secondary-inverse</p></td>
+    <td>
+      <p><code>background-secondary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -528,20 +540,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-background-secondary-inverse
+        <code
+          >--sds-color-semantic-component-base-background-secondary-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-background-secondary-inverse
+        <code
+          >$sds-color-semantic-component-base-background-secondary-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-background-secondary-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-background-secondary-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface</p></td>
+    <td>
+      <p><code>surface</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -581,13 +601,20 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-surface</p>
-      <p>SCSS light: $sds-color-semantic-component-base-surface</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-surface-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-surface</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-base-surface</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-base-surface-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-inverse</p></td>
+    <td>
+      <p><code>surface-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -628,10 +655,17 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-surface-inverse
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-surface-inverse</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-surface-inverse</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-surface-inverse-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-surface-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-surface-inverse-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -675,7 +709,9 @@
     <td><p>CSS / SCSS Variable</p></td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -715,13 +751,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-fill-primary</p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-fill-primary-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-primary</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -761,13 +807,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-fill-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-fill-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -807,13 +863,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-fill-pressed</p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-fill-pressed-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-open</p></td>
+    <td>
+      <p><code>fill-open</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -853,13 +919,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-fill-open</p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-open</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-fill-open-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-open</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-open</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-open-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-selected</p></td>
+    <td>
+      <p><code>fill-selected</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -899,13 +975,24 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-fill-selected</p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-selected</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-fill-selected-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-selected</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-selected</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-selected-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover-inverse</p></td>
+    <td>
+      <p><code>fill-hover-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -946,16 +1033,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-fill-hover-inverse
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-hover-inverse</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-hover-inverse</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-fill-hover-inverse-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-hover-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-hover-inverse-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed-inverse</p></td>
+    <td>
+      <p><code>fill-pressed-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -997,16 +1091,24 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-fill-pressed-inverse
+        <code>--sds-color-semantic-component-base-fill-pressed-inverse</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-pressed-inverse</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-fill-pressed-inverse-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-pressed-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-fill-pressed-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-open-inverse</p></td>
+    <td>
+      <p><code>fill-open-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1047,16 +1149,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-fill-open-inverse
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-open-inverse</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-open-inverse</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-fill-open-inverse-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-open-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-open-inverse-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-disabled</p></td>
+    <td>
+      <p><code>fill-disabled</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1096,17 +1205,25 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-fill-disabled</p>
-      <p>SCSS light: $sds-color-semantic-component-base-fill-disabled</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-fill-disabled-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-disabled</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-disabled</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-disabled-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Border and Divider</h4>
 <p>Base Border colors are used for element borders.</p>
 <p>
-  Base
-  <em>border-table</em>
+  Base <code>border-table</code>
   is intended to be used only on the borders that separate rows and columns in
   <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
     >Tables</a
@@ -1114,8 +1231,7 @@
   .
 </p>
 <p>
-  Base
-  <em>divider</em>
+  Base <code>divider</code>
   is intended to be used only on horizontal dividers that separate blocks of
   content.
 </p>
@@ -1164,7 +1280,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border-primary</p></td>
+    <td>
+      <p><code>border-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1205,14 +1323,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-border-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-border-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-border-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-border-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-hover</p></td>
+    <td>
+      <p><code>border-primary-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1252,15 +1379,26 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-border-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-base-border-primary-hover</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-border-primary-hover-dark
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-hover-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-pressed</p></td>
+    <td>
+      <p><code>border-primary-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1302,19 +1440,24 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-border-primary-pressed
+        <code>--sds-color-semantic-component-base-border-primary-pressed</code>
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-base-border-primary-pressed
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-pressed</code>
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-border-primary-pressed-dark
+        <code
+          >$sds-color-semantic-component-base-border-primary-pressed-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-disabled</p></td>
+    <td>
+      <p><code>border-primary-disabled</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1356,19 +1499,24 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-border-primary-disabled
+        <code>--sds-color-semantic-component-base-border-primary-disabled</code>
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-base-border-primary-disabled
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-disabled</code>
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-border-primary-disabled-dark
+        <code
+          >$sds-color-semantic-component-base-border-primary-disabled-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-secondary</p></td>
+    <td>
+      <p><code>border-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1409,14 +1557,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-border-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-border-secondary</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-border-secondary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-border-secondary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-inverse</p></td>
+    <td>
+      <p><code>border-primary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1458,19 +1615,24 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-border-primary-inverse
+        <code>--sds-color-semantic-component-base-border-primary-inverse</code>
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-base-border-primary-inverse
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-inverse</code>
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-border-primary-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-border-primary-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-hover-inverse</p></td>
+    <td>
+      <p><code>border-primary-hover-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1512,20 +1674,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-border-primary-hover-inverse
+        <code
+          >--sds-color-semantic-component-base-border-primary-hover-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-border-primary-hover-inverse
+        <code
+          >$sds-color-semantic-component-base-border-primary-hover-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-border-primary-hover-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-border-primary-hover-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-pressed-inverse</p></td>
+    <td>
+      <p><code>border-primary-pressed-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1567,20 +1737,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-border-primary-pressed-inverse
+        <code
+          >--sds-color-semantic-component-base-border-primary-pressed-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-border-primary-pressed-inverse
+        <code
+          >$sds-color-semantic-component-base-border-primary-pressed-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-border-primary-pressed-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-border-primary-pressed-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-primary-disabled-inverse</p></td>
+    <td>
+      <p><code>border-primary-disabled-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1622,20 +1800,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-border-primary-disabled-inverse
+        <code
+          >--sds-color-semantic-component-base-border-primary-disabled-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-border-primary-disabled-inverse
+        <code
+          >$sds-color-semantic-component-base-border-primary-disabled-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-border-primary-disabled-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-border-primary-disabled-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-on-fill</p></td>
+    <td>
+      <p><code>border-on-fill</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1676,14 +1862,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-border-on-fill
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-on-fill</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-border-on-fill</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-border-on-fill-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-on-fill</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-border-on-fill-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>divider</p></td>
+    <td>
+      <p><code>divider</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1723,13 +1918,20 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-base-divider</p>
-      <p>SCSS light: $sds-color-semantic-component-base-divider</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-divider-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-divider</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-base-divider</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-base-divider-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>divider-inverse</p></td>
+    <td>
+      <p><code>divider-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1770,10 +1972,17 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-divider-inverse
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-divider-inverse</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-divider-inverse</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-divider-inverse-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-divider-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-divider-inverse-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -1802,15 +2011,9 @@
   >
     Buttons
   </a>
-  , use
-  <em>ornament-on-fill</em>
-  .
+  , use <code>ornament-on-fill</code>.
 </p>
-<p>
-  When visual contrast is needed use
-  <em>ornament-primary-inverse</em>
-  .
-</p>
+<p>When visual contrast is needed use <code>ornament-primary-inverse</code>.</p>
 <table class="sds-doc-table">
   <tr>
     <td><p>Light Mode</p></td>
@@ -1852,7 +2055,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament-primary</p></td>
+    <td>
+      <p><code>ornament-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1893,14 +2098,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-ornament-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-ornament-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-ornament-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-secondary</p></td>
+    <td>
+      <p><code>ornament-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -1941,125 +2155,147 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-ornament-secondary
-      </p>
-      <p>SCSS light: $sds-color-semantic-component-base-ornament-secondary</p>
-      <p>
-        SCSS dark: $sds-color-semantic-component-base-ornament-secondary-dark
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><p>ornament-secondary-hover</p></td>
-    <td>
-      <p>
-        Light:
-        <span class="sds-doc-token-mention">
-          <svg width="20" height="16">
-            <rect
-              width="16"
-              height="16"
-              fill="#000000"
-              stroke="#333333"
-              stroke-opacity="0.2"
-              rx="3"
-              ry="3"
-            ></rect>
-            <title>#000000</title>
-          </svg>
-          Base.ornament-secondary-hover
-        </span>
-      </p>
-      <p>
-        Dark:
-        <span class="sds-doc-token-mention">
-          <svg width="20" height="16">
-            <rect
-              width="16"
-              height="16"
-              fill="#ffffff"
-              stroke="#333333"
-              stroke-opacity="0.2"
-              rx="3"
-              ry="3"
-            ></rect>
-            <title>#ffffff</title>
-          </svg>
-          Base.ornament-secondary-hover
-        </span>
-      </p>
-    </td>
-    <td>
-      <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-ornament-secondary-hover
-      </p>
-      <p>
-        SCSS light: $sds-color-semantic-component-base-ornament-secondary-hover
-      </p>
-      <p>
-        SCSS dark:
-        $sds-color-semantic-component-base-ornament-secondary-hover-dark
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td><p>ornament-secondary-pressed</p></td>
-    <td>
-      <p>
-        Light:
-        <span class="sds-doc-token-mention">
-          <svg width="20" height="16">
-            <rect
-              width="16"
-              height="16"
-              fill="#000000"
-              stroke="#333333"
-              stroke-opacity="0.2"
-              rx="3"
-              ry="3"
-            ></rect>
-            <title>#000000</title>
-          </svg>
-          Base.ornament-secondary-pressed
-        </span>
-      </p>
-      <p>
-        Dark:
-        <span class="sds-doc-token-mention">
-          <svg width="20" height="16">
-            <rect
-              width="16"
-              height="16"
-              fill="#ffffff"
-              stroke="#333333"
-              stroke-opacity="0.2"
-              rx="3"
-              ry="3"
-            ></rect>
-            <title>#ffffff</title>
-          </svg>
-          Base.ornament-secondary-pressed
-        </span>
-      </p>
-    </td>
-    <td>
-      <p>
-        CSS light / dark:
-        --sds-color-semantic-component-base-ornament-secondary-pressed
+        <code>--sds-color-semantic-component-base-ornament-secondary</code>
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-ornament-secondary-pressed
+        <code>$sds-color-semantic-component-base-ornament-secondary</code>
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-ornament-secondary-pressed-dark
+        <code>$sds-color-semantic-component-base-ornament-secondary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-primary-inverse</p></td>
+    <td>
+      <p><code>ornament-secondary-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-secondary-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-secondary-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-hover</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-secondary-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-hover-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-secondary-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-secondary-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-pressed</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-primary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2101,19 +2337,26 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-ornament-primary-inverse
+        <code
+          >--sds-color-semantic-component-base-ornament-primary-inverse</code
+        >
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-base-ornament-primary-inverse
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-primary-inverse</code>
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-ornament-primary-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-ornament-primary-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-secondary-inverse</p></td>
+    <td>
+      <p><code>ornament-secondary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2155,20 +2398,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-ornament-secondary-inverse
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-ornament-secondary-inverse
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-ornament-secondary-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-secondary-hover-inverse</p></td>
+    <td>
+      <p><code>ornament-secondary-hover-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2210,20 +2461,28 @@
     <td>
       <p>
         SS light / dark:
-        --sds-color-semantic-component-base-ornament-secondary-hover-inverse
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-hover-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-ornament-secondary-hover-inverse
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-hover-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-ornament-secondary-hover-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-hover-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-secondary-pressed-inverse</p></td>
+    <td>
+      <p><code>ornament-secondary-pressed-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2265,20 +2524,28 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-ornament-secondary-pressed-inverse
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-pressed-inverse</code
+        >
       </p>
       <p>
         SCSS light:
-        $sds-color-semantic-component-base-ornament-secondary-pressed-inverse
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-ornament-secondary-pressed-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-on-fill</p></td>
+    <td>
+      <p><code>ornament-on-fill</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2319,14 +2586,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-ornament-on-fill
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-on-fill</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-ornament-on-fill</p>
-      <p>SCSS dark: $sds-color-semantic-component-base-ornament-on-fill-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-on-fill</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-on-fill-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-disabled</p></td>
+    <td>
+      <p><code>ornament-disabled</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2367,16 +2643,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-base-ornament-disabled
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-disabled</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-base-ornament-disabled</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-base-ornament-disabled-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-disabled</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-disabled-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-disabled-inverse</p></td>
+    <td>
+      <p><code>ornament-disabled-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2418,14 +2701,21 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-base-ornament-disabled-inverse
+        <code
+          >--sds-color-semantic-component-base-ornament-disabled-inverse</code
+        >
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-base-ornament-disabled-inverse
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-disabled-inverse</code
+        >
       </p>
       <p>
         SCSS dark:
-        $sds-color-semantic-component-base-ornament-disabled-inverse-dark
+        <code
+          >$sds-color-semantic-component-base-ornament-disabled-inverse-dark</code
+        >
       </p>
     </td>
   </tr>
@@ -2446,10 +2736,7 @@
   shown in the corresponding sections below.
 </p>
 <p>
-  Base
-  <em>text-primary-inverse</em>
-  and
-  <em>text-secondary-inverse</em>
+  Base <code>text-primary-inverse</code> and <code>text-secondary-inverse</code>
   are used only when the fill of the element that the text is placed on top of
   is too dark or light to be legible and an alternate color is needed to pass
   visual accessibility, such as the text inside inverted
@@ -2471,9 +2758,7 @@
   >
     Buttons
   </a>
-  , use
-  <em>text-on-fill</em>
-  .
+  , use <code>text-on-fill</code>.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -2516,7 +2801,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>primary</p></td>
+    <td>
+      <p><code>primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2556,13 +2843,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-primary</p>
-      <p>SCSS light: $sds-color-semantic-base-text-primary</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-primary-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-primary</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-primary</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-primary-dark</code></p>
     </td>
   </tr>
   <tr>
-    <td><p>secondary</p></td>
+    <td>
+      <p><code>secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2602,13 +2893,19 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-secondary</p>
-      <p>SCSS light: $sds-color-semantic-base-text-secondary</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-secondary-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-secondary</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-secondary</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-base-text-secondary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>tertiary</p></td>
+    <td>
+      <p><code>tertiary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2648,13 +2945,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-tertiary</p>
-      <p>SCSS light: $sds-color-semantic-base-text-tertiary</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-tertiary-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-tertiary</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-tertiary</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-tertiary-dark</code></p>
     </td>
   </tr>
   <tr>
-    <td><p>primary-inverse</p></td>
+    <td>
+      <p><code>primary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2694,13 +2995,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-primary-inverse</p>
-      <p>SCSS light: $sds-color-semantic-base-text-primary-inverse</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-primary-inverse-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-primary-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-base-text-primary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-base-text-primary-inverse-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>secondary-inverse</p></td>
+    <td>
+      <p><code>secondary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2740,13 +3051,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-secondary-inverse</p>
-      <p>SCSS light: $sds-color-semantic-text-base-secondary-inverse</p>
-      <p>SCSS dark: $sds-color-semantic-text-base-secondary-inverse-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-secondary-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-text-base-secondary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-text-base-secondary-inverse-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>tertiary-inverse</p></td>
+    <td>
+      <p><code>tertiary-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2786,13 +3107,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-tertiary-inverse</p>
-      <p>SCSS light: $sds-color-semantic-base-text-tertiary-inverse</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-tertiary-inverse-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-tertiary-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-base-text-tertiary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-base-text-tertiary-inverse-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>on-fill</p></td>
+    <td>
+      <p><code>on-fill</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2832,13 +3163,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-on-fill</p>
-      <p>SCSS light: $sds-color-semantic-base-text-on-fill</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-on-fill-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-on-fill</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-on-fill</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-on-fill-dark</code></p>
     </td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2878,13 +3213,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-disabled</p>
-      <p>SCSS light: $sds-color-semantic-base-text-disabled</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-disabled-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-disabled</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-disabled</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-disabled-dark</code></p>
     </td>
   </tr>
   <tr>
-    <td><p>disabled-inverse</p></td>
+    <td>
+      <p><code>disabled-inverse</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2924,9 +3263,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-base-text-disabled-inverse</p>
-      <p>SCSS light: $sds-color-semantic-base-text-disabled-inverse</p>
-      <p>SCSS dark: $sds-color-semantic-base-text-disabled-inverse-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-disabled-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-base-text-disabled-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-base-text-disabled-inverse-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -2954,7 +3301,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>action</p></td>
+    <td>
+      <p><code>action</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -2994,13 +3343,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-accent-text-action</p>
-      <p>SCSS light: $sds-color-semantic-accent-text-action</p>
-      <p>SCSS dark: $sds-color-semantic-accent-text-action-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-accent-text-action</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-accent-text-action</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-accent-text-action-dark</code></p>
     </td>
   </tr>
   <tr>
-    <td><p>action-hover</p></td>
+    <td>
+      <p><code>action-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3040,13 +3393,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-accent-text-action-hover</p>
-      <p>SCSS light: $sds-color-semantic-accent-text-action-hover</p>
-      <p>SCSS dark: $sds-color-semantic-accent-text-action-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-accent-text-action-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-accent-text-action-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-accent-text-action-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>action-pressed</p></td>
+    <td>
+      <p><code>action-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3086,9 +3449,17 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-accent-text-action-pressed</p>
-      <p>SCSS light: $sds-color-semantic-accent-text-action-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-accent-text-action-pressed-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-accent-text-action-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-accent-text-action-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-accent-text-action-pressed-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -3112,7 +3483,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3153,16 +3526,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-surface-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-surface-primary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-accent-surface-primary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-surface-primary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3204,11 +3584,15 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-accent-surface-secondary
+        <code>--sds-color-semantic-component-accent-surface-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-surface-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-accent-surface-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-surface-secondary-dark</code>
       </p>
     </td>
   </tr>
@@ -3231,7 +3615,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3272,14 +3658,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-fill-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-fill-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-fill-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3319,13 +3714,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-accent-fill-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-accent-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-fill-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-accent-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3366,10 +3771,17 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-fill-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-fill-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-fill-pressed-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -3388,7 +3800,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3428,13 +3842,22 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-accent-border</p>
-      <p>SCSS light: $sds-color-semantic-component-accent-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-accent-border</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-accent-border-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-hover</p></td>
+    <td>
+      <p><code>border-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3475,14 +3898,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-border-hover
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-hover</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-border-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-border-hover-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-pressed</p></td>
+    <td>
+      <p><code>border-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3523,14 +3955,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-border-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-border-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-border-pressed-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-open</p></td>
+    <td>
+      <p><code>border-open</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3570,13 +4011,24 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-accent-border-open</p>
-      <p>SCSS light: $sds-color-semantic-component-accent-border-open</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-border-open-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-open</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-open</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-open-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-focus</p></td>
+    <td>
+      <p><code>border-focus</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3617,14 +4069,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-border-focus
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-focus</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-border-focus</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-border-focus-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-focus</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-focus-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>border-selected</p></td>
+    <td>
+      <p><code>border-selected</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3665,19 +4126,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-border-selected
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-selected</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-border-selected</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-accent-border-selected-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-selected</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-selected-dark</code>
       </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Accent
-  <em>ornament</em>
+  Accent <code>ornament</code>
   is used whenever an interactive element contains an icon or other small area
   of color that needs to be displayed in the accent color.
 </p>
@@ -3694,7 +4159,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3734,13 +4201,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-accent-ornament</p>
-      <p>SCSS light: $sds-color-semantic-component-accent-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-accent-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-hover</p></td>
+    <td>
+      <p><code>ornament-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3781,14 +4258,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-ornament-hover
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-hover</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-ornament-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-ornament-hover-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-pressed</p></td>
+    <td>
+      <p><code>ornament-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3829,16 +4315,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-ornament-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-ornament-pressed</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-accent-ornament-pressed-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-pressed-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-open</p></td>
+    <td>
+      <p><code>ornament-open</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3879,14 +4372,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-ornament-open
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-open</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-ornament-open</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-ornament-open-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-open</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-open-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-focus</p></td>
+    <td>
+      <p><code>ornament-focus</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3927,14 +4429,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-accent-ornament-focus
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-focus</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-ornament-focus</p>
-      <p>SCSS dark: $sds-color-semantic-component-accent-ornament-focus-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-focus</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-focus-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>ornament-selected</p></td>
+    <td>
+      <p><code>ornament-selected</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -3976,11 +4487,15 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-accent-ornament-selected
+        <code>--sds-color-semantic-component-accent-ornament-selected</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-accent-ornament-selected</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-accent-ornament-selected-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-selected</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-selected-dark</code>
       </p>
     </td>
   </tr>
@@ -4005,7 +4520,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4046,14 +4563,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-beta-surface-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-beta-surface-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-surface-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-beta-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-surface-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4094,11 +4620,16 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-beta-surface-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-surface-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-beta-surface-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-beta-surface-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-beta-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-surface-secondary-dark</code>
       </p>
     </td>
   </tr>
@@ -4122,7 +4653,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4162,13 +4695,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-beta-fill-primary</p>
-      <p>SCSS light: $sds-color-semantic-component-beta-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-fill-primary-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-primary</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4208,13 +4751,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-beta-fill-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-beta-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-fill-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4254,13 +4807,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-beta-fill-pressed</p>
-      <p>SCSS light: $sds-color-semantic-component-beta-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-fill-pressed-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-secondary</p></td>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4301,17 +4864,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-beta-fill-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-beta-fill-secondary</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-fill-secondary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-beta-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-secondary-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Border</h4>
 <p>
-  Beta
-  <em>border</em>
+  Beta <code>border</code>
   is used on element borders that need to communicate a Beta intent.
 </p>
 <table class="sds-doc-table">
@@ -4327,7 +4896,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4367,16 +4938,20 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-beta-border</p>
-      <p>SCSS light: $sds-color-semantic-component-beta-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-border</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-beta-border</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-beta-border-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Beta
-  <em>ornament</em>
+  Beta <code>ornament</code>
   is used whenever a Beta intent needs to be communicated visually on an icon or
   other small colored element.
 </p>
@@ -4393,7 +4968,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4433,16 +5010,22 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-beta-ornament</p>
-      <p>SCSS light: $sds-color-semantic-component-beta-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-ornament</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-beta-ornament-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Text</h4>
 <p>
-  The Beta
-  <em>text</em>
+  The Beta <code>text</code>
   variable is used whenever text needs to communicate a Beta intent.
 </p>
 <table class="sds-doc-table">
@@ -4458,7 +5041,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>text-beta</p></td>
+    <td>
+      <p><code>text-beta</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4498,9 +5083,13 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-beta-text</p>
-      <p>SCSS light: $sds-color-semantic-component-beta-text</p>
-      <p>SCSS dark: $sds-color-semantic-component-beta-text-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-component-beta-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-beta-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-beta-text-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -4524,7 +5113,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4565,14 +5156,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-info-surface-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-info-surface-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-surface-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-info-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-surface-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4613,11 +5213,16 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-info-surface-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-surface-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-info-surface-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-info-surface-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-info-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-surface-secondary-dark</code>
       </p>
     </td>
   </tr>
@@ -4641,7 +5246,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4681,13 +5288,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-info-fill-primary</p>
-      <p>SCSS light: $sds-color-semantic-component-info-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-fill-primary-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-primary</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4727,13 +5344,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-info-fill-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-info-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-fill-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4773,13 +5400,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-info-fill-pressed</p>
-      <p>SCSS light: $sds-color-semantic-component-info-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-fill-pressed-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-secondary</p></td>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4820,17 +5457,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-info-fill-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-info-fill-secondary</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-fill-secondary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-info-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-secondary-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Border</h4>
 <p>
-  Info
-  <em>border</em>
+  Info <code>border</code>
   is used on element borders that need to communicate an Info intent.
 </p>
 <table class="sds-doc-table">
@@ -4846,7 +5489,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4886,16 +5531,20 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-info-border</p>
-      <p>SCSS light: $sds-color-semantic-component-info-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-border</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-info-border</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-info-border-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Info
-  <em>ornament</em>
+  Info <code>ornament</code>
   is used whenever an Info intent needs to be communicated visually on an icon
   or other small colored element.
 </p>
@@ -4912,7 +5561,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -4952,16 +5603,22 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-info-ornament</p>
-      <p>SCSS light:$sds-color-semantic-component-info-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-ornament</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-info-ornament-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Text</h4>
 <p>
-  The info
-  <em>text</em>
+  The info <code>text</code>
   variable is used whenever text needs to communicate an Info intent.
 </p>
 <table class="sds-doc-table">
@@ -4977,7 +5634,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>text-info</p></td>
+    <td>
+      <p><code>text-info</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5017,9 +5676,13 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-info-text</p>
-      <p>SCSS light: $sds-color-semantic-component-info-text</p>
-      <p>SCSS dark: $sds-color-semantic-component-info-text-dark</p>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-component-info-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-info-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-info-text-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -5043,7 +5706,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5085,16 +5750,22 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-negative-surface-primary
+        <code>--sds-color-semantic-component-negative-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-negative-surface-primary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-negative-surface-primary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-surface-primary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5136,13 +5807,17 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-negative-surface-secondary
+        <code>--sds-color-semantic-component-negative-surface-secondary</code>
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-negative-surface-secondary
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-surface-secondary</code>
       </p>
       <p>
-        SCSS dark: $sds-color-semantic-component-negative-surface-secondary-dark
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-negative-surface-secondary-dark</code
+        >
       </p>
     </td>
   </tr>
@@ -5166,7 +5841,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5207,14 +5884,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-negative-fill-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-negative-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-negative-fill-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5255,14 +5941,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-negative-fill-hover
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-hover</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-negative-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-negative-fill-hover-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5303,14 +5998,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-negative-fill-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-negative-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-negative-fill-pressed-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-secondary</p></td>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5351,19 +6055,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-negative-fill-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-negative-fill-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-negative-fill-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-secondary-dark</code>
       </p>
     </td>
   </tr>
 </table>
 <h4>Border</h4>
 <p>
-  Negative
-  <em>border</em>
+  Negative <code>border</code>
   is used on element borders that need to communicate a Negative intent.
 </p>
 <table class="sds-doc-table">
@@ -5379,7 +6087,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5419,16 +6129,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-negative-border</p>
-      <p>SCSS light: $sds-color-semantic-component-negative-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-negative-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-negative-border</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-border-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Negative
-  <em>ornament</em>
+  Negative <code>ornament</code>
   is used whenever a Negative intent needs to be communicated visually on an
   icon or other small colored element.
 </p>
@@ -5445,7 +6162,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5485,16 +6204,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-negative-ornament</p>
-      <p>SCSS light: $sds-color-semantic-component-negative-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-negative-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-negative-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-ornament-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Text</h4>
 <p>
-  The negative
-  <em>text</em>
+  The negative <code>text</code>
   variable is used whenever text needs to communicate a Negative intent.
 </p>
 <table class="sds-doc-table">
@@ -5510,7 +6236,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>text-negative</p></td>
+    <td>
+      <p><code>text-negative</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5550,9 +6278,16 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-negative-text</p>
-      <p>SCSS light: $sds-color-semantic-component-negative-text</p>
-      <p>SCSS dark: $sds-color-semantic-component-negative-text-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-text</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-negative-text</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-negative-text-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -5589,7 +6324,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5630,16 +6367,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-neutral-surface-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-surface-primary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-neutral-surface-primary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-surface-primary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5681,11 +6425,17 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-neutral-surface-secondary
+        <code>--sds-color-semantic-component-neutral-surface-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-surface-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-neutral-surface-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-neutral-surface-secondary-dark</code
+        >
       </p>
     </td>
   </tr>
@@ -5709,7 +6459,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5750,14 +6502,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-neutral-fill-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-neutral-fill-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5797,13 +6558,24 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-neutral-fill-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-neutral-fill-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5844,14 +6616,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-neutral-fill-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-neutral-fill-pressed-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-secondary</p></td>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5892,19 +6673,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-neutral-fill-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-fill-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-neutral-fill-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-secondary-dark</code>
       </p>
     </td>
   </tr>
 </table>
 <h4>Border</h4>
 <p>
-  Neutral
-  <em>border</em>
+  Neutral <code>border</code>
   is used on element borders that need to communicate there is no intent.
 </p>
 <table class="sds-doc-table">
@@ -5920,7 +6705,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -5960,16 +6747,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-neutral-border</p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-neutral-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-neutral-border</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-border-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Neutral
-  <em>ornament</em>
+  Neutral <code>ornament</code>
   is used whenever there is no intent to be communicated visually on an icon or
   other small colored element.
 </p>
@@ -5986,7 +6780,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6026,16 +6822,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-neutral-ornament</p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-neutral-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-neutral-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-ornament-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Text</h4>
 <p>
-  The neutral
-  <em>text</em>
+  The neutral <code>text</code>
   variable is used whenever text needs to communicate there is no intent.
 </p>
 <table class="sds-doc-table">
@@ -6051,7 +6854,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>text-neutral</p></td>
+    <td>
+      <p><code>text-neutral</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6091,9 +6896,14 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-neutral-text</p>
-      <p>SCSS light: $sds-color-semantic-component-neutral-text</p>
-      <p>SCSS dark: $sds-color-semantic-component-neutral-text-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-neutral-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-neutral-text-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -6117,7 +6927,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6158,16 +6970,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-notice-surface-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-notice-surface-primary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-notice-surface-primary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-surface-primary-dark</code>
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6209,11 +7028,15 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-notice-surface-secondary
+        <code>--sds-color-semantic-component-notice-surface-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-notice-surface-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-notice-surface-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-surface-secondary-dark</code>
       </p>
     </td>
   </tr>
@@ -6237,7 +7060,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6278,14 +7103,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-notice-fill-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-notice-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-fill-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6325,13 +7159,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-notice-fill-hover</p>
-      <p>SCSS light: $sds-color-semantic-component-notice-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-fill-hover-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-notice-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6372,14 +7216,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-notice-fill-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-notice-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-fill-pressed-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-secondary</p></td>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6420,17 +7273,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-notice-fill-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-notice-fill-secondary</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-fill-secondary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-secondary-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Border</h4>
 <p>
-  Notice
-  <em>border</em>
+  Notice <code>border</code>
   is used on element borders that need to communicate a Notice intent.
 </p>
 <table class="sds-doc-table">
@@ -6446,7 +7305,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6486,16 +7347,22 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-notice-border</p>
-      <p>SCSS light: $sds-color-semantic-component-notice-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-notice-border</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-notice-border-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Notice
-  <em>ornament</em>
+  Notice <code>ornament</code>
   is used whenever a Notice intent needs to be communicated visually on an icon
   or other small colored element.
 </p>
@@ -6512,7 +7379,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6552,16 +7421,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-notice-ornament</p>
-      <p>SCSS light: $sds-color-semantic-component-notice-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-notice-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-ornament-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Text</h4>
 <p>
-  The notice
-  <em>text</em>
+  The notice <code>text</code>
   variable is used whenever text needs to communicate a Notice intent.
 </p>
 <table class="sds-doc-table">
@@ -6577,7 +7453,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>text-notice</p></td>
+    <td>
+      <p><code>text-notice</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6617,9 +7495,14 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-notice-text</p>
-      <p>SCSS light: $sds-color-semantic-component-notice-text</p>
-      <p>SCSS dark: $sds-color-semantic-component-notice-text-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-notice-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-notice-text-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -6643,7 +7526,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>surface-primary</p></td>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6685,14 +7570,21 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-positive-surface-primary
+        <code>--sds-color-semantic-component-positive-surface-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-positive-surface-primary</p>
-      <p>$sds-color-semantic-component-positive-surface-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-surface-primary</code>
+      </p>
+      <p>
+        <code>$sds-color-semantic-component-positive-surface-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>surface-secondary</p></td>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6734,13 +7626,17 @@
     <td>
       <p>
         CSS light / dark:
-        --sds-color-semantic-component-positive-surface-secondary
+        <code>--sds-color-semantic-component-positive-surface-secondary</code>
       </p>
       <p>
-        SCSS light: $sds-color-semantic-component-positive-surface-secondary
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-surface-secondary</code>
       </p>
       <p>
-        SCSS dark: $sds-color-semantic-component-positive-surface-secondary-dark
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-positive-surface-secondary-dark</code
+        >
       </p>
     </td>
   </tr>
@@ -6764,7 +7660,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>fill-primary</p></td>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6805,14 +7703,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-positive-fill-primary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-primary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-positive-fill-primary</p>
-      <p>SCSS dark: $sds-color-semantic-component-positive-fill-primary-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-primary-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-hover</p></td>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6853,14 +7760,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-positive-fill-hover
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-hover</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-positive-fill-hover</p>
-      <p>SCSS dark: $sds-color-semantic-component-positive-fill-hover-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-hover-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-pressed</p></td>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6901,14 +7817,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-positive-fill-pressed
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-pressed</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-positive-fill-pressed</p>
-      <p>SCSS dark: $sds-color-semantic-component-positive-fill-pressed-dark</p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-pressed-dark</code>
+      </p>
     </td>
   </tr>
   <tr>
-    <td><p>fill-secondary</p></td>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -6949,19 +7874,23 @@
     </td>
     <td>
       <p>
-        CSS light / dark: --sds-color-semantic-component-positive-fill-secondary
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-secondary</code>
       </p>
-      <p>SCSS light: $sds-color-semantic-component-positive-fill-secondary</p>
       <p>
-        SCSS dark: $sds-color-semantic-component-positive-fill-secondary-dark
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-secondary-dark</code>
       </p>
     </td>
   </tr>
 </table>
 <h4>Border</h4>
 <p>
-  Positive
-  <em>border</em>
+  Positive <code>border</code>
   is used on element borders that need to communicate a Positive intent.
 </p>
 <table class="sds-doc-table">
@@ -6977,7 +7906,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>border</p></td>
+    <td>
+      <p><code>border</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -7017,16 +7948,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-positive-border</p>
-      <p>SCSS light: $sds-color-semantic-component-positive-border</p>
-      <p>SCSS dark: $sds-color-semantic-component-positive-border-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-positive-border</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-border-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Ornament</h4>
 <p>
-  Positive
-  <em>ornament</em>
+  Positive <code>ornament</code>
   is used whenever a Positive intent needs to be communicated visually on an
   icon or other small colored element.
 </p>
@@ -7043,7 +7981,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>ornament</p></td>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -7083,16 +8023,23 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-positive-ornament</p>
-      <p>SCSS light: $sds-color-semantic-component-positive-ornament</p>
-      <p>SCSS dark: $sds-color-semantic-component-positive-ornament-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-positive-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-ornament-dark</code>
+      </p>
     </td>
   </tr>
 </table>
 <h4>Text</h4>
 <p>
-  The positive
-  <em>text</em>
+  The positive <code>text</code>
   variable is used whenever text needs to communicate a Positive intent.
 </p>
 <table class="sds-doc-table">
@@ -7108,7 +8055,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>text-positive</p></td>
+    <td>
+      <p><code>text-positive</code></p>
+    </td>
     <td>
       <p>
         Light:
@@ -7148,9 +8097,16 @@
       </p>
     </td>
     <td>
-      <p>CSS light / dark: --sds-color-semantic-component-positive-text</p>
-      <p>SCSS light: $sds-color-semantic-component-positive-text</p>
-      <p>SCSS dark: $sds-color-semantic-component-positive-text-dark</p>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-text</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-positive-text</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-positive-text-dark</code>
+      </p>
     </td>
   </tr>
 </table>
@@ -7178,13 +8134,8 @@
   The most basic color elements in the design system are Primitive Colors. They
   are organized by hue into different ramps and saved as variables within the
   codebase; each ramp is composed of a range of color variables from light to
-  dark within that color hue (e.g.,
-  <em>blue800</em>
-  ,
-  <em>blue700</em>
-  ,
-  <em>blue600</em>
-  , etc.).
+  dark within that color hue (e.g., <code>blue800</code>, <code>blue700</code>,
+  <code>blue600</code>, etc.).
 </p>
 <p>
   Primitive Color variables are
@@ -7291,47 +8242,65 @@
     </td>
   </tr>
   <tr>
-    <td><p>magma900</p></td>
+    <td>
+      <p><code>magma900</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma800</p></td>
+    <td>
+      <p><code>magma800</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma700</p></td>
+    <td>
+      <p><code>magma700</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma600</p></td>
+    <td>
+      <p><code>magma600</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma500</p></td>
+    <td>
+      <p><code>magma500</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma400</p></td>
+    <td>
+      <p><code>magma400</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma300</p></td>
+    <td>
+      <p><code>magma300</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma200</p></td>
+    <td>
+      <p><code>magma200</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>
   <tr>
-    <td><p>magma100</p></td>
+    <td>
+      <p><code>magma100</code></p>
+    </td>
     <td><p></p></td>
     <td><p>[variable to come]</p></td>
   </tr>

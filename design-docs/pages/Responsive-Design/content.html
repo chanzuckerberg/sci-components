@@ -36,7 +36,9 @@
   ensure the most important UI elements remain accessible to users.
 </p>
 <h4>Small</h4>
-<p><em>Screens &lt;512px wide</em></p>
+<p>
+  <em>Screens <code>&lt;512px</code> wide</em>
+</p>
 <p>
   Small breakpoint will be used when applications are viewed on mobile devices
   and small-screened tablets. At this breakpoint only the main content should be
@@ -83,9 +85,15 @@
     <td><p>Tailwind</p></td>
   </tr>
   <tr>
-    <td><p>--sds-breakpoint-sm</p></td>
-    <td><p>$sds-breakpoint-sm</p></td>
-    <td><p>breakpoints.sds-sm</p></td>
+    <td>
+      <p><code>--sds-breakpoint-sm</code></p>
+    </td>
+    <td>
+      <p><code>$sds-breakpoint-sm</code></p>
+    </td>
+    <td>
+      <p><code>breakpoints.sds-sm</code></p>
+    </td>
   </tr>
 </table>
 <div
@@ -99,7 +107,9 @@
   </figure>
 </div>
 <h4>Medium</h4>
-<p><em>Screens between 512px-1023px wide</em></p>
+<p>
+  <em>Screens between <code>512px-1023px</code> wide</em>
+</p>
 <p>
   Medium breakpoint will be used when applications are viewed on small laptops
   and large-screened tablets. At this breakpoint there is enough space to show
@@ -128,9 +138,15 @@
     <td><p>Tailwind</p></td>
   </tr>
   <tr>
-    <td><p>--sds-breakpoint-md</p></td>
-    <td><p>$sds-breakpoint-md</p></td>
-    <td><p>breakpoints.sds-md</p></td>
+    <td>
+      <p><code>--sds-breakpoint-md</code></p>
+    </td>
+    <td>
+      <p><code>$sds-breakpoint-md</code></p>
+    </td>
+    <td>
+      <p><code>breakpoints.sds-md</code></p>
+    </td>
   </tr>
 </table>
 <div
@@ -144,13 +160,16 @@
   </figure>
 </div>
 <h4>Large</h4>
-<p><em>Screens &gt;1024px wide</em></p>
+<p>
+  <em>Screens <code>&gt;1024px</code> wide</em>
+</p>
 <p>
   Large breakpoint will be used when applications are viewed on large laptops,
   desktop monitors, and other large displays. At this breakpoint there is enough
   space to show all content as intended. Considerations should be made for
-  viewing on ultra-wide displays, such as implementing a max-width on pages to
-  ensure UI elements are not stretched out of proportion.
+  viewing on ultra-wide displays, such as implementing a
+  <code>max-width</code> on pages to ensure UI elements are not stretched out of
+  proportion.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -159,9 +178,15 @@
     <td><p>Tailwind</p></td>
   </tr>
   <tr>
-    <td><p>--sds-breakpoint-lg</p></td>
-    <td><p>$sds-breakpoint-lg</p></td>
-    <td><p>breakpoints.sds-lg</p></td>
+    <td>
+      <p><code>--sds-breakpoint-lg</code></p>
+    </td>
+    <td>
+      <p><code>$sds-breakpoint-lg</code></p>
+    </td>
+    <td>
+      <p><code>breakpoints.sds-lg</code></p>
+    </td>
   </tr>
 </table>
 <div
@@ -178,17 +203,18 @@
 <p>
   SDS has two sets of typography, one for narrow screens and one for wide.
   Narrow screen typography is used when applications are viewed at the Small
-  breakpoint (screen widths of less than 512px) and wide screen typography is
-  used when applications are viewed at Medium or Large breakpoints (screen
-  widths of 512px or greater).
+  breakpoint (screen widths of less than <code>512px</code>) and wide screen
+  typography is used when applications are viewed at Medium or Large breakpoints
+  (screen widths of <code>512px</code> or greater).
 </p>
 <p>
   Each typography variable from one set has a corresponding variable in the
   other, delineated by the word "narrow" or "wide" in its name (e.g.,
-  narrow/fontBodyS, wide/fontBodyS, etc.). This makes it easy to translate from
-  one screen width to the other. Simply use the variable with the same name but
-  the opposite width (e.g., narrow/fontBodyS should be used for the same text on
-  narrow screens that wide/fontBodyS is used for on wide screens).
+  <code>narrow/fontBodyS</code>, <code>wide/fontBodyS</code>, etc.). This makes
+  it easy to translate from one screen width to the other. Simply use the
+  variable with the same name but the opposite width (e.g.,
+  <code>narrow/fontBodyS</code> should be used for the same text on narrow
+  screens that <code>wide/fontBodyS</code> is used for on wide screens).
 </p>
 <p>
   Below are a few visual examples of the differences. See the
@@ -334,9 +360,10 @@
 <p>
   In SDS, we utilize MUI’s breakpoint system with custom values to better align
   with our design requirements. Notably, we’ve streamlined the breakpoint
-  options by removing the xs and xl breakpoints, as they are not used in SDS. As
-  a result, SDS only supports sm, md, and lg breakpoints, ensuring more focused
-  and relevant responsive behavior.
+  options by removing the <code>xs</code> and <code>xl</code> breakpoints, as
+  they are not used in SDS. As a result, SDS only supports <code>sm</code>,
+  <code>md</code>, and <code>lg</code> breakpoints, ensuring more focused and
+  relevant responsive behavior.
 </p>
 <h3>MUI Documentation</h3>
 <p>

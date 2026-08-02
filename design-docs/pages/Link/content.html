@@ -42,8 +42,8 @@
   or indicating less-emphasized actions.
 </p>
 <p>
-  Links come in two sizes: fontXs and fontS to align with SDS' most common body
-  copy font sizes.
+  Links come in two sizes: <code>fontXs</code> and <code>fontS</code> to align
+  with SDS' most common body copy font sizes.
 </p>
 <div
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
@@ -80,9 +80,10 @@
 <hr />
 <h3>Link – Default</h3>
 <p>
-  Use Link – Default only when the Link is placed on surface-primary,
-  surface-secondary, or surface-tertiary backgrounds to ensure there is enough
-  contrast to pass visual accessibility standards, otherwise use
+  Use Link – Default only when the Link is placed on
+  <code>surface-primary</code>, <code>surface-secondary</code>, or
+  <code>surface-tertiary</code> backgrounds to ensure there is enough contrast
+  to pass visual accessibility standards, otherwise use
   <a href="./?path=/docs/design-documentation-genes-link--docs" target="_top"
     >Link – Dashed</a
   >
@@ -261,10 +262,9 @@
 <h2>Link typography</h2>
 <p>
   There is no Link component to reach for. A link is an anchor (or whatever
-  element your router gives you) carrying the
-  <strong>link</strong>
-  type style and the accent text action colors. That keeps links as text rather
-  than as a component, which is what lets them sit inline in a sentence.
+  element your router gives you) carrying the <code>link</code> type style and
+  the accent text action colors. That keeps links as text rather than as a
+  component, which is what lets them sit inline in a sentence.
 </p>
 <p>
   The link type styles are part of SDS typography. You can see them all in the
@@ -284,30 +284,19 @@
 <h3>The type style</h3>
 <p>
   Link styles carry the same metrics as body copy at every size, plus a
-  permanent
-  <strong>text-decoration: underline</strong>
-  . The underline is the point: it marks the link without relying on color
-  alone, so it also satisfies the contrast requirement on surfaces where the
-  accent color is hard to distinguish from the surrounding text.
+  permanent <code>text-decoration: underline</code>. The underline is the point:
+  it marks the link without relying on color alone, so it also satisfies the
+  contrast requirement on surfaces where the accent color is hard to distinguish
+  from the surrounding text.
 </p>
 <p>
-  Three weights are available for every size: regular (400), medium (500), and
-  semibold (600). In Emotion, the mixins are named
-  <strong>fontLink{Size}</strong>
-  ,
-  <strong>fontLinkMedium{Size}</strong>
-  , and
-  <strong>fontLinkSemibold{Size}</strong>
-  , for example
-  <strong>fontLinkS</strong>
-  or
-  <strong>fontLinkSemiboldXs</strong>
-  . Outside Emotion, each one is also a CSS and SCSS variable named
-  <strong>--sds-font-link-{size}-{weight}-font</strong>
-  (with matching
-  <strong>-letter-spacing</strong>
-  and
-  <strong>-text-decoration</strong>
+  Three weights are available for every size: regular (<code>400</code>), medium
+  (<code>500</code>), and semibold (<code>600</code>). In Emotion, the mixins
+  are named <code>fontLink{Size}</code>, <code>fontLinkMedium{Size}</code>, and
+  <code>fontLinkSemibold{Size}</code>, for example <code>fontLinkS</code> or
+  <code>fontLinkSemiboldXs</code>. Outside Emotion, each one is also a CSS and
+  SCSS variable named <code>--sds-font-link-{size}-{weight}-font</code> (with
+  matching <code>-letter-spacing</code> and <code>-text-decoration</code>
   variables), and a Tailwind font class.
 </p>
 <table class="sds-doc-table">
@@ -318,77 +307,114 @@
     <td><p>Narrow</p></td>
   </tr>
   <tr>
-    <td><p>fontLinkL</p></td>
     <td>
-      <p>--sds-font-link-l-400-font</p>
-      <p>$sds-font-link-l-400-font</p>
+      <p><code>fontLinkL</code></p>
     </td>
-    <td><p>18px / 28px</p></td>
-    <td><p>16px / 26px</p></td>
+    <td>
+      <p><code>--sds-font-link-l-400-font</code></p>
+      <p><code>$sds-font-link-l-400-font</code></p>
+    </td>
+    <td>
+      <p><code>18px / 28px</code></p>
+    </td>
+    <td>
+      <p><code>16px / 26px</code></p>
+    </td>
   </tr>
   <tr>
-    <td><p>fontLinkM</p></td>
     <td>
-      <p>--sds-font-link-m-400-font</p>
-      <p>$sds-font-link-m-400-font</p>
+      <p><code>fontLinkM</code></p>
     </td>
-    <td><p>16px / 26px</p></td>
-    <td><p>14px / 24px</p></td>
+    <td>
+      <p><code>--sds-font-link-m-400-font</code></p>
+      <p><code>$sds-font-link-m-400-font</code></p>
+    </td>
+    <td>
+      <p><code>16px / 26px</code></p>
+    </td>
+    <td>
+      <p><code>14px / 24px</code></p>
+    </td>
   </tr>
   <tr>
-    <td><p>fontLinkS</p></td>
     <td>
-      <p>--sds-font-link-s-400-font</p>
-      <p>$sds-font-link-s-400-font</p>
+      <p><code>fontLinkS</code></p>
     </td>
-    <td><p>14px / 24px</p></td>
-    <td><p>14px / 24px</p></td>
+    <td>
+      <p><code>--sds-font-link-s-400-font</code></p>
+      <p><code>$sds-font-link-s-400-font</code></p>
+    </td>
+    <td>
+      <p><code>14px / 24px</code></p>
+    </td>
+    <td>
+      <p><code>14px / 24px</code></p>
+    </td>
   </tr>
   <tr>
-    <td><p>fontLinkXs</p></td>
     <td>
-      <p>--sds-font-link-xs-400-font</p>
-      <p>$sds-font-link-xs-400-font</p>
+      <p><code>fontLinkXs</code></p>
     </td>
-    <td><p>13px / 20px</p></td>
-    <td><p>13px / 20px</p></td>
+    <td>
+      <p><code>--sds-font-link-xs-400-font</code></p>
+      <p><code>$sds-font-link-xs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>13px / 20px</code></p>
+    </td>
+    <td>
+      <p><code>13px / 20px</code></p>
+    </td>
   </tr>
   <tr>
-    <td><p>fontLinkXxs</p></td>
     <td>
-      <p>--sds-font-link-xxs-400-font</p>
-      <p>$sds-font-link-xxs-400-font</p>
+      <p><code>fontLinkXxs</code></p>
     </td>
-    <td><p>12px / 18px</p></td>
-    <td><p>12px / 18px</p></td>
+    <td>
+      <p><code>--sds-font-link-xxs-400-font</code></p>
+      <p><code>$sds-font-link-xxs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>12px / 18px</code></p>
+    </td>
+    <td>
+      <p><code>12px / 18px</code></p>
+    </td>
   </tr>
   <tr>
-    <td><p>fontLinkXxxs</p></td>
     <td>
-      <p>--sds-font-link-xxxs-400-font</p>
-      <p>$sds-font-link-xxxs-400-font</p>
+      <p><code>fontLinkXxxs</code></p>
     </td>
-    <td><p>11px / 16px</p></td>
-    <td><p>12px / 18px</p></td>
+    <td>
+      <p><code>--sds-font-link-xxxs-400-font</code></p>
+      <p><code>$sds-font-link-xxxs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>11px / 16px</code></p>
+    </td>
+    <td>
+      <p><code>12px / 18px</code></p>
+    </td>
   </tr>
   <tr>
-    <td><p>fontLinkXxxxs</p></td>
     <td>
-      <p>--sds-font-link-xxxxs-400-font</p>
-      <p>$sds-font-link-xxxxs-400-font</p>
+      <p><code>fontLinkXxxxs</code></p>
     </td>
-    <td><p>10px / 14px</p></td>
-    <td><p>10px / 14px</p></td>
+    <td>
+      <p><code>--sds-font-link-xxxxs-400-font</code></p>
+      <p><code>$sds-font-link-xxxxs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>10px / 14px</code></p>
+    </td>
+    <td>
+      <p><code>10px / 14px</code></p>
+    </td>
   </tr>
 </table>
 <p>
-  Swap the
-  <strong>400</strong>
-  in a variable name for
-  <strong>500</strong>
-  or
-  <strong>600</strong>
-  to get the medium or semibold weight of the same size.
+  Swap the <code>400</code> in a variable name for <code>500</code> or
+  <code>600</code> to get the medium or semibold weight of the same size.
 </p>
 <h3>Color</h3>
 <p>
@@ -403,44 +429,51 @@
   </tr>
   <tr>
     <td><p>Default</p></td>
-    <td><p>getSemanticColors(props).accent.textAction</p></td>
-    <td><p>--sds-color-semantic-accent-text-action</p></td>
+    <td>
+      <p><code>getSemanticColors(props).accent.textAction</code></p>
+    </td>
+    <td>
+      <p><code>--sds-color-semantic-accent-text-action</code></p>
+    </td>
   </tr>
   <tr>
     <td><p>Hover</p></td>
-    <td><p>getSemanticColors(props).accent.textActionHover</p></td>
-    <td><p>--sds-color-semantic-accent-text-action-hover</p></td>
+    <td>
+      <p><code>getSemanticColors(props).accent.textActionHover</code></p>
+    </td>
+    <td>
+      <p><code>--sds-color-semantic-accent-text-action-hover</code></p>
+    </td>
   </tr>
   <tr>
     <td><p>Pressed</p></td>
-    <td><p>getSemanticColors(props).accent.textActionPressed</p></td>
-    <td><p>--sds-color-semantic-accent-text-action-pressed</p></td>
+    <td>
+      <p><code>getSemanticColors(props).accent.textActionPressed</code></p>
+    </td>
+    <td>
+      <p><code>--sds-color-semantic-accent-text-action-pressed</code></p>
+    </td>
   </tr>
 </table>
 <p>
   On a fill or an image where that accent color has too little contrast, use the
   dashed treatment described in the guidelines above instead: keep the link the
-  same color as the paragraph it sits in (
-  <strong>color: inherit</strong>
-  ), swap the underline for
-  <strong>underline dashed</strong>
-  , and turn it solid on hover.
+  same color as the paragraph it sits in (<code>color: inherit</code>), swap the
+  underline for <code>underline dashed</code>, and turn it solid on hover.
 </p>
 <h3>Notes</h3>
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      Use a real
-      <strong>&lt;a href&gt;</strong>
-      , or your router's link component, so the browser gives you keyboard
-      focus, middle-click, and the right role for free.
+      Use a real <code>&lt;a href&gt;</code>, or your router's link component,
+      so the browser gives you keyboard focus, middle-click, and the right role
+      for free.
     </p>
   </li>
   <li>
     <p>
-      Add the
-      <strong>focusVisibleA11yStyle</strong>
-      mixin for the SDS focus ring, which is what every SDS component uses.
+      Add the <code>focusVisibleA11yStyle</code> mixin for the SDS focus ring,
+      which is what every SDS component uses.
     </p>
   </li>
   <li>

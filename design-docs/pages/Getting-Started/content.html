@@ -201,13 +201,15 @@ yarn add @czi-sds/components</code></pre>
     >
       migration guide
     </a>
-    covers the dependency updates, the MUI slots and slotProps API changes, icon
-    renames, and a verification checklist.
+    covers the dependency updates, the MUI <code>slots</code> and
+    <code>slotProps</code> API changes, icon renames, and a verification
+    checklist.
   </p>
 </div>
 <p>
-  @czi-sds/components installs without direct dependencies to prevent version
-  errors. Please ensure the following peer dependencies are also installed:
+  <code>@czi-sds/components</code> installs without direct dependencies to
+  prevent version errors. Please ensure the following peer dependencies are also
+  installed:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -239,15 +241,17 @@ yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/ma
 >
   <p>
     <strong>On React 18 or below:</strong>
-    Material UI ships react-is v19. Pin react-is to match your React version to
-    avoid runtime errors in prop-type checks. Use resolutions for Yarn, or
-    overrides for npm and pnpm.
+    Material UI ships <code>react-is</code> v19. Pin <code>react-is</code> to
+    match your React version to avoid runtime errors in prop-type checks. Use
+    <code>resolutions</code> for Yarn, or <code>overrides</code> for npm and
+    pnpm.
   </p>
 </div>
 <hr />
 <h3>Usage</h3>
 <p>
-  @czi-sds/components comes with five main exports that help you build your app.
+  <code>@czi-sds/components</code> comes with five main exports that help you
+  build your app.
 </p>
 <p><strong>1. Components</strong>: accessible and reusable components.</p>
 <div class="sds-doc-code-snippet">
@@ -315,7 +319,7 @@ export const Row = styled.div&lt;CommonThemeProps&gt;`
 </div>
 <p>
   <strong>4. CSS and SCSS variables</strong>: for apps that do not use
-  @emotion/styled.
+  <code>@emotion/styled</code>.
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -359,7 +363,8 @@ module.exports = {
 </div>
 <p>
   You can then use the SDS Tailwind classes in your app. Spacing and typography
-  are exposed directly, while colors are grouped by mode under light and dark:
+  are exposed directly, while colors are grouped by mode under
+  <code>light</code> and <code>dark</code>:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -378,7 +383,10 @@ module.exports = {
   SDS ships light and dark themes. To use them in your React application,
   complete the following:
 </p>
-<p>1. Add the SDS fonts to the &lt;head&gt; section of your index.html:</p>
+<p>
+  1. Add the SDS fonts to the <code>&lt;head&gt;</code> section of your
+  <code>index.html</code>:
+</p>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>HTML</figcaption>
@@ -395,8 +403,9 @@ module.exports = {
   </figure>
 </div>
 <p>
-  2. Wrap your app in Material UI's ThemeProvider and Emotion's ThemeProvider.
-  StyledEngineProvider with injectFirst lets your own styles override MUI's:
+  2. Wrap your app in Material UI's <code>ThemeProvider</code> and Emotion's
+  <code>ThemeProvider</code>. <code>StyledEngineProvider</code> with
+  <code>injectFirst</code> lets your own styles override MUI's:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -417,8 +426,9 @@ import { defaultTheme } from "@czi-sds/components";
   </figure>
 </div>
 <p>
-  defaultTheme is the light theme. To switch modes at runtime, build the theme
-  with the Theme helper, which takes "light" or "dark":
+  <code>defaultTheme</code> is the light theme. To switch modes at runtime,
+  build the theme with the <code>Theme</code> helper, which takes
+  <code>"light"</code> or <code>"dark"</code>:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -448,7 +458,8 @@ export function App() {
 </div>
 <p>
   3. To build a theme from your own color palette, pass it through
-  makeSdsSemanticAppTheme and makeThemeOptions. See the
+  <code>makeSdsSemanticAppTheme</code> and <code>makeThemeOptions</code>. See
+  the
   <a href="https://github.com/chanzuckerberg/sci-components#theme-system">
     Theme System guide
   </a>
