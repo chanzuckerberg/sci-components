@@ -4,6 +4,7 @@ import {
   fontBodyS,
   fontBodyXs,
   fontHeaderS,
+  getCorners,
   getSemanticColors,
   getSpaces,
   type CommonThemeProps,
@@ -138,7 +139,11 @@ export const Divider = styled.div<CommonThemeProps>`
   }}
 `;
 
-/** The preview's own surface, which carries the theme being previewed. */
+/**
+ * The backdrop the device sits on, which carries the theme being previewed. It
+ * is the recessed colour of the two so that the device below reads as a screen
+ * laid on top of it rather than as part of the playground's chrome.
+ */
 export const Surface = styled.div<CommonThemeProps>`
   ${(props) => {
     const semanticColors = getSemanticColors(props);
@@ -149,7 +154,8 @@ export const Surface = styled.div<CommonThemeProps>`
       display: flex;
       justify-content: center;
       overflow: auto;
-      background-color: ${semanticColors?.base?.backgroundPrimary};
+      padding: ${getSpaces(props)?.l}px;
+      background-color: ${semanticColors?.base?.backgroundSecondary};
       color: ${semanticColors?.base?.textPrimary};
 
       /* A containing block for the overlays an example opens, so a menu is
@@ -160,18 +166,34 @@ export const Surface = styled.div<CommonThemeProps>`
 `;
 
 /**
- * Holds the example to a device width when one is chosen. Content reflows at
- * that width natively rather than being scaled, so what is on screen is what a
- * phone would render.
+ * The device the example is rendered on: the full pane for desktop, a phone's
+ * width for mobile. Content reflows at that width natively rather than being
+ * scaled, so what is on screen is what the device would render.
+ *
+ * Drawn as a frame on the backdrop rather than only being narrowed, so that
+ * switching between the two reads as a change of device. Narrowing alone is
+ * ambiguous at the desktop end, where a wide example fills the pane either way
+ * and nothing on screen says which device is selected.
  */
-export const Viewport = styled.div<{ width?: number }>`
-  ${(props) => `
-    flex: ${props.width === undefined ? "1 1 auto" : "none"};
-    width: ${props.width === undefined ? "100%" : `${props.width}px`};
-    max-width: 100%;
-    min-width: 0;
-    display: flex;
-  `}
+export const Viewport = styled.div<CommonThemeProps & { width?: number }>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      flex: ${props.width === undefined ? "1 1 auto" : "none"};
+      width: ${props.width === undefined ? "100%" : `${props.width}px`};
+      max-width: 100%;
+      min-width: 0;
+      display: flex;
+      border: 1px solid ${semanticColors?.base?.divider};
+      border-radius: ${getCorners(props)?.xl}px;
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+
+      /* Not clipped to the frame: the previews keep their overlays in place
+         rather than portalling them, and a menu opened near an edge would be
+         cut off by the rounding. */
+    `;
+  }}
 `;
 
 export const Stage = styled.div<CommonThemeProps>`

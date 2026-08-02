@@ -27,6 +27,9 @@ const meta: Meta<typeof PlaygroundApp> = {
     chromatic: { disable: true },
     docs: { disable: true },
     layout: "fullscreen",
+    options: {
+      showPanel: false,
+    },
   },
   tags: ["!autodocs", "!test", "!a11ytest"],
   title: "Playground",
