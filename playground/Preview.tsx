@@ -9,6 +9,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from "react";
+import type { SDSTheme } from "@components/src/core/styles";
 import { previewTheme } from "@sds-docs/previewTheme";
 import type { ThemeMode } from "@sds-docs/useThemeMode";
 import type { RunResult } from "./lib/runner";
@@ -83,7 +84,7 @@ export function Preview({
   runKey,
   width,
 }: PreviewProps): ReactElement {
-  const theme = useMemo(() => previewTheme(mode), [mode]);
+  const theme = useMemo(() => playgroundTheme(mode), [mode]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -113,6 +114,60 @@ export function Preview({
       </EmotionThemeProvider>
     </ThemeProvider>
   );
+}
+
+/**
+ * The previews' theme, with the overlays that take over a screen held to the
+ * device's.
+ *
+ * A drawer — what a navigation header collapses to at a phone's width, which is
+ * exactly what the mobile preview is for — and a dialog both send themselves to
+ * the end of `<body>` and lay themselves out against the browser window. Left
+ * alone they cover the playground, editor and all, rather than the example that
+ * opened them. Rendered in place and positioned absolutely they fill the stage
+ * instead, which is the screen they were asking for.
+ *
+ * Menus and tooltips are deliberately left out of the second half: they are
+ * placed from the on-screen position of whatever opened them, which is measured
+ * against the window and only lands correctly while they are positioned against
+ * it too.
+ *
+ * The docs previews keep the default behaviour. A page of prose has no frame
+ * tall enough to hold a drawer, and its examples opt in by supplying one.
+ */
+function playgroundTheme(mode: ThemeMode): SDSTheme {
+  const base = previewTheme(mode);
+  const onTheStage = { position: "absolute" } as const;
+
+  return {
+    ...base,
+    components: {
+      ...base.components,
+      /**
+       * Follows whatever it is dimming for. Left fixed it would dim the browser
+       * window around a dialog that is no longer covering it.
+       */
+      MuiBackdrop: {
+        ...base.components?.MuiBackdrop,
+        styleOverrides: { root: onTheStage },
+      },
+      MuiDialog: {
+        ...base.components?.MuiDialog,
+        styleOverrides: { root: onTheStage },
+      },
+      MuiDrawer: {
+        ...base.components?.MuiDrawer,
+        styleOverrides: { paper: onTheStage, root: onTheStage },
+      },
+      MuiModal: {
+        ...base.components?.MuiModal,
+        defaultProps: {
+          ...base.components?.MuiModal?.defaultProps,
+          disablePortal: true,
+        },
+      },
+    },
+  };
 }
 
 /**

@@ -157,10 +157,6 @@ export const Surface = styled.div<CommonThemeProps>`
       padding: ${getSpaces(props)?.l}px;
       background-color: ${semanticColors?.base?.backgroundSecondary};
       color: ${semanticColors?.base?.textPrimary};
-
-      /* A containing block for the overlays an example opens, so a menu is
-         placed and measured against the pane rather than the page. */
-      position: relative;
     `;
   }}
 `;
@@ -185,6 +181,11 @@ export const Viewport = styled.div<CommonThemeProps & { width?: number }>`
       max-width: 100%;
       min-width: 0;
       display: flex;
+      padding: ${getSpaces(props)?.xl}px;
+
+      /* Against the border-box default the reset lays down, so that a device
+         width is the width of the screen and not of the bezel around it. */
+      box-sizing: content-box;
       border: 1px solid ${semanticColors?.base?.divider};
       border-radius: ${getCorners(props)?.xl}px;
       background-color: ${semanticColors?.base?.backgroundPrimary};
@@ -196,21 +197,25 @@ export const Viewport = styled.div<CommonThemeProps & { width?: number }>`
   }}
 `;
 
-export const Stage = styled.div<CommonThemeProps>`
-  ${(props) => `
-    flex: 1 1 auto;
-    min-width: 0;
-    padding: ${getSpaces(props)?.xl}px;
-    box-sizing: border-box;
+/**
+ * The device's screen: the area an example is given, and the box the overlays
+ * that fill a screen — a drawer, a dialog — are sized and placed against. The
+ * frame holds the padding rather than the stage, which is what lines the top of
+ * one of those up with the bottom of the header that opened it.
+ */
+export const Stage = styled.div`
+  flex: 1 1 auto;
+  min-width: 0;
+  box-sizing: border-box;
+  position: relative;
 
-    /* Components count on the reset a story gets from <CssBaseline />: a padded
-       \`width: 100%\` content box otherwise overflows its own card. */
-    *,
-    *::before,
-    *::after {
-      box-sizing: inherit;
-    }
-  `}
+  /* Components count on the reset a story gets from <CssBaseline />: a padded
+     \`width: 100%\` content box otherwise overflows its own card. */
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 `;
 
 /** A compile, evaluate or render failure, reported in place of the example. */
