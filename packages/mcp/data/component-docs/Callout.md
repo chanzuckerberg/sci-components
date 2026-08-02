@@ -6,7 +6,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## SDS vs MUI
 
-The SDS Callout component is built upon the MUI Alert component (as is the SDS Notification component ), but there are some important differences:
+The SDS Callout component is built upon the MUI Alert component (as is the SDS Notification component), but there are some important differences:
 
 - **Color:** SDS's Callout component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"accent"`, `"info"`, `"negative"`, `"notice"`, or `"positive"`. MUI's Alert instead uses the `severity` prop for this purpose (`severity` can also be used for SDS's Notification, and will take the same values as `intent`; this is not recommended)
 

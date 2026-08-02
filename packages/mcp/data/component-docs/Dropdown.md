@@ -10,11 +10,11 @@ SDS's Dropdown component is a combination of two other SDS components: DropdownM
 
 These are a few of the most relevant ways in which SDS's DropdownMenu (which is used within Dropdown) integrates withAutocomplete and other MUI components:
 
-- SDS Dropdown uses [MUI](https://mui.com/material-ui/react-autocomplete/) [Autocomplete](https://mui.com/material-ui/react-autocomplete/) under the hood, so all props passed to DropdownMenu are ultimately passed to the Autocomplete component as well. This means MUI's Autocomplete props can be used on SDS's DropdownMenu if needed.
+- SDS Dropdown uses [MUI Autocomplete](https://mui.com/material-ui/react-autocomplete/) under the hood, so all props passed to DropdownMenu are ultimately passed to the Autocomplete component as well. This means MUI's Autocomplete props can be used on SDS's DropdownMenu if needed.
 
-- SDS Dropdown uses [MUI](https://mui.com/material-ui/react-popper/) [Popper](https://mui.com/material-ui/react-popper/). A custom Popper component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
+- SDS Dropdown uses [MUI Popper](https://mui.com/material-ui/react-popper/). A custom Popper component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
 
-- Similarly, SDS Dropdown uses [MUI](https://mui.com/material-ui/react-paper/) [Paper](https://mui.com/material-ui/react-paper/). A custom Paper component can be passed via `props.PaperComponent` to enable custom styling.
+- Similarly, SDS Dropdown uses [MUI Paper](https://mui.com/material-ui/react-paper/). A custom Paper component can be passed via `props.PaperComponent` to enable custom styling.
 
 ## Props
 

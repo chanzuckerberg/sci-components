@@ -48,12 +48,7 @@ const DATA = [
 function App() {
   return (
     <div className="app">
-      <StackedBarChart
-        barHeight={24}
-        data={DATA}
-        title="Modality"
-        width="420px"
-      />
+      <StackedBarChart data={DATA} title="Modality" width="420px" />
     </div>
   );
 }

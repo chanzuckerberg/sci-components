@@ -8,11 +8,11 @@
 >
   <p>
     <strong>A separate package:</strong>
-    the components in this section ship as @czi-sds/data-viz, not as part of
-    @czi-sds/components. Charts pull in ECharts, which is large and not needed
-    by most apps, so they are versioned and installed on their own.
-    @czi-sds/data-viz is built on top of @czi-sds/components and requires it at
-    runtime.
+    the components in this section ship as <code>@czi-sds/data-viz</code>, not
+    as part of <code>@czi-sds/components</code>. Charts pull in ECharts, which
+    is large and not needed by most apps, so they are versioned and installed on
+    their own. <code>@czi-sds/data-viz</code> is built on top of
+    <code>@czi-sds/components</code> and requires it at runtime.
   </p>
 </div>
 <h2>Installation</h2>
@@ -27,9 +27,9 @@ yarn add @czi-sds/data-viz</code></pre>
   </figure>
 </div>
 <p>
-  Like @czi-sds/components, the package declares its dependencies as peer
-  dependencies to prevent duplicate copies of React, Material UI, and the design
-  system itself. Please ensure the following are also installed:
+  Like <code>@czi-sds/components</code>, the package declares its dependencies
+  as peer dependencies to prevent duplicate copies of React, Material UI, and
+  the design system itself. Please ensure the following are also installed:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -56,8 +56,9 @@ yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material ech
   </figure>
 </div>
 <p>
-  @czi-sds/components brings peer dependencies of its own (@emotion/css,
-  @emotion/react, @mui/icons-material, and @tanstack/react-table). The
+  <code>@czi-sds/components</code> brings peer dependencies of its own
+  (<code>@emotion/css</code>, <code>@emotion/react</code>,
+  <code>@mui/icons-material</code>, and <code>@tanstack/react-table</code>). The
   <a
     href="./?path=/docs/design-documentation-sds-overview-getting-started--docs"
     target="_top"
@@ -119,8 +120,8 @@ export function DomainBreakdown() {
   </figure>
 </div>
 <p>
-  Charts compose with @czi-sds/components, so surrounding layout and controls
-  come from the main package:
+  Charts compose with <code>@czi-sds/components</code>, so surrounding layout
+  and controls come from the main package:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>

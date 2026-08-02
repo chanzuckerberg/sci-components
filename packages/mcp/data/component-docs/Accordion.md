@@ -38,7 +38,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `subtitle`        | `string`              | -         | Set on AccordionHeader. A text that will be displayed as a subtitle beneath the accordion title.                                    |
 | `chevronSize`     | `"xs"` \| `"s"`       | `"xs"`    | Set on AccordionHeader. Size of the toggle chevron icon.                                                                            |
 
-There are more props that can be used with the Accordion component, via those available to [MUI's](https://mui.com/material-ui/api/accordion/#props) [Accordion](https://mui.com/material-ui/api/accordion/#props) [component.](https://mui.com/material-ui/api/accordion/#props)
+There are more props that can be used with the Accordion component, via those available to [MUI's Accordion component](https://mui.com/material-ui/api/accordion/#props).
 
 ## Code examples
 

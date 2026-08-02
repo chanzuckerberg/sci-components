@@ -6,7 +6,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## SDS vs MUI
 
-The ComplexFilter is not directly based on any MUI component, but it does use the SDS Dropdown component, which in turn is ultimately based on [MUI's](https://mui.com/material-ui/react-autocomplete/) [Autocomplete](https://mui.com/material-ui/react-autocomplete/) [component](https://mui.com/material-ui/react-autocomplete/). As such, props that are available to either SDS's Dropdown and / or MUI's Autocomplete can be passed to ComplexFilter as such:
+The ComplexFilter is not directly based on any MUI component, but it does use the SDS Dropdown component, which in turn is ultimately based on [MUI's Autocomplete component](https://mui.com/material-ui/react-autocomplete/). As such, props that are available to either SDS's Dropdown and / or MUI's Autocomplete can be passed to ComplexFilter as such:
 
 - `DropdownMenuProps`: use this prop to pass MUIAutocomplete-specific props to ComplexFilter
 

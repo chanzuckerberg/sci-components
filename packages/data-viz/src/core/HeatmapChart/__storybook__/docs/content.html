@@ -7,8 +7,8 @@
 >
   <p>
     <strong>Ships separately:</strong>
-    HeatmapChart comes from @czi-sds/data-viz, not @czi-sds/components, and it
-    needs ECharts alongside it. See the
+    HeatmapChart comes from <code>@czi-sds/data-viz</code>, not
+    <code>@czi-sds/components</code>, and it needs ECharts alongside it. See the
     <a href="./?path=/docs/data-viz-overview--docs" target="_top">
       Data Viz overview
     </a>
@@ -39,10 +39,11 @@
   <li>
     <p>
       <strong>The props are ECharts' vocabulary, not the SDS one.</strong>
-      itemStyle, emphasis, symbolSize, grid, and axisPointer are passed through
-      to the underlying option object, and the ECharts documentation is the
-      reference for each of them. The chart takes nothing from the SDS theme:
-      color scales are yours to supply.
+      <code>itemStyle</code>, <code>emphasis</code>, <code>symbolSize</code>,
+      <code>grid</code>, and <code>axisPointer</code> are passed through to the
+      underlying option object, and the ECharts documentation is the reference
+      for each of them. The chart takes nothing from the SDS theme: color scales
+      are yours to supply.
     </p>
   </li>
   <li>
@@ -50,8 +51,8 @@
       <strong>It renders to SVG by default.</strong>
       That keeps text crisp and elements inspectable, and is the right choice up
       to a few thousand cells. Beyond that, switch
-      <em>echartsRendererMode</em>
-      to canvas, and reach for the camera below.
+      <code>echartsRendererMode</code> to <code>"canvas"</code>, and reach for
+      the camera below.
     </p>
   </li>
   <li>
@@ -64,13 +65,10 @@
 </ul>
 <h2>Sizing</h2>
 <p>
-  <strong>width</strong>
-  and
-  <strong>height</strong>
-  are required, in pixels, and the component throws if either is missing or
-  zero: ECharts cannot initialise into a box with no area. The chart does not
-  measure its container, so a responsive heatmap means measuring the container
-  yourself and passing the result down.
+  <code>width</code> and <code>height</code> are required, in pixels, and the
+  component throws if either is missing or zero: ECharts cannot initialise into
+  a box with no area. The chart does not measure its container, so a responsive
+  heatmap means measuring the container yourself and passing the result down.
 </p>
 <p>
   The grid fills those dimensions exactly, which makes cell size a matter of
@@ -80,11 +78,9 @@
 </p>
 <h2>Data and encoding</h2>
 <p>
-  <strong>data</strong>
-  is a flat array of cells, one per position in the grid, and each cell is an
-  object of whatever shape suits the data.
-  <strong>encode</strong>
-  names the two fields that place it:
+  <code>data</code> is a flat array of cells, one per position in the grid, and
+  each cell is an object of whatever shape suits the data.
+  <code>encode</code> names the two fields that place it:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -105,30 +101,25 @@
   </figure>
 </div>
 <p>
-  <strong>xAxisData</strong>
-  and
-  <strong>yAxisData</strong>
-  are the categories themselves, as strings, numbers, or objects with a value
-  and a textStyle. The values a cell is encoded on are indices into them, so the
-  two must line up: a cell whose geneIndex is 4 lands on the fifth entry of
-  xAxisData.
+  <code>xAxisData</code> and <code>yAxisData</code> are the categories
+  themselves, as strings, numbers, or objects with a <code>value</code> and a
+  <code>textStyle</code>. The values a cell is encoded on are indices into them,
+  so the two must line up: a cell whose <code>geneIndex</code> is 4 lands on the
+  fifth entry of <code>xAxisData</code>.
 </p>
 <p>
   Everything else a cell carries (an expression level, a count, a p-value) is
   invisible until something draws it. That is the job of
-  <strong>itemStyle</strong>
-  and
-  <strong>symbolSize</strong>
-  , both of which accept a callback that receives the data item, so the color
-  scale and the size scale are yours to define. Without an itemStyle every cell
-  is black, and symbolSize defaults to 5 pixels.
+  <code>itemStyle</code> and <code>symbolSize</code>, both of which accept a
+  callback that receives the data item, so the color scale and the size scale
+  are yours to define. Without an <code>itemStyle</code> every cell is black,
+  and <code>symbolSize</code> defaults to 5 pixels.
 </p>
 <h2>The camera</h2>
 <p>
-  A heatmap of any real size cannot be rendered whole.
-  <strong>camera</strong>
-  turns on a window over the grid, given in cells rather than pixels, and only
-  the cells inside it are drawn:
+  A heatmap of any real size cannot be rendered whole. <code>camera</code> turns
+  on a window over the grid, given in cells rather than pixels, and only the
+  cells inside it are drawn:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -142,60 +133,50 @@
   </figure>
 </div>
 <p>
-  Underneath it is ECharts'
-  <em>dataZoom</em>
-  with the zoom locked, which is why the interactions are the ones dataZoom
-  provides: dragging pans the window, and the wheel scrolls it vertically. The
-  window starts at the origin of the grid, and defaults to 40 cells wide by 20
-  tall when the sizes are left out. Size the container to the window, not to the
-  data.
+  Underneath it is ECharts' <code>dataZoom</code> with the zoom locked, which is
+  why the interactions are the ones <code>dataZoom</code> provides: dragging
+  pans the window, and the wheel scrolls it vertically. The window starts at the
+  origin of the grid, and defaults to 40 cells wide by 20 tall when the sizes
+  are left out. Size the container to the window, not to the data.
 </p>
 <h2>Escape hatches</h2>
 <p>
   The named props cover the common cases; everything else in ECharts is reached
-  through
-  <strong>options</strong>
-  , which is merged into the generated option object. Tooltips, visual maps, and
-  axis labels all arrive this way. The merge is shallow and treats a few keys
-  specially, which is worth knowing when an option appears to be ignored:
+  through <code>options</code>, which is merged into the generated option
+  object. Tooltips, visual maps, and axis labels all arrive this way. The merge
+  is shallow and treats a few keys specially, which is worth knowing when an
+  option appears to be ignored:
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <em>xAxis</em>
-      ,
-      <em>yAxis</em>
-      and
-      <em>series</em>
-      are merged one level deep over the chart's defaults, and only the first
-      entry of each is read. Passing an object replaces the matching default key
-      outright, so
-      <em>axisLabel</em>
-      given to xAxis replaces the whole default axisLabel rather than adding to
-      it.
+      <code>xAxis</code>, <code>yAxis</code> and <code>series</code> are merged
+      one level deep over the chart's defaults, and only the first entry of each
+      is read. Passing an object replaces the matching default key outright, so
+      <code>axisLabel</code> given to <code>xAxis</code> replaces the whole
+      default <code>axisLabel</code> rather than adding to it.
     </p>
   </li>
   <li>
     <p>
-      <em>axisPointer</em>
-      and
-      <em>dataZoom</em>
-      accept either a single object, applied to both axes, or a two-entry array
-      for the x and y axes separately. dataZoom is only applied when the camera
-      is active, since otherwise there is no window for it to describe.
+      <code>axisPointer</code> and <code>dataZoom</code> accept either a single
+      object, applied to both axes, or a two-entry array for the x and y axes
+      separately. <code>dataZoom</code> is only applied when the camera is
+      active, since otherwise there is no window for it to describe.
     </p>
   </li>
   <li>
     <p>
-      <em>grid</em>
-      has a prop of its own, which takes either an option object or a function
-      receiving the computed default. That is useful for insetting the grid to
-      make room for axis labels while keeping the sizing the chart worked out.
+      <code>grid</code> has a prop of its own, which takes either an option
+      object or a function receiving the computed default. That is useful for
+      insetting the grid to make room for axis labels while keeping the sizing
+      the chart worked out.
     </p>
   </li>
   <li>
     <p>
-      Every other key in options is spread over the result untouched, and wins.
+      Every other key in <code>options</code> is spread over the result
+      untouched, and wins.
     </p>
   </li>
 </ul>
@@ -206,7 +187,8 @@
     <strong>Do not use the dataZoom prop.</strong>
     The type still advertises it, but the component never forwards it and it
     ends up on the container div instead, where React will warn about an unknown
-    attribute. Pass dataZoom inside options, with the camera active.
+    attribute. Pass <code>dataZoom</code> inside <code>options</code>, with the
+    camera active.
   </p>
 </div>
 <h2>Downloading the chart</h2>
@@ -214,10 +196,9 @@
   There is no download prop. Exporting is something the ECharts instance does,
   so the work is getting hold of it: the ref the component forwards points at
   the container ECharts was initialised on, and
-  <em>getInstanceByDom</em>
-  trades that element for the chart. From there,
-  <em>getDataURL</em>
-  returns the picture as a data URL and an anchor turns it into a file:
+  <code>getInstanceByDom</code> trades that element for the chart. From there,
+  <code>getDataURL</code> returns the picture as a data URL and an anchor turns
+  it into a file:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
@@ -249,10 +230,9 @@ function download() {
 </div>
 <p>
   Look the instance up when the download is triggered rather than caching it.
-  Changing
-  <strong>echartsRendererMode</strong>
-  disposes the chart and builds a new one on the same element, and a cached
-  reference would be exporting one that no longer exists.
+  Changing <code>echartsRendererMode</code> disposes the chart and builds a new
+  one on the same element, and a cached reference would be exporting one that no
+  longer exists.
 </p>
 <p>Three things decide what comes out:</p>
 <ul class="sds-doc-bullet-list">
@@ -260,23 +240,19 @@ function download() {
     <p>
       <strong>The renderer decides the format, not the type option.</strong>
       An SVG chart can only export SVG, and a canvas chart can only export a
-      raster; asking a canvas chart for
-      <em>type: "svg"</em>
-      produces a PNG with a misleading name. Derive the file extension from
-      echartsRendererMode, as the example below does, or fix the renderer and
-      the extension together.
+      raster; asking a canvas chart for <code>type: "svg"</code> produces a PNG
+      with a misleading name. Derive the file extension from
+      <code>echartsRendererMode</code>, as the example below does, or fix the
+      renderer and the extension together.
     </p>
   </li>
   <li>
     <p>
-      <em>pixelRatio</em>
-      and
-      <em>backgroundColor</em>
-      only apply on the canvas path: 2 or 3 for a print-resolution PNG, and a
-      colour if the default transparent background will not do. An SVG export
-      ignores both and keeps the chart's own background.
-      <em>excludeComponents</em>
-      takes the names of components to hide while exporting, such as a toolbox.
+      <code>pixelRatio</code> and <code>backgroundColor</code> only apply on the
+      canvas path: 2 or 3 for a print-resolution PNG, and a colour if the
+      default transparent background will not do. An SVG export ignores both and
+      keeps the chart's own background. <code>excludeComponents</code> takes the
+      names of components to hide while exporting, such as a toolbox.
     </p>
   </li>
   <li>
@@ -310,15 +286,14 @@ const url = heatmap.getConnectedDataURL({
   </figure>
 </div>
 <p>
-  <em>getConnectedDataURL</em>
-  falls back to
-  <em>getDataURL</em>
-  when the chart is not in a connected group, so a single chart can call either.
-  That is what the
+  <code>getConnectedDataURL</code> falls back to <code>getDataURL</code> when
+  the chart is not in a connected group, so a single chart can call either. That
+  is what the
   <a href="./?path=/story/data-viz-heatmapchart--heatmap-demo" target="_top">
     heatmap demo
   </a>
-  does: its download button calls getConnectedDataURL on the grid alone.
+  does: its download button calls <code>getConnectedDataURL</code> on the grid
+  alone.
 </p>
 <h2>Behavior and accessibility</h2>
 <ul class="sds-doc-bullet-list">
@@ -336,16 +311,15 @@ const url = heatmap.getConnectedDataURL({
       Axis labels are drawn at font size 0 by default, and the x axis is rotated
       90 degrees. The charts this was built for pair the grid with their own
       scrollable axis components, which is why the built-in labels start hidden;
-      a small heatmap can turn them back on through options, as the example
-      below does.
+      a small heatmap can turn them back on through <code>options</code>, as the
+      example below does.
     </p>
   </li>
   <li>
     <p>
       Hover draws a border around the cell under the pointer (white and 4px on a
       square, black and 2px on a circle) and never scales it. Pass
-      <strong>emphasis</strong>
-      to change that.
+      <code>emphasis</code> to change that.
     </p>
   </li>
   <li>
@@ -357,12 +331,10 @@ const url = heatmap.getConnectedDataURL({
   </li>
   <li>
     <p>
-      Handlers in
-      <strong>onEvents</strong>
-      are rebound whenever the chart updates, and rebinding removes every
-      listener registered for that event name. If you also attach listeners to
-      the ECharts instance yourself, expect them to be dropped; attach them
-      through onEvents instead.
+      Handlers in <code>onEvents</code> are rebound whenever the chart updates,
+      and rebinding removes every listener registered for that event name. If
+      you also attach listeners to the ECharts instance yourself, expect them to
+      be dropped; attach them through <code>onEvents</code> instead.
     </p>
   </li>
   <li>
@@ -370,17 +342,18 @@ const url = heatmap.getConnectedDataURL({
       Color is the whole message in a heatmap. Pick a sequential scale that
       survives being read by someone with a color vision deficiency, keep it
       consistent between charts that will be compared, and make the scale itself
-      visible (a legend or a visualMap through options), since the component
-      does not draw one.
+      visible (a legend or a <code>visualMap</code> through
+      <code>options</code>), since the component does not draw one.
     </p>
   </li>
 </ul>
 <h2>Props</h2>
 <p>
-  Any remaining props are spread onto the container div, so className, id, and
-  data-testid work as usual, and the component forwards its ref to that div.
-  Every option below that names an ECharts concept links to the ECharts
-  documentation for the shape it takes.
+  Any remaining props are spread onto the container div, so
+  <code>className</code>, <code>id</code>, and <code>data-testid</code> work as
+  usual, and the component forwards its ref to that div. Every option below that
+  names an ECharts concept links to the ECharts documentation for the shape it
+  takes.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -390,20 +363,26 @@ const url = heatmap.getConnectedDataURL({
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>data</p></td>
-    <td><p>DatasetComponentOption["source"]</p></td>
+    <td>
+      <p><code>data</code></p>
+    </td>
+    <td>
+      <p><code>DatasetComponentOption["source"]</code></p>
+    </td>
     <td><p>- (required)</p></td>
     <td>
       <p>
-        The cells, as a flat array of objects whose fields are named by encode.
+        The cells, as a flat array of objects whose fields are named by
+        <code>encode</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>xAxisData</p></td>
     <td>
-      <p>(string | number |</p>
-      <p>{ value, textStyle })[]</p>
+      <p><code>xAxisData</code></p>
+    </td>
+    <td>
+      <p><code>(string | number | { value, textStyle })[]</code></p>
     </td>
     <td><p>- (required)</p></td>
     <td>
@@ -414,17 +393,22 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>yAxisData</p></td>
     <td>
-      <p>(string | number |</p>
-      <p>{ value, textStyle })[]</p>
+      <p><code>yAxisData</code></p>
+    </td>
+    <td>
+      <p><code>(string | number | { value, textStyle })[]</code></p>
     </td>
     <td><p>- (required)</p></td>
     <td><p>The categories along the y axis.</p></td>
   </tr>
   <tr>
-    <td><p>width</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>- (required)</p></td>
     <td>
       <p>
@@ -434,14 +418,22 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>height</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>height</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>- (required)</p></td>
     <td><p>Height of the chart in pixels, under the same rule.</p></td>
   </tr>
   <tr>
-    <td><p>encode</p></td>
-    <td><p>{ x: string; y: string }</p></td>
+    <td>
+      <p><code>encode</code></p>
+    </td>
+    <td>
+      <p><code>{ x: string; y: string }</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -451,13 +443,17 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>symbol</p></td>
     <td>
-      <p>"rect"</p>
-      <p>| "roundRect"</p>
-      <p>| "circle"</p>
+      <p><code>symbol</code></p>
     </td>
-    <td><p>"rect"</p></td>
+    <td>
+      <p><code>"rect"</code> |</p>
+      <p><code>"roundRect"</code> |</p>
+      <p><code>"circle"</code></p>
+    </td>
+    <td>
+      <p><code>"rect"</code></p>
+    </td>
     <td>
       <p>
         The shape of a cell. Circles turn the grid into a dot plot, where
@@ -466,55 +462,73 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>symbolSize</p></td>
     <td>
-      <p>number | number[]</p>
-      <p>| ((value, params)</p>
-      <p>=&gt; number | number[])</p>
+      <p><code>symbolSize</code></p>
     </td>
-    <td><p>5</p></td>
+    <td>
+      <p><code>number</code> |</p>
+      <p><code>number[]</code> |</p>
+      <p><code>((value, params) =&gt; number | number[])</code></p>
+    </td>
+    <td>
+      <p><code>5</code></p>
+    </td>
     <td>
       <p>
-        Cell size in pixels: one number, a [width, height] pair, or a callback
-        given the data item. Set it to the cell pitch for a solid grid.
+        Cell size in pixels: one number, a <code>[width, height]</code> pair, or
+        a callback given the data item. Set it to the cell pitch for a solid
+        grid.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>itemStyle</p></td>
-    <td><p>ScatterSeriesOption["itemStyle"]</p></td>
+    <td>
+      <p><code>itemStyle</code></p>
+    </td>
+    <td>
+      <p><code>ScatterSeriesOption["itemStyle"]</code></p>
+    </td>
     <td><p>solid black</p></td>
     <td>
       <p>
-        How a cell is painted. Its color accepts a callback receiving the data
-        item, which is how a value becomes a color.
+        How a cell is painted. Its <code>color</code> accepts a callback
+        receiving the data item, which is how a value becomes a color.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>emphasis</p></td>
-    <td><p>ScatterSeriesOption["emphasis"]</p></td>
+    <td>
+      <p><code>emphasis</code></p>
+    </td>
+    <td>
+      <p><code>ScatterSeriesOption["emphasis"]</code></p>
+    </td>
     <td><p>a 2–4px border</p></td>
     <td><p>How a cell is drawn while the pointer is over it.</p></td>
   </tr>
   <tr>
-    <td><p>camera</p></td>
     <td>
-      <p>{ active: boolean;</p>
-      <p>width: number;</p>
-      <p>height: number }</p>
+      <p><code>camera</code></p>
+    </td>
+    <td>
+      <p><code>{ active: boolean; width: number; height: number }</code></p>
     </td>
     <td><p>40 × 20 when active</p></td>
     <td>
       <p>
         Renders only a window of the grid, measured in cells, and lets the
-        pointer pan it. Sizes are ignored unless active is true.
+        pointer pan it. Sizes are ignored unless <code>active</code> is
+        <code>true</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>axisPointer</p></td>
-    <td><p>EChartsOption["axisPointer"]</p></td>
+    <td>
+      <p><code>axisPointer</code></p>
+    </td>
+    <td>
+      <p><code>EChartsOption["axisPointer"]</code></p>
+    </td>
     <td><p>hidden</p></td>
     <td>
       <p>
@@ -524,11 +538,12 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>grid</p></td>
     <td>
-      <p>EChartsOption["grid"]</p>
-      <p>| ((defaultGrid) =&gt;</p>
-      <p>EChartsOption["grid"])</p>
+      <p><code>grid</code></p>
+    </td>
+    <td>
+      <p><code>EChartsOption["grid"]</code> |</p>
+      <p><code>((defaultGrid) =&gt; EChartsOption["grid"])</code></p>
     </td>
     <td><p>fills the container</p></td>
     <td>
@@ -540,8 +555,12 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>options</p></td>
-    <td><p>EChartsOption</p></td>
+    <td>
+      <p><code>options</code></p>
+    </td>
+    <td>
+      <p><code>EChartsOption</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -551,24 +570,32 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
   <tr>
-    <td><p>onEvents</p></td>
     <td>
-      <p>Record&lt;string,</p>
-      <p>(event: unknown,</p>
-      <p>chart: ECharts) =&gt; void&gt;</p>
+      <p><code>onEvents</code></p>
+    </td>
+    <td>
+      <p><code>Record&lt;string, (event: unknown,</code></p>
+      <p><code>chart: ECharts) =&gt; void&gt;</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
         ECharts event listeners by name. Each handler gets the raw event, whose
-        data property is the cell, and the chart instance.
+        <code>data</code> property is the cell, and the chart instance.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>echartsRendererMode</p></td>
-    <td><p>"svg" | "canvas"</p></td>
-    <td><p>"svg"</p></td>
+    <td>
+      <p><code>echartsRendererMode</code></p>
+    </td>
+    <td>
+      <p><code>"svg"</code> |</p>
+      <p><code>"canvas"</code></p>
+    </td>
+    <td>
+      <p><code>"svg"</code></p>
+    </td>
     <td>
       <p>
         Which renderer ECharts initialises with. Canvas copes better with very
@@ -580,8 +607,8 @@ const url = heatmap.getConnectedDataURL({
 <h2>Code examples</h2>
 <h3><strong>Default HeatmapChart</strong></h3>
 <p>
-  The smallest complete heatmap: cells, two axes, a size, and an itemStyle that
-  turns each value into a color.
+  The smallest complete heatmap: cells, two axes, a size, and an
+  <code>itemStyle</code> that turns each value into a color.
 </p>
 <div
   class="sds-doc-example"
@@ -599,8 +626,8 @@ const url = heatmap.getConnectedDataURL({
 ></div>
 <h3>Axis labels and a tooltip</h3>
 <p>
-  Labels turned back on through options, with the grid inset to make room for
-  them, and an ECharts tooltip naming the cell under the pointer.
+  Labels turned back on through <code>options</code>, with the grid inset to
+  make room for them, and an ECharts tooltip naming the cell under the pointer.
 </p>
 <div
   class="sds-doc-example"
@@ -627,8 +654,8 @@ const url = heatmap.getConnectedDataURL({
 ></div>
 <h3>Events</h3>
 <p>
-  A click handler through onEvents, reading the cell back out of the ECharts
-  event.
+  A click handler through <code>onEvents</code>, reading the cell back out of
+  the ECharts event.
 </p>
 <div
   class="sds-doc-example"
