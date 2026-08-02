@@ -7,6 +7,7 @@ import {
   PLAYGROUND_STORY_ID,
   buildPlaygroundHref,
   readCodeFromHash,
+  readPaddingFromSearch,
 } from "../link";
 
 const SOURCE = `import { Button } from "@czi-sds/components";
@@ -91,6 +92,37 @@ describe("buildPlaygroundHref", () => {
 
     expect(search).not.toContain("code=");
     expect(readCodeFromHash(hash)).toBe(SOURCE);
+  });
+
+  it("passes on how the page it came from frames the example", () => {
+    const { search } = new URL(
+      buildPlaygroundHref(SOURCE, { padding: "none" })
+    );
+
+    expect(readPaddingFromSearch(search)).toBe("none");
+  });
+
+  it("says nothing about padding when there is nothing to say", () => {
+    const { search } = new URL(buildPlaygroundHref(SOURCE));
+
+    expect(search).not.toContain("padding");
+    expect(readPaddingFromSearch(search)).toBe("default");
+  });
+});
+
+describe("readPaddingFromSearch", () => {
+  it("falls back to the default for a bare visit", () => {
+    expect(readPaddingFromSearch("")).toBe("default");
+  });
+
+  it("ignores a value it does not recognise", () => {
+    expect(readPaddingFromSearch("?padding=roomy")).toBe("default");
+  });
+
+  it("finds the flag alongside Storybook's own parameters", () => {
+    expect(
+      readPaddingFromSearch("?id=playground--playground&padding=none")
+    ).toBe("none");
   });
 });
 

@@ -170,8 +170,14 @@ export const Surface = styled.div<CommonThemeProps>`
  * switching between the two reads as a change of device. Narrowing alone is
  * ambiguous at the desktop end, where a wide example fills the pane either way
  * and nothing on screen says which device is selected.
+ *
+ * The inset reads as the bezel around the screen. A page-width component is
+ * given none and fills the screen to its edges, which is the same call the
+ * documentation pages make with `data-example-padding`.
  */
-export const Viewport = styled.div<CommonThemeProps & { width?: number }>`
+export const Viewport = styled.div<
+  CommonThemeProps & { padded: boolean; width?: number }
+>`
   ${(props) => {
     const semanticColors = getSemanticColors(props);
 
@@ -181,7 +187,7 @@ export const Viewport = styled.div<CommonThemeProps & { width?: number }>`
       max-width: 100%;
       min-width: 0;
       display: flex;
-      padding: ${getSpaces(props)?.xl}px;
+      padding: ${props.padded ? getSpaces(props)?.xl : 0}px;
 
       /* Against the border-box default the reset lays down, so that a device
          width is the width of the screen and not of the bezel around it. */
@@ -190,9 +196,11 @@ export const Viewport = styled.div<CommonThemeProps & { width?: number }>`
       border-radius: ${getCorners(props)?.xl}px;
       background-color: ${semanticColors?.base?.backgroundPrimary};
 
-      /* Not clipped to the frame: the previews keep their overlays in place
-         rather than portalling them, and a menu opened near an edge would be
-         cut off by the rounding. */
+      /* The screen scrolls, as a device's does, and what it scrolls is clipped
+         to the rounding — which an example that reaches the edges needs. Menus
+         and tooltips are laid out against the window and escape this, as they
+         should: they are drawn over the device, not on it. */
+      overflow: auto;
     `;
   }}
 `;
@@ -208,6 +216,12 @@ export const Stage = styled.div`
   min-width: 0;
   box-sizing: border-box;
   position: relative;
+
+  /* Whatever an example stacks, it stacks against itself. A navigation header
+     sits at 2100 so that an app's own content cannot ride over it, which is
+     above the 1500 a tooltip gets: without a context of its own here, an
+     example would paint over the playground's toolbar. */
+  isolation: isolate;
 
   /* Components count on the reset a story gets from <CssBaseline />: a padded
      \`width: 100%\` content box otherwise overflows its own card. */

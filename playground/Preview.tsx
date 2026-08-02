@@ -12,6 +12,7 @@ import {
 import type { SDSTheme } from "@components/src/core/styles";
 import { previewTheme } from "@sds-docs/previewTheme";
 import type { ThemeMode } from "@sds-docs/useThemeMode";
+import type { PlaygroundPadding } from "./lib/link";
 import type { RunResult } from "./lib/runner";
 import { Message, Stage, Surface, Viewport } from "./style";
 
@@ -64,6 +65,13 @@ class RenderBoundary extends Component<BoundaryProps, { error: Error | null }> {
 export interface PreviewProps {
   mode: ThemeMode;
   /**
+   * How much room the device leaves around the example, carried over from how
+   * the documentation page frames it. Page-width components such as a
+   * navigation header are shown without any, so that they sit against the top
+   * of the screen the way they would in an app.
+   */
+  padding: PlaygroundPadding;
+  /**
    * Bumped on every run. It remounts the example, so state left over from the
    * previous revision (an open menu, a half-filled form) does not survive an
    * edit and make the preview disagree with the code beside it.
@@ -80,6 +88,7 @@ export interface PreviewProps {
  */
 export function Preview({
   mode,
+  padding,
   result,
   runKey,
   width,
@@ -93,7 +102,10 @@ export function Preview({
           {/* Scoped to the preview, so the example sits on the same reset a
               story does without the playground's own chrome inheriting it. */}
           <CssBaseline enableColorScheme={false} />
-          <Viewport width={width === "mobile" ? MOBILE_WIDTH : undefined}>
+          <Viewport
+            padded={padding === "default"}
+            width={width === "mobile" ? MOBILE_WIDTH : undefined}
+          >
             <Stage>
               {result?.error ? (
                 <Message role="alert">

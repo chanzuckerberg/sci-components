@@ -20,7 +20,10 @@ import {
   getSemanticColors,
   type CommonThemeProps,
 } from "@components/src/core/styles";
-import { buildPlaygroundHref } from "../playground/lib/link";
+import {
+  buildPlaygroundHref,
+  type PlaygroundPadding,
+} from "../playground/lib/link";
 import { CodeFigure } from "./CodeFigure";
 import {
   CODE_ACTION_CLASS,
@@ -321,7 +324,13 @@ class ExampleErrorBoundary extends Component<
 }
 
 /** The extracted `App.tsx`, shown below its live preview and collapsible. */
-function ExampleSource({ id }: { id: string }): ReactElement {
+function ExampleSource({
+  id,
+  padding,
+}: {
+  id: string;
+  padding: ExamplePadding;
+}): ReactElement {
   const [source, setSource] = useState<string | null>(null);
 
   useEffect(() => {
@@ -340,7 +349,11 @@ function ExampleSource({ id }: { id: string }): ReactElement {
 
   return (
     <CodeFigure
-      action={source === null ? null : <PlaygroundLink source={source} />}
+      action={
+        source === null ? null : (
+          <PlaygroundLink padding={padding} source={source} />
+        )
+      }
       collapsedByDefault
       code={source}
       label="Source Code"
@@ -350,20 +363,27 @@ function ExampleSource({ id }: { id: string }): ReactElement {
 }
 
 /**
- * Opens this example in the playground, with its source already loaded.
+ * Opens this example in the playground, with its source already loaded and the
+ * same room around it that it has here.
  *
  * The code travels in the link's own fragment, so the playground needs to know
  * nothing about the docs and the docs need no server. In a new tab, because the
  * playground fills the frame and the reader should not lose their place in the
  * page to try something out.
  */
-function PlaygroundLink({ source }: { source: string }): ReactElement {
+function PlaygroundLink({
+  padding,
+  source,
+}: {
+  padding: ExamplePadding;
+  source: string;
+}): ReactElement {
   const mode = useThemeMode();
 
   return (
     <a
       className={CODE_ACTION_CLASS}
-      href={buildPlaygroundHref(source, mode)}
+      href={buildPlaygroundHref(source, { padding, theme: mode })}
       rel="noreferrer"
       target="_blank"
     >
@@ -372,7 +392,8 @@ function PlaygroundLink({ source }: { source: string }): ReactElement {
   );
 }
 
-export type ExamplePadding = "default" | "none";
+/** The docs' name for the same flag the playground reads out of a link. */
+export type ExamplePadding = PlaygroundPadding;
 
 export interface SdsExampleProps {
   /**
@@ -440,7 +461,7 @@ export function SdsExample({
           </PreviewSurface>
         </EmotionThemeProvider>
       </ThemeProvider>
-      <ExampleSource id={id} />
+      <ExampleSource id={id} padding={padding} />
     </div>
   );
 }

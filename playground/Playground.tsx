@@ -18,7 +18,9 @@ import { DEFAULT_CODE } from "./lib/defaultCode";
 import {
   buildPlaygroundHref,
   readCodeFromHash,
+  readPaddingFromSearch,
   writeCodeToHash,
+  type PlaygroundPadding,
 } from "./lib/link";
 import { runCode, type RunResult } from "./lib/runner";
 import { scope } from "./lib/scope";
@@ -53,6 +55,11 @@ function initialCode(): string {
   return readCodeFromHash(window.location.hash) ?? DEFAULT_CODE;
 }
 
+function initialPadding(): PlaygroundPadding {
+  if (typeof window === "undefined") return "default";
+  return readPaddingFromSearch(window.location.search);
+}
+
 /**
  * The live code playground: an editor over an SDS preview, sharing its state
  * through the URL so any revision can be linked to.
@@ -75,6 +82,14 @@ export function Playground(): ReactElement {
   const [mode, setMode] = useState<ThemeMode>(initialMode);
   const theme = useMemo(() => Theme(mode), [mode]);
   const [previewWidth, setPreviewWidth] = useState<PreviewWidth>("desktop");
+
+  /**
+   * Read once and then left alone: it is how the example was documented, not
+   * something the playground offers to change. `writeCodeToHash` keeps the
+   * query string it arrived in, so it survives every edit.
+   */
+  const [padding] = useState(initialPadding);
+
   const [editorPercent, setEditorPercent] = useState(DEFAULT_EDITOR_PERCENT);
 
   const [result, setResult] = useState<RunResult | null>(null);
@@ -119,7 +134,7 @@ export function Playground(): ReactElement {
   }, [code, isReady]);
 
   const { handleKeyDown, handlePointerDown } = useResizeSplit(setEditorPercent);
-  const { copyLink, hasCopied } = useCopyLink(code, mode);
+  const { copyLink, hasCopied } = useCopyLink(code, mode, padding);
 
   return (
     <ThemeProvider theme={theme}>
@@ -216,6 +231,7 @@ export function Playground(): ReactElement {
             <PreviewPane>
               <Preview
                 mode={mode}
+                padding={padding}
                 result={result}
                 runKey={runKey}
                 width={previewWidth}
@@ -323,7 +339,8 @@ const COPIED_FOR = 2000;
  */
 function useCopyLink(
   code: string,
-  mode: ThemeMode
+  mode: ThemeMode,
+  padding: PlaygroundPadding
 ): { copyLink: () => void; hasCopied: boolean } {
   const [hasCopied, setHasCopied] = useState(false);
 
@@ -336,9 +353,9 @@ function useCopyLink(
 
   const copyLink = useCallback(() => {
     void navigator.clipboard
-      ?.writeText(buildPlaygroundHref(code, mode))
+      ?.writeText(buildPlaygroundHref(code, { padding, theme: mode }))
       .then(() => setHasCopied(true));
-  }, [code, mode]);
+  }, [code, mode, padding]);
 
   return { copyLink, hasCopied };
 }
