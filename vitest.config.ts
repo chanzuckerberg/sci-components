@@ -16,6 +16,19 @@ const dirname =
 export default defineConfig({
   test: {
     projects: [
+      /**
+       * The playground's pure helpers — URL encoding and the module runner —
+       * which are the parts of it worth pinning without a browser. The story
+       * itself is covered by the Storybook project below.
+       */
+      {
+        extends: true,
+        test: {
+          name: "playground",
+          environment: "jsdom",
+          include: ["playground/**/*.test.ts"],
+        },
+      },
       {
         extends: true,
         plugins: [

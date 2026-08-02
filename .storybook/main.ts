@@ -32,11 +32,21 @@ const config: StorybookConfig = {
     "../design-docs/**/*.mdx",
     // Guide to the MCP server, kept in the package it documents.
     "../packages/mcp/docs/**/*.mdx",
+    // The live code playground the docs' examples link out to.
+    "../playground/*.stories.tsx",
   ],
 
-  // The images the docs reference are committed alongside them and served from
-  // /design-assets.
-  staticDirs: [{ from: "../design-docs/assets", to: "/design-assets" }],
+  staticDirs: [
+    // The images the docs reference are committed alongside them.
+    { from: "../design-docs/assets", to: "/design-assets" },
+    /**
+     * Type definitions for the playground's editor. Fetched rather than
+     * bundled: they are generated from a package build, and a playground that
+     * would not open without one would be broken more often than it was
+     * useful. See `playground/scripts/generate-types.mjs`.
+     */
+    { from: "../playground/generated", to: "/playground-types" },
+  ],
 
   core: {
     disableWhatsNewNotifications: true,

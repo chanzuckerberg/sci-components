@@ -90,6 +90,8 @@ typings/
 dist
 docs-build
 storybook-static
+# Built from the packages' declarations by playground/scripts/generate-types.mjs
+playground/generated/types.json
 
 # Gatsby files
 .cache/

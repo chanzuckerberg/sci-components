@@ -16,15 +16,19 @@ import {
   type RefObject,
 } from "react";
 import {
-  Theme,
   getCorners,
   getSemanticColors,
   type CommonThemeProps,
-  type SDSTheme,
 } from "@components/src/core/styles";
+import { buildPlaygroundHref } from "../playground/lib/link";
 import { CodeFigure } from "./CodeFigure";
-import { PREVIEW_CLASS, SB_UNSTYLED_CLASS } from "./constants";
-import { useThemeMode, type ThemeMode } from "./useThemeMode";
+import {
+  CODE_ACTION_CLASS,
+  PREVIEW_CLASS,
+  SB_UNSTYLED_CLASS,
+} from "./constants";
+import { previewTheme } from "./previewTheme";
+import { useThemeMode } from "./useThemeMode";
 
 /**
  * Registry of the example apps referenced by the `data-example` placeholders in
@@ -186,35 +190,6 @@ function scopeCss(css: string, scope: string): string {
   return scoped;
 }
 
-/**
- * The SDS theme, with the previews' one departure from how a component behaves
- * in an app: Popper keeps its overlay in place instead of sending it through a
- * portal to the end of `<body>`.
- *
- * A portalled menu is positioned over the whole page and belongs to no preview
- * in particular, so it cannot be framed with the example that opened it and
- * lands on the prose below instead. Keeping it in place puts it inside the
- * surface, where it is bounded and can be measured. Components read this from
- * the theme, so the examples stay as they would be written in an app.
- */
-function previewTheme(mode: ThemeMode): SDSTheme {
-  const base = Theme(mode);
-
-  return {
-    ...base,
-    components: {
-      ...base.components,
-      MuiPopper: {
-        ...base.components?.MuiPopper,
-        defaultProps: {
-          ...base.components?.MuiPopper?.defaultProps,
-          disablePortal: true,
-        },
-      },
-    },
-  };
-}
-
 /** Room left around an overlay so it does not sit flush against the frame. */
 const OVERLAY_GUTTER = 16;
 
@@ -365,11 +340,35 @@ function ExampleSource({ id }: { id: string }): ReactElement {
 
   return (
     <CodeFigure
+      action={source === null ? null : <PlaygroundLink source={source} />}
       collapsedByDefault
       code={source}
       label="Source Code"
       language="tsx"
     />
+  );
+}
+
+/**
+ * Opens this example in the playground, with its source already loaded.
+ *
+ * The code travels in the link's own fragment, so the playground needs to know
+ * nothing about the docs and the docs need no server. In a new tab, because the
+ * playground fills the frame and the reader should not lose their place in the
+ * page to try something out.
+ */
+function PlaygroundLink({ source }: { source: string }): ReactElement {
+  const mode = useThemeMode();
+
+  return (
+    <a
+      className={CODE_ACTION_CLASS}
+      href={buildPlaygroundHref(source, mode)}
+      rel="noreferrer"
+      target="_blank"
+    >
+      Open in Playground
+    </a>
   );
 }
 

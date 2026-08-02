@@ -65,9 +65,12 @@
     "./packages/**/scripts/**/*",
     ".eslintrc.js",
     "./scripts/**/*",
+    "./docs-kit/**/*.ts",
     "./docs-kit/**/*.tsx",
     "./docs-kit/**/*.d.ts",
     "./design-docs/**/*.tsx",
+    "./playground/**/*.ts",
+    "./playground/**/*.tsx",
     "vitest.setup.ts",
     "vitest.shared.ts",
     "./packages/**/vitest.config.ts"

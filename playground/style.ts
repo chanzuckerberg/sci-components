@@ -1,0 +1,237 @@
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import {
+  fontBodyS,
+  fontBodyXs,
+  fontHeaderS,
+  getSemanticColors,
+  getSpaces,
+  type CommonThemeProps,
+} from "@components/src/core/styles";
+
+/** Height of the toolbar, and the grab area either side of the split. */
+const HEADER_HEIGHT = 48;
+const DIVIDER_WIDTH = 9;
+
+/** Below this the two panes have nowhere to go, so they stack. */
+export const STACK_BELOW = 840;
+
+export const Layout = styled.div<CommonThemeProps>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+      color: ${semanticColors?.base?.textPrimary};
+    `;
+  }}
+`;
+
+export const Header = styled.header<CommonThemeProps>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return `
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: ${spaces?.m}px;
+      height: ${HEADER_HEIGHT}px;
+      padding: 0 ${spaces?.l}px;
+      border-bottom: 1px solid ${semanticColors?.base?.divider};
+    `;
+  }}
+`;
+
+export const Title = styled.h1`
+  ${fontHeaderS}
+  margin: 0;
+`;
+
+/**
+ * Pushes what follows it to the trailing edge of the toolbar, separating the
+ * controls that act on the code from those that act on the preview.
+ */
+export const Spacer = styled.div`
+  flex: 1 1 auto;
+`;
+
+export const Actions = styled.div<CommonThemeProps>`
+  ${(props) => `
+    display: flex;
+    align-items: center;
+    gap: ${getSpaces(props)?.s}px;
+  `}
+`;
+
+export const Panes = styled.div`
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+
+  @media (max-width: ${STACK_BELOW}px) {
+    flex-direction: column;
+  }
+`;
+
+/**
+ * The editor's column. Its width is driven from the divider below; stacked, the
+ * two panes split the height evenly instead and the width is ignored.
+ */
+export const EditorPane = styled.div<{ widthPercent: number }>`
+  ${(props) => `
+    flex: 0 0 ${props.widthPercent}%;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: ${STACK_BELOW}px) {
+      flex: 1 1 50%;
+    }
+  `}
+`;
+
+export const PreviewPane = styled.div`
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+`;
+
+/**
+ * The drag handle between the panes. It is wider than the line it draws so
+ * there is something to catch with a pointer, and it disappears when the panes
+ * stack, where the split it controls no longer exists.
+ */
+export const Divider = styled.div<CommonThemeProps>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      flex: none;
+      width: ${DIVIDER_WIDTH}px;
+      cursor: col-resize;
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+      background-clip: content-box;
+      border-left: 1px solid ${semanticColors?.base?.divider};
+      border-right: 1px solid transparent;
+
+      &:hover {
+        border-left-color: ${semanticColors?.accent?.border};
+      }
+
+      &:focus-visible {
+        outline: 2px solid ${semanticColors?.accent?.borderFocus};
+        outline-offset: -2px;
+      }
+
+      @media (max-width: ${STACK_BELOW}px) {
+        display: none;
+      }
+    `;
+  }}
+`;
+
+/** The preview's own surface, which carries the theme being previewed. */
+export const Surface = styled.div<CommonThemeProps>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+      overflow: auto;
+      background-color: ${semanticColors?.base?.backgroundPrimary};
+      color: ${semanticColors?.base?.textPrimary};
+
+      /* A containing block for the overlays an example opens, so a menu is
+         placed and measured against the pane rather than the page. */
+      position: relative;
+    `;
+  }}
+`;
+
+/**
+ * Holds the example to a device width when one is chosen. Content reflows at
+ * that width natively rather than being scaled, so what is on screen is what a
+ * phone would render.
+ */
+export const Viewport = styled.div<{ width?: number }>`
+  ${(props) => `
+    flex: ${props.width === undefined ? "1 1 auto" : "none"};
+    width: ${props.width === undefined ? "100%" : `${props.width}px`};
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+  `}
+`;
+
+export const Stage = styled.div<CommonThemeProps>`
+  ${(props) => `
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: ${getSpaces(props)?.xl}px;
+    box-sizing: border-box;
+
+    /* Components count on the reset a story gets from <CssBaseline />: a padded
+       \`width: 100%\` content box otherwise overflows its own card. */
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+  `}
+`;
+
+/** A compile, evaluate or render failure, reported in place of the example. */
+export const Message = styled.p<CommonThemeProps>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return css`
+      ${fontBodyS(props)}
+      margin: 0 0 ${spaces?.l}px;
+      padding: ${spaces?.m}px ${spaces?.l}px;
+      border: 1px solid ${semanticColors?.negative?.border};
+      border-radius: 4px;
+      background-color: ${semanticColors?.negative?.surfaceSecondary};
+      color: ${semanticColors?.negative?.text};
+      white-space: pre-wrap;
+    `;
+  }}
+`;
+
+/** Editor-pane status line: what the last run did, and whether one is pending. */
+export const Status = styled.div<CommonThemeProps & { isError: boolean }>`
+  ${(props) => {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return css`
+      ${fontBodyXs(props)}
+      flex: none;
+      padding: ${spaces?.xs}px ${spaces?.l}px;
+      border-top: 1px solid ${semanticColors?.base?.divider};
+      color: ${props.isError
+        ? semanticColors?.negative?.text
+        : semanticColors?.base?.textSecondary};
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    `;
+  }}
+`;
+
+export const EditorSurface = styled.div`
+  flex: 1 1 auto;
+  min-height: 0;
+`;

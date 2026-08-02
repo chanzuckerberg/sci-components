@@ -14,7 +14,12 @@ import {
   type CommonThemeProps,
 } from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
-import { PREVIEW_CLASS, SB_UNSTYLED_CLASS, TOGGLE_CLASS } from "./constants";
+import {
+  CODE_ACTION_CLASS,
+  PREVIEW_CLASS,
+  SB_UNSTYLED_CLASS,
+  TOGGLE_CLASS,
+} from "./constants";
 import { highlightBlock } from "./highlight";
 import { SdsExample, type ExamplePadding } from "./SdsExample";
 
@@ -400,6 +405,33 @@ const Container = styled.div<CommonThemeProps>`
   .${TOGGLE_CLASS}:focus-visible {
     outline: 2px solid #58a6ff;
     outline-offset: 2px;
+  }
+  /* An action shares the bar, so the toggle gives up the width it was using to
+     push its chevron to the far edge and shrinks back to its label. */
+  figcaption[data-has-action] .${TOGGLE_CLASS} {
+    width: auto;
+  }
+  .${CODE_ACTION_CLASS} {
+    flex: none;
+    margin-left: 1.5em;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    border: none;
+  }
+  .${CODE_ACTION_CLASS}:hover {
+    color: #000;
+    border: none !important;
+    text-decoration: none !important;
+  }
+  .${CODE_ACTION_CLASS}:focus-visible {
+    outline: 2px solid #58a6ff;
+    outline-offset: 2px;
+  }
+  .${CODE_ACTION_CLASS} svg {
+    max-width: 10px;
+    margin-left: 4px;
+    color: inherit;
   }
   /* Chevron affordance: points down when expanded, right when collapsed. */
   .${TOGGLE_CLASS}::after {

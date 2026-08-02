@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type ReactElement } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { TOGGLE_CLASS } from "./constants";
 import { highlightBlock } from "./highlight";
 
@@ -12,6 +18,12 @@ export interface CodeFigureProps {
   collapsedByDefault?: boolean;
   /** See `highlightBlock`: on for snippets inlined in the docs, off for files. */
   compact?: boolean;
+  /**
+   * Rendered at the trailing edge of the caption bar, for something to do with
+   * the code beyond reading it. Giving one up shortens the toggle to its label,
+   * so the bar no longer expands from a click anywhere along it.
+   */
+  action?: ReactNode;
 }
 
 /**
@@ -29,6 +41,7 @@ export function CodeFigure({
   language,
   collapsedByDefault = false,
   compact = false,
+  action,
 }: CodeFigureProps): ReactElement {
   const [collapsed, setCollapsed] = useState(collapsedByDefault);
   const codeRef = useRef<HTMLElement>(null);
@@ -40,7 +53,7 @@ export function CodeFigure({
 
   return (
     <figure {...(collapsed ? { "data-collapsed": "" } : {})}>
-      <figcaption>
+      <figcaption {...(action ? { "data-has-action": "" } : {})}>
         <button
           type="button"
           className={TOGGLE_CLASS}
@@ -49,6 +62,7 @@ export function CodeFigure({
         >
           {label}
         </button>
+        {action}
       </figcaption>
       <pre>
         <code className={`language-${language}`} ref={codeRef}>

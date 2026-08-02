@@ -19,9 +19,12 @@
     "lib": ["dom", "es2022"]
   },
   "include": [
+    "./docs-kit/**/*.ts",
     "./docs-kit/**/*.tsx",
     "./docs-kit/**/*.d.ts",
     "./design-docs/**/*.tsx",
+    "./playground/**/*.ts",
+    "./playground/**/*.tsx",
     "./packages/components/src/**/__storybook__/docs/examples/*.tsx",
     "./packages/data-viz/src/**/__storybook__/docs/examples/*.tsx",
     // Ambient SVG/global types the components source relies on.
