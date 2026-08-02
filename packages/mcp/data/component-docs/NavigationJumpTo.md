@@ -8,13 +8,13 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 NavigationJumpTo is built on MUI's [Tabs](https://mui.com/material-ui/react-tabs/), but it is not a tab strip: the tabs are page sections, and which one is highlighted follows the scroll position rather than a value you hold. It differs from Tabs in these ways:
 
-- **value:** the component owns it. An IntersectionObserver watches the sections and highlights the first one in view, so there is no value prop to set.
+- `value`: the component owns it. An IntersectionObserver watches the sections and highlights the first one in view, so there is no `value` prop to set.
 
-- **onChange:** MUI's signature is replaced. It reports the index that became active, the event, and whether a click or a scroll caused it, and it fires once per change rather than on every scroll frame.
+- `onChange`: MUI's signature is replaced. It reports the index that became active, the event, and whether a click or a scroll caused it, and it fires once per change rather than on every scroll frame.
 
-- **orientation:** vertical is set for you, and the design only covers vertical. Passing "horizontal" is possible, since your props are applied last, but nothing is styled for it.
+- `orientation`: `"vertical"` is set for you, and the design only covers vertical. Passing `"horizontal"` is possible, since your props are applied last, but nothing is styled for it.
 
-- **Colors are fixed.** The indicator is a 2px rule in the accent active color and the label colors come from the theme. There is no indicatorColor or textColor to set.
+- **Colors are fixed.** The indicator is a 2px rule in the accent active color and the label colors come from the theme. There is no `indicatorColor` or `textColor` to set.
 
 - **No icons.** Items are a title and a ref; there is nowhere to put one.
 
@@ -22,36 +22,36 @@ NavigationJumpTo is built on MUI's [Tabs](https://mui.com/material-ui/react-tabs
 
 ## Behavior notes
 
-- Each item carries a ref to its section, and the highlight follows the first section in view, in the order the items are listed. An earlier section still showing by a few pixels therefore keeps the highlight, which is the problem offsetTop solves. While a click's smooth scroll is running the scroll-driven update is suspended, so the indicator does not race through the sections on the way.
+- Each item carries a ref to its section, and the highlight follows the first section in view, in the order the items are listed. An earlier section still showing by a few pixels therefore keeps the highlight, which is the problem `offsetTop` solves. While a click's smooth scroll is running the scroll-driven update is suspended, so the indicator does not race through the sections on the way.
 
-- Clicking an item scrolls its section into view. With **offsetTop** left at 0 that is a plain scrollIntoView, which works inside a scrolling container as well as on the page. Note that it scrolls every container around the section, so a section in a panel moves the panel and the page holding it.
+- Clicking an item scrolls its section into view. With `offsetTop` left at `0` that is a plain `scrollIntoView`, which works inside a scrolling container as well as on the page. Note that it scrolls every container around the section, so a section in a panel moves the panel and the page holding it.
 
-- Setting **offsetTop** changes the mechanism: the component scrolls the window and finds the section by id. Sections therefore need _id_ attributes, and a section without one simply will not scroll. It also assumes the page itself scrolls, so pair it with page-level scrolling rather than a scrolling panel.
+- Setting `offsetTop` changes the mechanism: the component scrolls the window and finds the section by id. Sections therefore need `id` attributes, and a section without one simply will not scroll. It also assumes the page itself scrolls, so pair it with page-level scrolling rather than a scrolling panel.
 
-- Sub-items nest exactly one level through **subItems** and render indented under their parent. They are ordinary items as far as indexing goes: a parent with two sub-items occupies indices 0, 1, and 2.
+- Sub-items nest exactly one level through `subItems` and render indented under their parent. They are ordinary items as far as indexing goes: a parent with two sub-items occupies indices 0, 1, and 2.
 
-- Each tab points _aria-controls_ at its section's id, falling back to a generated _navigation-panel-N_ when the section has no id. Give your sections ids so the reference resolves, or the tabs point at elements that do not exist.
+- Each tab points `aria-controls` at its section's id, falling back to a generated `navigation-panel-N` when the section has no id. Give your sections ids so the reference resolves, or the tabs point at elements that do not exist.
 
-- The strip labels itself _navigation-jump-to_. Pass an aria-label of your own when a page has more than one.
+- The strip labels itself `navigation-jump-to`. Pass an `aria-label` of your own when a page has more than one.
 
 ## Props
 
 Everything below is SDS's own. Other [Tabs props](https://mui.com/material-ui/api/tabs/) pass through to the underlying element, and because they are applied after the component's own, they can override them.
 
-| Name      | Type                                                                              | Default      | Description                                                                                                                                                                                                           |
-| --------- | --------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| items     | Item[]                                                                            | - (required) | The sections to list. See the shape below.                                                                                                                                                                            |
-| offsetTop | number                                                                            | 0            | How many pixels above a section the highlight should switch to it, which is what you want when a sticky header covers the top of the page. Any non-zero value also switches clicks to window scrolling by element id. |
-| onChange  | (value: number, event?: React.SyntheticEvent, type?: "click" \| "scroll") => void | -            | Called when the highlighted item changes, with its index and what caused the change. For a scroll the event is synthesized, not a real DOM event.                                                                     |
-| width     | CSSProperties["width"]                                                            | "100%"       | The width of the strip and of every item in it. Long titles wrap rather than truncate.                                                                                                                                |
+| Name        | Type                                                                                      | Default      | Description                                                                                                                                                                                                           |
+| ----------- | ----------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `items`     | `Item[]`                                                                                  | - (required) | The sections to list. See the shape below.                                                                                                                                                                            |
+| `offsetTop` | `number`                                                                                  | `0`          | How many pixels above a section the highlight should switch to it, which is what you want when a sticky header covers the top of the page. Any non-zero value also switches clicks to window scrolling by element id. |
+| `onChange`  | `(value: number,` `event?: React.SyntheticEvent,` `type?: "click" \| "scroll")` `=> void` | -            | Called when the highlighted item changes, with its index and what caused the change. For a scroll the event is synthesized, not a real DOM event.                                                                     |
+| `width`     | `CSSProperties["width"]`                                                                  | `"100%"`     | The width of the strip and of every item in it. Long titles wrap rather than truncate.                                                                                                                                |
 
 ## Item
 
-| Name       | Type                                  | Default | Description                                                                                          |
-| ---------- | ------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| title      | string                                | -       | The item's label. It is also kebab-cased into the tab's id, so keep titles distinct.                 |
-| elementRef | MutableRefObject<HTMLElement \| null> | -       | A ref on the section this item points at. The component observes and scrolls whatever the ref holds. |
-| subItems   | { title, elementRef }[]               | -       | Indented children, one level only. Sub-items cannot nest sub-items of their own.                     |
+| Name         | Type                                    | Default | Description                                                                                          |
+| ------------ | --------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| `title`      | `string`                                | -       | The item's label. It is also kebab-cased into the tab's id, so keep titles distinct.                 |
+| `elementRef` | `MutableRefObject<HTMLElement \| null>` | -       | A ref on the section this item points at. The component observes and scrolls whatever the ref holds. |
+| `subItems`   | `{ title, elementRef }[]`               | -       | Indented children, one level only. Sub-items cannot nest sub-items of their own.                     |
 
 ## Code examples
 
@@ -177,7 +177,7 @@ export default App;
 
 ### Sub-items and onChange
 
-Sub-items render indented under their parent, and the readout shows the index that onChange reports along with what triggered it. Click an item, then scroll the panel by hand to see the other kind of change arrive. The sub-sections are siblings of Methods rather than children, because a parent section wrapping them would keep the highlight for itself.
+Sub-items render indented under their parent, and the readout shows the index that `onChange` reports along with what triggered it. Click an item, then scroll the panel by hand to see the other kind of change arrive. The sub-sections are siblings of Methods rather than children, because a parent section wrapping them would keep the highlight for itself.
 
 **Example: JumpToSubItems**
 

@@ -32,27 +32,17 @@
     <p>
       <strong>The look is fixed:</strong>
       the accent fill, the square shape, the small semibold label and the 12px
-      X. Tag's
-      <em>sdsStyle</em>
-      ,
-      <em>sdsType</em>
-      ,
-      <em>sdsSize</em>
-      and
-      <em>color</em>
-      are not part of the type, and MUI's
-      <em>variant</em>
-      is not either.
+      X. Tag's <code>sdsStyle</code>, <code>sdsType</code>,
+      <code>sdsSize</code> and <code>color</code> are not part of the type, and
+      MUI's <code>variant</code> is not either.
     </p>
   </li>
   <li>
     <p>
       <strong>The X cannot be swapped:</strong>
-      SDS applies its own
-      <em>deleteIcon</em>
-      (an SDS Button holding the XMark icon) after your props, so a
-      <em>deleteIcon</em>
-      of your own is ignored without a warning.
+      SDS applies its own <code>deleteIcon</code> (an SDS Button holding the
+      XMark icon) after your props, so a <code>deleteIcon</code> of your own is
+      ignored without a warning.
     </p>
   </li>
 </ul>
@@ -77,21 +67,15 @@
       cannot be changed. The label beside it is read as plain text rather than
       as part of the button, so a row of filters is worth wrapping in a group
       with a name of its own, to say what the buttons are removing. The example
-      below uses
-      <em>role="group"</em>
-      with an
-      <em>aria-label</em>
-      .
+      below uses <code>role="group"</code> with an <code>aria-label</code>.
     </p>
   </li>
   <li>
     <p>
-      The tag carries
-      <em>role="none presentation"</em>
-      , so it contributes no semantics of its own. Adding an
-      <em>onClick</em>
-      does not change that: the tag becomes clickable to the pointer while still
-      announcing nothing, so leave the clicking to the X.
+      The tag carries <code>role="none presentation"</code>, so it contributes
+      no semantics of its own. Adding an <code>onClick</code> does not change
+      that: the tag becomes clickable to the pointer while still announcing
+      nothing, so leave the clicking to the X.
     </p>
   </li>
   <li>
@@ -115,8 +99,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>- (required)</p></td>
     <td>
       <p>
@@ -126,8 +114,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>onDelete</p></td>
-    <td><p>(event) =&gt; void</p></td>
+    <td>
+      <p><code>onDelete</code></p>
+    </td>
+    <td>
+      <p><code>(event) =&gt; void</code></p>
+    </td>
     <td><p>- (required)</p></td>
     <td>
       <p>
@@ -142,8 +134,8 @@
 <h3>Default TagFilter</h3>
 <p>
   A row of applied filters, each removing itself from the page's state through
-  onDelete. The row is a named group, which gives the identical "Delete Tag"
-  buttons some context.
+  <code>onDelete</code>. The row is a named group, which gives the identical
+  "Delete Tag" buttons some context.
 </p>
 <div
   class="sds-doc-example"

@@ -6,21 +6,21 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## SDS vs MUI
 
-SDS Popover is a thin wrapper around MUI's Popover. **PopoverProps** is MUI's own type re-exported unchanged, so there are no sds-prefixed props and everything in the MUI documentation applies. What SDS contributes is two positioning defaults and the styling of the paper the content sits on:
+SDS Popover is a thin wrapper around MUI's Popover. `PopoverProps` is MUI's own type re-exported unchanged, so there are no sds-prefixed props and everything in the MUI documentation applies. What SDS contributes is two positioning defaults and the styling of the paper the content sits on:
 
-- **anchorOrigin:** set to _{ vertical: "bottom", horizontal: "left" }_, where MUI's default is _top_ / _left_. An SDS popover therefore opens below its anchor and aligned to its left edge, rather than on top of it.
+- `anchorOrigin`: set to `{ vertical: "bottom", horizontal: "left" }`, where MUI's default is `"top"`/`"left"`. An SDS popover therefore opens below its anchor and aligned to its left edge, rather than on top of it.
 
-- **transformOrigin:** set to _{ vertical: -8, horizontal: 0 }_, taken from the **s** space token. A number is subtracted from the anchor point rather than naming a corner, so a negative eight reads as an 8px gap between the anchor and the popover.
+- `transformOrigin`: set to `{ vertical: -8, horizontal: 0 }`, taken from the `s` space token. A number is subtracted from the anchor point rather than naming a corner, so a negative eight reads as an 8px gap between the anchor and the popover.
 
-- **Both defaults are spread before your props,** which means each one is replaced whole rather than merged. Passing a transformOrigin of your own drops the 8px gap unless you write it back in, and the same is true of anchorOrigin.
+- **Both defaults are spread before your props,** which means each one is replaced whole rather than merged. Passing a `transformOrigin` of your own drops the 8px gap unless you write it back in, and the same is true of `anchorOrigin`.
 
-- **The paper is restyled:** the surface colour comes from the theme's _surfacePrimary_, corners are the **l** radius (6px), the shadow is **m**, and there is a hairline in _borderSecondary_ at 15% opacity. SDS also sets _background-image: none_, which removes the tint MUI's Paper paints over surfaces in dark mode.
+- **The paper is restyled:** the surface colour comes from the theme's `surfacePrimary`, corners are the `l` radius (6px), the shadow is `m`, and there is a hairline in `borderSecondary` at 15% opacity. SDS also sets `background-image: none`, which removes the tint MUI's Paper paints over surfaces in dark mode.
 
 - **The hairline is an outline, not a border.** It is drawn outside the paper's box, so it never adds to the popover's size or shifts the content inside it.
 
 - **elevation has no visible effect.** SDS sets the shadow on the paper with enough specificity to win over MUI's elevation styles, so every popover carries the same one.
 
-- **The paper already has padding** of 6px vertically and 12px horizontally, and it is best treated as fixed: SDS sets it through a descendant selector on the popover's root, which outranks an _sx_ on the paper slot. Content that needs more room should add its own padding rather than try to replace what is there.
+- **The paper already has padding** of 6px vertically and 12px horizontally, and it is best treated as fixed: SDS sets it through a descendant selector on the popover's root, which outranks an `sx` on the paper slot. Content that needs more room should add its own padding rather than try to replace what is there.
 
 ## MUI Documentation
 
@@ -30,17 +30,17 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - A Popover is built on MUI's Modal. It renders in a portal at the end of the document, traps focus while it is open, hides the rest of the page from assistive technology, and locks the page's scroll. It is a modal surface that happens to be anchored, not a floating layer over a page that carries on as normal.
 
-- The backdrop is invisible but present, so a click anywhere outside the popover is caught by it rather than by whatever is underneath. _onClose_ is called with the event and a reason: _"backdropClick"_ or _"escapeKeyDown"_. Closing is left to you, since the open state is yours.
+- The backdrop is invisible but present, so a click anywhere outside the popover is caught by it rather than by whatever is underneath. `onClose` is called with the event and a reason: `"backdropClick"` or `"escapeKeyDown"`. Closing is left to you, since the open state is yours.
 
 - **anchorEl has to be state, not a ref.** The popover measures the anchor while rendering, so it needs a render to happen once the element is known. Storing the trigger in a ref leaves the popover with nothing to measure on the first open.
 
-- Nothing at all is rendered while _open_ is false, so the content is mounted fresh on each open and its state starts over. Pass _keepMounted_ to keep it in the document instead, worth it when the content is expensive to build or has to stay findable by an in-page search.
+- Nothing at all is rendered while `open` is `false`, so the content is mounted fresh on each open and its state starts over. Pass `keepMounted` to keep it in the document instead, worth it when the content is expensive to build or has to stay findable by an in-page search.
 
 - The position is worked out when the popover opens and again on window resize; it does not follow its anchor. Page scroll is locked while it is open, so this is usually enough, but an anchor inside a box that scrolls on its own can be scrolled away from its popover.
 
-- A popover that would fall off the screen is pulled back inside, leaving _marginThreshold_ (16px) between it and the edge. Unlike Tooltip, it does not flip to the other side of its anchor.
+- A popover that would fall off the screen is pulled back inside, leaving `marginThreshold` (16px) between it and the edge. Unlike Tooltip, it does not flip to the other side of its anchor.
 
-- Give the popover an _id_ and point the trigger at it with _aria-describedby_ while it is open, so the popover is announced as the description of the control that opened it.
+- Give the popover an `id` and point the trigger at it with `aria-describedby` while it is open, so the popover is announced as the description of the control that opened it.
 
 - Popover is the plain anchored surface the richer overlays are built from, and it is often not the component to reach for directly. Use Tooltip for a short hint on hover, DropdownMenu or Menu for a list of choices, Dialog for a task that should interrupt the page, and Popover for anchored content that none of those describe.
 
@@ -48,29 +48,29 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Popover takes MUI's props and adds none of its own. The ones needed to get a popover working, and those whose SDS defaults differ from MUI's, are listed below. See the MUI documentation for the rest.
 
-| Name               | Type                                                                                                       | Default                                    | Description                                                                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| open               | boolean                                                                                                    | -                                          | Required. Whether the popover is shown. Usually derived from whether an anchor has been recorded.                                                                |
-| anchorEl           | HTMLElement \| (() => HTMLElement) \| null                                                                 | -                                          | The element the popover is positioned against. Keep it in state so that setting it causes the render the popover needs in order to measure it.                   |
-| onClose            | (event, reason) => void                                                                                    | -                                          | Called on backdrop click and on Escape, with "backdropClick" or "escapeKeyDown" as the reason. Closing the popover is up to you.                                 |
-| children           | ReactNode                                                                                                  | -                                          | The content, placed straight onto the paper, which has already padded itself by 6px and 12px.                                                                    |
-| anchorOrigin       | { vertical: "top" \| "center" \| "bottom" \| number, horizontal: "left" \| "center" \| "right" \| number } | { vertical: "bottom", horizontal: "left" } | The point on the anchor the popover attaches to. SDS changes MUI's vertical default from top to bottom.                                                          |
-| transformOrigin    | { vertical: "top" \| "center" \| "bottom" \| number, horizontal: "left" \| "center" \| "right" \| number } | { vertical: -8, horizontal: 0 }            | The point on the popover that meets the anchor's. The negative eight is what produces the gap; passing your own value replaces it.                               |
-| anchorReference    | "anchorEl" \| "anchorPosition" \| "none"                                                                   | "anchorEl"                                 | Whether to position against an element, a point on the page, or nothing at all. "anchorPosition" is how a popover opens at the cursor.                           |
-| anchorPosition     | { top: number, left: number }                                                                              | -                                          | The point to open at, in viewport coordinates. Read only when anchorReference is "anchorPosition".                                                               |
-| slotProps          | { paper, backdrop, root, transition }                                                                      | -                                          | Props for the parts the popover is made of. slotProps.paper is where a width or a max height belongs; the padding there is SDS's and outranks an sx on the slot. |
-| marginThreshold    | number                                                                                                     | 16                                         | How much room is kept between the popover and the edge of the window when it has to be pulled back on screen.                                                    |
-| keepMounted        | boolean                                                                                                    | false                                      | Keeps the content in the document while closed, preserving its state at the cost of rendering it up front.                                                       |
-| disableScrollLock  | boolean                                                                                                    | false                                      | Lets the page scroll while the popover is open. The popover stays where it was placed, so the anchor scrolls out from under it.                                  |
-| disablePortal      | boolean                                                                                                    | false                                      | Renders the popover where it is written rather than at the end of the document, which puts it back within reach of an ancestor's overflow.                       |
-| elevation          | number                                                                                                     | 8                                          | MUI's prop. It has no visible effect, since SDS sets the paper's shadow itself.                                                                                  |
-| transitionDuration | number \| { appear, enter, exit } \| "auto"                                                                | "auto"                                     | How long the grow transition runs. "auto" scales it to the size of the popover.                                                                                  |
+| Name                 | Type                                                                                                           | Default                                      | Description                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `open`               | `boolean`                                                                                                      | -                                            | Required. Whether the popover is shown. Usually derived from whether an anchor has been recorded.                                                                    |
+| `anchorEl`           | `HTMLElement \| (() => HTMLElement) \| null`                                                                   | -                                            | The element the popover is positioned against. Keep it in state so that setting it causes the render the popover needs in order to measure it.                       |
+| `onClose`            | `(event, reason) => void`                                                                                      | -                                            | Called on backdrop click and on Escape, with `"backdropClick"` or `"escapeKeyDown"` as the reason. Closing the popover is up to you.                                 |
+| `children`           | `ReactNode`                                                                                                    | -                                            | The content, placed straight onto the paper, which has already padded itself by 6px and 12px.                                                                        |
+| `anchorOrigin`       | `{ vertical: "top" \| "center" \| "bottom" \| number,` `horizontal: "left" \| "center" \| "right" \| number }` | `{ vertical: "bottom", horizontal: "left" }` | The point on the anchor the popover attaches to. SDS changes MUI's vertical default from `"top"` to `"bottom"`.                                                      |
+| `transformOrigin`    | `{ vertical: "top" \| "center" \| "bottom" \| number,` `horizontal: "left" \| "center" \| "right" \| number }` | `{ vertical: -8, horizontal: 0 }`            | The point on the popover that meets the anchor's. The negative eight is what produces the gap; passing your own value replaces it.                                   |
+| `anchorReference`    | `"anchorEl" \| "anchorPosition" \| "none"`                                                                     | `"anchorEl"`                                 | Whether to position against an element, a point on the page, or nothing at all. `"anchorPosition"` is how a popover opens at the cursor.                             |
+| `anchorPosition`     | `{ top: number, left: number }`                                                                                | -                                            | The point to open at, in viewport coordinates. Read only when `anchorReference` is `"anchorPosition"`.                                                               |
+| `slotProps`          | `{ paper, backdrop, root, transition }`                                                                        | -                                            | Props for the parts the popover is made of. `slotProps.paper` is where a width or a max height belongs; the padding there is SDS's and outranks an `sx` on the slot. |
+| `marginThreshold`    | `number`                                                                                                       | `16`                                         | How much room is kept between the popover and the edge of the window when it has to be pulled back on screen.                                                        |
+| `keepMounted`        | `boolean`                                                                                                      | `false`                                      | Keeps the content in the document while closed, preserving its state at the cost of rendering it up front.                                                           |
+| `disableScrollLock`  | `boolean`                                                                                                      | `false`                                      | Lets the page scroll while the popover is open. The popover stays where it was placed, so the anchor scrolls out from under it.                                      |
+| `disablePortal`      | `boolean`                                                                                                      | `false`                                      | Renders the popover where it is written rather than at the end of the document, which puts it back within reach of an ancestor's overflow.                           |
+| `elevation`          | `number`                                                                                                       | `8`                                          | MUI's prop. It has no visible effect, since SDS sets the paper's shadow itself.                                                                                      |
+| `transitionDuration` | `number \| { appear, enter, exit } \| "auto"`                                                                  | `"auto"`                                     | How long the grow transition runs. `"auto"` scales it to the size of the popover.                                                                                    |
 
 ## Code examples
 
 ### **Default Popover**
 
-The least a popover needs: an anchor kept in state, an open derived from it, and an onClose that clears it. It opens below the trigger, with the 8px gap the SDS defaults provide.
+The least a popover needs: an anchor kept in state, an `open` derived from it, and an `onClose` that clears it. It opens below the trigger, with the 8px gap the SDS defaults provide.
 
 **Example: DefaultPopover**
 
@@ -121,7 +121,7 @@ export default App;
 
 ### **Positioning**
 
-anchorOrigin picks the point on the trigger and transformOrigin the point on the popover that meets it. Because SDS's defaults are replaced rather than merged, each of these pairs writes the gap back in as a negative number.
+`anchorOrigin` picks the point on the trigger and `transformOrigin` the point on the popover that meets it. Because SDS's defaults are replaced rather than merged, each of these pairs writes the gap back in as a negative number.
 
 **Example: PopoverPositioning**
 
@@ -232,7 +232,7 @@ export default App;
 
 ### **Popover with rich content**
 
-Anything React can render goes on the paper. A popover holding more than a sentence wants a width, which is set through slotProps.paper, and a little more room than the paper's 6px and 12px, which the content adds itself.
+Anything React can render goes on the paper. A popover holding more than a sentence wants a width, which is set through `slotProps.paper`, and a little more room than the paper's 6px and 12px, which the content adds itself.
 
 **Example: PopoverWithRichContent**
 
@@ -344,7 +344,7 @@ export default App;
 
 ### **Opening at the cursor**
 
-With anchorReference set to "anchorPosition" the popover is placed at a point rather than against an element, which is what a right-click menu needs. The vertical offset in the SDS transformOrigin applies here too, so the popover sits 8px below the cursor.
+With `anchorReference` set to `"anchorPosition"` the popover is placed at a point rather than against an element, which is what a right-click menu needs. The vertical offset in the SDS `transformOrigin` applies here too, so the popover sits 8px below the cursor.
 
 **Example: PopoverAtCursorPosition**
 

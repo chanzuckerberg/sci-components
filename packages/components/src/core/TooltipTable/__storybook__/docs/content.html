@@ -13,45 +13,36 @@
 <p>
   TooltipTable is not a tooltip. It is the content that goes inside one: a
   two-column table of labels and values built on MUI's Table, exported as
-  <em>TooltipTable</em>
-  and named
-  <em>TooltipTableContent</em>
-  in the source. It has no trigger, no hover behavior and no popper of its own,
-  so it does nothing on its own. Pass it to a tooltip's
-  <em>componentSlot</em>
-  and let the tooltip do the showing. What it adds:
+  <code>TooltipTable</code> and named <code>TooltipTableContent</code> in the
+  source. It has no trigger, no hover behavior and no popper of its own, so it
+  does nothing on its own. Pass it to a tooltip's <code>componentSlot</code> and
+  let the tooltip do the showing. What it adds:
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <strong>data:</strong>
-      the sections. Each one takes a
-      <em>label</em>
-      , a list of
-      <em>dataRows</em>
-      of label and value, and an optional
-      <em>disabled</em>
-      flag. Sections are separated by a divider, in the order given.
+      <code>data</code>: the sections. Each one takes a <code>label</code>, a
+      list of <code>dataRows</code> of label and value, and an optional
+      <code>disabled</code> flag. Sections are separated by a divider, in the
+      order given.
     </p>
   </li>
   <li>
     <p>
-      <strong>itemAlign:</strong>
-      whether the values sit at the right of their column, which lines numbers
-      up, or at the left.
+      <code>itemAlign</code>: whether the values sit at the right of their
+      column, which lines numbers up, or at the left.
     </p>
   </li>
   <li>
     <p>
-      <strong>showSectionHeader:</strong>
-      whether the section labels are drawn at all. The dividers stay either way.
+      <code>showSectionHeader</code>: whether the section labels are drawn at
+      all. The dividers stay either way.
     </p>
   </li>
   <li>
     <p>
-      <strong>contentAlert:</strong>
-      a line above the whole table, as a string or an element, for a caveat
-      about the numbers below it.
+      <code>contentAlert</code>: a line above the whole table, as a string or an
+      element, for a caveat about the numbers below it.
     </p>
   </li>
 </ul>
@@ -65,20 +56,16 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      Put it in
-      <em>componentSlot</em>
-      , not
-      <em>title</em>
-      . A tooltip wraps its title in a paragraph, and a table inside a paragraph
-      is invalid HTML that React reports as an error in the console.
+      Put it in <code>componentSlot</code>, not <code>title</code>. A tooltip
+      wraps its title in a paragraph, and a table inside a paragraph is invalid
+      HTML that React reports as an error in the console.
     </p>
   </li>
   <li>
     <p>
-      Give the tooltip
-      <em>hasInvertedStyle={false}</em>
-      . The table is designed for a light surface, which is what the design
-      shows and what keeps the section labels readable.
+      Give the tooltip <code>hasInvertedStyle={false}</code>. The table is
+      designed for a light surface, which is what the design shows and what
+      keeps the section labels readable.
     </p>
   </li>
   <li>
@@ -86,16 +73,15 @@
       The table asks for at least 224px and a tooltip stops at 250px, so there
       is almost no slack: long row labels wrap and push the table into a
       scrollbar. Keeping labels to a word or two matters more here than anywhere
-      else.
-      <em>width="wide"</em>
-      on the tooltip buys room for a table that genuinely needs it.
+      else. <code>width="wide"</code> on the tooltip buys room for a table that
+      genuinely needs it.
     </p>
   </li>
   <li>
     <p>
       A disabled section is drawn in the disabled text colour and nothing more:
       it is still read out in full, so the reason it is dimmed has to come from
-      somewhere else, such as the contentAlert above it.
+      somewhere else, such as the <code>contentAlert</code> above it.
     </p>
   </li>
   <li>
@@ -118,30 +104,38 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>data</p></td>
     <td>
-      <p>Array&lt;{</p>
-      <p>label?: string;</p>
-      <p>dataRows: {</p>
-      <p>label: string;</p>
-      <p>value: string | number;</p>
-      <p>}[];</p>
-      <p>disabled?: boolean;</p>
-      <p>}&gt;</p>
+      <p><code>data</code></p>
+    </td>
+    <td>
+      <p><code>Array&lt;{</code></p>
+      <p><code>label?: string;</code></p>
+      <p><code>dataRows: {</code></p>
+      <p><code>label: string;</code></p>
+      <p><code>value: string | number;</code></p>
+      <p><code>}[];</code></p>
+      <p><code>disabled?: boolean;</code></p>
+      <p><code>}&gt;</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
         The sections, drawn in order and separated by dividers. A section's
-        label heads it, its dataRows fill it, and disabled greys the whole
-        block.
+        <code>label</code> heads it, its <code>dataRows</code> fill it, and
+        <code>disabled</code> greys the whole block.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>itemAlign</p></td>
-    <td><p>"left" | "right"</p></td>
-    <td><p>"right"</p></td>
+    <td>
+      <p><code>itemAlign</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"right"</code></p>
+    </td>
     <td>
       <p>
         Which side of its column each value sits on. Right lines numbers up with
@@ -150,9 +144,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>showSectionHeader</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>showSectionHeader</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
         Whether section labels are drawn. False hides all of them; the dividers
@@ -161,8 +161,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>contentAlert</p></td>
-    <td><p>string | JSX.Element</p></td>
+    <td>
+      <p><code>contentAlert</code></p>
+    </td>
+    <td>
+      <p><code>string | JSX.Element</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>

@@ -6,31 +6,31 @@ The Icon component's source code in the SDS codebase can be found [here](https:/
 
 ## How it works
 
-Icon renders an SVG through MUI's SvgIcon, picking one of two drawings based on the size you ask for: xxs, xs, and s use the 16px artwork, while l and xl use the 24px artwork. Both are then scaled to the exact dimensions of the size. This is why the sizes are not interchangeable across icons; an icon that only ships the large artwork cannot be rendered at s.
+Icon renders an SVG through MUI's SvgIcon, picking one of two drawings based on the size you ask for: `"xxs"`, `"xs"`, and `"s"` use the 16px artwork, while `"l"` and `"xl"` use the 24px artwork. Both are then scaled to the exact dimensions of the size. This is why the sizes are not interchangeable across icons; an icon that only ships the large artwork cannot be rendered at `"s"`.
 
 - The types tie the two props together. Passing a size an icon does not support is a TypeScript error, and at runtime it logs an error to the console and renders nothing at all rather than falling back to another size.
 
-- The icon is wrapped in a div with display: contents, so it does not add a box to the layout and the SVG behaves as a direct child of whatever contains it.
+- The icon is wrapped in a div with `display: contents`, so it does not add a box to the layout and the SVG behaves as a direct child of whatever contains it.
 
 - The color comes from the SDS palette, not from the surrounding text color, and it defaults to indigo. Pair Icon with a component like Button or MenuItem when the icon should follow that component's state colors.
 
-- The SVG has no title or label of its own. When an icon carries meaning on its own, put the label on the interactive element around it, for example an aria-label on an icon-only Button.
+- The SVG has no title or label of its own. When an icon carries meaning on its own, put the label on the interactive element around it, for example an `aria-label` on an icon-only Button.
 
 ## Props
 
-| Name      | Type                                                                     | Default                             | Description                                                                                                            |
-| --------- | ------------------------------------------------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| sdsIcon   | keyof IconNameToSizes                                                    | -                                   | Required. The name of the icon, as listed in the Icon Bank. Names are case-sensitive, for example XMark and LightBulb. |
-| sdsSize   | "xxs" (10px) \| "xs" (12px) \| "s" (16px) \| "l" (24px) \| "xl" (32px)   | -                                   | Required. Which sizes are accepted depends on the icon named in sdsIcon.                                               |
-| color     | "blue" \| "gray" \| "green" \| "purple" \| "indigo" \| "red" \| "yellow" | "indigo"                            | A hue from the SDS palette. Note that this is the SDS color prop, not the MUI one, and it does not accept a CSS color. |
-| shade     | 100 \| 200 \| 300 \| 400 \| 500 \| 600 \| 700 \| 800                     | 500 in light mode, 600 in dark mode | The step within the chosen hue.                                                                                        |
-| className | string                                                                   | -                                   | Applied to the SVG. Useful for overriding the fill from a parent component.                                            |
+| Name        | Type                                                                             | Default                                 | Description                                                                                                                    |
+| ----------- | -------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `sdsIcon`   | `keyof IconNameToSizes`                                                          | -                                       | Required. The name of the icon, as listed in the Icon Bank. Names are case-sensitive, for example `"XMark"` and `"LightBulb"`. |
+| `sdsSize`   | `"xxs"` (10px) \| `"xs"` (12px) \| `"s"` (16px) \| `"l"` (24px) \| `"xl"` (32px) | -                                       | Required. Which sizes are accepted depends on the icon named in `sdsIcon`.                                                     |
+| `color`     | `"blue" \| "gray" \| "green" \| "purple" \| "indigo" \| "red" \| "yellow"`       | `"indigo"`                              | A hue from the SDS palette. Note that this is the SDS `color` prop, not the MUI one, and it does not accept a CSS color.       |
+| `shade`     | `100 \| 200 \| 300 \| 400 \| 500 \| 600 \| 700 \| 800`                           | `500` in light mode, `600` in dark mode | The step within the chosen hue.                                                                                                |
+| `className` | `string`                                                                         | -                                       | Applied to the SVG. Useful for overriding the fill from a parent component.                                                    |
 
 ## Code examples
 
 ### Default Icon
 
-sdsIcon and sdsSize are the only required props. With no color set, the icon renders in indigo.
+`sdsIcon` and `sdsSize` are the only required props. With no `color` set, the icon renders in indigo.
 
 **Example: DefaultIcon**
 
@@ -50,7 +50,7 @@ export default App;
 
 ### Icon Sizes
 
-The five sizes, shown with an icon that supports all of them. Below s the 16px artwork is scaled down, and at l and xl a separate, more detailed drawing is used.
+The five sizes, shown with an icon that supports all of them. Below `"s"` the 16px artwork is scaled down, and at `"l"` and `"xl"` a separate, more detailed drawing is used.
 
 **Example: IconSizes**
 
@@ -129,7 +129,7 @@ export default App;
 
 ### Icon Colors
 
-color picks the hue and shade picks the step within it. Both come from the SDS palette rather than from the surrounding text color.
+`color` picks the hue and `shade` picks the step within it. Both come from the SDS palette rather than from the surrounding text color.
 
 **Example: IconColors**
 
@@ -183,7 +183,7 @@ export default App;
 
 ### Icons in Components
 
-When an icon is passed to another SDS component, that component controls the size and the color, so leave color off and let it inherit the component's states.
+When an icon is passed to another SDS component, that component controls the size and the color, so leave `color` off and let it inherit the component's states.
 
 **Example: IconsInComponents**
 

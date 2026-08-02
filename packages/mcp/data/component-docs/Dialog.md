@@ -4,7 +4,7 @@
 
 The Dialog component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Dialog/index.tsx).
 
-A Dialog is composed from four accessory components. They all ship from **@czi-sds/components** and live in the Dialog folder:
+A Dialog is composed from four accessory components. They all ship from `@czi-sds/components` and live in the Dialog folder:
 
 - DialogTitle renders the overline, title, subtitle, and close button [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog/components/DialogTitle)
 
@@ -14,23 +14,23 @@ A Dialog is composed from four accessory components. They all ship from **@czi-s
 
 - DialogPaper is the surface the Dialog is drawn on. It is applied for you, so you only need it when you want to restyle the surface [source code](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Dialog/components/DialogPaper)
 
-Dialog passes its **sdsSize** down to DialogPaper, DialogTitle, and DialogActions automatically, so you set the size once on Dialog. DialogContent does not take a size.
+Dialog passes its `sdsSize` down to DialogPaper, DialogTitle, and DialogActions automatically, so you set the size once on Dialog. DialogContent does not take a size.
 
 ## SDS vs MUI
 
 The SDS Dialog is built on top of MUI's Dialog. The following props differ in whether and how they work:
 
-- **fullScreen** **:** Has no effect in SDS. DialogPaper sets a fixed width per **sdsSize** that wins over the MUI full screen styles.
+- `fullScreen`: Has no effect in SDS. DialogPaper sets a fixed width per `sdsSize` that wins over the MUI full screen styles.
 
-- **maxWidth** **and** **fullWidth** **:** Have no effect in SDS, for the same reason. Use **sdsSize** to pick a width.
+- `maxWidth` and `fullWidth`: Have no effect in SDS, for the same reason. Use `sdsSize` to pick a width.
 
-- **PaperComponent** **:** Defaults to DialogPaper. A replacement receives the **sdsSize** prop, so it should accept DialogPaperProps.
+- `PaperComponent`: Defaults to DialogPaper. A replacement receives the `sdsSize` prop, so it should accept `DialogPaperProps`.
 
-- **onClose** **:** Keeps the MUI signature, but SDS swallows the call when **canClickOutsideClose** is false and the reason is backdropClick or escapeKeyDown.
+- `onClose`: Keeps the MUI signature, but SDS swallows the call when `canClickOutsideClose` is `false` and the reason is `"backdropClick"` or `"escapeKeyDown"`.
 
-- **classes** **:** SDS accepts its own shape here rather than the MUI slot classes. Only **root** and **paper** are applied; the **title** and **actions** keys are declared in the type but never used. Pass a class to DialogTitle or DialogActions directly instead.
+- `classes`: SDS accepts its own shape here rather than the MUI slot classes. Only `root` and `paper` are applied; the `title` and `actions` keys are declared in the type but never used. Pass a class to DialogTitle or DialogActions directly instead.
 
-- **DialogComponent** **:** Declared in DialogExtraProps but not wired up, so passing it does nothing.
+- `DialogComponent`: Declared in `DialogExtraProps` but not wired up, so passing it does nothing.
 
 ## MUI Documentation
 
@@ -44,48 +44,48 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 Props table for the Dialog component.
 
-| Name                 | Type                                    | Default     | Description                                                                                                                                                                                                                                  |
-| -------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| open                 | bool                                    | -           | Required. If true, the Dialog is shown. The Dialog is a controlled component, so you own this state.                                                                                                                                         |
-| sdsSize              | "xs" \| "s" \| "m" \| "l"               | "m"         | Sets a fixed width and a minimum height: xs is 400 × 160px, s is 600 × 400px, m is 900 × 480px, and l is 1200 × 600px. It also drives the padding and the title type scale, and is forwarded to DialogPaper, DialogTitle, and DialogActions. |
-| canClickOutsideClose | bool                                    | true        | When false, onClose is not called for a backdrop click or the Esc key, which makes the Dialog persistent. Give those Dialogs an action button that closes them.                                                                              |
-| onClose              | (event: object, reason: string) => void | -           | Called when the Dialog requests to be closed. It receives: - event The event source of the callback. - reason Can be: escapeKeyDown, backdropClick                                                                                           |
-| PaperComponent       | ComponentType<DialogPaperProps>         | DialogPaper | The surface the Dialog is drawn on. A replacement receives sdsSize along with the usual Paper props.                                                                                                                                         |
-| classes              | { root?: string; paper?: string }       | {}          | Class names for the Dialog root and the paper surface. The title and actions keys exist in the type but are not applied.                                                                                                                     |
+| Name                   | Type                                      | Default       | Description                                                                                                                                                                                                                                                  |
+| ---------------------- | ----------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `open`                 | `bool`                                    | -             | Required. If `true`, the Dialog is shown. The Dialog is a controlled component, so you own this state.                                                                                                                                                       |
+| `sdsSize`              | `"xs"` \| `"s"` \| `"m"` \| `"l"`         | `"m"`         | Sets a fixed width and a minimum height: `"xs"` is 400 × 160px, `"s"` is 600 × 400px, `"m"` is 900 × 480px, and `"l"` is 1200 × 600px. It also drives the padding and the title type scale, and is forwarded to DialogPaper, DialogTitle, and DialogActions. |
+| `canClickOutsideClose` | `bool`                                    | `true`        | When `false`, `onClose` is not called for a backdrop click or the Esc key, which makes the Dialog persistent. Give those Dialogs an action button that closes them.                                                                                          |
+| `onClose`              | `(event: object, reason: string) => void` | -             | Called when the Dialog requests to be closed. It receives: - `event` The event source of the callback. - `reason` Can be: `"escapeKeyDown"`, `"backdropClick"`                                                                                               |
+| `PaperComponent`       | `ComponentType<DialogPaperProps>`         | `DialogPaper` | The surface the Dialog is drawn on. A replacement receives `sdsSize` along with the usual Paper props.                                                                                                                                                       |
+| `classes`              | `{ root?: string; paper?: string }`       | `{}`          | Class names for the Dialog root and the paper surface. The `title` and `actions` keys exist in the type but are not applied.                                                                                                                                 |
 
 ### DialogTitle Props
 
 Props table for the DialogTitle component.
 
-| Name     | Type                                                                                          | Default     | Description                                                                                                                                                                                                                                       |
-| -------- | --------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| title    | string                                                                                        | -           | The title text of the Dialog.                                                                                                                                                                                                                     |
-| subtitle | string                                                                                        | -           | Secondary text rendered below the title.                                                                                                                                                                                                          |
-| overline | string                                                                                        | -           | Small text rendered above the title. Use it for the step count in a multi-step workflow.                                                                                                                                                          |
-| onClose  | () => void                                                                                    | -           | Setting this renders the close button in the top-right corner and calls the function when it is clicked. Omit it for a persistent Dialog. This signature takes no arguments, unlike onClose on Dialog.                                            |
-| children | ReactNode                                                                                     | -           | Replaces the entire built-in layout, including the close button, so title, subtitle, overline, and onClose are ignored when children are present. Use DialogTitleOverline, DialogTitleTitle, and DialogTitleSubtitle to keep the SDS type styles. |
-| sdsSize  | "xs" \| "s" \| "m" \| "l"                                                                     | from Dialog | Injected by Dialog. Set it only when you render DialogTitle outside of a Dialog.                                                                                                                                                                  |
-| classes  | { root?: string; title?: string; subtitle?: string; overline?: string; closeButton?: string } | {}          | Class names for the individual parts of the title block.                                                                                                                                                                                          |
+| Name       | Type                                                                                            | Default     | Description                                                                                                                                                                                                                                               |
+| ---------- | ----------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`    | `string`                                                                                        | -           | The title text of the Dialog.                                                                                                                                                                                                                             |
+| `subtitle` | `string`                                                                                        | -           | Secondary text rendered below the title.                                                                                                                                                                                                                  |
+| `overline` | `string`                                                                                        | -           | Small text rendered above the title. Use it for the step count in a multi-step workflow.                                                                                                                                                                  |
+| `onClose`  | `() => void`                                                                                    | -           | Setting this renders the close button in the top-right corner and calls the function when it is clicked. Omit it for a persistent Dialog. This signature takes no arguments, unlike `onClose` on Dialog.                                                  |
+| `children` | `ReactNode`                                                                                     | -           | Replaces the entire built-in layout, including the close button, so `title`, `subtitle`, `overline`, and `onClose` are ignored when children are present. Use DialogTitleOverline, DialogTitleTitle, and DialogTitleSubtitle to keep the SDS type styles. |
+| `sdsSize`  | `"xs"` \| `"s"` \| `"m"` \| `"l"`                                                               | from Dialog | Injected by Dialog. Set it only when you render DialogTitle outside of a Dialog.                                                                                                                                                                          |
+| `classes`  | `{ root?: string; title?: string; subtitle?: string; overline?: string; closeButton?: string }` | `{}`        | Class names for the individual parts of the title block.                                                                                                                                                                                                  |
 
 ### DialogActions Props
 
 Props table for the DialogActions component.
 
-| Name           | Type                      | Default     | Description                                                                                                                           |
-| -------------- | ------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| buttonPosition | "left" \| "right"         | "right"     | Aligns the action buttons in the footer. Order the buttons so the primary action sits on the outside: last for right, first for left. |
-| sdsSize        | "xs" \| "s" \| "m" \| "l" | from Dialog | Injected by Dialog. It controls the gap above the button row.                                                                         |
-| classes        | { root?: string }         | {}          | Class name for the actions row.                                                                                                       |
+| Name             | Type                              | Default     | Description                                                                                                                                   |
+| ---------------- | --------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `buttonPosition` | `"left" \| "right"`               | `"right"`   | Aligns the action buttons in the footer. Order the buttons so the primary action sits on the outside: last for `"right"`, first for `"left"`. |
+| `sdsSize`        | `"xs"` \| `"s"` \| `"m"` \| `"l"` | from Dialog | Injected by Dialog. It controls the gap above the button row.                                                                                 |
+| `classes`        | `{ root?: string }`               | `{}`        | Class name for the actions row.                                                                                                               |
 
 ### DialogContent Props
 
-DialogContent takes the MUI DialogContent props plus a classes object with a root key. It applies the SDS body type styles and removes the MUI padding; everything else is passed straight through.
+DialogContent takes the MUI DialogContent props plus a `classes` object with a `root` key. It applies the SDS body type styles and removes the MUI padding; everything else is passed straight through.
 
 ## Code examples
 
 ### Default Dialog
 
-The minimum setup: a title, some content, and the open state you control. The onClose on DialogTitle renders the close button, and the one on Dialog handles the backdrop click and the Esc key.
+The minimum setup: a title, some content, and the open state you control. The `onClose` on DialogTitle renders the close button, and the one on Dialog handles the backdrop click and the Esc key.
 
 **Example: DefaultDialog**
 
@@ -136,7 +136,7 @@ export default App;
 
 ### Dialog Sizes
 
-Each sdsSize sets a fixed width and a minimum height. The height still grows with the content, and the padding and title type scale with the size.
+Each `sdsSize` sets a fixed width and a minimum height. The height still grows with the content, and the padding and title type scale with the size.
 
 **Example: DialogSizes**
 
@@ -263,7 +263,7 @@ export default App;
 
 ### Dialog with Left-Aligned Buttons
 
-Setting buttonPosition to left moves the button row to the other side. List the primary action first so it stays on the outside edge.
+Setting `buttonPosition` to `"left"` moves the button row to the other side. List the primary action first so it stays on the outside edge.
 
 **Example: DialogWithLeftAlignedButtons**
 
@@ -325,7 +325,7 @@ export default App;
 
 ### Persistent Dialog
 
-Passing canClickOutsideClose as false ignores both the backdrop click and the Esc key. Leaving onClose off DialogTitle also hides the close button, so the action buttons are the only way out and the Dialog needs at least one.
+Passing `canClickOutsideClose` as `false` ignores both the backdrop click and the Esc key. Leaving `onClose` off DialogTitle also hides the close button, so the action buttons are the only way out and the Dialog needs at least one.
 
 **Example: PersistentDialog**
 
@@ -555,7 +555,7 @@ export default App;
 
 ### Dialog with a Custom Title
 
-Passing children to DialogTitle replaces the built-in layout, which is how you add artwork above the title. The close button is part of that layout, so it goes away too.
+Passing `children` to DialogTitle replaces the built-in layout, which is how you add artwork above the title. The close button is part of that layout, so it goes away too.
 
 **Example: DialogWithCustomTitle**
 

@@ -8,17 +8,17 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 The following props and options differ and how they function across the MUI Switch component and the SDS InputToggle component:
 
-- **size** **:** Has no effect in SDS
+- `size`: Has no effect in SDS
 
-- **color** **:** Has no effect in SDS
+- `color`: Has no effect in SDS
 
-- **onLabel** **and** **offLabel** **:** These are SDS-specific props. The toggle prints one of them inside the track depending on its state, which is why it is wider than a MUI Switch. Longer words may need a larger **width**.
+- `onLabel` and `offLabel`: These are SDS-specific props. The toggle prints one of them inside the track depending on its state, which is why it is wider than a MUI Switch. Longer words may need a larger `width`.
 
-- **value** **:** Managed by SDS. The component sets it to the active label so the track can render that text, so passing your own **value** replaces the visible on/off text.
+- `value`: Managed by SDS. The component sets it to the active label so the track can render that text, so passing your own `value` replaces the visible on/off text.
 
-- **checked** **:** Optional. Without it the toggle keeps its own state; pass it (with **onChange** ) to control the toggle from your application.
+- `checked`: Optional. Without it the toggle keeps its own state; pass it (with `onChange`) to control the toggle from your application.
 
-- The **required** prop is available for both the MUI and SDS components.
+- The `required` prop is available for both the MUI and SDS components.
 
 ## MUI Documentation
 
@@ -28,14 +28,14 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name     | Type            | Default | Description                                                                                          |
-| -------- | --------------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| checked  | bool            | -       | Controls the toggle. Omit it and the component tracks its own state internally.                      |
-| disabled | bool            | false   | If true, the component is disabled.                                                                  |
-| offLabel | string          | "Off"   | The text displayed within the InputToggle when it's off.                                             |
-| onLabel  | string          | "On"    | The text displayed within the InputToggle when it's on.                                              |
-| onChange | (event) => void | -       | Called whenever the user toggles the component, in either direction.                                 |
-| width    | number          | 62      | Controls the width of the InputToggle element, in pixels. Increase it when custom labels do not fit. |
+| Name       | Type              | Default | Description                                                                                          |
+| ---------- | ----------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| `checked`  | `bool`            | -       | Controls the toggle. Omit it and the component tracks its own state internally.                      |
+| `disabled` | `bool`            | `false` | If `true`, the component is disabled.                                                                |
+| `offLabel` | `string`          | `"Off"` | The text displayed within the InputToggle when it's off.                                             |
+| `onLabel`  | `string`          | `"On"`  | The text displayed within the InputToggle when it's on.                                              |
+| `onChange` | `(event) => void` | -       | Called whenever the user toggles the component, in either direction.                                 |
+| `width`    | `number`          | `62`    | Controls the width of the InputToggle element, in pixels. Increase it when custom labels do not fit. |
 
 ## Code examples
 
@@ -81,7 +81,7 @@ export default App;
 
 ### **Controlled InputToggle**
 
-Passing checked hands control of the toggle to your application, which then updates it from the onChange handler.
+Passing `checked` hands control of the toggle to your application, which then updates it from the `onChange` handler.
 
 **Example: ControlledInputToggle**
 

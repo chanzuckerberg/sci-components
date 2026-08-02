@@ -22,16 +22,24 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>onPageChange</p></td>
-    <td><p>(page: number) =&gt; void;</p></td>
+    <td>
+      <p><code>onPageChange</code></p>
+    </td>
+    <td>
+      <p><code>(page: number) =&gt; void;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>A callback function triggered when the page number is changed.</p>
     </td>
   </tr>
   <tr>
-    <td><p>onNextPage</p></td>
-    <td><p>() =&gt; void;</p></td>
+    <td>
+      <p><code>onNextPage</code></p>
+    </td>
+    <td>
+      <p><code>() =&gt; void;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -40,8 +48,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>onPreviousPage</p></td>
-    <td><p>() =&gt; void;</p></td>
+    <td>
+      <p><code>onPreviousPage</code></p>
+    </td>
+    <td>
+      <p><code>() =&gt; void;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -51,8 +63,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>currentPage</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>currentPage</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -62,19 +78,28 @@
     </td>
   </tr>
   <tr>
-    <td><p>pageSize</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>pageSize</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Required. How many items fit on a page, which together with totalCount
-        gives the number of pages. Must be at least 1; a smaller value throws.
+        Required. How many items fit on a page, which together with
+        <code>totalCount</code> gives the number of pages. Must be at least 1; a
+        smaller value throws.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>totalCount</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>totalCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -84,9 +109,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>siblingCount</p></td>
-    <td><p>number</p></td>
-    <td><p>1</p></td>
+    <td>
+      <p><code>siblingCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
     <td>
       <p>
         How many page numbers to keep on each side of the current page before
@@ -95,12 +126,16 @@
     </td>
   </tr>
   <tr>
-    <td><p>sdsStyle</p></td>
     <td>
-      <p>"round"</p>
-      <p>| "square"</p>
+      <p><code>sdsStyle</code></p>
     </td>
-    <td><p>"round"</p></td>
+    <td>
+      <p><code>"round"</code> |</p>
+      <p><code>"square"</code></p>
+    </td>
+    <td>
+      <p><code>"round"</code></p>
+    </td>
     <td>
       <p>
         Whether the page and chevron targets are circles or rounded squares.
@@ -108,22 +143,29 @@
     </td>
   </tr>
   <tr>
-    <td><p>truncateDropdown</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>truncateDropdown</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        When true the ellipsis is a menu of the pages it stands for. When false
-        it is a disabled placeholder, and those pages can only be reached by
-        stepping through with the chevrons.
+        When <code>true</code> the ellipsis is a menu of the pages it stands
+        for. When <code>false</code> it is a disabled placeholder, and those
+        pages can only be reached by stepping through with the chevrons.
       </p>
     </td>
   </tr>
 </table>
 <p>
   Pagination is always controlled: it reports what was clicked and renders
-  whatever currentPage you hand back. It renders nothing at all when currentPage
-  is 0 or when there are fewer than two pages to show.
+  whatever <code>currentPage</code> you hand back. It renders nothing at all
+  when <code>currentPage</code> is <code>0</code> or when there are fewer than
+  two pages to show.
 </p>
 <h2>Code examples</h2>
 <h3><strong>Default Pagination</strong></h3>

@@ -16,71 +16,49 @@
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
+    <p><code>size</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p><code>color</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p><code>labelPlacement</code>: Has no effect in SDS</p>
+  </li>
+  <li>
     <p>
-      <strong>size</strong>
-      <strong>:</strong>
-      Has no effect in SDS
+      <code>intent</code>: This is an SDS-specific prop that colors the border
+      of the empty circle (<code>"default"</code>, <code>"positive"</code>,
+      <code>"notice"</code>, or <code>"negative"</code>). It does not change the
+      selected radio, which always uses the accent color.
     </p>
   </li>
   <li>
     <p>
-      <strong>color</strong>
-      <strong>:</strong>
-      Has no effect in SDS
+      <code>caption</code>: This is an SDS-specific prop, which takes text that
+      is displayed below the primary label text.
     </p>
   </li>
   <li>
     <p>
-      <strong>labelPlacement</strong>
-      <strong>:</strong>
-      Has no effect in SDS
+      <code>stage</code>: This SDS prop sets the radio as
+      <code>"checked"</code> or <code>"unchecked"</code> and overrides
+      <code>checked</code>. Inside a RadioGroup, leave it out and let the group
+      drive the selection from each radio's <code>value</code>.
     </p>
   </li>
   <li>
     <p>
-      <strong>intent</strong>
-      <strong>:</strong>
-      This is an SDS-specific prop that colors the border of the empty circle
-      (default, positive, notice, or negative). It does not change the selected
-      radio, which always uses the accent color.
+      <code>value</code>: Required in practice: a RadioGroup matches it against
+      its own value to decide which radio is selected, and SDS also derives the
+      label and caption element ids from it for screen readers.
     </p>
   </li>
   <li>
     <p>
-      <strong>caption</strong>
-      <strong>:</strong>
-      This is an SDS-specific prop, which takes text that is displayed below the
-      primary label text.
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>stage</strong>
-      <strong>:</strong>
-      This SDS prop sets the radio as checked or unchecked and overrides
-      <strong>checked</strong>
-      . Inside a RadioGroup, leave it out and let the group drive the selection
-      from each radio's
-      <strong>value</strong>
-      .
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>value</strong>
-      <strong>:</strong>
-      Required in practice: a RadioGroup matches it against its own value to
-      decide which radio is selected, and SDS also derives the label and caption
-      element ids from it for screen readers.
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>row</strong>
-      <strong>:</strong>
-      This boolean prop functions the same for both MUI and SDS's InputRadio
-      component: its presence reformats the radio buttons (and their labels)
-      within the RadioGroup parent component into a horizontal row.
+      <code>row</code>: This boolean prop functions the same for both MUI and
+      SDS's InputRadio component: its presence reformats the radio buttons (and
+      their labels) within the RadioGroup parent component into a horizontal
+      row.
     </p>
   </li>
 </ul>
@@ -103,8 +81,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>caption</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>caption</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -114,14 +96,22 @@
     </td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The label of the InputRadio.</p></td>
   </tr>
   <tr>
-    <td><p>value</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -132,31 +122,46 @@
     </td>
   </tr>
   <tr>
-    <td><p>radioProps</p></td>
-    <td><p>Partial&lt;MUIRadioProps&gt;</p></td>
-    <td><p>{}</p></td>
+    <td>
+      <p><code>radioProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;MUIRadioProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
     <td><p>Directly pass these props to the underlying MUI radio.</p></td>
   </tr>
   <tr>
-    <td><p>stage</p></td>
-    <td><p>"checked" | "unchecked"</p></td>
+    <td>
+      <p><code>stage</code></p>
+    </td>
+    <td>
+      <p><code>"checked" | "unchecked"</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Sets the radio as checked or unchecked, overriding&nbsp;checked. Omit it
-        inside a RadioGroup, which drives the selection itself.
+        Sets the radio as <code>"checked"</code> or <code>"unchecked"</code>,
+        overriding&nbsp;<code>checked</code>. Omit it inside a RadioGroup, which
+        drives the selection itself.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>intent</p></td>
     <td>
-      <p>"default"</p>
-      <p>| "notice"</p>
-      <p>| "negative"</p>
-      <p>| "positive"</p>
+      <p><code>intent</code></p>
     </td>
-    <td><p>"default"</p></td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
     <td>
       <p>
         Colors the border of the empty circle. The selected radio always uses
@@ -165,20 +170,34 @@
     </td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
-    <td><p>If&nbsp;true, the component is disabled.</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
   </tr>
   <tr>
-    <td><p>classes</p></td>
-    <td><p>object</p></td>
-    <td><p>{}</p></td>
+    <td>
+      <p><code>classes</code></p>
+    </td>
+    <td>
+      <p><code>object</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
     <td>
       <p>
-        Class names for the internal elements:&nbsp;root, labelCaptionContainer,
-        label, caption, radioButton, radioCheckedIcon, radioCheckedIconDot, and
-        radioDefaultIcon.
+        Class names for the internal elements:&nbsp;<code>root</code>,
+        <code>labelCaptionContainer</code>, <code>label</code>,
+        <code>caption</code>, <code>radioButton</code>,
+        <code>radioCheckedIcon</code>, <code>radioCheckedIconDot</code>, and
+        <code>radioDefaultIcon</code>.
       </p>
     </td>
   </tr>
@@ -203,7 +222,7 @@
 <p>
   Radios are meant to be used as a set. Wrap them in MUI's RadioGroup, which
   selects the radio whose value matches the group's and handles arrow-key
-  navigation. Add row to lay the options out horizontally.
+  navigation. Add <code>row</code> to lay the options out horizontally.
 </p>
 <div
   class="sds-doc-example"

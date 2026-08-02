@@ -22,10 +22,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>sdsType</p></td>
     <td>
-      <p>"primary"</p>
-      <p>| "secondary"</p>
+      <p><code>sdsType</code></p>
+    </td>
+    <td>
+      <p><code>"primary"</code> |</p>
+      <p><code>"secondary"</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -40,15 +42,19 @@
     </td>
   </tr>
   <tr>
-    <td><p>intent</p></td>
     <td>
-      <p>"accent"</p>
-      <p>| "info"</p>
-      <p>| "negative"</p>
-      <p>| "notice"</p>
-      <p>| "positive"</p>
+      <p><code>intent</code></p>
     </td>
-    <td><p>info</p></td>
+    <td>
+      <p><code>"accent"</code> |</p>
+      <p><code>"info"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td>
+      <p><code>"info"</code></p>
+    </td>
     <td>
       <p>
         The intent color of the Banner component, which also selects the default
@@ -57,22 +63,35 @@
     </td>
   </tr>
   <tr>
-    <td><p>dismissible</p></td>
-    <td><p>bool</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>dismissible</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        If&nbsp;true, the banner can be dismissed by the user. This is what
-        controls whether the close button is rendered.
+        If&nbsp;<code>true</code>, the banner can be dismissed by the user. This
+        is what controls whether the close button is rendered.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>dismissed</p></td>
-    <td><p>bool</p></td>
+    <td>
+      <p><code>dismissed</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
-      <p>If&nbsp;true, the banner has been dismissed and renders nothing.</p>
+      <p>
+        If&nbsp;<code>true</code>, the banner has been dismissed and renders
+        nothing.
+      </p>
       <p>
         Leave this unset to let the Banner keep track of its own dismissed
         state; pass a value to control it yourself.
@@ -80,25 +99,33 @@
     </td>
   </tr>
   <tr>
-    <td><p>onClose</p></td>
-    <td><p>fn</p></td>
+    <td>
+      <p><code>onClose</code></p>
+    </td>
+    <td>
+      <p><code>fn</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>Callback fired when the user clicks the close button.</p>
       <p>
         <strong>Signature:</strong>
-        function(event: React.MouseEvent) =&gt; void
+        <code>function(event: React.MouseEvent) =&gt; void</code>
       </p>
       <ul class="sds-doc-bullet-list">
-        <li><p>event The event source of the callback.</p></li>
+        <li>
+          <p><code>event</code> The event source of the callback.</p>
+        </li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td><p>icon</p></td>
     <td>
-      <p>keyof IconNameToSizes</p>
-      <p>| ReactElement&lt;CustomSVGProps&gt;</p>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>keyof IconNameToSizes</code> |</p>
+      <p><code>ReactElement&lt;CustomSVGProps&gt;</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -107,14 +134,20 @@
         icon the intent would pick.
       </p>
       <p>
-        Without it, positive shows CheckCircle, negative and notice show
-        ExclamationMarkCircle, and every other intent shows InfoCircle.
+        Without it, <code>"positive"</code> shows <code>"CheckCircle"</code>,
+        <code>"negative"</code> and <code>"notice"</code> show
+        <code>"ExclamationMarkCircle"</code>, and every other intent shows
+        <code>"InfoCircle"</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>sdsIconProps</p></td>
-    <td><p>Partial&lt;IconProps&gt;</p></td>
+    <td>
+      <p><code>sdsIconProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;IconProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Additional props to be passed to the icon component.</p></td>
   </tr>

@@ -16,57 +16,37 @@
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
+    <p><code>size</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p><code>color</code>: Has no effect in SDS</p>
+  </li>
+  <li>
     <p>
-      <strong>size</strong>
-      <strong>:</strong>
-      Has no effect in SDS
+      <code>onLabel</code> and <code>offLabel</code>: These are SDS-specific
+      props. The toggle prints one of them inside the track depending on its
+      state, which is why it is wider than a MUI Switch. Longer words may need a
+      larger <code>width</code>.
     </p>
   </li>
   <li>
     <p>
-      <strong>color</strong>
-      <strong>:</strong>
-      Has no effect in SDS
+      <code>value</code>: Managed by SDS. The component sets it to the active
+      label so the track can render that text, so passing your own
+      <code>value</code> replaces the visible on/off text.
     </p>
   </li>
   <li>
     <p>
-      <strong>onLabel</strong>
-      <strong>and</strong>
-      <strong>offLabel</strong>
-      <strong>:</strong>
-      These are SDS-specific props. The toggle prints one of them inside the
-      track depending on its state, which is why it is wider than a MUI Switch.
-      Longer words may need a larger
-      <strong>width</strong>
-      .
+      <code>checked</code>: Optional. Without it the toggle keeps its own state;
+      pass it (with <code>onChange</code>) to control the toggle from your
+      application.
     </p>
   </li>
   <li>
     <p>
-      <strong>value</strong>
-      <strong>:</strong>
-      Managed by SDS. The component sets it to the active label so the track can
-      render that text, so passing your own
-      <strong>value</strong>
-      replaces the visible on/off text.
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>checked</strong>
-      <strong>:</strong>
-      Optional. Without it the toggle keeps its own state; pass it (with
-      <strong>onChange</strong>
-      ) to control the toggle from your application.
-    </p>
-  </li>
-  <li>
-    <p>
-      The
-      <strong>required</strong>
-      <strong></strong>
-      prop is available for both the MUI and SDS components.
+      The <code>required</code> prop is available for both the MUI and SDS
+      components.
     </p>
   </li>
 </ul>
@@ -89,8 +69,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>checked</p></td>
-    <td><p>bool</p></td>
+    <td>
+      <p><code>checked</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -100,26 +84,48 @@
     </td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
-    <td><p>If&nbsp;true, the component is disabled.</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
   </tr>
   <tr>
-    <td><p>offLabel</p></td>
-    <td><p>string</p></td>
-    <td><p>"Off"</p></td>
+    <td>
+      <p><code>offLabel</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Off"</code></p>
+    </td>
     <td><p>The text displayed within the InputToggle when it's off.</p></td>
   </tr>
   <tr>
-    <td><p>onLabel</p></td>
-    <td><p>string</p></td>
-    <td><p>"On"</p></td>
+    <td>
+      <p><code>onLabel</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"On"</code></p>
+    </td>
     <td><p>The text displayed within the InputToggle when it's on.</p></td>
   </tr>
   <tr>
-    <td><p>onChange</p></td>
-    <td><p>(event) =&gt; void</p></td>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -128,9 +134,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>width</p></td>
-    <td><p>number</p></td>
-    <td><p>62</p></td>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>62</code></p>
+    </td>
     <td>
       <p>
         Controls the width of the InputToggle element, in pixels. Increase it
@@ -157,8 +169,8 @@
 ></div>
 <h3><strong>Controlled InputToggle</strong></h3>
 <p>
-  Passing checked hands control of the toggle to your application, which then
-  updates it from the onChange handler.
+  Passing <code>checked</code> hands control of the toggle to your application,
+  which then updates it from the <code>onChange</code> handler.
 </p>
 <div
   class="sds-doc-example"

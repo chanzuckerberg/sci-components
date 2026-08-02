@@ -22,47 +22,67 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>as</p></td>
-    <td><p>React.ElementType</p></td>
-    <td><p>"td"</p></td>
+    <td>
+      <p><code>as</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"td"</code></p>
+    </td>
     <td><p>The element the cell renders as.</p></td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         The cell's content. Unlike CellBasic, which takes text through
-        primaryText, this cell renders whatever you put inside it.
+        <code>primaryText</code>, this cell renders whatever you put inside it.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>horizontalAlign</p></td>
     <td>
-      <p>"left"</p>
-      <p>| "center"</p>
-      <p>| "right"</p>
+      <p><code>horizontalAlign</code></p>
     </td>
-    <td><p>"left"</p></td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
     <td><p>Specifies the horizontal alignment of the cell content.</p></td>
   </tr>
   <tr>
-    <td><p>verticalAlign</p></td>
     <td>
-      <p>"top"</p>
-      <p>| "center"</p>
-      <p>| "bottom"</p>
+      <p><code>verticalAlign</code></p>
     </td>
-    <td><p>"top"</p></td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code></p>
+    </td>
     <td><p>Specifies the vertical alignment of the cell content.</p></td>
   </tr>
 </table>
 <p>
-  Anything else you pass, such as colSpan, width, onClick or a data attribute,
-  lands on the rendered td. The cell also carries the class name cell-component,
-  which TableRow uses to switch off pointer events inside a disabled row.
+  Anything else you pass, such as <code>colSpan</code>, <code>width</code>,
+  <code>onClick</code> or a data attribute, lands on the rendered
+  <code>td</code>. The cell also carries the class name
+  <code>cell-component</code>, which TableRow uses to switch off pointer events
+  inside a disabled row.
 </p>
 <h2>Code examples</h2>
 <h3><strong>Default CellComponent</strong></h3>

@@ -12,23 +12,23 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name      | Type                              | Default   | Description                                                                                                                                                |
-| --------- | --------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| startIcon | ReactElement                      | -         | **Required.** The icon displayed within the component. Pass the SDS Icon component, for example <Icon sdsIcon="Search" sdsSize="s" />.                     |
-| sdsStage  | "on" \| "off"                     | "off"     | Controls the toggle stage. The component is fully controlled, so keep this value in state and update it from onClick.                                      |
-| sdsStyle  | "solid" \| "outline" \| "minimal" | "solid"   | Style of the button. ButtonToggle inherits Button's default of solid, but toggles are designed around outline and minimal, so set one of those explicitly. |
-| sdsType   | "primary" \| "secondary"          | "primary" | Color scheme of the button. Primary uses the accent color in the on stage, secondary stays neutral.                                                        |
-| size      | "small" \| "medium" \| "large"    | "large"   | Size of the button.                                                                                                                                        |
-| disabled  | bool                              | false     | Disables the toggle button when set to true.                                                                                                               |
-| onClick   | (event: React.MouseEvent) => void | -         | Callback fired when the button is clicked.                                                                                                                 |
+| Name        | Type                                    | Default     | Description                                                                                                                                                            |
+| ----------- | --------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `startIcon` | `ReactElement`                          | -           | **Required.** The icon displayed within the component. Pass the SDS Icon component, for example `<Icon sdsIcon="Search" sdsSize="s" />`.                               |
+| `sdsStage`  | `"on"` \| `"off"`                       | `"off"`     | Controls the toggle stage. The component is fully controlled, so keep this value in state and update it from `onClick`.                                                |
+| `sdsStyle`  | `"solid"` \| `"outline"` \| `"minimal"` | `"solid"`   | Style of the button. ButtonToggle inherits Button's default of `"solid"`, but toggles are designed around `"outline"` and `"minimal"`, so set one of those explicitly. |
+| `sdsType`   | `"primary" \| "secondary"`              | `"primary"` | Color scheme of the button. Primary uses the accent color in the on stage, secondary stays neutral.                                                                    |
+| `size`      | `"small"` \| `"medium"` \| `"large"`    | `"large"`   | Size of the button.                                                                                                                                                    |
+| `disabled`  | `bool`                                  | `false`     | Disables the toggle button when set to `true`.                                                                                                                         |
+| `onClick`   | `(event: React.MouseEvent) => void`     | -           | Callback fired when the button is clicked.                                                                                                                             |
 
-ButtonToggle always renders with backgroundOnHover enabled and ignores endIcon, which is reserved for the toggle's own styling.
+ButtonToggle always renders with `backgroundOnHover` enabled and ignores `endIcon`, which is reserved for the toggle's own styling.
 
 ## Code examples
 
 ### **Default ButtonToggle**
 
-This example has the minimum props needed for the ButtonToggle component. Because sdsStage is controlled, the on and off stages are driven from state.
+This example has the minimum props needed for the ButtonToggle component. Because `sdsStage` is controlled, the on and off stages are driven from state.
 
 **Example: DefaultButtonToggle**
 

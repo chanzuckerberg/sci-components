@@ -18,10 +18,12 @@
 <h2>How it works</h2>
 <p>
   Icon renders an SVG through MUI's SvgIcon, picking one of two drawings based
-  on the size you ask for: xxs, xs, and s use the 16px artwork, while l and xl
-  use the 24px artwork. Both are then scaled to the exact dimensions of the
-  size. This is why the sizes are not interchangeable across icons; an icon that
-  only ships the large artwork cannot be rendered at s.
+  on the size you ask for: <code>"xxs"</code>, <code>"xs"</code>, and
+  <code>"s"</code> use the 16px artwork, while <code>"l"</code> and
+  <code>"xl"</code> use the 24px artwork. Both are then scaled to the exact
+  dimensions of the size. This is why the sizes are not interchangeable across
+  icons; an icon that only ships the large artwork cannot be rendered at
+  <code>"s"</code>.
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
@@ -34,9 +36,9 @@
   </li>
   <li>
     <p>
-      The icon is wrapped in a div with display: contents, so it does not add a
-      box to the layout and the SVG behaves as a direct child of whatever
-      contains it.
+      The icon is wrapped in a div with <code>display: contents</code>, so it
+      does not add a box to the layout and the SVG behaves as a direct child of
+      whatever contains it.
     </p>
   </li>
   <li>
@@ -50,7 +52,7 @@
     <p>
       The SVG has no title or label of its own. When an icon carries meaning on
       its own, put the label on the interactive element around it, for example
-      an aria-label on an icon-only Button.
+      an <code>aria-label</code> on an icon-only Button.
     </p>
   </li>
 </ul>
@@ -63,54 +65,82 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>sdsIcon</p></td>
-    <td><p>keyof IconNameToSizes</p></td>
+    <td>
+      <p><code>sdsIcon</code></p>
+    </td>
+    <td>
+      <p><code>keyof IconNameToSizes</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Required. The name of the icon, as listed in the Icon Bank. Names are
-        case-sensitive, for example XMark and LightBulb.
+        case-sensitive, for example <code>"XMark"</code> and
+        <code>"LightBulb"</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>sdsSize</p></td>
     <td>
-      <p>"xxs" (10px)</p>
-      <p>| "xs" (12px)</p>
-      <p>| "s" (16px)</p>
-      <p>| "l" (24px)</p>
-      <p>| "xl" (32px)</p>
+      <p><code>sdsSize</code></p>
+    </td>
+    <td>
+      <p><code>"xxs"</code> (10px) |</p>
+      <p><code>"xs"</code> (12px) |</p>
+      <p><code>"s"</code> (16px) |</p>
+      <p><code>"l"</code> (24px) |</p>
+      <p><code>"xl"</code> (32px)</p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Required. Which sizes are accepted depends on the icon named in sdsIcon.
+        Required. Which sizes are accepted depends on the icon named in
+        <code>sdsIcon</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>color</p></td>
     <td>
-      <p>"blue" | "gray" | "green" | "purple" | "indigo" | "red" | "yellow"</p>
+      <p><code>color</code></p>
     </td>
-    <td><p>"indigo"</p></td>
     <td>
       <p>
-        A hue from the SDS palette. Note that this is the SDS color prop, not
-        the MUI one, and it does not accept a CSS color.
+        <code
+          >"blue" | "gray" | "green" | "purple" | "indigo" | "red" |
+          "yellow"</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>"indigo"</code></p>
+    </td>
+    <td>
+      <p>
+        A hue from the SDS palette. Note that this is the SDS
+        <code>color</code> prop, not the MUI one, and it does not accept a CSS
+        color.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>shade</p></td>
-    <td><p>100 | 200 | 300 | 400 | 500 | 600 | 700 | 800</p></td>
-    <td><p>500 in light mode, 600 in dark mode</p></td>
+    <td>
+      <p><code>shade</code></p>
+    </td>
+    <td>
+      <p><code>100 | 200 | 300 | 400 | 500 | 600 | 700 | 800</code></p>
+    </td>
+    <td>
+      <p><code>500</code> in light mode, <code>600</code> in dark mode</p>
+    </td>
     <td><p>The step within the chosen hue.</p></td>
   </tr>
   <tr>
-    <td><p>className</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>className</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -123,15 +153,15 @@
 <h2>Code examples</h2>
 <h3>Default Icon</h3>
 <p>
-  sdsIcon and sdsSize are the only required props. With no color set, the icon
-  renders in indigo.
+  <code>sdsIcon</code> and <code>sdsSize</code> are the only required props.
+  With no <code>color</code> set, the icon renders in indigo.
 </p>
 <div class="sds-doc-example" data-example="core/Icon/DefaultIcon"></div>
 <h3>Icon Sizes</h3>
 <p>
-  The five sizes, shown with an icon that supports all of them. Below s the 16px
-  artwork is scaled down, and at l and xl a separate, more detailed drawing is
-  used.
+  The five sizes, shown with an icon that supports all of them. Below
+  <code>"s"</code> the 16px artwork is scaled down, and at <code>"l"</code> and
+  <code>"xl"</code> a separate, more detailed drawing is used.
 </p>
 <div class="sds-doc-example" data-example="core/Icon/IconSizes"></div>
 <h3>Sizes Are Per Icon</h3>
@@ -142,15 +172,16 @@
 <div class="sds-doc-example" data-example="core/Icon/IconAvailableSizes"></div>
 <h3>Icon Colors</h3>
 <p>
-  color picks the hue and shade picks the step within it. Both come from the SDS
-  palette rather than from the surrounding text color.
+  <code>color</code> picks the hue and <code>shade</code> picks the step within
+  it. Both come from the SDS palette rather than from the surrounding text
+  color.
 </p>
 <div class="sds-doc-example" data-example="core/Icon/IconColors"></div>
 <h3>Icons in Components</h3>
 <p>
   When an icon is passed to another SDS component, that component controls the
-  size and the color, so leave color off and let it inherit the component's
-  states.
+  size and the color, so leave <code>color</code> off and let it inherit the
+  component's states.
 </p>
 <div class="sds-doc-example" data-example="core/Icon/IconsInComponents"></div>
 <h3>Accessible Icon-only Controls</h3>

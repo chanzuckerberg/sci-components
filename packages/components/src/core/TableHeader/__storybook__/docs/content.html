@@ -11,8 +11,8 @@
 </p>
 <h2>Props</h2>
 <p>
-  TableHeader renders the thead and the header row inside it, so its children
-  are header cells rather than a row. It has two props of its own.
+  TableHeader renders the <code>thead</code> and the header row inside it, so
+  its children are header cells rather than a row. It has two props of its own.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -22,27 +22,35 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Required. The header cells, normally CellHeaders. They are wrapped in a
-        TableRow with hover and tooltips switched off, so do not pass a tr
-        yourself.
+        TableRow with hover and tooltips switched off, so do not pass a
+        <code>tr</code> yourself.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>filterRow</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>filterRow</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        A second row rendered below the header row, inside the same thead, for
-        per-column filter controls. Pass a tr of cells. Supplying it also
-        changes the border on the header row above. PreComposedTable uses this
-        for its column filtering.
+        A second row rendered below the header row, inside the same
+        <code>thead</code>, for per-column filter controls. Pass a
+        <code>tr</code> of cells. Supplying it also changes the border on the
+        header row above. PreComposedTable uses this for its column filtering.
       </p>
     </td>
   </tr>

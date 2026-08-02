@@ -18,103 +18,91 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <strong>hasInvertedStyle:</strong>
-      true by default, which is the dark tooltip: a black surface with white
-      semibold text. Set it to false for the light one: a white surface, a
-      hairline outline, and body text. Mind the vocabulary: the design above
-      calls the light tooltip the default and the dark one inverted, while the
-      component ships dark unless asked otherwise.
+      <code>hasInvertedStyle</code>: <code>true</code> by default, which is the
+      dark tooltip: a black surface with white semibold text. Set it to
+      <code>false</code> for the light one: a white surface, a hairline outline,
+      and body text. Mind the vocabulary: the design above calls the light
+      tooltip the default and the dark one inverted, while the component ships
+      dark unless asked otherwise.
     </p>
   </li>
   <li>
     <p>
-      <strong>title and subtitle:</strong>
-      SDS builds the content itself, wrapping title and then subtitle in
-      paragraphs of its own, so title is not the free-form node MUI's is.
-      subtitle is the smaller, dimmer second line and works on either style,
-      despite a leftover warning in the codebase claiming it is dark-only. A
-      tooltip with no title, subtitle or componentSlot renders nothing and
+      <code>title</code> and <code>subtitle</code>: SDS builds the content
+      itself, wrapping <code>title</code> and then <code>subtitle</code> in
+      paragraphs of its own, so <code>title</code> is not the free-form node
+      MUI's is. <code>subtitle</code> is the smaller, dimmer second line and
+      works on either style, despite a leftover warning in the codebase claiming
+      it is dark-only. A tooltip with no <code>title</code>,
+      <code>subtitle</code> or <code>componentSlot</code> renders nothing and
       leaves its child alone.
     </p>
   </li>
   <li>
     <p>
-      <strong>componentSlot:</strong>
-      anything React can render, placed under the text with 12px above it when
-      there is text to sit under. This is where non-text content goes, since a
-      table or a div handed to title lands inside a paragraph and produces
-      invalid HTML.
+      <code>componentSlot</code>: anything React can render, placed under the
+      text with 12px above it when there is text to sit under. This is where
+      non-text content goes, since a table or a div handed to
+      <code>title</code> lands inside a paragraph and produces invalid HTML.
     </p>
   </li>
   <li>
     <p>
-      <strong>width:</strong>
-      "default" caps the tooltip at 250px, "wide" at 550px and switches the text
-      to the left. Compare MUI, which has no width prop of its own. The design
-      pairs the wide width with the light tooltip; in code it applies to both,
-      and logs a warning about being light-only either way.
+      <code>width</code>: <code>"default"</code> caps the tooltip at 250px,
+      <code>"wide"</code> at 550px and switches the text to the left. Compare
+      MUI, which has no <code>width</code> prop of its own. The design pairs the
+      wide width with the light tooltip; in code it applies to both, and logs a
+      warning about being light-only either way.
     </p>
   </li>
   <li>
     <p>
-      <strong>textAlign:</strong>
-      overrides the alignment each width picks for itself: centred at the
-      default width, left when wide.
+      <code>textAlign</code>: overrides the alignment each width picks for
+      itself: centred at the default width, left when wide.
     </p>
   </li>
   <li>
     <p>
-      <strong>arrowOffset:</strong>
-      not an offset but a position: the number becomes the arrow's
-      <em>left</em>
-      in pixels, measured from the tooltip's left edge, replacing the one the
-      positioning engine worked out. Values past the tooltip's own width put the
-      arrow out of sight.
+      <code>arrowOffset</code>: not an offset but a position: the number becomes
+      the arrow's <code>left</code> in pixels, measured from the tooltip's left
+      edge, replacing the one the positioning engine worked out. Values past the
+      tooltip's own width put the arrow out of sight.
     </p>
   </li>
   <li>
     <p>
       <strong>arrow is on:</strong>
       MUI defaults to no arrow; SDS turns it on for every tooltip. It can still
-      be turned back off with
-      <em>arrow={false}</em>
-      , though the design always draws one.
+      be turned back off with <code>arrow={false}</code>, though the design
+      always draws one.
     </p>
   </li>
   <li>
     <p>
       <strong>sdsStyle and inverted are deprecated.</strong>
-      Both are earlier spellings of hasInvertedStyle:
-      <em>sdsStyle="dark"</em>
-      matches the default and
-      <em>sdsStyle="light"</em>
-      matches
-      <em>hasInvertedStyle={false}</em>
-      . Reach for hasInvertedStyle and ignore the console: because the component
-      gives sdsStyle a default of "dark" before checking whether it was passed,
-      both the deprecation warning and the wide-width warning are logged for
-      every tooltip, whatever props you gave it. The same stale default is why
-      the 500ms delay the code has in mind for light tooltips only takes effect
-      if you pass the deprecated
-      <em>sdsStyle="light"</em>
-      alongside
-      <em>hasInvertedStyle={false}</em>
-      ; on its own, a light tooltip closes as promptly as a dark one.
+      Both are earlier spellings of <code>hasInvertedStyle</code>:
+      <code>sdsStyle="dark"</code> matches the default and
+      <code>sdsStyle="light"</code> matches
+      <code>hasInvertedStyle={false}</code>. Reach for
+      <code>hasInvertedStyle</code> and ignore the console: because the
+      component gives <code>sdsStyle</code> a default of <code>"dark"</code>
+      before checking whether it was passed, both the deprecation warning and
+      the wide-width warning are logged for every tooltip, whatever props you
+      gave it. The same stale default is why the 500ms delay the code has in
+      mind for light tooltips only takes effect if you pass the deprecated
+      <code>sdsStyle="light"</code> alongside
+      <code>hasInvertedStyle={false}</code>; on its own, a light tooltip closes
+      as promptly as a dark one.
     </p>
   </li>
   <li>
     <p>
       <strong>The popper is SDS's:</strong>
       it carries the arrow's shape and its position for all twelve placements,
-      and it arrives through
-      <em>PopperComponent</em>
-      , which SDS keeps as a prop name of its own after MUI moved to
-      <em>slots.popper</em>
-      . SDS fills in
-      <em>slots</em>
-      last, so a
-      <em>slots</em>
-      object of your own is dropped; pass PopperComponent instead.
+      and it arrives through <code>PopperComponent</code>, which SDS keeps as a
+      prop name of its own after MUI moved to <code>slots.popper</code>. SDS
+      fills in <code>slots</code> last, so a <code>slots</code> object of your
+      own is dropped; pass <code>PopperComponent</code> instead.
     </p>
   </li>
 </ul>
@@ -129,42 +117,36 @@
   <li>
     <p>
       A tooltip opens on hover and on keyboard focus, and closes on Escape. SDS
-      gives the trigger
-      <em>tabIndex={0}</em>
-      so that focus can reach it even when the element wrapped is not naturally
-      focusable.
+      gives the trigger <code>tabIndex={0}</code> so that focus can reach it
+      even when the element wrapped is not naturally focusable.
     </p>
   </li>
   <li>
     <p>
       While a tooltip is open, MUI points the trigger's
-      <em>aria-labelledby</em>
-      at it, so the tooltip text becomes the trigger's name for that moment
-      rather than an extra description. The trigger still needs a name of its
-      own for when the tooltip is closed: an icon-only button needs an
-      <em>aria-label</em>
-      , and text in a tooltip is never a substitute for it.
+      <code>aria-labelledby</code> at it, so the tooltip text becomes the
+      trigger's name for that moment rather than an extra description. The
+      trigger still needs a name of its own for when the tooltip is closed: an
+      icon-only button needs an <code>aria-label</code>, and text in a tooltip
+      is never a substitute for it.
     </p>
   </li>
   <li>
     <p>
       Tooltips are interactive: the pointer can travel from the trigger, across
       the 14px gap, and onto the tooltip without it closing, which is what makes
-      a link inside one reachable. MUI's
-      <em>disableInteractive</em>
-      turns that off, and with it any chance of clicking what the tooltip holds.
+      a link inside one reachable. MUI's <code>disableInteractive</code> turns
+      that off, and with it any chance of clicking what the tooltip holds.
     </p>
   </li>
   <li>
     <p>
       A disabled element fires no pointer events, so a tooltip attached to one
-      never opens. Wrap the child in a
-      <em>&lt;span&gt;</em>
-      to give the tooltip something that reports hovers. The span inherits the
-      <em>tabIndex={0}</em>
-      SDS adds, so it becomes a tab stop and the tooltip still opens on focus.
-      That is the only route left, given that the disabled control cannot take
-      focus itself.
+      never opens. Wrap the child in a <code>&lt;span&gt;</code> to give the
+      tooltip something that reports hovers. The span inherits the
+      <code>tabIndex={0}</code> SDS adds, so it becomes a tab stop and the
+      tooltip still opens on focus. That is the only route left, given that the
+      disabled control cannot take focus itself.
     </p>
   </li>
   <li>
@@ -194,19 +176,28 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>title</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         The tooltip's first line, wrapped in a paragraph by SDS. A tooltip with
-        no title, subtitle or componentSlot does not render.
+        no <code>title</code>, <code>subtitle</code> or
+        <code>componentSlot</code> does not render.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>subtitle</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>subtitle</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -216,8 +207,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>componentSlot</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>componentSlot</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -227,9 +222,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>hasInvertedStyle</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>hasInvertedStyle</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
         True is the dark tooltip: a black surface with white semibold text.
@@ -238,9 +239,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>width</p></td>
-    <td><p>"default" | "wide"</p></td>
-    <td><p>"default"</p></td>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>"default" | "wide"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
     <td>
       <p>
         Caps the tooltip at 250px or 550px. Wide also left-aligns the text. It
@@ -249,25 +256,41 @@
     </td>
   </tr>
   <tr>
-    <td><p>textAlign</p></td>
-    <td><p>"left" | "center" | "right"</p></td>
-    <td><p>center, or left when wide</p></td>
+    <td>
+      <p><code>textAlign</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "center" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"center"</code>, or <code>"left"</code> when wide</p>
+    </td>
     <td><p>Overrides the alignment the width would pick.</p></td>
   </tr>
   <tr>
-    <td><p>arrow</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>arrow</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
         MUI's prop, which SDS turns on for every tooltip. It can be set back to
-        false, though the design always draws an arrow.
+        <code>false</code>, though the design always draws an arrow.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>arrowOffset</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>arrowOffset</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -278,57 +301,78 @@
     </td>
   </tr>
   <tr>
-    <td><p>PopperComponent</p></td>
-    <td><p>ElementType</p></td>
-    <td><p>SDS StyledPopper</p></td>
+    <td>
+      <p><code>PopperComponent</code></p>
+    </td>
+    <td>
+      <p><code>ElementType</code></p>
+    </td>
+    <td>
+      <p>SDS <code>StyledPopper</code></p>
+    </td>
     <td>
       <p>
         The popper the tooltip renders into, carrying the arrow's shape and
-        placement. SDS maps it to MUI's slots.popper, and a slots object passed
-        directly is ignored.
+        placement. SDS maps it to MUI's <code>slots.popper</code>, and a
+        <code>slots</code> object passed directly is ignored.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>sdsStyle</p></td>
-    <td><p>"dark" | "light"</p></td>
-    <td><p>"dark"</p></td>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"dark" | "light"</code></p>
+    </td>
+    <td>
+      <p><code>"dark"</code></p>
+    </td>
     <td>
       <p>
         <strong>Deprecated.</strong>
-        An earlier spelling of hasInvertedStyle: dark matches the default, light
-        matches hasInvertedStyle={false}.
+        An earlier spelling of <code>hasInvertedStyle</code>: dark matches the
+        default, light matches <code>hasInvertedStyle={false}</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>inverted</p></td>
-    <td><p>boolean</p></td>
+    <td>
+      <p><code>inverted</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         <strong>Deprecated.</strong>
-        The oldest spelling of hasInvertedStyle. Use hasInvertedStyle.
+        The oldest spelling of <code>hasInvertedStyle</code>. Use
+        <code>hasInvertedStyle</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>placement</p></td>
     <td>
-      <p>"bottom-start"</p>
-      <p>| "bottom"</p>
-      <p>| "bottom-end"</p>
-      <p>| "left-start"</p>
-      <p>| "left"</p>
-      <p>| "left-end"</p>
-      <p>| "right-start"</p>
-      <p>| "right"</p>
-      <p>| "right-end"</p>
-      <p>| "top-start"</p>
-      <p>| "top"</p>
-      <p>| "top-end"</p>
+      <p><code>placement</code></p>
     </td>
-    <td><p>"bottom"</p></td>
+    <td>
+      <p><code>"bottom-start"</code> |</p>
+      <p><code>"bottom"</code> |</p>
+      <p><code>"bottom-end"</code> |</p>
+      <p><code>"left-start"</code> |</p>
+      <p><code>"left"</code> |</p>
+      <p><code>"left-end"</code> |</p>
+      <p><code>"right-start"</code> |</p>
+      <p><code>"right"</code> |</p>
+      <p><code>"right-end"</code> |</p>
+      <p><code>"top-start"</code> |</p>
+      <p><code>"top"</code> |</p>
+      <p><code>"top-end"</code></p>
+    </td>
+    <td>
+      <p><code>"bottom"</code></p>
+    </td>
     <td>
       <p>
         MUI's prop. All twelve values work, and a tooltip that would fall off
@@ -337,9 +381,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>disableInteractive</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>disableInteractive</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         MUI's prop. Stops the tooltip from staying open while the pointer moves
@@ -357,21 +407,22 @@
 <div class="sds-doc-example" data-example="core/Tooltip/TooltipDark"></div>
 <h3><strong>Tooltip – Light</strong></h3>
 <p>
-  The light tooltip, which has to be asked for with hasInvertedStyle={false},
-  shown at both widths. The wide one holds 550px of left-aligned text.
+  The light tooltip, which has to be asked for with
+  <code>hasInvertedStyle={false}</code>, shown at both widths. The wide one
+  holds 550px of left-aligned text.
 </p>
 <div class="sds-doc-example" data-example="core/Tooltip/TooltipLight"></div>
 <h3><strong>Placement and the arrow</strong></h3>
 <p>
-  Four of the twelve placements, and what arrowOffset does to the arrow: it sets
-  a position rather than nudging one.
+  Four of the twelve placements, and what <code>arrowOffset</code> does to the
+  arrow: it sets a position rather than nudging one.
 </p>
 <div class="sds-doc-example" data-example="core/Tooltip/TooltipPlacement"></div>
 <h3><strong>Tooltip with a component slot</strong></h3>
 <p>
-  Content that is not a string goes in componentSlot, under the title. The
-  pointer can travel into the tooltip, which is what makes the link inside it
-  usable.
+  Content that is not a string goes in <code>componentSlot</code>, under the
+  title. The pointer can travel into the tooltip, which is what makes the link
+  inside it usable.
 </p>
 <div
   class="sds-doc-example"
@@ -391,10 +442,9 @@
   </p>
   <p>
     If the tooltip wraps a disabled component, please make sure to wrap the
-    children in a &lt;span&gt; tag. SDS puts
-    <em>tabIndex={0}</em>
-    on whatever the tooltip wraps, so that span also becomes a tab stop and the
-    tooltip opens on focus.
+    children in a <code>&lt;span&gt;</code> tag. SDS puts
+    <code>tabIndex={0}</code> on whatever the tooltip wraps, so that span also
+    becomes a tab stop and the tooltip opens on focus.
   </p>
   <p>
     <a href="https://mui.com/components/tooltips/#disabled-elements">

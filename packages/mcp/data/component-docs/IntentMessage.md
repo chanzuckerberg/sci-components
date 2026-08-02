@@ -6,57 +6,57 @@ The IntentMessage component's source code in the SDS codebase can be found [here
 
 ## How it differs from Figma
 
-The guidelines above describe two Figma constructs: an Intent Message built into every Input, and a standalone Intent Indicator that wraps an Input. In code both are the same component, **IntentMessage**, and no Input has an intentMessage prop:
+The guidelines above describe two Figma constructs: an Intent Message built into every Input, and a standalone Intent Indicator that wraps an Input. In code both are the same component, **IntentMessage**, and no Input has an `intentMessage` prop:
 
-- Wrap the Input in IntentMessage and pass the copy through the **messages** prop. The children render first, then the messages below them.
+- Wrap the Input in IntentMessage and pass the copy through the `messages` prop. The children render first, then the messages below them.
 
-- The Intent Indicator is the **border** prop. Because it stretches the full height of the wrapper, wrapping a group of Checkboxes or Radios gives you one border across the whole group.
+- The Intent Indicator is the `border` prop. Because it stretches the full height of the wrapper, wrapping a group of Checkboxes or Radios gives you one border across the whole group.
 
-- IntentMessage does not color the Input itself. Set the Input's own **intent** prop to the matching value so the two agree.
+- IntentMessage does not color the Input itself. Set the Input's own `intent` prop to the matching value so the two agree.
 
 ## Behavior notes
 
-- There are three intents, negative, notice, and positive. There is no neutral or informational intent.
+- There are three intents, `"negative"`, `"notice"`, and `"positive"`. There is no neutral or informational intent.
 
-- Messages are sorted by severity by default, so the order of the array does not matter unless you turn **autoOrder** off.
+- Messages are sorted by severity by default, so the order of the array does not matter unless you turn `autoOrder` off.
 
-- The border takes its color from the most severe intent present, which is the first intent in the ranking that appears in **messages**. With no messages the border renders transparent, so **border** does nothing on a wrapper that only has children.
+- The border takes its color from the most severe intent present, which is the first intent in the ranking that appears in `messages`. With no messages the border renders transparent, so `border` does nothing on a wrapper that only has children.
 
 - The border is drawn just outside the wrapper, 8px to the left of its edge. Leave room for it, or a parent with no left padding will clip it.
 
 - An icon passed by name always renders at the xs size, so it has to be an icon that offers xs. A name that does not logs an error and renders nothing. Pass an Icon element instead when you need another size.
 
-- The icon fill is forced to the intent color, so the color prop on an Icon element you pass in has no effect.
+- The icon fill is forced to the intent color, so the `color` prop on an Icon element you pass in has no effect.
 
-- The messages are plain text with no ARIA wiring, so assistive technology does not connect them to the Input. When a message needs to be announced, render IntentMessage beside the Input and point the Input's aria-describedby at a wrapper around it, as in the last example below.
+- The messages are plain text with no ARIA wiring, so assistive technology does not connect them to the Input. When a message needs to be announced, render IntentMessage beside the Input and point the Input's `aria-describedby` at a wrapper around it, as in the last example below.
 
 ## Props
 
 ### IntentMessage Props
 
-| Name      | Type                                        | Default                            | Description                                                                                                                                                                                          |
-| --------- | ------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| messages  | IntentMessageItem[]                         | []                                 | The messages to display, each with its own intent. See the table below for the shape of an item.                                                                                                     |
-| children  | ReactNode                                   | -                                  | Rendered above the messages, inside the same wrapper. This is where the Input, or a group of Inputs, goes.                                                                                           |
-| border    | bool                                        | false                              | Draws a 2px vertical bar to the left of the wrapper, colored by the most severe intent in messages. This is the Intent Indicator from the guidelines.                                                |
-| autoOrder | bool                                        | true                               | Sorts the messages by intent rather than using the order of the array. Set it to false to preserve your order.                                                                                       |
-| orderBy   | Array<"negative" \| "notice" \| "positive"> | ["negative", "notice", "positive"] | Replaces the default severity ranking. It affects the sort order and, because it defines what counts as most severe, the border color as well, which means it still applies when autoOrder is false. |
+| Name        | Type                                          | Default                              | Description                                                                                                                                                                                              |
+| ----------- | --------------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `messages`  | `IntentMessageItem[]`                         | `[]`                                 | The messages to display, each with its own intent. See the table below for the shape of an item.                                                                                                         |
+| `children`  | `ReactNode`                                   | -                                    | Rendered above the messages, inside the same wrapper. This is where the Input, or a group of Inputs, goes.                                                                                               |
+| `border`    | `bool`                                        | `false`                              | Draws a 2px vertical bar to the left of the wrapper, colored by the most severe intent in `messages`. This is the Intent Indicator from the guidelines.                                                  |
+| `autoOrder` | `bool`                                        | `true`                               | Sorts the messages by intent rather than using the order of the array. Set it to `false` to preserve your order.                                                                                         |
+| `orderBy`   | `Array<"negative" \| "notice" \| "positive">` | `["negative", "notice", "positive"]` | Replaces the default severity ranking. It affects the sort order and, because it defines what counts as most severe, the border color as well, which means it still applies when `autoOrder` is `false`. |
 
-That is the whole prop surface. IntentMessageProps does not extend the DOM attributes, so **id**, **className**, and **style** are all type errors even though the component would spread them onto its wrapper. Put them on an element of your own around it instead.
+That is the whole prop surface. `IntentMessageProps` does not extend the DOM attributes, so `id`, `className`, and `style` are all type errors even though the component would spread them onto its wrapper. Put them on an element of your own around it instead.
 
 ### IntentMessageItem
 
-| Name   | Type                                  | Default                                                   | Description                                                                                                                                |
-| ------ | ------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| intent | "negative" \| "notice" \| "positive"  | -                                                         | Required. Sets the text color, the icon color, and this message's place in the ranking.                                                    |
-| text   | string                                | -                                                         | Required. The message copy. Long text wraps.                                                                                               |
-| icon   | keyof IconNameToSizes \| ReactElement | CheckCircle for positive, ExclamationMarkCircle otherwise | Replaces the default icon. A name renders at xs; an element is rendered as given, though its fill is still overridden by the intent color. |
+| Name     | Type                                    | Default                                                               | Description                                                                                                                                |
+| -------- | --------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `intent` | `"negative" \| "notice" \| "positive"`  | -                                                                     | Required. Sets the text color, the icon color, and this message's place in the ranking.                                                    |
+| `text`   | `string`                                | -                                                                     | Required. The message copy. Long text wraps.                                                                                               |
+| `icon`   | `keyof IconNameToSizes \| ReactElement` | `"CheckCircle"` for `"positive"`, `"ExclamationMarkCircle"` otherwise | Replaces the default icon. A name renders at xs; an element is rendered as given, though its fill is still overridden by the intent color. |
 
 ## Code examples
 
 ### Default Intent Message
 
-The usual shape: the Input as children, one message, and the border turned on. The Input carries the same intent so its own styling matches.
+The usual shape: the Input as `children`, one message, and the border turned on. The Input carries the same intent so its own styling matches.
 
 **Example: DefaultIntentMessage**
 
@@ -126,7 +126,7 @@ export default App;
 
 ### Stacked Messages
 
-Several messages can describe one Input. Both of these are given the same array; the first sorts by severity, the second has autoOrder off and keeps the order as written.
+Several messages can describe one Input. Both of these are given the same array; the first sorts by severity, the second has `autoOrder` off and keeps the order as written.
 
 **Example: StackedIntentMessages**
 
@@ -160,7 +160,7 @@ export default App;
 
 ### Custom Ordering
 
-orderBy changes the ranking. Reversing it here moves the positive message to the top and switches the border to the positive color.
+`orderBy` changes the ranking. Reversing it here moves the positive message to the top and switches the border to the positive color.
 
 **Example: IntentMessageOrderBy**
 
@@ -236,7 +236,7 @@ export default App;
 
 ### Announcing the Message
 
-To connect the message to the Input for assistive technology, keep them as siblings and reference the message container from the Input's aria-describedby.
+To connect the message to the Input for assistive technology, keep them as siblings and reference the message container from the Input's `aria-describedby`.
 
 **Example: AccessibleIntentMessage**
 

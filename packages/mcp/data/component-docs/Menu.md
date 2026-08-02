@@ -8,15 +8,15 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## SDS vs MUI
 
-SDS Menu is a thin wrapper around MUI's Menu. **MenuProps** is MUI's own type re-exported unchanged, so there are no sds-prefixed props and everything in the MUI documentation applies. What SDS contributes is two positioning defaults and the styling of the paper the items sit on:
+SDS Menu is a thin wrapper around MUI's Menu. `MenuProps` is MUI's own type re-exported unchanged, so there are no sds-prefixed props and everything in the MUI documentation applies. What SDS contributes is two positioning defaults and the styling of the paper the items sit on:
 
-- **anchorOrigin:** set to _{ vertical: "bottom", horizontal: "center" }_, where MUI's default is _top_ / _left_. An SDS menu therefore opens below its anchor rather than on top of it.
+- `anchorOrigin`: set to `{ vertical: "bottom", horizontal: "center" }`, where MUI's default is `"top"` / `"left"`. An SDS menu therefore opens below its anchor rather than on top of it.
 
-- **transformOrigin:** set to _{ vertical: "top", horizontal: "center" }_, so the two center points meet and the menu hangs centered under its trigger.
+- `transformOrigin`: set to `{ vertical: "top", horizontal: "center" }`, so the two center points meet and the menu hangs centered under its trigger.
 
 - **Both defaults are spread before your props,** which means each one is replaced whole rather than merged. The two are a pair, so repositioning a menu is a matter of passing both, as the placement example below does.
 
-- **The paper is restyled:** the surface color comes from the theme's _surfacePrimary_, the corners are the **l** radius, and there is an **xs** inset around the items. SDS also sets _background-image: none_, which removes the tint MUI's Paper paints over surfaces in dark mode.
+- **The paper is restyled:** the surface color comes from the theme's `surfacePrimary`, the corners are the `l` radius, and there is an `xs` inset around the items. SDS also sets `background-image: none`, which removes the tint MUI's Paper paints over surfaces in dark mode.
 
 - **The list loses its own padding,** so the space around the items is the paper's inset alone and the first and last item sit as close to the edge as the ones on either side.
 
@@ -30,7 +30,7 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 ## Anchoring and state
 
-Menu is controlled: it renders when **open** is true, positions itself against the element passed as **anchorEl**, and asks to be dismissed through **onClose**. Holding the anchor element in state covers all three, since whether there is an anchor is also whether the menu is open.
+Menu is controlled: it renders when `open` is `true`, positions itself against the element passed as `anchorEl`, and asks to be dismissed through `onClose`. Holding the anchor element in state covers all three, since whether there is an anchor is also whether the menu is open.
 
 **React TypeScript**
 
@@ -40,13 +40,13 @@ const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 <Button onClick={(event) => setAnchorEl(event.currentTarget)}>Open Menu</Button>
 
 <Menu
- anchorEl={anchorEl}
- open={Boolean(anchorEl)}
- onClose={() => setAnchorEl(null)}
+  anchorEl={anchorEl}
+  open={Boolean(anchorEl)}
+  onClose={() => setAnchorEl(null)}
 >
- <MenuItem sdsType="action" onClick={() => setAnchorEl(null)}>
- Rename
- </MenuItem>
+  <MenuItem sdsType="action" onClick={() => setAnchorEl(null)}>
+    Rename
+  </MenuItem>
 </Menu>
 ```
 
@@ -54,46 +54,46 @@ const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
 - A Menu is a Popover holding a list, and a Popover is built on MUI's Modal. It renders in a portal at the end of the document, traps focus while it is open, hides the rest of the page from assistive technology, and locks the page's scroll.
 
-- _onClose_ is called with the event and a reason: _"backdropClick"_, _"escapeKeyDown"_, or _"tabKeyDown"_. It is never called for a click on an item. Closing on selection is the item's own _onClick_, which is what lets a menu of toggles stay open while several are set.
+- `onClose` is called with the event and a reason: `"backdropClick"`, `"escapeKeyDown"`, or `"tabKeyDown"`. It is never called for a click on an item. Closing on selection is the item's own `onClick`, which is what lets a menu of toggles stay open while several are set.
 
 - **anchorEl has to be state, not a ref.** The menu measures the anchor while rendering, so it needs a render to happen once the element is known. Storing the trigger in a ref leaves the menu with nothing to measure on the first open.
 
 - Opening a menu moves focus into it. The arrow keys walk the items, Home and End jump to the ends, and typing a letter moves to the next item whose text starts with it. Disabled items are skipped.
 
-- _variant_ decides where that focus lands. The default, _"selectedMenu"_, starts on the selected item, which is right for a menu that reflects a current value; pass _"menu"_ to always start at the top.
+- `variant` decides where that focus lands. The default, `"selectedMenu"`, starts on the selected item, which is right for a menu that reflects a current value; pass `"menu"` to always start at the top.
 
-- Give the trigger _aria-haspopup_, _aria-controls_ pointing at the menu's id, and _aria-expanded_ while it is open, then name the list with _slotProps.list_ and an _aria-labelledby_ that points back at the trigger.
+- Give the trigger `aria-haspopup`, `aria-controls` pointing at the menu's id, and `aria-expanded` while it is open, then name the list with `slotProps.list` and an `aria-labelledby` that points back at the trigger.
 
-- The list is a _role="menu"_ of _role="menuitem"_ children, which describes a set of commands. A menu used to choose values instead is a listbox: pass _role="listbox"_ through _slotProps.list_ and give each MenuItem _role="option"_ with an _aria-selected_.
+- The list is a `role="menu"` of `role="menuitem"` children, which describes a set of commands. A menu used to choose values instead is a listbox: pass `role="listbox"` through `slotProps.list` and give each MenuItem `role="option"` with an `aria-selected`.
 
-- Nothing is rendered while _open_ is false, so the items are mounted fresh on each open. Pass _keepMounted_ to keep them in the document instead, which is worth it when the list is expensive to build or has to stay findable by an in-page search.
+- Nothing is rendered while `open` is `false`, so the items are mounted fresh on each open. Pass `keepMounted` to keep them in the document instead, which is worth it when the list is expensive to build or has to stay findable by an in-page search.
 
-- A menu longer than the window scrolls within its own paper. Where the number of items is unbounded, cap the height through _slotProps.paper_ so the surface is the same size whatever it holds.
+- A menu longer than the window scrolls within its own paper. Where the number of items is unbounded, cap the height through `slotProps.paper` so the surface is the same size whatever it holds.
 
 ## Props
 
 Menu takes MUI's props and adds none of its own. The ones needed to get a menu working, and those whose SDS defaults differ from MUI's, are listed below. See the MUI documentation for the rest.
 
-| Name               | Type                                                                                                       | Default                                      | Description                                                                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| open               | boolean                                                                                                    | -                                            | Required. Whether the menu is shown. Usually derived from whether an anchor has been recorded.                                                                   |
-| anchorEl           | HTMLElement \| (() => HTMLElement) \| null                                                                 | -                                            | The element the menu is positioned against. Keep it in state so that setting it causes the render the menu needs in order to measure it.                         |
-| children           | ReactNode                                                                                                  | -                                            | The contents of the menu, normally SDS MenuItems, placed into the list the menu renders.                                                                         |
-| onClose            | (event, reason) => void                                                                                    | -                                            | Called on a backdrop click, on Escape, and on Tab, with the reason as its second argument. Closing the menu is up to you.                                        |
-| anchorOrigin       | { vertical: "top" \| "center" \| "bottom" \| number, horizontal: "left" \| "center" \| "right" \| number } | { vertical: "bottom", horizontal: "center" } | The point on the anchor the menu attaches to. SDS changes MUI's default from the anchor's top left corner.                                                       |
-| transformOrigin    | { vertical: "top" \| "center" \| "bottom" \| number, horizontal: "left" \| "center" \| "right" \| number } | { vertical: "top", horizontal: "center" }    | The point on the menu that meets the anchor's. Passing your own replaces the SDS default rather than merging with it.                                            |
-| variant            | "menu" \| "selectedMenu"                                                                                   | "selectedMenu"                               | Where focus lands when the menu opens: on the selected item, or on the first one.                                                                                |
-| autoFocus          | boolean                                                                                                    | true                                         | Whether focus moves into the menu when it opens. Turning it off has severe accessibility implications unless focus is managed some other way.                    |
-| slotProps          | { root, paper, list, transition, backdrop }                                                                | -                                            | Props for the parts the menu is made of. slotProps.list is where the list's label and role belong, and slotProps.paper is where a width or a max height belongs. |
-| keepMounted        | boolean                                                                                                    | false                                        | Keeps the items in the document while the menu is closed, preserving their state at the cost of rendering them up front.                                         |
-| disablePortal      | boolean                                                                                                    | false                                        | Renders the menu where it is written rather than at the end of the document, which puts it back within reach of an ancestor's overflow.                          |
-| transitionDuration | number \| { appear, enter, exit } \| "auto"                                                                | "auto"                                       | How long the grow transition runs. "auto" scales it to the size of the menu.                                                                                     |
+| Name                 | Type                                                                                                           | Default                                        | Description                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `open`               | `boolean`                                                                                                      | -                                              | Required. Whether the menu is shown. Usually derived from whether an anchor has been recorded.                                                                       |
+| `anchorEl`           | `HTMLElement \| (() => HTMLElement) \| null`                                                                   | -                                              | The element the menu is positioned against. Keep it in state so that setting it causes the render the menu needs in order to measure it.                             |
+| `children`           | `ReactNode`                                                                                                    | -                                              | The contents of the menu, normally SDS MenuItems, placed into the list the menu renders.                                                                             |
+| `onClose`            | `(event, reason) => void`                                                                                      | -                                              | Called on a backdrop click, on Escape, and on Tab, with the reason as its second argument. Closing the menu is up to you.                                            |
+| `anchorOrigin`       | `{ vertical: "top" \| "center" \| "bottom" \| number,` `horizontal: "left" \| "center" \| "right" \| number }` | `{ vertical: "bottom", horizontal: "center" }` | The point on the anchor the menu attaches to. SDS changes MUI's default from the anchor's top left corner.                                                           |
+| `transformOrigin`    | `{ vertical: "top" \| "center" \| "bottom" \| number,` `horizontal: "left" \| "center" \| "right" \| number }` | `{ vertical: "top", horizontal: "center" }`    | The point on the menu that meets the anchor's. Passing your own replaces the SDS default rather than merging with it.                                                |
+| `variant`            | `"menu" \| "selectedMenu"`                                                                                     | `"selectedMenu"`                               | Where focus lands when the menu opens: on the selected item, or on the first one.                                                                                    |
+| `autoFocus`          | `boolean`                                                                                                      | `true`                                         | Whether focus moves into the menu when it opens. Turning it off has severe accessibility implications unless focus is managed some other way.                        |
+| `slotProps`          | `{ root, paper, list, transition, backdrop }`                                                                  | -                                              | Props for the parts the menu is made of. `slotProps.list` is where the list's label and role belong, and `slotProps.paper` is where a width or a max height belongs. |
+| `keepMounted`        | `boolean`                                                                                                      | `false`                                        | Keeps the items in the document while the menu is closed, preserving their state at the cost of rendering them up front.                                             |
+| `disablePortal`      | `boolean`                                                                                                      | `false`                                        | Renders the menu where it is written rather than at the end of the document, which puts it back within reach of an ancestor's overflow.                              |
+| `transitionDuration` | `number \| { appear, enter, exit } \| "auto"`                                                                  | `"auto"`                                       | How long the grow transition runs. `"auto"` scales it to the size of the menu.                                                                                       |
 
 ## Code examples
 
 ### **Default Menu**
 
-The least a menu needs: an anchor kept in state, an open derived from it, and an onClose that clears it. The items are commands, so each one clears the anchor as well and the menu closes behind it.
+The least a menu needs: an anchor kept in state, an `open` derived from it, and an `onClose` that clears it. The items are commands, so each one clears the anchor as well and the menu closes behind it.
 
 **Example: DefaultMenu**
 
@@ -215,7 +215,7 @@ export default App;
 
 ### **Menu with selectable items**
 
-Selection state lives outside the menu. Passing _isMultiSelect_ and _selected_ to each MenuItem draws the checkmarks, and leaving the close out of the item handlers keeps the menu open so several options can be set in one visit.
+Selection state lives outside the menu. Passing `isMultiSelect` and `selected` to each MenuItem draws the checkmarks, and leaving the close out of the item handlers keeps the menu open so several options can be set in one visit.
 
 **Example: MenuWithSelectableItems**
 

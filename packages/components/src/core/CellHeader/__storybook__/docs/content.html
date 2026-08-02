@@ -22,9 +22,15 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>active</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>active</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Marks this column as the one currently sorted: the label and chevron
@@ -33,14 +39,24 @@
     </td>
   </tr>
   <tr>
-    <td><p>as</p></td>
-    <td><p>React.ElementType</p></td>
-    <td><p>"th"</p></td>
+    <td>
+      <p><code>as</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"th"</code></p>
+    </td>
     <td><p>The element the header cell renders as.</p></td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -50,20 +66,32 @@
     </td>
   </tr>
   <tr>
-    <td><p>direction</p></td>
-    <td><p>CellHeaderDirection ("asc" | "desc")</p></td>
-    <td><p>"desc"</p></td>
+    <td>
+      <p><code>direction</code></p>
+    </td>
+    <td>
+      <p><code>CellHeaderDirection ("asc" | "desc")</code></p>
+    </td>
+    <td>
+      <p><code>"desc"</code></p>
+    </td>
     <td>
       <p>
-        Which chevron to draw: up for "asc", down for "desc". It also sets the
-        icon's aria-label.
+        Which chevron to draw: up for <code>"asc"</code>, down for
+        <code>"desc"</code>. It also sets the icon's <code>aria-label</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>hideSortIcon</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>hideSortIcon</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Leaves the chevron out for columns that cannot be sorted. An active
@@ -72,19 +100,29 @@
     </td>
   </tr>
   <tr>
-    <td><p>horizontalAlign</p></td>
     <td>
-      <p>"left"</p>
-      <p>| "center"</p>
-      <p>| "right"</p>
+      <p><code>horizontalAlign</code></p>
     </td>
-    <td><p>"left"</p></td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
     <td><p>Horizontally aligns the label and its chevron.</p></td>
   </tr>
   <tr>
-    <td><p>hover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>hover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Makes the header interactive: it takes a pointer cursor, reacts to
@@ -95,31 +133,47 @@
     </td>
   </tr>
   <tr>
-    <td><p>onClick</p></td>
-    <td><p>React.MouseEventHandler</p></td>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>React.MouseEventHandler</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Where sorting is actually wired up: with TanStack Table, pass
-        column.getToggleSortingHandler().
+        <code>column.getToggleSortingHandler()</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>shouldShowTooltipOnHover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>shouldShowTooltipOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
-        Wraps the header in a Tooltip. It only takes effect while hover is also
-        true.
+        Wraps the header in a Tooltip. It only takes effect while
+        <code>hover</code> is also <code>true</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>shouldTruncate</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>shouldTruncate</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Keeps a long label on one line and truncates it with an ellipsis instead
@@ -128,20 +182,34 @@
     </td>
   </tr>
   <tr>
-    <td><p>tooltipText</p></td>
-    <td><p>string</p></td>
-    <td><p>""</p></td>
+    <td>
+      <p><code>tooltipText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>""</code></p>
+    </td>
     <td><p>The tooltip's title.</p></td>
   </tr>
   <tr>
-    <td><p>tooltipSubtitle</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>tooltipSubtitle</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>A second line below the tooltip's title.</p></td>
   </tr>
   <tr>
-    <td><p>tooltipProps</p></td>
-    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TooltipProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -152,8 +220,8 @@
   </tr>
 </table>
 <p>
-  Anything else you pass, such as colSpan, scope or a data attribute, lands on
-  the rendered th.
+  Anything else you pass, such as <code>colSpan</code>, <code>scope</code> or a
+  data attribute, lands on the rendered <code>th</code>.
 </p>
 <h2>Code examples</h2>
 <h3><strong>Default CellHeader</strong></h3>

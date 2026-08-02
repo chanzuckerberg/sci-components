@@ -12,22 +12,29 @@
 <h2>SDS vs MUI</h2>
 <p>
   The SDS ButtonDropdown component is the regular Button component with a
-  ChevronDown icon added after the label text, via the MUI endIcon prop. The
-  chevron is only added when the button has a label, and its size follows the
-  size prop. A startIcon is optional; when used, it takes the Icon component,
+  ChevronDown icon added after the label text, via the MUI
+  <code>endIcon</code> prop. The chevron is only added when the button has a
+  label, and its size follows the <code>size</code> prop. A
+  <code>startIcon</code> is optional; when used, it takes the Icon component,
   which references the specific icon to call as one of its props, like so:
 </p>
-<p>startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</code></pre>
+  </figure>
+</div>
 <p>
   whereas MUI expects the prop to receive an individual icon as its own
-  component (for example startIcon={&lt;DeleteIcon /&gt;}).
+  component (for example <code>startIcon={&lt;DeleteIcon /&gt;}</code>).
 </p>
 <p>
   Because ButtonDropdown renders a Button, it accepts every Button prop except
-  sdsType, which is narrowed to primary and secondary: a dropdown trigger is
-  never a destructive action, and passing destructive logs a warning and renders
-  nothing. The same MUI caveats as Button apply, so variant, color, and
-  disableElevation are all best avoided.
+  <code>sdsType</code>, which is narrowed to <code>"primary"</code> and
+  <code>"secondary"</code>: a dropdown trigger is never a destructive action,
+  and passing <code>"destructive"</code> logs a warning and renders nothing. The
+  same MUI caveats as Button apply, so <code>variant</code>, <code>color</code>,
+  and <code>disableElevation</code> are all best avoided.
 </p>
 <h2>MUI Documentation</h2>
 <p>
@@ -48,51 +55,74 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>sdsStyle</p></td>
     <td>
-      <p>"solid"</p>
-      <p>| "outline"</p>
-      <p>| "minimal"</p>
+      <p><code>sdsStyle</code></p>
     </td>
-    <td><p>"solid"</p></td>
+    <td>
+      <p><code>"solid"</code> |</p>
+      <p><code>"outline"</code> |</p>
+      <p><code>"minimal"</code></p>
+    </td>
+    <td>
+      <p><code>"solid"</code></p>
+    </td>
     <td><p>Style of the button. Same values as Button.</p></td>
   </tr>
   <tr>
-    <td><p>sdsType</p></td>
-    <td><p>"primary" | "secondary"</p></td>
-    <td><p>"primary"</p></td>
+    <td>
+      <p><code>sdsType</code></p>
+    </td>
+    <td>
+      <p><code>"primary" | "secondary"</code></p>
+    </td>
+    <td>
+      <p><code>"primary"</code></p>
+    </td>
     <td>
       <p>
-        Color scheme of the button. Unlike Button, destructive is not supported.
+        Color scheme of the button. Unlike Button, <code>"destructive"</code> is
+        not supported.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>size</p></td>
     <td>
-      <p>"small"</p>
-      <p>| "medium"</p>
-      <p>| "large"</p>
+      <p><code>size</code></p>
     </td>
-    <td><p>"large"</p></td>
+    <td>
+      <p><code>"small"</code> |</p>
+      <p><code>"medium"</code> |</p>
+      <p><code>"large"</code></p>
+    </td>
+    <td>
+      <p><code>"large"</code></p>
+    </td>
     <td>
       <p>Size of the button. Also sets the size of the trailing chevron.</p>
     </td>
   </tr>
   <tr>
-    <td><p>startIcon</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>startIcon</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         An optional icon placed before the label. Pass the SDS Icon component,
-        for example &lt;Icon sdsIcon="Download" sdsSize="s" /&gt;.
+        for example <code>&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -102,14 +132,26 @@
     </td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
-    <td><p>Disables the button when set to true.</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>Disables the button when set to <code>true</code>.</p>
+    </td>
   </tr>
   <tr>
-    <td><p>onClick</p></td>
-    <td><p>(event: React.MouseEvent) =&gt; void</p></td>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>(event: React.MouseEvent) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -120,8 +162,8 @@
   </tr>
 </table>
 <p>
-  Every other Button prop, such as backgroundOnHover and backgroundAppearance,
-  is supported and behaves identically here.
+  Every other Button prop, such as <code>backgroundOnHover</code> and
+  <code>backgroundAppearance</code>, is supported and behaves identically here.
 </p>
 <h2>Code examples</h2>
 <h3><strong>Default ButtonDropdown</strong></h3>

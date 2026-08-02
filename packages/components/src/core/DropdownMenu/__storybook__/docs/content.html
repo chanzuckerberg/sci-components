@@ -33,16 +33,17 @@
     <p>
       SDS DropdownMenu uses
       <a href="https://mui.com/material-ui/react-popper/">MUI Popper</a>
-      . A custom Popper component can be passed via props.PopperComponent and/or
-      props.PopperBaseProps to control the popper component.
+      . A custom Popper component can be passed via
+      <code>props.PopperComponent</code> and/or
+      <code>props.PopperBaseProps</code> to control the popper component.
     </p>
   </li>
   <li>
     <p>
       Similarly, SDS DropdownMenu uses
       <a href="https://mui.com/material-ui/react-paper/">MUI Paper</a>
-      . A custom Paper component can be passed via props.PaperComponent to
-      enable custom styling.
+      . A custom Paper component can be passed via
+      <code>props.PaperComponent</code> to enable custom styling.
     </p>
   </li>
 </ul>
@@ -73,13 +74,17 @@
     </td>
   </tr>
   <tr>
-    <td><p>anchorEl</p></td>
     <td>
-      <p>HTML element</p>
-      <p>| object</p>
-      <p>| func</p>
+      <p><code>anchorEl</code></p>
     </td>
-    <td><p>null</p></td>
+    <td>
+      <p><code>HTML element</code> |</p>
+      <p><code>object</code> |</p>
+      <p><code>func</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
     <td>
       <p>
         Tells the DropdownMenu which element to use as an anchor; see more in
@@ -101,8 +106,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>clickAwayListenerProps</p></td>
-    <td><p>func</p></td>
+    <td>
+      <p><code>clickAwayListenerProps</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -120,18 +129,26 @@
     </td>
   </tr>
   <tr>
-    <td><p>groupBy</p></td>
-    <td><p>func</p></td>
+    <td>
+      <p><code>groupBy</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Groups menu items according to their assigned section</p></td>
   </tr>
   <tr>
-    <td><p>isOptionEqualToValue</p></td>
-    <td><p>func</p></td>
     <td>
-      <p>(option, val): boolean {</p>
-      <p>return option.name === val.name;</p>
-      <p>}</p>
+      <p><code>isOptionEqualToValue</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
+    <td>
+      <p><code>(option, val): boolean {</code></p>
+      <p><code>return option.name === val.name;</code></p>
+      <p><code>}</code></p>
     </td>
     <td>
       <p>
@@ -145,21 +162,33 @@
     </td>
   </tr>
   <tr>
-    <td><p>keepSearchOnSelect</p></td>
-    <td><p>bool</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>keepSearchOnSelect</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
         Maintains a search input when a user selects a menu item (only if
-        multiple selections are allowed via the multiple prop; otherwise the
-        dropdown closes upon selection)
+        multiple selections are allowed via the <code>multiple</code> prop;
+        otherwise the dropdown closes upon selection)
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>multiple</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>multiple</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Allows user to select multiple menu items; see more in the
@@ -170,9 +199,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>noOptionsText</p></td>
-    <td><p>string</p></td>
-    <td><p>"No options"</p></td>
+    <td>
+      <p><code>noOptionsText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"No options"</code></p>
+    </td>
     <td>
       <p>
         Sets the text that displays if there are no matching search results; see
@@ -184,17 +219,27 @@
     </td>
   </tr>
   <tr>
-    <td><p>onClickAway</p></td>
-    <td><p>func</p></td>
+    <td>
+      <p><code>onClickAway</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>Sets what happens when a user clicks outside of the DropdownMenu</p>
     </td>
   </tr>
   <tr>
-    <td><p>onInputChange</p></td>
-    <td><p>func</p></td>
-    <td><p>noop</p></td>
+    <td>
+      <p><code>onInputChange</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
+    <td>
+      <p><code>noop</code></p>
+    </td>
     <td>
       <p>
         Specifies what happens when a new selection is made; see more in the
@@ -206,7 +251,9 @@
     </td>
   </tr>
   <tr>
-    <td><p>PopperBaseProps</p></td>
+    <td>
+      <p><code>PopperBaseProps</code></p>
+    </td>
     <td></td>
     <td><p>-</p></td>
     <td>
@@ -218,18 +265,24 @@
         >
         , and see all the props available to pass to it on the
         <a href="https://mui.com/material-ui/api/popper/">Popper API page</a>
-        . See an example of PopperBaseProps in use in the Recipes section
+        . See an example of <code>PopperBaseProps</code> in use in the Recipes
+        section
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>PopperComponent</p></td>
-    <td><p>func</p></td>
+    <td>
+      <p><code>PopperComponent</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
     <td>
       <p>
-        SDS's StyledPopper; see
-        sci-components/packages/components/src/core/DropdownMenu/style.ts, ~
-        line 202
+        SDS's <code>StyledPopper</code>; see
+        <code
+          >sci-components/packages/components/src/core/DropdownMenu/style.ts</code
+        >, ~ line 202
       </p>
     </td>
     <td>
@@ -244,9 +297,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>search</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>search</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Provides a search bar at the top of the menu from which users can narrow
@@ -255,8 +314,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>title</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Sets a heading for the menu</p></td>
   </tr>
@@ -287,8 +350,8 @@
       because the anchor element also gets recreated.
     </em>
     To resolve this, move the DropdownMenu anchor element outside of the table
-    or use the pendingState and only show/hide the columns when closing the
-    dropdown.
+    or use the <code>pendingState</code> and only show/hide the columns when
+    closing the dropdown.
   </p>
 </div>
 <h2>Code examples</h2>
@@ -299,12 +362,12 @@
 </p>
 <p>
   Menu item metadata is stored as an array of objects (one per menu item) passed
-  to the DropdownMenu component’s options prop. At minimum each MenuItem needs a
-  name property, which is the text it displays. MenuItems can display more
-  metadata, though; see the “Grouped sections” and “Menu items with count, icon,
-  and details” examples below. Alternatively, a custom component can be
-  displayed instead of a MenuItem component; see the “Components in place of
-  menu items” example below.
+  to the DropdownMenu component’s <code>options</code> prop. At minimum each
+  MenuItem needs a <code>name</code> property, which is the text it displays.
+  MenuItems can display more metadata, though; see the “Grouped sections” and
+  “Menu items with count, icon, and details” examples below. Alternatively, a
+  custom component can be displayed instead of a MenuItem component; see the
+  “Components in place of menu items” example below.
 </p>
 <p>
   The minimum width for the DropdownMenu is 225px, but longer text will
@@ -325,13 +388,13 @@
 <h3>Search</h3>
 <p>
   An InputSearch component can be incorporated into the DropdownMenu component
-  by passing it the search prop.
+  by passing it the <code>search</code> prop.
 </p>
 <p>
   The search functions by filtering out non-matches as the user types, leaving
   only menu items with text that match the input. If no matches are found, the
   DropdownMenu displays “No options” below the InputSearch by default. This text
-  can be changed via the noOptionsText prop as shown below.
+  can be changed via the <code>noOptionsText</code> prop as shown below.
 </p>
 <p>
   By default, the search’s input text is maintained even when a user selects a
@@ -356,12 +419,13 @@
 <h3>Multi-select</h3>
 <p>
   You can allow users to select multiple menu items by passing the DropdownMenu
-  component the multiple prop. MenuItems will be shifted further to the right to
-  make room for checkmarks displayed upon selection.
+  component the <code>multiple</code> prop. MenuItems will be shifted further to
+  the right to make room for checkmarks displayed upon selection.
 </p>
 <p>
-  If the multiple prop is not true, the DropdownMenu allows just one selection.
-  It closes and applies the selection once&nbsp; a menu item is selected.
+  If the <code>multiple</code> prop is not <code>true</code>, the DropdownMenu
+  allows just one selection. It closes and applies the selection once&nbsp; a
+  menu item is selected.
 </p>
 <div class="sds-doc-example" data-example="core/DropdownMenu/MultiSelect"></div>
 <h3>Search cleared on select</h3>
@@ -369,13 +433,14 @@
   If search is included in the DropdownMenu, by default the search input will be
   maintained when a user selects a MenuItem (if multiple selections are allowed;
   otherwise the dropdown menu closes upon selection). However, the search input
-  can be set to close upon selection by setting the optional keepSearchOnSelect
-  prop to false.
+  can be set to close upon selection by setting the optional
+  <code>keepSearchOnSelect</code> prop to <code>false</code>.
 </p>
 <p>
-  This setting is intended to be used only when search and multiple are both set
-  to true (otherwise it will have no noticeable affect since the dropdown menu
-  closes upon selection if multi-select is not allowed, hiding the search bar).
+  This setting is intended to be used only when <code>search</code> and
+  <code>multiple</code> are both set to <code>true</code> (otherwise it will
+  have no noticeable affect since the dropdown menu closes upon selection if
+  multi-select is not allowed, hiding the search bar).
 </p>
 <p>To see how this works:</p>
 <ol class="sds-doc-ordered-list">
@@ -390,7 +455,8 @@
 </ol>
 <p>
   Compare this to the default behavior in the " Search " example above, or
-  change the keepSearchOnSelect prop in the example below to true.
+  change the <code>keepSearchOnSelect</code> prop in the example below to
+  <code>true</code>.
 </p>
 <div
   class="sds-doc-example"
@@ -399,9 +465,9 @@
 <h3>Grouped sections</h3>
 <p>MenuItems can be displayed in groups with a label.</p>
 <p>
-  This requires passing DropdownMenu the groupBy prop to group options under the
-  returned string. The groupBy value is also used as the text for group headings
-  when&nbsp;
+  This requires passing DropdownMenu the <code>groupBy</code> prop to group
+  options under the returned string. The <code>groupBy</code> value is also used
+  as the text for group headings when&nbsp;
   <a href="https://mui.com/material-ui/api/autocomplete/#props"
     >MUI Autocomplete renderGroup</a
   >
@@ -418,8 +484,8 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
   </figure>
 </div>
 <p>
-  This groupBy prop must be provided or the groups will not render, even if all
-  menu items have section properties (see below).
+  This <code>groupBy</code> prop must be provided or the groups will not render,
+  even if all menu items have <code>section</code> properties (see below).
 </p>
 <div
   class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
@@ -446,9 +512,11 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
 </p>
 <h3>Custom isOptionEqualToValue</h3>
 <p>
-  The isOptionEqualToValue prop changes how a selected value is compared against
-  the available options. By default option.name === val.name is used. In the
-  custom example below, the id property is used instead of the name property.
+  The <code>isOptionEqualToValue</code> prop changes how a selected value is
+  compared against the available options. By default
+  <code>option.name === val.name</code> is used. In the custom example below,
+  the <code>id</code> property is used instead of the <code>name</code>
+  property.
 </p>
 <p>
   This is a MUI prop; learn more in the
@@ -463,12 +531,12 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
 ></div>
 <h3>Custom onChange</h3>
 <p>
-  The optional onChange prop specifies what happens when a new selection is
-  made.
+  The optional <code>onChange</code> prop specifies what happens when a new
+  selection is made.
 </p>
 <p>
-  In the example below, onChange has been modified such that making a new
-  selection logs the value and reason to the console.
+  In the example below, <code>onChange</code> has been modified such that making
+  a new selection logs the value and reason to the console.
 </p>
 <p>
   This is a MUI prop; learn more in the
@@ -483,8 +551,9 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
 ></div>
 <h3>Custom PopperBaseProps</h3>
 <p>
-  PopperBaseProps is an SDS-specific prop made for passing custom props to the
-  Popper component, which is included as part of the DropdownMenu component.
+  <code>PopperBaseProps</code> is an SDS-specific prop made for passing custom
+  props to the Popper component, which is included as part of the DropdownMenu
+  component.
 </p>
 <p>
   The Popper component is part of MUI; learn more in the
@@ -494,8 +563,9 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
   .
 </p>
 <p>
-  The example below passes the Popper a className prop and additionally uses the
-  sx prop to make style changes (learn more on the
+  The example below passes the Popper a <code>className</code> prop and
+  additionally uses the <code>sx</code> prop to make style changes (learn more
+  on the
   <a href="https://mui.com/system/getting-started/the-sx-prop/">MUI</a>
   <a href="https://mui.com/system/getting-started/the-sx-prop/">sx</a>
   <a href="https://mui.com/system/getting-started/the-sx-prop/"
@@ -509,16 +579,17 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
 ></div>
 <h3>Custom Popper component</h3>
 <p>
-  In addition to modifying the Popper's styles via PopperBaseProps above, the
-  styles for the Popper component can be overwritten more directly with
-  styled().
+  In addition to modifying the Popper's styles via
+  <code>PopperBaseProps</code> above, the styles for the Popper component can be
+  overwritten more directly with <code>styled()</code>.
 </p>
 <p>
   To get all the default SDS styles used for Popper, first copy them into a
   custom-styled Popper (from within
-  sci-components/packages/components/src/core/DropdownMenu/style.ts file). Then
-  replace and / or follow up those styles with custom styles. The example below
-  includes comments for each of these steps within CustomPopper.
+  <code>sci-components/packages/components/src/core/DropdownMenu/style.ts</code>
+  file). Then replace and / or follow up those styles with custom styles. The
+  example below includes comments for each of these steps within
+  <code>CustomPopper</code>.
 </p>
 <div
   class="sds-doc-example"

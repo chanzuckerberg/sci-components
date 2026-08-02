@@ -6,18 +6,18 @@ It wrapped MUI's Link, offered two sizes and a bold weight, and underlined only 
 
 ## Migrating away from it
 
-| Old prop           | Replace with                                                                                                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sdsSize="s"        | fontLinkS                                                                                                                                                                 |
-| sdsSize="xs"       | fontLinkXs                                                                                                                                                                |
-| fontWeight="bold"  | The semibold mixin for the size, such as fontLinkSemiboldS. The component's "bold" was 600, which SDS calls semibold.                                                     |
-| sdsStyle="default" | The link type style plus the accent text action colors. Note the difference: the component only underlined on hover, whereas the type style is underlined in every state. |
-| sdsStyle="dashed"  | color: inherit with text-decoration: underline dashed, going solid on hover, as in the last example above.                                                                |
+| Old prop             | Replace with                                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sdsSize="s"`        | `fontLinkS`                                                                                                                                                               |
+| `sdsSize="xs"`       | `fontLinkXs`                                                                                                                                                              |
+| `fontWeight="bold"`  | The semibold mixin for the size, such as `fontLinkSemiboldS`. The component's `"bold"` was `600`, which SDS calls semibold.                                               |
+| `sdsStyle="default"` | The link type style plus the accent text action colors. Note the difference: the component only underlined on hover, whereas the type style is underlined in every state. |
+| `sdsStyle="dashed"`  | `color: inherit` with `text-decoration: underline dashed`, going solid on hover, as in the last example above.                                                            |
 
 ## Props
 
-| Name       | Type                  | Default   | Description                                                                                                           |
-| ---------- | --------------------- | --------- | --------------------------------------------------------------------------------------------------------------------- |
-| sdsStyle   | "default" \| "dashed" | "default" | "default" underlines on hover, focus, and press only; "dashed" is underlined dashed at rest and solid on interaction. |
-| sdsSize    | "xs" \| "s"           | "s"       | The font size, taken from the body scale rather than the link one.                                                    |
-| fontWeight | "normal" \| "bold"    | "normal"  | Maps to font-weight 400 and 600.                                                                                      |
+| Name         | Type                      | Default     | Description                                                                                                               |
+| ------------ | ------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `sdsStyle`   | `"default"` \| `"dashed"` | `"default"` | `"default"` underlines on hover, focus, and press only; `"dashed"` is underlined dashed at rest and solid on interaction. |
+| `sdsSize`    | `"xs" \| "s"`             | `"s"`       | The font size, taken from the body scale rather than the link one.                                                        |
+| `fontWeight` | `"normal"` \| `"bold"`    | `"normal"`  | Maps to `font-weight` `400` and `600`.                                                                                    |

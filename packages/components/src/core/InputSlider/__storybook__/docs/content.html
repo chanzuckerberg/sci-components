@@ -17,34 +17,23 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <strong>orientation</strong>
-      <strong>:</strong>
-      Has no effect in SDS. The component always renders horizontally, and
-      overrides anything you pass.
+      <code>orientation</code>: Has no effect in SDS. The component always
+      renders horizontally, and overrides anything you pass.
     </p>
   </li>
   <li>
     <p>
-      <strong>size</strong>
-      <strong>and</strong>
-      <strong>color</strong>
-      <strong>:</strong>
-      Have no effect in SDS. The rail, track, and thumb are styled from the
-      theme.
+      <code>size</code> and <code>color</code>: Have no effect in SDS. The rail,
+      track, and thumb are styled from the theme.
     </p>
   </li>
   <li>
     <p>
-      <strong>aria-label</strong>
-      <strong>and</strong>
-      <strong>getAriaLabel</strong>
-      <strong>:</strong>
-      SDS labels the thumbs for you. A range slider gets "Minimum value" and
-      "Maximum value"; a single-thumb slider uses your
-      <strong>aria-label</strong>
-      , falling back to "Slider value". Pass
-      <strong>getAriaLabel</strong>
-      to take over completely.
+      <code>aria-label</code> and <code>getAriaLabel</code>: SDS labels the
+      thumbs for you. A range slider gets <code>"Minimum value"</code> and
+      <code>"Maximum value"</code>; a single-thumb slider uses your
+      <code>aria-label</code>, falling back to <code>"Slider value"</code>. Pass
+      <code>getAriaLabel</code> to take over completely.
     </p>
   </li>
 </ul>
@@ -55,40 +44,34 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <strong>value</strong>
-      <strong>and</strong>
-      <strong>defaultValue</strong>
-      <strong>:</strong>
-      A number renders one thumb. An array of two numbers renders a range with
-      two thumbs, as in the "Range InputSlider" example below.
+      <code>value</code> and <code>defaultValue</code>: A number renders one
+      thumb. An array of two numbers renders a range with two thumbs, as in the
+      "Range InputSlider" example below.
     </p>
   </li>
   <li>
     <p>
-      <strong>step</strong>
-      <strong>:</strong>
-      Sets the step distance between selectable stops (and relatedly, if this
-      prop is left out, the slider is continuous, rather than discrete)
+      <code>step</code>: Sets the step distance between selectable stops (and
+      relatedly, if this prop is left out, the slider is continuous, rather than
+      discrete)
     </p>
   </li>
   <li>
     <p>
-      <strong>marks</strong>
-      <strong>:</strong>
-      When present and set to true, invokes the default marks style. When passed
-      a rich array (of objects containing the value and the custom label to show
-      at that value), sets marks and labels only at the positions specified by
-      the array. See the "InputSlider with custom Marks" example below.
+      <code>marks</code>: When present and set to <code>true</code>, invokes the
+      default marks style. When passed a rich array (of objects containing the
+      value and the custom label to show at that value), sets marks and labels
+      only at the positions specified by the array. See the "InputSlider with
+      custom Marks" example below.
     </p>
   </li>
   <li>
     <p>
-      <strong>valueLabelDisplay</strong>
-      <strong>:</strong>
-      This prop determines whether and when the value label is displayed, and
-      takes the following props: auto (the value label will display when the
-      thumb is hovered or focused), on (labels display persistently), or off
-      (default; labels are never displayed).
+      <code>valueLabelDisplay</code>: This prop determines whether and when the
+      value label is displayed, and takes the following props:
+      <code>"auto"</code> (the value label will display when the thumb is
+      hovered or focused), <code>"on"</code> (labels display persistently), or
+      <code>"off"</code> (default; labels are never displayed).
     </p>
   </li>
 </ul>
@@ -111,8 +94,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>defaultValue</p></td>
-    <td><p>Array&lt;number&gt; |&nbsp;number</p></td>
+    <td>
+      <p><code>defaultValue</code></p>
+    </td>
+    <td>
+      <p><code>Array&lt;number&gt; |&nbsp;number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -122,65 +109,106 @@
     </td>
   </tr>
   <tr>
-    <td><p>value</p></td>
-    <td><p>Array&lt;number&gt; |&nbsp;number</p></td>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>Array&lt;number&gt; |&nbsp;number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        The value of the slider. Use with&nbsp;onChange&nbsp;to control the
-        component.
+        The value of the slider. Use with&nbsp;<code>onChange</code>&nbsp;to
+        control the component.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>onChange</p></td>
-    <td><p>(event, value, activeThumb) =&gt; void</p></td>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event, value, activeThumb) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Called as the user drags a thumb.</p></td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
-    <td><p>If&nbsp;true, the component is disabled.</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
   </tr>
   <tr>
-    <td><p>marks</p></td>
-    <td><p>bool |&nbsp;Array&lt;{ value, label }&gt;</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>marks</code></p>
+    </td>
+    <td>
+      <p><code>bool |&nbsp;Array&lt;{ value, label }&gt;</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Marks indicate predetermined values to which the user can move the
-        slider. If&nbsp;true&nbsp;the marks are spaced according the value of
-        the&nbsp;step&nbsp;prop. If an array, it should contain objects
-        with&nbsp;value&nbsp;and an optional&nbsp;label&nbsp;keys.
+        slider. If&nbsp;<code>true</code>&nbsp;the marks are spaced according
+        the value of the&nbsp;<code>step</code>&nbsp;prop. If an array, it
+        should contain objects with&nbsp;<code>value</code>&nbsp;and an
+        optional&nbsp;<code>label</code>&nbsp;keys.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>max</p></td>
-    <td><p>number</p></td>
-    <td><p>100</p></td>
+    <td>
+      <p><code>max</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>100</code></p>
+    </td>
     <td>
       <p>
-        The maximum allowed value of the slider. Should not be equal to min.
+        The maximum allowed value of the slider. Should not be equal to
+        <code>min</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>min</p></td>
-    <td><p>number</p></td>
-    <td><p>0</p></td>
+    <td>
+      <p><code>min</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>0</code></p>
+    </td>
     <td>
       <p>
-        The minimum allowed value of the slider. Should not be equal to max.
+        The minimum allowed value of the slider. Should not be equal to
+        <code>max</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>orientation</p></td>
-    <td><p>"horizontal"</p></td>
-    <td><p>"horizontal"</p></td>
+    <td>
+      <p><code>orientation</code></p>
+    </td>
+    <td>
+      <p><code>"horizontal"</code></p>
+    </td>
+    <td>
+      <p><code>"horizontal"</code></p>
+    </td>
     <td>
       <p>
         Fixed by SDS. The component sets this itself, so a vertical slider is
@@ -189,52 +217,73 @@
     </td>
   </tr>
   <tr>
-    <td><p>step</p></td>
-    <td><p>number</p></td>
-    <td><p>1</p></td>
+    <td>
+      <p><code>step</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
     <td>
       <p>
         The granularity with which the slider can step through values. (A
-        "discrete" slider.) The&nbsp;min&nbsp;prop serves as the origin for the
-        valid values. We recommend (max - min) to be evenly divisible by the
-        step.
+        "discrete" slider.) The&nbsp;<code>min</code>&nbsp;prop serves as the
+        origin for the valid values. We recommend <code>(max - min)</code> to be
+        evenly divisible by the <code>step</code>.
       </p>
       <p>
-        When step is&nbsp;null, the thumb can only be slid onto marks provided
-        with the&nbsp;marks&nbsp;prop.
+        When <code>step</code> is&nbsp;<code>null</code>, the thumb can only be
+        slid onto marks provided with the&nbsp;<code>marks</code>&nbsp;prop.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>valueLabelDisplay</p></td>
     <td>
-      <p>"auto"</p>
-      <p>|&nbsp;"off"</p>
-      <p>|&nbsp;"on"</p>
+      <p><code>valueLabelDisplay</code></p>
     </td>
-    <td><p>off</p></td>
+    <td>
+      <p><code>"auto"</code> |</p>
+      <p><code>"off"</code> |</p>
+      <p><code>"on"</code></p>
+    </td>
+    <td>
+      <p><code>"off"</code></p>
+    </td>
     <td>
       <p>Controls when the value label is displayed:</p>
       <ul class="sds-doc-bullet-list">
         <li>
           <p>
-            auto&nbsp;the value label will display when the thumb is hovered or
-            focused.
+            <code>"auto"</code>&nbsp;the value label will display when the thumb
+            is hovered or focused.
           </p>
         </li>
-        <li><p>on&nbsp;will display persistently.</p></li>
-        <li><p>off&nbsp;will never display.</p></li>
+        <li>
+          <p><code>"on"</code>&nbsp;will display persistently.</p>
+        </li>
+        <li>
+          <p><code>"off"</code>&nbsp;will never display.</p>
+        </li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td><p>aria-label</p></td>
-    <td><p>string</p></td>
-    <td><p>"Slider value"</p></td>
+    <td>
+      <p><code>aria-label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Slider value"</code></p>
+    </td>
     <td>
       <p>
         Labels the thumb of a single-value slider. Range sliders label their two
-        thumbs "Minimum value" and "Maximum value" instead.
+        thumbs <code>"Minimum value"</code> and
+        <code>"Maximum value"</code> instead.
       </p>
     </td>
   </tr>

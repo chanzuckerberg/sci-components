@@ -189,13 +189,29 @@ const Container = styled.div<CommonThemeProps>`
     margin: 0.25em 0;
   }
 
-  /* Inline code keeps a subtle, theme-agnostic chip look. */
-  code${OUTSIDE_PREVIEW} {
+  /* Inline code keeps a subtle, theme-agnostic chip look.
+
+     Storybook's docs stylesheet dresses every code element inside a paragraph,
+     list item or table cell in a chip of its own, and holds it on one line.
+     That rule reaches these pages because the imported HTML sits outside
+     .sb-unstyled, and nowrap is the wrong answer for a props table: a type as
+     long as ReactElement<CustomSVGProps> runs out of its column instead of
+     wrapping inside it. So the chip is restated here in full, and allowed to
+     break. Doubling the container class outbids that rule. */
+  && code${OUTSIDE_PREVIEW} {
     font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
     background: rgba(128, 128, 128, 0.15);
+    color: inherit;
+    margin: 0;
     padding: 0.15em 0.35em;
+    border: none;
     border-radius: 3px;
     font-size: 0.9em;
+    line-height: inherit;
+    white-space: normal;
+    /* Wrap at the spaces first, and split the word itself only when a single
+       identifier is wider than the column holding it. */
+    overflow-wrap: break-word;
   }
 
   /* Snippets are written as
@@ -440,12 +456,18 @@ const Container = styled.div<CommonThemeProps>`
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  pre code${OUTSIDE_PREVIEW} {
+  /* Code in a block is not a chip: it drops the surface and keeps the
+     whitespace and horizontal scrolling of the pre around it. Matched with the
+     same doubled class as the chip above so it outranks it. */
+  && pre code${OUTSIDE_PREVIEW} {
     font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
     background: none;
     padding: 0;
     color: inherit;
     font-size: inherit;
+    line-height: inherit;
+    white-space: inherit;
+    overflow-wrap: normal;
   }
 
   /* highlight.js token palette (GitHub Light), scoped to this container. */
@@ -599,18 +621,22 @@ const Container = styled.div<CommonThemeProps>`
   && table[data-sds-doc-props] td {
     overflow-wrap: break-word;
   }
-  /* The name column is the widest of the three because it is the one whose
-     content cannot be abbreviated: a prop is as long as it is named, and the
-     longest here run to thirty characters. */
-  && table[data-sds-doc-props] tr > :nth-child(1) {
+  /* Name and type are the columns whose content cannot be abbreviated: a prop
+     is as long as it is named, and a type as long as it is declared. Both are
+     given room for the longest the docs actually carry, measured in the
+     monospace face they are set in: a twenty-five character name, and a type
+     the length of ReactElement<CustomSVGProps>. Defaults keep enough for the
+     longest of them, "matchBackground". What is left goes to the prose, which
+     is the one column that reads just as well narrower. */
+  && table[data-sds-doc-props] tr > :nth-child(1),
+  && table[data-sds-doc-props] tr > :nth-child(2) {
     width: 22%;
   }
-  && table[data-sds-doc-props] tr > :nth-child(2),
   && table[data-sds-doc-props] tr > :nth-child(3) {
     width: 16%;
   }
   && table[data-sds-doc-props] tr > :nth-child(4) {
-    width: 46%;
+    width: 40%;
   }
 
   hr${OUTSIDE_PREVIEW} {

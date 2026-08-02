@@ -22,15 +22,25 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Required. The row's cells.</p></td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Grays the row out and stops pointer events inside its CellComponents, so
@@ -40,26 +50,42 @@
     </td>
   </tr>
   <tr>
-    <td><p>hover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>hover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
         Gives the row a hover background, and is also required for its tooltip
-        to appear. TableHeader sets it to false for the header row.
+        to appear. TableHeader sets it to <code>false</code> for the header row.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>rowHeight</p></td>
-    <td><p>number</p></td>
+    <td>
+      <p><code>rowHeight</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Caps the row's height, in pixels.</p></td>
   </tr>
   <tr>
-    <td><p>selected</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>selected</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Gives the row's cells the accent surface used for selection. It is
@@ -68,31 +94,50 @@
     </td>
   </tr>
   <tr>
-    <td><p>shouldShowTooltipOnHover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>shouldShowTooltipOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        Wraps the row in a Tooltip, but only while hover is also true. On its
-        own it shows nothing: a row tooltip needs tooltipText as well.
+        Wraps the row in a Tooltip, but only while <code>hover</code> is also
+        <code>true</code>. On its own it shows nothing: a row tooltip needs
+        <code>tooltipText</code> as well.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>tooltipText</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>tooltipText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The tooltip's title.</p></td>
   </tr>
   <tr>
-    <td><p>tooltipSubtitle</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>tooltipSubtitle</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>A second line below the tooltip's title.</p></td>
   </tr>
   <tr>
-    <td><p>tooltipProps</p></td>
-    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TooltipProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -102,16 +147,24 @@
     </td>
   </tr>
   <tr>
-    <td><p>useDivider</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>useDivider</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td><p>Draws the 1px divider along the bottom of the row.</p></td>
   </tr>
 </table>
 <p>
-  Anything else you pass, such as onClick, className or a data attribute, lands
-  on the rendered tr. Note that a row tooltip and a cell tooltip will both fire,
-  so turn off shouldShowTooltipOnHover on the cells of a row that has its own.
+  Anything else you pass, such as <code>onClick</code>,
+  <code>className</code> or a data attribute, lands on the rendered
+  <code>tr</code>. Note that a row tooltip and a cell tooltip will both fire, so
+  turn off <code>shouldShowTooltipOnHover</code> on the cells of a row that has
+  its own.
 </p>
 <h2>Code examples</h2>
 <h3><strong>Default TableRow</strong></h3>

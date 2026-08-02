@@ -8,23 +8,26 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 The SDS Callout component is built upon the MUI Alert component (as is the SDS Notification component ), but there are some important differences:
 
-- **Color:** SDS's Callout component has its own intent prop designed for setting both the color and default icon, and takes the values of "accent", "info", "negative", "notice", or "positive". MUI's Alert instead uses the severity prop for this purpose (severity can also be used for SDS's Notification, and will take the same values as intent; this is not recommended)
+- **Color:** SDS's Callout component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"accent"`, `"info"`, `"negative"`, `"notice"`, or `"positive"`. MUI's Alert instead uses the `severity` prop for this purpose (`severity` can also be used for SDS's Notification, and will take the same values as `intent`; this is not recommended)
 
-- **Title and body:** Rather than composing an AlertTitle and text as children the way MUI's Alert does, SDS's Callout takes its content through the title and body props and renders the stylized CalloutTitle for you. Children are reserved for the extra content of an expandable Callout, and are ignored by the other styles.
+- **Title and body:** Rather than composing an AlertTitle and text as children the way MUI's Alert does, SDS's Callout takes its content through the `title` and `body` props and renders the stylized CalloutTitle for you. Children are reserved for the extra content of an expandable Callout, and are ignored by the other styles.
 
-- **Expanding and closing:** Both behaviors come from the sdsStyle prop rather than from separate props. Setting it to "expandable" adds a chevron in the top right that toggles the children in and out of view, and setting it to "dismissible" adds a close button that hides the Callout and fires onClose. An expandable Callout should only be used when there really is extra content to reveal, since the chevron is rendered either way. SDS uses MUI's Alert action prop under the hood, in case there is a need to further override the behavior.
+- **Expanding and closing:** Both behaviors come from the `sdsStyle` prop rather than from separate props. Setting it to `"expandable"` adds a chevron in the top right that toggles the children in and out of view, and setting it to `"dismissible"` adds a close button that hides the Callout and fires `onClose`. An expandable Callout should only be used when there really is extra content to reveal, since the chevron is rendered either way. SDS uses MUI's Alert `action` prop under the hood, in case there is a need to further override the behavior.
 
 - **Transitions:** SDS's Callout uses the Grow transition component by default
 
-- **Icons:** Like with MUI's Alert, SDS's Callout also shows an icon to the left of the title text. It is chosen automatically from the intent (see the first bullet) and can be overridden with the icon prop, which takes either the name of an SDS icon or a custom SVG element:
+- **Icons:** Like with MUI's Alert, SDS's Callout also shows an icon to the left of the title text. It is chosen automatically from the `intent` (see the first bullet) and can be overridden with the `icon` prop, which takes either the name of an SDS icon or a custom SVG element:
 
+**React TypeScript**
+
+```tsx
 icon="Book"
-
 icon={<Icon sdsSize="s" sdsIcon="Book" />}
+```
 
-Additionally, setting icon={false} has no effect, and iconMapping does not work to change icons associated to intent or severity.
+Additionally, setting `icon={false}` has no effect, and `iconMapping` does not work to change icons associated to `intent` or `severity`.
 
-- **Variants:** The variant prop is not available for SDS's Callout component.
+- **Variants:** The `variant` prop is not available for SDS's Callout component.
 
 ## MUI Documentation
 
@@ -34,27 +37,27 @@ Documentation for the underlying MUI Alert component can be found [here](https:/
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name         | Type                                                       | Default      | Description                                                                                                                                                                                                                                                 |
-| ------------ | ---------------------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| intent       | "accent" \| "info" \| "negative" \| "notice" \| "positive" | -            | **Required.** Sets both the color of the component and the icon it defaults to.                                                                                                                                                                             |
-| sdsStyle     | "persistent" \| "expandable" \| "dismissible"              | "persistent" | Defines the style of the Callout: - "persistent": Cannot be closed. - "expandable": Includes a chevron icon that toggles the children in and out of view. - "dismissible": Includes an “x” icon for manual dismissal.                                       |
-| title        | string                                                     | -            | The Callout title.                                                                                                                                                                                                                                          |
-| body         | ReactNode                                                  | -            | The Callout body, shown beneath the title.                                                                                                                                                                                                                  |
-| children     | ReactNode                                                  | -            | Extra content revealed when an expandable Callout is open. The other styles ignore children, so use body for the main message.                                                                                                                              |
-| hideTitle    | bool                                                       | false        | If set to true, hides the Callout title.                                                                                                                                                                                                                    |
-| hideBody     | bool                                                       | false        | If set to true, hides the Callout body and centers the icon against the remaining content.                                                                                                                                                                  |
-| icon         | SDSIcon \| React.ReactElement<CustomSVGProps>              | -            | Icon displayed to the left of the Callout title, given either as an SDS icon name or as an element. Defaults to the icon for the current intent: CheckCircle for positive, InfoCircle for info, and ExclamationMarkCircle for accent, notice, and negative. |
-| sdsIconProps | Partial<IconProps>                                         | -            | Props forwarded to the Icon component when icon is given as a name.                                                                                                                                                                                         |
-| sdsStage     | "open" \| "closed"                                         | "open"       | The stage an expandable Callout starts in. It is only the initial value; the chevron takes over from there.                                                                                                                                                 |
-| dismissed    | bool                                                       | -            | Hides the Callout when set to true. Changing it back to false brings the Callout back, which is how a dismissed Callout is restored.                                                                                                                        |
-| autoDismiss  | bool \| number                                             | -            | Dismisses the Callout on a timer. A number sets the delay in milliseconds, and true uses 8000. Leave it unset to keep the Callout visible until it is dismissed another way.                                                                                |
-| onClose      | (event: React.SyntheticEvent) => void                      | -            | Callback fired when the Callout is closed. The Callout hides itself regardless, so use this to sync your own state rather than to perform the hiding.                                                                                                       |
+| Name           | Type                                                                 | Default        | Description                                                                                                                                                                                                                                                                                   |
+| -------------- | -------------------------------------------------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intent`       | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | -              | **Required.** Sets both the color of the component and the icon it defaults to.                                                                                                                                                                                                               |
+| `sdsStyle`     | `"persistent"` \| `"expandable"` \| `"dismissible"`                  | `"persistent"` | Defines the style of the Callout: - `"persistent"`: Cannot be closed. - `"expandable"`: Includes a chevron icon that toggles the children in and out of view. - `"dismissible"`: Includes an “x” icon for manual dismissal.                                                                   |
+| `title`        | `string`                                                             | -              | The Callout title.                                                                                                                                                                                                                                                                            |
+| `body`         | `ReactNode`                                                          | -              | The Callout body, shown beneath the title.                                                                                                                                                                                                                                                    |
+| `children`     | `ReactNode`                                                          | -              | Extra content revealed when an expandable Callout is open. The other styles ignore `children`, so use `body` for the main message.                                                                                                                                                            |
+| `hideTitle`    | `bool`                                                               | `false`        | If set to `true`, hides the Callout title.                                                                                                                                                                                                                                                    |
+| `hideBody`     | `bool`                                                               | `false`        | If set to `true`, hides the Callout body and centers the icon against the remaining content.                                                                                                                                                                                                  |
+| `icon`         | `SDSIcon \| React.ReactElement<CustomSVGProps>`                      | -              | Icon displayed to the left of the Callout title, given either as an SDS icon name or as an element. Defaults to the icon for the current `intent`: `"CheckCircle"` for `"positive"`, `"InfoCircle"` for `"info"`, and `"ExclamationMarkCircle"` for `"accent"`, `"notice"`, and `"negative"`. |
+| `sdsIconProps` | `Partial<IconProps>`                                                 | -              | Props forwarded to the Icon component when `icon` is given as a name.                                                                                                                                                                                                                         |
+| `sdsStage`     | `"open" \| "closed"`                                                 | `"open"`       | The stage an expandable Callout starts in. It is only the initial value; the chevron takes over from there.                                                                                                                                                                                   |
+| `dismissed`    | `bool`                                                               | -              | Hides the Callout when set to `true`. Changing it back to `false` brings the Callout back, which is how a dismissed Callout is restored.                                                                                                                                                      |
+| `autoDismiss`  | `bool \| number`                                                     | -              | Dismisses the Callout on a timer. A number sets the delay in milliseconds, and `true` uses `8000`. Leave it unset to keep the Callout visible until it is dismissed another way.                                                                                                              |
+| `onClose`      | `(event: React.SyntheticEvent) => void`                              | -              | Callback fired when the Callout is closed. The Callout hides itself regardless, so use this to sync your own state rather than to perform the hiding.                                                                                                                                         |
 
 ## Code examples
 
 ### Default Callout
 
-This example has the minimum props needed for the Callout component. Only intent is required, but a Callout with no title or body renders as an empty box, so both are given here.
+This example has the minimum props needed for the Callout component. Only `intent` is required, but a Callout with no `title` or `body` renders as an empty box, so both are given here.
 
 **Example: DefaultCallout**
 
@@ -126,7 +129,7 @@ export default App;
 
 ### Expandable Callout
 
-The Expandable Callout component provides an interactive and space-efficient way to present information. By default, it displays a brief summary, however, users can expand it to reveal more detailed content, similar to an accordion. This feature is particularly useful for sharing additional context or insights while keeping the initial interface clutter-free. The extra content is passed as children, and sdsStage sets whether the Callout starts open or closed.
+The Expandable Callout component provides an interactive and space-efficient way to present information. By default, it displays a brief summary, however, users can expand it to reveal more detailed content, similar to an accordion. This feature is particularly useful for sharing additional context or insights while keeping the initial interface clutter-free. The extra content is passed as `children`, and `sdsStage` sets whether the Callout starts open or closed.
 
 **Example: ExpandableCallout**
 
@@ -158,7 +161,7 @@ export default App;
 
 ### Dismissible Callout
 
-The dismissible Callout variant provides users with the ability to dismiss it at their convenience. It includes a close button located in the top right corner, offering a familiar interaction pattern for users to remove the Callout from view. The Callout hides itself when that button is clicked, so onClose is for keeping your own state in sync; setting dismissed back to false is what brings the Callout back.
+The dismissible Callout variant provides users with the ability to dismiss it at their convenience. It includes a close button located in the top right corner, offering a familiar interaction pattern for users to remove the Callout from view. The Callout hides itself when that button is clicked, so `onClose` is for keeping your own state in sync; setting `dismissed` back to `false` is what brings the Callout back.
 
 **Example: DismissibleCallout**
 
@@ -195,7 +198,7 @@ export default App;
 
 ### Callout with a custom icon
 
-This example replaces the icon that the intent would otherwise choose. The icon prop takes either an SDS icon name or an element.
+This example replaces the icon that the `intent` would otherwise choose. The `icon` prop takes either an SDS icon name or an element.
 
 **Example: CalloutWithACustomIcon**
 
@@ -222,7 +225,7 @@ export default App;
 
 ### Callout with auto dismiss
 
-This example dismisses itself after four seconds. Pass true instead of a number to use the default delay of 8000 milliseconds.
+This example dismisses itself after four seconds. Pass `true` instead of a number to use the default delay of `8000` milliseconds.
 
 **Example: CalloutWithAutoDismiss**
 

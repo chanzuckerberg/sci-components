@@ -18,20 +18,19 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <strong>sdsSize:</strong>
-      takes large (default) or small, and sets both the size of the label text
-      on every tab in the group (14px for large, 13px for small) and the spacing
-      around the group: 16px above and 24px below at the large size, 12px on
-      both sides at the small size. It reaches the tabs through context, so it
-      belongs on the group; a Tab cannot ask for a size of its own.
+      <code>sdsSize</code>: takes <code>"large"</code> (default) or
+      <code>"small"</code>, and sets both the size of the label text on every
+      tab in the group (14px for large, 13px for small) and the spacing around
+      the group: 16px above and 24px below at the large size, 12px on both sides
+      at the small size. It reaches the tabs through context, so it belongs on
+      the group; a Tab cannot ask for a size of its own.
     </p>
   </li>
   <li>
     <p>
-      <strong>underlined:</strong>
-      runs a divider under the full width of the group when true, separating the
-      tabs from the content below them. Without it only the selected tab is
-      underlined, in the accent color.
+      <code>underlined</code>: runs a divider under the full width of the group
+      when <code>true</code>, separating the tabs from the content below them.
+      Without it only the selected tab is underlined, in the accent color.
     </p>
   </li>
   <li>
@@ -45,7 +44,7 @@
         target="_top"
         >Tag</a
       >
-      . A count of 0 is drawn rather than dropped.
+      . A count of <code>0</code> is drawn rather than dropped.
     </p>
   </li>
   <li>
@@ -62,38 +61,30 @@
     <p>
       <strong>The indicator is fixed:</strong>
       SDS styles the selected tab's underline itself (2px, in the accent color),
-      so MUI's
-      <em>indicatorColor</em>
-      and
-      <em>textColor</em>
-      have no visible effect. That styling arrives through
-      <em>slotProps.indicator</em>
-      , so passing your own
-      <em>slotProps</em>
-      replaces it and leaves the indicator with MUI's default appearance.
+      so MUI's <code>indicatorColor</code> and <code>textColor</code> have no
+      visible effect. That styling arrives through
+      <code>slotProps.indicator</code>, so passing your own
+      <code>slotProps</code> replaces it and leaves the indicator with MUI's
+      default appearance.
     </p>
   </li>
   <li>
     <p>
       <strong>Only a horizontal, full-width strip is supported:</strong>
       SDS turns off the clipping that MUI's scroller relies on, so
-      <em>variant="scrollable"</em>
-      neither clips nor scrolls: too many tabs spill out of a narrow container
-      rather than scrolling inside it. Setting
-      <em>orientation="vertical"</em>
-      stacks the tabs but leaves the indicator drawn as a horizontal underline.
-      Keep the group horizontal and keep the number of tabs to what fits.
+      <code>variant="scrollable"</code> neither clips nor scrolls: too many tabs
+      spill out of a narrow container rather than scrolling inside it. Setting
+      <code>orientation="vertical"</code> stacks the tabs but leaves the
+      indicator drawn as a horizontal underline. Keep the group horizontal and
+      keep the number of tabs to what fits.
     </p>
   </li>
   <li>
     <p>
       <strong>Icons are not part of the design:</strong>
-      MUI's
-      <em>icon</em>
-      and
-      <em>iconPosition</em>
-      props still render, but SDS does not style them, so an SDS tab is a label
-      and an optional count.
+      MUI's <code>icon</code> and <code>iconPosition</code> props still render,
+      but SDS does not style them, so an SDS tab is a label and an optional
+      count.
     </p>
   </li>
 </ul>
@@ -108,22 +99,20 @@
   <li>
     <p>
       The group is controlled. It draws the tab whose value matches
-      <strong>value</strong>
-      , so the selection has to live in your state and
-      <strong>onChange</strong>
-      has to write it back; without that, clicking a tab changes nothing. A
-      value that matches no tab leaves the group with nothing selected and logs
-      a warning listing the values it accepts. Passing
-      <em>value={false}</em>
-      selects nothing on purpose, without the warning.
+      <code>value</code>, so the selection has to live in your state and
+      <code>onChange</code> has to write it back; without that, clicking a tab
+      changes nothing. A value that matches no tab leaves the group with nothing
+      selected and logs a warning listing the values it accepts. Passing
+      <code>value={false}</code> selects nothing on purpose, without the
+      warning.
     </p>
   </li>
   <li>
     <p>
       Tabs are numbered by position unless a Tab is given a
-      <strong>value</strong>
-      of its own, which is worth doing when the strip can change, so the
-      selection does not follow whichever tab happens to sit in that position.
+      <code>value</code> of its own, which is worth doing when the strip can
+      change, so the selection does not follow whichever tab happens to sit in
+      that position.
     </p>
   </li>
   <li>
@@ -136,54 +125,45 @@
   </li>
   <li>
     <p>
-      The group renders
-      <em>role="tablist"</em>
-      with a
-      <em>role="tab"</em>
-      button per tab, and keeps a single tab stop: Tab enters the strip on the
-      selected tab, the arrow keys move between tabs and wrap around, Home and
-      End jump to the ends, and Space or Enter selects the focused tab.
-      Selecting on focus alone is available through MUI's
-      <em>selectionFollowsFocus</em>
-      , which suits a strip whose panels are already loaded.
+      The group renders <code>role="tablist"</code> with a
+      <code>role="tab"</code> button per tab, and keeps a single tab stop: Tab
+      enters the strip on the selected tab, the arrow keys move between tabs and
+      wrap around, Home and End jump to the ends, and Space or Enter selects the
+      focused tab. Selecting on focus alone is available through MUI's
+      <code>selectionFollowsFocus</code>, which suits a strip whose panels are
+      already loaded.
     </p>
   </li>
   <li>
     <p>
       Nothing connects a tab to the content it reveals until you do it. Give
-      each Tab an
-      <strong>id</strong>
-      and an
-      <strong>aria-controls</strong>
-      pointing at its panel, and give the panel
-      <em>role="tabpanel"</em>
-      and an
-      <em>aria-labelledby</em>
-      pointing back at the tab. The panels example below shows the wiring.
+      each Tab an <code>id</code> and an <code>aria-controls</code> pointing at
+      its panel, and give the panel <code>role="tabpanel"</code> and an
+      <code>aria-labelledby</code> pointing back at the tab. The panels example
+      below shows the wiring.
     </p>
   </li>
   <li>
     <p>
-      <strong>aria-label</strong>
-      on the group lands on the tablist and names the set of tabs. Worth
-      setting, since a screen reader otherwise announces an unnamed tab list.
+      <code>aria-label</code> on the group lands on the tablist and names the
+      set of tabs. Worth setting, since a screen reader otherwise announces an
+      unnamed tab list.
     </p>
   </li>
   <li>
     <p>
       A tab's accessible name is its label followed by whatever
-      <strong>count</strong>
-      renders, so a count of 0 is announced as part of the name: "Contributors
-      0". Keep a count short enough to read that way.
+      <code>count</code> renders, so a count of <code>0</code> is announced as
+      part of the name: "Contributors 0". Keep a count short enough to read that
+      way.
     </p>
   </li>
   <li>
     <p>
-      A
-      <strong>disabled</strong>
-      tab keeps its place in the strip but cannot be clicked, and the arrow keys
-      skip past it. It says that a section exists but is not ready; a section
-      that does not apply at all is better left out of the group.
+      A <code>disabled</code> tab keeps its place in the strip but cannot be
+      clicked, and the arrow keys skip past it. It says that a section exists
+      but is not ready; a section that does not apply at all is better left out
+      of the group.
     </p>
   </li>
 </ul>
@@ -200,8 +180,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>- (required)</p></td>
     <td>
       <p>
@@ -210,36 +194,46 @@
     </td>
   </tr>
   <tr>
-    <td><p>value</p></td>
     <td>
-      <p>any</p>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>any</code></p>
     </td>
     <td><p>- (required)</p></td>
     <td>
       <p>
         The selected tab's value: its position in the group, or the value set on
-        the Tab itself. Pass false to select nothing.
+        the Tab itself. Pass <code>false</code> to select nothing.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>onChange</p></td>
-    <td><p>(event, value: any) =&gt; void</p></td>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event, value: any) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Runs when a tab is selected, with that tab's value. Write it back to
-        value, or the group will keep showing the same tab.
+        <code>value</code>, or the group will keep showing the same tab.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>sdsSize</p></td>
     <td>
-      <p>"small"</p>
-      <p>| "large"</p>
+      <p><code>sdsSize</code></p>
     </td>
-    <td><p>"large"</p></td>
+    <td>
+      <p><code>"small"</code> |</p>
+      <p><code>"large"</code></p>
+    </td>
+    <td>
+      <p><code>"large"</code></p>
+    </td>
     <td>
       <p>
         The size of the label text on every tab in the group, and the spacing
@@ -248,9 +242,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>underlined</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>underlined</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Draws a divider along the full width of the group, below the tabs; the
@@ -259,20 +259,31 @@
     </td>
   </tr>
   <tr>
-    <td><p>aria-label</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>aria-label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Names the tablist. Say what the tabs switch between, and use
-        aria-labelledby instead when a visible heading already says it.
+        <code>aria-labelledby</code> instead when a visible heading already says
+        it.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>selectionFollowsFocus</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>selectionFollowsFocus</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         MUI's prop for selecting a tab as soon as the arrow keys reach it,
@@ -294,8 +305,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -305,32 +320,46 @@
     </td>
   </tr>
   <tr>
-    <td><p>count</p></td>
-    <td><p>React.ReactNode</p></td>
+    <td>
+      <p><code>count</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        A value drawn after the label: a number, a string, or a component. 0 is
-        drawn rather than dropped, and whatever renders joins the tab's
-        accessible name.
+        A value drawn after the label: a number, a string, or a component.
+        <code>0</code> is drawn rather than dropped, and whatever renders joins
+        the tab's accessible name.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>value</p></td>
-    <td><p>any</p></td>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>any</code></p>
+    </td>
     <td><p>position in the group</p></td>
     <td>
       <p>
-        Identifies the tab in the group's value and onChange. Worth setting when
-        the set of tabs can change.
+        Identifies the tab in the group's <code>value</code> and
+        <code>onChange</code>. Worth setting when the set of tabs can change.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Greys the tab out and takes it out of reach of the pointer and the arrow
@@ -339,25 +368,37 @@
     </td>
   </tr>
   <tr>
-    <td><p>id</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>id</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        The tab's id, for a panel's aria-labelledby to point at. Not generated
-        for you.
+        The tab's id, for a panel's <code>aria-labelledby</code> to point at.
+        Not generated for you.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>aria-controls</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>aria-controls</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The id of the panel this tab reveals.</p></td>
   </tr>
   <tr>
-    <td><p>selected</p></td>
-    <td><p>boolean</p></td>
+    <td>
+      <p><code>selected</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -371,8 +412,8 @@
 <h3>Tabs – Large</h3>
 <p>
   The default size, for the top level of a screen. The selection is held in the
-  page's state and written back from onChange, which is what a Tabs group needs
-  to respond to a click.
+  page's state and written back from <code>onChange</code>, which is what a Tabs
+  group needs to respond to a click.
 </p>
 <div class="sds-doc-example" data-example="core/Tabs/TabsLarge"></div>
 <h3>Tabs – Small</h3>
@@ -383,9 +424,9 @@
 <div class="sds-doc-example" data-example="core/Tabs/TabsSmall"></div>
 <h3>Tabs with count, text, and component</h3>
 <p>
-  count takes any node: a number, a count of 0 on an empty tab, and a number
-  paired with a Tag on the last tab. The group is underlined, which separates it
-  from the content below.
+  <code>count</code> takes any node: a number, a count of <code>0</code> on an
+  empty tab, and a number paired with a Tag on the last tab. The group is
+  underlined, which separates it from the content below.
 </p>
 <div
   class="sds-doc-example"
@@ -394,8 +435,9 @@
 <h3>Tabs with panels</h3>
 <p>
   The wiring between a tab and the content it reveals, which the component
-  leaves to you: matching ids on each Tab and its panel, role="tabpanel" on the
-  panel, and only the selected panel rendered.
+  leaves to you: matching ids on each Tab and its panel,
+  <code>role="tabpanel"</code> on the panel, and only the selected panel
+  rendered.
 </p>
 <div class="sds-doc-example" data-example="core/Tabs/TabsWithPanels"></div>
 <h3>A disabled tab</h3>

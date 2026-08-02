@@ -6,7 +6,7 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## Props
 
-Table is a styled table element: full width, collapsed borders, automatic layout. Its only prop is children, and anything else you pass lands on the table element. Compose it the way you would plain HTML: a TableHeader for the head, a tbody of TableRows for the body.
+Table is a styled table element: full width, collapsed borders, automatic layout. Its only prop is `children`, and anything else you pass lands on the table element. Compose it the way you would plain HTML: a TableHeader for the head, a `tbody` of TableRows for the body.
 
 ## Code examples
 
@@ -200,7 +200,7 @@ These recipes show a few of the more complex approaches available for customizin
 
 ### Text-only Table
 
-A table made up entirely of CellBasics, with headers that sort nothing and so set hideSortIcon.
+A table made up entirely of CellBasics, with headers that sort nothing and so set `hideSortIcon`.
 
 **Example: TextOnlyTable**
 
@@ -379,7 +379,7 @@ export default App;
 
 ### Table with a custom sorting function
 
-Every column here sorts on click through TanStack Table's own comparators, except Last Name, which is given a sortingFn of its own that orders names by length rather than alphabetically. Note that each sortable header sets hover, without which CellHeader draws no sort chevron.
+Every column here sorts on click through TanStack Table's own comparators, except Last Name, which is given a `sortingFn` of its own that orders names by length rather than alphabetically. Note that each sortable header sets `hover`, without which CellHeader draws no sort chevron.
 
 **Example: TableWithCustomSorting**
 
@@ -861,7 +861,7 @@ export default App;
 
 ### Table with virtualized rows
 
-A thousand rows in a scroll container with only the visible ones in the DOM, using @tanstack/react-virtual to decide which rows to draw and @tanstack/react-query to fetch the next batch as the scroller nears its end. The spacer rows above and below the window are what keep the scrollbar proportional.
+A thousand rows in a scroll container with only the visible ones in the DOM, using `@tanstack/react-virtual` to decide which rows to draw and `@tanstack/react-query` to fetch the next batch as the scroller nears its end. The spacer rows above and below the window are what keep the scrollbar proportional.
 
 **Example: TableWithVirtualizedRows**
 
@@ -1201,7 +1201,7 @@ export default App;
 
 ### Editable Table Cells with Access to Internal Data
 
-Editing reaches the data above the table through TanStack Table's meta object. Click a cell to edit it; the change is written back on blur, and the log below records what moved. Note that the editable cells are CellComponents rather than CellBasics, since CellBasic renders text rather than children.
+Editing reaches the data above the table through TanStack Table's `meta` object. Click a cell to edit it; the change is written back on blur, and the log below records what moved. Note that the editable cells are CellComponents rather than CellBasics, since CellBasic renders text rather than `children`.
 
 **Example: TableWithEditableCells**
 
@@ -1463,7 +1463,7 @@ export default App;
 
 ### Table with Front-End Pagination
 
-All the rows are in memory and TanStack Table slices them, so paging is only a change of pageIndex. Pagination counts pages from 1 while TanStack counts from 0, which is the one thing to keep straight when wiring the two together.
+All the rows are in memory and TanStack Table slices them, so paging is only a change of `pageIndex`. Pagination counts pages from 1 while TanStack counts from 0, which is the one thing to keep straight when wiring the two together.
 
 **Example: TableWithFrontEndPagination**
 
@@ -1685,7 +1685,7 @@ export default App;
 
 ### Table with Back-End Pagination
 
-Only one page of rows exists on the client, so manualPagination stops the table from slicing and the row count arrives with the data. The request is faked with a delay, and keepPreviousData holds the current page on screen while the next one loads.
+Only one page of rows exists on the client, so `manualPagination` stops the table from slicing and the row count arrives with the data. The request is faked with a delay, and `keepPreviousData` holds the current page on screen while the next one loads.
 
 **Example: TableWithBackEndPagination**
 

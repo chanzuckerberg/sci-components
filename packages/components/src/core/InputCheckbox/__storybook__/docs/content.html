@@ -16,43 +16,32 @@
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
+    <p><code>size</code>: Has no effect in SDS. The box is always 16px.</p>
+  </li>
+  <li>
     <p>
-      <strong>size</strong>
-      <strong>:</strong>
-      Has no effect in SDS. The box is always 16px.
+      <code>color</code>: Not accepted. SDS derives the color from
+      <code>intent</code> instead.
     </p>
   </li>
   <li>
     <p>
-      <strong>color</strong>
-      <strong>:</strong>
-      Not accepted. SDS derives the color from
-      <strong>intent</strong>
-      instead.
+      <code>intent</code>: This is an SDS-specific prop that colors the border
+      of the empty box (<code>"default"</code>, <code>"positive"</code>,
+      <code>"notice"</code>, or <code>"negative"</code>). It does not change the
+      checked box, which always uses the accent color.
     </p>
   </li>
   <li>
     <p>
-      <strong>intent</strong>
-      <strong>:</strong>
-      This is an SDS-specific prop that colors the border of the empty box
-      (default, positive, notice, or negative). It does not change the checked
-      box, which always uses the accent color.
+      <code>labelPlacement</code>: Has no effect in SDS. The label always sits
+      to the right of the box.
     </p>
   </li>
   <li>
     <p>
-      <strong>labelPlacement</strong>
-      <strong>:</strong>
-      Has no effect in SDS. The label always sits to the right of the box.
-    </p>
-  </li>
-  <li>
-    <p>
-      <strong>icon</strong>
-      <strong>:</strong>
-      SDS's InputCheckbox is not currently set up to support icons (if you add
-      one as shown in the
+      <code>icon</code>: SDS's InputCheckbox is not currently set up to support
+      icons (if you add one as shown in the
       <a href="https://mui.com/material-ui/react-checkbox/#icon"
         >MUI documentation</a
       >
@@ -62,54 +51,33 @@
   </li>
   <li>
     <p>
-      <strong>stage</strong>
-      <strong>and checkbox state :</strong>
-      This is the SDS prop that sets the checkbox's state as unchecked, checked,
-      or indeterminate. It pins the state, so on its own the checkbox will not
-      respond to clicks; pass an
-      <strong>onChange</strong>
-      handler and recompute
-      <strong>stage</strong>
-      from your own state to make it interactive, as the indeterminate example
-      below does. Leave
-      <strong>stage</strong>
-      out entirely to let the checkbox manage its own state.
+      <code>stage</code> and checkbox state: This is the SDS prop that sets the
+      checkbox's state as <code>"unchecked"</code>, <code>"checked"</code>, or
+      <code>"indeterminate"</code>. It pins the state, so on its own the
+      checkbox will not respond to clicks; pass an <code>onChange</code> handler
+      and recompute <code>stage</code> from your own state to make it
+      interactive, as the indeterminate example below does. Leave
+      <code>stage</code> out entirely to let the checkbox manage its own state.
     </p>
   </li>
   <li>
     <p>
-      <strong>defaultChecked</strong>
-      <strong>and</strong>
-      <strong>indeterminate</strong>
-      <strong>:</strong>
-      Not accepted as top-level props. Use
-      <strong>stage</strong>
-      , or pass them straight to the underlying MUI checkbox through
-      <strong>checkboxProps</strong>
-      .
+      <code>defaultChecked</code> and <code>indeterminate</code>: Not accepted
+      as top-level props. Use <code>stage</code>, or pass them straight to the
+      underlying MUI checkbox through <code>checkboxProps</code>.
     </p>
   </li>
   <li>
     <p>
-      <strong>caption</strong>
-      <strong>:</strong>
-      This is an SDS-specific prop, which takes a string of text that is
-      displayed below the primary label text.
+      <code>caption</code>: This is an SDS-specific prop, which takes a string
+      of text that is displayed below the primary label text.
     </p>
   </li>
 </ul>
 <p>
   The following props are available for both the MUI and SDS components:
-  <strong>checked</strong>
-  ,
-  <strong>onChange</strong>
-  ,
-  <strong>required</strong>
-  ,
-  <strong>value</strong>
-  , and
-  <strong>disabled</strong>
-  .
+  <code>checked</code>, <code>onChange</code>, <code>required</code>,
+  <code>value</code>, and <code>disabled</code>.
 </p>
 <h2>MUI Documentation</h2>
 <p>
@@ -130,8 +98,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>caption</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>caption</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -141,14 +113,24 @@
     </td>
   </tr>
   <tr>
-    <td><p>checkboxProps</p></td>
-    <td><p>Partial&lt;MUICheckboxProps&gt;</p></td>
-    <td><p>{}</p></td>
+    <td>
+      <p><code>checkboxProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;MUICheckboxProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
     <td><p>Directly pass these props to the underlying MUI checkbox.</p></td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -158,30 +140,37 @@
     </td>
   </tr>
   <tr>
-    <td><p>stage</p></td>
     <td>
-      <p>"checked"</p>
-      <p>| "unchecked"</p>
-      <p>| "indeterminate"</p>
+      <p><code>stage</code></p>
+    </td>
+    <td>
+      <p><code>"checked"</code> |</p>
+      <p><code>"unchecked"</code> |</p>
+      <p><code>"indeterminate"</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Sets the state of the checkbox. It overrides&nbsp;checked, so a checkbox
-        with a stage only changes when you recompute the stage from an onChange
-        handler. Omit it to let the checkbox manage its own state.
+        Sets the state of the checkbox. It overrides&nbsp;<code>checked</code>,
+        so a checkbox with a <code>stage</code> only changes when you recompute
+        the <code>stage</code> from an <code>onChange</code> handler. Omit it to
+        let the checkbox manage its own state.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>intent</p></td>
     <td>
-      <p>"default"</p>
-      <p>| "notice"</p>
-      <p>| "negative"</p>
-      <p>| "positive"</p>
+      <p><code>intent</code></p>
     </td>
-    <td><p>"default"</p></td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
     <td>
       <p>
         Colors the border of the empty box. The checked box always uses the
@@ -190,36 +179,59 @@
     </td>
   </tr>
   <tr>
-    <td><p>checked</p></td>
-    <td><p>bool</p></td>
+    <td>
+      <p><code>checked</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Controls the checkbox, as in MUI. Ignored when&nbsp;stage&nbsp;is set.
+        Controls the checkbox, as in MUI. Ignored
+        when&nbsp;<code>stage</code>&nbsp;is set.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>onChange</p></td>
-    <td><p>(event, checked) =&gt; void</p></td>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event, checked) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Called when the user toggles the checkbox.</p></td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
-    <td><p>If&nbsp;true, the component is disabled.</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
   </tr>
   <tr>
-    <td><p>classes</p></td>
-    <td><p>object</p></td>
-    <td><p>{}</p></td>
+    <td>
+      <p><code>classes</code></p>
+    </td>
+    <td>
+      <p><code>object</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
     <td>
       <p>
-        Class names for the internal elements:&nbsp;root, labelCaptionContainer,
-        label, caption, checkbox, checkboxCheckedIcon, checkboxDefaultIcon, and
-        checkboxIndeterminateIcon.
+        Class names for the internal elements:&nbsp;<code>root</code>,
+        <code>labelCaptionContainer</code>, <code>label</code>,
+        <code>caption</code>, <code>checkbox</code>,
+        <code>checkboxCheckedIcon</code>, <code>checkboxDefaultIcon</code>, and
+        <code>checkboxIndeterminateIcon</code>.
       </p>
     </td>
   </tr>
@@ -244,8 +256,8 @@
 ></div>
 <h3>InputCheckbox stages</h3>
 <p>
-  The three stages a checkbox can be in, plus a disabled one. Because stage pins
-  the state, these examples do not respond to clicks.
+  The three stages a checkbox can be in, plus a disabled one. Because
+  <code>stage</code> pins the state, these examples do not respond to clicks.
 </p>
 <div
   class="sds-doc-example"
@@ -264,8 +276,8 @@
 <p>
   This example demonstrates a parent checkbox that is indeterminate while only
   some of its children are checked, and checked once all of them are. Since it
-  recomputes stage from its own state on every change, the checkboxes stay
-  interactive.
+  recomputes <code>stage</code> from its own state on every change, the
+  checkboxes stay interactive.
 </p>
 <div
   class="sds-doc-example"

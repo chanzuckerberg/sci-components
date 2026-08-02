@@ -14,12 +14,9 @@
   <li>
     <p>
       Nav items are data, not children. Everything in the bar comes from
-      <strong>primaryNavItems</strong>
-      ,
-      <strong>secondaryNavItems</strong>
-      ,
-      <strong>buttons</strong>
-      , and the logo and title props; the header owns the markup.
+      <code>primaryNavItems</code>, <code>secondaryNavItems</code>,
+      <code>buttons</code>, and the logo and title props; the header owns the
+      markup.
     </p>
   </li>
   <li>
@@ -32,84 +29,75 @@
   </li>
   <li>
     <p>
-      There is no
-      <em>hasInvertedStyle</em>
-      prop. Use
-      <strong>backgroundAppearance</strong>
-      : "dark" puts the header on a dark surface and inverts its contents while
-      the app is in light mode, and does nothing in dark mode, where the header
-      is dark already.
+      There is no <code>hasInvertedStyle</code> prop. Use
+      <code>backgroundAppearance</code>: <code>"dark"</code> puts the header on
+      a dark surface and inverts its contents while the app is in light mode,
+      and does nothing in dark mode, where the header is dark already.
     </p>
   </li>
   <li>
     <p>
-      <em>position</em>
-      is not a prop. The header computes it: drawer style is always sticky, and
-      dropdown style follows
-      <strong>isSticky</strong>
-      , which is sticky by default and relative when false.
+      <code>position</code> is not a prop. The header computes it: drawer style
+      is always sticky, and dropdown style follows <code>isSticky</code>, which
+      is sticky by default and relative when <code>false</code>.
     </p>
   </li>
   <li>
     <p>
-      <strong>activePrimaryNavKey</strong>
-      works either way round. The header keeps its own copy of the active key,
-      so the prop is optional; pass it and it wins, and
-      <strong>setActivePrimaryNavKey</strong>
-      is called alongside the internal update.
+      <code>activePrimaryNavKey</code> works either way round. The header keeps
+      its own copy of the active key, so the prop is optional; pass it and it
+      wins, and <code>setActivePrimaryNavKey</code> is called alongside the
+      internal update.
     </p>
   </li>
   <li>
     <p>
       The narrow drawer does not work that way. Passing
-      <strong>setDrawerOpen</strong>
-      replaces the internal state update rather than running beside it, so the
-      hamburger will never open the drawer unless you also feed
-      <strong>drawerOpen</strong>
-      back in. Pass both or neither.
+      <code>setDrawerOpen</code> replaces the internal state update rather than
+      running beside it, so the hamburger will never open the drawer unless you
+      also feed <code>drawerOpen</code> back in. Pass both or neither.
     </p>
   </li>
   <li>
     <p>
-      <strong>menuProps</strong>
-      replaces the default
-      <em>{ disableScrollLock: true, disablePortal: true }</em>
-      wholesale rather than merging into it. Note that dropdown menus force
-      <em>disablePortal</em>
-      on regardless of what you pass.
+      <code>menuProps</code> replaces the default
+      <code>{ disableScrollLock: true, disablePortal: true }</code> wholesale
+      rather than merging into it. Note that dropdown menus force
+      <code>disablePortal</code> on regardless of what you pass.
     </p>
   </li>
   <li>
     <p>
       The logo always renders inside a link element, because the link component
-      defaults to an anchor whether or not
-      <strong>logoUrl</strong>
-      is set. Give it a URL so the anchor has a destination.
+      defaults to an anchor whether or not <code>logoUrl</code> is set. Give it
+      a URL so the anchor has a destination.
     </p>
   </li>
   <li>
     <p>
-      Anything in
-      <strong>topComponentSlot</strong>
-      renders above the header, and the header offsets its sticky top by the
-      slot's measured height, so a banner that is dismissed or resized takes the
-      header with it. Keep the header sticky when you use the slot: the offset
-      is applied as a CSS top, which a relatively positioned header reads as a
-      second gap below the slot.
+      Anything in <code>topComponentSlot</code> renders above the header, and
+      the header offsets its sticky top by the slot's measured height, so a
+      banner that is dismissed or resized takes the header with it. Keep the
+      header sticky when you use the slot: the offset is applied as a CSS
+      <code>top</code>, which a relatively positioned header reads as a second
+      gap below the slot.
     </p>
   </li>
 </ul>
 <h2>Dropdown style and drawer style</h2>
 <p>
-  <strong>sdsStyle</strong>
-  picks between two ways of opening a dropdown nav item, and it changes which
-  parts of the item data are used.
+  <code>sdsStyle</code> picks between two ways of opening a dropdown nav item,
+  and it changes which parts of the item data are used.
 </p>
 <table class="sds-doc-table">
   <tr>
     <td><p></p></td>
-    <td><p>"dropdown" (default)</p></td>
-    <td><p>"drawer"</p></td>
+    <td>
+      <p><code>"dropdown"</code> (default)</p>
+    </td>
+    <td>
+      <p><code>"drawer"</code></p>
+    </td>
   </tr>
   <tr>
     <td><p>Opens</p></td>
@@ -127,7 +115,9 @@
     <td><p>Shown as a caption under the label</p></td>
   </tr>
   <tr>
-    <td><p>sectionProps actions</p></td>
+    <td>
+      <p><code>sectionProps</code> actions</p>
+    </td>
     <td><p>Ignored</p></td>
     <td><p>Shown under the section</p></td>
   </tr>
@@ -138,14 +128,16 @@
   </tr>
   <tr>
     <td><p>Position</p></td>
-    <td><p>Follows isSticky</p></td>
+    <td>
+      <p>Follows <code>isSticky</code></p>
+    </td>
     <td><p>Always sticky</p></td>
   </tr>
 </table>
 <p>
   In the narrow layout both styles collapse to accordions inside the drawer, and
   the same split applies there: icons and section actions only appear when
-  sdsStyle is "drawer".
+  <code>sdsStyle</code> is <code>"drawer"</code>.
 </p>
 <h2>Props</h2>
 <p>
@@ -160,8 +152,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>activePrimaryNavKey</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>activePrimaryNavKey</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -171,8 +167,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>setActivePrimaryNavKey</p></td>
-    <td><p>(key: string) =&gt; void</p></td>
+    <td>
+      <p><code>setActivePrimaryNavKey</code></p>
+    </td>
+    <td>
+      <p><code>(key: string) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -183,42 +183,52 @@
     </td>
   </tr>
   <tr>
-    <td><p>backgroundAppearance</p></td>
     <td>
-      <p>"matchBackground"</p>
-      <p>| "dark"</p>
+      <p><code>backgroundAppearance</code></p>
     </td>
-    <td><p>"matchBackground"</p></td>
+    <td>
+      <p><code>"matchBackground"</code> |</p>
+      <p><code>"dark"</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground"</code></p>
+    </td>
     <td>
       <p>
-        "dark" puts the header on a dark surface and inverts its contents. It
-        only changes anything in light mode.
+        <code>"dark"</code> puts the header on a dark surface and inverts its
+        contents. It only changes anything in light mode.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>buttons</p></td>
     <td>
-      <p>Partial&lt;ButtonProps&gt;[]</p>
-      <p>| ReactNode[]</p>
+      <p><code>buttons</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;ButtonProps&gt;[]</code> |</p>
+      <p><code>ReactNode[]</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
         Actions at the right end of the bar. Prop objects render as SDS Buttons;
         elements are cloned with the header's appearance applied. An icon-only
-        button gets an aria-label from its child, and in the narrow layout every
-        button goes full width and closes the drawer when clicked.
+        button gets an <code>aria-label</code> from its child, and in the narrow
+        layout every button goes full width and closes the drawer when clicked.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>sdsStyle</p></td>
     <td>
-      <p>"dropdown"</p>
-      <p>| "drawer"</p>
+      <p><code>sdsStyle</code></p>
     </td>
-    <td><p>"dropdown"</p></td>
+    <td>
+      <p><code>"dropdown"</code> |</p>
+      <p><code>"drawer"</code></p>
+    </td>
+    <td>
+      <p><code>"dropdown"</code></p>
+    </td>
     <td>
       <p>
         How dropdown nav items open, and which parts of their data are used. See
@@ -227,49 +237,67 @@
     </td>
   </tr>
   <tr>
-    <td><p>drawerOpen</p></td>
-    <td><p>boolean</p></td>
+    <td>
+      <p><code>drawerOpen</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Controls the narrow layout's drawer. Leave both this and setDrawerOpen
-        out to let the hamburger manage it.
+        Controls the narrow layout's drawer. Leave both this and
+        <code>setDrawerOpen</code> out to let the hamburger manage it.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>setDrawerOpen</p></td>
-    <td><p>(open: boolean) =&gt; void</p></td>
+    <td>
+      <p><code>setDrawerOpen</code></p>
+    </td>
+    <td>
+      <p><code>(open: boolean) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Replaces the drawer's internal state update, so it has to be paired with
-        drawerOpen or the drawer stops opening.
+        <code>drawerOpen</code> or the drawer stops opening.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>isSticky</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>isSticky</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        Whether the header sticks to the top on scroll. Ignored when sdsStyle is
-        "drawer", which is always sticky, and best left alone alongside
-        topComponentSlot.
+        Whether the header sticks to the top on scroll. Ignored when
+        <code>sdsStyle</code> is <code>"drawer"</code>, which is always sticky,
+        and best left alone alongside <code>topComponentSlot</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>menuProps</p></td>
+    <td>
+      <p><code>menuProps</code></p>
+    </td>
     <td>
       <p>
         <a href="https://mui.com/material-ui/api/menu/"
-          >Partial&lt;MenuProps&gt;</a
+          ><code>Partial&lt;MenuProps&gt;</code></a
         >
       </p>
     </td>
-    <td><p>{ disableScrollLock: true, disablePortal: true }</p></td>
+    <td>
+      <p><code>{ disableScrollLock: true, disablePortal: true }</code></p>
+    </td>
     <td>
       <p>
         Props for the dropdown menus. Passing this replaces the default object
@@ -278,8 +306,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>topComponentSlot</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>topComponentSlot</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -289,30 +321,43 @@
     </td>
   </tr>
   <tr>
-    <td><p>onDrawerStyleNavItemHover</p></td>
-    <td><p>(item: NavItem) =&gt; void</p></td>
+    <td>
+      <p><code>onDrawerStyleNavItemHover</code></p>
+    </td>
+    <td>
+      <p><code>(item: NavItem) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Called with the hovered primary or secondary item while sdsStyle is
-        "drawer". Useful for prefetching what the panel will show.
+        Called with the hovered primary or secondary item while
+        <code>sdsStyle</code> is <code>"drawer"</code>. Useful for prefetching
+        what the panel will show.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>logo</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>logo</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         The logo displayed in the header. Can be an image, icon, svg or any
-        ReactNode.
+        <code>ReactNode</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>logoUrl</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>logoUrl</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -322,87 +367,142 @@
     </td>
   </tr>
   <tr>
-    <td><p>logoLinkComponent</p></td>
-    <td><p>ElementType</p></td>
-    <td><p>a</p></td>
+    <td>
+      <p><code>logoLinkComponent</code></p>
+    </td>
+    <td>
+      <p><code>ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"a"</code></p>
+    </td>
     <td><p>Specifies the component to use for the logo link.</p></td>
   </tr>
   <tr>
-    <td><p>logoLinkProps</p></td>
     <td>
-      <p><a href="https://mui.com/material-ui/api/link/">LinkProps</a></p>
+      <p><code>logoLinkProps</code></p>
+    </td>
+    <td>
+      <p>
+        <a href="https://mui.com/material-ui/api/link/"
+          ><code>LinkProps</code></a
+        >
+      </p>
     </td>
     <td><p>-</p></td>
     <td><p>Props to pass to the logo link component.</p></td>
   </tr>
   <tr>
-    <td><p>primaryNavItems</p></td>
-    <td><p>NavigationHeaderPrimaryNavItem&lt;T&gt;[]</p></td>
+    <td>
+      <p><code>primaryNavItems</code></p>
+    </td>
+    <td>
+      <p><code>NavigationHeaderPrimaryNavItem&lt;T&gt;[]</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>List of items for the primary navigation section.</p></td>
   </tr>
   <tr>
-    <td><p>primaryNavPosition</p></td>
-    <td><p>"left" |"right"</p></td>
-    <td><p>"left"</p></td>
+    <td>
+      <p><code>primaryNavPosition</code></p>
+    </td>
+    <td>
+      <p><code>"left" |"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
     <td>
       <p>
-        Position of the primaryNavItems list. If set to "left", the items appear
-        to the left of the search bar. If set to "right", they are positioned
-        next to the secondaryNavItems on the right.
+        Position of the <code>primaryNavItems</code> list. If set to
+        <code>"left"</code>, the items appear to the left of the search bar. If
+        set to <code>"right"</code>, they are positioned next to the
+        <code>secondaryNavItems</code> on the right.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>showSearch</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>showSearch</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td><p>Whether to display the search input in the header.</p></td>
   </tr>
   <tr>
-    <td><p>searchProps</p></td>
-    <td><p>Partial&lt;InputSearchProps&gt;</p></td>
+    <td>
+      <p><code>searchProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;InputSearchProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Props passed to the search input component.</p></td>
   </tr>
   <tr>
-    <td><p>secondaryNavItems</p></td>
-    <td><p>NavigationHeaderSecondaryNavItem[]</p></td>
+    <td>
+      <p><code>secondaryNavItems</code></p>
+    </td>
+    <td>
+      <p><code>NavigationHeaderSecondaryNavItem[]</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>List of items for the secondary navigation section.</p></td>
   </tr>
   <tr>
-    <td><p>scrollElevation</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>scrollElevation</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>Controls whether a shadow is shown under the Nav when scrolling.</p>
     </td>
   </tr>
   <tr>
-    <td><p>tag</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>tag</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>A small label displayed next to the title.</p></td>
   </tr>
   <tr>
-    <td><p>tagColor</p></td>
     <td>
-      <p>| "info"</p>
-      <p>| "positive"</p>
-      <p>| "notice"</p>
-      <p>| "negative"</p>
-      <p>| "neutral"</p>
-      <p>| "beta"</p>
-      <p>| [string, string]</p>
-      <p>| [string, string, string]</p>
+      <p><code>tagColor</code></p>
     </td>
-    <td><p>neutral</p></td>
+    <td>
+      <p><code>"info"</code> |</p>
+      <p><code>"positive"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"neutral"</code> |</p>
+      <p><code>"beta"</code> |</p>
+      <p><code>[string, string]</code> |</p>
+      <p><code>[string, string, string]</code></p>
+    </td>
+    <td>
+      <p><code>"neutral"</code></p>
+    </td>
     <td><p>The color of the tag label.</p></td>
   </tr>
   <tr>
-    <td><p>title</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The main title displayed in the header.</p></td>
   </tr>
@@ -410,16 +510,15 @@
 <p>
   NavigationHeader also extends MUI's
   <a href="https://mui.com/material-ui/api/app-bar/">AppBar</a>
-  minus its position prop, so the remaining AppBar and DOM props reach the
-  underlying element.
+  minus its <code>position</code> prop, so the remaining AppBar and DOM props
+  reach the underlying element.
 </p>
 <h2>
   Navigation Header Primary Nav Item and Navigation Header Secondary Nav Item
 </h2>
 <p>
   Primary and secondary items share the same shape. Both are a union keyed on
-  <strong>itemType</strong>
-  : a plain label, or a label that opens a menu.
+  <code>itemType</code>: a plain label, or a label that opens a menu.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -429,10 +528,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>itemType</p></td>
     <td>
-      <p>"text"</p>
-      <p>| "dropdown"</p>
+      <p><code>itemType</code></p>
+    </td>
+    <td>
+      <p><code>"text"</code> |</p>
+      <p><code>"dropdown"</code></p>
     </td>
     <td><p>both</p></td>
     <td>
@@ -443,25 +544,37 @@
     </td>
   </tr>
   <tr>
-    <td><p>key</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>key</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>both</p></td>
     <td>
       <p>
-        Identifies the item. It is what activePrimaryNavKey is compared against,
-        so it has to be unique within the list.
+        Identifies the item. It is what <code>activePrimaryNavKey</code> is
+        compared against, so it has to be unique within the list.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>both</p></td>
     <td><p>What the item reads in the bar.</p></td>
   </tr>
   <tr>
-    <td><p>onClick</p></td>
-    <td><p>(e: React.SyntheticEvent) =&gt; void</p></td>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>(e: React.SyntheticEvent) =&gt; void</code></p>
+    </td>
     <td><p>both</p></td>
     <td>
       <p>
@@ -471,50 +584,79 @@
     </td>
   </tr>
   <tr>
-    <td><p>tag, tagColor</p></td>
     <td>
-      <p>string,</p>
-      <p>SdsTagColorType</p>
+      <p><code>tag</code>, <code>tagColor</code></p>
     </td>
-    <td><p>"text"</p></td>
+    <td>
+      <p><code>string</code>,</p>
+      <p><code>SdsTagColorType</code></p>
+    </td>
+    <td>
+      <p><code>"text"</code></p>
+    </td>
     <td><p>A small Tag rendered after the label.</p></td>
   </tr>
   <tr>
-    <td><p>items</p></td>
-    <td><p>DropdownItem[]</p></td>
-    <td><p>"dropdown"</p></td>
+    <td>
+      <p><code>items</code></p>
+    </td>
+    <td>
+      <p><code>DropdownItem[]</code></p>
+    </td>
+    <td>
+      <p><code>"dropdown"</code></p>
+    </td>
     <td><p>The contents of the menu. See the table below.</p></td>
   </tr>
   <tr>
-    <td><p>sectionProps</p></td>
-    <td><p>Record&lt;string, SectionProps&gt;</p></td>
-    <td><p>"dropdown"</p></td>
+    <td>
+      <p><code>sectionProps</code></p>
+    </td>
+    <td>
+      <p><code>Record&lt;string, SectionProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>"dropdown"</code></p>
+    </td>
     <td>
       <p>
-        Extra configuration per section name, applied only when sdsStyle is
-        "drawer".
+        Extra configuration per section name, applied only when
+        <code>sdsStyle</code> is <code>"drawer"</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>defaultUrl</p></td>
-    <td><p>string</p></td>
-    <td><p>"dropdown"</p></td>
+    <td>
+      <p><code>defaultUrl</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"dropdown"</code></p>
+    </td>
     <td>
       <p>
         Makes the item itself a link, for when the section has a landing page of
-        its own. Pair it with component, target, and rel as needed.
+        its own. Pair it with <code>component</code>, <code>target</code>, and
+        <code>rel</code> as needed.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>component, target, rel</p></td>
     <td>
-      <p>ElementType,</p>
-      <p>string, string</p>
+      <p><code>component</code>, <code>target</code>, <code>rel</code></p>
     </td>
-    <td><p>"dropdown"</p></td>
-    <td><p>Link plumbing for defaultUrl.</p></td>
+    <td>
+      <p><code>ElementType</code>,</p>
+      <p><code>string</code>, <code>string</code></p>
+    </td>
+    <td>
+      <p><code>"dropdown"</code></p>
+    </td>
+    <td>
+      <p>Link plumbing for <code>defaultUrl</code>.</p>
+    </td>
   </tr>
 </table>
 <h2>DropdownItem</h2>
@@ -526,41 +668,55 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The row's text.</p></td>
   </tr>
   <tr>
-    <td><p>details</p></td>
-    <td><p>string</p></td>
-    <td><p>-</p></td>
     <td>
-      <p>
-        A caption under the label, drawn only when sdsStyle is "drawer". In
-        dropdown style it lands on the element as an attribute and shows
-        nothing.
-      </p>
+      <p><code>details</code></p>
     </td>
-  </tr>
-  <tr>
-    <td><p>icon</p></td>
     <td>
-      <p>keyof IconNameToSizes</p>
-      <p>| ReactElement</p>
+      <p><code>string</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        An icon for the row, drawn only when sdsStyle is "drawer". A named icon
-        renders at 24px when the row has details and 16px when it does not, so
-        the name has to offer that size.
+        A caption under the label, drawn only when <code>sdsStyle</code> is
+        <code>"drawer"</code>. In dropdown style it lands on the element as an
+        attribute and shows nothing.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>section</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>keyof IconNameToSizes</code> |</p>
+      <p><code>ReactElement</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An icon for the row, drawn only when <code>sdsStyle</code> is
+        <code>"drawer"</code>. A named icon renders at 24px when the row has
+        details and 16px when it does not, so the name has to offer that size.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>section</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -570,31 +726,39 @@
     </td>
   </tr>
   <tr>
-    <td><p>onClick</p></td>
-    <td><p>(event: React.MouseEvent) =&gt; void</p></td>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>(event: React.MouseEvent) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Runs on click, then the menu closes.</p></td>
   </tr>
   <tr>
-    <td><p>href, component, target, rel</p></td>
     <td>
-      <p>string, ElementType,</p>
-      <p>string, string</p>
+      <p>
+        <code>href</code>, <code>component</code>, <code>target</code>,
+        <code>rel</code>
+      </p>
+    </td>
+    <td>
+      <p><code>string</code>, <code>ElementType</code>,</p>
+      <p><code>string</code>, <code>string</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Turn the row into a link. Pass component to route through something
-        other than an anchor.
+        Turn the row into a link. Pass <code>component</code> to route through
+        something other than an anchor.
       </p>
     </td>
   </tr>
 </table>
 <h2>SectionProps and ActionItem</h2>
 <p>
-  Keyed by section name on a dropdown item's
-  <strong>sectionProps</strong>
-  , and used only in drawer style.
+  Keyed by section name on a dropdown item's <code>sectionProps</code>, and used
+  only in drawer style.
 </p>
 <table class="sds-doc-table">
   <tr>
@@ -604,20 +768,31 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>actions</p></td>
-    <td><p>ActionItem[]</p></td>
+    <td>
+      <p><code>actions</code></p>
+    </td>
+    <td>
+      <p><code>ActionItem[]</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Links rendered under the section, for example a "Browse all". Each takes
-        label plus href, onClick, component, target, and rel.
+        <code>label</code> plus <code>href</code>, <code>onClick</code>,
+        <code>component</code>, <code>target</code>, and <code>rel</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>colSpan</p></td>
-    <td><p>number</p></td>
-    <td><p>1</p></td>
+    <td>
+      <p><code>colSpan</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
     <td><p>How many columns of the panel this section occupies.</p></td>
   </tr>
 </table>
@@ -627,12 +802,12 @@
 >
   <p>
     <strong>Note:</strong>
-    Most headers below set isSticky={false} so they stay inside their example
-    rather than pinning themselves to the top of this page. Because they are
-    narrower than a real page, some collapse to the narrow layout with a
-    hamburger; widen the window to see the wide layout. Overlays such as the
-    narrow layout's drawer expect a real viewport, so they cover this page
-    instead of their example unless the example holds them in, as the
+    Most headers below set <code>isSticky={false}</code> so they stay inside
+    their example rather than pinning themselves to the top of this page.
+    Because they are narrower than a real page, some collapse to the narrow
+    layout with a hamburger; widen the window to see the wide layout. Overlays
+    such as the narrow layout's drawer expect a real viewport, so they cover
+    this page instead of their example unless the example holds them in, as the
     drawer-style one below does.
   </p>
 </div>
@@ -672,8 +847,8 @@
 ></div>
 <h3>Banner above the header</h3>
 <p>
-  The header sits below whatever topComponentSlot holds and re-measures it when
-  it changes, so dismissing this banner closes the gap.
+  The header sits below whatever <code>topComponentSlot</code> holds and
+  re-measures it when it changes, so dismissing this banner closes the gap.
 </p>
 <div
   class="sds-doc-example"

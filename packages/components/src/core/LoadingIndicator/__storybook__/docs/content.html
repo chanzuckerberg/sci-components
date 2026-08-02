@@ -13,13 +13,11 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      The component reads exactly two props,
-      <strong>sdsStyle</strong>
-      and
-      <strong>aria-label</strong>
-      , and ignores everything else. There is no className, style, id, children,
-      or data attribute to pass, and no ref to take, so wrap it in an element of
-      your own for layout, spacing, or centering.
+      The component reads exactly two props, <code>sdsStyle</code> and
+      <code>aria-label</code>, and ignores everything else. There is no
+      <code>className</code>, <code>style</code>, <code>id</code>,
+      <code>children</code>, or data attribute to pass, and no ref to take, so
+      wrap it in an element of your own for layout, spacing, or centering.
     </p>
   </li>
   <li>
@@ -32,9 +30,8 @@
   </li>
   <li>
     <p>
-      Both variants stand 32px tall and sit
-      <em>inline-flex</em>
-      , so they line up with adjacent text rather than filling their container.
+      Both variants stand 32px tall and sit <code>inline-flex</code>, so they
+      line up with adjacent text rather than filling their container.
     </p>
   </li>
   <li>
@@ -47,20 +44,17 @@
   <li>
     <p>
       The spinner is animated inside the SVG itself, not with CSS, so it keeps
-      spinning under
-      <em>prefers-reduced-motion</em>
-      and there is no prop to stop it.
+      spinning under <code>prefers-reduced-motion</code> and there is no prop to
+      stop it.
     </p>
   </li>
   <li>
     <p>
-      The label sits in a
-      <em>role="status"</em>
-      ,
-      <em>aria-live="polite"</em>
-      region, so it announces itself when it mounts. Render it when the wait
-      starts and unmount it when the wait ends: nothing is announced on removal,
-      so the content that replaces it has to carry the result.
+      The label sits in a <code>role="status"</code>,
+      <code>aria-live="polite"</code> region, so it announces itself when it
+      mounts. Render it when the wait starts and unmount it when the wait ends:
+      nothing is announced on removal, so the content that replaces it has to
+      carry the result.
     </p>
   </li>
 </ul>
@@ -73,19 +67,31 @@
     <td><p>Spinner</p></td>
   </tr>
   <tr>
-    <td><p>"minimal"</p></td>
-    <td><p>fontBodyS, sentence case</p></td>
     <td>
-      <p>Text base.textSecondary, spinner base.ornamentSecondary, no fill</p>
+      <p><code>"minimal"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyS</code>, sentence case</p>
+    </td>
+    <td>
+      <p>
+        Text <code>base.textSecondary</code>, spinner
+        <code>base.ornamentSecondary</code>, no fill
+      </p>
     </td>
     <td><p>16px</p></td>
   </tr>
   <tr>
-    <td><p>"tag"</p></td>
-    <td><p>fontCapsXxxxs, all caps</p></td>
+    <td>
+      <p><code>"tag"</code></p>
+    </td>
+    <td>
+      <p><code>fontCapsXxxxs</code>, all caps</p>
+    </td>
     <td>
       <p>
-        Text and spinner accent.foreground on an accent.surfaceSecondary pill
+        Text and spinner <code>accent.foreground</code> on an
+        <code>accent.surfaceSecondary</code> pill
       </p>
     </td>
     <td><p>24px</p></td>
@@ -104,10 +110,12 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>sdsStyle</p></td>
     <td>
-      <p>"minimal"</p>
-      <p>| "tag"</p>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"minimal"</code> |</p>
+      <p><code>"tag"</code></p>
     </td>
     <td><p>- (required)</p></td>
     <td>
@@ -118,9 +126,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>aria-label</p></td>
-    <td><p>string</p></td>
-    <td><p>undefined</p></td>
+    <td>
+      <p><code>aria-label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>undefined</code></p>
+    </td>
     <td>
       <p>
         Replaces what a screen reader announces for the status region, for

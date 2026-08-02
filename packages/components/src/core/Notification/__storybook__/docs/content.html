@@ -22,11 +22,15 @@
   <li>
     <p>
       <strong>Color:</strong>
-      SDS's Notification component has its own intent prop designed for setting
-      both the color and default icon, and takes the values of "accent", "info",
-      "negative", "notice", or "positive". MUI's Alert instead uses the severity
-      prop for this purpose (severity can also be used for SDS's Notification,
-      and will take the same values as intent; this is not recommended)
+      SDS's Notification component has its own <code>intent</code> prop designed
+      for setting both the color and default icon, and takes the values of
+      <code>"accent"</code>, <code>"info"</code>, <code>"negative"</code>,
+      <code>"notice"</code>, or <code>"positive"</code>. MUI's Alert instead
+      uses the <code>severity</code> prop for this purpose (<code
+        >severity</code
+      >
+      can also be used for SDS's Notification, and will take the same values as
+      <code>intent</code>; this is not recommended)
     </p>
   </li>
   <li>
@@ -41,18 +45,18 @@
   <li>
     <p>
       <strong>Closing:</strong>
-      A close button appears in the top right as soon as onClose is given, which
-      is what makes a Notification dismissible. The Notification hides itself
-      when that button is clicked, and dismissed hides it from the outside. SDS
-      uses MUI's Alert action prop for the close button, in case there is a need
-      to further override the behavior.
+      A close button appears in the top right as soon as <code>onClose</code> is
+      given, which is what makes a Notification dismissible. The Notification
+      hides itself when that button is clicked, and <code>dismissed</code> hides
+      it from the outside. SDS uses MUI's Alert <code>action</code> prop for the
+      close button, in case there is a need to further override the behavior.
     </p>
   </li>
   <li>
     <p>
       <strong>Transitions:</strong>
       SDS's Notification uses the Slide transition component, sliding in and out
-      towards the side named by slideDirection.
+      towards the side named by <code>slideDirection</code>.
     </p>
   </li>
   <li>
@@ -71,25 +75,32 @@
     <p>
       <strong>Icons:</strong>
       Like with MUI's Alert, SDS's Notification also shows an icon to the left
-      of the message. It is chosen automatically from the intent (see the first
-      bullet) and can be overridden with the icon prop, which takes either the
-      name of an SDS icon or a custom SVG element:
+      of the message. It is chosen automatically from the
+      <code>intent</code> (see the first bullet) and can be overridden with the
+      <code>icon</code>
+      prop, which takes either the name of an SDS icon or a custom SVG element:
     </p>
   </li>
 </ul>
-<p>icon="Book"</p>
-<p>icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">icon="Book"
+icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
+  </figure>
+</div>
 <p>
-  Additionally, setting icon={false} has no effect, and iconMapping does not
-  work to change icons associated to intent or severity.
+  Additionally, setting <code>icon={false}</code> has no effect, and
+  <code>iconMapping</code> does not work to change icons associated to
+  <code>intent</code> or <code>severity</code>.
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
       <strong>Variants:</strong>
-      The variant prop is not supported. Setting variant="outlined" adds the
-      colored border but keeps the background color, rather than removing it the
-      way MUI's Alert does.
+      The <code>variant</code> prop is not supported. Setting
+      <code>variant="outlined"</code> adds the colored border but keeps the
+      background color, rather than removing it the way MUI's Alert does.
     </p>
   </li>
 </ul>
@@ -112,13 +123,15 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>intent</p></td>
     <td>
-      <p>"accent"</p>
-      <p>| "info"</p>
-      <p>| "negative"</p>
-      <p>| "notice"</p>
-      <p>| "positive"</p>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"accent"</code> |</p>
+      <p><code>"info"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"positive"</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -129,21 +142,31 @@
     </td>
   </tr>
   <tr>
-    <td><p>slideDirection</p></td>
-    <td><p>"left" | "right"</p></td>
-    <td><p>"left"</p></td>
+    <td>
+      <p><code>slideDirection</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
     <td>
       <p>
         <strong>Required.</strong>
         The side the Notification slides in from and back out towards. The
-        component falls back to "left", but the prop is not optional, so pass it
-        explicitly.
+        component falls back to <code>"left"</code>, but the prop is not
+        optional, so pass it explicitly.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -153,8 +176,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>onClose</p></td>
-    <td><p>(event: React.SyntheticEvent) =&gt; void</p></td>
+    <td>
+      <p><code>onClose</code></p>
+    </td>
+    <td>
+      <p><code>(event: React.SyntheticEvent) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -165,43 +192,60 @@
     </td>
   </tr>
   <tr>
-    <td><p>dismissed</p></td>
-    <td><p>bool</p></td>
+    <td>
+      <p><code>dismissed</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Hides the Notification when set to true. Changing it back to false
-        brings the Notification back, which is how a dismissed Notification is
-        restored.
+        Hides the Notification when set to <code>true</code>. Changing it back
+        to <code>false</code> brings the Notification back, which is how a
+        dismissed Notification is restored.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>autoDismiss</p></td>
-    <td><p>bool | number</p></td>
+    <td>
+      <p><code>autoDismiss</code></p>
+    </td>
+    <td>
+      <p><code>bool | number</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         Dismisses the Notification on a timer. A number sets the delay in
-        milliseconds, and true uses 8000. Leave it unset to keep the
-        Notification visible until it is dismissed another way.
+        milliseconds, and <code>true</code> uses <code>8000</code>. Leave it
+        unset to keep the Notification visible until it is dismissed another
+        way.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>buttonText</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>buttonText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
         The label of the action button shown beneath the content. It only
-        renders alongside buttonOnClick.
+        renders alongside <code>buttonOnClick</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>buttonOnClick</p></td>
-    <td><p>(event: React.SyntheticEvent) =&gt; void</p></td>
+    <td>
+      <p><code>buttonOnClick</code></p>
+    </td>
+    <td>
+      <p><code>(event: React.SyntheticEvent) =&gt; void</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -212,32 +256,50 @@
     </td>
   </tr>
   <tr>
-    <td><p>buttonPosition</p></td>
-    <td><p>"left" | "right"</p></td>
-    <td><p>"right"</p></td>
+    <td>
+      <p><code>buttonPosition</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"right"</code></p>
+    </td>
     <td><p>Which side of the Notification the action button sits on.</p></td>
   </tr>
   <tr>
-    <td><p>icon</p></td>
     <td>
-      <p>SDSIcon | React.ReactElement&lt;CustomSVGProps&gt;</p>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>SDSIcon | React.ReactElement&lt;CustomSVGProps&gt;</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
         Icon displayed to the left of the content, given either as an SDS icon
-        name or as an element. Defaults to the icon for the current intent:
-        CheckCircle for positive, InfoCircle for info, and ExclamationMarkCircle
-        for accent, notice, and negative.
+        name or as an element. Defaults to the icon for the current
+        <code>intent</code>: <code>"CheckCircle"</code> for
+        <code>"positive"</code>, <code>"InfoCircle"</code> for
+        <code>"info"</code>, and <code>"ExclamationMarkCircle"</code> for
+        <code>"accent"</code>, <code>"notice"</code>, and
+        <code>"negative"</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>sdsIconProps</p></td>
-    <td><p>Partial&lt;IconProps&gt;</p></td>
+    <td>
+      <p><code>sdsIconProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;IconProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
-      <p>Props forwarded to the Icon component when icon is given as a name.</p>
+      <p>
+        Props forwarded to the Icon component when <code>icon</code> is given as
+        a name.
+      </p>
     </td>
   </tr>
 </table>
@@ -245,8 +307,8 @@
 <h3>Default Notification</h3>
 <p>
   This example has the minimum props needed for the Notification component. With
-  no onClose and no autoDismiss it is persistent: it stays until the surrounding
-  page stops rendering it.
+  no <code>onClose</code> and no <code>autoDismiss</code> it is persistent: it
+  stays until the surrounding page stops rendering it.
 </p>
 <div
   class="sds-doc-example"
@@ -263,10 +325,11 @@
 ></div>
 <h3>Dismissible Notification</h3>
 <p>
-  Passing onClose adds a close button in the top right corner, giving users a
-  familiar way to remove the Notification from view. The Notification hides
-  itself when that button is clicked, so onClose is for keeping your own state
-  in sync; setting dismissed back to false is what brings it back.
+  Passing <code>onClose</code> adds a close button in the top right corner,
+  giving users a familiar way to remove the Notification from view. The
+  Notification hides itself when that button is clicked, so
+  <code>onClose</code> is for keeping your own state in sync; setting
+  <code>dismissed</code> back to <code>false</code> is what brings it back.
 </p>
 <div
   class="sds-doc-example"
@@ -276,8 +339,9 @@
 <p>
   A Notification can carry a single action button beneath its content, most
   often to dismiss it or to send the user somewhere related. The button appears
-  as soon as buttonOnClick is given, sits on the right unless buttonPosition
-  says otherwise, and leaves dismissing to the handler.
+  as soon as <code>buttonOnClick</code> is given, sits on the right unless
+  <code>buttonPosition</code> says otherwise, and leaves dismissing to the
+  handler.
 </p>
 <div
   class="sds-doc-example"
@@ -285,9 +349,9 @@
 ></div>
 <h3>Notification with extra content</h3>
 <p>
-  This example passes more than a single line as children. The first line reads
-  as the title, and the element beneath it holds the rest of the message; any
-  component can go there in place of the text.
+  This example passes more than a single line as <code>children</code>. The
+  first line reads as the title, and the element beneath it holds the rest of
+  the message; any component can go there in place of the text.
 </p>
 <div
   class="sds-doc-example"
@@ -295,8 +359,9 @@
 ></div>
 <h3>Notification with a custom icon</h3>
 <p>
-  This example replaces the icon that the intent would otherwise choose. The
-  icon prop takes either an SDS icon name or an element.
+  This example replaces the icon that the <code>intent</code> would otherwise
+  choose. The <code>icon</code> prop takes either an SDS icon name or an
+  element.
 </p>
 <div
   class="sds-doc-example"
@@ -304,8 +369,10 @@
 ></div>
 <h3>Notification with auto dismiss</h3>
 <p>
-  This example dismisses itself after four seconds. Pass true instead of a
-  number to use the default delay of 8000 milliseconds.
+  This example dismisses itself after four seconds. Pass
+  <code>true</code> instead of a number to use the default delay of
+  <code>8000</code>
+  milliseconds.
 </p>
 <div
   class="sds-doc-example"

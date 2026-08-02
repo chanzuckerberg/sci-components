@@ -36,8 +36,9 @@
       SDS Dropdown uses
       <a href="https://mui.com/material-ui/react-popper/">MUI</a>
       <a href="https://mui.com/material-ui/react-popper/">Popper</a>
-      . A custom Popper component can be passed via props.PopperComponent and/or
-      props.PopperBaseProps to control the popper component.
+      . A custom Popper component can be passed via
+      <code>props.PopperComponent</code> and/or
+      <code>props.PopperBaseProps</code> to control the popper component.
     </p>
   </li>
   <li>
@@ -45,8 +46,8 @@
       Similarly, SDS Dropdown uses
       <a href="https://mui.com/material-ui/react-paper/">MUI</a>
       <a href="https://mui.com/material-ui/react-paper/">Paper</a>
-      . A custom Paper component can be passed via props.PaperComponent to
-      enable custom styling.
+      . A custom Paper component can be passed via
+      <code>props.PaperComponent</code> to enable custom styling.
     </p>
   </li>
 </ul>
@@ -63,12 +64,16 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>buttonPosition</p></td>
     <td>
-      <p>"left"</p>
-      <p>|"right"</p>
+      <p><code>buttonPosition</code></p>
     </td>
-    <td><p>left</p></td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
     <td>
       <p>
         Specifies the position of the Apply/Cancel buttons at the Dropdown
@@ -77,92 +82,146 @@
     </td>
   </tr>
   <tr>
-    <td><p>buttons</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>buttons</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
-        When set to true, a set of Apply/Cancel buttons will be displayed at the
-        Dropdown footer.
+        When set to <code>true</code>, a set of Apply/Cancel buttons will be
+        displayed at the Dropdown footer.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>closeOnBlur</p></td>
-    <td><p>bool</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>closeOnBlur</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        When set to true, the Dropdown will automatically close when a click
-        occurs outside of it.
+        When set to <code>true</code>, the Dropdown will automatically close
+        when a click occurs outside of it.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>disabled</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
-        When true, the Dropdown is disabled and user interaction is not allowed.
+        When <code>true</code>, the Dropdown is disabled and user interaction is
+        not allowed.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>isTriggerChangeOnOptionClick</p></td>
-    <td><p>bool</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>isTriggerChangeOnOptionClick</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
-        When set to true, changes in Dropdown selections are applied in
-        real-time to the react state.
+        When set to <code>true</code>, changes in Dropdown selections are
+        applied in real-time to the react state.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>label</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The label of the Dropdown.</p></td>
   </tr>
   <tr>
-    <td><p>multiple</p></td>
-    <td><p>bool</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>multiple</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>Determines whether the Dropdown allows for multiple item selection.</p>
     </td>
   </tr>
   <tr>
-    <td><p>onChange</p></td>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
     <td>
       <p>
-        (options: Value&lt;DefaultDropdownMenuOption, Multiple&gt;) =&gt; void;
+        <code
+          >(options: Value&lt;DefaultDropdownMenuOption, Multiple&gt;) =&gt;
+          void;</code
+        >
       </p>
     </td>
     <td><p>-</p></td>
     <td><p>Callback fired when the value changes.</p></td>
   </tr>
   <tr>
-    <td><p>onClose</p></td>
-    <td><p>func</p></td>
+    <td>
+      <p><code>onClose</code></p>
+    </td>
+    <td>
+      <p><code>func</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Callback fired when the Dropdown requests to be closed.</p></td>
   </tr>
   <tr>
-    <td><p>search</p></td>
-    <td><p>bool</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>search</code></p>
+    </td>
+    <td>
+      <p><code>bool</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        When set to true, a search input is displayed at the top of the Dropdown
-        for filtering options.
+        When set to <code>true</code>, a search input is displayed at the top of
+        the Dropdown for filtering options.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>dropdownMenuProps</p></td>
-    <td><p>Partial&lt;DropdownMenuProps&gt;</p></td>
+    <td>
+      <p><code>dropdownMenuProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;DropdownMenuProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -172,8 +231,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>options</p></td>
-    <td><p>Array&lt;DefaultDropdownMenuOption&gt;</p></td>
+    <td>
+      <p><code>options</code></p>
+    </td>
+    <td>
+      <p><code>Array&lt;DefaultDropdownMenuOption&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -182,8 +245,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>InputDropdownProps</p></td>
-    <td><p>Partial&lt;InputDropdownPropsType&gt;</p></td>
+    <td>
+      <p><code>InputDropdownProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;InputDropdownPropsType&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -193,8 +260,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>value</p></td>
-    <td><p>string | Array&lt;string&gt;</p></td>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>string | Array&lt;string&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -204,17 +275,29 @@
     </td>
   </tr>
   <tr>
-    <td><p>PopperComponent</p></td>
-    <td><p>element</p></td>
-    <td><p>Paper</p></td>
+    <td>
+      <p><code>PopperComponent</code></p>
+    </td>
+    <td>
+      <p><code>element</code></p>
+    </td>
+    <td>
+      <p><code>Paper</code></p>
+    </td>
     <td>
       <p>The component used to render the wrapper of the inner DropdownMenu.</p>
     </td>
   </tr>
   <tr>
-    <td><p>InputDropdownComponent</p></td>
-    <td><p>element</p></td>
-    <td><p>InputDropdown</p></td>
+    <td>
+      <p><code>InputDropdownComponent</code></p>
+    </td>
+    <td>
+      <p><code>element</code></p>
+    </td>
+    <td>
+      <p><code>InputDropdown</code></p>
+    </td>
     <td><p>The component used to render the Dropdown trigger button.</p></td>
   </tr>
 </table>
@@ -228,7 +311,7 @@
 <h3><strong>Multi-select Dropdown with Search</strong></h3>
 <p>
   A search feature can be easily incorporated into the Dropdown component by
-  including the search prop.
+  including the <code>search</code> prop.
 </p>
 <p>
   The search functionality operates by dynamically filtering out non-matching
@@ -238,10 +321,11 @@
 </p>
 <p>
   To ensure that the search input retains its text even after a user selects a
-  menu item (when multiple selections are allowed), set the keepSearchOnSelect
-  prop to true within the DropdownMenuProps prop. This allows users to
-  conveniently choose multiple menu items that match the searched term without
-  the need to re-enter it for each selection.
+  menu item (when multiple selections are allowed), set the
+  <code>keepSearchOnSelect</code> prop to <code>true</code> within the
+  <code>DropdownMenuProps</code> prop. This allows users to conveniently choose
+  multiple menu items that match the searched term without the need to re-enter
+  it for each selection.
 </p>
 <div
   class="sds-doc-example"

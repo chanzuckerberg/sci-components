@@ -6,76 +6,76 @@ The Hero component's source code in the SDS codebase can be found [here](https:/
 
 ## Anatomy
 
-Hero is not built on a MUI component. It renders a single **<section>** with the layers stacked inside it, so there is no MUI API underneath and no subcomponents to import:
+Hero is not built on a MUI component. It renders a single `<section>` with the layers stacked inside it, so there is no MUI API underneath and no subcomponents to import:
 
-- The background, from **backgroundFill**. A string is applied as a background color; a node is rendered into a full-bleed container where any img or video is stretched to cover the section.
+- The background, from `backgroundFill`. A string is applied as a background color; a node is rendered into a full-bleed container where any img or video is stretched to cover the section.
 
-- The darkening mask, from **darkeningMask**, which sits above the background and below everything else.
+- The darkening mask, from `darkeningMask`, which sits above the background and below everything else.
 
-- The overlay media layer, from **overlayMedia**, positioned on its own so it does not follow the text.
+- The overlay media layer, from `overlayMedia`, positioned on its own so it does not follow the text.
 
-- The content block, made of the **headerText** heading, the **captionText** paragraph, and a slot holding **children**.
+- The content block, made of the `headerText` heading, the `captionText` paragraph, and a slot holding `children`.
 
-- The vignette, from **darkeningVignette**, drawn on top of everything along the top edge.
+- The vignette, from `darkeningVignette`, drawn on top of everything along the top edge.
 
-**headerText** renders as an **h1**, so use one Hero per page and keep the rest of the page's headings below it.
+`headerText` renders as an `h1`, so use one Hero per page and keep the rest of the page's headings below it.
 
 ## Layout notes
 
 - The side padding is driven by the viewport, not by the width of the Hero: 24px below 512px, 40px from 512px, and 120px from 1024px, which are the SDS sm, md, and lg breakpoints. The top and bottom padding is always 40px. In these previews the Hero is narrower than the viewport, so you are seeing the large breakpoint padding inside a small box.
 
-- There is no built-in maximum width on the content area. Use **overlayContentWidth** when the text should not span the full section.
+- There is no built-in maximum width on the content area. Use `overlayContentWidth` when the text should not span the full section.
 
-- **heroHeight** is ignored below 512px, where the section always falls back to fit-content.
+- `heroHeight` is ignored below 512px, where the section always falls back to `fit-content`.
 
-- **darkeningMask** on its own changes nothing, because **darkeningMaskOpacity** defaults to 0. Set both.
+- `darkeningMask` on its own changes nothing, because `darkeningMaskOpacity` defaults to `0`. Set both.
 
-- **hasInvertTextColor** only applies to the header and the caption. Content passed as children keeps its own colors.
+- `hasInvertTextColor` only applies to the header and the caption. Content passed as children keeps its own colors.
 
 ## Props
 
-Hero owns all of these props. Anything else, such as **className** or event handlers, is spread onto the section element.
+Hero owns all of these props. Anything else, such as `className` or event handlers, is spread onto the section element.
 
 ### Content
 
-| Name               | Type              | Default | Description                                                                                    |
-| ------------------ | ----------------- | ------- | ---------------------------------------------------------------------------------------------- |
-| headerText         | string            | -       | The headline. Rendered as an h1 and omitted entirely when not provided.                        |
-| headerFontSize     | "s" \| "m" \| "l" | "m"     | The type scale of the headline.                                                                |
-| captionText        | string            | -       | Supporting copy rendered below the headline.                                                   |
-| children           | ReactNode         | -       | Rendered in a full-width slot below the caption. Use it for buttons, links, or a search field. |
-| hasInvertTextColor | bool              | false   | Switches the headline and caption to the inverse text color for use on dark backgrounds.       |
+| Name                 | Type                    | Default | Description                                                                                    |
+| -------------------- | ----------------------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `headerText`         | `string`                | -       | The headline. Rendered as an `h1` and omitted entirely when not provided.                      |
+| `headerFontSize`     | `"s"` \| `"m"` \| `"l"` | `"m"`   | The type scale of the headline.                                                                |
+| `captionText`        | `string`                | -       | Supporting copy rendered below the headline.                                                   |
+| `children`           | `ReactNode`             | -       | Rendered in a full-width slot below the caption. Use it for buttons, links, or a search field. |
+| `hasInvertTextColor` | `bool`                  | `false` | Switches the headline and caption to the inverse text color for use on dark backgrounds.       |
 
 ### Layout
 
-| Name                      | Type                                                                                                               | Default             | Description                                                                                                                                                                                                                              |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| heroHeight                | string                                                                                                             | "fit-content"       | Any CSS height. Below a 512px viewport it is ignored and the section falls back to fit-content.                                                                                                                                          |
-| overlayContentPosition    | "top-left" \| "top" \| "top-right" \| "left" \| "center" \| "right" \| "bottom-left" \| "bottom" \| "bottom-right" | "center"            | Where the content block sits inside the section. Only visible when the section is taller or wider than the content.                                                                                                                      |
-| overlayContentWidth       | string                                                                                                             | "100%"              | Any CSS width for the content block, for example "60%" or "640px".                                                                                                                                                                       |
-| textAlignment             | "left" \| "center" \| "right"                                                                                      | -                   | Aligns the text within the content block, which starts at the leading edge when the prop is unset. This is separate from overlayContentPosition, which moves the block itself.                                                           |
-| overlayContainerMinMargin | { small: number; medium: number; large: number }                                                                   | 24px / 40px / 120px | Overrides the side padding at each breakpoint. The value is written straight into CSS, so it needs a unit. The number type in the signature is wrong: a plain number produces an invalid declaration and the side padding drops to zero. |
+| Name                        | Type                                                                                                                 | Default                   | Description                                                                                                                                                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `heroHeight`                | `string`                                                                                                             | `"fit-content"`           | Any CSS height. Below a 512px viewport it is ignored and the section falls back to `fit-content`.                                                                                                                                          |
+| `overlayContentPosition`    | `"top-left" \| "top" \| "top-right" \| "left" \| "center" \| "right" \| "bottom-left" \| "bottom" \| "bottom-right"` | `"center"`                | Where the content block sits inside the section. Only visible when the section is taller or wider than the content.                                                                                                                        |
+| `overlayContentWidth`       | `string`                                                                                                             | `"100%"`                  | Any CSS width for the content block, for example `"60%"` or `"640px"`.                                                                                                                                                                     |
+| `textAlignment`             | `"left" \| "center" \| "right"`                                                                                      | -                         | Aligns the text within the content block, which starts at the leading edge when the prop is unset. This is separate from `overlayContentPosition`, which moves the block itself.                                                           |
+| `overlayContainerMinMargin` | `{ small: number; medium: number; large: number }`                                                                   | `24px` / `40px` / `120px` | Overrides the side padding at each breakpoint. The value is written straight into CSS, so it needs a unit. The `number` type in the signature is wrong: a plain number produces an invalid declaration and the side padding drops to zero. |
 
 ### Background and media
 
-| Name                  | Type                                                                                                               | Default   | Description                                                                                                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| backgroundFill        | string \| ReactNode                                                                                                | -         | A string becomes the background color, so any CSS color or gradient works. A node is rendered full-bleed behind the content, and an img or video inside it is scaled to cover the section. |
-| darkeningMask         | bool                                                                                                               | false     | Adds a solid layer over the background. Pair it with darkeningMaskOpacity, which is 0 by default.                                                                                          |
-| darkeningMaskColor    | string                                                                                                             | "#000000" | The color of that layer.                                                                                                                                                                   |
-| darkeningMaskOpacity  | number                                                                                                             | 0         | The opacity of that layer, from 0 to 1.                                                                                                                                                    |
-| darkeningVignette     | bool                                                                                                               | false     | Draws a 40px gradient along the top edge, above the content, so a transparent header navigation stays legible.                                                                             |
-| overlayMedia          | ReactNode                                                                                                          | -         | A media layer above the background and independent of the text block. An img or video inside it is scaled to cover the layer.                                                              |
-| overlayMediaPosition  | "top-left" \| "top" \| "top-right" \| "left" \| "center" \| "right" \| "bottom-left" \| "bottom" \| "bottom-right" | "center"  | Where that layer sits inside the section.                                                                                                                                                  |
-| overlayMediaMaxWidth  | string                                                                                                             | -         | Sets the width of the media layer outright rather than a maximum, despite the name. Without it the layer has no width.                                                                     |
-| overlayMediaMaxHeight | string                                                                                                             | -         | Sets the height of the media layer, with the same caveat.                                                                                                                                  |
-| overlayMediaMargin    | string \| { small: string; medium: string; large: string }                                                         | "0"       | A margin shorthand for the media layer. Pass the object form to vary it by breakpoint: small below md, medium below lg, large above.                                                       |
+| Name                    | Type                                                                                                                 | Default     | Description                                                                                                                                                                                |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `backgroundFill`        | `string \| ReactNode`                                                                                                | -           | A string becomes the background color, so any CSS color or gradient works. A node is rendered full-bleed behind the content, and an img or video inside it is scaled to cover the section. |
+| `darkeningMask`         | `bool`                                                                                                               | `false`     | Adds a solid layer over the background. Pair it with `darkeningMaskOpacity`, which is `0` by default.                                                                                      |
+| `darkeningMaskColor`    | `string`                                                                                                             | `"#000000"` | The color of that layer.                                                                                                                                                                   |
+| `darkeningMaskOpacity`  | `number`                                                                                                             | `0`         | The opacity of that layer, from 0 to 1.                                                                                                                                                    |
+| `darkeningVignette`     | `bool`                                                                                                               | `false`     | Draws a 40px gradient along the top edge, above the content, so a transparent header navigation stays legible.                                                                             |
+| `overlayMedia`          | `ReactNode`                                                                                                          | -           | A media layer above the background and independent of the text block. An img or video inside it is scaled to cover the layer.                                                              |
+| `overlayMediaPosition`  | `"top-left" \| "top" \| "top-right" \| "left" \| "center" \| "right" \| "bottom-left" \| "bottom" \| "bottom-right"` | `"center"`  | Where that layer sits inside the section.                                                                                                                                                  |
+| `overlayMediaMaxWidth`  | `string`                                                                                                             | -           | Sets the width of the media layer outright rather than a maximum, despite the name. Without it the layer has no width.                                                                     |
+| `overlayMediaMaxHeight` | `string`                                                                                                             | -           | Sets the height of the media layer, with the same caveat.                                                                                                                                  |
+| `overlayMediaMargin`    | `string \| { small: string; medium: string; large: string }`                                                         | `"0"`       | A margin shorthand for the media layer. Pass the object form to vary it by breakpoint: `small` below md, `medium` below lg, `large` above.                                                 |
 
 ## Code examples
 
 ### Default Hero
 
-A headline, a caption, and a background color. With no heroHeight the section is as tall as its content plus the 40px of top and bottom padding.
+A headline, a caption, and a background color. With no `heroHeight` the section is as tall as its content plus the 40px of top and bottom padding.
 
 **Example: DefaultHero**
 
@@ -102,7 +102,7 @@ export default App;
 
 ### Header Sizes
 
-headerFontSize picks the type scale for the headline. The caption is fixed and does not change with it.
+`headerFontSize` picks the type scale for the headline. The caption is fixed and does not change with it.
 
 **Example: HeroHeaderSizes**
 
@@ -137,7 +137,7 @@ export default App;
 
 ### Hero with a Background Image
 
-Passing a node to backgroundFill renders it full-bleed behind the content. The darkening mask keeps the text readable, and it needs both darkeningMask and a darkeningMaskOpacity above zero.
+Passing a node to `backgroundFill` renders it full-bleed behind the content. The darkening mask keeps the text readable, and it needs both `darkeningMask` and a `darkeningMaskOpacity` above zero.
 
 **Example: HeroWithBackgroundImage**
 
@@ -173,7 +173,7 @@ export default App;
 
 ### Content Position and Alignment
 
-overlayContentPosition moves the whole content block within the section, while textAlignment aligns the text inside that block. Both need room to be visible, which comes from heroHeight and overlayContentWidth.
+`overlayContentPosition` moves the whole content block within the section, while `textAlignment` aligns the text inside that block. Both need room to be visible, which comes from `heroHeight` and `overlayContentWidth`.
 
 **Example: HeroContentPosition**
 
@@ -217,7 +217,7 @@ export default App;
 
 ### Hero with a Call to Action
 
-Children render in a slot below the caption. That slot keeps its own colors, so hasInvertTextColor does not reach the buttons.
+Children render in a slot below the caption. That slot keeps its own colors, so `hasInvertTextColor` does not reach the buttons.
 
 **Example: HeroWithCallToAction**
 
@@ -256,7 +256,7 @@ export default App;
 
 ### Hero with Overlay Media
 
-Overlay media is positioned independently of the text, so narrow the content block with overlayContentWidth to keep the two from overlapping.
+Overlay media is positioned independently of the text, so narrow the content block with `overlayContentWidth` to keep the two from overlapping.
 
 **Example: HeroWithOverlayMedia**
 

@@ -12,9 +12,11 @@
 <h2>SDS vs MUI</h2>
 <p>
   ButtonGroup collects related Button or ButtonToggle components into a single
-  segmented control, joining them with shared borders. It sets MUI's variant to
-  outlined and injects its own size into every Button child, which is why
-  variant and size are removed from the MUI props it accepts.
+  segmented control, joining them with shared borders. It sets MUI's
+  <code>variant</code> to <code>"outlined"</code> and injects its own
+  <code>size</code> into every Button child, which is why
+  <code>variant</code> and <code>size</code> are removed from the MUI props it
+  accepts.
 </p>
 <p>
   Vertical orientation is only honored when every button in the group is
@@ -40,36 +42,58 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>sdsStyle</p></td>
-    <td><p>"outline"</p></td>
-    <td><p>"outline"</p></td>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"outline"</code></p>
+    </td>
+    <td>
+      <p><code>"outline"</code></p>
+    </td>
     <td><p>Style of the button group. Outline is the only value.</p></td>
   </tr>
   <tr>
-    <td><p>sdsType</p></td>
-    <td><p>"primary" | "secondary"</p></td>
-    <td><p>"primary"</p></td>
+    <td>
+      <p><code>sdsType</code></p>
+    </td>
+    <td>
+      <p><code>"primary" | "secondary"</code></p>
+    </td>
+    <td>
+      <p><code>"primary"</code></p>
+    </td>
     <td><p>Color scheme applied to every button in the group.</p></td>
   </tr>
   <tr>
-    <td><p>size</p></td>
     <td>
-      <p>"small"</p>
-      <p>| "medium"</p>
-      <p>| "large"</p>
+      <p><code>size</code></p>
     </td>
-    <td><p>"large"</p></td>
+    <td>
+      <p><code>"small"</code> |</p>
+      <p><code>"medium"</code> |</p>
+      <p><code>"large"</code></p>
+    </td>
+    <td>
+      <p><code>"large"</code></p>
+    </td>
     <td>
       <p>
         Size of the group. It is injected into each Button child, so setting
-        size on the individual buttons has no effect.
+        <code>size</code> on the individual buttons has no effect.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>orientation</p></td>
-    <td><p>"horizontal" | "vertical"</p></td>
-    <td><p>"horizontal"</p></td>
+    <td>
+      <p><code>orientation</code></p>
+    </td>
+    <td>
+      <p><code>"horizontal" | "vertical"</code></p>
+    </td>
+    <td>
+      <p><code>"horizontal"</code></p>
+    </td>
     <td>
       <p>
         Direction the buttons are stacked in. Vertical is only available when
@@ -78,9 +102,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>backgroundAppearance</p></td>
-    <td><p>"matchBackground" | "dark"</p></td>
-    <td><p>"matchBackground"</p></td>
+    <td>
+      <p><code>backgroundAppearance</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground" | "dark"</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground"</code></p>
+    </td>
     <td>
       <p>
         Tells the group which surface it sits on so it can pick colors with
@@ -89,8 +119,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>children</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>The Button or ButtonToggle components to group.</p></td>
   </tr>

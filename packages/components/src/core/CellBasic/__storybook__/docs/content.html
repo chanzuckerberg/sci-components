@@ -22,45 +22,66 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>as</p></td>
-    <td><p>React.ElementType</p></td>
-    <td><p>"td"</p></td>
+    <td>
+      <p><code>as</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"td"</code></p>
+    </td>
     <td>
       <p>
-        The element the cell renders as. Use "th" for a row header cell inside
-        tbody.
+        The element the cell renders as. Use <code>"th"</code> for a row header
+        cell inside <code>tbody</code>.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>extraRightPadding</p></td>
-    <td><p>number</p></td>
-    <td><p>0</p></td>
+    <td>
+      <p><code>extraRightPadding</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>0</code></p>
+    </td>
     <td>
       <p>
-        Extra pixels of right padding, added only when horizontalAlign is
-        "right". Useful for leaving room for a scrollbar or a pinned column
-        edge.
+        Extra pixels of right padding, added only when
+        <code>horizontalAlign</code> is <code>"right"</code>. Useful for leaving
+        room for a scrollbar or a pinned column edge.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>horizontalAlign</p></td>
     <td>
-      <p>"left"</p>
-      <p>| "right"</p>
+      <p><code>horizontalAlign</code></p>
     </td>
-    <td><p>"left"</p></td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
     <td>
       <p>
-        Horizontal alignment of cell content. There is no "center". Use
-        CellComponent if a cell needs centered content.
+        Horizontal alignment of cell content. There is no
+        <code>"center"</code>. Use CellComponent if a cell needs centered
+        content.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>icon</p></td>
-    <td><p>React.ReactElement&lt;CustomSVGProps&gt;</p></td>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactElement&lt;CustomSVGProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -70,8 +91,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>link</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>link</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -81,8 +106,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>linkComponent</p></td>
-    <td><p>React.ElementType</p></td>
+    <td>
+      <p><code>linkComponent</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -92,39 +121,63 @@
     </td>
   </tr>
   <tr>
-    <td><p>linkProps</p></td>
     <td>
-      <p>React.AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</p>
+      <p><code>linkProps</code></p>
+    </td>
+    <td>
+      <p><code>React.AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</code></p>
     </td>
     <td><p>-</p></td>
-    <td><p>Props passed to the anchor rendered by link.</p></td>
+    <td>
+      <p>Props passed to the anchor rendered by <code>link</code>.</p>
+    </td>
   </tr>
   <tr>
-    <td><p>iconVerticalAlign</p></td>
     <td>
-      <p>"top"</p>
-      <p>| "center"</p>
-      <p>| "bottom"</p>
+      <p><code>iconVerticalAlign</code></p>
     </td>
-    <td><p>"top"</p></td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code></p>
+    </td>
     <td><p>Vertical alignment of the icon component.</p></td>
   </tr>
   <tr>
-    <td><p>primaryText</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>primaryText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Primary text value.</p></td>
   </tr>
   <tr>
-    <td><p>primaryTextWrapLineCount</p></td>
-    <td><p>number</p></td>
-    <td><p>3</p></td>
+    <td>
+      <p><code>primaryTextWrapLineCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>3</code></p>
+    </td>
     <td><p>Number of text wrap lines for primary text.</p></td>
   </tr>
   <tr>
-    <td><p>primaryTextComponentSlotBottom</p></td>
-    <td><p>ReactNode</p></td>
-    <td><p>null</p></td>
+    <td>
+      <p><code>primaryTextComponentSlotBottom</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
     <td>
       <p>
         Component slot below primary text. This will only show if there is no
@@ -134,73 +187,125 @@
     </td>
   </tr>
   <tr>
-    <td><p>primaryTextComponentSlotRight</p></td>
-    <td><p>ReactNode</p></td>
-    <td><p>null</p></td>
+    <td>
+      <p><code>primaryTextComponentSlotRight</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
     <td><p>Component slot to the right of primary text</p></td>
   </tr>
   <tr>
-    <td><p>secondaryText</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>secondaryText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Secondary Text.</p></td>
   </tr>
   <tr>
-    <td><p>secondaryTextWrapLineCount</p></td>
-    <td><p>number</p></td>
-    <td><p>1</p></td>
+    <td>
+      <p><code>secondaryTextWrapLineCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
     <td><p>Number of text wrap lines for secondary text.</p></td>
   </tr>
   <tr>
-    <td><p>tertiaryText</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>tertiaryText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td><p>Tertiary Text.</p></td>
   </tr>
   <tr>
-    <td><p>tertiaryTextWrapLineCount</p></td>
-    <td><p>number</p></td>
-    <td><p>1</p></td>
+    <td>
+      <p><code>tertiaryTextWrapLineCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
     <td><p>Number of text wrap lines for tertiary text.</p></td>
   </tr>
   <tr>
-    <td><p>shouldShowTooltipOnHover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>shouldShowTooltipOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        When true the cell is wrapped in a Tooltip whose title is primaryText
-        and whose subtitle is secondaryText. Turn it off for cells whose text is
-        already fully visible, otherwise every cell in the table has a tooltip.
+        When <code>true</code> the cell is wrapped in a Tooltip whose title is
+        <code>primaryText</code> and whose subtitle is
+        <code>secondaryText</code>. Turn it off for cells whose text is already
+        fully visible, otherwise every cell in the table has a tooltip.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>shouldShowUnderlineOnHover</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>shouldShowUnderlineOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
-        Underlines primaryText on hover. Inside a PreComposedTable the underline
-        also appears when any cell in the row is hovered.
+        Underlines <code>primaryText</code> on hover. Inside a PreComposedTable
+        the underline also appears when any cell in the row is hovered.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>shouldTextWrap</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>shouldTextWrap</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
-        When true, each text clamps to its wrap line count. When false, text
-        stays on one line and truncates with an ellipsis instead.
+        When <code>true</code>, each text clamps to its wrap line count. When
+        <code>false</code>, text stays on one line and truncates with an
+        ellipsis instead.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>tabularNums</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>tabularNums</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td>
       <p>
         Renders digits at a fixed width so numbers line up column to column.
@@ -209,8 +314,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>tooltipProps</p></td>
-    <td><p>Partial&lt;TooltipProps&gt;</p></td>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TooltipProps&gt;</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -220,19 +329,23 @@
     </td>
   </tr>
   <tr>
-    <td><p>verticalAlign</p></td>
     <td>
-      <p>"top"</p>
-      <p>| "center"</p>
-      <p>| "bottom"</p>
+      <p><code>verticalAlign</code></p>
     </td>
-    <td><p>"top"</p></td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code></p>
+    </td>
     <td><p>Vertical alignment of the cell content.</p></td>
   </tr>
 </table>
 <p>
-  Anything else you pass, such as colSpan, style or a data attribute, lands on
-  the rendered td.
+  Anything else you pass, such as <code>colSpan</code>, <code>style</code> or a
+  data attribute, lands on the rendered <code>td</code>.
 </p>
 <h2>Code examples</h2>
 <h3>Default CellBasic</h3>

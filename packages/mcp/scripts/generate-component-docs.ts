@@ -274,10 +274,13 @@ function inlineExamples(markdown: string, ids: string[]): string {
 }
 
 /**
- * Cleans up the prose. This runs before the examples are spliced in, so that
- * collapsing whitespace cannot reach into their source and reindent it.
+ * The snippets the pages write by hand, already fenced by the time the prose is
+ * cleaned up. Splitting on them keeps their indentation out of the rules below,
+ * which would otherwise flatten a nested JSX tag onto the margin.
  */
-function tidy(markdown: string): string {
+const FENCED_BLOCK = /(^```[\s\S]*?^```$)/m;
+
+function tidyProse(markdown: string): string {
   return (
     markdown
       .replace(/\u00a0/g, " ")
@@ -287,8 +290,19 @@ function tidy(markdown: string): string {
       .replace(/ {2,}/g, " ")
       .replace(/[ \t]+$/gm, "")
       .replace(/\n{3,}/g, "\n\n")
-      .trim()
   );
+}
+
+/**
+ * Cleans up the prose. This runs before the examples are spliced in, so that
+ * collapsing whitespace cannot reach into their source and reindent it.
+ */
+function tidy(markdown: string): string {
+  return markdown
+    .split(FENCED_BLOCK)
+    .map((part, index) => (index % 2 === 0 ? tidyProse(part) : part))
+    .join("")
+    .trim();
 }
 
 interface PackageConfig {

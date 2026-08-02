@@ -10,9 +10,9 @@ Both SDS's DropdownMenu and MUI's Autocomplete have huge API surfaces, so it is 
 
 - SDS DropdownMenu uses [MUI Autocomplete](https://mui.com/material-ui/react-autocomplete/) under the hood, so all props passed to DropdownMenu are ultimately passed to the Autocomplete component as well. This means MUI's Autocomplete props can be used on SDS's DropdownMenu if needed.
 
-- SDS DropdownMenu uses [MUI Popper](https://mui.com/material-ui/react-popper/). A custom Popper component can be passed via props.PopperComponent and/or props.PopperBaseProps to control the popper component.
+- SDS DropdownMenu uses [MUI Popper](https://mui.com/material-ui/react-popper/). A custom Popper component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
 
-- Similarly, SDS DropdownMenu uses [MUI Paper](https://mui.com/material-ui/react-paper/). A custom Paper component can be passed via props.PaperComponent to enable custom styling.
+- Similarly, SDS DropdownMenu uses [MUI Paper](https://mui.com/material-ui/react-paper/). A custom Paper component can be passed via `props.PaperComponent` to enable custom styling.
 
 ## MUI Documentation
 
@@ -22,27 +22,27 @@ Documentation for the underlying MUI Autocomplete component can be found [here](
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| **Name**               | **Type**                       | **Default**                                                                                           | **Description**                                                                                                                                                                                                                                                                                                                                                                   |
-| ---------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| anchorEl               | HTML element \| object \| func | null                                                                                                  | Tells the DropdownMenu which element to use as an anchor; see more in the [MUI](https://mui.com/base-ui/react-popper/components-api/#popper-props) [Popper](https://mui.com/base-ui/react-popper/components-api/#popper-props) [component's API](https://mui.com/base-ui/react-popper/components-api/#popper-props)                                                               |
-| clickAwayListenerProps | func                           | -                                                                                                     | Passes props to the [MUI](https://mui.com/base-ui/react-click-away-listener/components-api/) [ClickAwayListener](https://mui.com/base-ui/react-click-away-listener/components-api/)                                                                                                                                                                                               |
-| groupBy                | func                           | -                                                                                                     | Groups menu items according to their assigned section                                                                                                                                                                                                                                                                                                                             |
-| isOptionEqualToValue   | func                           | (option, val): boolean { return option.name === val.name; }                                           | Changes how a selected value is compared against the available options; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) or in the Recipes section                                                                                                                                                                                     |
-| keepSearchOnSelect     | bool                           | true                                                                                                  | Maintains a search input when a user selects a menu item (only if multiple selections are allowed via the multiple prop; otherwise the dropdown closes upon selection)                                                                                                                                                                                                            |
-| multiple               | bool                           | false                                                                                                 | Allows user to select multiple menu items; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props)                                                                                                                                                                                                                                            |
-| noOptionsText          | string                         | "No options"                                                                                          | Sets the text that displays if there are no matching search results; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props)                                                                                                                                                                                                                  |
-| onClickAway            | func                           | -                                                                                                     | Sets what happens when a user clicks outside of the DropdownMenu                                                                                                                                                                                                                                                                                                                  |
-| onInputChange          | func                           | noop                                                                                                  | Specifies what happens when a new selection is made; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) or in the Recipes section                                                                                                                                                                                                        |
-| PopperBaseProps        |                                | -                                                                                                     | Passes custom props to the MUIPopper component, which is included as part of the SDSDropdownMenu component. Learn more in the [Popper documentation](https://mui.com/material-ui/react-popper/), and see all the props available to pass to it on the [Popper API page](https://mui.com/material-ui/api/popper/). See an example of PopperBaseProps in use in the Recipes section |
-| PopperComponent        | func                           | SDS's StyledPopper; see sci-components/packages/components/src/core/DropdownMenu/style.ts, ~ line 202 | The [MUI](https://mui.com/material-ui/react-popper/) [Popper](https://mui.com/material-ui/react-popper/) [component](https://mui.com/material-ui/react-popper/) is included as part of the SDS DropdownMenu component, and its styles can be changed or added to                                                                                                                  |
-| search                 | bool                           | false                                                                                                 | Provides a search bar at the top of the menu from which users can narrow the list of menu items                                                                                                                                                                                                                                                                                   |
-| title                  | string                         | -                                                                                                     | Sets a heading for the menu                                                                                                                                                                                                                                                                                                                                                       |
+| **Name**                 | **Type**                             | **Default**                                                                                               | **Description**                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------ | ------------------------------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `anchorEl`               | `HTML element` \| `object` \| `func` | `null`                                                                                                    | Tells the DropdownMenu which element to use as an anchor; see more in the [MUI](https://mui.com/base-ui/react-popper/components-api/#popper-props) [Popper](https://mui.com/base-ui/react-popper/components-api/#popper-props) [component's API](https://mui.com/base-ui/react-popper/components-api/#popper-props)                                                                 |
+| `clickAwayListenerProps` | `func`                               | -                                                                                                         | Passes props to the [MUI](https://mui.com/base-ui/react-click-away-listener/components-api/) [ClickAwayListener](https://mui.com/base-ui/react-click-away-listener/components-api/)                                                                                                                                                                                                 |
+| `groupBy`                | `func`                               | -                                                                                                         | Groups menu items according to their assigned section                                                                                                                                                                                                                                                                                                                               |
+| `isOptionEqualToValue`   | `func`                               | `(option, val): boolean {` `return option.name === val.name;` `}`                                         | Changes how a selected value is compared against the available options; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) or in the Recipes section                                                                                                                                                                                       |
+| `keepSearchOnSelect`     | `bool`                               | `true`                                                                                                    | Maintains a search input when a user selects a menu item (only if multiple selections are allowed via the `multiple` prop; otherwise the dropdown closes upon selection)                                                                                                                                                                                                            |
+| `multiple`               | `bool`                               | `false`                                                                                                   | Allows user to select multiple menu items; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props)                                                                                                                                                                                                                                              |
+| `noOptionsText`          | `string`                             | `"No options"`                                                                                            | Sets the text that displays if there are no matching search results; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props)                                                                                                                                                                                                                    |
+| `onClickAway`            | `func`                               | -                                                                                                         | Sets what happens when a user clicks outside of the DropdownMenu                                                                                                                                                                                                                                                                                                                    |
+| `onInputChange`          | `func`                               | `noop`                                                                                                    | Specifies what happens when a new selection is made; see more in the [MUI Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props) or in the Recipes section                                                                                                                                                                                                          |
+| `PopperBaseProps`        |                                      | -                                                                                                         | Passes custom props to the MUIPopper component, which is included as part of the SDSDropdownMenu component. Learn more in the [Popper documentation](https://mui.com/material-ui/react-popper/), and see all the props available to pass to it on the [Popper API page](https://mui.com/material-ui/api/popper/). See an example of `PopperBaseProps` in use in the Recipes section |
+| `PopperComponent`        | `func`                               | SDS's `StyledPopper`; see `sci-components/packages/components/src/core/DropdownMenu/style.ts`, ~ line 202 | The [MUI](https://mui.com/material-ui/react-popper/) [Popper](https://mui.com/material-ui/react-popper/) [component](https://mui.com/material-ui/react-popper/) is included as part of the SDS DropdownMenu component, and its styles can be changed or added to                                                                                                                    |
+| `search`                 | `bool`                               | `false`                                                                                                   | Provides a search bar at the top of the menu from which users can narrow the list of menu items                                                                                                                                                                                                                                                                                     |
+| `title`                  | `string`                             | -                                                                                                         | Sets a heading for the menu                                                                                                                                                                                                                                                                                                                                                         |
 
 There are many more props that can be used with the DropdownMenu component, via those available to [MUI's](https://mui.com/material-ui/api/autocomplete/#props) [Autocomplete](https://mui.com/material-ui/api/autocomplete/#props) [component](https://mui.com/material-ui/api/autocomplete/#props).
 
 **Note for use with SDS** **Table** **and other components:**
 
-Each time a table column is shown/hidden a new table object is created. This causes components within the table to remount. _This can be a problem with_ _DropdownMenu_ _if the menu is supposed to stay open while the columns are hidden/shown because the anchor element also gets recreated._ To resolve this, move the DropdownMenu anchor element outside of the table or use the pendingState and only show/hide the columns when closing the dropdown.
+Each time a table column is shown/hidden a new table object is created. This causes components within the table to remount. _This can be a problem with_ _DropdownMenu_ _if the menu is supposed to stay open while the columns are hidden/shown because the anchor element also gets recreated._ To resolve this, move the DropdownMenu anchor element outside of the table or use the `pendingState` and only show/hide the columns when closing the dropdown.
 
 ## Code examples
 
@@ -50,7 +50,7 @@ Each time a table column is shown/hidden a new table object is created. This cau
 
 This example has the minimum props and menu item metadata needed for the DropdownMenu. The examples that follow build on it.
 
-Menu item metadata is stored as an array of objects (one per menu item) passed to the DropdownMenu component’s options prop. At minimum each MenuItem needs a name property, which is the text it displays. MenuItems can display more metadata, though; see the “Grouped sections” and “Menu items with count, icon, and details” examples below. Alternatively, a custom component can be displayed instead of a MenuItem component; see the “Components in place of menu items” example below.
+Menu item metadata is stored as an array of objects (one per menu item) passed to the DropdownMenu component’s `options` prop. At minimum each MenuItem needs a `name` property, which is the text it displays. MenuItems can display more metadata, though; see the “Grouped sections” and “Menu items with count, icon, and details” examples below. Alternatively, a custom component can be displayed instead of a MenuItem component; see the “Components in place of menu items” example below.
 
 The minimum width for the DropdownMenu is 225px, but longer text will automatically widen the DropdownMenu up to the length of the text provided.
 
@@ -192,9 +192,9 @@ export default App;
 
 ### Search
 
-An InputSearch component can be incorporated into the DropdownMenu component by passing it the search prop.
+An InputSearch component can be incorporated into the DropdownMenu component by passing it the `search` prop.
 
-The search functions by filtering out non-matches as the user types, leaving only menu items with text that match the input. If no matches are found, the DropdownMenu displays “No options” below the InputSearch by default. This text can be changed via the noOptionsText prop as shown below.
+The search functions by filtering out non-matches as the user types, leaving only menu items with text that match the input. If no matches are found, the DropdownMenu displays “No options” below the InputSearch by default. This text can be changed via the `noOptionsText` prop as shown below.
 
 By default, the search’s input text is maintained even when a user selects a MenuItem (if multiple selections are allowed; otherwise the dropdown closes upon selection). This way users can select multiple MenuItems that match the searched term without needing to re-enter it each time. However, this can be changed so that the search input clears upon making a selection; see the “Search cleared on select” example below.
 
@@ -265,9 +265,9 @@ export default App;
 
 ### Multi-select
 
-You can allow users to select multiple menu items by passing the DropdownMenu component the multiple prop. MenuItems will be shifted further to the right to make room for checkmarks displayed upon selection.
+You can allow users to select multiple menu items by passing the DropdownMenu component the `multiple` prop. MenuItems will be shifted further to the right to make room for checkmarks displayed upon selection.
 
-If the multiple prop is not true, the DropdownMenu allows just one selection. It closes and applies the selection once a menu item is selected.
+If the `multiple` prop is not `true`, the DropdownMenu allows just one selection. It closes and applies the selection once a menu item is selected.
 
 **Example: MultiSelect**
 
@@ -324,9 +324,9 @@ export default App;
 
 ### Search cleared on select
 
-If search is included in the DropdownMenu, by default the search input will be maintained when a user selects a MenuItem (if multiple selections are allowed; otherwise the dropdown menu closes upon selection). However, the search input can be set to close upon selection by setting the optional keepSearchOnSelect prop to false.
+If search is included in the DropdownMenu, by default the search input will be maintained when a user selects a MenuItem (if multiple selections are allowed; otherwise the dropdown menu closes upon selection). However, the search input can be set to close upon selection by setting the optional `keepSearchOnSelect` prop to `false`.
 
-This setting is intended to be used only when search and multiple are both set to true (otherwise it will have no noticeable affect since the dropdown menu closes upon selection if multi-select is not allowed, hiding the search bar).
+This setting is intended to be used only when `search` and `multiple` are both set to `true` (otherwise it will have no noticeable affect since the dropdown menu closes upon selection if multi-select is not allowed, hiding the search bar).
 
 To see how this works:
 
@@ -338,7 +338,7 @@ To see how this works:
 
 4. Note that the search text is now cleared and all dropdown items reappear
 
-Compare this to the default behavior in the " Search " example above, or change the keepSearchOnSelect prop in the example below to true.
+Compare this to the default behavior in the " Search " example above, or change the `keepSearchOnSelect` prop in the example below to `true`.
 
 **Example: ClearSearchOnSelect**
 
@@ -402,7 +402,7 @@ export default App;
 
 MenuItems can be displayed in groups with a label.
 
-This requires passing DropdownMenu the groupBy prop to group options under the returned string. The groupBy value is also used as the text for group headings when [MUI Autocomplete renderGroup](https://mui.com/material-ui/api/autocomplete/#props) is not provided. For example:
+This requires passing DropdownMenu the `groupBy` prop to group options under the returned string. The `groupBy` value is also used as the text for group headings when [MUI Autocomplete renderGroup](https://mui.com/material-ui/api/autocomplete/#props) is not provided. For example:
 
 **React TypeScript**
 
@@ -414,7 +414,7 @@ groupBy={(option) => option.section}
 groupBy={(option) => option.name.at(-1)}
 ```
 
-This groupBy prop must be provided or the groups will not render, even if all menu items have section properties (see below).
+This `groupBy` prop must be provided or the groups will not render, even if all menu items have `section` properties (see below).
 
 **Warning:** To avoid duplicate headers, please make sure that the options are also sorted with the same dimension that they are grouped by. (See: [Issue](https://github.com/mui/material-ui/issues/21967#issuecomment-665006321) and example below)
 
@@ -520,7 +520,7 @@ These recipes show a few of the more complex approaches available for customizin
 
 ### Custom isOptionEqualToValue
 
-The isOptionEqualToValue prop changes how a selected value is compared against the available options. By default option.name === val.name is used. In the custom example below, the id property is used instead of the name property.
+The `isOptionEqualToValue` prop changes how a selected value is compared against the available options. By default `option.name === val.name` is used. In the custom example below, the `id` property is used instead of the `name` property.
 
 This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props).
 
@@ -592,9 +592,9 @@ export default App;
 
 ### Custom onChange
 
-The optional onChange prop specifies what happens when a new selection is made.
+The optional `onChange` prop specifies what happens when a new selection is made.
 
-In the example below, onChange has been modified such that making a new selection logs the value and reason to the console.
+In the example below, `onChange` has been modified such that making a new selection logs the value and reason to the console.
 
 This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/material-ui/api/autocomplete/#props).
 
@@ -676,11 +676,11 @@ export default App;
 
 ### Custom PopperBaseProps
 
-PopperBaseProps is an SDS-specific prop made for passing custom props to the Popper component, which is included as part of the DropdownMenu component.
+`PopperBaseProps` is an SDS-specific prop made for passing custom props to the Popper component, which is included as part of the DropdownMenu component.
 
 The Popper component is part of MUI; learn more in the [Popper documentation](https://mui.com/material-ui/api/popper/), and see all the props available to pass to it on the [Popper API page](https://mui.com/material-ui/api/popper/).
 
-The example below passes the Popper a className prop and additionally uses the sx prop to make style changes (learn more on the [MUI](https://mui.com/system/getting-started/the-sx-prop/) [sx](https://mui.com/system/getting-started/the-sx-prop/) [documentation page](https://mui.com/system/getting-started/the-sx-prop/) ).
+The example below passes the Popper a `className` prop and additionally uses the `sx` prop to make style changes (learn more on the [MUI](https://mui.com/system/getting-started/the-sx-prop/) [sx](https://mui.com/system/getting-started/the-sx-prop/) [documentation page](https://mui.com/system/getting-started/the-sx-prop/) ).
 
 **Example: CustomPopperBaseProps**
 
@@ -745,9 +745,9 @@ export default App;
 
 ### Custom Popper component
 
-In addition to modifying the Popper's styles via PopperBaseProps above, the styles for the Popper component can be overwritten more directly with styled().
+In addition to modifying the Popper's styles via `PopperBaseProps` above, the styles for the Popper component can be overwritten more directly with `styled()`.
 
-To get all the default SDS styles used for Popper, first copy them into a custom-styled Popper (from within sci-components/packages/components/src/core/DropdownMenu/style.ts file). Then replace and / or follow up those styles with custom styles. The example below includes comments for each of these steps within CustomPopper.
+To get all the default SDS styles used for Popper, first copy them into a custom-styled Popper (from within `sci-components/packages/components/src/core/DropdownMenu/style.ts` file). Then replace and / or follow up those styles with custom styles. The example below includes comments for each of these steps within `CustomPopper`.
 
 **Example: CustomPopperComponent**
 

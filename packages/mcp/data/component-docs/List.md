@@ -1,12 +1,12 @@
 # List
 
-A list is three components: **List** for the _ul_ or _ol_ element, **ListItem** for each entry, and **ListSubheader** for the optional heading above them. All three wrap their MUI counterparts, so any MUI prop passes straight through.
+A list is three components: **List** for the `ul` or `ol` element, **ListItem** for each entry, and **ListSubheader** for the optional heading above them. All three wrap their MUI counterparts, so any MUI prop passes straight through.
 
 ## How the pieces fit together
 
-- **ordered** belongs on both the List and every ListItem. On the List it swaps the element to _ol_ and starts the counter; on each item it increments the counter and draws the number. An _ol_ whose items are missing the prop still renders bullets.
+- `ordered` belongs on both the List and every ListItem. On the List it swaps the element to `ol` and starts the counter; on each item it increments the counter and draws the number. An `ol` whose items are missing the prop still renders bullets.
 
-- Markers are drawn by the item's _::before_ pseudo-element rather than the browser's own list marker, and are always semibold. Bullets sit 8px from the text, numbers 6px.
+- Markers are drawn by the item's `::before` pseudo-element rather than the browser's own list marker, and are always semibold. Bullets sit 8px from the text, numbers 6px.
 
 - Numbers come from a CSS counter, so a list nested inside an ordered item numbers itself 1.1., 1.2., and so on, to any depth.
 
@@ -16,24 +16,24 @@ A list is three components: **List** for the _ul_ or _ol_ element, **ListItem** 
 
 - The List carries no padding of its own, so items line up flush with the surrounding text instead of the browser's default indent.
 
-- A subheader renders as an _li_ without a marker, in fontHeaderM, 16px above the first item. That gap is effectively fixed; see **marginBottom** in the List table below.
+- A subheader renders as an `li` without a marker, in `fontHeaderM`, 16px above the first item. That gap is effectively fixed; see `marginBottom` in the List table below.
 
-- Sizing and spacing live on ListItem, not on List, so nothing is inherited down. A list of six items at **fontSize** m needs the prop on all six.
+- Sizing and spacing live on ListItem, not on List, so nothing is inherited down. A list of six items at `fontSize` `"m"` needs the prop on all six.
 
-- Because the markers are CSS content and the browser's own list style is turned off, Safari and VoiceOver stop treating the element as a list. Add _role="list"_ to the List when that matters.
+- Because the markers are CSS content and the browser's own list style is turned off, Safari and VoiceOver stop treating the element as a list. Add `role="list"` to the List when that matters.
 
 ## Sizes and spacing
 
 The pairing below is the one the designs use, and the one the [Storybook story](https://chanzuckerberg.github.io/sci-components/?path=/story/components-list--default) demonstrates. Set both props on each item.
 
-| fontSize | Type                             | marginBottom | Gap below the item |
-| -------- | -------------------------------- | ------------ | ------------------ |
-| "l"      | fontBodyL, 18px / 16px narrow    | "s"          | 8px                |
-| "m"      | fontBodyM, 16px / 14px narrow    | "s"          | 8px                |
-| "s"      | fontBodyS, 14px                  | "xs"         | 6px                |
-| "xs"     | fontBodyXs, 13px                 | "xs"         | 6px                |
-| "xxs"    | fontBodyXxs, 12px                | "xs"         | 6px                |
-| "xxxs"   | fontBodyXxxs, 11px / 12px narrow | "xxs"        | 4px                |
+| fontSize | Type                               | marginBottom | Gap below the item |
+| -------- | ---------------------------------- | ------------ | ------------------ |
+| `"l"`    | `fontBodyL`, 18px / 16px narrow    | `"s"`        | 8px                |
+| `"m"`    | `fontBodyM`, 16px / 14px narrow    | `"s"`        | 8px                |
+| `"s"`    | `fontBodyS`, 14px                  | `"xs"`       | 6px                |
+| `"xs"`   | `fontBodyXs`, 13px                 | `"xs"`       | 6px                |
+| `"xxs"`  | `fontBodyXxs`, 12px                | `"xs"`       | 6px                |
+| `"xxxs"` | `fontBodyXxxs`, 11px / 12px narrow | `"xxs"`      | 4px                |
 
 ## List
 
@@ -45,13 +45,13 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the [MUI documentation](https://mui.com/material-ui/api/list/) for additional optional props.
 
-| Name           | Type                                         | Default      | Description                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ordered        | boolean                                      | false        | Renders an "ol" element and starts the numbering counter. false renders a "ul". Pass it to each ListItem as well, otherwise the items still draw bullets.                                                                                                                                                                                                      |
-| subheader      | ReactNode                                    | undefined    | The heading rendered above the items, normally a ListSubheader. Comes from MUI.                                                                                                                                                                                                                                                                                |
-| marginBottom   | "xxxs" \| "xxs" \| "xs" \| "s" \| "m" \| "l" | "s"          | Sets the gap below the subheader, not below the list: 8px for "xxxs", 12px through "xxs" to "s", 16px for "m" and "l". It collides with the 16px margin ListSubheader sets on itself at the same specificity, so the winner comes down to the order the styles were inserted and the prop is not dependable. Space the list itself with its container instead. |
-| component      | ElementType                                  | "ul" or "ol" | Overrides the element the list renders as, taking precedence over ordered. Reach for it only when the markup has to differ from the semantics.                                                                                                                                                                                                                 |
-| disablePadding | boolean                                      | true         | MUI's vertical padding is off by default. Pass false to bring back its 8px top and bottom padding.                                                                                                                                                                                                                                                             |
+| Name             | Type                                                     | Default          | Description                                                                                                                                                                                                                                                                                                                                                              |
+| ---------------- | -------------------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ordered`        | `boolean`                                                | `false`          | Renders an `"ol"` element and starts the numbering counter. `false` renders a `"ul"`. Pass it to each ListItem as well, otherwise the items still draw bullets.                                                                                                                                                                                                          |
+| `subheader`      | `ReactNode`                                              | `undefined`      | The heading rendered above the items, normally a ListSubheader. Comes from MUI.                                                                                                                                                                                                                                                                                          |
+| `marginBottom`   | `"xxxs"` \| `"xxs"` \| `"xs"` \| `"s"` \| `"m"` \| `"l"` | `"s"`            | Sets the gap below the subheader, not below the list: 8px for `"xxxs"`, 12px through `"xxs"` to `"s"`, 16px for `"m"` and `"l"`. It collides with the 16px margin ListSubheader sets on itself at the same specificity, so the winner comes down to the order the styles were inserted and the prop is not dependable. Space the list itself with its container instead. |
+| `component`      | `ElementType`                                            | `"ul"` or `"ol"` | Overrides the element the list renders as, taking precedence over `ordered`. Reach for it only when the markup has to differ from the semantics.                                                                                                                                                                                                                         |
+| `disablePadding` | `boolean`                                                | `true`           | MUI's vertical padding is off by default. Pass `false` to bring back its 8px top and bottom padding.                                                                                                                                                                                                                                                                     |
 
 ## ListItem
 
@@ -63,12 +63,12 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the [MUI documentation](https://mui.com/material-ui/api/list-item/) for additional optional props.
 
-| Name         | Type                                         | Default   | Description                                                                                                                                                         |
-| ------------ | -------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| fontSize     | "xxxs" \| "xxs" \| "xs" \| "s" \| "m" \| "l" | "s"       | The body type scale for this item. Set it on every item; it is not inherited from the List.                                                                         |
-| marginBottom | "s" \| "xs" \| "xxs"                         | "xs"      | The gap below this item: "s" is 8px, "xs" is 6px, "xxs" is 4px. It applies to the last item too, so drop the default when the list sits right above something else. |
-| ordered      | boolean                                      | false     | Draws a counter-based number instead of a bullet. It has to match the ordered prop on the parent List.                                                              |
-| children     | ReactNode                                    | undefined | The item's content. Wrap it in a single element when the item holds more than a string, since the item lays its children out in a row.                              |
+| Name           | Type                                                     | Default     | Description                                                                                                                                                               |
+| -------------- | -------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fontSize`     | `"xxxs"` \| `"xxs"` \| `"xs"` \| `"s"` \| `"m"` \| `"l"` | `"s"`       | The body type scale for this item. Set it on every item; it is not inherited from the List.                                                                               |
+| `marginBottom` | `"s"` \| `"xs"` \| `"xxs"`                               | `"xs"`      | The gap below this item: `"s"` is 8px, `"xs"` is 6px, `"xxs"` is 4px. It applies to the last item too, so drop the default when the list sits right above something else. |
+| `ordered`      | `boolean`                                                | `false`     | Draws a counter-based number instead of a bullet. It has to match the `ordered` prop on the parent List.                                                                  |
+| `children`     | `ReactNode`                                              | `undefined` | The item's content. Wrap it in a single element when the item holds more than a string, since the item lays its children out in a row.                                    |
 
 ### ListItemLabel
 
@@ -82,12 +82,12 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ### Props
 
-ListSubheader adds no SDS props: it takes fontHeaderM, a 16px bottom margin, and the surrounding text color, then passes everything through to [MUI's ListSubheader](https://mui.com/material-ui/api/list-subheader/). The two props worth knowing are below.
+ListSubheader adds no SDS props: it takes `fontHeaderM`, a 16px bottom margin, and the surrounding text color, then passes everything through to [MUI's ListSubheader](https://mui.com/material-ui/api/list-subheader/). The two props worth knowing are below.
 
-| Name           | Type    | Default | Description                                                                                                                                    |
-| -------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| disableSticky  | boolean | false   | MUI pins the subheader to the top of a scrolling container. Pass it so the heading scrolls away with the list, which is what the designs show. |
-| disableGutters | boolean | true    | MUI's horizontal padding is off by default, keeping the heading flush with the items.                                                          |
+| Name             | Type      | Default | Description                                                                                                                                    |
+| ---------------- | --------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disableSticky`  | `boolean` | `false` | MUI pins the subheader to the top of a scrolling container. Pass it so the heading scrolls away with the list, which is what the designs show. |
+| `disableGutters` | `boolean` | `true`  | MUI's horizontal padding is off by default, keeping the heading flush with the items.                                                          |
 
 ## Code examples
 
@@ -128,7 +128,7 @@ export default App;
 
 ### Ordered list
 
-The same list numbered, with ordered on the List and on every item.
+The same list numbered, with `ordered` on the List and on every item.
 
 **Example: OrderedList**
 

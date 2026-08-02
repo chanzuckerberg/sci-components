@@ -8,17 +8,17 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 The SDS Accordion component introduces a couple new props that aren't part of the MUI version, that make it easier to implement options that may be needed in CZI products:
 
-- **useDivider** **:** this boolean prop adds a horizontal line below the accordion, which can help to visually separate it from other accordions if they are stacked
+- `useDivider`: this boolean prop adds a horizontal line below the accordion, which can help to visually separate it from other accordions if they are stacked
 
-- **togglePosition** **:** takes right (default) or left as values, and specifies where the baked-in Chevron icon that acts as a visual toggle sits
+- `togglePosition`: takes `"right"` (default) or `"left"` as values, and specifies where the baked-in Chevron icon that acts as a visual toggle sits
 
 Additionally, there are a couple of MUI props that are not currently supported by the SDS Accordion component:
 
-- **defaultExpanded** **:** this boolean prop has no effect when used
+- `defaultExpanded`: this boolean prop has no effect when used
 
-- **expanded** **:** this boolean prop is not recommended to be used with the SDS Accordion component, because it forces the accordion to remain open even when the user clicks it as though to close it
+- `expanded`: this boolean prop is not recommended to be used with the SDS Accordion component, because it forces the accordion to remain open even when the user clicks it as though to close it
 
-- **disableGutters** **:** this boolean prop is not needed with the SDS accordion design, and has no effect
+- `disableGutters`: this boolean prop is not needed with the SDS accordion design, and has no effect
 
 ## MUI Documentation
 
@@ -28,15 +28,15 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name            | Type              | Default | Description                                                                                                                         |
-| --------------- | ----------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| id              | string            | -       | Required. A unique id for each accordion item, also used to derive the ids that link the header and its content for screen readers. |
-| defaultExpanded | bool              | false   | Render the accordion already expanded on first paint.                                                                               |
-| disabled        | bool              | false   | The disabled prop, when set to true, prevents user interaction with the Accordion component, keeping it in a static state.          |
-| togglePosition  | "right" \| "left" | right   | Position of the toggle chevron icon.                                                                                                |
-| useDivider      | bool              | false   | Display a divider line between accordion items.                                                                                     |
-| subtitle        | string            | -       | Set on AccordionHeader. A text that will be displayed as a subtitle beneath the accordion title.                                    |
-| chevronSize     | "xs" \| "s"       | xs      | Set on AccordionHeader. Size of the toggle chevron icon.                                                                            |
+| Name              | Type                  | Default   | Description                                                                                                                         |
+| ----------------- | --------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `id`              | `string`              | -         | Required. A unique id for each accordion item, also used to derive the ids that link the header and its content for screen readers. |
+| `defaultExpanded` | `bool`                | `false`   | Render the accordion already expanded on first paint.                                                                               |
+| `disabled`        | `bool`                | `false`   | The `disabled` prop, when set to `true`, prevents user interaction with the Accordion component, keeping it in a static state.      |
+| `togglePosition`  | `"right"` \| `"left"` | `"right"` | Position of the toggle chevron icon.                                                                                                |
+| `useDivider`      | `bool`                | `false`   | Display a divider line between accordion items.                                                                                     |
+| `subtitle`        | `string`              | -         | Set on AccordionHeader. A text that will be displayed as a subtitle beneath the accordion title.                                    |
+| `chevronSize`     | `"xs"` \| `"s"`       | `"xs"`    | Set on AccordionHeader. Size of the toggle chevron icon.                                                                            |
 
 There are more props that can be used with the Accordion component, via those available to [MUI's](https://mui.com/material-ui/api/accordion/#props) [Accordion](https://mui.com/material-ui/api/accordion/#props) [component.](https://mui.com/material-ui/api/accordion/#props)
 

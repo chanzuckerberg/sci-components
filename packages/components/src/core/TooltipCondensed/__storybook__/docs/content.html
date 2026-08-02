@@ -14,45 +14,33 @@
   TooltipCondensed is the SDS Tooltip with tighter padding and a fixed set of
   behaviors, for labelling something in a dense surface such as a chart or a
   table cell. It takes every Tooltip prop, including
-  <em>hasInvertedStyle</em>
-  ,
-  <em>subtitle</em>
-  and
-  <em>componentSlot</em>
-  , and adds two of its own:
+  <code>hasInvertedStyle</code>, <code>subtitle</code> and
+  <code>componentSlot</code>, and adds two of its own:
 </p>
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <strong>indicator:</strong>
-      draws a 12px round dot before the text, for tying the tooltip to a series
-      in a chart or a colour in a legend.
+      <code>indicator</code>: draws a 12px round dot before the text, for tying
+      the tooltip to a series in a chart or a colour in a legend.
     </p>
   </li>
   <li>
     <p>
-      <strong>indicatorColor:</strong>
-      the dot's colour, given as a CSS colour rather than an SDS name, so read
-      the one you want off the theme. With
-      <em>indicator</em>
-      but no colour the dot still takes up its space and stays invisible.
+      <code>indicatorColor</code>: the dot's colour, given as a CSS colour
+      rather than an SDS name, so read the one you want off the theme. With
+      <code>indicator</code> but no colour the dot still takes up its space and
+      stays invisible.
     </p>
   </li>
 </ul>
 <p>
   Five props are applied after yours and so cannot be changed:
-  <em>followCursor</em>
-  , which is what makes the tooltip track the pointer rather than anchor to the
-  element;
-  <em>placement="right-end"</em>
-  ;
-  <em>arrow={false}</em>
-  ; and
-  <em>enterDelay</em>
-  and
-  <em>leaveDelay</em>
-  of 50ms each, which keep it from flickering as the pointer crosses a dense
-  chart. Passing a placement or an arrow of your own is silently ignored.
+  <code>followCursor</code>, which is what makes the tooltip track the pointer
+  rather than anchor to the element; <code>placement="right-end"</code>;
+  <code>arrow={false}</code>; and <code>enterDelay</code> and
+  <code>leaveDelay</code> of 50ms each, which keep it from flickering as the
+  pointer crosses a dense chart. Passing a placement or an arrow of your own is
+  silently ignored.
 </p>
 <h2>MUI Documentation</h2>
 <p>
@@ -74,7 +62,7 @@
     <p>
       Keep the text to a label: a value, a count, a name. Full sentences belong
       in a Tooltip, and rows of numbers belong in a TooltipTable passed through
-      componentSlot.
+      <code>componentSlot</code>.
     </p>
   </li>
   <li>
@@ -97,25 +85,39 @@
     <td><p>Description</p></td>
   </tr>
   <tr>
-    <td><p>title</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
-        The label to show. Pass null when the content is coming through
-        componentSlot instead.
+        The label to show. Pass <code>null</code> when the content is coming
+        through <code>componentSlot</code> instead.
       </p>
     </td>
   </tr>
   <tr>
-    <td><p>indicator</p></td>
-    <td><p>boolean</p></td>
-    <td><p>false</p></td>
+    <td>
+      <p><code>indicator</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
     <td><p>Draws a 12px round dot before the text.</p></td>
   </tr>
   <tr>
-    <td><p>indicatorColor</p></td>
-    <td><p>string</p></td>
+    <td>
+      <p><code>indicatorColor</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>
@@ -125,9 +127,15 @@
     </td>
   </tr>
   <tr>
-    <td><p>hasInvertedStyle</p></td>
-    <td><p>boolean</p></td>
-    <td><p>true</p></td>
+    <td>
+      <p><code>hasInvertedStyle</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
     <td>
       <p>
         Inherited from Tooltip. False gives the lighter scheme, which is what
@@ -136,8 +144,12 @@
     </td>
   </tr>
   <tr>
-    <td><p>componentSlot</p></td>
-    <td><p>ReactNode</p></td>
+    <td>
+      <p><code>componentSlot</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
     <td><p>-</p></td>
     <td>
       <p>

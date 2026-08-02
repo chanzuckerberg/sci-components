@@ -6,33 +6,33 @@ The component's source code in the SDS codebase can be found [here](https://gith
 
 ## Behavior notes
 
-- The component reads exactly two props, **sdsStyle** and **aria-label**, and ignores everything else. There is no className, style, id, children, or data attribute to pass, and no ref to take, so wrap it in an element of your own for layout, spacing, or centering.
+- The component reads exactly two props, `sdsStyle` and `aria-label`, and ignores everything else. There is no `className`, `style`, `id`, `children`, or data attribute to pass, and no ref to take, so wrap it in an element of your own for layout, spacing, or centering.
 
 - The visible label is the hard-coded word _Loading_. It cannot be changed or translated, so a wait that needs different copy needs a line of your own text beside the indicator.
 
-- Both variants stand 32px tall and sit _inline-flex_, so they line up with adjacent text rather than filling their container.
+- Both variants stand 32px tall and sit `inline-flex`, so they line up with adjacent text rather than filling their container.
 
 - Internally there is 4px of padding and nothing more. The 16px of clearance the spacing guideline above asks for is yours to add on the surrounding element.
 
-- The spinner is animated inside the SVG itself, not with CSS, so it keeps spinning under _prefers-reduced-motion_ and there is no prop to stop it.
+- The spinner is animated inside the SVG itself, not with CSS, so it keeps spinning under `prefers-reduced-motion` and there is no prop to stop it.
 
-- The label sits in a _role="status"_, _aria-live="polite"_ region, so it announces itself when it mounts. Render it when the wait starts and unmount it when the wait ends: nothing is announced on removal, so the content that replaces it has to carry the result.
+- The label sits in a `role="status"`, `aria-live="polite"` region, so it announces itself when it mounts. Render it when the wait starts and unmount it when the wait ends: nothing is announced on removal, so the content that replaces it has to carry the result.
 
 ## The two variants
 
-| sdsStyle  | Type                     | Color                                                                 | Spinner |
-| --------- | ------------------------ | --------------------------------------------------------------------- | ------- |
-| "minimal" | fontBodyS, sentence case | Text base.textSecondary, spinner base.ornamentSecondary, no fill      | 16px    |
-| "tag"     | fontCapsXxxxs, all caps  | Text and spinner accent.foreground on an accent.surfaceSecondary pill | 24px    |
+| sdsStyle    | Type                       | Color                                                                     | Spinner |
+| ----------- | -------------------------- | ------------------------------------------------------------------------- | ------- |
+| `"minimal"` | `fontBodyS`, sentence case | Text `base.textSecondary`, spinner `base.ornamentSecondary`, no fill      | 16px    |
+| `"tag"`     | `fontCapsXxxxs`, all caps  | Text and spinner `accent.foreground` on an `accent.surfaceSecondary` pill | 24px    |
 
 ## Props
 
 The component takes no MUI props. Its full surface is the table below; any other prop is a type error.
 
-| Name       | Type               | Default      | Description                                                                                                                                                                                           |
-| ---------- | ------------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sdsStyle   | "minimal" \| "tag" | - (required) | Chooses between the two variants above. It has no default: leaving it out is a type error, and an indicator built without it renders unstyled.                                                        |
-| aria-label | string             | undefined    | Replaces what a screen reader announces for the status region, for example "Loading cell types". The visible text still reads "Loading". Without it, assistive technology announces the visible word. |
+| Name         | Type                   | Default      | Description                                                                                                                                                                                           |
+| ------------ | ---------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sdsStyle`   | `"minimal"` \| `"tag"` | - (required) | Chooses between the two variants above. It has no default: leaving it out is a type error, and an indicator built without it renders unstyled.                                                        |
+| `aria-label` | `string`               | `undefined`  | Replaces what a screen reader announces for the status region, for example "Loading cell types". The visible text still reads "Loading". Without it, assistive technology announces the visible word. |
 
 ## Code examples
 
