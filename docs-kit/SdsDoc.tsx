@@ -853,11 +853,11 @@ function layoutDesignUploads(root: HTMLElement): void {
 
       const table = uploads.previousElementSibling as HTMLTableElement;
       uploads.style.setProperty(UPLOAD_COLUMNS_PROPERTY, String(columns));
-      uploads.dataset.zhHeaded = "";
+      uploads.dataset.sdsDocHeaded = "";
       // A label row on its own can be split into even columns to line up with
       // the grid. Where the table has further rows, their content decides the
       // widths and the labels only loosely track the figures.
-      table.dataset.zhUploadHeader = table.rows.length === 1 ? "even" : "";
+      table.dataset.sdsDocUploadHeader = table.rows.length === 1 ? "even" : "";
     });
 
   root
