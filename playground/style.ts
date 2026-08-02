@@ -6,13 +6,14 @@ import {
   fontHeaderS,
   getCorners,
   getSemanticColors,
+  getShadows,
   getSpaces,
   type CommonThemeProps,
 } from "@components/src/core/styles";
 
 /** Height of the toolbar, and the grab area either side of the split. */
 const HEADER_HEIGHT = 48;
-const DIVIDER_WIDTH = 9;
+const DIVIDER_WIDTH = 1;
 
 /** Below this the two panes have nowhere to go, so they stack. */
 export const STACK_BELOW = 840;
@@ -84,13 +85,20 @@ export const Panes = styled.div`
  * The editor's column. Its width is driven from the divider below; stacked, the
  * two panes split the height evenly instead and the width is ignored.
  */
-export const EditorPane = styled.div<{ widthPercent: number }>`
+export const EditorPane = styled.div<
+  CommonThemeProps & { widthPercent: number }
+>`
   ${(props) => `
     flex: 0 0 ${props.widthPercent}%;
     min-width: 0;
     min-height: 0;
     display: flex;
     flex-direction: column;
+
+    /* The same recessed colour the preview's device sits on. The editor paints
+       nothing of its own over it, so the two panes read as one sheet with a
+       screen laid on it rather than as two windows side by side. */
+    background-color: ${getSemanticColors(props)?.base?.backgroundSecondary};
 
     @media (max-width: ${STACK_BELOW}px) {
       flex: 1 1 50%;
@@ -116,10 +124,10 @@ export const Divider = styled.div<CommonThemeProps>`
 
     return `
       flex: none;
+      position: relative;
       width: ${DIVIDER_WIDTH}px;
       cursor: col-resize;
-      background-color: ${semanticColors?.base?.backgroundPrimary};
-      background-clip: content-box;
+      background-color: ${semanticColors?.base?.backgroundSecondary};
       border-left: 1px solid ${semanticColors?.base?.divider};
       border-right: 1px solid transparent;
 
@@ -141,8 +149,9 @@ export const Divider = styled.div<CommonThemeProps>`
 
 /**
  * The backdrop the device sits on, which carries the theme being previewed. It
- * is the recessed colour of the two so that the device below reads as a screen
- * laid on top of it rather than as part of the playground's chrome.
+ * is a recessed colour so that the device reads as a screen laid on top of it
+ * rather than as part of the playground's chrome, and the same one the editor
+ * pane takes, so that the two are one surface with a screen on it.
  */
 export const Surface = styled.div<CommonThemeProps>`
   ${(props) => {
@@ -154,7 +163,7 @@ export const Surface = styled.div<CommonThemeProps>`
       display: flex;
       justify-content: center;
       overflow: auto;
-      padding: ${getSpaces(props)?.l}px;
+      padding: ${getSpaces(props)?.s}px;
       background-color: ${semanticColors?.base?.backgroundSecondary};
       color: ${semanticColors?.base?.textPrimary};
     `;
@@ -180,6 +189,7 @@ export const Viewport = styled.div<
 >`
   ${(props) => {
     const semanticColors = getSemanticColors(props);
+    const shadows = getShadows(props);
 
     return `
       flex: ${props.width === undefined ? "1 1 auto" : "none"};
@@ -192,9 +202,10 @@ export const Viewport = styled.div<
       /* Against the border-box default the reset lays down, so that a device
          width is the width of the screen and not of the bezel around it. */
       box-sizing: content-box;
-      border: 1px solid ${semanticColors?.base?.divider};
+      // border: 1px solid ${semanticColors?.base?.divider};
       border-radius: ${getCorners(props)?.xl}px;
       background-color: ${semanticColors?.base?.backgroundPrimary};
+      box-shadow: ${shadows?.s};
 
       /* The screen scrolls, as a device's does, and what it scrolls is clipped
          to the rounding — which an example that reaches the edges needs. Menus

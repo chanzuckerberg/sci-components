@@ -13,6 +13,16 @@ import type { Transpile } from "./lib/runner";
 const TYPES_PATH = "playground-types/types.json";
 
 /**
+ * Monaco's own themes, minus the surfaces they paint.
+ *
+ * Everything the editor would fill with a colour of its own is made
+ * transparent, leaving the pane's background to show through, so that the code
+ * sits on the same sheet as the preview beside it. The syntax colours are
+ * inherited untouched — they are the part of the theme worth having.
+ */
+export const EDITOR_THEME = { dark: "sds-dark", light: "sds-light" } as const;
+
+/**
  * Monaco ships its own copy of TypeScript and runs it in a worker. Vite bundles
  * both workers from source rather than loading them off a CDN, so the
  * playground works offline and behind a proxy — and so the compiler in the
@@ -28,6 +38,36 @@ if (typeof window !== "undefined") {
   };
 
   loader.config({ monaco });
+  defineEditorThemes();
+}
+
+function defineEditorThemes(): void {
+  const transparent = "#00000000";
+
+  /**
+   * Nothing the editor draws is allowed a surface of its own. It can be this
+   * absolute because the editor has no widget left that covers the code rather
+   * than sitting behind it — sticky scroll, the one that did, is turned off in
+   * the editor's options.
+   */
+  const colors = {
+    "editor.background": transparent,
+    "editorGutter.background": transparent,
+    "minimap.background": transparent,
+  };
+
+  monaco.editor.defineTheme(EDITOR_THEME.light, {
+    base: "vs",
+    colors,
+    inherit: true,
+    rules: [],
+  });
+  monaco.editor.defineTheme(EDITOR_THEME.dark, {
+    base: "vs-dark",
+    colors,
+    inherit: true,
+    rules: [],
+  });
 }
 
 let configured = false;

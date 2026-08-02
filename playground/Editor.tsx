@@ -3,7 +3,7 @@ import { useCallback, useRef, type ReactElement } from "react";
 import type { editor } from "monaco-editor";
 import type { ThemeMode } from "@sds-docs/useThemeMode";
 import type { Transpile } from "./lib/runner";
-import { configureMonaco, createTranspiler } from "./monacoSetup";
+import { EDITOR_THEME, configureMonaco, createTranspiler } from "./monacoSetup";
 import { EditorSurface } from "./style";
 
 /** What the playground can ask of the editor once it has mounted. */
@@ -24,9 +24,31 @@ export interface EditorProps {
 const OPTIONS: editor.IStandaloneEditorConstructionOptions = {
   automaticLayout: true,
   fontSize: 13,
+  hideCursorInOverviewRuler: true,
   minimap: { enabled: false },
+  overviewRulerBorder: false,
+  overviewRulerLanes: 0,
   padding: { top: 12 },
+  /**
+   * No scrollbars, and nothing held back for them. The wheel, the trackpad and
+   * the caret all still reach the rest of the buffer; what a bar would add is a
+   * strip of editor chrome down the side of a pane that is meant to read as
+   * plain paper.
+   */
+  scrollbar: {
+    horizontal: "hidden",
+    horizontalScrollbarSize: 0,
+    useShadows: false,
+    vertical: "hidden",
+    verticalScrollbarSize: 0,
+  },
   scrollBeyondLastLine: false,
+  /**
+   * Off. It is for finding your way around a file too long to hold in your
+   * head, and a playground example is neither; what it does here is cover the
+   * first lines of the buffer with a header the reader did not ask for.
+   */
+  stickyScroll: { enabled: false },
   tabSize: 2,
   // The editor is one pane of a split, so a long line should wrap into the
   // width it has rather than hide itself behind a horizontal scrollbar.
@@ -78,7 +100,7 @@ export function Editor({
          * transpiler emits against.
          */
         path="file:///playground.tsx"
-        theme={mode === "dark" ? "vs-dark" : "vs"}
+        theme={mode === "dark" ? EDITOR_THEME.dark : EDITOR_THEME.light}
         value={value}
       />
     </EditorSurface>

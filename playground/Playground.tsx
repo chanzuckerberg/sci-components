@@ -168,10 +168,13 @@ export function Playground(): ReactElement {
                 sdsType="secondary"
                 size="small"
                 startIcon={
-                  <Icon sdsIcon={hasCopied ? "Check" : "Link"} sdsSize="s" />
+                  <Icon
+                    sdsIcon={hasCopied ? "CheckCircle" : "Share"}
+                    sdsSize="l"
+                  />
                 }
               >
-                {hasCopied ? "Copied" : "Copy link"}
+                {hasCopied ? "Copied" : "Share"}
               </Button>
             </Actions>
 
