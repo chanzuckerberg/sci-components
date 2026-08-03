@@ -18,11 +18,13 @@ import {
   getSemanticColors,
   getSpaces,
   type CommonThemeProps,
+  type SDSTheme,
 } from "@components/src/core/styles";
 import {
   catalog,
   type CatalogEntry,
 } from "../design-docs/pages/Overview/catalog";
+import { CARD_POPPER_OPTIONS, CARD_SCALE_PROPERTY } from "./cardPopper";
 import { CATALOG_PREVIEW_CLASS } from "./constants";
 import {
   ExampleErrorBoundary,
@@ -32,7 +34,7 @@ import {
   scopeCss,
 } from "./exampleRegistry";
 import { previewTheme } from "./previewTheme";
-import { useThemeMode } from "./useThemeMode";
+import { useThemeMode, type ThemeMode } from "./useThemeMode";
 
 /**
  * How far a miniature is zoomed out. One number for the whole catalog: a card
@@ -142,6 +144,12 @@ const Stage = styled.div`
      card it belongs to. */
   transform: scale(${CARD_SCALE});
   transform-origin: top left;
+
+  /* An overlay positions itself from measurements it takes of its anchor, and a
+     scaled anchor measures to a rounded pixel, which is a scale slightly off this
+     one. Declaring the scale lets that be corrected, rather than have the overlay
+     drift across the card as the page is scrolled; see ./cardPopper. */
+  ${CARD_SCALE_PROPERTY}: ${CARD_SCALE};
 
   /* Centred, though vertically only while there is room to centre: "safe" hands
      the alignment back to the start once the component is taller than the card,
@@ -299,6 +307,29 @@ function CardPreview({ id }: { id: string }): ReactElement | null {
 }
 
 /**
+ * The previews' theme, with an overlay positioned for a card rather than for a
+ * page: see `./cardPopper`. A component reads this from the theme, so a card
+ * example is written as an example and not as a piece of the catalog.
+ */
+function cardTheme(mode: ThemeMode): SDSTheme {
+  const base = previewTheme(mode);
+
+  return {
+    ...base,
+    components: {
+      ...base.components,
+      MuiPopper: {
+        ...base.components?.MuiPopper,
+        defaultProps: {
+          ...base.components?.MuiPopper?.defaultProps,
+          popperOptions: CARD_POPPER_OPTIONS,
+        },
+      },
+    },
+  };
+}
+
+/**
  * One component, as the catalog presents it: a live miniature of it above its
  * name, the pair a single link to its documentation.
  *
@@ -308,7 +339,7 @@ function CardPreview({ id }: { id: string }): ReactElement | null {
  */
 function CatalogCard({ entry }: { entry: CatalogEntry }): ReactElement {
   const mode = useThemeMode();
-  const theme = useMemo(() => previewTheme(mode), [mode]);
+  const theme = useMemo(() => cardTheme(mode), [mode]);
   const frameRef = useRef<HTMLDivElement>(null);
   const inView = useInView(frameRef);
 

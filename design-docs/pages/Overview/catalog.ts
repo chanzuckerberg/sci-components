@@ -24,6 +24,11 @@ export interface CatalogEntry {
    * understands (see `docs-kit/exampleRegistry.tsx`). Each is the component's
    * default example, so a card follows the component as it changes; where the
    * default reads poorly at card size, another of its examples stands in.
+   *
+   * An `Overview/…` id is one of this page's own examples, in `./examples`. A
+   * component that shows itself only on hover or on a click has nothing to show
+   * in a card, which takes no pointer, so those few are staged open there. Their
+   * own pages keep examples that behave as they would in an app.
    */
   example: string;
 }
@@ -137,7 +142,7 @@ export const catalog: CatalogCategory[] = [
       {
         name: "Dropdown",
         docs: "components-dropdowns-dropdown",
-        example: "core/Dropdown/DefaultDropdown",
+        example: "Overview/DropdownCard",
       },
       {
         /*
@@ -148,7 +153,7 @@ export const catalog: CatalogCategory[] = [
          */
         name: "DropdownMenu",
         docs: "components-dropdowns-dropdownmenu",
-        example: "core/DropdownMenu/CustomClickTarget",
+        example: "Overview/DropdownMenuCard",
       },
       {
         name: "InputCheckbox",
@@ -256,12 +261,12 @@ export const catalog: CatalogCategory[] = [
       {
         name: "Dialog",
         docs: "components-dialog",
-        example: "core/Dialog/DefaultDialog",
+        example: "Overview/DialogCard",
       },
       {
         name: "Menu",
         docs: "components-dropdowns-menu",
-        example: "core/Menu/DefaultMenu",
+        example: "Overview/MenuCard",
       },
       {
         name: "MenuItem",
@@ -271,22 +276,22 @@ export const catalog: CatalogCategory[] = [
       {
         name: "Popover",
         docs: "components-popover",
-        example: "core/Popover/DefaultPopover",
+        example: "Overview/PopoverCard",
       },
       {
         name: "Tooltip",
         docs: "components-tooltip",
-        example: "core/Tooltip/TooltipLight",
+        example: "Overview/TooltipCard",
       },
       {
         name: "TooltipCondensed",
         docs: "components-tooltipcondensed",
-        example: "core/TooltipCondensed/TooltipCondensedWithIndicator",
+        example: "Overview/TooltipCondensedCard",
       },
       {
         name: "TooltipTable",
         docs: "components-tooltiptable",
-        example: "core/TooltipTable/DefaultTooltipTable",
+        example: "Overview/TooltipTableCard",
       },
     ],
   },
