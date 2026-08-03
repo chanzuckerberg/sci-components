@@ -172,11 +172,20 @@ const Container = styled.div<CommonThemeProps>`
     }
   }
 
+  /* The three accent tokens the design system sets a text link in, and the
+     underline offset its Link component uses, so prose links read as SDS links
+     rather than as the browser's. */
   a${OUTSIDE_PREVIEW} {
-    color: #0b6cccff;
+    color: ${(props) => getSemanticColors(props)?.accent?.textAction};
     text-decoration: none;
+    text-underline-offset: 2.5px;
   }
-  a${OUTSIDE_PREVIEW}:hover {
+  a${OUTSIDE_PREVIEW}:hover, a${OUTSIDE_PREVIEW}:focus-visible {
+    color: ${(props) => getSemanticColors(props)?.accent?.textActionHover};
+    text-decoration: underline;
+  }
+  a${OUTSIDE_PREVIEW}:active {
+    color: ${(props) => getSemanticColors(props)?.accent?.textActionPressed};
     text-decoration: underline;
   }
 
@@ -379,7 +388,7 @@ const Container = styled.div<CommonThemeProps>`
     letter-spacing: 0.04em;
     color: rgb(49, 49, 49);
     padding: 0.7em 1.5em;
-    border: none;
+    border: none !important;
     border-radius: 0;
   }
   /* The caption bar's contents become a button so the block can be expanded and
@@ -500,6 +509,7 @@ const Container = styled.div<CommonThemeProps>`
     line-height: inherit;
     white-space: inherit;
     overflow-wrap: normal;
+    border: none !important;
   }
 
   /* highlight.js token palette (GitHub Light), scoped to this container. */
