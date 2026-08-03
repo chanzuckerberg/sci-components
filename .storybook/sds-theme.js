@@ -3,6 +3,15 @@
 import { create } from "storybook/theming";
 import logo from "./logo.png";
 
+/**
+ * The typeface SDS sets everything in, as the `sds.font.inter-font` token has
+ * it minus the `--font-inter` variable, which only exists in an app that loads
+ * Inter through Next.js. Storybook's chrome and its documentation pages are
+ * themed separately, so both read this.
+ */
+export const FONT_BASE =
+  '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif';
+
 export default create({
   base: "light",
 
@@ -15,7 +24,7 @@ export default create({
   appBorderRadius: 0,
 
   // Typography
-  fontBase: '"Inter", sans-serif',
+  fontBase: FONT_BASE,
   fontCode: "monospace",
 
   // Text colors

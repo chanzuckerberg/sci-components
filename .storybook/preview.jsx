@@ -1,6 +1,21 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { Theme } from "../packages/components/src/core/styles";
 import { ThemeProvider } from "@mui/material/styles";
+import { create } from "storybook/theming";
+import { FONT_BASE } from "./sds-theme";
+
+/**
+ * Documentation pages render in the preview iframe, which never sees the theme
+ * the manager is configured with, so Storybook dresses their prose in its own
+ * Nunito Sans. It sets the typeface on the elements themselves — `p`, `li`, a
+ * table cell — which no amount of inheriting from a page's own container can
+ * outrank, so it is answered here, where the pages take their theme from.
+ *
+ * Only the typeface is ours. Everything else the docs blocks are dressed in —
+ * link colour, the frame around a code block — is Storybook's default light
+ * theme, and is left alone.
+ */
+const docsTheme = create({ base: "light", fontBase: FONT_BASE });
 
 export const decorators = [
   (Story, context) => {
@@ -41,6 +56,8 @@ const preview = {
   parameters: {
     // Removes the change background button since it's controlled by the theme toggle
     backgrounds: { disabled: true },
+
+    docs: { theme: docsTheme },
 
     options: {
       /**

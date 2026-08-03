@@ -37,7 +37,7 @@ function App() {
   const isLastStep = step === STEPS.length - 1;
 
   return (
-    <div className="app">
+    <div className="app" style={{ padding: 20 }}>
       <Button
         sdsStyle="solid"
         sdsType="primary"

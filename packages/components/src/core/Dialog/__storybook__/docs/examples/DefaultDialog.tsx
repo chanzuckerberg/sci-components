@@ -13,7 +13,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="app">
+    <div className="app" style={{ padding: 20 }}>
       <Button
         sdsStyle="solid"
         sdsType="primary"

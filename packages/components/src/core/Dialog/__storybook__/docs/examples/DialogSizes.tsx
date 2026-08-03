@@ -22,7 +22,7 @@ function App() {
   const [openSize, setOpenSize] = useState<(typeof SIZES)[number] | null>(null);
 
   return (
-    <div className="app" style={{ display: "flex", gap: "8px" }}>
+    <div className="app" style={{ display: "flex", gap: "8px", padding: 20 }}>
       {SIZES.map((size) => (
         <Button
           key={size}

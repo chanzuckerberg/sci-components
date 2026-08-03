@@ -202,11 +202,11 @@ export function Playground(): ReactElement {
                 aria-label="Theme"
                 buttonDefinition={[
                   {
-                    icon: <SunDimIcon size={16} />,
+                    icon: <SunDimIcon weight="bold" size={16} />,
                     value: "light",
                   },
                   {
-                    icon: <MoonIcon size={16} />,
+                    icon: <MoonIcon weight="bold" size={16} />,
                     value: "dark",
                   },
                 ]}
@@ -219,11 +219,11 @@ export function Playground(): ReactElement {
                 aria-label="Preview width"
                 buttonDefinition={[
                   {
-                    icon: <DesktopIcon size={16} />,
+                    icon: <DesktopIcon weight="bold" size={16} />,
                     value: "desktop",
                   },
                   {
-                    icon: <DeviceMobileCameraIcon size={16} />,
+                    icon: <DeviceMobileCameraIcon weight="bold" size={16} />,
                     value: "mobile",
                   },
                 ]}

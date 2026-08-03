@@ -2,11 +2,13 @@
 // click. It is the only style that draws item icons and the per-section
 // actions, and backgroundAppearance="dark" inverts the whole header.
 //
-// The panel is a MUI Drawer that normally portals to the page body and fixes
-// itself to the viewport, which on this page would cover the docs instead of
-// the example. The theme below turns that portal off, the CSS anchors the panel
-// to the example, and the focus options stop it from scrolling itself into
-// view. A real page, where the header spans the viewport, needs none of it.
+// The panel is a MUI Drawer: it goes to the end of the page and fixes itself to
+// the viewport, which here would cover the docs rather than the example. The
+// theme below sends it to the box instead, the CSS anchors it there, and the
+// focus options stop it from scrolling itself into view. Rendering it in place
+// with disablePortal would put it inside the header, where it paints over the
+// bar as it slides in. A real page, where the header spans the viewport and the
+// panel slides out from under it, needs none of this.
 
 import {
   NavigationHeader,
@@ -17,11 +19,15 @@ import {
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
 import { ThemeProvider, createTheme, useTheme } from "@mui/material/styles";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 const Stage = styled.div`
   min-height: 380px;
   position: relative;
+
+  /* The panel starts above the box it belongs to and slides down into it, which
+     on a real page means starting off screen. Here it would cross the docs. */
+  overflow: hidden;
 
   /* The panel, its backdrop, and the modal wrapper are all fixed to the
      viewport by default; anchoring them to this box keeps them in the frame. */
@@ -29,26 +35,6 @@ const Stage = styled.div`
   .MuiBackdrop-root,
   .MuiDrawer-paper {
     position: absolute;
-  }
-
-  /* The backdrop blurs the page behind the panel. Anchored here it covers only
-     the bar, so it would blur the header rather than anything behind it. */
-  && .MuiBackdrop-root {
-    display: none;
-  }
-
-  /* Without the portal the panel renders inside the header, which clips it. */
-  header.MuiPaper-root {
-    overflow: visible;
-  }
-
-  /* On a real page the panel starts at the top of the viewport and reserves
-     72px so its contents clear the header. Anchored here it would paint over
-     the header instead, so it starts below the bar and reserves less. The
-     doubled class outweighs the component's own top and padding. */
-  && .MuiDrawer-paper {
-    padding-top: 24px;
-    top: 48px;
   }
 `;
 
@@ -112,6 +98,7 @@ const primaryNavItems: NavigationHeaderPrimaryNavItem<string>[] = [
 
 function App() {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("data");
+  const stageRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
 
   const containedTheme = useMemo(
@@ -120,9 +107,12 @@ function App() {
         components: {
           MuiModal: {
             defaultProps: {
+              container: () => stageRef.current,
               disableAutoFocus: true,
               disableEnforceFocus: true,
-              disablePortal: true,
+              // The docs and the playground render overlays in place by
+              // default. This one needs its portal back, aimed at the stage.
+              disablePortal: false,
               disableRestoreFocus: true,
             },
           },
@@ -134,7 +124,7 @@ function App() {
   return (
     <div className="app">
       <ThemeProvider theme={containedTheme}>
-        <Stage>
+        <Stage ref={stageRef}>
           <NavigationHeader
             activePrimaryNavKey={activePrimaryNavKey}
             backgroundAppearance="dark"

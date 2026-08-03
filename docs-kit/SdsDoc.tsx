@@ -64,8 +64,8 @@ const Container = styled.div<CommonThemeProps>`
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    sans-serif;
-  line-height: 1.6;
+    sans-serif !important;
+  line-height: 1.6 !important;
   color: inherit;
   /* Shrinks below its ideal width rather than crowding the sidebar, which is
      what keeps the pair readable on a narrow window. */
