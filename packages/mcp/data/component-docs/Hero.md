@@ -38,13 +38,13 @@ Hero owns all of these props. Anything else, such as `className` or event handle
 
 ### Content
 
-| Name                 | Type                    | Default | Description                                                                                    |
-| -------------------- | ----------------------- | ------- | ---------------------------------------------------------------------------------------------- |
-| `headerText`         | `string`                | -       | The headline. Rendered as an `h1` and omitted entirely when not provided.                      |
-| `headerFontSize`     | `"s"` \| `"m"` \| `"l"` | `"m"`   | The type scale of the headline.                                                                |
-| `captionText`        | `string`                | -       | Supporting copy rendered below the headline.                                                   |
-| `children`           | `ReactNode`             | -       | Rendered in a full-width slot below the caption. Use it for buttons, links, or a search field. |
-| `hasInvertTextColor` | `bool`                  | `false` | Switches the headline and caption to the inverse text color for use on dark backgrounds.       |
+| Name                 | Type                    | Default | Description                                                                                                                                                                                                     |
+| -------------------- | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `headerText`         | `string`                | -       | The headline. Rendered as an `h1` and omitted entirely when not provided.                                                                                                                                       |
+| `headerFontSize`     | `"s"` \| `"m"` \| `"l"` | `"m"`   | The type scale of the headline.                                                                                                                                                                                 |
+| `captionText`        | `string`                | -       | Supporting copy rendered below the headline.                                                                                                                                                                    |
+| `children`           | `ReactNode`             | -       | Rendered in a full-width slot below the caption. Use it for buttons, links, or a search field.                                                                                                                  |
+| `hasInvertTextColor` | `bool`                  | `false` | Sets the headline and caption in the light text color, for a hero over a dark backdrop: imagery, or a darkening mask over it. The color is the same in both themes, because the backdrop it is read against is. |
 
 ### Layout
 
@@ -82,16 +82,25 @@ A headline, a caption, and a background color. With no `heroHeight` the section 
 ```tsx
 // headerText and captionText are the only content props. Without heroHeight the
 // section is as tall as its content plus the responsive padding.
+//
+// The fill comes from the theme rather than being written in as a hex, because
+// the header and caption take their color from the theme too: a fixed light
+// background keeps its own color in dark mode while the text over it turns
+// light, and the two disappear into each other.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div className="app">
       <Hero
         headerText="Explore the Cell Atlas"
         captionText="Browse millions of annotated cells across tissues, species, and disease states."
-        backgroundFill="#EFF2FC"
+        backgroundFill={semanticColors?.accent?.surfaceSecondary}
       />
     </div>
   );
@@ -109,11 +118,15 @@ export default App;
 ```tsx
 // headerFontSize maps to the SDS header type scale: s, m (the default), and l.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 const SIZES = ["s", "m", "l"] as const;
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div
       className="app"
@@ -125,7 +138,7 @@ function App() {
           headerFontSize={size}
           headerText={`headerFontSize "${size}"`}
           captionText="The caption always uses the same type style."
-          backgroundFill="#EFF2FC"
+          backgroundFill={semanticColors?.accent?.surfaceSecondary}
         />
       ))}
     </div>
@@ -182,7 +195,8 @@ export default App;
 // textAlignment aligns the text within that block. overlayContentWidth keeps
 // the block from spanning the full width.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 const POSITIONS = [
   { position: "top-left", textAlignment: "left" },
@@ -191,6 +205,9 @@ const POSITIONS = [
 ] as const;
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div
       className="app"
@@ -200,7 +217,7 @@ function App() {
         <Hero
           key={position}
           heroHeight="280px"
-          backgroundFill="#EFF2FC"
+          backgroundFill={semanticColors?.accent?.surfaceSecondary}
           overlayContentPosition={position}
           overlayContentWidth="60%"
           textAlignment={textAlignment}
@@ -226,14 +243,18 @@ Children render in a slot below the caption. That slot keeps its own colors, so 
 // buttons and links are the common case. The slot does not inherit
 // hasInvertTextColor, so style its contents yourself.
 
-import { Button, Hero } from "@czi-sds/components";
+import { Button, Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div className="app">
       <Hero
         heroHeight="320px"
-        backgroundFill="#EFF2FC"
+        backgroundFill={semanticColors?.accent?.surfaceSecondary}
         overlayContentWidth="60%"
         headerText="Start a new analysis"
         captionText="Upload your samples and get results in minutes."
@@ -265,18 +286,22 @@ Overlay media is positioned independently of the text, so narrow the content blo
 // text. Despite their names, overlayMediaMaxWidth and overlayMediaMaxHeight set
 // the width and the height of that layer outright.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 // Inline placeholder so the example does not depend on a remote image
 const MEDIA =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><rect width='400' height='200' rx='8' fill='rgb(126,86,194)'/><circle cx='300' cy='60' r='40' fill='rgb(207,212,220)'/></svg>";
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div className="app">
       <Hero
         heroHeight="320px"
-        backgroundFill="#EFF2FC"
+        backgroundFill={semanticColors?.accent?.surfaceSecondary}
         overlayContentWidth="50%"
         overlayContentPosition="left"
         headerText="Media alongside the copy"
