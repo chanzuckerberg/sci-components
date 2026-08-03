@@ -82,9 +82,10 @@ const Grid = styled.ul`
 `;
 
 /**
- * The cropped window a card shows its component through. Painted in the
- * previews' theme rather than the page's, so a miniature sits on the surface it
- * was designed against when the toolbar is switched to dark.
+ * The cropped window a card shows its component through. A recessed surface, so
+ * that a component drawn on the background it expects still reads as a piece
+ * sitting on the page. Painted in the previews' theme rather than the page's,
+ * which keeps that relationship when the toolbar is switched to dark.
  */
 const Frame = styled.div<CommonThemeProps>`
   position: relative;
@@ -101,9 +102,22 @@ const Frame = styled.div<CommonThemeProps>`
     const corners = getCorners(props);
 
     return `
+      /* The secondary background is a translucent wash, meant to sit over an
+         app's own primary background. Painted straight onto the frame it
+         composites against the docs page instead, which in dark mode leaves a
+         mid grey the previews are barely legible on. So: the theme's surface,
+         and the wash over it. */
       background-color: ${semanticColors?.base?.backgroundPrimary};
-      border: 1px solid ${semanticColors?.base?.divider};
-      border-radius: ${corners?.m}px;
+      background-image: linear-gradient(
+        ${semanticColors?.base?.backgroundSecondary},
+        ${semanticColors?.base?.backgroundSecondary}
+      );
+      /* Text a component leaves to be inherited - a checkbox's label, a list's
+         items - would otherwise come from the page, which is always light, and
+         be set in near-black against a dark frame. */
+      color: ${semanticColors?.base?.textPrimary};
+      border: 1px solid transparent;
+      border-radius: ${corners?.xl}px;
       transition: border-color 0.15s ease;
     `;
   }}
@@ -129,16 +143,31 @@ const Stage = styled.div`
   transform: scale(${CARD_SCALE});
   transform-origin: top left;
 
-  /* Left-aligned, and vertically centred only while there is room to centre:
-     "safe" hands the alignment back to the start once the component is taller
-     than the card, so a table is cropped along its bottom edge instead of
-     losing the header row off the top. Either way the crop is on one edge, and
-     reads as a view into something larger rather than as a piece with both ends
-     missing. */
+  /* Centred, though vertically only while there is room to centre: "safe" hands
+     the alignment back to the start once the component is taller than the card,
+     so a table is cropped along its bottom edge instead of losing the header row
+     off the top. The crop is then on one edge, and reads as a view into
+     something larger rather than as a piece with both ends missing. */
   display: grid;
   align-content: safe center;
-  justify-items: start;
+  justify-items: center;
   padding: ${STAGE_PADDING}px;
+
+  /* An example has to take the stage's width as given. Left to themselves a
+     lone grid column and a grid item are both as wide as their content, so an
+     example wider than the card would widen the stage instead of being cropped
+     by it - and the stage is the width a component measures to lay itself out.
+     One that divides that width between its parts, as a table does between its
+     columns, would then measure a width it had set itself and grow again on
+     every pass, never settling. Fixing the column, and holding an example
+     between no minimum and the width of the card, keeps that measurement still:
+     an example with more to show than fits overflows and is cropped. */
+  grid-template-columns: minmax(0, 1fr);
+
+  > * {
+    min-width: 0;
+    max-width: 100%;
+  }
 
   /* Stories get this reset from the <CssBaseline /> in .storybook/preview.jsx,
      which docs pages never render. */
@@ -170,7 +199,10 @@ const Card = styled.li<CommonThemeProps>`
   margin: 0;
   min-width: 0;
 
-  a {
+  /* Only ever the card's own link: a descendant selector would dress the links
+     a component brought with it too, in the page's light colours, however the
+     toolbar has the preview set. */
+  > a {
     ${fontBodySemiboldS}
 
     display: block;
@@ -187,7 +219,7 @@ const Card = styled.li<CommonThemeProps>`
     }}
   }
 
-  a::after {
+  > a::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -197,14 +229,14 @@ const Card = styled.li<CommonThemeProps>`
   &:hover ${Frame} {
     border-color: ${(props) => getSemanticColors(props)?.accent?.border};
   }
-  &:hover a {
+  &:hover > a {
     color: ${(props) => getSemanticColors(props)?.accent?.textActionHover};
   }
 
-  a:focus-visible {
+  > a:focus-visible {
     outline: none;
   }
-  a:focus-visible::after {
+  > a:focus-visible::after {
     outline: 2px solid
       ${(props) => getSemanticColors(props)?.accent?.borderSelected};
     outline-offset: 2px;
