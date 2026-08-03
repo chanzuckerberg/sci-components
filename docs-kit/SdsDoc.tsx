@@ -15,12 +15,14 @@ import {
 } from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
 import {
+  CATALOG_CLASS,
   CODE_ACTION_CLASS,
   PREVIEW_CLASS,
   SB_UNSTYLED_CLASS,
   TOGGLE_CLASS,
 } from "./constants";
 import { highlightBlock } from "./highlight";
+import { SdsCatalog } from "./SdsCatalog";
 import { SdsExample, type ExamplePadding } from "./SdsExample";
 
 /**
@@ -30,8 +32,12 @@ import { SdsExample, type ExamplePadding } from "./SdsExample";
  * guard so previews render exactly as the components do in a story.
  * `:where()` keeps the guard at zero specificity, leaving the prose cascade as
  * it was.
+ *
+ * The catalog is exempt for the same reason and then some: from its placeholder
+ * down it is React's, styled by <SdsCatalog /> itself, so the prose has nothing
+ * to say about any of it.
  */
-const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *))`;
+const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *, .${CATALOG_CLASS} *))`;
 
 /** Column count of a labelled design-upload grid, set from its header row. */
 const UPLOAD_COLUMNS_PROPERTY = "--sds-doc-upload-columns";
@@ -758,6 +764,11 @@ interface ExampleSlot {
   padding: ExamplePadding;
 }
 
+interface CatalogSlot {
+  category: string;
+  node: HTMLElement;
+}
+
 interface SnippetSlot {
   code: string;
   key: string;
@@ -833,8 +844,12 @@ function collectContents(root: HTMLElement): JumpToItem[] {
     const title = heading.textContent?.trim();
     // A live example renders real components, whose own headings belong to the
     // example and not to the page. They mount after this runs, but the
-    // placeholders they fill are already here.
-    if (!title || heading.closest(`.sds-doc-example, .${PREVIEW_CLASS}`)) {
+    // placeholders they fill are already here. The catalog's cards are examples
+    // too, several dozen of them, so they are held to the same rule.
+    if (
+      !title ||
+      heading.closest(`.sds-doc-example, .${PREVIEW_CLASS}, .${CATALOG_CLASS}`)
+    ) {
       return;
     }
 
@@ -951,10 +966,15 @@ function markPropsTables(root: HTMLElement): void {
  * the scoped styles above still apply to them. A placeholder can add
  * `data-example-padding="none"` to drop the preview's inset, which suits
  * page-width components.
+ *
+ * A `<div class="sds-doc-catalog" data-catalog="...">` is filled the same way,
+ * with the named category of the component catalog. Its heading stays in the
+ * page's HTML, so the jump-to nav lists the categories as it lists any section.
  */
 export function SdsDoc({ html }: SdsDocProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const [slots, setSlots] = useState<ExampleSlot[]>([]);
+  const [catalogs, setCatalogs] = useState<CatalogSlot[]>([]);
   const [snippets, setSnippets] = useState<SnippetSlot[]>([]);
   const [jumpTo, setJumpTo] = useState<JumpToItem[]>([]);
 
@@ -1020,6 +1040,17 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
         ];
       })
     );
+
+    setCatalogs(
+      Array.from(
+        root.querySelectorAll<HTMLElement>(`.${CATALOG_CLASS}[data-catalog]`)
+      ).flatMap((node) => {
+        const { catalog } = node.dataset;
+        if (!catalog) return [];
+        node.classList.add(SB_UNSTYLED_CLASS);
+        return [{ category: catalog, node } satisfies CatalogSlot];
+      })
+    );
   }, [html]);
 
   return (
@@ -1046,6 +1077,9 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
       </ThemeProvider>
       {slots.map(({ id, node, padding }) =>
         createPortal(<SdsExample id={id} padding={padding} />, node, id)
+      )}
+      {catalogs.map(({ category, node }) =>
+        createPortal(<SdsCatalog category={category} />, node, category)
       )}
       {snippets.map(({ code, key, label, language, node }) =>
         createPortal(

@@ -2,17 +2,13 @@ import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "@mui/material/styles";
 import {
-  Component,
   Suspense,
   lazy,
   useEffect,
   useMemo,
   useRef,
   useState,
-  type ComponentType,
-  type ErrorInfo,
   type ReactElement,
-  type ReactNode,
   type RefObject,
 } from "react";
 import {
@@ -30,59 +26,16 @@ import {
   PREVIEW_CLASS,
   SB_UNSTYLED_CLASS,
 } from "./constants";
+import {
+  ExampleErrorBoundary,
+  exampleLoaders,
+  exampleStyles,
+  modulePath,
+  scopeCss,
+  sourceLoaders,
+} from "./exampleRegistry";
 import { previewTheme } from "./previewTheme";
 import { useThemeMode } from "./useThemeMode";
-
-/**
- * Registry of the example apps referenced by the `data-example` placeholders in
- * the docs HTML. They live in three places: alongside the design pages under
- * `design-docs/pages/`, and alongside each component's own code docs under
- * `packages/components/src/core/` and `packages/data-viz/src/core/`. Globs are
- * lazy so every example is code-split into its own chunk instead of shipping
- * with every docs page. Companion CSS is loaded eagerly as raw text (it is only
- * a handful of small files) and injected scoped to the preview, so page-level
- * selectors such as `thead { ... }` cannot leak into the docs page around it.
- */
-const exampleLoaders = {
-  ...import.meta.glob<{ default: ComponentType }>(
-    "../design-docs/pages/*/examples/*.tsx"
-  ),
-  ...import.meta.glob<{ default: ComponentType }>(
-    "../packages/components/src/core/**/__storybook__/docs/examples/*.tsx"
-  ),
-  ...import.meta.glob<{ default: ComponentType }>(
-    "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.tsx"
-  ),
-};
-const sourceLoaders = {
-  ...import.meta.glob<string>("../design-docs/pages/*/examples/*.tsx", {
-    import: "default",
-    query: "?raw",
-  }),
-  ...import.meta.glob<string>(
-    "../packages/components/src/core/**/__storybook__/docs/examples/*.tsx",
-    { import: "default", query: "?raw" }
-  ),
-  ...import.meta.glob<string>(
-    "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.tsx",
-    { import: "default", query: "?raw" }
-  ),
-};
-const exampleStyles = {
-  ...import.meta.glob<string>("../design-docs/pages/*/examples/*.css", {
-    eager: true,
-    import: "default",
-    query: "?raw",
-  }),
-  ...import.meta.glob<string>(
-    "../packages/components/src/core/**/__storybook__/docs/examples/*.css",
-    { eager: true, import: "default", query: "?raw" }
-  ),
-  ...import.meta.glob<string>(
-    "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.css",
-    { eager: true, import: "default", query: "?raw" }
-  ),
-};
 
 /**
  * Themed surface the example renders on. It reproduces the little the original
@@ -122,76 +75,6 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
     `;
   }}
 `;
-
-/**
- * Resolve an example id to its glob key, minus the file extension. Ids come in
- * three shapes: `<Page>/<Name>` for an example that belongs to a design page,
- * `core/<Component>/<Name>` for one that belongs to a component's code docs,
- * and `data-viz/<Component>/<Name>` for one belonging to a chart's code docs.
- * The component part may itself be nested, as in `core/Bases/Typography/<Name>`.
- */
-function modulePath(id: string): string {
-  const segments = id.split("/");
-  const name = segments[segments.length - 1];
-  const component = segments.slice(1, -1).join("/");
-
-  if (segments[0] === "core") {
-    return `../packages/components/src/core/${component}/__storybook__/docs/examples/${name}`;
-  }
-
-  if (segments[0] === "data-viz") {
-    return `../packages/data-viz/src/core/${component}/__storybook__/docs/examples/${name}`;
-  }
-
-  return `../design-docs/pages/${segments[0]}/examples/${name}`;
-}
-
-function findMatchingBrace(css: string, start: number): number {
-  let depth = 0;
-  for (let index = start; index < css.length; index += 1) {
-    if (css[index] === "{") depth += 1;
-    if (css[index] === "}") {
-      depth -= 1;
-      if (depth === 0) return index;
-    }
-  }
-  return css.length - 1;
-}
-
-/**
- * Prefix every top-level selector with `scope`. The example stylesheets were
- * written for a standalone CodeSandbox page, so they contain bare element
- * selectors; scoping keeps them from styling the rest of the docs page. Nested
- * selectors are left untouched — the browser resolves them against the scoped
- * parent.
- */
-function scopeCss(css: string, scope: string): string {
-  let scoped = "";
-  let index = 0;
-
-  while (index < css.length) {
-    const braceStart = css.indexOf("{", index);
-    if (braceStart === -1) break;
-
-    const prelude = css.slice(index, braceStart).trim();
-    const braceEnd = findMatchingBrace(css, braceStart);
-    const body = css.slice(braceStart + 1, braceEnd);
-
-    if (prelude.startsWith("@")) {
-      scoped += `${prelude} {${scopeCss(body, scope)}}\n`;
-    } else if (prelude !== "") {
-      const selectors = prelude
-        .split(",")
-        .map((selector) => `${scope} ${selector.trim()}`)
-        .join(", ");
-      scoped += `${selectors} {${body}}\n`;
-    }
-
-    index = braceEnd + 1;
-  }
-
-  return scoped;
-}
 
 /** Room left around an overlay so it does not sit flush against the frame. */
 const OVERLAY_GUTTER = 16;
@@ -289,38 +172,6 @@ function useFitContent(ref: RefObject<HTMLElement | null>): void {
       window.removeEventListener("resize", settle);
     };
   }, [ref]);
-}
-
-class ExampleErrorBoundary extends Component<
-  { id: string; children: ReactNode },
-  { error: Error | null }
-> {
-  state: { error: Error | null } = { error: null };
-
-  static getDerivedStateFromError(error: Error): { error: Error } {
-    return { error };
-  }
-
-  componentDidCatch(error: Error, info: ErrorInfo): void {
-    // eslint-disable-next-line no-console
-    console.error(
-      `Docs example "${this.props.id}" failed to render`,
-      error,
-      info
-    );
-  }
-
-  render(): ReactNode {
-    const { error } = this.state;
-    if (error) {
-      return (
-        <p className="sds-doc-example-error">
-          This example failed to render: {error.message}
-        </p>
-      );
-    }
-    return this.props.children;
-  }
 }
 
 /** The extracted `App.tsx`, shown below its live preview and collapsible. */

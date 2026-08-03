@@ -68,6 +68,7 @@
     "./docs-kit/**/*.ts",
     "./docs-kit/**/*.tsx",
     "./docs-kit/**/*.d.ts",
+    "./design-docs/**/*.ts",
     "./design-docs/**/*.tsx",
     "./playground/**/*.ts",
     "./playground/**/*.tsx",

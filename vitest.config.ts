@@ -29,6 +29,20 @@ export default defineConfig({
           include: ["playground/**/*.test.ts"],
         },
       },
+      /**
+       * The documentation's own consistency checks: the parts of the docs that
+       * describe the libraries rather than render them, and so can fall behind
+       * a component being added or renamed. No browser, no components — these
+       * read the repo off disk.
+       */
+      {
+        extends: true,
+        test: {
+          name: "docs-kit",
+          environment: "node",
+          include: ["docs-kit/**/*.test.ts"],
+        },
+      },
       {
         extends: true,
         plugins: [

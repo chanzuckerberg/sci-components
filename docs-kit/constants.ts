@@ -1,6 +1,16 @@
 /** Live preview surface wrapped around an extracted code example. */
 export const PREVIEW_CLASS = "sds-doc-example-preview";
 
+/** Grid of component cards, one per category, on the Overview page. */
+export const CATALOG_CLASS = "sds-doc-catalog";
+
+/**
+ * The cropped frame a catalog card renders its miniature in. Doubles as the
+ * scope for whatever CSS that example brought with it, as `PREVIEW_CLASS` does
+ * for a full preview.
+ */
+export const CATALOG_PREVIEW_CLASS = "sds-doc-catalog-preview";
+
 /** Expand/collapse control inside a code block's caption bar. */
 export const TOGGLE_CLASS = "sds-doc-code-toggle";
 
