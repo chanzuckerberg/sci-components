@@ -2,18 +2,22 @@
 // text. Despite their names, overlayMediaMaxWidth and overlayMediaMaxHeight set
 // the width and the height of that layer outright.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 // Inline placeholder so the example does not depend on a remote image
 const MEDIA =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><rect width='400' height='200' rx='8' fill='rgb(126,86,194)'/><circle cx='300' cy='60' r='40' fill='rgb(207,212,220)'/></svg>";
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div className="app">
       <Hero
         heroHeight="320px"
-        backgroundFill="#EFF2FC"
+        backgroundFill={semanticColors?.accent?.surfaceSecondary}
         overlayContentWidth="50%"
         overlayContentPosition="left"
         headerText="Media alongside the copy"

@@ -2,7 +2,8 @@
 // textAlignment aligns the text within that block. overlayContentWidth keeps
 // the block from spanning the full width.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 const POSITIONS = [
   { position: "top-left", textAlignment: "left" },
@@ -11,6 +12,9 @@ const POSITIONS = [
 ] as const;
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div
       className="app"
@@ -20,7 +24,7 @@ function App() {
         <Hero
           key={position}
           heroHeight="280px"
-          backgroundFill="#EFF2FC"
+          backgroundFill={semanticColors?.accent?.surfaceSecondary}
           overlayContentPosition={position}
           overlayContentWidth="60%"
           textAlignment={textAlignment}

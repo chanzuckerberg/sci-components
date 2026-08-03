@@ -1,10 +1,14 @@
 // headerFontSize maps to the SDS header type scale: s, m (the default), and l.
 
-import { Hero } from "@czi-sds/components";
+import { Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 const SIZES = ["s", "m", "l"] as const;
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div
       className="app"
@@ -16,7 +20,7 @@ function App() {
           headerFontSize={size}
           headerText={`headerFontSize "${size}"`}
           captionText="The caption always uses the same type style."
-          backgroundFill="#EFF2FC"
+          backgroundFill={semanticColors?.accent?.surfaceSecondary}
         />
       ))}
     </div>

@@ -2,14 +2,18 @@
 // buttons and links are the common case. The slot does not inherit
 // hasInvertTextColor, so style its contents yourself.
 
-import { Button, Hero } from "@czi-sds/components";
+import { Button, Hero, getSemanticColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material/styles";
 
 function App() {
+  const theme = useTheme();
+  const semanticColors = getSemanticColors({ theme });
+
   return (
     <div className="app">
       <Hero
         heroHeight="320px"
-        backgroundFill="#EFF2FC"
+        backgroundFill={semanticColors?.accent?.surfaceSecondary}
         overlayContentWidth="60%"
         headerText="Start a new analysis"
         captionText="Upload your samples and get results in minutes."
