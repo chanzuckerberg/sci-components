@@ -9,6 +9,78 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Tooltip } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Tooltip</strong></h3>
+<p>
+  A title and a trigger, which is all a tooltip needs. The dark scheme, the
+  arrow, and the placement below the trigger are what the component gives you
+  without being asked.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/DefaultTooltip"></div>
+<h3><strong>Tooltip – Dark</strong></h3>
+<p>
+  The tooltip the component gives you by default, with a title and a subtitle.
+  The design calls this one the inverted tooltip.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/TooltipDark"></div>
+<h3><strong>Tooltip – Light</strong></h3>
+<p>
+  The light tooltip, which has to be asked for with
+  <code>hasInvertedStyle={false}</code>, shown at both widths. The wide one
+  holds 550px of left-aligned text.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/TooltipLight"></div>
+<h3><strong>Placement and the arrow</strong></h3>
+<p>
+  Four of the twelve placements, and what <code>arrowOffset</code> does to the
+  arrow: it sets a position rather than nudging one.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/TooltipPlacement"></div>
+<h3><strong>Tooltip with a component slot</strong></h3>
+<p>
+  Content that is not a string goes in <code>componentSlot</code>, under the
+  title. The pointer can travel into the tooltip, which is what makes the link
+  inside it usable.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Tooltip/TooltipWithComponentSlot"
+></div>
+<h3><strong>Tooltip on a disabled element</strong></h3>
+<p>
+  A disabled control reports no hovers, so the tooltip goes on a span around it.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note for Tooltips on</strong>
+    <strong>Disabled</strong>
+    <strong>elements</strong>
+  </p>
+  <p>
+    If the tooltip wraps a disabled component, please make sure to wrap the
+    children in a <code>&lt;span&gt;</code> tag. SDS puts
+    <code>tabIndex={0}</code> on whatever the tooltip wraps, so that span also
+    becomes a tab stop and the tooltip opens on focus.
+  </p>
+  <p>
+    <a href="https://mui.com/components/tooltips/#disabled-elements">
+      https://mui.com/components/tooltips/#disabled-elements
+    </a>
+  </p>
+</div>
+<div
+  class="sds-doc-example"
+  data-example="core/Tooltip/TooltipOnDisabledElement"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS Tooltip wraps MUI's Tooltip, composes the content out of its own props
@@ -398,68 +470,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Tooltip</strong></h3>
-<p>
-  A title and a trigger, which is all a tooltip needs. The dark scheme, the
-  arrow, and the placement below the trigger are what the component gives you
-  without being asked.
-</p>
-<div class="sds-doc-example" data-example="core/Tooltip/DefaultTooltip"></div>
-<h3><strong>Tooltip – Dark</strong></h3>
-<p>
-  The tooltip the component gives you by default, with a title and a subtitle.
-  The design calls this one the inverted tooltip.
-</p>
-<div class="sds-doc-example" data-example="core/Tooltip/TooltipDark"></div>
-<h3><strong>Tooltip – Light</strong></h3>
-<p>
-  The light tooltip, which has to be asked for with
-  <code>hasInvertedStyle={false}</code>, shown at both widths. The wide one
-  holds 550px of left-aligned text.
-</p>
-<div class="sds-doc-example" data-example="core/Tooltip/TooltipLight"></div>
-<h3><strong>Placement and the arrow</strong></h3>
-<p>
-  Four of the twelve placements, and what <code>arrowOffset</code> does to the
-  arrow: it sets a position rather than nudging one.
-</p>
-<div class="sds-doc-example" data-example="core/Tooltip/TooltipPlacement"></div>
-<h3><strong>Tooltip with a component slot</strong></h3>
-<p>
-  Content that is not a string goes in <code>componentSlot</code>, under the
-  title. The pointer can travel into the tooltip, which is what makes the link
-  inside it usable.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Tooltip/TooltipWithComponentSlot"
-></div>
-<h3><strong>Tooltip on a disabled element</strong></h3>
-<p>
-  A disabled control reports no hovers, so the tooltip goes on a span around it.
-</p>
-<div
-  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Note for Tooltips on</strong>
-    <strong>Disabled</strong>
-    <strong>elements</strong>
-  </p>
-  <p>
-    If the tooltip wraps a disabled component, please make sure to wrap the
-    children in a <code>&lt;span&gt;</code> tag. SDS puts
-    <code>tabIndex={0}</code> on whatever the tooltip wraps, so that span also
-    becomes a tab stop and the tooltip opens on focus.
-  </p>
-  <p>
-    <a href="https://mui.com/components/tooltips/#disabled-elements">
-      https://mui.com/components/tooltips/#disabled-elements
-    </a>
-  </p>
-</div>
-<div
-  class="sds-doc-example"
-  data-example="core/Tooltip/TooltipOnDisabledElement"
-></div>

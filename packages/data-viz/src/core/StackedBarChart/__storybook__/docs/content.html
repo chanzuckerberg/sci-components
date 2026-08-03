@@ -26,6 +26,63 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { StackedBarChart } from "@czi-sds/data-viz";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default StackedBarChart</strong></h3>
+<p>
+  A proportional bar: values become shares of the whole, the legend reads them
+  as percentages, and the badge counts the categories.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/StackedBarChart/DefaultStackedBarChart"
+></div>
+<h3>Cumulative mode</h3>
+<p>
+  The same data measured against a known maximum, so the bar reads as progress
+  and the gap left over is drawn as Remaining. Counted values need a
+  <code>unit</code> to mean anything.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/StackedBarChart/CumulativeStackedBarChart"
+></div>
+<h3>Selection</h3>
+<p>
+  One selection driving two charts, so the difference between
+  <code>"dim"</code> and <code>"hide"</code> is visible in a single pass.
+  Selection lives in the parent; the buttons show how to change it from outside
+  the chart, which is also what gives the keyboard a way in.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/StackedBarChart/SelectableStackedBarChart"
+></div>
+<h3>Segment tooltips</h3>
+<p>
+  A data item carrying <code>tooltip</code> content opens a TooltipTable on
+  hover, which is where the detail behind a segment belongs.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/StackedBarChart/StackedBarChartWithTooltips"
+></div>
+<h3>Colors</h3>
+<p>
+  Explicit colors beside a generated palette. Give the categories that must stay
+  recognisable a <code>color</code> of their own, and tune the rest through
+  <code>colorGeneratorOptions</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/StackedBarChart/StackedBarChartColors"
+></div>
 <h2>How it is built</h2>
 <p>
   Unlike HeatmapChart, this chart does not use ECharts. It is plain DOM: the bar
@@ -592,53 +649,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default StackedBarChart</strong></h3>
-<p>
-  A proportional bar: values become shares of the whole, the legend reads them
-  as percentages, and the badge counts the categories.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/StackedBarChart/DefaultStackedBarChart"
-></div>
-<h3>Cumulative mode</h3>
-<p>
-  The same data measured against a known maximum, so the bar reads as progress
-  and the gap left over is drawn as Remaining. Counted values need a
-  <code>unit</code> to mean anything.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/StackedBarChart/CumulativeStackedBarChart"
-></div>
-<h3>Selection</h3>
-<p>
-  One selection driving two charts, so the difference between
-  <code>"dim"</code> and <code>"hide"</code> is visible in a single pass.
-  Selection lives in the parent; the buttons show how to change it from outside
-  the chart, which is also what gives the keyboard a way in.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/StackedBarChart/SelectableStackedBarChart"
-></div>
-<h3>Segment tooltips</h3>
-<p>
-  A data item carrying <code>tooltip</code> content opens a TooltipTable on
-  hover, which is where the detail behind a segment belongs.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/StackedBarChart/StackedBarChartWithTooltips"
-></div>
-<h3>Colors</h3>
-<p>
-  Explicit colors beside a generated palette. Give the categories that must stay
-  recognisable a <code>color</code> of their own, and tune the rest through
-  <code>colorGeneratorOptions</code>.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/StackedBarChart/StackedBarChartColors"
-></div>

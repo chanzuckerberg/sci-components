@@ -9,6 +9,33 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { ButtonToggle } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default ButtonToggle</strong></h3>
+<p>
+  This example has the minimum props needed for the ButtonToggle component.
+  Because <code>sdsStage</code> is controlled, the on and off stages are driven
+  from state.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/DefaultButtonToggle"
+></div>
+<h3>Toggles in a ButtonGroup</h3>
+<p>
+  This example shows icon-only toggles collected into a ButtonGroup, each
+  tracking its own stage.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/ButtonToggleGroup"
+></div>
 <h2>MUI Documentation</h2>
 <p>
   Documentation for the underlying MUI component can be found
@@ -142,23 +169,3 @@
   ButtonToggle always renders with <code>backgroundOnHover</code> enabled and
   ignores <code>endIcon</code>, which is reserved for the toggle's own styling.
 </p>
-<h2>Code examples</h2>
-<h3><strong>Default ButtonToggle</strong></h3>
-<p>
-  This example has the minimum props needed for the ButtonToggle component.
-  Because <code>sdsStage</code> is controlled, the on and off stages are driven
-  from state.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ButtonToggle/DefaultButtonToggle"
-></div>
-<h3>Toggles in a ButtonGroup</h3>
-<p>
-  This example shows icon-only toggles collected into a ButtonGroup, each
-  tracking its own stage.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ButtonToggle/ButtonToggleGroup"
-></div>

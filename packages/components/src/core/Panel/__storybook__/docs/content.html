@@ -1,6 +1,81 @@
 <h1>Panel</h1>
 <h2>Source Code</h2>
 <p>The component's source code in the SDS codebase can be found here.</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Panel } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    A panel fixes itself to an edge of the viewport, which on this page means an
+    edge of the docs rather than of the example. Each example below therefore
+    holds its panel inside its own frame, with a wrapper that fixed positioning
+    resolves against and, for the overlay panels, a container for the portal and
+    another for the transition, so the panel slides the width of the frame
+    rather than of the window. None of that belongs in an application.
+  </p>
+</div>
+<h3>Basic panel</h3>
+<p>
+  A persistent panel on the left, with the page's content shifted by the same
+  width so the two do not overlap.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Panel/BasicPanel"
+  data-example-padding="none"
+></div>
+<h3>Overlay panel</h3>
+<p>
+  An overlay panel on the right with a header, the default close button, and
+  <code>isBackdropClickEnabled</code> so a click outside closes it through
+  <code>onClose</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Panel/OverlayPanel"
+  data-example-padding="none"
+></div>
+<h3>Overlay panel along the bottom</h3>
+<p>
+  The bottom position spans the full width, and the <code>width</code> prop
+  becomes the panel's height. This one has no backdrop, so clicks outside it
+  land on the page underneath.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Panel/OverlayPanelBottom"
+  data-example-padding="none"
+></div>
+<h3>Overlay panel with a custom close control</h3>
+<p>
+  <code>CloseButtonComponent</code> replaces the X with anything you like, and
+  the header holds more than a title.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Panel/OverlayPanelCustomClose"
+  data-example-padding="none"
+></div>
+<h3>Changing the animation speed</h3>
+<p>
+  <code>transitionDuration</code> times the slide. Each button below reopens the
+  same panel at a different setting, from the 225ms default to none at all, and
+  the example holds the setting while the panel closes so the way out matches
+  the way in.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Panel/OverlayPanelTransition"
+  data-example-padding="none"
+></div>
 <h2>SDS vs MUI</h2>
 <p>The SDS Panel wraps the MUI Drawer, with these differences:</p>
 <ul class="sds-doc-bullet-list">
@@ -389,71 +464,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<div
-  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    A panel fixes itself to an edge of the viewport, which on this page means an
-    edge of the docs rather than of the example. Each example below therefore
-    holds its panel inside its own frame, with a wrapper that fixed positioning
-    resolves against and, for the overlay panels, a container for the portal and
-    another for the transition, so the panel slides the width of the frame
-    rather than of the window. None of that belongs in an application.
-  </p>
-</div>
-<h3>Basic panel</h3>
-<p>
-  A persistent panel on the left, with the page's content shifted by the same
-  width so the two do not overlap.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Panel/BasicPanel"
-  data-example-padding="none"
-></div>
-<h3>Overlay panel</h3>
-<p>
-  An overlay panel on the right with a header, the default close button, and
-  <code>isBackdropClickEnabled</code> so a click outside closes it through
-  <code>onClose</code>.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Panel/OverlayPanel"
-  data-example-padding="none"
-></div>
-<h3>Overlay panel along the bottom</h3>
-<p>
-  The bottom position spans the full width, and the <code>width</code> prop
-  becomes the panel's height. This one has no backdrop, so clicks outside it
-  land on the page underneath.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Panel/OverlayPanelBottom"
-  data-example-padding="none"
-></div>
-<h3>Overlay panel with a custom close control</h3>
-<p>
-  <code>CloseButtonComponent</code> replaces the X with anything you like, and
-  the header holds more than a title.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Panel/OverlayPanelCustomClose"
-  data-example-padding="none"
-></div>
-<h3>Changing the animation speed</h3>
-<p>
-  <code>transitionDuration</code> times the slide. Each button below reopens the
-  same panel at a different setting, from the 225ms default to none at all, and
-  the example holds the setting while the panel closes so the way out matches
-  the way in.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Panel/OverlayPanelTransition"
-  data-example-padding="none"
-></div>

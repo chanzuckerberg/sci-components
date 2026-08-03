@@ -9,6 +9,49 @@
   for the optional heading above them. All three wrap their MUI counterparts, so
   any MUI prop passes straight through.
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
+  List,
+  ListItem,
+  ListItemLabel,
+  ListSubheader,
+} from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Unordered list</h3>
+<p>
+  An unordered list with a subheader. Neither the List nor the items need any
+  props for this shape.
+</p>
+<div class="sds-doc-example" data-example="core/List/UnorderedList"></div>
+<h3>Ordered list</h3>
+<p>
+  The same list numbered, with <code>ordered</code> on the List and on every
+  item.
+</p>
+<div class="sds-doc-example" data-example="core/List/OrderedList"></div>
+<h3>Nested ordered list</h3>
+<p>
+  Nesting a List inside an ordered item numbers the sub-items against their
+  parent, so they read 1.1. and 1.2.
+</p>
+<div class="sds-doc-example" data-example="core/List/NestedOrderedList"></div>
+<h3>Sizes and spacing</h3>
+<p>
+  The type scale, each size with the item spacing it pairs with. Both props sit
+  on the items, so one list can mix sizes.
+</p>
+<div class="sds-doc-example" data-example="core/List/ListSizes"></div>
+<h3>Items with labels</h3>
+<p>
+  ListItemLabel makes the leading term semibold, which suits lists that define
+  or name things.
+</p>
+<div class="sds-doc-example" data-example="core/List/ListWithLabels"></div>
 <h2>How the pieces fit together</h2>
 <ul class="sds-doc-bullet-list">
   <li>
@@ -459,34 +502,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Unordered list</h3>
-<p>
-  An unordered list with a subheader. Neither the List nor the items need any
-  props for this shape.
-</p>
-<div class="sds-doc-example" data-example="core/List/UnorderedList"></div>
-<h3>Ordered list</h3>
-<p>
-  The same list numbered, with <code>ordered</code> on the List and on every
-  item.
-</p>
-<div class="sds-doc-example" data-example="core/List/OrderedList"></div>
-<h3>Nested ordered list</h3>
-<p>
-  Nesting a List inside an ordered item numbers the sub-items against their
-  parent, so they read 1.1. and 1.2.
-</p>
-<div class="sds-doc-example" data-example="core/List/NestedOrderedList"></div>
-<h3>Sizes and spacing</h3>
-<p>
-  The type scale, each size with the item spacing it pairs with. Both props sit
-  on the items, so one list can mix sizes.
-</p>
-<div class="sds-doc-example" data-example="core/List/ListSizes"></div>
-<h3>Items with labels</h3>
-<p>
-  ListItemLabel makes the leading term semibold, which suits lists that define
-  or name things.
-</p>
-<div class="sds-doc-example" data-example="core/List/ListWithLabels"></div>

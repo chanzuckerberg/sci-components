@@ -9,6 +9,43 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Dropdown } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code Examples</h2>
+<h3><strong>Default Dropdown</strong></h3>
+<p>
+  This example illustrates the minimum set of props required for rendering a
+  Dropdown component.
+</p>
+<div class="sds-doc-example" data-example="core/Dropdown/DefaultDropdown"></div>
+<h3><strong>Multi-select Dropdown with Search</strong></h3>
+<p>
+  A search feature can be easily incorporated into the Dropdown component by
+  including the <code>search</code> prop.
+</p>
+<p>
+  The search functionality operates by dynamically filtering out non-matching
+  options as the user types, displaying only the menu items whose text
+  corresponds to that input. If no matching items are found, the Dropdown will
+  automatically present "No options" below the search bar.
+</p>
+<p>
+  To ensure that the search input retains its text even after a user selects a
+  menu item (when multiple selections are allowed), set the
+  <code>keepSearchOnSelect</code> prop to <code>true</code> within the
+  <code>DropdownMenuProps</code> prop. This allows users to conveniently choose
+  multiple menu items that match the searched term without the need to re-enter
+  it for each selection.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dropdown/MultiSelectDropdownWithSearch"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS's Dropdown component is a combination of two other SDS components:
@@ -300,33 +337,3 @@
     <td><p>The component used to render the Dropdown trigger button.</p></td>
   </tr>
 </table>
-<h2>Code Examples</h2>
-<h3><strong>Default Dropdown</strong></h3>
-<p>
-  This example illustrates the minimum set of props required for rendering a
-  Dropdown component.
-</p>
-<div class="sds-doc-example" data-example="core/Dropdown/DefaultDropdown"></div>
-<h3><strong>Multi-select Dropdown with Search</strong></h3>
-<p>
-  A search feature can be easily incorporated into the Dropdown component by
-  including the <code>search</code> prop.
-</p>
-<p>
-  The search functionality operates by dynamically filtering out non-matching
-  options as the user types, displaying only the menu items whose text
-  corresponds to that input. If no matching items are found, the Dropdown will
-  automatically present "No options" below the search bar.
-</p>
-<p>
-  To ensure that the search input retains its text even after a user selects a
-  menu item (when multiple selections are allowed), set the
-  <code>keepSearchOnSelect</code> prop to <code>true</code> within the
-  <code>DropdownMenuProps</code> prop. This allows users to conveniently choose
-  multiple menu items that match the searched term without the need to re-enter
-  it for each selection.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dropdown/MultiSelectDropdownWithSearch"
-></div>

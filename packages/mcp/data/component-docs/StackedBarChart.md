@@ -8,81 +8,13 @@ A single horizontal bar split into labelled segments, for showing what a total i
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/StackedBarChart/index.tsx).
 
-## How it is built
+## Import
 
-Unlike HeatmapChart, this chart does not use ECharts. It is plain DOM: the bar is a flex row of divs whose `flex-grow` carries each segment's share, so the chart inherits SDS colors and spacing directly and animates with CSS. Two things come from `@czi-sds/components`: the Legend below the bar, and the TooltipTable a segment opens when its data item carries a `tooltip`.
+**React TypeScript**
 
-## Modes
-
-`mode` decides what the full width of the bar means, and it is the first thing to settle when adding the chart.
-
-- `"proportional"` (the default) treats the data as the whole. Segments are sized against the sum of the values and always fill the bar, so the chart reads as a breakdown: how the total splits, not how large it is.
-
-- `"cumulative"` sizes segments against `maxAmount` instead, so the bar reads as progress towards a known total. When the values add up to less than `maxAmount`, the gap is drawn as a grey "Remaining" segment, which is labelled with `remainingLabel` and is never interactive. Leaving `maxAmount` off makes the mode behave like `"proportional"`, since the sum becomes the maximum and no gap is left.
-
-Values are only ever shown in the legend, never on the bar, and only when `showLegendValues` is on. In proportional mode the natural format is the default `"percentage"`; a cumulative bar usually wants `legendValueFormat="count"` with a `unit`, so the legend reads "117 datasets" rather than a share of a total the reader cannot see.
-
-## Selection
-
-Selection is controlled: the chart renders whatever `selectedIndices` holds and never changes it itself. Clicking a segment or a legend item calls `onSelectionChange` with the indices it thinks should be selected next, and the parent decides what to do with them. Without that callback the chart is inert: clicks still reach `onSegmentClick` and `onLegendItemClick`, but nothing is ever selected.
-
-`selectionBehavior` chooses what a selection does to the bar. `"dim"` drops everything unselected to 20% opacity, keeping the shape of the whole intact. `"hide"` removes unselected segments instead: in proportional mode the remaining ones regrow to fill the bar, and in cumulative mode they keep their size and the Remaining segment absorbs the difference.
-
-The badge beside the title tracks all of this on its own (the total when nothing is selected, "3 of 7" during a partial selection) unless you pass `badge` to say otherwise or `hideBadge` to remove it. It is drawn only when there is a `title` to sit next to.
-
-## Behavior and accessibility
-
-- Legend items are the accessible way into the chart. Each is a `role="button"` with a tab stop and an accessible name built from its label and value, and it reports its selected state through `aria-pressed`. They do not respond to Enter or Space, though, so keyboard users can reach the legend but cannot select from it. Where selection matters, give the chart a keyboard path of its own, as the example below does with a button.
-
-- Bar segments are pointer-only: they carry no role and take no focus, so everything they offer (hover, click, tooltip) has to be reachable somewhere else too. They are also thin by default (16px), which makes them a small target.
-
-- Nothing about a segment is conveyed by anything except its color, so the legend is what makes the chart readable. Turning `showLegend` off leaves a bar that cannot be interpreted at all unless the surrounding page names the parts.
-
-- Colors are generated when data items do not carry their own, using the cubehelix palette from `generateDiscreteColors` and adapting to the light and dark themes. The palette is regenerated whenever a new category appears, so a category's color is stable while the data holds still but not across datasets. Pass `color` on each item where a category must always look the same, or tune the generated set with `colorGeneratorOptions`.
-
-- Segments are keyed by `name`, which is what lets them animate in, out, and resize when the data changes. Two items sharing a name confuse that tracking, so names must be unique within a chart.
-
-- A data item may set `disabled` to opt out of every interaction, on both its segment and its legend item. Passing an empty `data` array is safe: the bar is drawn as an empty grey track.
-
-## Props
-
-The chart spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
-
-| Name                                              | Type                                                                | Default             | Description                                                                                                                                                            |
-| ------------------------------------------------- | ------------------------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`                                            | `StackedBarChartDataItem[]`                                         | - (required)        | The segments, in the order they are drawn. See the table below for the shape of an item.                                                                               |
-| `mode`                                            | `"proportional"` \| `"cumulative"`                                  | `"proportional"`    | Whether the bar shows a breakdown of the data (segments always fill it) or progress towards `maxAmount`.                                                               |
-| `maxAmount`                                       | `number`                                                            | sum of values       | Cumulative mode only. The value the full bar represents. Any difference between it and the sum of the data is drawn as the Remaining segment.                          |
-| `title`                                           | `string`                                                            | -                   | A heading above the bar. It is also what makes room for the badge; with no title, no badge is drawn.                                                                   |
-| `badge`                                           | `string`                                                            | the selection count | Overrides the badge text, which otherwise counts the data and the selection ("7", or "3 of 7").                                                                        |
-| `hideBadge`                                       | `boolean`                                                           | `false`             | Removes the badge, leaving the title on its own.                                                                                                                       |
-| `width`                                           | `number` \| `string`                                                | `"100%"`            | Any CSS width; a number is read as pixels. It sets the width of the whole chart, legend included.                                                                      |
-| `barHeight`                                       | `number`                                                            | `16`                | Height of the bar in pixels. Values below 1 are clamped to 1, so the bar cannot disappear.                                                                             |
-| `showLegend`                                      | `boolean`                                                           | `true`              | Draws the legend below the bar. It is the only place segment names appear, and the only part of the chart a keyboard can reach.                                        |
-| `showLegendValues`                                | `boolean`                                                           | `true`              | Shows each item's value beside its name in the legend.                                                                                                                 |
-| `legendValueFormat`                               | `"percentage"` \| `"count"`                                         | `"percentage"`      | `"percentage"` shows the segment's share of the bar, rounded. `"count"` shows the raw value followed by the item's `unit`, or the chart's `unit` if the item has none. |
-| `unit`                                            | `string`                                                            | -                   | The unit appended to counted values, for items that do not carry one of their own.                                                                                     |
-| `remainingLabel`                                  | `string`                                                            | `"Remaining"`       | Name of the grey gap segment in cumulative mode.                                                                                                                       |
-| `remainingUnit`                                   | `string`                                                            | the chart's unit    | A unit for the Remaining segment's value alone.                                                                                                                        |
-| `selectedIndices`                                 | `number[]`                                                          | `[]`                | Indices into `data` that are currently selected. The chart is controlled: it draws this and never changes it.                                                          |
-| `onSelectionChange`                               | `(indices: number[],` `items: StackedBarChartDataItem[])` `=> void` | -                   | Called with the next selection when a segment or legend item is clicked. Without it, clicking selects nothing.                                                         |
-| `selectionBehavior`                               | `"dim"` \| `"hide"`                                                 | `"dim"`             | What a selection does to the unselected segments: fade them to 20% opacity, or drop them from the bar and let the rest take the space.                                 |
-| `colorGeneratorOptions`                           | `DiscreteColorGeneratorOptions`                                     | -                   | Tunes the generated palette (start hue, rotations, lightness range, gamma). Items with their own `color` are untouched by it.                                          |
-| `onSegmentClick`                                  | `(item, index) => void`                                             | -                   | Fires on a segment click, alongside any selection change rather than instead of it.                                                                                    |
-| `onLegendItemClick`                               | `(item, index) => void`                                             | -                   | The same, for a click on a legend item.                                                                                                                                |
-| `onSegmentMouseEnter` `onSegmentMouseLeave`       | `(item, index) => void`                                             | -                   | Hover on the bar. The chart already syncs its own hover highlight between bar and legend; these are for driving something outside it.                                  |
-| `onLegendItemMouseEnter` `onLegendItemMouseLeave` | `(item, index) => void`                                             | -                   | The same, for hover on a legend item.                                                                                                                                  |
-
-### StackedBarChartDataItem
-
-| Name       | Type                       | Default          | Description                                                                                                                                   |
-| ---------- | -------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`     | `string`                   | - (required)     | The segment's label in the legend, and the key the animations track it by. Must be unique within the chart.                                   |
-| `value`    | `number`                   | - (required)     | The quantity the segment stands for.                                                                                                          |
-| `color`    | `string`                   | generated        | Any CSS color. Without it the segment takes a generated palette color, which can shift as categories come and go.                             |
-| `unit`     | `string`                   | the chart's unit | A unit for this item's counted value, for data that mixes units across categories.                                                            |
-| `disabled` | `boolean`                  | `false`          | Takes the segment and its legend item out of every interaction: no hover, no tooltip, no selection.                                           |
-| `tooltip`  | `TooltipTableContentProps` | -                | Content for a TooltipTable shown above the segment on hover. Use it for the breakdown behind the number; a segment without it has no tooltip. |
+```tsx
+import { StackedBarChart } from "@czi-sds/data-viz";
+```
 
 ## Code examples
 
@@ -362,12 +294,7 @@ const DATA = [
 function App() {
   return (
     <div className="app">
-      <StackedBarChart
-        barHeight={24}
-        data={DATA}
-        title="Modality"
-        width="420px"
-      />
+      <StackedBarChart data={DATA} title="Modality" width="420px" />
     </div>
   );
 }
@@ -468,3 +395,79 @@ function App() {
 
 export default App;
 ```
+
+## How it is built
+
+Unlike HeatmapChart, this chart does not use ECharts. It is plain DOM: the bar is a flex row of divs whose `flex-grow` carries each segment's share, so the chart inherits SDS colors and spacing directly and animates with CSS. Two things come from `@czi-sds/components`: the Legend below the bar, and the TooltipTable a segment opens when its data item carries a `tooltip`.
+
+## Modes
+
+`mode` decides what the full width of the bar means, and it is the first thing to settle when adding the chart.
+
+- `"proportional"` (the default) treats the data as the whole. Segments are sized against the sum of the values and always fill the bar, so the chart reads as a breakdown: how the total splits, not how large it is.
+
+- `"cumulative"` sizes segments against `maxAmount` instead, so the bar reads as progress towards a known total. When the values add up to less than `maxAmount`, the gap is drawn as a grey "Remaining" segment, which is labelled with `remainingLabel` and is never interactive. Leaving `maxAmount` off makes the mode behave like `"proportional"`, since the sum becomes the maximum and no gap is left.
+
+Values are only ever shown in the legend, never on the bar, and only when `showLegendValues` is on. In proportional mode the natural format is the default `"percentage"`; a cumulative bar usually wants `legendValueFormat="count"` with a `unit`, so the legend reads "117 datasets" rather than a share of a total the reader cannot see.
+
+## Selection
+
+Selection is controlled: the chart renders whatever `selectedIndices` holds and never changes it itself. Clicking a segment or a legend item calls `onSelectionChange` with the indices it thinks should be selected next, and the parent decides what to do with them. Without that callback the chart is inert: clicks still reach `onSegmentClick` and `onLegendItemClick`, but nothing is ever selected.
+
+`selectionBehavior` chooses what a selection does to the bar. `"dim"` drops everything unselected to 20% opacity, keeping the shape of the whole intact. `"hide"` removes unselected segments instead: in proportional mode the remaining ones regrow to fill the bar, and in cumulative mode they keep their size and the Remaining segment absorbs the difference.
+
+The badge beside the title tracks all of this on its own (the total when nothing is selected, "3 of 7" during a partial selection) unless you pass `badge` to say otherwise or `hideBadge` to remove it. It is drawn only when there is a `title` to sit next to.
+
+## Behavior and accessibility
+
+- Legend items are the accessible way into the chart. Each is a `role="button"` with a tab stop and an accessible name built from its label and value, and it reports its selected state through `aria-pressed`. They do not respond to Enter or Space, though, so keyboard users can reach the legend but cannot select from it. Where selection matters, give the chart a keyboard path of its own, as the example below does with a button.
+
+- Bar segments are pointer-only: they carry no role and take no focus, so everything they offer (hover, click, tooltip) has to be reachable somewhere else too. They are also thin by default (16px), which makes them a small target.
+
+- Nothing about a segment is conveyed by anything except its color, so the legend is what makes the chart readable. Turning `showLegend` off leaves a bar that cannot be interpreted at all unless the surrounding page names the parts.
+
+- Colors are generated when data items do not carry their own, using the cubehelix palette from `generateDiscreteColors` and adapting to the light and dark themes. The palette is regenerated whenever a new category appears, so a category's color is stable while the data holds still but not across datasets. Pass `color` on each item where a category must always look the same, or tune the generated set with `colorGeneratorOptions`.
+
+- Segments are keyed by `name`, which is what lets them animate in, out, and resize when the data changes. Two items sharing a name confuse that tracking, so names must be unique within a chart.
+
+- A data item may set `disabled` to opt out of every interaction, on both its segment and its legend item. Passing an empty `data` array is safe: the bar is drawn as an empty grey track.
+
+## Props
+
+The chart spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
+
+| Name                                              | Type                                                                | Default             | Description                                                                                                                                                            |
+| ------------------------------------------------- | ------------------------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`                                            | `StackedBarChartDataItem[]`                                         | - (required)        | The segments, in the order they are drawn. See the table below for the shape of an item.                                                                               |
+| `mode`                                            | `"proportional"` \| `"cumulative"`                                  | `"proportional"`    | Whether the bar shows a breakdown of the data (segments always fill it) or progress towards `maxAmount`.                                                               |
+| `maxAmount`                                       | `number`                                                            | sum of values       | Cumulative mode only. The value the full bar represents. Any difference between it and the sum of the data is drawn as the Remaining segment.                          |
+| `title`                                           | `string`                                                            | -                   | A heading above the bar. It is also what makes room for the badge; with no title, no badge is drawn.                                                                   |
+| `badge`                                           | `string`                                                            | the selection count | Overrides the badge text, which otherwise counts the data and the selection ("7", or "3 of 7").                                                                        |
+| `hideBadge`                                       | `boolean`                                                           | `false`             | Removes the badge, leaving the title on its own.                                                                                                                       |
+| `width`                                           | `number` \| `string`                                                | `"100%"`            | Any CSS width; a number is read as pixels. It sets the width of the whole chart, legend included.                                                                      |
+| `barHeight`                                       | `number`                                                            | `16`                | Height of the bar in pixels. Values below 1 are clamped to 1, so the bar cannot disappear.                                                                             |
+| `showLegend`                                      | `boolean`                                                           | `true`              | Draws the legend below the bar. It is the only place segment names appear, and the only part of the chart a keyboard can reach.                                        |
+| `showLegendValues`                                | `boolean`                                                           | `true`              | Shows each item's value beside its name in the legend.                                                                                                                 |
+| `legendValueFormat`                               | `"percentage"` \| `"count"`                                         | `"percentage"`      | `"percentage"` shows the segment's share of the bar, rounded. `"count"` shows the raw value followed by the item's `unit`, or the chart's `unit` if the item has none. |
+| `unit`                                            | `string`                                                            | -                   | The unit appended to counted values, for items that do not carry one of their own.                                                                                     |
+| `remainingLabel`                                  | `string`                                                            | `"Remaining"`       | Name of the grey gap segment in cumulative mode.                                                                                                                       |
+| `remainingUnit`                                   | `string`                                                            | the chart's unit    | A unit for the Remaining segment's value alone.                                                                                                                        |
+| `selectedIndices`                                 | `number[]`                                                          | `[]`                | Indices into `data` that are currently selected. The chart is controlled: it draws this and never changes it.                                                          |
+| `onSelectionChange`                               | `(indices: number[],` `items: StackedBarChartDataItem[])` `=> void` | -                   | Called with the next selection when a segment or legend item is clicked. Without it, clicking selects nothing.                                                         |
+| `selectionBehavior`                               | `"dim"` \| `"hide"`                                                 | `"dim"`             | What a selection does to the unselected segments: fade them to 20% opacity, or drop them from the bar and let the rest take the space.                                 |
+| `colorGeneratorOptions`                           | `DiscreteColorGeneratorOptions`                                     | -                   | Tunes the generated palette (start hue, rotations, lightness range, gamma). Items with their own `color` are untouched by it.                                          |
+| `onSegmentClick`                                  | `(item, index) => void`                                             | -                   | Fires on a segment click, alongside any selection change rather than instead of it.                                                                                    |
+| `onLegendItemClick`                               | `(item, index) => void`                                             | -                   | The same, for a click on a legend item.                                                                                                                                |
+| `onSegmentMouseEnter` `onSegmentMouseLeave`       | `(item, index) => void`                                             | -                   | Hover on the bar. The chart already syncs its own hover highlight between bar and legend; these are for driving something outside it.                                  |
+| `onLegendItemMouseEnter` `onLegendItemMouseLeave` | `(item, index) => void`                                             | -                   | The same, for hover on a legend item.                                                                                                                                  |
+
+### StackedBarChartDataItem
+
+| Name       | Type                       | Default          | Description                                                                                                                                   |
+| ---------- | -------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | `string`                   | - (required)     | The segment's label in the legend, and the key the animations track it by. Must be unique within the chart.                                   |
+| `value`    | `number`                   | - (required)     | The quantity the segment stands for.                                                                                                          |
+| `color`    | `string`                   | generated        | Any CSS color. Without it the segment takes a generated palette color, which can shift as categories come and go.                             |
+| `unit`     | `string`                   | the chart's unit | A unit for this item's counted value, for data that mixes units across categories.                                                            |
+| `disabled` | `boolean`                  | `false`          | Takes the segment and its legend item out of every interaction: no hover, no tooltip, no selection.                                           |
+| `tooltip`  | `TooltipTableContentProps` | -                | Content for a TooltipTable shown above the segment on hover. Use it for the breakdown behind the number; a segment without it has no tooltip. |

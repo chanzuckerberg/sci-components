@@ -6,63 +6,13 @@ A wrapping row of colored swatches and labels, for naming the parts of a chart a
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Legend).
 
-## How it is built
+## Import
 
-Legend has no MUI base. It is a flex row of divs that wraps, where each item is a swatch, a label, and an optional value, styled from SDS spacing and semantic colors. It draws nothing but itself: it holds no chart, and it is up to the page to keep the legend and whatever it describes in the same order and the same colors.
+**React TypeScript**
 
-It is also what StackedBarChart renders below its bar. Reach for Legend directly when the chart is your own (an ECharts plot, a map, a set of swatches in a table) and you want its key to match the rest of the system.
-
-## Items and colors
-
-`items` is the whole content of the legend, drawn in the order given. Each item needs a `name` and may carry a `value`, a `color`, and `disabled`. An item's index is its identity everywhere else in the API: selection, hover, and every callback are indices into this array. Items are therefore positional and names need not be unique.
-
-A swatch takes the first color it finds: the entry at its index in the `colors` prop, then the item's own `color`, then a grey fallback from the theme. The `colors` prop is for a palette computed for the whole set at once, which is what `generateDiscreteColors` produces and what needs regenerating when the theme changes; a color on the item is for a category that must always look the same. A short colors array is fine, since each index falls through on its own.
-
-Values are only drawn when `showValues` is on and the item has one. Numbers go through `toLocaleString`, so 3212 reads as "3,212"; strings are printed as given, which is the way to show a percentage, a unit, or a range.
-
-## Selection and hover
-
-Selection is controlled. The legend draws whatever `selectedIndices` holds and never changes it: clicking an item calls `onSelectionChange` with that index toggled in or out, and the parent decides what to do with it. Without the callback the legend is inert: clicks still reach `onItemClick`, but nothing is ever selected.
-
-Once anything is selected, the swatches of unselected items drop to 20% opacity. Hovering overrides that while the pointer is down the row: the hovered item and the selected ones stay solid, everything else dims. Labels never dim, so the legend stays readable as a list whatever is highlighted.
-
-`hoveredIndex` lets a chart highlight a legend item as the pointer moves over the matching mark, and `onItemMouseEnter` / `onItemMouseLeave` drive the same thing in the other direction. It only ever adds a highlight: the legend keeps its own hover state, and passing `null` is the same as not passing the prop at all rather than a way to clear one.
-
-## Behavior and accessibility
-
-- Each item is a `role="button"` with a tab stop and an accessible name built from its label and value, and it reports its selected state through `aria-pressed`. It does not respond to Enter or Space, though, so a keyboard reaches the legend but cannot select from it. Where selection matters, give the page a keyboard path of its own, as the selection example below does with buttons.
-
-- Every item is a button whether or not anything listens, so a legend used purely as a key still invites a click that does nothing. That is worth weighing against the alternative of drawing the key by hand.
-
-- Color is the only thing tying an item to the mark it names. Where the marks are close in hue, or the chart is read by someone who cannot separate them, the values in the legend are what make it interpretable, which is a reason to turn `showValues` on rather than leave it to the chart.
-
-- A disabled item takes no pointer events at all: no hover, no click, no dimming when its neighbours are selected. It is drawn exactly like the others, so anything a reader should know about it has to be in its name: "Other (17)", "Remaining". It also keeps its tab stop out of the tab order.
-
-- The legend wraps to as many rows as it needs and has no width of its own, so it takes the width of its container. Constrain that container to keep it the same width as the chart it belongs to.
-
-## Props
-
-The legend spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
-
-| Name                                  | Type                          | Default      | Description                                                                                                                                                       |
-| ------------------------------------- | ----------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `items`                               | `LegendItemData[]`            | - (required) | The items, drawn in order. Their indices are what selection, hover, and the callbacks refer to. See the table below for the shape of an item.                     |
-| `colors`                              | `string[]`                    | -            | A palette applied by index, taking priority over the color on an item. Entries past the end of the array fall back to the item's color, then to grey.             |
-| `showValues`                          | `boolean`                     | `false`      | Draws each item's value beside its name. Items without a value are unaffected.                                                                                    |
-| `selectedIndices`                     | `number[]`                    | `[]`         | Indices of the selected items. The legend is controlled: it draws this and never changes it.                                                                      |
-| `onSelectionChange`                   | `(indices: number[]) => void` | -            | Called with the next selection when an item is clicked, with that index toggled. Without it, clicking selects nothing.                                            |
-| `hoveredIndex`                        | `number \| null`              | -            | Highlights an item from outside, for syncing with a chart. It adds to the legend's own hover rather than replacing it, and `null` reads as no external highlight. |
-| `onItemClick`                         | `(item, index) => void`       | -            | Fires on a click, alongside any selection change rather than instead of it.                                                                                       |
-| `onItemMouseEnter` `onItemMouseLeave` | `(item, index) => void`       | -            | Hover on an item. The legend already dims its own swatches; these are for driving something outside it, such as a highlight on the chart.                         |
-
-### LegendItemData
-
-| Name       | Type               | Default      | Description                                                                                                                                  |
-| ---------- | ------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`     | `string`           | - (required) | The item's label, and the start of its accessible name. Names need not be unique, since items are addressed by index.                        |
-| `value`    | `number \| string` | -            | Shown after the name when `showValues` is on. Numbers are grouped by locale; a string is printed as given, for a unit or a percentage.       |
-| `color`    | `string`           | theme grey   | Any CSS color for the swatch. The `colors` prop overrides it, and without either the swatch is drawn in the theme's secondary ornament grey. |
-| `disabled` | `boolean`          | `false`      | Takes the item out of every interaction and out of the tab order, and keeps its swatch at full opacity while others dim.                     |
+```tsx
+import { Legend } from "@czi-sds/components";
+```
 
 ## Code examples
 
@@ -431,3 +381,61 @@ function App() {
 
 export default App;
 ```
+
+## How it is built
+
+Legend has no MUI base. It is a flex row of divs that wraps, where each item is a swatch, a label, and an optional value, styled from SDS spacing and semantic colors. It draws nothing but itself: it holds no chart, and it is up to the page to keep the legend and whatever it describes in the same order and the same colors.
+
+It is also what StackedBarChart renders below its bar. Reach for Legend directly when the chart is your own (an ECharts plot, a map, a set of swatches in a table) and you want its key to match the rest of the system.
+
+## Items and colors
+
+`items` is the whole content of the legend, drawn in the order given. Each item needs a `name` and may carry a `value`, a `color`, and `disabled`. An item's index is its identity everywhere else in the API: selection, hover, and every callback are indices into this array. Items are therefore positional and names need not be unique.
+
+A swatch takes the first color it finds: the entry at its index in the `colors` prop, then the item's own `color`, then a grey fallback from the theme. The `colors` prop is for a palette computed for the whole set at once, which is what `generateDiscreteColors` produces and what needs regenerating when the theme changes; a color on the item is for a category that must always look the same. A short colors array is fine, since each index falls through on its own.
+
+Values are only drawn when `showValues` is on and the item has one. Numbers go through `toLocaleString`, so 3212 reads as "3,212"; strings are printed as given, which is the way to show a percentage, a unit, or a range.
+
+## Selection and hover
+
+Selection is controlled. The legend draws whatever `selectedIndices` holds and never changes it: clicking an item calls `onSelectionChange` with that index toggled in or out, and the parent decides what to do with it. Without the callback the legend is inert: clicks still reach `onItemClick`, but nothing is ever selected.
+
+Once anything is selected, the swatches of unselected items drop to 20% opacity. Hovering overrides that while the pointer is down the row: the hovered item and the selected ones stay solid, everything else dims. Labels never dim, so the legend stays readable as a list whatever is highlighted.
+
+`hoveredIndex` lets a chart highlight a legend item as the pointer moves over the matching mark, and `onItemMouseEnter` / `onItemMouseLeave` drive the same thing in the other direction. It only ever adds a highlight: the legend keeps its own hover state, and passing `null` is the same as not passing the prop at all rather than a way to clear one.
+
+## Behavior and accessibility
+
+- Each item is a `role="button"` with a tab stop and an accessible name built from its label and value, and it reports its selected state through `aria-pressed`. It does not respond to Enter or Space, though, so a keyboard reaches the legend but cannot select from it. Where selection matters, give the page a keyboard path of its own, as the selection example below does with buttons.
+
+- Every item is a button whether or not anything listens, so a legend used purely as a key still invites a click that does nothing. That is worth weighing against the alternative of drawing the key by hand.
+
+- Color is the only thing tying an item to the mark it names. Where the marks are close in hue, or the chart is read by someone who cannot separate them, the values in the legend are what make it interpretable, which is a reason to turn `showValues` on rather than leave it to the chart.
+
+- A disabled item takes no pointer events at all: no hover, no click, no dimming when its neighbours are selected. It is drawn exactly like the others, so anything a reader should know about it has to be in its name: "Other (17)", "Remaining". It also keeps its tab stop out of the tab order.
+
+- The legend wraps to as many rows as it needs and has no width of its own, so it takes the width of its container. Constrain that container to keep it the same width as the chart it belongs to.
+
+## Props
+
+The legend spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
+
+| Name                                  | Type                          | Default      | Description                                                                                                                                                       |
+| ------------------------------------- | ----------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `items`                               | `LegendItemData[]`            | - (required) | The items, drawn in order. Their indices are what selection, hover, and the callbacks refer to. See the table below for the shape of an item.                     |
+| `colors`                              | `string[]`                    | -            | A palette applied by index, taking priority over the color on an item. Entries past the end of the array fall back to the item's color, then to grey.             |
+| `showValues`                          | `boolean`                     | `false`      | Draws each item's value beside its name. Items without a value are unaffected.                                                                                    |
+| `selectedIndices`                     | `number[]`                    | `[]`         | Indices of the selected items. The legend is controlled: it draws this and never changes it.                                                                      |
+| `onSelectionChange`                   | `(indices: number[]) => void` | -            | Called with the next selection when an item is clicked, with that index toggled. Without it, clicking selects nothing.                                            |
+| `hoveredIndex`                        | `number \| null`              | -            | Highlights an item from outside, for syncing with a chart. It adds to the legend's own hover rather than replacing it, and `null` reads as no external highlight. |
+| `onItemClick`                         | `(item, index) => void`       | -            | Fires on a click, alongside any selection change rather than instead of it.                                                                                       |
+| `onItemMouseEnter` `onItemMouseLeave` | `(item, index) => void`       | -            | Hover on an item. The legend already dims its own swatches; these are for driving something outside it, such as a highlight on the chart.                         |
+
+### LegendItemData
+
+| Name       | Type               | Default      | Description                                                                                                                                  |
+| ---------- | ------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`     | `string`           | - (required) | The item's label, and the start of its accessible name. Names need not be unique, since items are addressed by index.                        |
+| `value`    | `number \| string` | -            | Shown after the name when `showValues` is on. Numbers are grouped by locale; a string is printed as given, for a unit or a percentage.       |
+| `color`    | `string`           | theme grey   | Any CSS color for the swatch. The `colors` prop overrides it, and without either the swatch is drawn in the theme's secondary ornament grey. |
+| `disabled` | `boolean`          | `false`      | Takes the item out of every interaction and out of the tab order, and keeps its swatch at full opacity while others dim.                     |

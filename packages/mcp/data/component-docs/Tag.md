@@ -4,57 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Tag/index.tsx).
 
-## SDS vs MUI
+## Import
 
-SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS ones. SDS also splits the Chip's two jobs in two: Tag labels something, and TagFilter is the tag that can be removed. The differences from MUI are these:
+**React TypeScript**
 
-- `sdsStyle`: `"square"` or `"rounded"`. The component defaults to `"square"`, while the design guidance above treats rounded as the shape to reach for, so a tag that should match the rest of the system asks for it explicitly.
-
-- `sdsType`: `"primary"` (default) fills the tag with the intent color and sets the label white; `"secondary"` tints the fill, keeps the label in the intent color and draws a 1px border in it.
-
-- `sdsSize`: `"s"` (default) or `"l"`, which is the pair of sizes the design carries rather than MUI's `"small"` and `"medium"`. A large tag must have an icon: TypeScript rejects `sdsSize="l"` without one.
-
-- `color`: an SDS intent rather than one of MUI's palette names, since SDS hands MUI a fixed color of its own and uses this prop for the fill, the label and the icon. Six intents are available and a tag without the prop is neutral. It also takes a tuple of CSS colors for cases the intents do not cover.
-
-- `hover`: on by default, which draws the hover and pressed states and a pointer cursor on every tag, whether or not anything happens when it is clicked. Setting it to `false` removes those states by taking the tag out of pointer events entirely, which also stops a Tooltip wrapped around it from opening.
-
-- **Sizing and variant props do nothing:** MUI's `size` and `variant` set their classes but SDS pins the height, padding, fill and border, so a tag looks the same either way. MUI's `clickable` does have an effect, and not a useful one: it makes the tag a tab stop that does nothing. Pass `onClick` instead.
-
-- **onDelete works, but off-brand:** a Tag given `onDelete` does become deletable, drawing MUI's filled-circle Cancel icon rather than the SDS X. Reach for TagFilter when a tag needs to come off.
-
-## MUI Documentation
-
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-chip/).
-
-## Behavior and accessibility
-
-- A plain tag is a div holding its label, with no role and no tab stop, and is read as the text it shows. Giving it an `onClick` turns it into a button: it takes a tab stop, answers Enter and Space, and takes its accessible name from the label.
-
-- Because `hover` is on by default, a tag that only labels something still darkens under the pointer and shows a pointer cursor, which reads as clickable. `hover={false}` settles that, at the cost of all pointer events, so do not combine it with `onClick`, which would leave the tag reachable by keyboard but dead to the mouse.
-
-- Nothing about the intent reaches assistive technology: `color` is color only, so a negative tag needs a label that says what is wrong rather than relying on red.
-
-- A tag never wraps. It stretches to fit its label and then, in a container too narrow, cuts the label off with an ellipsis, leaving the rest of the text nowhere else to be read. A tag that can hold a long value belongs in a Tooltip carrying the whole string.
-
-- Icons are drawn at a fixed size (12px in a small tag, 24px in a large one) whatever size the Icon itself asks for, so match the Icon's `sdsSize` to the tag: `"s"` or `"xs"` for a small tag, `"l"` for a large one. Some icons exist at only one of those sizes, Star and Virus among them, and asking for one at a size it does not have renders nothing and logs an error.
-
-- The two-value form of a custom `color` leaves the icon white rather than coloring it with the label, so it vanishes on a light fill; a tag with an icon wants the three-value form. On a secondary tag, custom colors also draw the border in the fill color, which hides it. Contrast is yours to check. SDS only guarantees it for its own intents.
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
-
-| Name       | Type                                                                                                                                  | Default      | Description                                                                                                                                                                                 |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `label`    | `string`                                                                                                                              | - (required) | The tag's text, and its accessible name. It is cut off with an ellipsis rather than wrapped when there is not room for it.                                                                  |
-| `color`    | `"info"` \| `"positive"` \| `"notice"` \| `"negative"` \| `"neutral"` \| `"beta"` \| `[string, string]` \| `[string, string, string]` | `"neutral"`  | The tag's intent, given either as one of the six names or as CSS colors: 1. [label color, background color]: the icon stays white 2. [label color, background color, icon color]            |
-| `sdsType`  | `"primary"` \| `"secondary"`                                                                                                          | `"primary"`  | primary fills the tag with the intent color and sets the label white. secondary tints the fill and keeps the label and a 1px border in the intent color.                                    |
-| `sdsStyle` | `"square"` \| `"rounded"`                                                                                                             | `"square"`   | The shape of the tag. The design guidance treats rounded as the default for the system, so it is usually worth passing.                                                                     |
-| `sdsSize`  | `"s" \| "l"`                                                                                                                          | `"s"`        | The size of the tag: an 11px label with a 12px icon, or a 13px label with a 24px icon. A large tag has to have an icon.                                                                     |
-| `icon`     | `JSX.Element`                                                                                                                         | -            | An icon on the leading edge, usually an SDS Icon. It is drawn at the tag's icon size whatever size it asks for, so match its `sdsSize` to the tag.                                          |
-| `hover`    | `boolean`                                                                                                                             | `true`       | Whether the tag responds to the pointer with a darker fill and a pointer cursor. False removes the tag from pointer events altogether, which also keeps a surrounding Tooltip from opening. |
-| `onClick`  | `(event) => void`                                                                                                                     | -            | MUI's prop. Makes the tag a button: a tab stop that answers Enter and Space.                                                                                                                |
-| `onDelete` | `(event) => void`                                                                                                                     | -            | MUI's prop. Adds a delete control, drawn with MUI's Cancel icon rather than the SDS X. Use TagFilter for a removable tag instead.                                                           |
+```tsx
+import { Tag } from "@czi-sds/components";
+```
 
 ## Code examples
 
@@ -637,3 +593,55 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS ones. SDS also splits the Chip's two jobs in two: Tag labels something, and TagFilter is the tag that can be removed. The differences from MUI are these:
+
+- `sdsStyle`: `"square"` or `"rounded"`. The component defaults to `"square"`, while the design guidance above treats rounded as the shape to reach for, so a tag that should match the rest of the system asks for it explicitly.
+
+- `sdsType`: `"primary"` (default) fills the tag with the intent color and sets the label white; `"secondary"` tints the fill, keeps the label in the intent color and draws a 1px border in it.
+
+- `sdsSize`: `"s"` (default) or `"l"`, which is the pair of sizes the design carries rather than MUI's `"small"` and `"medium"`. A large tag must have an icon: TypeScript rejects `sdsSize="l"` without one.
+
+- `color`: an SDS intent rather than one of MUI's palette names, since SDS hands MUI a fixed color of its own and uses this prop for the fill, the label and the icon. Six intents are available and a tag without the prop is neutral. It also takes a tuple of CSS colors for cases the intents do not cover.
+
+- `hover`: on by default, which draws the hover and pressed states and a pointer cursor on every tag, whether or not anything happens when it is clicked. Setting it to `false` removes those states by taking the tag out of pointer events entirely, which also stops a Tooltip wrapped around it from opening.
+
+- **Sizing and variant props do nothing:** MUI's `size` and `variant` set their classes but SDS pins the height, padding, fill and border, so a tag looks the same either way. MUI's `clickable` does have an effect, and not a useful one: it makes the tag a tab stop that does nothing. Pass `onClick` instead.
+
+- **onDelete works, but off-brand:** a Tag given `onDelete` does become deletable, drawing MUI's filled-circle Cancel icon rather than the SDS X. Reach for TagFilter when a tag needs to come off.
+
+## MUI Documentation
+
+Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-chip/).
+
+## Behavior and accessibility
+
+- A plain tag is a div holding its label, with no role and no tab stop, and is read as the text it shows. Giving it an `onClick` turns it into a button: it takes a tab stop, answers Enter and Space, and takes its accessible name from the label.
+
+- Because `hover` is on by default, a tag that only labels something still darkens under the pointer and shows a pointer cursor, which reads as clickable. `hover={false}` settles that, at the cost of all pointer events, so do not combine it with `onClick`, which would leave the tag reachable by keyboard but dead to the mouse.
+
+- Nothing about the intent reaches assistive technology: `color` is color only, so a negative tag needs a label that says what is wrong rather than relying on red.
+
+- A tag never wraps. It stretches to fit its label and then, in a container too narrow, cuts the label off with an ellipsis, leaving the rest of the text nowhere else to be read. A tag that can hold a long value belongs in a Tooltip carrying the whole string.
+
+- Icons are drawn at a fixed size (12px in a small tag, 24px in a large one) whatever size the Icon itself asks for, so match the Icon's `sdsSize` to the tag: `"s"` or `"xs"` for a small tag, `"l"` for a large one. Some icons exist at only one of those sizes, Star and Virus among them, and asking for one at a size it does not have renders nothing and logs an error.
+
+- The two-value form of a custom `color` leaves the icon white rather than coloring it with the label, so it vanishes on a light fill; a tag with an icon wants the three-value form. On a secondary tag, custom colors also draw the border in the fill color, which hides it. Contrast is yours to check. SDS only guarantees it for its own intents.
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name       | Type                                                                                                                                  | Default      | Description                                                                                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`    | `string`                                                                                                                              | - (required) | The tag's text, and its accessible name. It is cut off with an ellipsis rather than wrapped when there is not room for it.                                                                  |
+| `color`    | `"info"` \| `"positive"` \| `"notice"` \| `"negative"` \| `"neutral"` \| `"beta"` \| `[string, string]` \| `[string, string, string]` | `"neutral"`  | The tag's intent, given either as one of the six names or as CSS colors: 1. [label color, background color]: the icon stays white 2. [label color, background color, icon color]            |
+| `sdsType`  | `"primary"` \| `"secondary"`                                                                                                          | `"primary"`  | primary fills the tag with the intent color and sets the label white. secondary tints the fill and keeps the label and a 1px border in the intent color.                                    |
+| `sdsStyle` | `"square"` \| `"rounded"`                                                                                                             | `"square"`   | The shape of the tag. The design guidance treats rounded as the default for the system, so it is usually worth passing.                                                                     |
+| `sdsSize`  | `"s" \| "l"`                                                                                                                          | `"s"`        | The size of the tag: an 11px label with a 12px icon, or a 13px label with a 24px icon. A large tag has to have an icon.                                                                     |
+| `icon`     | `JSX.Element`                                                                                                                         | -            | An icon on the leading edge, usually an SDS Icon. It is drawn at the tag's icon size whatever size it asks for, so match its `sdsSize` to the tag.                                          |
+| `hover`    | `boolean`                                                                                                                             | `true`       | Whether the tag responds to the pointer with a darker fill and a pointer cursor. False removes the tag from pointer events altogether, which also keeps a surrounding Tooltip from opening. |
+| `onClick`  | `(event) => void`                                                                                                                     | -            | MUI's prop. Makes the tag a button: a tab stop that answers Enter and Space.                                                                                                                |
+| `onDelete` | `(event) => void`                                                                                                                     | -            | MUI's prop. Adds a delete control, drawn with MUI's Cancel icon rather than the SDS X. Use TagFilter for a removable tag instead.                                                           |

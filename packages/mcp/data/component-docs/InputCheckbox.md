@@ -4,47 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputCheckbox/index.tsx).
 
-## SDS vs MUI
+## Import
 
-The following props and options differ in how they function across the MUI Checkbox component and the SDS InputCheckbox component:
+**React TypeScript**
 
-- `size`: Has no effect in SDS. The box is always 16px.
-
-- `color`: Not accepted. SDS derives the color from `intent` instead.
-
-- `intent`: This is an SDS-specific prop that colors the border of the empty box (`"default"`, `"positive"`, `"notice"`, or `"negative"`). It does not change the checked box, which always uses the accent color.
-
-- `labelPlacement`: Has no effect in SDS. The label always sits to the right of the box.
-
-- `icon`: SDS's InputCheckbox is not currently set up to support icons (if you add one as shown in the [MUI documentation](https://mui.com/material-ui/react-checkbox/#icon), it will replace the empty checkbox square, but clicking the icon will result in the checked checkbox square appearing in the icon's place)
-
-- `stage` and checkbox state: This is the SDS prop that sets the checkbox's state as `"unchecked"`, `"checked"`, or `"indeterminate"`. It pins the state, so on its own the checkbox will not respond to clicks; pass an `onChange` handler and recompute `stage` from your own state to make it interactive, as the indeterminate example below does. Leave `stage` out entirely to let the checkbox manage its own state.
-
-- `defaultChecked` and `indeterminate`: Not accepted as top-level props. Use `stage`, or pass them straight to the underlying MUI checkbox through `checkboxProps`.
-
-- `caption`: This is an SDS-specific prop, which takes a string of text that is displayed below the primary label text.
-
-The following props are available for both the MUI and SDS components: `checked`, `onChange`, `required`, `value`, and `disabled`.
-
-## MUI Documentation
-
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-checkbox/).
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
-
-| Name            | Type                                                      | Default     | Description                                                                                                                                                                                                    |
-| --------------- | --------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `caption`       | `string`                                                  | -           | The caption of the InputCheckbox appears beneath the label in a lighter text color.                                                                                                                            |
-| `checkboxProps` | `Partial<MUICheckboxProps>`                               | `{}`        | Directly pass these props to the underlying MUI checkbox.                                                                                                                                                      |
-| `label`         | `ReactNode`                                               | -           | The label of the InputCheckbox. When omitted, the box renders on its own with no label element.                                                                                                                |
-| `stage`         | `"checked"` \| `"unchecked"` \| `"indeterminate"`         | -           | Sets the state of the checkbox. It overrides `checked`, so a checkbox with a `stage` only changes when you recompute the `stage` from an `onChange` handler. Omit it to let the checkbox manage its own state. |
-| `intent`        | `"default"` \| `"notice"` \| `"negative"` \| `"positive"` | `"default"` | Colors the border of the empty box. The checked box always uses the accent color.                                                                                                                              |
-| `checked`       | `bool`                                                    | -           | Controls the checkbox, as in MUI. Ignored when `stage` is set.                                                                                                                                                 |
-| `onChange`      | `(event, checked) => void`                                | -           | Called when the user toggles the checkbox.                                                                                                                                                                     |
-| `disabled`      | `bool`                                                    | `false`     | If `true`, the component is disabled.                                                                                                                                                                          |
-| `classes`       | `object`                                                  | `{}`        | Class names for the internal elements: `root`, `labelCaptionContainer`, `label`, `caption`, `checkbox`, `checkboxCheckedIcon`, `checkboxDefaultIcon`, and `checkboxIndeterminateIcon`.                         |
+```tsx
+import { InputCheckbox } from "@czi-sds/components";
+```
 
 ## Code examples
 
@@ -195,3 +161,45 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+The following props and options differ in how they function across the MUI Checkbox component and the SDS InputCheckbox component:
+
+- `size`: Has no effect in SDS. The box is always 16px.
+
+- `color`: Not accepted. SDS derives the color from `intent` instead.
+
+- `intent`: This is an SDS-specific prop that colors the border of the empty box (`"default"`, `"positive"`, `"notice"`, or `"negative"`). It does not change the checked box, which always uses the accent color.
+
+- `labelPlacement`: Has no effect in SDS. The label always sits to the right of the box.
+
+- `icon`: SDS's InputCheckbox is not currently set up to support icons (if you add one as shown in the [MUI documentation](https://mui.com/material-ui/react-checkbox/#icon), it will replace the empty checkbox square, but clicking the icon will result in the checked checkbox square appearing in the icon's place)
+
+- `stage` and checkbox state: This is the SDS prop that sets the checkbox's state as `"unchecked"`, `"checked"`, or `"indeterminate"`. It pins the state, so on its own the checkbox will not respond to clicks; pass an `onChange` handler and recompute `stage` from your own state to make it interactive, as the indeterminate example below does. Leave `stage` out entirely to let the checkbox manage its own state.
+
+- `defaultChecked` and `indeterminate`: Not accepted as top-level props. Use `stage`, or pass them straight to the underlying MUI checkbox through `checkboxProps`.
+
+- `caption`: This is an SDS-specific prop, which takes a string of text that is displayed below the primary label text.
+
+The following props are available for both the MUI and SDS components: `checked`, `onChange`, `required`, `value`, and `disabled`.
+
+## MUI Documentation
+
+Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-checkbox/).
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name            | Type                                                      | Default     | Description                                                                                                                                                                                                    |
+| --------------- | --------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `caption`       | `string`                                                  | -           | The caption of the InputCheckbox appears beneath the label in a lighter text color.                                                                                                                            |
+| `checkboxProps` | `Partial<MUICheckboxProps>`                               | `{}`        | Directly pass these props to the underlying MUI checkbox.                                                                                                                                                      |
+| `label`         | `ReactNode`                                               | -           | The label of the InputCheckbox. When omitted, the box renders on its own with no label element.                                                                                                                |
+| `stage`         | `"checked"` \| `"unchecked"` \| `"indeterminate"`         | -           | Sets the state of the checkbox. It overrides `checked`, so a checkbox with a `stage` only changes when you recompute the `stage` from an `onChange` handler. Omit it to let the checkbox manage its own state. |
+| `intent`        | `"default"` \| `"notice"` \| `"negative"` \| `"positive"` | `"default"` | Colors the border of the empty box. The checked box always uses the accent color.                                                                                                                              |
+| `checked`       | `bool`                                                    | -           | Controls the checkbox, as in MUI. Ignored when `stage` is set.                                                                                                                                                 |
+| `onChange`      | `(event, checked) => void`                                | -           | Called when the user toggles the checkbox.                                                                                                                                                                     |
+| `disabled`      | `bool`                                                    | `false`     | If `true`, the component is disabled.                                                                                                                                                                          |
+| `classes`       | `object`                                                  | `{}`        | Class names for the internal elements: `root`, `labelCaptionContainer`, `label`, `caption`, `checkbox`, `checkboxCheckedIcon`, `checkboxDefaultIcon`, and `checkboxIndeterminateIcon`.                         |

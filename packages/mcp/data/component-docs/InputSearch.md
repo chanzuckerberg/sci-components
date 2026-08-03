@@ -4,6 +4,39 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputSearch/index.tsx).
 
+## Import
+
+**React TypeScript**
+
+```tsx
+import { InputSearch } from "@czi-sds/components";
+```
+
+## Code examples
+
+### **Default InputSearch**
+
+This example has the minimum props needed for the InputSearch component.
+
+**Example: DefaultInputSearch**
+
+```tsx
+import { InputSearch } from "@czi-sds/components";
+import { Box } from "@mui/material";
+
+function App() {
+  return (
+    <div className="app">
+      <Box sx={{ width: 300 }}>
+        <InputSearch id="search-input" label="search" placeholder="Search" />
+      </Box>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ## SDS vs MUI
 
 SDS's InputSearch is built on MUI's TextField component, with `type="search"`. It also has the SDS "search" icon automatically included, aligned to the right end of the field.
@@ -45,28 +78,3 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `placeholder`  | `string`                                                  | `"Search"`                                   | Sets the placeholder text displayed within the input element.                                          |
 | `sdsStyle`     | `"rounded"` \| `"square"`                                 | `"square"`                                   | Determines the visual style of the component, with options for rounded or square design.               |
 | `value`        | `string`                                                  | -                                            | The value of the `input` element, required for a controlled component.                                 |
-
-## Code examples
-
-### **Default InputSearch**
-
-This example has the minimum props needed for the InputSearch component.
-
-**Example: DefaultInputSearch**
-
-```tsx
-import { InputSearch } from "@czi-sds/components";
-import { Box } from "@mui/material";
-
-function App() {
-  return (
-    <div className="app">
-      <Box sx={{ width: 300 }}>
-        <InputSearch id="search-input" label="search" placeholder="Search" />
-      </Box>
-    </div>
-  );
-}
-
-export default App;
-```

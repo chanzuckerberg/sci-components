@@ -9,6 +9,60 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { InputCheckbox } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default InputCheckbox</strong></h3>
+<p>
+  This example has the minimum props needed for the InputCheckbox component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/DefaultInputCheckbox"
+></div>
+<h3>InputCheckbox + Caption</h3>
+<p>
+  This example shows the InputCheckbox with an additional caption beneath the
+  label, presented in a lighter text color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/InputCheckboxCaption"
+></div>
+<h3>InputCheckbox stages</h3>
+<p>
+  The three stages a checkbox can be in, plus a disabled one. Because
+  <code>stage</code> pins the state, these examples do not respond to clicks.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/InputCheckboxStages"
+></div>
+<h3>InputCheckbox intents</h3>
+<p>
+  Intent colors the border of the empty box. Check any of these and the box
+  turns the same accent color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/InputCheckboxIntents"
+></div>
+<h3>Indeterminate Checkbox</h3>
+<p>
+  This example demonstrates a parent checkbox that is indeterminate while only
+  some of its children are checked, and checked once all of them are. Since it
+  recomputes <code>stage</code> from its own state on every change, the
+  checkboxes stay interactive.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/IndeterminateCheckbox"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The following props and options differ in how they function across the MUI
@@ -236,50 +290,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default InputCheckbox</strong></h3>
-<p>
-  This example has the minimum props needed for the InputCheckbox component.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputCheckbox/DefaultInputCheckbox"
-></div>
-<h3>InputCheckbox + Caption</h3>
-<p>
-  This example shows the InputCheckbox with an additional caption beneath the
-  label, presented in a lighter text color.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputCheckbox/InputCheckboxCaption"
-></div>
-<h3>InputCheckbox stages</h3>
-<p>
-  The three stages a checkbox can be in, plus a disabled one. Because
-  <code>stage</code> pins the state, these examples do not respond to clicks.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputCheckbox/InputCheckboxStages"
-></div>
-<h3>InputCheckbox intents</h3>
-<p>
-  Intent colors the border of the empty box. Check any of these and the box
-  turns the same accent color.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputCheckbox/InputCheckboxIntents"
-></div>
-<h3>Indeterminate Checkbox</h3>
-<p>
-  This example demonstrates a parent checkbox that is indeterminate while only
-  some of its children are checked, and checked once all of them are. Since it
-  recomputes <code>stage</code> from its own state on every change, the
-  checkboxes stay interactive.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputCheckbox/IndeterminateCheckbox"
-></div>

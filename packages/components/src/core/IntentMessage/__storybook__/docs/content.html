@@ -9,6 +9,71 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { IntentMessage } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Intent Message</h3>
+<p>
+  The usual shape: the Input as <code>children</code>, one message, and the
+  border turned on. The Input carries the same intent so its own styling
+  matches.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/DefaultIntentMessage"
+></div>
+<h3>The Three Intents</h3>
+<p>
+  Each intent has its own color and default icon. These are rendered without
+  children to show the message row on its own.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/IntentMessageIntents"
+></div>
+<h3>Stacked Messages</h3>
+<p>
+  Several messages can describe one Input. Both of these are given the same
+  array; the first sorts by severity, the second has <code>autoOrder</code> off
+  and keeps the order as written.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/StackedIntentMessages"
+></div>
+<h3>Custom Ordering</h3>
+<p>
+  <code>orderBy</code> changes the ranking. Reversing it here moves the positive
+  message to the top and switches the border to the positive color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/IntentMessageOrderBy"
+></div>
+<h3>Custom Icons</h3>
+<p>
+  An icon can be given by name or as an element. Names are rendered at xs, so
+  pass an element when you need a different size.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/IntentMessageCustomIcons"
+></div>
+<h3>Announcing the Message</h3>
+<p>
+  To connect the message to the Input for assistive technology, keep them as
+  siblings and reference the message container from the Input's
+  <code>aria-describedby</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/AccessibleIntentMessage"
+></div>
 <h2>How it differs from Figma</h2>
 <p>
   The guidelines above describe two Figma constructs: an Intent Message built
@@ -248,61 +313,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default Intent Message</h3>
-<p>
-  The usual shape: the Input as <code>children</code>, one message, and the
-  border turned on. The Input carries the same intent so its own styling
-  matches.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/IntentMessage/DefaultIntentMessage"
-></div>
-<h3>The Three Intents</h3>
-<p>
-  Each intent has its own color and default icon. These are rendered without
-  children to show the message row on its own.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/IntentMessage/IntentMessageIntents"
-></div>
-<h3>Stacked Messages</h3>
-<p>
-  Several messages can describe one Input. Both of these are given the same
-  array; the first sorts by severity, the second has <code>autoOrder</code> off
-  and keeps the order as written.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/IntentMessage/StackedIntentMessages"
-></div>
-<h3>Custom Ordering</h3>
-<p>
-  <code>orderBy</code> changes the ranking. Reversing it here moves the positive
-  message to the top and switches the border to the positive color.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/IntentMessage/IntentMessageOrderBy"
-></div>
-<h3>Custom Icons</h3>
-<p>
-  An icon can be given by name or as an element. Names are rendered at xs, so
-  pass an element when you need a different size.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/IntentMessage/IntentMessageCustomIcons"
-></div>
-<h3>Announcing the Message</h3>
-<p>
-  To connect the message to the Input for assistive technology, keep them as
-  siblings and reference the message container from the Input's
-  <code>aria-describedby</code>.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/IntentMessage/AccessibleIntentMessage"
-></div>

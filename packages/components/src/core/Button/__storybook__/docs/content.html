@@ -9,6 +9,51 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Button } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Button</strong></h3>
+<p>
+  This example has the minimum props needed for the Button component. Without
+  any SDS props it renders as a large, solid, primary button.
+</p>
+<div class="sds-doc-example" data-example="core/Button/DefaultButton"></div>
+<h3>Button styles</h3>
+<p>
+  This example shows the three styles available through <code>sdsStyle</code>,
+  from most to least emphasis.
+</p>
+<div class="sds-doc-example" data-example="core/Button/ButtonStyles"></div>
+<h3>Button types</h3>
+<p>
+  This example shows the three color schemes available through
+  <code>sdsType</code>. Each one can be combined with any of the styles above.
+</p>
+<div class="sds-doc-example" data-example="core/Button/ButtonTypes"></div>
+<h3>Button sizes</h3>
+<p>
+  This example shows the three sizes available through the <code>size</code>
+  prop.
+</p>
+<div class="sds-doc-example" data-example="core/Button/ButtonSizes"></div>
+<h3>Button + Icon</h3>
+<p>
+  This example shows a Secondary button component with an icon, placed before
+  the label with <code>startIcon</code> and after it with <code>endIcon</code>.
+</p>
+<div class="sds-doc-example" data-example="core/Button/ButtonIcon"></div>
+<h3>Icon Button</h3>
+<p>
+  This example shows icon-only buttons, created by passing a single Icon
+  component as the button's child. Each one needs an <code>aria-label</code>,
+  since there is no text for screen readers to announce.
+</p>
+<div class="sds-doc-example" data-example="core/Button/IconButton"></div>
 <h2>SDS vs MUI</h2>
 <p>
   The following props are available to MUI's Button component, but produce no
@@ -301,41 +346,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Button</strong></h3>
-<p>
-  This example has the minimum props needed for the Button component. Without
-  any SDS props it renders as a large, solid, primary button.
-</p>
-<div class="sds-doc-example" data-example="core/Button/DefaultButton"></div>
-<h3>Button styles</h3>
-<p>
-  This example shows the three styles available through <code>sdsStyle</code>,
-  from most to least emphasis.
-</p>
-<div class="sds-doc-example" data-example="core/Button/ButtonStyles"></div>
-<h3>Button types</h3>
-<p>
-  This example shows the three color schemes available through
-  <code>sdsType</code>. Each one can be combined with any of the styles above.
-</p>
-<div class="sds-doc-example" data-example="core/Button/ButtonTypes"></div>
-<h3>Button sizes</h3>
-<p>
-  This example shows the three sizes available through the <code>size</code>
-  prop.
-</p>
-<div class="sds-doc-example" data-example="core/Button/ButtonSizes"></div>
-<h3>Button + Icon</h3>
-<p>
-  This example shows a Secondary button component with an icon, placed before
-  the label with <code>startIcon</code> and after it with <code>endIcon</code>.
-</p>
-<div class="sds-doc-example" data-example="core/Button/ButtonIcon"></div>
-<h3>Icon Button</h3>
-<p>
-  This example shows icon-only buttons, created by passing a single Icon
-  component as the button's child. Each one needs an <code>aria-label</code>,
-  since there is no text for screen readers to announce.
-</p>
-<div class="sds-doc-example" data-example="core/Button/IconButton"></div>

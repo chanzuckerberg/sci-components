@@ -9,6 +9,72 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { NavigationHeader } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Most headers below set <code>isSticky={false}</code> so they stay inside
+    their example rather than pinning themselves to the top of this page.
+    Because they are narrower than a real page, some collapse to the narrow
+    layout with a hamburger; widen the window to see the wide layout. Overlays
+    such as the narrow layout's drawer expect a real viewport, so they cover
+    this page instead of their example unless the example holds them in, as the
+    drawer-style one below does.
+  </p>
+</div>
+<h3>Default header</h3>
+<p>
+  A dropdown-style header with a logo, title, tag, a text item and a dropdown
+  item, one secondary item, and two buttons.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationHeader/NavigationHeaderDefault"
+  data-example-padding="none"
+></div>
+<h3>Grouped dropdown items</h3>
+<p>
+  Giving items a section name groups them under headings with a divider between
+  groups. Only the label and the section are used in this style, so there is no
+  point giving these items icons or details.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationHeader/NavigationHeaderSections"
+  data-example-padding="none"
+></div>
+<h3>Drawer style on a dark header</h3>
+<p>
+  Hovering the nav item opens a panel instead of a menu, and this is the style
+  that renders item icons and the section's actions. The panel is a MUI Drawer
+  that fixes itself to the viewport, so this example adds a theme override and
+  some CSS to keep it inside the frame; a page whose header spans the viewport
+  needs neither.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationHeader/NavigationHeaderDrawer"
+  data-example-padding="none"
+></div>
+<h3>Banner above the header</h3>
+<p>
+  The header sits below whatever <code>topComponentSlot</code> holds and
+  re-measures it when it changes, so dismissing this banner closes the gap.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationHeader/NavigationHeaderTopSlot"
+  data-example-padding="none"
+></div>
 <h2>Behavior notes</h2>
 <ul class="sds-doc-bullet-list">
   <li>
@@ -796,62 +862,3 @@
     <td><p>How many columns of the panel this section occupies.</p></td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<div
-  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    Most headers below set <code>isSticky={false}</code> so they stay inside
-    their example rather than pinning themselves to the top of this page.
-    Because they are narrower than a real page, some collapse to the narrow
-    layout with a hamburger; widen the window to see the wide layout. Overlays
-    such as the narrow layout's drawer expect a real viewport, so they cover
-    this page instead of their example unless the example holds them in, as the
-    drawer-style one below does.
-  </p>
-</div>
-<h3>Default header</h3>
-<p>
-  A dropdown-style header with a logo, title, tag, a text item and a dropdown
-  item, one secondary item, and two buttons.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationHeader/NavigationHeaderDefault"
-  data-example-padding="none"
-></div>
-<h3>Grouped dropdown items</h3>
-<p>
-  Giving items a section name groups them under headings with a divider between
-  groups. Only the label and the section are used in this style, so there is no
-  point giving these items icons or details.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationHeader/NavigationHeaderSections"
-  data-example-padding="none"
-></div>
-<h3>Drawer style on a dark header</h3>
-<p>
-  Hovering the nav item opens a panel instead of a menu, and this is the style
-  that renders item icons and the section's actions. The panel is a MUI Drawer
-  that fixes itself to the viewport, so this example adds a theme override and
-  some CSS to keep it inside the frame; a page whose header spans the viewport
-  needs neither.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationHeader/NavigationHeaderDrawer"
-  data-example-padding="none"
-></div>
-<h3>Banner above the header</h3>
-<p>
-  The header sits below whatever <code>topComponentSlot</code> holds and
-  re-measures it when it changes, so dismissing this banner closes the gap.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationHeader/NavigationHeaderTopSlot"
-  data-example-padding="none"
-></div>

@@ -9,6 +9,88 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Notification } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Notification</h3>
+<p>
+  This example has the minimum props needed for the Notification component. With
+  no <code>onClose</code> and no <code>autoDismiss</code> it is persistent: it
+  stays until the surrounding page stops rendering it.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/DefaultNotification"
+></div>
+<h3>Notification intents</h3>
+<p>
+  This example shows the five intents, each with the icon the Notification picks
+  by default.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/NotificationIntents"
+></div>
+<h3>Dismissible Notification</h3>
+<p>
+  Passing <code>onClose</code> adds a close button in the top right corner,
+  giving users a familiar way to remove the Notification from view. The
+  Notification hides itself when that button is clicked, so
+  <code>onClose</code> is for keeping your own state in sync; setting
+  <code>dismissed</code> back to <code>false</code> is what brings it back.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/DismissibleNotification"
+></div>
+<h3>Notification with a button</h3>
+<p>
+  A Notification can carry a single action button beneath its content, most
+  often to dismiss it or to send the user somewhere related. The button appears
+  as soon as <code>buttonOnClick</code> is given, sits on the right unless
+  <code>buttonPosition</code> says otherwise, and leaves dismissing to the
+  handler.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/NotificationWithAButton"
+></div>
+<h3>Notification with extra content</h3>
+<p>
+  This example passes more than a single line as <code>children</code>. The
+  first line reads as the title, and the element beneath it holds the rest of
+  the message; any component can go there in place of the text.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/NotificationWithExtraContent"
+></div>
+<h3>Notification with a custom icon</h3>
+<p>
+  This example replaces the icon that the <code>intent</code> would otherwise
+  choose. The <code>icon</code> prop takes either an SDS icon name or an
+  element.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/NotificationWithACustomIcon"
+></div>
+<h3>Notification with auto dismiss</h3>
+<p>
+  This example dismisses itself after four seconds. Pass
+  <code>true</code> instead of a number to use the default delay of
+  <code>8000</code>
+  milliseconds.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Notification/NotificationWithAutoDismiss"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The SDS Notification component is built upon the MUI Alert component (as is
@@ -303,78 +385,3 @@ icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default Notification</h3>
-<p>
-  This example has the minimum props needed for the Notification component. With
-  no <code>onClose</code> and no <code>autoDismiss</code> it is persistent: it
-  stays until the surrounding page stops rendering it.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/DefaultNotification"
-></div>
-<h3>Notification intents</h3>
-<p>
-  This example shows the five intents, each with the icon the Notification picks
-  by default.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/NotificationIntents"
-></div>
-<h3>Dismissible Notification</h3>
-<p>
-  Passing <code>onClose</code> adds a close button in the top right corner,
-  giving users a familiar way to remove the Notification from view. The
-  Notification hides itself when that button is clicked, so
-  <code>onClose</code> is for keeping your own state in sync; setting
-  <code>dismissed</code> back to <code>false</code> is what brings it back.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/DismissibleNotification"
-></div>
-<h3>Notification with a button</h3>
-<p>
-  A Notification can carry a single action button beneath its content, most
-  often to dismiss it or to send the user somewhere related. The button appears
-  as soon as <code>buttonOnClick</code> is given, sits on the right unless
-  <code>buttonPosition</code> says otherwise, and leaves dismissing to the
-  handler.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/NotificationWithAButton"
-></div>
-<h3>Notification with extra content</h3>
-<p>
-  This example passes more than a single line as <code>children</code>. The
-  first line reads as the title, and the element beneath it holds the rest of
-  the message; any component can go there in place of the text.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/NotificationWithExtraContent"
-></div>
-<h3>Notification with a custom icon</h3>
-<p>
-  This example replaces the icon that the <code>intent</code> would otherwise
-  choose. The <code>icon</code> prop takes either an SDS icon name or an
-  element.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/NotificationWithACustomIcon"
-></div>
-<h3>Notification with auto dismiss</h3>
-<p>
-  This example dismisses itself after four seconds. Pass
-  <code>true</code> instead of a number to use the default delay of
-  <code>8000</code>
-  milliseconds.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Notification/NotificationWithAutoDismiss"
-></div>

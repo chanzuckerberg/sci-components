@@ -4,20 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/MenuItem/index.tsx).
 
-## Props
+## Import
 
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+**React TypeScript**
 
-| Name            | Type                                 | Default         | Description                                                                                                                                                                             |
-| --------------- | ------------------------------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `column`        | `string`                             | -               | The `column` prop determines the content displayed in the right column of the menu item. This content can be customized to provide additional information or context for the menu item. |
-| `children`      | `node`                               | -               | Main content of the MenuItem.                                                                                                                                                           |
-| `disabled`      | `bool`                               | `false`         | When set to `true`, the `disabled` prop indicates that the menu item is disabled and not interactable.                                                                                  |
-| `isMultiSelect` | `bool`                               | `false`         | When `true`, designates that the menu item supports multi-select functionality.                                                                                                         |
-| `sdsIcon`       | `func`                               | -               | Allows you to provide a custom SDS icon component to be displayed within the menu item.                                                                                                 |
-| `sdsIconProps`  | `func`                               | -               | Enables you to pass additional props to customize the SDS icon within the menu item.                                                                                                    |
-| `sdsStyle`      | `"determinate"` \| `"indeterminate"` | `"determinate"` | Determines the style of the menu item, whether it is determinate or indeterminate.                                                                                                      |
-| `selected`      | `bool`                               | `false`         | When set to `true`, the `selected` prop signifies that the menu item is currently selected.                                                                                             |
+```tsx
+import { MenuItem } from "@czi-sds/components";
+```
 
 ## Code Examples
 
@@ -71,7 +64,6 @@ function App() {
           isMultiSelect
           column="Column Value"
           sdsIcon="Gear"
-          count={3}
           sdsIconProps={{
             color: "purple",
           }}
@@ -87,3 +79,18 @@ function App() {
 
 export default App;
 ```
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name            | Type                                 | Default         | Description                                                                                                                                                                             |
+| --------------- | ------------------------------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `column`        | `string`                             | -               | The `column` prop determines the content displayed in the right column of the menu item. This content can be customized to provide additional information or context for the menu item. |
+| `children`      | `node`                               | -               | Main content of the MenuItem.                                                                                                                                                           |
+| `disabled`      | `bool`                               | `false`         | When set to `true`, the `disabled` prop indicates that the menu item is disabled and not interactable.                                                                                  |
+| `isMultiSelect` | `bool`                               | `false`         | When `true`, designates that the menu item supports multi-select functionality.                                                                                                         |
+| `sdsIcon`       | `func`                               | -               | Allows you to provide a custom SDS icon component to be displayed within the menu item.                                                                                                 |
+| `sdsIconProps`  | `func`                               | -               | Enables you to pass additional props to customize the SDS icon within the menu item.                                                                                                    |
+| `sdsStyle`      | `"determinate"` \| `"indeterminate"` | `"determinate"` | Determines the style of the menu item, whether it is determinate or indeterminate.                                                                                                      |
+| `selected`      | `bool`                               | `false`         | When set to `true`, the `selected` prop signifies that the menu item is currently selected.                                                                                             |

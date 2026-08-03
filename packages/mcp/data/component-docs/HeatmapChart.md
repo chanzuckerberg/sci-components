@@ -8,179 +8,13 @@ A grid of cells coloured by value, for matrices too large to read as a table.
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/HeatmapChart/index.tsx).
 
-## How it is built
-
-HeatmapChart is a thin React wrapper around an [Apache ECharts](https://echarts.apache.org/en/index.html) instance. It is not ECharts' heatmap series: it is a scatter series drawn on two category axes, one symbol per cell. That is what lets a cell be a square, a rounded square, or a circle whose diameter carries a second measurement, as a dot plot.
-
-Three consequences of that design are worth knowing before you start:
-
-- **The props are ECharts' vocabulary, not the SDS one.** `itemStyle`, `emphasis`, `symbolSize`, `grid`, and `axisPointer` are passed through to the underlying option object, and the ECharts documentation is the reference for each of them. The chart takes nothing from the SDS theme: color scales are yours to supply.
-
-- **It renders to SVG by default.** That keeps text crisp and elements inspectable, and is the right choice up to a few thousand cells. Beyond that, switch `echartsRendererMode` to `"canvas"`, and reach for the camera below.
-
-- **Animation is off and updates are throttled to 100ms.** The component is memoised and resizes the chart before each update, so passing new data on every frame is safe; it will coalesce.
-
-## Sizing
-
-`width` and `height` are required, in pixels, and the component throws if either is missing or zero: ECharts cannot initialise into a box with no area. The chart does not measure its container, so a responsive heatmap means measuring the container yourself and passing the result down.
-
-The grid fills those dimensions exactly, which makes cell size a matter of arithmetic: pick the pixel size a cell should be and multiply by the number of categories on each axis. Sizing the container to anything else stretches the cells rather than clipping them.
-
-## Data and encoding
-
-`data` is a flat array of cells, one per position in the grid, and each cell is an object of whatever shape suits the data. `encode` names the two fields that place it:
+## Import
 
 **React TypeScript**
 
 ```tsx
-const data = [
-  { geneIndex: 0, cellTypeIndex: 0, percentage: 0.5 },
-  { geneIndex: 1, cellTypeIndex: 0, percentage: 0.8 },
-];
-
-<HeatmapChart
-  data={data}
-  encode={{ x: "geneIndex", y: "cellTypeIndex" }}
-  xAxisData={genes}
-  yAxisData={cellTypes}
-  width={genes.length * 20}
-  height={cellTypes.length * 20}
-/>;
-```
-
-`xAxisData` and `yAxisData` are the categories themselves, as strings, numbers, or objects with a `value` and a `textStyle`. The values a cell is encoded on are indices into them, so the two must line up: a cell whose `geneIndex` is 4 lands on the fifth entry of `xAxisData`.
-
-Everything else a cell carries (an expression level, a count, a p-value) is invisible until something draws it. That is the job of `itemStyle` and `symbolSize`, both of which accept a callback that receives the data item, so the color scale and the size scale are yours to define. Without an `itemStyle` every cell is black, and `symbolSize` defaults to 5 pixels.
-
-## The camera
-
-A heatmap of any real size cannot be rendered whole. `camera` turns on a window over the grid, given in cells rather than pixels, and only the cells inside it are drawn:
-
-**React TypeScript**
-
-```tsx
-<HeatmapChart
-  camera={{ active: true, width: 40, height: 20 }}
-  width={40 * CELL_PX}
-  height={20 * CELL_PX}
-  {...rest}
-/>
-```
-
-Underneath it is ECharts' `dataZoom` with the zoom locked, which is why the interactions are the ones `dataZoom` provides: dragging pans the window, and the wheel scrolls it vertically. The window starts at the origin of the grid, and defaults to 40 cells wide by 20 tall when the sizes are left out. Size the container to the window, not to the data.
-
-## Escape hatches
-
-The named props cover the common cases; everything else in ECharts is reached through `options`, which is merged into the generated option object. Tooltips, visual maps, and axis labels all arrive this way. The merge is shallow and treats a few keys specially, which is worth knowing when an option appears to be ignored:
-
-- `xAxis`, `yAxis` and `series` are merged one level deep over the chart's defaults, and only the first entry of each is read. Passing an object replaces the matching default key outright, so `axisLabel` given to `xAxis` replaces the whole default `axisLabel` rather than adding to it.
-
-- `axisPointer` and `dataZoom` accept either a single object, applied to both axes, or a two-entry array for the x and y axes separately. `dataZoom` is only applied when the camera is active, since otherwise there is no window for it to describe.
-
-- `grid` has a prop of its own, which takes either an option object or a function receiving the computed default. That is useful for insetting the grid to make room for axis labels while keeping the sizing the chart worked out.
-
-- Every other key in `options` is spread over the result untouched, and wins.
-
-**Do not use the dataZoom prop.** The type still advertises it, but the component never forwards it and it ends up on the container div instead, where React will warn about an unknown attribute. Pass `dataZoom` inside `options`, with the camera active.
-
-## Downloading the chart
-
-There is no download prop. Exporting is something the ECharts instance does, so the work is getting hold of it: the ref the component forwards points at the container ECharts was initialised on, and `getInstanceByDom` trades that element for the chart. From there, `getDataURL` returns the picture as a data URL and an anchor turns it into a file:
-
-**React TypeScript**
-
-```tsx
-import { useRef } from "react";
-import { getInstanceByDom } from "echarts";
 import { HeatmapChart } from "@czi-sds/data-viz";
-
-const containerRef = useRef<HTMLDivElement>(null);
-
-function download() {
-  const container = containerRef.current;
-  const chart = container && getInstanceByDom(container);
-
-  if (!chart) return;
-
-  const url = chart.getDataURL({ pixelRatio: 2, type: "png" });
-
-  if (!url) return;
-
-  const link = document.createElement("a");
-  link.download = "heatmap.png";
-  link.href = url;
-  link.click();
-}
-
-<HeatmapChart ref={containerRef} {...rest} />;
 ```
-
-Look the instance up when the download is triggered rather than caching it. Changing `echartsRendererMode` disposes the chart and builds a new one on the same element, and a cached reference would be exporting one that no longer exists.
-
-Three things decide what comes out:
-
-- **The renderer decides the format, not the type option.** An SVG chart can only export SVG, and a canvas chart can only export a raster; asking a canvas chart for `type: "svg"` produces a PNG with a misleading name. Derive the file extension from `echartsRendererMode`, as the example below does, or fix the renderer and the extension together.
-
-- `pixelRatio` and `backgroundColor` only apply on the canvas path: 2 or 3 for a print-resolution PNG, and a colour if the default transparent background will not do. An SVG export ignores both and keeps the chart's own background. `excludeComponents` takes the names of components to hide while exporting, such as a toolbox.
-
-- **Only what is rendered is exported.** With the camera active, the export contains the window, not the whole grid. Exporting everything means rendering everything: turn the camera off for the export, and expect it to cost what drawing the full grid costs.
-
-A heatmap is often assembled from more than one chart: the grid, plus the separate charts drawing its axis labels. ECharts can composite them into a single image, but only once they are in a connected group:
-
-**React TypeScript**
-
-```tsx
-import { connect, getInstanceByDom } from "echarts";
-
-// Once, after every chart has been initialised.
-connect([heatmap, xAxisChart, yAxisChart]);
-
-// Lays the group out by where each chart sits on screen.
-const url = heatmap.getConnectedDataURL({
-  connectedBackgroundColor: "white",
-  pixelRatio: 2,
-  type: "png",
-});
-```
-
-`getConnectedDataURL` falls back to `getDataURL` when the chart is not in a connected group, so a single chart can call either. That is what the heatmap demo does: its download button calls `getConnectedDataURL` on the grid alone.
-
-## Behavior and accessibility
-
-- The chart is a single SVG or canvas element with no accessible name, no roles, and no tab stop. Assistive technology can see nothing in it, and a keyboard cannot reach a cell, so a heatmap needs a text equivalent alongside it: a summary of what it shows, or the same numbers reachable as a table.
-
-- Axis labels are drawn at font size 0 by default, and the x axis is rotated 90 degrees. The charts this was built for pair the grid with their own scrollable axis components, which is why the built-in labels start hidden; a small heatmap can turn them back on through `options`, as the example below does.
-
-- Hover draws a border around the cell under the pointer (white and 4px on a square, black and 2px on a circle) and never scales it. Pass `emphasis` to change that.
-
-- Tooltips are ECharts' own HTML tooltips, positioned over the chart and built from a formatter you write. They are pointer-only, and they are not the SDS Tooltip.
-
-- Handlers in `onEvents` are rebound whenever the chart updates, and rebinding removes every listener registered for that event name. If you also attach listeners to the ECharts instance yourself, expect them to be dropped; attach them through `onEvents` instead.
-
-- Color is the whole message in a heatmap. Pick a sequential scale that survives being read by someone with a color vision deficiency, keep it consistent between charts that will be compared, and make the scale itself visible (a legend or a `visualMap` through `options`), since the component does not draw one.
-
-## Props
-
-Any remaining props are spread onto the container div, so `className`, `id`, and `data-testid` work as usual, and the component forwards its ref to that div. Every option below that names an ECharts concept links to the ECharts documentation for the shape it takes.
-
-| Name                  | Type                                                                  | Default             | Description                                                                                                                                        |
-| --------------------- | --------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`                | `DatasetComponentOption["source"]`                                    | - (required)        | The cells, as a flat array of objects whose fields are named by `encode`.                                                                          |
-| `xAxisData`           | `(string \| number \| { value, textStyle })[]`                        | - (required)        | The categories along the x axis. A cell's encoded x value is an index into this array.                                                             |
-| `yAxisData`           | `(string \| number \| { value, textStyle })[]`                        | - (required)        | The categories along the y axis.                                                                                                                   |
-| `width`               | `number`                                                              | - (required)        | Width of the chart in pixels. Must be greater than zero; the component throws otherwise.                                                           |
-| `height`              | `number`                                                              | - (required)        | Height of the chart in pixels, under the same rule.                                                                                                |
-| `encode`              | `{ x: string; y: string }`                                            | -                   | Which fields of a data item place it on each axis. Omitting it leaves ECharts to guess from the field order.                                       |
-| `symbol`              | `"rect"` \| `"roundRect"` \| `"circle"`                               | `"rect"`            | The shape of a cell. Circles turn the grid into a dot plot, where diameter can carry a second measurement.                                         |
-| `symbolSize`          | `number` \| `number[]` \| `((value, params) => number \| number[])`   | `5`                 | Cell size in pixels: one number, a `[width, height]` pair, or a callback given the data item. Set it to the cell pitch for a solid grid.           |
-| `itemStyle`           | `ScatterSeriesOption["itemStyle"]`                                    | solid black         | How a cell is painted. Its `color` accepts a callback receiving the data item, which is how a value becomes a color.                               |
-| `emphasis`            | `ScatterSeriesOption["emphasis"]`                                     | a 2–4px border      | How a cell is drawn while the pointer is over it.                                                                                                  |
-| `camera`              | `{ active: boolean; width: number; height: number }`                  | 40 × 20 when active | Renders only a window of the grid, measured in cells, and lets the pointer pan it. Sizes are ignored unless `active` is `true`.                    |
-| `axisPointer`         | `EChartsOption["axisPointer"]`                                        | hidden              | The crosshair following the pointer. One object applies to both axes; a two-entry array configures them separately.                                |
-| `grid`                | `EChartsOption["grid"]` \| `((defaultGrid) => EChartsOption["grid"])` | fills the container | Where the plotting area sits inside the container. The function form receives the computed default, for insetting it without recomputing the size. |
-| `options`             | `EChartsOption`                                                       | -                   | Anything else ECharts understands, merged over the generated options. See the merge rules above.                                                   |
-| `onEvents`            | `Record<string, (event: unknown,` `chart: ECharts) => void>`          | -                   | ECharts event listeners by name. Each handler gets the raw event, whose `data` property is the cell, and the chart instance.                       |
-| `echartsRendererMode` | `"svg"` \| `"canvas"`                                                 | `"svg"`             | Which renderer ECharts initialises with. Canvas copes better with very large grids. Changing it rebuilds the chart.                                |
 
 ## Code examples
 
@@ -771,3 +605,177 @@ function App() {
 
 export default App;
 ```
+
+## How it is built
+
+HeatmapChart is a thin React wrapper around an [Apache ECharts](https://echarts.apache.org/en/index.html) instance. It is not ECharts' heatmap series: it is a scatter series drawn on two category axes, one symbol per cell. That is what lets a cell be a square, a rounded square, or a circle whose diameter carries a second measurement, as a dot plot.
+
+Three consequences of that design are worth knowing before you start:
+
+- **The props are ECharts' vocabulary, not the SDS one.** `itemStyle`, `emphasis`, `symbolSize`, `grid`, and `axisPointer` are passed through to the underlying option object, and the ECharts documentation is the reference for each of them. The chart takes nothing from the SDS theme: color scales are yours to supply.
+
+- **It renders to SVG by default.** That keeps text crisp and elements inspectable, and is the right choice up to a few thousand cells. Beyond that, switch `echartsRendererMode` to `"canvas"`, and reach for the camera below.
+
+- **Animation is off and updates are throttled to 100ms.** The component is memoised and resizes the chart before each update, so passing new data on every frame is safe; it will coalesce.
+
+## Sizing
+
+`width` and `height` are required, in pixels, and the component throws if either is missing or zero: ECharts cannot initialise into a box with no area. The chart does not measure its container, so a responsive heatmap means measuring the container yourself and passing the result down.
+
+The grid fills those dimensions exactly, which makes cell size a matter of arithmetic: pick the pixel size a cell should be and multiply by the number of categories on each axis. Sizing the container to anything else stretches the cells rather than clipping them.
+
+## Data and encoding
+
+`data` is a flat array of cells, one per position in the grid, and each cell is an object of whatever shape suits the data. `encode` names the two fields that place it:
+
+**React TypeScript**
+
+```tsx
+const data = [
+  { geneIndex: 0, cellTypeIndex: 0, percentage: 0.5 },
+  { geneIndex: 1, cellTypeIndex: 0, percentage: 0.8 },
+];
+
+<HeatmapChart
+  data={data}
+  encode={{ x: "geneIndex", y: "cellTypeIndex" }}
+  xAxisData={genes}
+  yAxisData={cellTypes}
+  width={genes.length * 20}
+  height={cellTypes.length * 20}
+/>;
+```
+
+`xAxisData` and `yAxisData` are the categories themselves, as strings, numbers, or objects with a `value` and a `textStyle`. The values a cell is encoded on are indices into them, so the two must line up: a cell whose `geneIndex` is 4 lands on the fifth entry of `xAxisData`.
+
+Everything else a cell carries (an expression level, a count, a p-value) is invisible until something draws it. That is the job of `itemStyle` and `symbolSize`, both of which accept a callback that receives the data item, so the color scale and the size scale are yours to define. Without an `itemStyle` every cell is black, and `symbolSize` defaults to 5 pixels.
+
+## The camera
+
+A heatmap of any real size cannot be rendered whole. `camera` turns on a window over the grid, given in cells rather than pixels, and only the cells inside it are drawn:
+
+**React TypeScript**
+
+```tsx
+<HeatmapChart
+  camera={{ active: true, width: 40, height: 20 }}
+  width={40 * CELL_PX}
+  height={20 * CELL_PX}
+  {...rest}
+/>
+```
+
+Underneath it is ECharts' `dataZoom` with the zoom locked, which is why the interactions are the ones `dataZoom` provides: dragging pans the window, and the wheel scrolls it vertically. The window starts at the origin of the grid, and defaults to 40 cells wide by 20 tall when the sizes are left out. Size the container to the window, not to the data.
+
+## Escape hatches
+
+The named props cover the common cases; everything else in ECharts is reached through `options`, which is merged into the generated option object. Tooltips, visual maps, and axis labels all arrive this way. The merge is shallow and treats a few keys specially, which is worth knowing when an option appears to be ignored:
+
+- `xAxis`, `yAxis` and `series` are merged one level deep over the chart's defaults, and only the first entry of each is read. Passing an object replaces the matching default key outright, so `axisLabel` given to `xAxis` replaces the whole default `axisLabel` rather than adding to it.
+
+- `axisPointer` and `dataZoom` accept either a single object, applied to both axes, or a two-entry array for the x and y axes separately. `dataZoom` is only applied when the camera is active, since otherwise there is no window for it to describe.
+
+- `grid` has a prop of its own, which takes either an option object or a function receiving the computed default. That is useful for insetting the grid to make room for axis labels while keeping the sizing the chart worked out.
+
+- Every other key in `options` is spread over the result untouched, and wins.
+
+**Do not use the dataZoom prop.** The type still advertises it, but the component never forwards it and it ends up on the container div instead, where React will warn about an unknown attribute. Pass `dataZoom` inside `options`, with the camera active.
+
+## Downloading the chart
+
+There is no download prop. Exporting is something the ECharts instance does, so the work is getting hold of it: the ref the component forwards points at the container ECharts was initialised on, and `getInstanceByDom` trades that element for the chart. From there, `getDataURL` returns the picture as a data URL and an anchor turns it into a file:
+
+**React TypeScript**
+
+```tsx
+import { useRef } from "react";
+import { getInstanceByDom } from "echarts";
+import { HeatmapChart } from "@czi-sds/data-viz";
+
+const containerRef = useRef<HTMLDivElement>(null);
+
+function download() {
+  const container = containerRef.current;
+  const chart = container && getInstanceByDom(container);
+
+  if (!chart) return;
+
+  const url = chart.getDataURL({ pixelRatio: 2, type: "png" });
+
+  if (!url) return;
+
+  const link = document.createElement("a");
+  link.download = "heatmap.png";
+  link.href = url;
+  link.click();
+}
+
+<HeatmapChart ref={containerRef} {...rest} />;
+```
+
+Look the instance up when the download is triggered rather than caching it. Changing `echartsRendererMode` disposes the chart and builds a new one on the same element, and a cached reference would be exporting one that no longer exists.
+
+Three things decide what comes out:
+
+- **The renderer decides the format, not the type option.** An SVG chart can only export SVG, and a canvas chart can only export a raster; asking a canvas chart for `type: "svg"` produces a PNG with a misleading name. Derive the file extension from `echartsRendererMode`, as the example below does, or fix the renderer and the extension together.
+
+- `pixelRatio` and `backgroundColor` only apply on the canvas path: 2 or 3 for a print-resolution PNG, and a colour if the default transparent background will not do. An SVG export ignores both and keeps the chart's own background. `excludeComponents` takes the names of components to hide while exporting, such as a toolbox.
+
+- **Only what is rendered is exported.** With the camera active, the export contains the window, not the whole grid. Exporting everything means rendering everything: turn the camera off for the export, and expect it to cost what drawing the full grid costs.
+
+A heatmap is often assembled from more than one chart: the grid, plus the separate charts drawing its axis labels. ECharts can composite them into a single image, but only once they are in a connected group:
+
+**React TypeScript**
+
+```tsx
+import { connect, getInstanceByDom } from "echarts";
+
+// Once, after every chart has been initialised.
+connect([heatmap, xAxisChart, yAxisChart]);
+
+// Lays the group out by where each chart sits on screen.
+const url = heatmap.getConnectedDataURL({
+  connectedBackgroundColor: "white",
+  pixelRatio: 2,
+  type: "png",
+});
+```
+
+`getConnectedDataURL` falls back to `getDataURL` when the chart is not in a connected group, so a single chart can call either. That is what the heatmap demo does: its download button calls `getConnectedDataURL` on the grid alone.
+
+## Behavior and accessibility
+
+- The chart is a single SVG or canvas element with no accessible name, no roles, and no tab stop. Assistive technology can see nothing in it, and a keyboard cannot reach a cell, so a heatmap needs a text equivalent alongside it: a summary of what it shows, or the same numbers reachable as a table.
+
+- Axis labels are drawn at font size 0 by default, and the x axis is rotated 90 degrees. The charts this was built for pair the grid with their own scrollable axis components, which is why the built-in labels start hidden; a small heatmap can turn them back on through `options`, as the example below does.
+
+- Hover draws a border around the cell under the pointer (white and 4px on a square, black and 2px on a circle) and never scales it. Pass `emphasis` to change that.
+
+- Tooltips are ECharts' own HTML tooltips, positioned over the chart and built from a formatter you write. They are pointer-only, and they are not the SDS Tooltip.
+
+- Handlers in `onEvents` are rebound whenever the chart updates, and rebinding removes every listener registered for that event name. If you also attach listeners to the ECharts instance yourself, expect them to be dropped; attach them through `onEvents` instead.
+
+- Color is the whole message in a heatmap. Pick a sequential scale that survives being read by someone with a color vision deficiency, keep it consistent between charts that will be compared, and make the scale itself visible (a legend or a `visualMap` through `options`), since the component does not draw one.
+
+## Props
+
+Any remaining props are spread onto the container div, so `className`, `id`, and `data-testid` work as usual, and the component forwards its ref to that div. Every option below that names an ECharts concept links to the ECharts documentation for the shape it takes.
+
+| Name                  | Type                                                                  | Default             | Description                                                                                                                                        |
+| --------------------- | --------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`                | `DatasetComponentOption["source"]`                                    | - (required)        | The cells, as a flat array of objects whose fields are named by `encode`.                                                                          |
+| `xAxisData`           | `(string \| number \| { value, textStyle })[]`                        | - (required)        | The categories along the x axis. A cell's encoded x value is an index into this array.                                                             |
+| `yAxisData`           | `(string \| number \| { value, textStyle })[]`                        | - (required)        | The categories along the y axis.                                                                                                                   |
+| `width`               | `number`                                                              | - (required)        | Width of the chart in pixels. Must be greater than zero; the component throws otherwise.                                                           |
+| `height`              | `number`                                                              | - (required)        | Height of the chart in pixels, under the same rule.                                                                                                |
+| `encode`              | `{ x: string; y: string }`                                            | -                   | Which fields of a data item place it on each axis. Omitting it leaves ECharts to guess from the field order.                                       |
+| `symbol`              | `"rect"` \| `"roundRect"` \| `"circle"`                               | `"rect"`            | The shape of a cell. Circles turn the grid into a dot plot, where diameter can carry a second measurement.                                         |
+| `symbolSize`          | `number` \| `number[]` \| `((value, params) => number \| number[])`   | `5`                 | Cell size in pixels: one number, a `[width, height]` pair, or a callback given the data item. Set it to the cell pitch for a solid grid.           |
+| `itemStyle`           | `ScatterSeriesOption["itemStyle"]`                                    | solid black         | How a cell is painted. Its `color` accepts a callback receiving the data item, which is how a value becomes a color.                               |
+| `emphasis`            | `ScatterSeriesOption["emphasis"]`                                     | a 2–4px border      | How a cell is drawn while the pointer is over it.                                                                                                  |
+| `camera`              | `{ active: boolean; width: number; height: number }`                  | 40 × 20 when active | Renders only a window of the grid, measured in cells, and lets the pointer pan it. Sizes are ignored unless `active` is `true`.                    |
+| `axisPointer`         | `EChartsOption["axisPointer"]`                                        | hidden              | The crosshair following the pointer. One object applies to both axes; a two-entry array configures them separately.                                |
+| `grid`                | `EChartsOption["grid"]` \| `((defaultGrid) => EChartsOption["grid"])` | fills the container | Where the plotting area sits inside the container. The function form receives the computed default, for insetting it without recomputing the size. |
+| `options`             | `EChartsOption`                                                       | -                   | Anything else ECharts understands, merged over the generated options. See the merge rules above.                                                   |
+| `onEvents`            | `Record<string, (event: unknown,` `chart: ECharts) => void>`          | -                   | ECharts event listeners by name. Each handler gets the raw event, whose `data` property is the cell, and the chart instance.                       |
+| `echartsRendererMode` | `"svg"` \| `"canvas"`                                                 | `"svg"`             | Which renderer ECharts initialises with. Canvas copes better with very large grids. Changing it rebuilds the chart.                                |

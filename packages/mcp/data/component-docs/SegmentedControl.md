@@ -4,67 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/SegmentedControl/index.tsx).
 
-## SDS vs MUI
+## Import
 
-The SDS SegmentedControl wraps MUI's ToggleButtonGroup, with these differences:
+**React TypeScript**
 
-- **buttonDefinition instead of children:** MUI expects you to write a ToggleButton per segment. SDS builds them from an array instead, one entry per segment in array order, and the segments it builds are the control's only children. Anything you nest inside a SegmentedControl is dropped without a warning.
-
-- **Tooltips are built in:** each segment is wrapped in an SDS Tooltip unless you turn it off with `shouldShowTooltip`, which is what carries the meaning of an icon-only segment. In MUI you would add the tooltip yourself.
-
-- **It works uncontrolled:** MUI's ToggleButtonGroup only renders the `value` you hand it. SDS keeps its own state until you pass `value`, so a control left alone still responds to clicks, starting on the first segment that is not disabled.
-
-- **exclusive is set for you:** the control selects one segment at a time and reports a single string. Multi-select is not available: passing `exclusive={false}` reaches MUI, which then treats that string as a list and joins the values together, so the control reports something like "ListTable" and shows nothing as selected. Leave it as it is.
-
-- **Sizing and colour props do nothing:** `size`, `color`, `fullWidth` and `orientation` all reach MUI and set their classes, but SDS pins the padding, typography, palette, width and direction, so the control looks the same either way. It is always horizontal, always sized to its content, and never fills its container.
-
-## MUI Documentation
-
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-toggle-button/).
-
-## Behavior and accessibility
-
-- A control left uncontrolled opens on the first segment that is not disabled. Pass `value` to control it instead, and write the new value back from `onChange`, or the control will render the same segment no matter what is clicked.
-
-- Clicking the selected segment deselects it. The control reports `null` and draws nothing as selected, which suits a filter that can be cleared but not a view switcher that must always show something. A controlled handler that ignores `null` keeps the current selection instead.
-
-- Every segment needs either an `icon` or a `label`. A segment with both draws only the label; a segment with neither draws its value as text. Both cases log a warning.
-
-- A segment's accessible name is its `label`, or its `value` when it carries an icon instead. It is not taken from `tooltipProps.title`, so an icon-only segment with a value like `"a"` or `"1"` is announced that way. Give icon-only segments values that read as words.
-
-- Icons are drawn at the small size, so only icons that SDS carries at 16px can be named here. A large-only icon leaves the segment empty and logs an error; pass your own SVG element instead.
-
-- Tooltips appear on hover and on keyboard focus, which is what makes an icon-only control usable from the keyboard. Disabled segments show no tooltip at all.
-
-- The control is sized to its segments and does not wrap or shrink, so a long set of labels overflows a narrow container rather than reflowing. The design guidance above (two to four segments) keeps that from happening.
-
-- Segments are ordinary buttons, so Tab moves through them one at a time rather than treating the group as a single stop, and Space or Enter selects.
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
-
-| Name               | Type                                     | Default               | Description                                                                                                                                                                            |
-| ------------------ | ---------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `buttonDefinition` | `SingleButtonDefinition[]`               | - (required)          | One entry per segment, in the order they appear. The shape is described in the table below.                                                                                            |
-| `value`            | `string \| null`                         | -                     | The selected segment's value. Passing it makes the control controlled; leaving it out lets the control track the selection itself, starting on the first segment that is not disabled. |
-| `onChange`         | `(event, value: string \| null) => void` | -                     | Runs on every click that changes the selection, with the newly selected value, or `null` when the selected segment was clicked again. Required when `value` is set.                    |
-| `disabled`         | `boolean`                                | `false`               | MUI's group-level prop. Disables every segment at once while leaving the selection visible; per-segment control is on `buttonDefinition`.                                              |
-| `aria-label`       | `string`                                 | `"Segmented Control"` | Names the group. Replace it with something that says what is being switched, since the default describes the widget rather than its purpose.                                           |
-
-### SingleButtonDefinition
-
-The shape of each entry in `buttonDefinition`.
-
-| Name                | Type                                            | Default      | Description                                                                                                                                                                                                                                          |
-| ------------------- | ----------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`             | `string`                                        | - (required) | Identifies the segment in `value` and `onChange`. On an icon-only segment it is also the accessible name and the tooltip's fallback text, so keep it readable.                                                                                       |
-| `icon`              | `keyof IconNameToSizes` \| `React.ReactElement` | -            | An SDS icon name, drawn at the small size, or an SVG element of your own for artwork SDS does not carry. Size an element you pass to 16px and fill it with currentColor so it follows the selection.                                                 |
-| `label`             | `string`                                        | -            | Text for the segment, used instead of an icon. It becomes the segment's accessible name and the tooltip's fallback text.                                                                                                                             |
-| `disabled`          | `boolean`                                       | `false`      | Turns the segment off. Disabled segments show no tooltip and are skipped when an uncontrolled control picks its starting selection.                                                                                                                  |
-| `shouldShowTooltip` | `boolean`                                       | `true`       | Whether the segment has a tooltip. Worth turning off for a labelled segment, whose tooltip would only repeat the label.                                                                                                                              |
-| `tooltipProps`      | `Partial<Omit<TooltipProps, "children">>`       | -            | Passed to the segment's Tooltip, so it takes a title, a subtitle, a placement, and the rest of the Tooltip API. Without a title, the tooltip falls back to the label or the value. Note that the title is not used as the segment's accessible name. |
-| `tooltipText`       | `string`                                        | -            | Deprecated in favour of `tooltipProps`, and logs a warning. It sets the tooltip's title, overriding `tooltipProps.title` when both are given, and it is the one tooltip prop that also sets the segment's accessible name.                           |
+```tsx
+import { SegmentedControl } from "@czi-sds/components";
+```
 
 ## Code examples
 
@@ -75,21 +21,8 @@ Three icon segments, left uncontrolled so the control tracks the selection itsel
 **Example: DefaultSegmentedControl**
 
 ```tsx
-// Segments come from buttonDefinition, one entry per segment in array order;
-// SegmentedControl ignores children. Left uncontrolled like this, it selects the
-// first segment that is not disabled and tracks clicks itself.
-//
-// Icons are drawn at the small size, so only icons that have 16px artwork can be
-// used here. Nothing else on an icon segment is readable, so its value becomes
-// both the tooltip and the accessible name, which is why the values below read
-// as words rather than as codes.
-
 import {
   SegmentedControl,
-  fontBodyXs,
-  getSemanticColors,
-  getSpaces,
-  type CommonThemeProps,
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
@@ -100,26 +33,10 @@ const VIEWS: SingleButtonDefinition[] = [
   { icon: "TreeVertical", value: "Tree" },
 ];
 
-const Hint = styled.p<CommonThemeProps>`
-  ${fontBodyXs}
-
-  ${(props) => {
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      color: ${semanticColors?.base?.textSecondary};
-      margin: ${spaces?.m}px 0 0;
-    `;
-  }}
-`;
-
 function App() {
   return (
     <div className="app">
       <SegmentedControl buttonDefinition={VIEWS} />
-
-      <Hint>Hover or focus a segment to see the tooltip it falls back to.</Hint>
     </div>
   );
 }
@@ -416,3 +333,65 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+The SDS SegmentedControl wraps MUI's ToggleButtonGroup, with these differences:
+
+- **buttonDefinition instead of children:** MUI expects you to write a ToggleButton per segment. SDS builds them from an array instead, one entry per segment in array order, and the segments it builds are the control's only children. Anything you nest inside a SegmentedControl is dropped without a warning.
+
+- **Tooltips are built in:** each segment is wrapped in an SDS Tooltip unless you turn it off with `shouldShowTooltip`, which is what carries the meaning of an icon-only segment. In MUI you would add the tooltip yourself.
+
+- **It works uncontrolled:** MUI's ToggleButtonGroup only renders the `value` you hand it. SDS keeps its own state until you pass `value`, so a control left alone still responds to clicks, starting on the first segment that is not disabled.
+
+- **exclusive is set for you:** the control selects one segment at a time and reports a single string. Multi-select is not available: passing `exclusive={false}` reaches MUI, which then treats that string as a list and joins the values together, so the control reports something like "ListTable" and shows nothing as selected. Leave it as it is.
+
+- **Sizing and colour props do nothing:** `size`, `color`, `fullWidth` and `orientation` all reach MUI and set their classes, but SDS pins the padding, typography, palette, width and direction, so the control looks the same either way. It is always horizontal, always sized to its content, and never fills its container.
+
+## MUI Documentation
+
+Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-toggle-button/).
+
+## Behavior and accessibility
+
+- A control left uncontrolled opens on the first segment that is not disabled. Pass `value` to control it instead, and write the new value back from `onChange`, or the control will render the same segment no matter what is clicked.
+
+- Clicking the selected segment deselects it. The control reports `null` and draws nothing as selected, which suits a filter that can be cleared but not a view switcher that must always show something. A controlled handler that ignores `null` keeps the current selection instead.
+
+- Every segment needs either an `icon` or a `label`. A segment with both draws only the label; a segment with neither draws its value as text. Both cases log a warning.
+
+- A segment's accessible name is its `label`, or its `value` when it carries an icon instead. It is not taken from `tooltipProps.title`, so an icon-only segment with a value like `"a"` or `"1"` is announced that way. Give icon-only segments values that read as words.
+
+- Icons are drawn at the small size, so only icons that SDS carries at 16px can be named here. A large-only icon leaves the segment empty and logs an error; pass your own SVG element instead.
+
+- Tooltips appear on hover and on keyboard focus, which is what makes an icon-only control usable from the keyboard. Disabled segments show no tooltip at all.
+
+- The control is sized to its segments and does not wrap or shrink, so a long set of labels overflows a narrow container rather than reflowing. The design guidance above (two to four segments) keeps that from happening.
+
+- Segments are ordinary buttons, so Tab moves through them one at a time rather than treating the group as a single stop, and Space or Enter selects.
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name               | Type                                     | Default               | Description                                                                                                                                                                            |
+| ------------------ | ---------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `buttonDefinition` | `SingleButtonDefinition[]`               | - (required)          | One entry per segment, in the order they appear. The shape is described in the table below.                                                                                            |
+| `value`            | `string \| null`                         | -                     | The selected segment's value. Passing it makes the control controlled; leaving it out lets the control track the selection itself, starting on the first segment that is not disabled. |
+| `onChange`         | `(event, value: string \| null) => void` | -                     | Runs on every click that changes the selection, with the newly selected value, or `null` when the selected segment was clicked again. Required when `value` is set.                    |
+| `disabled`         | `boolean`                                | `false`               | MUI's group-level prop. Disables every segment at once while leaving the selection visible; per-segment control is on `buttonDefinition`.                                              |
+| `aria-label`       | `string`                                 | `"Segmented Control"` | Names the group. Replace it with something that says what is being switched, since the default describes the widget rather than its purpose.                                           |
+
+### SingleButtonDefinition
+
+The shape of each entry in `buttonDefinition`.
+
+| Name                | Type                                            | Default      | Description                                                                                                                                                                                                                                          |
+| ------------------- | ----------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`             | `string`                                        | - (required) | Identifies the segment in `value` and `onChange`. On an icon-only segment it is also the accessible name and the tooltip's fallback text, so keep it readable.                                                                                       |
+| `icon`              | `keyof IconNameToSizes` \| `React.ReactElement` | -            | An SDS icon name, drawn at the small size, or an SVG element of your own for artwork SDS does not carry. Size an element you pass to 16px and fill it with currentColor so it follows the selection.                                                 |
+| `label`             | `string`                                        | -            | Text for the segment, used instead of an icon. It becomes the segment's accessible name and the tooltip's fallback text.                                                                                                                             |
+| `disabled`          | `boolean`                                       | `false`      | Turns the segment off. Disabled segments show no tooltip and are skipped when an uncontrolled control picks its starting selection.                                                                                                                  |
+| `shouldShowTooltip` | `boolean`                                       | `true`       | Whether the segment has a tooltip. Worth turning off for a labelled segment, whose tooltip would only repeat the label.                                                                                                                              |
+| `tooltipProps`      | `Partial<Omit<TooltipProps, "children">>`       | -            | Passed to the segment's Tooltip, so it takes a title, a subtitle, a placement, and the rest of the Tooltip API. Without a title, the tooltip falls back to the label or the value. Note that the title is not used as the segment's accessible name. |
+| `tooltipText`       | `string`                                        | -            | Deprecated in favour of `tooltipProps`, and logs a warning. It sets the tooltip's title, overriding `tooltipProps.title` when both are given, and it is the one tooltip prop that also sets the segment's accessible name.                           |

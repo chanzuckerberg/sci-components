@@ -4,9 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Table/index.tsx).
 
-## Props
+## Import
 
-Table is a styled table element: full width, collapsed borders, automatic layout. Its only prop is `children`, and anything else you pass lands on the table element. Compose it the way you would plain HTML: a TableHeader for the head, a `tbody` of TableRows for the body.
+**React TypeScript**
+
+```tsx
+import { Table } from "@czi-sds/components";
+```
 
 ## Code examples
 
@@ -1991,3 +1995,7 @@ function App() {
 
 export default App;
 ```
+
+## Props
+
+Table is a styled table element: full width, collapsed borders, automatic layout. Its only prop is `children`, and anything else you pass lands on the table element. Compose it the way you would plain HTML: a TableHeader for the head, a `tbody` of TableRows for the body.

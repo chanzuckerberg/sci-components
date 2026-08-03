@@ -1,13 +1,16 @@
-import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import {
+  ThemeProvider as EmotionThemeProvider,
+  keyframes,
+} from "@emotion/react";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "@mui/material/styles";
 import {
-  Suspense,
-  lazy,
+  startTransition,
   useEffect,
   useMemo,
   useRef,
   useState,
+  type ComponentType,
   type ReactElement,
   type RefObject,
 } from "react";
@@ -193,6 +196,50 @@ const Stage = styled.div`
   }
 `;
 
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+`;
+
+/**
+ * What a card shows in place of its component until the component is there: a
+ * component is only built once its card is near the window, and then only when
+ * the browser has a moment to spare, so a frame is empty for a while and says so.
+ *
+ * One shape for every card, deliberately: fifty-one placeholders each shaped like
+ * the component it stands in for would be a page of noise, and a card's label
+ * already says what is coming.
+ */
+const Skeleton = styled.div<CommonThemeProps>`
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  &::before {
+    content: "";
+    width: 45%;
+    height: 22%;
+    animation: ${pulse} 1.6s ease-in-out infinite;
+
+    ${(props) => {
+      const semanticColors = getSemanticColors(props);
+      const corners = getCorners(props);
+
+      return `
+        background-color: ${semanticColors?.base?.fillSecondary};
+        border-radius: ${corners?.m}px;
+      `;
+    }}
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      animation: none;
+    }
+  }
+`;
+
 /**
  * One card: a miniature, and beneath it the link that names the component.
  *
@@ -251,10 +298,76 @@ const Card = styled.li<CommonThemeProps>`
   }
 `;
 
+/** Components whose module has arrived, waiting their turn to be built. */
+const waiting: Array<() => void> = [];
+
+/** Whether a card has been let through and has yet to report itself drawn. */
+let building = false;
+
+/** Releases the queue if whoever holds it never reports back. */
+let watchdog: ReturnType<typeof setTimeout> | undefined;
+
 /**
- * Whether the element has come near enough to the window to be worth building.
- * Latches on: a card that has been rendered once stays rendered, so scrolling
- * back over the page does not rebuild it.
+ * Build one waiting component, and not another until it is drawn.
+ *
+ * Building a component is not cheap — its styles alone are hashed and then
+ * inserted a rule at a time — and building a screenful of them at once puts all of
+ * that into a single turn of the main thread, which is a page that stops
+ * responding until it ends. One at a time keeps every turn to the length of one
+ * card, and asking for it during idle time leaves the browser its chance to draw a
+ * frame in between. The timeout on that is for a page being scrolled through,
+ * which may offer no idle time at all.
+ *
+ * Only the building is held back like this. Fetching a module is the network's
+ * work, not the main thread's, so those run as they please: a card whose module is
+ * slow to arrive waits for it without keeping any other card from being drawn.
+ */
+function admit(): void {
+  if (building || waiting.length === 0) return;
+  building = true;
+
+  const start = () => {
+    const next = waiting.shift();
+
+    if (!next) {
+      building = false;
+      return;
+    }
+
+    next();
+    // In case the card is gone by the time it would have reported back.
+    watchdog = setTimeout(release, 1000);
+  };
+
+  if (typeof requestIdleCallback === "function") {
+    requestIdleCallback(start, { timeout: 120 });
+  } else {
+    setTimeout(start, 16);
+  }
+}
+
+/** Hands the queue on, once a card has its component on the page. */
+function release(): void {
+  clearTimeout(watchdog);
+  building = false;
+  admit();
+}
+
+/** Join the queue, and a way to leave it again. */
+function queueBuild(build: () => void): () => void {
+  waiting.push(build);
+  admit();
+
+  return () => {
+    const index = waiting.indexOf(build);
+    if (index !== -1) waiting.splice(index, 1);
+  };
+}
+
+/**
+ * Whether the element has come near enough to the window for its component to be
+ * worth fetching. Latches on: a card that has been built once stays built, so
+ * scrolling back over the page rebuilds nothing.
  */
 function useInView(ref: RefObject<Element | null>): boolean {
   const [inView, setInView] = useState(false);
@@ -282,26 +395,85 @@ function useInView(ref: RefObject<Element | null>): boolean {
   return inView;
 }
 
-/** The example itself, plus whatever stylesheet it brought with it. */
-function CardPreview({ id }: { id: string }): ReactElement | null {
-  const Example = useMemo(() => {
-    const load = exampleLoaders[`${modulePath(id)}.tsx`];
-    return load ? lazy(load) : null;
-  }, [id]);
+/** Stands in for an example that could not be loaded: an empty frame. */
+const Nothing = () => null;
 
+/**
+ * The example's component, once its module has arrived and the queue has given it
+ * its turn to be built.
+ *
+ * Fetched here rather than through `lazy`, so that React is handed a component it
+ * can render rather than one that suspends. Suspending cards are worse than they
+ * look on a page of fifty-one: React gathers them into one transition and draws
+ * none of them until the last module has landed. This way each card is drawn as
+ * soon as its own module is there and the queue reaches it.
+ *
+ * Building is a transition, which lets React do it in slices it can be interrupted
+ * between rather than in one turn of the main thread nothing else can get a word in
+ * during. A reader scrolling is what interrupts it.
+ */
+function useExample(id: string, inView: boolean): ComponentType | null {
+  const [Example, setExample] = useState<ComponentType | null>(null);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    const load = exampleLoaders[`${modulePath(id)}.tsx`];
+    let current = true;
+    let leaveQueue: (() => void) | undefined;
+
+    const show = (component: ComponentType) => {
+      if (!current) return;
+      leaveQueue = queueBuild(() =>
+        startTransition(() => setExample(() => component))
+      );
+    };
+
+    if (!load) {
+      // eslint-disable-next-line no-console
+      console.error(`Docs example "${id}" does not exist`);
+      show(Nothing);
+    } else {
+      load()
+        .then((module) => show(module.default))
+        .catch((error: unknown) => {
+          // eslint-disable-next-line no-console
+          console.error(`Docs example "${id}" failed to load`, error);
+          show(Nothing);
+        });
+    }
+
+    return () => {
+      current = false;
+      leaveQueue?.();
+    };
+  }, [id, inView]);
+
+  // Drawn, so the next component in the queue can be built.
+  useEffect(() => {
+    if (Example) release();
+  }, [Example]);
+
+  return Example;
+}
+
+/** The example itself, plus whatever stylesheet it brought with it. */
+function CardPreview({
+  Example,
+  id,
+}: {
+  Example: ComponentType;
+  id: string;
+}): ReactElement {
   const css = useMemo(() => {
     const raw = exampleStyles[`${modulePath(id)}.css`];
     return raw ? scopeCss(raw, `.${CATALOG_PREVIEW_CLASS}`) : null;
   }, [id]);
 
-  if (!Example) return null;
-
   return (
     <>
       {css ? <style>{css}</style> : null}
-      <Suspense fallback={null}>
-        <Example />
-      </Suspense>
+      <Example />
     </>
   );
 }
@@ -310,11 +482,19 @@ function CardPreview({ id }: { id: string }): ReactElement | null {
  * The previews' theme, with an overlay positioned for a card rather than for a
  * page: see `./cardPopper`. A component reads this from the theme, so a card
  * example is written as an example and not as a piece of the catalog.
+ *
+ * Built once per mode and shared by every card. A theme of its own for each would
+ * be fifty-one identical ones to build before the page first draws, and fifty-one
+ * sets of styles for Emotion to hash and keep rather than one.
  */
-function cardTheme(mode: ThemeMode): SDSTheme {
-  const base = previewTheme(mode);
+const cardThemes = new Map<ThemeMode, SDSTheme>();
 
-  return {
+function cardTheme(mode: ThemeMode): SDSTheme {
+  const cached = cardThemes.get(mode);
+  if (cached) return cached;
+
+  const base = previewTheme(mode);
+  const theme: SDSTheme = {
     ...base,
     components: {
       ...base.components,
@@ -327,6 +507,9 @@ function cardTheme(mode: ThemeMode): SDSTheme {
       },
     },
   };
+
+  cardThemes.set(mode, theme);
+  return theme;
 }
 
 /**
@@ -339,9 +522,9 @@ function cardTheme(mode: ThemeMode): SDSTheme {
  */
 function CatalogCard({ entry }: { entry: CatalogEntry }): ReactElement {
   const mode = useThemeMode();
-  const theme = useMemo(() => cardTheme(mode), [mode]);
+  const theme = cardTheme(mode);
   const frameRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(frameRef);
+  const Example = useExample(entry.example, useInView(frameRef));
 
   /*
    * Set rather than rendered: `inert` reached React's typings after the version
@@ -361,13 +544,17 @@ function CatalogCard({ entry }: { entry: CatalogEntry }): ReactElement {
             className={CATALOG_PREVIEW_CLASS}
             ref={frameRef}
           >
-            {inView ? (
-              <Stage>
-                <ExampleErrorBoundary fallback={() => null} id={entry.example}>
-                  <CardPreview id={entry.example} />
-                </ExampleErrorBoundary>
-              </Stage>
-            ) : null}
+            {Example ? (
+              <ExampleErrorBoundary fallback={() => null} id={entry.example}>
+                <Stage>
+                  <CardPreview Example={Example} id={entry.example} />
+                </Stage>
+              </ExampleErrorBoundary>
+            ) : (
+              /* Outside the stage, so that the placeholder is drawn at the size of
+                 the card rather than shrunk with the component it stands in for. */
+              <Skeleton />
+            )}
           </Frame>
         </EmotionThemeProvider>
       </ThemeProvider>

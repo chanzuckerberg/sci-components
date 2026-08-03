@@ -62,6 +62,109 @@
   DialogActions automatically, so you set the size once on Dialog. DialogContent
   does not take a size.
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogPaper,
+  DialogTitle,
+  DialogTitleSubtitle,
+  DialogTitleTitle,
+} from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Dialog</h3>
+<p>
+  The minimum setup: a title, some content, and the open state you control. The
+  <code>onClose</code> on DialogTitle renders the close button, and the one on
+  Dialog handles the backdrop click and the Esc key.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dialog/DefaultDialog"
+  data-example-padding="none"
+></div>
+<h3>Dialog Sizes</h3>
+<p>
+  Each <code>sdsSize</code> sets a fixed width and a minimum height. The height
+  still grows with the content, and the padding and title type scale with the
+  size.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dialog/DialogSizes"
+  data-example-padding="none"
+></div>
+<h3>Dialog with Action Buttons</h3>
+<p>
+  DialogActions places the buttons in the footer, right aligned by default, so
+  the primary action is listed last.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dialog/DialogWithActionButtons"
+  data-example-padding="none"
+></div>
+<h3>Dialog with Left-Aligned Buttons</h3>
+<p>
+  Setting <code>buttonPosition</code> to <code>"left"</code> moves the button
+  row to the other side. List the primary action first so it stays on the
+  outside edge.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dialog/DialogWithLeftAlignedButtons"
+  data-example-padding="none"
+></div>
+<h3>Persistent Dialog</h3>
+<p>
+  Passing <code>canClickOutsideClose</code> as <code>false</code> ignores both
+  the backdrop click and the Esc key. Leaving <code>onClose</code> off
+  DialogTitle also hides the close button, so the action buttons are the only
+  way out and the Dialog needs at least one.
+</p>
+<div
+  class="sds-doc-example"
+  data-example-padding="none"
+  data-example="core/Dialog/PersistentDialog"
+></div>
+<h3>Multi-step Dialog</h3>
+<p>
+  The overline is the place for a step count. Keep every step in the same size
+  Dialog, and make the workflow persistent so progress cannot be lost by
+  accident.
+</p>
+<div
+  class="sds-doc-example"
+  data-example-padding="none"
+  data-example="core/Dialog/MultiStepDialog"
+></div>
+<h3>Dialog with a Long Content</h3>
+<p>
+  The paper is capped at the viewport height, so DialogContent scrolls on its
+  own while the title and the action buttons stay in place.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dialog/DialogWithALongContent"
+  data-example-padding="none"
+></div>
+<h3>Dialog with a Custom Title</h3>
+<p>
+  Passing <code>children</code> to DialogTitle replaces the built-in layout,
+  which is how you add artwork above the title. The close button is part of that
+  layout, so it goes away too.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Dialog/DialogWithCustomTitle"
+  data-example-padding="none"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The SDS Dialog is built on top of MUI's Dialog. The following props differ in
@@ -426,91 +529,3 @@
   body type styles and removes the MUI padding; everything else is passed
   straight through.
 </p>
-<h2>Code examples</h2>
-<h3>Default Dialog</h3>
-<p>
-  The minimum setup: a title, some content, and the open state you control. The
-  <code>onClose</code> on DialogTitle renders the close button, and the one on
-  Dialog handles the backdrop click and the Esc key.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dialog/DefaultDialog"
-  data-example-padding="none"
-></div>
-<h3>Dialog Sizes</h3>
-<p>
-  Each <code>sdsSize</code> sets a fixed width and a minimum height. The height
-  still grows with the content, and the padding and title type scale with the
-  size.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dialog/DialogSizes"
-  data-example-padding="none"
-></div>
-<h3>Dialog with Action Buttons</h3>
-<p>
-  DialogActions places the buttons in the footer, right aligned by default, so
-  the primary action is listed last.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dialog/DialogWithActionButtons"
-  data-example-padding="none"
-></div>
-<h3>Dialog with Left-Aligned Buttons</h3>
-<p>
-  Setting <code>buttonPosition</code> to <code>"left"</code> moves the button
-  row to the other side. List the primary action first so it stays on the
-  outside edge.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dialog/DialogWithLeftAlignedButtons"
-  data-example-padding="none"
-></div>
-<h3>Persistent Dialog</h3>
-<p>
-  Passing <code>canClickOutsideClose</code> as <code>false</code> ignores both
-  the backdrop click and the Esc key. Leaving <code>onClose</code> off
-  DialogTitle also hides the close button, so the action buttons are the only
-  way out and the Dialog needs at least one.
-</p>
-<div
-  class="sds-doc-example"
-  data-example-padding="none"
-  data-example="core/Dialog/PersistentDialog"
-></div>
-<h3>Multi-step Dialog</h3>
-<p>
-  The overline is the place for a step count. Keep every step in the same size
-  Dialog, and make the workflow persistent so progress cannot be lost by
-  accident.
-</p>
-<div
-  class="sds-doc-example"
-  data-example-padding="none"
-  data-example="core/Dialog/MultiStepDialog"
-></div>
-<h3>Dialog with a Long Content</h3>
-<p>
-  The paper is capped at the viewport height, so DialogContent scrolls on its
-  own while the title and the action buttons stay in place.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dialog/DialogWithALongContent"
-  data-example-padding="none"
-></div>
-<h3>Dialog with a Custom Title</h3>
-<p>
-  Passing <code>children</code> to DialogTitle replaces the built-in layout,
-  which is how you add artwork above the title. The close button is part of that
-  layout, so it goes away too.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Dialog/DialogWithCustomTitle"
-  data-example-padding="none"
-></div>

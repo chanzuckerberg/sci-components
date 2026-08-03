@@ -148,11 +148,14 @@ it actually is rather than as it once was.
 
 ### Component Pages Structure
 
+Sections appear in this order:
+
 - **Source Code**: a link to the component's implementation
+- **Import**: the import statement for the component and its sub-components
+- **Code examples**: one runnable example per supported variation
 - **SDS vs MUI**: how the SDS component differs from the MUI one it wraps
 - **MUI Documentation**: a link to the underlying component's own docs
 - **Props**: the SDS and MUI props required for implementation
-- **Code examples**: one runnable example per supported variation
 
 ### Information Hierarchy
 

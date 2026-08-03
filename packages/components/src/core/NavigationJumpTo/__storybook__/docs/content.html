@@ -9,6 +9,49 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { NavigationJumpTo } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default NavigationJumpTo</h3>
+<p>
+  Three items, with the two sub-sections of Methods indented under it. The
+  highlight starts on the first item and moves with a click. No refs are
+  attached to sections here, so nothing scrolls: this is the list's default
+  state and nothing more.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationJumpTo/DefaultNavigationJumpTo"
+></div>
+<h3>Sections in a scrolling panel</h3>
+<p>
+  Three sections with refs wired to the items. Clicking scrolls the panel, and
+  scrolling the panel moves the highlight. Bringing a section into view scrolls
+  every scroll container around it, so this example holds the docs page still
+  while the panel moves; a page that scrolls its own sections wants the
+  opposite.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationJumpTo/JumpToSections"
+></div>
+<h3>Sub-items and onChange</h3>
+<p>
+  Sub-items render indented under their parent, and the readout shows the index
+  that <code>onChange</code> reports along with what triggered it. Click an
+  item, then scroll the panel by hand to see the other kind of change arrive.
+  The sub-sections are siblings of Methods rather than children, because a
+  parent section wrapping them would keep the highlight for itself.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/NavigationJumpTo/JumpToSubItems"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   NavigationJumpTo is built on MUI's
@@ -246,39 +289,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default NavigationJumpTo</h3>
-<p>
-  Three items, with the two sub-sections of Methods indented under it. The
-  highlight starts on the first item and moves with a click. No refs are
-  attached to sections here, so nothing scrolls: this is the list's default
-  state and nothing more.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationJumpTo/DefaultNavigationJumpTo"
-></div>
-<h3>Sections in a scrolling panel</h3>
-<p>
-  Three sections with refs wired to the items. Clicking scrolls the panel, and
-  scrolling the panel moves the highlight. Bringing a section into view scrolls
-  every scroll container around it, so this example holds the docs page still
-  while the panel moves; a page that scrolls its own sections wants the
-  opposite.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationJumpTo/JumpToSections"
-></div>
-<h3>Sub-items and onChange</h3>
-<p>
-  Sub-items render indented under their parent, and the readout shows the index
-  that <code>onChange</code> reports along with what triggered it. Click an
-  item, then scroll the panel by hand to see the other kind of change arrive.
-  The sub-sections are siblings of Methods rather than children, because a
-  parent section wrapping them would keep the highlight for itself.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/NavigationJumpTo/JumpToSubItems"
-></div>

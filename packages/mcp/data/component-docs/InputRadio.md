@@ -4,44 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputRadio/index.tsx).
 
-## SDS vs MUI
+## Import
 
-The following props and options differ in whether and how they function across MUI versus SDS's InputRadio component:
+**React TypeScript**
 
-- `size`: Has no effect in SDS
-
-- `color`: Has no effect in SDS
-
-- `labelPlacement`: Has no effect in SDS
-
-- `intent`: This is an SDS-specific prop that colors the border of the empty circle (`"default"`, `"positive"`, `"notice"`, or `"negative"`). It does not change the selected radio, which always uses the accent color.
-
-- `caption`: This is an SDS-specific prop, which takes text that is displayed below the primary label text.
-
-- `stage`: This SDS prop sets the radio as `"checked"` or `"unchecked"` and overrides `checked`. Inside a RadioGroup, leave it out and let the group drive the selection from each radio's `value`.
-
-- `value`: Required in practice: a RadioGroup matches it against its own value to decide which radio is selected, and SDS also derives the label and caption element ids from it for screen readers.
-
-- `row`: This boolean prop functions the same for both MUI and SDS's InputRadio component: its presence reformats the radio buttons (and their labels) within the RadioGroup parent component into a horizontal row.
-
-## MUI Documentation
-
-Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-radio-button/).
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
-
-| Name         | Type                                                      | Default     | Description                                                                                                                                                                   |
-| ------------ | --------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `caption`    | `ReactNode`                                               | -           | The caption of the InputRadio appears beneath the label in a lighter text color.                                                                                              |
-| `label`      | `ReactNode`                                               | -           | The label of the InputRadio.                                                                                                                                                  |
-| `value`      | `string`                                                  | -           | The value a RadioGroup compares against to decide whether this radio is selected. It also backs the label and caption element ids, so give every radio a unique one.          |
-| `radioProps` | `Partial<MUIRadioProps>`                                  | `{}`        | Directly pass these props to the underlying MUI radio.                                                                                                                        |
-| `stage`      | `"checked" \| "unchecked"`                                | -           | Sets the radio as `"checked"` or `"unchecked"`, overriding `checked`. Omit it inside a RadioGroup, which drives the selection itself.                                         |
-| `intent`     | `"default"` \| `"notice"` \| `"negative"` \| `"positive"` | `"default"` | Colors the border of the empty circle. The selected radio always uses the accent color.                                                                                       |
-| `disabled`   | `bool`                                                    | `false`     | If `true`, the component is disabled.                                                                                                                                         |
-| `classes`    | `object`                                                  | `{}`        | Class names for the internal elements: `root`, `labelCaptionContainer`, `label`, `caption`, `radioButton`, `radioCheckedIcon`, `radioCheckedIconDot`, and `radioDefaultIcon`. |
+```tsx
+import { InputRadio } from "@czi-sds/components";
+```
 
 ## Code examples
 
@@ -163,3 +132,42 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+The following props and options differ in whether and how they function across MUI versus SDS's InputRadio component:
+
+- `size`: Has no effect in SDS
+
+- `color`: Has no effect in SDS
+
+- `labelPlacement`: Has no effect in SDS
+
+- `intent`: This is an SDS-specific prop that colors the border of the empty circle (`"default"`, `"positive"`, `"notice"`, or `"negative"`). It does not change the selected radio, which always uses the accent color.
+
+- `caption`: This is an SDS-specific prop, which takes text that is displayed below the primary label text.
+
+- `stage`: This SDS prop sets the radio as `"checked"` or `"unchecked"` and overrides `checked`. Inside a RadioGroup, leave it out and let the group drive the selection from each radio's `value`.
+
+- `value`: Required in practice: a RadioGroup matches it against its own value to decide which radio is selected, and SDS also derives the label and caption element ids from it for screen readers.
+
+- `row`: This boolean prop functions the same for both MUI and SDS's InputRadio component: its presence reformats the radio buttons (and their labels) within the RadioGroup parent component into a horizontal row.
+
+## MUI Documentation
+
+Documentation for the underlying MUI component can be found [here](https://mui.com/material-ui/react-radio-button/).
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name         | Type                                                      | Default     | Description                                                                                                                                                                   |
+| ------------ | --------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `caption`    | `ReactNode`                                               | -           | The caption of the InputRadio appears beneath the label in a lighter text color.                                                                                              |
+| `label`      | `ReactNode`                                               | -           | The label of the InputRadio.                                                                                                                                                  |
+| `value`      | `string`                                                  | -           | The value a RadioGroup compares against to decide whether this radio is selected. It also backs the label and caption element ids, so give every radio a unique one.          |
+| `radioProps` | `Partial<MUIRadioProps>`                                  | `{}`        | Directly pass these props to the underlying MUI radio.                                                                                                                        |
+| `stage`      | `"checked" \| "unchecked"`                                | -           | Sets the radio as `"checked"` or `"unchecked"`, overriding `checked`. Omit it inside a RadioGroup, which drives the selection itself.                                         |
+| `intent`     | `"default"` \| `"notice"` \| `"negative"` \| `"positive"` | `"default"` | Colors the border of the empty circle. The selected radio always uses the accent color.                                                                                       |
+| `disabled`   | `bool`                                                    | `false`     | If `true`, the component is disabled.                                                                                                                                         |
+| `classes`    | `object`                                                  | `{}`        | Class names for the internal elements: `root`, `labelCaptionContainer`, `label`, `caption`, `radioButton`, `radioCheckedIcon`, `radioCheckedIconDot`, and `radioDefaultIcon`. |

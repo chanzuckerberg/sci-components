@@ -9,6 +9,58 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Tab, Tabs } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Tabs – Large</h3>
+<p>
+  The default size, for the top level of a screen. The selection is held in the
+  page's state and written back from <code>onChange</code>, which is what a Tabs
+  group needs to respond to a click.
+</p>
+<div class="sds-doc-example" data-example="core/Tabs/TabsLarge"></div>
+<h3>Tabs – Small</h3>
+<p>
+  A group at the small size, which drops the label text to 13px. It is meant for
+  a second layer of tabbing rather than on its own.
+</p>
+<div class="sds-doc-example" data-example="core/Tabs/TabsSmall"></div>
+<h3>Tabs with count, text, and component</h3>
+<p>
+  <code>count</code> takes any node: a number, a count of <code>0</code> on an
+  empty tab, and a number paired with a Tag on the last tab. The group is
+  underlined, which separates it from the content below.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Tabs/TabsWithCountTextAndComponent"
+></div>
+<h3>Tabs with panels</h3>
+<p>
+  The wiring between a tab and the content it reveals, which the component
+  leaves to you: matching ids on each Tab and its panel,
+  <code>role="tabpanel"</code> on the panel, and only the selected panel
+  rendered.
+</p>
+<div class="sds-doc-example" data-example="core/Tabs/TabsWithPanels"></div>
+<h3>A disabled tab</h3>
+<p>
+  A tab whose content is not ready yet. It stays in the strip, greyed out, and
+  both the pointer and the arrow keys pass over it.
+</p>
+<div class="sds-doc-example" data-example="core/Tabs/TabsWithDisabledTab"></div>
+<h3>Two levels of tabs</h3>
+<p>
+  A large group over a small one, which is the pairing the small size exists
+  for. Each level keeps its own state, and the second level resets when the
+  first one changes.
+</p>
+<div class="sds-doc-example" data-example="core/Tabs/NestedTabs"></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS Tabs wraps MUI's Tabs, and SDS Tab wraps MUI's Tab. Both are exported from
@@ -408,48 +460,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Tabs – Large</h3>
-<p>
-  The default size, for the top level of a screen. The selection is held in the
-  page's state and written back from <code>onChange</code>, which is what a Tabs
-  group needs to respond to a click.
-</p>
-<div class="sds-doc-example" data-example="core/Tabs/TabsLarge"></div>
-<h3>Tabs – Small</h3>
-<p>
-  A group at the small size, which drops the label text to 13px. It is meant for
-  a second layer of tabbing rather than on its own.
-</p>
-<div class="sds-doc-example" data-example="core/Tabs/TabsSmall"></div>
-<h3>Tabs with count, text, and component</h3>
-<p>
-  <code>count</code> takes any node: a number, a count of <code>0</code> on an
-  empty tab, and a number paired with a Tag on the last tab. The group is
-  underlined, which separates it from the content below.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Tabs/TabsWithCountTextAndComponent"
-></div>
-<h3>Tabs with panels</h3>
-<p>
-  The wiring between a tab and the content it reveals, which the component
-  leaves to you: matching ids on each Tab and its panel,
-  <code>role="tabpanel"</code> on the panel, and only the selected panel
-  rendered.
-</p>
-<div class="sds-doc-example" data-example="core/Tabs/TabsWithPanels"></div>
-<h3>A disabled tab</h3>
-<p>
-  A tab whose content is not ready yet. It stays in the strip, greyed out, and
-  both the pointer and the arrow keys pass over it.
-</p>
-<div class="sds-doc-example" data-example="core/Tabs/TabsWithDisabledTab"></div>
-<h3>Two levels of tabs</h3>
-<p>
-  A large group over a small one, which is the pairing the small size exists
-  for. Each level keeps its own state, and the second level resets when the
-  first one changes.
-</p>
-<div class="sds-doc-example" data-example="core/Tabs/NestedTabs"></div>

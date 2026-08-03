@@ -4,40 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Dropdown/index.tsx).
 
-## SDS vs MUI
+## Import
 
-SDS's Dropdown component is a combination of two other SDS components: DropdownMenu and InputDropdown, since these would often be used together to create a complete dropdown element in the UI. DropdownMenu is built off of MUI's Autocomplete component, but InputDropdown is built from scratch.
+**React TypeScript**
 
-These are a few of the most relevant ways in which SDS's DropdownMenu (which is used within Dropdown) integrates withAutocomplete and other MUI components:
-
-- SDS Dropdown uses [MUI Autocomplete](https://mui.com/material-ui/react-autocomplete/) under the hood, so all props passed to DropdownMenu are ultimately passed to the Autocomplete component as well. This means MUI's Autocomplete props can be used on SDS's DropdownMenu if needed.
-
-- SDS Dropdown uses [MUI Popper](https://mui.com/material-ui/react-popper/). A custom Popper component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
-
-- Similarly, SDS Dropdown uses [MUI Paper](https://mui.com/material-ui/react-paper/). A custom Paper component can be passed via `props.PaperComponent` to enable custom styling.
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
-
-| Name                           | Type                                                             | Default         | Description                                                                                            |
-| ------------------------------ | ---------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------ |
-| `buttonPosition`               | `"left"` \| `"right"`                                            | `"left"`        | Specifies the position of the Apply/Cancel buttons at the Dropdown footer.                             |
-| `buttons`                      | `bool`                                                           | `false`         | When set to `true`, a set of Apply/Cancel buttons will be displayed at the Dropdown footer.            |
-| `closeOnBlur`                  | `bool`                                                           | `true`          | When set to `true`, the Dropdown will automatically close when a click occurs outside of it.           |
-| `disabled`                     | `bool`                                                           | `false`         | When `true`, the Dropdown is disabled and user interaction is not allowed.                             |
-| `isTriggerChangeOnOptionClick` | `bool`                                                           | `false`         | When set to `true`, changes in Dropdown selections are applied in real-time to the react state.        |
-| `label`                        | `string`                                                         | -               | The label of the Dropdown.                                                                             |
-| `multiple`                     | `bool`                                                           | `true`          | Determines whether the Dropdown allows for multiple item selection.                                    |
-| `onChange`                     | `(options: Value<DefaultDropdownMenuOption, Multiple>) => void;` | -               | Callback fired when the value changes.                                                                 |
-| `onClose`                      | `func`                                                           | -               | Callback fired when the Dropdown requests to be closed.                                                |
-| `search`                       | `bool`                                                           | `true`          | When set to `true`, a search input is displayed at the top of the Dropdown for filtering options.      |
-| `dropdownMenuProps`            | `Partial<DropdownMenuProps>`                                     | -               | These props are directly passed to the underlying DropdownMenu component, customizing its behavior.    |
-| `options`                      | `Array<DefaultDropdownMenuOption>`                               | -               | An array of options to be displayed as MenuItems within the Dropdown.                                  |
-| `InputDropdownProps`           | `Partial<InputDropdownPropsType>`                                | -               | These props are directly passed to the underlying InputDropdown component, customizing its behavior.   |
-| `value`                        | `string \| Array<string>`                                        | -               | The current value of the Dropdown, representing the selected item(s) based on the multi-select status. |
-| `PopperComponent`              | `element`                                                        | `Paper`         | The component used to render the wrapper of the inner DropdownMenu.                                    |
-| `InputDropdownComponent`       | `element`                                                        | `InputDropdown` | The component used to render the Dropdown trigger button.                                              |
+```tsx
+import { Dropdown } from "@czi-sds/components";
+```
 
 ## Code Examples
 
@@ -154,3 +127,38 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+SDS's Dropdown component is a combination of two other SDS components: DropdownMenu and InputDropdown, since these would often be used together to create a complete dropdown element in the UI. DropdownMenu is built off of MUI's Autocomplete component, but InputDropdown is built from scratch.
+
+These are a few of the most relevant ways in which SDS's DropdownMenu (which is used within Dropdown) integrates withAutocomplete and other MUI components:
+
+- SDS Dropdown uses [MUI Autocomplete](https://mui.com/material-ui/react-autocomplete/) under the hood, so all props passed to DropdownMenu are ultimately passed to the Autocomplete component as well. This means MUI's Autocomplete props can be used on SDS's DropdownMenu if needed.
+
+- SDS Dropdown uses [MUI Popper](https://mui.com/material-ui/react-popper/). A custom Popper component can be passed via `props.PopperComponent` and/or `props.PopperBaseProps` to control the popper component.
+
+- Similarly, SDS Dropdown uses [MUI Paper](https://mui.com/material-ui/react-paper/). A custom Paper component can be passed via `props.PaperComponent` to enable custom styling.
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name                           | Type                                                             | Default         | Description                                                                                            |
+| ------------------------------ | ---------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------ |
+| `buttonPosition`               | `"left"` \| `"right"`                                            | `"left"`        | Specifies the position of the Apply/Cancel buttons at the Dropdown footer.                             |
+| `buttons`                      | `bool`                                                           | `false`         | When set to `true`, a set of Apply/Cancel buttons will be displayed at the Dropdown footer.            |
+| `closeOnBlur`                  | `bool`                                                           | `true`          | When set to `true`, the Dropdown will automatically close when a click occurs outside of it.           |
+| `disabled`                     | `bool`                                                           | `false`         | When `true`, the Dropdown is disabled and user interaction is not allowed.                             |
+| `isTriggerChangeOnOptionClick` | `bool`                                                           | `false`         | When set to `true`, changes in Dropdown selections are applied in real-time to the react state.        |
+| `label`                        | `string`                                                         | -               | The label of the Dropdown.                                                                             |
+| `multiple`                     | `bool`                                                           | `true`          | Determines whether the Dropdown allows for multiple item selection.                                    |
+| `onChange`                     | `(options: Value<DefaultDropdownMenuOption, Multiple>) => void;` | -               | Callback fired when the value changes.                                                                 |
+| `onClose`                      | `func`                                                           | -               | Callback fired when the Dropdown requests to be closed.                                                |
+| `search`                       | `bool`                                                           | `true`          | When set to `true`, a search input is displayed at the top of the Dropdown for filtering options.      |
+| `dropdownMenuProps`            | `Partial<DropdownMenuProps>`                                     | -               | These props are directly passed to the underlying DropdownMenu component, customizing its behavior.    |
+| `options`                      | `Array<DefaultDropdownMenuOption>`                               | -               | An array of options to be displayed as MenuItems within the Dropdown.                                  |
+| `InputDropdownProps`           | `Partial<InputDropdownPropsType>`                                | -               | These props are directly passed to the underlying InputDropdown component, customizing its behavior.   |
+| `value`                        | `string \| Array<string>`                                        | -               | The current value of the Dropdown, representing the selected item(s) based on the multi-select status. |
+| `PopperComponent`              | `element`                                                        | `Paper`         | The component used to render the wrapper of the inner DropdownMenu.                                    |
+| `InputDropdownComponent`       | `element`                                                        | `InputDropdown` | The component used to render the Dropdown trigger button.                                              |

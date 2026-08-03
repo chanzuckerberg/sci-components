@@ -9,6 +9,55 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Popover } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Popover</strong></h3>
+<p>
+  The least a popover needs: an anchor kept in state, an
+  <code>open</code> derived from it, and an <code>onClose</code> that clears it.
+  It opens below the trigger, with the 8px gap the SDS defaults provide.
+</p>
+<div class="sds-doc-example" data-example="core/Popover/DefaultPopover"></div>
+<h3><strong>Positioning</strong></h3>
+<p>
+  <code>anchorOrigin</code> picks the point on the trigger and
+  <code>transformOrigin</code> the point on the popover that meets it. Because
+  SDS's defaults are replaced rather than merged, each of these pairs writes the
+  gap back in as a negative number.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Popover/PopoverPositioning"
+></div>
+<h3><strong>Popover with rich content</strong></h3>
+<p>
+  Anything React can render goes on the paper. A popover holding more than a
+  sentence wants a width, which is set through <code>slotProps.paper</code>, and
+  a little more room than the paper's 6px and 12px, which the content adds
+  itself.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Popover/PopoverWithRichContent"
+></div>
+<h3><strong>Opening at the cursor</strong></h3>
+<p>
+  With <code>anchorReference</code> set to <code>"anchorPosition"</code> the
+  popover is placed at a point rather than against an element, which is what a
+  right-click menu needs. The vertical offset in the SDS
+  <code>transformOrigin</code> applies here too, so the popover sits 8px below
+  the cursor.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Popover/PopoverAtCursorPosition"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS Popover is a thin wrapper around MUI's Popover.
@@ -417,45 +466,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Popover</strong></h3>
-<p>
-  The least a popover needs: an anchor kept in state, an
-  <code>open</code> derived from it, and an <code>onClose</code> that clears it.
-  It opens below the trigger, with the 8px gap the SDS defaults provide.
-</p>
-<div class="sds-doc-example" data-example="core/Popover/DefaultPopover"></div>
-<h3><strong>Positioning</strong></h3>
-<p>
-  <code>anchorOrigin</code> picks the point on the trigger and
-  <code>transformOrigin</code> the point on the popover that meets it. Because
-  SDS's defaults are replaced rather than merged, each of these pairs writes the
-  gap back in as a negative number.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Popover/PopoverPositioning"
-></div>
-<h3><strong>Popover with rich content</strong></h3>
-<p>
-  Anything React can render goes on the paper. A popover holding more than a
-  sentence wants a width, which is set through <code>slotProps.paper</code>, and
-  a little more room than the paper's 6px and 12px, which the content adds
-  itself.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Popover/PopoverWithRichContent"
-></div>
-<h3><strong>Opening at the cursor</strong></h3>
-<p>
-  With <code>anchorReference</code> set to <code>"anchorPosition"</code> the
-  popover is placed at a point rather than against an element, which is what a
-  right-click menu needs. The vertical offset in the SDS
-  <code>transformOrigin</code> applies here too, so the popover sits 8px below
-  the cursor.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Popover/PopoverAtCursorPosition"
-></div>

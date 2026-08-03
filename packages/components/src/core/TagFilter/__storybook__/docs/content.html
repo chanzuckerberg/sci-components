@@ -9,6 +9,24 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { TagFilter } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default TagFilter</h3>
+<p>
+  A row of applied filters, each removing itself from the page's state through
+  <code>onDelete</code>. The row is a named group, which gives the identical
+  "Delete Tag" buttons some context.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/TagFilter/DefaultTagFilter"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   TagFilter is built on the SDS Tag, and so on MUI's Chip, but it exists for one
@@ -130,14 +148,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default TagFilter</h3>
-<p>
-  A row of applied filters, each removing itself from the page's state through
-  <code>onDelete</code>. The row is a named group, which gives the identical
-  "Delete Tag" buttons some context.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/TagFilter/DefaultTagFilter"
-></div>

@@ -4,26 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ComplexFilter/index.tsx).
 
-## SDS vs MUI
+## Import
 
-The ComplexFilter is not directly based on any MUI component, but it does use the SDS Dropdown component, which in turn is ultimately based on [MUI's Autocomplete component](https://mui.com/material-ui/react-autocomplete/). As such, props that are available to either SDS's Dropdown and / or MUI's Autocomplete can be passed to ComplexFilter as such:
+**React TypeScript**
 
-- `DropdownMenuProps`: use this prop to pass MUIAutocomplete-specific props to ComplexFilter
-
-- `InputDropdownProps`: use this prop to pass SDS InputDropdown-specific props to ComplexFilter
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found in the table below. See the MUI documentation for additional optional props.
-
-| Name                           | Type     | Default | Description                                                                                                                                                            |
-| ------------------------------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `isTriggerChangeOnOptionClick` | `bool`   | `false` | Determines whether changes are triggered in real-time upon clicking an option                                                                                          |
-| `keepSearchOnSelect`           | `bool`   |         | Maintains a search input when a user selects an option (only if multiple selections are allowed via the `multiple` prop; otherwise the dropdown closes upon selection) |
-| `label`                        | `string` | `""`    | Sets the label of filter, shown both when closed and open                                                                                                              |
-| `multiple`                     | `bool`   | `false` | Defines whether multiple selections or can be made from the filter simultaneously or only one                                                                          |
-| `onChange`                     | `func`   | -       | Function to set what happens when a new value is set via the filter                                                                                                    |
-| `search`                       | `bool`   | `false` | Provides a search bar at the top of the filter from which users can narrow the list of menu items                                                                      |
+```tsx
+import { ComplexFilter } from "@czi-sds/components";
+```
 
 ## Code Examples
 
@@ -204,3 +191,24 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+The ComplexFilter is not directly based on any MUI component, but it does use the SDS Dropdown component, which in turn is ultimately based on [MUI's Autocomplete component](https://mui.com/material-ui/react-autocomplete/). As such, props that are available to either SDS's Dropdown and / or MUI's Autocomplete can be passed to ComplexFilter as such:
+
+- `DropdownMenuProps`: use this prop to pass MUIAutocomplete-specific props to ComplexFilter
+
+- `InputDropdownProps`: use this prop to pass SDS InputDropdown-specific props to ComplexFilter
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found in the table below. See the MUI documentation for additional optional props.
+
+| Name                           | Type     | Default | Description                                                                                                                                                            |
+| ------------------------------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isTriggerChangeOnOptionClick` | `bool`   | `false` | Determines whether changes are triggered in real-time upon clicking an option                                                                                          |
+| `keepSearchOnSelect`           | `bool`   |         | Maintains a search input when a user selects an option (only if multiple selections are allowed via the `multiple` prop; otherwise the dropdown closes upon selection) |
+| `label`                        | `string` | `""`    | Sets the label of filter, shown both when closed and open                                                                                                              |
+| `multiple`                     | `bool`   | `false` | Defines whether multiple selections or can be made from the filter simultaneously or only one                                                                          |
+| `onChange`                     | `func`   | -       | Function to set what happens when a new value is set via the filter                                                                                                    |
+| `search`                       | `bool`   | `false` | Provides a search bar at the top of the filter from which users can narrow the list of menu items                                                                      |

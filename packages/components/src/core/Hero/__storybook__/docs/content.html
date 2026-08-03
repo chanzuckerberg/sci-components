@@ -9,6 +9,69 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Hero } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Hero</h3>
+<p>
+  A headline, a caption, and a background color. With no
+  <code>heroHeight</code> the section is as tall as its content plus the 40px of
+  top and bottom padding.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/DefaultHero"></div>
+<h3>Header Sizes</h3>
+<p>
+  <code>headerFontSize</code> picks the type scale for the headline. The caption
+  is fixed and does not change with it.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/HeroHeaderSizes"></div>
+<h3>Hero with a Background Image</h3>
+<p>
+  Passing a node to <code>backgroundFill</code> renders it full-bleed behind the
+  content. The darkening mask keeps the text readable, and it needs both
+  <code>darkeningMask</code> and a <code>darkeningMaskOpacity</code> above zero.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Hero/HeroWithBackgroundImage"
+></div>
+<h3>Content Position and Alignment</h3>
+<p>
+  <code>overlayContentPosition</code> moves the whole content block within the
+  section, while <code>textAlignment</code> aligns the text inside that block.
+  Both need room to be visible, which comes from <code>heroHeight</code> and
+  <code>overlayContentWidth</code>.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/HeroContentPosition"></div>
+<h3>Hero with a Call to Action</h3>
+<p>
+  Children render in a slot below the caption. That slot keeps its own colors,
+  so <code>hasInvertTextColor</code> does not reach the buttons.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Hero/HeroWithCallToAction"
+></div>
+<h3>Hero with Overlay Media</h3>
+<p>
+  Overlay media is positioned independently of the text, so narrow the content
+  block with <code>overlayContentWidth</code> to keep the two from overlapping.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Hero/HeroWithOverlayMedia"
+></div>
+<h3>Hero with a Vignette</h3>
+<p>
+  The vignette is a 40px gradient along the top edge, meant to sit behind a
+  transparent header navigation.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/HeroWithVignette"></div>
 <h2>Anatomy</h2>
 <p>
   Hero is not built on a MUI component. It renders a single
@@ -436,59 +499,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default Hero</h3>
-<p>
-  A headline, a caption, and a background color. With no
-  <code>heroHeight</code> the section is as tall as its content plus the 40px of
-  top and bottom padding.
-</p>
-<div class="sds-doc-example" data-example="core/Hero/DefaultHero"></div>
-<h3>Header Sizes</h3>
-<p>
-  <code>headerFontSize</code> picks the type scale for the headline. The caption
-  is fixed and does not change with it.
-</p>
-<div class="sds-doc-example" data-example="core/Hero/HeroHeaderSizes"></div>
-<h3>Hero with a Background Image</h3>
-<p>
-  Passing a node to <code>backgroundFill</code> renders it full-bleed behind the
-  content. The darkening mask keeps the text readable, and it needs both
-  <code>darkeningMask</code> and a <code>darkeningMaskOpacity</code> above zero.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Hero/HeroWithBackgroundImage"
-></div>
-<h3>Content Position and Alignment</h3>
-<p>
-  <code>overlayContentPosition</code> moves the whole content block within the
-  section, while <code>textAlignment</code> aligns the text inside that block.
-  Both need room to be visible, which comes from <code>heroHeight</code> and
-  <code>overlayContentWidth</code>.
-</p>
-<div class="sds-doc-example" data-example="core/Hero/HeroContentPosition"></div>
-<h3>Hero with a Call to Action</h3>
-<p>
-  Children render in a slot below the caption. That slot keeps its own colors,
-  so <code>hasInvertTextColor</code> does not reach the buttons.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Hero/HeroWithCallToAction"
-></div>
-<h3>Hero with Overlay Media</h3>
-<p>
-  Overlay media is positioned independently of the text, so narrow the content
-  block with <code>overlayContentWidth</code> to keep the two from overlapping.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Hero/HeroWithOverlayMedia"
-></div>
-<h3>Hero with a Vignette</h3>
-<p>
-  The vignette is a 40px gradient along the top edge, meant to sit behind a
-  transparent header navigation.
-</p>
-<div class="sds-doc-example" data-example="core/Hero/HeroWithVignette"></div>

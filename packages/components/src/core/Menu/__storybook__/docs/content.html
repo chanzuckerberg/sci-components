@@ -13,6 +13,40 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Menu } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Menu</strong></h3>
+<p>
+  The least a menu needs: an anchor kept in state, an <code>open</code> derived
+  from it, and an <code>onClose</code> that clears it. The items are commands,
+  so each one clears the anchor as well and the menu closes behind it.
+</p>
+<div class="sds-doc-example" data-example="core/Menu/DefaultMenu"></div>
+<h3><strong>Menu placement</strong></h3>
+<p>
+  A menu wider than its trigger, or one opened from something near the edge of
+  the window, often reads better aligned to an edge than centered. Pairing the
+  right edge of the anchor with the right edge of the menu moves it there
+  without any positioning code of your own.
+</p>
+<div class="sds-doc-example" data-example="core/Menu/MenuPlacement"></div>
+<h3><strong>Menu with selectable items</strong></h3>
+<p>
+  Selection state lives outside the menu. Passing <code>isMultiSelect</code> and
+  <code>selected</code> to each MenuItem draws the checkmarks, and leaving the
+  close out of the item handlers keeps the menu open so several options can be
+  set in one visit.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Menu/MenuWithSelectableItems"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS Menu is a thin wrapper around MUI's Menu. <code>MenuProps</code> is MUI's
@@ -418,30 +452,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Menu</strong></h3>
-<p>
-  The least a menu needs: an anchor kept in state, an <code>open</code> derived
-  from it, and an <code>onClose</code> that clears it. The items are commands,
-  so each one clears the anchor as well and the menu closes behind it.
-</p>
-<div class="sds-doc-example" data-example="core/Menu/DefaultMenu"></div>
-<h3><strong>Menu placement</strong></h3>
-<p>
-  A menu wider than its trigger, or one opened from something near the edge of
-  the window, often reads better aligned to an edge than centered. Pairing the
-  right edge of the anchor with the right edge of the menu moves it there
-  without any positioning code of your own.
-</p>
-<div class="sds-doc-example" data-example="core/Menu/MenuPlacement"></div>
-<h3><strong>Menu with selectable items</strong></h3>
-<p>
-  Selection state lives outside the menu. Passing <code>isMultiSelect</code> and
-  <code>selected</code> to each MenuItem draws the checkmarks, and leaving the
-  close out of the item handlers keeps the menu open so several options can be
-  set in one visit.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Menu/MenuWithSelectableItems"
-></div>

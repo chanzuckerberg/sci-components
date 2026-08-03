@@ -9,6 +9,252 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { DropdownMenu } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default</h3>
+<p>
+  This example has the minimum props and menu item metadata needed for the
+  DropdownMenu. The examples that follow build on it.
+</p>
+<p>
+  Menu item metadata is stored as an array of objects (one per menu item) passed
+  to the DropdownMenu component’s <code>options</code> prop. At minimum each
+  MenuItem needs a <code>name</code> property, which is the text it displays.
+  MenuItems can display more metadata, though; see the “Grouped sections” and
+  “Menu items with count, icon, and details” examples below. Alternatively, a
+  custom component can be displayed instead of a MenuItem component; see the
+  “Components in place of menu items” example below.
+</p>
+<p>
+  The minimum width for the DropdownMenu is 225px, but longer text will
+  automatically widen the DropdownMenu up to the length of the text provided.
+</p>
+<div class="sds-doc-example" data-example="core/DropdownMenu/Default"></div>
+<h3>Custom click target</h3>
+<p>
+  The example below shows how DropdownMenu can be used in conjunction with a
+  click target component (in this case, the InputDropdown component). When the
+  click target is clicked, the DropdownMenu opens, and when a MenuItem is
+  clicked, the DropdownMenu closes.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/CustomClickTarget"
+></div>
+<h3>Search</h3>
+<p>
+  An InputSearch component can be incorporated into the DropdownMenu component
+  by passing it the <code>search</code> prop.
+</p>
+<p>
+  The search functions by filtering out non-matches as the user types, leaving
+  only menu items with text that match the input. If no matches are found, the
+  DropdownMenu displays “No options” below the InputSearch by default. This text
+  can be changed via the <code>noOptionsText</code> prop as shown below.
+</p>
+<p>
+  By default, the search’s input text is maintained even when a user selects a
+  MenuItem (if multiple selections are allowed; otherwise the dropdown closes
+  upon selection). This way users can select multiple MenuItems that match the
+  searched term without needing to re-enter it each time. However, this can be
+  changed so that the search input clears upon making a selection; see the
+  “Search cleared on select” example below.
+</p>
+<ol class="sds-doc-ordered-list">
+  <li><p>In the search box, type in "fruit"</p></li>
+  <li><p>DropdownMenu will display "Fruit: Apple" and "Fruit: Orange"</p></li>
+  <li><p>Select "Fruit: Apple"</p></li>
+  <li>
+    <p>
+      Note that the search text is maintained along with the limited list of
+      items
+    </p>
+  </li>
+</ol>
+<div class="sds-doc-example" data-example="core/DropdownMenu/Search"></div>
+<h3>Multi-select</h3>
+<p>
+  You can allow users to select multiple menu items by passing the DropdownMenu
+  component the <code>multiple</code> prop. MenuItems will be shifted further to
+  the right to make room for checkmarks displayed upon selection.
+</p>
+<p>
+  If the <code>multiple</code> prop is not <code>true</code>, the DropdownMenu
+  allows just one selection. It closes and applies the selection once&nbsp; a
+  menu item is selected.
+</p>
+<div class="sds-doc-example" data-example="core/DropdownMenu/MultiSelect"></div>
+<h3>Search cleared on select</h3>
+<p>
+  If search is included in the DropdownMenu, by default the search input will be
+  maintained when a user selects a MenuItem (if multiple selections are allowed;
+  otherwise the dropdown menu closes upon selection). However, the search input
+  can be set to close upon selection by setting the optional
+  <code>keepSearchOnSelect</code> prop to <code>false</code>.
+</p>
+<p>
+  This setting is intended to be used only when <code>search</code> and
+  <code>multiple</code> are both set to <code>true</code> (otherwise it will
+  have no noticeable affect since the dropdown menu closes upon selection if
+  multi-select is not allowed, hiding the search bar).
+</p>
+<p>To see how this works:</p>
+<ol class="sds-doc-ordered-list">
+  <li><p>In the search box, type in "fruit"</p></li>
+  <li><p>DropdownMenu will display "Fruit: Apple" and "Fruit: Orange"</p></li>
+  <li><p>Select "Fruit: Apple"</p></li>
+  <li>
+    <p>
+      Note that the search text is now cleared and all dropdown items reappear
+    </p>
+  </li>
+</ol>
+<p>
+  Compare this to the default behavior in the " Search " example above, or
+  change the <code>keepSearchOnSelect</code> prop in the example below to
+  <code>true</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/ClearSearchOnSelect"
+></div>
+<h3>Grouped sections</h3>
+<p>MenuItems can be displayed in groups with a label.</p>
+<p>
+  This requires passing DropdownMenu the <code>groupBy</code> prop to group
+  options under the returned string. The <code>groupBy</code> value is also used
+  as the text for group headings when&nbsp;
+  <a href="https://mui.com/material-ui/api/autocomplete/#props"
+    >MUI Autocomplete renderGroup</a
+  >
+  &nbsp;is not provided. For example:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">// group items by section
+groupBy={(option) =&gt; option.section}
+
+// group items by the last character of their names
+groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
+  </figure>
+</div>
+<p>
+  This <code>groupBy</code> prop must be provided or the groups will not render,
+  even if all menu items have <code>section</code> properties (see below).
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Warning:</strong>
+    To avoid duplicate headers, please make sure that the options are also
+    sorted with the same dimension that they are grouped by. (See:
+    <a
+      href="https://github.com/mui/material-ui/issues/21967#issuecomment-665006321"
+      >Issue</a
+    >
+    and example below)
+  </p>
+</div>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/GroupedSections"
+></div>
+<h2>Recipes</h2>
+<p>
+  These recipes show a few of the more complex approaches available for
+  customizing Dropdown Menus.
+</p>
+<h3>Custom isOptionEqualToValue</h3>
+<p>
+  The <code>isOptionEqualToValue</code> prop changes how a selected value is
+  compared against the available options. By default
+  <code>option.name === val.name</code> is used. In the custom example below,
+  the <code>id</code> property is used instead of the <code>name</code>
+  property.
+</p>
+<p>
+  This is a MUI prop; learn more in the
+  <a href="https://mui.com/material-ui/api/autocomplete/#props"
+    >Autocomplete API</a
+  >
+  .
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/CustomIsOptionEqualToValue"
+></div>
+<h3>Custom onChange</h3>
+<p>
+  The optional <code>onChange</code> prop specifies what happens when a new
+  selection is made.
+</p>
+<p>
+  In the example below, <code>onChange</code> has been modified such that making
+  a new selection logs the value and reason to the console.
+</p>
+<p>
+  This is a MUI prop; learn more in the
+  <a href="https://mui.com/material-ui/api/autocomplete/#props"
+    >Autocomplete API</a
+  >
+  .
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/CustomOnChange"
+></div>
+<h3>Custom PopperBaseProps</h3>
+<p>
+  <code>PopperBaseProps</code> is an SDS-specific prop made for passing custom
+  props to the Popper component, which is included as part of the DropdownMenu
+  component.
+</p>
+<p>
+  The Popper component is part of MUI; learn more in the
+  <a href="https://mui.com/material-ui/api/popper/">Popper documentation</a>
+  , and see all the props available to pass to it on the
+  <a href="https://mui.com/material-ui/api/popper/">Popper API page</a>
+  .
+</p>
+<p>
+  The example below passes the Popper a <code>className</code> prop and
+  additionally uses the <code>sx</code> prop to make style changes (learn more
+  on the
+  <a href="https://mui.com/system/getting-started/the-sx-prop/"
+    >MUI sx documentation page</a
+  >).
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/CustomPopperBaseProps"
+></div>
+<h3>Custom Popper component</h3>
+<p>
+  In addition to modifying the Popper's styles via
+  <code>PopperBaseProps</code> above, the styles for the Popper component can be
+  overwritten more directly with <code>styled()</code>.
+</p>
+<p>
+  To get all the default SDS styles used for Popper, first copy them into a
+  custom-styled Popper (from within
+  <code>sci-components/packages/components/src/core/DropdownMenu/style.ts</code>
+  file). Then replace and / or follow up those styles with custom styles. The
+  example below includes comments for each of these steps within
+  <code>CustomPopper</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/DropdownMenu/CustomPopperComponent"
+></div>
+<hr />
 <h2>SDS vs MUI</h2>
 <p>
   Both SDS's DropdownMenu and MUI's Autocomplete have huge API surfaces, so it
@@ -341,242 +587,3 @@
     closing the dropdown.
   </p>
 </div>
-<h2>Code examples</h2>
-<h3>Default</h3>
-<p>
-  This example has the minimum props and menu item metadata needed for the
-  DropdownMenu. The examples that follow build on it.
-</p>
-<p>
-  Menu item metadata is stored as an array of objects (one per menu item) passed
-  to the DropdownMenu component’s <code>options</code> prop. At minimum each
-  MenuItem needs a <code>name</code> property, which is the text it displays.
-  MenuItems can display more metadata, though; see the “Grouped sections” and
-  “Menu items with count, icon, and details” examples below. Alternatively, a
-  custom component can be displayed instead of a MenuItem component; see the
-  “Components in place of menu items” example below.
-</p>
-<p>
-  The minimum width for the DropdownMenu is 225px, but longer text will
-  automatically widen the DropdownMenu up to the length of the text provided.
-</p>
-<div class="sds-doc-example" data-example="core/DropdownMenu/Default"></div>
-<h3>Custom click target</h3>
-<p>
-  The example below shows how DropdownMenu can be used in conjunction with a
-  click target component (in this case, the InputDropdown component). When the
-  click target is clicked, the DropdownMenu opens, and when a MenuItem is
-  clicked, the DropdownMenu closes.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/CustomClickTarget"
-></div>
-<h3>Search</h3>
-<p>
-  An InputSearch component can be incorporated into the DropdownMenu component
-  by passing it the <code>search</code> prop.
-</p>
-<p>
-  The search functions by filtering out non-matches as the user types, leaving
-  only menu items with text that match the input. If no matches are found, the
-  DropdownMenu displays “No options” below the InputSearch by default. This text
-  can be changed via the <code>noOptionsText</code> prop as shown below.
-</p>
-<p>
-  By default, the search’s input text is maintained even when a user selects a
-  MenuItem (if multiple selections are allowed; otherwise the dropdown closes
-  upon selection). This way users can select multiple MenuItems that match the
-  searched term without needing to re-enter it each time. However, this can be
-  changed so that the search input clears upon making a selection; see the
-  “Search cleared on select” example below.
-</p>
-<ol class="sds-doc-ordered-list">
-  <li><p>In the search box, type in "fruit"</p></li>
-  <li><p>DropdownMenu will display "Fruit: Apple" and "Fruit: Orange"</p></li>
-  <li><p>Select "Fruit: Apple"</p></li>
-  <li>
-    <p>
-      Note that the search text is maintained along with the limited list of
-      items
-    </p>
-  </li>
-</ol>
-<div class="sds-doc-example" data-example="core/DropdownMenu/Search"></div>
-<h3>Multi-select</h3>
-<p>
-  You can allow users to select multiple menu items by passing the DropdownMenu
-  component the <code>multiple</code> prop. MenuItems will be shifted further to
-  the right to make room for checkmarks displayed upon selection.
-</p>
-<p>
-  If the <code>multiple</code> prop is not <code>true</code>, the DropdownMenu
-  allows just one selection. It closes and applies the selection once&nbsp; a
-  menu item is selected.
-</p>
-<div class="sds-doc-example" data-example="core/DropdownMenu/MultiSelect"></div>
-<h3>Search cleared on select</h3>
-<p>
-  If search is included in the DropdownMenu, by default the search input will be
-  maintained when a user selects a MenuItem (if multiple selections are allowed;
-  otherwise the dropdown menu closes upon selection). However, the search input
-  can be set to close upon selection by setting the optional
-  <code>keepSearchOnSelect</code> prop to <code>false</code>.
-</p>
-<p>
-  This setting is intended to be used only when <code>search</code> and
-  <code>multiple</code> are both set to <code>true</code> (otherwise it will
-  have no noticeable affect since the dropdown menu closes upon selection if
-  multi-select is not allowed, hiding the search bar).
-</p>
-<p>To see how this works:</p>
-<ol class="sds-doc-ordered-list">
-  <li><p>In the search box, type in "fruit"</p></li>
-  <li><p>DropdownMenu will display "Fruit: Apple" and "Fruit: Orange"</p></li>
-  <li><p>Select "Fruit: Apple"</p></li>
-  <li>
-    <p>
-      Note that the search text is now cleared and all dropdown items reappear
-    </p>
-  </li>
-</ol>
-<p>
-  Compare this to the default behavior in the " Search " example above, or
-  change the <code>keepSearchOnSelect</code> prop in the example below to
-  <code>true</code>.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/ClearSearchOnSelect"
-></div>
-<h3>Grouped sections</h3>
-<p>MenuItems can be displayed in groups with a label.</p>
-<p>
-  This requires passing DropdownMenu the <code>groupBy</code> prop to group
-  options under the returned string. The <code>groupBy</code> value is also used
-  as the text for group headings when&nbsp;
-  <a href="https://mui.com/material-ui/api/autocomplete/#props"
-    >MUI Autocomplete renderGroup</a
-  >
-  &nbsp;is not provided. For example:
-</p>
-<div class="sds-doc-code-snippet">
-  <figure>
-    <figcaption>React TypeScript</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-tsx">// group items by section
-groupBy={(option) =&gt; option.section}
-
-// group items by the last character of their names
-groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
-  </figure>
-</div>
-<p>
-  This <code>groupBy</code> prop must be provided or the groups will not render,
-  even if all menu items have <code>section</code> properties (see below).
-</p>
-<div
-  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Warning:</strong>
-    To avoid duplicate headers, please make sure that the options are also
-    sorted with the same dimension that they are grouped by. (See:
-    <a
-      href="https://github.com/mui/material-ui/issues/21967#issuecomment-665006321"
-      >Issue</a
-    >
-    and example below)
-  </p>
-</div>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/GroupedSections"
-></div>
-<h2>Recipes</h2>
-<p>
-  These recipes show a few of the more complex approaches available for
-  customizing Dropdown Menus.
-</p>
-<h3>Custom isOptionEqualToValue</h3>
-<p>
-  The <code>isOptionEqualToValue</code> prop changes how a selected value is
-  compared against the available options. By default
-  <code>option.name === val.name</code> is used. In the custom example below,
-  the <code>id</code> property is used instead of the <code>name</code>
-  property.
-</p>
-<p>
-  This is a MUI prop; learn more in the
-  <a href="https://mui.com/material-ui/api/autocomplete/#props"
-    >Autocomplete API</a
-  >
-  .
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/CustomIsOptionEqualToValue"
-></div>
-<h3>Custom onChange</h3>
-<p>
-  The optional <code>onChange</code> prop specifies what happens when a new
-  selection is made.
-</p>
-<p>
-  In the example below, <code>onChange</code> has been modified such that making
-  a new selection logs the value and reason to the console.
-</p>
-<p>
-  This is a MUI prop; learn more in the
-  <a href="https://mui.com/material-ui/api/autocomplete/#props"
-    >Autocomplete API</a
-  >
-  .
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/CustomOnChange"
-></div>
-<h3>Custom PopperBaseProps</h3>
-<p>
-  <code>PopperBaseProps</code> is an SDS-specific prop made for passing custom
-  props to the Popper component, which is included as part of the DropdownMenu
-  component.
-</p>
-<p>
-  The Popper component is part of MUI; learn more in the
-  <a href="https://mui.com/material-ui/api/popper/">Popper documentation</a>
-  , and see all the props available to pass to it on the
-  <a href="https://mui.com/material-ui/api/popper/">Popper API page</a>
-  .
-</p>
-<p>
-  The example below passes the Popper a <code>className</code> prop and
-  additionally uses the <code>sx</code> prop to make style changes (learn more
-  on the
-  <a href="https://mui.com/system/getting-started/the-sx-prop/"
-    >MUI sx documentation page</a
-  >).
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/CustomPopperBaseProps"
-></div>
-<h3>Custom Popper component</h3>
-<p>
-  In addition to modifying the Popper's styles via
-  <code>PopperBaseProps</code> above, the styles for the Popper component can be
-  overwritten more directly with <code>styled()</code>.
-</p>
-<p>
-  To get all the default SDS styles used for Popper, first copy them into a
-  custom-styled Popper (from within
-  <code>sci-components/packages/components/src/core/DropdownMenu/style.ts</code>
-  file). Then replace and / or follow up those styles with custom styles. The
-  example below includes comments for each of these steps within
-  <code>CustomPopper</code>.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/DropdownMenu/CustomPopperComponent"
-></div>
-<hr />

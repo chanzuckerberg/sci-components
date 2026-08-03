@@ -37,6 +37,65 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Autocomplete } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default</h3>
+<p>
+  A single list with a search field. Click the field to open it; options here
+  carry nothing but a name.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/DefaultAutocomplete"
+></div>
+<h3>Multi-select</h3>
+<p>
+  Selecting several options, with the selection read back out above the list.
+  The component will not show it in the field.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteMultiSelect"
+></div>
+<h3>Grouped sections</h3>
+<p><code>groupBy</code> splits the same list into labelled sections.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteGroupedSections"
+></div>
+<h3>What an option can show</h3>
+<p>
+  Counts, details, icons, a disabled row, and an option that renders a component
+  of its own instead of a label.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteOptionContent"
+></div>
+<h3>Multiple columns</h3>
+<p>
+  Two lists side by side under one search field, and the record-shaped value
+  they report.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteMultiColumn"
+></div>
+<h3>Controlled open, without a search field</h3>
+<p>
+  The configuration DropdownMenu is built on: no input of its own, opened and
+  closed by the parent.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteControlledOpen"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS Autocomplete wraps
@@ -703,55 +762,3 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
     <td><p>Disables the search field.</p></td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default</h3>
-<p>
-  A single list with a search field. Click the field to open it; options here
-  carry nothing but a name.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Autocomplete/DefaultAutocomplete"
-></div>
-<h3>Multi-select</h3>
-<p>
-  Selecting several options, with the selection read back out above the list.
-  The component will not show it in the field.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Autocomplete/AutocompleteMultiSelect"
-></div>
-<h3>Grouped sections</h3>
-<p><code>groupBy</code> splits the same list into labelled sections.</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Autocomplete/AutocompleteGroupedSections"
-></div>
-<h3>What an option can show</h3>
-<p>
-  Counts, details, icons, a disabled row, and an option that renders a component
-  of its own instead of a label.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Autocomplete/AutocompleteOptionContent"
-></div>
-<h3>Multiple columns</h3>
-<p>
-  Two lists side by side under one search field, and the record-shaped value
-  they report.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Autocomplete/AutocompleteMultiColumn"
-></div>
-<h3>Controlled open, without a search field</h3>
-<p>
-  The configuration DropdownMenu is built on: no input of its own, opened and
-  closed by the parent.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Autocomplete/AutocompleteControlledOpen"
-></div>

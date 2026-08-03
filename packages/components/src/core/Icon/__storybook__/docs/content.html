@@ -15,6 +15,54 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Icon } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Icon</h3>
+<p>
+  <code>sdsIcon</code> and <code>sdsSize</code> are the only required props.
+  With no <code>color</code> set, the icon renders in indigo.
+</p>
+<div class="sds-doc-example" data-example="core/Icon/DefaultIcon"></div>
+<h3>Icon Sizes</h3>
+<p>
+  The five sizes, shown with an icon that supports all of them. Below
+  <code>"s"</code> the 16px artwork is scaled down, and at <code>"l"</code> and
+  <code>"xl"</code> a separate, more detailed drawing is used.
+</p>
+<div class="sds-doc-example" data-example="core/Icon/IconSizes"></div>
+<h3>Sizes Are Per Icon</h3>
+<p>
+  Some icons ship only the small artwork and some only the large. Asking for a
+  size an icon does not have fails to compile, and renders nothing at runtime.
+</p>
+<div class="sds-doc-example" data-example="core/Icon/IconAvailableSizes"></div>
+<h3>Icon Colors</h3>
+<p>
+  <code>color</code> picks the hue and <code>shade</code> picks the step within
+  it. Both come from the SDS palette rather than from the surrounding text
+  color.
+</p>
+<div class="sds-doc-example" data-example="core/Icon/IconColors"></div>
+<h3>Icons in Components</h3>
+<p>
+  When an icon is passed to another SDS component, that component controls the
+  size and the color, so leave <code>color</code> off and let it inherit the
+  component's states.
+</p>
+<div class="sds-doc-example" data-example="core/Icon/IconsInComponents"></div>
+<h3>Accessible Icon-only Controls</h3>
+<p>
+  The SVG carries no accessible name, so an icon on its own needs a label on the
+  control around it. Next to visible text the icon is decorative and needs
+  nothing.
+</p>
+<div class="sds-doc-example" data-example="core/Icon/AccessibleIcons"></div>
 <h2>How it works</h2>
 <p>
   Icon renders an SVG through MUI's SvgIcon, picking one of two drawings based
@@ -150,44 +198,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default Icon</h3>
-<p>
-  <code>sdsIcon</code> and <code>sdsSize</code> are the only required props.
-  With no <code>color</code> set, the icon renders in indigo.
-</p>
-<div class="sds-doc-example" data-example="core/Icon/DefaultIcon"></div>
-<h3>Icon Sizes</h3>
-<p>
-  The five sizes, shown with an icon that supports all of them. Below
-  <code>"s"</code> the 16px artwork is scaled down, and at <code>"l"</code> and
-  <code>"xl"</code> a separate, more detailed drawing is used.
-</p>
-<div class="sds-doc-example" data-example="core/Icon/IconSizes"></div>
-<h3>Sizes Are Per Icon</h3>
-<p>
-  Some icons ship only the small artwork and some only the large. Asking for a
-  size an icon does not have fails to compile, and renders nothing at runtime.
-</p>
-<div class="sds-doc-example" data-example="core/Icon/IconAvailableSizes"></div>
-<h3>Icon Colors</h3>
-<p>
-  <code>color</code> picks the hue and <code>shade</code> picks the step within
-  it. Both come from the SDS palette rather than from the surrounding text
-  color.
-</p>
-<div class="sds-doc-example" data-example="core/Icon/IconColors"></div>
-<h3>Icons in Components</h3>
-<p>
-  When an icon is passed to another SDS component, that component controls the
-  size and the color, so leave <code>color</code> off and let it inherit the
-  component's states.
-</p>
-<div class="sds-doc-example" data-example="core/Icon/IconsInComponents"></div>
-<h3>Accessible Icon-only Controls</h3>
-<p>
-  The SVG carries no accessible name, so an icon on its own needs a label on the
-  control around it. Next to visible text the icon is decorative and needs
-  nothing.
-</p>
-<div class="sds-doc-example" data-example="core/Icon/AccessibleIcons"></div>

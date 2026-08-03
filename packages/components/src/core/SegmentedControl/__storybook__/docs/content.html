@@ -9,6 +9,70 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { SegmentedControl } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default SegmentedControl</h3>
+<p>
+  Three icon segments, left uncontrolled so the control tracks the selection
+  itself. No tooltip text is set, so each segment falls back to its value.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/DefaultSegmentedControl"
+></div>
+<h3>Segments with labels</h3>
+<p>
+  A label replaces the icon on a segment. These have their tooltips turned off,
+  since the text is already on screen.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlWithLabels"
+></div>
+<h3>Controlled SegmentedControl</h3>
+<p>
+  The selection is held in the page's state and written back from
+  <code>onChange</code>, which also ignores the <code>null</code> that a click
+  on the selected segment reports, so the control always shows a view.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/ControlledSegmentedControl"
+></div>
+<h3>Disabled segments</h3>
+<p>
+  A single segment turned off, next to a control turned off as a whole. The
+  first control opens on its second segment, because an uncontrolled control
+  skips the disabled one.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlWithDisabledItems"
+></div>
+<h3>Richer tooltips</h3>
+<p>
+  <code>tooltipProps</code> reaches the Tooltip behind each segment, for a
+  subtitle under the title or a placement other than above the control.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlTooltips"
+></div>
+<h3>A segment with its own artwork</h3>
+<p>
+  <code>icon</code> takes an SVG element as well as an SDS icon name, which
+  covers artwork the SDS set does not carry.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlCustomIcon"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The SDS SegmentedControl wraps MUI's ToggleButtonGroup, with these
@@ -361,60 +425,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3>Default SegmentedControl</h3>
-<p>
-  Three icon segments, left uncontrolled so the control tracks the selection
-  itself. No tooltip text is set, so each segment falls back to its value.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/SegmentedControl/DefaultSegmentedControl"
-></div>
-<h3>Segments with labels</h3>
-<p>
-  A label replaces the icon on a segment. These have their tooltips turned off,
-  since the text is already on screen.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/SegmentedControl/SegmentedControlWithLabels"
-></div>
-<h3>Controlled SegmentedControl</h3>
-<p>
-  The selection is held in the page's state and written back from
-  <code>onChange</code>, which also ignores the <code>null</code> that a click
-  on the selected segment reports, so the control always shows a view.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/SegmentedControl/ControlledSegmentedControl"
-></div>
-<h3>Disabled segments</h3>
-<p>
-  A single segment turned off, next to a control turned off as a whole. The
-  first control opens on its second segment, because an uncontrolled control
-  skips the disabled one.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/SegmentedControl/SegmentedControlWithDisabledItems"
-></div>
-<h3>Richer tooltips</h3>
-<p>
-  <code>tooltipProps</code> reaches the Tooltip behind each segment, for a
-  subtitle under the title or a placement other than above the control.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/SegmentedControl/SegmentedControlTooltips"
-></div>
-<h3>A segment with its own artwork</h3>
-<p>
-  <code>icon</code> takes an SVG element as well as an SDS icon name, which
-  covers artwork the SDS set does not carry.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/SegmentedControl/SegmentedControlCustomIcon"
-></div>

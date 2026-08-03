@@ -4,54 +4,13 @@
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Notification/index.tsx).
 
-## SDS vs MUI
-
-The SDS Notification component is built upon the MUI Alert component (as is the SDS Callout component ), but there are some important differences:
-
-- **Color:** SDS's Notification component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"accent"`, `"info"`, `"negative"`, `"notice"`, or `"positive"`. MUI's Alert instead uses the `severity` prop for this purpose (`severity` can also be used for SDS's Notification, and will take the same values as `intent`; this is not recommended)
-
-- **Title and body:** MUI's Alert composes an AlertTitle with the text that follows it. SDS's Notification takes everything as children instead: the first line reads as the title, and any extra content goes in an element beneath it. An AlertTitle is accepted but does not change the style of the text it wraps.
-
-- **Closing:** A close button appears in the top right as soon as `onClose` is given, which is what makes a Notification dismissible. The Notification hides itself when that button is clicked, and `dismissed` hides it from the outside. SDS uses MUI's Alert `action` prop for the close button, in case there is a need to further override the behavior.
-
-- **Transitions:** SDS's Notification uses the Slide transition component, sliding in and out towards the side named by `slideDirection`.
-
-- **Placement:** A Notification is meant to sit above the page rather than in its flow, usually in the top right corner, but it does not place itself. Position it with the surrounding layout, and reach for the Callout when the message belongs in the flow of the page instead.
-
-- **Icons:** Like with MUI's Alert, SDS's Notification also shows an icon to the left of the message. It is chosen automatically from the `intent` (see the first bullet) and can be overridden with the `icon` prop, which takes either the name of an SDS icon or a custom SVG element:
+## Import
 
 **React TypeScript**
 
 ```tsx
-icon="Book"
-icon={<Icon sdsSize="s" sdsIcon="Book" />}
+import { Notification } from "@czi-sds/components";
 ```
-
-Additionally, setting `icon={false}` has no effect, and `iconMapping` does not work to change icons associated to `intent` or `severity`.
-
-- **Variants:** The `variant` prop is not supported. Setting `variant="outlined"` adds the colored border but keeps the background color, rather than removing it the way MUI's Alert does.
-
-## MUI Documentation
-
-Documentation for the underlying MUI Alert component can be found [here](https://mui.com/material-ui/react-alert/).
-
-## Props
-
-Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
-
-| Name             | Type                                                                 | Default   | Description                                                                                                                                                                                                                                                                             |
-| ---------------- | -------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `intent`         | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | -         | **Required.** Sets both the color of the component and the icon it defaults to.                                                                                                                                                                                                         |
-| `slideDirection` | `"left" \| "right"`                                                  | `"left"`  | **Required.** The side the Notification slides in from and back out towards. The component falls back to `"left"`, but the prop is not optional, so pass it explicitly.                                                                                                                 |
-| `children`       | `ReactNode`                                                          | -         | The content of the Notification. The first line reads as the title; put anything further in an element of its own beneath it.                                                                                                                                                           |
-| `onClose`        | `(event: React.SyntheticEvent) => void`                              | -         | Callback fired when the Notification is closed. Passing it is what adds the close button. The Notification hides itself regardless, so use this to sync your own state rather than to perform the hiding.                                                                               |
-| `dismissed`      | `bool`                                                               | -         | Hides the Notification when set to `true`. Changing it back to `false` brings the Notification back, which is how a dismissed Notification is restored.                                                                                                                                 |
-| `autoDismiss`    | `bool \| number`                                                     | -         | Dismisses the Notification on a timer. A number sets the delay in milliseconds, and `true` uses `8000`. Leave it unset to keep the Notification visible until it is dismissed another way.                                                                                              |
-| `buttonText`     | `string`                                                             | -         | The label of the action button shown beneath the content. It only renders alongside `buttonOnClick`.                                                                                                                                                                                    |
-| `buttonOnClick`  | `(event: React.SyntheticEvent) => void`                              | -         | Callback fired when the action button is clicked. Passing it is what renders the button, and the Notification does nothing else in response, so dismissing it is up to this handler.                                                                                                    |
-| `buttonPosition` | `"left" \| "right"`                                                  | `"right"` | Which side of the Notification the action button sits on.                                                                                                                                                                                                                               |
-| `icon`           | `SDSIcon \| React.ReactElement<CustomSVGProps>`                      | -         | Icon displayed to the left of the content, given either as an SDS icon name or as an element. Defaults to the icon for the current `intent`: `"CheckCircle"` for `"positive"`, `"InfoCircle"` for `"info"`, and `"ExclamationMarkCircle"` for `"accent"`, `"notice"`, and `"negative"`. |
-| `sdsIconProps`   | `Partial<IconProps>`                                                 | -         | Props forwarded to the Icon component when `icon` is given as a name.                                                                                                                                                                                                                   |
 
 ## Code examples
 
@@ -278,3 +237,52 @@ function App() {
 
 export default App;
 ```
+
+## SDS vs MUI
+
+The SDS Notification component is built upon the MUI Alert component (as is the SDS Callout component ), but there are some important differences:
+
+- **Color:** SDS's Notification component has its own `intent` prop designed for setting both the color and default icon, and takes the values of `"accent"`, `"info"`, `"negative"`, `"notice"`, or `"positive"`. MUI's Alert instead uses the `severity` prop for this purpose (`severity` can also be used for SDS's Notification, and will take the same values as `intent`; this is not recommended)
+
+- **Title and body:** MUI's Alert composes an AlertTitle with the text that follows it. SDS's Notification takes everything as children instead: the first line reads as the title, and any extra content goes in an element beneath it. An AlertTitle is accepted but does not change the style of the text it wraps.
+
+- **Closing:** A close button appears in the top right as soon as `onClose` is given, which is what makes a Notification dismissible. The Notification hides itself when that button is clicked, and `dismissed` hides it from the outside. SDS uses MUI's Alert `action` prop for the close button, in case there is a need to further override the behavior.
+
+- **Transitions:** SDS's Notification uses the Slide transition component, sliding in and out towards the side named by `slideDirection`.
+
+- **Placement:** A Notification is meant to sit above the page rather than in its flow, usually in the top right corner, but it does not place itself. Position it with the surrounding layout, and reach for the Callout when the message belongs in the flow of the page instead.
+
+- **Icons:** Like with MUI's Alert, SDS's Notification also shows an icon to the left of the message. It is chosen automatically from the `intent` (see the first bullet) and can be overridden with the `icon` prop, which takes either the name of an SDS icon or a custom SVG element:
+
+**React TypeScript**
+
+```tsx
+icon="Book"
+icon={<Icon sdsSize="s" sdsIcon="Book" />}
+```
+
+Additionally, setting `icon={false}` has no effect, and `iconMapping` does not work to change icons associated to `intent` or `severity`.
+
+- **Variants:** The `variant` prop is not supported. Setting `variant="outlined"` adds the colored border but keeps the background color, rather than removing it the way MUI's Alert does.
+
+## MUI Documentation
+
+Documentation for the underlying MUI Alert component can be found [here](https://mui.com/material-ui/react-alert/).
+
+## Props
+
+Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
+
+| Name             | Type                                                                 | Default   | Description                                                                                                                                                                                                                                                                             |
+| ---------------- | -------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intent`         | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | -         | **Required.** Sets both the color of the component and the icon it defaults to.                                                                                                                                                                                                         |
+| `slideDirection` | `"left" \| "right"`                                                  | `"left"`  | **Required.** The side the Notification slides in from and back out towards. The component falls back to `"left"`, but the prop is not optional, so pass it explicitly.                                                                                                                 |
+| `children`       | `ReactNode`                                                          | -         | The content of the Notification. The first line reads as the title; put anything further in an element of its own beneath it.                                                                                                                                                           |
+| `onClose`        | `(event: React.SyntheticEvent) => void`                              | -         | Callback fired when the Notification is closed. Passing it is what adds the close button. The Notification hides itself regardless, so use this to sync your own state rather than to perform the hiding.                                                                               |
+| `dismissed`      | `bool`                                                               | -         | Hides the Notification when set to `true`. Changing it back to `false` brings the Notification back, which is how a dismissed Notification is restored.                                                                                                                                 |
+| `autoDismiss`    | `bool \| number`                                                     | -         | Dismisses the Notification on a timer. A number sets the delay in milliseconds, and `true` uses `8000`. Leave it unset to keep the Notification visible until it is dismissed another way.                                                                                              |
+| `buttonText`     | `string`                                                             | -         | The label of the action button shown beneath the content. It only renders alongside `buttonOnClick`.                                                                                                                                                                                    |
+| `buttonOnClick`  | `(event: React.SyntheticEvent) => void`                              | -         | Callback fired when the action button is clicked. Passing it is what renders the button, and the Notification does nothing else in response, so dismissing it is up to this handler.                                                                                                    |
+| `buttonPosition` | `"left" \| "right"`                                                  | `"right"` | Which side of the Notification the action button sits on.                                                                                                                                                                                                                               |
+| `icon`           | `SDSIcon \| React.ReactElement<CustomSVGProps>`                      | -         | Icon displayed to the left of the content, given either as an SDS icon name or as an element. Defaults to the icon for the current `intent`: `"CheckCircle"` for `"positive"`, `"InfoCircle"` for `"info"`, and `"ExclamationMarkCircle"` for `"accent"`, `"notice"`, and `"negative"`. |
+| `sdsIconProps`   | `Partial<IconProps>`                                                 | -         | Props forwarded to the Icon component when `icon` is given as a name.                                                                                                                                                                                                                   |

@@ -9,6 +9,70 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { InputDropdown } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default</h3>
+<p>
+  This example has the minimum props needed for the InputDropdown component.
+</p>
+<div class="sds-doc-example" data-example="core/InputDropdown/Default"></div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>MUI Tip:</strong>
+    To ensure the InputDropdown button expands to fit the width of its
+    container, users can utilize the <code>fullWidth</code> prop provided by
+    MUI. When set to <code>true</code>, the <code>fullWidth</code> prop enables
+    the InputDropdown button to occupy the entire available width within its
+    parent container.
+  </p>
+</div>
+<h3>Square with multi-select</h3>
+<p>
+  Below is an example demonstrating the combined utilization of the
+  InputDropdown component and a multi-select Dropdown component. The Dropdown
+  allows multiple selections, while the InputDropdown features a square variant.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputDropdown/SquareWithMultiSelect"
+></div>
+<h3>Rounded with single-select</h3>
+<p>
+  Below is an example demonstrating the combined utilization of the default
+  label variant InputDropdown component and a single-select Dropdown component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputDropdown/RoundedWithSingleSelect"
+></div>
+<h3>Minimal with single-select</h3>
+<p>
+  An example of the combined use of the value variation InputDropdown component
+  and a single-select Dropdown component is shown below.&nbsp;
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Warning:</strong>
+    The value variant can not be used in conjunction with the multi-select
+    Dropdowns. If you set <code>sdsType="value"</code> and
+    <code>multiple="true"</code>, the component will default to showing a label
+    and a counter instead.
+  </p>
+</div>
+<div
+  class="sds-doc-example"
+  data-example="core/InputDropdown/MinimalWithSingleSelect"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The SDS's InputDropdown component utilizes MUI's Button component as its
@@ -260,60 +324,3 @@
     >MUI's Button component</a
   >.
 </p>
-<h2>Code examples</h2>
-<h3>Default</h3>
-<p>
-  This example has the minimum props needed for the InputDropdown component.
-</p>
-<div class="sds-doc-example" data-example="core/InputDropdown/Default"></div>
-<div
-  class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
->
-  <p>
-    <strong>MUI Tip:</strong>
-    To ensure the InputDropdown button expands to fit the width of its
-    container, users can utilize the <code>fullWidth</code> prop provided by
-    MUI. When set to <code>true</code>, the <code>fullWidth</code> prop enables
-    the InputDropdown button to occupy the entire available width within its
-    parent container.
-  </p>
-</div>
-<h3>Square with multi-select</h3>
-<p>
-  Below is an example demonstrating the combined utilization of the
-  InputDropdown component and a multi-select Dropdown component. The Dropdown
-  allows multiple selections, while the InputDropdown features a square variant.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputDropdown/SquareWithMultiSelect"
-></div>
-<h3>Rounded with single-select</h3>
-<p>
-  Below is an example demonstrating the combined utilization of the default
-  label variant InputDropdown component and a single-select Dropdown component.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/InputDropdown/RoundedWithSingleSelect"
-></div>
-<h3>Minimal with single-select</h3>
-<p>
-  An example of the combined use of the value variation InputDropdown component
-  and a single-select Dropdown component is shown below.&nbsp;
-</p>
-<div
-  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Warning:</strong>
-    The value variant can not be used in conjunction with the multi-select
-    Dropdowns. If you set <code>sdsType="value"</code> and
-    <code>multiple="true"</code>, the component will default to showing a label
-    and a counter instead.
-  </p>
-</div>
-<div
-  class="sds-doc-example"
-  data-example="core/InputDropdown/MinimalWithSingleSelect"
-></div>

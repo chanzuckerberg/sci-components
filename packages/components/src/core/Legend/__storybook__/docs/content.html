@@ -13,6 +13,48 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Legend } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Legend</strong></h3>
+<p>
+  The minimum: a list of names, each with a color. Nothing here is interactive,
+  which is how the legend reads when it is only a key.
+</p>
+<div class="sds-doc-example" data-example="core/Legend/DefaultLegend"></div>
+<h3>Values and colors</h3>
+<p>
+  Values turned on, and the two ways to color the swatches: a palette passed as
+  <code>colors</code>, and a color on each item. The last item is disabled,
+  which is how a catch-all category sits in the legend without behaving like the
+  rest.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Legend/LegendValuesAndColors"
+></div>
+<h3>Selection</h3>
+<p>
+  Selection lives in the parent, so the same state can filter a list beside the
+  legend. The buttons are not just a convenience: clicking an item is
+  pointer-only, so they are how a keyboard reaches the selection at all.
+</p>
+<div class="sds-doc-example" data-example="core/Legend/SelectableLegend"></div>
+<h3>Hover synced with a chart</h3>
+<p>
+  <code>hoveredIndex</code> and the hover callbacks wired in both directions, so
+  pointing at a bar highlights its legend item and pointing at a legend item
+  highlights the bar.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Legend/LegendWithChartHover"
+></div>
 <h2>How it is built</h2>
 <p>
   Legend has no MUI base. It is a flex row of divs that wraps, where each item
@@ -337,38 +379,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Legend</strong></h3>
-<p>
-  The minimum: a list of names, each with a color. Nothing here is interactive,
-  which is how the legend reads when it is only a key.
-</p>
-<div class="sds-doc-example" data-example="core/Legend/DefaultLegend"></div>
-<h3>Values and colors</h3>
-<p>
-  Values turned on, and the two ways to color the swatches: a palette passed as
-  <code>colors</code>, and a color on each item. The last item is disabled,
-  which is how a catch-all category sits in the legend without behaving like the
-  rest.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Legend/LegendValuesAndColors"
-></div>
-<h3>Selection</h3>
-<p>
-  Selection lives in the parent, so the same state can filter a list beside the
-  legend. The buttons are not just a convenience: clicking an item is
-  pointer-only, so they are how a keyboard reaches the selection at all.
-</p>
-<div class="sds-doc-example" data-example="core/Legend/SelectableLegend"></div>
-<h3>Hover synced with a chart</h3>
-<p>
-  <code>hoveredIndex</code> and the hover callbacks wired in both directions, so
-  pointing at a bar highlights its legend item and pointing at a legend item
-  highlights the bar.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/Legend/LegendWithChartHover"
-></div>

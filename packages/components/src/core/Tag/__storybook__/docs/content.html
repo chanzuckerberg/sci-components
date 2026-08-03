@@ -9,6 +9,51 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Tag } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Tag</strong></h3>
+<p>
+  A tag with nothing but a label, next to the same tag asking for the rounded
+  shape the design guidance prefers.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/DefaultTag"></div>
+<h3>Intents</h3>
+<p>
+  The six intents, drawn as primary and then as secondary. A tag left without a
+  color is neutral.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagIntents"></div>
+<h3>Tag + Icon</h3>
+<p>
+  A large tag, which has to carry an icon, beside a small one. Each uses an Icon
+  whose own size matches the size the tag will draw it at.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagIcon"></div>
+<h3>Tag with custom colors</h3>
+<p>
+  Colors given as a tuple, for a tag the intents do not cover. The two-value
+  form leaves the icon white, so a tag with an icon wants all three.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagWithCustomColors"></div>
+<h3>Clickable and static tags</h3>
+<p>
+  A tag with an <code>onClick</code> behaves as a button for both the pointer
+  and the keyboard. A tag that only labels something uses
+  <code>hover={false}</code> so it stops looking clickable.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/InteractiveTag"></div>
+<h3>A label with no room</h3>
+<p>
+  What a long label does in a narrow container, and the Tooltip that keeps the
+  truncated text reachable.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagWithLongLabel"></div>
 <h2>SDS vs MUI</h2>
 <p>
   SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS
@@ -316,41 +361,3 @@
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Tag</strong></h3>
-<p>
-  A tag with nothing but a label, next to the same tag asking for the rounded
-  shape the design guidance prefers.
-</p>
-<div class="sds-doc-example" data-example="core/Tag/DefaultTag"></div>
-<h3>Intents</h3>
-<p>
-  The six intents, drawn as primary and then as secondary. A tag left without a
-  color is neutral.
-</p>
-<div class="sds-doc-example" data-example="core/Tag/TagIntents"></div>
-<h3>Tag + Icon</h3>
-<p>
-  A large tag, which has to carry an icon, beside a small one. Each uses an Icon
-  whose own size matches the size the tag will draw it at.
-</p>
-<div class="sds-doc-example" data-example="core/Tag/TagIcon"></div>
-<h3>Tag with custom colors</h3>
-<p>
-  Colors given as a tuple, for a tag the intents do not cover. The two-value
-  form leaves the icon white, so a tag with an icon wants all three.
-</p>
-<div class="sds-doc-example" data-example="core/Tag/TagWithCustomColors"></div>
-<h3>Clickable and static tags</h3>
-<p>
-  A tag with an <code>onClick</code> behaves as a button for both the pointer
-  and the keyboard. A tag that only labels something uses
-  <code>hover={false}</code> so it stops looking clickable.
-</p>
-<div class="sds-doc-example" data-example="core/Tag/InteractiveTag"></div>
-<h3>A label with no room</h3>
-<p>
-  What a long label does in a narrow container, and the Tooltip that keeps the
-  truncated text reachable.
-</p>
-<div class="sds-doc-example" data-example="core/Tag/TagWithLongLabel"></div>

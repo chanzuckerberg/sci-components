@@ -25,6 +25,70 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { HeatmapChart } from "@czi-sds/data-viz";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default HeatmapChart</strong></h3>
+<p>
+  The smallest complete heatmap: cells, two axes, a size, and an
+  <code>itemStyle</code> that turns each value into a color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/HeatmapChart/DefaultHeatmapChart"
+></div>
+<h3>Dot plot</h3>
+<p>
+  Circles sized by one measurement and coloured by another, which is the form
+  this chart is most often used in: expression by cell type, with the diameter
+  carrying the share of cells expressing the gene.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartDotPlot"
+></div>
+<h3>Axis labels and a tooltip</h3>
+<p>
+  Labels turned back on through <code>options</code>, with the grid inset to
+  make room for them, and an ECharts tooltip naming the cell under the pointer.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartWithAxesAndTooltip"
+></div>
+<h3>Large grids and the camera</h3>
+<p>
+  A 4,800-cell grid rendered 240 cells at a time. Drag to move the window, or
+  use the wheel to travel down it.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartWithCamera"
+></div>
+<h3>Downloading</h3>
+<p>
+  A download button that exports the chart itself, and a renderer switch to show
+  the format following it: SVG out of the SVG renderer, PNG out of the canvas
+  one.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/HeatmapChart/DownloadHeatmapChart"
+></div>
+<h3>Events</h3>
+<p>
+  A click handler through <code>onEvents</code>, reading the cell back out of
+  the ECharts event.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/HeatmapChart/HeatmapChartWithEvents"
+></div>
 <h2>How it is built</h2>
 <p>
   HeatmapChart is a thin React wrapper around an
@@ -604,60 +668,3 @@ const url = heatmap.getConnectedDataURL({
     </td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default HeatmapChart</strong></h3>
-<p>
-  The smallest complete heatmap: cells, two axes, a size, and an
-  <code>itemStyle</code> that turns each value into a color.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/HeatmapChart/DefaultHeatmapChart"
-></div>
-<h3>Dot plot</h3>
-<p>
-  Circles sized by one measurement and coloured by another, which is the form
-  this chart is most often used in: expression by cell type, with the diameter
-  carrying the share of cells expressing the gene.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/HeatmapChart/HeatmapChartDotPlot"
-></div>
-<h3>Axis labels and a tooltip</h3>
-<p>
-  Labels turned back on through <code>options</code>, with the grid inset to
-  make room for them, and an ECharts tooltip naming the cell under the pointer.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/HeatmapChart/HeatmapChartWithAxesAndTooltip"
-></div>
-<h3>Large grids and the camera</h3>
-<p>
-  A 4,800-cell grid rendered 240 cells at a time. Drag to move the window, or
-  use the wheel to travel down it.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/HeatmapChart/HeatmapChartWithCamera"
-></div>
-<h3>Downloading</h3>
-<p>
-  A download button that exports the chart itself, and a renderer switch to show
-  the format following it: SVG out of the SVG renderer, PNG out of the canvas
-  one.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/HeatmapChart/DownloadHeatmapChart"
-></div>
-<h3>Events</h3>
-<p>
-  A click handler through <code>onEvents</code>, reading the cell back out of
-  the ECharts event.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="data-viz/HeatmapChart/HeatmapChartWithEvents"
-></div>

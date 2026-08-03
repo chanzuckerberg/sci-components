@@ -9,6 +9,100 @@
   </a>
   .
 </p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
+  ContentCard,
+  ContentCardActions,
+  ContentCardBody,
+} from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Content Card</strong></h3>
+<p>
+  This example has the minimum props needed for the ContentCard component.
+  <code>visualElementType</code> is the only required prop, and it must be set
+  even when the card has no visual.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/DefaultContentCard"
+></div>
+<h3>Text slots</h3>
+<p>
+  This example shows the four text props and the order they render in, with body
+  copy passed as children.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/ContentCardTextSlots"
+></div>
+<h3>Content Card with an image</h3>
+<p>
+  This example shows an image card in both image positions. The
+  <code>image</code> prop takes either a URL string or a CardMedia element,
+  <code>imageSize</code> sets the width of the image area, and
+  <code>imagePadding</code> insets the image instead of letting it meet the card
+  border.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/ContentCardWithAnImage"
+></div>
+<h3>Content Card with an icon</h3>
+<p>
+  This example swaps the image for an icon. The <code>image</code> and
+  <code>icon</code> props are mutually exclusive, and which one is available
+  follows <code>visualElementType</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/ContentCardWithAnIcon"
+></div>
+<h3>Narrow Content Card</h3>
+<p>
+  This example shows the narrow layout, which stacks the visual above the
+  content and suits card grids. A wide card also switches to this layout on its
+  own once it is rendered below roughly 595px.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/NarrowContentCard"
+></div>
+<h3>Content Card with actions</h3>
+<p>
+  This example adds a button row through ContentCardActions, which accepts SDS
+  Button elements only. Alignment comes from <code>buttonsPosition</code> on the
+  card.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/ContentCardWithActions"
+></div>
+<h3>Clickable Content Card</h3>
+<p>
+  This example makes the whole card a single click target.
+  <code>clickableCardProps</code> is forwarded to the wrapper, so the card can
+  act as a link, and only the first button in ContentCardActions survives, since
+  a button cannot be nested inside another button.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/ClickableContentCard"
+></div>
+<h3>Bounding box and decorative border</h3>
+<p>
+  This example shows the two framing options: the accent bar added by
+  <code>decorativeBorder</code>, and a card with <code>boundingBox</code> turned
+  off so it sits directly on the page.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ContentCard/ContentCardBoundingBox"
+></div>
 <h2>Anatomy</h2>
 <p>
   A ContentCard takes its text through props rather than through composition:
@@ -361,86 +455,3 @@
     <td><p>The main title text of the card.</p></td>
   </tr>
 </table>
-<h2>Code examples</h2>
-<h3><strong>Default Content Card</strong></h3>
-<p>
-  This example has the minimum props needed for the ContentCard component.
-  <code>visualElementType</code> is the only required prop, and it must be set
-  even when the card has no visual.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/DefaultContentCard"
-></div>
-<h3>Text slots</h3>
-<p>
-  This example shows the four text props and the order they render in, with body
-  copy passed as children.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/ContentCardTextSlots"
-></div>
-<h3>Content Card with an image</h3>
-<p>
-  This example shows an image card in both image positions. The
-  <code>image</code> prop takes either a URL string or a CardMedia element,
-  <code>imageSize</code> sets the width of the image area, and
-  <code>imagePadding</code> insets the image instead of letting it meet the card
-  border.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/ContentCardWithAnImage"
-></div>
-<h3>Content Card with an icon</h3>
-<p>
-  This example swaps the image for an icon. The <code>image</code> and
-  <code>icon</code> props are mutually exclusive, and which one is available
-  follows <code>visualElementType</code>.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/ContentCardWithAnIcon"
-></div>
-<h3>Narrow Content Card</h3>
-<p>
-  This example shows the narrow layout, which stacks the visual above the
-  content and suits card grids. A wide card also switches to this layout on its
-  own once it is rendered below roughly 595px.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/NarrowContentCard"
-></div>
-<h3>Content Card with actions</h3>
-<p>
-  This example adds a button row through ContentCardActions, which accepts SDS
-  Button elements only. Alignment comes from <code>buttonsPosition</code> on the
-  card.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/ContentCardWithActions"
-></div>
-<h3>Clickable Content Card</h3>
-<p>
-  This example makes the whole card a single click target.
-  <code>clickableCardProps</code> is forwarded to the wrapper, so the card can
-  act as a link, and only the first button in ContentCardActions survives, since
-  a button cannot be nested inside another button.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/ClickableContentCard"
-></div>
-<h3>Bounding box and decorative border</h3>
-<p>
-  This example shows the two framing options: the accent bar added by
-  <code>decorativeBorder</code>, and a card with <code>boundingBox</code> turned
-  off so it sits directly on the page.
-</p>
-<div
-  class="sds-doc-example"
-  data-example="core/ContentCard/ContentCardBoundingBox"
-></div>
