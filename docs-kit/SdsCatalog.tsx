@@ -202,43 +202,94 @@ const pulse = keyframes`
 `;
 
 /**
- * What a card shows in place of its component until the component is there: a
- * component is only built once its card is near the window, and then only when
- * the browser has a moment to spare, so a frame is empty for a while and says so.
- *
- * One shape for every card, deliberately: fifty-one placeholders each shaped like
- * the component it stands in for would be a page of noise, and a card's label
- * already says what is coming.
+ * The placeholder's shapes are drawn in the card's own coordinates rather than the
+ * stage's, so these are the sizes they appear at: a circle the size of an avatar
+ * or an icon, and lines the weight of small type.
  */
-const Skeleton = styled.div<CommonThemeProps>`
+const DOT_SIZE = 20;
+const LINE_HEIGHT = 8;
+const BLOCK_HEIGHT = 40;
+
+const Shape = styled.div<CommonThemeProps>`
+  background-color: ${(props) => getSemanticColors(props)?.base?.fillSecondary};
+`;
+
+const Dot = styled(Shape)`
+  flex: none;
+  width: ${DOT_SIZE}px;
+  height: ${DOT_SIZE}px;
+  border-radius: 50%;
+`;
+
+const Line = styled(Shape)`
+  flex: 1;
+  height: ${LINE_HEIGHT}px;
+  border-radius: ${LINE_HEIGHT / 2}px;
+`;
+
+/** A line ending short of the edge, the way a last line of text does. */
+const LastLine = styled(Line)`
+  width: 55%;
+  flex: none;
+`;
+
+const Block = styled(Shape)`
+  height: ${BLOCK_HEIGHT}px;
+  border-radius: ${(props) => getCorners(props)?.m}px;
+`;
+
+const Heading = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${LINE_HEIGHT}px;
+`;
+
+/**
+ * What a card shows in place of its component until the component is there: a
+ * component is only built once its card is near the window, and then only when the
+ * browser has a moment to spare, so a frame stands empty for a while and says so.
+ *
+ * The same arrangement on every card, deliberately — a circle, a couple of lines
+ * and a panel, in roughly the proportions a component is built from. Fifty-one
+ * placeholders each shaped like the component it stands in for would be a page of
+ * noise, and a card's label already says what is coming.
+ *
+ * One animation, on the group, so the shapes breathe together rather than each on
+ * its own.
+ */
+const Placeholder = styled.div`
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
+`;
 
-  &::before {
-    content: "";
-    width: 45%;
-    height: 22%;
-    animation: ${pulse} 1.6s ease-in-out infinite;
-
-    ${(props) => {
-      const semanticColors = getSemanticColors(props);
-      const corners = getCorners(props);
-
-      return `
-        background-color: ${semanticColors?.base?.fillSecondary};
-        border-radius: ${corners?.m}px;
-      `;
-    }}
-  }
+const Shapes = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${LINE_HEIGHT}px;
+  width: min(70%, 200px);
+  animation: ${pulse} 1.6s ease-in-out infinite;
 
   @media (prefers-reduced-motion: reduce) {
-    &::before {
-      animation: none;
-    }
+    animation: none;
   }
 `;
+
+function Skeleton(): ReactElement {
+  return (
+    <Placeholder>
+      <Shapes>
+        <Heading>
+          <Dot />
+          <Line />
+        </Heading>
+        <Block />
+        <LastLine />
+      </Shapes>
+    </Placeholder>
+  );
+}
 
 /**
  * One card: a miniature, and beneath it the link that names the component.
