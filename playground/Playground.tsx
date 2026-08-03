@@ -19,6 +19,7 @@ import {
   buildPlaygroundHref,
   readCodeFromHash,
   readPaddingFromSearch,
+  storybookHref,
   writeCodeToHash,
   type PlaygroundPadding,
 } from "./lib/link";
@@ -36,6 +37,7 @@ import {
   Spacer,
   Status,
   Title,
+  TitleLink,
 } from "./style";
 
 /**
@@ -141,14 +143,21 @@ export function Playground(): ReactElement {
       <EmotionThemeProvider theme={theme}>
         <Layout>
           <Header>
-            <Title>SDS Playground</Title>
+            <Title>
+              {/* Out of the preview frame and into the tab: the playground is
+                  a story, so a link left to itself would open Storybook inside
+                  the iframe Storybook is already showing. */}
+              <TitleLink href={storybookHref()} target="_top">
+                SDS Playground
+              </TitleLink>
+            </Title>
 
             <Actions>
               <Button
                 onClick={() => void editorRef.current?.format()}
                 sdsStyle="minimal"
                 sdsType="secondary"
-                size="small"
+                size="medium"
                 startIcon={<Icon sdsIcon="Code" sdsSize="s" />}
               >
                 Format
@@ -157,7 +166,7 @@ export function Playground(): ReactElement {
                 onClick={() => setCode(DEFAULT_CODE)}
                 sdsStyle="minimal"
                 sdsType="secondary"
-                size="small"
+                size="medium"
                 startIcon={<Icon sdsIcon="Refresh" sdsSize="s" />}
               >
                 Reset
@@ -166,7 +175,7 @@ export function Playground(): ReactElement {
                 onClick={copyLink}
                 sdsStyle="minimal"
                 sdsType="secondary"
-                size="small"
+                size="medium"
                 startIcon={
                   <Icon
                     sdsIcon={hasCopied ? "CheckCircle" : "Share"}

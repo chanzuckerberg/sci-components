@@ -2,6 +2,8 @@ import { loader } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import EditorWorker from "monaco-editor/editor/editor.worker?worker";
 import TypeScriptWorker from "monaco-editor/languages/features/typescript/ts.worker?worker";
+import { Theme, getSemanticColors } from "@components/src/core/styles";
+import type { ThemeMode } from "@sds-docs/useThemeMode";
 import type { Transpile } from "./lib/runner";
 
 /**
@@ -15,10 +17,9 @@ const TYPES_PATH = "playground-types/types.json";
 /**
  * Monaco's own themes, minus the surfaces they paint.
  *
- * Everything the editor would fill with a colour of its own is made
- * transparent, leaving the pane's background to show through, so that the code
- * sits on the same sheet as the preview beside it. The syntax colours are
- * inherited untouched — they are the part of the theme worth having.
+ * The editor's own backgrounds are given up so that the pane shows through and
+ * the code sits on the same sheet as the preview beside it. The syntax colours
+ * are inherited untouched — they are the part of the theme worth having.
  */
 export const EDITOR_THEME = { dark: "sds-dark", light: "sds-light" } as const;
 
@@ -45,26 +46,44 @@ function defineEditorThemes(): void {
   const transparent = "#00000000";
 
   /**
-   * Nothing the editor draws is allowed a surface of its own. It can be this
-   * absolute because the editor has no widget left that covers the code rather
-   * than sitting behind it — sticky scroll, the one that did, is turned off in
-   * the editor's options.
+   * Every surface the editor would paint is dropped, leaving the pane's own to
+   * show through, bar the line the caret is on.
+   *
+   * That one is filled instead of outlined. Monaco rules a box around it by
+   * default, which on a pane with no chrome of its own reads as a stray border;
+   * the fill is the theme's own secondary surface, the same lift a hovered row
+   * gets elsewhere in the system.
+   *
+   * The indent guides are ruled in the theme's divider, active one included:
+   * they are the same hairline the rest of the system draws to separate things,
+   * and a snippet this short has no block deep enough to need singling out.
    */
-  const colors = {
-    "editor.background": transparent,
-    "editorGutter.background": transparent,
-    "minimap.background": transparent,
+  const colors = (mode: ThemeMode) => {
+    const semanticColors = getSemanticColors({ theme: Theme(mode) });
+
+    return {
+      "editor.background": transparent,
+      "editor.lineHighlightBackground":
+        semanticColors?.base?.backgroundSecondary ?? transparent,
+      "editor.lineHighlightBorder": transparent,
+      "editorGutter.background": transparent,
+      "editorIndentGuide.activeBackground1":
+        semanticColors?.base?.borderPrimary ?? transparent,
+      "editorIndentGuide.background1":
+        semanticColors?.base?.divider ?? transparent,
+      "minimap.background": transparent,
+    };
   };
 
   monaco.editor.defineTheme(EDITOR_THEME.light, {
     base: "vs",
-    colors,
+    colors: colors("light"),
     inherit: true,
     rules: [],
   });
   monaco.editor.defineTheme(EDITOR_THEME.dark, {
     base: "vs-dark",
-    colors,
+    colors: colors("dark"),
     inherit: true,
     rules: [],
   });

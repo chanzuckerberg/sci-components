@@ -6,7 +6,6 @@ import {
   fontHeaderS,
   getCorners,
   getSemanticColors,
-  getShadows,
   getSpaces,
   type CommonThemeProps,
 } from "@components/src/core/styles";
@@ -53,6 +52,22 @@ export const Header = styled.header<CommonThemeProps>`
 export const Title = styled.h1`
   ${fontHeaderS}
   margin: 0;
+`;
+
+/**
+ * The way back to the docs, worn by the title rather than by a control of its
+ * own: it is where a reader looks for it, and the toolbar's room is better
+ * spent on the things that act on the code.
+ */
+export const TitleLink = styled.a<CommonThemeProps>`
+  ${(props) => `
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: ${getSemanticColors(props)?.accent?.textAction};
+    }
+  `}
 `;
 
 /**
@@ -189,7 +204,6 @@ export const Viewport = styled.div<
 >`
   ${(props) => {
     const semanticColors = getSemanticColors(props);
-    const shadows = getShadows(props);
 
     return `
       flex: ${props.width === undefined ? "1 1 auto" : "none"};
@@ -202,10 +216,9 @@ export const Viewport = styled.div<
       /* Against the border-box default the reset lays down, so that a device
          width is the width of the screen and not of the bezel around it. */
       box-sizing: content-box;
-      // border: 1px solid ${semanticColors?.base?.divider};
+      border: 1px solid ${semanticColors?.base?.fillPrimaryInteraction};
       border-radius: ${getCorners(props)?.xl}px;
       background-color: ${semanticColors?.base?.backgroundPrimary};
-      box-shadow: ${shadows?.s};
 
       /* The screen scrolls, as a device's does, and what it scrolls is clipped
          to the rounding — which an example that reaches the edges needs. Menus

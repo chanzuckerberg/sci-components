@@ -5,9 +5,11 @@ import { compressCode, decompressCode } from "../compress";
 import {
   PLAYGROUND_META_ID,
   PLAYGROUND_STORY_ID,
+  STORYBOOK_HOME_ID,
   buildPlaygroundHref,
   readCodeFromHash,
   readPaddingFromSearch,
+  storybookHref,
 } from "../link";
 
 const SOURCE = `import { Button } from "@czi-sds/components";
@@ -107,6 +109,36 @@ describe("buildPlaygroundHref", () => {
 
     expect(search).not.toContain("padding");
     expect(readPaddingFromSearch(search)).toBe("default");
+  });
+});
+
+describe("storybookHref", () => {
+  it("addresses the docs' first page on the manager", () => {
+    const url = new URL(storybookHref());
+
+    // Resolved rather than absolute, so the link out of the playground still
+    // works on a deploy under a subpath, as the GitHub Pages one is.
+    expect(
+      buildPlaygroundHref(SOURCE).startsWith(`${url.origin}${url.pathname}`)
+    ).toBe(true);
+    expect(url.pathname.endsWith("/")).toBe(true);
+    expect(url.searchParams.get("path")).toBe(`/docs/${STORYBOOK_HOME_ID}`);
+  });
+});
+
+describe("STORYBOOK_HOME_ID", () => {
+  it("matches the id Storybook gives the overview page", () => {
+    // Storybook builds the id out of the page's title, so a rename there would
+    // leave this pointing at a page that no longer exists.
+    const page = readFileSync(
+      resolve(process.cwd(), "design-docs/pages/Overview/index.mdx"),
+      "utf-8"
+    );
+    const title = /<Meta title="([^"]+)"/.exec(page)?.[1] ?? "";
+    const slug = title.toLowerCase().replace(/[^a-z\d]+/g, "-");
+
+    expect(title).not.toBe("");
+    expect(STORYBOOK_HOME_ID).toBe(`${slug}--docs`);
   });
 });
 

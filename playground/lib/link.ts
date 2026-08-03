@@ -52,6 +52,28 @@ function previewUrl(): URL {
 }
 
 /**
+ * The page the documentation opens on. Storybook derives the id from the title
+ * of `design-docs/pages/Overview/index.mdx`, which a test in
+ * `__tests__/link.test.ts` holds this to.
+ */
+export const STORYBOOK_HOME_ID = "design-documentation-overview--docs";
+
+/**
+ * The way out of the playground and back into the docs.
+ *
+ * Storybook is the directory `iframe.html` is served out of, resolved the same
+ * way and for the same reasons as the preview above. The page is named rather
+ * than left to Storybook, which lands on whatever sorts first in the sidebar —
+ * the playground, so a bare link back would go nowhere at all.
+ */
+export function storybookHref(): string {
+  const url = new URL("./", window.location.href);
+  url.searchParams.set("path", `/docs/${STORYBOOK_HOME_ID}`);
+
+  return url.toString();
+}
+
+/**
  * A link that opens the playground with `source` loaded into the editor, shown
  * the way the page it came from shows it.
  *

@@ -1,5 +1,21 @@
-import { DrawerProps } from "@mui/material";
+import { DrawerProps, SlideProps } from "@mui/material";
 import { PanelHeaderCloseProps } from "./components/PanelHeaderClose";
+
+/**
+ * An overlay Panel slides in on MUI's `Slide`, which takes a `container` to
+ * measure that slide against. MUI types the transition slot against the generic
+ * transition interface, which knows nothing of it, and leaves this interface
+ * open for the component that does — so the prop is declared here.
+ *
+ * A Panel rendered into a box rather than the page needs it. Without one the
+ * slide is measured against the window and the panel spends most of its
+ * animation outside the frame it was given.
+ */
+declare module "@mui/material/Drawer" {
+  interface DrawerTransitionSlotPropsOverrides {
+    container?: SlideProps["container"];
+  }
+}
 
 export interface BasicPanelProps extends Omit<DrawerProps, "variant"> {
   sdsType: "basic"; // Discriminator

@@ -16,7 +16,6 @@ function App() {
           isMultiSelect
           column="Column Value"
           sdsIcon="Gear"
-          count={3}
           sdsIconProps={{
             color: "purple",
           }}

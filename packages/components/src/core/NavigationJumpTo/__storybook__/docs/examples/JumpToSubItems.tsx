@@ -18,6 +18,7 @@ import {
   fontHeaderM,
   fontHeaderS,
   getSemanticColors,
+  getSpaces,
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
@@ -66,6 +67,18 @@ const Section = styled.section<CommonThemeProps>`
   }}
 `;
 
+const Sidebar = styled.p<CommonThemeProps>`
+  ${(props) => {
+    const spaces = getSpaces(props);
+
+    return `
+      display: flex;
+      flex-direction: column;
+      gap: ${spaces?.xl}px;
+    `;
+  }}
+`;
+
 const Readout = styled.p<CommonThemeProps>`
   ${fontBodyXs}
 
@@ -74,7 +87,6 @@ const Readout = styled.p<CommonThemeProps>`
 
     return `
       color: ${semanticColors?.base?.textSecondary};
-      margin: 12px 0 0 0;
     `;
   }}
 `;
@@ -102,7 +114,7 @@ function App() {
   return (
     <div className="app">
       <Layout>
-        <div>
+        <Sidebar>
           <NavigationJumpTo
             items={[
               {
@@ -127,7 +139,7 @@ function App() {
             Last change: <br />
             {lastChange}
           </Readout>
-        </div>
+        </Sidebar>
 
         <ScrollArea>
           <Section id="methods" ref={methodsRef}>
