@@ -240,7 +240,7 @@ export const catalog: CatalogCategory[] = [
       {
         name: "NavigationJumpTo",
         docs: "components-navigationjumpto",
-        example: "core/NavigationJumpTo/JumpToSections",
+        example: "core/NavigationJumpTo/DefaultNavigationJumpTo",
       },
       {
         name: "Tabs",
