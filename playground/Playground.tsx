@@ -39,6 +39,12 @@ import {
   Title,
   TitleLink,
 } from "./style";
+import {
+  DesktopIcon,
+  DeviceMobileCameraIcon,
+  MoonIcon,
+  SunDimIcon,
+} from "@phosphor-icons/react";
 
 /**
  * How long the editor has to go quiet before the preview is rebuilt. Long
@@ -195,8 +201,14 @@ export function Playground(): ReactElement {
               <SegmentedControl
                 aria-label="Theme"
                 buttonDefinition={[
-                  { label: "Light", value: "light" },
-                  { label: "Dark", value: "dark" },
+                  {
+                    icon: <SunDimIcon size={16} />,
+                    value: "light",
+                  },
+                  {
+                    icon: <MoonIcon size={16} />,
+                    value: "dark",
+                  },
                 ]}
                 onChange={(_event, next) => {
                   if (next) setMode(next as ThemeMode);
@@ -206,8 +218,14 @@ export function Playground(): ReactElement {
               <SegmentedControl
                 aria-label="Preview width"
                 buttonDefinition={[
-                  { label: "Desktop", value: "desktop" },
-                  { label: "Mobile", value: "mobile" },
+                  {
+                    icon: <DesktopIcon size={16} />,
+                    value: "desktop",
+                  },
+                  {
+                    icon: <DeviceMobileCameraIcon size={16} />,
+                    value: "mobile",
+                  },
                 ]}
                 onChange={(_event, next) => {
                   if (next) setPreviewWidth(next as PreviewWidth);
