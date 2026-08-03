@@ -15,15 +15,31 @@ const meta: Meta<typeof PlaygroundApp> = {
    * the two together.
    */
   id: "playground",
+  /**
+   * CSF reads every export of this file as a story, and a production build hands
+   * it more than the one below: the minifier mangles this module's own bindings
+   * into extra exports named `$`, `$$`, `$0` and so on. A story id is built by
+   * stripping a name down to its alphanumeric characters, which leaves `$` with
+   * nothing, and the error thrown for it comes back out of the story index as a
+   * whole — so every story in the built Storybook becomes unreachable, and the
+   * accessibility suite has nothing to test. Naming the story keeps the mangled
+   * exports out of CSF's way.
+   */
+  includeStories: ["Playground"],
   parameters: {
     /**
      * It is an application, not a component: it fills the frame, has no
      * generated documentation page worth reading, and its contents change with
      * whatever is in the URL, which is no use to a snapshot. The accessibility
      * suite exists to hold the component library to account, and most of what
-     * it would find here belongs to Monaco.
+     * it would find here belongs to Monaco: the editor's own syntax colors are
+     * what it reports, a shade short of the contrast it asks for.
+     *
+     * `skip` is the key axe-storybook-testing reads, along with `mode`. It takes
+     * no notice of anything else under `axe`, so a name of our own here would be
+     * quietly ignored and the suite would run anyway.
      */
-    axe: { disabled: true },
+    axe: { skip: true },
     chromatic: { disable: true },
     docs: { disable: true },
     layout: "fullscreen",
