@@ -205,11 +205,11 @@ const Container = styled.div<CommonThemeProps>`
      break. Doubling the container class outbids that rule. */
   && code${OUTSIDE_PREVIEW} {
     font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
-    background: rgba(128, 128, 128, 0.15);
+    background: rgba(128, 128, 128, 0.08);
     color: inherit;
     margin: 0;
-    padding: 0.15em 0.35em;
-    border: none;
+    padding: 0.09em 0.3em 0.15em;
+    border: solid 1px rgba(128, 128, 128, 0.1);
     border-radius: 3px;
     font-size: 0.9em;
     line-height: inherit;
