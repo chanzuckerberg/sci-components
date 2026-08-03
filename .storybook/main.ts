@@ -163,6 +163,12 @@ const config: StorybookConfig = {
     viteConfig.optimizeDeps.include = [
       ...(viteConfig.optimizeDeps.include ?? []),
       "@emotion/styled/base",
+      /**
+       * The playground imports Phosphor only once an example asks for it, which
+       * is late by definition — and fifteen hundred icon modules is the last
+       * thing to be optimizing mid-session, with the reload that follows.
+       */
+      "@phosphor-icons/react",
     ];
 
     return viteConfig;

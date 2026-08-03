@@ -20,6 +20,7 @@
     "@mui/icons-material": "^9.1.1",
     "@mui/material": "^9.1.1",
     "@omlet/cli": "^1.1.1",
+    "@phosphor-icons/react": "^2.1.10",
     "@reduxjs/toolkit": "^2.1.0",
     "@rolldown/plugin-babel": "^0.2.3",
     "@rollup/plugin-url": "^8.0.2",

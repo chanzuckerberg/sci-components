@@ -56,9 +56,10 @@ const preview = {
       storySort: {
         method: "alphabetical",
         order: [
+          "Overview",
+          "Playground",
           "Design Documentation",
           [
-            "Overview",
             "SDS Overview",
             [
               "Introduction",

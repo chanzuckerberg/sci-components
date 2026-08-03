@@ -6,7 +6,7 @@ import ts from "typescript";
 import { describe, expect, it } from "vitest";
 import * as react from "react";
 import * as jsxRuntime from "react/jsx-runtime";
-import type { ModuleScope, Transpile } from "../runner";
+import type { LazyModuleScope, ModuleScope, Transpile } from "../runner";
 import { resolveModule, runCode } from "../runner";
 
 /**
@@ -160,6 +160,99 @@ describe("runCode", () => {
     });
 
     expect(result.error).toContain("export default App");
+  });
+});
+
+describe("runCode, on the modules it fetches on demand", () => {
+  /** Counted so the tests can tell a module that was fetched from one that was not. */
+  function iconPack(): { fetches: () => number; lazyScope: LazyModuleScope } {
+    let fetches = 0;
+
+    return {
+      fetches: () => fetches,
+      lazyScope: {
+        "icon-pack": async () => {
+          fetches += 1;
+          return stubs("Heart", "Table");
+        },
+      },
+    };
+  }
+
+  it("fetches one the example imports", async () => {
+    const { fetches, lazyScope } = iconPack();
+    const result = await runCode(
+      `
+        import { Heart } from "icon-pack";
+
+        export default function App() {
+          return <Heart />;
+        }
+      `,
+      { lazyScope, scope, transpile }
+    );
+
+    expect(fetches()).toBe(1);
+    expect(renderToStaticMarkup(createElement(result.Component!))).toContain(
+      'data-component="Heart"'
+    );
+  });
+
+  it("leaves one the example says nothing about alone", async () => {
+    const { fetches, lazyScope } = iconPack();
+    await runCode("export default () => null;", {
+      lazyScope,
+      scope,
+      transpile,
+    });
+
+    expect(fetches()).toBe(0);
+  });
+
+  it("keeps its exports out of the names a run is handed", async () => {
+    // Which is the point of fetching them this way: an icon pack is full of
+    // names the component library uses too, and bare `Table` means the SDS one.
+    const { lazyScope } = iconPack();
+    const result = await runCode(
+      `
+        import "icon-pack";
+
+        export default function App() {
+          return <Table />;
+        }
+      `,
+      { lazyScope, scope, transpile }
+    );
+
+    expect(() =>
+      renderToStaticMarkup(createElement(result.Component!))
+    ).toThrow(/Table is not defined/);
+  });
+
+  it("renders nothing for one that fails to arrive, and carries on", async () => {
+    const result = await runCode(
+      `
+        import { Heart } from "icon-pack";
+
+        export default function App() {
+          return (
+            <div>
+              <Heart />
+              <span>Still here</span>
+            </div>
+          );
+        }
+      `,
+      {
+        lazyScope: { "icon-pack": () => Promise.reject(new Error("offline")) },
+        scope,
+        transpile,
+      }
+    );
+
+    expect(renderToStaticMarkup(createElement(result.Component!))).toBe(
+      "<div><span>Still here</span></div>"
+    );
   });
 });
 

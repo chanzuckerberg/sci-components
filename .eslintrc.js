@@ -62,6 +62,41 @@ module.exports = {
       },
     },
     {
+      /**
+       * The published source of the two libraries, as opposed to the stories,
+       * tests and documentation examples alongside it, which Storybook builds
+       * and nobody installs.
+       *
+       * Phosphor is a root devDependency for the documentation's sake. An
+       * import from here would either be bundled into the library or left for
+       * a consumer to install, and neither is something they asked for.
+       */
+      excludedFiles: [
+        "packages/*/src/**/__storybook__/**",
+        "packages/*/src/**/__tests__/**",
+        "packages/*/src/**/*.stories.tsx",
+        "packages/*/src/**/*.figma.tsx",
+      ],
+      files: [
+        "packages/components/src/**/*.{ts,tsx}",
+        "packages/data-viz/src/**/*.{ts,tsx}",
+      ],
+      rules: {
+        "no-restricted-imports": [
+          "error",
+          {
+            patterns: [
+              {
+                group: ["@phosphor-icons/react", "@phosphor-icons/react/*"],
+                message:
+                  "Phosphor is available to Storybook only. The library ships the icons in src/common/svgs; add one there instead.",
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
       files: ["**/*.cjs"],
       parserOptions: {
         sourceType: "script",

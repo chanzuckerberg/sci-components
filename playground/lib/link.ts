@@ -56,15 +56,15 @@ function previewUrl(): URL {
  * of `design-docs/pages/Overview/index.mdx`, which a test in
  * `__tests__/link.test.ts` holds this to.
  */
-export const STORYBOOK_HOME_ID = "design-documentation-overview--docs";
+export const STORYBOOK_HOME_ID = "overview--docs";
 
 /**
  * The way out of the playground and back into the docs.
  *
  * Storybook is the directory `iframe.html` is served out of, resolved the same
  * way and for the same reasons as the preview above. The page is named rather
- * than left to Storybook, which lands on whatever sorts first in the sidebar —
- * the playground, so a bare link back would go nowhere at all.
+ * than left to Storybook, so that the way back does not follow the sidebar's
+ * first entry wherever it happens to move to.
  */
 export function storybookHref(): string {
   const url = new URL("./", window.location.href);

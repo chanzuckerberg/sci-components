@@ -24,7 +24,7 @@ import {
   type PlaygroundPadding,
 } from "./lib/link";
 import { runCode, type RunResult } from "./lib/runner";
-import { scope } from "./lib/scope";
+import { lazyScope, scope } from "./lib/scope";
 import { Preview, type PreviewWidth } from "./Preview";
 import {
   Actions,
@@ -117,14 +117,16 @@ export function Playground(): ReactElement {
     let cancelled = false;
 
     const timer = window.setTimeout(() => {
-      void runCode(code, { scope, transpile: handle.transpile }).then(
-        (next) => {
-          if (cancelled) return;
+      void runCode(code, {
+        lazyScope,
+        scope,
+        transpile: handle.transpile,
+      }).then((next) => {
+        if (cancelled) return;
 
-          setResult(next);
-          setRunKey((previous) => previous + 1);
-        }
-      );
+        setResult(next);
+        setRunKey((previous) => previous + 1);
+      });
 
       writeCodeToHash(code);
     }, RUN_DELAY);

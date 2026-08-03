@@ -1944,6 +1944,7 @@ __metadata:
     "@mui/icons-material": "npm:^9.1.1"
     "@mui/material": "npm:^9.1.1"
     "@omlet/cli": "npm:^1.1.1"
+    "@phosphor-icons/react": "npm:^2.1.10"
     "@reduxjs/toolkit": "npm:^2.1.0"
     "@rolldown/plugin-babel": "npm:^0.2.3"
     "@rollup/plugin-url": "npm:^8.0.2"
@@ -4840,6 +4841,16 @@ __metadata:
     "@parcel/watcher-win32-x64":
       optional: true
   checksum: 10c0/1e1d91f92e94e4640089a7cead243b2b81ca9aa8e1c862a97a25f589e84fbf1ad93abeb503f325c43a8c0e024ae0e74b48ec42c1cd84e8e423a3a87d25ded4f2
+  languageName: node
+  linkType: hard
+
+"@phosphor-icons/react@npm:^2.1.10":
+  version: 2.1.10
+  resolution: "@phosphor-icons/react@npm:2.1.10"
+  peerDependencies:
+    react: ">= 16.8"
+    react-dom: ">= 16.8"
+  checksum: 10c0/9a469e1bdcabcd3db02eda13142d57be250847ebbeb82b33c8900580a6a23ed4f411dbb9b9deacef726ff3fa8ffc960c8868b518e448bd2cee654cedf3fa4bda
   languageName: node
   linkType: hard
 

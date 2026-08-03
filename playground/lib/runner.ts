@@ -4,6 +4,19 @@ import type { ComponentType } from "react";
 export type ModuleScope = Record<string, Record<string, unknown>>;
 
 /**
+ * Modules fetched only once a run asks for one, keyed the same way.
+ *
+ * They differ from the scope above in the two ways that matter to the code
+ * being run: they arrive as a chunk of their own rather than in the
+ * playground's bundle, and their exports are not handed out as globals. Both
+ * suit a package that is large and that an example has to name to mean.
+ */
+export type LazyModuleScope = Record<
+  string,
+  () => Promise<Record<string, unknown>>
+>;
+
+/**
  * Turns the editor's source into JavaScript. Supplied by the caller rather than
  * imported, because the only TypeScript compiler on the page belongs to the
  * editor: see `createTranspiler` in `../monacoSetup`. Keeping it a parameter is
@@ -163,7 +176,51 @@ function declaredNames(compiled: string): Set<string> {
   return names;
 }
 
-function evaluate(compiled: string, scope: ModuleScope): ComponentType {
+/** Where the compiler leaves an import once it has rewritten the module. */
+const REQUIRE_CALL = /require\(\s*["']([^"']+)["']\s*\)/g;
+
+/**
+ * Fetch whichever on-demand modules this revision imports, and no others: an
+ * example that never mentions one should not wait for it or download it.
+ *
+ * A fetch that fails is left out rather than reported. The module then falls
+ * through to the blank stand-in every unresolvable import gets, which costs the
+ * example the elements it came for instead of the whole preview.
+ */
+async function loadRequested(
+  compiled: string,
+  lazyScope: LazyModuleScope
+): Promise<ModuleScope> {
+  const specifiers = Object.keys(lazyScope);
+  const wanted = new Set<string>();
+
+  for (const [, id] of compiled.matchAll(REQUIRE_CALL)) {
+    const match = specifiers.find(
+      (name) => id === name || id.startsWith(`${name}/`)
+    );
+    if (match) wanted.add(match);
+  }
+
+  const loaded: ModuleScope = {};
+
+  await Promise.all(
+    [...wanted].map(async (id) => {
+      try {
+        loaded[id] = await lazyScope[id]();
+      } catch {
+        // See above.
+      }
+    })
+  );
+
+  return loaded;
+}
+
+function evaluate(
+  compiled: string,
+  scope: ModuleScope,
+  onDemand: ModuleScope
+): ComponentType {
   const exports: Record<string, unknown> = {};
   const module = { exports };
 
@@ -182,7 +239,7 @@ function evaluate(compiled: string, scope: ModuleScope): ComponentType {
   run(
     module,
     exports,
-    makeRequire(scope),
+    makeRequire({ ...scope, ...onDemand }),
     ...names.map((name) => globals[name])
   );
 
@@ -198,6 +255,8 @@ function evaluate(compiled: string, scope: ModuleScope): ComponentType {
 }
 
 export interface RunOptions {
+  /** Modules to fetch if the run turns out to import one. */
+  lazyScope?: LazyModuleScope;
   scope: ModuleScope;
   transpile: Transpile;
 }
@@ -212,7 +271,7 @@ export interface RunOptions {
  */
 export async function runCode(
   code: string,
-  { scope, transpile }: RunOptions
+  { lazyScope = {}, scope, transpile }: RunOptions
 ): Promise<RunResult> {
   let compiled: string;
 
@@ -222,8 +281,10 @@ export async function runCode(
     return { error: messageOf(error), phase: "compile" };
   }
 
+  const onDemand = await loadRequested(compiled, lazyScope);
+
   try {
-    return { Component: evaluate(compiled, scope) };
+    return { Component: evaluate(compiled, scope, onDemand) };
   } catch (error) {
     return { error: messageOf(error), phase: "evaluate" };
   }

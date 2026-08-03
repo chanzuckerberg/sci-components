@@ -12,7 +12,13 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -80,7 +86,63 @@ const AMBIENT_MODULES = [
   "echarts",
   "echarts/*",
   "@faker-js/faker",
+  // The barrel is declared properly below; these are the deep entry points
+  // (`/dist/ssr`, `/dist/csr/Heart`) that the package also publishes.
+  "@phosphor-icons/react/*",
 ];
+
+/** Where Phosphor keeps one declaration file per icon. */
+const PHOSPHOR = "node_modules/@phosphor-icons/react/dist";
+
+/**
+ * Phosphor's own declarations, rewritten as one module.
+ *
+ * The package ships a file per icon, and each carries six base64 previews of
+ * the icon in a doc comment: thirty megabytes to say what is, for the editor's
+ * purposes, a list of names. Those names are the part worth having — finding
+ * the icon you want in a set of fifteen hundred is most of the work — so they
+ * are collected here into a declaration the playground can afford to download.
+ *
+ * The props come out of the package's own `lib/types`, so the shape of an icon
+ * is whatever Phosphor says it is rather than something restated here.
+ */
+function phosphorDeclaration() {
+  const icons = resolve(ROOT, PHOSPHOR, "csr");
+  const types = resolve(ROOT, PHOSPHOR, "lib/types.d.ts");
+
+  if (!existsSync(icons) || !existsSync(types)) return null;
+
+  const exported = new Set();
+
+  for (const file of readdirSync(icons)) {
+    if (!file.endsWith(".d.ts")) continue;
+
+    const source = readFileSync(resolve(icons, file), "utf-8");
+
+    // `export declare const Acorn: Icon;` — the name as it was before 2.1,
+    // deprecated but still what most code in the wild is written against.
+    for (const [, name] of source.matchAll(/export declare const (\w+)/g)) {
+      exported.add(name);
+    }
+    // `export { I as AcornIcon };` — the name to reach for now.
+    for (const [, name] of source.matchAll(/export \{ \w+ as (\w+) \}/g)) {
+      exported.add(name);
+    }
+  }
+
+  const declarations = [...exported]
+    .sort()
+    .map((name) => `  export const ${name}: Icon;`)
+    .join("\n");
+
+  return `declare module "@phosphor-icons/react" {
+${readFileSync(types, "utf-8").trimEnd()}
+  export const IconBase: Icon;
+  export const IconContext: import("react").Context<IconProps>;
+${declarations}
+}
+`;
+}
 
 /**
  * Build a workspace package so its declarations exist. `dist` is not committed,
@@ -124,6 +186,13 @@ function collect() {
   ).join("\n");
 
   files["file:///playground-ambient.d.ts"] = `${declared}\n`;
+
+  const phosphor = phosphorDeclaration();
+  if (phosphor) {
+    files["file:///playground-phosphor.d.ts"] = phosphor;
+  } else {
+    missing.push(PHOSPHOR);
+  }
 
   return { files, missing };
 }

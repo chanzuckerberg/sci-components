@@ -1,4 +1,4 @@
-import type { ModuleScope } from "./runner";
+import type { LazyModuleScope, ModuleScope } from "./runner";
 import * as faker from "@faker-js/faker";
 import * as emotionReact from "@emotion/react";
 import emotionStyled from "@emotion/styled";
@@ -47,4 +47,22 @@ export const scope: ModuleScope = {
   "react/jsx-runtime": jsxRuntime,
   "react/jsx-dev-runtime": jsxDevRuntime,
   "react-dom": reactDom,
+};
+
+/**
+ * Modules fetched the first time a run imports one, rather than carried in the
+ * playground's bundle.
+ *
+ * Phosphor is fifteen hundred icons. It is worth having — SDS ships the icons
+ * its own components need, not a set to draw an interface from — but it is not
+ * worth adding to the download of a playground opened on an example that never
+ * mentions it.
+ *
+ * Being out of the scope above also keeps it out of the globals every run is
+ * handed, which is what it wants: Phosphor exports a `Table`, a `List`, a
+ * `Link` and an `Image`, and a reader who writes one of those bare means the
+ * SDS component.
+ */
+export const lazyScope: LazyModuleScope = {
+  "@phosphor-icons/react": () => import("@phosphor-icons/react"),
 };
