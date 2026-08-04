@@ -30,15 +30,18 @@ export default create({
   // Text colors
   textColor: "black",
   textInverseColor: "rgba(255,255,255,0.9)",
+  // Ghost toolbar buttons (theme switcher, etc.) use this when idle
+  textMutedColor: "#3b3b3b",
 
   // Toolbar default and active colors
-  barTextColor: "silver",
+  barTextColor: "#3b3b3b",
+  barHoverColor: "black",
   barSelectedColor: "black",
   barBg: "white",
 
   // Form colors
   inputBg: "white",
-  inputBorder: "silver",
+  inputBorder: "#c3c3c3",
   inputTextColor: "black",
   inputBorderRadius: 4,
 

@@ -95,10 +95,17 @@
     margin-right: 6px !important;
   }
 
+  #storybook-explorer-menu .sidebar-item:hover,
   #storybook-explorer-menu .sidebar-item[data-selected="true"] {
     background-color: rgba(192, 192, 192, 0.15) !important;
     color: black;
     font-weight: 600;
+  }
+
+  #storybook-explorer-menu .sidebar-item button,
+  #storybook-explorer-menu .sidebar-item[data-selected="true"] button {
+    background: transparent !important;
+    box-shadow: none !important;
   }
 
   #storybook-explorer-menu .sidebar-item[aria-expanded="true"] > div > span,
@@ -109,16 +116,29 @@
     transform: rotate(135deg);
   }
 
-  #list-item-light,
-  #list-item-light span,
-  #list-item-dark,
-  #list-item-dark span {
-    color: black !important;
+  /*
+   * Theme switcher (Storybook 10 Select / ActionList). Selected options and
+   * icons used to pick up a washed-out secondary color; force high contrast.
+   */
+  button[aria-label*="Global theme for components"],
+  button[aria-label*="Global theme for components"] svg {
+    color: #000 !important;
   }
 
-  #list-item-light svg path,
-  #list-item-dark svg path {
-    fill: black !important;
+  [id$="-opt-light"],
+  [id$="-opt-dark"],
+  [id$="-opt-light"] p,
+  [id$="-opt-dark"] p,
+  [id$="-opt-light"] small,
+  [id$="-opt-dark"] small,
+  [id$="-opt-light"] svg,
+  [id$="-opt-dark"] svg {
+    color: #000 !important;
+  }
+
+  [id$="-opt-light"] svg path,
+  [id$="-opt-dark"] svg path {
+    fill: currentColor !important;
   }
 
   /* 
