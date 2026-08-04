@@ -1,0 +1,66 @@
+<h1>Borders</h1>
+<p>
+  Complete <code>border</code> shorthands, grouped by intent and then by state,
+  in colors that follow the theme.
+</p>
+<h2>Source Code</h2>
+<p>
+  The tokens behind these values can be found in
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/design-tokens/borders.json"
+  >
+    borders.json
+  </a>
+  .
+</p>
+<h2>Usage</h2>
+<p>
+  <code>getBorders</code> reads them off the theme. Every token is also
+  published as a CSS and SCSS variable, which is what to use in an app that does
+  not style with Emotion.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import styled from "@emotion/styled";
+import { getBorders, type CommonThemeProps } from "@czi-sds/components";
+
+export const Panel = styled.div&lt;CommonThemeProps&gt;`
+  ${(props) =&gt; {
+    const borders = getBorders(props);
+
+    return `
+      border: ${borders?.base?.default};
+
+      &:hover {
+        border: ${borders?.accent?.default};
+      }
+    `;
+  }}
+`;</code></pre>
+  </figure>
+</div>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>CSS</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-css">.panel {
+  border: var(--sds-border-base-default);
+}
+
+.panel:hover {
+  border: var(--sds-border-accent-default);
+}</code></pre>
+  </figure>
+</div>
+<p>
+  The story in this section lists every border with its variable names. Click a
+  name to copy it.
+</p>
+<h2>Design documentation</h2>
+<p>
+  For which border to use where, see the
+  <a href="./?path=/docs/design-documentation-bases-borders--docs" target="_top"
+    >Borders</a
+  >
+  design documentation.
+</p>
