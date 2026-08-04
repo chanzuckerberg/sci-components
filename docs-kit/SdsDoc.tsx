@@ -5,7 +5,14 @@ import {
 } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "@mui/material/styles";
-import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 import NavigationJumpTo from "@components/src/core/NavigationJumpTo";
 import {
@@ -19,11 +26,13 @@ import {
   CODE_ACTION_CLASS,
   PREVIEW_CLASS,
   SB_UNSTYLED_CLASS,
+  SLOT_CLASS,
   TOGGLE_CLASS,
 } from "./constants";
 import { highlightBlock } from "./highlight";
 import { SdsCatalog } from "./SdsCatalog";
 import { SdsExample, type ExamplePadding } from "./SdsExample";
+import { useThemeMode } from "./useThemeMode";
 
 /**
  * Live previews are portaled into this container, so the prose styles below
@@ -33,11 +42,11 @@ import { SdsExample, type ExamplePadding } from "./SdsExample";
  * `:where()` keeps the guard at zero specificity, leaving the prose cascade as
  * it was.
  *
- * The catalog is exempt for the same reason and then some: from its placeholder
- * down it is React's, styled by <SdsCatalog /> itself, so the prose has nothing
- * to say about any of it.
+ * The catalog and the slots are exempt for the same reason and then some: from
+ * their placeholders down they are React's, styled by the components rendered
+ * into them, so the prose has nothing to say about any of it.
  */
-const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *, .${CATALOG_CLASS} *))`;
+const OUTSIDE_PREVIEW = `:where(:not(.${PREVIEW_CLASS} *, .${CATALOG_CLASS} *, .${SLOT_CLASS} *))`;
 
 /** Column count of a labelled design-upload grid, set from its header row. */
 const UPLOAD_COLUMNS_PROPERTY = "--sds-doc-upload-columns";
@@ -741,6 +750,12 @@ const wideDocsColumn: CSSObject = {
 
 export interface SdsDocProps {
   html: string;
+  /**
+   * Live content the page supplies itself, keyed by the `data-slot` of the
+   * placeholder it belongs in. Each one is rendered under the SDS theme the
+   * toolbar is set to, as a story would be.
+   */
+  slots?: Record<string, ReactNode>;
 }
 
 /**
@@ -766,6 +781,12 @@ interface ExampleSlot {
 
 interface CatalogSlot {
   category: string;
+  node: HTMLElement;
+}
+
+/** A placeholder waiting on the live content its page passed in for it. */
+interface SlotFill {
+  name: string;
   node: HTMLElement;
 }
 
@@ -844,11 +865,14 @@ function collectContents(root: HTMLElement): JumpToItem[] {
     const title = heading.textContent?.trim();
     // A live example renders real components, whose own headings belong to the
     // example and not to the page. They mount after this runs, but the
-    // placeholders they fill are already here. The catalog's cards are examples
-    // too, several dozen of them, so they are held to the same rule.
+    // placeholders they fill are already here. The catalog's cards and the
+    // pages' own slots render components too, so they are held to the same
+    // rule.
     if (
       !title ||
-      heading.closest(`.sds-doc-example, .${PREVIEW_CLASS}, .${CATALOG_CLASS}`)
+      heading.closest(
+        `.sds-doc-example, .${PREVIEW_CLASS}, .${CATALOG_CLASS}, .${SLOT_CLASS}`
+      )
     ) {
       return;
     }
@@ -970,12 +994,17 @@ function markPropsTables(root: HTMLElement): void {
  * A `<div class="sds-doc-catalog" data-catalog="...">` is filled the same way,
  * with the named category of the component catalog. Its heading stays in the
  * page's HTML, so the jump-to nav lists the categories as it lists any section.
+ *
+ * A `<div class="sds-doc-slot" data-slot="...">` takes whatever the page passed
+ * under that name in `slots`, for content that belongs to the page rather than
+ * to a sandbox: the token tables the Bases pages are written around, say.
  */
-export function SdsDoc({ html }: SdsDocProps): ReactElement {
+export function SdsDoc({ html, slots }: SdsDocProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [slots, setSlots] = useState<ExampleSlot[]>([]);
+  const [examples, setExamples] = useState<ExampleSlot[]>([]);
   const [catalogs, setCatalogs] = useState<CatalogSlot[]>([]);
   const [snippets, setSnippets] = useState<SnippetSlot[]>([]);
+  const [fills, setFills] = useState<SlotFill[]>([]);
   const [jumpTo, setJumpTo] = useState<JumpToItem[]>([]);
 
   /*
@@ -986,9 +1015,16 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
   const theme = useMemo(() => Theme("light"), []);
 
   /**
+   * Slotted content is the page's own, so unlike the prose it follows the
+   * toolbar, which is what lets a table of tokens show its dark-mode values.
+   */
+  const mode = useThemeMode();
+  const slotTheme = useMemo(() => Theme(mode), [mode]);
+
+  /**
    * Stable payload: React re-sets `innerHTML` whenever this object's identity
    * changes, which would wipe the highlighted markup and the portalled examples
-   * every time the slot state below updates.
+   * every time the state below updates.
    */
   const innerHtml = useMemo(() => ({ __html: html }), [html]);
 
@@ -1024,7 +1060,7 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
       .querySelectorAll<HTMLElement>("pre code")
       .forEach((block) => highlightBlock(block));
 
-    setSlots(
+    setExamples(
       Array.from(
         root.querySelectorAll<HTMLElement>(".sds-doc-example[data-example]")
       ).flatMap((node) => {
@@ -1051,6 +1087,17 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
         return [{ category: catalog, node } satisfies CatalogSlot];
       })
     );
+
+    setFills(
+      Array.from(
+        root.querySelectorAll<HTMLElement>(`.${SLOT_CLASS}[data-slot]`)
+      ).flatMap((node) => {
+        const { slot } = node.dataset;
+        if (!slot) return [];
+        node.classList.add(SB_UNSTYLED_CLASS);
+        return [{ name: slot, node } satisfies SlotFill];
+      })
+    );
   }, [html]);
 
   return (
@@ -1075,11 +1122,24 @@ export function SdsDoc({ html }: SdsDocProps): ReactElement {
           </Layout>
         </EmotionThemeProvider>
       </ThemeProvider>
-      {slots.map(({ id, node, padding }) =>
+      {examples.map(({ id, node, padding }) =>
         createPortal(<SdsExample id={id} padding={padding} />, node, id)
       )}
       {catalogs.map(({ category, node }) =>
         createPortal(<SdsCatalog category={category} />, node, category)
+      )}
+      {fills.map(({ name, node }) =>
+        slots?.[name] === undefined
+          ? null
+          : createPortal(
+              <ThemeProvider theme={slotTheme}>
+                <EmotionThemeProvider theme={slotTheme}>
+                  {slots[name]}
+                </EmotionThemeProvider>
+              </ThemeProvider>,
+              node,
+              name
+            )
       )}
       {snippets.map(({ code, key, label, language, node }) =>
         createPortal(

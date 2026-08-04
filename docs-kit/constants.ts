@@ -11,6 +11,14 @@ export const CATALOG_CLASS = "sds-doc-catalog";
  */
 export const CATALOG_PREVIEW_CLASS = "sds-doc-catalog-preview";
 
+/**
+ * Placeholder a page fills with live content of its own, handed to <SdsDoc />
+ * as a slot. Unlike an example, what goes in one is not a sandbox to read and
+ * run but part of the page itself, such as the table of tokens a Bases page is
+ * written around.
+ */
+export const SLOT_CLASS = "sds-doc-slot";
+
 /** Expand/collapse control inside a code block's caption bar. */
 export const TOGGLE_CLASS = "sds-doc-code-toggle";
 

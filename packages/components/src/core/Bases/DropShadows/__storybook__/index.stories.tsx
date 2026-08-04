@@ -9,6 +9,9 @@ export default {
 // Drop Shadows
 
 export const Default = {
+  // Kept out of the sidebar: the Documentation page renders this table in
+  // place. It remains a story for Chromatic and the a11y run.
+  tags: ["!dev"],
   render: () => (
     <>
       <StyledShadowsWrapper>
