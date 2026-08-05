@@ -22,16 +22,27 @@
   This example has the minimum props needed for the InputDropdown component.
 </p>
 <div class="sds-doc-example" data-example="core/InputDropdown/Default"></div>
+<h3>Controlling the width</h3>
+<p>
+  Left alone, the input is as wide as the text inside it, which means a row of
+  them comes out ragged and the width jumps around as the selection changes.
+  <code>width</code> fixes that. A bare number is read as pixels, and any other
+  value is used as the CSS width, so <code>"100%"</code> fills the container and
+  <code>"20rem"</code> works as written.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputDropdown/ControllingTheWidth"
+></div>
 <div
   class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
 >
   <p>
     <strong>MUI Tip:</strong>
-    To ensure the InputDropdown button expands to fit the width of its
-    container, users can utilize the <code>fullWidth</code> prop provided by
-    MUI. When set to <code>true</code>, the <code>fullWidth</code> prop enables
-    the InputDropdown button to occupy the entire available width within its
-    parent container.
+    MUI's <code>fullWidth</code> prop works here too and does the same thing as
+    <code>width="100%"</code>. Pass both and <code>width</code> is the one that
+    counts. Either way the input keeps a minimum width of 90px, so a smaller
+    value leaves it at 90px rather than shrinking it.
   </p>
 </div>
 <h3>Square with multi-select</h3>
@@ -313,6 +324,27 @@
     <td>
       <p>
         The value that will be displayed in the component for the value variant.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"auto"</code></p>
+    </td>
+    <td>
+      <p>
+        How wide the input is. A bare number is read as pixels, so
+        <code>"240"</code> means 240px, and any other value is used as the CSS
+        width, such as <code>"100%"</code> or <code>"20rem"</code>. Values below
+        90px are ignored, since the input keeps that as its minimum. Left unset,
+        the input is as wide as its content, or as wide as its container if
+        MUI's <code>fullWidth</code> is set.
       </p>
     </td>
   </tr>

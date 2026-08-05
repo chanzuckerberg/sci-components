@@ -36,7 +36,48 @@ function App() {
 export default App;
 ```
 
-**MUI Tip:** To ensure the InputDropdown button expands to fit the width of its container, users can utilize the `fullWidth` prop provided by MUI. When set to `true`, the `fullWidth` prop enables the InputDropdown button to occupy the entire available width within its parent container.
+### Controlling the width
+
+Left alone, the input is as wide as the text inside it, which means a row of them comes out ragged and the width jumps around as the selection changes. `width` fixes that. A bare number is read as pixels, and any other value is used as the CSS width, so `"100%"` fills the container and `"20rem"` works as written.
+
+**Example: ControllingTheWidth**
+
+```tsx
+// The InputDropdown is as wide as its own content until `width` says otherwise.
+// A bare number is read as pixels; anything else is used as the CSS width, so a
+// percentage sizes the input against whatever contains it. The dashed box below
+// is the container the percentages are measured against.
+
+import { InputDropdown } from "@czi-sds/components";
+
+function App() {
+  return (
+    <div
+      className="app"
+      style={{
+        // Without this the column would stretch every input to its full width,
+        // which is the one thing this example is trying to show a difference in.
+        alignItems: "flex-start",
+        border: "1px dashed #a9a9a9",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        padding: "16px",
+        width: "400px",
+      }}
+    >
+      <InputDropdown label="Auto" onClick={() => {}} />
+      <InputDropdown label="240px" onClick={() => {}} width="240" />
+      <InputDropdown label="50%" onClick={() => {}} width="50%" />
+      <InputDropdown label="100%" onClick={() => {}} width="100%" />
+    </div>
+  );
+}
+
+export default App;
+```
+
+**MUI Tip:** MUI's `fullWidth` prop works here too and does the same thing as `width="100%"`. Pass both and `width` is the one that counts. Either way the input keeps a minimum width of 90px, so a smaller value leaves it at 90px rather than shrinking it.
 
 ### Square with multi-select
 
@@ -362,5 +403,6 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `shouldPutAColonAfterLabel`    | `bool`                                                    | `true`                                           | If `true`, a colon (:) will be added after the label or value.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `shouldTruncateMinimalDetails` | `bool`                                                    | `false`                                          | If `true`, the details section of the minimal variant displays a truncated one-liner with an ellipsis (...), if `false` the details section expands to multiple lines for a comprehensive display.                                                                                                                                                                                                                                                                                            |
 | `value`                        | `ReactNode`                                               | -                                                | The value that will be displayed in the component for the value variant.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `width`                        | `string`                                                  | `"auto"`                                         | How wide the input is. A bare number is read as pixels, so `"240"` means 240px, and any other value is used as the CSS width, such as `"100%"` or `"20rem"`. Values below 90px are ignored, since the input keeps that as its minimum. Left unset, the input is as wide as its content, or as wide as its container if MUI's `fullWidth` is set.                                                                                                                                              |
 
 There are more props that can be used with the InputDropdown component, via those available to [MUI's Button component](https://mui.com/material-ui/api/autocomplete/#props).

@@ -66,6 +66,8 @@
         "type": "CSSProperties"
       },
       "width": {
+        "defaultValue": "auto",
+        "description": "How wide the input is. A bare number is read as pixels, so \"240\" means 240px, and any other value is used as the CSS width, such as \"100%\" or \"20rem\". Values below 90px are ignored, since the input keeps that as its minimum. Left unset, the input is as wide as its content, or as wide as its container if MUI's fullWidth is set.",
         "isRequired": false,
         "type": "string"
       }

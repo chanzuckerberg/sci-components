@@ -69,7 +69,7 @@ const labelFontBodyS = fontBody("s", "regular");
 const labelFontBodyXs = fontBody("xs", "regular");
 
 const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
-  const { width = "auto" } = props;
+  const { width } = props;
 
   const spaces = getSpaces(props);
   const semanticColors = getSemanticColors(props);
@@ -83,7 +83,10 @@ const inputDropdownStyles = (props: InputDropdownProps): SerializedStyles => {
     cursor: pointer;
     padding: ${spaces?.xs}px ${spaces?.m}px;
     justify-content: start;
-    width: ${/^\d+$/.test(width) ? `${width}px` : width};
+    /* Declaring a width of auto would be the same as declaring nothing at all,
+       except that it would also override MUI's fullWidth, which sets 100%
+       earlier in this same class. So only declare one when there is one. */
+    ${width ? `width: ${/^\d+$/.test(width) ? `${width}px` : width};` : ""}
     min-width: 90px !important;
 
     &.MuiButton-text {
