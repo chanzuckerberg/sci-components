@@ -5,7 +5,8 @@ import {
   type ReactElement,
   type ReactNode,
 } from "react";
-import { TOGGLE_CLASS } from "./constants";
+import { CODE_BODY_CLASS, TOGGLE_CLASS } from "./constants";
+import { CopyCodeButton } from "./CopyCodeButton";
 import { highlightBlock } from "./highlight";
 
 export interface CodeFigureProps {
@@ -27,7 +28,8 @@ export interface CodeFigureProps {
 }
 
 /**
- * A block of source code with a caption bar that expands and collapses it.
+ * A block of source code with a caption bar that expands and collapses it, and
+ * a control in the corner of the code that copies it.
  *
  * Every code block in the docs renders through this, whether it came from the
  * imported HTML as a static snippet or from a live example's source file, so
@@ -64,11 +66,18 @@ export function CodeFigure({
         </button>
         {action}
       </figcaption>
-      <pre>
-        <code className={`language-${language}`} ref={codeRef}>
-          {code ?? ""}
-        </code>
-      </pre>
+      <div className={CODE_BODY_CLASS}>
+        <pre>
+          <code className={`language-${language}`} ref={codeRef}>
+            {code ?? ""}
+          </code>
+        </pre>
+        {code === null ? null : (
+          <CopyCodeButton
+            getCode={() => codeRef.current?.textContent ?? code}
+          />
+        )}
+      </div>
     </figure>
   );
 }

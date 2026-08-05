@@ -22,6 +22,15 @@ export const SLOT_CLASS = "sds-doc-slot";
 /** Expand/collapse control inside a code block's caption bar. */
 export const TOGGLE_CLASS = "sds-doc-code-toggle";
 
+/**
+ * The code itself, under a block's caption bar. Positions the copy control over
+ * the corner of the code, and is what a collapsed block hides.
+ */
+export const CODE_BODY_CLASS = "sds-doc-code-body";
+
+/** Holds the copy control in the top corner of the code it copies. */
+export const CODE_COPY_CLASS = "sds-doc-code-copy";
+
 /** Link out of a code block's caption bar, e.g. to the playground. */
 export const CODE_ACTION_CLASS = "sds-doc-code-action";
 

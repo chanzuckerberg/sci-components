@@ -44,6 +44,5 @@ export const TabularTypography = {
 // Link Typography
 
 export const LinkTypography = {
-  tags: ["new"],
   render: () => <Typography categories={["link"]} />,
 };

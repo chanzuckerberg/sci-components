@@ -24,6 +24,8 @@ import { CodeFigure } from "./CodeFigure";
 import {
   CATALOG_CLASS,
   CODE_ACTION_CLASS,
+  CODE_BODY_CLASS,
+  CODE_COPY_CLASS,
   PREVIEW_CLASS,
   SB_UNSTYLED_CLASS,
   SLOT_CLASS,
@@ -387,7 +389,7 @@ const Container = styled.div<CommonThemeProps>`
     margin: 0;
   }
 
-  figure > pre${OUTSIDE_PREVIEW} {
+  figure .${CODE_BODY_CLASS} > pre${OUTSIDE_PREVIEW} {
     padding: 20px !important;
   }
 
@@ -472,12 +474,54 @@ const Container = styled.div<CommonThemeProps>`
   figure[data-collapsed] .${TOGGLE_CLASS}::after {
     transform: rotate(45deg);
   }
-  /* Collapsed: hide the code and round the caption into a standalone bar. */
-  figure[data-collapsed] > pre {
+  /* Collapsed: hide the code and round the caption into a standalone bar. The
+     copy control goes with the code it copies. */
+  figure[data-collapsed] > .${CODE_BODY_CLASS} {
     display: none;
   }
   figure[data-collapsed] > figcaption {
     border-radius: 0 0 6px 6px;
+  }
+
+  /* The code, with the control that copies it over its top corner. Positioned
+     against this box and not the <pre> so that it keeps the corner while a long
+     line is scrolled underneath it. */
+  .${CODE_BODY_CLASS} {
+    position: relative;
+  }
+  .${CODE_COPY_CLASS} {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    /* The code's own surface, so the control stays legible where it covers the
+       end of a long first line. Opaque, because the code scrolls under it: the
+       grey the <pre> paints, as it comes out over the docs page. */
+    background: rgb(250, 251, 252);
+    border-radius: 4px;
+    opacity: 0;
+    /* Nothing to see is nothing to click: left live it would swallow a click
+       meant for the code beneath it. */
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  /* Hovering the block reveals it, and so does focus arriving in the code, which
+     is what keeps it reachable from the keyboard. Two rules and not one :is():
+     the comma inside one does not survive Emotion's preprocessor, and the
+     selector then matches nothing. */
+  figure:hover .${CODE_COPY_CLASS} {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .${CODE_BODY_CLASS}:focus-within .${CODE_COPY_CLASS} {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Nothing hovers on a touchscreen, so there the control simply stays out. */
+  @media (hover: none) {
+    .${CODE_COPY_CLASS} {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
   /* Fenced code blocks use a light "editor" surface, a shade off the docs page
@@ -508,7 +552,7 @@ const Container = styled.div<CommonThemeProps>`
     /* The figure already draws the block's outline. */
     border: none;
   }
-  figcaption + pre${OUTSIDE_PREVIEW} {
+  figcaption + .${CODE_BODY_CLASS} > pre${OUTSIDE_PREVIEW} {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
