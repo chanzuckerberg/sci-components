@@ -133,8 +133,8 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 | Name       | Type              | Default | Description                                                                                          |
 | ---------- | ----------------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| `checked`  | `bool`            | -       | Controls the toggle. Omit it and the component tracks its own state internally.                      |
-| `disabled` | `bool`            | `false` | If `true`, the component is disabled.                                                                |
+| `checked`  | `boolean`         | -       | Controls the toggle. Omit it and the component tracks its own state internally.                      |
+| `disabled` | `boolean`         | `false` | If `true`, the component is disabled.                                                                |
 | `offLabel` | `string`          | `"Off"` | The text displayed within the InputToggle when it's off.                                             |
 | `onLabel`  | `string`          | `"On"`  | The text displayed within the InputToggle when it's on.                                              |
 | `onChange` | `(event) => void` | -       | Called whenever the user toggles the component, in either direction.                                 |

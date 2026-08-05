@@ -73,6 +73,57 @@
         "description": "Additional props to pass to each table row component",
         "isRequired": false,
         "type": "Partial<TableRowProps>"
+      },
+      "data": {
+        "description": "Array of data objects to display in the table rows",
+        "isRequired": false,
+        "type": "TData[]"
+      },
+      "className": {
+        "description": "CSS class name to apply to the table container",
+        "isRequired": false,
+        "type": "string"
+      },
+      "style": {
+        "description": "Inline styles to apply to the table container",
+        "isRequired": false,
+        "type": "React.CSSProperties"
+      },
+      "tableWidth": {
+        "defaultValue": "100%",
+        "description": "Sets the width of the table container",
+        "isRequired": false,
+        "type": "string"
+      },
+      "pinning": {
+        "description": "Sticks the column to that edge while the table scrolls sideways, with a gradient at the edge once there is something hidden behind it",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
+      },
+      "verticalAlign": {
+        "description": "Vertical alignment of the column's cells",
+        "isRequired": false,
+        "type": "\"top\" | \"middle\" | \"bottom\""
+      },
+      "widthPercentage": {
+        "description": "The column's share of the table width, as a percentage rather than a fixed size",
+        "isRequired": false,
+        "type": "number"
+      },
+      "isGrow": {
+        "description": "Lets this column absorb whatever width the others leave over",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "headerCellProps": {
+        "description": "Props for the CellHeader generated from a string header, for tooltips, alignment or truncation",
+        "isRequired": false,
+        "type": "Partial<CellHeaderProps>"
+      },
+      "filterComponent": {
+        "description": "Replaces the default search input in this column's filter cell, for a select or a range instead",
+        "isRequired": false,
+        "type": "(props: { column: Column<TData>; table: Table<TData> }) => React.ReactNode"
       }
     }
   }

@@ -148,6 +148,7 @@
     "mcp:inspect:dev": "yarn workspace @czi-sds/mcp inspect:dev",
     "mcp:serve": "yarn workspace @czi-sds/mcp serve",
     "mcp:release": "yarn workspace @czi-sds/mcp release",
+    "docs:audit": "yarn workspace @czi-sds/mcp audit:docs",
     "evaluate:code": "node scripts/evaluate-code/index.cjs",
     "evaluate:batch": "node scripts/evaluate-code/index.cjs --batch",
     "evaluate:test": "jest scripts/evaluate-code/evaluate.test.cjs"

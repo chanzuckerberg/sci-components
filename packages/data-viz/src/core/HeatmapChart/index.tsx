@@ -17,6 +17,11 @@ import { ChartContainer } from "./style";
 
 export interface HeatmapChartProps
   extends HTMLAttributes<HTMLDivElement>, CreateChartOptionsProps {
+  /**
+   * Which renderer ECharts initialises with. Canvas copes better with very
+   * large grids. Changing it rebuilds the chart.
+   * @default "svg"
+   */
   echartsRendererMode?: "svg" | "canvas";
 }
 
@@ -32,6 +37,7 @@ const HeatmapChart = forwardRef(
       height,
       echartsRendererMode = "svg",
       camera,
+      dataZoom,
       onEvents,
       xAxisData,
       yAxisData,
@@ -142,6 +148,7 @@ const HeatmapChart = forwardRef(
       camera,
       chart,
       data,
+      dataZoom,
       emphasis,
       encode,
       grid,

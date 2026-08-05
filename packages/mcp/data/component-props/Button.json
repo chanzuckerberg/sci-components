@@ -3,13 +3,13 @@
     "props": {
       "backgroundOnHover": {
         "defaultValue": true,
-        "description": "Only applies when sdsStyle is minimal. When false, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text.",
+        "description": "Only applies when sdsStyle is \"minimal\". When false, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text.",
         "isRequired": false,
         "type": "boolean"
       },
       "backgroundAppearance": {
         "defaultValue": "matchBackground",
-        "description": "Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to dark when the button is placed on a dark background in light mode.",
+        "description": "Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to \"dark\" when the button is placed on a dark background in light mode.",
         "isRequired": false,
         "type": "\"matchBackground\" | \"dark\""
       },
@@ -50,6 +50,22 @@
         "description": "Element placed before the children.",
         "isRequired": false,
         "type": "ReactNode"
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "href": {
+        "description": "The URL to link to when the button is clicked.\nIf defined, an `a` element will be used as the root node.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "target": {
+        "description": "Where the link opens, for example \"_blank\". Only has an effect alongside href.",
+        "isRequired": false,
+        "type": "string & {} | \"_self\" | \"_blank\" | \"_parent\" | \"_top\""
       }
     }
   }

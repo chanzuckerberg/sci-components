@@ -122,7 +122,7 @@
       <p><code>buttons</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -139,7 +139,7 @@
       <p><code>closeOnBlur</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -156,7 +156,7 @@
       <p><code>disabled</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -173,7 +173,7 @@
       <p><code>isTriggerChangeOnOptionClick</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -190,7 +190,7 @@
       <p><code>label</code></p>
     </td>
     <td>
-      <p><code>string</code></p>
+      <p><code>ReactNode</code></p>
     </td>
     <td><p>-</p></td>
     <td><p>The label of the Dropdown.</p></td>
@@ -200,7 +200,7 @@
       <p><code>multiple</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -229,7 +229,7 @@
       <p><code>onClose</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td><p>Callback fired when the Dropdown requests to be closed.</p></td>
@@ -239,7 +239,7 @@
       <p><code>search</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -253,7 +253,7 @@
   </tr>
   <tr>
     <td>
-      <p><code>dropdownMenuProps</code></p>
+      <p><code>DropdownMenuProps</code></p>
     </td>
     <td>
       <p><code>Partial&lt;DropdownMenuProps&gt;</code></p>
@@ -262,7 +262,9 @@
     <td>
       <p>
         These props are directly passed to the underlying DropdownMenu
-        component, customizing its behavior.
+        component, customizing its behavior. It is also the way to reach the
+        menu's <code>PopperComponent</code>, <code>PaperComponent</code> and
+        placement.
       </p>
     </td>
   </tr>
@@ -271,7 +273,8 @@
       <p><code>options</code></p>
     </td>
     <td>
-      <p><code>Array&lt;DefaultDropdownMenuOption&gt;</code></p>
+      <p><code>AutocompleteSingleColumnOption&lt;T&gt;[]</code> |</p>
+      <p><code>AutocompleteMultiColumnOption&lt;T&gt;[]</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -312,17 +315,49 @@
   </tr>
   <tr>
     <td>
-      <p><code>PopperComponent</code></p>
+      <p><code>isSearchAutoFocus</code></p>
     </td>
     <td>
-      <p><code>element</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
-      <p><code>Paper</code></p>
+      <p><code>true</code></p>
     </td>
     <td>
-      <p>The component used to render the wrapper of the inner DropdownMenu.</p>
+      <p>
+        Puts the cursor in the search input as the menu opens. It only applies
+        alongside <code>search</code>.
+      </p>
     </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onInputChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Called as the search text changes.</p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, value: string, reason:
+          AutocompleteInputChangeReason) =&gt; void
+        </code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>A heading shown at the top of the menu.</p></td>
   </tr>
   <tr>
     <td>

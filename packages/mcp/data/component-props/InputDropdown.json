@@ -7,6 +7,7 @@
         "type": "ReactNode"
       },
       "classes": {
+        "description": "A class name for each part of the input, for styling one of them without reaching through the DOM: root, label, labelDetailsWrapper, contentWrapper, details, counter, iconWrapper, chevronIcon and minimalDetails.",
         "isRequired": false,
         "type": "complex"
       },
@@ -58,10 +59,12 @@
         "type": "boolean"
       },
       "startIcon": {
+        "description": "An element placed before the label, passed straight through to the underlying MUI Button.",
         "isRequired": false,
         "type": "ReactNode"
       },
       "style": {
+        "description": "Inline styles for the input's root element.",
         "isRequired": false,
         "type": "CSSProperties"
       },
@@ -70,6 +73,33 @@
         "description": "How wide the input is. A bare number is read as pixels, so \"240\" means 240px, and any other value is used as the CSS width, such as \"100%\" or \"20rem\". Values below 90px are ignored, since the input keeps that as its minimum. Left unset, the input is as wide as its content, or as wide as its container if MUI's fullWidth is set.",
         "isRequired": false,
         "type": "string"
+      },
+      "className": {
+        "description": "Added to the input's root element, alongside anything classes.root puts there.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "details": {
+        "description": "A text showing details for the selected menu item.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "onClick": {
+        "defaultValue": "(event: React.MouseEvent<HTMLElement>) => void",
+        "description": "Sets what happens when a user clicks on the component.",
+        "isRequired": true,
+        "type": "function"
+      },
+      "state": {
+        "defaultValue": "default",
+        "description": "Draws the input in its open state. The input has no idea whether its menu is showing, so set this from whatever holds that state.",
+        "isRequired": false,
+        "type": "\"open\" | \"default\""
+      },
+      "value": {
+        "description": "The value that will be displayed in the component for the value variant.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

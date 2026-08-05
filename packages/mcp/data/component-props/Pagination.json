@@ -28,6 +28,26 @@
         "description": "When true the ellipsis is a menu of the pages it stands for. When false it is a disabled placeholder, and those pages can only be reached by stepping through with the chevrons.",
         "isRequired": false,
         "type": "boolean"
+      },
+      "onPageChange": {
+        "description": "A callback function triggered when the page number is changed.",
+        "isRequired": true,
+        "type": "(page: number) => void"
+      },
+      "onNextPage": {
+        "description": "A callback function triggered when the \"Next\" page button is clicked.",
+        "isRequired": true,
+        "type": "() => void"
+      },
+      "onPreviousPage": {
+        "description": "A callback function triggered when the \"Previous\" page button is clicked.",
+        "isRequired": true,
+        "type": "() => void"
+      },
+      "currentPage": {
+        "description": "Required. The page to mark as current, counted from 1. Pagination keeps no page state of its own.",
+        "isRequired": true,
+        "type": "number"
       }
     }
   }

@@ -99,6 +99,92 @@
         "description": "The main title displayed in the header.",
         "isRequired": false,
         "type": "string"
+      },
+      "activePrimaryNavKey": {
+        "description": "The key of the active primary item. Optional, since the header tracks this itself; when given, it overrides the internal value.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "setActivePrimaryNavKey": {
+        "description": "Called when a primary item becomes active. The header updates its internal key as well, so this is a notification rather than the only way the value changes.",
+        "isRequired": false,
+        "type": "(key: string) => void"
+      },
+      "drawerOpen": {
+        "description": "Controls the narrow layout's drawer. Leave both this and setDrawerOpen out to let the hamburger manage it.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "setDrawerOpen": {
+        "description": "Replaces the drawer's internal state update, so it has to be paired with drawerOpen or the drawer stops opening.",
+        "isRequired": false,
+        "type": "(open: boolean) => void"
+      },
+      "onDrawerStyleNavItemHover": {
+        "description": "(item: NavigationHeaderPrimaryNavItem<T> | NavigationHeaderSecondaryNavItem) => void. Called with the hovered primary or secondary item while sdsStyle is \"drawer\". Useful for prefetching what the panel will show.",
+        "isRequired": false,
+        "type": "(item: NavigationHeaderPrimaryNavItem<string> | NavigationHeaderSecondaryNavItem<string>) => void"
+      },
+      "logoLinkProps": {
+        "description": "Props to pass to the logo link component.",
+        "isRequired": false,
+        "type": "LinkProps"
+      },
+      "label": {
+        "description": "The row's text.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "details": {
+        "description": "A caption under the label, drawn only when sdsStyle is \"drawer\". In dropdown style it lands on the element as an attribute and shows nothing.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "icon": {
+        "description": "An icon for the row, drawn only when sdsStyle is \"drawer\". A named icon renders at 24px when the row has details and 16px when it does not, so the name has to offer that size.",
+        "isRequired": false,
+        "type": "keyof IconNameToSizes | ReactElement"
+      },
+      "section": {
+        "description": "Groups rows under a heading. Rows are grouped by this value in the order the sections first appear.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "onClick": {
+        "description": "Runs on click, then the menu closes.",
+        "isRequired": false,
+        "type": "function"
+      },
+      "href": {
+        "description": "Turns the row into a link to this URL.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "component": {
+        "description": "What the link renders as, for routing through something other than an anchor.",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
+      },
+      "target": {
+        "description": "Where the link opens, for example \"_blank\".",
+        "isRequired": false,
+        "type": "string"
+      },
+      "rel": {
+        "description": "The link's relationship to the target, for example \"noreferrer\".",
+        "isRequired": false,
+        "type": "string"
+      },
+      "actions": {
+        "description": "Links rendered under the section, for example a \"Browse all\". Each takes label plus href, onClick, component, target, and rel.",
+        "isRequired": false,
+        "type": "ActionItem[]"
+      },
+      "colSpan": {
+        "defaultValue": 1,
+        "description": "How many columns of the panel this section occupies.",
+        "isRequired": false,
+        "type": "number"
       }
     }
   }

@@ -39,6 +39,46 @@
         "description": "Caps the tooltip at 250px or 550px. Wide also left-aligns the text. It logs a warning about being light-only whichever style it is used with.",
         "isRequired": false,
         "type": "\"default\" | \"wide\""
+      },
+      "subtitle": {
+        "description": "A smaller, dimmer second line under the title, for a detail such as how to use what the tooltip points at. Works on both styles.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "arrow": {
+        "defaultValue": false,
+        "description": "If `true`, adds an arrow to the tooltip.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "PopperComponent": {
+        "defaultValue": "SDS StyledPopper",
+        "description": "The popper the tooltip renders into, carrying the arrow's shape and\nplacement.\n\n(v9): MUI removed the Tooltip `PopperComponent` prop in favor of\n`slots.popper`. We keep `PopperComponent` as an SDS prop for backward\ncompatibility and map it to `slots.popper` internally.",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
+      },
+      "sdsStyle": {
+        "defaultValue": "dark",
+        "description": "Deprecated. An earlier spelling of hasInvertedStyle: dark matches the default, light matches hasInvertedStyle={false}.",
+        "isRequired": false,
+        "type": "\"dark\" | \"light\""
+      },
+      "inverted": {
+        "description": "Deprecated. The oldest spelling of hasInvertedStyle. Use hasInvertedStyle.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "disableInteractive": {
+        "defaultValue": false,
+        "description": "Makes a tooltip not interactive, i.e. it will close when the user\nhovers over the tooltip before the `leaveDelay` is expired.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "followCursor": {
+        "defaultValue": false,
+        "description": "If `true`, the tooltip follow the cursor over the wrapped element.",
+        "isRequired": false,
+        "type": "boolean"
       }
     }
   }

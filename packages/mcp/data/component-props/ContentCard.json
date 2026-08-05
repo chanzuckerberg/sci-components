@@ -7,10 +7,6 @@
         "isRequired": false,
         "type": "boolean"
       },
-      "buttons": {
-        "isRequired": false,
-        "type": "any"
-      },
       "buttonsPosition": {
         "defaultValue": "left",
         "description": "Determines the alignment of buttons in the ContentCardActions component.",
@@ -40,12 +36,12 @@
         "type": "boolean"
       },
       "icon": {
-        "description": "The icon displayed in the card when visualElementType is icon.",
+        "description": "The icon displayed in the card when visualElementType is \"icon\".",
         "isRequired": false,
         "type": "ReactNode"
       },
       "image": {
-        "description": "The image displayed in the card when visualElementType is image.",
+        "description": "The image displayed in the card when visualElementType is \"image\".",
         "isRequired": false,
         "type": "ReactNode"
       },
@@ -57,13 +53,13 @@
       },
       "imagePosition": {
         "defaultValue": "left",
-        "description": "Position of the image in the card layout (left or right).",
+        "description": "Position of the image in the card layout (\"left\" or \"right\").",
         "isRequired": false,
         "type": "\"left\" | \"right\""
       },
       "imageSize": {
         "defaultValue": 300,
-        "description": "Width of the image area in pixels when visualElementType is image.",
+        "description": "Width of the image area in pixels when visualElementType is \"image\".",
         "isRequired": false,
         "type": "number"
       },
@@ -79,7 +75,7 @@
       },
       "sdsType": {
         "defaultValue": "wide",
-        "description": "Determines the card layout style. wide shows the image and content side by side, narrow stacks them vertically. The card watches its own width and switches to narrow on its own once it drops below roughly 595px, so this prop sets the layout it uses when there is room.",
+        "description": "Determines the card layout style. \"wide\" shows the image and content side by side, \"narrow\" stacks them vertically. The card watches its own width and switches to narrow on its own once it drops below roughly 595px, so this prop sets the layout it uses when there is room.",
         "isRequired": false,
         "type": "\"wide\" | \"narrow\""
       },
@@ -98,6 +94,11 @@
         "description": "Required. Specifies what type of visual element to render on the card: an image, an icon, or none. It also narrows which visual props are accepted, so image props are only available on an image card and icon on an icon card.",
         "isRequired": true,
         "type": "\"image\" | \"none\" | \"icon\""
+      },
+      "children": {
+        "description": "The content to be displayed inside the card body, including custom\ncomponents and ContentCardActions.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

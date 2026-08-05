@@ -100,6 +100,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 | Name          | Type                                                      | Default       | Description                                                                          |
 | ------------- | --------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------ |
+| `classes`     | `object`                                                  | `{}`          | Class names for the internal elements: `root`, `label`, and `input`.                 |
 | `disabled`    | `boolean`                                                 | `false`       | When set to `true`, the component becomes disabled and cannot be interacted with.    |
 | `hideLabel`   | `boolean`                                                 | `false`       | If `true`, the label is hidden.                                                      |
 | `id`          | `string`                                                  | -             | Specifies the unique id for the input element, needed for accessibility.             |

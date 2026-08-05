@@ -17,6 +17,11 @@
         "description": "Whether section labels are drawn. False hides all of them; the dividers between sections stay.",
         "isRequired": false,
         "type": "boolean"
+      },
+      "data": {
+        "description": "The sections, drawn in order and separated by dividers. A section's label heads it, its dataRows fill it, and disabled greys the whole block.",
+        "isRequired": false,
+        "type": "{ label?: string; dataRows: { label: string; value: string | number; }[]; disabled?: boolean; }[]"
       }
     }
   }

@@ -17,10 +17,6 @@
         "isRequired": false,
         "type": "\"left\" | \"right\""
       },
-      "extraContent": {
-        "isRequired": false,
-        "type": "boolean"
-      },
       "icon": {
         "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`.",
         "isRequired": false,
@@ -46,6 +42,21 @@
         "description": "Required. The side the Notification slides in from and back out towards. The component falls back to \"left\", but the prop is not optional, so pass it explicitly.",
         "isRequired": false,
         "type": "\"left\" | \"right\""
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "dismissed": {
+        "description": "Hides the Notification when set to true. Changing it back to false brings the Notification back, which is how a dismissed Notification is restored.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "buttonText": {
+        "description": "The label of the action button shown beneath the content. It only renders alongside buttonOnClick.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

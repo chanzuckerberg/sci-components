@@ -1,6 +1,7 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { createRef } from "react";
 import * as stories from "../__storybook__/index.stories";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
@@ -70,5 +71,30 @@ describe("<InputDropdown />", () => {
   it("takes precedence over fullWidth when given both", () => {
     render(<Test {...Test.args} fullWidth width="240" />);
     expect(widthOf(screen.getByTestId("InputDropdown"))).toBe("240px");
+  });
+
+  it("stays small however size is set", () => {
+    render(<Test {...Test.args} size="large" />);
+
+    const input = screen.getByTestId("InputDropdown");
+
+    expect(input.className).toContain("MuiButton-sizeSmall");
+    expect(input.className).not.toContain("MuiButton-sizeLarge");
+  });
+
+  it("hands a ref the button, so it can anchor a menu", () => {
+    const ref = createRef<HTMLButtonElement>();
+
+    render(<Test {...Test.args} ref={ref} />);
+
+    expect(ref.current).toBe(screen.getByTestId("InputDropdown"));
+  });
+
+  it("puts a class from classes on the part it names", () => {
+    render(<Test {...Test.args} classes={{ label: "my-label" }} />);
+
+    expect(
+      screen.getByTestId("InputDropdown").querySelector(".my-label")
+    ).not.toBeNull();
   });
 });

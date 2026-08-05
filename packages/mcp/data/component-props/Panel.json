@@ -30,6 +30,45 @@
         "description": "How wide the panel is, or how tall it is when positioned along the bottom. Numbers are read as pixels. Values below the default are ignored, since the panel keeps that as its minimum in both directions.",
         "isRequired": false,
         "type": "string | number"
+      },
+      "open": {
+        "defaultValue": false,
+        "description": "If `true`, the component is shown.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "HeaderComponent": {
+        "description": "Overlay only. Fills the header bar beside the close button. Leave it out and the bar holds the close button alone.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "closeButtonOnClick": {
+        "description": "Overlay only. Runs when the header's close control is clicked. Without it, the control does nothing.",
+        "isRequired": false,
+        "type": "function"
+      },
+      "CloseButtonComponent": {
+        "defaultValue": "<Button sdsStyle=minimal sdsType=secondary size=large backgroundOnHover={false} aria-label=Panel Toggle> <Icon sdsIcon=XMark sdsSize=l /> </Button>",
+        "description": "Overlay only. Replaces the close button. Clicks are handled by the wrapper around it, so it needs no handler of its own.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "onClose": {
+        "description": "Callback fired when the component requests to be closed.\nThe `reason` parameter can optionally be used to control the response to `onClose`.\n@param event The event source of the callback.\n@param reason Can be: `\"escapeKeyDown\"`, `\"backdropClick\"`.",
+        "isRequired": false,
+        "type": "\"backdropClick\" | \"escapeKeyDown\""
+      },
+      "ModalProps": {
+        "defaultValue": {},
+        "description": "Props applied to the [`Modal`](https://mui.com/material-ui/api/modal/) element.",
+        "isRequired": false,
+        "type": "Partial<ModalProps>"
+      },
+      "slotProps": {
+        "defaultValue": {},
+        "description": "The props used for each slot inside.",
+        "isRequired": false,
+        "type": "{ root?: SlotProps"
       }
     }
   }

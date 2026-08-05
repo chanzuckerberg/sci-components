@@ -58,6 +58,49 @@ function App() {
 export default App;
 ```
 
+### Controlling when the Banner closes
+
+Left alone, the Banner keeps track of being dismissed and closes itself. The moment you pass `dismissed`, that becomes your job: the close button fires `onClose` and nothing else, so a Banner rendered with `dismissed={false}` will not close until you say so.
+
+**Example: ControllingDismissal**
+
+```tsx
+// Left alone, the Banner closes itself and does not come back. Passing
+// `dismissed` - even as `false` - hands that decision over: the close button
+// then only fires `onClose`, and the Banner stays on screen until you set
+// `dismissed` yourself, which also means you can bring it back.
+
+import { Banner, Button } from "@czi-sds/components";
+import { useState } from "react";
+
+function App() {
+  const [dismissed, setDismissed] = useState(false);
+
+  return (
+    <div className="app">
+      <Banner
+        dismissed={dismissed}
+        onClose={() => setDismissed(true)}
+        sdsType="primary"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Banner>
+      {dismissed && (
+        <Button
+          onClick={() => setDismissed(false)}
+          sdsStyle="minimal"
+          sdsType="primary"
+        >
+          Bring the banner back
+        </Button>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
+
 ### Secondary Banner
 
 This example pairs a primary Banner with the secondary variant that follows it.
@@ -176,12 +219,13 @@ export default App;
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name           | Type                                                                 | Default  | Description                                                                                                                                                                                                                                                  |
-| -------------- | -------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `sdsType`      | `"primary"` \| `"secondary"`                                         | -        | Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.                                |
-| `intent`       | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | `"info"` | The intent color of the Banner component, which also selects the default icon.                                                                                                                                                                               |
-| `dismissible`  | `bool`                                                               | `true`   | If `true`, the banner can be dismissed by the user. This is what controls whether the close button is rendered.                                                                                                                                              |
-| `dismissed`    | `bool`                                                               | -        | If `true`, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state; pass a value to control it yourself.                                                                                 |
-| `onClose`      | `fn`                                                                 | -        | Callback fired when the user clicks the close button. **Signature:** `function(event: React.MouseEvent) => void` - `event` The event source of the callback.                                                                                                 |
-| `icon`         | `keyof IconNameToSizes` \| `ReactElement<CustomSVGProps>`            | -        | The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, `"positive"` shows `"CheckCircle"`, `"negative"` and `"notice"` show `"ExclamationMarkCircle"`, and every other intent shows `"InfoCircle"`. |
-| `sdsIconProps` | `Partial<IconProps>`                                                 | -        | Additional props to be passed to the icon component.                                                                                                                                                                                                         |
+| Name           | Type                                                                 | Default  | Description                                                                                                                                                                                                                                                                                         |
+| -------------- | -------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sdsType`      | `"primary"` \| `"secondary"`                                         | -        | Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.                                                                       |
+| `children`     | `ReactNode`                                                          | -        | Required. The content of the Banner, laid out beside the icon and centered in the space left by the close button.                                                                                                                                                                                   |
+| `intent`       | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | `"info"` | The intent color of the Banner component, which also selects the default icon.                                                                                                                                                                                                                      |
+| `dismissible`  | `boolean`                                                            | `true`   | If `true`, the banner can be dismissed by the user. This is what controls whether the close button is rendered.                                                                                                                                                                                     |
+| `dismissed`    | `boolean`                                                            | -        | If `true`, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state. Passing any value, `false` included, takes that over: the close button then only fires `onClose`, and the Banner closes when you set `dismissed` to `true`. |
+| `onClose`      | `function`                                                           | -        | Callback fired when the user clicks the close button. **Signature:** `function(event: React.MouseEvent) => void` - `event` The event source of the callback.                                                                                                                                        |
+| `icon`         | `keyof IconNameToSizes` \| `ReactElement<CustomSVGProps>`            | -        | The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, `"positive"` shows `"CheckCircle"`, `"negative"` and `"notice"` show `"ExclamationMarkCircle"`, and every other intent shows `"InfoCircle"`.                                        |
+| `sdsIconProps` | `Partial<IconProps<keyof IconNameToSizes>>`                          | -        | Additional props to be passed to the icon component.                                                                                                                                                                                                                                                |

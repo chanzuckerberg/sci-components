@@ -61,7 +61,7 @@
       <p><code>column</code></p>
     </td>
     <td>
-      <p><code>string</code></p>
+      <p><code>ReactNode</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -77,7 +77,7 @@
       <p><code>children</code></p>
     </td>
     <td>
-      <p><code>node</code></p>
+      <p><code>ReactNode</code></p>
     </td>
     <td><p>-</p></td>
     <td><p>Main content of the MenuItem.</p></td>
@@ -87,7 +87,7 @@
       <p><code>disabled</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -104,7 +104,7 @@
       <p><code>isMultiSelect</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -118,16 +118,36 @@
   </tr>
   <tr>
     <td>
-      <p><code>sdsIcon</code></p>
+      <p><code>icon</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>IconName</code> |</p>
+      <p><code>ReactElement</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Allows you to provide a custom SDS icon component to be displayed within
-        the menu item.
+        The icon shown at the start of the item, either the name of an SDS icon
+        or an element of your own. Only icons that come in a small size can be
+        named here.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsIcon</code></p>
+    </td>
+    <td>
+      <p><code>IconName</code> |</p>
+      <p><code>ReactElement</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <strong>Deprecated.</strong>
+        Use <code>icon</code> instead. It is the former name of that prop, kept
+        until the next major version, and <code>icon</code> wins where both are
+        given.
       </p>
     </td>
   </tr>
@@ -136,7 +156,7 @@
       <p><code>sdsIconProps</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -166,10 +186,28 @@
   </tr>
   <tr>
     <td>
+      <p><code>sdsType</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"action"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>
+        An <code>"action"</code> item leaves out the selection mark at its
+        start, for a menu whose items run a command rather than choose a value.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>selected</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>

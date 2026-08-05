@@ -1,8 +1,13 @@
 {
   "Banner": {
     "props": {
+      "children": {
+        "description": "Required. The content of the Banner, laid out beside the icon and centered in the space left by the close button.",
+        "isRequired": true,
+        "type": "ReactNode"
+      },
       "dismissed": {
-        "description": "If true, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state; pass a value to control it yourself.",
+        "description": "If true, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state. Passing any value, false included, takes that over: the close button then only fires onClose, and the Banner closes when you set dismissed to true.",
         "isRequired": false,
         "type": "boolean"
       },
@@ -13,7 +18,7 @@
         "type": "boolean"
       },
       "icon": {
-        "description": "The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, positive shows CheckCircle, negative and notice show ExclamationMarkCircle, and every other intent shows InfoCircle.",
+        "description": "The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, \"positive\" shows \"CheckCircle\", \"negative\" and \"notice\" show \"ExclamationMarkCircle\", and every other intent shows \"InfoCircle\".",
         "isRequired": false,
         "type": "ReactElement"
       },
@@ -22,6 +27,11 @@
         "description": "The intent color of the Banner component, which also selects the default icon.",
         "isRequired": false,
         "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\""
+      },
+      "onClose": {
+        "description": "Callback fired when the user clicks the close button. Signature: function(event: React.MouseEvent) => void event The event source of the callback.",
+        "isRequired": false,
+        "type": "function"
       },
       "sdsIconProps": {
         "description": "Additional props to be passed to the icon component.",
@@ -32,10 +42,6 @@
         "description": "Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.",
         "isRequired": true,
         "type": "\"primary\" | \"secondary\""
-      },
-      "textChild": {
-        "isRequired": true,
-        "type": "any"
       }
     }
   }

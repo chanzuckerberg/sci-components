@@ -24,6 +24,7 @@
     "generate:component-props": "tsx scripts/generate-component-props.ts",
     "generate:component-docs": "tsx scripts/generate-component-docs.ts",
     "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props && yarn generate:component-docs && npx prettier --write 'data/**/*.{md,json}'",
+    "audit:docs": "tsx scripts/audit-docs.ts",
     "prebuild": "yarn generate:all",
     "build": "yarn prebuild && rolldown -c && chmod 755 dist/stdio.js",
     "dev": "rolldown -c --watch",

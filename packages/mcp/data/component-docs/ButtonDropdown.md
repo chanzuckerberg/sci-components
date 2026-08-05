@@ -88,7 +88,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `size`      | `"small"` \| `"medium"` \| `"large"`    | `"large"`   | Size of the button. Also sets the size of the trailing chevron.                                                               |
 | `startIcon` | `ReactNode`                             | -           | An optional icon placed before the label. Pass the SDS Icon component, for example `<Icon sdsIcon="Download" sdsSize="s" />`. |
 | `children`  | `ReactNode`                             | -           | The button label. The trailing chevron is only rendered when a label is present.                                              |
-| `disabled`  | `bool`                                  | `false`     | Disables the button when set to `true`.                                                                                       |
+| `disabled`  | `boolean`                               | `false`     | Disables the button when set to `true`.                                                                                       |
 | `onClick`   | `(event: React.MouseEvent) => void`     | -           | Callback fired when the button is clicked. Typically used to open the associated menu.                                        |
 
 Every other Button prop, such as `backgroundOnHover` and `backgroundAppearance`, is supported and behaves identically here.

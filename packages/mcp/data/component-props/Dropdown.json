@@ -2,6 +2,7 @@
   "Dropdown": {
     "props": {
       "DropdownMenuProps": {
+        "description": "These props are directly passed to the underlying DropdownMenu component, customizing its behavior. It is also the way to reach the menu's PopperComponent, PaperComponent and placement.",
         "isRequired": false,
         "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>"
       },
@@ -35,6 +36,8 @@
         "type": "boolean"
       },
       "isSearchAutoFocus": {
+        "defaultValue": true,
+        "description": "Puts the cursor in the search input as the menu opens. It only applies alongside search.",
         "isRequired": false,
         "type": "boolean"
       },
@@ -71,8 +74,31 @@
         "type": "boolean"
       },
       "title": {
+        "description": "A heading shown at the top of the menu.",
         "isRequired": false,
         "type": "string"
+      },
+      "isTriggerChangeOnOptionClick": {
+        "defaultValue": false,
+        "description": "When set to true, changes in Dropdown selections are applied in real-time to the react state.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "value": {
+        "description": "The value of the autocomplete.\n\nThe value must have reference equality with the option in order to be selected.\nYou can customize the equality behavior with the `isOptionEqualToValue` prop.",
+        "isRequired": false,
+        "type": "string | Array<string>"
+      },
+      "onInputChange": {
+        "description": "Callback fired when the input value changes.\n@param event The event source of the callback.\n@param value The new value of the text input.\n@param reason Can be: `\"input\"` (user input), `\"reset\"` (programmatic change), `\"clear\"`, `\"blur\"`, `\"selectOption\"`, `\"removeOption\"`",
+        "isRequired": false,
+        "type": "((event: SyntheticEvent"
+      },
+      "InputDropdownComponent": {
+        "defaultValue": "InputDropdown",
+        "description": "The component used to render the Dropdown trigger button.",
+        "isRequired": false,
+        "type": "element"
       }
     }
   }

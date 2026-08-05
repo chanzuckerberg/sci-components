@@ -13,8 +13,9 @@
         "type": "boolean"
       },
       "icon": {
+        "description": "The icon shown at the start of the item, either the name of an SDS icon or an element of your own. Only icons that come in a small size can be named here.",
         "isRequired": false,
-        "type": "any"
+        "type": "IconName | ReactElement"
       },
       "isMultiSelect": {
         "defaultValue": false,
@@ -34,6 +35,8 @@
         "type": "\"indeterminate\" | \"determinate\""
       },
       "sdsType": {
+        "defaultValue": "default",
+        "description": "An \"action\" item leaves out the selection mark at its start, for a menu whose items run a command rather than choose a value.",
         "isRequired": false,
         "type": "\"action\" | \"default\""
       },
@@ -42,6 +45,16 @@
         "description": "If `true`, the component is selected.",
         "isRequired": false,
         "type": "boolean"
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "sdsIcon": {
+        "description": "@deprecated Use `icon` instead.\n(masoudmanson): This prop is deprecated and will be removed in the next major version.\nPlease replace instances of `sdsIcon` with `icon`.",
+        "isRequired": false,
+        "type": "IconName | ReactElement"
       }
     }
   }

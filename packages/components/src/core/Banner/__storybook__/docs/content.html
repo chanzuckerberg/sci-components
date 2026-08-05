@@ -25,6 +25,17 @@
   This example showcases a Banner component that cannot be closed or dismissed.
 </p>
 <div class="sds-doc-example" data-example="core/Banner/PersistentBanner"></div>
+<h3>Controlling when the Banner closes</h3>
+<p>
+  Left alone, the Banner keeps track of being dismissed and closes itself. The
+  moment you pass <code>dismissed</code>, that becomes your job: the close
+  button fires <code>onClose</code> and nothing else, so a Banner rendered with
+  <code>dismissed={false}</code> will not close until you say so.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Banner/ControllingDismissal"
+></div>
 <h3>Secondary Banner</h3>
 <p>
   This example pairs a primary Banner with the secondary variant that follows
@@ -88,6 +99,21 @@
   </tr>
   <tr>
     <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. The content of the Banner, laid out beside the icon and
+        centered in the space left by the close button.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>intent</code></p>
     </td>
     <td>
@@ -112,7 +138,7 @@
       <p><code>dismissible</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -129,7 +155,7 @@
       <p><code>dismissed</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -139,7 +165,9 @@
       </p>
       <p>
         Leave this unset to let the Banner keep track of its own dismissed
-        state; pass a value to control it yourself.
+        state. Passing any value, <code>false</code> included, takes that over:
+        the close button then only fires <code>onClose</code>, and the Banner
+        closes when you set <code>dismissed</code> to <code>true</code>.
       </p>
     </td>
   </tr>
@@ -148,7 +176,7 @@
       <p><code>onClose</code></p>
     </td>
     <td>
-      <p><code>fn</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -191,7 +219,7 @@
       <p><code>sdsIconProps</code></p>
     </td>
     <td>
-      <p><code>Partial&lt;IconProps&gt;</code></p>
+      <p><code>Partial&lt;IconProps&lt;keyof IconNameToSizes&gt;&gt;</code></p>
     </td>
     <td><p>-</p></td>
     <td><p>Additional props to be passed to the icon component.</p></td>

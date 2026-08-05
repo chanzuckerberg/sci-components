@@ -31,7 +31,7 @@
         "type": "boolean"
       },
       "onChange": {
-        "description": "Fired on every selection change with the whole value. details.option is the one that just changed.",
+        "description": "Fired on every selection change with the whole value. details.option is the one that just changed. Signature: function(event: SyntheticEvent, value: T | T[], reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<T>) => void",
         "isRequired": false,
         "type": "AutocompleteSingleColumnOnChange<T, Multiple, DisableClearable, FreeSolo> | AutocompleteMultiColumnOnChange<T, Multiple, DisableClearable, FreeSolo>"
       },
@@ -40,6 +40,129 @@
         "description": "The options, or an array of named columns each with their own options.",
         "isRequired": true,
         "type": "T[] | AutocompleteMultiColumnOption<T, Multiple, DisableClearable, FreeSolo>[]"
+      },
+      "value": {
+        "description": "The selection. An array when multiple, and a record keyed by column name when there is more than one column.",
+        "isRequired": false,
+        "type": "string | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent> | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic> | Record<string | number | symbol, AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>> | (T | AutocompleteFreeSoloValueMapping<FreeSolo>)[] | AutocompleteOptionBasic & { component?: undefined; } | AutocompleteOptionComponent & { details?: undefined; icon?: undefined; count?: undefined; sdsIconProps?: undefined; }"
+      },
+      "onInputChange": {
+        "description": "Callback fired when the input value changes.\n@param event The event source of the callback.\n@param value The new value of the text input.\n@param reason Can be: `\"input\"` (user input), `\"reset\"` (programmatic change), `\"clear\"`, `\"blur\"`, `\"selectOption\"`, `\"removeOption\"`",
+        "isRequired": false,
+        "type": "((event: SyntheticEvent"
+      },
+      "search": {
+        "defaultValue": false,
+        "description": "Shows the search field. Without it the input is hidden and disabled, and the list must be opened through open.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "open": {
+        "description": "If `true`, the component is shown.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "onClick": {
+        "description": "Fired when the component would like to open.",
+        "isRequired": false,
+        "type": "function"
+      },
+      "onClickAway": {
+        "description": "Fired when the component would like to close, including on Escape and on a click outside.",
+        "isRequired": false,
+        "type": "function"
+      },
+      "InputBaseProps": {
+        "description": "Props for the search field. This is the way in: SDS supplies renderInput itself.",
+        "isRequired": false,
+        "type": "InputSearchProps"
+      },
+      "renderInput": {
+        "defaultValue": "an SDS InputSearch",
+        "description": "(params: AutocompleteRenderInputParams) => ReactNode. Replaces the whole input, losing the search and clear buttons SDS puts there, so prefer InputBaseProps. On a multi-column Autocomplete it reaches the hidden per-column inputs rather than the trigger.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "PopperBaseProps": {
+        "description": "Props for the popper holding the columns. Multi-column only; a single column uses MUI's own popper.",
+        "isRequired": false,
+        "type": "Partial<PopperProps>"
+      },
+      "PopperComponent": {
+        "defaultValue": "SDS styled Popper",
+        "description": "Replaces that popper outright. Multi-column only.",
+        "isRequired": false,
+        "type": "component"
+      },
+      "PopperPlacement": {
+        "defaultValue": "bottom-start",
+        "description": "Where the columns are placed. Multi-column only.",
+        "isRequired": false,
+        "type": "\"bottom-start\" | \"bottom-end\" | \"top-start\" | \"top-end\""
+      },
+      "ClickAwayListenerProps": {
+        "description": "Props for the MUI ClickAwayListener that closes the columns. Multi-column only.",
+        "isRequired": false,
+        "type": "Partial<ClickAwayListenerProps>"
+      },
+      "disableCloseOnSelect": {
+        "defaultValue": false,
+        "description": "If `true`, the popup won't close when a value is selected.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "blurOnSelect": {
+        "defaultValue": false,
+        "description": "Control if the input should be blurred when an option is selected:\n\n- `false` the input is not blurred.\n- `true` the input is always blurred.\n- `touch` the input is blurred after a touch event.\n- `mouse` the input is blurred after a mouse event.",
+        "isRequired": false,
+        "type": "false | true | \"mouse\" | \"touch\""
+      },
+      "clearOnBlur": {
+        "defaultValue": "!props.freeSolo",
+        "description": "If `true`, the input's text is cleared on blur if no value is selected.\n\nSet it to `true` if you want to help the user enter a new value.\nSet it to `false` if you want to help the user resume their search.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "getOptionLabel": {
+        "defaultValue": "(option) => option.label ?? option",
+        "description": "Used to determine the string value for a given option.\nIt's used to fill the input (and the list box options if `renderOption` is not provided).\n\nIf used in free solo mode, it must accept both the type of the options and a string.\n@param option\n@returns",
+        "isRequired": false,
+        "type": "(option: AutocompleteValueOrFreeSoloValueMapping<T, FreeSolo>) => string"
+      },
+      "isOptionEqualToValue": {
+        "defaultValue": "compares names",
+        "description": "Used to determine if the option represents the given value.\nUses strict equality by default.\n⚠️ Both arguments need to be handled, an option can only match with one value.\n@param option The option to test.\n@param value The value to test against.\n@returns",
+        "isRequired": false,
+        "type": "(option: T, value: AutocompleteValueOrFreeSoloValueMapping<T, FreeSolo>) => boolean"
+      },
+      "getOptionDisabled": {
+        "description": "Used to determine the disabled state for a given option.\n@param option The option to test.\n@template Value The option shape. Will be the same shape as an item of the options.\n@returns",
+        "isRequired": false,
+        "type": "(option: T) => boolean"
+      },
+      "renderOption": {
+        "defaultValue": "SDS MenuItem",
+        "description": "Render the option, use `getOptionLabel` by default.\n@param props The props to apply on the li element.\n@param option The option to render.\n@param state The state of each option.\n@param ownerState The state of the Autocomplete component.\n@returns",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "noOptionsText": {
+        "defaultValue": "No options",
+        "description": "Text to display when there are no options.\n\nFor localization purposes, you can use the provided [translations](https://mui.com/material-ui/guides/localization/).",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "loading": {
+        "defaultValue": false,
+        "description": "If `true`, the component is in a loading state.\nThis shows the `loadingText` in place of suggestions (only if there are no suggestions to show, for example `options` are empty).",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
       }
     }
   }

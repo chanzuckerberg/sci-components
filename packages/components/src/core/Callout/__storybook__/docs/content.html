@@ -260,10 +260,26 @@ icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
   </tr>
   <tr>
     <td>
+      <p><code>extraContent</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The same slot as <code>children</code>, for callers that would rather
+        pass it as a prop. Both render when both are given,
+        <code>children</code> first.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>hideTitle</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -277,7 +293,7 @@ icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
       <p><code>hideBody</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -346,7 +362,7 @@ icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
       <p><code>dismissed</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -362,7 +378,7 @@ icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
       <p><code>autoDismiss</code></p>
     </td>
     <td>
-      <p><code>bool | number</code></p>
+      <p><code>boolean | number</code></p>
     </td>
     <td><p>-</p></td>
     <td>

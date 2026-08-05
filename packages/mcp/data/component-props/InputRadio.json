@@ -24,15 +24,26 @@
         "type": "ReactNode"
       },
       "stage": {
-        "description": "Sets the radio as checked or unchecked, overriding checked. Omit it inside a RadioGroup, which drives the selection itself.",
+        "description": "Sets the radio as \"checked\" or \"unchecked\", overriding checked. Omit it inside a RadioGroup, which drives the selection itself.",
         "isRequired": false,
         "type": "\"checked\" | \"unchecked\""
       },
       "classes": {
         "defaultValue": {},
-        "description": "Override or extend the styles applied to the component.",
+        "description": "Class names for the internal elements: root, labelCaptionContainer, label,\ncaption, radioButton, radioCheckedIcon, radioCheckedIconDot, and\nradioDefaultIcon.",
         "isRequired": false,
         "type": "complex"
+      },
+      "value": {
+        "description": "The value a RadioGroup compares against to decide whether this radio is\nselected. It also backs the label and caption element ids, so give every\nradio a unique one.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "radioProps": {
+        "defaultValue": {},
+        "description": "Directly pass these props to the underlying MUI radio.",
+        "isRequired": false,
+        "type": "Partial<RadioProps>"
       }
     }
   }

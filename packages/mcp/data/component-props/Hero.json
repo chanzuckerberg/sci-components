@@ -37,7 +37,7 @@
       },
       "hasInvertTextColor": {
         "defaultValue": false,
-        "description": "Switches the headline and caption to the inverse text color for use on dark backgrounds.",
+        "description": "Sets the headline and caption in the light text color, for a hero over a dark backdrop: imagery, or a darkening mask over it. The color is the same in both themes, because the backdrop it is read against is.",
         "isRequired": false,
         "type": "boolean"
       },
@@ -107,6 +107,16 @@
         "description": "Aligns the text within the content block, which starts at the leading edge when the prop is unset. This is separate from overlayContentPosition, which moves the block itself.",
         "isRequired": false,
         "type": "\"center\" | \"left\" | \"right\""
+      },
+      "children": {
+        "description": "Rendered in a full-width slot below the caption. Use it for buttons, links, or a search field.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "className": {
+        "description": "Declared so it type-checks, but nothing in the component reads it: it travels with the rest of the props onto the section element.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

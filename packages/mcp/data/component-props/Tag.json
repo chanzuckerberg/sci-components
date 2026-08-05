@@ -20,7 +20,7 @@
       },
       "label": {
         "defaultValue": "- (required)",
-        "description": "The content of the component.",
+        "description": "The tag's text, and its accessible name. It is cut off with an ellipsis\nrather than wrapped, so keep it to a word or two.",
         "isRequired": true,
         "type": "string"
       },
@@ -46,6 +46,11 @@
         "description": "primary fills the tag with the intent color and sets the label white. secondary tints the fill and keeps the label and a 1px border in the intent color.",
         "isRequired": false,
         "type": "\"primary\" | \"secondary\""
+      },
+      "onDelete": {
+        "description": "Callback fired when the delete icon is clicked.\nIf set, the delete icon will be shown.",
+        "isRequired": false,
+        "type": "(event: any) => void"
       }
     }
   }

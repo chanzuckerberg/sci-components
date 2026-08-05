@@ -45,6 +45,20 @@
     value leaves it at 90px rather than shrinking it.
   </p>
 </div>
+<h3>Anchoring a menu</h3>
+<p>
+  A DropdownMenu is a popper: it is positioned against an element rather than
+  rendered inside one, so it needs the input's DOM node as its
+  <code>anchorEl</code>. InputDropdown forwards its <code>ref</code> to the
+  button it renders, and a callback ref keeps that node in state so the menu
+  re-renders once the anchor exists. Reach for this when the Dropdown component
+  below is more than you need, or when the menu has to be driven from state you
+  already own.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputDropdown/AnchoringAMenu"
+></div>
 <h3>Square with multi-select</h3>
 <p>
   Below is an example demonstrating the combined utilization of the
@@ -125,6 +139,14 @@
       integral part of the component and cannot be replaced.
     </p>
   </li>
+  <li>
+    <p>
+      <strong>Ref</strong>: Like MUI's Button, InputDropdown forwards a
+      <code>ref</code> to the button it renders. That is how it becomes the
+      <code>anchorEl</code> a DropdownMenu is positioned against, as in
+      "Anchoring a menu" above.
+    </p>
+  </li>
 </ul>
 <h2>MUI Documentation</h2>
 <p>
@@ -143,6 +165,40 @@
     <td><p>Type</p></td>
     <td><p>Default</p></td>
     <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>classes</code></p>
+    </td>
+    <td>
+      <p><code>object</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A class name for each part of the input, for styling one of them without
+        reaching through the DOM:
+        <code>root</code>, <code>label</code>, <code>labelDetailsWrapper</code>,
+        <code>contentWrapper</code>, <code>details</code>, <code>counter</code>,
+        <code>iconWrapper</code>, <code>chevronIcon</code> and
+        <code>minimalDetails</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>className</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Added to the input's root element, alongside anything
+        <code>classes.root</code> puts there.
+      </p>
+    </td>
   </tr>
   <tr>
     <td>
@@ -174,7 +230,7 @@
       <p><code>disabled</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -211,7 +267,7 @@
       <p><code>multiple</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -228,7 +284,7 @@
       <p><code>onClick</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
     <td>
       <p>
@@ -282,7 +338,7 @@
       <p><code>shouldPutAColonAfterLabel</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -299,7 +355,7 @@
       <p><code>shouldTruncateMinimalDetails</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -311,6 +367,51 @@
         <code>false</code> the details section expands to multiple lines for a
         comprehensive display.
       </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>startIcon</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An element placed before the label, passed straight through to the
+        underlying MUI Button.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>state</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"open"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>
+        Draws the input in its open state. The input has no idea whether its
+        menu is showing, so set this from whatever holds that state.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>style</code></p>
+    </td>
+    <td>
+      <p><code>CSSProperties</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Inline styles for the input's root element.</p>
     </td>
   </tr>
   <tr>

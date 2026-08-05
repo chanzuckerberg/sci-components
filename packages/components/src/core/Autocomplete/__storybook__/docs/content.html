@@ -127,8 +127,9 @@
     <p>
       <strong>The input is an SDS InputSearch</strong>
       with a search button and a clear button, built by the component. Reach it
-      through <code>InputBaseProps</code> rather than <code>renderInput</code>,
-      which SDS already uses.
+      through <code>InputBaseProps</code>. MUI's <code>renderInput</code> still
+      works and replaces that input outright, which also takes the two buttons
+      with it, so it is a last resort rather than the way in.
     </p>
   </li>
   <li>
@@ -367,7 +368,7 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
     </td>
     <td>
       <p><code>T[]</code> |</p>
-      <p><code>column[]</code></p>
+      <p><code>AutocompleteMultiColumnOption&lt;T&gt;[]</code></p>
     </td>
     <td><p>- (required)</p></td>
     <td>
@@ -397,13 +398,43 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
       <p><code>onChange</code></p>
     </td>
     <td>
-      <p><code>(event, value, reason, details) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
         Fired on every selection change with the whole value.
         <code>details.option</code> is the one that just changed.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, value: T | T[], reason:
+          AutocompleteChangeReason, details?:
+          AutocompleteChangeDetails&lt;T&gt;) =&gt; void
+        </code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onInputChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Fired as the search text changes, after the component has updated its
+        own input state.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, value: string, reason:
+          AutocompleteInputChangeReason) =&gt; void
+        </code>
       </p>
     </td>
   </tr>
@@ -556,6 +587,24 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
       <p>
         Props for the search field. This is the way in: SDS supplies
         <code>renderInput</code> itself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>renderInput</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>an SDS InputSearch</p></td>
+    <td>
+      <p>
+        <code>(params: AutocompleteRenderInputParams) =&gt; ReactNode</code>.
+        Replaces the whole input, losing the search and clear buttons SDS puts
+        there, so prefer <code>InputBaseProps</code>. On a multi-column
+        Autocomplete it reaches the hidden per-column inputs rather than the
+        trigger.
       </p>
     </td>
   </tr>
@@ -725,7 +774,7 @@ const handleChange: AutocompleteSingleColumnOnChange&lt;
       <p><code>noOptionsText</code></p>
     </td>
     <td>
-      <p><code>node</code></p>
+      <p><code>ReactNode</code></p>
     </td>
     <td>
       <p><code>"No options"</code></p>

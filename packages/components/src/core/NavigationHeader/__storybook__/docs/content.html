@@ -391,12 +391,15 @@
       <p><code>onDrawerStyleNavItemHover</code></p>
     </td>
     <td>
-      <p><code>(item: NavItem) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Called with the hovered primary or secondary item while
+        <code
+          >(item: NavigationHeaderPrimaryNavItem&lt;T&gt; |
+          NavigationHeaderSecondaryNavItem) =&gt; void</code
+        >. Called with the hovered primary or secondary item while
         <code>sdsStyle</code> is <code>"drawer"</code>. Useful for prefetching
         what the panel will show.
       </p>
@@ -803,20 +806,53 @@
   </tr>
   <tr>
     <td>
-      <p>
-        <code>href</code>, <code>component</code>, <code>target</code>,
-        <code>rel</code>
-      </p>
+      <p><code>href</code></p>
     </td>
     <td>
-      <p><code>string</code>, <code>ElementType</code>,</p>
-      <p><code>string</code>, <code>string</code></p>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Turns the row into a link to this URL.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component</code></p>
+    </td>
+    <td>
+      <p><code>ElementType</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Turn the row into a link. Pass <code>component</code> to route through
-        something other than an anchor.
+        What the link renders as, for routing through something other than an
+        anchor.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>target</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Where the link opens, for example <code>"_blank"</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>rel</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The link's relationship to the target, for example
+        <code>"noreferrer"</code>.
       </p>
     </td>
   </tr>

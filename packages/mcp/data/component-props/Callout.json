@@ -43,6 +43,37 @@
         "description": "The Callout title.",
         "isRequired": false,
         "type": "string"
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "extraContent": {
+        "description": "The same slot as `children`, for callers that would rather pass it as a\nprop. Both render when both are given, `children` first.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "sdsIconProps": {
+        "description": "Props forwarded to the Icon component when icon is given as a name.",
+        "isRequired": false,
+        "type": "IconProps<string | number | symbol>"
+      },
+      "sdsStage": {
+        "defaultValue": "open",
+        "description": "The stage an expandable Callout starts in. It is only the initial value; the chevron takes over from there.",
+        "isRequired": false,
+        "type": "\"open\" | \"closed\""
+      },
+      "dismissed": {
+        "description": "Hides the Callout when set to true. Changing it back to false brings the Callout back, which is how a dismissed Callout is restored.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "onClose": {
+        "description": "Callback fired when the component requests to be closed.\nWhen provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.\n@param event The event source of the callback.",
+        "isRequired": false,
+        "type": "(event: SyntheticEvent<Element, Event>) => void"
       }
     }
   }

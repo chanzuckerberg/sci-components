@@ -248,13 +248,14 @@
       <p><code>onSelectionChange</code></p>
     </td>
     <td>
-      <p><code>(indices: number[]) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Called with the next selection when an item is clicked, with that index
-        toggled. Without it, clicking selects nothing.
+        <code>(selectedIndices: number[]) =&gt; void</code>. Called with the
+        next selection when an item is clicked, with that index toggled. Without
+        it, clicking selects nothing.
       </p>
     </td>
   </tr>
@@ -279,29 +280,45 @@
       <p><code>onItemClick</code></p>
     </td>
     <td>
-      <p><code>(item, index) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Fires on a click, alongside any selection change rather than instead of
-        it.
+        <code>(item: LegendItemData, index: number) =&gt; void</code>. Fires on
+        a click, alongside any selection change rather than instead of it.
       </p>
     </td>
   </tr>
   <tr>
     <td>
       <p><code>onItemMouseEnter</code></p>
-      <p><code>onItemMouseLeave</code></p>
     </td>
     <td>
-      <p><code>(item, index) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Hover on an item. The legend already dims its own swatches; these are
-        for driving something outside it, such as a highlight on the chart.
+        <code>(item: LegendItemData, index: number) =&gt; void</code>. Called
+        when the pointer enters an item. The legend already dims its own
+        swatches, so this is for driving something outside it, such as a
+        highlight on the chart.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onItemMouseLeave</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: LegendItemData, index: number) =&gt; void</code>. Called
+        when the pointer leaves an item.
       </p>
     </td>
   </tr>

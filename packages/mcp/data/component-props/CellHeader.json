@@ -7,9 +7,15 @@
         "isRequired": false,
         "type": "boolean"
       },
+      "as": {
+        "defaultValue": "th",
+        "description": "The element the header cell renders as.",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
+      },
       "direction": {
         "defaultValue": "desc",
-        "description": "Which chevron to draw: up for \"asc\", down for \"desc\". It also sets the icon's aria-label.",
+        "description": "Which chevron to draw: up for \"asc\", down for \"desc\". It also sets the icon's aria-label. Exported as CellHeaderDirection.",
         "isRequired": false,
         "type": "\"desc\" | \"asc\""
       },
@@ -37,10 +43,21 @@
         "isRequired": false,
         "type": "boolean"
       },
+      "shouldTruncate": {
+        "defaultValue": false,
+        "description": "Keeps a long label on one line and truncates it with an ellipsis instead of wrapping.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "tooltipProps": {
         "description": "Passed to the Tooltip, and overrides the defaults the header sets (arrow, top-start placement, dark style).",
         "isRequired": false,
         "type": "TooltipProps"
+      },
+      "tooltipSubtitle": {
+        "description": "A second line below the tooltip's title.",
+        "isRequired": false,
+        "type": "string"
       },
       "tooltipText": {
         "defaultValue": "",
@@ -49,8 +66,19 @@
         "type": "string"
       },
       "width": {
+        "description": "Lands on the rendered cell as the HTML width attribute, so a number is read as pixels. Browsers treat it as the width of the whole column, and take it as a minimum rather than a promise.",
         "isRequired": false,
         "type": "string | number"
+      },
+      "children": {
+        "description": "Required. A string or number is wrapped in the header's own text styling; anything else is rendered as given.",
+        "isRequired": false,
+        "type": "React.ReactNode"
+      },
+      "onClick": {
+        "description": "Where sorting is actually wired up: with TanStack Table, pass column.getToggleSortingHandler().",
+        "isRequired": false,
+        "type": "function"
       }
     }
   }

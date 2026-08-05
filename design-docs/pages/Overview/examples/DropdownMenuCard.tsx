@@ -25,6 +25,7 @@ function App() {
     <div className="app">
       <InputDropdown
         label="Click Target"
+        onClick={() => {}}
         ref={setTrigger}
         sdsStyle="minimal"
         sdsType="label"

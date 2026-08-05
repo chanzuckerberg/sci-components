@@ -10,19 +10,19 @@
  */
 import * as fs from "fs";
 import * as path from "path";
-import {
-  withDefaultConfig,
-  ComponentDoc,
-  ParserOptions,
-  PropItem,
-} from "react-docgen-typescript";
+import { ComponentDoc, PropItem } from "react-docgen-typescript";
 import * as ts from "typescript";
 import { fileURLToPath } from "url";
+import { parseDefaultValue, parser, resolveType } from "./lib/docgen.js";
 import {
   PropsTable,
   PropsTableEntry,
   readPropsTable,
 } from "./lib/props-tables.js";
+import {
+  ArgType,
+  extractArgTypesFromStorybook,
+} from "./lib/story-arg-types.js";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -53,48 +53,6 @@ interface ComponentTarget {
   /** Exported subcomponents that have their own directory, by name. */
   subcomponents: Map<string, string>;
 }
-
-/**
- * For a named export, `exp.getName()` is the name the component is published
- * as. For a default export it is instead the anonymous type React wraps the
- * component in, so those fall back to the directory name.
- */
-const ANONYMOUS_EXPORT_NAMES = new Set([
-  "default",
-  "ExoticComponent",
-  "ForwardRefExoticComponent",
-  "FunctionComponent",
-  "MemoExoticComponent",
-  "NamedExoticComponent",
-]);
-
-function resolveComponentName(
-  exp: ts.Symbol,
-  source: ts.SourceFile
-): string | undefined {
-  const name = exp.getName();
-
-  if (!name || name.startsWith("__") || ANONYMOUS_EXPORT_NAMES.has(name)) {
-    return path.basename(path.dirname(source.fileName));
-  }
-
-  return name;
-}
-
-// Configure the parser to extract ALL props without filtering
-const parserOptions: ParserOptions = {
-  savePropValueAsString: true,
-  shouldExtractLiteralValuesFromEnum: true,
-  shouldExtractValuesFromUnion: true,
-  shouldRemoveUndefinedFromOptional: true,
-  // Don't filter any props - we filter later based on argTypes
-  propFilter: () => true,
-  componentNameResolver: resolveComponentName,
-};
-
-// Note: despite the name, `withDefaultConfig` does not read a tsconfig. It uses
-// react-docgen-typescript's own hardcoded compiler options.
-const parser = withDefaultConfig(parserOptions);
 
 /**
  * Extract exported subcomponents from a component file
@@ -134,253 +92,6 @@ function extractExportedSubcomponents(componentPath: string): string[] {
     );
     return [];
   }
-}
-
-/** The `argTypes` entry for one prop, as authored in a story. */
-interface ArgType {
-  name: string;
-  options?: string[];
-  required?: boolean;
-}
-
-function propertyValue(
-  object: ts.ObjectLiteralExpression,
-  name: string
-): ts.Expression | undefined {
-  for (const property of object.properties) {
-    if (
-      ts.isPropertyAssignment(property) &&
-      (ts.isIdentifier(property.name) || ts.isStringLiteral(property.name)) &&
-      property.name.text === name
-    ) {
-      return property.initializer;
-    }
-  }
-
-  return undefined;
-}
-
-function readStringArray(expression?: ts.Expression): string[] | undefined {
-  if (!expression || !ts.isArrayLiteralExpression(expression)) {
-    return undefined;
-  }
-
-  const values = expression.elements
-    .filter(ts.isStringLiteralLike)
-    .map((element) => element.text);
-
-  return values.length === expression.elements.length && values.length > 0
-    ? values
-    : undefined;
-}
-
-function readArgType(property: ts.ObjectLiteralElementLike): ArgType | null {
-  if (
-    !ts.isPropertyAssignment(property) ||
-    !(ts.isIdentifier(property.name) || ts.isStringLiteral(property.name))
-  ) {
-    return null;
-  }
-
-  const name = property.name.text;
-
-  if (!ts.isObjectLiteralExpression(property.initializer)) {
-    return { name };
-  }
-
-  return {
-    name,
-    options: readStringArray(propertyValue(property.initializer, "options")),
-    required:
-      propertyValue(property.initializer, "required")?.kind ===
-      ts.SyntaxKind.TrueKeyword,
-  };
-}
-
-/** Locate the `argTypes` object on a story file's default-exported meta. */
-function findArgTypesObject(
-  sourceFile: ts.SourceFile
-): ts.ObjectLiteralExpression | undefined {
-  let found: ts.ObjectLiteralExpression | undefined;
-
-  const visit = (node: ts.Node): void => {
-    if (found) {
-      return;
-    }
-
-    if (ts.isExportAssignment(node)) {
-      // Unwrap an `as Meta` assertion.
-      const meta = ts.isAsExpression(node.expression)
-        ? node.expression.expression
-        : node.expression;
-
-      if (ts.isObjectLiteralExpression(meta)) {
-        const argTypes = propertyValue(meta, "argTypes");
-
-        if (argTypes && ts.isObjectLiteralExpression(argTypes)) {
-          found = argTypes;
-          return;
-        }
-      }
-    }
-
-    ts.forEachChild(node, visit);
-  };
-
-  visit(sourceFile);
-
-  return found;
-}
-
-/**
- * The story's `argTypes` decide which props get documented: they are the
- * curated public surface, as opposed to everything a component inherits from
- * MUI.
- */
-function extractArgTypesFromStorybook(storybookPath: string): ArgType[] | null {
-  try {
-    if (!fs.existsSync(storybookPath)) {
-      return null;
-    }
-
-    const sourceFile = ts.createSourceFile(
-      storybookPath,
-      fs.readFileSync(storybookPath, "utf-8"),
-      ts.ScriptTarget.Latest,
-      true
-    );
-
-    const argTypesObject = findArgTypesObject(sourceFile);
-
-    if (!argTypesObject) {
-      return null;
-    }
-
-    const argTypes = argTypesObject.properties
-      .map(readArgType)
-      .filter((argType): argType is ArgType => argType !== null);
-
-    return argTypes.length > 0 ? argTypes : null;
-  } catch (error) {
-    console.log(
-      `    ⚠️  Could not extract argTypes: ${error instanceof Error ? error.message : "Unknown error"}`
-    );
-    return null;
-  }
-}
-
-/**
- * React's node and event types expand into unions too large to be worth
- * printing, so they collapse back to the names people write.
- */
-function collapseReactTypes(type: string): string | undefined {
-  if (type.includes("ReactNode")) {
-    return "ReactNode";
-  }
-  if (type.includes("ReactElement")) {
-    return "ReactElement";
-  }
-  if (type.includes("MouseEvent") || type.includes("ChangeEvent")) {
-    return "function";
-  }
-
-  return undefined;
-}
-
-function simplifyType(type: string): string {
-  // Clean up the type string
-  type = type.replace(/\s+/g, " ").trim();
-
-  const react = collapseReactTypes(type);
-  if (react) {
-    return react;
-  }
-
-  // Extract union types
-  const unionMatch = type.match(/"([^"]+)"/g);
-  if (unionMatch && unionMatch.length > 1 && unionMatch.length < 10) {
-    return unionMatch.join(" | ");
-  }
-
-  // Simplify complex generic types
-  if (type.includes("<") && type.length > 100) {
-    const baseType = type.substring(0, type.indexOf("<"));
-    return baseType || "complex";
-  }
-
-  // Truncate very long types
-  if (type.length > 150) {
-    return "complex";
-  }
-
-  return type;
-}
-
-function parseDefaultValue(value: string): string | number | boolean | null {
-  // Try to parse as JSON first
-  try {
-    return JSON.parse(value);
-  } catch {
-    // If not JSON, use as string but clean it up
-    const cleanValue = value.replace(/['"]/g, "");
-    if (cleanValue === "true") return true;
-    if (cleanValue === "false") return false;
-    if (!isNaN(Number(cleanValue))) return Number(cleanValue);
-    return cleanValue;
-  }
-}
-
-/**
- * Rebuild a union from the members docgen resolved.
- *
- * Members arrive already quoted when they are string literals, so they are
- * joined as they are: re-quoting everything would render `width` as though it
- * accepted the strings "string" and "number".
- */
-function enumUnion(typeValue: PropItem["type"]): string | null {
-  if (typeValue.name !== "enum" || !typeValue.value) {
-    return null;
-  }
-
-  const members: string[] = (
-    typeValue.value as ({ value?: unknown } | string | number)[]
-  )
-    .map((v) =>
-      typeof v === "object" && v !== null && v.value !== undefined
-        ? String(v.value)
-        : String(v)
-    )
-    .filter((v) => v !== "" && v !== "|");
-
-  if (members.length === 0) {
-    return null;
-  }
-
-  // `shouldExtractLiteralValuesFromEnum` splits a boolean into its two
-  // literals, which reads as if the prop took the strings "true" and "false".
-  if (
-    members.length === 2 &&
-    members.every((v) => v === "true" || v === "false")
-  ) {
-    return "boolean";
-  }
-
-  return members.join(" | ");
-}
-
-/**
- * A union built from resolved members is already in its final shape, so it
- * skips the heuristics `simplifyType` uses to rescue something readable out of
- * a raw type string.
- */
-function resolveType(propInfo: PropItem): string {
-  const union = enumUnion(propInfo.type);
-
-  if (union === null) {
-    return simplifyType(propInfo.type.raw || propInfo.type.name);
-  }
-
-  return collapseReactTypes(union) ?? union;
 }
 
 /**
@@ -550,14 +261,35 @@ function extractProps(
 
   let unresolved = 0;
 
-  for (const argType of target.argTypes) {
+  // A story only puts controls on what can usefully be fiddled with, and the
+  // props table is the curated list of what the component takes, so the two
+  // together describe the API better than either alone.
+  const byName = new Map(
+    target.argTypes.map((argType) => [argType.name, argType])
+  );
+  for (const name of target.authoredProps.keys()) {
+    byName.set(name, byName.get(name) ?? { name });
+  }
+
+  for (const argType of byName.values()) {
     const match = candidates.find(({ doc }) => doc.props[argType.name]);
+    const authored = target.authoredProps.get(argType.name);
+
+    // Stories invent controls for themselves: text to put in a slot, a canned
+    // set of options, a longer body to scroll. Nothing in the source or the
+    // documentation knows the name, so it is a control rather than a prop, and
+    // publishing it would describe an API the component does not have.
+    //
+    // Only a component whose page documents its props can be read this way.
+    // Without a table there is no second opinion, and dropping every prop the
+    // parser could not resolve would leave the component with none at all.
+    if (!match && !authored && target.authoredProps.size > 0) {
+      console.log(`    ↷ ${target.name}.${argType.name} - story-only control`);
+      continue;
+    }
+
     const owner = match?.owner ?? target.name;
-    const prop = mergeProp(
-      argType,
-      match?.doc.props[argType.name],
-      target.authoredProps.get(argType.name)
-    );
+    const prop = mergeProp(argType, match?.doc.props[argType.name], authored);
 
     if (prop.type === "any") {
       unresolved += 1;
@@ -574,9 +306,9 @@ function extractProps(
     }
   }
 
-  const resolved = target.argTypes.length - unresolved;
+  const resolved = byName.size - unresolved;
   console.log(
-    `  ✅ ${target.name}: ${resolved}/${target.argTypes.length} props resolved` +
+    `  ✅ ${target.name}: ${resolved}/${byName.size} props resolved` +
       (unresolved > 0 ? ` (${unresolved} unresolved)` : "")
   );
 

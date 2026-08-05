@@ -2,11 +2,13 @@
   "ComplexFilter": {
     "props": {
       "DropdownMenuProps": {
+        "description": "Passed straight to the menu, and with it to MUI's Autocomplete underneath.",
         "isRequired": false,
-        "type": "any"
+        "type": "Partial<DropdownMenuProps>"
       },
       "InputDropdownProps": {
         "defaultValue": "{ sdsStyle: minimal }",
+        "description": "Passed straight to the InputDropdown that opens the filter. Note that supplying it replaces the default, so a filter that should stay minimal needs sdsStyle passed again alongside whatever else it sets.",
         "isRequired": false,
         "type": "InputDropdownPropsType"
       },
@@ -14,7 +16,7 @@
         "defaultValue": false,
         "description": "Determines whether changes are triggered in real-time upon clicking an option",
         "isRequired": false,
-        "type": "bool"
+        "type": "boolean"
       },
       "label": {
         "description": "Sets the label of filter, shown both when closed and open",
@@ -25,7 +27,7 @@
         "defaultValue": false,
         "description": "Defines whether multiple selections or can be made from the filter simultaneously or only one",
         "isRequired": false,
-        "type": "bool"
+        "type": "boolean"
       },
       "onChange": {
         "description": "Function to set what happens when a new value is set via the filter",
@@ -33,22 +35,37 @@
         "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void"
       },
       "options": {
+        "description": "The items to filter by. Passing the multi-column shape lays the menu out in named columns instead of one list.",
         "isRequired": false,
-        "type": "any"
+        "type": "AutocompleteSingleColumnOption<T>[] | AutocompleteMultiColumnOption<T>[]"
       },
       "search": {
         "defaultValue": false,
         "description": "Provides a search bar at the top of the filter from which users can narrow the list of menu items",
         "isRequired": false,
-        "type": "bool"
+        "type": "boolean"
       },
       "buttonPosition": {
+        "defaultValue": "right",
+        "description": "Which side of the menu footer the Apply and Cancel buttons sit on. It only applies alongside buttons.",
         "isRequired": false,
-        "type": "any"
+        "type": "\"left\" | \"right\""
       },
       "buttons": {
+        "defaultValue": false,
+        "description": "Puts Apply and Cancel buttons at the foot of the menu, so selections take effect only once Apply is pressed.",
         "isRequired": false,
-        "type": "any"
+        "type": "boolean"
+      },
+      "keepSearchOnSelect": {
+        "description": "Maintains a search input when a user selects an option (only if multiple selections are allowed via the multiple prop; otherwise the dropdown closes upon selection)",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "value": {
+        "description": "The selected option or options. Leaving it out lets the filter keep track of the selection itself, and passing it makes the filter controlled: the tags and menu then only change when a new value comes back in.",
+        "isRequired": false,
+        "type": "T | T[] | null"
       }
     }
   }

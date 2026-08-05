@@ -125,7 +125,7 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name       | Type              | Default      | Description                                                                                                                                                              |
-| ---------- | ----------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `label`    | `string`          | - (required) | The filter's text. Cut off with an ellipsis when there is not room for it.                                                                                               |
-| `onDelete` | `(event) => void` | - (required) | Runs when the X is clicked or activated, and when Backspace or Delete is pressed on the tag. Drop the filter from your state here; the component does not remove itself. |
+| Name       | Type       | Default      | Description                                                                                                                                                                                                                       |
+| ---------- | ---------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`    | `string`   | - (required) | The filter's text. Cut off with an ellipsis when there is not room for it.                                                                                                                                                        |
+| `onDelete` | `function` | - (required) | Runs when the X is clicked or activated, and when Backspace or Delete is pressed on the tag. Drop the filter from your state here; the component does not remove itself. **Signature:** `function(event: SyntheticEvent) => void` |

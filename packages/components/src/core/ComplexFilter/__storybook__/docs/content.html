@@ -89,10 +89,44 @@
   </tr>
   <tr>
     <td>
+      <p><code>buttonPosition</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p>
+        Which side of the menu footer the Apply and Cancel buttons sit on. It
+        only applies alongside <code>buttons</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>buttons</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Puts Apply and Cancel buttons at the foot of the menu, so selections
+        take effect only once Apply is pressed.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>isTriggerChangeOnOptionClick</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -109,7 +143,7 @@
       <p><code>keepSearchOnSelect</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td></td>
     <td>
@@ -125,7 +159,7 @@
       <p><code>label</code></p>
     </td>
     <td>
-      <p><code>string</code></p>
+      <p><code>ReactNode</code></p>
     </td>
     <td>
       <p><code>""</code></p>
@@ -137,7 +171,7 @@
       <p><code>multiple</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -154,7 +188,7 @@
       <p><code>onChange</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -163,10 +197,26 @@
   </tr>
   <tr>
     <td>
+      <p><code>options</code></p>
+    </td>
+    <td>
+      <p><code>AutocompleteSingleColumnOption&lt;T&gt;[]</code> |</p>
+      <p><code>AutocompleteMultiColumnOption&lt;T&gt;[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The items to filter by. Passing the multi-column shape lays the menu out
+        in named columns instead of one list.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>search</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -175,6 +225,57 @@
       <p>
         Provides a search bar at the top of the filter from which users can
         narrow the list of menu items
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>T | T[] | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The selected option or options. Leaving it out lets the filter keep
+        track of the selection itself, and passing it makes the filter
+        controlled: the tags and menu then only change when a new value comes
+        back in.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>DropdownMenuProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;DropdownMenuProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed straight to the menu, and with it to MUI's Autocomplete
+        underneath.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>InputDropdownProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;InputDropdownProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{ sdsStyle: "minimal" }</code></p>
+    </td>
+    <td>
+      <p>
+        Passed straight to the InputDropdown that opens the filter. Note that
+        supplying it replaces the default, so a filter that should stay minimal
+        needs <code>sdsStyle</code> passed again alongside whatever else it
+        sets.
       </p>
     </td>
   </tr>

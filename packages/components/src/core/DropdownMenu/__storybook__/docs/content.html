@@ -32,8 +32,10 @@
   “Components in place of menu items” example below.
 </p>
 <p>
-  The minimum width for the DropdownMenu is 225px, but longer text will
-  automatically widen the DropdownMenu up to the length of the text provided.
+  The menu is 160px wide by default and never narrower, whatever
+  <code>width</code> asks for. Options laid out in columns are the exception:
+  those size themselves to their content and ignore <code>width</code>
+  altogether.
 </p>
 <div class="sds-doc-example" data-example="core/DropdownMenu/Default"></div>
 <h3>Custom click target</h3>
@@ -324,31 +326,76 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>anchorEl</code></p>
     </td>
     <td>
-      <p><code>HTML element</code> |</p>
-      <p><code>object</code> |</p>
-      <p><code>func</code></p>
-    </td>
-    <td>
+      <p><code>HTMLElement</code> |</p>
       <p><code>null</code></p>
     </td>
+    <td><p>-</p></td>
     <td>
       <p>
-        Tells the DropdownMenu which element to use as an anchor; see more in
-        the
-        <a
-          href="https://mui.com/base-ui/react-popper/components-api/#popper-props"
-        >
-          MUI Popper component's API
-        </a>
+        Required. The element the menu is positioned against, usually the
+        control that opens it. Until it is set the menu renders an empty
+        container: the list is only mounted once there is something to anchor it
+        to. See the
+        <a href="https://mui.com/material-ui/api/popper/">MUI Popper API</a>
+        .
       </p>
     </td>
   </tr>
   <tr>
     <td>
-      <p><code>clickAwayListenerProps</code></p>
+      <p><code>open</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Whether the menu is showing. The menu holds no open state of its own, so
+        this and <code>anchorEl</code> are what the opening control sets.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>options</code></p>
+    </td>
+    <td>
+      <p><code>T[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. One object per menu item, each needing at least a
+        <code>name</code>. An option that itself has an <code>options</code>
+        array turns the menu into columns, which changes how it is sized.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>JSX.Element</code> |</p>
+      <p><code>null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Rendered inside the menu below the list, for footers such as an apply
+        button.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ClickAwayListenerProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;ClickAwayListenerProps&gt;</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -359,6 +406,7 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
         >
           MUI ClickAwayListener
         </a>
+        .
       </p>
     </td>
   </tr>
@@ -367,22 +415,52 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>groupBy</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
-    <td><p>Groups menu items according to their assigned section</p></td>
+    <td><p>Groups menu items according to their assigned section.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>headerComponentSlot</code></p>
+    </td>
+    <td>
+      <p><code>JSX.Element</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Rendered in the menu's header, below <code>title</code>. Either one is
+        enough to give the menu a header.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>InputBaseProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;InputSearchProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the InputSearch the <code>search</code> prop renders. The menu
+        sets <code>autoFocus</code> from <code>isSearchAutoFocus</code> and
+        <code>onClick</code> to a no-op after these, so those two are the menu's
+        to decide.
+      </p>
+    </td>
   </tr>
   <tr>
     <td>
       <p><code>isOptionEqualToValue</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
     <td>
-      <p><code>(option, val): boolean {</code></p>
-      <p><code>return option.name === val.name;</code></p>
-      <p><code>}</code></p>
+      <p><code>(option, val) =&gt; option.name === val.name</code></p>
     </td>
     <td>
       <p>
@@ -391,7 +469,24 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
         <a href="https://mui.com/material-ui/api/autocomplete/#props"
           >MUI Autocomplete API</a
         >
-        or in the Recipes section
+        or in the Recipes section.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>isSearchAutoFocus</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Puts the cursor in the search input as the menu opens. It overrides any
+        <code>autoFocus</code> given through <code>InputBaseProps</code>.
       </p>
     </td>
   </tr>
@@ -400,7 +495,7 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>keepSearchOnSelect</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -409,16 +504,28 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p>
         Maintains a search input when a user selects a menu item (only if
         multiple selections are allowed via the <code>multiple</code> prop;
-        otherwise the dropdown closes upon selection)
+        otherwise the dropdown closes upon selection).
       </p>
     </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Search"</code></p>
+    </td>
+    <td><p>The placeholder text of the search input.</p></td>
   </tr>
   <tr>
     <td>
       <p><code>multiple</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -429,6 +536,7 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
         <a href="https://mui.com/material-ui/api/autocomplete/#props"
           >MUI Autocomplete API</a
         >
+        .
       </p>
     </td>
   </tr>
@@ -449,6 +557,7 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
         <a href="https://mui.com/material-ui/api/autocomplete/#props"
           >MUI Autocomplete API</a
         >
+        .
       </p>
     </td>
   </tr>
@@ -457,11 +566,43 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>onClickAway</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
+    </td>
+    <td>
+      <p><code>noop</code></p>
+    </td>
+    <td>
+      <p>
+        Sets what happens when a user clicks outside of the DropdownMenu. This
+        is where a menu is normally closed.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>function(event: MouseEvent | TouchEvent) =&gt; void</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClose</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
-      <p>Sets what happens when a user clicks outside of the DropdownMenu</p>
+      <p>
+        Called when the list asks to close, such as on selecting an option in a
+        single-select menu. Closing is still yours to carry out through
+        <code>open</code>.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, reason: AutocompleteCloseReason) =&gt;
+          void
+        </code>
+      </p>
     </td>
   </tr>
   <tr>
@@ -469,18 +610,56 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>onInputChange</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>function</code></p>
     </td>
-    <td>
-      <p><code>noop</code></p>
-    </td>
+    <td><p>-</p></td>
     <td>
       <p>
-        Specifies what happens when a new selection is made; see more in the
+        Called as the search text changes; see more in the
         <a href="https://mui.com/material-ui/api/autocomplete/#props"
           >MUI Autocomplete API</a
         >
-        or in the Recipes section
+        or in the Recipes section.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, value: string, reason:
+          AutocompleteInputChangeReason) =&gt; void
+        </code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onOpen</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Called when the list asks to open.</p>
+      <p>
+        <strong>Signature:</strong>
+        <code>function(event: SyntheticEvent) =&gt; void</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>PaperComponent</code></p>
+    </td>
+    <td>
+      <p><code>JSXElementConstructor&lt;PaperProps&gt;</code></p>
+    </td>
+    <td>
+      <p>SDS's <code>StyledPaper</code></p>
+    </td>
+    <td>
+      <p>
+        The surface the menu is drawn on. Replace it to restyle the menu's
+        background, border and shadow.
       </p>
     </td>
   </tr>
@@ -488,19 +667,27 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
     <td>
       <p><code>PopperBaseProps</code></p>
     </td>
-    <td></td>
-    <td><p>-</p></td>
+    <td>
+      <p><code>Partial&lt;PopperProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
     <td>
       <p>
-        Passes custom props to the MUIPopper component, which is included as
-        part of the SDSDropdownMenu component. Learn more in the
+        Passes custom props to the MUI Popper the menu is placed with. Learn
+        more in the
         <a href="https://mui.com/material-ui/react-popper/"
           >Popper documentation</a
         >
         , and see all the props available to pass to it on the
         <a href="https://mui.com/material-ui/api/popper/">Popper API page</a>
         . See an example of <code>PopperBaseProps</code> in use in the Recipes
-        section
+        section.
+      </p>
+      <p>
+        Its <code>sx</code> is merged over the menu's own sizing, so this is
+        also how the 160px minimum width is lifted.
       </p>
     </td>
   </tr>
@@ -509,15 +696,10 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>PopperComponent</code></p>
     </td>
     <td>
-      <p><code>func</code></p>
+      <p><code>JSXElementConstructor&lt;PopperProps&gt;</code></p>
     </td>
     <td>
-      <p>
-        SDS's <code>StyledPopper</code>; see
-        <code
-          >sci-components/packages/components/src/core/DropdownMenu/style.ts</code
-        >, ~ line 202
-      </p>
+      <p>SDS's <code>StyledPopper</code></p>
     </td>
     <td>
       <p>
@@ -526,7 +708,47 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
           >MUI Popper component</a
         >
         is included as part of the SDS DropdownMenu component, and its styles
-        can be changed or added to
+        can be changed or added to.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>PopperPlacement</code></p>
+    </td>
+    <td>
+      <p><code>PopperProps["placement"]</code></p>
+    </td>
+    <td>
+      <p><code>"bottom-start"</code></p>
+    </td>
+    <td>
+      <p>
+        Where the menu sits relative to its anchor, as MUI's Popper understands
+        it: one of <code>"auto"</code>, <code>"top"</code>,
+        <code>"bottom"</code>, <code>"left"</code>, <code>"right"</code>, each
+        also available with a <code>-start</code> or <code>-end</code> suffix.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>renderInput</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Replaces the search input entirely. Most menus want
+        <code>InputBaseProps</code> instead, which keeps the SDS input.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(params: AutocompleteRenderInputParams) =&gt; ReactNode
+        </code>
       </p>
     </td>
   </tr>
@@ -535,7 +757,7 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>search</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>false</code></p>
@@ -543,7 +765,22 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
     <td>
       <p>
         Provides a search bar at the top of the menu from which users can narrow
-        the list of menu items
+        the list of menu items.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>subTitle</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A second line below the header's title. It is only rendered when
+        <code>title</code> is set as well.
       </p>
     </td>
   </tr>
@@ -552,10 +789,29 @@ groupBy={(option) =&gt; option.name.at(-1)}</code></pre>
       <p><code>title</code></p>
     </td>
     <td>
-      <p><code>string</code></p>
+      <p><code>ReactNode</code></p>
     </td>
     <td><p>-</p></td>
-    <td><p>Sets a heading for the menu</p></td>
+    <td><p>Sets a heading for the menu.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>number</code> |</p>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>160</code></p>
+    </td>
+    <td>
+      <p>
+        The width of the menu, as a number of pixels or any CSS width. The 160px
+        minimum still applies underneath it, and a menu whose options are laid
+        out in columns ignores this and sizes itself to its content.
+      </p>
+    </td>
   </tr>
 </table>
 <p>

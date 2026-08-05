@@ -2,6 +2,8 @@
   "ButtonToggle": {
     "props": {
       "backgroundAppearance": {
+        "defaultValue": "matchBackground",
+        "description": "Button's prop, telling the toggle which surface it sits on so it can pick colors with enough contrast.",
         "isRequired": false,
         "type": "\"matchBackground\" | \"dark\""
       },
@@ -17,7 +19,7 @@
         "type": "boolean"
       },
       "startIcon": {
-        "description": "Element placed before the children.",
+        "description": "Required. The icon displayed within the component. Pass the SDS Icon\ncomponent, for example `<Icon sdsIcon=\"Search\" sdsSize=\"s\" />`.",
         "isRequired": true,
         "type": "ReactElement"
       },
@@ -35,7 +37,7 @@
       },
       "sdsStyle": {
         "defaultValue": "solid",
-        "description": "Style of the button. ButtonToggle inherits Button's default of solid, but toggles are designed around outline and minimal, so set one of those explicitly.",
+        "description": "Style of the button. ButtonToggle inherits Button's default of \"solid\", but toggles are designed around \"outline\" and \"minimal\", so set one of those explicitly.",
         "isRequired": false,
         "type": "\"outline\" | \"solid\" | \"minimal\""
       },
@@ -44,6 +46,11 @@
         "description": "Controls the toggle stage. The component is fully controlled, so keep this value in state and update it from onClick.",
         "isRequired": false,
         "type": "\"off\" | \"on\""
+      },
+      "onClick": {
+        "description": "Callback fired when the button is clicked.",
+        "isRequired": false,
+        "type": "function"
       }
     }
   }

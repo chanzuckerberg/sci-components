@@ -6,162 +6,167 @@ import { HTMLAttributes } from "react";
 
 export interface StackedBarChartDataItem {
   /**
-   * Display name for the segment
+   * The segment's label in the legend, and the key the animations track it by.
+   * Must be unique within the chart.
    */
   name: string;
   /**
-   * Numeric value for the segment
+   * The quantity the segment stands for.
    */
   value: number;
   /**
-   * Color for the segment (hex or CSS color)
-   * If not provided, colors will be automatically generated using cubehelix palette
+   * Any CSS color. Without it the segment takes a generated palette color,
+   * which can shift as categories come and go.
    */
   color?: string;
   /**
-   * Unit label to display with the value in cumulative mode (e.g., "GB", "datasets", "MB")
-   * Only shown in legend when mode is "cumulative"
+   * A unit for this item's counted value, for data that mixes units across
+   * categories.
    */
   unit?: string;
   /**
-   * Disable the item (prevents all events on the corresponding legend item and bar segment)
+   * Takes the segment and its legend item out of every interaction: no hover,
+   * no tooltip, no selection.
    * @default false
    */
   disabled?: boolean;
   /**
-   * Optional tooltip to display when hovering over the segment
+   * Content for a TooltipTable shown above the segment on hover. Use it for the
+   * breakdown behind the number; a segment without it has no tooltip.
    */
   tooltip?: TooltipTableContentProps;
 }
 
 export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Title to display above the chart
+   * A heading above the bar. It is also what makes room for the badge; with no
+   * title, no badge is drawn.
    */
   title?: string;
   /**
-   * Badge text to display next to the title
-   * If not provided, defaults to showing item count based on selection:
-   * - No selection: total count (e.g., "5")
-   * - Partial selection: selected count (e.g., "3 of 5")
-   * - All selected: "All"
+   * Overrides the badge text, which otherwise counts the data and the selection
+   * ("7", or "3 of 7").
    */
   badge?: string;
   /**
-   * Hide the badge when true
+   * Removes the badge, leaving the title on its own.
    * @default false
    */
   hideBadge?: boolean;
   /**
-   * Array of data items to display in the stacked bar
+   * The segments, in the order they are drawn.
    */
   data: StackedBarChartDataItem[];
   /**
-   * Width of the chart - accepts any CSS width value (e.g., "100%", "20vw", "300px", or number for pixels)
+   * Any CSS width; a number is read as pixels. It sets the width of the whole
+   * chart, legend included.
    * @default 100%
    */
   width?: number | string;
   /**
-   * Height of the bar in pixels (minimum 1px)
+   * Height of the bar in pixels. Values below 1 are clamped to 1, so the bar
+   * cannot disappear.
    * @default 16
    */
   barHeight?: number;
   /**
-   * Whether to show the legend below the chart
+   * Draws the legend below the bar. It is the only place segment names appear,
+   * and the only part of the chart a keyboard can reach.
    * @default true
    */
   showLegend?: boolean;
   /**
-   * Whether to show percentage values in the legend
+   * Shows each item's value beside its name in the legend.
    * @default true
    */
   showLegendValues?: boolean;
   /**
-   * Format for legend values
-   * - "percentage": Shows percentage of the item in the bar chart (e.g., "20%")
-   * - "count": Shows the count from the data object with the unit defined by the unit prop
+   * "percentage" shows the segment's share of the bar, rounded. "count" shows
+   * the raw value followed by the item's unit, or the chart's unit if the item
+   * has none.
    * @default "percentage"
    */
   legendValueFormat?: "percentage" | "count";
   /**
-   * Array of selected item indices (controlled component)
+   * Indices into data that are currently selected. The chart is controlled: it
+   * draws this and never changes it.
    */
   selectedIndices?: number[];
   /**
-   * Callback when legend selection changes
+   * Called with the next selection when a segment or legend item is clicked.
+   * Without it, clicking selects nothing.
    */
   onSelectionChange?: (
     selectedIndices: number[],
     selectedData: StackedBarChartDataItem[]
   ) => void;
   /**
-   * Callback when mouse enters a bar segment
+   * Called when the pointer enters a segment. The chart already syncs its own
+   * hover highlight between bar and legend, so this is for driving something
+   * outside it.
    */
   onSegmentMouseEnter?: (item: StackedBarChartDataItem, index: number) => void;
   /**
-   * Callback when mouse leaves a bar segment
+   * Called when the pointer leaves a segment.
    */
   onSegmentMouseLeave?: (item: StackedBarChartDataItem, index: number) => void;
   /**
-   * Callback when mouse enters a legend item
+   * Called when the pointer enters a legend item.
    */
   onLegendItemMouseEnter?: (
     item: StackedBarChartDataItem,
     index: number
   ) => void;
   /**
-   * Callback when mouse leaves a legend item
+   * Called when the pointer leaves a legend item.
    */
   onLegendItemMouseLeave?: (
     item: StackedBarChartDataItem,
     index: number
   ) => void;
   /**
-   * Callback when a bar segment is clicked
+   * Fires on a segment click, alongside any selection change rather than
+   * instead of it.
    */
   onSegmentClick?: (item: StackedBarChartDataItem, index: number) => void;
   /**
-   * Callback when a legend item is clicked
+   * The same, for a click on a legend item.
    */
   onLegendItemClick?: (item: StackedBarChartDataItem, index: number) => void;
   /**
-   * Behavior to apply when items are selected
-   * - "dim": Non-selected segments become semi-transparent (20% opacity)
-   * - "hide": Non-selected segments are hidden from the bar chart
+   * What a selection does to the unselected segments: fade them to 20% opacity,
+   * or drop them from the bar and let the rest take the space.
    * @default "dim"
    */
   selectionBehavior?: "dim" | "hide";
   /**
-   * Chart mode - controls how segments are calculated
-   * - "proportional": Segments fill entire bar (100%), proportional to their values
-   * - "cumulative": Segments sized based on actual values relative to maxAmount
+   * Whether the bar shows a breakdown of the data (segments always fill it) or
+   * progress towards maxAmount.
    * @default "proportional"
    */
   mode?: "proportional" | "cumulative";
   /**
-   * Maximum amount for the bar (used only in "cumulative" mode)
-   * If not provided, defaults to sum of all values (no remaining segment)
-   * If provided and sum < maxAmount, shows gray "remaining" segment
+   * Cumulative mode only. The value the full bar represents. Any difference
+   * between it and the sum of the data is drawn as the Remaining segment.
    */
   maxAmount?: number;
   /**
-   * Label for the remaining/unknown segment in cumulative mode
+   * Name of the grey gap segment in cumulative mode.
    * @default "Remaining"
    */
   remainingLabel?: string;
   /**
-   * Unit to display with the remaining segment value in cumulative mode
-   * If not provided, uses the unit from the first data item (if available)
+   * A unit for the Remaining segment's value alone.
    */
   remainingUnit?: string;
   /**
-   * Global unit to display with values in cumulative mode (e.g., "GB", "datasets", "K")
-   * Individual data items can override this with their own unit property
-   * Only shown when mode is "cumulative"
+   * The unit appended to counted values, for items that do not carry one of
+   * their own.
    */
   unit?: string;
   /**
-   * Options for the color generator
+   * Tunes the generated palette (start hue, rotations, lightness range, gamma).
+   * Items with their own color are untouched by it.
    */
   colorGeneratorOptions?: DiscreteColorGeneratorOptions;
 }

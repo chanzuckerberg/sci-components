@@ -23,6 +23,18 @@
         "description": "Display a divider line between accordion items.",
         "isRequired": false,
         "type": "boolean"
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "chevronSize": {
+        "defaultValue": "xs",
+        "description": "Set on AccordionHeader. Size of the toggle chevron icon.",
+        "isRequired": false,
+        "type": "\"s\" | \"xs\" | \"l\" | \"xl\""
       }
     }
   },

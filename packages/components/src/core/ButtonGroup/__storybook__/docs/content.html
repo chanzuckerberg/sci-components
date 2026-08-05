@@ -40,7 +40,7 @@
   ButtonGroup collects related Button or ButtonToggle components into a single
   segmented control, joining them with shared borders. It sets MUI's
   <code>variant</code> to <code>"outlined"</code> and injects its own
-  <code>size</code> into every Button child, which is why
+  <code>size</code> into every button in the group, which is why
   <code>variant</code> and <code>size</code> are removed from the MUI props it
   accepts.
 </p>
@@ -105,8 +105,10 @@
     </td>
     <td>
       <p>
-        Size of the group. It is injected into each Button child, so setting
-        <code>size</code> on the individual buttons has no effect.
+        Size of the group. It is injected into each Button and ButtonToggle
+        child, so setting <code>size</code> on an individual button has no
+        effect and a mixed group stays at one height. Anything else in the group
+        keeps its own size.
       </p>
     </td>
   </tr>
@@ -141,6 +143,23 @@
       <p>
         Tells the group which surface it sits on so it can pick colors with
         enough contrast.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's prop, passed down through the group so every button in it is
+        disabled at once.
       </p>
     </td>
   </tr>

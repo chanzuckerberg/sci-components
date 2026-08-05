@@ -1,14 +1,6 @@
 {
   "ButtonDropdown": {
     "props": {
-      "backgroundAppearance": {
-        "isRequired": false,
-        "type": "\"matchBackground\" | \"dark\""
-      },
-      "backgroundOnHover": {
-        "isRequired": false,
-        "type": "any"
-      },
       "children": {
         "description": "The button label. The trailing chevron is only rendered when a label is present.",
         "isRequired": false,
@@ -18,7 +10,7 @@
         "defaultValue": false,
         "description": "Disables the button when set to true.",
         "isRequired": false,
-        "type": "bool"
+        "type": "boolean"
       },
       "startIcon": {
         "description": "An optional icon placed before the label. Pass the SDS Icon component, for example <Icon sdsIcon=\"Download\" sdsSize=\"s\" />.",
@@ -39,9 +31,14 @@
       },
       "sdsType": {
         "defaultValue": "primary",
-        "description": "Color scheme of the button. Unlike Button, destructive is not supported.",
+        "description": "Color scheme of the button. Unlike Button, \"destructive\" is not supported.",
         "isRequired": true,
         "type": "\"primary\" | \"secondary\""
+      },
+      "onClick": {
+        "description": "Callback fired when the button is clicked. Typically used to open the associated menu.",
+        "isRequired": false,
+        "type": "(event: React.MouseEvent) => void"
       }
     }
   }

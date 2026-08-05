@@ -245,14 +245,13 @@
   </li>
 </ul>
 <div
-  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
+  class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
 >
   <p>
-    <strong>Do not use the dataZoom prop.</strong>
-    The type still advertises it, but the component never forwards it and it
-    ends up on the container div instead, where React will warn about an unknown
-    attribute. Pass <code>dataZoom</code> inside <code>options</code>, with the
-    camera active.
+    <strong>dataZoom and options.dataZoom both work.</strong>
+    They are merged in that order over the window's own defaults, so
+    <code>options</code> wins where the two overlap. Either way the camera has
+    to be active for the merge to reach the chart.
   </p>
 </div>
 <h2>Downloading the chart</h2>
@@ -583,6 +582,23 @@ const url = heatmap.getConnectedDataURL({
         Renders only a window of the grid, measured in cells, and lets the
         pointer pan it. Sizes are ignored unless <code>active</code> is
         <code>true</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>dataZoom</code></p>
+    </td>
+    <td>
+      <p><code>EChartsOption["dataZoom"]</code></p>
+    </td>
+    <td><p>the camera window</p></td>
+    <td>
+      <p>
+        ECharts' dataZoom configuration for that window, merged over the
+        defaults it sets. One object applies to both axes; a two-entry array
+        configures them separately. It reaches the chart only while
+        <code>camera.active</code> is <code>true</code>.
       </p>
     </td>
   </tr>

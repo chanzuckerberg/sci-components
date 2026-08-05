@@ -8,7 +8,7 @@
         "type": "\"blue\" | \"gray\" | \"green\" | \"purple\" | \"indigo\" | \"red\" | \"yellow\""
       },
       "sdsIcon": {
-        "description": "Required. The name of the icon, as listed in the Icon Bank. Names are case-sensitive, for example XMark and LightBulb.",
+        "description": "Required. The name of the icon, as listed in the Icon Bank. Names are case-sensitive, for example \"XMark\" and \"LightBulb\".",
         "isRequired": true,
         "type": "\"ArrowsDiagonalIn\" | \"ArrowsDiagonalOut\" | \"ArrowsUpDown\" | \"Bacteria\" | \"BarChartHorizontal3\" | \"BarChartVertical3\" | \"BarChartVertical4\" | \"Book\" | \"Check\" | \"CheckCircle\" | \"ChevronDown\" | \"ChevronDown2\" | \"ChevronLeft2\" | \"ChevronLeft\" | \"ChevronRight2\" | \"ChevronRight\" | \"ChevronUp\" | \"ChevronUp2\" | \"CirclesOverlap2\" | \"Cli\" | \"Code\" | \"Compass\" | \"Copy\" | \"Cube\" | \"DNA\" | \"Document\" | \"DotPlot\" | \"DotsHorizontal\" | \"Download\" | \"Droplet\" | \"Edit\" | \"Envelope\" | \"ExclamationMarkCircle\" | \"ExclamationMarkSpeechBubble\" | \"EyeClosed\" | \"EyeOpen\" | \"Filter\" | \"FlagCheck\" | \"FlagOutline\" | \"FlagQuestionMark\" | \"FlagXMark\" | \"Flask\" | \"FlaskPrivate\" | \"FlaskPublic\" | \"Gear\" | \"Gene\" | \"Github\" | \"Globe\" | \"GlobeBasic\" | \"Grid\" | \"GridDots3\" | \"GridPrivate\" | \"GridPublic\" | \"House\" | \"Hand\" | \"HandOpen\" | \"HandPointer\" | \"Image\" | \"InfoCircle\" | \"InfoSpeechBubble\" | \"Label\" | \"Lasso\" | \"LifeRing\" | \"LightBulb\" | \"LinesDashed3Solid1\" | \"LinesHorizontal3\" | \"Link\" | \"List\" | \"Loading\" | \"Lock\" | \"LockCircle\" | \"Maximize\" | \"Minimize\" | \"Minus\" | \"Open\" | \"Package\" | \"Pause\" | \"People\" | \"Percentage\" | \"Person\" | \"PieChart\" | \"PieChartXMark\" | \"Pin\" | \"PinLocation\" | \"Play\" | \"Plus\" | \"PlusCircle\" | \"ProjectPrivate\" | \"ProjectPublic\" | \"PuzzlePiece\" | \"QuestionMark\" | \"QuestionMarkCircle\" | \"Quote\" | \"Read\" | \"Refresh\" | \"Report\" | \"Rocket\" | \"RotateLeft\" | \"RotateRight\" | \"Save\" | \"Scale\" | \"ScatterPlot\" | \"Search\" | \"SearchLinesHorizontal3\" | \"Send\" | \"Share\" | \"SlidersHorizontal\" | \"Sparkle\" | \"Sparkles\" | \"SpeechBubbles\" | \"SquareOnDashedSquare\" | \"SquareOnSquareArrowDownRight\" | \"Starburst\" | \"Star\" | \"Table\" | \"ThumbsDown\" | \"ThumbsUp\" | \"TrashCan\" | \"TreeDendogram\" | \"TreeHorizontal\" | \"TreeHorizontalPrivate\" | \"TreeHorizontalPublic\" | \"TreeHorizontalTopRightFilled\" | \"TreeVertical\" | \"TriangleDown\" | \"TriangleLeft\" | \"TriangleRight\" | \"TriangleUp\" | \"Update\" | \"Umap\" | \"Upload\" | \"Virus\" | \"VirusCircleS\" | \"Widget\" | \"XMark\" | \"XMarkCircle\""
       },
@@ -22,6 +22,11 @@
         "description": "The step within the chosen hue.",
         "isRequired": false,
         "type": "100 | 200 | 300 | 400 | 500 | 600 | 700 | 800"
+      },
+      "className": {
+        "description": "Applied to the SVG. Useful for overriding the fill from a parent component.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

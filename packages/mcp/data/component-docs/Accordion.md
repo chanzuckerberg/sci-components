@@ -281,10 +281,10 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | Name              | Type                  | Default   | Description                                                                                                                         |
 | ----------------- | --------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `id`              | `string`              | -         | Required. A unique id for each accordion item, also used to derive the ids that link the header and its content for screen readers. |
-| `defaultExpanded` | `bool`                | `false`   | Render the accordion already expanded on first paint.                                                                               |
-| `disabled`        | `bool`                | `false`   | The `disabled` prop, when set to `true`, prevents user interaction with the Accordion component, keeping it in a static state.      |
+| `defaultExpanded` | `boolean`             | `false`   | Render the accordion already expanded on first paint.                                                                               |
+| `disabled`        | `boolean`             | `false`   | The `disabled` prop, when set to `true`, prevents user interaction with the Accordion component, keeping it in a static state.      |
 | `togglePosition`  | `"right"` \| `"left"` | `"right"` | Position of the toggle chevron icon.                                                                                                |
-| `useDivider`      | `bool`                | `false`   | Display a divider line between accordion items.                                                                                     |
+| `useDivider`      | `boolean`             | `false`   | Display a divider line between accordion items.                                                                                     |
 | `subtitle`        | `string`              | -         | Set on AccordionHeader. A text that will be displayed as a subtitle beneath the accordion title.                                    |
 | `chevronSize`     | `"xs"` \| `"s"`       | `"xs"`    | Set on AccordionHeader. Size of the toggle chevron icon.                                                                            |
 

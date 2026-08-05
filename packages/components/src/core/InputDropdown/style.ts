@@ -361,7 +361,9 @@ const isDisabled = (props: InputDropdownProps): SerializedStyles => {
  * to the InputDropdownProps interface.
  */
 export const StyledInputDropdown = styled(
-  Button as React.ComponentType<InputDropdownProps>,
+  Button as React.ComponentType<
+    InputDropdownProps & React.RefAttributes<HTMLButtonElement>
+  >,
   {
     shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
   }

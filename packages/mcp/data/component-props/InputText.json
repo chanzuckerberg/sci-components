@@ -41,6 +41,7 @@
         "type": "\"textField\" | \"textArea\""
       },
       "classes": {
+        "defaultValue": {},
         "description": "Override or extend the styles applied to the component.",
         "isRequired": false,
         "type": "Partial"

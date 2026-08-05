@@ -26,6 +26,18 @@
   class="sds-doc-example"
   data-example="core/CellHeader/DefaultCellHeader"
 ></div>
+<h3><strong>Sortable CellHeader</strong></h3>
+<p>
+  A header only looks sortable once <code>hover</code> is set: without it the
+  cell draws no chevron and shows no tooltip, whatever the other sorting props
+  say. Sorting itself is yours to wire up through <code>onClick</code>, with
+  <code>active</code> marking the column being sorted and
+  <code>direction</code> choosing which way the chevron points.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/CellHeader/SortableCellHeader"
+></div>
 <h2>Props</h2>
 <p>
   Any custom SDS props and MUI props required for implementation are found on
@@ -87,7 +99,8 @@
       <p><code>direction</code></p>
     </td>
     <td>
-      <p><code>CellHeaderDirection ("asc" | "desc")</code></p>
+      <p><code>"asc"</code> |</p>
+      <p><code>"desc"</code></p>
     </td>
     <td>
       <p><code>"desc"</code></p>
@@ -96,6 +109,7 @@
       <p>
         Which chevron to draw: up for <code>"asc"</code>, down for
         <code>"desc"</code>. It also sets the icon's <code>aria-label</code>.
+        Exported as <code>CellHeaderDirection</code>.
       </p>
     </td>
   </tr>
@@ -219,6 +233,23 @@
     </td>
     <td><p>-</p></td>
     <td><p>A second line below the tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>string</code> |</p>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Lands on the rendered cell as the HTML <code>width</code> attribute, so
+        a number is read as pixels. Browsers treat it as the width of the whole
+        column, and take it as a minimum rather than a promise.
+      </p>
+    </td>
   </tr>
   <tr>
     <td>

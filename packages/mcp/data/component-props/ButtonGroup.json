@@ -3,7 +3,7 @@
     "props": {
       "backgroundAppearance": {
         "defaultValue": "matchBackground",
-        "description": "The background appearance of the button group.",
+        "description": "Tells the group which surface it sits on so it can pick colors with enough\ncontrast.",
         "isRequired": false,
         "type": "\"matchBackground\" | \"dark\""
       },
@@ -20,16 +20,27 @@
         "type": "\"horizontal\" | \"vertical\""
       },
       "size": {
-        "defaultValue": "medium",
-        "description": "The size of the button group.",
+        "defaultValue": "large",
+        "description": "Size of the group. It is injected into each Button and ButtonToggle child,\nso setting size on an individual button has no effect.",
         "isRequired": false,
         "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsType": {
         "defaultValue": "primary",
-        "description": "The type of the button group that determines the color scheme.",
+        "description": "Color scheme applied to every button in the group.",
         "isRequired": false,
         "type": "\"primary\" | \"secondary\""
+      },
+      "sdsStyle": {
+        "defaultValue": "outline",
+        "description": "Style of the button group. Outline is the only value.",
+        "isRequired": false,
+        "type": "\"outline\""
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

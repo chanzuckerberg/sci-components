@@ -455,15 +455,16 @@
       <p><code>onSelectionChange</code></p>
     </td>
     <td>
-      <p><code>(indices: number[],</code></p>
-      <p><code>items: StackedBarChartDataItem[])</code></p>
-      <p><code>=&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Called with the next selection when a segment or legend item is clicked.
-        Without it, clicking selects nothing.
+        <code
+          >(selectedIndices: number[], selectedData: StackedBarChartDataItem[])
+          =&gt; void</code
+        >. Called with the next selection when a segment or legend item is
+        clicked. Without it, clicking selects nothing.
       </p>
     </td>
   </tr>
@@ -505,11 +506,12 @@
       <p><code>onSegmentClick</code></p>
     </td>
     <td>
-      <p><code>(item, index) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
+        <code>(item: StackedBarChartDataItem, index: number) =&gt; void</code>.
         Fires on a segment click, alongside any selection change rather than
         instead of it.
       </p>
@@ -520,37 +522,77 @@
       <p><code>onLegendItemClick</code></p>
     </td>
     <td>
-      <p><code>(item, index) =&gt; void</code></p>
-    </td>
-    <td><p>-</p></td>
-    <td><p>The same, for a click on a legend item.</p></td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>onSegmentMouseEnter</code></p>
-      <p><code>onSegmentMouseLeave</code></p>
-    </td>
-    <td>
-      <p><code>(item, index) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Hover on the bar. The chart already syncs its own hover highlight
-        between bar and legend; these are for driving something outside it.
+        <code>(item: StackedBarChartDataItem, index: number) =&gt; void</code>.
+        The same, for a click on a legend item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onSegmentMouseEnter</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: StackedBarChartDataItem, index: number) =&gt; void</code>.
+        Called when the pointer enters a segment. The chart already syncs its
+        own hover highlight between bar and legend, so this is for driving
+        something outside it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onSegmentMouseLeave</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: StackedBarChartDataItem, index: number) =&gt; void</code>.
+        Called when the pointer leaves a segment.
       </p>
     </td>
   </tr>
   <tr>
     <td>
       <p><code>onLegendItemMouseEnter</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: StackedBarChartDataItem, index: number) =&gt; void</code>.
+        Called when the pointer enters a legend item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>onLegendItemMouseLeave</code></p>
     </td>
     <td>
-      <p><code>(item, index) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
-    <td><p>The same, for hover on a legend item.</p></td>
+    <td>
+      <p>
+        <code>(item: StackedBarChartDataItem, index: number) =&gt; void</code>.
+        Called when the pointer leaves a legend item.
+      </p>
+    </td>
   </tr>
 </table>
 <h3>StackedBarChartDataItem</h3>

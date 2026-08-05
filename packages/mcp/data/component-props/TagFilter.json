@@ -3,9 +3,15 @@
     "props": {
       "label": {
         "defaultValue": "- (required)",
-        "description": "The content of the component.",
+        "description": "The filter's text. Cut off with an ellipsis when there is not room for it.",
         "isRequired": true,
         "type": "string"
+      },
+      "onDelete": {
+        "defaultValue": "- (required)",
+        "description": "Runs when the X is clicked or activated, and when Backspace or Delete is\npressed on the tag. Drop the filter from your state here; the component\ndoes not remove itself.",
+        "isRequired": true,
+        "type": "(event: any) => void"
       }
     }
   }

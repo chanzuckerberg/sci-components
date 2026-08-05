@@ -50,6 +50,11 @@
         "description": "Draws the 1px divider along the bottom of the row.",
         "isRequired": false,
         "type": "boolean"
+      },
+      "children": {
+        "description": "Required. The row's cells.",
+        "isRequired": false,
+        "type": "React.ReactNode"
       }
     }
   }

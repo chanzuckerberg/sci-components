@@ -1,10 +1,6 @@
 {
   "Tabs": {
     "props": {
-      "items": {
-        "isRequired": false,
-        "type": "any"
-      },
       "sdsSize": {
         "defaultValue": "large",
         "description": "The size of the label text on every tab in the group, and the spacing around the group.",
@@ -14,6 +10,63 @@
       "underlined": {
         "defaultValue": false,
         "description": "Draws a divider along the full width of the group, below the tabs; the selected tab's indicator sits on top of it.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "selectionFollowsFocus": {
+        "defaultValue": false,
+        "description": "MUI's prop for selecting a tab as soon as the arrow keys reach it, instead of waiting for Space or Enter.",
+        "isRequired": false,
+        "type": "boolean"
+      }
+    }
+  },
+  "Tab": {
+    "props": {
+      "children": {
+        "defaultValue": "- (required)",
+        "description": "This prop isn't supported.\nUse the `component` prop if you need to change the children structure.",
+        "isRequired": false,
+        "type": "null"
+      },
+      "onChange": {
+        "description": "Runs when a tab is selected, with that tab's value. Write it back to value, or the group will keep showing the same tab.",
+        "isRequired": false,
+        "type": "FormEventHandler<HTMLDivElement>"
+      },
+      "aria-label": {
+        "description": "Defines a string value that labels the current element.\n@see aria-labelledby.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "label": {
+        "description": "The label element.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "count": {
+        "description": "A value drawn after the label: a number, a string, or a component. 0 is drawn rather than dropped, and whatever renders joins the tab's accessible name.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "id": {
+        "description": "The tab's id, for a panel's aria-labelledby to point at. Not generated for you.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "aria-controls": {
+        "description": "Identifies the element (or elements) whose contents or presence are controlled by the current element.\n@see aria-owns.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "selected": {
+        "description": "Set by the group from its value, and used to draw the label in semibold. Not something to pass yourself.",
         "isRequired": false,
         "type": "boolean"
       }

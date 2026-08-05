@@ -29,6 +29,9 @@ export interface TooltipExtraProps extends CommonThemeProps {
   textAlign?: "left" | "center" | "right";
   componentSlot?: React.ReactNode;
   /**
+   * The popper the tooltip renders into, carrying the arrow's shape and
+   * placement.
+   *
    * (v9): MUI removed the Tooltip `PopperComponent` prop in favor of
    * `slots.popper`. We keep `PopperComponent` as an SDS prop for backward
    * compatibility and map it to `slots.popper` internally.

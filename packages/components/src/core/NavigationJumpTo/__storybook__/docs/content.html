@@ -204,16 +204,17 @@
       <p><code>onChange</code></p>
     </td>
     <td>
-      <p><code>(value: number,</code></p>
-      <p><code>event?: React.SyntheticEvent,</code></p>
-      <p><code>type?: "click" | "scroll")</code></p>
-      <p><code>=&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Called when the highlighted item changes, with its index and what caused
-        the change. For a scroll the event is synthesized, not a real DOM event.
+        <code
+          >(value: number, event?: React.SyntheticEvent, type?: "click" |
+          "scroll") =&gt; void</code
+        >. Called when the highlighted item changes, with its index and what
+        caused the change. For a scroll the event is synthesized, not a real DOM
+        event.
       </p>
     </td>
   </tr>

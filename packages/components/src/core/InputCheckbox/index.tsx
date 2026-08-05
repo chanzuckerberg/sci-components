@@ -21,6 +21,11 @@ export interface CheckboxContentProps extends Omit<
   intent?: "default" | "negative" | "notice" | "positive";
   label?: React.ReactNode;
   stage?: "checked" | "unchecked" | "indeterminate";
+  /**
+   * Class names for the internal elements: root, labelCaptionContainer, label,
+   * caption, checkbox, checkboxCheckedIcon, checkboxDefaultIcon, and
+   * checkboxIndeterminateIcon.
+   */
   classes?: {
     root?: string;
     labelCaptionContainer?: string;

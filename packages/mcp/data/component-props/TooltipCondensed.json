@@ -17,6 +17,16 @@
         "description": "The dot's colour, as a CSS colour. Without it the dot occupies its space but cannot be seen.",
         "isRequired": false,
         "type": "string"
+      },
+      "title": {
+        "description": "The label to show. Pass null when the content is coming through componentSlot instead.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "componentSlot": {
+        "description": "Inherited from Tooltip, and how a TooltipTable is placed inside a condensed tooltip.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

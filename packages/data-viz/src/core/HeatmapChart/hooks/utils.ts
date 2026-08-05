@@ -15,12 +15,13 @@ const DEFAULT_ITEM_STYLE = {
 
 export interface CreateChartOptionsProps {
   /**
-   * Display reference line and axis value under mouse pointer
+   * The crosshair following the pointer. One object applies to both axes; a
+   * two-entry array configures them separately.
    * https://echarts.apache.org/en/option.html#axisPointer
    */
   axisPointer?: EChartsOption["axisPointer"];
   /**
-   * The data array to be visualized
+   * The cells, as a flat array of objects whose fields are named by `encode`.
    * The data point object shape can be whatever you like, but it must be consistent with the `encode` option
    * For example, if the data point shape is:
    * {
@@ -36,6 +37,10 @@ export interface CreateChartOptionsProps {
    */
   data: DatasetComponentOption["source"];
   /**
+   * ECharts' dataZoom configuration for that window, merged over the defaults
+   * it sets. One object applies to both axes; a two-entry array configures them
+   * separately. It reaches the chart only while `camera.active` is true.
+   *
    * The `dataZoom` prop is utilized for implementing zoom functionality within a
    * specific area of the chart. This feature empowers users to inspect data in
    * granular detail, obtain an overview of the entire dataset, or eliminate
@@ -51,6 +56,9 @@ export interface CreateChartOptionsProps {
    */
   dataZoom?: EChartsOption["dataZoom"];
   /**
+   * Renders only a window of the grid, measured in cells, and lets the pointer
+   * pan it. Sizes are ignored unless `active` is true.
+   *
    * The `camera` prop is utilized for implementing camera view port functionality
    * within a specific area of the chart. This feature empowers users to render
    * a confined portion of the heatmap. This selective rendering strategy becomes
@@ -69,32 +77,36 @@ export interface CreateChartOptionsProps {
     width: number;
   };
   /**
-   * Customize the style of each cell item when mouse hovers on it, such as color, border, opacity, etc.
+   * How a cell is drawn while the pointer is over it. Takes the same shape as
+   * `itemStyle`: color, border, opacity.
    * https://echarts.apache.org/en/option.html#series-scatter.emphasis
    */
   emphasis?: ScatterSeriesOption["emphasis"];
   /**
-   * The data for the x axis
+   * The categories along the x axis. A cell's encoded x value is an index into
+   * this array.
    * For example:
    * [{ value: "gene1", textStyle: { color: "red" } }, "gene2", "gene3"]
    */
   xAxisData: CategoryAxisData;
   /**
-   * The data for the y axis
+   * The categories along the y axis.
    * For example:
    * [{ value: "cellType1", textStyle: { color: "red" } }, "cellType2", "cellType3"]
    */
   yAxisData: CategoryAxisData;
   /**
-   * The width of the chart in pixels
+   * Width of the chart in pixels. Must be greater than zero; the component
+   * throws otherwise.
    */
   width: number;
   /**
-   * The height of the chart in pixels
+   * Height of the chart in pixels, under the same rule.
    */
   height: number;
   /**
-   * Provide a mapping of data key to x/y axis encoding
+   * Which fields of a data item place it on each axis. Omitting it leaves
+   * ECharts to guess from the field order.
    * For example, if the data is:
    * {
    *   geneIndex: 0,
@@ -113,15 +125,20 @@ export interface CreateChartOptionsProps {
     y: string;
   };
   /**
-   * Customize the style of each cell item, such as color, border, opacity, etc.
+   * How a cell is painted. Its color accepts a callback receiving the data
+   * item, which is how a value becomes a color.
    * https://echarts.apache.org/en/option.html#series-scatter.itemStyle
    */
   itemStyle?: ScatterSeriesOption["itemStyle"];
   /**
-   * The shape of the symbol.
+   * The shape of a cell. Circles turn the grid into a dot plot, where diameter
+   * can carry a second measurement.
    */
   symbol?: "circle" | "rect" | "roundRect";
   /**
+   * Cell size in pixels: one number, a [width, height] pair, or a callback
+   * given the data item. Set it to the cell pitch for a solid grid.
+   *
    * `symbolSize` can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is 10.
    *
    * If size of symbols needs to be different, you can set with callback function in the following format:
@@ -133,18 +150,22 @@ export interface CreateChartOptionsProps {
    */
   symbolSize?: ScatterSeriesOption["symbolSize"];
   /**
+   * Where the plotting area sits inside the container. The function form
+   * receives the computed default, for insetting it without recomputing the
+   * size.
    * https://echarts.apache.org/en/option.html#grid
    */
   grid?:
     | EChartsOption["grid"]
     | ((defaultOption: EChartsOption["grid"]) => EChartsOption["grid"]);
   /**
-   * The options object to be passed to echarts.setOption()
+   * Anything else ECharts understands, merged over the generated options.
    * https://echarts.apache.org/en/option.html
    */
   options?: EChartsOption;
   /**
-   * Event listeners for the chart
+   * ECharts event listeners by name. Each handler gets the raw event, whose
+   * data property is the cell, and the chart instance.
    * https://echarts.apache.org/en/api.html#events
    */
   onEvents?: Record<string, (event: unknown, chart: ECharts) => void>;

@@ -24,6 +24,16 @@
         "description": "Controls the width of the InputToggle element, in pixels. Increase it when custom labels do not fit.",
         "isRequired": false,
         "type": "number"
+      },
+      "checked": {
+        "description": "If `true`, the component is checked.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "onChange": {
+        "description": "Called whenever the user toggles the component, in either direction. It is\ngiven the event alone: unlike MUI's, it is not passed the new checked\nstate, which is read from the event's target instead.",
+        "isRequired": false,
+        "type": "function"
       }
     }
   }

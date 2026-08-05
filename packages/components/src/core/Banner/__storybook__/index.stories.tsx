@@ -1,5 +1,6 @@
 import { Args, Meta } from "@storybook/react-vite";
 import {
+  BANNER_ACTIONS,
   BANNER_EXCLUDED_CONTROLS,
   BANNER_ICON_OPTIONS,
   BANNER_TEXT,
@@ -9,6 +10,10 @@ import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {
+    children: {
+      control: { type: "text" },
+      required: true,
+    },
     dismissed: {
       control: { type: "boolean" },
     },
@@ -32,6 +37,7 @@ export default {
       control: { type: INLINE_RADIO },
       options: ["accent", "info", "negative", "positive", "notice"],
     },
+    onClose: { action: BANNER_ACTIONS.onClose },
     sdsIconProps: {
       control: {
         type: "object",
@@ -40,10 +46,6 @@ export default {
     sdsType: {
       control: { type: INLINE_RADIO },
       options: ["primary", "secondary"],
-      required: true,
-    },
-    textChild: {
-      control: { type: "text" },
       required: true,
     },
   },
@@ -61,11 +63,11 @@ export default {
 
 export const Default = {
   args: {
+    children: BANNER_TEXT,
     dismissed: false,
     dismissible: true,
     intent: "info",
     sdsType: "primary",
-    textChild: BANNER_TEXT,
   },
 };
 
@@ -73,10 +75,10 @@ export const Default = {
 
 export const Test = {
   args: {
+    children: "test text",
     dismissible: true,
     intent: "info",
     sdsType: "primary",
-    textChild: "test text",
   },
   parameters: {
     controls: {

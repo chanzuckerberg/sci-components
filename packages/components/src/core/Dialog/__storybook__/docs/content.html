@@ -241,7 +241,7 @@
       <p><code>open</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td><p>-</p></td>
     <td>
@@ -279,7 +279,7 @@
       <p><code>canClickOutsideClose</code></p>
     </td>
     <td>
-      <p><code>bool</code></p>
+      <p><code>boolean</code></p>
     </td>
     <td>
       <p><code>true</code></p>
@@ -297,11 +297,16 @@
       <p><code>onClose</code></p>
     </td>
     <td>
-      <p><code>(event: object, reason: string) =&gt; void</code></p>
+      <p><code>function</code></p>
     </td>
     <td><p>-</p></td>
     <td>
-      <p>Called when the Dialog requests to be closed. It receives:</p>
+      <p>
+        Called when the Dialog requests to be closed.
+        <strong>Signature:</strong>
+        <code>function(event: object, reason: string) =&gt; void</code>. It
+        receives:
+      </p>
       <ul class="sds-doc-bullet-list">
         <li>
           <p><code>event</code>&nbsp;The event source of the callback.</p>
@@ -331,6 +336,24 @@
       <p>
         The surface the Dialog is drawn on. A replacement receives
         <code>sdsSize</code> along with the usual Paper props.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>DialogComponent</code></p>
+    </td>
+    <td>
+      <p><code>ComponentType&lt;DialogProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>Dialog</code></p>
+    </td>
+    <td>
+      <p>
+        Replaces MUI's Dialog itself, rather than the surface inside it.
+        Declared on the props type and not read by the component, so passing it
+        has no effect today.
       </p>
     </td>
   </tr>

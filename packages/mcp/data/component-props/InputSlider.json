@@ -36,6 +36,33 @@
         "description": "Controls when the value label is displayed:\n\n- `auto` the value label will display when the thumb is hovered or focused.\n- `on` will display persistently.\n- `off` will never display.",
         "isRequired": false,
         "type": "\"off\" | \"on\" | \"auto\""
+      },
+      "defaultValue": {
+        "description": "The default value. Use when the component is not controlled.",
+        "isRequired": false,
+        "type": "number | number[]"
+      },
+      "value": {
+        "description": "The value of the slider.\nFor ranged sliders, provide an array with two values.",
+        "isRequired": false,
+        "type": "number | number[]"
+      },
+      "onChange": {
+        "description": "Callback function that is fired when the slider's value changed.\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (any).\n**Warning**: This is a generic event not a change event.\n@param value The new value.\n@param activeThumb Index of the currently moved thumb.",
+        "isRequired": false,
+        "type": "(event: Event, value: number | number[], activeThumb: number) => void"
+      },
+      "orientation": {
+        "defaultValue": "horizontal",
+        "description": "The component orientation.",
+        "isRequired": false,
+        "type": "\"horizontal\" | \"vertical\""
+      },
+      "aria-label": {
+        "defaultValue": "Slider value",
+        "description": "The label of the slider.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }
