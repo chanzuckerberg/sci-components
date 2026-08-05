@@ -335,6 +335,17 @@ const Container = styled.div<CommonThemeProps>`
     border-radius: 0;
   }
 
+  /* A mark set before the words it belongs to, as the npm and GitHub logos are
+     on the package pages. Sized in ems so it follows the type it sits in, and
+     shifted off the baseline to centre on it. */
+  && .sds-doc-inline-icon {
+    width: 1.15em;
+    height: 1.15em;
+    margin-right: 0.3em;
+    vertical-align: -0.2em;
+    border-radius: 0;
+  }
+
   /* The row of statuses an element's page opens with: "In Figma", "In Code"
      and the like, each marked by an icon saying how far along that part of the
      element is. A status is written as data — <li data-status="ready"> — and
