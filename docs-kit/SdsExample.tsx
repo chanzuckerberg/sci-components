@@ -6,10 +6,8 @@ import {
   lazy,
   useEffect,
   useMemo,
-  useRef,
   useState,
   type ReactElement,
-  type RefObject,
 } from "react";
 import {
   getCorners,
@@ -131,9 +129,8 @@ const SETTLE_DELAYS = [0, 50, 150, 400, 1000];
  * moves the overlays it just made room for, prompting another, and with no room
  * left to add the measurements agree and it settles.
  */
-function useFitContent(ref: RefObject<HTMLElement | null>): void {
+function useFitContent(surface: HTMLElement | null): void {
   useEffect(() => {
-    const surface = ref.current;
     if (!surface) return;
 
     const timers: number[] = [];
@@ -171,7 +168,7 @@ function useFitContent(ref: RefObject<HTMLElement | null>): void {
       observer.disconnect();
       window.removeEventListener("resize", settle);
     };
-  }, [ref]);
+  }, [surface]);
 }
 
 /** The extracted `App.tsx`, shown below its live preview and collapsible. */
@@ -272,9 +269,14 @@ export function SdsExample({
   padding = "default",
 }: SdsExampleProps): ReactElement {
   const mode = useThemeMode();
-  const theme = useMemo(() => previewTheme(mode), [mode]);
-  const surfaceRef = useRef<HTMLDivElement>(null);
-  useFitContent(surfaceRef);
+  /*
+   * Held in state rather than a ref because the theme is built from it: the
+   * overlays an example opens are portaled into this node, and a ref would not
+   * have told the theme when there was one.
+   */
+  const [surface, setSurface] = useState<HTMLDivElement | null>(null);
+  const theme = useMemo(() => previewTheme(mode, surface), [mode, surface]);
+  useFitContent(surface);
 
   const Example = useMemo(() => {
     const load = exampleLoaders[`${modulePath(id)}.tsx`];
@@ -301,7 +303,7 @@ export function SdsExample({
           <PreviewSurface
             className={PREVIEW_CLASS}
             padded={padding === "default"}
-            ref={surfaceRef}
+            ref={setSurface}
           >
             {css ? <style>{css}</style> : null}
             <ExampleErrorBoundary id={id}>

@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import {
   Component,
   useMemo,
+  useState,
   type ComponentType,
   type ErrorInfo,
   type ReactElement,
@@ -93,7 +94,12 @@ export function Preview({
   runKey,
   width,
 }: PreviewProps): ReactElement {
-  const theme = useMemo(() => playgroundTheme(mode), [mode]);
+  /*
+   * The stage the overlays an example opens are portaled into, in state because
+   * the theme is built from it: see `previewTheme`.
+   */
+  const [stage, setStage] = useState<HTMLDivElement | null>(null);
+  const theme = useMemo(() => playgroundTheme(mode, stage), [mode, stage]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -106,7 +112,7 @@ export function Preview({
             padded={padding === "default"}
             width={width === "mobile" ? MOBILE_WIDTH : undefined}
           >
-            <Stage>
+            <Stage ref={setStage}>
               {result?.error ? (
                 <Message role="alert">
                   {result.phase === "compile"
@@ -147,8 +153,11 @@ export function Preview({
  * The docs previews keep the default behaviour. A page of prose has no frame
  * tall enough to hold a drawer, and its examples opt in by supplying one.
  */
-function playgroundTheme(mode: ThemeMode): SDSTheme {
-  const base = previewTheme(mode);
+function playgroundTheme(
+  mode: ThemeMode,
+  overlayContainer: HTMLElement | null
+): SDSTheme {
+  const base = previewTheme(mode, overlayContainer);
   const onTheStage = { position: "absolute" } as const;
 
   return {
