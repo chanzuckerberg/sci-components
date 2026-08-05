@@ -1,6 +1,6 @@
 // Dropdown with multi-select that does not maintain searched query upon selection of a menu item
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -19,8 +19,6 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 ];
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
-
-function handleClickAway() {}
 
 function App() {
   const ref = useRef(null);

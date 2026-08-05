@@ -21,7 +21,6 @@ This example illustrates the minimum set of props required for rendering a Dropd
 **Example: DefaultDropdown**
 
 ```tsx
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
 import { Dropdown, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -61,7 +60,6 @@ To ensure that the search input retains its text even after a user selects a men
 **Example: MultiSelectDropdownWithSearch**
 
 ```tsx
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
 import { Dropdown, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -95,18 +93,7 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
   },
 ];
 
-const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
-
-function handleClickAway() {}
-
 function App() {
-  const ref = useRef(null);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (ref.current) setOpen(true);
-  }, [ref.current]);
-
   return (
     <div className="app">
       <Dropdown

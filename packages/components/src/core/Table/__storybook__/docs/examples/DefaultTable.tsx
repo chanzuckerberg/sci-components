@@ -10,7 +10,7 @@ import {
   TableHeader,
   SdsTagColorType,
 } from "@czi-sds/components";
-import { styled, RadioGroup, FormControlLabel } from "@mui/material";
+import { styled, RadioGroup } from "@mui/material";
 
 function App() {
   const StyledIconCell = styled("div")`

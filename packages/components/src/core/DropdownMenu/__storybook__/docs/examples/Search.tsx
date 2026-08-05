@@ -1,6 +1,6 @@
 // DropdownMenu with search
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [

@@ -25,7 +25,6 @@ import {
   SegmentedControl,
   type SingleButtonDefinition,
 } from "@czi-sds/components";
-import styled from "@emotion/styled";
 
 const VIEWS: SingleButtonDefinition[] = [
   { icon: "List", value: "List" },

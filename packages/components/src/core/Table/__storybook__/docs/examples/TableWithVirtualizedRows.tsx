@@ -29,7 +29,6 @@ import { faker } from "@faker-js/faker";
 import {
   QueryClient,
   QueryClientProvider,
-  keepPreviousData,
   useInfiniteQuery,
 } from "@tanstack/react-query";
 import {

@@ -33,7 +33,7 @@ import {
   TableHeader,
   SdsTagColorType,
 } from "@czi-sds/components";
-import { styled, RadioGroup, FormControlLabel } from "@mui/material";
+import { styled, RadioGroup } from "@mui/material";
 
 function App() {
   const StyledIconCell = styled("div")`
@@ -901,7 +901,6 @@ import { faker } from "@faker-js/faker";
 import {
   QueryClient,
   QueryClientProvider,
-  keepPreviousData,
   useInfiniteQuery,
 } from "@tanstack/react-query";
 import {

@@ -27,7 +27,7 @@ The minimum width for the DropdownMenu is 225px, but longer text will automatica
 ```tsx
 // Most minimal DropdownMenu (just has the basic requirements)
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -86,7 +86,7 @@ The example below shows how DropdownMenu can be used in conjunction with a click
 ```tsx
 // DropdownMenu with custom click target
 
-import React, { SyntheticEvent, useState, useRef } from "react";
+import { SyntheticEvent, useState } from "react";
 import {
   DropdownMenu,
   DefaultAutocompleteOption,
@@ -179,7 +179,7 @@ By default, the search’s input text is maintained even when a user selects a M
 ```tsx
 // DropdownMenu with search
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -242,7 +242,7 @@ If the `multiple` prop is not `true`, the DropdownMenu allows just one selection
 ```tsx
 // DropdownMenu with multi-select
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -313,7 +313,7 @@ Compare this to the default behavior in the " Search " example above, or change 
 ```tsx
 // Dropdown with multi-select that does not maintain searched query upon selection of a menu item
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -332,8 +332,6 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 ];
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
-
-function handleClickAway() {}
 
 function App() {
   const ref = useRef(null);
@@ -391,7 +389,7 @@ This `groupBy` prop must be provided or the groups will not render, even if all 
 ```tsx
 // Dropdown with grouped sections
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -497,7 +495,7 @@ This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/materia
 ```tsx
 // DropdownMenu with customized `isOptionEqualToValue`
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 type MenuItem = DefaultAutocompleteOption & { id: string };
@@ -571,7 +569,7 @@ This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/materia
 ```tsx
 // DropdownMenu with customized `onInputChange`
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -655,7 +653,7 @@ The example below passes the Popper a `className` prop and additionally uses the
 ```tsx
 // DropdownMenu with custom `PopperBaseProps`
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
@@ -722,7 +720,7 @@ To get all the default SDS styles used for Popper, first copy them into a custom
 ```tsx
 // DropdownMenu with custom Popper component
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Popper, styled } from "@mui/material";
 import {
   DropdownMenu,

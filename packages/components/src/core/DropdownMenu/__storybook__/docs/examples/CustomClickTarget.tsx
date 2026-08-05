@@ -1,6 +1,6 @@
 // DropdownMenu with custom click target
 
-import React, { SyntheticEvent, useState, useRef } from "react";
+import { SyntheticEvent, useState } from "react";
 import {
   DropdownMenu,
   DefaultAutocompleteOption,

@@ -1,6 +1,6 @@
 // DropdownMenu with custom Popper component
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Popper, styled } from "@mui/material";
 import {
   DropdownMenu,

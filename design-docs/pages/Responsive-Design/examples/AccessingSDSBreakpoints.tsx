@@ -1,6 +1,5 @@
 import { useLayoutEffect, useState } from "react";
 import { styled } from "@mui/material";
-import { Callout, CalloutTitle } from "@czi-sds/components";
 
 const StyledDiv = styled("div")`
   ${(props) => {

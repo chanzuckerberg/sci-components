@@ -1,6 +1,6 @@
 // DropdownMenu with customized `onInputChange`
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [

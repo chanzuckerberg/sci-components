@@ -1,6 +1,6 @@
 // DropdownMenu with customized `isOptionEqualToValue`
 
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
 
 type MenuItem = DefaultAutocompleteOption & { id: string };

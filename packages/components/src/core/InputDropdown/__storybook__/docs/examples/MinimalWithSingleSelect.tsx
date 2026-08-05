@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import { MouseEvent, SyntheticEvent, useState } from "react";
 import {
   InputDropdown,
   DropdownMenu,
@@ -22,7 +22,7 @@ const options = [
 function App() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
-  const [details, setDetials] = useState<string>();
+  const [details, setDetails] = useState<string>();
   const [inputDropdownValue, setInputDropdownValue] = useState<string>();
   const [value, setValue] = useState<DefaultAutocompleteOption | null>(null);
 
@@ -53,7 +53,7 @@ function App() {
     </div>
   );
 
-  function handleClick(event: React.MouseEvent<HTMLElement>) {
+  function handleClick(event: MouseEvent<HTMLElement>) {
     if (open) {
       setOpen(false);
 
@@ -69,7 +69,7 @@ function App() {
   }
 
   function handleChange(
-    _: React.SyntheticEvent<Element, Event>,
+    _: SyntheticEvent<Element, Event>,
     newValue: DefaultAutocompleteOption | null
   ) {
     setOpen(false);
@@ -78,10 +78,10 @@ function App() {
     if (newValue) {
       setInputDropdownValue(newValue.name);
 
-      if (newValue?.details) setDetials(newValue?.details);
-      else setDetials(undefined);
+      if (newValue?.details) setDetails(newValue?.details);
+      else setDetails(undefined);
     } else {
-      setDetials(undefined);
+      setDetails(undefined);
       setInputDropdownValue(undefined);
     }
   }
