@@ -51,6 +51,19 @@ const SKIP = new Set(["node_modules", "dist", "__tests__", "__snapshots__"]);
  */
 const SECTION = "Docs Snapshots";
 
+/**
+ * Pages Chromatic will not capture. It refuses a snapshot larger than 25
+ * million pixels, and at the 1,200px width it captures at, these two run past
+ * 26,000px tall — the longest pages in the documentation by a wide margin, and
+ * the only two over the line. Capturing them means splitting them up, so until
+ * that is worth doing they are left out and reviewed in the published
+ * Storybook as they were before.
+ */
+const TOO_TALL = new Set([
+  "Design Documentation/Bases/Colors",
+  "Design Documentation/Bases/Typography",
+]);
+
 /** The `<Meta />` a page declares itself with, and the title it carries. */
 const META_ELEMENT = /^\s*<Meta\b[^>]*\/>\s*$/m;
 const META_TITLE = /\btitle=(?:"([^"]*)"|'([^']*)')/;
@@ -177,6 +190,7 @@ rmSync(OUT_DIR, { force: true, recursive: true });
 mkdirSync(OUT_DIR, { recursive: true });
 
 const skipped = [];
+const omitted = [];
 const taken = new Map();
 
 for (const path of pages.sort()) {
@@ -184,6 +198,11 @@ for (const path of pages.sort()) {
 
   if (!page.title) {
     skipped.push(`${path} (${page.reason})`);
+    continue;
+  }
+
+  if (TOO_TALL.has(page.title)) {
+    omitted.push(page.title);
     continue;
   }
 
@@ -204,7 +223,10 @@ for (const path of pages.sort()) {
 const written = taken.size;
 
 process.stdout.write(
-  `Wrote ${written} documentation snapshot ${written === 1 ? "story" : "stories"} to docs-kit/generated\n`
+  `Wrote ${written} documentation snapshot ${written === 1 ? "story" : "stories"} to docs-kit/generated` +
+    (omitted.length > 0
+      ? `, leaving out ${omitted.join(" and ")} as too tall for Chromatic to capture\n`
+      : "\n")
 );
 
 if (skipped.length > 0) {
