@@ -34,6 +34,14 @@ const config: StorybookConfig = {
     "../packages/mcp/docs/**/*.mdx",
     // The live code playground the docs' examples link out to.
     "../playground/*.stories.tsx",
+    /**
+     * A story per documentation page, written from the pages themselves by
+     * `docs-kit/scripts/generate-doc-snapshots.mjs` before Storybook starts or
+     * builds. Chromatic snapshots stories and not `docs` entries, so this is
+     * what puts the documentation in front of a visual review. They are hidden
+     * from the sidebar, the pages above being the ones to read.
+     */
+    "../docs-kit/generated/*.stories.tsx",
   ],
 
   staticDirs: [

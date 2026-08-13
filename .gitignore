@@ -92,6 +92,8 @@ docs-build
 storybook-static
 # Built from the packages' declarations by playground/scripts/generate-types.mjs
 playground/generated/types.json
+# Written from the documentation pages by docs-kit/scripts/generate-doc-snapshots.mjs
+docs-kit/generated
 
 # Gatsby files
 .cache/

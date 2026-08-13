@@ -66,6 +66,9 @@ const SIDEBAR_WIDTH = 176;
 const SIDEBAR_GAP = 40;
 const PROSE_WIDTH = 960;
 
+/** The prose and its sidebar, side by side: as wide as a page ever gets. */
+export const DOC_WIDTH = PROSE_WIDTH + SIDEBAR_GAP + SIDEBAR_WIDTH;
+
 /** Below this the sidebar has nowhere left to go, so the two columns stack. */
 const STACK_BELOW = 840;
 
@@ -799,7 +802,7 @@ const Sidebar = styled.aside`
  */
 const wideDocsColumn: CSSObject = {
   ".sbdocs-content:has([data-sds-contents])": {
-    maxWidth: PROSE_WIDTH + SIDEBAR_GAP + SIDEBAR_WIDTH,
+    maxWidth: DOC_WIDTH,
   },
 };
 
