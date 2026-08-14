@@ -38,6 +38,9 @@ function App() {
         label="Filter Label"
         onChange={() => {}}
         options={MENU_ITEMS}
+        InputDropdownProps={{
+          sdsStyle: "square",
+        }}
       />
     </div>
   );

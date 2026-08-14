@@ -29,6 +29,7 @@ The menu is 160px wide by default and never narrower, whatever `width` asks for.
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -47,6 +48,12 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function handleClickAway() {}
 
 function App() {
@@ -59,7 +66,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
@@ -181,6 +188,7 @@ By default, the search’s input text is maintained even when a user selects a M
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -199,6 +207,12 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function handleClickAway() {}
 
 function App() {
@@ -211,7 +225,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
@@ -244,6 +258,7 @@ If the `multiple` prop is not `true`, the DropdownMenu allows just one selection
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -259,6 +274,12 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function handleClickAway() {}
 
 function App() {
@@ -271,7 +292,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
@@ -315,6 +336,7 @@ Compare this to the default behavior in the " Search " example above, or change 
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -333,6 +355,12 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function App() {
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
@@ -343,7 +371,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
@@ -391,6 +419,7 @@ This `groupBy` prop must be provided or the groups will not render, even if all 
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -449,6 +478,12 @@ function groupBy(option: DefaultAutocompleteOption) {
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function handleClickAway() {}
 
 function App() {
@@ -461,7 +496,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
@@ -497,6 +532,7 @@ This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/materia
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 type MenuItem = DefaultAutocompleteOption & { id: string };
 
@@ -525,6 +561,12 @@ const MENU_ITEMS: MenuItem[] = [
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function handleClickAway() {}
 
 function App() {
@@ -537,7 +579,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu<MenuItem, false, false, false>
@@ -571,6 +613,7 @@ This is a MUI prop; learn more in the [Autocomplete API](https://mui.com/materia
 
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -588,6 +631,12 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 ];
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
+
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
 
 function handleClickAway() {}
 
@@ -615,7 +664,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <>
@@ -655,6 +704,7 @@ The example below passes the Popper a `className` prop and additionally uses the
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -681,6 +731,12 @@ const POPPER_BASE_PROPS = {
   popperOptions: { strategy: "absolute" as const },
 };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function App() {
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
@@ -691,7 +747,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
@@ -798,6 +854,12 @@ const CustomPopper = styled(Popper)`
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled("div")`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function App() {
   const ref = useRef(null);
   const [open, setOpen] = useState(false);
@@ -808,7 +870,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu

@@ -42,6 +42,10 @@ function App() {
           groupBy: (option: DefaultAutocompleteOption) =>
             option.section as string,
         }}
+        InputDropdownProps={{
+          sdsStyle: "square",
+          width: "280px",
+        }}
         multiple
         search
         isTriggerChangeOnOptionClick

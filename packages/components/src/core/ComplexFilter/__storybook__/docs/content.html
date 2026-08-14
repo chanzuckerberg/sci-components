@@ -45,6 +45,21 @@
   class="sds-doc-example"
   data-example="core/ComplexFilter/ComplexFilterWithRealtimeSelectionChanges"
 ></div>
+<h3>ComplexFilter that closes on blur</h3>
+<p>
+  A single select puts its menu away as soon as something is chosen, but a multi
+  select has no such moment and holds the menu open even when a click lands
+  outside it. <code>closeOnBlur</code> gives it one: a click anywhere else
+  closes the menu, keeping whatever had been selected by then. The prop is
+  ignored while the Apply and Cancel buttons are showing, those being that
+  menu's own way out, so the filter here uses
+  <code>isTriggerChangeOnOptionClick</code> instead and applies each selection
+  as it is made.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ComplexFilter/ComplexFilterThatClosesOnBlur"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The&nbsp;ComplexFilter
@@ -118,6 +133,27 @@
       <p>
         Puts Apply and Cancel buttons at the foot of the menu, so selections
         take effect only once Apply is pressed.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>closeOnBlur</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Closes the filter when a click lands outside it, which it otherwise does
+        not do. It is ignored while the Apply and Cancel buttons are showing,
+        which is a multi select that has not been given
+        <code>isTriggerChangeOnOptionClick</code>. The default follows
+        <code>buttons</code>, so a filter given <code>buttons={false}</code>
+        closes on blur without being asked.
       </p>
     </td>
   </tr>

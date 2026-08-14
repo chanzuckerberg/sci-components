@@ -149,6 +149,7 @@ const VERIFIED_INHERITED = new Map<string, Set<string>>([
     new Set([
       "buttonPosition",
       "buttons",
+      "closeOnBlur",
       "DropdownMenuProps",
       "isTriggerChangeOnOptionClick",
       "keepSearchOnSelect",

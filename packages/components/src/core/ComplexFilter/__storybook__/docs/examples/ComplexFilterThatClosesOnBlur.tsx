@@ -38,15 +38,12 @@ function App() {
         label="Filter Label"
         onChange={() => {}}
         options={MENU_ITEMS}
-        DropdownMenuProps={{
-          groupBy: (option: DefaultAutocompleteOption) =>
-            option.section as string,
-        }}
         InputDropdownProps={{
           sdsStyle: "square",
         }}
         multiple
-        search
+        isTriggerChangeOnOptionClick
+        closeOnBlur
       />
     </div>
   );
