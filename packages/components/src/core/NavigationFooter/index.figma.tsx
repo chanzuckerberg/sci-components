@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import NavigationFooter from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  NavigationFooter,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=13583%3A10292",
   {
     props: {
@@ -29,6 +29,6 @@ figma.connect(
       //   "narrow": "narrow"
       // })
     },
-    example: (props) => <Index logo={props.logo} title="Footer Title" />,
+    example: (props) => <NavigationFooter logo={props.logo} title="Footer Title" />,
   }
 );

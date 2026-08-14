@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./index";
+import NavigationHeader from "./index";
 import figma from "@figma/code-connect";
 
 /**
@@ -10,7 +10,7 @@ import figma from "@figma/code-connect";
  */
 
 figma.connect(
-  Index,
+  NavigationHeader,
   "https://www.figma.com/design/zedDsBDlmkLrKBTuJ4FAz7/Science-Design-System--v2-?node-id=14374%3A11408",
   {
     props: {
@@ -43,7 +43,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
+      <NavigationHeader
         title="Navigation Title"
         primaryNavPosition={props.primaryNavPosition}
         showSearch={props.showSearch}
