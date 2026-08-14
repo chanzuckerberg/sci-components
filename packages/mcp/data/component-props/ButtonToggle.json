@@ -31,7 +31,7 @@
       },
       "sdsType": {
         "defaultValue": "primary",
-        "description": "Color scheme of the button. Primary uses the accent color in the on stage, secondary stays neutral.",
+        "description": "Color scheme of the button. Primary uses the accent color in the on stage, secondary stays neutral. Set it explicitly: the on stage resolves its colors before Button applies this default, so an omitted value draws the neutral treatment over a button that is otherwise primary. Button's \"destructive\" is inherited by the type but has no on-stage treatment, so it should not be used here.",
         "isRequired": false,
         "type": "\"primary\" | \"secondary\" | \"destructive\""
       },

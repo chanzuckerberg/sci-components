@@ -8,8 +8,9 @@ function App() {
     <div className="app">
       <ButtonToggle
         sdsStyle="outline"
+        sdsType="primary"
         sdsStage={toggle ? "on" : "off"}
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
         onClick={() => setToggle((prev) => !prev)}
       >
         Label

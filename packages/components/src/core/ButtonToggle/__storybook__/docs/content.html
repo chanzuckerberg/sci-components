@@ -27,6 +27,59 @@
   class="sds-doc-example"
   data-example="core/ButtonToggle/DefaultButtonToggle"
 ></div>
+<h3>ButtonToggle styles</h3>
+<p>
+  This example shows the two styles a toggle is designed around,
+  <code>"outline"</code> and <code>"minimal"</code>, in both stages.
+  <code>sdsStyle</code> also accepts Button's <code>"solid"</code>, which has no
+  toggle treatment of its own, so set one of these two explicitly rather than
+  taking the inherited default.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/ButtonToggleStyles"
+></div>
+<h3>ButtonToggle types</h3>
+<p>
+  This example shows the two color schemes available through
+  <code>sdsType</code>, which is what decides how the on stage reads: primary
+  fills with the accent color, secondary stays neutral.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/ButtonToggleTypes"
+></div>
+<h3>ButtonToggle sizes</h3>
+<p>
+  This example shows the three sizes available through the <code>size</code>
+  prop.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/ButtonToggleSizes"
+></div>
+<h3>Icon-only ButtonToggle</h3>
+<p>
+  This example shows the form a toggle usually takes. Leaving
+  <code>children</code> out is what makes it square, and since there is then no
+  text for a screen reader to announce, each one needs an
+  <code>aria-label</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/ButtonToggleIconOnly"
+></div>
+<h3>ButtonToggle on a dark background</h3>
+<p>
+  This example shows <code>backgroundAppearance="dark"</code>, which tells the
+  toggle it sits on a dark surface so it can pick colors with enough contrast in
+  both stages. The toggle paints no background of its own, so the panel is
+  supplied alongside the prop.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonToggle/ButtonToggleOnADarkBackground"
+></div>
 <h3>Toggles in a ButtonGroup</h3>
 <p>
   This example shows icon-only toggles collected into a ButtonGroup, each
@@ -122,7 +175,11 @@
     <td>
       <p>
         Color scheme of the button. Primary uses the accent color in the on
-        stage, secondary stays neutral.
+        stage, secondary stays neutral. Set it explicitly: the on stage resolves
+        its colors before Button applies this default, so an omitted value draws
+        the neutral treatment over a button that is otherwise primary. Button's
+        <code>"destructive"</code> is inherited by the type but has no on-stage
+        treatment, so it should not be used here.
       </p>
     </td>
   </tr>
