@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { DropdownMenu, DefaultAutocompleteOption } from "@czi-sds/components";
+import styled from "@emotion/styled";
 
 const MENU_ITEMS: DefaultAutocompleteOption[] = [
   {
@@ -20,6 +21,12 @@ const MENU_ITEMS: DefaultAutocompleteOption[] = [
 
 const POPPER_BASE_PROPS = { popperOptions: { strategy: "absolute" as const } };
 
+const Anchor = styled.div`
+  position: absolute;
+  top: 12px;
+  left: 20px;
+`;
+
 function handleClickAway() {}
 
 function App() {
@@ -32,7 +39,7 @@ function App() {
 
   return (
     <div className="app">
-      <div ref={ref} />
+      <Anchor ref={ref} />
       {open && (
         // 👇 Only pay attention to the props here, everything else is just glue to mount the example
         <DropdownMenu
