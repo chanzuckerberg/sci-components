@@ -26,6 +26,26 @@
   class="sds-doc-example"
   data-example="core/ButtonGroup/DefaultButtonGroup"
 ></div>
+<h3>ButtonGroup types</h3>
+<p>
+  This example shows the two color schemes available through
+  <code>sdsType</code>. The group paints the buttons in it, so an
+  <code>sdsType</code> set on an individual button is overridden.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonGroup/ButtonGroupTypes"
+></div>
+<h3>ButtonGroup sizes</h3>
+<p>
+  This example shows the three sizes available through the <code>size</code>
+  prop. The group injects it into every Button and ButtonToggle child, which is
+  what keeps a mixed group at one height.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonGroup/ButtonGroupSizes"
+></div>
 <h3>Icon-only ButtonGroup</h3>
 <p>
   This example shows an icon-only group in both orientations. Vertical is only
@@ -34,6 +54,37 @@
 <div
   class="sds-doc-example"
   data-example="core/ButtonGroup/ButtonGroupIconOnly"
+></div>
+<h3>ButtonGroup with ButtonToggles</h3>
+<p>
+  This example shows a group of ButtonToggle components rather than Buttons,
+  which turns it from a row of actions into a set of independent switches. Each
+  toggle owns its own state through <code>sdsStage</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonGroup/ButtonGroupWithButtonToggles"
+></div>
+<h3>Disabled ButtonGroup</h3>
+<p>
+  This example shows one disabled button inside an otherwise active group,
+  beside a group disabled as a whole. <code>disabled</code> on the group reaches
+  every button in it.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonGroup/ButtonGroupDisabled"
+></div>
+<h3>ButtonGroup on a dark background</h3>
+<p>
+  This example shows <code>backgroundAppearance="dark"</code>, which tells the
+  group it sits on a dark surface so it can pick borders and text with enough
+  contrast. The group paints no background of its own, so the panel is supplied
+  alongside the prop.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonGroup/ButtonGroupOnADarkBackground"
 ></div>
 <h2>SDS vs MUI</h2>
 <p>
