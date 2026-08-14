@@ -69,6 +69,11 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
       border: 1px solid ${semanticColors?.base?.divider};
       border-bottom: none;
       border-radius: ${corners?.l}px ${corners?.l}px 0 0;
+
+      /* Holds the example, and with it whatever the example opens over itself,
+         while the preview is settling into shape. \`useFitPreview\` lifts this
+         the moment the reader reaches the example, so that a menu they open is
+         free to stand outside the frame. */
       overflow: auto;
 
       ${props.padded ? `min-height: ${MIN_PREVIEW_HEIGHT}px;` : ""}
@@ -146,8 +151,8 @@ const OVERLAY_GUTTER = 16;
  * follows it. Measuring the overlays gives the surface a height to take.
  *
  * Both directions matter, because a menu that has no room beneath it flips and
- * opens upwards, and the surface would clip it. Room above is made by padding
- * the surface, which carries the anchor down and the overlay with it.
+ * opens upwards. Room above is made by padding the surface, which carries the
+ * anchor down and the overlay with it.
  */
 function overlayOverflow(surface: HTMLElement): {
   above: number;
@@ -181,14 +186,33 @@ function overlayOverflow(surface: HTMLElement): {
 const SETTLE_DELAYS = [0, 50, 150, 400, 1000];
 
 /**
- * Reserve room in the preview for the overlays its example opens, so they are
- * framed with it rather than spilling over the prose below.
+ * Hold a preview around the example in it until the reader takes it over.
  *
- * The surface only ever grows, which is what keeps this convergent: each fit
- * moves the overlays it just made room for, prompting another, and with no room
- * left to add the measurements agree and it settles.
+ * A frame that clips is a frame an overlay cannot leave, and the box it is
+ * placed against as well: a menu opened inside a preview is held to it, and the
+ * preview grows to hold whatever is left over. For the examples documented with
+ * a menu already open — a DropdownMenu has no trigger of its own, and an
+ * Autocomplete can be asked to show its list — that is exactly right. Nothing
+ * else holds a preview open around an overlay, and one let loose would cover
+ * the prose under it for as long as the page is on screen.
+ *
+ * For a menu the reader opens themselves it is not. A menu on a page stands
+ * over what is beneath it and leaves the page where it is, which is what Menu
+ * has always done here, its surface going to the end of the document and never
+ * having been in the frame to begin with.
+ *
+ * Both, then, in turn: a preview frames what its example shows on its own, and
+ * at the reader's first touch lets go — of the overlays, which are free to
+ * reach past it from then on, and of the measuring that was keeping up with
+ * them. Scrolling is the one thing it keeps hold of, and only where the example
+ * is genuinely wider than the frame, which in practice means a table, and a
+ * table has no menu to open.
+ *
+ * The frame only ever grows, which is what keeps the measuring convergent: each
+ * pass moves the overlays it has just made room for, prompting another, and
+ * with no room left to add the measurements agree and it settles.
  */
-function useFitContent(surface: HTMLElement | null): void {
+function useFitPreview(surface: HTMLElement | null): void {
   useEffect(() => {
     if (!surface) return;
 
@@ -214,18 +238,37 @@ function useFitContent(surface: HTMLElement | null): void {
       );
     };
 
-    // An overlay opened later, from a click target say, arrives as a new node
-    // under the surface.
+    // The example itself arrives late — its module is fetched the first time
+    // the page asks for it — and an overlay it opens later still, so there is
+    // no one moment at which a preview is there to be measured.
     const observer = new MutationObserver(settle);
     observer.observe(surface, { childList: true, subtree: true });
 
+    const release = (): void => {
+      timers.splice(0).forEach(clearTimeout);
+      observer.disconnect();
+      window.removeEventListener("resize", settle);
+      surface.removeEventListener("keydown", release, true);
+      surface.removeEventListener("pointerdown", release, true);
+
+      if (surface.scrollWidth <= surface.clientWidth) {
+        surface.style.overflow = "visible";
+      }
+    };
+
     settle();
     window.addEventListener("resize", settle);
+    // Captured, so that a control which handles the event itself still counts
+    // as the reader having reached the example.
+    surface.addEventListener("keydown", release, true);
+    surface.addEventListener("pointerdown", release, true);
 
     return () => {
       timers.forEach(clearTimeout);
       observer.disconnect();
       window.removeEventListener("resize", settle);
+      surface.removeEventListener("keydown", release, true);
+      surface.removeEventListener("pointerdown", release, true);
     };
   }, [surface]);
 }
@@ -335,7 +378,7 @@ export function SdsExample({
    */
   const [surface, setSurface] = useState<HTMLDivElement | null>(null);
   const theme = useMemo(() => previewTheme(mode, surface), [mode, surface]);
-  useFitContent(surface);
+  useFitPreview(surface);
 
   const Example = useMemo(() => {
     const load = exampleLoaders[`${modulePath(id)}.tsx`];

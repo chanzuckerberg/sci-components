@@ -6,9 +6,6 @@
 // arrive, so an option that repeats a section already passed starts a second
 // section with the same heading. Sort the options the way the sections should
 // read before handing them over.
-//
-// open is set here only so the sections are visible on the page; normally the
-// field opens itself when it is clicked.
 
 import {
   Autocomplete,
@@ -28,14 +25,18 @@ const OPTIONS: DefaultAutocompleteOption[] = [
 
 function App() {
   return (
-    <div className="app" style={{ width: 280 }}>
+    <div className="app">
       <Autocomplete
         groupBy={(option) => option.section as string}
         label="Search cell types"
         multiple
-        open
         options={OPTIONS}
         search
+        InputBaseProps={{
+          style: {
+            width: "280px",
+          },
+        }}
       />
     </div>
   );

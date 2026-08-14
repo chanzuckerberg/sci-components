@@ -256,11 +256,19 @@ const Container = styled.div<CommonThemeProps>`
   .sds-doc-live-code,
   .sds-doc-example-block {
     margin: 1.25em 0;
-    border-radius: 6px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 0px;
+  }
+  /* An example block is left unclipped, so that a menu opened in the preview
+     can stand over the page below it the way it would in an app. It loses
+     nothing by it: the preview rounds its own top corners and the source code
+     figure its own bottom ones, and a clip at this radius would fall outside
+     both. A snippet is only its figure, which has no corners of its own. */
+  .sds-doc-code-snippet,
+  .sds-doc-live-code {
+    border-radius: 6px;
+    overflow: hidden;
   }
   .sds-doc-code-snippet figure {
     border-radius: 6px;

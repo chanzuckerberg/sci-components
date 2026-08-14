@@ -9,20 +9,13 @@
 //
 // keepSearchOnSelect leaves the typed text in place after a pick, so several
 // matches for the same search can be selected without retyping it.
-//
-// open is set here only so the list is visible on the page.
 
 import { useState } from "react";
 import {
   Autocomplete,
-  fontBodyXs,
-  getSemanticColors,
-  getSpaces,
   type AutocompleteSingleColumnOnChange,
-  type CommonThemeProps,
   type DefaultAutocompleteOption,
 } from "@czi-sds/components";
-import styled from "@emotion/styled";
 
 const OPTIONS: DefaultAutocompleteOption[] = [
   { name: "Astrocyte" },
@@ -33,20 +26,6 @@ const OPTIONS: DefaultAutocompleteOption[] = [
   { name: "Neuron" },
   { name: "T cell" },
 ];
-
-const Readout = styled.p<CommonThemeProps>`
-  ${fontBodyXs}
-
-  ${(props) => {
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      color: ${semanticColors?.base?.textSecondary};
-      margin: 0 0 ${spaces?.m}px;
-    `;
-  }}
-`;
 
 function App() {
   const [selected, setSelected] = useState<DefaultAutocompleteOption[]>([]);
@@ -61,22 +40,20 @@ function App() {
   > = (_event, value) => setSelected(value);
 
   return (
-    <div className="app" style={{ width: 280 }}>
-      <Readout>
-        {selected.length
-          ? selected.map((option) => option.name).join(", ")
-          : "Nothing selected."}
-      </Readout>
-
+    <div className="app">
       <Autocomplete<DefaultAutocompleteOption, true, false, false>
         keepSearchOnSelect
         label="Search cell types"
         multiple
-        open
         options={OPTIONS}
         search
         value={selected}
         onChange={handleChange}
+        InputBaseProps={{
+          style: {
+            width: "280px",
+          },
+        }}
       />
     </div>
   );

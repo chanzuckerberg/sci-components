@@ -24,7 +24,7 @@ const OPTIONS: DefaultAutocompleteOption[] = [
 
 function App() {
   return (
-    <div className="app" style={{ width: 280 }}>
+    <div className="app">
       <Autocomplete label="Search cell types" options={OPTIONS} search />
     </div>
   );

@@ -8,8 +8,6 @@
 //
 // One search field sits above all the columns and filters them together.
 // groupBy is ignored here: sections and columns do not combine.
-//
-// open is set here only so the columns are visible on the page.
 
 import { useState } from "react";
 import {
@@ -38,7 +36,6 @@ const COLUMNS: AutocompleteMultiColumnOption<Option, true, false, false>[] = [
       { name: "Kidney" },
       { name: "Lung" },
     ],
-    width: 180,
   },
   {
     name: "Assay",
@@ -48,7 +45,6 @@ const COLUMNS: AutocompleteMultiColumnOption<Option, true, false, false>[] = [
       { details: "Sequential FISH", name: "seqFISH" },
       { name: "Smart-seq2" },
     ],
-    width: 220,
   },
 ];
 
@@ -84,16 +80,20 @@ function App() {
     .join(" · ");
 
   return (
-    <div className="app" style={{ width: 440 }}>
+    <div className="app">
       <Readout>{summary || "Nothing selected."}</Readout>
 
       <Autocomplete<Option, true, false, false>
         label="Search tissues and assays"
         multiple
-        open
         options={COLUMNS}
         search
         onChange={handleChange}
+        InputBaseProps={{
+          style: {
+            width: "280px",
+          },
+        }}
       />
     </div>
   );

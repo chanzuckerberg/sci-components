@@ -6,8 +6,6 @@
 // the label. The two are mutually exclusive by type: an option is either a
 // described one or a custom one, never both. It still needs a name, which is
 // what search matches against and what selection is tracked by.
-//
-// open is set here only so the options are visible on the page.
 
 import {
   Autocomplete,
@@ -62,13 +60,17 @@ const OPTIONS: DefaultAutocompleteOption[] = [
 
 function App() {
   return (
-    <div className="app" style={{ width: 320 }}>
+    <div className="app">
       <Autocomplete
         label="Search cell types"
         multiple
-        open
         options={OPTIONS}
         search
+        InputBaseProps={{
+          style: {
+            width: "320px",
+          },
+        }}
       />
     </div>
   );
