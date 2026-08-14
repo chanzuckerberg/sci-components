@@ -63,6 +63,27 @@
   class="sds-doc-example"
   data-example="core/ButtonDropdown/ButtonDropdownWithAStartIcon"
 ></div>
+<h3>ButtonDropdown without a background on hover</h3>
+<p>
+  This example shows <code>backgroundOnHover</code>, which only applies to the
+  minimal style. Turning it off drops the button's padding along with its hover
+  and pressed backgrounds, so it sits flush with the text around it.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownBackgroundOnHover"
+></div>
+<h3>ButtonDropdown on a dark background</h3>
+<p>
+  This example shows <code>backgroundAppearance="dark"</code>, which tells the
+  button it sits on a dark surface so it can pick colors with enough contrast.
+  The button paints no background of its own, so the panel is supplied alongside
+  the prop.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownOnADarkBackground"
+></div>
 <h2>SDS vs MUI</h2>
 <p>
   The SDS ButtonDropdown component is the regular Button component with a
@@ -163,6 +184,42 @@
   </tr>
   <tr>
     <td>
+      <p><code>backgroundOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Only applies when <code>sdsStyle</code> is <code>"minimal"</code>. When
+        <code>false</code>, the button drops its padding and renders no
+        background on hover or press, so it sits flush with surrounding text.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>backgroundAppearance</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground" | "dark"</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground"</code></p>
+    </td>
+    <td>
+      <p>
+        Tells the button which surface it sits on so it can pick colors with
+        enough contrast. Set it to <code>"dark"</code> when the button is placed
+        on a dark background in light mode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>startIcon</code></p>
     </td>
     <td>
@@ -222,6 +279,9 @@
   </tr>
 </table>
 <p>
-  Every other Button prop, such as <code>backgroundOnHover</code> and
-  <code>backgroundAppearance</code>, is supported and behaves identically here.
+  Everything else Button accepts passes through unchanged and behaves
+  identically here, including its <code>href</code> and
+  <code>target</code> props and MUI's own, such as <code>sx</code> and
+  <code>className</code>. The one exception is <code>endIcon</code>, which the
+  chevron overwrites, as noted above.
 </p>

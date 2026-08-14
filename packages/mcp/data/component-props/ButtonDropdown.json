@@ -1,6 +1,18 @@
 {
   "ButtonDropdown": {
     "props": {
+      "backgroundAppearance": {
+        "defaultValue": "matchBackground",
+        "description": "Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to \"dark\" when the button is placed on a dark background in light mode.",
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
+      },
+      "backgroundOnHover": {
+        "defaultValue": true,
+        "description": "Only applies when sdsStyle is \"minimal\". When false, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "children": {
         "description": "The button label. The trailing chevron is only rendered when a label is present.",
         "isRequired": false,
