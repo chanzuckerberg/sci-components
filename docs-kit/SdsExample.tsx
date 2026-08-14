@@ -24,6 +24,7 @@ import {
   PREVIEW_CLASS,
   SB_UNSTYLED_CLASS,
 } from "./constants";
+import { ExampleSkeleton } from "./ExampleSkeleton";
 import {
   ExampleErrorBoundary,
   exampleLoaders,
@@ -34,6 +35,23 @@ import {
 } from "./exampleRegistry";
 import { previewTheme } from "./previewTheme";
 import { useThemeMode } from "./useThemeMode";
+
+/**
+ * The height a padded preview stands at whatever it has to show: most examples
+ * are a control or two and framed tight against them they read as cramped, so
+ * the frame is given a size of its own and the specimen sits in the middle of
+ * it. Also the height the placeholder waits at, so that a preview is the same
+ * height before and after its example arrives.
+ *
+ * Only the padded previews. A preview asking for no inset is page furniture — a
+ * header, a footer, a dialog — which means to reach the edges of its frame and
+ * is as tall as it needs to be; a floor under one of those would leave a header
+ * bar with an empty half-page beneath it.
+ */
+const MIN_PREVIEW_HEIGHT = 200;
+
+/** How wide the placeholder draws, given a preview's width to draw it in. */
+const SKELETON_WIDTH = 320;
 
 /**
  * Themed surface the example renders on. It reproduces the little the original
@@ -52,6 +70,27 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
       border-bottom: none;
       border-radius: ${corners?.l}px ${corners?.l}px 0 0;
       overflow: auto;
+
+      ${props.padded ? `min-height: ${MIN_PREVIEW_HEIGHT}px;` : ""}
+
+      /* Centred in whatever room the floor leaves over the example, and "safe"
+         so that one with no room to spare is aligned to the top instead: centred
+         overflow spills past both edges and only one of them can be scrolled
+         back to. A preview with no floor has nothing to centre in, and this
+         leaves it where it was. */
+      display: grid;
+      align-content: safe center;
+
+      /* An example takes the surface's width as given. A lone auto-sized column
+         would take its width from its content, so an example wider than the
+         frame would widen the box rather than be scrolled inside it — and a
+         component that divides that width between its parts, as a table does
+         between its columns, would then measure a width it had set itself and
+         grow again on every pass. */
+      grid-template-columns: minmax(0, 1fr);
+      > * {
+        min-width: 0;
+      }
 
       /* Containing block for the overlays the previews open, so that a menu is
          placed and measured against this box rather than the page. */
@@ -73,6 +112,26 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
     `;
   }}
 `;
+
+/**
+ * Where the placeholder waits. Its own floor, rather than the surface's, is what
+ * holds a preview open while its example is on the way: an example is fetched
+ * only when the page first asks for it, and a frame that collapsed to nothing in
+ * the meantime would have nowhere to show that anything was coming.
+ */
+const SkeletonFrame = styled.div`
+  display: grid;
+  place-items: center;
+  min-height: ${MIN_PREVIEW_HEIGHT}px;
+`;
+
+function PreviewSkeleton(): ReactElement {
+  return (
+    <SkeletonFrame>
+      <ExampleSkeleton maxWidth={SKELETON_WIDTH} />
+    </SkeletonFrame>
+  );
+}
 
 /** Room left around an overlay so it does not sit flush against the frame. */
 const OVERLAY_GUTTER = 16;
@@ -307,7 +366,7 @@ export function SdsExample({
           >
             {css ? <style>{css}</style> : null}
             <ExampleErrorBoundary id={id}>
-              <Suspense fallback={null}>
+              <Suspense fallback={<PreviewSkeleton />}>
                 <Example />
               </Suspense>
             </ExampleErrorBoundary>

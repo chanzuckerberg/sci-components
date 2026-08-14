@@ -25,6 +25,35 @@
   class="sds-doc-example"
   data-example="core/ButtonDropdown/DefaultButtonDropdown"
 ></div>
+<h3>ButtonDropdown styles</h3>
+<p>
+  This example shows the three styles available through <code>sdsStyle</code>,
+  from most to least emphasis.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownStyles"
+></div>
+<h3>ButtonDropdown types</h3>
+<p>
+  This example shows the two color schemes available through
+  <code>sdsType</code>. Each one can be combined with any of the styles above.
+  Unlike Button, there is no <code>"destructive"</code> type: a dropdown trigger
+  opens a menu rather than carrying out an action.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownTypes"
+></div>
+<h3>ButtonDropdown sizes</h3>
+<p>
+  This example shows the three sizes available through the <code>size</code>
+  prop. The trailing chevron follows the size of the button it sits in.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownSizes"
+></div>
 <h3>ButtonDropdown with a start icon</h3>
 <p>
   This example shows how to incorporate a starting icon within a ButtonDropdown
@@ -52,6 +81,12 @@
 <p>
   whereas MUI expects the prop to receive an individual icon as its own
   component (for example <code>startIcon={&lt;DeleteIcon /&gt;}</code>).
+</p>
+<p>
+  The chevron is applied after your props, so an <code>endIcon</code> passed to
+  a ButtonDropdown is ignored: the trailing slot belongs to the component. Where
+  a different trailing icon is what you are after, use Button and put it there
+  yourself.
 </p>
 <p>
   Because ButtonDropdown renders a Button, it accepts every Button prop except
