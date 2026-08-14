@@ -36,7 +36,15 @@ figma.connect(
       icon: figma.boolean("showIcon?", { true: "TagSimple", false: undefined }),
     },
     example: ({ selected, disabled, icon }) => (
-      <MenuItem sdsType="action" selected={selected} disabled={disabled} icon={icon}>
+      <MenuItem
+        sdsType="action"
+        selected={selected}
+        disabled={disabled}
+        // PLACEHOLDER ICON — this is NOT the icon used in the design. Code Connect
+        // cannot read Figma instance swaps, so replace it with the icon actually
+        // shown on this instance of the component in Figma.
+        icon={icon}
+      >
         Menu item
       </MenuItem>
     ),
@@ -55,7 +63,16 @@ figma.connect(
       column: figma.textContent("Count"),
     },
     example: ({ selected, disabled, icon, column }) => (
-      <MenuItem sdsType="action" selected={selected} disabled={disabled} icon={icon} column={column}>
+      <MenuItem
+        sdsType="action"
+        selected={selected}
+        disabled={disabled}
+        // PLACEHOLDER ICON — this is NOT the icon used in the design. Code Connect
+        // cannot read Figma instance swaps, so replace it with the icon actually
+        // shown on this instance of the component in Figma.
+        icon={icon}
+        column={column}
+      >
         Menu item
       </MenuItem>
     ),
@@ -74,7 +91,16 @@ figma.connect(
       column: figma.textContent("Details"),
     },
     example: ({ selected, disabled, icon, column }) => (
-      <MenuItem sdsType="action" selected={selected} disabled={disabled} icon={icon} column={column}>
+      <MenuItem
+        sdsType="action"
+        selected={selected}
+        disabled={disabled}
+        // PLACEHOLDER ICON — this is NOT the icon used in the design. Code Connect
+        // cannot read Figma instance swaps, so replace it with the icon actually
+        // shown on this instance of the component in Figma.
+        icon={icon}
+        column={column}
+      >
         Menu item
       </MenuItem>
     ),

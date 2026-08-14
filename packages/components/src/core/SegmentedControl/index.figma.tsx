@@ -35,7 +35,13 @@ figma.connect(
       }),
     },
     example: ({ buttonDefinition }) => (
-      <SegmentedControl buttonDefinition={buttonDefinition} />
+      <SegmentedControl
+        // PLACEHOLDER ICON — icon segments use a placeholder glyph, NOT the icon
+        // used in the design. Code Connect cannot read Figma instance swaps, so
+        // replace it with the icon actually shown on this instance in Figma.
+        // Labels and segment count are illustrative too.
+        buttonDefinition={buttonDefinition}
+      />
     ),
   }
 );

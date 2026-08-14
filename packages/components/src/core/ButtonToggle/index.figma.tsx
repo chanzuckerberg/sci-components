@@ -55,6 +55,9 @@ figma.connect(
         size={size}
         sdsStage={sdsStage}
         disabled={disabled}
+        // PLACEHOLDER ICON — this is NOT the icon used in the design. Code Connect
+        // cannot read Figma instance swaps, so replace it with the icon actually
+        // shown on this instance of the component in Figma.
         startIcon="DownloadSimple"
         onClick={() => {}}
       >

@@ -46,6 +46,12 @@ figma.connect(
         size={size}
         orientation={orientation}
       >
+        {/* PLACEHOLDER CONTENT — these Buttons are illustrative and are NOT
+            what the design shows. Replace them with the actual buttons on this
+            instance of the component in Figma, matching their count, labels,
+            and any icons. Icon glyphs cannot be read from Figma instance swaps,
+            so any icon must be supplied manually (as startIcon, or as an Icon
+            child for icon-only buttons). */}
         <Button sdsType={sdsType} sdsStyle="outline">
           Button 1
         </Button>
