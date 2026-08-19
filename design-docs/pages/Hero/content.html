@@ -1,0 +1,623 @@
+<h1>Hero</h1>
+<p>
+  Hero is located at the top of the page above all other content and features
+  key information and visuals which can include images or videos, headlines, and
+  calls-to-action including Buttons and Links.
+</p>
+<h2>Overview</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<p>
+  The Hero component was designed to support a wide range of potential product
+  needs, giving teams flexibility to implement content in their applications as
+  desired. Teams can fill the background with their visual of choice (image,
+  video, color, gradient, etc.), overlay any combination of elements (text,
+  image, buttons, links, etc.) on top of their chosen background, as well as
+  turn on a darkening mask to make text easier to read and / or a darkening
+  vignette positioned at the top of the container to make the transition from
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Header Navigation
+  </a>
+  to Hero visually smooth.
+</p>
+<p>
+  Hero has been built to ensure any overlay elements (text, images, videos,
+  etc.) are constrained to a content area that is centered on the page; this is
+  especially necessary when viewed on wide screens. Overlay elements can be
+  freely arranged within this content area. The max-width of this area and its
+  left and right padding are dictated by
+  <a
+    href="./?path=/docs/design-documentation-bases-responsive-design--docs"
+    target="_top"
+    >Breakpoint</a
+  >
+  . When displayed at Small and Medium Breakpoints, the max-width of the content
+  area is <code>100%</code> of the screen width with left and right padding of
+  <code>24px</code> on Small Breakpoints and <code>40px</code> on Medium
+  Breakpoints.
+</p>
+<p>
+  When displayed at Large Breakpoints, the content area has a max-width of
+  <code>1024px</code> and left and right padding of <code>120px</code>. This
+  means that the width of the content area will be dictated by the width of the
+  screen minus the left and right padding of <code>120px</code> up until that
+  value is greater than <code>1024px</code>. Once the width of the screen goes
+  beyond that value, the viewable area will be set at <code>1024px</code>.
+</p>
+<p>
+  For example: if the screen is <code>1200px</code> wide, the width of the
+  content area would be <code>960px</code> (<code
+    >1200px-120px-120px = 960px</code
+  >). If, however, the screen is <code>1500px</code> wide, the width of the
+  content area would max out and be <code>1024px</code> (<code
+    >1500px-120px-120px = 1260px</code
+  >) since <code>1260px</code> is larger than <code>1024px</code>, and thus a
+  width of <code>1024px</code> would be used for the content area. This ensures
+  that, even when viewed on extra wide displays, the overlay content will always
+  be viewable by users.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Breakpoint: Large</p></td>
+    <td><p>Breakpoint: Medium</p></td>
+    <td><p>Breakpoint: Small</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Hero_large</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0e2a68e645ca57e9.png"
+        alt="Preview_Guidelines_Hero_large"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Hero_medium</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/b1dfb9fbe803a54f.png"
+        alt="Preview_Guidelines_Hero_medium"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Hero_small</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/72295afe8b0608b4.png"
+        alt="Preview_Guidelines_Hero_small"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Background Fill Options</h4>
+<p>
+  The Hero component background can be filled with any CSS color, including
+  gradients, or any type of media such as images, videos, GIFs, etc.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Color</p></td>
+    <td><p>Media</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_background_color</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/216d79222c50b973.png"
+        alt="Hero_background_color"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_background_image</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/09985a8f089231b2.png"
+        alt="Hero_background_image"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Darkening Mask</h4>
+<p>
+  The darkening mask is an overlay element used to subtly dim the Hero's
+  background, thereby enhancing the visibility and focus on the overlay
+  elements; the mask's opacity can be set by the team implementing it.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>Enabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_darkening mask_false</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/09985a8f089231b2.png"
+        alt="Hero_darkening mask_false"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_darkening mask_true</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/be9fb23a789a691a.png"
+        alt="Hero_darkening mask_true"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Darkening Vignette</h4>
+<p>
+  The darkening vignette is an overlay element positioned at the top of Hero
+  that subtly fades from solid to transparent, smoothing the transition from the
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Header Navigation
+  </a>
+  to the Hero background.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>Enabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_darkening vignette_false</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/09985a8f089231b2.png"
+        alt="Hero_darkening vignette_false"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_darkening vignette_true</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/7aa789722630cc7c.png"
+        alt="Hero_darkening vignette_true"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Content Visibility</h4>
+<p>
+  Overlay content elements (title text, caption text, and content slot) can be
+  used or not depending on teams' needs; the examples below show one element
+  hidden at a time to demonstrate, but any combination of elements can be used.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>All elements displayed</p></td>
+    <td><p>Title hidden</p></td>
+    <td><p>Caption hidden</p></td>
+    <td><p>Content slot hidden</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_all visible</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/216d79222c50b973.png"
+        alt="Hero_overlay content_options_all visible"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_no title</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/78321186fb1bd14c.png"
+        alt="Hero_overlay content_options_no title"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_no caption</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/ad44c3e046f29682.png"
+        alt="Hero_overlay content_options_no caption"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_options_no slot</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c0077e0f331db107.png"
+        alt="Hero_overlay content_options_no slot"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Text Alignment Options</h4>
+<p>Alignment settings apply to both title and caption text.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Left-aligned</p></td>
+    <td><p>Center-aligned</p></td>
+    <td><p>Right-aligned</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay text_alignment_left-aligned</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/216d79222c50b973.png"
+        alt="Hero_overlay text_alignment_left-aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay text_alignment_center-aligned</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/82058f3202e6cdd0.png"
+        alt="Hero_overlay text_alignment_center-aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay text_alignment_right-aligned</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/bb64621899c92879.png"
+        alt="Hero_overlay text_alignment_right-aligned"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Content Position</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Top-left</p></td>
+    <td><p>Top</p></td>
+    <td><p>Top-right</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_top-left</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/216d79222c50b973.png"
+        alt="Hero_overlay content_position_top-left"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay content_position_top</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/151dc93761f98b53.png"
+        alt="Hero_overlay content_position_top"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_top-right</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/49487474070cbc8e.png"
+        alt="Hero_overlay content_position_top-right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Left</p></td>
+    <td><p>Center</p></td>
+    <td><p>Right</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay content_position_left</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0c11dce11c2d02df.png"
+        alt="Hero_overlay content_position_left"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_center</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c648ca0014e69061.png"
+        alt="Hero_overlay content_position_center"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_right</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2c9316c6645ba1c9.png"
+        alt="Hero_overlay content_position_right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Bottom-left</p></td>
+    <td><p>Bottom</p></td>
+    <td><p>Bottom-right</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_bottom-left</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c2c53995276db468.png"
+        alt="Hero_overlay content_position_bottom-left"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_bottom</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/bfbd55249846adfc.png"
+        alt="Hero_overlay content_position_bottom"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay content_position_bottom-right</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f74d83a42ec66fb2.png"
+        alt="Hero_overlay content_position_bottom-right"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Media Options</h4>
+<p>
+  In addition to overlay content, media (images, videos, GIFs, etc.) can be
+  optionally overlayed on top of the Hero component's background; it can take
+  whatever size or shape teams need.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Overlay media hidden</p></td>
+    <td><p>Overlay media displayed</p></td>
+    <td><p>Larger overlay media</p></td>
+    <td><p>Smaller overlay media</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_false</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/9b8418ade8071cf5.png"
+        alt="Hero_overlay image_false"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_true</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/216d79222c50b973.png"
+        alt="Hero_overlay image_true"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_true_larger</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/283233de72574fad.png"
+        alt="Hero_overlay image_true_larger"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_true_smaller</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/b8e8ef52100cd15c.png"
+        alt="Hero_overlay image_true_smaller"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overlay Media Position</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Top-left</p></td>
+    <td><p>Top</p></td>
+    <td><p>Top-right</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_top-left</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/934eb560987d1913.png"
+        alt="Hero_overlay image_position_top-left"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_top</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4638a46389094e05.png"
+        alt="Hero_overlay image_position_top"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_top-right</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d08c1c7935927be1.png"
+        alt="Hero_overlay image_position_top-right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Left</p></td>
+    <td><p>Center</p></td>
+    <td><p>Right</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_left</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/555653c02313673f.png"
+        alt="Hero_overlay image_position_left"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_center</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d96d1dae18fe62aa.png"
+        alt="Hero_overlay image_position_center"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_right</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/abaf762908af9b16.png"
+        alt="Hero_overlay image_position_right"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Bottom-left</p></td>
+    <td><p>Bottom</p></td>
+    <td><p>Bottom-right</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_bottom-left</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/bf158eb56b68cfb0.png"
+        alt="Hero_overlay image_position_bottom-left"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Hero_overlay image_position_bottom</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/8c60c6647db7f70f.png"
+        alt="Hero_overlay image_position_bottom"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Hero_overlay image_position_bottom-right</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/216d79222c50b973.png"
+        alt="Hero_overlay image_position_bottom-right"
+      />
+    </figure>
+  </figure>
+</div>

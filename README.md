@@ -6,9 +6,9 @@ The Science Design System (SDS) brings consistency and universal standards to CZ
 
 ## Design System Documentation
 
-`@czi-sds/components` implements the Science Design System as documented in [Zeroheight](https://sds.czi.design/). As a result, it's very useful to get familiar with the available **theme variables**, such as `colors`, `spaces`, `typography`, etc., so you can leverage the theme properly in your application.
+`@czi-sds/components` implements the Science Design System, which is documented in [Storybook](https://chanzuckerberg.github.io/sci-components/). Every component has a Documentation page covering how it differs from the MUI component it wraps, its props, and a runnable example of each variation. The design foundations (colors, spacing, typography, and the rest) live under Design Documentation, and it's worth getting familiar with the **theme variables** they describe so you can leverage the theme properly in your application.
 
-![Science Design System Zeroheight Homepage Snapshot](https://user-images.githubusercontent.com/6309723/155802483-366008aa-7380-4a01-b356-ae0ab02f4f3b.png)
+The documentation is authored in this repository, so it ships and versions with the code.
 
 ## Installation
 
@@ -20,7 +20,7 @@ NOTE: Since most of the czi-sds components are built on top of Material UI's equ
 
 ## Migrating to SDS 24.0.0 (Material UI v9)
 
-SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-24.0.0.md](./migration-docs/migrate-to-24.0.0.md). If a newer version of SDS is published, install that one instead — the same MUI v9 migration steps apply.
+SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-24.0.0.md](./migration-docs/migrate-to-24.0.0.md). If a newer version of SDS is published, install that one instead. The same MUI v9 migration steps apply.
 
 That guide covers dependency updates, MUI import and prop API changes (`slots` / `slotProps`), SDS-specific call-site updates, icon renames, and a verification checklist.
 
@@ -45,6 +45,24 @@ npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/mater
 // with yarn
 yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
 ```
+
+### Icons
+
+SDS uses [Phosphor Icons](https://phosphoricons.com). Install Phosphor for the icon set, and `@czi-sds/icons` for the icons SDS draws itself. They are kept there either because Phosphor has no equivalent, or because Phosphor has something close and SDS wants its own version.
+
+```
+npm i @phosphor-icons/react @czi-sds/icons
+```
+
+```tsx
+import { HeartIcon } from "@phosphor-icons/react";
+import { AtlasIcon } from "@czi-sds/icons";
+
+<HeartIcon size={24} />
+<AtlasIcon size={24} />
+```
+
+Both take the same props, so the only difference between them is where you import from. The `Icon` component in `@czi-sds/components` is deprecated.
 
 > **React 18 (or below) note:** Material UI (a peer dependency) ships `react-is@19`. If your app uses React 18 or below, pin `react-is` to match your React version to avoid runtime errors in prop-type checks. For example, with React 18 add the following to your `package.json` (use `resolutions` for Yarn, `overrides` for npm/pnpm):
 >

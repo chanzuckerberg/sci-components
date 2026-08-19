@@ -2,56 +2,104 @@
   "InputDropdown": {
     "props": {
       "counter": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "If multiple set to true, this number shows the number of selected menu items.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "classes": {
-        "type": "complex",
-        "isRequired": false
+        "description": "A class name for each part of the input, for styling one of them without reaching through the DOM: root, label, labelDetailsWrapper, contentWrapper, details, counter, iconWrapper, chevronIcon and minimalDetails.",
+        "isRequired": false,
+        "type": "complex"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "The color of the component.",
+        "isRequired": false,
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\""
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": true
+        "description": "The label of the Input Button.",
+        "isRequired": true,
+        "type": "ReactNode"
       },
       "multiple": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Allows users to select multiple menu items.multiple=true cannot be used with the minimum variant.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "sdsStyle": {
-        "type": "\"minimal\" | \"square\" | \"rounded\"",
-        "isRequired": false
+        "defaultValue": "square",
+        "description": "The visual appearance of the component.",
+        "isRequired": false,
+        "type": "\"square\" | \"rounded\" | \"minimal\""
       },
       "sdsType": {
-        "type": "\"value\" | \"label\"",
-        "isRequired": false
+        "defaultValue": "label",
+        "description": "The label variant includes the label within the input field and showcases the selected menu item as additional details or sets the counter when in multi-select mode. The value variant replaces the label with the selected value directly within the input field. The detailed information is then displayed in a separate section dedicated to displaying additional details. However, it's important to note that the value variant cannot be used in conjunction with multi-select mode.",
+        "isRequired": false,
+        "type": "\"label\" | \"value\""
       },
       "shouldPutAColonAfterLabel": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "If true, a colon (:) will be added after the label or value.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "shouldTruncateMinimalDetails": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, the details section of the minimal variant displays a truncated one-liner with an ellipsis (...), if false the details section expands to multiple lines for a comprehensive display.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "startIcon": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "An element placed before the label, passed straight through to the underlying MUI Button.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "style": {
-        "type": "CSSProperties",
-        "isRequired": false
+        "description": "Inline styles for the input's root element.",
+        "isRequired": false,
+        "type": "CSSProperties"
       },
       "width": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "auto",
+        "description": "How wide the input is. A bare number is read as pixels, so \"240\" means 240px, and any other value is used as the CSS width, such as \"100%\" or \"20rem\". Values below 90px are ignored, since the input keeps that as its minimum. Left unset, the input is as wide as its content, or as wide as its container if MUI's fullWidth is set.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "className": {
+        "description": "Added to the input's root element, alongside anything classes.root puts there.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "details": {
+        "description": "A text showing details for the selected menu item.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "onClick": {
+        "defaultValue": "(event: React.MouseEvent<HTMLElement>) => void",
+        "description": "Sets what happens when a user clicks on the component.",
+        "isRequired": true,
+        "type": "function"
+      },
+      "state": {
+        "defaultValue": "default",
+        "description": "Draws the input in its open state. The input has no idea whether its menu is showing, so set this from whatever holds that state.",
+        "isRequired": false,
+        "type": "\"open\" | \"default\""
+      },
+      "value": {
+        "description": "The value that will be displayed in the component for the value variant.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

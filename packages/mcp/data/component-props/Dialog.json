@@ -2,24 +2,57 @@
   "Dialog": {
     "props": {
       "buttonPosition": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "right",
+        "description": "Aligns the action buttons in the footer. Order the buttons so the primary action sits on the outside: last for \"right\", first for \"left\".",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "canClickOutsideClose": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
-      },
-      "longContent": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When false, onClose is not called for a backdrop click or the Esc key, which makes the Dialog persistent. Give those Dialogs an action button that closes them.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "sdsSize": {
-        "type": "\"s\" | \"m\" | \"xs\" | \"l\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"s\" | \"m\" | \"xs\" | \"l\""
       },
-      "titleOnClose": {
-        "type": "any",
-        "isRequired": false
+      "open": {
+        "description": "If `true`, the component is shown.",
+        "isRequired": true,
+        "type": "boolean"
+      },
+      "PaperComponent": {
+        "defaultValue": "Paper",
+        "description": "The component used to render the body of the dialog.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "DialogComponent": {
+        "defaultValue": "Dialog",
+        "description": "Replaces MUI's Dialog itself, rather than the surface inside it. Declared on the props type and not read by the component, so passing it has no effect today.",
+        "isRequired": false,
+        "type": "ComponentClass<DialogProps, any> | FunctionComponent<DialogProps>"
+      },
+      "title": {
+        "description": "The title text of the Dialog.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "subtitle": {
+        "description": "Secondary text rendered below the title.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "overline": {
+        "description": "Small text rendered above the title. Use it for the step count in a multi-step workflow.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "children": {
+        "description": "Dialog children, usually the included sub-components.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

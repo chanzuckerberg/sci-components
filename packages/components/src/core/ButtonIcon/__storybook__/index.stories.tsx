@@ -37,7 +37,6 @@ export default {
     },
   },
   component: ButtonIcon,
-  tags: ["deprecated"],
   title: "Deprecated/ButtonIcon",
 } as Meta;
 

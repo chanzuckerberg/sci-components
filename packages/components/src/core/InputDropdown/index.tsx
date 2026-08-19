@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import Icon from "@components/src/core/Icon";
 import {
   IconWrapper,
@@ -42,106 +43,109 @@ const validateSdsStyle = (
 /**
  * @see https://mui.com/material-ui/react-button/
  */
-const InputDropdown = (props: InputDropdownProps): JSX.Element => {
-  const {
-    label,
-    multiple = false,
-    sdsStyle: rawSdsStyle = "square",
-    sdsType = "label",
-    details,
-    counter,
-    shouldTruncateMinimalDetails,
-    shouldPutAColonAfterLabel = true,
-    value,
-    classes = EMPTY_OBJECT,
-    className,
-  } = props;
-  const sdsStyle = validateSdsStyle(rawSdsStyle);
+const InputDropdown = forwardRef<HTMLButtonElement, InputDropdownProps>(
+  function InputDropdown(props, ref): JSX.Element {
+    const {
+      label,
+      multiple = false,
+      sdsStyle: rawSdsStyle = "square",
+      sdsType = "label",
+      details,
+      counter,
+      shouldTruncateMinimalDetails,
+      shouldPutAColonAfterLabel = true,
+      value,
+      classes = EMPTY_OBJECT,
+      className,
+    } = props;
+    const sdsStyle = validateSdsStyle(rawSdsStyle);
 
-  const isMinimal = sdsStyle === "minimal";
+    const isMinimal = sdsStyle === "minimal";
 
-  const shouldRenderDetails = !multiple && (details || value) && !isMinimal;
-  const shouldRenderInlineMinimalDetails =
-    isMinimal && sdsType === "value" && !multiple && details;
-  const shouldRenderMinimalDetails = isMinimal && sdsType === "label";
-  const shouldRenderCounter =
-    multiple && counter !== undefined && counter !== "0" && !isMinimal;
+    const shouldRenderDetails = !multiple && (details || value) && !isMinimal;
+    const shouldRenderInlineMinimalDetails =
+      isMinimal && sdsType === "value" && !multiple && details;
+    const shouldRenderMinimalDetails = isMinimal && sdsType === "label";
+    const shouldRenderCounter =
+      multiple && counter !== undefined && counter !== "0" && !isMinimal;
 
-  const {
-    root: rootClassName,
-    label: labelClassName,
-    contentWrapper: contentWrapperClassName,
-    labelDetailsWrapper: labelDetailsWrapperClassName,
-    details: detailsClassName,
-    counter: counterClassName,
-    iconWrapper: iconWrapperClassName,
-    chevronIcon: chevronIconClassName,
-    minimalDetails: minimalDetailsClassName,
-  }: InputDropdownProps["classes"] = classes;
+    const {
+      root: rootClassName,
+      label: labelClassName,
+      contentWrapper: contentWrapperClassName,
+      labelDetailsWrapper: labelDetailsWrapperClassName,
+      details: detailsClassName,
+      counter: counterClassName,
+      iconWrapper: iconWrapperClassName,
+      chevronIcon: chevronIconClassName,
+      minimalDetails: minimalDetailsClassName,
+    }: InputDropdownProps["classes"] = classes;
 
-  return (
-    <StyledInputDropdown
-      {...props}
-      className={cn(rootClassName, className)}
-      sdsStyle={sdsStyle}
-      aria-label="Dropdown input"
-      size="small"
-    >
-      <LabelWrapper className={cn(contentWrapperClassName)}>
-        <div className={cn(labelDetailsWrapperClassName)}>
-          <StyledLabel
-            className={cn("styled-label", labelClassName)}
-            details={details}
-            counter={counter}
-            sdsType={sdsType}
+    return (
+      <StyledInputDropdown
+        {...props}
+        ref={ref}
+        className={cn(rootClassName, className)}
+        sdsStyle={sdsStyle}
+        aria-label="Dropdown input"
+        size="small"
+      >
+        <LabelWrapper className={cn(contentWrapperClassName)}>
+          <div className={cn(labelDetailsWrapperClassName)}>
+            <StyledLabel
+              className={cn("styled-label", labelClassName)}
+              details={details}
+              counter={counter}
+              sdsType={sdsType}
+            >
+              {renderLabelText({
+                counter,
+                details,
+                isMinimal,
+                label,
+                multiple,
+                sdsType,
+                shouldPutAColonAfterLabel,
+                value,
+              })}
+            </StyledLabel>
+            {shouldRenderDetails && (
+              <StyledDetail className={cn(detailsClassName)}>
+                {renderDetailsText({ details, sdsType, value })}
+              </StyledDetail>
+            )}
+            {shouldRenderInlineMinimalDetails && (
+              <StyledDetail className={cn(detailsClassName)}>
+                {renderDetailsText({ details, sdsType, value })}
+              </StyledDetail>
+            )}
+            {shouldRenderCounter && (
+              <StyledCounter className={cn(counterClassName)}>
+                {counter}
+              </StyledCounter>
+            )}
+          </div>
+          <IconWrapper className={cn(iconWrapperClassName)}>
+            <Icon
+              sdsIcon="ChevronDown"
+              sdsSize="xs"
+              className={cn(chevronIconClassName)}
+            />
+          </IconWrapper>
+        </LabelWrapper>
+
+        {shouldRenderMinimalDetails && (
+          <MinimalDetails
+            shouldTruncateMinimalDetails={shouldTruncateMinimalDetails}
+            className={cn(minimalDetailsClassName)}
           >
-            {renderLabelText({
-              counter,
-              details,
-              isMinimal,
-              label,
-              multiple,
-              sdsType,
-              shouldPutAColonAfterLabel,
-              value,
-            })}
-          </StyledLabel>
-          {shouldRenderDetails && (
-            <StyledDetail className={cn(detailsClassName)}>
-              {renderDetailsText({ details, sdsType, value })}
-            </StyledDetail>
-          )}
-          {shouldRenderInlineMinimalDetails && (
-            <StyledDetail className={cn(detailsClassName)}>
-              {renderDetailsText({ details, sdsType, value })}
-            </StyledDetail>
-          )}
-          {shouldRenderCounter && (
-            <StyledCounter className={cn(counterClassName)}>
-              {counter}
-            </StyledCounter>
-          )}
-        </div>
-        <IconWrapper className={cn(iconWrapperClassName)}>
-          <Icon
-            sdsIcon="ChevronDown"
-            sdsSize="xs"
-            className={cn(chevronIconClassName)}
-          />
-        </IconWrapper>
-      </LabelWrapper>
-
-      {shouldRenderMinimalDetails && (
-        <MinimalDetails
-          shouldTruncateMinimalDetails={shouldTruncateMinimalDetails}
-          className={cn(minimalDetailsClassName)}
-        >
-          {renderDetailsText({ details, sdsType, value })}
-        </MinimalDetails>
-      )}
-    </StyledInputDropdown>
-  );
-};
+            {renderDetailsText({ details, sdsType, value })}
+          </MinimalDetails>
+        )}
+      </StyledInputDropdown>
+    );
+  }
+);
 
 interface RenderLabelTextProps {
   counter: InputDropdownProps["counter"];

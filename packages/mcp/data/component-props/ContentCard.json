@@ -2,80 +2,103 @@
   "ContentCard": {
     "props": {
       "boundingBox": {
-        "type": "any",
-        "isRequired": false
-      },
-      "buttons": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "If true, wraps content and visuals inside a bounded layout with background and padding. It is forced on when clickableCard is true.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "buttonsPosition": {
-        "type": "\"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Determines the alignment of buttons in the ContentCardActions component.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "classes": {
-        "type": "{ cardActions?: string; }",
-        "isRequired": false
+        "description": "Override or extend the styles applied to the component.",
+        "isRequired": false,
+        "type": "complex"
       },
       "clickableCard": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, wraps the card with an action area and makes it clickable. Because the card then is a button, ContentCardActions keeps only its first button and renders it as a div.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "clickableCardProps": {
-        "type": "any",
-        "isRequired": false
+        "description": "Props forwarded to the clickable card wrapper when clickableCard is true, including href and target to make the whole card a link.",
+        "isRequired": false,
+        "type": "Partial<ButtonProps & { target?: HTMLAttributeAnchorTarget; }>"
       },
       "decorativeBorder": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, draws an accent bar along the leading edge of the card: down the left side of a wide card, across the top of a narrow one. It requires boundingBox, and on an image card it only appears when the image is on the right, or on the left with imagePadding.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "icon": {
-        "type": "any",
-        "isRequired": false
+        "description": "The icon displayed in the card when visualElementType is \"icon\".",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "image": {
-        "type": "any",
-        "isRequired": false
+        "description": "The image displayed in the card when visualElementType is \"image\".",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "imagePadding": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If true, applies padding around the image inside the card.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "imagePosition": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Position of the image in the card layout (\"left\" or \"right\").",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "imageSize": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": 300,
+        "description": "Width of the image area in pixels when visualElementType is \"image\".",
+        "isRequired": false,
+        "type": "number"
       },
-      "sdsType": {
-        "type": "any",
-        "isRequired": false
-      },
-      "visualElementType": {
-        "type": "any",
-        "isRequired": false
-      }
-    }
-  },
-  "ContentCardTitle": {
-    "props": {
       "metadataText": {
-        "type": "BaseContentCardProps",
-        "isRequired": true
+        "description": "Optional metadata text, usually used for extra context like date or author.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "overlineText": {
-        "type": "BaseContentCardProps",
-        "isRequired": true
+        "description": "A small overline text displayed above the title.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "sdsType": {
+        "defaultValue": "wide",
+        "description": "Determines the card layout style. \"wide\" shows the image and content side by side, \"narrow\" stacks them vertically. The card watches its own width and switches to narrow on its own once it drops below roughly 595px, so this prop sets the layout it uses when there is room.",
+        "isRequired": false,
+        "type": "\"wide\" | \"narrow\""
       },
       "subtitleText": {
-        "type": "BaseContentCardProps",
-        "isRequired": true
+        "description": "Optional subtitle text displayed below the title.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "titleText": {
-        "type": "BaseContentCardProps",
-        "isRequired": true
+        "description": "The main title text of the card.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "visualElementType": {
+        "defaultValue": "none",
+        "description": "Required. Specifies what type of visual element to render on the card: an image, an icon, or none. It also narrows which visual props are accepted, so image props are only available on an image card and icon on an icon card.",
+        "isRequired": true,
+        "type": "\"image\" | \"none\" | \"icon\""
+      },
+      "children": {
+        "description": "The content to be displayed inside the card body, including custom\ncomponents and ContentCardActions.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

@@ -10,7 +10,7 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
   >
     <button
       aria-label="Search"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-firstButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-firstButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
@@ -36,7 +36,7 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
     </button>
     <button
       aria-label="Copy"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
@@ -62,7 +62,7 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
     </button>
     <button
       aria-label="Code"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
@@ -88,7 +88,7 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
     </button>
     <button
       aria-label="Cube"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-lastButton css-7ybjn0-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-lastButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >

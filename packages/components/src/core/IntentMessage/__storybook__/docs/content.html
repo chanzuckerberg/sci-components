@@ -1,0 +1,315 @@
+<h1>IntentMessage</h1>
+<h2>Source Code</h2>
+<p>
+  The IntentMessage component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/IntentMessage/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { IntentMessage } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Intent Message</h3>
+<p>
+  The usual shape: the Input as <code>children</code>, one message, and the
+  border turned on. The Input carries the same intent so its own styling
+  matches.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/DefaultIntentMessage"
+></div>
+<h3>The Three Intents</h3>
+<p>
+  Each intent has its own color and default icon. These are rendered without
+  children to show the message row on its own.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/IntentMessageIntents"
+></div>
+<h3>Stacked Messages</h3>
+<p>
+  Several messages can describe one Input. Both of these are given the same
+  array; the first sorts by severity, the second has <code>autoOrder</code> off
+  and keeps the order as written.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/StackedIntentMessages"
+></div>
+<h3>Custom Ordering</h3>
+<p>
+  <code>orderBy</code> changes the ranking. Reversing it here moves the positive
+  message to the top and switches the border to the positive color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/IntentMessageOrderBy"
+></div>
+<h3>Custom Icons</h3>
+<p>
+  An icon can be given by name or as an element. Names are rendered at xs, so
+  pass an element when you need a different size.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/IntentMessageCustomIcons"
+></div>
+<h3>Announcing the Message</h3>
+<p>
+  To connect the message to the Input for assistive technology, keep them as
+  siblings and reference the message container from the Input's
+  <code>aria-describedby</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/IntentMessage/AccessibleIntentMessage"
+></div>
+<h2>How it differs from Figma</h2>
+<p>
+  The guidelines above describe two Figma constructs: an Intent Message built
+  into every Input, and a standalone Intent Indicator that wraps an Input. In
+  code both are the same component,
+  <strong>IntentMessage</strong>
+  , and no Input has an <code>intentMessage</code> prop:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Wrap the Input in IntentMessage and pass the copy through the
+      <code>messages</code> prop. The children render first, then the messages
+      below them.
+    </p>
+  </li>
+  <li>
+    <p>
+      The Intent Indicator is the <code>border</code> prop. Because it stretches
+      the full height of the wrapper, wrapping a group of Checkboxes or Radios
+      gives you one border across the whole group.
+    </p>
+  </li>
+  <li>
+    <p>
+      IntentMessage does not color the Input itself. Set the Input's own
+      <code>intent</code> prop to the matching value so the two agree.
+    </p>
+  </li>
+</ul>
+<h2>Behavior notes</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      There are three intents, <code>"negative"</code>, <code>"notice"</code>,
+      and <code>"positive"</code>. There is no neutral or informational intent.
+    </p>
+  </li>
+  <li>
+    <p>
+      Messages are sorted by severity by default, so the order of the array does
+      not matter unless you turn <code>autoOrder</code> off.
+    </p>
+  </li>
+  <li>
+    <p>
+      The border takes its color from the most severe intent present, which is
+      the first intent in the ranking that appears in <code>messages</code>.
+      With no messages the border renders transparent, so
+      <code>border</code> does nothing on a wrapper that only has children.
+    </p>
+  </li>
+  <li>
+    <p>
+      The border is drawn just outside the wrapper, 8px to the left of its edge.
+      Leave room for it, or a parent with no left padding will clip it.
+    </p>
+  </li>
+  <li>
+    <p>
+      An icon passed by name always renders at the xs size, so it has to be an
+      icon that offers xs. A name that does not logs an error and renders
+      nothing. Pass an Icon element instead when you need another size.
+    </p>
+  </li>
+  <li>
+    <p>
+      The icon fill is forced to the intent color, so the <code>color</code>
+      prop on an Icon element you pass in has no effect.
+    </p>
+  </li>
+  <li>
+    <p>
+      The messages are plain text with no ARIA wiring, so assistive technology
+      does not connect them to the Input. When a message needs to be announced,
+      render IntentMessage beside the Input and point the Input's
+      <code>aria-describedby</code> at a wrapper around it, as in the last
+      example below.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<h3>IntentMessage Props</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>messages</code></p>
+    </td>
+    <td>
+      <p><code>IntentMessageItem[]</code></p>
+    </td>
+    <td>
+      <p><code>[]</code></p>
+    </td>
+    <td>
+      <p>
+        The messages to display, each with its own intent. See the table below
+        for the shape of an item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Rendered above the messages, inside the same wrapper. This is where the
+        Input, or a group of Inputs, goes.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Draws a 2px vertical bar to the left of the wrapper, colored by the most
+        severe intent in <code>messages</code>. This is the Intent Indicator
+        from the guidelines.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>autoOrder</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Sorts the messages by intent rather than using the order of the array.
+        Set it to <code>false</code> to preserve your order.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>orderBy</code></p>
+    </td>
+    <td>
+      <p><code>Array&lt;"negative" | "notice" | "positive"&gt;</code></p>
+    </td>
+    <td>
+      <p><code>["negative", "notice", "positive"]</code></p>
+    </td>
+    <td>
+      <p>
+        Replaces the default severity ranking. It affects the sort order and,
+        because it defines what counts as most severe, the border color as well,
+        which means it still applies when <code>autoOrder</code> is
+        <code>false</code>.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  That is the whole prop surface. <code>IntentMessageProps</code> does not
+  extend the DOM attributes, so <code>id</code>, <code>className</code>, and
+  <code>style</code> are all type errors even though the component would spread
+  them onto its wrapper. Put them on an element of your own around it instead.
+</p>
+<h3>IntentMessageItem</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"negative" | "notice" | "positive"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. Sets the text color, the icon color, and this message's place
+        in the ranking.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Required. The message copy. Long text wraps.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>keyof IconNameToSizes | ReactElement</code></p>
+    </td>
+    <td>
+      <p>
+        <code>"CheckCircle"</code> for <code>"positive"</code>,
+        <code>"ExclamationMarkCircle"</code> otherwise
+      </p>
+    </td>
+    <td>
+      <p>
+        Replaces the default icon. A name renders at xs; an element is rendered
+        as given, though its fill is still overridden by the intent color.
+      </p>
+    </td>
+  </tr>
+</table>

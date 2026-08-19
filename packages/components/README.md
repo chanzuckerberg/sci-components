@@ -1,6 +1,6 @@
 # `@czi-sds/components`
 
-React component library for the [Science Design System (SDS)](https://sds.czi.design/). Built on **Material UI v9**.
+React component library for the [Science Design System (SDS)](https://chanzuckerberg.github.io/sci-components/). Built on **Material UI v9**.
 
 Full documentation (usage, theming, scripts, contributing) lives in the [repository README](https://github.com/chanzuckerberg/sci-components#readme).
 
@@ -36,7 +36,7 @@ SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependenc
 
 ## Links
 
-- [Design docs (Zeroheight)](https://sds.czi.design/)
+- [Design system documentation](https://chanzuckerberg.github.io/sci-components/)
 - [Full repo docs](https://github.com/chanzuckerberg/sci-components#readme)
 - [npm package](https://www.npmjs.com/package/@czi-sds/components)
 - [Material UI API docs](https://mui.com/)

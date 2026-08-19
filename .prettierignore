@@ -3,3 +3,4 @@ package-lock.json
 public
 venv
 dist
+docs-kit/generated

@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/data-viz",
-  "version": "0.20.0",
+  "version": "1.0.1",
   "main": "dist/index.cjs.js",
   "types": "dist/index.cjs.d.ts",
   "module": "dist/index.esm.js",
@@ -53,10 +53,8 @@
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
   },
   "peerDependencies": {
-    "@emotion/css": "^11.11.2",
-    "@emotion/react": "^11.11.3",
+    "@czi-sds/components": "^24.0.0",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^9.0.0",
     "@mui/material": "^9.0.0",
     "echarts": "^6.0.0",
     "lodash": "^4.17.21",
@@ -71,8 +69,7 @@
     "@types/react-dom": "^18.2.18",
     "d3-scale-chromatic": "^3.0.0",
     "react-redux": "^9.1.0",
-    "simplex-noise": "^4.0.1",
-    "style-dictionary": "^4.1.0"
+    "simplex-noise": "^4.0.1"
   },
   "dependencies": {
     "chroma-js": "^3.1.2",

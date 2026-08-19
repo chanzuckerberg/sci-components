@@ -70,6 +70,20 @@ export const StyledComponent = styled(MuiComponent)`
 - **Build Command:** `yarn sd-build` (runs automatically during `yarn build`)
 - **Design Tokens:** `design-tokens/*.json` files define colors, spacing, typography, etc.
 
+### Token References
+
+Reference another token with `{sds.color.primitive.gray.500}`. The `.value`
+suffix that Style Dictionary v4 allowed was removed in v5 — using it now fails
+the build with a broken reference error.
+
+SDS tokens also carry their variants on the same token, in the custom
+`darkValue` and `narrowValue` properties. Style Dictionary resolves a reference
+by reading the `value` of the token at that path, so it cannot follow
+`{sds.color.primitive.gray.500.darkValue}` or the shared `{sds.font.inter-font}`
+string leaf. The `sds/resolve-custom-references` preprocessor in
+`custom-preprocessors/` inlines those before the built-in resolver runs, and
+leaves ordinary token references for Style Dictionary to resolve and validate.
+
 ### Token Categories
 
 - `colors.json` - Color palette and semantic colors

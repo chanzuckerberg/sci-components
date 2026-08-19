@@ -1,0 +1,158 @@
+<h1>SDS Typography</h1>
+<h2>Using SDS Typography Variables with Tailwind CSS</h2>
+<p>
+  The SDS design tokens for Tailwind are exported via
+  <strong>Style Dictionary</strong>
+  and can be found in the
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/common/styles-dictionary/json/tailwind.json"
+  >
+    tailwind.json
+  </a>
+  file. These tokens have been updated to adhere to Tailwind’s configuration
+  standards and follow the correct format.
+</p>
+<p>
+  The typography variables in the sds <code>tailwind.json</code> file are
+  defined as objects with detailed CSS properties, for example:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JSON</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "fontFamily": {
+    "sds-body": "\"Inter\", sans-serif",
+    ...
+  },
+  "fontSize": {
+    "sds-body-xxxs-400-narrow": "12px",
+    "sds-body-xxxs-400-wide": "11px",
+    ...
+  },
+  "fontVariantNumeric": {
+    "sds-body-xxxs-400-narrow": "normal",
+    "sds-body-xxxs-400-wide": "normal",
+    ...
+  },
+  "letterSpacing": {
+    "sds-body-xxxs-400-narrow": "0.1px",
+    "sds-body-xxxs-400-wide": "0.1px",
+    ...
+  },
+  "lineHeight": {
+    "sds-body-xxxs-400-narrow": "18px",
+    "sds-body-xxxs-400-wide": "16px",
+    ...
+  },
+  "textTransform": {
+    "sds-body-xxxs-400-narrow": "none",
+    "sds-body-xxxs-400-wide": "none",
+    ...
+  },
+  "typography": {
+    "sds-body-xxxs-400-narrow": {
+      "css": {
+        "fontFamily": "Inter, sans-serif",
+        "fontSize": "12px",
+        "fontStyle": "normal",
+        "fontVariantNumeric": "normal",
+        "fontWeight": "400",
+        "letterSpacing": "0.1px",
+        "lineHeight": "18px",
+        "textTransform": "none"
+      }
+    },
+    ...
+  }
+}</code></pre>
+  </figure>
+</div>
+<h2>Using Font Variables</h2>
+<p>
+  To use these variables, import them into your Tailwind configuration file.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JavaScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-js">const sds = require("@czi-sds/components/dist/tailwind.json");
+
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: sds.fontFamily,
+      fontSize: sds.fontSize,
+      lineHeight: sds.lineHeight,
+      letterSpacing: sds.letterSpacing,
+      textTransform: sds.textTransform,
+      ...
+    },
+  },
+};</code></pre>
+  </figure>
+</div>
+<p>
+  and use them within the tailwind classes to achieve the desired typography
+  styles:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;div class="font-sds-header text-sds-header-l-600-wide leading-sds-header-l-600-wide"&gt;
+  &lt;p&gt;This text uses the SDS header style.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+  </figure>
+</div>
+<h2>Using Typography Styles</h2>
+<p>
+  Each typography variable includes properties such as <code>fontFamily</code>,
+  <code>fontSize</code>, <code>lineHeight</code>, and others to define a
+  complete typographic style.
+</p>
+<p>
+  To utilize SDS typography variables in your Tailwind CSS setup, follow these
+  steps:
+</p>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p><strong>Set Up Your Tailwind Configuration</strong></p>
+  </li>
+</ol>
+<p>
+  To integrate SDS typography variables, import the
+  <code>tailwind.json</code> file from SDS into your
+  <code>tailwind.config.js</code> file:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JavaScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-js">const sds = require("@czi-sds/components/dist/tailwind.json");
+const typography = require('@tailwindcss/typography');
+
+module.exports = {
+  theme: {
+    extend: {
+      typography: sds.typography, // Add the imported typography variables
+    },
+  },
+  plugins: [typography], // Ensure the typography plugin is included
+};</code></pre>
+  </figure>
+</div>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p><strong>Apply SDS Typography in Components</strong></p>
+  </li>
+</ol>
+<p>
+  Once the typography variables are integrated, you can apply them in your
+  components using Tailwind’s <code>prose</code> class. To apply a specific SDS
+  typography style, use the corresponding <code>prose-*</code> variant:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;div class="prose prose-sds-body-xxxs-400-narrow"&gt;
+  &lt;p&gt;This text uses the custom typography style for narrow body text.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+  </figure>
+</div>

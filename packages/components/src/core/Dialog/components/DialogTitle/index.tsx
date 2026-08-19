@@ -22,6 +22,7 @@ export interface DialogTitleProps
   subtitle?: string;
   overline?: string;
   onClose?: () => void;
+  /** Class names for the individual parts of the title block. */
   classes?: {
     root?: string;
     title?: string;

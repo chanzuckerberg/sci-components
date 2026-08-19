@@ -2,93 +2,167 @@
   "StackedBarChart": {
     "props": {
       "badge": {
-        "type": "string",
+        "defaultValue": "the selection count",
+        "description": "Overrides the badge text, which otherwise counts the data and the selection\n(\"7\", or \"3 of 7\").",
         "isRequired": false,
-        "description": "Badge text to display next to the title\nIf not provided, defaults to showing item count based on selection:\n- No selection: total count (e.g., \"5\")\n- Partial selection: selected count (e.g., \"3 of 5\")\n- All selected: \"All\""
+        "type": "string"
       },
       "hideBadge": {
-        "type": "\"false\" | \"true\"",
+        "defaultValue": false,
+        "description": "Removes the badge, leaving the title on its own.",
         "isRequired": false,
-        "description": "Hide the badge when true",
-        "defaultValue": false
+        "type": "boolean"
       },
       "barHeight": {
-        "type": "number",
+        "defaultValue": 16,
+        "description": "Height of the bar in pixels. Values below 1 are clamped to 1, so the bar\ncannot disappear.",
         "isRequired": false,
-        "description": "Height of the bar in pixels (minimum 1px)",
-        "defaultValue": 16
+        "type": "number"
       },
       "data": {
-        "type": "StackedBarChartDataItem[]",
+        "defaultValue": "- (required)",
+        "description": "The segments, in the order they are drawn.",
         "isRequired": true,
-        "description": "Array of data items to display in the stacked bar"
+        "type": "StackedBarChartDataItem[]"
       },
       "maxAmount": {
-        "type": "number",
+        "defaultValue": "sum of values",
+        "description": "Cumulative mode only. The value the full bar represents. Any difference\nbetween it and the sum of the data is drawn as the Remaining segment.",
         "isRequired": false,
-        "description": "Maximum amount for the bar (used only in \"cumulative\" mode)\nIf not provided, defaults to sum of all values (no remaining segment)\nIf provided and sum < maxAmount, shows gray \"remaining\" segment"
+        "type": "number"
       },
       "mode": {
-        "type": "\"proportional\" | \"cumulative\"",
+        "defaultValue": "proportional",
+        "description": "Whether the bar shows a breakdown of the data (segments always fill it) or\nprogress towards maxAmount.",
         "isRequired": false,
-        "description": "Chart mode - controls how segments are calculated\n- \"proportional\": Segments fill entire bar (100%), proportional to their values\n- \"cumulative\": Segments sized based on actual values relative to maxAmount",
-        "defaultValue": "proportional"
+        "type": "\"proportional\" | \"cumulative\""
       },
       "legendValueFormat": {
-        "type": "\"percentage\" | \"count\"",
+        "defaultValue": "percentage",
+        "description": "\"percentage\" shows the segment's share of the bar, rounded. \"count\" shows\nthe raw value followed by the item's unit, or the chart's unit if the item\nhas none.",
         "isRequired": false,
-        "description": "Format for legend values\n- \"percentage\": Shows percentage of the item in the bar chart (e.g., \"20%\")\n- \"count\": Shows the count from the data object with the unit defined by the unit prop",
-        "defaultValue": "percentage"
+        "type": "\"count\" | \"percentage\""
       },
       "selectionBehavior": {
-        "type": "\"dim\" | \"hide\"",
+        "defaultValue": "dim",
+        "description": "What a selection does to the unselected segments: fade them to 20% opacity,\nor drop them from the bar and let the rest take the space.",
         "isRequired": false,
-        "description": "Behavior to apply when items are selected\n- \"dim\": Non-selected segments become semi-transparent (20% opacity)\n- \"hide\": Non-selected segments are hidden from the bar chart",
-        "defaultValue": "dim"
+        "type": "\"dim\" | \"hide\""
       },
       "remainingLabel": {
-        "type": "string",
+        "defaultValue": "Remaining",
+        "description": "Name of the grey gap segment in cumulative mode.",
         "isRequired": false,
-        "description": "Label for the remaining/unknown segment in cumulative mode",
-        "defaultValue": "Remaining"
+        "type": "string"
       },
       "remainingUnit": {
-        "type": "string",
+        "defaultValue": "the charts unit",
+        "description": "A unit for the Remaining segment's value alone.",
         "isRequired": false,
-        "description": "Unit to display with the remaining segment value in cumulative mode\nIf not provided, uses the unit from the first data item (if available)"
+        "type": "string"
       },
       "showLegend": {
-        "type": "\"false\" | \"true\"",
+        "defaultValue": true,
+        "description": "Draws the legend below the bar. It is the only place segment names appear,\nand the only part of the chart a keyboard can reach.",
         "isRequired": false,
-        "description": "Whether to show the legend below the chart",
-        "defaultValue": true
+        "type": "boolean"
       },
       "showLegendValues": {
-        "type": "\"false\" | \"true\"",
+        "defaultValue": true,
+        "description": "Shows each item's value beside its name in the legend.",
         "isRequired": false,
-        "description": "Whether to show percentage values in the legend",
-        "defaultValue": true
+        "type": "boolean"
       },
       "title": {
-        "type": "string",
+        "description": "A heading above the bar. It is also what makes room for the badge; with no\ntitle, no badge is drawn.",
         "isRequired": false,
-        "description": "Title to display above the chart"
+        "type": "string"
       },
       "unit": {
-        "type": "string",
+        "description": "The unit appended to counted values, for items that do not carry one of\ntheir own.",
         "isRequired": false,
-        "description": "Global unit to display with values in cumulative mode (e.g., \"GB\", \"datasets\", \"K\")\nIndividual data items can override this with their own unit property\nOnly shown when mode is \"cumulative\""
+        "type": "string"
       },
       "width": {
-        "type": "\"string\" | \"number\"",
+        "defaultValue": "100%",
+        "description": "Any CSS width; a number is read as pixels. It sets the width of the whole\nchart, legend included.",
         "isRequired": false,
-        "description": "Width of the chart - accepts any CSS width value (e.g., \"100%\", \"20vw\", \"300px\", or number for pixels)",
-        "defaultValue": "100%"
+        "type": "string | number"
       },
       "colorGeneratorOptions": {
-        "type": "DiscreteColorGeneratorOptions",
+        "description": "Tunes the generated palette (start hue, rotations, lightness range, gamma).\nItems with their own color are untouched by it.",
         "isRequired": false,
-        "description": "Options for the color generator"
+        "type": "DiscreteColorGeneratorOptions"
+      },
+      "selectedIndices": {
+        "defaultValue": [],
+        "description": "Indices into data that are currently selected. The chart is controlled: it\ndraws this and never changes it.",
+        "isRequired": false,
+        "type": "number[]"
+      },
+      "onSelectionChange": {
+        "description": "Called with the next selection when a segment or legend item is clicked.\nWithout it, clicking selects nothing.",
+        "isRequired": false,
+        "type": "(selectedIndices: number[], selectedData: StackedBarChartDataItem[]) => void"
+      },
+      "onSegmentClick": {
+        "description": "Fires on a segment click, alongside any selection change rather than\ninstead of it.",
+        "isRequired": false,
+        "type": "(item: StackedBarChartDataItem, index: number) => void"
+      },
+      "onLegendItemClick": {
+        "description": "The same, for a click on a legend item.",
+        "isRequired": false,
+        "type": "(item: StackedBarChartDataItem, index: number) => void"
+      },
+      "onSegmentMouseEnter": {
+        "description": "Called when the pointer enters a segment. The chart already syncs its own\nhover highlight between bar and legend, so this is for driving something\noutside it.",
+        "isRequired": false,
+        "type": "(item: StackedBarChartDataItem, index: number) => void"
+      },
+      "onSegmentMouseLeave": {
+        "description": "Called when the pointer leaves a segment.",
+        "isRequired": false,
+        "type": "(item: StackedBarChartDataItem, index: number) => void"
+      },
+      "onLegendItemMouseEnter": {
+        "description": "Called when the pointer enters a legend item.",
+        "isRequired": false,
+        "type": "(item: StackedBarChartDataItem, index: number) => void"
+      },
+      "onLegendItemMouseLeave": {
+        "description": "Called when the pointer leaves a legend item.",
+        "isRequired": false,
+        "type": "(item: StackedBarChartDataItem, index: number) => void"
+      },
+      "name": {
+        "defaultValue": "- (required)",
+        "description": "The segment's label in the legend, and the key the animations track it by. Must be unique within the chart.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "value": {
+        "defaultValue": "- (required)",
+        "description": "The quantity the segment stands for.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "color": {
+        "defaultValue": "generated",
+        "description": "Any CSS color. Without it the segment takes a generated palette color, which can shift as categories come and go.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "Takes the segment and its legend item out of every interaction: no hover, no tooltip, no selection.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "tooltip": {
+        "description": "Content for a TooltipTable shown above the segment on hover. Use it for the breakdown behind the number; a segment without it has no tooltip.",
+        "isRequired": false,
+        "type": "TooltipTableContentProps"
       }
     }
   }

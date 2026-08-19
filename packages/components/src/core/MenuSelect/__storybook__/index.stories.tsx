@@ -279,7 +279,6 @@ export default {
     },
   },
   component: MenuSelect,
-  tags: ["deprecated"],
   title: "Deprecated/MenuSelect",
 } as Meta;
 

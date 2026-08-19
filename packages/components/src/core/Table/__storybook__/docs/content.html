@@ -1,0 +1,126 @@
+<h1>Table</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Table/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Table } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Table</strong></h3>
+<p>
+  This example demonstrates a Table that utilizes all SDS Table-related
+  components, providing a comprehensive showcase of their functionalities and
+  features.
+</p>
+<div class="sds-doc-example" data-example="core/Table/DefaultTable"></div>
+<h2>Recipes</h2>
+<p>
+  These recipes show a few of the more complex approaches available for
+  customizing Tables.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The Table components are presentational: they render the markup and the
+    styling, and leave sorting, filtering and paging to whatever manages your
+    data. The recipes below use
+    <a href="https://tanstack.com/table/latest">TanStack Table</a>
+    for that, as does PreComposedTable internally, and two of them add
+    <a href="https://tanstack.com/query/latest">TanStack Query</a>
+    and
+    <a href="https://tanstack.com/virtual/latest">TanStack Virtual</a>
+    for fetching and virtualization. None of them ship with SDS. Install the
+    ones you need alongside it.
+  </p>
+</div>
+<h3>Text-only Table</h3>
+<p>
+  A table made up entirely of CellBasics, with headers that sort nothing and so
+  set <code>hideSortIcon</code>.
+</p>
+<div class="sds-doc-example" data-example="core/Table/TextOnlyTable"></div>
+<h3>Table with a custom sorting function</h3>
+<p>
+  Every column here sorts on click through TanStack Table's own comparators,
+  except Last Name, which is given a <code>sortingFn</code> of its own that
+  orders names by length rather than alphabetically. Note that each sortable
+  header sets <code>hover</code>, without which CellHeader draws no sort
+  chevron.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Table/TableWithCustomSorting"
+></div>
+<h3>Table with custom Tooltips</h3>
+<p>This shows a Table with custom Tooltips.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Table/TableWithCustomTooltips"
+></div>
+<h3>Table with virtualized rows</h3>
+<p>
+  A thousand rows in a scroll container with only the visible ones in the DOM,
+  using <code>@tanstack/react-virtual</code> to decide which rows to draw and
+  <code>@tanstack/react-query</code> to fetch the next batch as the scroller
+  nears its end. The spacer rows above and below the window are what keep the
+  scrollbar proportional.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Table/TableWithVirtualizedRows"
+></div>
+<h3>Editable Table Cells with Access to Internal Data</h3>
+<p>
+  Editing reaches the data above the table through TanStack Table's
+  <code>meta</code> object. Click a cell to edit it; the change is written back
+  on blur, and the log below records what moved. Note that the editable cells
+  are CellComponents rather than CellBasics, since CellBasic renders text rather
+  than <code>children</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Table/TableWithEditableCells"
+></div>
+<h3>Table with Front-End Pagination</h3>
+<p>
+  All the rows are in memory and TanStack Table slices them, so paging is only a
+  change of <code>pageIndex</code>. Pagination counts pages from 1 while
+  TanStack counts from 0, which is the one thing to keep straight when wiring
+  the two together.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Table/TableWithFrontEndPagination"
+></div>
+<h3>Table with Back-End Pagination</h3>
+<p>
+  Only one page of rows exists on the client, so
+  <code>manualPagination</code> stops the table from slicing and the row count
+  arrives with the data. The request is faked with a delay, and
+  <code>keepPreviousData</code> holds the current page on screen while the next
+  one loads.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Table/TableWithBackEndPagination"
+></div>
+<h2>Props</h2>
+<p>
+  Table is a styled table element: full width, collapsed borders, automatic
+  layout. Its only prop is <code>children</code>, and anything else you pass
+  lands on the table element. Compose it the way you would plain HTML: a
+  TableHeader for the head, a <code>tbody</code> of TableRows for the body.
+</p>

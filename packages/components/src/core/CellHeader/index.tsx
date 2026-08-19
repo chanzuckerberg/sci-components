@@ -98,7 +98,6 @@ const CellHeader = forwardRef<HTMLTableCellElement, CellHeaderProps>(
         <Tooltip
           arrow
           placement="top-start"
-          sdsStyle="dark"
           subtitle={tooltipSubtitle}
           title={tooltipText}
           {...tooltipProps}

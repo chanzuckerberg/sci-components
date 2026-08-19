@@ -29,6 +29,22 @@ describe("<Notification />", () => {
     expect(notificationButton).toBeTruthy();
   });
 
+  it("reads autoDismiss={true} as eight seconds", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+
+    render(<Test {...Test.args} autoDismiss />);
+    expect(screen.getByTestId("notification")).toBeInTheDocument();
+
+    // A boolean carries no delay of its own, so the component supplies one.
+    vi.advanceTimersByTime(7999);
+    expect(screen.getByTestId("notification")).toBeInTheDocument();
+
+    vi.advanceTimersByTime(1);
+    await waitForElementToBeRemoved(() => screen.getByTestId("notification"));
+
+    vi.useRealTimers();
+  });
+
   it("dismisses on click on close button if present", async () => {
     const props = {
       onClose: () => {},

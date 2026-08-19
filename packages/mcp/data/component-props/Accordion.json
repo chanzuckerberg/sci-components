@@ -2,28 +2,48 @@
   "Accordion": {
     "props": {
       "defaultExpanded": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If `true`, expands the accordion by default.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "id": {
-        "type": "string",
-        "isRequired": false
+        "description": "Required. A unique id for each accordion item, also used to derive the ids that link the header and its content for screen readers.",
+        "isRequired": true,
+        "type": "string"
       },
       "togglePosition": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "right",
+        "description": "Position of the toggle chevron icon.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "useDivider": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Display a divider line between accordion items.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "chevronSize": {
+        "defaultValue": "xs",
+        "description": "Set on AccordionHeader. Size of the toggle chevron icon.",
+        "isRequired": false,
+        "type": "\"s\" | \"xs\" | \"l\" | \"xl\""
       }
     }
   },
   "AccordionHeader": {
     "props": {
       "subtitle": {
-        "type": "string",
-        "isRequired": false
+        "description": "Set on AccordionHeader. A text that will be displayed as a subtitle beneath the accordion title.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

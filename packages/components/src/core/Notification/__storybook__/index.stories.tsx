@@ -29,9 +29,6 @@ export default {
       control: { type: INLINE_RADIO },
       options: ["left", "right"],
     },
-    extraContent: {
-      control: { type: "boolean" },
-    },
     icon: {
       control: {
         labels: [

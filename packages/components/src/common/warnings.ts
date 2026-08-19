@@ -8,8 +8,6 @@ export enum SDSWarningTypes {
   ButtonGroupVerticalOrientation = "ButtonGroupVerticalOrientation",
   ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
-  TooltipSubtitle = "tooltipSubtitle",
-  TooltipWidth = "tooltipWidth",
   TooltipInvertStyle = "tooltipInvertStyle",
   ContentCardActionsOnlyButtons = "contentCardActionsOnlyButtons",
   ClickableContentCardNumberOfButtons = "clickableContentCardNumberOfButtons",
@@ -61,19 +59,12 @@ export const SDS_WARNINGS = {
     message:
       "Warning: MenuSelect will be deprecated and replaced with <DropdownMenu />",
   },
-  [SDSWarningTypes.TooltipSubtitle]: {
-    hasWarned: false,
-    message:
-      "Warning: The 'subtitle' text is only available for dark tooltips!",
-  },
-  [SDSWarningTypes.TooltipWidth]: {
-    hasWarned: false,
-    message: "Warning: The 'wide' width is only available for light tooltips!",
-  },
   [SDSWarningTypes.TooltipInvertStyle]: {
     hasWarned: false,
     message:
-      "Warning: Tooltips using the inverted or sdsStyle prop will be deprecated. Please use hasInvertedStyle instead!",
+      "Warning: The 'hasInvertedStyle', 'inverted' and 'sdsStyle' props are deprecated and no longer " +
+      "change how a Tooltip looks. Tooltips now follow the theme mode, and these props will be removed " +
+      "in a future release.",
   },
   [SDSWarningTypes.ContentCardActionsOnlyButtons]: {
     hasWarned: false,

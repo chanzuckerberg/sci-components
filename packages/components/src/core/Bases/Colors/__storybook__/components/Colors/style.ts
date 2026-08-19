@@ -104,5 +104,5 @@ export const StyledColorVariable = styled("span")`
 export const StyledColorsWrapper = styled("div")`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-row-gap: 30px;
+  row-gap: 30px;
 `;

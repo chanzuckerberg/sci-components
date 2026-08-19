@@ -9,9 +9,11 @@ const DIRNAME = dirname(FILENAME);
 
 const serverPath = join(DIRNAME, "..", "dist", "stdio.js");
 
+// The version is pinned so `npx` re-resolves it instead of reusing a cached v1,
+// which is deprecated and only receives security fixes.
 const inspector = spawn(
   "npx",
-  ["@modelcontextprotocol/inspector", "node", serverPath],
+  ["-y", "@modelcontextprotocol/inspector@latest", "node", serverPath],
   {
     stdio: "inherit",
     shell: true,

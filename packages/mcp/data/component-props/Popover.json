@@ -2,16 +2,89 @@
   "Popover": {
     "props": {
       "anchorOrigin": {
-        "type": "PopoverOrigin",
-        "isRequired": false,
+        "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}",
         "description": "This is the point on the anchor where the popover's\n`anchorEl` will attach to. This is not used when the\nanchorReference is 'anchorPosition'.\n\nOptions:\nvertical: [top, center, bottom];\nhorizontal: [left, center, right].",
-        "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}"
+        "isRequired": false,
+        "type": "PopoverOrigin"
       },
       "transformOrigin": {
-        "type": "PopoverOrigin",
-        "isRequired": false,
+        "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}",
         "description": "This is the point on the popover which\nwill attach to the anchor's origin.\n\nOptions:\nvertical: [top, center, bottom, x(px)];\nhorizontal: [left, center, right, x(px)].",
-        "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}"
+        "isRequired": false,
+        "type": "PopoverOrigin"
+      },
+      "open": {
+        "description": "If `true`, the component is shown.",
+        "isRequired": true,
+        "type": "boolean"
+      },
+      "anchorEl": {
+        "description": "An HTML element, [PopoverVirtualElement](https://mui.com/material-ui/react-popover/#virtual-element),\nor a function that returns either.\nIt's used to set the position of the popover.",
+        "isRequired": false,
+        "type": "Element | PopoverVirtualElement | () => Element | PopoverVirtualElement"
+      },
+      "onClose": {
+        "description": "Callback fired when the component requests to be closed.\nThe `reason` parameter can optionally be used to control the response to `onClose`.",
+        "isRequired": false,
+        "type": "\"backdropClick\" | \"escapeKeyDown\""
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "anchorReference": {
+        "defaultValue": "anchorEl",
+        "description": "This determines which anchor prop to refer to when setting\nthe position of the popover.",
+        "isRequired": false,
+        "type": "\"none\" | \"anchorEl\" | \"anchorPosition\""
+      },
+      "anchorPosition": {
+        "description": "This is the position that may be used to set the position of the popover.\nThe coordinates are relative to the application's client area.",
+        "isRequired": false,
+        "type": "PopoverPosition"
+      },
+      "slotProps": {
+        "defaultValue": {},
+        "description": "The props used for each slot inside.",
+        "isRequired": false,
+        "type": "{ root?: SlotProps"
+      },
+      "marginThreshold": {
+        "defaultValue": 16,
+        "description": "Specifies how close to the edge of the window the popover can appear.\nIf null, the popover will not be constrained by the window.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "keepMounted": {
+        "defaultValue": false,
+        "description": "Always keep the children in the DOM.\nThis prop can be useful in SEO situation or\nwhen you want to maximize the responsiveness of the Modal.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "disableScrollLock": {
+        "defaultValue": false,
+        "description": "Disable the scroll lock behavior.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "disablePortal": {
+        "defaultValue": false,
+        "description": "The `children` will be under the DOM hierarchy of the parent component.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "elevation": {
+        "defaultValue": 8,
+        "description": "The elevation of the popover.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "transitionDuration": {
+        "defaultValue": "auto",
+        "description": "Set to 'auto' to automatically calculate transition time based on height.",
+        "isRequired": false,
+        "type": "number | { appear?: number; enter?: number; exit?: number; } | \"auto\""
       }
     }
   }

@@ -1,0 +1,266 @@
+<h1>InputSearch</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputSearch/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { InputSearch } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default InputSearch</strong></h3>
+<p>This example has the minimum props needed for the InputSearch component.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputSearch/DefaultInputSearch"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  SDS's InputSearch is built on MUI's TextField component, with
+  <code>type="search"</code>. It also has the SDS "search" icon automatically
+  included, aligned to the right end of the field.
+</p>
+<p>
+  The following props are available to MUI's TextField component, but do not
+  work the same way (or at all) for SDS's InputSearch component:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>variants</code>: SDS's InputSearch component is not set up to
+      support values for this prop (aside from <code>"outlined"</code>,
+      InputSearch default), and using other values available to MUI
+      (<code>"filled"</code>, <code>"standard"</code>) may result in unreliable
+      outputs
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>size</code>: SDS's InputSearch component is not set up to support
+      values for this prop (aside from <code>"small"</code>, InputText's
+      default), and using other values available to MUI (<code>"medium"</code>,
+      <code>"large"</code>) may not have reliable outputs
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>required</code>: SDS's InputSearch does not render the expected
+      asterisk (*) following the label when this prop is <code>true</code>
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>select</code>: SDS's InputSearch is not set up to support this
+      boolean prop
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>hiddenLabel</code>: The label (<code>"Search"</code>, by default)
+      for SDS's component is included within the search field, not outside of
+      it, and the MUI <code>hiddenLabel</code> prop will not hide the label
+    </p>
+  </li>
+</ul>
+<p>
+  The following functionality is available to both MUI's TextField component and
+  SDS's InputText component, but SDS uses different prop names, shown below:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>intent</code>: This prop is the way you can set colors for SDS's
+      InputText, based on its error state. It takes default (default, gray),
+      error, or warning as values. The related MUI-color-setting prop,
+      <code>color</code>, has no effect for InputText in SDS.
+    </p>
+  </li>
+</ul>
+<p>
+  SDS's InputSearch has an additional <code>sdsStyle</code> prop to help with
+  setting SDS-specific styles, which takes <code>"square"</code> (default) or
+  <code>"rounded"</code> as values.
+</p>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI TextField component can be found
+  <a href="https://mui.com/material-ui/react-text-field/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>classes</code></p>
+    </td>
+    <td>
+      <p><code>object</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
+    <td>
+      <p>
+        Class names for the internal elements:&nbsp;<code>root</code>,
+        <code>label</code>, <code>input</code>, <code>endAdornment</code>,
+        <code>startAdornment</code>, <code>clearButton</code>, and
+        <code>searchButton</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        When set to <code>true</code>, the component becomes disabled and cannot
+        be interacted with.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>handleSubmit</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td>
+      <p><code>function(value: string) =&gt; void</code></p>
+    </td>
+    <td>
+      <p>
+        This function is called when the Search icon is clicked, allowing user
+        to handle the search operation.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>id</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Specifies the unique id for the input element, needed for accessibility.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>Alters the border color and visual intent of the search input.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Although hidden, this label is provided for accessibility purposes.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td>
+      <p><code>function(event: React.ChangeEvent) =&gt; void</code></p>
+    </td>
+    <td><p>Defines the action to be taken when the input value changes.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>placeholder</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Search"</code></p>
+    </td>
+    <td>
+      <p>Sets the placeholder text displayed within the input element.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"rounded"</code> |</p>
+      <p><code>"square"</code></p>
+    </td>
+    <td>
+      <p><code>"square"</code></p>
+    </td>
+    <td>
+      <p>
+        Determines the visual style of the component, with options for rounded
+        or square design.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The value of the&nbsp;<code>input</code>&nbsp;element, required for a
+        controlled component.
+      </p>
+    </td>
+  </tr>
+</table>

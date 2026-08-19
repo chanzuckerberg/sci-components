@@ -2,16 +2,26 @@
   "TooltipTable": {
     "props": {
       "contentAlert": {
-        "type": "\"string\" | \"Element\"",
-        "isRequired": false
+        "description": "A note above the whole table, for a caveat about the numbers. Takes an element, so it can hold a link.",
+        "isRequired": false,
+        "type": "string | Element"
       },
       "itemAlign": {
-        "type": "\"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "right",
+        "description": "Which side of its column each value sits on. Right lines numbers up with each other.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "showSectionHeader": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Whether section labels are drawn. False hides all of them; the dividers between sections stay.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "data": {
+        "description": "The sections, drawn in order and separated by dividers. A section's label heads it, its dataRows fill it, and disabled greys the whole block.",
+        "isRequired": false,
+        "type": "{ label?: string; dataRows: { label: string; value: string | number; }[]; disabled?: boolean; }[]"
       }
     }
   }

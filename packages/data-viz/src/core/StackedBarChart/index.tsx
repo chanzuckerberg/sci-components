@@ -319,7 +319,6 @@ const renderBarSegment = (
       componentSlot={<TooltipTable {...item.tooltip} />}
       placement="top"
       key={item.key}
-      hasInvertedStyle={false}
       open={hoveredIndex === item.originalIndex && !isHidden}
       disableInteractive={true}
       slotProps={{

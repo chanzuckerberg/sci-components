@@ -2,16 +2,42 @@
   "NavigationJumpTo": {
     "props": {
       "items": {
-        "type": "Item[]",
-        "isRequired": true
+        "defaultValue": "- (required)",
+        "description": "The sections to list. See the shape below.",
+        "isRequired": true,
+        "type": "Item[]"
       },
       "offsetTop": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 0,
+        "description": "How many pixels above a section the highlight should switch to it, which is what you want when a sticky header covers the top of the page. Any non-zero value also switches clicks to window scrolling by element id.",
+        "isRequired": false,
+        "type": "number"
       },
       "width": {
-        "type": "\"string\" | \"number\" | \"string & {}\"",
-        "isRequired": false
+        "defaultValue": "100%",
+        "description": "The width of the strip and of every item in it. Long titles wrap rather than truncate.",
+        "isRequired": false,
+        "type": "string | number | string & {}"
+      },
+      "onChange": {
+        "description": "(value: number, event?: React.SyntheticEvent, type?: \"click\" | \"scroll\") => void. Called when the highlighted item changes, with its index and what caused the change. For a scroll the event is synthesized, not a real DOM event.",
+        "isRequired": false,
+        "type": "\"scroll\" | \"click\""
+      },
+      "title": {
+        "description": "The item's label. It is also kebab-cased into the tab's id, so keep titles distinct.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "elementRef": {
+        "description": "A ref on the section this item points at. The component observes and scrolls whatever the ref holds.",
+        "isRequired": false,
+        "type": "MutableRefObject<HTMLElement | null>"
+      },
+      "subItems": {
+        "description": "Indented children, one level only. Sub-items cannot nest sub-items of their own.",
+        "isRequired": false,
+        "type": "{ title, elementRef }[]"
       }
     }
   }

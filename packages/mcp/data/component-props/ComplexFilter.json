@@ -2,45 +2,76 @@
   "ComplexFilter": {
     "props": {
       "DropdownMenuProps": {
-        "type": "any",
-        "isRequired": false
+        "description": "Passed straight to the menu, and with it to MUI's Autocomplete underneath.",
+        "isRequired": false,
+        "type": "Partial<DropdownMenuProps>"
       },
       "InputDropdownProps": {
-        "type": "InputDropdownPropsType",
+        "defaultValue": "{ sdsStyle: minimal }",
+        "description": "Passed straight to the InputDropdown that opens the filter. Note that supplying it replaces the default, so a filter that should stay minimal needs sdsStyle passed again alongside whatever else it sets.",
         "isRequired": false,
-        "defaultValue": "{ sdsStyle: minimal }"
+        "type": "InputDropdownPropsType"
       },
       "isTriggerChangeOnOptionClick": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Determines whether changes are triggered in real-time upon clicking an option",
+        "isRequired": false,
+        "type": "boolean"
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Sets the label of filter, shown both when closed and open",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "multiple": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Defines whether multiple selections or can be made from the filter simultaneously or only one",
+        "isRequired": false,
+        "type": "boolean"
       },
       "onChange": {
-        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void",
-        "isRequired": false
+        "description": "Function to set what happens when a new value is set via the filter",
+        "isRequired": false,
+        "type": "(options: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>) => void"
       },
       "options": {
-        "type": "any",
-        "isRequired": false
+        "description": "The items to filter by. Passing the multi-column shape lays the menu out in named columns instead of one list.",
+        "isRequired": false,
+        "type": "AutocompleteSingleColumnOption<T>[] | AutocompleteMultiColumnOption<T>[]"
       },
       "search": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Provides a search bar at the top of the filter from which users can narrow the list of menu items",
+        "isRequired": false,
+        "type": "boolean"
       },
       "buttonPosition": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "right",
+        "description": "Which side of the menu footer the Apply and Cancel buttons sit on. It only applies alongside buttons.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "buttons": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Puts Apply and Cancel buttons at the foot of the menu, so selections take effect only once Apply is pressed.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "closeOnBlur": {
+        "defaultValue": false,
+        "description": "Closes the filter when a click lands outside it, which it otherwise does not do. It is ignored while the Apply and Cancel buttons are showing, which is a multi select that has not been given isTriggerChangeOnOptionClick. The default follows buttons, so a filter given buttons={false} closes on blur without being asked.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "keepSearchOnSelect": {
+        "description": "Maintains a search input when a user selects an option (only if multiple selections are allowed via the multiple prop; otherwise the dropdown closes upon selection)",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "value": {
+        "description": "The selected option or options. Leaving it out lets the filter keep track of the selection itself, and passing it makes the filter controlled: the tags and menu then only change when a new value comes back in.",
+        "isRequired": false,
+        "type": "T | T[] | null"
       }
     }
   }

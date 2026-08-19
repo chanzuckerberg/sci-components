@@ -21,6 +21,16 @@ export interface ComponentList {
   "data-viz": string[];
 }
 
+export interface ComponentDocsEntry {
+  /** File name of the generated markdown, relative to `data/component-docs`. */
+  file: string;
+  package: string;
+  /** Path of the authored HTML the markdown was generated from. */
+  source: string;
+}
+
+export type ComponentDocsIndex = Record<string, ComponentDocsEntry>;
+
 export interface TailwindTokens {
   fontFamily?: Record<string, string>;
   fontSize?: Record<string, string>;

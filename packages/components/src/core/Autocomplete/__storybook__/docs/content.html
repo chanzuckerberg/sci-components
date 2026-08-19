@@ -1,0 +1,808 @@
+<h1>Autocomplete</h1>
+<p>
+  The searchable list of options behind every SDS dropdown: a MUI Autocomplete
+  rendered as SDS MenuItems, in one column or several.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Most applications want DropdownMenu instead.</strong>
+    Autocomplete is the list itself, with no popper of its own and no trigger.
+    <a
+      href="./?path=/docs/components-dropdowns-dropdownmenu--documentation"
+      target="_top"
+    >
+      DropdownMenu
+    </a>
+    wraps it in a popper anchored to an element you choose, and
+    <a
+      href="./?path=/docs/components-dropdowns-dropdown--documentation"
+      target="_top"
+    >
+      Dropdown
+    </a>
+    adds the click target too. Use Autocomplete directly when the list belongs
+    somewhere a popper cannot go: inside a panel, a dialog body, or a layout you
+    are placing yourself. The
+    <a href="./?path=/docs/components-dropdowns-overview--docs" target="_top">
+      Dropdowns overview
+    </a>
+    sets out the whole family.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Autocomplete/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Autocomplete } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default</h3>
+<p>
+  A single list with a search field. Click the field to open it; options here
+  carry nothing but a name.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/DefaultAutocomplete"
+></div>
+<h3>Multi-select</h3>
+<p>
+  Selecting several options, with the selection read back out above the list.
+  The component will not show it in the field.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteMultiSelect"
+></div>
+<h3>Grouped sections</h3>
+<p><code>groupBy</code> splits the same list into labelled sections.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteGroupedSections"
+></div>
+<h3>What an option can show</h3>
+<p>
+  Counts, details, icons, a disabled row, and an option that renders a component
+  of its own instead of a label.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteOptionContent"
+></div>
+<h3>Multiple columns</h3>
+<p>
+  Two lists side by side under one search field, and the record-shaped value
+  they report.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Autocomplete/AutocompleteMultiColumn"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  SDS Autocomplete wraps
+  <a href="https://mui.com/material-ui/react-autocomplete/">MUI Autocomplete</a>
+  , so every MUI prop is available and anything not described here behaves as
+  MUI documents it. What SDS adds is a house style and a set of defaults that
+  suit dropdowns rather than form fields:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>Options render as SDS MenuItems</strong>
+      inside a MenuList, which is where the checkmarks, counts, details, icons,
+      and disabled styling come from. Supplying your own
+      <code>renderOption</code> replaces all of it.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The selection is never drawn in the input.</strong>
+      MUI shows chips for a multi-select; SDS returns <code>null</code> from
+      <code>renderValue</code>, so the field keeps showing its label and the
+      checkmarks in the list are the only indication. Reporting the selection
+      belongs to whatever sits above: an InputDropdown, a set of Tags, your own
+      summary.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The input is an SDS InputSearch</strong>
+      with a search button and a clear button, built by the component. Reach it
+      through <code>InputBaseProps</code>. MUI's <code>renderInput</code> still
+      works and replaces that input outright, which also takes the two buttons
+      with it, so it is a last resort rather than the way in.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Defaults differ.</strong>
+      <code>clearOnBlur</code> is <code>false</code> rather than MUI's
+      <code>true</code>, so typed text survives a blur;
+      <code>disableCloseOnSelect</code> follows <code>multiple</code>; and
+      <code>blurOnSelect</code> is forced off for a multi-select so the list
+      stays put while several options are picked. Backspace is also stopped from
+      reaching MUI, where it would otherwise remove the last selection.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The popper never portals.</strong>
+      <code>disablePortal</code> is set, so the list renders in place, inside
+      whatever container the component is in, and inherits its stacking and
+      overflow.
+    </p>
+  </li>
+</ul>
+<h2>Options</h2>
+<p>
+  Every option needs a <code>name</code>. It is the label, the search text, the
+  React key, and what selection equality is judged on by default, so names
+  should be unique within a list. Beyond that an option comes in one of two
+  shapes, and the type will not let you mix them:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      A
+      <strong>described option</strong>
+      may add <code>count</code>, a number shown at the end of the row;
+      <code>details</code>, a second line under the label; <code>icon</code>,
+      either an SDS icon name or an element of your own; and
+      <code>sdsIconProps</code> to colour and size a named icon.
+    </p>
+  </li>
+  <li>
+    <p>
+      A
+      <strong>custom option</strong>
+      carries a <code>component</code> instead, rendered in place of the label
+      inside the same MenuItem. It still needs a name for search and selection
+      to work.
+    </p>
+  </li>
+</ul>
+<p>
+  Either shape may set <code>section</code>, which <code>groupBy</code> can read
+  to split the list into labelled groups, and <code>disabled</code>, which greys
+  the row out and blocks selection. Options are grouped in the order they arrive
+  rather than being sorted, so a section that reappears later in the array is
+  rendered as a second group under the same heading.
+</p>
+<h2>One column or several</h2>
+<p>
+  The shape of <code>options</code> decides which form you get. A flat array is
+  a single list. An array of objects that each have their own
+  <code>options</code> is a multi-column dropdown, with one list per entry, a
+  heading from its <code>name</code>, a fixed <code>width</code>, and an
+  optional <code>icon</code> drawn on the divider that follows it:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">// One column
+options={[{ name: "Brain" }, { name: "Lung" }]}
+
+// Two columns
+options={[
+  { name: "Tissue", options: [{ name: "Brain" }], width: 180 },
+  { name: "Assay", options: [{ name: "Slide-seq" }], width: 220 },
+]}</code></pre>
+  </figure>
+</div>
+<p>
+  The value follows the same split. A single column reports what MUI reports: an
+  option, or an array of them for a multi-select. Multiple columns report a
+  record keyed by column name, with each column's own value inside it, and the
+  handler receives the whole record whenever any column changes.
+</p>
+<p>
+  A columns array of length one collapses back to a single list, so a variable
+  number of columns needs no special casing. <code>groupBy</code> is ignored
+  once there is more than one column: sections and columns do not combine.
+</p>
+<h2>Search, and who opens the list</h2>
+<p>
+  <code>search</code> is what gives the component a visible, focusable text
+  field. It is off by default, and when it is off the input is not merely hidden
+  but clipped and disabled, which also means there is nothing left to click, and
+  the list can only be opened by a parent through <code>open</code>. That is the
+  arrangement DropdownMenu uses, and the reason a bare Autocomplete with no
+  props appears to do nothing.
+</p>
+<p>
+  So there are two working configurations: give it <code>search</code> and let
+  it manage itself, or control <code>open</code> from outside and use
+  <code>onClick</code> and <code>onClickAway</code> to hear when the component
+  would like to open and close. Both are advisory when <code>open</code> is
+  controlled. The list stays where your state puts it.
+</p>
+<p>
+  Filtering is MUI's, matching against <code>getOptionLabel</code>, which
+  defaults to the option's name; pass <code>filterOptions</code> to change how
+  matching works. When nothing matches, <code>noOptionsText</code> is shown. For
+  a multi-select, <code>keepSearchOnSelect</code> leaves the typed text in place
+  after each pick so several matches for one search can be selected without
+  retyping it.
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      A single-select closes and blurs on selection. A multi-select stays open,
+      keeps focus, and marks selected rows with a checkmark, shifting the labels
+      right to make room.
+    </p>
+  </li>
+  <li>
+    <p>
+      The listbox keeps its scroll position across selections, so picking an
+      option halfway down a long list does not jump back to the top.
+    </p>
+  </li>
+  <li>
+    <p>
+      Keyboard support is MUI's: arrows move the highlight, Enter selects,
+      Escape closes, and typing filters. The field takes a focus outline only
+      when it was reached by tabbing, not when it was clicked.
+    </p>
+  </li>
+  <li>
+    <p>
+      With <code>search</code> off there is no keyboard path into the component
+      at all: the input is disabled and <code>aria-hidden</code> along with its
+      two buttons, and the options carry a <code>tabindex</code> of
+      <code>-1</code>. Anything built on that mode has to provide its own
+      keyboard route to the list.
+    </p>
+  </li>
+  <li>
+    <p>
+      The input is labelled by <code>label</code>, which is used as both the
+      visible label and the placeholder. It is worth writing as an instruction:
+      "Search cell types" rather than "Search".
+    </p>
+  </li>
+  <li>
+    <p>
+      Because the input never shows the selection, a selection that is not
+      reported anywhere else is invisible to someone who cannot see the
+      checkmarks. Pair the list with a summary of what is chosen.
+    </p>
+  </li>
+</ul>
+<div
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>count and icon do nothing at the top level.</strong>
+    Both are accepted on the component itself, left over from an earlier
+    version, and neither is rendered. On an option they work as described above;
+    on a column, <code>icon</code> draws the divider glyph.
+  </p>
+</div>
+<h2>Typing onChange</h2>
+<p>
+  The handler is typed as a union of the single-column and multi-column
+  signatures, which is enough to stop TypeScript inferring its parameters. Pin
+  the component's generics and declare the handler with the matching type, and
+  both sides line up:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
+  Autocomplete,
+  type AutocompleteSingleColumnOnChange,
+  type DefaultAutocompleteOption,
+} from "@czi-sds/components";
+
+// &lt;Option, Multiple, DisableClearable, FreeSolo&gt;
+const handleChange: AutocompleteSingleColumnOnChange&lt;
+  DefaultAutocompleteOption,
+  true,
+  false,
+  false
+&gt; = (event, value) =&gt; setSelected(value);
+
+&lt;Autocomplete&lt;DefaultAutocompleteOption, true, false, false&gt;
+  multiple
+  onChange={handleChange}
+  options={OPTIONS}
+  value={selected}
+/&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  Use <code>AutocompleteMultiColumnOnChange</code> and
+  <code>AutocompleteMultiColumnValue</code> for the multi-column form.
+</p>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI Autocomplete component can be found
+  <a href="https://mui.com/material-ui/react-autocomplete/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  The props below are the SDS additions and the MUI props whose behaviour SDS
+  changes. Everything else is passed through to MUI Autocomplete; see the MUI
+  documentation for the rest.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Type</strong></p>
+    </td>
+    <td>
+      <p><strong>Default</strong></p>
+    </td>
+    <td>
+      <p><strong>Description</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>options</code></p>
+    </td>
+    <td>
+      <p><code>T[]</code> |</p>
+      <p><code>AutocompleteMultiColumnOption&lt;T&gt;[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The options, or an array of named columns each with their own options.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>T | T[]</code> |</p>
+      <p><code>Record&lt;string, T | T[]&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The selection. An array when <code>multiple</code>, and a record keyed
+        by column name when there is more than one column.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Fired on every selection change with the whole value.
+        <code>details.option</code> is the one that just changed.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, value: T | T[], reason:
+          AutocompleteChangeReason, details?:
+          AutocompleteChangeDetails&lt;T&gt;) =&gt; void
+        </code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onInputChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Fired as the search text changes, after the component has updated its
+        own input state.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>
+          function(event: SyntheticEvent, value: string, reason:
+          AutocompleteInputChangeReason) =&gt; void
+        </code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>multiple</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Allows more than one selection, shows checkmarks, and keeps the list
+        open and focused after each pick.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>search</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Shows the search field. Without it the input is hidden and disabled, and
+        the list must be opened through <code>open</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Label"</code></p>
+      <p><code>"Search"</code> (columns)</p>
+    </td>
+    <td><p>The search field's label and placeholder.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>open</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Controls whether the list is shown. Once set, the component will not
+        open or close itself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>(event) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Fired when the component would like to open.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClickAway</code></p>
+    </td>
+    <td>
+      <p><code>(event, reason) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Fired when the component would like to close, including on Escape and on
+        a click outside.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>keepSearchOnSelect</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        For a multi-select, leaves the typed text in place after a selection
+        instead of clearing it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>groupBy</code></p>
+    </td>
+    <td>
+      <p><code>(option: T) =&gt; string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Splits the list into labelled sections. Ignored when there is more than
+        one column.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"default" | "negative"</code> |</p>
+      <p><code>"notice" | "positive"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>
+        Validation styling on the search field. Single column only; the
+        multi-column field does not take it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>InputBaseProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;InputSearchProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props for the search field. This is the way in: SDS supplies
+        <code>renderInput</code> itself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>renderInput</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>an SDS InputSearch</p></td>
+    <td>
+      <p>
+        <code>(params: AutocompleteRenderInputParams) =&gt; ReactNode</code>.
+        Replaces the whole input, losing the search and clear buttons SDS puts
+        there, so prefer <code>InputBaseProps</code>. On a multi-column
+        Autocomplete it reaches the hidden per-column inputs rather than the
+        trigger.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>PopperBaseProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;PopperProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props for the popper holding the columns. Multi-column only; a single
+        column uses MUI's own popper.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>PopperComponent</code></p>
+    </td>
+    <td>
+      <p><code>component</code></p>
+    </td>
+    <td><p>SDS styled Popper</p></td>
+    <td><p>Replaces that popper outright. Multi-column only.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>PopperPlacement</code></p>
+    </td>
+    <td>
+      <p><code>"bottom-start" | "bottom-end"</code> |</p>
+      <p><code>"top-start" | "top-end"</code></p>
+    </td>
+    <td>
+      <p><code>"bottom-start"</code></p>
+    </td>
+    <td><p>Where the columns are placed. Multi-column only.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ClickAwayListenerProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;ClickAwayListenerProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props for the MUI ClickAwayListener that closes the columns.
+        Multi-column only.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disableCloseOnSelect</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>multiple</code></p>
+    </td>
+    <td>
+      <p>
+        Keeps the list open after a selection. Follows <code>multiple</code>
+        unless you set it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>blurOnSelect</code></p>
+    </td>
+    <td>
+      <p><code>boolean | "touch" | "mouse"</code></p>
+    </td>
+    <td>
+      <p><code>!multiple</code></p>
+    </td>
+    <td>
+      <p>
+        Blurs the input after a selection. Forced off when
+        <code>multiple</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>clearOnBlur</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Clears the typed text when the field loses focus. MUI defaults this to
+        <code>true</code>; SDS does not.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>getOptionLabel</code></p>
+    </td>
+    <td>
+      <p><code>(option: T) =&gt; string</code></p>
+    </td>
+    <td>
+      <p><code>option.name</code></p>
+    </td>
+    <td><p>The text an option displays and is searched by.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>isOptionEqualToValue</code></p>
+    </td>
+    <td>
+      <p><code>(option: T, value) =&gt; boolean</code></p>
+    </td>
+    <td><p>compares names</p></td>
+    <td>
+      <p>
+        How an option is matched to the value. Override it when names are not
+        unique or the value is a different object.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>getOptionDisabled</code></p>
+    </td>
+    <td>
+      <p><code>(option: T) =&gt; boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Disables options by rule, as an alternative to the
+        <code>disabled</code> flag on an option.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>renderOption</code></p>
+    </td>
+    <td>
+      <p><code>(props, option, state) =&gt; node</code></p>
+    </td>
+    <td><p>SDS MenuItem</p></td>
+    <td>
+      <p>
+        Replaces the row entirely, including checkmarks, counts, details, and
+        icons.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>noOptionsText</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>"No options"</code></p>
+    </td>
+    <td><p>Shown when nothing matches the search.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>loading</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Shows <code>loadingText</code> in place of the options. Note that
+        <code>loadingText</code> defaults to an empty string, so set it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>Disables the search field.</p></td>
+  </tr>
+</table>

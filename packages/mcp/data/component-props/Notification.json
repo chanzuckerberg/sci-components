@@ -2,43 +2,61 @@
   "Notification": {
     "props": {
       "autoDismiss": {
-        "type": "\"number\" | \"false\" | \"true\"",
-        "isRequired": false
+        "description": "Dismisses the Notification on a timer. A number sets the delay in milliseconds, and true uses 8000. Leave it unset to keep the Notification visible until it is dismissed another way.",
+        "isRequired": false,
+        "type": "number | false | true"
       },
       "buttonOnClick": {
-        "type": "(event: SyntheticEvent<Element, Event>) => void",
-        "isRequired": false
+        "description": "Callback fired when the action button is clicked. Passing it is what renders the button, and the Notification does nothing else in response, so dismissing it is up to this handler.",
+        "isRequired": false,
+        "type": "(event: SyntheticEvent<Element, Event>) => void"
       },
       "buttonPosition": {
-        "type": "\"left\" | \"right\"",
-        "isRequired": false
-      },
-      "extraContent": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": "right",
+        "description": "Which side of the Notification the action button sits on.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "icon": {
-        "type": "ReactNode",
+        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`.",
         "isRequired": false,
-        "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`."
+        "type": "ReactNode"
       },
       "intent": {
-        "type": "\"accent\" | \"info\" | \"negative\" | \"positive\" | \"notice\"",
-        "isRequired": true
+        "description": "Required. Sets both the color of the component and the icon it defaults to.",
+        "isRequired": true,
+        "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\""
       },
       "onClose": {
-        "type": "(event: SyntheticEvent<Element, Event>) => void",
+        "description": "Callback fired when the component requests to be closed.\nWhen provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.\n@param event The event source of the callback.",
         "isRequired": false,
-        "description": "Callback fired when the component requests to be closed.\nWhen provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.\n@param event The event source of the callback."
+        "type": "(event: SyntheticEvent<Element, Event>) => void"
       },
       "sdsIconProps": {
-        "type": "IconProps<string | number | symbol>",
-        "isRequired": false
+        "description": "Props forwarded to the Icon component when icon is given as a name.",
+        "isRequired": false,
+        "type": "IconProps<string | number | symbol>"
       },
       "slideDirection": {
-        "type": "\"left\" | \"right\"",
+        "defaultValue": "left",
+        "description": "Required. The side the Notification slides in from and back out towards. The component falls back to \"left\", but the prop is not optional, so pass it explicitly.",
         "isRequired": false,
-        "defaultValue": "left"
+        "type": "\"left\" | \"right\""
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "dismissed": {
+        "description": "Hides the Notification when set to true. Changing it back to false brings the Notification back, which is how a dismissed Notification is restored.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "buttonText": {
+        "description": "The label of the action button shown beneath the content. It only renders alongside buttonOnClick.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

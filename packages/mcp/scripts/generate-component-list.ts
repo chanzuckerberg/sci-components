@@ -6,56 +6,51 @@ import { ComponentList } from "../src/lib/types.js";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const ignoredComponents = ["Bases", "styles"];
+const ignoredComponents = ["Bases", "Deprecated", "styles"];
+
+/**
+ * A directory under `src/core` is only a component if it exports one. Some
+ * directories exist purely to hold a Storybook docs page — data-viz's
+ * `Overview` is the package introduction, not a component — and those have to
+ * stay out of the list, since it drives the `list_components` tool as well as
+ * the props and docs generators.
+ */
+function isComponentDirectory(directory: string): boolean {
+  return ["index.tsx", "index.ts"].some((entry) =>
+    fs.existsSync(path.join(directory, entry))
+  );
+}
+
+function scanPackage(corePath: string, label: string): string[] {
+  if (!fs.existsSync(corePath)) {
+    console.error(`${label} package not found at:`, corePath);
+    return [];
+  }
+
+  return fs
+    .readdirSync(corePath)
+    .filter((item) => {
+      const itemPath = path.join(corePath, item);
+
+      return (
+        fs.statSync(itemPath).isDirectory() &&
+        !item.startsWith("_") &&
+        !ignoredComponents.includes(item) &&
+        isComponentDirectory(itemPath)
+      );
+    })
+    .sort();
+}
 
 function scanComponentsPackage(): string[] {
-  const components: string[] = [];
-  const componentsPath = path.join(dirname, "../../components/src/core");
-
-  if (!fs.existsSync(componentsPath)) {
-    console.error("Components package not found at:", componentsPath);
-    return components;
-  }
-
-  const items = fs.readdirSync(componentsPath);
-
-  for (const item of items) {
-    const itemPath = path.join(componentsPath, item);
-    const stats = fs.statSync(itemPath);
-
-    if (
-      stats.isDirectory() &&
-      !item.startsWith("_") &&
-      !ignoredComponents.includes(item)
-    ) {
-      components.push(item);
-    }
-  }
-
-  return components.sort();
+  return scanPackage(
+    path.join(dirname, "../../components/src/core"),
+    "Components"
+  );
 }
 
 function scanDataVizPackage(): string[] {
-  const components: string[] = [];
-  const dataVizPath = path.join(dirname, "../../data-viz/src/core");
-
-  if (!fs.existsSync(dataVizPath)) {
-    console.error("Data-viz package not found at:", dataVizPath);
-    return components;
-  }
-
-  const items = fs.readdirSync(dataVizPath);
-
-  for (const item of items) {
-    const itemPath = path.join(dataVizPath, item);
-    const stats = fs.statSync(itemPath);
-
-    if (stats.isDirectory() && !item.startsWith("_")) {
-      components.push(item);
-    }
-  }
-
-  return components.sort();
+  return scanPackage(path.join(dirname, "../../data-viz/src/core"), "Data-viz");
 }
 
 function generateComponentList() {
