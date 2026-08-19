@@ -28,6 +28,7 @@ import {
   CODE_ACTION_CLASS,
   CODE_BODY_CLASS,
   CODE_COPY_CLASS,
+  DESIGN_ASSETS_PATH,
   PREVIEW_CLASS,
   SB_UNSTYLED_CLASS,
   SLOT_CLASS,
@@ -155,8 +156,8 @@ const Container = styled.div<CommonThemeProps>`
     border-radius: 8px;
     /* The illustration is drawn on a white plate, so the panel carries that
        surface and sets its own dark copy rather than inheriting the page's. */
-    background: url("/design-assets/sds-cover.png") center / cover no-repeat
-      #fff;
+    background: url("${DESIGN_ASSETS_PATH}/sds-cover.png") center / cover
+      no-repeat #fff;
     color: #14161a;
   }
   /* The drawing starts 58% of the way across the artwork, so the copy stops
@@ -406,13 +407,13 @@ const Container = styled.div<CommonThemeProps>`
     background-size: contain;
   }
   && .sds-doc-status > li[data-status="ready"]::before {
-    background-image: url("/design-assets/status-ready.svg");
+    background-image: url("${DESIGN_ASSETS_PATH}/status-ready.svg");
   }
   && .sds-doc-status > li[data-status="partial"]::before {
-    background-image: url("/design-assets/status-partial.svg");
+    background-image: url("${DESIGN_ASSETS_PATH}/status-partial.svg");
   }
   && .sds-doc-status > li[data-status="in-progress"]::before {
-    background-image: url("/design-assets/status-in-progress.svg");
+    background-image: url("${DESIGN_ASSETS_PATH}/status-in-progress.svg");
   }
 
   .sds-doc-example-error {
