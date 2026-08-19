@@ -52,15 +52,16 @@
 </p>
 <h3>Sizes</h3>
 <p>
-  Four sizes cover the interface. Match the size to what the icon sits beside,
-  rather than to the space available.
+  Four sizes cover the interface, with a fifth below them that new work should
+  avoid. Match the size to what the icon sits beside, rather than to the space
+  available.
 </p>
 <table class="sds-doc-table">
   <tr>
     <td>
       <p><strong>Size</strong></p>
     </td>
-    <td>
+    <td style="min-width: 240px">
       <p><strong>SDS Variable</strong></p>
     </td>
     <td>
@@ -187,15 +188,19 @@
       </p>
     </td>
   </tr>
+  <tr>
+    <td>
+      <p><code>10px</code></p>
+    </td>
+    <td>
+      <p><code>--sds-icon-size-xxs-height</code></p>
+      <p><code>--sds-icon-size-xxs-width</code></p>
+    </td>
+    <td>
+      <p>Nothing in the design system uses it.</p>
+    </td>
+  </tr>
 </table>
-<p>
-  There is a fifth size below these, <code>10px</code>, exposed as
-  <code>--sds-icon-size-xxs-height</code> and
-  <code>--sds-icon-size-xxs-width</code>. It is small enough to be hard to read
-  and is best avoided in new work. Every variable above is also published as an
-  SCSS variable, for example <code>$sds-icon-size-l-height</code>, and is
-  available from the theme through the <code>getIconSizes</code> selector.
-</p>
 <h3>Weights</h3>
 <p>
   Phosphor draws each of its icons at six weights, from

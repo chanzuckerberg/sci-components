@@ -35,10 +35,13 @@ const meta: Meta<typeof PlaygroundApp> = {
      * it would find here belongs to Monaco: the editor's own syntax colors are
      * what it reports, a shade short of the contrast it asks for.
      *
-     * `skip` is the key axe-storybook-testing reads, along with `mode`. It takes
-     * no notice of anything else under `axe`, so a name of our own here would be
-     * quietly ignored and the suite would run anyway.
+     * Both switches are needed, one per suite. `a11y.test` is what addon-a11y
+     * reads, in Storybook and under the Vitest runner. `axe.skip` is what
+     * `axe-storybook-testing` reads, along with `mode`; it takes no notice of
+     * anything else under `axe`, so a name of our own there would be quietly
+     * ignored and the suite would run anyway.
      */
+    a11y: { test: "off" },
     axe: { skip: true },
     chromatic: { disable: true },
     docs: { disable: true },
@@ -47,7 +50,7 @@ const meta: Meta<typeof PlaygroundApp> = {
       showPanel: false,
     },
   },
-  tags: ["!autodocs", "!test", "!a11ytest"],
+  tags: ["!autodocs", "!test"],
   title: "Playground",
 };
 

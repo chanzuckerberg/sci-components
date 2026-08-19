@@ -11,8 +11,9 @@
  * one is written from the other every time Storybook is built.
  *
  * The stories are snapshots and nothing else: `!dev` keeps them out of the
- * sidebar, where the real pages already are, and `!test` and `!a11ytest` keep
- * the test suites off content whose components they already cover.
+ * sidebar, where the real pages already are, and `!test` with the accessibility
+ * parameters keeps the test suites off content whose components they cover
+ * already.
  *
  * Run: node docs-kit/scripts/generate-doc-snapshots.mjs
  */
@@ -158,12 +159,15 @@ const meta: Meta = {
   parameters: {
     /**
      * The page is documentation the accessibility suite reaches through the
-     * real thing, and the components in it through their own stories.
+     * real thing, and the components in it through their own stories. Both
+     * switches are needed, one per suite: addon-a11y reads the first, and
+     * axe-storybook-testing reads the second.
      */
+    a11y: { test: "off" },
     axe: { skip: true },
     layout: "fullscreen",
   },
-  tags: ["!autodocs", "!dev", "!test", "!a11ytest"],
+  tags: ["!autodocs", "!dev", "!test"],
   title: "${SECTION}/${title}",
 };
 
