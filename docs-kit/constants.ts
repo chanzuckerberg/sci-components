@@ -1,3 +1,15 @@
+/**
+ * Where the images the documentation references are served from, as the
+ * `staticDirs` entry in `.storybook/main.ts` mounts them.
+ *
+ * Written without a leading slash, so that it resolves against the current
+ * document rather than the root of the domain: the published Storybook is
+ * served from a subpath (`chanzuckerberg.github.io/sci-components/`), where a
+ * root-absolute path lands outside the site. The pages' own `<img src>`
+ * attributes are relative for the same reason.
+ */
+export const DESIGN_ASSETS_PATH = "design-assets";
+
 /** Live preview surface wrapped around an extracted code example. */
 export const PREVIEW_CLASS = "sds-doc-example-preview";
 

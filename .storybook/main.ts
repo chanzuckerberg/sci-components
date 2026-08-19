@@ -48,7 +48,11 @@ const config: StorybookConfig = {
   ],
 
   staticDirs: [
-    // The images the docs reference are committed alongside them.
+    /**
+     * The images the docs reference are committed alongside them. The pages
+     * point at them relatively, so the mount name here has to stay in step with
+     * `DESIGN_ASSETS_PATH` in `docs-kit/constants.ts`.
+     */
     { from: "../design-docs/assets", to: "/design-assets" },
     /**
      * Type definitions for the playground's editor. Fetched rather than
