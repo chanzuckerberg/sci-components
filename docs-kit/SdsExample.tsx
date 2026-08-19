@@ -72,8 +72,8 @@ const PreviewSurface = styled.div<CommonThemeProps & { padded: boolean }>`
 
       /* Holds the example, and with it whatever the example opens over itself,
          while the preview is settling into shape. \`useFitPreview\` lifts this
-         the moment the reader reaches the example, so that a menu they open is
-         free to stand outside the frame. */
+         the moment the reader reaches the example, so that a menu they open, or
+         a tooltip they hover, is free to stand outside the frame. */
       overflow: auto;
 
       ${props.padded ? `min-height: ${MIN_PREVIEW_HEIGHT}px;` : ""}
@@ -142,6 +142,25 @@ function PreviewSkeleton(): ReactElement {
 const OVERLAY_GUTTER = 16;
 
 /**
+ * A tooltip's overlay, as MUI marks it: the tooltips proper, the condensed ones
+ * that follow the cursor, and the tables they carry.
+ *
+ * The one overlay a preview has no business framing. A tooltip is up only while
+ * the reader is on its trigger and gone the moment they leave, so there is
+ * nothing that outlasts them to hold and no room worth reserving — and a frame
+ * that tried would be seen doing it: a tooltip placed above its trigger pushes
+ * the example down the frame to clear room over it, and one that follows the
+ * cursor drags the frame taller with every step of the pointer.
+ */
+const TOOLTIP_OVERLAY = ".MuiTooltip-popper";
+
+/**
+ * An overlay a preview is holding: one its example opened by itself, and so
+ * everything but a tooltip.
+ */
+const HELD_OVERLAY = `.MuiPopper-root:not(${TOOLTIP_OVERLAY})`;
+
+/**
  * How far the overlays a preview opened reach past the room it has for them,
  * above and below.
  *
@@ -186,6 +205,36 @@ function overlayOverflow(surface: HTMLElement): {
 const SETTLE_DELAYS = [0, 50, 150, 400, 1000];
 
 /**
+ * Give up the clip, so that what the preview opens from here is free to stand
+ * over the page below it. Where it can be given up: an example genuinely wider
+ * than the frame keeps its scrollbar, scrolling being the only way to reach the
+ * rest of it, and a box that scrolls is a box that clips.
+ */
+function unclip(surface: HTMLElement): void {
+  if (surface.scrollWidth <= surface.clientWidth) {
+    surface.style.overflow = "visible";
+  }
+}
+
+/**
+ * The reader reaching an example: a pointer crossing into the frame, or focus
+ * landing in it. A tooltip opens on one or the other and on nothing else, so
+ * this is the frame's cue to give up its clip.
+ *
+ * The cue is the approach rather than the tooltip itself because an overlay
+ * counts towards the frame's own width while it is up: a frame that measured
+ * itself with a tooltip already out past its edge would find in that tooltip a
+ * reason to keep clipping it.
+ */
+const REACH_EVENTS = ["focusin", "pointerover"] as const;
+
+/**
+ * The reader taking an example over: a press, or a keystroke while they are in
+ * it. From here the preview is theirs and stops holding its shape.
+ */
+const TAKEOVER_EVENTS = ["keydown", "pointerdown"] as const;
+
+/**
  * Hold a preview around the example in it until the reader takes it over.
  *
  * A frame that clips is a frame an overlay cannot leave, and the box it is
@@ -208,6 +257,12 @@ const SETTLE_DELAYS = [0, 50, 150, 400, 1000];
  * is genuinely wider than the frame, which in practice means a table, and a
  * table has no menu to open.
  *
+ * A tooltip asks for less and gets it sooner: the frame gives up its clip as
+ * soon as the reader reaches the example, and never measures itself around one.
+ * Holding a tooltip in would be holding it away from the prose it was written to
+ * annotate, and there is no call to hold it: nobody sees a tooltip who did not
+ * hover or tab to its trigger, and it goes when they do.
+ *
  * The frame only ever grows, which is what keeps the measuring convergent: each
  * pass moves the overlays it has just made room for, prompting another, and
  * with no room left to add the measurements agree and it settles.
@@ -219,6 +274,12 @@ function useFitPreview(surface: HTMLElement | null): void {
     const timers: number[] = [];
 
     const fit = (): void => {
+      // Left as it stands while a tooltip is up: a tooltip counts towards the
+      // surface's scrollable height like anything else in the frame, and a pass
+      // taken now would grow the preview to swallow the one overlay it means to
+      // leave alone.
+      if (surface.querySelector(TOOLTIP_OVERLAY)) return;
+
       const { above, below } = overlayOverflow(surface);
 
       if (above > 1) {
@@ -244,31 +305,53 @@ function useFitPreview(surface: HTMLElement | null): void {
     const observer = new MutationObserver(settle);
     observer.observe(surface, { childList: true, subtree: true });
 
+    /**
+     * The clip is also the boundary MUI places an overlay against, so a frame
+     * that gave it up while holding a menu open would send that menu out of
+     * itself, and the measuring would follow it out and pad the frame by the
+     * height of a menu. So the frame steps aside only while it is holding
+     * nothing — which is every preview a tooltip turns up in, a tooltip being
+     * the reader's and opening after they arrive.
+     */
+    const standAside = (): void => {
+      if (surface.querySelector(HELD_OVERLAY)) return;
+      unclip(surface);
+    };
+
+    /** Everything the frame is listening to, dropped in one go. */
+    const stopListening = (): void => {
+      window.removeEventListener("resize", settle);
+      REACH_EVENTS.forEach((type) =>
+        surface.removeEventListener(type, standAside, true)
+      );
+      TAKEOVER_EVENTS.forEach((type) =>
+        surface.removeEventListener(type, release, true)
+      );
+    };
+
     const release = (): void => {
       timers.splice(0).forEach(clearTimeout);
       observer.disconnect();
-      window.removeEventListener("resize", settle);
-      surface.removeEventListener("keydown", release, true);
-      surface.removeEventListener("pointerdown", release, true);
+      stopListening();
 
-      if (surface.scrollWidth <= surface.clientWidth) {
-        surface.style.overflow = "visible";
-      }
+      unclip(surface);
     };
 
     settle();
     window.addEventListener("resize", settle);
     // Captured, so that a control which handles the event itself still counts
     // as the reader having reached the example.
-    surface.addEventListener("keydown", release, true);
-    surface.addEventListener("pointerdown", release, true);
+    REACH_EVENTS.forEach((type) =>
+      surface.addEventListener(type, standAside, true)
+    );
+    TAKEOVER_EVENTS.forEach((type) =>
+      surface.addEventListener(type, release, true)
+    );
 
     return () => {
       timers.forEach(clearTimeout);
       observer.disconnect();
-      window.removeEventListener("resize", settle);
-      surface.removeEventListener("keydown", release, true);
-      surface.removeEventListener("pointerdown", release, true);
+      stopListening();
     };
   }, [surface]);
 }
