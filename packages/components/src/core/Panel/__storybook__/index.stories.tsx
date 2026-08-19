@@ -26,6 +26,13 @@ export default {
       },
       options: ["basic", "overlay"],
     },
+    transitionDuration: {
+      control: {
+        type: "number",
+      },
+      description:
+        "How long the Panel takes to slide in and out, in milliseconds. Accepts a single number or `{ enter, exit }`. Defaults to 225ms in and 195ms out; `0` removes the animation.",
+    },
     width: {
       control: {
         type: "text",

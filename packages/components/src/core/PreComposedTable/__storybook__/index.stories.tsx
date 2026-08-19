@@ -76,7 +76,6 @@ export default {
     },
   },
   component: PreComposedTable,
-  tags: ["beta"],
   title: "Components/Table/PreComposedTable",
   parameters: {
     axe: {

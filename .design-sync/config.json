@@ -6,7 +6,10 @@
   "globalName": "SDS",
   "storybookStatic": ".design-sync/sb-reference",
   "buildCmd": "node .yarn/releases/yarn-4.1.0.cjs build",
-  "extraEntries": ["../../.design-sync/preview-provider.jsx", "../data-viz/dist/index.esm.js"],
+  "extraEntries": [
+    "../../.design-sync/preview-provider.jsx",
+    "../data-viz/dist/index.esm.js"
+  ],
   "provider": { "component": "SDSPreviewProvider" },
   "readmeHeader": ".design-sync/conventions.md",
   "overrides": {
@@ -28,9 +31,26 @@
     "PreComposedTable": { "cardMode": "column" },
     "Table": { "cardMode": "column" },
     "Dialog": { "cardMode": "single", "primaryStory": "Default" },
-    "Panel": { "cardMode": "single", "primaryStory": "ScrollBehavior", "skip": ["components-panel--default", "components-panel--test"] },
+    "Panel": {
+      "cardMode": "single",
+      "primaryStory": "ScrollBehavior",
+      "skip": ["components-panel--default", "components-panel--test"]
+    },
     "Tooltip": { "cardMode": "single", "primaryStory": "Default" },
-    "Dropdown": { "cardMode": "single", "primaryStory": "Default", "skip": ["components-dropdowns-dropdown--inside-modal"] },
-    "DropdownMenu": { "cardMode": "single", "primaryStory": "ScreenshotTest", "skip": ["components-dropdowns-dropdownmenu--default", "components-dropdowns-dropdownmenu--multi-column", "components-dropdowns-dropdownmenu--test", "components-dropdowns-dropdownmenu--with-header-component"] }
+    "Dropdown": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "skip": ["components-dropdowns-dropdown--inside-modal"]
+    },
+    "DropdownMenu": {
+      "cardMode": "single",
+      "primaryStory": "ScreenshotTest",
+      "skip": [
+        "components-dropdowns-dropdownmenu--default",
+        "components-dropdowns-dropdownmenu--multi-column",
+        "components-dropdowns-dropdownmenu--test",
+        "components-dropdowns-dropdownmenu--with-header-component"
+      ]
+    }
   }
 }

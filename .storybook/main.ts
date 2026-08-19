@@ -13,11 +13,50 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 const COMPONENTS_SRC = resolve(currentDir, "../packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "../packages/data-viz/src");
+const ICONS_SRC = resolve(currentDir, "../packages/icons/src");
+const DOCS_KIT = resolve(currentDir, "../docs-kit");
 
 const config: StorybookConfig = {
   stories: [
+    /**
+     * Per-component code documentation, attached to each component's stories.
+     * It is listed first on purpose: `storySort` treats entries that share a
+     * title as equal, so the sidebar falls back to indexing order within a
+     * component, and this is what puts "Documentation" above the stories.
+     */
+    "../packages/components/src/**/__storybook__/docs/*.mdx",
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/data-viz/src/**/__storybook__/docs/*.mdx",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/icons/src/**/__storybook__/docs/*.mdx",
+    "../packages/icons/src/**/*.stories.@(js|jsx|ts|tsx)",
+    // Standalone design pages: the foundations, and the design half of each
+    // component's documentation.
+    "../design-docs/**/*.mdx",
+    // Guide to the MCP server, kept in the package it documents.
+    "../packages/mcp/docs/**/*.mdx",
+    // The live code playground the docs' examples link out to.
+    "../playground/*.stories.tsx",
+    /**
+     * A story per documentation page, written from the pages themselves by
+     * `docs-kit/scripts/generate-doc-snapshots.mjs` before Storybook starts or
+     * builds. Chromatic snapshots stories and not `docs` entries, so this is
+     * what puts the documentation in front of a visual review. They are hidden
+     * from the sidebar, the pages above being the ones to read.
+     */
+    "../docs-kit/generated/*.stories.tsx",
+  ],
+
+  staticDirs: [
+    // The images the docs reference are committed alongside them.
+    { from: "../design-docs/assets", to: "/design-assets" },
+    /**
+     * Type definitions for the playground's editor. Fetched rather than
+     * bundled: they are generated from a package build, and a playground that
+     * would not open without one would be broken more often than it was
+     * useful. See `playground/scripts/generate-types.mjs`.
+     */
+    { from: "../playground/generated", to: "/playground-types" },
   ],
 
   core: {
@@ -95,8 +134,11 @@ const config: StorybookConfig = {
       ...normalizeAlias(viteConfig.resolve.alias),
       { find: /^@components\/src\//, replacement: `${COMPONENTS_SRC}/` },
       { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
+      { find: /^@icons\/src\//, replacement: `${ICONS_SRC}/` },
       { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
       { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+      { find: "@czi-sds/icons", replacement: ICONS_SRC },
+      { find: /^@sds-docs\//, replacement: `${DOCS_KIT}/` },
     ];
 
     /**
@@ -122,6 +164,10 @@ const config: StorybookConfig = {
       ...normalizedEntries,
       `${COMPONENTS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
       `${DATA_VIZ_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
+      `${COMPONENTS_SRC}/**/__storybook__/docs/*.mdx`,
+      `${DATA_VIZ_SRC}/**/__storybook__/docs/*.mdx`,
+      `${ICONS_SRC}/**/__storybook__/docs/*.mdx`,
+      `${ICONS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
     ];
     /**
      * Pre-bundle bare-import subpaths that Vite's scanner cannot reach by
@@ -132,6 +178,12 @@ const config: StorybookConfig = {
     viteConfig.optimizeDeps.include = [
       ...(viteConfig.optimizeDeps.include ?? []),
       "@emotion/styled/base",
+      /**
+       * The playground imports Phosphor only once an example asks for it, which
+       * is late by definition — and fifteen hundred icon modules is the last
+       * thing to be optimizing mid-session, with the reload that follows.
+       */
+      "@phosphor-icons/react",
     ];
 
     return viteConfig;

@@ -21,9 +21,6 @@ export default {
       mapping: TOOLTIP_COMPONENT_SLOT_OPTIONS,
       options: Object.keys(TOOLTIP_COMPONENT_SLOT_OPTIONS),
     },
-    hasInvertedStyle: {
-      control: { type: "boolean" },
-    },
     placement: {
       control: { type: "select" },
       options: [

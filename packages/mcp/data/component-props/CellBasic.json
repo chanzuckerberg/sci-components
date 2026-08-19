@@ -1,81 +1,134 @@
 {
   "CellBasic": {
     "props": {
-      "component": {
-        "type": "\"symbol\" | \"object\" | \"cite\" | \"data\" | \"form\" | \"label\" | \"pattern\" | \"span\" | \"summary\" | \"slot\" | \"style\" | \"title\" | \"center\" | \"link\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"button\" | \"canvas\" | \"caption\" | \"code\" | \"col\" | \"colgroup\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"div\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"legend\" | \"li\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"strong\" | \"sub\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | \"ComponentClass",
-        "isRequired": false
-      },
       "horizontalAlign": {
-        "type": "\"left\" | \"right\"",
-        "isRequired": false
+        "defaultValue": "left",
+        "description": "Horizontal alignment of cell content. There is no \"center\". Use CellComponent if a cell needs centered content.",
+        "isRequired": false,
+        "type": "\"left\" | \"right\""
       },
       "icon": {
-        "type": "ReactElement",
-        "isRequired": false
+        "description": "Places an icon to the left of the cell text. Expects an SDS Icon or another SVG element.",
+        "isRequired": false,
+        "type": "ReactElement"
       },
       "iconVerticalAlign": {
-        "type": "\"top\" | \"center\" | \"bottom\"",
-        "isRequired": false
+        "defaultValue": "top",
+        "description": "Vertical alignment of the icon component.",
+        "isRequired": false,
+        "type": "\"center\" | \"bottom\" | \"top\""
       },
       "primaryText": {
-        "type": "string",
-        "isRequired": true
+        "description": "Primary text value.",
+        "isRequired": true,
+        "type": "string"
       },
       "primaryTextComponentSlotBottom": {
-        "type": "ReactNode",
-        "isRequired": false
+        "defaultValue": null,
+        "description": "Component slot below primary text. This will only show if there is no secondary or tertiary text. Remove the default values of secondary and tertiary text to see this in action.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "primaryTextComponentSlotRight": {
-        "type": "ReactNode",
-        "isRequired": false
+        "defaultValue": null,
+        "description": "Component slot to the right of primary text",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "primaryTextWrapLineCount": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 3,
+        "description": "Number of text wrap lines for primary text.",
+        "isRequired": false,
+        "type": "number"
       },
       "secondaryText": {
-        "type": "string",
-        "isRequired": false
+        "description": "Secondary Text.",
+        "isRequired": false,
+        "type": "string"
       },
       "secondaryTextWrapLineCount": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 1,
+        "description": "Number of text wrap lines for secondary text.",
+        "isRequired": false,
+        "type": "number"
       },
       "shouldShowTooltipOnHover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When true the cell is wrapped in a Tooltip whose title is primaryText and whose subtitle is secondaryText. Turn it off for cells whose text is already fully visible, otherwise every cell in the table has a tooltip.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "shouldShowUnderlineOnHover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Underlines primaryText on hover. Inside a PreComposedTable the underline also appears when any cell in the row is hovered.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "shouldTextWrap": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "When true, each text clamps to its wrap line count. When false, text stays on one line and truncates with an ellipsis instead.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "tabularNums": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Renders digits at a fixed width so numbers line up column to column. Worth turning on for any numeric column.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "tertiaryText": {
-        "type": "string",
-        "isRequired": false
+        "description": "Tertiary Text.",
+        "isRequired": false,
+        "type": "string"
       },
       "tertiaryTextWrapLineCount": {
-        "type": "number",
-        "isRequired": false
+        "defaultValue": 1,
+        "description": "Number of text wrap lines for tertiary text.",
+        "isRequired": false,
+        "type": "number"
       },
       "tooltipProps": {
-        "type": "TooltipProps",
-        "isRequired": false
+        "description": "Passed to the Tooltip, and overrides the defaults the cell sets (title, subtitle, arrow, dark style, no leave delay).",
+        "isRequired": false,
+        "type": "TooltipProps"
       },
       "verticalAlign": {
-        "type": "\"top\" | \"center\" | \"bottom\"",
-        "isRequired": false
+        "defaultValue": "top",
+        "description": "Vertical alignment of the cell content.",
+        "isRequired": false,
+        "type": "\"center\" | \"bottom\" | \"top\""
       },
       "width": {
-        "type": "\"string\" | \"number\"",
-        "isRequired": false
+        "description": "Lands on the rendered cell as the HTML width attribute, so a number is read as pixels. Browsers treat it as the width of the whole column, and take it as a minimum rather than a promise.",
+        "isRequired": false,
+        "type": "string | number"
+      },
+      "as": {
+        "defaultValue": "td",
+        "description": "The element the cell renders as. Use \"th\" for a row header cell inside tbody.",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
+      },
+      "extraRightPadding": {
+        "defaultValue": 0,
+        "description": "Extra pixels of right padding, added only when horizontalAlign is \"right\". Useful for leaving room for a scrollbar or a pinned column edge.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "link": {
+        "description": "Wraps the cell content in an anchor pointing here. The text keeps the cell's own color rather than link styling.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "linkComponent": {
+        "description": "The component the link renders as, for routers that supply their own link (React Router's Link, for example).",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
+      },
+      "linkProps": {
+        "description": "Props passed to the anchor rendered by link.",
+        "isRequired": false,
+        "type": "AnchorHTMLAttributes<HTMLAnchorElement>"
       }
     }
   }

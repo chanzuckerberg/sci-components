@@ -2,38 +2,61 @@
   "InputSearch": {
     "props": {
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, the component is disabled.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the `input` element.\nUse this prop to make `label` and `helperText` accessible for screen readers."
+        "description": "The id of the `input` element.\nUse this prop to make `label` and `helperText` accessible for screen readers.",
+        "isRequired": true,
+        "type": "string"
       },
       "intent": {
-        "type": "\"negative\" | \"notice\" | \"positive\" | \"default\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "Alters the border color and visual intent of the search input.",
+        "isRequired": false,
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\""
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": false,
-        "description": "The label content."
+        "description": "The label content.",
+        "isRequired": true,
+        "type": "ReactNode"
       },
       "placeholder": {
-        "type": "string",
+        "defaultValue": "Search",
+        "description": "The short hint displayed in the `input` before the user enters a value.",
         "isRequired": false,
-        "description": "The short hint displayed in the `input` before the user enters a value."
+        "type": "string"
       },
       "sdsStyle": {
-        "type": "\"rounded\" | \"square\"",
-        "isRequired": false
+        "defaultValue": "square",
+        "description": "Determines the visual style of the component, with options for rounded or square design.",
+        "isRequired": false,
+        "type": "\"square\" | \"rounded\""
       },
       "classes": {
-        "type": "Partial",
+        "defaultValue": {},
+        "description": "Override or extend the styles applied to the component.",
         "isRequired": false,
-        "description": "Override or extend the styles applied to the component."
+        "type": "Partial"
+      },
+      "handleSubmit": {
+        "defaultValue": "function(value: string) => void",
+        "description": "This function is called when the Search icon is clicked, allowing user to handle the search operation.",
+        "isRequired": false,
+        "type": "(value: string) => void"
+      },
+      "onChange": {
+        "defaultValue": "function(event: React.ChangeEvent) => void",
+        "description": "Callback fired when the value is changed.\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string).\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string).\n@param event The event source of the callback.\nYou can pull out the new value by accessing `event.target.value` (string).",
+        "isRequired": false,
+        "type": "function"
+      },
+      "value": {
+        "description": "The value of the `input` element, required for a controlled component.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

@@ -1,0 +1,273 @@
+<h1>CellHeader</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellHeader/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { CellHeader } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default CellHeader</strong></h3>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  CellHeader component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/CellHeader/DefaultCellHeader"
+></div>
+<h3><strong>Sortable CellHeader</strong></h3>
+<p>
+  A header only looks sortable once <code>hover</code> is set: without it the
+  cell draws no chevron and shows no tooltip, whatever the other sorting props
+  say. Sorting itself is yours to wire up through <code>onClick</code>, with
+  <code>active</code> marking the column being sorted and
+  <code>direction</code> choosing which way the chevron points.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/CellHeader/SortableCellHeader"
+></div>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>active</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Marks this column as the one currently sorted: the label and chevron
+        take the accent color. It does not sort anything on its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>as</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"th"</code></p>
+    </td>
+    <td><p>The element the header cell renders as.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. A string or number is wrapped in the header's own text
+        styling; anything else is rendered as given.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>direction</code></p>
+    </td>
+    <td>
+      <p><code>"asc"</code> |</p>
+      <p><code>"desc"</code></p>
+    </td>
+    <td>
+      <p><code>"desc"</code></p>
+    </td>
+    <td>
+      <p>
+        Which chevron to draw: up for <code>"asc"</code>, down for
+        <code>"desc"</code>. It also sets the icon's <code>aria-label</code>.
+        Exported as <code>CellHeaderDirection</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hideSortIcon</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Leaves the chevron out for columns that cannot be sorted. An active
+        header keeps its chevron even with this set.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>horizontalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
+    <td><p>Horizontally aligns the label and its chevron.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Makes the header interactive: it takes a pointer cursor, reacts to
+        hover, renders the sort chevron and allows the tooltip. A header left at
+        the default draws no chevron and shows no tooltip even if the other
+        sorting props are set, so set this on every sortable column.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>React.MouseEventHandler</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Where sorting is actually wired up: with TanStack Table, pass
+        <code>column.getToggleSortingHandler()</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldShowTooltipOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Wraps the header in a Tooltip. It only takes effect while
+        <code>hover</code> is also <code>true</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldTruncate</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Keeps a long label on one line and truncates it with an ellipsis instead
+        of wrapping.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>""</code></p>
+    </td>
+    <td><p>The tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipSubtitle</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>A second line below the tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>string</code> |</p>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Lands on the rendered cell as the HTML <code>width</code> attribute, so
+        a number is read as pixels. Browsers treat it as the width of the whole
+        column, and take it as a minimum rather than a promise.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TooltipProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the header sets
+        (arrow, top-start placement, dark style).
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Anything else you pass, such as <code>colSpan</code>, <code>scope</code> or a
+  data attribute, lands on the rendered <code>th</code>.
+</p>

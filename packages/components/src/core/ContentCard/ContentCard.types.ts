@@ -10,6 +10,10 @@ export interface BaseContentCardProps extends CardProps {
   metadataText?: ReactNode;
   boundingBox?: boolean;
   decorativeBorder?: boolean;
+  /**
+   * The content to be displayed inside the card body, including custom
+   * components and ContentCardActions.
+   */
   children?: ReactNode;
   clickableCard?: boolean;
   clickableCardProps?: Partial<

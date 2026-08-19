@@ -63,7 +63,7 @@ exports[`<Tabs /> > Default story renders snapshot 1`] = `
       </button>
     </div>
     <span
-      class="MuiTabs-indicator css-162du2h-TabIndicator css-1qltlow-MuiTabs-indicator"
+      class="MuiTabs-indicator css-1yezznq-TabIndicator css-1qltlow-MuiTabs-indicator"
       style="left: 0px; width: 0px;"
     />
   </div>

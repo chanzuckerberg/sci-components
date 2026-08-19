@@ -1,0 +1,233 @@
+<h1>Icons</h1>
+<p>
+  Icons are generally used in conjunction with text to further clarify the
+  outcome of a user's action. Occasionally they are used as buttons themselves
+  without accompanying text.
+</p>
+<p>
+  SDS draws on
+  <a href="https://phosphoricons.com" target="_blank">Phosphor Icons</a>
+  for its icon set, and adds the handful of icons Phosphor has no equivalent for
+  in <code>@czi-sds/icons</code>. This page covers when and how to use an icon;
+  the
+  <a href="./?path=/docs/icons-overview--documentation" target="_top">Icons</a>
+  documentation covers the code.
+</p>
+<div class="sds-doc-callout sds-doc-callout-background-4">
+  <p>
+    <strong>Engineers:</strong>
+    the <code>Icon</code> component is deprecated. Import icons from
+    <code>@phosphor-icons/react</code>, or from
+    <code>@czi-sds/icons</code>
+    for the ones SDS draws itself. See
+    <a href="./?path=/docs/icons-migrating-from-icon--docs" target="_top">
+      Migrating from Icon
+    </a>
+    .
+  </p>
+</div>
+<h3>Choosing an icon</h3>
+<p>
+  Search the Phosphor set first, at
+  <a href="https://phosphoricons.com" target="_blank">phosphoricons.com</a>. It
+  is large, consistently drawn, and maintained upstream, so an icon taken from
+  it will sit correctly beside every other icon in the interface.
+</p>
+<p>
+  SDS keeps a small set of its own, for one of two reasons: either Phosphor has
+  no equivalent, which covers the brand marks and the concepts specific to the
+  science these products do, or Phosphor has something close and we have decided
+  we want our own version of it, which covers the generative and predictive
+  affordances and a few data-visualisation and panel controls. The
+  <a href="./?path=/docs/icons-custom-icons--docs" target="_top"
+    >Custom Icons</a
+  >
+  page lists them and says which is which.
+</p>
+<p>
+  Where an icon appears on that page it takes precedence over a Phosphor
+  lookalike, even where the two are similar. If a concept is missing from both,
+  raise it with the design team rather than settling for the nearest
+  approximation, since an icon that reads wrongly is worse than a text label.
+</p>
+<h3>Sizes</h3>
+<p>
+  Four sizes cover the interface, with a fifth below them that new work should
+  avoid. Match the size to what the icon sits beside, rather than to the space
+  available.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Size</strong></p>
+    </td>
+    <td style="min-width: 240px">
+      <p><strong>SDS Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>Where it is used</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>32px</code></p>
+    </td>
+    <td>
+      <p><code>--sds-icon-size-xl-height</code></p>
+      <p><code>--sds-icon-size-xl-width</code></p>
+    </td>
+    <td>
+      <p>
+        Used only for
+        <a
+          href="./?path=/docs/design-documentation-genes-buttons--docs"
+          target="_top"
+          >Icon Buttons</a
+        >
+        .
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>24px</code></p>
+    </td>
+    <td>
+      <p><code>--sds-icon-size-l-height</code></p>
+      <p><code>--sds-icon-size-l-width</code></p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/design-documentation-genes-buttons--docs"
+          target="_top"
+          >Buttons</a
+        >
+        ,
+        <a
+          href="./?path=/docs/design-documentation-dna-callout--docs"
+          target="_top"
+          >Callouts</a
+        >
+        ,
+        <a href="./?path=/story/components-notification--default" target="_top"
+          >Notifications</a
+        >
+        ,
+        <a
+          href="./?path=/docs/design-documentation-genes-tags--docs"
+          target="_top"
+          >Tags</a
+        >
+        , etc.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>16px</code></p>
+    </td>
+    <td>
+      <p><code>--sds-icon-size-s-height</code></p>
+      <p><code>--sds-icon-size-s-width</code></p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/design-documentation-genes-dropdown-input--docs"
+          target="_top"
+          >Dropdown Inputs</a
+        >
+        ,
+        <a
+          href="./?path=/docs/design-documentation-genes-field-inputs--docs"
+          target="_top"
+        >
+          Search Inputs
+        </a>
+        ,
+        <a
+          href="./?path=/docs/design-documentation-genes-segmented-control--docs"
+          target="_top"
+          >Segmented Control</a
+        >
+        , etc.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>12px</code></p>
+    </td>
+    <td>
+      <p><code>--sds-icon-size-xs-height</code></p>
+      <p><code>--sds-icon-size-xs-width</code></p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/design-documentation-genes-control-inputs--docs"
+          target="_top"
+        >
+          Checkbox Inputs
+        </a>
+        ,
+        <a
+          href="./?path=/docs/design-documentation-genes-tags--docs"
+          target="_top"
+          >Filter Tags</a
+        >
+        ,
+        <a
+          href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+          target="_top"
+        >
+          Multi-select Menu Items
+        </a>
+        , etc.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>10px</code></p>
+    </td>
+    <td>
+      <p><code>--sds-icon-size-xxs-height</code></p>
+      <p><code>--sds-icon-size-xxs-width</code></p>
+    </td>
+    <td>
+      <p>Nothing in the design system uses it.</p>
+    </td>
+  </tr>
+</table>
+<h3>Weights</h3>
+<p>
+  Phosphor draws each of its icons at six weights, from
+  <code>thin</code> to <code>bold</code>, plus <code>fill</code> and
+  <code>duotone</code>. Pick one weight and hold to it across a product;
+  <code>regular</code> is the default and suits nearly everything. The exception
+  is a state change, where two weights of the same icon read well as a pair,
+  such as a <code>regular</code> star for an empty rating and a
+  <code>fill</code> star for a set one.
+</p>
+<p>
+  The icons SDS draws itself are drawn once and look the same at every weight,
+  so do not build a design around weight changes on those.
+</p>
+<h3>Color</h3>
+<p>
+  An icon takes any color, and by default it inherits the text color next to it,
+  which is usually right: an icon inside a button or a link should move with the
+  text it belongs to. Where an icon carries meaning of its own, such as an
+  intent or a status, take the color from the semantic palette rather than
+  picking a hue.
+</p>
+<h3>Accessibility</h3>
+<p>
+  An icon beside a text label is decorative and should be hidden from screen
+  readers, so the label is announced once rather than twice. An icon standing on
+  its own carries meaning and needs an accessible name, either on the icon or on
+  the control containing it. Do not rely on an icon alone to convey something
+  critical: pair it with text, or with a tooltip at minimum.
+</p>

@@ -1,0 +1,78 @@
+{
+  "name": "@czi-sds/icons",
+  "version": "0.1.0",
+  "main": "dist/index.cjs.js",
+  "types": "dist/index.cjs.d.ts",
+  "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.esm.d.ts",
+        "default": "./dist/index.esm.js"
+      },
+      "require": {
+        "types": "./dist/index.cjs.d.ts",
+        "default": "./dist/index.cjs.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "author": "",
+  "homepage": "https://github.com/chanzuckerberg/sci-components/tree/main/packages/icons#readme",
+  "description": "Science Initiative custom icons, built on Phosphor Icons",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chanzuckerberg/sci-components.git",
+    "directory": "packages/icons"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,html,css,yml}": "npx prettier --write"
+  },
+  "files": [
+    "dist",
+    "!dist/src",
+    "!dist/*.tsbuildinfo"
+  ],
+  "bugs": {
+    "url": "https://github.com/chanzuckerberg/sci-components/issues"
+  },
+  "keywords": [
+    "react",
+    "icons",
+    "svg",
+    "phosphor",
+    "science",
+    "design",
+    "system",
+    "component",
+    "library"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "build": "rolldown -c",
+    "build-watch": "rolldown -c --watch",
+    "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
+    "type-check": "../../node_modules/.bin/tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "namespace-check": "../../node_modules/.bin/tsc --p tsconfig-namespace-check.json"
+  },
+  "peerDependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18"
+  }
+}

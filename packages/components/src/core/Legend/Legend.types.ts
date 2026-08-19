@@ -2,21 +2,22 @@ import { HTMLAttributes } from "react";
 
 export interface LegendItemData {
   /**
-   * Name/label for the legend item
+   * The item's label, and the start of its accessible name. Names need not be
+   * unique, since items are addressed by index.
    */
   name: string;
   /**
-   * Value to display (optional)
+   * Shown after the name when `showValues` is on. Numbers are grouped by
+   * locale; a string is printed as given, for a unit or a percentage.
    */
   value?: number | string;
   /**
-   * Color for the legend icon
-   * Can be overridden by the colors prop in LegendProps
-   * Falls back to gray if not provided
+   * The swatch color. The `colors` palette takes priority over it, and without
+   * either the swatch is the theme's grey.
    */
   color?: string;
   /**
-   * Disable the legend item (prevents all events)
+   * Dims the item and stops it responding to hover or clicks.
    * @default false
    */
   disabled?: boolean;
@@ -24,42 +25,50 @@ export interface LegendItemData {
 
 export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
   /**
-   * Array of legend items to display
+   * The items, drawn in order. Their indices are what selection, hover, and the
+   * callbacks refer to.
    */
   items: LegendItemData[];
   /**
-   * Optional array of colors to assign to items. If not provided or if the array
-   * is shorter than items, will use the color from the item or fall back to gray.
+   * A palette applied by index, taking priority over the color on an item.
+   * Entries past the end of the array fall back to the item's color, then to
+   * grey.
    */
   colors?: string[];
   /**
-   * Callback when mouse enters a legend item
+   * Called when the pointer enters an item. The legend already dims its own
+   * swatches, so this is for driving something outside it, such as a highlight
+   * on the chart.
    */
   onItemMouseEnter?: (item: LegendItemData, index: number) => void;
   /**
-   * Callback when mouse leaves a legend item
+   * Called when the pointer leaves an item.
    */
   onItemMouseLeave?: (item: LegendItemData, index: number) => void;
   /**
-   * Callback when a legend item is clicked
+   * Fires on a click, alongside any selection change rather than instead of it.
    */
   onItemClick?: (item: LegendItemData, index: number) => void;
   /**
-   * Whether to show values in the legend
+   * Draws each item's value beside its name. Items without a value are
+   * unaffected.
    * @default false
    */
   showValues?: boolean;
   /**
-   * Array of selected item indices (controlled component)
+   * Indices of the selected items. The legend is controlled: it draws this and
+   * never changes it.
    */
   selectedIndices?: number[];
   /**
-   * Callback when selection changes
-   * @param selectedIndices Array of selected indices
+   * Called with the next selection when an item is clicked, with that index
+   * toggled. Without it, clicking selects nothing.
    */
   onSelectionChange?: (selectedIndices: number[]) => void;
   /**
-   * External control for hovered index (for bidirectional hover with charts)
+   * Highlights an item from outside, for syncing with a chart. It adds to the
+   * legend's own hover rather than replacing it, and `null` reads as no
+   * external highlight.
    */
   hoveredIndex?: number | null;
 }

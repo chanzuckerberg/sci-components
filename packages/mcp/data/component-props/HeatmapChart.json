@@ -2,27 +2,103 @@
   "HeatmapChart": {
     "props": {
       "axisPointer": {
-        "type": "\"AxisPointerOption\" | \"AxisPointerOption[]\"",
+        "defaultValue": "hidden",
+        "description": "The crosshair following the pointer. One object applies to both axes; a\ntwo-entry array configures them separately.\nhttps://echarts.apache.org/en/option.html#axisPointer",
         "isRequired": false,
-        "description": "Display reference line and axis value under mouse pointer\nhttps://echarts.apache.org/en/option.html#axisPointer"
+        "type": "AxisPointerOption | AxisPointerOption[]"
       },
       "camera": {
-        "type": "{ active: boolean; height: number; width: number; }",
+        "defaultValue": "40 × 20 when active",
+        "description": "Renders only a window of the grid, measured in cells, and lets the pointer\npan it. Sizes are ignored unless `active` is true.\n\nThe `camera` prop is utilized for implementing camera view port functionality\nwithin a specific area of the chart. This feature empowers users to render\na confined portion of the heatmap. This selective rendering strategy becomes\nespecially advantageous when dealing with extensive datasets. Instead of\nrendering the entire heatmap at once, the chart dynamically loads and renders\nspecific segments as the user scrolls through the data. This approach optimizes\nperformance and enables the creation of heatmaps with large amounts of data.\n\nThe `height` and `width` properties are used to specify the dimensions of the\ncamera view port. The `active` property is used to enable or disable the camera\nview port functionality.",
         "isRequired": false,
-        "description": "The `camera` prop is utilized for implementing camera view port functionality\nwithin a specific area of the chart. This feature empowers users to render\na confined portion of the heatmap. This selective rendering strategy becomes\nespecially advantageous when dealing with extensive datasets. Instead of\nrendering the entire heatmap at once, the chart dynamically loads and renders\nspecific segments as the user scrolls through the data. This approach optimizes\nperformance and enables the creation of heatmaps with large amounts of data.\n\nThe `height` and `width` properties are used to specify the dimensions of the\ncamera view port. The `active` property is used to enable or disable the camera\nview port functionality."
+        "type": "{ active: boolean; height: number; width: number; }"
       },
       "echartsRendererMode": {
-        "type": "\"svg\" | \"canvas\"",
-        "isRequired": false
+        "defaultValue": "svg",
+        "description": "Which renderer ECharts initialises with. Canvas copes better with very\nlarge grids. Changing it rebuilds the chart.",
+        "isRequired": false,
+        "type": "\"canvas\" | \"svg\""
       },
       "symbol": {
-        "type": "\"circle\" | \"rect\" | \"roundRect\"",
+        "defaultValue": "rect",
+        "description": "The shape of a cell. Circles turn the grid into a dot plot, where diameter\ncan carry a second measurement.",
         "isRequired": false,
-        "description": "The shape of the symbol."
+        "type": "\"circle\" | \"rect\" | \"roundRect\""
       },
-      "tooltip": {
-        "type": "any",
-        "isRequired": false
+      "data": {
+        "defaultValue": "- (required)",
+        "description": "The cells, as a flat array of objects whose fields are named by `encode`.\nThe data point object shape can be whatever you like, but it must be consistent with the `encode` option\nFor example, if the data point shape is:\n{\n  geneIndex: 0,\n  cellTypeIndex: 0,\n  percentage: 0.5\n}\nand you want geneIndex to be encoded to x axis and cellTypeIndex to be encoded to y axis, then make sure your encode option is:\nencode: {\n  x: 'geneIndex',\n  y: 'cellTypeIndex'\n}",
+        "isRequired": true,
+        "type": "OptionSourceDataTypedArray | OptionSourceDataOriginal<OptionDataValue, OptionDataItemOriginal<OptionDataValue>> | OptionSourceDataObjectRows<OptionDataValue> | OptionSourceDataArrayRows<OptionDataValue> | OptionSourceDataKeyedColumns<OptionDataValue>"
+      },
+      "xAxisData": {
+        "defaultValue": "- (required)",
+        "description": "The categories along the x axis. A cell's encoded x value is an index into\nthis array.\nFor example:\n[{ value: \"gene1\", textStyle: { color: \"red\" } }, \"gene2\", \"gene3\"]",
+        "isRequired": true,
+        "type": "CategoryAxisData"
+      },
+      "yAxisData": {
+        "defaultValue": "- (required)",
+        "description": "The categories along the y axis.\nFor example:\n[{ value: \"cellType1\", textStyle: { color: \"red\" } }, \"cellType2\", \"cellType3\"]",
+        "isRequired": true,
+        "type": "CategoryAxisData"
+      },
+      "width": {
+        "defaultValue": "- (required)",
+        "description": "Width of the chart in pixels. Must be greater than zero; the component\nthrows otherwise.",
+        "isRequired": true,
+        "type": "number"
+      },
+      "height": {
+        "defaultValue": "- (required)",
+        "description": "Height of the chart in pixels, under the same rule.",
+        "isRequired": true,
+        "type": "number"
+      },
+      "encode": {
+        "description": "Which fields of a data item place it on each axis. Omitting it leaves\nECharts to guess from the field order.\nFor example, if the data is:\n{\n  geneIndex: 0,\n  cellTypeIndex: 0,\n  percentage: 0.5\n}\nand we want to encode `geneIndex` to x axis and `cellTypeIndex` to y axis, then\nencode: {\n x: 'geneIndex',\n y: 'cellTypeIndex'\n}\nhttps://echarts.apache.org/en/option.html#series-scatter.encode",
+        "isRequired": false,
+        "type": "{ x: string; y: string; }"
+      },
+      "symbolSize": {
+        "defaultValue": 5,
+        "description": "Cell size in pixels: one number, a [width, height] pair, or a callback\ngiven the data item. Set it to the cell pitch for a solid grid.\n\n`symbolSize` can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is 10.\n\nIf size of symbols needs to be different, you can set with callback function in the following format:\n\n(value: Array|number, params: Object) => number|Array\n\nThe first parameter value is the value in data, and the second parameter params is the rest parameters of data item.\nhttps://echarts.apache.org/en/option.html#series-scatter.symbolSize",
+        "isRequired": false,
+        "type": "number | number[] | SymbolSizeCallback<CallbackDataParams>"
+      },
+      "itemStyle": {
+        "defaultValue": "solid black",
+        "description": "How a cell is painted. Its color accepts a callback receiving the data\nitem, which is how a value becomes a color.\nhttps://echarts.apache.org/en/option.html#series-scatter.itemStyle",
+        "isRequired": false,
+        "type": "ItemStyleOption<CallbackDataParams>"
+      },
+      "emphasis": {
+        "defaultValue": "a 2–4px border",
+        "description": "How a cell is drawn while the pointer is over it. Takes the same shape as\n`itemStyle`: color, border, opacity.\nhttps://echarts.apache.org/en/option.html#series-scatter.emphasis",
+        "isRequired": false,
+        "type": "ScatterStateOption"
+      },
+      "dataZoom": {
+        "defaultValue": "the camera window",
+        "description": "ECharts' dataZoom configuration for that window, merged over the defaults\nit sets. One object applies to both axes; a two-entry array configures them\nseparately. It reaches the chart only while `camera.active` is true.\n\nThe `dataZoom` prop is utilized for implementing zoom functionality within a\nspecific area of the chart. This feature empowers users to inspect data in\ngranular detail, obtain an overview of the entire dataset, or eliminate\noutlier points.\nBy applying the `dataZoom` prop while locking the zoom level, the chart\nefficiently renders a confined portion of the heatmap. This selective\nrendering strategy becomes especially advantageous when dealing with\nextensive datasets. Instead of rendering the entire heatmap at once,\nthe chart dynamically loads and renders specific segments as the user\nscrolls through the data. This approach optimizes performance and enables\nthe creation of heatmaps with large amounts of data.\nhttps://echarts.apache.org/en/option.html#dataZoom",
+        "isRequired": false,
+        "type": "SliderDataZoomOption | InsideDataZoomOption | DataZoomComponentOption[]"
+      },
+      "grid": {
+        "defaultValue": "fills the container",
+        "description": "Where the plotting area sits inside the container. The function form\nreceives the computed default, for insetting it without recomputing the\nsize.\nhttps://echarts.apache.org/en/option.html#grid",
+        "isRequired": false,
+        "type": "GridOption | GridOption[] | (defaultOption: GridOption | GridOption[]) => GridOption | GridOption[]"
+      },
+      "options": {
+        "description": "Anything else ECharts understands, merged over the generated options.\nhttps://echarts.apache.org/en/option.html",
+        "isRequired": false,
+        "type": "EChartsOption"
+      },
+      "onEvents": {
+        "description": "ECharts event listeners by name. Each handler gets the raw event, whose\ndata property is the cell, and the chart instance.\nhttps://echarts.apache.org/en/api.html#events",
+        "isRequired": false,
+        "type": "Record<string, (event: unknown, chart: EChartsType) => void>"
       }
     }
   }

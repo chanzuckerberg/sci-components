@@ -2,40 +2,59 @@
   "MenuItem": {
     "props": {
       "column": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The column prop determines the content displayed in the right column of the menu item. This content can be customized to provide additional information or context for the menu item.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, the component is disabled.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "icon": {
-        "type": "any",
-        "isRequired": false
+        "description": "The icon shown at the start of the item, either the name of an SDS icon or an element of your own. Only icons that come in a small size can be named here.",
+        "isRequired": false,
+        "type": "IconName | ReactElement"
       },
       "isMultiSelect": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "When true, designates that the menu item supports multi-select functionality.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "sdsIconProps": {
-        "type": "IconProps<IconName>",
-        "isRequired": false
+        "description": "Enables you to pass additional props to customize the SDS icon within the menu item.",
+        "isRequired": false,
+        "type": "IconProps<IconName>"
       },
       "sdsStyle": {
-        "type": "\"determinate\" | \"indeterminate\"",
-        "isRequired": false
+        "defaultValue": "determinate",
+        "description": "Determines the style of the menu item, whether it is determinate or indeterminate.",
+        "isRequired": false,
+        "type": "\"indeterminate\" | \"determinate\""
       },
       "sdsType": {
-        "type": "\"action\" | \"default\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "An \"action\" item leaves out the selection mark at its start, for a menu whose items run a command rather than choose a value.",
+        "isRequired": false,
+        "type": "\"action\" | \"default\""
       },
       "selected": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, the component is selected.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "sdsIcon": {
+        "description": "@deprecated Use `icon` instead.\n(masoudmanson): This prop is deprecated and will be removed in the next major version.\nPlease replace instances of `sdsIcon` with `icon`.",
+        "isRequired": false,
+        "type": "IconName | ReactElement"
       }
     }
   }

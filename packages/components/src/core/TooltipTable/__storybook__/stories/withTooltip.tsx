@@ -35,7 +35,6 @@ export const WithinTooltipDemo = (props: Args): JSX.Element => {
       >
         <TooltipCondensed
           title={null}
-          hasInvertedStyle={false}
           componentSlot={
             <RawTooltipTableContent {...props} contentAlert={handleAlert()} />
           }

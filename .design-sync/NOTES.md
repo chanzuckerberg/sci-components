@@ -11,10 +11,10 @@ Converter: `--node-modules node_modules` (repo root — react is hoisted there, 
 - **[GENERAL] Previews rendered "root empty" everywhere (Element type invalid in CssBaseline).**
   Root cause: SDS components read design tokens from MUI's ThemeContext; the storybook
   decorator (`.storybook/preview.jsx` → ThemeProvider + CssBaseline) is bundled as a SEPARATE
-  esbuild pass whose MUI ThemeContext instance doesn't match the components in _ds_bundle.js,
+  esbuild pass whose MUI ThemeContext instance doesn't match the components in \_ds_bundle.js,
   and its CssBaseline resolves `undefined` under esbuild's MUI ESM interop.
   Fix: `.design-sync/preview-provider.jsx` exports `SDSPreviewProvider` (ThemeProvider with
-  `Theme("light")`), added via `cfg.extraEntries` so it's bundled INTO _ds_bundle.js (shared
+  `Theme("light")`), added via `cfg.extraEntries` so it's bundled INTO \_ds_bundle.js (shared
   MUI identity → context reaches components). `cfg.provider` wraps every preview in it.
   NOTE: extraEntries paths resolve relative to the PACKAGE dir (packages/components), hence
   `../../.design-sync/preview-provider.jsx`. CssBaseline intentionally omitted (light bg is fine;
@@ -55,7 +55,7 @@ Converter: `--node-modules node_modules` (repo root — react is hoisted there, 
 - **[GENERAL] MUI-system theme + MUI group-context don't cross the preview module boundary.**
   SDSPreviewProvider populates emotion's ThemeContext (so `@emotion/styled` SDS components + their
   `getTypography`/`getSemanticColors` selectors work), but a story's story-local `styled()` from
-  `@mui/material` reads MUI's *system* ThemeContext, which resolves to a bare default MUI theme in
+  `@mui/material` reads MUI's _system_ ThemeContext, which resolves to a bare default MUI theme in
   the compiled preview (a second MUI instance from source resolution), and MUI group providers
   (RadioGroup / ToggleButtonGroup) don't propagate value/context to SDS components across the
   source-pass module boundary. Symptom: story-local MUI `styled()` renders unthemed; group
@@ -129,6 +129,7 @@ Converter: `--node-modules node_modules` (repo root — react is hoisted there, 
 
 - Token/foundation showcase stories: Borders, Breakpoints, Colors, Corners, DropShadows, Spaces,
   Typography (design-token docs, not components — [TITLE_UNMAPPED], correctly dropped).
+
 ## data-viz fold-in ([GENERAL])
 
 - **[GENERAL] @czi-sds/data-viz (HeatmapChart, StackedBarChart) folded into this same project via
@@ -136,7 +137,7 @@ Converter: `--node-modules node_modules` (repo root — react is hoisted there, 
   extraEntries merges the data-viz dist exports onto window.SDS, so their storybook titles
   ("Data Viz/HeatmapChart", "Data Viz/StackedBarChart") get discovered as components 50 & 51 with
   no titleMap needed. ECharts is `external` in the data-viz dist but esbuild bundles it into
-  _ds_bundle.js (bundle grew ~1MB). Both render faithfully — StackedBarChart (all 6 graded stories
+  \_ds_bundle.js (bundle grew ~1MB). Both render faithfully — StackedBarChart (all 6 graded stories
   match) and HeatmapChart (Default scatter + the full redux-connected Heatmap Demo with controls
   sidebar). Caveats: (a) their `.d.ts`/`.prompt.md` are extracted from the main components dist,
   so data-viz types are partial/stubbed (the components render correctly regardless); (b)

@@ -15,19 +15,12 @@ figma.connect(
   {
     props: {
       // These props were automatically mapped based on your linked code:
-      inverted: figma.boolean("hasInvertedStyle?"),
-      hasInvertedStyle: figma.boolean("hasInvertedStyle?"),
       indicator: figma.boolean("showIndicator?"),
       // No matching props could be found for these Figma properties:
       // "showIndicator": figma.boolean('showIndicator?')
     },
     example: (props) => (
-      <Index
-        title="Tooltip text"
-        inverted={props.inverted}
-        hasInvertedStyle={props.hasInvertedStyle}
-        indicator={props.indicator}
-      >
+      <Index title="Tooltip text" indicator={props.indicator}>
         <span>Tooltip content</span>
       </Index>
     ),

@@ -579,6 +579,11 @@ const Dropdown = <
     getSingleSelectionProps,
   ]);
 
+  // Autocomplete's props carry a ref for the menu below; the trigger takes one
+  // of its own type, so it must not arrive in the spread.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { ref, ...inputRest } = rest;
+
   return (
     <>
       <InputDropdownComponent
@@ -590,7 +595,7 @@ const Dropdown = <
         multiple={multiple || isMultiColumn}
         {...getInputDropdownProps}
         {...InputDropdownProps}
-        {...rest}
+        {...inputRest}
       />
       <DropdownMenu<T, Multiple, DisableClearable, FreeSolo>
         anchorEl={anchorEl}

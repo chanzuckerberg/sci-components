@@ -2,8 +2,47 @@
   "SegmentedControl": {
     "props": {
       "buttonDefinition": {
-        "type": "SingleButtonDefinition[]",
-        "isRequired": true
+        "defaultValue": "- (required)",
+        "description": "One entry per segment, in the order they appear. The shape is described in the table below.",
+        "isRequired": true,
+        "type": "SingleButtonDefinition[]"
+      },
+      "onChange": {
+        "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value of the selected buttons. When `exclusive` is true\nthis is a single value; when false an array of selected values. If no value\nis selected and `exclusive` is true the value is null; when false an empty array.",
+        "isRequired": false,
+        "type": "function"
+      },
+      "aria-label": {
+        "defaultValue": "Segmented Control",
+        "description": "Defines a string value that labels the current element.\n@see aria-labelledby.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "icon": {
+        "description": "An SDS icon name, drawn at the small size, or an SVG element of your own for artwork SDS does not carry. Size an element you pass to 16px and fill it with currentColor so it follows the selection.",
+        "isRequired": false,
+        "type": "keyof IconNameToSizes | React.ReactElement"
+      },
+      "label": {
+        "description": "Text for the segment, used instead of an icon. It becomes the segment's accessible name and the tooltip's fallback text.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "shouldShowTooltip": {
+        "defaultValue": true,
+        "description": "Whether the segment has a tooltip. Worth turning off for a labelled segment, whose tooltip would only repeat the label.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "tooltipProps": {
+        "description": "Passed to the segment's Tooltip, so it takes a title, a subtitle, a placement, and the rest of the Tooltip API. Without a title, the tooltip falls back to the label or the value. Note that the title is not used as the segment's accessible name.",
+        "isRequired": false,
+        "type": "Partial<Omit<TooltipProps, \"children\">>"
+      },
+      "tooltipText": {
+        "description": "Deprecated in favour of tooltipProps, and logs a warning. It sets the tooltip's title, overriding tooltipProps.title when both are given, and it is the one tooltip prop that also sets the segment's accessible name.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

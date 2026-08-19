@@ -2,30 +2,48 @@
   "InputRadio": {
     "props": {
       "caption": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The caption of the InputRadio appears beneath the label in a lighter text color.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "disabled": {
-        "type": "\"false\" | \"true\"",
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
         "isRequired": false,
-        "description": "If `true`, the component is disabled."
+        "type": "boolean"
       },
       "intent": {
-        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\"",
-        "isRequired": false
+        "defaultValue": "default",
+        "description": "Colors the border of the empty circle. The selected radio always uses the accent color.",
+        "isRequired": false,
+        "type": "\"default\" | \"negative\" | \"notice\" | \"positive\""
       },
       "label": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The label of the InputRadio.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "stage": {
-        "type": "\"checked\" | \"unchecked\"",
-        "isRequired": false
+        "description": "Sets the radio as \"checked\" or \"unchecked\", overriding checked. Omit it inside a RadioGroup, which drives the selection itself.",
+        "isRequired": false,
+        "type": "\"checked\" | \"unchecked\""
       },
       "classes": {
-        "type": "complex",
+        "defaultValue": {},
+        "description": "Class names for the internal elements: root, labelCaptionContainer, label,\ncaption, radioButton, radioCheckedIcon, radioCheckedIconDot, and\nradioDefaultIcon.",
         "isRequired": false,
-        "description": "Override or extend the styles applied to the component."
+        "type": "complex"
+      },
+      "value": {
+        "description": "The value a RadioGroup compares against to decide whether this radio is\nselected. It also backs the label and caption element ids, so give every\nradio a unique one.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "radioProps": {
+        "defaultValue": {},
+        "description": "Directly pass these props to the underlying MUI radio.",
+        "isRequired": false,
+        "type": "Partial<RadioProps>"
       }
     }
   }

@@ -2,41 +2,71 @@
   "NavigationFooter": {
     "props": {
       "backgroundAppearance": {
-        "type": "\"matchBackground\" | \"dark\"",
+        "defaultValue": "matchBackground",
+        "description": "\"dark\" puts the footer on a dark surface and inverts its text and dividers, in light mode only.",
         "isRequired": false,
-        "defaultValue": "matchBackground"
+        "type": "\"matchBackground\" | \"dark\""
       },
       "images": {
-        "type": "FooterImage[]",
-        "isRequired": false
+        "description": "An array of images displayed in the footer. Each item includes an image, optional link URL, and component.",
+        "isRequired": false,
+        "type": "FooterImage[]"
       },
       "logo": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "The logo displayed in the footer. Can be any valid React node such as an image, icon, or SVG.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "logoUrl": {
-        "type": "string",
-        "isRequired": false
+        "description": "If provided, clicking the logo will navigate to this URL.",
+        "isRequired": false,
+        "type": "string"
       },
       "navItems": {
-        "type": "NavigationFooterNavItem[]",
-        "isRequired": false
+        "description": "The prominent links on the top row, next to the logo. They are headings, not body text, and get no dividers.",
+        "isRequired": false,
+        "type": "NavigationFooterNavItem[]"
       },
       "navLinks": {
-        "type": "NavigationFooterNavItem[]",
-        "isRequired": false
+        "description": "The smaller links on the bottom row, drawn in one line with dividers between them.",
+        "isRequired": false,
+        "type": "NavigationFooterNavItem[]"
       },
       "tag": {
-        "type": "string",
-        "isRequired": false
+        "description": "A small label displayed next to the title.",
+        "isRequired": false,
+        "type": "string"
       },
       "tagColor": {
-        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
-        "isRequired": false
+        "description": "The Tag's color. A tuple sets the label, background, and icon colors by hand.",
+        "isRequired": false,
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
       },
       "title": {
-        "type": "string",
-        "isRequired": false
+        "description": "The main title displayed in the footer.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "logoComponent": {
+        "defaultValue": "a",
+        "description": "Specifies the component to use for the logo link. Defaults to an anchor tag.",
+        "isRequired": false,
+        "type": "\"symbol\" | \"object\" | \"style\" | \"button\" | \"div\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | \"bdo\" | \"big\" | \"blockquote\" | \"body\" | \"br\" | \"canvas\" | \"caption\" | \"center\" | \"cite\" | \"code\" | \"col\" | \"colgroup\" | \"data\" | \"datalist\" | \"dd\" | \"del\" | \"details\" | \"dfn\" | \"dialog\" | \"dl\" | \"dt\" | \"em\" | \"embed\" | \"fieldset\" | \"figcaption\" | \"figure\" | \"footer\" | \"form\" | \"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"head\" | \"header\" | \"hgroup\" | \"hr\" | \"html\" | \"i\" | \"iframe\" | \"img\" | \"input\" | \"ins\" | \"kbd\" | \"keygen\" | \"label\" | \"legend\" | \"li\" | \"link\" | \"main\" | \"map\" | \"mark\" | \"menu\" | \"menuitem\" | \"meta\" | \"meter\" | \"nav\" | \"noindex\" | \"noscript\" | \"ol\" | \"optgroup\" | \"option\" | \"output\" | \"p\" | \"param\" | \"picture\" | \"pre\" | \"progress\" | \"q\" | \"rp\" | \"rt\" | \"ruby\" | \"s\" | \"samp\" | \"search\" | \"slot\" | \"script\" | \"section\" | \"select\" | \"small\" | \"source\" | \"span\" | \"strong\" | \"sub\" | \"summary\" | \"sup\" | \"table\" | \"template\" | \"tbody\" | \"td\" | \"textarea\" | \"tfoot\" | \"th\" | \"thead\" | \"time\" | \"title\" | \"tr\" | \"track\" | \"u\" | \"ul\" | \"var\" | \"video\" | \"wbr\" | \"webview\" | \"svg\" | \"animate\" | \"animateMotion\" | \"animateTransform\" | \"circle\" | \"clipPath\" | \"defs\" | \"desc\" | \"ellipse\" | \"feBlend\" | \"feColorMatrix\" | \"feComponentTransfer\" | \"feComposite\" | \"feConvolveMatrix\" | \"feDiffuseLighting\" | \"feDisplacementMap\" | \"feDistantLight\" | \"feDropShadow\" | \"feFlood\" | \"feFuncA\" | \"feFuncB\" | \"feFuncG\" | \"feFuncR\" | \"feGaussianBlur\" | \"feImage\" | \"feMerge\" | \"feMergeNode\" | \"feMorphology\" | \"feOffset\" | \"fePointLight\" | \"feSpecularLighting\" | \"feSpotLight\" | \"feTile\" | \"feTurbulence\" | \"filter\" | \"foreignObject\" | \"g\" | \"image\" | \"line\" | \"linearGradient\" | \"marker\" | \"mask\" | \"metadata\" | \"mpath\" | \"path\" | \"pattern\" | \"polygon\" | \"polyline\" | \"radialGradient\" | \"rect\" | \"set\" | \"stop\" | \"switch\" | \"text\" | \"textPath\" | \"tspan\" | \"use\" | \"view\" | ComponentClass<any, any> | FunctionComponent<any>"
+      },
+      "logoLinkProps": {
+        "description": "Additional props passed to the logo link component.",
+        "isRequired": false,
+        "type": "Record<string, unknown>"
+      },
+      "image": {
+        "description": "The image element to be displayed. Can be an icon, image, SVG, or any ReactNode.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "label": {
+        "description": "The text label displayed for the navigation item.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

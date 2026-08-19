@@ -22,13 +22,14 @@
     "generate:tailwind-tokens": "mkdir -p data && cp ../components/src/common/styles-dictionary/json/tailwind.json data/tailwind.json && echo '✓ Copied tailwind.json to data folder'",
     "generate:components-list": "tsx scripts/generate-component-list.ts",
     "generate:component-props": "tsx scripts/generate-component-props.ts",
-    "generate:zeroheight-export": "tsx scripts/export-zeroheight-pages.ts",
-    "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props",
+    "generate:component-docs": "tsx scripts/generate-component-docs.ts",
+    "generate:all": "yarn generate:tailwind-tokens && yarn generate:components-list && yarn generate:component-props && yarn generate:component-docs && npx prettier --write 'data/**/*.{md,json}'",
+    "audit:docs": "tsx scripts/audit-docs.ts",
     "prebuild": "yarn generate:all",
     "build": "yarn prebuild && rolldown -c && chmod 755 dist/stdio.js",
     "dev": "rolldown -c --watch",
     "inspect": "node scripts/inspect.js",
-    "inspect:dev": "npx @modelcontextprotocol/inspector npx tsx src/stdio.ts",
+    "inspect:dev": "npx -y @modelcontextprotocol/inspector@latest npx tsx src/stdio.ts",
     "serve": "tsx --watch src/http.ts"
   },
   "bin": {
@@ -57,9 +58,12 @@
     "@tsconfig/node22": "^22.0.1",
     "@types/express": "^5.0.3",
     "@types/fs-extra": "^11.0.4",
+    "@types/turndown": "^5.0.6",
+    "node-html-parser": "^9.0.1",
     "react-docgen-typescript": "^2.4.0",
     "rolldown": "^1.0.1",
     "tsx": "^4.20.3",
+    "turndown": "^7.2.4",
     "typescript": "^5.9.2"
   },
   "gitHead": "140d4b30975015cb8588cb735d5f9dd77318c065"

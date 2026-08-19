@@ -18,5 +18,9 @@ import { Theme } from "../packages/components/dist/index.esm.js";
 const lightTheme = Theme("light");
 
 export function SDSPreviewProvider(props) {
-  return React.createElement(ThemeProvider, { theme: lightTheme }, props.children);
+  return React.createElement(
+    ThemeProvider,
+    { theme: lightTheme },
+    props.children
+  );
 }

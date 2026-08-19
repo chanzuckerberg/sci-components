@@ -2,48 +2,153 @@
   "DropdownMenu": {
     "props": {
       "ClickAwayListenerProps": {
-        "type": "Partial<ClickAwayListenerProps>",
-        "isRequired": false
+        "description": "Passes props to the MUI ClickAwayListener .",
+        "isRequired": false,
+        "type": "Partial<ClickAwayListenerProps>"
       },
       "groupBy": {
-        "type": "any",
-        "isRequired": false
+        "description": "Groups menu items according to their assigned section.",
+        "isRequired": false,
+        "type": "function"
       },
       "keepSearchOnSelect": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Maintains a search input when a user selects a menu item (only if multiple selections are allowed via the multiple prop; otherwise the dropdown closes upon selection).",
+        "isRequired": false,
+        "type": "boolean"
       },
       "label": {
-        "type": "string",
-        "isRequired": false
+        "defaultValue": "Search",
+        "description": "The placeholder text of the search input.",
+        "isRequired": false,
+        "type": "string"
       },
       "multiple": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Allows user to select multiple menu items; see more in the MUI Autocomplete API .",
+        "isRequired": false,
+        "type": "boolean"
       },
       "open": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Whether the menu is showing. The menu holds no open state of its own, so this and anchorEl are what the opening control sets.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "options": {
-        "type": "any",
-        "isRequired": false
+        "description": "Required. One object per menu item, each needing at least a name. An option that itself has an options array turns the menu into columns, which changes how it is sized.",
+        "isRequired": false,
+        "type": "T[]"
       },
       "search": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "Provides a search bar at the top of the menu from which users can narrow the list of menu items.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "title": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "Sets a heading for the menu.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "subTitle": {
-        "type": "ReactNode",
-        "isRequired": false
+        "description": "A second line below the header's title. It is only rendered when title is set as well.",
+        "isRequired": false,
+        "type": "ReactNode"
       },
       "width": {
-        "type": "\"string\" | \"number\" | \"string & {}\"",
-        "isRequired": false
+        "defaultValue": 160,
+        "description": "The width of the menu, as a number of pixels or any CSS width. The 160px minimum still applies underneath it, and a menu whose options are laid out in columns ignores this and sizes itself to its content.",
+        "isRequired": false,
+        "type": "string | number | string & {}"
+      },
+      "anchorEl": {
+        "description": "Required. The element the menu is positioned against, usually the control that opens it. Until it is set the menu renders an empty container: the list is only mounted once there is something to anchor it to. See the MUI Popper API .",
+        "isRequired": true,
+        "type": "HTMLElement"
+      },
+      "children": {
+        "description": "Rendered inside the menu below the list, for footers such as an apply button.",
+        "isRequired": false,
+        "type": "JSX.Element | null"
+      },
+      "headerComponentSlot": {
+        "description": "Rendered in the menu's header, below title. Either one is enough to give the menu a header.",
+        "isRequired": false,
+        "type": "Element"
+      },
+      "InputBaseProps": {
+        "description": "Passed to the InputSearch the search prop renders. The menu sets autoFocus from isSearchAutoFocus and onClick to a no-op after these, so those two are the menu's to decide.",
+        "isRequired": false,
+        "type": "InputSearchProps"
+      },
+      "isOptionEqualToValue": {
+        "defaultValue": "(option, val) => option.name === val.name",
+        "description": "Changes how a selected value is compared against the available options; see more in the MUI Autocomplete API or in the Recipes section.",
+        "isRequired": false,
+        "type": "function"
+      },
+      "isSearchAutoFocus": {
+        "defaultValue": true,
+        "description": "Puts the cursor in the search input as the menu opens. It overrides any autoFocus given through InputBaseProps.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "noOptionsText": {
+        "defaultValue": "No options",
+        "description": "Sets the text that displays if there are no matching search results; see more in the MUI Autocomplete API .",
+        "isRequired": false,
+        "type": "string"
+      },
+      "onClickAway": {
+        "defaultValue": "noop",
+        "description": "Sets what happens when a user clicks outside of the DropdownMenu. This is where a menu is normally closed. Signature: function(event: MouseEvent | TouchEvent) => void",
+        "isRequired": false,
+        "type": "function"
+      },
+      "onClose": {
+        "description": "Called when the list asks to close, such as on selecting an option in a single-select menu. Closing is still yours to carry out through open. Signature: function(event: SyntheticEvent, reason: AutocompleteCloseReason) => void",
+        "isRequired": false,
+        "type": "(event: SyntheticEvent<Element, Event>, reason: AutocompleteCloseReason) => void"
+      },
+      "onInputChange": {
+        "description": "Called as the search text changes; see more in the MUI Autocomplete API or in the Recipes section. Signature: function(event: SyntheticEvent, value: string, reason: AutocompleteInputChangeReason) => void",
+        "isRequired": false,
+        "type": "(event: SyntheticEvent"
+      },
+      "onOpen": {
+        "description": "Called when the list asks to open. Signature: function(event: SyntheticEvent) => void",
+        "isRequired": false,
+        "type": "(event: SyntheticEvent<Element, Event>) => void"
+      },
+      "PaperComponent": {
+        "defaultValue": "SDSs StyledPaper",
+        "description": "The surface the menu is drawn on. Replace it to restyle the menu's background, border and shadow.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "PopperBaseProps": {
+        "defaultValue": {},
+        "description": "Passes custom props to the MUI Popper the menu is placed with. Learn more in the Popper documentation , and see all the props available to pass to it on the Popper API page . See an example of PopperBaseProps in use in the Recipes section. Its sx is merged over the menu's own sizing, so this is also how the 160px minimum width is lifted.",
+        "isRequired": false,
+        "type": "Partial<PopperProps>"
+      },
+      "PopperComponent": {
+        "defaultValue": "SDSs StyledPopper",
+        "description": "The MUI Popper component is included as part of the SDS DropdownMenu component, and its styles can be changed or added to.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "PopperPlacement": {
+        "defaultValue": "bottom-start",
+        "description": "Where the menu sits relative to its anchor, as MUI's Popper understands it: one of \"auto\", \"top\", \"bottom\", \"left\", \"right\", each also available with a -start or -end suffix.",
+        "isRequired": false,
+        "type": "\"bottom\" | \"left\" | \"right\" | \"top\" | \"auto\" | \"auto-start\" | \"auto-end\" | \"top-start\" | \"top-end\" | \"bottom-start\" | \"bottom-end\" | \"right-start\" | \"right-end\" | \"left-start\" | \"left-end\""
+      },
+      "renderInput": {
+        "description": "Replaces the search input entirely. Most menus want InputBaseProps instead, which keeps the SDS input. Signature: function(params: AutocompleteRenderInputParams) => ReactNode",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

@@ -101,40 +101,88 @@ When it comes to styling Material UI's components, generally the following strat
 
    ![image](https://user-images.githubusercontent.com/6309723/124044319-07a3f300-d9c2-11eb-847e-45d522808b95.png)
 
-1. If you are modifying or adding a new Base (colors, borders, typogrpahy, etc), be sure to add them to the [style-dictionary.json](../src/common/styles-dictionary/style-dictionary.json) in addition to updating the [defaultheme.ts](../src/core/styles/common/defaultTheme.ts). Run `sd-build` before committing your changes. `@czi-sds/components` uses [style-dictionary](https://amzn.github.io/style-dictionary/#/) to generate css and scss variable stylesheets. This allows projects that use css modules or scss to still benefit from our standard styles. The `style-dictionary.json` is the source of truth for these css & scss stylesheets.
+## Design Tokens
 
-New additions to the `style-dictionary.json` should be nested accordingly:
+If you are modifying or adding a new Base (colors, borders, typography, etc), update the TypeScript theme source it is generated from and run `sd-build` before committing your changes.
+
+`@czi-sds/components` uses [Style Dictionary](https://styledictionary.com/) to turn our design tokens into CSS, SCSS and Tailwind stylesheets. This allows projects that use CSS modules, SCSS or Tailwind to still benefit from our standard styles.
+
+`yarn sd-build` runs three steps in order:
+
+1. The scripts in [scripts/](../src/common/styles-dictionary/scripts/) read the TypeScript theme and write `design-tokens/*.json`.
+2. [build.mjs](../src/common/styles-dictionary/build.mjs) feeds those JSON files through Style Dictionary to produce `css/variables.css`, `scss/_variables.scss` and `json/tailwind.json`.
+3. Prettier formats the results.
+
+Because step 1 rewrites `design-tokens/*.json` on every build, **do not edit those files by hand** — your changes will be overwritten. Edit the source they are generated from instead:
+
+| Tokens         | Source                                                   |
+| -------------- | -------------------------------------------------------- |
+| `colors`       | `constants/colors.ts`, `makeThemeOptions.ts`             |
+| `borders`      | `generators/borders-generator.ts`, `constants/colors.ts` |
+| `font`         | `constants/typography.ts`                                |
+| `spaces`       | `constants/spaces.ts`                                    |
+| `corners`      | `constants/corners.ts`                                   |
+| `drop-shadows` | `constants/shadows.ts`                                   |
+| `icon-sizes`   | `constants/iconSizes.ts`                                 |
+| `breakpoints`  | `constants/breakpoints.ts`                               |
+
+All paths are relative to [src/core/styles/common/](../src/core/styles/common/).
+
+### Token structure
+
+Tokens are nested as `sds.<category>.<type>`, which generates the variable `--sds-space-xxxs`:
 
 ```json
 {
-  "sds": { // this prefixes all variables from our package to increase specificity
-    "category": { // this is what the new variable is at a high level (font, color, space)
-      "type": { // this is the main grouping within the category (body, success, size)
-```
-
-All tokens must have a `value` and can optionally have a `comment`, which can give insight into how the value should be used.
-
-To generate a stylesheet in a new language, update the [config.json](../src/common/styles-dictionary/config.json) to include the new transformGroup(language) in the `platforms` object. See a list of possible languages [here](https://github.com/amzn/style-dictionary/blob/main/lib/common/formats.js), though custom ones can be built.
-
-```json
-{
-  "source": ["src/common/styles-dictionary/*.json"],
-  "platforms": {
-    "new-language": {
-      "transformGroup": "language-format",
-      "buildPath": "src/common/styles-dictionary/new-language/",
-      "files": [
-        {
-          "destination": "variables.language-format",
-          "format": "language-format/variables"
-        }
-      ]
+  "sds": {
+    "space": {
+      "xxxs": {
+        "value": "2px"
+      }
     }
   }
 }
 ```
 
-Once the config has been updated, run `sd-build` to generate the new stylesheet. Import it at the top of [index.ts](../src/index.ts). Set the output for new files to be `variables.language-format` where `language-format` is the file type. Because Rolldown does not bundle CSS, the build treats stylesheet imports as empty modules (`moduleTypes` in [rolldown.config.mjs](../rolldown.config.mjs)) and copies the generated stylesheet into `dist` via `rollup-plugin-copy`; add the new file to that plugin's `targets` so it is shipped and available for import.
+The `sds` root prefixes every variable we generate, to increase specificity. The category is what the variable is at a high level (`font`, `color`, `space`), and the type is the grouping within that category (`body`, `success`, `xxxs`).
+
+Every token needs a `value`. On top of that, SDS keeps a token's variants on the token itself rather than in separate files:
+
+- `darkValue` — the dark mode value, used by `colors` and `borders`
+- `narrowValue` — the value below the `md` breakpoint, used by `font`
+
+### Token references
+
+Reference another token by its path: `"value": "1px solid {sds.color.primitive.gray.500}"`. The `.value` suffix that Style Dictionary v4 allowed was removed in v5 and now fails the build with a broken reference error.
+
+Style Dictionary resolves a reference by reading the `value` of the token at that path, so it cannot follow a reference to `darkValue`/`narrowValue` or to a shared string leaf like `{sds.font.inter-font}`. The `sds/resolve-custom-references` preprocessor in [custom-preprocessors/](../src/common/styles-dictionary/custom-preprocessors/) inlines those before the built-in resolver runs, and leaves ordinary token references for Style Dictionary to resolve and validate.
+
+### Adding a new output format
+
+Add a platform to [config.mjs](../src/common/styles-dictionary/config.mjs):
+
+```js
+const config = {
+  preprocessors: ["sds/resolve-custom-references"],
+  platforms: {
+    "new-language": {
+      buildPath: "src/common/styles-dictionary/new-language/",
+      files: [
+        {
+          destination: "variables.language-format",
+          format: "sds/new-language",
+        },
+      ],
+      transformGroup: "language-format",
+    },
+  },
+  source: ["src/common/styles-dictionary/design-tokens/*.json"],
+};
+```
+
+Style Dictionary's [built-in formats](https://styledictionary.com/reference/hooks/formats/predefined/) only emit a token's `value`, so they silently drop `darkValue` and `narrowValue`. That is why each of our platforms uses a custom format (`sds/css`, `sds/scss`, `sds/tailwind`) from [custom-formatters/](../src/common/styles-dictionary/custom-formatters/); a new format will most likely need one too. Register it in [build.mjs](../src/common/styles-dictionary/build.mjs) **before** the `StyleDictionary` instance is constructed, otherwise the config cannot resolve it by name.
+
+Once the config has been updated, run `sd-build` to generate the new stylesheet and import it at the top of [index.ts](../src/index.ts). Because Rolldown does not bundle CSS, the build treats stylesheet imports as empty modules (`moduleTypes` in [rolldown.config.mjs](../rolldown.config.mjs)) and copies the generated stylesheet into `dist` via `rollup-plugin-copy`; add the new file to that plugin's `targets` so it is shipped and available for import.
 
 ## Testing
 

@@ -1,0 +1,427 @@
+<h1>SegmentedControl</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/SegmentedControl/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { SegmentedControl } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default SegmentedControl</h3>
+<p>
+  Three icon segments, left uncontrolled so the control tracks the selection
+  itself. No tooltip text is set, so each segment falls back to its value.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/DefaultSegmentedControl"
+></div>
+<h3>Segments with labels</h3>
+<p>
+  A label replaces the icon on a segment. These have their tooltips turned off,
+  since the text is already on screen.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlWithLabels"
+></div>
+<h3>Controlled SegmentedControl</h3>
+<p>
+  The selection is held in the page's state and written back from
+  <code>onChange</code>, which also ignores the <code>null</code> that a click
+  on the selected segment reports, so the control always shows a view.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/ControlledSegmentedControl"
+></div>
+<h3>Disabled segments</h3>
+<p>
+  A single segment turned off, next to a control turned off as a whole. The
+  first control opens on its second segment, because an uncontrolled control
+  skips the disabled one.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlWithDisabledItems"
+></div>
+<h3>Richer tooltips</h3>
+<p>
+  <code>tooltipProps</code> reaches the Tooltip behind each segment, for a
+  subtitle under the title or a placement other than above the control.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlTooltips"
+></div>
+<h3>A segment with its own artwork</h3>
+<p>
+  <code>icon</code> takes an SVG element as well as an SDS icon name, which
+  covers artwork the SDS set does not carry.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/SegmentedControl/SegmentedControlCustomIcon"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The SDS SegmentedControl wraps MUI's ToggleButtonGroup, with these
+  differences:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>buttonDefinition instead of children:</strong>
+      MUI expects you to write a ToggleButton per segment. SDS builds them from
+      an array instead, one entry per segment in array order, and the segments
+      it builds are the control's only children. Anything you nest inside a
+      SegmentedControl is dropped without a warning.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Tooltips are built in:</strong>
+      each segment is wrapped in an SDS
+      <a
+        href="./?path=/docs/design-documentation-genes-tooltips--docs"
+        target="_top"
+        >Tooltip</a
+      >
+      unless you turn it off with <code>shouldShowTooltip</code>, which is what
+      carries the meaning of an icon-only segment. In MUI you would add the
+      tooltip yourself.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>It works uncontrolled:</strong>
+      MUI's ToggleButtonGroup only renders the <code>value</code> you hand it.
+      SDS keeps its own state until you pass <code>value</code>, so a control
+      left alone still responds to clicks, starting on the first segment that is
+      not disabled.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>exclusive is set for you:</strong>
+      the control selects one segment at a time and reports a single string.
+      Multi-select is not available: passing <code>exclusive={false}</code>
+      reaches MUI, which then treats that string as a list and joins the values
+      together, so the control reports something like "ListTable" and shows
+      nothing as selected. Leave it as it is.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Sizing and colour props do nothing:</strong>
+      <code>size</code>, <code>color</code>, <code>fullWidth</code> and
+      <code>orientation</code>
+      all reach MUI and set their classes, but SDS pins the padding, typography,
+      palette, width and direction, so the control looks the same either way. It
+      is always horizontal, always sized to its content, and never fills its
+      container.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-toggle-button/">here</a>
+  .
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      A control left uncontrolled opens on the first segment that is not
+      disabled. Pass <code>value</code> to control it instead, and write the new
+      value back from <code>onChange</code>, or the control will render the same
+      segment no matter what is clicked.
+    </p>
+  </li>
+  <li>
+    <p>
+      Clicking the selected segment deselects it. The control reports
+      <code>null</code> and draws nothing as selected, which suits a filter that
+      can be cleared but not a view switcher that must always show something. A
+      controlled handler that ignores <code>null</code> keeps the current
+      selection instead.
+    </p>
+  </li>
+  <li>
+    <p>
+      Every segment needs either an <code>icon</code> or a <code>label</code>. A
+      segment with both draws only the label; a segment with neither draws its
+      value as text. Both cases log a warning.
+    </p>
+  </li>
+  <li>
+    <p>
+      A segment's accessible name is its <code>label</code>, or its
+      <code>value</code> when it carries an icon instead. It is not taken from
+      <code>tooltipProps.title</code>, so an icon-only segment with a value like
+      <code>"a"</code> or <code>"1"</code> is announced that way. Give icon-only
+      segments values that read as words.
+    </p>
+  </li>
+  <li>
+    <p>
+      Icons are drawn at the small size, so only icons that SDS carries at 16px
+      can be named here. A large-only icon leaves the segment empty and logs an
+      error; pass your own SVG element instead.
+    </p>
+  </li>
+  <li>
+    <p>
+      Tooltips appear on hover and on keyboard focus, which is what makes an
+      icon-only control usable from the keyboard. Disabled segments show no
+      tooltip at all.
+    </p>
+  </li>
+  <li>
+    <p>
+      The control is sized to its segments and does not wrap or shrink, so a
+      long set of labels overflows a narrow container rather than reflowing. The
+      design guidance above (two to four segments) keeps that from happening.
+    </p>
+  </li>
+  <li>
+    <p>
+      Segments are ordinary buttons, so Tab moves through them one at a time
+      rather than treating the group as a single stop, and Space or Enter
+      selects.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>buttonDefinition</code></p>
+    </td>
+    <td>
+      <p><code>SingleButtonDefinition[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        One entry per segment, in the order they appear. The shape is described
+        in the table below.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>string | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The selected segment's value. Passing it makes the control controlled;
+        leaving it out lets the control track the selection itself, starting on
+        the first segment that is not disabled.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event, value: string | null) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Runs on every click that changes the selection, with the newly selected
+        value, or <code>null</code> when the selected segment was clicked again.
+        Required when <code>value</code> is set.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's group-level prop. Disables every segment at once while leaving the
+        selection visible; per-segment control is on
+        <code>buttonDefinition</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>aria-label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Segmented Control"</code></p>
+    </td>
+    <td>
+      <p>
+        Names the group. Replace it with something that says what is being
+        switched, since the default describes the widget rather than its
+        purpose.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>SingleButtonDefinition</h3>
+<p>The shape of each entry in <code>buttonDefinition</code>.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Identifies the segment in <code>value</code> and <code>onChange</code>.
+        On an icon-only segment it is also the accessible name and the tooltip's
+        fallback text, so keep it readable.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>keyof IconNameToSizes</code> |</p>
+      <p><code>React.ReactElement</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An SDS icon name, drawn at the small size, or an SVG element of your own
+        for artwork SDS does not carry. Size an element you pass to 16px and
+        fill it with currentColor so it follows the selection.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Text for the segment, used instead of an icon. It becomes the segment's
+        accessible name and the tooltip's fallback text.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Turns the segment off. Disabled segments show no tooltip and are skipped
+        when an uncontrolled control picks its starting selection.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldShowTooltip</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Whether the segment has a tooltip. Worth turning off for a labelled
+        segment, whose tooltip would only repeat the label.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;Omit&lt;TooltipProps, "children"&gt;&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the segment's Tooltip, so it takes a title, a subtitle, a
+        placement, and the rest of the Tooltip API. Without a title, the tooltip
+        falls back to the label or the value. Note that the title is not used as
+        the segment's accessible name.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Deprecated in favour of <code>tooltipProps</code>, and logs a warning.
+        It sets the tooltip's title, overriding
+        <code>tooltipProps.title</code> when both are given, and it is the one
+        tooltip prop that also sets the segment's accessible name.
+      </p>
+    </td>
+  </tr>
+</table>

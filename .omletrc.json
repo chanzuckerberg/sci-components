@@ -12,6 +12,11 @@
       "exports": {
         ".": "./src/index.ts"
       }
+    },
+    "@czi-sds/icons": {
+      "exports": {
+        ".": "./src/index.ts"
+      }
     }
   }
 }

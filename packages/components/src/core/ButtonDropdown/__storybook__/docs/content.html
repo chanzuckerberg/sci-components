@@ -1,0 +1,287 @@
+<h1>ButtonDropdown</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ButtonDropdown/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { ButtonDropdown } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default ButtonDropdown</strong></h3>
+<p>
+  This example has the minimum props needed for the ButtonDropdown component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/DefaultButtonDropdown"
+></div>
+<h3>ButtonDropdown styles</h3>
+<p>
+  This example shows the three styles available through <code>sdsStyle</code>,
+  from most to least emphasis.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownStyles"
+></div>
+<h3>ButtonDropdown types</h3>
+<p>
+  This example shows the two color schemes available through
+  <code>sdsType</code>. Each one can be combined with any of the styles above.
+  Unlike Button, there is no <code>"destructive"</code> type: a dropdown trigger
+  opens a menu rather than carrying out an action.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownTypes"
+></div>
+<h3>ButtonDropdown sizes</h3>
+<p>
+  This example shows the three sizes available through the <code>size</code>
+  prop. The trailing chevron follows the size of the button it sits in.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownSizes"
+></div>
+<h3>ButtonDropdown with a start icon</h3>
+<p>
+  This example shows how to incorporate a starting icon within a ButtonDropdown
+  component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownWithAStartIcon"
+></div>
+<h3>ButtonDropdown without a background on hover</h3>
+<p>
+  This example shows <code>backgroundOnHover</code>, which only applies to the
+  minimal style. Turning it off drops the button's padding along with its hover
+  and pressed backgrounds, so it sits flush with the text around it.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownBackgroundOnHover"
+></div>
+<h3>ButtonDropdown on a dark background</h3>
+<p>
+  This example shows <code>backgroundAppearance="dark"</code>, which tells the
+  button it sits on a dark surface so it can pick colors with enough contrast.
+  The button paints no background of its own, so the panel is supplied alongside
+  the prop.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ButtonDropdown/ButtonDropdownOnADarkBackground"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The SDS ButtonDropdown component is the regular Button component with a
+  ChevronDown icon added after the label text, via the MUI
+  <code>endIcon</code> prop. The chevron is only added when the button has a
+  label, and its size follows the <code>size</code> prop. A
+  <code>startIcon</code> is optional; when used, it takes the Icon component,
+  which references the specific icon to call as one of its props, like so:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</code></pre>
+  </figure>
+</div>
+<p>
+  whereas MUI expects the prop to receive an individual icon as its own
+  component (for example <code>startIcon={&lt;DeleteIcon /&gt;}</code>).
+</p>
+<p>
+  The chevron is applied after your props, so an <code>endIcon</code> passed to
+  a ButtonDropdown is ignored: the trailing slot belongs to the component. Where
+  a different trailing icon is what you are after, use Button and put it there
+  yourself.
+</p>
+<p>
+  Because ButtonDropdown renders a Button, it accepts every Button prop except
+  <code>sdsType</code>, which is narrowed to <code>"primary"</code> and
+  <code>"secondary"</code>: a dropdown trigger is never a destructive action,
+  and passing <code>"destructive"</code> logs a warning and renders nothing. The
+  same MUI caveats as Button apply, so <code>variant</code>, <code>color</code>,
+  and <code>disableElevation</code> are all best avoided.
+</p>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-button/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"solid"</code> |</p>
+      <p><code>"outline"</code> |</p>
+      <p><code>"minimal"</code></p>
+    </td>
+    <td>
+      <p><code>"solid"</code></p>
+    </td>
+    <td><p>Style of the button. Same values as Button.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsType</code></p>
+    </td>
+    <td>
+      <p><code>"primary" | "secondary"</code></p>
+    </td>
+    <td>
+      <p><code>"primary"</code></p>
+    </td>
+    <td>
+      <p>
+        Color scheme of the button. Unlike Button, <code>"destructive"</code> is
+        not supported.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>size</code></p>
+    </td>
+    <td>
+      <p><code>"small"</code> |</p>
+      <p><code>"medium"</code> |</p>
+      <p><code>"large"</code></p>
+    </td>
+    <td>
+      <p><code>"large"</code></p>
+    </td>
+    <td>
+      <p>Size of the button. Also sets the size of the trailing chevron.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>backgroundOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Only applies when <code>sdsStyle</code> is <code>"minimal"</code>. When
+        <code>false</code>, the button drops its padding and renders no
+        background on hover or press, so it sits flush with surrounding text.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>backgroundAppearance</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground" | "dark"</code></p>
+    </td>
+    <td>
+      <p><code>"matchBackground"</code></p>
+    </td>
+    <td>
+      <p>
+        Tells the button which surface it sits on so it can pick colors with
+        enough contrast. Set it to <code>"dark"</code> when the button is placed
+        on a dark background in light mode.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>startIcon</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An optional icon placed before the label. Pass the SDS Icon component,
+        for example <code>&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The button label. The trailing chevron is only rendered when a label is
+        present.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>Disables the button when set to <code>true</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>(event: React.MouseEvent) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Callback fired when the button is clicked. Typically used to open the
+        associated menu.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Everything else Button accepts passes through unchanged and behaves
+  identically here, including its <code>href</code> and
+  <code>target</code> props and MUI's own, such as <code>sx</code> and
+  <code>className</code>. The one exception is <code>endIcon</code>, which the
+  chevron overwrites, as noted above.
+</p>

@@ -14,12 +14,6 @@ import { TestDemo } from "./stories/test";
 
 export default {
   argTypes: {
-    component: {
-      control: { type: "select" },
-      defaultValue: { summary: "td" },
-      description: "The HTML element to render as (defaults to 'td')",
-      options: ["td", "div", "th", "span"],
-    },
     horizontalAlign: {
       control: { type: "select" },
       defaultValue: { summary: "left" },
