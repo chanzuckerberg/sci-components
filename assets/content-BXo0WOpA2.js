@@ -1,0 +1,183 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>TableRow</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableRow/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { TableRow } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default TableRow</strong></h3>
+<p>
+  This example demonstrates the minimum required props for rendering a TableRow
+  component.
+</p>
+<div class="sds-doc-example" data-example="core/TableRow/DefaultTableRow"></div>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Required. The row's cells.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Grays the row out and stops pointer events inside its CellComponents, so
+        controls in the row cannot be used. Tags and icons in the row are dimmed
+        to match.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Gives the row a hover background, and is also required for its tooltip
+        to appear. TableHeader sets it to <code>false</code> for the header row.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>rowHeight</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Caps the row's height, in pixels.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>selected</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Gives the row's cells the accent surface used for selection. It is
+        styling only; it sets no ARIA state.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldShowTooltipOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Wraps the row in a Tooltip, but only while <code>hover</code> is also
+        <code>true</code>. On its own it shows nothing: a row tooltip needs
+        <code>tooltipText</code> as well.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>The tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipSubtitle</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>A second line below the tooltip's title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TooltipProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the row sets (arrow,
+        dark style).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>useDivider</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td><p>Draws the 1px divider along the bottom of the row.</p></td>
+  </tr>
+</table>
+<p>
+  Anything else you pass, such as <code>onClick</code>,
+  <code>className</code> or a data attribute, lands on the rendered
+  <code>tr</code>. Note that a row tooltip and a cell tooltip will both fire, so
+  turn off <code>shouldShowTooltipOnHover</code> on the cells of a row that has
+  its own.
+</p>
+`}));export{n,t};

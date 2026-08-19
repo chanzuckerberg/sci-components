@@ -1,0 +1,409 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Callout</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Callout/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Callout, CalloutTitle } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Callout</h3>
+<p>
+  This example has the minimum props needed for the Callout component. Only
+  <code>intent</code> is required, but a Callout with no <code>title</code> or
+  <code>body</code> renders as an empty box, so both are given here.
+</p>
+<div class="sds-doc-example" data-example="core/Callout/DefaultCallout"></div>
+<h3>Callout intents</h3>
+<p>
+  This example shows the five intents, each with the icon the Callout picks by
+  default.
+</p>
+<div class="sds-doc-example" data-example="core/Callout/CalloutIntents"></div>
+<h3>Expandable Callout</h3>
+<p>
+  The Expandable Callout component provides an interactive and space-efficient
+  way to present information. By default, it displays a brief summary, however,
+  users can expand it to reveal more detailed content, similar to an accordion.
+  This feature is particularly useful for sharing additional context or insights
+  while keeping the initial interface clutter-free. The extra content is passed
+  as <code>children</code>, and <code>sdsStage</code> sets whether the Callout
+  starts open or closed.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Callout/ExpandableCallout"
+></div>
+<h3>Dismissible Callout</h3>
+<p>
+  The dismissible Callout variant provides users with the ability to dismiss it
+  at their convenience. It includes a close button located in the top right
+  corner, offering a familiar interaction pattern for users to remove the
+  Callout from view. The Callout hides itself when that button is clicked, so
+  <code>onClose</code> is for keeping your own state in sync; setting
+  <code>dismissed</code> back to <code>false</code> is what brings the Callout
+  back.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Callout/DismissibleCallout"
+></div>
+<h3>Callout with a custom icon</h3>
+<p>
+  This example replaces the icon that the <code>intent</code> would otherwise
+  choose. The <code>icon</code> prop takes either an SDS icon name or an
+  element.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Callout/CalloutWithACustomIcon"
+></div>
+<h3>Callout with auto dismiss</h3>
+<p>
+  This example dismisses itself after four seconds. Pass
+  <code>true</code> instead of a number to use the default delay of
+  <code>8000</code>
+  milliseconds.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Callout/CalloutWithAutoDismiss"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The SDS Callout component is built upon the MUI Alert component (as is the
+  <a href="./?path=/story/components-notification--default" target="_top"
+    >SDS Notification component</a
+  >), but there are some important differences:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>Color:</strong>
+      SDS's Callout component has its own <code>intent</code> prop designed for
+      setting both the color and default icon, and takes the values of
+      <code>"accent"</code>, <code>"info"</code>, <code>"negative"</code>,
+      <code>"notice"</code>, or <code>"positive"</code>. MUI's Alert instead
+      uses the <code>severity</code> prop for this purpose (<code
+        >severity</code
+      >
+      can also be used for SDS's Notification, and will take the same values as
+      <code>intent</code>; this is not recommended)
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Title and body:</strong>
+      Rather than composing an AlertTitle and text as children the way MUI's
+      Alert does, SDS's Callout takes its content through the
+      <code>title</code> and <code>body</code> props and renders the stylized
+      CalloutTitle for you. Children are reserved for the extra content of an
+      expandable Callout, and are ignored by the other styles.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Expanding and closing:</strong>
+      Both behaviors come from the <code>sdsStyle</code> prop rather than from
+      separate props. Setting it to <code>"expandable"</code> adds a chevron in
+      the top right that toggles the children in and out of view, and setting it
+      to <code>"dismissible"</code> adds a close button that hides the Callout
+      and fires <code>onClose</code>. An expandable Callout should only be used
+      when there really is extra content to reveal, since the chevron is
+      rendered either way. SDS uses MUI's Alert <code>action</code> prop under
+      the hood, in case there is a need to further override the behavior.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Transitions:</strong>
+      SDS's Callout uses the Grow transition component by default
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Icons:</strong>
+      Like with MUI's Alert, SDS's Callout also shows an icon to the left of the
+      title text. It is chosen automatically from the <code>intent</code> (see
+      the first bullet) and can be overridden with the <code>icon</code> prop,
+      which takes either the name of an SDS icon or a custom SVG element:
+    </p>
+  </li>
+</ul>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">icon="Book"
+icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
+  </figure>
+</div>
+<p>
+  Additionally, setting <code>icon={false}</code> has no effect, and
+  <code>iconMapping</code> does not work to change icons associated to
+  <code>intent</code> or <code>severity</code>.
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>Variants:</strong>
+      The <code>variant</code> prop is not available for SDS's Callout
+      component.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI Alert component can be found
+  <a href="https://mui.com/material-ui/react-alert/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"accent"</code> |</p>
+      <p><code>"info"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <strong>Required.</strong>
+        Sets both the color of the component and the icon it defaults to.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"persistent"</code> |</p>
+      <p><code>"expandable"</code> |</p>
+      <p><code>"dismissible"</code></p>
+    </td>
+    <td>
+      <p><code>"persistent"</code></p>
+    </td>
+    <td>
+      <p>Defines the style of the Callout:&nbsp;</p>
+      <p>- <code>"persistent"</code>: Cannot be closed.&nbsp;</p>
+      <p>
+        - <code>"expandable"</code>: Includes a chevron icon that toggles the
+        children in and out of view.&nbsp;
+      </p>
+      <p>
+        - <code>"dismissible"</code>: Includes an “x” icon for manual dismissal.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>The Callout title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>body</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>The Callout body, shown beneath the title.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Extra content revealed when an expandable Callout is open. The other
+        styles ignore <code>children</code>, so use <code>body</code> for the
+        main message.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>extraContent</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The same slot as <code>children</code>, for callers that would rather
+        pass it as a prop. Both render when both are given,
+        <code>children</code> first.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hideTitle</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>If set to <code>true</code>, hides the Callout title.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hideBody</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        If set to <code>true</code>, hides the Callout body and centers the icon
+        against the remaining content.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>SDSIcon | React.ReactElement&lt;CustomSVGProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Icon displayed to the left of the Callout title, given either as an SDS
+        icon name or as an element. Defaults to the icon for the current
+        <code>intent</code>: <code>"CheckCircle"</code> for
+        <code>"positive"</code>, <code>"InfoCircle"</code> for
+        <code>"info"</code>, and <code>"ExclamationMarkCircle"</code> for
+        <code>"accent"</code>, <code>"notice"</code>, and
+        <code>"negative"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsIconProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;IconProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props forwarded to the Icon component when <code>icon</code> is given as
+        a name.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStage</code></p>
+    </td>
+    <td>
+      <p><code>"open" | "closed"</code></p>
+    </td>
+    <td>
+      <p><code>"open"</code></p>
+    </td>
+    <td>
+      <p>
+        The stage an expandable Callout starts in. It is only the initial value;
+        the chevron takes over from there.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>dismissed</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Hides the Callout when set to <code>true</code>. Changing it back to
+        <code>false</code> brings the Callout back, which is how a dismissed
+        Callout is restored.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>autoDismiss</code></p>
+    </td>
+    <td>
+      <p><code>boolean | number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Dismisses the Callout on a timer. A number sets the delay in
+        milliseconds, and <code>true</code> uses <code>8000</code>. Leave it
+        unset to keep the Callout visible until it is dismissed another way.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClose</code></p>
+    </td>
+    <td>
+      <p><code>(event: React.SyntheticEvent) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Callback fired when the Callout is closed. The Callout hides itself
+        regardless, so use this to sync your own state rather than to perform
+        the hiding.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

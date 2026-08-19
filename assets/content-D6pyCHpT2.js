@@ -1,0 +1,247 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>InputRadio</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputRadio/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { InputRadio } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default InputRadio</strong></h3>
+<p>This example has the minimum props needed for the InputRadio component.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputRadio/DefaultInputRadio"
+></div>
+<h3>InputRadio + Caption</h3>
+<p>
+  This example shows the InputRadio with an additional caption beneath the
+  label, presented in a lighter text color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputRadio/InputRadioCaption"
+></div>
+<h3>InputRadio group</h3>
+<p>
+  Radios are meant to be used as a set. Wrap them in MUI's RadioGroup, which
+  selects the radio whose value matches the group's and handles arrow-key
+  navigation. Add <code>row</code> to lay the options out horizontally.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputRadio/InputRadioGroup"
+></div>
+<h3>InputRadio intents</h3>
+<p>
+  Intent colors the border of the empty circle. Select any of these and the dot
+  turns the same accent color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputRadio/InputRadioIntents"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The following props and options differ in whether and how they function across
+  MUI versus SDS's InputRadio component:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p><code>size</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p><code>color</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p><code>labelPlacement</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p>
+      <code>intent</code>: This is an SDS-specific prop that colors the border
+      of the empty circle (<code>"default"</code>, <code>"positive"</code>,
+      <code>"notice"</code>, or <code>"negative"</code>). It does not change the
+      selected radio, which always uses the accent color.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>caption</code>: This is an SDS-specific prop, which takes text that
+      is displayed below the primary label text.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>stage</code>: This SDS prop sets the radio as
+      <code>"checked"</code> or <code>"unchecked"</code> and overrides
+      <code>checked</code>. Inside a RadioGroup, leave it out and let the group
+      drive the selection from each radio's <code>value</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>value</code>: Required in practice: a RadioGroup matches it against
+      its own value to decide which radio is selected, and SDS also derives the
+      label and caption element ids from it for screen readers.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>row</code>: This boolean prop functions the same for both MUI and
+      SDS's InputRadio component: its presence reformats the radio buttons (and
+      their labels) within the RadioGroup parent component into a horizontal
+      row.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-radio-button/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>caption</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The caption of the InputRadio appears beneath the label in a lighter
+        text color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>The label of the InputRadio.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The value a RadioGroup compares against to decide whether this radio is
+        selected. It also backs the label and caption element ids, so give every
+        radio a unique one.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>radioProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;MUIRadioProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
+    <td><p>Directly pass these props to the underlying MUI radio.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>stage</code></p>
+    </td>
+    <td>
+      <p><code>"checked" | "unchecked"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sets the radio as <code>"checked"</code> or <code>"unchecked"</code>,
+        overriding&nbsp;<code>checked</code>. Omit it inside a RadioGroup, which
+        drives the selection itself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>
+        Colors the border of the empty circle. The selected radio always uses
+        the accent color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>classes</code></p>
+    </td>
+    <td>
+      <p><code>object</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
+    <td>
+      <p>
+        Class names for the internal elements:&nbsp;<code>root</code>,
+        <code>labelCaptionContainer</code>, <code>label</code>,
+        <code>caption</code>, <code>radioButton</code>,
+        <code>radioCheckedIcon</code>, <code>radioCheckedIconDot</code>, and
+        <code>radioDefaultIcon</code>.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

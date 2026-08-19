@@ -1,0 +1,469 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Dialog</h1>
+<p>
+  A Dialog is a window element that appears on top of content to provide
+  information or prompt the user for an action. When a Dialog is active, it
+  disables all functionality of the page below and remains on the screen until
+  it is either dismissed or an action has been taken.
+</p>
+<h2>Overview</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Dialog Variants</h3>
+<p>
+  The interior of a Dialog can be filled with any content needed, whether that
+  is to communicate information to the user or collect data from them via a
+  form.
+</p>
+<p>
+  There are two Dialog variants available:
+  <a href="./?path=/docs/design-documentation-dna-dialog--docs" target="_top"
+    >Persistent</a
+  >
+  and
+  <a href="./?path=/docs/design-documentation-dna-dialog--docs" target="_top"
+    >Dismissible</a
+  >
+  . They are highly customizable and designed to accommodate a range of product
+  needs.
+</p>
+<p>Any combination of the following properties can be used:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      One or two
+      <a
+        href="./?path=/docs/design-documentation-genes-buttons--docs"
+        target="_top"
+        >Button(s)</a
+      >
+      , positioned to the right or left side of the dialog (positioned right by
+      default)
+    </p>
+  </li>
+  <li><p>Overline text above the title</p></li>
+  <li><p>Subtitle text below the title</p></li>
+  <li><p>Artwork above the title (logo, icon, or illustration)</p></li>
+</ul>
+<p>There are four size options, each with a fixed width and minimum height:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>"xs"</code> (<code>width: 400px</code>,
+      <code>min-height: 160px</code>)
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"s"</code> (<code>width: 600px</code>,
+      <code>min-height: 400px</code>)
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"m"</code> (<code>width: 900px</code>,
+      <code>min-height: 480px</code>)
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"l"</code> (<code>width: 1200px</code>,
+      <code>min-height: 600px</code>)
+    </p>
+  </li>
+</ul>
+<p>Users can dismiss them by:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Clicking an action
+      <a
+        href="./?path=/docs/design-documentation-genes-buttons--docs"
+        target="_top"
+        >Button</a
+      >
+      that is configured to close, cancel, or complete a multi-step workflow
+      occurring in the Dialog
+    </p>
+  </li>
+  <li><p>Pressing the keyboard Esc key</p></li>
+  <li>
+    <p>
+      Clicking the close
+      <a
+        href="./?path=/docs/design-documentation-genes-buttons--docs"
+        target="_top"
+        >Tertiary Icon Button</a
+      >
+      (
+      <a
+        href="./?path=/docs/design-documentation-dna-dialog--docs"
+        target="_top"
+      >
+        Dismissible variant
+      </a>
+      only)
+    </p>
+  </li>
+  <li>
+    <p>
+      Clicking outside of the Dialog. Doing this will result in any selections
+      the user has made being lost, so it is recommended that this be disabled
+      in instances where losing entered information would be a significant
+      burden to the user
+    </p>
+  </li>
+</ul>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Dialog_persistent</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/2679e4ba00996538.png"
+        alt="Preview_Guidelines_Dialog_persistent"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Dialog_dismissible</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0da4111e6dd66a64.png"
+        alt="Preview_Guidelines_Dialog_dismissible"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dialog – Persistent</h3>
+<p>
+  Use this variant when the user is unable to dismiss the Dialog without making
+  a selection from one of the action
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Button(s)</a
+  >
+  . Because there is no way for the user to manually dismiss the Dialog,
+  <strong>this variant must contain at least one action Button</strong>
+  .
+</p>
+<p>Persistent Dialogs are generally used:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      In multi-step workflows where dismissing the Dialog would result in a loss
+      of progress
+    </p>
+  </li>
+  <li>
+    <p>
+      When there is a need for users to confirm they have read the content on
+      the Dialog before proceeding, such as when they are being directed to an
+      external site (see
+      <a
+        href="./?path=/docs/design-documentation-dna-dialog--docs"
+        target="_top"
+        >Dialog Use Cases</a
+      >
+      section below for details).
+    </p>
+  </li>
+</ul>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>1 Button</p></td>
+    <td><p>2 Buttons</p></td>
+    <td><p>2 Buttons, left-aligned</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Persistent_1 button</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/65b49ccbcc177fcb.png"
+        alt="Dialog_Persistent_1 button"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Persistent_2 buttons</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f05385c5519ecd9d.png"
+        alt="Dialog_Persistent_2 buttons"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Persistent_2 buttons, left</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1b77bd9a52977160.png"
+        alt="Dialog_Persistent_2 buttons, left"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>2 Buttons, rounded</p></td>
+    <td><p>2 Buttons + Overline + Subtitle</p></td>
+    <td><p>2 Buttons + Artwork</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Dialog_Persistent_2 buttons, rounded</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/e2a1eb1b933ede8f.png"
+        alt="Dialog_Persistent_2 buttons, rounded"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Dialog_Persistent_overline, subtitle</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/581724d65f1d2be6.png"
+        alt="Dialog_Persistent_overline, subtitle"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Persistent_artwork</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d3d2a0e16c8604c7.png"
+        alt="Dialog_Persistent_artwork"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dialog – Dismissible</h3>
+<p>
+  Use this variant to allow the user the ability to manually dismiss the Dialog
+  by clicking the close
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Tertiary Icon Button</a
+  >
+  in the Dialog's upper right corner. Dismissing the Dialog will result in any
+  selections the user has made being lost. Dismissible Dialogs should not be
+  used in multi-step workflows where closing the Dialog would result in a loss
+  of progress (see
+  <a href="./?path=/docs/design-documentation-dna-dialog--docs" target="_top"
+    >Dialog Use Cases</a
+  >
+  section below for details).
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>0 Buttons</p></td>
+    <td><p>1 Button</p></td>
+    <td><p>2 Buttons</p></td>
+    <td><p>2 Buttons, left-aligned</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Dismissible_0 buttons</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/43e6f8731c43715a.png"
+        alt="Dialog_Dismissible_0 buttons"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Dismissible_1 button</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/61644f74d8149562.png"
+        alt="Dialog_Dismissible_1 button"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Dismissible_2 buttons</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1719e793612ca84a.png"
+        alt="Dialog_Dismissible_2 buttons"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Dismissible_2 buttons, left</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1b77bd9a52977160.png"
+        alt="Dialog_Dismissible_2 buttons, left"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>2 Buttons, rounded</p></td>
+    <td><p>2 Buttons + Overline + Subtitle</p></td>
+    <td><p>2 Buttons + Artwork</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Dialog_Dismissible_2 buttons, rounded</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/b52c1f3477a78498.png"
+        alt="Dialog_Dismissible_2 buttons, rounded"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Dialog_Dismissible_overline, subtitle</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4dbe951d69b57af2.png"
+        alt="Dialog_Dismissible_overline, subtitle"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog_Dismissible_artwork</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d411b4bb2dda51a9.png"
+        alt="Dialog_Dismissible_artwork"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dialog Spacing</h3>
+<p>
+  In instances where the length of content contained in the Dialog results in
+  the Dialog filling the entire height of the screen, there must be a minimum of
+  <code>spaceXxl</code> margin above and below the Dialog window. The Dialog
+  content scrolls when it exceeds the <code>max-height</code> of the dialog
+  window; title, overline, subtitle, and any action Buttons are anchored to the
+  top and bottom during scrolling.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog Spacing (SDS)</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/49c317d5e9a97234.png"
+        alt="Dialog Spacing (SDS)"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dialog Backdrop</h3>
+<p>
+  A backdrop appears behind the active Dialog to bring emphasis to it as well as
+  indicate to users that they cannot interact with the content on the page
+  behind it.
+</p>
+<p>The default backdrop is dark and customizable at the product level.</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dialog Backdrop (SDS)</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0e8729a4a1248f65.png"
+        alt="Dialog Backdrop (SDS)"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Dialog Use Cases</h3>
+<p>
+  Details and guidelines around complex Dialog use cases, such as nested Dialogs
+  and multi-step Dialog workflows.
+</p>
+<h4>Nested Dialogs</h4>
+<p>
+  Nested Dialogs should only be used in specific scenarios, most notably when a
+  user is being directed to an external site and a final confirmation is needed.
+</p>
+<p>
+  Avoid using nested dialogs when possible because it introduces layers of
+  complexity to pages and may make it more difficult for users to anticipate the
+  results of their actions. It may also impede usability by making it more
+  difficult for users to quickly exit a flow. Instead, explore utilizing a
+  multi-step Dialog workflow (see below).
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Nested Dialogs (SDS + CZ ID)</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/9dccb8440a577d6a.png"
+        alt="Nested Dialogs (SDS + CZ ID)"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Multi-step Dialog Workflow</h4>
+<p>
+  Dialog workflows should contain no more than three steps. Workflows that are
+  more than three steps should be designed as a full-page experience.
+</p>
+<p>
+  For a flow that takes place inside a Dialog, all steps within that workflow
+  should take place within the same size Dialog for a consistent user
+  experience. Each step of the workflow should also be clearly communicated
+  within the Dialog using the overline text.
+</p>
+<p>
+  The Dialog should not be dismissible to prevent any accidental loss of
+  progress.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Multi-step Workflow (SDS)</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/be1b2ab8e9b49b38.png"
+        alt="Multi-step Workflow (SDS)"
+      />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};

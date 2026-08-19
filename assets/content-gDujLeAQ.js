@@ -1,0 +1,398 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Components</h1>
+<p>
+  The components of the Science Design System: accessible React building blocks
+  built on Material UI and themed with the SDS design tokens.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>The main package:</strong>
+    everything in this section ships as <code>@czi-sds/components</code>, which
+    carries both the components and the theme they read their colors, spacing
+    and typography from. That theme is why the rest of the system depends on it:
+    <code>@czi-sds/data-viz</code> requires it at runtime, and an app installs
+    it whether or not it ever imports a chart.
+  </p>
+</div>
+<p>
+  The pages in this section are the code half of the documentation: props,
+  examples and stories to play those props against. The design guidance behind
+  each component, and the reasoning for it, lives under
+  <a
+    href="./?path=/docs/design-documentation-sds-overview-introduction--docs"
+    target="_top"
+    >Design Documentation</a
+  >.
+</p>
+<h2>Installation</h2>
+<p>
+  <svg
+    class="sds-doc-inline-icon"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z"
+    />
+  </svg>
+  NPM Package:
+  <a
+    href="https://www.npmjs.com/package/@czi-sds/components"
+    target="_blank"
+    rel="noreferrer"
+    >@czi-sds/components</a
+  >
+  &middot;
+  <svg
+    class="sds-doc-inline-icon"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M 8.007 0 C 3.579 0 0 3.667 0 8.203 C 0 11.829 2.294 14.898 5.475 15.985 C 5.873 16.066 6.018 15.808 6.018 15.59 C 6.018 15.4 6.005 14.748 6.005 14.07 C 3.778 14.558 3.314 13.092 3.314 13.092 C 2.956 12.141 2.425 11.896 2.425 11.896 C 1.697 11.394 2.479 11.394 2.479 11.394 C 3.288 11.448 3.712 12.236 3.712 12.236 C 4.427 13.486 5.581 13.132 6.045 12.915 C 6.111 12.385 6.323 12.019 6.549 11.815 C 4.772 11.624 2.904 10.918 2.904 7.768 C 2.904 6.871 3.221 6.138 3.725 5.568 C 3.645 5.365 3.367 4.522 3.804 3.395 C 3.804 3.395 4.481 3.177 6.005 4.237 C 6.658 4.057 7.331 3.967 8.007 3.966 C 8.682 3.966 9.372 4.06 10.008 4.237 C 11.532 3.177 12.209 3.395 12.209 3.395 C 12.647 4.522 12.368 5.365 12.288 5.568 C 12.806 6.138 13.11 6.871 13.11 7.768 C 13.11 10.918 11.241 11.611 9.451 11.815 C 9.743 12.072 9.995 12.562 9.995 13.335 C 9.995 14.436 9.982 15.318 9.982 15.59 C 9.982 15.808 10.128 16.066 10.525 15.985 C 13.706 14.898 16 11.829 16 8.203 C 16.013 3.667 12.421 0 8.007 0 Z"
+    />
+  </svg>
+  GitHub:
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components"
+    target="_blank"
+    rel="noreferrer"
+    >packages/components</a
+  >
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">// with npm
+npm i @czi-sds/components
+// with yarn
+yarn add @czi-sds/components</code></pre>
+  </figure>
+</div>
+<p>SDS currently uses Material UI v9.</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Upgrading an existing app?</strong>
+    SDS 24.0.0 is a breaking release that moves the Material UI peer dependency
+    from v5 to v9. The
+    <a
+      href="https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-24.0.0.md"
+    >
+      migration guide
+    </a>
+    covers the dependency updates, the MUI <code>slots</code> and
+    <code>slotProps</code> API changes, icon renames, and a verification
+    checklist.
+  </p>
+</div>
+<p>
+  <code>@czi-sds/components</code> installs without direct dependencies to
+  prevent version errors. Please ensure the following peer dependencies are also
+  installed:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JSON</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "@emotion/css": "^11.11.2",
+  "@emotion/react": "^11.11.3",
+  "@emotion/styled": "^11.11.0",
+  "@mui/icons-material": "^9.0.0",
+  "@mui/material": "^9.0.0",
+  "@tanstack/react-table": "^8.21.3",
+  "react": "&gt;=18.0.0",
+  "react-dom": "&gt;=18.0.0"
+}</code></pre>
+  </figure>
+</div>
+<p>To install the package together with its peer dependencies:</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">// with npm
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @tanstack/react-table react react-dom
+// with yarn
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @tanstack/react-table react react-dom</code></pre>
+  </figure>
+</div>
+<p>
+  Icons are installed separately. SDS uses
+  <a href="https://phosphoricons.com" target="_blank">Phosphor Icons</a>, plus
+  <code>@czi-sds/icons</code>
+  for the icons SDS draws itself, and the
+  <a href="./?path=/docs/icons-overview--documentation" target="_top">Icons</a>
+  documentation covers both. The <code>Icon</code> component this package still
+  exports is deprecated.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">npm i @phosphor-icons/react @czi-sds/icons</code></pre>
+  </figure>
+</div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>On React 18 or below:</strong>
+    Material UI ships <code>react-is</code> v19. Pin <code>react-is</code> to
+    match your React version to avoid runtime errors in prop-type checks. Use
+    <code>resolutions</code> for Yarn, or <code>overrides</code> for npm and
+    pnpm.
+  </p>
+</div>
+<h2>Usage</h2>
+<p>
+  <code>@czi-sds/components</code> comes with five main exports that help you
+  build your app.
+</p>
+<p><strong>1. Components</strong>: accessible and reusable components.</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Button } from "@czi-sds/components";
+
+export function SaveButton() {
+  return (
+    &lt;Button onClick={handleSave} sdsStyle="rounded" sdsType="primary"&gt;
+      Save
+    &lt;/Button&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<p><strong>2. Mixins</strong>: grouped styles defined by the design system.</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import styled from "@emotion/styled";
+import Typography from "@mui/material/Typography";
+import { fontHeaderXl } from "@czi-sds/components";
+
+export const Title = styled(Typography)\`
+  \${fontHeaderXl}
+  // On a wide viewport this compiles to:
+  // font-family: Inter;
+  // font-size: 22px;
+  // font-weight: 600;
+  // letter-spacing: 0px;
+  // line-height: 30px;
+\`;</code></pre>
+  </figure>
+</div>
+<p>
+  <strong>3. Selectors</strong>: helper functions that read theme variables from
+  the passed props.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import styled from "@emotion/styled";
+import {
+  getSemanticColors,
+  getSpaces,
+  type CommonThemeProps,
+} from "@czi-sds/components";
+
+export const Row = styled.div&lt;CommonThemeProps&gt;\`
+  // A callback is the only way to reach the custom theme object.
+  \${(props) =&gt; {
+    const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
+
+    return \`
+      background-color: \${semanticColors?.base?.backgroundSecondary};
+      color: \${semanticColors?.base?.textPrimary};
+      gap: \${spaces?.s}px;
+      padding: \${spaces?.m}px;
+    \`;
+  }}
+\`;</code></pre>
+  </figure>
+</div>
+<p>
+  <strong>4. CSS and SCSS variables</strong>: for apps that do not use
+  <code>@emotion/styled</code>.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>CSS</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-css">// with SCSS variables
+@import "~@czi-sds/components/dist/variables";
+
+.card {
+  background-color: $sds-color-semantic-base-background-primary;
+  color: $sds-color-semantic-base-text-primary;
+  padding: $sds-space-m;
+}
+
+// with CSS variables
+.card {
+  background-color: var(--sds-color-semantic-base-background-primary);
+  color: var(--sds-color-semantic-base-text-primary);
+  padding: var(--sds-space-m);
+}</code></pre>
+  </figure>
+</div>
+<p>
+  <strong>5. Tailwind config</strong>: a Tailwind-compliant version of the
+  design tokens.
+</p>
+<p>First import the SDS config into your application's Tailwind config:</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JavaScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-js">// tailwind.config.js
+const sds = require("@czi-sds/components/dist/tailwind.json");
+
+module.exports = {
+  mode: "jit",
+  content: ["./src/**/*.{tsx,scss}"],
+  theme: {
+    extend: sds,
+  },
+};</code></pre>
+  </figure>
+</div>
+<p>
+  You can then use the SDS Tailwind classes in your app. Spacing and typography
+  are exposed directly, while colors are grouped by mode under
+  <code>light</code> and <code>dark</code>:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">export function Hello() {
+  return (
+    &lt;p className="px-sds-l py-sds-s font-sds-body text-sds-body-s-400-wide"&gt;
+      Hello, World!
+    &lt;/p&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<h3>Theme setup</h3>
+<p>
+  SDS ships light and dark themes. To use them in your React application,
+  complete the following:
+</p>
+<p>
+  1. Add the SDS fonts to the <code>&lt;head&gt;</code> section of your
+  <code>index.html</code>:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>HTML</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-html">&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+&lt;link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+  rel="stylesheet"
+/&gt;
+&lt;link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+  rel="stylesheet"
+/&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  2. Wrap your app in Material UI's <code>ThemeProvider</code> and Emotion's
+  <code>ThemeProvider</code>. <code>StyledEngineProvider</code> with
+  <code>injectFirst</code> lets your own styles override MUI's:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { defaultTheme } from "@czi-sds/components";
+
+&lt;StyledEngineProvider injectFirst&gt;
+  &lt;ThemeProvider theme={defaultTheme}&gt;
+    &lt;EmotionThemeProvider theme={defaultTheme}&gt;
+      &lt;CssBaseline /&gt;
+      &lt;YourApp /&gt;
+    &lt;/EmotionThemeProvider&gt;
+  &lt;/ThemeProvider&gt;
+&lt;/StyledEngineProvider&gt;;</code></pre>
+  </figure>
+</div>
+<p>
+  <code>defaultTheme</code> is the light theme. To switch modes at runtime,
+  build the theme with the <code>Theme</code> helper, which takes
+  <code>"light"</code> or <code>"dark"</code>:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { useMemo, useState } from "react";
+import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
+import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Theme } from "@czi-sds/components";
+
+export function App() {
+  const [mode, setMode] = useState&lt;"light" | "dark"&gt;("light");
+  const theme = useMemo(() =&gt; Theme(mode), [mode]);
+
+  return (
+    &lt;StyledEngineProvider injectFirst&gt;
+      &lt;ThemeProvider theme={theme}&gt;
+        &lt;EmotionThemeProvider theme={theme}&gt;
+          &lt;CssBaseline /&gt;
+          &lt;YourApp /&gt;
+        &lt;/EmotionThemeProvider&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/StyledEngineProvider&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<p>
+  3. To build a theme from your own color palette, pass it through
+  <code>makeSdsSemanticAppTheme</code> and <code>makeThemeOptions</code>. See
+  the
+  <a href="https://github.com/chanzuckerberg/sci-components#theme-system">
+    Theme System guide
+  </a>
+  for the full example.
+</p>
+<h2>Contributing</h2>
+<p>
+  The package source lives in
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components"
+  >
+    packages/components
+  </a>
+  of the SDS repository, and the
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/docs/contribution.md"
+  >
+    contribution guidelines
+  </a>
+  cover how a change is built, tested and released. For a new component, or a
+  change to an existing one, start with the
+  <a
+    href="./?path=/docs/design-documentation-sds-overview-contributing-to-sds--docs"
+    target="_top"
+  >
+    Contributing to SDS
+  </a>
+  page and post in the
+  <a href="https://czi-sci.slack.com/archives/C032S43KKFV">
+    #sci-design-system-support
+  </a>
+  channel in Slack.
+</p>
+`}));export{n,t};

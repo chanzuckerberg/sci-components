@@ -1,0 +1,293 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>InputCheckbox</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputCheckbox/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { InputCheckbox } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default InputCheckbox</strong></h3>
+<p>
+  This example has the minimum props needed for the InputCheckbox component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/DefaultInputCheckbox"
+></div>
+<h3>InputCheckbox + Caption</h3>
+<p>
+  This example shows the InputCheckbox with an additional caption beneath the
+  label, presented in a lighter text color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/InputCheckboxCaption"
+></div>
+<h3>InputCheckbox stages</h3>
+<p>
+  The three stages a checkbox can be in, plus a disabled one. Because
+  <code>stage</code> pins the state, these examples do not respond to clicks.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/InputCheckboxStages"
+></div>
+<h3>InputCheckbox intents</h3>
+<p>
+  Intent colors the border of the empty box. Check any of these and the box
+  turns the same accent color.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/InputCheckboxIntents"
+></div>
+<h3>Indeterminate Checkbox</h3>
+<p>
+  This example demonstrates a parent checkbox that is indeterminate while only
+  some of its children are checked, and checked once all of them are. Since it
+  recomputes <code>stage</code> from its own state on every change, the
+  checkboxes stay interactive.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputCheckbox/IndeterminateCheckbox"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The following props and options differ in how they function across the MUI
+  Checkbox component and the SDS InputCheckbox component:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p><code>size</code>: Has no effect in SDS. The box is always 16px.</p>
+  </li>
+  <li>
+    <p>
+      <code>color</code>: Not accepted. SDS derives the color from
+      <code>intent</code> instead.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>intent</code>: This is an SDS-specific prop that colors the border
+      of the empty box (<code>"default"</code>, <code>"positive"</code>,
+      <code>"notice"</code>, or <code>"negative"</code>). It does not change the
+      checked box, which always uses the accent color.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>labelPlacement</code>: Has no effect in SDS. The label always sits
+      to the right of the box.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>icon</code>: SDS's InputCheckbox is not currently set up to support
+      icons (if you add one as shown in the
+      <a href="https://mui.com/material-ui/react-checkbox/#icon"
+        >MUI documentation</a
+      >
+      , it will replace the empty checkbox square, but clicking the icon will
+      result in the checked checkbox square appearing in the icon's place)
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>stage</code> and checkbox state: This is the SDS prop that sets the
+      checkbox's state as <code>"unchecked"</code>, <code>"checked"</code>, or
+      <code>"indeterminate"</code>. It pins the state, so on its own the
+      checkbox will not respond to clicks; pass an <code>onChange</code> handler
+      and recompute <code>stage</code> from your own state to make it
+      interactive, as the indeterminate example below does. Leave
+      <code>stage</code> out entirely to let the checkbox manage its own state.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>defaultChecked</code> and <code>indeterminate</code>: Not accepted
+      as top-level props. Use <code>stage</code>, or pass them straight to the
+      underlying MUI checkbox through <code>checkboxProps</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>caption</code>: This is an SDS-specific prop, which takes a string
+      of text that is displayed below the primary label text.
+    </p>
+  </li>
+</ul>
+<p>
+  The following props are available for both the MUI and SDS components:
+  <code>checked</code>, <code>onChange</code>, <code>required</code>,
+  <code>value</code>, and <code>disabled</code>.
+</p>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-checkbox/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>caption</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The caption of the InputCheckbox appears beneath the label in a lighter
+        text color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>checkboxProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;MUICheckboxProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
+    <td><p>Directly pass these props to the underlying MUI checkbox.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The label of the InputCheckbox. When omitted, the box renders on its own
+        with no label element.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>stage</code></p>
+    </td>
+    <td>
+      <p><code>"checked"</code> |</p>
+      <p><code>"unchecked"</code> |</p>
+      <p><code>"indeterminate"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sets the state of the checkbox. It overrides&nbsp;<code>checked</code>,
+        so a checkbox with a <code>stage</code> only changes when you recompute
+        the <code>stage</code> from an <code>onChange</code> handler. Omit it to
+        let the checkbox manage its own state.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>intent</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"positive"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>
+        Colors the border of the empty box. The checked box always uses the
+        accent color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>checked</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Controls the checkbox, as in MUI. Ignored
+        when&nbsp;<code>stage</code>&nbsp;is set.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event, checked) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Called when the user toggles the checkbox.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>classes</code></p>
+    </td>
+    <td>
+      <p><code>object</code></p>
+    </td>
+    <td>
+      <p><code>{}</code></p>
+    </td>
+    <td>
+      <p>
+        Class names for the internal elements:&nbsp;<code>root</code>,
+        <code>labelCaptionContainer</code>, <code>label</code>,
+        <code>caption</code>, <code>checkbox</code>,
+        <code>checkboxCheckedIcon</code>, <code>checkboxDefaultIcon</code>, and
+        <code>checkboxIndeterminateIcon</code>.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

@@ -1,0 +1,197 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Downloads</h1>
+<p>
+  There are instances where users may want to download data that are uploaded to
+  the product they are using. There are three download types that commonly
+  occur, see recommended flows and best practices below.
+</p>
+<h2>Data Download Types</h2>
+<p>
+  Many Science products help users manipulate, visualize, and interpret data
+  they’ve uploaded. Sometimes users want to download data that have been
+  uploaded in order to, for example, perform more complex analyses using the
+  tools they know best. Three types of downloading data are common across our
+  products: immediately downloading individual files, immediately downloading
+  multiple files, and asynchronously downloading multiple files.
+</p>
+<hr />
+<h2>Individual File, Immediate Download</h2>
+<p>
+  Individual files can typically be downloaded immediately. If the user can
+  configure their download (e.g., file type), a dialog may appear. The download
+  will begin within the user’s browser as soon as they confirm their selection.
+</p>
+<h3>Example from Single Cell</h3>
+<p>
+  The example flow below uses Single Cell to show the immediate download of an
+  individual data file.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Flow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/b262cb928b0c141c.png" alt="Flow" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>1. Single-select</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/04cee148f430c8f1.png" alt="1. Single-select" />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>2B. Download Dialog</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/86dee992332f3eb0.png"
+        alt="2B. Download Dialog"
+      />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>2C. Dropdown Menu</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/f36c719230c778c4.png" alt="2C. Dropdown Menu" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Multiple Files, Immediate Download</h2>
+<p>
+  If the files are small enough, users can download multiple files at once by
+  selecting multiple files, then clicking a button to initiate the download. If
+  the user can configure their download (e.g., file type), a dialog may appear.
+  The download will begin within the user’s browser as soon as they confirm
+  their selection.
+</p>
+<h3>Example from CZ GE</h3>
+<p>
+  The example flow below uses CZ GE to show the immediate download of multiple
+  data files.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Multiple Files, Immediate Download flow</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/f96a8d3bb4456d05.png"
+        alt="Multiple Files, Immediate Download flow"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>1. Multi-select</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/09cb0305c9ed4bfc.png" alt="1. Multi-select" />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>2B. Download Dialog</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/3ca40532672ec018.png"
+        alt="2B. Download Dialog"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Multiple Files, Asynchronous Download</h2>
+<p>
+  If the files are too large to download immediately, users can initiate an
+  asynchronous download flow for multiple files. Users can select multiple files
+  at once, then click a button to initiate the download. If the user can
+  configure their download (e.g., file type), a dialog may appear.
+</p>
+<p>
+  Once the user confirms their selection, the system will begin generating their
+  download in the background and show a confirmation message. Users can download
+  the generated file once it’s completed from a dedicated Downloads page.
+</p>
+<h3>Example from CZ ID</h3>
+<p>
+  The example flow below uses CZ ID to show the asynchronous download of
+  multiple data files.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Flow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/be0fc6b265fcbba9.png" alt="Flow" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>1. Multi-select</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/4d952f01712a7868.png" alt="1. Multi-select" />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>2. Download Dialog</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/f54358c62a1243ee.png" alt="2. Download Dialog" />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>3. Download Notification</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/bf636cf1180c98dd.png"
+        alt="3. Download Notification"
+      />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>4. Downloads View</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="/design-assets/3bc21ca89bdd716e.png" alt="4. Downloads View" />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};

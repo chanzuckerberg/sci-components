@@ -1,0 +1,517 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Hero</h1>
+<h2>Source Code</h2>
+<p>
+  The Hero component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Hero/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Hero } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Hero</h3>
+<p>
+  A headline, a caption, and a background color. With no
+  <code>heroHeight</code> the section is as tall as its content plus the 40px of
+  top and bottom padding.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/DefaultHero"></div>
+<h3>Header Sizes</h3>
+<p>
+  <code>headerFontSize</code> picks the type scale for the headline. The caption
+  is fixed and does not change with it.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/HeroHeaderSizes"></div>
+<h3>Hero with a Background Image</h3>
+<p>
+  Passing a node to <code>backgroundFill</code> renders it full-bleed behind the
+  content. The darkening mask keeps the text readable, and it needs both
+  <code>darkeningMask</code> and a <code>darkeningMaskOpacity</code> above zero.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Hero/HeroWithBackgroundImage"
+></div>
+<h3>Content Position and Alignment</h3>
+<p>
+  <code>overlayContentPosition</code> moves the whole content block within the
+  section, while <code>textAlignment</code> aligns the text inside that block.
+  Both need room to be visible, which comes from <code>heroHeight</code> and
+  <code>overlayContentWidth</code>.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/HeroContentPosition"></div>
+<h3>Hero with a Call to Action</h3>
+<p>
+  Children render in a slot below the caption. That slot keeps its own colors,
+  so <code>hasInvertTextColor</code> does not reach the buttons.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Hero/HeroWithCallToAction"
+></div>
+<h3>Hero with Overlay Media</h3>
+<p>
+  Overlay media is positioned independently of the text, so narrow the content
+  block with <code>overlayContentWidth</code> to keep the two from overlapping.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Hero/HeroWithOverlayMedia"
+></div>
+<h3>Hero with a Vignette</h3>
+<p>
+  The vignette is a 40px gradient along the top edge, meant to sit behind a
+  transparent header navigation.
+</p>
+<div class="sds-doc-example" data-example="core/Hero/HeroWithVignette"></div>
+<h2>Anatomy</h2>
+<p>
+  Hero is not built on a MUI component. It renders a single
+  <code>&lt;section&gt;</code> with the layers stacked inside it, so there is no
+  MUI API underneath and no subcomponents to import:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      The background, from <code>backgroundFill</code>. A string is applied as a
+      background color; a node is rendered into a full-bleed container where any
+      img or video is stretched to cover the section.
+    </p>
+  </li>
+  <li>
+    <p>
+      The darkening mask, from <code>darkeningMask</code>, which sits above the
+      background and below everything else.
+    </p>
+  </li>
+  <li>
+    <p>
+      The overlay media layer, from <code>overlayMedia</code>, positioned on its
+      own so it does not follow the text.
+    </p>
+  </li>
+  <li>
+    <p>
+      The content block, made of the <code>headerText</code> heading, the
+      <code>captionText</code> paragraph, and a slot holding
+      <code>children</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      The vignette, from <code>darkeningVignette</code>, drawn on top of
+      everything along the top edge.
+    </p>
+  </li>
+</ul>
+<p>
+  <code>headerText</code> renders as an <code>h1</code>, so use one Hero per
+  page and keep the rest of the page's headings below it.
+</p>
+<h2>Layout notes</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      The side padding is driven by the viewport, not by the width of the Hero:
+      24px below 512px, 40px from 512px, and 120px from 1024px, which are the
+      SDS sm, md, and lg breakpoints. The top and bottom padding is always 40px.
+      In these previews the Hero is narrower than the viewport, so you are
+      seeing the large breakpoint padding inside a small box.
+    </p>
+  </li>
+  <li>
+    <p>
+      There is no built-in maximum width on the content area. Use
+      <code>overlayContentWidth</code> when the text should not span the full
+      section.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>heroHeight</code> is ignored below 512px, where the section always
+      falls back to <code>fit-content</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>darkeningMask</code> on its own changes nothing, because
+      <code>darkeningMaskOpacity</code> defaults to <code>0</code>. Set both.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>hasInvertTextColor</code> only applies to the header and the
+      caption. Content passed as children keeps its own colors.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Hero owns all of these props. Anything else, such as
+  <code>className</code> or event handlers, is spread onto the section element.
+</p>
+<h3>Content</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>headerText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The headline. Rendered as an <code>h1</code> and omitted entirely when
+        not provided.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>headerFontSize</code></p>
+    </td>
+    <td>
+      <p><code>"s"</code> |</p>
+      <p><code>"m"</code> |</p>
+      <p><code>"l"</code></p>
+    </td>
+    <td>
+      <p><code>"m"</code></p>
+    </td>
+    <td><p>The type scale of the headline.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>captionText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Supporting copy rendered below the headline.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Rendered in a full-width slot below the caption. Use it for buttons,
+        links, or a search field.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hasInvertTextColor</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Sets the headline and caption in the light text color, for a hero over a
+        dark backdrop: imagery, or a darkening mask over it. The color is the
+        same in both themes, because the backdrop it is read against is.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Layout</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>className</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Declared so it type-checks, but nothing in the component reads it: it
+        travels with the rest of the props onto the section element.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>heroHeight</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"fit-content"</code></p>
+    </td>
+    <td>
+      <p>
+        Any CSS height. Below a 512px viewport it is ignored and the section
+        falls back to <code>fit-content</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayContentPosition</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >"top-left" | "top" | "top-right" | "left" | "center" | "right" |
+          "bottom-left" | "bottom" | "bottom-right"</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>"center"</code></p>
+    </td>
+    <td>
+      <p>
+        Where the content block sits inside the section. Only visible when the
+        section is taller or wider than the content.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayContentWidth</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"100%"</code></p>
+    </td>
+    <td>
+      <p>
+        Any CSS width for the content block, for example
+        <code>"60%"</code> or <code>"640px"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>textAlignment</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "center" | "right"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Aligns the text within the content block, which starts at the leading
+        edge when the prop is unset. This is separate from
+        <code>overlayContentPosition</code>, which moves the block itself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayContainerMinMargin</code></p>
+    </td>
+    <td>
+      <p><code>{ small: number; medium: number; large: number }</code></p>
+    </td>
+    <td>
+      <p><code>24px</code> / <code>40px</code> / <code>120px</code></p>
+    </td>
+    <td>
+      <p>
+        Overrides the side padding at each breakpoint. The value is written
+        straight into CSS, so it needs a unit. The <code>number</code> type in
+        the signature is wrong: a plain number produces an invalid declaration
+        and the side padding drops to zero.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Background and media</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>backgroundFill</code></p>
+    </td>
+    <td>
+      <p><code>string | ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A string becomes the background color, so any CSS color or gradient
+        works. A node is rendered full-bleed behind the content, and an img or
+        video inside it is scaled to cover the section.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>darkeningMask</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Adds a solid layer over the background. Pair it with
+        <code>darkeningMaskOpacity</code>, which is <code>0</code> by default.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>darkeningMaskColor</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"#000000"</code></p>
+    </td>
+    <td><p>The color of that layer.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>darkeningMaskOpacity</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>0</code></p>
+    </td>
+    <td><p>The opacity of that layer, from 0 to 1.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>darkeningVignette</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Draws a 40px gradient along the top edge, above the content, so a
+        transparent header navigation stays legible.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayMedia</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A media layer above the background and independent of the text block. An
+        img or video inside it is scaled to cover the layer.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayMediaPosition</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >"top-left" | "top" | "top-right" | "left" | "center" | "right" |
+          "bottom-left" | "bottom" | "bottom-right"</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>"center"</code></p>
+    </td>
+    <td><p>Where that layer sits inside the section.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayMediaMaxWidth</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sets the width of the media layer outright rather than a maximum,
+        despite the name. Without it the layer has no width.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayMediaMaxHeight</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Sets the height of the media layer, with the same caveat.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overlayMediaMargin</code></p>
+    </td>
+    <td>
+      <p>
+        <code>string | { small: string; medium: string; large: string }</code>
+      </p>
+    </td>
+    <td>
+      <p><code>"0"</code></p>
+    </td>
+    <td>
+      <p>
+        A margin shorthand for the media layer. Pass the object form to vary it
+        by breakpoint: <code>small</code> below md, <code>medium</code> below
+        lg, <code>large</code> above.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

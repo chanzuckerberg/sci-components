@@ -1,0 +1,505 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>List</h1>
+<p>
+  A list is three components:
+  <strong>List</strong>
+  for the <code>ul</code> or <code>ol</code> element,
+  <strong>ListItem</strong>
+  for each entry, and
+  <strong>ListSubheader</strong>
+  for the optional heading above them. All three wrap their MUI counterparts, so
+  any MUI prop passes straight through.
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
+  List,
+  ListItem,
+  ListItemLabel,
+  ListSubheader,
+} from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Unordered list</h3>
+<p>
+  An unordered list with a subheader. Neither the List nor the items need any
+  props for this shape.
+</p>
+<div class="sds-doc-example" data-example="core/List/UnorderedList"></div>
+<h3>Ordered list</h3>
+<p>
+  The same list numbered, with <code>ordered</code> on the List and on every
+  item.
+</p>
+<div class="sds-doc-example" data-example="core/List/OrderedList"></div>
+<h3>Nested ordered list</h3>
+<p>
+  Nesting a List inside an ordered item numbers the sub-items against their
+  parent, so they read 1.1. and 1.2.
+</p>
+<div class="sds-doc-example" data-example="core/List/NestedOrderedList"></div>
+<h3>Sizes and spacing</h3>
+<p>
+  The type scale, each size with the item spacing it pairs with. Both props sit
+  on the items, so one list can mix sizes.
+</p>
+<div class="sds-doc-example" data-example="core/List/ListSizes"></div>
+<h3>Items with labels</h3>
+<p>
+  ListItemLabel makes the leading term semibold, which suits lists that define
+  or name things.
+</p>
+<div class="sds-doc-example" data-example="core/List/ListWithLabels"></div>
+<h2>How the pieces fit together</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>ordered</code> belongs on both the List and every ListItem. On the
+      List it swaps the element to <code>ol</code> and starts the counter; on
+      each item it increments the counter and draws the number. An
+      <code>ol</code> whose items are missing the prop still renders bullets.
+    </p>
+  </li>
+  <li>
+    <p>
+      Markers are drawn by the item's <code>::before</code> pseudo-element
+      rather than the browser's own list marker, and are always semibold.
+      Bullets sit 8px from the text, numbers 6px.
+    </p>
+  </li>
+  <li>
+    <p>
+      Numbers come from a CSS counter, so a list nested inside an ordered item
+      numbers itself 1.1., 1.2., and so on, to any depth.
+    </p>
+  </li>
+  <li>
+    <p>
+      Nested lists have to sit inside a single wrapper element together with the
+      parent item's text. A ListItem is a flex row, so a bare
+      <em>text plus List</em>
+      pair would lay the two out side by side.
+    </p>
+  </li>
+  <li>
+    <p>
+      Items align their marker to the top of the text, so wrapped copy keeps the
+      bullet or number on the first line.
+    </p>
+  </li>
+  <li>
+    <p>
+      The List carries no padding of its own, so items line up flush with the
+      surrounding text instead of the browser's default indent.
+    </p>
+  </li>
+  <li>
+    <p>
+      A subheader renders as an <code>li</code> without a marker, in
+      <code>fontHeaderM</code>, 16px above the first item. That gap is
+      effectively fixed; see <code>marginBottom</code> in the List table below.
+    </p>
+  </li>
+  <li>
+    <p>
+      Sizing and spacing live on ListItem, not on List, so nothing is inherited
+      down. A list of six items at <code>fontSize</code> <code>"m"</code> needs
+      the prop on all six.
+    </p>
+  </li>
+  <li>
+    <p>
+      Because the markers are CSS content and the browser's own list style is
+      turned off, Safari and VoiceOver stop treating the element as a list. Add
+      <code>role="list"</code> to the List when that matters.
+    </p>
+  </li>
+</ul>
+<h2>Sizes and spacing</h2>
+<p>
+  The pairing below is the one the designs use, and the one the
+  <a
+    href="https://chanzuckerberg.github.io/sci-components/?path=/story/components-list--default"
+  >
+    Storybook story
+  </a>
+  demonstrates. Set both props on each item.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>fontSize</p></td>
+    <td><p>Type</p></td>
+    <td><p>marginBottom</p></td>
+    <td><p>Gap below the item</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"l"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyL</code>, 18px / 16px narrow</p>
+    </td>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
+    <td><p>8px</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"m"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyM</code>, 16px / 14px narrow</p>
+    </td>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
+    <td><p>8px</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyS</code>, 14px</p>
+    </td>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
+    <td><p>6px</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyXs</code>, 13px</p>
+    </td>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
+    <td><p>6px</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"xxs"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyXxs</code>, 12px</p>
+    </td>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
+    <td><p>6px</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"xxxs"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyXxxs</code>, 11px / 12px narrow</p>
+    </td>
+    <td>
+      <p><code>"xxs"</code></p>
+    </td>
+    <td><p>4px</p></td>
+  </tr>
+</table>
+<h2>List</h2>
+<h3>Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/List/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the
+  <a href="https://mui.com/material-ui/api/list/">MUI documentation</a>
+  for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ordered</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Renders an <code>"ol"</code> element and starts the numbering counter.
+        <code>false</code> renders a <code>"ul"</code>. Pass it to each ListItem
+        as well, otherwise the items still draw bullets.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>subheader</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>undefined</code></p>
+    </td>
+    <td>
+      <p>
+        The heading rendered above the items, normally a ListSubheader. Comes
+        from MUI.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>marginBottom</code></p>
+    </td>
+    <td>
+      <p><code>"xxxs"</code> |</p>
+      <p><code>"xxs"</code> |</p>
+      <p><code>"xs"</code> |</p>
+      <p><code>"s"</code> |</p>
+      <p><code>"m"</code> |</p>
+      <p><code>"l"</code></p>
+    </td>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
+    <td>
+      <p>
+        Sets the gap below the subheader, not below the list: 8px for
+        <code>"xxxs"</code>, 12px through <code>"xxs"</code> to
+        <code>"s"</code>, 16px for <code>"m"</code> and <code>"l"</code>. It
+        collides with the 16px margin ListSubheader sets on itself at the same
+        specificity, so the winner comes down to the order the styles were
+        inserted and the prop is not dependable. Space the list itself with its
+        container instead.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component</code></p>
+    </td>
+    <td>
+      <p><code>ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"ul"</code> or <code>"ol"</code></p>
+    </td>
+    <td>
+      <p>
+        Overrides the element the list renders as, taking precedence over
+        <code>ordered</code>. Reach for it only when the markup has to differ
+        from the semantics.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disablePadding</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's vertical padding is off by default. Pass <code>false</code> to
+        bring back its 8px top and bottom padding.
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>ListItem</h2>
+<h3>Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/List/components/ListItem/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the
+  <a href="https://mui.com/material-ui/api/list-item/">MUI documentation</a>
+  for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontSize</code></p>
+    </td>
+    <td>
+      <p><code>"xxxs"</code> |</p>
+      <p><code>"xxs"</code> |</p>
+      <p><code>"xs"</code> |</p>
+      <p><code>"s"</code> |</p>
+      <p><code>"m"</code> |</p>
+      <p><code>"l"</code></p>
+    </td>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
+    <td>
+      <p>
+        The body type scale for this item. Set it on every item; it is not
+        inherited from the List.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>marginBottom</code></p>
+    </td>
+    <td>
+      <p><code>"s"</code> |</p>
+      <p><code>"xs"</code> |</p>
+      <p><code>"xxs"</code></p>
+    </td>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
+    <td>
+      <p>
+        The gap below this item: <code>"s"</code> is 8px, <code>"xs"</code> is
+        6px, <code>"xxs"</code> is 4px. It applies to the last item too, so drop
+        the default when the list sits right above something else.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ordered</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Draws a counter-based number instead of a bullet. It has to match the
+        <code>ordered</code> prop on the parent List.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>undefined</code></p>
+    </td>
+    <td>
+      <p>
+        The item's content. Wrap it in a single element when the item holds more
+        than a string, since the item lays its children out in a row.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>ListItemLabel</h3>
+<p>
+  ListItemLabel, exported alongside ListItem, is a semibold span for the term at
+  the start of an item. It adds 5px of space after itself, but keep an ordinary
+  space in the copy as well, otherwise a screen reader reads the label and the
+  sentence after it as one word.
+</p>
+<h2>ListSubheader</h2>
+<h3>Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/List/components/ListSubheader/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>Props</h3>
+<p>
+  ListSubheader adds no SDS props: it takes <code>fontHeaderM</code>, a 16px
+  bottom margin, and the surrounding text color, then passes everything through
+  to
+  <a href="https://mui.com/material-ui/api/list-subheader/">
+    MUI's ListSubheader
+  </a>
+  . The two props worth knowing are below.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disableSticky</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        MUI pins the subheader to the top of a scrolling container. Pass it so
+        the heading scrolls away with the list, which is what the designs show.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disableGutters</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's horizontal padding is off by default, keeping the heading flush
+        with the items.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

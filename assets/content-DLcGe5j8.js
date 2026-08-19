@@ -1,0 +1,244 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Contributing to SDS</h1>
+<p>
+  Use the following guides when you have a new request for something to be added
+  or changed in the design system or want to serve as a contributor to the SDS
+  team
+</p>
+<h2>Contribution Guide</h2>
+<h3>Contribution and Request Flow</h3>
+<h4>Assess and Plan</h4>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p>
+      Check if the component already exists by checking the
+      <a
+        href="./?path=/docs/design-documentation-sds-overview-introduction--docs"
+        target="_top"
+        >SDS Documentation</a
+      >
+      to confirm
+    </p>
+  </li>
+  <li>
+    <p>
+      If not, submit the request or idea you want to contribute to the SDS by
+      creating a
+      <a
+        href="https://github.com/chanzuckerberg/sci-components/issues/new/choose"
+        >github issue</a
+      >
+    </p>
+  </li>
+  <li>
+    <p>
+      The SDS Team will assess the request and make sure they understand the
+      needs
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Decision Point</strong>
+      : should it be included in the SDS?
+    </p>
+    <ol class="sds-doc-ordered-list">
+      <li>
+        <p>
+          If the needs are joint across multiple projects, the SDS team will
+          likely decide to include it
+        </p>
+      </li>
+      <li>
+        <p>
+          If not, it can become a
+          <strong>Snowflake</strong>
+          (a one-off component maintained by the product teams)
+        </p>
+      </li>
+    </ol>
+  </li>
+</ol>
+<h4>Design</h4>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p>
+      <strong>Decision Point</strong>
+      : who will build the component, the SDS or product team?
+    </p>
+    <ol class="sds-doc-ordered-list">
+      <li>
+        <p>
+          SDS team – if the SDS team has bandwidth in alignment with other
+          priorities
+        </p>
+      </li>
+      <li>
+        <p>
+          Product team – if the product team is in a rush and need it sooner.
+          They may build for SDS or in their own codebase to be incorporated
+          into SDS later
+        </p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>
+      Design Process – gather requirements, design critique, design review with
+      SDS team and product teams, and iteration and hand-off to engineering with
+      specs. Communicate with teams throughout.
+    </p>
+  </li>
+</ol>
+<h4>Implementation and Testing</h4>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p>
+      Engineering Design Review – for larger components and when needed, review
+      engineering design plans
+    </p>
+  </li>
+  <li><p>Code Implementation with PRs, Design QA</p></li>
+  <li><p>Documentation Build</p></li>
+  <li><p>Figma Component Build</p></li>
+</ol>
+<p><strong>Launch</strong></p>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p>
+      Communicate Update – release notes in
+      <strong>&nbsp;#sci-design-system-releases</strong>
+      channel
+    </p>
+  </li>
+</ol>
+<h3>Contribution Guides</h3>
+<p>
+  When getting started with contributing, here are guides to follow. Be sure to
+  also partner with an SDS core team member.
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Contributing Design –
+      <a
+        href="https://docs.google.com/document/d/1Y7Nuf77Muv6vJVevUkL057FmYR5PrZgvxBCLASSdsrE/edit?usp=sharing"
+      >
+        SDS Feature Design Process
+      </a>
+    </p>
+  </li>
+  <li><p>Contributing Code – [guide coming soon]</p></li>
+  <li><p>Contributing Documentation – [guide coming soon]</p></li>
+</ul>
+<h2>Contributor Models</h2>
+<h3>Ways to Contribute</h3>
+<p>
+  There are a range of tasks and projects to work on as a contributor to the
+  SDS, such as:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li><p>Fixing a bug; grab something from the backlog</p></li>
+  <li><p>Flagging things to the SDS team; give the SDS team feedback</p></li>
+  <li><p>Brainstorming new feature needs; suggest features</p></li>
+  <li><p>Participating in engineering design reviews</p></li>
+</ul>
+<p></p>
+<h3>Commitment Levels</h3>
+<p>
+  Contributing to the SDS doesn't need to be a huge time commitment and there
+  are many different ways to serve as a contributor to the SDS.
+</p>
+<p></p>
+<h4>One-Off Contributor (Occasional)</h4>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Contribute when they have free time or interest in a particular project
+    </p>
+  </li>
+  <li>
+    <p>No commitment to contribute long term; contributions can be sporadic</p>
+  </li>
+</ul>
+<p>Some examples include:&nbsp;</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Participating during SDS events, such as hackathons, sprints, or workshops
+    </p>
+  </li>
+  <li>
+    <p>Pick up one-off tickets, such as a well-defined accessibility task</p>
+  </li>
+  <li>
+    <p>
+      Make fixes or contributions on things relevant to your current work, if
+      you’re already working on something on your team and want to contribute
+      back to SDS
+    </p>
+  </li>
+</ul>
+<p></p>
+<h4>Team Representative</h4>
+<p>
+  These contributors are go-to SDS advocates on their teams and point people.
+  Their expectations include:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li><p>Consistent involvement within their team</p></li>
+  <li>
+    <p>
+      Act as advocates, spreading awareness and encouraging participation, such
+      as:
+    </p>
+    <ul class="sds-doc-bullet-list">
+      <li><p>Flagging when a SDS component is beneficial</p></li>
+      <li><p>When their team has a need to share with SDS</p></li>
+      <li>
+        <p>Watching for breaking changes so their team can react if needed</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      May not be directly involved in development but promote the project's
+      importance
+    </p>
+  </li>
+  <li>
+    <p>
+      Project based: if the SDS team is collaborating on a project with their
+      team
+    </p>
+  </li>
+</ul>
+<p>Current team representatives:</p>
+<ul class="sds-doc-bullet-list">
+  <li><p>Timmy Huang – Engineering</p></li>
+  <li><p>Harley Thomas – Design</p></li>
+  <li><p>Connor Larsen – Design</p></li>
+  <li><p>Masoud Amjadi – Engineering</p></li>
+</ul>
+<p></p>
+<h4>Commitment to a Timeframe (fixed-term)</h4>
+<p>
+  These contributors commit to a specific period, typically 3 to 6 months, at
+  the Quarter and Half planning times, to work on SDS and its roadmap. This
+  involves:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li><p>Defined time commitment</p></li>
+  <li><p>Attend SDS meetings</p></li>
+  <li>
+    <p>
+      Typically involved in development, planning, or execution of project goals
+    </p>
+  </li>
+  <li>
+    <p>
+      Providing a more predictable level of support over a specified timeframe
+    </p>
+  </li>
+  <li><p>Revisited after initial timeframe commitment is complete</p></li>
+</ul>
+<p></p>
+`}));export{n,t};

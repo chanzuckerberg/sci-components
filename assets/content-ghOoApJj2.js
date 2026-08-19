@@ -1,0 +1,476 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Menu</h1>
+<p>
+  A surface of choices that opens from the element the user clicked, for actions
+  and options that do not warrant a permanent place in the layout.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Menu is not DropdownMenu.</strong>
+    Menu is the simplest dropdown the system has, a restyling of Material UI's
+    own: its rows are commands you write yourself, and picking one runs an
+    action and leaves nothing behind.
+    <a
+      href="./?path=/docs/components-dropdowns-dropdownmenu--documentation"
+      target="_top"
+      >DropdownMenu</a
+    >
+    is for choosing a value the app keeps, from options passed as data. If what
+    the user picks has to be read back out afterwards, it is not a Menu; the
+    <a href="./?path=/docs/components-dropdowns-overview--docs" target="_top"
+      >Dropdowns overview</a
+    >
+    sets the two side by side.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Menu/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Menu } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Menu</strong></h3>
+<p>
+  The least a menu needs: an anchor kept in state, an <code>open</code> derived
+  from it, and an <code>onClose</code> that clears it. The items are commands,
+  so each one clears the anchor as well and the menu closes behind it.
+</p>
+<div class="sds-doc-example" data-example="core/Menu/DefaultMenu"></div>
+<h3><strong>Menu placement</strong></h3>
+<p>
+  A menu wider than its trigger, or one opened from something near the edge of
+  the window, often reads better aligned to an edge than centered. Pairing the
+  right edge of the anchor with the right edge of the menu moves it there
+  without any positioning code of your own.
+</p>
+<div class="sds-doc-example" data-example="core/Menu/MenuPlacement"></div>
+<h3><strong>Menu with selectable items</strong></h3>
+<p>
+  Selection state lives outside the menu. Passing <code>isMultiSelect</code> and
+  <code>selected</code> to each MenuItem draws the checkmarks, and leaving the
+  close out of the item handlers keeps the menu open so several options can be
+  set in one visit.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Menu/MenuWithSelectableItems"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  SDS Menu is a thin wrapper around MUI's Menu. <code>MenuProps</code> is MUI's
+  own type re-exported unchanged, so there are no sds-prefixed props and
+  everything in the MUI documentation applies. What SDS contributes is two
+  positioning defaults and the styling of the paper the items sit on:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>anchorOrigin</code>: set to
+      <code>{ vertical: "bottom", horizontal: "center" }</code>, where MUI's
+      default is <code>"top"</code> / <code>"left"</code>. An SDS menu therefore
+      opens below its anchor rather than on top of it.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>transformOrigin</code>: set to
+      <code>{ vertical: "top", horizontal: "center" }</code>, so the two center
+      points meet and the menu hangs centered under its trigger.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Both defaults are spread before your props,</strong>
+      which means each one is replaced whole rather than merged. The two are a
+      pair, so repositioning a menu is a matter of passing both, as the
+      placement example below does.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The paper is restyled:</strong>
+      the surface color comes from the theme's <code>surfacePrimary</code>, the
+      corners are the <code>l</code> radius, and there is an
+      <code>xs</code> inset around the items. SDS also sets
+      <code>background-image: none</code>, which removes the tint MUI's Paper
+      paints over surfaces in dark mode.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The list loses its own padding,</strong>
+      so the space around the items is the paper's inset alone and the first and
+      last item sit as close to the edge as the ones on either side.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Its children are SDS MenuItems.</strong>
+      Menu draws the surface and nothing within it, so the appearance of a row
+      (its icon, its right hand column, its selected state) belongs to
+      <a
+        href="./?path=/docs/components-dropdowns-menuitem--documentation"
+        target="_top"
+      >
+        MenuItem
+      </a>
+      .
+    </p>
+  </li>
+</ul>
+<div
+  class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>SDS Tip:</strong>
+    Reach for Menu when the choices are commands, or a short list of options
+    anchored to a trigger. When the user is picking a value that the trigger
+    should then display, and especially when the list needs search, sections, or
+    Apply and Cancel buttons, use
+    <a
+      href="./?path=/docs/components-dropdowns-dropdown--documentation"
+      target="_top"
+    >
+      Dropdown
+    </a>
+    instead.
+  </p>
+</div>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-menu/">here</a>
+  , and its full API
+  <a href="https://mui.com/material-ui/api/menu/">here</a>
+  .
+</p>
+<h2>Anchoring and state</h2>
+<p>
+  Menu is controlled: it renders when <code>open</code> is <code>true</code>,
+  positions itself against the element passed as <code>anchorEl</code>, and asks
+  to be dismissed through <code>onClose</code>. Holding the anchor element in
+  state covers all three, since whether there is an anchor is also whether the
+  menu is open.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">const [anchorEl, setAnchorEl] = useState&lt;HTMLElement | null&gt;(null);
+
+&lt;Button onClick={(event) =&gt; setAnchorEl(event.currentTarget)}&gt;Open Menu&lt;/Button&gt;
+
+&lt;Menu
+  anchorEl={anchorEl}
+  open={Boolean(anchorEl)}
+  onClose={() =&gt; setAnchorEl(null)}
+&gt;
+  &lt;MenuItem sdsType="action" onClick={() =&gt; setAnchorEl(null)}&gt;
+    Rename
+  &lt;/MenuItem&gt;
+&lt;/Menu&gt;</code></pre>
+  </figure>
+</div>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      A Menu is a Popover holding a list, and a Popover is built on MUI's Modal.
+      It renders in a portal at the end of the document, traps focus while it is
+      open, hides the rest of the page from assistive technology, and locks the
+      page's scroll.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>onClose</code> is called with the event and a reason:
+      <code>"backdropClick"</code>, <code>"escapeKeyDown"</code>, or
+      <code>"tabKeyDown"</code>. It is never called for a click on an item.
+      Closing on selection is the item's own <code>onClick</code>, which is what
+      lets a menu of toggles stay open while several are set.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>anchorEl has to be state, not a ref.</strong>
+      The menu measures the anchor while rendering, so it needs a render to
+      happen once the element is known. Storing the trigger in a ref leaves the
+      menu with nothing to measure on the first open.
+    </p>
+  </li>
+  <li>
+    <p>
+      Opening a menu moves focus into it. The arrow keys walk the items, Home
+      and End jump to the ends, and typing a letter moves to the next item whose
+      text starts with it. Disabled items are skipped.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>variant</code> decides where that focus lands. The default,
+      <code>"selectedMenu"</code>, starts on the selected item, which is right
+      for a menu that reflects a current value; pass <code>"menu"</code> to
+      always start at the top.
+    </p>
+  </li>
+  <li>
+    <p>
+      Give the trigger <code>aria-haspopup</code>,
+      <code>aria-controls</code> pointing at the menu's id, and
+      <code>aria-expanded</code> while it is open, then name the list with
+      <code>slotProps.list</code> and an <code>aria-labelledby</code> that
+      points back at the trigger.
+    </p>
+  </li>
+  <li>
+    <p>
+      The list is a <code>role="menu"</code> of
+      <code>role="menuitem"</code> children, which describes a set of commands.
+      A menu used to choose values instead is a listbox: pass
+      <code>role="listbox"</code> through <code>slotProps.list</code> and give
+      each MenuItem <code>role="option"</code> with an
+      <code>aria-selected</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      Nothing is rendered while <code>open</code> is <code>false</code>, so the
+      items are mounted fresh on each open. Pass <code>keepMounted</code> to
+      keep them in the document instead, which is worth it when the list is
+      expensive to build or has to stay findable by an in-page search.
+    </p>
+  </li>
+  <li>
+    <p>
+      A menu longer than the window scrolls within its own paper. Where the
+      number of items is unbounded, cap the height through
+      <code>slotProps.paper</code> so the surface is the same size whatever it
+      holds.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Menu takes MUI's props and adds none of its own. The ones needed to get a menu
+  working, and those whose SDS defaults differ from MUI's, are listed below. See
+  the MUI documentation for the rest.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>open</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. Whether the menu is shown. Usually derived from whether an
+        anchor has been recorded.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>anchorEl</code></p>
+    </td>
+    <td>
+      <p><code>HTMLElement | (() =&gt; HTMLElement) | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The element the menu is positioned against. Keep it in state so that
+        setting it causes the render the menu needs in order to measure it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The contents of the menu, normally SDS MenuItems, placed into the list
+        the menu renders.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClose</code></p>
+    </td>
+    <td>
+      <p><code>(event, reason) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Called on a backdrop click, on Escape, and on Tab, with the reason as
+        its second argument. Closing the menu is up to you.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>anchorOrigin</code></p>
+    </td>
+    <td>
+      <p><code>{ vertical: "top" | "center" | "bottom" | number,</code></p>
+      <p><code>horizontal: "left" | "center" | "right" | number }</code></p>
+    </td>
+    <td>
+      <p><code>{ vertical: "bottom", horizontal: "center" }</code></p>
+    </td>
+    <td>
+      <p>
+        The point on the anchor the menu attaches to. SDS changes MUI's default
+        from the anchor's top left corner.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>transformOrigin</code></p>
+    </td>
+    <td>
+      <p><code>{ vertical: "top" | "center" | "bottom" | number,</code></p>
+      <p><code>horizontal: "left" | "center" | "right" | number }</code></p>
+    </td>
+    <td>
+      <p><code>{ vertical: "top", horizontal: "center" }</code></p>
+    </td>
+    <td>
+      <p>
+        The point on the menu that meets the anchor's. Passing your own replaces
+        the SDS default rather than merging with it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>variant</code></p>
+    </td>
+    <td>
+      <p><code>"menu" | "selectedMenu"</code></p>
+    </td>
+    <td>
+      <p><code>"selectedMenu"</code></p>
+    </td>
+    <td>
+      <p>
+        Where focus lands when the menu opens: on the selected item, or on the
+        first one.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>autoFocus</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Whether focus moves into the menu when it opens. Turning it off has
+        severe accessibility implications unless focus is managed some other
+        way.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>slotProps</code></p>
+    </td>
+    <td>
+      <p><code>{ root, paper, list, transition, backdrop }</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props for the parts the menu is made of. <code>slotProps.list</code> is
+        where the list's label and role belong, and
+        <code>slotProps.paper</code> is where a width or a max height belongs.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>keepMounted</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Keeps the items in the document while the menu is closed, preserving
+        their state at the cost of rendering them up front.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disablePortal</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Renders the menu where it is written rather than at the end of the
+        document, which puts it back within reach of an ancestor's overflow.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>transitionDuration</code></p>
+    </td>
+    <td>
+      <p><code>number | { appear, enter, exit } | "auto"</code></p>
+    </td>
+    <td>
+      <p><code>"auto"</code></p>
+    </td>
+    <td>
+      <p>
+        How long the grow transition runs. <code>"auto"</code> scales it to the
+        size of the menu.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

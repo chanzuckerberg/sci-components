@@ -1,0 +1,190 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>LoadingIndicator</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/LoadingIndicator/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { LoadingIndicator } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>LoadingIndicator – Minimal</h3>
+<p>
+  Use the minimal variant when part of a page is still filling in, such as the
+  body of an Accordion or the rows of a Table.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/LoadingIndicator/LoadingIndicatorMinimal"
+></div>
+<h3>LoadingIndicator – Tag</h3>
+<p>Use the tag variant when a whole page or view has not arrived yet.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/LoadingIndicator/LoadingIndicatorTag"
+></div>
+<h3>Naming what is loading</h3>
+<p>
+  The two indicators below look identical, but the second announces "Loading
+  cell types" instead of "Loading". Name the thing being loaded whenever more
+  than one wait can be in flight.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/LoadingIndicator/LoadingIndicatorAriaLabel"
+></div>
+<h3>Loading a region on demand</h3>
+<p>
+  Swapping the indicator in for the content it is standing in for, which is what
+  gives the status region something to announce, and what gives the wait a
+  visible end.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/LoadingIndicator/LoadingIndicatorInContext"
+></div>
+<h2>Behavior notes</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      The component reads exactly two props, <code>sdsStyle</code> and
+      <code>aria-label</code>, and ignores everything else. There is no
+      <code>className</code>, <code>style</code>, <code>id</code>,
+      <code>children</code>, or data attribute to pass, and no ref to take, so
+      wrap it in an element of your own for layout, spacing, or centering.
+    </p>
+  </li>
+  <li>
+    <p>
+      The visible label is the hard-coded word
+      <em>Loading</em>
+      . It cannot be changed or translated, so a wait that needs different copy
+      needs a line of your own text beside the indicator.
+    </p>
+  </li>
+  <li>
+    <p>
+      Both variants stand 32px tall and sit <code>inline-flex</code>, so they
+      line up with adjacent text rather than filling their container.
+    </p>
+  </li>
+  <li>
+    <p>
+      Internally there is 4px of padding and nothing more. The 16px of clearance
+      the spacing guideline above asks for is yours to add on the surrounding
+      element.
+    </p>
+  </li>
+  <li>
+    <p>
+      The spinner is animated inside the SVG itself, not with CSS, so it keeps
+      spinning under <code>prefers-reduced-motion</code> and there is no prop to
+      stop it.
+    </p>
+  </li>
+  <li>
+    <p>
+      The label sits in a <code>role="status"</code>,
+      <code>aria-live="polite"</code> region, so it announces itself when it
+      mounts. Render it when the wait starts and unmount it when the wait ends:
+      nothing is announced on removal, so the content that replaces it has to
+      carry the result.
+    </p>
+  </li>
+</ul>
+<h2>The two variants</h2>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>sdsStyle</p></td>
+    <td><p>Type</p></td>
+    <td><p>Color</p></td>
+    <td><p>Spinner</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"minimal"</code></p>
+    </td>
+    <td>
+      <p><code>fontBodyS</code>, sentence case</p>
+    </td>
+    <td>
+      <p>
+        Text <code>base.textSecondary</code>, spinner
+        <code>base.ornamentSecondary</code>, no fill
+      </p>
+    </td>
+    <td><p>16px</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>"tag"</code></p>
+    </td>
+    <td>
+      <p><code>fontCapsXxxxs</code>, all caps</p>
+    </td>
+    <td>
+      <p>
+        Text and spinner <code>accent.foreground</code> on an
+        <code>accent.surfaceSecondary</code> pill
+      </p>
+    </td>
+    <td><p>24px</p></td>
+  </tr>
+</table>
+<h2>Props</h2>
+<p>
+  The component takes no MUI props. Its full surface is the table below; any
+  other prop is a type error.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"minimal"</code> |</p>
+      <p><code>"tag"</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Chooses between the two variants above. It has no default: leaving it
+        out is a type error, and an indicator built without it renders unstyled.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>aria-label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>undefined</code></p>
+    </td>
+    <td>
+      <p>
+        Replaces what a screen reader announces for the status region, for
+        example "Loading cell types". The visible text still reads "Loading".
+        Without it, assistive technology announces the visible word.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

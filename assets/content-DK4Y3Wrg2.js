@@ -1,0 +1,364 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Tag</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Tag/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Tag } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Tag</strong></h3>
+<p>
+  A tag with nothing but a label, next to the same tag asking for the rounded
+  shape the design guidance prefers.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/DefaultTag"></div>
+<h3>Intents</h3>
+<p>
+  The six intents, drawn as primary and then as secondary. A tag left without a
+  color is neutral.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagIntents"></div>
+<h3>Tag + Icon</h3>
+<p>
+  A large tag, which has to carry an icon, beside a small one. Each uses an Icon
+  whose own size matches the size the tag will draw it at.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagIcon"></div>
+<h3>Tag with custom colors</h3>
+<p>
+  Colors given as a tuple, for a tag the intents do not cover. The two-value
+  form leaves the icon white, so a tag with an icon wants all three.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagWithCustomColors"></div>
+<h3>Clickable and static tags</h3>
+<p>
+  A tag with an <code>onClick</code> behaves as a button for both the pointer
+  and the keyboard. A tag that only labels something uses
+  <code>hover={false}</code> so it stops looking clickable.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/InteractiveTag"></div>
+<h3>A label with no room</h3>
+<p>
+  What a long label does in a narrow container, and the Tooltip that keeps the
+  truncated text reachable.
+</p>
+<div class="sds-doc-example" data-example="core/Tag/TagWithLongLabel"></div>
+<h2>SDS vs MUI</h2>
+<p>
+  SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS
+  ones. SDS also splits the Chip's two jobs in two: Tag labels something, and
+  <a href="./?path=/docs/design-documentation-genes-tags--docs" target="_top"
+    >TagFilter</a
+  >
+  is the tag that can be removed. The differences from MUI are these:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>sdsStyle</code>: <code>"square"</code> or <code>"rounded"</code>.
+      The component defaults to <code>"square"</code>, while the design guidance
+      above treats rounded as the shape to reach for, so a tag that should match
+      the rest of the system asks for it explicitly.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>sdsType</code>: <code>"primary"</code> (default) fills the tag with
+      the intent color and sets the label white; <code>"secondary"</code> tints
+      the fill, keeps the label in the intent color and draws a 1px border in
+      it.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>sdsSize</code>: <code>"s"</code> (default) or <code>"l"</code>,
+      which is the pair of sizes the design carries rather than MUI's
+      <code>"small"</code> and <code>"medium"</code>. A large tag must have an
+      icon: TypeScript rejects <code>sdsSize="l"</code> without one.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>color</code>: an SDS intent rather than one of MUI's palette names,
+      since SDS hands MUI a fixed color of its own and uses this prop for the
+      fill, the label and the icon. Six intents are available and a tag without
+      the prop is neutral. It also takes a tuple of CSS colors for cases the
+      intents do not cover.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>hover</code>: on by default, which draws the hover and pressed
+      states and a pointer cursor on every tag, whether or not anything happens
+      when it is clicked. Setting it to <code>false</code> removes those states
+      by taking the tag out of pointer events entirely, which also stops a
+      Tooltip wrapped around it from opening.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Sizing and variant props do nothing:</strong>
+      MUI's <code>size</code> and <code>variant</code> set their classes but SDS
+      pins the height, padding, fill and border, so a tag looks the same either
+      way. MUI's <code>clickable</code> does have an effect, and not a useful
+      one: it makes the tag a tab stop that does nothing. Pass
+      <code>onClick</code> instead.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>onDelete works, but off-brand:</strong>
+      a Tag given <code>onDelete</code> does become deletable, drawing MUI's
+      filled-circle Cancel icon rather than the SDS X. Reach for TagFilter when
+      a tag needs to come off.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-chip/">here</a>
+  .
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      A plain tag is a div holding its label, with no role and no tab stop, and
+      is read as the text it shows. Giving it an <code>onClick</code> turns it
+      into a button: it takes a tab stop, answers Enter and Space, and takes its
+      accessible name from the label.
+    </p>
+  </li>
+  <li>
+    <p>
+      Because <code>hover</code> is on by default, a tag that only labels
+      something still darkens under the pointer and shows a pointer cursor,
+      which reads as clickable. <code>hover={false}</code> settles that, at the
+      cost of all pointer events, so do not combine it with
+      <code>onClick</code>, which would leave the tag reachable by keyboard but
+      dead to the mouse.
+    </p>
+  </li>
+  <li>
+    <p>
+      Nothing about the intent reaches assistive technology:
+      <code>color</code> is color only, so a negative tag needs a label that
+      says what is wrong rather than relying on red.
+    </p>
+  </li>
+  <li>
+    <p>
+      A tag never wraps. It stretches to fit its label and then, in a container
+      too narrow, cuts the label off with an ellipsis, leaving the rest of the
+      text nowhere else to be read. A tag that can hold a long value belongs in
+      a Tooltip carrying the whole string.
+    </p>
+  </li>
+  <li>
+    <p>
+      Icons are drawn at a fixed size (12px in a small tag, 24px in a large one)
+      whatever size the Icon itself asks for, so match the Icon's
+      <code>sdsSize</code> to the tag: <code>"s"</code> or <code>"xs"</code> for
+      a small tag, <code>"l"</code> for a large one. Some icons exist at only
+      one of those sizes, Star and Virus among them, and asking for one at a
+      size it does not have renders nothing and logs an error.
+    </p>
+  </li>
+  <li>
+    <p>
+      The two-value form of a custom <code>color</code> leaves the icon white
+      rather than coloring it with the label, so it vanishes on a light fill; a
+      tag with an icon wants the three-value form. On a secondary tag, custom
+      colors also draw the border in the fill color, which hides it. Contrast is
+      yours to check. SDS only guarantees it for its own intents.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The tag's text, and its accessible name. It is cut off with an ellipsis
+        rather than wrapped when there is not room for it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>color</code></p>
+    </td>
+    <td>
+      <p><code>"info"</code> |</p>
+      <p><code>"positive"</code> |</p>
+      <p><code>"notice"</code> |</p>
+      <p><code>"negative"</code> |</p>
+      <p><code>"neutral"</code> |</p>
+      <p><code>"beta"</code> |</p>
+      <p><code>[string, string]</code> |</p>
+      <p><code>[string, string, string]</code></p>
+    </td>
+    <td>
+      <p><code>"neutral"</code></p>
+    </td>
+    <td>
+      <p>
+        The tag's intent, given either as one of the six names or as CSS colors:
+      </p>
+      <ol class="sds-doc-ordered-list">
+        <li><p>[label color, background color]: the icon stays white</p></li>
+        <li><p>[label color, background color, icon color]</p></li>
+      </ol>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsType</code></p>
+    </td>
+    <td>
+      <p><code>"primary"</code> |</p>
+      <p><code>"secondary"</code></p>
+    </td>
+    <td>
+      <p><code>"primary"</code></p>
+    </td>
+    <td>
+      <p>
+        primary fills the tag with the intent color and sets the label white.
+      </p>
+      <p>
+        secondary tints the fill and keeps the label and a 1px border in the
+        intent color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"square"</code> |</p>
+      <p><code>"rounded"</code></p>
+    </td>
+    <td>
+      <p><code>"square"</code></p>
+    </td>
+    <td>
+      <p>
+        The shape of the tag. The design guidance treats rounded as the default
+        for the system, so it is usually worth passing.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsSize</code></p>
+    </td>
+    <td>
+      <p><code>"s" | "l"</code></p>
+    </td>
+    <td>
+      <p><code>"s"</code></p>
+    </td>
+    <td>
+      <p>
+        The size of the tag: an 11px label with a 12px icon, or a 13px label
+        with a 24px icon. A large tag has to have an icon.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>JSX.Element</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        An icon on the leading edge, usually an SDS Icon. It is drawn at the
+        tag's icon size whatever size it asks for, so match its
+        <code>sdsSize</code> to the tag.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Whether the tag responds to the pointer with a darker fill and a pointer
+        cursor. False removes the tag from pointer events altogether, which also
+        keeps a surrounding Tooltip from opening.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onClick</code></p>
+    </td>
+    <td>
+      <p><code>(event) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        MUI's prop. Makes the tag a button: a tab stop that answers Enter and
+        Space.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onDelete</code></p>
+    </td>
+    <td>
+      <p><code>(event) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        MUI's prop. Adds a delete control, drawn with MUI's Cancel icon rather
+        than the SDS X. Use TagFilter for a removable tag instead.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

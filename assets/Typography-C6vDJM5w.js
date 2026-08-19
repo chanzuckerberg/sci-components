@@ -1,0 +1,3483 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-CLRePdsX.js";import{a as r,o as i,v as a}from"./blocks-DVD7Xw_S.js";import{t as o}from"./mdx-react-shim-DT8rpM1R.js";import{n as s,r as c}from"./SdsDoc-n_TvjQdW.js";var l,u=e((()=>{l=`<h1>Typography</h1>
+<p>
+  Typography encompasses font style, appearance, and structure which together
+  deliver a consistent aesthetic while providing easily readable copy
+</p>
+<h2>Wide</h2>
+<h3>Typefaces</h3>
+<p>
+  Inter is the primary typeface to be used throughout product and marketing
+  materials. IBM Plex Mono should only be used when referring to code snippets.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Typeface</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/262d40e5a94f46ef.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inter (600)</p></td>
+    <td>
+      <p>
+        All headers throughout the product and marketing materials, and
+        emphasized body copy.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/7943db8b5b39881c.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inter (500)</p></td>
+    <td><p>For text that needs slight emphasis.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/375a5e7de9f70be7.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inter (400)</p></td>
+    <td>
+      <p>
+        All body copy throughout the product and marketing materials. If
+        emphasized copy is needed, use a font weight of 500 or 600.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/e9c413b9cf551987.svg" class="sds-doc-image" />
+    </td>
+    <td><p>IBM Plex Mono (400)</p></td>
+    <td><p>Use only when referring to code snippets.</p></td>
+  </tr>
+</table>
+<h3>Font Weights</h3>
+<p>
+  Regular (400) and SemiBold (600) are the two font weights primarily used
+  across the product, however additional font weights are available to be
+  selectively used if needed.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/9314ef06db518382.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightHeavy</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 800;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/7b9a54e911f26828.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightBold</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 700;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/377cb64e15250d08.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightSemibold</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 600;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/391394f15ca8a760.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightRegular</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 400;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/a79580a5311a8a4e.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightThin</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 300;</code></p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Typography Variables</h3>
+<h4>TItle</h4>
+<p>
+  For use with
+  <a href="./?path=/docs/design-documentation-dna-hero--docs" target="_top"
+    >Hero</a
+  >
+  component.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Title L</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/74d0c504d09ed7d9.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTitleL/700</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-title-l-700-font</code></p>
+      <p><code>$sds-font-title-l-700-font</code></p>
+      <p><code>--sds-font-title-l-700-letter-spacing</code></p>
+      <p><code>$sds-font-title-l-700-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 700 52px/64px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Title M</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/ffa4eae849cb048e.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTitleM/700</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-title-m-700-font</code></p>
+      <p><code>$sds-font-title-m-700-font</code></p>
+      <p><code>--sds-font-title-m-700-letter-spacing</code></p>
+      <p><code>$sds-font-title-m-700-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 700 40px/50px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tile S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/53cb78cbdda8ff14.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTitleS/700</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-title-s-700-font</code></p>
+      <p><code>$sds-font-title-s-700-font</code></p>
+      <p><code>--sds-font-title-s-700-letter-spacing</code></p>
+      <p><code>$sds-font-title-s-700-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 700 32px/40px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Header</h4>
+<p>
+  For use with <code>&lt;H1&gt;</code>, <code>&lt;H2&gt;</code>,
+  <code>&lt;H3&gt;</code>, <code>&lt;H4&gt;</code>, <code>&lt;H5&gt;</code>,
+  <code>&lt;H6&gt;</code> tags.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Header XXL</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/690295c33eaa131d.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderXxl/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xxl-600-font</code></p>
+      <p><code>$sds-font-header-xxl-600-font</code></p>
+      <p><code>--sds-font-header-xxl-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-xxl-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 26px/34px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XL</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/262d40e5a94f46ef.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderXl/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xl-600-font</code></p>
+      <p><code>$sds-font-header-xl-600-font</code></p>
+      <p><code>--sds-font-header-xl-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-xl-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 22px/30px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header L</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/4290825b333b022f.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderL/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-l-600-font</code></p>
+      <p><code>$sds-font-header-l-600-font</code></p>
+      <p><code>--sds-font-header-l-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-l-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 18px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header M</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/83b445227582ab23.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderM/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-m-600-font</code></p>
+      <p><code>$sds-font-header-m-600-font</code></p>
+      <p><code>--sds-font-header-m-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-m-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 16px/22px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/1e089c9a3e136491.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderS/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-s-600-font</code></p>
+      <p><code>$sds-font-header-s-600-font</code></p>
+      <p><code>--sds-font-header-s-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-s-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/27324cccd942a941.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderXs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xs-600-font</code></p>
+      <p><code>$sds-font-header-xs-600-font</code></p>
+      <p><code>--sds-font-header-xs-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-xs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/1233c7a5c70b02f5.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderXxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xxs-600-font</code></p>
+      <p><code>$sds-font-header-xxs-600-font</code></p>
+      <p><code>--sds-font-header-xxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-xxs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/0ea167c34f5f0b75.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontHeaderXxxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xxxs-600-font</code></p>
+      <p><code>$sds-font-header-xxxs-600-font</code></p>
+      <p><code>--sds-font-header-xxxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-header-xxxs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Body</h4>
+<p>For use with <code>&lt;p&gt;</code> tags.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Body L</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/aa1edd62afabeb7c.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/246955e00f18273b.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/cab10b98a3c55a09.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontBodyL/600</code></p>
+      <p><code>wide/fontBodyL/500</code></p>
+      <p><code>wide/fontBodyL/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-l-600-font</code></p>
+      <p><code>$sds-font-body-l-600-font</code></p>
+      <p><code>--sds-font-body-l-600-letter-spacing</code></p>
+      <p><code>$sds-font-body-l-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 18px/28px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-l-500-font</code></p>
+      <p><code>$sds-font-body-l-500-font</code></p>
+      <p><code>--sds-font-body-l-500-letter-spacing</code></p>
+      <p><code>$sds-font-body-l-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 18px/28px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-l-400-font</code></p>
+      <p><code>$sds-font-body-l-400-font</code></p>
+      <p><code>--sds-font-body-l-400-letter-spacing</code></p>
+      <p><code>$sds-font-body-l-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 18px/28px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body M</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/781ce02f8b70d2f5.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/7943db8b5b39881c.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/375a5e7de9f70be7.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontBodyM/600</code></p>
+      <p><code>wide/fontBodyM/500</code></p>
+      <p><code>wide/fontBodyM/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-m-600-font</code></p>
+      <p>
+        <code
+          >$sds-font-body-m-600-font--sds-font-body-m-600-letter-spacing$sds-font-body-m-600-letter-spacing</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>font: 600 16px/26px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-m-500-font</code></p>
+      <p>
+        <code
+          >$sds-font-body-m-500-font--sds-font-body-m-500-letter-spacing$sds-font-body-m-500-letter-spacing</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>font: 500 16px/26px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-m-400-font</code></p>
+      <p><code>$sds-font-body-m-400-font</code></p>
+      <p><code>--sds-font-body-m-400-letter-spacing</code></p>
+      <p><code>$sds-font-body-m-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 16px/26px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/377cb64e15250d08.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/57bc8fcee0cd8e1f.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/391394f15ca8a760.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontBodyS/600</code></p>
+      <p><code>wide/fontBodyS/500</code></p>
+      <p><code>wide/fontBodyS/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-s-600-font</code></p>
+      <p><code>$sds-font-body-s-600-font</code></p>
+      <p><code>--sds-font-body-s-600-letter-spacing</code></p>
+      <p><code>$sds-font-body-s-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-s-500-font</code></p>
+      <p><code>$sds-font-body-s-500-font</code></p>
+      <p><code>--sds-font-body-s-500-letter-spacing</code></p>
+      <p><code>$sds-font-body-s-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-s-400-font</code></p>
+      <p><code>$sds-font-body-s-400-font</code></p>
+      <p><code>--sds-font-body-s-400-letter-spacing</code></p>
+      <p><code>$sds-font-body-s-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/944e8c44007ac9db.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/3280573fb612bf9a.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/7bc13343adba1031.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontBodyXs/600</code></p>
+      <p><code>wide/fontBodyXs/500</code></p>
+      <p><code>wide/fontBodyXs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xs-600-font</code></p>
+      <p><code>$sds-font-body-xs-600-font</code></p>
+      <p><code>--sds-font-body-xs-600-letter-spacing</code></p>
+      <p><code>$sds-font-body-xs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xs-500-font</code></p>
+      <p><code>$sds-font-body-xs-500-font</code></p>
+      <p><code>--sds-font-body-xs-500-letter-spacing</code></p>
+      <p><code>$sds-font-body-xs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xs-400-font</code></p>
+      <p><code>$sds-font-body-xs-400-font</code></p>
+      <p><code>--sds-font-body-xs-400-letter-spacing</code></p>
+      <p><code>$sds-font-body-xs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/1233c7a5c70b02f5.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/9db1ec94442297cc.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/48e779262c6f1349.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontBodyXxs/600</code></p>
+      <p><code>wide/fontBodyXxs/500</code></p>
+      <p><code>wide/fontBodyXxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxs-600-font</code></p>
+      <p><code>$sds-font-body-xxs-600-font</code></p>
+      <p><code>--sds-font-body-xxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-body-xxs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxs-500-font</code></p>
+      <p><code>$sds-font-body-xxs-500-font</code></p>
+      <p><code>--sds-font-body-xxs-500-letter-spacing</code></p>
+      <p><code>$sds-font-body-xxs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxs-400-font</code></p>
+      <p><code>$sds-font-body-xxs-400-font</code></p>
+      <p><code>--sds-font-body-xxs-400-letter-spacing</code></p>
+      <p><code>$sds-font-body-xxs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/0ea167c34f5f0b75.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/245d2dbc0f47e74e.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/46c9787294a82783.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontBodyXxxs/600</code></p>
+      <p><code>wide/fontBodyXxxs/500</code></p>
+      <p><code>wide/fontBodyXxxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxxs-600-font</code></p>
+      <p><code>$sds-font-body-xxxs-600-font</code></p>
+      <p><code>--sds-font-body-xxxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-body-xxxs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxxs-500-font</code></p>
+      <p><code>$sds-font-body-xxxs-500-font</code></p>
+      <p><code>--sds-font-body-xxxs-500-letter-spacing</code></p>
+      <p><code>$sds-font-body-xxxs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxxs-400-font</code></p>
+      <p><code>$sds-font-body-xxxs-400-font</code></p>
+      <p><code>--sds-font-body-xxxs-400-letter-spacing</code></p>
+      <p><code>$sds-font-body-xxxs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>All-caps</h4>
+<p>
+  Use for emphasis or when there is a need for distinction between fonts on a
+  page or in a component, such as in Minimal
+  <a
+    href="./?path=/docs/design-documentation-genes-buttons--docs"
+    target="_top"
+  >
+    Buttons
+  </a>
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Caps XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/56270597ee3f8af1.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontCapsXxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-caps-xxs-600-font</code></p>
+      <p><code>$sds-font-caps-xxs-600-font</code></p>
+      <p><code>--sds-font-caps-xxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-caps-xxs-600-letter-spacing</code></p>
+      <p>
+        <code
+          >--sds-font-caps-xxs-600-text-transform$sds-font-caps-xxs-600-text-transform</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.5px;</code></p>
+      <p><code>text-transform: uppercase;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Caps XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/e6c94760bc460af9.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontCapsXxxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-caps-xxxs-600-font</code></p>
+      <p><code>$sds-font-caps-xxxs-600-font</code></p>
+      <p><code>--sds-font-caps-xxxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-caps-xxxs-600-letter-spacing</code></p>
+      <p><code>--sds-font-caps-xxxs-600-text-transform</code></p>
+      <p><code>$sds-font-caps-xxxs-600-text-transform</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.5px;</code></p>
+      <p><code>text-transform: uppercase;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Caps XXXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/4747f86f5af1379d.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontCapsXxxxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-caps-xxxxs-600-font</code></p>
+      <p><code>$sds-font-caps-xxxxs-600-font</code></p>
+      <p><code>--sds-font-caps-xxxxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-caps-xxxxs-600-letter-spacing</code></p>
+      <p><code>--sds-font-caps-xxxxs-600-text-transform</code></p>
+      <p><code>$sds-font-caps-xxxxs-600-text-transform</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 10px/14px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.5px;</code></p>
+      <p><code>text-transform: uppercase;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Tabular</h4>
+<p>
+  Use when there is a need for numbers to be an equal width such as in
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Tables</a
+  >
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Tabular S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/1d995f76a540a0a3.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/1a09722fa64ca770.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/02be46bb10b4034a.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTabularS/600</code></p>
+      <p><code>wide/fontTabularS/500</code></p>
+      <p><code>wide/fontTabularS/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-s-600-font</code></p>
+      <p><code>$sds-font-tabular-s-600-font</code></p>
+      <p><code>--sds-font-tabular-s-600-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-s-600-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-s-600-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-s-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-s-500-font</code></p>
+      <p><code>$sds-font-tabular-s-500-font</code></p>
+      <p><code>--sds-font-tabular-s-500-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-s-500-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-s-500-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-s-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-s-400-font</code></p>
+      <p><code>$sds-font-tabular-s-400-font</code></p>
+      <p><code>--sds-font-tabular-s-400-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-s-400-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-s-400-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-s-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tabular XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/cead412367dea67d.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/0fa5aafb43dbf0ad.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/d009203e23299a3d.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTabularXs/600</code></p>
+      <p><code>wide/fontTabularXs/500</code></p>
+      <p><code>wide/fontTabularXs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xs-600-font</code></p>
+      <p><code>$sds-font-tabular-xs-600-font</code></p>
+      <p><code>--sds-font-tabular-xs-600-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xs-600-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xs-600-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xs-500-font</code></p>
+      <p><code>$sds-font-tabular-xs-500-font</code></p>
+      <p><code>--sds-font-tabular-xs-500-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xs-500-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xs-500-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xs-400-font</code></p>
+      <p><code>$sds-font-tabular-xs-400-font</code></p>
+      <p><code>--sds-font-tabular-xs-400-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xs-400-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xs-400-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tabular XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/177cc1f804b83934.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/177cc1f804b83934.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/9860c9a92e1fc225.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTabularXxs/600</code></p>
+      <p><code>wide/fontTabularXxs/500</code></p>
+      <p><code>wide/fontTabularXxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxs-600-font</code></p>
+      <p><code>$sds-font-tabular-xxs-600-font</code></p>
+      <p><code>--sds-font-tabular-xxs-600-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xxs-600-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xxs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxs-500-font</code></p>
+      <p><code>$sds-font-tabular-xxs-500-font</code></p>
+      <p><code>--sds-font-tabular-xxs-500-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xxs-500-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xxs-500-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xxs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxs-400-font</code></p>
+      <p><code>$sds-font-tabular-xxs-400-font</code></p>
+      <p><code>--sds-font-tabular-xxs-400-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xxs-400-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xxs-400-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xxs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tabular XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/203df6e288089b9b.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/6b4e0d89f43a1b82.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/19e52cf02ffc0f0c.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontTabularXxxs/600</code></p>
+      <p><code>wide/fontTabularXxxs/500</code></p>
+      <p><code>wide/fontTabularXxxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxxs-600-font</code></p>
+      <p><code>$sds-font-tabular-xxxs-600-font</code></p>
+      <p><code>--sds-font-tabular-xxxs-600-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xxxs-600-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xxxs-600-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xxxs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxxs-500-font</code></p>
+      <p><code>$sds-font-tabular-xxxs-500-font</code></p>
+      <p><code>--sds-font-tabular-xxxs-500-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xxxs-500-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xxxs-500-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xxxs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxxs-400-font</code></p>
+      <p><code>$sds-font-tabular-xxxs-400-font</code></p>
+      <p><code>--sds-font-tabular-xxxs-400-font-variant-numeric</code></p>
+      <p><code>$sds-font-tabular-xxxs-400-font-variant-numeric</code></p>
+      <p><code>--sds-font-tabular-xxxs-400-letter-spacing</code></p>
+      <p><code>$sds-font-tabular-xxxs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Code</h4>
+<p>Use only when referring to code snippets.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Code S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/6d8658e74ac0c353.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/51d3670214de73f3.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/ff6ed5550ccdd984.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontCodeS/600</code></p>
+      <p><code>wide/fontCodeS/500</code></p>
+      <p><code>wide/fontCodeS/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-s-600-font</code></p>
+      <p><code>$sds-font-code-s-600-font</code></p>
+      <p><code>--sds-font-code-s-600-letter-spacing</code></p>
+      <p><code>$sds-font-code-s-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-s-500-font</code></p>
+      <p><code>$sds-font-code-s-500-font</code></p>
+      <p><code>--sds-font-code-s-500-letter-spacing</code></p>
+      <p><code>$sds-font-code-s-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-s-400-font</code></p>
+      <p><code>$sds-font-code-s-400-font</code></p>
+      <p><code>--sds-font-code-s-400-letter-spacing</code></p>
+      <p><code>$sds-font-code-s-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Code XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/5e5340f7e43c90c6.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/3400c53b98f9aef9.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/8443ae939e7ee485.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>wide/fontCodeXs/600</code></p>
+      <p><code>wide/fontCodeXs/500</code></p>
+      <p><code>wide/fontCodeXs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-xs-600-font</code></p>
+      <p><code>$sds-font-code-xs-600-font</code></p>
+      <p><code>--sds-font-code-xs-600-letter-spacing</code></p>
+      <p><code>$sds-font-code-xs-600-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/20px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-xs-500-font</code></p>
+      <p><code>$sds-font-code-xs-500-font</code></p>
+      <p><code>--sds-font-code-xs-500-letter-spacing</code></p>
+      <p><code>$sds-font-code-xs-500-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 13px/20px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-xs-400-font</code></p>
+      <p><code>$sds-font-code-xs-400-font</code></p>
+      <p><code>--sds-font-code-xs-400-letter-spacing</code></p>
+      <p><code>$sds-font-code-xs-400-letter-spacing</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 13px/20px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+</table>
+<h2>Narrow</h2>
+<h3>Typefaces</h3>
+<p>
+  Inter is the primary typeface to be used throughout product and marketing
+  materials. IBM Plex Mono should only be used when referring to code snippets.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Typeface</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/262d40e5a94f46ef.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inter (600)</p></td>
+    <td>
+      <p>
+        All headers throughout the product and marketing materials, and
+        emphasized body copy.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/7943db8b5b39881c.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inter (500)</p></td>
+    <td><p>For text that needs slight emphasis.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/375a5e7de9f70be7.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inter (400)</p></td>
+    <td>
+      <p>
+        All body copy throughout the product and marketing materials. If
+        emphasized copy is needed, use a font weight of 600.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/e9c413b9cf551987.svg" class="sds-doc-image" />
+    </td>
+    <td><p>IBM Plex Mono (400)</p></td>
+    <td><p>Use only when referring to code snippets.</p></td>
+  </tr>
+</table>
+<h3>Font Weights</h3>
+<p>
+  Regular (400) and SemiBold (600) are the two font weights primarily used
+  across the product, however additional font weights are available to be
+  selectively used if needed.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/9314ef06db518382.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightHeavy</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 800;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/7b9a54e911f26828.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightBold</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 700;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/377cb64e15250d08.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightSemibold</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 600;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/391394f15ca8a760.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightRegular</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 400;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/a79580a5311a8a4e.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>fontWeightThin</code></p>
+    </td>
+    <td>
+      <p><code>font-weight: 300;</code></p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Typography Variables</h3>
+<h4>TItle</h4>
+<p>
+  For use with
+  <a href="./?path=/docs/design-documentation-dna-hero--docs" target="_top"
+    >Hero</a
+  >
+  component.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Title L</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/74d0c504d09ed7d9.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTitleL/700</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-title-l-700-font-narrow</code></p>
+      <p><code>$sds-font-title-l-700-font-narrow</code></p>
+      <p><code>--sds-font-title-l-700-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-title-l-700-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 700 40px/50x "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Title M</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/ffa4eae849cb048e.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTitleM/700</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-title-m-700-font-narrow</code></p>
+      <p><code>$sds-font-title-m-700-font-narrow</code></p>
+      <p><code>--sds-font-title-m-700-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-title-m-700-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 700 32px/40px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tile S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/53cb78cbdda8ff14.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTitleS/700</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-title-s-700-font-narrow</code></p>
+      <p><code>$sds-font-title-s-700-font-narrow</code></p>
+      <p><code>--sds-font-title-s-700-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-title-s-700-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 700 26px/34px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Header</h4>
+<p>
+  For use with <code>&lt;H1&gt;</code>, <code>&lt;H2&gt;</code>,
+  <code>&lt;H3&gt;</code>, <code>&lt;H4&gt;</code>, <code>&lt;H5&gt;</code>,
+  <code>&lt;H6&gt;</code> tags.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Header XXL</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/690295c33eaa131d.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderXxl/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xxl-600-font-narrow</code></p>
+      <p><code>$sds-font-header-xxl-600-font-narrow</code></p>
+      <p><code>--sds-font-header-xxl-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-xxl-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 22px/30px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XL</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/262d40e5a94f46ef.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderXl/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xl-600-font-narrow</code></p>
+      <p><code>$sds-font-header-xl-600-font-narrow</code></p>
+      <p><code>--sds-font-header-xl-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-xl-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 18px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header L</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/4290825b333b022f.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderL/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-l-600-font-narrow</code></p>
+      <p><code>$sds-font-header-l-600-font-narrow</code></p>
+      <p><code>--sds-font-header-l-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-l-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 16px/22px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header M</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/83b445227582ab23.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderM/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-m-600-font-narrow</code></p>
+      <p><code>$sds-font-header-m-600-font-narrow</code></p>
+      <p><code>--sds-font-header-m-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-m-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/1e089c9a3e136491.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderS/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-s-600-font-narrow</code></p>
+      <p><code>$sds-font-header-s-600-font-narrow</code></p>
+      <p><code>--sds-font-header-s-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-s-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/27324cccd942a941.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderXs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xs-600-font-narrow</code></p>
+      <p><code>$sds-font-header-xs-600-font-narrow</code></p>
+      <p><code>--sds-font-header-xs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-xs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/1233c7a5c70b02f5.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderXxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xxs-600-font-narrow</code></p>
+      <p><code>$sds-font-header-xxs-600-font-narrow</code></p>
+      <p><code>--sds-font-header-xxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-xxs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Header XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/0ea167c34f5f0b75.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontHeaderXxxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-header-xxxs-600-font-narrow</code></p>
+      <p><code>$sds-font-header-xxxs-600-font-narrow</code></p>
+      <p><code>--sds-font-header-xxxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-header-xxxs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Body</h4>
+<p>For use with <code>&lt;p&gt;</code> tags.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Body L</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/aa1edd62afabeb7c.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/246955e00f18273b.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/cab10b98a3c55a09.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontBodyL/600</code></p>
+      <p><code>narrow/fontBodyL/500</code></p>
+      <p><code>narrow/fontBodyL/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-l-600-font-narrow</code></p>
+      <p><code>$sds-font-body-l-600-font-narrow</code></p>
+      <p><code>--sds-font-body-l-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-l-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 16px/26px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-l-500-font-narrow</code></p>
+      <p><code>$sds-font-body-l-500-font-narrow</code></p>
+      <p><code>--sds-font-body-l-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-l-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 16px/26px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-l-400-font-narrow</code></p>
+      <p><code>$sds-font-body-l-400-font-narrow</code></p>
+      <p><code>--sds-font-body-l-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-l-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 16px/26px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body M</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/781ce02f8b70d2f5.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/7943db8b5b39881c.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/375a5e7de9f70be7.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontBodyM/600</code></p>
+      <p><code>narrow/fontBodyM/500</code></p>
+      <p><code>narrow/fontBodyM/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-m-600-font-narrow</code></p>
+      <p>
+        <code
+          >$sds-font-body-m-600-font-narrow--sds-font-body-m-600-letter-spacing-narrow$sds-font-body-m-600-letter-spacing-narrow</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-m-500-font-narrow</code></p>
+      <p>
+        <code
+          >$sds-font-body-m-500-font-narrow--sds-font-body-m-500-letter-spacing-narrow$sds-font-body-m-500-letter-spacing-narrow</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-m-400-font-narrow</code></p>
+      <p><code>$sds-font-body-m-400-font-narrow</code></p>
+      <p><code>--sds-font-body-m-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-m-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/377cb64e15250d08.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/57bc8fcee0cd8e1f.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/391394f15ca8a760.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontBodyS/600</code></p>
+      <p><code>narrow/fontBodyS/500</code></p>
+      <p><code>narrow/fontBodyS/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-s-600-font-narrow</code></p>
+      <p><code>$sds-font-body-s-600-font-narrow</code></p>
+      <p><code>--sds-font-body-s-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-s-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-s-500-font-narrow</code></p>
+      <p><code>$sds-font-body-s-500-font-narrow</code></p>
+      <p><code>--sds-font-body-s-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-s-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-s-400-font-narrow</code></p>
+      <p><code>$sds-font-body-s-400-font-narrow</code></p>
+      <p><code>--sds-font-body-s-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-s-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/944e8c44007ac9db.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/3280573fb612bf9a.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/7bc13343adba1031.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontBodyXs/600</code></p>
+      <p><code>narrow/fontBodyXs/500</code></p>
+      <p><code>narrow/fontBodyXs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xs-600-font-narrow</code></p>
+      <p><code>$sds-font-body-xs-600-font-narrow</code></p>
+      <p><code>--sds-font-body-xs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xs-500-font-narrow</code></p>
+      <p><code>$sds-font-body-xs-500-font-narrow</code></p>
+      <p><code>--sds-font-body-xs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xs-400-font-narrow</code></p>
+      <p><code>$sds-font-body-xs-400-font-narrow</code></p>
+      <p><code>--sds-font-body-xs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.08px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/1233c7a5c70b02f5.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/9db1ec94442297cc.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/48e779262c6f1349.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontBodyXxs/600</code></p>
+      <p><code>narrow/fontBodyXxs/500</code></p>
+      <p><code>narrow/fontBodyXxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxs-600-font-narrow</code></p>
+      <p><code>$sds-font-body-xxs-600-font-narrow</code></p>
+      <p><code>--sds-font-body-xxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xxs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxs-500-font-narrow</code></p>
+      <p><code>$sds-font-body-xxs-500-font-narrow</code></p>
+      <p><code>--sds-font-body-xxs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xxs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxs-400-font-narrow</code></p>
+      <p><code>$sds-font-body-xxs-400-font-narrow</code></p>
+      <p><code>--sds-font-body-xxs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xxs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Body XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/0ea167c34f5f0b75.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/245d2dbc0f47e74e.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/46c9787294a82783.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontBodyXxxs/600</code></p>
+      <p><code>narrow/fontBodyXxxs/500</code></p>
+      <p><code>narrow/fontBodyXxxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxxs-600-font-narrow</code></p>
+      <p><code>$sds-font-body-xxxs-600-font-narrow</code></p>
+      <p><code>--sds-font-body-xxxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xxxs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxxs-500-font-narrow</code></p>
+      <p><code>$sds-font-body-xxxs-500-font-narrow</code></p>
+      <p><code>--sds-font-body-xxxs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xxxs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-body-xxxs-400-font-narrow</code></p>
+      <p><code>$sds-font-body-xxxs-400-font-narrow</code></p>
+      <p><code>--sds-font-body-xxxs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-body-xxxs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.1px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>All-caps</h4>
+<p>
+  Use for emphasis or when there is a need for distinction between fonts on a
+  page or in a component, such as in Minimal
+  <a
+    href="./?path=/docs/design-documentation-genes-buttons--docs"
+    target="_top"
+  >
+    Buttons
+  </a>
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Caps XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/56270597ee3f8af1.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontCapsXxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-caps-xxs-600-font-narrow</code></p>
+      <p><code>$sds-font-caps-xxs-600-font-narrow</code></p>
+      <p><code>--sds-font-caps-xxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-caps-xxs-600-letter-spacing-narrow</code></p>
+      <p>
+        <code
+          >--sds-font-caps-xxs-600-text-transform-narrow$sds-font-caps-xxs-600-text-transform-narrow</code
+        >
+      </p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.5px;</code></p>
+      <p><code>text-transform: uppercase;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Caps XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/e6c94760bc460af9.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontCapsXxxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-caps-xxxs-600-font-narrow</code></p>
+      <p><code>$sds-font-caps-xxxs-600-font-narrow</code></p>
+      <p><code>--sds-font-caps-xxxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-caps-xxxs-600-letter-spacing-narrow</code></p>
+      <p><code>--sds-font-caps-xxxs-600-text-transform-narrow</code></p>
+      <p><code>$sds-font-caps-xxxs-600-text-transform-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.5px;</code></p>
+      <p><code>text-transform: uppercase;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Caps XXXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variable</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="/design-assets/4747f86f5af1379d.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontCapsXxxxs/600</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-caps-xxxxs-600-font-narrow</code></p>
+      <p><code>$sds-font-caps-xxxxs-600-font-narrow</code></p>
+      <p><code>--sds-font-caps-xxxxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-caps-xxxxs-600-letter-spacing-narrow</code></p>
+      <p><code>--sds-font-caps-xxxxs-600-text-transform-narrow</code></p>
+      <p><code>$sds-font-caps-xxxxs-600-text-transform-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>letter-spacing: 0.5px;</code></p>
+      <p><code>text-transform: uppercase;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Tabular</h4>
+<p>
+  Use when there is a need for numbers to be an equal width such as in
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Tables</a
+  >
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Tabular S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/1d995f76a540a0a3.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/1a09722fa64ca770.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/02be46bb10b4034a.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTabularS/600</code></p>
+      <p><code>narrow/fontTabularS/500</code></p>
+      <p><code>narrow/fontTabularS/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-s-600-font-narrow</code></p>
+      <p><code>$sds-font-tabular-s-600-font-narrow</code></p>
+      <p><code>--sds-font-tabular-s-600-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-s-600-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-s-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-s-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-s-500-font-narrow</code></p>
+      <p><code>$sds-font-tabular-s-500-font-narrow</code></p>
+      <p><code>--sds-font-tabular-s-500-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-s-500-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-s-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-s-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-s-400-font-narrow</code></p>
+      <p><code>$sds-font-tabular-s-400-font-narrow</code></p>
+      <p><code>--sds-font-tabular-s-400-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-s-400-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-s-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-s-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tabular XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/cead412367dea67d.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/0fa5aafb43dbf0ad.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/d009203e23299a3d.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTabularXs/600</code></p>
+      <p><code>narrow/fontTabularXs/500</code></p>
+      <p><code>narrow/fontTabularXs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xs-600-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-600-font-narrow</code></p>
+      <p><code>--sds-font-tabular-xs-600-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-600-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xs-500-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-500-font-narrow</code></p>
+      <p><code>--sds-font-tabular-xs-500-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-500-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xs-400-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-400-font-narrow</code></p>
+      <p><code>--sds-font-tabular-xs-400-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-400-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 13px/20px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tabular XXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/177cc1f804b83934.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/177cc1f804b83934.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/9860c9a92e1fc225.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTabularXxs/600</code></p>
+      <p><code>narrow/fontTabularXxs/500</code></p>
+      <p><code>narrow/fontTabularXxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxs-600-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-600-font-narrow</code></p>
+      <p><code>--sds-font-tabular-xxs-600-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-600-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxs-500-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-500-font-narrow</code></p>
+      <p><code>--sds-font-tabular-xxs-500-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-500-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xxs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxs-400-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-400-font-narrow</code></p>
+      <p><code>--sds-font-tabular-xxs-400-font-variant-numeric-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-400-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xxs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xxs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 12px/18px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Tabular XXXS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/203df6e288089b9b.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/6b4e0d89f43a1b82.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/19e52cf02ffc0f0c.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontTabularXxxs/600</code></p>
+      <p><code>narrow/fontTabularXxxs/500</code></p>
+      <p><code>narrow/fontTabularXxxs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxxs-600-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xxxs-600-font-narrow</code></p>
+      <p>
+        <code>--sds-font-tabular-xxxs-600-font-variant-numeric-narrow</code>
+      </p>
+      <p><code>$sds-font-tabular-xxxs-600-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xxxs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xxxs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxxs-500-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xxxs-500-font-narrow</code></p>
+      <p>
+        <code>--sds-font-tabular-xxxs-500-font-variant-numeric-narrow</code>
+      </p>
+      <p><code>$sds-font-tabular-xxxs-500-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xxxs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xxxs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-tabular-xxxs-400-font-narrow</code></p>
+      <p><code>$sds-font-tabular-xxxs-400-font-narrow</code></p>
+      <p>
+        <code>--sds-font-tabular-xxxs-400-font-variant-numeric-narrow</code>
+      </p>
+      <p><code>$sds-font-tabular-xxxs-400-font-variant-numeric-narrow</code></p>
+      <p><code>--sds-font-tabular-xxxs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-tabular-xxxs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 11px/16px "Inter", sans-serif;</code></p>
+      <p><code>font-variant-numeric: tabular-nums;</code></p>
+      <p><code>letter-spacing: -0.25px;</code></p>
+    </td>
+  </tr>
+</table>
+<h4>Code</h4>
+<p>Use only when referring to code snippets.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Font Code S</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/6d8658e74ac0c353.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/51d3670214de73f3.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/ff6ed5550ccdd984.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontCodeS/600</code></p>
+      <p><code>narrow/fontCodeS/500</code></p>
+      <p><code>narrow/fontCodeS/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-s-600-font-narrow</code></p>
+      <p><code>$sds-font-code-s-600-font-narrow</code></p>
+      <p><code>--sds-font-code-s-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-code-s-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 14px/24px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-s-500-font-narrow</code></p>
+      <p><code>$sds-font-code-s-500-font-narrow</code></p>
+      <p><code>--sds-font-code-s-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-code-s-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 14px/24px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-s-400-font-narrow</code></p>
+      <p><code>$sds-font-code-s-400-font-narrow</code></p>
+      <p><code>--sds-font-code-s-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-code-s-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 14px/24px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><strong>Font Code XS</strong></p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>Visual</em></p>
+    </td>
+    <td>
+      <p><em>Figma Variables</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img
+        src="/design-assets/5e5340f7e43c90c6.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img
+        src="/design-assets/3400c53b98f9aef9.svg"
+        class="sds-doc-image"
+      /><br /><br />
+      <img src="/design-assets/8443ae939e7ee485.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>narrow/fontCodeXs/600</code></p>
+      <p><code>narrow/fontCodeXs/500</code></p>
+      <p><code>narrow/fontCodeXs/400</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><em>CSS / SCSS Variables</em></p>
+    </td>
+    <td>
+      <p><em>Values</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-xs-600-font-narrow</code></p>
+      <p><code>$sds-font-code-xs-600-font-narrow</code></p>
+      <p><code>--sds-font-code-xs-600-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-code-xs-600-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 600 13px/20px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-xs-500-font-narrow</code></p>
+      <p><code>$sds-font-code-xs-500-font-narrow</code></p>
+      <p><code>--sds-font-code-xs-500-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-code-xs-500-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 500 13px/20px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-font-code-xs-400-font-narrow</code></p>
+      <p><code>$sds-font-code-xs-400-font-narrow</code></p>
+      <p><code>--sds-font-code-xs-400-letter-spacing-narrow</code></p>
+      <p><code>$sds-font-code-xs-400-letter-spacing-narrow</code></p>
+    </td>
+    <td>
+      <p><code>font: 400 13px/20px "IBM Plex Mono", monospace;</code></p>
+      <p><code>letter-spacing: 0px;</code></p>
+    </td>
+  </tr>
+</table>
+`}));function d(e){return(0,p.jsxs)(p.Fragment,{children:[(0,p.jsx)(r,{title:`Design Documentation/Bases/Typography`}),`
+`,(0,p.jsx)(s,{html:l})]})}function f(e={}){let{wrapper:t}={...a(),...e.components};return t?(0,p.jsx)(t,{...e,children:(0,p.jsx)(d,{...e})}):d(e)}var p;e((()=>{p=t(n()),o(),i(),c(),u()}))();export{f as default};

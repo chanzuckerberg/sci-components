@@ -1,0 +1,306 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Dropdowns</h1>
+<p>
+  Seven components open a list of options from something the user clicked, and
+  most of them are made out of the others. This page is the map.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>The short version.</strong>
+    Reach for
+    <a
+      href="./?path=/docs/components-dropdowns-dropdown--documentation"
+      target="_top"
+      >Dropdown</a
+    >
+    when the user is picking a value,
+    <a
+      href="./?path=/docs/components-dropdowns-menu--documentation"
+      target="_top"
+      >Menu</a
+    >
+    when they are choosing a command, and
+    <a
+      href="./?path=/docs/components-dropdowns-complexfilter--documentation"
+      target="_top"
+      >ComplexFilter</a
+    >
+    when they are narrowing a set of results. The other four are the parts those
+    three are assembled from, and are worth reaching for only when none of the
+    three is shaped the way you need.
+  </p>
+</div>
+<h2>Which one do I use</h2>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Component</p></td>
+    <td><p>Reach for it when</p></td>
+    <td><p>What it gives you</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-dropdowns-menu--documentation"
+          target="_top"
+          >Menu</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        The choices are commands, such as Rename, Duplicate or Log out, or a
+        short list of options that the trigger does not have to report back.
+      </p>
+    </td>
+    <td>
+      <p>
+        The simplest of the family: a surface anchored to your trigger, holding
+        the rows you write into it yourself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-dropdowns-dropdown--documentation"
+          target="_top"
+          >Dropdown</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        The user is picking a value, and the trigger should then show what they
+        picked. This is the one to start from.
+      </p>
+    </td>
+    <td>
+      <p>
+        The whole arrangement: a trigger, a searchable list, single or multiple
+        selection, sections, and optional Apply and Cancel buttons.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-dropdowns-complexfilter--documentation"
+          target="_top"
+          >ComplexFilter</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        The selection is a filter over something else on the page, and the user
+        needs to see what they have applied.
+      </p>
+    </td>
+    <td>
+      <p>
+        A Dropdown that lists the selection underneath itself as tags, each one
+        removable on its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-dropdowns-dropdownmenu--documentation"
+          target="_top"
+          >DropdownMenu</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        You want Dropdown's list but not its trigger, because the menu opens
+        from something else: a button, an icon, a table cell.
+      </p>
+    </td>
+    <td>
+      <p>
+        The list in a popper, positioned against whatever element you hand it,
+        with the open state left to you.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-inputs-inputdropdown--documentation"
+          target="_top"
+          >InputDropdown</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        You want Dropdown's trigger without its menu, usually to anchor a
+        DropdownMenu you are driving yourself.
+      </p>
+    </td>
+    <td>
+      <p>
+        The trigger alone: a button styled as a field, showing a label and
+        either the current value or a count.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-dropdowns-autocomplete--documentation"
+          target="_top"
+          >Autocomplete</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        The list has to sit somewhere a popper cannot go: inside a panel, a
+        dialog body, or a layout you are placing yourself.
+      </p>
+    </td>
+    <td>
+      <p>
+        The list on its own, with search, sections, multiple selection and
+        multiple columns, and no popper or trigger around it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/docs/components-dropdowns-menuitem--documentation"
+          target="_top"
+          >MenuItem</a
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        You are writing the rows of a Menu, or replacing the row every other
+        component here draws for you.
+      </p>
+    </td>
+    <td>
+      <p>
+        One row, with its checkmark, icon, count and details, in the states a
+        row can be in.
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>How they fit together</h2>
+<p>
+  Everything above is built out of the two components at the bottom of this
+  list, one layer adding one thing to the layer beneath it.
+</p>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p>
+      <strong>MenuItem</strong> is a single row, and nothing more. It is what a
+      Menu is filled with, and what the list below draws for each of its
+      options.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Autocomplete</strong> is the list: the rows, the search field, the
+      sections, the checkmarks, and the columns when there is more than one. It
+      has no surface of its own to float above the page, and nothing to open it.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>DropdownMenu</strong> puts that list in a popper and positions it
+      against an element you name. It still has no trigger: you say what it is
+      anchored to and whether it is open.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>InputDropdown</strong> is the missing trigger, and is useful by
+      itself for exactly that reason. It reads as a form field and reports the
+      selection back: a value for a single choice, a count for several.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Dropdown</strong> is the two of them wired together, and takes on
+      what sits between them: opening and closing, holding the selection, and
+      the Apply and Cancel buttons when the choice should not take effect until
+      it is confirmed.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>ComplexFilter</strong> is a Dropdown that also shows its selection
+      as a tag apiece beneath the trigger, so a filter that has been applied
+      stays visible next to the results it narrowed.
+    </p>
+  </li>
+</ol>
+<p>
+  <strong>Menu</strong> sits outside that stack. It is the Science Design System
+  restyling of Material UI's own Menu, and shares only MenuItem with the rest.
+</p>
+<h2>Menu or DropdownMenu</h2>
+<p>
+  The names are close together and the components are not, which is the single
+  most common mix-up in this family.
+</p>
+<p>
+  <strong>Menu</strong> is for doing something. Its rows are commands, you write
+  them yourself as MenuItems, and picking one runs an action and closes the
+  surface. Nothing is remembered afterwards, and the trigger goes on saying
+  whatever it said before.
+</p>
+<p>
+  <strong>DropdownMenu</strong> is for choosing something. Its rows come from an
+  <code>options</code> array rather than from you, it can search and group and
+  hold several selections at once, and what the user picks is a value your app
+  keeps. It is the menu half of Dropdown, split out for when the trigger has to
+  be something Dropdown does not draw.
+</p>
+<p>
+  So: a command runs, and a value is kept. If the thing being chosen has to be
+  read back out anywhere afterwards, it is not a Menu.
+</p>
+<h2>Building your own</h2>
+<p>
+  Dropdown is the right starting point, and dropping below it costs you the
+  wiring it was doing. Two reasons are worth it.
+</p>
+<p>
+  The first is a trigger Dropdown does not draw. Pair a
+  <a
+    href="./?path=/docs/components-dropdowns-dropdownmenu--documentation"
+    target="_top"
+    >DropdownMenu</a
+  >
+  with any element that can hand over a DOM node to be anchored against, such as
+  a button, an icon or a cell in a table, and keep the open state beside it.
+  InputDropdown is only the default trigger, not a required one.
+</p>
+<p>
+  The second is a list that cannot float. A popper is positioned against the
+  window, which makes it the wrong thing to put inside a panel or a dialog body
+  that scrolls independently. Use
+  <a
+    href="./?path=/docs/components-dropdowns-autocomplete--documentation"
+    target="_top"
+    >Autocomplete</a
+  >
+  directly there and lay it out yourself.
+</p>
+`}));export{n,t};

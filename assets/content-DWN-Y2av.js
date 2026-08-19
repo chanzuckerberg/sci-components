@@ -1,0 +1,291 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Tools and Resources</h1>
+<p>
+  The server exposes two kinds of thing. Tools are functions the agent calls
+  when it needs an answer, and there are four of them. Resources are documents
+  the agent reads for standing guidance, and there are three. Everything is
+  served from files generated at build time, so calls are local and immediate.
+</p>
+
+<h2>list_components</h2>
+<p>
+  Every component name in both SDS packages. This is usually the agent's first
+  call, because the other two component tools accept only names from this list.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Response</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "components": ["Accordion", "Alert", "Autocomplete", "..."],
+  "data-viz": ["HeatmapChart", "Overview", "StackedBarChart"]
+}</code></pre>
+  </figure>
+</div>
+<p>
+  The two keys correspond to the two published packages,
+  <code>@czi-sds/components</code> and <code>@czi-sds/data-viz</code>, which
+  tells the agent which one to import from.
+</p>
+
+<h2>get_component_props</h2>
+<p>
+  One component's props: the resolved TypeScript type, whether it is required,
+  its default, and a description. Reach for this when the agent needs to know
+  what it may pass; reach for <code>get_component_docs</code> when it needs to
+  know how the component is meant to be used.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Parameter</p></td>
+    <td><p>Type</p></td>
+    <td><p>Required</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component</code></p>
+    </td>
+    <td><p>enum</p></td>
+    <td><p>Yes</p></td>
+    <td>
+      <p>
+        A component name. The enum is built from the component list, so an
+        invalid name is rejected before the tool runs.
+      </p>
+    </td>
+  </tr>
+</table>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Response for Accordion</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "Accordion": {
+    "props": {
+      "id": {
+        "description": "Required. A unique id for each accordion item...",
+        "isRequired": true,
+        "type": "string"
+      },
+      "togglePosition": {
+        "defaultValue": "right",
+        "description": "Position of the toggle chevron icon.",
+        "isRequired": false,
+        "type": "\\"left\\" | \\"right\\""
+      }
+    }
+  },
+  "AccordionHeader": {
+    "props": {
+      "subtitle": {
+        "description": "A text displayed as a subtitle beneath the title.",
+        "isRequired": false,
+        "type": "string"
+      }
+    }
+  }
+}</code></pre>
+  </figure>
+</div>
+<p>
+  The response is keyed by component, not by prop, because a prop set often
+  spans a component and its subcomponents. In the example above,
+  <code>subtitle</code> belongs on <code>&lt;AccordionHeader&gt;</code> rather
+  than <code>&lt;Accordion&gt;</code>, and the grouping is what tells the agent
+  where to put it.
+</p>
+<p>
+  Only the props a component genuinely means to expose are listed, the ones its
+  Storybook <code>argTypes</code> declare, rather than the hundreds each
+  component inherits from Material UI. A <code>type</code> of
+  <code>any</code> means the prop is a Storybook-only control that drives the
+  demo rather than a real prop.
+</p>
+
+<h2>get_component_docs</h2>
+<p>
+  A component's written documentation as Markdown: what it is for, how it
+  differs from the MUI component underneath, its props table, and a complete
+  runnable example for every supported variation. This is the same content as
+  the Documentation tab on the component in this Storybook.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Parameter</p></td>
+    <td><p>Type</p></td>
+    <td><p>Required</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component</code></p>
+    </td>
+    <td><p>enum</p></td>
+    <td><p>Yes</p></td>
+    <td>
+      <p>
+        A component name. The enum covers only components that have a
+        documentation page, which is a smaller set than
+        <code>list_components</code> returns.
+      </p>
+    </td>
+  </tr>
+</table>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Response for Callout, abridged</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">Package: @czi-sds/components
+Source: packages/components/src/core/Callout/__storybook__/docs/content.html
+
+# Callout
+## Source Code
+## SDS vs MUI
+## MUI Documentation
+## Props
+## Code examples
+### Default Callout
+### Callout intents
+### Expandable Callout
+### Dismissible Callout</code></pre>
+  </figure>
+</div>
+<p>
+  These are the longest responses the server produces, with Callout's running to
+  roughly 13,000 characters, because each example is inlined in full rather than
+  summarised. That is deliberate: an agent that has read a working example
+  writes code in the same shape.
+</p>
+
+<h2>get_tailwind_tokens</h2>
+<p>
+  The design tokens, expressed as the Tailwind utilities that map to them, so
+  the agent reaches for <code>text-sds-body-s</code> rather than a raw pixel
+  value.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Parameter</p></td>
+    <td><p>Type</p></td>
+    <td><p>Required</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>category</code></p>
+    </td>
+    <td><p>enum</p></td>
+    <td><p>No</p></td>
+    <td>
+      <p>
+        One of <code>colors</code>, <code>spacing</code>,
+        <code>typography</code>, <code>fontFamily</code>, <code>fontSize</code>,
+        <code>fontVariantNumeric</code>, <code>letterSpacing</code>,
+        <code>lineHeight</code>, <code>textDecoration</code>,
+        <code>textTransform</code>, <code>height</code>, <code>width</code>,
+        <code>borderRadius</code>, <code>boxShadow</code>,
+        <code>breakpoints</code>, or <code>all</code>. Defaults to everything.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  The response comes in two parts: prose guidance on how to use that family of
+  tokens, then the tokens themselves as JSON. Guidance is written for five
+  categories, namely <code>colors</code>, <code>typography</code>,
+  <code>spacing</code>, <code>borderRadius</code> and <code>boxShadow</code>.
+  The rest return a short note saying so, followed by their tokens as usual.
+</p>
+<p>
+  Asking for everything at once returns a large payload, so prefer a category
+  when you know which one you need.
+</p>
+
+<h2>Resources</h2>
+<p>
+  Resources are Markdown documents the client can pull into context, addressed
+  by URI. Unlike tools they take no arguments and are not called mid-task. They
+  are standing instructions, best attached at the start of a session so they
+  shape everything the agent writes afterwards.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>URI</p></td>
+    <td><p>Contents</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sds://rules/components</code></p>
+    </td>
+    <td>
+      <p>
+        How to use SDS components correctly: which to choose, how to compose
+        them, and the mistakes worth avoiding.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sds://rules/figma</code></p>
+    </td>
+    <td>
+      <p>
+        How to translate a Figma design into SDS code, mapping frames and layers
+        onto the components and tokens that implement them.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sds://rules/documentation</code></p>
+    </td>
+    <td>
+      <p>
+        How to read what the documentation tools return, and how to treat it as
+        the source of truth over prior assumptions about the library.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Clients surface resources differently: Claude Desktop lists them under the
+  attachments menu, while others expose them through a resource picker or attach
+  them automatically. Check your client's documentation if you cannot find them.
+</p>
+
+<h2>Using them together</h2>
+<p>
+  The tools are designed to chain, and an agent given a real task will generally
+  walk them in this order:
+</p>
+<ol class="sds-doc-ordered-list">
+  <li>
+    <p>
+      <code>list_components</code> to find out what exists and what it is
+      called.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>get_component_docs</code> to learn the intended usage and copy the
+      shape of a working example.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>get_component_props</code> to confirm the exact props, types and
+      defaults before writing them.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>get_tailwind_tokens</code> for any spacing, color or type value the
+      component does not supply itself.
+    </p>
+  </li>
+</ol>
+<p>
+  You rarely need to direct this. Naming the design system in the request is
+  usually enough: "build a settings panel using SDS" will pull in what it needs.
+  Where it helps to be explicit is in correcting course: if the agent writes a
+  prop that does not exist, telling it to check the component's props against
+  the MCP server is faster than describing the right answer yourself.
+</p>
+`}));export{n,t};

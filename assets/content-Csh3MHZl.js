@@ -1,0 +1,121 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>CellComponent</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellComponent/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { CellComponent } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default CellComponent</strong></h3>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  CellComponent component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/CellComponent/DefaultCellComponent"
+></div>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>as</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"td"</code></p>
+    </td>
+    <td><p>The element the cell renders as.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The cell's content. Unlike CellBasic, which takes text through
+        <code>primaryText</code>, this cell renders whatever you put inside it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>horizontalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
+    <td><p>Specifies the horizontal alignment of the cell content.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>verticalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code></p>
+    </td>
+    <td><p>Specifies the vertical alignment of the cell content.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>string</code> |</p>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Lands on the rendered cell as the HTML <code>width</code> attribute, so
+        a number is read as pixels. Browsers treat it as the width of the whole
+        column, and take it as a minimum rather than a promise.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Anything else you pass, such as <code>colSpan</code>, <code>width</code>,
+  <code>onClick</code> or a data attribute, lands on the rendered
+  <code>td</code>. The cell also carries the class name
+  <code>cell-component</code>, which TableRow uses to switch off pointer events
+  inside a disabled row.
+</p>
+`}));export{n,t};

@@ -1,0 +1,399 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Legend</h1>
+<p>
+  A wrapping row of colored swatches and labels, for naming the parts of a chart
+  and, optionally, filtering it.
+</p>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Legend"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Legend } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Legend</strong></h3>
+<p>
+  The minimum: a list of names, each with a color. Nothing here is interactive,
+  which is how the legend reads when it is only a key.
+</p>
+<div class="sds-doc-example" data-example="core/Legend/DefaultLegend"></div>
+<h3>Values and colors</h3>
+<p>
+  Values turned on, and the two ways to color the swatches: a palette passed as
+  <code>colors</code>, and a color on each item. The last item is disabled,
+  which is how a catch-all category sits in the legend without behaving like the
+  rest.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Legend/LegendValuesAndColors"
+></div>
+<h3>Selection</h3>
+<p>
+  Selection lives in the parent, so the same state can filter a list beside the
+  legend. The buttons are not just a convenience: clicking an item is
+  pointer-only, so they are how a keyboard reaches the selection at all.
+</p>
+<div class="sds-doc-example" data-example="core/Legend/SelectableLegend"></div>
+<h3>Hover synced with a chart</h3>
+<p>
+  <code>hoveredIndex</code> and the hover callbacks wired in both directions, so
+  pointing at a bar highlights its legend item and pointing at a legend item
+  highlights the bar.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Legend/LegendWithChartHover"
+></div>
+<h2>How it is built</h2>
+<p>
+  Legend has no MUI base. It is a flex row of divs that wraps, where each item
+  is a swatch, a label, and an optional value, styled from SDS spacing and
+  semantic colors. It draws nothing but itself: it holds no chart, and it is up
+  to the page to keep the legend and whatever it describes in the same order and
+  the same colors.
+</p>
+<p>
+  It is also what
+  <a href="./?path=/docs/data-viz-stackedbarchart--documentation" target="_top">
+    StackedBarChart
+  </a>
+  renders below its bar. Reach for Legend directly when the chart is your own
+  (an ECharts plot, a map, a set of swatches in a table) and you want its key to
+  match the rest of the system.
+</p>
+<h2>Items and colors</h2>
+<p>
+  <code>items</code> is the whole content of the legend, drawn in the order
+  given. Each item needs a <code>name</code> and may carry a <code>value</code>,
+  a <code>color</code>, and <code>disabled</code>. An item's index is its
+  identity everywhere else in the API: selection, hover, and every callback are
+  indices into this array. Items are therefore positional and names need not be
+  unique.
+</p>
+<p>
+  A swatch takes the first color it finds: the entry at its index in the
+  <code>colors</code> prop, then the item's own <code>color</code>, then a grey
+  fallback from the theme. The <code>colors</code> prop is for a palette
+  computed for the whole set at once, which is what
+  <code>generateDiscreteColors</code> produces and what needs regenerating when
+  the theme changes; a color on the item is for a category that must always look
+  the same. A short colors array is fine, since each index falls through on its
+  own.
+</p>
+<p>
+  Values are only drawn when <code>showValues</code> is on and the item has one.
+  Numbers go through <code>toLocaleString</code>, so 3212 reads as "3,212";
+  strings are printed as given, which is the way to show a percentage, a unit,
+  or a range.
+</p>
+<h2>Selection and hover</h2>
+<p>
+  Selection is controlled. The legend draws whatever
+  <code>selectedIndices</code> holds and never changes it: clicking an item
+  calls <code>onSelectionChange</code> with that index toggled in or out, and
+  the parent decides what to do with it. Without the callback the legend is
+  inert: clicks still reach <code>onItemClick</code>, but nothing is ever
+  selected.
+</p>
+<p>
+  Once anything is selected, the swatches of unselected items drop to 20%
+  opacity. Hovering overrides that while the pointer is down the row: the
+  hovered item and the selected ones stay solid, everything else dims. Labels
+  never dim, so the legend stays readable as a list whatever is highlighted.
+</p>
+<p>
+  <code>hoveredIndex</code> lets a chart highlight a legend item as the pointer
+  moves over the matching mark, and <code>onItemMouseEnter</code> /
+  <code>onItemMouseLeave</code> drive the same thing in the other direction. It
+  only ever adds a highlight: the legend keeps its own hover state, and passing
+  <code>null</code> is the same as not passing the prop at all rather than a way
+  to clear one.
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Each item is a <code>role="button"</code> with a tab stop and an
+      accessible name built from its label and value, and it reports its
+      selected state through <code>aria-pressed</code>. It does not respond to
+      Enter or Space, though, so a keyboard reaches the legend but cannot select
+      from it. Where selection matters, give the page a keyboard path of its
+      own, as the selection example below does with buttons.
+    </p>
+  </li>
+  <li>
+    <p>
+      Every item is a button whether or not anything listens, so a legend used
+      purely as a key still invites a click that does nothing. That is worth
+      weighing against the alternative of drawing the key by hand.
+    </p>
+  </li>
+  <li>
+    <p>
+      Color is the only thing tying an item to the mark it names. Where the
+      marks are close in hue, or the chart is read by someone who cannot
+      separate them, the values in the legend are what make it interpretable,
+      which is a reason to turn <code>showValues</code> on rather than leave it
+      to the chart.
+    </p>
+  </li>
+  <li>
+    <p>
+      A disabled item takes no pointer events at all: no hover, no click, no
+      dimming when its neighbours are selected. It is drawn exactly like the
+      others, so anything a reader should know about it has to be in its name:
+      "Other (17)", "Remaining". It also keeps its tab stop out of the tab
+      order.
+    </p>
+  </li>
+  <li>
+    <p>
+      The legend wraps to as many rows as it needs and has no width of its own,
+      so it takes the width of its container. Constrain that container to keep
+      it the same width as the chart it belongs to.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  The legend spreads any remaining props onto its root div, so standard HTML
+  attributes such as <code>className</code>, <code>id</code>, and
+  <code>data-testid</code> work as usual.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>items</code></p>
+    </td>
+    <td>
+      <p><code>LegendItemData[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The items, drawn in order. Their indices are what selection, hover, and
+        the callbacks refer to. See the table below for the shape of an item.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>colors</code></p>
+    </td>
+    <td>
+      <p><code>string[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A palette applied by index, taking priority over the color on an item.
+        Entries past the end of the array fall back to the item's color, then to
+        grey.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>showValues</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Draws each item's value beside its name. Items without a value are
+        unaffected.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>selectedIndices</code></p>
+    </td>
+    <td>
+      <p><code>number[]</code></p>
+    </td>
+    <td>
+      <p><code>[]</code></p>
+    </td>
+    <td>
+      <p>
+        Indices of the selected items. The legend is controlled: it draws this
+        and never changes it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onSelectionChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(selectedIndices: number[]) =&gt; void</code>. Called with the
+        next selection when an item is clicked, with that index toggled. Without
+        it, clicking selects nothing.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hoveredIndex</code></p>
+    </td>
+    <td>
+      <p><code>number | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Highlights an item from outside, for syncing with a chart. It adds to
+        the legend's own hover rather than replacing it, and <code>null</code>
+        reads as no external highlight.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onItemClick</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: LegendItemData, index: number) =&gt; void</code>. Fires on
+        a click, alongside any selection change rather than instead of it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onItemMouseEnter</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: LegendItemData, index: number) =&gt; void</code>. Called
+        when the pointer enters an item. The legend already dims its own
+        swatches, so this is for driving something outside it, such as a
+        highlight on the chart.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onItemMouseLeave</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(item: LegendItemData, index: number) =&gt; void</code>. Called
+        when the pointer leaves an item.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>LegendItemData</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>name</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The item's label, and the start of its accessible name. Names need not
+        be unique, since items are addressed by index.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>number | string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Shown after the name when <code>showValues</code> is on. Numbers are
+        grouped by locale; a string is printed as given, for a unit or a
+        percentage.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>color</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>theme grey</p></td>
+    <td>
+      <p>
+        Any CSS color for the swatch. The <code>colors</code> prop overrides it,
+        and without either the swatch is drawn in the theme's secondary ornament
+        grey.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Takes the item out of every interaction and out of the tab order, and
+        keeps its swatch at full opacity while others dim.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

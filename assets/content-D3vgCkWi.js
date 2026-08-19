@@ -1,0 +1,509 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Link</h1>
+<p>
+  Links are interactive elements that, when clicked, navigate the user away from
+  the page they are currently viewing to another page or screen.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>For engineers:</strong>
+    the
+    <strong>Link</strong>
+    component is deprecated and should not be used in new code. Build links from
+    an anchor plus the SDS link type styles instead. See the Link typography
+    section under Code below.
+  </p>
+</div>
+<h2>Overview</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Link Variants</h3>
+<p>
+  There are two Link variants available to use depending on the background on
+  top of which they are placed and whether that background provides enough
+  contrast for Link – Default to be seen. Links can be used inline or separate
+  from a paragraph of text.
+</p>
+<p>
+  Though visually similar to
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Button – Minimal</a
+  >
+  , Links navigate the user away from the page they are currently viewing to
+  another page. This is in contrast to Button – Minimal, which keeps the user on
+  the same page and facilitates on-screen actions such as opening
+  <a href="./?path=/docs/design-documentation-dna-dialog--docs" target="_top"
+    >Dialogs</a
+  >
+  or indicating less-emphasized actions.
+</p>
+<p>
+  Links come in two sizes: <code>fontXs</code> and <code>fontS</code> to align
+  with SDS' most common body copy font sizes.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    When including an inline Link in your Figma designs, styles must be manually
+    applied as there is no way to save the Link style in Figma as a text style.
+    Use the Link Figma component for links that are not inline.
+  </p>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Link_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/d6032897fd319592.png"
+        alt="Preview_Link_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Link_Dashed</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/9bcd657b545e476d.png"
+        alt="Preview_Link_Dashed"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Link – Default</h3>
+<p>
+  Use Link – Default only when the Link is placed on
+  <code>surface-primary</code>, <code>surface-secondary</code>, or
+  <code>surface-tertiary</code> backgrounds to ensure there is enough contrast
+  to pass visual accessibility standards, otherwise use
+  <a href="./?path=/docs/design-documentation-genes-link--docs" target="_top"
+    >Link – Dashed</a
+  >
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Default Visual Example_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1aa3df642f75f0a3.png"
+        alt="Default Visual Example_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Default Visual Example_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/cc45659f1992b7eb.png"
+        alt="Default Visual Example_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Default visual example_Pressed</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/0a72bad9c58abc79.png"
+        alt="Default visual example_Pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Link – Dashed</h3>
+<p>
+  Use Link – Dashed when the Link is placed on a background where the Link –
+  Default does not provide enough contrast to pass visual accessibility
+  standards. The color of the link and its underline should match the color of
+  the text used in the paragraph it is placed within, see
+  <a href="./?path=/docs/design-documentation-genes-link--docs" target="_top"
+    >Color Rules</a
+  >
+  below.
+</p>
+<p>
+  See
+  <a href="./?path=/docs/design-documentation-bases-borders--docs" target="_top"
+    >Borders</a
+  >
+  section for Link Underline details.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Pressed</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/60d53e8a71024b54.png"
+        alt="Dashed Visual Example_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/c1ef54501c46612c.png"
+        alt="Dashed Visual Example_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Pressed</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/bb619646fc26e426.png"
+        alt="Dashed Visual Example_Pressed"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Color Rules</h4>
+<p>
+  The color of Link – Dashed and its underline should match the color of the
+  text used in the paragraph it is placed within.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Primary Text</p></td>
+    <td><p>Secondary Text</p></td>
+    <td><p>On-fill Text</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Black Text</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/60d53e8a71024b54.png"
+        alt="Dashed Visual Example_Black Text"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_Gray500 text</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/4200bf4db943abd9.png"
+        alt="Dashed Visual Example_Gray500 text"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Visual Example_White text</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/1ee394dc8db86259.png"
+        alt="Dashed Visual Example_White text"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Link Spacing Rules</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The underline for Link – Dashed is spaced lower than the default
+    text-decoration underline.
+  </p>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Dashed Text Link spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="/design-assets/dfd0e23598524996.png"
+        alt="Dashed Text Link spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<h2>Link typography</h2>
+<p>
+  There is no Link component to reach for. A link is an anchor (or whatever
+  element your router gives you) carrying the <code>link</code> type style and
+  the accent text action colors. That keeps links as text rather than as a
+  component, which is what lets them sit inline in a sentence.
+</p>
+<p>
+  The link type styles are part of SDS typography. You can see them all in the
+  <a
+    href="https://chanzuckerberg.github.io/sci-components/?path=/story/bases-typography--link-typography"
+  >
+    Link Typography
+  </a>
+  story, and the definitions live
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/styles/common/mixins/fonts.ts"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>The type style</h3>
+<p>
+  Link styles carry the same metrics as body copy at every size, plus a
+  permanent <code>text-decoration: underline</code>. The underline is the point:
+  it marks the link without relying on color alone, so it also satisfies the
+  contrast requirement on surfaces where the accent color is hard to distinguish
+  from the surrounding text.
+</p>
+<p>
+  Three weights are available for every size: regular (<code>400</code>), medium
+  (<code>500</code>), and semibold (<code>600</code>). In Emotion, the mixins
+  are named <code>fontLink{Size}</code>, <code>fontLinkMedium{Size}</code>, and
+  <code>fontLinkSemibold{Size}</code>, for example <code>fontLinkS</code> or
+  <code>fontLinkSemiboldXs</code>. Outside Emotion, each one is also a CSS and
+  SCSS variable named <code>--sds-font-link-{size}-{weight}-font</code> (with
+  matching <code>-letter-spacing</code> and <code>-text-decoration</code>
+  variables), and a Tailwind font class.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Mixin</p></td>
+    <td><p>CSS / SCSS variable</p></td>
+    <td><p>Wide</p></td>
+    <td><p>Narrow</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkL</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-l-400-font</code></p>
+      <p><code>$sds-font-link-l-400-font</code></p>
+    </td>
+    <td>
+      <p><code>18px / 28px</code></p>
+    </td>
+    <td>
+      <p><code>16px / 26px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkM</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-m-400-font</code></p>
+      <p><code>$sds-font-link-m-400-font</code></p>
+    </td>
+    <td>
+      <p><code>16px / 26px</code></p>
+    </td>
+    <td>
+      <p><code>14px / 24px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkS</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-s-400-font</code></p>
+      <p><code>$sds-font-link-s-400-font</code></p>
+    </td>
+    <td>
+      <p><code>14px / 24px</code></p>
+    </td>
+    <td>
+      <p><code>14px / 24px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkXs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-xs-400-font</code></p>
+      <p><code>$sds-font-link-xs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>13px / 20px</code></p>
+    </td>
+    <td>
+      <p><code>13px / 20px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkXxs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-xxs-400-font</code></p>
+      <p><code>$sds-font-link-xxs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>12px / 18px</code></p>
+    </td>
+    <td>
+      <p><code>12px / 18px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkXxxs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-xxxs-400-font</code></p>
+      <p><code>$sds-font-link-xxxs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>11px / 16px</code></p>
+    </td>
+    <td>
+      <p><code>12px / 18px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fontLinkXxxxs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-font-link-xxxxs-400-font</code></p>
+      <p><code>$sds-font-link-xxxxs-400-font</code></p>
+    </td>
+    <td>
+      <p><code>10px / 14px</code></p>
+    </td>
+    <td>
+      <p><code>10px / 14px</code></p>
+    </td>
+  </tr>
+</table>
+<p>
+  Swap the <code>400</code> in a variable name for <code>500</code> or
+  <code>600</code> to get the medium or semibold weight of the same size.
+</p>
+<h3>Color</h3>
+<p>
+  Take the color from the accent text action tokens, which is what makes a link
+  read as interactive:
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>State</p></td>
+    <td><p>Selector</p></td>
+    <td><p>CSS variable</p></td>
+  </tr>
+  <tr>
+    <td><p>Default</p></td>
+    <td>
+      <p><code>getSemanticColors(props).accent.textAction</code></p>
+    </td>
+    <td>
+      <p><code>--sds-color-semantic-accent-text-action</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Hover</p></td>
+    <td>
+      <p><code>getSemanticColors(props).accent.textActionHover</code></p>
+    </td>
+    <td>
+      <p><code>--sds-color-semantic-accent-text-action-hover</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Pressed</p></td>
+    <td>
+      <p><code>getSemanticColors(props).accent.textActionPressed</code></p>
+    </td>
+    <td>
+      <p><code>--sds-color-semantic-accent-text-action-pressed</code></p>
+    </td>
+  </tr>
+</table>
+<p>
+  On a fill or an image where that accent color has too little contrast, use the
+  dashed treatment described in the guidelines above instead: keep the link the
+  same color as the paragraph it sits in (<code>color: inherit</code>), swap the
+  underline for <code>underline dashed</code>, and turn it solid on hover.
+</p>
+<h3>Notes</h3>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Use a real <code>&lt;a href&gt;</code>, or your router's link component,
+      so the browser gives you keyboard focus, middle-click, and the right role
+      for free.
+    </p>
+  </li>
+  <li>
+    <p>
+      Add the <code>focusVisibleA11yStyle</code> mixin for the SDS focus ring,
+      which is what every SDS component uses.
+    </p>
+  </li>
+  <li>
+    <p>
+      If the element keeps the user on the page (opening a Dialog, toggling
+      something, submitting), it is a
+      <a
+        href="./?path=/docs/design-documentation-genes-buttons--docs"
+        target="_top"
+      >
+        Button – Minimal
+      </a>
+      , not a link.
+    </p>
+  </li>
+</ul>
+<h3>Code examples</h3>
+<h4>An SDS link</h4>
+<p>
+  The pattern to copy: an anchor with the link type style, the accent text
+  action colors, and the SDS focus ring.
+</p>
+<div class="sds-doc-example" data-example="Link/LinkTypography"></div>
+<h4>Sizes and weights</h4>
+<p>
+  Match the link's size to the copy around it. Semibold is for links that need
+  to stand out on their own, such as a call to action at the end of a card.
+</p>
+<div class="sds-doc-example" data-example="Link/LinkTypographySizes"></div>
+<h4>Dashed link on a low-contrast surface</h4>
+<p>
+  On an accent fill the link takes the paragraph's color and relies on the
+  dashed underline, which goes solid on hover and on focus.
+</p>
+<div class="sds-doc-example" data-example="Link/DashedLink"></div>
+`}));export{n,t};

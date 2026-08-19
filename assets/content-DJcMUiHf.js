@@ -1,0 +1,250 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Installation</h1>
+<p>
+  The server is published to npm as
+  <a
+    href="https://www.npmjs.com/package/@czi-sds/mcp"
+    target="_blank"
+    rel="noreferrer"
+    >@czi-sds/mcp</a
+  >
+  and speaks the STDIO transport, which means there is nothing to install and
+  nothing to keep running. You point your editor at a command, and the editor
+  starts the server as a child process whenever it needs it. Its source lives in
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/mcp"
+    target="_blank"
+    rel="noreferrer"
+    >packages/mcp</a
+  >
+  on GitHub.
+</p>
+<p>
+  Every client below is configured with the same three values, so if yours is
+  not listed, these are what its own documentation will ask for:
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Setting</p></td>
+    <td><p>Value</p></td>
+  </tr>
+  <tr>
+    <td><p>Transport</p></td>
+    <td>
+      <p><code>stdio</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Command</p></td>
+    <td>
+      <p><code>npx</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Arguments</p></td>
+    <td>
+      <p><code>-y @czi-sds/mcp</code></p>
+    </td>
+  </tr>
+</table>
+<p>
+  Node 22 or newer is required. The <code>-y</code> flag lets
+  <code>npx</code> fetch the package without prompting the first time; after
+  that it is cached.
+</p>
+
+<h2>Cursor</h2>
+<p>
+  Add the server to <code>.cursor/mcp.json</code> in the project you want it
+  available in, or to <code>~/.cursor/mcp.json</code> to enable it everywhere.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>.cursor/mcp.json</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "mcpServers": {
+    "sds": {
+      "command": "npx",
+      "args": ["-y", "@czi-sds/mcp"]
+    }
+  }
+}</code></pre>
+  </figure>
+</div>
+<p>
+  Cursor picks the file up without a restart. Confirm it connected under
+  <strong>Settings → MCP</strong>, where <code>sds</code> should be listed with
+  its four tools.
+</p>
+
+<h2>Claude Code</h2>
+<p>Register it from the command line, from inside your project:</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">claude mcp add sds -- npx -y @czi-sds/mcp</code></pre>
+  </figure>
+</div>
+<p>
+  Add <code>--scope user</code> to make it available in every project rather
+  than just this one. Run <code>claude mcp list</code> to check that it
+  connected.
+</p>
+
+<h2>Claude Desktop</h2>
+<p>Edit the configuration file for your platform:</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Platform</p></td>
+    <td><p>Path</p></td>
+  </tr>
+  <tr>
+    <td><p>macOS</p></td>
+    <td>
+      <p>
+        <code
+          >~/Library/Application Support/Claude/claude_desktop_config.json</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Windows</p></td>
+    <td>
+      <p><code>%APPDATA%\\Claude\\claude_desktop_config.json</code></p>
+    </td>
+  </tr>
+</table>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>claude_desktop_config.json</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "mcpServers": {
+    "sds": {
+      "command": "npx",
+      "args": ["-y", "@czi-sds/mcp"]
+    }
+  }
+}</code></pre>
+  </figure>
+</div>
+<p>
+  Claude Desktop reads this only at launch, so quit and reopen it. The tools
+  appear under the attachments menu in a new conversation.
+</p>
+
+<h2>VS Code</h2>
+<p>
+  Add <code>.vscode/mcp.json</code> to the workspace. Note that VS Code uses
+  <code>servers</code> where the others use <code>mcpServers</code>.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>.vscode/mcp.json</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "servers": {
+    "sds": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@czi-sds/mcp"]
+    }
+  }
+}</code></pre>
+  </figure>
+</div>
+
+<h2>Pinning a version</h2>
+<p>
+  <code>npx -y @czi-sds/mcp</code> resolves to the latest published version. The
+  data the server returns describes the SDS release it was built from, so if
+  your application is pinned to an older <code>@czi-sds/components</code>, pin
+  the server to match and the agent will stop suggesting props you do not have
+  yet:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JSON</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">"args": ["-y", "@czi-sds/mcp@0.16.0"]</code></pre>
+  </figure>
+</div>
+
+<h2>Running from a local build</h2>
+<p>
+  Contributors working on the server itself should run it out of the repository
+  instead, so changes take effect on rebuild.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">git clone https://github.com/chanzuckerberg/sci-components.git
+cd sci-components
+nvm use
+yarn install
+yarn mcp:build</code></pre>
+  </figure>
+</div>
+<p>
+  <code>yarn mcp:build</code> regenerates everything under <code>data/</code>
+  before bundling, which is what makes the built server reflect your working
+  tree. Then point the client at the built entry point using an absolute path:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JSON</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "mcpServers": {
+    "sds-local": {
+      "command": "node",
+      "args": ["/absolute/path/to/sci-components/packages/mcp/dist/stdio.js"]
+    }
+  }
+}</code></pre>
+  </figure>
+</div>
+<p>
+  Give it a distinct name such as <code>sds-local</code> so it does not collide
+  with a published copy you may already have configured. Rebuild with
+  <code>yarn mcp:build</code> after each change, and restart the client to pick
+  it up.
+</p>
+
+<h2>Checking that it works</h2>
+<p>
+  The quickest confirmation that the package runs at all, independent of any
+  editor:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh"># Fetch the package once. It then waits on standard input, so press Ctrl-C.
+npx -y @czi-sds/mcp</code></pre>
+  </figure>
+</div>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">npx -y @modelcontextprotocol/inspector@latest --cli npx @czi-sds/mcp \\
+  --method tools/list</code></pre>
+  </figure>
+</div>
+<p>
+  The second command omits <code>-y</code> on the inner <code>npx</code> on
+  purpose: the inspector claims every flag it recognises before the command, so
+  a <code>-y</code> there would be read as the inspector's own and the server
+  would never start. The first command is what gets the package cached so it is
+  not needed.
+</p>
+<p>
+  A successful run prints the four tool definitions as JSON. If it does, any
+  failure after this point is in the client's configuration rather than the
+  server. The
+  <a href="./?path=/docs/mcp-server-testing-with-the-inspector--docs"
+    >Testing with the Inspector</a
+  >
+  page covers the inspector in full.
+</p>
+<p>
+  Inside a client, ask the agent something only the server can answer, such as
+  "list the SDS components" or "what props does the SDS Callout take?", and
+  watch for a tool call in the transcript.
+</p>
+`}));export{n,t};

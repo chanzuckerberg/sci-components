@@ -1,0 +1,394 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>CellBasic</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/CellBasic/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { CellBasic } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default CellBasic</h3>
+<p>
+  This example demonstrates the minimum required props for rendering a CellBasic
+  component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/CellBasic/DefaultCellBasic"
+></div>
+<h3>CellBasic with Icon and Text Wrap</h3>
+<p>
+  This example highlights a CellBasic component featuring an SDS icon and
+  lengthy texts for Primary, Secondary, and Tertiary content, all thoughtfully
+  wrapped for optimal presentation.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/CellBasic/CellBasicWithIconAndTextWrap"
+></div>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>as</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td>
+      <p><code>"td"</code></p>
+    </td>
+    <td>
+      <p>
+        The element the cell renders as. Use <code>"th"</code> for a row header
+        cell inside <code>tbody</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>extraRightPadding</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>0</code></p>
+    </td>
+    <td>
+      <p>
+        Extra pixels of right padding, added only when
+        <code>horizontalAlign</code> is <code>"right"</code>. Useful for leaving
+        room for a scrollbar or a pinned column edge.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>horizontalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code></p>
+    </td>
+    <td>
+      <p>
+        Horizontal alignment of cell content. There is no
+        <code>"center"</code>. Use CellComponent if a cell needs centered
+        content.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>icon</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactElement&lt;CustomSVGProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Places an icon to the left of the cell text. Expects an SDS Icon or
+        another SVG element.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>link</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Wraps the cell content in an anchor pointing here. The text keeps the
+        cell's own color rather than link styling.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>linkComponent</code></p>
+    </td>
+    <td>
+      <p><code>React.ElementType</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The component the link renders as, for routers that supply their own
+        link (React Router's Link, for example).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>linkProps</code></p>
+    </td>
+    <td>
+      <p><code>React.AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Props passed to the anchor rendered by <code>link</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>iconVerticalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code></p>
+    </td>
+    <td><p>Vertical alignment of the icon component.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>primaryText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Primary text value.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>primaryTextWrapLineCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>3</code></p>
+    </td>
+    <td><p>Number of text wrap lines for primary text.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>primaryTextComponentSlotBottom</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
+    <td>
+      <p>
+        Component slot below primary text. This will only show if there is no
+        secondary or tertiary text. Remove the default values of secondary and
+        tertiary text to see this in action.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>primaryTextComponentSlotRight</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
+    <td><p>Component slot to the right of primary text</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>secondaryText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Secondary Text.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>secondaryTextWrapLineCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
+    <td><p>Number of text wrap lines for secondary text.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tertiaryText</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Tertiary Text.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tertiaryTextWrapLineCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
+    <td><p>Number of text wrap lines for tertiary text.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldShowTooltipOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        When <code>true</code> the cell is wrapped in a Tooltip whose title is
+        <code>primaryText</code> and whose subtitle is
+        <code>secondaryText</code>. Turn it off for cells whose text is already
+        fully visible, otherwise every cell in the table has a tooltip.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldShowUnderlineOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Underlines <code>primaryText</code> on hover. Inside a PreComposedTable
+        the underline also appears when any cell in the row is hovered.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldTextWrap</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        When <code>true</code>, each text clamps to its wrap line count. When
+        <code>false</code>, text stays on one line and truncates with an
+        ellipsis instead.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tabularNums</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Renders digits at a fixed width so numbers line up column to column.
+        Worth turning on for any numeric column.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TooltipProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed to the Tooltip, and overrides the defaults the cell sets (title,
+        subtitle, arrow, dark style, no leave delay).
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>verticalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"center"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code></p>
+    </td>
+    <td><p>Vertical alignment of the cell content.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>string</code> |</p>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Lands on the rendered cell as the HTML <code>width</code> attribute, so
+        a number is read as pixels. Browsers treat it as the width of the whole
+        column, and take it as a minimum rather than a promise.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Anything else you pass, such as <code>colSpan</code>, <code>style</code> or a
+  data attribute, lands on the rendered <code>td</code>.
+</p>
+`}));export{n,t};

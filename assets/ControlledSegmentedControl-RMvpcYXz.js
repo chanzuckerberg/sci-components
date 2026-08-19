@@ -1,0 +1,4 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{t as n}from"./react-CK_LJ1AD.js";import{Ao as r,Eo as i,G as a,gn as o,ko as s,mn as c}from"./iframe-CLRePdsX.js";import{t as l}from"./src-LTclIrci.js";import{t as u}from"./SegmentedControl-B0oldTgb.js";function d(){let[e,t]=(0,f.useState)(`Table`);return(0,p.jsxs)(`div`,{className:`app`,children:[(0,p.jsx)(u,{buttonDefinition:m,onChange:(e,n)=>{n!==null&&t(n)},value:e}),(0,p.jsxs)(h,{children:[`Showing the `,e.toLowerCase(),` view`]})]})}var f,p,m,h;e((()=>{r(),l(),f=t(n()),p=t(i()),m=[{icon:`List`,value:`List`},{icon:`Table`,value:`Table`},{icon:`TreeVertical`,value:`Tree`}],h=s(`p`,{target:`e15jbfls0`})(a,` `,e=>{let t=c(e),n=o(e);return`
+      color: ${t?.base?.textSecondary};
+      margin: ${n?.m}px 0 0;
+    `},`;`)}))();export{d as default};

@@ -1,0 +1,512 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>PreComposedTable</h1>
+<p>
+  This component is a fully-featured, composable table built on top of TanStack
+  Table with built-in support for sorting, pagination, row selection, filtering,
+  column pinning, and responsive sizing
+</p>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/PreComposedTable/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { PreComposedTable } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    PreComposedTable runs on
+    <a href="https://tanstack.com/table/latest">TanStack Table</a>, which SDS
+    takes as a peer dependency. Install <code>@tanstack/react-table</code>
+    alongside it. Column definitions are TanStack's own, so anything its docs
+    describe applies here too.
+  </p>
+</div>
+<h3>Default</h3>
+<p>
+  Data, columns, and the features you want switched on (here sorting, row
+  selection and pagination), with Name pinned to the left edge and Actions to
+  the right. A column left as a plain accessor is drawn as a CellHeader and a
+  CellBasic, while the cells that render something else forward the element and
+  width they are handed. Note that <code>data</code>, <code>columns</code> and
+  <code>paginationConfig</code> sit outside the component so their identity is
+  stable: a new <code>paginationConfig</code> object sends the table back to its
+  first page.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/DefaultPreComposedTable"
+></div>
+<h3>With global filtering</h3>
+<p>
+  <code>enableGlobalFiltering</code> puts a search input above the table that
+  matches across every column at once. The table holds the search term itself,
+  so there is nothing to wire up.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithGlobalFiltering"
+></div>
+<h3>With pagination</h3>
+<p>
+  The same table paged three rows at a time. <code>paginationConfig</code> takes
+  Pagination's own props, so <code>pageSize</code> sets the size of every page
+  and <code>placement</code> moves the controls, which sit on the right by
+  default.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithPagination"
+></div>
+<h3>Fixed width</h3>
+<p>
+  <code>tableWidth</code> pins the table to 600px rather than letting it fill
+  its container. The columns need more room than that, so the table scrolls
+  sideways while the pinned Name and Actions columns hold their edges.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableFixedWidth"
+></div>
+<h3>With column filtering</h3>
+<p>
+  <code>enableColumnFiltering</code> adds a row of search inputs under the
+  header, one per column. The filters are held above the table here rather than
+  inside it: <code>state.columnFilters</code> and
+  <code>onColumnFiltersChange</code> passed through <code>tableOptions</code>
+  override the state the component keeps, which is what makes them yours to
+  read, persist or reset.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithColumnFiltering"
+></div>
+<h3>With selective column filtering</h3>
+<p>
+  Not every column has to take part in the filter row. Status replaces its input
+  with a Dropdown through <code>meta.filterComponent</code> and matches on
+  equality rather than the default substring search, while Salary and Start Date
+  opt out altogether with <code>enableColumnFilter: false</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithSelectiveColumnFiltering"
+></div>
+<h3>With custom column filters</h3>
+<p>
+  Every filter here is a component of its own: a Dropdown for Status, and a pair
+  of number inputs for Salary and Projects matched with TanStack's
+  <code>inNumberRange</code> filter. A filter component is called rather than
+  mounted, so it holds no state of its own: it reads
+  <code>column.getFilterValue()</code> and writes
+  <code>column.setFilterValue()</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithCustomColumnFilters"
+></div>
+<h3>With table actions</h3>
+<p>
+  The ref exposes the TanStack table as <code>ref.current.table</code>, which
+  covers what the props do not: clearing filters, selecting rows from outside
+  the table, paging programmatically. It is an imperative handle rather than
+  state, so the toolbar calls into it from its click handlers.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithTableActions"
+></div>
+<h3>With table options</h3>
+<p>
+  <code>tableOptions</code> is merged into the underlying TanStack table's
+  options, so anything <code>useReactTable</code> accepts can be set through it.
+  This one passes <code>autoResetPageIndex: false</code>, so filtering leaves
+  you on the page you were reading instead of returning you to the first.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/PreComposedTable/PreComposedTableWithTableOptions"
+></div>
+<h2>Props</h2>
+<p>
+  PreComposedTable is generic over your row type, so <code>data</code> and
+  <code>columns</code> are typed together. It owns the table state (sorting,
+  selection, filtering, pagination, pinning), and every feature is off unless
+  you switch it on.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>data</code></p>
+    </td>
+    <td>
+      <p><code>TData[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Array of data objects to display in the table rows</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>columns</code></p>
+    </td>
+    <td>
+      <p><code>ColumnDef&lt;TData&gt;[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Column definitions that specify how data should be rendered and behave
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td><p>Draws the border around the scrolling table area</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"lined"</code> |</p>
+      <p><code>"striped"</code></p>
+    </td>
+    <td>
+      <p><code>"lined"</code></p>
+    </td>
+    <td>
+      <p>
+        Whether rows are separated by dividers or by alternating backgrounds
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>enableSorting</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Makes column headers sortable, wiring each one's chevron and click
+        handler for you
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>enableRowSelection</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Adds a checkbox column with select-all. To control that column yourself,
+        include one with the <code>id</code>
+        <code>"SdsTableSelectColumn"</code> and it will be used instead of the
+        generated one
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>enableColumnFiltering</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Adds a filter row under the header. Each column gets a search input
+        unless its <code>meta</code> supplies a <code>filterComponent</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>shouldPinSelectRowToLeft</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>Pins the row selection column to the left/right side of the table</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>enablePagination</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>Enables pagination controls at the bottom of the table</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>enableGlobalFiltering</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>Displays a search input that filters across all columns</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>paginationConfig</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >Partial&lt;PaginationProps&gt; &amp; { placement?: "left" | "center"
+          | "right" }</code
+        >
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed through to Pagination, plus a placement for the controls, which
+        sit on the right by default. <code>pageSize</code> also sets the initial
+        page size, which is <code>10</code> otherwise. Changing this object
+        resets the table to the first page
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>className</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>CSS class name to apply to the table container</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>style</code></p>
+    </td>
+    <td>
+      <p><code>React.CSSProperties</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Inline styles to apply to the table container</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tableWidth</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>100%</code></p>
+    </td>
+    <td><p>Sets the width of the table container</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tableRowProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;TableRowProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Additional props to pass to each table row component</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onRowSelect</code></p>
+    </td>
+    <td>
+      <p><code>(selectedRows: TData[]) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Callback triggered when row selection changes; receives array of
+        selected row data
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tableOptions</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >Partial&lt;Omit&lt;TableOptions&lt;TData&gt;, "data" | "columns" |
+          "getCoreRowModel"&gt;&gt;</code
+        >
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Escape hatch to the underlying TanStack table. Anything here is merged
+        into its options, and a state you supply overrides the one the component
+        keeps, which is how you drive sorting or pagination from outside. The
+        row models and change handlers are always the component's own
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  The component also takes a ref, which exposes the TanStack table instance as
+  <code>ref.current.table</code> for anything the props do not cover.
+</p>
+<h2>Column meta</h2>
+<p>
+  Layout and pinning are set per column through the standard TanStack column
+  definition's <code>meta</code> field, which SDS extends with the following.
+  Everything else in a column definition (<code>accessorKey</code>,
+  <code>header</code>, <code>cell</code>, <code>enableSorting</code>,
+  <code>size</code>, <code>minSize</code>, <code>maxSize</code>,
+  <code>filterFn</code>) behaves as TanStack documents it, and a header or cell
+  given as a plain string is rendered as a CellHeader or CellBasic for you.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>pinning</code></p>
+    </td>
+    <td>
+      <p><code>"left"</code> |</p>
+      <p><code>"right"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sticks the column to that edge while the table scrolls sideways, with a
+        gradient at the edge once there is something hidden behind it
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>verticalAlign</code></p>
+    </td>
+    <td>
+      <p><code>"top"</code> |</p>
+      <p><code>"middle"</code> |</p>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Vertical alignment of the column's cells</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>widthPercentage</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The column's share of the table width, as a percentage rather than a
+        fixed size
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>isGrow</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Lets this column absorb whatever width the others leave over</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>headerCellProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;CellHeaderProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props for the CellHeader generated from a string header, for tooltips,
+        alignment or truncation
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>filterComponent</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >(props: { column: Column&lt;TData&gt;; table: Table&lt;TData&gt; })
+          =&gt; React.ReactNode</code
+        >
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Replaces the default search input in this column's filter cell, for a
+        select or a range instead
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

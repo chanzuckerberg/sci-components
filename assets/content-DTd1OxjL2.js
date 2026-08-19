@@ -1,0 +1,427 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Tooltip</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Tooltip/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Tooltip } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Tooltip</strong></h3>
+<p>
+  A title and a trigger, which is all a tooltip needs. The surface, the arrow,
+  and the placement below the trigger are what the component gives you without
+  being asked.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/DefaultTooltip"></div>
+<h3><strong>Tooltip with a subtitle</strong></h3>
+<p>
+  A second line under the title, in smaller and dimmer text, for a detail that
+  would crowd the title itself.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Tooltip/TooltipWithSubtitle"
+></div>
+<h3><strong>Tooltip widths</strong></h3>
+<p>
+  Both widths side by side. The default caps the tooltip at 250px; the wide one
+  holds 550px of left-aligned text.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/TooltipWidths"></div>
+<h3><strong>Placement and the arrow</strong></h3>
+<p>
+  Four of the twelve placements, and what <code>arrowOffset</code> does to the
+  arrow: it sets a position rather than nudging one.
+</p>
+<div class="sds-doc-example" data-example="core/Tooltip/TooltipPlacement"></div>
+<h3><strong>Tooltip with a component slot</strong></h3>
+<p>
+  Content that is not a string goes in <code>componentSlot</code>, under the
+  title. The pointer can travel into the tooltip, which is what makes the link
+  inside it usable.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Tooltip/TooltipWithComponentSlot"
+></div>
+<h3><strong>Tooltip on a disabled element</strong></h3>
+<p>
+  A disabled control reports no hovers, so the tooltip goes on a span around it.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note for Tooltips on Disabled elements</strong>
+  </p>
+  <p>
+    If the tooltip wraps a disabled component, please make sure to wrap the
+    children in a <code>&lt;span&gt;</code> tag. SDS puts
+    <code>tabIndex={0}</code> on whatever the tooltip wraps, so that span also
+    becomes a tab stop and the tooltip opens on focus.
+  </p>
+  <p>
+    <a href="https://mui.com/components/tooltips/#disabled-elements">
+      https://mui.com/components/tooltips/#disabled-elements
+    </a>
+  </p>
+</div>
+<div
+  class="sds-doc-example"
+  data-example="core/Tooltip/TooltipOnDisabledElement"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  SDS Tooltip wraps MUI's Tooltip, composes the content out of its own props
+  rather than taking it whole, and pins the parts of MUI's API the design has an
+  opinion about. What it adds and changes:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>One surface, which follows the theme:</strong>
+      a tooltip is light in the light theme and dark in the dark theme, and
+      there is nothing to set. MUI leaves the surface to the theme as well, but
+      SDS pins the shape of it: the radius, the shadow, the hairline outline and
+      the type scale.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>title</code> and <code>subtitle</code>: SDS builds the content
+      itself, wrapping <code>title</code> and then <code>subtitle</code> in
+      paragraphs of its own, so <code>title</code> is not the free-form node
+      MUI's is. <code>subtitle</code> is the smaller, dimmer second line. A
+      tooltip with no <code>title</code>, <code>subtitle</code> or
+      <code>componentSlot</code> renders nothing and leaves its child alone.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>componentSlot</code>: anything React can render, placed under the
+      text with 12px above it when there is text to sit under. This is where
+      non-text content goes, since a table or a div handed to
+      <code>title</code> lands inside a paragraph and produces invalid HTML.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>width</code>: <code>"default"</code> caps the tooltip at 250px,
+      <code>"wide"</code> at 550px and switches the text to the left. Compare
+      MUI, which has no <code>width</code> prop of its own.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>textAlign</code>: overrides the alignment each width picks for
+      itself: centred at the default width, left when wide.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>arrowOffset</code>: not an offset but a position: the number becomes
+      the arrow's <code>left</code> in pixels, measured from the tooltip's left
+      edge, replacing the one the positioning engine worked out. Values past the
+      tooltip's own width put the arrow out of sight.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>arrow is on:</strong>
+      MUI defaults to no arrow; SDS turns it on for every tooltip. It can still
+      be turned back off with <code>arrow={false}</code>, though the design
+      always draws one.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>
+        hasInvertedStyle, inverted and sdsStyle are deprecated and now do
+        nothing.
+      </strong>
+      All three chose between a light and a dark tooltip, back when the choice
+      was the author's to make. Passing any of them still type-checks, so
+      nothing breaks, but the tooltip takes its colours from the theme
+      regardless and a deprecation warning is logged once. They will be removed
+      in a future release: delete them.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The popper is SDS's:</strong>
+      it carries the arrow's shape and its position for all twelve placements,
+      and it arrives through <code>PopperComponent</code>, which SDS keeps as a
+      prop name of its own after MUI moved to <code>slots.popper</code>. SDS
+      fills in <code>slots</code> last, so a <code>slots</code> object of your
+      own is dropped; pass <code>PopperComponent</code> instead.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-tooltip/">here</a>
+  .
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      A tooltip opens on hover and on keyboard focus, and closes on Escape. SDS
+      gives the trigger <code>tabIndex={0}</code> so that focus can reach it
+      even when the element wrapped is not naturally focusable.
+    </p>
+  </li>
+  <li>
+    <p>
+      While a tooltip is open, MUI points the trigger's
+      <code>aria-labelledby</code> at it, so the tooltip text becomes the
+      trigger's name for that moment rather than an extra description. The
+      trigger still needs a name of its own for when the tooltip is closed: an
+      icon-only button needs an <code>aria-label</code>, and text in a tooltip
+      is never a substitute for it.
+    </p>
+  </li>
+  <li>
+    <p>
+      Tooltips are interactive: the pointer can travel from the trigger, across
+      the 14px gap, and onto the tooltip without it closing, which is what makes
+      a link inside one reachable. MUI's <code>disableInteractive</code> turns
+      that off, and with it any chance of clicking what the tooltip holds.
+    </p>
+  </li>
+  <li>
+    <p>
+      A disabled element fires no pointer events, so a tooltip attached to one
+      never opens. Wrap the child in a <code>&lt;span&gt;</code> to give the
+      tooltip something that reports hovers. The span inherits the
+      <code>tabIndex={0}</code> SDS adds, so it becomes a tab stop and the
+      tooltip still opens on focus. That is the only route left, given that the
+      disabled control cannot take focus itself.
+    </p>
+  </li>
+  <li>
+    <p>
+      The tooltip renders in a portal at the end of the document, so it is not
+      clipped by whatever it sits inside and does not need room reserved for it.
+    </p>
+  </li>
+  <li>
+    <p>
+      A tooltip is not a place for anything a person has to have. It cannot be
+      reached on a touch screen without a tap that also does something else, and
+      it is gone the moment the pointer moves.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>title</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The tooltip's first line, wrapped in a paragraph by SDS. A tooltip with
+        no <code>title</code>, <code>subtitle</code> or
+        <code>componentSlot</code> does not render.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>subtitle</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A smaller, dimmer second line under the title, for a detail such as how
+        to use what the tooltip points at.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>componentSlot</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Content below the text, with 12px above it when there is text. The place
+        for anything that is not a string, including TooltipTable.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>"default" | "wide"</code></p>
+    </td>
+    <td>
+      <p><code>"default"</code></p>
+    </td>
+    <td>
+      <p>Caps the tooltip at 250px or 550px. Wide also left-aligns the text.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>textAlign</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "center" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"center"</code>, or <code>"left"</code> when wide</p>
+    </td>
+    <td><p>Overrides the alignment the width would pick.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>arrow</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's prop, which SDS turns on for every tooltip. It can be set back to
+        <code>false</code>, though the design always draws an arrow.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>arrowOffset</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sets the arrow's left position, in pixels from the tooltip's left edge,
+        instead of letting it be calculated. Values past the tooltip's width
+        move the arrow out of sight.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>PopperComponent</code></p>
+    </td>
+    <td>
+      <p><code>ElementType</code></p>
+    </td>
+    <td>
+      <p>SDS <code>StyledPopper</code></p>
+    </td>
+    <td>
+      <p>
+        The popper the tooltip renders into, carrying the arrow's shape and
+        placement. SDS maps it to MUI's <code>slots.popper</code>, and a
+        <code>slots</code> object passed directly is ignored.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>placement</code></p>
+    </td>
+    <td>
+      <p><code>"bottom-start"</code> |</p>
+      <p><code>"bottom"</code> |</p>
+      <p><code>"bottom-end"</code> |</p>
+      <p><code>"left-start"</code> |</p>
+      <p><code>"left"</code> |</p>
+      <p><code>"left-end"</code> |</p>
+      <p><code>"right-start"</code> |</p>
+      <p><code>"right"</code> |</p>
+      <p><code>"right-end"</code> |</p>
+      <p><code>"top-start"</code> |</p>
+      <p><code>"top"</code> |</p>
+      <p><code>"top-end"</code></p>
+    </td>
+    <td>
+      <p><code>"bottom"</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's prop. All twelve values work, and a tooltip that would fall off
+        the screen flips to the opposite side on its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disableInteractive</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's prop. Stops the tooltip from staying open while the pointer moves
+        onto it, which also puts anything clickable inside it out of reach.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>followCursor</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        MUI's prop, which keeps the tooltip under the pointer as it moves. SDS
+        also reads it, and gives a tooltip that follows the cursor the roomier
+        padding it uses for tables.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

@@ -1,0 +1,3 @@
+Storybook serves this directory at /playground-types. `types.json` is written
+into it by `yarn playground:types` and is not committed; the directory itself is,
+so the static mapping resolves even before the script has been run.
