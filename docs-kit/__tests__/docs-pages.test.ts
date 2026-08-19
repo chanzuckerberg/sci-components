@@ -22,7 +22,11 @@ import { describe, expect, it } from "vitest";
  */
 const ROOT = process.cwd();
 
-const PACKAGES = ["packages/components/src", "packages/data-viz/src"];
+const PACKAGES = [
+  "packages/components/src",
+  "packages/data-viz/src",
+  "packages/icons/src",
+];
 
 /** A story's title, as its `export default` declares it. */
 const STORY_TITLE = /title:\s*["']([^"']+)["']/;

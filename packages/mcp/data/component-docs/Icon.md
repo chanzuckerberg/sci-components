@@ -1,5 +1,9 @@
 # Icon
 
+> **Deprecated:** SDS icons come from [Phosphor](https://phosphoricons.com) now, and this component will be removed in a future major version. Import the icon you need from `@phosphor-icons/react`, or from `@czi-sds/icons` for the icons SDS draws itself. Both take the same props, so the only difference between them is where you import from. Migrating from Icon maps each prop on this page to its replacement.
+
+The rest of this page documents the component as it still behaves, so existing usages can be read and migrated.
+
 ## Source Code
 
 The Icon component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Icon/index.tsx). The list of icon names and the sizes each one supports lives in [map.ts](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Icon/map.ts).

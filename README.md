@@ -46,6 +46,24 @@ npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/mater
 yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
 ```
 
+### Icons
+
+SDS uses [Phosphor Icons](https://phosphoricons.com). Install Phosphor for the icon set, and `@czi-sds/icons` for the icons SDS draws itself. They are kept there either because Phosphor has no equivalent, or because Phosphor has something close and SDS wants its own version.
+
+```
+npm i @phosphor-icons/react @czi-sds/icons
+```
+
+```tsx
+import { HeartIcon } from "@phosphor-icons/react";
+import { SdsAtlasIcon } from "@czi-sds/icons";
+
+<HeartIcon size={24} />
+<SdsAtlasIcon size={24} />
+```
+
+Both take the same props, so the only difference between them is where you import from. The `Icon` component in `@czi-sds/components` is deprecated.
+
 > **React 18 (or below) note:** Material UI (a peer dependency) ships `react-is@19`. If your app uses React 18 or below, pin `react-is` to match your React version to avoid runtime errors in prop-type checks. For example, with React 18 add the following to your `package.json` (use `resolutions` for Yarn, `overrides` for npm/pnpm):
 >
 > ```json

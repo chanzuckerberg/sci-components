@@ -14,6 +14,7 @@ import * as jsxDevRuntime from "react/jsx-dev-runtime";
 import * as jsxRuntime from "react/jsx-runtime";
 import * as sds from "@czi-sds/components";
 import * as dataViz from "@czi-sds/data-viz";
+import * as sdsIcons from "@czi-sds/icons";
 
 /**
  * Every module the playground can resolve an import to.
@@ -35,6 +36,7 @@ export const scope: ModuleScope = {
   "@tanstack/react-table": reactTable, // 16
   "@mui/material": mui, // 14
   "@czi-sds/data-viz": dataViz, // 11
+  "@czi-sds/icons": sdsIcons, // 6
   echarts, // 6
   "@faker-js/faker": faker, // 5
   "@mui/material/styles": muiStyles, // 3
@@ -53,10 +55,11 @@ export const scope: ModuleScope = {
  * Modules fetched the first time a run imports one, rather than carried in the
  * playground's bundle.
  *
- * Phosphor is fifteen hundred icons. It is worth having — SDS ships the icons
- * its own components need, not a set to draw an interface from — but it is not
- * worth adding to the download of a playground opened on an example that never
- * mentions it.
+ * Phosphor is fifteen hundred icons, and it is the icon set SDS draws from, so
+ * the playground has to resolve it. Loading it up front is another matter: it is
+ * not worth adding to the download of a playground opened on an example that
+ * never mentions it. `@czi-sds/icons`, the handful Phosphor has no equivalent
+ * for, is small enough to sit in the scope above.
  *
  * Being out of the scope above also keeps it out of the globals every run is
  * handed, which is what it wants: Phosphor exports a `Table`, a `List`, a

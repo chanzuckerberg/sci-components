@@ -38,9 +38,11 @@
       /* A series of entries which re-map imports to lookup locations relative to this config file. */
       "@czi-sds/components": ["./packages/components/src/index.ts"],
       "@czi-sds/data-viz": ["./packages/data-viz/src/index.ts"],
+      "@czi-sds/icons": ["./packages/icons/src/index.ts"],
       "@czi-sds/mcp": ["./packages/mcp/src/*"],
       "@components/src/*": ["./packages/components/src/*"],
       "@data-viz/src/*": ["./packages/data-viz/src/*"],
+      "@icons/src/*": ["./packages/icons/src/*"],
       "@sds-docs/*": ["./docs-kit/*"],
       "react": ["./node_modules/@types/react"]
     },

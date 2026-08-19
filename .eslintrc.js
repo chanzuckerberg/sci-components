@@ -28,7 +28,7 @@ module.exports = {
   // rules in all ComponentName.namespace.tsx files
   overrides: [
     {
-      files: ["packages/**/src/core/**/*.namespace-test.tsx"],
+      files: ["packages/**/src/**/*.namespace-test.tsx"],
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
         "import/no-extraneous-dependencies": "off",
@@ -63,13 +63,14 @@ module.exports = {
     },
     {
       /**
-       * The published source of the two libraries, as opposed to the stories,
-       * tests and documentation examples alongside it, which Storybook builds
-       * and nobody installs.
+       * The published source of the components and data-viz libraries, as
+       * opposed to the stories, tests and documentation examples alongside it,
+       * which Storybook builds and nobody installs.
        *
-       * Phosphor is a root devDependency for the documentation's sake. An
-       * import from here would either be bundled into the library or left for
-       * a consumer to install, and neither is something they asked for.
+       * Phosphor is a peer of `@czi-sds/icons` alone. An import from either of
+       * these packages would either bundle it or add an install nobody asked
+       * for, so icons belong in `packages/icons`, which is left out of the list
+       * below on purpose.
        */
       excludedFiles: [
         "packages/*/src/**/__storybook__/**",
@@ -89,7 +90,7 @@ module.exports = {
               {
                 group: ["@phosphor-icons/react", "@phosphor-icons/react/*"],
                 message:
-                  "Phosphor is available to Storybook only. The library ships the icons in src/common/svgs; add one there instead.",
+                  "Phosphor is a peer of @czi-sds/icons, not of these packages. Icons belong in packages/icons, which consumers install alongside Phosphor itself.",
               },
             ],
           },
@@ -163,6 +164,7 @@ module.exports = {
           __dirname,
           path.resolve(__dirname, "./packages/components"),
           path.resolve(__dirname, "./packages/data-viz"),
+          path.resolve(__dirname, "./packages/icons"),
           path.resolve(__dirname, "./packages/mcp"),
         ],
         peerDependencies: true,

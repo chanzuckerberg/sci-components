@@ -80,6 +80,8 @@ const preview = {
           ["Overview", "*"],
           "Data Viz",
           ["Overview", "*"],
+          "Icons",
+          ["Overview", "Custom Icons", "Migrating from Icon", "*"],
           "MCP Server",
           [
             "Overview",

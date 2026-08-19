@@ -1,0 +1,416 @@
+<h1>Icons</h1>
+<p>
+  The icons of the Science Design System: the
+  <a href="https://phosphoricons.com" target="_blank">Phosphor</a>
+  set, and the handful SDS draws itself.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>A separate package:</strong>
+    the icons SDS draws itself ship as <code>@czi-sds/icons</code>, not as part
+    of <code>@czi-sds/components</code>. They are built on Phosphor's own
+    <code>IconBase</code>, so <code>@phosphor-icons/react</code> is required at
+    runtime, and an app installs both. Neither depends on
+    <code>@czi-sds/components</code>, so icons can be used without the rest of
+    the design system.
+  </p>
+</div>
+<p>
+  Phosphor covers around 1,500 icons in six weights.
+  <code>@czi-sds/icons</code>
+  adds a few of its own, either where Phosphor has no equivalent or where SDS
+  wants its own version of one it does have; the
+  <a href="./?path=/docs/icons-custom-icons--docs" target="_top"
+    >Custom Icons</a
+  >
+  page lists them. Both are the same kind of component, taking the same props
+  and reading the same <code>IconContext</code>, so the only difference is where
+  you import from.
+</p>
+<h2>Installation</h2>
+<p>
+  <svg
+    class="sds-doc-inline-icon"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z"
+    />
+  </svg>
+  NPM Package:
+  <a
+    href="https://www.npmjs.com/package/@czi-sds/icons"
+    target="_blank"
+    rel="noreferrer"
+    >@czi-sds/icons</a
+  >
+  &middot;
+  <svg
+    class="sds-doc-inline-icon"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M 8.007 0 C 3.579 0 0 3.667 0 8.203 C 0 11.829 2.294 14.898 5.475 15.985 C 5.873 16.066 6.018 15.808 6.018 15.59 C 6.018 15.4 6.005 14.748 6.005 14.07 C 3.778 14.558 3.314 13.092 3.314 13.092 C 2.956 12.141 2.425 11.896 2.425 11.896 C 1.697 11.394 2.479 11.394 2.479 11.394 C 3.288 11.448 3.712 12.236 3.712 12.236 C 4.427 13.486 5.581 13.132 6.045 12.915 C 6.111 12.385 6.323 12.019 6.549 11.815 C 4.772 11.624 2.904 10.918 2.904 7.768 C 2.904 6.871 3.221 6.138 3.725 5.568 C 3.645 5.365 3.367 4.522 3.804 3.395 C 3.804 3.395 4.481 3.177 6.005 4.237 C 6.658 4.057 7.331 3.967 8.007 3.966 C 8.682 3.966 9.372 4.06 10.008 4.237 C 11.532 3.177 12.209 3.395 12.209 3.395 C 12.647 4.522 12.368 5.365 12.288 5.568 C 12.806 6.138 13.11 6.871 13.11 7.768 C 13.11 10.918 11.241 11.611 9.451 11.815 C 9.743 12.072 9.995 12.562 9.995 13.335 C 9.995 14.436 9.982 15.318 9.982 15.59 C 9.982 15.808 10.128 16.066 10.525 15.985 C 13.706 14.898 16 11.829 16 8.203 C 16.013 3.667 12.421 0 8.007 0 Z"
+    />
+  </svg>
+  GitHub:
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/icons"
+    target="_blank"
+    rel="noreferrer"
+    >packages/icons</a
+  >
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">// with npm
+npm i @czi-sds/icons
+// with yarn
+yarn add @czi-sds/icons</code></pre>
+  </figure>
+</div>
+<p>
+  <code>@czi-sds/icons</code> declares its dependencies as peer dependencies to
+  prevent duplicate copies of React and of Phosphor itself. Please ensure the
+  following are also installed:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>JSON</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-json">{
+  "@phosphor-icons/react": "^2.1.10",
+  "react": "&gt;=18.0.0",
+  "react-dom": "&gt;=18.0.0"
+}</code></pre>
+  </figure>
+</div>
+<p>To install the package together with its peer dependencies:</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">// with npm
+npm i @czi-sds/icons @phosphor-icons/react react react-dom
+// with yarn
+yarn add @czi-sds/icons @phosphor-icons/react react react-dom</code></pre>
+  </figure>
+</div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Why Phosphor is a peer dependency:</strong>
+    it keeps one copy of Phosphor in your app. That single copy is what lets one
+    <code>IconContext</code> style the icons from both packages, so a provider
+    you render reaches an SDS icon and a Phosphor icon alike. A bundled copy
+    would be a second context that your provider never reaches.
+  </p>
+</div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Requiring this package from CommonJS does not work:</strong>
+    <code>@phosphor-icons/react</code> declares itself as an ES module and ships
+    its CommonJS build as a <code>.js</code> file, so Node reads that build as
+    ESM and it exports nothing. Anything depending on it through
+    <code>require</code> gets an empty <code>IconBase</code>. Bundlers are
+    unaffected, since they resolve the ESM build, and so is <code>import</code>.
+    It only bites a raw <code>require</code> at runtime, such as a Jest setup
+    still running in CommonJS, where the fix is to let Jest resolve the ESM
+    build.
+  </p>
+</div>
+<h2>Usage</h2>
+<p>
+  Import the icon you want from the package it belongs to. Browse the Phosphor
+  set at
+  <a href="https://phosphoricons.com" target="_blank">phosphoricons.com</a>,
+  where the name shown plus an <code>Icon</code> suffix is the export name.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">// Anything in the Phosphor set
+import { HeartIcon, CubeIcon } from "@phosphor-icons/react";
+
+// The icons SDS draws itself
+import { SdsAtlasIcon, SdsSparkleIcon } from "@czi-sds/icons";
+
+export function SaveHint() {
+  return (
+    &lt;p&gt;
+      &lt;SdsSparkleIcon size={16} /&gt; Generated for you
+    &lt;/p&gt;
+  );
+}</code></pre>
+  </figure>
+</div>
+<p>
+  Unlike the rest of the design system, icons need no theme provider: they take
+  their size and color from props, and default to the surrounding text color.
+</p>
+<h3>Default Icon</h3>
+<p>
+  An icon needs no props at all: it renders at <code>1em</code> in the current
+  text color.
+</p>
+<div class="sds-doc-example" data-example="icons/DefaultIcon"></div>
+<h3>Icon Sizes</h3>
+<p>
+  <code>size</code> sets both width and height, and takes a number or a string
+  with units. SDS icon sizes are 12, 16, 24 and 32 pixels; they are values you
+  pass rather than a set the component enforces, so they are also available as
+  the <code>--sds-icon-size-*</code> CSS variables and through the
+  <code>getIconSizes</code> theme selector in <code>@czi-sds/components</code>.
+</p>
+<div class="sds-doc-example" data-example="icons/IconSizes"></div>
+<h3>Icon Colors</h3>
+<p>
+  <code>color</code> takes any CSS color string. It defaults to
+  <code>currentColor</code>, so an icon with no color of its own follows the
+  text color around it, which is usually what you want inside a button or a
+  link.
+</p>
+<div class="sds-doc-example" data-example="icons/IconColors"></div>
+<h3>Shared defaults</h3>
+<p>
+  <code>IconContext</code> applies props to every icon beneath it, so an app can
+  set its icon size and color once. It comes from Phosphor and covers both
+  packages. Props on an individual icon win over the context, and you can nest
+  providers to style separate regions differently.
+</p>
+<div class="sds-doc-example" data-example="icons/IconSharedDefaults"></div>
+<h3>Weights</h3>
+<p>
+  Phosphor's icons carry six drawings and pick between them on
+  <code>weight</code>. Each SDS icon ships a single drawing, so it accepts
+  <code>weight</code> for API parity and looks the same at every value. The top
+  row below is a Phosphor icon, the bottom row an SDS one.
+</p>
+<div class="sds-doc-example" data-example="icons/IconWeights"></div>
+<h2>Props</h2>
+<p>
+  Icons accept every prop an <code>svg</code> element does, including
+  <code>className</code>, <code>style</code>, <code>onClick</code> and
+  <code>aria-*</code>. These are the ones specific to icons.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Prop</strong></p>
+    </td>
+    <td>
+      <p><strong>Type</strong></p>
+    </td>
+    <td>
+      <p><strong>Default</strong></p>
+    </td>
+    <td>
+      <p><strong>Description</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>size</code></p>
+    </td>
+    <td>
+      <p><code>number | string</code></p>
+    </td>
+    <td>
+      <p><code>"1em"</code></p>
+    </td>
+    <td>
+      <p>
+        Width and height. A number is pixels; a string may carry any CSS unit.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>color</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"currentColor"</code></p>
+    </td>
+    <td>
+      <p>Any CSS color, including <code>currentColor</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>weight</code></p>
+    </td>
+    <td>
+      <p>
+        <code>
+          "thin" | "light" | "regular" | "bold" | "fill" | "duotone"
+        </code>
+      </p>
+    </td>
+    <td>
+      <p><code>"regular"</code></p>
+    </td>
+    <td>
+      <p>
+        Which drawing to render. SDS icons accept it but ship one drawing, so it
+        has no visual effect on them.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>mirrored</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>Flips the icon horizontally, for right-to-left layouts.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>alt</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p></p></td>
+    <td>
+      <p>
+        Renders an SVG <code>title</code>, giving the icon an accessible name.
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>Accessibility</h2>
+<p>
+  An icon beside a text label is decorative: leave <code>alt</code> off and add
+  <code>aria-hidden</code> so a screen reader does not announce it twice. An
+  icon standing on its own carries meaning, so give it an <code>alt</code>, or
+  label the control that contains it with <code>aria-label</code>.
+</p>
+<h2>Composability</h2>
+<p>
+  Icons render their children below the icon's own paths, so you can slot in
+  background shapes, filters, or SMIL animations. Slotted elements are
+  positioned in the icon's 256x256 coordinate space, which holds for the SDS
+  icons too.
+</p>
+<h2>Build performance</h2>
+<p>
+  Phosphor's main entry is a barrel of roughly 1,500 icons. Production builds
+  tree-shake it down to the icons you import, but some bundlers eagerly
+  transpile every module in development, which is slow. Next.js 13 and later can
+  rewrite the barrel import for you:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>next.config.js</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-js">module.exports = {
+  experimental: {
+    optimizePackageImports: ["@phosphor-icons/react"],
+  },
+};</code></pre>
+  </figure>
+</div>
+<p>
+  Outside Next.js, importing an icon from its own module has the same effect:
+  <code>import { BellIcon } from "@phosphor-icons/react/dist/csr/Bell"</code>.
+  <code>@czi-sds/icons</code>
+  is small enough that it needs neither.
+</p>
+<h2>In this section</h2>
+<p>The rest of the icon documentation is split across two pages.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Page</p></td>
+    <td><p>What it covers</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/docs/icons-custom-icons--docs" target="_top">
+          Custom Icons
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        Every icon <code>@czi-sds/icons</code> ships, with the name to import it
+        by, why each one is kept in SDS rather than taken from Phosphor, and how
+        to add another.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/docs/icons-migrating-from-icon--docs" target="_top">
+          Migrating from Icon
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        The
+        <a href="./?path=/docs/deprecated-icon--documentation" target="_top">
+          Icon
+        </a>
+        component in <code>@czi-sds/components</code> is deprecated. This maps
+        each of its props to the replacement, and covers the two defaults that
+        changed.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  The design guidance behind icons, on when to use one and at what size, lives
+  under
+  <a href="./?path=/docs/design-documentation-bases-icons--docs" target="_top"
+    >Design Documentation</a
+  >.
+</p>
+<h2>Contributing</h2>
+<p>
+  The package source lives in
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/icons"
+  >
+    packages/icons
+  </a>
+  of the SDS repository, and the
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/docs/contribution.md"
+  >
+    contribution guidelines
+  </a>
+  apply here as they do to the main package. An icon is added to SDS only where
+  Phosphor has no equivalent or where the design team wants its own version, so
+  agree a new one before building it: post in the
+  <a href="https://czi-sci.slack.com/archives/C032S43KKFV">
+    #sci-design-system-support
+  </a>
+  channel in Slack. The
+  <a href="./?path=/docs/icons-custom-icons--docs" target="_top"
+    >Custom Icons</a
+  >
+  page has the mechanics once it is agreed.
+</p>

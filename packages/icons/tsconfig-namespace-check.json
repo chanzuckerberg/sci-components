@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["es2019", "dom"],
+    "paths": {
+      "@icons/src/*": ["./src/*"]
+    },
+    "types": ["vitest/globals", "node"]
+  }
+}

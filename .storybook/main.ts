@@ -13,6 +13,7 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 const COMPONENTS_SRC = resolve(currentDir, "../packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "../packages/data-viz/src");
+const ICONS_SRC = resolve(currentDir, "../packages/icons/src");
 const DOCS_KIT = resolve(currentDir, "../docs-kit");
 
 const config: StorybookConfig = {
@@ -27,6 +28,8 @@ const config: StorybookConfig = {
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
     "../packages/data-viz/src/**/__storybook__/docs/*.mdx",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/icons/src/**/__storybook__/docs/*.mdx",
+    "../packages/icons/src/**/*.stories.@(js|jsx|ts|tsx)",
     // Standalone design pages: the foundations, and the design half of each
     // component's documentation.
     "../design-docs/**/*.mdx",
@@ -131,8 +134,10 @@ const config: StorybookConfig = {
       ...normalizeAlias(viteConfig.resolve.alias),
       { find: /^@components\/src\//, replacement: `${COMPONENTS_SRC}/` },
       { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
+      { find: /^@icons\/src\//, replacement: `${ICONS_SRC}/` },
       { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
       { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+      { find: "@czi-sds/icons", replacement: ICONS_SRC },
       { find: /^@sds-docs\//, replacement: `${DOCS_KIT}/` },
     ];
 
@@ -161,6 +166,8 @@ const config: StorybookConfig = {
       `${DATA_VIZ_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
       `${COMPONENTS_SRC}/**/__storybook__/docs/*.mdx`,
       `${DATA_VIZ_SRC}/**/__storybook__/docs/*.mdx`,
+      `${ICONS_SRC}/**/__storybook__/docs/*.mdx`,
+      `${ICONS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
     ];
     /**
      * Pre-bundle bare-import subpaths that Vite's scanner cannot reach by

@@ -14,18 +14,22 @@ const ROOT = process.cwd();
  * belongs on the Overview page, which is what this file is here to hold us to:
  * a component nobody added to the catalog is a component nobody can find.
  */
-const PACKAGES = ["packages/components/src", "packages/data-viz/src"];
+const PACKAGES = [
+  "packages/components/src",
+  "packages/data-viz/src",
+  "packages/icons/src",
+];
 
 /**
  * Sections of the sidebar the catalog does not list. `Bases` is the design
  * tokens, documented by the design pages rather than as components, and
  * `Deprecated` is what the catalog exists to steer people away from.
  */
-const LISTED_ROOTS = ["Components", "Data Viz"];
+const LISTED_ROOTS = ["Components", "Data Viz", "Icons"];
 
 /** A story's title, as its `export default` declares it. */
 const TITLE =
-  /title:\s*["']((?:Components|Data Viz|Bases|Deprecated)\/[^"']+)["']/;
+  /title:\s*["']((?:Components|Data Viz|Bases|Deprecated|Icons)\/[^"']+)["']/;
 
 function walk(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -71,6 +75,13 @@ function examplePath(id: string): string {
     return resolve(
       ROOT,
       `packages/data-viz/src/core/${component}/__storybook__/docs/examples/${name}.tsx`
+    );
+  }
+
+  if (segments[0] === "icons") {
+    return resolve(
+      ROOT,
+      `packages/icons/src/__storybook__/docs/examples/${name}.tsx`
     );
   }
 

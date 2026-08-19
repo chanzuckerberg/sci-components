@@ -1,7 +1,8 @@
 /**
  * The component library, as the Overview page lists it: every component in
- * `@czi-sds/components` and `@czi-sds/data-viz`, grouped by what a reader is
- * trying to do rather than by the atomic taxonomy the design pages use.
+ * `@czi-sds/components`, `@czi-sds/data-viz` and `@czi-sds/icons`, grouped by
+ * what a reader is trying to do rather than by the atomic taxonomy the design
+ * pages use.
  *
  * The grouping is this page's own. The Storybook sidebar keeps its own shape,
  * which follows the packages, and neither has to answer to the other.
@@ -104,9 +105,9 @@ export const catalog: CatalogCategory[] = [
     title: "Data Display",
     entries: [
       {
-        name: "Icon",
-        docs: "components-icon",
-        example: "core/Icon/IconSizes",
+        name: "Icons",
+        docs: "icons-overview",
+        example: "Overview/IconsCard",
       },
       {
         name: "List",

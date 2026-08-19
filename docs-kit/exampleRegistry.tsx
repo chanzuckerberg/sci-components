@@ -28,6 +28,9 @@ export const exampleLoaders = {
   ...import.meta.glob<{ default: ComponentType }>(
     "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.tsx"
   ),
+  ...import.meta.glob<{ default: ComponentType }>(
+    "../packages/icons/src/__storybook__/docs/examples/*.tsx"
+  ),
 };
 
 export const sourceLoaders = {
@@ -41,6 +44,10 @@ export const sourceLoaders = {
   ),
   ...import.meta.glob<string>(
     "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.tsx",
+    { import: "default", query: "?raw" }
+  ),
+  ...import.meta.glob<string>(
+    "../packages/icons/src/__storybook__/docs/examples/*.tsx",
     { import: "default", query: "?raw" }
   ),
 };
@@ -59,14 +66,20 @@ export const exampleStyles = {
     "../packages/data-viz/src/core/**/__storybook__/docs/examples/*.css",
     { eager: true, import: "default", query: "?raw" }
   ),
+  ...import.meta.glob<string>(
+    "../packages/icons/src/__storybook__/docs/examples/*.css",
+    { eager: true, import: "default", query: "?raw" }
+  ),
 };
 
 /**
  * Resolve an example id to its glob key, minus the file extension. Ids come in
- * three shapes: `<Page>/<Name>` for an example that belongs to a design page,
+ * four shapes: `<Page>/<Name>` for an example that belongs to a design page,
  * `core/<Component>/<Name>` for one that belongs to a component's code docs,
- * and `data-viz/<Component>/<Name>` for one belonging to a chart's code docs.
- * The component part may itself be nested, as in `core/Bases/Typography/<Name>`.
+ * `data-viz/<Component>/<Name>` for one belonging to a chart's code docs, and
+ * `icons/<Name>` for one belonging to the icons package, whose documentation is
+ * the package itself rather than a component within it. The component part may
+ * itself be nested, as in `core/Bases/Typography/<Name>`.
  */
 export function modulePath(id: string): string {
   const segments = id.split("/");
@@ -79,6 +92,10 @@ export function modulePath(id: string): string {
 
   if (segments[0] === "data-viz") {
     return `../packages/data-viz/src/core/${component}/__storybook__/docs/examples/${name}`;
+  }
+
+  if (segments[0] === "icons") {
+    return `../packages/icons/src/__storybook__/docs/examples/${name}`;
   }
 
   return `../design-docs/pages/${segments[0]}/examples/${name}`;

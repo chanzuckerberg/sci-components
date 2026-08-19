@@ -1914,6 +1914,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@czi-sds/icons@workspace:^, @czi-sds/icons@workspace:packages/icons":
+  version: 0.0.0-use.local
+  resolution: "@czi-sds/icons@workspace:packages/icons"
+  dependencies:
+    "@types/react": "npm:^18.2.46"
+    "@types/react-dom": "npm:^18.2.18"
+  peerDependencies:
+    "@phosphor-icons/react": ^2.1.10
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@czi-sds/mcp@workspace:packages/mcp":
   version: 0.0.0-use.local
   resolution: "@czi-sds/mcp@workspace:packages/mcp"
@@ -1946,6 +1959,7 @@ __metadata:
     "@chromatic-com/storybook": "npm:^5.2.1"
     "@czi-sds/components": "workspace:^"
     "@czi-sds/data-viz": "workspace:^"
+    "@czi-sds/icons": "workspace:^"
     "@emotion/babel-plugin": "npm:^11.13.5"
     "@emotion/css": "npm:^11.11.2"
     "@emotion/react": "npm:^11.11.3"

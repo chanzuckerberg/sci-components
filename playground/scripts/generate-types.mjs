@@ -27,8 +27,8 @@ const OUT = resolve(ROOT, "playground/generated/types.json");
 
 /**
  * Real declarations, copied in whole. React earns its place because every
- * example uses hooks and JSX; the two SDS packages because looking up a
- * component's props is most of what the playground is for.
+ * example uses hooks and JSX; the SDS packages because looking up a component's
+ * props is most of what the playground is for.
  */
 const DECLARATIONS = [
   ...[
@@ -60,6 +60,11 @@ const DECLARATIONS = [
     from: "packages/data-viz/dist/index.esm.d.ts",
     to: "file:///node_modules/@czi-sds/data-viz/index.d.ts",
     buildWith: "@czi-sds/data-viz",
+  },
+  {
+    from: "packages/icons/dist/index.esm.d.ts",
+    to: "file:///node_modules/@czi-sds/icons/index.d.ts",
+    buildWith: "@czi-sds/icons",
   },
 ];
 
