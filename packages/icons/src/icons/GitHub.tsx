@@ -1,7 +1,4 @@
 import art from "../defs/GitHub";
 import { createSdsIcon } from "../lib/createSdsIcon";
 
-export const SdsGitHubIcon = /* @__PURE__ */ createSdsIcon(
-  "SdsGitHubIcon",
-  art
-);
+export const GitHubIcon = /* @__PURE__ */ createSdsIcon("GitHubIcon", art);

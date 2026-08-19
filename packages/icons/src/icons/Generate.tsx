@@ -1,7 +1,4 @@
 import art from "../defs/Generate";
 import { createSdsIcon } from "../lib/createSdsIcon";
 
-export const SdsGenerateIcon = /* @__PURE__ */ createSdsIcon(
-  "SdsGenerateIcon",
-  art
-);
+export const GenerateIcon = /* @__PURE__ */ createSdsIcon("GenerateIcon", art);

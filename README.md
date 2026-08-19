@@ -56,10 +56,10 @@ npm i @phosphor-icons/react @czi-sds/icons
 
 ```tsx
 import { HeartIcon } from "@phosphor-icons/react";
-import { SdsAtlasIcon } from "@czi-sds/icons";
+import { AtlasIcon } from "@czi-sds/icons";
 
 <HeartIcon size={24} />
-<SdsAtlasIcon size={24} />
+<AtlasIcon size={24} />
 ```
 
 Both take the same props, so the only difference between them is where you import from. The `Icon` component in `@czi-sds/components` is deprecated.

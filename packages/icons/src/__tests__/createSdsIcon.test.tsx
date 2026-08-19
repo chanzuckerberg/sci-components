@@ -3,11 +3,11 @@ import { render, screen } from "@testing-library/react";
 import { createRef } from "react";
 import * as icons from "..";
 import type { Icon } from "..";
-import { SdsAtlasIcon, SdsSparkleIcon, SdsUmapIcon } from "..";
+import { AtlasIcon, SparkleIcon, UmapIcon } from "..";
 
 /** The icon components, as opposed to the `createSdsIcon` factory beside them. */
 const ALL_ICONS = Object.entries(icons).filter(
-  (entry): entry is [string, Icon] => entry[0].startsWith("Sds")
+  (entry): entry is [string, Icon] => entry[0] !== "createSdsIcon"
 );
 
 /**
@@ -29,8 +29,8 @@ describe("SDS icons", () => {
    * nothing wraps or transforms them here.
    */
   it.each([
-    ["Atlas", <SdsAtlasIcon key="atlas" />],
-    ["Umap", <SdsUmapIcon key="umap" />],
+    ["Atlas", <AtlasIcon key="atlas" />],
+    ["Umap", <UmapIcon key="umap" />],
   ])("draws %s on Phosphor's 256 grid, with no wrapper", (_name, element) => {
     const svg = renderIcon(element);
 
@@ -47,7 +47,7 @@ describe("SDS icons", () => {
    * instead of 8 would peak near 480; both are far outside the band below.
    *
    * The upper bound carries a little slack because artwork may bleed past its own
-   * canvas: `SdsSparklesIcon` reaches 256.75, exactly as its source does.
+   * canvas: `SparklesIcon` reaches 256.75, exactly as its source does.
    */
   it.each(ALL_ICONS)("%s is drawn on the 256 grid", (_name, SdsIcon) => {
     const svg = renderIcon(<SdsIcon />);
@@ -66,12 +66,7 @@ describe("SDS icons", () => {
 
   it("takes size, color, mirrored and alt", () => {
     const svg = renderIcon(
-      <SdsAtlasIcon
-        size={32}
-        color="rgb(56, 103, 250)"
-        mirrored
-        alt="An atlas"
-      />
+      <AtlasIcon size={32} color="rgb(56, 103, 250)" mirrored alt="An atlas" />
     );
 
     expect(svg.getAttribute("width")).toBe("32");
@@ -82,7 +77,7 @@ describe("SDS icons", () => {
   });
 
   it("defaults to currentColor so CSS can drive it", () => {
-    const svg = renderIcon(<SdsAtlasIcon />);
+    const svg = renderIcon(<AtlasIcon />);
 
     expect(svg.getAttribute("fill")).toBe("currentColor");
   });
@@ -93,7 +88,7 @@ describe("SDS icons", () => {
    * wrapper, and the icon would ignore the prop.
    */
   it("leaves the artwork's fill to the wrapper", () => {
-    const svg = renderIcon(<SdsAtlasIcon color={RED} />);
+    const svg = renderIcon(<AtlasIcon color={RED} />);
 
     expect(svg.getAttribute("fill")).toBe(RED);
     svg.querySelectorAll("path").forEach((path) => {
@@ -103,7 +98,7 @@ describe("SDS icons", () => {
 
   it("passes arbitrary SVG props through", () => {
     const svg = renderIcon(
-      <SdsAtlasIcon className="custom" data-testid="atlas" aria-hidden />
+      <AtlasIcon className="custom" data-testid="atlas" aria-hidden />
     );
 
     expect(svg).toHaveClass("custom");
@@ -122,21 +117,21 @@ describe("SDS icons", () => {
     ] as const;
 
     weights.forEach((weight) => {
-      const svg = renderIcon(<SdsSparkleIcon weight={weight} />);
+      const svg = renderIcon(<SparkleIcon weight={weight} />);
       expect(svg.querySelector("path")).toBeInTheDocument();
     });
   });
 
   it("forwards a ref to the svg element", () => {
     const ref = createRef<SVGSVGElement>();
-    render(<SdsAtlasIcon ref={ref} />);
+    render(<AtlasIcon ref={ref} />);
 
     expect(ref.current).toBeInstanceOf(SVGElement);
     expect(ref.current?.tagName).toBe("svg");
   });
 
   it("names itself for React DevTools", () => {
-    expect(SdsAtlasIcon.displayName).toBe("SdsAtlasIcon");
+    expect(AtlasIcon.displayName).toBe("AtlasIcon");
   });
 
   /**
@@ -149,7 +144,7 @@ describe("SDS icons", () => {
   it("inherits defaults from Phosphor's IconContext", () => {
     const svg = renderIcon(
       <IconContext.Provider value={{ color: RED, size: 20 }}>
-        <SdsAtlasIcon />
+        <AtlasIcon />
       </IconContext.Provider>
     );
 
@@ -160,7 +155,7 @@ describe("SDS icons", () => {
   it("lets its own props win over the context", () => {
     const svg = renderIcon(
       <IconContext.Provider value={{ color: RED, size: 20 }}>
-        <SdsAtlasIcon size={40} color="rgb(0, 128, 0)" />
+        <AtlasIcon size={40} color="rgb(0, 128, 0)" />
       </IconContext.Provider>
     );
 

@@ -3,22 +3,22 @@ import {
   Icon,
   IconProps,
   IconWeight,
-  SdsAtlasIcon,
-  SdsBiohubIcon,
-  SdsChartPieFilledIcon,
-  SdsChartPieXIcon,
-  SdsCollapseIcon,
-  SdsExpandIcon,
-  SdsFoldIcon,
-  SdsGenerateIcon,
-  SdsGitHubIcon,
-  SdsMaximizeSmallIcon,
-  SdsMinimizeSmallIcon,
-  SdsPredictIcon,
-  SdsSparkleIcon,
-  SdsSparklesIcon,
-  SdsUmapIcon,
-  SdsWandSparkleIcon,
+  AtlasIcon,
+  BiohubIcon,
+  ChartPieFilledIcon,
+  ChartPieXIcon,
+  CollapseIcon,
+  ExpandIcon,
+  FoldIcon,
+  GenerateIcon,
+  GitHubIcon,
+  MaximizeSmallIcon,
+  MinimizeSmallIcon,
+  PredictIcon,
+  SparkleIcon,
+  SparklesIcon,
+  UmapIcon,
+  WandSparkleIcon,
 } from "@czi-sds/icons";
 import React from "react";
 
@@ -31,22 +31,22 @@ const IconsNameSpaceTest = (props: IconProps) => {
 
   return (
     <>
-      <SdsAtlasIcon />
-      <SdsBiohubIcon size={24} />
-      <SdsChartPieFilledIcon color="#3867fa" />
-      <SdsChartPieXIcon weight={weight} />
-      <SdsCollapseIcon mirrored />
-      <SdsExpandIcon alt="Expand" />
-      <SdsFoldIcon size="1.5rem" />
-      <SdsGenerateIcon className="custom" />
-      <SdsGitHubIcon onClick={() => undefined} />
-      <SdsMaximizeSmallIcon {...props} />
-      <SdsMinimizeSmallIcon size={32} color="currentColor" weight="duotone" />
-      <SdsPredictIcon />
-      <SdsSparkleIcon />
-      <SdsSparklesIcon />
-      <SdsUmapIcon />
-      <SdsWandSparkleIcon />
+      <AtlasIcon />
+      <BiohubIcon size={24} />
+      <ChartPieFilledIcon color="#3867fa" />
+      <ChartPieXIcon weight={weight} />
+      <CollapseIcon mirrored />
+      <ExpandIcon alt="Expand" />
+      <FoldIcon size="1.5rem" />
+      <GenerateIcon className="custom" />
+      <GitHubIcon onClick={() => undefined} />
+      <MaximizeSmallIcon {...props} />
+      <MinimizeSmallIcon size={32} color="currentColor" weight="duotone" />
+      <PredictIcon />
+      <SparkleIcon />
+      <SparklesIcon />
+      <UmapIcon />
+      <WandSparkleIcon />
       <CustomIcon size={16} />
     </>
   );

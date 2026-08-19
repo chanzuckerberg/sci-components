@@ -5,9 +5,9 @@
 // gallery crops to a few unreadable rows. This shows a handful of the icons at a
 // size that survives the reduction, which is what a card is for.
 
-import { SdsAtlasIcon, SdsPredictIcon, SdsSparklesIcon } from "@czi-sds/icons";
+import { AtlasIcon, PredictIcon, SparklesIcon } from "@czi-sds/icons";
 
-const ICONS = [SdsAtlasIcon, SdsPredictIcon, SdsSparklesIcon];
+const ICONS = [AtlasIcon, PredictIcon, SparklesIcon];
 
 function App() {
   return (

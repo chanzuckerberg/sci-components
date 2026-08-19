@@ -2,7 +2,7 @@
 // icons are drawn once, so they accept `weight` and ignore it. The top row is
 // Phosphor, the bottom row is SDS.
 
-import { SdsSparkleIcon } from "@czi-sds/icons";
+import { SparkleIcon } from "@czi-sds/icons";
 import { StarIcon, type IconWeight } from "@phosphor-icons/react";
 
 const WEIGHTS: IconWeight[] = [
@@ -17,7 +17,7 @@ const WEIGHTS: IconWeight[] = [
 function App() {
   return (
     <div className="app" style={{ display: "grid", gap: "16px" }}>
-      {[StarIcon, SdsSparkleIcon].map((IconComponent, row) => (
+      {[StarIcon, SparkleIcon].map((IconComponent, row) => (
         <div key={row} style={{ display: "flex", gap: "24px" }}>
           {WEIGHTS.map((weight) => (
             <div

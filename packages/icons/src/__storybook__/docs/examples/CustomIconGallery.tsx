@@ -3,11 +3,10 @@
 import * as sdsIcons from "@czi-sds/icons";
 import type { Icon } from "@czi-sds/icons";
 
-// Every icon is exported as `Sds<Name>Icon`, which is what separates them from
-// the `createSdsIcon` factory the package also exports.
+// Everything the package exports at runtime is an icon apart from the
+// `createSdsIcon` factory, the types beside them being erased.
 const icons = Object.entries(sdsIcons).filter(
-  (entry): entry is [string, Icon] =>
-    entry[0].startsWith("Sds") && entry[0].endsWith("Icon")
+  (entry): entry is [string, Icon] => entry[0] !== "createSdsIcon"
 );
 
 function App() {

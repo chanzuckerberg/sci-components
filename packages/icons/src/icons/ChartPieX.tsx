@@ -1,7 +1,7 @@
 import art from "../defs/ChartPieX";
 import { createSdsIcon } from "../lib/createSdsIcon";
 
-export const SdsChartPieXIcon = /* @__PURE__ */ createSdsIcon(
-  "SdsChartPieXIcon",
+export const ChartPieXIcon = /* @__PURE__ */ createSdsIcon(
+  "ChartPieXIcon",
   art
 );

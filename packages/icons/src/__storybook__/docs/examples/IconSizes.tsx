@@ -1,7 +1,7 @@
 // The four SDS icon sizes. `size` takes any number or CSS length, so these are
 // the token values rather than a fixed set the component enforces.
 
-import { SdsAtlasIcon } from "@czi-sds/icons";
+import { AtlasIcon } from "@czi-sds/icons";
 
 const SIZES = [10, 12, 16, 24, 32];
 
@@ -21,7 +21,7 @@ function App() {
             gap: "8px",
           }}
         >
-          <SdsAtlasIcon size={size} />
+          <AtlasIcon size={size} />
           <span style={{ fontSize: "12px" }}>{size}px</span>
         </div>
       ))}

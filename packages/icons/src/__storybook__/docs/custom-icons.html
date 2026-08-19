@@ -8,7 +8,7 @@
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-tsx">import { SdsAtlasIcon } from "@czi-sds/icons";</code></pre>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { AtlasIcon } from "@czi-sds/icons";</code></pre>
   </figure>
 </div>
 <h2>Why these icons live in SDS</h2>
@@ -17,7 +17,7 @@
   <strong>Phosphor does not have it.</strong> Brand marks are the clearest case,
   since no icon library is going to carry the Biohub mark. The same goes for the
   concepts specific to the science these products do, such as
-  <code>SdsAtlasIcon</code> and <code>SdsUmapIcon</code>.
+  <code>AtlasIcon</code> and <code>UmapIcon</code>.
 </p>
 <p>
   <strong>Phosphor has something close, and SDS wants its own version.</strong>
@@ -37,13 +37,27 @@
 </div>
 <h2>The set</h2>
 <div class="sds-doc-example" data-example="icons/CustomIconGallery"></div>
-<h2>Why the names carry a prefix</h2>
+<h2>Names</h2>
 <p>
-  Every export is named <code>Sds&lt;Name&gt;Icon</code>. Icons now arrive from
-  two packages, and at the point of use one JSX tag looks much like another, so
-  the prefix says which package a given icon came from without a trip to the
-  import block. It also means an icon added to Phosphor later can never collide
-  with one of ours.
+  Every export is named <code>&lt;Name&gt;Icon</code>, the same convention
+  Phosphor uses, so an icon reads the same whichever package it came from and
+  the import line is what says which one that was.
+</p>
+<p>
+  One name appears in both packages: <code>SparkleIcon</code>. Phosphor has a
+  sparkle of its own, and SDS keeps a different drawing under the same name. A
+  file that needs both has to rename one of them on import.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { SparkleIcon } from "@czi-sds/icons";
+import { SparkleIcon as PhosphorSparkleIcon } from "@phosphor-icons/react";</code></pre>
+  </figure>
+</div>
+<p>
+  Prefer the SDS one where both would do, for the reason above: it is the
+  drawing the design team has settled on.
 </p>
 <h2>One drawing, every weight</h2>
 <p>

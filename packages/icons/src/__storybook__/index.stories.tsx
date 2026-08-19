@@ -80,7 +80,7 @@ export default {
 export const Default = {
   args: {
     color: "#6E4FF9",
-    icon: "SdsAtlasIcon",
+    icon: "AtlasIcon",
     mirrored: false,
     size: 32,
     weight: "regular",

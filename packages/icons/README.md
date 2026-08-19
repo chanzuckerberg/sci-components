@@ -25,13 +25,13 @@ what keeps a single copy of Phosphor in your app, which is what lets an
 
 ```tsx
 import { HeartIcon } from "@phosphor-icons/react";
-import { SdsAtlasIcon } from "@czi-sds/icons";
+import { AtlasIcon } from "@czi-sds/icons";
 
 function App() {
   return (
     <div>
       <HeartIcon size={24} weight="bold" />
-      <SdsAtlasIcon size={24} color="#3867fa" />
+      <AtlasIcon size={24} color="#3867fa" />
     </div>
   );
 }
@@ -58,10 +58,10 @@ does not change how the icon looks. Phosphor's own icons do vary by weight.
 
 ```tsx
 import { IconContext } from "@phosphor-icons/react";
-import { SdsSparkleIcon } from "@czi-sds/icons";
+import { SparkleIcon } from "@czi-sds/icons";
 
 <IconContext.Provider value={{ color: "#767676", size: 20 }}>
-  <SdsSparkleIcon /> {/* 20px and grey */}
+  <SparkleIcon /> {/* 20px and grey */}
 </IconContext.Provider>;
 ```
 
