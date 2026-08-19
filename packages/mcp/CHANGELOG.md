@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.16.0...@czi-sds/mcp@0.17.0) (2026-08-19)
+
+### Features
+
+- **docs:** pull Zeroheight docs into Storybook ([#1166](https://github.com/chanzuckerberg/sci-components/issues/1166)) ([bbe0a17](https://github.com/chanzuckerberg/sci-components/commit/bbe0a1761267445acdd213c53e9406b371be535a))
+
 # [0.16.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.15.0...@czi-sds/mcp@0.16.0) (2026-07-18)
 
 ### Features
