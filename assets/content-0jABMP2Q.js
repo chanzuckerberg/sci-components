@@ -1,0 +1,645 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Field Inputs</h1>
+<p>
+  Field Inputs are elements that allow users to type within them, providing an
+  area for users to enter content and information or perform a search.
+</p>
+<h2>Field Input Components</h2>
+<p>
+  There are two Field Input components available to use: Search Inputs allow
+  users to enter text to perform a search and Text Inputs provide a free-form
+  space for users to type in information as needed.
+</p>
+<h3>Visual Preview</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_InputSearch</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7edecb9ea3051ff2.png"
+        alt="Preview_Guidelines_InputSearch"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_InputText</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a0b8b7266abe77a9.png"
+        alt="Preview_Guidelines_InputText"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Search Input</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Search Input Styles</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Styles_Rounded</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7edecb9ea3051ff2.png"
+        alt="InputSearch_Styles_Rounded"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Styles_Square</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/0964b3e57c3d171c.png"
+        alt="InputSearch_Styles_Square"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Search Input – Rounded</h3>
+<p>
+  Use Search Input – Rounded as part of top-level or primary application
+  searches such as instances where the user will be searching across the entire
+  product or platform.
+</p>
+<p>
+  After users enter text into the Search field, an XmarkCircle icon appears; if
+  clicked the field is reset to default.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Focus</p></td>
+    <td><p>Default (user input)</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Rounded_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7edecb9ea3051ff2.png"
+        alt="InputSearch_Rounded_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Rounded_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/19693b5464802f69.png"
+        alt="InputSearch_Rounded_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Rounded_Focus</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/81c27037423278a7.png"
+        alt="InputSearch_Rounded_Focus"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Rounded_User Input</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/3233c0d5a450bfd9.png"
+        alt="InputSearch_Rounded_User Input"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Rounded_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d9249b4dd211b2f9.png"
+        alt="InputSearch_Rounded_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Search Input – Square</h3>
+<p>
+  Use Search Input – Square for searches constrained to the element the Input is
+  placed within such as when used in
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Dropdown Menus</a
+  >
+  or
+  <a href="./?path=/docs/design-documentation-dna-panel--docs" target="_top"
+    >Panels</a
+  >
+  , or within the body or main content area of applications.
+</p>
+<p>
+  After users enter text into the Search field, an XmarkCircle icon appears; if
+  clicked the field is reset to default.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Focus</p></td>
+    <td><p>Default (user input)</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Square_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/0964b3e57c3d171c.png"
+        alt="InputSearch_Square_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Square_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/51862452b455b0c6.png"
+        alt="InputSearch_Square_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Square_Focus</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a59240991ba9ff1f.png"
+        alt="InputSearch_Square_Focus"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Square_User Input</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/e57be961e18c23e4.png"
+        alt="InputSearch_Square_User Input"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Square_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/53951f09dfcf58d3.png"
+        alt="InputSearch_Square_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Search Input Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Search spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/ab6c6ccb49a00e5c.png" alt="Search spacing" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Intent Variations</h3>
+<p>
+  Use Default to communicate that the user has yet to enter a response or the
+  response is valid, Negative to communicate when a user has entered an
+  incorrect or incomplete response, and Notice when a user's response needs
+  attention.
+</p>
+<p>
+  Optionally, Intent Messages can be displayed to further communicate why a
+  Negative or Notice intent was triggered. For more information see
+  <a href="./?path=/docs/design-documentation-genes-intent--docs" target="_top"
+    >Intents</a
+  >
+  .
+</p>
+<p>
+  Each intent is demonstrated below using the Rounded variant for reference.
+  Regardless of variant, the colors used are the same:
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Negative</p></td>
+    <td><p>Negative + Intent Message</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Notice + Intent Message</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Intent_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9a1a60e09df252a9.png"
+        alt="InputSearch_Intent_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Intent_Negative</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5839ccb04d9ede85.png"
+        alt="InputSearch_Intent_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>InputSearch_Intent_Negative + Message</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/8e3c3be35d428b73.png"
+        alt="InputSearch_Intent_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputSearch_Intent_Notice</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/e877f9d71ffcaba3.png"
+        alt="InputSearch_Intent_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>InputSearch_Intent_Notice + Message</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/77350594dd9577f1.png"
+        alt="InputSearch_Intent_Notice + Message"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Text Input</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Text Input Types</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Text Input_Field</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/255428b56ca28978.png" alt="Text Input_Field" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Text Input_Area</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/0f55327288260045.png" alt="Text Input_Area" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Text Input – Field</h3>
+<p>
+  Text Input – Field is designed to fit one line of text and should be only used
+  when there is a limited amount or a single line's worth of content intended
+  for the user to input.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Focus</p></td>
+    <td><p>Default (user input)</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Field_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/52f5ae34790ea7c5.png"
+        alt="TextInput_Field_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Field_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5d099cb260a14fb1.png"
+        alt="TextInput_Field_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Field_Focus</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a3544ab5a5e82ff9.png"
+        alt="TextInput_Field_Focus"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Field_User Input</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/2d423f4878f3b401.png"
+        alt="TextInput_Field_User Input"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Field_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/500c876d266fc5a3.png"
+        alt="TextInput_Field_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Text Input – Area</h3>
+<p>
+  Text Input – Area is meant to fit multiple lines of text and should be used
+  when there is the potential that the user will want or need to input more than
+  a single line's worth of content.
+</p>
+<p>
+  It includes a handle in the bottom right corner that the user can grab and
+  drag to expand its size.
+</p>
+<p>
+  It can be set to accept a specific number of characters in case there is a
+  need to limit how much content the user can enter.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Focus</p></td>
+    <td><p>Default (user input)</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Area_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/0f55327288260045.png"
+        alt="TextInput_Area_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Area_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/bc0d871abc18b1f3.png"
+        alt="TextInput_Area_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Area_Focus</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/c83b198814765340.png"
+        alt="TextInput_Area_Focus"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Area_User Input</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/13e3593f5ef4316f.png"
+        alt="TextInput_Area_User Input"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TextInput_Area_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/79ed93ae6c4c672f.png"
+        alt="TextInput_Area_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Text Input Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Text Input spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/61736a1904f2dfb5.png" alt="Text Input spacing" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Text Input Intent Variations</h3>
+<p>
+  Use Default to communicate that the user has yet to enter a response or the
+  response is valid, Negative to communicate when a user has entered an
+  incorrect or incomplete response, Notice when a user's response needs
+  attention, and Positive when a user's response is accepted or correct.
+</p>
+<p>
+  Optionally, Intent Messages can be displayed to further communicate why a
+  Negative, Notice, or Positive intent was triggered. For more information see
+  <a href="./?path=/docs/design-documentation-genes-intent--docs" target="_top"
+    >Intents</a
+  >
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Negative</p></td>
+    <td><p>Negative + Intent Message</p></td>
+    <td><p>Notice</p></td>
+    <td><p>Notice + Intent Message</p></td>
+    <td><p>Positive</p></td>
+    <td><p>Positive + Intent Message</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/515311815a05070f.png"
+        alt="InputText_Field_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Negative + Message</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b481bbacc918b8c1.png"
+        alt="InputText_Field_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Negative</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/eef9c73f7bf60dd7.png"
+        alt="InputText_Field_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Notice</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/deecc9df8e8dfc60.png"
+        alt="InputText_Field_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Notice + Message</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/ecec313aa029b4aa.png"
+        alt="InputText_Field_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Positive</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/8155844280e63622.png"
+        alt="InputText_Field_Positive"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Field_Positive + Message</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/3797af0a521840b0.png"
+        alt="InputText_Field_Positive + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/e4ba5839de893da1.png"
+        alt="InputText_Area_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Negative</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/92da1527c112d6f4.png"
+        alt="InputText_Area_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Negative + Message</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9ad7b9f86ab4ed10.png"
+        alt="InputText_Area_Negative + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Notice</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b9065ea514b44ba2.png"
+        alt="InputText_Area_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Notice + Message</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/8cbd875ef8535376.png"
+        alt="InputText_Area_Notice + Message"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Positive</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/108c46b6c3a638e0.png"
+        alt="InputText_Area_Positive"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>InputText_Area_Positive + Message</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/c688d39f101b9ced.png"
+        alt="InputText_Area_Positive + Message"
+      />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};

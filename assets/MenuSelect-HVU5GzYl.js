@@ -1,0 +1,13 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{t as n}from"./react-CK_LJ1AD.js";import{Ao as r,E as i,Eo as a,Hn as o,Ur as s,Zr as c,ao as l,ea as u,gn as d,ko as f}from"./iframe-s0DqqZ6S.js";import{n as p,t as m}from"./Icon-BAm62WT8.js";import{n as h,t as g}from"./Button-Knlg9A8k.js";import{a as _,s as v}from"./utils-BxIa431Z.js";import{n as y,r as b,t as x}from"./warnings-BQutdZTz.js";import{n as S,t as C}from"./InputSearch-g97p9fPD.js";import{n as w,t as T}from"./MenuItem-YXnVi7mN.js";var E,D,O,k,A,j=e((()=>{r(),o(),S(),w(),i(),E=f(T,{target:`ezmiyu43`})({name:`1d3w5wq`,styles:`width:100%`}),D=[`search`,`InputBaseProps`,`keepSearchOnSelect`],O=f(u,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu42`})(({search:e})=>!e&&`height: 0; margin: 0 !important;`,` width:100%;`),k=f(`div`,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu41`})(e=>{let{search:t}=e;return t?`
+      margin: ${d(e)?.s}px;
+    `:`
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        margin: 0;
+      `},`;`),A=f(C,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu40`})(`&&{margin:0;caret-color:`,({search:e})=>e?`auto`:`transparent`,`;.`,l.root,`{width:100%;padding:0;padding-right:14px!important;}}`)})),M,N,P,F=e((()=>{o(),M=t(n()),_(),y(),h(),j(),p(),N=t(a()),P=e=>{let{keepSearchOnSelect:t=!0,multiple:n=!1,getOptionLabel:r=_,renderValue:i=y,renderOption:a=S,disableCloseOnSelect:o=n,noOptionsText:l=`No options`,search:u=!1,InputBaseProps:d={},onInputChange:f=v}=e,[p,h]=(0,M.useState)(``);return b(x.MenuSelectDeprecated),(0,N.jsx)(O,{clearOnBlur:!1,open:!0,disableCloseOnSelect:o,disablePortal:!0,renderValue:i,noOptionsText:l,renderOption:a,slots:{listbox:s},getOptionLabel:r,inputValue:p,renderInput:e=>(0,N.jsx)(k,{search:u,children:(0,N.jsx)(A,{id:`location-search`,label:`Search for a location`,placeholder:`Search`,ref:e.slotProps.input.ref,search:u,autoFocus:!0,onKeyDown:e=>{e.key===`Backspace`&&e.stopPropagation()},slotProps:{htmlInput:e.slotProps.htmlInput,input:{inputMode:u?`text`:`none`,...e.slotProps.input.ref,endAdornment:(0,N.jsx)(c,{position:`end`,children:(0,N.jsx)(g,{size:`large`,sdsType:`secondary`,sdsStyle:`minimal`,backgroundOnHover:!1,children:(0,N.jsx)(m,{sdsIcon:`Search`,sdsSize:`s`})})})}},...d})}),...e,onInputChange:(e,n,r)=>{e&&e.type===`blur`?h(``):(r!==`reset`||r===`reset`&&!t)&&h(n),f&&f(e,n,r)}});function _(e){return typeof e==`object`&&`name`in e?e.name:e.toString()}function y(){return null}function S(e,t,{selected:r}){return(0,N.jsx)(E,{component:`li`,isMultiSelect:n,selected:r,...e,children:t.name})}}}));export{F as n,P as t};

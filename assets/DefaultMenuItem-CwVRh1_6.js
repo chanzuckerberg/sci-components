@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n,Hn as r,Ur as i}from"./iframe-s0DqqZ6S.js";import{t as a}from"./src-kj6aSrnX.js";import{t as o}from"./MenuItem-YXnVi7mN.js";function s(){return(0,c.jsx)(`div`,{className:`app`,children:(0,c.jsx)(i,{children:(0,c.jsx)(o,{children:`MenuItem 1`})})})}var c;e((()=>{a(),r(),c=t(n())}))();export{s as default};

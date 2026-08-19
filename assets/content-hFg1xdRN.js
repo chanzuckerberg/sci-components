@@ -1,0 +1,528 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Spacing</h1>
+<p>
+  Spacing variables ensure spacing is consistent throughout the product while
+  streamlining design and development time.
+</p>
+<h3>Types of Spacing</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Spacing Type</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/746dc110649fa483.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inset Spacing</p></td>
+    <td>
+      <p>
+        Spacing specifically for container padding on items like modals,
+        callout, dropdown menus, etc.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/3fac0c5e1d65cca0.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inline Spacing</p></td>
+    <td>
+      <p>
+        Margins for spacing on the left or right of elements; standardizing for
+        margins to the right of elements is recommended.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/3f449d0948bef390.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Stacked Spacing</p></td>
+    <td>
+      <p>
+        Margins for spacing above or below elements; standardizing for margins
+        below elements is recommended.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Spacing Sizes</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variables</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceDefault</code></p>
+    </td>
+    <td>
+      <img src="design-assets/8333cc057e5aca39.png" class="sds-doc-image" />
+    </td>
+    <td><p>[none]</p></td>
+    <td>
+      <p><code>--sds-space-default</code></p>
+      <p><code>$sds-space-default</code></p>
+    </td>
+    <td>
+      <p><code>12px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceXxxs</code></p>
+    </td>
+    <td>
+      <img src="design-assets/4898d1b3ee6f03bf.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceXxxs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-xxxs</code></p>
+      <p><code>$sds-space-xxxs</code></p>
+    </td>
+    <td>
+      <p><code>2px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceXxs</code></p>
+    </td>
+    <td>
+      <img src="design-assets/10ff3d2edbd73c6e.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceXxs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-xxs</code></p>
+      <p><code>$sds-space-xxs</code></p>
+    </td>
+    <td>
+      <p><code>4px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceXs</code></p>
+    </td>
+    <td>
+      <img src="design-assets/347a294479427251.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceXs</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-xs</code></p>
+      <p><code>$sds-space-xs</code></p>
+    </td>
+    <td>
+      <p><code>6px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceS</code></p>
+    </td>
+    <td>
+      <img src="design-assets/ee048df53b29cb5a.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceS</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-s</code></p>
+      <p><code>$sds-space-s</code></p>
+    </td>
+    <td>
+      <p><code>8px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceM</code></p>
+    </td>
+    <td>
+      <img src="design-assets/e21aac7cd214f2cf.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceM</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-m</code></p>
+      <p><code>$sds-space-m</code></p>
+    </td>
+    <td>
+      <p><code>12px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceL</code></p>
+    </td>
+    <td>
+      <img src="design-assets/d406159034bb9019.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceL</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-l</code></p>
+      <p><code>$sds-space-l</code></p>
+    </td>
+    <td>
+      <p><code>16px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceXl</code></p>
+    </td>
+    <td>
+      <img src="design-assets/b94fff6a8aefbb63.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceXl</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-xl</code></p>
+      <p><code>$sds-space-xl</code></p>
+    </td>
+    <td>
+      <p><code>24px</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>spaceXxl</code></p>
+    </td>
+    <td>
+      <img src="design-assets/bbb40576dfaf73dc.png" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>spaceXxl</code></p>
+    </td>
+    <td>
+      <p><code>--sds-space-xxl</code></p>
+      <p><code>$sds-space-xxl</code></p>
+    </td>
+    <td>
+      <p><code>40px</code></p>
+    </td>
+  </tr>
+</table>
+<h3>Inset Spacing Variables</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/827e6fbe940f7853.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceXxl;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/c1f92a2da6da9d78.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceXl;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/746dc110649fa483.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceL;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/10efa8dbcca9161e.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceM;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/e1781220013cd7c5.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceS;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/086364e5a7c8b633.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceXs;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/304e00b478cdd775.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceXxs;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/d887ab1797a21212.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>padding: spaceXxxs;</code></p>
+    </td>
+  </tr>
+</table>
+<h3>Inline Spacing Variables</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/3dbdd268c2683269.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceXxl;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/5d768fb5f483e864.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceXl;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/3fac0c5e1d65cca0.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceL;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/b2b8604104d20e03.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceM;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/c0c4fbadfaf2f2cf.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceS;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/2bde3de292ae7b3a.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceXs;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/9b5752f4e570bb66.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceXxs;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/d0438d1968f0ef4a.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-right: spaceXxxs;</code></p>
+    </td>
+  </tr>
+</table>
+<h3>Stacked Spacing Variables</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Visual</strong></p>
+    </td>
+    <td>
+      <p><strong>Value</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/9ea37bae997bbc89.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceXxl;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/91c615a16e173b23.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceXl;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/3f449d0948bef390.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceL;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/e5f379254800067f.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceM;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/16df352819697ecc.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceS;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/5230aee12ba80037.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceXs;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/77077a1f368011ca.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceXxs;</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/bfab61f8d5fbe831.svg" class="sds-doc-image" />
+    </td>
+    <td>
+      <p><code>margin-bottom: spaceXxxs;</code></p>
+    </td>
+  </tr>
+</table>
+<h3>Examples</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Example</strong></p>
+    </td>
+    <td>
+      <p><strong>Spacing Type</strong></p>
+    </td>
+    <td>
+      <p><strong>Usage</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/b6d564f9ccf15ba3.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inset Spacing</p></td>
+    <td>
+      <p>
+        Spacing specifically for container padding on items like
+        <a
+          href="./?path=/docs/design-documentation-dna-dialog--docs"
+          target="_top"
+          >Dialogs</a
+        >
+        ,
+        <a
+          href="./?path=/docs/design-documentation-dna-callout--docs"
+          target="_top"
+          >Callouts</a
+        >
+        ,
+        <a
+          href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+          target="_top"
+          >Dropdown Menus</a
+        >
+        , etc.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/14c5a55d658db947.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Inline Spacing</p></td>
+    <td>
+      <p>
+        Margins for spacing on the left or right of elements; standardizing for
+        margins to the right of elements is recommended.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="design-assets/b79c34f795cf6113.svg" class="sds-doc-image" />
+    </td>
+    <td><p>Stacked Spacing</p></td>
+    <td>
+      <p>
+        Margins for spacing above or below elements; standardizing for margins
+        below elements is recommended.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

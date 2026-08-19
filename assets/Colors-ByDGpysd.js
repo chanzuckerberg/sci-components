@@ -1,0 +1,8306 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-s0DqqZ6S.js";import{a as r,o as i,v as a}from"./blocks-n09s2VMx.js";import{t as o}from"./mdx-react-shim-Bgk5PEr0.js";import{n as s,r as c}from"./SdsDoc-B58uSauf.js";var l,u=e((()=>{l=`<h1>Colors</h1>
+<p>
+  Color helps communicate usage and intent while providing brand distinction.
+  The SDS palette has been selected for meaning, accessibility, and cohesion.
+</p>
+<h2>Semantic Colors</h2>
+<h2>Color Overview</h2>
+<p>
+  SDS uses a pragmatic naming system for its color variables that ensures
+  consistency around how colors are used across UI elements. Colors are split
+  into three types (Primitive, Semantic, and Visualization) and two modes, Light
+  and Dark (Visualization Colors are currently only available in Light Mode);
+  see
+  <a href="./?path=/docs/design-documentation-bases-theming--docs" target="_top"
+    >Theming</a
+  >
+  for more details about implementing Dark Mode.
+</p>
+<p>
+  Primitive Colors are base variables that tie directly to hex codes whereas
+  Semantic Colors take these Primitive Color variables and map them to new
+  variables that are specific to UI elements, intents, and states. Visualization
+  Colormaps are specifically for use in data visualizations.
+</p>
+<h2>Semantic Colors</h2>
+<p>
+  While
+  <a href="./?path=/docs/design-documentation-bases-colors--docs" target="_top"
+    >Primitive Color</a
+  >
+  variables define the individual colors within the design system, Semantic
+  Color variables define how those colors are used throughout it. Each element
+  in the design system that can have color applied to it, whether a border, a
+  background, a piece of text, etc., is built using Semantic Color variables.
+</p>
+<p>
+  Semantic Color variables are named in such a way as to create predictable
+  usage across SDS. They start with the variable group, followed by the element
+  it is applied to, and then add any number of modifiers to communicate the
+  color's specific application within the UI, such as prominence or state.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Semantic Colors_Overview_Naming</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d97046a71a9e18c8.png"
+        alt="Color_Semantic Colors_Overview_Naming"
+      />
+    </figure>
+  </figure>
+</div>
+<p>
+  Because Semantic Color variables are scoped to individual UI elements, a
+  single Primitive Color variable, such as <code>blue500</code> (Light Mode) or
+  <code>blue600</code> (Dark Mode), can be mapped to a range of Semantic Color
+  variables like <code>Accent.border</code>, <code>Accent.ornament</code>,
+  <code>Accent.text-action</code>, etc. since all of these elements are the same
+  color.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Semantic Colors_Overview_Primitive Scoping_Light</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a35e4510b70a9c3b.png"
+        alt="Color_Semantic Colors_Overview_Primitive Scoping_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Semantic Colors_Overview_Primitive Scoping_Dark</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/315a40cf5cb205c8.png"
+        alt="Color_Semantic Colors_Overview_Primitive Scoping_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<h3>Semantic Color Variable Groups</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Base</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/8c8c8f42a1e1f122.png"
+        alt="Colors_Semantic_Base"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Action</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/4a4bb87e286ae5e0.png"
+        alt="Colors_Semantic_Action"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Accent</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/4a4bb87e286ae5e0.png"
+        alt="Colors_Semantic_Accent"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Beta</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/3da6d9e2be73d713.png"
+        alt="Colors_Semantic_Beta"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Info</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/4a4bb87e286ae5e0.png"
+        alt="Colors_Semantic_Info"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Negative</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/39b918b27fecd10c.png"
+        alt="Colors_Semantic_Negative"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Neutral</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/8c8c8f42a1e1f122.png"
+        alt="Colors_Semantic_Neutral"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Notice</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/e801436d6d8bc052.png"
+        alt="Colors_Semantic_Notice"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Positive</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/1e2fd931e55c665d.png"
+        alt="Colors_Semantic_Positive"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Base Colors</h3>
+<h4>Background and Surface</h4>
+<p>
+  Base Surface and Background colors create dimension, hierarchy, and separation
+  between content.
+</p>
+<p>
+  <code>Background-primary</code> is used for the empty space that a page's
+  content is placed upon (i.e., the page's main or base-level background).
+  <code>Background-secondary</code> and <code>background-tertiary</code>
+  are used when additional hierarchy is needed within one layer.
+</p>
+<p>
+  Always implement the Background Colors in order, such that
+  <code>background-secondary</code> is layered on top of
+  <code>background-primary</code> and <code>background-tertiary</code> is
+  layered on top of <code>background-secondary</code>; never layer
+  <code>background-tertiary</code> directly on top of
+  <code>background-primary</code>.
+</p>
+<p>
+  Use <code>surface</code>
+  for elements that are placed at a higher elevation than the page's main
+  content such as the case with
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Dropdown Menu</a
+  >
+  or
+  <a href="./?path=/docs/design-documentation-dna-dialog--docs" target="_top"
+    >Dialog</a
+  >
+  .
+</p>
+<p>
+  When greater visual contrast is needed use
+  <code>background-primary-inverse</code>,
+  <code>background-secondary-inverse</code>, and <code>surface-inverse</code>.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Semantic Colors_Base_Surface_Light</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7d50d4e8eeebde42.png"
+        alt="Color_Semantic Colors_Base_Surface_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Semantic Colors_Base_Surface_Dark</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/29c42333630527a8.png"
+        alt="Color_Semantic Colors_Base_Surface_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Figma Variable</p></td>
+    <td><p>CSS / SCSS Variables</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>background-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.background-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#101010"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#101010</title>
+          </svg>
+          Base.background-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-background-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-background-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-background-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>background-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#f8f8f8"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#f8f8f8</title>
+          </svg>
+          Base.background-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#333333"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#333333</title>
+          </svg>
+          Base.background-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-background-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-background-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-background-secondary-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>background-tertiary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ededed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ededed</title>
+          </svg>
+          Base.background-tertiary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#494949"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#494949</title>
+          </svg>
+          Base.background-tertiary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-background-tertiary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-background-tertiary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-background-tertiary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>background-primary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.background-primary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.background-primary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-background-primary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-background-primary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-background-primary-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>background-secondary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#3b3b3b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#3b3b3b</title>
+          </svg>
+          Base.background-secondary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ededed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ededed</title>
+          </svg>
+          Base.background-secondary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-background-secondary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-background-secondary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-background-secondary-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.surface
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#333333"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#333333</title>
+          </svg>
+          Base.surface
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-surface</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-base-surface</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-base-surface-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.surface-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ededed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ededed</title>
+          </svg>
+          Base.surface-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-surface-inverse</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-surface-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-surface-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Base Fill colors are used for element backgrounds that are interactive and
+  change in response to users hovering, pressing, etc.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Color_Base Colors_Fill_Light</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/c6ae89ad99e70db9.png"
+        alt="Color_Base Colors_Fill_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Color_Base Colors_Fill_Dark</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/832328ebc3d312fa.png"
+        alt="Color_Base Colors_Fill_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Figma Variable</p></td>
+    <td><p>CSS / SCSS Variable</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#333333"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#333333</title>
+          </svg>
+          Base.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-primary</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(195, 195, 195, 0.2000)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(195, 195, 195, 0.2000)</title>
+          </svg>
+          Base.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(105, 105, 105, 0.5800)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(105, 105, 105, 0.5800)</title>
+          </svg>
+          Base.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(195, 195, 195, 0.2000)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(195, 195, 195, 0.2000)</title>
+          </svg>
+          Base.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(105, 105, 105, 0.5800)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(105, 105, 105, 0.5800)</title>
+          </svg>
+          Base.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-open</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(195, 195, 195, 0.2000)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(195, 195, 195, 0.2000)</title>
+          </svg>
+          Base.fill-open
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(105, 105, 105, 0.5800)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(105, 105, 105, 0.5800)</title>
+          </svg>
+          Base.fill-open
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-open</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-base-fill-open</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-open-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-selected</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.fill-selected
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.fill-selected
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-selected</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-selected</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-selected-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(195, 195, 195, 0.3400)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(195, 195, 195, 0.3400)</title>
+          </svg>
+          Base.fill-hover-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(105, 105, 105, 0.0800)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(105, 105, 105, 0.0800)</title>
+          </svg>
+          Base.fill-hover-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-hover-inverse</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-hover-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-hover-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(195, 195, 195, 0.3400)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(195, 195, 195, 0.3400)</title>
+          </svg>
+          Base.fill-pressed-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(105, 105, 105, 0.0800)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(105, 105, 105, 0.0800)</title>
+          </svg>
+          Base.fill-pressed-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-pressed-inverse</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-pressed-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-fill-pressed-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-open-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(195, 195, 195, 0.3400)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(195, 195, 195, 0.3400)</title>
+          </svg>
+          Base.fill-open-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="rgba(105, 105, 105, 0.0800)"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>rgba(105, 105, 105, 0.0800)</title>
+          </svg>
+          Base.fill-open-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-open-inverse</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-open-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-open-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-disabled</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#dfdfdf"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#dfdfdf</title>
+          </svg>
+          Base.fill-disabled
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#494949"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#494949</title>
+          </svg>
+          Base.fill-disabled
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-fill-disabled</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-fill-disabled</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-fill-disabled-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border and Divider</h4>
+<p>Base Border colors are used for element borders.</p>
+<p>
+  Base <code>border-table</code>
+  is intended to be used only on the borders that separate rows and columns in
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Tables</a
+  >
+  .
+</p>
+<p>
+  Base <code>divider</code>
+  is intended to be used only on horizontal dividers that separate blocks of
+  content.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Base Colors_Border and Divider_Light</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/eddbe9a657ce7b33.png"
+        alt="Color_Base Colors_Border and Divider_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Base Colors_Border and Divider_Dark</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/f4dad6d9d2ae4462.png"
+        alt="Color_Base Colors_Border and Divider_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Base.border-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Base.border-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-border-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.border-primary-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.border-primary-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-hover-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.border-primary-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.border-primary-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-primary-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-pressed-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-disabled</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Base.border-primary-disabled
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Base.border-primary-disabled
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-primary-disabled</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-disabled</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-disabled-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Base.border-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Base.border-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-border-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Base.border-primary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Base.border-primary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-primary-inverse</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-primary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-hover-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.border-primary-hover-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.border-primary-hover-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-border-primary-hover-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-border-primary-hover-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-hover-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-pressed-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.border-primary-pressed-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.border-primary-pressed-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-border-primary-pressed-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-border-primary-pressed-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-pressed-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-primary-disabled-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Base.border-primary-disabled-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Base.border-primary-disabled-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-border-primary-disabled-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-border-primary-disabled-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-border-primary-disabled-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-on-fill</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.border-on-fill
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.border-on-fill
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-border-on-fill</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-border-on-fill</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-border-on-fill-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>divider</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#dfdfdf"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#dfdfdf</title>
+          </svg>
+          Base.divider
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#494949"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#494949</title>
+          </svg>
+          Base.divider
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-divider</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-base-divider</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-base-divider-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>divider-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Base.divider-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Base.divider-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-divider-inverse</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-divider-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-divider-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Base Ornament colors are used primarily in components that contain icons that
+  are integral to their functionality, such as
+  <a href="./?path=/docs/design-documentation-dna-accordion--docs" target="_top"
+    >Accordions</a
+  >
+  ,
+  <a
+    href="./?path=/docs/design-documentation-genes-dropdown-input--docs"
+    target="_top"
+    >Dropdown Inputs</a
+  >
+  , etc.
+</p>
+<p>
+  When the fill of the element that the ornament is placed on top of is too dark
+  in both Light Mode and Dark Mode, and using the same color in both modes is
+  needed to pass visual accessibility, such as the icon inside primary
+  <a
+    href="./?path=/docs/design-documentation-genes-buttons--docs"
+    target="_top"
+  >
+    Buttons
+  </a>
+  , use <code>ornament-on-fill</code>.
+</p>
+<p>When visual contrast is needed use <code>ornament-primary-inverse</code>.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Base_Icon_Light</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/3eddec305752046c.png"
+        alt="Colors_Semantic_Base_Icon_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Base_Icon_Dark</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d723bac5d8d0f1ab.png"
+        alt="Colors_Semantic_Base_Icon_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Base.ornament-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Base.ornament-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-secondary-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-secondary-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-hover</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-secondary-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-hover-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-secondary-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-secondary-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-pressed</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-primary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-primary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-primary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-primary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-primary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-primary-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Base.ornament-secondary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Base.ornament-secondary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary-hover-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-secondary-hover-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-secondary-hover-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        SS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-hover-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-hover-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-hover-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-secondary-pressed-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-secondary-pressed-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Base.ornament-secondary-pressed-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-secondary-pressed-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-secondary-pressed-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-on-fill</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-on-fill
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Base.ornament-on-fill
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-on-fill</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-on-fill</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-on-fill-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-disabled</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Base.ornament-disabled
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Base.ornament-disabled
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-base-ornament-disabled</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-base-ornament-disabled</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-base-ornament-disabled-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-disabled-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Base.ornament-disabled-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Base.ornament-disabled-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code
+          >--sds-color-semantic-component-base-ornament-disabled-inverse</code
+        >
+      </p>
+      <p>
+        SCSS light:
+        <code
+          >$sds-color-semantic-component-base-ornament-disabled-inverse</code
+        >
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-base-ornament-disabled-inverse-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  Base Text colors are to be used for text throughout applications built using
+  SDS.
+</p>
+<p>
+  If there is a need to communicate that a text element is interactive, such as
+  a
+  <a href="./?path=/docs/design-documentation-genes-link--docs" target="_top"
+    >Link</a
+  >
+  , or indicate a specific intent, such as beta, info, negative, neutral,
+  notice, or positive, use the Text Color variable that aligns to those needs as
+  shown in the corresponding sections below.
+</p>
+<p>
+  Base <code>text-primary-inverse</code> and <code>text-secondary-inverse</code>
+  are used only when the fill of the element that the text is placed on top of
+  is too dark or light to be legible and an alternate color is needed to pass
+  visual accessibility, such as the text inside inverted
+  <a
+    href="./?path=/docs/design-documentation-genes-tooltips--docs"
+    target="_top"
+  >
+    Tooltips
+  </a>
+  .
+</p>
+<p>
+  When the fill of the element that the text is placed on top of is too dark in
+  both Light Mode and Dark Mode, and using the same color in both modes is
+  needed to pass visual accessibility, such as the text inside primary
+  <a
+    href="./?path=/docs/design-documentation-genes-buttons--docs"
+    target="_top"
+  >
+    Buttons
+  </a>
+  , use <code>text-on-fill</code>.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Base_Text_Light</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b5569fe9a7c8d843.png"
+        alt="Colors_Semantic_Base_Text_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Semantic_Base_Text_Dark</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9de45f17152d0566.png"
+        alt="Colors_Semantic_Base_Text_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Text.primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Text.primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-primary</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-primary</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-primary-dark</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Text.secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Text.secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-secondary</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-secondary</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-base-text-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tertiary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a5a5a5"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a5a5a5</title>
+          </svg>
+          Text.tertiary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#9b9b9b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#9b9b9b</title>
+          </svg>
+          Text.tertiary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-tertiary</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-tertiary</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-tertiary-dark</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>primary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Text.primary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#000000"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#000000</title>
+          </svg>
+          Text.primary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-primary-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-base-text-primary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-base-text-primary-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>secondary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Text.secondary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Text.secondary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-secondary-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-text-base-secondary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-text-base-secondary-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tertiary-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#969696"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#969696</title>
+          </svg>
+          Text.tertiary-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#aaaaaa"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#aaaaaa</title>
+          </svg>
+          Text.tertiary-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-tertiary-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-base-text-tertiary-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-base-text-tertiary-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>on-fill</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Text.on-fill
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffffff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffffff</title>
+          </svg>
+          Text.on-fill
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-on-fill</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-on-fill</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-on-fill-dark</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c3c3c3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c3c3c3</title>
+          </svg>
+          Text.disabled
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#696969"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#696969</title>
+          </svg>
+          Text.disabled
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-base-text-disabled</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-base-text-disabled</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-base-text-disabled-dark</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled-inverse</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Text.disabled-inverse
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Text.disabled-inverse
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-base-text-disabled-inverse</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-base-text-disabled-inverse</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-base-text-disabled-inverse-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Action Colors</h3>
+<h4>Text</h4>
+<p>
+  Action Text colors are used to communicate that a block of text is
+  interactive, such as a
+  <a href="./?path=/docs/design-documentation-genes-link--docs" target="_top"
+    >Link</a
+  >
+  .
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>action</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Text.action
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Text.action
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-accent-text-action</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-accent-text-action</code></p>
+      <p>SCSS dark: <code>$sds-color-semantic-accent-text-action-dark</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>action-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Text.action-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cde3ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cde3ff</title>
+          </svg>
+          Text.action-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-accent-text-action-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-accent-text-action-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-accent-text-action-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>action-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#002d90"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#002d90</title>
+          </svg>
+          Text.action-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e2eeff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e2eeff</title>
+          </svg>
+          Text.action-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-accent-text-action-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-accent-text-action-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-accent-text-action-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Accent Colors</h3>
+<h4>Surface</h4>
+<p>
+  Accent Surface colors are used for the background and fills of non-interactive
+  elements or sections that use an application's primary color.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#2573f4"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#2573f4</title>
+          </svg>
+          Accent.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#edf3fd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#edf3fd</title>
+          </svg>
+          Accent.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0f1d4a"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0f1d4a</title>
+          </svg>
+          Accent.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-surface-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Accent Fill Colors are used on elements where the primary color is needed that
+  are interactive and change in response to users hovering, pressing, etc.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#2573f4"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#2573f4</title>
+          </svg>
+          Accent.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-fill-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Accent.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cde3ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cde3ff</title>
+          </svg>
+          Accent.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-accent-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#002d90"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#002d90</title>
+          </svg>
+          Accent.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e2eeff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e2eeff</title>
+          </svg>
+          Accent.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>Accent Border Colors are used on interactive elements with borders.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-accent-border</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-accent-border-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Accent.border-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cde3ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cde3ff</title>
+          </svg>
+          Accent.border-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#002d90"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#002d90</title>
+          </svg>
+          Accent.border-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e2eeff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e2eeff</title>
+          </svg>
+          Accent.border-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-open</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.border-open
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.border-open
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-open</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-open</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-open-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-focus</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.border-focus
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.border-focus
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-focus</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-focus</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-focus-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border-selected</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.border-selected
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.border-selected
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-border-selected</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-border-selected</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-border-selected-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Accent <code>ornament</code>
+  is used whenever an interactive element contains an icon or other small area
+  of color that needs to be displayed in the accent color.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-accent-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Accent.ornament-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cde3ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cde3ff</title>
+          </svg>
+          Accent.ornament-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#002d90"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#002d90</title>
+          </svg>
+          Accent.ornament-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e2eeff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e2eeff</title>
+          </svg>
+          Accent.ornament-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-open</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.ornament-open
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.ornament-open
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-open</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-open</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-open-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-focus</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.ornament-focus
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.ornament-focus
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-focus</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-focus</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-focus-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament-selected</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Accent.ornament-selected
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Accent.ornament-selected
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-accent-ornament-selected</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-accent-ornament-selected</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-accent-ornament-selected-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Beta Colors</h3>
+<h4>Surface</h4>
+<p>
+  Beta Surface colors are used for the backgrounds and fills of non-interactive
+  elements or sections that communicate a Beta intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#8b54e2"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#8b54e2</title>
+          </svg>
+          Beta.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#905de6"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#905de6</title>
+          </svg>
+          Beta.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-beta-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#efeafe"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#efeafe</title>
+          </svg>
+          Beta.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#331252"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#331252</title>
+          </svg>
+          Beta.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-beta-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-surface-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Beta Fill Colors are used on elements that are interactive and change in
+  response to users hovering, pressing, etc. where a Beta intent needs to be
+  communicated.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#8b54e2"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#8b54e2</title>
+          </svg>
+          Beta.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#905de6"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#905de6</title>
+          </svg>
+          Beta.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-primary</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#6526b5"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#6526b5</title>
+          </svg>
+          Beta.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e4dcfc"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e4dcfc</title>
+          </svg>
+          Beta.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#490092"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#490092</title>
+          </svg>
+          Beta.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#f0ebfe"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#f0ebfe</title>
+          </svg>
+          Beta.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#efeafe"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#efeafe</title>
+          </svg>
+          Beta.fill-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#331252"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#331252</title>
+          </svg>
+          Beta.fill-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-fill-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-beta-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-beta-fill-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>
+  Beta <code>border</code>
+  is used on element borders that need to communicate a Beta intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#6526b5"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#6526b5</title>
+          </svg>
+          Beta.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cebef8"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cebef8</title>
+          </svg>
+          Beta.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-border</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-beta-border</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-beta-border-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Beta <code>ornament</code>
+  is used whenever a Beta intent needs to be communicated visually on an icon or
+  other small colored element.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#6526b5"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#6526b5</title>
+          </svg>
+          Beta.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cebef8"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cebef8</title>
+          </svg>
+          Beta.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-beta-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-beta-ornament</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-beta-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  The Beta <code>text</code>
+  variable is used whenever text needs to communicate a Beta intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text-beta</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#6526b5"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#6526b5</title>
+          </svg>
+          Text.beta
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cebef8"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cebef8</title>
+          </svg>
+          Text.beta
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-component-beta-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-beta-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-beta-text-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Info Colors</h3>
+<h4>Surface</h4>
+<p>
+  Info Surface colors are used for the backgrounds and fills of non-interactive
+  elements or sections that communicate an Info intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Info.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#2573f4"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#2573f4</title>
+          </svg>
+          Info.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-info-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#edf3fd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#edf3fd</title>
+          </svg>
+          Info.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0f1d4a"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0f1d4a</title>
+          </svg>
+          Info.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-info-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-surface-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Info Fill Colors are used on elements that are interactive and change in
+  response to users hovering, pressing, etc. where an Info intent needs to be
+  communicated.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#1a6cef"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#1a6cef</title>
+          </svg>
+          Info.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#2573f4"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#2573f4</title>
+          </svg>
+          Info.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-primary</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Info.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cde3ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cde3ff</title>
+          </svg>
+          Info.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#002d90"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#002d90</title>
+          </svg>
+          Info.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e2eeff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e2eeff</title>
+          </svg>
+          Info.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#edf3fd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#edf3fd</title>
+          </svg>
+          Info.fill-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0f1d4a"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0f1d4a</title>
+          </svg>
+          Info.fill-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-fill-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-info-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-info-fill-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>
+  Info <code>border</code>
+  is used on element borders that need to communicate an Info intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Info.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Info.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-border</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-info-border</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-info-border-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Info <code>ornament</code>
+  is used whenever an Info intent needs to be communicated visually on an icon
+  or other small colored element.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Info.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Info.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-info-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-info-ornament</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-info-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  The info <code>text</code>
+  variable is used whenever text needs to communicate an Info intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text-info</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#0041b9"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#0041b9</title>
+          </svg>
+          Text.info
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#a2c9ff"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#a2c9ff</title>
+          </svg>
+          Text.info
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark: <code>--sds-color-semantic-component-info-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-info-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-info-text-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Negative Colors</h3>
+<h4>Surface</h4>
+<p>
+  Negative Surface colors are used for the backgrounds and fills of
+  non-interactive elements or sections that communicate a Negative intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#db2131"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#db2131</title>
+          </svg>
+          Negative.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c73028"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c73028</title>
+          </svg>
+          Negative.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffe8e6"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffe8e6</title>
+          </svg>
+          Negative.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#330603"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#330603</title>
+          </svg>
+          Negative.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-negative-surface-secondary-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Negative Fill Colors are used on elements that are interactive and change in
+  response to users hovering, pressing, etc. where a Negative intent needs to be
+  communicated.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#db2131"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#db2131</title>
+          </svg>
+          Negative.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#c73028"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#c73028</title>
+          </svg>
+          Negative.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b80017"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b80017</title>
+          </svg>
+          Negative.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffbdb3"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffbdb3</title>
+          </svg>
+          Negative.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#6f0008"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#6f0008</title>
+          </svg>
+          Negative.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffd8d1"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffd8d1</title>
+          </svg>
+          Negative.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffe8e6"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffe8e6</title>
+          </svg>
+          Negative.fill-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#330603"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#330603</title>
+          </svg>
+          Negative.fill-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-fill-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-negative-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-fill-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>
+  Negative <code>border</code>
+  is used on element borders that need to communicate a Negative intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b80017"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b80017</title>
+          </svg>
+          Negative.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ff988a"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ff988a</title>
+          </svg>
+          Negative.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-negative-border</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-border-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Negative <code>ornament</code>
+  is used whenever a Negative intent needs to be communicated visually on an
+  icon or other small colored element.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b80017"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b80017</title>
+          </svg>
+          Negative.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ff988a"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ff988a</title>
+          </svg>
+          Negative.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-negative-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-negative-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  The negative <code>text</code>
+  variable is used whenever text needs to communicate a Negative intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text-negative</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b80017"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b80017</title>
+          </svg>
+          Text.negative
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ff988a"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ff988a</title>
+          </svg>
+          Text.negative
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-negative-text</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-negative-text</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-negative-text-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Neutral Colors</h3>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Neutral Colors are only used in components that display an intent, such as
+    <a href="./?path=/docs/design-documentation-genes-tags--docs" target="_top"
+      >Tags</a
+    >
+    . For these elements, Neutral Colors communicate that there is no intent
+    indicated.
+  </p>
+</div>
+<h4>Surface</h4>
+<p>
+  Neutral Surface colors are used for the backgrounds and fills of
+  non-interactive elements or sections that communicate have no intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#969696"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#969696</title>
+          </svg>
+          Neutral.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#aaaaaa"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#aaaaaa</title>
+          </svg>
+          Neutral.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#dfdfdf"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#dfdfdf</title>
+          </svg>
+          Neutral.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#494949"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#494949</title>
+          </svg>
+          Neutral.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-neutral-surface-secondary-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Neutral Fill Colors are used on elements that are interactive and change in
+  response to users hovering, pressing, etc. where there is no intent to be
+  communicated.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#969696"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#969696</title>
+          </svg>
+          Neutral.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#aaaaaa"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#aaaaaa</title>
+          </svg>
+          Neutral.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#767676"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#767676</title>
+          </svg>
+          Neutral.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#cdcdcd"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#cdcdcd</title>
+          </svg>
+          Neutral.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#3b3b3b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#3b3b3b</title>
+          </svg>
+          Neutral.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ededed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ededed</title>
+          </svg>
+          Neutral.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#dfdfdf"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#dfdfdf</title>
+          </svg>
+          Neutral.fill-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#494949"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#494949</title>
+          </svg>
+          Neutral.fill-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-fill-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-neutral-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-fill-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>
+  Neutral <code>border</code>
+  is used on element borders that need to communicate there is no intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#969696"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#969696</title>
+          </svg>
+          Neutral.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#aaaaaa"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#aaaaaa</title>
+          </svg>
+          Neutral.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-neutral-border</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-border-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Neutral <code>ornament</code>
+  is used whenever there is no intent to be communicated visually on an icon or
+  other small colored element.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#3b3b3b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#3b3b3b</title>
+          </svg>
+          Neutral.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ededed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ededed</title>
+          </svg>
+          Neutral.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-neutral-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-neutral-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  The neutral <code>text</code>
+  variable is used whenever text needs to communicate there is no intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text-neutral</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#3b3b3b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#3b3b3b</title>
+          </svg>
+          Text.neutral
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ededed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ededed</title>
+          </svg>
+          Text.neutral
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-neutral-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-neutral-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-neutral-text-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Notice Colors</h3>
+<h4>Surface</h4>
+<p>
+  Notice Surface colors are used for the backgrounds and fills of
+  non-interactive elements or sections that communicate a Notice intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#da9900"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#da9900</title>
+          </svg>
+          Notice.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#bd8804"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#bd8804</title>
+          </svg>
+          Notice.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-surface-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#fff3db"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#fff3db</title>
+          </svg>
+          Notice.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#361b07"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#361b07</title>
+          </svg>
+          Notice.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-surface-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Notice Fill Colors are used on elements that are interactive and change in
+  response to users hovering, pressing, etc. where a Notice intent needs to be
+  communicated.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#da9900"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#da9900</title>
+          </svg>
+          Notice.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#bd8804"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#bd8804</title>
+          </svg>
+          Notice.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b07300"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b07300</title>
+          </svg>
+          Notice.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#f5d789"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#f5d789</title>
+          </svg>
+          Notice.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-hover</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-notice-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#7c3e00"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#7c3e00</title>
+          </svg>
+          Notice.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ffe6a8"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ffe6a8</title>
+          </svg>
+          Notice.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#fff3db"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#fff3db</title>
+          </svg>
+          Notice.fill-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#361b07"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#361b07</title>
+          </svg>
+          Notice.fill-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-fill-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-notice-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-fill-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>
+  Notice <code>border</code>
+  is used on element borders that need to communicate a Notice intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b07300"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b07300</title>
+          </svg>
+          Notice.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e5bc63"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e5bc63</title>
+          </svg>
+          Notice.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-notice-border</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-notice-border-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Notice <code>ornament</code>
+  is used whenever a Notice intent needs to be communicated visually on an icon
+  or other small colored element.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b07300"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b07300</title>
+          </svg>
+          Notice.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e5bc63"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e5bc63</title>
+          </svg>
+          Notice.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-notice-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-notice-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  The notice <code>text</code>
+  variable is used whenever text needs to communicate a Notice intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text-notice</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#b07300"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#b07300</title>
+          </svg>
+          Text.notice
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#e5bc63"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#e5bc63</title>
+          </svg>
+          Text.notice
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-notice-text</code>
+      </p>
+      <p>SCSS light: <code>$sds-color-semantic-component-notice-text</code></p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-notice-text-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<hr />
+<h3>Positive Colors</h3>
+<h4>Surface</h4>
+<p>
+  Positive Surface colors are used for the backgrounds and fills of
+  non-interactive elements or sections that communicate a Positive intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#238444"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#238444</title>
+          </svg>
+          Positive.surface-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#278b48"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#278b48</title>
+          </svg>
+          Positive.surface-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-surface-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-surface-primary</code>
+      </p>
+      <p>
+        <code>$sds-color-semantic-component-positive-surface-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>surface-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ebf9ed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ebf9ed</title>
+          </svg>
+          Positive.surface-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#082608"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#082608</title>
+          </svg>
+          Positive.surface-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-surface-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-surface-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code
+          >$sds-color-semantic-component-positive-surface-secondary-dark</code
+        >
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Fill</h4>
+<p>
+  Positive Fill Colors are used on elements that are interactive and change in
+  response to users hovering, pressing, etc. where a Positive intent needs to be
+  communicated.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-primary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#238444"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#238444</title>
+          </svg>
+          Positive.fill-primary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#278b48"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#278b48</title>
+          </svg>
+          Positive.fill-primary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-primary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-primary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-primary-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-hover</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#105b2b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#105b2b</title>
+          </svg>
+          Positive.fill-hover
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#bcecc5"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#bcecc5</title>
+          </svg>
+          Positive.fill-hover
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-hover</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-hover</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-hover-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-pressed</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#07431d"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#07431d</title>
+          </svg>
+          Positive.fill-pressed
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#daf4de"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#daf4de</title>
+          </svg>
+          Positive.fill-pressed
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-pressed</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-pressed</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-pressed-dark</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fill-secondary</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#ebf9ed"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#ebf9ed</title>
+          </svg>
+          Positive.fill-secondary
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#082608"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#082608</title>
+          </svg>
+          Positive.fill-secondary
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-fill-secondary</code>
+      </p>
+      <p>
+        SCSS light:
+        <code>$sds-color-semantic-component-positive-fill-secondary</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-fill-secondary-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Border</h4>
+<p>
+  Positive <code>border</code>
+  is used on element borders that need to communicate a Positive intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>border</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#105b2b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#105b2b</title>
+          </svg>
+          Positive.border
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#85d898"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#85d898</title>
+          </svg>
+          Positive.border
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-border</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-positive-border</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-border-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Ornament</h4>
+<p>
+  Positive <code>ornament</code>
+  is used whenever a Positive intent needs to be communicated visually on an
+  icon or other small colored element.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ornament</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#105b2b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#105b2b</title>
+          </svg>
+          Positive.ornament
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#85d898"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#85d898</title>
+          </svg>
+          Positive.ornament
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-ornament</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-positive-ornament</code>
+      </p>
+      <p>
+        SCSS dark:
+        <code>$sds-color-semantic-component-positive-ornament-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h4>Text</h4>
+<p>
+  The positive <code>text</code>
+  variable is used whenever text needs to communicate a Positive intent.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variable</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>text-positive</code></p>
+    </td>
+    <td>
+      <p>
+        Light:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#105b2b"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#105b2b</title>
+          </svg>
+          Text.positive
+        </span>
+      </p>
+      <p>
+        Dark:
+        <span class="sds-doc-token-mention">
+          <svg width="20" height="16">
+            <rect
+              width="16"
+              height="16"
+              fill="#85d898"
+              stroke="#333333"
+              stroke-opacity="0.2"
+              rx="3"
+              ry="3"
+            ></rect>
+            <title>#85d898</title>
+          </svg>
+          Text.positive
+        </span>
+      </p>
+    </td>
+    <td>
+      <p>
+        CSS light / dark:
+        <code>--sds-color-semantic-component-positive-text</code>
+      </p>
+      <p>
+        SCSS light: <code>$sds-color-semantic-component-positive-text</code>
+      </p>
+      <p>
+        SCSS dark: <code>$sds-color-semantic-component-positive-text-dark</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<h2>Primitive Colors</h2>
+<h2>Color Overview</h2>
+<p>
+  SDS uses a pragmatic naming system for its color variables that ensures
+  consistency around how colors are used across UI elements. Colors are split
+  into three types (Primitive, Semantic, and Visualization) and two modes, Light
+  and Dark (Visualization Colors are currently only available in Light Mode);
+  see
+  <a href="./?path=/docs/design-documentation-bases-theming--docs" target="_top"
+    >Theming</a
+  >
+  for more details about implementing Dark Mode.
+</p>
+<p>
+  Primitive Colors are base variables that tie directly to hex codes whereas
+  Semantic Colors take these Primitive Color variables and map them to new
+  variables that are specific to UI elements, intents, and states. Visualization
+  Colormaps are specifically for use in data visualizations.
+</p>
+<h2>Primitive Colors</h2>
+<p>
+  The most basic color elements in the design system are Primitive Colors. They
+  are organized by hue into different ramps and saved as variables within the
+  codebase; each ramp is composed of a range of color variables from light to
+  dark within that color hue (e.g., <code>blue800</code>, <code>blue700</code>,
+  <code>blue600</code>, etc.).
+</p>
+<p>
+  Primitive Color variables are
+  <strong>not</strong>
+  intended to be used on their own and are instead mapped to
+  <a href="./?path=/docs/design-documentation-bases-colors--docs" target="_top"
+    >Semantic Color</a
+  >
+  variables that communicate how a Primitive Color is applied to different
+  elements in the design system. This helps ensure the colors are applied
+  consistently and removes the guess work for designers and engineers as to
+  which colors should be used where when designing and building features.
+</p>
+<h2>Visualization Colors</h2>
+<h2>Color Overview</h2>
+<p>
+  SDS uses a pragmatic naming system for its color variables that ensures
+  consistency around how colors are used across UI elements. Colors are split
+  into three types (Primitive, Semantic, and Visualization) and two modes, Light
+  and Dark (Visualization Colors are currently only available in Light Mode);
+  see
+  <a href="./?path=/docs/design-documentation-bases-theming--docs" target="_top"
+    >Theming</a
+  >
+  for more details about implementing Dark Mode. Primitive Colors are base
+  variables that tie directly to hex codes whereas Semantic Colors take these
+  Primitive Color variables and map them to new variables that are specific to
+  UI elements, intents, and states. Visualization Colormaps are specifically for
+  use in data visualizations.
+</p>
+<h2>Visualization Colormaps</h2>
+<p>
+  Colormaps are an array of colors, generally displayed as a gradient or
+  spectrum, and are used to map datapoints to individual color values. Selecting
+  effective colors to represent datapoints within a data visualization plays a
+  major role in how well users are able to interpret that visualization. There
+  are many factors to consider including the type of data is being represented
+  in the dataset, whether the colors are interpretable for folks with visual
+  deficiencies, and if the colors effectively help communicate the intended data
+  story.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Visualization Colors are currently only available for Light Mode. If
+    Visualization Colors need to be used in an application in Dark Mode, we
+    recommend placing a light background behind the visualization element.
+  </p>
+</div>
+<h3>Magma</h3>
+<p>
+  Magma is a well-vetted, industry-standard colormap from Matplotlib and is the
+  first colormap available natively in SDS. It provides an array of colors that
+  designers can confidently use as part of their data visualization work since
+  it is so commonly used in the scientific community. This provides the benefit
+  of recognizability, knowing that scientists are already used to interpreting
+  data with these colors.
+</p>
+<p>
+  Magma is perceptually uniform, meaning it has consistent and even changes in
+  brightness and hue across the entire colormap. This ensures the colors that
+  get mapped to each datapoint in a visualization are not only an equivalent
+  distance away from each other technically, but visually appear as such, even
+  for folks with visual accessibility concerns who might have trouble perceiving
+  differences between colors.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Colors_Visualzation_Magma</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7d3d2996c1cb93fb.png"
+        alt="Colors_Visualzation_Magma"
+      />
+    </figure>
+  </figure>
+</div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    any color from the Magma colormap can be used in implementation, however the
+    following nine colors have been created as variables for easy use in Figma.
+  </p>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td>
+      <p><strong>Name</strong></p>
+    </td>
+    <td>
+      <p><strong>Figma Variable</strong></p>
+    </td>
+    <td>
+      <p><strong>CSS / SCSS Variables</strong></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma900</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma800</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma700</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma600</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma500</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma400</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma300</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma200</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>magma100</code></p>
+    </td>
+    <td><p></p></td>
+    <td><p>[variable to come]</p></td>
+  </tr>
+</table>
+`}));function d(e){return(0,p.jsxs)(p.Fragment,{children:[(0,p.jsx)(r,{title:`Design Documentation/Bases/Colors`}),`
+`,(0,p.jsx)(s,{html:l})]})}function f(e={}){let{wrapper:t}={...a(),...e.components};return t?(0,p.jsx)(t,{...e,children:(0,p.jsx)(d,{...e})}):d(e)}var p;e((()=>{p=t(n()),o(),i(),c(),u()}))();export{f as default};

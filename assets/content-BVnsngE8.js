@@ -1,0 +1,29 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Introduction to Cells</h1>
+<p>
+  Cells are guidelines for flows and functionality that often span multiple
+  pages or screens, combining Bases, Genes, and DNA.
+</p>
+<table class="sds-doc-table sds-doc-table-borderless">
+  <tr>
+    <td>
+      <img
+        src="design-assets/4d1dbaa2f4978c96.svg"
+        class="sds-doc-image"
+        width="600"
+      />
+    </td>
+    <td>
+      <p><strong>Cells</strong></p>
+      <p><em>Flows</em></p>
+      <p>
+        Cells are created when multiple Bases, Genes, and DNA are combined to
+        create multi-step and occasionally multi-page flows. They serve as
+        guidelines for designers and engineers to follow and are not
+        self-contained components in and of themselves. Instead, they provide
+        best practices for designers and engineers to consider when implementing
+        similar functionality in their products.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

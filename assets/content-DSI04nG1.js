@@ -1,0 +1,396 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Responsive Design</h1>
+<p>
+  Applications that are built responsively visually adapt to the screen size
+  that they are viewed on for a better user experience
+</p>
+<h2>Overview</h2>
+<p>
+  Designing and building applications responsively helps ensure a positive
+  viewing experience for users regardless of which device they are accessing
+  from. There are a number of adjustments that can be made to page elements to
+  better display on various screen sizes ranging from implementing font sizes
+  that are better suited for small-screen viewing to making smart adjustments to
+  page layouts so only the most crucial elements are displayed as screen sizes
+  shrink.
+</p>
+<h3>Breakpoints</h3>
+<p>
+  What we know about users of scientific software is that they tend to access
+  their applications in one of three ways:
+</p>
+<ol class="sds-doc-ordered-list">
+  <li><p>On small laptops with lower resolution</p></li>
+  <li><p>On large monitors that they plug their laptops into</p></li>
+  <li>
+    <p>
+      Occasionally on their phones when learning about new apps at conferences
+      or following links from marketing campaigns posted to social media sites
+    </p>
+  </li>
+</ol>
+<p>
+  Insight into these use cases has resulted in SDS implementing three distinct
+  breakpoints that roughly map to these device types for teams to consider when
+  designing and building scientific software. At each size, layout changes
+  should be made to better utilize the amount of screen real estate available to
+  ensure the most important UI elements remain accessible to users.
+</p>
+<h4>Small</h4>
+<p>
+  <em>Screens <code>&lt;512px</code> wide</em>
+</p>
+<p>
+  Small breakpoint will be used when applications are viewed on mobile devices
+  and small-screened tablets. At this breakpoint only the main content should be
+  displayed as there is not enough screen real estate to fit non-primary
+  elements.
+</p>
+<p>
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Header Navigation
+  </a>
+  has been designed to collapse into a hamburger menu on narrow screens. Other
+  navigation elements like
+  <a href="./?path=/docs/design-documentation-dna-panel--docs" target="_top"
+    >Panels</a
+  >
+  ,
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+    >Jump-to-Navigation</a
+  >
+  , as well as supplemental pieces of UI will likely need to be accessed via
+  alternative methods. This could mean tucking them away within a
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Dropdown Menu</a
+  >
+  or an
+  <a href="./?path=/docs/design-documentation-dna-accordion--docs" target="_top"
+    >Accordion</a
+  >
+  , adding them as additional menu items within the hamburger menu, or hiding
+  them altogether. For this reason, designers should take special care to
+  consider how these non-primary elements will be used on narrow screens.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>CSS</p></td>
+    <td><p>SCSS</p></td>
+    <td><p>Tailwind</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-breakpoint-sm</code></p>
+    </td>
+    <td>
+      <p><code>$sds-breakpoint-sm</code></p>
+    </td>
+    <td>
+      <p><code>breakpoints.sds-sm</code></p>
+    </td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Breakpoint_small</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/880fcd212a9a4611.png" alt="Breakpoint_small" />
+    </figure>
+  </figure>
+</div>
+<h4>Medium</h4>
+<p>
+  <em>Screens between <code>512px-1023px</code> wide</em>
+</p>
+<p>
+  Medium breakpoint will be used when applications are viewed on small laptops
+  and large-screened tablets. At this breakpoint there is enough space to show
+  both main content as well as a few non-primary elements, though likely not
+  all.
+</p>
+<p>
+  Depending on the number of nav items in the
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Header Navigation
+  </a>
+  it will either collapse into a hamburger menu or remain fully visible. This
+  breakpoint gives designers control over which UI elements are displayed and
+  which need to be accessed via alternative methods, offering more flexibility
+  around how users interact with the application. Designing for this breakpoint
+  still requires specific consideration to determine which non-primary elements
+  remain visible vs which must be accessed elsewhere in the UI.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>CSS</p></td>
+    <td><p>SCSS</p></td>
+    <td><p>Tailwind</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-breakpoint-md</code></p>
+    </td>
+    <td>
+      <p><code>$sds-breakpoint-md</code></p>
+    </td>
+    <td>
+      <p><code>breakpoints.sds-md</code></p>
+    </td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Breakpoint_medium</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/a32482d4ae20bade.png" alt="Breakpoint_medium" />
+    </figure>
+  </figure>
+</div>
+<h4>Large</h4>
+<p>
+  <em>Screens <code>&gt;1024px</code> wide</em>
+</p>
+<p>
+  Large breakpoint will be used when applications are viewed on large laptops,
+  desktop monitors, and other large displays. At this breakpoint there is enough
+  space to show all content as intended. Considerations should be made for
+  viewing on ultra-wide displays, such as implementing a
+  <code>max-width</code> on pages to ensure UI elements are not stretched out of
+  proportion.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>CSS</p></td>
+    <td><p>SCSS</p></td>
+    <td><p>Tailwind</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>--sds-breakpoint-lg</code></p>
+    </td>
+    <td>
+      <p><code>$sds-breakpoint-lg</code></p>
+    </td>
+    <td>
+      <p><code>breakpoints.sds-lg</code></p>
+    </td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Breakpoint_large</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/f4def9dd3cfd938e.png" alt="Breakpoint_large" />
+    </figure>
+  </figure>
+</div>
+<h3>Typography</h3>
+<p>
+  SDS has two sets of typography, one for narrow screens and one for wide.
+  Narrow screen typography is used when applications are viewed at the Small
+  breakpoint (screen widths of less than <code>512px</code>) and wide screen
+  typography is used when applications are viewed at Medium or Large breakpoints
+  (screen widths of <code>512px</code> or greater).
+</p>
+<p>
+  Each typography variable from one set has a corresponding variable in the
+  other, delineated by the word "narrow" or "wide" in its name (e.g.,
+  <code>narrow/fontBodyS</code>, <code>wide/fontBodyS</code>, etc.). This makes
+  it easy to translate from one screen width to the other. Simply use the
+  variable with the same name but the opposite width (e.g.,
+  <code>narrow/fontBodyS</code> should be used for the same text on narrow
+  screens that <code>wide/fontBodyS</code> is used for on wide screens).
+</p>
+<p>
+  Below are a few visual examples of the differences. See the
+  <a
+    href="./?path=/docs/design-documentation-bases-typography--docs"
+    target="_top"
+    >Typography</a
+  >
+  section for a detailed breakdown of the typography variables for each set.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Header XXL – wide</p></td>
+    <td><p>Header XXL – narrow</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>headerXxl_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/4fbbb751f0e88529.png" alt="headerXxl_wide" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>headerXxl_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/a69d3ec1eee5c364.png" alt="headerXxl_narrow" />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Body L – wide</p></td>
+    <td><p>Body L – narrow</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>bodyL_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/a67ae3cee881298b.png" alt="bodyL_wide" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>bodyL_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/23ee22a73ea85bbd.png" alt="bodyL_narrow" />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Caps XXS – wide</p></td>
+    <td><p>Caps XXS – narrow</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>capsXxs_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/6515ae2cd4810172.png" alt="capsXxs_wide" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>capsXxs_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/6515ae2cd4810172.png" alt="capsXxs_narrow" />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Tabular S – wide</p></td>
+    <td><p>Tabular S – narrow</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>tabularS_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/ddd2a625d26648ad.png" alt="tabularS_wide" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>tabularS_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/ddd2a625d26648ad.png" alt="tabularS_narrow" />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Code S – wide</p></td>
+    <td><p>Code S – narrow</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>codeS_wide</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/7c0772f302132edc.png" alt="codeS_wide" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>codeS_narrow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/7c0772f302132edc.png" alt="codeS_narrow" />
+    </figure>
+  </figure>
+</div>
+<h2>Code</h2>
+<h2>Overview</h2>
+<p>
+  Designing and building applications responsively helps ensure a positive
+  viewing experience for users regardless of which device they are accessing
+  from. There are a number of adjustments that can be made to page elements to
+  better display on various screen sizes ranging from implementing font sizes
+  that are better suited for small-screen viewing to making smart adjustments to
+  page layouts so only the most crucial elements are displayed as screen sizes
+  shrink.
+</p>
+<h3>Source Code</h3>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/common/styles-dictionary/design-tokens"
+  >
+    here
+  </a>
+  .
+</p>
+<h3>SDS vs MUI</h3>
+<p>
+  In SDS, we utilize MUI’s breakpoint system with custom values to better align
+  with our design requirements. Notably, we’ve streamlined the breakpoint
+  options by removing the <code>xs</code> and <code>xl</code> breakpoints, as
+  they are not used in SDS. As a result, SDS only supports <code>sm</code>,
+  <code>md</code>, and <code>lg</code> breakpoints, ensuring more focused and
+  relevant responsive behavior.
+</p>
+<h3>MUI Documentation</h3>
+<p>
+  For more information on breakpoints, please refer to the
+  <a href="https://mui.com/material-ui/customization/breakpoints/"
+    >MUI documentation</a
+  >
+  .
+</p>
+<h3>Code examples</h3>
+<h4><strong>Accessing SDS breakpoints</strong></h4>
+<p>
+  This example demonstrates how to access SCS breakpoints to adjust component
+  styling dynamically based on different screen sizes.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Use the resize handle to the right of the preview section below to adjust
+    the container width. The background color will change dynamically based on
+    the window width and the styles assigned to each breakpoint.
+  </p>
+</div>
+<div
+  class="sds-doc-example"
+  data-example="Responsive-Design/AccessingSDSBreakpoints"
+></div>
+`}));export{n,t};

@@ -1,0 +1,401 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Tabs</h1>
+<p>
+  Tabs allow users to switch between different sets of information or content
+  that is related to one overarching category while staying on the same page.
+</p>
+<h2>Overview</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Tabs Sizes</h3>
+<p>
+  There are two sizes of Tabs available for use which is determined by their
+  location in the UI, the key difference being the size of the text on each Tab.
+  Each size can include a counter to indicate the number of items on that Tab’s
+  screen such as when used as part of
+  <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
+    >Filter</a
+  >
+  results. They can also be paired with an underline that spans the width of the
+  entire div the tab group is placed within to provide visual separation between
+  the Tabs and the content beneath them.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Tabs_Large</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/1385803a24da414a.png" alt="Tabs_Large" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Tabs_Small</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/24f96af36dad8efa.png" alt="Tabs_Small" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tabs – Large</h3>
+<p>
+  Tabs – Large is used at a top level within the UI. If a secondary layer of
+  tabbing is needed, use
+  <a href="./?path=/docs/design-documentation-genes-tabs--docs" target="_top"
+    >Tabs – Small</a
+  >
+  .
+</p>
+<p>
+  Include a counter when necessary to indicate the number of viewable items
+  available when navigating to that Tab's screen.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Active</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Large_No Underline_No Count_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/6faaa4e0df5c0c3f.png"
+        alt="Large_No Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_No Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5982119e7f15320c.png"
+        alt="Large_No Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_No Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9d57eb57ec27902b.png"
+        alt="Large_No Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Large_No Underline_No Count_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/e51311e47ebcd37b.png"
+        alt="Large_No Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/3fa195b055fde3b8.png"
+        alt="Large_No Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/1aa5b8834bdfea6c.png"
+        alt="Large_No Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/57a295615dd32c49.png"
+        alt="Large_No Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_No Underline_Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/ee3b00ac83beafa5.png"
+        alt="Large_No Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/1385803a24da414a.png"
+        alt="Large_Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5982119e7f15320c.png"
+        alt="Large_Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b15c3f347e6c8993.png"
+        alt="Large_Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_No Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a5a8486ec3b42b76.png"
+        alt="Large_Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/3cd84f704a822d0f.png"
+        alt="Large_Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/1aa5b8834bdfea6c.png"
+        alt="Large_Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/bb82aa9f0677bab5.png"
+        alt="Large_Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Large_Underline_Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/bb326178155761e6.png"
+        alt="Large_Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tabs – Small</h3>
+<p>
+  Tabs – Small is an alternative size to be used only in conjunction with Tabs –
+  Large when a secondary layer of tabbing is needed.
+</p>
+<p>
+  Include a counter when necessary to indicate the number of viewable items
+  available when navigating to that Tab's screen.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Hover</p></td>
+    <td><p>Active</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Small_No Underline_No Count_Default</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9fb84a15698cb49e.png"
+        alt="Small_No Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_No Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/27472038984bbafc.png"
+        alt="Small_No Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_No Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/385b358fff6cf19d.png"
+        alt="Small_No Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Small_No Underline_No Count_Disabled</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/4ec3aab8f12d47cd.png"
+        alt="Small_No Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5382e8ece5133b99.png"
+        alt="Small_No Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/68dc6d5b5e758278.png"
+        alt="Small_No Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/096fff412c841595.png"
+        alt="Small_No Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_No Underline_Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5b40ae32e37e1b20.png"
+        alt="Small_No Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5f6d4719118c2a02.png"
+        alt="Small_Underline_No Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/27472038984bbafc.png"
+        alt="Small_Underline_No Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/2f17014f881b55fd.png"
+        alt="Small_Underline_No Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_No Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b6d63eb65c38e76c.png"
+        alt="Small_Underline_No Count_Disabled"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/8cf5f7b941de948d.png"
+        alt="Small_Underline_Count_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/68dc6d5b5e758278.png"
+        alt="Small_Underline_Count_Hover"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Active</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/0f63189461c3b647.png"
+        alt="Small_Underline_Count_Active"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Small_Underline_Count_Disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/2c142c0c11b76ee7.png"
+        alt="Small_Underline_Count_Disabled"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Tabs Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Tabs Spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/1ee3745a8ad50834.png" alt="Tabs Spacing" />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};

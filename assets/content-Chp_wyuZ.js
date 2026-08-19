@@ -1,0 +1,192 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Accordion</h1>
+<p>
+  Accordions are expandable/collapsable elements that hide and reveal content to
+  help control the amount of information presented to the user at one time.
+</p>
+<h2>Overview</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Accordion Variants</h3>
+<p>
+  Accordions are elements that can be used to hide or reveal content. Use the
+  header text to communicate what type of content the user can expect to see
+  when the Accordion is expanded. Accordions can contain anything from basic
+  text to others components or elements.
+</p>
+<p>
+  The Accordion indicator arrow may appear to the left or the right of the
+  header. Accordions may show a subtitle below the header text. Accordions may
+  show bottom divider lines to help visually separate them from one another.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Accordion_toggleLeft</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d891041108898041.png"
+        alt="Preview_Guidelines_Accordion_toggleLeft"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Preview_Guidelines_Accordion_toggleRight</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/c9363690c4ae0baf.png"
+        alt="Preview_Guidelines_Accordion_toggleRight"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Accordion – Left Toggle</h3>
+<p>
+  Left-aligned toggles works well when the Accordion's container is wide,
+  because a right-aligned toggle would be far from the header text and it is
+  less obvious that the two elements are related.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Divider</p></td>
+    <td><p>Default + Subtitle</p></td>
+    <td><p>Expanded</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleLeft_collapsed_no subtitle_no underline</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/0f0bb532b89b0dec.png"
+        alt="toggleLeft_collapsed_no subtitle_no underline"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleLeft_collapsed_no subtitle_underlined</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/265246f3ea1c5c74.png"
+        alt="toggleLeft_collapsed_no subtitle_underlined"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleLeft_collapsed_subtitle_no underline</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/bf9d6f0140e9b7c9.png"
+        alt="toggleLeft_collapsed_subtitle_no underline"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleLeft_expanded_no subtitle_no underline</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/614ad61397a3903b.png"
+        alt="toggleLeft_expanded_no subtitle_no underline"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Accordion – Right Toggle</h3>
+<p>
+  Use when there's a preference for the Accordion toggle to appear to the right
+  of its header text. The toggle icon right aligns to the right edge of the
+  Accordion's container.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Divider</p></td>
+    <td><p>Default + Subtitle</p></td>
+    <td><p>Expanded</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleRight_collapsed_no subtitle_no underline_n</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/04071a9d239c37d7.png"
+        alt="toggleRight_collapsed_no subtitle_no underline_n"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleRight_collapsed_no subtitle_underlined_n</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/cdfb052892a70aab.png"
+        alt="toggleRight_collapsed_no subtitle_underlined_n"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleRight_collapsed_subtitle_no underline</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b63c6a07b4d29484.png"
+        alt="toggleRight_collapsed_subtitle_no underline"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>toggleRight_expanded_no subtitle_no underline</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7f1d7801d9481dd6.png"
+        alt="toggleRight_expanded_no subtitle_no underline"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Accordion Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Accordion spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/b8083e1c5662b6bb.png" alt="Accordion spacing" />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};

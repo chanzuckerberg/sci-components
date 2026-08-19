@@ -1,0 +1,940 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Table</h1>
+<p>
+  Tables are used to store and visually organize data and other content into a
+  series of cells grouped into a collection of rows and columns, helping users
+  better understand and analyze a given set of information.
+</p>
+<h2>Table Components</h2>
+<p>
+  Tables are built by combining Header Cells with Basic or Component Cells,
+  providing flexibility for teams to create Tables that house any type of
+  content their product's require. Tables can be sorted, either ascending or
+  descending, by clicking on any Header Cell that has sorting enabled.
+</p>
+<p>
+  To avoid slow loading speeds in Tables that contain large amounts of data,
+  they should be split across multiple pages; incorporate a Pagination component
+  to help users navigate between the pages of multi-page Tables.
+</p>
+<p>
+  <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
+    >Filters</a
+  >
+  are often used in conjunction with Tables, allowing users to manipulate what
+  content is viewable in the Table by the parameters indicated in the Filter.
+</p>
+<h3>Visual Preview</h3>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_CellBasic</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/cb2c954784635621.png"
+        alt="Preview_Guidelines_CellBasic"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_CellComponent</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/284bb5ab900728a6.png"
+        alt="Preview_Guidelines_CellComponent"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_CellHeader</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/f28cb24f2adff30c.png"
+        alt="Preview_Guidelines_CellHeader"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_TableRow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a7052bed01c82b58.png"
+        alt="Preview_Guidelines_TableRow"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_TableHeader</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/0e7dac48f0bcf7f7.png"
+        alt="Preview_Guidelines_TableHeader"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Preview_Guidelines_Pagination</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a886ba36aec5888f.png"
+        alt="Preview_Guidelines_Pagination"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Anatomy</h3>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Table Anatomy</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/81368b04107a5eda.png" alt="Table Anatomy" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Basic Cell</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  The Basic Cell is intended to be filled with strings of text or numerical
+  values. A range of elements can be included alongside text, such as
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Buttons</a
+  >
+  or
+  <a href="./?path=/docs/design-documentation-genes-tags--docs" target="_top"
+    >Tags</a
+  >
+  , to provide additional actions users can take in relation to the content
+  within the cell.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default + Secondary text</p></td>
+    <td><p>Default + Secondary text + Tertiary text</p></td>
+    <td><p>Default (right aligned)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell_left aligned_primary</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/e99e20584d4ae306.png"
+        alt="Basic Cell_left aligned_primary"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Basic Cell_left aligned_primary + secondary</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d3ab5e3d5d9e3128.png"
+        alt="Basic Cell_left aligned_primary + secondary"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Basic Cell_left aligned_primary + secondary + tertiary</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/044bca56506b57d0.png"
+        alt="Basic Cell_left aligned_primary + secondary + tertiary"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell_right aligned</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/c56ae684aa05edba.png"
+        alt="Basic Cell_right aligned"
+      />
+    </figure>
+  </figure>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default (wrapped)</p></td>
+    <td><p>Hover (truncated) + Tooltip</p></td>
+    <td><p>Basic Cell + Icon</p></td>
+    <td><p>Basic Cell + Tag</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell_wrap</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/1a1b374ea641da6e.png" alt="Basic Cell_wrap" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell_truncate</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/2e7ca88e6988ee76.png" alt="Basic Cell_truncate" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell + Icon</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/9a29befcfc7d3bc9.png" alt="Basic Cell + Icon" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell + Tag</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/f08f570996651842.png" alt="Basic Cell + Tag" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Basic Cell Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Multiple Basic and/or Component Cells are placed beside each other
+  to create a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Row</a
+  >
+  . Stack Table Rows below a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Header</a
+  >
+  to create a full Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Basic Cell_spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/5f16e58dca8bd489.png" alt="Basic Cell_spacing" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Component Cell</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  Component Cells can accept any type of element, including any combination or
+  number of components, but should not be used to display text strings (use a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Basic Cell</a
+  >
+  for this). Most commonly it is used to hold
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Buttons</a
+  >
+  ,
+  <a
+    href="./?path=/docs/design-documentation-genes-control-inputs--docs"
+    target="_top"
+    >Toggles</a
+  >
+  , and
+  <a
+    href="./?path=/docs/design-documentation-genes-control-inputs--docs"
+    target="_top"
+  >
+    Checkbox Inputs
+  </a>
+  .
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Filled (left aligned)</p></td>
+    <td><p>Filled (center aligned)</p></td>
+    <td><p>Filled (right aligned)</p></td>
+    <td><p>Filled (fit contents)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Component Cell_empty_left aligned</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/a6aac314058f5fa8.png"
+        alt="Component Cell_empty_left aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Component Cell_filled_left aligned</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/ca2b5e8f8b4d70ab.png"
+        alt="Component Cell_filled_left aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Component Cell_filled_center aligned</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/2af586b55dc70b1e.png"
+        alt="Component Cell_filled_center aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Component Cell_filled_right aligned</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/451b154e2212887c.png"
+        alt="Component Cell_filled_right aligned"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Component Cell_filled_fit contents</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/bef1dedff2128d6f.png"
+        alt="Component Cell_filled_fit contents"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Component Cell Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Multiple Basic and/or Component Cells are placed beside each other
+  to create a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Row</a
+  >
+  . Stack Table Rows below a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Header</a
+  >
+  to create a full Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Component Cell_spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d1efe39dcaa4baaf.png"
+        alt="Component Cell_spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Header Cell</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  Header Cells are placed at the top of Table columns and serve as the header
+  for the content found in the cells below it. The Header Cell's horizontal
+  alignment should match the text position of the
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Basic</a
+  >
+  or
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Component Cell</a
+  >
+  below it. For Basic or Component Cells with centered-aligned content, the
+  Header Cell should be left aligned. Header Cells' vertical alignment is
+  centered and cannot be adjusted.
+</p>
+<p>
+  Users are able to manually sort columns in ascending or descending order by
+  clicking on the Header Cell. On first click, the Table will rearrange itself
+  and sort in the direction indicated on the sort icon. A second click and the
+  sort direction will flip. A third click and the content will return to its
+  non-sorted order.
+</p>
+<p>
+  Each Header Cell can have an optional
+  <a
+    href="./?path=/docs/design-documentation-genes-tooltips--docs"
+    target="_top"
+    >Tooltip</a
+  >
+  appear when hovered over. This can be used to display supplemental information
+  or help further define the contents of the column below it.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    Dotted lines around the cells below are only for demonstration purposes to
+    show the cells' containers; in application, individual cells have no
+    borders.
+  </p>
+</div>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (center aligned)</p></td>
+    <td><p>Default (right aligned)</p></td>
+    <td><p>Hover + Tooltip</p></td>
+    <td><p>Active (ascending)</p></td>
+    <td><p>Active (descending)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Header Cell_left aligned_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/79566d2a068bfeeb.png"
+        alt="Header Cell_left aligned_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Header Cell_center aligned_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/054cc3ce2320e9c7.png"
+        alt="Header Cell_center aligned_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Header Cell_right aligned_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/b6f6c22950d6a091.png"
+        alt="Header Cell_right aligned_default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Header Cell_left aligned_tooltip</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9693cc6daf7d6533.png"
+        alt="Header Cell_left aligned_tooltip"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Header Cell_right aligned_ascending</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/7af5b8448b8ff043.png"
+        alt="Header Cell_right aligned_ascending"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Header Cell_left aligned_descending</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/6ad22a4b64694fb9.png"
+        alt="Header Cell_left aligned_descending"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Header Cell Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Multiple Header Cells are placed beside each other to create a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Header</a
+  >
+  . Stack
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Rows</a
+  >
+  below a Table Header to create a full Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Header Cell spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/c8dba006cec41152.png" alt="Header Cell spacing" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Table Row</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  A Table Row is a container filled with multiple
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Basic</a
+  >
+  or
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Component Cells</a
+  >
+  placed side-by-side to form a row of different, but related pieces of
+  information, for example, data related to a collected sample.
+</p>
+<p>
+  The Table Row also has its own set of props that control how the row as a
+  whole behaves. For example, Table Rows can have
+  <a
+    href="./?path=/docs/design-documentation-genes-tooltips--docs"
+    target="_top"
+    >Tooltips</a
+  >
+  enabled on them that appear when the row is hovered over, communicating
+  information about an entire row to users. Be sure to only enable Tooltips on
+  either the row or cell and not both, so users don't trigger two Tooltips
+  simultaneously.
+</p>
+<p>
+  Additionally,
+  <a
+    href="./?path=/docs/design-documentation-genes-control-inputs--docs"
+    target="_top"
+  >
+    Checkbox Inputs
+  </a>
+  can be placed within a Component Cell in the first column of a row, giving
+  users the ability to select entire rows and complete bulk actions on them,
+  such as downloading, editing, etc. See the
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Row Actions</a
+  >
+  section below for more details.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (no divider)</p></td>
+    <td><p>Hover + Tooltip</p></td>
+    <td><p>Selected</p></td>
+    <td><p>Disabled</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TableRow_default_divider</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/5530f84369b05686.png"
+        alt="TableRow_default_divider"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TableRow_default_no divider</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/ca410489041de170.png"
+        alt="TableRow_default_no divider"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TableRow_hover + tooltip</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/6842e8702bb1c235.png"
+        alt="TableRow_hover + tooltip"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TableRow_selected</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/951a4cb2ce823c8f.png" alt="TableRow_selected" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>TableRow_disabled</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/b96274d0b9e602b2.png" alt="TableRow_disabled" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Row Actions</h3>
+<p>
+  Table Rows may have actions tied to them, such as the ability to edit, delete,
+  download, etc. Users complete these actions by clicking on corresponding
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Buttons</a
+  >
+  that are placed within a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Component Cell</a
+  >
+  in the final column at the end of a Table Row (1). Table Row Actions can
+  either be exposed on hover or can be persistent in the Table at all times.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Table Row actions_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/ee5f26b81a86d53b.png"
+        alt="Table Row actions_default"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Overflow Menu</h4>
+<p>
+  An overflow Icon Button, represented by the
+  <a href="./?path=/docs/design-documentation-bases-icons--docs" target="_top"
+    >DotsHorizontal3</a
+  >
+  icon (2), can be used to surface a
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Dropdown Menu</a
+  >
+  (3) that contains additional actions. This should be used in instances where a
+  large number of actions are needed (generally more than three) or the designer
+  wants to save space in wide Tables that contain many columns.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Table Row actions_overflow</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/62a269088228bf73.png"
+        alt="Table Row actions_overflow"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Bulk Actions</h4>
+<p>
+  Tables can be designed to allow users to complete actions across multiple
+  Table Rows at the same time, known as bulk actions. Similar to row actions,
+  bulk actions are completed by clicking on corresponding
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Buttons</a
+  >
+  that are located at the top right of the Table, above the
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Header</a
+  >
+  ; they should be inactive when no rows are selected (4).
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Bulk Table Row actions_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/bd25f4a5e070fa75.png"
+        alt="Bulk Table Row actions_default"
+      />
+    </figure>
+  </figure>
+</div>
+<h4>Selectable Rows</h4>
+<p>
+  To make Table Rows selectable, designers must include
+  <a
+    href="./?path=/docs/design-documentation-genes-control-inputs--docs"
+    target="_top"
+  >
+    Checkbox Inputs
+  </a>
+  in the first column of the row (5). It is recommended that only once rows are
+  selected should applicable bulk action
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Buttons</a
+  >
+  become enabled, allowing users to take action across all selected rows (6).
+  How this functionality is implemented is ultimately up to the product team.
+  Add a counter to indicate how many rows have been selected (7).
+</p>
+<p>
+  Because actions taken at the row level will impact stored data in the
+  application, row and bulk actions are completely controlled by the application
+  itself and not the SDS component.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Bulk Table Row actions_selected</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/974b5bb300067547.png"
+        alt="Bulk Table Row actions_selected"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Row Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Stack Table Rows below a
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Header</a
+  >
+  to create a full Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Table Row spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/3054887ad51e7b06.png" alt="Table Row spacing" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Table Header</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  A Table Header is a container filled with multiple
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Header Cells</a
+  >
+  placed side-by-side to form a header row. This row is placed at the top of a
+  Table with each Header Cell serving as the column header for the content below
+  it; a <code>2px</code> border should be placed below it. There can only be one
+  Table Header per Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Table Header</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/7bca1c83df77fb4b.png" alt="Table Header" />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Table Header Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Stack
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Rows</a
+  >
+  below a Table Header to create a full Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Table Header spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/4115377b6384e27b.png"
+        alt="Table Header spacing"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h2>Pagination</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<hr />
+<h3>Overview</h3>
+<p>
+  Large Tables may have long loading times. To mitigate this, Tables can be
+  split across multiple pages with the addition of a Pagination component to
+  navigate between these pages. Place the Pagination component below the final
+  Table Row on each page. It is right-aligned by default, but can optionally be
+  center or left-aligned.
+</p>
+<p>
+  Users are able to click on any page number to jump immediately to that page;
+  otherwise they can use the forward and back
+  <a href="./?path=/docs/design-documentation-genes-buttons--docs" target="_top"
+    >Icon Buttons</a
+  >
+  to navigate page-by-page. For Tables that are longer than seven pages,
+  ellipses are displayed to represent any additional pages not viewable. When
+  enabled, the ellipses between page numbers can be clicked on, allowing users
+  to select a page to jump to via a
+  <a
+    href="./?path=/docs/design-documentation-dna-dropdown-menu--docs"
+    target="_top"
+    >Dropdown Menu</a
+  >
+  . When disabled, the ellipses will still be visible but not interactive.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Default (square)</p></td>
+    <td><p>Hover</p></td>
+    <td>
+      <p>Default</p>
+      <p>(ellipsis disabled)</p>
+    </td>
+    <td>
+      <p>Default</p>
+      <p>(ellipsis enabled)</p>
+    </td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Pagination_default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/70923cc0af16c8aa.png" alt="Pagination_default" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Pagination_default_square</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/6676a03a0e4f5f5e.png"
+        alt="Pagination_default_square"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Pagination_hover</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/a86fe4f6f54889ca.png" alt="Pagination_hover" />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Pagination_truncated dropdown_false</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/d28d5d642292d852.png"
+        alt="Pagination_truncated dropdown_false"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Pagination_truncated dropdown_true</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/04a4b21cc474d0d5.png"
+        alt="Pagination_truncated dropdown_true"
+      />
+    </figure>
+  </figure>
+</div>
+<hr />
+<h3>Pagination Spacing</h3>
+<p>
+  These rules establish how much margin should exist between and around
+  elements. Place Pagination below the final
+  <a href="./?path=/docs/design-documentation-dna-table--docs" target="_top"
+    >Table Row</a
+  >
+  on each page of the Table.
+</p>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-row sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Pagination_spacing</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img src="design-assets/58a6ed2ca87513e1.png" alt="Pagination_spacing" />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};

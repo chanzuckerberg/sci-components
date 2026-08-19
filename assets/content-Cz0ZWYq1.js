@@ -1,0 +1,225 @@
+import{i as e}from"./preload-helper-xPQekRTU.js";var t,n=e((()=>{t=`<h1>Theming</h1>
+<p>
+  Themes enable visual changes to be made across the UI, affecting all elements
+  in a consistent way such as in the case of Light and Dark Mode or individual
+  product themes
+</p>
+<h2>Dark Mode</h2>
+<p>
+  SDS supports both Light and Dark Mode and they can be implemented to allow
+  users to toggle between them or set either as the application's primary color
+  mode. Every primitive color variable has a Dark Mode equivalent and each
+  semantic color variable has a Dark Mode primitive mapped to it; for specific
+  hex codes and primitive color mappings, see the
+  <a href="./?path=/docs/design-documentation-bases-colors--docs" target="_top"
+    >Semantic Colors</a
+  >
+  and
+  <a href="./?path=/docs/design-documentation-bases-colors--docs" target="_top"
+    >Primitive Colors</a
+  >
+  documentation.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    the semantic color variable mappings in the Bases color set are not always
+    one-to-one between Light and Dark Modes, see
+    <a
+      href="./?path=/docs/design-documentation-bases-theming--docs"
+      target="_top"
+    >
+      Differences in Light Mode vs Dark Mode
+    </a>
+    for more details.
+  </p>
+</div>
+<h3>Color Indexes</h3>
+<p>
+  The color indexes used in SDS primitive color names (e.g.,
+  <code>gray100</code>, <code>gray200</code>, etc.) refer to the level of
+  contrast of that color against the background it is viewed upon. As a result,
+  primitive colors have a different appearance between Light and Dark Mode, but
+  they have a consistent
+  <em>functional</em>
+  appearance relative to their backgrounds. This is why <code>gray100</code> in
+  Light Mode is a light gray color, whereas <code>gray100</code> in Dark Mode is
+  a dark gray color. Both have low contrasts when viewed in relation to their
+  corresponding background colors.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Dark Mode_Color Indexes_gray100_Light</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/4500a8e0a238e610.png"
+        alt="Color_Dark Mode_Color Indexes_gray100_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Dark Mode_Color Indexes_gray100_Dark</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/2d5488e110a9c3d5.png"
+        alt="Color_Dark Mode_Color Indexes_gray100_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<p>
+  In most cases, each semantic variable will have the same primitive value
+  mapped to it regardless of the mode of that primitive value. For example, the
+  semantic variable <code>Base.text-primary</code> has
+  <code>gray900</code> mapped to it; in Light Mode <code>gray900</code> =
+  <code>#000000</code> (black), but in Dark Mode <code>gray900</code> =
+  <code>#ffffff</code> (white). This means that in both modes primary text is
+  highly visible against the background it is placed on top of, whether a light
+  background in Light Mode or a dark background in Dark Mode.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Dark Mode_Color Indexes_text-primary_Light</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/1420e989c38c756f.png"
+        alt="Color_Dark Mode_Color Indexes_text-primary_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption>
+      <strong>Color_Dark Mode_Color Indexes_text-primary_Dark</strong>
+    </figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/9450131562896a56.png"
+        alt="Color_Dark Mode_Color Indexes_text-primary_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<h3>Differences in Light Mode vs Dark Mode</h3>
+<p>
+  The only instances where the primitive variables mapped to semantic variables
+  differ between modes is <code>background-primary</code>, <code>surface</code>,
+  and <code>fill-primary</code>. Where Light Mode uses <code>gray50</code>
+  (white) for all of these, Dark Mode has to use two separate shades of dark
+  gray to adhere to visual accessibility best practices.
+</p>
+<p>
+  In Dark Mode, <code>background-primary</code> is <code>gray75</code> (not
+  quite pure black which has poor visual accessibility when used across large
+  areas) and <code>surface</code> and <code>fill-primary</code> are both
+  <code>gray100</code> (shades of dark gray that are visible when viewed on top
+  of <code>gray75</code> backgrounds). One of the main reasons for this is that
+  drop shadows can't be leveraged in Dark Mode to separate layers in the same
+  way that they can be in Light Mode since shadows are not nearly as visible
+  when viewed on dark backgrounds.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Light Mode</p></td>
+    <td><p>Dark Mode</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Color_Dark Mode_Differences_Light</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/567a38953014d108.png"
+        alt="Color_Dark Mode_Differences_Light"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Color_Dark Mode_Differences_Dark</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/57e91d56e3baffd5.png"
+        alt="Color_Dark Mode_Differences_Dark"
+      />
+    </figure>
+  </figure>
+</div>
+<h3>Inverted Style</h3>
+<p>
+  There are a couple of components (
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Header Navigation
+  </a>
+  ,
+  <a
+    href="./?path=/docs/design-documentation-dna-navigation--docs"
+    target="_top"
+  >
+    Footer Navigation
+  </a>
+  ) that can be displayed with light or dark backgrounds regardless of which
+  color mode the user's application is set to. Enable this using the prop
+  <code>hasInvertedStyle</code> which by default is set to <code>false</code>.
+  In Light Mode the component will have a light background and in Dark Mode the
+  component will have a dark background. When set to <code>true</code>, the
+  colors will be inverted and in Light Mode the component will have a dark
+  background and in Dark Mode the component will have a light background.
+</p>
+<p>See the individual component pages for more details and visual examples.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Default (Light Mode)</p></td>
+    <td><p>Inverted (Light Mode)</p></td>
+  </tr>
+</table>
+<div
+  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
+>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Color_Inverted Style_Default</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/276f4302c320cd57.png"
+        alt="Color_Inverted Style_Default"
+      />
+    </figure>
+  </figure>
+  <figure class="sds-doc-design-upload" role="group">
+    <figcaption><strong>Color_Inverted Style_Inverted</strong></figcaption>
+    <figure class="sds-doc-design-upload-image">
+      <img
+        src="design-assets/92d03772f25f015a.png"
+        alt="Color_Inverted Style_Inverted"
+      />
+    </figure>
+  </figure>
+</div>
+`}));export{n,t};
