@@ -6,6 +6,13 @@ on:
     branches-ignore:
       - prod # Exclude the 'prod' branch from triggering this workflow
 
+# One run per branch. A push supersedes the run before it, and without this the
+# older run keeps a runner for up to the hour its timeout allows, so pushes queue
+# behind work whose result nobody is waiting for.
+concurrency:
+  group: storybook-tests-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     timeout-minutes: 60
@@ -29,9 +36,17 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      # Step 4: Install Playwright for testing
+      # Step 4: Install Playwright for testing.
+      #
+      # Chromium only, on purpose. Both suites here run Chromium: axe-storybook
+      # reports "[chromium] accessibility", and the Storybook test runner
+      # defaults to it. Naming no browser installs the system libraries for
+      # Firefox and WebKit as well, which is around 190 apt packages including
+      # gstreamer, the CJK fonts and a speech synthesiser. That apt step has
+      # taken 37 minutes when the Ubuntu mirror is slow, against about one
+      # minute when it is not, and it is the whole of this job's variance.
       - name: Install Playwright
-        run: npx playwright install --with-deps
+        run: yarn playwright install --with-deps chromium
 
       # Step 5: Build Storybook
       - name: Build Storybook
