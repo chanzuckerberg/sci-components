@@ -151,7 +151,7 @@ const Container = styled.div<CommonThemeProps>`
     justify-content: center;
     min-height: 420px;
     margin: 0 0 1.5em;
-    padding: 0 56px;
+    // padding: 0 56px;
     border-radius: 8px;
     /* The illustration is drawn on a white plate, so the panel carries that
        surface and sets its own dark copy rather than inheriting the page's. */
@@ -953,7 +953,7 @@ function claimCallouts(root: HTMLElement): CalloutSlot[] {
     const variant = /-background-(\d)/.exec(node.className)?.[1];
     const slot = {
       body: node.innerHTML,
-      intent: (variant && CALLOUT_INTENTS[variant]) || "info",
+      intent: (variant && CALLOUT_INTENTS[variant]) || "accent",
       key: `callout-${index}`,
       node,
       title: title || undefined,

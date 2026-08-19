@@ -90,7 +90,7 @@
     "lodash": "^4.17.21",
     "monaco-editor": "^0.56.0",
     "playwright": "^1.60.0",
-    "postcss": "^8.4.35",
+    "postcss": "8.5.26",
     "prettier": "^3.1.1",
     "prettier-plugin-organize-imports": "^3.2.4",
     "react": ">=17.0.1",
@@ -187,6 +187,7 @@
   },
   "resolutions": {
     "browserslist-generator": "^3.0.0",
+    "postcss": "8.5.26",
     "vite": "8.0.16"
   },
   "engines": {

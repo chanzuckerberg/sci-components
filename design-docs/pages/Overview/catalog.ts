@@ -100,18 +100,13 @@ export const catalog: CatalogCategory[] = [
     ],
   },
   {
-    slug: "content",
-    title: "Content",
+    slug: "data-display",
+    title: "Data Display",
     entries: [
       {
         name: "Icon",
         docs: "components-icon",
         example: "core/Icon/IconSizes",
-      },
-      {
-        name: "Legend",
-        docs: "components-legend",
-        example: "core/Legend/DefaultLegend",
       },
       {
         name: "List",
@@ -194,6 +189,27 @@ export const catalog: CatalogCategory[] = [
         name: "TagFilter",
         docs: "components-tagfilter",
         example: "core/TagFilter/DefaultTagFilter",
+      },
+    ],
+  },
+  {
+    slug: "data-visualization",
+    title: "Data Visualization",
+    entries: [
+      {
+        name: "HeatmapChart",
+        docs: "data-viz-heatmapchart",
+        example: "data-viz/HeatmapChart/DefaultHeatmapChart",
+      },
+      {
+        name: "Legend",
+        docs: "components-legend",
+        example: "core/Legend/DefaultLegend",
+      },
+      {
+        name: "StackedBarChart",
+        docs: "data-viz-stackedbarchart",
+        example: "data-viz/StackedBarChart/DefaultStackedBarChart",
       },
     ],
   },
@@ -338,22 +354,6 @@ export const catalog: CatalogCategory[] = [
         name: "Pagination",
         docs: "components-table-pagination",
         example: "core/Pagination/DefaultPagination",
-      },
-    ],
-  },
-  {
-    slug: "data-visualization",
-    title: "Data Visualization",
-    entries: [
-      {
-        name: "HeatmapChart",
-        docs: "data-viz-heatmapchart",
-        example: "data-viz/HeatmapChart/DefaultHeatmapChart",
-      },
-      {
-        name: "StackedBarChart",
-        docs: "data-viz-stackedbarchart",
-        example: "data-viz/StackedBarChart/DefaultStackedBarChart",
       },
     ],
   },
