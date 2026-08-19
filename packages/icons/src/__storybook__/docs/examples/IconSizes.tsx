@@ -3,7 +3,7 @@
 
 import { SdsAtlasIcon } from "@czi-sds/icons";
 
-const SIZES = [12, 16, 24, 32];
+const SIZES = [10, 12, 16, 24, 32];
 
 function App() {
   return (

@@ -57,6 +57,12 @@
         "isRequired": false,
         "type": "boolean"
       },
+      "closeOnBlur": {
+        "defaultValue": false,
+        "description": "Closes the filter when a click lands outside it, which it otherwise does not do. It is ignored while the Apply and Cancel buttons are showing, which is a multi select that has not been given isTriggerChangeOnOptionClick. The default follows buttons, so a filter given buttons={false} closes on blur without being asked.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "keepSearchOnSelect": {
         "description": "Maintains a search input when a user selects an option (only if multiple selections are allowed via the multiple prop; otherwise the dropdown closes upon selection)",
         "isRequired": false,

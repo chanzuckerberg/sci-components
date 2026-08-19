@@ -452,7 +452,7 @@ export default App;
 
 A disabled control reports no hovers, so the tooltip goes on a span around it.
 
-> **Note for Tooltips on** **Disabled** **elements**
+> **Note for Tooltips on Disabled elements**
 >
 > If the tooltip wraps a disabled component, please make sure to wrap the children in a `<span>` tag. SDS puts `tabIndex={0}` on whatever the tooltip wraps, so that span also becomes a tab stop and the tooltip opens on focus.
 >

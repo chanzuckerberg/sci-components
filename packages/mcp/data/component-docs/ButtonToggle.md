@@ -33,7 +33,7 @@ function App() {
         sdsStyle="outline"
         sdsType="primary"
         sdsStage={toggle ? "on" : "off"}
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
         onClick={() => setToggle((prev) => !prev)}
       >
         Label
@@ -72,7 +72,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Outline off
       </ButtonToggle>
@@ -81,7 +81,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Outline on
       </ButtonToggle>
@@ -90,7 +90,7 @@ function App() {
         sdsStage="off"
         sdsStyle="minimal"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Minimal off
       </ButtonToggle>
@@ -99,7 +99,7 @@ function App() {
         sdsStage="on"
         sdsStyle="minimal"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Minimal on
       </ButtonToggle>
@@ -129,7 +129,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Primary off
       </ButtonToggle>
@@ -138,7 +138,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Primary on
       </ButtonToggle>
@@ -147,7 +147,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Secondary off
       </ButtonToggle>
@@ -156,7 +156,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Secondary on
       </ButtonToggle>
@@ -185,7 +185,7 @@ function App() {
       <ButtonToggle
         size="large"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Large
       </ButtonToggle>
@@ -193,7 +193,7 @@ function App() {
       <ButtonToggle
         size="medium"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Medium
       </ButtonToggle>
@@ -201,7 +201,7 @@ function App() {
       <ButtonToggle
         size="small"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
       >
         Small
       </ButtonToggle>
@@ -299,7 +299,7 @@ function App() {
           sdsStage="off"
           sdsStyle="outline"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
         >
           Off
         </ButtonToggle>
@@ -309,7 +309,7 @@ function App() {
           sdsStage="on"
           sdsStyle="outline"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
         >
           On
         </ButtonToggle>
@@ -319,7 +319,7 @@ function App() {
           sdsStage="on"
           sdsStyle="minimal"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Search" sdsSize="s" />}
+          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
         >
           Minimal on
         </ButtonToggle>

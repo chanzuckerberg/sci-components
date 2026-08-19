@@ -1,7 +1,7 @@
 // `color` takes any CSS color. It defaults to `currentColor`, so an icon with no
 // color of its own inherits the text color around it.
 
-import { SdsBiohubIcon } from "@czi-sds/icons";
+import { SdsSparklesIcon } from "@czi-sds/icons";
 
 const COLORS = [
   "currentColor",
@@ -19,7 +19,7 @@ function App() {
       style={{ color: "#000000", display: "flex", gap: "16px" }}
     >
       {COLORS.map((color) => (
-        <SdsBiohubIcon key={color} size={32} color={color} />
+        <SdsSparklesIcon key={color} size={32} color={color} />
       ))}
     </div>
   );
