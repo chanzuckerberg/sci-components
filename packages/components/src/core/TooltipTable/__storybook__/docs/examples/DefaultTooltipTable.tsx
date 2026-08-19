@@ -4,8 +4,7 @@
 // It belongs in componentSlot rather than title, because title wraps whatever it is
 // given in a paragraph, and a table inside a paragraph is invalid HTML that React
 // complains about. Pair it with TooltipCondensed so the table follows the cursor,
-// which is how it is meant to behave over a chart or a table cell, and with
-// hasInvertedStyle={false} so the numbers sit on a light surface.
+// which is how it is meant to behave over a chart or a table cell.
 //
 // The table asks for at least 224px and the tooltip caps out at 250px, so the two
 // only just fit. Long labels are what break the layout first, so keep them short.
@@ -73,7 +72,6 @@ function App() {
       <Stage>
         <TooltipCondensed
           componentSlot={<TooltipTable data={DATA} itemAlign="right" />}
-          hasInvertedStyle={false}
           title={null}
         >
           <Cell>Hover for the sample summary</Cell>

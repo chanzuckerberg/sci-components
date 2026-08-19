@@ -113,7 +113,6 @@ function App() {
               </SlotLink>
             </Legend>
           }
-          hasInvertedStyle={false}
           placement="right"
           textAlign="left"
           title="Coverage"

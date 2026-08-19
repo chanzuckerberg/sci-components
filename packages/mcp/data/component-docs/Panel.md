@@ -14,7 +14,7 @@ import { Panel } from "@czi-sds/components";
 
 ## Code examples
 
-**Note:** A panel fixes itself to an edge of the viewport, which on this page means an edge of the docs rather than of the example. Each example below therefore holds its panel inside its own frame, with a wrapper that fixed positioning resolves against and, for the overlay panels, a container for the portal and another for the transition, so the panel slides the width of the frame rather than of the window. None of that belongs in an application.
+> **Note:** A panel fixes itself to an edge of the viewport, which on this page means an edge of the docs rather than of the example. Each example below therefore holds its panel inside its own frame, with a wrapper that fixed positioning resolves against and, for the overlay panels, a container for the portal and another for the transition, so the panel slides the width of the frame rather than of the window. None of that belongs in an application.
 
 ### Basic panel
 

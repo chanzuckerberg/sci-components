@@ -22,7 +22,6 @@ function App() {
     <div className="app">
       <Stage>
         <Tooltip
-          hasInvertedStyle={false}
           placement="top"
           title="Pick at least one sample before exporting"
         >

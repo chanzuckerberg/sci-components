@@ -80,7 +80,7 @@ export default App;
 
 ### TooltipCondensed with indicator
 
-A condensed tooltip on a table cell, with a coloured dot, and a second one in the lighter scheme. Both follow the pointer as it moves across the cell.
+Two condensed tooltips on a table cell, each with a coloured dot tying it to the value it describes. Both follow the pointer as it moves across the cell.
 
 **Example: TooltipCondensedWithIndicator**
 
@@ -95,9 +95,6 @@ A condensed tooltip on a table cell, with a coloured dot, and a second one in th
 // the tooltip to a series in a chart. indicatorColor takes a raw CSS colour rather
 // than an SDS name, so read the one you want off the theme. Without it the dot is
 // still laid out, just invisible.
-//
-// The second tooltip below asks for hasInvertedStyle={false}, the lighter scheme the
-// design offers for dark backgrounds.
 
 import {
   TooltipCondensed,
@@ -158,12 +155,11 @@ function App() {
         </TooltipCondensed>
 
         <TooltipCondensed
-          hasInvertedStyle={false}
           indicator
           indicatorColor={semanticColors?.negative?.fillPrimary}
           title="12 failed QC"
         >
-          <Cell>Hover a point on a dark background</Cell>
+          <Cell>Hover a failing point</Cell>
         </TooltipCondensed>
       </Stage>
     </div>
@@ -175,7 +171,7 @@ export default App;
 
 ## SDS vs MUI
 
-TooltipCondensed is the SDS Tooltip with tighter padding and a fixed set of behaviors, for labelling something in a dense surface such as a chart or a table cell. It takes every Tooltip prop, including `hasInvertedStyle`, `subtitle` and `componentSlot`, and adds two of its own:
+TooltipCondensed is the SDS Tooltip with tighter padding and a fixed set of behaviors, for labelling something in a dense surface such as a chart or a table cell. It takes every Tooltip prop, including `subtitle` and `componentSlot`, and adds two of its own:
 
 - `indicator`: draws a 12px round dot before the text, for tying the tooltip to a series in a chart or a colour in a legend.
 
@@ -199,10 +195,9 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name               | Type        | Default | Description                                                                                   |
-| ------------------ | ----------- | ------- | --------------------------------------------------------------------------------------------- |
-| `title`            | `ReactNode` | -       | The label to show. Pass `null` when the content is coming through `componentSlot` instead.    |
-| `indicator`        | `boolean`   | `false` | Draws a 12px round dot before the text.                                                       |
-| `indicatorColor`   | `string`    | -       | The dot's colour, as a CSS colour. Without it the dot occupies its space but cannot be seen.  |
-| `hasInvertedStyle` | `boolean`   | `true`  | Inherited from Tooltip. False gives the lighter scheme, which is what the table tooltip uses. |
-| `componentSlot`    | `ReactNode` | -       | Inherited from Tooltip, and how a TooltipTable is placed inside a condensed tooltip.          |
+| Name             | Type        | Default | Description                                                                                  |
+| ---------------- | ----------- | ------- | -------------------------------------------------------------------------------------------- |
+| `title`          | `ReactNode` | -       | The label to show. Pass `null` when the content is coming through `componentSlot` instead.   |
+| `indicator`      | `boolean`   | `false` | Draws a 12px round dot before the text.                                                      |
+| `indicatorColor` | `string`    | -       | The dot's colour, as a CSS colour. Without it the dot occupies its space but cannot be seen. |
+| `componentSlot`  | `ReactNode` | -       | Inherited from Tooltip, and how a TooltipTable is placed inside a condensed tooltip.         |

@@ -16,14 +16,14 @@ import { Tooltip } from "@czi-sds/components";
 
 ### **Default Tooltip**
 
-A title and a trigger, which is all a tooltip needs. The dark scheme, the arrow, and the placement below the trigger are what the component gives you without being asked.
+A title and a trigger, which is all a tooltip needs. The surface, the arrow, and the placement below the trigger are what the component gives you without being asked.
 
 **Example: DefaultTooltip**
 
 ```tsx
-// The least a tooltip needs: a title, and something to hang it on. The dark
-// scheme, the arrow and the placement below the trigger all come as standard, so
-// hover or focus the button to see what the component does unasked.
+// The least a tooltip needs: a title, and something to hang it on. The surface,
+// the arrow and the placement below the trigger all come as standard, so hover or
+// focus the button to see what the component does unasked.
 //
 // The trigger still says what it is. A tooltip adds to a label; it is not one.
 
@@ -54,17 +54,13 @@ function App() {
 export default App;
 ```
 
-### **Tooltip – Dark**
+### **Tooltip with a subtitle**
 
-The tooltip the component gives you by default, with a title and a subtitle. The design calls this one the inverted tooltip.
+A second line under the title, in smaller and dimmer text, for a detail that would crowd the title itself.
 
-**Example: TooltipDark**
+**Example: TooltipWithSubtitle**
 
 ```tsx
-// The dark tooltip is what the component gives you without asking: hasInvertedStyle
-// defaults to true. Note that the design above calls this one inverted and treats
-// the light tooltip as the default, so the two vocabularies are reversed.
-//
 // subtitle sits under title in smaller, dimmer text, for a detail like how to use
 // the thing being pointed at. Both are optional, but a tooltip with neither a
 // title, a subtitle, nor a componentSlot renders nothing at all.
@@ -107,21 +103,16 @@ function App() {
 export default App;
 ```
 
-### **Tooltip – Light**
+### **Tooltip widths**
 
-The light tooltip, which has to be asked for with `hasInvertedStyle={false}`, shown at both widths. The wide one holds 550px of left-aligned text.
+Both widths side by side. The default caps the tooltip at 250px; the wide one holds 550px of left-aligned text.
 
-**Example: TooltipLight**
+**Example: TooltipWidths**
 
 ```tsx
-// hasInvertedStyle={false} draws the light tooltip: a white surface with a hairline
-// outline and body text rather than semibold. The design treats this one as the
-// default, so it is worth asking for deliberately.
-//
-// width="wide" lifts the cap from 250px to 550px and switches the text to the left,
-// which is what longer explanations need. It logs a warning saying wide is for light
-// tooltips only. The check is broken and fires whichever style you use, so it can
-// be ignored here.
+// width caps how far a tooltip can stretch before its text wraps. The default stops
+// at 250px and centres the text; "wide" lifts the cap to 550px and switches the text
+// to the left, which is what longer explanations need.
 
 import {
   Button,
@@ -173,11 +164,7 @@ function App() {
     <div className="app">
       <Stage>
         <Labelled>
-          <Tooltip
-            hasInvertedStyle={false}
-            placement="top"
-            title="Aligned with minimap2"
-          >
+          <Tooltip placement="top" title="Aligned with minimap2">
             <Button
               aria-label="About alignment"
               sdsStyle="minimal"
@@ -190,12 +177,7 @@ function App() {
         </Labelled>
 
         <Labelled>
-          <Tooltip
-            hasInvertedStyle={false}
-            placement="top"
-            title={LONG_TEXT}
-            width="wide"
-          >
+          <Tooltip placement="top" title={LONG_TEXT} width="wide">
             <Button
               aria-label="About the alignment pipeline"
               sdsStyle="minimal"
@@ -446,7 +428,6 @@ function App() {
               </SlotLink>
             </Legend>
           }
-          hasInvertedStyle={false}
           placement="right"
           textAlign="left"
           title="Coverage"
@@ -471,11 +452,11 @@ export default App;
 
 A disabled control reports no hovers, so the tooltip goes on a span around it.
 
-**Note for Tooltips on** **Disabled** **elements**
-
-If the tooltip wraps a disabled component, please make sure to wrap the children in a `<span>` tag. SDS puts `tabIndex={0}` on whatever the tooltip wraps, so that span also becomes a tab stop and the tooltip opens on focus.
-
-[https://mui.com/components/tooltips/#disabled-elements](https://mui.com/components/tooltips/#disabled-elements)
+> **Note for Tooltips on** **Disabled** **elements**
+>
+> If the tooltip wraps a disabled component, please make sure to wrap the children in a `<span>` tag. SDS puts `tabIndex={0}` on whatever the tooltip wraps, so that span also becomes a tab stop and the tooltip opens on focus.
+>
+> [https://mui.com/components/tooltips/#disabled-elements](https://mui.com/components/tooltips/#disabled-elements)
 
 **Example: TooltipOnDisabledElement**
 
@@ -504,7 +485,6 @@ function App() {
     <div className="app">
       <Stage>
         <Tooltip
-          hasInvertedStyle={false}
           placement="top"
           title="Pick at least one sample before exporting"
         >
@@ -526,13 +506,13 @@ export default App;
 
 SDS Tooltip wraps MUI's Tooltip, composes the content out of its own props rather than taking it whole, and pins the parts of MUI's API the design has an opinion about. What it adds and changes:
 
-- `hasInvertedStyle`: `true` by default, which is the dark tooltip: a black surface with white semibold text. Set it to `false` for the light one: a white surface, a hairline outline, and body text. Mind the vocabulary: the design above calls the light tooltip the default and the dark one inverted, while the component ships dark unless asked otherwise.
+- **One surface, which follows the theme:** a tooltip is light in the light theme and dark in the dark theme, and there is nothing to set. MUI leaves the surface to the theme as well, but SDS pins the shape of it: the radius, the shadow, the hairline outline and the type scale.
 
-- `title` and `subtitle`: SDS builds the content itself, wrapping `title` and then `subtitle` in paragraphs of its own, so `title` is not the free-form node MUI's is. `subtitle` is the smaller, dimmer second line and works on either style, despite a leftover warning in the codebase claiming it is dark-only. A tooltip with no `title`, `subtitle` or `componentSlot` renders nothing and leaves its child alone.
+- `title` and `subtitle`: SDS builds the content itself, wrapping `title` and then `subtitle` in paragraphs of its own, so `title` is not the free-form node MUI's is. `subtitle` is the smaller, dimmer second line. A tooltip with no `title`, `subtitle` or `componentSlot` renders nothing and leaves its child alone.
 
 - `componentSlot`: anything React can render, placed under the text with 12px above it when there is text to sit under. This is where non-text content goes, since a table or a div handed to `title` lands inside a paragraph and produces invalid HTML.
 
-- `width`: `"default"` caps the tooltip at 250px, `"wide"` at 550px and switches the text to the left. Compare MUI, which has no `width` prop of its own. The design pairs the wide width with the light tooltip; in code it applies to both, and logs a warning about being light-only either way.
+- `width`: `"default"` caps the tooltip at 250px, `"wide"` at 550px and switches the text to the left. Compare MUI, which has no `width` prop of its own.
 
 - `textAlign`: overrides the alignment each width picks for itself: centred at the default width, left when wide.
 
@@ -540,7 +520,7 @@ SDS Tooltip wraps MUI's Tooltip, composes the content out of its own props rathe
 
 - **arrow is on:** MUI defaults to no arrow; SDS turns it on for every tooltip. It can still be turned back off with `arrow={false}`, though the design always draws one.
 
-- **sdsStyle and inverted are deprecated.** Both are earlier spellings of `hasInvertedStyle`: `sdsStyle="dark"` matches the default and `sdsStyle="light"` matches `hasInvertedStyle={false}`. Reach for `hasInvertedStyle` and ignore the console: because the component gives `sdsStyle` a default of `"dark"` before checking whether it was passed, both the deprecation warning and the wide-width warning are logged for every tooltip, whatever props you gave it. The same stale default is why the 500ms delay the code has in mind for light tooltips only takes effect if you pass the deprecated `sdsStyle="light"` alongside `hasInvertedStyle={false}`; on its own, a light tooltip closes as promptly as a dark one.
+- **hasInvertedStyle, inverted and sdsStyle are deprecated and now do nothing.** All three chose between a light and a dark tooltip, back when the choice was the author's to make. Passing any of them still type-checks, so nothing breaks, but the tooltip takes its colours from the theme regardless and a deprecation warning is logged once. They will be removed in a future release: delete them.
 
 - **The popper is SDS's:** it carries the arrow's shape and its position for all twelve placements, and it arrives through `PopperComponent`, which SDS keeps as a prop name of its own after MUI moved to `slots.popper`. SDS fills in `slots` last, so a `slots` object of your own is dropped; pass `PopperComponent` instead.
 
@@ -569,16 +549,13 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | Name                 | Type                                                                                                                                                                                       | Default                           | Description                                                                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `title`              | `ReactNode`                                                                                                                                                                                | -                                 | The tooltip's first line, wrapped in a paragraph by SDS. A tooltip with no `title`, `subtitle` or `componentSlot` does not render.                                        |
-| `subtitle`           | `ReactNode`                                                                                                                                                                                | -                                 | A smaller, dimmer second line under the title, for a detail such as how to use what the tooltip points at. Works on both styles.                                          |
+| `subtitle`           | `ReactNode`                                                                                                                                                                                | -                                 | A smaller, dimmer second line under the title, for a detail such as how to use what the tooltip points at.                                                                |
 | `componentSlot`      | `ReactNode`                                                                                                                                                                                | -                                 | Content below the text, with 12px above it when there is text. The place for anything that is not a string, including TooltipTable.                                       |
-| `hasInvertedStyle`   | `boolean`                                                                                                                                                                                  | `true`                            | True is the dark tooltip: a black surface with white semibold text. False is the light one, with a hairline outline and body text.                                        |
-| `width`              | `"default" \| "wide"`                                                                                                                                                                      | `"default"`                       | Caps the tooltip at 250px or 550px. Wide also left-aligns the text. It logs a warning about being light-only whichever style it is used with.                             |
+| `width`              | `"default" \| "wide"`                                                                                                                                                                      | `"default"`                       | Caps the tooltip at 250px or 550px. Wide also left-aligns the text.                                                                                                       |
 | `textAlign`          | `"left" \| "center" \| "right"`                                                                                                                                                            | `"center"`, or `"left"` when wide | Overrides the alignment the width would pick.                                                                                                                             |
 | `arrow`              | `boolean`                                                                                                                                                                                  | `true`                            | MUI's prop, which SDS turns on for every tooltip. It can be set back to `false`, though the design always draws an arrow.                                                 |
 | `arrowOffset`        | `number`                                                                                                                                                                                   | -                                 | Sets the arrow's left position, in pixels from the tooltip's left edge, instead of letting it be calculated. Values past the tooltip's width move the arrow out of sight. |
 | `PopperComponent`    | `ElementType`                                                                                                                                                                              | SDS `StyledPopper`                | The popper the tooltip renders into, carrying the arrow's shape and placement. SDS maps it to MUI's `slots.popper`, and a `slots` object passed directly is ignored.      |
-| `sdsStyle`           | `"dark" \| "light"`                                                                                                                                                                        | `"dark"`                          | **Deprecated.** An earlier spelling of `hasInvertedStyle`: dark matches the default, light matches `hasInvertedStyle={false}`.                                            |
-| `inverted`           | `boolean`                                                                                                                                                                                  | -                                 | **Deprecated.** The oldest spelling of `hasInvertedStyle`. Use `hasInvertedStyle`.                                                                                        |
 | `placement`          | `"bottom-start"` \| `"bottom"` \| `"bottom-end"` \| `"left-start"` \| `"left"` \| `"left-end"` \| `"right-start"` \| `"right"` \| `"right-end"` \| `"top-start"` \| `"top"` \| `"top-end"` | `"bottom"`                        | MUI's prop. All twelve values work, and a tooltip that would fall off the screen flips to the opposite side on its own.                                                   |
 | `disableInteractive` | `boolean`                                                                                                                                                                                  | `false`                           | MUI's prop. Stops the tooltip from staying open while the pointer moves onto it, which also puts anything clickable inside it out of reach.                               |
 | `followCursor`       | `boolean`                                                                                                                                                                                  | `false`                           | MUI's prop, which keeps the tooltip under the pointer as it moves. SDS also reads it, and gives a tooltip that follows the cursor the roomier padding it uses for tables. |

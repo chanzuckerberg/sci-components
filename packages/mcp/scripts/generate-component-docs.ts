@@ -26,6 +26,13 @@ const COMPONENT_LIST_PATH = path.join(dirname, "../data/component-list.json");
 const OUTPUT_DIR = path.join(dirname, "../data/component-docs");
 const INDEX_PATH = path.join(OUTPUT_DIR, "index.json");
 
+/**
+ * The class a page marks a note with, as `docs-kit/constants.ts` names it.
+ * Repeated rather than imported: this script builds against the MCP package
+ * alone, which has no path to the documentation kit.
+ */
+const CALLOUT = "sds-doc-callout";
+
 interface ComponentList {
   components: string[];
   "data-viz": string[];
@@ -228,6 +235,31 @@ function createConverter(): TurndownService {
   service.addRule("figcaption", {
     filter: "figcaption",
     replacement: (content) => (content.trim() ? `\n\n**${content}**\n\n` : ""),
+  });
+
+  /**
+   * A note the page sets apart from the prose around it, and which Storybook
+   * draws as an SDS Callout. Turndown would otherwise flatten the `<div>` into
+   * one more paragraph, leaving nothing to say the reader is being told
+   * something aside from the run of the page.
+   */
+  service.addRule("callout", {
+    filter: (node) => {
+      const element = asElement(node);
+      return (
+        element.nodeName === "DIV" &&
+        (element.getAttribute("class") ?? "").split(/\s+/).includes(CALLOUT)
+      );
+    },
+    replacement: (content) => {
+      const quoted = content
+        .trim()
+        .split("\n")
+        .map((line) => (line.trim() ? `> ${line}` : ">"))
+        .join("\n");
+
+      return quoted ? `\n\n${quoted}\n\n` : "";
+    },
   });
 
   /**

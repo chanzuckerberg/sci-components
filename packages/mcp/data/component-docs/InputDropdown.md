@@ -1,5 +1,7 @@
 # InputDropdown
 
+> **InputDropdown is the trigger, not the menu.** It draws the field a dropdown opens from and reports the selection back, and it opens nothing by itself. Most applications want Dropdown, which is this component already paired with a menu; reach for this one to anchor a DropdownMenu you are driving yourself. It is filed under Inputs, but it belongs to the family the Dropdowns overview describes.
+
 ## Source Code
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputDropdown/index.tsx).
@@ -78,7 +80,7 @@ function App() {
 export default App;
 ```
 
-**MUI Tip:** MUI's `fullWidth` prop works here too and does the same thing as `width="100%"`. Pass both and `width` is the one that counts. Either way the input keeps a minimum width of 90px, so a smaller value leaves it at 90px rather than shrinking it.
+> **MUI Tip:** MUI's `fullWidth` prop works here too and does the same thing as `width="100%"`. Pass both and `width` is the one that counts. Either way the input keeps a minimum width of 90px, so a smaller value leaves it at 90px rather than shrinking it.
 
 ### Anchoring a menu
 
@@ -331,7 +333,7 @@ export default App;
 
 An example of the combined use of the value variation InputDropdown component and a single-select Dropdown component is shown below.
 
-**Warning:** The value variant can not be used in conjunction with the multi-select Dropdowns. If you set `sdsType="value"` and `multiple="true"`, the component will default to showing a label and a counter instead.
+> **Warning:** The value variant can not be used in conjunction with the multi-select Dropdowns. If you set `sdsType="value"` and `multiple="true"`, the component will default to showing a label and a counter instead.
 
 **Example: MinimalWithSingleSelect**
 

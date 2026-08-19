@@ -27,8 +27,7 @@ The table inside a condensed tooltip in the lighter scheme, which is what pairs 
 // It belongs in componentSlot rather than title, because title wraps whatever it is
 // given in a paragraph, and a table inside a paragraph is invalid HTML that React
 // complains about. Pair it with TooltipCondensed so the table follows the cursor,
-// which is how it is meant to behave over a chart or a table cell, and with
-// hasInvertedStyle={false} so the numbers sit on a light surface.
+// which is how it is meant to behave over a chart or a table cell.
 //
 // The table asks for at least 224px and the tooltip caps out at 250px, so the two
 // only just fit. Long labels are what break the layout first, so keep them short.
@@ -96,7 +95,6 @@ function App() {
       <Stage>
         <TooltipCondensed
           componentSlot={<TooltipTable data={DATA} itemAlign="right" />}
-          hasInvertedStyle={false}
           title={null}
         >
           <Cell>Hover for the sample summary</Cell>
@@ -128,8 +126,6 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 ## Behavior and accessibility
 
 - Put it in `componentSlot`, not `title`. A tooltip wraps its title in a paragraph, and a table inside a paragraph is invalid HTML that React reports as an error in the console.
-
-- Give the tooltip `hasInvertedStyle={false}`. The table is designed for a light surface, which is what the design shows and what keeps the section labels readable.
 
 - The table asks for at least 224px and a tooltip stops at 250px, so there is almost no slack: long row labels wrap and push the table into a scrollbar. Keeping labels to a word or two matters more here than anywhere else. `width="wide"` on the tooltip buys room for a table that genuinely needs it.
 

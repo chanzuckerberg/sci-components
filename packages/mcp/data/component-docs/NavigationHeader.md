@@ -14,7 +14,7 @@ import { NavigationHeader } from "@czi-sds/components";
 
 ## Code examples
 
-**Note:** Most headers below set `isSticky={false}` so they stay inside their example rather than pinning themselves to the top of this page. Because they are narrower than a real page, some collapse to the narrow layout with a hamburger; widen the window to see the wide layout. Overlays such as the narrow layout's drawer expect a real viewport, so they cover this page instead of their example unless the example holds them in, as the drawer-style one below does.
+> **Note:** Most headers below set `isSticky={false}` so they stay inside their example rather than pinning themselves to the top of this page. Because they are narrower than a real page, some collapse to the narrow layout with a hamburger; widen the window to see the wide layout. Overlays such as the narrow layout's drawer expect a real viewport, so they cover this page instead of their example unless the example holds them in, as the drawer-style one below does.
 
 ### Default header
 

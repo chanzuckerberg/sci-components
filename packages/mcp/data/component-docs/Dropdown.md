@@ -1,5 +1,7 @@
 # Dropdown
 
+> **Dropdown is a trigger and a menu together.** It pairs InputDropdown, the field the user clicks, with DropdownMenu, the list that opens, and takes care of what sits between them. Reach for those two directly only when the menu has to open from something Dropdown does not draw; the Dropdowns overview covers how the family fits together.
+
 ## Source Code
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Dropdown/index.tsx).

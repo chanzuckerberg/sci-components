@@ -2,7 +2,7 @@
 
 The searchable list of options behind every SDS dropdown: a MUI Autocomplete rendered as SDS MenuItems, in one column or several.
 
-**Most applications want DropdownMenu instead.** Autocomplete is the list itself, with no popper of its own and no trigger. DropdownMenu wraps it in a popper anchored to an element you choose, and Dropdown adds the click target too. Use Autocomplete directly when the list belongs somewhere a popper cannot go: inside a panel, a dialog body, or a layout you are placing yourself.
+> **Most applications want DropdownMenu instead.** Autocomplete is the list itself, with no popper of its own and no trigger. DropdownMenu wraps it in a popper anchored to an element you choose, and Dropdown adds the click target too. Use Autocomplete directly when the list belongs somewhere a popper cannot go: inside a panel, a dialog body, or a layout you are placing yourself. The Dropdowns overview sets out the whole family.
 
 ## Source Code
 
@@ -51,7 +51,7 @@ const OPTIONS: DefaultAutocompleteOption[] = [
 
 function App() {
   return (
-    <div className="app" style={{ width: 280 }}>
+    <div className="app">
       <Autocomplete label="Search cell types" options={OPTIONS} search />
     </div>
   );
@@ -78,20 +78,13 @@ Selecting several options, with the selection read back out above the list. The 
 //
 // keepSearchOnSelect leaves the typed text in place after a pick, so several
 // matches for the same search can be selected without retyping it.
-//
-// open is set here only so the list is visible on the page.
 
 import { useState } from "react";
 import {
   Autocomplete,
-  fontBodyXs,
-  getSemanticColors,
-  getSpaces,
   type AutocompleteSingleColumnOnChange,
-  type CommonThemeProps,
   type DefaultAutocompleteOption,
 } from "@czi-sds/components";
-import styled from "@emotion/styled";
 
 const OPTIONS: DefaultAutocompleteOption[] = [
   { name: "Astrocyte" },
@@ -102,20 +95,6 @@ const OPTIONS: DefaultAutocompleteOption[] = [
   { name: "Neuron" },
   { name: "T cell" },
 ];
-
-const Readout = styled.p<CommonThemeProps>`
-  ${fontBodyXs}
-
-  ${(props) => {
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      color: ${semanticColors?.base?.textSecondary};
-      margin: 0 0 ${spaces?.m}px;
-    `;
-  }}
-`;
 
 function App() {
   const [selected, setSelected] = useState<DefaultAutocompleteOption[]>([]);
@@ -130,22 +109,20 @@ function App() {
   > = (_event, value) => setSelected(value);
 
   return (
-    <div className="app" style={{ width: 280 }}>
-      <Readout>
-        {selected.length
-          ? selected.map((option) => option.name).join(", ")
-          : "Nothing selected."}
-      </Readout>
-
+    <div className="app">
       <Autocomplete<DefaultAutocompleteOption, true, false, false>
         keepSearchOnSelect
         label="Search cell types"
         multiple
-        open
         options={OPTIONS}
         search
         value={selected}
         onChange={handleChange}
+        InputBaseProps={{
+          style: {
+            width: "280px",
+          },
+        }}
       />
     </div>
   );
@@ -169,9 +146,6 @@ export default App;
 // arrive, so an option that repeats a section already passed starts a second
 // section with the same heading. Sort the options the way the sections should
 // read before handing them over.
-//
-// open is set here only so the sections are visible on the page; normally the
-// field opens itself when it is clicked.
 
 import {
   Autocomplete,
@@ -191,14 +165,18 @@ const OPTIONS: DefaultAutocompleteOption[] = [
 
 function App() {
   return (
-    <div className="app" style={{ width: 280 }}>
+    <div className="app">
       <Autocomplete
         groupBy={(option) => option.section as string}
         label="Search cell types"
         multiple
-        open
         options={OPTIONS}
         search
+        InputBaseProps={{
+          style: {
+            width: "280px",
+          },
+        }}
       />
     </div>
   );
@@ -222,8 +200,6 @@ Counts, details, icons, a disabled row, and an option that renders a component o
 // the label. The two are mutually exclusive by type: an option is either a
 // described one or a custom one, never both. It still needs a name, which is
 // what search matches against and what selection is tracked by.
-//
-// open is set here only so the options are visible on the page.
 
 import {
   Autocomplete,
@@ -278,13 +254,17 @@ const OPTIONS: DefaultAutocompleteOption[] = [
 
 function App() {
   return (
-    <div className="app" style={{ width: 320 }}>
+    <div className="app">
       <Autocomplete
         label="Search cell types"
         multiple
-        open
         options={OPTIONS}
         search
+        InputBaseProps={{
+          style: {
+            width: "320px",
+          },
+        }}
       />
     </div>
   );
@@ -310,8 +290,6 @@ Two lists side by side under one search field, and the record-shaped value they 
 //
 // One search field sits above all the columns and filters them together.
 // groupBy is ignored here: sections and columns do not combine.
-//
-// open is set here only so the columns are visible on the page.
 
 import { useState } from "react";
 import {
@@ -340,7 +318,6 @@ const COLUMNS: AutocompleteMultiColumnOption<Option, true, false, false>[] = [
       { name: "Kidney" },
       { name: "Lung" },
     ],
-    width: 180,
   },
   {
     name: "Assay",
@@ -350,7 +327,6 @@ const COLUMNS: AutocompleteMultiColumnOption<Option, true, false, false>[] = [
       { details: "Sequential FISH", name: "seqFISH" },
       { name: "Smart-seq2" },
     ],
-    width: 220,
   },
 ];
 
@@ -386,74 +362,20 @@ function App() {
     .join(" · ");
 
   return (
-    <div className="app" style={{ width: 440 }}>
+    <div className="app">
       <Readout>{summary || "Nothing selected."}</Readout>
 
       <Autocomplete<Option, true, false, false>
         label="Search tissues and assays"
         multiple
-        open
         options={COLUMNS}
         search
         onChange={handleChange}
-      />
-    </div>
-  );
-}
-
-export default App;
-```
-
-### Controlled open, without a search field
-
-The configuration DropdownMenu is built on: no input of its own, opened and closed by the parent.
-
-**Example: AutocompleteControlledOpen**
-
-```tsx
-// Without search there is no visible field, so the list has to be opened from
-// outside: pass open, and use onClick and onClickAway to keep it in step with
-// whatever does the opening. This is the arrangement DropdownMenu wraps up.
-// Reach for it first, and do this only when you need the list somewhere a
-// popper cannot go.
-//
-// onClick fires when the component asks to open, onClickAway when it asks to
-// close, and both are advisory. Nothing happens until the state says so.
-
-import { useState } from "react";
-import {
-  Autocomplete,
-  Button,
-  type DefaultAutocompleteOption,
-} from "@czi-sds/components";
-
-const OPTIONS: DefaultAutocompleteOption[] = [
-  { name: "Astrocyte" },
-  { name: "B cell" },
-  { name: "Endothelial cell" },
-  { name: "Fibroblast" },
-  { name: "Macrophage" },
-  { name: "Neuron" },
-];
-
-function App() {
-  const [open, setOpen] = useState(true);
-
-  return (
-    <div className="app" style={{ width: 280 }}>
-      <Button
-        onClick={() => setOpen((wasOpen) => !wasOpen)}
-        sdsStyle="outline"
-        sdsType="secondary"
-      >
-        {open ? "Hide options" : "Show options"}
-      </Button>
-
-      <Autocomplete
-        multiple
-        open={open}
-        options={OPTIONS}
-        onClickAway={() => setOpen(false)}
+        InputBaseProps={{
+          style: {
+            width: "280px",
+          },
+        }}
       />
     </div>
   );
@@ -529,7 +451,7 @@ Filtering is MUI's, matching against `getOptionLabel`, which defaults to the opt
 
 - Because the input never shows the selection, a selection that is not reported anywhere else is invisible to someone who cannot see the checkmarks. Pair the list with a summary of what is chosen.
 
-**count and icon do nothing at the top level.** Both are accepted on the component itself, left over from an earlier version, and neither is rendered. On an option they work as described above; on a column, `icon` draws the divider glyph.
+> **count and icon do nothing at the top level.** Both are accepted on the component itself, left over from an earlier version, and neither is rendered. On an option they work as described above; on a column, `icon` draws the divider glyph.
 
 ## Typing onChange
 

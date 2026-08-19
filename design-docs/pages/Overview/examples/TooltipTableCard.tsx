@@ -74,7 +74,6 @@ function App() {
       <Stage>
         <TooltipCondensed
           componentSlot={<TooltipTable data={DATA} itemAlign="right" />}
-          hasInvertedStyle={false}
           open={Boolean(cell)}
           slotProps={{
             popper: {

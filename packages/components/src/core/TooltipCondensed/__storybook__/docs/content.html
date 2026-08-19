@@ -29,8 +29,8 @@
 ></div>
 <h3>TooltipCondensed with indicator</h3>
 <p>
-  A condensed tooltip on a table cell, with a coloured dot, and a second one in
-  the lighter scheme. Both follow the pointer as it moves across the cell.
+  Two condensed tooltips on a table cell, each with a coloured dot tying it to
+  the value it describes. Both follow the pointer as it moves across the cell.
 </p>
 <div
   class="sds-doc-example"
@@ -40,8 +40,7 @@
 <p>
   TooltipCondensed is the SDS Tooltip with tighter padding and a fixed set of
   behaviors, for labelling something in a dense surface such as a chart or a
-  table cell. It takes every Tooltip prop, including
-  <code>hasInvertedStyle</code>, <code>subtitle</code> and
+  table cell. It takes every Tooltip prop, including <code>subtitle</code> and
   <code>componentSlot</code>, and adds two of its own:
 </p>
 <ul class="sds-doc-bullet-list">
@@ -150,23 +149,6 @@
       <p>
         The dot's colour, as a CSS colour. Without it the dot occupies its space
         but cannot be seen.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>hasInvertedStyle</code></p>
-    </td>
-    <td>
-      <p><code>boolean</code></p>
-    </td>
-    <td>
-      <p><code>true</code></p>
-    </td>
-    <td>
-      <p>
-        Inherited from Tooltip. False gives the lighter scheme, which is what
-        the table tooltip uses.
       </p>
     </td>
   </tr>

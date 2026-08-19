@@ -2,6 +2,8 @@
 
 A surface of choices that opens from the element the user clicked, for actions and options that do not warrant a permanent place in the layout.
 
+> **Menu is not DropdownMenu.** Menu is the simplest dropdown the system has, a restyling of Material UI's own: its rows are commands you write yourself, and picking one runs an action and leaves nothing behind. DropdownMenu is for choosing a value the app keeps, from options passed as data. If what the user picks has to be read back out afterwards, it is not a Menu; the Dropdowns overview sets the two side by side.
+
 ## Source Code
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Menu/index.tsx).
@@ -228,7 +230,7 @@ SDS Menu is a thin wrapper around MUI's Menu. `MenuProps` is MUI's own type re-e
 
 - **Its children are SDS MenuItems.** Menu draws the surface and nothing within it, so the appearance of a row (its icon, its right hand column, its selected state) belongs to MenuItem.
 
-**SDS Tip:** Reach for Menu when the choices are commands, or a short list of options anchored to a trigger. When the user is picking a value that the trigger should then display, and especially when the list needs search, sections, or Apply and Cancel buttons, use Dropdown instead.
+> **SDS Tip:** Reach for Menu when the choices are commands, or a short list of options anchored to a trigger. When the user is picking a value that the trigger should then display, and especially when the list needs search, sections, or Apply and Cancel buttons, use Dropdown instead.
 
 ## MUI Documentation
 

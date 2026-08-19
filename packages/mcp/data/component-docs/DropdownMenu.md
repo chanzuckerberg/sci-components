@@ -1,5 +1,7 @@
 # DropdownMenu
 
+> **DropdownMenu is not Menu.** This is the menu half of Dropdown: a list built from an `options` array, for choosing a value your app then keeps, with search and sections and several selections at once. Menu is for commands, whose rows you write yourself and which leave nothing behind once one is picked. Use this one when you need Dropdown's list but not its trigger, and see the Dropdowns overview for the rest of the family.
+
 ## Source Code
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/DropdownMenu/index.tsx).
@@ -410,7 +412,7 @@ groupBy={(option) => option.name.at(-1)}
 
 This `groupBy` prop must be provided or the groups will not render, even if all menu items have `section` properties (see below).
 
-**Warning:** To avoid duplicate headers, please make sure that the options are also sorted with the same dimension that they are grouped by. (See: [Issue](https://github.com/mui/material-ui/issues/21967#issuecomment-665006321) and example below)
+> **Warning:** To avoid duplicate headers, please make sure that the options are also sorted with the same dimension that they are grouped by. (See: [Issue](https://github.com/mui/material-ui/issues/21967#issuecomment-665006321) and example below)
 
 **Example: GroupedSections**
 
@@ -942,6 +944,6 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 There are many more props that can be used with the DropdownMenu component, via those available to [MUI's Autocomplete component](https://mui.com/material-ui/api/autocomplete/#props).
 
-**Note for use with SDS** **Table** **and other components:**
-
-Each time a table column is shown/hidden a new table object is created. This causes components within the table to remount. _This can be a problem with_ _DropdownMenu_ _if the menu is supposed to stay open while the columns are hidden/shown because the anchor element also gets recreated._ To resolve this, move the DropdownMenu anchor element outside of the table or use the `pendingState` and only show/hide the columns when closing the dropdown.
+> **Note for use with SDS** **Table** **and other components:**
+>
+> Each time a table column is shown/hidden a new table object is created. This causes components within the table to remount. _This can be a problem with_ _DropdownMenu_ _if the menu is supposed to stay open while the columns are hidden/shown because the anchor element also gets recreated._ To resolve this, move the DropdownMenu anchor element outside of the table or use the `pendingState` and only show/hide the columns when closing the dropdown.

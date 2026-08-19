@@ -5,6 +5,16 @@ export const PREVIEW_CLASS = "sds-doc-example-preview";
 export const CATALOG_CLASS = "sds-doc-catalog";
 
 /**
+ * A note set apart from the prose around it, written as a `<div>` holding a
+ * paragraph or two and rendered as an SDS Callout. The page keeps the words, so
+ * that what a reader is told is also what the MCP server publishes from the
+ * same file; only the surface they arrive on is the renderer's.
+ *
+ * A `sds-doc-callout-background-<n>` alongside says which kind of note it is.
+ */
+export const CALLOUT_CLASS = "sds-doc-callout";
+
+/**
  * The cropped frame a catalog card renders its miniature in. Doubles as the
  * scope for whatever CSS that example brought with it, as `PREVIEW_CLASS` does
  * for a full preview.

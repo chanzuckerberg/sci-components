@@ -200,7 +200,7 @@ export default App;
 
 These recipes show a few of the more complex approaches available for customizing Tables.
 
-**Note:** The Table components are presentational: they render the markup and the styling, and leave sorting, filtering and paging to whatever manages your data. The recipes below use [TanStack Table](https://tanstack.com/table/latest) for that, as does PreComposedTable internally, and two of them add [TanStack Query](https://tanstack.com/query/latest) and [TanStack Virtual](https://tanstack.com/virtual/latest) for fetching and virtualization. None of them ship with SDS. Install the ones you need alongside it.
+> **Note:** The Table components are presentational: they render the markup and the styling, and leave sorting, filtering and paging to whatever manages your data. The recipes below use [TanStack Table](https://tanstack.com/table/latest) for that, as does PreComposedTable internally, and two of them add [TanStack Query](https://tanstack.com/query/latest) and [TanStack Virtual](https://tanstack.com/virtual/latest) for fetching and virtualization. None of them ship with SDS. Install the ones you need alongside it.
 
 ### Text-only Table
 

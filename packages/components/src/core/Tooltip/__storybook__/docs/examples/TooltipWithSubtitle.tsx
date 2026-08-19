@@ -1,7 +1,3 @@
-// The dark tooltip is what the component gives you without asking: hasInvertedStyle
-// defaults to true. Note that the design above calls this one inverted and treats
-// the light tooltip as the default, so the two vocabularies are reversed.
-//
 // subtitle sits under title in smaller, dimmer text, for a detail like how to use
 // the thing being pointed at. Both are optional, but a tooltip with neither a
 // title, a subtitle, nor a componentSlot renders nothing at all.

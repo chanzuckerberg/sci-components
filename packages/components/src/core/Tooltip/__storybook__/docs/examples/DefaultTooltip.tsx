@@ -1,6 +1,6 @@
-// The least a tooltip needs: a title, and something to hang it on. The dark
-// scheme, the arrow and the placement below the trigger all come as standard, so
-// hover or focus the button to see what the component does unasked.
+// The least a tooltip needs: a title, and something to hang it on. The surface,
+// the arrow and the placement below the trigger all come as standard, so hover or
+// focus the button to see what the component does unasked.
 //
 // The trigger still says what it is. A tooltip adds to a label; it is not one.
 

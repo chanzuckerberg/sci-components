@@ -14,6 +14,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import Callout, { type CalloutIntentType } from "@components/src/core/Callout";
 import NavigationJumpTo from "@components/src/core/NavigationJumpTo";
 import {
   Theme,
@@ -22,6 +23,7 @@ import {
 } from "@components/src/core/styles";
 import { CodeFigure } from "./CodeFigure";
 import {
+  CALLOUT_CLASS,
   CATALOG_CLASS,
   CODE_ACTION_CLASS,
   CODE_BODY_CLASS,
@@ -278,6 +280,17 @@ const Container = styled.div<CommonThemeProps>`
   .sds-doc-example-block figure {
     border-radius: 0 0 6px 6px;
     border: 1px solid #dfdfdf;
+  }
+
+  /* A callout is rendered as an SDS Callout around the paragraphs the page
+     wrote, so the space above the first and below the last is the component's
+     to set. The prose keeps everything else it says about them — a link inside
+     a note should read as a link does anywhere else on the page. */
+  .${CALLOUT_CLASS} p:first-child {
+    margin-top: 0;
+  }
+  .${CALLOUT_CLASS} p:last-child {
+    margin-bottom: 0;
   }
 
   /* A group of design screenshots. Only the class names came across with the
@@ -864,6 +877,94 @@ interface SnippetSlot {
   node: HTMLElement;
 }
 
+interface CalloutSlot {
+  /** The note itself, as the page wrote it, less the label taken off the front. */
+  body: string;
+  intent: CalloutIntentType;
+  key: string;
+  node: HTMLElement;
+  title?: string;
+}
+
+/**
+ * What a callout's background variant means. The numbers arrived with the
+ * imported pages and say nothing on their own, so these are read off the labels
+ * the pages write under each: 1 carries the tips, 3 the notes, and 4 the
+ * warnings.
+ */
+const CALLOUT_INTENTS: Record<string, CalloutIntentType> = {
+  1: "accent",
+  3: "info",
+  4: "notice",
+};
+
+/**
+ * Take over the notes in the imported HTML so that each renders as the SDS
+ * Callout its markup has always described. The classes came across with the
+ * pages and were never given styles of their own, which left every note reading
+ * as one more paragraph of prose.
+ *
+ * The words stay in the page's own HTML rather than moving into a slot, so that
+ * what a reader is shown is also what the MCP server publishes out of the same
+ * file. Only the surface they arrive on is React's.
+ */
+function claimCallouts(root: HTMLElement): CalloutSlot[] {
+  return Array.from(
+    root.querySelectorAll<HTMLElement>(`.${CALLOUT_CLASS}`)
+  ).map((node, index) => {
+    /*
+     * A note opens with its label in bold — "Note:", "Warning:", or a sentence
+     * standing in for one — and that is the title the component sets above the
+     * body. Only when it opens with one: bold in the middle of a sentence is
+     * emphasis, and belongs where it was written. The colon goes with the
+     * label, being punctuation for the run-on sentence it was written as and
+     * not for a heading.
+     *
+     * However many bold runs it opens with, and not just the first: a few of
+     * the imported pages broke one heading across several of them.
+     */
+    const paragraph = node.querySelector("p") ?? node;
+    const lead: HTMLElement[] = [];
+
+    for (const child of Array.from(paragraph.childNodes)) {
+      if (child.nodeType === Node.TEXT_NODE && !child.textContent?.trim()) {
+        continue;
+      }
+      if (!(child instanceof HTMLElement) || child.tagName !== "STRONG") break;
+      lead.push(child);
+    }
+
+    const title = lead
+      .map((element) => element.textContent?.trim())
+      .filter(Boolean)
+      .join(" ")
+      .replace(/:$/, "");
+    lead.forEach((element) => element.remove());
+
+    // A heading written on a line of its own leaves an empty paragraph behind.
+    if (
+      paragraph !== node &&
+      paragraph.children.length === 0 &&
+      !paragraph.textContent?.trim()
+    ) {
+      paragraph.remove();
+    }
+
+    const variant = /-background-(\d)/.exec(node.className)?.[1];
+    const slot = {
+      body: node.innerHTML,
+      intent: (variant && CALLOUT_INTENTS[variant]) || "info",
+      key: `callout-${index}`,
+      node,
+      title: title || undefined,
+    } satisfies CalloutSlot;
+
+    node.textContent = "";
+    node.classList.add(SB_UNSTYLED_CLASS);
+    return slot;
+  });
+}
+
 /**
  * Take over the static code snippets in the imported HTML so they render
  * through the same <CodeFigure /> as a live example's source, rather than
@@ -1068,6 +1169,7 @@ function markPropsTables(root: HTMLElement): void {
 export function SdsDoc({ html, slots }: SdsDocProps): ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const [examples, setExamples] = useState<ExampleSlot[]>([]);
+  const [callouts, setCallouts] = useState<CalloutSlot[]>([]);
   const [catalogs, setCatalogs] = useState<CatalogSlot[]>([]);
   const [snippets, setSnippets] = useState<SnippetSlot[]>([]);
   const [fills, setFills] = useState<SlotFill[]>([]);
@@ -1118,6 +1220,7 @@ export function SdsDoc({ html, slots }: SdsDocProps): ReactElement {
     );
     setJumpTo(listed >= MIN_CONTENTS_ITEMS ? contents : []);
     setSnippets(claimSnippets(root));
+    setCallouts(claimCallouts(root));
 
     // Anything left is a bare block the import did not wrap in a snippet, so it
     // has no React owner. The HTML is injected via dangerouslySetInnerHTML and
@@ -1210,6 +1313,28 @@ export function SdsDoc({ html, slots }: SdsDocProps): ReactElement {
       {snippets.map(({ code, key, label, language, node }) =>
         createPortal(
           <CodeFigure compact code={code} label={label} language={language} />,
+          node,
+          key
+        )
+      )}
+      {/* On the page's own theme rather than the toolbar's: a note is prose,
+          and the prose around it stays light in both modes. */}
+      {callouts.map(({ body, intent, key, node, title }) =>
+        createPortal(
+          <ThemeProvider theme={theme}>
+            <EmotionThemeProvider theme={theme}>
+              <Callout
+                body={
+                  /* eslint-disable-next-line react/no-danger -- the page's own
+                     markup, bundled at build time from this repo. */
+                  <span dangerouslySetInnerHTML={{ __html: body }} />
+                }
+                hideTitle={!title}
+                intent={intent}
+                title={title}
+              />
+            </EmotionThemeProvider>
+          </ThemeProvider>,
           node,
           key
         )

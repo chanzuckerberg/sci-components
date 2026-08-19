@@ -8,9 +8,6 @@
 // the tooltip to a series in a chart. indicatorColor takes a raw CSS colour rather
 // than an SDS name, so read the one you want off the theme. Without it the dot is
 // still laid out, just invisible.
-//
-// The second tooltip below asks for hasInvertedStyle={false}, the lighter scheme the
-// design offers for dark backgrounds.
 
 import {
   TooltipCondensed,
@@ -71,12 +68,11 @@ function App() {
         </TooltipCondensed>
 
         <TooltipCondensed
-          hasInvertedStyle={false}
           indicator
           indicatorColor={semanticColors?.negative?.fillPrimary}
           title="12 failed QC"
         >
-          <Cell>Hover a point on a dark background</Cell>
+          <Cell>Hover a failing point</Cell>
         </TooltipCondensed>
       </Stage>
     </div>

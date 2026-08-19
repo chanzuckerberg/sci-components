@@ -18,7 +18,6 @@ function App() {
               icon={<Icon sdsIcon="Bacteria" sdsSize="l" color="yellow" />}
               style={TableCellStyle}
               tooltipProps={{
-                hasInvertedStyle: false,
                 placement: "right",
               }}
             />

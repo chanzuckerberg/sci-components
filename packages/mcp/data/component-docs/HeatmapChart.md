@@ -2,7 +2,7 @@
 
 A grid of cells coloured by value, for matrices too large to read as a table.
 
-**Ships separately:** HeatmapChart comes from `@czi-sds/data-viz`, not `@czi-sds/components`, and it needs ECharts alongside it. See the Data Viz overview for installation and peer dependencies.
+> **Ships separately:** HeatmapChart comes from `@czi-sds/data-viz`, not `@czi-sds/components`, and it needs ECharts alongside it. See the Data Viz overview for installation and peer dependencies.
 
 ## Source Code
 
@@ -679,7 +679,7 @@ The named props cover the common cases; everything else in ECharts is reached th
 
 - Every other key in `options` is spread over the result untouched, and wins.
 
-**dataZoom and options.dataZoom both work.** They are merged in that order over the window's own defaults, so `options` wins where the two overlap. Either way the camera has to be active for the merge to reach the chart.
+> **dataZoom and options.dataZoom both work.** They are merged in that order over the window's own defaults, so `options` wins where the two overlap. Either way the camera has to be active for the merge to reach the chart.
 
 ## Downloading the chart
 

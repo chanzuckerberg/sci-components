@@ -1,11 +1,6 @@
-// hasInvertedStyle={false} draws the light tooltip: a white surface with a hairline
-// outline and body text rather than semibold. The design treats this one as the
-// default, so it is worth asking for deliberately.
-//
-// width="wide" lifts the cap from 250px to 550px and switches the text to the left,
-// which is what longer explanations need. It logs a warning saying wide is for light
-// tooltips only. The check is broken and fires whichever style you use, so it can
-// be ignored here.
+// width caps how far a tooltip can stretch before its text wraps. The default stops
+// at 250px and centres the text; "wide" lifts the cap to 550px and switches the text
+// to the left, which is what longer explanations need.
 
 import {
   Button,
@@ -57,11 +52,7 @@ function App() {
     <div className="app">
       <Stage>
         <Labelled>
-          <Tooltip
-            hasInvertedStyle={false}
-            placement="top"
-            title="Aligned with minimap2"
-          >
+          <Tooltip placement="top" title="Aligned with minimap2">
             <Button
               aria-label="About alignment"
               sdsStyle="minimal"
@@ -74,12 +65,7 @@ function App() {
         </Labelled>
 
         <Labelled>
-          <Tooltip
-            hasInvertedStyle={false}
-            placement="top"
-            title={LONG_TEXT}
-            width="wide"
-          >
+          <Tooltip placement="top" title={LONG_TEXT} width="wide">
             <Button
               aria-label="About the alignment pipeline"
               sdsStyle="minimal"

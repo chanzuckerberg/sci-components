@@ -16,7 +16,7 @@ import { PreComposedTable } from "@czi-sds/components";
 
 ## Code examples
 
-**Note:** PreComposedTable runs on [TanStack Table](https://tanstack.com/table/latest), which SDS takes as a peer dependency. Install `@tanstack/react-table` alongside it. Column definitions are TanStack's own, so anything its docs describe applies here too.
+> **Note:** PreComposedTable runs on [TanStack Table](https://tanstack.com/table/latest), which SDS takes as a peer dependency. Install `@tanstack/react-table` alongside it. Column definitions are TanStack's own, so anything its docs describe applies here too.
 
 ### Default
 

@@ -2,7 +2,7 @@
 
 A single horizontal bar split into labelled segments, for showing what a total is made of.
 
-**Ships separately:** StackedBarChart comes from `@czi-sds/data-viz`, not `@czi-sds/components`. See the Data Viz overview for installation and peer dependencies.
+> **Ships separately:** StackedBarChart comes from `@czi-sds/data-viz`, not `@czi-sds/components`. See the Data Viz overview for installation and peer dependencies.
 
 ## Source Code
 

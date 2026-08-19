@@ -1,5 +1,7 @@
 # MenuItem
 
+> **MenuItem is one row of a dropdown.** You write these yourself to fill a Menu; everywhere else in the family the row is drawn for you, from the options you pass, and you only reach for this component to replace it. The Dropdowns overview covers which component draws which part.
+
 ## Source Code
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/MenuItem/index.tsx).
@@ -41,7 +43,7 @@ export default App;
 
 This example showcases a multi-select MenuItem component featuring an SDS Icon and a distinct column value.
 
-**SDS Tip:** MenuItem exclusively accepts SDS Icons in xs and s sizes. To explore a comprehensive list of SDS icons and their available sizes, refer to the [IconBank page](https://chanzuckerberg.github.io/sci-components/?path=/story/components-icon--icon-bank) within Storybook.
+> **SDS Tip:** MenuItem exclusively accepts SDS Icons in xs and s sizes. To explore a comprehensive list of SDS icons and their available sizes, refer to the [IconBank page](https://chanzuckerberg.github.io/sci-components/?path=/story/components-icon--icon-bank) within Storybook.
 
 **Example: MultiSelectMenuItemWithIcon**
 

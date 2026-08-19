@@ -1,5 +1,7 @@
 # ComplexFilter
 
+> **ComplexFilter is a Dropdown that shows what it filtered.** It is the Dropdown arrangement with one addition: each selection is listed beneath the trigger as a tag that can be removed on its own, so an applied filter stays visible next to the results it narrowed. Use plain Dropdown when the selection does not need to be shown that way, and see the Dropdowns overview for the rest of the family.
+
 ## Source Code
 
 The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ComplexFilter/index.tsx).

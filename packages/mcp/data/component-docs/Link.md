@@ -1,6 +1,6 @@
 # Deprecated: the Link component
 
-**Do not use this in new code.** The **Link** component still ships, and its story sits under **Deprecated** in this Storybook. It is documented here only so that existing usages can be migrated.
+> **Do not use this in new code.** The **Link** component still ships, and its story sits under **Deprecated** in this Storybook. It is documented here only so that existing usages can be migrated.
 
 It wrapped MUI's Link, offered two sizes and a bold weight, and underlined only on hover in its default style. Its source is [here](https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Link) and the underlying [MUI documentation](https://mui.com/material-ui/react-link/) still applies to the props it passed through.
 

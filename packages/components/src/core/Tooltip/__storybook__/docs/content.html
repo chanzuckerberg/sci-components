@@ -19,24 +19,26 @@
 <h2>Code examples</h2>
 <h3><strong>Default Tooltip</strong></h3>
 <p>
-  A title and a trigger, which is all a tooltip needs. The dark scheme, the
-  arrow, and the placement below the trigger are what the component gives you
-  without being asked.
+  A title and a trigger, which is all a tooltip needs. The surface, the arrow,
+  and the placement below the trigger are what the component gives you without
+  being asked.
 </p>
 <div class="sds-doc-example" data-example="core/Tooltip/DefaultTooltip"></div>
-<h3><strong>Tooltip – Dark</strong></h3>
+<h3><strong>Tooltip with a subtitle</strong></h3>
 <p>
-  The tooltip the component gives you by default, with a title and a subtitle.
-  The design calls this one the inverted tooltip.
+  A second line under the title, in smaller and dimmer text, for a detail that
+  would crowd the title itself.
 </p>
-<div class="sds-doc-example" data-example="core/Tooltip/TooltipDark"></div>
-<h3><strong>Tooltip – Light</strong></h3>
+<div
+  class="sds-doc-example"
+  data-example="core/Tooltip/TooltipWithSubtitle"
+></div>
+<h3><strong>Tooltip widths</strong></h3>
 <p>
-  The light tooltip, which has to be asked for with
-  <code>hasInvertedStyle={false}</code>, shown at both widths. The wide one
+  Both widths side by side. The default caps the tooltip at 250px; the wide one
   holds 550px of left-aligned text.
 </p>
-<div class="sds-doc-example" data-example="core/Tooltip/TooltipLight"></div>
+<div class="sds-doc-example" data-example="core/Tooltip/TooltipWidths"></div>
 <h3><strong>Placement and the arrow</strong></h3>
 <p>
   Four of the twelve placements, and what <code>arrowOffset</code> does to the
@@ -61,9 +63,7 @@
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
-    <strong>Note for Tooltips on</strong>
-    <strong>Disabled</strong>
-    <strong>elements</strong>
+    <strong>Note for Tooltips on Disabled elements</strong>
   </p>
   <p>
     If the tooltip wraps a disabled component, please make sure to wrap the
@@ -90,12 +90,11 @@
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
-      <code>hasInvertedStyle</code>: <code>true</code> by default, which is the
-      dark tooltip: a black surface with white semibold text. Set it to
-      <code>false</code> for the light one: a white surface, a hairline outline,
-      and body text. Mind the vocabulary: the design above calls the light
-      tooltip the default and the dark one inverted, while the component ships
-      dark unless asked otherwise.
+      <strong>One surface, which follows the theme:</strong>
+      a tooltip is light in the light theme and dark in the dark theme, and
+      there is nothing to set. MUI leaves the surface to the theme as well, but
+      SDS pins the shape of it: the radius, the shadow, the hairline outline and
+      the type scale.
     </p>
   </li>
   <li>
@@ -103,11 +102,9 @@
       <code>title</code> and <code>subtitle</code>: SDS builds the content
       itself, wrapping <code>title</code> and then <code>subtitle</code> in
       paragraphs of its own, so <code>title</code> is not the free-form node
-      MUI's is. <code>subtitle</code> is the smaller, dimmer second line and
-      works on either style, despite a leftover warning in the codebase claiming
-      it is dark-only. A tooltip with no <code>title</code>,
-      <code>subtitle</code> or <code>componentSlot</code> renders nothing and
-      leaves its child alone.
+      MUI's is. <code>subtitle</code> is the smaller, dimmer second line. A
+      tooltip with no <code>title</code>, <code>subtitle</code> or
+      <code>componentSlot</code> renders nothing and leaves its child alone.
     </p>
   </li>
   <li>
@@ -122,9 +119,7 @@
     <p>
       <code>width</code>: <code>"default"</code> caps the tooltip at 250px,
       <code>"wide"</code> at 550px and switches the text to the left. Compare
-      MUI, which has no <code>width</code> prop of its own. The design pairs the
-      wide width with the light tooltip; in code it applies to both, and logs a
-      warning about being light-only either way.
+      MUI, which has no <code>width</code> prop of its own.
     </p>
   </li>
   <li>
@@ -151,20 +146,15 @@
   </li>
   <li>
     <p>
-      <strong>sdsStyle and inverted are deprecated.</strong>
-      Both are earlier spellings of <code>hasInvertedStyle</code>:
-      <code>sdsStyle="dark"</code> matches the default and
-      <code>sdsStyle="light"</code> matches
-      <code>hasInvertedStyle={false}</code>. Reach for
-      <code>hasInvertedStyle</code> and ignore the console: because the
-      component gives <code>sdsStyle</code> a default of <code>"dark"</code>
-      before checking whether it was passed, both the deprecation warning and
-      the wide-width warning are logged for every tooltip, whatever props you
-      gave it. The same stale default is why the 500ms delay the code has in
-      mind for light tooltips only takes effect if you pass the deprecated
-      <code>sdsStyle="light"</code> alongside
-      <code>hasInvertedStyle={false}</code>; on its own, a light tooltip closes
-      as promptly as a dark one.
+      <strong>
+        hasInvertedStyle, inverted and sdsStyle are deprecated and now do
+        nothing.
+      </strong>
+      All three chose between a light and a dark tooltip, back when the choice
+      was the author's to make. Passing any of them still type-checks, so
+      nothing breaks, but the tooltip takes its colours from the theme
+      regardless and a deprecation warning is logged once. They will be removed
+      in a future release: delete them.
     </p>
   </li>
   <li>
@@ -274,7 +264,7 @@
     <td>
       <p>
         A smaller, dimmer second line under the title, for a detail such as how
-        to use what the tooltip points at. Works on both styles.
+        to use what the tooltip points at.
       </p>
     </td>
   </tr>
@@ -295,23 +285,6 @@
   </tr>
   <tr>
     <td>
-      <p><code>hasInvertedStyle</code></p>
-    </td>
-    <td>
-      <p><code>boolean</code></p>
-    </td>
-    <td>
-      <p><code>true</code></p>
-    </td>
-    <td>
-      <p>
-        True is the dark tooltip: a black surface with white semibold text.
-        False is the light one, with a hairline outline and body text.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
       <p><code>width</code></p>
     </td>
     <td>
@@ -321,10 +294,7 @@
       <p><code>"default"</code></p>
     </td>
     <td>
-      <p>
-        Caps the tooltip at 250px or 550px. Wide also left-aligns the text. It
-        logs a warning about being light-only whichever style it is used with.
-      </p>
+      <p>Caps the tooltip at 250px or 550px. Wide also left-aligns the text.</p>
     </td>
   </tr>
   <tr>
@@ -387,40 +357,6 @@
         The popper the tooltip renders into, carrying the arrow's shape and
         placement. SDS maps it to MUI's <code>slots.popper</code>, and a
         <code>slots</code> object passed directly is ignored.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>sdsStyle</code></p>
-    </td>
-    <td>
-      <p><code>"dark" | "light"</code></p>
-    </td>
-    <td>
-      <p><code>"dark"</code></p>
-    </td>
-    <td>
-      <p>
-        <strong>Deprecated.</strong>
-        An earlier spelling of <code>hasInvertedStyle</code>: dark matches the
-        default, light matches <code>hasInvertedStyle={false}</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>inverted</code></p>
-    </td>
-    <td>
-      <p><code>boolean</code></p>
-    </td>
-    <td><p>-</p></td>
-    <td>
-      <p>
-        <strong>Deprecated.</strong>
-        The oldest spelling of <code>hasInvertedStyle</code>. Use
-        <code>hasInvertedStyle</code>.
       </p>
     </td>
   </tr>
