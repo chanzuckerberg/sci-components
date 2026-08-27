@@ -164,6 +164,11 @@
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/MenuItem/__storybook__/docs/content.html"
   },
+  "MolecularStructureViewer": {
+    "file": "MolecularStructureViewer.md",
+    "package": "@czi-sds/data-viz",
+    "source": "packages/data-viz/src/core/MolecularStructureViewer/__storybook__/docs/content.html"
+  },
   "NavigationFooter": {
     "file": "NavigationFooter.md",
     "package": "@czi-sds/components",
