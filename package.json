@@ -119,8 +119,8 @@
     "zod": "^4.0.17"
   },
   "scripts": {
-    "start": "yarn playground:types && yarn docs:snapshots && NODE_OPTIONS=\"--max-old-space-size=8192\" && storybook dev -p 6006 --no-open",
-    "build-storybook": "yarn playground:types && yarn docs:snapshots && storybook build -o docs-build",
+    "start": "yarn playground:types && NODE_OPTIONS=\"--max-old-space-size=8192\" storybook dev -p 6006 --no-open",
+    "build-storybook": "yarn playground:types && NODE_OPTIONS=\"--max-old-space-size=8192\" storybook build -o docs-build",
     "playground:types": "node playground/scripts/generate-types.mjs",
     "docs:snapshots": "node docs-kit/scripts/generate-doc-snapshots.mjs",
     "test-storybook": "test-storybook",

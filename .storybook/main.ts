@@ -7,9 +7,21 @@ import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import type { Plugin } from "vite";
+import { generateDocSnapshots } from "../docs-kit/scripts/generate-doc-snapshots.mjs";
 
 const require = createRequire(import.meta.url);
 const currentDir = dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Write the documentation snapshot stories the glob below picks up, here rather
+ * than in the yarn scripts that start and build Storybook. A stories glob that
+ * matches nothing is not an error, so generating them anywhere Storybook itself
+ * does not reach means any other way in — `storybook build` on its own, a
+ * Chromatic build pointed at a different script — silently snapshots none of
+ * the documentation. This runs on every way in, and throws rather than let that
+ * happen quietly.
+ */
+generateDocSnapshots();
 
 const COMPONENTS_SRC = resolve(currentDir, "../packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "../packages/data-viz/src");
@@ -38,11 +50,11 @@ const config: StorybookConfig = {
     // The live code playground the docs' examples link out to.
     "../playground/*.stories.tsx",
     /**
-     * A story per documentation page, written from the pages themselves by
-     * `docs-kit/scripts/generate-doc-snapshots.mjs` before Storybook starts or
-     * builds. Chromatic snapshots stories and not `docs` entries, so this is
-     * what puts the documentation in front of a visual review. They are hidden
-     * from the sidebar, the pages above being the ones to read.
+     * A story per documentation page, written from the pages themselves by the
+     * `generateDocSnapshots()` call above. Chromatic snapshots stories and not
+     * `docs` entries, so this is what puts the documentation in front of a
+     * visual review. They are hidden from the sidebar, the pages above being
+     * the ones to read.
      */
     "../docs-kit/generated/*.stories.tsx",
   ],
