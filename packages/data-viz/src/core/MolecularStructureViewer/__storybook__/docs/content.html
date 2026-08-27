@@ -1,0 +1,93 @@
+<h1>MolecularStructureViewer</h1>
+<p>
+  An interactive 3D protein structure viewer built on
+  <a href="https://molstar.org/" target="_blank">Mol*</a>, with a sequence
+  panel, confidence coloring, per-residue value overlays, and a stats legend.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Ships separately:</strong>
+    MolecularStructureViewer comes from <code>@czi-sds/data-viz</code>, not
+    <code>@czi-sds/components</code>. It also needs <code>molstar</code> as a
+    peer dependency. See the
+    <a href="./?path=/docs/data-viz-overview--docs" target="_top">
+      Data Viz overview
+    </a>
+    for installation and peer dependencies.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/MolecularStructureViewer/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { MolecularStructureViewer } from "@czi-sds/data-viz";</code></pre>
+  </figure>
+</div>
+<h2>Sizing</h2>
+<p>
+  The viewer fills its parent. Mol* sizes its canvas from the laid-out
+  container, so give the parent a real height - a viewer inside a box with no
+  height will wait for one rather than render.
+</p>
+<h2>Code examples</h2>
+<h3><strong>Default MolecularStructureViewer</strong></h3>
+<p>
+  Raw PDB text is the only required prop. Supplying per-residue
+  <code>plddt</code> scores on a 0-1 scale colors the structure by confidence
+  and puts the pLDDT key in the legend.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/MolecularStructureViewer/DefaultMolecularStructureViewer"
+></div>
+<h3>Residue value overlay</h3>
+<p>
+  A <code>residueOverlay</code> paints arbitrary per-residue values over the
+  structure, taking over from pLDDT coloring while it is set. The
+  <code>values</code> map is keyed by 0-based residue index, so the first
+  residue of the chain is <code>0</code>. Values are normalized into
+  <code>min</code>-<code>max</code> and sampled from a color scale; residues at
+  or below <code>min</code>, and those missing from the map, render in a neutral
+  gray. The legend switches to the overlay's scale and its <code>label</code>,
+  and the per-residue readout reports the value under the cursor.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/MolecularStructureViewer/MolecularStructureViewerWithOverlay"
+></div>
+<h3>Selection and stats</h3>
+<p>
+  Selection is controlled. Clicking a residue calls
+  <code>onResidueClick</code>; echoing that index back through
+  <code>selectedResidue</code> zooms the camera in on it, and setting it to
+  <code>null</code> zooms back out. Clicking empty space fires
+  <code>onSelectionClear</code>.
+</p>
+<p>
+  <code>stats</code> fills the three legend slots along the bottom. Those slots
+  are replaced in place while a residue is hovered or selected - by the residue
+  label, its overlay value, and its pLDDT - so the columns never shift. Pass
+  <code>null</code> for a slot to reserve its column without rendering anything.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/MolecularStructureViewer/SelectableMolecularStructureViewer"
+></div>
+<h2>Theming</h2>
+<p>
+  The viewer reads the active SDS theme for its hover and selection colors and
+  for the sequence panel, and picks a light or dark canvas background to match.
+  Pass <code>backgroundColor</code> to override the background.
+</p>
