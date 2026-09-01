@@ -1,6 +1,6 @@
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { RefObject, useEffect } from "react";
-import { ResidueValueOverlay } from "../MolecularStructureViewer.types";
+import { ResidueValueOverlay } from "../StructureViewer.types";
 import { PLASMA_COLOR_SCALE } from "../utils/colorScales";
 import { PLDDT_THEME_NAME } from "../utils/plddt";
 import { RESIDUE_VALUE_THEME_NAME } from "../utils/residueValueTheme";

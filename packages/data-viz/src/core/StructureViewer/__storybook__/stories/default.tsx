@@ -1,4 +1,4 @@
-import RawMolecularStructureViewer from "@data-viz/src/core/MolecularStructureViewer";
+import RawStructureViewer from "@data-viz/src/core/StructureViewer";
 import { Args } from "@storybook/react-vite";
 import { useState } from "react";
 import {
@@ -12,7 +12,7 @@ import {
 const STORY_HEIGHT = 520;
 const STORY_WIDTH = 640;
 
-export const MolecularStructureViewer = (props: Args): JSX.Element => {
+export const StructureViewer = (props: Args): JSX.Element => {
   const { showOverlay, showPlddt, stats, ...rest } = props;
 
   // Selection is controlled, so the story owns it the way a consumer would:
@@ -21,7 +21,7 @@ export const MolecularStructureViewer = (props: Args): JSX.Element => {
 
   return (
     <div style={{ height: STORY_HEIGHT, width: STORY_WIDTH }}>
-      <RawMolecularStructureViewer
+      <RawStructureViewer
         onResidueClick={(residueIndex) =>
           setSelectedResidue((prev) =>
             prev === residueIndex ? null : residueIndex

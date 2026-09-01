@@ -1,10 +1,11 @@
-import { Theme, defaultTheme } from "@czi-sds/components";
+import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
-import MolecularStructureViewer from "..";
-import { MolecularStructureViewerProps } from "../MolecularStructureViewer.types";
+import StructureViewer from "..";
+import { StructureViewerProps } from "../StructureViewer.types";
+import { parseHexColor } from "../utils/color";
 
 /**
  * Mol* draws through WebGL, which jsdom does not implement, so the plugin is
@@ -92,17 +93,13 @@ function giveElementsSize() {
 const PDB = `ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
 END`;
 
-function renderViewer(
-  props: Partial<MolecularStructureViewerProps> = {}
-): ReactElement {
-  const element = (
-    <MolecularStructureViewer data-testid="viewer" pdb={PDB} {...props} />
-  );
+function renderViewer(props: Partial<StructureViewerProps> = {}): ReactElement {
+  const element = <StructureViewer data-testid="viewer" pdb={PDB} {...props} />;
   render(<ThemeProvider theme={defaultTheme}>{element}</ThemeProvider>);
   return element;
 }
 
-describe("<MolecularStructureViewer />", () => {
+describe("<StructureViewer />", () => {
   let plugin: ReturnType<typeof createStubPlugin>;
 
   beforeEach(() => {
@@ -129,7 +126,7 @@ describe("<MolecularStructureViewer />", () => {
 
     render(
       <ThemeProvider theme={defaultTheme}>
-        <MolecularStructureViewer
+        <StructureViewer
           data-testid="viewer"
           pdb={PDB}
           ref={(el) => {
@@ -155,7 +152,7 @@ describe("<MolecularStructureViewer />", () => {
   it("disposes the plugin on unmount", async () => {
     const { unmount } = render(
       <ThemeProvider theme={defaultTheme}>
-        <MolecularStructureViewer pdb={PDB} />
+        <StructureViewer pdb={PDB} />
       </ThemeProvider>
     );
 
@@ -233,26 +230,34 @@ describe("<MolecularStructureViewer />", () => {
 
   it("paints the canvas with the theme's base background", async () => {
     // The canvas is the page behind the structure, so it tracks the SDS
-    // background token rather than a color of its own.
-    for (const [theme, expected] of [
-      [defaultTheme, Color.fromRgb(255, 255, 255)],
-      [Theme("dark"), Color.fromRgb(16, 16, 16)],
-    ] as const) {
+    // background token rather than a color of its own. Asserting against the
+    // token instead of a literal is what keeps this from going stale the next
+    // time the palette is retuned.
+    const painted: unknown[] = [];
+
+    for (const theme of [defaultTheme, Theme("dark")]) {
       createPluginUI.mockClear();
       const { unmount } = render(
         <ThemeProvider theme={theme}>
-          <MolecularStructureViewer pdb={PDB} />
+          <StructureViewer pdb={PDB} />
         </ThemeProvider>
       );
 
       await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
-      expect(
+
+      const token = getSemanticColors({ theme })?.base?.backgroundPrimary;
+      const background =
         createPluginUI.mock.calls[0]?.[0]?.spec?.canvas3d?.renderer
-          ?.backgroundColor
-      ).toBe(expected);
+          ?.backgroundColor;
+
+      expect(background).toBe(parseHexColor(token as string));
+      painted.push(background);
 
       unmount();
     }
+
+    // Whatever the palette says, the two modes cannot collapse onto one canvas.
+    expect(painted[0]).not.toBe(painted[1]);
   });
 
   it("lets a consumer override the canvas background", async () => {
@@ -271,7 +276,7 @@ describe("<MolecularStructureViewer />", () => {
     // plugin would throw away the camera. The mode has to reach them in place.
     const { rerender } = render(
       <ThemeProvider theme={defaultTheme}>
-        <MolecularStructureViewer pdb={PDB} />
+        <StructureViewer pdb={PDB} />
       </ThemeProvider>
     );
 
@@ -280,7 +285,7 @@ describe("<MolecularStructureViewer />", () => {
 
     rerender(
       <ThemeProvider theme={Theme("dark")}>
-        <MolecularStructureViewer pdb={PDB} />
+        <StructureViewer pdb={PDB} />
       </ThemeProvider>
     );
 

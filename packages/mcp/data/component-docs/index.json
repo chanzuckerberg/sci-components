@@ -164,11 +164,6 @@
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/MenuItem/__storybook__/docs/content.html"
   },
-  "MolecularStructureViewer": {
-    "file": "MolecularStructureViewer.md",
-    "package": "@czi-sds/data-viz",
-    "source": "packages/data-viz/src/core/MolecularStructureViewer/__storybook__/docs/content.html"
-  },
   "NavigationFooter": {
     "file": "NavigationFooter.md",
     "package": "@czi-sds/components",
@@ -218,6 +213,11 @@
     "file": "StackedBarChart.md",
     "package": "@czi-sds/data-viz",
     "source": "packages/data-viz/src/core/StackedBarChart/__storybook__/docs/content.html"
+  },
+  "StructureViewer": {
+    "file": "StructureViewer.md",
+    "package": "@czi-sds/data-viz",
+    "source": "packages/data-viz/src/core/StructureViewer/__storybook__/docs/content.html"
   },
   "Table": {
     "file": "Table.md",

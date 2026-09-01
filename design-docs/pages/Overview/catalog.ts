@@ -212,6 +212,11 @@ export const catalog: CatalogCategory[] = [
         docs: "data-viz-stackedbarchart",
         example: "data-viz/StackedBarChart/DefaultStackedBarChart",
       },
+      {
+        name: "StructureViewer",
+        docs: "data-viz-structureviewer",
+        example: "data-viz/StructureViewer/DefaultStructureViewer",
+      },
     ],
   },
   {

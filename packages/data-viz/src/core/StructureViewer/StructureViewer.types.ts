@@ -62,7 +62,7 @@ export interface StructureStat {
   label: string;
 }
 
-export interface MolecularStructureViewerProps extends Omit<
+export interface StructureViewerProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
   "onSelect"
 > {

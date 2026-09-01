@@ -1,15 +1,17 @@
-// Raw PDB text is the only required prop. Adding per-residue pLDDT scores on a
-// 0-1 scale colors the structure by confidence and puts the pLDDT key in the
-// legend.
+// Selection is controlled, so the parent decides what a click means. Here a
+// click selects the residue and clicking it again clears it, which is what makes
+// the camera zoom in and then back out.
 //
-// The viewer fills its parent, and Mol* sizes its canvas from the laid-out
-// container, so the wrapper needs a real height.
+// The stats slots are replaced in place while a residue is hovered or selected,
+// so the three columns never shift. A null slot reserves its column without
+// rendering anything - useful when a stat is still loading.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
-// polymer cartoon traces. The viewer draws a polymer, so the chain needs enough
-// residues to trace: a single residue renders an empty canvas.
+// polymer cartoon traces. Residue indices passed to onResidueClick and back
+// through selectedResidue are 0-based, so the first residue of the chain is 0.
 
-import { MolecularStructureViewer } from "@czi-sds/data-viz";
+import { StructureViewer } from "@czi-sds/data-viz";
+import { useState } from "react";
 
 const PDB = `
 ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
@@ -198,9 +200,6 @@ ATOM    183  C   ASN A  46      13.311   5.853  11.455  1.00  6.61           C
 ATOM    184  O   ASN A  46      13.733   6.929  11.026  1.00  7.18           O
 END`;
 
-// One score per residue, in chain order. Residues past the end of the array
-// fall back to mid confidence, so a short array leaves most of the chain
-// looking uniformly average.
 const PLDDT = [
   0.45, 0.515, 0.557, 0.569, 0.567, 0.578, 0.618, 0.681, 0.742, 0.777, 0.782,
   0.773, 0.776, 0.807, 0.86, 0.909, 0.933, 0.924, 0.902, 0.892, 0.91, 0.947,
@@ -210,13 +209,22 @@ const PLDDT = [
 ];
 
 function App() {
+  const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
+
   return (
     <div className="app" style={{ height: 480 }}>
-      <MolecularStructureViewer
+      <StructureViewer
+        onResidueClick={(residueIndex) =>
+          setSelectedResidue((prev) =>
+            prev === residueIndex ? null : residueIndex
+          )
+        }
+        onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}
         plddt={PLDDT}
+        selectedResidue={selectedResidue}
         stats={[
-          { label: "Known", value: "62%" },
+          null,
           { label: "pTM", value: "0.874" },
           { label: "Mean pLDDT", value: "0.781" },
         ]}

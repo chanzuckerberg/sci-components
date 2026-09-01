@@ -3,7 +3,7 @@ import {
   ColorScale,
   ResidueReadout,
   StructureStat,
-} from "../../MolecularStructureViewer.types";
+} from "../../StructureViewer.types";
 import ColorScaleLegend from "../ColorScaleLegend";
 import {
   LegendOverlay,

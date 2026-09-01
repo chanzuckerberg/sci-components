@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react-vite";
-import { MolecularStructureViewer } from "./stories/default";
+import { StructureViewer } from "./stories/default";
 
 /**
  * Whole-structure stats for the three legend slots. Real consumers pass
@@ -57,9 +57,9 @@ export default {
       description: "Up to three whole-structure stats shown along the bottom",
     },
   },
-  component: MolecularStructureViewer,
+  component: StructureViewer,
   parameters: NO_SNAPSHOT,
-  title: "Data Viz/MolecularStructureViewer",
+  title: "Data Viz/StructureViewer",
 } as Meta;
 
 const DEFAULT_ARGS = {

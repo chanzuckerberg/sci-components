@@ -1,19 +1,19 @@
-# MolecularStructureViewer
+# StructureViewer
 
 An interactive 3D protein structure viewer built on [Mol\*](https://molstar.org/), with a sequence panel, confidence coloring, per-residue value overlays, and a stats legend.
 
-> **Ships separately:** MolecularStructureViewer comes from `@czi-sds/data-viz`, not `@czi-sds/components`. It also needs `molstar` as a peer dependency. See the Data Viz overview for installation and peer dependencies.
+> **Ships separately:** StructureViewer comes from `@czi-sds/data-viz`, not `@czi-sds/components`. It also needs `molstar` as a peer dependency. See the Data Viz overview for installation and peer dependencies.
 
 ## Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/MolecularStructureViewer/index.tsx).
+The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/StructureViewer/index.tsx).
 
 ## Import
 
 **React TypeScript**
 
 ```tsx
-import { MolecularStructureViewer } from "@czi-sds/data-viz";
+import { StructureViewer } from "@czi-sds/data-viz";
 ```
 
 ## Sizing
@@ -22,11 +22,11 @@ The viewer fills its parent. Mol\* sizes its canvas from the laid-out container,
 
 ## Code examples
 
-### **Default MolecularStructureViewer**
+### **Default StructureViewer**
 
 Raw PDB text is the only required prop. Supplying per-residue `plddt` scores on a 0-1 scale colors the structure by confidence and puts the pLDDT key in the legend.
 
-**Example: DefaultMolecularStructureViewer**
+**Example: DefaultStructureViewer**
 
 ```tsx
 // Raw PDB text is the only required prop. Adding per-residue pLDDT scores on a
@@ -40,7 +40,7 @@ Raw PDB text is the only required prop. Supplying per-residue `plddt` scores on 
 // polymer cartoon traces. The viewer draws a polymer, so the chain needs enough
 // residues to trace: a single residue renders an empty canvas.
 
-import { MolecularStructureViewer } from "@czi-sds/data-viz";
+import { StructureViewer } from "@czi-sds/data-viz";
 
 const PDB = `
 ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
@@ -243,7 +243,7 @@ const PLDDT = [
 function App() {
   return (
     <div className="app" style={{ height: 480 }}>
-      <MolecularStructureViewer
+      <StructureViewer
         pdb={PDB}
         plddt={PLDDT}
         stats={[
@@ -263,7 +263,7 @@ export default App;
 
 A `residueOverlay` paints arbitrary per-residue values over the structure, taking over from pLDDT coloring while it is set. The `values` map is keyed by 0-based residue index, so the first residue of the chain is `0`. Values are normalized into `min`-`max` and sampled from a color scale; residues at or below `min`, and those missing from the map, render in a neutral gray. The legend switches to the overlay's scale and its `label`, and the per-residue readout reports the value under the cursor.
 
-**Example: MolecularStructureViewerWithOverlay**
+**Example: StructureViewerWithOverlay**
 
 ```tsx
 // A residueOverlay paints arbitrary per-residue values over the structure,
@@ -282,10 +282,7 @@ A `residueOverlay` paints arbitrary per-residue values over the structure, takin
 // the values here pick out two short stretches, so the rest of the chain stays
 // gray and the painted regions stand out against it.
 
-import {
-  MolecularStructureViewer,
-  PLASMA_COLOR_SCALE,
-} from "@czi-sds/data-viz";
+import { StructureViewer, PLASMA_COLOR_SCALE } from "@czi-sds/data-viz";
 
 const PDB = `
 ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
@@ -495,7 +492,7 @@ const RESIDUE_VALUES = new Map([
 function App() {
   return (
     <div className="app" style={{ height: 480 }}>
-      <MolecularStructureViewer
+      <StructureViewer
         pdb={PDB}
         residueOverlay={{
           colorScale: PLASMA_COLOR_SCALE,
@@ -519,7 +516,7 @@ Selection is controlled. Clicking a residue calls `onResidueClick`; echoing that
 
 `stats` fills the three legend slots along the bottom. Those slots are replaced in place while a residue is hovered or selected - by the residue label, its overlay value, and its pLDDT - so the columns never shift. Pass `null` for a slot to reserve its column without rendering anything.
 
-**Example: SelectableMolecularStructureViewer**
+**Example: SelectableStructureViewer**
 
 ```tsx
 // Selection is controlled, so the parent decides what a click means. Here a
@@ -534,7 +531,7 @@ Selection is controlled. Clicking a residue calls `onResidueClick`; echoing that
 // polymer cartoon traces. Residue indices passed to onResidueClick and back
 // through selectedResidue are 0-based, so the first residue of the chain is 0.
 
-import { MolecularStructureViewer } from "@czi-sds/data-viz";
+import { StructureViewer } from "@czi-sds/data-viz";
 import { useState } from "react";
 
 const PDB = `
@@ -737,7 +734,7 @@ function App() {
 
   return (
     <div className="app" style={{ height: 480 }}>
-      <MolecularStructureViewer
+      <StructureViewer
         onResidueClick={(residueIndex) =>
           setSelectedResidue((prev) =>
             prev === residueIndex ? null : residueIndex
@@ -763,3 +760,41 @@ export default App;
 ## Theming
 
 The viewer reads the active SDS theme for its hover and selection colors and for the sequence panel, and picks a light or dark canvas background to match. Pass `backgroundColor` to override the background.
+
+## Props
+
+The viewer spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
+
+| Name                 | Type                          | Default      | Description                                                                                                                                                                                                            |
+| -------------------- | ----------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pdb`                | `string`                      | - (required) | The structure to render, as raw PDB text.                                                                                                                                                                              |
+| `plddt`              | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence. |
+| `residueOverlay`     | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                  |
+| `selectedResidue`    | `number \| null`              | `null`       | 0-based index of the selected residue. Controlled: setting it zooms the camera in on that residue, and clearing it zooms back out.                                                                                     |
+| `stats`              | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                             |
+| `backgroundColor`    | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                |
+| `showAxes`           | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                          |
+| `showSequenceViewer` | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                         |
+| `showLegend`         | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                          |
+| `onResidueClick`     | `function`                    | -            | `(residueIndex: number, compId: string) => void`. Called with the 0-based residue index and 3-letter amino acid code when a residue is clicked.                                                                        |
+| `onResidueHover`     | `function`                    | -            | `(residueIndex: number \| null, compId: string \| null) => void`. Called as the pointer moves over residues, and with `(null, null)` when it leaves the structure.                                                     |
+| `onSelectionClear`   | `function`                    | -            | `() => void`. Called when the user clicks empty space, clearing the selection.                                                                                                                                         |
+
+### ResidueValueOverlay
+
+| Name           | Type                  | Default              | Description                                                                                                                                          |
+| -------------- | --------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `values`       | `Map<number, number>` | - (required)         | 0-based residue index to value. Residues absent from the map read as `0`, so they render in the neutral gray rather than at the bottom of the scale. |
+| `max`          | `number`              | - (required)         | The value mapped to the top of the color scale.                                                                                                      |
+| `min`          | `number`              | `0`                  | Values at or below this render in a neutral gray rather than on the scale.                                                                           |
+| `colorScale`   | `ColorScale`          | `PLASMA_COLOR_SCALE` | Scale used to color residues and to draw the legend.                                                                                                 |
+| `label`        | `string`              | -                    | Legend caption, for example "Feature activation".                                                                                                    |
+| `tooltip`      | `string`              | -                    | Help tooltip attached to the legend caption.                                                                                                         |
+| `readoutLabel` | `string`              | `"Value"`            | Label for the per-residue readout that replaces a stat slot on hover.                                                                                |
+
+### StructureStat
+
+| Name    | Type     | Default      | Description                                      |
+| ------- | -------- | ------------ | ------------------------------------------------ |
+| `value` | `string` | - (required) | The stat's value, already formatted for display. |
+| `label` | `string` | - (required) | The caption shown beneath the value.             |

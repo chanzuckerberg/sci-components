@@ -1,17 +1,20 @@
-// Selection is controlled, so the parent decides what a click means. Here a
-// click selects the residue and clicking it again clears it, which is what makes
-// the camera zoom in and then back out.
+// A residueOverlay paints arbitrary per-residue values over the structure,
+// taking over from pLDDT coloring while it is set.
 //
-// The stats slots are replaced in place while a residue is hovered or selected,
-// so the three columns never shift. A null slot reserves its column without
-// rendering anything - useful when a stat is still loading.
+// Values are keyed by 0-based residue index and normalized into min-max before
+// being sampled from the color scale. Residues missing from the map, or at or
+// below min, render in a neutral gray rather than at the bottom of the scale,
+// so "no value here" reads differently from "a low value here".
+//
+// label captions the legend, readoutLabel names the slot that reports the value
+// under the cursor, and tooltip attaches a help icon to the caption.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
-// polymer cartoon traces. Residue indices passed to onResidueClick and back
-// through selectedResidue are 0-based, so the first residue of the chain is 0.
+// polymer cartoon traces. An overlay needs a chain long enough to see it on:
+// the values here pick out two short stretches, so the rest of the chain stays
+// gray and the painted regions stand out against it.
 
-import { MolecularStructureViewer } from "@czi-sds/data-viz";
-import { useState } from "react";
+import { StructureViewer, PLASMA_COLOR_SCALE } from "@czi-sds/data-viz";
 
 const PDB = `
 ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
@@ -200,34 +203,37 @@ ATOM    183  C   ASN A  46      13.311   5.853  11.455  1.00  6.61           C
 ATOM    184  O   ASN A  46      13.733   6.929  11.026  1.00  7.18           O
 END`;
 
-const PLDDT = [
-  0.45, 0.515, 0.557, 0.569, 0.567, 0.578, 0.618, 0.681, 0.742, 0.777, 0.782,
-  0.773, 0.776, 0.807, 0.86, 0.909, 0.933, 0.924, 0.902, 0.892, 0.91, 0.947,
-  0.98, 0.98, 0.961, 0.92, 0.892, 0.892, 0.911, 0.927, 0.915, 0.873, 0.818,
-  0.776, 0.762, 0.769, 0.772, 0.748, 0.694, 0.629, 0.578, 0.556, 0.556, 0.552,
-  0.522, 0.463,
-];
+// Two stretches of the chain carry a value, peaking at 2.4 in the middle of
+// each. Residue 8 is the ninth residue of the chain, since the map is 0-based.
+const RESIDUE_VALUES = new Map([
+  [8, 1.2],
+  [9, 1.6],
+  [10, 2.0],
+  [11, 2.4],
+  [12, 2.0],
+  [13, 1.6],
+  [14, 1.2],
+  [28, 0.96],
+  [29, 1.44],
+  [30, 1.92],
+  [31, 2.4],
+  [32, 1.92],
+  [33, 1.44],
+]);
 
 function App() {
-  const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
-
   return (
     <div className="app" style={{ height: 480 }}>
-      <MolecularStructureViewer
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
-        }
-        onSelectionClear={() => setSelectedResidue(null)}
+      <StructureViewer
         pdb={PDB}
-        plddt={PLDDT}
-        selectedResidue={selectedResidue}
-        stats={[
-          null,
-          { label: "pTM", value: "0.874" },
-          { label: "Mean pLDDT", value: "0.781" },
-        ]}
+        residueOverlay={{
+          colorScale: PLASMA_COLOR_SCALE,
+          label: "Feature activation",
+          max: 2.4,
+          readoutLabel: "Activation",
+          tooltip: "Max activation across all residues for this feature",
+          values: RESIDUE_VALUES,
+        }}
       />
     </div>
   );

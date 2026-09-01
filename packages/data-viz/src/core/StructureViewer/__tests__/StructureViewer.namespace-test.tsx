@@ -1,7 +1,7 @@
 import {
   ColorScale,
-  MolecularStructureViewer,
-  MolecularStructureViewerProps,
+  StructureViewer,
+  StructureViewerProps,
   PLASMA_COLOR_SCALE,
   PLDDT_COLOR_SCALE,
   ResidueValueOverlay,
@@ -38,9 +38,7 @@ const CUSTOM_SCALE: ColorScale = {
   ],
 };
 
-const MolecularStructureViewerNameSpaceTest = (
-  props: MolecularStructureViewerProps
-) => {
+const StructureViewerNameSpaceTest = (props: StructureViewerProps) => {
   const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
 
   // Utilities re-exported alongside the component.
@@ -51,19 +49,19 @@ const MolecularStructureViewerNameSpaceTest = (
   return (
     <>
       {/* Basic usage */}
-      <MolecularStructureViewer pdb={PDB} />
+      <StructureViewer pdb={PDB} />
 
       {/* With pLDDT coloring and stats */}
-      <MolecularStructureViewer pdb={PDB} plddt={[0.94]} stats={STATS} />
+      <StructureViewer pdb={PDB} plddt={[0.94]} stats={STATS} />
 
       {/* Reserved stat slot */}
-      <MolecularStructureViewer pdb={PDB} stats={[null, STATS[1], null]} />
+      <StructureViewer pdb={PDB} stats={[null, STATS[1], null]} />
 
       {/* With a residue value overlay */}
-      <MolecularStructureViewer pdb={PDB} residueOverlay={OVERLAY} />
+      <StructureViewer pdb={PDB} residueOverlay={OVERLAY} />
 
       {/* Controlled selection */}
-      <MolecularStructureViewer
+      <StructureViewer
         onResidueClick={(residueIndex, compId) =>
           setSelectedResidue(compId ? residueIndex : null)
         }
@@ -76,7 +74,7 @@ const MolecularStructureViewerNameSpaceTest = (
       />
 
       {/* Chrome toggles and background override */}
-      <MolecularStructureViewer
+      <StructureViewer
         backgroundColor="#101010"
         pdb={PDB}
         showAxes={false}
@@ -85,7 +83,7 @@ const MolecularStructureViewerNameSpaceTest = (
       />
 
       {/* Forwarded div props */}
-      <MolecularStructureViewer
+      <StructureViewer
         aria-label="Protein structure"
         className="structure"
         style={{ height: 480 }}

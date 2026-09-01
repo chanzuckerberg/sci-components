@@ -1,4 +1,4 @@
-import { ColorScale } from "../../MolecularStructureViewer.types";
+import { ColorScale } from "../../StructureViewer.types";
 import { toCssGradient } from "../../utils/colorScales";
 import {
   LegendBand,

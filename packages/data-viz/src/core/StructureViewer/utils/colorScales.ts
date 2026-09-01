@@ -2,7 +2,7 @@ import {
   ColorScale,
   ContinuousColorStop,
   SteppedColorStop,
-} from "../MolecularStructureViewer.types";
+} from "../StructureViewer.types";
 
 /** RGB triplet with each channel in the range 0-255. */
 export type Rgb = [number, number, number];

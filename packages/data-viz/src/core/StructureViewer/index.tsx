@@ -14,16 +14,16 @@ import { useMolstarPlugin } from "./hooks/useMolstarPlugin";
 import { useResidueFocus } from "./hooks/useResidueFocus";
 import { useResidueOverlay } from "./hooks/useResidueOverlay";
 import {
-  MolecularStructureViewerProps,
+  StructureViewerProps,
   ResidueReadout,
   ResidueValueOverlay,
-} from "./MolecularStructureViewer.types";
+} from "./StructureViewer.types";
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
 import { PLASMA_COLOR_SCALE, PLDDT_COLOR_SCALE } from "./utils/colorScales";
 import { injectPlddtIntoPdb } from "./utils/plddt";
 
-export * from "./MolecularStructureViewer.types";
+export * from "./StructureViewer.types";
 export {
   PLASMA_COLOR_SCALE,
   PLDDT_COLOR_SCALE,
@@ -35,8 +35,12 @@ export { injectPlddtIntoPdb } from "./utils/plddt";
 /** Fallbacks for theme tokens Mol* needs as concrete hex colors. */
 const FALLBACK_EDGE_COLOR = "#6c6c6c";
 const FALLBACK_HIGHLIGHT_COLOR = "#1b1b1b";
-/** Keyed by mode: unlike the two above, the canvas has to invert with it. */
-const FALLBACK_BACKGROUND_COLOR = { dark: "#101010", light: "#ffffff" };
+/**
+ * Keyed by mode: unlike the two above, the canvas has to invert with it. Only
+ * reached when the viewer renders outside an SDS theme; inside one the
+ * `base.backgroundPrimary` token wins.
+ */
+const FALLBACK_BACKGROUND_COLOR = { dark: "#000000", light: "#ffffff" };
 
 /** Caption shown beneath the color key when no overlay is active. */
 const PLDDT_SCALE_LABEL = "pLDDT";
@@ -83,9 +87,9 @@ function resolveScaleProps(overlay: ResidueValueOverlay | null | undefined) {
  * while hover state is owned internally so the legend can show a live readout
  * without the consumer round-tripping every pointer move.
  */
-const MolecularStructureViewer = forwardRef(
+const StructureViewer = forwardRef(
   (
-    props: MolecularStructureViewerProps,
+    props: StructureViewerProps,
     ref: ForwardedRef<HTMLDivElement>
   ): JSX.Element => {
     const {
@@ -265,4 +269,4 @@ const MolecularStructureViewer = forwardRef(
   }
 );
 
-export default memo(MolecularStructureViewer);
+export default memo(StructureViewer);

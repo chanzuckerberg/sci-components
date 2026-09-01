@@ -3,7 +3,7 @@ import {
   StructureProperties,
 } from "molstar/lib/mol-model/structure";
 import { Color } from "molstar/lib/mol-util/color";
-import { ColorScale } from "../MolecularStructureViewer.types";
+import { ColorScale } from "../StructureViewer.types";
 import { neutralResidueColor } from "./color";
 import { PLASMA_COLOR_SCALE, sampleColorScale } from "./colorScales";
 
