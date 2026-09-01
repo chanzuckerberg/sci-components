@@ -109,3 +109,18 @@ export const WithoutPlddt = {
   args: { ...DEFAULT_ARGS, showPlddt: false, stats: [] },
   parameters: NO_SNAPSHOT,
 };
+
+/**
+ * Only the 3D view, for a caller that supplies its own sequence panel and
+ * readouts. The axes widget and its reset-camera button stay, since `showAxes`
+ * controls those separately.
+ */
+export const WithoutSequenceViewerOrLegend = {
+  args: {
+    ...DEFAULT_ARGS,
+    showAxes: false,
+    showLegend: false,
+    showSequenceViewer: false,
+  },
+  parameters: NO_SNAPSHOT,
+};

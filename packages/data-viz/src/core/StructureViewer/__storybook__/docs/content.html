@@ -85,6 +85,24 @@
   class="sds-doc-example"
   data-example="data-viz/StructureViewer/SelectableStructureViewer"
 ></div>
+<h3>Structure only</h3>
+<p>
+  Three props hide the chrome layered around the 3D view.
+  <code>showSequenceViewer</code> drops the sequence panel,
+  <code>showLegend</code> drops the stats and the color key, and
+  <code>showAxes</code> drops the orientation widget and its reset-camera
+  button. Turn off all three when the surrounding page supplies its own
+  controls.
+</p>
+<p>
+  Hiding the legend does not disable the coloring. The structure below is still
+  colored by pLDDT confidence, only without the key that explains it.
+</p>
+<div
+  class="sds-doc-example"
+  data-example-padding="none"
+  data-example="data-viz/StructureViewer/MinimalStructureViewer"
+></div>
 <h2>Theming</h2>
 <p>
   The viewer reads the active SDS theme for its hover and selection colors and

@@ -215,7 +215,7 @@ export const catalog: CatalogCategory[] = [
       {
         name: "StructureViewer",
         docs: "data-viz-structureviewer",
-        example: "data-viz/StructureViewer/DefaultStructureViewer",
+        example: "data-viz/StructureViewer/MinimalStructureViewer",
       },
     ],
   },
