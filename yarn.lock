@@ -1909,6 +1909,7 @@ __metadata:
     "@czi-sds/components": ^24.0.0
     "@emotion/styled": ^11.11.0
     "@mui/material": ^9.0.0
+    "@phosphor-icons/react": ^2.1.10
     echarts: ^6.0.0
     lodash: ^4.17.21
     molstar: ^5.6.1
