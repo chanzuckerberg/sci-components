@@ -58,5 +58,5 @@
     "TooltipCondensed",
     "TooltipTable"
   ],
-  "data-viz": ["HeatmapChart", "StackedBarChart", "StructureViewer"]
+  "data-viz": ["HeatmapChart", "ProteinStructureViewer", "StackedBarChart"]
 }
