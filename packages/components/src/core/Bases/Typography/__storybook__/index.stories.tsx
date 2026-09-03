@@ -6,11 +6,9 @@ export default {
     /**
      * A Bases story is documentation — a specimen of the type scale the page
      * renders in place — and the accessibility suite is for the components,
-     * which answer for themselves in their own stories. Two keys because there
-     * are two suites: `a11y` is addon-a11y's, `axe` is axe-storybook-testing's.
+     * which answer for themselves in their own stories.
      */
     a11y: { test: "off" },
-    axe: { skip: true },
   },
   title: "Bases/Typography",
 } as Meta;

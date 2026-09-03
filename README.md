@@ -80,9 +80,7 @@ Common yarn scrips have been moved to the monorepo root. The -- syntax can be us
 
 - `yarn start`: Starts storybook on the local machine
 - `yarn build-storybook`: Builds the storybook in the docs-build folder
-- `yarn test-storybook`: Tests current running instance of storybook
-- `yarn storybook:axe`: Builds the storybook and runs accessibility tests
-- `yarn storybook:axeOnly`: Runs accessibility tests on the latest build of the storybook inside the docs-build folder
+- `yarn test:storybook`: Renders every story in a real browser and checks it for accessibility violations. Runs against the source, so it needs no storybook build
 - `yarn test`: Runs `jest` tests
 - `yarn namespace-check`: Runs typescript type checking on namespace files to ensure that there are no duplicated exports
 - `yarn lint`: Runs linter

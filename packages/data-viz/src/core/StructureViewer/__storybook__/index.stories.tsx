@@ -13,10 +13,19 @@ const DEFAULT_STATS = [
 ];
 
 /**
- * Mol* renders through WebGL, which neither Chromatic nor the jsdom snapshot
- * runner can drive, so visual regression is skipped for every story here.
+ * Mol* renders through WebGL, which none of our automated runners can drive:
+ * not Chromatic, not the jsdom snapshot runner, and not the Vitest addon's
+ * headless Chromium, where the context request fails outright and the viewer
+ * never paints. So visual regression and accessibility are both skipped here.
+ *
+ * Skipping the accessibility check leaves these stories unaudited rather than
+ * accessible. What it would measure is a viewer that failed to start: the
+ * legend's labels against an unpainted canvas, which is not the contrast a
+ * reader would meet. The viewer's own contrast is ours to check by hand until
+ * it can be driven headlessly.
  */
-const NO_SNAPSHOT = {
+const NO_AUTOMATED_CHECKS = {
+  a11y: { test: "off" as const },
   chromatic: { disableSnapshot: true },
   snapshot: { skip: true },
 };
@@ -58,7 +67,7 @@ export default {
     },
   },
   component: StructureViewer,
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
   title: "Data Viz/StructureViewer",
 } as Meta;
 
@@ -73,7 +82,7 @@ const DEFAULT_ARGS = {
 
 export const Default = {
   args: DEFAULT_ARGS,
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
 };
 
 /**
@@ -82,13 +91,13 @@ export const Default = {
  */
 export const WithResidueOverlay = {
   args: { ...DEFAULT_ARGS, showOverlay: true },
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
 };
 
 /** The 3D view fills the whole box when the sequence panel is hidden. */
 export const WithoutSequenceViewer = {
   args: { ...DEFAULT_ARGS, showSequenceViewer: false },
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
 };
 
 /** Bare viewer, for embedding somewhere that supplies its own chrome. */
@@ -98,7 +107,7 @@ export const WithoutLegend = {
     showAxes: false,
     showLegend: false,
   },
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
 };
 
 /**
@@ -107,7 +116,7 @@ export const WithoutLegend = {
  */
 export const WithoutPlddt = {
   args: { ...DEFAULT_ARGS, showPlddt: false, stats: [] },
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
 };
 
 /**
@@ -122,5 +131,5 @@ export const WithoutSequenceViewerOrLegend = {
     showLegend: false,
     showSequenceViewer: false,
   },
-  parameters: NO_SNAPSHOT,
+  parameters: NO_AUTOMATED_CHECKS,
 };

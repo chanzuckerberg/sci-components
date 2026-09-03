@@ -159,12 +159,9 @@ const meta: Meta = {
   parameters: {
     /**
      * The page is documentation the accessibility suite reaches through the
-     * real thing, and the components in it through their own stories. Both
-     * switches are needed, one per suite: addon-a11y reads the first, and
-     * axe-storybook-testing reads the second.
+     * real thing, and the components in it through their own stories.
      */
     a11y: { test: "off" },
-    axe: { skip: true },
     layout: "fullscreen",
   },
   tags: ["!autodocs", "!dev", "!test"],
