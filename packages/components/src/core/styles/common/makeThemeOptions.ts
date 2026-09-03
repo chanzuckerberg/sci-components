@@ -471,6 +471,9 @@ export function makeThemeOptions(
   appTheme: AppTheme,
   mode: PaletteMode
 ): SDSThemeOptions {
+  const semanticColors =
+    mode === "dark" ? SDSPaletteDark(appTheme) : SDSPaletteLight(appTheme);
+
   return {
     app: appTheme,
     breakpoints: {
@@ -533,9 +536,15 @@ export function makeThemeOptions(
         disabled: appTheme.colors.gray[400],
         disabledBackground: appTheme.colors.gray[300],
       },
+      /**
+       * What `CssBaseline` paints the page with, so it has to be the same token
+       * a component fills its own background with — otherwise a component sits
+       * on a page a shade off from itself. The two are only one token in dark
+       * mode, where the background and the surfaces above it are deliberately
+       * different shades of near-black.
+       */
       background: {
-        default:
-          mode === "dark" ? appTheme.colors.gray[75] : appTheme.colors.gray[50],
+        default: semanticColors.base.backgroundPrimary,
       },
       divider: appTheme.colors.gray[200],
       error: {
@@ -583,8 +592,7 @@ export function makeThemeOptions(
         light: appTheme.colors.blue[200],
         main: appTheme.colors.blue[400],
       },
-      sds:
-        mode === "dark" ? SDSPaletteDark(appTheme) : SDSPaletteLight(appTheme),
+      sds: semanticColors,
       secondary: {
         "100": appTheme.colors.green[100],
         "200": appTheme.colors.green[200],
