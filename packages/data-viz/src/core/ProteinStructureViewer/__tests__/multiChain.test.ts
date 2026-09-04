@@ -99,10 +99,16 @@ describe("residueRefFromLoci", () => {
    * case that separates all three: ninth by position, numbered 111, on chain B.
    */
   it.each([
-    [1, { chainId: "A", compId: "ALA", index: 0, seqId: 1 }],
+    [1, { chainId: "A", compId: "ALA", insCode: "", index: 0, seqId: 1 }],
     [
       111,
-      { chainId: "B", compId: "LYS", index: RESIDUES_PER_CHAIN, seqId: 111 },
+      {
+        chainId: "B",
+        compId: "LYS",
+        insCode: "",
+        index: RESIDUES_PER_CHAIN,
+        seqId: 111,
+      },
     ],
   ])("reports residue %i in every scheme at once", (seqId, expected) => {
     expect(residueRefFromLoci(lociForSeqId(structure, seqId))).toEqual(
@@ -118,8 +124,65 @@ describe("residueRefFromLoci", () => {
 describe("residueLabel", () => {
   it("names a residue by the file's numbering, not its position", () => {
     expect(
-      residueLabel({ chainId: "B", compId: "LYS", index: 8, seqId: 111 })
+      residueLabel({
+        chainId: "B",
+        compId: "LYS",
+        insCode: "",
+        index: 8,
+        seqId: 111,
+      })
     ).toBe("LYS 111");
+  });
+
+  it("keeps the insertion code, which is part of the residue's name", () => {
+    expect(
+      residueLabel({
+        chainId: "A",
+        compId: "SER",
+        insCode: "A",
+        index: 3,
+        seqId: 10,
+      })
+    ).toBe("SER 10A");
+  });
+});
+
+/**
+ * Insertion codes let one sequence number cover several residues -- `10`, `10A`,
+ * `10B` -- and Mol* counts each as its own. The pLDDT injector has to agree: if
+ * it read only the chain and the number it would spend one score on all three,
+ * and every residue after them would take its neighbour's.
+ */
+describe("insertion codes", () => {
+  const WITH_INS_CODES = [
+    "ATOM      1  CA  MET A  10      10.000  10.000  10.000  1.00  0.00           C",
+    "ATOM      2  CA  SER A  10A     13.800  10.000  10.000  1.00  0.00           C",
+    "ATOM      3  CA  LYS A  11      17.600  10.000  10.000  1.00  0.00           C",
+  ].join("\n");
+
+  it("counts a residue and its insertion-coded neighbour separately", () => {
+    const lines = injectPlddtIntoPdb(WITH_INS_CODES, [0.1, 0.2, 0.3]).split(
+      "\n"
+    );
+
+    expect(lines.map((line) => bFactorOf(line))).toEqual([
+      " 10.00",
+      " 20.00",
+      " 30.00",
+    ]);
+  });
+
+  it("agrees with the index Mol* assigns", async () => {
+    const structure = await structureFromPdb(WITH_INS_CODES);
+
+    expect([...eachResidue(structure, () => null).keys()]).toEqual([0, 1, 2]);
+    expect(residueRefFromLoci(lociForSeqId(structure, 10))).toEqual({
+      chainId: "A",
+      compId: "MET",
+      insCode: "",
+      index: 0,
+      seqId: 10,
+    });
   });
 });
 

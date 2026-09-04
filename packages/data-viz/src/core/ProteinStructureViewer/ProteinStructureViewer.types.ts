@@ -36,12 +36,16 @@ export interface ResidueValueOverlay {
  * address it.
  *
  * `index` is the viewer's own key: the position in `plddt` and in
- * `residueOverlay`'s map, and what `selectedResidue` takes. `chainId` and
- * `seqId` are what the file says, which is what the sequence panel shows and
- * what a system that supplied the structure will recognise. They differ
- * whenever the file does not number a single chain from 1 -- a crop, or a
- * complex -- so address a residue outside the viewer with the pair, not with
- * `index`.
+ * `residueOverlay`'s map, and what `selectedResidue` takes. `chainId`, `seqId`
+ * and `insCode` are what the file says, which is what the sequence panel shows
+ * and what a system that supplied the structure will recognise. They differ
+ * from `index` whenever the file does not number a single chain from 1 -- a
+ * crop, or a complex -- so address a residue outside the viewer with those
+ * three, not with `index`.
+ *
+ * `insCode` is rarely set but is part of the address when it is: `10` and `10A`
+ * are different residues on the same chain, so chain and number alone do not
+ * name one.
  */
 export interface ResidueRef {
   /** 0-based position in the structure, counting residues in file order. */
@@ -52,6 +56,8 @@ export interface ResidueRef {
   chainId: string;
   /** Residue number as written in the file. */
   seqId: number;
+  /** Insertion code, or `""` when the residue has none. */
+  insCode: string;
 }
 
 /** A whole-structure statistic shown along the bottom of the viewer. */
