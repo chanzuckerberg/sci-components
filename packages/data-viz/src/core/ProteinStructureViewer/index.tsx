@@ -169,10 +169,24 @@ const ProteinStructureViewer = forwardRef(
       (residue: ResidueRef | null) => {
         // Mol* emits hover events continuously; skip redundant state updates
         // when the pointer stays on the same residue (or off the structure).
+        //
+        // The index alone does not identify one: loading a new structure into
+        // the same plugin renumbers from zero, so the residue now at an index is
+        // not the one that was there before. Comparing the label as well is
+        // enough, because the readout this drives is built from the label and
+        // the index and from nothing else.
         setHoveredResidue((prev) => {
           if (residue === null) return prev === null ? prev : null;
-          if (prev !== null && prev.index === residue.index) return prev;
-          return { index: residue.index, label: residueLabel(residue) };
+
+          const label = residueLabel(residue);
+          if (
+            prev !== null &&
+            prev.index === residue.index &&
+            prev.label === label
+          ) {
+            return prev;
+          }
+          return { index: residue.index, label };
         });
         onResidueHover?.(residue);
       },
