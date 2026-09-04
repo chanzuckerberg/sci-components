@@ -18,14 +18,19 @@ export function getLoci(
  * Extends a loci to the range between the mouse-down anchor and the current
  * residue, so dragging across the sequence selects a contiguous span.
  *
- * Element indices are only comparable within a single unit, so a drag whose
- * endpoints land in different units is left unextended rather than resolved
- * against the anchor's unit, which would select an unrelated range.
+ * Element indices are only comparable within a single unit, and the range below
+ * is built on the anchor's unit alone. So a drag is only extended when both
+ * endpoints are a single element of the same unit; anything else -- different
+ * units, or an endpoint spanning several because the chain has more than one
+ * symmetry operator -- is left unextended rather than collapsed onto one unit
+ * and silently reinterpreted as a different range.
  */
 export function extendToRange(
   loci: StructureElement.Loci,
   anchor: StructureElement.Loci
 ): StructureElement.Loci {
+  if (anchor.elements.length !== 1 || loci.elements.length !== 1) return loci;
+
   const ref = anchor.elements[0];
   const ext = loci.elements[0];
   if (!ref || !ext) return loci;

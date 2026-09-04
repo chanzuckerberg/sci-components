@@ -85,12 +85,13 @@ export function createSequenceView(
           <SequenceScroller backgroundColor={backgroundColor}>
             <SequenceScrollArea className="msp-sequence msp-sequence-wrapper-non-empty">
               {entries.map((s) => (
-                <Fragment key={s.label}>
+                <Fragment key={s.id}>
                   {showChainLabels && <ChainLabel>{s.label}</ChainLabel>}
                   {typeof s.wrapper === "string" ? (
                     <div className="msp-sequence-wrapper">{s.wrapper}</div>
                   ) : (
                     <Sequence
+                      chainLabel={showChainLabels ? s.label : undefined}
                       residueColors={residueColors}
                       sequenceWrapper={s.wrapper}
                     />

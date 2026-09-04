@@ -526,6 +526,10 @@ export function useMolstarPlugin({
 
     currentPdbRef.current = pdb;
     clipRatioRef.current = null;
+    // The residue under the pointer belongs to the outgoing structure, and the
+    // hover guard compares against it. Clearing it keeps the first hover on the
+    // new structure from being read as a repeat.
+    lastHoverRef.current = null;
     loadStructure(plugin, pdb, hasPlddt, showAxes);
     // isReady replays this once the plugin is up, which is what catches a pdb
     // swapped while it was still being built; the comparison above makes the

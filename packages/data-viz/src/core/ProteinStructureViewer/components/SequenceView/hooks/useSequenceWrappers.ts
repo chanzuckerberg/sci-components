@@ -21,8 +21,15 @@ import { useSubscribe } from "../../../hooks/useSubscribe";
 /** One chain's residues, or a placeholder string when it has none to show. */
 export interface SequenceWrapperEntry {
   wrapper: string | SequenceWrapper.Any;
-  /** Chain the entry covers, as Mol* names it. */
+  /** Chain the entry covers, as Mol* names it. Not unique on its own. */
   label: string;
+  /**
+   * Identifies the entry across renders. An entry exists per entity, chain and
+   * symmetry operator, so a chain with several operators contributes several
+   * entries under one label; keying React off the label alone would let it pair
+   * a grid with another operator's residues after a structure changes.
+   */
+  id: string;
 }
 
 interface SequenceViewState {
@@ -120,6 +127,7 @@ function buildEntries(
         chainGroupId
       )) {
         entries.push({
+          id: `${modelEntityId}:${chainGroupId}:${operatorKey}`,
           // The chain alone. Mol* pairs this with an entity label for its
           // chain dropdown, which this panel does not render; for a
           // coordinates-only file that half degrades to "Polymer 1 (PDB)".
