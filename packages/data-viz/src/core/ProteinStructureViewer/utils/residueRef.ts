@@ -24,15 +24,17 @@ export function residueRefFromLoci(
   return {
     chainId: StructureProperties.chain.auth_asym_id(firstLoc),
     compId: StructureProperties.residue.label_comp_id(firstLoc),
+    insCode: StructureProperties.residue.pdbx_PDB_ins_code(firstLoc) ?? "",
     index: StructureProperties.residue.key(firstLoc),
     seqId: StructureProperties.residue.auth_seq_id(firstLoc),
   };
 }
 
 /**
- * How a residue is named in the readout, e.g. `"LYS 111"`. Takes the number
- * from the file so that the readout and the sequence panel beneath it agree.
+ * How a residue is named in the readout, e.g. `"LYS 111"`. Takes the number and
+ * the insertion code from the file so that the readout and the sequence panel
+ * beneath it agree on what to call a residue.
  */
 export function residueLabel(residue: ResidueRef): string {
-  return `${residue.compId} ${residue.seqId}`;
+  return `${residue.compId} ${residue.seqId}${residue.insCode}`;
 }
