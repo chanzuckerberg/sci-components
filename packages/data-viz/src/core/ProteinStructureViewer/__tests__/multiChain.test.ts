@@ -1,8 +1,10 @@
 import type { SequenceWrapper } from "molstar/lib/mol-plugin-ui/sequence/wrapper";
+import { OrderedSet } from "molstar/lib/mol-data/int";
 import { StructureElement } from "molstar/lib/mol-model/structure";
 import type { Structure } from "molstar/lib/mol-model/structure";
 import type { SequenceWrapperEntry } from "../components/SequenceView/hooks/useSequenceWrappers";
 import { sequenceTextFromEntries } from "../components/SequenceView/utils/sequenceText";
+import { extendToRange } from "../components/SequenceView/utils/loci";
 import { injectPlddtIntoPdb } from "../utils/plddt";
 import { residueLabel, residueRefFromLoci } from "../utils/residueRef";
 import {
@@ -192,8 +194,8 @@ describe("sequenceTextFromEntries", () => {
 
   it("separates chains so a complex does not read as one sequence", () => {
     const entries: SequenceWrapperEntry[] = [
-      { label: "A", wrapper: fakeWrapper(barnase) },
-      { label: "B", wrapper: fakeWrapper(barstar) },
+      { id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
+      { id: "2:1:0", label: "B", wrapper: fakeWrapper(barstar) },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(`${barnase}|${barstar}`);
@@ -201,7 +203,7 @@ describe("sequenceTextFromEntries", () => {
 
   it("leaves a single chain unseparated", () => {
     const entries: SequenceWrapperEntry[] = [
-      { label: "A", wrapper: fakeWrapper(barnase) },
+      { id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
@@ -209,10 +211,50 @@ describe("sequenceTextFromEntries", () => {
 
   it("drops chains that did not resolve to a wrapper", () => {
     const entries: SequenceWrapperEntry[] = [
-      { label: "A", wrapper: fakeWrapper(barnase) },
-      { label: "B", wrapper: "No sequence available" },
+      { id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
+      { id: "2:1:0", label: "B", wrapper: "No sequence available" },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
+  });
+});
+
+/**
+ * Dragging across the sequence extends the selection to a range, which is only
+ * meaningful within one unit: element indices are unit-local, and the extended
+ * loci is built on the anchor's unit alone. Endpoints that do not both resolve
+ * to a single element of the same unit are left alone rather than collapsed
+ * onto one and reinterpreted.
+ */
+describe("extendToRange", () => {
+  let structure: Structure;
+
+  beforeAll(async () => {
+    structure = await structureFromPdb(BARNASE_BARSTAR);
+  });
+
+  it("extends a drag within one unit", () => {
+    const anchor = lociForSeqId(structure, 1);
+    const extended = extendToRange(lociForSeqId(structure, 4), anchor);
+
+    expect(OrderedSet.size(extended.elements[0].indices)).toBe(4);
+  });
+
+  it("leaves a drag spanning two units unextended", () => {
+    const anchor = lociForSeqId(structure, 1);
+    const other = lociForSeqId(structure, 111);
+
+    expect(anchor.elements[0].unit).not.toBe(other.elements[0].unit);
+    expect(extendToRange(other, anchor)).toBe(other);
+  });
+
+  it("leaves an endpoint covering several units unextended", () => {
+    const anchor = lociForSeqId(structure, 1);
+    const multiUnit = StructureElement.Loci(structure, [
+      ...anchor.elements,
+      ...lociForSeqId(structure, 111).elements,
+    ]);
+
+    expect(extendToRange(multiUnit, anchor)).toBe(multiUnit);
   });
 });

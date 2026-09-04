@@ -506,6 +506,10 @@ export function useMolstarPlugin({
 
     currentPdbRef.current = pdb;
     clipRatioRef.current = null;
+    // The residue under the pointer belongs to the outgoing structure, and the
+    // hover guard compares against it. Clearing it keeps the first hover on the
+    // new structure from being read as a repeat.
+    lastHoverRef.current = null;
     loadStructure(plugin, pdb, hasPlddt, showAxes);
     // showAxes is read for the reload only; changing it alone is handled above.
     // eslint-disable-next-line react-hooks/exhaustive-deps
