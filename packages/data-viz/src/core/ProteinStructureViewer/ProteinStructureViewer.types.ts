@@ -35,16 +35,16 @@ export interface ResidueValueOverlay {
  * A residue the user pointed at, in each of the ways a caller might need to
  * address it.
  *
- * `index` is the viewer's own key -- the position in `plddt` and in
- * `residueOverlay`'s map -- and counts residues in file order, straight through
- * a chain break. `chainId` and `seqId` are what the file says, which is what the
- * sequence panel shows and what an external system that supplied the structure
- * will recognise. The two coincide for a single chain starting at 1 and diverge
- * otherwise, so a caller mapping a click back onto its own numbering wants the
- * latter pair rather than arithmetic on the former.
+ * `index` is the viewer's own key: the position in `plddt` and in
+ * `residueOverlay`'s map, and what `selectedResidue` takes. `chainId` and
+ * `seqId` are what the file says, which is what the sequence panel shows and
+ * what a system that supplied the structure will recognise. They differ
+ * whenever the file does not number a single chain from 1 -- a crop, or a
+ * complex -- so address a residue outside the viewer with the pair, not with
+ * `index`.
  */
 export interface ResidueRef {
-  /** 0-based index across the whole structure, in file order. */
+  /** 0-based position in the structure, counting residues in file order. */
   index: number;
   /** Three-letter residue code, e.g. `"LYS"`. */
   compId: string;

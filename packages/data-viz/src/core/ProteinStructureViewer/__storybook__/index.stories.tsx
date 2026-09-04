@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react-vite";
-import { ProteinStructureViewerComplex } from "./stories/complex";
+import { BARNASE_BARSTAR_PDB, BARNASE_BARSTAR_PLDDT } from "./barnaseBarstar";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -78,30 +78,21 @@ export default {
 } as Meta;
 
 /**
- * Deliberate exception to `NO_AUTOMATED_CHECKS`, for one story only.
+ * Snapshots one story, to find out whether Chromatic can drive Mol* at all.
  *
- * The claim that Chromatic cannot drive Mol* has never been measured against
- * Chromatic itself. Locally it holds: stubbing `getContext` to refuse `webgl`
- * makes Mol* render "WebGL does not seem to be available" and the sequence
- * panel never mounts, so a capture without a GPU would photograph that error
- * rather than the structure. Chromatic's capture browsers may or may not behave
- * the same way, and one enabled story answers it.
+ * Locally it cannot: stubbing `getContext` to refuse `webgl` makes Mol* render
+ * "WebGL does not seem to be available", and the sequence panel never mounts.
+ * Whether Chromatic's capture browsers behave the same way is untested, and one
+ * enabled story answers it. Until it does, this stays an exception rather than
+ * a lifting of `NO_AUTOMATED_CHECKS`.
  *
- * Read the snapshot on the PR. A rendered complex means visual regression is
- * available to this component after all and the blanket opt-out can go; the
- * error page means it is not, and this constant should be replaced by
- * `NO_AUTOMATED_CHECKS` with the result recorded here.
- *
- * Accessibility stays off either way: auditing a viewer that failed to start
- * measures the wrong thing.
+ * `disableSnapshot` is set explicitly because story parameters merge over the
+ * meta's, so omitting it would leave the opt-out in force. The delay covers
+ * Mol* parsing the structure and drawing its first frame.
  */
-const CHROMATIC_PROBE = {
-  a11y: { test: "off" as const },
-  // Story parameters merge over the meta's, so `disableSnapshot` has to be
-  // turned back off explicitly rather than omitted. The delay covers Mol*
-  // parsing the structure and drawing its first frame, which is asynchronous.
+const CHROMATIC_PROBE_PENDING_RESULT = {
+  ...NO_AUTOMATED_CHECKS,
   chromatic: { delay: 3000, disableSnapshot: false },
-  snapshot: { skip: true },
 };
 
 /** Confidence metrics from the co-fold behind the two-chain fixture. */
@@ -184,9 +175,11 @@ export const WithoutSequenceViewerOrLegend = {
  * it was designed for.
  */
 export const Complex = {
-  args: { ...DEFAULT_ARGS, stats: COMPLEX_STATS },
-  parameters: CHROMATIC_PROBE,
-  render: (args: typeof DEFAULT_ARGS) => (
-    <ProteinStructureViewerComplex {...args} />
-  ),
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: CHROMATIC_PROBE_PENDING_RESULT,
 };

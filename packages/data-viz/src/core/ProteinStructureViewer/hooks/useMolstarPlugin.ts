@@ -341,6 +341,9 @@ export function useMolstarPlugin({
   const onResidueHoverRef = useRef(onResidueHover);
   onResidueHoverRef.current = onResidueHover;
 
+  /** Last residue reported to `onResidueHover`, to suppress repeats. */
+  const lastHoverRef = useRef<ResidueRef | null>(null);
+
   // Values that only apply at creation time, read through refs so that changing
   // them later does not rebuild the plugin (they are pushed in via effects).
   const initialPropsRef = useRef({
@@ -432,12 +435,18 @@ export function useMolstarPlugin({
 
         plugin.behaviors.interaction.hover.subscribe((e) => {
           const loci = e.current.loci;
-          if (!StructureElement.Loci.is(loci)) {
-            onResidueHoverRef.current?.(null);
-            return;
-          }
+          const residue = StructureElement.Loci.is(loci)
+            ? residueRefFromLoci(loci)
+            : null;
 
-          onResidueHoverRef.current?.(residueRefFromLoci(loci));
+          // Mol* emits hover continuously while the pointer rests on a residue.
+          // Reporting a fresh object each time would cost every consumer that
+          // stores it a re-render per event, where the previous pair of
+          // primitives let React bail out on an unchanged value.
+          if (residue?.index === lastHoverRef.current?.index) return;
+          lastHoverRef.current = residue;
+
+          onResidueHoverRef.current?.(residue);
         });
 
         clipSubscription = plugin.canvas3d?.didDraw.subscribe(() => {

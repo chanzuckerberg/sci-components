@@ -9,9 +9,8 @@
  * the shape the viewer meets when it renders a designed binder against the
  * target it was designed for.
  *
- * Residues are numbered continuously across the chain break -- barstar starts
- * at 111, not 1 -- which is what structure-prediction endpoints emit and what
- * the pLDDT overlay's ordinal indexing assumes.
+ * Residues are numbered continuously across the chain break: barstar starts at
+ * 111, not 1, which is what structure-prediction endpoints emit.
  */
 export const BARNASE_BARSTAR_PDB = `ATOM      1  N   ALA A   1      10.151  -4.550 -26.005  1.00 64.66           N  
 ATOM      2  CA  ALA A   1      10.557  -5.651 -25.144  1.00 64.66           C  
@@ -810,17 +809,10 @@ ATOM   1590  CA  SER B 199     -11.781  -4.490  23.031  1.00 90.14           C
 ATOM   1591  C   SER B 199     -11.435  -3.194  23.786  1.00 90.14           C  
 ATOM   1593  O   SER B 199     -10.709  -2.354  23.263  1.00 90.14           O  `;
 
-/** Chain A, the target. */
-export const BARNASE_RESIDUE_COUNT = 110;
-
-/** Chain B, standing in for a binder. */
-export const BARSTAR_RESIDUE_COUNT = 89;
-
 /**
  * Per-residue pLDDT from the same fold, flattened across both chains with the
- * chain-separator slots dropped. The viewer indexes this ordinally, so it has
- * to be separator-free: a null left in place would shift every residue past the
- * break onto its neighbour's score.
+ * chain-separator slots dropped -- the viewer indexes this by position, so a
+ * null left in place would shift every residue after the break by one.
  */
 export const BARNASE_BARSTAR_PLDDT: number[] = [
   0.647, 0.704, 0.933, 0.975, 0.964, 0.982, 0.988, 0.969, 0.984, 0.987, 0.987,

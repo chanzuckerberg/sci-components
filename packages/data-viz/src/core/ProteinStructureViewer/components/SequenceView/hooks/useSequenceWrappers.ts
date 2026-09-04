@@ -21,6 +21,7 @@ import { useSubscribe } from "../../../hooks/useSubscribe";
 /** One chain's residues, or a placeholder string when it has none to show. */
 export interface SequenceWrapperEntry {
   wrapper: string | SequenceWrapper.Any;
+  /** Chain the entry covers, as Mol* names it. */
   label: string;
 }
 
@@ -108,7 +109,7 @@ function buildEntries(
 ): SequenceWrapperEntry[] {
   const entries: SequenceWrapperEntry[] = [];
 
-  for (const [modelEntityId, eLabel] of getModelEntityOptions(structure)) {
+  for (const [modelEntityId] of getModelEntityOptions(structure)) {
     for (const [chainGroupId, cLabel] of getChainOptions(
       structure,
       modelEntityId
@@ -119,7 +120,10 @@ function buildEntries(
         chainGroupId
       )) {
         entries.push({
-          label: `${cLabel} | ${eLabel}`,
+          // The chain alone. Mol* pairs this with an entity label for its
+          // chain dropdown, which this panel does not render; for a
+          // coordinates-only file that half degrades to "Polymer 1 (PDB)".
+          label: cLabel,
           wrapper: getSequenceWrapper(
             { chainGroupId, modelEntityId, operatorKey, structure },
             selection
