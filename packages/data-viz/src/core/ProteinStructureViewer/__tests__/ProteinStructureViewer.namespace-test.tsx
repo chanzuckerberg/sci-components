@@ -4,6 +4,7 @@ import {
   ProteinStructureViewerProps,
   PLASMA_COLOR_SCALE,
   PLDDT_COLOR_SCALE,
+  ResidueRef,
   ResidueValueOverlay,
   StructureStat,
   injectPlddtIntoPdb,
@@ -64,11 +65,11 @@ const ProteinStructureViewerNameSpaceTest = (
 
       {/* Controlled selection */}
       <ProteinStructureViewer
-        onResidueClick={(residueIndex, compId) =>
-          setSelectedResidue(compId ? residueIndex : null)
+        onResidueClick={(residue: ResidueRef) =>
+          setSelectedResidue(residue.index)
         }
-        onResidueHover={(residueIndex, compId) =>
-          console.log(residueIndex, compId)
+        onResidueHover={(residue) =>
+          console.log(residue?.chainId, residue?.seqId, residue?.compId)
         }
         onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}

@@ -31,6 +31,29 @@ export interface ResidueValueOverlay {
   readoutLabel?: string;
 }
 
+/**
+ * A residue the user pointed at, in each of the ways a caller might need to
+ * address it.
+ *
+ * `index` is the viewer's own key -- the position in `plddt` and in
+ * `residueOverlay`'s map -- and counts residues in file order, straight through
+ * a chain break. `chainId` and `seqId` are what the file says, which is what the
+ * sequence panel shows and what an external system that supplied the structure
+ * will recognise. The two coincide for a single chain starting at 1 and diverge
+ * otherwise, so a caller mapping a click back onto its own numbering wants the
+ * latter pair rather than arithmetic on the former.
+ */
+export interface ResidueRef {
+  /** 0-based index across the whole structure, in file order. */
+  index: number;
+  /** Three-letter residue code, e.g. `"LYS"`. */
+  compId: string;
+  /** Chain the residue sits on, as named in the file. */
+  chainId: string;
+  /** Residue number as written in the file. */
+  seqId: number;
+}
+
 /** A whole-structure statistic shown along the bottom of the viewer. */
 export interface StructureStat {
   value: string;
@@ -88,16 +111,13 @@ export interface ProteinStructureViewerProps extends Omit<
    * as values come and go.
    */
   stats?: (StructureStat | null)[];
+  /** Called with the clicked residue. */
+  onResidueClick?: (residue: ResidueRef) => void;
   /**
-   * Called with the 0-based residue index and 3-letter amino acid code when a
-   * residue is clicked.
+   * Called as the pointer moves over residues, and with `null` when it leaves
+   * the structure.
    */
-  onResidueClick?: (residueIndex: number, compId: string) => void;
-  /**
-   * Called as the pointer moves over residues, and with (null, null) when it
-   * leaves the structure.
-   */
-  onResidueHover?: (residueIndex: number | null, compId: string | null) => void;
+  onResidueHover?: (residue: ResidueRef | null) => void;
   /** Called when the user clicks empty space, clearing the selection. */
   onSelectionClear?: () => void;
 }

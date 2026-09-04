@@ -22,10 +22,8 @@ export const ProteinStructureViewer = (props: Args): JSX.Element => {
   return (
     <div style={{ height: STORY_HEIGHT, width: STORY_WIDTH }}>
       <RawProteinStructureViewer
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
+        onResidueClick={({ index }) =>
+          setSelectedResidue((prev) => (prev === index ? null : index))
         }
         onSelectionClear={() => setSelectedResidue(null)}
         pdb={CRAMBIN_PDB}

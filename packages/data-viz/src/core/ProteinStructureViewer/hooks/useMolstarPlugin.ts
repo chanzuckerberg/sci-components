@@ -1,8 +1,5 @@
 import { Color } from "molstar/lib/mol-util/color";
-import {
-  StructureElement,
-  StructureProperties,
-} from "molstar/lib/mol-model/structure";
+import { StructureElement } from "molstar/lib/mol-model/structure";
 import { createPluginUI } from "molstar/lib/mol-plugin-ui";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
@@ -14,7 +11,9 @@ import { RefObject, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
 import { createViewportView } from "../components/Viewport";
+import type { ResidueRef } from "../ProteinStructureViewer.types";
 import { focusResidue, syncClipToZoom } from "../utils/cameraFocus";
+import { residueRefFromLoci } from "../utils/residueRef";
 import type {
   MolstarViewSettings,
   MolstarViewSettingsSubject,
@@ -267,8 +266,8 @@ export interface UseMolstarPluginOptions {
   sequenceViewerBackgroundColor?: string;
   showAxes: boolean;
   showSequenceViewer: boolean;
-  onResidueClick?: (residueIndex: number, compId: string) => void;
-  onResidueHover?: (residueIndex: number | null, compId: string | null) => void;
+  onResidueClick?: (residue: ResidueRef) => void;
+  onResidueHover?: (residue: ResidueRef | null) => void;
   onSelectionClear?: () => void;
 }
 
@@ -424,44 +423,21 @@ export function useMolstarPlugin({
           const loci = e.current.loci;
           if (!StructureElement.Loci.is(loci)) return;
 
-          const location = StructureElement.Location.create(void 0);
-          const firstLoc = StructureElement.Loci.getFirstLocation(
-            loci,
-            location
-          );
-          if (!firstLoc) return;
-
-          // label_seq_id is 1-based in PDB output; convert to 0-based.
-          const residueIndex =
-            StructureProperties.residue.label_seq_id(firstLoc) - 1;
-          const compId = StructureProperties.residue.label_comp_id(firstLoc);
+          const residue = residueRefFromLoci(loci);
+          if (!residue) return;
 
           clipRatioRef.current = focusResidue(plugin, loci);
-          onResidueClickRef.current?.(residueIndex, compId);
+          onResidueClickRef.current?.(residue);
         });
 
         plugin.behaviors.interaction.hover.subscribe((e) => {
           const loci = e.current.loci;
           if (!StructureElement.Loci.is(loci)) {
-            onResidueHoverRef.current?.(null, null);
+            onResidueHoverRef.current?.(null);
             return;
           }
 
-          const location = StructureElement.Location.create(void 0);
-          const firstLoc = StructureElement.Loci.getFirstLocation(
-            loci,
-            location
-          );
-          if (!firstLoc) {
-            onResidueHoverRef.current?.(null, null);
-            return;
-          }
-
-          const residueIndex =
-            StructureProperties.residue.label_seq_id(firstLoc) - 1;
-          const compId = StructureProperties.residue.label_comp_id(firstLoc);
-
-          onResidueHoverRef.current?.(residueIndex, compId);
+          onResidueHoverRef.current?.(residueRefFromLoci(loci));
         });
 
         clipSubscription = plugin.canvas3d?.didDraw.subscribe(() => {
