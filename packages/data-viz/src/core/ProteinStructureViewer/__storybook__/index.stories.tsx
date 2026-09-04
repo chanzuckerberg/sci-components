@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react-vite";
+import { ProteinStructureViewerComplex } from "./stories/complex";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -76,6 +77,40 @@ export default {
   title: "Data Viz/ProteinStructureViewer",
 } as Meta;
 
+/**
+ * Deliberate exception to `NO_AUTOMATED_CHECKS`, for one story only.
+ *
+ * The claim that Chromatic cannot drive Mol* has never been measured against
+ * Chromatic itself. Locally it holds: stubbing `getContext` to refuse `webgl`
+ * makes Mol* render "WebGL does not seem to be available" and the sequence
+ * panel never mounts, so a capture without a GPU would photograph that error
+ * rather than the structure. Chromatic's capture browsers may or may not behave
+ * the same way, and one enabled story answers it.
+ *
+ * Read the snapshot on the PR. A rendered complex means visual regression is
+ * available to this component after all and the blanket opt-out can go; the
+ * error page means it is not, and this constant should be replaced by
+ * `NO_AUTOMATED_CHECKS` with the result recorded here.
+ *
+ * Accessibility stays off either way: auditing a viewer that failed to start
+ * measures the wrong thing.
+ */
+const CHROMATIC_PROBE = {
+  a11y: { test: "off" as const },
+  // Story parameters merge over the meta's, so `disableSnapshot` has to be
+  // turned back off explicitly rather than omitted. The delay covers Mol*
+  // parsing the structure and drawing its first frame, which is asynchronous.
+  chromatic: { delay: 3000, disableSnapshot: false },
+  snapshot: { skip: true },
+};
+
+/** Confidence metrics from the co-fold behind the two-chain fixture. */
+const COMPLEX_STATS = [
+  { label: "pTM", value: "0.973" },
+  { label: "Interface pTM", value: "0.968" },
+  { label: "Mean pLDDT", value: "0.961" },
+];
+
 const DEFAULT_ARGS = {
   showAxes: true,
   showLegend: true,
@@ -137,4 +172,21 @@ export const WithoutSequenceViewerOrLegend = {
     showSequenceViewer: false,
   },
   parameters: NO_AUTOMATED_CHECKS,
+};
+
+/**
+ * A two-chain complex: barnase with barstar bound to it, folded together. The
+ * sequence panel splits into one grid per chain with a caption above each, so
+ * the two are not read as a single continuous protein -- and copying takes the
+ * chains separated by `|` rather than concatenated.
+ *
+ * This is the shape a designed binder arrives in, rendered against the target
+ * it was designed for.
+ */
+export const Complex = {
+  args: { ...DEFAULT_ARGS, stats: COMPLEX_STATS },
+  parameters: CHROMATIC_PROBE,
+  render: (args: typeof DEFAULT_ARGS) => (
+    <ProteinStructureViewerComplex {...args} />
+  ),
 };
