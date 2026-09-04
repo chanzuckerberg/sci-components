@@ -11,3 +11,11 @@ export const HOVER_THROTTLE_MS = 3 * 16.666;
 export const COPIED_FEEDBACK_MS = 2000;
 
 export const CAMERA_RESET_DURATION_MS = 250;
+
+/**
+ * Separates chains in the copied sequence. Concatenating them unseparated
+ * yields a single string that reads as one chain, which is a different molecule
+ * from the one on screen; `|` is the convention structure-prediction tools use
+ * for a chain break.
+ */
+export const CHAIN_SEPARATOR = "|";

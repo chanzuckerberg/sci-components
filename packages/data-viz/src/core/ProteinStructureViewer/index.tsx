@@ -17,11 +17,13 @@ import { useResidueOverlay } from "./hooks/useResidueOverlay";
 import {
   ProteinStructureViewerProps,
   ResidueReadout,
+  ResidueRef,
   ResidueValueOverlay,
 } from "./ProteinStructureViewer.types";
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
 import { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
+import { residueLabel } from "./utils/residueRef";
 
 export * from "./ProteinStructureViewer.types";
 export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
@@ -151,9 +153,9 @@ const ProteinStructureViewer = forwardRef(
     );
 
     const handleResidueClick = useCallback(
-      (residueIndex: number, compId: string) => {
-        setSelectedLabel(`${compId} ${residueIndex + 1}`);
-        onResidueClick?.(residueIndex, compId);
+      (residue: ResidueRef) => {
+        setSelectedLabel(residueLabel(residue));
+        onResidueClick?.(residue);
       },
       [onResidueClick]
     );
@@ -164,20 +166,29 @@ const ProteinStructureViewer = forwardRef(
     }, [onSelectionClear]);
 
     const handleResidueHover = useCallback(
-      (residueIndex: number | null, compId: string | null) => {
+      (residue: ResidueRef | null) => {
         // Mol* emits hover events continuously; skip redundant state updates
         // when the pointer stays on the same residue (or off the structure).
+        //
+        // The index alone does not identify one: loading a new structure into
+        // the same plugin renumbers from zero, so the residue now at an index is
+        // not the one that was there before. Comparing the label as well is
+        // enough, because the readout this drives is built from the label and
+        // the index and from nothing else.
         setHoveredResidue((prev) => {
-          if (residueIndex === null || compId === null) {
-            return prev === null ? prev : null;
+          if (residue === null) return prev === null ? prev : null;
+
+          const label = residueLabel(residue);
+          if (
+            prev !== null &&
+            prev.index === residue.index &&
+            prev.label === label
+          ) {
+            return prev;
           }
-          if (prev !== null && prev.index === residueIndex) return prev;
-          return {
-            index: residueIndex,
-            label: `${compId} ${residueIndex + 1}`,
-          };
+          return { index: residue.index, label };
         });
-        onResidueHover?.(residueIndex, compId);
+        onResidueHover?.(residue);
       },
       [onResidueHover]
     );

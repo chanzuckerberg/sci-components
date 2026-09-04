@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react-vite";
+import { BARNASE_BARSTAR_PDB, BARNASE_BARSTAR_PLDDT } from "./barnaseBarstar";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -13,20 +14,27 @@ const DEFAULT_STATS = [
 ];
 
 /**
- * Mol* renders through WebGL, which none of our automated runners can drive:
- * not Chromatic, not the jsdom snapshot runner, and not the Vitest addon's
- * headless Chromium, where the context request fails outright and the viewer
- * never paints. So visual regression and accessibility are both skipped here.
+ * Mol* renders through WebGL, so where a runner can supply a context decides
+ * what it is worth asking of these stories.
  *
- * Skipping the accessibility check leaves these stories unaudited rather than
- * accessible. What it would measure is a viewer that failed to start: the
- * legend's labels against an unpainted canvas, which is not the contrast a
- * reader would meet. The viewer's own contrast is ours to check by hand until
- * it can be driven headlessly.
+ * Chromatic's capture browsers can: build 3050 drew the two-chain complex in
+ * both Chrome and Firefox, so visual regression is on. `delay` covers Mol*
+ * parsing the structure and drawing its first frame, which is asynchronous and
+ * finishes well inside it.
+ *
+ * The jsdom snapshot runner cannot. Refusing a `webgl` context locally makes
+ * Mol* render "WebGL does not seem to be available" and the viewer never
+ * mounts, so a snapshot there would capture that notice rather than the
+ * component.
+ *
+ * Accessibility stays off, now pending a deliberate pass rather than a missing
+ * canvas: keyboard traversal of individual residues is a known gap in both the
+ * sequence panel and the 3D view, so enabling the check today would report that
+ * gap on every story instead of a regression.
  */
-const NO_AUTOMATED_CHECKS = {
+const VIEWER_CHECKS = {
   a11y: { test: "off" as const },
-  chromatic: { disableSnapshot: true },
+  chromatic: { delay: 3000 },
   snapshot: { skip: true },
 };
 
@@ -72,9 +80,16 @@ export default {
     },
   },
   component: ProteinStructureViewer,
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
   title: "Data Viz/ProteinStructureViewer",
 } as Meta;
+
+/** Confidence metrics from the co-fold behind the two-chain fixture. */
+const COMPLEX_STATS = [
+  { label: "pTM", value: "0.973" },
+  { label: "Interface pTM", value: "0.968" },
+  { label: "Mean pLDDT", value: "0.961" },
+];
 
 const DEFAULT_ARGS = {
   showAxes: true,
@@ -87,7 +102,7 @@ const DEFAULT_ARGS = {
 
 export const Default = {
   args: DEFAULT_ARGS,
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
 };
 
 /**
@@ -96,13 +111,13 @@ export const Default = {
  */
 export const WithResidueOverlay = {
   args: { ...DEFAULT_ARGS, showOverlay: true },
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
 };
 
 /** The 3D view fills the whole box when the sequence panel is hidden. */
 export const WithoutSequenceViewer = {
   args: { ...DEFAULT_ARGS, showSequenceViewer: false },
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
 };
 
 /** Bare viewer, for embedding somewhere that supplies its own chrome. */
@@ -112,7 +127,7 @@ export const WithoutLegend = {
     showAxes: false,
     showLegend: false,
   },
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
 };
 
 /**
@@ -121,7 +136,7 @@ export const WithoutLegend = {
  */
 export const WithoutPlddt = {
   args: { ...DEFAULT_ARGS, showPlddt: false, stats: [] },
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
 };
 
 /**
@@ -136,5 +151,24 @@ export const WithoutSequenceViewerOrLegend = {
     showLegend: false,
     showSequenceViewer: false,
   },
-  parameters: NO_AUTOMATED_CHECKS,
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * A two-chain complex: barnase with barstar bound to it, folded together. The
+ * sequence panel splits into one grid per chain with a caption above each, so
+ * the two are not read as a single continuous protein -- and copying takes the
+ * chains separated by `|` rather than concatenated.
+ *
+ * This is the shape a designed binder arrives in, rendered against the target
+ * it was designed for.
+ */
+export const Complex = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
 };

@@ -1,8 +1,5 @@
 import { Color } from "molstar/lib/mol-util/color";
-import {
-  StructureElement,
-  StructureProperties,
-} from "molstar/lib/mol-model/structure";
+import { StructureElement } from "molstar/lib/mol-model/structure";
 import { createPluginUI } from "molstar/lib/mol-plugin-ui";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
@@ -14,7 +11,9 @@ import { RefObject, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
 import { createViewportView } from "../components/Viewport";
+import type { ResidueRef } from "../ProteinStructureViewer.types";
 import { focusResidue, syncClipToZoom } from "../utils/cameraFocus";
+import { residueRefFromLoci } from "../utils/residueRef";
 import type {
   MolstarViewSettings,
   MolstarViewSettingsSubject,
@@ -34,6 +33,35 @@ export const FALLBACK_THEME_NAME = "chain-id";
 
 /** Delay before retrying initialization while the container has no size. */
 const LAYOUT_RETRY_MS = 100;
+
+/** How long to wait for a frame before starting without one. */
+const FRAME_WAIT_MS = 100;
+
+/**
+ * Yield once so the container can be laid out before it is measured.
+ *
+ * `requestAnimationFrame` does not fire while the document is hidden -- a
+ * background tab, a collapsed pane, or a headless capture that never paints --
+ * and awaiting it alone leaves the viewer parked forever on a page that has in
+ * fact been laid out. Racing it against a timeout keeps the fast path on a
+ * visible page and still starts on a hidden one, where the size check below is
+ * what actually guards against measuring too early.
+ *
+ * The loser of the race is cancelled rather than left to fire: on a visible
+ * page this runs once per viewer, and a grid of them would otherwise each keep
+ * a stray timer alive past the frame that already resolved.
+ */
+function nextFrame(): Promise<void> {
+  return new Promise((resolve) => {
+    const done = () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      resolve();
+    };
+    const frame = requestAnimationFrame(done);
+    const timer = setTimeout(done, FRAME_WAIT_MS);
+  });
+}
 
 /**
  * Hover fills the geometry with a tint; selection stays outline-only. Mol*'s
@@ -267,8 +295,8 @@ export interface UseMolstarPluginOptions {
   sequenceViewerBackgroundColor?: string;
   showAxes: boolean;
   showSequenceViewer: boolean;
-  onResidueClick?: (residueIndex: number, compId: string) => void;
-  onResidueHover?: (residueIndex: number | null, compId: string | null) => void;
+  onResidueClick?: (residue: ResidueRef) => void;
+  onResidueHover?: (residue: ResidueRef | null) => void;
   onSelectionClear?: () => void;
 }
 
@@ -342,6 +370,9 @@ export function useMolstarPlugin({
   const onResidueHoverRef = useRef(onResidueHover);
   onResidueHoverRef.current = onResidueHover;
 
+  /** Last residue reported to `onResidueHover`, to suppress repeats. */
+  const lastHoverRef = useRef<ResidueRef | null>(null);
+
   // Values that only apply at creation time, read through refs so that changing
   // them later does not rebuild the plugin (they are pushed in via effects).
   const initialPropsRef = useRef({
@@ -373,7 +404,7 @@ export function useMolstarPlugin({
     let clipSubscription: { unsubscribe: () => void } | undefined;
 
     const init = async () => {
-      await new Promise((resolve) => requestAnimationFrame(resolve));
+      await nextFrame();
       if (cancelled) return;
 
       // Mol* needs a laid-out container to size its canvas, so wait for one.
@@ -424,44 +455,27 @@ export function useMolstarPlugin({
           const loci = e.current.loci;
           if (!StructureElement.Loci.is(loci)) return;
 
-          const location = StructureElement.Location.create(void 0);
-          const firstLoc = StructureElement.Loci.getFirstLocation(
-            loci,
-            location
-          );
-          if (!firstLoc) return;
-
-          // label_seq_id is 1-based in PDB output; convert to 0-based.
-          const residueIndex =
-            StructureProperties.residue.label_seq_id(firstLoc) - 1;
-          const compId = StructureProperties.residue.label_comp_id(firstLoc);
+          const residue = residueRefFromLoci(loci);
+          if (!residue) return;
 
           clipRatioRef.current = focusResidue(plugin, loci);
-          onResidueClickRef.current?.(residueIndex, compId);
+          onResidueClickRef.current?.(residue);
         });
 
         plugin.behaviors.interaction.hover.subscribe((e) => {
           const loci = e.current.loci;
-          if (!StructureElement.Loci.is(loci)) {
-            onResidueHoverRef.current?.(null, null);
-            return;
-          }
+          const residue = StructureElement.Loci.is(loci)
+            ? residueRefFromLoci(loci)
+            : null;
 
-          const location = StructureElement.Location.create(void 0);
-          const firstLoc = StructureElement.Loci.getFirstLocation(
-            loci,
-            location
-          );
-          if (!firstLoc) {
-            onResidueHoverRef.current?.(null, null);
-            return;
-          }
+          // Mol* emits hover continuously while the pointer rests on a residue.
+          // Reporting a fresh object each time would cost every consumer that
+          // stores it a re-render per event, where the previous pair of
+          // primitives let React bail out on an unchanged value.
+          if (residue?.index === lastHoverRef.current?.index) return;
+          lastHoverRef.current = residue;
 
-          const residueIndex =
-            StructureProperties.residue.label_seq_id(firstLoc) - 1;
-          const compId = StructureProperties.residue.label_comp_id(firstLoc);
-
-          onResidueHoverRef.current?.(residueIndex, compId);
+          onResidueHoverRef.current?.(residue);
         });
 
         clipSubscription = plugin.canvas3d?.didDraw.subscribe(() => {
@@ -521,6 +535,10 @@ export function useMolstarPlugin({
 
     currentPdbRef.current = pdb;
     clipRatioRef.current = null;
+    // The residue under the pointer belongs to the outgoing structure, and the
+    // hover guard compares against it. Clearing it keeps the first hover on the
+    // new structure from being read as a repeat.
+    lastHoverRef.current = null;
     loadStructure(plugin, pdb, hasPlddt, showAxes);
     // showAxes is read for the reload only; changing it alone is handled above.
     // eslint-disable-next-line react-hooks/exhaustive-deps

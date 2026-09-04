@@ -31,6 +31,35 @@ export interface ResidueValueOverlay {
   readoutLabel?: string;
 }
 
+/**
+ * A residue the user pointed at, in each of the ways a caller might need to
+ * address it.
+ *
+ * `index` is the viewer's own key: the position in `plddt` and in
+ * `residueOverlay`'s map, and what `selectedResidue` takes. `chainId`, `seqId`
+ * and `insCode` are what the file says, which is what the sequence panel shows
+ * and what a system that supplied the structure will recognise. They differ
+ * from `index` whenever the file does not number a single chain from 1 -- a
+ * crop, or a complex -- so address a residue outside the viewer with those
+ * three, not with `index`.
+ *
+ * `insCode` is rarely set but is part of the address when it is: `10` and `10A`
+ * are different residues on the same chain, so chain and number alone do not
+ * name one.
+ */
+export interface ResidueRef {
+  /** 0-based position in the structure, counting residues in file order. */
+  index: number;
+  /** Three-letter residue code, e.g. `"LYS"`. */
+  compId: string;
+  /** Chain the residue sits on, as named in the file. */
+  chainId: string;
+  /** Residue number as written in the file. */
+  seqId: number;
+  /** Insertion code, or `""` when the residue has none. */
+  insCode: string;
+}
+
 /** A whole-structure statistic shown along the bottom of the viewer. */
 export interface StructureStat {
   value: string;
@@ -88,16 +117,13 @@ export interface ProteinStructureViewerProps extends Omit<
    * as values come and go.
    */
   stats?: (StructureStat | null)[];
+  /** Called with the clicked residue. */
+  onResidueClick?: (residue: ResidueRef) => void;
   /**
-   * Called with the 0-based residue index and 3-letter amino acid code when a
-   * residue is clicked.
+   * Called as the pointer moves over residues, and with `null` when it leaves
+   * the structure.
    */
-  onResidueClick?: (residueIndex: number, compId: string) => void;
-  /**
-   * Called as the pointer moves over residues, and with (null, null) when it
-   * leaves the structure.
-   */
-  onResidueHover?: (residueIndex: number | null, compId: string | null) => void;
+  onResidueHover?: (residue: ResidueRef | null) => void;
   /** Called when the user clicks empty space, clearing the selection. */
   onSelectionClear?: () => void;
 }

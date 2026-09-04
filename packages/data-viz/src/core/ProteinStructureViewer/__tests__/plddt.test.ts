@@ -1,9 +1,5 @@
 import { injectPlddtIntoPdb } from "../utils/plddt";
-
-/** B-factor occupies columns 60-66 (0-indexed 60 up to but not including 66). */
-function bFactorOf(line: string): string {
-  return line.substring(60, 66);
-}
+import { bFactorOf } from "./molstarStructure";
 
 const ATOM_1 =
   "ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N";

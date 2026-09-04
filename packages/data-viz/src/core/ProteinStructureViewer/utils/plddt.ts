@@ -40,6 +40,11 @@ function plddtToColor(value: number): Color {
  * off the parsed model. B-factors occupy columns 60-66 of ATOM/HETATM lines;
  * scores arrive on a 0-1 scale and are stored on the conventional 0-100 one.
  * Residues past the end of `plddtValues` fall back to a mid-confidence 50.
+ *
+ * A residue is identified by chain, sequence number and insertion code. The
+ * code has to be part of that: `10` and `10A` are two residues, Mol* counts
+ * them as two, and treating them as one here would hand every residue after
+ * them its neighbour's score.
  */
 export function injectPlddtIntoPdb(
   pdbData: string,
@@ -47,19 +52,17 @@ export function injectPlddtIntoPdb(
 ): string {
   const lines = pdbData.split("\n");
   let residueIndex = -1;
-  let lastResSeq = "";
-  let lastChain = "";
+  let lastResidue = "";
 
   return lines
     .map((line) => {
       if (!line.startsWith("ATOM") && !line.startsWith("HETATM")) return line;
 
-      const chainId = line.substring(21, 22);
-      const resSeq = line.substring(22, 26).trim();
-      if (resSeq !== lastResSeq || chainId !== lastChain) {
+      // Chain id (22), sequence number (23-26) and insertion code (27).
+      const residue = line.substring(21, 27);
+      if (residue !== lastResidue) {
         residueIndex++;
-        lastResSeq = resSeq;
-        lastChain = chainId;
+        lastResidue = residue;
       }
 
       const plddt =

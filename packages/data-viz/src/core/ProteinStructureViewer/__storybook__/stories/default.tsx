@@ -13,7 +13,16 @@ const STORY_HEIGHT = 520;
 const STORY_WIDTH = 640;
 
 export const ProteinStructureViewer = (props: Args): JSX.Element => {
-  const { showOverlay, showPlddt, stats, ...rest } = props;
+  // `pdb`/`plddt` default to crambin so most stories need only toggle args; the
+  // multi-chain story passes a complex instead.
+  const {
+    pdb = CRAMBIN_PDB,
+    plddt = CRAMBIN_PLDDT,
+    showOverlay,
+    showPlddt,
+    stats,
+    ...rest
+  } = props;
 
   // Selection is controlled, so the story owns it the way a consumer would:
   // clicking a residue selects it, clicking it again clears it.
@@ -22,14 +31,12 @@ export const ProteinStructureViewer = (props: Args): JSX.Element => {
   return (
     <div style={{ height: STORY_HEIGHT, width: STORY_WIDTH }}>
       <RawProteinStructureViewer
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
+        onResidueClick={({ index }) =>
+          setSelectedResidue((prev) => (prev === index ? null : index))
         }
         onSelectionClear={() => setSelectedResidue(null)}
-        pdb={CRAMBIN_PDB}
-        plddt={showPlddt ? CRAMBIN_PLDDT : null}
+        pdb={pdb}
+        plddt={showPlddt ? plddt : null}
         residueOverlay={
           showOverlay
             ? {
