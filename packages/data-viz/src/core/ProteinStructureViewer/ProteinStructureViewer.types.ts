@@ -55,6 +55,11 @@ export interface ProteinStructureViewerProps extends Omit<
    */
   backgroundColor?: string;
   /**
+   * Sequence panel background, as any CSS color. Defaults to the SDS theme's
+   * primary surface, so the panel follows the surrounding page in both modes.
+   */
+  sequenceViewerBackgroundColor?: string;
+  /**
    * Show the orientation axes widget and the reset-camera button.
    * @default true
    */

@@ -4,11 +4,22 @@ import { BehaviorSubject } from "rxjs";
 export type ThemeMode = "light" | "dark";
 
 /**
- * Carries the active theme mode into the components Mol* renders in its own
- * React root. They sit outside the consumer's provider tree, so they cannot
- * read the theme from context and instead watch this for changes.
+ * The props the components Mol* renders in its own React root need from the
+ * viewer. They sit outside the consumer's provider tree, so nothing reaches
+ * them through context.
  */
-export type ThemeModeSubject = BehaviorSubject<ThemeMode>;
+export interface MolstarViewSettings {
+  mode: ThemeMode;
+  /** Sequence panel background, or undefined for the theme's own surface. */
+  sequenceViewerBackgroundColor?: string;
+}
+
+/**
+ * Carries the settings above across that boundary. Those components watch it
+ * for changes rather than reading it once, so a prop change after the plugin
+ * was created still lands.
+ */
+export type MolstarViewSettingsSubject = BehaviorSubject<MolstarViewSettings>;
 
 type SdsTheme = ReturnType<typeof Theme>;
 

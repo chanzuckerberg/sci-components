@@ -12,24 +12,35 @@ import { SEQUENCE_GROUP_SIZE } from "./constants";
 /** Height of the fade that masks residues scrolling under the panel header. */
 const SCROLL_FADE_HEIGHT = 8;
 
-export const SequencePanel = styled("div")`
+/**
+ * The panel's surfaces accept an override so a consumer can sit the sequence
+ * on a color of their own rather than the theme's. Emotion does not forward
+ * `backgroundColor` to the DOM, since it is not an HTML attribute.
+ */
+interface SurfaceProps extends CommonThemeProps {
+  backgroundColor?: string;
+}
+
+export const SequencePanel = styled("div")<SurfaceProps>`
   display: flex;
   flex-direction: column;
   height: 100%;
 
-  ${(props: CommonThemeProps) => {
+  ${(props: SurfaceProps) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       padding: ${spaces?.m}px ${spaces?.m}px 0;
       border-top: 1px solid ${semanticColors?.base?.divider};
-      background-color: ${semanticColors?.base?.surfacePrimary};
+      background-color: ${
+        props.backgroundColor ?? semanticColors?.base?.surfacePrimary
+      };
     `;
   }}
 `;
 
-export const EmptyState = styled("div")`
+export const EmptyState = styled("div")<SurfaceProps>`
   ${fontBodyXs}
 
   display: flex;
@@ -37,13 +48,15 @@ export const EmptyState = styled("div")`
   justify-content: center;
   height: 100%;
 
-  ${(props: CommonThemeProps) => {
+  ${(props: SurfaceProps) => {
     const spaces = getSpaces(props);
     const semanticColors = getSemanticColors(props);
 
     return `
       padding: ${spaces?.m}px;
-      background-color: ${semanticColors?.base?.surfaceSecondary};
+      background-color: ${
+        props.backgroundColor ?? semanticColors?.base?.surfaceSecondary
+      };
       color: ${semanticColors?.base?.textTertiaryOnDark};
     `;
   }}
@@ -129,15 +142,18 @@ export const ResidueCountValue = styled("span")`
 
 /**
  * Scroll region for the residue grid. The `::before` fade masks residues as
- * they scroll up under the header.
+ * they scroll up under the header, so it has to start from whatever the panel
+ * is painted with or it leaves a mismatched strip.
  */
-export const SequenceScroller = styled("div")`
+export const SequenceScroller = styled("div")<SurfaceProps>`
   position: relative;
   flex: 1;
   min-height: 0;
 
-  ${(props: CommonThemeProps) => {
+  ${(props: SurfaceProps) => {
     const semanticColors = getSemanticColors(props);
+    const surface =
+      props.backgroundColor ?? semanticColors?.base?.surfacePrimary;
 
     return `
       &::before {
@@ -148,11 +164,7 @@ export const SequenceScroller = styled("div")`
         z-index: 10;
         height: ${SCROLL_FADE_HEIGHT}px;
         pointer-events: none;
-        background: linear-gradient(
-          to bottom,
-          ${semanticColors?.base?.surfacePrimary},
-          transparent
-        );
+        background: linear-gradient(to bottom, ${surface}, transparent);
       }
     `;
   }}

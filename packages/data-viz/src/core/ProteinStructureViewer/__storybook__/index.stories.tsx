@@ -57,6 +57,11 @@ export default {
       description:
         "Story-only: supply per-residue pLDDT scores, which color the structure by confidence",
     },
+    sequenceViewerBackgroundColor: {
+      control: { type: "color" },
+      description:
+        "Sequence panel background. Defaults to the theme's primary surface.",
+    },
     showSequenceViewer: {
       control: { type: "boolean" },
       description: "Show the sequence panel pinned along the bottom",

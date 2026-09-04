@@ -75,10 +75,11 @@ const ProteinStructureViewerNameSpaceTest = (
         selectedResidue={selectedResidue}
       />
 
-      {/* Chrome toggles and background override */}
+      {/* Chrome toggles and background overrides */}
       <ProteinStructureViewer
         backgroundColor="#101010"
         pdb={PDB}
+        sequenceViewerBackgroundColor="rgb(24 24 27)"
         showAxes={false}
         showLegend={false}
         showSequenceViewer={false}

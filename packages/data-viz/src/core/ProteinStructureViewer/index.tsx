@@ -95,6 +95,7 @@ const ProteinStructureViewer = forwardRef(
       plddt,
       residueOverlay,
       selectedResidue = null,
+      sequenceViewerBackgroundColor,
       showAxes = true,
       showLegend = true,
       showSequenceViewer = true,
@@ -193,6 +194,7 @@ const ProteinStructureViewer = forwardRef(
         onResidueHover: handleResidueHover,
         onSelectionClear: handleSelectionClear,
         pdb: processedPdb,
+        sequenceViewerBackgroundColor,
         showAxes,
         showSequenceViewer,
       });

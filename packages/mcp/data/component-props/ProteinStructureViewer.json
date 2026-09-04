@@ -18,6 +18,11 @@
         "isRequired": false,
         "type": "boolean"
       },
+      "sequenceViewerBackgroundColor": {
+        "description": "Sequence panel background, as any CSS color. Defaults to the SDS theme's\nprimary surface, so the panel follows the surrounding page in both modes.",
+        "isRequired": false,
+        "type": "string"
+      },
       "showSequenceViewer": {
         "defaultValue": true,
         "description": "Show the sequence panel pinned along the bottom of the viewer.",

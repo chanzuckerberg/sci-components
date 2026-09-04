@@ -2,7 +2,11 @@ import { Tooltip } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { useMolstarTheme } from "../../hooks/useMolstarTheme";
-import { ThemeModeSubject, residueColorsForMode } from "../../utils/theme";
+import { useViewSetting } from "../../hooks/useViewSetting";
+import {
+  MolstarViewSettingsSubject,
+  residueColorsForMode,
+} from "../../utils/theme";
 import Sequence from "./components/Sequence";
 import { useCopySequence } from "./hooks/useCopySequence";
 import { useSequenceWrappers } from "./hooks/useSequenceWrappers";
@@ -23,22 +27,29 @@ import {
  * Builds the Mol* sequence panel view.
  *
  * Like the viewport, Mol* renders this inside its own React root, so the theme
- * mode arrives through `themeMode` and is watched for changes rather than read
- * once, then re-supplied through a local `ThemeProvider` for the Emotion styles
- * and the SDS `Tooltip` below.
+ * mode and the panel's background arrive through `viewSettings` and are watched
+ * for changes rather than read once. The theme is re-supplied through a local
+ * `ThemeProvider` for the Emotion styles and the SDS `Tooltip` below.
  */
 export function createSequenceView(
-  themeMode: ThemeModeSubject
+  viewSettings: MolstarViewSettingsSubject
 ): () => JSX.Element {
   return function SequenceView() {
-    const { mode, theme } = useMolstarTheme(themeMode);
+    const { mode, theme } = useMolstarTheme(viewSettings);
+    const backgroundColor = useViewSetting(
+      viewSettings,
+      (s) => s.sequenceViewerBackgroundColor
+    );
     const { entries, isEmpty, residueCount } = useSequenceWrappers();
     const { copied, copySequence } = useCopySequence(entries);
 
     if (isEmpty) {
       return (
         <ThemeProvider theme={theme}>
-          <EmptyState className="msp-sequence">
+          <EmptyState
+            backgroundColor={backgroundColor}
+            className="msp-sequence"
+          >
             No structure available
           </EmptyState>
         </ThemeProvider>
@@ -49,7 +60,7 @@ export function createSequenceView(
 
     return (
       <ThemeProvider theme={theme}>
-        <SequencePanel>
+        <SequencePanel backgroundColor={backgroundColor}>
           <PanelHeader>
             <PanelTitle>Sequence</PanelTitle>
             <Tooltip arrow placement="top" title={copied ? "Copied!" : "Copy"}>
@@ -66,7 +77,7 @@ export function createSequenceView(
               <ResidueCountValue>{residueCount}</ResidueCountValue>
             </ResidueCount>
           </PanelHeader>
-          <SequenceScroller>
+          <SequenceScroller backgroundColor={backgroundColor}>
             <SequenceScrollArea className="msp-sequence msp-sequence-wrapper-non-empty">
               {entries.map((s, i) =>
                 typeof s.wrapper === "string" ? (

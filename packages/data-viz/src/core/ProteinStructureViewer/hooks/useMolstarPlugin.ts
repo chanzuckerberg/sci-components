@@ -15,7 +15,11 @@ import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
 import { createViewportView } from "../components/Viewport";
 import { focusResidue, syncClipToZoom } from "../utils/cameraFocus";
-import type { ThemeMode, ThemeModeSubject } from "../utils/theme";
+import type {
+  MolstarViewSettings,
+  MolstarViewSettingsSubject,
+  ThemeMode,
+} from "../utils/theme";
 import { PLDDT_THEME_NAME, PlddtColoring } from "../utils/plddt";
 import {
   ResidueValueTheme,
@@ -87,7 +91,7 @@ interface CreateViewerOptions {
   backgroundColor: Color;
   edgeColor: Color;
   highlightColor: Color;
-  themeMode: ThemeModeSubject;
+  viewSettings: MolstarViewSettingsSubject;
   showAxes: boolean;
   showSequenceViewer: boolean;
   residueValueTheme: ResidueValueTheme;
@@ -101,7 +105,7 @@ async function createViewer({
   root,
   showAxes,
   showSequenceViewer,
-  themeMode,
+  viewSettings,
 }: CreateViewerOptions): Promise<PluginUIContext> {
   const spec = DefaultPluginUISpec();
 
@@ -138,8 +142,10 @@ async function createViewer({
       },
       components: {
         remoteState: "none",
-        sequenceViewer: { view: createSequenceView(themeMode) },
-        ...(showAxes && { viewport: { view: createViewportView(themeMode) } }),
+        sequenceViewer: { view: createSequenceView(viewSettings) },
+        ...(showAxes && {
+          viewport: { view: createViewportView(viewSettings) },
+        }),
       },
       config: [
         ...(spec.config ?? []),
@@ -258,6 +264,7 @@ export interface UseMolstarPluginOptions {
   edgeColor: Color;
   highlightColor: Color;
   mode: ThemeMode;
+  sequenceViewerBackgroundColor?: string;
   showAxes: boolean;
   showSequenceViewer: boolean;
   onResidueClick?: (residueIndex: number, compId: string) => void;
@@ -294,6 +301,7 @@ export function useMolstarPlugin({
   onResidueHover,
   onSelectionClear,
   pdb,
+  sequenceViewerBackgroundColor,
   showAxes,
   showSequenceViewer,
 }: UseMolstarPluginOptions): UseMolstarPluginResult & {
@@ -306,15 +314,18 @@ export function useMolstarPlugin({
   const [isReady, setIsReady] = useState(false);
 
   /**
-   * Carries the theme mode into the views Mol* renders in its own React root.
-   * They cannot read it from context, and rebuilding the plugin on a theme
-   * change would throw away the camera, so the mode is pushed to them instead.
+   * Carries the theme-dependent props into the views Mol* renders in its own
+   * React root. They cannot read them from context, and rebuilding the plugin
+   * would throw away the camera, so the values are pushed to them instead.
    */
-  const themeModeRef = useRef<ThemeModeSubject | null>(null);
-  if (themeModeRef.current === null) {
-    themeModeRef.current = new BehaviorSubject<ThemeMode>(mode);
+  const viewSettingsRef = useRef<MolstarViewSettingsSubject | null>(null);
+  if (viewSettingsRef.current === null) {
+    viewSettingsRef.current = new BehaviorSubject<MolstarViewSettings>({
+      mode,
+      sequenceViewerBackgroundColor,
+    });
   }
-  const themeMode = themeModeRef.current;
+  const viewSettings = viewSettingsRef.current;
 
   /**
    * Clip-radius-per-camera-distance ratio recorded at the last residue focus,
@@ -384,7 +395,7 @@ export function useMolstarPlugin({
           root: container,
           showAxes: initial.showAxes,
           showSequenceViewer: initial.showSequenceViewer,
-          themeMode,
+          viewSettings,
         });
 
         if (cancelled) {
@@ -491,10 +502,10 @@ export function useMolstarPlugin({
     });
   }, [backgroundColor, edgeColor, highlightColor]);
 
-  // Hand the new mode to the views Mol* renders outside the React tree.
+  // Hand the new settings to the views Mol* renders outside the React tree.
   useEffect(() => {
-    themeMode.next(mode);
-  }, [mode, themeMode]);
+    viewSettings.next({ mode, sequenceViewerBackgroundColor });
+  }, [mode, sequenceViewerBackgroundColor, viewSettings]);
 
   useEffect(() => {
     if (pluginRef.current && initializedRef.current) {

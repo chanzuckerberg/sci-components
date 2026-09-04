@@ -107,7 +107,17 @@
 <p>
   The viewer reads the active SDS theme for its hover and selection colors and
   for the sequence panel, and picks a light or dark canvas background to match.
-  Pass <code>backgroundColor</code> to override the background.
+  Two props override those backgrounds independently:
+  <code>backgroundColor</code> for the 3D canvas and
+  <code>sequenceViewerBackgroundColor</code> for the sequence panel.
+</p>
+<p>
+  The two accept different formats. Mol* needs the canvas color as a concrete
+  <code>#RRGGBB</code> value, so <code>backgroundColor</code> is limited to hex.
+  The sequence panel is styled with CSS, so
+  <code>sequenceViewerBackgroundColor</code> takes any CSS color. It paints the
+  panel, the fade that masks residues scrolling under the header, and the "no
+  structure available" state, so the panel stays one color throughout.
 </p>
 <h2>Props</h2>
 <p>
@@ -209,6 +219,22 @@
       <p>
         Canvas background, as <code>#RRGGBB</code>. Defaults to the SDS theme's
         base background, so the canvas follows the surrounding page in both
+        modes.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sequenceViewerBackgroundColor</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Sequence panel background, as any CSS color. Defaults to the SDS theme's
+        primary surface, so the panel follows the surrounding page in both
         modes.
       </p>
     </td>
