@@ -512,7 +512,9 @@ export default App;
 
 ### Selection and stats
 
-Selection is controlled. Clicking a residue calls `onResidueClick`; echoing that index back through `selectedResidue` zooms the camera in on it, and setting it to `null` zooms back out. Clicking empty space fires `onSelectionClear`.
+Selection is controlled. Clicking a residue calls `onResidueClick` with a `ResidueRef`; echoing its `index` back through `selectedResidue` zooms the camera in on it, and setting it to `null` zooms back out. Clicking empty space fires `onSelectionClear`.
+
+A `ResidueRef` carries the residue in each addressing scheme a caller might need. `index` is the viewer's own key, shared with `plddt` and `residueOverlay`, and counts residues in file order straight through a chain break. `chainId` and `seqId` are what the file says, which is what the sequence panel displays and what the system that produced the structure will recognise. On a single chain numbered from 1 the two agree; on a complex they do not, so map a click back onto your own numbering with `chainId` and `seqId` rather than arithmetic on `index`.
 
 `stats` fills the three legend slots along the bottom. Those slots are replaced in place while a residue is hovered or selected - by the residue label, its overlay value, and its pLDDT - so the columns never shift. Pass `null` for a slot to reserve its column without rendering anything.
 
@@ -528,8 +530,9 @@ Selection is controlled. Clicking a residue calls `onResidueClick`; echoing that
 // rendering anything - useful when a stat is still loading.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
-// polymer cartoon traces. Residue indices passed to onResidueClick and back
-// through selectedResidue are 0-based, so the first residue of the chain is 0.
+// polymer cartoon traces. onResidueClick hands back a ResidueRef; its `index`
+// is the 0-based position selectedResidue expects, so the first residue of the
+// chain is 0, while `chainId` and `seqId` carry the numbering the file uses.
 
 import { ProteinStructureViewer } from "@czi-sds/data-viz";
 import { useState } from "react";
@@ -735,10 +738,8 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
+        onResidueClick={({ index }) =>
+          setSelectedResidue((prev) => (prev === index ? null : index))
         }
         onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}
@@ -999,29 +1000,26 @@ export default App;
 
 ## Theming
 
-The viewer reads the active SDS theme for its hover and selection colors and for the sequence panel, and picks a light or dark canvas background to match. Two props override those backgrounds independently: `backgroundColor` for the 3D canvas and `sequenceViewerBackgroundColor` for the sequence panel.
-
-The two accept different formats. Mol\* needs the canvas color as a concrete `#RRGGBB` value, so `backgroundColor` is limited to hex. The sequence panel is styled with CSS, so `sequenceViewerBackgroundColor` takes any CSS color. It paints the panel, the fade that masks residues scrolling under the header, and the "no structure available" state, so the panel stays one color throughout.
+The viewer reads the active SDS theme for its hover and selection colors and for the sequence panel, and picks a light or dark canvas background to match. Pass `backgroundColor` to override the background.
 
 ## Props
 
 The viewer spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
 
-| Name                            | Type                          | Default      | Description                                                                                                                                                                                                            |
-| ------------------------------- | ----------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pdb`                           | `string`                      | - (required) | The structure to render, as raw PDB text.                                                                                                                                                                              |
-| `plddt`                         | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence. |
-| `residueOverlay`                | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                  |
-| `selectedResidue`               | `number \| null`              | `null`       | 0-based index of the selected residue. Controlled: setting it zooms the camera in on that residue, and clearing it zooms back out.                                                                                     |
-| `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                             |
-| `backgroundColor`               | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                |
-| `sequenceViewerBackgroundColor` | `string`                      | -            | Sequence panel background, as any CSS color. Defaults to the SDS theme's primary surface, so the panel follows the surrounding page in both modes.                                                                     |
-| `showAxes`                      | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                          |
-| `showSequenceViewer`            | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                         |
-| `showLegend`                    | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                          |
-| `onResidueClick`                | `function`                    | -            | `(residueIndex: number, compId: string) => void`. Called with the 0-based residue index and 3-letter amino acid code when a residue is clicked.                                                                        |
-| `onResidueHover`                | `function`                    | -            | `(residueIndex: number \| null, compId: string \| null) => void`. Called as the pointer moves over residues, and with `(null, null)` when it leaves the structure.                                                     |
-| `onSelectionClear`              | `function`                    | -            | `() => void`. Called when the user clicks empty space, clearing the selection.                                                                                                                                         |
+| Name                 | Type                          | Default      | Description                                                                                                                                                                                                            |
+| -------------------- | ----------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pdb`                | `string`                      | - (required) | The structure to render, as raw PDB text.                                                                                                                                                                              |
+| `plddt`              | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence. |
+| `residueOverlay`     | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                  |
+| `selectedResidue`    | `number \| null`              | `null`       | 0-based index of the selected residue. Controlled: setting it zooms the camera in on that residue, and clearing it zooms back out.                                                                                     |
+| `stats`              | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                             |
+| `backgroundColor`    | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                |
+| `showAxes`           | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                          |
+| `showSequenceViewer` | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                         |
+| `showLegend`         | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                          |
+| `onResidueClick`     | `function`                    | -            | `(residue: ResidueRef) => void`. Called with the clicked residue: `index` (0-based, across the whole structure, and what `selectedResidue` takes), `compId`, `chainId` and `seqId`.                                    |
+| `onResidueHover`     | `function`                    | -            | `(residue: ResidueRef \| null) => void`. Called as the pointer moves over residues, and with `null` when it leaves the structure.                                                                                      |
+| `onSelectionClear`   | `function`                    | -            | `() => void`. Called when the user clicks empty space, clearing the selection.                                                                                                                                         |
 
 ### ResidueValueOverlay
 

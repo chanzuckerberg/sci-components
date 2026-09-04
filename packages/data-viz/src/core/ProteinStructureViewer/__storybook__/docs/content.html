@@ -70,10 +70,21 @@
 <h3>Selection and stats</h3>
 <p>
   Selection is controlled. Clicking a residue calls
-  <code>onResidueClick</code>; echoing that index back through
-  <code>selectedResidue</code> zooms the camera in on it, and setting it to
-  <code>null</code> zooms back out. Clicking empty space fires
-  <code>onSelectionClear</code>.
+  <code>onResidueClick</code> with a <code>ResidueRef</code>; echoing its
+  <code>index</code> back through <code>selectedResidue</code> zooms the camera
+  in on it, and setting it to <code>null</code> zooms back out. Clicking empty
+  space fires <code>onSelectionClear</code>.
+</p>
+<p>
+  A <code>ResidueRef</code> carries the residue in each addressing scheme a
+  caller might need. <code>index</code> is the viewer's own key, shared with
+  <code>plddt</code> and <code>residueOverlay</code>, and counts residues in
+  file order straight through a chain break. <code>chainId</code> and
+  <code>seqId</code> are what the file says, which is what the sequence panel
+  displays and what the system that produced the structure will recognise. On a
+  single chain numbered from 1 the two agree; on a complex they do not, so map a
+  click back onto your own numbering with <code>chainId</code> and
+  <code>seqId</code> rather than arithmetic on <code>index</code>.
 </p>
 <p>
   <code>stats</code> fills the three legend slots along the bottom. Those slots
@@ -291,9 +302,10 @@
     <td><p>-</p></td>
     <td>
       <p>
-        <code>(residueIndex: number, compId: string) =&gt; void</code>. Called
-        with the 0-based residue index and 3-letter amino acid code when a
-        residue is clicked.
+        <code>(residue: ResidueRef) =&gt; void</code>. Called with the clicked
+        residue: <code>index</code> (0-based, across the whole structure, and
+        what <code>selectedResidue</code> takes), <code>compId</code>,
+        <code>chainId</code> and <code>seqId</code>.
       </p>
     </td>
   </tr>
@@ -307,10 +319,9 @@
     <td><p>-</p></td>
     <td>
       <p>
-        <code
-          >(residueIndex: number | null, compId: string | null) =&gt; void</code
-        >. Called as the pointer moves over residues, and with
-        <code>(null, null)</code> when it leaves the structure.
+        <code>(residue: ResidueRef | null) =&gt; void</code>. Called as the
+        pointer moves over residues, and with <code>null</code> when it leaves
+        the structure.
       </p>
     </td>
   </tr>

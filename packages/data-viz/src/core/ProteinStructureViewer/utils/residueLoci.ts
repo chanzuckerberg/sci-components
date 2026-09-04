@@ -54,11 +54,3 @@ export function lociForResidueIndex(
 
   return undefined;
 }
-
-/** The residue's three-letter code, e.g. `THR`. */
-export function residueCompId(loci: StructureElement.Loci): string | undefined {
-  const location = StructureElement.Location.create(void 0);
-  const first = StructureElement.Loci.getFirstLocation(loci, location);
-
-  return first ? StructureProperties.residue.label_comp_id(first) : undefined;
-}

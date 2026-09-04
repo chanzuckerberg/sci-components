@@ -1,8 +1,14 @@
+import { OrderedSet } from "molstar/lib/mol-data/int";
 import type { SequenceWrapper } from "molstar/lib/mol-plugin-ui/sequence/wrapper";
-import { StructureProperties } from "molstar/lib/mol-model/structure";
+import {
+  StructureElement,
+  StructureProperties,
+  type Structure,
+} from "molstar/lib/mol-model/structure";
 import type { SequenceWrapperEntry } from "../components/SequenceView/hooks/useSequenceWrappers";
 import { sequenceTextFromEntries } from "../components/SequenceView/utils/sequenceText";
 import { injectPlddtIntoPdb } from "../utils/plddt";
+import { residueLabel, residueRefFromLoci } from "../utils/residueRef";
 import { eachResidue, structureFromPdb } from "./molstarStructure";
 
 /**
@@ -133,5 +139,92 @@ describe("sequenceTextFromEntries", () => {
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
+  });
+});
+
+/**
+ * A structure whose residues start at 200, the shape a crop of a larger protein
+ * arrives in. Here `index` and `seqId` cannot coincide, which is what makes it
+ * worth testing separately from the complex.
+ */
+const CROPPED_CHAIN = [
+  "ATOM      1  CA  MET A 200      10.000  10.000  10.000  1.00 90.00           C",
+  "ATOM      2  CA  LYS A 201      13.800  10.000  10.000  1.00 90.00           C",
+].join("\n");
+
+/** The loci for the first element of the residue numbered `seqId`. */
+function lociForSeqId(
+  structure: Structure,
+  seqId: number
+): StructureElement.Loci {
+  const location = StructureElement.Location.create(structure);
+
+  for (const unit of structure.units) {
+    location.unit = unit;
+    for (let i = 0; i < unit.elements.length; i++) {
+      location.element = unit.elements[i] as never;
+      if (StructureProperties.residue.auth_seq_id(location) !== seqId) continue;
+
+      return StructureElement.Loci(structure, [
+        { indices: OrderedSet.ofSingleton(i as never), unit },
+      ]);
+    }
+  }
+
+  throw new Error(`no residue numbered ${seqId}`);
+}
+
+describe("residueRefFromLoci", () => {
+  it("reports the first chain's residue in every scheme at once", async () => {
+    const structure = await structureFromPdb(BARNASE_BARSTAR);
+
+    expect(residueRefFromLoci(lociForSeqId(structure, 1))).toEqual({
+      chainId: "A",
+      compId: "ALA",
+      index: 0,
+      seqId: 1,
+    });
+  });
+
+  /**
+   * The reason the callbacks carry a chain at all. Without `chainId` a consumer
+   * has only `index`, and recovering "barstar residue 1" from it means knowing
+   * every preceding chain's length.
+   *
+   * `index` reads 110 rather than 8 because it is derived from `label_seq_id`,
+   * which for PDB input is the number written in the file. This excerpt keeps
+   * barstar's original numbering while dropping the residues between, so the
+   * ordinal count and the file's numbering part company here -- the very gap the
+   * full structure never has, and the reason a caller should map a click back
+   * through `chainId` and `seqId` instead of arithmetic on `index`.
+   */
+  it("names the chain a residue sits on", async () => {
+    const structure = await structureFromPdb(BARNASE_BARSTAR);
+
+    expect(residueRefFromLoci(lociForSeqId(structure, 111))).toEqual({
+      chainId: "B",
+      compId: "LYS",
+      index: 110,
+      seqId: 111,
+    });
+  });
+
+  it("returns null for a loci pointing at nothing", async () => {
+    const structure = await structureFromPdb(BARNASE_BARSTAR);
+    const empty = StructureElement.Loci(structure, []);
+
+    expect(residueRefFromLoci(empty)).toBeNull();
+  });
+});
+
+describe("residueLabel", () => {
+  it("uses the file's numbering rather than the index", async () => {
+    const structure = await structureFromPdb(CROPPED_CHAIN);
+    const residue = residueRefFromLoci(lociForSeqId(structure, 201));
+
+    // index is 200 here, so a label built from `index + 1` would read "LYS 201"
+    // by luck; what matters is that seqId is the source.
+    expect(residue?.seqId).toBe(201);
+    expect(residueLabel(residue as never)).toBe("LYS 201");
   });
 });

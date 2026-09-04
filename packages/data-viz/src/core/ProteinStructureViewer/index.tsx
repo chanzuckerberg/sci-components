@@ -20,12 +20,14 @@ import { useResidueOverlay } from "./hooks/useResidueOverlay";
 import {
   ProteinStructureViewerProps,
   ResidueReadout,
+  ResidueRef,
   ResidueValueOverlay,
 } from "./ProteinStructureViewer.types";
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
 import { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
-import { lociForResidueIndex, residueCompId } from "./utils/residueLoci";
+import { lociForResidueIndex } from "./utils/residueLoci";
+import { residueLabel, residueRefFromLoci } from "./utils/residueRef";
 
 export * from "./ProteinStructureViewer.types";
 export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
@@ -195,20 +197,15 @@ const ProteinStructureViewer = forwardRef(
     );
 
     const handleResidueHover = useCallback(
-      (residueIndex: number | null, compId: string | null) => {
+      (residue: ResidueRef | null) => {
         // Mol* emits hover events continuously; skip redundant state updates
         // when the pointer stays on the same residue (or off the structure).
         setHoveredResidue((prev) => {
-          if (residueIndex === null || compId === null) {
-            return prev === null ? prev : null;
-          }
-          if (prev !== null && prev.index === residueIndex) return prev;
-          return {
-            index: residueIndex,
-            label: `${compId} ${residueIndex + 1}`,
-          };
+          if (residue === null) return prev === null ? prev : null;
+          if (prev !== null && prev.index === residue.index) return prev;
+          return { index: residue.index, label: residueLabel(residue) };
         });
-        onResidueHover?.(residueIndex, compId);
+        onResidueHover?.(residue);
       },
       [onResidueHover]
     );
@@ -247,7 +244,9 @@ const ProteinStructureViewer = forwardRef(
     });
 
     // The label has to come off the structure, since a selection can be made
-    // without a click ever naming the residue.
+    // without a click ever naming the residue. Resolving the index back to a
+    // residue and naming it the same way the click path does keeps the two
+    // readouts from disagreeing about what to call the same residue.
     useEffect(() => {
       const plugin = pluginRef.current;
       if (!plugin || !isReady || selectedResidue === null) {
@@ -256,9 +255,9 @@ const ProteinStructureViewer = forwardRef(
       }
 
       const loci = lociForResidueIndex(plugin, selectedResidue);
-      const compId = loci && residueCompId(loci);
+      const residue = loci && residueRefFromLoci(loci);
 
-      setSelectedLabel(compId ? `${compId} ${selectedResidue + 1}` : null);
+      setSelectedLabel(residue ? residueLabel(residue) : null);
     }, [isReady, pluginRef, selectedResidue]);
 
     // The legend readouts are derived here rather than asked of the consumer:

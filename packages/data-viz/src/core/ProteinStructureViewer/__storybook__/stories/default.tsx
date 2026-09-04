@@ -23,10 +23,8 @@ export const ProteinStructureViewer = (props: Args): JSX.Element => {
       <RawProteinStructureViewer
         plddt={CRAMBIN_PLDDT}
         {...props}
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
+        onResidueClick={({ index }) =>
+          setSelectedResidue((prev) => (prev === index ? null : index))
         }
         onSelectionClear={() => setSelectedResidue(null)}
         pdb={CRAMBIN_PDB}

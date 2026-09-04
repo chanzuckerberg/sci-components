@@ -57,14 +57,14 @@
         "type": "number"
       },
       "onResidueClick": {
-        "description": "Called with the 0-based residue index and 3-letter amino acid code when a\nresidue is clicked.",
+        "description": "Called with the clicked residue.",
         "isRequired": false,
-        "type": "(residueIndex: number, compId: string) => void"
+        "type": "(residue: ResidueRef) => void"
       },
       "onResidueHover": {
-        "description": "Called as the pointer moves over residues, and with (null, null) when it\nleaves the structure.",
+        "description": "Called as the pointer moves over residues, and with `null` when it leaves\nthe structure.",
         "isRequired": false,
-        "type": "(residueIndex: number, compId: string) => void"
+        "type": "(residue: ResidueRef) => void"
       },
       "onSelectionClear": {
         "description": "Called when the user clicks empty space, clearing the selection.",
