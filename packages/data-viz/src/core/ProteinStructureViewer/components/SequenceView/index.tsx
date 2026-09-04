@@ -1,6 +1,7 @@
 import { Tooltip } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
+import { Fragment } from "react";
 import { useMolstarTheme } from "../../hooks/useMolstarTheme";
 import { useViewSetting } from "../../hooks/useViewSetting";
 import {
@@ -11,6 +12,7 @@ import Sequence from "./components/Sequence";
 import { useCopySequence } from "./hooks/useCopySequence";
 import { useSequenceWrappers } from "./hooks/useSequenceWrappers";
 import {
+  ChainLabel,
   CopyButton,
   EmptyState,
   PanelHeader,
@@ -57,6 +59,9 @@ export function createSequenceView(
     }
 
     const residueColors = residueColorsForMode(mode);
+    // A single chain needs no caption: the panel title already names what is on
+    // screen, and a lone "A | 1" label reads as noise.
+    const showChainLabels = entries.length > 1;
 
     return (
       <ThemeProvider theme={theme}>
@@ -79,19 +84,19 @@ export function createSequenceView(
           </PanelHeader>
           <SequenceScroller backgroundColor={backgroundColor}>
             <SequenceScrollArea className="msp-sequence msp-sequence-wrapper-non-empty">
-              {entries.map((s, i) =>
-                typeof s.wrapper === "string" ? (
-                  <div className="msp-sequence-wrapper" key={i}>
-                    {s.wrapper}
-                  </div>
-                ) : (
-                  <Sequence
-                    key={i}
-                    residueColors={residueColors}
-                    sequenceWrapper={s.wrapper}
-                  />
-                )
-              )}
+              {entries.map((s, i) => (
+                <Fragment key={i}>
+                  {showChainLabels && <ChainLabel>{s.label}</ChainLabel>}
+                  {typeof s.wrapper === "string" ? (
+                    <div className="msp-sequence-wrapper">{s.wrapper}</div>
+                  ) : (
+                    <Sequence
+                      residueColors={residueColors}
+                      sequenceWrapper={s.wrapper}
+                    />
+                  )}
+                </Fragment>
+              ))}
             </SequenceScrollArea>
           </SequenceScroller>
         </SequencePanel>

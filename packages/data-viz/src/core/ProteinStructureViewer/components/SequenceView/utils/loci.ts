@@ -17,6 +17,10 @@ export function getLoci(
 /**
  * Extends a loci to the range between the mouse-down anchor and the current
  * residue, so dragging across the sequence selects a contiguous span.
+ *
+ * Element indices are only comparable within a single unit, so a drag whose
+ * endpoints land in different units is left unextended rather than resolved
+ * against the anchor's unit, which would select an unrelated range.
  */
 export function extendToRange(
   loci: StructureElement.Loci,
@@ -25,6 +29,7 @@ export function extendToRange(
   const ref = anchor.elements[0];
   const ext = loci.elements[0];
   if (!ref || !ext) return loci;
+  if (ref.unit !== ext.unit) return loci;
 
   const min = Math.min(
     OrderedSet.min(ref.indices),

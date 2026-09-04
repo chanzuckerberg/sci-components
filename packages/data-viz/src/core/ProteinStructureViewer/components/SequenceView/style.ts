@@ -250,3 +250,23 @@ export const ResidueGrid = styled("div")`
     pointer-events: none;
   }
 `;
+
+/**
+ * Caption naming the chain a sequence grid belongs to. A structure with more
+ * than one chain renders one grid per chain, and without a caption between them
+ * the grids read as a single continuous protein.
+ */
+export const ChainLabel = styled("div")`
+  ${fontBodyXs}
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      margin-top: ${spaces?.xs}px;
+      margin-bottom: ${spaces?.xxxs}px;
+      color: ${semanticColors?.base?.textSecondary};
+    `;
+  }}
+`;
