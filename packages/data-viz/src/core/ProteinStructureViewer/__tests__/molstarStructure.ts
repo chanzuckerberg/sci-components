@@ -1,3 +1,4 @@
+import { OrderedSet } from "molstar/lib/mol-data/int";
 import { parsePDB } from "molstar/lib/mol-io/reader/pdb/parser";
 import { trajectoryFromPDB } from "molstar/lib/mol-model-formats/structure/pdb";
 import type { ElementIndex } from "molstar/lib/mol-model/structure";
@@ -30,9 +31,8 @@ export async function structureFromPdb(pdb: string): Promise<Structure> {
 
 /**
  * Visits every atom of the structure with a location, keyed by the 0-based
- * residue index the viewer's callbacks and overlays use. Mol* reports residues
- * as 1-based `label_seq_id`, so the conversion lives here rather than at each
- * call site.
+ * residue index the viewer's callbacks and overlays use -- Mol*'s residue key,
+ * which counts residues in file order regardless of how they are numbered.
  */
 export function eachResidue<T>(
   structure: Structure,
@@ -45,7 +45,7 @@ export function eachResidue<T>(
     location.unit = unit;
     for (let i = 0; i < unit.elements.length; i++) {
       location.element = unit.elements[i] as ElementIndex;
-      const residue = StructureProperties.residue.label_seq_id(location) - 1;
+      const residue = StructureProperties.residue.key(location);
       byResidue.set(residue, read(location));
     }
   }
@@ -56,4 +56,37 @@ export function eachResidue<T>(
 /** 0-based residue indices present in the structure. */
 export function residueIndices(structure: Structure): Set<number> {
   return new Set(eachResidue(structure, () => null).keys());
+}
+
+/**
+ * The loci for the first element of the residue numbered `seqId`, for tests
+ * that need to drive a residue-level API the way a click would.
+ */
+export function lociForSeqId(
+  structure: Structure,
+  seqId: number
+): StructureElement.Loci {
+  const location = StructureElement.Location.create(structure);
+
+  for (const unit of structure.units) {
+    location.unit = unit;
+    for (let i = 0; i < unit.elements.length; i++) {
+      location.element = unit.elements[i] as ElementIndex;
+      if (StructureProperties.residue.auth_seq_id(location) !== seqId) continue;
+
+      return StructureElement.Loci(structure, [
+        {
+          indices: OrderedSet.ofSingleton(i as StructureElement.UnitIndex),
+          unit,
+        },
+      ]);
+    }
+  }
+
+  throw new Error(`no residue numbered ${seqId}`);
+}
+
+/** B-factor occupies columns 60-66 (0-indexed 60 up to but not including 66). */
+export function bFactorOf(line: string): string {
+  return line.substring(60, 66);
 }

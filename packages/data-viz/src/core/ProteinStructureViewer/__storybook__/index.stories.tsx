@@ -1,6 +1,5 @@
 import { Args, Meta } from "@storybook/react-vite";
-import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
-import { ProteinStructureViewerComplex } from "./stories/complex";
+import { BARNASE_BARSTAR_PDB, BARNASE_BARSTAR_PLDDT } from "./barnaseBarstar";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -49,6 +48,16 @@ export default {
       description:
         "Show the stats and color scale legend overlaid on the viewer",
     },
+    showOverlay: {
+      control: { type: "boolean" },
+      description:
+        "Story-only: paint a synthetic per-residue value overlay, which takes over from pLDDT coloring",
+    },
+    showPlddt: {
+      control: { type: "boolean" },
+      description:
+        "Story-only: supply per-residue pLDDT scores, which color the structure by confidence",
+    },
     sequenceViewerBackgroundColor: {
       control: { type: "color" },
       description:
@@ -69,30 +78,21 @@ export default {
 } as Meta;
 
 /**
- * Deliberate exception to `NO_AUTOMATED_CHECKS`, for one story only.
+ * Snapshots one story, to find out whether Chromatic can drive Mol* at all.
  *
- * The claim that Chromatic cannot drive Mol* has never been measured against
- * Chromatic itself. Locally it holds: stubbing `getContext` to refuse `webgl`
- * makes Mol* render "WebGL does not seem to be available" and the sequence
- * panel never mounts, so a capture without a GPU would photograph that error
- * rather than the structure. Chromatic's capture browsers may or may not behave
- * the same way, and one enabled story answers it.
+ * Locally it cannot: stubbing `getContext` to refuse `webgl` makes Mol* render
+ * "WebGL does not seem to be available", and the sequence panel never mounts.
+ * Whether Chromatic's capture browsers behave the same way is untested, and one
+ * enabled story answers it. Until it does, this stays an exception rather than
+ * a lifting of `NO_AUTOMATED_CHECKS`.
  *
- * Read the snapshot on the PR. A rendered complex means visual regression is
- * available to this component after all and the blanket opt-out can go; the
- * error page means it is not, and this constant should be replaced by
- * `NO_AUTOMATED_CHECKS` with the result recorded here.
- *
- * Accessibility stays off either way: auditing a viewer that failed to start
- * measures the wrong thing.
+ * `disableSnapshot` is set explicitly because story parameters merge over the
+ * meta's, so omitting it would leave the opt-out in force. The delay covers
+ * Mol* parsing the structure and drawing its first frame.
  */
-const CHROMATIC_PROBE = {
-  a11y: { test: "off" as const },
-  // Story parameters merge over the meta's, so `disableSnapshot` has to be
-  // turned back off explicitly rather than omitted. The delay covers Mol*
-  // parsing the structure and drawing its first frame, which is asynchronous.
+const CHROMATIC_PROBE_PENDING_RESULT = {
+  ...NO_AUTOMATED_CHECKS,
   chromatic: { delay: 3000, disableSnapshot: false },
-  snapshot: { skip: true },
 };
 
 /** Confidence metrics from the co-fold behind the two-chain fixture. */
@@ -105,16 +105,10 @@ const COMPLEX_STATS = [
 const DEFAULT_ARGS = {
   showAxes: true,
   showLegend: true,
+  showOverlay: false,
+  showPlddt: true,
   showSequenceViewer: true,
   stats: DEFAULT_STATS,
-};
-
-const RESIDUE_OVERLAY = {
-  label: "Feature activation",
-  max: CRAMBIN_MAX_RESIDUE_VALUE,
-  readoutLabel: "Activation",
-  tooltip: "Max activation across all residues for the selected feature",
-  values: CRAMBIN_RESIDUE_VALUES,
 };
 
 export const Default = {
@@ -127,7 +121,7 @@ export const Default = {
  * the continuous plasma scale. Hovering a residue reports its activation.
  */
 export const WithResidueOverlay = {
-  args: { ...DEFAULT_ARGS, residueOverlay: RESIDUE_OVERLAY },
+  args: { ...DEFAULT_ARGS, showOverlay: true },
   parameters: NO_AUTOMATED_CHECKS,
 };
 
@@ -154,7 +148,7 @@ export const WithoutLegend = {
  * The per-residue readout shows a dash where the confidence would be.
  */
 export const WithoutPlddt = {
-  args: { ...DEFAULT_ARGS, plddt: null },
+  args: { ...DEFAULT_ARGS, showPlddt: false },
   parameters: NO_AUTOMATED_CHECKS,
 };
 
@@ -183,11 +177,13 @@ export const WithoutSequenceViewerOrLegend = {
  * it was designed for.
  */
 export const Complex = {
-  args: { ...DEFAULT_ARGS, stats: COMPLEX_STATS },
-  parameters: CHROMATIC_PROBE,
-  render: (args: typeof DEFAULT_ARGS) => (
-    <ProteinStructureViewerComplex {...args} />
-  ),
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: CHROMATIC_PROBE_PENDING_RESULT,
 };
 
 // Test

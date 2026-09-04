@@ -84,8 +84,8 @@ export function createSequenceView(
           </PanelHeader>
           <SequenceScroller backgroundColor={backgroundColor}>
             <SequenceScrollArea className="msp-sequence msp-sequence-wrapper-non-empty">
-              {entries.map((s, i) => (
-                <Fragment key={i}>
+              {entries.map((s) => (
+                <Fragment key={s.label}>
                   {showChainLabels && <ChainLabel>{s.label}</ChainLabel>}
                   {typeof s.wrapper === "string" ? (
                     <div className="msp-sequence-wrapper">{s.wrapper}</div>

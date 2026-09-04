@@ -1,15 +1,16 @@
-import { OrderedSet } from "molstar/lib/mol-data/int";
 import type { SequenceWrapper } from "molstar/lib/mol-plugin-ui/sequence/wrapper";
-import {
-  StructureElement,
-  StructureProperties,
-  type Structure,
-} from "molstar/lib/mol-model/structure";
+import { StructureElement } from "molstar/lib/mol-model/structure";
+import type { Structure } from "molstar/lib/mol-model/structure";
 import type { SequenceWrapperEntry } from "../components/SequenceView/hooks/useSequenceWrappers";
 import { sequenceTextFromEntries } from "../components/SequenceView/utils/sequenceText";
 import { injectPlddtIntoPdb } from "../utils/plddt";
 import { residueLabel, residueRefFromLoci } from "../utils/residueRef";
-import { eachResidue, structureFromPdb } from "./molstarStructure";
+import {
+  bFactorOf,
+  eachResidue,
+  lociForSeqId,
+  structureFromPdb,
+} from "./molstarStructure";
 
 /**
  * Barnase (chain A) in complex with its inhibitor barstar (chain B), the first
@@ -17,11 +18,9 @@ import { eachResidue, structureFromPdb } from "./molstarStructure";
  * B-factors from an ESMFold co-fold of the two sequences, trimmed to keep the
  * fixture readable.
  *
- * Two chains of unequal length, numbered continuously across the boundary
- * (barstar starts at 111 because barnase is 110 residues), which is what the
- * viewer's structure sources emit. That numbering is load-bearing: the pLDDT
- * overlay indexes residues ordinally while the residue callbacks read
- * `label_seq_id`, and the two agree only while numbering runs unbroken from 1.
+ * Barstar keeps its original numbering, so it starts at 111 rather than 9. That
+ * gap is deliberate: it is what tells a residue's ordinal position apart from
+ * the number written against it, which the viewer must not confuse.
  */
 const BARNASE_BARSTAR = [
   "ATOM      2  CA  ALA A   1      10.557  -5.651 -25.144  1.00 64.66           C",
@@ -42,13 +41,7 @@ const BARNASE_BARSTAR = [
   "ATOM    929  CA  GLU B 118      -3.211   1.942  26.519  1.00 83.80           C",
 ].join("\n");
 
-const BARNASE_RESIDUES = 8;
-const BARSTAR_RESIDUES = 8;
-
-/** B-factor occupies columns 60-66 (0-indexed 60 up to but not including 66). */
-function bFactorOf(line: string): string {
-  return line.substring(60, 66);
-}
+const RESIDUES_PER_CHAIN = 8;
 
 /** Minimal stand-in for a Mol* sequence wrapper, which needs a live plugin. */
 function fakeWrapper(sequence: string): SequenceWrapper.Any {
@@ -59,55 +52,74 @@ function fakeWrapper(sequence: string): SequenceWrapper.Any {
 }
 
 describe("barnase-barstar complex", () => {
-  it("parses as two chains", async () => {
-    const structure = await structureFromPdb(BARNASE_BARSTAR);
-    const chains = new Set<string>();
+  let structure: Structure;
 
-    eachResidue(structure, (location) => {
-      chains.add(StructureProperties.chain.auth_asym_id(location));
-    });
-
-    expect([...chains].sort()).toEqual(["A", "B"]);
-  });
-
-  it("numbers residues continuously across the chain boundary", async () => {
-    const structure = await structureFromPdb(BARNASE_BARSTAR);
-    const seqIds: number[] = [];
-
-    eachResidue(structure, (location) => {
-      seqIds.push(StructureProperties.residue.auth_seq_id(location));
-    });
-
-    expect(Math.min(...seqIds)).toBe(1);
-    expect(seqIds).toContain(BARNASE_RESIDUES);
-    // Barstar picks up where the full barnase chain leaves off, not at 1.
-    expect(seqIds).toContain(111);
+  beforeAll(async () => {
+    structure = await structureFromPdb(BARNASE_BARSTAR);
   });
 
   /**
-   * `eachResidue` keys by `label_seq_id - 1`, the same index the overlay and the
-   * residue callbacks use. Chains numbered from 1 apiece would collide here, so
-   * a count short of the residue total is the signal that two chains have been
-   * folded onto one another.
+   * The index every residue-keyed API shares: `plddt`, `residueOverlay`,
+   * `selectedResidue` and the residue callbacks. Two chains numbered from 1
+   * apiece would collide here, and a chain numbered from 200 would run off the
+   * end of `plddt` -- so it counts positions rather than reading numbers.
    */
-  it("gives every residue in the complex a distinct index", async () => {
-    const structure = await structureFromPdb(BARNASE_BARSTAR);
+  it("indexes residues by position, not by the number in the file", () => {
     const byResidue = eachResidue(structure, () => null);
 
-    expect(byResidue.size).toBe(BARNASE_RESIDUES + BARSTAR_RESIDUES);
+    expect([...byResidue.keys()]).toEqual([
+      ...Array(2 * RESIDUES_PER_CHAIN).keys(),
+    ]);
   });
 
   it("assigns pLDDT ordinally, without skipping at the chain break", () => {
     const scores = Array.from(
-      { length: BARNASE_RESIDUES + BARSTAR_RESIDUES },
+      { length: 2 * RESIDUES_PER_CHAIN },
       (_, i) => (i + 1) / 100
     );
     const lines = injectPlddtIntoPdb(BARNASE_BARSTAR, scores).split("\n");
 
-    // Last of chain A takes the 8th score, first of chain B the 9th -- the
-    // scores array is flat and separator-free, so the boundary costs no slot.
-    expect(bFactorOf(lines[BARNASE_RESIDUES - 1] as string)).toBe("  8.00");
-    expect(bFactorOf(lines[BARNASE_RESIDUES] as string)).toBe("  9.00");
+    // Last of chain A takes the 8th score, first of chain B the 9th: the
+    // boundary costs no slot, matching the index above.
+    expect(bFactorOf(lines[RESIDUES_PER_CHAIN - 1] as string)).toBe("  8.00");
+    expect(bFactorOf(lines[RESIDUES_PER_CHAIN] as string)).toBe("  9.00");
+  });
+});
+
+describe("residueRefFromLoci", () => {
+  let structure: Structure;
+
+  beforeAll(async () => {
+    structure = await structureFromPdb(BARNASE_BARSTAR);
+  });
+
+  /**
+   * `index` counts positions while `seqId` reports the file's own number, and
+   * `chainId` says which chain it belongs to. Barstar's first residue is the
+   * case that separates all three: ninth by position, numbered 111, on chain B.
+   */
+  it.each([
+    [1, { chainId: "A", compId: "ALA", index: 0, seqId: 1 }],
+    [
+      111,
+      { chainId: "B", compId: "LYS", index: RESIDUES_PER_CHAIN, seqId: 111 },
+    ],
+  ])("reports residue %i in every scheme at once", (seqId, expected) => {
+    expect(residueRefFromLoci(lociForSeqId(structure, seqId))).toEqual(
+      expected
+    );
+  });
+
+  it("returns null for a loci pointing at nothing", () => {
+    expect(residueRefFromLoci(StructureElement.Loci(structure, []))).toBeNull();
+  });
+});
+
+describe("residueLabel", () => {
+  it("names a residue by the file's numbering, not its position", () => {
+    expect(
+      residueLabel({ chainId: "B", compId: "LYS", index: 8, seqId: 111 })
+    ).toBe("LYS 111");
   });
 });
 
@@ -117,8 +129,8 @@ describe("sequenceTextFromEntries", () => {
 
   it("separates chains so a complex does not read as one sequence", () => {
     const entries: SequenceWrapperEntry[] = [
-      { label: "A | 1", wrapper: fakeWrapper(barnase) },
-      { label: "B | 2", wrapper: fakeWrapper(barstar) },
+      { label: "A", wrapper: fakeWrapper(barnase) },
+      { label: "B", wrapper: fakeWrapper(barstar) },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(`${barnase}|${barstar}`);
@@ -126,7 +138,7 @@ describe("sequenceTextFromEntries", () => {
 
   it("leaves a single chain unseparated", () => {
     const entries: SequenceWrapperEntry[] = [
-      { label: "A | 1", wrapper: fakeWrapper(barnase) },
+      { label: "A", wrapper: fakeWrapper(barnase) },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
@@ -134,97 +146,10 @@ describe("sequenceTextFromEntries", () => {
 
   it("drops chains that did not resolve to a wrapper", () => {
     const entries: SequenceWrapperEntry[] = [
-      { label: "A | 1", wrapper: fakeWrapper(barnase) },
-      { label: "B | 2", wrapper: "No sequence available" },
+      { label: "A", wrapper: fakeWrapper(barnase) },
+      { label: "B", wrapper: "No sequence available" },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
-  });
-});
-
-/**
- * A structure whose residues start at 200, the shape a crop of a larger protein
- * arrives in. Here `index` and `seqId` cannot coincide, which is what makes it
- * worth testing separately from the complex.
- */
-const CROPPED_CHAIN = [
-  "ATOM      1  CA  MET A 200      10.000  10.000  10.000  1.00 90.00           C",
-  "ATOM      2  CA  LYS A 201      13.800  10.000  10.000  1.00 90.00           C",
-].join("\n");
-
-/** The loci for the first element of the residue numbered `seqId`. */
-function lociForSeqId(
-  structure: Structure,
-  seqId: number
-): StructureElement.Loci {
-  const location = StructureElement.Location.create(structure);
-
-  for (const unit of structure.units) {
-    location.unit = unit;
-    for (let i = 0; i < unit.elements.length; i++) {
-      location.element = unit.elements[i] as never;
-      if (StructureProperties.residue.auth_seq_id(location) !== seqId) continue;
-
-      return StructureElement.Loci(structure, [
-        { indices: OrderedSet.ofSingleton(i as never), unit },
-      ]);
-    }
-  }
-
-  throw new Error(`no residue numbered ${seqId}`);
-}
-
-describe("residueRefFromLoci", () => {
-  it("reports the first chain's residue in every scheme at once", async () => {
-    const structure = await structureFromPdb(BARNASE_BARSTAR);
-
-    expect(residueRefFromLoci(lociForSeqId(structure, 1))).toEqual({
-      chainId: "A",
-      compId: "ALA",
-      index: 0,
-      seqId: 1,
-    });
-  });
-
-  /**
-   * The reason the callbacks carry a chain at all. Without `chainId` a consumer
-   * has only `index`, and recovering "barstar residue 1" from it means knowing
-   * every preceding chain's length.
-   *
-   * `index` reads 110 rather than 8 because it is derived from `label_seq_id`,
-   * which for PDB input is the number written in the file. This excerpt keeps
-   * barstar's original numbering while dropping the residues between, so the
-   * ordinal count and the file's numbering part company here -- the very gap the
-   * full structure never has, and the reason a caller should map a click back
-   * through `chainId` and `seqId` instead of arithmetic on `index`.
-   */
-  it("names the chain a residue sits on", async () => {
-    const structure = await structureFromPdb(BARNASE_BARSTAR);
-
-    expect(residueRefFromLoci(lociForSeqId(structure, 111))).toEqual({
-      chainId: "B",
-      compId: "LYS",
-      index: 110,
-      seqId: 111,
-    });
-  });
-
-  it("returns null for a loci pointing at nothing", async () => {
-    const structure = await structureFromPdb(BARNASE_BARSTAR);
-    const empty = StructureElement.Loci(structure, []);
-
-    expect(residueRefFromLoci(empty)).toBeNull();
-  });
-});
-
-describe("residueLabel", () => {
-  it("uses the file's numbering rather than the index", async () => {
-    const structure = await structureFromPdb(CROPPED_CHAIN);
-    const residue = residueRefFromLoci(lociForSeqId(structure, 201));
-
-    // index is 200 here, so a label built from `index + 1` would read "LYS 201"
-    // by luck; what matters is that seqId is the source.
-    expect(residue?.seqId).toBe(201);
-    expect(residueLabel(residue as never)).toBe("LYS 201");
   });
 });
