@@ -5,6 +5,7 @@ import type { Structure } from "molstar/lib/mol-model/structure";
 import type { SequenceWrapperEntry } from "../components/SequenceView/hooks/useSequenceWrappers";
 import { sequenceTextFromEntries } from "../components/SequenceView/utils/sequenceText";
 import { extendToRange } from "../components/SequenceView/utils/loci";
+import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { injectPlddtIntoPdb } from "../utils/plddt";
 import { residueLabel, residueRefFromLoci } from "../utils/residueRef";
 import {
@@ -15,35 +16,35 @@ import {
 } from "./molstarStructure";
 
 /**
- * Barnase (chain A) in complex with its inhibitor barstar (chain B), the first
- * eight residues of each chain, alpha carbons only. Real coordinates and
- * B-factors from an ESMFold co-fold of the two sequences, trimmed to keep the
- * fixture readable.
+ * The story's complex, cut down to the first `residuesPerChain` residues of each
+ * chain and to alpha carbons alone.
  *
- * Barstar keeps its original numbering, so it starts at 111 rather than 9. That
- * gap is deliberate: it is what tells a residue's ordinal position apart from
- * the number written against it, which the viewer must not confuse.
+ * Deriving it rather than pasting a second copy keeps the two from drifting, and
+ * carries over the property the tests turn on: barstar keeps its original
+ * numbering, so it starts at 111 rather than 9, and a residue's position in the
+ * file stops matching the number written against it.
  */
-const BARNASE_BARSTAR = [
-  "ATOM      2  CA  ALA A   1      10.557  -5.651 -25.144  1.00 64.66           C",
-  "ATOM      7  CA  GLN A   2      12.911  -3.660 -22.963  1.00 70.39           C",
-  "ATOM     16  CA  VAL A   3      11.857  -3.233 -19.358  1.00 93.28           C",
-  "ATOM     23  CA  ILE A   4      10.944   0.340 -18.413  1.00 97.47           C",
-  "ATOM     31  CA  ASN A   5      11.042   0.676 -14.623  1.00 96.44           C",
-  "ATOM     39  CA  THR A   6      12.919   3.868 -13.722  1.00 98.24           C",
-  "ATOM     46  CA  PHE A   7      11.375   7.106 -12.480  1.00 98.78           C",
-  "ATOM     57  CA  ASP A   8      12.223   9.076 -15.611  1.00 96.85           C",
-  "ATOM    879  CA  LYS B 111      -0.309 -14.525  12.101  1.00 86.96           C",
-  "ATOM    888  CA  LYS B 112      -1.419 -12.667  15.214  1.00 89.37           C",
-  "ATOM    897  CA  ALA B 113      -0.757  -8.987  15.777  1.00 97.89           C",
-  "ATOM    902  CA  VAL B 114      -1.548  -7.368  19.145  1.00 97.10           C",
-  "ATOM    909  CA  ILE B 115      -1.947  -3.662  19.806  1.00 97.42           C",
-  "ATOM    917  CA  ASN B 116      -2.154  -2.675  23.482  1.00 92.64           C",
-  "ATOM    925  CA  GLY B 117      -3.936   0.644  23.032  1.00 95.12           C",
-  "ATOM    929  CA  GLU B 118      -3.211   1.942  26.519  1.00 83.80           C",
-].join("\n");
+function excerpt(pdb: string, residuesPerChain: number): string {
+  const seen = new Map<string, Set<string>>();
+
+  return pdb
+    .split("\n")
+    .filter((line) => {
+      if (line.substring(12, 16) !== " CA ") return false;
+
+      const chain = line.substring(21, 22);
+      const residues = seen.get(chain) ?? new Set<string>();
+      seen.set(chain, residues);
+      residues.add(line.substring(22, 27));
+
+      return residues.size <= residuesPerChain;
+    })
+    .join("\n");
+}
 
 const RESIDUES_PER_CHAIN = 8;
+
+const BARNASE_BARSTAR = excerpt(BARNASE_BARSTAR_PDB, RESIDUES_PER_CHAIN);
 
 /** Minimal stand-in for a Mol* sequence wrapper, which needs a live plugin. */
 function fakeWrapper(sequence: string): SequenceWrapper.Any {
