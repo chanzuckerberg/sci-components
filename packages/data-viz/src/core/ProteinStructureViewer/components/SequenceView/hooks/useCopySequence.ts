@@ -1,6 +1,6 @@
-import type { SequenceWrapper } from "molstar/lib/mol-plugin-ui/sequence/wrapper";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { COPIED_FEEDBACK_MS } from "../constants";
+import { sequenceTextFromEntries } from "../utils/sequenceText";
 import type { SequenceWrapperEntry } from "./useSequenceWrappers";
 
 export interface CopySequence {
@@ -10,9 +10,9 @@ export interface CopySequence {
 }
 
 /**
- * Copies every chain's residues to the clipboard as one string, and holds a
- * confirmation flag for a moment afterwards. Placeholder entries contribute
- * nothing, since they have no residues to copy.
+ * Copies the structure's residues to the clipboard, chains separated so a
+ * complex does not paste as one sequence, and holds a confirmation flag for a
+ * moment afterwards.
  */
 export function useCopySequence(entries: SequenceWrapperEntry[]): CopySequence {
   const [copied, setCopied] = useState(false);
@@ -26,15 +26,7 @@ export function useCopySequence(entries: SequenceWrapperEntry[]): CopySequence {
   );
 
   const copySequence = useCallback(() => {
-    const sequence = entries
-      .filter((s) => typeof s.wrapper !== "string")
-      .map((s) => {
-        const w = s.wrapper as SequenceWrapper.Any;
-        return Array.from({ length: w.length }, (_, i) =>
-          w.residueLabel(i)
-        ).join("");
-      })
-      .join("");
+    const sequence = sequenceTextFromEntries(entries);
 
     navigator.clipboard.writeText(sequence).then(() => {
       setCopied(true);
