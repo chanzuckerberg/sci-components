@@ -7,6 +7,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "@czi-sds/components";
+import { SEQUENCE_GROUP_SIZE } from "./constants";
 
 /** Height of the fade that masks residues scrolling under the panel header. */
 const SCROLL_FADE_HEIGHT = 8;
@@ -158,9 +159,9 @@ export const SequenceScroller = styled("div")`
 `;
 
 /**
- * Residue spans are written to directly by `updateMarker` rather than
+ * Residue spans are written to directly by `useResidueMarkers` rather than
  * re-rendered, so their hover and selection colors are set inline. Everything
- * here is the static styling underneath that: the monospace grid, the pointer
+ * here is the static styling underneath that: the monospace type, the pointer
  * affordance, and the superscript sequence numbers (which need their own color
  * rule, since they are nested inside residue spans and would otherwise inherit
  * the inline color).
@@ -189,4 +190,51 @@ export const SequenceScrollArea = styled("div")`
       }
     `;
   }}
+`;
+
+/**
+ * Layout for one chain's residues.
+ *
+ * Residues are grouped into fixed-size sections, each one grid cell. The
+ * equal-width auto-fill tracks and uniform gap keep the spacing between
+ * sections identical on every row - including a partial last row, which keeps
+ * the same column width (rather than stretching) and stacks from the leading
+ * edge.
+ */
+export const ResidueGrid = styled("div")`
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(${SEQUENCE_GROUP_SIZE}ch, 1fr)
+  );
+  gap: 8px;
+  justify-items: start;
+  padding-top: 6px;
+
+  /* Section wrappers, so a section's letters never split across lines. */
+  & > span {
+    white-space: nowrap;
+  }
+
+  .msp-sequence-present {
+    position: relative;
+    display: inline-block;
+    width: 1ch;
+    /*
+     * Reserves room above the letter for its superscript sequence number.
+     * content-box clipping keeps the active fill off that gutter, so a
+     * highlighted residue does not tint the number.
+     */
+    padding-top: 8px;
+    background-clip: content-box;
+    text-align: center;
+  }
+
+  .msp-sequence-number {
+    position: absolute;
+    top: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    pointer-events: none;
+  }
 `;
