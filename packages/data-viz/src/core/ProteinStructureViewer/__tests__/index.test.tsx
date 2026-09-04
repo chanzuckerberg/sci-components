@@ -1,7 +1,7 @@
 import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { composeStories } from "@storybook/react-vite";
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import type { Structure } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { Color } from "molstar/lib/mol-util/color";
@@ -13,7 +13,7 @@ import * as stories from "../__storybook__/index.stories";
 import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
 import { parseHexColor } from "../utils/color";
 import { lociForResidueIndex } from "../utils/residueLoci";
-import { structureFromPdb } from "./molstarStructure";
+import { lociForSeqId, structureFromPdb } from "./molstarStructure";
 
 /**
  * Mol* draws through WebGL, which jsdom does not implement, so the plugin is
@@ -25,7 +25,12 @@ const createPluginUI = vi.hoisted(() => vi.fn());
 
 vi.mock("molstar/lib/mol-plugin-ui", () => ({ createPluginUI }));
 
-/** A Mol* behavior the tests can also push through, to stand in for a click. */
+/**
+ * Stands in for a Mol* behavior, which is how the hover and click paths are
+ * exercised without a canvas. Handlers are kept so a test can push an event
+ * through with `emit`, and `subscribe` is a spy, so one can equally be pulled
+ * back out of `subscribe.mock.calls`.
+ */
 function subscribable() {
   const handlers: ((value: unknown) => void)[] = [];
 
@@ -198,6 +203,47 @@ describe("<ProteinStructureViewer />", () => {
 
     expect(screen.getByTestId(STORY_TEST_ID)).toBeInTheDocument();
     await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
+  });
+
+  /**
+   * Hover fires continuously while the pointer rests on a residue, so the
+   * readout only re-renders when the residue changes. Loading a new structure
+   * into the same plugin renumbers residues from zero, so "same index" and
+   * "same residue" part company exactly there: the readout still holds the old
+   * structure's residue, and a guard comparing indices alone keeps its name on
+   * screen while the pointer sits on a different residue entirely.
+   */
+  it("re-labels the readout after a reload puts a new residue at an index", async () => {
+    const FIRST =
+      "ATOM      1  CA  MET A  10      10.000  10.000  10.000  1.00 50.00           C";
+    const SECOND =
+      "ATOM      1  CA  ALA B   1      10.000  10.000  10.000  1.00 50.00           C";
+
+    const view = (pdb: string) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer pdb={pdb} />
+      </ThemeProvider>
+    );
+
+    const { rerender } = render(view(FIRST));
+    await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
+
+    const onHover =
+      plugin.behaviors.interaction.hover.subscribe.mock.calls[0]?.[0];
+    expect(onHover).toBeDefined();
+
+    const first = await structureFromPdb(FIRST);
+    const second = await structureFromPdb(SECOND);
+
+    act(() => onHover?.({ current: { loci: lociForSeqId(first, 10) } }));
+    expect(await screen.findByText("MET 10")).toBeInTheDocument();
+
+    rerender(view(SECOND));
+    await waitFor(() => expect(plugin.parsedPdb).toContain(SECOND));
+
+    // Both residues sit at index 0 of their own structure.
+    act(() => onHover?.({ current: { loci: lociForSeqId(second, 1) } }));
+    expect(await screen.findByText("ALA 1")).toBeInTheDocument();
   });
 
   it("renders a container that forwards arbitrary div props", () => {
@@ -590,7 +636,9 @@ describe("<ProteinStructureViewer />", () => {
       // The click is reported, but the prop it feeds has not come back, so
       // nothing should have moved.
       await waitFor(() =>
-        expect(onResidueClick).toHaveBeenCalledWith(12, "PHE")
+        expect(onResidueClick).toHaveBeenCalledWith(
+          expect.objectContaining({ chainId: "A", compId: "PHE", index: 12 })
+        )
       );
       expect(focusMoves()).toBe(0);
     });
