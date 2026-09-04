@@ -34,6 +34,35 @@ export const FALLBACK_THEME_NAME = "chain-id";
 /** Delay before retrying initialization while the container has no size. */
 const LAYOUT_RETRY_MS = 100;
 
+/** How long to wait for a frame before starting without one. */
+const FRAME_WAIT_MS = 100;
+
+/**
+ * Yield once so the container can be laid out before it is measured.
+ *
+ * `requestAnimationFrame` does not fire while the document is hidden -- a
+ * background tab, a collapsed pane, or a headless capture that never paints --
+ * and awaiting it alone leaves the viewer parked forever on a page that has in
+ * fact been laid out. Racing it against a timeout keeps the fast path on a
+ * visible page and still starts on a hidden one, where the size check below is
+ * what actually guards against measuring too early.
+ *
+ * The loser of the race is cancelled rather than left to fire: on a visible
+ * page this runs once per viewer, and a grid of them would otherwise each keep
+ * a stray timer alive past the frame that already resolved.
+ */
+function nextFrame(): Promise<void> {
+  return new Promise((resolve) => {
+    const done = () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+      resolve();
+    };
+    const frame = requestAnimationFrame(done);
+    const timer = setTimeout(done, FRAME_WAIT_MS);
+  });
+}
+
 /**
  * Hover fills the geometry with a tint; selection stays outline-only. Mol*'s
  * `colorMarker` is a global toggle for the per-fragment marker tint, so it is
@@ -375,7 +404,7 @@ export function useMolstarPlugin({
     let clipSubscription: { unsubscribe: () => void } | undefined;
 
     const init = async () => {
-      await new Promise((resolve) => requestAnimationFrame(resolve));
+      await nextFrame();
       if (cancelled) return;
 
       // Mol* needs a laid-out container to size its canvas, so wait for one.
