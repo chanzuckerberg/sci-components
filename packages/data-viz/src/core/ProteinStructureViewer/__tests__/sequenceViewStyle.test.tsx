@@ -30,8 +30,10 @@ function asComputed(color: string): string {
 
 /** Every rule Emotion injected, whitespace stripped. */
 function injectedCss(): string {
-  return [...document.querySelectorAll("style")]
-    .flatMap((tag) => [...(tag.sheet?.cssRules ?? [])].map((r) => r.cssText))
+  return Array.from(document.querySelectorAll("style"))
+    .flatMap((tag) =>
+      Array.from(tag.sheet?.cssRules ?? []).map((r) => r.cssText)
+    )
     .join("\n")
     .replace(/\s+/g, "");
 }
