@@ -1,4 +1,10 @@
-import { Tooltip, defaultTheme, getSpaces } from "@czi-sds/components";
+import {
+  Tooltip,
+  defaultTheme,
+  getSemanticColors,
+  getSpaces,
+} from "@czi-sds/components";
+import { useTheme } from "@mui/material";
 import { forwardRef, useImperativeHandle, useState } from "react";
 
 /**
@@ -28,6 +34,9 @@ const ResidueTooltip = forwardRef<ResidueTooltipHandle>((_props, ref) => {
     anchorEl: null,
     label: "",
   });
+  const theme = useTheme();
+  const residueTooltipBackgroundColor = getSemanticColors({ theme })?.base
+    ?.backgroundPrimary;
 
   useImperativeHandle(
     ref,
@@ -61,6 +70,16 @@ const ResidueTooltip = forwardRef<ResidueTooltipHandle>((_props, ref) => {
               options: { offset: [0, MAIN_AXIS_OFFSET] },
             },
           ],
+        },
+        tooltip: {
+          style: {
+            backgroundColor: residueTooltipBackgroundColor,
+          },
+        },
+        arrow: {
+          style: {
+            color: residueTooltipBackgroundColor,
+          },
         },
       }}
       title={label}

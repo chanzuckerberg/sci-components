@@ -214,6 +214,7 @@ export const SequenceScrollArea = styled("div")`
  * edge.
  */
 export const ResidueGrid = styled("div")`
+  user-select: none;
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
