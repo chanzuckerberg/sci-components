@@ -1,4 +1,4 @@
-import { Icon, Tooltip } from "@czi-sds/components";
+import { Tooltip } from "@czi-sds/components";
 import { ColorScale } from "../../../../common/colorScales";
 import {
   ResidueReadout,
@@ -15,6 +15,7 @@ import {
   StatsGrid,
   TooltipAnchor,
 } from "./style";
+import { QuestionIcon } from "@phosphor-icons/react";
 
 export interface StructureLegendProps {
   /** Whole-structure stats shown when no residue is hovered or selected. */
@@ -121,7 +122,7 @@ export default function StructureLegend({
           {scaleTooltip !== undefined && (
             <Tooltip arrow placement="bottom" title={scaleTooltip}>
               <TooltipAnchor>
-                <Icon sdsIcon="QuestionMarkCircle" sdsSize="xs" />
+                <QuestionIcon size={10} weight="bold" />
               </TooltipAnchor>
             </Tooltip>
           )}

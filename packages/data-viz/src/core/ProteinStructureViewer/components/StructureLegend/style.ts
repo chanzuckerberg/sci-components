@@ -105,7 +105,7 @@ export const StatsGrid = styled("div")`
         grid-template-columns: minmax(0, 1fr);
         justify-items: end;
         text-align: right;
-        row-gap: ${spaces?.l}px;
+        row-gap: ${spaces?.xl}px;
       }
     `;
   }}
@@ -154,6 +154,8 @@ export const ScaleCaption = styled("span")`
   ${fontBodyXxxs}
 
   text-align: left;
+  display: flex;
+  align-items: center;
 
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
@@ -172,8 +174,12 @@ export const TooltipAnchor = styled("span")`
     const semanticColors = getSemanticColors(props);
 
     return `
-      padding-left: ${spaces?.xxs}px;
-      color: ${semanticColors?.base?.ornamentSecondary};
+      padding-left: ${spaces?.xxxs}px;
+      margin-bottom: -${spaces?.xxxs}px;
+
+      &:hover {
+        color: ${semanticColors?.base?.ornamentSecondary};
+      }
     `;
   }}
 `;

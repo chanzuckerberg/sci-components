@@ -10,7 +10,7 @@ import {
 
 /** Mol* needs a sized box; stories give it one. */
 const STORY_HEIGHT = 520;
-const STORY_WIDTH = 640;
+const STORY_MAX_WIDTH = 640;
 
 export const ProteinStructureViewer = (props: Args): JSX.Element => {
   const { showOverlay, showPlddt, stats, ...rest } = props;
@@ -20,7 +20,13 @@ export const ProteinStructureViewer = (props: Args): JSX.Element => {
   const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
 
   return (
-    <div style={{ height: STORY_HEIGHT, width: STORY_WIDTH }}>
+    <div
+      style={{
+        height: STORY_HEIGHT,
+        width: "100%",
+        maxWidth: STORY_MAX_WIDTH,
+      }}
+    >
       <RawProteinStructureViewer
         onResidueClick={(residueIndex) =>
           setSelectedResidue((prev) =>
