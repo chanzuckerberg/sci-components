@@ -309,7 +309,6 @@ export function useMolstarPlugin({
 } {
   const pluginRef = useRef<PluginUIContext | null>(null);
   const residueValueThemeRef = useRef<ResidueValueTheme | null>(null);
-  const initializedRef = useRef(false);
   const currentPdbRef = useRef<string | null>(null);
   const [isReady, setIsReady] = useState(false);
 
@@ -406,14 +405,21 @@ export function useMolstarPlugin({
         pluginRef.current = plugin;
         residueValueThemeRef.current = residueValueTheme;
 
+        // Building the plugin outlasts a paint or two, so the props can have
+        // moved on since the snapshot above was taken - an app whose structure
+        // arrives after first paint will have swapped it by now. None of the
+        // effects below can step in while this one is still running, so load
+        // what the props say at this moment rather than what they said when
+        // initialization started.
+        const latest = initialPropsRef.current;
+
         await loadStructure(
           plugin,
-          initial.pdb,
-          initial.hasPlddt,
-          initial.showAxes
+          latest.pdb,
+          latest.hasPlddt,
+          latest.showAxes
         );
-        currentPdbRef.current = initial.pdb;
-        initializedRef.current = true;
+        currentPdbRef.current = latest.pdb;
 
         plugin.behaviors.interaction.click.subscribe((e) => {
           if (Representation.Loci.isEmpty(e.current)) {
@@ -482,7 +488,6 @@ export function useMolstarPlugin({
       pluginRef.current?.dispose();
       pluginRef.current = null;
       residueValueThemeRef.current = null;
-      initializedRef.current = false;
       currentPdbRef.current = null;
       clipRatioRef.current = null;
       setIsReady(false);
@@ -494,13 +499,16 @@ export function useMolstarPlugin({
   // reset the camera, so a theme change is applied in place instead.
   useEffect(() => {
     const canvas3d = pluginRef.current?.canvas3d;
-    if (!canvas3d) return;
+    if (!canvas3d || !isReady) return;
 
     canvas3d.setProps({
       marking: { highlightEdgeColor: edgeColor, selectEdgeColor: edgeColor },
       renderer: { backgroundColor, highlightColor },
     });
-  }, [backgroundColor, edgeColor, highlightColor]);
+    // There is no canvas to push to until the plugin is up, and a dependency
+    // that changed before then will not change again to replay this. Waiting
+    // on isReady is what keeps a theme switched mid-initialization.
+  }, [backgroundColor, edgeColor, highlightColor, isReady]);
 
   // Hand the new settings to the views Mol* renders outside the React tree.
   useEffect(() => {
@@ -508,23 +516,26 @@ export function useMolstarPlugin({
   }, [mode, sequenceViewerBackgroundColor, viewSettings]);
 
   useEffect(() => {
-    if (pluginRef.current && initializedRef.current) {
-      setAxes(pluginRef.current, showAxes);
-    }
-  }, [showAxes]);
+    if (!isReady || !pluginRef.current) return;
+    setAxes(pluginRef.current, showAxes);
+    // isReady replays this for the same reason as the colors above.
+  }, [showAxes, isReady]);
 
   // Reload the structure when the PDB data changes.
   useEffect(() => {
     const plugin = pluginRef.current;
-    if (!plugin || !initializedRef.current) return;
+    if (!plugin || !isReady) return;
     if (pdb === currentPdbRef.current) return;
 
     currentPdbRef.current = pdb;
     clipRatioRef.current = null;
     loadStructure(plugin, pdb, hasPlddt, showAxes);
+    // isReady replays this once the plugin is up, which is what catches a pdb
+    // swapped while it was still being built; the comparison above makes the
+    // replay a no-op when it was not.
     // showAxes is read for the reload only; changing it alone is handled above.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pdb, hasPlddt]);
+  }, [pdb, hasPlddt, isReady]);
 
   return {
     clearClipRatio: () => {

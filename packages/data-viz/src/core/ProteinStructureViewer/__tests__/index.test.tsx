@@ -93,6 +93,10 @@ function giveElementsSize() {
 const PDB = `ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
 END`;
 
+/** A second structure, for asserting which one the viewer settles on. */
+const OTHER_PDB = `ATOM      1  N   ALA A   1      11.111  22.222   3.333  1.00 13.79           N
+END`;
+
 function renderViewer(
   props: Partial<ProteinStructureViewerProps> = {}
 ): ReactElement {
@@ -306,6 +310,84 @@ describe("<ProteinStructureViewer />", () => {
     expect(props?.renderer?.highlightColor).toBeDefined();
     expect(props?.marking?.highlightEdgeColor).toBeDefined();
     expect(props?.marking?.selectEdgeColor).toBeDefined();
+  });
+
+  /**
+   * Building the plugin takes long enough to outlast a paint or two, and an
+   * app that fetches its data renders the viewer before that data arrives. The
+   * props it was given at mount are therefore not necessarily the ones it
+   * should end up honoring, and nothing re-runs on its own to catch up: the
+   * effects that push prop changes in are keyed on those props, which have
+   * already changed by the time the plugin can accept them.
+   */
+  describe("when props change while the plugin is still being built", () => {
+    /** Holds createPluginUI open so props can move mid-initialization. */
+    function holdPlugin(): (p: unknown) => void {
+      let release: (p: unknown) => void = () => undefined;
+      createPluginUI.mockReturnValue(
+        new Promise((resolve) => {
+          release = resolve;
+        })
+      );
+      return release;
+    }
+
+    it("loads the structure the props settled on, not the one they started with", async () => {
+      const release = holdPlugin();
+
+      const { rerender } = render(
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer pdb={PDB} />
+        </ThemeProvider>
+      );
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
+
+      rerender(
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer pdb={OTHER_PDB} />
+        </ThemeProvider>
+      );
+      release(plugin);
+
+      await waitFor(() =>
+        expect(plugin.parsedPdb[plugin.parsedPdb.length - 1]).toBe(OTHER_PDB)
+      );
+    });
+
+    it("paints the canvas with the theme it settled on", async () => {
+      const release = holdPlugin();
+
+      const { rerender } = render(
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer pdb={PDB} />
+        </ThemeProvider>
+      );
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
+
+      rerender(
+        <ThemeProvider theme={Theme("dark")}>
+          <ProteinStructureViewer pdb={PDB} />
+        </ThemeProvider>
+      );
+      release(plugin);
+
+      // The canvas was built light, so the dark background can only arrive
+      // through the effect replaying once the plugin is up.
+      const dark = parseHexColor(
+        getSemanticColors({ theme: Theme("dark") })?.base
+          ?.backgroundPrimary as string
+      );
+
+      // Axes go through setProps too, so pick out the calls that carry a
+      // background rather than assuming the colors were pushed last.
+      await waitFor(() => {
+        const painted = plugin.canvas3d.setProps.mock.calls
+          .map((call) => call[0]?.renderer?.backgroundColor)
+          .filter((color: unknown) => color !== undefined);
+
+        expect(painted[painted.length - 1]).toBe(dark);
+      });
+    });
   });
 
   it("mounts the plugin outside the element holding the legend", async () => {
