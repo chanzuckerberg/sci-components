@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/react-vite";
+import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -47,16 +48,6 @@ export default {
       description:
         "Show the stats and color scale legend overlaid on the viewer",
     },
-    showOverlay: {
-      control: { type: "boolean" },
-      description:
-        "Story-only: paint a synthetic per-residue value overlay, which takes over from pLDDT coloring",
-    },
-    showPlddt: {
-      control: { type: "boolean" },
-      description:
-        "Story-only: supply per-residue pLDDT scores, which color the structure by confidence",
-    },
     sequenceViewerBackgroundColor: {
       control: { type: "color" },
       description:
@@ -79,10 +70,16 @@ export default {
 const DEFAULT_ARGS = {
   showAxes: true,
   showLegend: true,
-  showOverlay: false,
-  showPlddt: true,
   showSequenceViewer: true,
   stats: DEFAULT_STATS,
+};
+
+const RESIDUE_OVERLAY = {
+  label: "Feature activation",
+  max: CRAMBIN_MAX_RESIDUE_VALUE,
+  readoutLabel: "Activation",
+  tooltip: "Max activation across all residues for the selected feature",
+  values: CRAMBIN_RESIDUE_VALUES,
 };
 
 export const Default = {
@@ -95,7 +92,7 @@ export const Default = {
  * the continuous plasma scale. Hovering a residue reports its activation.
  */
 export const WithResidueOverlay = {
-  args: { ...DEFAULT_ARGS, showOverlay: true },
+  args: { ...DEFAULT_ARGS, residueOverlay: RESIDUE_OVERLAY },
   parameters: NO_AUTOMATED_CHECKS,
 };
 
@@ -120,7 +117,7 @@ export const WithoutLegend = {
  * the per-residue readout shows a dash where the confidence would be.
  */
 export const WithoutPlddt = {
-  args: { ...DEFAULT_ARGS, showPlddt: false, stats: [] },
+  args: { ...DEFAULT_ARGS, plddt: null, stats: [] },
   parameters: NO_AUTOMATED_CHECKS,
 };
 
