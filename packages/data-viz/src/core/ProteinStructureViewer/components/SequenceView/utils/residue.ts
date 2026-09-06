@@ -95,3 +95,26 @@ export function resolveSequenceNumberPeriod(
 
   return 1;
 }
+
+/**
+ * The grid's accessible name.
+ *
+ * The grid is a rendering of the structure rather than a control of its own,
+ * so it is exposed as an image; that makes this label the only thing an
+ * assistive technology gets, which is why it carries the residues themselves
+ * rather than just how many there are. They are spaced apart so they are read
+ * as individual letters instead of running together into a word.
+ */
+export function buildSequenceLabel(
+  sequenceWrapper: SequenceWrapper.Any
+): string {
+  const letters: string[] = [];
+
+  for (let i = 0; i < sequenceWrapper.length; i++) {
+    letters.push(sequenceWrapper.residueLabel(i));
+  }
+
+  const name = `Residue sequence, ${sequenceWrapper.length} residues`;
+
+  return letters.length > 0 ? `${name}: ${letters.join(" ")}` : name;
+}

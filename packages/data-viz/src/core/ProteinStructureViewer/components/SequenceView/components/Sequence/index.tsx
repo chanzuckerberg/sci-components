@@ -7,6 +7,7 @@ import { useResidueMarkers } from "../../hooks/useResidueMarkers";
 import { useResiduePointer } from "../../hooks/useResiduePointer";
 import { ResidueGrid } from "../../style";
 import {
+  buildSequenceLabel,
   getResidueClass,
   getSequenceNumber,
   resolveSequenceNumberPeriod,
@@ -104,12 +105,12 @@ const Sequence = ({
         Pointer-driven residue picking and drag-to-range selection. Every
         interaction here is also reachable by pointer in the 3D view, and the
         grid is a rendering of the structure rather than a control of its own,
-        so it is exposed as an image with the sequence as its label. Keyboard
-        traversal of individual residues is a known gap in both surfaces.
+        so it is exposed as an image labelled with the sequence it draws.
+        Keyboard traversal of individual residues is a known gap in both
+        surfaces.
       */}
-      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <ResidueGrid
-        aria-label={`Residue sequence, ${sequenceWrapper.length} residues`}
+        aria-label={buildSequenceLabel(sequenceWrapper)}
         className="msp-sequence-wrapper"
         ref={containerRef}
         role="img"
