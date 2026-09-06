@@ -125,21 +125,21 @@
 </div>
 <h3>Differences in Light Mode vs Dark Mode</h3>
 <p>
-  The only instances where the primitive variables mapped to semantic variables
-  differ between modes is <code>background-primary</code>, <code>surface</code>,
-  and <code>fill-primary</code>. Where Light Mode uses <code>gray50</code>
-  (white) for all of these, Dark Mode has to use two separate shades of dark
-  gray to adhere to visual accessibility best practices.
+  The layering of a page rests on three semantic variables:
+  <code>background-primary</code>, <code>surface</code>, and
+  <code>fill-primary</code>. Where Light Mode uses <code>gray50</code> (white)
+  for all of these, Dark Mode has to spread them across two separate shades to
+  adhere to visual accessibility best practices.
 </p>
 <p>
-  In Dark Mode, <code>background-primary</code> is <code>gray75</code> (not
-  quite pure black which has poor visual accessibility when used across large
-  areas) and <code>surface</code> and <code>fill-primary</code> are both
-  <code>gray100</code> (shades of dark gray that are visible when viewed on top
-  of <code>gray75</code> backgrounds). One of the main reasons for this is that
-  drop shadows can't be leveraged in Dark Mode to separate layers in the same
-  way that they can be in Light Mode since shadows are not nearly as visible
-  when viewed on dark backgrounds.
+  In Dark Mode, <code>background-primary</code> stays mapped to
+  <code>gray50</code>, which inverts to black (<code>#000000</code>), and
+  <code>surface</code> and <code>fill-primary</code> are both
+  <code>gray75</code> (<code>#1b1b1b</code>, a dark gray that stays visible when
+  viewed on top of a <code>gray50</code> background). One of the main reasons
+  for this is that drop shadows can't be leveraged in Dark Mode to separate
+  layers in the same way that they can be in Light Mode since shadows are not
+  nearly as visible when viewed on dark backgrounds.
 </p>
 <table class="sds-doc-table">
   <tr>

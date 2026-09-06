@@ -63,8 +63,12 @@ export const Default = {
     width: "200px",
   },
   parameters: {
-    axe: {
-      disabledRules: [NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE],
+    a11y: {
+      config: {
+        rules: [
+          { enabled: false, id: NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE },
+        ],
+      },
     },
     controls: { expanded: true },
   },
@@ -79,8 +83,12 @@ export const JumpToNavDemo = {
     offsetTop: 0,
   },
   parameters: {
-    axe: {
-      disabledRules: [NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE],
+    a11y: {
+      config: {
+        rules: [
+          { enabled: false, id: NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE },
+        ],
+      },
     },
     controls: {
       exclude: ["items"],
@@ -107,8 +115,12 @@ export const Test = {
     ],
   },
   parameters: {
-    axe: {
-      disabledRules: [NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE],
+    a11y: {
+      config: {
+        rules: [
+          { enabled: false, id: NAVIGATION_JUMP_TO_ARIA_VALID_ATTR_VALUE },
+        ],
+      },
     },
     controls: {
       exclude: NAVIGATION_JUMP_TO_EXCLUDED_CONTROLS,

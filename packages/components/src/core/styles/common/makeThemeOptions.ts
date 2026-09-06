@@ -55,7 +55,8 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       borderPrimaryOnDark: appTheme.colors.gray[300],
       borderPrimaryInverse: appTheme.colors.gray[300],
       borderPrimaryPressedInverse: appTheme.colors.gray[50]!,
-      borderSecondary: appTheme.colors.gray[300],
+      borderSecondary: addOpacityToHex(appTheme.colors.gray[300], 70),
+      borderHighlight: addOpacityToHex(appTheme.colors.gray[900]!, 10),
       borderSecondaryOnDark: appTheme.colors.gray[600],
       divider: appTheme.colors.gray[200],
       dividerOnDark: appTheme.colors.gray[700],
@@ -94,6 +95,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       ornamentPrimaryOnDark: appTheme.colors.gray[50]!,
       ornamentPrimaryInverse: appTheme.colors.gray[50]!,
       ornamentSecondary: appTheme.colors.gray[600],
+      ornamentTertiary: appTheme.colors.gray[300],
       ornamentSecondaryInteraction: appTheme.colors.gray[900]!,
       ornamentSecondaryInteractionOnDark: appTheme.colors.gray[50]!,
       ornamentSecondaryHoverInverse: appTheme.colors.gray[50]!,
@@ -102,6 +104,7 @@ export const SDSPaletteLight = (appTheme: AppTheme): SDSPalette => {
       ornamentSecondaryPressedInverse: appTheme.colors.gray[50]!,
       surfacePrimary: appTheme.colors.gray[50]!,
       surfaceSecondary: addOpacityToHex(appTheme.colors.gray[300], 20),
+      surfaceTertiary: appTheme.colors.gray[200],
       surfacePrimaryDark: appTheme.colors.gray[900]!,
       surfaceInverse: appTheme.colors.gray[900]!,
       textDisabled: appTheme.colors.gray[300],
@@ -263,8 +266,8 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       textActionPressed: appTheme.colors.indigo[800],
     },
     base: {
-      backgroundPrimary: appTheme.colors.gray[75]!,
-      backgroundPrimaryDark: appTheme.colors.gray[75]!,
+      backgroundPrimary: appTheme.colors.gray[50]!,
+      backgroundPrimaryDark: appTheme.colors.gray[50]!,
       backgroundPrimaryInverse: appTheme.colors.gray[75]!,
       backgroundSecondary: addOpacityToHex(appTheme.colors.gray[100], 60),
       backgroundSecondaryDark: addOpacityToHex(appTheme.colors.gray[100], 60),
@@ -284,23 +287,24 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       borderPrimaryOnDark: appTheme.colors.gray[600],
       borderPrimaryInverse: appTheme.colors.gray[600],
       borderPrimaryPressedInverse: appTheme.colors.gray[900]!,
-      borderSecondary: appTheme.colors.gray[300],
+      borderSecondary: addOpacityToHex(appTheme.colors.gray[300], 70),
+      borderHighlight: addOpacityToHex(appTheme.colors.gray[900]!, 10),
       borderSecondaryOnDark: appTheme.colors.gray[300],
       divider: appTheme.colors.gray[200],
       dividerOnDark: appTheme.colors.gray[200],
       dividerInverse: appTheme.colors.gray[200],
-      fillDisabled: appTheme.colors.gray[100],
+      fillDisabled: appTheme.colors.gray[75]!,
       fillPrimaryInteraction: addOpacityToHex(appTheme.colors.gray[300], 32),
       fillPrimaryInteractionOnDark: addOpacityToHex(
         appTheme.colors.gray[300],
-        32
+        24
       ),
       fillHoverInverse: addOpacityToHex(appTheme.colors.gray[300], 32),
       fillOpenInverse: addOpacityToHex(appTheme.colors.gray[300], 32),
-      fillPrimaryPressed: addOpacityToHex(appTheme.colors.gray[300], 40),
+      fillPrimaryPressed: addOpacityToHex(appTheme.colors.gray[300], 34),
       fillPrimaryPressedOnDark: addOpacityToHex(appTheme.colors.gray[300], 40),
       fillPressedInverse: addOpacityToHex(appTheme.colors.gray[300], 32),
-      fillPrimary: appTheme.colors.gray[100],
+      fillPrimary: appTheme.colors.gray[75]!,
       fillSelected: appTheme.colors.gray[900]!,
       fillSecondary: appTheme.colors.gray[200],
       fillSecondaryInteraction: addOpacityToHex(appTheme.colors.gray[400], 26),
@@ -314,7 +318,7 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
         appTheme.colors.gray[400],
         46
       ),
-      fillDisabledOnDark: appTheme.colors.gray[100],
+      fillDisabledOnDark: appTheme.colors.gray[75]!,
       ornamentDisabled: appTheme.colors.gray[300],
       ornamentDisabledOnDark: appTheme.colors.gray[300],
       ornamentDisabledInverse: appTheme.colors.gray[300],
@@ -329,9 +333,11 @@ export const SDSPaletteDark = (appTheme: AppTheme): SDSPalette => {
       ornamentSecondaryOnDark: appTheme.colors.gray[600],
       ornamentSecondaryInverse: appTheme.colors.gray[600],
       ornamentSecondaryPressedInverse: appTheme.colors.gray[900]!,
-      surfacePrimary: appTheme.colors.gray[100],
-      surfaceSecondary: addOpacityToHex(appTheme.colors.gray[300], 32),
-      surfacePrimaryDark: appTheme.colors.gray[100],
+      ornamentTertiary: appTheme.colors.gray[300],
+      surfacePrimary: appTheme.colors.gray[75]!,
+      surfaceSecondary: addOpacityToHex(appTheme.colors.gray[100], 64),
+      surfaceTertiary: appTheme.colors.gray[100],
+      surfacePrimaryDark: appTheme.colors.gray[75]!,
       surfaceInverse: appTheme.colors.gray[100],
       textDisabled: appTheme.colors.gray[300],
       textDisabledOnDark: appTheme.colors.gray[300],
@@ -465,6 +471,9 @@ export function makeThemeOptions(
   appTheme: AppTheme,
   mode: PaletteMode
 ): SDSThemeOptions {
+  const semanticColors =
+    mode === "dark" ? SDSPaletteDark(appTheme) : SDSPaletteLight(appTheme);
+
   return {
     app: appTheme,
     breakpoints: {
@@ -527,9 +536,15 @@ export function makeThemeOptions(
         disabled: appTheme.colors.gray[400],
         disabledBackground: appTheme.colors.gray[300],
       },
+      /**
+       * What `CssBaseline` paints the page with, so it has to be the same token
+       * a component fills its own background with — otherwise a component sits
+       * on a page a shade off from itself. The two are only one token in dark
+       * mode, where the background and the surfaces above it are deliberately
+       * different shades of near-black.
+       */
       background: {
-        default:
-          mode === "dark" ? appTheme.colors.gray[75] : appTheme.colors.gray[50],
+        default: semanticColors.base.backgroundPrimary,
       },
       divider: appTheme.colors.gray[200],
       error: {
@@ -577,8 +592,7 @@ export function makeThemeOptions(
         light: appTheme.colors.blue[200],
         main: appTheme.colors.blue[400],
       },
-      sds:
-        mode === "dark" ? SDSPaletteDark(appTheme) : SDSPaletteLight(appTheme),
+      sds: semanticColors,
       secondary: {
         "100": appTheme.colors.green[100],
         "200": appTheme.colors.green[200],

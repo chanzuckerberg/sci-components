@@ -98,9 +98,8 @@ export const HeatmapDemo = {
      * since the colors are by design and the contrast is not an issue,
      * the rule is disabled for this story.
      */
-    axe: {
-      disabledRules: ["color-contrast"],
-      timeout: 60 * 1000,
+    a11y: {
+      config: { rules: [{ enabled: false, id: "color-contrast" }] },
     },
     controls: {
       exclude: [
