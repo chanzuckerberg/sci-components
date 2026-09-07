@@ -40,6 +40,11 @@ function plddtToColor(value: number): Color {
  * off the parsed model. B-factors occupy columns 60-66 of ATOM/HETATM lines;
  * scores arrive on a 0-1 scale and are stored on the conventional 0-100 one.
  * Residues past the end of `plddtValues` fall back to a mid-confidence 50.
+ *
+ * Scores are handed out in the order the residues appear, so what counts as a
+ * residue boundary has to match what Mol* will parse: a change of chain, of
+ * residue number, or of insertion code. Missing any of those would shift every
+ * score from that point on.
  */
 export function injectPlddtIntoPdb(
   pdbData: string,
@@ -49,17 +54,32 @@ export function injectPlddtIntoPdb(
   let residueIndex = -1;
   let lastResSeq = "";
   let lastChain = "";
+  let lastInsertionCode = "";
 
   return lines
     .map((line) => {
       if (!line.startsWith("ATOM") && !line.startsWith("HETATM")) return line;
 
-      const chainId = line.substring(21, 22);
-      const resSeq = line.substring(22, 26).trim();
-      if (resSeq !== lastResSeq || chainId !== lastChain) {
+      // Padded before the columns are read, not just before the B-factor is
+      // written, so a truncated line reports a blank insertion code rather
+      // than an empty one and does not read as a new residue.
+      const paddedLine = line.padEnd(66, " ");
+
+      const chainId = paddedLine.substring(21, 22);
+      const resSeq = paddedLine.substring(22, 26).trim();
+      // A residue's identity includes its insertion code: 42, 42A and 42B are
+      // three residues sharing a number, and each takes its own score.
+      const insertionCode = paddedLine.substring(26, 27);
+
+      if (
+        resSeq !== lastResSeq ||
+        chainId !== lastChain ||
+        insertionCode !== lastInsertionCode
+      ) {
         residueIndex++;
         lastResSeq = resSeq;
         lastChain = chainId;
+        lastInsertionCode = insertionCode;
       }
 
       const plddt =
@@ -67,7 +87,6 @@ export function injectPlddtIntoPdb(
           ? (plddtValues[residueIndex] ?? 0) * 100
           : 50;
       const bfactorStr = plddt.toFixed(2).padStart(6, " ");
-      const paddedLine = line.padEnd(66, " ");
 
       return (
         paddedLine.substring(0, 60) + bfactorStr + paddedLine.substring(66)

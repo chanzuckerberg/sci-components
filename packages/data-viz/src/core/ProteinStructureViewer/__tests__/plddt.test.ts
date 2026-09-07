@@ -1,3 +1,4 @@
+import { CRAMBIN_PDB, CRAMBIN_PLDDT } from "../__storybook__/constants";
 import { injectPlddtIntoPdb } from "../utils/plddt";
 
 /** B-factor occupies columns 60-66 (0-indexed 60 up to but not including 66). */
@@ -67,6 +68,45 @@ describe("injectPlddtIntoPdb", () => {
     expect(bFactorOf(line as string)).toBe(" 94.00");
   });
 
+  /**
+   * Insertion codes let a structure add residues without renumbering the ones
+   * after them, so 42, 42A and 42B are three residues sharing a number. Kabat
+   * and Chothia antibody numbering leans on them heavily.
+   */
+  describe("insertion codes", () => {
+    /** The same atom line, moved to a residue number and insertion code. */
+    function atResidue(resSeq: string, insertionCode = " "): string {
+      return (
+        ATOM_1.substring(0, 22) +
+        resSeq.padStart(4, " ") +
+        insertionCode +
+        ATOM_1.substring(27)
+      );
+    }
+
+    it("treats residues differing only by insertion code as separate", () => {
+      const lines = injectPlddtIntoPdb(
+        [atResidue("42"), atResidue("42", "A"), atResidue("42", "B")].join(
+          "\n"
+        ),
+        [0.1, 0.2, 0.3]
+      ).split("\n");
+
+      expect(bFactorOf(lines[0] as string)).toBe(" 10.00");
+      expect(bFactorOf(lines[1] as string)).toBe(" 20.00");
+      expect(bFactorOf(lines[2] as string)).toBe(" 30.00");
+    });
+
+    it("keeps the residues after an insertion on their own scores", () => {
+      const lines = injectPlddtIntoPdb(
+        [atResidue("42"), atResidue("42", "A"), atResidue("43")].join("\n"),
+        [0.1, 0.2, 0.3]
+      ).split("\n");
+
+      expect(bFactorOf(lines[2] as string)).toBe(" 30.00");
+    });
+  });
+
   it("treats a repeated residue number in a new chain as a new residue", () => {
     const chainB = ATOM_1.substring(0, 21) + "B" + ATOM_1.substring(22);
     const lines = injectPlddtIntoPdb(`${ATOM_1}\n${chainB}`, [0.9, 0.3]).split(
@@ -74,5 +114,18 @@ describe("injectPlddtIntoPdb", () => {
     );
     expect(bFactorOf(lines[0] as string)).toBe(" 90.00");
     expect(bFactorOf(lines[1] as string)).toBe(" 30.00");
+  });
+
+  it("hands out one score per residue across a whole structure", () => {
+    // Crambin carries no insertion codes, so its 46 residues have to consume
+    // exactly the 46 scores: a boundary counted once too often anywhere in the
+    // chain would leave the last residue short of its own.
+    const lines = injectPlddtIntoPdb(CRAMBIN_PDB, CRAMBIN_PLDDT).split("\n");
+    const atoms = lines.filter((line) => line.startsWith("ATOM"));
+    const last = CRAMBIN_PLDDT[CRAMBIN_PLDDT.length - 1] as number;
+
+    expect(bFactorOf(atoms[atoms.length - 1] as string)).toBe(
+      (last * 100).toFixed(2).padStart(6, " ")
+    );
   });
 });
