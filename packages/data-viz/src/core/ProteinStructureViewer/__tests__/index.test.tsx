@@ -252,8 +252,9 @@ describe("<ProteinStructureViewer />", () => {
     expect((plugin.parsedPdb[0] as string).split("\n")[0]).toContain(" 94.00");
   });
 
-  it("shows the stats and the pLDDT key by default", async () => {
+  it("shows the stats and the pLDDT key alongside scores", async () => {
     renderViewer({
+      plddt: [0.94],
       stats: [
         { label: "Known", value: "62%" },
         { label: "pTM", value: "0.874" },
@@ -264,6 +265,18 @@ describe("<ProteinStructureViewer />", () => {
     expect(screen.getByText("Known")).toBeInTheDocument();
     expect(screen.getByText("0.874")).toBeInTheDocument();
     expect(screen.getByText("pLDDT")).toBeInTheDocument();
+  });
+
+  it("drops the color key when the structure falls back to chain coloring", async () => {
+    // Nothing supplies a per-residue value here, so Mol* colors by chain and
+    // there is no scale that describes what is on screen. A pLDDT key would
+    // be labelling colors the structure does not carry.
+    renderViewer({ stats: [{ label: "Known", value: "62%" }] });
+
+    await waitFor(() => expect(plugin.loadedThemes).toContain("chain-id"));
+
+    expect(screen.getByText("Known")).toBeInTheDocument();
+    expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
   });
 
   it("captions the legend with the overlay label instead", () => {

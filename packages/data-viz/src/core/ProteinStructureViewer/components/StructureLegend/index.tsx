@@ -20,10 +20,14 @@ import { QuestionIcon } from "@phosphor-icons/react";
 export interface StructureLegendProps {
   /** Whole-structure stats shown when no residue is hovered or selected. */
   stats: (StructureStat | null)[];
-  /** Scale describing the current structure coloring. */
-  scale: ColorScale;
+  /**
+   * Scale describing the current structure coloring. Null when the coloring is
+   * not a per-residue scale - chain coloring, say - in which case no key is
+   * drawn rather than one describing colors the structure does not carry.
+   */
+  scale?: ColorScale | null;
   /** Caption beneath the scale, e.g. "pLDDT". */
-  scaleLabel: string;
+  scaleLabel?: string;
   /** Optional help tooltip on the caption. */
   scaleTooltip?: string;
   /** Value at the top of a continuous scale. */
@@ -115,19 +119,21 @@ export default function StructureLegend({
           );
         })}
       </StatsGrid>
-      <ScaleColumn>
-        <ColorScaleLegend max={scaleMax} scale={scale} />
-        <ScaleCaption>
-          {scaleLabel}
-          {scaleTooltip !== undefined && (
-            <Tooltip arrow placement="bottom" title={scaleTooltip}>
-              <TooltipAnchor>
-                <QuestionIcon size={10} weight="bold" />
-              </TooltipAnchor>
-            </Tooltip>
-          )}
-        </ScaleCaption>
-      </ScaleColumn>
+      {scale && (
+        <ScaleColumn>
+          <ColorScaleLegend max={scaleMax} scale={scale} />
+          <ScaleCaption>
+            {scaleLabel}
+            {scaleTooltip !== undefined && (
+              <Tooltip arrow placement="bottom" title={scaleTooltip}>
+                <TooltipAnchor>
+                  <QuestionIcon size={10} weight="bold" />
+                </TooltipAnchor>
+              </Tooltip>
+            )}
+          </ScaleCaption>
+        </ScaleColumn>
+      )}
     </LegendOverlay>
   );
 }

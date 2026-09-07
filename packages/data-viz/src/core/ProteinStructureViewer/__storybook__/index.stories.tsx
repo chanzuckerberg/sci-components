@@ -113,11 +113,13 @@ export const WithoutLegend = {
 };
 
 /**
- * Without pLDDT scores the structure falls back to Mol*'s chain coloring, and
- * the per-residue readout shows a dash where the confidence would be.
+ * Without pLDDT scores the structure falls back to Mol*'s chain coloring. No
+ * per-residue scale describes that, so the legend keeps its stats but drops
+ * the color key rather than showing one for colors that are not on screen.
+ * The per-residue readout shows a dash where the confidence would be.
  */
 export const WithoutPlddt = {
-  args: { ...DEFAULT_ARGS, plddt: null, stats: [] },
+  args: { ...DEFAULT_ARGS, plddt: null },
   parameters: NO_AUTOMATED_CHECKS,
 };
 

@@ -131,6 +131,18 @@ describe("<StructureLegend />", () => {
     expect(screen.getByText("2.40")).toBeInTheDocument();
   });
 
+  it("drops the color key when no scale describes the coloring", () => {
+    // Chain coloring has no per-residue scale behind it, so the key goes
+    // rather than describing colors the structure does not carry.
+    renderLegend({ scale: null, scaleLabel: undefined });
+
+    expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
+    expect(screen.queryByText("0.5")).not.toBeInTheDocument();
+
+    // The stats are unaffected; only the key alongside them is gone.
+    expect(screen.getByText("Known")).toBeInTheDocument();
+  });
+
   it("only renders the help affordance when a scale tooltip is supplied", () => {
     const { unmount } = render(
       <ThemeProvider theme={defaultTheme}>

@@ -11,7 +11,9 @@ import {
   useState,
 } from "react";
 import { PLASMA_COLOR_SCALE } from "../../common/colorScales";
-import StructureLegend from "./components/StructureLegend";
+import StructureLegend, {
+  StructureLegendProps,
+} from "./components/StructureLegend";
 import { useMolstarPlugin } from "./hooks/useMolstarPlugin";
 import { useResidueFocus } from "./hooks/useResidueFocus";
 import { useResidueOverlay } from "./hooks/useResidueOverlay";
@@ -50,12 +52,34 @@ interface HoveredResidue {
   label: string;
 }
 
+/** The part of the legend that describes the structure's coloring. */
+type ScaleProps = Pick<
+  StructureLegendProps,
+  "scale" | "scaleLabel" | "scaleMax" | "scaleTooltip" | "valueLabel"
+>;
+
 /**
- * Chooses what the legend describes: the overlay when one is set, otherwise the
- * pLDDT confidence bands.
+ * Chooses what the legend describes, following whatever is actually coloring
+ * the structure: the overlay when one is set, the pLDDT bands when scores were
+ * supplied, and nothing at all otherwise - Mol* falls back to chain coloring
+ * there, which no per-residue scale describes, so a key would be labelling
+ * colors that are not on screen.
  */
-function resolveScaleProps(overlay: ResidueValueOverlay | null | undefined) {
-  if (!overlay) {
+function resolveScaleProps(
+  overlay: ResidueValueOverlay | null | undefined,
+  hasPlddt: boolean
+): ScaleProps {
+  if (overlay) {
+    return {
+      scale: overlay.colorScale ?? PLASMA_COLOR_SCALE,
+      scaleLabel: overlay.label ?? DEFAULT_OVERLAY_LABEL,
+      scaleMax: overlay.max,
+      scaleTooltip: overlay.tooltip,
+      valueLabel: overlay.readoutLabel,
+    };
+  }
+
+  if (hasPlddt) {
     return {
       scale: PLDDT_COLOR_SCALE,
       scaleLabel: PLDDT_SCALE_LABEL,
@@ -66,11 +90,11 @@ function resolveScaleProps(overlay: ResidueValueOverlay | null | undefined) {
   }
 
   return {
-    scale: overlay.colorScale ?? PLASMA_COLOR_SCALE,
-    scaleLabel: overlay.label ?? DEFAULT_OVERLAY_LABEL,
-    scaleMax: overlay.max,
-    scaleTooltip: overlay.tooltip,
-    valueLabel: overlay.readoutLabel,
+    scale: null,
+    scaleLabel: undefined,
+    scaleMax: null,
+    scaleTooltip: undefined,
+    valueLabel: undefined,
   };
 }
 
@@ -253,8 +277,8 @@ const ProteinStructureViewer = forwardRef(
     );
 
     const scaleProps = useMemo(
-      () => resolveScaleProps(residueOverlay),
-      [residueOverlay]
+      () => resolveScaleProps(residueOverlay, hasPlddt),
+      [residueOverlay, hasPlddt]
     );
 
     return (
