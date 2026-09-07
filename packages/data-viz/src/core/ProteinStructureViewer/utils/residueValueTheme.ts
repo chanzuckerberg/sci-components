@@ -69,7 +69,8 @@ export function createResidueValueTheme(
           // label_seq_id is 1-based in PDB output; overlay values are 0-based.
           const residueIndex =
             StructureProperties.residue.label_seq_id(location) - 1;
-          const value = values.get(residueIndex) ?? 0;
+          const value = values.get(residueIndex);
+          if (value === undefined) return neutral;
           const rgb = sampleColorScale(colorScale, value, max, min);
 
           return rgb ? Color.fromRgb(rgb[0], rgb[1], rgb[2]) : neutral;
