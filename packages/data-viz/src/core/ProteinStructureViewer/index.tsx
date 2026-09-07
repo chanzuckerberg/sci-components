@@ -5,6 +5,7 @@ import {
   forwardRef,
   memo,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -22,6 +23,7 @@ import {
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
 import { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
+import { lociForResidueIndex, residueCompId } from "./utils/residueLoci";
 
 export * from "./ProteinStructureViewer.types";
 export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
@@ -115,6 +117,11 @@ const ProteinStructureViewer = forwardRef(
       null
     );
 
+    /**
+     * Label for the selected residue, read back off the structure rather than
+     * remembered from the click that selected it, so the readout follows the
+     * prop however the selection was made.
+     */
     const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
 
     const hasPlddt = Boolean(plddt && plddt.length > 0);
@@ -150,19 +157,6 @@ const ProteinStructureViewer = forwardRef(
       [semanticColors]
     );
 
-    const handleResidueClick = useCallback(
-      (residueIndex: number, compId: string) => {
-        setSelectedLabel(`${compId} ${residueIndex + 1}`);
-        onResidueClick?.(residueIndex, compId);
-      },
-      [onResidueClick]
-    );
-
-    const handleSelectionClear = useCallback(() => {
-      setSelectedLabel(null);
-      onSelectionClear?.();
-    }, [onSelectionClear]);
-
     const handleResidueHover = useCallback(
       (residueIndex: number | null, compId: string | null) => {
         // Mol* emits hover events continuously; skip redundant state updates
@@ -182,7 +176,7 @@ const ProteinStructureViewer = forwardRef(
       [onResidueHover]
     );
 
-    const { clearClipRatio, isReady, pluginRef, residueValueThemeRef } =
+    const { isReady, pluginRef, residueValueThemeRef, setClipRatio } =
       useMolstarPlugin({
         backgroundColor: bgColor,
         containerRef: pluginMountRef,
@@ -190,9 +184,9 @@ const ProteinStructureViewer = forwardRef(
         hasPlddt,
         highlightColor,
         mode,
-        onResidueClick: handleResidueClick,
+        onResidueClick,
         onResidueHover: handleResidueHover,
-        onSelectionClear: handleSelectionClear,
+        onSelectionClear,
         pdb: processedPdb,
         sequenceViewerBackgroundColor,
         showAxes,
@@ -209,11 +203,26 @@ const ProteinStructureViewer = forwardRef(
     });
 
     useResidueFocus({
-      clearClipRatio,
       isReady,
       pluginRef,
       selectedResidue,
+      setClipRatio,
     });
+
+    // The label has to come off the structure, since a selection can be made
+    // without a click ever naming the residue.
+    useEffect(() => {
+      const plugin = pluginRef.current;
+      if (!plugin || !isReady || selectedResidue === null) {
+        setSelectedLabel(null);
+        return;
+      }
+
+      const loci = lociForResidueIndex(plugin, selectedResidue);
+      const compId = loci && residueCompId(loci);
+
+      setSelectedLabel(compId ? `${compId} ${selectedResidue + 1}` : null);
+    }, [isReady, pluginRef, selectedResidue]);
 
     // The legend readouts are derived here rather than asked of the consumer:
     // everything they need (the residue label, its pLDDT, its overlay value) is

@@ -1,11 +1,17 @@
 import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { render, screen, waitFor } from "@testing-library/react";
+import type { Structure } from "molstar/lib/mol-model/structure";
+import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
+import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
+import { CRAMBIN_PDB } from "../__storybook__/constants";
 import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
 import { parseHexColor } from "../utils/color";
+import { lociForResidueIndex } from "../utils/residueLoci";
+import { structureFromPdb } from "./molstarStructure";
 
 /**
  * Mol* draws through WebGL, which jsdom does not implement, so the plugin is
@@ -17,13 +23,47 @@ const createPluginUI = vi.hoisted(() => vi.fn());
 
 vi.mock("molstar/lib/mol-plugin-ui", () => ({ createPluginUI }));
 
+/** A Mol* behavior the tests can also push through, to stand in for a click. */
 function subscribable() {
-  return { subscribe: vi.fn(() => ({ unsubscribe: vi.fn() })) };
+  const handlers: ((value: unknown) => void)[] = [];
+
+  return {
+    emit: (value: unknown) => handlers.forEach((handler) => handler(value)),
+    subscribe: vi.fn((handler: (value: unknown) => void) => {
+      handlers.push(handler);
+      return { unsubscribe: vi.fn() };
+    }),
+  };
 }
 
-function createStubPlugin() {
+/**
+ * Enough of a camera for the focus path to run. Framing a residue is real
+ * geometry work, so what is stubbed is only the camera it is handed.
+ */
+function stubCamera() {
+  return {
+    getFocus: vi.fn(() => ({ radius: 1 })),
+    getTargetDistance: vi.fn(() => 50),
+    setState: vi.fn(),
+    state: {
+      position: [0, 0, 50],
+      radius: 10,
+      radiusMax: 100,
+      target: [0, 0, 0],
+    },
+    transition: { inTransition: false },
+  };
+}
+
+/**
+ * `structure` is the parsed structure the viewer would be holding. Passing a
+ * real one lets the tests exercise the actual residue-to-loci resolution
+ * rather than a stand-in for it.
+ */
+function createStubPlugin(structure?: Structure) {
   const loadedThemes: string[] = [];
   const parsedPdb: string[] = [];
+  const focused = new BehaviorSubject<{ loci: unknown } | undefined>(undefined);
 
   return {
     behaviors: {
@@ -40,6 +80,7 @@ function createStubPlugin() {
       },
     },
     canvas3d: {
+      camera: stubCamera(),
       didDraw: subscribable(),
       requestCameraReset: vi.fn(),
       setProps: vi.fn(),
@@ -62,10 +103,17 @@ function createStubPlugin() {
           ),
         },
         focus: {
-          behaviors: { current: subscribable() },
-          clear: vi.fn(),
+          behaviors: { current: focused },
+          clear: vi.fn(() => focused.next(undefined)),
+          setFromLoci: vi.fn((loci: unknown) => focused.next({ loci })),
         },
-        hierarchy: { current: { structures: [{ components: [] }] } },
+        hierarchy: {
+          current: {
+            structures: [
+              { cell: { obj: { data: structure } }, components: [] },
+            ],
+          },
+        },
       },
     },
     parsedPdb,
@@ -109,9 +157,14 @@ function renderViewer(
 
 describe("<ProteinStructureViewer />", () => {
   let plugin: ReturnType<typeof createStubPlugin>;
+  let crambin: Structure;
+
+  beforeAll(async () => {
+    crambin = await structureFromPdb(CRAMBIN_PDB);
+  });
 
   beforeEach(() => {
-    plugin = createStubPlugin();
+    plugin = createStubPlugin(crambin);
     createPluginUI.mockResolvedValue(plugin);
     giveElementsSize();
   });
@@ -387,6 +440,95 @@ describe("<ProteinStructureViewer />", () => {
 
         expect(painted[painted.length - 1]).toBe(dark);
       });
+    });
+  });
+
+  /**
+   * `selectedResidue` is documented as controlling the camera: setting it
+   * zooms in on that residue, clearing it zooms back out. That has to hold
+   * however the selection was made, not just for the one path where a click
+   * happens to have moved the camera on its own beforehand.
+   */
+  describe("selection driving the camera", () => {
+    function selecting(residue: number | null) {
+      return (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer pdb={CRAMBIN_PDB} selectedResidue={residue} />
+        </ThemeProvider>
+      );
+    }
+
+    /** Camera moves the focus path makes, as opposed to a reset. */
+    function focusMoves() {
+      return plugin.canvas3d.camera.setState.mock.calls.length;
+    }
+
+    it("zooms in on a residue selected before the plugin was ready", async () => {
+      render(selecting(12));
+
+      await waitFor(() => expect(focusMoves()).toBeGreaterThan(0));
+      expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled();
+    });
+
+    it("zooms again when the selection moves from one residue to another", async () => {
+      const { rerender } = render(selecting(12));
+      await waitFor(() => expect(focusMoves()).toBeGreaterThan(0));
+
+      const before = focusMoves();
+      rerender(selecting(30));
+
+      await waitFor(() => expect(focusMoves()).toBeGreaterThan(before));
+    });
+
+    it("zooms back out when the selection is cleared", async () => {
+      const { rerender } = render(selecting(12));
+      await waitFor(() => expect(focusMoves()).toBeGreaterThan(0));
+
+      plugin.canvas3d.requestCameraReset.mockClear();
+      rerender(selecting(null));
+
+      await waitFor(() =>
+        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled()
+      );
+      expect(plugin.managers.structure.focus.clear).toHaveBeenCalled();
+    });
+
+    it("leaves the camera alone for a click the consumer has not accepted", async () => {
+      const onResidueClick = vi.fn();
+      render(
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            onResidueClick={onResidueClick}
+            pdb={CRAMBIN_PDB}
+            selectedResidue={null}
+          />
+        </ThemeProvider>
+      );
+      await waitFor(() =>
+        expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
+      );
+
+      const loci = lociForResidueIndex(
+        plugin as unknown as PluginUIContext,
+        12
+      );
+      plugin.behaviors.interaction.click.emit({ current: { loci } });
+
+      // The click is reported, but the prop it feeds has not come back, so
+      // nothing should have moved.
+      await waitFor(() =>
+        expect(onResidueClick).toHaveBeenCalledWith(12, "PHE")
+      );
+      expect(focusMoves()).toBe(0);
+    });
+
+    it("names the selected residue in the legend without a click", async () => {
+      render(selecting(12));
+
+      // Crambin's thirteenth residue, which no click ever named here.
+      await waitFor(() =>
+        expect(screen.getByText("PHE 13")).toBeInTheDocument()
+      );
     });
   });
 

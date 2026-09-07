@@ -10,11 +10,11 @@ import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
 import { PluginConfig } from "molstar/lib/mol-plugin/config";
 import { Representation } from "molstar/lib/mol-repr/representation";
-import { RefObject, useEffect, useRef, useState } from "react";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
 import { createViewportView } from "../components/Viewport";
-import { focusResidue, syncClipToZoom } from "../utils/cameraFocus";
+import { syncClipToZoom } from "../utils/cameraFocus";
 import type {
   MolstarViewSettings,
   MolstarViewSettingsSubject,
@@ -109,12 +109,15 @@ async function createViewer({
 }: CreateViewerOptions): Promise<PluginUIContext> {
   const spec = DefaultPluginUISpec();
 
-  // Drop Mol*'s built-in click-to-focus camera behavior. It zooms in with a
-  // tiny focus radius, which collapses the camera's near/far clip planes into a
-  // thin slab around the residue and slices the rest of the structure away. We
-  // drive the zoom ourselves (see focusResidue) so we can keep the zoom while
-  // holding the clip planes open to the whole scene. The residue highlight is
-  // unaffected - that comes from the separate Representation.FocusLoci behavior.
+  // Drop Mol*'s built-in click-to-focus camera behavior, for two reasons. It
+  // zooms in with a tiny focus radius, which collapses the camera's near/far
+  // clip planes into a thin slab around the residue and slices the rest of the
+  // structure away; and it moves the camera on click, when the camera is meant
+  // to follow `selectedResidue`. The zoom is driven from useResidueFocus
+  // instead, which keeps the clip planes open to the whole scene. The residue
+  // highlight is unaffected - that comes from the separate
+  // Representation.FocusLoci behavior, so a click still marks a residue even
+  // when the consumer does not drive the selection.
   const behaviors = spec.behaviors.filter(
     (b) => b.transformer !== PluginBehaviors.Camera.FocusLoci
   );
@@ -276,8 +279,11 @@ export interface UseMolstarPluginResult {
   pluginRef: RefObject<PluginUIContext | null>;
   /** True once the plugin exists and a structure has been loaded into it. */
   isReady: boolean;
-  /** Clears the recorded residue focus, stopping adaptive depth clipping. */
-  clearClipRatio: () => void;
+  /**
+   * Records the clip anchor taken when a residue is focused, which is what
+   * keeps depth clipping in step with the zoom. Null stops the clipping.
+   */
+  setClipRatio: (ratio: number | null) => void;
 }
 
 /**
@@ -331,6 +337,11 @@ export function useMolstarPlugin({
    * or null when no residue is focused. Anchors the adaptive depth clipping.
    */
   const clipRatioRef = useRef<number | null>(null);
+
+  // Stable, so the focus effect that takes it does not re-run every render.
+  const setClipRatio = useCallback((ratio: number | null) => {
+    clipRatioRef.current = ratio;
+  }, []);
 
   // Interaction callbacks are read through refs so a parent passing new
   // closures on every render does not tear down and rebuild the plugin.
@@ -442,7 +453,8 @@ export function useMolstarPlugin({
             StructureProperties.residue.label_seq_id(firstLoc) - 1;
           const compId = StructureProperties.residue.label_comp_id(firstLoc);
 
-          clipRatioRef.current = focusResidue(plugin, loci);
+          // Reporting only: the camera follows `selectedResidue`, so it is the
+          // consumer echoing this back that moves it (see useResidueFocus).
           onResidueClickRef.current?.(residueIndex, compId);
         });
 
@@ -538,11 +550,9 @@ export function useMolstarPlugin({
   }, [pdb, hasPlddt, isReady]);
 
   return {
-    clearClipRatio: () => {
-      clipRatioRef.current = null;
-    },
     isReady,
     pluginRef,
     residueValueThemeRef,
+    setClipRatio,
   };
 }

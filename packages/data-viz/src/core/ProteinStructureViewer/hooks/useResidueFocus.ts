@@ -1,45 +1,77 @@
+import { StructureElement } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { RefObject, useEffect, useRef } from "react";
+import { focusResidue } from "../utils/cameraFocus";
+import { lociForResidueIndex } from "../utils/residueLoci";
 
 export interface UseResidueFocusOptions {
   pluginRef: RefObject<PluginUIContext | null>;
   isReady: boolean;
   selectedResidue?: number | null;
-  /** Stops adaptive depth clipping once the focus is dropped. */
-  clearClipRatio: () => void;
+  /** Records the focus anchor for adaptive depth clipping; null stops it. */
+  setClipRatio: (ratio: number | null) => void;
 }
 
 /**
- * Zooms back out when the selected residue is cleared.
+ * Makes `selectedResidue` the one thing that decides where the camera sits.
  *
- * Selecting a residue zooms the camera in on it (handled in the click
- * subscription, which has the loci to frame), but deselecting leaves the camera
- * zoomed in. On the transition back to null this drops the focus, stops
- * adaptive clipping, and resets the camera to the default view.
+ * Setting the prop zooms in on that residue and marks it; clearing it drops the
+ * focus and zooms back out. The click subscription only reports the residue it
+ * was given, so a click moves the camera only once the consumer accepts it and
+ * echoes it back - which is what the prop being controlled is supposed to mean.
+ *
+ * Clicking still marks the residue immediately, through Mol*'s own focus
+ * behavior, so the structure responds to a click whether or not the consumer
+ * wires the prop up.
  */
 export function useResidueFocus({
-  clearClipRatio,
   isReady,
   pluginRef,
   selectedResidue,
+  setClipRatio,
 }: UseResidueFocusOptions): void {
-  const prevSelectedResidueRef = useRef<number | null | undefined>(
-    selectedResidue
-  );
+  /**
+   * The residue this hook last pointed the camera at. Tracked rather than
+   * compared against the previous prop value so that a selection made before
+   * the plugin was ready is still applied once it is, and so that a plugin
+   * rebuilt underneath us - which comes up focused on nothing - is not assumed
+   * to still be holding the old one.
+   */
+  const focusedRef = useRef<number | null>(null);
 
   useEffect(() => {
     const plugin = pluginRef.current;
-    const prev = prevSelectedResidueRef.current;
-    prevSelectedResidueRef.current = selectedResidue;
 
-    if (!plugin || !isReady) return;
-    if (prev === null || prev === undefined) return;
-    if (selectedResidue !== null && selectedResidue !== undefined) return;
+    if (!plugin || !isReady) {
+      focusedRef.current = null;
+      return;
+    }
 
-    clearClipRatio();
-    plugin.managers.structure.focus.clear();
-    plugin.canvas3d?.requestCameraReset();
-    // pluginRef is a stable ref; clearClipRatio is stable per hook instance.
+    const residue = selectedResidue ?? null;
+    if (residue === focusedRef.current) return;
+    focusedRef.current = residue;
+
+    if (residue === null) {
+      setClipRatio(null);
+      plugin.managers.structure.focus.clear();
+      plugin.canvas3d?.requestCameraReset();
+      return;
+    }
+
+    const loci = lociForResidueIndex(plugin, residue);
+    if (!loci) return;
+
+    // A click has already focused the residue by the time the consumer echoes
+    // it back, so only mark it when it is not the one already marked; setting
+    // it again would restate the selection and repaint the sequence panel for
+    // nothing.
+    const focused = plugin.managers.structure.focus.behaviors.current.value;
+    if (!focused || !StructureElement.Loci.areEqual(focused.loci, loci)) {
+      plugin.managers.structure.focus.setFromLoci(loci);
+    }
+
+    setClipRatio(focusResidue(plugin, loci));
+    // pluginRef is a stable ref.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedResidue, isReady]);
+  }, [selectedResidue, isReady, setClipRatio]);
 }
