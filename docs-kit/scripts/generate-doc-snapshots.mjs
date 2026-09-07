@@ -15,10 +15,14 @@
  * parameters keeps the test suites off content whose components they cover
  * already.
  *
+ * `.storybook/main.ts` calls this on the way in, so that the stories are there
+ * however Storybook was started rather than only through the yarn scripts.
+ *
  * Run: node docs-kit/scripts/generate-doc-snapshots.mjs
  */
 
 import {
+  existsSync,
   mkdirSync,
   readdirSync,
   readFileSync,
@@ -186,56 +190,103 @@ ${body
 `;
 }
 
-const pages = SEARCH.flatMap(walk).filter((path) =>
-  PAGES.some((pattern) => pattern.test(path))
-);
+/**
+ * Bring `docs-kit/generated` to the given stories and leave the rest of it
+ * alone: a file already holding what it should is not rewritten.
+ *
+ * The directory is reconciled rather than emptied and rebuilt because this runs
+ * whenever Storybook's config is loaded, which is more than once — a dev server
+ * and the Vitest addon can be reading the same checkout — and emptying it out
+ * from under a running watcher is not something to do for nothing.
+ */
+function reconcile(stories) {
+  mkdirSync(OUT_DIR, { recursive: true });
 
-rmSync(OUT_DIR, { force: true, recursive: true });
-mkdirSync(OUT_DIR, { recursive: true });
-
-const skipped = [];
-const omitted = [];
-const taken = new Map();
-
-for (const path of pages.sort()) {
-  const page = parse(path);
-
-  if (!page.title) {
-    skipped.push(`${path} (${page.reason})`);
-    continue;
+  for (const file of readdirSync(OUT_DIR)) {
+    if (!stories.has(file)) rmSync(resolve(OUT_DIR, file), { recursive: true });
   }
 
-  if (TOO_TALL.has(page.title)) {
-    omitted.push(page.title);
-    continue;
+  for (const [file, { source }] of stories) {
+    const path = resolve(OUT_DIR, file);
+
+    if (existsSync(path) && readFileSync(path, "utf-8") === source) continue;
+
+    writeFileSync(path, source);
   }
-
-  const file = filename(page.title);
-  const owner = taken.get(file);
-
-  // Two titles that come down to the same name would leave one page writing
-  // over the other's story, and the page written over silently unsnapshotted.
-  if (owner) {
-    skipped.push(`${path} (its title is ${owner}'s once slugged)`);
-    continue;
-  }
-
-  taken.set(file, path);
-  writeFileSync(resolve(OUT_DIR, file), story({ ...page, path }));
 }
 
-const written = taken.size;
-
-process.stdout.write(
-  `Wrote ${written} documentation snapshot ${written === 1 ? "story" : "stories"} to docs-kit/generated` +
-    (omitted.length > 0
-      ? `, leaving out ${omitted.join(" and ")} as too tall for Chromatic to capture\n`
-      : "\n")
-);
-
-if (skipped.length > 0) {
-  process.stdout.write(
-    `Warning: no snapshot story for ${skipped.join(", ")}. ` +
-      "Chromatic will not see changes to those pages.\n"
+export function generateDocSnapshots() {
+  const pages = SEARCH.flatMap(walk).filter((path) =>
+    PAGES.some((pattern) => pattern.test(path))
   );
+
+  const skipped = [];
+  const omitted = [];
+  const stories = new Map();
+
+  for (const path of pages.sort()) {
+    const page = parse(path);
+
+    if (!page.title) {
+      skipped.push(`${path} (${page.reason})`);
+      continue;
+    }
+
+    if (TOO_TALL.has(page.title)) {
+      omitted.push(page.title);
+      continue;
+    }
+
+    const file = filename(page.title);
+    const owner = stories.get(file);
+
+    // Two titles that come down to the same name would leave one page writing
+    // over the other's story, and the page written over silently unsnapshotted.
+    if (owner) {
+      skipped.push(`${path} (its title is ${owner.path}'s once slugged)`);
+      continue;
+    }
+
+    stories.set(file, { path, source: story({ ...page, path }) });
+  }
+
+  /**
+   * Pages but no stories means Chromatic is about to review none of the
+   * documentation, and a stories glob matching nothing is not an error it would
+   * ever raise. Raise it here, while there is still a build to stop.
+   */
+  if (pages.length > 0 && stories.size === 0) {
+    throw new Error(
+      `Found ${pages.length} documentation pages and wrote no snapshot stories ` +
+        "to docs-kit/generated. Chromatic would not have seen the documentation."
+    );
+  }
+
+  reconcile(stories);
+
+  const written = stories.size;
+
+  process.stdout.write(
+    `Wrote ${written} documentation snapshot ${written === 1 ? "story" : "stories"} to docs-kit/generated` +
+      (omitted.length > 0
+        ? `, leaving out ${omitted.join(" and ")} as too tall for Chromatic to capture\n`
+        : "\n")
+  );
+
+  if (skipped.length > 0) {
+    process.stdout.write(
+      `Warning: no snapshot story for ${skipped.join(", ")}. ` +
+        "Chromatic will not see changes to those pages.\n"
+    );
+  }
+
+  return { omitted, skipped, written };
+}
+
+// Run when invoked directly, as the `docs:snapshots` script still does.
+if (
+  process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  generateDocSnapshots();
 }
