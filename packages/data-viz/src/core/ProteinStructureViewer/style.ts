@@ -110,7 +110,7 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
         bottom: ${mainBottom} !important;
       }
 
-      @media (min-width: ${WIDE_VIEWPORT}px) {
+      @container ${LEGEND_CONTAINER_NAME} (min-width: ${WIDE_VIEWPORT}px) {
         .msp-plugin .msp-layout-region.msp-layout-top {
           height: ${SEQUENCE_HEIGHT_WIDE} !important;
         }
