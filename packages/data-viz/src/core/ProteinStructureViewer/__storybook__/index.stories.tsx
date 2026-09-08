@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react-vite";
+import { Args, Meta } from "@storybook/react-vite";
 import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
 import { ProteinStructureViewer } from "./stories/default";
 
@@ -136,4 +136,19 @@ export const WithoutSequenceViewerOrLegend = {
     showSequenceViewer: false,
   },
   parameters: NO_AUTOMATED_CHECKS,
+};
+
+// Test
+
+/**
+ * The fixture the unit tests mount, carrying the `data-testid` they query by.
+ * Everything the viewer draws is on in its default configuration, so a test
+ * reaches the legend, the sequence panel, and the axes without arranging them.
+ */
+export const Test = {
+  args: DEFAULT_ARGS,
+  parameters: NO_AUTOMATED_CHECKS,
+  render: (props: Args) => (
+    <ProteinStructureViewer {...props} data-testid="protein-structure-viewer" />
+  ),
 };

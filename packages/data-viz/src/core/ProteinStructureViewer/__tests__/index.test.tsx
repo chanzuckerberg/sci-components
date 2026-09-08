@@ -1,5 +1,6 @@
 import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
+import { composeStories } from "@storybook/react-vite";
 import { render, screen, waitFor } from "@testing-library/react";
 import type { Structure } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
@@ -8,6 +9,7 @@ import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
+import * as stories from "../__storybook__/index.stories";
 import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
 import { parseHexColor } from "../utils/color";
 import { lociForResidueIndex } from "../utils/residueLoci";
@@ -148,6 +150,20 @@ END`;
 /** Caption an overlay puts on the legend, in place of the pLDDT key. */
 const OVERLAY_LABEL = "Feature activation";
 
+/**
+ * The story the component ships as its fixture, so what the tests mount is the
+ * configuration a reviewer sees in Storybook rather than a second one kept
+ * beside it.
+ *
+ * `generateSnapshots` is not called here as it is elsewhere: every story sets
+ * `snapshot: { skip: true }`, since jsdom serves Mol* no WebGL context and it
+ * renders a "WebGL does not seem to be available" notice in place of the
+ * viewer. A snapshot would pin that notice rather than the component.
+ */
+const { Test } = composeStories(stories);
+
+const STORY_TEST_ID = "protein-structure-viewer";
+
 function renderViewer(
   props: Partial<ProteinStructureViewerProps> = {}
 ): ReactElement {
@@ -175,6 +191,13 @@ describe("<ProteinStructureViewer />", () => {
   afterEach(() => {
     vi.restoreAllMocks();
     createPluginUI.mockReset();
+  });
+
+  it("renders the story fixture", async () => {
+    render(<Test />);
+
+    expect(screen.getByTestId(STORY_TEST_ID)).toBeInTheDocument();
+    await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
   });
 
   it("renders a container that forwards arbitrary div props", () => {
