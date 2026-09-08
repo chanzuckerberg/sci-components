@@ -512,7 +512,9 @@ export default App;
 
 ### Selection and stats
 
-Selection is controlled. Clicking a residue calls `onResidueClick`; echoing that index back through `selectedResidue` zooms the camera in on it, and setting it to `null` zooms back out. Clicking empty space fires `onSelectionClear`.
+Selection is controlled. Clicking a residue calls `onResidueClick` with a `ResidueRef`; echoing its `index` back through `selectedResidue` zooms the camera in on it, and setting it to `null` zooms back out. Clicking empty space fires `onSelectionClear`.
+
+A `ResidueRef` carries the residue in each addressing scheme a caller might need. `index` is the viewer's own key, shared with `plddt` and `residueOverlay`, and counts residues in file order straight through a chain break. `chainId` and `seqId` are what the file says, which is what the sequence panel displays and what the system that produced the structure will recognise. On a single chain numbered from 1 the two agree; on a complex they do not, so map a click back onto your own numbering with `chainId` and `seqId` rather than arithmetic on `index`.
 
 `stats` fills the three legend slots along the bottom. Those slots are replaced in place while a residue is hovered or selected - by the residue label, its overlay value, and its pLDDT - so the columns never shift. Pass `null` for a slot to reserve its column without rendering anything.
 
@@ -528,8 +530,9 @@ Selection is controlled. Clicking a residue calls `onResidueClick`; echoing that
 // rendering anything - useful when a stat is still loading.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
-// polymer cartoon traces. Residue indices passed to onResidueClick and back
-// through selectedResidue are 0-based, so the first residue of the chain is 0.
+// polymer cartoon traces. onResidueClick hands back a ResidueRef; its `index`
+// is the 0-based position selectedResidue expects, while `chainId` and `seqId`
+// carry the numbering the file uses.
 
 import { ProteinStructureViewer } from "@czi-sds/data-viz";
 import { useState } from "react";
@@ -735,10 +738,8 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
+        onResidueClick={({ index }) =>
+          setSelectedResidue((prev) => (prev === index ? null : index))
         }
         onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}
@@ -1019,8 +1020,8 @@ The viewer spreads any remaining props onto its root div, so standard HTML attri
 | `showAxes`                      | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                          |
 | `showSequenceViewer`            | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                         |
 | `showLegend`                    | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                          |
-| `onResidueClick`                | `function`                    | -            | `(residueIndex: number, compId: string) => void`. Called with the 0-based residue index and 3-letter amino acid code when a residue is clicked.                                                                        |
-| `onResidueHover`                | `function`                    | -            | `(residueIndex: number \| null, compId: string \| null) => void`. Called as the pointer moves over residues, and with `(null, null)` when it leaves the structure.                                                     |
+| `onResidueClick`                | `function`                    | -            | `(residue: ResidueRef) => void`. Called with the clicked residue: `index` (0-based, across the whole structure, and what `selectedResidue` takes), `compId`, `chainId`, `seqId` and `insCode`.                         |
+| `onResidueHover`                | `function`                    | -            | `(residue: ResidueRef \| null) => void`. Called as the pointer moves over residues, and with `null` when it leaves the structure.                                                                                      |
 | `onSelectionClear`              | `function`                    | -            | `() => void`. Called when the user clicks empty space, clearing the selection.                                                                                                                                         |
 
 ### ResidueValueOverlay

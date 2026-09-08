@@ -22,7 +22,7 @@
       "onChange": {
         "description": "(value: number, event?: React.SyntheticEvent, type?: \"click\" | \"scroll\") => void. Called when the highlighted item changes, with its index and what caused the change. For a scroll the event is synthesized, not a real DOM event.",
         "isRequired": false,
-        "type": "\"scroll\" | \"click\""
+        "type": "(value: number, event?: SyntheticEvent<Element, Event> | undefined, type?: \"scroll\" | \"click\" | undefined) => void"
       },
       "title": {
         "description": "The item's label. It is also kebab-cased into the tab's id, so keep titles distinct.",

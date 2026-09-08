@@ -35,7 +35,7 @@
       "sdsIconProps": {
         "description": "Props forwarded to the Icon component when icon is given as a name.",
         "isRequired": false,
-        "type": "IconProps<string | number | symbol>"
+        "type": "Partial<IconProps>"
       },
       "slideDirection": {
         "defaultValue": "left",
