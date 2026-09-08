@@ -5,7 +5,7 @@ import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
-import { PluginConfig } from "molstar/lib/mol-plugin/config";
+import { PluginConfig, PluginConfigItem } from "molstar/lib/mol-plugin/config";
 import { Representation } from "molstar/lib/mol-repr/representation";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
@@ -102,6 +102,29 @@ const AXES_ON = {
 
 const AXES_OFF = { name: "off" as const, params: {} };
 
+/**
+ * Turns the screenshot controls off, on the versions of Mol* that have them.
+ *
+ * `ShowScreenshotControls` arrived in Mol* 5 and this package's peer range
+ * reaches back to 4, so the key is read through an index rather than named
+ * directly: naming it would not compile against 4, and passing the resulting
+ * `undefined` would ask Mol* to set a config item it has no name for. On 4
+ * there are no screenshot controls to hide in the first place.
+ */
+const SCREENSHOT_CONTROLS_CONFIG: [PluginConfigItem<boolean>, boolean][] =
+  (() => {
+    // Through `unknown`, since the surrounding keys differ between the two
+    // majors and neither shape is assignable to the other.
+    const item = (
+      PluginConfig.Viewport as unknown as Record<
+        string,
+        PluginConfigItem<boolean> | undefined
+      >
+    ).ShowScreenshotControls;
+
+    return item ? [[item, false]] : [];
+  })();
+
 function setAxes(plugin: PluginUIContext, enabled: boolean) {
   if (!plugin.canvas3d) return;
   try {
@@ -186,7 +209,7 @@ async function createViewer({
         [PluginConfig.Viewport.ShowSelectionMode, false],
         [PluginConfig.Viewport.ShowAnimation, false],
         [PluginConfig.Viewport.ShowTrajectoryControls, false],
-        [PluginConfig.Viewport.ShowScreenshotControls, false],
+        ...SCREENSHOT_CONTROLS_CONFIG,
       ],
       layout: {
         initial: {

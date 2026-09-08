@@ -23,7 +23,10 @@ export function residueRefFromLoci(
 
   return {
     chainId: StructureProperties.chain.auth_asym_id(firstLoc),
-    compId: StructureProperties.residue.label_comp_id(firstLoc),
+    // Read off the atom rather than the residue: the two report the same code
+    // for a residue-level location, but Mol* only added the residue spelling in
+    // 5, and the peer range this package declares reaches back to 4.
+    compId: StructureProperties.atom.label_comp_id(firstLoc),
     insCode: StructureProperties.residue.pdbx_PDB_ins_code(firstLoc) ?? "",
     index: StructureProperties.residue.key(firstLoc),
     seqId: StructureProperties.residue.auth_seq_id(firstLoc),
