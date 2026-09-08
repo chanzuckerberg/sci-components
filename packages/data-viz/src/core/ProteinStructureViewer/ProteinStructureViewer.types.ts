@@ -12,6 +12,8 @@ export interface ResidueValueOverlay {
   max: number;
   /**
    * Values at or below this render in a neutral gray rather than on the scale.
+   * Values above it are normalized into `min`-`max` before being sampled, so
+   * this is also what the legend's lower tick reports.
    * @default 0
    */
   min?: number;

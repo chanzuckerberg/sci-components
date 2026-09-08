@@ -15,18 +15,27 @@ export interface ColorScaleLegendProps {
    * by stepped scales, which carry their own tick labels.
    */
   max?: number | null;
+  /**
+   * Value at the bottom of a continuous scale. Coloring normalizes values into
+   * `min`-`max` before sampling, so the bar runs from here rather than from
+   * zero, and its lower tick has to say so.
+   * @default 0
+   */
+  min?: number;
 }
 
-/** Decimal places used for the upper tick on a continuous scale. */
-const MAX_LABEL_PRECISION = 2;
+/** Decimal places used for the ticks on a continuous scale. */
+const TICK_PRECISION = 2;
 
 /**
  * The color key beneath the structure viewer. A stepped scale renders as
  * discrete bands with a tick at each boundary; a continuous scale renders as a
- * gradient running from zero to `max`.
+ * gradient running from `min` to `max`, the range its values are normalized
+ * into before they are sampled.
  */
 export default function ColorScaleLegend({
   max = null,
+  min = 0,
   scale,
 }: ColorScaleLegendProps): JSX.Element {
   if (scale.kind === "stepped") {
@@ -50,11 +59,13 @@ export default function ColorScaleLegend({
     );
   }
 
+  // Both ends are formatted alike, so the bar reads as one axis rather than a
+  // bare zero opposite a decimal.
   return (
     <LegendWrapper>
       <LegendLabels>
-        <div>0</div>
-        <div>{max !== null ? max.toFixed(MAX_LABEL_PRECISION) : ""}</div>
+        <div>{min.toFixed(TICK_PRECISION)}</div>
+        <div>{max !== null ? max.toFixed(TICK_PRECISION) : ""}</div>
       </LegendLabels>
       <LegendGradient gradient={toCssGradient(scale.stops)} />
     </LegendWrapper>

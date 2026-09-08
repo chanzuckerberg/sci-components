@@ -10,6 +10,9 @@ import { PLDDT_COLOR_SCALE } from "../utils/plddt";
 
 const MEAN_PLDDT_LABEL = "Mean pLDDT";
 
+/** Caption an overlay puts on the color key, in place of the pLDDT one. */
+const OVERLAY_LABEL = "Feature activation";
+
 const STATS = [
   { label: "Known", value: "62%" },
   { label: "pTM", value: "0.874" },
@@ -138,13 +141,28 @@ describe("<StructureLegend />", () => {
   it("shows zero and the max as ticks on a continuous scale", () => {
     renderLegend({
       scale: PLASMA_COLOR_SCALE,
-      scaleLabel: "Feature activation",
+      scaleLabel: OVERLAY_LABEL,
       scaleMax: 2.4,
     });
 
-    expect(screen.getByText("Feature activation")).toBeInTheDocument();
-    expect(screen.getByText("0")).toBeInTheDocument();
+    expect(screen.getByText(OVERLAY_LABEL)).toBeInTheDocument();
+    expect(screen.getByText("0.00")).toBeInTheDocument();
     expect(screen.getByText("2.40")).toBeInTheDocument();
+  });
+
+  it("ticks a continuous scale from the minimum it is normalized against", () => {
+    // Coloring maps min-max onto the bar, so a bar labelled from zero while
+    // the values start somewhere else misreads the whole axis.
+    renderLegend({
+      scale: PLASMA_COLOR_SCALE,
+      scaleLabel: OVERLAY_LABEL,
+      scaleMax: 2,
+      scaleMin: -2,
+    });
+
+    expect(screen.getByText("-2.00")).toBeInTheDocument();
+    expect(screen.getByText("2.00")).toBeInTheDocument();
+    expect(screen.queryByText("0.00")).not.toBeInTheDocument();
   });
 
   it("drops the color key when no scale describes the coloring", () => {

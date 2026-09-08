@@ -314,6 +314,22 @@ describe("<ProteinStructureViewer />", () => {
     expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
   });
 
+  it("ticks the color key from the overlay's own minimum", () => {
+    // Coloring normalizes into min-max, so a key ticked from zero would
+    // misreport where the bar's colors begin.
+    renderViewer({
+      residueOverlay: {
+        label: OVERLAY_LABEL,
+        max: 2,
+        min: -2,
+        values: new Map([[0, 1.2]]),
+      },
+    });
+
+    expect(screen.getByText("-2.00")).toBeInTheDocument();
+    expect(screen.getByText("2.00")).toBeInTheDocument();
+  });
+
   it("hides the legend when asked", () => {
     renderViewer({
       showLegend: false,

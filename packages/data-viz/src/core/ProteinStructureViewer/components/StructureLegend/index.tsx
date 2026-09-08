@@ -33,6 +33,12 @@ export interface StructureLegendProps {
   /** Value at the top of a continuous scale. */
   scaleMax?: number | null;
   /**
+   * Value at the bottom of a continuous scale, which the coloring normalizes
+   * against and the lower tick therefore reports.
+   * @default 0
+   */
+  scaleMin?: number;
+  /**
    * Label for the overlay value slot in a residue readout. Undefined when no
    * overlay is active, which is what keeps the slot on its whole-structure
    * stat instead of reporting a value nothing is painting.
@@ -77,6 +83,7 @@ export default function StructureLegend({
   scale,
   scaleLabel,
   scaleMax = null,
+  scaleMin = 0,
   scaleTooltip,
   selectedResidue = null,
   showSequenceViewer,
@@ -131,7 +138,7 @@ export default function StructureLegend({
       </StatsGrid>
       {scale && (
         <ScaleColumn>
-          <ColorScaleLegend max={scaleMax} scale={scale} />
+          <ColorScaleLegend max={scaleMax} min={scaleMin} scale={scale} />
           <ScaleCaption>
             {scaleLabel}
             {scaleTooltip !== undefined && (

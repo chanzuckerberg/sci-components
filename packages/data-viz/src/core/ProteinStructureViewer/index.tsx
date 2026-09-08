@@ -58,7 +58,12 @@ interface HoveredResidue {
 /** The part of the legend that describes the structure's coloring. */
 type ScaleProps = Pick<
   StructureLegendProps,
-  "scale" | "scaleLabel" | "scaleMax" | "scaleTooltip" | "valueLabel"
+  | "scale"
+  | "scaleLabel"
+  | "scaleMax"
+  | "scaleMin"
+  | "scaleTooltip"
+  | "valueLabel"
 >;
 
 /**
@@ -77,6 +82,9 @@ function resolveScaleProps(
       scale: overlay.colorScale ?? PLASMA_COLOR_SCALE,
       scaleLabel: overlay.label ?? DEFAULT_OVERLAY_LABEL,
       scaleMax: overlay.max,
+      // The same floor the coloring normalizes against, so the bar's lower
+      // tick reports where its colors actually start.
+      scaleMin: overlay.min ?? 0,
       scaleTooltip: overlay.tooltip,
       // Always defined while an overlay is set: the legend reads the label's
       // presence as the readout's value slot being in use at all.
