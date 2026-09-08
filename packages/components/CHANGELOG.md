@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.1.0...@czi-sds/components@24.2.0) (2026-09-08)
+
+### Features
+
+- **StructureViewer:** MolStar component ([#1177](https://github.com/chanzuckerberg/sci-components/issues/1177)) ([c321878](https://github.com/chanzuckerberg/sci-components/commit/c3218785f1b8db5d9edc1597709051fd05505fcc))
+
 # [24.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.0.0...@czi-sds/components@24.1.0) (2026-08-19)
 
 ### Features
