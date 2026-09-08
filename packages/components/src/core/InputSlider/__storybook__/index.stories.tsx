@@ -38,11 +38,13 @@ export default {
   },
   component: InputSlider,
   parameters: {
-    axe: {
-      disabledRules: [
-        // FIXME - inputs should have labels
-        "label",
-      ],
+    a11y: {
+      config: {
+        rules: [
+          // FIXME - inputs should have labels
+          { enabled: false, id: "label" },
+        ],
+      },
     },
   },
   title: "Components/Inputs/InputSlider",

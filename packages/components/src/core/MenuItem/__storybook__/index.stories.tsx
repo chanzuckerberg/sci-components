@@ -49,8 +49,8 @@ export default {
   },
   component: MenuItem,
   parameters: {
-    axe: {
-      disabledRules: ["aria-required-parent"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "aria-required-parent" }] },
     },
   },
   title: "Components/Dropdowns/MenuItem",
@@ -97,9 +97,6 @@ export const ScreenshotTest = {
     name: "Text here",
   },
   parameters: {
-    axe: {
-      timeout: 10 * 1000,
-    },
     controls: {
       exclude: MENU_ITEM_EXCLUDED_CONTROLS,
     },

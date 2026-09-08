@@ -45,6 +45,7 @@ export interface BaseColor {
   surfaceSecondary: string;
   surfacePrimaryDark: string;
   surfaceInverse: string;
+  surfaceTertiary: string;
   textPrimary: string;
   textPrimaryOnDark: string;
   textPrimaryInverse: string;
@@ -91,6 +92,7 @@ export interface BaseColor {
   borderPrimaryDisabledOnDark: string;
   borderPrimaryDisabledInverse: string;
   borderSecondaryOnDark: string;
+  borderHighlight: string;
   ornamentDisabled: string;
   ornamentDisabledOnDark: string;
   ornamentDisabledInverse: string;
@@ -100,6 +102,7 @@ export interface BaseColor {
   ornamentPrimaryInverse: string;
   ornamentSecondary: string;
   ornamentSecondaryOnDark: string;
+  ornamentTertiary: string;
   ornamentSecondaryInverse: string;
   ornamentSecondaryInteraction: string;
   ornamentSecondaryInteractionOnDark: string;

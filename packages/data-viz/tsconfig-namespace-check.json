@@ -14,6 +14,17 @@
       "@data-viz/src/*": ["./src/*"],
       "@components/src/*": ["../components/src/*"]
     },
-    "types": ["vitest/globals", "node"]
+    "types": ["vitest/globals", "node"],
+    /*
+     * Type check only. The published declarations come from
+     * `rolldown-plugin-dts`, so emitting here would just write a parallel tree
+     * into `dist` next to the real build output. Declaration emit also cannot
+     * name the `Meta` type the story files assert, which Storybook declares in
+     * a bundled chunk its `exports` map does not expose (TS2742). `composite`
+     * is off so no `.tsbuildinfo` caches diagnostics between runs.
+     */
+    "composite": false,
+    "declaration": false,
+    "noEmit": true
   }
 }

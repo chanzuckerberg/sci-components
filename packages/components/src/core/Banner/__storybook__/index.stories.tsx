@@ -52,8 +52,13 @@ export default {
   component: Banner,
   parameters: {
     layout: "fullscreen",
-    axe: {
-      disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
+    a11y: {
+      config: {
+        rules: [
+          { enabled: false, id: "landmark-no-duplicate-banner" },
+          { enabled: false, id: "landmark-unique" },
+        ],
+      },
     },
   },
   title: "Components/Banner",

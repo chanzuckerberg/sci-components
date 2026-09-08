@@ -204,6 +204,11 @@
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/PreComposedTable/__storybook__/docs/content.html"
   },
+  "ProteinStructureViewer": {
+    "file": "ProteinStructureViewer.md",
+    "package": "@czi-sds/data-viz",
+    "source": "packages/data-viz/src/core/ProteinStructureViewer/__storybook__/docs/content.html"
+  },
   "SegmentedControl": {
     "file": "SegmentedControl.md",
     "package": "@czi-sds/components",

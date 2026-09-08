@@ -129,16 +129,18 @@ export default {
   },
   component: CellBasic,
   parameters: {
-    axe: {
-      disabledRules: [
-        "aria-input-field-name",
-        "aria-required-children",
-        "aria-required-parent",
-        "button-name",
-        "color-contrast",
-        "list",
-        "listitem",
-      ],
+    a11y: {
+      config: {
+        rules: [
+          { enabled: false, id: "aria-input-field-name" },
+          { enabled: false, id: "aria-required-children" },
+          { enabled: false, id: "aria-required-parent" },
+          { enabled: false, id: "button-name" },
+          { enabled: false, id: "color-contrast" },
+          { enabled: false, id: "list" },
+          { enabled: false, id: "listitem" },
+        ],
+      },
     },
     controls: {
       expanded: true,

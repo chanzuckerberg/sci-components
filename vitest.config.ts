@@ -52,6 +52,13 @@ export default defineConfig({
         ],
         test: {
           name: "storybook",
+          /**
+           * A handful of stories are slow to settle — a chart measuring itself,
+           * a menu that opens on mount — and each one is rendered in a real
+           * browser before axe reads the result. The old suite carried per-story
+           * timeouts up to a minute for these; this is that ceiling, once.
+           */
+          testTimeout: 60_000,
           browser: {
             enabled: true,
             headless: true,

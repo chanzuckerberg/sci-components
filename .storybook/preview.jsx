@@ -159,10 +159,35 @@ const preview = {
     },
 
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
+      /**
+       * Rules that ask a component to be a whole page. A story renders one
+       * component into an empty frame, so there is no landmark to skip to, no
+       * main region and no first heading, and a complaint about any of them
+       * says nothing about the component. These are the three the accessibility
+       * suite that came before this one turned off, kept for the same reason;
+       * `region`, the fourth, the addon already disables for us.
+       *
+       * None of the three reports anything today — the addon scopes each run to
+       * the story rather than the document, which rules `bypass` out entirely —
+       * so this is here to keep a story that grows a page-like shape from being
+       * failed for it, rather than to silence anything now.
+       *
+       * They belong under `options` rather than `config`, and the distinction
+       * matters: Storybook merges parameters object by object but replaces
+       * arrays wholesale, so a story naming its own `config.rules` would drop
+       * these on the floor. `options.rules` is an object, so it survives.
+       */
+      options: {
+        rules: {
+          bypass: { enabled: false },
+          "landmark-one-main": { enabled: false },
+          "page-has-heading-one": { enabled: false },
+        },
+      },
       // 'error' - fail CI on a11y violations
+      // 'todo' - show a11y violations in the test UI only
       // 'off' - skip a11y checks entirely
-      test: "todo",
+      test: "error",
     },
   },
 

@@ -184,8 +184,8 @@ export const ActionTypeMenuItems = {
     options: AUTOCOMPLETE_ACTION_TYPE_OPTIONS,
   },
   parameters: {
-    axe: {
-      disabledRules: ["aria-dialog-name"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "aria-dialog-name" }] },
     },
     controls: {
       exclude: DROPDOWN_EXCLUDED_CONTROLS,
@@ -200,8 +200,8 @@ export const ActionTypeMenuItems = {
 
 export const InsideModal = {
   parameters: {
-    axe: {
-      disabledRules: ["aria-dialog-name"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "aria-dialog-name" }] },
     },
     controls: {
       exclude: DROPDOWN_EXCLUDED_CONTROLS,
