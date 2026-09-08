@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { LEGEND_CONTAINER_NAME } from "./components/StructureLegend/style";
 
 interface ViewerRootProps {
   showSequenceViewer: boolean;
@@ -10,13 +9,24 @@ const MIN_HEIGHT = 190;
 const MIN_WIDTH = 200;
 
 /**
- * Height reserved for the sequence panel along the bottom, and the viewport
- * width above which it grows. The legend offsets in the legend's own styles
- * track these values.
+ * Name of the size container the root declares below, which is what lets the
+ * sequence panel and the legend reflow to the viewer's own width rather than
+ * the page's.
  */
-const SEQUENCE_HEIGHT = "max(104px, 30%)";
-const SEQUENCE_HEIGHT_WIDE = "max(134px, 32%)";
-const WIDE_VIEWPORT = 880;
+export const VIEWER_CONTAINER_NAME = "sds-structure-viewer";
+
+/**
+ * Height reserved for the sequence panel along the bottom, and the viewer
+ * width above which it grows. Measured against the container above rather than
+ * the page, so a viewer embedded in a wider page sizes to the room it has.
+ *
+ * The legend sits directly on top of the panel and offsets itself by these
+ * same three values, so it reads them from here rather than restating them.
+ * Copies that drifted would leave the legend floating off the panel.
+ */
+export const SEQUENCE_HEIGHT = "max(104px, 30%)";
+export const SEQUENCE_HEIGHT_WIDE = "max(134px, 32%)";
+export const WIDE_VIEWER = 880;
 
 /**
  * The element Mol* mounts into.
@@ -51,7 +61,7 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
   min-width: ${MIN_WIDTH}px;
   min-height: ${MIN_HEIGHT}px;
   container-type: inline-size;
-  container-name: ${LEGEND_CONTAINER_NAME};
+  container-name: ${VIEWER_CONTAINER_NAME};
 
   .msp-plugin {
     position: absolute !important;
@@ -86,7 +96,7 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
   /*
    * Mol* puts the sequence panel in its "top" region; move it to the bottom and
    * shrink the main viewport region to match, so the structure sits above the
-   * sequence rather than behind it. The panel grows on wider viewports, and the
+   * sequence rather than behind it. The panel grows on wider viewers, and the
    * viewport region's offset follows it.
    */
   ${(props: ViewerRootProps) => {
@@ -110,7 +120,7 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
         bottom: ${mainBottom} !important;
       }
 
-      @container ${LEGEND_CONTAINER_NAME} (min-width: ${WIDE_VIEWPORT}px) {
+      @container ${VIEWER_CONTAINER_NAME} (min-width: ${WIDE_VIEWER}px) {
         .msp-plugin .msp-layout-region.msp-layout-top {
           height: ${SEQUENCE_HEIGHT_WIDE} !important;
         }

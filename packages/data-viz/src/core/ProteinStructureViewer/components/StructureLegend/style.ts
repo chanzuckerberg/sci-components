@@ -5,12 +5,12 @@ import {
   getSemanticColors,
   getSpaces,
 } from "@czi-sds/components";
-
-/**
- * Name of the size container declared by the viewer root. The legend flips from
- * a bottom bar to a right-edge stack when the viewer gets narrow.
- */
-export const LEGEND_CONTAINER_NAME = "sds-structure-viewer";
+import {
+  SEQUENCE_HEIGHT,
+  SEQUENCE_HEIGHT_WIDE,
+  VIEWER_CONTAINER_NAME,
+  WIDE_VIEWER,
+} from "../../style";
 
 /** Width below which the legend switches to its stacked layout. */
 const NARROW_BREAKPOINT = 480;
@@ -18,25 +18,16 @@ const NARROW_BREAKPOINT = 480;
 /** Fixed stat column width, so labels swapping on hover never shift the grid. */
 const STAT_COLUMN_WIDTH = "4.5rem";
 
-/** Viewport width above which the sequence panel grows, pushing the legend up. */
-const WIDE_VIEWPORT = 880;
-
-/**
- * Legend offsets track the sequence panel height (see the root style) so the
- * legend sits just above it. With no sequence panel it drops to the bottom
- * edge, where its own padding provides the gap.
- */
-const LEGEND_BOTTOM = "max(104px, 30%)";
-const LEGEND_BOTTOM_WIDE = "max(134px, 32%)";
-
 interface LegendOverlayProps extends CommonThemeProps {
   showSequenceViewer: boolean;
 }
 
 /**
- * Overlaid along the bottom of the viewer, above the sequence panel. Pointer
- * events are off so the legend never intercepts drags meant for the structure;
- * the help tooltip re-enables them on itself.
+ * Overlaid along the bottom of the viewer, above the sequence panel. Its bottom
+ * offset is the panel's own height, taken from the root style so the two cannot
+ * disagree; with no panel it drops to the bottom edge, where its own padding
+ * provides the gap. Pointer events are off so the legend never intercepts drags
+ * meant for the structure; the help tooltip re-enables them on itself.
  */
 export const LegendOverlay = styled("div")<LegendOverlayProps>`
   position: absolute;
@@ -54,11 +45,15 @@ export const LegendOverlay = styled("div")<LegendOverlayProps>`
       right: ${spaces?.m}px;
       gap: ${spaces?.xs}px;
       padding-bottom: ${spaces?.m}px;
-      bottom: ${showSequenceViewer ? LEGEND_BOTTOM : "0"};
+      bottom: ${showSequenceViewer ? SEQUENCE_HEIGHT : "0"};
 
-      /* Track the sequence panel as it grows on wider viewports. */
-      @media (min-width: ${WIDE_VIEWPORT}px) {
-        bottom: ${showSequenceViewer ? LEGEND_BOTTOM_WIDE : "0"};
+      /*
+       * Track the sequence panel as it grows on wider viewers. The panel is
+       * sized against this same container, so answering to the page instead
+       * would part the legend from it on a viewer narrower than its page.
+       */
+      @container ${VIEWER_CONTAINER_NAME} (min-width: ${WIDE_VIEWER}px) {
+        bottom: ${showSequenceViewer ? SEQUENCE_HEIGHT_WIDE : "0"};
       }
 
       /* Spacer balancing the axes widget pinned in the opposite corner. */
@@ -68,7 +63,7 @@ export const LegendOverlay = styled("div")<LegendOverlayProps>`
         width: ${spaces?.xxl}px;
       }
 
-      @container ${LEGEND_CONTAINER_NAME} (max-width: ${NARROW_BREAKPOINT}px) {
+      @container ${VIEWER_CONTAINER_NAME} (max-width: ${NARROW_BREAKPOINT}px) {
         width: auto;
         flex-direction: column;
         align-items: flex-end;
@@ -100,7 +95,7 @@ export const StatsGrid = styled("div")`
     const spaces = getSpaces(props);
 
     return `
-      @container ${LEGEND_CONTAINER_NAME} (max-width: ${NARROW_BREAKPOINT}px) {
+      @container ${VIEWER_CONTAINER_NAME} (max-width: ${NARROW_BREAKPOINT}px) {
         flex: none;
         grid-template-columns: minmax(0, 1fr);
         justify-items: end;
