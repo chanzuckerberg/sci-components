@@ -145,6 +145,9 @@ END`;
 const OTHER_PDB = `ATOM      1  N   ALA A   1      11.111  22.222   3.333  1.00 13.79           N
 END`;
 
+/** Caption an overlay puts on the legend, in place of the pLDDT key. */
+const OVERLAY_LABEL = "Feature activation";
+
 function renderViewer(
   props: Partial<ProteinStructureViewerProps> = {}
 ): ReactElement {
@@ -245,6 +248,24 @@ describe("<ProteinStructureViewer />", () => {
     await waitFor(() => expect(plugin.loadedThemes).toContain("residue-value"));
   });
 
+  it("leaves an overlay carrying no values in charge of the coloring", async () => {
+    // An app with a feature picked but nothing to show for it yet still has an
+    // overlay set. The structure has to answer to it - every residue reading
+    // neutral - rather than fall back to confidence coloring that the legend
+    // beside it is no longer describing.
+    renderViewer({
+      plddt: [0.94],
+      residueOverlay: {
+        label: OVERLAY_LABEL,
+        max: 2.4,
+        values: new Map(),
+      },
+    });
+
+    await waitFor(() => expect(plugin.loadedThemes).toContain("residue-value"));
+    expect(screen.getByText(OVERLAY_LABEL)).toBeInTheDocument();
+  });
+
   it("injects pLDDT scores into the B-factor column before parsing", async () => {
     renderViewer({ plddt: [0.94] });
 
@@ -282,13 +303,13 @@ describe("<ProteinStructureViewer />", () => {
   it("captions the legend with the overlay label instead", () => {
     renderViewer({
       residueOverlay: {
-        label: "Feature activation",
+        label: OVERLAY_LABEL,
         max: 2.4,
         values: new Map([[0, 1.2]]),
       },
     });
 
-    expect(screen.getByText("Feature activation")).toBeInTheDocument();
+    expect(screen.getByText(OVERLAY_LABEL)).toBeInTheDocument();
     expect(screen.getByText("2.40")).toBeInTheDocument();
     expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
   });

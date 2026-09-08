@@ -111,6 +111,9 @@ export interface ResidueReadout {
   label: string;
   /** Residue pLDDT on a 0-1 scale, or null when unavailable. */
   plddt: number | null;
-  /** Residue overlay value, or null when no overlay is set. */
+  /**
+   * Residue overlay value, or null when the overlay holds none for it - which
+   * is also what a structure paints neutral - or when no overlay is set.
+   */
   value: number | null;
 }

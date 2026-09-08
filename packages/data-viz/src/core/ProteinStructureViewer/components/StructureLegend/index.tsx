@@ -32,7 +32,11 @@ export interface StructureLegendProps {
   scaleTooltip?: string;
   /** Value at the top of a continuous scale. */
   scaleMax?: number | null;
-  /** Label for the overlay value slot in a residue readout. */
+  /**
+   * Label for the overlay value slot in a residue readout. Undefined when no
+   * overlay is active, which is what keeps the slot on its whole-structure
+   * stat instead of reporting a value nothing is painting.
+   */
   valueLabel?: string;
   /** Whether the sequence panel is taking up the bottom of the viewer. */
   showSequenceViewer: boolean;
@@ -46,7 +50,7 @@ const SLOT_COUNT = 3;
 /** Decimal places for stat and readout values. */
 const VALUE_PRECISION = 3;
 
-/** Shown in the pLDDT slot when a residue has no confidence score. */
+/** Shown in place of a number the residue has none of. */
 const MISSING_VALUE = "\u2013";
 
 function StatColumn({ label, value }: StructureStat): JSX.Element {
@@ -77,11 +81,14 @@ export default function StructureLegend({
   selectedResidue = null,
   showSequenceViewer,
   stats,
-  valueLabel = "Value",
+  valueLabel,
 }: StructureLegendProps): JSX.Element {
   const activeResidue = hoveredResidue ?? selectedResidue;
   const showResidue = activeResidue !== null;
-  const showValue = showResidue && activeResidue.value !== null;
+  // The slot belongs to the overlay whenever one is set, so a residue it holds
+  // no value for reads as a dash rather than falling back to the stat, which
+  // would look like a value the overlay had reported.
+  const showValue = showResidue && valueLabel !== undefined;
 
   // Three fixed slots so the grid tracks never move as values and labels swap
   // between the default stats and the per-residue readout. A slot is null when
@@ -93,7 +100,10 @@ export default function StructureLegend({
     showValue
       ? {
           label: valueLabel,
-          value: (activeResidue.value as number).toFixed(VALUE_PRECISION),
+          value:
+            activeResidue.value !== null
+              ? activeResidue.value.toFixed(VALUE_PRECISION)
+              : MISSING_VALUE,
         }
       : (stats[1] ?? null),
     showResidue

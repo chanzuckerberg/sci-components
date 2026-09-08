@@ -57,13 +57,29 @@ describe("<StructureLegend />", () => {
     expect(screen.getAllByText("pLDDT")).toHaveLength(2);
   });
 
-  it("keeps the middle stat when the residue has no overlay value", () => {
+  it("keeps the middle stat when no overlay is active", () => {
     renderLegend({
       hoveredResidue: { label: "PHE 17", plddt: 0.912, value: null },
     });
 
     expect(screen.getByText("pTM")).toBeInTheDocument();
     expect(screen.getByText("0.874")).toBeInTheDocument();
+  });
+
+  it("dashes the overlay slot for a residue the overlay has no value for", () => {
+    // The slot is the overlay's while one is set, so falling back to the stat
+    // here would read as a value the overlay had reported. The structure
+    // paints these residues neutral; the readout says the same thing.
+    renderLegend({
+      hoveredResidue: { label: "PHE 17", plddt: 0.912, value: null },
+      valueLabel: "Activation",
+    });
+
+    expect(screen.getByText("Activation")).toBeInTheDocument();
+    expect(screen.queryByText("pTM")).not.toBeInTheDocument();
+
+    // The pLDDT score is present, so the overlay slot is the only dash.
+    expect(screen.getAllByText("\u2013")).toHaveLength(1);
   });
 
   it("swaps the middle stat for the overlay value when one is present", () => {

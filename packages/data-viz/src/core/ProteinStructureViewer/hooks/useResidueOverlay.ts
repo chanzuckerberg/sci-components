@@ -36,16 +36,17 @@ export function useResidueOverlay({
     const theme = residueValueThemeRef.current;
     if (!plugin || !theme || !isReady) return;
 
-    const hasOverlay = Boolean(overlay && overlay.values.size > 0);
-
-    if (hasOverlay) {
-      const active = overlay as ResidueValueOverlay;
+    // Set is what makes an overlay active, not populated. An overlay whose
+    // values have not arrived yet, or that has nothing to report, still owns
+    // the coloring: its residues read as missing and come out neutral, which
+    // is the honest answer and the one the legend beside it is describing.
+    if (overlay) {
       theme.setState({
-        colorScale: active.colorScale ?? PLASMA_COLOR_SCALE,
-        max: active.max,
-        min: active.min ?? 0,
+        colorScale: overlay.colorScale ?? PLASMA_COLOR_SCALE,
+        max: overlay.max,
+        min: overlay.min ?? 0,
         mode,
-        values: active.values,
+        values: overlay.values,
       });
       applyColorTheme(plugin, RESIDUE_VALUE_THEME_NAME);
     } else {

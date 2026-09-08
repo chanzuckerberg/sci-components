@@ -46,6 +46,9 @@ const PLDDT_SCALE_LABEL = "pLDDT";
 /** Caption used when an overlay does not name itself. */
 const DEFAULT_OVERLAY_LABEL = "Value";
 
+/** Readout slot label used when an overlay does not name one. */
+const DEFAULT_READOUT_LABEL = "Value";
+
 /** Tracks the residue under the pointer, deduplicated by index. */
 interface HoveredResidue {
   index: number;
@@ -75,7 +78,9 @@ function resolveScaleProps(
       scaleLabel: overlay.label ?? DEFAULT_OVERLAY_LABEL,
       scaleMax: overlay.max,
       scaleTooltip: overlay.tooltip,
-      valueLabel: overlay.readoutLabel,
+      // Always defined while an overlay is set: the legend reads the label's
+      // presence as the readout's value slot being in use at all.
+      valueLabel: overlay.readoutLabel ?? DEFAULT_READOUT_LABEL,
     };
   }
 
@@ -255,7 +260,9 @@ const ProteinStructureViewer = forwardRef(
       (label: string, index: number): ResidueReadout => ({
         label,
         plddt: plddt?.[index] ?? null,
-        value: residueOverlay ? (residueOverlay.values.get(index) ?? 0) : null,
+        // Null for a residue the overlay has no value for, matching the
+        // neutral the structure paints it rather than claiming a zero.
+        value: residueOverlay?.values.get(index) ?? null,
       }),
       [plddt, residueOverlay]
     );
