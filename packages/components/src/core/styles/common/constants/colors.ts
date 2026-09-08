@@ -96,7 +96,7 @@ export const SDSDarkThemeColors: Colors = {
     "500": "#aaaaaa",
     "600": "#cdcdcd",
     "700": "#ededed",
-    "75": "#101010",
+    "75": "#1b1b1b",
     "800": "#fafafa",
     "900": "#ffffff",
   },

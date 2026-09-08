@@ -208,6 +208,12 @@ export const catalog: CatalogCategory[] = [
         example: "core/Legend/DefaultLegend",
       },
       {
+        name: "ProteinStructureViewer",
+        docs: "data-viz-proteinstructureviewer",
+        example:
+          "data-viz/ProteinStructureViewer/MinimalProteinStructureViewer",
+      },
+      {
         name: "StackedBarChart",
         docs: "data-viz-stackedbarchart",
         example: "data-viz/StackedBarChart/DefaultStackedBarChart",

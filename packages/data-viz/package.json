@@ -35,7 +35,10 @@
     "data-viz",
     "visualization",
     "heatmap",
-    "echarts"
+    "echarts",
+    "molstar",
+    "protein",
+    "structure"
   ],
   "config": {
     "commitizen": {
@@ -56,10 +59,13 @@
     "@czi-sds/components": "^24.0.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^9.0.0",
+    "@phosphor-icons/react": "^2.1.10",
     "echarts": "^6.0.0",
     "lodash": "^4.17.21",
+    "molstar": "^5.6.1",
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react-dom": ">=18.0.0",
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^2.1.0",
@@ -68,7 +74,9 @@
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "d3-scale-chromatic": "^3.0.0",
+    "molstar": "^5.6.1",
     "react-redux": "^9.1.0",
+    "rxjs": "^7.8.2",
     "simplex-noise": "^4.0.1"
   },
   "dependencies": {

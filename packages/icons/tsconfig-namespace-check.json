@@ -7,6 +7,24 @@
     "paths": {
       "@icons/src/*": ["./src/*"]
     },
-    "types": ["vitest/globals", "node"]
+    "types": ["vitest/globals", "node"],
+    /*
+     * Type check only. The published declarations come from
+     * `rolldown-plugin-dts`, so emitting here would just write a parallel tree
+     * into `dist` next to the real build output. Declaration emit also cannot
+     * name the `Meta` type the story files assert, which Storybook declares in
+     * a bundled chunk its `exports` map does not expose (TS2742). `composite`
+     * is off so no `.tsbuildinfo` caches diagnostics between runs.
+     */
+    "composite": false,
+    "declaration": false,
+    "noEmit": true,
+    /*
+     * The namespace tests import `@czi-sds/icons` by name, which resolves
+     * through this package's own `exports` map into `dist`. Turning off
+     * `composite` also drops its inferred `rootDir`, which that resolution
+     * needs in order to tell whether the target is our own output (TS2209).
+     */
+    "rootDir": "./src"
   }
 }

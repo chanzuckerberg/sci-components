@@ -72,8 +72,8 @@ export default {
   },
   component: Tag,
   parameters: {
-    axe: {
-      disabledRules: [TAG_COLOR_CONTRAST_RULE],
+    a11y: {
+      config: { rules: [{ enabled: false, id: TAG_COLOR_CONTRAST_RULE }] },
     },
   },
   title: "Components/Tag",
@@ -102,9 +102,6 @@ export const ScreenshotTest = {
     sdsType: TAG_SDS_TYPES[0],
   },
   parameters: {
-    axe: {
-      timeout: 10 * 1000,
-    },
     controls: {
       exclude: TAG_EXCLUDED_CONTROLS,
     },
@@ -125,13 +122,12 @@ export const GrayPrimaryScreenshotTest = {
     sdsType: TAG_SDS_TYPES[0],
   },
   parameters: {
-    axe: {
+    a11y: {
       // `color-contrast` is disabled for this test because design tested it with
       // APCA and determined these colors pass, our test just isn't able to use APCA
       // yet; this color was pulled into its own story so the remaining colors can be
       // tested separately
-      disabledRules: [TAG_COLOR_CONTRAST_RULE],
-      timeout: 10 * 1000,
+      config: { rules: [{ enabled: false, id: TAG_COLOR_CONTRAST_RULE }] },
     },
     controls: {
       exclude: TAG_EXCLUDED_CONTROLS,
@@ -155,13 +151,12 @@ export const SuccessWarningScreenshotTest = {
     sdsType: TAG_SDS_TYPES[0],
   },
   parameters: {
-    axe: {
+    a11y: {
       // `color-contrast` is disabled for this test because it is now a known
       // issue and design will work on adjusting the colors so that they pass;
       // these colors were pulled into their own story so the remaining colors
       // can be tested separately
-      disabledRules: [TAG_COLOR_CONTRAST_RULE],
-      timeout: 10 * 1000,
+      config: { rules: [{ enabled: false, id: TAG_COLOR_CONTRAST_RULE }] },
     },
     controls: {
       exclude: TAG_EXCLUDED_CONTROLS,
