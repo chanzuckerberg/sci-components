@@ -70,9 +70,7 @@ describe("tickInterval", () => {
 
 describe("ticksFor", () => {
   it("places ticks on round multiples inside the range", () => {
-    expect(ticksFor(45_462, 45_750, 100)).toEqual([
-      45_500, 45_600, 45_700,
-    ]);
+    expect(ticksFor(45_462, 45_750, 100)).toEqual([45_500, 45_600, 45_700]);
   });
 
   it("returns nothing when no multiple falls inside the range", () => {
