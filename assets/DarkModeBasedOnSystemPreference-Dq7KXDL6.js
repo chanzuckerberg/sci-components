@@ -1,1 +1,0 @@
-import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-DwWEGOAU.js";import{t as r}from"./Button-BLK9-WJm.js";import{t as i}from"./src-KIV4VAaM.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(r,{sdsType:`primary`,children:`Label`})})}var o;e((()=>{i(),o=t(n())}))();export{a as default};
