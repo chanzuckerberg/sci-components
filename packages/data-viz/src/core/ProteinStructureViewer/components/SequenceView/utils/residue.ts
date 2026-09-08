@@ -104,9 +104,15 @@ export function resolveSequenceNumberPeriod(
  * assistive technology gets, which is why it carries the residues themselves
  * rather than just how many there are. They are spaced apart so they are read
  * as individual letters instead of running together into a word.
+ *
+ * A complex draws one grid per chain, and the caption naming each is a visual
+ * sibling rather than a label, so the chain is named here too. Without it every
+ * grid announces the same name and which chain a reader is on is apparent only
+ * by sight.
  */
 export function buildSequenceLabel(
-  sequenceWrapper: SequenceWrapper.Any
+  sequenceWrapper: SequenceWrapper.Any,
+  chainLabel?: string
 ): string {
   const letters: string[] = [];
 
@@ -114,7 +120,9 @@ export function buildSequenceLabel(
     letters.push(sequenceWrapper.residueLabel(i));
   }
 
-  const name = `Residue sequence, ${sequenceWrapper.length} residues`;
+  const name = chainLabel
+    ? `Chain ${chainLabel}, residue sequence, ${sequenceWrapper.length} residues`
+    : `Residue sequence, ${sequenceWrapper.length} residues`;
 
   return letters.length > 0 ? `${name}: ${letters.join(" ")}` : name;
 }

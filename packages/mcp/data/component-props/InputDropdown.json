@@ -9,7 +9,7 @@
       "classes": {
         "description": "A class name for each part of the input, for styling one of them without reaching through the DOM: root, label, labelDetailsWrapper, contentWrapper, details, counter, iconWrapper, chevronIcon and minimalDetails.",
         "isRequired": false,
-        "type": "complex"
+        "type": "{ root?: string | undefined; label?: string | undefined; labelDetailsWrapper?: string | undefined; contentWrapper?: string | undefined; details?: string | undefined; counter?: string | undefined; iconWrapper?: string | undefined; chevronIcon?: string | undefined; minimalDetails?: string | undefined; }"
       },
       "disabled": {
         "defaultValue": false,

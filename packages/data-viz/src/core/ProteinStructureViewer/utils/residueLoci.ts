@@ -10,10 +10,9 @@ import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
  * Every atom of the residue at a 0-based index, as geometry Mol* can focus and
  * frame, or undefined when the structure has no such residue.
  *
- * This is the inverse of the index the click and hover callbacks report, which
- * they derive from `label_seq_id`. That id restarts with every chain, so on a
- * multi-chain structure this resolves to the first chain carrying the index -
- * the same limitation the callbacks and the value overlay already carry.
+ * The inverse of `residueRefFromLoci`, and keyed on the same residue ordinal,
+ * so a `selectedResidue` echoed back from a click resolves to the residue that
+ * was clicked - on a complex as much as on a single chain.
  *
  * The whole residue is collected rather than one atom, since the caller frames
  * the camera on the loci's bounding sphere and a single atom would zoom far
@@ -35,11 +34,7 @@ export function lociForResidueIndex(
 
       for (let i = 0; i < unit.elements.length; i++) {
         location.element = unit.elements[i] as ElementIndex;
-        // label_seq_id is 1-based in PDB output; the callbacks report 0-based.
-        if (
-          StructureProperties.residue.label_seq_id(location) - 1 ===
-          residueIndex
-        ) {
+        if (StructureProperties.residue.key(location) === residueIndex) {
           indices.push(i as StructureElement.UnitIndex);
         }
       }
@@ -53,12 +48,4 @@ export function lociForResidueIndex(
   }
 
   return undefined;
-}
-
-/** The residue's three-letter code, e.g. `THR`. */
-export function residueCompId(loci: StructureElement.Loci): string | undefined {
-  const location = StructureElement.Location.create(void 0);
-  const first = StructureElement.Loci.getFirstLocation(loci, location);
-
-  return first ? StructureProperties.residue.label_comp_id(first) : undefined;
 }

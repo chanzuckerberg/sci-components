@@ -6,7 +6,7 @@
  */
 import * as path from "path";
 import {
-  withDefaultConfig,
+  withCompilerOptions,
   ParserOptions,
   PropItem,
 } from "react-docgen-typescript";
@@ -50,9 +50,28 @@ const parserOptions: ParserOptions = {
   componentNameResolver: resolveComponentName,
 };
 
-// Note: despite the name, `withDefaultConfig` does not read a tsconfig. It uses
-// react-docgen-typescript's own hardcoded compiler options.
-export const parser = withDefaultConfig(parserOptions);
+/**
+ * `withDefaultConfig` does not read a tsconfig, despite the name: it compiles
+ * with react-docgen-typescript's own hardcoded options, which leave
+ * `strictNullChecks` off. Without it TypeScript treats `null` as a member of
+ * every type and erases it from unions, so a `number | null` prop is published
+ * as `number` - telling a consumer a prop cannot take the one value that
+ * clearing it depends on.
+ *
+ * Turning it on means supplying the compiler options directly, so the four
+ * below restate the library's defaults; the library does not export them. Only
+ * `strictNullChecks` is ours.
+ */
+export const parser = withCompilerOptions(
+  {
+    esModuleInterop: true,
+    jsx: ts.JsxEmit.React,
+    module: ts.ModuleKind.CommonJS,
+    strictNullChecks: true,
+    target: ts.ScriptTarget.Latest,
+  },
+  parserOptions
+);
 
 /**
  * React's node and event types expand into unions too large to be worth
@@ -153,30 +172,43 @@ function enumUnion(typeValue: PropItem["type"]): string | null {
     return null;
   }
 
-  const members: string[] = (
-    typeValue.value as ({ value?: unknown } | string | number)[]
-  )
-    .map((v) =>
-      typeof v === "object" && v !== null && v.value !== undefined
-        ? String(v.value)
-        : String(v)
-    )
-    .filter((v) => v !== "" && v !== "|");
+  const members: string[] = [
+    ...new Set(
+      (typeValue.value as ({ value?: unknown } | string | number)[])
+        .map((v) =>
+          typeof v === "object" && v !== null && v.value !== undefined
+            ? String(v.value)
+            : String(v)
+        )
+        // `shouldRemoveUndefinedFromOptional` takes `undefined` off the type
+        // string, but not out of the members resolved beside it. Left in, an
+        // optional prop would publish `undefined` as a value a caller may pass,
+        // when it only means the prop may be omitted.
+        .filter((v) => v !== "" && v !== "|" && v !== "undefined")
+    ),
+  ];
 
   if (members.length === 0) {
     return null;
   }
 
+  // `null` is held back so the members either side of it are the ones tested
+  // below, and so it lands where the source writes it: at the tail.
+  const nullable = members.includes("null");
+  const rest = members.filter((v) => v !== "null");
+
   // `shouldExtractLiteralValuesFromEnum` splits a boolean into its two
   // literals, which reads as if the prop took the strings "true" and "false".
-  if (
-    members.length === 2 &&
-    members.every((v) => v === "true" || v === "false")
-  ) {
-    return "boolean";
+  const base =
+    rest.length === 2 && rest.every((v) => v === "true" || v === "false")
+      ? "boolean"
+      : rest.join(" | ");
+
+  if (!base) {
+    return nullable ? "null" : null;
   }
 
-  return members.join(" | ");
+  return nullable ? `${base} | null` : base;
 }
 
 /**

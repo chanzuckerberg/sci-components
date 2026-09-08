@@ -7,8 +7,9 @@
 // rendering anything - useful when a stat is still loading.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
-// polymer cartoon traces. Residue indices passed to onResidueClick and back
-// through selectedResidue are 0-based, so the first residue of the chain is 0.
+// polymer cartoon traces. onResidueClick hands back a ResidueRef; its `index`
+// is the 0-based position selectedResidue expects, while `chainId` and `seqId`
+// carry the numbering the file uses.
 
 import { ProteinStructureViewer } from "@czi-sds/data-viz";
 import { useState } from "react";
@@ -214,10 +215,8 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        onResidueClick={(residueIndex) =>
-          setSelectedResidue((prev) =>
-            prev === residueIndex ? null : residueIndex
-          )
+        onResidueClick={({ index }) =>
+          setSelectedResidue((prev) => (prev === index ? null : index))
         }
         onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}
