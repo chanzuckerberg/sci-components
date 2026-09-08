@@ -835,3 +835,62 @@ export const BARNASE_BARSTAR_PLDDT: number[] = [
   0.971, 0.982, 0.928, 0.972, 0.98, 0.977, 0.979, 0.98, 0.979, 0.971, 0.957,
   0.901,
 ];
+
+/**
+ * How far inside the interface each residue sits, in angstroms: the depth of
+ * its closest atom within an 8A shell around the partner chain, so a residue
+ * pressed against the other chain scores highest and one merely near the rim
+ * scores close to zero. Residues away from the interface are absent, and the
+ * overlay renders those neutral.
+ *
+ * Derived from the coordinates above rather than measured elsewhere, and keyed
+ * by the same residue ordinal the callbacks report - which is what makes it
+ * span the chain break: barnase occupies 0-109 and barstar 110-198, so the
+ * entries past 110 land on the second chain rather than wrapping back to the
+ * first.
+ */
+export const BARNASE_BARSTAR_INTERFACE = new Map<number, number>([
+  [26, 2.22],
+  [27, 0.85],
+  [35, 1.51],
+  [36, 4.1],
+  [37, 4.47],
+  [38, 2.16],
+  [39, 1.09],
+  [56, 0.79],
+  [57, 1.48],
+  [58, 2.59],
+  [59, 2.81],
+  [60, 0.29],
+  [80, 0.06],
+  [81, 1.27],
+  [82, 2.42],
+  [83, 0.57],
+  [84, 1.87],
+  [99, 1.1],
+  [100, 3.91],
+  [101, 4.72],
+  [102, 2.62],
+  [103, 3.2],
+  [104, 0.81],
+  [136, 0.74],
+  [138, 3.67],
+  [139, 2.9],
+  [140, 4.72],
+  [141, 2.76],
+  [142, 2.06],
+  [143, 2.29],
+  [144, 2.81],
+  [145, 3.57],
+  [146, 1.31],
+  [149, 0.44],
+  [151, 2.22],
+  [152, 3.42],
+  [153, 4.47],
+  [154, 3.57],
+  [155, 2.99],
+  [156, 1.35],
+]);
+
+/** Largest value in `BARNASE_BARSTAR_INTERFACE`, normalizing the overlay. */
+export const BARNASE_BARSTAR_MAX_INTERFACE = 4.72;

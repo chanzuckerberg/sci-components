@@ -1,17 +1,25 @@
 import type { SequenceWrapper } from "molstar/lib/mol-plugin-ui/sequence/wrapper";
 import { OrderedSet } from "molstar/lib/mol-data/int";
-import { StructureElement } from "molstar/lib/mol-model/structure";
+import {
+  StructureElement,
+  StructureProperties,
+} from "molstar/lib/mol-model/structure";
 import type { Structure } from "molstar/lib/mol-model/structure";
 import type { SequenceWrapperEntry } from "../components/SequenceView/hooks/useSequenceWrappers";
 import { sequenceTextFromEntries } from "../components/SequenceView/utils/sequenceText";
 import { extendToRange } from "../components/SequenceView/utils/loci";
-import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
+import {
+  BARNASE_BARSTAR_INTERFACE,
+  BARNASE_BARSTAR_MAX_INTERFACE,
+  BARNASE_BARSTAR_PDB,
+} from "../__storybook__/barnaseBarstar";
 import { injectPlddtIntoPdb } from "../utils/plddt";
 import { residueLabel, residueRefFromLoci } from "../utils/residueRef";
 import {
   bFactorOf,
   eachResidue,
   lociForSeqId,
+  residueIndices,
   structureFromPdb,
 } from "./molstarStructure";
 
@@ -257,5 +265,48 @@ describe("extendToRange", () => {
     ]);
 
     expect(extendToRange(multiUnit, anchor)).toBe(multiUnit);
+  });
+});
+
+/**
+ * The overlay the complex story paints is derived from the coordinates in the
+ * fixture beside it, so the two can drift apart silently: edit the structure
+ * and the map still loads, just against residues that have moved.
+ */
+describe("the interface overlay fixture", () => {
+  let complex: Structure;
+
+  beforeAll(async () => {
+    complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+  });
+
+  it("keys every entry to a residue the structure has", () => {
+    const present = residueIndices(complex);
+    const missing = [...BARNASE_BARSTAR_INTERFACE.keys()].filter(
+      (key) => !present.has(key)
+    );
+
+    expect(missing).toEqual([]);
+  });
+
+  it("reaches both chains, which is what the chain break asks of it", () => {
+    // Keyed by position across the whole structure, so entries past barnase's
+    // 110 residues fall on barstar instead of wrapping onto barnase again.
+    const chainOf = eachResidue(complex, (location) =>
+      StructureProperties.chain.auth_asym_id(location)
+    );
+    const covered = [
+      ...new Set(
+        [...BARNASE_BARSTAR_INTERFACE.keys()].map((k) => chainOf.get(k))
+      ),
+    ].sort();
+
+    expect(covered).toEqual(["A", "B"]);
+  });
+
+  it("declares the maximum the overlay normalizes against", () => {
+    expect(BARNASE_BARSTAR_MAX_INTERFACE).toBe(
+      Math.max(...BARNASE_BARSTAR_INTERFACE.values())
+    );
   });
 });

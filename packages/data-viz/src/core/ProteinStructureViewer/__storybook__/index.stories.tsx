@@ -1,5 +1,10 @@
 import { Args, Meta } from "@storybook/react-vite";
-import { BARNASE_BARSTAR_PDB, BARNASE_BARSTAR_PLDDT } from "./barnaseBarstar";
+import {
+  BARNASE_BARSTAR_INTERFACE,
+  BARNASE_BARSTAR_MAX_INTERFACE,
+  BARNASE_BARSTAR_PDB,
+  BARNASE_BARSTAR_PLDDT,
+} from "./barnaseBarstar";
 import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
 import { ProteinStructureViewer } from "./stories/default";
 
@@ -97,6 +102,15 @@ const RESIDUE_OVERLAY = {
   values: CRAMBIN_RESIDUE_VALUES,
 };
 
+const INTERFACE_OVERLAY = {
+  label: "Interface depth",
+  max: BARNASE_BARSTAR_MAX_INTERFACE,
+  readoutLabel: "Depth",
+  tooltip:
+    "How far inside the 8A interface shell the residue sits, in angstroms",
+  values: BARNASE_BARSTAR_INTERFACE,
+};
+
 export const Default = {
   args: DEFAULT_ARGS,
   parameters: VIEWER_CHECKS,
@@ -167,6 +181,28 @@ export const Complex = {
     ...DEFAULT_ARGS,
     pdb: BARNASE_BARSTAR_PDB,
     plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * The complex under an overlay, which is how a binder is usually read: not by
+ * confidence, but by some per-residue quantity scored over the pair. Here that
+ * is how deep each residue sits in the interface, so the two contact faces
+ * light up and the rest of both chains stays neutral.
+ *
+ * It also shows the overlay spanning a chain break. The map is keyed by the
+ * residue's position in the structure, so its entries past 110 fall on barstar
+ * rather than wrapping back onto barnase - the two patches are one map, not
+ * one per chain.
+ */
+export const ComplexWithResidueOverlay = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    residueOverlay: INTERFACE_OVERLAY,
     stats: COMPLEX_STATS,
   },
   parameters: VIEWER_CHECKS,
