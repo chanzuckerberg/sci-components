@@ -32,7 +32,7 @@
       "stats": {
         "description": "Up to three whole-structure stats shown along the bottom. A null entry\nreserves its column without rendering anything, so the columns never shift\nas values come and go.",
         "isRequired": false,
-        "type": "StructureStat[]"
+        "type": "(StructureStat | null)[]"
       },
       "pdb": {
         "defaultValue": "- (required)",
@@ -43,18 +43,18 @@
       "plddt": {
         "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover.",
         "isRequired": false,
-        "type": "number[]"
+        "type": "number[] | null"
       },
       "residueOverlay": {
         "description": "Per-residue values that override pLDDT coloring while set.",
         "isRequired": false,
-        "type": "ResidueValueOverlay"
+        "type": "ResidueValueOverlay | null"
       },
       "selectedResidue": {
         "defaultValue": null,
         "description": "0-based index of the selected residue, or null when none is selected.\nControlled: selecting a residue zooms the camera in on it, and clearing the\nselection zooms back out to the default view.",
         "isRequired": false,
-        "type": "number"
+        "type": "number | null"
       },
       "onResidueClick": {
         "description": "Called with the clicked residue.",
@@ -64,7 +64,7 @@
       "onResidueHover": {
         "description": "Called as the pointer moves over residues, and with `null` when it leaves\nthe structure.",
         "isRequired": false,
-        "type": "(residue: ResidueRef) => void"
+        "type": "(residue: ResidueRef | null) => void"
       },
       "onSelectionClear": {
         "description": "Called when the user clicks empty space, clearing the selection.",

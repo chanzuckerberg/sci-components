@@ -4,12 +4,12 @@
       "DropdownMenuProps": {
         "description": "These props are directly passed to the underlying DropdownMenu component, customizing its behavior. It is also the way to reach the menu's PopperComponent, PaperComponent and placement.",
         "isRequired": false,
-        "type": "SdsDropdownMenuProps<T, Multiple, DisableClearable, FreeSolo>"
+        "type": "Partial<DropdownMenuProps>"
       },
       "InputDropdownProps": {
         "description": "These props are directly passed to the underlying InputDropdown component, customizing its behavior.",
         "isRequired": false,
-        "type": "InputDropdownPropsType"
+        "type": "Partial<InputDropdownPropsType>"
       },
       "buttonPosition": {
         "defaultValue": "left",
@@ -55,7 +55,7 @@
       "onChange": {
         "description": "Callback fired when the value changes.\n@param event The event source of the callback.\n@param value The new value of the component.\n@param reason One of \"createOption\", \"selectOption\", \"removeOption\", \"blur\" or \"clear\".\n@param details",
         "isRequired": false,
-        "type": "(event: SyntheticEvent"
+        "type": "(event: SyntheticEvent<Element, Event>, value: AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>, reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<...> | undefined) => void"
       },
       "onClose": {
         "description": "Callback fired when the popup requests to be closed.\nUse in controlled mode (see open).\n@param event The event source of the callback.\n@param reason Can be: `\"toggleInput\"`, `\"escape\"`, `\"selectOption\"`, `\"removeOption\"`, `\"blur\"`.",
@@ -92,7 +92,7 @@
       "onInputChange": {
         "description": "Callback fired when the input value changes.\n@param event The event source of the callback.\n@param value The new value of the text input.\n@param reason Can be: `\"input\"` (user input), `\"reset\"` (programmatic change), `\"clear\"`, `\"blur\"`, `\"selectOption\"`, `\"removeOption\"`",
         "isRequired": false,
-        "type": "((event: SyntheticEvent"
+        "type": "((event: SyntheticEvent<Element, Event>, value: string, reason: AutocompleteInputChangeReason) => void) & ((event: SyntheticEvent<...>, value: string, reason: AutocompleteInputChangeReason) => void)"
       },
       "InputDropdownComponent": {
         "defaultValue": "InputDropdown",

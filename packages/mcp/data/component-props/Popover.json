@@ -21,12 +21,12 @@
       "anchorEl": {
         "description": "An HTML element, [PopoverVirtualElement](https://mui.com/material-ui/react-popover/#virtual-element),\nor a function that returns either.\nIt's used to set the position of the popover.",
         "isRequired": false,
-        "type": "Element | PopoverVirtualElement | () => Element | PopoverVirtualElement"
+        "type": "Element | PopoverVirtualElement | () => Element | PopoverVirtualElement | null | null"
       },
       "onClose": {
         "description": "Callback fired when the component requests to be closed.\nThe `reason` parameter can optionally be used to control the response to `onClose`.",
         "isRequired": false,
-        "type": "\"backdropClick\" | \"escapeKeyDown\""
+        "type": "(event: {}, reason: \"backdropClick\" | \"escapeKeyDown\") => void"
       },
       "children": {
         "description": "The content of the component.",
@@ -48,13 +48,13 @@
         "defaultValue": {},
         "description": "The props used for each slot inside.",
         "isRequired": false,
-        "type": "{ root?: SlotProps"
+        "type": "{ root?: SlotProps<ElementType<ModalProps, keyof IntrinsicElements>, PopoverRootSlotPropsOverrides, PopoverOwnerState> | undefined; paper?: SlotProps<...> | undefined; transition?: SlotComponentProps<...> | undefined; backdrop?: SlotProps<...> | undefined; }"
       },
       "marginThreshold": {
         "defaultValue": 16,
         "description": "Specifies how close to the edge of the window the popover can appear.\nIf null, the popover will not be constrained by the window.",
         "isRequired": false,
-        "type": "number"
+        "type": "number | null"
       },
       "keepMounted": {
         "defaultValue": false,
@@ -84,7 +84,7 @@
         "defaultValue": "auto",
         "description": "Set to 'auto' to automatically calculate transition time based on height.",
         "isRequired": false,
-        "type": "number | { appear?: number; enter?: number; exit?: number; } | \"auto\""
+        "type": "number | { appear?: number | undefined; enter?: number | undefined; exit?: number | undefined; } | \"auto\""
       }
     }
   }

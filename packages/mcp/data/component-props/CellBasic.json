@@ -90,7 +90,7 @@
       "tooltipProps": {
         "description": "Passed to the Tooltip, and overrides the defaults the cell sets (title, subtitle, arrow, dark style, no leave delay).",
         "isRequired": false,
-        "type": "TooltipProps"
+        "type": "Partial<TooltipProps>"
       },
       "verticalAlign": {
         "defaultValue": "top",

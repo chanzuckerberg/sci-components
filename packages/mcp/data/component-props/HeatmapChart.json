@@ -76,7 +76,7 @@
         "defaultValue": "a 2–4px border",
         "description": "How a cell is drawn while the pointer is over it. Takes the same shape as\n`itemStyle`: color, border, opacity.\nhttps://echarts.apache.org/en/option.html#series-scatter.emphasis",
         "isRequired": false,
-        "type": "ScatterStateOption"
+        "type": "ScatterStateOption<CallbackDataParams> & { focus?: DefaultEmphasisFocus | undefined; scale?: number | boolean | undefined; } & { ...; }"
       },
       "dataZoom": {
         "defaultValue": "the camera window",
@@ -88,7 +88,7 @@
         "defaultValue": "fills the container",
         "description": "Where the plotting area sits inside the container. The function form\nreceives the computed default, for insetting it without recomputing the\nsize.\nhttps://echarts.apache.org/en/option.html#grid",
         "isRequired": false,
-        "type": "GridOption | GridOption[] | (defaultOption: GridOption | GridOption[]) => GridOption | GridOption[]"
+        "type": "GridOption | GridOption[] | (defaultOption: GridOption | GridOption[] | undefined) => GridOption | GridOption[] | undefined"
       },
       "options": {
         "description": "Anything else ECharts understands, merged over the generated options.\nhttps://echarts.apache.org/en/option.html",
