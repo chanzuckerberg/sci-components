@@ -1,12 +1,16 @@
 import {
   CommonThemeProps,
+  fontBodyMediumXxs,
   fontBodyXxxs,
   fontBodyXxs,
   fontCodeXs,
+  getCorners,
   getSemanticColors,
+  getShadows,
   getSpaces,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { withAlpha } from "./utils/palette";
 
 /**
  * Layout scaffolding for the track.
@@ -153,34 +157,73 @@ export const TrackPlot = styled("div")`
  *
  * Positioned by the component rather than by a popper library: the anchor is a
  * point inside a canvas, not an element, so there is nothing for a popper to
- * attach to.
+ * attach to. Everything else — surface, type scale, radius, shadow, hairline
+ * outline — matches the SDS `Tooltip` component, so the two read as the same
+ * object even though this one cannot reuse it.
+ *
+ * **It deliberately does not use the `*Inverse` tokens.** The obvious pairing
+ * for a floating dark chip is `surfaceInverse` + `textPrimaryInverse`, and it
+ * is correct in light mode and broken in dark: the dark theme resolves
+ * `surfaceInverse` to gray 100 (#333333) and `textPrimaryInverse` to gray 50
+ * (#000000), which is black on dark grey at roughly 1.5:1. `surfacePrimary` +
+ * `textPrimary` is the pair SDS `Tooltip` itself uses and the one that inverts
+ * correctly in both modes; the outline and shadow below are what separate the
+ * tooltip from a plot drawn on that same surface.
  */
 export const TrackTooltip = styled("div")`
-  ${fontBodyXxxs}
-
   position: absolute;
   z-index: 2;
   pointer-events: none;
   white-space: nowrap;
 
   ${(props: CommonThemeProps) => {
+    const corners = getCorners(props);
     const semanticColors = getSemanticColors(props);
+    const shadows = getShadows(props);
     const spaces = getSpaces(props);
 
     return `
-      background-color: ${semanticColors?.base?.surfaceInverse};
-      color: ${semanticColors?.base?.textPrimaryInverse};
-      border-radius: 4px;
-      padding: ${spaces?.xxs}px ${spaces?.xs}px;
+      background-color: ${semanticColors?.base?.surfacePrimary};
+      color: ${semanticColors?.base?.textPrimary};
+      border-radius: ${corners?.m}px;
+      box-shadow: ${shadows?.m};
+      outline: 1px solid ${withAlpha(
+        semanticColors?.base?.borderSecondary ?? "#000000",
+        0.15
+      )};
+      padding: ${spaces?.xxs}px ${spaces?.s}px;
       transform: translate(-50%, -100%);
     `;
   }}
 `;
 
+/** Headline row: the block's name, or the feature and its binned value. */
+export const TrackTooltipTitle = styled("div")`
+  ${fontBodyMediumXxs}
+
+  ${(props: CommonThemeProps) =>
+    `color: ${getSemanticColors(props)?.base?.textPrimary};`}
+`;
+
+/** Supporting row: a product, or a predicted label and its support. */
+export const TrackTooltipDetail = styled("div")`
+  ${fontBodyXxxs}
+
+  ${(props: CommonThemeProps) =>
+    `color: ${getSemanticColors(props)?.base?.textSecondary};`}
+`;
+
+/**
+ * Coordinate row.
+ *
+ * Tabular figures, so digits line up between the tooltip and the header rather
+ * than jittering as the pointer moves across a trace.
+ */
 export const TrackTooltipRange = styled("div")`
   ${fontCodeXs}
 
-  opacity: 0.8;
+  ${(props: CommonThemeProps) =>
+    `color: ${getSemanticColors(props)?.base?.textSecondary};`}
 `;
 
 /**

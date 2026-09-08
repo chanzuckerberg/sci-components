@@ -1,4 +1,9 @@
-import { TrackTooltip, TrackTooltipRange } from "../../style";
+import {
+  TrackTooltip,
+  TrackTooltipDetail,
+  TrackTooltipRange,
+  TrackTooltipTitle,
+} from "../../style";
 import { formatRange } from "../../utils/format";
 import { TrackHit } from "../../utils/hitTest";
 import { TrackRow } from "../../utils/layout";
@@ -42,12 +47,12 @@ export const HitTooltip = ({
 
   return (
     <TrackTooltip aria-hidden style={{ left, top: row.y }}>
-      <div>
+      <TrackTooltipTitle>
         {hit.kind === "trace"
           ? `${hit.label}: ${hit.value.toFixed(3)}`
           : hit.label}
-      </div>
-      {hit.detail && <div>{hit.detail}</div>}
+      </TrackTooltipTitle>
+      {hit.detail && <TrackTooltipDetail>{hit.detail}</TrackTooltipDetail>}
       <TrackTooltipRange>
         {formatRange(
           hit.start,
