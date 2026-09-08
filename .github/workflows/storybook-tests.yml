@@ -38,29 +38,21 @@ jobs:
 
       # Step 4: Install Playwright for testing.
       #
-      # Chromium only, on purpose. Both suites here run Chromium: axe-storybook
-      # reports "[chromium] accessibility", and the Storybook test runner
-      # defaults to it. Naming no browser installs the system libraries for
-      # Firefox and WebKit as well, which is around 190 apt packages including
-      # gstreamer, the CJK fonts and a speech synthesiser. That apt step has
-      # taken 37 minutes when the Ubuntu mirror is slow, against about one
-      # minute when it is not, and it is the whole of this job's variance.
+      # Chromium only, on purpose. It is the one browser the suite runs in, the
+      # single instance the Vitest addon is configured with. Naming no browser
+      # installs the system libraries for Firefox and WebKit as well, which is
+      # around 190 apt packages including gstreamer, the CJK fonts and a speech
+      # synthesiser. That apt step has taken 37 minutes when the Ubuntu mirror
+      # is slow, against about one minute when it is not, and it is the whole of
+      # this job's variance.
       - name: Install Playwright
         run: yarn playwright install --with-deps chromium
 
-      # Step 5: Build Storybook
-      - name: Build Storybook
-        run: yarn build-storybook --quiet
-
-      # Step 6: Run accessibility tests on Storybook
-      - name: Run accessibility tests
-        run: yarn storybook:axeOnly
-
-      # Step 7: Serve Storybook and run tests concurrently
-      - name: Serve Storybook and run tests
-        # (Node version >= 18) it's now necessary to explicitly
-        # declare the IP address (127.0.0.1) in this context.
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server docs-build --port 6006 --silent" \
-            "npx wait-on tcp:127.0.0.1:6006 && yarn test-storybook"
+      # Step 5: Render every story and check it for accessibility violations.
+      #
+      # No Storybook build, and nothing to serve: the Vitest addon loads the
+      # stories through Vite from source, the same way `yarn start` does. The
+      # script generates the documentation snapshot stories first, since those
+      # are gitignored and so absent from a fresh checkout.
+      - name: Run Storybook tests
+        run: yarn test:storybook

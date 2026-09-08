@@ -52,8 +52,8 @@ export default {
   component: IntentMessageDemo,
   title: "Components/IntentMessage",
   parameters: {
-    axe: {
-      disabledRules: ["color-contrast"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "color-contrast" }] },
     },
   },
 } as Meta;

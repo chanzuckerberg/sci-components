@@ -32,8 +32,8 @@ export const CustomAriaLabel = {
     sdsStyle: "minimal",
   },
   parameters: {
-    axe: {
-      disabledRules: ["color-contrast"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "color-contrast" }] },
     },
     controls: {
       exclude: LIST_EXCLUDED_CONTROLS,
@@ -45,8 +45,8 @@ export const CustomAriaLabel = {
 
 export const ScreenReaderTest = {
   parameters: {
-    axe: {
-      disabledRules: ["color-contrast"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "color-contrast" }] },
     },
     controls: {
       exclude: LIST_EXCLUDED_CONTROLS,
@@ -62,8 +62,8 @@ export const ScreenReaderTest = {
 
 export const Test = {
   parameters: {
-    axe: {
-      disabledRules: ["color-contrast"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "color-contrast" }] },
     },
     controls: {
       exclude: LIST_EXCLUDED_CONTROLS,

@@ -32,7 +32,7 @@
         "defaultValue": {},
         "description": "Class names for the internal elements: root, labelCaptionContainer, label,\ncaption, radioButton, radioCheckedIcon, radioCheckedIconDot, and\nradioDefaultIcon.",
         "isRequired": false,
-        "type": "complex"
+        "type": "{ root?: string | undefined; labelCaptionContainer?: string | undefined; label?: string | undefined; caption?: string | undefined; radioButton?: string | undefined; radioCheckedIcon?: string | undefined; radioCheckedIconDot?: string | undefined; radioDefaultIcon?: string | undefined; }"
       },
       "value": {
         "description": "The value a RadioGroup compares against to decide whether this radio is\nselected. It also backs the label and caption element ids, so give every\nradio a unique one.",

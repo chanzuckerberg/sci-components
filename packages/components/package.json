@@ -17,7 +17,6 @@
     "build-watch": "rolldown -c --watch",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build",
-    "test-storybook": "test-storybook",
     "lint": "concurrently \"../../node_modules/.bin/eslint src/**/*.{ts,tsx} --quiet --fix\" \"../../node_modules/.bin/stylelint --fix '**/*.{js,ts,tsx,css}'\"  \"npm run type-check\"",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
@@ -33,8 +32,6 @@
     "sd-generate-design-tokens": "yarn sd-generate-fonts && yarn sd-generate-colors && yarn sd-generate-corners && yarn sd-generate-spaces && yarn sd-generate-shadows && yarn sd-generate-icon-sizes && yarn sd-generate-breakpoints && yarn sd-generate-borders",
     "sd-build": "yarn sd-generate-design-tokens && node ./src/common/styles-dictionary/build.mjs && npx prettier --write 'src/common/styles-dictionary/**/*.{css,scss,json}'",
     "chromatic": "npx chromatic --exit-zero-on-changes --project-token=cad4aacbfeba",
-    "storybook:axe": "yarn build-storybook && yarn storybook:axeOnly",
-    "storybook:axeOnly": "axe-storybook --build-dir docs-build",
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
   },
   "lint-staged": {

@@ -24,12 +24,14 @@ export default {
   },
   component: InputToggle,
   parameters: {
-    axe: {
-      disabledRules: [
-        // Unfortunately the MUI Switch component renders an input field without a label, which
-        // fails an axe check.
-        "label",
-      ],
+    a11y: {
+      config: {
+        rules: [
+          // Unfortunately the MUI Switch component renders an input field without a label, which
+          // fails an axe check.
+          { enabled: false, id: "label" },
+        ],
+      },
     },
   },
   title: "Components/Inputs/InputToggle",

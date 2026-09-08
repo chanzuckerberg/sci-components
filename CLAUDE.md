@@ -12,9 +12,7 @@ This is a Lerna monorepo with two packages: `@czi-sds/components` and `@czi-sds/
 - `yarn test:updateSnapshots` - Update Jest snapshots across all packages
 - `yarn lint` - Run ESLint and Stylelint across all packages
 - `yarn build-storybook` - Build Storybook for production
-- `yarn test-storybook` - Run Storybook tests
-- `yarn storybook:axe` - Build Storybook and run accessibility tests
-- `yarn storybook:axeOnly` - Run accessibility tests without building storybook
+- `yarn test:storybook` - Render every story in a real browser and check it for accessibility violations (no Storybook build required)
 - `yarn namespace-check` - Validate TypeScript namespace exports across all packages
 
 ### Package-specific commands:

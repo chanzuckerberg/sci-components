@@ -9,12 +9,14 @@ export default {
 
 export const Default = {
   parameters: {
-    axe: {
-      disabledRules: [
-        // For some reason axe is still checking color contrast of the disabled row. Maybe it only
-        // takes that into consideration for form controls?
-        "color-contrast",
-      ],
+    a11y: {
+      config: {
+        rules: [
+          // For some reason axe is still checking color contrast of the disabled row. Maybe it only
+          // takes that into consideration for form controls?
+          { enabled: false, id: "color-contrast" },
+        ],
+      },
     },
   },
 };
