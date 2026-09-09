@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.0...@czi-sds/mcp@0.18.1) (2026-09-09)
+
+### Bug Fixes
+
+- **ProteinStructureViewer:** improve protein structure viewer ([#1186](https://github.com/chanzuckerberg/sci-components/issues/1186)) ([189bfa0](https://github.com/chanzuckerberg/sci-components/commit/189bfa043faf3dc9c482d68ecaacc3f31e429ab6))
+
 # [0.18.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.17.0...@czi-sds/mcp@0.18.0) (2026-09-08)
 
 ### Bug Fixes
