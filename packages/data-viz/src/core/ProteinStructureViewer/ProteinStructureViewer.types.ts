@@ -1,3 +1,4 @@
+import { TooltipProps } from "@czi-sds/components";
 import { HTMLAttributes } from "react";
 import { ColorScale } from "../../common/colorScales";
 
@@ -24,8 +25,18 @@ export interface ResidueValueOverlay {
   colorScale?: ColorScale;
   /** Legend caption, e.g. "Feature activation". */
   label?: string;
-  /** Help tooltip attached to the legend caption. */
+  /**
+   * Title of the help tooltip on the legend caption. The common case: a
+   * string is enough. Use `tooltipProps` when the tooltip needs a subtitle, a
+   * custom body, or any other SDS Tooltip prop. Overrides
+   * `tooltipProps.title` when both are set.
+   */
   tooltip?: string;
+  /**
+   * Props forwarded to the SDS Tooltip on the legend caption. The trigger is
+   * the caption's help icon, so `children` is omitted.
+   */
+  tooltipProps?: Partial<Omit<TooltipProps, "children">>;
   /**
    * Label for the per-residue readout that replaces a stat slot on hover.
    * @default "Value"

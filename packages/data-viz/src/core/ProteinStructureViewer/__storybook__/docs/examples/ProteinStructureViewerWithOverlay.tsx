@@ -7,7 +7,8 @@
 // so "no value here" reads differently from "a low value here".
 //
 // label captions the legend, readoutLabel names the slot that reports the value
-// under the cursor, and tooltip attaches a help icon to the caption.
+// under the cursor, and tooltip is the help title on the caption. tooltipProps
+// reaches the SDS Tooltip for a subtitle, a custom body, or placement.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
 // polymer cartoon traces. An overlay needs a chain long enough to see it on:
@@ -232,6 +233,9 @@ function App() {
           max: 2.4,
           readoutLabel: "Activation",
           tooltip: "Max activation across all residues for this feature",
+          tooltipProps: {
+            subtitle: "Residues at or below min stay gray.",
+          },
           values: RESIDUE_VALUES,
         }}
       />

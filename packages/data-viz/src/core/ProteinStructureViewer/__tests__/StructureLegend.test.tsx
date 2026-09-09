@@ -177,7 +177,7 @@ describe("<StructureLegend />", () => {
     expect(screen.getByText("Known")).toBeInTheDocument();
   });
 
-  it("only renders the help affordance when a scale tooltip is supplied", () => {
+  it("only renders the help affordance when a tooltip is supplied", () => {
     const { unmount } = render(
       <ThemeProvider theme={defaultTheme}>
         <StructureLegend
@@ -193,5 +193,25 @@ describe("<StructureLegend />", () => {
 
     renderLegend({ scaleTooltip: "What this measures" });
     expect(document.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("shows the help icon when only tooltipProps is supplied", () => {
+    renderLegend({
+      scaleTooltipProps: { title: "From tooltipProps" },
+    });
+
+    expect(document.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("keeps the help icon in the caption's text flow", () => {
+    // A flex caption would park the icon beside the whole wrapped block
+    // instead of at the end of the last line.
+    renderLegend({
+      scaleLabel: OVERLAY_LABEL,
+      scaleTooltip: "What this measures",
+    });
+
+    const caption = screen.getByText(OVERLAY_LABEL);
+    expect(getComputedStyle(caption).display).toBe("block");
   });
 });
