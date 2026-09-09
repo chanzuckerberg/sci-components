@@ -1,4 +1,4 @@
-import { Tooltip } from "@czi-sds/components";
+import { Tooltip, TooltipProps } from "@czi-sds/components";
 import { ColorScale } from "../../../../common/colorScales";
 import {
   ResidueReadout,
@@ -28,8 +28,14 @@ export interface StructureLegendProps {
   scale?: ColorScale | null;
   /** Caption beneath the scale, e.g. "pLDDT". */
   scaleLabel?: string;
-  /** Optional help tooltip on the caption. */
+  /** Title of the help tooltip on the caption. */
   scaleTooltip?: string;
+  /**
+   * Props forwarded to the SDS Tooltip on the caption. The trigger is the
+   * help icon, so `children` is omitted. `scaleTooltip` still sets the title
+   * and overrides `title` here when both are set.
+   */
+  scaleTooltipProps?: Partial<Omit<TooltipProps, "children">>;
   /** Value at the top of a continuous scale. */
   scaleMax?: number | null;
   /**
@@ -85,6 +91,7 @@ export default function StructureLegend({
   scaleMax = null,
   scaleMin = 0,
   scaleTooltip,
+  scaleTooltipProps,
   selectedResidue = null,
   showSequenceViewer,
   stats,
@@ -141,8 +148,14 @@ export default function StructureLegend({
           <ColorScaleLegend max={scaleMax} min={scaleMin} scale={scale} />
           <ScaleCaption>
             {scaleLabel}
-            {scaleTooltip !== undefined && (
-              <Tooltip arrow placement="bottom" title={scaleTooltip}>
+            {(scaleTooltip !== undefined ||
+              scaleTooltipProps !== undefined) && (
+              <Tooltip
+                arrow
+                placement="bottom"
+                {...scaleTooltipProps}
+                title={scaleTooltip ?? scaleTooltipProps?.title}
+              >
                 <TooltipAnchor>
                   <QuestionIcon size={10} weight="bold" />
                 </TooltipAnchor>

@@ -177,7 +177,7 @@ describe("<StructureLegend />", () => {
     expect(screen.getByText("Known")).toBeInTheDocument();
   });
 
-  it("only renders the help affordance when a scale tooltip is supplied", () => {
+  it("only renders the help affordance when a tooltip is supplied", () => {
     const { unmount } = render(
       <ThemeProvider theme={defaultTheme}>
         <StructureLegend
@@ -192,6 +192,14 @@ describe("<StructureLegend />", () => {
     unmount();
 
     renderLegend({ scaleTooltip: "What this measures" });
+    expect(document.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("shows the help icon when only tooltipProps is supplied", () => {
+    renderLegend({
+      scaleTooltipProps: { title: "From tooltipProps" },
+    });
+
     expect(document.querySelector("svg")).toBeInTheDocument();
   });
 
