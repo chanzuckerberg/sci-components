@@ -194,4 +194,16 @@ describe("<StructureLegend />", () => {
     renderLegend({ scaleTooltip: "What this measures" });
     expect(document.querySelector("svg")).toBeInTheDocument();
   });
+
+  it("keeps the help icon in the caption's text flow", () => {
+    // A flex caption would park the icon beside the whole wrapped block
+    // instead of at the end of the last line.
+    renderLegend({
+      scaleLabel: OVERLAY_LABEL,
+      scaleTooltip: "What this measures",
+    });
+
+    const caption = screen.getByText(OVERLAY_LABEL);
+    expect(getComputedStyle(caption).display).toBe("block");
+  });
 });
