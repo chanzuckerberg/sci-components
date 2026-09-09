@@ -11,6 +11,7 @@ import {
   VIEWER_CONTAINER_NAME,
   WIDE_VIEWER,
 } from "../../style";
+import { LEGEND_WIDTH } from "../ColorScaleLegend/style";
 
 /** Width below which the legend switches to its stacked layout. */
 const NARROW_BREAKPOINT = 480;
@@ -145,17 +146,21 @@ export const ScaleColumn = styled("div")`
   }}
 `;
 
+/**
+ * A wrapping text line, not a flex row: the help icon has to sit at the end of
+ * the last line of the caption rather than beside the whole wrapped block.
+ */
 export const ScaleCaption = styled("span")`
   ${fontBodyXxxs}
 
+  display: block;
   text-align: left;
-  display: flex;
-  align-items: center;
 
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
     return `
       color: ${semanticColors?.base?.textTertiaryOnDark};
+      max-width: ${LEGEND_WIDTH}px;
     `;
   }}
 `;
@@ -169,11 +174,17 @@ export const TooltipAnchor = styled("span")`
     const semanticColors = getSemanticColors(props);
 
     return `
+      display: inline-block;
       padding-left: ${spaces?.xxxs}px;
-      margin-bottom: -${spaces?.xxxs}px;
+      margin-bottom: 1px;
+      vertical-align: text-bottom;
 
       &:hover {
         color: ${semanticColors?.base?.ornamentSecondary};
+      }
+
+      svg {
+        display: block;
       }
     `;
   }}

@@ -62,6 +62,9 @@
   or below <code>min</code>, and those missing from the map, render in a neutral
   gray. The legend switches to the overlay's scale and its <code>label</code>,
   and the per-residue readout reports the value under the cursor.
+  <code>tooltip</code> is a string on the help icon next to the caption;
+  <code>tooltipProps</code> is the SDS Tooltip API, for a subtitle, a custom
+  body, or a different placement.
 </p>
 <div
   class="sds-doc-example"
@@ -422,7 +425,29 @@
       <p><code>string</code></p>
     </td>
     <td><p>-</p></td>
-    <td><p>Help tooltip attached to the legend caption.</p></td>
+    <td>
+      <p>
+        Help tooltip title on the legend caption. A string is enough for the
+        common case; use <code>tooltipProps</code> for a subtitle, a custom
+        body, or placement. Overrides <code>tooltipProps.title</code> when both
+        are set.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tooltipProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;Omit&lt;TooltipProps, "children"&gt;&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Props forwarded to the SDS Tooltip on the legend caption. The trigger is
+        the caption's help icon, so <code>children</code> is omitted.
+      </p>
+    </td>
   </tr>
   <tr>
     <td>

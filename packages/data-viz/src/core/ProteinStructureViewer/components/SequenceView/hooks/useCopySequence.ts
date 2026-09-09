@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { COPIED_FEEDBACK_MS } from "../constants";
+import { copyText } from "../utils/copyText";
 import { sequenceTextFromEntries } from "../utils/sequenceText";
 import type { SequenceWrapperEntry } from "./useSequenceWrappers";
 
@@ -28,14 +29,19 @@ export function useCopySequence(entries: SequenceWrapperEntry[]): CopySequence {
   const copySequence = useCallback(() => {
     const sequence = sequenceTextFromEntries(entries);
 
-    navigator.clipboard.writeText(sequence).then(() => {
-      setCopied(true);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(
-        () => setCopied(false),
-        COPIED_FEEDBACK_MS
-      );
-    });
+    void copyText(sequence)
+      .then(() => {
+        setCopied(true);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(
+          () => setCopied(false),
+          COPIED_FEEDBACK_MS
+        );
+      })
+      .catch(() => {
+        // The host refused both clipboard paths. Leave the button unconfirmed
+        // rather than report a copy that did not happen.
+      });
   }, [entries]);
 
   return { copied, copySequence };

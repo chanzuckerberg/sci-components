@@ -65,6 +65,7 @@ type ScaleProps = Pick<
   | "scaleMax"
   | "scaleMin"
   | "scaleTooltip"
+  | "scaleTooltipProps"
   | "valueLabel"
 >;
 
@@ -88,6 +89,7 @@ function resolveScaleProps(
       // tick reports where its colors actually start.
       scaleMin: overlay.min ?? 0,
       scaleTooltip: overlay.tooltip,
+      scaleTooltipProps: overlay.tooltipProps,
       // Always defined while an overlay is set: the legend reads the label's
       // presence as the readout's value slot being in use at all.
       valueLabel: overlay.readoutLabel ?? DEFAULT_READOUT_LABEL,
@@ -100,6 +102,7 @@ function resolveScaleProps(
       scaleLabel: PLDDT_SCALE_LABEL,
       scaleMax: null,
       scaleTooltip: undefined,
+      scaleTooltipProps: undefined,
       valueLabel: undefined,
     };
   }
@@ -109,6 +112,7 @@ function resolveScaleProps(
     scaleLabel: undefined,
     scaleMax: null,
     scaleTooltip: undefined,
+    scaleTooltipProps: undefined,
     valueLabel: undefined,
   };
 }

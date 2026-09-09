@@ -261,7 +261,7 @@ export default App;
 
 ### Residue value overlay
 
-A `residueOverlay` paints arbitrary per-residue values over the structure, taking over from pLDDT coloring while it is set. The `values` map is keyed by 0-based residue index, so the first residue of the chain is `0`. Values are normalized into `min`-`max` and sampled from a color scale; residues at or below `min`, and those missing from the map, render in a neutral gray. The legend switches to the overlay's scale and its `label`, and the per-residue readout reports the value under the cursor.
+A `residueOverlay` paints arbitrary per-residue values over the structure, taking over from pLDDT coloring while it is set. The `values` map is keyed by 0-based residue index, so the first residue of the chain is `0`. Values are normalized into `min`-`max` and sampled from a color scale; residues at or below `min`, and those missing from the map, render in a neutral gray. The legend switches to the overlay's scale and its `label`, and the per-residue readout reports the value under the cursor. `tooltip` is a string on the help icon next to the caption; `tooltipProps` is the SDS Tooltip API, for a subtitle, a custom body, or a different placement.
 
 **Example: ProteinStructureViewerWithOverlay**
 
@@ -275,7 +275,8 @@ A `residueOverlay` paints arbitrary per-residue values over the structure, takin
 // so "no value here" reads differently from "a low value here".
 //
 // label captions the legend, readoutLabel names the slot that reports the value
-// under the cursor, and tooltip attaches a help icon to the caption.
+// under the cursor, and tooltip is the help title on the caption. tooltipProps
+// reaches the SDS Tooltip for a subtitle, a custom body, or placement.
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
 // polymer cartoon traces. An overlay needs a chain long enough to see it on:
@@ -500,6 +501,9 @@ function App() {
           max: 2.4,
           readoutLabel: "Activation",
           tooltip: "Max activation across all residues for this feature",
+          tooltipProps: {
+            subtitle: "Residues at or below min stay gray.",
+          },
           values: RESIDUE_VALUES,
         }}
       />
@@ -1026,15 +1030,16 @@ The viewer spreads any remaining props onto its root div, so standard HTML attri
 
 ### ResidueValueOverlay
 
-| Name           | Type                  | Default              | Description                                                                                                                                          |
-| -------------- | --------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `values`       | `Map<number, number>` | - (required)         | 0-based residue index to value. Residues absent from the map read as `0`, so they render in the neutral gray rather than at the bottom of the scale. |
-| `max`          | `number`              | - (required)         | The value mapped to the top of the color scale.                                                                                                      |
-| `min`          | `number`              | `0`                  | Values at or below this render in a neutral gray rather than on the scale.                                                                           |
-| `colorScale`   | `ColorScale`          | `PLASMA_COLOR_SCALE` | Scale used to color residues and to draw the legend.                                                                                                 |
-| `label`        | `string`              | -                    | Legend caption, for example "Feature activation".                                                                                                    |
-| `tooltip`      | `string`              | -                    | Help tooltip attached to the legend caption.                                                                                                         |
-| `readoutLabel` | `string`              | `"Value"`            | Label for the per-residue readout that replaces a stat slot on hover.                                                                                |
+| Name           | Type                                      | Default              | Description                                                                                                                                                                                         |
+| -------------- | ----------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `values`       | `Map<number, number>`                     | - (required)         | 0-based residue index to value. Residues absent from the map read as `0`, so they render in the neutral gray rather than at the bottom of the scale.                                                |
+| `max`          | `number`                                  | - (required)         | The value mapped to the top of the color scale.                                                                                                                                                     |
+| `min`          | `number`                                  | `0`                  | Values at or below this render in a neutral gray rather than on the scale.                                                                                                                          |
+| `colorScale`   | `ColorScale`                              | `PLASMA_COLOR_SCALE` | Scale used to color residues and to draw the legend.                                                                                                                                                |
+| `label`        | `string`                                  | -                    | Legend caption, for example "Feature activation".                                                                                                                                                   |
+| `tooltip`      | `string`                                  | -                    | Help tooltip title on the legend caption. A string is enough for the common case; use `tooltipProps` for a subtitle, a custom body, or placement. Overrides `tooltipProps.title` when both are set. |
+| `tooltipProps` | `Partial<Omit<TooltipProps, "children">>` | -                    | Props forwarded to the SDS Tooltip on the legend caption. The trigger is the caption's help icon, so `children` is omitted.                                                                         |
+| `readoutLabel` | `string`                                  | `"Value"`            | Label for the per-residue readout that replaces a stat slot on hover.                                                                                                                               |
 
 ### StructureStat
 
