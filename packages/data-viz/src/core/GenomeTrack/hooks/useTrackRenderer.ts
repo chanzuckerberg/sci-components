@@ -2,13 +2,13 @@ import { RefObject, useEffect } from "react";
 import { GenomeTrackData } from "../GenomeTrack.types";
 import {
   DrawContext,
-  drawActivation,
   drawAnnotations,
-  drawRuler,
+  drawFeatureBars,
+  drawMinimap,
   drawSegments,
   drawSequence,
 } from "../renderers";
-import { TrackRow } from "../utils/layout";
+import { TrackRow, featureTraces } from "../utils/layout";
 import { TrackPalette } from "../utils/palette";
 import { GenomeScale } from "../utils/scale";
 
@@ -30,10 +30,42 @@ export interface UseTrackRendererOptions {
   hoveredId: string | null;
   palette: TrackPalette;
   rows: TrackRow[];
-  rulerHeight: number;
   scale: GenomeScale;
   selectedId: string | null;
   width: number;
+}
+
+/**
+ * Dispatches one row to its draw pass.
+ *
+ * Outside the effect so the effect stays a list of dependencies and a loop:
+ * every row kind that lands adds a case here rather than another branch inside
+ * the hook.
+ */
+function drawRow(draw: DrawContext, data: GenomeTrackData): void {
+  switch (draw.row.kind) {
+    case "annotations":
+      drawAnnotations(draw, data.annotations ?? []);
+      break;
+    case "features": {
+      const trace = featureTraces(data)[draw.row.traceIndex ?? 0];
+
+      if (trace) drawFeatureBars(draw, trace, data.bins);
+      break;
+    }
+    case "minimap":
+      // The payload's window is the extent the viewport is placed inside.
+      drawMinimap(draw, { end: data.locus.end, start: data.locus.start });
+      break;
+    case "segments":
+      drawSegments(draw, data.segments);
+      break;
+    case "sequence":
+      if (data.sequence) drawSequence(draw, data.sequence, data.locus.start);
+      break;
+    default:
+      break;
+  }
 }
 
 export function useTrackRenderer(options: UseTrackRendererOptions): void {
@@ -46,7 +78,6 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
     hoveredId,
     palette,
     rows,
-    rulerHeight,
     scale,
     selectedId,
     width,
@@ -83,37 +114,7 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       selectedId,
     };
 
-    drawRuler({
-      ...base,
-      row: { height: rulerHeight, kind: "sequence", label: "", y: 0 },
-    });
-
-    rows.forEach((row) => {
-      const draw: DrawContext = { ...base, row };
-
-      switch (row.kind) {
-        case "activation": {
-          // Pinned features win over ranked ones: a user who pinned a feature
-          // asked for that one specifically.
-          const trace = data.pinned[0] ?? data.features[0];
-
-          if (trace) drawActivation(draw, trace, data.bins);
-          break;
-        }
-        case "annotations":
-          drawAnnotations(draw, data.annotations ?? []);
-          break;
-        case "segments":
-          drawSegments(draw, data.segments);
-          break;
-        case "sequence":
-          if (data.sequence)
-            drawSequence(draw, data.sequence, data.locus.start);
-          break;
-        default:
-          break;
-      }
-    });
+    rows.forEach((row) => drawRow({ ...base, row }, data));
   }, [
     canvasRef,
     data,
@@ -123,7 +124,6 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
     hoveredId,
     palette,
     rows,
-    rulerHeight,
     scale,
     selectedId,
     width,

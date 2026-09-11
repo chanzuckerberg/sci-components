@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { ForwardedRef, forwardRef, memo, useId, useMemo, useRef } from "react";
 import { AccessibleTable } from "./components/AccessibleTable";
 import { HitTooltip } from "./components/HitTooltip";
+import { SequenceCopyButton } from "./components/SequenceCopyButton";
 import {
   TrackEmptyState,
   TrackErrorState,
@@ -19,6 +20,7 @@ import { useTrackRenderer } from "./hooks/useTrackRenderer";
 import { useViewport } from "./hooks/useViewport";
 import {
   TrackBody,
+  TrackFeatureLabel,
   TrackGutter,
   TrackGutterLabel,
   TrackHeader,
@@ -28,16 +30,76 @@ import {
   TrackRoot,
   VisuallyHidden,
 } from "./style";
-import { formatRange, formatSpan } from "./utils/format";
-import { TrackHit } from "./utils/hitTest";
-import { RULER_HEIGHT, layoutRows } from "./utils/layout";
+import { formatRange, formatResolution, formatSpan } from "./utils/format";
+import { FEATURE_LABEL_HEIGHT, TrackRow, layoutRows } from "./utils/layout";
 import { resolvePalette } from "./utils/palette";
 import { createScale, spanOf } from "./utils/scale";
 
 export * from "./GenomeTrack.types";
 export { MIN_SPAN } from "./utils/scale";
 
-const DEFAULT_TRACKS: TrackKind[] = ["annotations", "segments", "activation"];
+/**
+ * Rows a caller gets without asking, in the order the designs stack them.
+ *
+ * The sequence row drops itself on a window too wide to carry one, so a default
+ * that includes it costs nothing on a 40 kb view.
+ */
+const DEFAULT_TRACKS: TrackKind[] = [
+  "minimap",
+  "sequence",
+  "annotations",
+  "segments",
+  "features",
+];
+
+/**
+ * A row's key for React.
+ *
+ * Kind alone stopped being unique when the features row became a stack of
+ * several rows sharing one kind.
+ */
+function rowKey(row: TrackRow): string {
+  return `${row.kind}-${row.traceIndex ?? 0}`;
+}
+
+/** Row names down the left edge, positioned against the layout's offsets. */
+function GutterLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
+  return (
+    <>
+      {rows
+        .filter((row) => row.label)
+        .map((row) => (
+          <TrackGutterLabel key={rowKey(row)} style={{ top: row.y }}>
+            {row.label}
+          </TrackGutterLabel>
+        ))}
+    </>
+  );
+}
+
+/**
+ * Feature names, drawn inside the plot above their own bars.
+ *
+ * The one row label that cannot live in the gutter: a feature name runs to
+ * forty characters and the gutter is under a hundred pixels wide.
+ */
+function FeatureLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
+  return (
+    <>
+      {rows
+        .filter((row) => row.traceLabel)
+        .map((row) => (
+          <TrackFeatureLabel
+            aria-hidden
+            key={rowKey(row)}
+            style={{ top: row.y }}
+          >
+            {row.traceLabel}
+          </TrackFeatureLabel>
+        ))}
+    </>
+  );
+}
 
 /**
  * Test ids for the DOM the component renders around the canvas.
@@ -71,13 +133,6 @@ const ERROR_COPY: Record<string, string> = {
   restricted: "This region is restricted.",
 };
 
-/** Which row a hit came from, so the tooltip can sit above it. */
-function hitRowKind(hit: TrackHit): TrackKind {
-  if (hit.kind === "trace") return "activation";
-
-  return hit.kind === "annotation" ? "annotations" : "segments";
-}
-
 /**
  * Genome browser track: a shared bp axis with stacked rows for reference
  * annotations, predicted segments, and SAE feature activation.
@@ -103,14 +158,15 @@ function hitRowKind(hit: TrackHit): TrackKind {
 const GenomeTrack = forwardRef(
   (props: GenomeTrackProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const {
-      activationRowHeight = 64,
       blockRowHeight = 28,
       data,
       density = "comfortable",
       disableNavigation = false,
       error = null,
+      featureRowHeight = 24,
       labelWidth = 96,
       loading = false,
+      maxFeatureRows = 8,
       onSelectionChange,
       onViewportChange,
       selection = null,
@@ -129,7 +185,6 @@ const GenomeTrack = forwardRef(
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { dpr, width } = useCanvasSize(plotRef);
     const tableId = `sds-genome-track-${useId()}`;
-    const rulerHeight = RULER_HEIGHT[density];
 
     const bounds = useMemo<GenomeViewport>(
       () =>
@@ -149,14 +204,14 @@ const GenomeTrack = forwardRef(
       () =>
         data
           ? layoutRows(data, {
-              activationRowHeight,
               blockRowHeight,
               density,
-              rulerHeight,
+              featureRowHeight,
+              maxFeatureRows,
               tracks,
             })
-          : { height: rulerHeight, rows: [] },
-      [data, activationRowHeight, blockRowHeight, density, rulerHeight, tracks]
+          : { height: 0, rows: [] },
+      [data, blockRowHeight, density, featureRowHeight, maxFeatureRows, tracks]
     );
 
     const scale = useMemo(
@@ -188,7 +243,6 @@ const GenomeTrack = forwardRef(
       hoveredId: hit?.id ?? null,
       palette,
       rows: layout.rows,
-      rulerHeight,
       scale,
       selectedId,
       width,
@@ -198,10 +252,11 @@ const GenomeTrack = forwardRef(
       return (
         <TrackRoot data-testid={TEST_IDS.root} ref={ref} {...rest}>
           <TrackSkeleton
-            activationRowHeight={activationRowHeight}
             blockRowHeight={blockRowHeight}
             density={density}
-            rulerHeight={rulerHeight}
+            featureLabelHeight={FEATURE_LABEL_HEIGHT[density]}
+            featureRowHeight={featureRowHeight}
+            maxFeatureRows={maxFeatureRows}
             tracks={tracks}
           />
         </TrackRoot>
@@ -227,9 +282,31 @@ const GenomeTrack = forwardRef(
     const { locus } = data;
     const organism = locus.organism_label ?? locus.organism;
     const range = formatRange(viewport.start, viewport.end);
-    const tooltipRow = hit
-      ? layout.rows.find((row) => row.kind === hitRowKind(hit))
-      : undefined;
+
+    // Resolution is dropped rather than shown as "1 bp/point" on an unpooled
+    // window, so the readout appears only where it changes what the plot means.
+    const coordinates = [
+      `${locus.chrom} ${range}`,
+      formatSpan(spanOf(viewport)),
+      formatResolution(data.bins.stride),
+    ]
+      .filter((part): part is string => part !== null)
+      .join(" · ");
+
+    // The hit names its own row by index, which is the only thing that works
+    // once the features stack means several rows share a kind.
+    const tooltipRow = hit ? layout.rows[hit.rowIndex] : undefined;
+
+    const sequenceRow = layout.rows.find((row) => row.kind === "sequence");
+    // The letters actually on screen, which is what the copy control offers.
+    // Clamped through `Math.max` because a controlled viewport can be handed
+    // coordinates outside the payload before the two agree.
+    const visibleSequence = data.sequence
+      ? data.sequence.slice(
+          Math.max(viewport.start - locus.start, 0),
+          Math.max(viewport.end - locus.start + 1, 0)
+        )
+      : "";
 
     return (
       <TrackRoot data-testid={TEST_IDS.root} ref={ref} {...rest}>
@@ -238,28 +315,14 @@ const GenomeTrack = forwardRef(
             {locus.gene ? `${locus.gene} · ${organism}` : organism}
           </TrackHeaderTitle>
           <TrackHeaderRange data-testid={TEST_IDS.range}>
-            {`${locus.chrom} ${range} · ${formatSpan(spanOf(viewport))}`}
+            {coordinates}
           </TrackHeaderRange>
         </TrackHeader>
 
         <TrackBody>
           {labelWidth > 0 && (
-            <TrackGutter
-              aria-hidden
-              density={density}
-              labelWidth={labelWidth}
-              style={{ marginTop: rulerHeight }}
-            >
-              {layout.rows.map((row) =>
-                row.label ? (
-                  <TrackGutterLabel
-                    key={row.kind}
-                    style={{ top: row.y - rulerHeight }}
-                  >
-                    {row.label}
-                  </TrackGutterLabel>
-                ) : null
-              )}
+            <TrackGutter aria-hidden density={density} labelWidth={labelWidth}>
+              <GutterLabels rows={layout.rows} />
             </TrackGutter>
           )}
 
@@ -275,6 +338,8 @@ const GenomeTrack = forwardRef(
           >
             <canvas ref={canvasRef} />
 
+            <FeatureLabels rows={layout.rows} />
+
             {hit && tooltipRow && (
               <HitTooltip
                 hit={hit}
@@ -284,6 +349,15 @@ const GenomeTrack = forwardRef(
               />
             )}
           </TrackPlot>
+
+          {sequenceRow && visibleSequence && (
+            <SequenceCopyButton
+              height={sequenceRow.height}
+              range={range}
+              sequence={visibleSequence}
+              top={sequenceRow.y}
+            />
+          )}
         </TrackBody>
 
         <VisuallyHidden>

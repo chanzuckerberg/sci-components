@@ -36,6 +36,21 @@ export function formatSpan(span: number): string {
 }
 
 /**
+ * How much ground one trace point covers: "21 bp/point", "200 kb/point".
+ *
+ * Null at `stride: 1`, where a point is a base and saying so is noise. Above
+ * it the header has to say something, because nothing else on screen can: the
+ * ruler labels absolute positions and the span readout states the width of the
+ * window, so a 24 bp window reads as base-level precision whether its trace
+ * holds 24 values or two. A user who cannot tell those apart cannot tell a
+ * smooth signal from a pooled one, and will zoom in expecting detail the
+ * payload never contained.
+ */
+export function formatResolution(stride: number): string | null {
+  return stride > 1 ? `${formatSpan(stride)}/point` : null;
+}
+
+/**
  * Tick label for a ruler position, abbreviated to fit.
  *
  * Full coordinates are 7-9 digits for a eukaryotic genome and would collide at

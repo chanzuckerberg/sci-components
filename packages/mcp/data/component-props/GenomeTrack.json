@@ -1,0 +1,393 @@
+{
+  "GenomeTrack": {
+    "props": {
+      "blockRowHeight": {
+        "defaultValue": 28,
+        "description": "Row height for annotation and segment rows, in px. The minimap and\nsequence rows size themselves from `density`, and the features rows have a\nprop of their own.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "data": {
+        "defaultValue": "- (required)",
+        "description": "The window to draw. Null renders the empty state.",
+        "isRequired": true,
+        "type": "GenomeTrackData"
+      },
+      "density": {
+        "defaultValue": "comfortable",
+        "description": "Comfortable is the standalone view; compact is the in-card variant used by\na comparison row, which tightens every row and drops the labels and\ncaptions.",
+        "isRequired": false,
+        "type": "\"compact\" | \"comfortable\""
+      },
+      "disableNavigation": {
+        "defaultValue": false,
+        "description": "Disable wheel-zoom and drag-pan. The track still reports selection, and the\nkeyboard controls still work — this only turns off pointer navigation, for\na card that should not capture scroll.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "featureRowHeight": {
+        "defaultValue": 24,
+        "description": "Height of one feature's bars in the features row, in px, not counting the\nspace above them that the feature's name occupies.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "maxFeatureRows": {
+        "defaultValue": 8,
+        "description": "How many traces the features row draws, `pinned` first and then `features`\nin the payload's own rank order.\n\nA cap rather than \"all of them\" because the row's height is unbounded in\nthe data: the segment-features endpoint will return up to 128 features for\na segment, which at this row height is three thousand pixels of track. The\ncaller that fetched them chose how many to ask for; this is how it says how\nmany to show.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "labelWidth": {
+        "defaultValue": 96,
+        "description": "Width reserved for row labels down the left edge. Zero hides them, which is\nwhat the compact variant does.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "loading": {
+        "defaultValue": false,
+        "description": "Render the skeleton instead of the data.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "tracks": {
+        "defaultValue": [
+          "minimap",
+          "sequence",
+          "annotations",
+          "segments",
+          "features"
+        ],
+        "description": "Rows to draw, top to bottom. An ordered array rather than a set of boolean\nprops, which is how the design's several frames come out of one component.",
+        "isRequired": false,
+        "type": "TrackKind[]"
+      },
+      "viewport": {
+        "description": "Visible range. Controlled when supplied — pan and zoom then report through\n`onViewportChange` and change nothing until the prop comes back. Omit for\nuncontrolled, where the component owns the range and starts at the\npayload's full window.",
+        "isRequired": false,
+        "type": "GenomeViewport"
+      },
+      "onViewportChange": {
+        "description": "Called on pan and zoom. A shell typically re-fetches from this.",
+        "isRequired": false,
+        "type": "(viewport: GenomeViewport) => void"
+      },
+      "selection": {
+        "defaultValue": null,
+        "description": "Controlled selection.",
+        "isRequired": false,
+        "type": "{ kind: \"block\"; id: string; } | { kind: \"range\"; end: number; start: number; } | { kind: \"row\"; id: string; } | { kind: \"series\"; id: string; }"
+      },
+      "onSelectionChange": {
+        "description": "(selection: GenomeSelection | null) => void. Called with the clicked block, or with null when the click clears the selection.",
+        "isRequired": false,
+        "type": "(selection: GenomeSelection) => void"
+      },
+      "error": {
+        "defaultValue": null,
+        "description": "Render a typed error state instead of the data.",
+        "isRequired": false,
+        "type": "TrackError"
+      },
+      "schema_version": {
+        "defaultValue": "- (required)",
+        "description": "Version of the payload contract.",
+        "isRequired": false,
+        "type": "1"
+      },
+      "locus": {
+        "defaultValue": "- (required)",
+        "description": "Where in the genome the window sits. Its start and end are the bounds pan and zoom are clamped to.",
+        "isRequired": false,
+        "type": "Locus"
+      },
+      "sequence": {
+        "defaultValue": "- (required)",
+        "description": "Window nucleotides, 5' to 3'. null when the window exceeds caps.max_sequence_window or the sequence file is unavailable.",
+        "isRequired": false,
+        "type": "string | null"
+      },
+      "bins": {
+        "defaultValue": "- (required)",
+        "description": "Maps trace index to genomic coordinates. Every values array in the payload is on this axis.",
+        "isRequired": false,
+        "type": "BinAxis"
+      },
+      "annotations": {
+        "defaultValue": "- (required)",
+        "description": "Reference features. null, not [], means the organism has no annotation coverage at all.",
+        "isRequired": false,
+        "type": "AnnotationBlock[] | null"
+      },
+      "segments": {
+        "defaultValue": "- (required)",
+        "description": "Precomputed segments. The pipeline partitions exhaustively, so they abut and leave no gaps.",
+        "isRequired": false,
+        "type": "SegmentBlock[]"
+      },
+      "features": {
+        "defaultValue": "- (required)",
+        "description": "Top features by score, highest first. The features row draws them in this order and never re-sorts.",
+        "isRequired": false,
+        "type": "FeatureTrace[]"
+      },
+      "pinned": {
+        "defaultValue": "- (required)",
+        "description": "Features the caller asked to keep regardless of score. Listed ahead of features in the accessible table.",
+        "isRequired": false,
+        "type": "FeatureTrace[]"
+      },
+      "feature_notes": {
+        "defaultValue": "- (required)",
+        "description": "Descriptions keyed by String(feature_id). Coverage is sparse — most features have no entry.",
+        "isRequired": false,
+        "type": "Record<string, FeatureNote>"
+      },
+      "caps": {
+        "defaultValue": "- (required)",
+        "description": "What the server had to leave out, and why.",
+        "isRequired": false,
+        "type": "TrackCaps"
+      },
+      "overview": {
+        "defaultValue": "- (required)",
+        "description": "Chromosome-scale context for a later, wider version of the minimap row. caps.overview_available distinguishes \"omitted because you already have it\" from \"this deployment cannot draw it\". Nothing reads either field today: the minimap as built takes its extent from locus.",
+        "isRequired": false,
+        "type": "MinimapOverview | null"
+      },
+      "clusters": {
+        "description": "Aggregate activation for clusters of co-firing features, on the same bin axis. Optional, and not drawn by any row yet.",
+        "isRequired": false,
+        "type": "ClusterTrace[]"
+      },
+      "organism": {
+        "defaultValue": "- (required)",
+        "description": "Organism key, for example e_coli_k12.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "organism_label": {
+        "description": "Display form of organism, for example \"E. coli K-12\". Shown in the header when present, with organism as the fallback.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "accession": {
+        "defaultValue": "- (required)",
+        "description": "Assembly or sequence accession.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "chrom": {
+        "defaultValue": "- (required)",
+        "description": "Chromosome or contig name, shown in the header.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "genome_length": {
+        "defaultValue": "- (required)",
+        "description": "Length of the genome the window is cut from.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "gene": {
+        "description": "Gene the window is centred on, shown ahead of the organism in the header.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "stride": {
+        "defaultValue": "- (required)",
+        "description": "Bases per point; 1 when unpooled. Each point is the maximum over its bases, so single-base peaks survive.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "n_bins": {
+        "defaultValue": "- (required)",
+        "description": "Number of points, equal to values.length for every trace in the payload.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "name": {
+        "defaultValue": "- (required)",
+        "description": "Gene name, falling back to the locus tag. Drawn on the block when it is wide enough, and truncated with an ellipsis when it is not.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "kind": {
+        "defaultValue": "- (required)",
+        "description": "Feature type: CDS, tRNA, rRNA, ncRNA, mobile_element, and so on.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "product": {
+        "description": "Gene product, shown in the tooltip and the accessible table. Reads \"Not annotated\" when absent.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "locus_tag": {
+        "description": "Locus tag from the annotation source.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "category": {
+        "defaultValue": "- (required)",
+        "description": "The category the segmentation voted for: +CDS, -CDS, intergenic, SINE, unknown, and so on. Drawn on the block beside the id.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "predicted_label": {
+        "defaultValue": "- (required)",
+        "description": "Predicted function. null reads as \"Unlabelled\" rather than as a blank.",
+        "isRequired": false,
+        "type": "string | null"
+      },
+      "predicted_support": {
+        "defaultValue": "- (required)",
+        "description": "kNN vote share behind the label, 0-1.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "predicted_top": {
+        "description": "Nearest neighbour's product, when one was resolved.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "values": {
+        "defaultValue": "- (required)",
+        "description": "Activation across the window, on the payload's bin axis. Length equals bins.n_bins.",
+        "isRequired": false,
+        "type": "number[]"
+      },
+      "peak": {
+        "defaultValue": "- (required)",
+        "description": "Maximum raw activation in the window. Each feature row scales its bars to it.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "score": {
+        "defaultValue": "- (required)",
+        "description": "Value of whichever metric ranked this feature.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "score_kind": {
+        "defaultValue": "- (required)",
+        "description": "Which metric score reports.",
+        "isRequired": false,
+        "type": "\"peak\" | \"zscore\""
+      },
+      "label": {
+        "defaultValue": "- (required)",
+        "description": "Short display name, or \"\" when unknown — which is the common case, and the one the layout has to handle.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "description": {
+        "defaultValue": "- (required)",
+        "description": "Longer description, or \"\" when unknown.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "confidence": {
+        "defaultValue": "- (required)",
+        "description": "Confidence in the description, 0-1.",
+        "isRequired": false,
+        "type": "number | null"
+      },
+      "cluster": {
+        "defaultValue": "- (required)",
+        "description": "Cluster of co-firing features this one belongs to.",
+        "isRequired": false,
+        "type": "number | null"
+      },
+      "cluster_label": {
+        "defaultValue": "- (required)",
+        "description": "Display name for that cluster.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "cluster_size": {
+        "defaultValue": "- (required)",
+        "description": "How many features the cluster holds.",
+        "isRequired": false,
+        "type": "number | null"
+      },
+      "max_points": {
+        "defaultValue": "- (required)",
+        "description": "Longest trace the server will send. A wider window is pooled to fit, which is where bins.stride comes from.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "max_sequence_window": {
+        "defaultValue": "- (required)",
+        "description": "Widest window that comes back with a sequence. Past it the sequence row disappears.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "requested_top_n": {
+        "defaultValue": "- (required)",
+        "description": "How many features the caller asked for.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "available_features": {
+        "defaultValue": "- (required)",
+        "description": "Features actually firing in the window, which may exceed what was sent.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "features_truncated": {
+        "defaultValue": "- (required)",
+        "description": "Whether features were left out. The accessible table says so when they were.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "described_features": {
+        "defaultValue": "- (required)",
+        "description": "Knowledge-base coverage, out of sae.n_features.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "labelled_clusters": {
+        "defaultValue": "- (required)",
+        "description": "How many feature clusters carry a label.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "overview_available": {
+        "defaultValue": "- (required)",
+        "description": "Whether this organism can produce a minimap at all. Distinguishes \"omitted because you already have it\" from \"this deployment cannot draw it\".",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "base_model": {
+        "defaultValue": "- (required)",
+        "description": "Model the SAE was trained against.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "n_features": {
+        "defaultValue": "- (required)",
+        "description": "Size of the feature space.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "segmentation_threshold": {
+        "defaultValue": "- (required)",
+        "description": "Activation threshold the segmentation was cut at.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "code": {
+        "defaultValue": "- (required)",
+        "description": "Server error code, which chooses the headline. The track has copy for dependency_unavailable, invalid_input, not_found, rate_limited, region_too_large, and restricted; anything else falls back to message alone.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "message": {
+        "defaultValue": "- (required)",
+        "description": "The server's own message, shown under the headline.",
+        "isRequired": false,
+        "type": "string"
+      }
+    }
+  }
+}

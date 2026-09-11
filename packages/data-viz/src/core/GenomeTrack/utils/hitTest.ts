@@ -5,7 +5,7 @@ import {
   GenomeTrackData,
   SegmentBlock,
 } from "../GenomeTrack.types";
-import { TrackRow, rowAt } from "./layout";
+import { TrackRow, featureTraces, rowIndexAt } from "./layout";
 import { GenomeScale, binIndexToRange, bpToBinIndex, pxToBp } from "./scale";
 
 /**
@@ -22,7 +22,19 @@ import { GenomeScale, binIndexToRange, bpToBinIndex, pxToBp } from "./scale";
  * thousands of annotations, where a linear scan per mouse move is visible.
  */
 
-export interface BlockHit {
+/**
+ * Which row a hit came from, as an index into the array that was hit-tested.
+ *
+ * An index rather than a `TrackKind`: the features stack is many rows of one
+ * kind, so a kind no longer identifies a row, and a tooltip placed by kind
+ * would appear over the first feature however far down the stack the pointer
+ * was.
+ */
+interface FromRow {
+  rowIndex: number;
+}
+
+export interface BlockHit extends FromRow {
   kind: "annotation" | "segment";
   id: string;
   label: string;
@@ -32,7 +44,7 @@ export interface BlockHit {
   strand: "+" | "-" | ".";
 }
 
-export interface TraceHit {
+export interface TraceHit extends FromRow {
   kind: "trace";
   id: string;
   label: string;
@@ -84,19 +96,23 @@ function blockAt<T extends { end: number; start: number }>(
   return null;
 }
 
-function annotationHit(annotation: AnnotationBlock): BlockHit {
+function annotationHit(
+  annotation: AnnotationBlock,
+  rowIndex: number
+): BlockHit {
   return {
     detail: annotation.product ?? annotation.kind,
     end: annotation.end,
     id: annotation.id,
     kind: "annotation",
     label: annotation.name,
+    rowIndex,
     start: annotation.start,
     strand: annotation.strand,
   };
 }
 
-function segmentHit(segment: SegmentBlock): BlockHit {
+function segmentHit(segment: SegmentBlock, rowIndex: number): BlockHit {
   const support = `${Math.round(segment.predicted_support * 100)}% support`;
 
   return {
@@ -107,6 +123,7 @@ function segmentHit(segment: SegmentBlock): BlockHit {
     id: segment.id,
     kind: "segment",
     label: segment.id.split(":").pop() ?? segment.id,
+    rowIndex,
     start: segment.start,
     strand: segment.strand,
   };
@@ -116,7 +133,8 @@ function traceHit(
   trace: FeatureTrace,
   bins: BinAxis,
   bp: number,
-  label: string
+  label: string,
+  rowIndex: number
 ): TraceHit | null {
   const index = bpToBinIndex(bins, bp);
 
@@ -130,9 +148,17 @@ function traceHit(
     id: `feature-${trace.feature_id}`,
     kind: "trace",
     label: `Feature ${trace.feature_id}`,
+    rowIndex,
     start: range.start,
     value: trace.values[index] ?? 0,
   };
+}
+
+/** The description a trace's tooltip carries, empty when there is none. */
+function traceDetail(data: GenomeTrackData, trace: FeatureTrace): string {
+  const note = data.feature_notes[String(trace.feature_id)];
+
+  return note?.label || note?.description || "";
 }
 
 /**
@@ -149,7 +175,8 @@ export function hitTest(
   x: number,
   y: number
 ): TrackHit | null {
-  const row = rowAt(rows, y);
+  const rowIndex = rowIndexAt(rows, y);
+  const row = rows[rowIndex];
 
   if (!row || x < 0 || x > scale.width) return null;
 
@@ -158,29 +185,24 @@ export function hitTest(
   const slack = Math.max(Math.ceil(scale.bpPerPx * 3), 0);
 
   switch (row.kind) {
-    case "activation": {
-      const trace = data.pinned[0] ?? data.features[0];
+    case "features": {
+      // The row says which trace it drew, so the pointer never has to work it
+      // out from a y offset a second time.
+      const trace = featureTraces(data)[row.traceIndex ?? 0];
 
       if (!trace) return null;
 
-      const note = data.feature_notes[String(trace.feature_id)];
-
-      return traceHit(
-        trace,
-        data.bins,
-        bp,
-        note?.label || note?.description || ""
-      );
+      return traceHit(trace, data.bins, bp, traceDetail(data, trace), rowIndex);
     }
     case "annotations": {
       const found = blockAt(data.annotations ?? [], bp, slack);
 
-      return found ? annotationHit(found) : null;
+      return found ? annotationHit(found, rowIndex) : null;
     }
     case "segments": {
       const found = blockAt(data.segments, bp, slack);
 
-      return found ? segmentHit(found) : null;
+      return found ? segmentHit(found, rowIndex) : null;
     }
     default:
       return null;

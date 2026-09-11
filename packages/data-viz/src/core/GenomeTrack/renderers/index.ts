@@ -4,8 +4,19 @@ import {
   FeatureTrace,
   SegmentBlock,
 } from "../GenomeTrack.types";
-import { fitLabel, formatTick, tickInterval, ticksFor } from "../utils/format";
-import { TrackRow } from "../utils/layout";
+import {
+  fitLabel,
+  formatRange,
+  formatTick,
+  tickInterval,
+  ticksFor,
+} from "../utils/format";
+import {
+  MINIMAP_BAR_HEIGHT,
+  MINIMAP_LABEL_HEIGHT,
+  MINIMAP_RANGE_HEIGHT,
+  TrackRow,
+} from "../utils/layout";
 import { TrackPalette } from "../utils/palette";
 import {
   GenomeScale,
@@ -13,6 +24,7 @@ import {
   blockRect,
   bpToBinIndex,
   bpToPx,
+  createScale,
 } from "../utils/scale";
 
 /**
@@ -36,6 +48,17 @@ const MIN_LABEL_WIDTH = 24;
 
 /** Arrowhead width for a stranded block, in px. */
 const ARROW_WIDTH = 6;
+
+/** Space left between adjacent bars in the features row, in px. */
+const BAR_GAP = 1;
+
+/**
+ * Narrowest the minimap's window box may be drawn, in px.
+ *
+ * A 24 bp view of a 40 kb window is six hundredths of a pixel wide. Without a
+ * floor the indicator disappears exactly when a user is most lost.
+ */
+const MIN_WINDOW_WIDTH = 3;
 
 export interface DrawContext {
   ctx: CanvasRenderingContext2D;
@@ -134,57 +157,6 @@ function drawBlock(
 }
 
 /**
- * Ruler: baseline, ticks, and abbreviated position labels.
- *
- * Compact density draws ticks without labels — a comparison card states its
- * range in the header, so repeating coordinates inside the plot spends vertical
- * space on information already on screen.
- */
-export function drawRuler(draw: DrawContext): void {
-  const { ctx, density, palette, row, scale } = draw;
-  const interval = tickInterval(
-    scale.end - scale.start + 1,
-    density === "compact" ? 3 : 6
-  );
-  const ticks = ticksFor(scale.start, scale.end, interval);
-  const baseline = row.y + row.height - 0.5;
-  const tickHeight = density === "compact" ? 4 : 6;
-
-  ctx.strokeStyle = palette.axis;
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(0, baseline);
-  ctx.lineTo(scale.width, baseline);
-  ctx.stroke();
-
-  ctx.fillStyle = palette.axisText;
-  ctx.font = `10px ${FONT_STACK}`;
-  ctx.textBaseline = "bottom";
-
-  ticks.forEach((bp) => {
-    const x = Math.round(bpToPx(scale, bp)) + 0.5;
-
-    ctx.beginPath();
-    ctx.moveTo(x, baseline - tickHeight);
-    ctx.lineTo(x, baseline);
-    ctx.stroke();
-
-    if (density === "compact") return;
-
-    // Nudge the first and last labels inward so neither is clipped by the edge.
-    const label = formatTick(bp, interval);
-    const width = ctx.measureText(label).width;
-
-    ctx.textAlign = "center";
-
-    if (x - width / 2 < 0) ctx.textAlign = "left";
-    else if (x + width / 2 > scale.width) ctx.textAlign = "right";
-
-    ctx.fillText(label, x, baseline - tickHeight - 2);
-  });
-}
-
-/**
  * Sequence ruler: one letter per base, drawn only when bases are wide enough.
  *
  * Below ~7 px per base the letters would overlap into an unreadable smear, so
@@ -221,6 +193,92 @@ export function drawSequence(
       row.y + row.height / 2
     );
   }
+}
+
+/**
+ * Minimap row: where the viewport sits inside the payload's whole window.
+ *
+ * This is the only pass that does not draw on the shared viewport scale. Every
+ * other row maps the visible range across the plot; this one maps the *payload's
+ * window* across the plot and then draws the visible range as a box inside it.
+ * So it builds a second scale of its own rather than using `draw.scale`, and
+ * uses that one for everything including its ticks — the coordinates under a
+ * minimap describe the extent, not the window, or the box would have nothing to
+ * be positioned against.
+ *
+ * It shows position only. The chromosome-scale activation summary that
+ * `MinimapOverview` describes is a different thing and is not drawn here.
+ */
+export function drawMinimap(
+  draw: DrawContext,
+  bounds: { end: number; start: number }
+): void {
+  const { ctx, density, palette, row, scale } = draw;
+  const rangeHeight = MINIMAP_RANGE_HEIGHT[density];
+  const barHeight = MINIMAP_BAR_HEIGHT[density];
+  const barTop = row.y + rangeHeight;
+  const extent = createScale(bounds, scale.width);
+
+  ctx.fillStyle = palette.minimapTrack;
+  ctx.fillRect(0, barTop, scale.width, barHeight);
+
+  const rect = blockRect(extent, scale.start, scale.end, MIN_WINDOW_WIDTH);
+
+  // Hold the band inside the track at both ends. `blockRect` widens a
+  // sub-pixel range to keep it visible, which at the far right would otherwise
+  // push it off the edge — and a position indicator that leaves the bar is
+  // worse than one that is merely narrow.
+  const bandX = rect
+    ? Math.min(rect.x, Math.max(scale.width - rect.width, 0))
+    : null;
+
+  if (rect && bandX !== null) {
+    ctx.fillStyle = palette.minimapWindow;
+    ctx.fillRect(bandX, barTop, rect.width, barHeight);
+  }
+
+  ctx.font = `10px ${FONT_STACK}`;
+
+  // The band's range, captioned above it and centred on it, so the number
+  // travels with the thing it describes rather than living only in the header.
+  if (rect && bandX !== null && rangeHeight > 0) {
+    const label = formatRange(scale.start, scale.end);
+    const width = ctx.measureText(label).width;
+    const center = bandX + rect.width / 2;
+
+    ctx.fillStyle = palette.minimapText;
+    ctx.textBaseline = "top";
+    ctx.textAlign = "center";
+
+    // Clamped rather than centred blindly: a band against either edge would
+    // otherwise caption itself off the side of the plot.
+    ctx.fillText(
+      label,
+      Math.min(Math.max(center, width / 2), scale.width - width / 2),
+      row.y
+    );
+  }
+
+  if (MINIMAP_LABEL_HEIGHT[density] === 0) return;
+
+  const interval = tickInterval(bounds.end - bounds.start + 1, 6);
+
+  ctx.fillStyle = palette.axisText;
+  ctx.textBaseline = "top";
+
+  ticksFor(bounds.start, bounds.end, interval).forEach((bp) => {
+    const x = bpToPx(extent, bp);
+    const label = formatTick(bp, interval);
+    const width = ctx.measureText(label).width;
+
+    // Nudge the end labels inward so neither is clipped by the plot's edge.
+    ctx.textAlign = "center";
+
+    if (x - width / 2 < 0) ctx.textAlign = "left";
+    else if (x + width / 2 > scale.width) ctx.textAlign = "right";
+
+    ctx.fillText(label, x, barTop + barHeight + 3);
+  });
 }
 
 /** Annotation row: reference genes and other GFF features. */
@@ -275,67 +333,73 @@ export function segmentLabel(segment: SegmentBlock): string {
 }
 
 /**
- * Activation row: the pooled trace, drawn as a filled area with a stroked top.
+ * One row of the features stack: a feature's activation as a bar per bin.
  *
- * Only the highest-ranked trace is drawn here. The design's multi-feature view
- * is a separate row kind ("features"), because overlaying eight traces in one
- * band produces a shape nobody can read a value off.
+ * Bars rather than the activation row's filled area, per the design, and the
+ * difference is not only cosmetic. A filled area implies a continuous signal
+ * you can read between the points; a bar chart says each bin is a discrete
+ * measurement, which is what a pooled maximum actually is. At `stride: 1` the
+ * bars are one base wide and the distinction stops mattering; at `stride: 21`
+ * it is the honest picture.
+ *
+ * **Normalized to the trace's own peak, not to a peak shared across the
+ * stack.** This is the row's one real compromise. Per-trace scaling means every
+ * row uses its full height, so the shape of a weak feature is legible — but it
+ * also means bar heights cannot be compared between rows, and nothing on screen
+ * says so. A shared scale would make the rows comparable and flatten every
+ * feature below the strongest into a line, which for a rank-ordered list is
+ * most of them. The design shows rows of comparable height, so it assumes
+ * per-trace; the tooltip carries the absolute value for anyone who needs to
+ * compare two rows for real.
+ *
+ * Normalizing to `trace.peak` — the whole window's maximum — rather than to the
+ * visible slice is what keeps bar heights from rescaling as the user pans.
  */
-export function drawActivation(
+export function drawFeatureBars(
   draw: DrawContext,
   trace: FeatureTrace,
   bins: BinAxis
 ): void {
   const { ctx, palette, row, scale } = draw;
+  const inset = row.labelInset ?? 0;
+  const height = row.height - inset;
+  const bottom = row.y + row.height;
+
   const first = bpToBinIndex(bins, Math.max(scale.start, bins.start));
   const last = bpToBinIndex(bins, Math.min(scale.end, bins.end));
 
-  if (first === null || last === null) return;
+  if (first === null || last === null || height <= 0) return;
 
-  // Normalize to the trace's own peak rather than to a global maximum: the row
-  // answers "where in this window does this feature fire", and a shared scale
-  // would flatten every trace but the strongest into a straight line.
-  const peak = Math.max(
-    trace.peak,
-    ...trace.values.slice(first, last + 1),
-    1e-9
-  );
-  const bottom = row.y + row.height;
-
-  const pointAt = (index: number): { x: number; y: number } => ({
-    x: bpToPx(scale, binIndexToBp(bins, index)),
-    y: bottom - (trace.values[index] / peak) * row.height,
-  });
-
-  ctx.beginPath();
-  ctx.moveTo(pointAt(first).x, bottom);
-
-  for (let index = first; index <= last; index += 1) {
-    const point = pointAt(index);
-
-    // Step rather than line: a pooled bin covers `stride` bases and is flat
-    // across them. Interpolating between bin centres would draw a smooth curve
-    // through data that has no values between the points.
-    ctx.lineTo(point.x, point.y);
-    ctx.lineTo(bpToPx(scale, binIndexToBp(bins, index + 1)), point.y);
-  }
-
-  ctx.lineTo(bpToPx(scale, binIndexToBp(bins, last + 1)), bottom);
-  ctx.closePath();
-
-  ctx.fillStyle = palette.traceFill;
-  ctx.fill();
-
-  ctx.strokeStyle = palette.trace;
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-
-  // Baseline, so an all-zero window still reads as a row rather than as blank
-  // space where a track failed to render.
+  // Baseline before the bars, so a feature that is silent across the whole
+  // window still reads as a row rather than as a gap where a draw failed.
   ctx.strokeStyle = palette.axis;
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(0, bottom - 0.5);
   ctx.lineTo(scale.width, bottom - 0.5);
   ctx.stroke();
+
+  const peak = Math.max(trace.peak, 1e-9);
+
+  ctx.fillStyle = palette.featureBar;
+
+  for (let index = first; index <= last; index += 1) {
+    const value = trace.values[index] ?? 0;
+
+    // A zero bin gets no bar. Drawing a 1 px stub for it would make silence
+    // look like a faint signal, which across a mostly-quiet trace reads as
+    // noise the feature does not have.
+    if (value <= 0) continue;
+
+    const x = bpToPx(scale, binIndexToBp(bins, index));
+    const span = bpToPx(scale, binIndexToBp(bins, index + 1)) - x;
+
+    // The gap comes out of the bar only while there is a bar to spare. Below
+    // about two pixels a bin would vanish into its own gap, so it keeps a solid
+    // column instead — the same reason `blockRect` has a minimum width.
+    const width = span > BAR_GAP * 2 ? span - BAR_GAP : Math.max(span, 1);
+    const barHeight = Math.max((value / peak) * height, 1);
+
+    ctx.fillRect(x, bottom - barHeight, width, barHeight);
+  }
 }

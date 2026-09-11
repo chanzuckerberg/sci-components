@@ -100,7 +100,14 @@ export const AccessibleTable = ({
         </table>
       )}
 
-      {kinds.has("activation") && (
+      {/*
+       * Lists every trace the payload carries, not only the ones drawn: a
+       * reader stepping through a table wants what the tool returned, and
+       * `maxFeatureRows` is a limit on vertical space rather than on what is
+       * worth knowing. The truncation note below says when the server itself
+       * held some back.
+       */}
+      {kinds.has("features") && (
         <table>
           <caption>Top features by activation</caption>
           <thead>

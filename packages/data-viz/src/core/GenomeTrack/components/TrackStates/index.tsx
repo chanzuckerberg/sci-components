@@ -21,9 +21,10 @@ interface DensityProp {
 }
 
 interface SkeletonProps extends DensityProp {
-  activationRowHeight: number;
   blockRowHeight: number;
-  rulerHeight: number;
+  featureRowHeight: number;
+  featureLabelHeight: number;
+  maxFeatureRows: number;
   /** Requested rows, so the skeleton is the shape of what is coming. */
   tracks: TrackKind[];
 }
@@ -33,24 +34,29 @@ interface SkeletonProps extends DensityProp {
  *
  * Sizing it from `tracks` rather than using a single grey box means the layout
  * does not jump when the data lands, which matters most in the MCP App where
- * the fetch happens after the iframe is already visible.
+ * the fetch happens after the iframe is already visible. The features row is
+ * the reason this is worth the trouble: it expands to as many rows as there are
+ * traces, so a single placeholder would be short by hundreds of pixels and the
+ * page would lurch when the payload arrived.
  */
 export const TrackSkeleton = ({
-  activationRowHeight,
   blockRowHeight,
-  rulerHeight,
+  featureLabelHeight,
+  featureRowHeight,
+  maxFeatureRows,
   tracks,
 }: SkeletonProps): JSX.Element => (
   <div aria-busy data-testid={STATE_TEST_IDS.skeleton}>
-    <TrackSkeletonRow style={{ height: rulerHeight, width: "40%" }} />
-    {tracks.map((kind) => (
-      <TrackSkeletonRow
-        key={kind}
-        style={{
-          height: kind === "activation" ? activationRowHeight : blockRowHeight,
-        }}
-      />
-    ))}
+    {tracks.flatMap((kind) =>
+      kind === "features"
+        ? Array.from({ length: maxFeatureRows }, (_, index) => (
+            <TrackSkeletonRow
+              key={`features-${index}`}
+              style={{ height: featureRowHeight + featureLabelHeight }}
+            />
+          ))
+        : [<TrackSkeletonRow key={kind} style={{ height: blockRowHeight }} />]
+    )}
   </div>
 );
 

@@ -1,14 +1,19 @@
 import { DEFAULT_TRACK_DATA } from "../__storybook__/constants";
 import {
   DrawContext,
-  drawActivation,
   drawAnnotations,
-  drawRuler,
+  drawFeatureBars,
+  drawMinimap,
   drawSegments,
   drawSequence,
   segmentLabel,
 } from "../renderers";
-import { TrackRow } from "../utils/layout";
+import {
+  MINIMAP_BAR_HEIGHT,
+  MINIMAP_LABEL_HEIGHT,
+  MINIMAP_RANGE_HEIGHT,
+  TrackRow,
+} from "../utils/layout";
 import { TrackPalette } from "../utils/palette";
 import { createScale } from "../utils/scale";
 
@@ -82,14 +87,16 @@ const PALETTE: TrackPalette = {
   annotationText: "#ffffff",
   axis: "#222222",
   axisText: "#333333",
+  featureBar: "#aa00aa",
   hover: "#444444",
+  minimapText: "#767676",
+  minimapTrack: "#eeeeee",
+  minimapWindow: "#666666",
   rowBackground: "#555555",
   segment: "#666666",
   segmentText: "#ffffff",
   selected: "#777777",
   sequenceText: "#888888",
-  trace: "#999999",
-  traceFill: "rgba(0,0,0,0.2)",
 };
 
 const WIDTH = 800;
@@ -138,44 +145,6 @@ function drawnYs(calls: Call[]): number[] {
     .map((call) => call.args[1])
     .filter((y) => Number.isFinite(y));
 }
-
-describe("drawRuler", () => {
-  it("draws a baseline and tick marks", () => {
-    const { draw, recorder } = makeDraw({
-      row: { height: 24, kind: "sequence", label: "", y: 0 },
-    });
-
-    drawRuler(draw);
-
-    expect(
-      recorder.calls.filter((call) => call.op === "stroke").length
-    ).toBeGreaterThan(1);
-  });
-
-  it("labels ticks at comfortable density", () => {
-    const { draw, recorder } = makeDraw({
-      row: { height: 24, kind: "sequence", label: "", y: 0 },
-    });
-
-    drawRuler(draw);
-
-    expect(recorder.texts.length).toBeGreaterThan(0);
-  });
-
-  it("draws ticks but no labels at compact density", () => {
-    const { draw, recorder } = makeDraw({
-      density: "compact",
-      row: { height: 16, kind: "sequence", label: "", y: 0 },
-    });
-
-    drawRuler(draw);
-
-    // A comparison card states its range in the header, so repeating
-    // coordinates inside the plot would spend space on known information.
-    expect(recorder.texts).toHaveLength(0);
-    expect(recorder.calls.some((call) => call.op === "stroke")).toBe(true);
-  });
-});
 
 describe("drawAnnotations", () => {
   it("draws every annotation in the window", () => {
@@ -328,93 +297,259 @@ describe("drawSequence", () => {
   });
 });
 
-describe("drawActivation", () => {
-  it("draws a filled, stroked trace", () => {
+describe("drawMinimap", () => {
+  const BOUNDS = {
+    end: DEFAULT_TRACK_DATA.locus.end,
+    start: DEFAULT_TRACK_DATA.locus.start,
+  };
+  /**
+   * Sized from the layout's own constants rather than a literal, so the row the
+   * renderer is handed is the row the layout would build. A hard-coded height
+   * here silently stops matching the moment the layout changes.
+   */
+  function minimapRow(density: "comfortable" | "compact"): TrackRow {
+    return {
+      height:
+        MINIMAP_RANGE_HEIGHT[density] +
+        MINIMAP_BAR_HEIGHT[density] +
+        MINIMAP_LABEL_HEIGHT[density],
+      kind: "minimap",
+      label: "Minimap",
+      y: 30,
+    };
+  }
+
+  const MINIMAP_ROW = minimapRow("comfortable");
+
+  /** The window box: the second of the two `fillRect`s, after the track. */
+  function windowRect(recorder: ReturnType<typeof createStubContext>) {
+    const rects = recorder.calls.filter((call) => call.op === "fillRect");
+
+    return {
+      height: rects[1].args[3],
+      width: rects[1].args[2],
+      x: rects[1].args[0],
+    };
+  }
+
+  it("fills the whole track when nothing is zoomed", () => {
+    const { draw, recorder } = makeDraw({ row: MINIMAP_ROW });
+
+    // The scale in `makeDraw` is the full payload window, so the viewport and
+    // the extent are the same range.
+    drawMinimap(draw, BOUNDS);
+
+    expect(windowRect(recorder).width).toBeCloseTo(WIDTH, 0);
+  });
+
+  it("places the box where the viewport sits inside the extent", () => {
+    const view = { end: 45_678, start: 45_534 };
     const { draw, recorder } = makeDraw({
-      row: { height: 64, kind: "activation", label: "", y: 120 },
+      row: MINIMAP_ROW,
+      scale: createScale(view, WIDTH),
     });
 
-    drawActivation(
-      draw,
-      DEFAULT_TRACK_DATA.features[0],
-      DEFAULT_TRACK_DATA.bins
-    );
+    drawMinimap(draw, BOUNDS);
 
-    expect(recorder.calls.some((call) => call.op === "fill")).toBe(true);
-    expect(recorder.calls.some((call) => call.op === "stroke")).toBe(true);
+    const box = windowRect(recorder);
+    const span = BOUNDS.end - BOUNDS.start + 1;
+
+    // The invariant the row exists for: the box's position and width within
+    // the bar are the viewport's position and width within the extent. Stated
+    // as fractions rather than pixels, since pixels are the thing under test.
+    expect(box.x / WIDTH).toBeCloseTo((view.start - BOUNDS.start) / span, 3);
+    expect(box.width / WIDTH).toBeCloseTo(
+      (view.end - view.start + 1) / span,
+      3
+    );
+  });
+
+  it("keeps a deeply zoomed window visible", () => {
+    const { draw, recorder } = makeDraw({
+      row: MINIMAP_ROW,
+      scale: createScale({ end: 45_483, start: 45_464 }, WIDTH),
+    });
+
+    drawMinimap(draw, BOUNDS);
+
+    // 20 bases of 289 is 55 px here, but the same window inside a 40 kb extent
+    // is a fraction of a pixel. The floor is what stops the indicator
+    // disappearing exactly when a user is most lost.
+    expect(windowRect(recorder).width).toBeGreaterThanOrEqual(3);
+  });
+
+  it("holds the box inside the track at the far edge", () => {
+    const { draw, recorder } = makeDraw({
+      row: MINIMAP_ROW,
+      scale: createScale({ end: BOUNDS.end, start: BOUNDS.end - 1 }, WIDTH),
+    });
+
+    drawMinimap(draw, BOUNDS);
+
+    const box = windowRect(recorder);
+
+    expect(box.x + box.width).toBeLessThanOrEqual(WIDTH);
+  });
+
+  it("captions the band with the visible range", () => {
+    const { draw, recorder } = makeDraw({
+      row: MINIMAP_ROW,
+      scale: createScale({ end: 45_560, start: 45_500 }, WIDTH),
+    });
+
+    drawMinimap(draw, BOUNDS);
+
+    expect(recorder.texts.some((label) => label.text === "45,500–45,560")).toBe(
+      true
+    );
+  });
+
+  it("keeps the caption on screen when the band is against an edge", () => {
+    const { draw, recorder } = makeDraw({
+      row: MINIMAP_ROW,
+      scale: createScale({ end: BOUNDS.start + 1, start: BOUNDS.start }, WIDTH),
+    });
+
+    drawMinimap(draw, BOUNDS);
+
+    const caption = recorder.texts.find((label) => label.text.includes("–"));
+
+    // Centred on a band at x=0, the caption would start off the left edge.
+    expect(caption?.x).toBeGreaterThan(0);
+  });
+
+  it("labels its ticks against the extent, not the viewport", () => {
+    const { draw, recorder } = makeDraw({
+      row: MINIMAP_ROW,
+      scale: createScale({ end: 45_500, start: 45_470 }, WIDTH),
+    });
+
+    drawMinimap(draw, BOUNDS);
+
+    // A tick past the right edge of the viewport has to appear, or the box has
+    // nothing to be positioned against.
+    expect(recorder.texts.some((label) => label.text.includes("45,700"))).toBe(
+      true
+    );
+  });
+
+  it("draws bar only, and no labels, at compact density", () => {
+    const { draw, recorder } = makeDraw({
+      density: "compact",
+      row: minimapRow("compact"),
+    });
+
+    drawMinimap(draw, BOUNDS);
+
+    expect(recorder.texts).toHaveLength(0);
   });
 
   it("stays inside its row", () => {
-    const row: TrackRow = {
-      height: 64,
-      kind: "activation",
-      label: "",
-      y: 120,
-    };
-    const { draw, recorder } = makeDraw({ row });
+    const { draw, recorder } = makeDraw({ row: MINIMAP_ROW });
 
-    drawActivation(
-      draw,
-      DEFAULT_TRACK_DATA.features[0],
-      DEFAULT_TRACK_DATA.bins
-    );
+    drawMinimap(draw, BOUNDS);
 
     drawnYs(recorder.calls).forEach((y) => {
-      expect(y).toBeGreaterThanOrEqual(row.y);
-      expect(y).toBeLessThanOrEqual(row.y + row.height);
+      expect(y).toBeGreaterThanOrEqual(MINIMAP_ROW.y);
+      expect(y).toBeLessThanOrEqual(MINIMAP_ROW.y + MINIMAP_ROW.height);
     });
   });
+});
 
-  it("steps rather than interpolating between pooled bins", () => {
-    const { draw, recorder } = makeDraw({
-      row: { height: 64, kind: "activation", label: "", y: 120 },
-    });
+describe("drawFeatureBars", () => {
+  /** A features sub-row as the layout builds one: bars under a label band. */
+  const FEATURE_ROW: TrackRow = {
+    height: 40,
+    kind: "features",
+    label: "Features",
+    labelInset: 16,
+    traceIndex: 0,
+    traceLabel: "ATP-binding cassette (ABC) transporter",
+    y: 120,
+  };
 
-    drawActivation(
+  it("draws a bar per firing bin", () => {
+    const { draw, recorder } = makeDraw({ row: FEATURE_ROW });
+    const trace = DEFAULT_TRACK_DATA.features[0];
+
+    drawFeatureBars(draw, trace, DEFAULT_TRACK_DATA.bins);
+
+    const firing = trace.values.filter((value) => value > 0).length;
+
+    expect(
+      recorder.calls.filter((call) => call.op === "fillRect")
+    ).toHaveLength(firing);
+  });
+
+  it("draws nothing for a silent bin", () => {
+    const { draw, recorder } = makeDraw({ row: FEATURE_ROW });
+
+    drawFeatureBars(
+      draw,
+      { ...DEFAULT_TRACK_DATA.features[0], peak: 1, values: [0, 0, 0, 0] },
+      { end: 4, n_bins: 4, start: 1, stride: 1 }
+    );
+
+    // A 1 px stub for silence would read as a faint signal, which across a
+    // mostly-quiet trace looks like noise the feature does not have.
+    expect(recorder.calls.some((call) => call.op === "fillRect")).toBe(false);
+  });
+
+  it("keeps its bars below the label band", () => {
+    const { draw, recorder } = makeDraw({ row: FEATURE_ROW });
+
+    drawFeatureBars(
       draw,
       DEFAULT_TRACK_DATA.features[0],
       DEFAULT_TRACK_DATA.bins
     );
 
-    const lineTos = recorder.calls.filter((call) => call.op === "lineTo");
+    const top = FEATURE_ROW.y + (FEATURE_ROW.labelInset ?? 0);
 
-    // Two `lineTo`s per bin — up to the value, then across the bin's width —
-    // because a pooled bin is flat across its bases. A smooth curve would draw
-    // values between points that have none.
-    expect(lineTos.length).toBeGreaterThanOrEqual(
-      DEFAULT_TRACK_DATA.bins.n_bins * 2
-    );
+    // The label is DOM text drawn over this row, so a bar reaching into the
+    // inset would run underneath the name rather than beside it.
+    recorder.calls
+      .filter((call) => call.op === "fillRect")
+      .forEach((call) => {
+        expect(call.args[1]).toBeGreaterThanOrEqual(top);
+        expect(call.args[1] + call.args[3]).toBeLessThanOrEqual(
+          FEATURE_ROW.y + FEATURE_ROW.height
+        );
+      });
   });
 
-  it("does not divide by zero on an all-zero trace", () => {
-    const { draw, recorder } = makeDraw({
-      row: { height: 64, kind: "activation", label: "", y: 120 },
-    });
-    const flat = {
-      ...DEFAULT_TRACK_DATA.features[0],
-      peak: 0,
-      values: new Array(DEFAULT_TRACK_DATA.bins.n_bins).fill(0),
-    };
+  it("still draws a baseline for a trace that never fires", () => {
+    const { draw, recorder } = makeDraw({ row: FEATURE_ROW });
 
-    expect(() =>
-      drawActivation(draw, flat, DEFAULT_TRACK_DATA.bins)
-    ).not.toThrow();
-
-    drawnYs(recorder.calls).forEach((y) => expect(Number.isNaN(y)).toBe(false));
-  });
-
-  it("draws nothing when the viewport is outside the bin axis", () => {
-    const { draw, recorder } = makeDraw({
-      row: { height: 64, kind: "activation", label: "", y: 120 },
-      scale: createScale({ end: 900_100, start: 900_000 }, WIDTH),
-    });
-
-    drawActivation(
+    drawFeatureBars(
       draw,
-      DEFAULT_TRACK_DATA.features[0],
+      {
+        ...DEFAULT_TRACK_DATA.features[0],
+        peak: 0,
+        values: DEFAULT_TRACK_DATA.features[0].values.map(() => 0),
+      },
       DEFAULT_TRACK_DATA.bins
     );
 
-    expect(recorder.calls.filter((call) => call.op === "fill")).toHaveLength(0);
+    // Without the baseline an all-zero row is indistinguishable from a row
+    // whose draw pass failed. A zero peak must not divide either.
+    expect(recorder.calls.some((call) => call.op === "fillRect")).toBe(false);
+    expect(recorder.calls.some((call) => call.op === "stroke")).toBe(true);
+    expect(drawnYs(recorder.calls).every(Number.isFinite)).toBe(true);
+  });
+
+  it("draws nothing at all when the bin axis misses the window", () => {
+    const { draw, recorder } = makeDraw({ row: FEATURE_ROW });
+
+    drawFeatureBars(
+      draw,
+      { ...DEFAULT_TRACK_DATA.features[0], peak: 1, values: [1, 1] },
+      { end: 2, n_bins: 2, start: 1, stride: 1 }
+    );
+
+    // Not even a baseline: a baseline claims "this feature is silent across
+    // this window", and a payload whose bins do not reach the window has said
+    // nothing about it either way.
+    expect(recorder.calls).toHaveLength(0);
   });
 });

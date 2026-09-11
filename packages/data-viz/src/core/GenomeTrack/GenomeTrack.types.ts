@@ -143,6 +143,12 @@ export interface OverviewBand {
  * This is the only part of the payload keyed to the chromosome rather than the
  * window, so a shell fetches it once per accession and reuses it across window
  * re-fetches.
+ *
+ * **Nothing reads this yet.** The minimap row as built shows where the viewport
+ * sits inside the payload's own window, which it takes from `locus`. Drawing the
+ * chromosome-scale summary described here is a later, larger version of that
+ * row: it would widen the extent from one window to a whole chromosome and add
+ * a signal underneath the position box.
  */
 export interface MinimapOverview {
   chrom: string;
@@ -208,15 +214,8 @@ export interface GenomeTrackData {
   caps: TrackCaps;
 }
 
-/**
- * Rows the track can draw, in the order they are listed on the `tracks` prop.
- *
- * "minimap" and "features" are declared here but not yet implemented; passing
- * them is accepted and renders nothing, so a caller written against the final
- * API keeps working as those rows land.
- */
+/** Rows the track can draw, in the order they are listed on the `tracks` prop. */
 export type TrackKind =
-  | "activation"
   | "annotations"
   | "features"
   | "minimap"
@@ -260,7 +259,7 @@ export interface GenomeTrackProps extends Omit<
   /**
    * Rows to draw, top to bottom. An ordered array rather than a set of boolean
    * props, which is how the design's several frames come out of one component.
-   * @default ["annotations", "segments", "activation"]
+   * @default ["minimap", "sequence", "annotations", "segments", "features"]
    */
   tracks?: TrackKind[];
   /**
@@ -276,16 +275,30 @@ export interface GenomeTrackProps extends Omit<
   selection?: GenomeSelection | null;
   onSelectionChange?: (selection: GenomeSelection | null) => void;
   /**
-   * Row height for annotation and segment rows, in px. The ruler and activation
-   * rows size themselves.
+   * Row height for annotation and segment rows, in px. The minimap and
+   * sequence rows size themselves from `density`, and the features rows have a
+   * prop of their own.
    * @default 28
    */
   blockRowHeight?: number;
   /**
-   * Height of the activation trace row, in px.
-   * @default 64
+   * Height of one feature's bars in the features row, in px, not counting the
+   * space above them that the feature's name occupies.
+   * @default 24
    */
-  activationRowHeight?: number;
+  featureRowHeight?: number;
+  /**
+   * How many traces the features row draws, `pinned` first and then `features`
+   * in the payload's own rank order.
+   *
+   * A cap rather than "all of them" because the row's height is unbounded in
+   * the data: the segment-features endpoint will return up to 128 features for
+   * a segment, which at this row height is three thousand pixels of track. The
+   * caller that fetched them chose how many to ask for; this is how it says how
+   * many to show.
+   * @default 8
+   */
+  maxFeatureRows?: number;
   /**
    * Width reserved for row labels down the left edge. Zero hides them, which is
    * what the compact variant does.
@@ -294,7 +307,8 @@ export interface GenomeTrackProps extends Omit<
   labelWidth?: number;
   /**
    * Comfortable is the standalone view; compact is the in-card variant used by
-   * a comparison row, which tightens every row and drops the ruler labels.
+   * a comparison row, which tightens every row and drops the labels and
+   * captions.
    * @default "comfortable"
    */
   density?: "comfortable" | "compact";

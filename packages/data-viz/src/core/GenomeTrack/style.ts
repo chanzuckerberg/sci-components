@@ -45,8 +45,9 @@ export const TrackRoot = styled("div")`
  * Header carrying the organism and the exact coordinate range.
  *
  * Always DOM, never canvas: this is the one piece of text a user copies out of
- * the component, and the range it states is the authoritative one — the ruler's
- * tick labels are abbreviated and cannot be.
+ * the component, and the range it states is the only exact one on screen — the
+ * minimap's tick labels are abbreviated and describe the window rather than the
+ * visible range.
  */
 export const TrackHeader = styled("div")`
   ${fontBodyXxs}
@@ -83,8 +84,17 @@ export const TrackHeaderRange = styled("span")`
   }}
 `;
 
-/** Row that holds the label gutter beside the canvas. */
+/**
+ * Row that holds the label gutter beside the canvas.
+ *
+ * Positioned so that controls layered over the plot can anchor to it. They
+ * cannot live inside the plot: it carries `role="img"`, and an interactive
+ * descendant of an image role is invalid — assistive technology may not expose
+ * the control at all. The plot's right edge is this element's right edge, since
+ * the plot is the last child and grows into it.
+ */
 export const TrackBody = styled("div")`
+  position: relative;
   display: flex;
   align-items: stretch;
 `;
@@ -150,6 +160,48 @@ export const TrackPlot = styled("div")`
       ${(props: PlotProps) => getSemanticColors(props)?.accent?.border};
     outline-offset: 2px;
   }
+`;
+
+/**
+ * A feature's name, sitting above its bars inside the plot area.
+ *
+ * The only row label that is not in the gutter, because it cannot be: feature
+ * names run to forty characters against a gutter of ninety-six pixels. It is
+ * `aria-hidden` and pointer-transparent — the accessible table already names
+ * every feature it draws, and a label that swallowed pointer events would
+ * punch a hole in the row's hover.
+ */
+export const TrackFeatureLabel = styled("div")`
+  ${fontBodyXxxs}
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  ${(props: CommonThemeProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `color: ${semanticColors?.base?.textPrimary};`;
+  }}
+`;
+
+/**
+ * Holds the sequence row's copy control against the right edge of the plot.
+ *
+ * A sibling of the plot rather than a child of it, positioned against
+ * `TrackBody`. See that component for why: the plot is `role="img"`, which
+ * cannot contain a control.
+ */
+export const TrackSequenceCopy = styled("div")`
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
 `;
 
 /**

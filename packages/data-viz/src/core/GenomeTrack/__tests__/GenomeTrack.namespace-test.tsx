@@ -100,7 +100,7 @@ const DATA: GenomeTrackData = {
 const GenomeTrackNameSpaceTest = (props: GenomeTrackProps) => {
   const viewport: GenomeViewport = { end: 45_750, start: 45_462 };
   const selection: GenomeSelection = { id: "ann_0", kind: "block" };
-  const tracks: TrackKind[] = ["annotations", "segments", "activation"];
+  const tracks: TrackKind[] = ["annotations", "segments", "features"];
 
   return (
     <>
@@ -120,25 +120,19 @@ const GenomeTrackNameSpaceTest = (props: GenomeTrackProps) => {
       {/* Every row kind, including the ones not yet implemented */}
       <GenomeTrack
         data={DATA}
-        tracks={[
-          "minimap",
-          "sequence",
-          "annotations",
-          "segments",
-          "activation",
-          "features",
-        ]}
+        tracks={["minimap", "sequence", "annotations", "segments", "features"]}
       />
 
       {/* The compact in-card variant */}
       <GenomeTrack
-        activationRowHeight={32}
         blockRowHeight={16}
         data={DATA}
         density="compact"
         disableNavigation
+        featureRowHeight={12}
         labelWidth={0}
-        tracks={["annotations", "segments"]}
+        maxFeatureRows={3}
+        tracks={["annotations", "segments", "features"]}
       />
 
       {/* States */}

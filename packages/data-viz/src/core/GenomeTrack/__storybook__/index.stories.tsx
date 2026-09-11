@@ -8,10 +8,6 @@ import { GenomeTrack } from "./stories/default";
 
 export default {
   argTypes: {
-    activationRowHeight: {
-      control: { max: 160, min: 24, step: 4, type: "range" },
-      description: "Height of the activation trace row, in px",
-    },
     blockRowHeight: {
       control: { max: 64, min: 12, step: 2, type: "range" },
       description: "Height of the annotation and segment rows, in px",
@@ -24,13 +20,21 @@ export default {
     density: {
       control: { type: "inline-radio" },
       description:
-        "Compact tightens every row and drops ruler labels, for the in-card variant",
+        "Compact tightens every row and drops the labels and captions, for the in-card variant",
       options: ["comfortable", "compact"],
     },
     disableNavigation: {
       control: { type: "boolean" },
       description:
         "Turn off wheel-zoom and drag-pan. Keyboard navigation and selection still work.",
+    },
+    featureRowHeight: {
+      control: { max: 64, min: 8, step: 2, type: "range" },
+      description: "Height of one feature's bars, in px, excluding its name",
+    },
+    maxFeatureRows: {
+      control: { max: 16, min: 1, step: 1, type: "range" },
+      description: "How many traces the features row draws, pinned first",
     },
     labelWidth: {
       control: { max: 160, min: 0, step: 8, type: "range" },
@@ -43,7 +47,7 @@ export default {
     tracks: {
       control: { type: "check" },
       description: "Rows to draw, in order",
-      options: ["sequence", "annotations", "segments", "activation"],
+      options: ["minimap", "sequence", "annotations", "segments", "features"],
     },
   },
   component: GenomeTrack,
@@ -53,27 +57,55 @@ export default {
 const DEFAULT_ARGS = {
   data: DEFAULT_TRACK_DATA,
   density: "comfortable",
-  tracks: ["annotations", "segments", "activation"],
+  tracks: ["minimap", "sequence", "annotations", "segments", "features"],
 };
 
 /**
  * The locus from the designs: `fixX` in E. coli K-12, 289 bp. Drag to pan,
  * scroll to zoom, click a block to select it.
+ *
+ * Two of the fixture's eight traces carry a description and the rest read
+ * "Feature 13492", which is the coverage the knowledge base actually has — and
+ * for a checkpoint whose description pipeline has not run, every row reads that
+ * way. The layout has to survive it, so the fixture does not pretend otherwise.
+ *
+ * Bar heights are normalized per trace, not across the stack, so a weak
+ * feature's shape stays legible. The consequence is that heights cannot be
+ * compared between rows; the tooltip carries the absolute value.
  */
 export const Default = {
   args: DEFAULT_ARGS,
 };
 
 /**
- * With the sequence ruler. Letters appear once bases are at least 7 px wide;
- * below that the row falls back to a solid band rather than an unreadable
- * smear, so zoom in to read them.
+ * Zoomed in far enough to read the sequence. Letters appear once bases are at
+ * least 7 px wide; below that the row falls back to a solid band rather than an
+ * unreadable smear.
+ *
+ * This is also where the minimap earns its keep: the band narrows to show how
+ * little of the window is on screen, captioned with the range it covers, while
+ * the ticks under the bar stay on the window's coordinates.
  */
-export const WithSequence = {
-  args: {
-    ...DEFAULT_ARGS,
-    tracks: ["sequence", "annotations", "segments", "activation"],
-  },
+export const ZoomedIn = {
+  args: { ...DEFAULT_ARGS, viewport: { end: 45_500, start: 45_462 } },
+};
+
+/**
+ * Only the block rows, for a caller that wants neither the position indicator
+ * nor the letters. `tracks` is an ordered list, so leaving a row out is all it
+ * takes.
+ */
+export const BlocksOnly = {
+  args: { ...DEFAULT_ARGS, tracks: ["annotations", "segments"] },
+};
+
+/**
+ * A single feature, for a card that has room for one row rather than eight.
+ * `maxFeatureRows` takes a prefix of the payload's rank order, so this is the
+ * highest-scoring trace.
+ */
+export const OneFeature = {
+  args: { ...DEFAULT_ARGS, maxFeatureRows: 1 },
 };
 
 /**
@@ -81,6 +113,10 @@ export const WithSequence = {
  * climbs above 1 and the sequence comes back null. Every point is a max over
  * `stride` bases, so a single-base peak survives rather than being averaged
  * away.
+ *
+ * The header states the stride as well as the span, since zooming in here
+ * magnifies bins rather than sharpening them — the resolution is fixed by
+ * whoever fetched the window, not by the current viewport.
  */
 export const PooledWindow = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA },
@@ -96,8 +132,9 @@ export const WithoutAnnotations = {
 };
 
 /**
- * The in-card variant used by a comparison row: tighter rows, no ruler labels,
- * no label gutter, and navigation off so the card does not capture scroll.
+ * The in-card variant used by a comparison row: tighter rows, no captions or
+ * tick labels, no label gutter, and navigation off so the card does not capture
+ * scroll.
  */
 export const Compact = {
   args: {
@@ -143,7 +180,7 @@ export const Empty = {
 export const Test = {
   args: {
     ...DEFAULT_ARGS,
-    tracks: ["sequence", "annotations", "segments", "activation"],
+    tracks: ["minimap", "sequence", "annotations", "segments", "features"],
   },
   parameters: { chromatic: { disableSnapshot: true } },
 };

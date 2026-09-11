@@ -16,11 +16,11 @@ import { bpToPx, createScale } from "../utils/scale";
 
 const WIDTH = 800;
 const OPTIONS = {
-  activationRowHeight: 64,
   blockRowHeight: 28,
   density: "comfortable" as const,
-  rulerHeight: 24,
-  tracks: ["annotations", "segments", "activation"] as TrackKind[],
+  featureRowHeight: 24,
+  maxFeatureRows: 8,
+  tracks: ["annotations", "segments", "features"] as TrackKind[],
 };
 
 const layout = layoutRows(DEFAULT_TRACK_DATA, OPTIONS);
@@ -86,13 +86,13 @@ describe("hitTest", () => {
     expect(hit?.label).toMatch(/^seg_\d{5}$/);
   });
 
-  it("returns a binned value for the activation row", () => {
+  it("returns a binned value for a feature row", () => {
     const hit = hitTest(
       DEFAULT_TRACK_DATA,
       layout.rows,
       scale,
       WIDTH / 2,
-      rowCenter("activation")
+      rowCenter("features")
     );
 
     expect(hit?.kind).toBe("trace");
@@ -136,6 +136,35 @@ describe("hitTest", () => {
       // Blocks do not overlap in the annotation row, so the midpoint of each
       // must resolve to that block and no other.
       expect(hit?.id).toBe(annotation.id);
+    });
+  });
+
+  /**
+   * The features stack is many rows of one kind, so a y offset is the only
+   * thing that distinguishes them. A hit that resolved by kind would report the
+   * first feature wherever in the stack the pointer was — the failure this
+   * exists to catch.
+   */
+  it("reports the trace belonging to the feature row under the pointer", () => {
+    const featureLayout = layoutRows(DEFAULT_TRACK_DATA, {
+      ...OPTIONS,
+      tracks: ["features"],
+    });
+
+    featureLayout.rows.forEach((row, index) => {
+      const hit = hitTest(
+        DEFAULT_TRACK_DATA,
+        featureLayout.rows,
+        scale,
+        WIDTH / 2,
+        row.y + row.height / 2
+      );
+
+      expect(hit).toMatchObject({
+        id: `feature-${DEFAULT_TRACK_DATA.features[index].feature_id}`,
+        kind: "trace",
+        rowIndex: index,
+      });
     });
   });
 

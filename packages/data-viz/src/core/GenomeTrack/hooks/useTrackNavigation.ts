@@ -13,7 +13,7 @@ import {
   GenomeViewport,
 } from "../GenomeTrack.types";
 import { TrackHit, hitTest } from "../utils/hitTest";
-import { TrackRow } from "../utils/layout";
+import { TrackRow, rowAt } from "../utils/layout";
 import { GenomeScale, panBy, spanOf, zoomAt } from "../utils/scale";
 
 /**
@@ -132,11 +132,27 @@ export function useTrackNavigation(
 
       if (disabled) return;
 
+      /**
+       * A drag beginning on the minimap does nothing at all.
+       *
+       * Panning is inverted by design — the plot moves under the pointer the
+       * way a map does — and on a minimap that would send the window the
+       * opposite way to the box the user is dragging. Doing nothing is worse
+       * than dragging the box and better than moving it backwards; dragging it
+       * properly means treating the minimap as its own control, which is the
+       * work this is holding a place for.
+       */
+      const plot = plotRef.current?.getBoundingClientRect();
+
+      if (rowAt(rows, event.clientY - (plot?.top ?? 0))?.kind === "minimap") {
+        return;
+      }
+
       drag.current = { moved: 0, startX: localX(event.clientX) };
       setIsDragging(true);
       event.currentTarget.setPointerCapture(event.pointerId);
     },
-    [disabled, localX, plotRef]
+    [disabled, localX, plotRef, rows]
   );
 
   const onPointerUp = useCallback(

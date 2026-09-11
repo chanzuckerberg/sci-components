@@ -23,6 +23,33 @@ export interface TrackPalette {
   axis: string;
   /** Ruler tick labels and row labels. */
   axisText: string;
+  /**
+   * Bars in the features row. Indigo, per the design.
+   *
+   * Resolves to the same token as `segment` today. Kept separate rather than
+   * reusing it because the two say different things — a segment is an interval
+   * the pipeline cut, a bar is how hard one feature fired — and a later design
+   * that wants them distinguished should not have to untangle one token into
+   * two.
+   */
+  featureBar: string;
+  /** The minimap's full-extent bar, under the window band. */
+  minimapTrack: string;
+  /**
+   * The minimap's window band.
+   *
+   * Grey rather than the accent, so it cannot be mistaken for a segment or a
+   * feature — the band marks where you are looking, not something you picked.
+   *
+   * **It must be a different grey from `minimapTrack`.** The first version of
+   * this row drew the band in `neutral.fillSecondary` and the track in
+   * `base.fillSecondary`, which both resolve to grey 200: the band was there,
+   * positioned correctly, and completely invisible. Hence the two entries and
+   * hence this note.
+   */
+  minimapWindow: string;
+  /** The visible range, captioned above the minimap's bar. */
+  minimapText: string;
   /** Outline on the hovered block. */
   hover: string;
   /** Banding behind a row, for the sequence ruler. */
@@ -35,10 +62,6 @@ export interface TrackPalette {
   selected: string;
   /** Sequence ruler letters. */
   sequenceText: string;
-  /** Activation trace stroke. */
-  trace: string;
-  /** Area fill under the activation trace. */
-  traceFill: string;
 }
 
 const FALLBACK: TrackPalette = {
@@ -46,14 +69,16 @@ const FALLBACK: TrackPalette = {
   annotationText: "#ffffff",
   axis: "#c3c3c3",
   axisText: "#767676",
+  featureBar: "#5a5aeb",
   hover: "#1b1b1b",
+  minimapText: "#767676",
+  minimapTrack: "#dfdfdf",
+  minimapWindow: "#767676",
   rowBackground: "#f8f8f8",
   segment: "#5a5aeb",
   segmentText: "#ffffff",
   selected: "#0b0b0b",
   sequenceText: "#767676",
-  trace: "#3867fa",
-  traceFill: "rgba(56, 103, 250, 0.24)",
 };
 
 /**
@@ -98,20 +123,23 @@ export function resolvePalette(
 
   if (!base) return FALLBACK;
 
-  const trace = semanticColors?.info?.fillPrimary ?? FALLBACK.trace;
-
   return {
     annotation: semanticColors?.neutral?.fillPrimary ?? FALLBACK.annotation,
     annotationText: base.textOnFill ?? FALLBACK.annotationText,
     axis: base.divider ?? FALLBACK.axis,
     axisText: base.textTertiary ?? FALLBACK.axisText,
+    featureBar: semanticColors?.accent?.fillPrimary ?? FALLBACK.featureBar,
     hover: base.borderPrimary ?? FALLBACK.hover,
+    minimapText: base.textSecondary ?? FALLBACK.minimapText,
+    minimapTrack: base.fillSecondary ?? FALLBACK.minimapTrack,
+    // Grey 600 against the track's grey 200. Inverts to a light band on a
+    // darker track in dark mode, which keeps the contrast either way.
+    minimapWindow:
+      semanticColors?.neutral?.fillPrimary ?? FALLBACK.minimapWindow,
     rowBackground: base.surfaceSecondary ?? FALLBACK.rowBackground,
     segment: semanticColors?.accent?.fillPrimary ?? FALLBACK.segment,
     segmentText: base.textOnFill ?? FALLBACK.segmentText,
     selected: base.textPrimary ?? FALLBACK.selected,
     sequenceText: base.textSecondary ?? FALLBACK.sequenceText,
-    trace,
-    traceFill: withAlpha(trace, 0.24),
   };
 }

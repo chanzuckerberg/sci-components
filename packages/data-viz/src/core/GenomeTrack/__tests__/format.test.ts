@@ -1,4 +1,9 @@
-import { formatTick, tickInterval, ticksFor } from "../utils/format";
+import {
+  formatResolution,
+  formatTick,
+  tickInterval,
+  ticksFor,
+} from "../utils/format";
 
 /**
  * Tick labelling, which the first Storybook render caught getting wrong.
@@ -65,6 +70,23 @@ describe("tickInterval", () => {
     expect(tickInterval(289, 6)).toBe(50);
     expect(tickInterval(1_000, 5)).toBe(200);
     expect(tickInterval(40_000, 6)).toBe(10_000);
+  });
+});
+
+describe("formatResolution", () => {
+  it("says nothing about an unpooled trace", () => {
+    // "1 bp/point" is true and useless: it is what a reader already assumes.
+    expect(formatResolution(1)).toBeNull();
+  });
+
+  it("states the stride once a trace is pooled", () => {
+    expect(formatResolution(21)).toBe("21 bp/point");
+  });
+
+  it("abbreviates a chromosome-scale stride", () => {
+    // A minimap over a human chromosome pools at hundreds of kilobases, where
+    // "200,000 bp/point" is a number nobody reads.
+    expect(formatResolution(200_000)).toBe("200 kb/point");
   });
 });
 
