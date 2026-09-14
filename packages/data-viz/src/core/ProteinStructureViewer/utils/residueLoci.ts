@@ -59,22 +59,35 @@ function lociMatching(
   );
 }
 
-/** Every atom of the residues a selection covers, within one structure. */
+/**
+ * Every atom of the residues a selection covers, within one structure.
+ *
+ * `hiddenChains` is subtracted from the result. A hidden chain is not drawn, so
+ * geometry built from it would have nothing to sit on: Mol*'s focus
+ * representation draws its own ball-and-stick from whatever is focused, in a
+ * part of the state tree the chain's own visibility does not reach, and a
+ * hidden chain left in the loci would keep showing up there after its cartoon
+ * had gone.
+ */
 export function lociForSelectionInStructure(
   structure: Structure,
-  selection: StructureSelection
+  selection: StructureSelection,
+  hiddenChains?: ReadonlySet<string>
 ): StructureElement.Loci | undefined {
   if (isEmptySelection(selection)) return undefined;
 
   const residues = new Set(selection.residues ?? []);
   const chains = new Set(selection.chains ?? []);
 
-  return lociMatching(
-    structure,
-    (location) =>
+  return lociMatching(structure, (location) => {
+    const chainId = StructureProperties.chain.auth_asym_id(location);
+    if (hiddenChains?.has(chainId)) return false;
+
+    return (
       residues.has(StructureProperties.residue.key(location)) ||
-      chains.has(StructureProperties.chain.auth_asym_id(location))
-  );
+      chains.has(chainId)
+    );
+  });
 }
 
 /**

@@ -4,6 +4,7 @@ import { createPluginUI } from "molstar/lib/mol-plugin-ui";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
+import type { PluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
 import { setSubtreeVisibility } from "molstar/lib/mol-plugin/behavior/static/state";
 import { PluginConfig, PluginConfigItem } from "molstar/lib/mol-plugin/config";
@@ -19,6 +20,7 @@ import type {
 } from "../ProteinStructureViewer.types";
 import { syncClipToZoom } from "../utils/cameraFocus";
 import { chainExpression, chainsEqual, scanChains } from "../utils/chains";
+import { mergeMolstarSpec } from "../utils/molstarSpec";
 import { residueRefFromLoci, selectionFromLoci } from "../utils/residueRef";
 import type {
   MolstarViewSettings,
@@ -160,6 +162,7 @@ interface CreateViewerOptions {
   showSequenceViewer: boolean;
   residueValueTheme: ResidueValueTheme;
   chainColorTheme: ChainColorTheme;
+  molstarSpec?: Partial<PluginUISpec>;
 }
 
 async function createViewer({
@@ -167,6 +170,7 @@ async function createViewer({
   chainColorTheme,
   edgeColor,
   highlightColor,
+  molstarSpec,
   residueValueTheme,
   root,
   showAxes,
@@ -188,57 +192,61 @@ async function createViewer({
     (b) => b.transformer !== PluginBehaviors.Camera.FocusLoci
   );
 
-  const plugin = await createPluginUI({
-    render: renderReact18,
-    spec: {
-      ...spec,
-      behaviors,
-      canvas3d: {
-        camera: { helper: { axes: showAxes ? AXES_ON : AXES_OFF } },
-        // Hover is a geometry tint (renderer below) plus an outline; selection
-        // is an outline only. Both outlines come from the marking edge colors.
-        marking: {
-          highlightEdgeColor: edgeColor,
-          selectEdgeColor: edgeColor,
-        },
-        renderer: {
-          backgroundColor,
-          colorMarker: true,
-          highlightColor,
-          highlightStrength: HIGHLIGHT_STRENGTH,
-          selectStrength: SELECT_STRENGTH,
-        },
+  // What the viewer asks of Mol*. A consumer's `molstarSpec` is laid over it
+  // below, so every setting here is a default rather than a fixed choice.
+  const viewerSpec: PluginUISpec = {
+    ...spec,
+    behaviors,
+    canvas3d: {
+      camera: { helper: { axes: showAxes ? AXES_ON : AXES_OFF } },
+      // Hover is a geometry tint (renderer below) plus an outline; selection
+      // is an outline only. Both outlines come from the marking edge colors.
+      marking: {
+        highlightEdgeColor: edgeColor,
+        selectEdgeColor: edgeColor,
       },
-      components: {
-        remoteState: "none",
-        sequenceViewer: { view: createSequenceView(viewSettings) },
-        ...(showAxes && {
-          viewport: { view: createViewportView(viewSettings) },
-        }),
+      renderer: {
+        backgroundColor,
+        colorMarker: true,
+        highlightColor,
+        highlightStrength: HIGHLIGHT_STRENGTH,
+        selectStrength: SELECT_STRENGTH,
       },
-      config: [
-        ...(spec.config ?? []),
-        [PluginConfig.Viewport.ShowExpand, false],
-        [PluginConfig.Viewport.ShowControls, false],
-        [PluginConfig.Viewport.ShowSettings, false],
-        [PluginConfig.Viewport.ShowSelectionMode, false],
-        [PluginConfig.Viewport.ShowAnimation, false],
-        [PluginConfig.Viewport.ShowTrajectoryControls, false],
-        ...SCREENSHOT_CONTROLS_CONFIG,
-      ],
-      layout: {
-        initial: {
-          controlsDisplay: "reactive",
-          isExpanded: false,
-          regionState: {
-            bottom: "hidden",
-            left: "hidden",
-            right: "hidden",
-            top: showSequenceViewer ? "full" : "hidden",
-          },
+    },
+    components: {
+      remoteState: "none",
+      sequenceViewer: { view: createSequenceView(viewSettings) },
+      ...(showAxes && {
+        viewport: { view: createViewportView(viewSettings) },
+      }),
+    },
+    config: [
+      ...(spec.config ?? []),
+      [PluginConfig.Viewport.ShowExpand, false],
+      [PluginConfig.Viewport.ShowControls, false],
+      [PluginConfig.Viewport.ShowSettings, false],
+      [PluginConfig.Viewport.ShowSelectionMode, false],
+      [PluginConfig.Viewport.ShowAnimation, false],
+      [PluginConfig.Viewport.ShowTrajectoryControls, false],
+      ...SCREENSHOT_CONTROLS_CONFIG,
+    ],
+    layout: {
+      initial: {
+        controlsDisplay: "reactive",
+        isExpanded: false,
+        regionState: {
+          bottom: "hidden",
+          left: "hidden",
+          right: "hidden",
+          top: showSequenceViewer ? "full" : "hidden",
         },
       },
     },
+  };
+
+  const plugin = await createPluginUI({
+    render: renderReact18,
+    spec: mergeMolstarSpec(viewerSpec, molstarSpec),
     target: root,
   });
 
@@ -438,6 +446,8 @@ export interface UseMolstarPluginOptions {
   onChainToggle?: (chainId: string) => void;
   /** Chains the current selection covers whole. */
   selectedChains: Set<string>;
+  /** Mol* spec laid over the viewer's own. */
+  molstarSpec?: Partial<PluginUISpec>;
   onResidueClick?: (residue: ResidueRef) => void;
   onResidueHover?: (residue: ResidueRef | null) => void;
   /** Called with everything a click covers, which a drag makes a range. */
@@ -478,6 +488,7 @@ export function useMolstarPlugin({
   hiddenChains,
   highlightColor,
   mode,
+  molstarSpec,
   onChainSelect,
   onChainToggle,
   onResidueClick,
@@ -598,6 +609,7 @@ export function useMolstarPlugin({
     hasPlddt,
     highlightColor,
     mode,
+    molstarSpec,
     pdb,
     showAxes,
     showSequenceViewer,
@@ -608,10 +620,26 @@ export function useMolstarPlugin({
     hasPlddt,
     highlightColor,
     mode,
+    molstarSpec,
     pdb,
     showAxes,
     showSequenceViewer,
   };
+
+  /**
+   * The consumer's `canvas3d` overrides, keyed by content. Unlike the rest of
+   * the spec these are re-applied when they change, and they commonly arrive
+   * as an object written inline - so the effect below turns on what they say
+   * rather than on the identity of the object saying it.
+   */
+  const canvas3dOverrideKey = (() => {
+    try {
+      return JSON.stringify(molstarSpec?.canvas3d ?? null);
+    } catch {
+      // Something unserializable in there; fall back to re-applying always.
+      return String(Date.now());
+    }
+  })();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -641,6 +669,7 @@ export function useMolstarPlugin({
           chainColorTheme,
           edgeColor: initial.edgeColor,
           highlightColor: initial.highlightColor,
+          molstarSpec: initial.molstarSpec,
           residueValueTheme,
           root: container,
           showAxes: initial.showAxes,
@@ -768,10 +797,25 @@ export function useMolstarPlugin({
       marking: { highlightEdgeColor: edgeColor, selectEdgeColor: edgeColor },
       renderer: { backgroundColor, highlightColor },
     });
+
+    // Applied after, so a consumer naming the same setting wins over the
+    // viewer's. `setProps` merges into what is already there, which is what
+    // lets the two be pushed in sequence rather than combined first.
+    const override = initialPropsRef.current.molstarSpec?.canvas3d;
+    if (override) canvas3d.setProps(override);
     // There is no canvas to push to until the plugin is up, and a dependency
     // that changed before then will not change again to replay this. Waiting
     // on isReady is what keeps a theme switched mid-initialization.
-  }, [backgroundColor, edgeColor, highlightColor, isReady]);
+    //
+    // canvas3dOverrideKey stands in for the override object; see above.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    backgroundColor,
+    canvas3dOverrideKey,
+    edgeColor,
+    highlightColor,
+    isReady,
+  ]);
 
   // Hand the new settings to the views Mol* renders outside the React tree.
   useEffect(() => {

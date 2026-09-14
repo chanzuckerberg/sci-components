@@ -1333,6 +1333,42 @@ The viewer reads the active SDS theme for its hover and selection colors and for
 
 The two accept different formats. Mol\* needs the canvas color as a concrete `#RRGGBB` value, so `backgroundColor` is limited to hex. The sequence panel is styled with CSS, so `sequenceViewerBackgroundColor` takes any CSS color. It paints the panel, the fade that masks residues scrolling under the header, and the "no structure available" state, so the panel stays one color throughout.
 
+## Configuring Mol\*
+
+The viewer is built on [Mol\*](https://molstar.org/), and the props above cover the settings a structure view usually needs. Everything else Mol* can be told is reachable through `molstarSpec`, which takes a [`PluginUISpec`](https://molstar.org/docs/plugin/spec/) and lays it over the one the viewer builds. There is no prop here per Mol* setting, and none needs to be added for one.
+
+Anything named in it wins, and anything left out keeps the viewer's default. So a single nested setting can be changed without disturbing its siblings:
+
+```
+import { PluginConfig } from "molstar/lib/mol-plugin/config";
+
+<ProteinStructureViewer
+  pdb={PDB}
+  molstarSpec={{
+    canvas3d: {
+      // Slow the trackball down, leaving the rest of it alone.
+      trackball: { rotateSpeed: 2 },
+      // Stop tinting geometry on hover; the viewer's marking colors stay.
+      renderer: { colorMarker: false },
+    },
+    // Bring back a control the viewer hides.
+    config: [[PluginConfig.Viewport.ShowControls, true]],
+  }}
+/>
+```
+
+Mol* is a peer dependency, so its types and its `PluginConfig` items are imported from Mol* itself rather than from this package. Note that `canvas3d` is only shallowly partial: its top-level groups may be given in part, but a setting Mol\* models as a named choice - such as `postprocessing.occlusion` - has to be supplied whole, with both its `name` and its `params`.
+
+The full set of settings is documented by Mol* rather than here, since it is Mol*'s surface and moves with Mol\*'s versions:
+
+- [Plugin spec](https://molstar.org/docs/plugin/spec/) - `behaviors`, `actions`, `animations`, `customFormats`, `layout`, and the `components` Mol\* renders.
+- [Canvas3D props](https://molstar.org/docs/plugin/canvas3d/) - `renderer`, `camera`, `postprocessing`, `trackball`, `marking`, and lighting.
+- [Plugin config](https://molstar.org/docs/plugin/config/) - the `PluginConfig` items the `config` list takes.
+
+Two things to know about how it is applied. List-valued keys - `behaviors`, `config`, `actions`, `animations`, `customFormats`, `customParamEditors` - are appended to rather than replaced. For `config` that is what makes an override work, since Mol* reads the list in order and a later entry wins. It also means a behavior cannot be taken away: the viewer removes Mol*'s click-to-zoom camera so that `selection` alone drives the camera, and that stays removed.
+
+And it is read once, when the plugin is created - except for `canvas3d`, which is re-applied whenever it changes. Creating the plugin throws away the camera, so the rest is deliberately not reactive; pass a `key` to remount the viewer if you need to change it.
+
 ## Props
 
 The viewer spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
@@ -1346,6 +1382,7 @@ The viewer spreads any remaining props onto its root div, so standard HTML attri
 | `hiddenChains`                  | `string[]`                    | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                              |
 | `chainColors`                   | `Record<string, string>`      | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen, which is when neither `plddt` nor `residueOverlay` is set.                                                                                                                           |
 | `showChainLegend`               | `boolean`                     | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                     |
+| `molstarSpec`                   | `Partial<PluginUISpec>`       | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                          |
 | `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                   |
 | `backgroundColor`               | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                                                                                                                                      |
 | `sequenceViewerBackgroundColor` | `string`                      | -            | Sequence panel background, as any CSS color. Defaults to the SDS theme's primary surface, so the panel follows the surrounding page in both modes.                                                                                                                                                                                           |

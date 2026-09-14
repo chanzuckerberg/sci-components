@@ -4,6 +4,8 @@ import { composeStories } from "@storybook/react-vite";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import { Structure } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
+import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
+import { PluginConfig } from "molstar/lib/mol-plugin/config";
 import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
@@ -1132,6 +1134,93 @@ describe("<ProteinStructureViewer />", () => {
       expect(getComputedStyle(swatches[0] as Element).backgroundColor).toBe(
         "rgb(18, 52, 86)"
       );
+    });
+  });
+
+  /**
+   * The escape hatch onto the rest of Mol*. The viewer builds a spec of its
+   * own, and this is how a consumer reaches settings the viewer has no prop
+   * for without one being added here for each.
+   */
+  describe("molstarSpec", () => {
+    /** The spec `createPluginUI` was actually handed. */
+    const spec = () => createPluginUI.mock.calls[0]?.[0]?.spec;
+
+    it("passes a consumer's canvas3d settings into the plugin", async () => {
+      renderViewer({
+        molstarSpec: {
+          canvas3d: { postprocessing: { occlusion: { name: "off" } } },
+        },
+      } as Partial<ProteinStructureViewerProps>);
+
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+      expect(spec().canvas3d.postprocessing).toEqual({
+        occlusion: { name: "off" },
+      });
+    });
+
+    it("keeps the viewer's own canvas3d settings alongside them", async () => {
+      renderViewer({
+        molstarSpec: { canvas3d: { renderer: { colorMarker: false } } },
+      } as Partial<ProteinStructureViewerProps>);
+
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+
+      // Named by the consumer, so theirs wins.
+      expect(spec().canvas3d.renderer.colorMarker).toBe(false);
+      // Not named, so the viewer's marking colors survive.
+      expect(spec().canvas3d.marking.selectEdgeColor).toBeDefined();
+    });
+
+    it("appends a consumer's config after the viewer's, so theirs wins", async () => {
+      renderViewer({
+        molstarSpec: { config: [[PluginConfig.Viewport.ShowExpand, true]] },
+      } as Partial<ProteinStructureViewerProps>);
+
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+
+      const entries = spec().config.filter(
+        ([item]: [unknown]) => item === PluginConfig.Viewport.ShowExpand
+      );
+
+      // The viewer sets it false; the consumer's true comes after, and Mol*
+      // folds the list into a Map in order.
+      expect(entries[entries.length - 1][1]).toBe(true);
+    });
+
+    it("leaves the camera behavior the viewer removed removed", async () => {
+      renderViewer({
+        molstarSpec: { canvas3d: {} },
+      } as Partial<ProteinStructureViewerProps>);
+
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+      expect(
+        spec().behaviors.some(
+          (b: { transformer: unknown }) =>
+            b.transformer === PluginBehaviors.Camera.FocusLoci
+        )
+      ).toBe(false);
+    });
+
+    it("pushes canvas3d overrides into the live canvas after the viewer's", async () => {
+      renderViewer({
+        molstarSpec: { canvas3d: { renderer: { colorMarker: false } } },
+      } as Partial<ProteinStructureViewerProps>);
+
+      await waitFor(() =>
+        expect(plugin.canvas3d.setProps).toHaveBeenCalledWith(
+          expect.objectContaining({
+            renderer: expect.objectContaining({ colorMarker: false }),
+          })
+        )
+      );
+    });
+
+    it("renders without one, which is the common case", async () => {
+      renderViewer();
+
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+      expect(spec().canvas3d.renderer.colorMarker).toBe(true);
     });
   });
 

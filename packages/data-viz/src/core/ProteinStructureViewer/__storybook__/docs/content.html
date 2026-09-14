@@ -183,6 +183,106 @@
   panel, the fade that masks residues scrolling under the header, and the "no
   structure available" state, so the panel stays one color throughout.
 </p>
+<h2>Configuring Mol*</h2>
+<p>
+  The viewer is built on
+  <a href="https://molstar.org/" target="_blank" rel="noreferrer">Mol*</a>, and
+  the props above cover the settings a structure view usually needs. Everything
+  else Mol* can be told is reachable through <code>molstarSpec</code>, which
+  takes a
+  <a
+    href="https://molstar.org/docs/plugin/spec/"
+    target="_blank"
+    rel="noreferrer"
+    ><code>PluginUISpec</code></a
+  >
+  and lays it over the one the viewer builds. There is no prop here per Mol*
+  setting, and none needs to be added for one.
+</p>
+<p>
+  Anything named in it wins, and anything left out keeps the viewer's default.
+  So a single nested setting can be changed without disturbing its siblings:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { PluginConfig } from "molstar/lib/mol-plugin/config";
+
+&lt;ProteinStructureViewer
+  pdb={PDB}
+  molstarSpec={{
+    canvas3d: {
+      // Slow the trackball down, leaving the rest of it alone.
+      trackball: { rotateSpeed: 2 },
+      // Stop tinting geometry on hover; the viewer's marking colors stay.
+      renderer: { colorMarker: false },
+    },
+    // Bring back a control the viewer hides.
+    config: [[PluginConfig.Viewport.ShowControls, true]],
+  }}
+/&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  Mol* is a peer dependency, so its types and its <code>PluginConfig</code>
+  items are imported from Mol* itself rather than from this package. Note that
+  <code>canvas3d</code> is only shallowly partial: its top-level groups may be
+  given in part, but a setting Mol* models as a named choice - such as
+  <code>postprocessing.occlusion</code> - has to be supplied whole, with both
+  its <code>name</code> and its <code>params</code>.
+</p>
+<p>
+  The full set of settings is documented by Mol* rather than here, since it is
+  Mol*'s surface and moves with Mol*'s versions:
+</p>
+<ul>
+  <li>
+    <a
+      href="https://molstar.org/docs/plugin/spec/"
+      target="_blank"
+      rel="noreferrer"
+      >Plugin spec</a
+    >
+    - <code>behaviors</code>, <code>actions</code>, <code>animations</code>,
+    <code>customFormats</code>, <code>layout</code>, and the
+    <code>components</code> Mol* renders.
+  </li>
+  <li>
+    <a
+      href="https://molstar.org/docs/plugin/canvas3d/"
+      target="_blank"
+      rel="noreferrer"
+      >Canvas3D props</a
+    >
+    - <code>renderer</code>, <code>camera</code>, <code>postprocessing</code>,
+    <code>trackball</code>, <code>marking</code>, and lighting.
+  </li>
+  <li>
+    <a
+      href="https://molstar.org/docs/plugin/config/"
+      target="_blank"
+      rel="noreferrer"
+      >Plugin config</a
+    >
+    - the <code>PluginConfig</code> items the <code>config</code> list takes.
+  </li>
+</ul>
+<p>
+  Two things to know about how it is applied. List-valued keys -
+  <code>behaviors</code>, <code>config</code>, <code>actions</code>,
+  <code>animations</code>, <code>customFormats</code>,
+  <code>customParamEditors</code> - are appended to rather than replaced. For
+  <code>config</code> that is what makes an override work, since Mol* reads the
+  list in order and a later entry wins. It also means a behavior cannot be taken
+  away: the viewer removes Mol*'s click-to-zoom camera so that
+  <code>selection</code> alone drives the camera, and that stays removed.
+</p>
+<p>
+  And it is read once, when the plugin is created - except for
+  <code>canvas3d</code>, which is re-applied whenever it changes. Creating the
+  plugin throws away the camera, so the rest is deliberately not reactive; pass
+  a <code>key</code> to remount the viewer if you need to change it.
+</p>
 <h2>Props</h2>
 <p>
   The viewer spreads any remaining props onto its root div, so standard HTML
@@ -304,6 +404,24 @@
         Show the chain legend, which lists each chain with its color and a
         visibility toggle. Ignored on a single-chain structure, where there is
         nothing to tell apart or hide.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>molstarSpec</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;PluginUISpec&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Mol* plugin spec laid over the viewer's own, which is how the whole of
+        Mol*'s configuration is reachable without a prop here for each setting.
+        Anything named wins; list-valued keys are appended to. Read once at
+        creation, except <code>canvas3d</code>, which is re-applied when it
+        changes. See <em>Configuring Mol*</em> above.
       </p>
     </td>
   </tr>

@@ -61,6 +61,11 @@ export default {
       description:
         "Chains hidden from the 3D view, by chainId. Omit to let the chain legend's toggles own visibility.",
     },
+    molstarSpec: {
+      control: { type: "object" },
+      description:
+        "Mol* plugin spec laid over the viewer's own, for settings with no prop of their own. Read once at creation, except canvas3d.",
+    },
     showChainLegend: {
       control: { type: "boolean" },
       description:

@@ -12,6 +12,9 @@ import {
   injectPlddtIntoPdb,
   sampleColorScale,
 } from "@czi-sds/data-viz";
+// Mol* is a peer dependency, so a consumer reaching for `molstarSpec` imports
+// its types and config items from Mol* itself rather than from this package.
+import { PluginConfig } from "molstar/lib/mol-plugin/config";
 import React, { useState } from "react";
 
 const PDB =
@@ -103,6 +106,33 @@ const ProteinStructureViewerNameSpaceTest = (
         onChainVisibilityChange={setHiddenChains}
         pdb={PDB}
         showChainLegend={chains.length > 1}
+      />
+
+      {/*
+        Mol* settings the viewer has no prop of its own for. This is the
+        example the docs show, kept here so it is typechecked rather than
+        merely written down.
+      */}
+      <ProteinStructureViewer
+        molstarSpec={{
+          canvas3d: {
+            renderer: { colorMarker: false },
+            trackball: { rotateSpeed: 2 },
+          },
+          config: [[PluginConfig.Viewport.ShowControls, true]],
+        }}
+        pdb={PDB}
+      />
+
+      {/* A named choice has to be given whole, name and params together. */}
+      <ProteinStructureViewer
+        molstarSpec={{
+          canvas3d: {
+            postprocessing: { occlusion: { name: "off", params: {} } },
+          },
+          layout: { initial: { isExpanded: false } },
+        }}
+        pdb={PDB}
       />
 
       {/* Chrome toggles and background overrides */}

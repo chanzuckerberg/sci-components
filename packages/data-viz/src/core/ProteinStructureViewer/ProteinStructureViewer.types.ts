@@ -1,4 +1,5 @@
 import { TooltipProps } from "@czi-sds/components";
+import type { PluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import { HTMLAttributes } from "react";
 import { ColorScale } from "../../common/colorScales";
 
@@ -184,6 +185,25 @@ export interface ProteinStructureViewerProps extends Omit<
    * @default true
    */
   showChainLegend?: boolean;
+  /**
+   * Mol* plugin spec laid over the viewer's own, which is how the whole of
+   * Mol*'s configuration is reachable without a prop here for each setting.
+   * Anything named here wins, so `canvas3d.postprocessing`, a `PluginConfig`
+   * item, or `layout.initial` can all be set to something other than the
+   * default the viewer picked.
+   *
+   * List-valued keys - `behaviors`, `config`, `actions`, `animations`,
+   * `customFormats`, `customParamEditors` - are appended to rather than
+   * replaced. For `config` that is what lets an entry override the viewer's,
+   * since Mol* reads the list in order. It also means a behavior cannot be
+   * taken away: the ones the viewer drops stay dropped, and the ones it keeps
+   * cannot be removed from here.
+   *
+   * Read once, when the plugin is created, except for `canvas3d`, which is
+   * re-applied whenever it changes. Creating the plugin throws away the camera,
+   * so the rest is deliberately not reactive.
+   */
+  molstarSpec?: Partial<PluginUISpec>;
   /**
    * Up to three whole-structure stats shown along the bottom. A null entry
    * reserves its column without rendering anything, so the columns never shift

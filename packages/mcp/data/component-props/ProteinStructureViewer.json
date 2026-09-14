@@ -16,6 +16,11 @@
         "isRequired": false,
         "type": "string[]"
       },
+      "molstarSpec": {
+        "description": "Mol* plugin spec laid over the viewer's own, which is how the whole of\nMol*'s configuration is reachable without a prop here for each setting.\nAnything named here wins, so `canvas3d.postprocessing`, a `PluginConfig`\nitem, or `layout.initial` can all be set to something other than the\ndefault the viewer picked.\n\nList-valued keys - `behaviors`, `config`, `actions`, `animations`,\n`customFormats`, `customParamEditors` - are appended to rather than\nreplaced. For `config` that is what lets an entry override the viewer's,\nsince Mol* reads the list in order. It also means a behavior cannot be\ntaken away: the ones the viewer drops stay dropped, and the ones it keeps\ncannot be removed from here.\n\nRead once, when the plugin is created, except for `canvas3d`, which is\nre-applied whenever it changes. Creating the plugin throws away the camera,\nso the rest is deliberately not reactive.",
+        "isRequired": false,
+        "type": "Partial<PluginUISpec>"
+      },
       "showChainLegend": {
         "defaultValue": true,
         "description": "Show the chain legend, which lists each chain with its color and a\nvisibility toggle. Ignored on a single-chain structure, where there is\nnothing to tell apart or hide.",
