@@ -1,6 +1,7 @@
 import {
   ChainRef,
   ColorScale,
+  DownloadResolution,
   ProteinStructureViewer,
   ProteinStructureViewerProps,
   PLASMA_COLOR_SCALE,
@@ -45,6 +46,9 @@ const CUSTOM_SCALE: ColorScale = {
 };
 
 const CHAIN_COLORS: Record<string, string> = { A: "#0072B2", B: "#E69F00" };
+
+/** Typed through the exported union, and labelled from the exported map. */
+const DOWNLOAD_RESOLUTION: DownloadResolution = "maximum";
 
 const ProteinStructureViewerNameSpaceTest = (
   props: ProteinStructureViewerProps
@@ -97,6 +101,18 @@ const ProteinStructureViewerNameSpaceTest = (
       <ProteinStructureViewer
         chainColors={CHAIN_COLORS}
         onChainsChange={setChains}
+        pdb={PDB}
+      />
+
+      {/* The capture button, at its defaults and fully specified */}
+      <ProteinStructureViewer download={{}} pdb={PDB} />
+      <ProteinStructureViewer
+        download={{
+          backgroundColor: "#FFFFFF",
+          filename: "structure",
+          resolution: DOWNLOAD_RESOLUTION,
+          showAxes: true,
+        }}
         pdb={PDB}
       />
 

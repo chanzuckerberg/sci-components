@@ -1,5 +1,6 @@
 import { Theme, getSemanticColors } from "@czi-sds/components";
 import { BehaviorSubject } from "rxjs";
+import type { StructureDownload } from "../ProteinStructureViewer.types";
 
 export type ThemeMode = "light" | "dark";
 
@@ -39,6 +40,12 @@ export interface MolstarViewSettings {
    * meaning the axes are on.
    */
   showAxes?: boolean;
+  /**
+   * What the capture button should produce, or undefined for no button. The
+   * button lives in the viewport view, which Mol* renders, so the options
+   * reach it the same way the theme does.
+   */
+  download?: StructureDownload | null;
 }
 
 /**

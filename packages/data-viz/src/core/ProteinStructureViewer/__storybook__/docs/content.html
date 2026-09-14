@@ -183,6 +183,106 @@
   panel, the fade that masks residues scrolling under the header, and the "no
   structure available" state, so the panel stays one color throughout.
 </p>
+<h2>Downloading an image</h2>
+<p>
+  Passing <code>download</code> adds a capture button beneath the reset-camera
+  control, which downloads the structure as it currently stands as a PNG. Omit
+  the prop and no button is drawn.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;ProteinStructureViewer
+ pdb={PDB}
+ download={{ resolution: "high", filename: "barnase-barstar" }}
+/&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  The image is rendered in its own pass at the size asked for rather than scaled
+  up from the canvas, so it comes out as sharp as the resolution says whatever
+  size the viewer happens to be on screen - and a large one costs time rather
+  than sharpness, which is why the default sits in the middle.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>resolution</code></p>
+    </td>
+    <td>
+      <p><code>"low" | "medium" | "high" | "maximum"</code></p>
+    </td>
+    <td>
+      <p><code>"medium"</code></p>
+    </td>
+    <td>
+      <p>
+        1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported
+        as <code>DOWNLOAD_RESOLUTIONS</code>, for labelling a control of your
+        own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>backgroundColor</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p>- (transparent)</p>
+    </td>
+    <td>
+      <p>
+        Background behind the structure, as <code>#RRGGBB</code>. Omit for a
+        transparent one, which is what a figure usually wants. The viewer's own
+        canvas color is deliberately not inherited, since an image tends to
+        outlive the theme it was captured under.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>showAxes</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Draw the orientation axes into the image. Independent of the viewer's
+        own <code>showAxes</code>: the widget orients a reader who can turn the
+        structure, and earns its place less in a still, so it can be on screen
+        without being in the capture or the other way about.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>filename</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Name for the file, without an extension. Defaults to the one Mol*
+        derives from the loaded structure.
+      </p>
+    </td>
+  </tr>
+</table>
 <h2>Configuring Mol*</h2>
 <p>
   The viewer is built on
@@ -404,6 +504,22 @@
         Show the chain legend, which lists each chain with its color and a
         visibility toggle. Ignored on a single-chain structure, where there is
         nothing to tell apart or hide.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>download</code></p>
+    </td>
+    <td>
+      <p><code>StructureDownload | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Adds a capture button beneath the reset-camera control, which downloads
+        a PNG of the structure. Omit for no button. See
+        <em>Downloading an image</em> above.
       </p>
     </td>
   </tr>

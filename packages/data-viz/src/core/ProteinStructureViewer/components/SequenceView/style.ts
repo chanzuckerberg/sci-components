@@ -326,22 +326,26 @@ export const ChainLabel = styled("button")<ChainLabelProps>`
   border: none;
   background: none;
   text-align: left;
-  cursor: pointer;
 
   ${(props: ChainLabelProps) => {
     const semanticColors = getSemanticColors(props);
+    const resting = props.isSelected
+      ? semanticColors?.base?.textPrimary
+      : semanticColors?.base?.textSecondary;
 
+    /*
+     * A hidden chain cannot be selected, so the caption stops inviting it: no
+     * pointer, no hover response. The button is disabled too - this only has
+     * to agree with that.
+     */
     return `
-      color: ${
-        props.isSelected
-          ? semanticColors?.base?.textPrimary
-          : semanticColors?.base?.textSecondary
-      };
-      font-weight: ${props.isSelected ? 600 : "inherit"};
+      color: ${resting};
+      cursor: ${props.isHidden ? "default" : "pointer"};
+      font-weight: ${props.isSelected ? 600 : 500};
       opacity: ${props.isHidden ? 0.4 : 1};
 
       &:hover {
-        color: ${semanticColors?.base?.textPrimary};
+        color: ${props.isHidden ? resting : semanticColors?.base?.textPrimary};
       }
     `;
   }}

@@ -107,6 +107,19 @@ export const StatsGrid = styled("div")`
   }}
 `;
 
+export const ChainScaleColumn = styled("div")`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+    return `
+      gap: ${spaces?.l}px;
+    `;
+  }}
+`;
+
 export const StatColumnWrapper = styled("div")`
   display: flex;
   flex-direction: column;

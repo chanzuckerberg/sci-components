@@ -23,7 +23,9 @@ export interface ChainHeaderProps {
  *
  * The name is a toggle rather than a one-way switch, so the tooltip says which
  * way the next click goes - offering to select a chain that is already selected
- * would be telling the reader the wrong thing.
+ * would be telling the reader the wrong thing. A hidden chain cannot be
+ * selected at all, so the name stops being a button then: there is no geometry
+ * to focus, and the toggle beside it is what the reader wants instead.
  */
 export default function ChainHeader({
   chainId,
@@ -38,17 +40,24 @@ export default function ChainHeader({
       <Tooltip
         arrow
         placement="top"
-        title={`Click to ${isSelected ? "deselect" : "select"} Chain ${label}`}
+        title={
+          isHidden
+            ? `Chain ${label} is hidden`
+            : `Click to ${isSelected ? "deselect" : "select"} Chain ${label}`
+        }
         textAlign="left"
       >
         <ChainLabel
           aria-pressed={isSelected}
+          // A hidden chain draws nothing, so there is nothing to select: the
+          // focus would resolve to no geometry and be dropped again.
+          disabled={isHidden}
           isHidden={isHidden}
           isSelected={isSelected}
           onClick={() => onSelect?.(chainId)}
           type="button"
         >
-          {label}
+          Chain {label}
         </ChainLabel>
       </Tooltip>
       {onToggle && (

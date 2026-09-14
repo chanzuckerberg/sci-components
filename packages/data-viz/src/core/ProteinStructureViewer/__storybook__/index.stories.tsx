@@ -61,6 +61,11 @@ export default {
       description:
         "Chains hidden from the 3D view, by chainId. Omit to let the chain legend's toggles own visibility.",
     },
+    download: {
+      control: { type: "object" },
+      description:
+        "Turns on the capture button under the reset-camera control. Takes resolution (low | medium | high | maximum), backgroundColor, showAxes and filename.",
+    },
     molstarSpec: {
       control: { type: "object" },
       description:
@@ -295,6 +300,24 @@ export const ComplexWithHiddenChain = {
   render: (props: Args) => (
     <ProteinStructureViewer {...props} initialHiddenChains={["B"]} />
   ),
+};
+
+/**
+ * A capture button under the reset-camera control, which downloads the
+ * structure as a PNG.
+ *
+ * Transparent by default, since that is what a figure usually wants, and
+ * without the axes widget - it orients a reader who can turn the structure and
+ * earns its place less in a still. The image is rendered fresh at the size
+ * asked for rather than scaled up from the canvas, so it comes out as sharp as
+ * the resolution says whatever size the viewer happens to be on screen.
+ */
+export const WithImageDownload = {
+  args: {
+    ...DEFAULT_ARGS,
+    download: { filename: "crambin", resolution: "high" },
+  },
+  parameters: VIEWER_CHECKS,
 };
 
 /**

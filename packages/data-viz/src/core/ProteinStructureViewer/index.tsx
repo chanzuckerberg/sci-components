@@ -29,7 +29,11 @@ import {
 } from "./ProteinStructureViewer.types";
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
-import { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
+import {
+  PLDDT_BAND_COLORS,
+  PLDDT_COLOR_SCALE,
+  injectPlddtIntoPdb,
+} from "./utils/plddt";
 
 export * from "./ProteinStructureViewer.types";
 export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
@@ -130,6 +134,7 @@ const ProteinStructureViewer = forwardRef(
     const {
       backgroundColor,
       chainColors: chainColorOverrides,
+      download,
       hiddenChains: hiddenChainsProp,
       onChainVisibilityChange,
       onChainsChange,
@@ -263,6 +268,7 @@ const ProteinStructureViewer = forwardRef(
       backgroundColor: bgColor,
       chainColors,
       containerRef: pluginMountRef,
+      download,
       edgeColor,
       hasPlddt,
       hiddenChains,
@@ -330,16 +336,28 @@ const ProteinStructureViewer = forwardRef(
       [residueOverlay, hasPlddt]
     );
 
-    // Swatches describe the structure only while chain coloring is what is
-    // painting it. Under pLDDT or an overlay the rows keep their labels and
-    // toggles but drop the colors, which by then belong to a different scale.
+    /**
+     * What a chain's swatch can show follows whatever is painting the
+     * structure, in the same order the color key resolves in.
+     *
+     * Chain coloring gives each chain one color of its own. pLDDT gives every
+     * chain the same four bands, which says they are colored by confidence
+     * rather than telling them apart - so the swatch carries the whole key,
+     * quartered. An overlay is continuous and has no discrete colors to put in
+     * a swatch at all, so the rows keep their labels and toggles and the color
+     * key beside them does the describing.
+     */
     const chainColoringActive = !residueOverlay && !hasPlddt;
+    const plddtColoringActive = !residueOverlay && hasPlddt;
 
     return (
       <ViewerRoot ref={ref} showSequenceViewer={showSequenceViewer} {...rest}>
         <PluginMount ref={pluginMountRef} />
         {showLegend && (
           <StructureLegend
+            chainBandColors={
+              plddtColoringActive ? PLDDT_BAND_COLORS : undefined
+            }
             chainColors={chainColoringActive ? chainColors : undefined}
             chains={showChainLegend ? chains : []}
             hiddenChains={hiddenChains}

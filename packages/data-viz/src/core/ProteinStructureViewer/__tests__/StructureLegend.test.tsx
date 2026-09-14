@@ -11,7 +11,7 @@ import StructureLegend, {
   StructureLegendProps,
 } from "../components/StructureLegend";
 import type { ChainRef, ResidueReadout } from "../ProteinStructureViewer.types";
-import { PLDDT_COLOR_SCALE } from "../utils/plddt";
+import { PLDDT_BAND_COLORS, PLDDT_COLOR_SCALE } from "../utils/plddt";
 
 const MEAN_PLDDT_LABEL = "Mean pLDDT";
 
@@ -242,9 +242,36 @@ describe("<StructureLegend />", () => {
       const onChainSelect = vi.fn();
       renderLegend({ chains: CHAINS, ...CHAIN_HANDLERS, onChainSelect });
 
-      fireEvent.click(screen.getByRole("button", { name: "B" }));
+      fireEvent.click(screen.getByRole("button", { name: "Chain B" }));
 
       expect(onChainSelect).toHaveBeenCalledWith("B");
+    });
+
+    /**
+     * A hidden chain draws nothing, so there is nothing to select. The name
+     * stops being clickable rather than accepting a click that goes nowhere.
+     */
+    it("disables a hidden chain's name but not its toggle", () => {
+      const onChainSelect = vi.fn();
+      renderLegend({
+        chains: CHAINS,
+        hiddenChains: new Set(["B"]),
+        ...CHAIN_HANDLERS,
+        onChainSelect,
+      });
+
+      const hidden = screen.getByRole("button", { name: "Chain B" });
+      expect(hidden).toBeDisabled();
+
+      fireEvent.click(hidden);
+      expect(onChainSelect).not.toHaveBeenCalled();
+
+      // The chain that is still shown stays selectable, and the way back from
+      // hiding stays open.
+      expect(screen.getByRole("button", { name: "Chain A" })).toBeEnabled();
+      expect(
+        screen.getByRole("button", { name: "Show chain B" })
+      ).toBeEnabled();
     });
 
     it("reports a chain when its visibility is toggled", () => {
@@ -261,6 +288,72 @@ describe("<StructureLegend />", () => {
      * Under pLDDT or an overlay the colors belong to a different scale, so the
      * rows keep their labels and toggles and drop the colors.
      */
+    /**
+     * Under pLDDT no one color stands for a chain, so the swatch carries the
+     * whole band key instead - quartered, the same for every chain. That says
+     * the chains are colored by confidence rather than pretending to tell them
+     * apart.
+     */
+    describe("under pLDDT coloring", () => {
+      const quadrants = (result: RenderResult) =>
+        result.container.querySelectorAll('[class*="ChainSwatchQuadrant"]');
+
+      it("quarters each chain's swatch into the four bands", () => {
+        const result = renderLegend({
+          chainBandColors: PLDDT_BAND_COLORS,
+          chainColors: undefined,
+          chains: CHAINS,
+          ...CHAIN_HANDLERS,
+        });
+
+        // Four bands on each of the two chains.
+        expect(quadrants(result)).toHaveLength(8);
+        expect(
+          result.container.querySelectorAll('[class*="ChainSwatchGrid"]')
+        ).toHaveLength(2);
+      });
+
+      it("paints the quadrants the pLDDT band colors", () => {
+        const result = renderLegend({
+          chainBandColors: PLDDT_BAND_COLORS,
+          chainColors: undefined,
+          chains: CHAINS,
+          ...CHAIN_HANDLERS,
+        });
+
+        const painted = [...quadrants(result)]
+          .slice(0, PLDDT_BAND_COLORS.length)
+          .map((q) => getComputedStyle(q).backgroundColor);
+
+        // #FF7C45, #FFDB11, #64CBF3, #0053D5, least confident first.
+        expect(painted).toEqual([
+          "rgb(255, 124, 69)",
+          "rgb(255, 219, 17)",
+          "rgb(100, 203, 243)",
+          "rgb(0, 83, 213)",
+        ]);
+      });
+
+      it("prefers a chain's own color when there is one", () => {
+        // Both supplied should not happen, but chain coloring is the more
+        // specific answer, so it wins rather than being doubled up on.
+        const result = renderLegend({
+          chainBandColors: PLDDT_BAND_COLORS,
+          chainColors: new Map([
+            ["A", "#0072B2"],
+            ["B", "#E69F00"],
+          ]),
+          chains: CHAINS,
+          ...CHAIN_HANDLERS,
+        });
+
+        expect(quadrants(result)).toHaveLength(0);
+        expect(
+          result.container.querySelectorAll('[class*="ChainSwatch"]')
+        ).toHaveLength(2);
+      });
+    });
+
     it("drops the swatches when chain coloring is not what is shown", () => {
       // Emotion emits the color into a generated class rather than inline, so
       // the swatch elements are what there is to count.

@@ -6,6 +6,8 @@ import {
   ChainRow,
   ChainRowList,
   ChainSwatch,
+  ChainSwatchGrid,
+  ChainSwatchQuadrant,
   VisibilityToggle,
 } from "./style";
 
@@ -14,10 +16,20 @@ export interface ChainLegendProps {
   chains: ChainRef[];
   /**
    * Color per chain, by `chainId`. Undefined while something other than chain
-   * coloring is painting the structure, which drops the swatches rather than
-   * showing colors the structure does not carry.
+   * coloring is painting the structure, in which case the swatch falls to
+   * `bandColors` or goes entirely.
    */
   chainColors?: Map<string, string>;
+  /**
+   * Colors to quarter the swatch into, when what is painting the structure has
+   * no single color per chain to show. The pLDDT bands, in practice: every
+   * chain then carries the same key, which says the chains are colored by
+   * confidence rather than telling them apart.
+   *
+   * Undefined for a coloring with no discrete colors at all - a continuous
+   * overlay - where the color key beside the legend is the honest answer.
+   */
+  bandColors?: string[];
   /** Chains currently hidden. */
   hiddenChains: Set<string>;
   /** Chains the current selection covers whole. */
@@ -38,6 +50,7 @@ export interface ChainLegendProps {
  * to be listed.
  */
 export default function ChainLegend({
+  bandColors,
   chainColors,
   chains,
   hiddenChains,
@@ -59,30 +72,46 @@ export default function ChainLegend({
             {color !== undefined && (
               <ChainSwatch isHidden={hidden} swatchColor={color} />
             )}
+            {color === undefined && bandColors !== undefined && (
+              <ChainSwatchGrid isHidden={hidden}>
+                {bandColors.map((band) => (
+                  <ChainSwatchQuadrant key={band} swatchColor={band} />
+                ))}
+              </ChainSwatchGrid>
+            )}
             {/*
               Same wording as the sequence panel's captions, since the two are
               the same affordance seen twice.
             */}
             <Tooltip
               arrow
-              placement="left"
-              title={`Click to ${selected ? "deselect" : "select"} Chain ${
-                chain.label
-              }`}
+              placement="top"
+              disableInteractive
+              title={
+                hidden
+                  ? `Chain ${chain.label} is hidden`
+                  : `Click to ${selected ? "deselect" : "select"} Chain ${
+                      chain.label
+                    }`
+              }
             >
               <ChainLabel
                 aria-pressed={selected}
+                // A hidden chain draws nothing, so there is nothing to select:
+                // the focus would resolve to no geometry and be dropped again.
+                disabled={hidden}
                 isHidden={hidden}
                 isSelected={selected}
                 onClick={() => onChainSelect(chain.chainId)}
                 type="button"
               >
-                {chain.label}
+                Chain {chain.label}
               </ChainLabel>
             </Tooltip>
             <Tooltip
               arrow
-              placement="left"
+              placement="top"
+              disableInteractive
               title={
                 hidden
                   ? `Show Chain ${chain.label}`

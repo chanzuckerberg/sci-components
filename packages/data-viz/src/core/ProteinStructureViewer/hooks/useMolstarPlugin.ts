@@ -16,9 +16,11 @@ import { createViewportView } from "../components/Viewport";
 import type {
   ChainRef,
   ResidueRef,
+  StructureDownload,
   StructureSelection,
 } from "../ProteinStructureViewer.types";
 import { syncClipToZoom } from "../utils/cameraFocus";
+import { AXES_OFF, AXES_ON } from "../utils/axes";
 import { chainExpression, chainsEqual, scanChains } from "../utils/chains";
 import { mergeMolstarSpec } from "../utils/molstarSpec";
 import { residueRefFromLoci, selectionFromLoci } from "../utils/residueRef";
@@ -85,37 +87,6 @@ function nextFrame(): Promise<void> {
  */
 const HIGHLIGHT_STRENGTH = 0.2;
 const SELECT_STRENGTH = 0;
-
-const AXES_ON = {
-  name: "on" as const,
-  params: {
-    alpha: 0.51,
-    colorX: 16711680,
-    colorY: 32768,
-    colorZ: 255,
-    labelColorX: 8421504,
-    labelColorY: 8421504,
-    labelColorZ: 8421504,
-    labelOpacity: 1,
-    labelScale: 0.25,
-    labelX: "X",
-    labelY: "Y",
-    labelZ: "Z",
-    location: "bottom-left",
-    locationOffsetX: 0,
-    locationOffsetY: 0,
-    originColor: 8421504,
-    planeColorXY: 8421504,
-    planeColorXZ: 8421504,
-    planeColorYZ: 8421504,
-    radiusScale: 0.075,
-    scale: 0.15,
-    showLabels: false,
-    showPlanes: true,
-  },
-};
-
-const AXES_OFF = { name: "off" as const, params: {} };
 
 /**
  * Turns the screenshot controls off, on the versions of Mol* that have them.
@@ -463,6 +434,8 @@ export interface UseMolstarPluginOptions {
   onChainToggle?: (chainId: string) => void;
   /** Chains the current selection covers whole. */
   selectedChains: Set<string>;
+  /** What the capture button downloads, or undefined for no button. */
+  download?: StructureDownload | null;
   /** Mol* spec laid over the viewer's own. */
   molstarSpec?: Partial<PluginUISpec>;
   onResidueClick?: (residue: ResidueRef) => void;
@@ -500,6 +473,7 @@ export function useMolstarPlugin({
   backgroundColor,
   chainColors,
   containerRef,
+  download,
   edgeColor,
   hasPlddt,
   hiddenChains,
@@ -838,6 +812,7 @@ export function useMolstarPlugin({
   // Hand the new settings to the views Mol* renders outside the React tree.
   useEffect(() => {
     viewSettings.next({
+      download,
       hiddenChains,
       mode,
       onChainSelect,
@@ -847,6 +822,7 @@ export function useMolstarPlugin({
       showAxes,
     });
   }, [
+    download,
     hiddenChains,
     mode,
     onChainSelect,

@@ -38,13 +38,6 @@ export const ChainRowList = styled("div")`
   flex-direction: column;
   align-items: flex-end;
   pointer-events: auto;
-
-  ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
-    return `
-      gap: ${spaces?.xxs}px;
-    `;
-  }}
 `;
 
 export const ChainRow = styled("div")`
@@ -54,7 +47,7 @@ export const ChainRow = styled("div")`
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
     return `
-      gap: ${spaces?.xxs}px;
+      gap: ${spaces?.xs}px;
     `;
   }}
 `;
@@ -77,6 +70,35 @@ export const ChainSwatch = styled("div")<SwatchProps>`
 `;
 
 /**
+ * A swatch quartered into a grid, for a coloring no single color stands for.
+ *
+ * Occupies the same box as the solid swatch so the rows stay aligned whichever
+ * one a chain gets, with a hairline gap between the quadrants to read as four
+ * colors rather than one blurred square.
+ */
+export const ChainSwatchGrid = styled("div")<HiddenProps>`
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0px;
+  width: ${SWATCH_SIZE}px;
+  height: ${SWATCH_SIZE}px;
+  border-radius: 1px;
+  overflow: hidden;
+
+  ${(props: HiddenProps) => `
+    opacity: ${props.isHidden ? HIDDEN_OPACITY : 1};
+  `}
+`;
+
+export const ChainSwatchQuadrant = styled("div")<{ swatchColor: string }>`
+  ${(props: { swatchColor: string }) => `
+    background-color: ${props.swatchColor};
+  `}
+`;
+
+/**
  * Selects the whole chain, or clears it when it is already the selection. A
  * button so it is reachable from the keyboard.
  */
@@ -86,18 +108,27 @@ export const ChainLabel = styled("button")<ChainLabelProps>`
   padding: 0;
   border: none;
   background: none;
-  cursor: pointer;
 
   ${(props: ChainLabelProps) => {
     const semanticColors = getSemanticColors(props);
 
+    /*
+     * A hidden chain cannot be selected, so the label stops inviting it: no
+     * pointer, no hover response. The button is disabled too - this only has
+     * to agree with that.
+     */
     return `
-      color: ${semanticColors?.base?.textPrimary};
+      color: ${semanticColors?.base?.textSecondary};
+      cursor: ${props.isHidden ? "default" : "pointer"};
       font-weight: ${props.isSelected ? 600 : "inherit"};
       opacity: ${props.isHidden ? HIDDEN_OPACITY : 1};
 
       &:hover {
-        font-weight: 600;
+        color: ${
+          props.isHidden
+            ? semanticColors?.base?.textSecondary
+            : semanticColors?.base?.textPrimary
+        };
       }
     `;
   }}
@@ -110,6 +141,7 @@ export const VisibilityToggle = styled("button")`
   border: none;
   background: none;
   cursor: pointer;
+  margin-top: 1px;
 
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);

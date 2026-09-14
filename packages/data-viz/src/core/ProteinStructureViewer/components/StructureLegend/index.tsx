@@ -8,6 +8,7 @@ import {
 import ChainLegend from "../ChainLegend";
 import ColorScaleLegend from "../ColorScaleLegend";
 import {
+  ChainScaleColumn,
   LegendOverlay,
   ScaleCaption,
   ScaleColumn,
@@ -60,6 +61,11 @@ export interface StructureLegendProps {
   chains?: ChainRef[];
   /** Color per chain, or undefined when chain coloring is not what is shown. */
   chainColors?: Map<string, string>;
+  /**
+   * Colors to quarter each chain's swatch into when no single color stands for
+   * a chain - the pLDDT bands, in practice.
+   */
+  chainBandColors?: string[];
   /** Chains currently hidden from the 3D view. */
   hiddenChains?: Set<string>;
   /** Chains the current selection covers whole. */
@@ -117,6 +123,7 @@ function readoutSlot(
  * selection.
  */
 export default function StructureLegend({
+  chainBandColors,
   chainColors,
   chains = [],
   hiddenChains,
@@ -175,37 +182,40 @@ export default function StructureLegend({
           );
         })}
       </StatsGrid>
-      {onChainToggle && onChainSelect && (
-        <ChainLegend
-          chainColors={chainColors}
-          chains={chains}
-          hiddenChains={hiddenChains ?? new Set()}
-          onChainSelect={onChainSelect}
-          onChainToggle={onChainToggle}
-          selectedChains={selectedChains}
-        />
-      )}
-      {scale && (
-        <ScaleColumn>
-          <ColorScaleLegend max={scaleMax} min={scaleMin} scale={scale} />
-          <ScaleCaption>
-            {scaleLabel}
-            {(scaleTooltip !== undefined ||
-              scaleTooltipProps !== undefined) && (
-              <Tooltip
-                arrow
-                placement="bottom"
-                {...scaleTooltipProps}
-                title={scaleTooltip ?? scaleTooltipProps?.title}
-              >
-                <TooltipAnchor>
-                  <QuestionIcon size={10} weight="bold" />
-                </TooltipAnchor>
-              </Tooltip>
-            )}
-          </ScaleCaption>
-        </ScaleColumn>
-      )}
+      <ChainScaleColumn>
+        {onChainToggle && onChainSelect && (
+          <ChainLegend
+            bandColors={chainBandColors}
+            chainColors={chainColors}
+            chains={chains}
+            hiddenChains={hiddenChains ?? new Set()}
+            onChainSelect={onChainSelect}
+            onChainToggle={onChainToggle}
+            selectedChains={selectedChains}
+          />
+        )}
+        {scale && (
+          <ScaleColumn>
+            <ColorScaleLegend max={scaleMax} min={scaleMin} scale={scale} />
+            <ScaleCaption>
+              {scaleLabel}
+              {(scaleTooltip !== undefined ||
+                scaleTooltipProps !== undefined) && (
+                <Tooltip
+                  arrow
+                  placement="bottom"
+                  {...scaleTooltipProps}
+                  title={scaleTooltip ?? scaleTooltipProps?.title}
+                >
+                  <TooltipAnchor>
+                    <QuestionIcon size={10} weight="bold" />
+                  </TooltipAnchor>
+                </Tooltip>
+              )}
+            </ScaleCaption>
+          </ScaleColumn>
+        )}
+      </ChainScaleColumn>
     </LegendOverlay>
   );
 }

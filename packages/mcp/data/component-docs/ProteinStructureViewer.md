@@ -1333,13 +1333,35 @@ The viewer reads the active SDS theme for its hover and selection colors and for
 
 The two accept different formats. Mol\* needs the canvas color as a concrete `#RRGGBB` value, so `backgroundColor` is limited to hex. The sequence panel is styled with CSS, so `sequenceViewerBackgroundColor` takes any CSS color. It paints the panel, the fade that masks residues scrolling under the header, and the "no structure available" state, so the panel stays one color throughout.
 
+## Downloading an image
+
+Passing `download` adds a capture button beneath the reset-camera control, which downloads the structure as it currently stands as a PNG. Omit the prop and no button is drawn.
+
+```
+<ProteinStructureViewer
+  pdb={PDB}
+  download={{ resolution: "high", filename: "barnase-barstar" }}
+/>
+```
+
+The image is rendered in its own pass at the size asked for rather than scaled up from the canvas, so it comes out as sharp as the resolution says whatever size the viewer happens to be on screen - and a large one costs time rather than sharpness, which is why the default sits in the middle.
+
+| Name              | Type                                       | Default         | Description                                                                                                                                                                                                                                                    |
+| ----------------- | ------------------------------------------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolution`      | `"low" \| "medium" \| "high" \| "maximum"` | `"medium"`      | 1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as `DOWNLOAD_RESOLUTIONS`, for labelling a control of your own.                                                                                                                       |
+| `backgroundColor` | `string`                                   | - (transparent) | Background behind the structure, as `#RRGGBB`. Omit for a transparent one, which is what a figure usually wants. The viewer's own canvas color is deliberately not inherited, since an image tends to outlive the theme it was captured under.                 |
+| `showAxes`        | `boolean`                                  | `false`         | Draw the orientation axes into the image. Independent of the viewer's own `showAxes`: the widget orients a reader who can turn the structure, and earns its place less in a still, so it can be on screen without being in the capture or the other way about. |
+| `filename`        | `string`                                   | -               | Name for the file, without an extension. Defaults to the one Mol\* derives from the loaded structure.                                                                                                                                                          |
+
 ## Configuring Mol\*
 
 The viewer is built on [Mol\*](https://molstar.org/), and the props above cover the settings a structure view usually needs. Everything else Mol* can be told is reachable through `molstarSpec`, which takes a [`PluginUISpec`](https://molstar.org/docs/plugin/spec/) and lays it over the one the viewer builds. There is no prop here per Mol* setting, and none needs to be added for one.
 
 Anything named in it wins, and anything left out keeps the viewer's default. So a single nested setting can be changed without disturbing its siblings:
 
-```
+**React TypeScript**
+
+```tsx
 import { PluginConfig } from "molstar/lib/mol-plugin/config";
 
 <ProteinStructureViewer
@@ -1354,7 +1376,7 @@ import { PluginConfig } from "molstar/lib/mol-plugin/config";
     // Bring back a control the viewer hides.
     config: [[PluginConfig.Viewport.ShowControls, true]],
   }}
-/>
+/>;
 ```
 
 Mol* is a peer dependency, so its types and its `PluginConfig` items are imported from Mol* itself rather than from this package. Note that `canvas3d` is only shallowly partial: its top-level groups may be given in part, but a setting Mol\* models as a named choice - such as `postprocessing.occlusion` - has to be supplied whole, with both its `name` and its `params`.
@@ -1382,6 +1404,7 @@ The viewer spreads any remaining props onto its root div, so standard HTML attri
 | `hiddenChains`                  | `string[]`                    | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                              |
 | `chainColors`                   | `Record<string, string>`      | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen, which is when neither `plddt` nor `residueOverlay` is set.                                                                                                                           |
 | `showChainLegend`               | `boolean`                     | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                     |
+| `download`                      | `StructureDownload \| null`   | -            | Adds a capture button beneath the reset-camera control, which downloads a PNG of the structure. Omit for no button. See _Downloading an image_ above.                                                                                                                                                                                        |
 | `molstarSpec`                   | `Partial<PluginUISpec>`       | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                          |
 | `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                   |
 | `backgroundColor`               | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                                                                                                                                      |

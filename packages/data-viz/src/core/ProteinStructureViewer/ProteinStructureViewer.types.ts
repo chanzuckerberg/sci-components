@@ -115,6 +115,58 @@ export interface StructureSelection {
   chains?: string[];
 }
 
+/**
+ * How large a downloaded image is, in pixels.
+ *
+ * Named rather than given as dimensions because the aspect is Mol*'s to
+ * choose: each of these is one of its own presets, and a size picked here
+ * would have to be reconciled with the canvas the image is rendered from.
+ */
+export type DownloadResolution = "low" | "medium" | "high" | "maximum";
+
+/** Pixel dimensions each resolution produces, for documentation and labels. */
+export const DOWNLOAD_RESOLUTIONS: Record<DownloadResolution, string> = {
+  high: "3840x2160",
+  low: "1280x720",
+  maximum: "7680x4320",
+  medium: "1920x1080",
+};
+
+/**
+ * Turns on the capture button under the reset-camera control, and says what it
+ * should produce. Omit it and no button is drawn.
+ *
+ * The image is rendered fresh at the size asked for rather than scaled up from
+ * the canvas, so a high resolution costs time rather than sharpness - which is
+ * why the default sits in the middle rather than at the top.
+ */
+export interface StructureDownload {
+  /**
+   * Size of the image. See `DOWNLOAD_RESOLUTIONS` for the pixel dimensions.
+   * @default "medium"
+   */
+  resolution?: DownloadResolution;
+  /**
+   * Background behind the structure, as `#RRGGBB`. Omit for a transparent
+   * one, which is what a figure usually wants - the viewer's own canvas color
+   * is deliberately not inherited, since a screenshot tends to outlive the
+   * theme it was taken under.
+   */
+  backgroundColor?: string;
+  /**
+   * Draw the orientation axes into the image. Independent of `showAxes`, which
+   * is about the view rather than the capture: the widget orients a reader who
+   * can turn the structure, and earns its place less in a still.
+   * @default false
+   */
+  showAxes?: boolean;
+  /**
+   * Name for the downloaded file, without an extension. Defaults to the one
+   * Mol* derives from the loaded structure.
+   */
+  filename?: string;
+}
+
 /** A whole-structure statistic shown along the bottom of the viewer. */
 export interface StructureStat {
   value: string;
@@ -148,6 +200,11 @@ export interface ProteinStructureViewerProps extends Omit<
    * @default true
    */
   showAxes?: boolean;
+  /**
+   * Adds a capture button beneath the reset-camera control, which downloads a
+   * PNG of the structure as it currently stands. Omit for no button.
+   */
+  download?: StructureDownload | null;
   /**
    * Show the sequence panel pinned along the bottom of the viewer.
    * @default true

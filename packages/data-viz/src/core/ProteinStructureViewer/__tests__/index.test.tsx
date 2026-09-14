@@ -221,6 +221,21 @@ function createStubPlugin(structure?: Structure) {
   };
 }
 
+/**
+ * What the legend's first stat slot reads, which is where the hovered or
+ * selected readout lands.
+ *
+ * Queried by position rather than by text because the chain legend beside it
+ * names its chains the same way - a selected chain B puts "Chain B" both in
+ * the readout and on its own row - so matching text alone is ambiguous.
+ */
+function readoutSlot(): string | undefined {
+  return (
+    document.querySelectorAll('[class*="StatValue"]')[0]?.textContent ??
+    undefined
+  );
+}
+
 /** jsdom reports every element as 0x0; Mol* waits for a laid-out container. */
 function giveElementsSize() {
   vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
@@ -895,9 +910,7 @@ describe("<ProteinStructureViewer />", () => {
         selection: { chains: ["B"] },
       });
 
-      await waitFor(() =>
-        expect(screen.getByText("Chain B")).toBeInTheDocument()
-      );
+      await waitFor(() => expect(readoutSlot()).toBe("Chain B"));
       expect(onSelectionChange).not.toHaveBeenCalled();
     });
 
@@ -1066,7 +1079,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
 
-      const label = await screen.findByRole("button", { name: "B" });
+      const label = await screen.findByRole("button", { name: "Chain B" });
       act(() => label.click());
 
       // Reported as the chain it is, not as the 89 indices it stands for.
@@ -1085,7 +1098,7 @@ describe("<ProteinStructureViewer />", () => {
         selection: { chains: ["B"] },
       });
 
-      const label = await screen.findByRole("button", { name: "B" });
+      const label = await screen.findByRole("button", { name: "Chain B" });
       act(() => label.click());
 
       expect(onSelectionChange).toHaveBeenCalledWith(null);
@@ -1099,7 +1112,7 @@ describe("<ProteinStructureViewer />", () => {
         selection: { chains: ["A"] },
       });
 
-      const label = await screen.findByRole("button", { name: "B" });
+      const label = await screen.findByRole("button", { name: "Chain B" });
       act(() => label.click());
 
       expect(onSelectionChange).toHaveBeenCalledWith({ chains: ["B"] });
@@ -1116,10 +1129,10 @@ describe("<ProteinStructureViewer />", () => {
         selection: { chains: ["B"] },
       });
 
-      const selected = await screen.findByRole("button", { name: "B" });
+      const selected = await screen.findByRole("button", { name: "Chain B" });
       expect(selected).toHaveAttribute("aria-pressed", "true");
 
-      expect(screen.getByRole("button", { name: "A" })).toHaveAttribute(
+      expect(screen.getByRole("button", { name: "Chain A" })).toHaveAttribute(
         "aria-pressed",
         "false"
       );
@@ -1137,10 +1150,9 @@ describe("<ProteinStructureViewer />", () => {
       );
 
       // Barstar's residues all score 0.9, and the readout names the chain
-      // rather than a residue on it.
-      await waitFor(() =>
-        expect(screen.getByText("Chain B")).toBeInTheDocument()
-      );
+      // rather than a residue on it. Read out of the stat slot rather than by
+      // text, since the legend's own chain row says "Chain B" as well.
+      await waitFor(() => expect(readoutSlot()).toBe("Chain B"));
       expect(screen.getByText("Mean pLDDT")).toBeInTheDocument();
       expect(screen.getByText("0.900")).toBeInTheDocument();
     });
