@@ -253,21 +253,106 @@ export const ResidueGrid = styled("div")`
 `;
 
 /**
- * Caption naming the chain a sequence grid belongs to. A structure with more
- * than one chain renders one grid per chain, and without a caption between them
- * the grids read as a single continuous protein.
+ * `isHidden` rather than `hidden`, which the DOM would take as the attribute
+ * and remove the caption instead of dimming it.
  */
-export const ChainLabel = styled("div")`
-  ${fontBodyXs}
+interface ChainLabelProps extends CommonThemeProps {
+  isHidden?: boolean;
+  /** Marks the chain the selection currently covers whole. */
+  isSelected?: boolean;
+}
+
+/**
+ * The row above each chain's grid: a visibility toggle and the chain's name.
+ *
+ * A structure with more than one chain renders one grid per chain, and without
+ * a caption between them the grids read as a single continuous protein. The
+ * controls sit here rather than only in the legend because this is where a
+ * reader is already looking at one chain at a time.
+ */
+export const ChainHeaderRow = styled("div")`
+  display: flex;
+  align-items: center;
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
+
+    return `
+      gap: ${spaces?.xxs}px;
+      margin-top: ${spaces?.xs}px;
+      margin-bottom: ${spaces?.xxxs}px;
+    `;
+  }}
+`;
+
+/**
+ * Shows or hides the chain's cartoon in the 3D view. Full strength even while
+ * the chain is hidden, since it is the way back.
+ */
+export const ChainVisibilityToggle = styled("button")`
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
 
     return `
-      margin-top: ${spaces?.xs}px;
-      margin-bottom: ${spaces?.xxxs}px;
-      color: ${semanticColors?.base?.textSecondary};
+      color: ${semanticColors?.base?.textTertiaryOnDark};
+
+      &:hover {
+        color: ${semanticColors?.base?.textPrimary};
+      }
+
+      svg {
+        display: block;
+      }
     `;
   }}
+`;
+
+/**
+ * The chain's name, and a button because it also selects the chain: the caption
+ * is already the one thing on screen that stands for a whole chain, so clicking
+ * it is where a reader looks to select one. Clicking it again clears it.
+ */
+export const ChainLabel = styled("button")<ChainLabelProps>`
+  ${fontBodyXs}
+
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+
+  ${(props: ChainLabelProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      color: ${
+        props.isSelected
+          ? semanticColors?.base?.textPrimary
+          : semanticColors?.base?.textSecondary
+      };
+      font-weight: ${props.isSelected ? 600 : "inherit"};
+      opacity: ${props.isHidden ? 0.4 : 1};
+
+      &:hover {
+        color: ${semanticColors?.base?.textPrimary};
+      }
+    `;
+  }}
+`;
+
+/**
+ * Wraps a chain whose 3D cartoon is hidden. The grid stays in place and stays
+ * interactive - the sequence is still the sequence - but is dimmed to match the
+ * chain being absent from the structure beside it. Dimmed rather than removed
+ * so the panel does not reflow every time a chain is toggled.
+ */
+export const HiddenChainGroup = styled("div")`
+  opacity: 0.4;
 `;

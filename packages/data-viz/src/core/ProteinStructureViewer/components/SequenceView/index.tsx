@@ -8,13 +8,18 @@ import {
   MolstarViewSettingsSubject,
   residueColorsForMode,
 } from "../../utils/theme";
+import ChainHeader from "./components/ChainHeader";
 import Sequence from "./components/Sequence";
 import { useCopySequence } from "./hooks/useCopySequence";
+import {
+  SequenceDragProvider,
+  useCreateSequenceDrag,
+} from "./hooks/useSequenceDrag";
 import { useSequenceWrappers } from "./hooks/useSequenceWrappers";
 import {
-  ChainLabel,
   CopyButton,
   EmptyState,
+  HiddenChainGroup,
   PanelHeader,
   PanelTitle,
   ResidueCount,
@@ -42,8 +47,16 @@ export function createSequenceView(
       viewSettings,
       (s) => s.sequenceViewerBackgroundColor
     );
+    const hiddenChains = useViewSetting(viewSettings, (s) => s.hiddenChains);
+    const onChainSelect = useViewSetting(viewSettings, (s) => s.onChainSelect);
+    const onChainToggle = useViewSetting(viewSettings, (s) => s.onChainToggle);
+    const selectedChains = useViewSetting(
+      viewSettings,
+      (s) => s.selectedChains
+    );
     const { entries, isEmpty, residueCount } = useSequenceWrappers();
     const { copied, copySequence } = useCopySequence(entries);
+    const drag = useCreateSequenceDrag();
 
     if (isEmpty) {
       return (
@@ -83,22 +96,53 @@ export function createSequenceView(
             </ResidueCount>
           </PanelHeader>
           <SequenceScroller backgroundColor={backgroundColor}>
-            <SequenceScrollArea className="msp-sequence msp-sequence-wrapper-non-empty">
-              {entries.map((s) => (
-                <Fragment key={s.id}>
-                  {showChainLabels && <ChainLabel>{s.label}</ChainLabel>}
-                  {typeof s.wrapper === "string" ? (
-                    <div className="msp-sequence-wrapper">{s.wrapper}</div>
-                  ) : (
-                    <Sequence
-                      chainLabel={showChainLabels ? s.label : undefined}
-                      residueColors={residueColors}
-                      sequenceWrapper={s.wrapper}
-                    />
-                  )}
-                </Fragment>
-              ))}
-            </SequenceScrollArea>
+            {/*
+              The drag anchor is shared by every grid below and dropped here,
+              where the pointer leaving means the drag is over. Leaving one
+              grid does not: on a complex the next chain's grid is a separate
+              element, so a drag from one chain into another crosses out of the
+              first on its way.
+            */}
+            <SequenceDragProvider value={drag}>
+              <SequenceScrollArea
+                className="msp-sequence msp-sequence-wrapper-non-empty"
+                onMouseLeave={drag.clearAnchor}
+              >
+                {entries.map((s) => {
+                  const hidden = hiddenChains?.has(s.chainId) ?? false;
+                  const grid =
+                    typeof s.wrapper === "string" ? (
+                      <div className="msp-sequence-wrapper">{s.wrapper}</div>
+                    ) : (
+                      <Sequence
+                        chainLabel={showChainLabels ? s.label : undefined}
+                        residueColors={residueColors}
+                        sequenceWrapper={s.wrapper}
+                      />
+                    );
+
+                  return (
+                    <Fragment key={s.id}>
+                      {showChainLabels && (
+                        <ChainHeader
+                          chainId={s.chainId}
+                          isHidden={hidden}
+                          isSelected={selectedChains?.has(s.chainId) ?? false}
+                          label={s.label}
+                          onSelect={onChainSelect}
+                          onToggle={onChainToggle}
+                        />
+                      )}
+                      {hidden ? (
+                        <HiddenChainGroup>{grid}</HiddenChainGroup>
+                      ) : (
+                        grid
+                      )}
+                    </Fragment>
+                  );
+                })}
+              </SequenceScrollArea>
+            </SequenceDragProvider>
           </SequenceScroller>
         </SequencePanel>
       </ThemeProvider>

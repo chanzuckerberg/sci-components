@@ -1,4 +1,5 @@
 import {
+  ChainRef,
   ColorScale,
   ProteinStructureViewer,
   ProteinStructureViewerProps,
@@ -6,6 +7,7 @@ import {
   PLDDT_COLOR_SCALE,
   ResidueRef,
   ResidueValueOverlay,
+  StructureSelection,
   StructureStat,
   injectPlddtIntoPdb,
   sampleColorScale,
@@ -39,10 +41,14 @@ const CUSTOM_SCALE: ColorScale = {
   ],
 };
 
+const CHAIN_COLORS: Record<string, string> = { A: "#0072B2", B: "#E69F00" };
+
 const ProteinStructureViewerNameSpaceTest = (
   props: ProteinStructureViewerProps
 ) => {
-  const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
+  const [selection, setSelection] = useState<StructureSelection | null>(null);
+  const [hiddenChains, setHiddenChains] = useState<string[]>([]);
+  const [chains, setChains] = useState<ChainRef[]>([]);
 
   // Utilities re-exported alongside the component.
   injectPlddtIntoPdb(PDB, [0.94]);
@@ -63,17 +69,40 @@ const ProteinStructureViewerNameSpaceTest = (
       {/* With a residue value overlay */}
       <ProteinStructureViewer pdb={PDB} residueOverlay={OVERLAY} />
 
-      {/* Controlled selection */}
+      {/* Controlled selection: one residue */}
       <ProteinStructureViewer
         onResidueClick={(residue: ResidueRef) =>
-          setSelectedResidue(residue.index)
+          setSelection({ residues: [residue.index] })
         }
         onResidueHover={(residue) =>
           console.log(residue?.chainId, residue?.seqId, residue?.compId)
         }
-        onSelectionClear={() => setSelectedResidue(null)}
+        onSelectionChange={setSelection}
         pdb={PDB}
-        selectedResidue={selectedResidue}
+        selection={selection}
+      />
+
+      {/* A range, a whole chain, and the two combined */}
+      <ProteinStructureViewer pdb={PDB} selection={{ residues: [1, 2, 3] }} />
+      <ProteinStructureViewer pdb={PDB} selection={{ chains: ["A"] }} />
+      <ProteinStructureViewer
+        pdb={PDB}
+        selection={{ chains: ["A"], residues: [150] }}
+      />
+
+      {/* Chain visibility and coloring, uncontrolled */}
+      <ProteinStructureViewer
+        chainColors={CHAIN_COLORS}
+        onChainsChange={setChains}
+        pdb={PDB}
+      />
+
+      {/* Chain visibility, controlled */}
+      <ProteinStructureViewer
+        hiddenChains={hiddenChains}
+        onChainVisibilityChange={setHiddenChains}
+        pdb={PDB}
+        showChainLegend={chains.length > 1}
       />
 
       {/* Chrome toggles and background overrides */}

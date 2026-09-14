@@ -12,6 +12,24 @@ export interface MolstarViewSettings {
   mode: ThemeMode;
   /** Sequence panel background, or undefined for the theme's own surface. */
   sequenceViewerBackgroundColor?: string;
+  /**
+   * Chains hidden from the 3D view, by `chainId`. The panel dims these rather
+   * than dropping them: the sequence is still the sequence, and removing the
+   * grid would reflow the panel on every toggle.
+   */
+  hiddenChains?: Set<string>;
+  /**
+   * Selects a whole chain, for the caption above each grid. Undefined when the
+   * consumer is not listening for selections, which leaves the captions inert.
+   */
+  onChainSelect?: (chainId: string) => void;
+  /** Flips one chain's visibility, for the toggle beside each caption. */
+  onChainToggle?: (chainId: string) => void;
+  /**
+   * Chains the current selection covers whole. What lets a caption say whether
+   * clicking it will select or deselect, rather than claiming one either way.
+   */
+  selectedChains?: Set<string>;
 }
 
 /**

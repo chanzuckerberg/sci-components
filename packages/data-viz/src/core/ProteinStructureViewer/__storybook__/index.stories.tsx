@@ -51,6 +51,21 @@ export default {
       description:
         "Canvas background. Defaults to near-black in dark mode and white in light mode.",
     },
+    chainColors: {
+      control: { type: "object" },
+      description:
+        "Color per chain, by chainId. Applies only while chain coloring is what the structure is painted with, which is when neither plddt nor residueOverlay is set.",
+    },
+    hiddenChains: {
+      control: { type: "object" },
+      description:
+        "Chains hidden from the 3D view, by chainId. Omit to let the chain legend's toggles own visibility.",
+    },
+    showChainLegend: {
+      control: { type: "boolean" },
+      description:
+        "Show the chain legend. Ignored on a single-chain structure.",
+    },
     showAxes: {
       control: { type: "boolean" },
       description:
@@ -206,6 +221,82 @@ export const ComplexWithResidueOverlay = {
     stats: COMPLEX_STATS,
   },
   parameters: VIEWER_CHECKS,
+};
+
+/**
+ * With no pLDDT scores and no overlay, the structure is colored by chain and
+ * the legend grows a key for it: one row per chain, each with the color it was
+ * given and a toggle that hides it.
+ *
+ * Visibility is uncontrolled here, which is the default - the toggles work
+ * without the consumer holding any state. Clicking a chain's name selects the
+ * whole chain, as does clicking its caption in the sequence panel.
+ */
+export const ComplexWithChainColoring = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: null,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * Chain colors chosen by the consumer rather than taken from the palette. Only
+ * the chains named are overridden; any others keep the color they were
+ * assigned, since an override does not spend a palette slot.
+ */
+export const ComplexWithCustomChainColors = {
+  args: {
+    ...DEFAULT_ARGS,
+    chainColors: { A: "#8C5AE8", B: "#1FA37B" },
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: null,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * Barstar hidden, leaving the target on its own. Passing `hiddenChains` takes
+ * visibility over from the viewer, so the legend's toggles report through
+ * `onChainVisibilityChange` rather than acting on their own - which is what a
+ * consumer driving visibility from elsewhere in its own UI wants.
+ *
+ * The hidden chain stays in the sequence panel, dimmed. Removing its grid would
+ * reflow the panel every time a chain was toggled, and the sequence is still
+ * the sequence whether or not the cartoon is drawn.
+ */
+export const ComplexWithHiddenChain = {
+  args: {
+    ...DEFAULT_ARGS,
+    hiddenChains: ["B"],
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * A whole chain selected on load. The camera frames everything the selection
+ * covers rather than approaching a point, so a chain is fitted to the view, and
+ * the readout reports the mean pLDDT across it instead of a single score.
+ */
+export const ComplexWithChainSelected = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+  // Through `render` rather than `args`, since the selection the story opens
+  // on is the harness seeding its own state rather than a prop of the viewer.
+  render: (props: Args) => (
+    <ProteinStructureViewer {...props} initialSelection={{ chains: ["B"] }} />
+  ),
 };
 
 // Test

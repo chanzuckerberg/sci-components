@@ -200,6 +200,28 @@ const config: StorybookConfig = {
        * thing to be optimizing mid-session, with the reload that follows.
        */
       "@phosphor-icons/react",
+      /**
+       * Mol* is imported a submodule at a time rather than through a barrel, so
+       * every new submodule the protein viewer reaches for is a dep Vite has
+       * not optimized yet. Discovering one mid-session re-optimizes Mol* on its
+       * own, and the pre-bundle that comes back splits it across chunks in a way
+       * its internal cycles do not survive: `mol-plugin/behavior` ends up with
+       * an undefined `State`, and the plugin dies in `initBuiltInBehavior`
+       * reaching for `registerDefault` — no canvas, no structure, nothing drawn.
+       *
+       * Listing the entry points here puts all of Mol* in the first pass, so a
+       * submodule added to the viewer later cannot trigger that re-optimization.
+       * A stale cache from before such a change has to be cleared once
+       * (`rm -rf node_modules/.cache/storybook`); Vite will not repair it on its
+       * own, since it reuses whatever it optimized last.
+       */
+      "molstar/lib/mol-plugin-ui",
+      "molstar/lib/mol-plugin-ui/react18",
+      "molstar/lib/mol-plugin-ui/spec",
+      "molstar/lib/mol-plugin/behavior",
+      "molstar/lib/mol-plugin/behavior/static/state",
+      "molstar/lib/mol-script/language/builder",
+      "molstar/lib/mol-theme/label",
     ];
 
     return viteConfig;

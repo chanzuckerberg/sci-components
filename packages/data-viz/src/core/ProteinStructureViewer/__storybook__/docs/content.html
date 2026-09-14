@@ -72,11 +72,29 @@
 ></div>
 <h3>Selection and stats</h3>
 <p>
-  Selection is controlled. Clicking a residue calls
-  <code>onResidueClick</code> with a <code>ResidueRef</code>; echoing its
-  <code>index</code> back through <code>selectedResidue</code> zooms the camera
-  in on it, and setting it to <code>null</code> zooms back out. Clicking empty
-  space fires <code>onSelectionClear</code>.
+  Selection is controlled through one prop. Every way of making one - clicking a
+  residue, dragging across the sequence, clicking a chain's caption - arrives
+  through <code>onSelectionChange</code>; echoing it back through
+  <code>selection</code> frames it, and setting <code>null</code> zooms back
+  out. Clicking empty space calls <code>onSelectionChange</code> with
+  <code>null</code>.
+</p>
+<p>
+  A <code>StructureSelection</code> says what is selected in either of two ways,
+  which combine: <code>residues</code> is a list of 0-based indices, and
+  <code>chains</code> names whole chains by <code>chainId</code>. A drag across
+  the sequence comes back as <code>residues</code>, a chain caption as
+  <code>chains</code>, so a whole-chain selection survives the round trip at its
+  original size rather than as the hundreds of indices it stands for. The camera
+  frames whatever the selection covers, so a range or a chain is fitted to the
+  view rather than approached as a point.
+</p>
+<p>
+  <code>onResidueClick</code> and <code>onResidueHover</code> are separate, and
+  still report a single <code>ResidueRef</code>: they describe the residue under
+  the pointer, which is a different fact from what the selection covers. Use
+  them for a readout that follows the cursor, and
+  <code>onSelectionChange</code> for what the user has actually chosen.
 </p>
 <p>
   A <code>ResidueRef</code> carries the residue in each addressing scheme a
@@ -98,6 +116,38 @@
 <div
   class="sds-doc-example"
   data-example="data-viz/ProteinStructureViewer/SelectableProteinStructureViewer"
+></div>
+<h3>Complexes and chains</h3>
+<p>
+  A multi-chain structure needs nothing special: pass the whole complex as one
+  PDB string and the viewer finds the chains itself, reporting them through
+  <code>onChainsChange</code> as <code>ChainRef</code>s. It draws one cartoon
+  per chain, splits the sequence panel into one grid per chain, and - when
+  neither <code>plddt</code> nor <code>residueOverlay</code> is coloring the
+  structure - paints each chain its own color and shows a chain legend with a
+  swatch and a visibility toggle for each.
+</p>
+<p>
+  Visibility works out of the box: the toggles own it unless you pass
+  <code>hiddenChains</code>, which takes it over and leaves the toggles
+  reporting through <code>onChainVisibilityChange</code>. Hiding a chain removes
+  its cartoon, which also takes it out of reach of hover and click; its sequence
+  stays in the panel, dimmed, so the panel does not reflow on every toggle.
+  <code>chainColors</code> overrides the palette per chain.
+</p>
+<p>
+  Residue indices run straight through the chain break: on the pair below,
+  barnase occupies 0-109 and barstar 110-198, so <code>plddt</code> is one flat
+  array over the whole complex and one <code>residueOverlay</code> map spans
+  both chains. Because a file numbers a complex however it likes - barstar here
+  starts at residue 111, not 1 - <code>index</code> and <code>seqId</code> part
+  company, so map a click back onto your own data with <code>chainId</code> and
+  <code>seqId</code> rather than arithmetic on <code>index</code>.
+</p>
+<div
+  class="sds-doc-example"
+  data-example-padding="none"
+  data-example="data-viz/ProteinStructureViewer/MultiChainProteinStructureViewer"
 ></div>
 <h3>Structure only</h3>
 <p>
@@ -190,18 +240,70 @@
   </tr>
   <tr>
     <td>
-      <p><code>selectedResidue</code></p>
+      <p><code>selection</code></p>
     </td>
     <td>
-      <p><code>number | null</code></p>
+      <p><code>StructureSelection | null</code></p>
     </td>
     <td>
       <p><code>null</code></p>
     </td>
     <td>
       <p>
-        0-based index of the selected residue. Controlled: setting it zooms the
-        camera in on that residue, and clearing it zooms back out.
+        What is selected. Controlled: the camera frames whatever it covers, and
+        clearing it zooms back out. See the table below for its shape.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>hiddenChains</code></p>
+    </td>
+    <td>
+      <p><code>string[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Chains hidden from the 3D view, by <code>chainId</code>. Leave undefined
+        to let the chain legend's toggles own visibility; passing it takes that
+        over, and the toggles then only report through
+        <code>onChainVisibilityChange</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chainColors</code></p>
+    </td>
+    <td>
+      <p><code>Record&lt;string, string&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Color per chain, by <code>chainId</code>, as <code>#RRGGBB</code>.
+        Chains left out fall back to the viewer's palette. Only visible while
+        chain coloring is what is on screen, which is when neither
+        <code>plddt</code> nor <code>residueOverlay</code> is set.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>showChainLegend</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Show the chain legend, which lists each chain with its color and a
+        visibility toggle. Ignored on a single-chain structure, where there is
+        nothing to tell apart or hide.
       </p>
     </td>
   </tr>
@@ -305,10 +407,12 @@
     <td><p>-</p></td>
     <td>
       <p>
-        <code>(residue: ResidueRef) =&gt; void</code>. Called with the clicked
-        residue: <code>index</code> (0-based, across the whole structure, and
-        what <code>selectedResidue</code> takes), <code>compId</code>,
-        <code>chainId</code>, <code>seqId</code> and <code>insCode</code>.
+        <code>(residue: ResidueRef) =&gt; void</code>. Called with the residue
+        under the pointer: <code>index</code> (0-based, across the whole
+        structure), <code>compId</code>, <code>chainId</code>,
+        <code>seqId</code> and <code>insCode</code>. What the click
+        <em>selected</em> comes through <code>onSelectionChange</code>, which a
+        drag makes a range.
       </p>
     </td>
   </tr>
@@ -330,7 +434,7 @@
   </tr>
   <tr>
     <td>
-      <p><code>onSelectionClear</code></p>
+      <p><code>onSelectionChange</code></p>
     </td>
     <td>
       <p><code>function</code></p>
@@ -338,10 +442,166 @@
     <td><p>-</p></td>
     <td>
       <p>
-        <code>() =&gt; void</code>. Called when the user clicks empty space,
-        clearing the selection.
+        <code>(selection: StructureSelection | null) =&gt; void</code>. Called
+        with the new selection whenever the user makes one - clicking a residue,
+        dragging across the sequence, clicking a chain caption - and with
+        <code>null</code> when they click empty space to clear it. A whole-chain
+        selection arrives as <code>{ chains: [id] }</code> rather than as every
+        index on it.
       </p>
     </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChainsChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(chains: ChainRef[]) =&gt; void</code>. Called with the chains
+        found in the structure, whenever a structure is loaded. Fires with
+        <code>[]</code> when the structure holds none.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChainVisibilityChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(hiddenChains: string[]) =&gt; void</code>. Called with the chains
+        now hidden when a visibility toggle is used. Fires whether or not
+        <code>hiddenChains</code> is controlled, so a consumer can follow the
+        viewer's own state without owning it.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>StructureSelection</h3>
+<p>
+  What is selected, in the two ways a caller might say it. The two combine:
+  <code>{ chains: ["A"], residues: [150] }</code> takes all of chain A plus one
+  residue elsewhere. Both fields are optional; <code>null</code> in place of the
+  whole object selects nothing.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>residues</code></p>
+    </td>
+    <td>
+      <p><code>number[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        0-based residue indices, counting residues in file order across the
+        whole structure - the same index <code>plddt</code> and
+        <code>residueOverlay</code> are keyed by.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chains</code></p>
+    </td>
+    <td>
+      <p><code>string[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Whole chains by <code>chainId</code>, each standing for every residue on
+        it. Kept as named rather than expanded into indices, so a whole-chain
+        selection survives a round trip through a consumer's state at its
+        original size.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>ChainRef</h3>
+<p>
+  A chain the viewer found in the structure it loaded, reported through
+  <code>onChainsChange</code>. <code>chainId</code> is the file's own name for
+  the chain, the same one <code>ResidueRef</code> reports, and the key every
+  chain-keyed prop takes. A chain carrying several symmetry operators appears
+  once, under the first.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chainId</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Chain as named in the file (<code>auth_asym_id</code>), e.g.
+        <code>"A"</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Chain as the sequence panel captions it.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>startIndex</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Lowest 0-based residue index on the chain.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>endIndex</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Highest 0-based residue index on the chain.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>residueCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Residues the chain holds.</p></td>
   </tr>
 </table>
 <h3>ResidueValueOverlay</h3>

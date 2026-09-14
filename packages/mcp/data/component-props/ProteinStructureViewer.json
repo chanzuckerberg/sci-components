@@ -6,6 +6,22 @@
         "isRequired": false,
         "type": "string"
       },
+      "chainColors": {
+        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen, which is when neither `plddt` nor `residueOverlay` is set.",
+        "isRequired": false,
+        "type": "Record<string, string>"
+      },
+      "hiddenChains": {
+        "description": "Chains hidden from the 3D view, by `chainId`. Leave undefined to let the\nviewer own visibility itself, which is what the chain legend's toggles\ndrive; passing it takes that over, and the toggles then only report.",
+        "isRequired": false,
+        "type": "string[]"
+      },
+      "showChainLegend": {
+        "defaultValue": true,
+        "description": "Show the chain legend, which lists each chain with its color and a\nvisibility toggle. Ignored on a single-chain structure, where there is\nnothing to tell apart or hide.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "showAxes": {
         "defaultValue": true,
         "description": "Show the orientation axes widget and the reset-camera button.",
@@ -50,11 +66,11 @@
         "isRequired": false,
         "type": "ResidueValueOverlay | null"
       },
-      "selectedResidue": {
+      "selection": {
         "defaultValue": null,
-        "description": "0-based index of the selected residue, or null when none is selected.\nControlled: selecting a residue zooms the camera in on it, and clearing the\nselection zooms back out to the default view.",
+        "description": "What is selected, or null when nothing is. Controlled: the camera frames\nwhatever the selection covers, and clearing it zooms back out to the\ndefault view.",
         "isRequired": false,
-        "type": "number | null"
+        "type": "StructureSelection | null"
       },
       "onResidueClick": {
         "description": "Called with the clicked residue.",
@@ -66,10 +82,54 @@
         "isRequired": false,
         "type": "(residue: ResidueRef | null) => void"
       },
-      "onSelectionClear": {
-        "description": "Called when the user clicks empty space, clearing the selection.",
+      "onSelectionChange": {
+        "description": "Called with the new selection whenever the user makes one - clicking a\nresidue, dragging across the sequence, clicking a chain caption - and with\n`null` when they click empty space to clear it.\n\nA whole-chain selection arrives as `{ chains: [id] }` rather than as every\nindex on it, so echoing it straight back into `selection` costs nothing.",
         "isRequired": false,
-        "type": "() => void"
+        "type": "(selection: StructureSelection | null) => void"
+      },
+      "onChainsChange": {
+        "description": "Called with the chains found in the structure, whenever a structure is\nloaded. Fires with `[]` when the structure holds none.",
+        "isRequired": false,
+        "type": "(chains: ChainRef[]) => void"
+      },
+      "onChainVisibilityChange": {
+        "description": "Called with the chains now hidden when a visibility toggle is used. Fires\nwhether or not `hiddenChains` is controlled, so a consumer can follow the\nviewer's own state without owning it.",
+        "isRequired": false,
+        "type": "(hiddenChains: string[]) => void"
+      },
+      "residues": {
+        "description": "0-based residue indices, counting residues in file order across the whole structure - the same index plddt and residueOverlay are keyed by.",
+        "isRequired": false,
+        "type": "number[]"
+      },
+      "chains": {
+        "description": "Whole chains by chainId, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size.",
+        "isRequired": false,
+        "type": "string[]"
+      },
+      "chainId": {
+        "defaultValue": "- (required)",
+        "description": "Chain as named in the file (auth_asym_id), e.g. \"A\".",
+        "isRequired": false,
+        "type": "string"
+      },
+      "startIndex": {
+        "defaultValue": "- (required)",
+        "description": "Lowest 0-based residue index on the chain.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "endIndex": {
+        "defaultValue": "- (required)",
+        "description": "Highest 0-based residue index on the chain.",
+        "isRequired": false,
+        "type": "number"
+      },
+      "residueCount": {
+        "defaultValue": "- (required)",
+        "description": "Residues the chain holds.",
+        "isRequired": false,
+        "type": "number"
       },
       "values": {
         "defaultValue": "- (required)",
@@ -96,9 +156,14 @@
         "type": "ColorScale"
       },
       "tooltip": {
-        "description": "Help tooltip attached to the legend caption.",
+        "description": "Help tooltip title on the legend caption. A string is enough for the common case; use tooltipProps for a subtitle, a custom body, or placement. Overrides tooltipProps.title when both are set.",
         "isRequired": false,
         "type": "string"
+      },
+      "tooltipProps": {
+        "description": "Props forwarded to the SDS Tooltip on the legend caption. The trigger is the caption's help icon, so children is omitted.",
+        "isRequired": false,
+        "type": "Partial<Omit<TooltipProps, \"children\">>"
       },
       "readoutLabel": {
         "defaultValue": "Value",

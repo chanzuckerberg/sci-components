@@ -73,6 +73,47 @@ export interface ResidueRef {
   insCode: string;
 }
 
+/**
+ * A chain the viewer found in the structure it loaded, reported through
+ * `onChainsChange` so a consumer can label, color or hide chains by name
+ * without parsing the PDB itself.
+ *
+ * `chainId` is the file's own name for the chain, the same one `ResidueRef`
+ * reports, and the key every chain-keyed prop takes. A chain carrying several
+ * symmetry operators appears once, under the first.
+ */
+export interface ChainRef {
+  /** Chain as named in the file (`auth_asym_id`), e.g. `"A"`. */
+  chainId: string;
+  /** Chain as the sequence panel captions it. */
+  label: string;
+  /** Lowest 0-based residue index on the chain. */
+  startIndex: number;
+  /** Highest 0-based residue index on the chain. */
+  endIndex: number;
+  /** Residues the chain holds. */
+  residueCount: number;
+}
+
+/**
+ * What is selected, in the two ways a caller might say it. `null` selects
+ * nothing.
+ *
+ * The two combine: `{ chains: ["A"], residues: [150] }` takes all of chain A
+ * plus one residue elsewhere. `chains` is kept as named rather than expanded
+ * into indices, so a whole-chain selection survives a round trip through a
+ * consumer's state at its original size.
+ */
+export interface StructureSelection {
+  /**
+   * 0-based residue indices, counting residues in file order across the whole
+   * structure - the same index `plddt` and `residueOverlay` are keyed by.
+   */
+  residues?: number[];
+  /** Whole chains by `chainId`, each standing for every residue on it. */
+  chains?: string[];
+}
+
 /** A whole-structure statistic shown along the bottom of the viewer. */
 export interface StructureStat {
   value: string;
@@ -119,11 +160,30 @@ export interface ProteinStructureViewerProps extends Omit<
   /** Per-residue values that override pLDDT coloring while set. */
   residueOverlay?: ResidueValueOverlay | null;
   /**
-   * 0-based index of the selected residue, or null when none is selected.
-   * Controlled: selecting a residue zooms the camera in on it, and clearing the
-   * selection zooms back out to the default view.
+   * What is selected, or null when nothing is. Controlled: the camera frames
+   * whatever the selection covers, and clearing it zooms back out to the
+   * default view.
    */
-  selectedResidue?: number | null;
+  selection?: StructureSelection | null;
+  /**
+   * Chains hidden from the 3D view, by `chainId`. Leave undefined to let the
+   * viewer own visibility itself, which is what the chain legend's toggles
+   * drive; passing it takes that over, and the toggles then only report.
+   */
+  hiddenChains?: string[];
+  /**
+   * Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to
+   * the viewer's palette. Only visible while chain coloring is what is on
+   * screen, which is when neither `plddt` nor `residueOverlay` is set.
+   */
+  chainColors?: Record<string, string>;
+  /**
+   * Show the chain legend, which lists each chain with its color and a
+   * visibility toggle. Ignored on a single-chain structure, where there is
+   * nothing to tell apart or hide.
+   * @default true
+   */
+  showChainLegend?: boolean;
   /**
    * Up to three whole-structure stats shown along the bottom. A null entry
    * reserves its column without rendering anything, so the columns never shift
@@ -137,22 +197,53 @@ export interface ProteinStructureViewerProps extends Omit<
    * the structure.
    */
   onResidueHover?: (residue: ResidueRef | null) => void;
-  /** Called when the user clicks empty space, clearing the selection. */
-  onSelectionClear?: () => void;
+  /**
+   * Called with the new selection whenever the user makes one - clicking a
+   * residue, dragging across the sequence, clicking a chain caption - and with
+   * `null` when they click empty space to clear it.
+   *
+   * A whole-chain selection arrives as `{ chains: [id] }` rather than as every
+   * index on it, so echoing it straight back into `selection` costs nothing.
+   */
+  onSelectionChange?: (selection: StructureSelection | null) => void;
+  /**
+   * Called with the chains found in the structure, whenever a structure is
+   * loaded. Fires with `[]` when the structure holds none.
+   */
+  onChainsChange?: (chains: ChainRef[]) => void;
+  /**
+   * Called with the chains now hidden when a visibility toggle is used. Fires
+   * whether or not `hiddenChains` is controlled, so a consumer can follow the
+   * viewer's own state without owning it.
+   */
+  onChainVisibilityChange?: (hiddenChains: string[]) => void;
 }
 
 /**
- * Per-residue readout that replaces the whole-structure stats while a residue
- * is hovered or selected.
+ * Readout that replaces the whole-structure stats while something is hovered
+ * or selected. Covers one residue or many: a drag across the sequence and a
+ * whole-chain selection report through this too, as a mean over what they
+ * cover.
  */
 export interface ResidueReadout {
-  /** e.g. "PHE 17" */
+  /** e.g. "PHE 17", "Chain A", or "24 residues". */
   label: string;
-  /** Residue pLDDT on a 0-1 scale, or null when unavailable. */
+  /**
+   * pLDDT on a 0-1 scale, or null when unavailable. The mean across the
+   * residues covered when there is more than one, ignoring those without a
+   * score.
+   */
   plddt: number | null;
   /**
-   * Residue overlay value, or null when the overlay holds none for it - which
-   * is also what a structure paints neutral - or when no overlay is set.
+   * Overlay value, or null when the overlay holds none - which is also what a
+   * structure paints neutral - or when no overlay is set. The mean across the
+   * residues covered when there is more than one, ignoring those the overlay
+   * says nothing about.
    */
   value: number | null;
+  /**
+   * Residues the readout covers, which is what makes the numbers above means
+   * rather than readings. 1 for a single residue.
+   */
+  residueCount: number;
 }

@@ -2,17 +2,21 @@ import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { composeStories } from "@storybook/react-vite";
 import { act, render, screen, waitFor } from "@testing-library/react";
-import type { Structure } from "molstar/lib/mol-model/structure";
+import { Structure } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
+import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
 import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
 import { parseHexColor } from "../utils/color";
-import { lociForResidueIndex } from "../utils/residueLoci";
+import {
+  lociForResidueIndex,
+  lociForSelectionInStructure,
+} from "../utils/residueLoci";
 import { lociForSeqId, structureFromPdb } from "./molstarStructure";
 
 /**
@@ -30,18 +34,28 @@ vi.mock("molstar/lib/mol-plugin-ui", () => ({ createPluginUI }));
  * exercised without a canvas. Handlers are kept so a test can push an event
  * through with `emit`, and `subscribe` is a spy, so one can equally be pulled
  * back out of `subscribe.mock.calls`.
+ *
+ * Mol*'s behaviors are BehaviorSubjects, so subscribing replays whatever they
+ * currently hold. `replay` reproduces that, which is what the viewer has to
+ * survive: the click behavior starts out holding an empty click, and reading
+ * that as a real one clears the consumer's selection before the viewer is even
+ * interactive.
  */
-function subscribable() {
+function subscribable(replay?: unknown) {
   const handlers: ((value: unknown) => void)[] = [];
 
   return {
     emit: (value: unknown) => handlers.forEach((handler) => handler(value)),
     subscribe: vi.fn((handler: (value: unknown) => void) => {
       handlers.push(handler);
+      if (replay !== undefined) handler(replay);
       return { unsubscribe: vi.fn() };
     }),
   };
 }
+
+/** What Mol*'s click behavior holds before anything has been clicked. */
+const EMPTY_CLICK = { current: { loci: { kind: "empty-loci" } } };
 
 /**
  * Enough of a camera for the focus path to run. Framing a residue is real
@@ -72,18 +86,51 @@ function createStubPlugin(structure?: Structure) {
   const parsedPdb: string[] = [];
   const focused = new BehaviorSubject<{ loci: unknown } | undefined>(undefined);
 
+  /** Component keys the load path asked for, one per chain. */
+  const components: string[] = [];
+
+  /**
+   * What `setSubtreeVisibility` ended up writing, by component ref. It is real
+   * Mol* code walking the state tree, so the tree below is stood up far enough
+   * for it to run rather than the call being mocked out - otherwise the test
+   * would assert that the viewer called a function, not that a chain is hidden.
+   */
+  const visibility = new Map<string, boolean>();
+  const transforms = new Map<string, { ref: string }>();
+
   return {
     behaviors: {
-      interaction: { click: subscribable(), hover: subscribable() },
+      interaction: {
+        click: subscribable(EMPTY_CLICK),
+        hover: subscribable(EMPTY_CLICK),
+      },
     },
     builders: {
       data: { rawData: vi.fn(async (args: { data: string }) => args.data) },
       structure: {
+        createModel: vi.fn(async (trajectory: string) => trajectory),
+        // Structure.Empty stands in for a structure with no chains, which is
+        // what the tests that pass none are describing.
+        createStructure: vi.fn(async () => ({
+          data: structure ?? Structure.Empty,
+          ref: "structure",
+        })),
         hierarchy: { applyPreset: vi.fn(async () => undefined) },
         parseTrajectory: vi.fn(async (data: string) => {
           parsedPdb.push(data);
           return data;
         }),
+        representation: {
+          addRepresentation: vi.fn(async () => undefined),
+        },
+        tryCreateComponentFromExpression: vi.fn(
+          async (_structure: unknown, _expression: unknown, key: string) => {
+            const ref = `component-${key}`;
+            components.push(key);
+            transforms.set(ref, { ref });
+            return { ref };
+          }
+        ),
       },
     },
     canvas3d: {
@@ -103,6 +150,15 @@ function createStubPlugin(structure?: Structure) {
       lociLabels: { providers: [], removeProvider: vi.fn() },
       structure: {
         component: {
+          // Read by the load path to match the cartoon parameters Mol*'s own
+          // presets compute.
+          state: {
+            options: {
+              hydrogens: "all",
+              ignoreLight: false,
+              visualQuality: "auto",
+            },
+          },
           updateRepresentationsTheme: vi.fn(
             async (_components: unknown, params: { color: string }) => {
               loadedThemes.push(params.color);
@@ -127,6 +183,17 @@ function createStubPlugin(structure?: Structure) {
     representation: {
       structure: { themes: { colorThemeRegistry: { add: vi.fn() } } },
     },
+    state: {
+      data: {
+        transforms,
+        tree: { children: new Map(), transforms },
+        updateCellState: vi.fn((ref: string, next: { isHidden: boolean }) => {
+          visibility.set(ref, next.isHidden);
+        }),
+      },
+    },
+    stubComponents: components,
+    stubVisibility: visibility,
   };
 }
 
@@ -154,6 +221,13 @@ END`;
 
 /** Caption an overlay puts on the legend, in place of the pLDDT key. */
 const OVERLAY_LABEL = "Feature activation";
+
+/** The viewer's own per-chain theme, which stands in for Mol*'s chain-id. */
+const CHAIN_THEME = "chain-color";
+
+/** Barstar's component in the stub state tree, and its legend toggle. */
+const BARSTAR_REF = "component-chain-B";
+const HIDE_BARSTAR = "Hide chain B";
 
 /**
  * The story the component ships as its fixture, so what the tests mount is the
@@ -302,9 +376,11 @@ describe("<ProteinStructureViewer />", () => {
   });
 
   it("falls back to chain coloring when no scores are supplied", async () => {
+    // The viewer's own per-chain theme rather than Mol*'s built-in `chain-id`,
+    // so the chain legend's swatches can match what is on screen.
     renderViewer();
 
-    await waitFor(() => expect(plugin.loadedThemes).toContain("chain-id"));
+    await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
     expect(plugin.loadedThemes).not.toContain("plddt-bfactor");
   });
 
@@ -358,12 +434,13 @@ describe("<ProteinStructureViewer />", () => {
   });
 
   it("drops the color key when the structure falls back to chain coloring", async () => {
-    // Nothing supplies a per-residue value here, so Mol* colors by chain and
-    // there is no scale that describes what is on screen. A pLDDT key would
-    // be labelling colors the structure does not carry.
+    // Nothing supplies a per-residue value here, so the structure is colored by
+    // chain and there is no scale that describes what is on screen. A pLDDT key
+    // would be labelling colors the structure does not carry; the chain legend
+    // is what describes chain coloring.
     renderViewer({ stats: [{ label: "Known", value: "62%" }] });
 
-    await waitFor(() => expect(plugin.loadedThemes).toContain("chain-id"));
+    await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
 
     expect(screen.getByText("Known")).toBeInTheDocument();
     expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
@@ -563,16 +640,19 @@ describe("<ProteinStructureViewer />", () => {
   });
 
   /**
-   * `selectedResidue` is documented as controlling the camera: setting it
-   * zooms in on that residue, clearing it zooms back out. That has to hold
-   * however the selection was made, not just for the one path where a click
-   * happens to have moved the camera on its own beforehand.
+   * `selection` is documented as controlling the camera: setting it frames what
+   * it covers, clearing it zooms back out. That has to hold however the
+   * selection was made, not just for the one path where a click happens to have
+   * moved the camera on its own beforehand.
    */
   describe("selection driving the camera", () => {
     function selecting(residue: number | null) {
       return (
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={CRAMBIN_PDB} selectedResidue={residue} />
+          <ProteinStructureViewer
+            pdb={CRAMBIN_PDB}
+            selection={residue === null ? null : { residues: [residue] }}
+          />
         </ThemeProvider>
       );
     }
@@ -619,7 +699,7 @@ describe("<ProteinStructureViewer />", () => {
           <ProteinStructureViewer
             onResidueClick={onResidueClick}
             pdb={CRAMBIN_PDB}
-            selectedResidue={null}
+            selection={null}
           />
         </ThemeProvider>
       );
@@ -649,6 +729,306 @@ describe("<ProteinStructureViewer />", () => {
       // Crambin's thirteenth residue, which no click ever named here.
       await waitFor(() =>
         expect(screen.getByText("PHE 13")).toBeInTheDocument()
+      );
+    });
+  });
+
+  /**
+   * A chain is the unit Mol* can hide, and the load path is what creates one
+   * per chain. Before it did, every polymer chain shared a single component and
+   * there was nothing individual to hide or recolor.
+   */
+  describe("chains", () => {
+    let complex: Structure;
+
+    beforeAll(async () => {
+      complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+    });
+
+    beforeEach(() => {
+      plugin = createStubPlugin(complex);
+      createPluginUI.mockResolvedValue(plugin);
+    });
+
+    it("draws one cartoon component per chain", async () => {
+      renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+
+      await waitFor(() =>
+        expect(plugin.stubComponents).toEqual(["chain-A", "chain-B"])
+      );
+      expect(
+        plugin.builders.structure.representation.addRepresentation
+      ).toHaveBeenCalledTimes(2);
+    });
+
+    it("reports the chains it found", async () => {
+      const onChainsChange = vi.fn();
+      renderViewer({ onChainsChange, pdb: BARNASE_BARSTAR_PDB });
+
+      await waitFor(() =>
+        expect(onChainsChange).toHaveBeenCalledWith([
+          expect.objectContaining({
+            chainId: "A",
+            endIndex: 109,
+            residueCount: 110,
+            startIndex: 0,
+          }),
+          expect.objectContaining({
+            chainId: "B",
+            endIndex: 198,
+            residueCount: 89,
+            startIndex: 110,
+          }),
+        ])
+      );
+    });
+
+    it("hides only the chain named by hiddenChains", async () => {
+      renderViewer({ hiddenChains: ["B"], pdb: BARNASE_BARSTAR_PDB });
+
+      await waitFor(() =>
+        expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(true)
+      );
+      expect(plugin.stubVisibility.get("component-chain-A")).toBe(false);
+    });
+
+    it("brings a chain back when it leaves hiddenChains", async () => {
+      const view = (hidden: string[]) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            hiddenChains={hidden}
+            pdb={BARNASE_BARSTAR_PDB}
+          />
+        </ThemeProvider>
+      );
+
+      const { rerender } = render(view(["B"]));
+      await waitFor(() =>
+        expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(true)
+      );
+
+      rerender(view([]));
+
+      await waitFor(() =>
+        expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(false)
+      );
+    });
+
+    /**
+     * Visibility is uncontrolled unless `hiddenChains` is passed, which is what
+     * makes the legend's toggles work without the consumer holding any state.
+     */
+    it("hides a chain from its own toggle when uncontrolled", async () => {
+      const onChainVisibilityChange = vi.fn();
+      renderViewer({ onChainVisibilityChange, pdb: BARNASE_BARSTAR_PDB });
+
+      const toggle = await screen.findByRole("button", {
+        name: HIDE_BARSTAR,
+      });
+      act(() => toggle.click());
+
+      await waitFor(() =>
+        expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(true)
+      );
+      expect(onChainVisibilityChange).toHaveBeenCalledWith(["B"]);
+    });
+
+    /**
+     * Passing `hiddenChains` takes visibility over. The toggle still reports,
+     * so a consumer can hear about the intent, but acting on it is now theirs.
+     */
+    it("only reports from the toggle when controlled", async () => {
+      const onChainVisibilityChange = vi.fn();
+      renderViewer({
+        hiddenChains: [],
+        onChainVisibilityChange,
+        pdb: BARNASE_BARSTAR_PDB,
+      });
+
+      const toggle = await screen.findByRole("button", {
+        name: HIDE_BARSTAR,
+      });
+      act(() => toggle.click());
+
+      await waitFor(() =>
+        expect(onChainVisibilityChange).toHaveBeenCalledWith(["B"])
+      );
+      expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(false);
+    });
+
+    /**
+     * Mol*'s click behavior is a BehaviorSubject holding an empty click before
+     * anything has been clicked, and subscribing replays it. Read as a real
+     * click it means "the user clicked empty space", which clears the
+     * selection - so a consumer mounting the viewer with something already
+     * selected had it wiped before the canvas was even interactive.
+     */
+    it("keeps a selection made before the viewer was interactive", async () => {
+      const onSelectionChange = vi.fn();
+      renderViewer({
+        onSelectionChange,
+        pdb: BARNASE_BARSTAR_PDB,
+        selection: { chains: ["B"] },
+      });
+
+      await waitFor(() =>
+        expect(screen.getByText("Chain B")).toBeInTheDocument()
+      );
+      expect(onSelectionChange).not.toHaveBeenCalled();
+    });
+
+    it("still clears the selection when empty space is actually clicked", async () => {
+      const onSelectionChange = vi.fn();
+      renderViewer({
+        onSelectionChange,
+        pdb: BARNASE_BARSTAR_PDB,
+        selection: { chains: ["B"] },
+      });
+      await waitFor(() =>
+        expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
+      );
+
+      act(() => plugin.behaviors.interaction.click.emit(EMPTY_CLICK));
+
+      expect(onSelectionChange).toHaveBeenCalledWith(null);
+    });
+
+    it("selects a whole chain from its name in the legend", async () => {
+      const onSelectionChange = vi.fn();
+      renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
+
+      const label = await screen.findByRole("button", { name: "B" });
+      act(() => label.click());
+
+      // Reported as the chain it is, not as the 89 indices it stands for.
+      expect(onSelectionChange).toHaveBeenCalledWith({ chains: ["B"] });
+    });
+
+    /**
+     * The chain's name is a toggle, not a one-way switch: clicking the chain
+     * that is already selected clears the selection rather than restating it.
+     */
+    it("clears the selection when the selected chain is clicked again", async () => {
+      const onSelectionChange = vi.fn();
+      renderViewer({
+        onSelectionChange,
+        pdb: BARNASE_BARSTAR_PDB,
+        selection: { chains: ["B"] },
+      });
+
+      const label = await screen.findByRole("button", { name: "B" });
+      act(() => label.click());
+
+      expect(onSelectionChange).toHaveBeenCalledWith(null);
+    });
+
+    it("narrows to a chain rather than clearing when something else is selected", async () => {
+      const onSelectionChange = vi.fn();
+      renderViewer({
+        onSelectionChange,
+        pdb: BARNASE_BARSTAR_PDB,
+        selection: { chains: ["A"] },
+      });
+
+      const label = await screen.findByRole("button", { name: "B" });
+      act(() => label.click());
+
+      expect(onSelectionChange).toHaveBeenCalledWith({ chains: ["B"] });
+    });
+
+    /**
+     * Only the legend's row is reachable here: the sequence panel's captions
+     * render inside the React root Mol* owns, which the stubbed plugin never
+     * creates. Their behaviour is covered in the browser instead.
+     */
+    it("marks the selected chain as pressed", async () => {
+      renderViewer({
+        pdb: BARNASE_BARSTAR_PDB,
+        selection: { chains: ["B"] },
+      });
+
+      const selected = await screen.findByRole("button", { name: "B" });
+      expect(selected).toHaveAttribute("aria-pressed", "true");
+
+      expect(screen.getByRole("button", { name: "A" })).toHaveAttribute(
+        "aria-pressed",
+        "false"
+      );
+    });
+
+    it("frames a whole chain and reports its mean pLDDT", async () => {
+      renderViewer({
+        pdb: BARNASE_BARSTAR_PDB,
+        plddt: Array.from({ length: 199 }, (_, i) => (i < 110 ? 0.5 : 0.9)),
+        selection: { chains: ["B"] },
+      });
+
+      await waitFor(() =>
+        expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
+      );
+
+      // Barstar's residues all score 0.9, and the readout names the chain
+      // rather than a residue on it.
+      await waitFor(() =>
+        expect(screen.getByText("Chain B")).toBeInTheDocument()
+      );
+      expect(screen.getByText("Mean pLDDT")).toBeInTheDocument();
+      expect(screen.getByText("0.900")).toBeInTheDocument();
+    });
+
+    it("reports every residue a click covers, not just the first", async () => {
+      const onSelectionChange = vi.fn();
+      renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
+
+      await waitFor(() =>
+        expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
+      );
+
+      // A range spanning the chain break, as a drag across the sequence makes.
+      const loci = lociForSelectionInStructure(complex, {
+        residues: [108, 109, 110, 111],
+      });
+      act(() => {
+        plugin.behaviors.interaction.click.emit({ current: { loci } });
+      });
+
+      expect(onSelectionChange).toHaveBeenCalledWith({
+        residues: [108, 109, 110, 111],
+      });
+    });
+
+    it("hides the chain legend for a single-chain structure", async () => {
+      plugin = createStubPlugin(crambin);
+      createPluginUI.mockResolvedValue(plugin);
+      renderViewer({ pdb: CRAMBIN_PDB });
+
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+      expect(
+        screen.queryByRole("button", { name: /chain/i })
+      ).not.toBeInTheDocument();
+    });
+
+    it("drops the chain legend when showChainLegend is off", async () => {
+      renderViewer({ pdb: BARNASE_BARSTAR_PDB, showChainLegend: false });
+
+      await waitFor(() => expect(plugin.stubComponents).toHaveLength(2));
+      expect(
+        screen.queryByRole("button", { name: "Hide chain B" })
+      ).not.toBeInTheDocument();
+    });
+
+    it("paints chains the colors the consumer chose", async () => {
+      renderViewer({
+        chainColors: { A: "#123456" },
+        pdb: BARNASE_BARSTAR_PDB,
+        plddt: null,
+      });
+
+      await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+
+      const swatches = document.querySelectorAll('[class*="ChainSwatch"]');
+      expect(getComputedStyle(swatches[0] as Element).backgroundColor).toBe(
+        "rgb(18, 52, 86)"
       );
     });
   });

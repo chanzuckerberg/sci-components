@@ -14,20 +14,22 @@ import { PLASMA_COLOR_SCALE } from "../../common/colorScales";
 import StructureLegend, {
   StructureLegendProps,
 } from "./components/StructureLegend";
+import { useChains } from "./hooks/useChains";
 import { useMolstarPlugin } from "./hooks/useMolstarPlugin";
-import { useResidueFocus } from "./hooks/useResidueFocus";
-import { useResidueOverlay } from "./hooks/useResidueOverlay";
+import { useSelectionFocus } from "./hooks/useSelectionFocus";
 import {
+  useResidueHoverState,
+  useSelectionReadout,
+} from "./hooks/useSelectionReadout";
+import { useStructureColoring } from "./hooks/useStructureColoring";
+import {
+  ChainRef,
   ProteinStructureViewerProps,
-  ResidueReadout,
-  ResidueRef,
   ResidueValueOverlay,
 } from "./ProteinStructureViewer.types";
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
 import { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
-import { lociForResidueIndex } from "./utils/residueLoci";
-import { residueLabel, residueRefFromLoci } from "./utils/residueRef";
 
 export * from "./ProteinStructureViewer.types";
 export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
@@ -50,12 +52,6 @@ const DEFAULT_OVERLAY_LABEL = "Value";
 
 /** Readout slot label used when an overlay does not name one. */
 const DEFAULT_READOUT_LABEL = "Value";
-
-/** Tracks the residue under the pointer, deduplicated by index. */
-interface HoveredResidue {
-  index: number;
-  label: string;
-}
 
 /** The part of the legend that describes the structure's coloring. */
 type ScaleProps = Pick<
@@ -133,15 +129,20 @@ const ProteinStructureViewer = forwardRef(
   ): JSX.Element => {
     const {
       backgroundColor,
+      chainColors: chainColorOverrides,
+      hiddenChains: hiddenChainsProp,
+      onChainVisibilityChange,
+      onChainsChange,
       onResidueClick,
       onResidueHover,
-      onSelectionClear,
+      onSelectionChange,
       pdb,
       plddt,
       residueOverlay,
-      selectedResidue = null,
+      selection = null,
       sequenceViewerBackgroundColor,
       showAxes = true,
+      showChainLegend = true,
       showLegend = true,
       showSequenceViewer = true,
       stats,
@@ -155,17 +156,6 @@ const ProteinStructureViewer = forwardRef(
     // Mol* owns and overwrites its mount node, so the legend cannot live inside
     // it; the mount is a separate element from the root the ref points at.
     const pluginMountRef = useRef<HTMLDivElement | null>(null);
-
-    const [hoveredResidue, setHoveredResidue] = useState<HoveredResidue | null>(
-      null
-    );
-
-    /**
-     * Label for the selected residue, read back off the structure rather than
-     * remembered from the click that selected it, so the readout follows the
-     * prop however the selection was made.
-     */
-    const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
 
     const hasPlddt = Boolean(plddt && plddt.length > 0);
 
@@ -200,52 +190,113 @@ const ProteinStructureViewer = forwardRef(
       [semanticColors]
     );
 
-    const handleResidueHover = useCallback(
-      (residue: ResidueRef | null) => {
-        // Mol* emits hover events continuously; skip redundant state updates
-        // when the pointer stays on the same residue (or off the structure).
-        //
-        // The index alone does not identify one: loading a new structure into
-        // the same plugin renumbers from zero, so the residue now at an index is
-        // not the one that was there before. Comparing the label as well is
-        // enough, because the readout this drives is built from the label and
-        // the index and from nothing else.
-        setHoveredResidue((prev) => {
-          if (residue === null) return prev === null ? prev : null;
+    const { handleResidueHover, hoveredResidue } =
+      useResidueHoverState(onResidueHover);
 
-          const label = residueLabel(residue);
-          if (
-            prev !== null &&
-            prev.index === residue.index &&
-            prev.label === label
-          ) {
-            return prev;
-          }
-          return { index: residue.index, label };
-        });
-        onResidueHover?.(residue);
-      },
-      [onResidueHover]
+    // A click on empty space clears the selection; anything landing on the
+    // structure is reported through the residue callback instead.
+    const handleSelectionClear = useCallback(() => {
+      onSelectionChange?.(null);
+    }, [onSelectionChange]);
+
+    /**
+     * Chains the selection covers whole, which is what makes a chain caption a
+     * toggle rather than a one-way switch. Keyed on its contents because the
+     * set is pushed into the views Mol* renders, where a fresh object every
+     * render would be a fresh push every render.
+     */
+    const selectedChainsKey = [...(selection?.chains ?? [])].sort().join("\0");
+    const selectedChains = useMemo(
+      () =>
+        new Set(selectedChainsKey === "" ? [] : selectedChainsKey.split("\0")),
+      [selectedChainsKey]
     );
 
-    const { isReady, pluginRef, residueValueThemeRef, setClipRatio } =
-      useMolstarPlugin({
-        backgroundColor: bgColor,
-        containerRef: pluginMountRef,
-        edgeColor,
-        hasPlddt,
-        highlightColor,
-        mode,
-        onResidueClick,
-        onResidueHover: handleResidueHover,
-        onSelectionClear,
-        pdb: processedPdb,
-        sequenceViewerBackgroundColor,
-        showAxes,
-        showSequenceViewer,
-      });
+    /**
+     * Clicking a chain selects it; clicking the selected chain again clears it.
+     *
+     * A whole chain is reported as the chain it is, not as the hundreds of
+     * residue indices it stands for, so echoing it back costs nothing. Only a
+     * selection that is exactly this one chain toggles off - with a residue or
+     * another chain also selected, the click is narrowing to this chain rather
+     * than undoing itself.
+     */
+    const handleChainSelect = useCallback(
+      (chainId: string) => {
+        const isOnlyThisChain =
+          selection?.chains?.length === 1 &&
+          selection.chains[0] === chainId &&
+          !selection.residues?.length;
 
-    useResidueOverlay({
+        onSelectionChange?.(isOnlyThisChain ? null : { chains: [chainId] });
+      },
+      [onSelectionChange, selection]
+    );
+
+    // Chains arrive from the plugin once a structure is loaded, and the
+    // visibility and coloring they carry are fed back into it below. The cycle
+    // settles in one extra render: the first load reports the chains, and the
+    // colors assigned to them are pushed in on the pass that follows.
+    const [chains, setChains] = useState<ChainRef[]>([]);
+
+    const {
+      colors: chainColors,
+      hidden: hiddenChains,
+      toggleChain,
+    } = useChains({
+      chainColors: chainColorOverrides,
+      chains,
+      hiddenChains: hiddenChainsProp,
+      onChainVisibilityChange,
+    });
+
+    const {
+      chainColorThemeRef,
+      chains: loadedChains,
+      isReady,
+      pluginRef,
+      residuesByChainRef,
+      residueValueThemeRef,
+      setClipRatio,
+    } = useMolstarPlugin({
+      backgroundColor: bgColor,
+      chainColors,
+      containerRef: pluginMountRef,
+      edgeColor,
+      hasPlddt,
+      hiddenChains,
+      highlightColor,
+      mode,
+      onChainSelect: handleChainSelect,
+      onChainToggle: toggleChain,
+      onResidueClick,
+      onResidueHover: handleResidueHover,
+      onSelectionChange,
+      onSelectionClear: handleSelectionClear,
+      pdb: processedPdb,
+      selectedChains,
+      sequenceViewerBackgroundColor,
+      showAxes,
+      showSequenceViewer,
+    });
+
+    // The plugin owns chain discovery, but the chain-keyed props have to be
+    // resolved before it is called, so the list is mirrored into state here
+    // rather than read straight out of the hook's return.
+    useEffect(() => {
+      setChains(loadedChains);
+    }, [loadedChains]);
+
+    const onChainsChangeRef = useRef(onChainsChange);
+    onChainsChangeRef.current = onChainsChange;
+
+    useEffect(() => {
+      onChainsChangeRef.current?.(loadedChains);
+    }, [loadedChains]);
+
+    useStructureColoring({
+      chainColorThemeRef,
+      chainColors,
       hasPlddt,
       isReady,
       mode,
@@ -254,71 +305,45 @@ const ProteinStructureViewer = forwardRef(
       residueValueThemeRef,
     });
 
-    useResidueFocus({
+    useSelectionFocus({
       isReady,
       pluginRef,
-      selectedResidue,
+      selection,
       setClipRatio,
     });
 
-    // The label has to come off the structure, since a selection can be made
-    // without a click ever naming the residue. Resolving the index back to a
-    // residue and naming it the same way the click path does keeps the two
-    // readouts from disagreeing about what to call the same residue.
-    useEffect(() => {
-      const plugin = pluginRef.current;
-      if (!plugin || !isReady || selectedResidue === null) {
-        setSelectedLabel(null);
-        return;
-      }
-
-      const loci = lociForResidueIndex(plugin, selectedResidue);
-      const residue = loci && residueRefFromLoci(loci);
-
-      setSelectedLabel(residue ? residueLabel(residue) : null);
-    }, [isReady, pluginRef, selectedResidue]);
-
-    // The legend readouts are derived here rather than asked of the consumer:
-    // everything they need (the residue label, its pLDDT, its overlay value) is
-    // already known to the viewer.
-    const buildReadout = useCallback(
-      (label: string, index: number): ResidueReadout => ({
-        label,
-        plddt: plddt?.[index] ?? null,
-        // Null for a residue the overlay has no value for, matching the
-        // neutral the structure paints it rather than claiming a zero.
-        value: residueOverlay?.values.get(index) ?? null,
-      }),
-      [plddt, residueOverlay]
-    );
-
-    const hoveredReadout = useMemo(
-      () =>
-        hoveredResidue === null
-          ? null
-          : buildReadout(hoveredResidue.label, hoveredResidue.index),
-      [hoveredResidue, buildReadout]
-    );
-
-    const selectedReadout = useMemo(
-      () =>
-        selectedResidue === null || selectedLabel === null
-          ? null
-          : buildReadout(selectedLabel, selectedResidue),
-      [selectedResidue, selectedLabel, buildReadout]
-    );
+    const { hoveredReadout, selectedReadout } = useSelectionReadout({
+      hoveredResidue,
+      isReady,
+      plddt,
+      pluginRef,
+      residueOverlay,
+      residuesByChainRef,
+      selection,
+    });
 
     const scaleProps = useMemo(
       () => resolveScaleProps(residueOverlay, hasPlddt),
       [residueOverlay, hasPlddt]
     );
 
+    // Swatches describe the structure only while chain coloring is what is
+    // painting it. Under pLDDT or an overlay the rows keep their labels and
+    // toggles but drop the colors, which by then belong to a different scale.
+    const chainColoringActive = !residueOverlay && !hasPlddt;
+
     return (
       <ViewerRoot ref={ref} showSequenceViewer={showSequenceViewer} {...rest}>
         <PluginMount ref={pluginMountRef} />
         {showLegend && (
           <StructureLegend
+            chainColors={chainColoringActive ? chainColors : undefined}
+            chains={showChainLegend ? chains : []}
+            hiddenChains={hiddenChains}
             hoveredResidue={hoveredReadout}
+            onChainSelect={handleChainSelect}
+            onChainToggle={toggleChain}
+            selectedChains={selectedChains}
             selectedResidue={selectedReadout}
             showSequenceViewer={showSequenceViewer}
             stats={stats ?? []}
