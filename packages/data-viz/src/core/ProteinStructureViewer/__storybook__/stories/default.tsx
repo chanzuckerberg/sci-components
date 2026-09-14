@@ -21,6 +21,16 @@ export interface ProteinStructureViewerStoryProps extends Args {
    * keeps it out of the controls panel.
    */
   initialSelection?: StructureSelection | null;
+  /**
+   * Chains the story starts with hidden.
+   *
+   * Seeding it this way, rather than passing `hiddenChains` as an arg, is what
+   * keeps the toggles working: `hiddenChains` is controlled, so a story that
+   * sets it and never updates it pins visibility where it started and the
+   * toggles can only report. The story owns the state instead, which is what
+   * a consumer driving visibility from its own UI would do.
+   */
+  initialHiddenChains?: string[];
 }
 
 export const ProteinStructureViewer = (
@@ -31,6 +41,7 @@ export const ProteinStructureViewer = (
   // real component prop, and the controls panel offers nothing the component
   // does not actually take.
   const {
+    initialHiddenChains,
     initialSelection = null,
     pdb = CRAMBIN_PDB,
     plddt = CRAMBIN_PLDDT,
@@ -45,6 +56,18 @@ export const ProteinStructureViewer = (
     initialSelection
   );
 
+  const [hiddenChains, setHiddenChains] = useState<string[]>(
+    initialHiddenChains ?? []
+  );
+
+  /**
+   * Only taken over when a story seeds it. Left alone otherwise, so the
+   * uncontrolled default - the viewer owning visibility, which is what makes
+   * the toggles work with no state on the consumer's side - is what the rest
+   * of the stories demonstrate.
+   */
+  const controlsVisibility = initialHiddenChains !== undefined;
+
   return (
     <div
       style={{
@@ -55,6 +78,10 @@ export const ProteinStructureViewer = (
     >
       <RawProteinStructureViewer
         {...rest}
+        {...(controlsVisibility && {
+          hiddenChains,
+          onChainVisibilityChange: setHiddenChains,
+        })}
         onSelectionChange={setSelection}
         pdb={pdb}
         plddt={plddt}

@@ -264,24 +264,37 @@ export const ComplexWithCustomChainColors = {
 };
 
 /**
- * Barstar hidden, leaving the target on its own. Passing `hiddenChains` takes
- * visibility over from the viewer, so the legend's toggles report through
- * `onChainVisibilityChange` rather than acting on their own - which is what a
- * consumer driving visibility from elsewhere in its own UI wants.
+ * Barstar hidden to begin with, leaving the target on its own, and the toggles
+ * live so either chain can be brought back or taken away.
+ *
+ * Visibility is controlled here - the story holds it and echoes
+ * `onChainVisibilityChange` back into `hiddenChains`, which is what a consumer
+ * driving visibility from elsewhere in its own UI does. The stories above
+ * leave it uncontrolled, where the viewer owns it and the toggles need no
+ * state on the consumer's side at all.
  *
  * The hidden chain stays in the sequence panel, dimmed. Removing its grid would
  * reflow the panel every time a chain was toggled, and the sequence is still
- * the sequence whether or not the cartoon is drawn.
+ * the sequence whether or not the cartoon is drawn. Hiding a chain that is
+ * selected takes its ball-and-stick with it, so nothing of it is left on the
+ * canvas.
  */
 export const ComplexWithHiddenChain = {
   args: {
     ...DEFAULT_ARGS,
-    hiddenChains: ["B"],
     pdb: BARNASE_BARSTAR_PDB,
     plddt: BARNASE_BARSTAR_PLDDT,
     stats: COMPLEX_STATS,
   },
   parameters: VIEWER_CHECKS,
+  // Seeded through `render` rather than set as a `hiddenChains` arg: the prop
+  // is controlled, so a story that set it and never updated it would pin
+  // barstar hidden and leave the toggles able only to report. The story owns
+  // the state instead, the way a consumer driving visibility would, which
+  // leaves the toggles live.
+  render: (props: Args) => (
+    <ProteinStructureViewer {...props} initialHiddenChains={["B"]} />
+  ),
 };
 
 /**
