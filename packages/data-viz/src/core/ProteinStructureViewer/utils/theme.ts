@@ -30,6 +30,15 @@ export interface MolstarViewSettings {
    * clicking it will select or deselect, rather than claiming one either way.
    */
   selectedChains?: Set<string>;
+  /**
+   * Whether the orientation axes and the reset-camera button are on.
+   *
+   * The viewport view is installed whether or not they are - that is what
+   * keeps Mol*'s own icon column out of the canvas - so the view reads this to
+   * know whether to offer the reset button, rather than its mere presence
+   * meaning the axes are on.
+   */
+  showAxes?: boolean;
 }
 
 /**

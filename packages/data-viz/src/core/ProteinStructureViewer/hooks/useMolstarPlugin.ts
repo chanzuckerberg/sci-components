@@ -214,11 +214,28 @@ async function createViewer({
       },
     },
     components: {
+      /*
+       * The side regions are declined here rather than hidden in CSS. Mol*
+       * renders a region whenever its layout says to, and `regionState` only
+       * changes the class it renders with - so a `display: none` was what
+       * actually kept them away, and it kept them away from a consumer asking
+       * for them too. Saying "none" is the same answer given where Mol* reads
+       * it, which leaves `molstarSpec` able to say otherwise.
+       *
+       * `top` is left alone: that is where the sequence panel lives.
+       */
+      controls: { bottom: "none", left: "none", right: "none" },
       remoteState: "none",
       sequenceViewer: { view: createSequenceView(viewSettings) },
-      ...(showAxes && {
-        viewport: { view: createViewportView(viewSettings) },
-      }),
+      /*
+       * Always the viewer's own viewport, not only when the axes are on. Mol*'s
+       * default viewport brings its icon column with it, and several of those
+       * icons - reset zoom, fullscreen, illumination - are not behind any
+       * `PluginConfig` flag, so the only way to be rid of them used to be CSS.
+       * Replacing the view declines them at the source, and a consumer who
+       * wants Mol*'s native chrome can set this back to undefined.
+       */
+      viewport: { view: createViewportView(viewSettings) },
     },
     config: [
       ...(spec.config ?? []),
@@ -547,6 +564,7 @@ export function useMolstarPlugin({
     viewSettingsRef.current = new BehaviorSubject<MolstarViewSettings>({
       mode,
       sequenceViewerBackgroundColor,
+      showAxes,
     });
   }
   const viewSettings = viewSettingsRef.current;
@@ -826,6 +844,7 @@ export function useMolstarPlugin({
       onChainToggle,
       selectedChains,
       sequenceViewerBackgroundColor,
+      showAxes,
     });
   }, [
     hiddenChains,
@@ -834,6 +853,7 @@ export function useMolstarPlugin({
     onChainToggle,
     selectedChains,
     sequenceViewerBackgroundColor,
+    showAxes,
     viewSettings,
   ]);
 

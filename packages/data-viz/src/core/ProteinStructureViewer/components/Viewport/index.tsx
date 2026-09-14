@@ -4,6 +4,7 @@ import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { Toasts } from "molstar/lib/mol-plugin-ui/toast";
 import { Viewport } from "molstar/lib/mol-plugin-ui/viewport";
 import { useMolstarTheme } from "../../hooks/useMolstarTheme";
+import { useViewSetting } from "../../hooks/useViewSetting";
 import { MolstarViewSettingsSubject } from "../../utils/theme";
 import { useCameraReset } from "./hooks/useCameraReset";
 import { ResetCameraSlot } from "./style";
@@ -24,6 +25,10 @@ export function createViewportView(
   return function ViewportWithReset() {
     const { theme } = useMolstarTheme(viewSettings);
     const { cameraChanged, resetCamera } = useCameraReset();
+    // This view stands in for Mol*'s own whether or not the axes are on, so
+    // whether to offer the reset button is a question it has to ask rather
+    // than something its presence answers.
+    const showAxes = useViewSetting(viewSettings, (s) => s.showAxes ?? true);
 
     return (
       <>
@@ -32,7 +37,7 @@ export function createViewportView(
           <Toasts />
         </div>
         <ThemeProvider theme={theme}>
-          <ResetCameraSlot hidden={!cameraChanged}>
+          <ResetCameraSlot hidden={!showAxes || !cameraChanged}>
             <Button
               aria-label="Reset camera"
               onClick={resetCamera}
