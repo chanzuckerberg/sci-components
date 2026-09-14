@@ -131,9 +131,9 @@
   Visibility works out of the box: the toggles own it unless you pass
   <code>hiddenChains</code>, which takes it over and leaves the toggles
   reporting through <code>onChainVisibilityChange</code>. Hiding a chain removes
-  its cartoon, which also takes it out of reach of hover and click; its sequence
-  stays in the panel, dimmed, so the panel does not reflow on every toggle.
-  <code>chainColors</code> overrides the palette per chain.
+  everything it is drawn with, which also takes it out of reach of hover and
+  click; its sequence stays in the panel, dimmed, so the panel does not reflow
+  on every toggle. <code>chainColors</code> overrides the palette per chain.
 </p>
 <p>
   Residue indices run straight through the chain break: on the pair below,
@@ -149,6 +149,32 @@
   data-example-padding="none"
   data-example="data-viz/ProteinStructureViewer/MultiChainProteinStructureViewer"
 ></div>
+<h3>Ligands and ions</h3>
+<p>
+  Whatever a PDB entry carries besides its protein - ligands, ions, glycans,
+  lipids - is drawn as ball-and-stick alongside the cartoon, with no prop to
+  turn on. A cartoon traces a polymer backbone and a heme has none, so the two
+  halves of a chain need two representations between them.
+</p>
+<p>
+  Heteroatoms are colored by element whatever the rest of the structure is
+  painted with: orange iron, blue nitrogens, red oxygens, grey carbons. That is
+  what makes a heme read as a heme rather than as a shape in the chain's color,
+  and <code>plddt</code> and <code>residueOverlay</code> have no value for a
+  HETATM to be colored by in any case.
+</p>
+<p>
+  They belong to the chain they sit on, so hiding that chain takes them with it
+  and selecting the chain covers them. They are not sequence, though: the
+  sequence panel does not caption them, they are absent from the residue counts,
+  and <code>ChainRef</code> describes only the chain's polymer. A ligand that a
+  file gives a chain of its own is drawn, but reported as no chain at all, since
+  there is no sequence to report.
+</p>
+<p>
+  Water is the exception, and is not drawn. A structure's worth of solvent
+  rendered as sticks buries the structure it surrounds.
+</p>
 <h3>Structure only</h3>
 <p>
   Three props hide the chrome layered around the 3D view.
@@ -775,6 +801,13 @@
   chain-keyed prop takes. A chain carrying several symmetry operators appears
   once, under the first.
 </p>
+<p>
+  It describes the chain's polymer. The ligands and ions sitting on the chain
+  are drawn, and are hidden and selected along with it, but are not counted here
+  or spanned by its range - they are no part of the sequence. A chain holding
+  nothing but heteroatoms is left out altogether, having no sequence to
+  describe, though it is still drawn.
+</p>
 <table class="sds-doc-table">
   <tr>
     <td><p>Name</p></td>
@@ -815,7 +848,7 @@
       <p><code>number</code></p>
     </td>
     <td><p>- (required)</p></td>
-    <td><p>Lowest 0-based residue index on the chain.</p></td>
+    <td><p>Lowest 0-based residue index of the chain's polymer.</p></td>
   </tr>
   <tr>
     <td>
@@ -825,7 +858,7 @@
       <p><code>number</code></p>
     </td>
     <td><p>- (required)</p></td>
-    <td><p>Highest 0-based residue index on the chain.</p></td>
+    <td><p>Highest 0-based residue index of the chain's polymer.</p></td>
   </tr>
   <tr>
     <td>
@@ -835,7 +868,7 @@
       <p><code>number</code></p>
     </td>
     <td><p>- (required)</p></td>
-    <td><p>Residues the chain holds.</p></td>
+    <td><p>Polymer residues the chain holds.</p></td>
   </tr>
 </table>
 <h3>ResidueValueOverlay</h3>

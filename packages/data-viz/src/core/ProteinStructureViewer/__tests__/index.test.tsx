@@ -2,10 +2,16 @@ import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { composeStories } from "@storybook/react-vite";
 import { act, render, screen, waitFor } from "@testing-library/react";
-import { Structure } from "molstar/lib/mol-model/structure";
+import {
+  QueryContext,
+  Structure,
+  StructureSelection,
+} from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
 import { PluginConfig } from "molstar/lib/mol-plugin/config";
+import type { Expression } from "molstar/lib/mol-script/language/expression";
+import { compile } from "molstar/lib/mol-script/runtime/query/compiler";
 import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
@@ -13,6 +19,7 @@ import ProteinStructureViewer from "..";
 import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
+import { MYOGLOBIN_PDB } from "../__storybook__/myoglobin";
 import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
 import { parseHexColor } from "../utils/color";
 import {
@@ -59,6 +66,15 @@ function subscribable(replay?: unknown) {
 /** What Mol*'s click behavior holds before anything has been clicked. */
 const EMPTY_CLICK = { current: { loci: { kind: "empty-loci" } } };
 
+/** True when the expression matches no atom of the structure. */
+function selectsNothing(structure: Structure, expression: Expression): boolean {
+  const selection = compile<StructureSelection>(expression)(
+    new QueryContext(structure)
+  );
+
+  return StructureSelection.structureCount(selection) === 0;
+}
+
 /**
  * Enough of a camera for the focus path to run. Framing a residue is real
  * geometry work, so what is stubbed is only the camera it is handed.
@@ -79,6 +95,14 @@ function stubCamera() {
 }
 
 /**
+ * Component keys the load path builds for chain A - one for its polymer, one
+ * for the heteroatoms sitting on it - and how the stub refs a component.
+ */
+const POLYMER_A = "polymer-A";
+const LIGAND_A = "ligand-A";
+const componentRef = (key: string) => `component-${key}`;
+
+/**
  * `structure` is the parsed structure the viewer would be holding. Passing a
  * real one lets the tests exercise the actual residue-to-loci resolution
  * rather than a stand-in for it.
@@ -88,8 +112,11 @@ function createStubPlugin(structure?: Structure) {
   const parsedPdb: string[] = [];
   const focused = new BehaviorSubject<{ loci: unknown } | undefined>(undefined);
 
-  /** Component keys the load path asked for, one per chain. */
+  /** Component keys the load path built, in order. */
   const components: string[] = [];
+
+  /** Representation type built over each component, by component key. */
+  const representations = new Map<string, string>();
 
   /**
    * What `setSubtreeVisibility` ended up writing, by component ref. It is real
@@ -126,10 +153,31 @@ function createStubPlugin(structure?: Structure) {
           return data;
         }),
         representation: {
-          addRepresentation: vi.fn(async () => undefined),
+          addRepresentation: vi.fn(
+            async (
+              component: { ref: string },
+              props: { type: string }
+            ): Promise<undefined> => {
+              representations.set(component.ref, props.type);
+              return undefined;
+            }
+          ),
         },
+        /**
+         * Returns nothing when the expression selects nothing, as Mol* does.
+         * The expression is run for real against the structure, so a chain
+         * with no ligands gets no ligand component here either - otherwise
+         * every test would see components the viewer would never build.
+         */
         tryCreateComponentFromExpression: vi.fn(
-          async (_structure: unknown, _expression: unknown, key: string) => {
+          async (
+            _structure: unknown,
+            expression: Expression,
+            key: string
+          ): Promise<{ ref: string } | undefined> => {
+            if (structure && selectsNothing(structure, expression))
+              return undefined;
+
             const ref = `component-${key}`;
             components.push(key);
             transforms.set(ref, { ref });
@@ -164,9 +212,18 @@ function createStubPlugin(structure?: Structure) {
               visualQuality: "auto",
             },
           },
+          /**
+           * The viewer passes the per-representation form, so that the
+           * heteroatoms can stay on element colors while the polymer takes
+           * whatever the props asked for. Called with a polymer component
+           * here, which is the theme the tests are about.
+           */
           updateRepresentationsTheme: vi.fn(
-            async (_components: unknown, params: { color: string }) => {
-              loadedThemes.push(params.color);
+            async (
+              _components: unknown,
+              params: (component: { key: string }) => { color: string }
+            ) => {
+              loadedThemes.push(params({ key: POLYMER_A }).color);
             }
           ),
         },
@@ -217,6 +274,7 @@ function createStubPlugin(structure?: Structure) {
     },
     stubComponents: components,
     stubFocusShells: focusShells,
+    stubRepresentations: representations,
     stubVisibility: visibility,
   };
 }
@@ -264,8 +322,11 @@ const OVERLAY_LABEL = "Feature activation";
 /** The viewer's own per-chain theme, which stands in for Mol*'s chain-id. */
 const CHAIN_THEME = "chain-color";
 
-/** Barstar's component in the stub state tree, and its legend toggle. */
-const BARSTAR_REF = "component-chain-B";
+/** Mol*'s B-factor theme, which is the one pLDDT scores are painted through. */
+const PLDDT_THEME = "plddt-bfactor";
+
+/** Barstar's polymer component in the stub state tree, and its legend toggle. */
+const BARSTAR_REF = componentRef("polymer-B");
 const HIDE_BARSTAR = "Hide chain B";
 
 /**
@@ -411,7 +472,7 @@ describe("<ProteinStructureViewer />", () => {
   it("colors by pLDDT when scores are supplied", async () => {
     renderViewer({ plddt: [0.94] });
 
-    await waitFor(() => expect(plugin.loadedThemes).toContain("plddt-bfactor"));
+    await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
   });
 
   it("falls back to chain coloring when no scores are supplied", async () => {
@@ -420,7 +481,7 @@ describe("<ProteinStructureViewer />", () => {
     renderViewer();
 
     await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
-    expect(plugin.loadedThemes).not.toContain("plddt-bfactor");
+    expect(plugin.loadedThemes).not.toContain(PLDDT_THEME);
   });
 
   it("switches to the residue value theme when an overlay is set", async () => {
@@ -793,7 +854,7 @@ describe("<ProteinStructureViewer />", () => {
       renderViewer({ pdb: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
-        expect(plugin.stubComponents).toEqual(["chain-A", "chain-B"])
+        expect(plugin.stubComponents).toEqual([POLYMER_A, "polymer-B"])
       );
       expect(
         plugin.builders.structure.representation.addRepresentation
@@ -828,7 +889,7 @@ describe("<ProteinStructureViewer />", () => {
       await waitFor(() =>
         expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(true)
       );
-      expect(plugin.stubVisibility.get("component-chain-A")).toBe(false);
+      expect(plugin.stubVisibility.get(componentRef(POLYMER_A))).toBe(false);
     });
 
     it("brings a chain back when it leaves hiddenChains", async () => {
@@ -1211,6 +1272,94 @@ describe("<ProteinStructureViewer />", () => {
       expect(getComputedStyle(swatches[0] as Element).backgroundColor).toBe(
         "rgb(18, 52, 86)"
       );
+    });
+  });
+
+  /**
+   * Ligands and ions, which a cartoon cannot draw: myoglobin's heme and the
+   * hydroxide on its iron are invisible unless something else draws them.
+   */
+  describe("heteroatoms", () => {
+    /** A zinc on a chain of its own, which is how some files name a ligand. */
+    const LIGAND_CHAIN_PDB = [
+      "ATOM      1  CA  MET A   1      10.000  10.000  10.000  1.00  0.00           C",
+      "ATOM      2  CA  SER A   2      13.800  10.000  10.000  1.00  0.00           C",
+      "HETATM    3 ZN    ZN B 101      20.000  10.000  10.000  1.00  0.00          ZN",
+    ].join("\n");
+
+    /** The theme the last recolor chose for a given component. */
+    function themeFor(key: string): string {
+      const { calls } =
+        plugin.managers.structure.component.updateRepresentationsTheme.mock;
+      const params = calls[calls.length - 1]?.[1] as (c: { key: string }) => {
+        color: string;
+      };
+
+      return params({ key }).color;
+    }
+
+    beforeEach(async () => {
+      plugin = createStubPlugin(await structureFromPdb(MYOGLOBIN_PDB));
+      createPluginUI.mockResolvedValue(plugin);
+    });
+
+    it("draws them as ball-and-stick beside the polymer's cartoon", async () => {
+      renderViewer({ pdb: MYOGLOBIN_PDB });
+
+      await waitFor(() =>
+        expect(plugin.stubComponents).toEqual([POLYMER_A, LIGAND_A])
+      );
+      expect([...plugin.stubRepresentations]).toEqual([
+        [componentRef(POLYMER_A), "cartoon"],
+        [componentRef(LIGAND_A), "ball-and-stick"],
+      ]);
+    });
+
+    /**
+     * A heme reads as a heme because its iron is orange and its nitrogens are
+     * blue. Coloring it by the structure-wide theme would throw that away, and
+     * under pLDDT would color it by a score a HETATM does not have.
+     */
+    it("leaves them on element colors while the polymer takes the theme", async () => {
+      renderViewer({ pdb: MYOGLOBIN_PDB, plddt: [0.94] });
+
+      await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
+      expect(themeFor(POLYMER_A)).toBe(PLDDT_THEME);
+      expect(themeFor(LIGAND_A)).toBe("element-symbol");
+    });
+
+    /**
+     * Both halves of the chain, or hiding it would leave a heme floating where
+     * its protein used to be.
+     */
+    it("hides them along with the chain they sit on", async () => {
+      renderViewer({ hiddenChains: ["A"], pdb: MYOGLOBIN_PDB });
+
+      await waitFor(() =>
+        expect(plugin.stubVisibility.get(componentRef(LIGAND_A))).toBe(true)
+      );
+      expect(plugin.stubVisibility.get(componentRef(POLYMER_A))).toBe(true);
+    });
+
+    /**
+     * A file can give a ligand a chain of its own, which is a chain with no
+     * sequence: absent from `onChainsChange` and from the legend, and still
+     * drawn. The load path works from every chain the file names rather than
+     * from the ones reported, which is what leaves it on screen.
+     */
+    it("draws a ligand given a chain of its own", async () => {
+      const onChainsChange = vi.fn();
+      plugin = createStubPlugin(await structureFromPdb(LIGAND_CHAIN_PDB));
+      createPluginUI.mockResolvedValue(plugin);
+
+      renderViewer({ onChainsChange, pdb: LIGAND_CHAIN_PDB });
+
+      await waitFor(() =>
+        expect(plugin.stubComponents).toEqual([POLYMER_A, "ligand-B"])
+      );
+      expect(onChainsChange).toHaveBeenCalledWith([
+        expect.objectContaining({ chainId: "A" }),
+      ]);
     });
   });
 

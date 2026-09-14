@@ -38,6 +38,8 @@ export const ChainRowList = styled("div")`
   flex-direction: column;
   align-items: flex-end;
   pointer-events: auto;
+  max-height: 80px;
+  overflow-y: auto;
 `;
 
 export const ChainRow = styled("div")`

@@ -6,6 +6,7 @@ import {
   BARNASE_BARSTAR_PLDDT,
 } from "./barnaseBarstar";
 import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
+import { MYOGLOBIN_PDB } from "./myoglobin";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -105,6 +106,16 @@ export default {
   title: "Data Viz/ProteinStructureViewer",
 } as Meta;
 
+/**
+ * What an experimental entry has to report in the slots a prediction fills
+ * with confidence metrics, since it has no pLDDT to show.
+ */
+const MYOGLOBIN_STATS = [
+  { label: "Method", value: "X-ray" },
+  { label: "Resolution", value: "2.00 A" },
+  { label: "Ligands", value: "HEM, OH" },
+];
+
 /** Confidence metrics from the co-fold behind the two-chain fixture. */
 const COMPLEX_STATS = [
   { label: "pTM", value: "0.973" },
@@ -174,6 +185,31 @@ export const WithoutLegend = {
  */
 export const WithoutPlddt = {
   args: { ...DEFAULT_ARGS, plddt: null },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * Myoglobin and its heme (PDB 1MBN). A cartoon can only trace a polymer
+ * backbone, so the ligands and ions a PDB entry carries beside its protein are
+ * drawn as ball-and-stick instead - here the heme in the pocket and the
+ * hydroxide bound to its iron.
+ *
+ * They are colored by element whatever the rest of the structure is painted
+ * with: orange iron, blue nitrogens, red oxygens. That is what makes a heme
+ * read as a heme rather than as a flat blob in the chain's color, and neither
+ * a pLDDT score nor a residue overlay has a value for a HETATM to be colored
+ * by in the first place. Hiding the chain takes its ligands with it.
+ *
+ * Water is the one kind of heteroatom left undrawn. A structure's worth of
+ * solvent as sticks buries the structure it surrounds.
+ */
+export const WithLigands = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: MYOGLOBIN_PDB,
+    plddt: null,
+    stats: MYOGLOBIN_STATS,
+  },
   parameters: VIEWER_CHECKS,
 };
 

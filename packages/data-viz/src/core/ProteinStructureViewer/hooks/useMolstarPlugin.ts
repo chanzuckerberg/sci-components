@@ -5,10 +5,16 @@ import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import type { PluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
+import type { StructureRepresentationBuiltInProps } from "molstar/lib/mol-plugin-state/helpers/structure-representation-params";
+import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
 import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
 import { setSubtreeVisibility } from "molstar/lib/mol-plugin/behavior/static/state";
 import { PluginConfig, PluginConfigItem } from "molstar/lib/mol-plugin/config";
 import { Representation } from "molstar/lib/mol-repr/representation";
+import type { Expression } from "molstar/lib/mol-script/language/expression";
+import type { StateObjectSelector } from "molstar/lib/mol-state";
+import type { ColorTheme } from "molstar/lib/mol-theme/color";
+import type { SizeTheme } from "molstar/lib/mol-theme/size";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
@@ -21,7 +27,12 @@ import type {
 } from "../ProteinStructureViewer.types";
 import { syncClipToZoom } from "../utils/cameraFocus";
 import { AXES_OFF, AXES_ON } from "../utils/axes";
-import { chainExpression, chainsEqual, scanChains } from "../utils/chains";
+import {
+  chainLigandExpression,
+  chainPolymerExpression,
+  chainsEqual,
+  scanChains,
+} from "../utils/chains";
 import { mergeMolstarSpec } from "../utils/molstarSpec";
 import { residueRefFromLoci, selectionFromLoci } from "../utils/residueRef";
 import type {
@@ -269,11 +280,12 @@ async function createViewer({
 }
 
 /**
- * The cartoon parameters Mol*'s own representation presets compute, read from
- * the same manager state they read. Ported rather than hardcoded so a chain
- * drawn here looks exactly like the single polymer the preset used to draw.
+ * The representation parameters Mol*'s own presets compute, read from the same
+ * manager state they read. Ported rather than hardcoded so a chain drawn here
+ * looks exactly like the one the preset used to draw. Mol* hands the same set
+ * to its cartoons and its ball-and-sticks, and so does this.
  */
-function cartoonTypeParams(plugin: PluginUIContext) {
+function representationTypeParams(plugin: PluginUIContext) {
   const { hydrogens, ignoreLight, visualQuality } =
     plugin.managers.structure.component.state.options;
 
@@ -287,13 +299,112 @@ function cartoonTypeParams(plugin: PluginUIContext) {
   };
 }
 
+/**
+ * The two halves of a chain the viewer draws, which are also the prefixes of
+ * the component keys they are built under - what `applyColorTheme` reads back
+ * to tell one from the other, and what tags the representation over each.
+ */
+const POLYMER_PART = "polymer";
+const LIGAND_PART = "ligand";
+
+/** True for a component holding heteroatoms rather than polymer. */
+function isLigandComponent(component: { key?: string }): boolean {
+  return component.key?.startsWith(`${LIGAND_PART}-`) === true;
+}
+
+/**
+ * How heteroatoms are colored: by element, with grey carbons.
+ *
+ * Pinned rather than left to the structure-wide theme the props ask for, for
+ * two reasons. A heme reads as a heme because its iron is orange and its
+ * nitrogens are blue, and a flat chain color throws that away. And pLDDT and
+ * residue overlays have no value for a HETATM at all, so sharing their theme
+ * would color a ligand by a score it does not have.
+ *
+ * The explicit `carbonColor` is what makes the carbons grey. Mol* defaults it
+ * to `chain-id`, which would draw them from its own palette rather than this
+ * viewer's - near enough the chain's color to look like a bug, never equal to
+ * it, and meaningless under pLDDT.
+ */
+const ELEMENT_THEME = "element-symbol";
+const ELEMENT_THEME_PARAMS: ColorTheme.BuiltInParams<typeof ELEMENT_THEME> = {
+  carbonColor: { name: "element-symbol", params: {} },
+};
+
+type StructureSelector =
+  StateObjectSelector<PluginStateObject.Molecule.Structure>;
+
+/**
+ * Draws one chain: its polymer as a cartoon, its ligands and ions as
+ * ball-and-stick.
+ *
+ * Two components rather than one, because a component is what a representation
+ * attaches to and neither representation suits both halves - a cartoon has no
+ * backbone to trace through a heme, and a ball-and-stick over the whole chain
+ * would draw every protein atom as a sphere.
+ *
+ * Hands back the refs of whichever components the chain turned out to have,
+ * which is what `setSubtreeVisibility` is later pointed at. Grouping them
+ * under the chain is what makes hiding a chain take its ligands with it.
+ */
+async function buildChainComponents(
+  plugin: PluginUIContext,
+  structure: StructureSelector,
+  chain: { chainId: string; label: string },
+  typeParams: ReturnType<typeof representationTypeParams>
+): Promise<string[]> {
+  const builders = plugin.builders.structure;
+  const refs: string[] = [];
+
+  const addPart = async (
+    part: string,
+    expression: Expression,
+    props: StructureRepresentationBuiltInProps
+  ) => {
+    const component = await builders.tryCreateComponentFromExpression(
+      structure,
+      expression,
+      `${part}-${chain.chainId}`,
+      { label: chain.label }
+    );
+
+    // Undefined when the chain has nothing of this kind: no ligands, which is
+    // most chains, or no polymer, which is what a solvent-only chain looks
+    // like. Either way there is nothing to draw and nothing to hide.
+    if (!component) return;
+
+    await builders.representation.addRepresentation(component, props, {
+      tag: part,
+    });
+    refs.push(component.ref);
+  };
+
+  await addPart(POLYMER_PART, chainPolymerExpression(chain.chainId), {
+    type: "cartoon",
+    typeParams,
+  });
+
+  await addPart(LIGAND_PART, chainLigandExpression(chain.chainId), {
+    color: ELEMENT_THEME,
+    colorParams: ELEMENT_THEME_PARAMS,
+    type: "ball-and-stick",
+    typeParams,
+  });
+
+  return refs;
+}
+
 /** What a load leaves behind for the chain-keyed props to address. */
 interface LoadedStructure {
   chains: ChainRef[];
   /** Which residues sit on each chain, by `chainId`. */
   residuesByChain: Map<string, number[]>;
-  /** State tree ref of each chain's component, by `chainId`. */
-  componentRefs: Map<string, string>;
+  /**
+   * State tree refs of each chain's components, by `chainId` - its polymer's
+   * and, where it has any, its ligands'. Chains with nothing to draw are
+   * absent rather than present and empty.
+   */
+  componentRefs: Map<string, string[]>;
 }
 
 const NOTHING_LOADED: LoadedStructure = {
@@ -303,7 +414,8 @@ const NOTHING_LOADED: LoadedStructure = {
 };
 
 /**
- * Parses the PDB and draws it as one cartoon per chain.
+ * Parses the PDB and draws each chain: a cartoon over its polymer, and
+ * ball-and-stick over its ligands and ions.
  *
  * Mol*'s `default` hierarchy preset would be shorter, but it groups every
  * polymer chain into a single component, and a component is the unit Mol* can
@@ -336,31 +448,24 @@ async function loadStructure(
     const data3d = structure.data;
     if (!data3d) return NOTHING_LOADED;
 
-    const { chains, residuesByChain } = scanChains(data3d);
-    const typeParams = cartoonTypeParams(plugin);
-    const componentRefs = new Map<string, string>();
+    const { chainLabels, chains, residuesByChain } = scanChains(data3d);
+    const typeParams = representationTypeParams(plugin);
+    const componentRefs = new Map<string, string[]>();
 
-    for (const chain of chains) {
-      const component =
-        await plugin.builders.structure.tryCreateComponentFromExpression(
-          structure,
-          chainExpression(chain.chainId),
-          `chain-${chain.chainId}`,
-          { label: chain.label }
-        );
-
-      // Undefined for a chain with no polymer to draw - a ligand or a solvent
-      // chain. It stays in `chains` so the legend can still account for it,
-      // but there is no component to color or hide.
-      if (!component) continue;
-
-      await plugin.builders.structure.representation.addRepresentation(
-        component,
-        { type: "cartoon", typeParams },
-        { tag: "polymer" }
+    // Every chain the file names, not just the ones `chains` reports: a chain
+    // holding nothing but a ligand is absent from the legend, since there is
+    // no sequence to list, and still has to be drawn.
+    for (const [chainId, label] of chainLabels) {
+      const refs = await buildChainComponents(
+        plugin,
+        structure,
+        { chainId, label },
+        typeParams
       );
 
-      componentRefs.set(chain.chainId, component.ref);
+      // None for a chain with nothing the viewer draws, which is what a
+      // solvent-only chain looks like. Nothing to color, nothing to hide.
+      if (refs.length > 0) componentRefs.set(chainId, refs);
     }
 
     if (usePlddtColoring) {
@@ -378,10 +483,12 @@ async function loadStructure(
 }
 
 /**
- * Shows or hides each chain's cartoon.
+ * Shows or hides everything each chain is drawn with, cartoon and sticks
+ * alike. Every component under the chain, so hiding it takes its ligands with
+ * it rather than leaving a heme floating where its protein used to be.
  *
- * The whole subtree, not just the component cell: visibility is per-cell, and
- * it is the representation underneath that actually draws.
+ * The whole subtree of each, not just the component cell: visibility is
+ * per-cell, and it is the representation underneath that actually draws.
  *
  * Set outright rather than through the component manager's `toggleVisibility`,
  * which flips whatever it finds: the hidden set is derived from props on every
@@ -390,24 +497,40 @@ async function loadStructure(
  */
 function applyChainVisibility(
   plugin: PluginUIContext,
-  componentRefs: Map<string, string>,
+  componentRefs: Map<string, string[]>,
   hidden: Set<string>
 ): void {
-  for (const [chainId, ref] of componentRefs) {
-    setSubtreeVisibility(plugin.state.data, ref, hidden.has(chainId));
+  for (const [chainId, refs] of componentRefs) {
+    for (const ref of refs) {
+      setSubtreeVisibility(plugin.state.data, ref, hidden.has(chainId));
+    }
   }
 }
 
-/** Recolors every loaded structure's representations with the named theme. */
+/**
+ * Recolors every loaded structure's representations with the named theme,
+ * leaving the heteroatoms on element colors (see `ELEMENT_THEME_PARAMS`).
+ *
+ * The per-representation form of `updateRepresentationsTheme`, so the two can
+ * be told apart in one pass; handing it a filtered list instead would leave
+ * the ligands on whichever theme happened to be current when they were built.
+ */
 export async function applyColorTheme(
   plugin: PluginUIContext,
   colorTheme: string
 ): Promise<void> {
   await plugin.dataTransaction(async () => {
     for (const s of plugin.managers.structure.hierarchy.current.structures) {
-      await plugin.managers.structure.component.updateRepresentationsTheme(
-        s.components,
-        { color: colorTheme as never }
+      // Pinned to the element theme's generic, since it is the only one whose
+      // params are named here. The other name rides in as a cast, which is
+      // what Mol* asks of a theme it does not ship (see UpdateThemeParams).
+      await plugin.managers.structure.component.updateRepresentationsTheme<
+        typeof ELEMENT_THEME,
+        SizeTheme.BuiltIn
+      >(s.components, (component) =>
+        isLigandComponent(component)
+          ? { color: ELEMENT_THEME, colorParams: ELEMENT_THEME_PARAMS }
+          : { color: colorTheme as typeof ELEMENT_THEME }
       );
     }
   });
@@ -504,11 +627,11 @@ export function useMolstarPlugin({
   const [chains, setChains] = useState<ChainRef[]>([]);
 
   /**
-   * Where each chain's cartoon lives in the state tree, which is what the
+   * Where each chain's components live in the state tree, which is what the
    * visibility effect points `setSubtreeVisibility` at. Rewritten by every
    * load, since the refs do not survive `plugin.clear()`.
    */
-  const componentRefsRef = useRef<Map<string, string>>(new Map());
+  const componentRefsRef = useRef<Map<string, string[]>>(new Map());
 
   /**
    * Which residues sit on each chain, for the readout to average a score over

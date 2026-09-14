@@ -82,17 +82,22 @@ export interface ResidueRef {
  * `chainId` is the file's own name for the chain, the same one `ResidueRef`
  * reports, and the key every chain-keyed prop takes. A chain carrying several
  * symmetry operators appears once, under the first.
+ *
+ * Describes the chain's polymer. The ligands and ions sitting on it are drawn
+ * and are hidden and selected with it, but are not counted here or spanned by
+ * the range below - they are no part of the sequence. A chain holding nothing
+ * but heteroatoms is left out altogether, having no sequence to describe.
  */
 export interface ChainRef {
   /** Chain as named in the file (`auth_asym_id`), e.g. `"A"`. */
   chainId: string;
   /** Chain as the sequence panel captions it. */
   label: string;
-  /** Lowest 0-based residue index on the chain. */
+  /** Lowest 0-based residue index of the chain's polymer. */
   startIndex: number;
-  /** Highest 0-based residue index on the chain. */
+  /** Highest 0-based residue index of the chain's polymer. */
   endIndex: number;
-  /** Residues the chain holds. */
+  /** Polymer residues the chain holds. */
   residueCount: number;
 }
 

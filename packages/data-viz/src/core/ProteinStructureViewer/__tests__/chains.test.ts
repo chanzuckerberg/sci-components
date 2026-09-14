@@ -6,16 +6,20 @@ import {
   StructureSelection,
 } from "molstar/lib/mol-model/structure";
 import type { ElementIndex, Structure } from "molstar/lib/mol-model/structure";
+import type { Expression } from "molstar/lib/mol-script/language/expression";
 import { compile } from "molstar/lib/mol-script/runtime/query/compiler";
 import {
   CHAIN_COLOR_PALETTE,
   chainColorMap,
 } from "../../../common/chainColors";
 import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
+import { MYOGLOBIN_PDB } from "../__storybook__/myoglobin";
 import {
-  chainExpression,
+  chainLigandExpression,
+  chainPolymerExpression,
   chainsEqual,
   chainsFromStructure,
+  scanChains,
 } from "../utils/chains";
 import { structureFromPdb } from "./molstarStructure";
 
@@ -92,42 +96,98 @@ describe("chainsFromStructure", () => {
 
     expect(chainsFromStructure(withInsCode)[0]?.residueCount).toBe(3);
   });
+
+  /**
+   * A heme and a hydroxide are residues to the file, and occupy indices in the
+   * shared index space, but they are not the chain's sequence. Counting them
+   * would report 155 residues for a chain the sequence panel lists 153 of, and
+   * would average a confidence score over two residues that have none.
+   */
+  it("counts a chain's polymer, not the heteroatoms on it", async () => {
+    const myoglobin = await structureFromPdb(MYOGLOBIN_PDB);
+
+    expect(chainsFromStructure(myoglobin)).toEqual([
+      {
+        chainId: "A",
+        endIndex: 152,
+        label: "A",
+        residueCount: 153,
+        startIndex: 0,
+      },
+    ]);
+  });
+
+  /**
+   * Such a chain has no sequence to describe, so there is nothing for the
+   * legend to list or the readout to average - but it is still drawn, which
+   * `chainLabels` is what carries (see the load path).
+   */
+  it("leaves out a chain holding nothing but heteroatoms", async () => {
+    const separateLigandChain = await structureFromPdb(
+      [
+        "ATOM      1  CA  MET A   1      10.000  10.000  10.000  1.00  0.00           C",
+        "ATOM      2  CA  SER A   2      13.800  10.000  10.000  1.00  0.00           C",
+        "HETATM    3 ZN    ZN B 101      20.000  10.000  10.000  1.00  0.00          ZN",
+      ].join("\n")
+    );
+    const scan = scanChains(separateLigandChain);
+
+    expect(scan.chains.map((chain) => chain.chainId)).toEqual(["A"]);
+    expect([...scan.chainLabels.keys()]).toEqual(["A", "B"]);
+  });
 });
 
 /**
- * The expression each chain's cartoon is built from, run through Mol*'s real
- * query compiler.
- *
- * The component tests above it stub out `tryCreateComponentFromExpression`, so
- * they would pass just as well with a misspelled property - `entityType` under
- * the wrong namespace, say - and the chains would come back empty only once a
- * browser drew them. Compiling it here is what pins the expression itself.
+ * What the expression selects: which chains it reached into, how many residues
+ * it covers, and which components those residues are.
  */
-describe("chainExpression", () => {
+function selectFrom(structure: Structure, expression: Expression) {
+  const loci = StructureSelection.toLociWithSourceUnits(
+    compile<StructureSelection>(expression)(new QueryContext(structure))
+  );
+
+  const chains = new Set<string>();
+  const components = new Set<string>();
+  const residues = new Set<number>();
+  const location = StructureElement.Location.create(loci.structure);
+
+  for (const element of loci.elements) {
+    location.unit = element.unit;
+
+    OrderedSet.forEach(element.indices, (i) => {
+      location.element = element.unit.elements[i] as ElementIndex;
+      chains.add(StructureProperties.chain.auth_asym_id(location));
+      components.add(StructureProperties.atom.label_comp_id(location));
+      residues.add(StructureProperties.residue.key(location));
+    });
+  }
+
+  return {
+    chains: [...chains],
+    components: [...components].sort(),
+    residueCount: residues.size,
+  };
+}
+
+/**
+ * The expressions each chain is drawn from, run through Mol*'s real query
+ * compiler.
+ *
+ * The component tests above them stub out `tryCreateComponentFromExpression`,
+ * so they would pass just as well with a misspelled property - `entityType`
+ * under the wrong namespace, say - and the chains would come back empty only
+ * once a browser drew them. Compiling the expressions here is what pins them.
+ */
+describe("chainPolymerExpression", () => {
   let complex: Structure;
 
-  /** Chain ids and residue count of whatever the expression selects. */
   function select(chainId: string) {
-    const query = compile<StructureSelection>(chainExpression(chainId));
-    const loci = StructureSelection.toLociWithSourceUnits(
-      query(new QueryContext(complex))
+    const { chains, residueCount } = selectFrom(
+      complex,
+      chainPolymerExpression(chainId)
     );
 
-    const chains = new Set<string>();
-    const residues = new Set<number>();
-    const location = StructureElement.Location.create(loci.structure);
-
-    for (const element of loci.elements) {
-      location.unit = element.unit;
-
-      OrderedSet.forEach(element.indices, (i) => {
-        location.element = element.unit.elements[i] as ElementIndex;
-        chains.add(StructureProperties.chain.auth_asym_id(location));
-        residues.add(StructureProperties.residue.key(location));
-      });
-    }
-
-    return { chains: [...chains], residueCount: residues.size };
+    return { chains, residueCount };
   }
 
   beforeAll(async () => {
@@ -144,6 +204,70 @@ describe("chainExpression", () => {
 
   it("selects nothing for a chain the structure does not have", () => {
     expect(select("Z")).toEqual({ chains: [], residueCount: 0 });
+  });
+
+  /**
+   * The cartoon has no backbone to trace through a heme, so the polymer test
+   * is what keeps one out of it - and what leaves it to the ball-and-stick.
+   */
+  it("leaves the heteroatoms on a chain out", async () => {
+    const myoglobin = await structureFromPdb(MYOGLOBIN_PDB);
+
+    expect(selectFrom(myoglobin, chainPolymerExpression("A"))).toMatchObject({
+      residueCount: 153,
+    });
+  });
+});
+
+/**
+ * Myoglobin's chain A carries both kinds of heteroatom the fix is about: HEM,
+ * a ligand, and OH, an ion. Both arrive as `non-polymer`, which is the whole
+ * reason one expression covers them.
+ */
+describe("chainLigandExpression", () => {
+  let myoglobin: Structure;
+
+  beforeAll(async () => {
+    myoglobin = await structureFromPdb(MYOGLOBIN_PDB);
+  });
+
+  it("selects the ligand and the ion on the chain", () => {
+    expect(selectFrom(myoglobin, chainLigandExpression("A"))).toEqual({
+      chains: ["A"],
+      components: ["HEM", "OH"],
+      residueCount: 2,
+    });
+  });
+
+  it("selects nothing on a chain with no heteroatoms", async () => {
+    const complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+
+    expect(selectFrom(complex, chainLigandExpression("A"))).toEqual({
+      chains: [],
+      components: [],
+      residueCount: 0,
+    });
+  });
+
+  /**
+   * Water is a third entity type, and a structure's worth of it drawn as
+   * sticks buries the structure it surrounds.
+   */
+  it("leaves water out while taking the ion beside it", async () => {
+    const solvated = await structureFromPdb(
+      [
+        "ATOM      1  CA  MET A   1      10.000  10.000  10.000  1.00  0.00           C",
+        "ATOM      2  CA  SER A   2      13.800  10.000  10.000  1.00  0.00           C",
+        "HETATM    3 ZN    ZN A 101      20.000  10.000  10.000  1.00  0.00          ZN",
+        "HETATM    4  O   HOH A 201      30.000  10.000  10.000  1.00  0.00           O",
+      ].join("\n")
+    );
+
+    expect(selectFrom(solvated, chainLigandExpression("A"))).toEqual({
+      chains: ["A"],
+      components: ["ZN"],
+      residueCount: 1,
+    });
   });
 });
 

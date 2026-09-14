@@ -4,7 +4,6 @@ import {
   StructureProperties,
 } from "molstar/lib/mol-model/structure";
 import { elementLabel } from "molstar/lib/mol-theme/label";
-import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { MolScriptBuilder as MS } from "molstar/lib/mol-script/language/builder";
 import type { Expression } from "molstar/lib/mol-script/language/expression";
 import type { ChainRef } from "../ProteinStructureViewer.types";
@@ -13,14 +12,42 @@ import type { ChainRef } from "../ProteinStructureViewer.types";
  * The polymer of one chain, as named in the file. What each chain's cartoon is
  * built from, and so what makes a chain a thing Mol* can hide on its own.
  *
- * The polymer restriction is the one Mol*'s `polymer-cartoon` preset used to
- * apply before the chains were split apart, and keeps water and ligands out of
- * the cartoon.
+ * Paired with `chainLigandExpression`: between them they cover everything on a
+ * chain the viewer draws, split by what it draws it as. The polymer
+ * restriction is the one Mol*'s `polymer-cartoon` preset applied, and is what
+ * keeps a heme from being handed to a representation that can only trace a
+ * backbone.
  */
-export function chainExpression(chainId: string): Expression {
+export function chainPolymerExpression(chainId: string): Expression {
   return MS.struct.generator.atomGroups({
     "chain-test": MS.core.rel.eq([MS.ammp("auth_asym_id"), chainId]),
     "entity-test": MS.core.rel.eq([MS.ammp("entityType"), "polymer"]),
+  });
+}
+
+/**
+ * The heteroatoms of one chain - ligands, ions, glycans, lipids - which are
+ * what its ball-and-stick is built from.
+ *
+ * `non-polymer` is the one entity type a PDB's HETATM records land under,
+ * ligands and ions alike, so there is nothing finer to test here: the
+ * distinction Mol*'s presets draw between their `ligand`, `ion` and `lipid`
+ * components is a residue-name lookup made to give each a slightly different
+ * style, and all three are sticks. `branched` is the separate type glycans
+ * arrive as.
+ *
+ * Water is the third type and is left out. Every solvent molecule drawn as
+ * sticks buries the structure they surround, which is why Mol* draws them at
+ * 60% alpha rather than plain, and none of them is what "show the ligands"
+ * asks for.
+ */
+export function chainLigandExpression(chainId: string): Expression {
+  return MS.struct.generator.atomGroups({
+    "chain-test": MS.core.rel.eq([MS.ammp("auth_asym_id"), chainId]),
+    "entity-test": MS.core.set.has([
+      MS.set("non-polymer", "branched"),
+      MS.ammp("entityType"),
+    ]),
   });
 }
 
@@ -35,28 +62,44 @@ const CHAIN_LABEL_OPTIONS = {
   htmlStyling: false,
 };
 
-/** Mutable accumulator; `residues` is dropped before the chain is returned. */
-interface ChainAccumulator extends ChainRef {
+/** Mutable accumulator; the residues become the chain's range and count. */
+interface ChainAccumulator {
+  chainId: string;
+  label: string;
+  /** Polymer residues only, so a heteroatom-only chain holds none. */
   residues: Set<number>;
 }
 
 export interface ChainScan {
-  /** The chains, ordered by where they start. */
+  /** The chains carrying polymer, ordered by where they start. */
   chains: ChainRef[];
   /**
-   * Which residues sit on each chain, ascending, by `chainId`. What a
+   * Which polymer residues sit on each chain, ascending, by `chainId`. What a
    * whole-chain selection stands for when it has to be read residue by
    * residue - counting it, or averaging a score over it.
    */
   residuesByChain: Map<string, number[]>;
+  /**
+   * Every chain the file names and the label Mol* gives it, in the order they
+   * first appear - including the chains `chains` leaves out for having no
+   * polymer. What the load path draws from, which has to reach wider than what
+   * the legend lists: a file can give a ligand a chain of its own, and it is
+   * still something to render.
+   */
+  chainLabels: Map<string, string>;
 }
 
 /**
- * Reads the chains of a structure and the residues on each.
+ * Reads the chains of a structure and the polymer residues on each.
  *
  * Residue indices are Mol*'s residue keys, counting residues in file order
  * across the whole structure, so what is reported here addresses the same
  * residues as `plddt`, `residueOverlay` and `selection`.
+ *
+ * Heteroatoms are drawn (see `chainLigandExpression`) but are not counted
+ * here. A heme is a residue to the file and not to a reader: it is no part of
+ * the sequence the panel lists, and averaging a confidence score over it would
+ * divide by a residue that has none.
  *
  * Residues are gathered into a set rather than inferred from the ends: a chain
  * carrying several symmetry operators repeats each of its residues once per
@@ -75,71 +118,53 @@ export function scanChains(structure: Structure): ChainScan {
       location.element = unit.elements[i] as ElementIndex;
 
       const chainId = StructureProperties.chain.auth_asym_id(location);
-      const index = StructureProperties.residue.key(location);
-      const chain = accumulators.get(chainId);
+      let chain = accumulators.get(chainId);
 
       if (!chain) {
-        accumulators.set(chainId, {
+        chain = {
           chainId,
-          endIndex: index,
           label: elementLabel(location, CHAIN_LABEL_OPTIONS),
-          residueCount: 0,
-          residues: new Set([index]),
-          startIndex: index,
-        });
-        continue;
+          residues: new Set<number>(),
+        };
+        accumulators.set(chainId, chain);
       }
 
-      chain.residues.add(index);
-      if (index < chain.startIndex) chain.startIndex = index;
-      if (index > chain.endIndex) chain.endIndex = index;
+      if (StructureProperties.entity.type(location) !== "polymer") continue;
+
+      chain.residues.add(StructureProperties.residue.key(location));
     }
   }
 
-  const ordered = [...accumulators.values()].sort(
-    (a, b) => a.startIndex - b.startIndex
-  );
+  // Sorted here rather than tracked as the walk goes, so that the range and
+  // the count come off the one set and cannot disagree with it.
+  const ordered = [...accumulators.values()]
+    .filter((chain) => chain.residues.size > 0)
+    .map((chain) => ({
+      ...chain,
+      residues: [...chain.residues].sort((a, b) => a - b),
+    }))
+    .sort((a, b) => (a.residues[0] ?? 0) - (b.residues[0] ?? 0));
 
   return {
-    chains: ordered.map(({ residues, ...chain }) => ({
-      ...chain,
-      residueCount: residues.size,
+    chainLabels: new Map(
+      [...accumulators.values()].map(({ chainId, label }) => [chainId, label])
+    ),
+    chains: ordered.map(({ chainId, label, residues }) => ({
+      chainId,
+      endIndex: residues[residues.length - 1] ?? 0,
+      label,
+      residueCount: residues.length,
+      startIndex: residues[0] ?? 0,
     })),
     residuesByChain: new Map(
-      ordered.map(({ chainId, residues }) => [
-        chainId,
-        [...residues].sort((a, b) => a - b),
-      ])
+      ordered.map(({ chainId, residues }) => [chainId, residues])
     ),
   };
 }
 
-/** The chains of a structure, ordered by where they start. */
+/** The polymer chains of a structure, ordered by where they start. */
 export function chainsFromStructure(structure: Structure): ChainRef[] {
   return scanChains(structure).chains;
-}
-
-/**
- * The chains of every structure loaded into a plugin. Several structures are
- * flattened into one result, which matches how the residue index space already
- * spans them.
- */
-export function scanChainsInPlugin(plugin: PluginUIContext): ChainScan {
-  const chains: ChainRef[] = [];
-  const residuesByChain = new Map<string, number[]>();
-
-  for (const entry of plugin.managers.structure.hierarchy.current.structures) {
-    const structure = entry.cell.obj?.data;
-    if (!structure) continue;
-
-    const scan = scanChains(structure);
-    chains.push(...scan.chains);
-    for (const [chainId, residues] of scan.residuesByChain) {
-      residuesByChain.set(chainId, residues);
-    }
-  }
-
-  return { chains, residuesByChain };
 }
 
 /** True when the two lists name the same chains, in the same order. */

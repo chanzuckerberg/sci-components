@@ -141,7 +141,16 @@ function authAsymIdFor(structure: Structure, chainGroupId: number): string {
   return "";
 }
 
-/** One entry per chain, in Mol*'s entity / chain / operator order. */
+/**
+ * One entry per polymer chain, in Mol*'s entity / chain / operator order.
+ *
+ * Polymer entities only. The heteroatoms on a chain are separate entities, and
+ * Mol* would hand back a caption and a grid for each - a myoglobin listing
+ * "Chain A" and then two more headers, both reading "Chain A_1 [auth A]", one
+ * holding the heme and one the hydroxide. They are drawn in the 3D view and
+ * they are not sequence, and a caption per ligand offers a chain toggle for
+ * something that is not a chain.
+ */
 function buildEntries(
   structure: Structure,
   selection: StructureSelectionManager,
@@ -149,7 +158,7 @@ function buildEntries(
 ): SequenceWrapperEntry[] {
   const entries: SequenceWrapperEntry[] = [];
 
-  for (const [modelEntityId] of getModelEntityOptions(structure)) {
+  for (const [modelEntityId] of getModelEntityOptions(structure, true)) {
     for (const [chainGroupId, cLabel] of getChainOptions(
       structure,
       modelEntityId

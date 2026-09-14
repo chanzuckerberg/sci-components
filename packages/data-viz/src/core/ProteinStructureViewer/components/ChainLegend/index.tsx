@@ -69,16 +69,6 @@ export default function ChainLegend({
 
         return (
           <ChainRow key={chain.chainId}>
-            {color !== undefined && (
-              <ChainSwatch isHidden={hidden} swatchColor={color} />
-            )}
-            {color === undefined && bandColors !== undefined && (
-              <ChainSwatchGrid isHidden={hidden}>
-                {bandColors.map((band) => (
-                  <ChainSwatchQuadrant key={band} swatchColor={band} />
-                ))}
-              </ChainSwatchGrid>
-            )}
             {/*
               Same wording as the sequence panel's captions, since the two are
               the same affordance seen twice.
@@ -108,6 +98,17 @@ export default function ChainLegend({
                 Chain {chain.label}
               </ChainLabel>
             </Tooltip>
+
+            {color !== undefined && (
+              <ChainSwatch isHidden={hidden} swatchColor={color} />
+            )}
+            {color === undefined && bandColors !== undefined && (
+              <ChainSwatchGrid isHidden={hidden}>
+                {bandColors.map((band) => (
+                  <ChainSwatchQuadrant key={band} swatchColor={band} />
+                ))}
+              </ChainSwatchGrid>
+            )}
             <Tooltip
               arrow
               placement="top"
