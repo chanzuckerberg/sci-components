@@ -3,6 +3,7 @@ import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { RefObject, useEffect, useRef } from "react";
 import type { StructureSelection } from "../ProteinStructureViewer.types";
 import { focusResidue } from "../utils/cameraFocus";
+import { setFocusNeighbourhood } from "../utils/focusRepresentation";
 import { lociForSelection } from "../utils/residueLoci";
 import { selectionKey } from "../utils/selection";
 
@@ -46,11 +47,19 @@ export function useSelectionFocus({
    */
   const focusedRef = useRef<string | null>(null);
 
+  /**
+   * Whether the focus shell currently reaches beyond the selection, so the
+   * behavior is only updated when the answer actually changes rather than on
+   * every selection.
+   */
+  const neighbourhoodRef = useRef<boolean | null>(null);
+
   useEffect(() => {
     const plugin = pluginRef.current;
 
     if (!plugin || !isReady) {
       focusedRef.current = null;
+      neighbourhoodRef.current = null;
       return;
     }
 
@@ -65,18 +74,44 @@ export function useSelectionFocus({
       return;
     }
 
-    const loci = lociForSelection(plugin, selection as StructureSelection);
+    const chosen = selection as StructureSelection;
+    const loci = lociForSelection(plugin, chosen);
     if (!loci) return;
 
-    // A click has already focused what the consumer echoes back by the time it
-    // arrives, so only mark it when it is not already marked; setting it again
-    // would restate the selection and repaint the sequence panel for nothing.
-    const focused = plugin.managers.structure.focus.behaviors.current.value;
-    if (!focused || !StructureElement.Loci.areEqual(focused.loci, loci)) {
-      plugin.managers.structure.focus.setFromLoci(loci);
+    // A whole chain keeps its shell confined to itself; a residue or a range
+    // keeps the 5A shell Mol* draws around it.
+    const includeNeighbours = !chosen.chains?.length;
+    let cancelled = false;
+
+    const focus = () => {
+      // A click has already focused what the consumer echoes back by the time
+      // it arrives, so only mark it when it is not already marked; setting it
+      // again would restate the selection and repaint the sequence panel for
+      // nothing.
+      const focused = plugin.managers.structure.focus.behaviors.current.value;
+      if (!focused || !StructureElement.Loci.areEqual(focused.loci, loci)) {
+        plugin.managers.structure.focus.setFromLoci(loci);
+      }
+
+      setClipRatio(focusResidue(plugin, loci));
+    };
+
+    if (neighbourhoodRef.current === includeNeighbours) {
+      focus();
+      return;
     }
 
-    setClipRatio(focusResidue(plugin, loci));
+    // Set before focusing, so the shell is sized for this selection rather
+    // than drawn at the old reach and then rebuilt.
+    neighbourhoodRef.current = includeNeighbours;
+    setFocusNeighbourhood(plugin, includeNeighbours).then(() => {
+      if (cancelled || pluginRef.current !== plugin) return;
+      focus();
+    });
+
+    return () => {
+      cancelled = true;
+    };
     // pluginRef is a stable ref, and `selection` is compared through its key.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selection && selectionKey(selection), isReady, setClipRatio]);

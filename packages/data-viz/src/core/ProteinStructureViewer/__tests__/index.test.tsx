@@ -98,6 +98,9 @@ function createStubPlugin(structure?: Structure) {
   const visibility = new Map<string, boolean>();
   const transforms = new Map<string, { ref: string }>();
 
+  /** Focus shell settings, one entry per reconfiguration. */
+  const focusShells: { components: string[]; expandRadius: number }[] = [];
+
   return {
     behaviors: {
       interaction: {
@@ -191,8 +194,27 @@ function createStubPlugin(structure?: Structure) {
           visibility.set(ref, next.isHidden);
         }),
       },
+      /**
+       * How the focus shell is configured. The viewer confines it to the
+       * selection for a whole chain, which on a complex would otherwise reach
+       * across the interface and draw the partner chain's contact face.
+       */
+      updateBehavior: vi.fn(
+        async (
+          _behavior: unknown,
+          update: (params: {
+            components: string[];
+            expandRadius: number;
+          }) => void
+        ) => {
+          const params = { components: [] as string[], expandRadius: -1 };
+          update(params);
+          focusShells.push(params);
+        }
+      ),
     },
     stubComponents: components,
+    stubFocusShells: focusShells,
     stubVisibility: visibility,
   };
 }
@@ -891,6 +913,86 @@ describe("<ProteinStructureViewer />", () => {
       act(() => plugin.behaviors.interaction.click.emit(EMPTY_CLICK));
 
       expect(onSelectionChange).toHaveBeenCalledWith(null);
+    });
+
+    /**
+     * Mol* draws a focused selection with a 5A shell of its neighbours in
+     * ball-and-stick. Around a residue that shell is the point of looking at
+     * it; around a whole chain it reaches across the interface and paints the
+     * partner chain's contact face, which reads as the partner being selected
+     * too. So a chain is shown on its own and a residue keeps its shell.
+     */
+    describe("the focus shell", () => {
+      /** How the focus shell was last configured. */
+      const shell = () => {
+        const all = plugin.stubFocusShells;
+        return all[all.length - 1];
+      };
+
+      const selecting = (
+        selection: ProteinStructureViewerProps["selection"]
+      ) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            pdb={BARNASE_BARSTAR_PDB}
+            selection={selection}
+          />
+        </ThemeProvider>
+      );
+
+      it("confines the shell to the selection for a whole chain", async () => {
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() => expect(shell()?.expandRadius).toBe(0));
+      });
+
+      it("keeps drawing surroundings and interactions either way", async () => {
+        // Confined, not switched off: the chain still shows its own atoms and
+        // its own contacts, just nothing belonging to the chain beside it.
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(shell()?.components).toEqual([
+            "target",
+            "surroundings",
+            "interactions",
+          ])
+        );
+      });
+
+      it("reaches 5A around a residue selection", async () => {
+        render(selecting({ residues: [12] }));
+
+        await waitFor(() => expect(shell()?.expandRadius).toBe(5));
+      });
+
+      it("reaches 5A around a range dragged across residues", async () => {
+        render(selecting({ residues: [108, 109, 110, 111] }));
+
+        await waitFor(() => expect(shell()?.expandRadius).toBe(5));
+      });
+
+      it("resizes when the selection changes kind", async () => {
+        const { rerender } = render(selecting({ residues: [12] }));
+        await waitFor(() => expect(shell()?.expandRadius).toBe(5));
+
+        rerender(selecting({ chains: ["B"] }));
+
+        await waitFor(() => expect(shell()?.expandRadius).toBe(0));
+      });
+
+      it("does not resize between selections of the same kind", async () => {
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() => expect(plugin.stubFocusShells).toHaveLength(1));
+
+        rerender(selecting({ chains: ["A"] }));
+        await waitFor(() =>
+          expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
+        );
+
+        // Still one: the shell is already sized for a chain.
+        expect(plugin.stubFocusShells).toHaveLength(1);
+      });
     });
 
     it("selects a whole chain from its name in the legend", async () => {

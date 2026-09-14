@@ -219,6 +219,7 @@ const config: StorybookConfig = {
       "molstar/lib/mol-plugin-ui/react18",
       "molstar/lib/mol-plugin-ui/spec",
       "molstar/lib/mol-plugin/behavior",
+      "molstar/lib/mol-plugin/behavior/dynamic/selection/structure-focus-representation",
       "molstar/lib/mol-plugin/behavior/static/state",
       "molstar/lib/mol-script/language/builder",
       "molstar/lib/mol-theme/label",
