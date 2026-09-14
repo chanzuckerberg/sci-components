@@ -115,13 +115,18 @@ export function lociForResidueRange(
  */
 export function lociForSelection(
   plugin: PluginUIContext,
-  selection: StructureSelection
+  selection: StructureSelection,
+  hiddenChains?: ReadonlySet<string>
 ): StructureElement.Loci | undefined {
   for (const entry of plugin.managers.structure.hierarchy.current.structures) {
     const structure = entry.cell.obj?.data;
     if (!structure) continue;
 
-    const loci = lociForSelectionInStructure(structure, selection);
+    const loci = lociForSelectionInStructure(
+      structure,
+      selection,
+      hiddenChains
+    );
     if (loci) return loci;
   }
 

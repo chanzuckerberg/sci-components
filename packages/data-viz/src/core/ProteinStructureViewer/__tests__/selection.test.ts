@@ -79,6 +79,70 @@ describe("selecting whole chains", () => {
     ).toHaveLength(110);
   });
 
+  /**
+   * A hidden chain draws no cartoon, but Mol*'s focus representation builds its
+   * own ball-and-stick from whatever is focused, in a part of the state tree
+   * the chain's visibility does not reach. Subtracting hidden chains from the
+   * loci is what keeps a hidden chain from showing up there.
+   */
+  describe("with a chain hidden", () => {
+    it("resolves to nothing when the only selected chain is hidden", () => {
+      expect(
+        lociForSelectionInStructure(complex, { chains: ["B"] }, new Set(["B"]))
+      ).toBeUndefined();
+    });
+
+    it("keeps the chains that are still shown", () => {
+      const loci = lociForSelectionInStructure(
+        complex,
+        { chains: ["A", "B"] },
+        new Set(["B"])
+      );
+
+      expect(covered(loci as StructureElement.Loci)).toEqual({
+        chains: ["A"],
+        residueCount: 110,
+      });
+    });
+
+    it("drops a residue that sits on a hidden chain", () => {
+      // Residue 110 is barstar's first.
+      expect(
+        lociForSelectionInStructure(
+          complex,
+          { residues: [110] },
+          new Set(["B"])
+        )
+      ).toBeUndefined();
+    });
+
+    it("keeps a residue on a chain that is still shown", () => {
+      const loci = lociForSelectionInStructure(
+        complex,
+        { residues: [0, 110] },
+        new Set(["B"])
+      );
+
+      expect(covered(loci as StructureElement.Loci)).toEqual({
+        chains: ["A"],
+        residueCount: 1,
+      });
+    });
+
+    it("is unaffected by hiding a chain the selection does not touch", () => {
+      const loci = lociForSelectionInStructure(
+        complex,
+        { chains: ["B"] },
+        new Set(["A"])
+      );
+
+      expect(covered(loci as StructureElement.Loci)).toEqual({
+        chains: ["B"],
+        residueCount: 89,
+      });
+    });
+  });
+
   it("keys a chain selection distinctly from a residue selection", () => {
     expect(selectionKey({ chains: ["B"] })).not.toBe(
       selectionKey({ residues: [110] })

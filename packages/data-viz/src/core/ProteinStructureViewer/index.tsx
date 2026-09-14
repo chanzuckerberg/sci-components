@@ -308,6 +308,7 @@ const ProteinStructureViewer = forwardRef(
     });
 
     useSelectionFocus({
+      hiddenChains,
       isReady,
       pluginRef,
       selection,

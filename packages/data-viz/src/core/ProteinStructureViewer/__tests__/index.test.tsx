@@ -997,6 +997,71 @@ describe("<ProteinStructureViewer />", () => {
       });
     });
 
+    /**
+     * Mol*'s focus representation draws ball-and-stick from whatever is
+     * focused, and it builds that in a part of the state tree the chain
+     * component's own visibility does not reach - so hiding a selected chain
+     * took its cartoon away and left its atoms behind.
+     */
+    describe("hiding a selected chain", () => {
+      /** The viewer with one chain selected and a given set hidden. */
+      const hiding = (hidden: string[], chains = ["B"]) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            hiddenChains={hidden}
+            pdb={BARNASE_BARSTAR_PDB}
+            selection={{ chains }}
+          />
+        </ThemeProvider>
+      );
+
+      const focus = () => plugin.managers.structure.focus;
+
+      it("drops the focus so nothing of the chain is drawn", async () => {
+        const { rerender } = render(hiding([]));
+        await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
+
+        focus().clear.mockClear();
+        rerender(hiding(["B"]));
+
+        await waitFor(() => expect(focus().clear).toHaveBeenCalled());
+      });
+
+      it("leaves the camera where it is, since the selection still stands", async () => {
+        const { rerender } = render(hiding([]));
+        await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
+
+        plugin.canvas3d.requestCameraReset.mockClear();
+        rerender(hiding(["B"]));
+
+        await waitFor(() => expect(focus().clear).toHaveBeenCalled());
+        expect(plugin.canvas3d.requestCameraReset).not.toHaveBeenCalled();
+      });
+
+      it("refocuses on what is left when only part is hidden", async () => {
+        const { rerender } = render(hiding([], ["A", "B"]));
+        await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
+
+        const before = focus().setFromLoci.mock.calls.length;
+        rerender(hiding(["B"], ["A", "B"]));
+
+        // Chain A is still shown, so the focus moves to it rather than going.
+        await waitFor(() =>
+          expect(focus().setFromLoci.mock.calls.length).toBeGreaterThan(before)
+        );
+      });
+
+      it("focuses again when the chain is brought back", async () => {
+        const { rerender } = render(hiding(["B"]));
+        await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
+
+        focus().setFromLoci.mockClear();
+        rerender(hiding([]));
+
+        await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
+      });
+    });
+
     it("selects a whole chain from its name in the legend", async () => {
       const onSelectionChange = vi.fn();
       renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
