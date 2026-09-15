@@ -27,6 +27,11 @@ export interface MolstarViewSettings {
   /** Flips one chain's visibility, for the toggle beside each caption. */
   onChainToggle?: (chainId: string) => void;
   /**
+   * Lights the chain up in the 3D view while its caption is pointed at, and
+   * takes null when the pointer leaves.
+   */
+  onChainHover?: (chainId: string | null) => void;
+  /**
    * Chains the current selection covers whole. What lets a caption say whether
    * clicking it will select or deselect, rather than claiming one either way.
    */

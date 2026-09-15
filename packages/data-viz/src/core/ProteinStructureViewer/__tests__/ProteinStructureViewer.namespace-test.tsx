@@ -118,6 +118,7 @@ const ProteinStructureViewerNameSpaceTest = (
 
       {/* Chain visibility, controlled */}
       <ProteinStructureViewer
+        disableChainHighlightOnHover
         hiddenChains={hiddenChains}
         onChainVisibilityChange={setHiddenChains}
         pdb={PDB}

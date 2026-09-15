@@ -555,6 +555,8 @@ export interface UseMolstarPluginOptions {
   onChainSelect?: (chainId: string) => void;
   /** Flips a chain's visibility, for the sequence panel's captions. */
   onChainToggle?: (chainId: string) => void;
+  /** Lights a chain up while its caption is pointed at; null on leave. */
+  onChainHover?: (chainId: string | null) => void;
   /** Chains the current selection covers whole. */
   selectedChains: Set<string>;
   /** What the capture button downloads, or undefined for no button. */
@@ -603,6 +605,7 @@ export function useMolstarPlugin({
   highlightColor,
   mode,
   molstarSpec,
+  onChainHover,
   onChainSelect,
   onChainToggle,
   onResidueClick,
@@ -938,6 +941,7 @@ export function useMolstarPlugin({
       download,
       hiddenChains,
       mode,
+      onChainHover,
       onChainSelect,
       onChainToggle,
       selectedChains,
@@ -948,6 +952,7 @@ export function useMolstarPlugin({
     download,
     hiddenChains,
     mode,
+    onChainHover,
     onChainSelect,
     onChainToggle,
     selectedChains,

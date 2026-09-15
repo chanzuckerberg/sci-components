@@ -136,6 +136,15 @@
   on every toggle. <code>chainColors</code> overrides the palette per chain.
 </p>
 <p>
+  Pointing at a chain's name, in the legend or above its grid in the sequence
+  panel, lights that chain's cartoon up in the 3D view. The highlight is pink
+  rather than the theme's usual hover tint, so it cannot be mistaken for the
+  chain palette, the pLDDT bands or an overlay underneath it. Keyboard focus
+  does the same, and nothing is reported to the consumer - it answers "which one
+  is this?" without changing what is selected.
+  <code>disableChainHighlightOnHover</code> turns it off.
+</p>
+<p>
   Residue indices run straight through the chain break: on the pair below,
   barnase occupies 0-109 and barstar 110-198, so <code>plddt</code> is one flat
   array over the whole complex and one <code>residueOverlay</code> map spans
@@ -538,6 +547,24 @@
         Show the chain legend, which lists each chain with its color and a
         visibility toggle. Ignored on a single-chain structure, where there is
         nothing to tell apart or hide.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disableChainHighlightOnHover</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Stop a chain from lighting up in the 3D view while its name is pointed
+        at, in the legend or above its grid in the sequence panel. Turn it off
+        where the movement is more distracting than the answer is useful.
       </p>
     </td>
   </tr>

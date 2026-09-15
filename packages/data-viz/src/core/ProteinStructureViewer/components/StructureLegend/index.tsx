@@ -72,6 +72,8 @@ export interface StructureLegendProps {
   selectedChains?: Set<string>;
   onChainToggle?: (chainId: string) => void;
   onChainSelect?: (chainId: string) => void;
+  /** Lights a chain up in the 3D view; called with null on leave. */
+  onChainHover?: (chainId: string | null) => void;
 }
 
 /** Number of stat columns, fixed so the grid tracks never move. */
@@ -128,6 +130,7 @@ export default function StructureLegend({
   chains = [],
   hiddenChains,
   hoveredResidue = null,
+  onChainHover,
   onChainSelect,
   onChainToggle,
   scale,
@@ -189,6 +192,7 @@ export default function StructureLegend({
             chainColors={chainColors}
             chains={chains}
             hiddenChains={hiddenChains ?? new Set()}
+            onChainHover={onChainHover}
             onChainSelect={onChainSelect}
             onChainToggle={onChainToggle}
             selectedChains={selectedChains}

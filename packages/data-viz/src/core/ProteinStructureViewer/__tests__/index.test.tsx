@@ -1,10 +1,20 @@
 import { Theme, defaultTheme, getSemanticColors } from "@czi-sds/components";
 import { ThemeProvider } from "@mui/material/styles";
 import { composeStories } from "@storybook/react-vite";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
+import { OrderedSet } from "molstar/lib/mol-data/int";
+import type { ElementIndex } from "molstar/lib/mol-model/structure";
 import {
   QueryContext,
   Structure,
+  StructureElement,
+  StructureProperties,
   StructureSelection,
 } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
@@ -16,6 +26,9 @@ import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
+// Imported rather than copied: which pink it is can be tuned, and a test that
+// pinned its own would fail on that alone.
+import { CHAIN_HIGHLIGHT_COLOR } from "../hooks/useChainHighlight";
 import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
@@ -93,6 +106,14 @@ function stubCamera() {
     transition: { inTransition: false },
   };
 }
+
+/**
+ * Marking colors the theme is holding when a chain highlight borrows them.
+ * Arbitrary, and distinct from the pink, so a restore is visible as a restore.
+ */
+const THEME_HIGHLIGHT_COLOR = Color.fromRgb(1, 2, 3);
+const THEME_EDGE_COLOR = Color.fromRgb(4, 5, 6);
+const THEME_HIGHLIGHT_STRENGTH = 0.2;
 
 /**
  * The two halves of a chain the load path draws, the component keys it builds
@@ -209,6 +230,18 @@ function createStubPlugin(structure?: Structure) {
     canvas3d: {
       camera: stubCamera(),
       didDraw: subscribable(),
+      /**
+       * What the chain highlight borrows and hands back. Real Mol* keeps these
+       * current as `setProps` is called; here they stay as the theme left them,
+       * which is all the restore has to find.
+       */
+      props: {
+        marking: { highlightEdgeColor: THEME_EDGE_COLOR },
+        renderer: {
+          highlightColor: THEME_HIGHLIGHT_COLOR,
+          highlightStrength: THEME_HIGHLIGHT_STRENGTH,
+        },
+      },
       requestCameraReset: vi.fn(),
       setProps: vi.fn(),
     },
@@ -218,6 +251,7 @@ function createStubPlugin(structure?: Structure) {
     loadedThemes,
     managers: {
       interactivity: {
+        lociHighlights: { clearHighlights: vi.fn(), highlightOnly: vi.fn() },
         lociSelects: { deselectAll: vi.fn(), selectOnly: vi.fn() },
       },
       lociLabels: { providers: [], removeProvider: vi.fn() },
@@ -883,6 +917,125 @@ describe("<ProteinStructureViewer />", () => {
       expect(
         plugin.builders.structure.representation.addRepresentation
       ).toHaveBeenCalledTimes(2);
+    });
+
+    /**
+     * Pointing at a chain's name lights the chain up in the 3D view, which on
+     * a complex is how you find out which half of it is which.
+     *
+     * Mol*'s marking draws it, so what is asserted is the loci handed to the
+     * highlight manager and the colors swapped in around it. Marking colors
+     * belong to the renderer rather than to the loci, so they are borrowed for
+     * the length of the hover - and the test below checks they come back.
+     */
+    describe("hovering a chain's name", () => {
+      /** The chain legend's row for a chain, which is what reports the hover. */
+      async function chainRow(label: string): Promise<HTMLElement> {
+        const name = await screen.findByRole("button", {
+          name: `Chain ${label}`,
+        });
+
+        return name.closest("div") as HTMLElement;
+      }
+
+      /** Residue indices covered by the loci the highlight was last handed. */
+      function highlightedResidues(): number[] {
+        const { calls } =
+          plugin.managers.interactivity.lociHighlights.highlightOnly.mock;
+        const { loci } = calls[calls.length - 1]?.[0] as {
+          loci: StructureElement.Loci;
+        };
+        const residues = new Set<number>();
+        const location = StructureElement.Location.create(loci.structure);
+
+        for (const element of loci.elements) {
+          location.unit = element.unit;
+
+          OrderedSet.forEach(element.indices, (i) => {
+            location.element = element.unit.elements[i] as ElementIndex;
+            residues.add(StructureProperties.residue.key(location));
+          });
+        }
+
+        return [...residues].sort((a, b) => a - b);
+      }
+
+      it("highlights that chain's polymer, in pink", async () => {
+        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+        fireEvent.mouseEnter(await chainRow("B"));
+
+        // Barstar occupies 110-198; barnase's 0-109 are left dark.
+        const residues = highlightedResidues();
+        expect(residues).toHaveLength(89);
+        expect(residues[0]).toBe(110);
+        expect(residues[residues.length - 1]).toBe(198);
+
+        expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
+          marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
+          renderer: {
+            highlightColor: CHAIN_HIGHLIGHT_COLOR,
+            highlightStrength: expect.any(Number),
+          },
+        });
+      });
+
+      it("hands the theme's colors back when the pointer leaves", async () => {
+        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+        const row = await chainRow("B");
+
+        fireEvent.mouseEnter(row);
+        fireEvent.mouseLeave(row);
+
+        expect(
+          plugin.managers.interactivity.lociHighlights.clearHighlights
+        ).toHaveBeenCalled();
+        expect(plugin.canvas3d.setProps).toHaveBeenLastCalledWith({
+          marking: { highlightEdgeColor: THEME_EDGE_COLOR },
+          renderer: {
+            highlightColor: THEME_HIGHLIGHT_COLOR,
+            highlightStrength: THEME_HIGHLIGHT_STRENGTH,
+          },
+        });
+      });
+
+      it("stays dark when disableChainHighlightOnHover is set", async () => {
+        renderViewer({
+          disableChainHighlightOnHover: true,
+          pdb: BARNASE_BARSTAR_PDB,
+        });
+        fireEvent.mouseEnter(await chainRow("B"));
+
+        expect(
+          plugin.managers.interactivity.lociHighlights.highlightOnly
+        ).not.toHaveBeenCalled();
+        expect(plugin.canvas3d.setProps).not.toHaveBeenCalledWith(
+          expect.objectContaining({
+            marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
+          })
+        );
+      });
+
+      /**
+       * Moving from one name to the next without leaving the list snapshots
+       * the theme's colors once. Taking a second would capture the pink as the
+       * color to restore, and leave the viewer stuck in it.
+       */
+      it("still hands them back after moving between two chains", async () => {
+        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+        const barstar = await chainRow("B");
+
+        fireEvent.mouseEnter(await chainRow("A"));
+        fireEvent.mouseEnter(barstar);
+        fireEvent.mouseLeave(barstar);
+
+        expect(plugin.canvas3d.setProps).toHaveBeenLastCalledWith({
+          marking: { highlightEdgeColor: THEME_EDGE_COLOR },
+          renderer: {
+            highlightColor: THEME_HIGHLIGHT_COLOR,
+            highlightStrength: THEME_HIGHLIGHT_STRENGTH,
+          },
+        });
+      });
     });
 
     it("reports the chains it found", async () => {

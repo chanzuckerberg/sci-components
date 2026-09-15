@@ -48,6 +48,7 @@ export function createSequenceView(
       (s) => s.sequenceViewerBackgroundColor
     );
     const hiddenChains = useViewSetting(viewSettings, (s) => s.hiddenChains);
+    const onChainHover = useViewSetting(viewSettings, (s) => s.onChainHover);
     const onChainSelect = useViewSetting(viewSettings, (s) => s.onChainSelect);
     const onChainToggle = useViewSetting(viewSettings, (s) => s.onChainToggle);
     const selectedChains = useViewSetting(
@@ -129,6 +130,7 @@ export function createSequenceView(
                           isHidden={hidden}
                           isSelected={selectedChains?.has(s.chainId) ?? false}
                           label={s.label}
+                          onHover={onChainHover}
                           onSelect={onChainSelect}
                           onToggle={onChainToggle}
                         />

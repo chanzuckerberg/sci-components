@@ -38,6 +38,8 @@ export interface ChainLegendProps {
   onChainToggle: (chainId: string) => void;
   /** Selects a whole chain, or clears it when it is already the selection. */
   onChainSelect: (chainId: string) => void;
+  /** Lights a chain up in the 3D view; called with null on leave. */
+  onChainHover?: (chainId: string | null) => void;
 }
 
 /**
@@ -54,6 +56,7 @@ export default function ChainLegend({
   chainColors,
   chains,
   hiddenChains,
+  onChainHover,
   onChainSelect,
   onChainToggle,
   selectedChains,
@@ -68,7 +71,18 @@ export default function ChainLegend({
         const color = chainColors?.get(chain.chainId);
 
         return (
-          <ChainRow key={chain.chainId}>
+          /*
+            The row rather than the name inside it, for the same reason as the
+            sequence panel's captions: the name is a button that a hidden chain
+            disables, and a disabled button reports no pointer leaving it.
+          */
+          <ChainRow
+            key={chain.chainId}
+            onBlur={() => onChainHover?.(null)}
+            onFocus={() => onChainHover?.(chain.chainId)}
+            onMouseEnter={() => onChainHover?.(chain.chainId)}
+            onMouseLeave={() => onChainHover?.(null)}
+          >
             {/*
               Same wording as the sequence panel's captions, since the two are
               the same affordance seen twice.

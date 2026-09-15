@@ -14,6 +14,7 @@ import { PLASMA_COLOR_SCALE } from "../../common/colorScales";
 import StructureLegend, {
   StructureLegendProps,
 } from "./components/StructureLegend";
+import { useChainHighlight } from "./hooks/useChainHighlight";
 import { useChains } from "./hooks/useChains";
 import { useMolstarPlugin } from "./hooks/useMolstarPlugin";
 import { useSelectionFocus } from "./hooks/useSelectionFocus";
@@ -134,6 +135,7 @@ const ProteinStructureViewer = forwardRef(
     const {
       backgroundColor,
       chainColors: chainColorOverrides,
+      disableChainHighlightOnHover = false,
       download,
       hiddenChains: hiddenChainsProp,
       onChainVisibilityChange,
@@ -239,6 +241,23 @@ const ProteinStructureViewer = forwardRef(
       [onSelectionChange, selection]
     );
 
+    /**
+     * Lights a chain up while its name is pointed at, in the legend or in the
+     * sequence panel's captions.
+     *
+     * Reached through a ref because the two ends need each other: lighting a
+     * chain up takes the plugin, which the hook below creates, and that hook
+     * has to be handed the callback to give the captions it renders. This one
+     * is stable and forwards to whatever the highlight hook installs once
+     * there is a plugin for it to talk to.
+     */
+    const highlightChainRef = useRef<(chainId: string | null) => void>(
+      () => undefined
+    );
+    const highlightChain = useCallback((chainId: string | null) => {
+      highlightChainRef.current(chainId);
+    }, []);
+
     // Chains arrive from the plugin once a structure is loaded, and the
     // visibility and coloring they carry are fed back into it below. The cycle
     // settles in one extra render: the first load reports the chains, and the
@@ -275,6 +294,7 @@ const ProteinStructureViewer = forwardRef(
       highlightColor,
       mode,
       molstarSpec,
+      onChainHover: highlightChain,
       onChainSelect: handleChainSelect,
       onChainToggle: toggleChain,
       onResidueClick,
@@ -286,6 +306,11 @@ const ProteinStructureViewer = forwardRef(
       sequenceViewerBackgroundColor,
       showAxes,
       showSequenceViewer,
+    });
+
+    highlightChainRef.current = useChainHighlight({
+      disabled: disableChainHighlightOnHover,
+      pluginRef,
     });
 
     // The plugin owns chain discovery, but the chain-keyed props have to be
@@ -362,6 +387,7 @@ const ProteinStructureViewer = forwardRef(
             chains={showChainLegend ? chains : []}
             hiddenChains={hiddenChains}
             hoveredResidue={hoveredReadout}
+            onChainHover={highlightChain}
             onChainSelect={handleChainSelect}
             onChainToggle={toggleChain}
             selectedChains={selectedChains}

@@ -72,6 +72,11 @@ export default {
       description:
         "Mol* plugin spec laid over the viewer's own, for settings with no prop of their own. Read once at creation, except canvas3d.",
     },
+    disableChainHighlightOnHover: {
+      control: { type: "boolean" },
+      description:
+        "Stop a chain lighting up in the 3D view while its name is pointed at, in the legend or the sequence panel.",
+    },
     showChainLegend: {
       control: { type: "boolean" },
       description:
