@@ -16,7 +16,6 @@ export const CHAIN_COLOR_PALETTE = [
   "#009E73",
   "#0072B2",
   "#E69F00",
-  "#009E73",
   "#CC79A7",
   "#56B4E9",
   "#D55E00",

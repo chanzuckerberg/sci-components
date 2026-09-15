@@ -3,6 +3,7 @@ import {
   StructureElement,
   StructureProperties,
 } from "molstar/lib/mol-model/structure";
+import { BondType } from "molstar/lib/mol-model/structure/model/types";
 import { elementLabel } from "molstar/lib/mol-theme/label";
 import { MolScriptBuilder as MS } from "molstar/lib/mol-script/language/builder";
 import type { Expression } from "molstar/lib/mol-script/language/expression";
@@ -26,8 +27,25 @@ export function chainPolymerExpression(chainId: string): Expression {
 }
 
 /**
- * The heteroatoms of one chain - ligands, ions, glycans, lipids - which are
- * what its ball-and-stick is built from.
+ * Bonds worth following out of a ligand: the ones holding it to the protein.
+ *
+ * Mol*'s own pair, and metallic coordination is the half that matters most -
+ * a heme's iron is held to its histidine by a coordination bond and not a
+ * covalent one, so covalent alone would leave every metalloprotein's cofactor
+ * looking dropped in rather than bound.
+ */
+const CONNECTING_BOND = MS.core.flags.hasAny([
+  MS.struct.bondProperty.flags(),
+  MS.core.type.bitflags([
+    // By name rather than by or-ing `BondType.Flag`, whose members are an
+    // ambient const enum that `isolatedModules` will not let us read.
+    BondType.fromNames(["covalent", "metal-coordination"]),
+  ]),
+]);
+
+/**
+ * The heteroatoms of one chain - ligands, ions, glycans, lipids - along with
+ * the residues holding them, which is what its ball-and-stick is built from.
  *
  * `non-polymer` is the one entity type a PDB's HETATM records land under,
  * ligands and ions alike, so there is nothing finer to test here: the
@@ -36,19 +54,42 @@ export function chainPolymerExpression(chainId: string): Expression {
  * style, and all three are sticks. `branched` is the separate type glycans
  * arrive as.
  *
- * Water is the third type and is left out. Every solvent molecule drawn as
- * sticks buries the structure they surround, which is why Mol* draws them at
- * 60% alpha rather than plain, and none of them is what "show the ligands"
- * asks for.
+ * Water is the third type and is left out of the seed. Every solvent molecule
+ * drawn as sticks buries the structure they surround, which is why Mol* draws
+ * them at 60% alpha rather than plain, and none of them is what "show the
+ * ligands" asks for.
+ *
+ * One layer of bonds out from there, taken as whole residues, is what brings
+ * the binding residue along - myoglobin's His93, say. Without it the heme
+ * floats unattached in the middle of a cartoon it is visibly bonded to, and
+ * the bond drawn to its iron ends in mid-air. One layer and no more: the
+ * residue that holds the ligand, not that residue's own neighbours.
+ *
+ * Intersected back with the chain, so everything a chain is drawn with belongs
+ * to that chain. A ligand bonded across an interface would otherwise leave the
+ * partner chain's residue in this chain's component, somewhere hiding the
+ * partner chain could not reach.
  */
 export function chainLigandExpression(chainId: string): Expression {
-  return MS.struct.generator.atomGroups({
-    "chain-test": MS.core.rel.eq([MS.ammp("auth_asym_id"), chainId]),
-    "entity-test": MS.core.set.has([
-      MS.set("non-polymer", "branched"),
-      MS.ammp("entityType"),
-    ]),
-  });
+  const onThisChain = MS.core.rel.eq([MS.ammp("auth_asym_id"), chainId]);
+
+  return MS.struct.modifier.union([
+    MS.struct.modifier.intersectBy({
+      0: MS.struct.modifier.includeConnected({
+        0: MS.struct.generator.atomGroups({
+          "chain-test": onThisChain,
+          "entity-test": MS.core.set.has([
+            MS.set("non-polymer", "branched"),
+            MS.ammp("entityType"),
+          ]),
+        }),
+        "as-whole-residues": true,
+        "bond-test": CONNECTING_BOND,
+        "layer-count": 1,
+      }),
+      by: MS.struct.generator.atomGroups({ "chain-test": onThisChain }),
+    }),
+  ]);
 }
 
 /**

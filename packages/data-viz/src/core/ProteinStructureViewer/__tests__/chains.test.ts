@@ -222,21 +222,57 @@ describe("chainPolymerExpression", () => {
 /**
  * Myoglobin's chain A carries both kinds of heteroatom the fix is about: HEM,
  * a ligand, and OH, an ion. Both arrive as `non-polymer`, which is the whole
- * reason one expression covers them.
+ * reason one expression covers them. His93 holds the heme's iron, which is why
+ * it comes too.
  */
 describe("chainLigandExpression", () => {
   let myoglobin: Structure;
+
+  /** Residues selected on the chain, as `name` plus the file's own number. */
+  function residuesOn(structure: Structure, chainId: string): string[] {
+    const loci = StructureSelection.toLociWithSourceUnits(
+      compile<StructureSelection>(chainLigandExpression(chainId))(
+        new QueryContext(structure)
+      )
+    );
+    const named = new Set<string>();
+    const location = StructureElement.Location.create(loci.structure);
+
+    for (const element of loci.elements) {
+      location.unit = element.unit;
+
+      OrderedSet.forEach(element.indices, (i) => {
+        location.element = element.unit.elements[i] as ElementIndex;
+        named.add(
+          `${StructureProperties.atom.label_comp_id(location)} ${StructureProperties.residue.auth_seq_id(location)}`
+        );
+      });
+    }
+
+    return [...named].sort();
+  }
 
   beforeAll(async () => {
     myoglobin = await structureFromPdb(MYOGLOBIN_PDB);
   });
 
   it("selects the ligand and the ion on the chain", () => {
-    expect(selectFrom(myoglobin, chainLigandExpression("A"))).toEqual({
+    expect(selectFrom(myoglobin, chainLigandExpression("A"))).toMatchObject({
       chains: ["A"],
-      components: ["HEM", "OH"],
-      residueCount: 2,
+      components: ["HEM", "HIS", "OH"],
     });
+  });
+
+  /**
+   * The heme is held to the protein by a coordination bond from its iron to
+   * His93. Drawing the heme alone leaves it floating in the middle of a
+   * cartoon it is visibly bonded to, with the bond ending in mid-air.
+   *
+   * One layer of bonds, so the residue holding the ligand comes and its own
+   * backbone neighbours - 92 and 94 - do not.
+   */
+  it("brings the residue holding the ligand, and no further", () => {
+    expect(residuesOn(myoglobin, "A")).toEqual(["HEM 155", "HIS 93", "OH 154"]);
   });
 
   it("selects nothing on a chain with no heteroatoms", async () => {
@@ -268,6 +304,40 @@ describe("chainLigandExpression", () => {
       components: ["ZN"],
       residueCount: 1,
     });
+  });
+
+  /**
+   * A zinc bonded to a cysteine on its own chain and a histidine on another,
+   * which is what a metal site at an interface looks like.
+   *
+   * Everything a chain is drawn with has to belong to that chain, or hiding
+   * the chain a residue sits on could not reach it. The cysteine is what keeps
+   * this honest: it proves the expansion ran at all, so the absent histidine
+   * is the chain constraint at work rather than a bond that never formed.
+   */
+  it("does not reach across a bond into another chain", async () => {
+    const bridged = await structureFromPdb(
+      [
+        "ATOM      1  N   CYS A   1      10.000  10.000  10.000  1.00  0.00           N",
+        "ATOM      2  CA  CYS A   1      11.400  10.000  10.000  1.00  0.00           C",
+        "ATOM      3  C   CYS A   1      12.000  11.400  10.000  1.00  0.00           C",
+        "ATOM      4  O   CYS A   1      13.200  11.600  10.000  1.00  0.00           O",
+        "ATOM      5  CB  CYS A   1      11.900   9.000  11.100  1.00  0.00           C",
+        "ATOM      6  SG  CYS A   1      13.700   8.900  11.200  1.00  0.00           S",
+        "ATOM      7  N   HIS B   1      20.000  20.000  20.000  1.00  0.00           N",
+        "ATOM      8  CA  HIS B   1      21.400  20.000  20.000  1.00  0.00           C",
+        "ATOM      9  C   HIS B   1      22.000  21.400  20.000  1.00  0.00           C",
+        "ATOM     10  O   HIS B   1      23.200  21.600  20.000  1.00  0.00           O",
+        "ATOM     11  CB  HIS B   1      21.900  19.000  21.100  1.00  0.00           C",
+        "ATOM     12  NE2 HIS B   1      15.500   8.900  11.200  1.00  0.00           N",
+        "HETATM   13 ZN    ZN A 101      14.000   8.900  13.500  1.00  0.00          ZN",
+        "CONECT    6   13",
+        "CONECT   12   13",
+        "CONECT   13    6   12",
+      ].join("\n")
+    );
+
+    expect(residuesOn(bridged, "A")).toEqual(["CYS 1", "ZN 101"]);
   });
 });
 

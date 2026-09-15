@@ -194,6 +194,10 @@ export const WithoutPlddt = {
  * drawn as ball-and-stick instead - here the heme in the pocket and the
  * hydroxide bound to its iron.
  *
+ * His93 comes with them. It holds the heme's iron, and drawing the heme alone
+ * leaves it floating loose in the middle of a cartoon it is bonded to; one
+ * bond out from each ligand is what shows it held.
+ *
  * They are colored by element whatever the rest of the structure is painted
  * with: orange iron, blue nitrogens, red oxygens. That is what makes a heme
  * read as a heme rather than as a flat blob in the chain's color, and neither

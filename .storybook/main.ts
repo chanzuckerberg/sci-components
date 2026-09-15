@@ -215,6 +215,7 @@ const config: StorybookConfig = {
        * (`rm -rf node_modules/.cache/storybook`); Vite will not repair it on its
        * own, since it reuses whatever it optimized last.
        */
+      "molstar/lib/mol-model/structure/model/types",
       "molstar/lib/mol-plugin-ui",
       "molstar/lib/mol-plugin-ui/react18",
       "molstar/lib/mol-plugin-ui/spec",
