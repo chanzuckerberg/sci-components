@@ -13,6 +13,7 @@
  * Chains past the end of the palette wrap around to the start.
  */
 export const CHAIN_COLOR_PALETTE = [
+  "#009E73",
   "#0072B2",
   "#E69F00",
   "#009E73",
