@@ -1,6 +1,8 @@
 // Selection is controlled, so the parent decides what a click means. Here a
 // click selects the residue and clicking it again clears it, which is what makes
-// the camera zoom in and then back out.
+// the camera zoom in and then back out. Everything the user can select - one
+// residue, a range dragged across the sequence, a whole chain - arrives through
+// the one onSelectionChange callback.
 //
 // The stats slots are replaced in place while a residue is hovered or selected,
 // so the three columns never shift. A null slot reserves its column without
@@ -8,10 +10,10 @@
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
 // polymer cartoon traces. onResidueClick hands back a ResidueRef; its `index`
-// is the 0-based position selectedResidue expects, while `chainId` and `seqId`
-// carry the numbering the file uses.
+// is the 0-based position a selection's `residues` takes, while `chainId` and
+// `seqId` carry the numbering the file uses.
 
-import { ProteinStructureViewer } from "@czi-sds/data-viz";
+import { ProteinStructureViewer, StructureSelection } from "@czi-sds/data-viz";
 import { useState } from "react";
 
 const PDB = `
@@ -210,18 +212,26 @@ const PLDDT = [
 ];
 
 function App() {
-  const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
+  const [selection, setSelection] = useState<StructureSelection | null>(null);
 
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        onResidueClick={({ index }) =>
-          setSelectedResidue((prev) => (prev === index ? null : index))
+        // Clicking the selected residue again clears it, which is what makes
+        // the camera zoom in and then back out. A drag across the sequence
+        // arrives here too, as every residue it covered.
+        onSelectionChange={(next) =>
+          setSelection((prev) =>
+            next?.residues?.length === 1 &&
+            prev?.residues?.length === 1 &&
+            next.residues[0] === prev.residues[0]
+              ? null
+              : next
+          )
         }
-        onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}
         plddt={PLDDT}
-        selectedResidue={selectedResidue}
+        selection={selection}
         stats={[
           null,
           { label: "pTM", value: "0.874" },

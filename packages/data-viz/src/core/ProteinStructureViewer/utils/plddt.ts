@@ -23,6 +23,15 @@ export const PLDDT_COLOR_SCALE: ColorScale = {
 const PLDDT_BANDS =
   PLDDT_COLOR_SCALE.kind === "stepped" ? PLDDT_COLOR_SCALE.stops : [];
 
+/**
+ * The band colors alone, ascending from least to most confident.
+ *
+ * What the chain legend shows in place of a single color while pLDDT is
+ * painting the structure: no one color stands for a chain then, so the swatch
+ * carries the whole key instead.
+ */
+export const PLDDT_BAND_COLORS = PLDDT_BANDS.map((stop) => stop.color);
+
 const DEFAULT_PLDDT_COLOR = Color.fromRgb(128, 128, 128);
 
 /**

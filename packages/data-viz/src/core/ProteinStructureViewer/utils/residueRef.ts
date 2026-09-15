@@ -1,8 +1,13 @@
+import { OrderedSet } from "molstar/lib/mol-data/int";
+import type { ElementIndex } from "molstar/lib/mol-model/structure";
 import {
   StructureElement,
   StructureProperties,
 } from "molstar/lib/mol-model/structure";
-import type { ResidueRef } from "../ProteinStructureViewer.types";
+import type {
+  ResidueRef,
+  StructureSelection,
+} from "../ProteinStructureViewer.types";
 
 /**
  * Reads the residue a loci points at, or null when it points at nothing the
@@ -31,6 +36,36 @@ export function residueRefFromLoci(
     index: StructureProperties.residue.key(firstLoc),
     seqId: StructureProperties.residue.auth_seq_id(firstLoc),
   };
+}
+
+/**
+ * Every residue a loci covers, as a selection the consumer can echo back.
+ *
+ * The counterpart to `residueRefFromLoci`, which names only the first: a drag
+ * across the sequence hands Mol* a range, and reporting its first residue
+ * alone would turn a range the user drew into a single-residue selection.
+ *
+ * Reported as residues rather than as chains even when a whole chain is
+ * covered. What the user drew is a span of residues, and calling it a chain
+ * because it happens to end where one does would change the selection's meaning
+ * on a structure where the two coincide.
+ */
+export function selectionFromLoci(
+  loci: StructureElement.Loci
+): StructureSelection {
+  const location = StructureElement.Location.create(loci.structure);
+  const residues = new Set<number>();
+
+  for (const element of loci.elements) {
+    location.unit = element.unit;
+
+    OrderedSet.forEach(element.indices, (i) => {
+      location.element = element.unit.elements[i] as ElementIndex;
+      residues.add(StructureProperties.residue.key(location));
+    });
+  }
+
+  return { residues: [...residues].sort((a, b) => a - b) };
 }
 
 /**
