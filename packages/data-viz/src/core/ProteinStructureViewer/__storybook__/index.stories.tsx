@@ -6,6 +6,7 @@ import {
   BARNASE_BARSTAR_PLDDT,
 } from "./barnaseBarstar";
 import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
+import { MYOGLOBIN_PDB } from "./myoglobin";
 import { ProteinStructureViewer } from "./stories/default";
 
 /**
@@ -51,6 +52,36 @@ export default {
       description:
         "Canvas background. Defaults to near-black in dark mode and white in light mode.",
     },
+    chainColors: {
+      control: { type: "object" },
+      description:
+        "Color per chain, by chainId. Applies only while chain coloring is what the structure is painted with, which is when neither plddt nor residueOverlay is set.",
+    },
+    hiddenChains: {
+      control: { type: "object" },
+      description:
+        "Chains hidden from the 3D view, by chainId. Omit to let the chain legend's toggles own visibility.",
+    },
+    download: {
+      control: { type: "object" },
+      description:
+        "Turns on the capture button under the reset-camera control. Takes resolution (low | medium | high | maximum), backgroundColor, showAxes and filename.",
+    },
+    molstarSpec: {
+      control: { type: "object" },
+      description:
+        "Mol* plugin spec laid over the viewer's own, for settings with no prop of their own. Read once at creation, except canvas3d.",
+    },
+    disableChainHighlightOnHover: {
+      control: { type: "boolean" },
+      description:
+        "Stop a chain lighting up in the 3D view while its name is pointed at, in the legend or the sequence panel.",
+    },
+    showChainLegend: {
+      control: { type: "boolean" },
+      description:
+        "Show the chain legend. Ignored on a single-chain structure.",
+    },
     showAxes: {
       control: { type: "boolean" },
       description:
@@ -79,6 +110,16 @@ export default {
   parameters: VIEWER_CHECKS,
   title: "Data Viz/ProteinStructureViewer",
 } as Meta;
+
+/**
+ * What an experimental entry has to report in the slots a prediction fills
+ * with confidence metrics, since it has no pLDDT to show.
+ */
+const MYOGLOBIN_STATS = [
+  { label: "Method", value: "X-ray" },
+  { label: "Resolution", value: "2.00 A" },
+  { label: "Ligands", value: "HEM, OH" },
+];
 
 /** Confidence metrics from the co-fold behind the two-chain fixture. */
 const COMPLEX_STATS = [
@@ -153,6 +194,35 @@ export const WithoutPlddt = {
 };
 
 /**
+ * Myoglobin and its heme (PDB 1MBN). A cartoon can only trace a polymer
+ * backbone, so the ligands and ions a PDB entry carries beside its protein are
+ * drawn as ball-and-stick instead - here the heme in the pocket and the
+ * hydroxide bound to its iron.
+ *
+ * His93 comes with them. It holds the heme's iron, and drawing the heme alone
+ * leaves it floating loose in the middle of a cartoon it is bonded to; one
+ * bond out from each ligand is what shows it held.
+ *
+ * They keep Mol*'s own ball-and-stick coloring whatever the rest of the
+ * structure is painted with: by element, so orange iron and blue nitrogens.
+ * That is what makes a heme read as a heme rather than as a flat blob, and
+ * neither a pLDDT score nor a residue overlay has a value for a HETATM to be
+ * colored by in the first place. Hiding the chain takes its ligands with it.
+ *
+ * Water is the one kind of heteroatom left undrawn. A structure's worth of
+ * solvent as sticks buries the structure it surrounds.
+ */
+export const WithLigands = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: MYOGLOBIN_PDB,
+    plddt: null,
+    stats: MYOGLOBIN_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
  * Only the 3D view, for a caller that supplies its own sequence panel and
  * readouts. The axes widget and its reset-camera button stay, since `showAxes`
  * controls those separately.
@@ -206,6 +276,113 @@ export const ComplexWithResidueOverlay = {
     stats: COMPLEX_STATS,
   },
   parameters: VIEWER_CHECKS,
+};
+
+/**
+ * With no pLDDT scores and no overlay, the structure is colored by chain and
+ * the legend grows a key for it: one row per chain, each with the color it was
+ * given and a toggle that hides it.
+ *
+ * Visibility is uncontrolled here, which is the default - the toggles work
+ * without the consumer holding any state. Clicking a chain's name selects the
+ * whole chain, as does clicking its caption in the sequence panel.
+ */
+export const ComplexWithChainColoring = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: null,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * Chain colors chosen by the consumer rather than taken from the palette. Only
+ * the chains named are overridden; any others keep the color they were
+ * assigned, since an override does not spend a palette slot.
+ */
+export const ComplexWithCustomChainColors = {
+  args: {
+    ...DEFAULT_ARGS,
+    chainColors: { A: "#FADC24", B: "#D0F3DF" },
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: null,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * Barstar hidden to begin with, leaving the target on its own, and the toggles
+ * live so either chain can be brought back or taken away.
+ *
+ * Visibility is controlled here - the story holds it and echoes
+ * `onChainVisibilityChange` back into `hiddenChains`, which is what a consumer
+ * driving visibility from elsewhere in its own UI does. The stories above
+ * leave it uncontrolled, where the viewer owns it and the toggles need no
+ * state on the consumer's side at all.
+ *
+ * The hidden chain stays in the sequence panel, dimmed. Removing its grid would
+ * reflow the panel every time a chain was toggled, and the sequence is still
+ * the sequence whether or not the cartoon is drawn. Hiding a chain that is
+ * selected takes its ball-and-stick with it, so nothing of it is left on the
+ * canvas.
+ */
+export const ComplexWithHiddenChain = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+  // Seeded through `render` rather than set as a `hiddenChains` arg: the prop
+  // is controlled, so a story that set it and never updated it would pin
+  // barstar hidden and leave the toggles able only to report. The story owns
+  // the state instead, the way a consumer driving visibility would, which
+  // leaves the toggles live.
+  render: (props: Args) => (
+    <ProteinStructureViewer {...props} initialHiddenChains={["B"]} />
+  ),
+};
+
+/**
+ * A capture button under the reset-camera control, which downloads the
+ * structure as a PNG.
+ *
+ * Transparent by default, since that is what a figure usually wants, and
+ * without the axes widget - it orients a reader who can turn the structure and
+ * earns its place less in a still. The image is rendered fresh at the size
+ * asked for rather than scaled up from the canvas, so it comes out as sharp as
+ * the resolution says whatever size the viewer happens to be on screen.
+ */
+export const WithImageDownload = {
+  args: {
+    ...DEFAULT_ARGS,
+    download: { filename: "crambin", resolution: "high" },
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * A whole chain selected on load. The camera frames everything the selection
+ * covers rather than approaching a point, so a chain is fitted to the view, and
+ * the readout reports the mean pLDDT across it instead of a single score.
+ */
+export const ComplexWithChainSelected = {
+  args: {
+    ...DEFAULT_ARGS,
+    pdb: BARNASE_BARSTAR_PDB,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+  },
+  parameters: VIEWER_CHECKS,
+  // Through `render` rather than `args`, since the selection the story opens
+  // on is the harness seeding its own state rather than a prop of the viewer.
+  render: (props: Args) => (
+    <ProteinStructureViewer {...props} initialSelection={{ chains: ["B"] }} />
+  ),
 };
 
 // Test

@@ -1,4 +1,8 @@
-import { Structure } from "molstar/lib/mol-model/structure";
+import {
+  Structure,
+  StructureElement,
+  StructureProperties,
+} from "molstar/lib/mol-model/structure";
 import type { StructureSelectionManager } from "molstar/lib/mol-plugin-state/manager/structure/selection";
 import { PluginStateObject as PSO } from "molstar/lib/mol-plugin-state/objects";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
@@ -23,6 +27,12 @@ export interface SequenceWrapperEntry {
   wrapper: string | SequenceWrapper.Any;
   /** Chain the entry covers, as Mol* names it. Not unique on its own. */
   label: string;
+  /**
+   * Chain as the file names it (`auth_asym_id`), which is the key the
+   * chain-level props use. Read off the structure rather than taken from
+   * `label`, which Mol* composes for display and can dress up.
+   */
+  chainId: string;
   /**
    * Identifies the entry across renders. An entry exists per entity, chain and
    * symmetry operator, so a chain with several operators contributes several
@@ -108,7 +118,39 @@ function buildParams(state: SequenceViewState) {
   };
 }
 
-/** One entry per chain, in Mol*'s entity / chain / operator order. */
+/**
+ * The file's own name for a chain group, or `""` when the structure holds no
+ * unit for it. Mol* groups its sequence panel by `chainGroupId`, but every
+ * chain-level prop on the viewer is keyed by `auth_asym_id`, so the two have
+ * to be bridged through the structure itself.
+ */
+function authAsymIdFor(structure: Structure, chainGroupId: number): string {
+  const location = StructureElement.Location.create(structure);
+
+  for (const unit of structure.units) {
+    if (unit.chainGroupId !== chainGroupId) continue;
+
+    const element = unit.elements[0];
+    if (element === undefined) continue;
+
+    StructureElement.Location.set(location, structure, unit, element);
+
+    return StructureProperties.chain.auth_asym_id(location);
+  }
+
+  return "";
+}
+
+/**
+ * One entry per polymer chain, in Mol*'s entity / chain / operator order.
+ *
+ * Polymer entities only. The heteroatoms on a chain are separate entities, and
+ * Mol* would hand back a caption and a grid for each - a myoglobin listing
+ * "Chain A" and then two more headers, both reading "Chain A_1 [auth A]", one
+ * holding the heme and one the hydroxide. They are drawn in the 3D view and
+ * they are not sequence, and a caption per ligand offers a chain toggle for
+ * something that is not a chain.
+ */
 function buildEntries(
   structure: Structure,
   selection: StructureSelectionManager,
@@ -116,7 +158,7 @@ function buildEntries(
 ): SequenceWrapperEntry[] {
   const entries: SequenceWrapperEntry[] = [];
 
-  for (const [modelEntityId] of getModelEntityOptions(structure)) {
+  for (const [modelEntityId] of getModelEntityOptions(structure, true)) {
     for (const [chainGroupId, cLabel] of getChainOptions(
       structure,
       modelEntityId
@@ -127,6 +169,7 @@ function buildEntries(
         chainGroupId
       )) {
         entries.push({
+          chainId: authAsymIdFor(structure, chainGroupId),
           id: `${modelEntityId}:${chainGroupId}:${operatorKey}`,
           // The chain alone. Mol* pairs this with an entity label for its
           // chain dropdown, which this panel does not render; for a

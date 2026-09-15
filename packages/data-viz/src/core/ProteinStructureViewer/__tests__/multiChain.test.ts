@@ -4,7 +4,7 @@ import {
   StructureElement,
   StructureProperties,
 } from "molstar/lib/mol-model/structure";
-import type { Structure } from "molstar/lib/mol-model/structure";
+import type { ElementIndex, Structure } from "molstar/lib/mol-model/structure";
 import type { SequenceWrapperEntry } from "../components/SequenceView/hooks/useSequenceWrappers";
 import { sequenceTextFromEntries } from "../components/SequenceView/utils/sequenceText";
 import { extendToRange } from "../components/SequenceView/utils/loci";
@@ -203,8 +203,8 @@ describe("sequenceTextFromEntries", () => {
 
   it("separates chains so a complex does not read as one sequence", () => {
     const entries: SequenceWrapperEntry[] = [
-      { id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
-      { id: "2:1:0", label: "B", wrapper: fakeWrapper(barstar) },
+      { chainId: "A", id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
+      { chainId: "B", id: "2:1:0", label: "B", wrapper: fakeWrapper(barstar) },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(`${barnase}|${barstar}`);
@@ -212,7 +212,7 @@ describe("sequenceTextFromEntries", () => {
 
   it("leaves a single chain unseparated", () => {
     const entries: SequenceWrapperEntry[] = [
-      { id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
+      { chainId: "A", id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
@@ -220,8 +220,13 @@ describe("sequenceTextFromEntries", () => {
 
   it("drops chains that did not resolve to a wrapper", () => {
     const entries: SequenceWrapperEntry[] = [
-      { id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
-      { id: "2:1:0", label: "B", wrapper: "No sequence available" },
+      { chainId: "A", id: "1:0:0", label: "A", wrapper: fakeWrapper(barnase) },
+      {
+        chainId: "B",
+        id: "2:1:0",
+        label: "B",
+        wrapper: "No sequence available",
+      },
     ];
 
     expect(sequenceTextFromEntries(entries)).toBe(barnase);
@@ -229,42 +234,97 @@ describe("sequenceTextFromEntries", () => {
 });
 
 /**
- * Dragging across the sequence extends the selection to a range, which is only
- * meaningful within one unit: element indices are unit-local, and the extended
- * loci is built on the anchor's unit alone. Endpoints that do not both resolve
- * to a single element of the same unit are left alone rather than collapsed
- * onto one and reinterpreted.
+ * Dragging across the sequence extends the selection to the range between its
+ * ends, measured in the viewer's own residue index - position in file order
+ * across the whole structure.
+ *
+ * Measuring it that way, rather than in the unit-local element indices Mol*
+ * hands out, is what lets a drag reach from one chain into the next: a range
+ * built on the anchor's unit alone cannot describe residues that are not in it,
+ * which is the case the target-and-binder view is for.
  */
 describe("extendToRange", () => {
   let structure: Structure;
+
+  /** Residues the extended loci covers, across however many units. */
+  const residueCount = (loci: StructureElement.Loci) =>
+    new Set(
+      loci.elements.flatMap((element) => {
+        const location = StructureElement.Location.create(structure);
+        location.unit = element.unit;
+
+        return OrderedSet.toArray(element.indices).map((i) => {
+          location.element = element.unit.elements[i] as ElementIndex;
+          return StructureProperties.residue.key(location);
+        });
+      })
+    ).size;
 
   beforeAll(async () => {
     structure = await structureFromPdb(BARNASE_BARSTAR);
   });
 
-  it("extends a drag within one unit", () => {
+  it("extends a drag within one chain", () => {
     const anchor = lociForSeqId(structure, 1);
     const extended = extendToRange(lociForSeqId(structure, 4), anchor);
 
-    expect(OrderedSet.size(extended.elements[0].indices)).toBe(4);
+    expect(residueCount(extended)).toBe(4);
   });
 
-  it("leaves a drag spanning two units unextended", () => {
-    const anchor = lociForSeqId(structure, 1);
+  it("extends a drag backwards, whichever end it started from", () => {
+    const anchor = lociForSeqId(structure, 4);
+    const extended = extendToRange(lociForSeqId(structure, 1), anchor);
+
+    expect(residueCount(extended)).toBe(4);
+  });
+
+  /**
+   * The case the old unit-local range refused. Barstar's first residue is
+   * numbered 111 but sits at index 8, right after barnase's eighth, so the
+   * span is two residues wide and lands one on each chain.
+   */
+  it("extends a drag across the chain break", () => {
+    const anchor = lociForSeqId(structure, 8);
     const other = lociForSeqId(structure, 111);
 
-    expect(anchor.elements[0].unit).not.toBe(other.elements[0].unit);
-    expect(extendToRange(other, anchor)).toBe(other);
+    expect(anchor.elements[0]?.unit).not.toBe(other.elements[0]?.unit);
+
+    const extended = extendToRange(other, anchor);
+
+    expect(residueCount(extended)).toBe(2);
+    // One entry per unit, which is what carries a range over the break; a
+    // single unit-local entry could not hold both ends.
+    expect(extended.elements.length).toBe(2);
   });
 
-  it("leaves an endpoint covering several units unextended", () => {
+  it("covers both chains fully when dragged end to end", () => {
+    const anchor = lociForSeqId(structure, 1);
+    const extended = extendToRange(lociForSeqId(structure, 118), anchor);
+
+    expect(residueCount(extended)).toBe(2 * RESIDUES_PER_CHAIN);
+  });
+
+  it("leaves a drag that released on its own anchor unextended", () => {
+    const anchor = lociForSeqId(structure, 1);
+
+    expect(extendToRange(anchor, anchor)).toBe(anchor);
+  });
+
+  /**
+   * An endpoint spanning several units is no longer refused. It stands for the
+   * point the drag reached rather than a set of its own, so the range runs to
+   * the first residue it names - and for the case this actually arises in, a
+   * chain with several symmetry operators, every copy carries the same index
+   * and so there is only one residue to name.
+   */
+  it("extends from the first residue a multi-unit endpoint names", () => {
     const anchor = lociForSeqId(structure, 1);
     const multiUnit = StructureElement.Loci(structure, [
-      ...anchor.elements,
+      ...lociForSeqId(structure, 4).elements,
       ...lociForSeqId(structure, 111).elements,
     ]);
 
-    expect(extendToRange(multiUnit, anchor)).toBe(multiUnit);
+    expect(residueCount(extendToRange(multiUnit, anchor))).toBe(4);
   });
 });
 

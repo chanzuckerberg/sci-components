@@ -516,7 +516,11 @@ export default App;
 
 ### Selection and stats
 
-Selection is controlled. Clicking a residue calls `onResidueClick` with a `ResidueRef`; echoing its `index` back through `selectedResidue` zooms the camera in on it, and setting it to `null` zooms back out. Clicking empty space fires `onSelectionClear`.
+Selection is controlled through one prop. Every way of making one - clicking a residue, dragging across the sequence, clicking a chain's caption - arrives through `onSelectionChange`; echoing it back through `selection` frames it, and setting `null` zooms back out. Clicking empty space calls `onSelectionChange` with `null`.
+
+A `StructureSelection` says what is selected in either of two ways, which combine: `residues` is a list of 0-based indices, and `chains` names whole chains by `chainId`. A drag across the sequence comes back as `residues`, a chain caption as `chains`, so a whole-chain selection survives the round trip at its original size rather than as the hundreds of indices it stands for. The camera frames whatever the selection covers, so a range or a chain is fitted to the view rather than approached as a point.
+
+`onResidueClick` and `onResidueHover` are separate, and still report a single `ResidueRef`: they describe the residue under the pointer, which is a different fact from what the selection covers. Use them for a readout that follows the cursor, and `onSelectionChange` for what the user has actually chosen.
 
 A `ResidueRef` carries the residue in each addressing scheme a caller might need. `index` is the viewer's own key, shared with `plddt` and `residueOverlay`, and counts residues in file order straight through a chain break. `chainId` and `seqId` are what the file says, which is what the sequence panel displays and what the system that produced the structure will recognise. On a single chain numbered from 1 the two agree; on a complex they do not, so map a click back onto your own numbering with `chainId` and `seqId` rather than arithmetic on `index`.
 
@@ -527,7 +531,9 @@ A `ResidueRef` carries the residue in each addressing scheme a caller might need
 ```tsx
 // Selection is controlled, so the parent decides what a click means. Here a
 // click selects the residue and clicking it again clears it, which is what makes
-// the camera zoom in and then back out.
+// the camera zoom in and then back out. Everything the user can select - one
+// residue, a range dragged across the sequence, a whole chain - arrives through
+// the one onSelectionChange callback.
 //
 // The stats slots are replaced in place while a residue is hovered or selected,
 // so the three columns never shift. A null slot reserves its column without
@@ -535,10 +541,10 @@ A `ResidueRef` carries the residue in each addressing scheme a caller might need
 //
 // The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
 // polymer cartoon traces. onResidueClick hands back a ResidueRef; its `index`
-// is the 0-based position selectedResidue expects, while `chainId` and `seqId`
-// carry the numbering the file uses.
+// is the 0-based position a selection's `residues` takes, while `chainId` and
+// `seqId` carry the numbering the file uses.
 
-import { ProteinStructureViewer } from "@czi-sds/data-viz";
+import { ProteinStructureViewer, StructureSelection } from "@czi-sds/data-viz";
 import { useState } from "react";
 
 const PDB = `
@@ -737,18 +743,26 @@ const PLDDT = [
 ];
 
 function App() {
-  const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
+  const [selection, setSelection] = useState<StructureSelection | null>(null);
 
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        onResidueClick={({ index }) =>
-          setSelectedResidue((prev) => (prev === index ? null : index))
+        // Clicking the selected residue again clears it, which is what makes
+        // the camera zoom in and then back out. A drag across the sequence
+        // arrives here too, as every residue it covered.
+        onSelectionChange={(next) =>
+          setSelection((prev) =>
+            next?.residues?.length === 1 &&
+            prev?.residues?.length === 1 &&
+            next.residues[0] === prev.residues[0]
+              ? null
+              : next
+          )
         }
-        onSelectionClear={() => setSelectedResidue(null)}
         pdb={PDB}
         plddt={PLDDT}
-        selectedResidue={selectedResidue}
+        selection={selection}
         stats={[
           null,
           { label: "pTM", value: "0.874" },
@@ -761,6 +775,331 @@ function App() {
 
 export default App;
 ```
+
+### Complexes and chains
+
+A multi-chain structure needs nothing special: pass the whole complex as one PDB string and the viewer finds the chains itself, reporting them through `onChainsChange` as `ChainRef`s. It draws one cartoon per chain, splits the sequence panel into one grid per chain, and - when neither `plddt` nor `residueOverlay` is coloring the structure - paints each chain its own color and shows a chain legend with a swatch and a visibility toggle for each.
+
+Visibility works out of the box: the toggles own it unless you pass `hiddenChains`, which takes it over and leaves the toggles reporting through `onChainVisibilityChange`. Hiding a chain removes everything it is drawn with, which also takes it out of reach of hover and click; its sequence stays in the panel, dimmed, so the panel does not reflow on every toggle. `chainColors` overrides the palette per chain.
+
+Pointing at a chain's name, in the legend or above its grid in the sequence panel, lights that chain's cartoon up in the 3D view. The highlight is pink rather than the theme's usual hover tint, so it cannot be mistaken for the chain palette, the pLDDT bands or an overlay underneath it. Keyboard focus does the same, and nothing is reported to the consumer - it answers "which one is this?" without changing what is selected. `disableChainHighlightOnHover` turns it off.
+
+Residue indices run straight through the chain break: on the pair below, barnase occupies 0-109 and barstar 110-198, so `plddt` is one flat array over the whole complex and one `residueOverlay` map spans both chains. Because a file numbers a complex however it likes - barstar here starts at residue 111, not 1 - `index` and `seqId` part company, so map a click back onto your own data with `chainId` and `seqId` rather than arithmetic on `index`.
+
+**Example: MultiChainProteinStructureViewer**
+
+```tsx
+import {
+  ChainRef,
+  ProteinStructureViewer,
+  StructureSelection,
+} from "@czi-sds/data-viz";
+import { useState } from "react";
+
+// A two-chain complex: barnase (chain A) with barstar (chain B) bound to it,
+// which is the shape a designed binder arrives in alongside its target. The
+// whole complex goes in as one `pdb` string; the viewer finds the chains and
+// draws one cartoon per chain.
+//
+// Trimmed to the first 30 residues of each chain and to backbone atoms, which
+// is all the cartoon traces. Barstar keeps the numbering the fold gave it, so
+// it starts at residue 111 rather than 1 - which is why `index` and `seqId`
+// below disagree, and why a click is mapped back by chain and number rather
+// than by arithmetic on the index.
+
+const PDB = `ATOM      1  N   ALA A   1      10.151  -4.550 -26.005  1.00 64.66           N
+ATOM      2  CA  ALA A   1      10.557  -5.651 -25.144  1.00 64.66           C
+ATOM      3  C   ALA A   1      11.399  -5.213 -23.958  1.00 64.66           C
+ATOM      5  O   ALA A   1      11.427  -5.910 -22.944  1.00 64.66           O
+ATOM      6  N   GLN A   2      12.088  -4.083 -24.085  1.00 70.39           N
+ATOM      7  CA  GLN A   2      12.911  -3.660 -22.963  1.00 70.39           C
+ATOM      8  C   GLN A   2      12.041  -3.265 -21.774  1.00 70.39           C
+ATOM     10  O   GLN A   2      10.946  -2.731 -21.927  1.00 70.39           O
+ATOM     15  N   VAL A   3      12.549  -3.566 -20.593  1.00 93.28           N
+ATOM     16  CA  VAL A   3      11.857  -3.233 -19.358  1.00 93.28           C
+ATOM     17  C   VAL A   3      12.031  -1.740 -19.078  1.00 93.28           C
+ATOM     19  O   VAL A   3      13.148  -1.219 -19.131  1.00 93.28           O
+ATOM     22  N   ILE A   4      10.926  -1.072 -18.786  1.00 97.47           N
+ATOM     23  CA  ILE A   4      10.944   0.340 -18.413  1.00 97.47           C
+ATOM     24  C   ILE A   4      10.462   0.421 -16.972  1.00 97.47           C
+ATOM     26  O   ILE A   4       9.279   0.206 -16.698  1.00 97.47           O
+ATOM     30  N   ASN A   5      11.389   0.707 -16.047  1.00 96.44           N
+ATOM     31  CA  ASN A   5      11.042   0.676 -14.623  1.00 96.44           C
+ATOM     32  C   ASN A   5      11.755   1.741 -13.787  1.00 96.44           C
+ATOM     34  O   ASN A   5      11.818   1.616 -12.561  1.00 96.44           O
+ATOM     38  N   THR A   6      12.276   2.773 -14.438  1.00 98.24           N
+ATOM     39  CA  THR A   6      12.919   3.868 -13.722  1.00 98.24           C
+ATOM     40  C   THR A   6      11.962   5.044 -13.586  1.00 98.24           C
+ATOM     42  O   THR A   6      10.980   5.142 -14.331  1.00 98.24           O
+ATOM     45  N   PHE A   7      12.250   5.947 -12.653  1.00 98.78           N
+ATOM     46  CA  PHE A   7      11.375   7.106 -12.480  1.00 98.78           C
+ATOM     47  C   PHE A   7      11.222   7.904 -13.769  1.00 98.78           C
+ATOM     49  O   PHE A   7      10.099   8.178 -14.200  1.00 98.78           O
+ATOM     56  N   ASP A   8      12.334   8.261 -14.406  1.00 96.85           N
+ATOM     57  CA  ASP A   8      12.223   9.076 -15.611  1.00 96.85           C
+ATOM     58  C   ASP A   8      11.624   8.302 -16.775  1.00 96.85           C
+ATOM     60  O   ASP A   8      10.836   8.848 -17.545  1.00 96.85           O
+ATOM     64  N   GLY A   9      12.003   7.028 -16.913  1.00 98.36           N
+ATOM     65  CA  GLY A   9      11.479   6.235 -18.014  1.00 98.36           C
+ATOM     66  C   GLY A   9       9.983   6.036 -17.925  1.00 98.36           C
+ATOM     67  O   GLY A   9       9.259   6.199 -18.914  1.00 98.36           O
+ATOM     68  N   VAL A  10       9.491   5.685 -16.739  1.00 98.66           N
+ATOM     69  CA  VAL A  10       8.062   5.459 -16.570  1.00 98.66           C
+ATOM     70  C   VAL A  10       7.296   6.774 -16.654  1.00 98.66           C
+ATOM     72  O   VAL A  10       6.214   6.828 -17.243  1.00 98.66           O
+ATOM     75  N   ALA A  11       7.850   7.848 -16.086  1.00 98.65           N
+ATOM     76  CA  ALA A  11       7.172   9.142 -16.164  1.00 98.65           C
+ATOM     77  C   ALA A  11       6.997   9.583 -17.615  1.00 98.65           C
+ATOM     79  O   ALA A  11       5.914  10.030 -18.013  1.00 98.65           O
+ATOM     80  N   ASP A  12       8.052   9.455 -18.412  1.00 97.01           N
+ATOM     81  CA  ASP A  12       7.959   9.850 -19.812  1.00 97.01           C
+ATOM     82  C   ASP A  12       6.993   8.962 -20.581  1.00 97.01           C
+ATOM     84  O   ASP A  12       6.225   9.439 -21.416  1.00 97.01           O
+ATOM     88  N   TYR A  13       7.010   7.662 -20.292  1.00 98.01           N
+ATOM     89  CA  TYR A  13       6.101   6.732 -20.953  1.00 98.01           C
+ATOM     90  C   TYR A  13       4.651   7.063 -20.631  1.00 98.01           C
+ATOM     92  O   TYR A  13       3.789   7.081 -21.516  1.00 98.01           O
+ATOM    100  N   LEU A  14       4.372   7.337 -19.358  1.00 98.22           N
+ATOM    101  CA  LEU A  14       3.014   7.681 -18.945  1.00 98.22           C
+ATOM    102  C   LEU A  14       2.513   8.936 -19.642  1.00 98.22           C
+ATOM    104  O   LEU A  14       1.368   8.989 -20.094  1.00 98.22           O
+ATOM    108  N   GLN A  15       3.361   9.954 -19.735  1.00 94.14           N
+ATOM    109  CA  GLN A  15       2.906  11.196 -20.345  1.00 94.14           C
+ATOM    110  C   GLN A  15       2.743  11.061 -21.854  1.00 94.14           C
+ATOM    112  O   GLN A  15       1.882  11.716 -22.444  1.00 94.14           O
+ATOM    117  N   THR A  16       3.536  10.200 -22.475  1.00 97.66           N
+ATOM    118  CA  THR A  16       3.440   9.982 -23.912  1.00 97.66           C
+ATOM    119  C   THR A  16       2.263   9.080 -24.279  1.00 97.66           C
+ATOM    121  O   THR A  16       1.525   9.373 -25.226  1.00 97.66           O
+ATOM    124  N   TYR A  17       2.075   7.986 -23.543  1.00 96.97           N
+ATOM    125  CA  TYR A  17       1.113   6.961 -23.925  1.00 96.97           C
+ATOM    126  C   TYR A  17      -0.106   6.847 -23.013  1.00 96.97           C
+ATOM    128  O   TYR A  17      -1.034   6.094 -23.323  1.00 96.97           O
+ATOM    136  N   HIS A  18      -0.121   7.568 -21.908  1.00 94.46           N
+ATOM    137  CA  HIS A  18      -1.243   7.540 -20.964  1.00 94.46           C
+ATOM    138  C   HIS A  18      -1.567   6.131 -20.456  1.00 94.46           C
+ATOM    140  O   HIS A  18      -2.728   5.790 -20.203  1.00 94.46           O
+ATOM    146  N   LYS A  19      -0.529   5.334 -20.307  1.00 94.34           N
+ATOM    147  CA  LYS A  19      -0.635   4.015 -19.690  1.00 94.34           C
+ATOM    148  C   LYS A  19       0.755   3.570 -19.265  1.00 94.34           C
+ATOM    150  O   LYS A  19       1.758   4.129 -19.713  1.00 94.34           O
+ATOM    155  N   LEU A  20       0.799   2.578 -18.389  1.00 97.87           N
+ATOM    156  CA  LEU A  20       2.092   2.042 -17.954  1.00 97.87           C
+ATOM    157  C   LEU A  20       2.709   1.156 -19.038  1.00 97.87           C
+ATOM    159  O   LEU A  20       1.993   0.579 -19.860  1.00 97.87           O
+ATOM    163  N   PRO A  21       4.032   1.033 -19.042  1.00 97.78           N
+ATOM    164  CA  PRO A  21       4.687   0.065 -19.908  1.00 97.78           C
+ATOM    165  C   PRO A  21       4.165  -1.354 -19.674  1.00 97.78           C
+ATOM    167  O   PRO A  21       3.638  -1.663 -18.603  1.00 97.78           O
+ATOM    170  N   ASP A  22       4.352  -2.226 -20.664  1.00 93.06           N
+ATOM    171  CA  ASP A  22       3.815  -3.582 -20.614  1.00 93.06           C
+ATOM    172  C   ASP A  22       4.414  -4.464 -19.522  1.00 93.06           C
+ATOM    174  O   ASP A  22       3.885  -5.540 -19.247  1.00 93.06           O
+ATOM    178  N   ASN A  23       5.507  -4.032 -18.893  1.00 97.00           N
+ATOM    179  CA  ASN A  23       6.107  -4.817 -17.815  1.00 97.00           C
+ATOM    180  C   ASN A  23       5.436  -4.612 -16.456  1.00 97.00           C
+ATOM    182  O   ASN A  23       5.962  -5.073 -15.440  1.00 97.00           O
+ATOM    186  N   TYR A  24       4.274  -3.954 -16.421  1.00 98.70           N
+ATOM    187  CA  TYR A  24       3.540  -3.744 -15.180  1.00 98.70           C
+ATOM    188  C   TYR A  24       2.279  -4.588 -15.121  1.00 98.70           C
+ATOM    190  O   TYR A  24       1.556  -4.722 -16.105  1.00 98.70           O
+ATOM    198  N   ILE A  25       2.016  -5.160 -13.947  1.00 98.11           N
+ATOM    199  CA  ILE A  25       0.749  -5.836 -13.656  1.00 98.11           C
+ATOM    200  C   ILE A  25       0.226  -5.340 -12.312  1.00 98.11           C
+ATOM    202  O   ILE A  25       1.000  -4.916 -11.446  1.00 98.11           O
+ATOM    206  N   THR A  26      -1.087  -5.381 -12.135  1.00 98.67           N
+ATOM    207  CA  THR A  26      -1.684  -4.951 -10.871  1.00 98.67           C
+ATOM    208  C   THR A  26      -1.485  -6.015  -9.801  1.00 98.67           C
+ATOM    210  O   THR A  26      -1.120  -7.163 -10.089  1.00 98.67           O
+ATOM    213  N   LYS A  27      -1.757  -5.626  -8.547  1.00 98.16           N
+ATOM    214  CA  LYS A  27      -1.654  -6.595  -7.456  1.00 98.16           C
+ATOM    215  C   LYS A  27      -2.592  -7.781  -7.658  1.00 98.16           C
+ATOM    217  O   LYS A  27      -2.207  -8.926  -7.412  1.00 98.16           O
+ATOM    222  N   SER A  28      -3.826  -7.524  -8.114  1.00 95.62           N
+ATOM    223  CA  SER A  28      -4.746  -8.639  -8.319  1.00 95.62           C
+ATOM    224  C   SER A  28      -4.305  -9.529  -9.477  1.00 95.62           C
+ATOM    226  O   SER A  28      -4.444 -10.760  -9.401  1.00 95.62           O
+ATOM    228  N   GLU A  29      -3.758  -8.942 -10.539  1.00 96.81           N
+ATOM    229  CA  GLU A  29      -3.233  -9.750 -11.636  1.00 96.81           C
+ATOM    230  C   GLU A  29      -2.055 -10.602 -11.170  1.00 96.81           C
+ATOM    232  O   GLU A  29      -1.929 -11.773 -11.545  1.00 96.81           O
+ATOM    237  N   ALA A  30      -1.181 -10.019 -10.334  1.00 98.84           N
+ATOM    238  CA  ALA A  30      -0.053 -10.772  -9.803  1.00 98.84           C
+ATOM    239  C   ALA A  30      -0.525 -11.930  -8.924  1.00 98.84           C
+ATOM    241  O   ALA A  30      -0.003 -13.046  -9.009  1.00 98.84           O
+ATOM    878  N   LYS B 111      -1.055 -15.650  11.547  1.00 86.96           N
+ATOM    879  CA  LYS B 111      -0.309 -14.525  12.101  1.00 86.96           C
+ATOM    880  C   LYS B 111      -1.172 -13.701  13.036  1.00 86.96           C
+ATOM    882  O   LYS B 111      -2.288 -13.295  12.671  1.00 86.96           O
+ATOM    887  N   LYS B 112      -0.694 -13.464  14.235  1.00 89.37           N
+ATOM    888  CA  LYS B 112      -1.419 -12.667  15.214  1.00 89.37           C
+ATOM    889  C   LYS B 112      -0.656 -11.401  15.548  1.00 89.37           C
+ATOM    891  O   LYS B 112       0.526 -11.443  15.868  1.00 89.37           O
+ATOM    896  N   ALA B 113      -1.330 -10.284  15.435  1.00 97.89           N
+ATOM    897  CA  ALA B 113      -0.757  -8.987  15.777  1.00 97.89           C
+ATOM    898  C   ALA B 113      -1.562  -8.387  16.919  1.00 97.89           C
+ATOM    900  O   ALA B 113      -2.790  -8.360  16.874  1.00 97.89           O
+ATOM    901  N   VAL B 114      -0.884  -7.911  17.958  1.00 97.10           N
+ATOM    902  CA  VAL B 114      -1.548  -7.368  19.145  1.00 97.10           C
+ATOM    903  C   VAL B 114      -1.153  -5.911  19.325  1.00 97.10           C
+ATOM    905  O   VAL B 114       0.032  -5.572  19.327  1.00 97.10           O
+ATOM    908  N   ILE B 115      -2.169  -5.056  19.466  1.00 97.42           N
+ATOM    909  CA  ILE B 115      -1.947  -3.662  19.806  1.00 97.42           C
+ATOM    910  C   ILE B 115      -2.532  -3.444  21.190  1.00 97.42           C
+ATOM    912  O   ILE B 115      -3.726  -3.640  21.401  1.00 97.42           O
+ATOM    916  N   ASN B 116      -1.689  -3.046  22.152  1.00 92.64           N
+ATOM    917  CA  ASN B 116      -2.154  -2.675  23.482  1.00 92.64           C
+ATOM    918  C   ASN B 116      -2.377  -1.166  23.489  1.00 92.64           C
+ATOM    920  O   ASN B 116      -1.441  -0.390  23.669  1.00 92.64           O
+ATOM    924  N   GLY B 117      -3.627  -0.755  23.256  1.00 95.12           N
+ATOM    925  CA  GLY B 117      -3.936   0.644  23.032  1.00 95.12           C
+ATOM    926  C   GLY B 117      -3.578   1.583  24.173  1.00 95.12           C
+ATOM    927  O   GLY B 117      -3.297   2.756  23.933  1.00 95.12           O
+ATOM    928  N   GLU B 118      -3.564   1.077  25.394  1.00 83.80           N
+ATOM    929  CA  GLU B 118      -3.211   1.942  26.519  1.00 83.80           C
+ATOM    930  C   GLU B 118      -1.731   2.317  26.531  1.00 83.80           C
+ATOM    932  O   GLU B 118      -1.347   3.274  27.193  1.00 83.80           O
+ATOM    937  N   GLN B 119      -0.911   1.575  25.786  1.00 87.67           N
+ATOM    938  CA  GLN B 119       0.519   1.861  25.701  1.00 87.67           C
+ATOM    939  C   GLN B 119       0.876   2.748  24.513  1.00 87.67           C
+ATOM    941  O   GLN B 119       2.036   3.135  24.357  1.00 87.67           O
+ATOM    946  N   ILE B 120      -0.099   3.073  23.694  1.00 93.44           N
+ATOM    947  CA  ILE B 120       0.149   3.883  22.500  1.00 93.44           C
+ATOM    948  C   ILE B 120       0.075   5.357  22.897  1.00 93.44           C
+ATOM    950  O   ILE B 120      -0.967   5.839  23.325  1.00 93.44           O
+ATOM    954  N   ARG B 121       1.182   6.064  22.757  1.00 76.49           N
+ATOM    955  CA  ARG B 121       1.251   7.456  23.189  1.00 76.49           C
+ATOM    956  C   ARG B 121       1.065   8.462  22.053  1.00 76.49           C
+ATOM    958  O   ARG B 121       0.861   9.654  22.296  1.00 76.49           O
+ATOM    965  N   SER B 122       1.172   8.002  20.836  1.00 96.69           N
+ATOM    966  CA  SER B 122       1.099   8.881  19.680  1.00 96.69           C
+ATOM    967  C   SER B 122       0.821   8.066  18.432  1.00 96.69           C
+ATOM    969  O   SER B 122       0.913   6.827  18.443  1.00 96.69           O
+ATOM    971  N   ILE B 123       0.494   8.755  17.332  1.00 95.51           N
+ATOM    972  CA  ILE B 123       0.304   8.045  16.072  1.00 95.51           C
+ATOM    973  C   ILE B 123       1.605   7.390  15.610  1.00 95.51           C
+ATOM    975  O   ILE B 123       1.595   6.310  15.017  1.00 95.51           O
+ATOM    979  N   SER B 124       2.745   8.021  15.915  1.00 95.35           N
+ATOM    980  CA  SER B 124       4.039   7.409  15.600  1.00 95.35           C
+ATOM    981  C   SER B 124       4.237   6.102  16.375  1.00 95.35           C
+ATOM    983  O   SER B 124       4.694   5.106  15.812  1.00 95.35           O
+ATOM    985  N   ASP B 125       3.876   6.102  17.659  1.00 92.95           N
+ATOM    986  CA  ASP B 125       3.952   4.865  18.444  1.00 92.95           C
+ATOM    987  C   ASP B 125       3.098   3.764  17.831  1.00 92.95           C
+ATOM    989  O   ASP B 125       3.497   2.601  17.805  1.00 92.95           O
+ATOM    993  N   LEU B 126       1.913   4.126  17.353  1.00 97.36           N
+ATOM    994  CA  LEU B 126       1.032   3.137  16.746  1.00 97.36           C
+ATOM    995  C   LEU B 126       1.670   2.517  15.509  1.00 97.36           C
+ATOM    997  O   LEU B 126       1.669   1.298  15.341  1.00 97.36           O
+ATOM   1001  N   HIS B 127       2.226   3.348  14.628  1.00 97.51           N
+ATOM   1002  CA  HIS B 127       2.875   2.816  13.436  1.00 97.51           C
+ATOM   1003  C   HIS B 127       4.103   1.975  13.779  1.00 97.51           C
+ATOM   1005  O   HIS B 127       4.370   0.972  13.116  1.00 97.51           O
+ATOM   1011  N   GLN B 128       4.853   2.366  14.814  1.00 89.84           N
+ATOM   1012  CA  GLN B 128       6.000   1.566  15.226  1.00 89.84           C
+ATOM   1013  C   GLN B 128       5.566   0.209  15.774  1.00 89.84           C
+ATOM   1015  O   GLN B 128       6.215  -0.810  15.522  1.00 89.84           O
+ATOM   1020  N   THR B 129       4.452   0.180  16.500  1.00 97.60           N
+ATOM   1021  CA  THR B 129       3.900  -1.085  16.983  1.00 97.60           C
+ATOM   1022  C   THR B 129       3.462  -1.960  15.814  1.00 97.60           C
+ATOM   1024  O   THR B 129       3.722  -3.162  15.787  1.00 97.60           O
+ATOM   1027  N   LEU B 130       2.809  -1.360  14.822  1.00 98.12           N
+ATOM   1028  CA  LEU B 130       2.401  -2.108  13.634  1.00 98.12           C
+ATOM   1029  C   LEU B 130       3.608  -2.660  12.887  1.00 98.12           C
+ATOM   1031  O   LEU B 130       3.582  -3.796  12.408  1.00 98.12           O
+ATOM   1035  N   LYS B 131       4.657  -1.867  12.770  1.00 97.23           N
+ATOM   1036  CA  LYS B 131       5.866  -2.328  12.090  1.00 97.23           C
+ATOM   1037  C   LYS B 131       6.394  -3.601  12.737  1.00 97.23           C
+ATOM   1039  O   LYS B 131       6.725  -4.570  12.048  1.00 97.23           O
+ATOM   1044  N   LYS B 132       6.448  -3.607  14.069  1.00 87.21           N
+ATOM   1045  CA  LYS B 132       6.933  -4.777  14.798  1.00 87.21           C
+ATOM   1046  C   LYS B 132       5.957  -5.949  14.698  1.00 87.21           C
+ATOM   1048  O   LYS B 132       6.351  -7.068  14.352  1.00 87.21           O
+ATOM   1053  N   GLU B 133       4.677  -5.706  14.986  1.00 96.98           N
+ATOM   1054  CA  GLU B 133       3.706  -6.791  15.072  1.00 96.98           C
+ATOM   1055  C   GLU B 133       3.405  -7.441  13.727  1.00 96.98           C
+ATOM   1057  O   GLU B 133       3.113  -8.636  13.667  1.00 96.98           O
+ATOM   1062  N   LEU B 134       3.482  -6.675  12.648  1.00 97.91           N
+ATOM   1063  CA  LEU B 134       3.208  -7.201  11.309  1.00 97.91           C
+ATOM   1064  C   LEU B 134       4.485  -7.560  10.549  1.00 97.91           C
+ATOM   1066  O   LEU B 134       4.409  -7.941   9.382  1.00 97.91           O
+ATOM   1070  N   ALA B 135       5.634  -7.435  11.199  1.00 98.37           N
+ATOM   1071  CA  ALA B 135       6.927  -7.728  10.583  1.00 98.37           C
+ATOM   1072  C   ALA B 135       7.119  -6.952   9.281  1.00 98.37           C
+ATOM   1074  O   ALA B 135       7.461  -7.521   8.239  1.00 98.37           O
+ATOM   1075  N   LEU B 136       6.862  -5.650   9.339  1.00 98.10           N
+ATOM   1076  CA  LEU B 136       6.971  -4.803   8.163  1.00 98.10           C
+ATOM   1077  C   LEU B 136       8.440  -4.533   7.836  1.00 98.10           C
+ATOM   1079  O   LEU B 136       9.316  -4.705   8.689  1.00 98.10           O
+ATOM   1083  N   PRO B 137       8.718  -4.102   6.609  1.00 98.48           N
+ATOM   1084  CA  PRO B 137      10.109  -3.865   6.234  1.00 98.48           C
+ATOM   1085  C   PRO B 137      10.711  -2.703   7.019  1.00 98.48           C
+ATOM   1087  O   PRO B 137       9.986  -1.840   7.523  1.00 98.48           O
+ATOM   1090  N   GLU B 138      12.037  -2.682   7.095  1.00 86.32           N
+ATOM   1091  CA  GLU B 138      12.701  -1.585   7.784  1.00 86.32           C
+ATOM   1092  C   GLU B 138      12.356  -0.227   7.193  1.00 86.32           C
+ATOM   1094  O   GLU B 138      12.357   0.780   7.897  1.00 86.32           O
+ATOM   1099  N   TYR B 139      12.025  -0.183   5.908  1.00 98.34           N
+ATOM   1100  CA  TYR B 139      11.708   1.077   5.242  1.00 98.34           C
+ATOM   1101  C   TYR B 139      10.268   1.552   5.461  1.00 98.34           C
+ATOM   1103  O   TYR B 139       9.893   2.604   4.939  1.00 98.34           O
+ATOM   1111  N   TYR B 140       9.478   0.819   6.219  1.00 98.87           N
+ATOM   1112  CA  TYR B 140       8.058   1.144   6.390  1.00 98.87           C
+ATOM   1113  C   TYR B 140       7.864   2.639   6.651  1.00 98.87           C
+ATOM   1115  O   TYR B 140       8.484   3.211   7.546  1.00 98.87           O`;
+
+// One score per residue, flat across both chains: barnase takes 0-29 and
+// barstar 30-59, with no slot spent on the chain break.
+const PLDDT = [
+  0.647, 0.704, 0.933, 0.975, 0.964, 0.982, 0.988, 0.969, 0.984, 0.987, 0.987,
+  0.97, 0.98, 0.982, 0.941, 0.977, 0.97, 0.945, 0.943, 0.979, 0.978, 0.931,
+  0.97, 0.987, 0.981, 0.987, 0.982, 0.956, 0.968, 0.988, 0.87, 0.894, 0.979,
+  0.971, 0.974, 0.926, 0.951, 0.838, 0.877, 0.934, 0.765, 0.967, 0.955, 0.954,
+  0.929, 0.974, 0.975, 0.898, 0.976, 0.981, 0.972, 0.872, 0.97, 0.979, 0.984,
+  0.981, 0.985, 0.863, 0.983, 0.989,
+];
+
+export default function App(): JSX.Element {
+  const [selection, setSelection] = useState<StructureSelection | null>(null);
+  const [chains, setChains] = useState<ChainRef[]>([]);
+
+  return (
+    <div style={{ height: 520, width: "100%" }}>
+      <ProteinStructureViewer
+        onChainsChange={setChains}
+        // Every way of selecting - a residue, a drag across the sequence, a
+        // chain caption - arrives here, so accepting them all is one line.
+        onSelectionChange={setSelection}
+        onResidueClick={(residue) =>
+          // chainId and seqId are what the file says, and what a system that
+          // produced the structure will recognise.
+          console.log(residue.chainId, residue.seqId, residue.index)
+        }
+        pdb={PDB}
+        plddt={PLDDT}
+        selection={selection}
+        stats={[
+          { label: "Chains", value: String(chains.length) },
+          { label: "Interface pTM", value: "0.968" },
+          { label: "Mean pLDDT", value: "0.961" },
+        ]}
+      />
+    </div>
+  );
+}
+```
+
+### Ligands and ions
+
+Whatever a PDB entry carries besides its protein - ligands, ions, glycans, lipids - is drawn as ball-and-stick alongside the cartoon, with no prop to turn on. A cartoon traces a polymer backbone and a heme has none, so the two halves of a chain need two representations between them.
+
+The residue holding a ligand is drawn as sticks too, one bond out, which is what makes the ligand look bound rather than dropped in. Myoglobin's heme is held by His93, and without it the heme floats loose in the middle of a cartoon it is visibly bonded to. Covalent and metallic-coordination bonds both count - the heme's iron is held by the latter - and only the residue that holds the ligand comes, not that residue's own neighbours.
+
+Heteroatoms keep Mol\*'s own ball-and-stick coloring whatever the rest of the structure is painted with - by element, so orange iron and blue nitrogens. That is what makes a heme read as a heme rather than as a shape in one flat color, and `plddt` and `residueOverlay` have no value for a HETATM to be colored by in any case.
+
+They belong to the chain they sit on, so hiding that chain takes them with it and selecting the chain covers them. They are not sequence, though: the sequence panel does not caption them, they are absent from the residue counts, and `ChainRef` describes only the chain's polymer. A ligand that a file gives a chain of its own is drawn, but reported as no chain at all, since there is no sequence to report.
+
+Bulk water is the exception, and is not drawn. A structure's worth of solvent rendered as sticks buries the structure it surrounds.
 
 ### Structure only
 
@@ -1008,25 +1347,116 @@ The viewer reads the active SDS theme for its hover and selection colors and for
 
 The two accept different formats. Mol\* needs the canvas color as a concrete `#RRGGBB` value, so `backgroundColor` is limited to hex. The sequence panel is styled with CSS, so `sequenceViewerBackgroundColor` takes any CSS color. It paints the panel, the fade that masks residues scrolling under the header, and the "no structure available" state, so the panel stays one color throughout.
 
+## Downloading an image
+
+Passing `download` adds a capture button beneath the reset-camera control, which downloads the structure as it currently stands as a PNG. Omit the prop and no button is drawn.
+
+**React TypeScript**
+
+```tsx
+<ProteinStructureViewer
+  pdb={PDB}
+  download={{ resolution: "high", filename: "barnase-barstar" }}
+/>
+```
+
+The image is rendered in its own pass at the size asked for rather than scaled up from the canvas, so it comes out as sharp as the resolution says whatever size the viewer happens to be on screen - and a large one costs time rather than sharpness, which is why the default sits in the middle.
+
+| Name              | Type                                       | Default         | Description                                                                                                                                                                                                                                                    |
+| ----------------- | ------------------------------------------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolution`      | `"low" \| "medium" \| "high" \| "maximum"` | `"medium"`      | 1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as `DOWNLOAD_RESOLUTIONS`, for labelling a control of your own.                                                                                                                       |
+| `backgroundColor` | `string`                                   | - (transparent) | Background behind the structure, as `#RRGGBB`. Omit for a transparent one, which is what a figure usually wants. The viewer's own canvas color is deliberately not inherited, since an image tends to outlive the theme it was captured under.                 |
+| `showAxes`        | `boolean`                                  | `false`         | Draw the orientation axes into the image. Independent of the viewer's own `showAxes`: the widget orients a reader who can turn the structure, and earns its place less in a still, so it can be on screen without being in the capture or the other way about. |
+| `filename`        | `string`                                   | -               | Name for the file, without an extension. Defaults to the one Mol\* derives from the loaded structure.                                                                                                                                                          |
+
+## Configuring Mol\*
+
+The viewer is built on [Mol\*](https://molstar.org/), and the props above cover the settings a structure view usually needs. Everything else Mol* can be told is reachable through `molstarSpec`, which takes a [`PluginUISpec`](https://molstar.org/docs/plugin/spec/) and lays it over the one the viewer builds. There is no prop here per Mol* setting, and none needs to be added for one.
+
+Anything named in it wins, and anything left out keeps the viewer's default. So a single nested setting can be changed without disturbing its siblings:
+
+**React TypeScript**
+
+```tsx
+import { PluginConfig } from "molstar/lib/mol-plugin/config";
+
+<ProteinStructureViewer
+  pdb={PDB}
+  molstarSpec={{
+    canvas3d: {
+      // Slow the trackball down, leaving the rest of it alone.
+      trackball: { rotateSpeed: 2 },
+      // Stop tinting geometry on hover; the viewer's marking colors stay.
+      renderer: { colorMarker: false },
+    },
+    // Bring back a control the viewer hides.
+    config: [[PluginConfig.Viewport.ShowControls, true]],
+  }}
+/>;
+```
+
+Mol* is a peer dependency, so its types and its `PluginConfig` items are imported from Mol* itself rather than from this package. Note that `canvas3d` is only shallowly partial: its top-level groups may be given in part, but a setting Mol\* models as a named choice - such as `postprocessing.occlusion` - has to be supplied whole, with both its `name` and its `params`.
+
+The full set of settings is documented by Mol* rather than here, since it is Mol*'s surface and moves with Mol\*'s versions:
+
+- [Plugin spec](https://molstar.org/docs/plugin/spec/) - `behaviors`, `actions`, `animations`, `customFormats`, `layout`, and the `components` Mol\* renders.
+- [Canvas3D props](https://molstar.org/docs/plugin/canvas3d/) - `renderer`, `camera`, `postprocessing`, `trackball`, `marking`, and lighting.
+- [Plugin config](https://molstar.org/docs/plugin/config/) - the `PluginConfig` items the `config` list takes.
+
+Two things to know about how it is applied. List-valued keys - `behaviors`, `config`, `actions`, `animations`, `customFormats`, `customParamEditors` - are appended to rather than replaced. For `config` that is what makes an override work, since Mol* reads the list in order and a later entry wins. It also means a behavior cannot be taken away: the viewer removes Mol*'s click-to-zoom camera so that `selection` alone drives the camera, and that stays removed.
+
+And it is read once, when the plugin is created - except for `canvas3d`, which is re-applied whenever it changes. Creating the plugin throws away the camera, so the rest is deliberately not reactive; pass a `key` to remount the viewer if you need to change it.
+
 ## Props
 
 The viewer spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
 
-| Name                            | Type                          | Default      | Description                                                                                                                                                                                                            |
-| ------------------------------- | ----------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pdb`                           | `string`                      | - (required) | The structure to render, as raw PDB text.                                                                                                                                                                              |
-| `plddt`                         | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence. |
-| `residueOverlay`                | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                  |
-| `selectedResidue`               | `number \| null`              | `null`       | 0-based index of the selected residue. Controlled: setting it zooms the camera in on that residue, and clearing it zooms back out.                                                                                     |
-| `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                             |
-| `backgroundColor`               | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                |
-| `sequenceViewerBackgroundColor` | `string`                      | -            | Sequence panel background, as any CSS color. Defaults to the SDS theme's primary surface, so the panel follows the surrounding page in both modes.                                                                     |
-| `showAxes`                      | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                          |
-| `showSequenceViewer`            | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                         |
-| `showLegend`                    | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                          |
-| `onResidueClick`                | `function`                    | -            | `(residue: ResidueRef) => void`. Called with the clicked residue: `index` (0-based, across the whole structure, and what `selectedResidue` takes), `compId`, `chainId`, `seqId` and `insCode`.                         |
-| `onResidueHover`                | `function`                    | -            | `(residue: ResidueRef \| null) => void`. Called as the pointer moves over residues, and with `null` when it leaves the structure.                                                                                      |
-| `onSelectionClear`              | `function`                    | -            | `() => void`. Called when the user clicks empty space, clearing the selection.                                                                                                                                         |
+| Name                            | Type                          | Default      | Description                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------- | ----------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pdb`                           | `string`                      | - (required) | The structure to render, as raw PDB text.                                                                                                                                                                                                                                                                                                    |
+| `plddt`                         | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence.                                                                                                                       |
+| `residueOverlay`                | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                                                                                                                                        |
+| `selection`                     | `StructureSelection \| null`  | `null`       | What is selected. Controlled: the camera frames whatever it covers, and clearing it zooms back out. See the table below for its shape.                                                                                                                                                                                                       |
+| `hiddenChains`                  | `string[]`                    | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                              |
+| `chainColors`                   | `Record<string, string>`      | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen, which is when neither `plddt` nor `residueOverlay` is set.                                                                                                                           |
+| `showChainLegend`               | `boolean`                     | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                     |
+| `disableChainHighlightOnHover`  | `boolean`                     | `false`      | Stop a chain from lighting up in the 3D view while its name is pointed at, in the legend or above its grid in the sequence panel. Turn it off where the movement is more distracting than the answer is useful.                                                                                                                              |
+| `download`                      | `StructureDownload \| null`   | -            | Adds a capture button beneath the reset-camera control, which downloads a PNG of the structure. Omit for no button. See _Downloading an image_ above.                                                                                                                                                                                        |
+| `molstarSpec`                   | `Partial<PluginUISpec>`       | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                          |
+| `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                   |
+| `backgroundColor`               | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                                                                                                                                      |
+| `sequenceViewerBackgroundColor` | `string`                      | -            | Sequence panel background, as any CSS color. Defaults to the SDS theme's primary surface, so the panel follows the surrounding page in both modes.                                                                                                                                                                                           |
+| `showAxes`                      | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                                                                                                                                                |
+| `showSequenceViewer`            | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                                                                                                                                               |
+| `showLegend`                    | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                                                                                                                                                |
+| `onResidueClick`                | `function`                    | -            | `(residue: ResidueRef) => void`. Called with the residue under the pointer: `index` (0-based, across the whole structure), `compId`, `chainId`, `seqId` and `insCode`. What the click _selected_ comes through `onSelectionChange`, which a drag makes a range.                                                                              |
+| `onResidueHover`                | `function`                    | -            | `(residue: ResidueRef \| null) => void`. Called as the pointer moves over residues, and with `null` when it leaves the structure.                                                                                                                                                                                                            |
+| `onSelectionChange`             | `function`                    | -            | `(selection: StructureSelection \| null) => void`. Called with the new selection whenever the user makes one - clicking a residue, dragging across the sequence, clicking a chain caption - and with `null` when they click empty space to clear it. A whole-chain selection arrives as `{ chains: [id] }` rather than as every index on it. |
+| `onChainsChange`                | `function`                    | -            | `(chains: ChainRef[]) => void`. Called with the chains found in the structure, whenever a structure is loaded. Fires with `[]` when the structure holds none.                                                                                                                                                                                |
+| `onChainVisibilityChange`       | `function`                    | -            | `(hiddenChains: string[]) => void`. Called with the chains now hidden when a visibility toggle is used. Fires whether or not `hiddenChains` is controlled, so a consumer can follow the viewer's own state without owning it.                                                                                                                |
+
+### StructureSelection
+
+What is selected, in the two ways a caller might say it. The two combine: `{ chains: ["A"], residues: [150] }` takes all of chain A plus one residue elsewhere. Both fields are optional; `null` in place of the whole object selects nothing.
+
+| Name       | Type       | Default | Description                                                                                                                                                                                                          |
+| ---------- | ---------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `residues` | `number[]` | -       | 0-based residue indices, counting residues in file order across the whole structure - the same index `plddt` and `residueOverlay` are keyed by.                                                                      |
+| `chains`   | `string[]` | -       | Whole chains by `chainId`, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size. |
+
+### ChainRef
+
+A chain the viewer found in the structure it loaded, reported through `onChainsChange`. `chainId` is the file's own name for the chain, the same one `ResidueRef` reports, and the key every chain-keyed prop takes. A chain carrying several symmetry operators appears once, under the first.
+
+It describes the chain's polymer. The ligands and ions sitting on the chain are drawn, and are hidden and selected along with it, but are not counted here or spanned by its range - they are no part of the sequence. A chain holding nothing but heteroatoms is left out altogether, having no sequence to describe, though it is still drawn.
+
+| Name           | Type     | Default      | Description                                              |
+| -------------- | -------- | ------------ | -------------------------------------------------------- |
+| `chainId`      | `string` | - (required) | Chain as named in the file (`auth_asym_id`), e.g. `"A"`. |
+| `label`        | `string` | - (required) | Chain as the sequence panel captions it.                 |
+| `startIndex`   | `number` | - (required) | Lowest 0-based residue index of the chain's polymer.     |
+| `endIndex`     | `number` | - (required) | Highest 0-based residue index of the chain's polymer.    |
+| `residueCount` | `number` | - (required) | Polymer residues the chain holds.                        |
 
 ### ResidueValueOverlay
 

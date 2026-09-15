@@ -23,7 +23,14 @@ export function useViewSetting<T>(
   // still correct if the settings changed between the first render and this
   // effect. `useSubscribe` reads the handler through a ref, so the fresh
   // selector closure on each render does not rebuild the subscription.
-  useSubscribe(settings, (next) => setValue(select(next)));
+  //
+  // Stored through an updater rather than passed directly, because a setting
+  // can be a callback: React reads a function handed to a setter as an updater
+  // and calls it with the previous value. Passing the selected value straight
+  // in would therefore invoke the setting instead of storing it. Returning it
+  // from an updater stores it whatever its type, and the equality bailout
+  // still applies.
+  useSubscribe(settings, (next) => setValue(() => select(next)));
 
   return value;
 }
