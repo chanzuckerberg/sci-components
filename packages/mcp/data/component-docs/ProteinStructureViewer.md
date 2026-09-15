@@ -780,7 +780,9 @@ export default App;
 
 A multi-chain structure needs nothing special: pass the whole complex as one PDB string and the viewer finds the chains itself, reporting them through `onChainsChange` as `ChainRef`s. It draws one cartoon per chain, splits the sequence panel into one grid per chain, and - when neither `plddt` nor `residueOverlay` is coloring the structure - paints each chain its own color and shows a chain legend with a swatch and a visibility toggle for each.
 
-Visibility works out of the box: the toggles own it unless you pass `hiddenChains`, which takes it over and leaves the toggles reporting through `onChainVisibilityChange`. Hiding a chain removes its cartoon, which also takes it out of reach of hover and click; its sequence stays in the panel, dimmed, so the panel does not reflow on every toggle. `chainColors` overrides the palette per chain.
+Visibility works out of the box: the toggles own it unless you pass `hiddenChains`, which takes it over and leaves the toggles reporting through `onChainVisibilityChange`. Hiding a chain removes everything it is drawn with, which also takes it out of reach of hover and click; its sequence stays in the panel, dimmed, so the panel does not reflow on every toggle. `chainColors` overrides the palette per chain.
+
+Pointing at a chain's name, in the legend or above its grid in the sequence panel, lights that chain's cartoon up in the 3D view. The highlight is pink rather than the theme's usual hover tint, so it cannot be mistaken for the chain palette, the pLDDT bands or an overlay underneath it. Keyboard focus does the same, and nothing is reported to the consumer - it answers "which one is this?" without changing what is selected. `disableChainHighlightOnHover` turns it off.
 
 Residue indices run straight through the chain break: on the pair below, barnase occupies 0-109 and barstar 110-198, so `plddt` is one flat array over the whole complex and one `residueOverlay` map spans both chains. Because a file numbers a complex however it likes - barstar here starts at residue 111, not 1 - `index` and `seqId` part company, so map a click back onto your own data with `chainId` and `seqId` rather than arithmetic on `index`.
 
@@ -1087,6 +1089,18 @@ export default function App(): JSX.Element {
 }
 ```
 
+### Ligands and ions
+
+Whatever a PDB entry carries besides its protein - ligands, ions, glycans, lipids - is drawn as ball-and-stick alongside the cartoon, with no prop to turn on. A cartoon traces a polymer backbone and a heme has none, so the two halves of a chain need two representations between them.
+
+The residue holding a ligand is drawn as sticks too, one bond out, which is what makes the ligand look bound rather than dropped in. Myoglobin's heme is held by His93, and without it the heme floats loose in the middle of a cartoon it is visibly bonded to. Covalent and metallic-coordination bonds both count - the heme's iron is held by the latter - and only the residue that holds the ligand comes, not that residue's own neighbours.
+
+Heteroatoms keep Mol\*'s own ball-and-stick coloring whatever the rest of the structure is painted with - by element, so orange iron and blue nitrogens. That is what makes a heme read as a heme rather than as a shape in one flat color, and `plddt` and `residueOverlay` have no value for a HETATM to be colored by in any case.
+
+They belong to the chain they sit on, so hiding that chain takes them with it and selecting the chain covers them. They are not sequence, though: the sequence panel does not caption them, they are absent from the residue counts, and `ChainRef` describes only the chain's polymer. A ligand that a file gives a chain of its own is drawn, but reported as no chain at all, since there is no sequence to report.
+
+Bulk water is the exception, and is not drawn. A structure's worth of solvent rendered as sticks buries the structure it surrounds.
+
 ### Structure only
 
 Three props hide the chrome layered around the 3D view. `showSequenceViewer` drops the sequence panel, `showLegend` drops the stats and the color key, and `showAxes` drops the orientation widget and its reset-camera button. Turn off all three when the surrounding page supplies its own controls.
@@ -1337,7 +1351,9 @@ The two accept different formats. Mol\* needs the canvas color as a concrete `#R
 
 Passing `download` adds a capture button beneath the reset-camera control, which downloads the structure as it currently stands as a PNG. Omit the prop and no button is drawn.
 
-```
+**React TypeScript**
+
+```tsx
 <ProteinStructureViewer
   pdb={PDB}
   download={{ resolution: "high", filename: "barnase-barstar" }}
@@ -1404,6 +1420,7 @@ The viewer spreads any remaining props onto its root div, so standard HTML attri
 | `hiddenChains`                  | `string[]`                    | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                              |
 | `chainColors`                   | `Record<string, string>`      | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen, which is when neither `plddt` nor `residueOverlay` is set.                                                                                                                           |
 | `showChainLegend`               | `boolean`                     | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                     |
+| `disableChainHighlightOnHover`  | `boolean`                     | `false`      | Stop a chain from lighting up in the 3D view while its name is pointed at, in the legend or above its grid in the sequence panel. Turn it off where the movement is more distracting than the answer is useful.                                                                                                                              |
 | `download`                      | `StructureDownload \| null`   | -            | Adds a capture button beneath the reset-camera control, which downloads a PNG of the structure. Omit for no button. See _Downloading an image_ above.                                                                                                                                                                                        |
 | `molstarSpec`                   | `Partial<PluginUISpec>`       | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                          |
 | `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                   |
@@ -1431,13 +1448,15 @@ What is selected, in the two ways a caller might say it. The two combine: `{ cha
 
 A chain the viewer found in the structure it loaded, reported through `onChainsChange`. `chainId` is the file's own name for the chain, the same one `ResidueRef` reports, and the key every chain-keyed prop takes. A chain carrying several symmetry operators appears once, under the first.
 
+It describes the chain's polymer. The ligands and ions sitting on the chain are drawn, and are hidden and selected along with it, but are not counted here or spanned by its range - they are no part of the sequence. A chain holding nothing but heteroatoms is left out altogether, having no sequence to describe, though it is still drawn.
+
 | Name           | Type     | Default      | Description                                              |
 | -------------- | -------- | ------------ | -------------------------------------------------------- |
 | `chainId`      | `string` | - (required) | Chain as named in the file (`auth_asym_id`), e.g. `"A"`. |
 | `label`        | `string` | - (required) | Chain as the sequence panel captions it.                 |
-| `startIndex`   | `number` | - (required) | Lowest 0-based residue index on the chain.               |
-| `endIndex`     | `number` | - (required) | Highest 0-based residue index on the chain.              |
-| `residueCount` | `number` | - (required) | Residues the chain holds.                                |
+| `startIndex`   | `number` | - (required) | Lowest 0-based residue index of the chain's polymer.     |
+| `endIndex`     | `number` | - (required) | Highest 0-based residue index of the chain's polymer.    |
+| `residueCount` | `number` | - (required) | Polymer residues the chain holds.                        |
 
 ### ResidueValueOverlay
 

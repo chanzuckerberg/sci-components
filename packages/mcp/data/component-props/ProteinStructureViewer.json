@@ -26,6 +26,12 @@
         "isRequired": false,
         "type": "Partial<PluginUISpec>"
       },
+      "disableChainHighlightOnHover": {
+        "defaultValue": false,
+        "description": "Stop a chain from lighting up in the 3D view while its name is pointed at,\nin the legend or above its grid in the sequence panel.\n\nThe highlight is on by default, since on a complex it is how a reader\nfinds out which chain is which. Turn it off where the movement is more\ndistracting than the answer is useful - a grid of viewers a pointer\ncrosses on its way somewhere else, or a page driving its own highlighting\nthrough `selection`.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "showChainLegend": {
         "defaultValue": true,
         "description": "Show the chain legend, which lists each chain with its color and a\nvisibility toggle. Ignored on a single-chain structure, where there is\nnothing to tell apart or hide.",
@@ -136,19 +142,19 @@
       },
       "startIndex": {
         "defaultValue": "- (required)",
-        "description": "Lowest 0-based residue index on the chain.",
+        "description": "Lowest 0-based residue index of the chain's polymer.",
         "isRequired": false,
         "type": "number"
       },
       "endIndex": {
         "defaultValue": "- (required)",
-        "description": "Highest 0-based residue index on the chain.",
+        "description": "Highest 0-based residue index of the chain's polymer.",
         "isRequired": false,
         "type": "number"
       },
       "residueCount": {
         "defaultValue": "- (required)",
-        "description": "Residues the chain holds.",
+        "description": "Polymer residues the chain holds.",
         "isRequired": false,
         "type": "number"
       },
