@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { OrderedSet } from "molstar/lib/mol-data/int";
 import {
   QueryContext,
