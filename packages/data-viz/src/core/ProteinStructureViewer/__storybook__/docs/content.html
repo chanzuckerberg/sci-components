@@ -165,11 +165,11 @@
   ligand comes, not that residue's own neighbours.
 </p>
 <p>
-  Heteroatoms are colored by element whatever the rest of the structure is
-  painted with: orange iron, blue nitrogens, red oxygens, grey carbons. That is
-  what makes a heme read as a heme rather than as a shape in the chain's color,
-  and <code>plddt</code> and <code>residueOverlay</code> have no value for a
-  HETATM to be colored by in any case.
+  Heteroatoms keep Mol*'s own ball-and-stick coloring whatever the rest of the
+  structure is painted with - by element, so orange iron and blue nitrogens.
+  That is what makes a heme read as a heme rather than as a shape in one flat
+  color, and <code>plddt</code> and <code>residueOverlay</code> have no value
+  for a HETATM to be colored by in any case.
 </p>
 <p>
   They belong to the chain they sit on, so hiding that chain takes them with it

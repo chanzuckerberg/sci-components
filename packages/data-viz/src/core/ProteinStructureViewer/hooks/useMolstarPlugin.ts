@@ -13,8 +13,6 @@ import { PluginConfig, PluginConfigItem } from "molstar/lib/mol-plugin/config";
 import { Representation } from "molstar/lib/mol-repr/representation";
 import type { Expression } from "molstar/lib/mol-script/language/expression";
 import type { StateObjectSelector } from "molstar/lib/mol-state";
-import type { ColorTheme } from "molstar/lib/mol-theme/color";
-import type { SizeTheme } from "molstar/lib/mol-theme/size";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
@@ -300,36 +298,40 @@ function representationTypeParams(plugin: PluginUIContext) {
 }
 
 /**
- * The two halves of a chain the viewer draws, which are also the prefixes of
- * the component keys they are built under - what `applyColorTheme` reads back
- * to tell one from the other, and what tags the representation over each.
+ * The two halves of a chain the viewer draws. Each names the component its
+ * half is built under and tags the representation drawn over it, and it is
+ * that tag `applyColorTheme` reads back to tell the two apart.
  */
 const POLYMER_PART = "polymer";
 const LIGAND_PART = "ligand";
 
-/** True for a component holding heteroatoms rather than polymer. */
-function isLigandComponent(component: { key?: string }): boolean {
-  return component.key?.startsWith(`${LIGAND_PART}-`) === true;
+/**
+ * True for the representation drawing a chain's heteroatoms.
+ *
+ * Read off the tag put on the representation when it was built, rather than
+ * off the component's key. Mol* does not store the key as it was given: it
+ * files components under `structure-component-<key>`, so a test against the
+ * key as written here silently matches nothing, and every ligand quietly takes
+ * the structure-wide theme instead. The tag survives untouched.
+ */
+function isLigandRepresentation(representation: {
+  cell: { transform: { tags?: readonly string[] } };
+}): boolean {
+  return representation.cell.transform.tags?.includes(LIGAND_PART) === true;
 }
 
 /**
- * How heteroatoms are colored: by element, with grey carbons.
+ * How heteroatoms are colored: the theme Mol* puts on a ball-and-stick when
+ * left to itself, with the parameters it chooses too.
  *
- * Pinned rather than left to the structure-wide theme the props ask for, for
- * two reasons. A heme reads as a heme because its iron is orange and its
- * nitrogens are blue, and a flat chain color throws that away. And pLDDT and
- * residue overlays have no value for a HETATM at all, so sharing their theme
- * would color a ligand by a score it does not have.
- *
- * The explicit `carbonColor` is what makes the carbons grey. Mol* defaults it
- * to `chain-id`, which would draw them from its own palette rather than this
- * viewer's - near enough the chain's color to look like a bug, never equal to
- * it, and meaningless under pLDDT.
+ * Named rather than left blank only so that it survives `applyColorTheme`,
+ * which would otherwise repaint the ligands along with everything else. The
+ * structure-wide theme is the wrong answer for them twice over: a heme reads
+ * as a heme because its iron is orange and its nitrogens are blue, which one
+ * flat color throws away, and pLDDT and residue overlays have no value for a
+ * HETATM to be colored by at all.
  */
 const ELEMENT_THEME = "element-symbol";
-const ELEMENT_THEME_PARAMS: ColorTheme.BuiltInParams<typeof ELEMENT_THEME> = {
-  carbonColor: { name: "element-symbol", params: {} },
-};
 
 type StructureSelector =
   StateObjectSelector<PluginStateObject.Molecule.Structure>;
@@ -386,7 +388,6 @@ async function buildChainComponents(
 
   await addPart(LIGAND_PART, chainLigandExpression(chain.chainId), {
     color: ELEMENT_THEME,
-    colorParams: ELEMENT_THEME_PARAMS,
     type: "ball-and-stick",
     typeParams,
   });
@@ -509,7 +510,7 @@ function applyChainVisibility(
 
 /**
  * Recolors every loaded structure's representations with the named theme,
- * leaving the heteroatoms on element colors (see `ELEMENT_THEME_PARAMS`).
+ * leaving the heteroatoms on `ELEMENT_THEME`.
  *
  * The per-representation form of `updateRepresentationsTheme`, so the two can
  * be told apart in one pass; handing it a filtered list instead would leave
@@ -521,16 +522,15 @@ export async function applyColorTheme(
 ): Promise<void> {
   await plugin.dataTransaction(async () => {
     for (const s of plugin.managers.structure.hierarchy.current.structures) {
-      // Pinned to the element theme's generic, since it is the only one whose
-      // params are named here. The other name rides in as a cast, which is
-      // what Mol* asks of a theme it does not ship (see UpdateThemeParams).
-      await plugin.managers.structure.component.updateRepresentationsTheme<
-        typeof ELEMENT_THEME,
-        SizeTheme.BuiltIn
-      >(s.components, (component) =>
-        isLigandComponent(component)
-          ? { color: ELEMENT_THEME, colorParams: ELEMENT_THEME_PARAMS }
-          : { color: colorTheme as typeof ELEMENT_THEME }
+      await plugin.managers.structure.component.updateRepresentationsTheme(
+        s.components,
+        (_component, representation) => ({
+          // `colorTheme` is not one of Mol*'s built-in names, which is what the
+          // cast is for; Mol* resolves any registered name at runtime.
+          color: (isLigandRepresentation(representation)
+            ? ELEMENT_THEME
+            : colorTheme) as never,
+        })
       );
     }
   });

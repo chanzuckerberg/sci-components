@@ -198,11 +198,11 @@ export const WithoutPlddt = {
  * leaves it floating loose in the middle of a cartoon it is bonded to; one
  * bond out from each ligand is what shows it held.
  *
- * They are colored by element whatever the rest of the structure is painted
- * with: orange iron, blue nitrogens, red oxygens. That is what makes a heme
- * read as a heme rather than as a flat blob in the chain's color, and neither
- * a pLDDT score nor a residue overlay has a value for a HETATM to be colored
- * by in the first place. Hiding the chain takes its ligands with it.
+ * They keep Mol*'s own ball-and-stick coloring whatever the rest of the
+ * structure is painted with: by element, so orange iron and blue nitrogens.
+ * That is what makes a heme read as a heme rather than as a flat blob, and
+ * neither a pLDDT score nor a residue overlay has a value for a HETATM to be
+ * colored by in the first place. Hiding the chain takes its ligands with it.
  *
  * Water is the one kind of heteroatom left undrawn. A structure's worth of
  * solvent as sticks buries the structure it surrounds.
@@ -300,7 +300,7 @@ export const ComplexWithChainColoring = {
 export const ComplexWithCustomChainColors = {
   args: {
     ...DEFAULT_ARGS,
-    chainColors: { A: "#8C5AE8", B: "#1FA37B" },
+    chainColors: { A: "#FADC24", B: "#D0F3DF" },
     pdb: BARNASE_BARSTAR_PDB,
     plddt: null,
     stats: COMPLEX_STATS,

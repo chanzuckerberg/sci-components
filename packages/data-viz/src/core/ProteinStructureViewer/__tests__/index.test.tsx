@@ -95,12 +95,32 @@ function stubCamera() {
 }
 
 /**
- * Component keys the load path builds for chain A - one for its polymer, one
- * for the heteroatoms sitting on it - and how the stub refs a component.
+ * The two halves of a chain the load path draws, the component keys it builds
+ * for chain A from them, and how the stub refs a component.
  */
-const POLYMER_A = "polymer-A";
-const LIGAND_A = "ligand-A";
+const POLYMER_PART = "polymer";
+const LIGAND_PART = "ligand";
+const POLYMER_A = `${POLYMER_PART}-A`;
+const LIGAND_A = `${LIGAND_PART}-A`;
 const componentRef = (key: string) => `component-${key}`;
+
+/**
+ * A component and one of its representations, shaped the way Mol* hands them
+ * to a theme callback.
+ *
+ * The shapes are the point. Mol* files a component under
+ * `structure-component-<key>` rather than under the key it was given, so a
+ * stub that passed the key as written would let a check against that key pass
+ * here while matching nothing in a browser - which is exactly how every ligand
+ * came to be painted with the structure-wide theme. The tag on the
+ * representation is what the viewer reads instead, so it is what this carries.
+ */
+function themeCallbackArgs(part: string) {
+  return [
+    { key: `structure-component-${part}-A` },
+    { cell: { transform: { tags: [part] } } },
+  ] as const;
+}
 
 /**
  * `structure` is the parsed structure the viewer would be holding. Passing a
@@ -215,15 +235,19 @@ function createStubPlugin(structure?: Structure) {
           /**
            * The viewer passes the per-representation form, so that the
            * heteroatoms can stay on element colors while the polymer takes
-           * whatever the props asked for. Called with a polymer component
-           * here, which is the theme the tests are about.
+           * whatever the props asked for. Asked here for the polymer, which is
+           * the theme the tests around this are about.
            */
           updateRepresentationsTheme: vi.fn(
             async (
               _components: unknown,
-              params: (component: { key: string }) => { color: string }
+              params: (...args: ReturnType<typeof themeCallbackArgs>) => {
+                color: string;
+              }
             ) => {
-              loadedThemes.push(params({ key: POLYMER_A }).color);
+              loadedThemes.push(
+                params(...themeCallbackArgs(POLYMER_PART)).color
+              );
             }
           ),
         },
@@ -1287,15 +1311,15 @@ describe("<ProteinStructureViewer />", () => {
       "HETATM    3 ZN    ZN B 101      20.000  10.000  10.000  1.00  0.00          ZN",
     ].join("\n");
 
-    /** The theme the last recolor chose for a given component. */
-    function themeFor(key: string): string {
+    /** The theme the last recolor chose for one half of a chain. */
+    function themeFor(part: string): string {
       const { calls } =
         plugin.managers.structure.component.updateRepresentationsTheme.mock;
-      const params = calls[calls.length - 1]?.[1] as (c: { key: string }) => {
-        color: string;
-      };
+      const params = calls[calls.length - 1]?.[1] as (
+        ...args: ReturnType<typeof themeCallbackArgs>
+      ) => { color: string };
 
-      return params({ key }).color;
+      return params(...themeCallbackArgs(part)).color;
     }
 
     beforeEach(async () => {
@@ -1324,8 +1348,8 @@ describe("<ProteinStructureViewer />", () => {
       renderViewer({ pdb: MYOGLOBIN_PDB, plddt: [0.94] });
 
       await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
-      expect(themeFor(POLYMER_A)).toBe(PLDDT_THEME);
-      expect(themeFor(LIGAND_A)).toBe("element-symbol");
+      expect(themeFor(POLYMER_PART)).toBe(PLDDT_THEME);
+      expect(themeFor(LIGAND_PART)).toBe("element-symbol");
     });
 
     /**
