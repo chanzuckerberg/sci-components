@@ -1,7 +1,10 @@
 import {
+  Button,
   CommonThemeProps,
   fontBodyMediumXxs,
+  fontBodySemiboldXxxxs,
   fontBodyXxxs,
+  fontBodyXxxxs,
   fontBodyXxs,
   fontCodeXs,
   getCorners,
@@ -16,23 +19,37 @@ import { withAlpha } from "./utils/palette";
  * Layout scaffolding for the track.
  *
  * The plot itself is a canvas, so there is very little to style here: a
- * positioned root, a gutter for row labels, and the DOM overlay that carries
- * text the canvas should not own. Text lives in the DOM rather than on the
- * canvas wherever it can, because canvas text is invisible to find-in-page,
- * unselectable, and does not scale with a user's font settings.
+ * positioned root, the section names layered above their rows, and the DOM
+ * overlay that carries text the canvas should not own. Text lives in the DOM
+ * rather than on the canvas wherever it can, because canvas text is invisible
+ * to find-in-page, unselectable, and does not scale with a user's font
+ * settings.
  */
 
 interface DensityProps extends CommonThemeProps {
   density: "comfortable" | "compact";
 }
 
-interface GutterProps extends DensityProps {
-  labelWidth: number;
-}
-
 interface PlotProps extends CommonThemeProps {
   interactive: boolean;
   isDragging: boolean;
+}
+
+interface FeatureLabelProps extends CommonThemeProps {
+  /** Whether this trace is the selected one. */
+  selected: boolean;
+}
+
+interface RowLabelProps extends CommonThemeProps {
+  /**
+   * Whether to rule off the section above.
+   *
+   * False for the first section, which has nothing above it to be separated
+   * from, and for the minimap, which draws on the chromosome rather than the
+   * shared axis — a rule would imply it belongs to the same coordinate space
+   * as whatever precedes it.
+   */
+  withSeparator: boolean;
 }
 
 export const TrackRoot = styled("div")`
@@ -68,8 +85,21 @@ export const TrackHeader = styled("div")`
   }}
 `;
 
+/**
+ * Gene, organism, and the selected feature's name.
+ *
+ * Truncates rather than wraps. A feature name runs to forty characters, so with
+ * one selected this line can outgrow the header — and wrapping would reflow the
+ * coordinate readout beside it, which is the one piece of text on screen a user
+ * copies out. `min-width: 0` is what lets it shrink at all inside the flex
+ * header; without it the ellipsis never engages.
+ */
 export const TrackHeaderTitle = styled("span")`
   font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const TrackHeaderRange = styled("span")`
@@ -85,9 +115,9 @@ export const TrackHeaderRange = styled("span")`
 `;
 
 /**
- * Row that holds the label gutter beside the canvas.
+ * Row that holds the canvas and the controls layered over it.
  *
- * Positioned so that controls layered over the plot can anchor to it. They
+ * Positioned so that those controls can anchor to it. They
  * cannot live inside the plot: it carries `role="img"`, and an interactive
  * descendant of an image role is invalid — assistive technology may not expose
  * the control at all. The plot's right edge is this element's right edge, since
@@ -100,34 +130,43 @@ export const TrackBody = styled("div")`
 `;
 
 /**
- * Row labels down the left edge.
+ * A section's name, on its own line above the rows it labels.
  *
- * Absolutely positioned inside a fixed-width column rather than laid out as a
- * flex column, so the labels line up with canvas rows whose y offsets the
- * layout pass computed — one source of truth for row position, rather than two
- * that agree until a row height changes.
+ * Absolutely positioned against the y offset the layout pass reserved for it,
+ * rather than laid out in flow: the rows it names are bands inside one canvas,
+ * so there is nothing for a flowed label to sit next to. One source of truth
+ * for row position, rather than two that agree until a row height changes.
+ *
+ * The separator above it is what makes the name read as belonging to what
+ * follows rather than to what precedes it. Without a rule the labels float
+ * between two sections and attach to the wrong one.
  */
-export const TrackGutter = styled("div")`
-  position: relative;
-  flex: 0 0 auto;
-
-  ${(props: GutterProps) => `width: ${props.labelWidth}px;`}
-`;
-
-export const TrackGutterLabel = styled("div")`
-  ${fontBodyXxxs}
+export const TrackRowLabel = styled("div")`
+  ${fontBodySemiboldXxxxs}
 
   position: absolute;
   left: 0;
-  right: 8px;
+  right: 0;
+  display: flex;
+  /* Centred in the band, so the gap to the rule above and to the row below are
+     the same. Every section's band is the same height, which is what makes
+     that gap identical across sections rather than merely tidy within one. */
+  align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  ${(props: CommonThemeProps) => {
+  ${(props: RowLabelProps) => {
     const semanticColors = getSemanticColors(props);
 
-    return `color: ${semanticColors?.base?.textTertiary};`;
+    return `
+      color: ${semanticColors?.base?.textTertiary};
+      ${
+        props.withSeparator
+          ? `border-top: 1px solid ${semanticColors?.base?.divider};`
+          : ""
+      }
+    `;
   }}
 `;
 
@@ -165,15 +204,13 @@ export const TrackPlot = styled("div")`
 /**
  * A feature's name, sitting above its bars inside the plot area.
  *
- * The only row label that is not in the gutter, because it cannot be: feature
- * names run to forty characters against a gutter of ninety-six pixels. It is
+ * The one label that does not sit on a section's header line, because there is
+ * one per trace and only one header. It is
  * `aria-hidden` and pointer-transparent — the accessible table already names
  * every feature it draws, and a label that swallowed pointer events would
  * punch a hole in the row's hover.
  */
 export const TrackFeatureLabel = styled("div")`
-  ${fontBodyXxxs}
-
   position: absolute;
   left: 0;
   right: 0;
@@ -182,10 +219,21 @@ export const TrackFeatureLabel = styled("div")`
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  ${(props: CommonThemeProps) => {
+  /* Semibold and primary when the trace is the selected one, which is what
+     marks the row whose activation the minimap is drawing. The rows are
+     otherwise identical, so without this nothing on the stack says which was
+     clicked — the header names it, but not where it is. */
+  ${(props: FeatureLabelProps) =>
+    props.selected ? fontBodySemiboldXxxxs(props) : fontBodyXxxxs(props)}
+
+  ${(props: FeatureLabelProps) => {
     const semanticColors = getSemanticColors(props);
 
-    return `color: ${semanticColors?.base?.textPrimary};`;
+    return `color: ${
+      props.selected
+        ? semanticColors?.base?.textPrimary
+        : semanticColors?.base?.textSecondary
+    };`;
   }}
 `;
 
@@ -200,8 +248,145 @@ export const TrackSequenceCopy = styled("div")`
   position: absolute;
   right: 0;
   display: flex;
+  /* Centred in the band, like the name beside it, so the two sit on the same
+     line and both clear the rule above and the letters below. */
   align-items: center;
   pointer-events: auto;
+`;
+
+/**
+ * Holds the features section's ranking dropdown against the right edge.
+ *
+ * The same placement as the sequence row's copy control, and for the same
+ * reason: it is interactive, so it cannot live inside the plot's `role="img"`,
+ * and it is positioned against `TrackBody` at the y the layout reserved for
+ * that section's header line.
+ */
+export const TrackRankingControl = styled("div")`
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+`;
+
+/**
+ * The copy control: an SDS minimal button whose icon takes the accent ramp on
+ * interaction.
+ *
+ * SDS has no variant that does this, which is why there is an override here at
+ * all. `secondary` rests on `base.ornamentSecondary` — the grey a minimal
+ * button is meant to sit at — but its hover and press go to
+ * `base.ornamentPrimary`, grey 900. `primary` has the indigo ramp but wears it
+ * at rest too, so the control reads as an accent action when idle.
+ *
+ * So the rest state is SDS's, untouched, and only the three interaction states
+ * are re-pointed — to `accent.foreground*`, which is the same ramp
+ * `primary` uses, rather than to a colour chosen here. Everything else stays
+ * SDS's: the hover wash, the press wash, the focus ring, the sizing.
+ *
+ * `&&` doubles the class to out-specify SDS's own `&:hover svg` rather than
+ * relying on stylesheet insertion order, which composition does not guarantee.
+ */
+export const TrackSequenceCopyButton = styled(Button)`
+  ${(props: CommonThemeProps) => {
+    const semanticColors = getSemanticColors(props);
+
+    return `
+      &&:hover svg {
+        color: ${semanticColors?.accent?.foregroundInteraction};
+      }
+
+      &&:focus-visible svg {
+        color: ${semanticColors?.accent?.foreground};
+      }
+
+      &&:active svg {
+        color: ${semanticColors?.accent?.foregroundPressed};
+      }
+    `;
+  }}
+`;
+
+/**
+ * The segment category key, in the band the layout reserved under that row.
+ *
+ * Absolutely positioned inside the plot, like the row names, which is what puts
+ * it directly beneath the colours it explains rather than at the foot of the
+ * track. That is only possible because it is *not* interactive: the plot is
+ * `role="img"`, which cannot contain a control, and a key that could be hovered
+ * or clicked would have to sit outside and lose its place in the stack.
+ *
+ * `aria-hidden` for the same reason the row names are — the accessible table
+ * names every segment and its category, so a reader has the mapping in text.
+ */
+export const TrackLegend = styled("div")`
+  ${fontBodyXxxxs}
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  pointer-events: none;
+
+  ${(props: CommonThemeProps) => {
+    const spaces = getSpaces(props);
+
+    return `
+      color: ${getSemanticColors(props)?.base?.textSecondary};
+      gap: ${spaces?.xxs}px ${spaces?.m}px;
+      padding-top: ${spaces?.xs}px;
+    `;
+  }}
+`;
+
+/** One key entry: its swatch and the category's name. */
+export const TrackLegendItem = styled("span")`
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+
+  ${(props: CommonThemeProps) => `gap: ${getSpaces(props)?.xxs}px;`}
+`;
+
+interface SwatchProps extends CommonThemeProps {
+  swatchColor: string;
+  striped: boolean;
+}
+
+/**
+ * A category's swatch: its colour, diagonally striped on the negative strand.
+ *
+ * The stripes mirror what the canvas draws, in CSS rather than a pattern — a
+ * `repeating-linear-gradient` at 45° with the same period as the canvas tile,
+ * so the key and the blocks read as the same texture. Getting these out of step
+ * would make the key wrong about the thing it exists to explain.
+ */
+export const TrackLegendSwatch = styled("span")`
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+
+  ${(props: SwatchProps) => {
+    const corners = getCorners(props);
+    const stripe = "rgba(255, 255, 255, 0.55)";
+
+    return `
+      border-radius: ${corners?.s}px;
+      background-color: ${props.swatchColor};
+      ${
+        props.striped
+          ? `background-image: repeating-linear-gradient(
+               45deg,
+               ${stripe} 0 2px,
+               transparent 2px 6px
+             );`
+          : ""
+      }
+    `;
+  }}
 `;
 
 /**
@@ -330,6 +515,63 @@ export const TrackMessageTitle = styled("div")`
 
     return `color: ${semanticColors?.base?.textPrimary};`;
   }}
+`;
+
+/**
+ * Indeterminate bar across the top of the plot while a re-fetch is in flight.
+ *
+ * The counterpart to the skeleton, for the case the skeleton is wrong for. A
+ * shell that re-fetches a finer stride on zoom does so on every wheel notch, so
+ * replacing the plot would make it flicker; this leaves the last good data on
+ * screen and says a better version is coming.
+ *
+ * Indeterminate rather than a percentage because nothing here knows how far
+ * along the fetch is, and a bar that invents progress is worse than one that
+ * only says "working". It collapses to a static bar under
+ * `prefers-reduced-motion`, which still carries the meaning.
+ */
+export const TrackProgress = styled("div")`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+
+  ${(props: CommonThemeProps) => `
+    background-color: ${getSemanticColors(props)?.base?.fillSecondary};
+  `}
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+
+    ${(props: CommonThemeProps) => `
+      background-color: ${getSemanticColors(props)?.accent?.fillPrimary};
+    `}
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: sds-genome-track-slide 1.1s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      width: 100%;
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes sds-genome-track-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
 `;
 
 /** Skeleton bar used by the loading state, one per requested row. */

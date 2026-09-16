@@ -2,8 +2,10 @@ import {
   AnnotationBlock,
   BinAxis,
   FeatureNote,
+  FeatureOverview,
   FeatureTrace,
   GenomeTrackData,
+  MinimapOverview,
   SegmentBlock,
 } from "../GenomeTrack.types";
 
@@ -110,7 +112,47 @@ const CLUSTER_LABELS = [
   "Membrane architecture",
 ];
 
-const CATEGORIES = ["+CDS", "-CDS", "intergenic"];
+/**
+ * The segmentation's full category enum, most common first.
+ *
+ * Stranded, as the pipeline's `palette.py` names them: `+CDS` and `-CDS` are
+ * the same category on opposite strands, and the component gives them one hue
+ * and distinguishes the strand with a diagonal stripe. Nine distinct bases
+ * across fifteen names, so the ramp is spent on categories rather than twice
+ * over on strand.
+ *
+ * Ordering is the server's job in a real payload — it knows the global
+ * frequencies — so this is a plausible prokaryote ordering rather than a
+ * measured one.
+ */
+const SEGMENT_CATEGORIES = [
+  "+CDS",
+  "-CDS",
+  "intergenic",
+  "+tRNA",
+  "-tRNA",
+  "+rRNA",
+  "-rRNA",
+  "+promoter",
+  "-promoter",
+  "+terminator",
+  "-terminator",
+  "+tfbs",
+  "-tfbs",
+  "mobile_element",
+  "unknown",
+];
+
+/**
+ * The categories a window actually contains, a prefix of the enum.
+ *
+ * Deliberately fewer than the enum, and deliberately including both strands of
+ * two categories: a real window holds a handful of what exists, and the key
+ * lists only those. A fixture using every category would hide the two
+ * properties that matter — that a category keeps its hue whether or not its
+ * neighbours are present, and that the two strands share one.
+ */
+const CATEGORIES = SEGMENT_CATEGORIES.slice(0, 6);
 
 export interface MockGenomeTrackOptions {
   /** Same seed gives the same payload, always. @default 20260921 */
@@ -131,6 +173,16 @@ export interface MockGenomeTrackOptions {
   withAnnotations?: boolean;
   /** Cap on trace length; the window is pooled to fit. @default 2000 */
   maxPoints?: number;
+  /**
+   * Include the chromosome-scale overview the minimap spans.
+   *
+   * False emits `overview: null` with `overview_available: false`, which is the
+   * "this deployment cannot draw a minimap" case — distinct from the null that
+   * means "unchanged, you already have it". Without it the minimap falls back
+   * to the payload's own window and the viewport cannot leave it.
+   * @default true
+   */
+  withOverview?: boolean;
   /** Gene name to report on the locus. @default "fixX" */
   gene?: string;
   organism?: string;
@@ -204,11 +256,25 @@ function makeSegments(
 }
 
 /**
- * Reference annotations: a few genes with intergenic space between them.
+ * Reference annotations: a few genes with intergenic space between them, some
+ * of them overlapping.
  *
  * Unlike segments these do *not* tile — real annotation coverage is patchy, and
  * intergenic regions carry much of the SAE signal, so a fixture that covers the
  * window end to end would hide the case the science cares about.
+ *
+ * They also overlap, in both of the ways a GFF does, because the annotations
+ * row packs them into lanes and a fixture that never overlaps would exercise
+ * exactly one lane:
+ *
+ * - **Partial overlap**, where one gene runs into the next. Common in bacteria
+ *   and near-universal in phage genomes. Draws wrong in a flat row, but leaves
+ *   `end` in ascending order, so the hit-test survives it.
+ * - **Nesting**, where a short feature sits entirely inside a long one — a tRNA
+ *   inside a CDS. This is the one that breaks a binary search over `end`, and
+ *   it is the reason a lane is guaranteed not to nest. A fixture with only
+ *   partial overlaps would let that regress unnoticed, so one is inserted
+ *   unconditionally rather than left to the PRNG.
  */
 function makeAnnotations(
   random: () => number,
@@ -241,11 +307,108 @@ function makeAnnotations(
       start: cursor,
     });
 
-    cursor = blockEnd + Math.round(span * (0.02 + random() * 0.08));
+    // Roughly a third of the time the next gene starts before this one ends.
+    cursor =
+      random() > 0.66
+        ? blockEnd - Math.round(length * (0.08 + random() * 0.2))
+        : blockEnd + Math.round(span * (0.02 + random() * 0.08));
     index += 1;
   }
 
-  return annotations;
+  const host = annotations[0];
+
+  // A tRNA nested inside the first gene, positioned off its middle so it clears
+  // both ends and is a strict subset. Opposite strand to its host, which is the
+  // usual arrangement and gives the lanes two arrow directions to draw.
+  if (host && host.end - host.start > 40) {
+    const hostLength = host.end - host.start + 1;
+    const nestedStart = host.start + Math.round(hostLength * 0.45);
+
+    annotations.push({
+      end: nestedStart + Math.max(Math.round(hostLength * 0.12), 12),
+      id: `ann_${index}`,
+      kind: "tRNA",
+      locus_tag: `b${String(1000 + index * 7).padStart(4, "0")}`,
+      name: "tRNA-Ala",
+      product: "Transfer RNA",
+      start: nestedStart,
+      strand: host.strand === "+" ? "-" : "+",
+    });
+  }
+
+  // Start order is the contract the server keeps and the packing depends on, so
+  // the inserted block is sorted back into place rather than left at the end.
+  return annotations.sort((a, b) => a.start - b.start);
+}
+
+/**
+ * Chromosome-scale overview for the minimap row.
+ *
+ * Fixed at 1,000 bins regardless of chromosome length, which is the shape the
+ * real endpoint promises: human chr 1 and E. coli cost the same bytes, and the
+ * stride comes out at ~4.6 kb for this genome.
+ *
+ * Carries no `values`. The minimap no longer draws a pooled signal — it draws
+ * the one feature the user selected, from `feature_overview` — so the field is
+ * left off to exercise the optional path a server that never computes it will
+ * take.
+ */
+function makeOverview(chrom: string, chromLength: number): MinimapOverview {
+  const nBins = 1_000;
+  const stride = Math.ceil(chromLength / nBins);
+
+  return {
+    bins: { end: chromLength, n_bins: nBins, start: 1, stride },
+    chrom,
+    chrom_length: chromLength,
+  };
+}
+
+/**
+ * One feature's activation across the chromosome, for the minimap.
+ *
+ * Exported because it is fetched per *selection* rather than per payload: a
+ * story that lets the user click a feature row has to be able to build the
+ * trace for whichever feature was clicked, which is exactly what the shell
+ * will do with a real endpoint.
+ *
+ * Seeded from the feature id, so the same feature always gets the same trace
+ * and two different features get visibly different ones. Deliberately sparse —
+ * a handful of clusters over a quiet chromosome, which is what distinguishes
+ * one feature's trace from the pooled maximum that used to be drawn here and
+ * lit up almost every bin.
+ */
+export function makeFeatureOverview(
+  featureId: number,
+  chromLength = 4_641_652
+): FeatureOverview {
+  const nBins = 1_000;
+  const stride = Math.ceil(chromLength / nBins);
+  const random = createRandom(featureId);
+
+  const homes = Array.from({ length: 2 + Math.floor(random() * 3) }, () => ({
+    center: random(),
+    weight: 0.5 + random() * 0.5,
+  }));
+
+  const values = Array.from({ length: nBins }, (_, index) => {
+    const position = index / nBins;
+    const signal = homes.reduce((total, home) => {
+      const distance = Math.abs(position - home.center);
+
+      return total + home.weight * Math.exp(-((distance / 0.012) ** 2));
+    }, 0);
+
+    // A low floor rather than zero, since a real trace is never perfectly
+    // silent — but low enough that the clusters are what the eye finds.
+    return Number(Math.min(signal + random() * 0.04, 1).toFixed(3));
+  });
+
+  return {
+    bins: { end: chromLength, n_bins: nBins, start: 1, stride },
+    feature_id: featureId,
+    values,
+  };
 }
 
 /**
@@ -365,6 +528,7 @@ export function makeMockGenomeTrackData(
     seed = 20260921,
     start = 45462,
     withAnnotations = true,
+    withOverview = true,
     withSequence = true,
   } = options;
 
@@ -375,6 +539,8 @@ export function makeMockGenomeTrackData(
   const segments = makeSegments(random, start, end, namespace);
   const features = makeFeatures(random, bins, segments, featureCount);
   const maxSequenceWindow = 30_000;
+  const genomeLength = 4_641_652;
+  const overview = withOverview ? makeOverview(chrom, genomeLength) : null;
 
   return {
     annotations: withAnnotations
@@ -388,7 +554,7 @@ export function makeMockGenomeTrackData(
       labelled_clusters: CLUSTER_LABELS.length,
       max_points: maxPoints,
       max_sequence_window: maxSequenceWindow,
-      overview_available: false,
+      overview_available: withOverview,
       requested_top_n: featureCount,
     },
     clusters: [],
@@ -399,12 +565,12 @@ export function makeMockGenomeTrackData(
       chrom,
       end,
       gene,
-      genome_length: 4_641_652,
+      genome_length: genomeLength,
       organism,
       organism_label: organismLabel,
       start,
     },
-    overview: null,
+    overview,
     pinned: [],
     sae: {
       base_model: "mock-base-model",
@@ -413,6 +579,7 @@ export function makeMockGenomeTrackData(
       segmentation_threshold: 0.35,
     },
     schema_version: 1,
+    segment_categories: SEGMENT_CATEGORIES,
     segments,
     // A window wider than the cap gets no sequence, exactly as the server
     // behaves — which is how the degraded path gets exercised without a flag.

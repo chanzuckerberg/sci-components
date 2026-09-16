@@ -1,5 +1,6 @@
 import { TrackError, TrackKind } from "../../GenomeTrack.types";
 import { TrackMessage, TrackMessageTitle, TrackSkeletonRow } from "../../style";
+import { rowLabelHeight } from "../../utils/layout";
 
 /**
  * The states that replace the plot entirely.
@@ -23,8 +24,14 @@ interface DensityProp {
 interface SkeletonProps extends DensityProp {
   blockRowHeight: number;
   featureRowHeight: number;
+  /**
+   * Everything above a trace's bars: its name and its y axis. One number
+   * because the skeleton only needs the row's total height, not the strips.
+   */
   featureLabelHeight: number;
   maxFeatureRows: number;
+  /** Whether names will occupy a line above each section, so the shape matches. */
+  showRowLabels: boolean;
   /** Requested rows, so the skeleton is the shape of what is coming. */
   tracks: TrackKind[];
 }
@@ -41,22 +48,32 @@ interface SkeletonProps extends DensityProp {
  */
 export const TrackSkeleton = ({
   blockRowHeight,
+  density,
   featureLabelHeight,
   featureRowHeight,
   maxFeatureRows,
+  showRowLabels,
   tracks,
 }: SkeletonProps): JSX.Element => (
   <div aria-busy data-testid={STATE_TEST_IDS.skeleton}>
-    {tracks.flatMap((kind) =>
-      kind === "features"
+    {tracks.flatMap((kind) => [
+      // A spacer for the section name rather than a bar: the label is text,
+      // and a pulsing block where a one-word heading will land reads as
+      // content that never arrives. Per kind, because an unnamed section gets
+      // no line and the sequence section's line is taller.
+      <div
+        key={`${kind}-label`}
+        style={{ height: rowLabelHeight(kind, density, showRowLabels) }}
+      />,
+      ...(kind === "features"
         ? Array.from({ length: maxFeatureRows }, (_, index) => (
             <TrackSkeletonRow
               key={`features-${index}`}
               style={{ height: featureRowHeight + featureLabelHeight }}
             />
           ))
-        : [<TrackSkeletonRow key={kind} style={{ height: blockRowHeight }} />]
-    )}
+        : [<TrackSkeletonRow key={kind} style={{ height: blockRowHeight }} />]),
+    ])}
   </div>
 );
 

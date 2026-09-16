@@ -1,6 +1,6 @@
 import { DEFAULT_TRACK_DATA } from "../__storybook__/constants";
 import { TrackKind } from "../GenomeTrack.types";
-import { hitTest } from "../utils/hitTest";
+import { hitTest, selectionForHit, seriesId } from "../utils/hitTest";
 import { layoutRows } from "../utils/layout";
 import { bpToPx, createScale } from "../utils/scale";
 
@@ -19,7 +19,9 @@ const OPTIONS = {
   blockRowHeight: 28,
   density: "comfortable" as const,
   featureRowHeight: 24,
+  maxAnnotationLanes: 4,
   maxFeatureRows: 8,
+  showRowLabels: true,
   tracks: ["annotations", "segments", "features"] as TrackKind[],
 };
 
@@ -120,23 +122,94 @@ describe("hitTest", () => {
     ).toBeNull();
   });
 
-  it("finds each annotation at its own midpoint", () => {
-    const y = rowCenter("annotations");
+  it("finds every annotation at its own midpoint, in its own lane", () => {
+    const lanes = layout.rows.filter((row) => row.kind === "annotations");
 
-    (DEFAULT_TRACK_DATA.annotations ?? []).forEach((annotation) => {
-      const midBp = Math.floor((annotation.start + annotation.end) / 2);
-      const hit = hitTest(
-        DEFAULT_TRACK_DATA,
-        layout.rows,
-        scale,
-        bpToPx(scale, midBp),
-        y
+    expect(lanes.length).toBeGreaterThan(1);
+
+    lanes.forEach((lane) => {
+      (lane.laneBlocks ?? []).forEach((annotation) => {
+        const midBp = Math.floor((annotation.start + annotation.end) / 2);
+        const hit = hitTest(
+          DEFAULT_TRACK_DATA,
+          layout.rows,
+          scale,
+          bpToPx(scale, midBp),
+          lane.y + lane.height / 2
+        );
+
+        // Within a lane blocks cannot overlap, so a midpoint resolves to that
+        // block and no other. Across lanes, y is what tells them apart.
+        expect(hit?.id).toBe(annotation.id);
+      });
+    });
+  });
+
+  /**
+   * Nested annotations, which real GFFs contain — a tRNA inside a CDS — and
+   * which a flat annotation row got wrong twice over.
+   *
+   * Drawn flat, the inner block is painted over by its host and is unreachable
+   * by the pointer. Worse, `firstCandidate` binary-searches on `end`, and
+   * nesting is precisely the case where start order does not imply end order:
+   * the search stepped past the enclosing gene, so hovering the host anywhere
+   * beyond the nested block's end returned nothing at all. Both failures are
+   * properties of putting them in one row, so both are pinned here.
+   */
+  it("reaches a nested annotation and its host, with no dead zone between", () => {
+    const outer = {
+      end: 1000,
+      id: "outer",
+      kind: "CDS",
+      name: "longGene",
+      start: 100,
+      strand: "+" as const,
+    };
+    const inner = {
+      end: 500,
+      id: "inner",
+      kind: "tRNA",
+      name: "tRNA-Ala",
+      start: 400,
+      strand: "-" as const,
+    };
+
+    const data = {
+      ...DEFAULT_TRACK_DATA,
+      annotations: [outer, inner],
+      locus: { ...DEFAULT_TRACK_DATA.locus, end: 1200, start: 1 },
+    };
+    const nestedLayout = layoutRows(data, {
+      ...OPTIONS,
+      tracks: ["annotations"],
+    });
+    const nestedScale = createScale({ end: 1200, start: 1 }, WIDTH);
+
+    expect(nestedLayout.rows).toHaveLength(2);
+
+    const at = (bp: number, row: (typeof nestedLayout.rows)[number]) =>
+      hitTest(
+        data,
+        nestedLayout.rows,
+        nestedScale,
+        bpToPx(nestedScale, bp),
+        row.y + row.height / 2
       );
 
-      // Blocks do not overlap in the annotation row, so the midpoint of each
-      // must resolve to that block and no other.
-      expect(hit?.id).toBe(annotation.id);
-    });
+    const [hostLane, nestedLane] = nestedLayout.rows;
+
+    // The host, on both sides of the nested block. 800 is the dead zone: it is
+    // inside `outer` but past `inner`'s end, and it used to return null.
+    expect(at(200, hostLane)?.id).toBe("outer");
+    expect(at(800, hostLane)?.id).toBe("outer");
+
+    // The nested block, which a flat row could not reach at all.
+    expect(at(450, nestedLane)?.id).toBe("inner");
+
+    // And its lane is empty either side of it, rather than reporting the host
+    // from a row the host is not drawn in.
+    expect(at(200, nestedLane)).toBeNull();
+    expect(at(800, nestedLane)).toBeNull();
   });
 
   /**
@@ -186,5 +259,78 @@ describe("hitTest", () => {
     );
 
     expect(hit?.kind).toBe("segment");
+  });
+});
+
+/**
+ * What a click on a hit should select.
+ *
+ * Split out of the pointer handler so it is testable at all: inside the
+ * handler it was reachable only through a simulated pointer sequence, and
+ * jsdom reports a zero-width plot, so every simulated click missed.
+ */
+describe("selectionForHit", () => {
+  const annotation = DEFAULT_TRACK_DATA.annotations?.[0];
+  const feature = DEFAULT_TRACK_DATA.features[0];
+
+  const blockHit = {
+    detail: "",
+    end: annotation?.end ?? 0,
+    id: annotation?.id ?? "",
+    kind: "annotation" as const,
+    label: "",
+    rowIndex: 0,
+    start: annotation?.start ?? 0,
+    strand: "+" as const,
+  };
+
+  const traceHit = {
+    detail: "",
+    end: 0,
+    id: seriesId(feature.feature_id),
+    kind: "trace" as const,
+    label: "",
+    rowIndex: 0,
+    start: 0,
+    value: 0,
+  };
+
+  it("selects a feature row as a series, not a block", () => {
+    // The change this exists for: a features row used to clear the selection.
+    // Selecting it is how the minimap learns whose activation to draw across
+    // the chromosome, which is the only way to see a feature outside the
+    // loaded window.
+    expect(selectionForHit(traceHit, null)).toEqual({
+      id: seriesId(feature.feature_id),
+      kind: "series",
+    });
+  });
+
+  it("selects an annotation or segment as a block", () => {
+    expect(selectionForHit(blockHit, null)).toEqual({
+      id: annotation?.id,
+      kind: "block",
+    });
+  });
+
+  it("toggles off when the same thing is clicked again", () => {
+    expect(selectionForHit(traceHit, traceHit.id)).toBeNull();
+    expect(selectionForHit(blockHit, blockHit.id)).toBeNull();
+  });
+
+  it("switches directly from one feature to another", () => {
+    // No intermediate null: the shell gets one selection change and fetches
+    // one chromosome trace, rather than clearing the minimap in between.
+    expect(selectionForHit(traceHit, seriesId(999))).toEqual({
+      id: seriesId(feature.feature_id),
+      kind: "series",
+    });
+  });
+
+  it("clears on empty space", () => {
+    // Emitting null rather than nothing is what lets a shell close a detail
+    // surface from here.
+    expect(selectionForHit(null, traceHit.id)).toBeNull();
+    expect(selectionForHit(null, null)).toBeNull();
   });
 });

@@ -12,7 +12,7 @@ import {
   GenomeTrackData,
   GenomeViewport,
 } from "../GenomeTrack.types";
-import { TrackHit, hitTest } from "../utils/hitTest";
+import { TrackHit, hitTest, selectionForHit } from "../utils/hitTest";
 import { TrackRow, rowAt } from "../utils/layout";
 import { GenomeScale, panBy, spanOf, zoomAt } from "../utils/scale";
 
@@ -177,22 +177,38 @@ export function useTrackNavigation(
         event.clientY - (rect?.top ?? 0)
       );
 
-      // Clicking a block selects it; clicking it again, or clicking empty
-      // space, clears. Emitting null rather than ignoring the click is what
-      // lets a shell close a detail surface from here.
-      if (!found || found.kind === "trace") {
-        onSelectionChange(null);
-        return;
-      }
-
-      onSelectionChange(
-        selectedId === found.id ? null : { id: found.id, kind: "block" }
-      );
+      /**
+       * A features row selects the *feature*, not a position in it.
+       *
+       * This used to clear the selection, on the reasoning that a trace is a
+       * measurement rather than a thing to pick. It is both: picking one is
+       * how the minimap learns whose activation to draw across the chromosome,
+       * which is the only way to see a feature outside the loaded window.
+       *
+       * Anywhere in the row counts, since the whole row is that one feature —
+       * requiring a click on a bar would make silent stretches unclickable,
+       * and a feature's quiet regions are as much a part of it as its peaks.
+       */
+      onSelectionChange(selectionForHit(found, selectedId));
     },
     [data, onSelectionChange, plotRef, rows, scale, selectedId]
   );
 
   const onPointerLeave = useCallback(() => setHit(null), []);
+
+  /**
+   * A new payload clears the hover.
+   *
+   * `hit` is only recomputed on pointer *movement*, and it holds resolved
+   * values — a bin's range, an activation — rather than a reference the data
+   * could invalidate. Wheel-zoom leaves the pointer stationary, so a re-fetch
+   * landing mid-hover would otherwise leave a tooltip quoting the previous
+   * stride's bin against the new trace, and `hit.rowIndex` pointing into a row
+   * list that may have changed length. Stale numbers next to the pointer are
+   * worse than none: the user has no way to tell they are reading the old
+   * window.
+   */
+  useEffect(() => setHit(null), [data]);
 
   const onKeyDown = useCallback(
     (event: ReactKeyboardEvent<HTMLDivElement>) => {

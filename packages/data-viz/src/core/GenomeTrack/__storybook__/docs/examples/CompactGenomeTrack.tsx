@@ -2,7 +2,7 @@
 // side, each in its own card.
 //
 // Four props do the work. `density="compact"` tightens every row and drops the
-// captions and tick labels, `labelWidth={0}` removes the label gutter,
+// captions and tick labels, `showRowLabels={false}` drops the section names,
 // `blockRowHeight` shrinks the blocks, and `disableNavigation` keeps a card
 // from swallowing the page's scroll. Selection and the keyboard controls still
 // work with navigation off — only wheel-zoom and drag-pan are turned off.
@@ -168,11 +168,11 @@ function App() {
       {[LEFT, RIGHT].map((data) => (
         <div key={data.locus.accession} style={CARD}>
           <GenomeTrack
-            blockRowHeight={16}
+            blockRowHeight={12}
             data={data}
             density="compact"
             disableNavigation
-            labelWidth={0}
+            showRowLabels={false}
             // The payload carries an activation trace as well; which rows to
             // draw is a display choice, so the cards leave it out.
             tracks={["annotations", "segments"]}

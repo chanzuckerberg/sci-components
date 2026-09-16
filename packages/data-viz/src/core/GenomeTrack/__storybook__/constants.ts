@@ -38,3 +38,18 @@ export const UNANNOTATED_TRACK_DATA = makeMockGenomeTrackData({
   seed: 77,
   withAnnotations: false,
 });
+
+/**
+ * A deployment that cannot draw a chromosome overview: `overview` is null and
+ * `caps.overview_available` is false.
+ *
+ * The minimap then falls back to spanning the payload's own window, and the
+ * viewport cannot leave it — there is nothing in the payload that says what is
+ * out there, so claiming a chromosome would be inventing one. This is the
+ * fixture for that fallback, which is also the behaviour every payload had
+ * before the overview was wired up.
+ */
+export const NO_OVERVIEW_TRACK_DATA = makeMockGenomeTrackData({
+  seed: 512,
+  withOverview: false,
+});

@@ -144,11 +144,11 @@ export interface OverviewBand {
  * window, so a shell fetches it once per accession and reuses it across window
  * re-fetches.
  *
- * **Nothing reads this yet.** The minimap row as built shows where the viewport
- * sits inside the payload's own window, which it takes from `locus`. Drawing the
- * chromosome-scale summary described here is a later, larger version of that
- * row: it would widen the extent from one window to a whole chromosome and add
- * a signal underneath the position box.
+ * **Only `chrom_length` is read.** That one number is what widens the minimap
+ * from the payload's window to the whole chromosome, and what bounds
+ * navigation. The signal the row draws comes from `feature_overview` instead —
+ * one feature the user picked, rather than a pooled summary of a set they did
+ * not — and `values`, `bands` and `bins` are all unread.
  */
 export interface MinimapOverview {
   chrom: string;
@@ -159,10 +159,57 @@ export interface MinimapOverview {
    * never a value to read.
    */
   bins: BinAxis;
-  /** Max-pooled across the top features: "where is anything happening". */
+  /**
+   * Chromosome-wide pooled activation. **Nothing reads this.**
+   *
+   * It was max-pooled across the top features — "where is anything happening"
+   * — and the minimap drew it. It no longer does: the row is a position
+   * indicator, and the signal it shows now is one feature's, from
+   * `GenomeTrackData.feature_overview`, chosen by the user rather than pooled
+   * across a set they did not pick.
+   *
+   * Optional rather than deleted because producing it is the expensive part of
+   * the minimap's data path — downsampling a genome-length array per feature
+   * is cheap for a 4.6 Mb bacterial chromosome and not for an 80 Mb human one —
+   * so a server that already computes it need not stop, and one that does not
+   * need never start.
+   */
+  values?: number[];
+  /**
+   * Coarse chromosome landmarks. **Nothing reads this.**
+   *
+   * The minimap drew them behind the signal, and stopped for the same reason
+   * it stopped drawing a loaded-window outline: at chromosome scale every
+   * marker collapses to a 3 px floor, so a band, an outline and the viewport
+   * indicator all landed on each other as indistinguishable grey ticks. The one
+   * band the row draws now is the viewport — the thing a reader can act on.
+   *
+   * Optional rather than deleted so a payload that carries them is still valid,
+   * and so a later row that can space them out — a karyotype ideogram, say —
+   * has the field waiting.
+   */
+  bands?: OverviewBand[];
+}
+
+/**
+ * One feature's activation across the whole chromosome, for the minimap.
+ *
+ * Fetched per selection rather than per accession, which is the opposite of
+ * `MinimapOverview`: the overview is chromosome-scoped and stable, where this
+ * follows whichever feature the user clicked. That is also why it is not a map
+ * inside `MinimapOverview` — the features a payload carries are ranked within
+ * the *window*, so panning changes the set, and a chromosome-scoped field
+ * cannot enumerate them.
+ *
+ * On the same fixed bin count as the overview, so one array is ~8 kB whatever
+ * the chromosome's length. The cost is not the wire, it is the read behind it.
+ */
+export interface FeatureOverview {
+  /** Which feature this describes. Must match the selection to be drawn. */
+  feature_id: number;
+  /** Chromosome-wide axis, the same shape as `MinimapOverview.bins`. */
+  bins: BinAxis;
   values: number[];
-  /** Empty when the organism has no coarse bands. */
-  bands: OverviewBand[];
 }
 
 /** What the server had to leave out, and why. */
@@ -201,11 +248,41 @@ export interface GenomeTrackData {
    */
   overview: MinimapOverview | null;
   /**
+   * Chromosome-wide activation for the currently selected feature.
+   *
+   * Null when no feature is selected, or when the shell has not fetched this
+   * one yet. The minimap draws it only when `feature_id` matches the selected
+   * series — a trace left over from the previously selected feature would
+   * otherwise be drawn under the new one's selection, which is a lie about
+   * whose signal you are looking at.
+   */
+  feature_overview?: FeatureOverview | null;
+  /**
    * Null (not `[]`) means this organism has no annotation coverage at all —
    * "nobody looked", which is different from "nothing here".
    */
   annotations: AnnotationBlock[] | null;
   segments: SegmentBlock[];
+  /**
+   * Every category the segmentation can emit, most common first.
+   *
+   * The full enum, not the categories in this window — which is what makes the
+   * colours comparable. A category's colour is its index in this list, so
+   * `+CDS` is the same hue in every window and every organism; assigning from
+   * the categories *present* would repaint them on every pan, since a narrower
+   * window holds fewer and the indices shift underneath.
+   *
+   * It lives in the payload rather than in the component so the list can grow
+   * without a component release — the segmentation gains categories over time,
+   * and a hardcoded enum here would mean a version bump for each one. The
+   * ordering is the server's: it knows the global frequencies, and the
+   * commonest categories should take the start of the ramp where the hues are
+   * furthest apart.
+   *
+   * Absent or empty falls back to one accent fill for every segment, which is
+   * what the row drew before it had categories.
+   */
+  segment_categories?: string[];
   features: FeatureTrace[];
   pinned: FeatureTrace[];
   clusters?: ClusterTrace[];
@@ -213,6 +290,15 @@ export interface GenomeTrackData {
   feature_notes: Record<string, FeatureNote>;
   caps: TrackCaps;
 }
+
+/**
+ * How the features are ranked, and what `score` on each trace means.
+ *
+ * These are the tool's own `rank_by` values, passed through unchanged — the
+ * design calls them "Z-Score" and "Raw", but `peak` is the wire form of the
+ * second and the server rejects anything else.
+ */
+export type ActivationRanking = "peak" | "zscore";
 
 /** Rows the track can draw, in the order they are listed on the `tracks` prop. */
 export type TrackKind =
@@ -267,20 +353,93 @@ export interface GenomeTrackProps extends Omit<
    * `onViewportChange` and change nothing until the prop comes back. Omit for
    * uncontrolled, where the component owns the range and starts at the
    * payload's full window.
+   *
+   * The viewport may extend past the payload's window, by up to
+   * `navigationMargin`. That is deliberate: a shell that re-fetches a narrower
+   * window at a finer stride needs the user to be able to zoom back out, and
+   * clamping to the payload would make each zoom-in permanent. The rows tint
+   * the coordinates they have no data for rather than drawing them empty.
+   *
+   * Supplied as a prop it is not clamped at all — controlled means the caller
+   * owns it. Only pan and zoom originating inside the component are bounded.
    */
   viewport?: GenomeViewport;
+  /**
+   * How far outside the loaded window pan and zoom may go, as a multiple of
+   * that window's span. Zero pins the viewport to the payload.
+   *
+   * This is the ceiling on how far the viewport may outrun its data, and it
+   * exists because the alternative is unusable. Allowing navigation across the
+   * whole chromosome sounds generous, but with no shell refilling the window
+   * behind it the loaded slice compresses into a few pixels of an otherwise
+   * empty plot — a 20 kb view of a 289 bp payload puts every row in a 25 px
+   * column. The margin bounds that: the data always occupies at least
+   * `1 / (1 + 2 × margin)` of the plot width.
+   *
+   * It is a soft limit rather than a wall, because each re-fetch widens the
+   * loaded window and so widens this in turn. The user zooms out in steps that
+   * are each backed by real data, which is how a genome browser is meant to
+   * behave — navigation is a fetch, not a pan across megabases of nothing.
+   *
+   * Only applies when the payload carries an `overview`; without a chromosome
+   * length there is nothing to navigate into and the window is the hard limit.
+   * @default 1
+   */
+  navigationMargin?: number;
   /** Called on pan and zoom. A shell typically re-fetches from this. */
   onViewportChange?: (viewport: GenomeViewport) => void;
+  /**
+   * How the features are ranked, shown in the features section's dropdown.
+   *
+   * Controlled, with no internal fallback, because it is a *fetch* parameter
+   * rather than a view option: `rank_by` changes which features the tool
+   * returns and in what order, so a change is a request for different data. Held
+   * locally the label would change and the rows would not, which reads as a
+   * broken control.
+   *
+   * The dropdown is drawn only when `onRankingChange` is supplied — a control
+   * nobody is listening to does nothing when used.
+   * @default "zscore"
+   */
+  ranking?: ActivationRanking;
+  /** Called when the user picks a ranking. A shell re-fetches from this. */
+  onRankingChange?: (ranking: ActivationRanking) => void;
   /** Controlled selection. */
   selection?: GenomeSelection | null;
   onSelectionChange?: (selection: GenomeSelection | null) => void;
   /**
-   * Row height for annotation and segment rows, in px. The minimap and
-   * sequence rows size themselves from `density`, and the features rows have a
-   * prop of their own.
-   * @default 28
+   * Height of one block row, in px: a segment row, or one lane of the
+   * annotations row. The minimap and sequence rows size themselves from
+   * `density`, and the features rows have a prop of their own.
+   *
+   * Note this is a lane rather than the whole annotations row, which is as tall
+   * as the lanes its annotations packed into — see `maxAnnotationLanes`.
+   *
+   * Deliberately slim. A block row carries an interval and, when it fits, a
+   * name; it is not a plot and gains nothing from height, where the features
+   * rows below it are measurements whose shape needs room. Raise it if the
+   * on-block gene names need to be larger — the label font is 10–11 px, so
+   * below about 14 they stop fitting and blocks draw unlabelled.
+   * @default 16
    */
   blockRowHeight?: number;
+  /**
+   * Cap on how many lanes the annotations row may use, one block deep each.
+   *
+   * Annotations overlap — divergent gene pairs, overlapping ORFs, a tRNA inside
+   * a CDS — so the row packs them into lanes instead of drawing them on top of
+   * one another. It uses as many as the window needs and no more, so a window
+   * without overlaps is a single row exactly as before; this is the ceiling,
+   * for the same reason `maxFeatureRows` has one. Overlap depth is bounded by
+   * biology rather than by the request, though, so the default is generous
+   * enough that a real gene-level payload does not reach it.
+   *
+   * Blocks that do not fit are left undrawn rather than stacked into the last
+   * lane, and stay listed in the accessible table. Reaching this cap is worth
+   * knowing about: it means the plot is not showing everything.
+   * @default 4
+   */
+  maxAnnotationLanes?: number;
   /**
    * Height of one feature's bars in the features row, in px, not counting the
    * space above them that the feature's name occupies.
@@ -300,11 +459,18 @@ export interface GenomeTrackProps extends Omit<
    */
   maxFeatureRows?: number;
   /**
-   * Width reserved for row labels down the left edge. Zero hides them, which is
-   * what the compact variant does.
-   * @default 96
+   * Draw each section's name on a line above its rows.
+   *
+   * Replaces the fixed left-hand gutter these labels used to occupy. The gutter
+   * cost a column of the plot's width at every zoom and still truncated the
+   * longer names; above the row a name has the full width to use and the axis
+   * gets the space back. The trade is vertical: each section costs a line.
+   *
+   * False for the compact variant, where a comparison card has room for
+   * neither the line nor the names.
+   * @default true
    */
-  labelWidth?: number;
+  showRowLabels?: boolean;
   /**
    * Comfortable is the standalone view; compact is the in-card variant used by
    * a comparison row, which tightens every row and drops the labels and
@@ -314,6 +480,22 @@ export interface GenomeTrackProps extends Omit<
   density?: "comfortable" | "compact";
   /** Render the skeleton instead of the data. */
   loading?: boolean;
+  /**
+   * A fetch is in flight for data the track is already showing something for.
+   *
+   * Distinct from `loading`, and the distinction is the whole point: `loading`
+   * replaces the plot with a skeleton, which is right for a first load and
+   * wrong for every subsequent one. A shell that re-fetches a finer stride on
+   * zoom would otherwise blank the plot on every wheel notch. This keeps the
+   * last good data drawn and marks the track as busy, so the picture degrades
+   * to "slightly stale" rather than to "gone".
+   *
+   * The header keeps reporting the resolution of the data actually on screen
+   * while this is set. Showing the pending stride would be a claim about
+   * precision the plot does not yet have.
+   * @default false
+   */
+  refreshing?: boolean;
   /** Render a typed error state instead of the data. */
   error?: TrackError | null;
   /**

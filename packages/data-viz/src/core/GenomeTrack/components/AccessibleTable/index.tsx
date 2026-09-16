@@ -9,6 +9,14 @@ interface AccessibleTableProps {
   rows: TrackRow[];
   /** Id used by the plot's `aria-describedby`. */
   id: string;
+  /**
+   * Annotations the lane cap left undrawn.
+   *
+   * The table lists them anyway — it describes the payload, and an annotation
+   * that did not fit is still in the region. The count is stated so a reader is
+   * not left thinking the plot and the table describe the same set.
+   */
+  annotationOverflow: number;
 }
 
 /**
@@ -26,6 +34,7 @@ interface AccessibleTableProps {
  * scrolled into view.
  */
 export const AccessibleTable = ({
+  annotationOverflow,
   data,
   id,
   rows,
@@ -41,6 +50,14 @@ export const AccessibleTable = ({
         {locus.gene ? `, gene ${locus.gene}` : ""}
         {`. SAE ${data.sae.sae}.`}
       </p>
+
+      {kinds.has("annotations") &&
+        data.annotations &&
+        annotationOverflow > 0 && (
+          <p>
+            {`${annotationOverflow} of these annotations overlap too deeply to be drawn, and are listed here only.`}
+          </p>
+        )}
 
       {kinds.has("annotations") && data.annotations && (
         <table>

@@ -1,4 +1,7 @@
-import { makeMockGenomeTrackData } from "../__storybook__/mockGenomeTrackData";
+import {
+  makeFeatureOverview,
+  makeMockGenomeTrackData,
+} from "../__storybook__/mockGenomeTrackData";
 
 /**
  * The fixture generator gets its own tests.
@@ -71,13 +74,140 @@ describe("makeMockGenomeTrackData", () => {
 
   it("does not tile annotations, so intergenic regions exist", () => {
     const data = makeMockGenomeTrackData();
-    const covered = (data.annotations ?? []).reduce(
-      (total, annotation) => total + (annotation.end - annotation.start + 1),
-      0
-    );
     const span = data.locus.end - data.locus.start + 1;
 
-    expect(covered).toBeLessThan(span);
+    // Union rather than summed length: annotations overlap, so adding up their
+    // lengths can exceed the window while still leaving it full of gaps.
+    const bases = new Set<number>();
+
+    (data.annotations ?? []).forEach((annotation) => {
+      for (let bp = annotation.start; bp <= annotation.end; bp += 1) {
+        bases.add(bp);
+      }
+    });
+
+    expect(bases.size).toBeLessThan(span);
+  });
+
+  it("emits annotations in start order, as the server does", () => {
+    // The packing that lays out the annotation lanes sorts defensively, but a
+    // fixture that arrived unsorted would mean the tests never exercise the
+    // ordered path the real payload takes.
+    const { annotations } = makeMockGenomeTrackData();
+
+    (annotations ?? []).slice(1).forEach((annotation, index) => {
+      expect(annotation.start).toBeGreaterThanOrEqual(
+        (annotations ?? [])[index].start
+      );
+    });
+  });
+
+  /**
+   * The fixture has to contain both shapes of overlap or the annotation lanes
+   * are never exercised by anything but a hand-written test.
+   */
+  it("overlaps some annotations, the way a real GFF does", () => {
+    const annotations = makeMockGenomeTrackData().annotations ?? [];
+    const overlapping = annotations.filter((annotation, index) =>
+      annotations.some(
+        (other, otherIndex) =>
+          otherIndex !== index &&
+          annotation.start <= other.end &&
+          other.start <= annotation.end
+      )
+    );
+
+    expect(overlapping.length).toBeGreaterThan(0);
+  });
+
+  it("nests one annotation inside another, which is the case that broke hit-testing", () => {
+    // Partial overlap leaves `end` ascending, so a binary search over it
+    // survives. Nesting does not, and it is the reason a lane is guaranteed
+    // not to contain overlapping blocks.
+    const annotations = makeMockGenomeTrackData().annotations ?? [];
+    const nested = annotations.filter((annotation, index) =>
+      annotations.some(
+        (host, hostIndex) =>
+          hostIndex !== index &&
+          host.start < annotation.start &&
+          host.end > annotation.end
+      )
+    );
+
+    expect(nested.length).toBeGreaterThan(0);
+  });
+
+  it("emits a fixed-size overview regardless of chromosome length", () => {
+    const { overview } = makeMockGenomeTrackData();
+
+    // The shape the real endpoint promises: 1,000 bins whether the chromosome
+    // is 4.6 Mb or 250 Mb, so the payload cost does not scale with the genome.
+    expect(overview?.bins.n_bins).toBe(1_000);
+    expect(overview?.chrom_length).toBe(
+      makeMockGenomeTrackData().locus.genome_length
+    );
+
+    // And no pooled signal. The minimap draws the selected feature's trace
+    // instead, so a server that never computes the pooled one is the case the
+    // fixture should exercise.
+    expect(overview?.values).toBeUndefined();
+  });
+
+  it("spans the whole chromosome with the overview's bin axis", () => {
+    const { overview } = makeMockGenomeTrackData();
+
+    // The minimap maps bin index to chromosome coordinate through this axis,
+    // so an axis that did not start at 1 or cover `chrom_length` would put the
+    // signal in the wrong place along the bar.
+    expect(overview?.bins.start).toBe(1);
+    expect(overview?.bins.end).toBe(overview?.chrom_length);
+    expect(
+      (overview?.bins.stride ?? 0) * (overview?.bins.n_bins ?? 0)
+    ).toBeGreaterThanOrEqual(overview?.chrom_length ?? 0);
+  });
+
+  it("gives a feature's chromosome trace quiet stretches as well as peaks", () => {
+    const { values } = makeFeatureOverview(13_492);
+
+    // A minimap against uniform noise is a solid block, which would hide both
+    // the normalization and the question the row exists to answer. This is the
+    // shape a single feature has, and the reason it beats the pooled maximum
+    // that used to be drawn here: a max over eight features is quiet nowhere.
+    expect(Math.max(...values)).toBeGreaterThan(0.5);
+    expect(values.filter((value) => value < 0.1).length).toBeGreaterThan(
+      values.length / 2
+    );
+  });
+
+  it("gives each feature its own trace, stable for a given feature", () => {
+    const a = makeFeatureOverview(13_492);
+    const b = makeFeatureOverview(5_912);
+
+    // Keyed off the feature id, so selecting the same feature twice draws the
+    // same thing and two features are visibly different.
+    expect(a.values).toEqual(makeFeatureOverview(13_492).values);
+    expect(a.values).not.toEqual(b.values);
+    expect(a.feature_id).toBe(13_492);
+  });
+
+  it("puts a feature's trace on the chromosome's own bin axis", () => {
+    const { bins } = makeFeatureOverview(13_492);
+    const { overview } = makeMockGenomeTrackData();
+
+    // The minimap maps bin index to chromosome coordinate through this axis,
+    // so an axis disagreeing with the overview's would place the signal wrong.
+    expect(bins).toEqual(overview?.bins);
+  });
+
+  it("distinguishes an absent overview from an omitted one", () => {
+    // False emits the "this deployment cannot draw a minimap" case: null with
+    // `overview_available` false. That is a different claim from the null a
+    // re-fetch sends, which means "unchanged, you already have it".
+    const without = makeMockGenomeTrackData({ withOverview: false });
+
+    expect(without.overview).toBeNull();
+    expect(without.caps.overview_available).toBe(false);
+    expect(makeMockGenomeTrackData().caps.overview_available).toBe(true);
   });
 
   it("distinguishes no annotation coverage from an empty list", () => {

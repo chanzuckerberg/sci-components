@@ -2,6 +2,7 @@ import {
   AnnotationBlock,
   BinAxis,
   FeatureTrace,
+  GenomeSelection,
   GenomeTrackData,
   SegmentBlock,
 } from "../GenomeTrack.types";
@@ -16,10 +17,17 @@ import { GenomeScale, binIndexToRange, bpToBinIndex, pxToBp } from "./scale";
  * canvas is tainted. Instead the pointer is converted to a base coordinate and
  * matched against the same intervals the renderer drew.
  *
- * Blocks arrive sorted by start (the server emits them that way and the
- * component does not reorder), so the search is a binary search for the first
- * candidate plus a short forward scan. That matters at 200 kb windows with
- * thousands of annotations, where a linear scan per mouse move is visible.
+ * The search is a binary search for the first candidate plus a short forward
+ * scan, which matters at 200 kb windows with thousands of blocks where a linear
+ * scan per mouse move is visible.
+ *
+ * That search needs the blocks it is given to be sorted by `end`, which is a
+ * stronger requirement than it looks. Start order alone does not give it:
+ * nested intervals — a tRNA inside a CDS — are in start order with `end` going
+ * backwards, and the search then steps over the enclosing gene and reports
+ * nothing. So each row hands over a list that cannot nest. Segments come that
+ * way from the pipeline, which partitions exhaustively; annotations are made
+ * that way by `packAnnotationLanes`, one lane at a time.
  */
 
 /**
@@ -129,6 +137,57 @@ function segmentHit(segment: SegmentBlock, rowIndex: number): BlockHit {
   };
 }
 
+/**
+ * The selection a click on `hit` should produce, or null to clear.
+ *
+ * Pure, and separate from the pointer handler that calls it, because this is
+ * the whole of the decision and none of it needs an event: what kind of thing
+ * was clicked, and whether clicking it again should toggle it off. Inside the
+ * handler it was only reachable through a simulated pointer sequence, which
+ * jsdom cannot deliver against a zero-width canvas.
+ *
+ * A features row yields a `"series"` selection rather than clearing, which is
+ * how the minimap learns whose activation to draw across the chromosome.
+ */
+export function selectionForHit(
+  hit: TrackHit | null,
+  selectedId: string | null
+): GenomeSelection | null {
+  // Empty space clears, and so does a second click on what is already
+  // selected. Emitting null rather than nothing is what lets a shell close a
+  // detail surface from here.
+  if (!hit || hit.id === selectedId) return null;
+
+  return { id: hit.id, kind: hit.kind === "trace" ? "series" : "block" };
+}
+
+/**
+ * Selection id for a feature trace.
+ *
+ * One function rather than a template literal at each site, because the id is
+ * now built in one place and compared in another — the hit-test emits it into
+ * a `"series"` selection, and the minimap tests the selected id against a
+ * feature it has chromosome-wide data for. Two literals that drifted would
+ * make the minimap silently draw nothing.
+ */
+export function seriesId(featureId: number): string {
+  return `feature-${featureId}`;
+}
+
+/**
+ * The feature id inside a `"series"` selection, or null if the id is not one.
+ *
+ * The inverse of `seriesId`, and public for the same reason the component
+ * emits ids at all: a shell that receives `{ kind: "series", id }` has to know
+ * which feature to fetch a chromosome-wide trace for. Without this it would
+ * reimplement the format by hand, which is how the two ends drift.
+ */
+export function featureIdFromSeries(id: string): number | null {
+  const match = /^feature-(\d+)$/.exec(id);
+
+  return match ? Number(match[1]) : null;
+}
+
 function traceHit(
   trace: FeatureTrace,
   bins: BinAxis,
@@ -145,7 +204,7 @@ function traceHit(
   return {
     detail: label,
     end: range.end,
-    id: `feature-${trace.feature_id}`,
+    id: seriesId(trace.feature_id),
     kind: "trace",
     label: `Feature ${trace.feature_id}`,
     rowIndex,
@@ -195,7 +254,10 @@ export function hitTest(
       return traceHit(trace, data.bins, bp, traceDetail(data, trace), rowIndex);
     }
     case "annotations": {
-      const found = blockAt(data.annotations ?? [], bp, slack);
+      // The row's own lane, which is what makes the search above correct: the
+      // whole annotation list can nest, and `firstCandidate` would walk past a
+      // gene that encloses another. A packed lane cannot nest.
+      const found = blockAt(row.laneBlocks ?? [], bp, slack);
 
       return found ? annotationHit(found, rowIndex) : null;
     }

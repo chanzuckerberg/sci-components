@@ -159,3 +159,22 @@ export function fitLabel(
 
   return lo > 0 ? text.slice(0, lo) + ellipsis : null;
 }
+
+/**
+ * An activation value for the features row's y axis: "2", "0.87", "13".
+ *
+ * Two significant figures below ten and whole numbers above it, which is as
+ * much as a label a few pixels wide can carry. Trailing zeros are dropped, so a
+ * peak of exactly 2 reads "2" rather than "2.0" — the axis states a maximum,
+ * not a measurement to that precision.
+ *
+ * Empty for a peak of zero or a non-finite value. A silent trace has no maximum
+ * worth labelling, and "0" at the top of a row that also has an implied zero at
+ * the bottom says the row is empty twice.
+ */
+export function formatActivation(value: number): string {
+  if (!Number.isFinite(value) || value <= 0) return "";
+  if (value >= 10) return String(Math.round(value));
+
+  return String(Number(value.toPrecision(2)));
+}

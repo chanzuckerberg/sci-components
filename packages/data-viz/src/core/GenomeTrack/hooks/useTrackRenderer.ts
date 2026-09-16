@@ -1,16 +1,19 @@
 import { RefObject, useEffect } from "react";
-import { GenomeTrackData } from "../GenomeTrack.types";
+import { FeatureOverview, GenomeTrackData } from "../GenomeTrack.types";
 import {
   DrawContext,
   drawAnnotations,
   drawFeatureBars,
   drawMinimap,
+  drawOutsideWindow,
   drawSegments,
   drawSequence,
 } from "../renderers";
-import { TrackRow, featureTraces } from "../utils/layout";
+import { TrackExtents, uncoveredRanges } from "../utils/extent";
+import { TrackRow, featureTraces, viewportBands } from "../utils/layout";
 import { TrackPalette } from "../utils/palette";
 import { GenomeScale } from "../utils/scale";
+import { SegmentPalette } from "../utils/segmentColors";
 
 /**
  * Drives the canvas.
@@ -25,8 +28,17 @@ export interface UseTrackRendererOptions {
   data: GenomeTrackData | null;
   density: "comfortable" | "compact";
   dpr: number;
+  /** The navigable extent and the window the payload covers. */
+  extents: TrackExtents;
+  /**
+   * The selected feature's chromosome-wide trace, already matched against the
+   * selection. Null draws the minimap with no signal in it.
+   */
+  featureOverview: FeatureOverview | null;
   /** Total canvas height, from the layout pass. */
   height: number;
+  /** Category colours for the segments row, from the payload's full enum. */
+  segmentCategories: SegmentPalette;
   hoveredId: string | null;
   palette: TrackPalette;
   rows: TrackRow[];
@@ -42,10 +54,18 @@ export interface UseTrackRendererOptions {
  * every row kind that lands adds a case here rather than another branch inside
  * the hook.
  */
-function drawRow(draw: DrawContext, data: GenomeTrackData): void {
+function drawRow(
+  draw: DrawContext,
+  data: GenomeTrackData,
+  extents: TrackExtents,
+  featureOverview: FeatureOverview | null,
+  segmentCategories: SegmentPalette
+): void {
   switch (draw.row.kind) {
     case "annotations":
-      drawAnnotations(draw, data.annotations ?? []);
+      // One lane's worth, not the whole payload: the row is one of several
+      // lanes the layout packed the annotations into, and it carries its own.
+      drawAnnotations(draw, draw.row.laneBlocks ?? []);
       break;
     case "features": {
       const trace = featureTraces(data)[draw.row.traceIndex ?? 0];
@@ -54,11 +74,14 @@ function drawRow(draw: DrawContext, data: GenomeTrackData): void {
       break;
     }
     case "minimap":
-      // The payload's window is the extent the viewport is placed inside.
-      drawMinimap(draw, { end: data.locus.end, start: data.locus.start });
+      drawMinimap(draw, {
+        extent: extents.extent,
+        feature: featureOverview,
+        window: extents.window,
+      });
       break;
     case "segments":
-      drawSegments(draw, data.segments);
+      drawSegments(draw, data.segments, segmentCategories);
       break;
     case "sequence":
       if (data.sequence) drawSequence(draw, data.sequence, data.locus.start);
@@ -74,11 +97,14 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
     data,
     density,
     dpr,
+    extents,
+    featureOverview,
     height,
     hoveredId,
     palette,
     rows,
     scale,
+    segmentCategories,
     selectedId,
     width,
   } = options;
@@ -114,17 +140,38 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       selectedId,
     };
 
-    rows.forEach((row) => drawRow({ ...base, row }, data));
+    rows.forEach((row) =>
+      drawRow(
+        { ...base, row },
+        data,
+        extents,
+        featureOverview,
+        segmentCategories
+      )
+    );
+
+    // Last, so the wash sits over every row it applies to rather than under
+    // the blocks it is meant to explain the absence of.
+    drawOutsideWindow(
+      ctx,
+      palette,
+      scale,
+      viewportBands(rows),
+      uncoveredRanges(scale, extents.window)
+    );
   }, [
     canvasRef,
     data,
     density,
     dpr,
+    extents,
+    featureOverview,
     height,
     hoveredId,
     palette,
     rows,
     scale,
+    segmentCategories,
     selectedId,
     width,
   ]);

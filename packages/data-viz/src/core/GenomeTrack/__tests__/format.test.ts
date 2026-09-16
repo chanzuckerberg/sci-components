@@ -1,4 +1,5 @@
 import {
+  formatActivation,
   formatResolution,
   formatTick,
   tickInterval,
@@ -97,5 +98,33 @@ describe("ticksFor", () => {
 
   it("returns nothing when no multiple falls inside the range", () => {
     expect(ticksFor(101, 149, 1_000)).toEqual([]);
+  });
+});
+
+describe("formatActivation", () => {
+  it("drops trailing zeros, so a peak of 2 reads as 2", () => {
+    // The axis states a maximum, not a measurement to one decimal place.
+    expect(formatActivation(2)).toBe("2");
+    expect(formatActivation(1)).toBe("1");
+  });
+
+  it("keeps two significant figures below ten", () => {
+    expect(formatActivation(0.874)).toBe("0.87");
+    expect(formatActivation(0.5)).toBe("0.5");
+    expect(formatActivation(1.05)).toBe("1.1");
+  });
+
+  it("rounds to whole numbers above ten, where decimals will not fit", () => {
+    expect(formatActivation(12.7)).toBe("13");
+    expect(formatActivation(123)).toBe("123");
+  });
+
+  it("says nothing for a silent or invalid trace", () => {
+    // A silent trace has no maximum worth labelling, and the bars already sit
+    // on a drawn baseline that reads as zero.
+    expect(formatActivation(0)).toBe("");
+    expect(formatActivation(-1)).toBe("");
+    expect(formatActivation(Number.NaN)).toBe("");
+    expect(formatActivation(Number.POSITIVE_INFINITY)).toBe("");
   });
 });

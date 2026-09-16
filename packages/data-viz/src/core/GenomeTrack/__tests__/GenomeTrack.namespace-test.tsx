@@ -130,7 +130,7 @@ const GenomeTrackNameSpaceTest = (props: GenomeTrackProps) => {
         density="compact"
         disableNavigation
         featureRowHeight={12}
-        labelWidth={0}
+        showRowLabels={false}
         maxFeatureRows={3}
         tracks={["annotations", "segments", "features"]}
       />
