@@ -25,6 +25,14 @@
      */
     "composite": false,
     "declaration": false,
-    "noEmit": true
+    "noEmit": true,
+    /*
+     * Required since `package.json` gained an `exports` map. Docs examples and
+     * tests import the library by its published name, so TypeScript resolves
+     * this package's own export map; with `composite` off there is no inferred
+     * project root to resolve `"."` against, and it reports TS2209 rather than
+     * guessing.
+     */
+    "rootDir": "./src"
   }
 }

@@ -44,14 +44,55 @@ const useClientBanner = (chunk) =>
 //   is enforced separately via `tsc` / CI).
 const dtsOptions = { compilerOptions: { noEmitOnError: false }, eager: true };
 
+/**
+ * The package's public entry points: the barrel, plus one per component.
+ *
+ * The barrel alone is not enough for a bundler. It is a single module, so
+ * importing one component from it reaches every other component's module-level
+ * code — and those `styled(...)` calls are not provably pure, so they survive
+ * tree shaking and hold their dependencies' imports open with them. An app that
+ * renders only `GenomeTrack` still ends up carrying Mol* and ECharts, which
+ * under a strict CSP is fatal rather than merely wasteful: both contain
+ * `new Function`.
+ *
+ * Building each component as its own entry gives consumers a graph limited to
+ * what that component reaches. Code genuinely shared between entries is hoisted
+ * into shared chunks rather than duplicated, so importing two subpaths, or a
+ * subpath and the barrel, still yields one copy of anything common.
+ *
+ * Keys are output basenames and must stay in step with the `exports` map in
+ * `package.json`; `src/entries/*.ts` documents what each one re-exports.
+ */
+const entryModules = {
+  HeatmapChart: "src/entries/HeatmapChart.ts",
+  ProteinStructureViewer: "src/entries/ProteinStructureViewer.ts",
+  StackedBarChart: "src/entries/StackedBarChart.ts",
+  colorScales: "src/entries/colorScales.ts",
+  index: "src/index.ts",
+};
+
+/** Entry map for one format, e.g. `{ "index.esm": ..., "GenomeTrack.esm": ... }`. */
+const inputsFor = (format) =>
+  Object.fromEntries(
+    Object.entries(entryModules).map(([name, module]) => [
+      `${name}.${format}`,
+      module,
+    ])
+  );
+
 export default defineConfig([
-  // ESM build: emits index.esm.js (+ "use client") and index.esm.d.ts.
+  // ESM build: emits <entry>.esm.js (+ "use client") and <entry>.esm.d.ts.
   {
     external,
-    input: { "index.esm": "src/index.ts" },
+    input: inputsFor("esm"),
     onwarn,
     output: {
       banner: useClientBanner,
+      // Shared code lifted out of two or more entries. Named rather than
+      // hashed so the published file list is stable between releases, and
+      // prefixed so it is obvious which files are entry points and which are
+      // implementation detail nobody should import directly.
+      chunkFileNames: "shared/[name].esm.js",
       dir: "dist",
       entryFileNames: "[name].js",
       format: "esm",
@@ -69,15 +110,16 @@ export default defineConfig([
     ],
     transform,
   },
-  // CJS build: emits index.cjs.js (+ "use client"). Declarations are emitted in
-  // a separate pass because rolldown-plugin-dts cannot run during a cjs-format
-  // build.
+  // CJS build: emits <entry>.cjs.js (+ "use client"). Declarations are emitted
+  // in a separate pass because rolldown-plugin-dts cannot run during a
+  // cjs-format build.
   {
     external,
-    input: { "index.cjs": "src/index.ts" },
+    input: inputsFor("cjs"),
     onwarn,
     output: {
       banner: '"use client";',
+      chunkFileNames: "shared/[name].cjs.js",
       dir: "dist",
       entryFileNames: "[name].js",
       exports: "named",
@@ -86,12 +128,13 @@ export default defineConfig([
     plugins: [svgr(), url()],
     transform,
   },
-  // CJS declarations: emit index.cjs.d.ts via an esm-format, dts-only pass.
+  // CJS declarations: emit <entry>.cjs.d.ts via an esm-format, dts-only pass.
   {
     external,
-    input: { "index.cjs": "src/index.ts" },
+    input: inputsFor("cjs"),
     onwarn,
     output: {
+      chunkFileNames: "shared/[name].cjs.js",
       dir: "dist",
       entryFileNames: "[name].js",
       format: "esm",
