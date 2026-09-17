@@ -44,14 +44,38 @@ const useClientBanner = (chunk) =>
 //   is enforced separately via `tsc` / CI).
 const dtsOptions = { compilerOptions: { noEmitOnError: false }, eager: true };
 
+/**
+ * The package's public entry points: the barrel, plus one per component.
+ *
+ * Building each component as its own entry gives consumers a graph limited to
+ * what that component reaches.
+ */
+const entryModules = {
+  HeatmapChart: "src/entries/HeatmapChart.ts",
+  ProteinStructureViewer: "src/entries/ProteinStructureViewer.ts",
+  StackedBarChart: "src/entries/StackedBarChart.ts",
+  colorScales: "src/entries/colorScales.ts",
+  index: "src/index.ts",
+};
+
+/** Entry map for one format, e.g. `{ "index.esm": ..., "GenomeTrack.esm": ... }`. */
+const inputsFor = (format) =>
+  Object.fromEntries(
+    Object.entries(entryModules).map(([name, module]) => [
+      `${name}.${format}`,
+      module,
+    ])
+  );
+
 export default defineConfig([
-  // ESM build: emits index.esm.js (+ "use client") and index.esm.d.ts.
+  // ESM build: emits <entry>.esm.js (+ "use client") and <entry>.esm.d.ts.
   {
     external,
-    input: { "index.esm": "src/index.ts" },
+    input: inputsFor("esm"),
     onwarn,
     output: {
       banner: useClientBanner,
+      chunkFileNames: "shared/[name].esm.js",
       dir: "dist",
       entryFileNames: "[name].js",
       format: "esm",
@@ -69,15 +93,16 @@ export default defineConfig([
     ],
     transform,
   },
-  // CJS build: emits index.cjs.js (+ "use client"). Declarations are emitted in
-  // a separate pass because rolldown-plugin-dts cannot run during a cjs-format
-  // build.
+  // CJS build: emits <entry>.cjs.js (+ "use client"). Declarations are emitted
+  // in a separate pass because rolldown-plugin-dts cannot run during a
+  // cjs-format build.
   {
     external,
-    input: { "index.cjs": "src/index.ts" },
+    input: inputsFor("cjs"),
     onwarn,
     output: {
       banner: '"use client";',
+      chunkFileNames: "shared/[name].cjs.js",
       dir: "dist",
       entryFileNames: "[name].js",
       exports: "named",
@@ -86,12 +111,13 @@ export default defineConfig([
     plugins: [svgr(), url()],
     transform,
   },
-  // CJS declarations: emit index.cjs.d.ts via an esm-format, dts-only pass.
+  // CJS declarations: emit <entry>.cjs.d.ts via an esm-format, dts-only pass.
   {
     external,
-    input: { "index.cjs": "src/index.ts" },
+    input: inputsFor("cjs"),
     onwarn,
     output: {
+      chunkFileNames: "shared/[name].cjs.js",
       dir: "dist",
       entryFileNames: "[name].js",
       format: "esm",

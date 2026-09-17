@@ -78,6 +78,7 @@ yarn add @czi-sds/data-viz</code></pre>
   "@czi-sds/components": "^24.0.0",
   "@emotion/styled": "^11.11.0",
   "@mui/material": "^9.0.0",
+  "@phosphor-icons/react": "^2.1.10",
   "echarts": "^6.0.0",
   "lodash": "^4.17.21",
   "react": "&gt;=18.0.0",
@@ -85,14 +86,31 @@ yarn add @czi-sds/data-viz</code></pre>
 }</code></pre>
   </figure>
 </div>
+<p>
+  <code>ProteinStructureViewer</code> additionally requires
+  <code>molstar</code> and <code>rxjs</code>. They are declared as
+  <em>optional</em> peer dependencies, so a package manager will not install
+  them for you: every other component in this package would otherwise pay
+  about 105&nbsp;MB of install for a 3D structure viewer it never renders.
+  Install them only if you use that component.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>Shell</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-sh">// only if you render ProteinStructureViewer
+npm i molstar rxjs
+// with yarn
+yarn add molstar rxjs</code></pre>
+  </figure>
+</div>
 <p>To install the package together with its peer dependencies:</p>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>Shell</figcaption>
     <pre><code class="sds-doc-codeblock-content language-sh">// with npm
-npm i @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material echarts lodash react react-dom
+npm i @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material @phosphor-icons/react echarts lodash react react-dom
 // with yarn
-yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material echarts lodash react react-dom</code></pre>
+yarn add @czi-sds/data-viz @czi-sds/components @emotion/styled @mui/material @phosphor-icons/react echarts lodash react react-dom</code></pre>
   </figure>
 </div>
 <p>

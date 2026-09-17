@@ -5,7 +5,11 @@ import {
   BARNASE_BARSTAR_PDB,
   BARNASE_BARSTAR_PLDDT,
 } from "./barnaseBarstar";
-import { CRAMBIN_MAX_RESIDUE_VALUE, CRAMBIN_RESIDUE_VALUES } from "./constants";
+import {
+  CRAMBIN_MAX_RESIDUE_VALUE,
+  CRAMBIN_MMCIF,
+  CRAMBIN_RESIDUE_VALUES,
+} from "./constants";
 import { MYOGLOBIN_PDB } from "./myoglobin";
 import { ProteinStructureViewer } from "./stories/default";
 
@@ -75,7 +79,7 @@ export default {
     disableChainHighlightOnHover: {
       control: { type: "boolean" },
       description:
-        "Stop a chain lighting up in the 3D view while its name is pointed at, in the legend or the sequence panel.",
+        "Stop other chains from dimming in the 3D view while a chain's name is pointed at, in the legend or the sequence panel.",
     },
     showChainLegend: {
       control: { type: "boolean" },
@@ -158,6 +162,15 @@ export const Default = {
 };
 
 /**
+ * The same crambin structure as Default, supplied as mmCIF (PDBx) instead of
+ * PDB. The viewer detects the format from the text.
+ */
+export const WithMMCIFFormat = {
+  args: { ...DEFAULT_ARGS, structure: CRAMBIN_MMCIF },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
  * A per-residue value overlay replaces pLDDT coloring and swaps the legend to
  * the continuous plasma scale. Hovering a residue reports its activation.
  */
@@ -215,7 +228,7 @@ export const WithoutPlddt = {
 export const WithLigands = {
   args: {
     ...DEFAULT_ARGS,
-    pdb: MYOGLOBIN_PDB,
+    structure: MYOGLOBIN_PDB,
     plddt: null,
     stats: MYOGLOBIN_STATS,
   },
@@ -249,7 +262,7 @@ export const WithoutSequenceViewerOrLegend = {
 export const Complex = {
   args: {
     ...DEFAULT_ARGS,
-    pdb: BARNASE_BARSTAR_PDB,
+    structure: BARNASE_BARSTAR_PDB,
     plddt: BARNASE_BARSTAR_PLDDT,
     stats: COMPLEX_STATS,
   },
@@ -270,7 +283,7 @@ export const Complex = {
 export const ComplexWithResidueOverlay = {
   args: {
     ...DEFAULT_ARGS,
-    pdb: BARNASE_BARSTAR_PDB,
+    structure: BARNASE_BARSTAR_PDB,
     plddt: BARNASE_BARSTAR_PLDDT,
     residueOverlay: INTERFACE_OVERLAY,
     stats: COMPLEX_STATS,
@@ -290,7 +303,7 @@ export const ComplexWithResidueOverlay = {
 export const ComplexWithChainColoring = {
   args: {
     ...DEFAULT_ARGS,
-    pdb: BARNASE_BARSTAR_PDB,
+    structure: BARNASE_BARSTAR_PDB,
     plddt: null,
     stats: COMPLEX_STATS,
   },
@@ -306,7 +319,7 @@ export const ComplexWithCustomChainColors = {
   args: {
     ...DEFAULT_ARGS,
     chainColors: { A: "#FADC24", B: "#D0F3DF" },
-    pdb: BARNASE_BARSTAR_PDB,
+    structure: BARNASE_BARSTAR_PDB,
     plddt: null,
     stats: COMPLEX_STATS,
   },
@@ -332,7 +345,7 @@ export const ComplexWithCustomChainColors = {
 export const ComplexWithHiddenChain = {
   args: {
     ...DEFAULT_ARGS,
-    pdb: BARNASE_BARSTAR_PDB,
+    structure: BARNASE_BARSTAR_PDB,
     plddt: BARNASE_BARSTAR_PLDDT,
     stats: COMPLEX_STATS,
   },
@@ -366,14 +379,18 @@ export const WithImageDownload = {
 };
 
 /**
- * A whole chain selected on load. The camera frames everything the selection
- * covers rather than approaching a point, so a chain is fitted to the view, and
- * the readout reports the mean pLDDT across it instead of a single score.
+ * A whole chain selected on load. The chain is drawn exactly as it would be
+ * unselected and the rest of the complex dims around it, which is what pointing
+ * at a chain's name does for as long as the pointer is there.
+ *
+ * The camera frames everything the selection covers rather than approaching a
+ * point, so a chain is fitted to the view, and the readout reports the mean
+ * pLDDT across it instead of a single score.
  */
 export const ComplexWithChainSelected = {
   args: {
     ...DEFAULT_ARGS,
-    pdb: BARNASE_BARSTAR_PDB,
+    structure: BARNASE_BARSTAR_PDB,
     plddt: BARNASE_BARSTAR_PLDDT,
     stats: COMPLEX_STATS,
   },

@@ -33,11 +33,18 @@ import { themeColor } from "./utils/color";
 import {
   PLDDT_BAND_COLORS,
   PLDDT_COLOR_SCALE,
-  injectPlddtIntoPdb,
+  injectPlddt,
 } from "./utils/plddt";
 
 export * from "./ProteinStructureViewer.types";
-export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
+export {
+  PLDDT_COLOR_SCALE,
+  injectPlddt,
+  injectPlddtIntoMmcif,
+  injectPlddtIntoPdb,
+} from "./utils/plddt";
+export { detectStructureFormat } from "./utils/structureFormat";
+export type { StructureFormat } from "./utils/structureFormat";
 
 /** Fallbacks for theme tokens Mol* needs as concrete hex colors. */
 const FALLBACK_EDGE_COLOR = "#6c6c6c";
@@ -144,7 +151,7 @@ const ProteinStructureViewer = forwardRef(
       onResidueClick,
       onResidueHover,
       onSelectionChange,
-      pdb,
+      structure,
       plddt,
       residueOverlay,
       selection = null,
@@ -167,11 +174,12 @@ const ProteinStructureViewer = forwardRef(
 
     const hasPlddt = Boolean(plddt && plddt.length > 0);
 
-    // pLDDT scores ride into Mol* through the PDB's B-factor column, so the
-    // text is rewritten rather than passed alongside.
-    const processedPdb = useMemo(
-      () => (hasPlddt ? injectPlddtIntoPdb(pdb, plddt as number[]) : pdb),
-      [pdb, plddt, hasPlddt]
+    // pLDDT scores ride into Mol* through the B-factor column, so the text is
+    // rewritten rather than passed alongside. PDB and mmCIF each have their
+    // own column layout; `injectPlddt` picks the matching rewriter.
+    const processedStructure = useMemo(
+      () => (hasPlddt ? injectPlddt(structure, plddt as number[]) : structure),
+      [structure, plddt, hasPlddt]
     );
 
     const bgColor = useMemo(
@@ -242,13 +250,14 @@ const ProteinStructureViewer = forwardRef(
     );
 
     /**
-     * Lights a chain up while its name is pointed at, in the legend or in the
-     * sequence panel's captions.
+     * Dims every other chain while a chain's name is pointed at, in the legend
+     * or in the sequence panel's captions, and leaves the selected chain lit
+     * once the pointer has gone.
      *
-     * Reached through a ref because the two ends need each other: lighting a
-     * chain up takes the plugin, which the hook below creates, and that hook
-     * has to be handed the callback to give the captions it renders. This one
-     * is stable and forwards to whatever the highlight hook installs once
+     * Reached through a ref because the two ends need each other: dimming
+     * other chains takes the plugin, which the hook below creates, and that
+     * hook has to be handed the callback to give the captions it renders. This
+     * one is stable and forwards to whatever the highlight hook installs once
      * there is a plugin for it to talk to.
      */
     const highlightChainRef = useRef<(chainId: string | null) => void>(
@@ -279,6 +288,7 @@ const ProteinStructureViewer = forwardRef(
       chainColorThemeRef,
       chains: loadedChains,
       isReady,
+      loadCount,
       pluginRef,
       residuesByChainRef,
       residueValueThemeRef,
@@ -301,16 +311,19 @@ const ProteinStructureViewer = forwardRef(
       onResidueHover: handleResidueHover,
       onSelectionChange,
       onSelectionClear: handleSelectionClear,
-      pdb: processedPdb,
       selectedChains,
       sequenceViewerBackgroundColor,
       showAxes,
       showSequenceViewer,
+      structure: processedStructure,
     });
 
     highlightChainRef.current = useChainHighlight({
       disabled: disableChainHighlightOnHover,
+      hiddenChains,
+      loadCount,
       pluginRef,
+      selectedChains,
     });
 
     // The plugin owns chain discovery, but the chain-keyed props have to be

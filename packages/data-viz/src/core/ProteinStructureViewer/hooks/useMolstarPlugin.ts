@@ -32,6 +32,7 @@ import {
   scanChains,
 } from "../utils/chains";
 import { mergeMolstarSpec } from "../utils/molstarSpec";
+import { detectStructureFormat } from "../utils/structureFormat";
 import { residueRefFromLoci, selectionFromLoci } from "../utils/residueRef";
 import type {
   MolstarViewSettings,
@@ -415,17 +416,20 @@ const NOTHING_LOADED: LoadedStructure = {
 };
 
 /**
- * Parses the PDB and draws each chain: a cartoon over its polymer, and
+ * Parses the structure and draws each chain: a cartoon over its polymer, and
  * ball-and-stick over its ligands and ions.
  *
  * Mol*'s `default` hierarchy preset would be shorter, but it groups every
  * polymer chain into a single component, and a component is the unit Mol* can
  * hide. Building them per chain is what makes a chain individually hideable;
  * the refs handed back are what `setSubtreeVisibility` is later pointed at.
+ *
+ * The wrapper detects PDB vs mmCIF from the text; this just forwards that
+ * guess to Mol*.
  */
 async function loadStructure(
   plugin: PluginUIContext,
-  pdbData: string,
+  structureText: string,
   usePlddtColoring: boolean,
   showAxes: boolean
 ): Promise<LoadedStructure> {
@@ -433,12 +437,12 @@ async function loadStructure(
     await plugin.clear();
 
     const data = await plugin.builders.data.rawData({
-      data: pdbData,
+      data: structureText,
       label: "Structure",
     });
     const trajectory = await plugin.builders.structure.parseTrajectory(
       data,
-      "pdb"
+      detectStructureFormat(structureText)
     );
     const model = await plugin.builders.structure.createModel(trajectory);
     const structure = await plugin.builders.structure.createStructure(model, {
@@ -538,7 +542,7 @@ export async function applyColorTheme(
 
 export interface UseMolstarPluginOptions {
   containerRef: RefObject<HTMLDivElement | null>;
-  pdb: string;
+  structure: string;
   hasPlddt: boolean;
   backgroundColor: Color;
   edgeColor: Color;
@@ -582,6 +586,12 @@ export interface UseMolstarPluginResult {
   setClipRatio: (ratio: number | null) => void;
   /** Chains of the loaded structure, or `[]` before one is loaded. */
   chains: ChainRef[];
+  /**
+   * How many structures have been loaded into the plugin. A load rebuilds the
+   * state tree, so anything written into it outside this hook has to be written
+   * again - which is what this counts for.
+   */
+  loadCount: number;
 }
 
 /**
@@ -590,8 +600,8 @@ export interface UseMolstarPluginResult {
  *
  * The plugin is built once and then mutated in place. Creating it is expensive
  * and destroys the camera, so prop changes that Mol* can absorb (background,
- * axes, coloring, new PDB) are pushed in through the effects below and in the
- * sibling hooks rather than by rebuilding.
+ * axes, coloring, new structure) are pushed in through the effects below and in
+ * the sibling hooks rather than by rebuilding.
  */
 // eslint-disable-next-line sonarjs/cognitive-complexity
 export function useMolstarPlugin({
@@ -612,11 +622,11 @@ export function useMolstarPlugin({
   onResidueHover,
   onSelectionChange,
   onSelectionClear,
-  pdb,
   selectedChains,
   sequenceViewerBackgroundColor,
   showAxes,
   showSequenceViewer,
+  structure,
 }: UseMolstarPluginOptions): UseMolstarPluginResult & {
   residueValueThemeRef: RefObject<ResidueValueTheme | null>;
   chainColorThemeRef: RefObject<ChainColorTheme | null>;
@@ -625,9 +635,10 @@ export function useMolstarPlugin({
   const pluginRef = useRef<PluginUIContext | null>(null);
   const residueValueThemeRef = useRef<ResidueValueTheme | null>(null);
   const chainColorThemeRef = useRef<ChainColorTheme | null>(null);
-  const currentPdbRef = useRef<string | null>(null);
+  const currentStructureRef = useRef<string | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [chains, setChains] = useState<ChainRef[]>([]);
+  const [loadCount, setLoadCount] = useState(0);
 
   /**
    * Where each chain's components live in the state tree, which is what the
@@ -701,6 +712,10 @@ export function useMolstarPlugin({
       setChains((prev) =>
         chainsEqual(prev, loaded.chains) ? prev : loaded.chains
       );
+
+      // Counted rather than derived from the chains, which a structure reloaded
+      // for a theme or for late-arriving scores comes back with unchanged.
+      setLoadCount((count) => count + 1);
     },
     []
   );
@@ -728,9 +743,9 @@ export function useMolstarPlugin({
     highlightColor,
     mode,
     molstarSpec,
-    pdb,
     showAxes,
     showSequenceViewer,
+    structure,
   });
   initialPropsRef.current = {
     backgroundColor,
@@ -739,9 +754,9 @@ export function useMolstarPlugin({
     highlightColor,
     mode,
     molstarSpec,
-    pdb,
     showAxes,
     showSequenceViewer,
+    structure,
   };
 
   /**
@@ -814,11 +829,11 @@ export function useMolstarPlugin({
 
         const loaded = await loadStructure(
           plugin,
-          latest.pdb,
+          latest.structure,
           latest.hasPlddt,
           latest.showAxes
         );
-        currentPdbRef.current = latest.pdb;
+        currentStructureRef.current = latest.structure;
         adoptLoadedStructure(plugin, loaded);
 
         /**
@@ -898,7 +913,7 @@ export function useMolstarPlugin({
       chainColorThemeRef.current = null;
       componentRefsRef.current = new Map();
       residuesByChainRef.current = new Map();
-      currentPdbRef.current = null;
+      currentStructureRef.current = null;
       clipRatioRef.current = null;
       setIsReady(false);
     };
@@ -967,29 +982,29 @@ export function useMolstarPlugin({
     // isReady replays this for the same reason as the colors above.
   }, [showAxes, isReady]);
 
-  // Reload the structure when the PDB data changes.
+  // Reload the structure when the data changes.
   useEffect(() => {
     const plugin = pluginRef.current;
     if (!plugin || !isReady) return;
-    if (pdb === currentPdbRef.current) return;
+    if (structure === currentStructureRef.current) return;
 
-    currentPdbRef.current = pdb;
+    currentStructureRef.current = structure;
     clipRatioRef.current = null;
     // The residue under the pointer belongs to the outgoing structure, and the
     // hover guard compares against it. Clearing it keeps the first hover on the
     // new structure from being read as a repeat.
     lastHoverRef.current = null;
-    loadStructure(plugin, pdb, hasPlddt, showAxes).then((loaded) => {
+    loadStructure(plugin, structure, hasPlddt, showAxes).then((loaded) => {
       // The plugin can have been disposed while the structure was loading.
       if (pluginRef.current !== plugin) return;
       adoptLoadedStructure(plugin, loaded);
     });
-    // isReady replays this once the plugin is up, which is what catches a pdb
-    // swapped while it was still being built; the comparison above makes the
-    // replay a no-op when it was not.
+    // isReady replays this once the plugin is up, which is what catches a
+    // structure swapped while it was still being built; the comparison above
+    // makes the replay a no-op when it was not.
     // showAxes is read for the reload only; changing it alone is handled above.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pdb, hasPlddt, isReady, adoptLoadedStructure]);
+  }, [structure, hasPlddt, isReady, adoptLoadedStructure]);
 
   // Show and hide chains in place. Visibility is a state-tree flag, so it costs
   // neither a reload nor a recolor, and a hidden chain stops being drawn - which
@@ -1007,6 +1022,7 @@ export function useMolstarPlugin({
     chainColorThemeRef,
     chains,
     isReady,
+    loadCount,
     pluginRef,
     residuesByChainRef,
     residueValueThemeRef,

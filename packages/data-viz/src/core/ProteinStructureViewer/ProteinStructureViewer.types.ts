@@ -77,7 +77,7 @@ export interface ResidueRef {
 /**
  * A chain the viewer found in the structure it loaded, reported through
  * `onChainsChange` so a consumer can label, color or hide chains by name
- * without parsing the PDB itself.
+ * without parsing the structure itself.
  *
  * `chainId` is the file's own name for the chain, the same one `ResidueRef`
  * reports, and the key every chain-keyed prop takes. A chain carrying several
@@ -182,8 +182,8 @@ export interface ProteinStructureViewerProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
   "onSelect"
 > {
-  /** Structure to render, as raw PDB text. */
-  pdb: string;
+  /** Structure to render, as raw PDB or mmCIF (PDBx) text. */
+  structure: string;
   /**
    * Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When
    * supplied the structure is colored by pLDDT unless `residueOverlay` takes
@@ -226,6 +226,10 @@ export interface ProteinStructureViewerProps extends Omit<
    * What is selected, or null when nothing is. Controlled: the camera frames
    * whatever the selection covers, and clearing it zooms back out to the
    * default view.
+   *
+   * Residues are drawn in ball-and-stick over the cartoon; whole chains are
+   * left as they are and the chains around them dim, the same as hovering a
+   * chain's name.
    */
   selection?: StructureSelection | null;
   /**
@@ -248,14 +252,13 @@ export interface ProteinStructureViewerProps extends Omit<
    */
   showChainLegend?: boolean;
   /**
-   * Stop a chain from lighting up in the 3D view while its name is pointed at,
-   * in the legend or above its grid in the sequence panel.
+   * Stop other chains from dimming in the 3D view while a chain's name is
+   * pointed at, in the legend or above its grid in the sequence panel.
    *
-   * The highlight is on by default, since on a complex it is how a reader
-   * finds out which chain is which. Turn it off where the movement is more
-   * distracting than the answer is useful - a grid of viewers a pointer
-   * crosses on its way somewhere else, or a page driving its own highlighting
-   * through `selection`.
+   * The dim is on by default, since on a complex it is how a reader finds out
+   * which chain is which. Turn it off where the movement is more distracting
+   * than the answer is useful - a grid of viewers a pointer crosses on its way
+   * somewhere else, or a page driving its own highlighting through `selection`.
    * @default false
    */
   disableChainHighlightOnHover?: boolean;
