@@ -79,7 +79,7 @@ export default {
     disableChainHighlightOnHover: {
       control: { type: "boolean" },
       description:
-        "Stop a chain lighting up in the 3D view while its name is pointed at, in the legend or the sequence panel.",
+        "Stop other chains from dimming in the 3D view while a chain's name is pointed at, in the legend or the sequence panel.",
     },
     showChainLegend: {
       control: { type: "boolean" },

@@ -38,7 +38,7 @@ export interface ChainLegendProps {
   onChainToggle: (chainId: string) => void;
   /** Selects a whole chain, or clears it when it is already the selection. */
   onChainSelect: (chainId: string) => void;
-  /** Lights a chain up in the 3D view; called with null on leave. */
+  /** Dims other chains in the 3D view; called with null on leave. */
   onChainHover?: (chainId: string | null) => void;
 }
 

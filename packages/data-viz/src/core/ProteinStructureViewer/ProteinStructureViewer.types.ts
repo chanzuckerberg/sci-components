@@ -248,14 +248,13 @@ export interface ProteinStructureViewerProps extends Omit<
    */
   showChainLegend?: boolean;
   /**
-   * Stop a chain from lighting up in the 3D view while its name is pointed at,
-   * in the legend or above its grid in the sequence panel.
+   * Stop other chains from dimming in the 3D view while a chain's name is
+   * pointed at, in the legend or above its grid in the sequence panel.
    *
-   * The highlight is on by default, since on a complex it is how a reader
-   * finds out which chain is which. Turn it off where the movement is more
-   * distracting than the answer is useful - a grid of viewers a pointer
-   * crosses on its way somewhere else, or a page driving its own highlighting
-   * through `selection`.
+   * The dim is on by default, since on a complex it is how a reader finds out
+   * which chain is which. Turn it off where the movement is more distracting
+   * than the answer is useful - a grid of viewers a pointer crosses on its way
+   * somewhere else, or a page driving its own highlighting through `selection`.
    * @default false
    */
   disableChainHighlightOnHover?: boolean;

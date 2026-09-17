@@ -8,13 +8,9 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import { OrderedSet } from "molstar/lib/mol-data/int";
-import type { ElementIndex } from "molstar/lib/mol-model/structure";
 import {
   QueryContext,
   Structure,
-  StructureElement,
-  StructureProperties,
   StructureSelection,
 } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
@@ -26,9 +22,10 @@ import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
-// Imported rather than copied: which pink it is can be tuned, and a test that
-// pinned its own would fail on that alone.
-import { CHAIN_HIGHLIGHT_COLOR } from "../hooks/useChainHighlight";
+import {
+  CHAIN_DIM_TRANSPARENCY,
+  componentChainId,
+} from "../hooks/useChainHighlight";
 import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
@@ -50,6 +47,16 @@ import { lociForSeqId, structureFromPdb } from "./molstarStructure";
 const createPluginUI = vi.hoisted(() => vi.fn());
 
 vi.mock("molstar/lib/mol-plugin-ui", () => ({ createPluginUI }));
+
+const setStructureTransparency = vi.hoisted(() => vi.fn(async () => undefined));
+const clearStructureTransparency = vi.hoisted(() =>
+  vi.fn(async () => undefined)
+);
+
+vi.mock("molstar/lib/mol-plugin-state/helpers/structure-transparency", () => ({
+  clearStructureTransparency,
+  setStructureTransparency,
+}));
 
 /**
  * Stands in for a Mol* behavior, which is how the hover and click paths are
@@ -108,8 +115,8 @@ function stubCamera() {
 }
 
 /**
- * Marking colors the theme is holding when a chain highlight borrows them.
- * Arbitrary, and distinct from the pink, so a restore is visible as a restore.
+ * Residue-hover marking colors the stub canvas starts with. Arbitrary values
+ * distinct from the theme, so a `setProps` restore would be visible as one.
  */
 const THEME_HIGHLIGHT_COLOR = Color.fromRgb(1, 2, 3);
 const THEME_EDGE_COLOR = Color.fromRgb(4, 5, 6);
@@ -169,6 +176,15 @@ function createStubPlugin(structure?: Structure) {
   const visibility = new Map<string, boolean>();
   const transforms = new Map<string, { ref: string }>();
 
+  /**
+   * Hierarchy components the load path built. The same array the plugin
+   * reports, so a chain hover can find them the way it does in a browser.
+   */
+  const hierarchyComponents: {
+    key: string;
+    cell: { transform: { ref: string } };
+  }[] = [];
+
   /** Focus shell settings, one entry per reconfiguration. */
   const focusShells: { components: string[]; expandRadius: number }[] = [];
 
@@ -224,6 +240,10 @@ function createStubPlugin(structure?: Structure) {
             const ref = `component-${key}`;
             components.push(key);
             transforms.set(ref, { ref });
+            hierarchyComponents.push({
+              cell: { transform: { ref } },
+              key: `structure-component-${key}`,
+            });
             return { ref };
           }
         ),
@@ -233,9 +253,9 @@ function createStubPlugin(structure?: Structure) {
       camera: stubCamera(),
       didDraw: subscribable(),
       /**
-       * What the chain highlight borrows and hands back. Real Mol* keeps these
-       * current as `setProps` is called; here they stay as the theme left them,
-       * which is all the restore has to find.
+       * Residue-hover marking colors the theme is holding. Real Mol* keeps
+       * these current as `setProps` is called; here they stay as the theme
+       * left them.
        */
       props: {
         marking: { highlightEdgeColor: THEME_EDGE_COLOR },
@@ -295,7 +315,10 @@ function createStubPlugin(structure?: Structure) {
         hierarchy: {
           current: {
             structures: [
-              { cell: { obj: { data: structure } }, components: [] },
+              {
+                cell: { obj: { data: structure } },
+                components: hierarchyComponents,
+              },
             ],
           },
         },
@@ -965,13 +988,11 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     /**
-     * Pointing at a chain's name lights the chain up in the 3D view, which on
-     * a complex is how you find out which half of it is which.
+     * Pointing at a chain's name dims every other chain in the 3D view, which
+     * on a complex is how you find out which half of it is which.
      *
-     * Mol*'s marking draws it, so what is asserted is the loci handed to the
-     * highlight manager and the colors swapped in around it. Marking colors
-     * belong to the renderer rather than to the loci, so they are borrowed for
-     * the length of the hover - and the test below checks they come back.
+     * Mol* transparency draws it, so what is asserted is which components were
+     * dimmed and that a leave (or a move to another name) restores them.
      */
     describe("hovering a chain's name", () => {
       /** The chain legend's row for a chain, which is what reports the hover. */
@@ -983,103 +1004,130 @@ describe("<ProteinStructureViewer />", () => {
         return name.closest("div") as HTMLElement;
       }
 
-      /** Residue indices covered by the loci the highlight was last handed. */
-      function highlightedResidues(): number[] {
-        const { calls } =
-          plugin.managers.interactivity.lociHighlights.highlightOnly.mock;
-        const { loci } = calls[calls.length - 1]?.[0] as {
-          loci: StructureElement.Loci;
-        };
-        const residues = new Set<number>();
-        const location = StructureElement.Location.create(loci.structure);
-
-        for (const element of loci.elements) {
-          location.unit = element.unit;
-
-          OrderedSet.forEach(element.indices, (i) => {
-            location.element = element.unit.elements[i] as ElementIndex;
-            residues.add(StructureProperties.residue.key(location));
-          });
-        }
-
-        return [...residues].sort((a, b) => a - b);
+      /** Arguments the dim was last called with. */
+      function lastDim(): [unknown, unknown[], number] | undefined {
+        const { calls } = setStructureTransparency.mock;
+        return calls[calls.length - 1] as unknown as
+          | [unknown, unknown[], number]
+          | undefined;
       }
 
-      it("highlights that chain's polymer, in pink", async () => {
+      /** Chain ids whose components were in the last dim call. */
+      function dimmedChainIds(): string[] {
+        const components = (lastDim()?.[1] ?? []) as {
+          key?: string;
+          cell: { transform: { ref: string } };
+        }[];
+
+        return components
+          .map((component) => componentChainId(component))
+          .filter((id): id is string => id !== undefined);
+      }
+
+      beforeEach(() => {
+        setStructureTransparency.mockClear();
+        clearStructureTransparency.mockClear();
+      });
+
+      it("dims every other chain, leaving the hovered one opaque", async () => {
         renderViewer({ structure: BARNASE_BARSTAR_PDB });
         fireEvent.mouseEnter(await chainRow("B"));
 
-        // Barstar occupies 110-198; barnase's 0-109 are left dark.
-        const residues = highlightedResidues();
-        expect(residues).toHaveLength(89);
-        expect(residues[0]).toBe(110);
-        expect(residues[residues.length - 1]).toBe(198);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
 
-        expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
-          marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
-          renderer: {
-            highlightColor: CHAIN_HIGHLIGHT_COLOR,
-            highlightStrength: expect.any(Number),
-          },
-        });
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+        expect(lastDim()?.[2]).toBe(CHAIN_DIM_TRANSPARENCY);
       });
 
-      it("hands the theme's colors back when the pointer leaves", async () => {
+      it("restores full opacity when the pointer leaves", async () => {
         renderViewer({ structure: BARNASE_BARSTAR_PDB });
         const row = await chainRow("B");
 
         fireEvent.mouseEnter(row);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
         fireEvent.mouseLeave(row);
 
-        expect(
-          plugin.managers.interactivity.lociHighlights.clearHighlights
-        ).toHaveBeenCalled();
-        expect(plugin.canvas3d.setProps).toHaveBeenLastCalledWith({
-          marking: { highlightEdgeColor: THEME_EDGE_COLOR },
-          renderer: {
-            highlightColor: THEME_HIGHLIGHT_COLOR,
-            highlightStrength: THEME_HIGHLIGHT_STRENGTH,
-          },
-        });
+        await waitFor(() =>
+          expect(clearStructureTransparency.mock.calls.length).toBeGreaterThan(
+            1
+          )
+        );
+        expect(setStructureTransparency).toHaveBeenCalledTimes(1);
       });
 
-      it("stays dark when disableChainHighlightOnHover is set", async () => {
+      it("stays at full opacity when disableChainHighlightOnHover is set", async () => {
         renderViewer({
           disableChainHighlightOnHover: true,
           structure: BARNASE_BARSTAR_PDB,
         });
         fireEvent.mouseEnter(await chainRow("B"));
+        fireEvent.mouseLeave(await chainRow("B"));
 
-        expect(
-          plugin.managers.interactivity.lociHighlights.highlightOnly
-        ).not.toHaveBeenCalled();
-        expect(plugin.canvas3d.setProps).not.toHaveBeenCalledWith(
-          expect.objectContaining({
-            marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
-          })
+        expect(setStructureTransparency).not.toHaveBeenCalled();
+        expect(clearStructureTransparency).not.toHaveBeenCalled();
+      });
+
+      /**
+       * Turned off part way through a hover, the dim would otherwise be
+       * stranded: no leave follows a prop change, so nothing would take it off.
+       */
+      it("restores full opacity when hovering is turned off mid-hover", async () => {
+        const view = (disable: boolean) => (
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              disableChainHighlightOnHover={disable}
+              structure={BARNASE_BARSTAR_PDB}
+            />
+          </ThemeProvider>
+        );
+
+        const { rerender } = render(view(false));
+        fireEvent.mouseEnter(await chainRow("B"));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        clearStructureTransparency.mockClear();
+
+        rerender(view(true));
+
+        await waitFor(() =>
+          expect(clearStructureTransparency).toHaveBeenCalled()
         );
       });
 
       /**
-       * Moving from one name to the next without leaving the list snapshots
-       * the theme's colors once. Taking a second would capture the pink as the
-       * color to restore, and leave the viewer stuck in it.
+       * Moving from one name to the next without leaving the list dims the
+       * previous hover's chain and then restores everything on leave. Each
+       * hover clears first, so layers cannot stack.
        */
-      it("still hands them back after moving between two chains", async () => {
+      it("restores full opacity after moving between two chains", async () => {
         renderViewer({ structure: BARNASE_BARSTAR_PDB });
         const barstar = await chainRow("B");
 
         fireEvent.mouseEnter(await chainRow("A"));
-        fireEvent.mouseEnter(barstar);
-        fireEvent.mouseLeave(barstar);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        setStructureTransparency.mockClear();
 
-        expect(plugin.canvas3d.setProps).toHaveBeenLastCalledWith({
-          marking: { highlightEdgeColor: THEME_EDGE_COLOR },
-          renderer: {
-            highlightColor: THEME_HIGHLIGHT_COLOR,
-            highlightStrength: THEME_HIGHLIGHT_STRENGTH,
-          },
-        });
+        fireEvent.mouseEnter(barstar);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+
+        fireEvent.mouseLeave(barstar);
+        await waitFor(() =>
+          expect(clearStructureTransparency.mock.calls.length).toBeGreaterThan(
+            0
+          )
+        );
+        expect(setStructureTransparency).toHaveBeenCalledTimes(1);
       });
     });
 

@@ -250,13 +250,13 @@ const ProteinStructureViewer = forwardRef(
     );
 
     /**
-     * Lights a chain up while its name is pointed at, in the legend or in the
-     * sequence panel's captions.
+     * Dims every other chain while a chain's name is pointed at, in the
+     * legend or in the sequence panel's captions.
      *
-     * Reached through a ref because the two ends need each other: lighting a
-     * chain up takes the plugin, which the hook below creates, and that hook
-     * has to be handed the callback to give the captions it renders. This one
-     * is stable and forwards to whatever the highlight hook installs once
+     * Reached through a ref because the two ends need each other: dimming
+     * other chains takes the plugin, which the hook below creates, and that
+     * hook has to be handed the callback to give the captions it renders. This
+     * one is stable and forwards to whatever the highlight hook installs once
      * there is a plugin for it to talk to.
      */
     const highlightChainRef = useRef<(chainId: string | null) => void>(
