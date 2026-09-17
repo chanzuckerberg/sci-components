@@ -1719,6 +1719,11 @@ __metadata:
     react: ">=18.0.0"
     react-dom: ">=18.0.0"
     rxjs: ^7.8.2
+  peerDependenciesMeta:
+    molstar:
+      optional: true
+    rxjs:
+      optional: true
   languageName: unknown
   linkType: soft
 
