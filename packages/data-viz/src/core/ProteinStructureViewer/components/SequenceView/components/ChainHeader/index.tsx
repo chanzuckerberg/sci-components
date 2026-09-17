@@ -15,7 +15,7 @@ export interface ChainHeaderProps {
   onSelect?: (chainId: string) => void;
   /** Shows or hides the chain's cartoon. */
   onToggle?: (chainId: string) => void;
-  /** Lights the chain up in the 3D view; called with null on leave. */
+  /** Dims other chains in the 3D view; called with null on leave. */
   onHover?: (chainId: string | null) => void;
 }
 
@@ -43,12 +43,12 @@ export default function ChainHeader({
      * The row rather than the name inside it. The name is a button that a
      * hidden chain disables, and a disabled button reports no pointer leaving
      * it - so a chain hidden while its name was under the pointer would strand
-     * the highlight on. The row is never disabled, and it is the chain's line
+     * the dim on. The row is never disabled, and it is the chain's line
      * either way.
      *
-     * Focus as well as hover, so the highlight is reachable by keyboard. React
+     * Focus as well as hover, so the dim is reachable by keyboard. React
      * gives these from `focusin`/`focusout`, which bubble, so tabbing to the
-     * name or the toggle inside lights the chain up.
+     * name or the toggle inside dims the other chains.
      */
     <ChainHeaderRow
       onBlur={() => onHover?.(null)}

@@ -8,8 +8,12 @@ import {
   PLDDT_COLOR_SCALE,
   ResidueRef,
   ResidueValueOverlay,
+  StructureFormat,
   StructureSelection,
   StructureStat,
+  detectStructureFormat,
+  injectPlddt,
+  injectPlddtIntoMmcif,
   injectPlddtIntoPdb,
   sampleColorScale,
 } from "@czi-sds/data-viz";
@@ -20,6 +24,16 @@ import React, { useState } from "react";
 
 const PDB =
   "ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N";
+
+const MMCIF = `data_1CRN
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+ATOM 1 17.047 14.099 3.625
+`;
 
 const STATS: StructureStat[] = [
   { label: "Known", value: "62%" },
@@ -58,23 +72,29 @@ const ProteinStructureViewerNameSpaceTest = (
   const [chains, setChains] = useState<ChainRef[]>([]);
 
   // Utilities re-exported alongside the component.
+  const format: StructureFormat = detectStructureFormat(PDB);
+  injectPlddt(PDB, [0.94], format);
   injectPlddtIntoPdb(PDB, [0.94]);
+  injectPlddtIntoMmcif(MMCIF, [0.94]);
   sampleColorScale(PLDDT_COLOR_SCALE, 0.9, 1);
   sampleColorScale(CUSTOM_SCALE, 1, 2, 0.5);
 
   return (
     <>
       {/* Basic usage */}
-      <ProteinStructureViewer pdb={PDB} />
+      <ProteinStructureViewer structure={PDB} />
+
+      {/* mmCIF (PDBx); format is detected from the text */}
+      <ProteinStructureViewer structure={MMCIF} />
 
       {/* With pLDDT coloring and stats */}
-      <ProteinStructureViewer pdb={PDB} plddt={[0.94]} stats={STATS} />
+      <ProteinStructureViewer structure={PDB} plddt={[0.94]} stats={STATS} />
 
       {/* Reserved stat slot */}
-      <ProteinStructureViewer pdb={PDB} stats={[null, STATS[1], null]} />
+      <ProteinStructureViewer structure={PDB} stats={[null, STATS[1], null]} />
 
       {/* With a residue value overlay */}
-      <ProteinStructureViewer pdb={PDB} residueOverlay={OVERLAY} />
+      <ProteinStructureViewer structure={PDB} residueOverlay={OVERLAY} />
 
       {/* Controlled selection: one residue */}
       <ProteinStructureViewer
@@ -85,15 +105,18 @@ const ProteinStructureViewerNameSpaceTest = (
           console.log(residue?.chainId, residue?.seqId, residue?.compId)
         }
         onSelectionChange={setSelection}
-        pdb={PDB}
+        structure={PDB}
         selection={selection}
       />
 
       {/* A range, a whole chain, and the two combined */}
-      <ProteinStructureViewer pdb={PDB} selection={{ residues: [1, 2, 3] }} />
-      <ProteinStructureViewer pdb={PDB} selection={{ chains: ["A"] }} />
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
+        selection={{ residues: [1, 2, 3] }}
+      />
+      <ProteinStructureViewer structure={PDB} selection={{ chains: ["A"] }} />
+      <ProteinStructureViewer
+        structure={PDB}
         selection={{ chains: ["A"], residues: [150] }}
       />
 
@@ -101,11 +124,11 @@ const ProteinStructureViewerNameSpaceTest = (
       <ProteinStructureViewer
         chainColors={CHAIN_COLORS}
         onChainsChange={setChains}
-        pdb={PDB}
+        structure={PDB}
       />
 
       {/* The capture button, at its defaults and fully specified */}
-      <ProteinStructureViewer download={{}} pdb={PDB} />
+      <ProteinStructureViewer download={{}} structure={PDB} />
       <ProteinStructureViewer
         download={{
           backgroundColor: "#FFFFFF",
@@ -113,7 +136,7 @@ const ProteinStructureViewerNameSpaceTest = (
           resolution: DOWNLOAD_RESOLUTION,
           showAxes: true,
         }}
-        pdb={PDB}
+        structure={PDB}
       />
 
       {/* Chain visibility, controlled */}
@@ -121,7 +144,7 @@ const ProteinStructureViewerNameSpaceTest = (
         disableChainHighlightOnHover
         hiddenChains={hiddenChains}
         onChainVisibilityChange={setHiddenChains}
-        pdb={PDB}
+        structure={PDB}
         showChainLegend={chains.length > 1}
       />
 
@@ -138,7 +161,7 @@ const ProteinStructureViewerNameSpaceTest = (
           },
           config: [[PluginConfig.Viewport.ShowControls, true]],
         }}
-        pdb={PDB}
+        structure={PDB}
       />
 
       {/* A named choice has to be given whole, name and params together. */}
@@ -149,13 +172,13 @@ const ProteinStructureViewerNameSpaceTest = (
           },
           layout: { initial: { isExpanded: false } },
         }}
-        pdb={PDB}
+        structure={PDB}
       />
 
       {/* Chrome toggles and background overrides */}
       <ProteinStructureViewer
         backgroundColor="#101010"
-        pdb={PDB}
+        structure={PDB}
         sequenceViewerBackgroundColor="rgb(24 24 27)"
         showAxes={false}
         showLegend={false}

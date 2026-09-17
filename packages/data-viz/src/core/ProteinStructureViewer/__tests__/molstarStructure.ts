@@ -1,5 +1,7 @@
 import { OrderedSet } from "molstar/lib/mol-data/int";
+import { CIF } from "molstar/lib/mol-io/reader/cif";
 import { parsePDB } from "molstar/lib/mol-io/reader/pdb/parser";
+import { trajectoryFromMmCIF } from "molstar/lib/mol-model-formats/structure/mmcif";
 import { trajectoryFromPDB } from "molstar/lib/mol-model-formats/structure/pdb";
 import type { ElementIndex } from "molstar/lib/mol-model/structure";
 import {
@@ -23,6 +25,21 @@ export async function structureFromPdb(pdb: string): Promise<Structure> {
   const trajectory = await trajectoryFromPDB(parsed.result).run();
 
   // getFrameAtIndex hands back either a model or a task that resolves to one.
+  const frame = trajectory.getFrameAtIndex(0);
+  const model = "run" in frame ? await frame.run() : frame;
+
+  return Structure.ofModel(model);
+}
+
+/** Builds a Mol* structure from mmCIF (PDBx) text, the way the viewer does. */
+export async function structureFromMmcif(mmcif: string): Promise<Structure> {
+  const parsed = await CIF.parse(mmcif).run();
+  if (parsed.isError) throw new Error(parsed.message);
+
+  const block = parsed.result.blocks[0];
+  if (!block) throw new Error("mmCIF file has no data blocks");
+
+  const trajectory = await trajectoryFromMmCIF(block, parsed.result).run();
   const frame = trajectory.getFrameAtIndex(0);
   const model = "run" in frame ? await frame.run() : frame;
 

@@ -1,7 +1,11 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { Structure } from "molstar/lib/mol-model/structure";
-import { residueIndices, structureFromPdb } from "./molstarStructure";
+import {
+  residueIndices,
+  structureFromMmcif,
+  structureFromPdb,
+} from "./molstarStructure";
 
 /**
  * The documented examples inline their own structure so a reader can copy one
@@ -11,37 +15,39 @@ import { residueIndices, structureFromPdb } from "./molstarStructure";
  * past the end of the chain renders a structure with no coloring at all.
  *
  * These read the examples as text, which is how the docs display them too, so
- * every example is covered as soon as it inlines a `PDB` constant.
+ * every example is covered as soon as it inlines a `PDB` or `MMCIF` constant.
  */
 
 const EXAMPLES_DIR = join(__dirname, "../__storybook__/docs/examples");
 
 const PDB_LITERAL = /const PDB = `([\s\S]*?)`;/;
+const MMCIF_LITERAL = /const MMCIF = `([\s\S]*?)`;/;
 const PLDDT_LITERAL = /const PLDDT = \[([\s\S]*?)\];/;
 const VALUES_LITERAL = /new Map\(\[([\s\S]*?)\]\);/;
 
 const examples = readdirSync(EXAMPLES_DIR)
   .filter((name) => name.endsWith(".tsx"))
-  .map((name) => ({
-    name,
-    pdb: readFileSync(join(EXAMPLES_DIR, name), "utf8").match(PDB_LITERAL),
-    source: readFileSync(join(EXAMPLES_DIR, name), "utf8"),
-  }))
-  .filter((example) => example.pdb !== null);
+  .map((name) => {
+    const source = readFileSync(join(EXAMPLES_DIR, name), "utf8");
+    const pdb = source.match(PDB_LITERAL);
+    const mmcif = source.match(MMCIF_LITERAL);
+    return { mmcif, name, pdb, source };
+  })
+  .filter((example) => example.pdb !== null || example.mmcif !== null);
 
 describe("documented examples", () => {
   it("finds examples to check", () => {
     expect(examples.length).toBeGreaterThan(0);
   });
 
-  describe.each(examples)("$name", ({ pdb, source }) => {
+  describe.each(examples)("$name", ({ mmcif, pdb, source }) => {
     let structure: Structure;
     let residues: Set<number>;
 
     beforeAll(async () => {
-      structure = await structureFromPdb(
-        (pdb as RegExpMatchArray)[1] as string
-      );
+      structure = pdb
+        ? await structureFromPdb((pdb as RegExpMatchArray)[1] as string)
+        : await structureFromMmcif((mmcif as RegExpMatchArray)[1] as string);
       residues = residueIndices(structure);
     });
 
