@@ -58,6 +58,7 @@
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
+  "sideEffects": false,
   "author": "",
   "homepage": "https://github.com/chanzuckerberg/sci-components/tree/main/packages/sci-data-viz#readme",
   "description": "2023 Science Initiative Data Visualization Component Library",
