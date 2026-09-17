@@ -83,6 +83,37 @@ export function focusResidue(
 }
 
 /**
+ * Frames the camera on a loci without cropping anything around it.
+ *
+ * The counterpart to `focusResidue` for something meant to be read in context
+ * rather than peeled down to: the camera fits what was selected, and the depth
+ * clip is left open to the whole scene, so the rest of the structure stays on
+ * screen. A selected chain is shown by dimming the chains around it, and they
+ * have to be there to be dimmed.
+ */
+export function frameLoci(
+  plugin: PluginUIContext,
+  loci: StructureElement.Loci
+): void {
+  const camera = plugin.canvas3d?.camera;
+  if (!camera) return;
+
+  const sphere = Loci.getBoundingSphere(loci);
+  if (!sphere) return;
+
+  const framingRadius = Math.max(
+    sphere.radius + FOCUS_EXTRA_RADIUS,
+    FOCUS_MIN_RADIUS
+  );
+  const snapshot = camera.getFocus(sphere.center, framingRadius);
+
+  camera.setState(
+    { ...snapshot, radius: camera.state.radiusMax },
+    FOCUS_DURATION_MS
+  );
+}
+
+/**
  * Keeps the depth clip in sync with the zoom while a residue is focused.
  *
  * Mol*'s trackball zoom moves the camera without touching the clip radius, so

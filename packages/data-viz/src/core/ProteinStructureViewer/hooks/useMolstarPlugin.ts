@@ -586,6 +586,12 @@ export interface UseMolstarPluginResult {
   setClipRatio: (ratio: number | null) => void;
   /** Chains of the loaded structure, or `[]` before one is loaded. */
   chains: ChainRef[];
+  /**
+   * How many structures have been loaded into the plugin. A load rebuilds the
+   * state tree, so anything written into it outside this hook has to be written
+   * again - which is what this counts for.
+   */
+  loadCount: number;
 }
 
 /**
@@ -632,6 +638,7 @@ export function useMolstarPlugin({
   const currentStructureRef = useRef<string | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [chains, setChains] = useState<ChainRef[]>([]);
+  const [loadCount, setLoadCount] = useState(0);
 
   /**
    * Where each chain's components live in the state tree, which is what the
@@ -705,6 +712,10 @@ export function useMolstarPlugin({
       setChains((prev) =>
         chainsEqual(prev, loaded.chains) ? prev : loaded.chains
       );
+
+      // Counted rather than derived from the chains, which a structure reloaded
+      // for a theme or for late-arriving scores comes back with unchanged.
+      setLoadCount((count) => count + 1);
     },
     []
   );
@@ -1011,6 +1022,7 @@ export function useMolstarPlugin({
     chainColorThemeRef,
     chains,
     isReady,
+    loadCount,
     pluginRef,
     residuesByChainRef,
     residueValueThemeRef,

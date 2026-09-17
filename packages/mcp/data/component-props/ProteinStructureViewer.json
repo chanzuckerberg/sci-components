@@ -95,7 +95,7 @@
       },
       "selection": {
         "defaultValue": null,
-        "description": "What is selected, or null when nothing is. Controlled: the camera frames\nwhatever the selection covers, and clearing it zooms back out to the\ndefault view.",
+        "description": "What is selected, or null when nothing is. Controlled: the camera frames\nwhatever the selection covers, and clearing it zooms back out to the\ndefault view.\n\nResidues are drawn in ball-and-stick over the cartoon; whole chains are\nleft as they are and the chains around them dim, the same as hovering a\nchain's name.",
         "isRequired": false,
         "type": "StructureSelection | null"
       },
