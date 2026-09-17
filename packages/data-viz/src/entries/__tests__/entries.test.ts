@@ -126,6 +126,13 @@ describe("subpath entries", () => {
  * under the naming convention the rolldown config emits.
  */
 describe("exports map", () => {
+  /** The root entry every existing consumer imports. */
+  const ROOT_SUBPATH = ".";
+  /** Tooling reads this directly, so the map has to keep letting it through. */
+  const MANIFEST_SUBPATH = "./package.json";
+  /** Escape hatch for consumers who already deep-imported a built file. */
+  const DEEP_IMPORT_SUBPATH = "./dist/*";
+
   const packageRoot = join(__dirname, "..", "..", "..");
   const manifest = JSON.parse(
     readFileSync(join(packageRoot, "package.json"), "utf8")
@@ -141,7 +148,7 @@ describe("exports map", () => {
 
   /** Published subpaths, minus the root, the escape hatch, and the manifest. */
   const subpaths = Object.keys(manifest.exports)
-    .filter((key) => key !== "." && key !== "./package.json")
+    .filter((key) => key !== ROOT_SUBPATH && key !== MANIFEST_SUBPATH)
     .filter((key) => !key.includes("*"))
     .map((key) => key.replace(/^\.\//, ""))
     .sort();
@@ -160,9 +167,9 @@ describe("exports map", () => {
     // `.` is what existing consumers import; `./dist/*` is what keeps a
     // consumer who already deep-imported a built file working now that an
     // `exports` map restricts resolution.
-    expect(manifest.exports["."]).toBeDefined();
-    expect(manifest.exports["./dist/*"]).toBe("./dist/*");
-    expect(manifest.exports["./package.json"]).toBe("./package.json");
+    expect(manifest.exports[ROOT_SUBPATH]).toBeDefined();
+    expect(manifest.exports[DEEP_IMPORT_SUBPATH]).toBe("./dist/*");
+    expect(manifest.exports[MANIFEST_SUBPATH]).toBe("./package.json");
   });
 
   it.each(["import", "require"] as const)(
