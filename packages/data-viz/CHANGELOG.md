@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.3.0...@czi-sds/data-viz@2.4.0) (2026-09-17)
+
+### Features
+
+- data viz subpath exports ([#1193](https://github.com/chanzuckerberg/sci-components/issues/1193)) ([621e827](https://github.com/chanzuckerberg/sci-components/commit/621e8276d7ce0df5006c690e4ed3684a0c8b950b))
+
 # [2.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.1.1...@czi-sds/data-viz@2.3.0) (2026-09-17)
 
 ### Bug Fixes
