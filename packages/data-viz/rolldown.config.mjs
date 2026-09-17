@@ -47,21 +47,8 @@ const dtsOptions = { compilerOptions: { noEmitOnError: false }, eager: true };
 /**
  * The package's public entry points: the barrel, plus one per component.
  *
- * The barrel alone is not enough for a bundler. It is a single module, so
- * importing one component from it reaches every other component's module-level
- * code — and those `styled(...)` calls are not provably pure, so they survive
- * tree shaking and hold their dependencies' imports open with them. An app that
- * renders only `GenomeTrack` still ends up carrying Mol* and ECharts, which
- * under a strict CSP is fatal rather than merely wasteful: both contain
- * `new Function`.
- *
  * Building each component as its own entry gives consumers a graph limited to
- * what that component reaches. Code genuinely shared between entries is hoisted
- * into shared chunks rather than duplicated, so importing two subpaths, or a
- * subpath and the barrel, still yields one copy of anything common.
- *
- * Keys are output basenames and must stay in step with the `exports` map in
- * `package.json`; `src/entries/*.ts` documents what each one re-exports.
+ * what that component reaches.
  */
 const entryModules = {
   HeatmapChart: "src/entries/HeatmapChart.ts",
@@ -88,10 +75,6 @@ export default defineConfig([
     onwarn,
     output: {
       banner: useClientBanner,
-      // Shared code lifted out of two or more entries. Named rather than
-      // hashed so the published file list is stable between releases, and
-      // prefixed so it is obvious which files are entry points and which are
-      // implementation detail nobody should import directly.
       chunkFileNames: "shared/[name].esm.js",
       dir: "dist",
       entryFileNames: "[name].js",

@@ -6,20 +6,6 @@ import * as stackedBarChart from "../StackedBarChart";
 
 /**
  * The subpath entries and the barrel have to agree.
- *
- * A subpath exists so a consumer can import one component without dragging the
- * rest of the library — and Mol* and ECharts with it — into their bundle. That
- * only helps if moving an import from the barrel to a subpath is not also an
- * API change, and nothing about the build enforces that: each entry is a
- * hand-written list of re-exports, so adding a public export to a component and
- * forgetting its entry leaves the two surfaces quietly different. The failure
- * lands on whichever consumer took the subpath, as a missing export from a
- * module the barrel clearly has.
- *
- * So these compare the two directly. They deliberately assert identity rather
- * than mere presence: a re-export that resolved to a second copy of a component
- * would pass a name check while breaking `React.memo` identity and any
- * `instanceof`-style comparison.
  */
 
 /** Every entry, with the barrel exports each one is responsible for. */
