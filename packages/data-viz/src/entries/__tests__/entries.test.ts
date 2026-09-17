@@ -2,6 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import * as barrel from "../../index";
 import * as colorScales from "../colorScales";
+import * as genomeTrack from "../GenomeTrack";
 import * as heatmapChart from "../HeatmapChart";
 import * as proteinStructureViewer from "../ProteinStructureViewer";
 import * as stackedBarChart from "../StackedBarChart";
@@ -12,6 +13,12 @@ import * as stackedBarChart from "../StackedBarChart";
 
 /** Every entry, with the barrel exports each one is responsible for. */
 const ENTRIES = [
+  {
+    // `GenomeTrack` re-exports `MIN_SPAN`, `TEST_IDS` and the hit-test id
+    // helpers, all of which the barrel also carries.
+    exports: genomeTrack,
+    name: "GenomeTrack",
+  },
   { exports: heatmapChart, name: "HeatmapChart" },
   { exports: proteinStructureViewer, name: "ProteinStructureViewer" },
   { exports: stackedBarChart, name: "StackedBarChart" },
