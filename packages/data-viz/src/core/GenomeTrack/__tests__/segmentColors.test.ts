@@ -93,6 +93,29 @@ describe("segmentPalette", () => {
   });
 
   /**
+   * A segment whose category the tool left off entirely.
+   *
+   * `SegmentBlock` marks `category` required, but the atlas returns it only
+   * "when the run classified it" — and for E. coli it returns none at all, so
+   * this is what real wire data looks like rather than a hypothetical. The cast
+   * is the point: a type cannot police a payload.
+   *
+   * It has to fall back rather than throw because these are called per segment
+   * inside the canvas draw loop, so one bad block takes down the whole track
+   * and not just its own row.
+   */
+  it("falls back rather than throwing when a segment has no category", () => {
+    const palette = segmentPalette(ENUM, false);
+    const missing = undefined as unknown as string;
+
+    expect(() => palette.fill(missing)).not.toThrow();
+    // Null is what routes the block to the row's single accent fill.
+    expect(palette.fill(missing)).toBeNull();
+    expect(palette.isStriped(missing)).toBe(false);
+    expect(palette.text(missing)).toBe("#ffffff");
+  });
+
+  /**
    * Block labels are drawn on the fill. White was safe while every segment was
    * one indigo; across a generated ramp the light end takes white to about 2:1,
    * well under the 4.5:1 the accessibility rules require.
@@ -145,5 +168,18 @@ describe("presentCategories", () => {
 
   it("is empty when nothing is on screen", () => {
     expect(presentCategories([], ENUM, palette)).toEqual([]);
+  });
+
+  it("omits segments whose category is missing", () => {
+    // The key describes what it can colour. A segment with no category draws in
+    // the accent fill, which is not a category and so has no entry to make.
+    const segments = [
+      { category: undefined as unknown as string },
+      { category: ENUM[0] },
+    ];
+
+    expect(
+      presentCategories(segments, ENUM, palette).map((e) => e.name)
+    ).toEqual([ENUM[0]]);
   });
 });

@@ -40,9 +40,16 @@ export interface SegmentPalette {
  *
  * The pipeline's names are `+CDS`, `-CDS` and `CDS` — stranded, anti-stranded
  * and unstranded forms of one category. Only the last part carries the hue.
+ *
+ * Tolerates a missing category, which the type forbids and a real payload
+ * supplies anyway: the segmentation classifies a segment "when the run
+ * classified it", so a tool that has not caught up omits the field rather than
+ * sending a placeholder. Treating that as the empty string routes it to the
+ * same accent fallback as a category outside the enum — the row draws
+ * uncoloured instead of throwing inside the draw loop.
  */
-export function baseCategory(category: string): string {
-  return category.replace(/^[+-]/, "");
+export function baseCategory(category: string | undefined): string {
+  return (category ?? "").replace(/^[+-]/, "");
 }
 
 /**
@@ -54,8 +61,8 @@ export function baseCategory(category: string): string {
  * practice — but it is a collision rather than a distinction, and worth
  * knowing before a mixed scheme appears.
  */
-export function isNegativeStrand(category: string): boolean {
-  return category.startsWith("-");
+export function isNegativeStrand(category: string | undefined): boolean {
+  return category?.startsWith("-") ?? false;
 }
 
 /**
