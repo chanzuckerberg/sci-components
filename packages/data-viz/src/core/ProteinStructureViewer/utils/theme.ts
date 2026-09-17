@@ -1,5 +1,6 @@
 import { Theme, getSemanticColors } from "@czi-sds/components";
 import { BehaviorSubject } from "rxjs";
+import type { StructureDownload } from "../ProteinStructureViewer.types";
 
 export type ThemeMode = "light" | "dark";
 
@@ -12,6 +13,44 @@ export interface MolstarViewSettings {
   mode: ThemeMode;
   /** Sequence panel background, or undefined for the theme's own surface. */
   sequenceViewerBackgroundColor?: string;
+  /**
+   * Chains hidden from the 3D view, by `chainId`. The panel dims these rather
+   * than dropping them: the sequence is still the sequence, and removing the
+   * grid would reflow the panel on every toggle.
+   */
+  hiddenChains?: Set<string>;
+  /**
+   * Selects a whole chain, for the caption above each grid. Undefined when the
+   * consumer is not listening for selections, which leaves the captions inert.
+   */
+  onChainSelect?: (chainId: string) => void;
+  /** Flips one chain's visibility, for the toggle beside each caption. */
+  onChainToggle?: (chainId: string) => void;
+  /**
+   * Lights the chain up in the 3D view while its caption is pointed at, and
+   * takes null when the pointer leaves.
+   */
+  onChainHover?: (chainId: string | null) => void;
+  /**
+   * Chains the current selection covers whole. What lets a caption say whether
+   * clicking it will select or deselect, rather than claiming one either way.
+   */
+  selectedChains?: Set<string>;
+  /**
+   * Whether the orientation axes and the reset-camera button are on.
+   *
+   * The viewport view is installed whether or not they are - that is what
+   * keeps Mol*'s own icon column out of the canvas - so the view reads this to
+   * know whether to offer the reset button, rather than its mere presence
+   * meaning the axes are on.
+   */
+  showAxes?: boolean;
+  /**
+   * What the capture button should produce, or undefined for no button. The
+   * button lives in the viewport view, which Mol* renders, so the options
+   * reach it the same way the theme does.
+   */
+  download?: StructureDownload | null;
 }
 
 /**

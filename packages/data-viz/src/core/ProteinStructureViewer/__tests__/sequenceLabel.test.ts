@@ -43,4 +43,12 @@ describe("buildSequenceLabel", () => {
   it("stays a plain name for a wrapper with no residues", () => {
     expect(buildSequenceLabel(wrapper(0))).toBe("Residue sequence, 0 residues");
   });
+
+  it("names the chain when a complex draws a grid per chain", () => {
+    // The caption above each grid is a visual sibling, so without the chain
+    // here every grid on a complex announces the same name.
+    expect(buildSequenceLabel(wrapper(3), "B")).toBe(
+      "Chain B, residue sequence, 3 residues: A C D"
+    );
+  });
 });

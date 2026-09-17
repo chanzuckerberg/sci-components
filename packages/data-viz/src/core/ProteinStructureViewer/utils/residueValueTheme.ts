@@ -66,10 +66,11 @@ export function createResidueValueTheme(
         color(location: unknown) {
           if (!StructureElement.Location.is(location)) return neutral;
 
-          // label_seq_id is 1-based in PDB output; overlay values are 0-based.
-          const residueIndex =
-            StructureProperties.residue.label_seq_id(location) - 1;
-          const value = values.get(residueIndex);
+          // Keyed by the residue's position in the file, the same ordinal
+          // `injectPlddtIntoPdb` walks. A residue the overlay says nothing
+          // about reads neutral rather than as an explicit zero, which would
+          // otherwise paint it at the bottom of the scale.
+          const value = values.get(StructureProperties.residue.key(location));
           if (value === undefined) return neutral;
           const rgb = sampleColorScale(colorScale, value, max, min);
 

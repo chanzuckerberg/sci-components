@@ -65,7 +65,7 @@
       "anchorEl": {
         "description": "Required. The element the menu is positioned against, usually the control that opens it. Until it is set the menu renders an empty container: the list is only mounted once there is something to anchor it to. See the MUI Popper API .",
         "isRequired": true,
-        "type": "HTMLElement"
+        "type": "HTMLElement | null"
       },
       "children": {
         "description": "Rendered inside the menu below the list, for footers such as an apply button.",
@@ -80,7 +80,7 @@
       "InputBaseProps": {
         "description": "Passed to the InputSearch the search prop renders. The menu sets autoFocus from isSearchAutoFocus and onClick to a no-op after these, so those two are the menu's to decide.",
         "isRequired": false,
-        "type": "InputSearchProps"
+        "type": "Partial<InputSearchProps>"
       },
       "isOptionEqualToValue": {
         "defaultValue": "(option, val) => option.name === val.name",
@@ -114,7 +114,7 @@
       "onInputChange": {
         "description": "Called as the search text changes; see more in the MUI Autocomplete API or in the Recipes section. Signature: function(event: SyntheticEvent, value: string, reason: AutocompleteInputChangeReason) => void",
         "isRequired": false,
-        "type": "(event: SyntheticEvent"
+        "type": "(event: SyntheticEvent<Element, Event>, value: string, reason: AutocompleteInputChangeReason) => void"
       },
       "onOpen": {
         "description": "Called when the list asks to open. Signature: function(event: SyntheticEvent) => void",

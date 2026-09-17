@@ -6,6 +6,38 @@
         "isRequired": false,
         "type": "string"
       },
+      "chainColors": {
+        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen, which is when neither `plddt` nor `residueOverlay` is set.",
+        "isRequired": false,
+        "type": "Record<string, string>"
+      },
+      "hiddenChains": {
+        "description": "Chains hidden from the 3D view, by `chainId`. Leave undefined to let the\nviewer own visibility itself, which is what the chain legend's toggles\ndrive; passing it takes that over, and the toggles then only report.",
+        "isRequired": false,
+        "type": "string[]"
+      },
+      "download": {
+        "description": "Adds a capture button beneath the reset-camera control, which downloads a\nPNG of the structure as it currently stands. Omit for no button.",
+        "isRequired": false,
+        "type": "StructureDownload | null"
+      },
+      "molstarSpec": {
+        "description": "Mol* plugin spec laid over the viewer's own, which is how the whole of\nMol*'s configuration is reachable without a prop here for each setting.\nAnything named here wins, so `canvas3d.postprocessing`, a `PluginConfig`\nitem, or `layout.initial` can all be set to something other than the\ndefault the viewer picked.\n\nList-valued keys - `behaviors`, `config`, `actions`, `animations`,\n`customFormats`, `customParamEditors` - are appended to rather than\nreplaced. For `config` that is what lets an entry override the viewer's,\nsince Mol* reads the list in order. It also means a behavior cannot be\ntaken away: the ones the viewer drops stay dropped, and the ones it keeps\ncannot be removed from here.\n\nRead once, when the plugin is created, except for `canvas3d`, which is\nre-applied whenever it changes. Creating the plugin throws away the camera,\nso the rest is deliberately not reactive.",
+        "isRequired": false,
+        "type": "Partial<PluginUISpec>"
+      },
+      "disableChainHighlightOnHover": {
+        "defaultValue": false,
+        "description": "Stop a chain from lighting up in the 3D view while its name is pointed at,\nin the legend or above its grid in the sequence panel.\n\nThe highlight is on by default, since on a complex it is how a reader\nfinds out which chain is which. Turn it off where the movement is more\ndistracting than the answer is useful - a grid of viewers a pointer\ncrosses on its way somewhere else, or a page driving its own highlighting\nthrough `selection`.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "showChainLegend": {
+        "defaultValue": true,
+        "description": "Show the chain legend, which lists each chain with its color and a\nvisibility toggle. Ignored on a single-chain structure, where there is\nnothing to tell apart or hide.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "showAxes": {
         "defaultValue": true,
         "description": "Show the orientation axes widget and the reset-camera button.",
@@ -32,7 +64,18 @@
       "stats": {
         "description": "Up to three whole-structure stats shown along the bottom. A null entry\nreserves its column without rendering anything, so the columns never shift\nas values come and go.",
         "isRequired": false,
-        "type": "StructureStat[]"
+        "type": "(StructureStat | null)[]"
+      },
+      "resolution": {
+        "defaultValue": "medium",
+        "description": "1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as DOWNLOAD_RESOLUTIONS, for labelling a control of your own.",
+        "isRequired": false,
+        "type": "\"low\" | \"medium\" | \"high\" | \"maximum\""
+      },
+      "filename": {
+        "description": "Name for the file, without an extension. Defaults to the one Mol* derives from the loaded structure.",
+        "isRequired": false,
+        "type": "string"
       },
       "pdb": {
         "defaultValue": "- (required)",
@@ -43,33 +86,77 @@
       "plddt": {
         "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover.",
         "isRequired": false,
-        "type": "number[]"
+        "type": "number[] | null"
       },
       "residueOverlay": {
         "description": "Per-residue values that override pLDDT coloring while set.",
         "isRequired": false,
-        "type": "ResidueValueOverlay"
+        "type": "ResidueValueOverlay | null"
       },
-      "selectedResidue": {
+      "selection": {
         "defaultValue": null,
-        "description": "0-based index of the selected residue, or null when none is selected.\nControlled: selecting a residue zooms the camera in on it, and clearing the\nselection zooms back out to the default view.",
+        "description": "What is selected, or null when nothing is. Controlled: the camera frames\nwhatever the selection covers, and clearing it zooms back out to the\ndefault view.",
+        "isRequired": false,
+        "type": "StructureSelection | null"
+      },
+      "onResidueClick": {
+        "description": "Called with the clicked residue.",
+        "isRequired": false,
+        "type": "(residue: ResidueRef) => void"
+      },
+      "onResidueHover": {
+        "description": "Called as the pointer moves over residues, and with `null` when it leaves\nthe structure.",
+        "isRequired": false,
+        "type": "(residue: ResidueRef | null) => void"
+      },
+      "onSelectionChange": {
+        "description": "Called with the new selection whenever the user makes one - clicking a\nresidue, dragging across the sequence, clicking a chain caption - and with\n`null` when they click empty space to clear it.\n\nA whole-chain selection arrives as `{ chains: [id] }` rather than as every\nindex on it, so echoing it straight back into `selection` costs nothing.",
+        "isRequired": false,
+        "type": "(selection: StructureSelection | null) => void"
+      },
+      "onChainsChange": {
+        "description": "Called with the chains found in the structure, whenever a structure is\nloaded. Fires with `[]` when the structure holds none.",
+        "isRequired": false,
+        "type": "(chains: ChainRef[]) => void"
+      },
+      "onChainVisibilityChange": {
+        "description": "Called with the chains now hidden when a visibility toggle is used. Fires\nwhether or not `hiddenChains` is controlled, so a consumer can follow the\nviewer's own state without owning it.",
+        "isRequired": false,
+        "type": "(hiddenChains: string[]) => void"
+      },
+      "residues": {
+        "description": "0-based residue indices, counting residues in file order across the whole structure - the same index plddt and residueOverlay are keyed by.",
+        "isRequired": false,
+        "type": "number[]"
+      },
+      "chains": {
+        "description": "Whole chains by chainId, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size.",
+        "isRequired": false,
+        "type": "string[]"
+      },
+      "chainId": {
+        "defaultValue": "- (required)",
+        "description": "Chain as named in the file (auth_asym_id), e.g. \"A\".",
+        "isRequired": false,
+        "type": "string"
+      },
+      "startIndex": {
+        "defaultValue": "- (required)",
+        "description": "Lowest 0-based residue index of the chain's polymer.",
         "isRequired": false,
         "type": "number"
       },
-      "onResidueClick": {
-        "description": "Called with the 0-based residue index and 3-letter amino acid code when a\nresidue is clicked.",
+      "endIndex": {
+        "defaultValue": "- (required)",
+        "description": "Highest 0-based residue index of the chain's polymer.",
         "isRequired": false,
-        "type": "(residueIndex: number, compId: string) => void"
+        "type": "number"
       },
-      "onResidueHover": {
-        "description": "Called as the pointer moves over residues, and with (null, null) when it\nleaves the structure.",
+      "residueCount": {
+        "defaultValue": "- (required)",
+        "description": "Polymer residues the chain holds.",
         "isRequired": false,
-        "type": "(residueIndex: number, compId: string) => void"
-      },
-      "onSelectionClear": {
-        "description": "Called when the user clicks empty space, clearing the selection.",
-        "isRequired": false,
-        "type": "() => void"
+        "type": "number"
       },
       "values": {
         "defaultValue": "- (required)",
@@ -96,9 +183,14 @@
         "type": "ColorScale"
       },
       "tooltip": {
-        "description": "Help tooltip attached to the legend caption.",
+        "description": "Help tooltip title on the legend caption. A string is enough for the common case; use tooltipProps for a subtitle, a custom body, or placement. Overrides tooltipProps.title when both are set.",
         "isRequired": false,
         "type": "string"
+      },
+      "tooltipProps": {
+        "description": "Props forwarded to the SDS Tooltip on the legend caption. The trigger is the caption's help icon, so children is omitted.",
+        "isRequired": false,
+        "type": "Partial<Omit<TooltipProps, \"children\">>"
       },
       "readoutLabel": {
         "defaultValue": "Value",

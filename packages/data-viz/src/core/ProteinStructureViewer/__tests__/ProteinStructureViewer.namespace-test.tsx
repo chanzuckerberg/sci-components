@@ -1,14 +1,21 @@
 import {
+  ChainRef,
   ColorScale,
+  DownloadResolution,
   ProteinStructureViewer,
   ProteinStructureViewerProps,
   PLASMA_COLOR_SCALE,
   PLDDT_COLOR_SCALE,
+  ResidueRef,
   ResidueValueOverlay,
+  StructureSelection,
   StructureStat,
   injectPlddtIntoPdb,
   sampleColorScale,
 } from "@czi-sds/data-viz";
+// Mol* is a peer dependency, so a consumer reaching for `molstarSpec` imports
+// its types and config items from Mol* itself rather than from this package.
+import { PluginConfig } from "molstar/lib/mol-plugin/config";
 import React, { useState } from "react";
 
 const PDB =
@@ -38,10 +45,17 @@ const CUSTOM_SCALE: ColorScale = {
   ],
 };
 
+const CHAIN_COLORS: Record<string, string> = { A: "#0072B2", B: "#E69F00" };
+
+/** Typed through the exported union, and labelled from the exported map. */
+const DOWNLOAD_RESOLUTION: DownloadResolution = "maximum";
+
 const ProteinStructureViewerNameSpaceTest = (
   props: ProteinStructureViewerProps
 ) => {
-  const [selectedResidue, setSelectedResidue] = useState<number | null>(null);
+  const [selection, setSelection] = useState<StructureSelection | null>(null);
+  const [hiddenChains, setHiddenChains] = useState<string[]>([]);
+  const [chains, setChains] = useState<ChainRef[]>([]);
 
   // Utilities re-exported alongside the component.
   injectPlddtIntoPdb(PDB, [0.94]);
@@ -62,17 +76,80 @@ const ProteinStructureViewerNameSpaceTest = (
       {/* With a residue value overlay */}
       <ProteinStructureViewer pdb={PDB} residueOverlay={OVERLAY} />
 
-      {/* Controlled selection */}
+      {/* Controlled selection: one residue */}
       <ProteinStructureViewer
-        onResidueClick={(residueIndex, compId) =>
-          setSelectedResidue(compId ? residueIndex : null)
+        onResidueClick={(residue: ResidueRef) =>
+          setSelection({ residues: [residue.index] })
         }
-        onResidueHover={(residueIndex, compId) =>
-          console.log(residueIndex, compId)
+        onResidueHover={(residue) =>
+          console.log(residue?.chainId, residue?.seqId, residue?.compId)
         }
-        onSelectionClear={() => setSelectedResidue(null)}
+        onSelectionChange={setSelection}
         pdb={PDB}
-        selectedResidue={selectedResidue}
+        selection={selection}
+      />
+
+      {/* A range, a whole chain, and the two combined */}
+      <ProteinStructureViewer pdb={PDB} selection={{ residues: [1, 2, 3] }} />
+      <ProteinStructureViewer pdb={PDB} selection={{ chains: ["A"] }} />
+      <ProteinStructureViewer
+        pdb={PDB}
+        selection={{ chains: ["A"], residues: [150] }}
+      />
+
+      {/* Chain visibility and coloring, uncontrolled */}
+      <ProteinStructureViewer
+        chainColors={CHAIN_COLORS}
+        onChainsChange={setChains}
+        pdb={PDB}
+      />
+
+      {/* The capture button, at its defaults and fully specified */}
+      <ProteinStructureViewer download={{}} pdb={PDB} />
+      <ProteinStructureViewer
+        download={{
+          backgroundColor: "#FFFFFF",
+          filename: "structure",
+          resolution: DOWNLOAD_RESOLUTION,
+          showAxes: true,
+        }}
+        pdb={PDB}
+      />
+
+      {/* Chain visibility, controlled */}
+      <ProteinStructureViewer
+        disableChainHighlightOnHover
+        hiddenChains={hiddenChains}
+        onChainVisibilityChange={setHiddenChains}
+        pdb={PDB}
+        showChainLegend={chains.length > 1}
+      />
+
+      {/*
+        Mol* settings the viewer has no prop of its own for. This is the
+        example the docs show, kept here so it is typechecked rather than
+        merely written down.
+      */}
+      <ProteinStructureViewer
+        molstarSpec={{
+          canvas3d: {
+            renderer: { colorMarker: false },
+            trackball: { rotateSpeed: 2 },
+          },
+          config: [[PluginConfig.Viewport.ShowControls, true]],
+        }}
+        pdb={PDB}
+      />
+
+      {/* A named choice has to be given whole, name and params together. */}
+      <ProteinStructureViewer
+        molstarSpec={{
+          canvas3d: {
+            postprocessing: { occlusion: { name: "off", params: {} } },
+          },
+          layout: { initial: { isExpanded: false } },
+        }}
+        pdb={PDB}
       />
 
       {/* Chrome toggles and background overrides */}

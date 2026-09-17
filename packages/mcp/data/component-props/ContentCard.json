@@ -16,7 +16,7 @@
       "classes": {
         "description": "Override or extend the styles applied to the component.",
         "isRequired": false,
-        "type": "complex"
+        "type": "{ cardPaper?: string | undefined; cardContent?: string | undefined; cardHeader?: string | undefined; cardMedia?: string | undefined; cardOverline?: string | undefined; cardTitle?: string | undefined; cardSubtitle?: string | undefined; cardMetadata?: string | undefined; cardActions?: string | undefined; clickableCard..."
       },
       "clickableCard": {
         "defaultValue": false,
@@ -27,7 +27,7 @@
       "clickableCardProps": {
         "description": "Props forwarded to the clickable card wrapper when clickableCard is true, including href and target to make the whole card a link.",
         "isRequired": false,
-        "type": "Partial<ButtonProps & { target?: HTMLAttributeAnchorTarget; }>"
+        "type": "Partial<ButtonProps & { target?: HTMLAttributeAnchorTarget | undefined; }>"
       },
       "decorativeBorder": {
         "defaultValue": false,

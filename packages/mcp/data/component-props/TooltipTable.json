@@ -21,7 +21,7 @@
       "data": {
         "description": "The sections, drawn in order and separated by dividers. A section's label heads it, its dataRows fill it, and disabled greys the whole block.",
         "isRequired": false,
-        "type": "{ label?: string; dataRows: { label: string; value: string | number; }[]; disabled?: boolean; }[]"
+        "type": "{ label?: string | undefined; dataRows: { label: string; value: string | number; }[]; disabled?: boolean | undefined; }[]"
       }
     }
   }

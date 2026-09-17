@@ -70,14 +70,24 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
     height: 100% !important;
   }
 
-  /* Mol* chrome that the custom viewport and sequence panel replace. */
-  .msp-plugin .msp-viewport-controls-buttons,
-  .msp-plugin .msp-layout-expanded,
-  .msp-plugin .msp-log,
-  .msp-plugin .msp-left-panel-controls,
-  .msp-plugin .msp-layout-region.msp-layout-left,
-  .msp-plugin .msp-layout-region.msp-layout-right,
-  .msp-plugin .msp-layout-region.msp-layout-bottom {
+  /*
+   * The expanded layout is kept hidden because it is the one piece of Mol*
+   * chrome that would escape this container: it takes the plugin out of the
+   * box it was given and over the page.
+   *
+   * Its neighbours used to be here too - the viewport's icon column, and the
+   * left, right and bottom regions. They are not any more, because hiding them
+   * from here made them unreachable: Mol* already gates each of them behind a
+   * PluginConfig.Viewport flag and behind layout.initial.regionState, both of
+   * which a consumer can set through molstarSpec, and a display:none on top of
+   * that overrode the answer. None of them shows by default - the viewer's own
+   * flags and region state are what keep them away - so this only has to stay
+   * out of their way.
+   *
+   * No backticks in here: this is inside a template literal, and one would end
+   * it.
+   */
+  .msp-plugin .msp-layout-expanded {
     display: none !important;
   }
 

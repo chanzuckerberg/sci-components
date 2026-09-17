@@ -26,7 +26,7 @@
       "sdsIconProps": {
         "description": "Enables you to pass additional props to customize the SDS icon within the menu item.",
         "isRequired": false,
-        "type": "IconProps<IconName>"
+        "type": "function"
       },
       "sdsStyle": {
         "defaultValue": "determinate",

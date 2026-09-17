@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.1.1...@czi-sds/data-viz@2.2.0) (2026-09-15)
+
+### Features
+
+- **ProteinStructureViewer:** Improve multi chain support + Ligands and IONs ([#1188](https://github.com/chanzuckerberg/sci-components/issues/1188)) ([9744389](https://github.com/chanzuckerberg/sci-components/commit/9744389aa0839d5a1d5963936207fe7c4639d3e9))
+
+## [2.1.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.1.0...@czi-sds/data-viz@2.1.1) (2026-09-09)
+
+### Bug Fixes
+
+- **ProteinStructureViewer:** improve protein structure viewer ([#1186](https://github.com/chanzuckerberg/sci-components/issues/1186)) ([189bfa0](https://github.com/chanzuckerberg/sci-components/commit/189bfa043faf3dc9c482d68ecaacc3f31e429ab6))
+
+# [2.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.0.0...@czi-sds/data-viz@2.1.0) (2026-09-08)
+
+### Bug Fixes
+
+- **StructureViewer:** make the sequence panel and residue callbacks work for a complex ([#1180](https://github.com/chanzuckerberg/sci-components/issues/1180)) ([312cd29](https://github.com/chanzuckerberg/sci-components/commit/312cd299138f83b1d960f668f06b38b21aa3372d))
+
+### Features
+
+- **StructureViewer:** MolStar component ([#1177](https://github.com/chanzuckerberg/sci-components/issues/1177)) ([c321878](https://github.com/chanzuckerberg/sci-components/commit/c3218785f1b8db5d9edc1597709051fd05505fcc))
+
 # [2.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@0.20.0...@czi-sds/data-viz@2.0.0) (2026-08-19)
 
 ### Features

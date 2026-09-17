@@ -17,6 +17,7 @@ import { readSeqIdx } from "../utils/residue";
 import { useHoveredResidue } from "./useHoveredResidue";
 import { useLociDispatch } from "./useLociDispatch";
 import { useResidueSelection } from "./useResidueSelection";
+import { useSequenceDrag } from "./useSequenceDrag";
 
 /** A hover the grid has requested but not yet dispatched to the 3D view. */
 interface HoverRequest {
@@ -64,8 +65,8 @@ export function useResiduePointer({
     sequenceWrapper,
   });
 
-  const { clearAnchor, getAnchor, onMouseDown, onMouseUp } =
-    useResidueSelection({ sequenceWrapper });
+  const { getAnchor } = useSequenceDrag();
+  const { onMouseDown, onMouseUp } = useResidueSelection({ sequenceWrapper });
 
   const queueRef = useRef<Subject<HoverRequest> | null>(null);
   if (queueRef.current === null) queueRef.current = new Subject<HoverRequest>();
@@ -131,9 +132,14 @@ export function useResiduePointer({
     );
   };
 
+  /**
+   * Leaving one grid is not the end of a drag: on a complex the next chain's
+   * grid is a separate element, so a drag from the target into the binder
+   * leaves this one on its way. The anchor is therefore left alone here and
+   * dropped by the release, or by the pointer leaving the panel altogether.
+   */
   const onMouseLeave = (e: MouseEvent) => {
     e.stopPropagation();
-    clearAnchor();
     hide();
     releaseHover(e);
   };

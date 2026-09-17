@@ -52,7 +52,7 @@
       "tooltipProps": {
         "description": "Passed to the Tooltip, and overrides the defaults the header sets (arrow, top-start placement, dark style).",
         "isRequired": false,
-        "type": "TooltipProps"
+        "type": "Partial<TooltipProps>"
       },
       "tooltipSubtitle": {
         "description": "A second line below the tooltip's title.",

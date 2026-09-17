@@ -32,7 +32,7 @@
         "defaultValue": {},
         "description": "Class names for the internal elements: root, labelCaptionContainer, label,\ncaption, checkbox, checkboxCheckedIcon, checkboxDefaultIcon, and\ncheckboxIndeterminateIcon.",
         "isRequired": false,
-        "type": "complex"
+        "type": "{ root?: string | undefined; labelCaptionContainer?: string | undefined; label?: string | undefined; caption?: string | undefined; checkbox?: string | undefined; checkboxCheckedIcon?: string | undefined; checkboxDefaultIcon?: string | undefined; checkboxIndeterminateIcon?: string | undefined; }"
       },
       "checkboxProps": {
         "defaultValue": {},

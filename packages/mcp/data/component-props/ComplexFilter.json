@@ -10,7 +10,7 @@
         "defaultValue": "{ sdsStyle: minimal }",
         "description": "Passed straight to the InputDropdown that opens the filter. Note that supplying it replaces the default, so a filter that should stay minimal needs sdsStyle passed again alongside whatever else it sets.",
         "isRequired": false,
-        "type": "InputDropdownPropsType"
+        "type": "Partial<InputDropdownProps>"
       },
       "isTriggerChangeOnOptionClick": {
         "defaultValue": false,

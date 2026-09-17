@@ -23,7 +23,7 @@
         "defaultValue": "{\nenter: theme.transitions.duration.enteringScreen,\nexit: theme.transitions.duration.leavingScreen,\n}",
         "description": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object.",
         "isRequired": false,
-        "type": "number | { appear?: number; enter?: number; exit?: number; }"
+        "type": "number | { appear?: number | undefined; enter?: number | undefined; exit?: number | undefined; }"
       },
       "width": {
         "defaultValue": "240 (basic) 320 (overlay)",
@@ -56,7 +56,7 @@
       "onClose": {
         "description": "Callback fired when the component requests to be closed.\nThe `reason` parameter can optionally be used to control the response to `onClose`.\n@param event The event source of the callback.\n@param reason Can be: `\"escapeKeyDown\"`, `\"backdropClick\"`.",
         "isRequired": false,
-        "type": "\"backdropClick\" | \"escapeKeyDown\""
+        "type": "(event: {}, reason: \"backdropClick\" | \"escapeKeyDown\") => void"
       },
       "ModalProps": {
         "defaultValue": {},
@@ -68,7 +68,7 @@
         "defaultValue": {},
         "description": "The props used for each slot inside.",
         "isRequired": false,
-        "type": "{ root?: SlotProps"
+        "type": "{ root?: SlotProps<ElementType<ModalProps, keyof IntrinsicElements>, DrawerRootSlotPropsOverrides, DrawerOwnerState> | undefined; backdrop?: SlotProps<...> | undefined; docked?: SlotProps<...> | undefined; paper?: SlotProps<...> | undefined; transition?: SlotProps<...> | undefined; }"
       }
     }
   }

@@ -36,7 +36,7 @@
       "sdsIconProps": {
         "description": "Additional props to be passed to the icon component.",
         "isRequired": false,
-        "type": "IconProps<string | number | symbol>"
+        "type": "Partial<IconProps<keyof IconNameToSizes>>"
       },
       "sdsType": {
         "description": "Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.",

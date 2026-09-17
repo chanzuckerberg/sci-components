@@ -44,7 +44,7 @@
         "defaultValue": {},
         "description": "Override or extend the styles applied to the component.",
         "isRequired": false,
-        "type": "Partial"
+        "type": "Partial<TextFieldClasses> & { root?: string | undefined; label?: string | undefined; input?: string | undefined; endAdornment?: string | undefined; startAdornment?: string | undefined; clearButton?: string | undefined; searchButton?: string | undefined; }"
       }
     }
   }

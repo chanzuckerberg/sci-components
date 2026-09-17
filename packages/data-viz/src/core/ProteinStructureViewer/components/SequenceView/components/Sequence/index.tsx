@@ -17,6 +17,12 @@ import ResidueTooltip from "../ResidueTooltip";
 export interface SequenceProps {
   sequenceWrapper: SequenceWrapper.Any;
   /**
+   * Chain the grid covers, when the structure has more than one. The caption
+   * above the grid is a visual sibling, so without this every grid announces
+   * the same name and the chain a reader is on is only apparent by sight.
+   */
+  chainLabel?: string;
+  /**
    * Residue colors resolved from the active theme. Passed in rather than read
    * from context because the markers are written straight to the DOM.
    */
@@ -49,6 +55,7 @@ function renderResidue(
 
 /** Interactive residue grid, kept in sync with the 3D view's hover and selection. */
 const Sequence = ({
+  chainLabel,
   hideSequenceNumbers,
   residueColors,
   sequenceNumberPeriod,
@@ -110,7 +117,7 @@ const Sequence = ({
         surfaces.
       */}
       <ResidueGrid
-        aria-label={buildSequenceLabel(sequenceWrapper)}
+        aria-label={buildSequenceLabel(sequenceWrapper, chainLabel)}
         className="msp-sequence-wrapper"
         ref={containerRef}
         role="img"
