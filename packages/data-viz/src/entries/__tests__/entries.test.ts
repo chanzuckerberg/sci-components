@@ -1,3 +1,5 @@
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import * as barrel from "../../index";
 import * as colorScales from "../colorScales";
 import * as heatmapChart from "../HeatmapChart";
@@ -104,4 +106,81 @@ describe("subpath entries", () => {
     expect(components).not.toEqual([]);
     expect(components.filter((name) => !covered.has(name))).toEqual([]);
   });
+});
+
+/**
+ * The `exports` map has to list every entry, and point at files the build
+ * actually emits.
+ *
+ * The cases above import from `src/entries` directly, so they prove the source
+ * surfaces agree and nothing more. A subpath only exists for a consumer if
+ * `package.json` publishes it, and that is a separate file nobody is forced to
+ * touch: adding an entry module and wiring the rolldown input while forgetting
+ * the `exports` key leaves every check above passing and the subpath
+ * unimportable. These read the manifest instead of the modules.
+ *
+ * Filenames are asserted rather than resolved because `dist` does not exist
+ * until the package is built, and a unit test that depends on build output
+ * fails for the wrong reason on a clean checkout. What is checkable without
+ * building is that the manifest and the entry modules describe the same set,
+ * under the naming convention the rolldown config emits.
+ */
+describe("exports map", () => {
+  const packageRoot = join(__dirname, "..", "..", "..");
+  const manifest = JSON.parse(
+    readFileSync(join(packageRoot, "package.json"), "utf8")
+  ) as {
+    exports: Record<string, unknown>;
+  };
+
+  /** Entry modules on disk, which is the set the build turns into subpaths. */
+  const entryModules = readdirSync(join(packageRoot, "src", "entries"))
+    .filter((name) => name.endsWith(".ts"))
+    .map((name) => name.replace(/\.ts$/, ""))
+    .sort();
+
+  /** Published subpaths, minus the root, the escape hatch, and the manifest. */
+  const subpaths = Object.keys(manifest.exports)
+    .filter((key) => key !== "." && key !== "./package.json")
+    .filter((key) => !key.includes("*"))
+    .map((key) => key.replace(/^\.\//, ""))
+    .sort();
+
+  it("finds entry modules to check", () => {
+    // Guards the two lists below against both being trivially empty, which
+    // would make every comparison vacuously true.
+    expect(entryModules).not.toEqual([]);
+  });
+
+  it("publishes exactly the entry modules, no more and no fewer", () => {
+    expect(subpaths).toEqual(entryModules);
+  });
+
+  it("keeps the root entry and the deep-import escape hatch", () => {
+    // `.` is what existing consumers import; `./dist/*` is what keeps a
+    // consumer who already deep-imported a built file working now that an
+    // `exports` map restricts resolution.
+    expect(manifest.exports["."]).toBeDefined();
+    expect(manifest.exports["./dist/*"]).toBe("./dist/*");
+    expect(manifest.exports["./package.json"]).toBe("./package.json");
+  });
+
+  it.each(["import", "require"] as const)(
+    "points every %s condition at the file the build emits",
+    (condition) => {
+      const format = condition === "import" ? "esm" : "cjs";
+
+      subpaths.forEach((name) => {
+        const entry = manifest.exports[`./${name}`] as Record<
+          string,
+          Record<string, string>
+        >;
+
+        expect(entry[condition]).toEqual({
+          default: `./dist/${name}.${format}.js`,
+          types: `./dist/${name}.${format}.d.ts`,
+        });
+      });
+    }
+  );
 });
