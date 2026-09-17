@@ -1,7 +1,0 @@
-import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-Bvon0kWq.js";import{n as r,r as i}from"./SdsDoc-C15bG7NQ.js";import{n as a,t as o}from"./SdsDocSnapshot-Duf10Vtj.js";import{n as s,t as c}from"./content-YJixJbS9.js";import{Default as l,t as u}from"./index.stories-DOeMCrq2.js";var d,f,p,m;e((()=>{a(),i(),s(),u(),d=t(n()),f={parameters:{a11y:{test:`off`},layout:`fullscreen`},tags:[`!autodocs`,`!dev`,`!test`],title:`Docs Snapshots/Bases/Breakpoints`},p={render:()=>(0,d.jsx)(o,{children:(0,d.jsx)(r,{html:c,slots:{breakpoints:l.render()}})})},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
-  render: () => <SdsDocSnapshot>
-      <SdsDoc html={html} slots={{
-      breakpoints: Stories.Default.render()
-    }} />
-    </SdsDocSnapshot>
-}`,...p.parameters?.docs?.source}}},m=[`Page`]}))();export{p as Page,m as __namedExportsOrder,f as default};
