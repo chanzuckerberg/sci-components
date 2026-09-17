@@ -226,7 +226,7 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
         residueOverlay={{
           colorScale: PLASMA_COLOR_SCALE,
           label: "Feature activation",

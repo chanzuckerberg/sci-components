@@ -229,7 +229,7 @@ function App() {
               : next
           )
         }
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         selection={selection}
         stats={[

@@ -33,11 +33,18 @@ import { themeColor } from "./utils/color";
 import {
   PLDDT_BAND_COLORS,
   PLDDT_COLOR_SCALE,
-  injectPlddtIntoPdb,
+  injectPlddt,
 } from "./utils/plddt";
 
 export * from "./ProteinStructureViewer.types";
-export { PLDDT_COLOR_SCALE, injectPlddtIntoPdb } from "./utils/plddt";
+export {
+  PLDDT_COLOR_SCALE,
+  injectPlddt,
+  injectPlddtIntoMmcif,
+  injectPlddtIntoPdb,
+} from "./utils/plddt";
+export { detectStructureFormat } from "./utils/structureFormat";
+export type { StructureFormat } from "./utils/structureFormat";
 
 /** Fallbacks for theme tokens Mol* needs as concrete hex colors. */
 const FALLBACK_EDGE_COLOR = "#6c6c6c";
@@ -144,7 +151,7 @@ const ProteinStructureViewer = forwardRef(
       onResidueClick,
       onResidueHover,
       onSelectionChange,
-      pdb,
+      structure,
       plddt,
       residueOverlay,
       selection = null,
@@ -167,11 +174,12 @@ const ProteinStructureViewer = forwardRef(
 
     const hasPlddt = Boolean(plddt && plddt.length > 0);
 
-    // pLDDT scores ride into Mol* through the PDB's B-factor column, so the
-    // text is rewritten rather than passed alongside.
-    const processedPdb = useMemo(
-      () => (hasPlddt ? injectPlddtIntoPdb(pdb, plddt as number[]) : pdb),
-      [pdb, plddt, hasPlddt]
+    // pLDDT scores ride into Mol* through the B-factor column, so the text is
+    // rewritten rather than passed alongside. PDB and mmCIF each have their
+    // own column layout; `injectPlddt` picks the matching rewriter.
+    const processedStructure = useMemo(
+      () => (hasPlddt ? injectPlddt(structure, plddt as number[]) : structure),
+      [structure, plddt, hasPlddt]
     );
 
     const bgColor = useMemo(
@@ -301,11 +309,11 @@ const ProteinStructureViewer = forwardRef(
       onResidueHover: handleResidueHover,
       onSelectionChange,
       onSelectionClear: handleSelectionClear,
-      pdb: processedPdb,
       selectedChains,
       sequenceViewerBackgroundColor,
       showAxes,
       showSequenceViewer,
+      structure: processedStructure,
     });
 
     highlightChainRef.current = useChainHighlight({

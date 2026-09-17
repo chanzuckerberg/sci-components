@@ -215,7 +215,7 @@ function App() {
   return (
     <div className="app" style={{ height: 240 }}>
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         showAxes={false}
         showLegend={false}

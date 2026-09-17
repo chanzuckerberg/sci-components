@@ -151,6 +151,7 @@ function themeCallbackArgs(part: string) {
 function createStubPlugin(structure?: Structure) {
   const loadedThemes: string[] = [];
   const parsedPdb: string[] = [];
+  const parsedFormats: string[] = [];
   const focused = new BehaviorSubject<{ loci: unknown } | undefined>(undefined);
 
   /** Component keys the load path built, in order. */
@@ -189,8 +190,9 @@ function createStubPlugin(structure?: Structure) {
           ref: "structure",
         })),
         hierarchy: { applyPreset: vi.fn(async () => undefined) },
-        parseTrajectory: vi.fn(async (data: string) => {
+        parseTrajectory: vi.fn(async (data: string, format?: string) => {
           parsedPdb.push(data);
+          parsedFormats.push(format ?? "pdb");
           return data;
         }),
         representation: {
@@ -299,6 +301,7 @@ function createStubPlugin(structure?: Structure) {
         },
       },
     },
+    parsedFormats,
     parsedPdb,
     representation: {
       structure: { themes: { colorThemeRegistry: { add: vi.fn() } } },
@@ -374,6 +377,32 @@ END`;
 const OTHER_PDB = `ATOM      1  N   ALA A   1      11.111  22.222   3.333  1.00 13.79           N
 END`;
 
+const MMCIF = `data_TEST
+#
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.auth_seq_id
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_atom_id
+_atom_site.pdbx_PDB_model_num
+ATOM 1 N N . THR A 1 1 ? 17.047 14.099 3.625 1.00 13.79 1 THR A N 1
+#`;
+
 /** Caption an overlay puts on the legend, in place of the pLDDT key. */
 const OVERLAY_LABEL = "Feature activation";
 
@@ -405,7 +434,7 @@ function renderViewer(
   props: Partial<ProteinStructureViewerProps> = {}
 ): ReactElement {
   const element = (
-    <ProteinStructureViewer data-testid="viewer" pdb={PDB} {...props} />
+    <ProteinStructureViewer data-testid="viewer" structure={PDB} {...props} />
   );
   render(<ThemeProvider theme={defaultTheme}>{element}</ThemeProvider>);
   return element;
@@ -451,9 +480,9 @@ describe("<ProteinStructureViewer />", () => {
     const SECOND =
       "ATOM      1  CA  ALA B   1      10.000  10.000  10.000  1.00 50.00           C";
 
-    const view = (pdb: string) => (
+    const view = (structure: string) => (
       <ThemeProvider theme={defaultTheme}>
-        <ProteinStructureViewer pdb={pdb} />
+        <ProteinStructureViewer structure={structure} />
       </ThemeProvider>
     );
 
@@ -493,7 +522,7 @@ describe("<ProteinStructureViewer />", () => {
       <ThemeProvider theme={defaultTheme}>
         <ProteinStructureViewer
           data-testid="viewer"
-          pdb={PDB}
+          structure={PDB}
           ref={(el) => {
             captured = el;
           }}
@@ -511,13 +540,14 @@ describe("<ProteinStructureViewer />", () => {
     await waitFor(() =>
       expect(plugin.builders.structure.parseTrajectory).toHaveBeenCalled()
     );
+    expect(plugin.parsedFormats[0]).toBe("pdb");
     expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled();
   });
 
   it("disposes the plugin on unmount", async () => {
     const { unmount } = render(
       <ThemeProvider theme={defaultTheme}>
-        <ProteinStructureViewer pdb={PDB} />
+        <ProteinStructureViewer structure={PDB} />
       </ThemeProvider>
     );
 
@@ -574,6 +604,21 @@ describe("<ProteinStructureViewer />", () => {
 
     await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
     expect((plugin.parsedPdb[0] as string).split("\n")[0]).toContain(" 94.00");
+  });
+
+  it("parses mmCIF when the structure text is a CIF document", async () => {
+    renderViewer({ structure: MMCIF });
+
+    await waitFor(() => expect(plugin.parsedFormats.length).toBe(1));
+    expect(plugin.parsedFormats[0]).toBe("mmcif");
+  });
+
+  it("injects pLDDT scores into mmCIF B_iso_or_equiv before parsing", async () => {
+    renderViewer({ structure: MMCIF, plddt: [0.94] });
+
+    await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
+    expect(plugin.parsedPdb[0]).toContain("94.00");
+    expect(plugin.parsedFormats[0]).toBe("mmcif");
   });
 
   it("shows the stats and the pLDDT key alongside scores", async () => {
@@ -654,7 +699,7 @@ describe("<ProteinStructureViewer />", () => {
       createPluginUI.mockClear();
       const { unmount } = render(
         <ThemeProvider theme={theme}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
 
@@ -691,7 +736,7 @@ describe("<ProteinStructureViewer />", () => {
     // plugin would throw away the camera. The mode has to reach them in place.
     const { rerender } = render(
       <ThemeProvider theme={defaultTheme}>
-        <ProteinStructureViewer pdb={PDB} />
+        <ProteinStructureViewer structure={PDB} />
       </ThemeProvider>
     );
 
@@ -700,7 +745,7 @@ describe("<ProteinStructureViewer />", () => {
 
     rerender(
       <ThemeProvider theme={Theme("dark")}>
-        <ProteinStructureViewer pdb={PDB} />
+        <ProteinStructureViewer structure={PDB} />
       </ThemeProvider>
     );
 
@@ -744,14 +789,14 @@ describe("<ProteinStructureViewer />", () => {
 
       const { rerender } = render(
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
       await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
 
       rerender(
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={OTHER_PDB} />
+          <ProteinStructureViewer structure={OTHER_PDB} />
         </ThemeProvider>
       );
       release(plugin);
@@ -766,14 +811,14 @@ describe("<ProteinStructureViewer />", () => {
 
       const { rerender } = render(
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
       await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
 
       rerender(
         <ThemeProvider theme={Theme("dark")}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
       release(plugin);
@@ -808,7 +853,7 @@ describe("<ProteinStructureViewer />", () => {
       return (
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
-            pdb={CRAMBIN_PDB}
+            structure={CRAMBIN_PDB}
             selection={residue === null ? null : { residues: [residue] }}
           />
         </ThemeProvider>
@@ -856,7 +901,7 @@ describe("<ProteinStructureViewer />", () => {
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             onResidueClick={onResidueClick}
-            pdb={CRAMBIN_PDB}
+            structure={CRAMBIN_PDB}
             selection={null}
           />
         </ThemeProvider>
@@ -909,7 +954,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("draws one cartoon component per chain", async () => {
-      renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(plugin.stubComponents).toEqual([POLYMER_A, "polymer-B"])
@@ -961,7 +1006,7 @@ describe("<ProteinStructureViewer />", () => {
       }
 
       it("highlights that chain's polymer, in pink", async () => {
-        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
         fireEvent.mouseEnter(await chainRow("B"));
 
         // Barstar occupies 110-198; barnase's 0-109 are left dark.
@@ -980,7 +1025,7 @@ describe("<ProteinStructureViewer />", () => {
       });
 
       it("hands the theme's colors back when the pointer leaves", async () => {
-        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
         const row = await chainRow("B");
 
         fireEvent.mouseEnter(row);
@@ -1001,7 +1046,7 @@ describe("<ProteinStructureViewer />", () => {
       it("stays dark when disableChainHighlightOnHover is set", async () => {
         renderViewer({
           disableChainHighlightOnHover: true,
-          pdb: BARNASE_BARSTAR_PDB,
+          structure: BARNASE_BARSTAR_PDB,
         });
         fireEvent.mouseEnter(await chainRow("B"));
 
@@ -1021,7 +1066,7 @@ describe("<ProteinStructureViewer />", () => {
        * color to restore, and leave the viewer stuck in it.
        */
       it("still hands them back after moving between two chains", async () => {
-        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
         const barstar = await chainRow("B");
 
         fireEvent.mouseEnter(await chainRow("A"));
@@ -1040,7 +1085,7 @@ describe("<ProteinStructureViewer />", () => {
 
     it("reports the chains it found", async () => {
       const onChainsChange = vi.fn();
-      renderViewer({ onChainsChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onChainsChange, structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(onChainsChange).toHaveBeenCalledWith([
@@ -1061,7 +1106,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("hides only the chain named by hiddenChains", async () => {
-      renderViewer({ hiddenChains: ["B"], pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ hiddenChains: ["B"], structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(true)
@@ -1074,7 +1119,7 @@ describe("<ProteinStructureViewer />", () => {
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             hiddenChains={hidden}
-            pdb={BARNASE_BARSTAR_PDB}
+            structure={BARNASE_BARSTAR_PDB}
           />
         </ThemeProvider>
       );
@@ -1097,7 +1142,7 @@ describe("<ProteinStructureViewer />", () => {
      */
     it("hides a chain from its own toggle when uncontrolled", async () => {
       const onChainVisibilityChange = vi.fn();
-      renderViewer({ onChainVisibilityChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onChainVisibilityChange, structure: BARNASE_BARSTAR_PDB });
 
       const toggle = await screen.findByRole("button", {
         name: HIDE_BARSTAR,
@@ -1119,7 +1164,7 @@ describe("<ProteinStructureViewer />", () => {
       renderViewer({
         hiddenChains: [],
         onChainVisibilityChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
       });
 
       const toggle = await screen.findByRole("button", {
@@ -1144,7 +1189,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
 
@@ -1156,7 +1201,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
       await waitFor(() =>
@@ -1187,7 +1232,7 @@ describe("<ProteinStructureViewer />", () => {
       ) => (
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
-            pdb={BARNASE_BARSTAR_PDB}
+            structure={BARNASE_BARSTAR_PDB}
             selection={selection}
           />
         </ThemeProvider>
@@ -1260,7 +1305,7 @@ describe("<ProteinStructureViewer />", () => {
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             hiddenChains={hidden}
-            pdb={BARNASE_BARSTAR_PDB}
+            structure={BARNASE_BARSTAR_PDB}
             selection={{ chains }}
           />
         </ThemeProvider>
@@ -1315,7 +1360,7 @@ describe("<ProteinStructureViewer />", () => {
 
     it("selects a whole chain from its name in the legend", async () => {
       const onSelectionChange = vi.fn();
-      renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onSelectionChange, structure: BARNASE_BARSTAR_PDB });
 
       const label = await screen.findByRole("button", { name: "Chain B" });
       act(() => label.click());
@@ -1332,7 +1377,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
 
@@ -1346,7 +1391,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["A"] },
       });
 
@@ -1363,7 +1408,7 @@ describe("<ProteinStructureViewer />", () => {
      */
     it("marks the selected chain as pressed", async () => {
       renderViewer({
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
 
@@ -1378,7 +1423,7 @@ describe("<ProteinStructureViewer />", () => {
 
     it("frames a whole chain and reports its mean pLDDT", async () => {
       renderViewer({
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         plddt: Array.from({ length: 199 }, (_, i) => (i < 110 ? 0.5 : 0.9)),
         selection: { chains: ["B"] },
       });
@@ -1397,7 +1442,7 @@ describe("<ProteinStructureViewer />", () => {
 
     it("reports every residue a click covers, not just the first", async () => {
       const onSelectionChange = vi.fn();
-      renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onSelectionChange, structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
@@ -1419,7 +1464,7 @@ describe("<ProteinStructureViewer />", () => {
     it("hides the chain legend for a single-chain structure", async () => {
       plugin = createStubPlugin(crambin);
       createPluginUI.mockResolvedValue(plugin);
-      renderViewer({ pdb: CRAMBIN_PDB });
+      renderViewer({ structure: CRAMBIN_PDB });
 
       await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
       expect(
@@ -1428,7 +1473,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("drops the chain legend when showChainLegend is off", async () => {
-      renderViewer({ pdb: BARNASE_BARSTAR_PDB, showChainLegend: false });
+      renderViewer({ structure: BARNASE_BARSTAR_PDB, showChainLegend: false });
 
       await waitFor(() => expect(plugin.stubComponents).toHaveLength(2));
       expect(
@@ -1439,7 +1484,7 @@ describe("<ProteinStructureViewer />", () => {
     it("paints chains the colors the consumer chose", async () => {
       renderViewer({
         chainColors: { A: "#123456" },
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         plddt: null,
       });
 
@@ -1481,7 +1526,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("draws them as ball-and-stick beside the polymer's cartoon", async () => {
-      renderViewer({ pdb: MYOGLOBIN_PDB });
+      renderViewer({ structure: MYOGLOBIN_PDB });
 
       await waitFor(() =>
         expect(plugin.stubComponents).toEqual([POLYMER_A, LIGAND_A])
@@ -1498,7 +1543,7 @@ describe("<ProteinStructureViewer />", () => {
      * under pLDDT would color it by a score a HETATM does not have.
      */
     it("leaves them on element colors while the polymer takes the theme", async () => {
-      renderViewer({ pdb: MYOGLOBIN_PDB, plddt: [0.94] });
+      renderViewer({ structure: MYOGLOBIN_PDB, plddt: [0.94] });
 
       await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
       expect(themeFor(POLYMER_PART)).toBe(PLDDT_THEME);
@@ -1510,7 +1555,7 @@ describe("<ProteinStructureViewer />", () => {
      * its protein used to be.
      */
     it("hides them along with the chain they sit on", async () => {
-      renderViewer({ hiddenChains: ["A"], pdb: MYOGLOBIN_PDB });
+      renderViewer({ hiddenChains: ["A"], structure: MYOGLOBIN_PDB });
 
       await waitFor(() =>
         expect(plugin.stubVisibility.get(componentRef(LIGAND_A))).toBe(true)
@@ -1529,7 +1574,7 @@ describe("<ProteinStructureViewer />", () => {
       plugin = createStubPlugin(await structureFromPdb(LIGAND_CHAIN_PDB));
       createPluginUI.mockResolvedValue(plugin);
 
-      renderViewer({ onChainsChange, pdb: LIGAND_CHAIN_PDB });
+      renderViewer({ onChainsChange, structure: LIGAND_CHAIN_PDB });
 
       await waitFor(() =>
         expect(plugin.stubComponents).toEqual([POLYMER_A, "ligand-B"])
