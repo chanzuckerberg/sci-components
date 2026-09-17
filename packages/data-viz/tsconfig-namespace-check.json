@@ -25,6 +25,10 @@
      */
     "composite": false,
     "declaration": false,
-    "noEmit": true
+    "noEmit": true,
+    /*
+     * Required since `package.json` has an `exports` map.
+     */
+    "rootDir": "./src"
   }
 }
