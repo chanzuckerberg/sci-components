@@ -43,7 +43,7 @@ export const ProteinStructureViewer = (
   const {
     initialHiddenChains,
     initialSelection = null,
-    pdb = CRAMBIN_PDB,
+    structure = CRAMBIN_PDB,
     plddt = CRAMBIN_PLDDT,
     ...rest
   } = props;
@@ -83,7 +83,7 @@ export const ProteinStructureViewer = (
           onChainVisibilityChange: setHiddenChains,
         })}
         onSelectionChange={setSelection}
-        pdb={pdb}
+        structure={structure}
         plddt={plddt}
         selection={selection}
       />

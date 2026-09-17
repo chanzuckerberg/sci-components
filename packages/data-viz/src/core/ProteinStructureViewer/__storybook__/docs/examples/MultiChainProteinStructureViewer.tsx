@@ -7,7 +7,7 @@ import { useState } from "react";
 
 // A two-chain complex: barnase (chain A) with barstar (chain B) bound to it,
 // which is the shape a designed binder arrives in alongside its target. The
-// whole complex goes in as one `pdb` string; the viewer finds the chains and
+// whole complex goes in as one `structure` string; the viewer finds the chains and
 // draws one cartoon per chain.
 //
 // Trimmed to the first 30 residues of each chain and to backbone atoms, which
@@ -284,7 +284,7 @@ export default function App(): JSX.Element {
           // produced the structure will recognise.
           console.log(residue.chainId, residue.seqId, residue.index)
         }
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         selection={selection}
         stats={[

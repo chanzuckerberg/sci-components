@@ -77,7 +77,7 @@ export interface ResidueRef {
 /**
  * A chain the viewer found in the structure it loaded, reported through
  * `onChainsChange` so a consumer can label, color or hide chains by name
- * without parsing the PDB itself.
+ * without parsing the structure itself.
  *
  * `chainId` is the file's own name for the chain, the same one `ResidueRef`
  * reports, and the key every chain-keyed prop takes. A chain carrying several
@@ -182,8 +182,8 @@ export interface ProteinStructureViewerProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
   "onSelect"
 > {
-  /** Structure to render, as raw PDB text. */
-  pdb: string;
+  /** Structure to render, as raw PDB or mmCIF (PDBx) text. */
+  structure: string;
   /**
    * Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When
    * supplied the structure is colored by pLDDT unless `residueOverlay` takes

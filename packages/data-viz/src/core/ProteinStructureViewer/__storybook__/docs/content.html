@@ -44,13 +44,26 @@
 <h2>Code examples</h2>
 <h3><strong>Default ProteinStructureViewer</strong></h3>
 <p>
-  Raw PDB text is the only required prop. Supplying per-residue
+  The structure to render, as raw PDB or mmCIF (PDBx) text, is the only required
+  prop. Supplying per-residue
   <code>plddt</code> scores on a 0-1 scale colors the structure by confidence
   and puts the pLDDT key in the legend.
 </p>
 <div
   class="sds-doc-example"
   data-example="data-viz/ProteinStructureViewer/DefaultProteinStructureViewer"
+></div>
+<h3>PDB and mmCIF</h3>
+<p>
+  <code>structure</code> is the structure text, not a filename, and it accepts
+  both legacy PDB and mmCIF (PDBx). The viewer detects the format from the
+  contents: a <code>data_</code> block or an <code>_atom_site.</code> loop is
+  treated as mmCIF, everything else as PDB. Binary CIF (<code>.bcif</code>) is
+  not accepted.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/ProteinStructureViewer/MmcifProteinStructureViewer"
 ></div>
 <h3>Residue value overlay</h3>
 <p>
@@ -120,7 +133,8 @@
 <h3>Complexes and chains</h3>
 <p>
   A multi-chain structure needs nothing special: pass the whole complex as one
-  PDB string and the viewer finds the chains itself, reporting them through
+  structure string and the viewer finds the chains itself, reporting them
+  through
   <code>onChainsChange</code> as <code>ChainRef</code>s. It draws one cartoon
   per chain, splits the sequence panel into one grid per chain, and - when
   neither <code>plddt</code> nor <code>residueOverlay</code> is coloring the
@@ -160,10 +174,10 @@
 ></div>
 <h3>Ligands and ions</h3>
 <p>
-  Whatever a PDB entry carries besides its protein - ligands, ions, glycans,
-  lipids - is drawn as ball-and-stick alongside the cartoon, with no prop to
-  turn on. A cartoon traces a polymer backbone and a heme has none, so the two
-  halves of a chain need two representations between them.
+  Whatever a structure file carries besides its protein - ligands, ions,
+  glycans, lipids - is drawn as ball-and-stick alongside the cartoon, with no
+  prop to turn on. A cartoon traces a polymer backbone and a heme has none, so
+  the two halves of a chain need two representations between them.
 </p>
 <p>
   The residue holding a ligand is drawn as sticks too, one bond out, which is
@@ -236,7 +250,7 @@
   <figure>
     <figcaption>React TypeScript</figcaption>
     <pre><code class="sds-doc-codeblock-content language-tsx">&lt;ProteinStructureViewer
- pdb={PDB}
+ structure={PDB}
  download={{ resolution: "high", filename: "barnase-barstar" }}
 /&gt;</code></pre>
   </figure>
@@ -352,7 +366,7 @@
     <pre><code class="sds-doc-codeblock-content language-tsx">import { PluginConfig } from "molstar/lib/mol-plugin/config";
 
 &lt;ProteinStructureViewer
-  pdb={PDB}
+  structure={PDB}
   molstarSpec={{
     canvas3d: {
       // Slow the trackball down, leaving the rest of it alone.
@@ -441,13 +455,13 @@
   </tr>
   <tr>
     <td>
-      <p><code>pdb</code></p>
+      <p><code>structure</code></p>
     </td>
     <td>
       <p><code>string</code></p>
     </td>
     <td><p>- (required)</p></td>
-    <td><p>The structure to render, as raw PDB text.</p></td>
+    <td><p>The structure to render, as raw PDB or mmCIF (PDBx) text.</p></td>
   </tr>
   <tr>
     <td>
