@@ -379,9 +379,13 @@ export const WithImageDownload = {
 };
 
 /**
- * A whole chain selected on load. The camera frames everything the selection
- * covers rather than approaching a point, so a chain is fitted to the view, and
- * the readout reports the mean pLDDT across it instead of a single score.
+ * A whole chain selected on load. The chain is drawn exactly as it would be
+ * unselected and the rest of the complex dims around it, which is what pointing
+ * at a chain's name does for as long as the pointer is there.
+ *
+ * The camera frames everything the selection covers rather than approaching a
+ * point, so a chain is fitted to the view, and the readout reports the mean
+ * pLDDT across it instead of a single score.
  */
 export const ComplexWithChainSelected = {
   args: {

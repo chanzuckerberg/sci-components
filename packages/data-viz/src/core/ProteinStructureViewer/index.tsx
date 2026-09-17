@@ -250,8 +250,9 @@ const ProteinStructureViewer = forwardRef(
     );
 
     /**
-     * Dims every other chain while a chain's name is pointed at, in the
-     * legend or in the sequence panel's captions.
+     * Dims every other chain while a chain's name is pointed at, in the legend
+     * or in the sequence panel's captions, and leaves the selected chain lit
+     * once the pointer has gone.
      *
      * Reached through a ref because the two ends need each other: dimming
      * other chains takes the plugin, which the hook below creates, and that
@@ -287,6 +288,7 @@ const ProteinStructureViewer = forwardRef(
       chainColorThemeRef,
       chains: loadedChains,
       isReady,
+      loadCount,
       pluginRef,
       residuesByChainRef,
       residueValueThemeRef,
@@ -318,7 +320,10 @@ const ProteinStructureViewer = forwardRef(
 
     highlightChainRef.current = useChainHighlight({
       disabled: disableChainHighlightOnHover,
+      hiddenChains,
+      loadCount,
       pluginRef,
+      selectedChains,
     });
 
     // The plugin owns chain discovery, but the chain-keyed props have to be

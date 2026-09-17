@@ -226,6 +226,10 @@ export interface ProteinStructureViewerProps extends Omit<
    * What is selected, or null when nothing is. Controlled: the camera frames
    * whatever the selection covers, and clearing it zooms back out to the
    * default view.
+   *
+   * Residues are drawn in ball-and-stick over the cartoon; whole chains are
+   * left as they are and the chains around them dim, the same as hovering a
+   * chain's name.
    */
   selection?: StructureSelection | null;
   /**

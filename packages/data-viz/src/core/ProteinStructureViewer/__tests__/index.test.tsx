@@ -987,6 +987,40 @@ describe("<ProteinStructureViewer />", () => {
       ).toHaveBeenCalledTimes(2);
     });
 
+    /** The chain legend's row for a chain, which is what reports the hover. */
+    async function chainRow(label: string): Promise<HTMLElement> {
+      const name = await screen.findByRole("button", {
+        name: `Chain ${label}`,
+      });
+
+      return name.closest("div") as HTMLElement;
+    }
+
+    /** Arguments the dim was last called with. */
+    function lastDim(): [unknown, unknown[], number] | undefined {
+      const { calls } = setStructureTransparency.mock;
+      return calls[calls.length - 1] as unknown as
+        | [unknown, unknown[], number]
+        | undefined;
+    }
+
+    /** Chain ids whose components were in the last dim call. */
+    function dimmedChainIds(): string[] {
+      const components = (lastDim()?.[1] ?? []) as {
+        key?: string;
+        cell: { transform: { ref: string } };
+      }[];
+
+      return components
+        .map((component) => componentChainId(component))
+        .filter((id): id is string => id !== undefined);
+    }
+
+    beforeEach(() => {
+      setStructureTransparency.mockClear();
+      clearStructureTransparency.mockClear();
+    });
+
     /**
      * Pointing at a chain's name dims every other chain in the 3D view, which
      * on a complex is how you find out which half of it is which.
@@ -995,40 +1029,6 @@ describe("<ProteinStructureViewer />", () => {
      * dimmed and that a leave (or a move to another name) restores them.
      */
     describe("hovering a chain's name", () => {
-      /** The chain legend's row for a chain, which is what reports the hover. */
-      async function chainRow(label: string): Promise<HTMLElement> {
-        const name = await screen.findByRole("button", {
-          name: `Chain ${label}`,
-        });
-
-        return name.closest("div") as HTMLElement;
-      }
-
-      /** Arguments the dim was last called with. */
-      function lastDim(): [unknown, unknown[], number] | undefined {
-        const { calls } = setStructureTransparency.mock;
-        return calls[calls.length - 1] as unknown as
-          | [unknown, unknown[], number]
-          | undefined;
-      }
-
-      /** Chain ids whose components were in the last dim call. */
-      function dimmedChainIds(): string[] {
-        const components = (lastDim()?.[1] ?? []) as {
-          key?: string;
-          cell: { transform: { ref: string } };
-        }[];
-
-        return components
-          .map((component) => componentChainId(component))
-          .filter((id): id is string => id !== undefined);
-      }
-
-      beforeEach(() => {
-        setStructureTransparency.mockClear();
-        clearStructureTransparency.mockClear();
-      });
-
       it("dims every other chain, leaving the hovered one opaque", async () => {
         renderViewer({ structure: BARNASE_BARSTAR_PDB });
         fireEvent.mouseEnter(await chainRow("B"));
@@ -1128,6 +1128,136 @@ describe("<ProteinStructureViewer />", () => {
           )
         );
         expect(setStructureTransparency).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    /**
+     * A selected chain is shown the same way a hovered one is, and for the same
+     * reason: it is the chain being read, and dimming the others says so
+     * without painting anything over the one it is pointing at.
+     */
+    describe("selecting a chain", () => {
+      const selecting = (
+        selection: ProteinStructureViewerProps["selection"],
+        hidden: string[] = []
+      ) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            hiddenChains={hidden}
+            structure={BARNASE_BARSTAR_PDB}
+            selection={selection}
+          />
+        </ThemeProvider>
+      );
+
+      it("dims the other chains for as long as it stands", async () => {
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+      });
+
+      it("still dims when hover highlighting is turned off", async () => {
+        // `disableChainHighlightOnHover` turns off what the pointer does, not
+        // what the selection does: a selected chain would otherwise have
+        // nothing at all to show it.
+        render(
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              disableChainHighlightOnHover
+              structure={BARNASE_BARSTAR_PDB}
+              selection={{ chains: ["B"] }}
+            />
+          </ThemeProvider>
+        );
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+      });
+
+      it("takes the dim off when the selection is cleared", async () => {
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        setStructureTransparency.mockClear();
+        rerender(selecting(null));
+
+        await waitFor(() =>
+          expect(clearStructureTransparency).toHaveBeenCalled()
+        );
+        expect(setStructureTransparency).not.toHaveBeenCalled();
+      });
+
+      it("takes the dim off when the selected chain is hidden", async () => {
+        // Everything visible would be dimmed otherwise, leaving the dimming
+        // pointing at a chain that is not on the canvas.
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        setStructureTransparency.mockClear();
+        rerender(selecting({ chains: ["B"] }, ["B"]));
+
+        await waitFor(() =>
+          expect(clearStructureTransparency).toHaveBeenCalled()
+        );
+        expect(setStructureTransparency).not.toHaveBeenCalled();
+      });
+
+      it("hands the dim back to the selection when a hover ends", async () => {
+        render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        // Barnase hovered: it takes over from barstar while the pointer is on
+        // it, so barstar is the one dimmed.
+        const barnase = await chainRow("A");
+        fireEvent.mouseEnter(barnase);
+        await waitFor(() =>
+          expect(new Set(dimmedChainIds())).toEqual(new Set(["B"]))
+        );
+
+        fireEvent.mouseLeave(barnase);
+
+        await waitFor(() =>
+          expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]))
+        );
+      });
+
+      /**
+       * A load rebuilds the state tree the dimming was written into. Scores
+       * arriving after the first render are what makes this ordinary: they
+       * reload the structure with the same chains under a standing selection.
+       */
+      it("dims again after the structure is reloaded", async () => {
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        setStructureTransparency.mockClear();
+        rerender(
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              plddt={Array.from({ length: 199 }, () => 0.9)}
+              structure={BARNASE_BARSTAR_PDB}
+              selection={{ chains: ["B"] }}
+            />
+          </ThemeProvider>
+        );
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
       });
     });
 
@@ -1264,9 +1394,9 @@ describe("<ProteinStructureViewer />", () => {
     /**
      * Mol* draws a focused selection with a 5A shell of its neighbours in
      * ball-and-stick. Around a residue that shell is the point of looking at
-     * it; around a whole chain it reaches across the interface and paints the
-     * partner chain's contact face, which reads as the partner being selected
-     * too. So a chain is shown on its own and a residue keeps its shell.
+     * it; around a whole chain there is nothing focused at all, since a chain
+     * is shown by dimming the others - so the shell only has a say once a
+     * selection names residues, and a chain named beside them confines it.
      */
     describe("the focus shell", () => {
       /** How the focus shell was last configured. */
@@ -1286,16 +1416,16 @@ describe("<ProteinStructureViewer />", () => {
         </ThemeProvider>
       );
 
-      it("confines the shell to the selection for a whole chain", async () => {
-        render(selecting({ chains: ["B"] }));
+      it("confines the shell to the residues when a chain is named too", async () => {
+        render(selecting({ chains: ["B"], residues: [150] }));
 
         await waitFor(() => expect(shell()?.expandRadius).toBe(0));
       });
 
       it("keeps drawing surroundings and interactions either way", async () => {
-        // Confined, not switched off: the chain still shows its own atoms and
+        // Confined, not switched off: the residue still shows its own atoms and
         // its own contacts, just nothing belonging to the chain beside it.
-        render(selecting({ chains: ["B"] }));
+        render(selecting({ chains: ["B"], residues: [150] }));
 
         await waitFor(() =>
           expect(shell()?.components).toEqual([
@@ -1322,46 +1452,92 @@ describe("<ProteinStructureViewer />", () => {
         const { rerender } = render(selecting({ residues: [12] }));
         await waitFor(() => expect(shell()?.expandRadius).toBe(5));
 
-        rerender(selecting({ chains: ["B"] }));
+        rerender(selecting({ chains: ["B"], residues: [150] }));
 
         await waitFor(() => expect(shell()?.expandRadius).toBe(0));
       });
 
       it("does not resize between selections of the same kind", async () => {
-        const { rerender } = render(selecting({ chains: ["B"] }));
+        const { rerender } = render(selecting({ residues: [12] }));
         await waitFor(() => expect(plugin.stubFocusShells).toHaveLength(1));
 
-        rerender(selecting({ chains: ["A"] }));
+        const before =
+          plugin.managers.structure.focus.setFromLoci.mock.calls.length;
+        rerender(selecting({ residues: [13] }));
+        await waitFor(() =>
+          expect(
+            plugin.managers.structure.focus.setFromLoci.mock.calls.length
+          ).toBeGreaterThan(before)
+        );
+
+        // Still one: the shell is already sized for a residue.
+        expect(plugin.stubFocusShells).toHaveLength(1);
+      });
+
+      it("focuses nothing at all for a selection of whole chains", async () => {
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.camera.setState).toHaveBeenCalled()
+        );
+
+        // No focus means no ball-and-stick over the cartoon and no outline
+        // around it, so the chain is drawn exactly as it was.
+        expect(
+          plugin.managers.structure.focus.setFromLoci
+        ).not.toHaveBeenCalled();
+        expect(plugin.stubFocusShells).toHaveLength(0);
+      });
+
+      it("frames a whole chain without cropping the chains around it", async () => {
+        const { camera } = plugin.canvas3d;
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() => expect(camera.setState).toHaveBeenCalled());
+
+        // The depth clip is left open to the whole scene rather than pulled in
+        // around the chain: the chains being dimmed have to stay on screen.
+        const { calls } = camera.setState.mock;
+        const state = calls[calls.length - 1]?.[0] as { radius: number };
+        expect(state.radius).toBe(camera.state.radiusMax);
+      });
+
+      it("drops a residue's focus when a whole chain is selected next", async () => {
+        const { rerender } = render(selecting({ residues: [150] }));
         await waitFor(() =>
           expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
         );
 
-        // Still one: the shell is already sized for a chain.
-        expect(plugin.stubFocusShells).toHaveLength(1);
+        plugin.managers.structure.focus.clear.mockClear();
+        rerender(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(plugin.managers.structure.focus.clear).toHaveBeenCalled()
+        );
       });
     });
 
     /**
      * Mol*'s focus representation draws ball-and-stick from whatever is
      * focused, and it builds that in a part of the state tree the chain
-     * component's own visibility does not reach - so hiding a selected chain
-     * took its cartoon away and left its atoms behind.
+     * component's own visibility does not reach - so hiding the chain a
+     * selected residue sits on took its cartoon away and left atoms behind.
      */
-    describe("hiding a selected chain", () => {
-      /** The viewer with one chain selected and a given set hidden. */
-      const hiding = (hidden: string[], chains = ["B"]) => (
+    describe("hiding the chain a selected residue sits on", () => {
+      /** The viewer with residues selected and a given set of chains hidden. */
+      const hiding = (hidden: string[], residues = [150]) => (
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             hiddenChains={hidden}
             structure={BARNASE_BARSTAR_PDB}
-            selection={{ chains }}
+            selection={{ residues }}
           />
         </ThemeProvider>
       );
 
       const focus = () => plugin.managers.structure.focus;
 
-      it("drops the focus so nothing of the chain is drawn", async () => {
+      it("drops the focus so nothing of the residue is drawn", async () => {
         const { rerender } = render(hiding([]));
         await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
 
@@ -1383,13 +1559,14 @@ describe("<ProteinStructureViewer />", () => {
       });
 
       it("refocuses on what is left when only part is hidden", async () => {
-        const { rerender } = render(hiding([], ["A", "B"]));
+        const { rerender } = render(hiding([], [5, 150]));
         await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
 
         const before = focus().setFromLoci.mock.calls.length;
-        rerender(hiding(["B"], ["A", "B"]));
+        rerender(hiding(["B"], [5, 150]));
 
-        // Chain A is still shown, so the focus moves to it rather than going.
+        // Residue 5 is on chain A, which is still shown, so the focus moves to
+        // it rather than going.
         await waitFor(() =>
           expect(focus().setFromLoci.mock.calls.length).toBeGreaterThan(before)
         );
@@ -1477,7 +1654,7 @@ describe("<ProteinStructureViewer />", () => {
       });
 
       await waitFor(() =>
-        expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
+        expect(plugin.canvas3d.camera.setState).toHaveBeenCalled()
       );
 
       // Barstar's residues all score 0.9, and the readout names the chain

@@ -103,6 +103,14 @@
   view rather than approached as a point.
 </p>
 <p>
+  The two are shown differently, because they are different sizes of answer.
+  Selected residues are drawn in ball-and-stick over the cartoon, with the
+  residues around them, which is the point of looking at a site. A selected
+  chain is left exactly as it was and the other chains dim around it - the same
+  way pointing at a chain's name behaves, and for the same reason: a whole chain
+  is already visible, so anything painted over it would only hide it.
+</p>
+<p>
   <code>onResidueClick</code> and <code>onResidueHover</code> are separate, and
   still report a single <code>ResidueRef</code>: they describe the residue under
   the pointer, which is a different fact from what the selection covers. Use
@@ -508,7 +516,9 @@
     <td>
       <p>
         What is selected. Controlled: the camera frames whatever it covers, and
-        clearing it zooms back out. See the table below for its shape.
+        clearing it zooms back out. Residues are drawn in ball-and-stick; a
+        whole chain dims the chains around it instead. See the table below for
+        its shape.
       </p>
     </td>
   </tr>
