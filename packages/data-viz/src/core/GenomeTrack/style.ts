@@ -499,7 +499,15 @@ export const TrackMessage = styled("div")`
     const spaces = getSpaces(props);
 
     return `
-      color: ${semanticColors?.base?.textSecondary};
+      /*
+       * Primary rather than secondary text, for contrast. Secondary is gray
+       * 600, and on this surface — gray 300 at 20%, which composites to about
+       * #f3f3f3 — that is 4.09:1, under the 4.5:1 WCAG AA needs at 12px. The
+       * story a11y checks fail on it. Tertiary is lighter still, so primary is
+       * the only compliant token here; the title above stays distinguishable
+       * by its 600 weight rather than by colour.
+       */
+      color: ${semanticColors?.base?.textPrimary};
       background-color: ${semanticColors?.base?.surfaceSecondary};
       border-radius: 4px;
       padding: ${spaces?.l}px ${spaces?.m}px;
