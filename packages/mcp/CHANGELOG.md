@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.1...@czi-sds/mcp@0.20.0) (2026-09-17)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** synchronize chain selection and hover effects ([991c0cd](https://github.com/chanzuckerberg/sci-components/commit/991c0cdf6ab0dbd0aaed44eb1680ffcf0d836d53))
+
+### Features
+
+- **ProteinStructureViewer:** Improve multi chain support + Ligands and IONs ([#1188](https://github.com/chanzuckerberg/sci-components/issues/1188)) ([9744389](https://github.com/chanzuckerberg/sci-components/commit/9744389aa0839d5a1d5963936207fe7c4639d3e9))
+
 # [0.19.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.1...@czi-sds/mcp@0.19.0) (2026-09-15)
 
 ### Features
