@@ -14,7 +14,7 @@ import type {
  * viewer can address.
  *
  * `index` comes from Mol*'s residue key, which counts residues in file order
- * from zero and is the same counter `injectPlddtIntoPdb` walks. Deriving it
+ * from zero and is the same counter `injectPlddt` walks. Deriving it
  * from the residue's *number* instead would tie it to how the file happens to
  * be numbered: a crop beginning at residue 200 would index `plddt` at 199, and
  * a file numbering each chain from 1 would give two residues the same index.

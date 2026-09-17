@@ -91,35 +91,6 @@ export function lociForSelectionInStructure(
 }
 
 /**
- * Every atom of one chain's polymer, in the first structure that has one.
- *
- * The polymer alone, so pointing at a chain's name lights up the cartoon the
- * name is captioning. The ligands sitting on the chain belong to it but are
- * not what it is named for, and they are drawn by a representation of their
- * own.
- */
-export function lociForChainPolymer(
-  plugin: PluginUIContext,
-  chainId: string
-): StructureElement.Loci | undefined {
-  for (const entry of plugin.managers.structure.hierarchy.current.structures) {
-    const structure = entry.cell.obj?.data;
-    if (!structure) continue;
-
-    const loci = lociMatching(
-      structure,
-      (location) =>
-        StructureProperties.chain.auth_asym_id(location) === chainId &&
-        StructureProperties.entity.type(location) === "polymer"
-    );
-
-    if (loci) return loci;
-  }
-
-  return undefined;
-}
-
-/**
  * Every atom of the residues between two 0-based indices, inclusive.
  *
  * A contiguous span is tested by comparison rather than by expanding it into a

@@ -1,4 +1,5 @@
-// Raw PDB text is the only required prop. Adding per-residue pLDDT scores on a
+// The structure to render, as raw PDB or mmCIF (PDBx) text, is the only
+// required prop. Adding per-residue pLDDT scores on a
 // 0-1 scale colors the structure by confidence and puts the pLDDT key in the
 // legend.
 //
@@ -213,7 +214,7 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         stats={[
           { label: "Known", value: "62%" },

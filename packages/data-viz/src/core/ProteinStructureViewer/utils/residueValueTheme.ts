@@ -67,7 +67,7 @@ export function createResidueValueTheme(
           if (!StructureElement.Location.is(location)) return neutral;
 
           // Keyed by the residue's position in the file, the same ordinal
-          // `injectPlddtIntoPdb` walks. A residue the overlay says nothing
+          // `injectPlddt` walks. A residue the overlay says nothing
           // about reads neutral rather than as an explicit zero, which would
           // otherwise paint it at the bottom of the scale.
           const value = values.get(StructureProperties.residue.key(location));

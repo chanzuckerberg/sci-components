@@ -8,13 +8,9 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import { OrderedSet } from "molstar/lib/mol-data/int";
-import type { ElementIndex } from "molstar/lib/mol-model/structure";
 import {
   QueryContext,
   Structure,
-  StructureElement,
-  StructureProperties,
   StructureSelection,
 } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
@@ -26,9 +22,10 @@ import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
 import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
-// Imported rather than copied: which pink it is can be tuned, and a test that
-// pinned its own would fail on that alone.
-import { CHAIN_HIGHLIGHT_COLOR } from "../hooks/useChainHighlight";
+import {
+  CHAIN_DIM_TRANSPARENCY,
+  componentChainId,
+} from "../hooks/useChainHighlight";
 import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
@@ -50,6 +47,16 @@ import { lociForSeqId, structureFromPdb } from "./molstarStructure";
 const createPluginUI = vi.hoisted(() => vi.fn());
 
 vi.mock("molstar/lib/mol-plugin-ui", () => ({ createPluginUI }));
+
+const setStructureTransparency = vi.hoisted(() => vi.fn(async () => undefined));
+const clearStructureTransparency = vi.hoisted(() =>
+  vi.fn(async () => undefined)
+);
+
+vi.mock("molstar/lib/mol-plugin-state/helpers/structure-transparency", () => ({
+  clearStructureTransparency,
+  setStructureTransparency,
+}));
 
 /**
  * Stands in for a Mol* behavior, which is how the hover and click paths are
@@ -108,8 +115,8 @@ function stubCamera() {
 }
 
 /**
- * Marking colors the theme is holding when a chain highlight borrows them.
- * Arbitrary, and distinct from the pink, so a restore is visible as a restore.
+ * Residue-hover marking colors the stub canvas starts with. Arbitrary values
+ * distinct from the theme, so a `setProps` restore would be visible as one.
  */
 const THEME_HIGHLIGHT_COLOR = Color.fromRgb(1, 2, 3);
 const THEME_EDGE_COLOR = Color.fromRgb(4, 5, 6);
@@ -151,6 +158,7 @@ function themeCallbackArgs(part: string) {
 function createStubPlugin(structure?: Structure) {
   const loadedThemes: string[] = [];
   const parsedPdb: string[] = [];
+  const parsedFormats: string[] = [];
   const focused = new BehaviorSubject<{ loci: unknown } | undefined>(undefined);
 
   /** Component keys the load path built, in order. */
@@ -167,6 +175,15 @@ function createStubPlugin(structure?: Structure) {
    */
   const visibility = new Map<string, boolean>();
   const transforms = new Map<string, { ref: string }>();
+
+  /**
+   * Hierarchy components the load path built. The same array the plugin
+   * reports, so a chain hover can find them the way it does in a browser.
+   */
+  const hierarchyComponents: {
+    key: string;
+    cell: { transform: { ref: string } };
+  }[] = [];
 
   /** Focus shell settings, one entry per reconfiguration. */
   const focusShells: { components: string[]; expandRadius: number }[] = [];
@@ -189,8 +206,9 @@ function createStubPlugin(structure?: Structure) {
           ref: "structure",
         })),
         hierarchy: { applyPreset: vi.fn(async () => undefined) },
-        parseTrajectory: vi.fn(async (data: string) => {
+        parseTrajectory: vi.fn(async (data: string, format?: string) => {
           parsedPdb.push(data);
+          parsedFormats.push(format ?? "pdb");
           return data;
         }),
         representation: {
@@ -222,6 +240,10 @@ function createStubPlugin(structure?: Structure) {
             const ref = `component-${key}`;
             components.push(key);
             transforms.set(ref, { ref });
+            hierarchyComponents.push({
+              cell: { transform: { ref } },
+              key: `structure-component-${key}`,
+            });
             return { ref };
           }
         ),
@@ -231,9 +253,9 @@ function createStubPlugin(structure?: Structure) {
       camera: stubCamera(),
       didDraw: subscribable(),
       /**
-       * What the chain highlight borrows and hands back. Real Mol* keeps these
-       * current as `setProps` is called; here they stay as the theme left them,
-       * which is all the restore has to find.
+       * Residue-hover marking colors the theme is holding. Real Mol* keeps
+       * these current as `setProps` is called; here they stay as the theme
+       * left them.
        */
       props: {
         marking: { highlightEdgeColor: THEME_EDGE_COLOR },
@@ -293,12 +315,16 @@ function createStubPlugin(structure?: Structure) {
         hierarchy: {
           current: {
             structures: [
-              { cell: { obj: { data: structure } }, components: [] },
+              {
+                cell: { obj: { data: structure } },
+                components: hierarchyComponents,
+              },
             ],
           },
         },
       },
     },
+    parsedFormats,
     parsedPdb,
     representation: {
       structure: { themes: { colorThemeRegistry: { add: vi.fn() } } },
@@ -374,6 +400,32 @@ END`;
 const OTHER_PDB = `ATOM      1  N   ALA A   1      11.111  22.222   3.333  1.00 13.79           N
 END`;
 
+const MMCIF = `data_TEST
+#
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.auth_seq_id
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_atom_id
+_atom_site.pdbx_PDB_model_num
+ATOM 1 N N . THR A 1 1 ? 17.047 14.099 3.625 1.00 13.79 1 THR A N 1
+#`;
+
 /** Caption an overlay puts on the legend, in place of the pLDDT key. */
 const OVERLAY_LABEL = "Feature activation";
 
@@ -405,7 +457,7 @@ function renderViewer(
   props: Partial<ProteinStructureViewerProps> = {}
 ): ReactElement {
   const element = (
-    <ProteinStructureViewer data-testid="viewer" pdb={PDB} {...props} />
+    <ProteinStructureViewer data-testid="viewer" structure={PDB} {...props} />
   );
   render(<ThemeProvider theme={defaultTheme}>{element}</ThemeProvider>);
   return element;
@@ -451,9 +503,9 @@ describe("<ProteinStructureViewer />", () => {
     const SECOND =
       "ATOM      1  CA  ALA B   1      10.000  10.000  10.000  1.00 50.00           C";
 
-    const view = (pdb: string) => (
+    const view = (structure: string) => (
       <ThemeProvider theme={defaultTheme}>
-        <ProteinStructureViewer pdb={pdb} />
+        <ProteinStructureViewer structure={structure} />
       </ThemeProvider>
     );
 
@@ -493,7 +545,7 @@ describe("<ProteinStructureViewer />", () => {
       <ThemeProvider theme={defaultTheme}>
         <ProteinStructureViewer
           data-testid="viewer"
-          pdb={PDB}
+          structure={PDB}
           ref={(el) => {
             captured = el;
           }}
@@ -511,13 +563,14 @@ describe("<ProteinStructureViewer />", () => {
     await waitFor(() =>
       expect(plugin.builders.structure.parseTrajectory).toHaveBeenCalled()
     );
+    expect(plugin.parsedFormats[0]).toBe("pdb");
     expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled();
   });
 
   it("disposes the plugin on unmount", async () => {
     const { unmount } = render(
       <ThemeProvider theme={defaultTheme}>
-        <ProteinStructureViewer pdb={PDB} />
+        <ProteinStructureViewer structure={PDB} />
       </ThemeProvider>
     );
 
@@ -574,6 +627,21 @@ describe("<ProteinStructureViewer />", () => {
 
     await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
     expect((plugin.parsedPdb[0] as string).split("\n")[0]).toContain(" 94.00");
+  });
+
+  it("parses mmCIF when the structure text is a CIF document", async () => {
+    renderViewer({ structure: MMCIF });
+
+    await waitFor(() => expect(plugin.parsedFormats.length).toBe(1));
+    expect(plugin.parsedFormats[0]).toBe("mmcif");
+  });
+
+  it("injects pLDDT scores into mmCIF B_iso_or_equiv before parsing", async () => {
+    renderViewer({ structure: MMCIF, plddt: [0.94] });
+
+    await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
+    expect(plugin.parsedPdb[0]).toContain("94.00");
+    expect(plugin.parsedFormats[0]).toBe("mmcif");
   });
 
   it("shows the stats and the pLDDT key alongside scores", async () => {
@@ -654,7 +722,7 @@ describe("<ProteinStructureViewer />", () => {
       createPluginUI.mockClear();
       const { unmount } = render(
         <ThemeProvider theme={theme}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
 
@@ -691,7 +759,7 @@ describe("<ProteinStructureViewer />", () => {
     // plugin would throw away the camera. The mode has to reach them in place.
     const { rerender } = render(
       <ThemeProvider theme={defaultTheme}>
-        <ProteinStructureViewer pdb={PDB} />
+        <ProteinStructureViewer structure={PDB} />
       </ThemeProvider>
     );
 
@@ -700,7 +768,7 @@ describe("<ProteinStructureViewer />", () => {
 
     rerender(
       <ThemeProvider theme={Theme("dark")}>
-        <ProteinStructureViewer pdb={PDB} />
+        <ProteinStructureViewer structure={PDB} />
       </ThemeProvider>
     );
 
@@ -744,14 +812,14 @@ describe("<ProteinStructureViewer />", () => {
 
       const { rerender } = render(
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
       await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
 
       rerender(
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={OTHER_PDB} />
+          <ProteinStructureViewer structure={OTHER_PDB} />
         </ThemeProvider>
       );
       release(plugin);
@@ -766,14 +834,14 @@ describe("<ProteinStructureViewer />", () => {
 
       const { rerender } = render(
         <ThemeProvider theme={defaultTheme}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
       await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
 
       rerender(
         <ThemeProvider theme={Theme("dark")}>
-          <ProteinStructureViewer pdb={PDB} />
+          <ProteinStructureViewer structure={PDB} />
         </ThemeProvider>
       );
       release(plugin);
@@ -808,7 +876,7 @@ describe("<ProteinStructureViewer />", () => {
       return (
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
-            pdb={CRAMBIN_PDB}
+            structure={CRAMBIN_PDB}
             selection={residue === null ? null : { residues: [residue] }}
           />
         </ThemeProvider>
@@ -856,7 +924,7 @@ describe("<ProteinStructureViewer />", () => {
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             onResidueClick={onResidueClick}
-            pdb={CRAMBIN_PDB}
+            structure={CRAMBIN_PDB}
             selection={null}
           />
         </ThemeProvider>
@@ -909,7 +977,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("draws one cartoon component per chain", async () => {
-      renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(plugin.stubComponents).toEqual([POLYMER_A, "polymer-B"])
@@ -919,128 +987,283 @@ describe("<ProteinStructureViewer />", () => {
       ).toHaveBeenCalledTimes(2);
     });
 
-    /**
-     * Pointing at a chain's name lights the chain up in the 3D view, which on
-     * a complex is how you find out which half of it is which.
-     *
-     * Mol*'s marking draws it, so what is asserted is the loci handed to the
-     * highlight manager and the colors swapped in around it. Marking colors
-     * belong to the renderer rather than to the loci, so they are borrowed for
-     * the length of the hover - and the test below checks they come back.
-     */
-    describe("hovering a chain's name", () => {
-      /** The chain legend's row for a chain, which is what reports the hover. */
-      async function chainRow(label: string): Promise<HTMLElement> {
-        const name = await screen.findByRole("button", {
-          name: `Chain ${label}`,
-        });
-
-        return name.closest("div") as HTMLElement;
-      }
-
-      /** Residue indices covered by the loci the highlight was last handed. */
-      function highlightedResidues(): number[] {
-        const { calls } =
-          plugin.managers.interactivity.lociHighlights.highlightOnly.mock;
-        const { loci } = calls[calls.length - 1]?.[0] as {
-          loci: StructureElement.Loci;
-        };
-        const residues = new Set<number>();
-        const location = StructureElement.Location.create(loci.structure);
-
-        for (const element of loci.elements) {
-          location.unit = element.unit;
-
-          OrderedSet.forEach(element.indices, (i) => {
-            location.element = element.unit.elements[i] as ElementIndex;
-            residues.add(StructureProperties.residue.key(location));
-          });
-        }
-
-        return [...residues].sort((a, b) => a - b);
-      }
-
-      it("highlights that chain's polymer, in pink", async () => {
-        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
-        fireEvent.mouseEnter(await chainRow("B"));
-
-        // Barstar occupies 110-198; barnase's 0-109 are left dark.
-        const residues = highlightedResidues();
-        expect(residues).toHaveLength(89);
-        expect(residues[0]).toBe(110);
-        expect(residues[residues.length - 1]).toBe(198);
-
-        expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
-          marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
-          renderer: {
-            highlightColor: CHAIN_HIGHLIGHT_COLOR,
-            highlightStrength: expect.any(Number),
-          },
-        });
+    /** The chain legend's row for a chain, which is what reports the hover. */
+    async function chainRow(label: string): Promise<HTMLElement> {
+      const name = await screen.findByRole("button", {
+        name: `Chain ${label}`,
       });
 
-      it("hands the theme's colors back when the pointer leaves", async () => {
-        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+      return name.closest("div") as HTMLElement;
+    }
+
+    /** Arguments the dim was last called with. */
+    function lastDim(): [unknown, unknown[], number] | undefined {
+      const { calls } = setStructureTransparency.mock;
+      return calls[calls.length - 1] as unknown as
+        | [unknown, unknown[], number]
+        | undefined;
+    }
+
+    /** Chain ids whose components were in the last dim call. */
+    function dimmedChainIds(): string[] {
+      const components = (lastDim()?.[1] ?? []) as {
+        key?: string;
+        cell: { transform: { ref: string } };
+      }[];
+
+      return components
+        .map((component) => componentChainId(component))
+        .filter((id): id is string => id !== undefined);
+    }
+
+    beforeEach(() => {
+      setStructureTransparency.mockClear();
+      clearStructureTransparency.mockClear();
+    });
+
+    /**
+     * Pointing at a chain's name dims every other chain in the 3D view, which
+     * on a complex is how you find out which half of it is which.
+     *
+     * Mol* transparency draws it, so what is asserted is which components were
+     * dimmed and that a leave (or a move to another name) restores them.
+     */
+    describe("hovering a chain's name", () => {
+      it("dims every other chain, leaving the hovered one opaque", async () => {
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
+        fireEvent.mouseEnter(await chainRow("B"));
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+        expect(lastDim()?.[2]).toBe(CHAIN_DIM_TRANSPARENCY);
+      });
+
+      it("restores full opacity when the pointer leaves", async () => {
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
         const row = await chainRow("B");
 
         fireEvent.mouseEnter(row);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
         fireEvent.mouseLeave(row);
 
-        expect(
-          plugin.managers.interactivity.lociHighlights.clearHighlights
-        ).toHaveBeenCalled();
-        expect(plugin.canvas3d.setProps).toHaveBeenLastCalledWith({
-          marking: { highlightEdgeColor: THEME_EDGE_COLOR },
-          renderer: {
-            highlightColor: THEME_HIGHLIGHT_COLOR,
-            highlightStrength: THEME_HIGHLIGHT_STRENGTH,
-          },
-        });
+        await waitFor(() =>
+          expect(clearStructureTransparency.mock.calls.length).toBeGreaterThan(
+            1
+          )
+        );
+        expect(setStructureTransparency).toHaveBeenCalledTimes(1);
       });
 
-      it("stays dark when disableChainHighlightOnHover is set", async () => {
+      it("stays at full opacity when disableChainHighlightOnHover is set", async () => {
         renderViewer({
           disableChainHighlightOnHover: true,
-          pdb: BARNASE_BARSTAR_PDB,
+          structure: BARNASE_BARSTAR_PDB,
         });
         fireEvent.mouseEnter(await chainRow("B"));
+        fireEvent.mouseLeave(await chainRow("B"));
 
-        expect(
-          plugin.managers.interactivity.lociHighlights.highlightOnly
-        ).not.toHaveBeenCalled();
-        expect(plugin.canvas3d.setProps).not.toHaveBeenCalledWith(
-          expect.objectContaining({
-            marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
-          })
+        expect(setStructureTransparency).not.toHaveBeenCalled();
+        expect(clearStructureTransparency).not.toHaveBeenCalled();
+      });
+
+      /**
+       * Turned off part way through a hover, the dim would otherwise be
+       * stranded: no leave follows a prop change, so nothing would take it off.
+       */
+      it("restores full opacity when hovering is turned off mid-hover", async () => {
+        const view = (disable: boolean) => (
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              disableChainHighlightOnHover={disable}
+              structure={BARNASE_BARSTAR_PDB}
+            />
+          </ThemeProvider>
+        );
+
+        const { rerender } = render(view(false));
+        fireEvent.mouseEnter(await chainRow("B"));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        clearStructureTransparency.mockClear();
+
+        rerender(view(true));
+
+        await waitFor(() =>
+          expect(clearStructureTransparency).toHaveBeenCalled()
         );
       });
 
       /**
-       * Moving from one name to the next without leaving the list snapshots
-       * the theme's colors once. Taking a second would capture the pink as the
-       * color to restore, and leave the viewer stuck in it.
+       * Moving from one name to the next without leaving the list dims the
+       * previous hover's chain and then restores everything on leave. Each
+       * hover clears first, so layers cannot stack.
        */
-      it("still hands them back after moving between two chains", async () => {
-        renderViewer({ pdb: BARNASE_BARSTAR_PDB });
+      it("restores full opacity after moving between two chains", async () => {
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
         const barstar = await chainRow("B");
 
         fireEvent.mouseEnter(await chainRow("A"));
-        fireEvent.mouseEnter(barstar);
-        fireEvent.mouseLeave(barstar);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        setStructureTransparency.mockClear();
 
-        expect(plugin.canvas3d.setProps).toHaveBeenLastCalledWith({
-          marking: { highlightEdgeColor: THEME_EDGE_COLOR },
-          renderer: {
-            highlightColor: THEME_HIGHLIGHT_COLOR,
-            highlightStrength: THEME_HIGHLIGHT_STRENGTH,
-          },
-        });
+        fireEvent.mouseEnter(barstar);
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+
+        fireEvent.mouseLeave(barstar);
+        await waitFor(() =>
+          expect(clearStructureTransparency.mock.calls.length).toBeGreaterThan(
+            0
+          )
+        );
+        expect(setStructureTransparency).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    /**
+     * A selected chain is shown the same way a hovered one is, and for the same
+     * reason: it is the chain being read, and dimming the others says so
+     * without painting anything over the one it is pointing at.
+     */
+    describe("selecting a chain", () => {
+      const selecting = (
+        selection: ProteinStructureViewerProps["selection"],
+        hidden: string[] = []
+      ) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            hiddenChains={hidden}
+            structure={BARNASE_BARSTAR_PDB}
+            selection={selection}
+          />
+        </ThemeProvider>
+      );
+
+      it("dims the other chains for as long as it stands", async () => {
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+      });
+
+      it("still dims when hover highlighting is turned off", async () => {
+        // `disableChainHighlightOnHover` turns off what the pointer does, not
+        // what the selection does: a selected chain would otherwise have
+        // nothing at all to show it.
+        render(
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              disableChainHighlightOnHover
+              structure={BARNASE_BARSTAR_PDB}
+              selection={{ chains: ["B"] }}
+            />
+          </ThemeProvider>
+        );
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+      });
+
+      it("takes the dim off when the selection is cleared", async () => {
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        setStructureTransparency.mockClear();
+        rerender(selecting(null));
+
+        await waitFor(() =>
+          expect(clearStructureTransparency).toHaveBeenCalled()
+        );
+        expect(setStructureTransparency).not.toHaveBeenCalled();
+      });
+
+      it("takes the dim off when the selected chain is hidden", async () => {
+        // Everything visible would be dimmed otherwise, leaving the dimming
+        // pointing at a chain that is not on the canvas.
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        setStructureTransparency.mockClear();
+        rerender(selecting({ chains: ["B"] }, ["B"]));
+
+        await waitFor(() =>
+          expect(clearStructureTransparency).toHaveBeenCalled()
+        );
+        expect(setStructureTransparency).not.toHaveBeenCalled();
+      });
+
+      it("hands the dim back to the selection when a hover ends", async () => {
+        render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        // Barnase hovered: it takes over from barstar while the pointer is on
+        // it, so barstar is the one dimmed.
+        const barnase = await chainRow("A");
+        fireEvent.mouseEnter(barnase);
+        await waitFor(() =>
+          expect(new Set(dimmedChainIds())).toEqual(new Set(["B"]))
+        );
+
+        fireEvent.mouseLeave(barnase);
+
+        await waitFor(() =>
+          expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]))
+        );
+      });
+
+      /**
+       * A load rebuilds the state tree the dimming was written into. Scores
+       * arriving after the first render are what makes this ordinary: they
+       * reload the structure with the same chains under a standing selection.
+       */
+      it("dims again after the structure is reloaded", async () => {
+        const { rerender } = render(selecting({ chains: ["B"] }));
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+
+        setStructureTransparency.mockClear();
+        rerender(
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              plddt={Array.from({ length: 199 }, () => 0.9)}
+              structure={BARNASE_BARSTAR_PDB}
+              selection={{ chains: ["B"] }}
+            />
+          </ThemeProvider>
+        );
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
       });
     });
 
     it("reports the chains it found", async () => {
       const onChainsChange = vi.fn();
-      renderViewer({ onChainsChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onChainsChange, structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(onChainsChange).toHaveBeenCalledWith([
@@ -1061,7 +1284,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("hides only the chain named by hiddenChains", async () => {
-      renderViewer({ hiddenChains: ["B"], pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ hiddenChains: ["B"], structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(plugin.stubVisibility.get(BARSTAR_REF)).toBe(true)
@@ -1074,7 +1297,7 @@ describe("<ProteinStructureViewer />", () => {
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             hiddenChains={hidden}
-            pdb={BARNASE_BARSTAR_PDB}
+            structure={BARNASE_BARSTAR_PDB}
           />
         </ThemeProvider>
       );
@@ -1097,7 +1320,7 @@ describe("<ProteinStructureViewer />", () => {
      */
     it("hides a chain from its own toggle when uncontrolled", async () => {
       const onChainVisibilityChange = vi.fn();
-      renderViewer({ onChainVisibilityChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onChainVisibilityChange, structure: BARNASE_BARSTAR_PDB });
 
       const toggle = await screen.findByRole("button", {
         name: HIDE_BARSTAR,
@@ -1119,7 +1342,7 @@ describe("<ProteinStructureViewer />", () => {
       renderViewer({
         hiddenChains: [],
         onChainVisibilityChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
       });
 
       const toggle = await screen.findByRole("button", {
@@ -1144,7 +1367,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
 
@@ -1156,7 +1379,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
       await waitFor(() =>
@@ -1171,9 +1394,9 @@ describe("<ProteinStructureViewer />", () => {
     /**
      * Mol* draws a focused selection with a 5A shell of its neighbours in
      * ball-and-stick. Around a residue that shell is the point of looking at
-     * it; around a whole chain it reaches across the interface and paints the
-     * partner chain's contact face, which reads as the partner being selected
-     * too. So a chain is shown on its own and a residue keeps its shell.
+     * it; around a whole chain there is nothing focused at all, since a chain
+     * is shown by dimming the others - so the shell only has a say once a
+     * selection names residues, and a chain named beside them confines it.
      */
     describe("the focus shell", () => {
       /** How the focus shell was last configured. */
@@ -1187,22 +1410,22 @@ describe("<ProteinStructureViewer />", () => {
       ) => (
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
-            pdb={BARNASE_BARSTAR_PDB}
+            structure={BARNASE_BARSTAR_PDB}
             selection={selection}
           />
         </ThemeProvider>
       );
 
-      it("confines the shell to the selection for a whole chain", async () => {
-        render(selecting({ chains: ["B"] }));
+      it("confines the shell to the residues when a chain is named too", async () => {
+        render(selecting({ chains: ["B"], residues: [150] }));
 
         await waitFor(() => expect(shell()?.expandRadius).toBe(0));
       });
 
       it("keeps drawing surroundings and interactions either way", async () => {
-        // Confined, not switched off: the chain still shows its own atoms and
+        // Confined, not switched off: the residue still shows its own atoms and
         // its own contacts, just nothing belonging to the chain beside it.
-        render(selecting({ chains: ["B"] }));
+        render(selecting({ chains: ["B"], residues: [150] }));
 
         await waitFor(() =>
           expect(shell()?.components).toEqual([
@@ -1229,46 +1452,92 @@ describe("<ProteinStructureViewer />", () => {
         const { rerender } = render(selecting({ residues: [12] }));
         await waitFor(() => expect(shell()?.expandRadius).toBe(5));
 
-        rerender(selecting({ chains: ["B"] }));
+        rerender(selecting({ chains: ["B"], residues: [150] }));
 
         await waitFor(() => expect(shell()?.expandRadius).toBe(0));
       });
 
       it("does not resize between selections of the same kind", async () => {
-        const { rerender } = render(selecting({ chains: ["B"] }));
+        const { rerender } = render(selecting({ residues: [12] }));
         await waitFor(() => expect(plugin.stubFocusShells).toHaveLength(1));
 
-        rerender(selecting({ chains: ["A"] }));
+        const before =
+          plugin.managers.structure.focus.setFromLoci.mock.calls.length;
+        rerender(selecting({ residues: [13] }));
+        await waitFor(() =>
+          expect(
+            plugin.managers.structure.focus.setFromLoci.mock.calls.length
+          ).toBeGreaterThan(before)
+        );
+
+        // Still one: the shell is already sized for a residue.
+        expect(plugin.stubFocusShells).toHaveLength(1);
+      });
+
+      it("focuses nothing at all for a selection of whole chains", async () => {
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.camera.setState).toHaveBeenCalled()
+        );
+
+        // No focus means no ball-and-stick over the cartoon and no outline
+        // around it, so the chain is drawn exactly as it was.
+        expect(
+          plugin.managers.structure.focus.setFromLoci
+        ).not.toHaveBeenCalled();
+        expect(plugin.stubFocusShells).toHaveLength(0);
+      });
+
+      it("frames a whole chain without cropping the chains around it", async () => {
+        const { camera } = plugin.canvas3d;
+        render(selecting({ chains: ["B"] }));
+
+        await waitFor(() => expect(camera.setState).toHaveBeenCalled());
+
+        // The depth clip is left open to the whole scene rather than pulled in
+        // around the chain: the chains being dimmed have to stay on screen.
+        const { calls } = camera.setState.mock;
+        const state = calls[calls.length - 1]?.[0] as { radius: number };
+        expect(state.radius).toBe(camera.state.radiusMax);
+      });
+
+      it("drops a residue's focus when a whole chain is selected next", async () => {
+        const { rerender } = render(selecting({ residues: [150] }));
         await waitFor(() =>
           expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
         );
 
-        // Still one: the shell is already sized for a chain.
-        expect(plugin.stubFocusShells).toHaveLength(1);
+        plugin.managers.structure.focus.clear.mockClear();
+        rerender(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(plugin.managers.structure.focus.clear).toHaveBeenCalled()
+        );
       });
     });
 
     /**
      * Mol*'s focus representation draws ball-and-stick from whatever is
      * focused, and it builds that in a part of the state tree the chain
-     * component's own visibility does not reach - so hiding a selected chain
-     * took its cartoon away and left its atoms behind.
+     * component's own visibility does not reach - so hiding the chain a
+     * selected residue sits on took its cartoon away and left atoms behind.
      */
-    describe("hiding a selected chain", () => {
-      /** The viewer with one chain selected and a given set hidden. */
-      const hiding = (hidden: string[], chains = ["B"]) => (
+    describe("hiding the chain a selected residue sits on", () => {
+      /** The viewer with residues selected and a given set of chains hidden. */
+      const hiding = (hidden: string[], residues = [150]) => (
         <ThemeProvider theme={defaultTheme}>
           <ProteinStructureViewer
             hiddenChains={hidden}
-            pdb={BARNASE_BARSTAR_PDB}
-            selection={{ chains }}
+            structure={BARNASE_BARSTAR_PDB}
+            selection={{ residues }}
           />
         </ThemeProvider>
       );
 
       const focus = () => plugin.managers.structure.focus;
 
-      it("drops the focus so nothing of the chain is drawn", async () => {
+      it("drops the focus so nothing of the residue is drawn", async () => {
         const { rerender } = render(hiding([]));
         await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
 
@@ -1290,13 +1559,14 @@ describe("<ProteinStructureViewer />", () => {
       });
 
       it("refocuses on what is left when only part is hidden", async () => {
-        const { rerender } = render(hiding([], ["A", "B"]));
+        const { rerender } = render(hiding([], [5, 150]));
         await waitFor(() => expect(focus().setFromLoci).toHaveBeenCalled());
 
         const before = focus().setFromLoci.mock.calls.length;
-        rerender(hiding(["B"], ["A", "B"]));
+        rerender(hiding(["B"], [5, 150]));
 
-        // Chain A is still shown, so the focus moves to it rather than going.
+        // Residue 5 is on chain A, which is still shown, so the focus moves to
+        // it rather than going.
         await waitFor(() =>
           expect(focus().setFromLoci.mock.calls.length).toBeGreaterThan(before)
         );
@@ -1315,7 +1585,7 @@ describe("<ProteinStructureViewer />", () => {
 
     it("selects a whole chain from its name in the legend", async () => {
       const onSelectionChange = vi.fn();
-      renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onSelectionChange, structure: BARNASE_BARSTAR_PDB });
 
       const label = await screen.findByRole("button", { name: "Chain B" });
       act(() => label.click());
@@ -1332,7 +1602,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
 
@@ -1346,7 +1616,7 @@ describe("<ProteinStructureViewer />", () => {
       const onSelectionChange = vi.fn();
       renderViewer({
         onSelectionChange,
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["A"] },
       });
 
@@ -1363,7 +1633,7 @@ describe("<ProteinStructureViewer />", () => {
      */
     it("marks the selected chain as pressed", async () => {
       renderViewer({
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         selection: { chains: ["B"] },
       });
 
@@ -1378,13 +1648,13 @@ describe("<ProteinStructureViewer />", () => {
 
     it("frames a whole chain and reports its mean pLDDT", async () => {
       renderViewer({
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         plddt: Array.from({ length: 199 }, (_, i) => (i < 110 ? 0.5 : 0.9)),
         selection: { chains: ["B"] },
       });
 
       await waitFor(() =>
-        expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
+        expect(plugin.canvas3d.camera.setState).toHaveBeenCalled()
       );
 
       // Barstar's residues all score 0.9, and the readout names the chain
@@ -1397,7 +1667,7 @@ describe("<ProteinStructureViewer />", () => {
 
     it("reports every residue a click covers, not just the first", async () => {
       const onSelectionChange = vi.fn();
-      renderViewer({ onSelectionChange, pdb: BARNASE_BARSTAR_PDB });
+      renderViewer({ onSelectionChange, structure: BARNASE_BARSTAR_PDB });
 
       await waitFor(() =>
         expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
@@ -1419,7 +1689,7 @@ describe("<ProteinStructureViewer />", () => {
     it("hides the chain legend for a single-chain structure", async () => {
       plugin = createStubPlugin(crambin);
       createPluginUI.mockResolvedValue(plugin);
-      renderViewer({ pdb: CRAMBIN_PDB });
+      renderViewer({ structure: CRAMBIN_PDB });
 
       await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
       expect(
@@ -1428,7 +1698,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("drops the chain legend when showChainLegend is off", async () => {
-      renderViewer({ pdb: BARNASE_BARSTAR_PDB, showChainLegend: false });
+      renderViewer({ structure: BARNASE_BARSTAR_PDB, showChainLegend: false });
 
       await waitFor(() => expect(plugin.stubComponents).toHaveLength(2));
       expect(
@@ -1439,7 +1709,7 @@ describe("<ProteinStructureViewer />", () => {
     it("paints chains the colors the consumer chose", async () => {
       renderViewer({
         chainColors: { A: "#123456" },
-        pdb: BARNASE_BARSTAR_PDB,
+        structure: BARNASE_BARSTAR_PDB,
         plddt: null,
       });
 
@@ -1481,7 +1751,7 @@ describe("<ProteinStructureViewer />", () => {
     });
 
     it("draws them as ball-and-stick beside the polymer's cartoon", async () => {
-      renderViewer({ pdb: MYOGLOBIN_PDB });
+      renderViewer({ structure: MYOGLOBIN_PDB });
 
       await waitFor(() =>
         expect(plugin.stubComponents).toEqual([POLYMER_A, LIGAND_A])
@@ -1498,7 +1768,7 @@ describe("<ProteinStructureViewer />", () => {
      * under pLDDT would color it by a score a HETATM does not have.
      */
     it("leaves them on element colors while the polymer takes the theme", async () => {
-      renderViewer({ pdb: MYOGLOBIN_PDB, plddt: [0.94] });
+      renderViewer({ structure: MYOGLOBIN_PDB, plddt: [0.94] });
 
       await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
       expect(themeFor(POLYMER_PART)).toBe(PLDDT_THEME);
@@ -1510,7 +1780,7 @@ describe("<ProteinStructureViewer />", () => {
      * its protein used to be.
      */
     it("hides them along with the chain they sit on", async () => {
-      renderViewer({ hiddenChains: ["A"], pdb: MYOGLOBIN_PDB });
+      renderViewer({ hiddenChains: ["A"], structure: MYOGLOBIN_PDB });
 
       await waitFor(() =>
         expect(plugin.stubVisibility.get(componentRef(LIGAND_A))).toBe(true)
@@ -1529,7 +1799,7 @@ describe("<ProteinStructureViewer />", () => {
       plugin = createStubPlugin(await structureFromPdb(LIGAND_CHAIN_PDB));
       createPluginUI.mockResolvedValue(plugin);
 
-      renderViewer({ onChainsChange, pdb: LIGAND_CHAIN_PDB });
+      renderViewer({ onChainsChange, structure: LIGAND_CHAIN_PDB });
 
       await waitFor(() =>
         expect(plugin.stubComponents).toEqual([POLYMER_A, "ligand-B"])

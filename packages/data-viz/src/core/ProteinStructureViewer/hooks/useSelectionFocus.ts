@@ -2,7 +2,7 @@ import { StructureElement } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { RefObject, useEffect, useRef } from "react";
 import type { StructureSelection } from "../ProteinStructureViewer.types";
-import { focusResidue } from "../utils/cameraFocus";
+import { focusResidue, frameLoci } from "../utils/cameraFocus";
 import { setFocusNeighbourhood } from "../utils/focusRepresentation";
 import { lociForSelection } from "../utils/residueLoci";
 import { selectionKey } from "../utils/selection";
@@ -104,10 +104,14 @@ export interface UseSelectionFocusOptions {
 /**
  * Makes `selection` the one thing that decides where the camera sits.
  *
- * Setting the prop frames whatever it covers and marks it; clearing it drops
- * the focus and zooms back out. The camera frames the selection's bounding
- * sphere, so a range or a whole chain is fitted rather than approached as a
- * point - one residue is just the smallest case of that.
+ * Setting the prop frames whatever it covers; clearing it drops the focus and
+ * zooms back out. The camera frames the selection's bounding sphere, so a range
+ * or a whole chain is fitted rather than approached as a point - one residue is
+ * just the smallest case of that.
+ *
+ * Residues are also marked, which is what draws Mol*'s ball-and-stick and
+ * outline over them. Whole chains are not: those are shown by dimming the
+ * chains around them instead, in `useChainHighlight`.
  *
  * The click subscription only reports the selection it was given, so a click
  * moves the camera only once the consumer accepts it and echoes it back -
@@ -151,6 +155,14 @@ export function useSelectionFocus({
     ? `${selectionKey(selection)}#${[...hiddenChains].sort().join(",")}`
     : null;
 
+  /**
+   * Whether the selection names chains and nothing else, which is the shape
+   * shown by dimming the chains around it rather than by focusing it.
+   */
+  const chainsOnly = Boolean(
+    selection?.chains?.length && !selection.residues?.length
+  );
+
   useEffect(() => {
     const plugin = pluginRef.current;
 
@@ -180,8 +192,22 @@ export function useSelectionFocus({
       return;
     }
 
-    // A whole chain keeps its shell confined to itself; a residue or a range
-    // keeps the 5A shell Mol* draws around it.
+    // A selection of whole chains is shown by dimming the chains around it, so
+    // there is nothing here to focus: Mol* draws ball-and-stick and an outline
+    // over whatever is focused, and a chain selected from its own name is
+    // asking to be seen as it already is. Any focus left over from a residue
+    // goes, and the camera frames the chain without cropping to it - the chains
+    // being dimmed around it have to stay on screen to read as dimmed.
+    if (chainsOnly) {
+      plugin.managers.structure.focus.clear();
+      frameLoci(plugin, loci);
+      setClipRatio(null);
+      return;
+    }
+
+    // A selection that names a chain alongside residues keeps its shell
+    // confined to the selection; a residue or a range keeps the 5A shell Mol*
+    // draws around it.
     return focusWithShell(
       plugin,
       loci,
