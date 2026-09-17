@@ -477,7 +477,10 @@ export const VisuallyHidden = styled("div")`
   margin: -1px;
   padding: 0;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  /* inset(50%) collapses the box to its centre, replacing the deprecated
+     clip: rect(0, 0, 0, 0). No backticks in here: this is a tagged template
+     literal, and one would end it. */
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 `;

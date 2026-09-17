@@ -51,39 +51,69 @@ The header reports the stride whenever it is above 1 — `NC_000913.3 56,928–5
 
 A row the payload cannot fill is dropped rather than drawn empty, so requesting a row is safe even when the data for it is missing:
 
-- `"sequence"` — one letter per base, drawn only once bases are about 7 px wide. Below that the row falls back to a solid band, which says "there is sequence here, zoom in to read it" where crushed glyphs would suggest the component is broken. It carries a copy control at its right edge. Dropped when `sequence` is `null`.
+- `"sequence"` — one letter per base, drawn only once bases are about 7 px wide. Below that the row falls back to a solid band, which says "there is sequence here, zoom in to read it" where crushed glyphs would suggest the component is broken. Its copy control sits on the section's header line. Dropped when `sequence` is `null`.
 
 - `"annotations"` — reference features from a GFF: genes, tRNAs, and the rest. Stranded blocks point right for `+` and left for `-`, a non-color cue for strand that survives colorblindness and grayscale printing. Dropped when `annotations` is `null`.
+
+Annotations overlap in real data — divergent gene pairs, overlapping ORFs, a tRNA nested inside a CDS — so the row packs them into lanes one block deep rather than drawing them on top of each other. It uses as many lanes as the window needs, up to `maxAnnotationLanes`, so a window without overlaps is a single row. Lane position carries no meaning and is not strand: strand stays on the arrowhead, which does not move when a neighbouring gene changes the packing.
 
 - `"segments"` — the intervals the segmentation pipeline cut from the activation signal, labelled with the category it voted for. Dropped when `segments` is empty.
 
 - `"features"` — the payload's feature traces as a stack, one labelled row each, drawn as a bar per bin. This is the one kind that expands: it becomes as many rows as there are traces, up to `maxFeatureRows`. Dropped when both `features` and `pinned` are empty.
 
-- `"minimap"` — a bar spanning the payload's whole window, with a band marking the visible range inside it, the range captioned above and tick labels beneath. Always drawable: it reads `locus`, so it does not depend on the payload carrying an `overview`.
+- `"minimap"` — a bar spanning the whole chromosome, with the loaded window outlined and the visible range banded inside it, the range captioned above and tick labels beneath. Always drawable: with no `overview` it falls back to spanning the payload's own window. It is the one row with no section name — the chromosome bar and its own ruler say what it is, so a heading would spend a line of height restating it.
 
 ## The minimap
 
-The minimap answers one question — where in the window am I? — by drawing the payload's whole window as a bar and the visible range as a box inside it. Zoom in and the box narrows; pan and it slides.
+The minimap answers one question — where on this chromosome am I? — by drawing the chromosome as a bar and the visible range as a band inside it. Zoom in and the band narrows; pan and it slides.
 
-It is the only row not drawn on the shared viewport scale. Every other row maps the visible range across the plot; this one maps the window across the plot and then places the visible range within it. Its tick labels follow that same second scale, and they are the only coordinates drawn inside the plot: the header states the visible range, the bar states what that range sits inside. A minimap labelled with the coordinates it already contains would say nothing.
+It draws two ranges:
+
+- The **chromosome** is the bar, carrying — once a feature is selected — that feature's activation across the whole chromosome from `feature_overview`. With nothing selected the bar carries no signal.
+
+- The **viewport** is the filled band, and the only band the row draws. Translucent, so a signal underneath still reads through it — at chromosome scale the band is a few pixels wide, and an opaque one would delete the only informative pixel in it.
+
+**Click any features row to put that feature on the minimap.** The row emits a `"series"` selection naming the feature, the shell fetches that feature's whole-chromosome activation, and the bar draws it — which is the only way to see where a feature fires outside the loaded window. Clicking the same row again clears it. `featureIdFromSeries` turns the selection id back into a feature id for the fetch.
+
+The bar used to draw a maximum pooled across the top features, from `MinimapOverview.values`. That sounded useful and was not: every bin was a max over eight traces, so almost no bin was quiet and the row read as noise. One feature's trace answers a question someone actually asked. `values` is now optional and unread — producing it is the expensive half of the minimap's data path, and a server that never computes it loses nothing.
+
+The component draws `feature_overview` only when its `feature_id` matches the current selection. The two arrive separately — the selection is immediate, the trace is a fetch — so between a click and its response the payload still holds the previous feature's trace, and drawing that would attribute one feature's activation to another.
+
+The bar spans the chromosome, but pan and zoom do not. They stop at the loaded window plus `navigationMargin` times its span on each side, so the band can travel a little way out of the outline and no further. That is not a hedge: navigation reaching the whole chromosome is unusable without a shell refilling the window behind it, because the viewport outruns its data and the loaded slice compresses into a few pixels. A 20 kb view of a 289 bp payload draws every row in a 25 px column. The margin bounds it, and each re-fetch widens the window and so widens the margin — so the user walks out in steps that are each backed by real data, which is how a genome browser is meant to work. Crossing a megabase is a fetch, not a pan.
+
+The row used to draw two more markers — an outline around the loaded window, and the coarse landmarks in `overview.bands`. Both are gone, for the same reason: at chromosome scale every marker collapses to a three-pixel floor, so all three landed on each other as indistinguishable grey ticks. The loaded range is named in the header and shown by the wash over the plot, which needed no third grey tick to explain it. `overview.values` and `overview.bands` are both optional and unread; only `chrom_length` is read.
+
+`overview` is fixed at a thousand bins regardless of chromosome length, so human chr 1 and _E. coli_ cost the same bytes, and it is fetched once per accession rather than per window. A re-fetch that omits it means "unchanged, you already have it", which `caps.overview_available` distinguishes from "this deployment cannot draw one" — the component retains the last one it saw rather than dropping the minimap on the user's first zoom. Retention is keyed on accession and chromosome and dropped when either changes, since `chrom_length` is also the limit of navigation.
+
+It is the only row not drawn on the shared viewport scale. Every other row maps the visible range across the plot; this one maps the chromosome across the plot and then places the visible range within it. Its tick labels follow that same second scale, and they are the only coordinates drawn inside the plot: the header states the visible range, the bar states what that range sits inside. A minimap labelled with the coordinates it already contains would say nothing.
 
 A deeply zoomed window would be a fraction of a pixel wide, so the band has a three-pixel floor and is held inside the bar at either end — an indicator that vanishes, or slides off the edge, fails exactly when a user is most lost. The band's range is captioned above the bar and centred on it, clamped so a band against either edge does not caption itself off the side.
 
 The caption sits above the band rather than inside it for two reasons. The band shrinks as the user zooms in, so at a deep zoom there is no room for text on it at all; and a caption on the row's own background can use a colour that contrasts in both themes, where text on the band cannot. The band is a neutral fill, which is dark in light mode and light in dark mode, and no `textOnFill` token flips with it.
 
-> **Position only, and not yet interactive.** Dragging the minimap does nothing on purpose. Panning the plot is inverted the way dragging a map is, so the same gesture on a minimap would send the window the opposite way to the box under the pointer — worse than no response. Dragging the box, and clicking to jump, mean treating the minimap as its own control rather than part of the plot surface. It also does not draw the chromosome-scale activation summary that `MinimapOverview` describes; that is a wider extent and a signal underneath the box, and nothing reads those fields today.
+> **Not yet interactive.** Dragging the minimap does nothing on purpose. Panning the plot is inverted the way dragging a map is, so the same gesture on a minimap would send the window the opposite way to the band under the pointer — worse than no response. Dragging the band, and clicking to jump, mean treating the minimap as its own control rather than part of the plot surface. At chromosome scale that is also the gesture most worth having, since it is the only way to cross a megabase in one movement.
 
 **Example: GenomeTrackWithMinimap**
 
 ```tsx
-// The minimap: the payload's whole window as a bar, with a box marking the
-// visible range inside it.
+// The minimap: the whole chromosome as a bar, with the loaded window outlined
+// and the visible range banded inside it.
 //
-// This example opens on a 60 bp slice of a 289 bp window, so the box starts
-// narrow. Scroll to zoom out and it widens to fill the bar; pan and it slides.
-// The ticks beneath the bar are the window's coordinates, not the viewport's —
-// the band needs something fixed to be positioned against, and the header
-// already states where you are.
+// Three ranges, and telling them apart is the point of the row. The bar is the
+// chromosome, with its pooled activation summary inside it. The outline is the
+// 289 bp this payload actually holds — a hair's width of 4.6 Mb. The filled
+// band is the viewport, which opens on a 60 bp slice of that.
+//
+// Zoom out and the band leaves the loaded window, so a shell can re-fetch a
+// wider one instead of the user hitting a wall. It stops at the window plus
+// `navigationMargin` times its span, though — unbounded, the loaded slice would
+// compress into a few pixels of empty plot. The coordinates with no data are
+// washed out and ruled at the boundary rather than drawn empty, and the header
+// names the loaded range alongside the visible one.
+//
+// The ticks beneath the bar are the chromosome's coordinates, not the
+// viewport's — the band needs something fixed to be positioned against, and the
+// header already states where you are.
 
 import {
   AnnotationBlock,
@@ -98,6 +128,24 @@ import { useState } from "react";
 const START = 45462;
 const END = 45750;
 const SPAN = END - START + 1;
+const CHROM_LENGTH = 4641652;
+
+// A thousand bins across the chromosome, which is the shape the real endpoint
+// returns regardless of how long the chromosome is. Generated rather than
+// inlined for the obvious reason; a real payload carries the numbers.
+const OVERVIEW_BINS = 1000;
+const OVERVIEW_VALUES = Array.from({ length: OVERVIEW_BINS }, (_, index) => {
+  const position = index / OVERVIEW_BINS;
+  // A few dense regions over a quiet floor, including one on this window, so
+  // the band lands somewhere the eye has a reason to look.
+  const humps = [START / CHROM_LENGTH, 0.28, 0.42, 0.71, 0.88];
+  const signal = humps.reduce(
+    (total, center) => total + Math.exp(-(((position - center) / 0.015) ** 2)),
+    0
+  );
+
+  return Number(Math.min(signal, 1).toFixed(3));
+});
 
 const ANNOTATIONS: AnnotationBlock[] = [
   {
@@ -191,9 +239,11 @@ const DATA: GenomeTrackData = {
     labelled_clusters: 4,
     max_points: 2000,
     max_sequence_window: 30000,
-    // The minimap does not read this. It reports whether the deployment could
-    // produce the chromosome-scale summary, which is a different row.
-    overview_available: false,
+    // True alongside a non-null `overview` means "here it is". True alongside a
+    // null one would mean "unchanged, you already have it", which is what a
+    // window re-fetch sends — the component keeps the last one rather than
+    // dropping the minimap.
+    overview_available: true,
     requested_top_n: 2,
   },
   feature_notes: {
@@ -213,13 +263,30 @@ const DATA: GenomeTrackData = {
     chrom: "NC_000913.3",
     end: END,
     gene: "fixX",
-    genome_length: 4641652,
+    genome_length: CHROM_LENGTH,
     organism: "e_coli_k12",
     organism_label: "E. coli K-12",
     start: START,
   },
-  // Null, and the minimap still draws: its extent comes from `locus`.
-  overview: null,
+  // `chrom_length` here is what the minimap spans and what bounds navigation.
+  // Note it is not taken from `locus.genome_length`: for any organism with more
+  // than one chromosome those differ, and using the genome length would draw
+  // the window in the wrong place on a bar of the wrong size.
+  overview: {
+    bands: [
+      { end: 23208, kind: "origin", label: "oriC", start: 1 },
+      { end: 2459875, kind: "terminus", label: "ter", start: 2367243 },
+    ],
+    bins: {
+      end: CHROM_LENGTH,
+      n_bins: OVERVIEW_BINS,
+      start: 1,
+      stride: Math.ceil(CHROM_LENGTH / OVERVIEW_BINS),
+    },
+    chrom: "NC_000913.3",
+    chrom_length: CHROM_LENGTH,
+    values: OVERVIEW_VALUES,
+  },
   pinned: [],
   sae: {
     base_model: "esm2-t33-650M",
@@ -253,9 +320,11 @@ export default App;
 
 ## The sequence row
 
-One letter per base, and a copy control at the right edge of the row. The control is a real button rather than a drawn affordance: it needs a tab stop, a focus ring and an accessible name, none of which a rectangle on a canvas can have.
+One letter per base, and a copy control on the section's header line beside its name. The control is a real button rather than a drawn affordance: it needs a tab stop, a focus ring and an accessible name, none of which a rectangle on a canvas can have. It also lives outside the plot element, which carries `role="img"` and so cannot contain a control.
 
-It copies **the visible range**, not the whole payload window — what the row draws is what the button offers, and a control that silently copied more than is on screen would be a different feature wearing the same icon. Its accessible name states the range, so there is nothing to infer: "Copy sequence for 45,500–45,560". The icon becomes a tick for two seconds on success and does not change at all when the clipboard write fails, since a tick for a copy that did not happen is worse than no feedback.
+It opens a menu with two choices rather than copying straight away: **Copy Visible Segment** and **Copy Full Segment**. A single button had to pick one, and either choice is wrong half the time — copying only what is on screen surprises anyone who zoomed in to read a detail and wanted the region, and copying the whole payload surprises anyone who framed a range deliberately. Both items name the range they would copy, so there is nothing to infer: "Copy Visible Segment (45,500–45,600)". The full item is disabled when the payload is already entirely on screen, since two items copying identical text is a choice without a difference.
+
+The band the row draws stops where the sequence does rather than spanning the plot, so a viewport wider than the payload does not imply letters it has none of. The icon becomes a tick for two seconds on success and does not change at all when the clipboard write fails, since a tick for a copy that did not happen is worse than no feedback.
 
 ## The features row
 
@@ -265,7 +334,7 @@ Bars rather than a filled area, and the difference is not only cosmetic. A fille
 
 > **Bar heights are not comparable between rows.** Each trace is normalized to its own `peak`, so every row uses its full height and a weak feature's shape stays legible. A scale shared across the stack would make the rows comparable and flatten everything below the strongest into a line — which, for a list ordered by score, is most of it. The tooltip carries the absolute value for anyone comparing two rows for real.
 
-Feature names are the one row label that is not in the gutter. They run to forty characters against a gutter of ninety-six pixels, so they are drawn as DOM text inside the row, above the bars — and they disappear at `density="compact"`, where a card has no room for them. A name comes from `feature_notes` and falls back to `Feature 13492`, which is the common case rather than the exceptional one: the knowledge base describes a few percent of features today, and none at all for a checkpoint its pipeline has not run against. A layout that only looks right with prose labels is a layout that only looks right on a fixture.
+Feature names sit inside their own rows rather than on the section's header line, since there is one per trace and only one header. They are DOM text above the bars, and they disappear at `density="compact"`, where a card has no room for them. A name comes from `feature_notes` and falls back to `Feature 13492`, which is the common case rather than the exceptional one: the knowledge base describes a few percent of features today, and none at all for a checkpoint its pipeline has not run against. A layout that only looks right with prose labels is a layout that only looks right on a fixture.
 
 ## Code examples
 
@@ -1065,7 +1134,7 @@ export default App;
 
 ### Compact density
 
-`density="compact"` tightens every row and drops the minimap's caption and tick labels along with the feature names; it is the in-card variant, used where a comparison row shows several loci at once. It pairs with `labelWidth={0}` to remove the label gutter, a smaller `blockRowHeight`, and `disableNavigation` so a card does not swallow the page's scroll. Navigation only turns off wheel-zoom and drag-pan — selection and the keyboard controls still work.
+`density="compact"` tightens every row and drops the minimap's caption and tick labels along with the feature names; it is the in-card variant, used where a comparison row shows several loci at once. It pairs with `showRowLabels={false}` to drop the section names, a smaller `blockRowHeight`, and `disableNavigation` so a card does not swallow the page's scroll. Navigation only turns off wheel-zoom and drag-pan — selection and the keyboard controls still work.
 
 **Example: CompactGenomeTrack**
 
@@ -1074,7 +1143,7 @@ export default App;
 // side, each in its own card.
 //
 // Four props do the work. `density="compact"` tightens every row and drops the
-// captions and tick labels, `labelWidth={0}` removes the label gutter,
+// captions and tick labels, `showRowLabels={false}` drops the section names,
 // `blockRowHeight` shrinks the blocks, and `disableNavigation` keeps a card
 // from swallowing the page's scroll. Selection and the keyboard controls still
 // work with navigation off — only wheel-zoom and drag-pan are turned off.
@@ -1240,11 +1309,11 @@ function App() {
       {[LEFT, RIGHT].map((data) => (
         <div key={data.locus.accession} style={CARD}>
           <GenomeTrack
-            blockRowHeight={16}
+            blockRowHeight={12}
             data={data}
             density="compact"
             disableNavigation
-            labelWidth={0}
+            showRowLabels={false}
             // The payload carries an activation trace as well; which rows to
             // draw is a display choice, so the cards leave it out.
             tracks={["annotations", "segments"]}
@@ -1349,42 +1418,47 @@ A canvas cannot resolve CSS variables — `fillStyle` takes a color, and a `var(
 
 The track spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
 
-| Name                | Type                         | Default                                                          | Description                                                                                                                                                                                                                                                                                              |
-| ------------------- | ---------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`              | `GenomeTrackData \| null`    | - (required)                                                     | The window to draw. `null` renders the empty state. See the table below for its shape.                                                                                                                                                                                                                   |
-| `tracks`            | `TrackKind[]`                | `["minimap", "sequence", "annotations", "segments", "features"]` | Rows to draw, top to bottom. A row the payload cannot fill is dropped rather than drawn empty.                                                                                                                                                                                                           |
-| `viewport`          | `GenomeViewport`             | -                                                                | Visible range. Controlled when supplied: pan and zoom report through `onViewportChange` and change nothing until the prop comes back. Omit for uncontrolled, starting at the payload's full window.                                                                                                      |
-| `onViewportChange`  | `function`                   | -                                                                | `(viewport: GenomeViewport) => void`. Called on pan and zoom. A shell typically re-fetches from this.                                                                                                                                                                                                    |
-| `selection`         | `GenomeSelection \| null`    | `null`                                                           | Controlled selection. The track outlines the block whose id matches a `"block"` selection.                                                                                                                                                                                                               |
-| `onSelectionChange` | `function`                   | -                                                                | `(selection: GenomeSelection \| null) => void`. Called with the clicked block, or with `null` when the click clears the selection.                                                                                                                                                                       |
-| `blockRowHeight`    | `number`                     | `28`                                                             | Row height for annotation and segment rows, in px. The minimap and sequence rows size themselves from `density`, and the features rows have a prop of their own.                                                                                                                                         |
-| `featureRowHeight`  | `number`                     | `24`                                                             | Height of one feature's bars in the features row, in px, not counting the space above them that the feature's name occupies.                                                                                                                                                                             |
-| `maxFeatureRows`    | `number`                     | `8`                                                              | How many traces the features row draws, `pinned` first and then `features` in the payload's own rank order. A cap because the row's height is unbounded in the data: the segment-features endpoint returns up to 128 features for a segment, which at this row height is three thousand pixels of track. |
-| `labelWidth`        | `number`                     | `96`                                                             | Width reserved for row labels down the left edge. Zero hides them, which is what the compact variant does.                                                                                                                                                                                               |
-| `density`           | `"comfortable" \| "compact"` | `"comfortable"`                                                  | Comfortable is the standalone view; compact is the in-card variant used by a comparison row, which tightens every row and drops the labels and captions.                                                                                                                                                 |
-| `loading`           | `boolean`                    | `false`                                                          | Render the skeleton instead of the data. It is shaped from `tracks`, so the layout does not jump when the data lands.                                                                                                                                                                                    |
-| `error`             | `TrackError \| null`         | `null`                                                           | Render a typed error state instead of the data. Takes precedence over `data`, and is itself preceded by `loading`.                                                                                                                                                                                       |
-| `disableNavigation` | `boolean`                    | `false`                                                          | Disable wheel-zoom and drag-pan. The track still reports selection, and the keyboard controls still work — this only turns off pointer navigation, for a card that should not capture scroll.                                                                                                            |
+| Name                 | Type                         | Default                                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------- | ---------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`               | `GenomeTrackData \| null`    | - (required)                                                     | The window to draw. `null` renders the empty state. See the table below for its shape.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `tracks`             | `TrackKind[]`                | `["minimap", "sequence", "annotations", "segments", "features"]` | Rows to draw, top to bottom. A row the payload cannot fill is dropped rather than drawn empty.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `viewport`           | `GenomeViewport`             | -                                                                | Visible range. Controlled when supplied: pan and zoom report through `onViewportChange` and change nothing until the prop comes back. Omit for uncontrolled, starting at the payload's full window. May extend past the payload's window, by up to `navigationMargin` — a shell that re-fetches a narrower window at a finer stride needs the user to be able to zoom back out, and clamping to the payload would make each zoom-in permanent. The rows wash out the coordinates they have no data for. Supplied as a prop it is not clamped at all: controlled means the caller owns it, and only pan and zoom originating inside the component are bounded. |
+| `onViewportChange`   | `function`                   | -                                                                | `(viewport: GenomeViewport) => void`. Called on pan and zoom. A shell typically re-fetches from this.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `selection`          | `GenomeSelection \| null`    | `null`                                                           | Controlled selection. The track outlines the block whose id matches a `"block"` selection.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `onSelectionChange`  | `function`                   | -                                                                | `(selection: GenomeSelection \| null) => void`. Called with the clicked block, or with `null` when the click clears the selection.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `blockRowHeight`     | `number`                     | `16`                                                             | Height of one block row, in px: a segment row, or one lane of the annotations row. The minimap and sequence rows size themselves from `density`, and the features rows have a prop of their own. Deliberately slim — a block row carries an interval and, when it fits, a name, where the features rows below it are measurements whose shape needs room. Below about 14 the on-block gene names stop fitting and blocks draw unlabelled.                                                                                                                                                                                                                     |
+| `maxAnnotationLanes` | `number`                     | `4`                                                              | Ceiling on the lanes the annotations row packs overlapping genes into. The row uses only as many as the window needs. Blocks that do not fit are left undrawn rather than stacked into the last lane, and stay listed in the accessible table.                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `featureRowHeight`   | `number`                     | `24`                                                             | Height of one feature's bars in the features row, in px, not counting the space above them that the feature's name occupies.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `maxFeatureRows`     | `number`                     | `8`                                                              | How many traces the features row draws, `pinned` first and then `features` in the payload's own rank order. A cap because the row's height is unbounded in the data: the segment-features endpoint returns up to 128 features for a segment, which at this row height is three thousand pixels of track.                                                                                                                                                                                                                                                                                                                                                      |
+| `showRowLabels`      | `boolean`                    | `true`                                                           | Draw each section's name on a line above its rows, with a separator ruling off whatever sits above. The minimap is unnamed either way. Replaces the fixed left-hand gutter these labels used to occupy: the gutter cost a column of the plot's width at every zoom and still truncated the longer names, where above the row a name has the full width. The trade is vertical — each section costs a line. False for the compact variant, which has room for neither.                                                                                                                                                                                         |
+| `density`            | `"comfortable" \| "compact"` | `"comfortable"`                                                  | Comfortable is the standalone view; compact is the in-card variant used by a comparison row, which tightens every row and drops the labels and captions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `loading`            | `boolean`                    | `false`                                                          | Render the skeleton instead of the data. It is shaped from `tracks`, so the layout does not jump when the data lands.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `navigationMargin`   | `number`                     | `1`                                                              | How far outside the loaded window pan and zoom may go, as a multiple of that window's span. Zero pins the viewport to the payload. This is the ceiling on how far the viewport may outrun its data: at the default the loaded slice always occupies at least a third of the plot, where unbounded navigation compresses it into a few pixels of an otherwise empty plot. A soft limit in practice, since each re-fetch widens the window and so widens this with it. Only applies when the payload carries an `overview`.                                                                                                                                     |
+| `ranking`            | `"zscore" \| "peak"`         | `"zscore"`                                                       | How the features are ranked, shown in a dropdown on the features section's header line — "Z-Score" and "Raw" respectively. These are the tool's own `rank_by` values, so a shell can pass the callback's argument straight through; "Raw" is the label for `peak`, not a value the server accepts. Controlled with no internal fallback, because it is a fetch parameter rather than a view option: `rank_by` changes which features the tool returns and in what order, so a change is a request for different data and the component changes nothing itself. The dropdown is drawn only when `onRankingChange` is supplied.                                 |
+| `onRankingChange`    | `function`                   | -                                                                | Called with the chosen `rank_by` value. A shell re-fetches from this.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `refreshing`         | `boolean`                    | `false`                                                          | A fetch is in flight for data the track is already showing something for. Unlike `loading` this keeps the last good data drawn and marks the plot busy, which is what a shell re-fetching a finer stride on every wheel notch needs — replacing the plot each time would make it flicker. The header keeps reporting the resolution of the data on screen, not of the fetch in flight.                                                                                                                                                                                                                                                                        |
+| `error`              | `TrackError \| null`         | `null`                                                           | Render a typed error state instead of the data. Takes precedence over `data`, and is itself preceded by `loading`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `disableNavigation`  | `boolean`                    | `false`                                                          | Disable wheel-zoom and drag-pan. The track still reports selection, and the keyboard controls still work — this only turns off pointer navigation, for a card that should not capture scroll.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ### GenomeTrackData
 
 One track window, as the tool returns it. Keys are the server's, so they are `snake_case`.
 
-| Name             | Type                          | Default      | Description                                                                                                                                                                                                                                                                        |
-| ---------------- | ----------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `schema_version` | `1`                           | - (required) | Version of the payload contract.                                                                                                                                                                                                                                                   |
-| `sae`            | `ModelRef`                    | - (required) | Which SAE produced the activations. A `feature_id` is only meaningful alongside it.                                                                                                                                                                                                |
-| `locus`          | `Locus`                       | - (required) | Where in the genome the window sits. Its `start` and `end` are the bounds pan and zoom are clamped to.                                                                                                                                                                             |
-| `sequence`       | `string \| null`              | - (required) | Window nucleotides, 5' to 3'. `null` when the window exceeds `caps.max_sequence_window` or the sequence file is unavailable.                                                                                                                                                       |
-| `bins`           | `BinAxis`                     | - (required) | Maps trace index to genomic coordinates. Every `values` array in the payload is on this axis.                                                                                                                                                                                      |
-| `annotations`    | `AnnotationBlock[] \| null`   | - (required) | Reference features. `null`, not `[]`, means the organism has no annotation coverage at all.                                                                                                                                                                                        |
-| `segments`       | `SegmentBlock[]`              | - (required) | Precomputed segments. The pipeline partitions exhaustively, so they abut and leave no gaps.                                                                                                                                                                                        |
-| `features`       | `FeatureTrace[]`              | - (required) | Top features by score, highest first. The features row draws them in this order and never re-sorts.                                                                                                                                                                                |
-| `pinned`         | `FeatureTrace[]`              | - (required) | Features the caller asked to keep regardless of score. Listed ahead of `features` in the accessible table.                                                                                                                                                                         |
-| `feature_notes`  | `Record<string, FeatureNote>` | - (required) | Descriptions keyed by `String(feature_id)`. Coverage is sparse — most features have no entry.                                                                                                                                                                                      |
-| `caps`           | `TrackCaps`                   | - (required) | What the server had to leave out, and why.                                                                                                                                                                                                                                         |
-| `overview`       | `MinimapOverview \| null`     | - (required) | Chromosome-scale context for a later, wider version of the minimap row. `caps.overview_available` distinguishes "omitted because you already have it" from "this deployment cannot draw it". Nothing reads either field today: the minimap as built takes its extent from `locus`. |
-| `clusters`       | `ClusterTrace[]`              | -            | Aggregate activation for clusters of co-firing features, on the same bin axis. Optional, and not drawn by any row yet.                                                                                                                                                             |
+| Name             | Type                          | Default      | Description                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------------- | ----------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `schema_version` | `1`                           | - (required) | Version of the payload contract.                                                                                                                                                                                                                                                                                                                                                  |
+| `sae`            | `ModelRef`                    | - (required) | Which SAE produced the activations. A `feature_id` is only meaningful alongside it.                                                                                                                                                                                                                                                                                               |
+| `locus`          | `Locus`                       | - (required) | Where in the genome the window sits. Its `start` and `end` are the bounds pan and zoom are clamped to.                                                                                                                                                                                                                                                                            |
+| `sequence`       | `string \| null`              | - (required) | Window nucleotides, 5' to 3'. `null` when the window exceeds `caps.max_sequence_window` or the sequence file is unavailable.                                                                                                                                                                                                                                                      |
+| `bins`           | `BinAxis`                     | - (required) | Maps trace index to genomic coordinates. Every `values` array in the payload is on this axis.                                                                                                                                                                                                                                                                                     |
+| `annotations`    | `AnnotationBlock[] \| null`   | - (required) | Reference features. `null`, not `[]`, means the organism has no annotation coverage at all.                                                                                                                                                                                                                                                                                       |
+| `segments`       | `SegmentBlock[]`              | - (required) | Precomputed segments. The pipeline partitions exhaustively, so they abut and leave no gaps.                                                                                                                                                                                                                                                                                       |
+| `features`       | `FeatureTrace[]`              | - (required) | Top features by score, highest first. The features row draws them in this order and never re-sorts.                                                                                                                                                                                                                                                                               |
+| `pinned`         | `FeatureTrace[]`              | - (required) | Features the caller asked to keep regardless of score. Listed ahead of `features` in the accessible table.                                                                                                                                                                                                                                                                        |
+| `feature_notes`  | `Record<string, FeatureNote>` | - (required) | Descriptions keyed by `String(feature_id)`. Coverage is sparse — most features have no entry.                                                                                                                                                                                                                                                                                     |
+| `caps`           | `TrackCaps`                   | - (required) | What the server had to leave out, and why.                                                                                                                                                                                                                                                                                                                                        |
+| `overview`       | `MinimapOverview \| null`     | - (required) | Chromosome-scale context for the minimap row, and the source of the chromosome length that bounds navigation. `caps.overview_available` distinguishes "omitted because you already have it" — where the component keeps the last one — from "this deployment cannot draw it", where the minimap falls back to spanning the payload's own window and the viewport cannot leave it. |
+| `clusters`       | `ClusterTrace[]`              | -            | Aggregate activation for clusters of co-firing features, on the same bin axis. Optional, and not drawn by any row yet.                                                                                                                                                                                                                                                            |
 
 ### Locus
 

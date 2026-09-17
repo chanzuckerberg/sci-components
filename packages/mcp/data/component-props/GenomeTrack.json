@@ -2,8 +2,8 @@
   "GenomeTrack": {
     "props": {
       "blockRowHeight": {
-        "defaultValue": 28,
-        "description": "Row height for annotation and segment rows, in px. The minimap and\nsequence rows size themselves from `density`, and the features rows have a\nprop of their own.",
+        "defaultValue": 16,
+        "description": "Height of one block row, in px: a segment row, or one lane of the\nannotations row. The minimap and sequence rows size themselves from\n`density`, and the features rows have a prop of their own.\n\nNote this is a lane rather than the whole annotations row, which is as tall\nas the lanes its annotations packed into — see `maxAnnotationLanes`.\n\nDeliberately slim. A block row carries an interval and, when it fits, a\nname; it is not a plot and gains nothing from height, where the features\nrows below it are measurements whose shape needs room. Raise it if the\non-block gene names need to be larger — the label font is 10–11 px, so\nbelow about 14 they stop fitting and blocks draw unlabelled.",
         "isRequired": false,
         "type": "number"
       },
@@ -11,7 +11,7 @@
         "defaultValue": "- (required)",
         "description": "The window to draw. Null renders the empty state.",
         "isRequired": true,
-        "type": "GenomeTrackData"
+        "type": "GenomeTrackData | null"
       },
       "density": {
         "defaultValue": "comfortable",
@@ -31,21 +31,45 @@
         "isRequired": false,
         "type": "number"
       },
+      "maxAnnotationLanes": {
+        "defaultValue": 4,
+        "description": "Cap on how many lanes the annotations row may use, one block deep each.\n\nAnnotations overlap — divergent gene pairs, overlapping ORFs, a tRNA inside\na CDS — so the row packs them into lanes instead of drawing them on top of\none another. It uses as many as the window needs and no more, so a window\nwithout overlaps is a single row exactly as before; this is the ceiling,\nfor the same reason `maxFeatureRows` has one. Overlap depth is bounded by\nbiology rather than by the request, though, so the default is generous\nenough that a real gene-level payload does not reach it.\n\nBlocks that do not fit are left undrawn rather than stacked into the last\nlane, and stay listed in the accessible table. Reaching this cap is worth\nknowing about: it means the plot is not showing everything.",
+        "isRequired": false,
+        "type": "number"
+      },
       "maxFeatureRows": {
         "defaultValue": 8,
         "description": "How many traces the features row draws, `pinned` first and then `features`\nin the payload's own rank order.\n\nA cap rather than \"all of them\" because the row's height is unbounded in\nthe data: the segment-features endpoint will return up to 128 features for\na segment, which at this row height is three thousand pixels of track. The\ncaller that fetched them chose how many to ask for; this is how it says how\nmany to show.",
         "isRequired": false,
         "type": "number"
       },
-      "labelWidth": {
-        "defaultValue": 96,
-        "description": "Width reserved for row labels down the left edge. Zero hides them, which is\nwhat the compact variant does.",
+      "navigationMargin": {
+        "defaultValue": 1,
+        "description": "How far outside the loaded window pan and zoom may go, as a multiple of\nthat window's span. Zero pins the viewport to the payload.\n\nThis is the ceiling on how far the viewport may outrun its data, and it\nexists because the alternative is unusable. Allowing navigation across the\nwhole chromosome sounds generous, but with no shell refilling the window\nbehind it the loaded slice compresses into a few pixels of an otherwise\nempty plot — a 20 kb view of a 289 bp payload puts every row in a 25 px\ncolumn. The margin bounds that: the data always occupies at least\n`1 / (1 + 2 × margin)` of the plot width.\n\nIt is a soft limit rather than a wall, because each re-fetch widens the\nloaded window and so widens this in turn. The user zooms out in steps that\nare each backed by real data, which is how a genome browser is meant to\nbehave — navigation is a fetch, not a pan across megabases of nothing.\n\nOnly applies when the payload carries an `overview`; without a chromosome\nlength there is nothing to navigate into and the window is the hard limit.",
         "isRequired": false,
         "type": "number"
+      },
+      "ranking": {
+        "defaultValue": "zscore",
+        "description": "How the features are ranked, shown in the features section's dropdown.\n\nControlled, with no internal fallback, because it is a *fetch* parameter\nrather than a view option: `rank_by` changes which features the tool\nreturns and in what order, so a change is a request for different data. Held\nlocally the label would change and the rows would not, which reads as a\nbroken control.\n\nThe dropdown is drawn only when `onRankingChange` is supplied — a control\nnobody is listening to does nothing when used.",
+        "isRequired": false,
+        "type": "\"peak\" | \"zscore\""
+      },
+      "showRowLabels": {
+        "defaultValue": true,
+        "description": "Draw each section's name on a line above its rows.\n\nReplaces the fixed left-hand gutter these labels used to occupy. The gutter\ncost a column of the plot's width at every zoom and still truncated the\nlonger names; above the row a name has the full width to use and the axis\ngets the space back. The trade is vertical: each section costs a line.\n\nFalse for the compact variant, where a comparison card has room for\nneither the line nor the names.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "loading": {
         "defaultValue": false,
         "description": "Render the skeleton instead of the data.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "refreshing": {
+        "defaultValue": false,
+        "description": "A fetch is in flight for data the track is already showing something for.\n\nDistinct from `loading`, and the distinction is the whole point: `loading`\nreplaces the plot with a skeleton, which is right for a first load and\nwrong for every subsequent one. A shell that re-fetches a finer stride on\nzoom would otherwise blank the plot on every wheel notch. This keeps the\nlast good data drawn and marks the track as busy, so the picture degrades\nto \"slightly stale\" rather than to \"gone\".\n\nThe header keeps reporting the resolution of the data actually on screen\nwhile this is set. Showing the pending stride would be a claim about\nprecision the plot does not yet have.",
         "isRequired": false,
         "type": "boolean"
       },
@@ -62,7 +86,7 @@
         "type": "TrackKind[]"
       },
       "viewport": {
-        "description": "Visible range. Controlled when supplied — pan and zoom then report through\n`onViewportChange` and change nothing until the prop comes back. Omit for\nuncontrolled, where the component owns the range and starts at the\npayload's full window.",
+        "description": "Visible range. Controlled when supplied — pan and zoom then report through\n`onViewportChange` and change nothing until the prop comes back. Omit for\nuncontrolled, where the component owns the range and starts at the\npayload's full window.\n\nThe viewport may extend past the payload's window, by up to\n`navigationMargin`. That is deliberate: a shell that re-fetches a narrower\nwindow at a finer stride needs the user to be able to zoom back out, and\nclamping to the payload would make each zoom-in permanent. The rows tint\nthe coordinates they have no data for rather than drawing them empty.\n\nSupplied as a prop it is not clamped at all — controlled means the caller\nowns it. Only pan and zoom originating inside the component are bounded.",
         "isRequired": false,
         "type": "GenomeViewport"
       },
@@ -75,18 +99,23 @@
         "defaultValue": null,
         "description": "Controlled selection.",
         "isRequired": false,
-        "type": "{ kind: \"block\"; id: string; } | { kind: \"range\"; end: number; start: number; } | { kind: \"row\"; id: string; } | { kind: \"series\"; id: string; }"
+        "type": "{ kind: \"block\"; id: string; } | { kind: \"range\"; end: number; start: number; } | { kind: \"row\"; id: string; } | { kind: \"series\"; id: string; } | null"
       },
       "onSelectionChange": {
         "description": "(selection: GenomeSelection | null) => void. Called with the clicked block, or with null when the click clears the selection.",
         "isRequired": false,
-        "type": "(selection: GenomeSelection) => void"
+        "type": "(selection: GenomeSelection | null) => void"
+      },
+      "onRankingChange": {
+        "description": "Called when the user picks a ranking. A shell re-fetches from this.",
+        "isRequired": false,
+        "type": "(ranking: ActivationRanking) => void"
       },
       "error": {
         "defaultValue": null,
         "description": "Render a typed error state instead of the data.",
         "isRequired": false,
-        "type": "TrackError"
+        "type": "TrackError | null"
       },
       "schema_version": {
         "defaultValue": "- (required)",
@@ -150,7 +179,7 @@
       },
       "overview": {
         "defaultValue": "- (required)",
-        "description": "Chromosome-scale context for a later, wider version of the minimap row. caps.overview_available distinguishes \"omitted because you already have it\" from \"this deployment cannot draw it\". Nothing reads either field today: the minimap as built takes its extent from locus.",
+        "description": "Chromosome-scale context for the minimap row, and the source of the chromosome length that bounds navigation. caps.overview_available distinguishes \"omitted because you already have it\" — where the component keeps the last one — from \"this deployment cannot draw it\", where the minimap falls back to spanning the payload's own window and the viewport cannot leave it.",
         "isRequired": false,
         "type": "MinimapOverview | null"
       },
