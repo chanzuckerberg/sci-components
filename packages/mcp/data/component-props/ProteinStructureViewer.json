@@ -28,7 +28,7 @@
       },
       "disableChainHighlightOnHover": {
         "defaultValue": false,
-        "description": "Stop a chain from lighting up in the 3D view while its name is pointed at,\nin the legend or above its grid in the sequence panel.\n\nThe highlight is on by default, since on a complex it is how a reader\nfinds out which chain is which. Turn it off where the movement is more\ndistracting than the answer is useful - a grid of viewers a pointer\ncrosses on its way somewhere else, or a page driving its own highlighting\nthrough `selection`.",
+        "description": "Stop other chains from dimming in the 3D view while a chain's name is\npointed at, in the legend or above its grid in the sequence panel.\n\nThe dim is on by default, since on a complex it is how a reader finds out\nwhich chain is which. Turn it off where the movement is more distracting\nthan the answer is useful - a grid of viewers a pointer crosses on its way\nsomewhere else, or a page driving its own highlighting through `selection`.",
         "isRequired": false,
         "type": "boolean"
       },
@@ -77,9 +77,9 @@
         "isRequired": false,
         "type": "string"
       },
-      "pdb": {
+      "structure": {
         "defaultValue": "- (required)",
-        "description": "Structure to render, as raw PDB text.",
+        "description": "Structure to render, as raw PDB or mmCIF (PDBx) text.",
         "isRequired": true,
         "type": "string"
       },

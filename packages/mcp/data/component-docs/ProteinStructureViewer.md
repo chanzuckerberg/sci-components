@@ -24,12 +24,13 @@ The viewer fills its parent. Mol\* sizes its canvas from the laid-out container,
 
 ### **Default ProteinStructureViewer**
 
-Raw PDB text is the only required prop. Supplying per-residue `plddt` scores on a 0-1 scale colors the structure by confidence and puts the pLDDT key in the legend.
+The structure to render, as raw PDB or mmCIF (PDBx) text, is the only required prop. Supplying per-residue `plddt` scores on a 0-1 scale colors the structure by confidence and puts the pLDDT key in the legend.
 
 **Example: DefaultProteinStructureViewer**
 
 ```tsx
-// Raw PDB text is the only required prop. Adding per-residue pLDDT scores on a
+// The structure to render, as raw PDB or mmCIF (PDBx) text, is the only
+// required prop. Adding per-residue pLDDT scores on a
 // 0-1 scale colors the structure by confidence and puts the pLDDT key in the
 // legend.
 //
@@ -244,7 +245,101 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
+        plddt={PLDDT}
+        stats={[
+          { label: "Known", value: "62%" },
+          { label: "pTM", value: "0.874" },
+          { label: "Mean pLDDT", value: "0.781" },
+        ]}
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+### PDB and mmCIF
+
+`structure` is the structure text, not a filename, and it accepts both legacy PDB and mmCIF (PDBx). The viewer detects the format from the contents: a `data_` block or an `_atom_site.` loop is treated as mmCIF, everything else as PDB. Binary CIF (`.bcif`) is not accepted.
+
+**Example: MmcifProteinStructureViewer**
+
+```tsx
+// `structure` accepts mmCIF (PDBx) as well as PDB. The viewer detects the
+// format from the text.
+//
+// The structure below is crambin (PDB 1CRN), trimmed to the backbone atoms the
+// polymer cartoon traces. A chain needs enough residues to trace: a single
+// residue renders an empty canvas.
+
+import { ProteinStructureViewer } from "@czi-sds/data-viz";
+
+const MMCIF = `data_1CRN
+#
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.auth_seq_id
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_atom_id
+_atom_site.pdbx_PDB_model_num
+ATOM 1 N N . THR A 1 1 ? 17.047 14.099 3.625 1.00 13.79 1 THR A N 1
+ATOM 2 C CA . THR A 1 1 ? 16.967 12.784 4.338 1.00 10.80 1 THR A CA 1
+ATOM 3 C C . THR A 1 1 ? 15.685 12.755 5.133 1.00 9.19 1 THR A C 1
+ATOM 4 O O . THR A 1 1 ? 15.268 13.825 5.594 1.00 9.85 1 THR A O 1
+ATOM 5 N N . THR A 1 2 ? 15.115 11.555 5.265 1.00 7.81 2 THR A N 1
+ATOM 6 C CA . THR A 1 2 ? 13.856 11.469 6.066 1.00 8.31 2 THR A CA 1
+ATOM 7 C C . THR A 1 2 ? 14.164 10.785 7.379 1.00 5.80 2 THR A C 1
+ATOM 8 O O . THR A 1 2 ? 14.993 9.862 7.443 1.00 6.94 2 THR A O 1
+ATOM 9 N N . CYS A 1 3 ? 13.488 11.241 8.417 1.00 5.24 3 CYS A N 1
+ATOM 10 C CA . CYS A 1 3 ? 13.660 10.707 9.787 1.00 5.39 3 CYS A CA 1
+ATOM 11 C C . CYS A 1 3 ? 12.269 10.431 10.323 1.00 4.45 3 CYS A C 1
+ATOM 12 O O . CYS A 1 3 ? 11.393 11.308 10.185 1.00 6.54 3 CYS A O 1
+ATOM 13 N N . CYS A 1 4 ? 12.019 9.272 10.928 1.00 3.90 4 CYS A N 1
+ATOM 14 C CA . CYS A 1 4 ? 10.646 8.991 11.408 1.00 4.24 4 CYS A CA 1
+ATOM 15 C C . CYS A 1 4 ? 10.654 8.793 12.919 1.00 3.72 4 CYS A C 1
+ATOM 16 O O . CYS A 1 4 ? 11.659 8.296 13.491 1.00 5.30 4 CYS A O 1
+ATOM 17 N N . PRO A 1 5 ? 9.561 9.108 13.563 1.00 3.96 5 PRO A N 1
+ATOM 18 C CA . PRO A 1 5 ? 9.448 9.034 15.012 1.00 4.25 5 PRO A CA 1
+ATOM 19 C C . PRO A 1 5 ? 9.288 7.670 15.606 1.00 4.96 5 PRO A C 1
+ATOM 20 O O . PRO A 1 5 ? 9.490 7.519 16.819 1.00 7.44 5 PRO A O 1
+ATOM 21 N N . SER A 1 6 ? 8.875 6.686 14.796 1.00 4.83 6 SER A N 1
+ATOM 22 C CA . SER A 1 6 ? 8.673 5.314 15.279 1.00 4.45 6 SER A CA 1
+ATOM 23 C C . SER A 1 6 ? 8.753 4.376 14.083 1.00 4.99 6 SER A C 1
+ATOM 24 O O . SER A 1 6 ? 8.726 4.858 12.923 1.00 4.61 6 SER A O 1
+ATOM 25 N N . ILE A 1 7 ? 8.881 3.075 14.358 1.00 4.94 7 ILE A N 1
+ATOM 26 C CA . ILE A 1 7 ? 8.912 2.083 13.258 1.00 6.33 7 ILE A CA 1
+ATOM 27 C C . ILE A 1 7 ? 7.581 2.090 12.506 1.00 5.32 7 ILE A C 1
+ATOM 28 O O . ILE A 1 7 ? 7.670 2.031 11.245 1.00 6.85 7 ILE A O 1
+ATOM 29 N N . VAL A 1 8 ? 6.458 2.162 13.159 1.00 5.02 8 VAL A N 1
+ATOM 30 C CA . VAL A 1 8 ? 5.145 2.209 12.453 1.00 6.93 8 VAL A CA 1
+ATOM 31 C C . VAL A 1 8 ? 5.115 3.379 11.461 1.00 5.39 8 VAL A C 1
+ATOM 32 O O . VAL A 1 8 ? 4.664 3.268 10.343 1.00 6.30 8 VAL A O 1
+#`;
+
+const PLDDT = [0.45, 0.515, 0.557, 0.569, 0.567, 0.578, 0.618, 0.681];
+
+function App() {
+  return (
+    <div className="app" style={{ height: 480 }}>
+      <ProteinStructureViewer
+        structure={MMCIF}
         plddt={PLDDT}
         stats={[
           { label: "Known", value: "62%" },
@@ -494,7 +589,7 @@ function App() {
   return (
     <div className="app" style={{ height: 480 }}>
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
         residueOverlay={{
           colorScale: PLASMA_COLOR_SCALE,
           label: "Feature activation",
@@ -760,7 +855,7 @@ function App() {
               : next
           )
         }
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         selection={selection}
         stats={[
@@ -778,11 +873,11 @@ export default App;
 
 ### Complexes and chains
 
-A multi-chain structure needs nothing special: pass the whole complex as one PDB string and the viewer finds the chains itself, reporting them through `onChainsChange` as `ChainRef`s. It draws one cartoon per chain, splits the sequence panel into one grid per chain, and - when neither `plddt` nor `residueOverlay` is coloring the structure - paints each chain its own color and shows a chain legend with a swatch and a visibility toggle for each.
+A multi-chain structure needs nothing special: pass the whole complex as one structure string and the viewer finds the chains itself, reporting them through `onChainsChange` as `ChainRef`s. It draws one cartoon per chain, splits the sequence panel into one grid per chain, and - when neither `plddt` nor `residueOverlay` is coloring the structure - paints each chain its own color and shows a chain legend with a swatch and a visibility toggle for each.
 
 Visibility works out of the box: the toggles own it unless you pass `hiddenChains`, which takes it over and leaves the toggles reporting through `onChainVisibilityChange`. Hiding a chain removes everything it is drawn with, which also takes it out of reach of hover and click; its sequence stays in the panel, dimmed, so the panel does not reflow on every toggle. `chainColors` overrides the palette per chain.
 
-Pointing at a chain's name, in the legend or above its grid in the sequence panel, lights that chain's cartoon up in the 3D view. The highlight is pink rather than the theme's usual hover tint, so it cannot be mistaken for the chain palette, the pLDDT bands or an overlay underneath it. Keyboard focus does the same, and nothing is reported to the consumer - it answers "which one is this?" without changing what is selected. `disableChainHighlightOnHover` turns it off.
+Pointing at a chain's name, in the legend or above its grid in the sequence panel, dims every other chain in the 3D view so the one under the pointer stands out. The hovered chain keeps whatever coloring it already has, rather than being washed in a highlight color that would hide it. Keyboard focus does the same, and nothing is reported to the consumer - it answers "which one is this?" without changing what is selected. `disableChainHighlightOnHover` turns it off.
 
 Residue indices run straight through the chain break: on the pair below, barnase occupies 0-109 and barstar 110-198, so `plddt` is one flat array over the whole complex and one `residueOverlay` map spans both chains. Because a file numbers a complex however it likes - barstar here starts at residue 111, not 1 - `index` and `seqId` part company, so map a click back onto your own data with `chainId` and `seqId` rather than arithmetic on `index`.
 
@@ -798,7 +893,7 @@ import { useState } from "react";
 
 // A two-chain complex: barnase (chain A) with barstar (chain B) bound to it,
 // which is the shape a designed binder arrives in alongside its target. The
-// whole complex goes in as one `pdb` string; the viewer finds the chains and
+// whole complex goes in as one `structure` string; the viewer finds the chains and
 // draws one cartoon per chain.
 //
 // Trimmed to the first 30 residues of each chain and to backbone atoms, which
@@ -1075,7 +1170,7 @@ export default function App(): JSX.Element {
           // produced the structure will recognise.
           console.log(residue.chainId, residue.seqId, residue.index)
         }
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         selection={selection}
         stats={[
@@ -1091,7 +1186,7 @@ export default function App(): JSX.Element {
 
 ### Ligands and ions
 
-Whatever a PDB entry carries besides its protein - ligands, ions, glycans, lipids - is drawn as ball-and-stick alongside the cartoon, with no prop to turn on. A cartoon traces a polymer backbone and a heme has none, so the two halves of a chain need two representations between them.
+Whatever a structure file carries besides its protein - ligands, ions, glycans, lipids - is drawn as ball-and-stick alongside the cartoon, with no prop to turn on. A cartoon traces a polymer backbone and a heme has none, so the two halves of a chain need two representations between them.
 
 The residue holding a ligand is drawn as sticks too, one bond out, which is what makes the ligand look bound rather than dropped in. Myoglobin's heme is held by His93, and without it the heme floats loose in the middle of a cartoon it is visibly bonded to. Covalent and metallic-coordination bonds both count - the heme's iron is held by the latter - and only the residue that holds the ligand comes, not that residue's own neighbours.
 
@@ -1327,7 +1422,7 @@ function App() {
   return (
     <div className="app" style={{ height: 240 }}>
       <ProteinStructureViewer
-        pdb={PDB}
+        structure={PDB}
         plddt={PLDDT}
         showAxes={false}
         showLegend={false}
@@ -1355,7 +1450,7 @@ Passing `download` adds a capture button beneath the reset-camera control, which
 
 ```tsx
 <ProteinStructureViewer
-  pdb={PDB}
+  structure={PDB}
   download={{ resolution: "high", filename: "barnase-barstar" }}
 />
 ```
@@ -1381,7 +1476,7 @@ Anything named in it wins, and anything left out keeps the viewer's default. So 
 import { PluginConfig } from "molstar/lib/mol-plugin/config";
 
 <ProteinStructureViewer
-  pdb={PDB}
+  structure={PDB}
   molstarSpec={{
     canvas3d: {
       // Slow the trackball down, leaving the rest of it alone.
@@ -1413,14 +1508,14 @@ The viewer spreads any remaining props onto its root div, so standard HTML attri
 
 | Name                            | Type                          | Default      | Description                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------- | ----------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pdb`                           | `string`                      | - (required) | The structure to render, as raw PDB text.                                                                                                                                                                                                                                                                                                    |
+| `structure`                     | `string`                      | - (required) | The structure to render, as raw PDB or mmCIF (PDBx) text.                                                                                                                                                                                                                                                                                    |
 | `plddt`                         | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence.                                                                                                                       |
 | `residueOverlay`                | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                                                                                                                                        |
 | `selection`                     | `StructureSelection \| null`  | `null`       | What is selected. Controlled: the camera frames whatever it covers, and clearing it zooms back out. See the table below for its shape.                                                                                                                                                                                                       |
 | `hiddenChains`                  | `string[]`                    | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                              |
 | `chainColors`                   | `Record<string, string>`      | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen, which is when neither `plddt` nor `residueOverlay` is set.                                                                                                                           |
 | `showChainLegend`               | `boolean`                     | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                     |
-| `disableChainHighlightOnHover`  | `boolean`                     | `false`      | Stop a chain from lighting up in the 3D view while its name is pointed at, in the legend or above its grid in the sequence panel. Turn it off where the movement is more distracting than the answer is useful.                                                                                                                              |
+| `disableChainHighlightOnHover`  | `boolean`                     | `false`      | Stop other chains from dimming in the 3D view while a chain's name is pointed at, in the legend or above its grid in the sequence panel. Turn it off where the movement is more distracting than the answer is useful.                                                                                                                       |
 | `download`                      | `StructureDownload \| null`   | -            | Adds a capture button beneath the reset-camera control, which downloads a PNG of the structure. Omit for no button. See _Downloading an image_ above.                                                                                                                                                                                        |
 | `molstarSpec`                   | `Partial<PluginUISpec>`       | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                          |
 | `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                   |

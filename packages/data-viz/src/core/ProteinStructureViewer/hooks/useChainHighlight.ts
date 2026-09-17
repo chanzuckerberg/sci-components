@@ -1,118 +1,149 @@
+import { Structure } from "molstar/lib/mol-model/structure";
+import {
+  clearStructureTransparency,
+  setStructureTransparency,
+} from "molstar/lib/mol-plugin-state/helpers/structure-transparency";
+import type { StructureComponentRef } from "molstar/lib/mol-plugin-state/manager/structure/hierarchy-state";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
-import { Color } from "molstar/lib/mol-util/color";
 import { RefObject, useCallback, useEffect, useRef } from "react";
-import { lociForChainPolymer } from "../utils/residueLoci";
 
 /**
- * What a chain lights up in while its name is under the pointer.
+ * How transparent the other chains go while one is pointed at.
  *
- * Its own color rather than the theme's hover tint, because it answers a
- * different question. Hovering a residue asks "what is this?" and a tint is
- * enough; pointing at a chain's name asks "where is this chain?" of a
- * structure where the answer may be half the screen, and has to carry across
- * a cartoon already painted in the chain palette, in pLDDT bands, or in an
- * overlay. A saturated pink is in none of those, so it cannot be mistaken for
- * the structure's own coloring.
+ * Enough that the chain under the pointer is the one being read, not enough
+ * that the rest of the complex stops being context for it. 0 is opaque, 1 is
+ * invisible.
  */
-export const CHAIN_HIGHLIGHT_COLOR = Color.fromRgb(200, 45, 149);
+export const CHAIN_DIM_TRANSPARENCY = 0.65;
 
 /**
- * Stronger than the residue hover's tint, for the same reason. A whole chain
- * washed in 20% pink reads as a rendering artifact; at this strength it reads
- * as deliberate.
+ * The chain id in a component key.
+ *
+ * Chain components are tagged `structure-component-<part>-<chainId>`, and a
+ * key is the component's tags sorted and joined with commas. Anchoring on the
+ * part name and stopping at the comma is what keeps `A` from also matching the
+ * chain named `AA`.
  */
-const CHAIN_HIGHLIGHT_STRENGTH = 0.7;
+const COMPONENT_CHAIN_ID = /structure-component-(?:polymer|ligand)-([^,]+)/;
 
 interface UseChainHighlightOptions {
   pluginRef: RefObject<PluginUIContext | null>;
-  /** Turns the highlight off, for `disableChainHighlightOnHover`. */
+  /** Turns the dimming off, for `disableChainHighlightOnHover`. */
   disabled: boolean;
 }
 
-/** The renderer settings a highlight borrows, to be handed back after. */
-interface BorrowedMarking {
-  highlightColor: Color;
-  highlightEdgeColor: Color;
-  highlightStrength: number;
+/** The chain a component was built for, or undefined if it is not a chain's. */
+export function componentChainId(
+  component: Pick<StructureComponentRef, "key"> & {
+    cell: { transform: { ref: string } };
+  }
+): string | undefined {
+  const key = component.key ?? component.cell.transform.ref;
+  return COMPONENT_CHAIN_ID.exec(key)?.[1];
+}
+
+/** Every chain component of every loaded structure, polymers and ligands. */
+function structureComponents(plugin: PluginUIContext): StructureComponentRef[] {
+  return plugin.managers.structure.hierarchy.current.structures.flatMap(
+    (entry) => entry.components
+  );
 }
 
 /**
- * Lights up a whole chain in the 3D view while its name is pointed at, in the
- * sequence panel's captions or the chain legend's rows.
+ * Makes every chain but `chainId` transparent, or all of them opaque again
+ * when nothing is pointed at.
  *
- * Mol*'s marking system is what draws it, so the chain is tinted and outlined
- * exactly as a hovered residue is, with no geometry added to the state tree
- * and nothing to tear down. Marking colors are a property of the renderer
- * rather than of the loci, though, so the pink is swapped in for the length of
- * the hover and the theme's own colors handed back on the way out.
+ * Transparency layers accumulate, so what is already there is cleared before
+ * the next chain is dimmed rather than added to - otherwise moving along the
+ * list would leave every chain it passed dimmed behind it.
+ */
+async function dimOtherChains(
+  plugin: PluginUIContext,
+  chainId: string | null
+): Promise<void> {
+  const components = structureComponents(plugin);
+  if (components.length === 0) return;
+
+  await clearStructureTransparency(plugin, components);
+
+  if (chainId === null) return;
+
+  const others = components.filter(
+    (component) => componentChainId(component) !== chainId
+  );
+  if (others.length === 0) return;
+
+  await setStructureTransparency(
+    plugin,
+    others,
+    CHAIN_DIM_TRANSPARENCY,
+    async (structure) => Structure.toStructureElementLoci(structure)
+  );
+}
+
+/**
+ * Dims every chain but the one whose name is pointed at, in the sequence
+ * panel's captions or the chain legend's rows.
  *
- * Those colors are read off the canvas at that moment rather than passed in.
- * They are already derived from the theme in two places, and a third copy kept
- * in step by hand would be the one to drift.
+ * The chain being pointed at is left exactly as it was - in the chain palette,
+ * in pLDDT bands, or in an overlay - and the others recede around it. Nothing
+ * is painted over the top, so what the reader is being pointed at is still the
+ * color the legend beside it is describing.
+ *
+ * Dimming is a state-tree commit rather than a renderer setting, so it is
+ * applied one at a time and coalesced: a pointer crossing the list faster than
+ * a commit finishes skips the chains it passed over and settles on the one it
+ * came to rest on, instead of working through a queue of hovers that have
+ * already been left.
  */
 export function useChainHighlight({
   disabled,
   pluginRef,
 }: UseChainHighlightOptions): (chainId: string | null) => void {
-  const borrowedRef = useRef<BorrowedMarking | null>(null);
+  /** The chain the pointer is on, and the one the canvas is showing. */
+  const wantedRef = useRef<string | null>(null);
+  const shownRef = useRef<string | null>(null);
+  const committingRef = useRef(false);
+
+  const settle = useCallback(async () => {
+    // A commit already running will pick up `wantedRef` when it comes round,
+    // which is what collapses a sweep across the list into its last chain.
+    if (committingRef.current) return;
+    committingRef.current = true;
+
+    try {
+      while (pluginRef.current && wantedRef.current !== shownRef.current) {
+        const wanted = wantedRef.current;
+        await dimOtherChains(pluginRef.current, wanted);
+        shownRef.current = wanted;
+      }
+    } catch (error) {
+      // Left as it is rather than recorded as shown, so the next hover retries.
+      console.error("Failed to dim chains:", error);
+    } finally {
+      committingRef.current = false;
+    }
+  }, [pluginRef]);
 
   const highlightChain = useCallback(
-    (name: string | null) => {
-      const plugin = pluginRef.current;
-      const canvas3d = plugin?.canvas3d;
-      if (!plugin || !canvas3d) return;
+    (chainId: string | null) => {
+      if (disabled) return;
 
-      // Turned off part way through a hover reads as the pointer having left,
-      // so whatever is lit goes dark and the borrowed colors go back rather
-      // than being stranded by a prop change.
-      const chainId = disabled ? null : name;
-
-      if (chainId === null) {
-        plugin.managers.interactivity.lociHighlights.clearHighlights();
-
-        const borrowed = borrowedRef.current;
-        if (borrowed) {
-          canvas3d.setProps({
-            marking: { highlightEdgeColor: borrowed.highlightEdgeColor },
-            renderer: {
-              highlightColor: borrowed.highlightColor,
-              highlightStrength: borrowed.highlightStrength,
-            },
-          });
-          borrowedRef.current = null;
-        }
-
-        return;
-      }
-
-      const loci = lociForChainPolymer(plugin, chainId);
-      if (!loci) return;
-
-      // Only on the way in, so moving between two chain names without leaving
-      // the list does not snapshot the pink as the color to restore.
-      borrowedRef.current ??= {
-        highlightColor: canvas3d.props.renderer.highlightColor,
-        highlightEdgeColor: canvas3d.props.marking.highlightEdgeColor,
-        highlightStrength: canvas3d.props.renderer.highlightStrength,
-      };
-
-      canvas3d.setProps({
-        marking: { highlightEdgeColor: CHAIN_HIGHLIGHT_COLOR },
-        renderer: {
-          highlightColor: CHAIN_HIGHLIGHT_COLOR,
-          highlightStrength: CHAIN_HIGHLIGHT_STRENGTH,
-        },
-      });
-
-      plugin.managers.interactivity.lociHighlights.highlightOnly({ loci });
+      wantedRef.current = chainId;
+      void settle();
     },
-    [disabled, pluginRef]
+    [disabled, settle]
   );
 
-  // A chain hidden, a structure swapped, or the viewer unmounted while a name
-  // is still under the pointer all leave without a matching mouse-leave, and
-  // the borrowed colors would stay borrowed.
-  useEffect(() => () => void (borrowedRef.current = null), []);
+  // Turned off part way through a hover reads as the pointer having left, so
+  // whatever is dimmed goes back to full opacity rather than being stranded by
+  // a prop change no hover will follow.
+  useEffect(() => {
+    if (!disabled) return;
+
+    wantedRef.current = null;
+    void settle();
+  }, [disabled, settle]);
 
   return highlightChain;
 }
