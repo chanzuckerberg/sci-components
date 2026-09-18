@@ -51,6 +51,7 @@ const dtsOptions = { compilerOptions: { noEmitOnError: false }, eager: true };
  * what that component reaches.
  */
 const entryModules = {
+  GenomeTrack: "src/entries/GenomeTrack.ts",
   HeatmapChart: "src/entries/HeatmapChart.ts",
   ProteinStructureViewer: "src/entries/ProteinStructureViewer.ts",
   StackedBarChart: "src/entries/StackedBarChart.ts",
