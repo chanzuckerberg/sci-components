@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.0...@czi-sds/data-viz@2.4.1) (2026-09-18)
+
+### Bug Fixes
+
+- **data-viz:** force residue tooltip text color inline ([#1196](https://github.com/chanzuckerberg/sci-components/issues/1196)) ([f6c0bcd](https://github.com/chanzuckerberg/sci-components/commit/f6c0bcdc02463b3bfd83cb96973902eacf5b2abe))
+- declare sideEffects on components and data-viz ([#1195](https://github.com/chanzuckerberg/sci-components/issues/1195)) ([e441206](https://github.com/chanzuckerberg/sci-components/commit/e4412064d02d9cd11fdd8325ba3171dccecbe350)), closes [#1193](https://github.com/chanzuckerberg/sci-components/issues/1193)
+- **proteinstructureviewer:** fix button styles ([#1197](https://github.com/chanzuckerberg/sci-components/issues/1197)) ([68b725f](https://github.com/chanzuckerberg/sci-components/commit/68b725f732b3e4b0fb86b7469c0e2224dda5547b))
+
 # [2.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.3.0...@czi-sds/data-viz@2.4.0) (2026-09-17)
 
 ### Features
