@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-BRHOAlee.js";import{t as r}from"./src-BBKocwt4.js";import{t as i}from"./LoadingIndicator-DF4c5ElA.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(i,{sdsStyle:`tag`})})}var o;e((()=>{r(),o=t(n())}))();export{a as default};
