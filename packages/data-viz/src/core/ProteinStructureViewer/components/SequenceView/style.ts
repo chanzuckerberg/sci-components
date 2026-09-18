@@ -9,8 +9,8 @@ import {
 } from "@czi-sds/components";
 import { SEQUENCE_GROUP_SIZE } from "./constants";
 
-/** Height of the fade that masks residues scrolling under the panel header. */
-const SCROLL_FADE_HEIGHT = 8;
+/** Height of the fades that mask residues scrolling past the panel's edges. */
+const SCROLL_FADE_HEIGHT = 10;
 
 /**
  * The panel's surfaces accept an override so a consumer can sit the sequence
@@ -142,8 +142,9 @@ export const ResidueCountValue = styled("span")`
 
 /**
  * Scroll region for the residue grid. The `::before` fade masks residues as
- * they scroll up under the header, so it has to start from whatever the panel
- * is painted with or it leaves a mismatched strip.
+ * they scroll up under the header and the `::after` fade masks them running off
+ * the panel's bottom edge, so both have to start from whatever the panel is
+ * painted with or they leave a mismatched strip.
  */
 export const SequenceScroller = styled("div")<SurfaceProps>`
   position: relative;
@@ -156,15 +157,24 @@ export const SequenceScroller = styled("div")<SurfaceProps>`
       props.backgroundColor ?? semanticColors?.base?.surfacePrimary;
 
     return `
-      &::before {
+      &::before,
+      &::after {
         content: "";
         position: absolute;
         inset-inline: 0;
-        top: 0;
         z-index: 10;
         height: ${SCROLL_FADE_HEIGHT}px;
         pointer-events: none;
+      }
+
+      &::before {
+        top: 0;
         background: linear-gradient(to bottom, ${surface}, transparent);
+      }
+
+      &::after {
+        bottom: 0;
+        background: linear-gradient(to top, ${surface}, transparent);
       }
     `;
   }}
