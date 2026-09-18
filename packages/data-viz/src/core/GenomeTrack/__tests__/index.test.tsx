@@ -4,8 +4,8 @@ import {
   DEFAULT_TRACK_DATA,
   NO_OVERVIEW_TRACK_DATA,
   POOLED_TRACK_DATA,
-  UNANNOTATED_TRACK_DATA,
 } from "../__storybook__/constants";
+import { makeMockGenomeTrackData } from "../__storybook__/mockGenomeTrackData";
 import {
   RANKING_OPTION_TEST_ID,
   RANKING_TEST_ID,
@@ -50,6 +50,9 @@ const ROW_OPTIONS = {
   showRowLabels: true,
   tracks: ["annotations", "segments", "features"] as TrackKind[],
 };
+
+/** An organism with no annotation coverage: `annotations` is null, not empty. */
+const NO_ANNOTATIONS = makeMockGenomeTrackData({ withAnnotations: false });
 
 describe("<GenomeTrack />", () => {
   it("states the organism and the exact range in the header", () => {
@@ -325,6 +328,27 @@ describe("<GenomeTrack />", () => {
 
       expect(screen.queryByTestId(RANKING_TEST_ID)).not.toBeInTheDocument();
     });
+
+    /**
+     * Whether a control exists must depend on whether a caller is listening,
+     * not on a presentation prop.
+     *
+     * This anchored itself on the features row's `headerHeight`, which
+     * `showRowLabels={false}` drives to zero — so the dropdown disappeared in
+     * exactly the documented compact configuration, while the copy button
+     * beside it survived because it fell back to the row's own height.
+     */
+    it("is present when section labels are off", () => {
+      render(
+        <GenomeTrack
+          data={DEFAULT_TRACK_DATA}
+          onRankingChange={vi.fn()}
+          showRowLabels={false}
+        />
+      );
+
+      expect(screen.getByTestId(RANKING_TEST_ID)).toBeInTheDocument();
+    });
   });
 
   it("labels the plot for assistive tech", () => {
@@ -360,7 +384,7 @@ describe("<GenomeTrack />", () => {
   });
 
   it("says so when an organism has no annotation coverage", () => {
-    render(<GenomeTrack data={UNANNOTATED_TRACK_DATA} />);
+    render(<GenomeTrack data={NO_ANNOTATIONS} />);
 
     expect(screen.getByText(/no annotation coverage/i)).toBeInTheDocument();
     // The row is dropped rather than drawn empty, so there is no table for it.
@@ -1084,7 +1108,7 @@ describe("section names", () => {
 
 describe("row layout", () => {
   it("drops rows the payload cannot fill", () => {
-    const { rows } = layoutRows(UNANNOTATED_TRACK_DATA, ROW_OPTIONS);
+    const { rows } = layoutRows(NO_ANNOTATIONS, ROW_OPTIONS);
 
     // `annotations` is null, so the row goes entirely rather than being drawn
     // blank. The others were asked for and can be filled.

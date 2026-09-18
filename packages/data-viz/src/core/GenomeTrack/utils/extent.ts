@@ -41,8 +41,9 @@ export interface TrackExtents {
    * surrounded by emptiness. At a 20 kb view of a 289 bp payload every row is a
    * sliver.
    *
-   * A margin instead means zooming out always works — the ratchet that trapped
-   * a user inside a re-fetched window is gone — but only ever by a bounded
+   * A margin means zooming out always works — without one, a shell that
+   * re-fetched the zoomed range would trap the user inside it, each zoom-in
+   * permanently narrowing the reachable genome — but only ever by a bounded
    * factor before the shell has to supply more data. Each re-fetch widens the
    * window, which widens this, so the user walks out in steps that are each
    * backed by real data rather than in one leap into nothing.
@@ -50,15 +51,6 @@ export interface TrackExtents {
   navigable: GenomeViewport;
   /** What the payload covers. Outside this there is no data to draw. */
   window: GenomeViewport;
-  /**
-   * Whether `extent` is genuinely the chromosome rather than a copy of
-   * `window`.
-   *
-   * The rows that would otherwise claim more than the payload knows read this:
-   * with no chromosome context there is nothing to zoom out *to*, so the track
-   * behaves exactly as it did before extents were separated.
-   */
-  isChromosome: boolean;
 }
 
 /**
@@ -87,14 +79,13 @@ export function trackExtents(
   // contradicting itself. Falling back keeps pan and zoom inside something the
   // data can describe rather than propagating the inconsistency into the ruler.
   if (!overview || overview.chrom_length < window.end) {
-    return { extent: window, isChromosome: false, navigable: window, window };
+    return { extent: window, navigable: window, window };
   }
 
   const extent = { end: overview.chrom_length, start: 1 };
 
   return {
     extent,
-    isChromosome: true,
     navigable: haloAround(window, extent, margin),
     window,
   };

@@ -2,6 +2,7 @@ import {
   Button,
   CommonThemeProps,
   fontBodyMediumXxs,
+  fontBodySemiboldXxs,
   fontBodySemiboldXxxxs,
   fontBodyXxxs,
   fontBodyXxxxs,
@@ -95,7 +96,8 @@ export const TrackHeader = styled("div")`
  * header; without it the ellipsis never engages.
  */
 export const TrackHeaderTitle = styled("span")`
-  font-weight: 600;
+  ${fontBodySemiboldXxs}
+
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -238,34 +240,21 @@ export const TrackFeatureLabel = styled("div")`
 `;
 
 /**
- * Holds the sequence row's copy control against the right edge of the plot.
+ * Holds an interactive control against the right edge of a section's header
+ * line — the sequence row's copy button, the features section's ranking
+ * dropdown.
  *
- * A sibling of the plot rather than a child of it, positioned against
- * `TrackBody`. See that component for why: the plot is `role="img"`, which
- * cannot contain a control.
+ * One container for both, because the placement argument is identical: the
+ * control is interactive, so it cannot live inside the plot's `role="img"`, and
+ * it is positioned against `TrackBody` at the y the layout reserved for that
+ * section's header line. Both callers pass `style={{ height, top }}`.
  */
-export const TrackSequenceCopy = styled("div")`
+export const TrackOverlayControl = styled("div")`
   position: absolute;
   right: 0;
   display: flex;
   /* Centred in the band, like the name beside it, so the two sit on the same
      line and both clear the rule above and the letters below. */
-  align-items: center;
-  pointer-events: auto;
-`;
-
-/**
- * Holds the features section's ranking dropdown against the right edge.
- *
- * The same placement as the sequence row's copy control, and for the same
- * reason: it is interactive, so it cannot live inside the plot's `role="img"`,
- * and it is positioned against `TrackBody` at the y the layout reserved for
- * that section's header line.
- */
-export const TrackRankingControl = styled("div")`
-  position: absolute;
-  right: 0;
-  display: flex;
   align-items: center;
   pointer-events: auto;
 `;
@@ -517,9 +506,7 @@ export const TrackMessage = styled("div")`
 `;
 
 export const TrackMessageTitle = styled("div")`
-  ${fontBodyXxs}
-
-  font-weight: 600;
+  ${fontBodySemiboldXxs}
 
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);

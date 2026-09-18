@@ -2,6 +2,7 @@ import {
   AnnotationBlock,
   FeatureTrace,
   GenomeTrackData,
+  SegmentBlock,
   TrackKind,
 } from "../GenomeTrack.types";
 
@@ -96,6 +97,29 @@ export interface TrackRow {
    * do not overlap. See `packAnnotationLanes`.
    */
   laneBlocks?: AnnotationBlock[];
+  /**
+   * The segments this row draws, sorted by `end`.
+   *
+   * `hitTest` binary-searches on `end`, so a list that is not in `end` order —
+   * two segmentation runs concatenated, a response sorted by score — makes
+   * blocks silently unhoverable while the row still draws perfectly. Sorting
+   * here establishes that precondition where the row's blocks are chosen,
+   * rather than assuming it of the payload, and costs one pass per payload
+   * instead of per frame.
+   *
+   * This is weaker than what `packAnnotationLanes` gives the annotations row,
+   * and deliberately so. Sorting does not survive *nesting*: the search's
+   * forward scan stops at the first block starting after the point, so a
+   * position inside only an enclosing segment halts on the inner one. Lanes
+   * fix that by removing overlap altogether, which annotations need because
+   * nesting is normal there — a tRNA inside a CDS. Segments are an exhaustive
+   * partition, so they cannot nest; if that ever changes, this row needs the
+   * lane packer rather than a bigger sort.
+   *
+   * Separate from `laneBlocks` rather than one widened field, so neither
+   * consumer needs a cast to get its own block type back.
+   */
+  segmentBlocks?: SegmentBlock[];
 }
 
 export interface RowLayoutOptions {
@@ -339,6 +363,24 @@ export function packAnnotationLanes(
 }
 
 /**
+ * A feature's description, or null when the knowledge base has none.
+ *
+ * The precedence — a short label, else the long description — lives here
+ * because three callers want it with three different fallbacks: the row label
+ * falls back to the bare feature id, the tooltip to nothing, and the accessible
+ * table to prose. Written out three times, a change to that precedence was
+ * three edits, and the copies had already drifted.
+ */
+export function featureNote(
+  data: GenomeTrackData,
+  trace: FeatureTrace
+): string | null {
+  const note = data.feature_notes[String(trace.feature_id)];
+
+  return note?.label || note?.description || null;
+}
+
+/**
  * A trace's display name.
  *
  * Falls back to the bare feature id, which is the common case rather than the
@@ -351,9 +393,7 @@ export function featureLabel(
   data: GenomeTrackData,
   trace: FeatureTrace
 ): string {
-  const note = data.feature_notes[String(trace.feature_id)];
-
-  return note?.label || note?.description || `Feature ${trace.feature_id}`;
+  return featureNote(data, trace) ?? `Feature ${trace.feature_id}`;
 }
 
 /**
@@ -475,6 +515,38 @@ function featureStackRows(
 }
 
 /**
+ * A row for a kind that occupies exactly one band — everything but the
+ * annotations and features stacks.
+ *
+ * Its own function because the segments row is not quite uniform with the
+ * others: it carries its blocks, for the ordering reason `segmentBlocks`
+ * explains. Inlined, that one conditional pushed `layoutRows` past its
+ * complexity budget, which is a fair signal that "build a row" and "place the
+ * rows" are two jobs.
+ */
+function singleRow(
+  kind: TrackKind,
+  data: GenomeTrackData,
+  band: { headerHeight: number; height: number; y: number }
+): TrackRow {
+  const row: TrackRow = {
+    headerHeight: band.headerHeight,
+    height: band.height,
+    kind,
+    label: ROW_LABELS[kind],
+    y: band.y,
+  };
+
+  if (kind === "segments") {
+    // See `segmentBlocks`: the hit-test's binary search needs `end` order, and
+    // this is the one place that can guarantee it for this row.
+    row.segmentBlocks = [...data.segments].sort((a, b) => a.end - b.end);
+  }
+
+  return row;
+}
+
+/**
  * Places the requested rows top to bottom, from the top of the plot.
  *
  * Returns the rows and the total height, so the container can size itself to
@@ -549,7 +621,7 @@ export function layoutRows(
 
     const height = heightOf(kind, options);
 
-    rows.push({ headerHeight, height, kind, label: ROW_LABELS[kind], y: top });
+    rows.push(singleRow(kind, data, { headerHeight, height, y: top }));
     y = top + height + gap;
 
     // The key sits directly under the row whose colours it explains, which

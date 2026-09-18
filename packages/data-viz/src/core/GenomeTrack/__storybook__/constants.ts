@@ -30,16 +30,6 @@ export const POOLED_TRACK_DATA = makeMockGenomeTrackData({
 });
 
 /**
- * An organism with no annotation coverage: `annotations` is null, not empty.
- * The row is dropped rather than drawn blank, because an empty annotation row
- * reads as "no genes here" — a claim the payload is not making.
- */
-export const UNANNOTATED_TRACK_DATA = makeMockGenomeTrackData({
-  seed: 77,
-  withAnnotations: false,
-});
-
-/**
  * A deployment that cannot draw a chromosome overview: `overview` is null and
  * `caps.overview_available` is false.
  *

@@ -146,11 +146,6 @@ describe("makeMockGenomeTrackData", () => {
     expect(overview?.chrom_length).toBe(
       makeMockGenomeTrackData().locus.genome_length
     );
-
-    // And no pooled signal. The minimap draws the selected feature's trace
-    // instead, so a server that never computes the pooled one is the case the
-    // fixture should exercise.
-    expect(overview?.values).toBeUndefined();
   });
 
   it("spans the whole chromosome with the overview's bin axis", () => {
@@ -171,8 +166,8 @@ describe("makeMockGenomeTrackData", () => {
 
     // A minimap against uniform noise is a solid block, which would hide both
     // the normalization and the question the row exists to answer. This is the
-    // shape a single feature has, and the reason it beats the pooled maximum
-    // that used to be drawn here: a max over eight features is quiet nowhere.
+    // shape a single feature has, and why it beats a pooled maximum: a max
+    // over eight features is quiet nowhere.
     expect(Math.max(...values)).toBeGreaterThan(0.5);
     expect(values.filter((value) => value < 0.1).length).toBeGreaterThan(
       values.length / 2

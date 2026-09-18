@@ -198,8 +198,9 @@ describe("hitTest", () => {
 
     const [hostLane, nestedLane] = nestedLayout.rows;
 
-    // The host, on both sides of the nested block. 800 is the dead zone: it is
-    // inside `outer` but past `inner`'s end, and it used to return null.
+    // The host, on both sides of the nested block. 800 is the interesting one:
+    // inside `outer` but past `inner`'s end, which a search that assumed
+    // `end` order across nested blocks would step over.
     expect(at(200, hostLane)?.id).toBe("outer");
     expect(at(800, hostLane)?.id).toBe("outer");
 
@@ -296,10 +297,9 @@ describe("selectionForHit", () => {
   };
 
   it("selects a feature row as a series, not a block", () => {
-    // The change this exists for: a features row used to clear the selection.
-    // Selecting it is how the minimap learns whose activation to draw across
-    // the chromosome, which is the only way to see a feature outside the
-    // loaded window.
+    // Selecting a features row is how the minimap learns whose activation to
+    // draw across the chromosome, which is the only way to see a feature
+    // outside the loaded window.
     expect(selectionForHit(traceHit, null)).toEqual({
       id: seriesId(feature.feature_id),
       kind: "series",
@@ -332,5 +332,90 @@ describe("selectionForHit", () => {
     // surface from here.
     expect(selectionForHit(null, traceHit.id)).toBeNull();
     expect(selectionForHit(null, null)).toBeNull();
+  });
+});
+
+/**
+ * The segments row's blocks must be hoverable whatever order the payload lists
+ * them in.
+ *
+ * `blockAt` binary-searches on `end`, so an out-of-order list — two
+ * segmentation runs concatenated, or a response sorted by score — makes blocks
+ * silently unhoverable while the row still draws perfectly. The layout pass
+ * sorts `segmentBlocks` so the search's precondition is established where the
+ * row's blocks are chosen, rather than assumed of the payload.
+ *
+ * Note what this does *not* buy: sorting alone does not survive *nesting*. The
+ * forward scan stops at the first block starting after the point, so for a
+ * position inside only an enclosing segment it halts on the inner one and
+ * reports nothing. That is why annotations are packed into non-overlapping
+ * lanes instead of sorted — nesting is normal there (a tRNA inside a CDS) and
+ * out of contract here, since the segmentation emits an exhaustive partition.
+ * If that ever stops being true, this row needs the lane packer, not a sort.
+ */
+describe("segments arriving in an unhelpful order", () => {
+  // Named by drawn position, so an assertion reads as "the leftmost block",
+  // independently of the order the payload happened to list them in.
+  const FIRST = "seg:first";
+  const SECOND = "seg:second";
+  const THIRD = "seg:third";
+
+  // Coordinates inside the fixture's window, which is a few hundred bases wide.
+  const { start: windowStart } = DEFAULT_TRACK_DATA.locus;
+  const template = DEFAULT_TRACK_DATA.segments[0];
+  // An exhaustive partition, as the pipeline emits — but listed last-first, so
+  // neither `start` nor `end` is ascending as given.
+  const disordered = {
+    ...DEFAULT_TRACK_DATA,
+    segments: [
+      {
+        ...template,
+        end: windowStart + 238,
+        id: THIRD,
+        start: windowStart + 160,
+      },
+      {
+        ...template,
+        end: windowStart + 159,
+        id: SECOND,
+        start: windowStart + 80,
+      },
+      {
+        ...template,
+        end: windowStart + 79,
+        id: FIRST,
+        start: windowStart + 8,
+      },
+    ],
+  };
+
+  const disorderedLayout = layoutRows(disordered, OPTIONS);
+  const segmentRow = disorderedLayout.rows.find(
+    (candidate) => candidate.kind === "segments"
+  );
+  const y = (segmentRow?.y ?? 0) + (segmentRow?.height ?? 0) / 2;
+
+  it("sorts the row's blocks by end, whatever order they arrived in", () => {
+    expect(segmentRow?.segmentBlocks?.map((block) => block.id)).toEqual([
+      FIRST,
+      SECOND,
+      THIRD,
+    ]);
+  });
+
+  it.each([
+    ["the segment listed last", 40, FIRST],
+    ["the segment listed second", 120, SECOND],
+    ["the segment listed first", 200, THIRD],
+  ])("finds %s", (_label, offset, expected) => {
+    const hit = hitTest(
+      disordered,
+      disorderedLayout.rows,
+      scale,
+      bpToPx(scale, windowStart + offset),
+      y
+    );
+
+    expect(hit?.id).toBe(expected);
   });
 });

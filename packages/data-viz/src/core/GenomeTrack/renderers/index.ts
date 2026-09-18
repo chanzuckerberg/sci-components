@@ -10,6 +10,7 @@ import {
   formatActivation,
   formatRange,
   formatTick,
+  segmentLabel,
   tickInterval,
   ticksFor,
 } from "../utils/format";
@@ -29,6 +30,7 @@ import {
   bpToBinIndex,
   bpToPx,
   createScale,
+  maxOf,
 } from "../utils/scale";
 
 /**
@@ -307,14 +309,6 @@ export interface MinimapContent {
   /** The range the bar spans: the chromosome when one is known. */
   extent: { end: number; start: number };
   /**
-   * The slice of it the payload holds.
-   *
-   * Not drawn on this row — the header names the loaded range and the plot
-   * washes the coordinates outside it. Kept because the caption still reports
-   * it and because a future brush needs to know it.
-   */
-  window: { end: number; start: number };
-  /**
    * The selected feature's chromosome-wide trace, already matched against the
    * selection by the caller. Null draws the bar with no signal in it, which is
    * the row's resting state.
@@ -366,7 +360,10 @@ function drawFeatureSignal(
   barHeight: number
 ): void {
   const { ctx, palette } = draw;
-  const peak = Math.max(...feature.values, 0);
+  // Not `Math.max(...values)`: this is a chromosome-wide array, and spreading
+  // it onto the argument stack risks a RangeError as well as costing a scan on
+  // every redraw — including the hover redraws where the minimap is unchanged.
+  const peak = maxOf(feature.values);
 
   if (peak <= 0) return;
 
@@ -407,12 +404,10 @@ function drawFeatureSignal(
  *    it; at chromosome scale the band covers a fraction of a pixel and an
  *    opaque one would delete the only informative pixel in it.
  *
- * It used to draw two more, and both were removed for the same reason: at
- * chromosome scale everything collapses to the 3 px floor, so a viewport band,
- * a loaded-window outline, and a coarse chromosome band all landed on top of
- * each other as indistinguishable grey marks. `overview.bands` said nothing a
- * reader could act on, and the loaded window is stated in the header and shown
- * by the wash over the plot — neither needed a third grey tick to explain it.
+ * Nothing else is marked. At chromosome scale everything collapses to the 3 px
+ * floor, so a loaded-window outline or a coarse chromosome landmark would land
+ * on the viewport band as an indistinguishable grey mark. The loaded window is
+ * stated in the header and shown by the wash over the plot.
  */
 export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
   const { ctx, density, palette, row, scale } = draw;
@@ -569,53 +564,27 @@ export function drawSegments(
   categories: SegmentPalette
 ): void {
   segments.forEach((segment) => {
-    // A category outside the enum falls back to the single accent fill the row
-    // used before it had categories. That happens whenever the segmentation
-    // gains a category the payload's enum has not caught up with, and a grey
-    // or invisible block would be a worse answer than an uncoloured one.
+    // Null for a category outside the enum, which happens whenever the
+    // segmentation gains one the payload's enum has not caught up with.
     const color = categories.fill(segment.category);
 
-    if (!color) {
-      // A category outside the enum falls back to the single accent fill the
-      // row used before it had categories. That happens whenever the
-      // segmentation gains a category the payload's enum has not caught up
-      // with, and an invisible block is a worse answer than an uncoloured one.
-      drawBlock(
-        draw,
-        segment,
-        segmentLabel(segment),
-        draw.palette.segment,
-        draw.palette.segmentText
-      );
-
-      return;
-    }
-
-    // Colour is the category; stripes are the negative strand.
-    const fill = categories.isStriped(segment.category)
-      ? (stripedFill(draw.ctx, color) ?? color)
-      : color;
+    // Colour is the category and stripes are the negative strand. A category
+    // the enum does not carry takes the row's single accent fill, since an
+    // uncoloured block is a better answer than an invisible one.
+    const fill = !color
+      ? draw.palette.segment
+      : categories.isStriped(segment.category)
+        ? (stripedFill(draw.ctx, color) ?? color)
+        : color;
 
     drawBlock(
       draw,
       segment,
       segmentLabel(segment),
       fill,
-      categories.text(segment.category)
+      color ? categories.text(segment.category) : draw.palette.segmentText
     );
   });
-}
-
-/**
- * Short display label for a segment: the trailing id part plus its category.
- *
- * "esmgsedd-mvp:e_coli_k12:NC_000913.3:seg_00076" reads as "seg_00076 +CDS",
- * which is what the design shows on the block.
- */
-export function segmentLabel(segment: SegmentBlock): string {
-  const short = segment.id.split(":").pop() ?? segment.id;
-
-  return `${short} ${segment.category}`;
 }
 
 /**

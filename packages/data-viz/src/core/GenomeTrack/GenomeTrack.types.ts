@@ -4,11 +4,11 @@ import { HTMLAttributes } from "react";
  * Wire types for `GenomeTrack`.
  *
  * The payload types below use `snake_case` keys, unlike the component's props.
- * That is deliberate rather than an oversight: these mirror Pydantic models
- * served by an MCP tool, and are generated from that JSON Schema. Camel-casing
- * at the boundary would mean a payload could not be diffed against a server
- * fixture without translating it first, which is exactly the kind of
- * translation layer that hides off-by-one bugs in coordinate data.
+ * That is deliberate rather than an oversight: these are written to match
+ * the Pydantic models an MCP tool serves. Camel-casing at the boundary would
+ * mean a payload could not be diffed against a server fixture without
+ * translating it first, which is exactly the kind of translation layer that
+ * hides off-by-one bugs in coordinate data.
  *
  * Props are `camelCase`, as everywhere else in the library. The rule is: data
  * that crossed the network keeps the server's shape; anything a React caller
@@ -129,14 +129,6 @@ export interface ClusterTrace {
   values: number[];
 }
 
-/** A coarse band on the chromosome overview: centromere, assembly gap, etc. */
-export interface OverviewBand {
-  start: number;
-  end: number;
-  kind: string;
-  label: string;
-}
-
 /**
  * Chromosome-scale context for the minimap row.
  *
@@ -146,12 +138,13 @@ export interface OverviewBand {
  *
  * **Only `chrom_length` is read.** That one number is what widens the minimap
  * from the payload's window to the whole chromosome, and what bounds
- * navigation. The signal the row draws comes from `feature_overview` instead —
- * one feature the user picked, rather than a pooled summary of a set they did
- * not — and `values`, `bands` and `bins` are all unread.
+ * navigation. The signal the row draws comes from `feature_overview` — one
+ * feature the user picked, rather than a summary pooled across a set they did
+ * not, which leaves almost no bin quiet and reads as noise.
  */
 export interface MinimapOverview {
   chrom: string;
+  /** What the bar spans, and what bounds navigation. */
   chrom_length: number;
   /**
    * Fixed bin count regardless of chromosome size, so the stride is ~40 kb for
@@ -159,36 +152,6 @@ export interface MinimapOverview {
    * never a value to read.
    */
   bins: BinAxis;
-  /**
-   * Chromosome-wide pooled activation. **Nothing reads this.**
-   *
-   * It was max-pooled across the top features — "where is anything happening"
-   * — and the minimap drew it. It no longer does: the row is a position
-   * indicator, and the signal it shows now is one feature's, from
-   * `GenomeTrackData.feature_overview`, chosen by the user rather than pooled
-   * across a set they did not pick.
-   *
-   * Optional rather than deleted because producing it is the expensive part of
-   * the minimap's data path — downsampling a genome-length array per feature
-   * is cheap for a 4.6 Mb bacterial chromosome and not for an 80 Mb human one —
-   * so a server that already computes it need not stop, and one that does not
-   * need never start.
-   */
-  values?: number[];
-  /**
-   * Coarse chromosome landmarks. **Nothing reads this.**
-   *
-   * The minimap drew them behind the signal, and stopped for the same reason
-   * it stopped drawing a loaded-window outline: at chromosome scale every
-   * marker collapses to a 3 px floor, so a band, an outline and the viewport
-   * indicator all landed on each other as indistinguishable grey ticks. The one
-   * band the row draws now is the viewport — the thing a reader can act on.
-   *
-   * Optional rather than deleted so a payload that carries them is still valid,
-   * and so a later row that can space them out — a karyotype ideogram, say —
-   * has the field waiting.
-   */
-  bands?: OverviewBand[];
 }
 
 /**
@@ -279,8 +242,7 @@ export interface GenomeTrackData {
    * commonest categories should take the start of the ramp where the hues are
    * furthest apart.
    *
-   * Absent or empty falls back to one accent fill for every segment, which is
-   * what the row drew before it had categories.
+   * Absent or empty draws every segment in one accent fill.
    */
   segment_categories?: string[];
   features: FeatureTrace[];
@@ -461,10 +423,10 @@ export interface GenomeTrackProps extends Omit<
   /**
    * Draw each section's name on a line above its rows.
    *
-   * Replaces the fixed left-hand gutter these labels used to occupy. The gutter
-   * cost a column of the plot's width at every zoom and still truncated the
-   * longer names; above the row a name has the full width to use and the axis
-   * gets the space back. The trade is vertical: each section costs a line.
+   * Above the row rather than in a left-hand gutter, so a name has the plot's
+   * full width instead of a fixed column that the axis could use and that
+   * truncates the longer names anyway. The trade is vertical: each section
+   * costs a line.
    *
    * False for the compact variant, where a comparison card has room for
    * neither the line nor the names.

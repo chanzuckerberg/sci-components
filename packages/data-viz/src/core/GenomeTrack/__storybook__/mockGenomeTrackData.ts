@@ -347,11 +347,6 @@ function makeAnnotations(
  * Fixed at 1,000 bins regardless of chromosome length, which is the shape the
  * real endpoint promises: human chr 1 and E. coli cost the same bytes, and the
  * stride comes out at ~4.6 kb for this genome.
- *
- * Carries no `values`. The minimap no longer draws a pooled signal — it draws
- * the one feature the user selected, from `feature_overview` — so the field is
- * left off to exercise the optional path a server that never computes it will
- * take.
  */
 function makeOverview(chrom: string, chromLength: number): MinimapOverview {
   const nBins = 1_000;
@@ -375,8 +370,8 @@ function makeOverview(chrom: string, chromLength: number): MinimapOverview {
  * Seeded from the feature id, so the same feature always gets the same trace
  * and two different features get visibly different ones. Deliberately sparse —
  * a handful of clusters over a quiet chromosome, which is what distinguishes
- * one feature's trace from the pooled maximum that used to be drawn here and
- * lit up almost every bin.
+ * one feature's trace from a pooled maximum, which lights up almost every
+ * bin.
  */
 export function makeFeatureOverview(
   featureId: number,

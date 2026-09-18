@@ -8,7 +8,6 @@ import {
   drawOutsideWindow,
   drawSegments,
   drawSequence,
-  segmentLabel,
 } from "../renderers";
 import { uncoveredRanges } from "../utils/extent";
 import {
@@ -21,7 +20,7 @@ import {
 import { TrackPalette } from "../utils/palette";
 import { createScale } from "../utils/scale";
 import { segmentPalette } from "../utils/segmentColors";
-import { formatActivation } from "../utils/format";
+import { formatActivation, segmentLabel } from "../utils/format";
 
 /**
  * The draw passes, exercised against a recording stub context.
@@ -578,10 +577,10 @@ describe("drawMinimap", () => {
 
       drawMinimap(draw, CHROMOSOME);
 
-      // The track, and the viewport band on top of it. Exactly one band: the
-      // row used to draw a loaded-window outline and coarse chromosome bands
-      // too, and at chromosome scale all three collapsed to the 3 px floor and
-      // landed on each other as indistinguishable grey marks.
+      // The track, and the viewport band on top of it — exactly one band. At
+      // chromosome scale a loaded-window outline or a coarse chromosome band
+      // would collapse to the 3 px floor and land on the viewport band as an
+      // indistinguishable grey mark.
       expect(
         recorder.calls.filter((call) => call.op === "fillRect")
       ).toHaveLength(2);

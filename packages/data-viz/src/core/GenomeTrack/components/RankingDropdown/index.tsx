@@ -1,7 +1,7 @@
 import { ButtonDropdown, Menu, MenuItem } from "@czi-sds/components";
 import { useCallback, useState } from "react";
 import { ActivationRanking } from "../../GenomeTrack.types";
-import { TrackRankingControl } from "../../style";
+import { TrackOverlayControl } from "../../style";
 
 export const RANKING_TEST_ID = "genome-track-ranking";
 export const RANKING_OPTION_TEST_ID = {
@@ -68,7 +68,7 @@ export const RankingDropdown = ({
   );
 
   return (
-    <TrackRankingControl style={{ height, top }}>
+    <TrackOverlayControl style={{ height, top }}>
       <ButtonDropdown
         aria-expanded={anchor !== null}
         aria-haspopup="menu"
@@ -101,7 +101,7 @@ export const RankingDropdown = ({
           </MenuItem>
         ))}
       </Menu>
-    </TrackRankingControl>
+    </TrackOverlayControl>
   );
 };
 

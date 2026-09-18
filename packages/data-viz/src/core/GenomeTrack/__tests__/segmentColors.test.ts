@@ -72,9 +72,13 @@ describe("segmentPalette", () => {
     const dark = segmentPalette(ENUM, true);
 
     // Same set of colours, opposite assignment — which is why the palette is
-    // rebuilt on a theme change rather than cached across one.
-    expect(dark.bases.map((base) => base.color)).toEqual(
-      light.bases.map((base) => base.color).reverse()
+    // rebuilt on a theme change rather than cached across one. Read through
+    // `fill`, over the distinct base categories in enum order, since that is
+    // the surface a caller actually has.
+    const distinctBases = [...new Set(ENUM.map(baseCategory))];
+
+    expect(distinctBases.map((base) => dark.fill(base))).toEqual(
+      distinctBases.map((base) => light.fill(base)).reverse()
     );
   });
 
@@ -89,7 +93,7 @@ describe("segmentPalette", () => {
 
   it("knows nothing when the payload carries no enum", () => {
     expect(segmentPalette(undefined, false).fill("CDS")).toBeNull();
-    expect(segmentPalette([], false).bases).toEqual([]);
+    expect(segmentPalette([], false).fill("CDS")).toBeNull();
   });
 
   /**

@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { GenomeTrackData } from "../../GenomeTrack.types";
-import { formatBp, formatRange } from "../../utils/format";
-import { TrackRow } from "../../utils/layout";
-import { segmentLabel } from "../../renderers";
+import { formatBp, formatRange, segmentLabel } from "../../utils/format";
+import { TrackRow, featureNote, featureTraces } from "../../utils/layout";
+import { argMax } from "../../utils/scale";
 
 interface AccessibleTableProps {
   data: GenomeTrackData;
@@ -33,7 +34,14 @@ interface AccessibleTableProps {
  * a table wants the region the tool returned, not whatever happens to be
  * scrolled into view.
  */
-export const AccessibleTable = ({
+/*
+ * Memoized because the track re-renders on every pointer move and every pan
+ * frame, and this is its heaviest child: one row per annotation and per segment
+ * — thousands at a wide window — plus an argmax over each trace. Its props are
+ * the payload and the memoized layout rows, both referentially stable across
+ * those renders, so it now renders once per payload.
+ */
+const AccessibleTableImpl = ({
   annotationOverflow,
   data,
   id,
@@ -136,17 +144,17 @@ export const AccessibleTable = ({
             </tr>
           </thead>
           <tbody>
-            {[...data.pinned, ...data.features].map((trace) => {
-              const note = data.feature_notes[String(trace.feature_id)];
-              const peakIndex = trace.values.indexOf(Math.max(...trace.values));
+            {featureTraces(data).map((trace) => {
+              // One pass, and no spread: `Math.max(...values)` pushes every bin
+              // onto the argument stack, which throws for a long enough trace
+              // and costs two full scans paired with `indexOf`.
+              const peakIndex = argMax(trace.values);
 
               return (
                 <tr key={trace.feature_id}>
                   <th scope="row">{`Feature ${trace.feature_id}`}</th>
                   <td>
-                    {note?.label ||
-                      note?.description ||
-                      "No description available"}
+                    {featureNote(data, trace) ?? "No description available"}
                   </td>
                   <td>{trace.peak.toFixed(3)}</td>
                   <td>
@@ -171,5 +179,7 @@ export const AccessibleTable = ({
     </div>
   );
 };
+
+export const AccessibleTable = memo(AccessibleTableImpl);
 
 export default AccessibleTable;

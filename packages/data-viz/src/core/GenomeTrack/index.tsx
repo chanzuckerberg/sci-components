@@ -6,6 +6,7 @@ import { HitTooltip } from "./components/HitTooltip";
 import { RankingDropdown } from "./components/RankingDropdown";
 import { SequenceCopyButton } from "./components/SequenceCopyButton";
 import {
+  STATE_TEST_IDS,
   TrackEmptyState,
   TrackErrorState,
   TrackSkeleton,
@@ -51,6 +52,7 @@ import {
 import { resolvePalette } from "./utils/palette";
 import {
   CategoryKey,
+  SegmentPalette,
   presentCategories,
   segmentPalette,
 } from "./utils/segmentColors";
@@ -82,9 +84,9 @@ const DEFAULT_TRACKS: TrackKind[] = [
 /**
  * A row's key for React.
  *
- * Kind alone stopped being unique when the features row became a stack of
- * several rows sharing one kind, and the annotations row became a second such
- * stack. Both sub-row indices are folded in because a row has at most one.
+ * Kind alone is not unique: the features row and the annotations row are each
+ * a stack of several rows sharing one kind. Both sub-row indices are folded in
+ * because a row has at most one.
  */
 function rowKey(row: TrackRow): string {
   // A feature row is keyed by identity rather than position: the payload ranks
@@ -209,15 +211,31 @@ function selectedFeatureName(
   return trace ? featureLabel(data, trace) : `Feature ${featureId}`;
 }
 
+/** The categories the window actually contains, or none without a payload. */
+function legendFor(
+  data: GenomeTrackData | null,
+  categories: SegmentPalette
+): CategoryKey[] {
+  if (!data) return [];
+
+  return presentCategories(data.segments, data.segment_categories, categories);
+}
+
 /**
- * The row carrying a section's header line, or undefined when it has none.
+ * The first row of a section, which is where a control mounted on that
+ * section's line — the ranking dropdown, the sequence copy button — positions
+ * itself.
  *
- * Only the first row of a section has a header, so this is how a control
- * mounted on that line — the ranking dropdown, the sequence copy button —
- * finds the band to position itself in.
+ * Matched on being the first row of its kind rather than on `headerHeight`,
+ * which is a *measurement*. With `showRowLabels={false}` every `headerHeight`
+ * is 0, so keying on it made the ranking dropdown disappear in exactly the
+ * documented compact configuration — a control vanishing because a label was
+ * turned off, while the copy button beside it survived by falling back to the
+ * row's own height. The two controls now find their anchor the same way, and
+ * whether a control exists depends only on whether a caller is listening.
  */
 function headerRowFor(rows: TrackRow[], kind: TrackKind): TrackRow | undefined {
-  return rows.find((row) => row.kind === kind && row.headerHeight);
+  return rows.find((row) => row.kind === kind);
 }
 
 /**
@@ -329,11 +347,14 @@ function FeatureLabels({
  */
 export const TEST_IDS = {
   legend: "genome-track-legend",
-  message: "genome-track-message",
+  // Taken from `TrackStates` rather than retyped: those two ids are what that
+  // module actually renders, so a literal here that drifted from it would make
+  // an assertion silently query nothing.
+  message: STATE_TEST_IDS.message,
   progress: "genome-track-progress",
   range: "genome-track-range",
   root: "genome-track",
-  skeleton: "genome-track-skeleton",
+  skeleton: STATE_TEST_IDS.skeleton,
   title: "genome-track-title",
 } as const;
 
@@ -421,6 +442,20 @@ const GenomeTrack = forwardRef(
       [data?.segment_categories, theme]
     );
 
+    /**
+     * The legend's entries, which change only with the payload.
+     *
+     * Memoized because `presentCategories` builds a set over every segment —
+     * thousands at a wide window — and the component re-renders on every
+     * pointer move and every pan frame. Computed inline it also handed the
+     * legend a fresh array each time, re-rendering it for a list that had not
+     * changed.
+     */
+    const legendItems = useMemo(
+      () => legendFor(data, segmentCategories),
+      [data, segmentCategories]
+    );
+
     const plotRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const { dpr, width } = useCanvasSize(plotRef);
@@ -436,7 +471,6 @@ const GenomeTrack = forwardRef(
           ? trackExtents(data, overview, navigationMargin)
           : {
               extent: { end: 1, start: 1 },
-              isChromosome: false,
               navigable: { end: 1, start: 1 },
               window: { end: 1, start: 1 },
             },
@@ -573,7 +607,7 @@ const GenomeTrack = forwardRef(
     // once the features stack means several rows share a kind.
     const tooltipRow = hit ? layout.rows[hit.rowIndex] : undefined;
 
-    const sequenceRow = layout.rows.find((row) => row.kind === "sequence");
+    const sequenceRow = headerRowFor(layout.rows, "sequence");
     const featuresHeader = headerRowFor(layout.rows, "features");
     const visibleSequence = sliceVisible(data, viewport);
 
@@ -617,14 +651,7 @@ const GenomeTrack = forwardRef(
               rows={layout.rows}
               selectedTraceId={selectedTraceId}
             />
-            <SegmentLegend
-              items={presentCategories(
-                data.segments,
-                data.segment_categories,
-                segmentCategories
-              )}
-              top={layout.segmentLegendY}
-            />
+            <SegmentLegend items={legendItems} top={layout.segmentLegendY} />
 
             {hit && tooltipRow && (
               <HitTooltip
@@ -638,7 +665,7 @@ const GenomeTrack = forwardRef(
 
           {featuresHeader && onRankingChange && (
             <RankingDropdown
-              height={featuresHeader.headerHeight ?? 0}
+              height={featuresHeader.headerHeight || featuresHeader.height}
               onChange={onRankingChange}
               top={featuresHeader.y - (featuresHeader.headerHeight ?? 0)}
               value={ranking}

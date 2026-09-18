@@ -5,11 +5,6 @@
   autoencoder (SAE) feature activation. The plot is drawn on a single canvas,
   with the header, row labels, tooltip, and an accessible table kept in the DOM.
 </p>
-<p>
-  The component is presentational and does no I/O. It takes one window of data
-  and reports what the user did to it — pan, zoom, select — leaving the caller
-  to decide whether that means fetching a new window.
-</p>
 <div
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
@@ -197,57 +192,29 @@
   <li>
     <p>
       The <strong>viewport</strong> is the filled band, and the only band the
-      row draws. Translucent, so a signal underneath still reads through it —
-      at chromosome scale the band is a few pixels wide, and an opaque one would
-      delete the only informative pixel in it.
+      row draws.
     </p>
   </li>
 </ul>
 <p>
   <strong>Click any features row to put that feature on the minimap.</strong>
   The row emits a <code>"series"</code> selection naming the feature, the shell
-  fetches that feature's whole-chromosome activation, and the bar draws it —
-  which is the only way to see where a feature fires outside the loaded window.
+  fetches that feature's whole-chromosome activation, and the bar draws it.
   Clicking the same row again clears it. <code>featureIdFromSeries</code> turns
   the selection id back into a feature id for the fetch.
 </p>
 <p>
-  The bar used to draw a maximum pooled across the top features, from
-  <code>MinimapOverview.values</code>. That sounded useful and was not: every
-  bin was a max over eight traces, so almost no bin was quiet and the row read
-  as noise. One feature's trace answers a question someone actually asked.
-  <code>values</code> is now optional and unread — producing it is the expensive
-  half of the minimap's data path, and a server that never computes it loses
-  nothing.
-</p>
-<p>
-  The component draws <code>feature_overview</code> only when its
-  <code>feature_id</code> matches the current selection. The two arrive
-  separately — the selection is immediate, the trace is a fetch — so between a
-  click and its response the payload still holds the previous feature's trace,
-  and drawing that would attribute one feature's activation to another.
+  The bar is empty while the trace loads. Selection is immediate, the trace is a
+  fetch, and the component draws <code>feature_overview</code> only when its
+  <code>feature_id</code> matches the selection — so the previous feature's
+  trace is dropped on click rather than left up, which would credit its
+  activation to the feature just selected.
 </p>
 <p>
   The bar spans the chromosome, but pan and zoom do not. They stop at the loaded
   window plus <code>navigationMargin</code> times its span on each side, so the
-  band can travel a little way out of the outline and no further. That is not a
-  hedge: navigation reaching the whole chromosome is unusable without a shell
-  refilling the window behind it, because the viewport outruns its data and the
-  loaded slice compresses into a few pixels. A 20 kb view of a 289 bp payload
-  draws every row in a 25 px column. The margin bounds it, and each re-fetch
-  widens the window and so widens the margin — so the user walks out in steps
-  that are each backed by real data, which is how a genome browser is meant to
-  work. Crossing a megabase is a fetch, not a pan.
-</p>
-<p>
-  The row used to draw two more markers — an outline around the loaded window,
-  and the coarse landmarks in <code>overview.bands</code>. Both are gone, for
-  the same reason: at chromosome scale every marker collapses to a three-pixel
-  floor, so all three landed on each other as indistinguishable grey ticks. The
-  loaded range is named in the header and shown by the wash over the plot, which
-  needed no third grey tick to explain it. <code>overview.values</code> and
-  <code>overview.bands</code> are both optional and unread; only
-  <code>chrom_length</code> is read.
+  band can travel a little way out of the outline and no further. Crossing a
+  megabase is a fetch, not a pan.
 </p>
 <p>
   <code>overview</code> is fixed at a thousand bins regardless of chromosome
@@ -259,30 +226,6 @@
   dropping the minimap on the user's first zoom. Retention is keyed on accession
   and chromosome and dropped when either changes, since
   <code>chrom_length</code> is also the limit of navigation.
-</p>
-<p>
-  It is the only row not drawn on the shared viewport scale. Every other row
-  maps the visible range across the plot; this one maps the chromosome across
-  the plot and then places the visible range within it. Its tick labels follow
-  that same second scale, and they are the only coordinates drawn inside the
-  plot: the header states the visible range, the bar states what that range sits
-  inside. A minimap labelled with the coordinates it already contains would say
-  nothing.
-</p>
-<p>
-  A deeply zoomed window would be a fraction of a pixel wide, so the band has a
-  three-pixel floor and is held inside the bar at either end — an indicator that
-  vanishes, or slides off the edge, fails exactly when a user is most lost. The
-  band's range is captioned above the bar and centred on it, clamped so a band
-  against either edge does not caption itself off the side.
-</p>
-<p>
-  The caption sits above the band rather than inside it for two reasons. The
-  band shrinks as the user zooms in, so at a deep zoom there is no room for text
-  on it at all; and a caption on the row's own background can use a colour that
-  contrasts in both themes, where text on the band cannot. The band is a neutral
-  fill, which is dark in light mode and light in dark mode, and no
-  <code>textOnFill</code> token flips with it.
 </p>
 <div
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
@@ -305,28 +248,11 @@
 <h2>The sequence row</h2>
 <p>
   One letter per base, and a copy control on the section's header line beside
-  its name. The control is a real button rather than a drawn affordance: it
-  needs a tab stop, a focus ring and an accessible name, none of which a
-  rectangle on a canvas can have. It also lives outside the plot element, which
-  carries <code>role="img"</code> and so cannot contain a control.
-</p>
-<p>
-  It opens a menu with two choices rather than copying straight away:
+  its name. It opens a menu with two choices rather than copying straight away:
   <strong>Copy Visible Segment</strong> and <strong>Copy Full Segment</strong>.
-  A single button had to pick one, and either choice is wrong half the time —
-  copying only what is on screen surprises anyone who zoomed in to read a detail
-  and wanted the region, and copying the whole payload surprises anyone who
-  framed a range deliberately. Both items name the range they would copy, so
-  there is nothing to infer: "Copy Visible Segment (45,500–45,600)". The full
+  Both items name the range they would copy: "Copy Visible Segment (45,500–45,600)". The full
   item is disabled when the payload is already entirely on screen, since two
   items copying identical text is a choice without a difference.
-</p>
-<p>
-  The band the row draws stops where the sequence does rather than spanning the
-  plot, so a viewport wider than the payload does not imply letters it has none
-  of. The icon becomes a tick for two seconds on success and does not change at
-  all when the clipboard write fails, since a tick for a copy that did not
-  happen is worse than no feedback.
 </p>
 <h2>The features row</h2>
 <p>
@@ -362,10 +288,7 @@
   <code>density="compact"</code>, where a card has no room for them. A name
   comes from <code>feature_notes</code> and falls back to
   <code>Feature 13492</code>, which is the common case rather than the
-  exceptional one: the knowledge base describes a few percent of features today,
-  and none at all for a checkpoint its pipeline has not run against. A layout
-  that only looks right with prose labels is a layout that only looks right on a
-  fixture.
+  exceptional one.
 </p>
 <h2>Code examples</h2>
 <h3><strong>Default GenomeTrack</strong></h3>
@@ -749,11 +672,11 @@
       <p>
         Draw each section's name on a line above its rows, with a separator
         ruling off whatever sits above. The minimap is unnamed either way.
-        Replaces the fixed left-hand gutter these labels used to occupy: the
-        gutter cost a column of the plot's width at every zoom and still
-        truncated the longer names, where above the row a name has the full
-        width. The trade is vertical — each section costs a line. False for the
-        compact variant, which has room for neither.
+        Above the row rather than in a left-hand gutter, so a name has the
+        plot's full width instead of a fixed column that the axis could use and
+        that truncates the longer names anyway. The trade is vertical — each
+        section costs a line. False for the compact variant, which has room for
+        neither.
       </p>
     </td>
   </tr>

@@ -31,8 +31,6 @@ export interface SegmentPalette {
   text: (category: string) => string;
   /** Whether the category sits on the negative strand, and so is striped. */
   isStriped: (category: string) => boolean;
-  /** Distinct base categories in enum order, each with its colour. */
-  bases: { color: string; name: string }[];
 }
 
 /**
@@ -88,8 +86,7 @@ function readableText(background: string): string {
  * the hues are furthest apart.
  *
  * An empty or absent enum yields a palette that knows nothing and every lookup
- * returns null; the caller then falls back to the single accent fill the row
- * used before it had categories.
+ * returns null; the caller then falls back to the row's single accent fill.
  */
 export function segmentPalette(
   categories: string[] | undefined,
@@ -108,7 +105,6 @@ export function segmentPalette(
   );
 
   return {
-    bases: baseNames.map((name, index) => ({ color: colors[index], name })),
     fill: (category) => byBase.get(baseCategory(category)) ?? null,
     isStriped: isNegativeStrand,
     text: (category) => textByBase.get(baseCategory(category)) ?? "#ffffff",

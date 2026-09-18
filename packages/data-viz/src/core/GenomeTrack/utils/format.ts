@@ -178,3 +178,30 @@ export function formatActivation(value: number): string {
 
   return String(Number(value.toPrecision(2)));
 }
+
+/**
+ * The trailing part of a namespaced segment id.
+ *
+ * "esmgsedd-mvp:e_coli_k12:NC_000913.3:seg_00076" is "seg_00076". The
+ * convention lives here rather than in two places: the on-block canvas label
+ * and the tooltip both name a segment, and if they derived it separately a
+ * change to the id format would make them disagree — which nobody notices,
+ * because both still look plausible.
+ */
+export function shortSegmentId(id: string): string {
+  return id.split(":").pop() ?? id;
+}
+
+/**
+ * Short display label for a segment: the trailing id part plus its category.
+ *
+ * Here rather than in the renderers because the accessible table needs it too,
+ * and a DOM component should not have the canvas module in its import graph
+ * just to format a string.
+ */
+export function segmentLabel(segment: {
+  category: string;
+  id: string;
+}): string {
+  return `${shortSegmentId(segment.id)} ${segment.category}`;
+}

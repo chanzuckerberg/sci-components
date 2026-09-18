@@ -32,8 +32,6 @@ export interface UseViewportResult {
   viewport: GenomeViewport;
   /** Applies a navigation: clamps it, updates internal state, and reports it. */
   navigate: (next: GenomeViewport) => void;
-  /** Resets to the payload's window. */
-  reset: () => void;
 }
 
 export function useViewport(
@@ -82,7 +80,6 @@ export function useViewport(
   // Home goes back to the loaded window rather than to the whole chromosome.
   // Zooming out to a chromosome is a fetch; going back to what is already in
   // hand should not be.
-  const reset = useCallback(() => navigate(window), [navigate, window]);
 
-  return { navigate, reset, viewport };
+  return { navigate, viewport };
 }

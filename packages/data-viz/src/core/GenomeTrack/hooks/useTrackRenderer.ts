@@ -1,5 +1,9 @@
 import { RefObject, useEffect } from "react";
-import { FeatureOverview, GenomeTrackData } from "../GenomeTrack.types";
+import {
+  FeatureOverview,
+  FeatureTrace,
+  GenomeTrackData,
+} from "../GenomeTrack.types";
 import {
   DrawContext,
   drawAnnotations,
@@ -59,7 +63,8 @@ function drawRow(
   data: GenomeTrackData,
   extents: TrackExtents,
   featureOverview: FeatureOverview | null,
-  segmentCategories: SegmentPalette
+  segmentCategories: SegmentPalette,
+  traces: FeatureTrace[]
 ): void {
   switch (draw.row.kind) {
     case "annotations":
@@ -68,7 +73,7 @@ function drawRow(
       drawAnnotations(draw, draw.row.laneBlocks ?? []);
       break;
     case "features": {
-      const trace = featureTraces(data)[draw.row.traceIndex ?? 0];
+      const trace = traces[draw.row.traceIndex ?? 0];
 
       if (trace) drawFeatureBars(draw, trace, data.bins);
       break;
@@ -77,11 +82,16 @@ function drawRow(
       drawMinimap(draw, {
         extent: extents.extent,
         feature: featureOverview,
-        window: extents.window,
       });
       break;
     case "segments":
-      drawSegments(draw, data.segments, segmentCategories);
+      // The row's own blocks, sorted by `end` in the layout pass, so the canvas
+      // and the hit-test are looking at one list rather than two orderings.
+      drawSegments(
+        draw,
+        draw.row.segmentBlocks ?? data.segments,
+        segmentCategories
+      );
       break;
     case "sequence":
       if (data.sequence) drawSequence(draw, data.sequence, data.locus.start);
@@ -124,10 +134,23 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
     // Size the backing store in device pixels and the element in CSS pixels,
     // then scale the context once. Everything downstream works in CSS pixels
     // without knowing the ratio.
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.height = `${height}px`;
+    //
+    // Only on an actual size change. Assigning `canvas.width` or `.height`
+    // discards and re-zeroes the whole bitmap *even when the value is
+    // unchanged* — at 1200 px × dpr 2 over a 600 px track that is an ~11 MB
+    // allocation, and this effect re-runs on every pan frame and every hover.
+    // `clearRect` below is what actually needs to happen per frame.
+    const backingWidth = Math.round(width * dpr);
+    const backingHeight = Math.round(height * dpr);
 
+    if (canvas.width !== backingWidth) canvas.width = backingWidth;
+    if (canvas.height !== backingHeight) canvas.height = backingHeight;
+    if (canvas.style.height !== `${height}px`) {
+      canvas.style.height = `${height}px`;
+    }
+
+    // Unconditional: a resize above resets the context's transform, and
+    // re-setting it when nothing resized costs nothing.
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
 
@@ -140,13 +163,18 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       selectedId,
     };
 
+    // Once, not per features row: `featureTraces` concatenates `pinned` and
+    // `features`, and the stack calls `drawRow` once per trace.
+    const traces = featureTraces(data);
+
     rows.forEach((row) =>
       drawRow(
         { ...base, row },
         data,
         extents,
         featureOverview,
-        segmentCategories
+        segmentCategories,
+        traces
       )
     );
 

@@ -1,9 +1,17 @@
 import { Menu, MenuItem } from "@czi-sds/components";
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { TrackSequenceCopy, TrackSequenceCopyButton } from "../../style";
+import { copyText } from "../../../../common/copyText";
+import { TrackOverlayControl, TrackSequenceCopyButton } from "../../style";
 
-/** How long the control shows a tick before returning to the copy icon. */
+/**
+ * How long the control shows a tick before returning to the copy icon.
+ *
+ * Matches `COPIED_FEEDBACK_MS` in the structure viewer's sequence panel. Two
+ * copies of one number, because the two rows are unrelated components that
+ * happen to agree; a shared constant would tie their feedback timing together
+ * for no reason beyond that coincidence.
+ */
 const CONFIRM_MS = 2000;
 
 export const COPY_TEST_ID = "genome-track-copy-sequence";
@@ -91,7 +99,7 @@ export const SequenceCopyButton = ({
     setAnchor(null);
 
     try {
-      await navigator.clipboard.writeText(text);
+      await copyText(text);
     } catch {
       // Clipboard writes reject without a secure context or a user gesture the
       // browser recognises. Leaving the icon alone is the honest outcome: a
@@ -106,7 +114,7 @@ export const SequenceCopyButton = ({
   }, []);
 
   return (
-    <TrackSequenceCopy style={{ height, top }}>
+    <TrackOverlayControl style={{ height, top }}>
       {/*
        * An SDS minimal `secondary` button, so the resting grey, the hover and
        * press washes, the focus ring and the sizing are all SDS's own. Only the
@@ -158,7 +166,7 @@ export const SequenceCopyButton = ({
           {`Copy Full Segment (${fullRange})`}
         </MenuItem>
       </Menu>
-    </TrackSequenceCopy>
+    </TrackOverlayControl>
   );
 };
 

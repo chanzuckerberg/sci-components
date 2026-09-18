@@ -201,3 +201,41 @@ export function panBy(
     bounds
   );
 }
+
+/**
+ * The largest value in `values`, or 0 for an empty array.
+ *
+ * A loop rather than `Math.max(...values)`, which spreads every element onto
+ * the argument stack: the arrays here are per-bin activation, up to
+ * `max_points` long for a window and chromosome-wide for a minimap trace, so
+ * the spread is both a real allocation on every call and a RangeError waiting
+ * for a long enough payload.
+ */
+export function maxOf(values: number[]): number {
+  let max = 0;
+
+  for (let i = 0; i < values.length; i += 1) {
+    if (values[i] > max) max = values[i];
+  }
+
+  return max;
+}
+
+/**
+ * Index of the largest value in `values`, or -1 for an empty array.
+ *
+ * One pass, where `values.indexOf(Math.max(...values))` is two plus a spread.
+ */
+export function argMax(values: number[]): number {
+  let best = -1;
+  let max = -Infinity;
+
+  for (let i = 0; i < values.length; i += 1) {
+    if (values[i] > max) {
+      max = values[i];
+      best = i;
+    }
+  }
+
+  return best;
+}

@@ -6,8 +6,9 @@ import {
   GenomeTrackData,
   SegmentBlock,
 } from "../GenomeTrack.types";
-import { TrackRow, featureTraces, rowIndexAt } from "./layout";
+import { TrackRow, featureNote, featureTraces, rowIndexAt } from "./layout";
 import { GenomeScale, binIndexToRange, bpToBinIndex, pxToBp } from "./scale";
+import { shortSegmentId } from "./format";
 
 /**
  * Pointer hit-testing.
@@ -25,18 +26,18 @@ import { GenomeScale, binIndexToRange, bpToBinIndex, pxToBp } from "./scale";
  * stronger requirement than it looks. Start order alone does not give it:
  * nested intervals — a tRNA inside a CDS — are in start order with `end` going
  * backwards, and the search then steps over the enclosing gene and reports
- * nothing. So each row hands over a list that cannot nest. Segments come that
- * way from the pipeline, which partitions exhaustively; annotations are made
- * that way by `packAnnotationLanes`, one lane at a time.
+ * nothing. So each row hands over a list that cannot nest, and the layout pass is
+ * what makes that true: `packAnnotationLanes` builds annotation lanes one at a
+ * time, and the segments row is sorted by `end` when it is placed. Neither
+ * relies on the payload arriving in a helpful order.
  */
 
 /**
  * Which row a hit came from, as an index into the array that was hit-tested.
  *
  * An index rather than a `TrackKind`: the features stack is many rows of one
- * kind, so a kind no longer identifies a row, and a tooltip placed by kind
- * would appear over the first feature however far down the stack the pointer
- * was.
+ * kind, so a kind does not identify a row, and a tooltip placed by kind would
+ * appear over the first feature however far down the stack the pointer was.
  */
 interface FromRow {
   rowIndex: number;
@@ -63,6 +64,31 @@ export interface TraceHit extends FromRow {
 }
 
 export type TrackHit = BlockHit | TraceHit;
+
+/**
+ * Whether two hits describe the same thing, for bailing out of a state update.
+ *
+ * `hitTest` builds a fresh object per call, so storing its result on every
+ * pointer move re-renders the whole track — labels, legend, tooltip, accessible
+ * table — even while the pointer stays inside one gene. Comparing structurally
+ * collapses a drag across one block from a render per pointer event to one.
+ *
+ * `value` is compared for traces because it is the reading the tooltip shows:
+ * moving along a trace row changes the bin under the pointer without changing
+ * the row or its id, and that is a genuinely different hit.
+ */
+export function sameHit(a: TrackHit | null, b: TrackHit | null): boolean {
+  if (a === null || b === null) return a === b;
+
+  return (
+    a.kind === b.kind &&
+    a.id === b.id &&
+    a.rowIndex === b.rowIndex &&
+    a.start === b.start &&
+    a.end === b.end &&
+    (a.kind !== "trace" || b.kind !== "trace" || a.value === b.value)
+  );
+}
 
 /** Index of the first block that could still contain `bp`. */
 function firstCandidate(
@@ -130,7 +156,7 @@ function segmentHit(segment: SegmentBlock, rowIndex: number): BlockHit {
     end: segment.end,
     id: segment.id,
     kind: "segment",
-    label: segment.id.split(":").pop() ?? segment.id,
+    label: shortSegmentId(segment.id),
     rowIndex,
     start: segment.start,
     strand: segment.strand,
@@ -215,9 +241,7 @@ function traceHit(
 
 /** The description a trace's tooltip carries, empty when there is none. */
 function traceDetail(data: GenomeTrackData, trace: FeatureTrace): string {
-  const note = data.feature_notes[String(trace.feature_id)];
-
-  return note?.label || note?.description || "";
+  return featureNote(data, trace) ?? "";
 }
 
 /**
@@ -262,7 +286,10 @@ export function hitTest(
       return found ? annotationHit(found, rowIndex) : null;
     }
     case "segments": {
-      const found = blockAt(data.segments, bp, slack);
+      // The row's own blocks, sorted by `end` in the layout pass, for the same
+      // reason the annotations case reads its lane: `firstCandidate` walks past
+      // a block that encloses another, and nothing else guarantees the order.
+      const found = blockAt(row.segmentBlocks ?? [], bp, slack);
 
       return found ? segmentHit(found, rowIndex) : null;
     }

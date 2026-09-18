@@ -32,12 +32,15 @@ const OPTIONS = {
 
 describe("trackExtents", () => {
   it("spans the chromosome when the overview says how long it is", () => {
-    const { extent, isChromosome, window } = trackExtents(
+    const { extent, window } = trackExtents(
       DEFAULT_TRACK_DATA,
       DEFAULT_TRACK_DATA.overview
     );
 
-    expect(isChromosome).toBe(true);
+    // The chromosome is wider than the window, which is the observable form of
+    // "this extent came from the overview" now that no row reads a flag for it.
+    expect(extent.start).toBeLessThanOrEqual(window.start);
+    expect(extent.end).toBeGreaterThan(window.end);
     expect(extent).toEqual({
       end: DEFAULT_TRACK_DATA.overview?.chrom_length,
       start: 1,
@@ -53,15 +56,11 @@ describe("trackExtents", () => {
   });
 
   it("collapses to the payload window when there is no overview", () => {
-    const { extent, isChromosome, window } = trackExtents(
-      NO_OVERVIEW_TRACK_DATA,
-      null
-    );
+    const { extent, window } = trackExtents(NO_OVERVIEW_TRACK_DATA, null);
 
     // Honest rather than convenient: nothing in the payload says what is
     // outside the window, so the track claims nothing and behaves exactly as
     // it did before extents were separated.
-    expect(isChromosome).toBe(false);
     expect(extent).toEqual(window);
   });
 
@@ -86,12 +85,8 @@ describe("trackExtents", () => {
       chrom_length: DEFAULT_TRACK_DATA.locus.start,
     };
 
-    const { extent, isChromosome } = trackExtents(
-      DEFAULT_TRACK_DATA,
-      truncated
-    );
+    const { extent } = trackExtents(DEFAULT_TRACK_DATA, truncated);
 
-    expect(isChromosome).toBe(false);
     expect(extent.end).toBe(DEFAULT_TRACK_DATA.locus.end);
   });
 });

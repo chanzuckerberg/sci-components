@@ -57,7 +57,7 @@
       },
       "showRowLabels": {
         "defaultValue": true,
-        "description": "Draw each section's name on a line above its rows.\n\nReplaces the fixed left-hand gutter these labels used to occupy. The gutter\ncost a column of the plot's width at every zoom and still truncated the\nlonger names; above the row a name has the full width to use and the axis\ngets the space back. The trade is vertical: each section costs a line.\n\nFalse for the compact variant, where a comparison card has room for\nneither the line nor the names.",
+        "description": "Draw each section's name on a line above its rows.\n\nAbove the row rather than in a left-hand gutter, so a name has the plot's\nfull width instead of a fixed column that the axis could use and that\ntruncates the longer names anyway. The trade is vertical: each section\ncosts a line.\n\nFalse for the compact variant, where a comparison card has room for\nneither the line nor the names.",
         "isRequired": false,
         "type": "boolean"
       },

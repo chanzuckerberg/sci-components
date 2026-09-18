@@ -12,7 +12,7 @@ import {
   GenomeTrackData,
   GenomeViewport,
 } from "../GenomeTrack.types";
-import { TrackHit, hitTest, selectionForHit } from "../utils/hitTest";
+import { TrackHit, hitTest, sameHit, selectionForHit } from "../utils/hitTest";
 import { TrackRow, rowAt } from "../utils/layout";
 import { GenomeScale, panBy, spanOf, zoomAt } from "../utils/scale";
 
@@ -119,7 +119,11 @@ export function useTrackNavigation(
         return;
       }
 
-      setHit(hitTest(data, rows, scale, x, y));
+      // Only when it changed: see `sameHit`. A fresh object every pointer move
+      // would re-render the whole track while the pointer sits in one block.
+      const next = hitTest(data, rows, scale, x, y);
+
+      setHit((previous) => (sameHit(previous, next) ? previous : next));
     },
     [bounds, data, navigate, plotRef, rows, scale]
   );
@@ -180,9 +184,8 @@ export function useTrackNavigation(
       /**
        * A features row selects the *feature*, not a position in it.
        *
-       * This used to clear the selection, on the reasoning that a trace is a
-       * measurement rather than a thing to pick. It is both: picking one is
-       * how the minimap learns whose activation to draw across the chromosome,
+       * A trace is a measurement and also a thing to pick: selecting one is how
+       * the minimap learns whose activation to draw across the chromosome,
        * which is the only way to see a feature outside the loaded window.
        *
        * Anywhere in the row counts, since the whole row is that one feature —
@@ -248,6 +251,18 @@ export function useTrackNavigation(
   );
 
   /**
+   * What the wheel handler needs, in a ref rather than in its closure.
+   *
+   * `scale`, `bounds` and `navigate` all change identity on every viewport
+   * update, so closing over them would make the effect below re-run — and
+   * therefore remove and re-add a non-passive DOM listener — on every pan
+   * frame. Reading them through a ref keeps the registration stable.
+   */
+  const wheelState = useRef({ bounds, navigate, scale });
+
+  wheelState.current = { bounds, navigate, scale };
+
+  /**
    * Wheel zoom, bound imperatively.
    *
    * React attaches wheel listeners as passive, where `preventDefault` is a
@@ -264,14 +279,19 @@ export function useTrackNavigation(
 
       const rect = element.getBoundingClientRect();
       const factor = event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
+      const current = wheelState.current;
 
-      navigate(zoomAt(scale, bounds, event.clientX - rect.left, factor));
+      current.navigate(
+        zoomAt(current.scale, current.bounds, event.clientX - rect.left, factor)
+      );
     };
 
     element.addEventListener("wheel", onWheel, { passive: false });
 
     return () => element.removeEventListener("wheel", onWheel);
-  }, [bounds, data, disabled, navigate, plotRef, scale]);
+    // Deliberately not depending on `scale`, `bounds` or `navigate`: they are
+    // read through `wheelState` precisely so this registration survives a pan.
+  }, [data, disabled, plotRef]);
 
   return {
     handlers: {
