@@ -61,8 +61,8 @@ export function createViewportView(
           <Toasts />
         </div>
         <ThemeProvider theme={theme}>
-          <ViewportButtonStack>
-            <div hidden={!showAxes || !cameraChanged}>
+          <ViewportButtonStack showAxes={showAxes}>
+            <div hidden={!cameraChanged}>
               <Tooltip
                 arrow
                 placement="right"
