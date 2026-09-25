@@ -551,6 +551,67 @@ export interface ProteinStructureViewerProps extends Omit<
 }
 
 /**
+ * A structure and how to draw it, as the viewer's props describe it - for a
+ * scene drawn on a plugin of the caller's, or rendered straight to an image,
+ * with no viewer involved. Each field means what the prop of the same name
+ * means.
+ */
+export interface StructureSceneOptions {
+  /** Structure to draw, as raw PDB or mmCIF (PDBx) text. */
+  structure: string;
+  plddt?: (number | null)[] | null;
+  residueOverlay?: ResidueValueOverlay | null;
+  colorBy?: StructureColorBy;
+  chainColors?: Record<string, string>;
+  representation?: StructureRepresentation;
+  highlights?: ResidueHighlight[];
+  hiddenChains?: string[];
+  initialCamera?: CameraState | null;
+  orientation?: CameraOrientation;
+  projection?: CameraProjection;
+  /**
+   * Which of the light or dark neutral grays a residue without a value is
+   * painted in.
+   * @default "light"
+   */
+  mode?: "light" | "dark";
+  /**
+   * Told when a representation cannot be drawn - a surface too large for its
+   * grid, which leaves the cartoon in its place. A structure that fails to
+   * load rejects instead.
+   */
+  onError?: (error: unknown, phase: ViewerErrorPhase) => void;
+}
+
+/** A scene drawn on a plugin by `applyStructureScene`. */
+export interface StructureSceneHandle {
+  /** What the structure last loaded holds. */
+  readonly info: StructureLoadInfo;
+  /**
+   * Applies new options in place, leaving the camera where it is. A new
+   * `structure` is loaded, and the camera placed on it, as the first was.
+   */
+  update: (options: Partial<StructureSceneOptions>) => Promise<void>;
+  /** Where the camera is now, in the form `initialCamera` takes. */
+  getCamera: () => CameraState | undefined;
+  /**
+   * Stops the scene touching the plugin. The plugin, and what was drawn on
+   * it, stay the caller's.
+   */
+  dispose: () => void;
+}
+
+/** What `renderStructureImage` draws, and the image it draws it into. */
+export interface RenderStructureImageOptions extends StructureSceneOptions {
+  /** Width of the image, in pixels. */
+  width: number;
+  /** Height of the image, in pixels. */
+  height: number;
+  /** Background behind the structure, as `#RRGGBB`. Omit for transparent. */
+  backgroundColor?: string;
+}
+
+/**
  * Readout that replaces the whole-structure stats while something is hovered
  * or selected. Covers one residue or many: a drag across the sequence and a
  * whole-chain selection report through this too, as a mean over what they

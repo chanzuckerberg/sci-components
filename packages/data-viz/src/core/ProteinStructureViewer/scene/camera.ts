@@ -8,7 +8,7 @@ import type {
   CameraProjection,
   CameraState,
 } from "../ProteinStructureViewer.types";
-import { lociForResidueIndices } from "./residueLoci";
+import { lociForResidueIndices } from "../utils/residueLoci";
 
 /** How long an orientation change takes to turn the camera, in ms. */
 export const ORIENT_DURATION_MS = 250;
@@ -162,13 +162,15 @@ export interface CameraFraming {
  * is drawn into the empty scene.
  *
  * Returns the orientation now in force, so a change to it can be told from the
- * one the load already applied.
+ * one the load already applied. `fitDurationMs` is how long a plain fit
+ * animates, Mol*'s own default when left out.
  */
 export function frameStructure(
   canvas3d: Canvas3D,
   framing: CameraFraming,
   residues: Vec3 | undefined,
-  fit: boolean
+  fit: boolean,
+  fitDurationMs?: number
 ): CameraOrientation | undefined {
   const { initialCamera, orientation, projection } = framing;
 
@@ -185,8 +187,10 @@ export function frameStructure(
       durationMs: 0,
       snapshot: orientationSnapshot(orientation, residues),
     });
-  } else if (fit) {
+  } else if (fit && fitDurationMs === undefined) {
     canvas3d.requestCameraReset();
+  } else if (fit) {
+    canvas3d.requestCameraReset({ durationMs: fitDurationMs });
   }
 
   return orientation;

@@ -29,9 +29,19 @@ import {
   injectPlddtIntoPdb,
   sampleColorScale,
 } from "@czi-sds/data-viz";
+import * as DataViz from "@czi-sds/data-viz";
+// The scene on its own, from the entry point that leaves out React.
+import {
+  RenderStructureImageOptions,
+  StructureSceneHandle,
+  StructureSceneOptions,
+  applyStructureScene,
+  renderStructureImage,
+} from "@czi-sds/data-viz/ProteinStructureScene";
 // Mol* is a peer dependency, so a consumer reaching for `molstarSpec` imports
 // its types and config items from Mol* itself rather than from this package.
 import { PluginConfig } from "molstar/lib/mol-plugin/config";
+import type { PluginContext } from "molstar/lib/mol-plugin/context";
 import React, { useState } from "react";
 
 const PDB =
@@ -103,6 +113,52 @@ async function drawSurface(
 
 function reportViewerError(error: unknown, phase: ViewerErrorPhase) {
   console.error(phase, error);
+}
+
+// The root entry re-exports the scene functions too.
+const ROOT_SCENE_EXPORTS: [
+  typeof applyStructureScene,
+  typeof renderStructureImage,
+] = [DataViz.applyStructureScene, DataViz.renderStructureImage];
+
+/**
+ * Draws a scene on a plugin of the consumer's, then renders the same scene,
+ * seen from where the camera was left, as an image.
+ */
+export async function drawWithoutTheViewer(plugin: PluginContext) {
+  const options: StructureSceneOptions = {
+    chainColors: CHAIN_COLORS,
+    colorBy: COLOR_BY,
+    highlights: HIGHLIGHTS,
+    mode: "dark",
+    onError: reportViewerError,
+    orientation: ORIENTATION,
+    plddt: [0.94, null],
+    projection: PROJECTION,
+    representation: REPRESENTATION,
+    residueOverlay: OVERLAY,
+    structure: PDB,
+  };
+
+  const scene: StructureSceneHandle = await applyStructureScene(
+    plugin,
+    options
+  );
+  await scene.update({ hiddenChains: ["B"], structure: MMCIF });
+  const camera: CameraState | undefined = scene.getCamera();
+  const { atomCount, chains, residueCount }: StructureLoadInfo = scene.info;
+  console.log(atomCount, chains.length, residueCount, ROOT_SCENE_EXPORTS);
+  scene.dispose();
+
+  const image: RenderStructureImageOptions = {
+    ...options,
+    backgroundColor: "#FFFFFF",
+    height: 600,
+    initialCamera: camera,
+    width: 800,
+  };
+  const blob: Blob = await renderStructureImage(image);
+  console.log(blob.size, blob.type);
 }
 
 const ProteinStructureViewerNameSpaceTest = (

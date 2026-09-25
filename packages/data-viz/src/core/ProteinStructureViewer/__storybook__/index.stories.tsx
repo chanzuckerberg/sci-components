@@ -15,6 +15,7 @@ import {
 } from "./constants";
 import { MYOGLOBIN_PDB } from "./myoglobin";
 import { ProteinStructureViewer } from "./stories/default";
+import { HeadlessRenderStory } from "./stories/headless";
 
 /**
  * Whole-structure stats for the three legend slots. Real consumers pass
@@ -535,6 +536,26 @@ export const WithCameraOrientation = {
     structure: BARNASE_BARSTAR_PDB,
   },
   parameters: VIEWER_CHECKS,
+};
+
+/**
+ * The interactive viewer beside an image `renderStructureImage` rendered from
+ * the same options, with no viewer behind it: the same representation, colors,
+ * highlights and camera, drawn by the same scene. The image is what a server
+ * rendering a preview, or a page showing a grid of thumbnails, gets.
+ */
+export const HeadlessRender = {
+  args: {
+    ...DEFAULT_ARGS,
+    highlights: INTERFACE_HIGHLIGHTS,
+    orientation: "facing",
+    plddt: null,
+    representation: "surface",
+    stats: COMPLEX_STATS,
+    structure: BARNASE_BARSTAR_PDB,
+  },
+  parameters: VIEWER_CHECKS,
+  render: (props: Args) => <HeadlessRenderStory {...props} />,
 };
 
 /**

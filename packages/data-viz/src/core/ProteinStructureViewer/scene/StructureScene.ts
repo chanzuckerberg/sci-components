@@ -1,6 +1,8 @@
 import type { PluginContext } from "molstar/lib/mol-plugin/context";
 import { chainColorMap } from "../../../common/chainColors";
 import type {
+  CameraOrientation,
+  CameraState,
   ChainRef,
   ResidueHighlight,
   ResidueValueOverlay,
@@ -8,7 +10,25 @@ import type {
   StructureRepresentation,
   ViewerErrorPhase,
 } from "../ProteinStructureViewer.types";
-import { highlightsKey, resolveHighlights } from "./highlights";
+import { highlightsKey, resolveHighlights } from "../utils/highlights";
+import { residueAddressesKey } from "../utils/residueAddress";
+import type { ThemeMode } from "../utils/theme";
+import {
+  CameraFraming,
+  frameStructure,
+  orientationSnapshot,
+  readCameraState,
+  residuesCenter,
+} from "./camera";
+import {
+  COLOR_THEME_NAMES,
+  SceneColoring,
+  SceneThemes,
+  resolveColorBy,
+  sceneThemesFor,
+  syncSceneThemes,
+} from "./coloring";
+import { LoadOutcome, LoadedStructure, parseStructure } from "./load";
 import {
   StructureSelector,
   applyChainVisibility,
@@ -21,15 +41,6 @@ import {
   removeComponents,
   representationTypeParams,
 } from "./representation";
-import { residueAddressesKey } from "./residueAddress";
-import {
-  COLOR_THEME_NAMES,
-  SceneColoring,
-  SceneThemes,
-  resolveColorBy,
-  syncSceneThemes,
-} from "./sceneThemes";
-import type { ThemeMode } from "./theme";
 
 /** The props that decide what the viewer draws, and how it colors it. */
 export interface SceneProps {
@@ -45,7 +56,7 @@ export interface SceneProps {
 }
 
 /** A parsed structure, and what drawing it takes knowing about it. */
-export interface SceneStructure {
+interface SceneStructure {
   structure: StructureSelector;
   /** Every chain the file names, and its label: everything that is drawn. */
   chainLabels: ReadonlyMap<string, string>;
@@ -65,7 +76,7 @@ interface PolymerLayer {
   surface?: string;
 }
 
-/** The components the viewer built, by what they draw. */
+/** The components the scene built, by what they draw. */
 interface Layers {
   polymer: PolymerLayer;
   ligand: Map<string, string>;
@@ -91,7 +102,14 @@ interface AppliedScene {
   representation: StructureRepresentation;
 }
 
-export interface ManagedSceneOptions {
+export interface StructureSceneConfig {
+  /**
+   * Whether the scene draws the structures it loads. A scene that does not
+   * only parses them, for a consumer drawing its own.
+   */
+  draw: boolean;
+  /** The mode the scene's themes start in, until props say otherwise. */
+  mode: ThemeMode;
   reportError: (error: unknown, phase: ViewerErrorPhase) => void;
   /**
    * Called after an update replaced components, so what was written into the
@@ -123,7 +141,12 @@ function identityKey(value: object | null | undefined): number {
 }
 
 /**
- * The scene the viewer draws for its structure, kept in line with its props.
+ * A structure scene on a Mol* plugin: loads a structure into it, draws it from
+ * props, keeps the drawing in line with them, and places the camera.
+ *
+ * It takes any plugin - the viewer's own, a consumer's, or one rendering
+ * offscreen - and draws the same scene on each, which is what makes an image
+ * rendered without the viewer match what the viewer shows.
  *
  * Every change to the plugin's state tree - a load clearing it, an update
  * rebuilding part of it - runs through one queue, so no two ever interleave:
@@ -135,7 +158,7 @@ function identityKey(value: object | null | undefined): number {
  * and only the surface - which is computed over whatever is visible - is
  * rebuilt when visibility changes.
  */
-export class ManagedScene {
+export class StructureScene {
   private tail: Promise<unknown> = Promise.resolve();
 
   private pending = 0;
@@ -145,7 +168,11 @@ export class ManagedScene {
 
   private disposed = false;
 
-  private loaded: SceneStructure | null = null;
+  private readonly themes: SceneThemes;
+
+  private scene: SceneStructure | null = null;
+
+  private parsed: LoadedStructure | null = null;
 
   private layers: Layers = emptyLayers();
 
@@ -153,9 +180,10 @@ export class ManagedScene {
 
   constructor(
     private readonly plugin: PluginContext,
-    private readonly themes: SceneThemes,
-    private readonly options: ManagedSceneOptions
-  ) {}
+    private readonly options: StructureSceneConfig
+  ) {
+    this.themes = sceneThemesFor(plugin, options.mode);
+  }
 
   /** Runs `task` once everything queued before it has finished. */
   enqueue<T>(task: () => Promise<T>): Promise<T> {
@@ -170,16 +198,31 @@ export class ManagedScene {
   }
 
   /**
-   * Draws a structure just parsed, in full. Called from inside the queue, by
-   * the load that parsed it.
+   * Clears the plugin, parses the structure, and draws it from `props` when
+   * the scene draws. Call it from inside the queue.
+   *
+   * A scene disposed of while the structure was parsing draws nothing: the
+   * plugin it would draw on is going.
    */
-  async build(loaded: SceneStructure, props: SceneProps): Promise<void> {
-    this.generation++;
-    this.loaded = loaded;
-    this.layers = emptyLayers();
-    this.applied = null;
+  async load(text: string, props: SceneProps): Promise<LoadOutcome> {
+    const outcome = await parseStructure(this.plugin, text);
+    if (!outcome.ok || this.disposed) return outcome;
 
-    await this.apply(props, true);
+    this.parsed = outcome.loaded;
+    const { addressIndex, chainLabels, chains, structure } = outcome.loaded;
+    if (!this.options.draw || !structure) return outcome;
+
+    try {
+      this.generation++;
+      this.scene = { addressIndex, chainLabels, chains, structure };
+      this.layers = emptyLayers();
+      this.applied = null;
+      await this.apply(props, true);
+    } catch (error) {
+      return { error, ok: false };
+    }
+
+    return outcome;
   }
 
   /** Brings the scene in line with new props. */
@@ -189,7 +232,7 @@ export class ManagedScene {
     return this.enqueue(async () => {
       // A structure loaded since this was asked for was drawn from props at
       // least as new as these.
-      if (this.disposed || !this.loaded || generation !== this.generation) {
+      if (this.disposed || !this.scene || generation !== this.generation) {
         return;
       }
 
@@ -201,9 +244,68 @@ export class ManagedScene {
     });
   }
 
+  /**
+   * Places the camera on the structure last loaded, as `framing` says, and
+   * returns the orientation now in force. Call it once something is drawn:
+   * Mol* settles the reset on its next frame, and one settled against an empty
+   * scene is lost.
+   *
+   * `fitDurationMs` is how long a plain fit animates; an offscreen render asks
+   * for none, so the image it takes is of the camera at rest.
+   */
+  frame(
+    framing: CameraFraming & { highlights?: readonly ResidueHighlight[] },
+    fit: boolean,
+    fitDurationMs?: number
+  ): CameraOrientation | undefined {
+    const { canvas3d } = this.plugin;
+    if (!canvas3d) return undefined;
+
+    const orienting = Boolean(framing.orientation && !framing.initialCamera);
+    return frameStructure(
+      canvas3d,
+      framing,
+      orienting ? this.highlightsCenter(framing.highlights) : undefined,
+      fit,
+      fitDurationMs
+    );
+  }
+
+  /** Turns the camera to an orientation, over `durationMs`. */
+  orient(
+    orientation: CameraOrientation,
+    highlights: readonly ResidueHighlight[] | undefined,
+    durationMs: number
+  ): void {
+    this.plugin.canvas3d?.requestCameraReset({
+      durationMs,
+      snapshot: orientationSnapshot(
+        orientation,
+        this.highlightsCenter(highlights)
+      ),
+    });
+  }
+
+  /** Where the camera is now, or undefined before there is a canvas. */
+  camera(): CameraState | undefined {
+    const { canvas3d } = this.plugin;
+    return canvas3d ? readCameraState(canvas3d) : undefined;
+  }
+
   /** Stops the scene touching a plugin that is being disposed of. */
   dispose(): void {
     this.disposed = true;
+  }
+
+  /** The center of the highlighted residues on the structure last loaded. */
+  private highlightsCenter(highlights?: readonly ResidueHighlight[]) {
+    const parsed = this.parsed;
+    if (!parsed?.structureData) return undefined;
+
+    const residues = [
+      ...resolveHighlights(highlights, parsed.addressIndex).colors.keys(),
+    ];
+    return residuesCenter(parsed.structureData, residues);
   }
 
   private changePending(delta: number): void {
@@ -217,13 +319,13 @@ export class ManagedScene {
   // eslint-disable-next-line sonarjs/cognitive-complexity
   private async apply(props: SceneProps, fresh: boolean): Promise<void> {
     const { plugin } = this;
-    const loaded = this.loaded as SceneStructure;
+    const scene = this.scene as SceneStructure;
     const previous = this.applied;
 
-    const highlights = resolveHighlights(props.highlights, loaded.addressIndex);
+    const highlights = resolveHighlights(props.highlights, scene.addressIndex);
     const coloring: SceneColoring = {
       chainColors: chainColorMap(
-        loaded.chains.map((chain) => chain.chainId),
+        scene.chains.map((chain) => chain.chainId),
         props.chainColors
       ),
       colorBy: resolveColorBy(props.colorBy, props.overlay, props.plddt),
@@ -262,7 +364,7 @@ export class ManagedScene {
     if (polymerStale) {
       replaced.push(...polymerRefs(this.layers.polymer));
       this.layers.polymer = await this.buildPolymer(
-        loaded,
+        scene,
         props,
         typeParams,
         colorTheme
@@ -274,8 +376,8 @@ export class ManagedScene {
     if (fresh) {
       this.layers.ligand = await buildLigandLayer(
         plugin,
-        loaded.structure,
-        loaded.chainLabels,
+        scene.structure,
+        scene.chainLabels,
         typeParams
       );
     }
@@ -289,7 +391,7 @@ export class ManagedScene {
       replaced.push(...this.layers.highlight.values());
       this.layers.highlight = await buildHighlightLayer(
         plugin,
-        loaded.structure,
+        scene.structure,
         drawn === "cartoon" ? highlights.byChain : new Map(),
         typeParams,
         colorTheme,
@@ -330,7 +432,7 @@ export class ManagedScene {
    * it can be.
    */
   private async buildPolymer(
-    loaded: SceneStructure,
+    scene: SceneStructure,
     props: SceneProps,
     typeParams: ReturnType<typeof representationTypeParams>,
     colorTheme: string
@@ -338,14 +440,14 @@ export class ManagedScene {
     const current = this.layers.polymer;
 
     if (props.representation === "surface") {
-      const visible = loaded.chains
+      const visible = scene.chains
         .map((chain) => chain.chainId)
         .filter((chainId) => !props.hiddenChains.has(chainId));
 
       try {
         const surface = await buildSurfaceLayer(
           this.plugin,
-          loaded.structure,
+          scene.structure,
           visible,
           typeParams,
           colorTheme,
@@ -359,8 +461,8 @@ export class ManagedScene {
 
     const cartoon = await buildCartoonLayer(
       this.plugin,
-      loaded.structure,
-      loaded.chainLabels,
+      scene.structure,
+      scene.chainLabels,
       typeParams,
       colorTheme,
       current.cartoon

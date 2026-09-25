@@ -7,7 +7,7 @@ import { neutralResidueColor } from "../utils/color";
 import { createPlddtTheme, plddtColor } from "../utils/plddtTheme";
 import { createResidueColorOverrides } from "../utils/residueColorOverrides";
 import { createResidueValueTheme } from "../utils/residueValueTheme";
-import { resolveColorBy } from "../utils/sceneThemes";
+import { resolveColorBy } from "../scene/coloring";
 import { eachResidue, structureFromPdb } from "./molstarStructure";
 
 /**

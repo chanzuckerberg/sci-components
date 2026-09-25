@@ -1,5 +1,4 @@
 import { Color } from "molstar/lib/mol-util/color";
-import type { Structure } from "molstar/lib/mol-model/structure";
 import { StructureElement } from "molstar/lib/mol-model/structure";
 import { createPluginUI } from "molstar/lib/mol-plugin-ui";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
@@ -24,22 +23,21 @@ import type {
   StructureSelection,
   ViewerErrorPhase,
 } from "../ProteinStructureViewer.types";
+import type { CameraFraming } from "../scene/camera";
+import {
+  LoadOutcome,
+  LoadedStructure,
+  NOTHING_LOADED,
+  loadInfo,
+} from "../scene/load";
+import { chainSetKey } from "../scene/representation";
+import { SceneProps, StructureScene } from "../scene/StructureScene";
 import { syncClipToZoom } from "../utils/cameraFocus";
 import { AXES_OFF, AXES_ON } from "../utils/axes";
-import { CameraFraming, frameStructure, residuesCenter } from "../utils/camera";
-import { chainsEqual, scanChains } from "../utils/chains";
-import { highlightsKey, resolveHighlights } from "../utils/highlights";
-import { ManagedScene, SceneProps } from "../utils/managedScene";
+import { chainsEqual } from "../utils/chains";
+import { highlightsKey } from "../utils/highlights";
 import { mergeMolstarSpec } from "../utils/molstarSpec";
-import { StructureSelector, chainSetKey } from "../utils/representation";
-import { indexResidueAddresses } from "../utils/residueAddress";
 import { residueRefFromLoci, selectionFromLoci } from "../utils/residueRef";
-import {
-  SceneThemes,
-  createSceneThemes,
-  registerSceneThemes,
-} from "../utils/sceneThemes";
-import { detectStructureFormat } from "../utils/structureFormat";
 import type {
   MolstarViewSettings,
   MolstarViewSettingsSubject,
@@ -137,7 +135,6 @@ interface CreateViewerOptions {
   viewSettings: MolstarViewSettingsSubject;
   showAxes: boolean;
   showSequenceViewer: boolean;
-  themes: SceneThemes;
   molstarSpec?: Partial<PluginUISpec>;
 }
 
@@ -149,7 +146,6 @@ async function createViewer({
   root,
   showAxes,
   showSequenceViewer,
-  themes,
   viewSettings,
 }: CreateViewerOptions): Promise<PluginUIContext> {
   const spec = DefaultPluginUISpec();
@@ -242,8 +238,6 @@ async function createViewer({
     target: root,
   });
 
-  registerSceneThemes(plugin, themes);
-
   // Remove Mol*'s default label providers (chain/atom/residue detail lines).
   // The hovered residue's info is surfaced in the legend instead of an
   // in-viewport tooltip, so no label provider is registered.
@@ -265,91 +259,6 @@ async function createViewer({
   return plugin;
 }
 
-/** What a load leaves behind for the chain-keyed props to address. */
-interface LoadedStructure {
-  chains: ChainRef[];
-  /** Every chain the file names and its label, ligand-only chains included. */
-  chainLabels: Map<string, string>;
-  /** Which residues sit on each chain, by `chainId`. */
-  residuesByChain: Map<string, number[]>;
-  /** Residue index by address. */
-  addressIndex: Map<string, number>;
-  /** The parsed structure's cell, or undefined when nothing was loaded. */
-  structure?: StructureSelector;
-  /** The parsed structure itself. */
-  structureData?: Structure;
-  atomCount: number;
-}
-
-const NOTHING_LOADED: LoadedStructure = {
-  addressIndex: new Map(),
-  atomCount: 0,
-  chainLabels: new Map(),
-  chains: [],
-  residuesByChain: new Map(),
-};
-
-/**
- * How a load went. A failure is handed back rather than logged here, so that
- * it reaches `onError` when a consumer is listening for it.
- */
-type LoadOutcome =
-  | { ok: true; loaded: LoadedStructure }
-  | { ok: false; error: unknown };
-
-/**
- * Clears the plugin and parses the structure into it, reading off what the
- * rest of the viewer addresses it by. Nothing is drawn here: that is the
- * scene's, or in external mode the consumer's.
- *
- * The wrapper detects PDB vs mmCIF from the text; this just forwards that
- * guess to Mol*.
- */
-async function loadStructure(
-  plugin: PluginUIContext,
-  structureText: string,
-  showAxes: boolean
-): Promise<LoadOutcome> {
-  try {
-    await plugin.clear();
-
-    const data = await plugin.builders.data.rawData({
-      data: structureText,
-      label: "Structure",
-    });
-    const trajectory = await plugin.builders.structure.parseTrajectory(
-      data,
-      detectStructureFormat(structureText)
-    );
-    const model = await plugin.builders.structure.createModel(trajectory);
-    const structure = await plugin.builders.structure.createStructure(model, {
-      name: "model",
-      params: {},
-    });
-
-    const data3d = structure.data;
-    if (!data3d) return { loaded: NOTHING_LOADED, ok: true };
-
-    const { chainLabels, chains, residuesByChain } = scanChains(data3d);
-    setAxes(plugin, showAxes);
-
-    return {
-      loaded: {
-        addressIndex: indexResidueAddresses(data3d),
-        atomCount: data3d.elementCount,
-        chainLabels,
-        chains,
-        residuesByChain,
-        structure,
-        structureData: data3d,
-      },
-      ok: true,
-    };
-  } catch (error) {
-    return { error, ok: false };
-  }
-}
-
 export interface UseMolstarPluginOptions {
   containerRef: RefObject<HTMLDivElement | null>;
   structure: string;
@@ -366,7 +275,7 @@ export interface UseMolstarPluginOptions {
    * What to draw and how to color it, and where the camera starts: read by
    * every load, and pushed into the scene when it changes.
    */
-  scene: SceneProps & CameraFraming;
+  sceneProps: SceneProps & CameraFraming;
   /** Selects a whole chain, for the sequence panel's chain captions. */
   onChainSelect?: (chainId: string) => void;
   /** Flips a chain's visibility, for the sequence panel's captions. */
@@ -432,8 +341,8 @@ export interface UseMolstarPluginResult {
   residuesByChainRef: RefObject<Map<string, number[]>>;
   /** Residue index by address, for resolving addresses in props. */
   addressIndexRef: RefObject<Map<string, number>>;
-  /** The loaded structure, for placing the camera relative to its residues. */
-  structureDataRef: RefObject<Structure | null>;
+  /** The scene drawn on the plugin, which places the camera too. */
+  sceneRef: RefObject<StructureScene | null>;
   /**
    * The orientation the camera was last turned to, by a load or since, so a
    * change can be told from one already applied.
@@ -471,8 +380,8 @@ export function useMolstarPlugin({
   onSelectionChange,
   onSelectionClear,
   onStructureLoad,
-  scene,
   sceneMode,
+  sceneProps,
   selectedChains,
   sequenceViewerBackgroundColor,
   showAxes,
@@ -480,7 +389,7 @@ export function useMolstarPlugin({
   structure,
 }: UseMolstarPluginOptions): UseMolstarPluginResult {
   const pluginRef = useRef<PluginUIContext | null>(null);
-  const sceneRef = useRef<ManagedScene | null>(null);
+  const sceneRef = useRef<StructureScene | null>(null);
   const currentStructureRef = useRef<string | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [chains, setChains] = useState<ChainRef[]>([]);
@@ -495,7 +404,6 @@ export function useMolstarPlugin({
    */
   const residuesByChainRef = useRef<Map<string, number[]>>(new Map());
   const addressIndexRef = useRef<Map<string, number>>(new Map());
-  const structureDataRef = useRef<Structure | null>(null);
   const framedOrientationRef = useRef<CameraOrientation | undefined>(undefined);
 
   /**
@@ -503,8 +411,8 @@ export function useMolstarPlugin({
    * Through a ref because a load outlasts renders and has to draw what the
    * props say when it gets there, not what they said when it began.
    */
-  const scenePropsRef = useRef(scene);
-  scenePropsRef.current = scene;
+  const scenePropsRef = useRef(sceneProps);
+  scenePropsRef.current = sceneProps;
 
   // Values that only apply at creation time, read through refs so that changing
   // them later does not rebuild the plugin (they are pushed in via effects).
@@ -566,7 +474,6 @@ export function useMolstarPlugin({
   const adoptLoadedStructure = useCallback((loaded: LoadedStructure) => {
     residuesByChainRef.current = loaded.residuesByChain;
     addressIndexRef.current = loaded.addressIndex;
-    structureDataRef.current = loaded.structureData ?? null;
     setChains((prev) =>
       chainsEqual(prev, loaded.chains) ? prev : loaded.chains
     );
@@ -673,50 +580,11 @@ export function useMolstarPlugin({
 
       const { loaded } = outcome;
       adoptLoadedStructure(loaded);
-      onStructureLoadRef.current?.({
-        atomCount: loaded.atomCount,
-        chains: loaded.chains,
-        residueCount: loaded.chains.reduce(
-          (count, chain) => count + chain.residueCount,
-          0
-        ),
-      });
+      onStructureLoadRef.current?.(loadInfo(loaded));
 
       await handOver(plugin, loaded, isCurrent);
     },
     [adoptLoadedStructure, handOver, reportError]
-  );
-
-  /**
-   * Places the camera on a structure just loaded, from the props as they are
-   * now. Only an orientation needs the residues it turns toward, so they are
-   * only found when one will be applied.
-   */
-  const frameCamera = useCallback(
-    (plugin: PluginUIContext, loaded: LoadedStructure, fit: boolean) => {
-      const { canvas3d } = plugin;
-      if (!canvas3d) return;
-
-      const props = scenePropsRef.current;
-      const orienting = Boolean(props.orientation && !props.initialCamera);
-      const residues =
-        orienting && loaded.structureData
-          ? residuesCenter(loaded.structureData, [
-              ...resolveHighlights(
-                props.highlights,
-                loaded.addressIndex
-              ).colors.keys(),
-            ])
-          : undefined;
-
-      framedOrientationRef.current = frameStructure(
-        canvas3d,
-        props,
-        residues,
-        fit
-      );
-    },
-    []
   );
 
   /**
@@ -733,44 +601,30 @@ export function useMolstarPlugin({
   const loadAndDraw = useCallback(
     async (
       plugin: PluginUIContext,
-      managedScene: ManagedScene,
+      scene: StructureScene,
       text: string,
       isCurrent: () => boolean
     ) => {
-      let outcome = await loadStructure(
-        plugin,
-        text,
-        initialPropsRef.current.showAxes
-      );
+      const outcome = await scene.load(text, scenePropsRef.current);
       if (!isCurrent()) return;
 
       const managed = sceneModeRef.current === "managed";
+      if (outcome.ok) setAxes(plugin, initialPropsRef.current.showAxes);
 
-      if (managed && outcome.ok && outcome.loaded.structure) {
-        const { loaded } = outcome;
-        try {
-          await managedScene.build(
-            {
-              addressIndex: loaded.addressIndex,
-              chainLabels: loaded.chainLabels,
-              chains: loaded.chains,
-              structure: loaded.structure as StructureSelector,
-            },
-            scenePropsRef.current
-          );
-          frameCamera(plugin, loaded, true);
-        } catch (error) {
-          outcome = { error, ok: false };
-        }
+      if (managed && outcome.ok) {
+        framedOrientationRef.current = scene.frame(scenePropsRef.current, true);
       }
 
       await takeUpLoad(plugin, outcome, isCurrent);
 
       if (!managed && outcome.ok && isCurrent()) {
-        frameCamera(plugin, outcome.loaded, false);
+        framedOrientationRef.current = scene.frame(
+          scenePropsRef.current,
+          false
+        );
       }
     },
-    [frameCamera, takeUpLoad]
+    [takeUpLoad]
   );
 
   /**
@@ -809,7 +663,6 @@ export function useMolstarPlugin({
       const initial = initialPropsRef.current;
 
       try {
-        const themes = createSceneThemes(initial.mode);
         const plugin = await createViewer({
           backgroundColor: initial.backgroundColor,
           edgeColor: initial.edgeColor,
@@ -818,7 +671,6 @@ export function useMolstarPlugin({
           root: container,
           showAxes: initial.showAxes,
           showSequenceViewer: initial.showSequenceViewer,
-          themes,
           viewSettings,
         });
 
@@ -828,12 +680,14 @@ export function useMolstarPlugin({
         }
 
         pluginRef.current = plugin;
-        const managedScene = new ManagedScene(plugin, themes, {
+        const scene = new StructureScene(plugin, {
+          draw: sceneModeRef.current === "managed",
+          mode: initial.mode,
           onBusyChange: setSceneBusy,
           onRebuild: () => setSceneVersion((version) => version + 1),
           reportError,
         });
-        sceneRef.current = managedScene;
+        sceneRef.current = scene;
 
         // Building the plugin outlasts a paint or two, so the props can have
         // moved on since the snapshot above was taken - an app whose structure
@@ -846,8 +700,8 @@ export function useMolstarPlugin({
 
         // Handed over before the viewer answers a click, so a scene the
         // consumer builds is in place before one reaches it.
-        await managedScene.enqueue(() =>
-          loadAndDraw(plugin, managedScene, latest.structure, () => !cancelled)
+        await scene.enqueue(() =>
+          loadAndDraw(plugin, scene, latest.structure, () => !cancelled)
         );
         if (cancelled) return;
 
@@ -940,7 +794,6 @@ export function useMolstarPlugin({
       pluginRef.current = null;
       residuesByChainRef.current = new Map();
       addressIndexRef.current = new Map();
-      structureDataRef.current = null;
       currentStructureRef.current = null;
       clipRatioRef.current = null;
       setIsReady(false);
@@ -1017,8 +870,8 @@ export function useMolstarPlugin({
   // Reload the structure when the data changes.
   useEffect(() => {
     const plugin = pluginRef.current;
-    const managedScene = sceneRef.current;
-    if (!plugin || !managedScene || !isReady) return;
+    const scene = sceneRef.current;
+    if (!plugin || !scene || !isReady) return;
     if (structure === currentStructureRef.current) return;
 
     currentStructureRef.current = structure;
@@ -1027,12 +880,12 @@ export function useMolstarPlugin({
     // hover guard compares against it. Clearing it keeps the first hover on the
     // new structure from being read as a repeat.
     lastHoverRef.current = null;
-    managedScene
+    scene
       .enqueue(() =>
         // The plugin can have been disposed while the structure was loading.
         loadAndDraw(
           plugin,
-          managedScene,
+          scene,
           structure,
           () => pluginRef.current === plugin
         )
@@ -1050,32 +903,30 @@ export function useMolstarPlugin({
    * the update below turns on what they say rather than on their identity.
    * `plddt` and the overlay are compared by identity, as they are elsewhere.
    */
-  const hiddenKey = chainSetKey(scene.hiddenChains);
-  const sceneHighlightsKey = highlightsKey(scene.highlights);
-  const chainColorsKey = JSON.stringify(scene.chainColors ?? null);
+  const hiddenKey = chainSetKey(sceneProps.hiddenChains);
+  const sceneHighlightsKey = highlightsKey(sceneProps.highlights);
+  const chainColorsKey = JSON.stringify(sceneProps.chainColors ?? null);
 
   // Bring the scene in line with the props, in place. Recoloring, hiding and
   // replacing a representation all leave the camera where it is.
   useEffect(() => {
-    const managedScene = sceneRef.current;
-    if (!managedScene || !isReady || sceneModeRef.current !== "managed") {
-      return;
-    }
+    const scene = sceneRef.current;
+    if (!scene || !isReady || sceneModeRef.current !== "managed") return;
 
-    void managedScene.update(scenePropsRef.current);
+    void scene.update(scenePropsRef.current);
     // The keys above stand in for the objects they describe; isReady replays
     // this once the plugin is up, for props that changed while it was built.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     isReady,
-    scene.representation,
+    sceneProps.representation,
     hiddenKey,
     sceneHighlightsKey,
-    scene.colorBy,
+    sceneProps.colorBy,
     chainColorsKey,
-    scene.plddt,
-    scene.overlay,
-    scene.mode,
+    sceneProps.plddt,
+    sceneProps.overlay,
+    sceneProps.mode,
   ]);
 
   return {
@@ -1087,8 +938,8 @@ export function useMolstarPlugin({
     pluginRef,
     residuesByChainRef,
     sceneMode: sceneModeRef.current,
+    sceneRef,
     sceneVersion,
     setClipRatio,
-    structureDataRef,
   };
 }

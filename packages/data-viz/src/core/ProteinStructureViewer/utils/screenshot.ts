@@ -94,7 +94,7 @@ async function withScreenshotHelper<T>(
  * for `data:` URIs - and the sandboxed hosts that need `deliver` in the first
  * place are exactly the pages that set one.
  */
-function blobFromDataUri(uri: string): Blob {
+export function blobFromDataUri(uri: string): Blob {
   const comma = uri.indexOf(",");
   const header = uri.slice(0, comma);
   const body = uri.slice(comma + 1);
