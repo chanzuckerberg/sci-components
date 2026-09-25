@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.3...@czi-sds/data-viz@2.5.0) (2026-09-25)
+
+### Features
+
+- **proteinstructureviewer:** headless scene API and structure image rendering ([df7ba67](https://github.com/chanzuckerberg/sci-components/commit/df7ba67d0e73deb129e46967496c8f4f368c7fa1))
+- **proteinstructureviewer:** plugin lifecycle, external scene mode and capture hooks ([7dba2cc](https://github.com/chanzuckerberg/sci-components/commit/7dba2ccbeabe388a6908c569da608e20a4f2258d))
+- **proteinstructureviewer:** representation, highlights, colorBy, pLDDT gaps and camera props ([2b1e2ad](https://github.com/chanzuckerberg/sci-components/commit/2b1e2ad3e8d26c8bfabbd2ec9819d3f7114eb427))
+
 ## [2.4.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.2...@czi-sds/data-viz@2.4.3) (2026-09-25)
 
 ### Bug Fixes

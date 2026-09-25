@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.1...@czi-sds/mcp@0.20.2) (2026-09-25)
+
+**Note:** Version bump only for package @czi-sds/mcp
+
 ## [0.20.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.0...@czi-sds/mcp@0.20.1) (2026-09-25)
 
 ### Bug Fixes
