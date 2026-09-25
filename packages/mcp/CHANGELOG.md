@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.0...@czi-sds/mcp@0.20.1) (2026-09-25)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** fix Camera Zooming on Selection ([a227421](https://github.com/chanzuckerberg/sci-components/commit/a227421e5f5c2cf89261cbd9f1e9bd495b9a92ce))
+
 # [0.20.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.1...@czi-sds/mcp@0.20.0) (2026-09-17)
 
 ### Bug Fixes
