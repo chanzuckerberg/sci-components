@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.2...@czi-sds/data-viz@2.4.3) (2026-09-25)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** fix Camera Zooming on Selection ([a227421](https://github.com/chanzuckerberg/sci-components/commit/a227421e5f5c2cf89261cbd9f1e9bd495b9a92ce))
+
 ## [2.4.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.1...@czi-sds/data-viz@2.4.2) (2026-09-18)
 
 ### Bug Fixes
