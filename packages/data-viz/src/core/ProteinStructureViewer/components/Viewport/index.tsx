@@ -7,7 +7,7 @@ import { useCallback, useState } from "react";
 import { usePlugin } from "../../hooks/usePlugin";
 import { useMolstarTheme } from "../../hooks/useMolstarTheme";
 import { useViewSetting } from "../../hooks/useViewSetting";
-import { downloadStructureImage } from "../../utils/screenshot";
+import { exportStructureImage } from "../../utils/screenshot";
 import { MolstarViewSettingsSubject } from "../../utils/theme";
 import { useCameraReset } from "./hooks/useCameraReset";
 import { ViewportButtonStack } from "./style";
@@ -34,6 +34,7 @@ export function createViewportView(
     // than something its presence answers.
     const showAxes = useViewSetting(viewSettings, (s) => s.showAxes ?? true);
     const download = useViewSetting(viewSettings, (s) => s.download);
+    const onError = useViewSetting(viewSettings, (s) => s.onError);
 
     /**
      * Disabled while a capture is in flight. A high resolution takes long
@@ -46,13 +47,14 @@ export function createViewportView(
 
       setDownloading(true);
       try {
-        await downloadStructureImage(plugin, download);
+        await exportStructureImage(plugin, download);
       } catch (error) {
-        console.error("Failed to download the structure image:", error);
+        if (onError) onError(error, "capture");
+        else console.error("Failed to download the structure image:", error);
       } finally {
         setDownloading(false);
       }
-    }, [download, plugin]);
+    }, [download, onError, plugin]);
 
     return (
       <>

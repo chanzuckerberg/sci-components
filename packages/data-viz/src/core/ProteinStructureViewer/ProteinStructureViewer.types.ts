@@ -1,5 +1,8 @@
 import { TooltipProps } from "@czi-sds/components";
+import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
+import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import type { PluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
+import type { StateObjectSelector } from "molstar/lib/mol-state";
 import { HTMLAttributes } from "react";
 import { ColorScale } from "../../common/colorScales";
 
@@ -170,7 +173,50 @@ export interface StructureDownload {
    * Mol* derives from the loaded structure.
    */
   filename?: string;
+  /**
+   * Renders the image in place of the viewer's own capture, for a caller that
+   * has to bound its size, keep the viewport's aspect, or draw it some other
+   * way. Resolves with a PNG. `resolution`, `backgroundColor` and `showAxes`
+   * describe the viewer's own capture, so they are not applied to this one.
+   */
+  render?: (plugin: PluginUIContext) => Promise<Blob>;
+  /**
+   * Receives the PNG in place of a browser download, along with the name it
+   * would have been saved under, `.png` included. A sandboxed iframe blocks the
+   * download a click would otherwise start, so a bridge to its host goes here.
+   */
+  deliver?: (image: Blob, filename: string) => void | Promise<void>;
 }
+
+/**
+ * What a load hands to `onReady`: the structure the viewer parsed, and what it
+ * found in it.
+ */
+export interface LoadedStructureInfo {
+  /**
+   * The parsed structure's cell in the plugin's state tree. Components and
+   * representations built on it are what a consumer drawing its own scene
+   * adds; they go when the next structure is loaded, along with the rest of
+   * the tree.
+   */
+  structure: StateObjectSelector<PluginStateObject.Molecule.Structure>;
+  /**
+   * Atoms Mol* parsed. A consumer holding a known count for the file can check
+   * the parse against it before trusting what is drawn.
+   */
+  atomCount: number;
+  /** The polymer chains found, as `onChainsChange` reports them. */
+  chains: ChainRef[];
+}
+
+/** Which part of the viewer's work an error reported to `onError` came from. */
+export type ViewerErrorPhase = "init" | "load" | "capture";
+
+/**
+ * Who draws the structure: the viewer, from its props, or a consumer building
+ * its own scene on the structure `onReady` hands it.
+ */
+export type SceneMode = "managed" | "external";
 
 /** A whole-structure statistic shown along the bottom of the viewer. */
 export interface StructureStat {
@@ -180,7 +226,7 @@ export interface StructureStat {
 
 export interface ProteinStructureViewerProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
-  "onSelect"
+  "onError" | "onSelect"
 > {
   /** Structure to render, as raw PDB or mmCIF (PDBx) text. */
   structure: string;
@@ -283,6 +329,53 @@ export interface ProteinStructureViewerProps extends Omit<
    * so the rest is deliberately not reactive.
    */
   molstarSpec?: Partial<PluginUISpec>;
+  /**
+   * Who draws the structure.
+   *
+   * `"managed"` draws each chain as a cartoon and its ligands as
+   * ball-and-stick, colors them from `plddt`, `residueOverlay` and
+   * `chainColors`, hides the chains `hiddenChains` names, and frames the camera
+   * on each structure it loads.
+   *
+   * `"external"` parses the structure and stops there: nothing is drawn,
+   * colored, hidden or framed, and a consumer draws its own scene on the
+   * structure `onReady` hands it. The sequence panel, selection, hover, legend
+   * and camera controls work as before; the legend describes the props rather
+   * than what the consumer drew, and its chain toggles report through
+   * `onChainVisibilityChange` without hiding anything. Mol* frames the camera
+   * on the first representation drawn into the empty scene.
+   *
+   * Read once, when the plugin is created.
+   * @default "managed"
+   */
+  sceneMode?: SceneMode;
+  /**
+   * Called with the Mol* plugin once a structure is loaded into it, and again
+   * for each structure that replaces it, which is how a consumer reaches the
+   * plugin to draw on it or drive it directly.
+   *
+   * Awaited before the viewer starts answering clicks and hovers and before
+   * its coloring is applied, so a scene built here is in place before any of
+   * that touches it. Not called for a structure that failed to load, or for a
+   * plugin the viewer disposed of first.
+   */
+  onReady?: (
+    plugin: PluginUIContext,
+    loaded: LoadedStructureInfo
+  ) => void | Promise<void>;
+  /**
+   * Called when creating the plugin, loading a structure or capturing an image
+   * fails, in place of the message the viewer would otherwise log. A rejected
+   * `onReady` is reported as a `"load"` failure. Nothing is reported for a
+   * plugin the viewer has already disposed of.
+   */
+  onError?: (error: unknown, phase: ViewerErrorPhase) => void;
+  /**
+   * Called before the viewer disposes of a plugin it handed to `onReady`,
+   * including one whose `onReady` has not finished, so that whatever was built
+   * on it can be let go.
+   */
+  onDispose?: () => void;
   /**
    * Up to three whole-structure stats shown along the bottom. A null entry
    * reserves its column without rendering anything, so the columns never shift

@@ -151,12 +151,16 @@ const ProteinStructureViewer = forwardRef(
       onChainVisibilityChange,
       onChainsChange,
       molstarSpec,
+      onDispose,
+      onError,
+      onReady,
       onResidueClick,
       onResidueHover,
       onSelectionChange,
       structure,
       plddt,
       residueOverlay,
+      sceneMode = "managed",
       selection: selectionProp,
       sequenceViewerBackgroundColor,
       showAxes = true,
@@ -301,6 +305,7 @@ const ProteinStructureViewer = forwardRef(
       pluginRef,
       residuesByChainRef,
       residueValueThemeRef,
+      sceneMode: activeSceneMode,
       setClipRatio,
     } = useMolstarPlugin({
       backgroundColor: bgColor,
@@ -316,10 +321,14 @@ const ProteinStructureViewer = forwardRef(
       onChainHover: highlightChain,
       onChainSelect: handleChainSelect,
       onChainToggle: toggleChain,
+      onDispose,
+      onError,
+      onReady,
       onResidueClick,
       onResidueHover: handleResidueHover,
       onSelectionChange: changeSelection,
       onSelectionClear: handleSelectionClear,
+      sceneMode,
       selectedChains,
       sequenceViewerBackgroundColor,
       showAxes,
@@ -349,9 +358,12 @@ const ProteinStructureViewer = forwardRef(
       onChainsChangeRef.current?.(loadedChains);
     }, [loadedChains]);
 
+    // A consumer drawing its own scene owns its colors too; repainting its
+    // representations with the viewer's theme would undo them.
     useStructureColoring({
       chainColorThemeRef,
       chainColors,
+      disabled: activeSceneMode === "external",
       hasPlddt,
       isReady,
       mode,

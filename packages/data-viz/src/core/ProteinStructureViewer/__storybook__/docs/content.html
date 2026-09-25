@@ -355,7 +355,64 @@
       </p>
     </td>
   </tr>
+  <tr>
+    <td>
+      <p><code>render</code></p>
+    </td>
+    <td>
+      <p><code>(plugin: PluginUIContext) =&gt; Promise&lt;Blob&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Renders the image in place of the viewer's own capture, and resolves
+        with a PNG. <code>resolution</code>, <code>backgroundColor</code> and
+        <code>showAxes</code> describe the viewer's capture, so they are not
+        applied to this one.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>deliver</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >(image: Blob, filename: string) =&gt; void |
+          Promise&lt;void&gt;</code
+        >
+      </p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Receives the PNG in place of a browser download, with the name it would
+        have been saved under, <code>.png</code> included.
+      </p>
+    </td>
+  </tr>
 </table>
+<p>
+  The last two take the capture over, and either can be given without the other.
+  <code>deliver</code> is for a page that cannot start a download itself: a
+  sandboxed iframe blocks the one a click would start, so the image is handed to
+  a bridge to its host instead. <code>render</code> is for an image the presets
+  do not describe - bounded to a size, or keeping the viewport's aspect. A
+  failure in either is reported to <code>onError</code>.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;ProteinStructureViewer
+  structure={PDB}
+  download={{
+    filename: "barnase-barstar",
+    deliver: (image, filename) =&gt; host.saveFile(image, filename),
+  }}
+/&gt;</code></pre>
+  </figure>
+</div>
 <h2>Configuring Mol*</h2>
 <p>
   The viewer is built on
@@ -455,6 +512,45 @@
   <code>canvas3d</code>, which is re-applied whenever it changes. Creating the
   plugin throws away the camera, so the rest is deliberately not reactive; pass
   a <code>key</code> to remount the viewer if you need to change it.
+</p>
+<h2>Building on the viewer</h2>
+<p>
+  <code>onReady</code> hands over the Mol* plugin once a structure is loaded,
+  and again for each structure that replaces it, along with the structure the
+  viewer parsed. That is the way into anything the props do not cover: drawing a
+  representation of your own, registering a color theme, or driving the camera.
+  It is awaited before the viewer starts answering clicks and applying its
+  coloring, so whatever it builds is in place before either reaches it.
+</p>
+<p>
+  To draw the whole scene yourself, set <code>sceneMode="external"</code>. The
+  viewer then parses the structure and stops there: nothing is drawn, colored,
+  hidden or framed, and the canvas is yours. Everything that is not drawing
+  keeps working - the sequence panel, selection, hover, the legend and the
+  camera controls. The chain legend's toggles report through
+  <code>onChainVisibilityChange</code> without hiding anything, since what
+  hiding a chain means is now yours to decide, and the legend describes the
+  props rather than what you drew, so pass it the colors you draw with. Mol*
+  frames the camera on the first representation drawn into the empty scene.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/ProteinStructureViewer/ExternalSceneProteinStructureViewer"
+></div>
+<p>
+  Whatever is built on a structure goes with it when the next one is loaded, so
+  build it again in the next <code>onReady</code> rather than holding on to it.
+  A component keyed <code>polymer-&lt;chainId&gt;</code> or
+  <code>ligand-&lt;chainId&gt;</code> is dimmed along with its chain while
+  another chain's name is pointed at.
+</p>
+<p>
+  <code>onDispose</code> is called before the viewer disposes of a plugin it
+  handed over - including one whose <code>onReady</code> has not finished - so
+  whatever was built on it can be let go. <code>onError</code> is told when
+  creating the plugin, loading a structure or capturing an image fails, in place
+  of the message the viewer would otherwise log; a rejected
+  <code>onReady</code> counts as a failed load.
 </p>
 <h2>Props</h2>
 <p>
@@ -813,6 +909,78 @@
       </p>
     </td>
   </tr>
+  <tr>
+    <td>
+      <p><code>sceneMode</code></p>
+    </td>
+    <td>
+      <p><code>"managed" | "external"</code></p>
+    </td>
+    <td>
+      <p><code>"managed"</code></p>
+    </td>
+    <td>
+      <p>
+        Who draws the structure. <code>"external"</code> parses it and leaves
+        the canvas empty for a scene drawn in <code>onReady</code>; see Building
+        on the viewer. Read once, when the plugin is created.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onReady</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code
+          >(plugin: PluginUIContext, loaded: LoadedStructureInfo) =&gt; void |
+          Promise&lt;void&gt;</code
+        >. Called with the Mol* plugin once a structure is loaded, and again for
+        each structure that replaces it. Awaited before the viewer answers
+        clicks or applies its coloring. Not called for a structure that failed
+        to load.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onError</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code
+          >(error: unknown, phase: "init" | "load" | "capture") =&gt; void</code
+        >. Called when creating the plugin, loading a structure or capturing an
+        image fails, in place of the viewer's console message. A rejected
+        <code>onReady</code> is a <code>"load"</code> failure.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onDispose</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>() =&gt; void</code>. Called before the viewer disposes of a
+        plugin it handed to <code>onReady</code>, including one whose
+        <code>onReady</code> has not finished.
+      </p>
+    </td>
+  </tr>
 </table>
 <h3>StructureSelection</h3>
 <p>
@@ -1089,5 +1257,64 @@
     </td>
     <td><p>- (required)</p></td>
     <td><p>The caption shown beneath the value.</p></td>
+  </tr>
+</table>
+<h3>LoadedStructureInfo</h3>
+<p>What <code>onReady</code> is handed alongside the plugin.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>structure</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >StateObjectSelector&lt;PluginStateObject.Molecule.Structure&gt;</code
+        >
+      </p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The parsed structure's cell in the plugin's state tree, to build
+        components and representations on. They go with it when the next
+        structure is loaded.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>atomCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Atoms Mol* parsed, for checking the parse against a count you hold for
+        the file before trusting what is drawn.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chains</code></p>
+    </td>
+    <td>
+      <p><code>ChainRef[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The polymer chains found, as <code>onChainsChange</code> reports them.
+      </p>
+    </td>
   </tr>
 </table>

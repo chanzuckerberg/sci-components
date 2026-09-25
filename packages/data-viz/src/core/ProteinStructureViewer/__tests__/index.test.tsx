@@ -30,7 +30,10 @@ import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
 import { MYOGLOBIN_PDB } from "../__storybook__/myoglobin";
-import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
+import {
+  ProteinStructureViewerProps,
+  SceneMode,
+} from "../ProteinStructureViewer.types";
 import { parseHexColor } from "../utils/color";
 import {
   lociForResidueIndex,
@@ -391,6 +394,29 @@ function giveElementsSize() {
     x: 0,
     y: 0,
   });
+}
+
+/** Holds createPluginUI open so props can move mid-initialization. */
+function holdPlugin(): (p: unknown) => void {
+  let release: (p: unknown) => void = () => undefined;
+  createPluginUI.mockReturnValue(
+    new Promise((resolve) => {
+      release = resolve;
+    })
+  );
+  return release;
+}
+
+/** A promise and the handles to settle it from a test. */
+function deferred<T = void>() {
+  let resolve: (value: T) => void = () => undefined;
+  let reject: (error: unknown) => void = () => undefined;
+  const promise = new Promise<T>((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+
+  return { promise, reject, resolve };
 }
 
 const PDB = `ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
@@ -796,17 +822,6 @@ describe("<ProteinStructureViewer />", () => {
    * already changed by the time the plugin can accept them.
    */
   describe("when props change while the plugin is still being built", () => {
-    /** Holds createPluginUI open so props can move mid-initialization. */
-    function holdPlugin(): (p: unknown) => void {
-      let release: (p: unknown) => void = () => undefined;
-      createPluginUI.mockReturnValue(
-        new Promise((resolve) => {
-          release = resolve;
-        })
-      );
-      return release;
-    }
-
     it("loads the structure the props settled on, not the one they started with", async () => {
       const release = holdPlugin();
 
@@ -1992,6 +2007,301 @@ describe("<ProteinStructureViewer />", () => {
 
       await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
       expect(spec().canvas3d.renderer.colorMarker).toBe(true);
+    });
+  });
+
+  /**
+   * The plugin is handed to a consumer that draws on it or drives it, and a
+   * failure is reported to the consumer rather than logged where nobody sees
+   * it. What matters is the order: a scene built in `onReady` has to be in
+   * place before the viewer answers a click or applies a color, and nothing
+   * may reach a consumer about a plugin that is already gone.
+   */
+  describe("plugin lifecycle", () => {
+    const interactive = () =>
+      waitFor(() =>
+        expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
+      );
+
+    const view = (
+      props: Partial<ProteinStructureViewerProps> = {},
+      structure = PDB
+    ) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer structure={structure} {...props} />
+      </ThemeProvider>
+    );
+
+    it("hands the plugin and the parsed structure to onReady", async () => {
+      const onReady = vi.fn();
+      renderViewer({ onReady });
+
+      await waitFor(() => expect(onReady).toHaveBeenCalledTimes(1));
+      expect(onReady).toHaveBeenCalledWith(
+        plugin,
+        expect.objectContaining({
+          atomCount: crambin.elementCount,
+          chains: [expect.objectContaining({ chainId: "A" })],
+          structure: expect.objectContaining({ ref: "structure" }),
+        })
+      );
+    });
+
+    it("waits for onReady before answering clicks or applying colors", async () => {
+      const ready = deferred();
+      const onReady = vi.fn(() => ready.promise);
+      renderViewer({ onReady });
+
+      await waitFor(() => expect(onReady).toHaveBeenCalled());
+      expect(
+        plugin.behaviors.interaction.click.subscribe
+      ).not.toHaveBeenCalled();
+      expect(plugin.loadedThemes).toEqual([]);
+
+      await act(async () => ready.resolve());
+
+      await interactive();
+      await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+    });
+
+    it("hands over each structure that replaces the first", async () => {
+      const onReady = vi.fn();
+      const { rerender } = render(view({ onReady }));
+      await waitFor(() => expect(onReady).toHaveBeenCalledTimes(1));
+
+      rerender(view({ onReady }, OTHER_PDB));
+
+      await waitFor(() => expect(onReady).toHaveBeenCalledTimes(2));
+    });
+
+    it("hands over nothing for a plugin disposed of while it was built", async () => {
+      const onDispose = vi.fn();
+      const onReady = vi.fn();
+      const release = holdPlugin();
+
+      const { unmount } = render(view({ onDispose, onReady }));
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
+      unmount();
+      release(plugin);
+
+      await waitFor(() => expect(plugin.dispose).toHaveBeenCalled());
+      expect(onReady).not.toHaveBeenCalled();
+      expect(onDispose).not.toHaveBeenCalled();
+    });
+
+    it("hands over nothing for a structure that finished loading after unmount", async () => {
+      const parse = deferred<string>();
+      plugin.builders.structure.parseTrajectory.mockImplementationOnce(
+        () => parse.promise
+      );
+      const onReady = vi.fn();
+
+      const { unmount } = render(view({ onReady }));
+      await waitFor(() =>
+        expect(plugin.builders.structure.parseTrajectory).toHaveBeenCalled()
+      );
+      unmount();
+      parse.resolve(PDB);
+
+      // The load runs on to the end, which is where the camera is framed.
+      await waitFor(() =>
+        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled()
+      );
+      await act(async () => undefined);
+      expect(onReady).not.toHaveBeenCalled();
+    });
+
+    it("reports a plugin that could not be created as an init failure", async () => {
+      const failure = new Error("WebGL is not available");
+      createPluginUI.mockRejectedValue(failure);
+      const onError = vi.fn();
+
+      renderViewer({ onError });
+
+      await waitFor(() =>
+        expect(onError).toHaveBeenCalledWith(failure, "init")
+      );
+    });
+
+    it("reports a structure that failed to load, and hands nothing over", async () => {
+      const failure = new Error("Unparseable structure");
+      plugin.builders.structure.parseTrajectory.mockRejectedValueOnce(failure);
+      const onError = vi.fn();
+      const onReady = vi.fn();
+
+      renderViewer({ onError, onReady });
+
+      await waitFor(() =>
+        expect(onError).toHaveBeenCalledWith(failure, "load")
+      );
+      expect(onReady).not.toHaveBeenCalled();
+      // Still interactive, holding nothing, as a structure with no chains is.
+      await interactive();
+    });
+
+    it("reports an onReady that rejects as a load failure", async () => {
+      const failure = new Error("The consumer's scene could not be built");
+      const onError = vi.fn();
+
+      renderViewer({
+        onError,
+        onReady: async () => {
+          throw failure;
+        },
+      });
+
+      await waitFor(() =>
+        expect(onError).toHaveBeenCalledWith(failure, "load")
+      );
+    });
+
+    it("logs a failure to the console when nobody is listening for it", async () => {
+      const failure = new Error("Unparseable structure");
+      plugin.builders.structure.parseTrajectory.mockRejectedValueOnce(failure);
+      const log = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => undefined);
+
+      renderViewer();
+
+      await waitFor(() =>
+        expect(log).toHaveBeenCalledWith("Failed to load structure:", failure)
+      );
+    });
+
+    it("calls onDispose before disposing of a plugin it handed over", async () => {
+      const onDispose = vi.fn();
+      const { unmount } = render(view({ onDispose, onReady: vi.fn() }));
+      await interactive();
+
+      unmount();
+
+      expect(onDispose).toHaveBeenCalledTimes(1);
+      expect(onDispose.mock.invocationCallOrder[0]).toBeLessThan(
+        plugin.dispose.mock.invocationCallOrder[0] as number
+      );
+    });
+
+    it("calls onDispose for a plugin whose onReady is still running", async () => {
+      const onDispose = vi.fn();
+      const onReady = vi.fn(() => deferred().promise);
+      const { unmount } = render(view({ onDispose, onReady }));
+      await waitFor(() => expect(onReady).toHaveBeenCalled());
+
+      unmount();
+
+      expect(onDispose).toHaveBeenCalledTimes(1);
+      expect(plugin.dispose).toHaveBeenCalled();
+    });
+
+    it("says nothing of an onReady that fails after its plugin is gone", async () => {
+      const ready = deferred();
+      const onError = vi.fn();
+      const onReady = vi.fn(() => ready.promise);
+      const { unmount } = render(view({ onError, onReady }));
+      await waitFor(() => expect(onReady).toHaveBeenCalled());
+
+      unmount();
+      await act(async () => ready.reject(new Error("Too late")));
+
+      expect(onError).not.toHaveBeenCalled();
+    });
+  });
+
+  /**
+   * A consumer drawing its own scene gets the parsed structure and an empty
+   * canvas, and the viewer keeps everything that is not drawing: the sequence
+   * panel, selection, hover, the legend and the camera controls.
+   */
+  describe("external scene mode", () => {
+    let complex: Structure;
+
+    beforeAll(async () => {
+      complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+    });
+
+    beforeEach(() => {
+      plugin = createStubPlugin(complex);
+      createPluginUI.mockResolvedValue(plugin);
+    });
+
+    const external = (props: Partial<ProteinStructureViewerProps> = {}) =>
+      renderViewer({
+        sceneMode: "external",
+        structure: BARNASE_BARSTAR_PDB,
+        ...props,
+      });
+
+    /** Ready, and the legend drawn from the chains the load found. */
+    const settled = async () => {
+      await screen.findByRole("button", { name: "Chain B" });
+      await act(async () => undefined);
+    };
+
+    it("parses the structure without drawing, coloring or framing it", async () => {
+      external();
+      await settled();
+
+      expect(plugin.builders.structure.parseTrajectory).toHaveBeenCalled();
+      expect(
+        plugin.builders.structure.tryCreateComponentFromExpression
+      ).not.toHaveBeenCalled();
+      expect(
+        plugin.builders.structure.representation.addRepresentation
+      ).not.toHaveBeenCalled();
+      expect(
+        plugin.managers.structure.component.updateRepresentationsTheme
+      ).not.toHaveBeenCalled();
+      expect(plugin.canvas3d.requestCameraReset).not.toHaveBeenCalled();
+    });
+
+    it("hands the parsed structure over to be drawn on", async () => {
+      const onReady = vi.fn();
+      external({ onReady });
+
+      await waitFor(() =>
+        expect(onReady).toHaveBeenCalledWith(
+          plugin,
+          expect.objectContaining({
+            atomCount: complex.elementCount,
+            structure: expect.objectContaining({ ref: "structure" }),
+          })
+        )
+      );
+    });
+
+    it("keeps the chain legend, whose toggles report without hiding", async () => {
+      const onChainVisibilityChange = vi.fn();
+      external({ onChainVisibilityChange });
+
+      const toggle = await screen.findByRole("button", { name: HIDE_BARSTAR });
+      act(() => toggle.click());
+
+      await waitFor(() =>
+        expect(onChainVisibilityChange).toHaveBeenCalledWith(["B"])
+      );
+      expect(plugin.stubVisibility.size).toBe(0);
+    });
+
+    it("keeps the mode the plugin was created with", async () => {
+      const mounted = (sceneMode: SceneMode) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            sceneMode={sceneMode}
+            structure={BARNASE_BARSTAR_PDB}
+          />
+        </ThemeProvider>
+      );
+
+      const { rerender } = render(mounted("external"));
+      await settled();
+      rerender(mounted("managed"));
+      await act(async () => undefined);
+
+      expect(createPluginUI).toHaveBeenCalledTimes(1);
+      expect(
+        plugin.managers.structure.component.updateRepresentationsTheme
+      ).not.toHaveBeenCalled();
     });
   });
 

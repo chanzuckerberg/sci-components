@@ -18,6 +18,8 @@ export interface UseStructureColoringOptions {
   /** Color per chain, by `chainId`, as `#RRGGBB`. */
   chainColors: Map<string, string>;
   mode: "light" | "dark";
+  /** Leaves the representations alone, for a scene the consumer draws. */
+  disabled?: boolean;
 }
 
 /**
@@ -35,6 +37,7 @@ export interface UseStructureColoringOptions {
 export function useStructureColoring({
   chainColorThemeRef,
   chainColors,
+  disabled = false,
   hasPlddt,
   isReady,
   mode,
@@ -46,7 +49,9 @@ export function useStructureColoring({
     const plugin = pluginRef.current;
     const residueTheme = residueValueThemeRef.current;
     const chainTheme = chainColorThemeRef.current;
-    if (!plugin || !residueTheme || !chainTheme || !isReady) return;
+    if (disabled || !plugin || !residueTheme || !chainTheme || !isReady) {
+      return;
+    }
 
     // Kept current whether or not chain coloring is what is showing, so that
     // clearing an overlay reveals the right colors immediately rather than the
@@ -75,5 +80,5 @@ export function useStructureColoring({
     applyColorTheme(plugin, hasPlddt ? PLDDT_THEME_NAME : FALLBACK_THEME_NAME);
     // The three refs are stable.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [overlay, hasPlddt, isReady, mode, chainColors]);
+  }, [overlay, hasPlddt, isReady, mode, chainColors, disabled]);
 }

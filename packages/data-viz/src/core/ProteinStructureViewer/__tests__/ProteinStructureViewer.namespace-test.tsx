@@ -2,15 +2,18 @@ import {
   ChainRef,
   ColorScale,
   DownloadResolution,
+  LoadedStructureInfo,
   ProteinStructureViewer,
   ProteinStructureViewerProps,
   PLASMA_COLOR_SCALE,
   PLDDT_COLOR_SCALE,
   ResidueRef,
   ResidueValueOverlay,
+  SceneMode,
   StructureFormat,
   StructureSelection,
   StructureStat,
+  ViewerErrorPhase,
   detectStructureFormat,
   injectPlddt,
   injectPlddtIntoMmcif,
@@ -63,6 +66,23 @@ const CHAIN_COLORS: Record<string, string> = { A: "#0072B2", B: "#E69F00" };
 
 /** Typed through the exported union, and labelled from the exported map. */
 const DOWNLOAD_RESOLUTION: DownloadResolution = "maximum";
+
+const SCENE_MODE: SceneMode = "external";
+
+/** Draws a surface over the structure the viewer parsed, and frames it. */
+async function drawSurface(
+  plugin: Parameters<NonNullable<ProteinStructureViewerProps["onReady"]>>[0],
+  { atomCount, chains, structure }: LoadedStructureInfo
+) {
+  console.log(atomCount, chains.length);
+  await plugin.builders.structure.representation.addRepresentation(structure, {
+    type: "molecular-surface",
+  });
+}
+
+function reportViewerError(error: unknown, phase: ViewerErrorPhase) {
+  console.error(phase, error);
+}
 
 const ProteinStructureViewerNameSpaceTest = (
   props: ProteinStructureViewerProps
@@ -136,6 +156,25 @@ const ProteinStructureViewerNameSpaceTest = (
           resolution: DOWNLOAD_RESOLUTION,
           showAxes: true,
         }}
+        structure={PDB}
+      />
+
+      {/* The capture rendered and delivered by the consumer */}
+      <ProteinStructureViewer
+        download={{
+          deliver: async (image: Blob, filename: string) =>
+            console.log(filename, image.size),
+          render: async () => new Blob([], { type: "image/png" }),
+        }}
+        structure={PDB}
+      />
+
+      {/* A scene drawn by the consumer on the plugin it is handed */}
+      <ProteinStructureViewer
+        onDispose={() => console.log("released")}
+        onError={reportViewerError}
+        onReady={drawSurface}
+        sceneMode={SCENE_MODE}
         structure={PDB}
       />
 

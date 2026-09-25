@@ -1,6 +1,9 @@
 import { Theme, getSemanticColors } from "@czi-sds/components";
 import { BehaviorSubject } from "rxjs";
-import type { StructureDownload } from "../ProteinStructureViewer.types";
+import type {
+  StructureDownload,
+  ViewerErrorPhase,
+} from "../ProteinStructureViewer.types";
 
 export type ThemeMode = "light" | "dark";
 
@@ -51,6 +54,11 @@ export interface MolstarViewSettings {
    * reach it the same way the theme does.
    */
   download?: StructureDownload | null;
+  /**
+   * Where a failed capture is reported: the consumer's `onError` when it has
+   * one, the console when it does not.
+   */
+  onError?: (error: unknown, phase: ViewerErrorPhase) => void;
 }
 
 /**
