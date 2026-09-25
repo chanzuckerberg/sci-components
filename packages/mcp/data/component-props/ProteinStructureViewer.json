@@ -7,7 +7,7 @@
         "type": "string"
       },
       "chainColors": {
-        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen, which is when neither `plddt` nor `residueOverlay` is set.",
+        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen: when `colorBy` says so, or, left undefined, when neither `plddt`\nnor `residueOverlay` is set.",
         "isRequired": false,
         "type": "Record<string, string>"
       },
@@ -31,6 +31,37 @@
         "description": "Who draws the structure.\n\n`\"managed\"` draws each chain as a cartoon and its ligands as\nball-and-stick, colors them from `plddt`, `residueOverlay` and\n`chainColors`, hides the chains `hiddenChains` names, and frames the camera\non each structure it loads.\n\n`\"external\"` parses the structure and stops there: nothing is drawn,\ncolored, hidden or framed, and a consumer draws its own scene on the\nstructure `onReady` hands it. The sequence panel, selection, hover, legend\nand camera controls work as before; the legend describes the props rather\nthan what the consumer drew, and its chain toggles report through\n`onChainVisibilityChange` without hiding anything. Mol* frames the camera\non the first representation drawn into the empty scene.\n\nRead once, when the plugin is created.",
         "isRequired": false,
         "type": "\"managed\" | \"external\""
+      },
+      "colorBy": {
+        "description": "What paints the structure. Left undefined it follows what is supplied: a\n`residueOverlay` when there is one, then `plddt`, then the chain colors.\nNaming one makes it paint whatever else is set, which is how a toggle\nbetween confidence and chain coloring keeps both props in place. A theme\nwith nothing to paint with leaves every residue neutral.",
+        "isRequired": false,
+        "type": "\"overlay\" | \"plddt\" | \"chain\""
+      },
+      "highlights": {
+        "description": "Residues picked out in colors of their own, by the address the file gives\nthem. They paint over whatever colors the rest - chain, pLDDT or overlay -\nand are drawn in ball-and-stick over the cartoon; on a surface, the\nsurface itself carries them. Separate from `selection`: highlighting a\nresidue neither selects it nor moves the camera.",
+        "isRequired": false,
+        "type": "ResidueHighlight[]"
+      },
+      "initialCamera": {
+        "description": "Where the camera starts on each structure loaded, in place of fitting it\nto the structure. Applied once per load; moving the camera afterwards is\nthe user's.",
+        "isRequired": false,
+        "type": "CameraState | null"
+      },
+      "orientation": {
+        "description": "Turns the camera to look at the highlighted residues from one side or\nanother. Applied when a structure is loaded, unless `initialCamera` is\nset, and whenever it changes - not when the highlights do.",
+        "isRequired": false,
+        "type": "\"overview\" | \"facing\" | \"opposite\" | \"side\""
+      },
+      "projection": {
+        "description": "The camera's projection. Left undefined, Mol*'s own default stands.",
+        "isRequired": false,
+        "type": "\"perspective\" | \"orthographic\""
+      },
+      "representation": {
+        "defaultValue": "cartoon",
+        "description": "How the polymer is drawn. Ligands stay ball-and-stick either way.\nSwitching leaves the camera where it is.",
+        "isRequired": false,
+        "type": "\"cartoon\" | \"surface\""
       },
       "disableChainHighlightOnHover": {
         "defaultValue": false,
@@ -79,9 +110,9 @@
         "type": "string"
       },
       "plddt": {
-        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover.",
+        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover. A `null` entry, and every residue past the end, reads as unscored\nand is painted neutral rather than at the bottom of the scale.",
         "isRequired": false,
-        "type": "number[] | null"
+        "type": "(number | null)[] | null"
       },
       "residueOverlay": {
         "description": "Per-residue values that override pLDDT coloring while set.",
@@ -118,13 +149,23 @@
         "isRequired": false,
         "type": "(hiddenChains: string[]) => void"
       },
+      "onCameraChange": {
+        "description": "Called with the camera each time it comes to rest after moving, whether a\ndrag, a zoom, a selection framing it, or a new structure fitting it. The\nstate can be handed back as `initialCamera` to restore the view.",
+        "isRequired": false,
+        "type": "(camera: CameraState) => void"
+      },
+      "onStructureLoad": {
+        "description": "Called for every structure that loads, reloads included - unlike\n`onChainsChange`, which stays quiet when the chains come back the same.\nWhat a consumer tracking \"loading\" and \"ready\" states listens for.",
+        "isRequired": false,
+        "type": "(info: StructureLoadInfo) => void"
+      },
       "onReady": {
-        "description": "Called with the Mol* plugin once a structure is loaded into it, and again\nfor each structure that replaces it, which is how a consumer reaches the\nplugin to draw on it or drive it directly.\n\nAwaited before the viewer starts answering clicks and hovers and before\nits coloring is applied, so a scene built here is in place before any of\nthat touches it. Not called for a structure that failed to load, or for a\nplugin the viewer disposed of first.",
+        "description": "Called with the Mol* plugin once a structure is loaded into it, and again\nfor each structure that replaces it, which is how a consumer reaches the\nplugin to draw on it or drive it directly.\n\nCalled once the viewer has drawn its own scene, and awaited before it\nstarts answering clicks and hovers, so a scene built here is in place\nbefore a click reaches it. The viewer only ever recolors, hides or\nreplaces the components it built itself, so representations added here\nare left as they were made. Not called for a structure that failed to\nload, or for a plugin the viewer disposed of first.",
         "isRequired": false,
         "type": "(plugin: PluginUIContext, loaded: LoadedStructureInfo) => void | Promise<void>"
       },
       "onError": {
-        "description": "Called when creating the plugin, loading a structure or capturing an image\nfails, in place of the message the viewer would otherwise log. A rejected\n`onReady` is reported as a `\"load\"` failure. Nothing is reported for a\nplugin the viewer has already disposed of.",
+        "description": "Called when creating the plugin, loading a structure, capturing an image or\ndrawing a representation fails, in place of the message the viewer would\notherwise log. A rejected `onReady` is reported as a `\"load\"` failure.\nNothing is reported for a plugin the viewer has already disposed of.",
         "isRequired": false,
         "type": "(error: unknown, phase: ViewerErrorPhase) => void"
       },
