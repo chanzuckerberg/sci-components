@@ -105,6 +105,30 @@ export interface ChainRef {
 }
 
 /**
+ * A residue as the file names it: chain, number and insertion code, which is
+ * what a system that supplied the structure will recognise. `ResidueRef`
+ * reports the same three, so a residue the viewer reported can be handed back
+ * as one of these.
+ */
+export interface ResidueAddress {
+  /** Chain as named in the file (`auth_asym_id`). */
+  chainId: string;
+  /** Residue number as written in the file (`auth_seq_id`). */
+  seqId: number;
+  /** Insertion code, when the residue has one. */
+  insCode?: string;
+}
+
+/** A residue picked out in a color of its own, over whatever paints the rest. */
+export interface ResidueHighlight extends ResidueAddress {
+  /**
+   * As `#RRGGBB`. Highlights that name none take the next color of the
+   * viewer's highlight palette, in the order they are given.
+   */
+  color?: string;
+}
+
+/**
  * What is selected, in the two ways a caller might say it. `null` selects
  * nothing.
  *
@@ -121,6 +145,63 @@ export interface StructureSelection {
   residues?: number[];
   /** Whole chains by `chainId`, each standing for every residue on it. */
   chains?: string[];
+  /**
+   * Residues by the address the file gives them, for a caller that knows a
+   * residue by its chain and number rather than by its position. They join
+   * `residues`, and an address the structure does not have selects nothing.
+   * The viewer reports its own selections as `residues`.
+   */
+  addresses?: ResidueAddress[];
+}
+
+/**
+ * How the polymer is drawn. `"surface"` is one molecular surface over the
+ * visible chains, so hiding a partner exposes the face it was bound to.
+ */
+export type StructureRepresentation = "cartoon" | "surface";
+
+/** What paints the structure, when `colorBy` names it outright. */
+export type StructureColorBy = "chain" | "plddt" | "overlay";
+
+export type CameraProjection = "perspective" | "orthographic";
+
+/**
+ * Where the camera looks from, relative to the highlighted residues: straight
+ * at them from outside the structure, from the far side, or from the side.
+ * `"overview"`, and any orientation while nothing is highlighted, looks down
+ * the view's default axis at the whole structure.
+ */
+export type CameraOrientation = "overview" | "facing" | "opposite" | "side";
+
+/**
+ * Everything that places the camera, enough to put it back exactly where it
+ * was. What `onCameraChange` reports and `initialCamera` takes.
+ */
+export interface CameraState {
+  position: [number, number, number];
+  target: [number, number, number];
+  up: [number, number, number];
+  /** Field of view, in radians. */
+  fov: number;
+  /** Radius of the sphere around `target` the camera frames. */
+  radius: number;
+  /** Radius of the whole scene, which bounds how far the camera clips. */
+  radiusMax: number;
+  projection: CameraProjection;
+  /**
+   * Size of the canvas the camera framed, in pixels. Reported so an image can
+   * be rendered at the same aspect; ignored when the state is applied.
+   */
+  viewport?: { width: number; height: number };
+}
+
+/** What `onStructureLoad` reports for each structure loaded. */
+export interface StructureLoadInfo {
+  /** Atoms Mol* parsed. */
+  atomCount: number;
+  /** Polymer residues across every chain, as the chains count them. */
+  residueCount: number;
+  chains: ChainRef[];
 }
 
 /**
@@ -209,8 +290,12 @@ export interface LoadedStructureInfo {
   chains: ChainRef[];
 }
 
-/** Which part of the viewer's work an error reported to `onError` came from. */
-export type ViewerErrorPhase = "init" | "load" | "capture";
+/**
+ * Which part of the viewer's work an error reported to `onError` came from.
+ * `"representation"` is a representation that could not be drawn - a surface
+ * too large for its grid - which leaves the cartoon in its place.
+ */
+export type ViewerErrorPhase = "init" | "load" | "capture" | "representation";
 
 /**
  * Who draws the structure: the viewer, from its props, or a consumer building
@@ -233,9 +318,46 @@ export interface ProteinStructureViewerProps extends Omit<
   /**
    * Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When
    * supplied the structure is colored by pLDDT unless `residueOverlay` takes
-   * over.
+   * over. A `null` entry, and every residue past the end, reads as unscored
+   * and is painted neutral rather than at the bottom of the scale.
    */
-  plddt?: number[] | null;
+  plddt?: (number | null)[] | null;
+  /**
+   * What paints the structure. Left undefined it follows what is supplied: a
+   * `residueOverlay` when there is one, then `plddt`, then the chain colors.
+   * Naming one makes it paint whatever else is set, which is how a toggle
+   * between confidence and chain coloring keeps both props in place. A theme
+   * with nothing to paint with leaves every residue neutral.
+   */
+  colorBy?: StructureColorBy;
+  /**
+   * How the polymer is drawn. Ligands stay ball-and-stick either way.
+   * Switching leaves the camera where it is.
+   * @default "cartoon"
+   */
+  representation?: StructureRepresentation;
+  /**
+   * Residues picked out in colors of their own, by the address the file gives
+   * them. They paint over whatever colors the rest - chain, pLDDT or overlay -
+   * and are drawn in ball-and-stick over the cartoon; on a surface, the
+   * surface itself carries them. Separate from `selection`: highlighting a
+   * residue neither selects it nor moves the camera.
+   */
+  highlights?: ResidueHighlight[];
+  /** The camera's projection. Left undefined, Mol*'s own default stands. */
+  projection?: CameraProjection;
+  /**
+   * Where the camera starts on each structure loaded, in place of fitting it
+   * to the structure. Applied once per load; moving the camera afterwards is
+   * the user's.
+   */
+  initialCamera?: CameraState | null;
+  /**
+   * Turns the camera to look at the highlighted residues from one side or
+   * another. Applied when a structure is loaded, unless `initialCamera` is
+   * set, and whenever it changes - not when the highlights do.
+   */
+  orientation?: CameraOrientation;
   /**
    * Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base
    * background, so the canvas follows the surrounding page in both modes.
@@ -289,7 +411,8 @@ export interface ProteinStructureViewerProps extends Omit<
   /**
    * Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to
    * the viewer's palette. Only visible while chain coloring is what is on
-   * screen, which is when neither `plddt` nor `residueOverlay` is set.
+   * screen: when `colorBy` says so, or, left undefined, when neither `plddt`
+   * nor `residueOverlay` is set.
    */
   chainColors?: Record<string, string>;
   /**
@@ -354,20 +477,22 @@ export interface ProteinStructureViewerProps extends Omit<
    * for each structure that replaces it, which is how a consumer reaches the
    * plugin to draw on it or drive it directly.
    *
-   * Awaited before the viewer starts answering clicks and hovers and before
-   * its coloring is applied, so a scene built here is in place before any of
-   * that touches it. Not called for a structure that failed to load, or for a
-   * plugin the viewer disposed of first.
+   * Called once the viewer has drawn its own scene, and awaited before it
+   * starts answering clicks and hovers, so a scene built here is in place
+   * before a click reaches it. The viewer only ever recolors, hides or
+   * replaces the components it built itself, so representations added here
+   * are left as they were made. Not called for a structure that failed to
+   * load, or for a plugin the viewer disposed of first.
    */
   onReady?: (
     plugin: PluginUIContext,
     loaded: LoadedStructureInfo
   ) => void | Promise<void>;
   /**
-   * Called when creating the plugin, loading a structure or capturing an image
-   * fails, in place of the message the viewer would otherwise log. A rejected
-   * `onReady` is reported as a `"load"` failure. Nothing is reported for a
-   * plugin the viewer has already disposed of.
+   * Called when creating the plugin, loading a structure, capturing an image or
+   * drawing a representation fails, in place of the message the viewer would
+   * otherwise log. A rejected `onReady` is reported as a `"load"` failure.
+   * Nothing is reported for a plugin the viewer has already disposed of.
    */
   onError?: (error: unknown, phase: ViewerErrorPhase) => void;
   /**
@@ -405,6 +530,18 @@ export interface ProteinStructureViewerProps extends Omit<
    * loaded. Fires with `[]` when the structure holds none.
    */
   onChainsChange?: (chains: ChainRef[]) => void;
+  /**
+   * Called for every structure that loads, reloads included - unlike
+   * `onChainsChange`, which stays quiet when the chains come back the same.
+   * What a consumer tracking "loading" and "ready" states listens for.
+   */
+  onStructureLoad?: (info: StructureLoadInfo) => void;
+  /**
+   * Called with the camera each time it comes to rest after moving, whether a
+   * drag, a zoom, a selection framing it, or a new structure fitting it. The
+   * state can be handed back as `initialCamera` to restore the view.
+   */
+  onCameraChange?: (camera: CameraState) => void;
   /**
    * Called with the chains now hidden when a visibility toggle is used. Fires
    * whether or not `hiddenChains` is controlled, so a consumer can follow the

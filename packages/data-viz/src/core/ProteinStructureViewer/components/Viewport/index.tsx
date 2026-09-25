@@ -35,6 +35,7 @@ export function createViewportView(
     const showAxes = useViewSetting(viewSettings, (s) => s.showAxes ?? true);
     const download = useViewSetting(viewSettings, (s) => s.download);
     const onError = useViewSetting(viewSettings, (s) => s.onError);
+    const sceneBusy = useViewSetting(viewSettings, (s) => s.sceneBusy ?? false);
 
     /**
      * Disabled while a capture is in flight. A high resolution takes long
@@ -96,7 +97,7 @@ export function createViewportView(
               >
                 <Button
                   aria-label="Download image of the structure"
-                  disabled={downloading}
+                  disabled={downloading || sceneBusy}
                   onClick={captureImage}
                   sdsStyle="minimal"
                   sdsType="secondary"

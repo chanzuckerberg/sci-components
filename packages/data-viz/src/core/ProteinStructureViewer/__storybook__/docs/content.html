@@ -151,10 +151,9 @@
   structure string and the viewer finds the chains itself, reporting them
   through
   <code>onChainsChange</code> as <code>ChainRef</code>s. It draws one cartoon
-  per chain, splits the sequence panel into one grid per chain, and - when
-  neither <code>plddt</code> nor <code>residueOverlay</code> is coloring the
-  structure - paints each chain its own color and shows a chain legend with a
-  swatch and a visibility toggle for each.
+  per chain, splits the sequence panel into one grid per chain, and - when chain
+  coloring is what paints the structure - paints each chain its own color and
+  shows a chain legend with a swatch and a visibility toggle for each.
 </p>
 <p>
   Visibility works out of the box: the toggles own it unless you pass
@@ -220,6 +219,64 @@
 <p>
   Bulk water is the exception, and is not drawn. A structure's worth of solvent
   rendered as sticks buries the structure it surrounds.
+</p>
+<h3>Representation, coloring and highlights</h3>
+<p>
+  <code>representation</code> draws the polymer as a cartoon, the default, or as
+  a molecular surface. The surface is one surface over every visible chain
+  rather than one per chain, so where two chains meet the interface is buried -
+  and hiding a partner rebuilds it over what is left, exposing the face the
+  partner was bound to. Ligands stay ball-and-stick either way. A surface too
+  large to compute keeps the cartoon in its place and is reported to
+  <code>onError</code> as a <code>"representation"</code> failure.
+</p>
+<p>
+  <code>colorBy</code> names what paints the structure. Left undefined it
+  follows what is supplied - an overlay, then pLDDT, then chain colors - and
+  naming one is how a toggle keeps both <code>plddt</code> and
+  <code>chainColors</code> in place while it switches between them. The legend
+  follows whichever is painting. A <code>null</code> in <code>plddt</code>, or a
+  residue past its end, reads as unscored and is painted neutral rather than at
+  the bottom of the scale, and the structure text is parsed exactly as given:
+  scores are read by residue, not written into the file's B-factor column.
+</p>
+<p>
+  <code>highlights</code> picks residues out in colors of their own, by the
+  chain, number and insertion code the file gives them. They paint over whatever
+  colors the rest, and are drawn in ball-and-stick over the cartoon; a surface
+  carries them in its own colors. Highlights that name no color take the
+  viewer's palette in turn, which is exported as
+  <code>HIGHLIGHT_COLOR_PALETTE</code> for a legend of your own. They are
+  separate from the selection: highlighting a residue neither selects it nor
+  moves the camera. <code>selection.addresses</code> selects by the same kind of
+  address.
+</p>
+<p>
+  Every one of these changes is made in place, so the camera stays wherever it
+  was left.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/ProteinStructureViewer/SceneProteinStructureViewer"
+></div>
+<h3>Camera</h3>
+<p>
+  <code>orientation</code> turns the camera to look at the highlighted residues:
+  <code>"facing"</code> looks at them from outside the structure, down the line
+  from its center through theirs; <code>"opposite"</code> looks from the far
+  side; <code>"side"</code> looks across that line, which puts an interface in
+  profile; and <code>"overview"</code> looks down the default axis at the whole
+  structure. It is applied when a structure loads and whenever it changes - not
+  when the highlights do. <code>projection</code> sets the camera's projection.
+</p>
+<p>
+  <code>onCameraChange</code> reports the camera each time it comes to rest,
+  whether after a drag, a zoom, a selection framing it or a structure fitting
+  it, as a <code>CameraState</code>. Handing that back as
+  <code>initialCamera</code> starts the next structure loaded exactly there, in
+  place of fitting it. <code>onStructureLoad</code> is told of every structure
+  that loads, reloads included, which is what a "loading" and "ready" state
+  listens for.
 </p>
 <h3>Structure only</h3>
 <p>
@@ -580,15 +637,66 @@
       <p><code>plddt</code></p>
     </td>
     <td>
-      <p><code>number[] | null</code></p>
+      <p><code>(number | null)[] | null</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
         Per-residue pLDDT confidence on a 0-1 scale, in chain order. When
         supplied, the structure is colored by confidence unless
-        <code>residueOverlay</code> takes over. Residues past the end of the
-        array fall back to mid confidence.
+        <code>residueOverlay</code> takes over. A <code>null</code>, and every
+        residue past the end of the array, reads as unscored and is painted
+        neutral.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>colorBy</code></p>
+    </td>
+    <td>
+      <p><code>"chain" | "plddt" | "overlay"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        What paints the structure. Left undefined it follows what is supplied:
+        <code>residueOverlay</code>, then <code>plddt</code>, then chain colors.
+        A theme with nothing to paint with leaves every residue neutral.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>representation</code></p>
+    </td>
+    <td>
+      <p><code>"cartoon" | "surface"</code></p>
+    </td>
+    <td>
+      <p><code>"cartoon"</code></p>
+    </td>
+    <td>
+      <p>
+        How the polymer is drawn. <code>"surface"</code> is one molecular
+        surface over the visible chains. Switching leaves the camera where it
+        is.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>highlights</code></p>
+    </td>
+    <td>
+      <p><code>ResidueHighlight[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Residues picked out in colors of their own, by chain, number and
+        insertion code, painted over whatever colors the rest and drawn in
+        ball-and-stick over the cartoon. See the table below for its shape.
       </p>
     </td>
   </tr>
@@ -656,8 +764,9 @@
       <p>
         Color per chain, by <code>chainId</code>, as <code>#RRGGBB</code>.
         Chains left out fall back to the viewer's palette. Only visible while
-        chain coloring is what is on screen, which is when neither
-        <code>plddt</code> nor <code>residueOverlay</code> is set.
+        chain coloring is what is on screen: when <code>colorBy</code> says so
+        or, left undefined, when neither <code>plddt</code> nor
+        <code>residueOverlay</code> is set.
       </p>
     </td>
   </tr>
@@ -911,6 +1020,80 @@
   </tr>
   <tr>
     <td>
+      <p><code>projection</code></p>
+    </td>
+    <td>
+      <p><code>"perspective" | "orthographic"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>The camera's projection. Left undefined, Mol*'s own default stands.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>initialCamera</code></p>
+    </td>
+    <td>
+      <p><code>CameraState | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Where the camera starts on each structure loaded, in place of fitting
+        it. Takes what <code>onCameraChange</code> reports.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>orientation</code></p>
+    </td>
+    <td>
+      <p><code>"overview" | "facing" | "opposite" | "side"</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Turns the camera to look at the highlighted residues. Applied when a
+        structure loads, unless <code>initialCamera</code> is set, and whenever
+        it changes.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onCameraChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(camera: CameraState) =&gt; void</code>. Called with the camera
+        each time it comes to rest after moving.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onStructureLoad</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(info: StructureLoadInfo) =&gt; void</code>. Called for every
+        structure that loads, reloads included, with its atom and residue counts
+        and its chains.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><code>sceneMode</code></p>
     </td>
     <td>
@@ -958,10 +1141,12 @@
     <td>
       <p>
         <code
-          >(error: unknown, phase: "init" | "load" | "capture") =&gt; void</code
-        >. Called when creating the plugin, loading a structure or capturing an
-        image fails, in place of the viewer's console message. A rejected
-        <code>onReady</code> is a <code>"load"</code> failure.
+          >(error: unknown, phase: "init" | "load" | "capture" |
+          "representation") =&gt; void</code
+        >. Called when creating the plugin, loading a structure, capturing an
+        image or drawing a representation fails, in place of the viewer's
+        console message. A rejected <code>onReady</code> is a
+        <code>"load"</code> failure.
       </p>
     </td>
   </tr>
@@ -1026,6 +1211,24 @@
         it. Kept as named rather than expanded into indices, so a whole-chain
         selection survives a round trip through a consumer's state at its
         original size.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>addresses</code></p>
+    </td>
+    <td>
+      <p><code>ResidueAddress[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Residues by the chain, number and insertion code the file gives them,
+        for a caller that knows a residue by its address rather than its
+        position. They join <code>residues</code>; an address the structure does
+        not have selects nothing. The viewer reports its own selections as
+        <code>residues</code>.
       </p>
     </td>
   </tr>
@@ -1257,6 +1460,188 @@
     </td>
     <td><p>- (required)</p></td>
     <td><p>The caption shown beneath the value.</p></td>
+  </tr>
+</table>
+<h3>ResidueHighlight</h3>
+<p>
+  A residue by its address - a <code>ResidueAddress</code>, which is the same
+  three fields without <code>color</code> - and the color it is picked out in.
+  <code>ResidueRef</code> reports the same three, so a residue the viewer
+  reported can be handed straight back.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chainId</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Chain as named in the file (<code>auth_asym_id</code>).</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>seqId</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Residue number as written in the file.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>insCode</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Insertion code, when the residue has one. A blank one and none are the
+        same.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>color</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        As <code>#RRGGBB</code>. Highlights that name none take the next color
+        of <code>HIGHLIGHT_COLOR_PALETTE</code>, in the order they are given.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>CameraState</h3>
+<p>
+  Everything that places the camera, enough to put it back exactly where it was:
+  what <code>onCameraChange</code> reports and <code>initialCamera</code> takes.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>position</code>, <code>target</code>, <code>up</code></p>
+    </td>
+    <td>
+      <p><code>[number, number, number]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>Where the camera is, what it looks at, and which way is up.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>fov</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Field of view, in radians.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>radius</code>, <code>radiusMax</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The sphere around <code>target</code> the camera frames, and the whole
+        scene's, which bounds how far it clips.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>projection</code></p>
+    </td>
+    <td>
+      <p><code>"perspective" | "orthographic"</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>The camera's projection.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>viewport</code></p>
+    </td>
+    <td>
+      <p><code>{ width: number; height: number }</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Size of the canvas the camera framed, in pixels, for rendering an image
+        at the same aspect. Ignored when the state is applied.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>StructureLoadInfo</h3>
+<p>What <code>onStructureLoad</code> reports for each structure loaded.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>atomCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Atoms Mol* parsed.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>residueCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>Polymer residues across every chain, as the chains count them.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chains</code></p>
+    </td>
+    <td>
+      <p><code>ChainRef[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>The polymer chains found.</p></td>
   </tr>
 </table>
 <h3>LoadedStructureInfo</h3>

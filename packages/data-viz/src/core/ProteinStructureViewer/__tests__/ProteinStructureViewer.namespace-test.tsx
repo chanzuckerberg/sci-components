@@ -1,8 +1,17 @@
 import {
+  CameraOrientation,
+  CameraProjection,
+  CameraState,
   ChainRef,
   ColorScale,
   DownloadResolution,
+  HIGHLIGHT_COLOR_PALETTE,
   LoadedStructureInfo,
+  ResidueAddress,
+  ResidueHighlight,
+  StructureColorBy,
+  StructureLoadInfo,
+  StructureRepresentation,
   ProteinStructureViewer,
   ProteinStructureViewerProps,
   PLASMA_COLOR_SCALE,
@@ -69,6 +78,18 @@ const DOWNLOAD_RESOLUTION: DownloadResolution = "maximum";
 
 const SCENE_MODE: SceneMode = "external";
 
+const REPRESENTATION: StructureRepresentation = "surface";
+const COLOR_BY: StructureColorBy = "plddt";
+const ORIENTATION: CameraOrientation = "facing";
+const PROJECTION: CameraProjection = "orthographic";
+const ADDRESS: ResidueAddress = { chainId: "A", insCode: "A", seqId: 10 };
+
+/** The first takes the palette's first color; the second names its own. */
+const HIGHLIGHTS: ResidueHighlight[] = [
+  { chainId: "A", seqId: 1 },
+  { chainId: "A", color: HIGHLIGHT_COLOR_PALETTE[1], seqId: 2 },
+];
+
 /** Draws a surface over the structure the viewer parsed, and frames it. */
 async function drawSurface(
   plugin: Parameters<NonNullable<ProteinStructureViewerProps["onReady"]>>[0],
@@ -90,6 +111,7 @@ const ProteinStructureViewerNameSpaceTest = (
   const [selection, setSelection] = useState<StructureSelection | null>(null);
   const [hiddenChains, setHiddenChains] = useState<string[]>([]);
   const [chains, setChains] = useState<ChainRef[]>([]);
+  const [camera, setCamera] = useState<CameraState | null>(null);
 
   // Utilities re-exported alongside the component.
   const format: StructureFormat = detectStructureFormat(PDB);
@@ -156,6 +178,23 @@ const ProteinStructureViewerNameSpaceTest = (
           resolution: DOWNLOAD_RESOLUTION,
           showAxes: true,
         }}
+        structure={PDB}
+      />
+
+      {/* What is drawn, how it is painted, and where the camera looks */}
+      <ProteinStructureViewer
+        colorBy={COLOR_BY}
+        highlights={HIGHLIGHTS}
+        initialCamera={camera}
+        onCameraChange={setCamera}
+        onStructureLoad={(info: StructureLoadInfo) =>
+          console.log(info.atomCount, info.residueCount, info.chains.length)
+        }
+        orientation={ORIENTATION}
+        plddt={[0.94, null]}
+        projection={PROJECTION}
+        representation={REPRESENTATION}
+        selection={{ addresses: [ADDRESS] }}
         structure={PDB}
       />
 

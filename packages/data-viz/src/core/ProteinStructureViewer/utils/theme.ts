@@ -59,6 +59,11 @@ export interface MolstarViewSettings {
    * one, the console when it does not.
    */
   onError?: (error: unknown, phase: ViewerErrorPhase) => void;
+  /**
+   * True while the scene is being loaded or redrawn. A capture taken then
+   * would catch it half drawn, so the button waits it out.
+   */
+  sceneBusy?: boolean;
 }
 
 /**

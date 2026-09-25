@@ -78,7 +78,8 @@ export interface UseSelectionReadoutOptions {
   isReady: boolean;
   selection?: StructureSelection | null;
   hoveredResidue: HoveredResidue | null;
-  plddt?: number[] | null;
+  /** Scores by residue; `null` for one without a score, which is skipped. */
+  plddt?: readonly (number | null)[] | null;
   residueOverlay?: ResidueValueOverlay | null;
 }
 

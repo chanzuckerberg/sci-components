@@ -14,6 +14,7 @@ import { PLASMA_COLOR_SCALE } from "../../common/colorScales";
 import StructureLegend, {
   StructureLegendProps,
 } from "./components/StructureLegend";
+import { useCamera } from "./hooks/useCamera";
 import { useChainHighlight } from "./hooks/useChainHighlight";
 import { useChains } from "./hooks/useChains";
 import { useMolstarPlugin } from "./hooks/useMolstarPlugin";
@@ -23,19 +24,20 @@ import {
   useResidueHoverState,
   useSelectionReadout,
 } from "./hooks/useSelectionReadout";
-import { useStructureColoring } from "./hooks/useStructureColoring";
 import {
   ChainRef,
   ProteinStructureViewerProps,
   ResidueValueOverlay,
+  StructureColorBy,
 } from "./ProteinStructureViewer.types";
 import { PluginMount, ViewerRoot } from "./style";
 import { themeColor } from "./utils/color";
+import { PLDDT_BAND_COLORS, PLDDT_COLOR_SCALE } from "./utils/plddt";
 import {
-  PLDDT_BAND_COLORS,
-  PLDDT_COLOR_SCALE,
-  injectPlddt,
-} from "./utils/plddt";
+  residueAddressesKey,
+  resolveSelectionAddresses,
+} from "./utils/residueAddress";
+import { resolveColorBy } from "./utils/sceneThemes";
 
 export * from "./ProteinStructureViewer.types";
 export {
@@ -44,6 +46,7 @@ export {
   injectPlddtIntoMmcif,
   injectPlddtIntoPdb,
 } from "./utils/plddt";
+export { HIGHLIGHT_COLOR_PALETTE } from "./utils/highlights";
 export { detectStructureFormat } from "./utils/structureFormat";
 export type { StructureFormat } from "./utils/structureFormat";
 
@@ -78,18 +81,30 @@ type ScaleProps = Pick<
   | "valueLabel"
 >;
 
+const NO_SCALE: ScaleProps = {
+  scale: null,
+  scaleLabel: undefined,
+  scaleMax: null,
+  scaleTooltip: undefined,
+  scaleTooltipProps: undefined,
+  valueLabel: undefined,
+};
+
 /**
  * Chooses what the legend describes, following whatever is actually coloring
- * the structure: the overlay when one is set, the pLDDT bands when scores were
- * supplied, and nothing at all otherwise - Mol* falls back to chain coloring
- * there, which no per-residue scale describes, so a key would be labelling
- * colors that are not on screen.
+ * the structure: the overlay when it is painting, the pLDDT bands when they
+ * are, and nothing at all for chain coloring - which no per-residue scale
+ * describes, so a key would be labelling colors that are not on screen. An
+ * overlay named by `colorBy` but not supplied paints everything neutral, and
+ * has no key either.
  */
 function resolveScaleProps(
-  overlay: ResidueValueOverlay | null | undefined,
-  hasPlddt: boolean
+  colorBy: StructureColorBy,
+  overlay: ResidueValueOverlay | null | undefined
 ): ScaleProps {
-  if (overlay) {
+  if (colorBy === "overlay") {
+    if (!overlay) return NO_SCALE;
+
     return {
       scale: overlay.colorScale ?? PLASMA_COLOR_SCALE,
       scaleLabel: overlay.label ?? DEFAULT_OVERLAY_LABEL,
@@ -105,25 +120,15 @@ function resolveScaleProps(
     };
   }
 
-  if (hasPlddt) {
+  if (colorBy === "plddt") {
     return {
+      ...NO_SCALE,
       scale: PLDDT_COLOR_SCALE,
       scaleLabel: PLDDT_SCALE_LABEL,
-      scaleMax: null,
-      scaleTooltip: undefined,
-      scaleTooltipProps: undefined,
-      valueLabel: undefined,
     };
   }
 
-  return {
-    scale: null,
-    scaleLabel: undefined,
-    scaleMax: null,
-    scaleTooltip: undefined,
-    scaleTooltipProps: undefined,
-    valueLabel: undefined,
-  };
+  return NO_SCALE;
 }
 
 /**
@@ -145,9 +150,13 @@ const ProteinStructureViewer = forwardRef(
     const {
       backgroundColor,
       chainColors: chainColorOverrides,
+      colorBy: colorByProp,
       disableChainHighlightOnHover = false,
       download,
       hiddenChains: hiddenChainsProp,
+      highlights,
+      initialCamera,
+      onCameraChange,
       onChainVisibilityChange,
       onChainsChange,
       molstarSpec,
@@ -157,6 +166,10 @@ const ProteinStructureViewer = forwardRef(
       onResidueClick,
       onResidueHover,
       onSelectionChange,
+      onStructureLoad,
+      orientation,
+      projection,
+      representation = "cartoon",
       structure,
       plddt,
       residueOverlay,
@@ -179,15 +192,9 @@ const ProteinStructureViewer = forwardRef(
     // it; the mount is a separate element from the root the ref points at.
     const pluginMountRef = useRef<HTMLDivElement | null>(null);
 
-    const hasPlddt = Boolean(plddt && plddt.length > 0);
-
-    // pLDDT scores ride into Mol* through the B-factor column, so the text is
-    // rewritten rather than passed alongside. PDB and mmCIF each have their
-    // own column layout; `injectPlddt` picks the matching rewriter.
-    const processedStructure = useMemo(
-      () => (hasPlddt ? injectPlddt(structure, plddt as number[]) : structure),
-      [structure, plddt, hasPlddt]
-    );
+    // What paints the structure, resolved once so the coloring and the legend
+    // cannot disagree about what is on screen.
+    const colorBy = resolveColorBy(colorByProp, residueOverlay, plddt);
 
     const bgColor = useMemo(
       () =>
@@ -255,7 +262,8 @@ const ProteinStructureViewer = forwardRef(
         const isOnlyThisChain =
           selection?.chains?.length === 1 &&
           selection.chains[0] === chainId &&
-          !selection.residues?.length;
+          !selection.residues?.length &&
+          !selection.addresses?.length;
 
         changeSelection(isOnlyThisChain ? null : { chains: [chainId] });
       },
@@ -298,22 +306,21 @@ const ProteinStructureViewer = forwardRef(
     });
 
     const {
-      chainColorThemeRef,
+      addressIndexRef,
       chains: loadedChains,
+      framedOrientationRef,
       isReady,
       loadCount,
       pluginRef,
       residuesByChainRef,
-      residueValueThemeRef,
-      sceneMode: activeSceneMode,
+      sceneVersion,
       setClipRatio,
+      structureDataRef,
     } = useMolstarPlugin({
       backgroundColor: bgColor,
-      chainColors,
       containerRef: pluginMountRef,
       download,
       edgeColor,
-      hasPlddt,
       hiddenChains,
       highlightColor,
       mode,
@@ -328,12 +335,26 @@ const ProteinStructureViewer = forwardRef(
       onResidueHover: handleResidueHover,
       onSelectionChange: changeSelection,
       onSelectionClear: handleSelectionClear,
+      onStructureLoad,
+      scene: {
+        chainColors: chainColorOverrides,
+        colorBy: colorByProp,
+        hiddenChains,
+        highlights,
+        initialCamera,
+        mode,
+        orientation,
+        overlay: residueOverlay,
+        plddt,
+        projection,
+        representation,
+      },
       sceneMode,
       selectedChains,
       sequenceViewerBackgroundColor,
       showAxes,
       showSequenceViewer,
-      structure: processedStructure,
+      structure,
     });
 
     highlightChainRef.current = useChainHighlight({
@@ -341,7 +362,20 @@ const ProteinStructureViewer = forwardRef(
       hiddenChains,
       loadCount,
       pluginRef,
+      sceneVersion,
       selectedChains,
+    });
+
+    useCamera({
+      addressIndexRef,
+      framedOrientationRef,
+      highlights,
+      isReady,
+      onCameraChange,
+      orientation,
+      pluginRef,
+      projection,
+      structureDataRef,
     });
 
     // The plugin owns chain discovery, but the chain-keyed props have to be
@@ -358,25 +392,29 @@ const ProteinStructureViewer = forwardRef(
       onChainsChangeRef.current?.(loadedChains);
     }, [loadedChains]);
 
-    // A consumer drawing its own scene owns its colors too; repainting its
-    // representations with the viewer's theme would undo them.
-    useStructureColoring({
-      chainColorThemeRef,
-      chainColors,
-      disabled: activeSceneMode === "external",
-      hasPlddt,
-      isReady,
-      mode,
-      overlay: residueOverlay,
-      pluginRef,
-      residueValueThemeRef,
-    });
+    /**
+     * The selection with its addresses turned into residue indices, which is
+     * the form the focus and the readout read. Resolved against the structure
+     * as loaded, so it is worked out again after each load.
+     */
+    const addressesKey = residueAddressesKey(selection?.addresses);
+    const focusedSelection = useMemo(
+      () =>
+        resolveSelectionAddresses(
+          selection,
+          addressIndexRef.current ?? new Map()
+        ),
+      // The addresses are read through their key, and the index is rewritten
+      // by each load, which loadCount counts.
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [selection, addressesKey, loadCount]
+    );
 
     useSelectionFocus({
       hiddenChains,
       isReady,
       pluginRef,
-      selection,
+      selection: focusedSelection,
       setClipRatio,
     });
 
@@ -387,12 +425,12 @@ const ProteinStructureViewer = forwardRef(
       pluginRef,
       residueOverlay,
       residuesByChainRef,
-      selection,
+      selection: focusedSelection,
     });
 
     const scaleProps = useMemo(
-      () => resolveScaleProps(residueOverlay, hasPlddt),
-      [residueOverlay, hasPlddt]
+      () => resolveScaleProps(colorBy, residueOverlay),
+      [colorBy, residueOverlay]
     );
 
     /**
@@ -406,8 +444,8 @@ const ProteinStructureViewer = forwardRef(
      * a swatch at all, so the rows keep their labels and toggles and the color
      * key beside them does the describing.
      */
-    const chainColoringActive = !residueOverlay && !hasPlddt;
-    const plddtColoringActive = !residueOverlay && hasPlddt;
+    const chainColoringActive = colorBy === "chain";
+    const plddtColoringActive = colorBy === "plddt";
 
     return (
       <ViewerRoot ref={ref} showSequenceViewer={showSequenceViewer} {...rest}>
