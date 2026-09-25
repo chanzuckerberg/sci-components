@@ -85,12 +85,19 @@
 ></div>
 <h3>Selection and stats</h3>
 <p>
-  Selection is controlled through one prop. Every way of making one - clicking a
-  residue, dragging across the sequence, clicking a chain's caption - arrives
-  through <code>onSelectionChange</code>; echoing it back through
-  <code>selection</code> frames it, and setting <code>null</code> zooms back
-  out. Clicking empty space calls <code>onSelectionChange</code> with
-  <code>null</code>.
+  Selection works out of the box: clicking a residue zooms in on it, and
+  clicking empty space zooms back out, with no state on your side. Every way of
+  making one - clicking a residue, dragging across the sequence, clicking a
+  chain's caption - is reported through <code>onSelectionChange</code>, and
+  clicking empty space reports <code>null</code>.
+</p>
+<p>
+  Passing <code>selection</code> takes it over, the same way
+  <code>hiddenChains</code> takes over visibility. A click then moves the camera
+  only once you echo <code>onSelectionChange</code> back through
+  <code>selection</code>, and setting <code>null</code> zooms back out. Pass
+  <code>null</code> for nothing selected rather than leaving it undefined, which
+  hands the selection back to the viewer.
 </p>
 <p>
   A <code>StructureSelection</code> says what is selected in either of two ways,
@@ -440,8 +447,8 @@
   <code>customParamEditors</code> - are appended to rather than replaced. For
   <code>config</code> that is what makes an override work, since Mol* reads the
   list in order and a later entry wins. It also means a behavior cannot be taken
-  away: the viewer removes Mol*'s click-to-zoom camera so that
-  <code>selection</code> alone drives the camera, and that stays removed.
+  away: the viewer removes Mol*'s click-to-zoom camera so that the selection
+  alone drives the camera, and that stays removed.
 </p>
 <p>
   And it is read once, when the plugin is created - except for
@@ -511,15 +518,16 @@
     <td>
       <p><code>StructureSelection | null</code></p>
     </td>
-    <td>
-      <p><code>null</code></p>
-    </td>
+    <td><p>-</p></td>
     <td>
       <p>
-        What is selected. Controlled: the camera frames whatever it covers, and
-        clearing it zooms back out. Residues are drawn in ball-and-stick; a
-        whole chain dims the chains around it instead. See the table below for
-        its shape.
+        What is selected. Leave undefined to let the viewer own it, so a click
+        zooms in on a residue with no state on your side; passing it takes that
+        over, and a click then moves the camera only once
+        <code>onSelectionChange</code> is echoed back. Either way the camera
+        frames whatever it covers, and clearing it zooms back out. Residues are
+        drawn in ball-and-stick; a whole chain dims the chains around it
+        instead. See the table below for its shape.
       </p>
     </td>
   </tr>
@@ -767,7 +775,8 @@
         dragging across the sequence, clicking a chain caption - and with
         <code>null</code> when they click empty space to clear it. A whole-chain
         selection arrives as <code>{ chains: [id] }</code> rather than as every
-        index on it.
+        index on it. Fires whether or not <code>selection</code> is controlled,
+        so a consumer can follow the viewer's own selection without owning it.
       </p>
     </td>
   </tr>

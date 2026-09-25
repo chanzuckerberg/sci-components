@@ -50,12 +50,12 @@ export interface ResidueValueOverlay {
  * address it.
  *
  * `index` is the viewer's own key: the position in `plddt` and in
- * `residueOverlay`'s map, and what `selectedResidue` takes. `chainId`, `seqId`
- * and `insCode` are what the file says, which is what the sequence panel shows
- * and what a system that supplied the structure will recognise. They differ
- * from `index` whenever the file does not number a single chain from 1 -- a
- * crop, or a complex -- so address a residue outside the viewer with those
- * three, not with `index`.
+ * `residueOverlay`'s map, and what `selection.residues` takes. `chainId`,
+ * `seqId` and `insCode` are what the file says, which is what the sequence
+ * panel shows and what a system that supplied the structure will recognise.
+ * They differ from `index` whenever the file does not number a single chain
+ * from 1 -- a crop, or a complex -- so address a residue outside the viewer
+ * with those three, not with `index`.
  *
  * `insCode` is rarely set but is part of the address when it is: `10` and `10A`
  * are different residues on the same chain, so chain and number alone do not
@@ -223,13 +223,15 @@ export interface ProteinStructureViewerProps extends Omit<
   /** Per-residue values that override pLDDT coloring while set. */
   residueOverlay?: ResidueValueOverlay | null;
   /**
-   * What is selected, or null when nothing is. Controlled: the camera frames
-   * whatever the selection covers, and clearing it zooms back out to the
-   * default view.
+   * What is selected, or null when nothing is. Leave undefined to let the
+   * viewer own the selection, so clicking a residue zooms in on it with no
+   * state on the consumer's side; passing it takes that over, and a click then
+   * moves the camera only once `onSelectionChange` is echoed back here.
    *
-   * Residues are drawn in ball-and-stick over the cartoon; whole chains are
-   * left as they are and the chains around them dim, the same as hovering a
-   * chain's name.
+   * Either way the camera frames whatever the selection covers, and clearing
+   * it zooms back out to the default view. Residues are drawn in
+   * ball-and-stick over the cartoon; whole chains are left as they are and the
+   * chains around them dim, the same as hovering a chain's name.
    */
   selection?: StructureSelection | null;
   /**
@@ -301,6 +303,8 @@ export interface ProteinStructureViewerProps extends Omit<
    *
    * A whole-chain selection arrives as `{ chains: [id] }` rather than as every
    * index on it, so echoing it straight back into `selection` costs nothing.
+   * Fires whether or not `selection` is controlled, so a consumer can follow
+   * the viewer's own selection without owning it.
    */
   onSelectionChange?: (selection: StructureSelection | null) => void;
   /**
