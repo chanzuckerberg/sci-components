@@ -957,6 +957,93 @@ describe("<ProteinStructureViewer />", () => {
         expect(screen.getByText("PHE 13")).toBeInTheDocument()
       );
     });
+
+    /**
+     * Left undefined, `selection` is the viewer's own, which is how the
+     * documented examples mount it: nobody is there to echo a click back, so
+     * the viewer has to take it up itself or a click would never zoom.
+     */
+    describe("when nobody controls it", () => {
+      function uncontrolled(
+        structure = CRAMBIN_PDB,
+        onSelectionChange?: ProteinStructureViewerProps["onSelectionChange"]
+      ) {
+        return (
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              onSelectionChange={onSelectionChange}
+              structure={structure}
+            />
+          </ThemeProvider>
+        );
+      }
+
+      async function interactive() {
+        await waitFor(() =>
+          expect(
+            plugin.behaviors.interaction.click.subscribe
+          ).toHaveBeenCalled()
+        );
+      }
+
+      /** Clicks a residue the way the 3D view reports one. */
+      function clickResidue(index: number) {
+        const loci = lociForResidueIndex(
+          plugin as unknown as PluginUIContext,
+          index
+        );
+        act(() =>
+          plugin.behaviors.interaction.click.emit({ current: { loci } })
+        );
+      }
+
+      it("zooms in on a clicked residue", async () => {
+        const onSelectionChange = vi.fn();
+        render(uncontrolled(CRAMBIN_PDB, onSelectionChange));
+        await interactive();
+
+        clickResidue(12);
+
+        await waitFor(() => expect(focusMoves()).toBeGreaterThan(0));
+        expect(onSelectionChange).toHaveBeenCalledWith({ residues: [12] });
+      });
+
+      it("zooms back out when empty space is clicked", async () => {
+        const onSelectionChange = vi.fn();
+        render(uncontrolled(CRAMBIN_PDB, onSelectionChange));
+        await interactive();
+        clickResidue(12);
+        await waitFor(() => expect(focusMoves()).toBeGreaterThan(0));
+
+        plugin.canvas3d.requestCameraReset.mockClear();
+        act(() => plugin.behaviors.interaction.click.emit(EMPTY_CLICK));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled()
+        );
+        expect(onSelectionChange).toHaveBeenLastCalledWith(null);
+      });
+
+      it("zooms in on the same index again once the structure is swapped", async () => {
+        // An index names a different residue on the new structure, so a click
+        // on it is a new selection rather than a repeat of the old one.
+        const { rerender } = render(uncontrolled());
+        await interactive();
+        clickResidue(12);
+        await waitFor(() => expect(focusMoves()).toBeGreaterThan(0));
+
+        plugin.managers.structure.focus.clear.mockClear();
+        rerender(uncontrolled(OTHER_PDB));
+        await waitFor(() =>
+          expect(plugin.managers.structure.focus.clear).toHaveBeenCalled()
+        );
+
+        const before = focusMoves();
+        clickResidue(12);
+
+        await waitFor(() => expect(focusMoves()).toBeGreaterThan(before));
+      });
+    });
   });
 
   /**
@@ -1152,6 +1239,17 @@ describe("<ProteinStructureViewer />", () => {
 
       it("dims the other chains for as long as it stands", async () => {
         render(selecting({ chains: ["B"] }));
+
+        await waitFor(() =>
+          expect(setStructureTransparency).toHaveBeenCalled()
+        );
+        expect(new Set(dimmedChainIds())).toEqual(new Set(["A"]));
+      });
+
+      it("selects a chain from its name when nobody controls the selection", async () => {
+        renderViewer({ structure: BARNASE_BARSTAR_PDB });
+
+        fireEvent.click(await screen.findByRole("button", { name: "Chain B" }));
 
         await waitFor(() =>
           expect(setStructureTransparency).toHaveBeenCalled()
