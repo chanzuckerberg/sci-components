@@ -26,6 +26,12 @@
         "isRequired": false,
         "type": "Partial<PluginUISpec>"
       },
+      "sceneMode": {
+        "defaultValue": "managed",
+        "description": "Who draws the structure.\n\n`\"managed\"` draws each chain as a cartoon and its ligands as\nball-and-stick, colors them from `plddt`, `residueOverlay` and\n`chainColors`, hides the chains `hiddenChains` names, and frames the camera\non each structure it loads.\n\n`\"external\"` parses the structure and stops there: nothing is drawn,\ncolored, hidden or framed, and a consumer draws its own scene on the\nstructure `onReady` hands it. The sequence panel, selection, hover, legend\nand camera controls work as before; the legend describes the props rather\nthan what the consumer drew, and its chain toggles report through\n`onChainVisibilityChange` without hiding anything. Mol* frames the camera\non the first representation drawn into the empty scene.\n\nRead once, when the plugin is created.",
+        "isRequired": false,
+        "type": "\"managed\" | \"external\""
+      },
       "disableChainHighlightOnHover": {
         "defaultValue": false,
         "description": "Stop other chains from dimming in the 3D view while a chain's name is\npointed at, in the legend or above its grid in the sequence panel.\n\nThe dim is on by default, since on a complex it is how a reader finds out\nwhich chain is which. Turn it off where the movement is more distracting\nthan the answer is useful - a grid of viewers a pointer crosses on its way\nsomewhere else, or a page driving its own highlighting through `selection`.",
@@ -65,17 +71,6 @@
         "description": "Up to three whole-structure stats shown along the bottom. A null entry\nreserves its column without rendering anything, so the columns never shift\nas values come and go.",
         "isRequired": false,
         "type": "(StructureStat | null)[]"
-      },
-      "resolution": {
-        "defaultValue": "medium",
-        "description": "1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as DOWNLOAD_RESOLUTIONS, for labelling a control of your own.",
-        "isRequired": false,
-        "type": "\"low\" | \"medium\" | \"high\" | \"maximum\""
-      },
-      "filename": {
-        "description": "Name for the file, without an extension. Defaults to the one Mol* derives from the loaded structure.",
-        "isRequired": false,
-        "type": "string"
       },
       "structure": {
         "defaultValue": "- (required)",
@@ -123,85 +118,20 @@
         "isRequired": false,
         "type": "(hiddenChains: string[]) => void"
       },
-      "residues": {
-        "description": "0-based residue indices, counting residues in file order across the whole structure - the same index plddt and residueOverlay are keyed by.",
+      "onReady": {
+        "description": "Called with the Mol* plugin once a structure is loaded into it, and again\nfor each structure that replaces it, which is how a consumer reaches the\nplugin to draw on it or drive it directly.\n\nAwaited before the viewer starts answering clicks and hovers and before\nits coloring is applied, so a scene built here is in place before any of\nthat touches it. Not called for a structure that failed to load, or for a\nplugin the viewer disposed of first.",
         "isRequired": false,
-        "type": "number[]"
+        "type": "(plugin: PluginUIContext, loaded: LoadedStructureInfo) => void | Promise<void>"
       },
-      "chains": {
-        "description": "Whole chains by chainId, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size.",
+      "onError": {
+        "description": "Called when creating the plugin, loading a structure or capturing an image\nfails, in place of the message the viewer would otherwise log. A rejected\n`onReady` is reported as a `\"load\"` failure. Nothing is reported for a\nplugin the viewer has already disposed of.",
         "isRequired": false,
-        "type": "string[]"
+        "type": "(error: unknown, phase: ViewerErrorPhase) => void"
       },
-      "chainId": {
-        "defaultValue": "- (required)",
-        "description": "Chain as named in the file (auth_asym_id), e.g. \"A\".",
+      "onDispose": {
+        "description": "Called before the viewer disposes of a plugin it handed to `onReady`,\nincluding one whose `onReady` has not finished, so that whatever was built\non it can be let go.",
         "isRequired": false,
-        "type": "string"
-      },
-      "startIndex": {
-        "defaultValue": "- (required)",
-        "description": "Lowest 0-based residue index of the chain's polymer.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "endIndex": {
-        "defaultValue": "- (required)",
-        "description": "Highest 0-based residue index of the chain's polymer.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "residueCount": {
-        "defaultValue": "- (required)",
-        "description": "Polymer residues the chain holds.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "values": {
-        "defaultValue": "- (required)",
-        "description": "0-based residue index to value. Residues absent from the map read as 0, so they render in the neutral gray rather than at the bottom of the scale.",
-        "isRequired": false,
-        "type": "Map<number, number>"
-      },
-      "max": {
-        "defaultValue": "- (required)",
-        "description": "The value mapped to the top of the color scale.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "min": {
-        "defaultValue": 0,
-        "description": "Values at or below this render in a neutral gray rather than on the scale.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "colorScale": {
-        "defaultValue": "PLASMA_COLOR_SCALE",
-        "description": "Scale used to color residues and to draw the legend.",
-        "isRequired": false,
-        "type": "ColorScale"
-      },
-      "tooltip": {
-        "description": "Help tooltip title on the legend caption. A string is enough for the common case; use tooltipProps for a subtitle, a custom body, or placement. Overrides tooltipProps.title when both are set.",
-        "isRequired": false,
-        "type": "string"
-      },
-      "tooltipProps": {
-        "description": "Props forwarded to the SDS Tooltip on the legend caption. The trigger is the caption's help icon, so children is omitted.",
-        "isRequired": false,
-        "type": "Partial<Omit<TooltipProps, \"children\">>"
-      },
-      "readoutLabel": {
-        "defaultValue": "Value",
-        "description": "Label for the per-residue readout that replaces a stat slot on hover.",
-        "isRequired": false,
-        "type": "string"
-      },
-      "value": {
-        "defaultValue": "- (required)",
-        "description": "The stat's value, already formatted for display.",
-        "isRequired": false,
-        "type": "string"
+        "type": "() => void"
       }
     }
   }
