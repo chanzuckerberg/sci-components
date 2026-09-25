@@ -1,4 +1,6 @@
+import type { LoadedStructureInfo } from "@data-viz/src/core/ProteinStructureViewer";
 import { Args, Meta } from "@storybook/react-vite";
+import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import {
   BARNASE_BARSTAR_INTERFACE,
   BARNASE_BARSTAR_MAX_INTERFACE,
@@ -75,6 +77,12 @@ export default {
       control: { type: "object" },
       description:
         "Mol* plugin spec laid over the viewer's own, for settings with no prop of their own. Read once at creation, except canvas3d.",
+    },
+    sceneMode: {
+      control: { type: "select" },
+      description:
+        "Who draws the structure. external parses it and leaves the canvas empty for a scene drawn in onReady. Read once at creation.",
+      options: ["managed", "external"],
     },
     disableChainHighlightOnHover: {
       control: { type: "boolean" },
@@ -376,6 +384,40 @@ export const WithImageDownload = {
     download: { filename: "crambin", resolution: "high" },
   },
   parameters: VIEWER_CHECKS,
+};
+
+/** Draws a molecular surface over whatever structure the viewer parsed. */
+async function drawMolecularSurface(
+  plugin: PluginUIContext,
+  { structure }: LoadedStructureInfo
+) {
+  await plugin.builders.structure.representation.addRepresentation(structure, {
+    color: "hydrophobicity",
+    type: "molecular-surface",
+  });
+}
+
+/**
+ * The viewer parses the structure and leaves the canvas to the consumer, whose
+ * `onReady` draws a molecular surface colored by hydrophobicity - a scene no
+ * prop of the viewer's describes.
+ *
+ * Everything that is not drawing works as it does elsewhere: the sequence
+ * panel, hovering and selecting residues, and the camera controls. Mol* frames
+ * the camera on the first representation drawn into the empty scene. There are
+ * no pLDDT scores here, so the legend has no color key to describe colors the
+ * consumer chose.
+ */
+export const WithExternalScene = {
+  args: { ...DEFAULT_ARGS, plddt: null },
+  parameters: VIEWER_CHECKS,
+  render: (props: Args) => (
+    <ProteinStructureViewer
+      {...props}
+      onReady={drawMolecularSurface}
+      sceneMode="external"
+    />
+  ),
 };
 
 /**
