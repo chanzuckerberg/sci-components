@@ -164,11 +164,11 @@ async function createViewer({
   // zooms in with a tiny focus radius, which collapses the camera's near/far
   // clip planes into a thin slab around the residue and slices the rest of the
   // structure away; and it moves the camera on click, when the camera is meant
-  // to follow `selectedResidue`. The zoom is driven from useResidueFocus
-  // instead, which keeps the clip planes open to the whole scene. The residue
-  // highlight is unaffected - that comes from the separate
-  // Representation.FocusLoci behavior, so a click still marks a residue even
-  // when the consumer does not drive the selection.
+  // to follow `selection`. The zoom is driven from useSelectionFocus instead,
+  // which keeps the clip planes open to the whole scene. The residue highlight
+  // is unaffected - that comes from the separate Representation.FocusLoci
+  // behavior, so a click still marks a residue even when a consumer
+  // controlling the selection declines it.
   const behaviors = spec.behaviors.filter(
     (b) => b.transformer !== PluginBehaviors.Camera.FocusLoci
   );
@@ -865,8 +865,10 @@ export function useMolstarPlugin({
           const residue = residueRefFromLoci(loci);
           if (!residue) return;
 
-          // Reporting only: the camera follows `selection`, so it is the
-          // consumer echoing this back that moves it (see useSelectionFocus).
+          // Reporting only: the camera follows the selection, so it moves once
+          // this is accepted - echoed back by a consumer controlling
+          // `selection`, or taken up by the viewer when nobody is (see
+          // useSelectionFocus).
           //
           // Two callbacks because a click carries two different facts. The
           // residue is the one under the pointer, which is all a click on the

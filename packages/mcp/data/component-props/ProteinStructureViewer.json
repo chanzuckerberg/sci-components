@@ -94,8 +94,7 @@
         "type": "ResidueValueOverlay | null"
       },
       "selection": {
-        "defaultValue": null,
-        "description": "What is selected, or null when nothing is. Controlled: the camera frames\nwhatever the selection covers, and clearing it zooms back out to the\ndefault view.\n\nResidues are drawn in ball-and-stick over the cartoon; whole chains are\nleft as they are and the chains around them dim, the same as hovering a\nchain's name.",
+        "description": "What is selected, or null when nothing is. Leave undefined to let the\nviewer own the selection, so clicking a residue zooms in on it with no\nstate on the consumer's side; passing it takes that over, and a click then\nmoves the camera only once `onSelectionChange` is echoed back here.\n\nEither way the camera frames whatever the selection covers, and clearing\nit zooms back out to the default view. Residues are drawn in\nball-and-stick over the cartoon; whole chains are left as they are and the\nchains around them dim, the same as hovering a chain's name.",
         "isRequired": false,
         "type": "StructureSelection | null"
       },
@@ -110,7 +109,7 @@
         "type": "(residue: ResidueRef | null) => void"
       },
       "onSelectionChange": {
-        "description": "Called with the new selection whenever the user makes one - clicking a\nresidue, dragging across the sequence, clicking a chain caption - and with\n`null` when they click empty space to clear it.\n\nA whole-chain selection arrives as `{ chains: [id] }` rather than as every\nindex on it, so echoing it straight back into `selection` costs nothing.",
+        "description": "Called with the new selection whenever the user makes one - clicking a\nresidue, dragging across the sequence, clicking a chain caption - and with\n`null` when they click empty space to clear it.\n\nA whole-chain selection arrives as `{ chains: [id] }` rather than as every\nindex on it, so echoing it straight back into `selection` costs nothing.\nFires whether or not `selection` is controlled, so a consumer can follow\nthe viewer's own selection without owning it.",
         "isRequired": false,
         "type": "(selection: StructureSelection | null) => void"
       },

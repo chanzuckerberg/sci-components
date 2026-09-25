@@ -379,6 +379,32 @@ export const WithImageDownload = {
 };
 
 /**
+ * Crambin's Thr39, as the 0-based index a selection takes. It sits near the
+ * edge of the default view, so opening on it moves the camera across as well
+ * as in.
+ */
+const THR_39 = 38;
+
+/**
+ * A residue selected on load. The camera zooms in on it as soon as the
+ * structure is drawn and centers it on the canvas, it is drawn in
+ * ball-and-stick with the residues around it, and the readout names it in
+ * place of the whole-structure stats. Clicking empty space zooms back out.
+ */
+export const WithResidueSelected = {
+  args: DEFAULT_ARGS,
+  parameters: VIEWER_CHECKS,
+  // Through `render` for the same reason as the chain selection below: the
+  // selection the story opens on seeds the harness's own state.
+  render: (props: Args) => (
+    <ProteinStructureViewer
+      {...props}
+      initialSelection={{ residues: [THR_39] }}
+    />
+  ),
+};
+
+/**
  * A whole chain selected on load. The chain is drawn exactly as it would be
  * unselected and the rest of the complex dims around it, which is what pointing
  * at a chain's name does for as long as the pointer is there.

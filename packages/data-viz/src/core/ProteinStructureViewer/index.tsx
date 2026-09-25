@@ -17,6 +17,7 @@ import StructureLegend, {
 import { useChainHighlight } from "./hooks/useChainHighlight";
 import { useChains } from "./hooks/useChains";
 import { useMolstarPlugin } from "./hooks/useMolstarPlugin";
+import { useSelection } from "./hooks/useSelection";
 import { useSelectionFocus } from "./hooks/useSelectionFocus";
 import {
   useResidueHoverState,
@@ -129,10 +130,12 @@ function resolveScaleProps(
  * Interactive 3D protein structure viewer built on Mol*, with a sequence panel,
  * pLDDT confidence coloring, per-residue value overlays, and a stats legend.
  *
- * The viewer is controlled for selection: `selectedResidue` drives the camera
- * (clicking a residue zooms in on it, clearing the selection zooms back out),
- * while hover state is owned internally so the legend can show a live readout
- * without the consumer round-tripping every pointer move.
+ * The selection drives the camera: clicking a residue zooms in on it, and
+ * clearing the selection zooms back out. It is controlled when `selection` is
+ * passed and owned internally when it is not, so a click zooms without the
+ * consumer holding any state. Hover state is always owned internally, so the
+ * legend can show a live readout without the consumer round-tripping every
+ * pointer move.
  */
 const ProteinStructureViewer = forwardRef(
   (
@@ -154,7 +157,7 @@ const ProteinStructureViewer = forwardRef(
       structure,
       plddt,
       residueOverlay,
-      selection = null,
+      selection: selectionProp,
       sequenceViewerBackgroundColor,
       showAxes = true,
       showChainLegend = true,
@@ -209,11 +212,17 @@ const ProteinStructureViewer = forwardRef(
     const { handleResidueHover, hoveredResidue } =
       useResidueHoverState(onResidueHover);
 
+    const { changeSelection, selection } = useSelection({
+      onSelectionChange,
+      selection: selectionProp,
+      structure,
+    });
+
     // A click on empty space clears the selection; anything landing on the
     // structure is reported through the residue callback instead.
     const handleSelectionClear = useCallback(() => {
-      onSelectionChange?.(null);
-    }, [onSelectionChange]);
+      changeSelection(null);
+    }, [changeSelection]);
 
     /**
      * Chains the selection covers whole, which is what makes a chain caption a
@@ -244,9 +253,9 @@ const ProteinStructureViewer = forwardRef(
           selection.chains[0] === chainId &&
           !selection.residues?.length;
 
-        onSelectionChange?.(isOnlyThisChain ? null : { chains: [chainId] });
+        changeSelection(isOnlyThisChain ? null : { chains: [chainId] });
       },
-      [onSelectionChange, selection]
+      [changeSelection, selection]
     );
 
     /**
@@ -309,7 +318,7 @@ const ProteinStructureViewer = forwardRef(
       onChainToggle: toggleChain,
       onResidueClick,
       onResidueHover: handleResidueHover,
-      onSelectionChange,
+      onSelectionChange: changeSelection,
       onSelectionClear: handleSelectionClear,
       selectedChains,
       sequenceViewerBackgroundColor,
