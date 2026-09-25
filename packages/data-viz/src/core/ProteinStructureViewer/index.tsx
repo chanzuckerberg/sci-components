@@ -37,7 +37,7 @@ import {
   residueAddressesKey,
   resolveSelectionAddresses,
 } from "./utils/residueAddress";
-import { resolveColorBy } from "./utils/sceneThemes";
+import { resolveColorBy } from "./scene/coloring";
 
 export * from "./ProteinStructureViewer.types";
 export {
@@ -47,6 +47,7 @@ export {
   injectPlddtIntoPdb,
 } from "./utils/plddt";
 export { HIGHLIGHT_COLOR_PALETTE } from "./utils/highlights";
+export { applyStructureScene, renderStructureImage } from "./scene";
 export { detectStructureFormat } from "./utils/structureFormat";
 export type { StructureFormat } from "./utils/structureFormat";
 
@@ -313,9 +314,9 @@ const ProteinStructureViewer = forwardRef(
       loadCount,
       pluginRef,
       residuesByChainRef,
+      sceneRef,
       sceneVersion,
       setClipRatio,
-      structureDataRef,
     } = useMolstarPlugin({
       backgroundColor: bgColor,
       containerRef: pluginMountRef,
@@ -336,7 +337,7 @@ const ProteinStructureViewer = forwardRef(
       onSelectionChange: changeSelection,
       onSelectionClear: handleSelectionClear,
       onStructureLoad,
-      scene: {
+      sceneProps: {
         chainColors: chainColorOverrides,
         colorBy: colorByProp,
         hiddenChains,
@@ -367,7 +368,6 @@ const ProteinStructureViewer = forwardRef(
     });
 
     useCamera({
-      addressIndexRef,
       framedOrientationRef,
       highlights,
       isReady,
@@ -375,7 +375,7 @@ const ProteinStructureViewer = forwardRef(
       orientation,
       pluginRef,
       projection,
-      structureDataRef,
+      sceneRef,
     });
 
     // The plugin owns chain discovery, but the chain-keyed props have to be

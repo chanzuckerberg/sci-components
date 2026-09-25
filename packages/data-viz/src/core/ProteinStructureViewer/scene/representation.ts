@@ -14,7 +14,7 @@ import { MolScriptBuilder as MS } from "molstar/lib/mol-script/language/builder"
 import type { Expression } from "molstar/lib/mol-script/language/expression";
 import { compile } from "molstar/lib/mol-script/runtime/query/compiler";
 import type { StateObjectSelector } from "molstar/lib/mol-state";
-import { chainLigandExpression, chainPolymerExpression } from "./chains";
+import { chainLigandExpression, chainPolymerExpression } from "../utils/chains";
 
 export type StructureSelector =
   StateObjectSelector<PluginStateObject.Molecule.Structure>;

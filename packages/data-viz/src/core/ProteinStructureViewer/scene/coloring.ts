@@ -9,18 +9,22 @@ import {
   CHAIN_COLOR_THEME_NAME,
   ChainColorTheme,
   createChainColorTheme,
-} from "./chainColorTheme";
-import { PLDDT_THEME_NAME, PlddtTheme, createPlddtTheme } from "./plddtTheme";
+} from "../utils/chainColorTheme";
+import {
+  PLDDT_THEME_NAME,
+  PlddtTheme,
+  createPlddtTheme,
+} from "../utils/plddtTheme";
 import {
   ResidueColorOverrides,
   createResidueColorOverrides,
-} from "./residueColorOverrides";
+} from "../utils/residueColorOverrides";
 import {
   RESIDUE_VALUE_THEME_NAME,
   ResidueValueTheme,
   createResidueValueTheme,
-} from "./residueValueTheme";
-import type { ThemeMode } from "./theme";
+} from "../utils/residueValueTheme";
+import type { ThemeMode } from "../utils/theme";
 
 /**
  * Every color theme a viewer paints with, and the residue overrides they share.
@@ -46,15 +50,38 @@ export function createSceneThemes(mode: ThemeMode): SceneThemes {
 }
 
 /** Registers the themes on a plugin, so representations can name them. */
-export function registerSceneThemes(
-  plugin: PluginContext,
-  themes: SceneThemes
-): void {
+function registerSceneThemes(plugin: PluginContext, themes: SceneThemes): void {
   const registry = plugin.representation.structure.themes.colorThemeRegistry;
 
   for (const { provider } of [themes.chain, themes.plddt, themes.value]) {
     registry.add(provider as Parameters<typeof registry.add>[0]);
   }
+}
+
+const themesByPlugin = new WeakMap<PluginContext, SceneThemes>();
+
+/**
+ * The themes a plugin paints with, created and registered the first time it
+ * is asked for them.
+ *
+ * One set per plugin rather than one per scene: Mol*'s registry refuses a
+ * name it already holds, so a plugin a scene is applied to a second time -
+ * the same offscreen plugin rendering one structure after another - reuses
+ * the themes it has instead of failing to register new ones.
+ */
+export function sceneThemesFor(
+  plugin: PluginContext,
+  mode: ThemeMode
+): SceneThemes {
+  let themes = themesByPlugin.get(plugin);
+
+  if (!themes) {
+    themes = createSceneThemes(mode);
+    registerSceneThemes(plugin, themes);
+    themesByPlugin.set(plugin, themes);
+  }
+
+  return themes;
 }
 
 /** The Mol* theme name each way of coloring is registered under. */

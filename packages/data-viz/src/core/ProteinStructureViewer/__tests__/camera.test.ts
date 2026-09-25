@@ -9,7 +9,7 @@ import {
   frameStructure,
   orientationSnapshot,
   readCameraState,
-} from "../utils/camera";
+} from "../scene/camera";
 
 /**
  * The orientations are geometry, run through Mol*'s own camera: each has to

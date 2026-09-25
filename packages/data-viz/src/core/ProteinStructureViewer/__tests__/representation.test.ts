@@ -3,7 +3,7 @@ import {
   MAX_SURFACE_GRID_CELLS,
   assertSurfaceBudget,
   isViewerComponent,
-} from "../utils/representation";
+} from "../scene/representation";
 import { structureFromPdb } from "./molstarStructure";
 
 describe("the surface's grid budget", () => {

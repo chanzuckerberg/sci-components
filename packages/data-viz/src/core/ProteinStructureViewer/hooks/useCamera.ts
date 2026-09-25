@@ -1,4 +1,3 @@
-import type { Structure } from "molstar/lib/mol-model/structure";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { RefObject, useEffect, useRef } from "react";
 import type {
@@ -10,11 +9,9 @@ import type {
 import {
   ORIENT_DURATION_MS,
   camerasEqual,
-  orientationSnapshot,
   readCameraState,
-  residuesCenter,
-} from "../utils/camera";
-import { resolveHighlights } from "../utils/highlights";
+} from "../scene/camera";
+import type { StructureScene } from "../scene/StructureScene";
 
 /**
  * How long the camera has to stay put before it counts as having come to
@@ -25,13 +22,13 @@ const CAMERA_SETTLE_MS = 150;
 
 export interface UseCameraOptions {
   pluginRef: RefObject<PluginUIContext | null>;
+  /** The scene, which turns the camera relative to what it has loaded. */
+  sceneRef: RefObject<StructureScene | null>;
   isReady: boolean;
   projection?: CameraProjection;
   orientation?: CameraOrientation;
   /** The highlights an orientation turns toward. */
   highlights?: readonly ResidueHighlight[];
-  addressIndexRef: RefObject<Map<string, number>>;
-  structureDataRef: RefObject<Structure | null>;
   /** The orientation last applied, by a load or by this hook. */
   framedOrientationRef: { current: CameraOrientation | undefined };
   onCameraChange?: (camera: CameraState) => void;
@@ -44,7 +41,6 @@ export interface UseCameraOptions {
  * knows when there is something drawn to place it against.
  */
 export function useCamera({
-  addressIndexRef,
   framedOrientationRef,
   highlights,
   isReady,
@@ -52,7 +48,7 @@ export function useCamera({
   orientation,
   pluginRef,
   projection,
-  structureDataRef,
+  sceneRef,
 }: UseCameraOptions): void {
   // Read when an orientation is applied rather than depended on: turning the
   // camera is what a change of orientation asks for, and not what a change of
@@ -71,9 +67,8 @@ export function useCamera({
   }, [isReady, pluginRef, projection]);
 
   useEffect(() => {
-    const canvas3d = pluginRef.current?.canvas3d;
-    const structure = structureDataRef.current;
-    if (!canvas3d || !isReady || !structure) return;
+    const scene = sceneRef.current;
+    if (!scene || !isReady) return;
 
     // The load applies the orientation it finds, so the first pass after one
     // has nothing to do.
@@ -81,25 +76,8 @@ export function useCamera({
     framedOrientationRef.current = orientation;
     if (!orientation) return;
 
-    const residues = residuesCenter(structure, [
-      ...resolveHighlights(
-        highlightsRef.current,
-        addressIndexRef.current ?? new Map()
-      ).colors.keys(),
-    ]);
-
-    canvas3d.requestCameraReset({
-      durationMs: ORIENT_DURATION_MS,
-      snapshot: orientationSnapshot(orientation, residues),
-    });
-  }, [
-    addressIndexRef,
-    framedOrientationRef,
-    isReady,
-    orientation,
-    pluginRef,
-    structureDataRef,
-  ]);
+    scene.orient(orientation, highlightsRef.current, ORIENT_DURATION_MS);
+  }, [framedOrientationRef, isReady, orientation, sceneRef]);
 
   useEffect(() => {
     const canvas3d = pluginRef.current?.canvas3d;
