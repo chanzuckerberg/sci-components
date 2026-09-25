@@ -10,6 +10,7 @@ import {
 import {
   CRAMBIN_MAX_RESIDUE_VALUE,
   CRAMBIN_MMCIF,
+  CRAMBIN_PLDDT,
   CRAMBIN_RESIDUE_VALUES,
 } from "./constants";
 import { MYOGLOBIN_PDB } from "./myoglobin";
@@ -83,6 +84,39 @@ export default {
       description:
         "Who draws the structure. external parses it and leaves the canvas empty for a scene drawn in onReady. Read once at creation.",
       options: ["managed", "external"],
+    },
+    colorBy: {
+      control: { type: "select" },
+      description:
+        "What paints the structure. Left undefined it follows what is supplied: residueOverlay, then plddt, then chain colors.",
+      options: [undefined, "chain", "plddt", "overlay"],
+    },
+    highlights: {
+      control: { type: "object" },
+      description:
+        "Residues picked out in colors of their own, by chainId and seqId (and insCode), painted over whatever colors the rest.",
+    },
+    initialCamera: {
+      control: { type: "object" },
+      description:
+        "Where the camera starts on each structure loaded, as onCameraChange reports it.",
+    },
+    orientation: {
+      control: { type: "select" },
+      description:
+        "Turns the camera to look at the highlighted residues: facing them from outside, from the opposite side, or from the side.",
+      options: [undefined, "overview", "facing", "opposite", "side"],
+    },
+    projection: {
+      control: { type: "select" },
+      description: "The camera's projection.",
+      options: [undefined, "perspective", "orthographic"],
+    },
+    representation: {
+      control: { type: "select" },
+      description:
+        "How the polymer is drawn. surface is one molecular surface over the visible chains.",
+      options: ["cartoon", "surface"],
     },
     disableChainHighlightOnHover: {
       control: { type: "boolean" },
@@ -418,6 +452,89 @@ export const WithExternalScene = {
       sceneMode="external"
     />
   ),
+};
+
+/**
+ * The barnase-barstar interface, by the address the file gives each residue:
+ * barnase's Lys27, Arg59, Arg87 and His102, and barstar's Tyr29, Asp35, Trp38
+ * and Asp39 - which the co-fold numbers on from barnase, at 139 to 149.
+ */
+const INTERFACE_HIGHLIGHTS = [
+  { chainId: "A", seqId: 27 },
+  { chainId: "A", seqId: 59 },
+  { chainId: "A", seqId: 87 },
+  { chainId: "A", seqId: 102 },
+  { chainId: "B", seqId: 139 },
+  { chainId: "B", seqId: 145 },
+  { chainId: "B", seqId: 148 },
+  { chainId: "B", seqId: 149 },
+];
+
+/**
+ * The complex drawn as one molecular surface over both chains, colored by
+ * chain. It is one surface rather than one per chain, so the interface is
+ * buried where the chains meet: hide barstar with its toggle and the surface
+ * is rebuilt over barnase alone, exposing the face barstar was bound to.
+ * Switching representation leaves the camera where it is.
+ */
+export const WithSurface = {
+  args: {
+    ...DEFAULT_ARGS,
+    plddt: null,
+    representation: "surface",
+    stats: COMPLEX_STATS,
+    structure: BARNASE_BARSTAR_PDB,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * The interface residues highlighted in the palette's colors over pLDDT
+ * coloring, drawn in ball-and-stick over the cartoon, with the camera turned
+ * to face them. Highlights are separate from the selection: they neither
+ * select a residue nor move the camera, and clicking still selects as usual.
+ */
+export const ComplexWithHighlights = {
+  args: {
+    ...DEFAULT_ARGS,
+    highlights: INTERFACE_HIGHLIGHTS,
+    orientation: "facing",
+    plddt: BARNASE_BARSTAR_PLDDT,
+    stats: COMPLEX_STATS,
+    structure: BARNASE_BARSTAR_PDB,
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * Scores for only part of the chain. A residue without a score reads as
+ * unscored - neutral gray - rather than being painted at the bottom of the
+ * scale, and the readout shows a dash for it.
+ */
+export const WithPlddtGaps = {
+  args: {
+    ...DEFAULT_ARGS,
+    plddt: CRAMBIN_PLDDT.map((score, i) => (i >= 12 && i < 24 ? null : score)),
+  },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * The same interface seen from the side, in an orthographic projection: the
+ * camera looks across the line from the complex's center through the
+ * highlighted residues, so both faces of the interface are in profile.
+ */
+export const WithCameraOrientation = {
+  args: {
+    ...DEFAULT_ARGS,
+    highlights: INTERFACE_HIGHLIGHTS,
+    orientation: "side",
+    plddt: null,
+    projection: "orthographic",
+    stats: COMPLEX_STATS,
+    structure: BARNASE_BARSTAR_PDB,
+  },
+  parameters: VIEWER_CHECKS,
 };
 
 /**

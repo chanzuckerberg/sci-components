@@ -34,6 +34,7 @@ import {
   ProteinStructureViewerProps,
   SceneMode,
 } from "../ProteinStructureViewer.types";
+import { chainsFromStructure } from "../utils/chains";
 import { parseHexColor } from "../utils/color";
 import {
   lociForResidueIndex,
@@ -103,17 +104,24 @@ function selectsNothing(structure: Structure, expression: Expression): boolean {
  * geometry work, so what is stubbed is only the camera it is handed.
  */
 function stubCamera() {
+  const state = {
+    fov: Math.PI / 4,
+    mode: "perspective" as const,
+    position: [0, 0, 50],
+    radius: 10,
+    radiusMax: 100,
+    target: [0, 0, 0],
+    up: [0, 1, 0],
+  };
+
   return {
     getFocus: vi.fn(() => ({ radius: 1 })),
+    getSnapshot: vi.fn(() => ({ ...state })),
     getTargetDistance: vi.fn(() => 50),
     setState: vi.fn(),
-    state: {
-      position: [0, 0, 50],
-      radius: 10,
-      radiusMax: 100,
-      target: [0, 0, 0],
-    },
+    state,
     transition: { inTransition: false },
+    viewport: { height: 400, width: 600, x: 0, y: 0 },
   };
 }
 
@@ -133,7 +141,17 @@ const POLYMER_PART = "polymer";
 const LIGAND_PART = "ligand";
 const POLYMER_A = `${POLYMER_PART}-A`;
 const LIGAND_A = `${LIGAND_PART}-A`;
+const HIGHLIGHT_A = "highlight-A";
+const HIGHLIGHT_B = "highlight-B";
 const componentRef = (key: string) => `component-${key}`;
+
+/**
+ * The surface: the `representation` that asks for it, and the key its one
+ * component is built under. Mol* names the representation itself
+ * `molecular-surface`.
+ */
+const SURFACE = "surface" as const;
+const MOLECULAR_SURFACE = "molecular-surface";
 
 /**
  * A component and one of its representations, shaped the way Mol* hands them
@@ -158,7 +176,10 @@ function themeCallbackArgs(part: string) {
  * real one lets the tests exercise the actual residue-to-loci resolution
  * rather than a stand-in for it.
  */
-function createStubPlugin(structure?: Structure) {
+function createStubPlugin(
+  structure?: Structure,
+  options: { failSurface?: boolean } = {}
+) {
   const loadedThemes: string[] = [];
   const parsedPdb: string[] = [];
   const parsedFormats: string[] = [];
@@ -166,6 +187,12 @@ function createStubPlugin(structure?: Structure) {
 
   /** Component keys the load path built, in order. */
   const components: string[] = [];
+
+  /** Component refs deleted from the state tree, in order. */
+  const deleted: string[] = [];
+
+  /** The color theme each representation was built with, by component ref. */
+  const builtColors = new Map<string, string | undefined>();
 
   /** Representation type built over each component, by component key. */
   const representations = new Map<string, string>();
@@ -218,9 +245,13 @@ function createStubPlugin(structure?: Structure) {
           addRepresentation: vi.fn(
             async (
               component: { ref: string },
-              props: { type: string }
+              props: { type: string; color?: string }
             ): Promise<undefined> => {
+              if (options.failSurface && props.type === MOLECULAR_SURFACE) {
+                throw new Error("The surface is too large to compute.");
+              }
               representations.set(component.ref, props.type);
+              builtColors.set(component.ref, props.color);
               return undefined;
             }
           ),
@@ -261,6 +292,7 @@ function createStubPlugin(structure?: Structure) {
        * left them.
        */
       props: {
+        camera: { mode: "perspective" },
         marking: { highlightEdgeColor: THEME_EDGE_COLOR },
         renderer: {
           highlightColor: THEME_HIGHLIGHT_COLOR,
@@ -334,6 +366,20 @@ function createStubPlugin(structure?: Structure) {
     },
     state: {
       data: {
+        /** How the scene deletes components it has replaced. */
+        build: vi.fn(() => {
+          const refs: string[] = [];
+          const update = {
+            commit: vi.fn(async () => {
+              deleted.push(...refs);
+            }),
+            delete: vi.fn((ref: string): unknown => {
+              refs.push(ref);
+              return update;
+            }),
+          };
+          return update;
+        }),
         transforms,
         tree: { children: new Map(), transforms },
         updateCellState: vi.fn((ref: string, next: { isHidden: boolean }) => {
@@ -359,7 +405,9 @@ function createStubPlugin(structure?: Structure) {
         }
       ),
     },
+    stubBuiltColors: builtColors,
     stubComponents: components,
+    stubDeleted: deleted,
     stubFocusShells: focusShells,
     stubRepresentations: representations,
     stubVisibility: visibility,
@@ -458,8 +506,8 @@ const OVERLAY_LABEL = "Feature activation";
 /** The viewer's own per-chain theme, which stands in for Mol*'s chain-id. */
 const CHAIN_THEME = "chain-color";
 
-/** Mol*'s B-factor theme, which is the one pLDDT scores are painted through. */
-const PLDDT_THEME = "plddt-bfactor";
+/** The viewer's pLDDT theme, which reads the scores by residue. */
+const PLDDT_THEME = "plddt";
 
 /** Barstar's polymer component in the stub state tree, and its legend toggle. */
 const BARSTAR_REF = componentRef("polymer-B");
@@ -648,11 +696,32 @@ describe("<ProteinStructureViewer />", () => {
     expect(screen.getByText(OVERLAY_LABEL)).toBeInTheDocument();
   });
 
-  it("injects pLDDT scores into the B-factor column before parsing", async () => {
+  /**
+   * Scores are read by the pLDDT theme, residue by residue, so the text Mol*
+   * parses is exactly the text the consumer passed - which is what lets a
+   * verified structure stay verified.
+   */
+  it("parses the structure exactly as given when scores are supplied", async () => {
     renderViewer({ plddt: [0.94] });
 
     await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
-    expect((plugin.parsedPdb[0] as string).split("\n")[0]).toContain(" 94.00");
+    expect(plugin.parsedPdb[0]).toBe(PDB);
+  });
+
+  it("recolors rather than reloads when scores arrive late", async () => {
+    const view = (plddt: number[] | null) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer plddt={plddt} structure={PDB} />
+      </ThemeProvider>
+    );
+
+    const { rerender } = render(view(null));
+    await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+
+    rerender(view([0.94]));
+
+    await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
+    expect(plugin.parsedPdb).toHaveLength(1);
   });
 
   it("parses mmCIF when the structure text is a CIF document", async () => {
@@ -662,11 +731,11 @@ describe("<ProteinStructureViewer />", () => {
     expect(plugin.parsedFormats[0]).toBe("mmcif");
   });
 
-  it("injects pLDDT scores into mmCIF B_iso_or_equiv before parsing", async () => {
+  it("parses mmCIF exactly as given when scores are supplied", async () => {
     renderViewer({ structure: MMCIF, plddt: [0.94] });
 
     await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
-    expect(plugin.parsedPdb[0]).toContain("94.00");
+    expect(plugin.parsedPdb[0]).toBe(MMCIF);
     expect(plugin.parsedFormats[0]).toBe("mmcif");
   });
 
@@ -1346,9 +1415,9 @@ describe("<ProteinStructureViewer />", () => {
       });
 
       /**
-       * A load rebuilds the state tree the dimming was written into. Scores
-       * arriving after the first render are what makes this ordinary: they
-       * reload the structure with the same chains under a standing selection.
+       * A load rebuilds the state tree the dimming was written into. A parent
+       * handing back the structure as a new string is what makes this
+       * ordinary: it reloads with the same chains under a standing selection.
        */
       it("dims again after the structure is reloaded", async () => {
         const { rerender } = render(selecting({ chains: ["B"] }));
@@ -1360,8 +1429,7 @@ describe("<ProteinStructureViewer />", () => {
         rerender(
           <ThemeProvider theme={defaultTheme}>
             <ProteinStructureViewer
-              plddt={Array.from({ length: 199 }, () => 0.9)}
-              structure={BARNASE_BARSTAR_PDB}
+              structure={`${BARNASE_BARSTAR_PDB}\n`}
               selection={{ chains: ["B"] }}
             />
           </ThemeProvider>
@@ -2011,6 +2079,418 @@ describe("<ProteinStructureViewer />", () => {
   });
 
   /**
+   * What is drawn and how it is colored, changed in place: a new
+   * representation, highlights or coloring replaces only what it has to and
+   * leaves the camera where the user left it.
+   */
+  describe("scene props", () => {
+    let complex: Structure;
+
+    beforeAll(async () => {
+      complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+    });
+
+    const scene = (props: Partial<ProteinStructureViewerProps> = {}) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer structure={BARNASE_BARSTAR_PDB} {...props} />
+      </ThemeProvider>
+    );
+
+    const useComplex = (options?: { failSurface?: boolean }) => {
+      plugin = createStubPlugin(complex, options);
+      createPluginUI.mockResolvedValue(plugin);
+    };
+
+    /** The load has framed the camera, which is the last thing it does. */
+    const framed = () =>
+      waitFor(() =>
+        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled()
+      );
+
+    describe("representation", () => {
+      beforeEach(() => useComplex());
+
+      it("draws one surface over the chains in place of their cartoons", async () => {
+        render(scene({ representation: SURFACE }));
+
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+        expect(plugin.stubComponents).not.toContain(POLYMER_A);
+        expect([...plugin.stubRepresentations.values()]).toContain(
+          MOLECULAR_SURFACE
+        );
+      });
+
+      it("swaps cartoon for surface without refitting the camera", async () => {
+        const { rerender } = render(scene());
+        await framed();
+        const fits = plugin.canvas3d.requestCameraReset.mock.calls.length;
+
+        rerender(scene({ representation: SURFACE }));
+
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+        // The cartoons go once the surface exists, so the scene never empties.
+        await waitFor(() =>
+          expect(plugin.stubDeleted).toEqual([
+            componentRef(POLYMER_A),
+            componentRef("polymer-B"),
+          ])
+        );
+        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledTimes(fits);
+      });
+
+      /**
+       * Mol* updates the component filed under a key rather than adding a
+       * second, so the surface is rebuilt in place: same component, same
+       * representation, over a new selection. Replacing it and deleting the
+       * old one would delete the new surface along with it.
+       */
+      it("rebuilds the surface in place over what is left when a chain is hidden", async () => {
+        const { rerender } = render(
+          scene({ hiddenChains: [], representation: SURFACE })
+        );
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+
+        rerender(scene({ hiddenChains: ["B"], representation: SURFACE }));
+
+        const surfaceBuilds = () =>
+          plugin.builders.structure.tryCreateComponentFromExpression.mock.calls.filter(
+            ([, , key]) => key === SURFACE
+          );
+        await waitFor(() => expect(surfaceBuilds()).toHaveLength(2));
+
+        // Over barnase alone now.
+        const expression = surfaceBuilds()[1]?.[1] as Expression;
+        const selected = compile<StructureSelection>(expression)(
+          new QueryContext(complex)
+        );
+        expect(
+          chainsFromStructure(StructureSelection.unionStructure(selected)).map(
+            (chain) => chain.chainId
+          )
+        ).toEqual(["A"]);
+
+        // Drawn once, and not deleted along the way.
+        expect(
+          plugin.builders.structure.representation.addRepresentation.mock.calls.filter(
+            ([, props]) => props.type === MOLECULAR_SURFACE
+          )
+        ).toHaveLength(1);
+        expect(plugin.stubDeleted).not.toContain(componentRef(SURFACE));
+      });
+
+      it("keeps the cartoon, and says so, when the surface cannot be drawn", async () => {
+        useComplex({ failSurface: true });
+        const onError = vi.fn();
+
+        render(scene({ onError, representation: SURFACE }));
+
+        await waitFor(() =>
+          expect(onError).toHaveBeenCalledWith(
+            expect.any(Error),
+            "representation"
+          )
+        );
+        await waitFor(() => expect(plugin.stubComponents).toContain(POLYMER_A));
+      });
+    });
+
+    describe("highlights", () => {
+      beforeEach(() => useComplex());
+
+      /**
+       * Barnase's Lys27 and barstar's Asp39, by the address the file gives.
+       * The co-fold numbers barstar on from barnase, so Asp39 is B 149.
+       */
+      const HIGHLIGHTS = [
+        { chainId: "A", seqId: 27 },
+        { chainId: "B", color: "#123456", seqId: 149 },
+      ];
+
+      it("draws highlighted residues in ball-and-stick on their chains", async () => {
+        render(scene({ highlights: HIGHLIGHTS }));
+
+        await waitFor(() =>
+          expect(plugin.stubComponents).toEqual(
+            expect.arrayContaining([HIGHLIGHT_A, HIGHLIGHT_B])
+          )
+        );
+        expect(plugin.stubRepresentations.get(componentRef(HIGHLIGHT_A))).toBe(
+          "ball-and-stick"
+        );
+        // Painted by the structure-wide theme, which carries their colors.
+        expect(plugin.stubBuiltColors.get(componentRef(HIGHLIGHT_A))).toBe(
+          CHAIN_THEME
+        );
+      });
+
+      it("skips a highlight naming a residue the structure lacks", async () => {
+        // Barstar's own numbering, which this co-fold does not use.
+        render(scene({ highlights: [{ chainId: "B", seqId: 39 }] }));
+        await framed();
+
+        expect(plugin.stubComponents).not.toContain(HIGHLIGHT_B);
+      });
+
+      it("redraws the highlights, and recolors, when they change", async () => {
+        const { rerender } = render(scene({ highlights: [HIGHLIGHTS[0]!] }));
+        await waitFor(() =>
+          expect(plugin.stubComponents).toContain(HIGHLIGHT_A)
+        );
+        const recolors = plugin.loadedThemes.length;
+
+        rerender(scene({ highlights: HIGHLIGHTS }));
+
+        await waitFor(() =>
+          expect(plugin.stubComponents).toContain(HIGHLIGHT_B)
+        );
+        await waitFor(() =>
+          expect(plugin.loadedThemes.length).toBeGreaterThan(recolors)
+        );
+        // Chain A's is updated in place rather than replaced.
+        expect(plugin.stubDeleted).not.toContain(componentRef(HIGHLIGHT_A));
+      });
+
+      it("removes a chain's sticks once it has no highlights left", async () => {
+        const { rerender } = render(scene({ highlights: HIGHLIGHTS }));
+        await waitFor(() =>
+          expect(plugin.stubComponents).toContain(HIGHLIGHT_B)
+        );
+
+        rerender(scene({ highlights: [HIGHLIGHTS[0]!] }));
+
+        await waitFor(() =>
+          expect(plugin.stubDeleted).toEqual([componentRef(HIGHLIGHT_B)])
+        );
+      });
+
+      it("leaves the sticks off a surface, which carries the colors itself", async () => {
+        render(scene({ highlights: HIGHLIGHTS, representation: SURFACE }));
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+
+        expect(plugin.stubComponents).not.toContain(HIGHLIGHT_A);
+      });
+
+      it("hides a chain's highlights along with it", async () => {
+        render(scene({ hiddenChains: ["B"], highlights: HIGHLIGHTS }));
+
+        await waitFor(() =>
+          expect(plugin.stubVisibility.get(componentRef(HIGHLIGHT_B))).toBe(
+            true
+          )
+        );
+        expect(plugin.stubVisibility.get(componentRef(HIGHLIGHT_A))).toBe(
+          false
+        );
+      });
+    });
+
+    describe("colorBy", () => {
+      beforeEach(() => useComplex());
+
+      const SCORES = Array.from({ length: 199 }, () => 0.9);
+
+      it("paints what it names, whatever else is supplied", async () => {
+        render(scene({ colorBy: "chain", plddt: SCORES }));
+
+        await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+        expect(plugin.loadedThemes).not.toContain(PLDDT_THEME);
+        // The legend describes chain colors, which have no key.
+        expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
+      });
+
+      it("switches between themes in place", async () => {
+        const { rerender } = render(scene({ colorBy: "chain", plddt: SCORES }));
+        await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+
+        rerender(scene({ colorBy: "plddt", plddt: SCORES }));
+
+        await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
+        expect(screen.getByText("pLDDT")).toBeInTheDocument();
+        expect(plugin.parsedPdb).toHaveLength(1);
+      });
+
+      it("leaves a consumer's own representations uncolored", async () => {
+        render(scene());
+        await framed();
+
+        const { calls } =
+          plugin.managers.structure.component.updateRepresentationsTheme.mock;
+        const recolored = calls.flatMap(
+          ([components]) => components as { key: string }[]
+        );
+        expect(
+          recolored.every((component) =>
+            component.key.startsWith("structure-component-")
+          )
+        ).toBe(true);
+      });
+    });
+
+    describe("camera", () => {
+      beforeEach(() => useComplex());
+
+      const CAMERA = {
+        fov: 0.8,
+        position: [10, 20, 30] as [number, number, number],
+        projection: "orthographic" as const,
+        radius: 12,
+        radiusMax: 40,
+        target: [1, 2, 3] as [number, number, number],
+        up: [0, 1, 0] as [number, number, number],
+      };
+
+      it("starts where initialCamera says instead of fitting the structure", async () => {
+        render(scene({ initialCamera: CAMERA }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledWith({
+            durationMs: 0,
+            snapshot: expect.objectContaining({
+              mode: "orthographic",
+              radius: 12,
+            }),
+          })
+        );
+        expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
+          camera: { mode: "orthographic" },
+        });
+      });
+
+      it("turns to the highlights when a structure loads with an orientation", async () => {
+        render(
+          scene({
+            highlights: [{ chainId: "A", seqId: 27 }],
+            orientation: "facing",
+          })
+        );
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledWith({
+            durationMs: 0,
+            snapshot: expect.any(Function),
+          })
+        );
+      });
+
+      it("turns the camera when the orientation changes, and only then", async () => {
+        const { rerender } = render(scene());
+        await framed();
+        plugin.canvas3d.requestCameraReset.mockClear();
+
+        rerender(scene({ orientation: "side" }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledWith({
+            durationMs: 250,
+            snapshot: expect.any(Function),
+          })
+        );
+
+        plugin.canvas3d.requestCameraReset.mockClear();
+        rerender(
+          scene({
+            highlights: [{ chainId: "A", seqId: 27 }],
+            orientation: "side",
+          })
+        );
+        await act(async () => undefined);
+        expect(plugin.canvas3d.requestCameraReset).not.toHaveBeenCalled();
+      });
+
+      it("sets the projection", async () => {
+        const { rerender } = render(scene());
+        await framed();
+
+        rerender(scene({ projection: "orthographic" }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
+            camera: { mode: "orthographic" },
+          })
+        );
+      });
+
+      it("reports the camera once it comes to rest", async () => {
+        const onCameraChange = vi.fn();
+        render(scene({ onCameraChange }));
+        await waitFor(() =>
+          expect(plugin.canvas3d.didDraw.subscribe).toHaveBeenCalledTimes(2)
+        );
+
+        act(() => plugin.canvas3d.didDraw.emit(undefined));
+
+        await waitFor(() =>
+          expect(onCameraChange).toHaveBeenCalledWith(
+            expect.objectContaining({
+              position: [0, 0, 50],
+              projection: "perspective",
+              viewport: { height: 400, width: 600 },
+            })
+          )
+        );
+
+        // A redraw that leaves the camera where it was is not reported again.
+        act(() => plugin.canvas3d.didDraw.emit(undefined));
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        expect(onCameraChange).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe("loads and addresses", () => {
+      beforeEach(() => useComplex());
+
+      it("reports every load, reloads with the same chains included", async () => {
+        const onChainsChange = vi.fn();
+        const onStructureLoad = vi.fn();
+        const { rerender } = render(scene({ onChainsChange, onStructureLoad }));
+
+        await waitFor(() =>
+          expect(onStructureLoad).toHaveBeenCalledWith({
+            atomCount: complex.elementCount,
+            chains: expect.arrayContaining([
+              expect.objectContaining({ chainId: "A" }),
+            ]),
+            residueCount: 199,
+          })
+        );
+        await waitFor(() =>
+          expect(onChainsChange).toHaveBeenLastCalledWith(
+            expect.arrayContaining([expect.objectContaining({ chainId: "B" })])
+          )
+        );
+        const chainReports = onChainsChange.mock.calls.length;
+
+        rerender(
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              onChainsChange={onChainsChange}
+              onStructureLoad={onStructureLoad}
+              structure={`${BARNASE_BARSTAR_PDB}\n`}
+            />
+          </ThemeProvider>
+        );
+
+        await waitFor(() => expect(onStructureLoad).toHaveBeenCalledTimes(2));
+        expect(onChainsChange).toHaveBeenCalledTimes(chainReports);
+      });
+
+      it("selects a residue by the address the file gives it", async () => {
+        render(
+          scene({
+            selection: { addresses: [{ chainId: "B", seqId: 149 }] },
+          })
+        );
+
+        await waitFor(() =>
+          expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
+        );
+        // Barstar's Asp39, named in the readout as the file numbers it.
+        await waitFor(() => expect(readoutSlot()).toBe("ASP 149"));
+      });
+    });
+  });
+
+  /**
    * The plugin is handed to a consumer that draws on it or drives it, and a
    * failure is reported to the consumer rather than logged where nobody sees
    * it. What matters is the order: a scene built in `onReady` has to be in
@@ -2047,21 +2527,22 @@ describe("<ProteinStructureViewer />", () => {
       );
     });
 
-    it("waits for onReady before answering clicks or applying colors", async () => {
+    it("draws its own scene first, and waits for onReady before answering clicks", async () => {
       const ready = deferred();
       const onReady = vi.fn(() => ready.promise);
       renderViewer({ onReady });
 
       await waitFor(() => expect(onReady).toHaveBeenCalled());
+      // The viewer's scene is in place, colored, when the consumer gets it.
+      expect(plugin.stubComponents).toContain(POLYMER_A);
+      expect(plugin.loadedThemes).toContain(CHAIN_THEME);
       expect(
         plugin.behaviors.interaction.click.subscribe
       ).not.toHaveBeenCalled();
-      expect(plugin.loadedThemes).toEqual([]);
 
       await act(async () => ready.resolve());
 
       await interactive();
-      await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
     });
 
     it("hands over each structure that replaces the first", async () => {
@@ -2103,12 +2584,14 @@ describe("<ProteinStructureViewer />", () => {
       unmount();
       parse.resolve(PDB);
 
-      // The load runs on to the end, which is where the camera is framed.
+      // The parse runs on to the end, and nothing is drawn on or handed over
+      // for the plugin it finished on.
       await waitFor(() =>
-        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled()
+        expect(plugin.builders.structure.createStructure).toHaveBeenCalled()
       );
       await act(async () => undefined);
       expect(onReady).not.toHaveBeenCalled();
+      expect(plugin.stubComponents).toEqual([]);
     });
 
     it("reports a plugin that could not be created as an init failure", async () => {

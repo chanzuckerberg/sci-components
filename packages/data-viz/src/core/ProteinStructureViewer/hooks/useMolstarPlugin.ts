@@ -1,65 +1,50 @@
 import { Color } from "molstar/lib/mol-util/color";
+import type { Structure } from "molstar/lib/mol-model/structure";
 import { StructureElement } from "molstar/lib/mol-model/structure";
 import { createPluginUI } from "molstar/lib/mol-plugin-ui";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { renderReact18 } from "molstar/lib/mol-plugin-ui/react18";
 import { DefaultPluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
 import type { PluginUISpec } from "molstar/lib/mol-plugin-ui/spec";
-import type { StructureRepresentationBuiltInProps } from "molstar/lib/mol-plugin-state/helpers/structure-representation-params";
-import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
 import { PluginBehaviors } from "molstar/lib/mol-plugin/behavior";
-import { setSubtreeVisibility } from "molstar/lib/mol-plugin/behavior/static/state";
 import { PluginConfig, PluginConfigItem } from "molstar/lib/mol-plugin/config";
 import { Representation } from "molstar/lib/mol-repr/representation";
-import type { Expression } from "molstar/lib/mol-script/language/expression";
-import type { StateObjectSelector } from "molstar/lib/mol-state";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 import { createSequenceView } from "../components/SequenceView";
 import { createViewportView } from "../components/Viewport";
 import type {
+  CameraOrientation,
   ChainRef,
   LoadedStructureInfo,
   ResidueRef,
   SceneMode,
   StructureDownload,
+  StructureLoadInfo,
   StructureSelection,
   ViewerErrorPhase,
 } from "../ProteinStructureViewer.types";
 import { syncClipToZoom } from "../utils/cameraFocus";
 import { AXES_OFF, AXES_ON } from "../utils/axes";
-import {
-  chainLigandExpression,
-  chainPolymerExpression,
-  chainsEqual,
-  scanChains,
-} from "../utils/chains";
+import { CameraFraming, frameStructure, residuesCenter } from "../utils/camera";
+import { chainsEqual, scanChains } from "../utils/chains";
+import { highlightsKey, resolveHighlights } from "../utils/highlights";
+import { ManagedScene, SceneProps } from "../utils/managedScene";
 import { mergeMolstarSpec } from "../utils/molstarSpec";
-import { detectStructureFormat } from "../utils/structureFormat";
+import { StructureSelector, chainSetKey } from "../utils/representation";
+import { indexResidueAddresses } from "../utils/residueAddress";
 import { residueRefFromLoci, selectionFromLoci } from "../utils/residueRef";
+import {
+  SceneThemes,
+  createSceneThemes,
+  registerSceneThemes,
+} from "../utils/sceneThemes";
+import { detectStructureFormat } from "../utils/structureFormat";
 import type {
   MolstarViewSettings,
   MolstarViewSettingsSubject,
   ThemeMode,
 } from "../utils/theme";
-import {
-  CHAIN_COLOR_THEME_NAME,
-  ChainColorTheme,
-  createChainColorTheme,
-} from "../utils/chainColorTheme";
-import { PLDDT_THEME_NAME, PlddtColoring } from "../utils/plddt";
-import {
-  ResidueValueTheme,
-  createResidueValueTheme,
-} from "../utils/residueValueTheme";
-
-/**
- * Theme used when neither pLDDT scores nor an overlay are supplied. Our own
- * per-chain theme rather than Mol*'s built-in `chain-id`, so the chain legend
- * can show swatches that match the structure instead of guessing at the colors
- * Mol* picked.
- */
-export const FALLBACK_THEME_NAME = CHAIN_COLOR_THEME_NAME;
 
 /** Delay before retrying initialization while the container has no size. */
 const LAYOUT_RETRY_MS = 100;
@@ -69,6 +54,7 @@ const UNHANDLED_ERROR_MESSAGES: Record<ViewerErrorPhase, string> = {
   capture: "Failed to download the structure image:",
   init: "Failed to initialize Mol* viewer:",
   load: "Failed to load structure:",
+  representation: "Failed to draw the structure:",
 };
 
 /** How long to wait for a frame before starting without one. */
@@ -151,21 +137,19 @@ interface CreateViewerOptions {
   viewSettings: MolstarViewSettingsSubject;
   showAxes: boolean;
   showSequenceViewer: boolean;
-  residueValueTheme: ResidueValueTheme;
-  chainColorTheme: ChainColorTheme;
+  themes: SceneThemes;
   molstarSpec?: Partial<PluginUISpec>;
 }
 
 async function createViewer({
   backgroundColor,
-  chainColorTheme,
   edgeColor,
   highlightColor,
   molstarSpec,
-  residueValueTheme,
   root,
   showAxes,
   showSequenceViewer,
+  themes,
   viewSettings,
 }: CreateViewerOptions): Promise<PluginUIContext> {
   const spec = DefaultPluginUISpec();
@@ -258,14 +242,7 @@ async function createViewer({
     target: root,
   });
 
-  const registry = plugin.representation.structure.themes.colorThemeRegistry;
-  if (PlddtColoring.colorThemeProvider) {
-    registry.add(PlddtColoring.colorThemeProvider);
-  }
-  registry.add(
-    residueValueTheme.provider as Parameters<typeof registry.add>[0]
-  );
-  registry.add(chainColorTheme.provider as Parameters<typeof registry.add>[0]);
+  registerSceneThemes(plugin, themes);
 
   // Remove Mol*'s default label providers (chain/atom/residue detail lines).
   // The hovered residue's info is surfaced in the legend instead of an
@@ -288,145 +265,27 @@ async function createViewer({
   return plugin;
 }
 
-/**
- * The representation parameters Mol*'s own presets compute, read from the same
- * manager state they read. Ported rather than hardcoded so a chain drawn here
- * looks exactly like the one the preset used to draw. Mol* hands the same set
- * to its cartoons and its ball-and-sticks, and so does this.
- */
-function representationTypeParams(plugin: PluginUIContext) {
-  const { hydrogens, ignoreLight, visualQuality } =
-    plugin.managers.structure.component.state.options;
-
-  return {
-    ignoreHydrogens: hydrogens !== "all",
-    ignoreHydrogensVariant: (hydrogens === "only-polar"
-      ? "non-polar"
-      : "all") as "all" | "non-polar",
-    ignoreLight,
-    quality: visualQuality,
-  };
-}
-
-/**
- * The two halves of a chain the viewer draws. Each names the component its
- * half is built under and tags the representation drawn over it, and it is
- * that tag `applyColorTheme` reads back to tell the two apart.
- */
-const POLYMER_PART = "polymer";
-const LIGAND_PART = "ligand";
-
-/**
- * True for the representation drawing a chain's heteroatoms.
- *
- * Read off the tag put on the representation when it was built, rather than
- * off the component's key. Mol* does not store the key as it was given: it
- * files components under `structure-component-<key>`, so a test against the
- * key as written here silently matches nothing, and every ligand quietly takes
- * the structure-wide theme instead. The tag survives untouched.
- */
-function isLigandRepresentation(representation: {
-  cell: { transform: { tags?: readonly string[] } };
-}): boolean {
-  return representation.cell.transform.tags?.includes(LIGAND_PART) === true;
-}
-
-/**
- * How heteroatoms are colored: the theme Mol* puts on a ball-and-stick when
- * left to itself, with the parameters it chooses too.
- *
- * Named rather than left blank only so that it survives `applyColorTheme`,
- * which would otherwise repaint the ligands along with everything else. The
- * structure-wide theme is the wrong answer for them twice over: a heme reads
- * as a heme because its iron is orange and its nitrogens are blue, which one
- * flat color throws away, and pLDDT and residue overlays have no value for a
- * HETATM to be colored by at all.
- */
-const ELEMENT_THEME = "element-symbol";
-
-type StructureSelector =
-  StateObjectSelector<PluginStateObject.Molecule.Structure>;
-
-/**
- * Draws one chain: its polymer as a cartoon, its ligands and ions as
- * ball-and-stick.
- *
- * Two components rather than one, because a component is what a representation
- * attaches to and neither representation suits both halves - a cartoon has no
- * backbone to trace through a heme, and a ball-and-stick over the whole chain
- * would draw every protein atom as a sphere.
- *
- * Hands back the refs of whichever components the chain turned out to have,
- * which is what `setSubtreeVisibility` is later pointed at. Grouping them
- * under the chain is what makes hiding a chain take its ligands with it.
- */
-async function buildChainComponents(
-  plugin: PluginUIContext,
-  structure: StructureSelector,
-  chain: { chainId: string; label: string },
-  typeParams: ReturnType<typeof representationTypeParams>
-): Promise<string[]> {
-  const builders = plugin.builders.structure;
-  const refs: string[] = [];
-
-  const addPart = async (
-    part: string,
-    expression: Expression,
-    props: StructureRepresentationBuiltInProps
-  ) => {
-    const component = await builders.tryCreateComponentFromExpression(
-      structure,
-      expression,
-      `${part}-${chain.chainId}`,
-      { label: chain.label }
-    );
-
-    // Undefined when the chain has nothing of this kind: no ligands, which is
-    // most chains, or no polymer, which is what a solvent-only chain looks
-    // like. Either way there is nothing to draw and nothing to hide.
-    if (!component) return;
-
-    await builders.representation.addRepresentation(component, props, {
-      tag: part,
-    });
-    refs.push(component.ref);
-  };
-
-  await addPart(POLYMER_PART, chainPolymerExpression(chain.chainId), {
-    type: "cartoon",
-    typeParams,
-  });
-
-  await addPart(LIGAND_PART, chainLigandExpression(chain.chainId), {
-    color: ELEMENT_THEME,
-    type: "ball-and-stick",
-    typeParams,
-  });
-
-  return refs;
-}
-
 /** What a load leaves behind for the chain-keyed props to address. */
 interface LoadedStructure {
   chains: ChainRef[];
+  /** Every chain the file names and its label, ligand-only chains included. */
+  chainLabels: Map<string, string>;
   /** Which residues sit on each chain, by `chainId`. */
   residuesByChain: Map<string, number[]>;
-  /**
-   * State tree refs of each chain's components, by `chainId` - its polymer's
-   * and, where it has any, its ligands'. Chains with nothing to draw are
-   * absent rather than present and empty, and so is every chain when a
-   * consumer draws the scene itself.
-   */
-  componentRefs: Map<string, string[]>;
-  /** The parsed structure, or undefined when nothing was loaded. */
+  /** Residue index by address. */
+  addressIndex: Map<string, number>;
+  /** The parsed structure's cell, or undefined when nothing was loaded. */
   structure?: StructureSelector;
+  /** The parsed structure itself. */
+  structureData?: Structure;
   atomCount: number;
 }
 
 const NOTHING_LOADED: LoadedStructure = {
+  addressIndex: new Map(),
   atomCount: 0,
+  chainLabels: new Map(),
   chains: [],
-  componentRefs: new Map(),
   residuesByChain: new Map(),
 };
 
@@ -439,17 +298,9 @@ type LoadOutcome =
   | { ok: false; error: unknown };
 
 /**
- * Parses the structure and draws each chain: a cartoon over its polymer, and
- * ball-and-stick over its ligands and ions.
- *
- * Mol*'s `default` hierarchy preset would be shorter, but it groups every
- * polymer chain into a single component, and a component is the unit Mol* can
- * hide. Building them per chain is what makes a chain individually hideable;
- * the refs handed back are what `setSubtreeVisibility` is later pointed at.
- *
- * In external mode the parse is all there is. Drawing, coloring and framing
- * belong to whoever draws the scene, which there is the consumer - handed the
- * structure through `onReady`, into a scene with nothing already in it.
+ * Clears the plugin and parses the structure into it, reading off what the
+ * rest of the viewer addresses it by. Nothing is drawn here: that is the
+ * scene's, or in external mode the consumer's.
  *
  * The wrapper detects PDB vs mmCIF from the text; this just forwards that
  * guess to Mol*.
@@ -457,9 +308,7 @@ type LoadOutcome =
 async function loadStructure(
   plugin: PluginUIContext,
   structureText: string,
-  usePlddtColoring: boolean,
-  showAxes: boolean,
-  sceneMode: SceneMode
+  showAxes: boolean
 ): Promise<LoadOutcome> {
   try {
     await plugin.clear();
@@ -482,43 +331,17 @@ async function loadStructure(
     if (!data3d) return { loaded: NOTHING_LOADED, ok: true };
 
     const { chainLabels, chains, residuesByChain } = scanChains(data3d);
-    const componentRefs = new Map<string, string[]>();
-
-    if (sceneMode === "managed") {
-      const typeParams = representationTypeParams(plugin);
-
-      // Every chain the file names, not just the ones `chains` reports: a
-      // chain holding nothing but a ligand is absent from the legend, since
-      // there is no sequence to list, and still has to be drawn.
-      for (const [chainId, label] of chainLabels) {
-        const refs = await buildChainComponents(
-          plugin,
-          structure,
-          { chainId, label },
-          typeParams
-        );
-
-        // None for a chain with nothing the viewer draws, which is what a
-        // solvent-only chain looks like. Nothing to color, nothing to hide.
-        if (refs.length > 0) componentRefs.set(chainId, refs);
-      }
-
-      if (usePlddtColoring) {
-        await applyColorTheme(plugin, PLDDT_THEME_NAME);
-      }
-
-      plugin.canvas3d?.requestCameraReset();
-    }
-
     setAxes(plugin, showAxes);
 
     return {
       loaded: {
+        addressIndex: indexResidueAddresses(data3d),
         atomCount: data3d.elementCount,
+        chainLabels,
         chains,
-        componentRefs,
         residuesByChain,
         structure,
+        structureData: data3d,
       },
       ok: true,
     };
@@ -527,63 +350,9 @@ async function loadStructure(
   }
 }
 
-/**
- * Shows or hides everything each chain is drawn with, cartoon and sticks
- * alike. Every component under the chain, so hiding it takes its ligands with
- * it rather than leaving a heme floating where its protein used to be.
- *
- * The whole subtree of each, not just the component cell: visibility is
- * per-cell, and it is the representation underneath that actually draws.
- *
- * Set outright rather than through the component manager's `toggleVisibility`,
- * which flips whatever it finds: the hidden set is derived from props on every
- * pass, so it has to be applied as a statement of what should be true and not
- * as a change to what already is.
- */
-function applyChainVisibility(
-  plugin: PluginUIContext,
-  componentRefs: Map<string, string[]>,
-  hidden: Set<string>
-): void {
-  for (const [chainId, refs] of componentRefs) {
-    for (const ref of refs) {
-      setSubtreeVisibility(plugin.state.data, ref, hidden.has(chainId));
-    }
-  }
-}
-
-/**
- * Recolors every loaded structure's representations with the named theme,
- * leaving the heteroatoms on `ELEMENT_THEME`.
- *
- * The per-representation form of `updateRepresentationsTheme`, so the two can
- * be told apart in one pass; handing it a filtered list instead would leave
- * the ligands on whichever theme happened to be current when they were built.
- */
-export async function applyColorTheme(
-  plugin: PluginUIContext,
-  colorTheme: string
-): Promise<void> {
-  await plugin.dataTransaction(async () => {
-    for (const s of plugin.managers.structure.hierarchy.current.structures) {
-      await plugin.managers.structure.component.updateRepresentationsTheme(
-        s.components,
-        (_component, representation) => ({
-          // `colorTheme` is not one of Mol*'s built-in names, which is what the
-          // cast is for; Mol* resolves any registered name at runtime.
-          color: (isLigandRepresentation(representation)
-            ? ELEMENT_THEME
-            : colorTheme) as never,
-        })
-      );
-    }
-  });
-}
-
 export interface UseMolstarPluginOptions {
   containerRef: RefObject<HTMLDivElement | null>;
   structure: string;
-  hasPlddt: boolean;
   backgroundColor: Color;
   edgeColor: Color;
   highlightColor: Color;
@@ -591,10 +360,13 @@ export interface UseMolstarPluginOptions {
   sequenceViewerBackgroundColor?: string;
   showAxes: boolean;
   showSequenceViewer: boolean;
-  /** Chains to hide from the 3D view, by `chainId`. */
+  /** Chains hidden from the 3D view, by `chainId`, for the sequence panel. */
   hiddenChains: Set<string>;
-  /** Color per chain, by `chainId`, as `#RRGGBB`. */
-  chainColors: Map<string, string>;
+  /**
+   * What to draw and how to color it, and where the camera starts: read by
+   * every load, and pushed into the scene when it changes.
+   */
+  scene: SceneProps & CameraFraming;
   /** Selects a whole chain, for the sequence panel's chain captions. */
   onChainSelect?: (chainId: string) => void;
   /** Flips a chain's visibility, for the sequence panel's captions. */
@@ -624,6 +396,8 @@ export interface UseMolstarPluginOptions {
   onError?: (error: unknown, phase: ViewerErrorPhase) => void;
   /** Called before a plugin handed to `onReady` is disposed of. */
   onDispose?: () => void;
+  /** Told of every structure that loads. */
+  onStructureLoad?: (info: StructureLoadInfo) => void;
 }
 
 export interface UseMolstarPluginResult {
@@ -648,6 +422,23 @@ export interface UseMolstarPluginResult {
    * again - which is what this counts for.
    */
   loadCount: number;
+  /**
+   * How many times the scene has replaced components without a load - a
+   * surface rebuilt around newly hidden chains, highlights redrawn. Counted for
+   * the same reason as `loadCount`.
+   */
+  sceneVersion: number;
+  /** Which residues sit on each chain, for expanding whole-chain selections. */
+  residuesByChainRef: RefObject<Map<string, number[]>>;
+  /** Residue index by address, for resolving addresses in props. */
+  addressIndexRef: RefObject<Map<string, number>>;
+  /** The loaded structure, for placing the camera relative to its residues. */
+  structureDataRef: RefObject<Structure | null>;
+  /**
+   * The orientation the camera was last turned to, by a load or since, so a
+   * change can be told from one already applied.
+   */
+  framedOrientationRef: { current: CameraOrientation | undefined };
 }
 
 /**
@@ -656,17 +447,15 @@ export interface UseMolstarPluginResult {
  *
  * The plugin is built once and then mutated in place. Creating it is expensive
  * and destroys the camera, so prop changes that Mol* can absorb (background,
- * axes, coloring, new structure) are pushed in through the effects below and in
- * the sibling hooks rather than by rebuilding.
+ * axes, coloring, representation, new structure) are pushed in through the
+ * effects below and in the sibling hooks rather than by rebuilding.
  */
 // eslint-disable-next-line sonarjs/cognitive-complexity
 export function useMolstarPlugin({
   backgroundColor,
-  chainColors,
   containerRef,
   download,
   edgeColor,
-  hasPlddt,
   hiddenChains,
   highlightColor,
   mode,
@@ -681,31 +470,23 @@ export function useMolstarPlugin({
   onResidueHover,
   onSelectionChange,
   onSelectionClear,
+  onStructureLoad,
+  scene,
   sceneMode,
   selectedChains,
   sequenceViewerBackgroundColor,
   showAxes,
   showSequenceViewer,
   structure,
-}: UseMolstarPluginOptions): UseMolstarPluginResult & {
-  residueValueThemeRef: RefObject<ResidueValueTheme | null>;
-  chainColorThemeRef: RefObject<ChainColorTheme | null>;
-  residuesByChainRef: RefObject<Map<string, number[]>>;
-} {
+}: UseMolstarPluginOptions): UseMolstarPluginResult {
   const pluginRef = useRef<PluginUIContext | null>(null);
-  const residueValueThemeRef = useRef<ResidueValueTheme | null>(null);
-  const chainColorThemeRef = useRef<ChainColorTheme | null>(null);
+  const sceneRef = useRef<ManagedScene | null>(null);
   const currentStructureRef = useRef<string | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [chains, setChains] = useState<ChainRef[]>([]);
   const [loadCount, setLoadCount] = useState(0);
-
-  /**
-   * Where each chain's components live in the state tree, which is what the
-   * visibility effect points `setSubtreeVisibility` at. Rewritten by every
-   * load, since the refs do not survive `plugin.clear()`.
-   */
-  const componentRefsRef = useRef<Map<string, string[]>>(new Map());
+  const [sceneVersion, setSceneVersion] = useState(0);
+  const [sceneBusy, setSceneBusy] = useState(false);
 
   /**
    * Which residues sit on each chain, for the readout to average a score over
@@ -713,17 +494,40 @@ export function useMolstarPlugin({
    * directly, and it is rewritten in step with `chains`, which does.
    */
   const residuesByChainRef = useRef<Map<string, number[]>>(new Map());
+  const addressIndexRef = useRef<Map<string, number>>(new Map());
+  const structureDataRef = useRef<Structure | null>(null);
+  const framedOrientationRef = useRef<CameraOrientation | undefined>(undefined);
 
   /**
-   * The visibility and coloring to apply as soon as a structure exists. Read
-   * through refs because both arrive as fresh objects on every render, and a
-   * load has to be able to consult them without the load effect depending on
-   * them - a new Set each render would reload the structure on every pass.
+   * The scene as the props describe it, read by a load when it comes to draw.
+   * Through a ref because a load outlasts renders and has to draw what the
+   * props say when it gets there, not what they said when it began.
    */
-  const hiddenChainsRef = useRef(hiddenChains);
-  hiddenChainsRef.current = hiddenChains;
-  const chainColorsRef = useRef(chainColors);
-  chainColorsRef.current = chainColors;
+  const scenePropsRef = useRef(scene);
+  scenePropsRef.current = scene;
+
+  // Values that only apply at creation time, read through refs so that changing
+  // them later does not rebuild the plugin (they are pushed in via effects).
+  const initialPropsRef = useRef({
+    backgroundColor,
+    edgeColor,
+    highlightColor,
+    mode,
+    molstarSpec,
+    showAxes,
+    showSequenceViewer,
+    structure,
+  });
+  initialPropsRef.current = {
+    backgroundColor,
+    edgeColor,
+    highlightColor,
+    mode,
+    molstarSpec,
+    showAxes,
+    showSequenceViewer,
+    structure,
+  };
 
   /**
    * Carries the theme-dependent props into the views Mol* renders in its own
@@ -752,33 +556,25 @@ export function useMolstarPlugin({
   }, []);
 
   /**
-   * Takes up what a load produced: the component refs the chain-keyed props
-   * address, the visibility they were already asking for, and the chain list
-   * the consumer is told about.
+   * Takes up what a load produced: what the chain-keyed props and addresses
+   * are resolved against, and the chain list the consumer is told about.
    *
    * Chains are published only when they actually differ, so reloading the same
-   * structure - a theme switch that happens to reload, a parent handing back an
-   * equal PDB string - does not hand every consumer a new array to react to.
+   * structure - a parent handing back an equal PDB string - does not hand every
+   * consumer a new array to react to.
    */
-  const adoptLoadedStructure = useCallback(
-    (plugin: PluginUIContext, loaded: LoadedStructure) => {
-      componentRefsRef.current = loaded.componentRefs;
-      residuesByChainRef.current = loaded.residuesByChain;
-      applyChainVisibility(
-        plugin,
-        loaded.componentRefs,
-        hiddenChainsRef.current
-      );
-      setChains((prev) =>
-        chainsEqual(prev, loaded.chains) ? prev : loaded.chains
-      );
+  const adoptLoadedStructure = useCallback((loaded: LoadedStructure) => {
+    residuesByChainRef.current = loaded.residuesByChain;
+    addressIndexRef.current = loaded.addressIndex;
+    structureDataRef.current = loaded.structureData ?? null;
+    setChains((prev) =>
+      chainsEqual(prev, loaded.chains) ? prev : loaded.chains
+    );
 
-      // Counted rather than derived from the chains, which a structure reloaded
-      // for a theme or for late-arriving scores comes back with unchanged.
-      setLoadCount((count) => count + 1);
-    },
-    []
-  );
+    // Counted rather than derived from the chains, which a structure reloaded
+    // for a new string comes back with unchanged.
+    setLoadCount((count) => count + 1);
+  }, []);
 
   // Interaction callbacks are read through refs so a parent passing new
   // closures on every render does not tear down and rebuild the plugin.
@@ -796,6 +592,8 @@ export function useMolstarPlugin({
   onErrorRef.current = onError;
   const onDisposeRef = useRef(onDispose);
   onDisposeRef.current = onDispose;
+  const onStructureLoadRef = useRef(onStructureLoad);
+  onStructureLoadRef.current = onStructureLoad;
 
   /**
    * Fixed at the first render: the load path draws or declines to draw by it,
@@ -868,41 +666,112 @@ export function useMolstarPlugin({
       if (!isCurrent()) return;
 
       if (!outcome.ok) {
-        adoptLoadedStructure(plugin, NOTHING_LOADED);
+        adoptLoadedStructure(NOTHING_LOADED);
         reportError(outcome.error, "load");
         return;
       }
 
-      adoptLoadedStructure(plugin, outcome.loaded);
-      await handOver(plugin, outcome.loaded, isCurrent);
+      const { loaded } = outcome;
+      adoptLoadedStructure(loaded);
+      onStructureLoadRef.current?.({
+        atomCount: loaded.atomCount,
+        chains: loaded.chains,
+        residueCount: loaded.chains.reduce(
+          (count, chain) => count + chain.residueCount,
+          0
+        ),
+      });
+
+      await handOver(plugin, loaded, isCurrent);
     },
     [adoptLoadedStructure, handOver, reportError]
   );
 
-  // Values that only apply at creation time, read through refs so that changing
-  // them later does not rebuild the plugin (they are pushed in via effects).
-  const initialPropsRef = useRef({
-    backgroundColor,
-    edgeColor,
-    hasPlddt,
-    highlightColor,
-    mode,
-    molstarSpec,
-    showAxes,
-    showSequenceViewer,
-    structure,
-  });
-  initialPropsRef.current = {
-    backgroundColor,
-    edgeColor,
-    hasPlddt,
-    highlightColor,
-    mode,
-    molstarSpec,
-    showAxes,
-    showSequenceViewer,
-    structure,
-  };
+  /**
+   * Places the camera on a structure just loaded, from the props as they are
+   * now. Only an orientation needs the residues it turns toward, so they are
+   * only found when one will be applied.
+   */
+  const frameCamera = useCallback(
+    (plugin: PluginUIContext, loaded: LoadedStructure, fit: boolean) => {
+      const { canvas3d } = plugin;
+      if (!canvas3d) return;
+
+      const props = scenePropsRef.current;
+      const orienting = Boolean(props.orientation && !props.initialCamera);
+      const residues =
+        orienting && loaded.structureData
+          ? residuesCenter(loaded.structureData, [
+              ...resolveHighlights(
+                props.highlights,
+                loaded.addressIndex
+              ).colors.keys(),
+            ])
+          : undefined;
+
+      framedOrientationRef.current = frameStructure(
+        canvas3d,
+        props,
+        residues,
+        fit
+      );
+    },
+    []
+  );
+
+  /**
+   * Loads a structure and brings everything up on it: parses it, draws the
+   * scene when the viewer is the one drawing it, places the camera, and hands
+   * it over. Runs inside the scene's queue, so it never interleaves with an
+   * update to the structure it is replacing.
+   *
+   * The camera is placed once something is drawn: Mol* settles a reset on the
+   * next frame, and one settled against an empty scene is lost. So it follows
+   * the viewer's own scene when there is one, and the consumer's `onReady`
+   * when the consumer draws.
+   */
+  const loadAndDraw = useCallback(
+    async (
+      plugin: PluginUIContext,
+      managedScene: ManagedScene,
+      text: string,
+      isCurrent: () => boolean
+    ) => {
+      let outcome = await loadStructure(
+        plugin,
+        text,
+        initialPropsRef.current.showAxes
+      );
+      if (!isCurrent()) return;
+
+      const managed = sceneModeRef.current === "managed";
+
+      if (managed && outcome.ok && outcome.loaded.structure) {
+        const { loaded } = outcome;
+        try {
+          await managedScene.build(
+            {
+              addressIndex: loaded.addressIndex,
+              chainLabels: loaded.chainLabels,
+              chains: loaded.chains,
+              structure: loaded.structure as StructureSelector,
+            },
+            scenePropsRef.current
+          );
+          frameCamera(plugin, loaded, true);
+        } catch (error) {
+          outcome = { error, ok: false };
+        }
+      }
+
+      await takeUpLoad(plugin, outcome, isCurrent);
+
+      if (!managed && outcome.ok && isCurrent()) {
+        frameCamera(plugin, outcome.loaded, false);
+      }
+    },
+    [frameCamera, takeUpLoad]
+  );
 
   /**
    * The consumer's `canvas3d` overrides, keyed by content. Unlike the rest of
@@ -940,18 +809,16 @@ export function useMolstarPlugin({
       const initial = initialPropsRef.current;
 
       try {
-        const residueValueTheme = createResidueValueTheme(initial.mode);
-        const chainColorTheme = createChainColorTheme();
+        const themes = createSceneThemes(initial.mode);
         const plugin = await createViewer({
           backgroundColor: initial.backgroundColor,
-          chainColorTheme,
           edgeColor: initial.edgeColor,
           highlightColor: initial.highlightColor,
           molstarSpec: initial.molstarSpec,
-          residueValueTheme,
           root: container,
           showAxes: initial.showAxes,
           showSequenceViewer: initial.showSequenceViewer,
+          themes,
           viewSettings,
         });
 
@@ -961,8 +828,12 @@ export function useMolstarPlugin({
         }
 
         pluginRef.current = plugin;
-        residueValueThemeRef.current = residueValueTheme;
-        chainColorThemeRef.current = chainColorTheme;
+        const managedScene = new ManagedScene(plugin, themes, {
+          onBusyChange: setSceneBusy,
+          onRebuild: () => setSceneVersion((version) => version + 1),
+          reportError,
+        });
+        sceneRef.current = managedScene;
 
         // Building the plugin outlasts a paint or two, so the props can have
         // moved on since the snapshot above was taken - an app whose structure
@@ -971,19 +842,13 @@ export function useMolstarPlugin({
         // what the props say at this moment rather than what they said when
         // initialization started.
         const latest = initialPropsRef.current;
-
-        const outcome = await loadStructure(
-          plugin,
-          latest.structure,
-          latest.hasPlddt,
-          latest.showAxes,
-          sceneModeRef.current
-        );
         currentStructureRef.current = latest.structure;
 
-        // Handed over before the viewer answers a click or applies a color, so
-        // a scene the consumer builds is in place before either reaches it.
-        await takeUpLoad(plugin, outcome, () => !cancelled);
+        // Handed over before the viewer answers a click, so a scene the
+        // consumer builds is in place before one reaches it.
+        await managedScene.enqueue(() =>
+          loadAndDraw(plugin, managedScene, latest.structure, () => !cancelled)
+        );
         if (cancelled) return;
 
         /**
@@ -1059,6 +924,8 @@ export function useMolstarPlugin({
     return () => {
       cancelled = true;
       clipSubscription?.unsubscribe();
+      sceneRef.current?.dispose();
+      sceneRef.current = null;
 
       const plugin = pluginRef.current;
       try {
@@ -1071,10 +938,9 @@ export function useMolstarPlugin({
         plugin?.dispose();
       }
       pluginRef.current = null;
-      residueValueThemeRef.current = null;
-      chainColorThemeRef.current = null;
-      componentRefsRef.current = new Map();
       residuesByChainRef.current = new Map();
+      addressIndexRef.current = new Map();
+      structureDataRef.current = null;
       currentStructureRef.current = null;
       clipRatioRef.current = null;
       setIsReady(false);
@@ -1122,6 +988,7 @@ export function useMolstarPlugin({
       onChainSelect,
       onChainToggle,
       onError: reportError,
+      sceneBusy,
       selectedChains,
       sequenceViewerBackgroundColor,
       showAxes,
@@ -1134,6 +1001,7 @@ export function useMolstarPlugin({
     onChainSelect,
     onChainToggle,
     reportError,
+    sceneBusy,
     selectedChains,
     sequenceViewerBackgroundColor,
     showAxes,
@@ -1149,7 +1017,8 @@ export function useMolstarPlugin({
   // Reload the structure when the data changes.
   useEffect(() => {
     const plugin = pluginRef.current;
-    if (!plugin || !isReady) return;
+    const managedScene = sceneRef.current;
+    if (!plugin || !managedScene || !isReady) return;
     if (structure === currentStructureRef.current) return;
 
     currentStructureRef.current = structure;
@@ -1158,44 +1027,68 @@ export function useMolstarPlugin({
     // hover guard compares against it. Clearing it keeps the first hover on the
     // new structure from being read as a repeat.
     lastHoverRef.current = null;
-    loadStructure(
-      plugin,
-      structure,
-      hasPlddt,
-      showAxes,
-      sceneModeRef.current
-    ).then((outcome) =>
-      // The plugin can have been disposed while the structure was loading.
-      takeUpLoad(plugin, outcome, () => pluginRef.current === plugin)
-    );
+    managedScene
+      .enqueue(() =>
+        // The plugin can have been disposed while the structure was loading.
+        loadAndDraw(
+          plugin,
+          managedScene,
+          structure,
+          () => pluginRef.current === plugin
+        )
+      )
+      .catch((error) => {
+        if (pluginRef.current === plugin) reportError(error, "load");
+      });
     // isReady replays this once the plugin is up, which is what catches a
     // structure swapped while it was still being built; the comparison above
     // makes the replay a no-op when it was not.
-    // showAxes is read for the reload only; changing it alone is handled above.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [structure, hasPlddt, isReady, takeUpLoad]);
+  }, [structure, isReady, loadAndDraw, reportError]);
 
-  // Show and hide chains in place. Visibility is a state-tree flag, so it costs
-  // neither a reload nor a recolor, and a hidden chain stops being drawn - which
-  // is also what takes it out of reach of hover and click.
+  /**
+   * Keys for the scene props that arrive as fresh objects on every render, so
+   * the update below turns on what they say rather than on their identity.
+   * `plddt` and the overlay are compared by identity, as they are elsewhere.
+   */
+  const hiddenKey = chainSetKey(scene.hiddenChains);
+  const sceneHighlightsKey = highlightsKey(scene.highlights);
+  const chainColorsKey = JSON.stringify(scene.chainColors ?? null);
+
+  // Bring the scene in line with the props, in place. Recoloring, hiding and
+  // replacing a representation all leave the camera where it is.
   useEffect(() => {
-    const plugin = pluginRef.current;
-    if (!plugin || !isReady) return;
+    const managedScene = sceneRef.current;
+    if (!managedScene || !isReady || sceneModeRef.current !== "managed") {
+      return;
+    }
 
-    applyChainVisibility(plugin, componentRefsRef.current, hiddenChains);
-    // isReady replays this for the same reason as the colors above: a chain
-    // hidden before the plugin came up has no later change to ride in on.
-  }, [hiddenChains, isReady]);
+    void managedScene.update(scenePropsRef.current);
+    // The keys above stand in for the objects they describe; isReady replays
+    // this once the plugin is up, for props that changed while it was built.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    isReady,
+    scene.representation,
+    hiddenKey,
+    sceneHighlightsKey,
+    scene.colorBy,
+    chainColorsKey,
+    scene.plddt,
+    scene.overlay,
+    scene.mode,
+  ]);
 
   return {
-    chainColorThemeRef,
+    addressIndexRef,
     chains,
+    framedOrientationRef,
     isReady,
     loadCount,
     pluginRef,
     residuesByChainRef,
-    residueValueThemeRef,
     sceneMode: sceneModeRef.current,
+    sceneVersion,
     setClipRatio,
+    structureDataRef,
   };
 }
