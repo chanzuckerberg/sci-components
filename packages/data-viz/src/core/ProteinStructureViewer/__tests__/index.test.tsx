@@ -20,7 +20,6 @@ import type { Expression } from "molstar/lib/mol-script/language/expression";
 import { compile } from "molstar/lib/mol-script/runtime/query/compiler";
 import { Color } from "molstar/lib/mol-util/color";
 import { ReactElement } from "react";
-import { BehaviorSubject } from "rxjs";
 import ProteinStructureViewer from "..";
 import {
   CHAIN_DIM_TRANSPARENCY,
@@ -30,13 +29,31 @@ import { BARNASE_BARSTAR_PDB } from "../__storybook__/barnaseBarstar";
 import { CRAMBIN_PDB } from "../__storybook__/constants";
 import * as stories from "../__storybook__/index.stories";
 import { MYOGLOBIN_PDB } from "../__storybook__/myoglobin";
-import { ProteinStructureViewerProps } from "../ProteinStructureViewer.types";
+import {
+  ProteinStructureViewerProps,
+  SceneMode,
+} from "../ProteinStructureViewer.types";
+import { chainsFromStructure } from "../utils/chains";
 import { parseHexColor } from "../utils/color";
 import {
   lociForResidueIndex,
   lociForSelectionInStructure,
 } from "../utils/residueLoci";
 import { lociForSeqId, structureFromPdb } from "./molstarStructure";
+import {
+  EMPTY_CLICK,
+  HIGHLIGHT_A,
+  HIGHLIGHT_B,
+  LIGAND_A,
+  LIGAND_PART,
+  MOLECULAR_SURFACE,
+  POLYMER_A,
+  POLYMER_PART,
+  SURFACE,
+  componentRef,
+  createStubPlugin,
+  themeCallbackArgs,
+} from "./stubPlugin";
 
 /**
  * Mol* draws through WebGL, which jsdom does not implement, so the plugin is
@@ -57,311 +74,6 @@ vi.mock("molstar/lib/mol-plugin-state/helpers/structure-transparency", () => ({
   clearStructureTransparency,
   setStructureTransparency,
 }));
-
-/**
- * Stands in for a Mol* behavior, which is how the hover and click paths are
- * exercised without a canvas. Handlers are kept so a test can push an event
- * through with `emit`, and `subscribe` is a spy, so one can equally be pulled
- * back out of `subscribe.mock.calls`.
- *
- * Mol*'s behaviors are BehaviorSubjects, so subscribing replays whatever they
- * currently hold. `replay` reproduces that, which is what the viewer has to
- * survive: the click behavior starts out holding an empty click, and reading
- * that as a real one clears the consumer's selection before the viewer is even
- * interactive.
- */
-function subscribable(replay?: unknown) {
-  const handlers: ((value: unknown) => void)[] = [];
-
-  return {
-    emit: (value: unknown) => handlers.forEach((handler) => handler(value)),
-    subscribe: vi.fn((handler: (value: unknown) => void) => {
-      handlers.push(handler);
-      if (replay !== undefined) handler(replay);
-      return { unsubscribe: vi.fn() };
-    }),
-  };
-}
-
-/** What Mol*'s click behavior holds before anything has been clicked. */
-const EMPTY_CLICK = { current: { loci: { kind: "empty-loci" } } };
-
-/** True when the expression matches no atom of the structure. */
-function selectsNothing(structure: Structure, expression: Expression): boolean {
-  const selection = compile<StructureSelection>(expression)(
-    new QueryContext(structure)
-  );
-
-  return StructureSelection.structureCount(selection) === 0;
-}
-
-/**
- * Enough of a camera for the focus path to run. Framing a residue is real
- * geometry work, so what is stubbed is only the camera it is handed.
- */
-function stubCamera() {
-  return {
-    getFocus: vi.fn(() => ({ radius: 1 })),
-    getTargetDistance: vi.fn(() => 50),
-    setState: vi.fn(),
-    state: {
-      position: [0, 0, 50],
-      radius: 10,
-      radiusMax: 100,
-      target: [0, 0, 0],
-    },
-    transition: { inTransition: false },
-  };
-}
-
-/**
- * Residue-hover marking colors the stub canvas starts with. Arbitrary values
- * distinct from the theme, so a `setProps` restore would be visible as one.
- */
-const THEME_HIGHLIGHT_COLOR = Color.fromRgb(1, 2, 3);
-const THEME_EDGE_COLOR = Color.fromRgb(4, 5, 6);
-const THEME_HIGHLIGHT_STRENGTH = 0.2;
-
-/**
- * The two halves of a chain the load path draws, the component keys it builds
- * for chain A from them, and how the stub refs a component.
- */
-const POLYMER_PART = "polymer";
-const LIGAND_PART = "ligand";
-const POLYMER_A = `${POLYMER_PART}-A`;
-const LIGAND_A = `${LIGAND_PART}-A`;
-const componentRef = (key: string) => `component-${key}`;
-
-/**
- * A component and one of its representations, shaped the way Mol* hands them
- * to a theme callback.
- *
- * The shapes are the point. Mol* files a component under
- * `structure-component-<key>` rather than under the key it was given, so a
- * stub that passed the key as written would let a check against that key pass
- * here while matching nothing in a browser - which is exactly how every ligand
- * came to be painted with the structure-wide theme. The tag on the
- * representation is what the viewer reads instead, so it is what this carries.
- */
-function themeCallbackArgs(part: string) {
-  return [
-    { key: `structure-component-${part}-A` },
-    { cell: { transform: { tags: [part] } } },
-  ] as const;
-}
-
-/**
- * `structure` is the parsed structure the viewer would be holding. Passing a
- * real one lets the tests exercise the actual residue-to-loci resolution
- * rather than a stand-in for it.
- */
-function createStubPlugin(structure?: Structure) {
-  const loadedThemes: string[] = [];
-  const parsedPdb: string[] = [];
-  const parsedFormats: string[] = [];
-  const focused = new BehaviorSubject<{ loci: unknown } | undefined>(undefined);
-
-  /** Component keys the load path built, in order. */
-  const components: string[] = [];
-
-  /** Representation type built over each component, by component key. */
-  const representations = new Map<string, string>();
-
-  /**
-   * What `setSubtreeVisibility` ended up writing, by component ref. It is real
-   * Mol* code walking the state tree, so the tree below is stood up far enough
-   * for it to run rather than the call being mocked out - otherwise the test
-   * would assert that the viewer called a function, not that a chain is hidden.
-   */
-  const visibility = new Map<string, boolean>();
-  const transforms = new Map<string, { ref: string }>();
-
-  /**
-   * Hierarchy components the load path built. The same array the plugin
-   * reports, so a chain hover can find them the way it does in a browser.
-   */
-  const hierarchyComponents: {
-    key: string;
-    cell: { transform: { ref: string } };
-  }[] = [];
-
-  /** Focus shell settings, one entry per reconfiguration. */
-  const focusShells: { components: string[]; expandRadius: number }[] = [];
-
-  return {
-    behaviors: {
-      interaction: {
-        click: subscribable(EMPTY_CLICK),
-        hover: subscribable(EMPTY_CLICK),
-      },
-    },
-    builders: {
-      data: { rawData: vi.fn(async (args: { data: string }) => args.data) },
-      structure: {
-        createModel: vi.fn(async (trajectory: string) => trajectory),
-        // Structure.Empty stands in for a structure with no chains, which is
-        // what the tests that pass none are describing.
-        createStructure: vi.fn(async () => ({
-          data: structure ?? Structure.Empty,
-          ref: "structure",
-        })),
-        hierarchy: { applyPreset: vi.fn(async () => undefined) },
-        parseTrajectory: vi.fn(async (data: string, format?: string) => {
-          parsedPdb.push(data);
-          parsedFormats.push(format ?? "pdb");
-          return data;
-        }),
-        representation: {
-          addRepresentation: vi.fn(
-            async (
-              component: { ref: string },
-              props: { type: string }
-            ): Promise<undefined> => {
-              representations.set(component.ref, props.type);
-              return undefined;
-            }
-          ),
-        },
-        /**
-         * Returns nothing when the expression selects nothing, as Mol* does.
-         * The expression is run for real against the structure, so a chain
-         * with no ligands gets no ligand component here either - otherwise
-         * every test would see components the viewer would never build.
-         */
-        tryCreateComponentFromExpression: vi.fn(
-          async (
-            _structure: unknown,
-            expression: Expression,
-            key: string
-          ): Promise<{ ref: string } | undefined> => {
-            if (structure && selectsNothing(structure, expression))
-              return undefined;
-
-            const ref = `component-${key}`;
-            components.push(key);
-            transforms.set(ref, { ref });
-            hierarchyComponents.push({
-              cell: { transform: { ref } },
-              key: `structure-component-${key}`,
-            });
-            return { ref };
-          }
-        ),
-      },
-    },
-    canvas3d: {
-      camera: stubCamera(),
-      didDraw: subscribable(),
-      /**
-       * Residue-hover marking colors the theme is holding. Real Mol* keeps
-       * these current as `setProps` is called; here they stay as the theme
-       * left them.
-       */
-      props: {
-        marking: { highlightEdgeColor: THEME_EDGE_COLOR },
-        renderer: {
-          highlightColor: THEME_HIGHLIGHT_COLOR,
-          highlightStrength: THEME_HIGHLIGHT_STRENGTH,
-        },
-      },
-      requestCameraReset: vi.fn(),
-      setProps: vi.fn(),
-    },
-    clear: vi.fn(async () => undefined),
-    dataTransaction: vi.fn(async (fn: () => Promise<void>) => fn()),
-    dispose: vi.fn(),
-    loadedThemes,
-    managers: {
-      interactivity: {
-        lociHighlights: { clearHighlights: vi.fn(), highlightOnly: vi.fn() },
-        lociSelects: { deselectAll: vi.fn(), selectOnly: vi.fn() },
-      },
-      lociLabels: { providers: [], removeProvider: vi.fn() },
-      structure: {
-        component: {
-          // Read by the load path to match the cartoon parameters Mol*'s own
-          // presets compute.
-          state: {
-            options: {
-              hydrogens: "all",
-              ignoreLight: false,
-              visualQuality: "auto",
-            },
-          },
-          /**
-           * The viewer passes the per-representation form, so that the
-           * heteroatoms can stay on element colors while the polymer takes
-           * whatever the props asked for. Asked here for the polymer, which is
-           * the theme the tests around this are about.
-           */
-          updateRepresentationsTheme: vi.fn(
-            async (
-              _components: unknown,
-              params: (...args: ReturnType<typeof themeCallbackArgs>) => {
-                color: string;
-              }
-            ) => {
-              loadedThemes.push(
-                params(...themeCallbackArgs(POLYMER_PART)).color
-              );
-            }
-          ),
-        },
-        focus: {
-          behaviors: { current: focused },
-          clear: vi.fn(() => focused.next(undefined)),
-          setFromLoci: vi.fn((loci: unknown) => focused.next({ loci })),
-        },
-        hierarchy: {
-          current: {
-            structures: [
-              {
-                cell: { obj: { data: structure } },
-                components: hierarchyComponents,
-              },
-            ],
-          },
-        },
-      },
-    },
-    parsedFormats,
-    parsedPdb,
-    representation: {
-      structure: { themes: { colorThemeRegistry: { add: vi.fn() } } },
-    },
-    state: {
-      data: {
-        transforms,
-        tree: { children: new Map(), transforms },
-        updateCellState: vi.fn((ref: string, next: { isHidden: boolean }) => {
-          visibility.set(ref, next.isHidden);
-        }),
-      },
-      /**
-       * How the focus shell is configured. The viewer confines it to the
-       * selection for a whole chain, which on a complex would otherwise reach
-       * across the interface and draw the partner chain's contact face.
-       */
-      updateBehavior: vi.fn(
-        async (
-          _behavior: unknown,
-          update: (params: {
-            components: string[];
-            expandRadius: number;
-          }) => void
-        ) => {
-          const params = { components: [] as string[], expandRadius: -1 };
-          update(params);
-          focusShells.push(params);
-        }
-      ),
-    },
-    stubComponents: components,
-    stubFocusShells: focusShells,
-    stubRepresentations: representations,
-    stubVisibility: visibility,
-  };
-}
 
 /**
  * What the legend's first stat slot reads, which is where the hovered or
@@ -391,6 +103,29 @@ function giveElementsSize() {
     x: 0,
     y: 0,
   });
+}
+
+/** Holds createPluginUI open so props can move mid-initialization. */
+function holdPlugin(): (p: unknown) => void {
+  let release: (p: unknown) => void = () => undefined;
+  createPluginUI.mockReturnValue(
+    new Promise((resolve) => {
+      release = resolve;
+    })
+  );
+  return release;
+}
+
+/** A promise and the handles to settle it from a test. */
+function deferred<T = void>() {
+  let resolve: (value: T) => void = () => undefined;
+  let reject: (error: unknown) => void = () => undefined;
+  const promise = new Promise<T>((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+
+  return { promise, reject, resolve };
 }
 
 const PDB = `ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
@@ -432,8 +167,8 @@ const OVERLAY_LABEL = "Feature activation";
 /** The viewer's own per-chain theme, which stands in for Mol*'s chain-id. */
 const CHAIN_THEME = "chain-color";
 
-/** Mol*'s B-factor theme, which is the one pLDDT scores are painted through. */
-const PLDDT_THEME = "plddt-bfactor";
+/** The viewer's pLDDT theme, which reads the scores by residue. */
+const PLDDT_THEME = "plddt";
 
 /** Barstar's polymer component in the stub state tree, and its legend toggle. */
 const BARSTAR_REF = componentRef("polymer-B");
@@ -622,11 +357,32 @@ describe("<ProteinStructureViewer />", () => {
     expect(screen.getByText(OVERLAY_LABEL)).toBeInTheDocument();
   });
 
-  it("injects pLDDT scores into the B-factor column before parsing", async () => {
+  /**
+   * Scores are read by the pLDDT theme, residue by residue, so the text Mol*
+   * parses is exactly the text the consumer passed - which is what lets a
+   * verified structure stay verified.
+   */
+  it("parses the structure exactly as given when scores are supplied", async () => {
     renderViewer({ plddt: [0.94] });
 
     await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
-    expect((plugin.parsedPdb[0] as string).split("\n")[0]).toContain(" 94.00");
+    expect(plugin.parsedPdb[0]).toBe(PDB);
+  });
+
+  it("recolors rather than reloads when scores arrive late", async () => {
+    const view = (plddt: number[] | null) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer plddt={plddt} structure={PDB} />
+      </ThemeProvider>
+    );
+
+    const { rerender } = render(view(null));
+    await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+
+    rerender(view([0.94]));
+
+    await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
+    expect(plugin.parsedPdb).toHaveLength(1);
   });
 
   it("parses mmCIF when the structure text is a CIF document", async () => {
@@ -636,11 +392,11 @@ describe("<ProteinStructureViewer />", () => {
     expect(plugin.parsedFormats[0]).toBe("mmcif");
   });
 
-  it("injects pLDDT scores into mmCIF B_iso_or_equiv before parsing", async () => {
+  it("parses mmCIF exactly as given when scores are supplied", async () => {
     renderViewer({ structure: MMCIF, plddt: [0.94] });
 
     await waitFor(() => expect(plugin.parsedPdb.length).toBe(1));
-    expect(plugin.parsedPdb[0]).toContain("94.00");
+    expect(plugin.parsedPdb[0]).toBe(MMCIF);
     expect(plugin.parsedFormats[0]).toBe("mmcif");
   });
 
@@ -796,17 +552,6 @@ describe("<ProteinStructureViewer />", () => {
    * already changed by the time the plugin can accept them.
    */
   describe("when props change while the plugin is still being built", () => {
-    /** Holds createPluginUI open so props can move mid-initialization. */
-    function holdPlugin(): (p: unknown) => void {
-      let release: (p: unknown) => void = () => undefined;
-      createPluginUI.mockReturnValue(
-        new Promise((resolve) => {
-          release = resolve;
-        })
-      );
-      return release;
-    }
-
     it("loads the structure the props settled on, not the one they started with", async () => {
       const release = holdPlugin();
 
@@ -1331,9 +1076,9 @@ describe("<ProteinStructureViewer />", () => {
       });
 
       /**
-       * A load rebuilds the state tree the dimming was written into. Scores
-       * arriving after the first render are what makes this ordinary: they
-       * reload the structure with the same chains under a standing selection.
+       * A load rebuilds the state tree the dimming was written into. A parent
+       * handing back the structure as a new string is what makes this
+       * ordinary: it reloads with the same chains under a standing selection.
        */
       it("dims again after the structure is reloaded", async () => {
         const { rerender } = render(selecting({ chains: ["B"] }));
@@ -1345,8 +1090,7 @@ describe("<ProteinStructureViewer />", () => {
         rerender(
           <ThemeProvider theme={defaultTheme}>
             <ProteinStructureViewer
-              plddt={Array.from({ length: 199 }, () => 0.9)}
-              structure={BARNASE_BARSTAR_PDB}
+              structure={`${BARNASE_BARSTAR_PDB}\n`}
               selection={{ chains: ["B"] }}
             />
           </ThemeProvider>
@@ -1992,6 +1736,716 @@ describe("<ProteinStructureViewer />", () => {
 
       await waitFor(() => expect(createPluginUI).toHaveBeenCalled());
       expect(spec().canvas3d.renderer.colorMarker).toBe(true);
+    });
+  });
+
+  /**
+   * What is drawn and how it is colored, changed in place: a new
+   * representation, highlights or coloring replaces only what it has to and
+   * leaves the camera where the user left it.
+   */
+  describe("scene props", () => {
+    let complex: Structure;
+
+    beforeAll(async () => {
+      complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+    });
+
+    const scene = (props: Partial<ProteinStructureViewerProps> = {}) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer structure={BARNASE_BARSTAR_PDB} {...props} />
+      </ThemeProvider>
+    );
+
+    const useComplex = (options?: { failSurface?: boolean }) => {
+      plugin = createStubPlugin(complex, options);
+      createPluginUI.mockResolvedValue(plugin);
+    };
+
+    /** The load has framed the camera, which is the last thing it does. */
+    const framed = () =>
+      waitFor(() =>
+        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalled()
+      );
+
+    describe("representation", () => {
+      beforeEach(() => useComplex());
+
+      it("draws one surface over the chains in place of their cartoons", async () => {
+        render(scene({ representation: SURFACE }));
+
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+        expect(plugin.stubComponents).not.toContain(POLYMER_A);
+        expect([...plugin.stubRepresentations.values()]).toContain(
+          MOLECULAR_SURFACE
+        );
+      });
+
+      it("swaps cartoon for surface without refitting the camera", async () => {
+        const { rerender } = render(scene());
+        await framed();
+        const fits = plugin.canvas3d.requestCameraReset.mock.calls.length;
+
+        rerender(scene({ representation: SURFACE }));
+
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+        // The cartoons go once the surface exists, so the scene never empties.
+        await waitFor(() =>
+          expect(plugin.stubDeleted).toEqual([
+            componentRef(POLYMER_A),
+            componentRef("polymer-B"),
+          ])
+        );
+        expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledTimes(fits);
+      });
+
+      /**
+       * Mol* updates the component filed under a key rather than adding a
+       * second, so the surface is rebuilt in place: same component, same
+       * representation, over a new selection. Replacing it and deleting the
+       * old one would delete the new surface along with it.
+       */
+      it("rebuilds the surface in place over what is left when a chain is hidden", async () => {
+        const { rerender } = render(
+          scene({ hiddenChains: [], representation: SURFACE })
+        );
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+
+        rerender(scene({ hiddenChains: ["B"], representation: SURFACE }));
+
+        const surfaceBuilds = () =>
+          plugin.builders.structure.tryCreateComponentFromExpression.mock.calls.filter(
+            ([, , key]) => key === SURFACE
+          );
+        await waitFor(() => expect(surfaceBuilds()).toHaveLength(2));
+
+        // Over barnase alone now.
+        const expression = surfaceBuilds()[1]?.[1] as Expression;
+        const selected = compile<StructureSelection>(expression)(
+          new QueryContext(complex)
+        );
+        expect(
+          chainsFromStructure(StructureSelection.unionStructure(selected)).map(
+            (chain) => chain.chainId
+          )
+        ).toEqual(["A"]);
+
+        // Drawn once, and not deleted along the way.
+        expect(
+          plugin.builders.structure.representation.addRepresentation.mock.calls.filter(
+            ([, props]) => props.type === MOLECULAR_SURFACE
+          )
+        ).toHaveLength(1);
+        expect(plugin.stubDeleted).not.toContain(componentRef(SURFACE));
+      });
+
+      it("keeps the cartoon, and says so, when the surface cannot be drawn", async () => {
+        useComplex({ failSurface: true });
+        const onError = vi.fn();
+
+        render(scene({ onError, representation: SURFACE }));
+
+        await waitFor(() =>
+          expect(onError).toHaveBeenCalledWith(
+            expect.any(Error),
+            "representation"
+          )
+        );
+        await waitFor(() => expect(plugin.stubComponents).toContain(POLYMER_A));
+      });
+    });
+
+    describe("highlights", () => {
+      beforeEach(() => useComplex());
+
+      /**
+       * Barnase's Lys27 and barstar's Asp39, by the address the file gives.
+       * The co-fold numbers barstar on from barnase, so Asp39 is B 149.
+       */
+      const HIGHLIGHTS = [
+        { chainId: "A", seqId: 27 },
+        { chainId: "B", color: "#123456", seqId: 149 },
+      ];
+
+      it("draws highlighted residues in ball-and-stick on their chains", async () => {
+        render(scene({ highlights: HIGHLIGHTS }));
+
+        await waitFor(() =>
+          expect(plugin.stubComponents).toEqual(
+            expect.arrayContaining([HIGHLIGHT_A, HIGHLIGHT_B])
+          )
+        );
+        expect(plugin.stubRepresentations.get(componentRef(HIGHLIGHT_A))).toBe(
+          "ball-and-stick"
+        );
+        // Painted by the structure-wide theme, which carries their colors.
+        expect(plugin.stubBuiltColors.get(componentRef(HIGHLIGHT_A))).toBe(
+          CHAIN_THEME
+        );
+      });
+
+      it("skips a highlight naming a residue the structure lacks", async () => {
+        // Barstar's own numbering, which this co-fold does not use.
+        render(scene({ highlights: [{ chainId: "B", seqId: 39 }] }));
+        await framed();
+
+        expect(plugin.stubComponents).not.toContain(HIGHLIGHT_B);
+      });
+
+      it("redraws the highlights, and recolors, when they change", async () => {
+        const { rerender } = render(scene({ highlights: [HIGHLIGHTS[0]!] }));
+        await waitFor(() =>
+          expect(plugin.stubComponents).toContain(HIGHLIGHT_A)
+        );
+        const recolors = plugin.loadedThemes.length;
+
+        rerender(scene({ highlights: HIGHLIGHTS }));
+
+        await waitFor(() =>
+          expect(plugin.stubComponents).toContain(HIGHLIGHT_B)
+        );
+        await waitFor(() =>
+          expect(plugin.loadedThemes.length).toBeGreaterThan(recolors)
+        );
+        // Chain A's is updated in place rather than replaced.
+        expect(plugin.stubDeleted).not.toContain(componentRef(HIGHLIGHT_A));
+      });
+
+      it("removes a chain's sticks once it has no highlights left", async () => {
+        const { rerender } = render(scene({ highlights: HIGHLIGHTS }));
+        await waitFor(() =>
+          expect(plugin.stubComponents).toContain(HIGHLIGHT_B)
+        );
+
+        rerender(scene({ highlights: [HIGHLIGHTS[0]!] }));
+
+        await waitFor(() =>
+          expect(plugin.stubDeleted).toEqual([componentRef(HIGHLIGHT_B)])
+        );
+      });
+
+      it("leaves the sticks off a surface, which carries the colors itself", async () => {
+        render(scene({ highlights: HIGHLIGHTS, representation: SURFACE }));
+        await waitFor(() => expect(plugin.stubComponents).toContain(SURFACE));
+
+        expect(plugin.stubComponents).not.toContain(HIGHLIGHT_A);
+      });
+
+      it("hides a chain's highlights along with it", async () => {
+        render(scene({ hiddenChains: ["B"], highlights: HIGHLIGHTS }));
+
+        await waitFor(() =>
+          expect(plugin.stubVisibility.get(componentRef(HIGHLIGHT_B))).toBe(
+            true
+          )
+        );
+        expect(plugin.stubVisibility.get(componentRef(HIGHLIGHT_A))).toBe(
+          false
+        );
+      });
+    });
+
+    describe("colorBy", () => {
+      beforeEach(() => useComplex());
+
+      const SCORES = Array.from({ length: 199 }, () => 0.9);
+
+      it("paints what it names, whatever else is supplied", async () => {
+        render(scene({ colorBy: "chain", plddt: SCORES }));
+
+        await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+        expect(plugin.loadedThemes).not.toContain(PLDDT_THEME);
+        // The legend describes chain colors, which have no key.
+        expect(screen.queryByText("pLDDT")).not.toBeInTheDocument();
+      });
+
+      it("switches between themes in place", async () => {
+        const { rerender } = render(scene({ colorBy: "chain", plddt: SCORES }));
+        await waitFor(() => expect(plugin.loadedThemes).toContain(CHAIN_THEME));
+
+        rerender(scene({ colorBy: "plddt", plddt: SCORES }));
+
+        await waitFor(() => expect(plugin.loadedThemes).toContain(PLDDT_THEME));
+        expect(screen.getByText("pLDDT")).toBeInTheDocument();
+        expect(plugin.parsedPdb).toHaveLength(1);
+      });
+
+      it("leaves a consumer's own representations uncolored", async () => {
+        render(scene());
+        await framed();
+
+        const { calls } =
+          plugin.managers.structure.component.updateRepresentationsTheme.mock;
+        const recolored = calls.flatMap(
+          ([components]) => components as { key: string }[]
+        );
+        expect(
+          recolored.every((component) =>
+            component.key.startsWith("structure-component-")
+          )
+        ).toBe(true);
+      });
+    });
+
+    describe("camera", () => {
+      beforeEach(() => useComplex());
+
+      const CAMERA = {
+        fov: 0.8,
+        position: [10, 20, 30] as [number, number, number],
+        projection: "orthographic" as const,
+        radius: 12,
+        radiusMax: 40,
+        target: [1, 2, 3] as [number, number, number],
+        up: [0, 1, 0] as [number, number, number],
+      };
+
+      it("starts where initialCamera says instead of fitting the structure", async () => {
+        render(scene({ initialCamera: CAMERA }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledWith({
+            durationMs: 0,
+            snapshot: expect.objectContaining({
+              mode: "orthographic",
+              radius: 12,
+            }),
+          })
+        );
+        expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
+          camera: { mode: "orthographic" },
+        });
+      });
+
+      it("turns to the highlights when a structure loads with an orientation", async () => {
+        render(
+          scene({
+            highlights: [{ chainId: "A", seqId: 27 }],
+            orientation: "facing",
+          })
+        );
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledWith({
+            durationMs: 0,
+            snapshot: expect.any(Function),
+          })
+        );
+      });
+
+      it("turns the camera when the orientation changes, and only then", async () => {
+        const { rerender } = render(scene());
+        await framed();
+        plugin.canvas3d.requestCameraReset.mockClear();
+
+        rerender(scene({ orientation: "side" }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.requestCameraReset).toHaveBeenCalledWith({
+            durationMs: 250,
+            snapshot: expect.any(Function),
+          })
+        );
+
+        plugin.canvas3d.requestCameraReset.mockClear();
+        rerender(
+          scene({
+            highlights: [{ chainId: "A", seqId: 27 }],
+            orientation: "side",
+          })
+        );
+        await act(async () => undefined);
+        expect(plugin.canvas3d.requestCameraReset).not.toHaveBeenCalled();
+      });
+
+      it("sets the projection", async () => {
+        const { rerender } = render(scene());
+        await framed();
+
+        rerender(scene({ projection: "orthographic" }));
+
+        await waitFor(() =>
+          expect(plugin.canvas3d.setProps).toHaveBeenCalledWith({
+            camera: { mode: "orthographic" },
+          })
+        );
+      });
+
+      it("reports the camera once it comes to rest", async () => {
+        const onCameraChange = vi.fn();
+        render(scene({ onCameraChange }));
+        await waitFor(() =>
+          expect(plugin.canvas3d.didDraw.subscribe).toHaveBeenCalledTimes(2)
+        );
+
+        act(() => plugin.canvas3d.didDraw.emit(undefined));
+
+        await waitFor(() =>
+          expect(onCameraChange).toHaveBeenCalledWith(
+            expect.objectContaining({
+              position: [0, 0, 50],
+              projection: "perspective",
+              viewport: { height: 400, width: 600 },
+            })
+          )
+        );
+
+        // A redraw that leaves the camera where it was is not reported again.
+        act(() => plugin.canvas3d.didDraw.emit(undefined));
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        expect(onCameraChange).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe("loads and addresses", () => {
+      beforeEach(() => useComplex());
+
+      it("reports every load, reloads with the same chains included", async () => {
+        const onChainsChange = vi.fn();
+        const onStructureLoad = vi.fn();
+        const { rerender } = render(scene({ onChainsChange, onStructureLoad }));
+
+        await waitFor(() =>
+          expect(onStructureLoad).toHaveBeenCalledWith({
+            atomCount: complex.elementCount,
+            chains: expect.arrayContaining([
+              expect.objectContaining({ chainId: "A" }),
+            ]),
+            residueCount: 199,
+          })
+        );
+        await waitFor(() =>
+          expect(onChainsChange).toHaveBeenLastCalledWith(
+            expect.arrayContaining([expect.objectContaining({ chainId: "B" })])
+          )
+        );
+        const chainReports = onChainsChange.mock.calls.length;
+
+        rerender(
+          <ThemeProvider theme={defaultTheme}>
+            <ProteinStructureViewer
+              onChainsChange={onChainsChange}
+              onStructureLoad={onStructureLoad}
+              structure={`${BARNASE_BARSTAR_PDB}\n`}
+            />
+          </ThemeProvider>
+        );
+
+        await waitFor(() => expect(onStructureLoad).toHaveBeenCalledTimes(2));
+        expect(onChainsChange).toHaveBeenCalledTimes(chainReports);
+      });
+
+      it("selects a residue by the address the file gives it", async () => {
+        render(
+          scene({
+            selection: { addresses: [{ chainId: "B", seqId: 149 }] },
+          })
+        );
+
+        await waitFor(() =>
+          expect(plugin.managers.structure.focus.setFromLoci).toHaveBeenCalled()
+        );
+        // Barstar's Asp39, named in the readout as the file numbers it.
+        await waitFor(() => expect(readoutSlot()).toBe("ASP 149"));
+      });
+    });
+  });
+
+  /**
+   * The plugin is handed to a consumer that draws on it or drives it, and a
+   * failure is reported to the consumer rather than logged where nobody sees
+   * it. What matters is the order: a scene built in `onReady` has to be in
+   * place before the viewer answers a click or applies a color, and nothing
+   * may reach a consumer about a plugin that is already gone.
+   */
+  describe("plugin lifecycle", () => {
+    const interactive = () =>
+      waitFor(() =>
+        expect(plugin.behaviors.interaction.click.subscribe).toHaveBeenCalled()
+      );
+
+    const view = (
+      props: Partial<ProteinStructureViewerProps> = {},
+      structure = PDB
+    ) => (
+      <ThemeProvider theme={defaultTheme}>
+        <ProteinStructureViewer structure={structure} {...props} />
+      </ThemeProvider>
+    );
+
+    it("hands the plugin and the parsed structure to onReady", async () => {
+      const onReady = vi.fn();
+      renderViewer({ onReady });
+
+      await waitFor(() => expect(onReady).toHaveBeenCalledTimes(1));
+      expect(onReady).toHaveBeenCalledWith(
+        plugin,
+        expect.objectContaining({
+          atomCount: crambin.elementCount,
+          chains: [expect.objectContaining({ chainId: "A" })],
+          structure: expect.objectContaining({ ref: "structure" }),
+        })
+      );
+    });
+
+    it("draws its own scene first, and waits for onReady before answering clicks", async () => {
+      const ready = deferred();
+      const onReady = vi.fn(() => ready.promise);
+      renderViewer({ onReady });
+
+      await waitFor(() => expect(onReady).toHaveBeenCalled());
+      // The viewer's scene is in place, colored, when the consumer gets it.
+      expect(plugin.stubComponents).toContain(POLYMER_A);
+      expect(plugin.loadedThemes).toContain(CHAIN_THEME);
+      expect(
+        plugin.behaviors.interaction.click.subscribe
+      ).not.toHaveBeenCalled();
+
+      await act(async () => ready.resolve());
+
+      await interactive();
+    });
+
+    it("hands over each structure that replaces the first", async () => {
+      const onReady = vi.fn();
+      const { rerender } = render(view({ onReady }));
+      await waitFor(() => expect(onReady).toHaveBeenCalledTimes(1));
+
+      rerender(view({ onReady }, OTHER_PDB));
+
+      await waitFor(() => expect(onReady).toHaveBeenCalledTimes(2));
+    });
+
+    it("hands over nothing for a plugin disposed of while it was built", async () => {
+      const onDispose = vi.fn();
+      const onReady = vi.fn();
+      const release = holdPlugin();
+
+      const { unmount } = render(view({ onDispose, onReady }));
+      await waitFor(() => expect(createPluginUI).toHaveBeenCalledTimes(1));
+      unmount();
+      release(plugin);
+
+      await waitFor(() => expect(plugin.dispose).toHaveBeenCalled());
+      expect(onReady).not.toHaveBeenCalled();
+      expect(onDispose).not.toHaveBeenCalled();
+    });
+
+    it("hands over nothing for a structure that finished loading after unmount", async () => {
+      const parse = deferred<string>();
+      plugin.builders.structure.parseTrajectory.mockImplementationOnce(
+        () => parse.promise
+      );
+      const onReady = vi.fn();
+
+      const { unmount } = render(view({ onReady }));
+      await waitFor(() =>
+        expect(plugin.builders.structure.parseTrajectory).toHaveBeenCalled()
+      );
+      unmount();
+      parse.resolve(PDB);
+
+      // The parse runs on to the end, and nothing is drawn on or handed over
+      // for the plugin it finished on.
+      await waitFor(() =>
+        expect(plugin.builders.structure.createStructure).toHaveBeenCalled()
+      );
+      await act(async () => undefined);
+      expect(onReady).not.toHaveBeenCalled();
+      expect(plugin.stubComponents).toEqual([]);
+    });
+
+    it("reports a plugin that could not be created as an init failure", async () => {
+      const failure = new Error("WebGL is not available");
+      createPluginUI.mockRejectedValue(failure);
+      const onError = vi.fn();
+
+      renderViewer({ onError });
+
+      await waitFor(() =>
+        expect(onError).toHaveBeenCalledWith(failure, "init")
+      );
+    });
+
+    it("reports a structure that failed to load, and hands nothing over", async () => {
+      const failure = new Error("Unparseable structure");
+      plugin.builders.structure.parseTrajectory.mockRejectedValueOnce(failure);
+      const onError = vi.fn();
+      const onReady = vi.fn();
+
+      renderViewer({ onError, onReady });
+
+      await waitFor(() =>
+        expect(onError).toHaveBeenCalledWith(failure, "load")
+      );
+      expect(onReady).not.toHaveBeenCalled();
+      // Still interactive, holding nothing, as a structure with no chains is.
+      await interactive();
+    });
+
+    it("reports an onReady that rejects as a load failure", async () => {
+      const failure = new Error("The consumer's scene could not be built");
+      const onError = vi.fn();
+
+      renderViewer({
+        onError,
+        onReady: async () => {
+          throw failure;
+        },
+      });
+
+      await waitFor(() =>
+        expect(onError).toHaveBeenCalledWith(failure, "load")
+      );
+    });
+
+    it("logs a failure to the console when nobody is listening for it", async () => {
+      const failure = new Error("Unparseable structure");
+      plugin.builders.structure.parseTrajectory.mockRejectedValueOnce(failure);
+      const log = vi
+        .spyOn(console, "error")
+        .mockImplementation(() => undefined);
+
+      renderViewer();
+
+      await waitFor(() =>
+        expect(log).toHaveBeenCalledWith("Failed to load structure:", failure)
+      );
+    });
+
+    it("calls onDispose before disposing of a plugin it handed over", async () => {
+      const onDispose = vi.fn();
+      const { unmount } = render(view({ onDispose, onReady: vi.fn() }));
+      await interactive();
+
+      unmount();
+
+      expect(onDispose).toHaveBeenCalledTimes(1);
+      expect(onDispose.mock.invocationCallOrder[0]).toBeLessThan(
+        plugin.dispose.mock.invocationCallOrder[0] as number
+      );
+    });
+
+    it("calls onDispose for a plugin whose onReady is still running", async () => {
+      const onDispose = vi.fn();
+      const onReady = vi.fn(() => deferred().promise);
+      const { unmount } = render(view({ onDispose, onReady }));
+      await waitFor(() => expect(onReady).toHaveBeenCalled());
+
+      unmount();
+
+      expect(onDispose).toHaveBeenCalledTimes(1);
+      expect(plugin.dispose).toHaveBeenCalled();
+    });
+
+    it("says nothing of an onReady that fails after its plugin is gone", async () => {
+      const ready = deferred();
+      const onError = vi.fn();
+      const onReady = vi.fn(() => ready.promise);
+      const { unmount } = render(view({ onError, onReady }));
+      await waitFor(() => expect(onReady).toHaveBeenCalled());
+
+      unmount();
+      await act(async () => ready.reject(new Error("Too late")));
+
+      expect(onError).not.toHaveBeenCalled();
+    });
+  });
+
+  /**
+   * A consumer drawing its own scene gets the parsed structure and an empty
+   * canvas, and the viewer keeps everything that is not drawing: the sequence
+   * panel, selection, hover, the legend and the camera controls.
+   */
+  describe("external scene mode", () => {
+    let complex: Structure;
+
+    beforeAll(async () => {
+      complex = await structureFromPdb(BARNASE_BARSTAR_PDB);
+    });
+
+    beforeEach(() => {
+      plugin = createStubPlugin(complex);
+      createPluginUI.mockResolvedValue(plugin);
+    });
+
+    const external = (props: Partial<ProteinStructureViewerProps> = {}) =>
+      renderViewer({
+        sceneMode: "external",
+        structure: BARNASE_BARSTAR_PDB,
+        ...props,
+      });
+
+    /** Ready, and the legend drawn from the chains the load found. */
+    const settled = async () => {
+      await screen.findByRole("button", { name: "Chain B" });
+      await act(async () => undefined);
+    };
+
+    it("parses the structure without drawing, coloring or framing it", async () => {
+      external();
+      await settled();
+
+      expect(plugin.builders.structure.parseTrajectory).toHaveBeenCalled();
+      expect(
+        plugin.builders.structure.tryCreateComponentFromExpression
+      ).not.toHaveBeenCalled();
+      expect(
+        plugin.builders.structure.representation.addRepresentation
+      ).not.toHaveBeenCalled();
+      expect(
+        plugin.managers.structure.component.updateRepresentationsTheme
+      ).not.toHaveBeenCalled();
+      expect(plugin.canvas3d.requestCameraReset).not.toHaveBeenCalled();
+    });
+
+    it("hands the parsed structure over to be drawn on", async () => {
+      const onReady = vi.fn();
+      external({ onReady });
+
+      await waitFor(() =>
+        expect(onReady).toHaveBeenCalledWith(
+          plugin,
+          expect.objectContaining({
+            atomCount: complex.elementCount,
+            structure: expect.objectContaining({ ref: "structure" }),
+          })
+        )
+      );
+    });
+
+    it("keeps the chain legend, whose toggles report without hiding", async () => {
+      const onChainVisibilityChange = vi.fn();
+      external({ onChainVisibilityChange });
+
+      const toggle = await screen.findByRole("button", { name: HIDE_BARSTAR });
+      act(() => toggle.click());
+
+      await waitFor(() =>
+        expect(onChainVisibilityChange).toHaveBeenCalledWith(["B"])
+      );
+      expect(plugin.stubVisibility.size).toBe(0);
+    });
+
+    it("keeps the mode the plugin was created with", async () => {
+      const mounted = (sceneMode: SceneMode) => (
+        <ThemeProvider theme={defaultTheme}>
+          <ProteinStructureViewer
+            sceneMode={sceneMode}
+            structure={BARNASE_BARSTAR_PDB}
+          />
+        </ThemeProvider>
+      );
+
+      const { rerender } = render(mounted("external"));
+      await settled();
+      rerender(mounted("managed"));
+      await act(async () => undefined);
+
+      expect(createPluginUI).toHaveBeenCalledTimes(1);
+      expect(
+        plugin.managers.structure.component.updateRepresentationsTheme
+      ).not.toHaveBeenCalled();
     });
   });
 

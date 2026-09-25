@@ -25,6 +25,16 @@
         "default": "./dist/HeatmapChart.cjs.js"
       }
     },
+    "./ProteinStructureScene": {
+      "import": {
+        "types": "./dist/ProteinStructureScene.esm.d.ts",
+        "default": "./dist/ProteinStructureScene.esm.js"
+      },
+      "require": {
+        "types": "./dist/ProteinStructureScene.cjs.d.ts",
+        "default": "./dist/ProteinStructureScene.cjs.js"
+      }
+    },
     "./ProteinStructureViewer": {
       "import": {
         "types": "./dist/ProteinStructureViewer.esm.d.ts",

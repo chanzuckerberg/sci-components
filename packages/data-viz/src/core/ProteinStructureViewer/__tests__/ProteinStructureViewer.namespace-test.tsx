@@ -1,25 +1,47 @@
 import {
+  CameraOrientation,
+  CameraProjection,
+  CameraState,
   ChainRef,
   ColorScale,
   DownloadResolution,
+  HIGHLIGHT_COLOR_PALETTE,
+  LoadedStructureInfo,
+  ResidueAddress,
+  ResidueHighlight,
+  StructureColorBy,
+  StructureLoadInfo,
+  StructureRepresentation,
   ProteinStructureViewer,
   ProteinStructureViewerProps,
   PLASMA_COLOR_SCALE,
   PLDDT_COLOR_SCALE,
   ResidueRef,
   ResidueValueOverlay,
+  SceneMode,
   StructureFormat,
   StructureSelection,
   StructureStat,
+  ViewerErrorPhase,
   detectStructureFormat,
   injectPlddt,
   injectPlddtIntoMmcif,
   injectPlddtIntoPdb,
   sampleColorScale,
 } from "@czi-sds/data-viz";
+import * as DataViz from "@czi-sds/data-viz";
+// The scene on its own, from the entry point that leaves out React.
+import {
+  RenderStructureImageOptions,
+  StructureSceneHandle,
+  StructureSceneOptions,
+  applyStructureScene,
+  renderStructureImage,
+} from "@czi-sds/data-viz/ProteinStructureScene";
 // Mol* is a peer dependency, so a consumer reaching for `molstarSpec` imports
 // its types and config items from Mol* itself rather than from this package.
 import { PluginConfig } from "molstar/lib/mol-plugin/config";
+import type { PluginContext } from "molstar/lib/mol-plugin/context";
 import React, { useState } from "react";
 
 const PDB =
@@ -64,12 +86,88 @@ const CHAIN_COLORS: Record<string, string> = { A: "#0072B2", B: "#E69F00" };
 /** Typed through the exported union, and labelled from the exported map. */
 const DOWNLOAD_RESOLUTION: DownloadResolution = "maximum";
 
+const SCENE_MODE: SceneMode = "external";
+
+const REPRESENTATION: StructureRepresentation = "surface";
+const COLOR_BY: StructureColorBy = "plddt";
+const ORIENTATION: CameraOrientation = "facing";
+const PROJECTION: CameraProjection = "orthographic";
+const ADDRESS: ResidueAddress = { chainId: "A", insCode: "A", seqId: 10 };
+
+/** The first takes the palette's first color; the second names its own. */
+const HIGHLIGHTS: ResidueHighlight[] = [
+  { chainId: "A", seqId: 1 },
+  { chainId: "A", color: HIGHLIGHT_COLOR_PALETTE[1], seqId: 2 },
+];
+
+/** Draws a surface over the structure the viewer parsed, and frames it. */
+async function drawSurface(
+  plugin: Parameters<NonNullable<ProteinStructureViewerProps["onReady"]>>[0],
+  { atomCount, chains, structure }: LoadedStructureInfo
+) {
+  console.log(atomCount, chains.length);
+  await plugin.builders.structure.representation.addRepresentation(structure, {
+    type: "molecular-surface",
+  });
+}
+
+function reportViewerError(error: unknown, phase: ViewerErrorPhase) {
+  console.error(phase, error);
+}
+
+// The root entry re-exports the scene functions too.
+const ROOT_SCENE_EXPORTS: [
+  typeof applyStructureScene,
+  typeof renderStructureImage,
+] = [DataViz.applyStructureScene, DataViz.renderStructureImage];
+
+/**
+ * Draws a scene on a plugin of the consumer's, then renders the same scene,
+ * seen from where the camera was left, as an image.
+ */
+export async function drawWithoutTheViewer(plugin: PluginContext) {
+  const options: StructureSceneOptions = {
+    chainColors: CHAIN_COLORS,
+    colorBy: COLOR_BY,
+    highlights: HIGHLIGHTS,
+    mode: "dark",
+    onError: reportViewerError,
+    orientation: ORIENTATION,
+    plddt: [0.94, null],
+    projection: PROJECTION,
+    representation: REPRESENTATION,
+    residueOverlay: OVERLAY,
+    structure: PDB,
+  };
+
+  const scene: StructureSceneHandle = await applyStructureScene(
+    plugin,
+    options
+  );
+  await scene.update({ hiddenChains: ["B"], structure: MMCIF });
+  const camera: CameraState | undefined = scene.getCamera();
+  const { atomCount, chains, residueCount }: StructureLoadInfo = scene.info;
+  console.log(atomCount, chains.length, residueCount, ROOT_SCENE_EXPORTS);
+  scene.dispose();
+
+  const image: RenderStructureImageOptions = {
+    ...options,
+    backgroundColor: "#FFFFFF",
+    height: 600,
+    initialCamera: camera,
+    width: 800,
+  };
+  const blob: Blob = await renderStructureImage(image);
+  console.log(blob.size, blob.type);
+}
+
 const ProteinStructureViewerNameSpaceTest = (
   props: ProteinStructureViewerProps
 ) => {
   const [selection, setSelection] = useState<StructureSelection | null>(null);
   const [hiddenChains, setHiddenChains] = useState<string[]>([]);
   const [chains, setChains] = useState<ChainRef[]>([]);
+  const [camera, setCamera] = useState<CameraState | null>(null);
 
   // Utilities re-exported alongside the component.
   const format: StructureFormat = detectStructureFormat(PDB);
@@ -136,6 +234,42 @@ const ProteinStructureViewerNameSpaceTest = (
           resolution: DOWNLOAD_RESOLUTION,
           showAxes: true,
         }}
+        structure={PDB}
+      />
+
+      {/* What is drawn, how it is painted, and where the camera looks */}
+      <ProteinStructureViewer
+        colorBy={COLOR_BY}
+        highlights={HIGHLIGHTS}
+        initialCamera={camera}
+        onCameraChange={setCamera}
+        onStructureLoad={(info: StructureLoadInfo) =>
+          console.log(info.atomCount, info.residueCount, info.chains.length)
+        }
+        orientation={ORIENTATION}
+        plddt={[0.94, null]}
+        projection={PROJECTION}
+        representation={REPRESENTATION}
+        selection={{ addresses: [ADDRESS] }}
+        structure={PDB}
+      />
+
+      {/* The capture rendered and delivered by the consumer */}
+      <ProteinStructureViewer
+        download={{
+          deliver: async (image: Blob, filename: string) =>
+            console.log(filename, image.size),
+          render: async () => new Blob([], { type: "image/png" }),
+        }}
+        structure={PDB}
+      />
+
+      {/* A scene drawn by the consumer on the plugin it is handed */}
+      <ProteinStructureViewer
+        onDispose={() => console.log("released")}
+        onError={reportViewerError}
+        onReady={drawSurface}
+        sceneMode={SCENE_MODE}
         structure={PDB}
       />
 

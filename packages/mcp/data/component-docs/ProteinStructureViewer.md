@@ -877,7 +877,7 @@ export default App;
 
 ### Complexes and chains
 
-A multi-chain structure needs nothing special: pass the whole complex as one structure string and the viewer finds the chains itself, reporting them through `onChainsChange` as `ChainRef`s. It draws one cartoon per chain, splits the sequence panel into one grid per chain, and - when neither `plddt` nor `residueOverlay` is coloring the structure - paints each chain its own color and shows a chain legend with a swatch and a visibility toggle for each.
+A multi-chain structure needs nothing special: pass the whole complex as one structure string and the viewer finds the chains itself, reporting them through `onChainsChange` as `ChainRef`s. It draws one cartoon per chain, splits the sequence panel into one grid per chain, and - when chain coloring is what paints the structure - paints each chain its own color and shows a chain legend with a swatch and a visibility toggle for each.
 
 Visibility works out of the box: the toggles own it unless you pass `hiddenChains`, which takes it over and leaves the toggles reporting through `onChainVisibilityChange`. Hiding a chain removes everything it is drawn with, which also takes it out of reach of hover and click; its sequence stays in the panel, dimmed, so the panel does not reflow on every toggle. `chainColors` overrides the palette per chain.
 
@@ -1200,6 +1200,341 @@ They belong to the chain they sit on, so hiding that chain takes them with it an
 
 Bulk water is the exception, and is not drawn. A structure's worth of solvent rendered as sticks buries the structure it surrounds.
 
+### Representation, coloring and highlights
+
+`representation` draws the polymer as a cartoon, the default, or as a molecular surface. The surface is one surface over every visible chain rather than one per chain, so where two chains meet the interface is buried - and hiding a partner rebuilds it over what is left, exposing the face the partner was bound to. Ligands stay ball-and-stick either way. A surface too large to compute keeps the cartoon in its place and is reported to `onError` as a `"representation"` failure.
+
+`colorBy` names what paints the structure. Left undefined it follows what is supplied - an overlay, then pLDDT, then chain colors - and naming one is how a toggle keeps both `plddt` and `chainColors` in place while it switches between them. The legend follows whichever is painting. A `null` in `plddt`, or a residue past its end, reads as unscored and is painted neutral rather than at the bottom of the scale, and the structure text is parsed exactly as given: scores are read by residue, not written into the file's B-factor column.
+
+`highlights` picks residues out in colors of their own, by the chain, number and insertion code the file gives them. They paint over whatever colors the rest, and are drawn in ball-and-stick over the cartoon; a surface carries them in its own colors. Highlights that name no color take the viewer's palette in turn, which is exported as `HIGHLIGHT_COLOR_PALETTE` for a legend of your own. They are separate from the selection: highlighting a residue neither selects it nor moves the camera. `selection.addresses` selects by the same kind of address.
+
+Every one of these changes is made in place, so the camera stays wherever it was left.
+
+**Example: SceneProteinStructureViewer**
+
+```tsx
+// What is drawn, and how it is painted, are props: `representation` swaps the
+// cartoon for a molecular surface, `colorBy` switches between confidence and
+// chain coloring with both supplied, and `highlights` picks residues out by the
+// address the file gives them, in colors of their own. `orientation` turns the
+// camera to face the highlights when the structure loads.
+//
+// Every change is made in place, so the camera stays wherever it was left. The
+// scores below have a gap: residues without one read as unscored gray rather
+// than at the bottom of the scale.
+//
+// The structure is crambin (PDB 1CRN), trimmed to its backbone atoms.
+
+import { Button } from "@czi-sds/components";
+import {
+  ProteinStructureViewer,
+  ResidueHighlight,
+  StructureColorBy,
+  StructureRepresentation,
+} from "@czi-sds/data-viz";
+import { useState } from "react";
+
+const PDB = `
+ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
+ATOM      2  CA  THR A   1      16.967  12.784   4.338  1.00 10.80           C
+ATOM      3  C   THR A   1      15.685  12.755   5.133  1.00  9.19           C
+ATOM      4  O   THR A   1      15.268  13.825   5.594  1.00  9.85           O
+ATOM      5  N   THR A   2      15.115  11.555   5.265  1.00  7.81           N
+ATOM      6  CA  THR A   2      13.856  11.469   6.066  1.00  8.31           C
+ATOM      7  C   THR A   2      14.164  10.785   7.379  1.00  5.80           C
+ATOM      8  O   THR A   2      14.993   9.862   7.443  1.00  6.94           O
+ATOM      9  N   CYS A   3      13.488  11.241   8.417  1.00  5.24           N
+ATOM     10  CA  CYS A   3      13.660  10.707   9.787  1.00  5.39           C
+ATOM     11  C   CYS A   3      12.269  10.431  10.323  1.00  4.45           C
+ATOM     12  O   CYS A   3      11.393  11.308  10.185  1.00  6.54           O
+ATOM     13  N   CYS A   4      12.019   9.272  10.928  1.00  3.90           N
+ATOM     14  CA  CYS A   4      10.646   8.991  11.408  1.00  4.24           C
+ATOM     15  C   CYS A   4      10.654   8.793  12.919  1.00  3.72           C
+ATOM     16  O   CYS A   4      11.659   8.296  13.491  1.00  5.30           O
+ATOM     17  N   PRO A   5       9.561   9.108  13.563  1.00  3.96           N
+ATOM     18  CA  PRO A   5       9.448   9.034  15.012  1.00  4.25           C
+ATOM     19  C   PRO A   5       9.288   7.670  15.606  1.00  4.96           C
+ATOM     20  O   PRO A   5       9.490   7.519  16.819  1.00  7.44           O
+ATOM     21  N   SER A   6       8.875   6.686  14.796  1.00  4.83           N
+ATOM     22  CA  SER A   6       8.673   5.314  15.279  1.00  4.45           C
+ATOM     23  C   SER A   6       8.753   4.376  14.083  1.00  4.99           C
+ATOM     24  O   SER A   6       8.726   4.858  12.923  1.00  4.61           O
+ATOM     25  N   ILE A   7       8.881   3.075  14.358  1.00  4.94           N
+ATOM     26  CA  ILE A   7       8.912   2.083  13.258  1.00  6.33           C
+ATOM     27  C   ILE A   7       7.581   2.090  12.506  1.00  5.32           C
+ATOM     28  O   ILE A   7       7.670   2.031  11.245  1.00  6.85           O
+ATOM     29  N   VAL A   8       6.458   2.162  13.159  1.00  5.02           N
+ATOM     30  CA  VAL A   8       5.145   2.209  12.453  1.00  6.93           C
+ATOM     31  C   VAL A   8       5.115   3.379  11.461  1.00  5.39           C
+ATOM     32  O   VAL A   8       4.664   3.268  10.343  1.00  6.30           O
+ATOM     33  N   ALA A   9       5.606   4.546  11.941  1.00  3.73           N
+ATOM     34  CA  ALA A   9       5.598   5.767  11.082  1.00  3.56           C
+ATOM     35  C   ALA A   9       6.441   5.527   9.850  1.00  4.13           C
+ATOM     36  O   ALA A   9       6.052   5.933   8.744  1.00  4.36           O
+ATOM     37  N   ARG A  10       7.647   4.909  10.005  1.00  3.73           N
+ATOM     38  CA  ARG A  10       8.496   4.609   8.837  1.00  3.38           C
+ATOM     39  C   ARG A  10       7.798   3.609   7.876  1.00  3.47           C
+ATOM     40  O   ARG A  10       7.878   3.778   6.651  1.00  4.67           O
+ATOM     41  N   SER A  11       7.186   2.582   8.445  1.00  5.19           N
+ATOM     42  CA  SER A  11       6.500   1.584   7.565  1.00  4.60           C
+ATOM     43  C   SER A  11       5.382   2.313   6.773  1.00  4.84           C
+ATOM     44  O   SER A  11       5.213   2.016   5.557  1.00  5.84           O
+ATOM     45  N   ASN A  12       4.648   3.182   7.446  1.00  3.54           N
+ATOM     46  CA  ASN A  12       3.545   3.935   6.751  1.00  4.57           C
+ATOM     47  C   ASN A  12       4.107   4.851   5.691  1.00  4.14           C
+ATOM     48  O   ASN A  12       3.536   5.001   4.617  1.00  5.52           O
+ATOM     49  N   PHE A  13       5.259   5.498   6.005  1.00  3.43           N
+ATOM     50  CA  PHE A  13       5.929   6.358   5.055  1.00  3.49           C
+ATOM     51  C   PHE A  13       6.304   5.578   3.799  1.00  3.40           C
+ATOM     52  O   PHE A  13       6.136   6.072   2.653  1.00  4.07           O
+ATOM     53  N   ASN A  14       6.900   4.390   3.989  1.00  3.64           N
+ATOM     54  CA  ASN A  14       7.331   3.607   2.791  1.00  4.31           C
+ATOM     55  C   ASN A  14       6.116   3.210   1.915  1.00  3.98           C
+ATOM     56  O   ASN A  14       6.240   3.144   0.684  1.00  6.22           O
+ATOM     57  N   VAL A  15       4.993   2.927   2.571  1.00  3.76           N
+ATOM     58  CA  VAL A  15       3.782   2.599   1.742  1.00  3.98           C
+ATOM     59  C   VAL A  15       3.296   3.871   1.004  1.00  3.80           C
+ATOM     60  O   VAL A  15       2.947   3.817  -0.189  1.00  4.85           O
+ATOM     61  N   CYS A  16       3.321   4.987   1.720  1.00  3.79           N
+ATOM     62  CA  CYS A  16       2.890   6.285   1.126  1.00  3.54           C
+ATOM     63  C   CYS A  16       3.687   6.597  -0.111  1.00  3.48           C
+ATOM     64  O   CYS A  16       3.200   7.147  -1.103  1.00  4.63           O
+ATOM     65  N   ARG A  17       4.997   6.227  -0.100  1.00  3.99           N
+ATOM     66  CA  ARG A  17       5.895   6.489  -1.213  1.00  3.83           C
+ATOM     67  C   ARG A  17       5.738   5.560  -2.409  1.00  3.79           C
+ATOM     68  O   ARG A  17       6.228   5.901  -3.507  1.00  5.39           O
+ATOM     69  N   LEU A  18       5.051   4.411  -2.204  1.00  4.70           N
+ATOM     70  CA  LEU A  18       4.933   3.431  -3.326  1.00  5.46           C
+ATOM     71  C   LEU A  18       4.397   4.014  -4.620  1.00  5.13           C
+ATOM     72  O   LEU A  18       4.988   3.755  -5.687  1.00  5.55           O
+ATOM     73  N   PRO A  19       3.329   4.795  -4.543  1.00  4.28           N
+ATOM     74  CA  PRO A  19       2.792   5.376  -5.797  1.00  5.38           C
+ATOM     75  C   PRO A  19       3.573   6.540  -6.322  1.00  6.30           C
+ATOM     76  O   PRO A  19       3.260   7.045  -7.422  1.00  9.62           O
+ATOM     77  N   GLY A  20       4.565   7.047  -5.559  1.00  4.94           N
+ATOM     78  CA  GLY A  20       5.366   8.191  -6.018  1.00  5.39           C
+ATOM     79  C   GLY A  20       5.007   9.481  -5.280  1.00  5.03           C
+ATOM     80  O   GLY A  20       5.535  10.510  -5.730  1.00  7.34           O
+ATOM     81  N   THR A  21       4.181   9.438  -4.262  1.00  4.10           N
+ATOM     82  CA  THR A  21       3.767  10.609  -3.513  1.00  3.94           C
+ATOM     83  C   THR A  21       5.017  11.397  -3.042  1.00  3.96           C
+ATOM     84  O   THR A  21       5.947  10.757  -2.523  1.00  5.82           O
+ATOM     85  N   PRO A  22       4.971  12.703  -3.176  1.00  5.04           N
+ATOM     86  CA  PRO A  22       6.143  13.513  -2.696  1.00  4.69           C
+ATOM     87  C   PRO A  22       6.400  13.233  -1.225  1.00  4.19           C
+ATOM     88  O   PRO A  22       5.485  13.061  -0.382  1.00  4.47           O
+ATOM     89  N   GLU A  23       7.728  13.297  -0.921  1.00  5.16           N
+ATOM     90  CA  GLU A  23       8.114  13.103   0.500  1.00  5.31           C
+ATOM     91  C   GLU A  23       7.427  14.073   1.410  1.00  4.11           C
+ATOM     92  O   GLU A  23       7.036  13.682   2.540  1.00  5.11           O
+ATOM     93  N   ALA A  24       7.212  15.334   0.966  1.00  4.56           N
+ATOM     94  CA  ALA A  24       6.614  16.317   1.913  1.00  4.49           C
+ATOM     95  C   ALA A  24       5.212  15.936   2.350  1.00  4.10           C
+ATOM     96  O   ALA A  24       4.782  16.166   3.495  1.00  5.64           O
+ATOM     97  N   ILE A  25       4.445  15.318   1.405  1.00  4.37           N
+ATOM     98  CA  ILE A  25       3.074  14.894   1.756  1.00  5.44           C
+ATOM     99  C   ILE A  25       3.085  13.643   2.645  1.00  4.32           C
+ATOM    100  O   ILE A  25       2.315  13.523   3.578  1.00  4.72           O
+ATOM    101  N   CYS A  26       4.032  12.764   2.313  1.00  3.92           N
+ATOM    102  CA  CYS A  26       4.180  11.549   3.187  1.00  4.37           C
+ATOM    103  C   CYS A  26       4.632  11.944   4.596  1.00  3.95           C
+ATOM    104  O   CYS A  26       4.227  11.252   5.547  1.00  4.74           O
+ATOM    105  N   ALA A  27       5.408  13.012   4.694  1.00  3.89           N
+ATOM    106  CA  ALA A  27       5.879  13.502   6.026  1.00  4.43           C
+ATOM    107  C   ALA A  27       4.696  13.908   6.882  1.00  4.26           C
+ATOM    108  O   ALA A  27       4.528  13.422   8.025  1.00  5.44           O
+ATOM    109  N   THR A  28       3.827  14.802   6.358  1.00  4.53           N
+ATOM    110  CA  THR A  28       2.691  15.221   7.194  1.00  5.08           C
+ATOM    111  C   THR A  28       1.672  14.132   7.434  1.00  4.62           C
+ATOM    112  O   THR A  28       0.947  14.112   8.468  1.00  7.80           O
+ATOM    113  N   TYR A  29       1.621  13.190   6.511  1.00  5.01           N
+ATOM    114  CA  TYR A  29       0.715  12.045   6.657  1.00  6.60           C
+ATOM    115  C   TYR A  29       1.125  11.125   7.815  1.00  4.92           C
+ATOM    116  O   TYR A  29       0.286  10.632   8.545  1.00  7.13           O
+ATOM    117  N   THR A  30       2.470  10.984   7.995  1.00  5.31           N
+ATOM    118  CA  THR A  30       2.986   9.994   8.950  1.00  5.70           C
+ATOM    119  C   THR A  30       3.609  10.505  10.230  1.00  6.28           C
+ATOM    120  O   THR A  30       3.766   9.715  11.186  1.00  8.77           O
+ATOM    121  N   GLY A  31       3.984  11.764  10.241  1.00  4.99           N
+ATOM    122  CA  GLY A  31       4.769  12.336  11.360  1.00  5.50           C
+ATOM    123  C   GLY A  31       6.255  12.243  11.106  1.00  4.19           C
+ATOM    124  O   GLY A  31       7.037  12.750  11.954  1.00  6.12           O
+ATOM    125  N   CYS A  32       6.710  11.631   9.992  1.00  4.30           N
+ATOM    126  CA  CYS A  32       8.140  11.694   9.635  1.00  4.89           C
+ATOM    127  C   CYS A  32       8.500  13.141   9.206  1.00  5.50           C
+ATOM    128  O   CYS A  32       7.581  13.949   8.944  1.00  5.82           O
+ATOM    129  N   ILE A  33       9.793  13.410   9.173  1.00  6.02           N
+ATOM    130  CA  ILE A  33      10.280  14.760   8.823  1.00  5.24           C
+ATOM    131  C   ILE A  33      11.346  14.658   7.743  1.00  5.16           C
+ATOM    132  O   ILE A  33      11.971  13.583   7.552  1.00  7.19           O
+ATOM    133  N   ILE A  34      11.490  15.773   7.038  1.00  5.52           N
+ATOM    134  CA  ILE A  34      12.552  15.877   6.036  1.00  6.82           C
+ATOM    135  C   ILE A  34      13.590  16.917   6.560  1.00  6.92           C
+ATOM    136  O   ILE A  34      13.168  18.006   6.945  1.00  9.22           O
+ATOM    137  N   ILE A  35      14.856  16.493   6.536  1.00  7.06           N
+ATOM    138  CA  ILE A  35      15.930  17.454   6.941  1.00  7.52           C
+ATOM    139  C   ILE A  35      16.913  17.550   5.819  1.00  6.63           C
+ATOM    140  O   ILE A  35      17.097  16.660   4.970  1.00  7.90           O
+ATOM    141  N   PRO A  36      17.664  18.669   5.806  1.00  8.07           N
+ATOM    142  CA  PRO A  36      18.635  18.861   4.738  1.00  8.78           C
+ATOM    143  C   PRO A  36      19.925  18.042   4.949  1.00  8.31           C
+ATOM    144  O   PRO A  36      20.593  17.742   3.945  1.00  9.09           O
+ATOM    145  N   GLY A  37      20.172  17.730   6.217  1.00  8.48           N
+ATOM    146  CA  GLY A  37      21.452  16.969   6.513  1.00  9.20           C
+ATOM    147  C   GLY A  37      21.143  15.478   6.427  1.00 10.41           C
+ATOM    148  O   GLY A  37      20.138  15.023   5.878  1.00 12.06           O
+ATOM    149  N   ALA A  38      22.055  14.701   7.032  1.00  9.24           N
+ATOM    150  CA  ALA A  38      22.019  13.242   7.020  1.00  9.24           C
+ATOM    151  C   ALA A  38      21.944  12.628   8.396  1.00  9.60           C
+ATOM    152  O   ALA A  38      21.869  11.387   8.435  1.00 13.65           O
+ATOM    153  N   THR A  39      21.894  13.435   9.436  1.00  8.70           N
+ATOM    154  CA  THR A  39      21.936  12.911  10.809  1.00  9.46           C
+ATOM    155  C   THR A  39      20.615  13.191  11.521  1.00  8.32           C
+ATOM    156  O   THR A  39      20.357  14.317  11.948  1.00  9.89           O
+ATOM    157  N   CYS A  40      19.827  12.110  11.642  1.00  7.64           N
+ATOM    158  CA  CYS A  40      18.504  12.312  12.298  1.00  8.05           C
+ATOM    159  C   CYS A  40      18.684  12.451  13.784  1.00  7.63           C
+ATOM    160  O   CYS A  40      19.533  11.718  14.362  1.00  9.64           O
+ATOM    161  N   PRO A  41      17.880  13.266  14.426  1.00  8.00           N
+ATOM    162  CA  PRO A  41      17.924  13.421  15.877  1.00  8.96           C
+ATOM    163  C   PRO A  41      17.392  12.206  16.594  1.00  9.06           C
+ATOM    164  O   PRO A  41      16.652  11.368  16.033  1.00  8.82           O
+ATOM    165  N   GLY A  42      17.728  12.124  17.884  1.00  7.55           N
+ATOM    166  CA  GLY A  42      17.334  10.956  18.691  1.00  8.00           C
+ATOM    167  C   GLY A  42      15.875  10.688  18.871  1.00  7.22           C
+ATOM    168  O   GLY A  42      15.434   9.550  19.166  1.00  8.41           O
+ATOM    169  N   ASP A  43      15.036  11.747  18.715  1.00  5.54           N
+ATOM    170  CA  ASP A  43      13.564  11.573  18.836  1.00  5.85           C
+ATOM    171  C   ASP A  43      12.936  11.227  17.470  1.00  5.87           C
+ATOM    172  O   ASP A  43      11.720  11.040  17.428  1.00  7.29           O
+ATOM    173  N   TYR A  44      13.725  11.174  16.425  1.00  5.22           N
+ATOM    174  CA  TYR A  44      13.257  10.745  15.081  1.00  5.56           C
+ATOM    175  C   TYR A  44      14.275   9.687  14.612  1.00  4.61           C
+ATOM    176  O   TYR A  44      14.930   9.862  13.568  1.00  6.04           O
+ATOM    177  N   ALA A  45      14.342   8.640  15.422  1.00  4.76           N
+ATOM    178  CA  ALA A  45      15.445   7.667  15.246  1.00  5.89           C
+ATOM    179  C   ALA A  45      15.171   6.533  14.280  1.00  6.67           C
+ATOM    180  O   ALA A  45      16.093   5.705  14.039  1.00  7.56           O
+ATOM    181  N   ASN A  46      13.966   6.502  13.739  1.00  5.80           N
+ATOM    182  CA  ASN A  46      13.512   5.395  12.878  1.00  6.15           C
+ATOM    183  C   ASN A  46      13.311   5.853  11.455  1.00  6.61           C
+ATOM    184  O   ASN A  46      13.733   6.929  11.026  1.00  7.18           O
+END`;
+
+const PLDDT = [
+  0.45,
+  0.515,
+  0.557,
+  0.569,
+  0.567,
+  0.578,
+  0.618,
+  0.681,
+  0.742,
+  0.777,
+  0.782,
+  0.773,
+  null,
+  null,
+  null,
+  null,
+  0.933,
+  0.924,
+  0.902,
+  0.892,
+  0.91,
+  0.947,
+  0.98,
+  0.98,
+  0.961,
+  0.92,
+  0.892,
+  0.892,
+  0.911,
+  0.927,
+  0.915,
+  0.873,
+  0.818,
+  0.776,
+  0.762,
+  0.769,
+  0.772,
+  0.748,
+  0.694,
+  0.629,
+  0.578,
+  0.556,
+  0.556,
+  0.552,
+  0.522,
+  0.463,
+];
+
+// The three residues are named as the file numbers them. The second takes a
+// color of its own; the others take the viewer's highlight palette in turn.
+const HIGHLIGHTS: ResidueHighlight[] = [
+  { chainId: "A", seqId: 3 },
+  { chainId: "A", seqId: 26, color: "#9C27B0" },
+  { chainId: "A", seqId: 40 },
+];
+
+function App() {
+  const [representation, setRepresentation] =
+    useState<StructureRepresentation>("cartoon");
+  const [colorBy, setColorBy] = useState<StructureColorBy>("plddt");
+
+  return (
+    <div
+      className="app"
+      style={{ display: "flex", flexDirection: "column", gap: 8, height: 520 }}
+    >
+      <div style={{ display: "flex", gap: 8 }}>
+        <Button
+          sdsStyle="outline"
+          sdsType="secondary"
+          size="small"
+          onClick={() =>
+            setRepresentation((current) =>
+              current === "cartoon" ? "surface" : "cartoon"
+            )
+          }
+        >
+          {representation === "cartoon" ? "Show surface" : "Show cartoon"}
+        </Button>
+        <Button
+          sdsStyle="outline"
+          sdsType="secondary"
+          size="small"
+          onClick={() =>
+            setColorBy((current) => (current === "plddt" ? "chain" : "plddt"))
+          }
+        >
+          {colorBy === "plddt" ? "Color by chain" : "Color by confidence"}
+        </Button>
+      </div>
+      <div style={{ flex: 1, minHeight: 0 }}>
+        <ProteinStructureViewer
+          structure={PDB}
+          plddt={PLDDT}
+          colorBy={colorBy}
+          representation={representation}
+          highlights={HIGHLIGHTS}
+          orientation="facing"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Camera
+
+`orientation` turns the camera to look at the highlighted residues: `"facing"` looks at them from outside the structure, down the line from its center through theirs; `"opposite"` looks from the far side; `"side"` looks across that line, which puts an interface in profile; and `"overview"` looks down the default axis at the whole structure. It is applied when a structure loads and whenever it changes - not when the highlights do. `projection` sets the camera's projection.
+
+`onCameraChange` reports the camera each time it comes to rest, whether after a drag, a zoom, a selection framing it or a structure fitting it, as a `CameraState`. Handing that back as `initialCamera` starts the next structure loaded exactly there, in place of fitting it. `onStructureLoad` is told of every structure that loads, reloads included, which is what a "loading" and "ready" state listens for.
+
 ### Structure only
 
 Three props hide the chrome layered around the 3D view. `showSequenceViewer` drops the sequence panel, `showLegend` drops the stats and the color key, and `showAxes` drops the orientation widget and its reset-camera button. Turn off all three when the surrounding page supplies its own controls.
@@ -1461,12 +1796,28 @@ Passing `download` adds a capture button beneath the reset-camera control, which
 
 The image is rendered in its own pass at the size asked for rather than scaled up from the canvas, so it comes out as sharp as the resolution says whatever size the viewer happens to be on screen - and a large one costs time rather than sharpness, which is why the default sits in the middle.
 
-| Name              | Type                                       | Default         | Description                                                                                                                                                                                                                                                    |
-| ----------------- | ------------------------------------------ | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolution`      | `"low" \| "medium" \| "high" \| "maximum"` | `"medium"`      | 1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as `DOWNLOAD_RESOLUTIONS`, for labelling a control of your own.                                                                                                                       |
-| `backgroundColor` | `string`                                   | - (transparent) | Background behind the structure, as `#RRGGBB`. Omit for a transparent one, which is what a figure usually wants. The viewer's own canvas color is deliberately not inherited, since an image tends to outlive the theme it was captured under.                 |
-| `showAxes`        | `boolean`                                  | `false`         | Draw the orientation axes into the image. Independent of the viewer's own `showAxes`: the widget orients a reader who can turn the structure, and earns its place less in a still, so it can be on screen without being in the capture or the other way about. |
-| `filename`        | `string`                                   | -               | Name for the file, without an extension. Defaults to the one Mol\* derives from the loaded structure.                                                                                                                                                          |
+| Field             | Type                                                       | Default         | Description                                                                                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolution`      | `"low" \| "medium" \| "high" \| "maximum"`                 | `"medium"`      | 1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as `DOWNLOAD_RESOLUTIONS`, for labelling a control of your own.                                                                                                                       |
+| `backgroundColor` | `string`                                                   | - (transparent) | Background behind the structure, as `#RRGGBB`. Omit for a transparent one, which is what a figure usually wants. The viewer's own canvas color is deliberately not inherited, since an image tends to outlive the theme it was captured under.                 |
+| `showAxes`        | `boolean`                                                  | `false`         | Draw the orientation axes into the image. Independent of the viewer's own `showAxes`: the widget orients a reader who can turn the structure, and earns its place less in a still, so it can be on screen without being in the capture or the other way about. |
+| `filename`        | `string`                                                   | -               | Name for the file, without an extension. Defaults to the one Mol\* derives from the loaded structure.                                                                                                                                                          |
+| `render`          | `(plugin: PluginUIContext) => Promise<Blob>`               | -               | Renders the image in place of the viewer's own capture, and resolves with a PNG. `resolution`, `backgroundColor` and `showAxes` describe the viewer's capture, so they are not applied to this one.                                                            |
+| `deliver`         | `(image: Blob, filename: string) => void \| Promise<void>` | -               | Receives the PNG in place of a browser download, with the name it would have been saved under, `.png` included.                                                                                                                                                |
+
+The last two take the capture over, and either can be given without the other. `deliver` is for a page that cannot start a download itself: a sandboxed iframe blocks the one a click would start, so the image is handed to a bridge to its host instead. `render` is for an image the presets do not describe - bounded to a size, or keeping the viewport's aspect. A failure in either is reported to `onError`.
+
+**React TypeScript**
+
+```tsx
+<ProteinStructureViewer
+  structure={PDB}
+  download={{
+    filename: "barnase-barstar",
+    deliver: (image, filename) => host.saveFile(image, filename),
+  }}
+/>
+```
 
 ## Configuring Mol\*
 
@@ -1506,42 +1857,343 @@ Two things to know about how it is applied. List-valued keys - `behaviors`, `con
 
 And it is read once, when the plugin is created - except for `canvas3d`, which is re-applied whenever it changes. Creating the plugin throws away the camera, so the rest is deliberately not reactive; pass a `key` to remount the viewer if you need to change it.
 
+## Building on the viewer
+
+`onReady` hands over the Mol\* plugin once a structure is loaded, and again for each structure that replaces it, along with the structure the viewer parsed. That is the way into anything the props do not cover: drawing a representation of your own, registering a color theme, or driving the camera. It is awaited before the viewer starts answering clicks and applying its coloring, so whatever it builds is in place before either reaches it.
+
+To draw the whole scene yourself, set `sceneMode="external"`. The viewer then parses the structure and stops there: nothing is drawn, colored, hidden or framed, and the canvas is yours. Everything that is not drawing keeps working - the sequence panel, selection, hover, the legend and the camera controls. The chain legend's toggles report through `onChainVisibilityChange` without hiding anything, since what hiding a chain means is now yours to decide, and the legend describes the props rather than what you drew, so pass it the colors you draw with. Mol\* frames the camera on the first representation drawn into the empty scene.
+
+**Example: ExternalSceneProteinStructureViewer**
+
+```tsx
+// With `sceneMode="external"` the viewer parses the structure and leaves the
+// canvas to you. `onReady` hands over the Mol* plugin and the parsed structure,
+// and whatever it draws is the scene - here a molecular surface colored by
+// hydrophobicity, which no prop of the viewer's asks for.
+//
+// Everything that is not drawing works as usual: the sequence panel, hovering
+// and selecting residues, and the camera controls. Mol* frames the camera on
+// the first representation drawn into the empty scene.
+//
+// The structure is crambin (PDB 1CRN), trimmed to its backbone atoms.
+
+import { LoadedStructureInfo, ProteinStructureViewer } from "@czi-sds/data-viz";
+import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
+
+const PDB = `
+ATOM      1  N   THR A   1      17.047  14.099   3.625  1.00 13.79           N
+ATOM      2  CA  THR A   1      16.967  12.784   4.338  1.00 10.80           C
+ATOM      3  C   THR A   1      15.685  12.755   5.133  1.00  9.19           C
+ATOM      4  O   THR A   1      15.268  13.825   5.594  1.00  9.85           O
+ATOM      5  N   THR A   2      15.115  11.555   5.265  1.00  7.81           N
+ATOM      6  CA  THR A   2      13.856  11.469   6.066  1.00  8.31           C
+ATOM      7  C   THR A   2      14.164  10.785   7.379  1.00  5.80           C
+ATOM      8  O   THR A   2      14.993   9.862   7.443  1.00  6.94           O
+ATOM      9  N   CYS A   3      13.488  11.241   8.417  1.00  5.24           N
+ATOM     10  CA  CYS A   3      13.660  10.707   9.787  1.00  5.39           C
+ATOM     11  C   CYS A   3      12.269  10.431  10.323  1.00  4.45           C
+ATOM     12  O   CYS A   3      11.393  11.308  10.185  1.00  6.54           O
+ATOM     13  N   CYS A   4      12.019   9.272  10.928  1.00  3.90           N
+ATOM     14  CA  CYS A   4      10.646   8.991  11.408  1.00  4.24           C
+ATOM     15  C   CYS A   4      10.654   8.793  12.919  1.00  3.72           C
+ATOM     16  O   CYS A   4      11.659   8.296  13.491  1.00  5.30           O
+ATOM     17  N   PRO A   5       9.561   9.108  13.563  1.00  3.96           N
+ATOM     18  CA  PRO A   5       9.448   9.034  15.012  1.00  4.25           C
+ATOM     19  C   PRO A   5       9.288   7.670  15.606  1.00  4.96           C
+ATOM     20  O   PRO A   5       9.490   7.519  16.819  1.00  7.44           O
+ATOM     21  N   SER A   6       8.875   6.686  14.796  1.00  4.83           N
+ATOM     22  CA  SER A   6       8.673   5.314  15.279  1.00  4.45           C
+ATOM     23  C   SER A   6       8.753   4.376  14.083  1.00  4.99           C
+ATOM     24  O   SER A   6       8.726   4.858  12.923  1.00  4.61           O
+ATOM     25  N   ILE A   7       8.881   3.075  14.358  1.00  4.94           N
+ATOM     26  CA  ILE A   7       8.912   2.083  13.258  1.00  6.33           C
+ATOM     27  C   ILE A   7       7.581   2.090  12.506  1.00  5.32           C
+ATOM     28  O   ILE A   7       7.670   2.031  11.245  1.00  6.85           O
+ATOM     29  N   VAL A   8       6.458   2.162  13.159  1.00  5.02           N
+ATOM     30  CA  VAL A   8       5.145   2.209  12.453  1.00  6.93           C
+ATOM     31  C   VAL A   8       5.115   3.379  11.461  1.00  5.39           C
+ATOM     32  O   VAL A   8       4.664   3.268  10.343  1.00  6.30           O
+ATOM     33  N   ALA A   9       5.606   4.546  11.941  1.00  3.73           N
+ATOM     34  CA  ALA A   9       5.598   5.767  11.082  1.00  3.56           C
+ATOM     35  C   ALA A   9       6.441   5.527   9.850  1.00  4.13           C
+ATOM     36  O   ALA A   9       6.052   5.933   8.744  1.00  4.36           O
+ATOM     37  N   ARG A  10       7.647   4.909  10.005  1.00  3.73           N
+ATOM     38  CA  ARG A  10       8.496   4.609   8.837  1.00  3.38           C
+ATOM     39  C   ARG A  10       7.798   3.609   7.876  1.00  3.47           C
+ATOM     40  O   ARG A  10       7.878   3.778   6.651  1.00  4.67           O
+ATOM     41  N   SER A  11       7.186   2.582   8.445  1.00  5.19           N
+ATOM     42  CA  SER A  11       6.500   1.584   7.565  1.00  4.60           C
+ATOM     43  C   SER A  11       5.382   2.313   6.773  1.00  4.84           C
+ATOM     44  O   SER A  11       5.213   2.016   5.557  1.00  5.84           O
+ATOM     45  N   ASN A  12       4.648   3.182   7.446  1.00  3.54           N
+ATOM     46  CA  ASN A  12       3.545   3.935   6.751  1.00  4.57           C
+ATOM     47  C   ASN A  12       4.107   4.851   5.691  1.00  4.14           C
+ATOM     48  O   ASN A  12       3.536   5.001   4.617  1.00  5.52           O
+ATOM     49  N   PHE A  13       5.259   5.498   6.005  1.00  3.43           N
+ATOM     50  CA  PHE A  13       5.929   6.358   5.055  1.00  3.49           C
+ATOM     51  C   PHE A  13       6.304   5.578   3.799  1.00  3.40           C
+ATOM     52  O   PHE A  13       6.136   6.072   2.653  1.00  4.07           O
+ATOM     53  N   ASN A  14       6.900   4.390   3.989  1.00  3.64           N
+ATOM     54  CA  ASN A  14       7.331   3.607   2.791  1.00  4.31           C
+ATOM     55  C   ASN A  14       6.116   3.210   1.915  1.00  3.98           C
+ATOM     56  O   ASN A  14       6.240   3.144   0.684  1.00  6.22           O
+ATOM     57  N   VAL A  15       4.993   2.927   2.571  1.00  3.76           N
+ATOM     58  CA  VAL A  15       3.782   2.599   1.742  1.00  3.98           C
+ATOM     59  C   VAL A  15       3.296   3.871   1.004  1.00  3.80           C
+ATOM     60  O   VAL A  15       2.947   3.817  -0.189  1.00  4.85           O
+ATOM     61  N   CYS A  16       3.321   4.987   1.720  1.00  3.79           N
+ATOM     62  CA  CYS A  16       2.890   6.285   1.126  1.00  3.54           C
+ATOM     63  C   CYS A  16       3.687   6.597  -0.111  1.00  3.48           C
+ATOM     64  O   CYS A  16       3.200   7.147  -1.103  1.00  4.63           O
+ATOM     65  N   ARG A  17       4.997   6.227  -0.100  1.00  3.99           N
+ATOM     66  CA  ARG A  17       5.895   6.489  -1.213  1.00  3.83           C
+ATOM     67  C   ARG A  17       5.738   5.560  -2.409  1.00  3.79           C
+ATOM     68  O   ARG A  17       6.228   5.901  -3.507  1.00  5.39           O
+ATOM     69  N   LEU A  18       5.051   4.411  -2.204  1.00  4.70           N
+ATOM     70  CA  LEU A  18       4.933   3.431  -3.326  1.00  5.46           C
+ATOM     71  C   LEU A  18       4.397   4.014  -4.620  1.00  5.13           C
+ATOM     72  O   LEU A  18       4.988   3.755  -5.687  1.00  5.55           O
+ATOM     73  N   PRO A  19       3.329   4.795  -4.543  1.00  4.28           N
+ATOM     74  CA  PRO A  19       2.792   5.376  -5.797  1.00  5.38           C
+ATOM     75  C   PRO A  19       3.573   6.540  -6.322  1.00  6.30           C
+ATOM     76  O   PRO A  19       3.260   7.045  -7.422  1.00  9.62           O
+ATOM     77  N   GLY A  20       4.565   7.047  -5.559  1.00  4.94           N
+ATOM     78  CA  GLY A  20       5.366   8.191  -6.018  1.00  5.39           C
+ATOM     79  C   GLY A  20       5.007   9.481  -5.280  1.00  5.03           C
+ATOM     80  O   GLY A  20       5.535  10.510  -5.730  1.00  7.34           O
+ATOM     81  N   THR A  21       4.181   9.438  -4.262  1.00  4.10           N
+ATOM     82  CA  THR A  21       3.767  10.609  -3.513  1.00  3.94           C
+ATOM     83  C   THR A  21       5.017  11.397  -3.042  1.00  3.96           C
+ATOM     84  O   THR A  21       5.947  10.757  -2.523  1.00  5.82           O
+ATOM     85  N   PRO A  22       4.971  12.703  -3.176  1.00  5.04           N
+ATOM     86  CA  PRO A  22       6.143  13.513  -2.696  1.00  4.69           C
+ATOM     87  C   PRO A  22       6.400  13.233  -1.225  1.00  4.19           C
+ATOM     88  O   PRO A  22       5.485  13.061  -0.382  1.00  4.47           O
+ATOM     89  N   GLU A  23       7.728  13.297  -0.921  1.00  5.16           N
+ATOM     90  CA  GLU A  23       8.114  13.103   0.500  1.00  5.31           C
+ATOM     91  C   GLU A  23       7.427  14.073   1.410  1.00  4.11           C
+ATOM     92  O   GLU A  23       7.036  13.682   2.540  1.00  5.11           O
+ATOM     93  N   ALA A  24       7.212  15.334   0.966  1.00  4.56           N
+ATOM     94  CA  ALA A  24       6.614  16.317   1.913  1.00  4.49           C
+ATOM     95  C   ALA A  24       5.212  15.936   2.350  1.00  4.10           C
+ATOM     96  O   ALA A  24       4.782  16.166   3.495  1.00  5.64           O
+ATOM     97  N   ILE A  25       4.445  15.318   1.405  1.00  4.37           N
+ATOM     98  CA  ILE A  25       3.074  14.894   1.756  1.00  5.44           C
+ATOM     99  C   ILE A  25       3.085  13.643   2.645  1.00  4.32           C
+ATOM    100  O   ILE A  25       2.315  13.523   3.578  1.00  4.72           O
+ATOM    101  N   CYS A  26       4.032  12.764   2.313  1.00  3.92           N
+ATOM    102  CA  CYS A  26       4.180  11.549   3.187  1.00  4.37           C
+ATOM    103  C   CYS A  26       4.632  11.944   4.596  1.00  3.95           C
+ATOM    104  O   CYS A  26       4.227  11.252   5.547  1.00  4.74           O
+ATOM    105  N   ALA A  27       5.408  13.012   4.694  1.00  3.89           N
+ATOM    106  CA  ALA A  27       5.879  13.502   6.026  1.00  4.43           C
+ATOM    107  C   ALA A  27       4.696  13.908   6.882  1.00  4.26           C
+ATOM    108  O   ALA A  27       4.528  13.422   8.025  1.00  5.44           O
+ATOM    109  N   THR A  28       3.827  14.802   6.358  1.00  4.53           N
+ATOM    110  CA  THR A  28       2.691  15.221   7.194  1.00  5.08           C
+ATOM    111  C   THR A  28       1.672  14.132   7.434  1.00  4.62           C
+ATOM    112  O   THR A  28       0.947  14.112   8.468  1.00  7.80           O
+ATOM    113  N   TYR A  29       1.621  13.190   6.511  1.00  5.01           N
+ATOM    114  CA  TYR A  29       0.715  12.045   6.657  1.00  6.60           C
+ATOM    115  C   TYR A  29       1.125  11.125   7.815  1.00  4.92           C
+ATOM    116  O   TYR A  29       0.286  10.632   8.545  1.00  7.13           O
+ATOM    117  N   THR A  30       2.470  10.984   7.995  1.00  5.31           N
+ATOM    118  CA  THR A  30       2.986   9.994   8.950  1.00  5.70           C
+ATOM    119  C   THR A  30       3.609  10.505  10.230  1.00  6.28           C
+ATOM    120  O   THR A  30       3.766   9.715  11.186  1.00  8.77           O
+ATOM    121  N   GLY A  31       3.984  11.764  10.241  1.00  4.99           N
+ATOM    122  CA  GLY A  31       4.769  12.336  11.360  1.00  5.50           C
+ATOM    123  C   GLY A  31       6.255  12.243  11.106  1.00  4.19           C
+ATOM    124  O   GLY A  31       7.037  12.750  11.954  1.00  6.12           O
+ATOM    125  N   CYS A  32       6.710  11.631   9.992  1.00  4.30           N
+ATOM    126  CA  CYS A  32       8.140  11.694   9.635  1.00  4.89           C
+ATOM    127  C   CYS A  32       8.500  13.141   9.206  1.00  5.50           C
+ATOM    128  O   CYS A  32       7.581  13.949   8.944  1.00  5.82           O
+ATOM    129  N   ILE A  33       9.793  13.410   9.173  1.00  6.02           N
+ATOM    130  CA  ILE A  33      10.280  14.760   8.823  1.00  5.24           C
+ATOM    131  C   ILE A  33      11.346  14.658   7.743  1.00  5.16           C
+ATOM    132  O   ILE A  33      11.971  13.583   7.552  1.00  7.19           O
+ATOM    133  N   ILE A  34      11.490  15.773   7.038  1.00  5.52           N
+ATOM    134  CA  ILE A  34      12.552  15.877   6.036  1.00  6.82           C
+ATOM    135  C   ILE A  34      13.590  16.917   6.560  1.00  6.92           C
+ATOM    136  O   ILE A  34      13.168  18.006   6.945  1.00  9.22           O
+ATOM    137  N   ILE A  35      14.856  16.493   6.536  1.00  7.06           N
+ATOM    138  CA  ILE A  35      15.930  17.454   6.941  1.00  7.52           C
+ATOM    139  C   ILE A  35      16.913  17.550   5.819  1.00  6.63           C
+ATOM    140  O   ILE A  35      17.097  16.660   4.970  1.00  7.90           O
+ATOM    141  N   PRO A  36      17.664  18.669   5.806  1.00  8.07           N
+ATOM    142  CA  PRO A  36      18.635  18.861   4.738  1.00  8.78           C
+ATOM    143  C   PRO A  36      19.925  18.042   4.949  1.00  8.31           C
+ATOM    144  O   PRO A  36      20.593  17.742   3.945  1.00  9.09           O
+ATOM    145  N   GLY A  37      20.172  17.730   6.217  1.00  8.48           N
+ATOM    146  CA  GLY A  37      21.452  16.969   6.513  1.00  9.20           C
+ATOM    147  C   GLY A  37      21.143  15.478   6.427  1.00 10.41           C
+ATOM    148  O   GLY A  37      20.138  15.023   5.878  1.00 12.06           O
+ATOM    149  N   ALA A  38      22.055  14.701   7.032  1.00  9.24           N
+ATOM    150  CA  ALA A  38      22.019  13.242   7.020  1.00  9.24           C
+ATOM    151  C   ALA A  38      21.944  12.628   8.396  1.00  9.60           C
+ATOM    152  O   ALA A  38      21.869  11.387   8.435  1.00 13.65           O
+ATOM    153  N   THR A  39      21.894  13.435   9.436  1.00  8.70           N
+ATOM    154  CA  THR A  39      21.936  12.911  10.809  1.00  9.46           C
+ATOM    155  C   THR A  39      20.615  13.191  11.521  1.00  8.32           C
+ATOM    156  O   THR A  39      20.357  14.317  11.948  1.00  9.89           O
+ATOM    157  N   CYS A  40      19.827  12.110  11.642  1.00  7.64           N
+ATOM    158  CA  CYS A  40      18.504  12.312  12.298  1.00  8.05           C
+ATOM    159  C   CYS A  40      18.684  12.451  13.784  1.00  7.63           C
+ATOM    160  O   CYS A  40      19.533  11.718  14.362  1.00  9.64           O
+ATOM    161  N   PRO A  41      17.880  13.266  14.426  1.00  8.00           N
+ATOM    162  CA  PRO A  41      17.924  13.421  15.877  1.00  8.96           C
+ATOM    163  C   PRO A  41      17.392  12.206  16.594  1.00  9.06           C
+ATOM    164  O   PRO A  41      16.652  11.368  16.033  1.00  8.82           O
+ATOM    165  N   GLY A  42      17.728  12.124  17.884  1.00  7.55           N
+ATOM    166  CA  GLY A  42      17.334  10.956  18.691  1.00  8.00           C
+ATOM    167  C   GLY A  42      15.875  10.688  18.871  1.00  7.22           C
+ATOM    168  O   GLY A  42      15.434   9.550  19.166  1.00  8.41           O
+ATOM    169  N   ASP A  43      15.036  11.747  18.715  1.00  5.54           N
+ATOM    170  CA  ASP A  43      13.564  11.573  18.836  1.00  5.85           C
+ATOM    171  C   ASP A  43      12.936  11.227  17.470  1.00  5.87           C
+ATOM    172  O   ASP A  43      11.720  11.040  17.428  1.00  7.29           O
+ATOM    173  N   TYR A  44      13.725  11.174  16.425  1.00  5.22           N
+ATOM    174  CA  TYR A  44      13.257  10.745  15.081  1.00  5.56           C
+ATOM    175  C   TYR A  44      14.275   9.687  14.612  1.00  4.61           C
+ATOM    176  O   TYR A  44      14.930   9.862  13.568  1.00  6.04           O
+ATOM    177  N   ALA A  45      14.342   8.640  15.422  1.00  4.76           N
+ATOM    178  CA  ALA A  45      15.445   7.667  15.246  1.00  5.89           C
+ATOM    179  C   ALA A  45      15.171   6.533  14.280  1.00  6.67           C
+ATOM    180  O   ALA A  45      16.093   5.705  14.039  1.00  7.56           O
+ATOM    181  N   ASN A  46      13.966   6.502  13.739  1.00  5.80           N
+ATOM    182  CA  ASN A  46      13.512   5.395  12.878  1.00  6.15           C
+ATOM    183  C   ASN A  46      13.311   5.853  11.455  1.00  6.61           C
+ATOM    184  O   ASN A  46      13.733   6.929  11.026  1.00  7.18           O
+END`;
+
+// Called for every structure loaded into the viewer. What is drawn on one goes
+// with it when the next is loaded, so there is nothing to clean up here.
+async function drawSurface(
+  plugin: PluginUIContext,
+  { structure }: LoadedStructureInfo
+) {
+  await plugin.builders.structure.representation.addRepresentation(structure, {
+    type: "molecular-surface",
+    color: "hydrophobicity",
+  });
+}
+
+function App() {
+  return (
+    <div className="app" style={{ height: 420 }}>
+      <ProteinStructureViewer
+        structure={PDB}
+        sceneMode="external"
+        onReady={drawSurface}
+        showLegend={false}
+      />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Whatever is built on a structure goes with it when the next one is loaded, so build it again in the next `onReady` rather than holding on to it. A component keyed `polymer-<chainId>` or `ligand-<chainId>` is dimmed along with its chain while another chain's name is pointed at.
+
+`onDispose` is called before the viewer disposes of a plugin it handed over - including one whose `onReady` has not finished - so whatever was built on it can be let go. `onError` is told when creating the plugin, loading a structure or capturing an image fails, in place of the message the viewer would otherwise log; a rejected `onReady` counts as a failed load.
+
+## Rendering without React
+
+The scene the viewer draws is available on its own, for a page that does not show the viewer: a report with a picture of the structure, a static export, or a Mol\* viewer of your own. It takes the options the props take, with the same meaning, and draws them by the same code, so what it draws matches the viewer given the same props. Import it from its own entry point, which leaves out React and the component library:
+
+**TypeScript**
+
+```ts
+import {
+  applyStructureScene,
+  renderStructureImage,
+} from "@czi-sds/data-viz/ProteinStructureScene";
+```
+
+`renderStructureImage` renders a PNG of exactly `width` by `height` pixels. It creates a plugin offscreen for the one image and disposes of it once the image is taken, whether or not that succeeded, so nothing is left on the page. The camera is placed as the viewer would place it when the structure loads, without the animation. Leave out `backgroundColor` for a transparent background.
+
+**TypeScript**
+
+```ts
+const image: Blob = await renderStructureImage({
+  structure: pdb,
+  plddt: scores,
+  highlights: [{ chainId: "A", seqId: 27 }],
+  orientation: "facing",
+  width: 800,
+  height: 600,
+  backgroundColor: "#FFFFFF",
+});
+```
+
+It needs a DOM and WebGL: a browser, or headless Chromium on a server. Where there is no WebGL it rejects rather than returning a blank image.
+
+`applyStructureScene` draws the scene on a Mol\* plugin you created and resolves with a handle once the structure is drawn and the camera is on it. `update` applies changed options in place and leaves the camera where it is, except for a new `structure`, which is loaded and framed like the first. `getCamera` reads the camera in the form `initialCamera` takes, and `dispose` stops the scene touching the plugin, which stays yours.
+
+**TypeScript**
+
+```ts
+const scene = await applyStructureScene(plugin, { structure: pdb });
+
+await scene.update({ representation: "surface", hiddenChains: ["B"] });
+const camera = scene.getCamera();
+
+scene.dispose();
+```
+
+The scene clears the plugin's state to load a structure, so give it a plugin of its own rather than one showing something else. Its color themes are registered once per plugin, so applying a scene again on the same plugin is fine. A structure that fails to load rejects the promise; a representation that cannot be drawn, such as a surface too large to compute, is reported to `onError` with the phase `"representation"` and the cartoon is drawn in its place.
+
 ## Props
 
 The viewer spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
 
-| Name                            | Type                          | Default      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------- | ----------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `structure`                     | `string`                      | - (required) | The structure to render, as raw PDB or mmCIF (PDBx) text.                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `plddt`                         | `number[] \| null`            | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. Residues past the end of the array fall back to mid confidence.                                                                                                                                                                                                                                              |
-| `residueOverlay`                | `ResidueValueOverlay \| null` | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                                                                                                                                                                                                                                                               |
-| `selection`                     | `StructureSelection \| null`  | -            | What is selected. Leave undefined to let the viewer own it, so a click zooms in on a residue with no state on your side; passing it takes that over, and a click then moves the camera only once `onSelectionChange` is echoed back. Either way the camera frames whatever it covers, and clearing it zooms back out. Residues are drawn in ball-and-stick; a whole chain dims the chains around it instead. See the table below for its shape.                     |
-| `hiddenChains`                  | `string[]`                    | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                                                                                                                                                     |
-| `chainColors`                   | `Record<string, string>`      | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen, which is when neither `plddt` nor `residueOverlay` is set.                                                                                                                                                                                                                                                  |
-| `showChainLegend`               | `boolean`                     | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                                                                                                                                            |
-| `disableChainHighlightOnHover`  | `boolean`                     | `false`      | Stop other chains from dimming in the 3D view while a chain's name is pointed at, in the legend or above its grid in the sequence panel. Turn it off where the movement is more distracting than the answer is useful.                                                                                                                                                                                                                                              |
-| `download`                      | `StructureDownload \| null`   | -            | Adds a capture button beneath the reset-camera control, which downloads a PNG of the structure. Omit for no button. See _Downloading an image_ above.                                                                                                                                                                                                                                                                                                               |
-| `molstarSpec`                   | `Partial<PluginUISpec>`       | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                                                                                                                                                 |
-| `stats`                         | `(StructureStat \| null)[]`   | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                                                                                                                                          |
-| `backgroundColor`               | `string`                      | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                                                                                                                                                                                                                                                             |
-| `sequenceViewerBackgroundColor` | `string`                      | -            | Sequence panel background, as any CSS color. Defaults to the SDS theme's primary surface, so the panel follows the surrounding page in both modes.                                                                                                                                                                                                                                                                                                                  |
-| `showAxes`                      | `boolean`                     | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `showSequenceViewer`            | `boolean`                     | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `showLegend`                    | `boolean`                     | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `onResidueClick`                | `function`                    | -            | `(residue: ResidueRef) => void`. Called with the residue under the pointer: `index` (0-based, across the whole structure), `compId`, `chainId`, `seqId` and `insCode`. What the click _selected_ comes through `onSelectionChange`, which a drag makes a range.                                                                                                                                                                                                     |
-| `onResidueHover`                | `function`                    | -            | `(residue: ResidueRef \| null) => void`. Called as the pointer moves over residues, and with `null` when it leaves the structure.                                                                                                                                                                                                                                                                                                                                   |
-| `onSelectionChange`             | `function`                    | -            | `(selection: StructureSelection \| null) => void`. Called with the new selection whenever the user makes one - clicking a residue, dragging across the sequence, clicking a chain caption - and with `null` when they click empty space to clear it. A whole-chain selection arrives as `{ chains: [id] }` rather than as every index on it. Fires whether or not `selection` is controlled, so a consumer can follow the viewer's own selection without owning it. |
-| `onChainsChange`                | `function`                    | -            | `(chains: ChainRef[]) => void`. Called with the chains found in the structure, whenever a structure is loaded. Fires with `[]` when the structure holds none.                                                                                                                                                                                                                                                                                                       |
-| `onChainVisibilityChange`       | `function`                    | -            | `(hiddenChains: string[]) => void`. Called with the chains now hidden when a visibility toggle is used. Fires whether or not `hiddenChains` is controlled, so a consumer can follow the viewer's own state without owning it.                                                                                                                                                                                                                                       |
+| Name                            | Type                                             | Default      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------------- | ------------------------------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `structure`                     | `string`                                         | - (required) | The structure to render, as raw PDB or mmCIF (PDBx) text.                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `plddt`                         | `(number \| null)[] \| null`                     | -            | Per-residue pLDDT confidence on a 0-1 scale, in chain order. When supplied, the structure is colored by confidence unless `residueOverlay` takes over. A `null`, and every residue past the end of the array, reads as unscored and is painted neutral.                                                                                                                                                                                                             |
+| `colorBy`                       | `"chain" \| "plddt" \| "overlay"`                | -            | What paints the structure. Left undefined it follows what is supplied: `residueOverlay`, then `plddt`, then chain colors. A theme with nothing to paint with leaves every residue neutral.                                                                                                                                                                                                                                                                          |
+| `representation`                | `"cartoon" \| "surface"`                         | `"cartoon"`  | How the polymer is drawn. `"surface"` is one molecular surface over the visible chains. Switching leaves the camera where it is.                                                                                                                                                                                                                                                                                                                                    |
+| `highlights`                    | `ResidueHighlight[]`                             | -            | Residues picked out in colors of their own, by chain, number and insertion code, painted over whatever colors the rest and drawn in ball-and-stick over the cartoon. See the table below for its shape.                                                                                                                                                                                                                                                             |
+| `residueOverlay`                | `ResidueValueOverlay \| null`                    | -            | Per-residue values painted over the structure, replacing pLDDT coloring while set. See the table below for its shape.                                                                                                                                                                                                                                                                                                                                               |
+| `selection`                     | `StructureSelection \| null`                     | -            | What is selected. Leave undefined to let the viewer own it, so a click zooms in on a residue with no state on your side; passing it takes that over, and a click then moves the camera only once `onSelectionChange` is echoed back. Either way the camera frames whatever it covers, and clearing it zooms back out. Residues are drawn in ball-and-stick; a whole chain dims the chains around it instead. See the table below for its shape.                     |
+| `hiddenChains`                  | `string[]`                                       | -            | Chains hidden from the 3D view, by `chainId`. Leave undefined to let the chain legend's toggles own visibility; passing it takes that over, and the toggles then only report through `onChainVisibilityChange`.                                                                                                                                                                                                                                                     |
+| `chainColors`                   | `Record<string, string>`                         | -            | Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to the viewer's palette. Only visible while chain coloring is what is on screen: when `colorBy` says so or, left undefined, when neither `plddt` nor `residueOverlay` is set.                                                                                                                                                                                                                |
+| `showChainLegend`               | `boolean`                                        | `true`       | Show the chain legend, which lists each chain with its color and a visibility toggle. Ignored on a single-chain structure, where there is nothing to tell apart or hide.                                                                                                                                                                                                                                                                                            |
+| `disableChainHighlightOnHover`  | `boolean`                                        | `false`      | Stop other chains from dimming in the 3D view while a chain's name is pointed at, in the legend or above its grid in the sequence panel. Turn it off where the movement is more distracting than the answer is useful.                                                                                                                                                                                                                                              |
+| `download`                      | `StructureDownload \| null`                      | -            | Adds a capture button beneath the reset-camera control, which downloads a PNG of the structure. Omit for no button. See _Downloading an image_ above.                                                                                                                                                                                                                                                                                                               |
+| `molstarSpec`                   | `Partial<PluginUISpec>`                          | -            | Mol* plugin spec laid over the viewer's own, which is how the whole of Mol*'s configuration is reachable without a prop here for each setting. Anything named wins; list-valued keys are appended to. Read once at creation, except `canvas3d`, which is re-applied when it changes. See _Configuring Mol\*_ above.                                                                                                                                                 |
+| `stats`                         | `(StructureStat \| null)[]`                      | -            | Up to three whole-structure stats shown along the bottom. A `null` entry reserves its column without rendering anything, so the columns never shift as values come and go.                                                                                                                                                                                                                                                                                          |
+| `backgroundColor`               | `string`                                         | -            | Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base background, so the canvas follows the surrounding page in both modes.                                                                                                                                                                                                                                                                                                                             |
+| `sequenceViewerBackgroundColor` | `string`                                         | -            | Sequence panel background, as any CSS color. Defaults to the SDS theme's primary surface, so the panel follows the surrounding page in both modes.                                                                                                                                                                                                                                                                                                                  |
+| `showAxes`                      | `boolean`                                        | `true`       | Show the orientation axes widget and the reset-camera button.                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `showSequenceViewer`            | `boolean`                                        | `true`       | Show the sequence panel pinned along the bottom of the viewer.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `showLegend`                    | `boolean`                                        | `true`       | Show the stats and color scale legend overlaid on the viewer.                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `onResidueClick`                | `function`                                       | -            | `(residue: ResidueRef) => void`. Called with the residue under the pointer: `index` (0-based, across the whole structure), `compId`, `chainId`, `seqId` and `insCode`. What the click _selected_ comes through `onSelectionChange`, which a drag makes a range.                                                                                                                                                                                                     |
+| `onResidueHover`                | `function`                                       | -            | `(residue: ResidueRef \| null) => void`. Called as the pointer moves over residues, and with `null` when it leaves the structure.                                                                                                                                                                                                                                                                                                                                   |
+| `onSelectionChange`             | `function`                                       | -            | `(selection: StructureSelection \| null) => void`. Called with the new selection whenever the user makes one - clicking a residue, dragging across the sequence, clicking a chain caption - and with `null` when they click empty space to clear it. A whole-chain selection arrives as `{ chains: [id] }` rather than as every index on it. Fires whether or not `selection` is controlled, so a consumer can follow the viewer's own selection without owning it. |
+| `onChainsChange`                | `function`                                       | -            | `(chains: ChainRef[]) => void`. Called with the chains found in the structure, whenever a structure is loaded. Fires with `[]` when the structure holds none.                                                                                                                                                                                                                                                                                                       |
+| `onChainVisibilityChange`       | `function`                                       | -            | `(hiddenChains: string[]) => void`. Called with the chains now hidden when a visibility toggle is used. Fires whether or not `hiddenChains` is controlled, so a consumer can follow the viewer's own state without owning it.                                                                                                                                                                                                                                       |
+| `projection`                    | `"perspective" \| "orthographic"`                | -            | The camera's projection. Left undefined, Mol\*'s own default stands.                                                                                                                                                                                                                                                                                                                                                                                                |
+| `initialCamera`                 | `CameraState \| null`                            | -            | Where the camera starts on each structure loaded, in place of fitting it. Takes what `onCameraChange` reports.                                                                                                                                                                                                                                                                                                                                                      |
+| `orientation`                   | `"overview" \| "facing" \| "opposite" \| "side"` | -            | Turns the camera to look at the highlighted residues. Applied when a structure loads, unless `initialCamera` is set, and whenever it changes.                                                                                                                                                                                                                                                                                                                       |
+| `onCameraChange`                | `function`                                       | -            | `(camera: CameraState) => void`. Called with the camera each time it comes to rest after moving.                                                                                                                                                                                                                                                                                                                                                                    |
+| `onStructureLoad`               | `function`                                       | -            | `(info: StructureLoadInfo) => void`. Called for every structure that loads, reloads included, with its atom and residue counts and its chains.                                                                                                                                                                                                                                                                                                                      |
+| `sceneMode`                     | `"managed" \| "external"`                        | `"managed"`  | Who draws the structure. `"external"` parses it and leaves the canvas empty for a scene drawn in `onReady`; see Building on the viewer. Read once, when the plugin is created.                                                                                                                                                                                                                                                                                      |
+| `onReady`                       | `function`                                       | -            | `(plugin: PluginUIContext, loaded: LoadedStructureInfo) => void \| Promise<void>`. Called with the Mol\* plugin once a structure is loaded, and again for each structure that replaces it. Awaited before the viewer answers clicks or applies its coloring. Not called for a structure that failed to load.                                                                                                                                                        |
+| `onError`                       | `function`                                       | -            | `(error: unknown, phase: "init" \| "load" \| "capture" \| "representation") => void`. Called when creating the plugin, loading a structure, capturing an image or drawing a representation fails, in place of the viewer's console message. A rejected `onReady` is a `"load"` failure.                                                                                                                                                                             |
+| `onDispose`                     | `function`                                       | -            | `() => void`. Called before the viewer disposes of a plugin it handed to `onReady`, including one whose `onReady` has not finished.                                                                                                                                                                                                                                                                                                                                 |
 
 ### StructureSelection
 
 What is selected, in the two ways a caller might say it. The two combine: `{ chains: ["A"], residues: [150] }` takes all of chain A plus one residue elsewhere. Both fields are optional; `null` in place of the whole object selects nothing.
 
-| Name       | Type       | Default | Description                                                                                                                                                                                                          |
-| ---------- | ---------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `residues` | `number[]` | -       | 0-based residue indices, counting residues in file order across the whole structure - the same index `plddt` and `residueOverlay` are keyed by.                                                                      |
-| `chains`   | `string[]` | -       | Whole chains by `chainId`, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size. |
+| Field       | Type               | Default | Description                                                                                                                                                                                                                                                                         |
+| ----------- | ------------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `residues`  | `number[]`         | -       | 0-based residue indices, counting residues in file order across the whole structure - the same index `plddt` and `residueOverlay` are keyed by.                                                                                                                                     |
+| `chains`    | `string[]`         | -       | Whole chains by `chainId`, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size.                                                                |
+| `addresses` | `ResidueAddress[]` | -       | Residues by the chain, number and insertion code the file gives them, for a caller that knows a residue by its address rather than its position. They join `residues`; an address the structure does not have selects nothing. The viewer reports its own selections as `residues`. |
 
 ### ChainRef
 
@@ -1549,7 +2201,7 @@ A chain the viewer found in the structure it loaded, reported through `onChainsC
 
 It describes the chain's polymer. The ligands and ions sitting on the chain are drawn, and are hidden and selected along with it, but are not counted here or spanned by its range - they are no part of the sequence. A chain holding nothing but heteroatoms is left out altogether, having no sequence to describe, though it is still drawn.
 
-| Name           | Type     | Default      | Description                                              |
+| Field          | Type     | Default      | Description                                              |
 | -------------- | -------- | ------------ | -------------------------------------------------------- |
 | `chainId`      | `string` | - (required) | Chain as named in the file (`auth_asym_id`), e.g. `"A"`. |
 | `label`        | `string` | - (required) | Chain as the sequence panel captions it.                 |
@@ -1559,7 +2211,7 @@ It describes the chain's polymer. The ligands and ions sitting on the chain are 
 
 ### ResidueValueOverlay
 
-| Name           | Type                                      | Default              | Description                                                                                                                                                                                         |
+| Field          | Type                                      | Default              | Description                                                                                                                                                                                         |
 | -------------- | ----------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `values`       | `Map<number, number>`                     | - (required)         | 0-based residue index to value. Residues absent from the map read as `0`, so they render in the neutral gray rather than at the bottom of the scale.                                                |
 | `max`          | `number`                                  | - (required)         | The value mapped to the top of the color scale.                                                                                                                                                     |
@@ -1572,7 +2224,80 @@ It describes the chain's polymer. The ligands and ions sitting on the chain are 
 
 ### StructureStat
 
-| Name    | Type     | Default      | Description                                      |
+| Field   | Type     | Default      | Description                                      |
 | ------- | -------- | ------------ | ------------------------------------------------ |
 | `value` | `string` | - (required) | The stat's value, already formatted for display. |
 | `label` | `string` | - (required) | The caption shown beneath the value.             |
+
+### ResidueHighlight
+
+A residue by its address - a `ResidueAddress`, which is the same three fields without `color` - and the color it is picked out in. `ResidueRef` reports the same three, so a residue the viewer reported can be handed straight back.
+
+| Field     | Type     | Default      | Description                                                                                                            |
+| --------- | -------- | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| `chainId` | `string` | - (required) | Chain as named in the file (`auth_asym_id`).                                                                           |
+| `seqId`   | `number` | - (required) | Residue number as written in the file.                                                                                 |
+| `insCode` | `string` | -            | Insertion code, when the residue has one. A blank one and none are the same.                                           |
+| `color`   | `string` | -            | As `#RRGGBB`. Highlights that name none take the next color of `HIGHLIGHT_COLOR_PALETTE`, in the order they are given. |
+
+### CameraState
+
+Everything that places the camera, enough to put it back exactly where it was: what `onCameraChange` reports and `initialCamera` takes.
+
+| Field                      | Type                                | Default      | Description                                                                                                                    |
+| -------------------------- | ----------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `position`, `target`, `up` | `[number, number, number]`          | - (required) | Where the camera is, what it looks at, and which way is up.                                                                    |
+| `fov`                      | `number`                            | - (required) | Field of view, in radians.                                                                                                     |
+| `radius`, `radiusMax`      | `number`                            | - (required) | The sphere around `target` the camera frames, and the whole scene's, which bounds how far it clips.                            |
+| `projection`               | `"perspective" \| "orthographic"`   | - (required) | The camera's projection.                                                                                                       |
+| `viewport`                 | `{ width: number; height: number }` | -            | Size of the canvas the camera framed, in pixels, for rendering an image at the same aspect. Ignored when the state is applied. |
+
+### StructureLoadInfo
+
+What `onStructureLoad` reports for each structure loaded.
+
+| Field          | Type         | Default      | Description                                                    |
+| -------------- | ------------ | ------------ | -------------------------------------------------------------- |
+| `atomCount`    | `number`     | - (required) | Atoms Mol\* parsed.                                            |
+| `residueCount` | `number`     | - (required) | Polymer residues across every chain, as the chains count them. |
+| `chains`       | `ChainRef[]` | - (required) | The polymer chains found.                                      |
+
+### LoadedStructureInfo
+
+What `onReady` is handed alongside the plugin.
+
+| Field       | Type                                                        | Default      | Description                                                                                                                                            |
+| ----------- | ----------------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `structure` | `StateObjectSelector<PluginStateObject.Molecule.Structure>` | - (required) | The parsed structure's cell in the plugin's state tree, to build components and representations on. They go with it when the next structure is loaded. |
+| `atomCount` | `number`                                                    | - (required) | Atoms Mol\* parsed, for checking the parse against a count you hold for the file before trusting what is drawn.                                        |
+| `chains`    | `ChainRef[]`                                                | - (required) | The polymer chains found, as `onChainsChange` reports them.                                                                                            |
+
+### StructureSceneOptions
+
+What `applyStructureScene` draws. `structure`, `plddt`, `residueOverlay`, `colorBy`, `chainColors`, `representation`, `highlights`, `hiddenChains`, `initialCamera`, `orientation` and `projection` mean what the props of the same names mean, with the same defaults. Beyond those:
+
+| Field     | Type                                                | Default   | Description                                                                                                    |
+| --------- | --------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- |
+| `mode`    | `"light" \| "dark"`                                 | `"light"` | Which of the neutral grays paints a residue without a value. The viewer takes it from the SDS theme.           |
+| `onError` | `(error: unknown, phase: ViewerErrorPhase) => void` | -         | Told when a representation cannot be drawn, with the phase `"representation"`. Without it the error is logged. |
+
+### StructureSceneHandle
+
+What `applyStructureScene` resolves with.
+
+| Field       | Type                                                         | Description                                                                                                                                       |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `info`      | `StructureLoadInfo`                                          | What the structure last loaded holds.                                                                                                             |
+| `update`    | `(options: Partial<StructureSceneOptions>) => Promise<void>` | Applies the options given in place, keeping the rest and leaving the camera where it is. A new `structure` is loaded and the camera placed on it. |
+| `getCamera` | `() => CameraState \| undefined`                             | Where the camera is now, in the form `initialCamera` takes.                                                                                       |
+| `dispose`   | `() => void`                                                 | Stops the scene touching the plugin. The plugin, and what was drawn on it, stay yours.                                                            |
+
+### RenderStructureImageOptions
+
+What `renderStructureImage` takes: everything in `StructureSceneOptions`, and the image to draw it into.
+
+| Field             | Type     | Default      | Description                                    |
+| ----------------- | -------- | ------------ | ---------------------------------------------- |
+| `width`           | `number` | - (required) | Width of the image, in pixels.                 |
+| `height`          | `number` | - (required) | Height of the image, in pixels.                |
+| `backgroundColor` | `string` | transparent  | Background behind the structure, as `#RRGGBB`. |

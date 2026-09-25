@@ -7,7 +7,7 @@
         "type": "string"
       },
       "chainColors": {
-        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen, which is when neither `plddt` nor `residueOverlay` is set.",
+        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen: when `colorBy` says so, or, left undefined, when neither `plddt`\nnor `residueOverlay` is set.",
         "isRequired": false,
         "type": "Record<string, string>"
       },
@@ -25,6 +25,43 @@
         "description": "Mol* plugin spec laid over the viewer's own, which is how the whole of\nMol*'s configuration is reachable without a prop here for each setting.\nAnything named here wins, so `canvas3d.postprocessing`, a `PluginConfig`\nitem, or `layout.initial` can all be set to something other than the\ndefault the viewer picked.\n\nList-valued keys - `behaviors`, `config`, `actions`, `animations`,\n`customFormats`, `customParamEditors` - are appended to rather than\nreplaced. For `config` that is what lets an entry override the viewer's,\nsince Mol* reads the list in order. It also means a behavior cannot be\ntaken away: the ones the viewer drops stay dropped, and the ones it keeps\ncannot be removed from here.\n\nRead once, when the plugin is created, except for `canvas3d`, which is\nre-applied whenever it changes. Creating the plugin throws away the camera,\nso the rest is deliberately not reactive.",
         "isRequired": false,
         "type": "Partial<PluginUISpec>"
+      },
+      "sceneMode": {
+        "defaultValue": "managed",
+        "description": "Who draws the structure.\n\n`\"managed\"` draws each chain as a cartoon and its ligands as\nball-and-stick, colors them from `plddt`, `residueOverlay` and\n`chainColors`, hides the chains `hiddenChains` names, and frames the camera\non each structure it loads.\n\n`\"external\"` parses the structure and stops there: nothing is drawn,\ncolored, hidden or framed, and a consumer draws its own scene on the\nstructure `onReady` hands it. The sequence panel, selection, hover, legend\nand camera controls work as before; the legend describes the props rather\nthan what the consumer drew, and its chain toggles report through\n`onChainVisibilityChange` without hiding anything. Mol* frames the camera\non the first representation drawn into the empty scene.\n\nRead once, when the plugin is created.",
+        "isRequired": false,
+        "type": "\"managed\" | \"external\""
+      },
+      "colorBy": {
+        "description": "What paints the structure. Left undefined it follows what is supplied: a\n`residueOverlay` when there is one, then `plddt`, then the chain colors.\nNaming one makes it paint whatever else is set, which is how a toggle\nbetween confidence and chain coloring keeps both props in place. A theme\nwith nothing to paint with leaves every residue neutral.",
+        "isRequired": false,
+        "type": "\"overlay\" | \"plddt\" | \"chain\""
+      },
+      "highlights": {
+        "description": "Residues picked out in colors of their own, by the address the file gives\nthem. They paint over whatever colors the rest - chain, pLDDT or overlay -\nand are drawn in ball-and-stick over the cartoon; on a surface, the\nsurface itself carries them. Separate from `selection`: highlighting a\nresidue neither selects it nor moves the camera.",
+        "isRequired": false,
+        "type": "ResidueHighlight[]"
+      },
+      "initialCamera": {
+        "description": "Where the camera starts on each structure loaded, in place of fitting it\nto the structure. Applied once per load; moving the camera afterwards is\nthe user's.",
+        "isRequired": false,
+        "type": "CameraState | null"
+      },
+      "orientation": {
+        "description": "Turns the camera to look at the highlighted residues from one side or\nanother. Applied when a structure is loaded, unless `initialCamera` is\nset, and whenever it changes - not when the highlights do.",
+        "isRequired": false,
+        "type": "\"overview\" | \"facing\" | \"opposite\" | \"side\""
+      },
+      "projection": {
+        "description": "The camera's projection. Left undefined, Mol*'s own default stands.",
+        "isRequired": false,
+        "type": "\"perspective\" | \"orthographic\""
+      },
+      "representation": {
+        "defaultValue": "cartoon",
+        "description": "How the polymer is drawn. Ligands stay ball-and-stick either way.\nSwitching leaves the camera where it is.",
+        "isRequired": false,
+        "type": "\"cartoon\" | \"surface\""
       },
       "disableChainHighlightOnHover": {
         "defaultValue": false,
@@ -66,17 +103,6 @@
         "isRequired": false,
         "type": "(StructureStat | null)[]"
       },
-      "resolution": {
-        "defaultValue": "medium",
-        "description": "1280x720, 1920x1080, 3840x2160 and 7680x4320 respectively. Also exported as DOWNLOAD_RESOLUTIONS, for labelling a control of your own.",
-        "isRequired": false,
-        "type": "\"low\" | \"medium\" | \"high\" | \"maximum\""
-      },
-      "filename": {
-        "description": "Name for the file, without an extension. Defaults to the one Mol* derives from the loaded structure.",
-        "isRequired": false,
-        "type": "string"
-      },
       "structure": {
         "defaultValue": "- (required)",
         "description": "Structure to render, as raw PDB or mmCIF (PDBx) text.",
@@ -84,9 +110,9 @@
         "type": "string"
       },
       "plddt": {
-        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover.",
+        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover. A `null` entry, and every residue past the end, reads as unscored\nand is painted neutral rather than at the bottom of the scale.",
         "isRequired": false,
-        "type": "number[] | null"
+        "type": "(number | null)[] | null"
       },
       "residueOverlay": {
         "description": "Per-residue values that override pLDDT coloring while set.",
@@ -123,85 +149,30 @@
         "isRequired": false,
         "type": "(hiddenChains: string[]) => void"
       },
-      "residues": {
-        "description": "0-based residue indices, counting residues in file order across the whole structure - the same index plddt and residueOverlay are keyed by.",
+      "onCameraChange": {
+        "description": "Called with the camera each time it comes to rest after moving, whether a\ndrag, a zoom, a selection framing it, or a new structure fitting it. The\nstate can be handed back as `initialCamera` to restore the view.",
         "isRequired": false,
-        "type": "number[]"
+        "type": "(camera: CameraState) => void"
       },
-      "chains": {
-        "description": "Whole chains by chainId, each standing for every residue on it. Kept as named rather than expanded into indices, so a whole-chain selection survives a round trip through a consumer's state at its original size.",
+      "onStructureLoad": {
+        "description": "Called for every structure that loads, reloads included - unlike\n`onChainsChange`, which stays quiet when the chains come back the same.\nWhat a consumer tracking \"loading\" and \"ready\" states listens for.",
         "isRequired": false,
-        "type": "string[]"
+        "type": "(info: StructureLoadInfo) => void"
       },
-      "chainId": {
-        "defaultValue": "- (required)",
-        "description": "Chain as named in the file (auth_asym_id), e.g. \"A\".",
+      "onReady": {
+        "description": "Called with the Mol* plugin once a structure is loaded into it, and again\nfor each structure that replaces it, which is how a consumer reaches the\nplugin to draw on it or drive it directly.\n\nCalled once the viewer has drawn its own scene, and awaited before it\nstarts answering clicks and hovers, so a scene built here is in place\nbefore a click reaches it. The viewer only ever recolors, hides or\nreplaces the components it built itself, so representations added here\nare left as they were made. Not called for a structure that failed to\nload, or for a plugin the viewer disposed of first.",
         "isRequired": false,
-        "type": "string"
+        "type": "(plugin: PluginUIContext, loaded: LoadedStructureInfo) => void | Promise<void>"
       },
-      "startIndex": {
-        "defaultValue": "- (required)",
-        "description": "Lowest 0-based residue index of the chain's polymer.",
+      "onError": {
+        "description": "Called when creating the plugin, loading a structure, capturing an image or\ndrawing a representation fails, in place of the message the viewer would\notherwise log. A rejected `onReady` is reported as a `\"load\"` failure.\nNothing is reported for a plugin the viewer has already disposed of.",
         "isRequired": false,
-        "type": "number"
+        "type": "(error: unknown, phase: ViewerErrorPhase) => void"
       },
-      "endIndex": {
-        "defaultValue": "- (required)",
-        "description": "Highest 0-based residue index of the chain's polymer.",
+      "onDispose": {
+        "description": "Called before the viewer disposes of a plugin it handed to `onReady`,\nincluding one whose `onReady` has not finished, so that whatever was built\non it can be let go.",
         "isRequired": false,
-        "type": "number"
-      },
-      "residueCount": {
-        "defaultValue": "- (required)",
-        "description": "Polymer residues the chain holds.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "values": {
-        "defaultValue": "- (required)",
-        "description": "0-based residue index to value. Residues absent from the map read as 0, so they render in the neutral gray rather than at the bottom of the scale.",
-        "isRequired": false,
-        "type": "Map<number, number>"
-      },
-      "max": {
-        "defaultValue": "- (required)",
-        "description": "The value mapped to the top of the color scale.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "min": {
-        "defaultValue": 0,
-        "description": "Values at or below this render in a neutral gray rather than on the scale.",
-        "isRequired": false,
-        "type": "number"
-      },
-      "colorScale": {
-        "defaultValue": "PLASMA_COLOR_SCALE",
-        "description": "Scale used to color residues and to draw the legend.",
-        "isRequired": false,
-        "type": "ColorScale"
-      },
-      "tooltip": {
-        "description": "Help tooltip title on the legend caption. A string is enough for the common case; use tooltipProps for a subtitle, a custom body, or placement. Overrides tooltipProps.title when both are set.",
-        "isRequired": false,
-        "type": "string"
-      },
-      "tooltipProps": {
-        "description": "Props forwarded to the SDS Tooltip on the legend caption. The trigger is the caption's help icon, so children is omitted.",
-        "isRequired": false,
-        "type": "Partial<Omit<TooltipProps, \"children\">>"
-      },
-      "readoutLabel": {
-        "defaultValue": "Value",
-        "description": "Label for the per-residue readout that replaces a stat slot on hover.",
-        "isRequired": false,
-        "type": "string"
-      },
-      "value": {
-        "defaultValue": "- (required)",
-        "description": "The stat's value, already formatted for display.",
-        "isRequired": false,
-        "type": "string"
+        "type": "() => void"
       }
     }
   }

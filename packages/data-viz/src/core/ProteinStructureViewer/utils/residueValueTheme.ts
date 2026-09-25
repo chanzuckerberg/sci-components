@@ -9,6 +9,7 @@ import {
   sampleColorScale,
 } from "../../../common/colorScales";
 import { neutralResidueColor } from "./color";
+import type { ResidueColorOverrides } from "./residueColorOverrides";
 
 /** Mol* color theme name under which residue value overlays are registered. */
 export const RESIDUE_VALUE_THEME_NAME = "residue-value";
@@ -42,9 +43,11 @@ export interface ResidueValueTheme {
  * so several viewers can render different overlays on the same page. Its state
  * lives in the closure below and is read live inside `color()`, which is what
  * lets an overlay update recolor the structure without rebuilding it.
+ * `overrides` paints single residues - the highlights - over it.
  */
 export function createResidueValueTheme(
-  mode: "light" | "dark"
+  mode: "light" | "dark",
+  overrides?: ResidueColorOverrides
 ): ResidueValueTheme {
   const state: ResidueValueState = {
     colorScale: PLASMA_COLOR_SCALE,
@@ -61,6 +64,7 @@ export function createResidueValueTheme(
     factory() {
       const { colorScale, max, min, mode: currentMode, values } = state;
       const neutral = neutralResidueColor(currentMode);
+      const overrideColors = overrides?.current;
 
       return {
         color(location: unknown) {
@@ -70,7 +74,11 @@ export function createResidueValueTheme(
           // `injectPlddt` walks. A residue the overlay says nothing
           // about reads neutral rather than as an explicit zero, which would
           // otherwise paint it at the bottom of the scale.
-          const value = values.get(StructureProperties.residue.key(location));
+          const residue = StructureProperties.residue.key(location);
+          const override = overrideColors?.get(residue);
+          if (override !== undefined) return override;
+
+          const value = values.get(residue);
           if (value === undefined) return neutral;
           const rgb = sampleColorScale(colorScale, value, max, min);
 
