@@ -2099,6 +2099,52 @@ Whatever is built on a structure goes with it when the next one is loaded, so bu
 
 `onDispose` is called before the viewer disposes of a plugin it handed over - including one whose `onReady` has not finished - so whatever was built on it can be let go. `onError` is told when creating the plugin, loading a structure or capturing an image fails, in place of the message the viewer would otherwise log; a rejected `onReady` counts as a failed load.
 
+## Rendering without React
+
+The scene the viewer draws is available on its own, for a page that does not show the viewer: a report with a picture of the structure, a static export, or a Mol\* viewer of your own. It takes the options the props take, with the same meaning, and draws them by the same code, so what it draws matches the viewer given the same props. Import it from its own entry point, which leaves out React and the component library:
+
+**TypeScript**
+
+```ts
+import {
+  applyStructureScene,
+  renderStructureImage,
+} from "@czi-sds/data-viz/ProteinStructureScene";
+```
+
+`renderStructureImage` renders a PNG of exactly `width` by `height` pixels. It creates a plugin offscreen for the one image and disposes of it once the image is taken, whether or not that succeeded, so nothing is left on the page. The camera is placed as the viewer would place it when the structure loads, without the animation. Leave out `backgroundColor` for a transparent background.
+
+**TypeScript**
+
+```ts
+const image: Blob = await renderStructureImage({
+  structure: pdb,
+  plddt: scores,
+  highlights: [{ chainId: "A", seqId: 27 }],
+  orientation: "facing",
+  width: 800,
+  height: 600,
+  backgroundColor: "#FFFFFF",
+});
+```
+
+It needs a DOM and WebGL: a browser, or headless Chromium on a server. Where there is no WebGL it rejects rather than returning a blank image.
+
+`applyStructureScene` draws the scene on a Mol\* plugin you created and resolves with a handle once the structure is drawn and the camera is on it. `update` applies changed options in place and leaves the camera where it is, except for a new `structure`, which is loaded and framed like the first. `getCamera` reads the camera in the form `initialCamera` takes, and `dispose` stops the scene touching the plugin, which stays yours.
+
+**TypeScript**
+
+```ts
+const scene = await applyStructureScene(plugin, { structure: pdb });
+
+await scene.update({ representation: "surface", hiddenChains: ["B"] });
+const camera = scene.getCamera();
+
+scene.dispose();
+```
+
+The scene clears the plugin's state to load a structure, so give it a plugin of its own rather than one showing something else. Its color themes are registered once per plugin, so applying a scene again on the same plugin is fine. A structure that fails to load rejects the promise; a representation that cannot be drawn, such as a surface too large to compute, is reported to `onError` with the phase `"representation"` and the cartoon is drawn in its place.
+
 ## Props
 
 The viewer spreads any remaining props onto its root div, so standard HTML attributes such as `className`, `id`, and `data-testid` work as usual.
@@ -2225,3 +2271,33 @@ What `onReady` is handed alongside the plugin.
 | `structure` | `StateObjectSelector<PluginStateObject.Molecule.Structure>` | - (required) | The parsed structure's cell in the plugin's state tree, to build components and representations on. They go with it when the next structure is loaded. |
 | `atomCount` | `number`                                                    | - (required) | Atoms Mol\* parsed, for checking the parse against a count you hold for the file before trusting what is drawn.                                        |
 | `chains`    | `ChainRef[]`                                                | - (required) | The polymer chains found, as `onChainsChange` reports them.                                                                                            |
+
+### StructureSceneOptions
+
+What `applyStructureScene` draws. `structure`, `plddt`, `residueOverlay`, `colorBy`, `chainColors`, `representation`, `highlights`, `hiddenChains`, `initialCamera`, `orientation` and `projection` mean what the props of the same names mean, with the same defaults. Beyond those:
+
+| Field     | Type                                                | Default   | Description                                                                                                    |
+| --------- | --------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------- |
+| `mode`    | `"light" \| "dark"`                                 | `"light"` | Which of the neutral grays paints a residue without a value. The viewer takes it from the SDS theme.           |
+| `onError` | `(error: unknown, phase: ViewerErrorPhase) => void` | -         | Told when a representation cannot be drawn, with the phase `"representation"`. Without it the error is logged. |
+
+### StructureSceneHandle
+
+What `applyStructureScene` resolves with.
+
+| Field       | Type                                                         | Description                                                                                                                                       |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `info`      | `StructureLoadInfo`                                          | What the structure last loaded holds.                                                                                                             |
+| `update`    | `(options: Partial<StructureSceneOptions>) => Promise<void>` | Applies the options given in place, keeping the rest and leaving the camera where it is. A new `structure` is loaded and the camera placed on it. |
+| `getCamera` | `() => CameraState \| undefined`                             | Where the camera is now, in the form `initialCamera` takes.                                                                                       |
+| `dispose`   | `() => void`                                                 | Stops the scene touching the plugin. The plugin, and what was drawn on it, stay yours.                                                            |
+
+### RenderStructureImageOptions
+
+What `renderStructureImage` takes: everything in `StructureSceneOptions`, and the image to draw it into.
+
+| Field             | Type     | Default      | Description                                    |
+| ----------------- | -------- | ------------ | ---------------------------------------------- |
+| `width`           | `number` | - (required) | Width of the image, in pixels.                 |
+| `height`          | `number` | - (required) | Height of the image, in pixels.                |
+| `backgroundColor` | `string` | transparent  | Background behind the structure, as `#RRGGBB`. |
