@@ -1,0 +1,1874 @@
+<h1>GenomeTrack</h1>
+<p>
+  A genome browser track: one shared base-pair axis with stacked rows for
+  reference annotations, predicted segments, the nucleotide sequence, and sparse
+  autoencoder (SAE) feature activation. The plot is drawn on a single canvas,
+  with the header, row labels, tooltip, and an accessible table kept in the DOM.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Ships separately:</strong>
+    GenomeTrack comes from <code>@czi-sds/data-viz</code>, not
+    <code>@czi-sds/components</code>. See the
+    <a href="./?path=/docs/data-viz-overview--docs" target="_top">
+      Data Viz overview
+    </a>
+    for installation and peer dependencies.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/data-viz/src/core/GenomeTrack/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { GenomeTrack } from "@czi-sds/data-viz";</code></pre>
+  </figure>
+</div>
+<h2>Sizing</h2>
+<p>
+  The track fills the width of its parent and sizes its own height from the rows
+  it was asked to draw, so there is no <code>width</code> or
+  <code>height</code> prop. Height follows from <code>tracks</code>,
+  <code>blockRowHeight</code>, <code>featureRowHeight</code>,
+  <code>maxFeatureRows</code>, and <code>density</code>; a container that
+  constrains it will clip rather than scale, since the plot is a canvas.
+</p>
+<h2>The payload</h2>
+<p>
+  Everything the track draws arrives as a single
+  <code>GenomeTrackData</code> object. Its keys are <code>snake_case</code>,
+  unlike the component's props, so a payload can be diffed against a server
+  fixture without being translated first. Props are <code>camelCase</code>, as
+  everywhere else in the library. Data that crossed the network keeps the
+  server's shape; anything a React caller types by hand follows house style.
+</p>
+<p>Three conventions run through it, and all three are load-bearing.</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>Coordinates are 1-based and inclusive</strong>, as a GFF writes
+      them. A block from <code>start</code> to <code>end</code> covers both
+      endpoints. Pixel coordinates, where they appear at all, are 0-based and
+      measured from the left edge of the plot area.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Long windows are pooled.</strong> <code>bins.stride</code> is the
+      number of bases each point of a trace covers, so index <code>i</code> of
+      every <code>values</code> array describes
+      <code>[start + i * stride, start + (i + 1) * stride - 1]</code>, clipped
+      to the window. Pooling is by maximum rather than mean, so a single-base
+      peak survives it. An unpooled window has <code>stride: 1</code>.
+    </p>
+    <p>
+      The header reports the stride whenever it is above 1 —
+      <code>NC_000913.3 56,928–56,951 · 24 bp · 21 bp/point</code> — because
+      nothing else on screen can. Zooming a pooled window magnifies its bins
+      rather than sharpening them, so a 24 bp view drawn from 21 bp points looks
+      exactly like one drawn from 24 individual bases. Recovering the detail
+      takes a narrower payload, which is what <code>viewport</code> and
+      <code>onViewportChange</code> are for: a shell re-fetches, the server
+      returns a smaller <code>stride</code>, and the trace sharpens.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong
+        ><code>null</code> and <code>[]</code> mean different things.</strong
+      >
+      <code>annotations: null</code> says this organism has no annotation
+      coverage — nobody looked — where <code>annotations: []</code> would say
+      there are no genes in this window. The track drops the row entirely for
+      the first and draws an empty row for the second.
+      <code>sequence: null</code> means the window is wider than
+      <code>caps.max_sequence_window</code>, or the genome's sequence file was
+      unavailable; the track degrades to the rows it can draw rather than
+      failing.
+    </p>
+  </li>
+</ul>
+<h2>Rows</h2>
+<p>
+  <code>tracks</code> is an ordered array of row kinds, drawn top to bottom. An
+  array rather than a set of boolean props, because the order is part of the
+  design and several quite different frames come out of one component that way.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">&lt;GenomeTrack data={data} tracks={["minimap", "sequence", "annotations", "segments", "features"]} /&gt;</code></pre>
+  </figure>
+</div>
+<p>
+  A row the payload cannot fill is dropped rather than drawn empty, so
+  requesting a row is safe even when the data for it is missing:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>"sequence"</code> — one letter per base, drawn only once bases are
+      about 7 px wide. Below that the row falls back to a solid band, which says
+      "there is sequence here, zoom in to read it" where crushed glyphs would
+      suggest the component is broken. Its copy control sits on the section's
+      header line. Dropped when <code>sequence</code> is <code>null</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"annotations"</code> — reference features from a GFF: genes, tRNAs,
+      and the rest. Stranded blocks point right for <code>+</code> and left for
+      <code>-</code>, a non-color cue for strand that survives colorblindness
+      and grayscale printing. Dropped when <code>annotations</code> is
+      <code>null</code>.
+    </p>
+    <p>
+      Annotations overlap in real data — divergent gene pairs, overlapping ORFs,
+      a tRNA nested inside a CDS — so the row packs them into lanes one block
+      deep rather than drawing them on top of each other. It uses as many lanes
+      as the window needs, up to <code>maxAnnotationLanes</code>, so a window
+      without overlaps is a single row. Lane position carries no meaning and is
+      not strand: strand stays on the arrowhead, which does not move when a
+      neighbouring gene changes the packing.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"segments"</code> — the intervals the segmentation pipeline cut from
+      the activation signal, labelled with the category it voted for. Dropped
+      when <code>segments</code> is empty.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"features"</code> — the payload's feature traces as a stack, one
+      labelled row each, drawn as a bar per bin. This is the one kind that
+      expands: it becomes as many rows as there are traces, up to
+      <code>maxFeatureRows</code>. Dropped when both <code>features</code> and
+      <code>pinned</code> are empty.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>"minimap"</code> — a bar spanning the whole chromosome, with the
+      loaded window outlined and the visible range banded inside it, the range
+      captioned above and tick labels beneath. Always drawable: with no
+      <code>overview</code> it falls back to spanning the payload's own window.
+      It is the one row with no section name — the chromosome bar and its own
+      ruler say what it is, so a heading would spend a line of height restating
+      it.
+    </p>
+  </li>
+</ul>
+<h2>The minimap</h2>
+<p>
+  The minimap answers one question — where on this chromosome am I? — by drawing
+  the chromosome as a bar and the visible range as a band inside it. Zoom in and
+  the band narrows; pan and it slides.
+</p>
+<p>
+  It draws two ranges:
+</p>
+<ul>
+  <li>
+    <p>
+      The <strong>chromosome</strong> is the bar, carrying — once a feature is
+      selected — that feature's activation across the whole chromosome from
+      <code>feature_overview</code>. With nothing selected the bar carries no
+      signal.
+    </p>
+  </li>
+  <li>
+    <p>
+      The <strong>viewport</strong> is the filled band, and the only band the
+      row draws.
+    </p>
+  </li>
+</ul>
+<p>
+  <strong>Click any features row to put that feature on the minimap.</strong>
+  The row emits a <code>"series"</code> selection naming the feature, the shell
+  fetches that feature's whole-chromosome activation, and the bar draws it.
+  Clicking the same row again clears it. <code>featureIdFromSeries</code> turns
+  the selection id back into a feature id for the fetch.
+</p>
+<p>
+  The bar is empty while the trace loads. Selection is immediate, the trace is a
+  fetch, and the component draws <code>feature_overview</code> only when its
+  <code>feature_id</code> matches the selection — so the previous feature's
+  trace is dropped on click rather than left up, which would credit its
+  activation to the feature just selected.
+</p>
+<p>
+  The bar spans the chromosome, but pan and zoom do not. They stop at the loaded
+  window plus <code>navigationMargin</code> times its span on each side, so the
+  band can travel a little way out of the outline and no further. Crossing a
+  megabase is a fetch, not a pan.
+</p>
+<p>
+  <code>overview</code> is fixed at a thousand bins regardless of chromosome
+  length, so human chr 1 and <em>E. coli</em> cost the same bytes, and it is
+  fetched once per accession rather than per window. A re-fetch that omits it
+  means "unchanged, you already have it", which
+  <code>caps.overview_available</code> distinguishes from "this deployment
+  cannot draw one" — the component retains the last one it saw rather than
+  dropping the minimap on the user's first zoom. Retention is keyed on accession
+  and chromosome and dropped when either changes, since
+  <code>chrom_length</code> is also the limit of navigation.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Not yet interactive.</strong>
+    Dragging the minimap does nothing on purpose. Panning the plot is inverted
+    the way dragging a map is, so the same gesture on a minimap would send the
+    window the opposite way to the band under the pointer — worse than no
+    response. Dragging the band, and clicking to jump, mean treating the minimap
+    as its own control rather than part of the plot surface. At chromosome scale
+    that is also the gesture most worth having, since it is the only way to
+    cross a megabase in one movement.
+  </p>
+</div>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/GenomeTrackWithMinimap"
+></div>
+<h2>The sequence row</h2>
+<p>
+  One letter per base, and a copy control on the section's header line beside
+  its name. It opens a menu with two choices rather than copying straight away:
+  <strong>Copy Visible Segment</strong> and <strong>Copy Full Segment</strong>.
+  Both items name the range they would copy: "Copy Visible Segment (45,500–45,600)". The full
+  item is disabled when the payload is already entirely on screen, since two
+  items copying identical text is a choice without a difference.
+</p>
+<h2>The features row</h2>
+<p>
+  One row per trace, <code>pinned</code> first and then <code>features</code> in
+  the payload's own rank order — the track never re-sorts, because the server
+  ranks and a second opinion derived from <code>score</code> would only
+  disagree. <code>maxFeatureRows</code> caps how many are drawn.
+</p>
+<p>
+  Bars rather than a filled area, and the difference is not only cosmetic. A
+  filled area implies a continuous signal you can read between the points; a bar
+  per bin says each one is a discrete measurement, which is what a pooled
+  maximum is. At <code>stride: 1</code> the bars are one base wide and the
+  distinction stops mattering.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Bar heights are not comparable between rows.</strong>
+    Each trace is normalized to its own <code>peak</code>, so every row uses its
+    full height and a weak feature's shape stays legible. A scale shared across
+    the stack would make the rows comparable and flatten everything below the
+    strongest into a line — which, for a list ordered by score, is most of it.
+    The tooltip carries the absolute value for anyone comparing two rows for
+    real.
+  </p>
+</div>
+<p>
+  Feature names sit inside their own rows rather than on the section's header
+  line, since there is one per trace and only one header. They are DOM text
+  above the bars, and they disappear at
+  <code>density="compact"</code>, where a card has no room for them. A name
+  comes from <code>feature_notes</code> and falls back to
+  <code>Feature 13492</code>, which is the common case rather than the
+  exceptional one.
+</p>
+<h2>Code examples</h2>
+<h3><strong>Default GenomeTrack</strong></h3>
+<p>
+  <code>data</code> is the only required prop. With no <code>tracks</code> the
+  track draws the rows the designs stack: minimap, sequence, annotations,
+  segments, and the features stack. Drag to pan, scroll to zoom, hover a block
+  or a bar for a tooltip.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/DefaultGenomeTrack"
+></div>
+<h3>Sequence row</h3>
+<p>
+  Adding <code>"sequence"</code> to <code>tracks</code> puts the nucleotides
+  above the annotation row. This example opens on a 61 bp slice of a 289 bp
+  payload so the letters are legible; zoom out and the row becomes a band.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/GenomeTrackWithSequence"
+></div>
+<h3>Features stack</h3>
+<p>
+  Adding <code>"features"</code> to <code>tracks</code> draws one row per trace.
+  Two of the four features below are described and two are not, so the rows show
+  both the labelled case and the bare one.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/GenomeTrackWithFeatures"
+></div>
+<h3>Viewport and selection</h3>
+<p>
+  Both are controlled when supplied. Passing <code>viewport</code> means pan and
+  zoom report through <code>onViewportChange</code> and change nothing until the
+  prop comes back — which is what lets a shell re-fetch a wider window instead
+  of scaling the one it has. Omit it for uncontrolled, where the component owns
+  the range and starts at the payload's full window.
+</p>
+<p>
+  Selection is deliberately domain-free: clicking a block emits
+  <code>{ kind: "block", id }</code> and nothing more. The id is one the caller
+  already holds — an annotation's <code>id</code>, or a segment's namespaced
+  <code>segment_id</code> — so the track can report a selection without knowing
+  what it refers to. Clicking the selected block again, or clicking empty space,
+  emits <code>null</code>, so a detail panel can be closed from the plot.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/SelectableGenomeTrack"
+></div>
+<h3>Compact density</h3>
+<p>
+  <code>density="compact"</code> tightens every row and drops the minimap's
+  caption and tick labels along with the feature names; it is the in-card
+  variant, used where a comparison row shows several loci at once. It pairs with
+  <code>showRowLabels={false}</code> to drop the section names, a smaller
+  <code>blockRowHeight</code>, and <code>disableNavigation</code> so a card does
+  not swallow the page's scroll. Navigation only turns off wheel-zoom and
+  drag-pan — selection and the keyboard controls still work.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/CompactGenomeTrack"
+></div>
+<h3>Loading, error, and empty states</h3>
+<p>
+  All three replace the plot and are reached through props, so the surrounding
+  layout does not change as a window loads, fails, or is cleared. The skeleton
+  is shaped from <code>tracks</code> rather than being one grey box, so nothing
+  jumps when the data lands. An error is a typed
+  <code>{ code, message }</code> rather than free text: the code chooses the
+  headline, so a missing activation cache reads differently from a region nobody
+  precomputed, and an unrecognised code falls back to the server's own message.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="data-viz/GenomeTrack/GenomeTrackStates"
+></div>
+<h2>Navigation</h2>
+<p>
+  Pan and zoom are clamped to the payload's window and to a floor of 20 bases,
+  so the user cannot navigate to a range the payload has nothing to say about.
+  Zooming past the floor holds the span and re-centres, which reads as a limit
+  rather than as a bug.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Input</p></td>
+    <td><p>Result</p></td>
+  </tr>
+  <tr>
+    <td><p>Drag</p></td>
+    <td>
+      <p>
+        Pans against the drag, the way dragging a map does. A drag under 4 px
+        counts as a click, so selecting a block is reliable.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Wheel</p></td>
+    <td>
+      <p>
+        Zooms about the pointer, keeping the base under the cursor fixed. The
+        page does not scroll while the pointer is over the plot.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Left / Right arrow</p></td>
+    <td><p>Pans by 15% of the visible window.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>Up arrow, <code>+</code>, <code>=</code></p>
+    </td>
+    <td><p>Zooms in about the centre.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>Down arrow, <code>-</code></p>
+    </td>
+    <td><p>Zooms out about the centre.</p></td>
+  </tr>
+  <tr>
+    <td><p>Home</p></td>
+    <td><p>Returns to the payload's full window.</p></td>
+  </tr>
+</table>
+<p>
+  Any other key falls through without <code>preventDefault</code>, so the page's
+  own shortcuts keep working while the plot has focus.
+</p>
+<h2>Accessibility</h2>
+<p>
+  A canvas exposes nothing to assistive technology, so the track renders its
+  contents a second time as a visually hidden table — one per row kind that was
+  actually drawn, with the annotations, segments, and top features spelled out.
+  The plot references it through <code>aria-describedby</code>, and carries
+  <code>role="img"</code> with a label naming the organism and range. Without
+  that table the component would be a blank region and the data simply
+  unavailable, so it is not an enhancement to be switched off.
+</p>
+<p>
+  The table describes the whole payload window rather than the current viewport.
+  Panning is a visual affordance; a reader stepping through a table wants the
+  region the tool returned, not whatever happens to be scrolled into view.
+</p>
+<p>
+  The plot is a tab stop and takes focus on click, so the keyboard controls are
+  available without a separate control to reach them, and strand is drawn as a
+  block's shape as well as its color.
+</p>
+<h2>Theming</h2>
+<p>
+  A canvas cannot resolve CSS variables — <code>fillStyle</code> takes a color,
+  and a <code>var(--x)</code> string paints nothing — so the track resolves a
+  palette from the active SDS theme's semantic colors on each render and draws
+  from that. Annotations use the neutral fill, segments the accent fill, and the
+  feature bars the accent fill, with the tick labels, row labels and row banding
+  coming from the base tokens. There are no color props: a track follows the
+  theme in both light and dark, and the built-in fallback palette exists only
+  for a track mounted outside a theme provider, as in a bare unit test.
+</p>
+<h2>Props</h2>
+<p>
+  The track spreads any remaining props onto its root div, so standard HTML
+  attributes such as <code>className</code>, <code>id</code>, and
+  <code>data-testid</code> work as usual.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>data</code></p>
+    </td>
+    <td>
+      <p><code>GenomeTrackData | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The window to draw. <code>null</code> renders the empty state. See the
+        table below for its shape.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tracks</code></p>
+    </td>
+    <td>
+      <p><code>TrackKind[]</code></p>
+    </td>
+    <td>
+      <p>
+        <code
+          >["minimap", "sequence", "annotations", "segments", "features"]</code
+        >
+      </p>
+    </td>
+    <td>
+      <p>
+        Rows to draw, top to bottom. A row the payload cannot fill is dropped
+        rather than drawn empty.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>viewport</code></p>
+    </td>
+    <td>
+      <p><code>GenomeViewport</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Visible range. Controlled when supplied: pan and zoom report through
+        <code>onViewportChange</code> and change nothing until the prop comes
+        back. Omit for uncontrolled, starting at the payload's full window.
+      </p>
+      <p>
+        May extend past the payload's window, by up to
+        <code>navigationMargin</code> — a shell that re-fetches a narrower window
+        at a finer stride needs the user to be able to zoom back out, and
+        clamping to the payload would make each zoom-in permanent. The rows wash
+        out the coordinates they have no data for. Supplied as a prop it is not
+        clamped at all: controlled means the caller owns it, and only pan and
+        zoom originating inside the component are bounded.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onViewportChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(viewport: GenomeViewport) =&gt; void</code>. Called on pan and
+        zoom. A shell typically re-fetches from this.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>selection</code></p>
+    </td>
+    <td>
+      <p><code>GenomeSelection | null</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
+    <td>
+      <p>
+        Controlled selection. The track outlines the block whose id matches a
+        <code>"block"</code> selection.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onSelectionChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        <code>(selection: GenomeSelection | null) =&gt; void</code>. Called with
+        the clicked block, or with <code>null</code> when the click clears the
+        selection.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>blockRowHeight</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>16</code></p>
+    </td>
+    <td>
+      <p>
+        Height of one block row, in px: a segment row, or one lane of the
+        annotations row. The minimap and sequence rows size themselves from
+        <code>density</code>, and the features rows have a prop of their own.
+      </p>
+      <p>
+        Deliberately slim — a block row carries an interval and, when it fits, a
+        name, where the features rows below it are measurements whose shape
+        needs room. Below about 14 the on-block gene names stop fitting and
+        blocks draw unlabelled.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>maxAnnotationLanes</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>4</code></p>
+    </td>
+    <td>
+      <p>
+        Ceiling on the lanes the annotations row packs overlapping genes into.
+        The row uses only as many as the window needs. Blocks that do not fit
+        are left undrawn rather than stacked into the last lane, and stay listed
+        in the accessible table.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>featureRowHeight</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>24</code></p>
+    </td>
+    <td>
+      <p>
+        Height of one feature's bars in the features row, in px, not counting
+        the space above them that the feature's name occupies.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>maxFeatureRows</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>8</code></p>
+    </td>
+    <td>
+      <p>
+        How many traces the features row draws, <code>pinned</code> first and
+        then <code>features</code> in the payload's own rank order. A cap
+        because the row's height is unbounded in the data: the segment-features
+        endpoint returns up to 128 features for a segment, which at this row
+        height is three thousand pixels of track.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>showRowLabels</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        Draw each section's name on a line above its rows, with a separator
+        ruling off whatever sits above. The minimap is unnamed either way.
+        Above the row rather than in a left-hand gutter, so a name has the
+        plot's full width instead of a fixed column that the axis could use and
+        that truncates the longer names anyway. The trade is vertical — each
+        section costs a line. False for the compact variant, which has room for
+        neither.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>density</code></p>
+    </td>
+    <td>
+      <p><code>"comfortable" | "compact"</code></p>
+    </td>
+    <td>
+      <p><code>"comfortable"</code></p>
+    </td>
+    <td>
+      <p>
+        Comfortable is the standalone view; compact is the in-card variant used
+        by a comparison row, which tightens every row and drops the labels and
+        captions.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>loading</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Render the skeleton instead of the data. It is shaped from
+        <code>tracks</code>, so the layout does not jump when the data lands.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>navigationMargin</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
+    <td>
+      <p>
+        How far outside the loaded window pan and zoom may go, as a multiple of
+        that window's span. Zero pins the viewport to the payload. This is the
+        ceiling on how far the viewport may outrun its data: at the default the
+        loaded slice always occupies at least a third of the plot, where
+        unbounded navigation compresses it into a few pixels of an otherwise
+        empty plot. A soft limit in practice, since each re-fetch widens the
+        window and so widens this with it. Only applies when the payload carries
+        an <code>overview</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>ranking</code></p>
+    </td>
+    <td>
+      <p><code>"zscore" | "peak"</code></p>
+    </td>
+    <td>
+      <p><code>"zscore"</code></p>
+    </td>
+    <td>
+      <p>
+        How the features are ranked, shown in a dropdown on the features
+        section's header line — "Z-Score" and "Raw" respectively. These are the
+        tool's own <code>rank_by</code> values, so a shell can pass the callback's
+        argument straight through; "Raw" is the label for <code>peak</code>, not
+        a value the server accepts.
+      </p>
+      <p>
+        Controlled with no internal fallback, because it is a fetch parameter
+        rather than a view option: <code>rank_by</code> changes which features
+        the tool returns and in what order, so a change is a request for
+        different data and the component changes nothing itself. The dropdown is
+        drawn only when <code>onRankingChange</code> is supplied.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onRankingChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td>
+      <p>-</p>
+    </td>
+    <td>
+      <p>
+        Called with the chosen <code>rank_by</code> value. A shell re-fetches
+        from this.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>refreshing</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        A fetch is in flight for data the track is already showing something
+        for. Unlike <code>loading</code> this keeps the last good data drawn and
+        marks the plot busy, which is what a shell re-fetching a finer stride on
+        every wheel notch needs — replacing the plot each time would make it
+        flicker. The header keeps reporting the resolution of the data on
+        screen, not of the fetch in flight.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>error</code></p>
+    </td>
+    <td>
+      <p><code>TrackError | null</code></p>
+    </td>
+    <td>
+      <p><code>null</code></p>
+    </td>
+    <td>
+      <p>
+        Render a typed error state instead of the data. Takes precedence over
+        <code>data</code>, and is itself preceded by <code>loading</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disableNavigation</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Disable wheel-zoom and drag-pan. The track still reports selection, and
+        the keyboard controls still work — this only turns off pointer
+        navigation, for a card that should not capture scroll.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>GenomeTrackData</h3>
+<p>
+  One track window, as the tool returns it. Keys are the server's, so they are
+  <code>snake_case</code>.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>schema_version</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Version of the payload contract.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sae</code></p>
+    </td>
+    <td>
+      <p><code>ModelRef</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Which SAE produced the activations. A <code>feature_id</code> is only
+        meaningful alongside it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>locus</code></p>
+    </td>
+    <td>
+      <p><code>Locus</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Where in the genome the window sits. Its <code>start</code> and
+        <code>end</code> are the bounds pan and zoom are clamped to.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sequence</code></p>
+    </td>
+    <td>
+      <p><code>string | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Window nucleotides, 5' to 3'. <code>null</code> when the window exceeds
+        <code>caps.max_sequence_window</code> or the sequence file is
+        unavailable.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>bins</code></p>
+    </td>
+    <td>
+      <p><code>BinAxis</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Maps trace index to genomic coordinates. Every <code>values</code> array
+        in the payload is on this axis.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>annotations</code></p>
+    </td>
+    <td>
+      <p><code>AnnotationBlock[] | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Reference features. <code>null</code>, not <code>[]</code>, means the
+        organism has no annotation coverage at all.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>segments</code></p>
+    </td>
+    <td>
+      <p><code>SegmentBlock[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Precomputed segments. The pipeline partitions exhaustively, so they abut
+        and leave no gaps.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>features</code></p>
+    </td>
+    <td>
+      <p><code>FeatureTrace[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Top features by score, highest first. The features row draws them in
+        this order and never re-sorts.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>pinned</code></p>
+    </td>
+    <td>
+      <p><code>FeatureTrace[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Features the caller asked to keep regardless of score. Listed ahead of
+        <code>features</code> in the accessible table.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>feature_notes</code></p>
+    </td>
+    <td>
+      <p><code>Record&lt;string, FeatureNote&gt;</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Descriptions keyed by <code>String(feature_id)</code>. Coverage is
+        sparse — most features have no entry.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>caps</code></p>
+    </td>
+    <td>
+      <p><code>TrackCaps</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>What the server had to leave out, and why.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overview</code></p>
+    </td>
+    <td>
+      <p><code>MinimapOverview | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Chromosome-scale context for the minimap row, and the source of the
+        chromosome length that bounds navigation.
+        <code>caps.overview_available</code> distinguishes "omitted because you
+        already have it" — where the component keeps the last one — from "this
+        deployment cannot draw it", where the minimap falls back to spanning the
+        payload's own window and the viewport cannot leave it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>clusters</code></p>
+    </td>
+    <td>
+      <p><code>ClusterTrace[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Aggregate activation for clusters of co-firing features, on the same bin
+        axis. Optional, and not drawn by any row yet.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>Locus</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>organism</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>Organism key, for example <code>e_coli_k12</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>organism_label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Display form of <code>organism</code>, for example "E. coli K-12". Shown
+        in the header when present, with <code>organism</code> as the fallback.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>accession</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Assembly or sequence accession.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chrom</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Chromosome or contig name, shown in the header.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>start</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>First base of the window, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>end</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Last base of the window, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>genome_length</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Length of the genome the window is cut from.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>gene</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Gene the window is centred on, shown ahead of the organism in the
+        header.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>BinAxis</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>start</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>First base the axis covers, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>end</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Last base the axis covers, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>stride</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Bases per point; <code>1</code> when unpooled. Each point is the maximum
+        over its bases, so single-base peaks survive.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>n_bins</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Number of points, equal to <code>values.length</code> for every trace in
+        the payload.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>AnnotationBlock</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>id</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Identifier reported by <code>onSelectionChange</code> when the block is
+        clicked.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>name</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Gene name, falling back to the locus tag. Drawn on the block when it is
+        wide enough, and truncated with an ellipsis when it is not.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>kind</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Feature type: <code>CDS</code>, <code>tRNA</code>, <code>rRNA</code>,
+        <code>ncRNA</code>, <code>mobile_element</code>, and so on.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>start</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>First base of the feature, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>end</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Last base of the feature, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>strand</code></p>
+    </td>
+    <td>
+      <p><code>"+" | "-" | "."</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Drawn as the block's shape: <code>+</code> points right,
+        <code>-</code> points left, <code>.</code> is a plain rectangle. Blocks
+        too narrow for an arrowhead degrade to a rectangle rather than
+        misreporting their extent.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>product</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Gene product, shown in the tooltip and the accessible table. Reads "Not
+        annotated" when absent.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>locus_tag</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Locus tag from the annotation source.</p></td>
+  </tr>
+</table>
+<h3>SegmentBlock</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>id</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Namespaced <code>segment_id</code>. Pass it back to segment-keyed tools
+        unchanged; the block itself is labelled with the trailing part, since
+        the full id is 40-odd characters.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>start</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>First base of the segment, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>end</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Last base of the segment, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>strand</code></p>
+    </td>
+    <td>
+      <p><code>"+" | "-" | "."</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Usually <code>"."</code>: segments come from an unstranded signal, and
+        the strand in the design's segment row comes from the annotation above
+        it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>category</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The category the segmentation voted for: <code>+CDS</code>,
+        <code>-CDS</code>, <code>intergenic</code>, <code>SINE</code>,
+        <code>unknown</code>, and so on. Drawn on the block beside the id.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>predicted_label</code></p>
+    </td>
+    <td>
+      <p><code>string | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Predicted function. <code>null</code> reads as "Unlabelled" rather than
+        as a blank.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>predicted_support</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>kNN vote share behind the label, 0-1.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>predicted_top</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td><p>Nearest neighbour's product, when one was resolved.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>pct_of_segment</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Fraction of the segment the vote was taken over, 0-1.</p></td>
+  </tr>
+</table>
+<h3>FeatureTrace</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>feature_id</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Index into the SAE's feature space. Only meaningful alongside
+        <code>sae</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>values</code></p>
+    </td>
+    <td>
+      <p><code>number[]</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Activation across the window, on the payload's bin axis. Length equals
+        <code>bins.n_bins</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>peak</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Maximum raw activation in the window. Each feature row scales its bars
+        to it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>score</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Value of whichever metric ranked this feature.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>score_kind</code></p>
+    </td>
+    <td>
+      <p><code>"peak" | "zscore"</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>Which metric <code>score</code> reports.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>pct_of_segment</code></p>
+    </td>
+    <td>
+      <p><code>number | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Fraction of the segment's bases where this feature is active, 0-1.
+        Defined against the segment rather than the window, so it is stable
+        under pan and zoom. <code>null</code> when the window is not
+        segment-aligned.
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>FeatureNote</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>feature_id</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>The feature this note describes.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Short display name, or <code>""</code> when unknown — which is the
+        common case, and the one the layout has to handle.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>description</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>Longer description, or <code>""</code> when unknown.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>confidence</code></p>
+    </td>
+    <td>
+      <p><code>number | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Confidence in the description, 0-1.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>cluster</code></p>
+    </td>
+    <td>
+      <p><code>number | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Cluster of co-firing features this one belongs to.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>cluster_label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Display name for that cluster.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>cluster_size</code></p>
+    </td>
+    <td>
+      <p><code>number | null</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>How many features the cluster holds.</p></td>
+  </tr>
+</table>
+<h3>TrackCaps</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>max_points</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Longest trace the server will send. A wider window is pooled to fit,
+        which is where <code>bins.stride</code> comes from.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>max_sequence_window</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Widest window that comes back with a <code>sequence</code>. Past it the
+        sequence row disappears.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>requested_top_n</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>How many features the caller asked for.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>available_features</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Features actually firing in the window, which may exceed what was sent.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>features_truncated</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Whether features were left out. The accessible table says so when they
+        were.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>described_features</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>Knowledge-base coverage, out of <code>sae.n_features</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>labelled_clusters</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>How many feature clusters carry a label.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>overview_available</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Whether this organism can produce a minimap at all. Distinguishes
+        "omitted because you already have it" from "this deployment cannot draw
+        it".
+      </p>
+    </td>
+  </tr>
+</table>
+<h3>ModelRef</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sae</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Name of the sparse autoencoder, for example
+        <code>esmgsedd-mvp</code>. Named in the accessible table.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>base_model</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Model the SAE was trained against.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>n_features</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Size of the feature space.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>segmentation_threshold</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Activation threshold the segmentation was cut at.</p></td>
+  </tr>
+</table>
+<h3>GenomeViewport</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>start</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>First visible base, 1-based inclusive.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>end</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>Last visible base, 1-based inclusive.</p></td>
+  </tr>
+</table>
+<h3>GenomeSelection</h3>
+<p>
+  A union of four shapes, every one of them an id into data the caller already
+  holds, so a component can emit one without knowing what it refers to. Clicking
+  the plot produces the <code>"block"</code> form; the rest are there for other
+  components in the same cross-selection.
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">type GenomeSelection =
+  | { kind: "block"; id: string }
+  | { kind: "range"; start: number; end: number }
+  | { kind: "row"; id: string }
+  | { kind: "series"; id: string };</code></pre>
+  </figure>
+</div>
+<h3>TrackError</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>code</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Server error code, which chooses the headline. The track has copy for
+        <code>dependency_unavailable</code>, <code>invalid_input</code>,
+        <code>not_found</code>, <code>rate_limited</code>,
+        <code>region_too_large</code>, and <code>restricted</code>; anything
+        else falls back to <code>message</code> alone.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>message</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td><p>The server's own message, shown under the headline.</p></td>
+  </tr>
+</table>
