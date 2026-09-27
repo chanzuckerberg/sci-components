@@ -144,6 +144,11 @@ export default {
       description:
         "Sequence panel background. Defaults to the theme's primary surface.",
     },
+    sequenceViewerHeight: {
+      control: { type: "text" },
+      description:
+        "Sequence panel height, as a CSS length such as 200px or 40%, or a number of pixels. Unset, it takes max(104px, 30%), growing to max(134px, 32%) once the viewer is 880px wide or more.",
+    },
     showSequenceViewer: {
       control: { type: "boolean" },
       description: "Show the sequence panel pinned along the bottom",
@@ -225,6 +230,23 @@ export const WithResidueOverlay = {
 /** The 3D view fills the whole box when the sequence panel is hidden. */
 export const WithoutSequenceViewer = {
   args: { ...DEFAULT_ARGS, showSequenceViewer: false },
+  parameters: VIEWER_CHECKS,
+};
+
+/**
+ * The sequence panel at a height of the consumer's choosing, here 240px, which
+ * gives the complex's two chains more room than the default. The 3D view and
+ * the legend move up to make room, and the height holds at every width rather
+ * than growing on a wide viewer as the default does.
+ */
+export const WithCustomSequenceViewerHeight = {
+  args: {
+    ...DEFAULT_ARGS,
+    plddt: BARNASE_BARSTAR_PLDDT,
+    sequenceViewerHeight: 240,
+    stats: COMPLEX_STATS,
+    structure: BARNASE_BARSTAR_PDB,
+  },
   parameters: VIEWER_CHECKS,
 };
 
