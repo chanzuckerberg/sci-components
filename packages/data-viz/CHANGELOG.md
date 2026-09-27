@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.5.0...@czi-sds/data-viz@2.5.1) (2026-09-27)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** add SequenceViewerHeight Prop ([#1209](https://github.com/chanzuckerberg/sci-components/issues/1209)) ([3256c82](https://github.com/chanzuckerberg/sci-components/commit/3256c82cbdeea99d7eea5ad14b2878f7d6c9b348))
+
 # [2.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.3...@czi-sds/data-viz@2.5.0) (2026-09-25)
 
 ### Features
