@@ -291,6 +291,34 @@ describe("<ProteinStructureViewer />", () => {
     expect(captured).toBe(screen.getByTestId("viewer"));
   });
 
+  /**
+   * The height reaches three places: the panel, the 3D view it pushes up, and
+   * the legend sitting on top of it. Mol* is stubbed and lays nothing out, so
+   * the two regions it would render into the mount are stood in for.
+   */
+  it("sizes the sequence panel and what sits above it from sequenceViewerHeight", () => {
+    renderViewer({ sequenceViewerHeight: 200 });
+
+    const viewer = screen.getByTestId("viewer");
+    const regions = document.createElement("div");
+    regions.className = "msp-plugin";
+    regions.innerHTML =
+      '<div class="msp-layout-region msp-layout-top"></div>' +
+      '<div class="msp-layout-region msp-layout-main"></div>';
+    viewer.querySelector('[class*="PluginMount"]')?.append(regions);
+
+    const panel = regions.querySelector(".msp-layout-top") as HTMLElement;
+    const view = regions.querySelector(".msp-layout-main") as HTMLElement;
+    const legend = viewer.querySelector(
+      '[class*="LegendOverlay"]'
+    ) as HTMLElement;
+
+    expect(getComputedStyle(panel).height).toBe("200px");
+    expect(getComputedStyle(view).bottom).toBe("200px");
+    expect(getComputedStyle(legend).bottom).toBe("200px");
+    expect(viewer).not.toHaveAttribute("sequenceviewerheight");
+  });
+
   it("creates the plugin and loads the structure once mounted", async () => {
     renderViewer();
 

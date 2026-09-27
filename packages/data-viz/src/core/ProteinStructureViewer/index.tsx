@@ -177,6 +177,7 @@ const ProteinStructureViewer = forwardRef(
       sceneMode = "managed",
       selection: selectionProp,
       sequenceViewerBackgroundColor,
+      sequenceViewerHeight,
       showAxes = true,
       showChainLegend = true,
       showLegend = true,
@@ -448,7 +449,12 @@ const ProteinStructureViewer = forwardRef(
     const plddtColoringActive = colorBy === "plddt";
 
     return (
-      <ViewerRoot ref={ref} showSequenceViewer={showSequenceViewer} {...rest}>
+      <ViewerRoot
+        ref={ref}
+        sequenceViewerHeight={sequenceViewerHeight}
+        showSequenceViewer={showSequenceViewer}
+        {...rest}
+      >
         <PluginMount ref={pluginMountRef} />
         {showLegend && (
           <StructureLegend
@@ -464,6 +470,7 @@ const ProteinStructureViewer = forwardRef(
             onChainToggle={toggleChain}
             selectedChains={selectedChains}
             selectedResidue={selectedReadout}
+            sequenceViewerHeight={sequenceViewerHeight}
             showSequenceViewer={showSequenceViewer}
             stats={stats ?? []}
             {...scaleProps}
