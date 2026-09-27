@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-BM7FiSok.js";import{t as r}from"./src-kR37wo1y.js";import{t as i}from"./InputCheckbox-C8BkyPff.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(i,{caption:`Caption`,label:`Label`})})}var o;e((()=>{r(),o=t(n())}))();export{a as default};
