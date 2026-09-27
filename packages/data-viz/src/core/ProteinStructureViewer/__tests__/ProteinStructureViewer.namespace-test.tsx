@@ -319,6 +319,10 @@ const ProteinStructureViewerNameSpaceTest = (
         showSequenceViewer={false}
       />
 
+      {/* Sequence panel height, as a CSS length or a number of pixels */}
+      <ProteinStructureViewer sequenceViewerHeight="40%" structure={PDB} />
+      <ProteinStructureViewer sequenceViewerHeight={240} structure={PDB} />
+
       {/* Forwarded div props */}
       <ProteinStructureViewer
         aria-label="Protein structure"

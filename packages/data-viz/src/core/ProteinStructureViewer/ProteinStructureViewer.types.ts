@@ -384,6 +384,17 @@ export interface ProteinStructureViewerProps extends Omit<
    */
   showSequenceViewer?: boolean;
   /**
+   * Height of the sequence panel, as any CSS length; a number is read as
+   * pixels, and a percentage is of the viewer's own height. The 3D view and the
+   * legend move up to make room for it. Ignored while `showSequenceViewer` is
+   * off.
+   *
+   * Left undefined, the panel takes `max(104px, 30%)` of the viewer, growing to
+   * `max(134px, 32%)` once the viewer is 880px wide or more. A height set here
+   * holds at every width.
+   */
+  sequenceViewerHeight?: number | string;
+  /**
    * Show the stats and color scale legend overlaid on the viewer.
    * @default true
    */
