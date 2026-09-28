@@ -1,4 +1,4 @@
-import { copyText } from "../components/SequenceView/utils/copyText";
+import { copyText } from "../copyText";
 
 describe("copyText", () => {
   const originalClipboard = navigator.clipboard;
