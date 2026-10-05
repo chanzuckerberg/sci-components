@@ -1,10 +1,6 @@
 // One window of a genome, drawn as three stacked rows over a shared bp axis:
 // reference annotations, predicted segments, and the activation trace.
 //
-// The payload below is written out by hand so the example stands alone. A real
-// one comes from a tool call and keeps the server's `snake_case` keys, which is
-// why the data shape reads differently from the props around it.
-//
 // Drag to pan, scroll to zoom, hover a block for its tooltip.
 
 import {
@@ -156,8 +152,7 @@ const DATA: GenomeTrackData = {
     overview_available: false,
     requested_top_n: 1,
   },
-  // Keyed by `String(feature_id)`. Most features have no entry: the knowledge
-  // base describes roughly one in twenty.
+  // Keyed by `String(feature_id)`.
   feature_notes: {
     "13492": {
       cluster: 0,

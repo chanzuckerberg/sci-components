@@ -13,12 +13,6 @@ import { TrackRow, layoutRows, viewportBands } from "../utils/layout";
 
 /**
  * The extent model, which is what makes re-fetching on zoom possible.
- *
- * Before it there was one range: the payload's window was both the limit of
- * navigation and what the minimap spanned. Re-fetching a narrower window at a
- * finer stride makes that window a function of the viewport, so the two have to
- * come apart — and the failure if they do not is silent and severe, so it is
- * pinned here rather than left to the component tests.
  */
 
 const OPTIONS = {
@@ -57,18 +51,10 @@ describe("trackExtents", () => {
 
   it("collapses to the payload window when there is no overview", () => {
     const { extent, window } = trackExtents(NO_OVERVIEW_TRACK_DATA, null);
-
-    // Honest rather than convenient: nothing in the payload says what is
-    // outside the window, so the track claims nothing and behaves exactly as
-    // it did before extents were separated.
     expect(extent).toEqual(window);
   });
 
   it("ignores Locus.genome_length, which is the genome and not the chromosome", () => {
-    // The obvious second source for a chromosome length, and wrong for any
-    // organism with more than one chromosome: it would set the extent to the
-    // whole genome, drawing the window as a sliver in the wrong place and
-    // letting the user pan into coordinates the chromosome does not have.
     expect(NO_OVERVIEW_TRACK_DATA.locus.genome_length).toBeGreaterThan(0);
 
     expect(trackExtents(NO_OVERVIEW_TRACK_DATA, null).extent.end).toBe(
@@ -77,9 +63,6 @@ describe("trackExtents", () => {
   });
 
   it("falls back when the overview contradicts the window", () => {
-    // A chromosome shorter than the window it supposedly contains is a payload
-    // disagreeing with itself. Clamping navigation to it would put the viewport
-    // outside the data; falling back keeps every range describable.
     const truncated: MinimapOverview = {
       ...(DEFAULT_TRACK_DATA.overview as MinimapOverview),
       chrom_length: DEFAULT_TRACK_DATA.locus.start,
@@ -93,11 +76,6 @@ describe("trackExtents", () => {
 
 /**
  * The bound on how far the viewport may outrun its data.
- *
- * Without it the component is worse than it was before extents were separated:
- * zooming out works, but the loaded slice compresses into a few pixels of an
- * otherwise empty plot. A 20 kb view of a 289 bp payload puts every row in a
- * 25 px column, which is the screenshot this bound exists to prevent.
  */
 describe("navigable bounds", () => {
   const { locus, overview } = DEFAULT_TRACK_DATA;
@@ -116,14 +94,10 @@ describe("navigable bounds", () => {
     const { navigable } = trackExtents(DEFAULT_TRACK_DATA, overview);
     const widest = navigable.end - navigable.start + 1;
 
-    // The property that actually matters, stated as the fraction of the plot
-    // the data occupies rather than as a bp count.
     expect(windowSpan / widest).toBeGreaterThanOrEqual(1 / 3);
   });
 
   it("scales the bound with the window, so it holds at every zoom", () => {
-    // A margin in bases would be generous on a 289 bp window and useless on a
-    // 40 kb one. A multiple keeps the ratio fixed.
     const wide = {
       ...DEFAULT_TRACK_DATA,
       locus: { ...locus, end: locus.start + 39_999 },
@@ -142,8 +116,6 @@ describe("navigable bounds", () => {
   });
 
   it("still leaves room to zoom out of a re-fetched window", () => {
-    // The ratchet this whole model exists to break: a window re-fetched narrow
-    // must not be a window the user is stuck inside.
     const { navigable, window } = trackExtents(DEFAULT_TRACK_DATA, overview);
 
     expect(navigable.end - navigable.start).toBeGreaterThan(
@@ -162,8 +134,6 @@ describe("navigable bounds", () => {
       locus: { ...locus, end: chromEnd, start: chromEnd - 199 },
     };
 
-    // A halo hanging off the end of a chromosome would let pan and zoom reach
-    // coordinates that do not exist.
     expect(trackExtents(start, overview).navigable.start).toBe(1);
     expect(trackExtents(end, overview).navigable.end).toBe(chromEnd);
   });
@@ -181,9 +151,6 @@ describe("navigable bounds", () => {
   it("leaves the minimap spanning the whole chromosome regardless", () => {
     const { extent, navigable } = trackExtents(DEFAULT_TRACK_DATA, overview);
 
-    // Bounding navigation must not shrink what the minimap shows: seeing where
-    // you are on the chromosome is the point of the row, and is independent of
-    // how far you may travel without a fetch.
     expect(extent).toEqual({ end: overview?.chrom_length, start: 1 });
     expect(extent.end - extent.start).toBeGreaterThan(
       navigable.end - navigable.start
@@ -235,9 +202,6 @@ describe("uncoveredRanges", () => {
   });
 
   it("reports the gap on either side, abutting the data exactly", () => {
-    // Abutting matters: a gap that overlapped the window by a base would tint
-    // a column of real data, and one that left a base would leave a hairline
-    // of untinted emptiness at the boundary.
     expect(uncoveredRanges({ end: 1_500, start: 500 }, window)).toEqual([
       { end: 999, start: 500 },
     ]);
@@ -271,8 +235,6 @@ describe("viewportBands", () => {
 
     expect(viewportBands(rows)).toHaveLength(1);
 
-    // Tinting the minimap by viewport coordinates would mark an unrelated
-    // slice of the chromosome, so the band has to start below it.
     expect(band.top).toBeGreaterThanOrEqual(minimap.y + minimap.height);
   });
 
@@ -285,8 +247,6 @@ describe("viewportBands", () => {
     const bands = viewportBands(rows);
     const last = rows[rows.length - 1];
 
-    // One band rather than one per row: a wash that stopped at every row
-    // boundary would read as stripes rather than as a region.
     expect(bands).toHaveLength(1);
     expect(bands[0].top).toBe(rows[0].y);
     expect(bands[0].bottom).toBe(last.y + last.height);
@@ -297,9 +257,6 @@ describe("viewportBands", () => {
     const { rows } = layoutRows(DEFAULT_TRACK_DATA, { ...OPTIONS, tracks });
     const bands = viewportBands(rows);
 
-    // One band per section. The space above a labelled row holds that label's
-    // text and rule, and tinting it would grey out the heading rather than the
-    // plot.
     expect(bands).toHaveLength(tracks.length);
 
     bands.forEach((band) => {

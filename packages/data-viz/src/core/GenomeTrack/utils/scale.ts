@@ -189,17 +189,28 @@ export function zoomAt(
 }
 
 /** Pans by a pixel delta, converting through the current scale. */
+/**
+ * Shifts a viewport by a distance in base pairs.
+ */
+export function panByBp(
+  viewport: GenomeViewport,
+  bounds: GenomeViewport,
+  deltaBp: number
+): GenomeViewport {
+  const shift = Math.round(deltaBp);
+
+  return clampViewport(
+    { end: viewport.end + shift, start: viewport.start + shift },
+    bounds
+  );
+}
+
 export function panBy(
   scale: GenomeScale,
   bounds: GenomeViewport,
   deltaPx: number
 ): GenomeViewport {
-  const deltaBp = Math.round(deltaPx * scale.bpPerPx);
-
-  return clampViewport(
-    { end: scale.end + deltaBp, start: scale.start + deltaBp },
-    bounds
-  );
+  return panByBp(scale, bounds, deltaPx * scale.bpPerPx);
 }
 
 /**

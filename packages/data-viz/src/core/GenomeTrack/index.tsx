@@ -38,7 +38,7 @@ import {
   TrackRowLabel,
   VisuallyHidden,
 } from "./style";
-import { TrackExtents, trackExtents, uncoveredRanges } from "./utils/extent";
+import { TrackExtents, trackExtents } from "./utils/extent";
 import { featureIdFromSeries, seriesId } from "./utils/hitTest";
 import { formatRange, formatResolution, formatSpan } from "./utils/format";
 import {
@@ -60,19 +60,8 @@ import { createScale, spanOf } from "./utils/scale";
 
 export * from "./GenomeTrack.types";
 export { MIN_SPAN } from "./utils/scale";
-/**
- * A `"series"` selection's id is opaque to the caller by design, but a shell
- * has to turn one back into a feature to fetch its chromosome-wide trace — so
- * both directions of the mapping are public rather than reimplemented by hand.
- */
 export { featureIdFromSeries, seriesId } from "./utils/hitTest";
 
-/**
- * Rows a caller gets without asking, in the order the designs stack them.
- *
- * The sequence row drops itself on a window too wide to carry one, so a default
- * that includes it costs nothing on a 40 kb view.
- */
 const DEFAULT_TRACKS: TrackKind[] = [
   "minimap",
   "sequence",
@@ -81,63 +70,30 @@ const DEFAULT_TRACKS: TrackKind[] = [
   "features",
 ];
 
-/**
- * A row's key for React.
- *
- * Kind alone is not unique: the features row and the annotations row are each
- * a stack of several rows sharing one kind. Both sub-row indices are folded in
- * because a row has at most one.
- */
 function rowKey(row: TrackRow): string {
-  // A feature row is keyed by identity rather than position: the payload ranks
-  // by score within the window, so a re-fetch can put a different feature at
-  // the same index, and a positional key would reuse the row across the change.
   return `${row.kind}-${row.traceId ?? row.laneIndex ?? 0}`;
 }
 
 /**
  * The header's coordinate readout.
  *
- * Four facts, each included only when it changes what the plot means:
- *
- * - the visible range and its span, always;
- * - the pooled stride, whenever it is above 1. Zooming a pooled window
- *   magnifies bins rather than sharpening them, so a 24 bp view drawn from
- *   21 bp points looks exactly like one drawn from 24 bases, and nothing else
- *   on screen distinguishes them;
- * - which part of the view is loaded, once the viewport can leave the payload.
- *   That is the text half of what the wash and the minimap's outline say
- *   visually — and the only half a screen reader gets, since both are canvas.
+ * ex: NC_000913.3 45,000–85,000 · 40 kb · 21 bp/point
  */
 function headerCoordinates(
   data: GenomeTrackData,
-  viewport: GenomeViewport,
   window: GenomeViewport
 ): string {
-  const loaded =
-    uncoveredRanges(viewport, window).length > 0
-      ? `${formatRange(window.start, window.end)} loaded`
-      : null;
-
   return [
-    `${data.locus.chrom} ${formatRange(viewport.start, viewport.end)}`,
-    formatSpan(spanOf(viewport)),
+    `${data.locus.chrom} ${formatRange(window.start, window.end)}`,
+    formatSpan(spanOf(window)),
     formatResolution(data.bins.stride),
-    loaded,
   ]
     .filter((part): part is string => part !== null)
     .join(" · ");
 }
 
 /**
- * The letters actually on screen, which is what the copy control offers as its
- * visible range.
- *
- * Clamped through `Math.max` because a controlled viewport can be handed
- * coordinates outside the payload before the two agree — and now routinely is,
- * since the viewport may sit past the loaded window by design. Both clamps
- * collapse to an empty string when the viewport misses the sequence entirely,
- * which the caller reads as "no control to draw".
+ * The slice of sequence visible at the current zoom level
  */
 function sliceVisible(data: GenomeTrackData, viewport: GenomeViewport): string {
   if (!data.sequence) return "";
@@ -151,32 +107,34 @@ function sliceVisible(data: GenomeTrackData, viewport: GenomeViewport): string {
 }
 
 /**
- * The selected feature's chromosome-wide trace, or null.
- *
- * Null unless the payload's `feature_overview` is for the feature currently
- * selected. The two arrive separately — the selection is immediate, the trace
- * is a fetch — so between a click and its response the payload still holds the
- * *previous* feature's trace. Drawing that under the new selection would
- * attribute one feature's activation to another, which is the kind of wrong
- * that looks entirely plausible.
+ * The selected feature's activation for the minimap, or null when nothing is
+ * selected. Prefers the chromosome-wide `feature_overview`, and falls back to
+ * the feature's own window trace when there is none.
  */
-function matchedFeatureOverview(
+function selectedFeatureSignal(
   data: GenomeTrackData | null,
   selectedSeriesId: string | null
 ): FeatureOverview | null {
-  const carried = data?.feature_overview;
+  if (!data || !selectedSeriesId) return null;
 
-  if (!carried || !selectedSeriesId) return null;
+  const carried = data.feature_overview;
 
-  return selectedSeriesId === seriesId(carried.feature_id) ? carried : null;
+  if (carried && seriesId(carried.feature_id) === selectedSeriesId) {
+    return carried;
+  }
+
+  const featureId = featureIdFromSeries(selectedSeriesId);
+  const trace = featureTraces(data).find(
+    (candidate) => candidate.feature_id === featureId
+  );
+
+  return trace
+    ? { bins: data.bins, feature_id: trace.feature_id, values: trace.values }
+    : null;
 }
 
 /**
  * The selected trace's `feature_id`, or null when no feature is selected.
- *
- * Resolved once rather than per row: the labels compare it against
- * `row.traceId`, and parsing the series id inside that loop would re-run a
- * regex for every trace on every render.
  */
 function selectedFeatureId(selectedSeriesId: string | null): number | null {
   return selectedSeriesId ? featureIdFromSeries(selectedSeriesId) : null;
@@ -184,17 +142,6 @@ function selectedFeatureId(selectedSeriesId: string | null): number | null {
 
 /**
  * Display name for the selected feature, or null when none is selected.
- *
- * Reported whenever a feature is *selected*, not only when its chromosome-wide
- * trace has arrived: the header is saying what the user picked, and a label
- * that appeared a round trip after the click would read as the click having
- * missed.
- *
- * Falls back to the bare `Feature 13492` when the selected feature is not in
- * the payload, which a re-fetch can cause — the features are ranked within the
- * window, so panning can drop the one that is selected while the minimap is
- * still drawing its trace. Naming it from the id keeps the header and the
- * minimap agreeing about whose signal is on screen.
  */
 function selectedFeatureName(
   data: GenomeTrackData,
@@ -225,14 +172,6 @@ function legendFor(
  * The first row of a section, which is where a control mounted on that
  * section's line — the ranking dropdown, the sequence copy button — positions
  * itself.
- *
- * Matched on being the first row of its kind rather than on `headerHeight`,
- * which is a *measurement*. With `showRowLabels={false}` every `headerHeight`
- * is 0, so keying on it made the ranking dropdown disappear in exactly the
- * documented compact configuration — a control vanishing because a label was
- * turned off, while the copy button beside it survived by falling back to the
- * row's own height. The two controls now find their anchor the same way, and
- * whether a control exists depends only on whether a caller is listening.
  */
 function headerRowFor(rows: TrackRow[], kind: TrackKind): TrackRow | undefined {
   return rows.find((row) => row.kind === kind);
@@ -240,15 +179,6 @@ function headerRowFor(rows: TrackRow[], kind: TrackKind): TrackRow | undefined {
 
 /**
  * The category key for the segments row.
- *
- * Lists only the categories the window actually contains, in the enum's order
- * — the server's most-common-first ordering — so the entries do not reshuffle
- * as the user pans.
- *
- * Not the SDS `Legend`, and that is a deliberate trade. `Legend` takes a colour
- * per item and cannot express a *pattern*, so `+CDS` and `-CDS` would come out
- * as two identical swatches with different names, which is worse than no key.
- * The colours are still SDS's generator; only the swatch is local.
  */
 function SegmentLegend({
   items,
@@ -273,13 +203,6 @@ function SegmentLegend({
 
 /**
  * Section names, each on the line the layout reserved above its rows.
- *
- * `aria-hidden` because these are inside the plot's `role="img"`, whose
- * contents assistive technology does not expose in any case — the accessible
- * table is what describes the track, and it names every row it draws. They are
- * still DOM text rather than canvas text for the reason all the component's
- * text is: canvas text is invisible to find-in-page and ignores a reader's font
- * settings.
  */
 function RowLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
   return (
@@ -293,9 +216,6 @@ function RowLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
               height: row.headerHeight,
               top: row.y - (row.headerHeight ?? 0),
             }}
-            // A rule needs something above it to rule off. Tested against the
-            // row list rather than the labelled subset, so the sequence
-            // section is still separated from the unnamed minimap above it.
             withSeparator={index > 0}
           >
             {row.label}
@@ -525,7 +445,13 @@ const GenomeTrack = forwardRef(
     const selectedBlockId = selection?.kind === "block" ? selection.id : null;
     const selectedSeriesId = selection?.kind === "series" ? selection.id : null;
 
-    const featureOverview = matchedFeatureOverview(data, selectedSeriesId);
+    // Memoized because the fallback returns a fresh object, and the canvas
+    // effect lists this in its dependencies — an unstable identity would
+    // redraw the whole plot on every render, including every pointer move.
+    const featureOverview = useMemo(
+      () => selectedFeatureSignal(data, selectedSeriesId),
+      [data, selectedSeriesId]
+    );
     const selectedTraceId = selectedFeatureId(selectedSeriesId);
 
     const { handlers, hit, isDragging } = useTrackNavigation({
@@ -535,6 +461,8 @@ const GenomeTrack = forwardRef(
       bounds: extents.navigable,
       data,
       disabled: disableNavigation,
+      // What the minimap's bar spans, so its band can be dragged along it.
+      extent: extents.extent,
       navigate,
       onSelectionChange,
       plotRef,
@@ -601,7 +529,7 @@ const GenomeTrack = forwardRef(
     const { locus } = data;
     const organism = locus.organism_label ?? locus.organism;
     const range = formatRange(viewport.start, viewport.end);
-    const coordinates = headerCoordinates(data, viewport, extents.window);
+    const coordinates = headerCoordinates(data, extents.window);
 
     // The hit names its own row by index, which is the only thing that works
     // once the features stack means several rows share a kind.
@@ -639,6 +567,10 @@ const GenomeTrack = forwardRef(
             isDragging={isDragging}
             ref={plotRef}
             role="img"
+            // Only when a click would do something: the selection callbacks are
+            // optional, and a hand over a plot nobody is listening to promises
+            // an interaction that cannot happen.
+            selectable={hit !== null && onSelectionChange !== undefined}
             tabIndex={0}
             {...handlers}
           >

@@ -19,7 +19,14 @@ export interface TrackPalette {
   annotation: string;
   /** Text drawn on top of an annotation block. */
   annotationText: string;
-  /** Ruler baseline, tick marks, row separators. */
+  /**
+   * Ruler baseline, tick marks, row separators.
+   *
+   * `base.borderSecondary`, which the design names for the minimap's tick
+   * axis. Note SDS defines that token as gray 300 at 70%, so it arrives as an
+   * 8-digit hex and must go straight to `strokeStyle` — `withAlpha` would
+   * overwrite the alpha it already carries.
+   */
   axis: string;
   /** Ruler tick labels and row labels. */
   axisText: string;
@@ -105,7 +112,7 @@ export interface TrackPalette {
 const FALLBACK: TrackPalette = {
   annotation: "#6c6c6c",
   annotationText: "#ffffff",
-  axis: "#c3c3c3",
+  axis: "#c3c3c3b3",
   axisText: "#767676",
   featureBar: "#5a5aeb",
   hover: "#1b1b1b",
@@ -194,7 +201,7 @@ export function resolvePalette(
     ...resolved({
       annotation: neutral,
       annotationText: base.textOnFill,
-      axis: base.divider,
+      axis: base.borderSecondary,
       axisText: base.textTertiary,
       featureBar: accent,
       hover: base.borderPrimary,

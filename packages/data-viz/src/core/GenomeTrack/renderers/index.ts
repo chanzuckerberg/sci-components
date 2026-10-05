@@ -9,12 +9,14 @@ import {
   fitLabel,
   formatActivation,
   formatRange,
+  formatSpan,
   formatTick,
   segmentLabel,
   tickInterval,
   ticksFor,
 } from "../utils/format";
 import {
+  MINIMAP_AXIS_GAP,
   MINIMAP_BAR_HEIGHT,
   MINIMAP_LABEL_HEIGHT,
   MINIMAP_RANGE_HEIGHT,
@@ -48,6 +50,11 @@ const FONT_STACK =
 
 /** Monospace stack for the sequence ruler. No webfont: the app fetches nothing. */
 const MONO_STACK = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+
+/**
+ * Height of a tick notch under the minimap's bar, in px.
+ */
+const AXIS_NOTCH_HEIGHT = 3;
 
 /** Below this width a block gets no label, only its rectangle. */
 const MIN_LABEL_WIDTH = 24;
@@ -254,11 +261,6 @@ function drawBlock(
 
 /**
  * Sequence ruler: one letter per base, drawn only when bases are wide enough.
- *
- * Below ~7 px per base the letters would overlap into an unreadable smear, so
- * the row falls back to a solid band. That is honest — it says "there is
- * sequence here, zoom in to read it" — where crushed glyphs would suggest the
- * component is broken.
  */
 export function drawSequence(
   draw: DrawContext,
@@ -268,10 +270,6 @@ export function drawSequence(
   const { ctx, palette, row, scale } = draw;
   const pxPerBase = scale.width / (scale.end - scale.start + 1);
 
-  // Banded only where there are letters to band. Filling the row's full width
-  // would draw "there is sequence here" across coordinates the payload has no
-  // sequence for — which is exactly the claim the wash over the uncovered
-  // region exists to deny, so the two would contradict each other.
   const band = blockRect(
     scale,
     windowStart,
@@ -284,12 +282,14 @@ export function drawSequence(
   ctx.fillStyle = palette.rowBackground;
   ctx.fillRect(band.x, row.y, band.width, row.height);
 
+  // Below ~7 px per base the letters would overlap
   if (pxPerBase < 7) return;
 
   ctx.fillStyle = palette.sequenceText;
   ctx.font = `${Math.min(row.height - 4, 12)}px ${MONO_STACK}`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+  const Y_OFFSET = 1.2;
 
   for (let bp = scale.start; bp <= scale.end; bp += 1) {
     const index = bp - windowStart;
@@ -299,7 +299,7 @@ export function drawSequence(
     ctx.fillText(
       sequence[index],
       bpToPx(scale, bp) + pxPerBase / 2,
-      row.y + row.height / 2
+      row.y + row.height / 2 + Y_OFFSET
     );
   }
 }
@@ -431,7 +431,17 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
     ctx.fillRect(viewportX, barTop, rect.width, barHeight);
     ctx.strokeStyle = palette.minimapWindow;
     ctx.lineWidth = 1;
-    ctx.strokeRect(viewportX + 0.5, barTop + 0.5, rect.width, barHeight - 1);
+    // Inset by a pixel on both axes, which is what keeps the 1 px stroke on
+    // the fill's own edges. Without it the right edge is centred a pixel past
+    // the fill, and `bandX` can put the band flush against the plot's right
+    // side — so at the end of the axis that edge falls outside the canvas and
+    // the band loses its border entirely.
+    ctx.strokeRect(
+      viewportX + 0.5,
+      barTop + 0.5,
+      rect.width - 1,
+      barHeight - 1
+    );
   }
 
   ctx.font = `10px ${FONT_STACK}`;
@@ -439,7 +449,9 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
   // The band's range, captioned above it and centred on it, so the number
   // travels with the thing it describes rather than living only in the header.
   if (rect && viewportX !== null && rangeHeight > 0) {
-    const label = formatRange(scale.start, scale.end);
+    const label = `${formatRange(scale.start, scale.end)} · ${formatSpan(
+      scale.end - scale.start + 1
+    )}`;
     const width = ctx.measureText(label).width;
     const center = viewportX + rect.width / 2;
 
@@ -463,10 +475,29 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
     6
   );
 
+  const ticks = ticksFor(content.extent.start, content.extent.end, interval);
+  const axisY = barTop + barHeight + MINIMAP_AXIS_GAP;
+
+  // A rule under the bar with a notch at each label
+  ctx.strokeStyle = palette.axis;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, axisY + 0.5);
+  ctx.lineTo(scale.width, axisY + 0.5);
+
+  ticks.forEach((bp) => {
+    const x = bpToPx(extent, bp);
+
+    ctx.moveTo(x, axisY + 0.5);
+    ctx.lineTo(x, axisY + AXIS_NOTCH_HEIGHT + 0.5);
+  });
+
+  ctx.stroke();
+
   ctx.fillStyle = palette.axisText;
   ctx.textBaseline = "top";
 
-  ticksFor(content.extent.start, content.extent.end, interval).forEach((bp) => {
+  ticks.forEach((bp) => {
     const x = bpToPx(extent, bp);
     const label = formatTick(bp, interval);
     const width = ctx.measureText(label).width;
@@ -477,7 +508,7 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
     if (x - width / 2 < 0) ctx.textAlign = "left";
     else if (x + width / 2 > scale.width) ctx.textAlign = "right";
 
-    ctx.fillText(label, x, barTop + barHeight + 3);
+    ctx.fillText(label, x, axisY + AXIS_NOTCH_HEIGHT + 2);
   });
 }
 

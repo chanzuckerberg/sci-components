@@ -241,14 +241,30 @@ export const MINIMAP_BAR_HEIGHT = { comfortable: 24, compact: 12 };
 export const MINIMAP_RANGE_HEIGHT = { comfortable: 14, compact: 0 };
 
 /**
- * Space under the minimap's bar for its own tick labels, per density.
+ * Gap between the minimap's bar and the tick axis under it, in px.
+ *
+ * The rule would otherwise sit flush against the bar and read as part of it
+ * rather than as a scale beneath it. Only applies where an axis is drawn, so
+ * there is no compact value — compact reserves no label band at all.
+ *
+ * Part of the budget `MINIMAP_LABEL_HEIGHT` has to cover, which is why the two
+ * live together: raising this without raising that would push the labels into
+ * the next section.
+ */
+export const MINIMAP_AXIS_GAP = 8;
+
+/**
+ * Space under the minimap's bar for its tick axis and labels, per density.
  *
  * These are the only coordinates drawn inside the plot. They belong to the
  * extent rather than the visible range, which is the pairing that makes the
  * band readable: the header states where you are, and the bar states what you
  * are inside of. Zero in compact, where a card has no room for either.
+ *
+ * Twenty-four covers `MINIMAP_AXIS_GAP` (8), the notch (3), the gap under it
+ * (2) and a 10 px label, with a pixel to spare.
  */
-export const MINIMAP_LABEL_HEIGHT = { comfortable: 16, compact: 0 };
+export const MINIMAP_LABEL_HEIGHT = { comfortable: 24, compact: 0 };
 
 /**
  * Space under the segments section for its category key, per density.

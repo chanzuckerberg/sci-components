@@ -48,7 +48,6 @@ function buildWindow(options: {
     },
   ];
 
-  // Segments tile the window, as the pipeline emits them.
   const segments: SegmentBlock[] = [
     {
       category: "+CDS",

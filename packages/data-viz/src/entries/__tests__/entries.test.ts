@@ -14,8 +14,6 @@ import * as stackedBarChart from "../StackedBarChart";
 /** Every entry, with the barrel exports each one is responsible for. */
 const ENTRIES = [
   {
-    // `GenomeTrack` re-exports `MIN_SPAN`, `TEST_IDS` and the hit-test id
-    // helpers, all of which the barrel also carries.
     exports: genomeTrack,
     name: "GenomeTrack",
   },

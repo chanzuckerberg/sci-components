@@ -85,15 +85,6 @@ const DEFAULT_ARGS = {
 /**
  * The locus from the designs: `fixX` in E. coli K-12, 289 bp. Drag to pan,
  * scroll to zoom, click a block to select it.
- *
- * Two of the fixture's eight traces carry a description and the rest read
- * "Feature 13492", which is the coverage the knowledge base actually has — and
- * for a checkpoint whose description pipeline has not run, every row reads that
- * way. The layout has to survive it, so the fixture does not pretend otherwise.
- *
- * Bar heights are normalized per trace, not across the stack, so a weak
- * feature's shape stays legible. The consequence is that heights cannot be
- * compared between rows; the tooltip carries the absolute value.
  */
 export const Default = {
   args: DEFAULT_ARGS,
@@ -102,10 +93,6 @@ export const Default = {
 /**
  * The same window with navigation pinned to the payload, which is what
  * `navigationMargin={0}` does.
- *
- * The viewport cannot leave the data at all, so nothing is ever washed out —
- * and a re-fetch that narrows the window traps the user inside it. Right for a
- * static embed that will never fetch again, wrong for anything interactive.
  */
 export const PinnedToThePayload = {
   args: { ...DEFAULT_ARGS, navigationMargin: 0 },
@@ -114,11 +101,6 @@ export const PinnedToThePayload = {
 /**
  * A deployment that cannot produce an overview: `overview` is null and
  * `caps.overview_available` is false.
- *
- * The minimap falls back to spanning the payload's own window, and the viewport
- * cannot leave it — nothing in the payload says what is out there, so claiming
- * a chromosome would be inventing one. This is also exactly how the row behaved
- * before it spanned chromosomes.
  */
 export const WithoutOverview = {
   args: { ...DEFAULT_ARGS, data: NO_OVERVIEW_TRACK_DATA },
@@ -126,26 +108,13 @@ export const WithoutOverview = {
 
 /**
  * A re-fetch in flight, with the previous window still on screen.
- *
- * The counterpart to `Loading`, and the distinction matters: a shell that
- * fetches a finer stride on zoom does so on every wheel notch, so replacing the
- * plot with a skeleton would make it flicker. The header keeps reporting the
- * resolution of the data actually drawn rather than the one being fetched —
- * claiming the finer stride early would overstate the precision on screen.
  */
 export const Refreshing = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA, refreshing: true },
 };
 
 /**
- * A 40 kb window, wide enough that the server pools the trace: `bins.stride`
- * climbs above 1 and the sequence comes back null. Every point is a max over
- * `stride` bases, so a single-base peak survives rather than being averaged
- * away.
- *
- * The header states the stride as well as the span, since zooming in here
- * magnifies bins rather than sharpening them — the resolution is fixed by
- * whoever fetched the window, not by the current viewport.
+ * A 40 kb window, wide enough that the server pools the trace.
  */
 export const PooledWindow = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA },

@@ -447,7 +447,7 @@ describe("<GenomeTrack />", () => {
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
   });
 
-  it("reports the controlled viewport, not the payload window, in the header", () => {
+  it("reports the payload's segment in the header, not the viewport", () => {
     render(
       <GenomeTrack
         data={DEFAULT_TRACK_DATA}
@@ -455,9 +455,34 @@ describe("<GenomeTrack />", () => {
       />
     );
 
+    // The header names the segment the payload covers and how long it is, so
+    // it does not change as the user pans within it.
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
+      "45,462–45,750 · 289 bp"
+    );
+    expect(screen.getByTestId(TEST_IDS.range)).not.toHaveTextContent(
       "45,500–45,600"
     );
+  });
+
+  /**
+   * The visible range is still reachable without the canvas.
+   *
+   * It moved out of the header and into the minimap's band caption, which is
+   * canvas and therefore invisible to a screen reader — so the plot's
+   * accessible name is what carries it now.
+   */
+  it("names the visible range on the plot itself", () => {
+    render(
+      <GenomeTrack
+        data={DEFAULT_TRACK_DATA}
+        viewport={{ end: 45_600, start: 45_500 }}
+      />
+    );
+
+    expect(
+      screen.getByRole("img", { name: /45,500–45,600/ })
+    ).toBeInTheDocument();
   });
 
   /**
@@ -475,7 +500,7 @@ describe("<GenomeTrack />", () => {
     );
 
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
-      "56,928–56,951 · 24 bp · 21 bp/point"
+      "45,000–85,000 · 40 kb · 21 bp/point"
     );
   });
 
@@ -826,7 +851,7 @@ describe("re-fetching on zoom", () => {
     );
   });
 
-  it("states which part of the viewport is loaded once it leaves the payload", () => {
+  it("still states the loaded segment once the viewport leaves it", () => {
     const { locus } = DEFAULT_TRACK_DATA;
 
     render(
@@ -836,10 +861,12 @@ describe("re-fetching on zoom", () => {
       />
     );
 
-    // The wash and the minimap's outline say this visually, and both are
-    // canvas — so without this the fact is unavailable to a screen reader.
+    // The wash and the minimap's band say this visually and both are canvas,
+    // so the header is what makes it available to a screen reader. It names
+    // the segment unconditionally, which covers the case where the viewport
+    // has run past it as well as the case where it has not.
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
-      `${formatRange(locus.start, locus.end)} loaded`
+      formatRange(locus.start, locus.end)
     );
   });
 

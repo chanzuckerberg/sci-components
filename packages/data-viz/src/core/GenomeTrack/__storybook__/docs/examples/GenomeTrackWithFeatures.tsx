@@ -1,10 +1,5 @@
 // The features row: one labelled row per trace, each a bar per bin.
 //
-// Two of the four features below carry a description and two do not, which is
-// the coverage the knowledge base actually has. The undescribed rows fall back
-// to "Feature 13492" — the common case, not an edge case, and the reason the
-// row reserves the same space either way.
-//
 // Bar heights are normalized per trace, so every row uses its full height and a
 // weak feature stays legible. The cost is that heights cannot be compared
 // between rows; hover a bar for the absolute value.
@@ -99,10 +94,7 @@ const FEATURES: FeatureTrace[] = [
 ];
 
 /**
- * Descriptions for two of the four. Keyed by `String(feature_id)`, and absent
- * for the rest — the endpoint that ranks a segment's features returns
- * `description: null` until the knowledge-base pipeline has run against that
- * checkpoint, so most rows look like the bare ones here.
+ * Descriptions for two of the four. Keyed by `String(feature_id)`.
  */
 const FEATURE_NOTES: Record<string, FeatureNote> = {
   "12305": {

@@ -2,7 +2,7 @@
 // and the visible range banded inside it.
 //
 // Three ranges, and telling them apart is the point of the row. The bar is the
-// chromosome, with its pooled activation summary inside it. The outline is the
+// chromosome. The outline is the
 // 289 bp this payload actually holds — a hair's width of 4.6 Mb. The filled
 // band is the viewport, which opens on a 60 bp slice of that.
 //
@@ -33,21 +33,8 @@ const SPAN = END - START + 1;
 const CHROM_LENGTH = 4641652;
 
 // A thousand bins across the chromosome, which is the shape the real endpoint
-// returns regardless of how long the chromosome is. Generated rather than
-// inlined for the obvious reason; a real payload carries the numbers.
+// returns regardless of how long the chromosome is.
 const OVERVIEW_BINS = 1000;
-const OVERVIEW_VALUES = Array.from({ length: OVERVIEW_BINS }, (_, index) => {
-  const position = index / OVERVIEW_BINS;
-  // A few dense regions over a quiet floor, including one on this window, so
-  // the band lands somewhere the eye has a reason to look.
-  const humps = [START / CHROM_LENGTH, 0.28, 0.42, 0.71, 0.88];
-  const signal = humps.reduce(
-    (total, center) => total + Math.exp(-(((position - center) / 0.015) ** 2)),
-    0
-  );
-
-  return Number(Math.min(signal, 1).toFixed(3));
-});
 
 const ANNOTATIONS: AnnotationBlock[] = [
   {
@@ -175,10 +162,6 @@ const DATA: GenomeTrackData = {
   // than one chromosome those differ, and using the genome length would draw
   // the window in the wrong place on a bar of the wrong size.
   overview: {
-    bands: [
-      { end: 23208, kind: "origin", label: "oriC", start: 1 },
-      { end: 2459875, kind: "terminus", label: "ter", start: 2367243 },
-    ],
     bins: {
       end: CHROM_LENGTH,
       n_bins: OVERVIEW_BINS,
@@ -187,7 +170,6 @@ const DATA: GenomeTrackData = {
     },
     chrom: "NC_000913.3",
     chrom_length: CHROM_LENGTH,
-    values: OVERVIEW_VALUES,
   },
   pinned: [],
   sae: {

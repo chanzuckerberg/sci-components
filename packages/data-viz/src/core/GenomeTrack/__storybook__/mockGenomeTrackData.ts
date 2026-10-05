@@ -10,38 +10,6 @@ import {
 } from "../GenomeTrack.types";
 
 /**
- * Synthetic `GenomeTrackData` for local development, stories, and tests.
- *
- * **This is mock data. It is not science and must never reach a user.** It
- * lives under `__storybook__` so it is excluded from the published bundle, and
- * every generated payload carries `sae: "mock-sae"` so a payload that somehow
- * escapes is identifiable at a glance.
- *
- * It exists because the real payload comes from an MCP tool over precomputed
- * SAE activation caches that are tens of gigabytes and not yet in S3. Waiting
- * for that data would block every rendering decision in the component. What the
- * renderer actually needs to be exercised is structural: overlapping intervals,
- * stranded blocks, pooled traces whose peaks land inside particular segments,
- * missing annotations, and truncation flags. All of that can be generated.
- *
- * Three properties make it useful rather than merely present:
- *
- * 1. **Deterministic.** A seeded PRNG, so the same seed gives byte-identical
- *    output on every machine and every run. Storybook snapshots and visual
- *    regression would be useless otherwise, and a flaky fixture is worse than
- *    no fixture.
- * 2. **Structurally faithful.** Coordinates are 1-based inclusive, segments
- *    tile the window contiguously and exhaustively the way the real
- *    segmentation pipeline emits them, and activation is correlated with
- *    segment boundaries rather than being noise — so the picture looks like
- *    something a reviewer can judge.
- * 3. **Honest about coverage.** Feature descriptions are present on roughly 5%
- *    of features, matching the real knowledge base. Most rows say
- *    "Feature 13492" and nothing else, which is the case the design has to
- *    handle and which a fixture with pretty labels everywhere would hide.
- */
-
-/**
  * mulberry32. Small, fast, and good enough for shaping test data — chosen for
  * being reproducible across engines, which `Math.random` is not.
  */
@@ -90,11 +58,6 @@ const PRODUCTS = [
   "Tetraacyldisaccharide kinase",
 ];
 
-/**
- * Feature descriptions for the ~5% of features the knowledge base covers.
- * Deliberately domain-plausible, because the design's row titles are this long
- * and the truncation behaviour has to be exercised.
- */
 const FEATURE_DESCRIPTIONS = [
   "ATP-binding cassette (ABC) transporter",
   "Metal-binding and coordination sites",
@@ -112,19 +75,6 @@ const CLUSTER_LABELS = [
   "Membrane architecture",
 ];
 
-/**
- * The segmentation's full category enum, most common first.
- *
- * Stranded, as the pipeline's `palette.py` names them: `+CDS` and `-CDS` are
- * the same category on opposite strands, and the component gives them one hue
- * and distinguishes the strand with a diagonal stripe. Nine distinct bases
- * across fifteen names, so the ramp is spent on categories rather than twice
- * over on strand.
- *
- * Ordering is the server's job in a real payload — it knows the global
- * frequencies — so this is a plausible prokaryote ordering rather than a
- * measured one.
- */
 const SEGMENT_CATEGORIES = [
   "+CDS",
   "-CDS",
@@ -143,15 +93,6 @@ const SEGMENT_CATEGORIES = [
   "unknown",
 ];
 
-/**
- * The categories a window actually contains, a prefix of the enum.
- *
- * Deliberately fewer than the enum, and deliberately including both strands of
- * two categories: a real window holds a handful of what exists, and the key
- * lists only those. A fixture using every category would hide the two
- * properties that matter — that a category keeps its hue whether or not its
- * neighbours are present, and that the two strands share one.
- */
 const CATEGORIES = SEGMENT_CATEGORIES.slice(0, 6);
 
 export interface MockGenomeTrackOptions {
@@ -175,11 +116,6 @@ export interface MockGenomeTrackOptions {
   maxPoints?: number;
   /**
    * Include the chromosome-scale overview the minimap spans.
-   *
-   * False emits `overview: null` with `overview_available: false`, which is the
-   * "this deployment cannot draw a minimap" case — distinct from the null that
-   * means "unchanged, you already have it". Without it the minimap falls back
-   * to the payload's own window and the viewport cannot leave it.
    * @default true
    */
   withOverview?: boolean;
@@ -201,10 +137,6 @@ function makeBins(start: number, end: number, maxPoints: number): BinAxis {
 
 /**
  * Contiguous segments tiling the window.
- *
- * The real pipeline partitions a chromosome exhaustively — segments abut, never
- * overlap, and leave no gaps — so the mock does too. A fixture with gaps would
- * let a renderer bug that drops abutting edges pass unnoticed.
  */
 function makeSegments(
   random: () => number,
@@ -241,10 +173,6 @@ function makeSegments(
         ? GENE_STEMS[Math.floor(random() * GENE_STEMS.length)]
         : undefined,
       start: cursor,
-      // Segments come from an unstranded signal, so they are always ".". The
-      // strand in the design's segment row comes from the annotation, not the
-      // segment, and getting this wrong in a fixture would teach the renderer
-      // to draw arrowheads it should not.
       strand: ".",
     });
 
@@ -258,23 +186,6 @@ function makeSegments(
 /**
  * Reference annotations: a few genes with intergenic space between them, some
  * of them overlapping.
- *
- * Unlike segments these do *not* tile — real annotation coverage is patchy, and
- * intergenic regions carry much of the SAE signal, so a fixture that covers the
- * window end to end would hide the case the science cares about.
- *
- * They also overlap, in both of the ways a GFF does, because the annotations
- * row packs them into lanes and a fixture that never overlaps would exercise
- * exactly one lane:
- *
- * - **Partial overlap**, where one gene runs into the next. Common in bacteria
- *   and near-universal in phage genomes. Draws wrong in a flat row, but leaves
- *   `end` in ascending order, so the hit-test survives it.
- * - **Nesting**, where a short feature sits entirely inside a long one — a tRNA
- *   inside a CDS. This is the one that breaks a binary search over `end`, and
- *   it is the reason a lane is guaranteed not to nest. A fixture with only
- *   partial overlaps would let that regress unnoticed, so one is inserted
- *   unconditionally rather than left to the PRNG.
  */
 function makeAnnotations(
   random: () => number,
@@ -318,8 +229,7 @@ function makeAnnotations(
   const host = annotations[0];
 
   // A tRNA nested inside the first gene, positioned off its middle so it clears
-  // both ends and is a strict subset. Opposite strand to its host, which is the
-  // usual arrangement and gives the lanes two arrow directions to draw.
+  // both ends and is a strict subset.
   if (host && host.end - host.start > 40) {
     const hostLength = host.end - host.start + 1;
     const nestedStart = host.start + Math.round(hostLength * 0.45);
@@ -336,17 +246,11 @@ function makeAnnotations(
     });
   }
 
-  // Start order is the contract the server keeps and the packing depends on, so
-  // the inserted block is sorted back into place rather than left at the end.
   return annotations.sort((a, b) => a.start - b.start);
 }
 
 /**
  * Chromosome-scale overview for the minimap row.
- *
- * Fixed at 1,000 bins regardless of chromosome length, which is the shape the
- * real endpoint promises: human chr 1 and E. coli cost the same bytes, and the
- * stride comes out at ~4.6 kb for this genome.
  */
 function makeOverview(chrom: string, chromLength: number): MinimapOverview {
   const nBins = 1_000;
@@ -361,17 +265,6 @@ function makeOverview(chrom: string, chromLength: number): MinimapOverview {
 
 /**
  * One feature's activation across the chromosome, for the minimap.
- *
- * Exported because it is fetched per *selection* rather than per payload: a
- * story that lets the user click a feature row has to be able to build the
- * trace for whichever feature was clicked, which is exactly what the shell
- * will do with a real endpoint.
- *
- * Seeded from the feature id, so the same feature always gets the same trace
- * and two different features get visibly different ones. Deliberately sparse —
- * a handful of clusters over a quiet chromosome, which is what distinguishes
- * one feature's trace from a pooled maximum, which lights up almost every
- * bin.
  */
 export function makeFeatureOverview(
   featureId: number,
@@ -394,8 +287,6 @@ export function makeFeatureOverview(
       return total + home.weight * Math.exp(-((distance / 0.012) ** 2));
     }, 0);
 
-    // A low floor rather than zero, since a real trace is never perfectly
-    // silent — but low enough that the clusters are what the eye finds.
     return Number(Math.min(signal + random() * 0.04, 1).toFixed(3));
   });
 
@@ -408,12 +299,6 @@ export function makeFeatureOverview(
 
 /**
  * Activation traces whose peaks land inside segments.
- *
- * Correlating the signal with the segmentation is the point: the real pipeline
- * *derives* segments from where activation changes, so a fixture of independent
- * noise would produce a picture in which the two rows have nothing to do with
- * each other — and a reviewer looking at it could not tell whether the
- * component or the data was wrong.
  */
 function makeFeatures(
   random: () => number,
@@ -422,7 +307,7 @@ function makeFeatures(
   count: number
 ): FeatureTrace[] {
   return Array.from({ length: count }, (_, featureIndex) => {
-    const values = new Array<number>(bins.n_bins).fill(0);
+    const values = Array.from({ length: bins.n_bins }, () => 0);
     // Each feature favours a couple of segments, the way a real feature fires
     // in some contexts and not others.
     const homeCount = 1 + Math.floor(random() * 2);
@@ -455,12 +340,6 @@ function makeFeatures(
   }).sort((a, b) => b.score - a.score);
 }
 
-/**
- * Feature notes at realistic coverage: about one feature in twenty is
- * described. See the class comment — this is the single biggest gap between the
- * designs and the data, so the fixture reproduces it rather than papering over
- * it.
- */
 function makeFeatureNotes(
   random: () => number,
   features: FeatureTrace[]
@@ -468,8 +347,6 @@ function makeFeatureNotes(
   const notes: Record<string, FeatureNote> = {};
 
   features.forEach((feature, index) => {
-    // Always describe the first two so a story can show the labelled case, and
-    // then fall off to ~5% for the rest.
     const described = index < 2 || random() < 0.05;
 
     if (!described) return;
@@ -504,9 +381,6 @@ function makeSequence(random: () => number, length: number): string {
 
 /**
  * Builds one synthetic track payload.
- *
- * Every call with the same options returns the same data, so this is safe to
- * call at module scope for a story fixture or inside a test.
  */
 export function makeMockGenomeTrackData(
   options: MockGenomeTrackOptions = {}

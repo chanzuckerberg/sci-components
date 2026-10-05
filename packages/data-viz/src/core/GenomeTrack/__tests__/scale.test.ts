@@ -9,6 +9,7 @@ import {
   clampViewport,
   createScale,
   panBy,
+  panByBp,
   pxToBp,
   spanOf,
   zoomAt,
@@ -179,6 +180,41 @@ describe("zoomAt", () => {
 
   it("cannot zoom out past the payload window", () => {
     expect(zoomAt(scale, WINDOW, 400, 10)).toEqual(WINDOW);
+  });
+});
+
+/**
+ * The bp form, which is what the minimap's band is dragged with.
+ *
+ * A drag across the plot converts pixels through the viewport's scale; a drag
+ * of the minimap's band converts them through the chromosome's, where one pixel
+ * is thousands of bases. Only the bp shift is common, so that is where the
+ * clamping lives.
+ */
+describe("panByBp", () => {
+  const viewport = { end: 45_561, start: 45_502 };
+
+  it("shifts the viewport by the base delta, keeping its span", () => {
+    const panned = panByBp(viewport, WINDOW, 120);
+
+    expect(panned.start).toBe(45_622);
+    expect(spanOf(panned)).toBe(spanOf(viewport));
+  });
+
+  it("moves the window the same way the drag went", () => {
+    // Unlike the plot's inverted pan: the band follows the pointer, so a
+    // rightward drag has to move the window right.
+    expect(panByBp(viewport, WINDOW, 500).start).toBeGreaterThan(
+      viewport.start
+    );
+    expect(panByBp(viewport, WINDOW, -500).start).toBeLessThan(viewport.start);
+  });
+
+  it("preserves the span at the boundary instead of squashing it", () => {
+    const panned = panByBp(viewport, WINDOW, -100_000);
+
+    expect(panned.start).toBe(WINDOW.start);
+    expect(spanOf(panned)).toBe(spanOf(viewport));
   });
 });
 

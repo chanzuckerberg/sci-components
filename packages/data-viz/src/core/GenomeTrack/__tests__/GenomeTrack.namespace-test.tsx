@@ -59,7 +59,7 @@ const DATA: GenomeTrackData = {
       peak: 0.819,
       score: 1.42,
       score_kind: "zscore",
-      values: new Array(289).fill(0.1),
+      values: Array.from({ length: 289 }, () => 0.1),
     },
   ],
   locus: {

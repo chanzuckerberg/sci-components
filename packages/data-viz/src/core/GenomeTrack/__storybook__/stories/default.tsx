@@ -13,11 +13,6 @@ import { makeFeatureOverview } from "../mockGenomeTrackData";
 
 /**
  * Story wrapper that owns viewport and selection the way a shell would.
- *
- * The track is controlled for both, so something has to hold them. Doing it
- * here rather than letting the component run uncontrolled is the point: this is
- * the integration a consumer writes, and if it is awkward to write in a story
- * it will be awkward in an app.
  */
 export const GenomeTrack = (props: Args): JSX.Element => {
   const { data, ...rest } = props;
@@ -35,11 +30,6 @@ export const GenomeTrack = (props: Args): JSX.Element => {
    */
   const [ranking, setRanking] = useState<ActivationRanking>("zscore");
 
-  // Storybook swaps `data` between stories and on control changes; a viewport
-  // from the previous payload may describe coordinates the new one does not
-  // contain, so it resets with the locus rather than being clamped into a
-  // window the user never chose.
-  //
   // Depending on the locus fields rather than on `data` is deliberate: `data`
   // is a fresh object on every control change, and depending on it would throw
   // away the user's zoom every time they nudged a row height.
@@ -67,12 +57,19 @@ export const GenomeTrack = (props: Args): JSX.Element => {
     const featureId =
       selection?.kind === "series" ? featureIdFromSeries(selection.id) : null;
 
+    // Only when the payload has a chromosome to span. A shell fetches the
+    // chromosome-wide trace from the same place it got the overview, so a
+    // deployment with no overview has none to give — and synthesising one here
+    // against a default genome length would place its bins megabases outside
+    // the window the bar actually spans, drawing the signal off screen. With
+    // none supplied the component falls back to the feature's window trace,
+    // which is what this case does in a real shell.
     return {
       ...data,
       feature_overview:
-        featureId === null
+        featureId === null || !data.overview
           ? null
-          : makeFeatureOverview(featureId, data.overview?.chrom_length),
+          : makeFeatureOverview(featureId, data.overview.chrom_length),
     };
   }, [data, selection]);
 

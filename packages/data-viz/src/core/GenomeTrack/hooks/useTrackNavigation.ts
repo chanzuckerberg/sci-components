@@ -4,6 +4,7 @@ import {
   RefObject,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -14,7 +15,15 @@ import {
 } from "../GenomeTrack.types";
 import { TrackHit, hitTest, sameHit, selectionForHit } from "../utils/hitTest";
 import { TrackRow, rowAt } from "../utils/layout";
-import { GenomeScale, panBy, spanOf, zoomAt } from "../utils/scale";
+import {
+  GenomeScale,
+  createScale,
+  panBy,
+  panByBp,
+  pxToBp,
+  spanOf,
+  zoomAt,
+} from "../utils/scale";
 
 /**
  * Pan, zoom, hover, and selection.
@@ -47,6 +56,14 @@ export interface UseTrackNavigationOptions {
   navigate: (viewport: GenomeViewport) => void;
   onSelectionChange?: (selection: GenomeSelection | null) => void;
   plotRef: RefObject<HTMLDivElement>;
+  /**
+   * What the minimap's bar spans, which its band is dragged along.
+   *
+   * The plot and the minimap measure in different spaces — the plot in the
+   * viewport, the minimap in the whole extent — so a drag of the band converts
+   * pixels through this rather than through `scale`.
+   */
+  extent: GenomeViewport;
   rows: TrackRow[];
   scale: GenomeScale;
   selectedId: string | null;
@@ -76,6 +93,7 @@ export function useTrackNavigation(
     navigate,
     onSelectionChange,
     plotRef,
+    extent,
     rows,
     scale,
     selectedId,
@@ -88,7 +106,18 @@ export function useTrackNavigation(
   // Drag state is a ref, not state: it changes on every pointer move and
   // nothing rendered depends on the intermediate values, so keeping it in state
   // would cost a React pass per frame for no visual difference.
-  const drag = useRef<{ moved: number; startX: number } | null>(null);
+  const drag = useRef<{
+    /** Which space the drag moves in: the plot's viewport, or the minimap's extent. */
+    kind: "minimap" | "plot";
+    moved: number;
+    startX: number;
+  } | null>(null);
+
+  /** The minimap's axis: its bar spans the extent, not the viewport. */
+  const minimapScale = useMemo(
+    () => createScale(extent, scale.width),
+    [extent, scale.width]
+  );
 
   const localX = useCallback(
     (clientX: number): number =>
@@ -110,9 +139,16 @@ export function useTrackNavigation(
         drag.current.moved += Math.abs(deltaX);
 
         if (deltaX !== 0) {
-          // Pan against the drag: dragging right moves the window left, the way
-          // dragging a map does.
-          navigate(panBy(scale, bounds, -deltaX));
+          navigate(
+            drag.current.kind === "minimap"
+              ? // The band follows the pointer, and the window follows the
+                // band. Measured on the minimap's own axis, so one pixel is a
+                // chromosome-scale step rather than a viewport-scale one.
+                panByBp(viewport, bounds, deltaX * minimapScale.bpPerPx)
+              : // Pan against the drag: dragging right moves the window left,
+                // the way dragging a map does.
+                panBy(scale, bounds, -deltaX)
+          );
           drag.current.startX = x;
         }
 
@@ -125,7 +161,7 @@ export function useTrackNavigation(
 
       setHit((previous) => (sameHit(previous, next) ? previous : next));
     },
-    [bounds, data, navigate, plotRef, rows, scale]
+    [bounds, data, minimapScale, navigate, plotRef, rows, scale, viewport]
   );
 
   const onPointerDown = useCallback(
@@ -136,27 +172,41 @@ export function useTrackNavigation(
 
       if (disabled) return;
 
-      /**
-       * A drag beginning on the minimap does nothing at all.
-       *
-       * Panning is inverted by design — the plot moves under the pointer the
-       * way a map does — and on a minimap that would send the window the
-       * opposite way to the box the user is dragging. Doing nothing is worse
-       * than dragging the box and better than moving it backwards; dragging it
-       * properly means treating the minimap as its own control, which is the
-       * work this is holding a place for.
-       */
       const plot = plotRef.current?.getBoundingClientRect();
+      const startX = localX(event.clientX);
+      const onMinimap =
+        rowAt(rows, event.clientY - (plot?.top ?? 0))?.kind === "minimap";
 
-      if (rowAt(rows, event.clientY - (plot?.top ?? 0))?.kind === "minimap") {
+      /**
+       * The minimap is its own control, dragged rather than panned.
+       *
+       * Panning the plot is inverted by design — the view moves under the
+       * pointer the way a map does — and applying that to the minimap would
+       * send the band the opposite way to the pointer holding it. So a drag
+       * that starts on the band moves the band *with* the pointer, and the
+       * window follows it.
+       *
+       * Only from inside the band: the bar is 24 px of whole chromosome, so a
+       * press outside the band is far more likely to be aimed at the row than
+       * at a jump of several megabases.
+       */
+      if (onMinimap) {
+        const bp = pxToBp(minimapScale, startX);
+
+        if (bp < viewport.start || bp > viewport.end) return;
+
+        drag.current = { kind: "minimap", moved: 0, startX };
+        setIsDragging(true);
+        event.currentTarget.setPointerCapture(event.pointerId);
+
         return;
       }
 
-      drag.current = { moved: 0, startX: localX(event.clientX) };
+      drag.current = { kind: "plot", moved: 0, startX };
       setIsDragging(true);
       event.currentTarget.setPointerCapture(event.pointerId);
     },
-    [disabled, localX, plotRef, rows]
+    [disabled, localX, minimapScale, plotRef, rows, viewport]
   );
 
   const onPointerUp = useCallback(

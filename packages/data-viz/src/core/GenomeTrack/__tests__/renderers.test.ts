@@ -11,6 +11,7 @@ import {
 } from "../renderers";
 import { uncoveredRanges } from "../utils/extent";
 import {
+  MINIMAP_AXIS_GAP,
   MINIMAP_BAR_HEIGHT,
   MINIMAP_LABEL_HEIGHT,
   MINIMAP_RANGE_HEIGHT,
@@ -18,9 +19,14 @@ import {
   layoutRows,
 } from "../utils/layout";
 import { TrackPalette } from "../utils/palette";
-import { createScale } from "../utils/scale";
+import { bpToPx, createScale } from "../utils/scale";
 import { segmentPalette } from "../utils/segmentColors";
-import { formatActivation, segmentLabel } from "../utils/format";
+import {
+  formatActivation,
+  segmentLabel,
+  tickInterval,
+  ticksFor,
+} from "../utils/format";
 
 /**
  * The draw passes, exercised against a recording stub context.
@@ -389,6 +395,78 @@ describe("drawMinimap", () => {
     window: BOUNDS,
   };
 
+  /**
+   * The rule under the bar, with a notch at every label.
+   *
+   * The labels are spaced by a round coordinate interval rather than by pixels,
+   * so without a notch a reader has to guess which part of the bar each number
+   * points at. Asserted through the recorded path operations because the notch
+   * positions are the whole point — a rule with no notches, or notches that
+   * drift off the tick coordinates, both still draw something.
+   */
+  describe("tick axis", () => {
+    // Derived from the layout's own constants, so the gap under the bar cannot
+    // change in one place and be asserted at the old offset here.
+    const AXIS_Y =
+      30 +
+      MINIMAP_RANGE_HEIGHT.comfortable +
+      MINIMAP_BAR_HEIGHT.comfortable +
+      MINIMAP_AXIS_GAP;
+
+    it("rules under the bar and notches each tick", () => {
+      const { draw, recorder } = makeDraw({ row: MINIMAP_ROW });
+
+      drawMinimap(draw, NO_OVERVIEW);
+
+      const moves = recorder.calls.filter((call) => call.op === "moveTo");
+      const lines = recorder.calls.filter((call) => call.op === "lineTo");
+      const ticks = ticksFor(
+        NO_OVERVIEW.extent.start,
+        NO_OVERVIEW.extent.end,
+        tickInterval(NO_OVERVIEW.extent.end - NO_OVERVIEW.extent.start + 1, 6)
+      );
+
+      // One horizontal rule plus one notch per tick, in a single stroked path.
+      expect(ticks.length).toBeGreaterThan(1);
+      expect(moves).toHaveLength(ticks.length + 1);
+      expect(lines).toHaveLength(ticks.length + 1);
+      expect(
+        recorder.calls.filter((call) => call.op === "stroke")
+      ).toHaveLength(1);
+
+      // The rule spans the plot, at the bar's lower edge.
+      expect(moves[0].args[0]).toBe(0);
+      expect(lines[0].args[0]).toBe(WIDTH);
+      expect(moves[0].args[1]).toBe(AXIS_Y + 0.5);
+
+      // Every notch hangs below the rule rather than above it.
+      moves.slice(1).forEach((move, index) => {
+        expect(move.args[1]).toBe(AXIS_Y + 0.5);
+        expect(lines[index + 1].args[1]).toBeGreaterThan(AXIS_Y + 0.5);
+        // And sits on its own tick's x, not the rule's.
+        expect(lines[index + 1].args[0]).toBe(move.args[0]);
+      });
+
+      // Inside the plot, with the ends allowed to reach the rule's ends.
+      moves.slice(1).forEach((move) => {
+        expect(move.args[0]).toBeGreaterThanOrEqual(0);
+        expect(move.args[0]).toBeLessThanOrEqual(WIDTH);
+      });
+    });
+
+    it("draws no axis in compact, which reserves no room for one", () => {
+      const { draw, recorder } = makeDraw({
+        density: "compact",
+        row: minimapRow("compact"),
+      });
+
+      drawMinimap(draw, NO_OVERVIEW);
+
+      expect(recorder.calls.filter((call) => call.op === "moveTo")).toEqual([]);
+      expect(recorder.texts).toEqual([]);
+    });
+  });
+
   /** The viewport band: the last `fillRect` the pass makes. */
   function windowRect(recorder: ReturnType<typeof createStubContext>) {
     const rects = recorder.calls.filter((call) => call.op === "fillRect");
@@ -456,7 +534,7 @@ describe("drawMinimap", () => {
     expect(box.x + box.width).toBeLessThanOrEqual(WIDTH);
   });
 
-  it("captions the band with the visible range", () => {
+  it("captions the band with the visible range and how much is on screen", () => {
     const { draw, recorder } = makeDraw({
       row: MINIMAP_ROW,
       scale: createScale({ end: 45_560, start: 45_500 }, WIDTH),
@@ -464,9 +542,38 @@ describe("drawMinimap", () => {
 
     drawMinimap(draw, NO_OVERVIEW);
 
-    expect(recorder.texts.some((label) => label.text === "45,500–45,560")).toBe(
-      true
-    );
+    // The bp count sits here rather than in the header, which names the
+    // segment: this caption is the one that travels with the band, so it is
+    // where "how much of it you are looking at" belongs.
+    expect(
+      recorder.texts.some((label) => label.text === "45,500–45,560 · 61 bp")
+    ).toBe(true);
+  });
+
+  /**
+   * The band keeps all four borders at the end of the axis.
+   *
+   * `bandX` holds the band inside the plot, so panning to the chromosome's end
+   * puts its right edge exactly on the plot's. A stroke centred a pixel past
+   * the fill then falls outside the canvas and that border silently vanishes,
+   * leaving a band that looks open on one side.
+   */
+  it("keeps the band's border inside the plot at the end of the axis", () => {
+    const { draw, recorder } = makeDraw({
+      row: MINIMAP_ROW,
+      // The last slice of the extent, so the band is flush right.
+      scale: createScale({ end: BOUNDS.end, start: BOUNDS.end - 19 }, WIDTH),
+    });
+
+    drawMinimap(draw, NO_OVERVIEW);
+
+    const stroke = recorder.calls.find((call) => call.op === "strokeRect");
+    const [x, , width] = stroke?.args ?? [];
+
+    expect(stroke).toBeDefined();
+    // Both vertical edges land on a device pixel column the canvas has.
+    expect(x).toBeGreaterThanOrEqual(0.5);
+    expect(x + width).toBeLessThanOrEqual(WIDTH - 0.5);
   });
 
   it("keeps the caption on screen when the band is against an edge", () => {
@@ -600,6 +707,51 @@ describe("drawMinimap", () => {
       expect(
         recorder.calls.filter((call) => call.op === "fillRect")
       ).toHaveLength(2 + firing);
+    });
+
+    /**
+     * A window-scoped trace lands on the window's slice of the bar.
+     *
+     * Selecting a feature always puts its signal on the minimap: with no
+     * chromosome-wide trace fetched, the component falls back to the feature's
+     * own window trace. That only tells the truth if the renderer places it by
+     * its bin axis rather than stretching it across the bar — otherwise a few
+     * hundred bases of activation would be drawn as though it spanned megabases.
+     */
+    it("places a window-scoped trace over the window, not the whole bar", () => {
+      const { draw, recorder } = makeDraw({ row: MINIMAP_ROW });
+      const windowBins = {
+        end: BOUNDS.end,
+        n_bins: 40,
+        start: BOUNDS.start,
+        stride: Math.ceil((BOUNDS.end - BOUNDS.start + 1) / 40),
+      };
+
+      drawMinimap(draw, {
+        ...CHROMOSOME,
+        feature: {
+          bins: windowBins,
+          feature_id: 13_492,
+          values: Array.from({ length: windowBins.n_bins }, () => 1),
+        },
+      });
+
+      // The track and the band are the first two fills; the rest are the trace.
+      const columns = recorder.calls
+        .filter((call) => call.op === "fillRect")
+        .slice(2)
+        .map((call) => call.args[0] as number);
+
+      expect(columns).toHaveLength(windowBins.n_bins);
+
+      // Every column sits inside the window's own pixels, which at chromosome
+      // scale is a sliver near the left edge rather than the whole width.
+      const left = bpToPx(createScale(CHROMOSOME.extent, WIDTH), BOUNDS.start);
+      const right = bpToPx(createScale(CHROMOSOME.extent, WIDTH), BOUNDS.end);
+
+      expect(Math.min(...columns)).toBeGreaterThanOrEqual(Math.floor(left));
+      expect(Math.max(...columns)).toBeLessThanOrEqual(Math.ceil(right) + 1);
+      expect(right - left).toBeLessThan(WIDTH / 2);
     });
 
     it("labels its ticks across the chromosome, not the window", () => {

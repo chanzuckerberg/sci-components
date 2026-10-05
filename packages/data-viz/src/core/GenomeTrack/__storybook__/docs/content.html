@@ -219,13 +219,7 @@
 <p>
   <code>overview</code> is fixed at a thousand bins regardless of chromosome
   length, so human chr 1 and <em>E. coli</em> cost the same bytes, and it is
-  fetched once per accession rather than per window. A re-fetch that omits it
-  means "unchanged, you already have it", which
-  <code>caps.overview_available</code> distinguishes from "this deployment
-  cannot draw one" — the component retains the last one it saw rather than
-  dropping the minimap on the user's first zoom. Retention is keyed on accession
-  and chromosome and dropped when either changes, since
-  <code>chrom_length</code> is also the limit of navigation.
+  fetched once per accession rather than per window.
 </p>
 <div
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
