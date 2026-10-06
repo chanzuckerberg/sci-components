@@ -21,18 +21,8 @@ export const GenomeTrack = (props: Args): JSX.Element => {
     undefined
   );
   const [selection, setSelection] = useState<GenomeSelection | null>(null);
-  /**
-   * The feature ranking, held here because it is a fetch parameter.
-   *
-   * A real shell would pass this as `rank_by` and re-fetch, so the rows would
-   * come back reordered. The fixture is static, so here the label changes and
-   * the rows do not — which is the one way this story is not the real thing.
-   */
   const [ranking, setRanking] = useState<ActivationRanking>("zscore");
 
-  // Depending on the locus fields rather than on `data` is deliberate: `data`
-  // is a fresh object on every control change, and depending on it would throw
-  // away the user's zoom every time they nudged a row height.
   useEffect(() => {
     setViewport(
       data ? { end: data.locus.end, start: data.locus.start } : undefined
@@ -41,29 +31,12 @@ export const GenomeTrack = (props: Args): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.locus.start, data?.locus.end, data?.locus.accession]);
 
-  /**
-   * The selected feature's chromosome-wide trace, built on selection.
-   *
-   * This is the shell's job, not the component's: a `"series"` selection names
-   * a feature, and the shell fetches that feature's whole-chromosome
-   * activation and hands it back as `feature_overview`. Here the fixture stands
-   * in for the endpoint, but the shape of the integration is the real one —
-   * including that the trace arrives *after* the selection rather than with the
-   * payload, which is why the component matches `feature_id` before drawing it.
-   */
   const withFeatureOverview = useMemo(() => {
     if (!data) return data;
 
     const featureId =
       selection?.kind === "series" ? featureIdFromSeries(selection.id) : null;
 
-    // Only when the payload has a chromosome to span. A shell fetches the
-    // chromosome-wide trace from the same place it got the overview, so a
-    // deployment with no overview has none to give — and synthesising one here
-    // against a default genome length would place its bins megabases outside
-    // the window the bar actually spans, drawing the signal off screen. With
-    // none supplied the component falls back to the feature's window trace,
-    // which is what this case does in a real shell.
     return {
       ...data,
       feature_overview:

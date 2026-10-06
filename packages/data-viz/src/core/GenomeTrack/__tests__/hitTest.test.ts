@@ -7,9 +7,7 @@ import { bpToPx, createScale } from "../utils/scale";
 /**
  * Hit-testing has to agree with what was drawn.
  *
- * The renderer and the hit-test read the same layout and the same scale, but
- * nothing in the type system enforces that they stay in step. These tests pin
- * the agreement: a click at the pixel where a block was drawn has to return
+ * A click at the pixel where a block was drawn has to return
  * that block, and a click in a gap has to return nothing rather than the last
  * thing found.
  */
@@ -145,17 +143,6 @@ describe("hitTest", () => {
     });
   });
 
-  /**
-   * Nested annotations, which real GFFs contain — a tRNA inside a CDS — and
-   * which a flat annotation row got wrong twice over.
-   *
-   * Drawn flat, the inner block is painted over by its host and is unreachable
-   * by the pointer. Worse, `firstCandidate` binary-searches on `end`, and
-   * nesting is precisely the case where start order does not imply end order:
-   * the search stepped past the enclosing gene, so hovering the host anywhere
-   * beyond the nested block's end returned nothing at all. Both failures are
-   * properties of putting them in one row, so both are pinned here.
-   */
   it("reaches a nested annotation and its host, with no dead zone between", () => {
     const outer = {
       end: 1000,
@@ -213,12 +200,6 @@ describe("hitTest", () => {
     expect(at(800, nestedLane)).toBeNull();
   });
 
-  /**
-   * The features stack is many rows of one kind, so a y offset is the only
-   * thing that distinguishes them. A hit that resolved by kind would report the
-   * first feature wherever in the stack the pointer was — the failure this
-   * exists to catch.
-   */
   it("reports the trace belonging to the feature row under the pointer", () => {
     const featureLayout = layoutRows(DEFAULT_TRACK_DATA, {
       ...OPTIONS,
@@ -265,10 +246,6 @@ describe("hitTest", () => {
 
 /**
  * What a click on a hit should select.
- *
- * Split out of the pointer handler so it is testable at all: inside the
- * handler it was reachable only through a simulated pointer sequence, and
- * jsdom reports a zero-width plot, so every simulated click missed.
  */
 describe("selectionForHit", () => {
   const annotation = DEFAULT_TRACK_DATA.annotations?.[0];
@@ -297,9 +274,6 @@ describe("selectionForHit", () => {
   };
 
   it("selects a feature row as a series, not a block", () => {
-    // Selecting a features row is how the minimap learns whose activation to
-    // draw across the chromosome, which is the only way to see a feature
-    // outside the loaded window.
     expect(selectionForHit(traceHit, null)).toEqual({
       id: seriesId(feature.feature_id),
       kind: "series",
@@ -319,8 +293,6 @@ describe("selectionForHit", () => {
   });
 
   it("switches directly from one feature to another", () => {
-    // No intermediate null: the shell gets one selection change and fetches
-    // one chromosome trace, rather than clearing the minimap in between.
     expect(selectionForHit(traceHit, seriesId(999))).toEqual({
       id: seriesId(feature.feature_id),
       kind: "series",
@@ -328,8 +300,6 @@ describe("selectionForHit", () => {
   });
 
   it("clears on empty space", () => {
-    // Emitting null rather than nothing is what lets a shell close a detail
-    // surface from here.
     expect(selectionForHit(null, traceHit.id)).toBeNull();
     expect(selectionForHit(null, null)).toBeNull();
   });
@@ -338,20 +308,6 @@ describe("selectionForHit", () => {
 /**
  * The segments row's blocks must be hoverable whatever order the payload lists
  * them in.
- *
- * `blockAt` binary-searches on `end`, so an out-of-order list — two
- * segmentation runs concatenated, or a response sorted by score — makes blocks
- * silently unhoverable while the row still draws perfectly. The layout pass
- * sorts `segmentBlocks` so the search's precondition is established where the
- * row's blocks are chosen, rather than assumed of the payload.
- *
- * Note what this does *not* buy: sorting alone does not survive *nesting*. The
- * forward scan stops at the first block starting after the point, so for a
- * position inside only an enclosing segment it halts on the inner one and
- * reports nothing. That is why annotations are packed into non-overlapping
- * lanes instead of sorted — nesting is normal there (a tRNA inside a CDS) and
- * out of contract here, since the segmentation emits an exhaustive partition.
- * If that ever stops being true, this row needs the lane packer, not a sort.
  */
 describe("segments arriving in an unhelpful order", () => {
   // Named by drawn position, so an assertion reads as "the leftmost block",
@@ -360,11 +316,8 @@ describe("segments arriving in an unhelpful order", () => {
   const SECOND = "seg:second";
   const THIRD = "seg:third";
 
-  // Coordinates inside the fixture's window, which is a few hundred bases wide.
   const { start: windowStart } = DEFAULT_TRACK_DATA.locus;
   const template = DEFAULT_TRACK_DATA.segments[0];
-  // An exhaustive partition, as the pipeline emits — but listed last-first, so
-  // neither `start` nor `end` is ascending as given.
   const disordered = {
     ...DEFAULT_TRACK_DATA,
     segments: [

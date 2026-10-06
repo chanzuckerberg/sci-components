@@ -67,9 +67,7 @@ describe("<GenomeTrack />", () => {
   });
 
   /**
-   * The header is the only place that names the selected feature. The minimap
-   * shows its trace, but a trace is a shape — it does not say whose it is, and
-   * the row that was clicked looks no different from its neighbours.
+   * The header is the only place that names the selected feature.
    */
   describe("the selected feature in the header", () => {
     const first = DEFAULT_TRACK_DATA.features[0];
@@ -126,10 +124,6 @@ describe("<GenomeTrack />", () => {
     });
   });
 
-  /**
-   * The key for the segment colours. Without it the row is coloured and
-   * unreadable — a hue means nothing until something names it.
-   */
   describe("the segment category legend", () => {
     it("lists the categories on screen, and only those", () => {
       render(<GenomeTrack data={DEFAULT_TRACK_DATA} />);
@@ -138,12 +132,8 @@ describe("<GenomeTrack />", () => {
       const present = new Set(
         DEFAULT_TRACK_DATA.segments.map((segment) => segment.category)
       );
-      // Scoped to the legend: the accessible table names categories too, and
-      // an unscoped query matches both.
       const legend = within(screen.getByTestId(TEST_IDS.legend));
 
-      // The fixture's enum is deliberately wider than any one window, so this
-      // is a real distinction rather than a tautology.
       expect(present.size).toBeLessThan(enumerated.length);
 
       enumerated.forEach((category) => {
@@ -152,7 +142,6 @@ describe("<GenomeTrack />", () => {
         if (present.has(category)) {
           expect(found).toBeInTheDocument();
         } else {
-          // A key to colours nothing on screen is using is noise.
           expect(found).not.toBeInTheDocument();
         }
       });
@@ -163,20 +152,10 @@ describe("<GenomeTrack />", () => {
 
       const legend = within(screen.getByTestId(TEST_IDS.legend));
 
-      // Colour is the category and the stripe is the strand, so the key has to
-      // name both forms — collapsing them would leave the stripes unexplained.
       expect(legend.getByText("+CDS")).toBeInTheDocument();
       expect(legend.getByText("-CDS")).toBeInTheDocument();
     });
 
-    /**
-     * The offsets the layout computes are plot-relative, so the key has to be
-     * positioned against the plot. Rendered as a sibling of it instead, `top`
-     * resolves against the root and the header's height shifts the key up onto
-     * the segments row — which is exactly what happened, and what nothing here
-     * noticed, because the y value was asserted and its frame of reference was
-     * not.
-     */
     it("is positioned inside the plot, whose coordinates its top is in", () => {
       render(<GenomeTrack data={DEFAULT_TRACK_DATA} />);
 
@@ -188,8 +167,6 @@ describe("<GenomeTrack />", () => {
     it("takes no pointer events, so it cannot block a drag on the plot", () => {
       render(<GenomeTrack data={DEFAULT_TRACK_DATA} />);
 
-      // It lives inside the interactive plot surface, so it has to be inert or
-      // it would punch a hole in pan and zoom.
       expect(screen.getByTestId(TEST_IDS.legend)).toHaveStyle({
         pointerEvents: "none",
       });
@@ -202,8 +179,6 @@ describe("<GenomeTrack />", () => {
       });
       const segments = rows.find((row) => row.kind === "segments") as TrackRow;
 
-      // Reserved in the layout rather than appended to the track, so the key
-      // is beneath the colours rather than at the foot of everything.
       expect(segmentLegendY).toBe(segments.y + segments.height);
 
       const below = rows.filter((row) => row.y > (segmentLegendY as number));
@@ -216,7 +191,6 @@ describe("<GenomeTrack />", () => {
         <GenomeTrack data={DEFAULT_TRACK_DATA} tracks={["annotations"]} />
       );
 
-      // A key to colours nothing on screen is using explains nothing.
       expect(screen.queryByTestId(TEST_IDS.legend)).not.toBeInTheDocument();
     });
 
@@ -243,11 +217,6 @@ describe("<GenomeTrack />", () => {
     });
   });
 
-  /**
-   * `rank_by` is a tool parameter, not a view option: it changes which features
-   * come back and in what order. So the dropdown reports a request for
-   * different data and changes nothing itself.
-   */
   describe("the feature ranking dropdown", () => {
     it("shows the current ranking under the design's name for it", () => {
       render(
@@ -273,8 +242,6 @@ describe("<GenomeTrack />", () => {
           userEvent.click(screen.getByTestId(RANKING_OPTION_TEST_ID.peak))
         )
         .then(() => {
-          // "Raw" is the label; `peak` is what `rank_by` takes. Sending the
-          // label would be rejected by the tool.
           expect(onRankingChange).toHaveBeenCalledWith("peak");
         });
     });
@@ -292,9 +259,6 @@ describe("<GenomeTrack />", () => {
       await userEvent.click(screen.getByTestId(RANKING_TEST_ID));
       await userEvent.click(screen.getByTestId(RANKING_OPTION_TEST_ID.peak));
 
-      // Controlled with no fallback: the label follows the prop, so it stays
-      // until the shell has actually re-fetched. Flipping it locally would
-      // claim a ranking the rows do not have.
       expect(screen.getByTestId(RANKING_TEST_ID)).toHaveTextContent("Z-Score");
     });
 
@@ -313,7 +277,6 @@ describe("<GenomeTrack />", () => {
     it("is absent when nobody is listening", () => {
       render(<GenomeTrack data={DEFAULT_TRACK_DATA} />);
 
-      // A control that does nothing when used is worse than no control.
       expect(screen.queryByTestId(RANKING_TEST_ID)).not.toBeInTheDocument();
     });
 
@@ -329,15 +292,6 @@ describe("<GenomeTrack />", () => {
       expect(screen.queryByTestId(RANKING_TEST_ID)).not.toBeInTheDocument();
     });
 
-    /**
-     * Whether a control exists must depend on whether a caller is listening,
-     * not on a presentation prop.
-     *
-     * This anchored itself on the features row's `headerHeight`, which
-     * `showRowLabels={false}` drives to zero — so the dropdown disappeared in
-     * exactly the documented compact configuration, while the copy button
-     * beside it survived because it fell back to the row's own height.
-     */
     it("is present when section labels are off", () => {
       render(
         <GenomeTrack
@@ -387,7 +341,6 @@ describe("<GenomeTrack />", () => {
     render(<GenomeTrack data={NO_ANNOTATIONS} />);
 
     expect(screen.getByText(/no annotation coverage/i)).toBeInTheDocument();
-    // The row is dropped rather than drawn empty, so there is no table for it.
     expect(
       screen.queryByRole("table", { name: /Reference annotations/ })
     ).not.toBeInTheDocument();
@@ -465,13 +418,6 @@ describe("<GenomeTrack />", () => {
     );
   });
 
-  /**
-   * The visible range is still reachable without the canvas.
-   *
-   * It moved out of the header and into the minimap's band caption, which is
-   * canvas and therefore invisible to a screen reader — so the plot's
-   * accessible name is what carries it now.
-   */
   it("names the visible range on the plot itself", () => {
     render(
       <GenomeTrack
@@ -485,12 +431,6 @@ describe("<GenomeTrack />", () => {
     ).toBeInTheDocument();
   });
 
-  /**
-   * Zooming a pooled payload magnifies bins rather than sharpening them, and
-   * nothing else on screen distinguishes the two. So the header is the only
-   * place a user can learn that a 24 bp view is drawn from points 21 bases
-   * wide.
-   */
   it("states the pooled resolution in the header", () => {
     render(
       <GenomeTrack
@@ -512,12 +452,6 @@ describe("<GenomeTrack />", () => {
     );
   });
 
-  /**
-   * Feature names are the one label that does not sit on a section's header
-   * line — there is one per trace and only one header — so they are drawn
-   * inside their own rows. They are still DOM text, which is what keeps them
-   * findable by find-in-page and scalable with a reader's font settings.
-   */
   it("renders the feature names as real text, not canvas glyphs", () => {
     const { container } = render(
       <GenomeTrack data={DEFAULT_TRACK_DATA} tracks={["features"]} />
@@ -528,11 +462,6 @@ describe("<GenomeTrack />", () => {
     expect(container).toHaveTextContent(described.label);
   });
 
-  /**
-   * The copy control is the component's only real control, and the one piece a
-   * canvas could not have provided: it needs a tab stop, a focus ring and an
-   * accessible name.
-   */
   describe("the sequence copy control", () => {
     const writeText = vi.fn<(text: string) => Promise<void>>();
 
@@ -575,8 +504,6 @@ describe("<GenomeTrack />", () => {
 
       await chooseCopy(COPY_FULL_TEST_ID);
 
-      // The distinction the menu exists for: a single button had to guess, and
-      // either guess is wrong half the time.
       expect(writeText).toHaveBeenCalledWith(DEFAULT_TRACK_DATA.sequence);
     });
 
@@ -617,9 +544,6 @@ describe("<GenomeTrack />", () => {
 
       const button = screen.getByTestId(COPY_TEST_ID);
 
-      // The states the styling hangs off, and the ones a screen reader needs:
-      // `aria-expanded` is also what keeps the icon indigo while the menu is
-      // open, so it is load-bearing rather than decorative.
       expect(button.tagName).toBe("BUTTON");
       expect(button).toHaveAttribute("aria-haspopup", "menu");
       expect(button).toHaveAttribute("aria-expanded", "false");
@@ -666,9 +590,6 @@ describe("<GenomeTrack />", () => {
 
       await userEvent.click(screen.getByTestId(COPY_TEST_ID));
 
-      // The plot reads a pointer-up it saw no movement on as a click on empty
-      // space and reports `null`. The control has to keep its own events to
-      // itself or copying would close whatever the user had open.
       expect(onSelectionChange).not.toHaveBeenCalled();
     });
 
@@ -684,41 +605,20 @@ describe("<GenomeTrack />", () => {
   it("names the features section once, not once per trace", () => {
     render(<GenomeTrack data={DEFAULT_TRACK_DATA} tracks={["features"]} />);
 
-    // One "Features" heading for the stack. Eight would be the bug that a
-    // a per-row label would produce.
     expect(screen.getAllByText("Features")).toHaveLength(1);
   });
 });
 
-/**
- * Row kinds with consecutive repeats collapsed.
- *
- * Two kinds expand into several rows — features into one per trace,
- * annotations into one per lane — so the raw list of kinds is about packing
- * rather than about order. This is what the `tracks` prop actually promises.
- */
 function sectionKinds(rows: TrackRow[]): TrackKind[] {
   return rows
     .map((row) => row.kind)
     .filter((kind, index, all) => kind !== all[index - 1]);
 }
 
-/**
- * Re-fetching a finer stride on zoom is a shell concern, but it only works if
- * the component survives having its data replaced under the user. These are the
- * component-side preconditions for it.
- */
 describe("re-fetching on zoom", () => {
   /** The plot, which is the element that takes keyboard navigation. */
   const plot = () => screen.getByRole("img", { name: /Genome track/ });
 
-  /**
-   * Focuses the plot and zooms all the way out.
-   *
-   * Twelve notches at the component's own zoom step takes a 289 bp window past
-   * a megabase, so the result is whatever the clamp allows rather than a
-   * partial zoom — which is the thing under test in every caller.
-   */
   async function zoomOutFully(): Promise<void> {
     plot().focus();
 
@@ -737,9 +637,6 @@ describe("re-fetching on zoom", () => {
       />
     );
 
-    // Zooming out repeatedly has to escape the payload's window, or a shell
-    // that re-fetched the zoomed range would have trapped the user inside it —
-    // each zoom-in permanently narrowing the reachable genome.
     await zoomOutFully();
 
     const last = onViewportChange.mock.lastCall?.[0];
@@ -766,10 +663,6 @@ describe("re-fetching on zoom", () => {
     const last = onViewportChange.mock.lastCall?.[0];
     const visible = last.end - last.start + 1;
 
-    // The regression this guards: with navigation reaching the whole
-    // chromosome, twelve notches took a 289 bp payload to a 20 kb view, which
-    // drew every row in a 25 px column surrounded by empty plot. The bound
-    // keeps the loaded data over a third of the width.
     expect(loaded / visible).toBeGreaterThanOrEqual(1 / 3);
     expect(visible).toBeLessThan(loaded * 3.1);
   });
@@ -835,17 +728,12 @@ describe("re-fetching on zoom", () => {
     };
     const last = onViewportChange.mock.lastCall?.[0];
 
-    // Nothing in this payload says what is outside its window, so the track
-    // claims nothing: zooming out stops at the data, as it always did.
     expect(last).toEqual(window);
   });
 
   it("opens at the payload window, not zoomed out to the chromosome", () => {
     render(<GenomeTrack data={DEFAULT_TRACK_DATA} />);
 
-    // The extent is the chromosome but the *viewport* must not be: a caller
-    // handing over one window is asking to see that window, not to see it as a
-    // sliver of 4.6 Mb.
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
       formatRange(DEFAULT_TRACK_DATA.locus.start, DEFAULT_TRACK_DATA.locus.end)
     );
@@ -861,10 +749,6 @@ describe("re-fetching on zoom", () => {
       />
     );
 
-    // The wash and the minimap's band say this visually and both are canvas,
-    // so the header is what makes it available to a screen reader. It names
-    // the segment unconditionally, which covers the case where the viewport
-    // has run past it as well as the case where it has not.
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
       formatRange(locus.start, locus.end)
     );
@@ -879,9 +763,6 @@ describe("re-fetching on zoom", () => {
   it("keeps the data on screen while a re-fetch is in flight", () => {
     render(<GenomeTrack data={DEFAULT_TRACK_DATA} refreshing />);
 
-    // The distinction from `loading`, which is the whole reason the prop
-    // exists: a shell re-fetching on every wheel notch would otherwise blank
-    // the plot each time.
     expect(screen.queryByTestId(TEST_IDS.skeleton)).not.toBeInTheDocument();
     expect(screen.getByTestId(TEST_IDS.progress)).toBeInTheDocument();
     expect(
@@ -900,8 +781,6 @@ describe("re-fetching on zoom", () => {
   it("still prefers the skeleton on a first load", () => {
     render(<GenomeTrack data={null} loading refreshing />);
 
-    // `loading` wins: there is no last good data to keep, so the skeleton is
-    // the honest state even though a fetch is also in flight.
     expect(screen.getByTestId(TEST_IDS.skeleton)).toBeInTheDocument();
     expect(screen.queryByTestId(TEST_IDS.progress)).not.toBeInTheDocument();
   });
@@ -909,17 +788,11 @@ describe("re-fetching on zoom", () => {
   it("reports the resolution of the data on screen, not of the pending fetch", () => {
     render(<GenomeTrack data={POOLED_TRACK_DATA} refreshing />);
 
-    // Claiming the finer stride before its data has landed would overstate the
-    // precision of what the user is looking at.
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
       `${POOLED_TRACK_DATA.bins.stride} bp/point`
     );
   });
 
-  /**
-   * What a window re-fetch looks like on the wire: same chromosome, narrower
-   * window, and `overview` omitted because the shell sent it once already.
-   */
   const refetched = {
     ...DEFAULT_TRACK_DATA,
     caps: { ...DEFAULT_TRACK_DATA.caps, overview_available: true },
@@ -943,11 +816,6 @@ describe("re-fetching on zoom", () => {
     onViewportChange.mockClear();
     await zoomOutFully();
 
-    // Still able to zoom out past the re-fetched window, which is only true if
-    // the overview survived being omitted. Dropping it would collapse the
-    // extent onto the narrow window and trap the user there — the failure the
-    // retention contract exists to prevent, and one that would first appear on
-    // the user's second zoom rather than at load.
     const last = onViewportChange.mock.lastCall?.[0];
 
     expect(last.end - last.start + 1).toBeGreaterThan(
@@ -964,9 +832,6 @@ describe("re-fetching on zoom", () => {
       />
     );
 
-    // A different chromosome with no overview of its own. Serving the previous
-    // one would let the user pan into coordinates this chromosome does not
-    // have, so the retention has to be keyed and dropped.
     const elsewhere = {
       ...refetched,
       caps: { ...refetched.caps, overview_available: false },
@@ -997,9 +862,6 @@ describe("section names", () => {
     );
 
     ["Sequence", "Annotations", "Predicted", "Features"].forEach((name) => {
-      // Exactly one: the annotation lanes and the features stack are several
-      // rows sharing a section, and a name per row would read as several
-      // sections that happen to be adjacent.
       expect(screen.getAllByText(name)).toHaveLength(1);
     });
   });
@@ -1024,21 +886,10 @@ describe("section names", () => {
       showRowLabels: false,
     });
 
-    // The trade the move makes: the plot gets its width back and pays for it in
-    // height, so turning the names off has to actually return the height.
     expect(without.height).toBeLessThan(withLabels.height);
     expect(without.rows[0].y).toBe(0);
   });
 
-  /**
-   * Equal bands with centred contents is what makes the gap between a heading
-   * and its data the same in every section. Sizing sections individually can
-   * only match on one edge.
-   *
-   * The floor is the rule plus the copy control, whose height SDS fixes at
-   * 28 px on `medium` and 24 px on `small` — taller than the text, so the text
-   * is not what sizes the band.
-   */
   it("uses one band height for every named section, big enough for the control", () => {
     const BUTTON = { comfortable: 28, compact: 24 };
 
@@ -1070,10 +921,6 @@ describe("section names", () => {
       tracks: ["sequence", "annotations", "segments", "features"],
     });
 
-    // The property the centring exists for. Each named row's band is the same
-    // height and its name is centred in it, so the distance from name to data
-    // is identical — including in the sequence section, whose band also holds
-    // the copy control.
     const bands = rows
       .filter((row) => row.headerHeight)
       .map((row) => row.headerHeight);
@@ -1097,13 +944,10 @@ describe("section names", () => {
     });
     const [minimap, sequence] = rows;
 
-    // Naming it would restate what the chromosome bar plainly is, and cost a
-    // line of height to do so — so the row starts flush with the plot.
     expect(minimap.label).toBe("");
     expect(minimap.headerHeight).toBe(0);
     expect(minimap.y).toBe(0);
 
-    // The sequence section below it still gets its own line.
     expect(sequence.label).toBe("Sequence");
     expect(sequence.headerHeight).toBe(
       rowLabelHeight("sequence", "comfortable", true)
@@ -1126,8 +970,6 @@ describe("section names", () => {
     });
     const [sequence] = rows;
 
-    // The control is positioned from these two numbers, so a header the layout
-    // did not reserve would put it on top of the letters.
     expect(sequence.headerHeight).toBeGreaterThan(0);
     expect(sequence.y).toBe(sequence.headerHeight);
   });
@@ -1137,14 +979,12 @@ describe("row layout", () => {
   it("drops rows the payload cannot fill", () => {
     const { rows } = layoutRows(NO_ANNOTATIONS, ROW_OPTIONS);
 
-    // `annotations` is null, so the row goes entirely rather than being drawn
-    // blank. The others were asked for and can be filled.
     expect(new Set(rows.map((row) => row.kind))).toEqual(
       new Set(["segments", "features"])
     );
   });
 
-  it("honours the order of the tracks prop", () => {
+  it("honors the order of the tracks prop", () => {
     const { rows } = layoutRows(DEFAULT_TRACK_DATA, {
       ...ROW_OPTIONS,
       tracks: ["sequence", "segments", "annotations"],
@@ -1156,8 +996,6 @@ describe("row layout", () => {
   it("stacks rows from the top without overlapping", () => {
     const { rows } = layoutRows(DEFAULT_TRACK_DATA, ROW_OPTIONS);
 
-    // The first row starts below its own section name, which is the one thing
-    // drawn above it. Flush with the plot would clip the label.
     expect(rows[0].y).toBe(rows[0].headerHeight);
     expect(rows[0].headerHeight).toBeGreaterThan(0);
 
@@ -1176,10 +1014,6 @@ describe("row layout", () => {
   });
 
   it("keeps the minimap row with or without a chromosome overview", () => {
-    // The row is always drawable: with an overview it spans the chromosome,
-    // and without one it falls back to the payload's own window. So neither
-    // `overview` nor `caps.overview_available` has any bearing on whether the
-    // row exists — only on what it spans.
     expect(NO_OVERVIEW_TRACK_DATA.overview).toBeNull();
     expect(NO_OVERVIEW_TRACK_DATA.caps.overview_available).toBe(false);
 
@@ -1211,8 +1045,6 @@ describe("row layout", () => {
       tracks: ["features"],
     });
 
-    // The endpoint returns up to 128 features for a segment, which at this row
-    // height is three thousand pixels of track.
     expect(rows).toHaveLength(3);
   });
 
@@ -1236,9 +1068,6 @@ describe("row layout", () => {
       tracks: ["features"],
     });
 
-    // The fixture describes its first two traces and leaves the rest bare,
-    // matching a knowledge base that covers a few percent of features — and a
-    // checkpoint whose description pipeline has not run covers none.
     const described = Object.keys(DEFAULT_TRACK_DATA.feature_notes).length;
     const bare = rows.filter((row) =>
       /^Feature \d+$/.test(row.traceLabel ?? "")
@@ -1254,8 +1083,6 @@ describe("row layout", () => {
       tracks: ["features"],
     });
 
-    // Forty characters per row does not fit a comparison card, so the names go
-    // and the rows keep only their bars.
     expect(rows.every((row) => row.traceLabel === undefined)).toBe(true);
     expect(rows.every((row) => row.labelInset === 0)).toBe(true);
   });
@@ -1357,11 +1184,6 @@ describe("row layout", () => {
   });
 });
 
-/**
- * The packing is what makes the annotations row correct rather than merely
- * prettier: `hitTest` binary-searches a lane on `end`, which is only valid
- * because a lane cannot contain overlapping blocks.
- */
 describe("packAnnotationLanes", () => {
   const block = (id: string, start: number, end: number) => ({
     end,
@@ -1395,8 +1217,6 @@ describe("packAnnotationLanes", () => {
   });
 
   it("pushes a nested block to the next lane", () => {
-    // The case a flat row hides completely: `inner` is drawn over by `outer`
-    // and, before lanes, was unreachable by the pointer as well.
     const { lanes } = packAnnotationLanes(
       [block("outer", 1, 1000), block("inner", 400, 500)],
       4
@@ -1409,8 +1229,6 @@ describe("packAnnotationLanes", () => {
   });
 
   it("reuses a lane once its last block has ended", () => {
-    // Lane reuse is the whole point of packing rather than one lane per block:
-    // `c` clears `a`, so it goes back on top instead of opening a third lane.
     const { lanes } = packAnnotationLanes(
       [block("a", 1, 100), block("b", 50, 150), block("c", 200, 300)],
       4
@@ -1436,9 +1254,6 @@ describe("packAnnotationLanes", () => {
   });
 
   it("sorts by start rather than trusting the payload's order", () => {
-    // An unsorted payload would not draw badly, it would silently pack
-    // overlapping blocks together and take the hit-test's binary search with
-    // it — so the precondition is established here rather than assumed.
     const { lanes } = packAnnotationLanes(
       [block("late", 400, 500), block("early", 1, 100)],
       4
@@ -1457,8 +1272,6 @@ describe("packAnnotationLanes", () => {
     expect(lanes).toHaveLength(2);
     expect(overflow).toBe(1);
 
-    // The surviving lanes still hold the invariant. Crammed in, `c` would have
-    // broken it.
     expect(lanes.every((lane) => lane.length === 1)).toBe(true);
   });
 

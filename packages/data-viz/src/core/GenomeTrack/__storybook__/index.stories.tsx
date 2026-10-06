@@ -82,10 +82,6 @@ const DEFAULT_ARGS = {
   tracks: ["minimap", "sequence", "annotations", "segments", "features"],
 };
 
-/**
- * The locus from the designs: `fixX` in E. coli K-12, 289 bp. Drag to pan,
- * scroll to zoom, click a block to select it.
- */
 export const Default = {
   args: DEFAULT_ARGS,
 };
@@ -98,17 +94,10 @@ export const PinnedToThePayload = {
   args: { ...DEFAULT_ARGS, navigationMargin: 0 },
 };
 
-/**
- * A deployment that cannot produce an overview: `overview` is null and
- * `caps.overview_available` is false.
- */
 export const WithoutOverview = {
   args: { ...DEFAULT_ARGS, data: NO_OVERVIEW_TRACK_DATA },
 };
 
-/**
- * A re-fetch in flight, with the previous window still on screen.
- */
 export const Refreshing = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA, refreshing: true },
 };
@@ -120,11 +109,6 @@ export const PooledWindow = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA },
 };
 
-/**
- * The in-card variant used by a comparison row: tighter rows, no captions or
- * tick labels, no section names, and navigation off so the card does not
- * capture scroll.
- */
 export const Compact = {
   args: {
     ...DEFAULT_ARGS,
@@ -136,16 +120,10 @@ export const Compact = {
   },
 };
 
-/** Skeleton shown while the app-only fetch is in flight. */
 export const Loading = {
   args: { ...DEFAULT_ARGS, loading: true },
 };
 
-/**
- * A typed error, rendered as a first-class state rather than a toast. The code
- * decides the copy, so a missing activation cache reads differently from a
- * region that was never precomputed.
- */
 export const ErrorState = {
   args: {
     ...DEFAULT_ARGS,
@@ -157,15 +135,10 @@ export const ErrorState = {
   },
 };
 
-/** Nothing loaded yet — the state before a launcher has run. */
 export const Empty = {
   args: { ...DEFAULT_ARGS, data: null },
 };
 
-/**
- * Test story: exercises every row kind at once against a deterministic fixture,
- * which is what the snapshot test renders.
- */
 export const Test = {
   args: {
     ...DEFAULT_ARGS,

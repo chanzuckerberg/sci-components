@@ -8,8 +8,7 @@ import {
  *
  * A fixture that drifts between runs makes every snapshot flaky, and a fixture
  * that violates the wire contract teaches the component to handle data the
- * server will never send. Both failures are worse than having no fixture, so
- * the properties the generator promises are asserted rather than assumed.
+ * server will never send.
  */
 
 describe("makeMockGenomeTrackData", () => {
@@ -76,8 +75,6 @@ describe("makeMockGenomeTrackData", () => {
     const data = makeMockGenomeTrackData();
     const span = data.locus.end - data.locus.start + 1;
 
-    // Union rather than summed length: annotations overlap, so adding up their
-    // lengths can exceed the window while still leaving it full of gaps.
     const bases = new Set<number>();
 
     (data.annotations ?? []).forEach((annotation) => {
@@ -90,9 +87,6 @@ describe("makeMockGenomeTrackData", () => {
   });
 
   it("emits annotations in start order, as the server does", () => {
-    // The packing that lays out the annotation lanes sorts defensively, but a
-    // fixture that arrived unsorted would mean the tests never exercise the
-    // ordered path the real payload takes.
     const { annotations } = makeMockGenomeTrackData();
 
     (annotations ?? []).slice(1).forEach((annotation, index) => {
@@ -120,10 +114,7 @@ describe("makeMockGenomeTrackData", () => {
     expect(overlapping.length).toBeGreaterThan(0);
   });
 
-  it("nests one annotation inside another, which is the case that broke hit-testing", () => {
-    // Partial overlap leaves `end` ascending, so a binary search over it
-    // survives. Nesting does not, and it is the reason a lane is guaranteed
-    // not to contain overlapping blocks.
+  it("nests one annotation inside another", () => {
     const annotations = makeMockGenomeTrackData().annotations ?? [];
     const nested = annotations.filter((annotation, index) =>
       annotations.some(
@@ -140,8 +131,6 @@ describe("makeMockGenomeTrackData", () => {
   it("emits a fixed-size overview regardless of chromosome length", () => {
     const { overview } = makeMockGenomeTrackData();
 
-    // The shape the real endpoint promises: 1,000 bins whether the chromosome
-    // is 4.6 Mb or 250 Mb, so the payload cost does not scale with the genome.
     expect(overview?.bins.n_bins).toBe(1_000);
     expect(overview?.chrom_length).toBe(
       makeMockGenomeTrackData().locus.genome_length
@@ -151,9 +140,6 @@ describe("makeMockGenomeTrackData", () => {
   it("spans the whole chromosome with the overview's bin axis", () => {
     const { overview } = makeMockGenomeTrackData();
 
-    // The minimap maps bin index to chromosome coordinate through this axis,
-    // so an axis that did not start at 1 or cover `chrom_length` would put the
-    // signal in the wrong place along the bar.
     expect(overview?.bins.start).toBe(1);
     expect(overview?.bins.end).toBe(overview?.chrom_length);
     expect(
@@ -164,10 +150,6 @@ describe("makeMockGenomeTrackData", () => {
   it("gives a feature's chromosome trace quiet stretches as well as peaks", () => {
     const { values } = makeFeatureOverview(13_492);
 
-    // A minimap against uniform noise is a solid block, which would hide both
-    // the normalization and the question the row exists to answer. This is the
-    // shape a single feature has, and why it beats a pooled maximum: a max
-    // over eight features is quiet nowhere.
     expect(Math.max(...values)).toBeGreaterThan(0.5);
     expect(values.filter((value) => value < 0.1).length).toBeGreaterThan(
       values.length / 2
@@ -189,15 +171,10 @@ describe("makeMockGenomeTrackData", () => {
     const { bins } = makeFeatureOverview(13_492);
     const { overview } = makeMockGenomeTrackData();
 
-    // The minimap maps bin index to chromosome coordinate through this axis,
-    // so an axis disagreeing with the overview's would place the signal wrong.
     expect(bins).toEqual(overview?.bins);
   });
 
   it("distinguishes an absent overview from an omitted one", () => {
-    // False emits the "this deployment cannot draw a minimap" case: null with
-    // `overview_available` false. That is a different claim from the null a
-    // re-fetch sends, which means "unchanged, you already have it".
     const without = makeMockGenomeTrackData({ withOverview: false });
 
     expect(without.overview).toBeNull();
@@ -223,9 +200,6 @@ describe("makeMockGenomeTrackData", () => {
     const data = makeMockGenomeTrackData({ featureCount: 24 });
     const described = Object.keys(data.feature_notes).length;
 
-    // Two are always described so a story can show the labelled case; the rest
-    // fall off to roughly 5%. Most rows must stay undescribed or the design's
-    // hardest case never appears in Storybook.
     expect(described).toBeGreaterThanOrEqual(2);
     expect(described).toBeLessThan(data.features.length / 2);
   });

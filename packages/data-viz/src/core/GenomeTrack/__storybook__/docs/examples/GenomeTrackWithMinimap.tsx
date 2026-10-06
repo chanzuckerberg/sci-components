@@ -1,21 +1,5 @@
 // The minimap: the whole chromosome as a bar, with the loaded window outlined
 // and the visible range banded inside it.
-//
-// Three ranges, and telling them apart is the point of the row. The bar is the
-// chromosome. The outline is the
-// 289 bp this payload actually holds — a hair's width of 4.6 Mb. The filled
-// band is the viewport, which opens on a 60 bp slice of that.
-//
-// Zoom out and the band leaves the loaded window, so a shell can re-fetch a
-// wider one instead of the user hitting a wall. It stops at the window plus
-// `navigationMargin` times its span, though — unbounded, the loaded slice would
-// compress into a few pixels of empty plot. The coordinates with no data are
-// washed out and ruled at the boundary rather than drawn empty, and the header
-// names the loaded range alongside the visible one.
-//
-// The ticks beneath the bar are the chromosome's coordinates, not the
-// viewport's — the band needs something fixed to be positioned against, and the
-// header already states where you are.
 
 import {
   AnnotationBlock,
@@ -32,8 +16,6 @@ const END = 45750;
 const SPAN = END - START + 1;
 const CHROM_LENGTH = 4641652;
 
-// A thousand bins across the chromosome, which is the shape the real endpoint
-// returns regardless of how long the chromosome is.
 const OVERVIEW_BINS = 1000;
 
 const ANNOTATIONS: AnnotationBlock[] = [
@@ -128,10 +110,6 @@ const DATA: GenomeTrackData = {
     labelled_clusters: 4,
     max_points: 2000,
     max_sequence_window: 30000,
-    // True alongside a non-null `overview` means "here it is". True alongside a
-    // null one would mean "unchanged, you already have it", which is what a
-    // window re-fetch sends — the component keeps the last one rather than
-    // dropping the minimap.
     overview_available: true,
     requested_top_n: 2,
   },
@@ -157,10 +135,6 @@ const DATA: GenomeTrackData = {
     organism_label: "E. coli K-12",
     start: START,
   },
-  // `chrom_length` here is what the minimap spans and what bounds navigation.
-  // Note it is not taken from `locus.genome_length`: for any organism with more
-  // than one chromosome those differ, and using the genome length would draw
-  // the window in the wrong place on a bar of the wrong size.
   overview: {
     bins: {
       end: CHROM_LENGTH,
