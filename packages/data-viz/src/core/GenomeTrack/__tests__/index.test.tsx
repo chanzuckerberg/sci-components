@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   DEFAULT_TRACK_DATA,
@@ -19,6 +19,7 @@ import { TrackKind } from "../GenomeTrack.types";
 import GenomeTrack, { TEST_IDS } from "../index";
 import { formatRange } from "../utils/format";
 import { seriesId } from "../utils/hitTest";
+import { createScale, minimapBand } from "../utils/scale";
 import {
   ROW_LABEL_HEIGHT,
   TrackRow,
@@ -1278,5 +1279,124 @@ describe("packAnnotationLanes", () => {
   it("always leaves room for one lane, however the cap is set", () => {
     expect(packAnnotationLanes([block("a", 1, 100)], 0).lanes).toHaveLength(1);
     expect(packAnnotationLanes([block("a", 1, 100)], -3).lanes).toHaveLength(1);
+  });
+});
+
+describe("dragging the minimap band", () => {
+  const WIDTH = 1000;
+  const { locus, overview } = DEFAULT_TRACK_DATA;
+  const span = locus.end - locus.start + 1;
+  const chromosome = createScale(
+    { end: overview?.chrom_length ?? locus.end, start: 1 },
+    WIDTH
+  );
+  const band = minimapBand(chromosome, { end: locus.end, start: locus.start });
+  const minimap = layoutRows(DEFAULT_TRACK_DATA, {
+    ...ROW_OPTIONS,
+    tracks: ["minimap"],
+  }).rows[0];
+  const barY = minimap.y + minimap.height / 2;
+  const plot = () => screen.getByRole("img", { name: /Genome track/ });
+
+  // jsdom does no layout, implements no pointer capture, and has no
+  // PointerEvent, which would drop `clientX` from every event fired below.
+  // With a real width the track draws, so the canvas needs a context that
+  // accepts every call; the pixels are not what these tests are about.
+  const inertContext = new Proxy(
+    {},
+    {
+      get: (_, key) =>
+        key === "measureText" ? () => ({ width: 0 }) : () => undefined,
+      set: () => true,
+    }
+  );
+
+  beforeEach(() => {
+    vi.spyOn(HTMLElement.prototype, "clientWidth", "get").mockReturnValue(
+      WIDTH
+    );
+    vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(
+      inertContext as unknown as CanvasRenderingContext2D
+    );
+    Element.prototype.setPointerCapture = vi.fn();
+    Element.prototype.releasePointerCapture = vi.fn();
+    Element.prototype.hasPointerCapture = vi.fn(() => false);
+    vi.stubGlobal("PointerEvent", MouseEvent);
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
+
+  function drag(fromX: number, byPx: number): void {
+    fireEvent.pointerDown(plot(), {
+      clientX: fromX,
+      clientY: barY,
+      pointerId: 1,
+    });
+    fireEvent.pointerMove(plot(), {
+      clientX: fromX + byPx,
+      clientY: barY,
+      pointerId: 1,
+    });
+    fireEvent.pointerUp(plot(), {
+      clientX: fromX + byPx,
+      clientY: barY,
+      pointerId: 1,
+    });
+  }
+
+  it("travels the whole chromosome, not just the loaded window's halo", () => {
+    const onViewportChange = vi.fn();
+
+    render(
+      <GenomeTrack
+        data={DEFAULT_TRACK_DATA}
+        onViewportChange={onViewportChange}
+        tracks={["minimap"]}
+      />
+    );
+    drag((band?.x ?? 0) + 1, 400);
+
+    const last = onViewportChange.mock.lastCall?.[0];
+
+    // One window's width past the window is where the halo used to stop it.
+    expect(last.start).toBeGreaterThan(locus.end + span);
+    expect(last.start).toBeCloseTo(
+      locus.start + 400 * chromosome.bpPerPx,
+      -Math.ceil(Math.log10(chromosome.bpPerPx))
+    );
+    expect(last.end - last.start + 1).toBe(span);
+  });
+
+  it("takes hold of a band narrower than the pointer from just beside it", () => {
+    const onViewportChange = vi.fn();
+
+    render(
+      <GenomeTrack
+        data={DEFAULT_TRACK_DATA}
+        onViewportChange={onViewportChange}
+        tracks={["minimap"]}
+      />
+    );
+    drag((band?.x ?? 0) + (band?.width ?? 0) + 3, 100);
+
+    expect(onViewportChange).toHaveBeenCalled();
+  });
+
+  it("leaves a press well away from the band alone", () => {
+    const onViewportChange = vi.fn();
+
+    render(
+      <GenomeTrack
+        data={DEFAULT_TRACK_DATA}
+        onViewportChange={onViewportChange}
+        tracks={["minimap"]}
+      />
+    );
+    drag(WIDTH / 2, 100);
+
+    expect(onViewportChange).not.toHaveBeenCalled();
   });
 });

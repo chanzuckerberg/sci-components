@@ -117,6 +117,26 @@ export function haloAround(
   };
 }
 
+/**
+ * The range the plot's own gestures — drag, wheel, arrow keys — may move the
+ * viewport within.
+ *
+ * Normally the navigable halo around the loaded window. Once the minimap has
+ * taken the viewport somewhere that window does not reach, it is the same halo
+ * around the viewport instead, so a pan or key press in the moment before the
+ * re-fetch lands moves from where the user is rather than snapping back to the
+ * window they left.
+ */
+export function gestureBounds(
+  extents: TrackExtents,
+  viewport: GenomeViewport,
+  margin: number
+): GenomeViewport {
+  return overlaps(viewport, extents.window)
+    ? extents.navigable
+    : haloAround(viewport, extents.extent, margin);
+}
+
 /** Whether two ranges share at least one base. */
 export function overlaps(a: GenomeViewport, b: GenomeViewport): boolean {
   return a.start <= b.end && b.start <= a.end;

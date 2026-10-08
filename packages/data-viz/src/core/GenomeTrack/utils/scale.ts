@@ -102,6 +102,40 @@ export function blockRect(
 }
 
 /**
+ * Narrowest the minimap's viewport band is drawn, in px.
+ *
+ * A 24 bp view of a 40 kb window is six hundredths of a pixel wide. Without a
+ * floor the indicator disappears exactly when a user is most lost.
+ */
+export const MIN_BAND_WIDTH = 3;
+
+/**
+ * Where the minimap draws the viewport band, in px along its bar.
+ *
+ * The one definition of the band's geometry, shared by the renderer that draws
+ * it and the pointer handling that grabs it, so what a user can take hold of is
+ * exactly what they can see. It is at least `MIN_BAND_WIDTH` wide, and held
+ * inside the bar at both ends: the floor would otherwise push a band at the far
+ * right off the edge, and at chromosome scale that is the normal case — a
+ * 289 bp window in a 4.6 Mb chromosome is six hundredths of a pixel.
+ *
+ * Null when the viewport is off the bar entirely.
+ */
+export function minimapBand(
+  extent: GenomeScale,
+  viewport: GenomeViewport
+): { width: number; x: number } | null {
+  const rect = blockRect(extent, viewport.start, viewport.end, MIN_BAND_WIDTH);
+
+  if (!rect) return null;
+
+  return {
+    width: rect.width,
+    x: Math.min(rect.x, Math.max(extent.width - rect.width, 0)),
+  };
+}
+
+/**
  * Index into a trace's `values` for a given base, or null when out of range.
  *
  * Pooling means one index covers `stride` bases, so this is a floor division

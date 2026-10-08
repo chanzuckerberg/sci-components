@@ -38,7 +38,7 @@ import {
   TrackRowLabel,
   VisuallyHidden,
 } from "./style";
-import { TrackExtents, trackExtents } from "./utils/extent";
+import { TrackExtents, gestureBounds, trackExtents } from "./utils/extent";
 import { featureIdFromSeries, seriesId } from "./utils/hitTest";
 import { formatRange, formatResolution, formatSpan } from "./utils/format";
 import {
@@ -397,11 +397,18 @@ const GenomeTrack = forwardRef(
       [data, overview, navigationMargin]
     );
 
+    // Clamped to the chromosome, not the navigable halo: the minimap travels
+    // the whole extent, and each plot gesture applies `gestureBounds` itself.
     const { navigate, viewport } = useViewport(
-      extents.navigable,
+      extents.extent,
       extents.window,
       controlledViewport,
       onViewportChange
+    );
+
+    const bounds = useMemo(
+      () => gestureBounds(extents, viewport, navigationMargin),
+      [extents, navigationMargin, viewport]
     );
 
     const layout = useMemo(
@@ -458,7 +465,7 @@ const GenomeTrack = forwardRef(
       // The loaded window plus its margin, not the whole chromosome: zooming
       // out of a re-fetched window has to work, but outrunning the data by an
       // unbounded factor squeezes every row into a sliver.
-      bounds: extents.navigable,
+      bounds,
       data,
       disabled: disableNavigation,
       // What the minimap's bar spans, so its band can be dragged along it.

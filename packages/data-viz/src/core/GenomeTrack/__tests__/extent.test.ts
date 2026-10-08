@@ -4,6 +4,7 @@ import {
 } from "../__storybook__/constants";
 import { MinimapOverview, TrackKind } from "../GenomeTrack.types";
 import {
+  gestureBounds,
   haloAround,
   overlaps,
   trackExtents,
@@ -282,5 +283,27 @@ describe("viewportBands", () => {
     });
 
     expect(viewportBands(rows)).toEqual([]);
+  });
+});
+
+describe("gestureBounds", () => {
+  const extents = {
+    extent: { end: 4_641_652, start: 1 },
+    navigable: { end: 46_039, start: 45_173 },
+    window: { end: 45_750, start: 45_462 },
+  };
+
+  it("is the loaded window's halo while the viewport overlaps it", () => {
+    expect(gestureBounds(extents, { end: 45_700, start: 45_500 }, 1)).toEqual(
+      extents.navigable
+    );
+  });
+
+  it("follows a viewport the minimap took beyond the loaded window", () => {
+    const elsewhere = { end: 3_000_288, start: 3_000_000 };
+
+    expect(gestureBounds(extents, elsewhere, 1)).toEqual(
+      haloAround(elsewhere, extents.extent, 1)
+    );
   });
 });

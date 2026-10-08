@@ -17,10 +17,11 @@ import { TrackHit, hitTest, sameHit, selectionForHit } from "../utils/hitTest";
 import { TrackRow, rowAt } from "../utils/layout";
 import {
   GenomeScale,
+  clampViewport,
   createScale,
+  minimapBand,
   panBy,
   panByBp,
-  pxToBp,
   spanOf,
   zoomAt,
 } from "../utils/scale";
@@ -49,7 +50,19 @@ const KEY_PAN_FRACTION = 0.15;
  */
 const CLICK_SLOP_PX = 4;
 
+/**
+ * How far outside the minimap's band, in px, a press still takes hold of it.
+ *
+ * The band is often its 3 px floor wide — any window under about 0.3% of the
+ * chromosome — and a target that narrow is a test of aim, not a control.
+ */
+const BAND_GRAB_SLOP_PX = 4;
+
 export interface UseTrackNavigationOptions {
+  /**
+   * How far the plot's own gestures — drag, wheel, arrow keys — may take the
+   * viewport. The minimap is not held to this; see `extent`.
+   */
   bounds: GenomeViewport;
   data: GenomeTrackData | null;
   disabled: boolean;
@@ -61,7 +74,10 @@ export interface UseTrackNavigationOptions {
    *
    * The plot and the minimap measure in different spaces — the plot in the
    * viewport, the minimap in the whole extent — so a drag of the band converts
-   * pixels through this rather than through `scale`.
+   * pixels through this rather than through `scale`. It is also what the band
+   * is clamped to: the minimap is how a user travels the whole chromosome, so
+   * holding it to `bounds` would let the band move only a window's width before
+   * stopping, then another after each re-fetch.
    */
   extent: GenomeViewport;
   rows: TrackRow[];
@@ -144,7 +160,7 @@ export function useTrackNavigation(
               ? // The band follows the pointer, and the window follows the
                 // band. Measured on the minimap's own axis, so one pixel is a
                 // chromosome-scale step rather than a viewport-scale one.
-                panByBp(viewport, bounds, deltaX * minimapScale.bpPerPx)
+                panByBp(viewport, extent, deltaX * minimapScale.bpPerPx)
               : // Pan against the drag: dragging right moves the window left,
                 // the way dragging a map does.
                 panBy(scale, bounds, -deltaX)
@@ -161,7 +177,17 @@ export function useTrackNavigation(
 
       setHit((previous) => (sameHit(previous, next) ? previous : next));
     },
-    [bounds, data, minimapScale, navigate, plotRef, rows, scale, viewport]
+    [
+      bounds,
+      data,
+      extent,
+      minimapScale,
+      navigate,
+      plotRef,
+      rows,
+      scale,
+      viewport,
+    ]
   );
 
   const onPointerDown = useCallback(
@@ -186,14 +212,22 @@ export function useTrackNavigation(
        * that starts on the band moves the band *with* the pointer, and the
        * window follows it.
        *
-       * Only from inside the band: the bar is 24 px of whole chromosome, so a
-       * press outside the band is far more likely to be aimed at the row than
-       * at a jump of several megabases.
+       * Only from on or just beside the band as drawn: the bar is 24 px of
+       * whole chromosome, so a press well away from it is far more likely to be
+       * aimed at the row than at a jump of several megabases. Measured against
+       * the drawn band rather than the viewport's base range, which on a
+       * chromosome is usually far narrower than the band's 3 px floor.
        */
       if (onMinimap) {
-        const bp = pxToBp(minimapScale, startX);
+        const band = minimapBand(minimapScale, viewport);
 
-        if (bp < viewport.start || bp > viewport.end) return;
+        if (
+          !band ||
+          startX < band.x - BAND_GRAB_SLOP_PX ||
+          startX > band.x + band.width + BAND_GRAB_SLOP_PX
+        ) {
+          return;
+        }
 
         drag.current = { kind: "minimap", moved: 0, startX };
         setIsDragging(true);
@@ -272,10 +306,20 @@ export function useTrackNavigation(
 
       switch (event.key) {
         case "ArrowLeft":
-          navigate({ end: viewport.end - step, start: viewport.start - step });
+          navigate(
+            clampViewport(
+              { end: viewport.end - step, start: viewport.start - step },
+              bounds
+            )
+          );
           break;
         case "ArrowRight":
-          navigate({ end: viewport.end + step, start: viewport.start + step });
+          navigate(
+            clampViewport(
+              { end: viewport.end + step, start: viewport.start + step },
+              bounds
+            )
+          );
           break;
         case "ArrowUp":
         case "+":

@@ -33,6 +33,7 @@ import {
   bpToPx,
   createScale,
   maxOf,
+  minimapBand,
 } from "../utils/scale";
 
 /**
@@ -67,14 +68,6 @@ const BAR_GAP = 1;
 
 /** Gap between the y axis label's baseline and the top of the bars, in px. */
 const AXIS_LABEL_GAP = 1;
-
-/**
- * Narrowest the minimap's window box may be drawn, in px.
- *
- * A 24 bp view of a 40 kb window is six hundredths of a pixel wide. Without a
- * floor the indicator disappears exactly when a user is most lost.
- */
-const MIN_WINDOW_WIDTH = 3;
 
 export interface DrawContext {
   ctx: CanvasRenderingContext2D;
@@ -317,24 +310,6 @@ export interface MinimapContent {
 }
 
 /**
- * Holds a band inside the bar at both ends.
- *
- * `blockRect` widens a sub-pixel range so it stays visible, which at the far
- * right would push it off the edge — and a position indicator that leaves the
- * bar is worse than one that is merely narrow. At chromosome scale this is the
- * normal case, not an edge case: a 289 bp window in a 4.6 Mb chromosome is six
- * hundredths of a pixel.
- */
-function bandX(
-  rect: { width: number; x: number } | null,
-  width: number
-): number | null {
-  if (!rect) return null;
-
-  return Math.min(rect.x, Math.max(width - rect.width, 0));
-}
-
-/**
  * One feature's activation across the chromosome, inside the bar.
  *
  * The signal here is a feature the *user picked* by clicking its row, not a
@@ -423,37 +398,31 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
     drawFeatureSignal(draw, content.feature, extent, barTop, barHeight);
   }
 
-  const rect = blockRect(extent, scale.start, scale.end, MIN_WINDOW_WIDTH);
-  const viewportX = bandX(rect, scale.width);
+  const band = minimapBand(extent, { end: scale.end, start: scale.start });
 
-  if (rect && viewportX !== null) {
+  if (band) {
     ctx.fillStyle = withAlpha(palette.minimapWindow, 0.45);
-    ctx.fillRect(viewportX, barTop, rect.width, barHeight);
+    ctx.fillRect(band.x, barTop, band.width, barHeight);
     ctx.strokeStyle = palette.minimapWindow;
     ctx.lineWidth = 1;
     // Inset by a pixel on both axes, which is what keeps the 1 px stroke on
     // the fill's own edges. Without it the right edge is centred a pixel past
-    // the fill, and `bandX` can put the band flush against the plot's right
-    // side — so at the end of the axis that edge falls outside the canvas and
-    // the band loses its border entirely.
-    ctx.strokeRect(
-      viewportX + 0.5,
-      barTop + 0.5,
-      rect.width - 1,
-      barHeight - 1
-    );
+    // the fill, and `minimapBand` can put the band flush against the plot's
+    // right side — so at the end of the axis that edge falls outside the canvas
+    // and the band loses its border entirely.
+    ctx.strokeRect(band.x + 0.5, barTop + 0.5, band.width - 1, barHeight - 1);
   }
 
   ctx.font = `10px ${FONT_STACK}`;
 
   // The band's range, captioned above it and centred on it, so the number
   // travels with the thing it describes rather than living only in the header.
-  if (rect && viewportX !== null && rangeHeight > 0) {
+  if (band && rangeHeight > 0) {
     const label = `${formatRange(scale.start, scale.end)} · ${formatSpan(
       scale.end - scale.start + 1
     )}`;
     const width = ctx.measureText(label).width;
-    const center = viewportX + rect.width / 2;
+    const center = band.x + band.width / 2;
 
     ctx.fillStyle = palette.minimapText;
     ctx.textBaseline = "top";

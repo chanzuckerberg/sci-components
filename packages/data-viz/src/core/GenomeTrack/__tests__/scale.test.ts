@@ -1,5 +1,6 @@
 import { BinAxis } from "../GenomeTrack.types";
 import {
+  MIN_BAND_WIDTH,
   MIN_SPAN,
   binIndexToBp,
   binIndexToRange,
@@ -8,6 +9,7 @@ import {
   bpToPx,
   clampViewport,
   createScale,
+  minimapBand,
   panBy,
   panByBp,
   pxToBp,
@@ -233,5 +235,44 @@ describe("panBy", () => {
 
     expect(panned.start).toBe(WINDOW.start);
     expect(spanOf(panned)).toBe(60);
+  });
+});
+
+describe("minimapBand", () => {
+  // Human chr22 across an 800 px bar: one pixel is about 64 kb.
+  const chromosome = createScale({ end: 50_818_468, start: 1 }, 800);
+
+  it("draws a window far narrower than a pixel at the floor width", () => {
+    const band = minimapBand(chromosome, {
+      end: 20_000_288,
+      start: 20_000_000,
+    });
+
+    expect(band?.width).toBe(MIN_BAND_WIDTH);
+  });
+
+  it("places the band by the window's position along the chromosome", () => {
+    const band = minimapBand(chromosome, {
+      end: 25_500_000,
+      start: 25_400_000,
+    });
+
+    expect(band?.x).toBeCloseTo(bpToPx(chromosome, 25_400_000), 5);
+  });
+
+  it("holds a band at the far end inside the bar", () => {
+    const band = minimapBand(chromosome, {
+      end: 50_818_468,
+      start: 50_818_000,
+    });
+
+    expect(band).not.toBeNull();
+    expect((band?.x ?? 0) + (band?.width ?? 0)).toBeLessThanOrEqual(800);
+  });
+
+  it("returns null for a viewport off the bar", () => {
+    expect(
+      minimapBand(chromosome, { end: 60_000_100, start: 60_000_000 })
+    ).toBeNull();
   });
 });
