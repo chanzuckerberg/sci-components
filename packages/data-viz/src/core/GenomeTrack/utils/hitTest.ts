@@ -147,11 +147,16 @@ function annotationHit(
 }
 
 function segmentHit(segment: SegmentBlock, rowIndex: number): BlockHit {
-  const support = `${Math.round(segment.predicted_support * 100)}% support`;
+  const support =
+    segment.predicted_support === null
+      ? null
+      : `${Math.round(segment.predicted_support * 100)}% support`;
 
   return {
     detail: segment.predicted_label
-      ? `${segment.predicted_label} · ${support}`
+      ? support
+        ? `${segment.predicted_label} · ${support}`
+        : segment.predicted_label
       : segment.category,
     end: segment.end,
     id: segment.id,

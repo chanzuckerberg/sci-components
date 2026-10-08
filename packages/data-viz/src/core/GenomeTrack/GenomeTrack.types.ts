@@ -75,8 +75,8 @@ export interface SegmentBlock {
   /** +CDS | -CDS | intergenic | SINE | unknown | ... */
   category: string;
   predicted_label: string | null;
-  /** kNN vote share, 0-1. */
-  predicted_support: number;
+  /** kNN vote share, 0-1. Null when the run cast no vote for this segment. */
+  predicted_support: number | null;
   /** Nearest neighbor's product, when one was resolved. */
   predicted_top?: string;
   pct_of_segment: number;

@@ -189,11 +189,19 @@ export function formatActivation(value: number): string {
  * because both still look plausible.
  */
 export function shortSegmentId(id: string): string {
-  return id.split(":").pop() ?? id;
+  // Namespaced ids end in their own id after the last `:`; the atlas's own
+  // `seg.<accession>.s<n>` ids end in `s<n>` after the last `.`, and the
+  // accession in between is the same on every block in a track.
+  const local = id.split(":").pop() ?? id;
+
+  return local.split(".").pop() || local;
 }
 
 /**
  * Short display label for a segment: the trailing id part plus its category.
+ *
+ * `unknown` is left off: it is what a run that classified nothing reports for
+ * every segment, so on every block it would say nothing about any of them.
  *
  * Here rather than in the renderers because the accessible table needs it too,
  * and a DOM component should not have the canvas module in its import graph
@@ -203,5 +211,9 @@ export function segmentLabel(segment: {
   category: string;
   id: string;
 }): string {
-  return `${shortSegmentId(segment.id)} ${segment.category}`;
+  const id = shortSegmentId(segment.id);
+
+  return segment.category && segment.category !== "unknown"
+    ? `${id} ${segment.category}`
+    : id;
 }

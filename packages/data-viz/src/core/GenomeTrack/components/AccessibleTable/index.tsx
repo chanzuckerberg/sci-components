@@ -118,7 +118,11 @@ const AccessibleTableImpl = ({
                   {formatRange(segment.start, segment.end, segment.strand)}
                 </td>
                 <td>{segment.predicted_label ?? "Unlabelled"}</td>
-                <td>{`${Math.round(segment.predicted_support * 100)}%`}</td>
+                <td>
+                  {segment.predicted_support === null
+                    ? "—"
+                    : `${Math.round(segment.predicted_support * 100)}%`}
+                </td>
               </tr>
             ))}
           </tbody>

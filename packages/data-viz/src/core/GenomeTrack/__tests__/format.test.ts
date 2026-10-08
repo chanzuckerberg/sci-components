@@ -2,6 +2,8 @@ import {
   formatActivation,
   formatResolution,
   formatTick,
+  segmentLabel,
+  shortSegmentId,
   tickInterval,
   ticksFor,
 } from "../utils/format";
@@ -103,5 +105,35 @@ describe("formatActivation", () => {
     expect(formatActivation(-1)).toBe("");
     expect(formatActivation(Number.NaN)).toBe("");
     expect(formatActivation(Number.POSITIVE_INFINITY)).toBe("");
+  });
+});
+
+/** An atlas segment id as the genomic atlas service returns it. */
+const ATLAS_SEGMENT_ID = "seg.NC_000913.3.s99";
+
+describe("shortSegmentId", () => {
+  it("keeps the trailing part of a namespaced id", () => {
+    expect(
+      shortSegmentId("esmgsedd-mvp:e_coli_k12:NC_000913.3:seg_01142")
+    ).toBe("seg_01142");
+  });
+
+  it("keeps the segment number of an atlas id, past the dotted accession", () => {
+    expect(shortSegmentId(ATLAS_SEGMENT_ID)).toBe("s99");
+    expect(shortSegmentId("seg.22.s5")).toBe("s5");
+  });
+});
+
+describe("segmentLabel for an unclassified segment", () => {
+  it("leaves off a category of unknown", () => {
+    expect(segmentLabel({ category: "unknown", id: ATLAS_SEGMENT_ID })).toBe(
+      "s99"
+    );
+  });
+
+  it("keeps a real category", () => {
+    expect(segmentLabel({ category: "+CDS", id: ATLAS_SEGMENT_ID })).toBe(
+      "s99 +CDS"
+    );
   });
 });

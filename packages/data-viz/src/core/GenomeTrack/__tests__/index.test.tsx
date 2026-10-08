@@ -1400,3 +1400,25 @@ describe("dragging the minimap band", () => {
     expect(onViewportChange).not.toHaveBeenCalled();
   });
 });
+
+describe("a segment with no predicted label", () => {
+  it("states no support rather than a support of zero", () => {
+    const unvoted = {
+      ...DEFAULT_TRACK_DATA,
+      segments: DEFAULT_TRACK_DATA.segments.map((segment) => ({
+        ...segment,
+        category: "unknown",
+        predicted_label: null,
+        predicted_support: null,
+      })),
+    };
+
+    render(<GenomeTrack data={unvoted} tracks={["segments"]} />);
+
+    const table = screen.getByRole("table", { name: /Predicted segments/ });
+    const firstRow = within(table).getAllByRole("row")[1];
+
+    expect(firstRow).toHaveTextContent("—");
+    expect(firstRow).not.toHaveTextContent("0%");
+  });
+});
