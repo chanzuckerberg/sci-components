@@ -92,6 +92,11 @@
         "isRequired": false,
         "type": "string"
       },
+      "sequenceViewerHeight": {
+        "description": "Height of the sequence panel, as any CSS length; a number is read as\npixels, and a percentage is of the viewer's own height. The 3D view and the\nlegend move up to make room for it. Ignored while `showSequenceViewer` is\noff.\n\nLeft undefined, the panel takes `max(104px, 30%)` of the viewer, growing to\n`max(134px, 32%)` once the viewer is 880px wide or more. A height set here\nholds at every width.",
+        "isRequired": false,
+        "type": "string | number"
+      },
       "showSequenceViewer": {
         "defaultValue": true,
         "description": "Show the sequence panel pinned along the bottom of the viewer.",
