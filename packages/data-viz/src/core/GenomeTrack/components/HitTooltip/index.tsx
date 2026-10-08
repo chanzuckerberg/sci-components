@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import {
   TrackTooltip,
   TrackTooltipDetail,
@@ -9,8 +10,25 @@ import { TrackHit } from "../../utils/hitTest";
 import { TrackRow } from "../../utils/layout";
 import { GenomeScale, bpToPx } from "../../utils/scale";
 
-/** Keeps the tooltip this far from either edge so it is never clipped. */
-const EDGE_MARGIN = 40;
+/**
+ * Where the tooltip's left edge goes, in px from the plot's left edge.
+ *
+ * Centred over the hovered block wherever it fits, and slid inward just far
+ * enough to stay inside the plot where it does not — near either end of the
+ * axis a centred box would hang off the side and be clipped. A box wider than
+ * the plot is pinned to its left edge, where `max-width` has already made it no
+ * wider than the plot.
+ */
+export function tooltipLeft(
+  center: number,
+  boxWidth: number,
+  width: number
+): number {
+  return Math.min(
+    Math.max(center - boxWidth / 2, 0),
+    Math.max(width - boxWidth, 0)
+  );
+}
 
 interface HitTooltipProps {
   hit: TrackHit;
@@ -32,6 +50,10 @@ interface HitTooltipProps {
  * The range it prints is the *bin's* range for a trace hit, not a single base.
  * A pooled bin covers `stride` bases and reporting one of them would claim
  * precision the payload does not have.
+ *
+ * Its width is measured once it has rendered, because where it can go depends
+ * on how wide its text made it. A layout effect runs before the browser paints,
+ * so the first, unmeasured position is never seen.
  */
 export const HitTooltip = ({
   hit,
@@ -39,14 +61,18 @@ export const HitTooltip = ({
   scale,
   width,
 }: HitTooltipProps): JSX.Element => {
+  const box = useRef<HTMLDivElement>(null);
+  const [boxWidth, setBoxWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    setBoxWidth(box.current?.offsetWidth ?? 0);
+  }, [hit, width]);
+
   const center = bpToPx(scale, (hit.start + hit.end) / 2);
-  const left = Math.min(
-    Math.max(center, EDGE_MARGIN),
-    Math.max(width - EDGE_MARGIN, EDGE_MARGIN)
-  );
+  const left = tooltipLeft(center, boxWidth, width);
 
   return (
-    <TrackTooltip aria-hidden style={{ left, top: row.y }}>
+    <TrackTooltip aria-hidden ref={box} style={{ left, top: row.y }}>
       <TrackTooltipTitle>
         {hit.kind === "trace"
           ? `${hit.label}: ${hit.value.toFixed(3)}`

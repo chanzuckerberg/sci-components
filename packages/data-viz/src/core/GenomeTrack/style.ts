@@ -313,7 +313,14 @@ export const TrackTooltip = styled("div")`
   position: absolute;
   z-index: 2;
   pointer-events: none;
-  white-space: nowrap;
+  /*
+   * Its own text's width, up to a cap, rather than shrink-to-fit: an absolute
+   * box otherwise narrows as it nears the right edge, so the width the
+   * placement measured would change with the placement it chose.
+   */
+  width: max-content;
+  max-width: min(320px, 100%);
+  overflow-wrap: anywhere;
 
   ${(props: CommonThemeProps) => {
     const corners = getCorners(props);
@@ -331,7 +338,7 @@ export const TrackTooltip = styled("div")`
         0.15
       )};
       padding: ${spaces?.xxs}px ${spaces?.s}px;
-      transform: translate(-50%, -100%);
+      transform: translateY(-100%);
     `;
   }}
 `;
@@ -357,6 +364,8 @@ export const TrackTooltipDetail = styled("div")`
  */
 export const TrackTooltipRange = styled("div")`
   ${fontCodeXs}
+
+  white-space: nowrap;
 
   ${(props: CommonThemeProps) =>
     `color: ${getSemanticColors(props)?.base?.textSecondary};`}
