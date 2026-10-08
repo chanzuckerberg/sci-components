@@ -8,6 +8,8 @@ export type {
   ContinuousColorStop,
   SteppedColorStop,
 } from "./common/colorScales";
+export * from "./core/GenomeTrack";
+export { default as GenomeTrack } from "./core/GenomeTrack";
 export * from "./core/HeatmapChart";
 export { default as HeatmapChart } from "./core/HeatmapChart";
 export * from "./core/ProteinStructureViewer";

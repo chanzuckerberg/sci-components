@@ -201,13 +201,30 @@ export function ExpressionPanel() {
 </div>
 <h2>Components</h2>
 <p>
-  The package currently ships two charts. Each has its own page in this section
-  with props and interactive stories.
+  Each component has its own page in this section, with props and interactive
+  stories.
 </p>
 <table class="sds-doc-table">
   <tr>
     <td><p>Component</p></td>
     <td><p>Use it for</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/story/data-viz-genometrack--default" target="_top">
+          GenomeTrack
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        A genome browser track: one base-pair axis with stacked rows for
+        reference annotations, predicted segments, the nucleotide sequence, and
+        feature activation. Pans, zooms, and reports selection, leaving the
+        fetching to the caller.
+      </p>
+    </td>
   </tr>
   <tr>
     <td>
@@ -222,6 +239,25 @@ export function ExpressionPanel() {
         A matrix of values across two categorical axes, such as gene expression
         by cell type. Handles very large datasets through a camera that renders
         only the visible window.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/data-viz-proteinstructureviewer--default"
+          target="_top"
+        >
+          ProteinStructureViewer
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        An interactive 3D protein structure, built on Mol*, with a sequence
+        panel, confidence coloring, and per-residue value overlays. Needs
+        <code>molstar</code> as an additional peer dependency.
       </p>
     </td>
   </tr>
