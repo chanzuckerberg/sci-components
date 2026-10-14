@@ -22,7 +22,6 @@ export default {
     },
   },
   component: Link,
-  tags: ["deprecated"],
   title: "Deprecated/Link",
 } as Meta;
 

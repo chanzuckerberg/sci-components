@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.1...@czi-sds/mcp@0.20.2) (2026-09-25)
+
+**Note:** Version bump only for package @czi-sds/mcp
+
+## [0.20.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.0...@czi-sds/mcp@0.20.1) (2026-09-25)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** fix Camera Zooming on Selection ([a227421](https://github.com/chanzuckerberg/sci-components/commit/a227421e5f5c2cf89261cbd9f1e9bd495b9a92ce))
+
+# [0.20.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.1...@czi-sds/mcp@0.20.0) (2026-09-17)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** synchronize chain selection and hover effects ([991c0cd](https://github.com/chanzuckerberg/sci-components/commit/991c0cdf6ab0dbd0aaed44eb1680ffcf0d836d53))
+
+### Features
+
+- **ProteinStructureViewer:** Improve multi chain support + Ligands and IONs ([#1188](https://github.com/chanzuckerberg/sci-components/issues/1188)) ([9744389](https://github.com/chanzuckerberg/sci-components/commit/9744389aa0839d5a1d5963936207fe7c4639d3e9))
+
+# [0.19.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.1...@czi-sds/mcp@0.19.0) (2026-09-15)
+
+### Features
+
+- **ProteinStructureViewer:** Improve multi chain support + Ligands and IONs ([#1188](https://github.com/chanzuckerberg/sci-components/issues/1188)) ([9744389](https://github.com/chanzuckerberg/sci-components/commit/9744389aa0839d5a1d5963936207fe7c4639d3e9))
+
+## [0.18.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.18.0...@czi-sds/mcp@0.18.1) (2026-09-09)
+
+### Bug Fixes
+
+- **ProteinStructureViewer:** improve protein structure viewer ([#1186](https://github.com/chanzuckerberg/sci-components/issues/1186)) ([189bfa0](https://github.com/chanzuckerberg/sci-components/commit/189bfa043faf3dc9c482d68ecaacc3f31e429ab6))
+
+# [0.18.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.17.0...@czi-sds/mcp@0.18.0) (2026-09-08)
+
+### Bug Fixes
+
+- **StructureViewer:** make the sequence panel and residue callbacks work for a complex ([#1180](https://github.com/chanzuckerberg/sci-components/issues/1180)) ([312cd29](https://github.com/chanzuckerberg/sci-components/commit/312cd299138f83b1d960f668f06b38b21aa3372d))
+
+### Features
+
+- **StructureViewer:** MolStar component ([#1177](https://github.com/chanzuckerberg/sci-components/issues/1177)) ([c321878](https://github.com/chanzuckerberg/sci-components/commit/c3218785f1b8db5d9edc1597709051fd05505fcc))
+
+# [0.17.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.16.0...@czi-sds/mcp@0.17.0) (2026-08-19)
+
+### Features
+
+- **docs:** pull Zeroheight docs into Storybook ([#1166](https://github.com/chanzuckerberg/sci-components/issues/1166)) ([bbe0a17](https://github.com/chanzuckerberg/sci-components/commit/bbe0a1761267445acdd213c53e9406b371be535a))
+
 # [0.16.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.15.0...@czi-sds/mcp@0.16.0) (2026-07-18)
 
 ### Features

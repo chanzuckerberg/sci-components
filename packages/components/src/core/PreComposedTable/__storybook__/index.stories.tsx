@@ -76,11 +76,10 @@ export default {
     },
   },
   component: PreComposedTable,
-  tags: ["beta"],
   title: "Components/Table/PreComposedTable",
   parameters: {
-    axe: {
-      disabledRules: ["empty-table-header"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "empty-table-header" }] },
     },
   },
 } as Meta;

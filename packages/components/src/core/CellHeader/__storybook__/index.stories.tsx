@@ -8,6 +8,9 @@ export default {
     active: {
       control: { type: "boolean" },
     },
+    as: {
+      control: { type: "text" },
+    },
     direction: {
       control: { type: "select" },
       options: ["asc", "desc"],
@@ -25,8 +28,14 @@ export default {
     shouldShowTooltipOnHover: {
       control: { type: "boolean" },
     },
+    shouldTruncate: {
+      control: { type: "boolean" },
+    },
     tooltipProps: {
       control: { type: "object" },
+    },
+    tooltipSubtitle: {
+      control: { type: "text" },
     },
     tooltipText: {
       control: { type: "text" },

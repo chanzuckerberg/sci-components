@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist",
     "composite": true,
     "paths": {
@@ -10,6 +9,17 @@
     }
   },
   "include": ["./src/**/*", "../../.eslintrc.js"],
-  "exclude": ["node_modules", "**/*.scss", "**/*.css"],
+  "exclude": [
+    "node_modules",
+    "**/*.scss",
+    "**/*.css",
+    /*
+     * Documentation code examples. They import the library the way a consumer
+     * does (`@czi-sds/components`), which this package's own config cannot
+     * resolve, and they are never part of the build. `tsconfig.docs-check.json`
+     * at the repo root typechecks them instead.
+     */
+    "./src/**/__storybook__/docs/examples/**"
+  ],
   "references": []
 }

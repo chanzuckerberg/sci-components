@@ -91,23 +91,23 @@ export function initializeResources(server: McpServer) {
     }
   );
 
-  // Register Zeroheight rules resource
+  // Register SDS documentation rules resource
   server.resource(
-    "Zeroheight Documentation Rules",
-    "sds://rules/zeroheight",
+    "SDS Documentation Rules",
+    "sds://rules/documentation",
     {
       mimeType: MIME_TYPE_MARKDOWN,
-      description: "Rules for following Zeroheight documentation",
+      description: "Rules for following the SDS component documentation",
     },
     async () => {
       try {
-        const filePath = findResourceFile("zeroheight-rules.md");
+        const filePath = findResourceFile("documentation-rules.md");
         const content = readFileSync(filePath, "utf-8");
 
         return {
           contents: [
             {
-              uri: "sds://rules/zeroheight",
+              uri: "sds://rules/documentation",
               mimeType: MIME_TYPE_MARKDOWN,
               text: content,
             },
@@ -115,7 +115,7 @@ export function initializeResources(server: McpServer) {
         };
       } catch (err) {
         const message = err instanceof Error ? err.message : UNKNOWN_ERROR;
-        throw new Error("Failed to read Zeroheight rules: " + message);
+        throw new Error("Failed to read documentation rules: " + message);
       }
     }
   );

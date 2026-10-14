@@ -12,6 +12,7 @@
 */
 
 const config = {
+  preprocessors: ["sds/resolve-custom-references"],
   platforms: {
     css: {
       buildPath: "src/common/styles-dictionary/css/",

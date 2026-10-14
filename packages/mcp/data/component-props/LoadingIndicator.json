@@ -2,8 +2,16 @@
   "LoadingIndicator": {
     "props": {
       "sdsStyle": {
-        "type": "\"minimal\" | \"tag\"",
-        "isRequired": true
+        "defaultValue": "- (required)",
+        "description": "Chooses between the two variants above. It has no default: leaving it out is a type error, and an indicator built without it renders unstyled.",
+        "isRequired": true,
+        "type": "\"minimal\" | \"tag\""
+      },
+      "aria-label": {
+        "defaultValue": "undefined",
+        "description": "Replaces what a screen reader announces for the status region, for example \"Loading cell types\". The visible text still reads \"Loading\". Without it, assistive technology announces the visible word.",
+        "isRequired": false,
+        "type": "string"
       }
     }
   }

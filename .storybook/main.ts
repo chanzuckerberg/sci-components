@@ -7,17 +7,72 @@ import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import type { Plugin } from "vite";
+import { generateDocSnapshots } from "../docs-kit/scripts/generate-doc-snapshots.mjs";
 
 const require = createRequire(import.meta.url);
 const currentDir = dirname(fileURLToPath(import.meta.url));
 
+/**
+ * Write the documentation snapshot stories the glob below picks up, here rather
+ * than in the yarn scripts that start and build Storybook. A stories glob that
+ * matches nothing is not an error, so generating them anywhere Storybook itself
+ * does not reach means any other way in — `storybook build` on its own, a
+ * Chromatic build pointed at a different script — silently snapshots none of
+ * the documentation. This runs on every way in, and throws rather than let that
+ * happen quietly.
+ */
+generateDocSnapshots();
+
 const COMPONENTS_SRC = resolve(currentDir, "../packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "../packages/data-viz/src");
+const ICONS_SRC = resolve(currentDir, "../packages/icons/src");
+const DOCS_KIT = resolve(currentDir, "../docs-kit");
 
 const config: StorybookConfig = {
   stories: [
+    /**
+     * Per-component code documentation, attached to each component's stories.
+     * It is listed first on purpose: `storySort` treats entries that share a
+     * title as equal, so the sidebar falls back to indexing order within a
+     * component, and this is what puts "Documentation" above the stories.
+     */
+    "../packages/components/src/**/__storybook__/docs/*.mdx",
     "../packages/components/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/data-viz/src/**/__storybook__/docs/*.mdx",
     "../packages/data-viz/src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../packages/icons/src/**/__storybook__/docs/*.mdx",
+    "../packages/icons/src/**/*.stories.@(js|jsx|ts|tsx)",
+    // Standalone design pages: the foundations, and the design half of each
+    // component's documentation.
+    "../design-docs/**/*.mdx",
+    // Guide to the MCP server, kept in the package it documents.
+    "../packages/mcp/docs/**/*.mdx",
+    // The live code playground the docs' examples link out to.
+    "../playground/*.stories.tsx",
+    /**
+     * A story per documentation page, written from the pages themselves by the
+     * `generateDocSnapshots()` call above. Chromatic snapshots stories and not
+     * `docs` entries, so this is what puts the documentation in front of a
+     * visual review. They are hidden from the sidebar, the pages above being
+     * the ones to read.
+     */
+    "../docs-kit/generated/*.stories.tsx",
+  ],
+
+  staticDirs: [
+    /**
+     * The images the docs reference are committed alongside them. The pages
+     * point at them relatively, so the mount name here has to stay in step with
+     * `DESIGN_ASSETS_PATH` in `docs-kit/constants.ts`.
+     */
+    { from: "../design-docs/assets", to: "/design-assets" },
+    /**
+     * Type definitions for the playground's editor. Fetched rather than
+     * bundled: they are generated from a package build, and a playground that
+     * would not open without one would be broken more often than it was
+     * useful. See `playground/scripts/generate-types.mjs`.
+     */
+    { from: "../playground/generated", to: "/playground-types" },
   ],
 
   core: {
@@ -95,8 +150,11 @@ const config: StorybookConfig = {
       ...normalizeAlias(viteConfig.resolve.alias),
       { find: /^@components\/src\//, replacement: `${COMPONENTS_SRC}/` },
       { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
+      { find: /^@icons\/src\//, replacement: `${ICONS_SRC}/` },
       { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
       { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+      { find: "@czi-sds/icons", replacement: ICONS_SRC },
+      { find: /^@sds-docs\//, replacement: `${DOCS_KIT}/` },
     ];
 
     /**
@@ -122,6 +180,10 @@ const config: StorybookConfig = {
       ...normalizedEntries,
       `${COMPONENTS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
       `${DATA_VIZ_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
+      `${COMPONENTS_SRC}/**/__storybook__/docs/*.mdx`,
+      `${DATA_VIZ_SRC}/**/__storybook__/docs/*.mdx`,
+      `${ICONS_SRC}/**/__storybook__/docs/*.mdx`,
+      `${ICONS_SRC}/**/*.stories.@(js|jsx|ts|tsx)`,
     ];
     /**
      * Pre-bundle bare-import subpaths that Vite's scanner cannot reach by
@@ -132,6 +194,40 @@ const config: StorybookConfig = {
     viteConfig.optimizeDeps.include = [
       ...(viteConfig.optimizeDeps.include ?? []),
       "@emotion/styled/base",
+      /**
+       * The playground imports Phosphor only once an example asks for it, which
+       * is late by definition — and fifteen hundred icon modules is the last
+       * thing to be optimizing mid-session, with the reload that follows.
+       */
+      "@phosphor-icons/react",
+      /**
+       * Mol* is imported a submodule at a time rather than through a barrel, so
+       * every new submodule the protein viewer reaches for is a dep Vite has
+       * not optimized yet. Discovering one mid-session re-optimizes Mol* on its
+       * own, and the pre-bundle that comes back splits it across chunks in a way
+       * its internal cycles do not survive: `mol-plugin/behavior` ends up with
+       * an undefined `State`, and the plugin dies in `initBuiltInBehavior`
+       * reaching for `registerDefault` — no canvas, no structure, nothing drawn.
+       *
+       * Listing the entry points here puts all of Mol* in the first pass, so a
+       * submodule added to the viewer later cannot trigger that re-optimization.
+       * A stale cache from before such a change has to be cleared once
+       * (`rm -rf node_modules/.cache/storybook`); Vite will not repair it on its
+       * own, since it reuses whatever it optimized last.
+       */
+      "molstar/lib/mol-model/structure/model/types",
+      "molstar/lib/mol-plugin-ui",
+      "molstar/lib/mol-plugin-ui/react18",
+      "molstar/lib/mol-plugin-ui/spec",
+      "molstar/lib/mol-plugin/behavior",
+      "molstar/lib/mol-plugin/behavior/dynamic/selection/structure-focus-representation",
+      "molstar/lib/mol-plugin/behavior/static/state",
+      "molstar/lib/mol-plugin/context",
+      "molstar/lib/mol-plugin/spec",
+      "molstar/lib/mol-script/language/builder",
+      "molstar/lib/mol-script/runtime/query/compiler",
+      "molstar/lib/mol-theme/label",
+      "molstar/lib/mol-util/download",
     ];
 
     return viteConfig;

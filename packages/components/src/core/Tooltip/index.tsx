@@ -37,9 +37,9 @@ const Tooltip = forwardRef(function Tooltip(
   const {
     arrowOffset,
     classes,
-    hasInvertedStyle = true,
+    hasInvertedStyle,
     inverted,
-    sdsStyle = "dark",
+    sdsStyle,
     subtitle,
     title,
     width = "default",
@@ -51,12 +51,12 @@ const Tooltip = forwardRef(function Tooltip(
 
   const { children } = rest;
 
-  if (inverted || sdsStyle) {
+  if (
+    hasInvertedStyle !== undefined ||
+    inverted !== undefined ||
+    sdsStyle !== undefined
+  ) {
     showWarningIfFirstOccurence(SDSWarningTypes.TooltipInvertStyle);
-  }
-
-  if (width === "wide" && (sdsStyle === "dark" || hasInvertedStyle)) {
-    showWarningIfFirstOccurence(SDSWarningTypes.TooltipWidth);
   }
 
   const theme = useTheme();
@@ -65,7 +65,6 @@ const Tooltip = forwardRef(function Tooltip(
     /* stylelint-disable property-no-unknown -- false positive */
     arrowOffset,
     classes,
-    hasInvertedStyle: invertStyleValue(inverted, sdsStyle, hasInvertedStyle),
     textAlign,
     theme,
     width,
@@ -90,14 +89,8 @@ const Tooltip = forwardRef(function Tooltip(
 
   const content = (
     <div>
-      {title && (
-        <StyledTitle hasInvertedStyle={hasInvertedStyle}>{title}</StyledTitle>
-      )}
-      {subtitle && (
-        <StyledSubtitle hasInvertedStyle={hasInvertedStyle}>
-          {subtitle}
-        </StyledSubtitle>
-      )}
+      {title && <StyledTitle>{title}</StyledTitle>}
+      {subtitle && <StyledSubtitle>{subtitle}</StyledSubtitle>}
 
       {componentSlot && (
         <StyledComponentSlotWrapper shouldAddMargin={!!title || !!subtitle}>
@@ -107,13 +100,9 @@ const Tooltip = forwardRef(function Tooltip(
     </div>
   );
 
-  const leaveDelay =
-    hasInvertedStyle || inverted || sdsStyle === "dark" ? 0 : 500;
-
   return (
     <RawTooltip
       classes={{ arrow, tooltip }}
-      leaveDelay={leaveDelay}
       title={content}
       // (masoudmanson): Setting tabIndex to 0 makes the tooltip component
       // focusable and allows keyboard navigation.
@@ -130,26 +119,6 @@ const Tooltip = forwardRef(function Tooltip(
     />
   );
 });
-
-/**
- * (masoudmanson): Temporary function to handle the inversion of the tooltip
- * based on the sdsStyle, invert and hasInvertedStyle props.
- * Once the sdsStyle and invert props are completely removed,
- * this function will be removed as well.
- */
-function invertStyleValue(
-  inverted: boolean | undefined,
-  sdsStyle: "light" | "dark" | undefined,
-  hasInvertedStyle: boolean | undefined
-) {
-  return hasInvertedStyle !== undefined
-    ? hasInvertedStyle
-    : sdsStyle === "dark"
-      ? true
-      : sdsStyle === "light"
-        ? false
-        : inverted;
-}
 
 function mergeClass({
   props,

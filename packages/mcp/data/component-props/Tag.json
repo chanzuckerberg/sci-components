@@ -2,38 +2,55 @@
   "Tag": {
     "props": {
       "color": {
-        "type": "\"info\" | \"positive\" | \"notice\" | \"negative\" | \"neutral\" | \"beta\" | \"[string, string]\" | \"[string, string, string]\"",
-        "isRequired": false
+        "defaultValue": "neutral",
+        "description": "The tag's intent, given either as one of the six names or as CSS colors: [label color, background color]: the icon stays white [label color, background color, icon color]",
+        "isRequired": false,
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
       },
       "hover": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "defaultValue": true,
+        "description": "Whether the tag responds to the pointer with a darker fill and a pointer cursor. False removes the tag from pointer events altogether, which also keeps a surrounding Tooltip from opening.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "icon": {
-        "type": "ReactElement",
+        "description": "Icon element.",
         "isRequired": false,
-        "description": "Icon element."
+        "type": "ReactElement"
       },
       "label": {
-        "type": "string",
+        "defaultValue": "- (required)",
+        "description": "The tag's text, and its accessible name. It is cut off with an ellipsis\nrather than wrapped, so keep it to a word or two.",
         "isRequired": true,
-        "description": "The content of the component."
+        "type": "string"
       },
       "onClick": {
-        "type": "function",
-        "isRequired": false
+        "description": "MUI's prop. Makes the tag a button: a tab stop that answers Enter and Space.",
+        "isRequired": false,
+        "type": "function"
       },
       "sdsSize": {
-        "type": "\"s\" | \"l\"",
-        "isRequired": false
+        "defaultValue": "s",
+        "description": "The size of the tag: an 11px label with a 12px icon, or a 13px label with a 24px icon. A large tag has to have an icon.",
+        "isRequired": false,
+        "type": "\"s\" | \"l\""
       },
       "sdsStyle": {
-        "type": "\"square\" | \"rounded\"",
-        "isRequired": false
+        "defaultValue": "square",
+        "description": "The shape of the tag. The design guidance treats rounded as the default for the system, so it is usually worth passing.",
+        "isRequired": false,
+        "type": "\"square\" | \"rounded\""
       },
       "sdsType": {
-        "type": "\"primary\" | \"secondary\"",
-        "isRequired": false
+        "defaultValue": "primary",
+        "description": "primary fills the tag with the intent color and sets the label white. secondary tints the fill and keeps the label and a 1px border in the intent color.",
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\""
+      },
+      "onDelete": {
+        "description": "Callback fired when the delete icon is clicked.\nIf set, the delete icon will be shown.",
+        "isRequired": false,
+        "type": "(event: any) => void"
       }
     }
   }

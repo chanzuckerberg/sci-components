@@ -26,6 +26,13 @@ export default {
       },
       options: ["basic", "overlay"],
     },
+    transitionDuration: {
+      control: {
+        type: "number",
+      },
+      description:
+        "How long the Panel takes to slide in and out, in milliseconds. Accepts a single number or `{ enter, exit }`. Defaults to 225ms in and 195ms out; `0` removes the animation.",
+    },
     width: {
       control: {
         type: "text",
@@ -52,8 +59,8 @@ export const ScrollBehavior = {
   parameters: {
     // TODO: Fix accessibility (a11y) issues once the MUI team resolves the problem
     // with the 'disableEnforceFocus' prop in the Modal component.
-    axe: {
-      disabledRules: ["aria-hidden-focus"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "aria-hidden-focus" }] },
     },
     controls: {
       exclude: PANEL_EXCLUDED_CONTROLS,
@@ -71,8 +78,8 @@ export const CustomHeaderAndCloseButton = {
   parameters: {
     // TODO: Fix accessibility (a11y) issues once the MUI team resolves the problem
     // with the 'disableEnforceFocus' prop in the Modal component.
-    axe: {
-      disabledRules: ["aria-hidden-focus"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "aria-hidden-focus" }] },
     },
     controls: {
       exclude: PANEL_EXCLUDED_CONTROLS,

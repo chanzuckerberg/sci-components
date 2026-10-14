@@ -2,6 +2,10 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
+import ButtonGroup from "..";
+import Button from "../../Button";
+import ButtonToggle from "../../ButtonToggle";
+import Icon from "../../Icon";
 
 const { Test } = composeStories(stories);
 
@@ -68,6 +72,45 @@ describe("<ButtonGroup />", () => {
     buttons.forEach((button) => {
       expect(button).toBeDisabled();
     });
+  });
+
+  it("overrules the size a Button child sets for itself", () => {
+    render(
+      <ButtonGroup size="small">
+        <Button size="large">One</Button>
+      </ButtonGroup>
+    );
+
+    // The group clones every Button child with its own size, so the one the
+    // child asked for never reaches MUI.
+    expect(screen.getByRole("button").className).toContain("sizeSmall");
+  });
+
+  it("overrules the size a ButtonToggle child sets for itself", () => {
+    render(
+      <ButtonGroup size="small">
+        <ButtonToggle
+          size="large"
+          startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+        />
+      </ButtonGroup>
+    );
+
+    // A ButtonToggle is one of the components a group is made of, so it is
+    // cloned the same way a Button is and the group stays at one height.
+    expect(screen.getByRole("button").className).toContain("sizeSmall");
+  });
+
+  it("leaves a child that is neither at its own size", () => {
+    render(
+      <ButtonGroup size="small">
+        <button className="sizeLarge" type="button">
+          Plain
+        </button>
+      </ButtonGroup>
+    );
+
+    expect(screen.getByRole("button").className).toContain("sizeLarge");
   });
 
   it("renders child buttons correctly", () => {

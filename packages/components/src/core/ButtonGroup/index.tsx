@@ -14,6 +14,7 @@ import {
   showWarningIfFirstOccurence,
 } from "@components/src/common/warnings";
 import Button from "@components/src/core/Button";
+import ButtonToggle from "@components/src/core/ButtonToggle";
 
 export type { ButtonGroupProps };
 
@@ -58,21 +59,27 @@ const areAllButtonsIconOnly = (children: ReactNode): boolean => {
 };
 
 /**
- * Check if a React element is a Button component.
+ * The components a group is made of, and so the ones its size applies to. A
+ * ButtonToggle passes `size` on to the Button underneath it, which is what
+ * keeps a mixed group at one height.
  */
-const isButton = (element: ReactElement): boolean => {
-  return element.type === Button;
+const GROUPED_COMPONENTS = [Button, ButtonToggle];
+
+const takesGroupSize = (element: ReactElement): boolean => {
+  return GROUPED_COMPONENTS.includes(
+    element.type as (typeof GROUPED_COMPONENTS)[number]
+  );
 };
 
 /**
- * Clone children and inject the size prop to Button components.
+ * Clone children and inject the size prop to the buttons in the group.
  */
 const cloneChildrenWithSize = (
   children: ReactNode,
   size: "small" | "medium" | "large"
 ): ReactNode => {
   return Children.map(children, (child) => {
-    if (isValidElement(child) && isButton(child)) {
+    if (isValidElement(child) && takesGroupSize(child)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return cloneElement(child as ReactElement<any>, { size });
     }

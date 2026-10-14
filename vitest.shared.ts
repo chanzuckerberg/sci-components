@@ -9,6 +9,7 @@ const currentDir = dirname(fileURLToPath(import.meta.url));
 
 const COMPONENTS_SRC = resolve(currentDir, "packages/components/src");
 const DATA_VIZ_SRC = resolve(currentDir, "packages/data-viz/src");
+const ICONS_SRC = resolve(currentDir, "packages/icons/src");
 const SETUP_FILE = resolve(currentDir, "vitest.setup.ts");
 
 const ASSET_EXTENSION_RE =
@@ -93,8 +94,10 @@ export function createVitestConfig(packageRoot: string) {
       alias: [
         { find: /^@components\/src\//, replacement: `${COMPONENTS_SRC}/` },
         { find: /^@data-viz\/src\//, replacement: `${DATA_VIZ_SRC}/` },
+        { find: /^@icons\/src\//, replacement: `${ICONS_SRC}/` },
         { find: "@czi-sds/components", replacement: COMPONENTS_SRC },
         { find: "@czi-sds/data-viz", replacement: DATA_VIZ_SRC },
+        { find: "@czi-sds/icons", replacement: ICONS_SRC },
       ],
     },
     test: {

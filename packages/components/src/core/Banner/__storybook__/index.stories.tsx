@@ -1,5 +1,6 @@
 import { Args, Meta } from "@storybook/react-vite";
 import {
+  BANNER_ACTIONS,
   BANNER_EXCLUDED_CONTROLS,
   BANNER_ICON_OPTIONS,
   BANNER_TEXT,
@@ -9,6 +10,10 @@ import { INLINE_RADIO } from "@components/src/common/utils";
 
 export default {
   argTypes: {
+    children: {
+      control: { type: "text" },
+      required: true,
+    },
     dismissed: {
       control: { type: "boolean" },
     },
@@ -32,6 +37,7 @@ export default {
       control: { type: INLINE_RADIO },
       options: ["accent", "info", "negative", "positive", "notice"],
     },
+    onClose: { action: BANNER_ACTIONS.onClose },
     sdsIconProps: {
       control: {
         type: "object",
@@ -42,16 +48,17 @@ export default {
       options: ["primary", "secondary"],
       required: true,
     },
-    textChild: {
-      control: { type: "text" },
-      required: true,
-    },
   },
   component: Banner,
   parameters: {
     layout: "fullscreen",
-    axe: {
-      disabledRules: ["landmark-no-duplicate-banner", "landmark-unique"],
+    a11y: {
+      config: {
+        rules: [
+          { enabled: false, id: "landmark-no-duplicate-banner" },
+          { enabled: false, id: "landmark-unique" },
+        ],
+      },
     },
   },
   title: "Components/Banner",
@@ -61,11 +68,11 @@ export default {
 
 export const Default = {
   args: {
+    children: BANNER_TEXT,
     dismissed: false,
     dismissible: true,
     intent: "info",
     sdsType: "primary",
-    textChild: BANNER_TEXT,
   },
 };
 
@@ -73,10 +80,10 @@ export const Default = {
 
 export const Test = {
   args: {
+    children: "test text",
     dismissible: true,
     intent: "info",
     sdsType: "primary",
-    textChild: "test text",
   },
   parameters: {
     controls: {

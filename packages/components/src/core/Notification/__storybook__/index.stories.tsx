@@ -29,9 +29,6 @@ export default {
       control: { type: INLINE_RADIO },
       options: ["left", "right"],
     },
-    extraContent: {
-      control: { type: "boolean" },
-    },
     icon: {
       control: {
         labels: [
@@ -94,8 +91,8 @@ export const ScreenshotTest = {
     snapshot: {
       skip: true,
     },
-    axe: {
-      disabledRules: ["color-contrast"],
+    a11y: {
+      config: { rules: [{ enabled: false, id: "color-contrast" }] },
     },
   },
   render: (args: Args) => <ScreenshotTestDemo {...args} />,

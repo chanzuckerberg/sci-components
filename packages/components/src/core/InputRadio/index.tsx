@@ -22,7 +22,17 @@ export interface RadioContentProps extends Omit<
   label?: React.ReactNode;
   radioProps?: Partial<MUIRadioProps>;
   stage?: "checked" | "unchecked";
+  /**
+   * The value a RadioGroup compares against to decide whether this radio is
+   * selected. It also backs the label and caption element ids, so give every
+   * radio a unique one.
+   */
   value?: string;
+  /**
+   * Class names for the internal elements: root, labelCaptionContainer, label,
+   * caption, radioButton, radioCheckedIcon, radioCheckedIconDot, and
+   * radioDefaultIcon.
+   */
   classes?: {
     root?: string;
     labelCaptionContainer?: string;

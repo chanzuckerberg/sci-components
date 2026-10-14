@@ -28,6 +28,10 @@ export interface CalloutProps {
   hideTitle?: boolean;
   body?: React.ReactNode;
   hideBody?: boolean;
+  /**
+   * The same slot as `children`, for callers that would rather pass it as a
+   * prop. Both render when both are given, `children` first.
+   */
   extraContent?: React.ReactNode;
   sdsStyle?: CalloutSdsStyleType;
 }
@@ -51,6 +55,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
     hideBody = false,
     sdsStyle = "persistent",
     children,
+    extraContent,
     ...rest
   } = props;
   const [hide, setHide] = useState(dismissed);
@@ -151,6 +156,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
         {sdsStyle === "expandable" && !collapsed && (
           <CalloutExtraContent hideTitle={hideTitle} hideBody={hideBody}>
             {children}
+            {extraContent}
           </CalloutExtraContent>
         )}
       </StyledCallout>

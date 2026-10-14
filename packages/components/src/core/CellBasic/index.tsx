@@ -148,7 +148,6 @@ const CellBasic = forwardRef<HTMLDivElement, CellBasicProps>(
           arrow
           leaveDelay={0}
           leaveTouchDelay={0}
-          sdsStyle="dark"
           {...tooltipProps}
         >
           <StyledTableData ref={ref} as={as} {...enhancedProps}>

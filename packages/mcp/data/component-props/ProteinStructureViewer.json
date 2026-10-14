@@ -1,0 +1,184 @@
+{
+  "ProteinStructureViewer": {
+    "props": {
+      "backgroundColor": {
+        "description": "Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base\nbackground, so the canvas follows the surrounding page in both modes.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "chainColors": {
+        "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen: when `colorBy` says so, or, left undefined, when neither `plddt`\nnor `residueOverlay` is set.",
+        "isRequired": false,
+        "type": "Record<string, string>"
+      },
+      "hiddenChains": {
+        "description": "Chains hidden from the 3D view, by `chainId`. Leave undefined to let the\nviewer own visibility itself, which is what the chain legend's toggles\ndrive; passing it takes that over, and the toggles then only report.",
+        "isRequired": false,
+        "type": "string[]"
+      },
+      "download": {
+        "description": "Adds a capture button beneath the reset-camera control, which downloads a\nPNG of the structure as it currently stands. Omit for no button.",
+        "isRequired": false,
+        "type": "StructureDownload | null"
+      },
+      "molstarSpec": {
+        "description": "Mol* plugin spec laid over the viewer's own, which is how the whole of\nMol*'s configuration is reachable without a prop here for each setting.\nAnything named here wins, so `canvas3d.postprocessing`, a `PluginConfig`\nitem, or `layout.initial` can all be set to something other than the\ndefault the viewer picked.\n\nList-valued keys - `behaviors`, `config`, `actions`, `animations`,\n`customFormats`, `customParamEditors` - are appended to rather than\nreplaced. For `config` that is what lets an entry override the viewer's,\nsince Mol* reads the list in order. It also means a behavior cannot be\ntaken away: the ones the viewer drops stay dropped, and the ones it keeps\ncannot be removed from here.\n\nRead once, when the plugin is created, except for `canvas3d`, which is\nre-applied whenever it changes. Creating the plugin throws away the camera,\nso the rest is deliberately not reactive.",
+        "isRequired": false,
+        "type": "Partial<PluginUISpec>"
+      },
+      "sceneMode": {
+        "defaultValue": "managed",
+        "description": "Who draws the structure.\n\n`\"managed\"` draws each chain as a cartoon and its ligands as\nball-and-stick, colors them from `plddt`, `residueOverlay` and\n`chainColors`, hides the chains `hiddenChains` names, and frames the camera\non each structure it loads.\n\n`\"external\"` parses the structure and stops there: nothing is drawn,\ncolored, hidden or framed, and a consumer draws its own scene on the\nstructure `onReady` hands it. The sequence panel, selection, hover, legend\nand camera controls work as before; the legend describes the props rather\nthan what the consumer drew, and its chain toggles report through\n`onChainVisibilityChange` without hiding anything. Mol* frames the camera\non the first representation drawn into the empty scene.\n\nRead once, when the plugin is created.",
+        "isRequired": false,
+        "type": "\"managed\" | \"external\""
+      },
+      "colorBy": {
+        "description": "What paints the structure. Left undefined it follows what is supplied: a\n`residueOverlay` when there is one, then `plddt`, then the chain colors.\nNaming one makes it paint whatever else is set, which is how a toggle\nbetween confidence and chain coloring keeps both props in place. A theme\nwith nothing to paint with leaves every residue neutral.",
+        "isRequired": false,
+        "type": "\"overlay\" | \"plddt\" | \"chain\""
+      },
+      "highlights": {
+        "description": "Residues picked out in colors of their own, by the address the file gives\nthem. They paint over whatever colors the rest - chain, pLDDT or overlay -\nand are drawn in ball-and-stick over the cartoon; on a surface, the\nsurface itself carries them. Separate from `selection`: highlighting a\nresidue neither selects it nor moves the camera.",
+        "isRequired": false,
+        "type": "ResidueHighlight[]"
+      },
+      "initialCamera": {
+        "description": "Where the camera starts on each structure loaded, in place of fitting it\nto the structure. Applied once per load; moving the camera afterwards is\nthe user's.",
+        "isRequired": false,
+        "type": "CameraState | null"
+      },
+      "orientation": {
+        "description": "Turns the camera to look at the highlighted residues from one side or\nanother. Applied when a structure is loaded, unless `initialCamera` is\nset, and whenever it changes - not when the highlights do.",
+        "isRequired": false,
+        "type": "\"overview\" | \"facing\" | \"opposite\" | \"side\""
+      },
+      "projection": {
+        "description": "The camera's projection. Left undefined, Mol*'s own default stands.",
+        "isRequired": false,
+        "type": "\"perspective\" | \"orthographic\""
+      },
+      "representation": {
+        "defaultValue": "cartoon",
+        "description": "How the polymer is drawn. Ligands stay ball-and-stick either way.\nSwitching leaves the camera where it is.",
+        "isRequired": false,
+        "type": "\"cartoon\" | \"surface\""
+      },
+      "disableChainHighlightOnHover": {
+        "defaultValue": false,
+        "description": "Stop other chains from dimming in the 3D view while a chain's name is\npointed at, in the legend or above its grid in the sequence panel.\n\nThe dim is on by default, since on a complex it is how a reader finds out\nwhich chain is which. Turn it off where the movement is more distracting\nthan the answer is useful - a grid of viewers a pointer crosses on its way\nsomewhere else, or a page driving its own highlighting through `selection`.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "showChainLegend": {
+        "defaultValue": true,
+        "description": "Show the chain legend, which lists each chain with its color and a\nvisibility toggle. Ignored on a single-chain structure, where there is\nnothing to tell apart or hide.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "showAxes": {
+        "defaultValue": true,
+        "description": "Show the orientation axes widget and the reset-camera button.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "showLegend": {
+        "defaultValue": true,
+        "description": "Show the stats and color scale legend overlaid on the viewer.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "sequenceViewerBackgroundColor": {
+        "description": "Sequence panel background, as any CSS color. Defaults to the SDS theme's\nprimary surface, so the panel follows the surrounding page in both modes.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "sequenceViewerHeight": {
+        "description": "Height of the sequence panel, as any CSS length; a number is read as\npixels, and a percentage is of the viewer's own height. The 3D view and the\nlegend move up to make room for it. Ignored while `showSequenceViewer` is\noff.\n\nLeft undefined, the panel takes `max(104px, 30%)` of the viewer, growing to\n`max(134px, 32%)` once the viewer is 880px wide or more. A height set here\nholds at every width.",
+        "isRequired": false,
+        "type": "string | number"
+      },
+      "showSequenceViewer": {
+        "defaultValue": true,
+        "description": "Show the sequence panel pinned along the bottom of the viewer.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "stats": {
+        "description": "Up to three whole-structure stats shown along the bottom. A null entry\nreserves its column without rendering anything, so the columns never shift\nas values come and go.",
+        "isRequired": false,
+        "type": "(StructureStat | null)[]"
+      },
+      "structure": {
+        "defaultValue": "- (required)",
+        "description": "Structure to render, as raw PDB or mmCIF (PDBx) text.",
+        "isRequired": true,
+        "type": "string"
+      },
+      "plddt": {
+        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover. A `null` entry, and every residue past the end, reads as unscored\nand is painted neutral rather than at the bottom of the scale.",
+        "isRequired": false,
+        "type": "(number | null)[] | null"
+      },
+      "residueOverlay": {
+        "description": "Per-residue values that override pLDDT coloring while set.",
+        "isRequired": false,
+        "type": "ResidueValueOverlay | null"
+      },
+      "selection": {
+        "description": "What is selected, or null when nothing is. Leave undefined to let the\nviewer own the selection, so clicking a residue zooms in on it with no\nstate on the consumer's side; passing it takes that over, and a click then\nmoves the camera only once `onSelectionChange` is echoed back here.\n\nEither way the camera frames whatever the selection covers, and clearing\nit zooms back out to the default view. Residues are drawn in\nball-and-stick over the cartoon; whole chains are left as they are and the\nchains around them dim, the same as hovering a chain's name.",
+        "isRequired": false,
+        "type": "StructureSelection | null"
+      },
+      "onResidueClick": {
+        "description": "Called with the clicked residue.",
+        "isRequired": false,
+        "type": "(residue: ResidueRef) => void"
+      },
+      "onResidueHover": {
+        "description": "Called as the pointer moves over residues, and with `null` when it leaves\nthe structure.",
+        "isRequired": false,
+        "type": "(residue: ResidueRef | null) => void"
+      },
+      "onSelectionChange": {
+        "description": "Called with the new selection whenever the user makes one - clicking a\nresidue, dragging across the sequence, clicking a chain caption - and with\n`null` when they click empty space to clear it.\n\nA whole-chain selection arrives as `{ chains: [id] }` rather than as every\nindex on it, so echoing it straight back into `selection` costs nothing.\nFires whether or not `selection` is controlled, so a consumer can follow\nthe viewer's own selection without owning it.",
+        "isRequired": false,
+        "type": "(selection: StructureSelection | null) => void"
+      },
+      "onChainsChange": {
+        "description": "Called with the chains found in the structure, whenever a structure is\nloaded. Fires with `[]` when the structure holds none.",
+        "isRequired": false,
+        "type": "(chains: ChainRef[]) => void"
+      },
+      "onChainVisibilityChange": {
+        "description": "Called with the chains now hidden when a visibility toggle is used. Fires\nwhether or not `hiddenChains` is controlled, so a consumer can follow the\nviewer's own state without owning it.",
+        "isRequired": false,
+        "type": "(hiddenChains: string[]) => void"
+      },
+      "onCameraChange": {
+        "description": "Called with the camera each time it comes to rest after moving, whether a\ndrag, a zoom, a selection framing it, or a new structure fitting it. The\nstate can be handed back as `initialCamera` to restore the view.",
+        "isRequired": false,
+        "type": "(camera: CameraState) => void"
+      },
+      "onStructureLoad": {
+        "description": "Called for every structure that loads, reloads included - unlike\n`onChainsChange`, which stays quiet when the chains come back the same.\nWhat a consumer tracking \"loading\" and \"ready\" states listens for.",
+        "isRequired": false,
+        "type": "(info: StructureLoadInfo) => void"
+      },
+      "onReady": {
+        "description": "Called with the Mol* plugin once a structure is loaded into it, and again\nfor each structure that replaces it, which is how a consumer reaches the\nplugin to draw on it or drive it directly.\n\nCalled once the viewer has drawn its own scene, and awaited before it\nstarts answering clicks and hovers, so a scene built here is in place\nbefore a click reaches it. The viewer only ever recolors, hides or\nreplaces the components it built itself, so representations added here\nare left as they were made. Not called for a structure that failed to\nload, or for a plugin the viewer disposed of first.",
+        "isRequired": false,
+        "type": "(plugin: PluginUIContext, loaded: LoadedStructureInfo) => void | Promise<void>"
+      },
+      "onError": {
+        "description": "Called when creating the plugin, loading a structure, capturing an image or\ndrawing a representation fails, in place of the message the viewer would\notherwise log. A rejected `onReady` is reported as a `\"load\"` failure.\nNothing is reported for a plugin the viewer has already disposed of.",
+        "isRequired": false,
+        "type": "(error: unknown, phase: ViewerErrorPhase) => void"
+      },
+      "onDispose": {
+        "description": "Called before the viewer disposes of a plugin it handed to `onReady`,\nincluding one whose `onReady` has not finished, so that whatever was built\non it can be let go.",
+        "isRequired": false,
+        "type": "() => void"
+      }
+    }
+  }
+}

@@ -5,6 +5,6 @@ export const StyledWrapper = styled("div")`
   ${fontBodyS}
 
   display: grid;
-  grid-column-gap: 24px;
+  column-gap: 24px;
   grid-template-columns: repeat(3, 250px);
 `;

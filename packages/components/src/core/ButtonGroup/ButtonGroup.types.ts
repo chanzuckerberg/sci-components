@@ -5,23 +5,25 @@ export interface ButtonGroupProps extends Omit<
   "variant" | "size"
 > {
   /**
-   * The background appearance of the button group.
+   * Tells the group which surface it sits on so it can pick colors with enough
+   * contrast.
    * @default "matchBackground"
    */
   backgroundAppearance?: "dark" | "matchBackground";
   /**
-   * The style of the button group.
+   * Style of the button group. Outline is the only value.
    * @default "outline"
    */
   sdsStyle?: "outline";
   /**
-   * The type of the button group that determines the color scheme.
+   * Color scheme applied to every button in the group.
    * @default "primary"
    */
   sdsType?: "primary" | "secondary";
   /**
-   * The size of the button group.
-   * @default "medium"
+   * Size of the group. It is injected into each Button and ButtonToggle child,
+   * so setting size on an individual button has no effect.
+   * @default "large"
    */
   size?: "small" | "medium" | "large";
 }

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.2.0...@czi-sds/components@24.2.1) (2026-09-18)
+
+### Bug Fixes
+
+- declare sideEffects on components and data-viz ([#1195](https://github.com/chanzuckerberg/sci-components/issues/1195)) ([e441206](https://github.com/chanzuckerberg/sci-components/commit/e4412064d02d9cd11fdd8325ba3171dccecbe350)), closes [#1193](https://github.com/chanzuckerberg/sci-components/issues/1193)
+
+# [24.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.1.0...@czi-sds/components@24.2.0) (2026-09-08)
+
+### Features
+
+- **StructureViewer:** MolStar component ([#1177](https://github.com/chanzuckerberg/sci-components/issues/1177)) ([c321878](https://github.com/chanzuckerberg/sci-components/commit/c3218785f1b8db5d9edc1597709051fd05505fcc))
+
+# [24.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.0.0...@czi-sds/components@24.1.0) (2026-08-19)
+
+### Features
+
+- **docs:** pull Zeroheight docs into Storybook ([#1166](https://github.com/chanzuckerberg/sci-components/issues/1166)) ([bbe0a17](https://github.com/chanzuckerberg/sci-components/commit/bbe0a1761267445acdd213c53e9406b371be535a))
+
 # [24.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@23.9.0...@czi-sds/components@24.0.0) (2026-07-20)
 
 ### Features

@@ -404,8 +404,10 @@ export const WithTopComponent = {
     sdsStyle: "drawer",
   },
   parameters: {
-    axe: {
-      disabledRules: ["landmark-no-duplicate-banner"],
+    a11y: {
+      config: {
+        rules: [{ enabled: false, id: "landmark-no-duplicate-banner" }],
+      },
     },
     controls: {
       expanded: true,

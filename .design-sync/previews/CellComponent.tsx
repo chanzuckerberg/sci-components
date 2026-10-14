@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { RadioGroup } from "@mui/material";
 import RawCellComponent from "@components/src/core/CellComponent";
 import InputToggle from "@components/src/core/InputToggle";

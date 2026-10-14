@@ -5400,9 +5400,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 109,
@@ -7049,9 +7047,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 23,
@@ -7431,9 +7427,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 13,
@@ -9193,10 +9187,7 @@
           }
         }
       ],
-      "html_elements": [
-        "tbody",
-        "div"
-      ],
+      "html_elements": ["tbody", "div"],
       "span": {
         "start": {
           "line": 33,
@@ -17809,9 +17800,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 54,
@@ -21971,9 +21960,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 107,
@@ -22645,11 +22632,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div",
-        "img",
-        "button"
-      ],
+      "html_elements": ["div", "img", "button"],
       "span": {
         "start": {
           "line": 4,
@@ -26281,9 +26264,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 45,
@@ -28477,9 +28458,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 39,
@@ -29037,9 +29016,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 25,
@@ -29712,9 +29689,7 @@
           }
         }
       ],
-      "html_elements": [
-        "span"
-      ],
+      "html_elements": ["span"],
       "span": {
         "start": {
           "line": 16,
@@ -34092,9 +34067,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 5,
@@ -34368,10 +34341,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "img",
-        "div"
-      ],
+      "html_elements": ["img", "div"],
       "span": {
         "start": {
           "line": 5,
@@ -36247,9 +36217,7 @@
           }
         }
       ],
-      "html_elements": [
-        "p"
-      ],
+      "html_elements": ["p"],
       "span": {
         "start": {
           "line": 25,
@@ -39074,9 +39042,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 105,
@@ -41282,9 +41248,7 @@
           }
         }
       ],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 80,
@@ -46667,10 +46631,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div",
-        "p"
-      ],
+      "html_elements": ["div", "p"],
       "span": {
         "start": {
           "line": 45,
@@ -53869,11 +53830,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "td",
-        "tbody",
-        "div"
-      ],
+      "html_elements": ["td", "tbody", "div"],
       "span": {
         "start": {
           "line": 679,
@@ -54809,9 +54766,7 @@
           }
         }
       ],
-      "html_elements": [
-        "span"
-      ],
+      "html_elements": ["span"],
       "span": {
         "start": {
           "line": 40,
@@ -56141,9 +56096,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 65,
@@ -57410,9 +57363,7 @@
         }
       ],
       "props": [],
-      "html_elements": [
-        "div"
-      ],
+      "html_elements": ["div"],
       "span": {
         "start": {
           "line": 33,
@@ -92621,73 +92572,31 @@
       "path": "",
       "version": "0.0.1",
       "aliases": {
-        "@czi-sds/components": [
-          "packages/components/src/*"
-        ],
-        "@czi-sds/data-viz": [
-          "packages/data-viz/src/*"
-        ],
-        "@czi-sds/mcp": [
-          "packages/mcp/src/*"
-        ],
-        "@components/src/*": [
-          "packages/components/src/*"
-        ],
-        "@data-viz/src/*": [
-          "packages/data-viz/src/*"
-        ],
-        "docs-build/*": [
-          "docs-build/*"
-        ],
-        "packages/*": [
-          "packages/*"
-        ],
-        "scripts/*": [
-          "scripts/*"
-        ],
-        "stylelint.config.js": [
-          "stylelint.config.js"
-        ],
-        "vitest.config.ts": [
-          "vitest.config.ts"
-        ],
-        "vitest.setup.ts": [
-          "vitest.setup.ts"
-        ],
-        "vitest.shared.ts": [
-          "vitest.shared.ts"
-        ],
-        "vitest.shims.d.ts": [
-          "vitest.shims.d.ts"
-        ]
+        "@czi-sds/components": ["packages/components/src/*"],
+        "@czi-sds/data-viz": ["packages/data-viz/src/*"],
+        "@czi-sds/mcp": ["packages/mcp/src/*"],
+        "@components/src/*": ["packages/components/src/*"],
+        "@data-viz/src/*": ["packages/data-viz/src/*"],
+        "docs-build/*": ["docs-build/*"],
+        "packages/*": ["packages/*"],
+        "scripts/*": ["scripts/*"],
+        "stylelint.config.js": ["stylelint.config.js"],
+        "vitest.config.ts": ["vitest.config.ts"],
+        "vitest.setup.ts": ["vitest.setup.ts"],
+        "vitest.shared.ts": ["vitest.shared.ts"],
+        "vitest.shims.d.ts": ["vitest.shims.d.ts"]
       },
       "importMap": {
-        "@czi-sds/monorepo/*": [
-          "*"
-        ],
-        "@czi-sds/components/*": [
-          "packages/components/*"
-        ],
-        "@czi-sds/components": [
-          "packages/components/src/index.ts"
-        ],
-        "@czi-sds/data-viz/*": [
-          "packages/data-viz/*"
-        ],
-        "@czi-sds/data-viz": [
-          "packages/data-viz/src/index.ts"
-        ],
-        "@czi-sds/mcp/*": [
-          "packages/mcp/*"
-        ],
-        "@czi-sds/mcp": [
-          "packages/mcp/dist/stdio.js"
-        ]
+        "@czi-sds/monorepo/*": ["*"],
+        "@czi-sds/components/*": ["packages/components/*"],
+        "@czi-sds/components": ["packages/components/src/index.ts"],
+        "@czi-sds/data-viz/*": ["packages/data-viz/*"],
+        "@czi-sds/data-viz": ["packages/data-viz/src/index.ts"],
+        "@czi-sds/mcp/*": ["packages/mcp/*"],
+        "@czi-sds/mcp": ["packages/mcp/dist/stdio.js"]
       },
       "exportMap": {
-        ".": [
-          "index.js"
-        ]
+        ".": ["index.js"]
       }
     },
     "packages": {
@@ -92696,37 +92605,19 @@
         "path": "packages/components",
         "version": "23.7.0",
         "aliases": {
-          "@components/src/*": [
-            "packages/components/src/*"
-          ],
-          "@data-viz/src/*": [
-            "packages/data-viz/src/*"
-          ],
-          "dist/*": [
-            "packages/components/dist/*"
-          ],
-          "src/*": [
-            "packages/components/src/*"
-          ],
-          "src": [
-            "packages/components/src"
-          ],
-          "vitest.config.ts": [
-            "packages/components/vitest.config.ts"
-          ]
+          "@components/src/*": ["packages/components/src/*"],
+          "@data-viz/src/*": ["packages/data-viz/src/*"],
+          "dist/*": ["packages/components/dist/*"],
+          "src/*": ["packages/components/src/*"],
+          "src": ["packages/components/src"],
+          "vitest.config.ts": ["packages/components/vitest.config.ts"]
         },
         "importMap": {
-          "@czi-sds/components/*": [
-            "packages/components/*"
-          ],
-          "@czi-sds/components": [
-            "packages/components/src/index.ts"
-          ]
+          "@czi-sds/components/*": ["packages/components/*"],
+          "@czi-sds/components": ["packages/components/src/index.ts"]
         },
         "exportMap": {
-          ".": [
-            "src/index.ts"
-          ]
+          ".": ["src/index.ts"]
         }
       },
       "@czi-sds/data-viz": {
@@ -92734,37 +92625,19 @@
         "path": "packages/data-viz",
         "version": "0.18.0",
         "aliases": {
-          "@data-viz/src/*": [
-            "packages/data-viz/src/*"
-          ],
-          "@components/src/*": [
-            "packages/components/src/*"
-          ],
-          "dist/*": [
-            "packages/data-viz/dist/*"
-          ],
-          "src/*": [
-            "packages/data-viz/src/*"
-          ],
-          "src": [
-            "packages/data-viz/src"
-          ],
-          "vitest.config.ts": [
-            "packages/data-viz/vitest.config.ts"
-          ]
+          "@data-viz/src/*": ["packages/data-viz/src/*"],
+          "@components/src/*": ["packages/components/src/*"],
+          "dist/*": ["packages/data-viz/dist/*"],
+          "src/*": ["packages/data-viz/src/*"],
+          "src": ["packages/data-viz/src"],
+          "vitest.config.ts": ["packages/data-viz/vitest.config.ts"]
         },
         "importMap": {
-          "@czi-sds/data-viz/*": [
-            "packages/data-viz/*"
-          ],
-          "@czi-sds/data-viz": [
-            "packages/data-viz/src/index.ts"
-          ]
+          "@czi-sds/data-viz/*": ["packages/data-viz/*"],
+          "@czi-sds/data-viz": ["packages/data-viz/src/index.ts"]
         },
         "exportMap": {
-          ".": [
-            "src/index.ts"
-          ]
+          ".": ["src/index.ts"]
         }
       },
       "@czi-sds/mcp": {
@@ -92773,17 +92646,11 @@
         "version": "0.15.0",
         "aliases": {},
         "importMap": {
-          "@czi-sds/mcp/*": [
-            "packages/mcp/*"
-          ],
-          "@czi-sds/mcp": [
-            "packages/mcp/dist/stdio.js"
-          ]
+          "@czi-sds/mcp/*": ["packages/mcp/*"],
+          "@czi-sds/mcp": ["packages/mcp/dist/stdio.js"]
         },
         "exportMap": {
-          ".": [
-            "dist/stdio.js"
-          ]
+          ".": ["dist/stdio.js"]
         }
       }
     }
@@ -92834,16 +92701,12 @@
       "workspaces": {
         "@czi-sds/components": {
           "exports": {
-            ".": [
-              "./src/index.ts"
-            ]
+            ".": ["./src/index.ts"]
           }
         },
         "@czi-sds/data-viz": {
           "exports": {
-            ".": [
-              "./src/index.ts"
-            ]
+            ".": ["./src/index.ts"]
           }
         }
       }
@@ -92855,9 +92718,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": ".",
-        "patterns": [
-          "index.js"
-        ],
+        "patterns": ["index.js"],
         "type": "export",
         "sourcePath": "/Users/mamjadi/Documents/Projects/sci-components/package.json"
       },
@@ -92868,9 +92729,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "@czi-sds/mcp",
-        "patterns": [
-          "packages/mcp/src/*"
-        ],
+        "patterns": ["packages/mcp/src/*"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92881,9 +92740,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "docs-build/*",
-        "patterns": [
-          "docs-build/*"
-        ],
+        "patterns": ["docs-build/*"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92894,9 +92751,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "scripts/*",
-        "patterns": [
-          "scripts/*"
-        ],
+        "patterns": ["scripts/*"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92907,9 +92762,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "stylelint.config.js",
-        "patterns": [
-          "stylelint.config.js"
-        ],
+        "patterns": ["stylelint.config.js"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92920,9 +92773,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "vitest.config.ts",
-        "patterns": [
-          "vitest.config.ts"
-        ],
+        "patterns": ["vitest.config.ts"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92933,9 +92784,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "vitest.setup.ts",
-        "patterns": [
-          "vitest.setup.ts"
-        ],
+        "patterns": ["vitest.setup.ts"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92946,9 +92795,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "vitest.shared.ts",
-        "patterns": [
-          "vitest.shared.ts"
-        ],
+        "patterns": ["vitest.shared.ts"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92959,9 +92806,7 @@
       "packageName": "@czi-sds/monorepo",
       "entry": {
         "name": "vitest.shims.d.ts",
-        "patterns": [
-          "vitest.shims.d.ts"
-        ],
+        "patterns": ["vitest.shims.d.ts"],
         "type": "alias",
         "sourcePath": "tsconfig.json"
       },
@@ -92972,9 +92817,7 @@
       "packageName": "@czi-sds/components",
       "entry": {
         "name": "dist/*",
-        "patterns": [
-          "packages/components/dist/*"
-        ],
+        "patterns": ["packages/components/dist/*"],
         "type": "alias",
         "sourcePath": "/Users/mamjadi/Documents/Projects/sci-components/packages/components/tsconfig.json"
       },
@@ -92985,9 +92828,7 @@
       "packageName": "@czi-sds/components",
       "entry": {
         "name": "vitest.config.ts",
-        "patterns": [
-          "packages/components/vitest.config.ts"
-        ],
+        "patterns": ["packages/components/vitest.config.ts"],
         "type": "alias",
         "sourcePath": "/Users/mamjadi/Documents/Projects/sci-components/packages/components/tsconfig.json"
       },
@@ -92998,9 +92839,7 @@
       "packageName": "@czi-sds/data-viz",
       "entry": {
         "name": "dist/*",
-        "patterns": [
-          "packages/data-viz/dist/*"
-        ],
+        "patterns": ["packages/data-viz/dist/*"],
         "type": "alias",
         "sourcePath": "/Users/mamjadi/Documents/Projects/sci-components/packages/data-viz/tsconfig.json"
       },
@@ -93011,9 +92850,7 @@
       "packageName": "@czi-sds/data-viz",
       "entry": {
         "name": "vitest.config.ts",
-        "patterns": [
-          "packages/data-viz/vitest.config.ts"
-        ],
+        "patterns": ["packages/data-viz/vitest.config.ts"],
         "type": "alias",
         "sourcePath": "/Users/mamjadi/Documents/Projects/sci-components/packages/data-viz/tsconfig.json"
       },

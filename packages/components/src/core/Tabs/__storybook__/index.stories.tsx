@@ -14,15 +14,16 @@ export default {
     sdsSize: {
       control: { type: "select" },
       defaultValue: { summary: "large" },
-      description: "The size of the tabs",
+      description: "The size of the label text on every tab in the group",
       options: ["large", "small"],
     },
     underlined: {
       control: {
         type: "boolean",
       },
-      defaultValue: { summary: "true" },
-      description: "Whether the tabs should be underlined",
+      defaultValue: { summary: "false" },
+      description:
+        "Whether a divider runs under the full width of the tab group",
     },
   },
   component: Tabs,

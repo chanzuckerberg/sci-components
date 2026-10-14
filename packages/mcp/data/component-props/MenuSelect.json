@@ -2,18 +2,18 @@
   "MenuSelect": {
     "props": {
       "keepSearchOnSelect": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "multiple": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false,
+        "defaultValue": false,
         "description": "If `true`, `value` must be an array and the menu will support multiple selections.",
-        "defaultValue": false
+        "isRequired": false,
+        "type": "boolean"
       },
       "search": {
-        "type": "\"false\" | \"true\"",
-        "isRequired": false
+        "isRequired": false,
+        "type": "boolean"
       }
     }
   }

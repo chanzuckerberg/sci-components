@@ -4,9 +4,12 @@ import { SemanticColorsTemplate } from "./stories/semanticColors";
 
 export default {
   parameters: {
-    axe: {
-      disabledRules: ["color-contrast"],
-    },
+    /**
+     * A Bases story is documentation — a table of design tokens the page
+     * renders in place — and the accessibility suite is for the components,
+     * which answer for themselves in their own stories.
+     */
+    a11y: { test: "off" },
   },
   title: "Bases/Colors",
 } as Meta;
@@ -14,11 +17,15 @@ export default {
 // Primitive
 
 export const PrimitiveColors = {
+  // Kept out of the sidebar: the Documentation page renders these swatches in
+  // place. They remain stories for Chromatic.
+  tags: ["!dev"],
   render: () => <PrimitiveColorsTemplate />,
 };
 
 // Semantic Colors
 
 export const SemanticColors = {
+  tags: ["!dev"],
   render: () => <SemanticColorsTemplate />,
 };

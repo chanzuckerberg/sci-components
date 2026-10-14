@@ -2,24 +2,24 @@
   "ButtonDropdownLegacy": {
     "props": {
       "disabled": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "icon": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "any"
       },
       "sdsSize": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": false,
+        "type": "\"small\" | \"medium\" | \"large\""
       },
       "sdsStyle": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": true,
+        "type": "\"rounded\" | \"square\" | \"icon\""
       },
       "sdsType": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": true,
+        "type": "\"primary\" | \"secondary\" | \"tertiary\" | \"destructive\""
       }
     }
   }

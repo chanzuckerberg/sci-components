@@ -10,9 +10,7 @@ in the SDS provider or components render unthemed (and a few throw):
 
 ```jsx
 const { SDSPreviewProvider, Button } = window.SDS;
-<SDSPreviewProvider>
-  {/* your app */}
-</SDSPreviewProvider>
+<SDSPreviewProvider>{/* your app */}</SDSPreviewProvider>;
 ```
 
 `SDSPreviewProvider` supplies the light SDS theme. (In shipped app code the equivalent is MUI's
@@ -41,7 +39,14 @@ For your own layout wrappers, read tokens through the exported selectors inside 
 CSS-in-JS, computed at runtime):
 
 ```jsx
-const { getColors, getSpaces, getSemanticColors, getCorners, fontHeaderXl, fontBodyM } = window.SDS;
+const {
+  getColors,
+  getSpaces,
+  getSemanticColors,
+  getCorners,
+  fontHeaderXl,
+  fontBodyM,
+} = window.SDS;
 // styled('div')` ${(props) => `color:${getSemanticColors(props)?.base?.textPrimary};
 //   padding:${getSpaces(props)?.l}px; ${fontBodyM(props)}` ` — spacing xxxs..xxl, corners none/s/m/l.
 ```
@@ -68,10 +73,30 @@ const { SDSPreviewProvider, Button, Callout, Tag, Icon } = window.SDS;
 function StatusPanel() {
   return (
     <SDSPreviewProvider>
-      <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 24 }}>
-        <Callout intent="info" title="Analysis complete" body="Your sequence run finished." />
-        <Tag label="confirmed" sdsStyle="rounded" sdsType="primary" color="positive" />
-        <Button sdsStyle="solid" sdsType="primary" startIcon={<Icon sdsIcon="Download" sdsSize="s" />}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+          padding: 24,
+        }}
+      >
+        <Callout
+          intent="info"
+          title="Analysis complete"
+          body="Your sequence run finished."
+        />
+        <Tag
+          label="confirmed"
+          sdsStyle="rounded"
+          sdsType="primary"
+          color="positive"
+        />
+        <Button
+          sdsStyle="solid"
+          sdsType="primary"
+          startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+        >
           Export results
         </Button>
       </div>

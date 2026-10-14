@@ -90,7 +90,7 @@ const generateFontShorthand = (
     ];
   const fontFamilyRef = isNarrow
     ? `{sds.font.font-family.${String(category)}.narrowValue}`
-    : `{sds.font.font-family.${String(category)}.value}`;
+    : `{sds.font.font-family.${String(category)}}`;
 
   return `${weight} ${fontSize}px/${lineHeight}px ${fontFamilyRef}`;
 };

@@ -1,0 +1,191 @@
+<h1>InputToggle</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/InputToggle/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { InputToggle } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default InputToggle</strong></h3>
+<p>This example has the minimum props needed for the InputToggle component.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputToggle/DefaultInputToggle"
+></div>
+<h3><strong>InputToggle with customized on and off labels</strong></h3>
+<p>
+  This example shows an InputToggle component with customized on and off labels,
+  widened to fit them.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputToggle/InputToggleWithCustomizedOnAndOffLabels"
+></div>
+<h3><strong>Controlled InputToggle</strong></h3>
+<p>
+  Passing <code>checked</code> hands control of the toggle to your application,
+  which then updates it from the <code>onChange</code> handler.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputToggle/ControlledInputToggle"
+></div>
+<h3><strong>Disabled InputToggle</strong></h3>
+<p>This example shows a disabled InputToggle in both its off and on states.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/InputToggle/DisabledInputToggle"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The following props and options differ and how they function across the MUI
+  Switch component and the SDS InputToggle component:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p><code>size</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p><code>color</code>: Has no effect in SDS</p>
+  </li>
+  <li>
+    <p>
+      <code>onLabel</code> and <code>offLabel</code>: These are SDS-specific
+      props. The toggle prints one of them inside the track depending on its
+      state, which is why it is wider than a MUI Switch. Longer words may need a
+      larger <code>width</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>value</code>: Managed by SDS. The component sets it to the active
+      label so the track can render that text, so passing your own
+      <code>value</code> replaces the visible on/off text.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>checked</code>: Optional. Without it the toggle keeps its own state;
+      pass it (with <code>onChange</code>) to control the toggle from your
+      application.
+    </p>
+  </li>
+  <li>
+    <p>
+      The <code>required</code> prop is available for both the MUI and SDS
+      components.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-switch/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>checked</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Controls the toggle. Omit it and the component tracks its own state
+        internally.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>If&nbsp;<code>true</code>, the component is disabled.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>offLabel</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Off"</code></p>
+    </td>
+    <td><p>The text displayed within the InputToggle when it's off.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onLabel</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"On"</code></p>
+    </td>
+    <td><p>The text displayed within the InputToggle when it's on.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>(event) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Called whenever the user toggles the component, in either direction.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>width</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>62</code></p>
+    </td>
+    <td>
+      <p>
+        Controls the width of the InputToggle element, in pixels. Increase it
+        when custom labels do not fit.
+      </p>
+    </td>
+  </tr>
+</table>

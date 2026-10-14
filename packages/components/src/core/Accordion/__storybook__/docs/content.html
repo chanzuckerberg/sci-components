@@ -1,0 +1,235 @@
+<h1>Accordion</h1>
+<h2>SDS Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/tree/main/packages/components/src/core/Accordion"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import {
+  Accordion,
+  AccordionDetails,
+  AccordionHeader,
+} from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3>Default Accordion</h3>
+<p>This example has the minimum props needed for the Accordion component.</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Accordion/DefaultAccordion"
+></div>
+<h3>Accordion with subtitles</h3>
+<p>
+  This example show a group of Accordions, each with its own subtitle and
+  dividing line.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Accordion/AccordionWithSubtitles"
+></div>
+<h3>Accordion with disabled item</h3>
+<p>
+  This example shows a group of multiple Accordions, one of which is disabled
+  and cannot be opened.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Accordion/AccordionWithDisabledItem"
+></div>
+<h3>Accordion with left toggle</h3>
+<p>
+  This example moves the toggle chevron before the header text, which reads
+  better in a wide container.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Accordion/AccordionWithLeftToggle"
+></div>
+<h3>Accordion expanded by default</h3>
+<p>
+  This example opens on first render and uses the larger of the two chevron
+  sizes.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Accordion/AccordionExpandedByDefault"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The SDS Accordion component introduces a couple new props that aren't part of
+  the MUI version, that make it easier to implement options that may be needed
+  in CZI products:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>useDivider</code>: this boolean prop adds a horizontal line below
+      the accordion, which can help to visually separate it from other
+      accordions if they are stacked
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>togglePosition</code>: takes <code>"right"</code> (default) or
+      <code>"left"</code> as values, and specifies where the baked-in Chevron
+      icon that acts as a visual toggle sits
+    </p>
+  </li>
+</ul>
+<p>
+  Additionally, there are a couple of MUI props that are not currently supported
+  by the SDS Accordion component:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>defaultExpanded</code>: this boolean prop has no effect when used
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>expanded</code>: this boolean prop is not recommended to be used
+      with the SDS Accordion component, because it forces the accordion to
+      remain open even when the user clicks it as though to close it
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>disableGutters</code>: this boolean prop is not needed with the SDS
+      accordion design, and has no effect
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-accordion/">here</a>
+  .
+</p>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>id</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. A unique id for each accordion item, also used to derive the
+        ids that link the header and its content for screen readers.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>defaultExpanded</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>Render the accordion already expanded on first paint.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>disabled</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        The <code>disabled</code> prop, when set to <code>true</code>, prevents
+        user interaction with the Accordion component, keeping it in a static
+        state.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>togglePosition</code></p>
+    </td>
+    <td>
+      <p><code>"right"</code> |</p>
+      <p><code>"left"</code></p>
+    </td>
+    <td>
+      <p><code>"right"</code></p>
+    </td>
+    <td><p>Position of the toggle chevron icon.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>useDivider</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td><p>Display a divider line between accordion items.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>subtitle</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Set on AccordionHeader. A text that will be displayed as a subtitle
+        beneath the accordion title.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>chevronSize</code></p>
+    </td>
+    <td>
+      <p><code>"xs"</code> |</p>
+      <p><code>"s"</code></p>
+    </td>
+    <td>
+      <p><code>"xs"</code></p>
+    </td>
+    <td><p>Set on AccordionHeader. Size of the toggle chevron icon.</p></td>
+  </tr>
+</table>
+<p>
+  There are more props that can be used with the Accordion component, via those
+  available to
+  <a href="https://mui.com/material-ui/api/accordion/#props"
+    >MUI's Accordion component</a
+  >.
+</p>

@@ -17,7 +17,7 @@ describe("<Banner />", () => {
 
   it("renders text given to it", () => {
     const text = "this is a test component";
-    render(<Test {...Test.args} textChild={text} />);
+    render(<Test {...Test.args}>{text}</Test>);
     const bannerText = screen.getByText(text);
     expect(bannerText).not.toBeNull();
   });
@@ -50,5 +50,34 @@ describe("<Banner />", () => {
     fireEvent(closeButton, click);
 
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("hands dismissal to the caller once dismissed is set", () => {
+    const onClose = vi.fn();
+    render(<Test {...Test.args} dismissed={false} onClose={onClose} />);
+
+    fireEvent.click(screen.getByRole("button"));
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("banner")).not.toBeNull();
+  });
+
+  it("renders nothing while dismissed is true", () => {
+    render(<Test {...Test.args} dismissed />);
+    expect(screen.queryByRole("banner")).toBeNull();
+  });
+
+  it("stays dismissed after dismissing itself", () => {
+    const { rerender } = render(<Test {...Test.args} />);
+
+    fireEvent.click(screen.getByRole("button"));
+    rerender(<Test {...Test.args} intent="negative" />);
+
+    expect(screen.queryByRole("banner")).toBeNull();
+  });
+
+  it("does not render a close button when it is not dismissible", () => {
+    render(<Test {...Test.args} dismissible={false} />);
+    expect(screen.queryByRole("button")).toBeNull();
   });
 });

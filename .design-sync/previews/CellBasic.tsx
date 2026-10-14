@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import RawCellBasic from "@components/src/core/CellBasic";
 import Icon from "@components/src/core/Icon";
 import Tag from "@components/src/core/Tag";
@@ -42,16 +42,31 @@ const IconGroupRight = (props: { children: React.ReactNode }) => (
 
 const SlotRightIconGroup = (
   <IconGroupRight>
-    <Button aria-label="Bar Chart Vertical 4" size="large" sdsType="primary" sdsStyle="minimal">
+    <Button
+      aria-label="Bar Chart Vertical 4"
+      size="large"
+      sdsType="primary"
+      sdsStyle="minimal"
+    >
       <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
     </Button>
     <Button aria-label="Copy" sdsType="primary" sdsStyle="minimal" size="large">
       <Icon sdsIcon="Copy" sdsSize="s" />
     </Button>
-    <Button aria-label="Search Lines Horizontal 3" size="large" sdsType="primary" sdsStyle="minimal">
+    <Button
+      aria-label="Search Lines Horizontal 3"
+      size="large"
+      sdsType="primary"
+      sdsStyle="minimal"
+    >
       <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
     </Button>
-    <Button aria-label="Download" size="large" sdsType="primary" sdsStyle="minimal">
+    <Button
+      aria-label="Download"
+      size="large"
+      sdsType="primary"
+      sdsStyle="minimal"
+    >
       <Icon sdsIcon="Download" sdsSize="s" />
     </Button>
   </IconGroupRight>
@@ -59,27 +74,67 @@ const SlotRightIconGroup = (
 
 const SlotBottomTagGroup = (
   <div style={{ display: "flex", gap: "4px" }}>
-    <Tag label="lorem ipsum" hover={false} sdsStyle="rounded" sdsType="secondary" />
+    <Tag
+      label="lorem ipsum"
+      hover={false}
+      sdsStyle="rounded"
+      sdsType="secondary"
+    />
     <Tag label="dollor" hover={false} sdsStyle="rounded" sdsType="secondary" />
-    <Tag label="sit amet" hover={false} sdsStyle="rounded" sdsType="secondary" />
+    <Tag
+      label="sit amet"
+      hover={false}
+      sdsStyle="rounded"
+      sdsType="secondary"
+    />
   </div>
 );
 
 const SlotBottomIconGroup = (
   <div style={{ display: "flex", gap: "4px" }}>
-    <Button aria-label="Bar Chart Vertical 4" size="large" sdsType="secondary" sdsStyle="minimal" backgroundOnHover={false}>
+    <Button
+      aria-label="Bar Chart Vertical 4"
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
       <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
     </Button>
-    <Button aria-label="Copy" size="large" sdsType="secondary" sdsStyle="minimal" backgroundOnHover={false}>
+    <Button
+      aria-label="Copy"
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
       <Icon sdsIcon="Copy" sdsSize="s" />
     </Button>
-    <Button aria-label="Search Lines Horizontal 3" size="large" sdsType="secondary" sdsStyle="minimal" backgroundOnHover={false}>
+    <Button
+      aria-label="Search Lines Horizontal 3"
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
       <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
     </Button>
-    <Button aria-label="Tree Horizontal" size="large" sdsType="secondary" sdsStyle="minimal" backgroundOnHover={false}>
+    <Button
+      aria-label="Tree Horizontal"
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
       <Icon sdsIcon="TreeHorizontal" sdsSize="s" />
     </Button>
-    <Button aria-label="Download" size="large" sdsType="secondary" sdsStyle="minimal" backgroundOnHover={false}>
+    <Button
+      aria-label="Download"
+      size="large"
+      sdsType="secondary"
+      sdsStyle="minimal"
+      backgroundOnHover={false}
+    >
       <Icon sdsIcon="Download" sdsSize="s" />
     </Button>
   </div>
@@ -158,7 +213,13 @@ export function Test() {
           <RawCellBasic
             primaryText="Primary Text"
             primaryTextComponentSlotRight={
-              <Tag label="lorem ipsum" hover={false} sdsStyle="rounded" sdsType="secondary" style={{ margin: 0 }} />
+              <Tag
+                label="lorem ipsum"
+                hover={false}
+                sdsStyle="rounded"
+                sdsType="secondary"
+                style={{ margin: 0 }}
+              />
             }
             secondaryText="Secondary Text"
             tertiaryText="Tertiary Text"

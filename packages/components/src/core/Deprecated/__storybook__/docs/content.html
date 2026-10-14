@@ -1,0 +1,229 @@
+<h1>Deprecated components</h1>
+<p>
+  The components listed on this page are deprecated. They still ship with
+  @czi-sds/components and their stories are kept in this section so that
+  existing usages can be read and migrated, but every one of them has a
+  supported replacement and will be removed in a future major version.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-4 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Warning:</strong>
+    Do not use these components in new work. A deprecated component receives no
+    new features or design updates, and its eventual removal is a breaking
+    change you would have to absorb later. Reach for the replacement instead.
+  </p>
+</div>
+<br />
+<h2>What to use instead</h2>
+<p>
+  Each deprecated component repeats this guidance in a callout on its own story.
+  The table below collects it in one place.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Deprecated component</p></td>
+    <td><p>Use instead</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/story/deprecated-alert--default" target="_top">
+          Alert
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a href="./?path=/story/components-callout--default" target="_top">
+          Callout
+        </a>
+        or
+        <a href="./?path=/story/components-notification--default" target="_top">
+          Notification
+        </a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/deprecated-buttondropdownlegacy--default"
+          target="_top"
+        >
+          ButtonDropdownLegacy
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/components-buttons-buttondropdown--default"
+          target="_top"
+        >
+          ButtonDropdown
+        </a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/story/deprecated-buttonicon--default" target="_top">
+          ButtonIcon
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/components-buttons-button--default"
+          target="_top"
+        >
+          Button
+        </a>
+        , with <code>sdsStyle</code> set to <code>"icon"</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/story/deprecated-buttonlegacy--default" target="_top">
+          ButtonLegacy
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/components-buttons-button--default"
+          target="_top"
+        >
+          Button
+        </a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/deprecated-buttontogglelegacy--default"
+          target="_top"
+        >
+          ButtonToggleLegacy
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/components-buttons-buttontoggle--default"
+          target="_top"
+        >
+          ButtonToggle
+        </a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/deprecated-chip--medium-square-chip"
+          target="_top"
+        >
+          Chip
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a href="./?path=/story/components-tag--default" target="_top">Tag</a>
+        or
+        <a href="./?path=/story/components-tagfilter--default" target="_top">
+          TagFilter
+        </a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/docs/deprecated-icon--documentation" target="_top">
+          Icon
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        An icon from
+        <a href="https://phosphoricons.com" target="_blank">Phosphor</a>, or
+        from
+        <a href="./?path=/docs/icons-overview--documentation" target="_top">
+          @czi-sds/icons
+        </a>
+        for the ones SDS draws itself
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/docs/deprecated-link--documentation" target="_top">
+          Link
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        The
+        <a
+          href="./?path=/docs/design-documentation-genes-link--docs"
+          target="_top"
+        >
+          Link
+        </a>
+        typography mixins, <code>fontLinkS</code> and
+        <code>fontLinkXs</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <a href="./?path=/story/deprecated-menuselect--default" target="_top">
+          MenuSelect
+        </a>
+      </p>
+    </td>
+    <td>
+      <p>
+        <a
+          href="./?path=/story/components-dropdowns-dropdown--default"
+          target="_top"
+        >
+          Dropdown
+        </a>
+        or
+        <a
+          href="./?path=/story/components-dropdowns-autocomplete--default"
+          target="_top"
+        >
+          Autocomplete
+        </a>
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Link is the one replacement that is not another component: it became a set of
+  typography mixins, and its
+  <a href="./?path=/docs/deprecated-link--documentation" target="_top">
+    documentation page
+  </a>
+  maps each old prop to the mixin that replaces it.
+</p>

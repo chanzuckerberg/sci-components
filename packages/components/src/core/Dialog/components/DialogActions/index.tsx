@@ -7,6 +7,7 @@ import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
 export interface DialogActionsProps extends RawDialogActionsProps {
   sdsSize?: DialogExtraProps["sdsSize"];
   buttonPosition?: "left" | "right";
+  /** Class name for the actions row. */
   classes?: {
     root?: string;
   };

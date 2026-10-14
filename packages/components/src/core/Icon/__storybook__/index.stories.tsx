@@ -37,7 +37,7 @@ export default {
     },
   },
   component: Icon,
-  title: "Components/Icon",
+  title: "Deprecated/Icon",
 } as Meta;
 
 // Default

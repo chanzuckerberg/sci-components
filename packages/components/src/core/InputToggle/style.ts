@@ -14,6 +14,11 @@ import {
 
 export interface InputToggleExtraProps extends SwitchProps, CommonThemeProps {
   offLabel?: string;
+  /**
+   * Called whenever the user toggles the component, in either direction. It is
+   * given the event alone: unlike MUI's, it is not passed the new checked
+   * state, which is read from the event's target instead.
+   */
   onChange?(e: React.ChangeEvent): void;
   onLabel?: string;
   width?: number;

@@ -28,10 +28,10 @@ const createColorToReferenceMap = () => {
       const darkValue = darkFamily[shade as unknown as keyof typeof darkFamily];
 
       if (lightValue) {
-        // Map light colors to their .value references
+        // Map light colors to their token references
         lightColorMap.set(
           lightValue,
-          `{sds.color.primitive.${colorFamily}.${shade}.value}`
+          `{sds.color.primitive.${colorFamily}.${shade}}`
         );
       }
 
@@ -51,8 +51,7 @@ const createColorToReferenceMap = () => {
 // Helper function to handle border colors with opacity
 const handleBorderOpacityColor = (
   colorValue: string,
-  targetMap: Map<string, string>,
-  isDark: boolean
+  targetMap: Map<string, string>
 ): string | null => {
   if (colorValue.length < 8) {
     return null;
@@ -70,17 +69,13 @@ const handleBorderOpacityColor = (
     return null;
   }
 
-  return baseReference.replace(
-    isDark ? ".darkValue}" : ".value}",
-    isDark ? `.darkValue}${potentialOpacity}` : `.value}${potentialOpacity}`
-  );
+  return `${baseReference}${potentialOpacity}`;
 };
 
 // Helper function to extract and convert color from border string
 const extractAndConvertBorderColor = (
   borderValue: string,
-  targetMap: Map<string, string>,
-  isDark: boolean
+  targetMap: Map<string, string>
 ): string | null => {
   // Extract color from border string (e.g., "1px solid #1976d2" or "1px solid #1976d233")
   const colorMatch = borderValue.match(/(#[a-fA-F0-9]{6,8})/);
@@ -91,7 +86,7 @@ const extractAndConvertBorderColor = (
   const colorValue = colorMatch[1];
 
   // Try to handle colors with opacity first
-  const opacityResult = handleBorderOpacityColor(colorValue, targetMap, isDark);
+  const opacityResult = handleBorderOpacityColor(colorValue, targetMap);
   if (opacityResult) {
     return borderValue.replace(colorValue, opacityResult);
   }
@@ -121,11 +116,7 @@ const convertBorderToReference = (
   const targetMap = isDark ? colorMaps.darkColorMap : colorMaps.lightColorMap;
 
   // Try to extract and convert the color
-  const convertedBorder = extractAndConvertBorderColor(
-    borderValue,
-    targetMap,
-    isDark
-  );
+  const convertedBorder = extractAndConvertBorderColor(borderValue, targetMap);
   if (convertedBorder) {
     return convertedBorder;
   }

@@ -42,7 +42,6 @@ export default {
     },
   },
   component: ButtonToggleLegacy,
-  tags: ["deprecated"],
   title: "Deprecated/ButtonToggleLegacy",
 } as Meta;
 

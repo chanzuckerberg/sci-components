@@ -60,7 +60,8 @@ export default {
       control: {
         type: "boolean",
       },
-      description: "Whether to invert the text color",
+      description:
+        "Whether to set the text in the light color, for a dark backdrop",
     },
     headerFontSize: {
       control: {

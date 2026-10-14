@@ -6,13 +6,10 @@ export const TOOLTIP_EXCLUDED_CONTROLS = [
   "arrow",
   "arrowOffset",
   "placement",
-  "sdsStyle",
   "title",
   "width",
   "textAlign",
   "followCursor",
-  "inverted",
-  "hasInvertedStyle",
 ];
 
 export const TOOLTIP_LIVE_PREVIEW_STYLES = {
@@ -35,7 +32,6 @@ export const TOOLTIP_PLACEMENT_STYLES = {
   padding: "100px",
 };
 
-export const TOOLTIP_SDS_STYLES = ["light", "dark"];
 export const TOOLTIP_SUBTITLE_OPTIONS = [
   "Lorem ipsum dolor sit amet",
   undefined,

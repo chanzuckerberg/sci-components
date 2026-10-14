@@ -57,7 +57,6 @@ const Header = () => {
             </div>
           }
           textAlign="left"
-          hasInvertedStyle={false}
           placement="bottom-end"
           arrow
         >

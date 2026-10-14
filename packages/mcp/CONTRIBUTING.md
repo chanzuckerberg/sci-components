@@ -31,7 +31,8 @@ packages/mcp/
 ├── data/                   # Static data files
 │   ├── component-list.json
 │   ├── component-props/
-│   ├── component-props-storybook/
+│   ├── component-docs/
+│   ├── resources/
 │   └── tailwind.json
 ├── scripts/                # Build and generation scripts
 │   ├── generate-*.ts       # Data generation scripts

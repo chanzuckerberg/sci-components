@@ -1,6 +1,6 @@
 # `@czi-sds/data-viz`
 
-Data visualization components for the [Science Design System (SDS)](https://sds.czi.design/), primarily built on [Apache ECharts](https://echarts.apache.org/). Shares the same Material UI v9 peer dependencies as `@czi-sds/components`.
+Data visualization components for the [Science Design System (SDS)](https://chanzuckerberg.github.io/sci-components/), primarily built on [Apache ECharts](https://echarts.apache.org/). Shares the same Material UI v9 peer dependencies as `@czi-sds/components`.
 
 Full documentation (usage, scripts, contributing) lives in the [repository README](https://github.com/chanzuckerberg/sci-components#readme).
 
@@ -36,7 +36,7 @@ The `@czi-sds/data-viz` release that ships with SDS `24.0.0` also requires Mater
 
 ## Links
 
-- [Design docs (Zeroheight)](https://sds.czi.design/)
+- [Design system documentation](https://chanzuckerberg.github.io/sci-components/)
 - [Full repo docs](https://github.com/chanzuckerberg/sci-components#readme)
 - [npm package](https://www.npmjs.com/package/@czi-sds/data-viz)
 - [ECharts documentation](https://echarts.apache.org/en/index.html)

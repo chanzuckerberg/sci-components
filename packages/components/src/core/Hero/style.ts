@@ -31,6 +31,24 @@ interface StyledHeroProps extends HeroProps, CommonThemeProps {
   backgroundFillColor?: string;
 }
 
+/**
+ * The color the header and the caption are set in.
+ *
+ * `hasInvertTextColor` is for text over a dark backdrop: imagery, or a darkening
+ * mask over it. That backdrop is dark whatever the theme, so the text has to
+ * stay light in both — which is what `textPrimaryOnDark` is for. The theme's
+ * inverse text would follow the theme instead and come out near-black in the
+ * dark theme, over an image that had not changed.
+ */
+const getTextColor = (props: StyledHeroProps) => {
+  const { hasInvertTextColor } = props;
+  const semanticColors = getSemanticColors(props);
+
+  return hasInvertTextColor
+    ? semanticColors?.base?.textPrimaryOnDark
+    : semanticColors?.base?.textPrimary;
+};
+
 const getResponsivePadding = (props: StyledHeroProps) => {
   const { overlayContainerMinMargin } = props;
   const spaces = getSpaces(props);
@@ -135,16 +153,9 @@ export const HeroTitle = styled("h1")`
     }
   }}
 
-  ${(props: StyledHeroProps) => {
-    const { hasInvertTextColor } = props;
-    const semanticColors = getSemanticColors(props);
-
-    return css`
-      color: ${hasInvertTextColor
-        ? semanticColors?.base?.textPrimaryInverse
-        : semanticColors?.base?.textPrimary};
-    `;
-  }}
+  ${(props: StyledHeroProps) => css`
+    color: ${getTextColor(props)};
+  `}
 
   margin: 0;
   padding: 0;
@@ -154,14 +165,10 @@ export const HeroCaption = styled("p")`
   ${fontBodyXxxs}
 
   ${(props: StyledHeroProps) => {
-    const { hasInvertTextColor } = props;
-    const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
 
     return css`
-      color: ${hasInvertTextColor
-        ? semanticColors?.base?.textPrimaryInverse
-        : semanticColors?.base?.textPrimary};
+      color: ${getTextColor(props)};
 
       margin: ${spaces?.m}px 0 0;
     `;

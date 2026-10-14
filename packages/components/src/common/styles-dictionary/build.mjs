@@ -5,8 +5,16 @@ import { fileURLToPath } from "url";
 import { cssFormatter } from "./custom-formatters/cssFormatter.mjs";
 import { scssFormatter } from "./custom-formatters/scssFormatter.mjs";
 import { tailwindFormatter } from "./custom-formatters/tailwindFormatter.mjs";
+import { resolveCustomReferences } from "./custom-preprocessors/resolveCustomReferences.mjs";
 
 const DIRNAME = dirname(fileURLToPath(import.meta.url));
+
+// REGISTER THE CUSTOM PREPROCESSORS
+
+StyleDictionary.registerPreprocessor({
+  name: "sds/resolve-custom-references",
+  preprocessor: resolveCustomReferences,
+});
 
 // REGISTER THE CUSTOM FORMATTERS
 

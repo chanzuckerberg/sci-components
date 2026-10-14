@@ -97,7 +97,8 @@ const StageOnStyles = (props: ButtonToggleExtraProps): SerializedStyles => {
      * Specificity boost via Emotion's `&&&&` technique.
      *
      * Each `&` repeats the component's generated class, producing a selector
-     * like `.css-abc123.css-abc123.css-abc123.css-abc123` — specificity (0,4,0).
+     * like `.css-abc123.css-abc123.css-abc123.css-abc123`, which has
+     * specificity (0,4,0).
      *
      * This is needed because ButtonGroup styles its children with
      * `&& .MuiButtonGroup-grouped` which has specificity (0,3,0).

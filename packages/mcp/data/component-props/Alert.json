@@ -2,8 +2,8 @@
   "Alert": {
     "props": {
       "text": {
-        "type": "any",
-        "isRequired": false
+        "isRequired": true,
+        "type": "any"
       }
     }
   }

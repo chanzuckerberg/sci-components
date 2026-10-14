@@ -7,7 +7,6 @@ const TooltipNameSpaceTest = (props: TooltipProps) => {
       title="Label lorem ipsum tellus ac cursus commodo, tortor mauris."
       subtitle="Subtitle"
       width="wide"
-      sdsStyle="light"
       placement="top"
       arrow
       open

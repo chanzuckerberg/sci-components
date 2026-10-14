@@ -2,6 +2,10 @@ import { ChipProps } from "@mui/material";
 import { ExtraTagProps, SdsTagColorType, StyledTag } from "./style";
 
 export interface SdsTagProps extends Omit<ChipProps, "color"> {
+  /**
+   * The tag's text, and its accessible name. It is cut off with an ellipsis
+   * rather than wrapped, so keep it to a word or two.
+   */
   label: string;
   color?: SdsTagColorType;
 }

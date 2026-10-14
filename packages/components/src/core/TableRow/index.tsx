@@ -27,7 +27,6 @@ const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
       return (
         <Tooltip
           arrow
-          sdsStyle="dark"
           subtitle={tooltipSubtitle}
           title={tooltipText}
           {...tooltipProps}

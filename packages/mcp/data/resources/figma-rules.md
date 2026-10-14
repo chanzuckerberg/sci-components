@@ -95,7 +95,7 @@ import { Button, Icon } from "@czi-sds/components";
 
 ## Design System Integration
 
-- Always check Zeroheight documentation for component usage guidelines
+- Always check the SDS component documentation for component usage guidelines
 - Verify SDS component APIs before implementing
-- Use SDS Storybook for component examples and prop references
+- Use the documented code examples and prop references before writing your own
 - When in doubt, prefer SDS patterns over custom solutions

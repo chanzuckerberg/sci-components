@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Drawer, drawerClasses } from "@mui/material";
+import { backdropClasses, Drawer, drawerClasses } from "@mui/material";
 import {
   CommonThemeProps,
   getSemanticColors,
@@ -48,16 +48,18 @@ const overlayPanelStyles = (props: PanelExtraProps): SerializedStyles => {
 
   return css`
     /**
-     * (masoudmanson): This prevents the Panel from taking up the full width of the screen,
-     * allowing the ToggleButton to be clicked to close the Panel. Due to an issue with
-     * MUI v5, the following styles cause the Panel to generate accessibility (a11y) errors.
-     * In the meantime, we are ignoring the a11y errors within Storybook.
+     * (masoudmanson): The overlay Panel floats over a page that stays usable, so
+     * the control that opened it has to remain clickable. Passing pointer events
+     * through the modal root does that while leaving the root at its full size,
+     * which matters because MUI's Slide measures the root to work out how far the
+     * Panel has to travel: a root shrunk to fit its content collapses to a 0x0
+     * box in the top left corner, and a Panel anchored right or bottom then slides
+     * in from the wrong edge.
      */
-    width: fit-content;
-    height: fit-content;
-    div[data-testid="sentinelStart"],
-    div[data-testid="sentinelEnd"] {
-      width: fit-content;
+    pointer-events: none;
+
+    .${drawerClasses.paper}, .${backdropClasses.root} {
+      pointer-events: auto;
     }
 
     .${drawerClasses.paper} {

@@ -2,6 +2,14 @@ import { Meta } from "@storybook/react-vite";
 import Typography from "./components";
 
 export default {
+  parameters: {
+    /**
+     * A Bases story is documentation — a specimen of the type scale the page
+     * renders in place — and the accessibility suite is for the components,
+     * which answer for themselves in their own stories.
+     */
+    a11y: { test: "off" },
+  },
   title: "Bases/Typography",
 } as Meta;
 
@@ -44,6 +52,5 @@ export const TabularTypography = {
 // Link Typography
 
 export const LinkTypography = {
-  tags: ["new"],
   render: () => <Typography categories={["link"]} />,
 };

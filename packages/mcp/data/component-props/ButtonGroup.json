@@ -2,24 +2,45 @@
   "ButtonGroup": {
     "props": {
       "backgroundAppearance": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "matchBackground",
+        "description": "Tells the group which surface it sits on so it can pick colors with enough\ncontrast.",
+        "isRequired": false,
+        "type": "\"matchBackground\" | \"dark\""
       },
       "disabled": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
       },
       "orientation": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "horizontal",
+        "description": "The component orientation (layout flow direction).",
+        "isRequired": false,
+        "type": "\"horizontal\" | \"vertical\""
       },
       "size": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "large",
+        "description": "Size of the group. It is injected into each Button and ButtonToggle child,\nso setting size on an individual button has no effect.",
+        "isRequired": false,
+        "type": "\"small\" | \"large\" | \"medium\""
       },
       "sdsType": {
-        "type": "any",
-        "isRequired": false
+        "defaultValue": "primary",
+        "description": "Color scheme applied to every button in the group.",
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\""
+      },
+      "sdsStyle": {
+        "defaultValue": "outline",
+        "description": "Style of the button group. Outline is the only value.",
+        "isRequired": false,
+        "type": "\"outline\""
+      },
+      "children": {
+        "description": "The content of the component.",
+        "isRequired": false,
+        "type": "ReactNode"
       }
     }
   }

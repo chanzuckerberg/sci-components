@@ -28,11 +28,70 @@ module.exports = {
   // rules in all ComponentName.namespace.tsx files
   overrides: [
     {
-      files: ["packages/**/src/core/**/*.namespace-test.tsx"],
+      files: ["packages/**/src/**/*.namespace-test.tsx"],
       rules: {
         "@typescript-eslint/no-unused-vars": "off",
         "import/no-extraneous-dependencies": "off",
         "prettier/prettier": "off",
+      },
+    },
+    {
+      /**
+       * Documentation code examples. They are rendered live and typechecked, but
+       * their source is shown verbatim in the docs, so we keep it as published
+       * instead of rewriting it to house style.
+       *
+       * They are typechecked by `tsconfig.docs-check.json` rather than by the
+       * package they live in (they import `@czi-sds/components` the way a
+       * consumer does), so the parser needs that project to resolve types here.
+       */
+      files: [
+        "design-docs/pages/**/examples/*.tsx",
+        "packages/**/src/**/__storybook__/docs/examples/*.tsx",
+      ],
+      parserOptions: {
+        project: path.resolve(__dirname, "./tsconfig.docs-check.json"),
+      },
+      rules: {
+        "@typescript-eslint/no-shadow": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "import/no-duplicates": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/no-unescaped-entities": "off",
+        "sonarjs/no-duplicate-string": "off",
+      },
+    },
+    {
+      /**
+       * The published source of the components library, as opposed to the
+       * stories, tests and documentation examples alongside it, which Storybook
+       * builds and nobody installs.
+       *
+       * Phosphor is a peer of `@czi-sds/icons` and `@czi-sds/data-viz`, so both
+       * may import it: their consumers are already told to install it. It is
+       * not a peer of `@czi-sds/components`, so an import here would either
+       * bundle Phosphor or add an install nobody asked for.
+       */
+      excludedFiles: [
+        "packages/*/src/**/__storybook__/**",
+        "packages/*/src/**/__tests__/**",
+        "packages/*/src/**/*.stories.tsx",
+        "packages/*/src/**/*.figma.tsx",
+      ],
+      files: ["packages/components/src/**/*.{ts,tsx}"],
+      rules: {
+        "no-restricted-imports": [
+          "error",
+          {
+            patterns: [
+              {
+                group: ["@phosphor-icons/react", "@phosphor-icons/react/*"],
+                message:
+                  "Phosphor is not a peer of @czi-sds/components, so importing it here would either bundle it or force an install nobody asked for. Use src/core/Icon, or add the icon to packages/icons, which consumers install alongside Phosphor itself.",
+              },
+            ],
+          },
+        ],
       },
     },
     {
@@ -102,6 +161,8 @@ module.exports = {
           __dirname,
           path.resolve(__dirname, "./packages/components"),
           path.resolve(__dirname, "./packages/data-viz"),
+          path.resolve(__dirname, "./packages/icons"),
+          path.resolve(__dirname, "./packages/mcp"),
         ],
         peerDependencies: true,
       },

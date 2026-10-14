@@ -1,9 +1,74 @@
 {
   "name": "@czi-sds/data-viz",
-  "version": "1.0.1",
+  "version": "2.5.1",
   "main": "dist/index.cjs.js",
   "types": "dist/index.cjs.d.ts",
   "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.esm.d.ts",
+        "default": "./dist/index.esm.js"
+      },
+      "require": {
+        "types": "./dist/index.cjs.d.ts",
+        "default": "./dist/index.cjs.js"
+      }
+    },
+    "./HeatmapChart": {
+      "import": {
+        "types": "./dist/HeatmapChart.esm.d.ts",
+        "default": "./dist/HeatmapChart.esm.js"
+      },
+      "require": {
+        "types": "./dist/HeatmapChart.cjs.d.ts",
+        "default": "./dist/HeatmapChart.cjs.js"
+      }
+    },
+    "./ProteinStructureScene": {
+      "import": {
+        "types": "./dist/ProteinStructureScene.esm.d.ts",
+        "default": "./dist/ProteinStructureScene.esm.js"
+      },
+      "require": {
+        "types": "./dist/ProteinStructureScene.cjs.d.ts",
+        "default": "./dist/ProteinStructureScene.cjs.js"
+      }
+    },
+    "./ProteinStructureViewer": {
+      "import": {
+        "types": "./dist/ProteinStructureViewer.esm.d.ts",
+        "default": "./dist/ProteinStructureViewer.esm.js"
+      },
+      "require": {
+        "types": "./dist/ProteinStructureViewer.cjs.d.ts",
+        "default": "./dist/ProteinStructureViewer.cjs.js"
+      }
+    },
+    "./StackedBarChart": {
+      "import": {
+        "types": "./dist/StackedBarChart.esm.d.ts",
+        "default": "./dist/StackedBarChart.esm.js"
+      },
+      "require": {
+        "types": "./dist/StackedBarChart.cjs.d.ts",
+        "default": "./dist/StackedBarChart.cjs.js"
+      }
+    },
+    "./colorScales": {
+      "import": {
+        "types": "./dist/colorScales.esm.d.ts",
+        "default": "./dist/colorScales.esm.js"
+      },
+      "require": {
+        "types": "./dist/colorScales.cjs.d.ts",
+        "default": "./dist/colorScales.cjs.js"
+      }
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "author": "",
   "homepage": "https://github.com/chanzuckerberg/sci-components/tree/main/packages/sci-data-viz#readme",
   "description": "2023 Science Initiative Data Visualization Component Library",
@@ -35,7 +100,10 @@
     "data-viz",
     "visualization",
     "heatmap",
-    "echarts"
+    "echarts",
+    "molstar",
+    "protein",
+    "structure"
   ],
   "config": {
     "commitizen": {
@@ -56,10 +124,21 @@
     "@czi-sds/components": "^24.0.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^9.0.0",
+    "@phosphor-icons/react": "^2.1.10",
     "echarts": "^6.0.0",
     "lodash": "^4.17.21",
+    "molstar": "^4.12.1 || ^5.0.0",
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react-dom": ">=18.0.0",
+    "rxjs": "^7.8.2"
+  },
+  "peerDependenciesMeta": {
+    "molstar": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^2.1.0",
@@ -68,9 +147,10 @@
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "d3-scale-chromatic": "^3.0.0",
+    "molstar": "^5.6.1",
     "react-redux": "^9.1.0",
-    "simplex-noise": "^4.0.1",
-    "style-dictionary": "^4.1.0"
+    "rxjs": "^7.8.2",
+    "simplex-noise": "^4.0.1"
   },
   "dependencies": {
     "chroma-js": "^3.1.2",

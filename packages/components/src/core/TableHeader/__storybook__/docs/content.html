@@ -1,0 +1,74 @@
+<h1>TableHeader</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TableHeader/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { TableHeader } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default TableHeader</strong></h3>
+<p>
+  This example demonstrates the minimum required props for rendering a
+  TableHeader component.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/TableHeader/DefaultTableHeader"
+></div>
+<h2>Props</h2>
+<p>
+  TableHeader renders the <code>thead</code> and the header row inside it, so
+  its children are header cells rather than a row. It has two props of its own.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>children</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. The header cells, normally CellHeaders. They are wrapped in a
+        TableRow with hover and tooltips switched off, so do not pass a
+        <code>tr</code> yourself.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>filterRow</code></p>
+    </td>
+    <td>
+      <p><code>React.ReactNode</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A second row rendered below the header row, inside the same
+        <code>thead</code>, for per-column filter controls. Pass a
+        <code>tr</code> of cells. Supplying it also changes the border on the
+        header row above. PreComposedTable uses this for its column filtering.
+      </p>
+    </td>
+  </tr>
+</table>

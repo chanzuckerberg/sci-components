@@ -1,0 +1,185 @@
+<h1>Pagination</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Pagination/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Pagination } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code examples</h2>
+<h3><strong>Default Pagination</strong></h3>
+<p>
+  This example showcases a Pagination component with the minimum required props.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/Pagination/DefaultPagination"
+></div>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onPageChange</code></p>
+    </td>
+    <td>
+      <p><code>(page: number) =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>A callback function triggered when the page number is changed.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onNextPage</code></p>
+    </td>
+    <td>
+      <p><code>() =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A callback function triggered when the "Next" page button is clicked.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onPreviousPage</code></p>
+    </td>
+    <td>
+      <p><code>() =&gt; void</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        A callback function triggered when the "Previous" page button is
+        clicked.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>currentPage</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. The page to mark as current, counted from 1. Pagination keeps
+        no page state of its own.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>pageSize</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. How many items fit on a page, which together with
+        <code>totalCount</code> gives the number of pages. Must be at least 1; a
+        smaller value throws.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>totalCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Required. Total number of items being paged through: the whole set, not
+        the current page.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>siblingCount</code></p>
+    </td>
+    <td>
+      <p><code>number</code></p>
+    </td>
+    <td>
+      <p><code>1</code></p>
+    </td>
+    <td>
+      <p>
+        How many page numbers to keep on each side of the current page before
+        the rest collapse into an ellipsis.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"round"</code> |</p>
+      <p><code>"square"</code></p>
+    </td>
+    <td>
+      <p><code>"round"</code></p>
+    </td>
+    <td>
+      <p>
+        Whether the page and chevron targets are circles or rounded squares.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>truncateDropdown</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>true</code></p>
+    </td>
+    <td>
+      <p>
+        When <code>true</code> the ellipsis is a menu of the pages it stands
+        for. When <code>false</code> it is a disabled placeholder, and those
+        pages can only be reached by stepping through with the chevrons.
+      </p>
+    </td>
+  </tr>
+</table>
+<p>
+  Pagination is always controlled: it reports what was clicked and renders
+  whatever <code>currentPage</code> you hand back. It renders nothing at all
+  when <code>currentPage</code> is <code>0</code> or when there are fewer than
+  two pages to show.
+</p>

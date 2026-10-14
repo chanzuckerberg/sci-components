@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { RadioGroup } from "@mui/material";
 import CellBasic from "@components/src/core/CellBasic";
 import CellComponent from "@components/src/core/CellComponent";
@@ -85,16 +85,18 @@ export function Default() {
                 flexWrap: "wrap",
               }}
             >
-              {["info", "notice", "beta", "negative", "positive"].map((item) => (
-                <Tag
-                  key={item}
-                  color={item as any}
-                  label={item}
-                  sdsStyle="rounded"
-                  sdsType="secondary"
-                  hover={false}
-                />
-              ))}
+              {["info", "notice", "beta", "negative", "positive"].map(
+                (item) => (
+                  <Tag
+                    key={item}
+                    color={item as any}
+                    label={item}
+                    sdsStyle="rounded"
+                    sdsType="secondary"
+                    hover={false}
+                  />
+                )
+              )}
             </div>
           </CellComponent>
           <CellBasic
@@ -134,7 +136,12 @@ export function Default() {
               name="radio-buttons-group"
               defaultValue="1"
             >
-              <InputRadio checked label="Option I" caption="Caption I" value="1" />
+              <InputRadio
+                checked
+                label="Option I"
+                caption="Caption I"
+                value="1"
+              />
               <InputRadio label="Option II" caption="Caption II" value="2" />
             </RadioGroup>
           </CellComponent>

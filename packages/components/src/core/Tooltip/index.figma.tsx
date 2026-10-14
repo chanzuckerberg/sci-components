@@ -15,8 +15,6 @@ figma.connect(
   {
     props: {
       // These props were automatically mapped based on your linked code:
-      inverted: figma.boolean("hasInvertedStyle?"),
-      hasInvertedStyle: figma.boolean("hasInvertedStyle?"),
       open: figma.enum("placement", {
         topEnd: true,
       }),
@@ -45,13 +43,7 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Index
-        title="Tooltip text"
-        inverted={props.inverted}
-        hasInvertedStyle={props.hasInvertedStyle}
-        open={props.open}
-        placement={props.placement}
-      >
+      <Index title="Tooltip text" open={props.open} placement={props.placement}>
         <span>Tooltip content</span>
       </Index>
     ),

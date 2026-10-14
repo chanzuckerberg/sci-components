@@ -19,6 +19,19 @@ export type IconProps<IconName extends keyof IconNameToSizes> =
 
 /**
  * @see https://mui.com/material-ui/icons/#icons
+ *
+ * @deprecated
+ * This component is deprecated and will be removed in a future major version.
+ * SDS icons come from Phosphor now: import the icon you need from
+ * `@phosphor-icons/react`, or from `@czi-sds/icons` for the icons SDS draws
+ * itself. Both take the same props, so the only difference is the import.
+ *
+ * ```tsx
+ * // Before
+ * <Icon sdsIcon="InfoCircle" sdsSize="l" />
+ * // After
+ * <InfoIcon size={24} />
+ * ```
  */
 const Icon = forwardRef(function Icon<IconName extends keyof IconNameToSizes>(
   { className, color, shade, sdsIcon, sdsSize }: IconProps<IconName>,

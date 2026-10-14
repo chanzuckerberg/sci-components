@@ -69,7 +69,6 @@ export default {
     },
   },
   component: ButtonLegacy,
-  tags: ["deprecated"],
   title: "Deprecated/ButtonLegacy",
 } as Meta;
 

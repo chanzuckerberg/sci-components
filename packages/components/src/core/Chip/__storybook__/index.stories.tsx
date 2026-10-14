@@ -59,7 +59,6 @@ const Demo = (props: Args): JSX.Element => {
 
 export default {
   component: Demo,
-  tags: ["deprecated"],
   title: "Deprecated/Chip",
 } as Meta;
 

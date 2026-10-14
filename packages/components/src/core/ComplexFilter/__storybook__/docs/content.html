@@ -1,0 +1,339 @@
+<h1>ComplexFilter</h1>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>ComplexFilter is a Dropdown that shows what it filtered.</strong>
+    It is the
+    <a
+      href="./?path=/docs/components-dropdowns-dropdown--documentation"
+      target="_top"
+      >Dropdown</a
+    >
+    arrangement with one addition: each selection is listed beneath the trigger
+    as a tag that can be removed on its own, so an applied filter stays visible
+    next to the results it narrowed. Use plain Dropdown when the selection does
+    not need to be shown that way, and see the
+    <a href="./?path=/docs/components-dropdowns-overview--docs" target="_top"
+      >Dropdowns overview</a
+    >
+    for the rest of the family.
+  </p>
+</div>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/ComplexFilter/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { ComplexFilter } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<h2>Code Examples</h2>
+<h3>Default ComplexFilter</h3>
+<p>
+  This examples demonstrates the minimum props needed to render a ComplexFilter.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ComplexFilter/DefaultComplexFilter"
+></div>
+<h3>Multi select ComplexFilter with Search</h3>
+<p>
+  This example showcases a ComplexFilter component featuring InputSearch for
+  filtering menu items. Users have the flexibility to select multiple options to
+  refine their selections.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ComplexFilter/MultiSelectComplexFilterWithSearch"
+></div>
+<h3>ComplexFilter with realtime selection changes</h3>
+<p>
+  This example showcases the functionality that enables the dropdown selections
+  to be instantly reflected in the tags in real-time. This is achieved by
+  utilizing the <code>isTriggerChangeOnOptionClick</code> prop.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ComplexFilter/ComplexFilterWithRealtimeSelectionChanges"
+></div>
+<h3>ComplexFilter that closes on blur</h3>
+<p>
+  A single select puts its menu away as soon as something is chosen, but a multi
+  select has no such moment and holds the menu open even when a click lands
+  outside it. <code>closeOnBlur</code> gives it one: a click anywhere else
+  closes the menu, keeping whatever had been selected by then. The prop is
+  ignored while the Apply and Cancel buttons are showing, those being that
+  menu's own way out, so the filter here uses
+  <code>isTriggerChangeOnOptionClick</code> instead and applies each selection
+  as it is made.
+</p>
+<div
+  class="sds-doc-example"
+  data-example="core/ComplexFilter/ComplexFilterThatClosesOnBlur"
+></div>
+<h2>SDS vs MUI</h2>
+<p>
+  The&nbsp;ComplexFilter
+  is&nbsp;not&nbsp;directly&nbsp;based&nbsp;on&nbsp;any&nbsp;MUI&nbsp;component,&nbsp;but&nbsp;it&nbsp;does&nbsp;use&nbsp;the
+  <a
+    href="./?path=/docs/components-dropdowns-dropdown--documentation"
+    target="_top"
+  >
+    SDS&nbsp;Dropdown&nbsp;component
+  </a>
+  ,&nbsp;which&nbsp;in turn is&nbsp;ultimately&nbsp;based&nbsp;on&nbsp;
+  <a href="https://mui.com/material-ui/react-autocomplete/"
+    >MUI's&nbsp;Autocomplete&nbsp;component</a
+  >. As such, props that are available to either SDS's Dropdown and / or MUI's
+  Autocomplete can be passed to ComplexFilter as such:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <code>DropdownMenuProps</code>: use this prop to pass
+      MUIAutocomplete-specific props to ComplexFilter
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>InputDropdownProps</code>: use this prop to pass SDS
+      InputDropdown-specific props to ComplexFilter
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found in
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>buttonPosition</code></p>
+    </td>
+    <td>
+      <p><code>"left" | "right"</code></p>
+    </td>
+    <td>
+      <p><code>"right"</code></p>
+    </td>
+    <td>
+      <p>
+        Which side of the menu footer the Apply and Cancel buttons sit on. It
+        only applies alongside <code>buttons</code>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>buttons</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Puts Apply and Cancel buttons at the foot of the menu, so selections
+        take effect only once Apply is pressed.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>closeOnBlur</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Closes the filter when a click lands outside it, which it otherwise does
+        not do. It is ignored while the Apply and Cancel buttons are showing,
+        which is a multi select that has not been given
+        <code>isTriggerChangeOnOptionClick</code>. The default follows
+        <code>buttons</code>, so a filter given <code>buttons={false}</code>
+        closes on blur without being asked.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>isTriggerChangeOnOptionClick</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Determines whether changes are triggered in real-time upon clicking an
+        option
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>keepSearchOnSelect</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td></td>
+    <td>
+      <p>
+        Maintains a search input when a user selects an option (only if multiple
+        selections are allowed via the <code>multiple</code> prop; otherwise the
+        dropdown closes upon selection)
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>ReactNode</code></p>
+    </td>
+    <td>
+      <p><code>""</code></p>
+    </td>
+    <td><p>Sets the label of filter, shown both when closed and open</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>multiple</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Defines whether multiple selections or can be made from the filter
+        simultaneously or only one
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onChange</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>Function to set what happens when a new value is set via the filter</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>options</code></p>
+    </td>
+    <td>
+      <p><code>AutocompleteSingleColumnOption&lt;T&gt;[]</code> |</p>
+      <p><code>AutocompleteMultiColumnOption&lt;T&gt;[]</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The items to filter by. Passing the multi-column shape lays the menu out
+        in named columns instead of one list.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>search</code></p>
+    </td>
+    <td>
+      <p><code>boolean</code></p>
+    </td>
+    <td>
+      <p><code>false</code></p>
+    </td>
+    <td>
+      <p>
+        Provides a search bar at the top of the filter from which users can
+        narrow the list of menu items
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>value</code></p>
+    </td>
+    <td>
+      <p><code>T | T[] | null</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        The selected option or options. Leaving it out lets the filter keep
+        track of the selection itself, and passing it makes the filter
+        controlled: the tags and menu then only change when a new value comes
+        back in.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>DropdownMenuProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;DropdownMenuProps&gt;</code></p>
+    </td>
+    <td><p>-</p></td>
+    <td>
+      <p>
+        Passed straight to the menu, and with it to MUI's Autocomplete
+        underneath.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>InputDropdownProps</code></p>
+    </td>
+    <td>
+      <p><code>Partial&lt;InputDropdownProps&gt;</code></p>
+    </td>
+    <td>
+      <p><code>{ sdsStyle: "minimal" }</code></p>
+    </td>
+    <td>
+      <p>
+        Passed straight to the InputDropdown that opens the filter. Note that
+        supplying it replaces the default, so a filter that should stay minimal
+        needs <code>sdsStyle</code> passed again alongside whatever else it
+        sets.
+      </p>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,194 @@
+<h1>MCP Server</h1>
+<p>
+  @czi-sds/mcp is the official Model Context Protocol server for the Science
+  Design System. It gives an AI coding agent first-hand knowledge of SDS: every
+  component's props, its written documentation with runnable examples, and the
+  full set of design tokens. The agent writes code against what the library
+  actually exposes instead of guessing from its training data.
+</p>
+<p>
+  The Model Context Protocol is an open standard for connecting assistants to
+  external tools and data. Any MCP-capable client can use this server: Cursor,
+  Claude Code, Claude Desktop, VS Code, and others. See
+  <a href="https://modelcontextprotocol.io" target="_blank" rel="noreferrer"
+    >modelcontextprotocol.io</a
+  >
+  for the protocol itself.
+</p>
+
+<h2>Why use it</h2>
+<p>
+  Without the server, an agent asked to "add an SDS button" will reach for props
+  that sound plausible. SDS components are thin wrappers over Material UI with
+  their own <code>sdsType</code>, <code>sdsStyle</code> and
+  <code>sdsSize</code> vocabulary, and that vocabulary differs per component.
+  The server closes the gap in three ways:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>Correct props.</strong> The agent can read the real prop list for
+      a component, with resolved types, defaults and descriptions, before it
+      writes a line.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Real examples.</strong> Component documentation arrives with the
+      same code examples rendered on the component's Documentation tab in this
+      Storybook, so generated code follows house patterns.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Design tokens, not hardcoded values.</strong> The agent can look
+      up the Tailwind token for a color or spacing step rather than inventing a
+      hex value.
+    </p>
+  </li>
+</ul>
+
+<h2>What it serves</h2>
+<p>
+  Four tools the agent can call, and three resources it can read for standing
+  guidance. Both are covered in full on the
+  <a href="./?path=/docs/mcp-server-tools-and-resources--docs"
+    >Tools and Resources</a
+  >
+  page.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Tool</p></td>
+    <td><p>What it returns</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>list_components</code></p>
+    </td>
+    <td><p>Every component name in both SDS packages.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>get_component_props</code></p>
+    </td>
+    <td>
+      <p>
+        One component's props, with types, defaults, descriptions and which
+        subcomponent each belongs to.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>get_component_docs</code></p>
+    </td>
+    <td>
+      <p>
+        One component's written documentation as Markdown, including how it
+        differs from MUI and a runnable example per variation.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>get_tailwind_tokens</code></p>
+    </td>
+    <td>
+      <p>
+        Design tokens as Tailwind utilities, all of them or one category at a
+        time.
+      </p>
+    </td>
+  </tr>
+</table>
+
+<h2>How the data is built</h2>
+<p>
+  The server ships its answers rather than computing them. Everything under
+  <code>data/</code> is generated from this repository at build time and
+  published inside the package, so a request costs a file read and no network
+  call at all. The answers also always describe the version of SDS you
+  installed, not whatever is on <code>main</code>.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Generated file</p></td>
+    <td><p>Built from</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component-list.json</code></p>
+    </td>
+    <td>
+      <p>The exports of each package's <code>src/core</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component-props/</code></p>
+    </td>
+    <td>
+      <p>
+        Each component's TypeScript source, resolved by the compiler, narrowed
+        to the props its Storybook <code>argTypes</code> declare and enriched
+        from the props tables in its documentation.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>component-docs/</code></p>
+    </td>
+    <td>
+      <p>
+        Each component's <code>__storybook__/docs/content.html</code> converted
+        to Markdown, with the source of every live example inlined.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>tailwind.json</code></p>
+    </td>
+    <td><p>The Style Dictionary token build.</p></td>
+  </tr>
+</table>
+<p>
+  The practical consequence is that the documentation an agent reads is the same
+  documentation you are reading now. There is no second copy to drift.
+</p>
+
+<h2>Transports</h2>
+<p>
+  <strong>STDIO</strong> is the primary transport and what every editor
+  integration uses: the client spawns the server as a child process and talks to
+  it over standard input and output. <strong>HTTP</strong> is also available via
+  <code>yarn mcp:serve</code>, for web integrations that cannot spawn a process.
+</p>
+
+<h2>Where to go next</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <a href="./?path=/docs/mcp-server-installation--docs">Installation</a>
+      connects the server to Cursor, Claude Code, Claude Desktop or VS Code.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="./?path=/docs/mcp-server-tools-and-resources--docs"
+        >Tools and Resources</a
+      >
+      is the full reference for what the server exposes.
+    </p>
+  </li>
+  <li>
+    <p>
+      <a href="./?path=/docs/mcp-server-testing-with-the-inspector--docs"
+        >Testing with the Inspector</a
+      >
+      covers exercising the server by hand while developing it.
+    </p>
+  </li>
+</ul>

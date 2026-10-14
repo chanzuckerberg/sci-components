@@ -45,6 +45,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
         <StyledTabs
           slotProps={{ indicator: indicatorProps }}
           ref={ref}
+          sdsSize={sdsSize}
           {...rest}
         />
       </TabsContext.Provider>

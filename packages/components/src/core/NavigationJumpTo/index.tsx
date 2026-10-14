@@ -97,23 +97,54 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
       return map;
     }, [items, flattenedItems]);
 
-    const a11yProps = (title: string, elementId: string) => {
+    // A tab's id and React key both come from its title, and a title can repeat
+    // across a page ("Overview" under each section of a reference page). The
+    // first of a title keeps it to itself, so markup built from unique titles is
+    // unaffected, and each repeat after that is numbered.
+    const tabIds = useMemo(() => {
+      const seen = new Map<string, number>();
+
+      return flattenedItems.map(({ title }) => {
+        const base = toKebabCase(title);
+        const count = (seen.get(base) ?? 0) + 1;
+        seen.set(base, count);
+        return count === 1 ? base : `${base}-${count}`;
+      });
+    }, [flattenedItems]);
+
+    // Where each item's own tab falls among the flattened tabs, its sub-items
+    // following directly behind it.
+    const itemOffsets = useMemo(() => {
+      let offset = 0;
+
+      return items.map((item) => {
+        const start = offset;
+        offset += 1 + (item.subItems?.length ?? 0);
+        return start;
+      });
+    }, [items]);
+
+    const a11yProps = (tabId: string, elementId: string) => {
       return {
         "aria-controls": elementId,
-        id: `navigation-tab-${title}`,
+        id: `navigation-tab-${tabId}`,
       };
     };
 
     // Create tabs for a single item including its sub-items
-    const createTabsForItem = (item: Item, itemIndex: number) => {
+    const createTabsForItem = (
+      item: Item,
+      itemIndex: number,
+      flatIndex: number
+    ) => {
       const tabs = [
         <StyledTab
-          key={toKebabCase(item.title)}
+          key={tabIds[flatIndex]}
           label={item.title}
           tabIndex={0}
           width={width}
           {...a11yProps(
-            toKebabCase(item.title),
+            tabIds[flatIndex],
             item.elementRef.current?.getAttribute("id") ||
               `navigation-panel-${itemIndex + 1}`
           )}
@@ -122,15 +153,17 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
 
       if (item.subItems) {
         item.subItems.forEach((subItem, subIndex) => {
+          const subTabId = tabIds[flatIndex + subIndex + 1];
+
           tabs.push(
             <StyledTab
-              key={`${toKebabCase(item.title)}-${toKebabCase(subItem.title)}`}
+              key={subTabId}
               label={subItem.title}
               tabIndex={0}
               width={width}
               isSubItem={true}
               {...a11yProps(
-                toKebabCase(subItem.title),
+                subTabId,
                 subItem.elementRef.current?.getAttribute("id") ||
                   `navigation-panel-${itemIndex + 1}-${subIndex + 1}`
               )}
@@ -240,7 +273,9 @@ const NavigationJumpTo = forwardRef<HTMLDivElement, NavigationJumpToProps>(
         width={width}
         {...rest}
       >
-        {items.map((item, itemIndex) => createTabsForItem(item, itemIndex))}
+        {items.map((item, itemIndex) =>
+          createTabsForItem(item, itemIndex, itemOffsets[itemIndex])
+        )}
       </StyledTabs>
     );
   }
