@@ -30,6 +30,9 @@ import {
   StackedBarChartProps,
 } from "./StackedBarChart.types";
 
+// Color map key for the cumulative remaining segment, which has no data item
+const REMAINING_COLOR_KEY = "__remaining__";
+
 // Type for tracking items with animation state
 type AnimatedItem = StackedBarChartDataItem & {
   percentage: number;
@@ -211,7 +214,7 @@ const buildLegendItems = (
     remainingPercentage: number;
     remainingLabel: string;
     remainingUnit?: string;
-    theme: SDSTheme;
+    remainingColor?: string;
   }
 ): LegendItemData[] => {
   const {
@@ -224,7 +227,7 @@ const buildLegendItems = (
     remainingPercentage,
     remainingLabel,
     remainingUnit,
-    theme,
+    remainingColor,
   } = options;
 
   const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
@@ -260,7 +263,7 @@ const buildLegendItems = (
     legendItems.push({
       name: remainingLabel,
       value: remainingValueDisplay,
-      color: theme?.palette?.sds?.base?.backgroundTertiary,
+      color: remainingColor,
       disabled: true,
     });
   }
@@ -410,6 +413,30 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     overflowColor,
   ]);
 
+  // Calculate totals and remaining segments for cumulative mode
+  const {
+    effectiveMaxAmount,
+    hasRemaining,
+    remainingValue,
+    remainingPercentage,
+  } = useMemo(() => {
+    const total = data.reduce((sum, item) => sum + item.value, 0);
+    const maxAmountValue =
+      mode === "cumulative" && maxAmount ? maxAmount : total;
+    const hasRemainingSegment = mode === "cumulative" && total < maxAmountValue;
+    const remaining = hasRemainingSegment ? maxAmountValue - total : 0;
+    const remainingPct = hasRemainingSegment
+      ? (remaining / maxAmountValue) * 100
+      : 0;
+
+    return {
+      effectiveMaxAmount: maxAmountValue,
+      hasRemaining: hasRemainingSegment,
+      remainingValue: remaining,
+      remainingPercentage: remainingPct,
+    };
+  }, [data, mode, maxAmount]);
+
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
   const [autoColorMap, setAutoColorMap] = useState<Map<string, string>>(
@@ -420,12 +447,13 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const previousProcessedRef = useRef<AnimatedItem[]>([]);
   const previousDataKeysRef = useRef<Set<string>>(new Set());
 
-  // Visible items, the grouped item, then hidden items take consecutive
-  // positions in one color cycle, so the overflow menu continues the chart
-  const colorItems = useMemo(
-    () => (hasOverflow ? [...chartData, ...hiddenItems] : chartData),
-    [chartData, hiddenItems, hasOverflow]
-  );
+  // Visible items, the grouped item, hidden items, then the remaining segment
+  // take consecutive positions in one color cycle
+  const colorItems = useMemo(() => {
+    const items = hasOverflow ? [...chartData, ...hiddenItems] : [...chartData];
+    if (hasRemaining) items.push({ name: REMAINING_COLOR_KEY, value: 0 });
+    return items;
+  }, [chartData, hiddenItems, hasOverflow, hasRemaining]);
   const generateColorMap = useCallback(
     (items: StackedBarChartDataItem[]): Map<string, string> =>
       new Map(
@@ -479,33 +507,13 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorItems, generateColorMap]);
 
+  const remainingColor =
+    autoColorMap.get(REMAINING_COLOR_KEY) ??
+    theme?.palette?.sds?.base?.backgroundTertiary;
+
   // Calculate display badge value
   const displayBadge =
     badge ?? calculateBadgeText(data.length, selectedIndices.length);
-
-  // Calculate totals and remaining segments for cumulative mode
-  const {
-    effectiveMaxAmount,
-    hasRemaining,
-    remainingValue,
-    remainingPercentage,
-  } = useMemo(() => {
-    const total = data.reduce((sum, item) => sum + item.value, 0);
-    const maxAmountValue =
-      mode === "cumulative" && maxAmount ? maxAmount : total;
-    const hasRemainingSegment = mode === "cumulative" && total < maxAmountValue;
-    const remaining = hasRemainingSegment ? maxAmountValue - total : 0;
-    const remainingPct = hasRemainingSegment
-      ? (remaining / maxAmountValue) * 100
-      : 0;
-
-    return {
-      effectiveMaxAmount: maxAmountValue,
-      hasRemaining: hasRemainingSegment,
-      remainingValue: remaining,
-      remainingPercentage: remainingPct,
-    };
-  }, [data, mode, maxAmount]);
 
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
@@ -678,7 +686,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           remainingPercentage: displayRemainingPercentage,
           remainingLabel,
           remainingUnit,
-          theme,
+          remainingColor,
         }
       ),
     [
@@ -692,7 +700,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       displayRemainingPercentage,
       remainingLabel,
       remainingUnit,
-      theme,
+      remainingColor,
     ]
   );
 
@@ -879,7 +887,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         {previousProcessedRef.current.length > 0 && (
           <BarSegment
             key="remaining"
-            color={theme?.palette?.sds?.base?.backgroundTertiary}
+            color={remainingColor}
             percentage={displayRemainingPercentage}
             height={barHeight}
             isLast={true}
