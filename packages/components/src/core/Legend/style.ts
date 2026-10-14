@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontBodyMediumXxxs,
+  fontBodyMediumXxxxs,
+  fontBodyXxxxs,
   getCorners,
   getSpaces,
   getSemanticColors,
@@ -14,9 +15,12 @@ export const LegendContainer = styled("div")`
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
+    // Negative margin cancels the item padding so the first item's swatch
+    // and text sit flush with the chart edge while hover backgrounds keep padding
     return `
       column-gap: ${spaces?.xxs}px;
       row-gap: ${spaces?.xxxs}px;
+      margin: -${spaces?.xxxs}px -${spaces?.xxs}px;
     `;
   }}
 `;
@@ -64,8 +68,8 @@ export const LegendIcon = styled("div")<LegendIconProps>`
     const corners = getCorners(props);
 
     return `
-      width: ${spaces?.m}px;
-      height: ${spaces?.m}px;
+      width: ${spaces?.s}px;
+      height: ${spaces?.s}px;
       border-radius: ${corners?.s}px;
       background-color: ${color};
       flex-shrink: 0;
@@ -81,7 +85,7 @@ interface LegendTextProps extends CommonThemeProps {
 }
 
 export const LegendLabel = styled("span")<LegendTextProps>`
-  ${fontBodyMediumXxxs}
+  ${fontBodyMediumXxxxs}
   ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     return `
@@ -91,7 +95,7 @@ export const LegendLabel = styled("span")<LegendTextProps>`
 `;
 
 export const LegendValue = styled("span")<LegendTextProps>`
-  ${fontBodyMediumXxxs}
+  ${fontBodyXxxxs}
   ${(props: LegendTextProps) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);

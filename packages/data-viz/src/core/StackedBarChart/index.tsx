@@ -11,6 +11,7 @@ import {
   getMode,
   Legend,
   SDSTheme,
+  Tag,
   Tooltip,
   TooltipTable,
   type LegendItemData,
@@ -20,7 +21,6 @@ import {
   ChartWrapper,
   BarContainer,
   BarSegment,
-  StyledBadge,
   TitleContainer,
   StyledStackedBarChartWrapper,
 } from "./style";
@@ -65,7 +65,8 @@ const calculateLegendValue = (
 
   // Count format: show value with optional unit
   const effectiveUnit = item.unit || globalUnit;
-  return effectiveUnit ? `${item.value} ${effectiveUnit}` : `${item.value}`;
+  const formattedValue = item.value.toLocaleString();
+  return effectiveUnit ? `${formattedValue} ${effectiveUnit}` : formattedValue;
 };
 
 // Helper: Get segment opacity based on hover and selection state
@@ -250,9 +251,10 @@ const buildLegendItems = (
       // Count format
       // Use remainingUnit or global unit (never a custom unit from data items)
       const effectiveRemainingUnit = remainingUnit || unit || "";
+      const formattedRemaining = remainingValue.toLocaleString();
       remainingValueDisplay = effectiveRemainingUnit
-        ? `${remainingValue} ${effectiveRemainingUnit}`
-        : `${remainingValue}`;
+        ? `${formattedRemaining} ${effectiveRemainingUnit}`
+        : formattedRemaining;
     }
 
     legendItems.push({
@@ -350,7 +352,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     hideBadge = false,
     data,
     width = "100%",
-    barHeight: barHeightProp = 16,
+    barHeight: barHeightProp = 8,
     showLegend = true,
     showLegendValues = true,
     legendValueFormat = "percentage",
@@ -818,7 +820,13 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       <TitleContainer>
         <ChartTitle>{title}</ChartTitle>
         {!hideBadge && displayBadge && (
-          <StyledBadge>{displayBadge}</StyledBadge>
+          <Tag
+            label={displayBadge}
+            sdsType="secondary"
+            sdsStyle="rounded"
+            color="neutral"
+            hover={false}
+          />
         )}
       </TitleContainer>
       {chartContent}

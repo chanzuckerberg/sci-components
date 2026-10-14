@@ -165,7 +165,6 @@ export const Default = {
 export const ProportionalWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "proportional",
     showLegend: true,
@@ -181,7 +180,6 @@ export const ProportionalWithSelectionDimBehavior = {
 export const CumulativeWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
     unit: "datasets",
@@ -200,7 +198,6 @@ export const CumulativeWithSelectionDimBehavior = {
 export const ProportionalWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "proportional",
     showLegend: true,
@@ -217,7 +214,6 @@ export const ProportionalWithSelectionHideBehavior = {
 export const CumulativeWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
     unit: "datasets",
@@ -237,7 +233,6 @@ export const CumulativeWithSelectionHideBehavior = {
 export const WithMouseEvents = {
   render: WithMouseEventsStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     showLegend: true,
     showLegendValues: true,

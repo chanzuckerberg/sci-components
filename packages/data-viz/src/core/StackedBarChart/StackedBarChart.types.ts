@@ -63,7 +63,7 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   width?: number | string;
   /**
    * Height of the bar in pixels (minimum 1px)
-   * @default 16
+   * @default 8
    */
   barHeight?: number;
   /**
