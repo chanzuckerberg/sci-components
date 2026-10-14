@@ -102,26 +102,26 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 117 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             117 datasets
           </span>
@@ -129,21 +129,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         <div
           aria-label="Imaging: 61 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-11pd0q1-LegendIcon ezuih623"
+            class="css-2o0lxg-LegendIcon ezuih623"
             color="#a45894"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             61 datasets
           </span>
@@ -151,21 +151,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         <div
           aria-label="Sequencing: 34 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-isizbb-LegendIcon ezuih623"
+            class="css-5h1k1x-LegendIcon ezuih623"
             color="#b96a6c"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Sequencing
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             34 datasets
           </span>
@@ -173,21 +173,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         <div
           aria-label="Proteomics: 15 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-7x0h7i-LegendIcon ezuih623"
+            class="css-jf6bkr-LegendIcon ezuih623"
             color="#a98954"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15 datasets
           </span>
@@ -195,21 +195,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         <div
           aria-label="Spatial Transcriptomics: 78 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-jjlxlk-LegendIcon ezuih623"
+            class="css-itmxbz-LegendIcon ezuih623"
             color="#90a45a"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             78 datasets
           </span>
@@ -217,21 +217,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         <div
           aria-label="Prosthetics: 130 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-f0q3g3-LegendIcon ezuih623"
+            class="css-1ygq6i6-LegendIcon ezuih623"
             color="#7ab978"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Prosthetics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             130 datasets
           </span>
@@ -239,21 +239,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         <div
           aria-label="Epigenomics: 100 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             100 datasets
           </span>
@@ -262,22 +262,22 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           aria-disabled="true"
           aria-label="Remaining: 165 datasets"
           aria-pressed="false"
-          class="css-1250dlt-LegendItem ezuih624"
+          class="css-10olufv-LegendItem ezuih624"
           disabled=""
           role="button"
           tabindex="-1"
         >
           <div
-            class="css-13yzq9k-LegendIcon ezuih623"
+            class="css-6plgot-LegendIcon ezuih623"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
             disabled=""
           >
             Remaining
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
             disabled=""
           >
             165 datasets
@@ -425,26 +425,26 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 117 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             117 datasets
           </span>
@@ -452,21 +452,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         <div
           aria-label="Imaging: 61 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-11pd0q1-LegendIcon ezuih623"
+            class="css-2o0lxg-LegendIcon ezuih623"
             color="#a45894"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             61 datasets
           </span>
@@ -474,21 +474,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         <div
           aria-label="Sequencing: 34 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-isizbb-LegendIcon ezuih623"
+            class="css-5h1k1x-LegendIcon ezuih623"
             color="#b96a6c"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Sequencing
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             34 datasets
           </span>
@@ -496,21 +496,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         <div
           aria-label="Proteomics: 15 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-7x0h7i-LegendIcon ezuih623"
+            class="css-jf6bkr-LegendIcon ezuih623"
             color="#a98954"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15 datasets
           </span>
@@ -518,21 +518,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         <div
           aria-label="Spatial Transcriptomics: 78 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-jjlxlk-LegendIcon ezuih623"
+            class="css-itmxbz-LegendIcon ezuih623"
             color="#90a45a"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             78 datasets
           </span>
@@ -540,21 +540,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         <div
           aria-label="Prosthetics: 130 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-f0q3g3-LegendIcon ezuih623"
+            class="css-1ygq6i6-LegendIcon ezuih623"
             color="#7ab978"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Prosthetics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             130 datasets
           </span>
@@ -562,21 +562,21 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         <div
           aria-label="Epigenomics: 100 datasets"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             100 datasets
           </span>
@@ -585,22 +585,22 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           aria-disabled="true"
           aria-label="Remaining: 165 datasets"
           aria-pressed="false"
-          class="css-1250dlt-LegendItem ezuih624"
+          class="css-10olufv-LegendItem ezuih624"
           disabled=""
           role="button"
           tabindex="-1"
         >
           <div
-            class="css-13yzq9k-LegendIcon ezuih623"
+            class="css-6plgot-LegendIcon ezuih623"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
             disabled=""
           >
             Remaining
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
             disabled=""
           >
             165 datasets
@@ -748,26 +748,26 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             22%
           </span>
@@ -775,21 +775,21 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-11pd0q1-LegendIcon ezuih623"
+            class="css-2o0lxg-LegendIcon ezuih623"
             color="#a45894"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             11%
           </span>
@@ -797,21 +797,21 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-isizbb-LegendIcon ezuih623"
+            class="css-5h1k1x-LegendIcon ezuih623"
             color="#b96a6c"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Sequencing
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             6%
           </span>
@@ -819,21 +819,21 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-7x0h7i-LegendIcon ezuih623"
+            class="css-jf6bkr-LegendIcon ezuih623"
             color="#a98954"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             3%
           </span>
@@ -841,21 +841,21 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-jjlxlk-LegendIcon ezuih623"
+            class="css-itmxbz-LegendIcon ezuih623"
             color="#90a45a"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15%
           </span>
@@ -863,21 +863,21 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-f0q3g3-LegendIcon ezuih623"
+            class="css-1ygq6i6-LegendIcon ezuih623"
             color="#7ab978"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Prosthetics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             24%
           </span>
@@ -885,21 +885,21 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             19%
           </span>
@@ -1012,26 +1012,26 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             22%
           </span>
@@ -1039,21 +1039,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-11pd0q1-LegendIcon ezuih623"
+            class="css-2o0lxg-LegendIcon ezuih623"
             color="#a45894"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             11%
           </span>
@@ -1061,21 +1061,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-isizbb-LegendIcon ezuih623"
+            class="css-5h1k1x-LegendIcon ezuih623"
             color="#b96a6c"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Sequencing
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             6%
           </span>
@@ -1083,21 +1083,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-7x0h7i-LegendIcon ezuih623"
+            class="css-jf6bkr-LegendIcon ezuih623"
             color="#a98954"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             3%
           </span>
@@ -1105,21 +1105,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-jjlxlk-LegendIcon ezuih623"
+            class="css-itmxbz-LegendIcon ezuih623"
             color="#90a45a"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15%
           </span>
@@ -1127,21 +1127,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-f0q3g3-LegendIcon ezuih623"
+            class="css-1ygq6i6-LegendIcon ezuih623"
             color="#7ab978"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Prosthetics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             24%
           </span>
@@ -1149,21 +1149,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             19%
           </span>
@@ -1310,26 +1310,26 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             22%
           </span>
@@ -1337,21 +1337,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-11pd0q1-LegendIcon ezuih623"
+            class="css-2o0lxg-LegendIcon ezuih623"
             color="#a45894"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             11%
           </span>
@@ -1359,21 +1359,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-isizbb-LegendIcon ezuih623"
+            class="css-5h1k1x-LegendIcon ezuih623"
             color="#b96a6c"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Sequencing
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             6%
           </span>
@@ -1381,21 +1381,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-7x0h7i-LegendIcon ezuih623"
+            class="css-jf6bkr-LegendIcon ezuih623"
             color="#a98954"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             3%
           </span>
@@ -1403,21 +1403,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-jjlxlk-LegendIcon ezuih623"
+            class="css-itmxbz-LegendIcon ezuih623"
             color="#90a45a"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15%
           </span>
@@ -1425,21 +1425,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-f0q3g3-LegendIcon ezuih623"
+            class="css-1ygq6i6-LegendIcon ezuih623"
             color="#7ab978"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Prosthetics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             24%
           </span>
@@ -1447,21 +1447,21 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             19%
           </span>
@@ -1608,26 +1608,26 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 22%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             22%
           </span>
@@ -1635,21 +1635,21 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 11%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-11pd0q1-LegendIcon ezuih623"
+            class="css-2o0lxg-LegendIcon ezuih623"
             color="#a45894"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             11%
           </span>
@@ -1657,21 +1657,21 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Sequencing: 6%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-isizbb-LegendIcon ezuih623"
+            class="css-5h1k1x-LegendIcon ezuih623"
             color="#b96a6c"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Sequencing
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             6%
           </span>
@@ -1679,21 +1679,21 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 3%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-7x0h7i-LegendIcon ezuih623"
+            class="css-jf6bkr-LegendIcon ezuih623"
             color="#a98954"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             3%
           </span>
@@ -1701,21 +1701,21 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 15%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-jjlxlk-LegendIcon ezuih623"
+            class="css-itmxbz-LegendIcon ezuih623"
             color="#90a45a"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15%
           </span>
@@ -1723,21 +1723,21 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Prosthetics: 24%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-f0q3g3-LegendIcon ezuih623"
+            class="css-1ygq6i6-LegendIcon ezuih623"
             color="#7ab978"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Prosthetics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             24%
           </span>
@@ -1745,21 +1745,21 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 19%"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             19%
           </span>
@@ -1929,26 +1929,26 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
         />
       </div>
       <div
-        class="css-1awyp41-LegendContainer ezuih625"
+        class="css-qrrplm-LegendContainer ezuih625"
       >
         <div
           aria-label="Transcriptomic: 117"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-shdqgc-LegendIcon ezuih623"
+            class="css-21x60r-LegendIcon ezuih623"
             color="#615da2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Transcriptomic
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             117
           </span>
@@ -1956,21 +1956,21 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
         <div
           aria-label="Imaging: 61"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-bjwt7g-LegendIcon ezuih623"
+            class="css-1vkafx8-LegendIcon ezuih623"
             color="#ab598d"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Imaging
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             61
           </span>
@@ -1978,21 +1978,21 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
         <div
           aria-label="Proteomics: 15"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1egv2mf-LegendIcon ezuih623"
+            class="css-169auc0-LegendIcon ezuih623"
             color="#b5765f"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Proteomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             15
           </span>
@@ -2000,21 +2000,21 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
         <div
           aria-label="Spatial Transcriptomics: 78"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-ynh0ya-LegendIcon ezuih623"
+            class="css-12ouozh-LegendIcon ezuih623"
             color="#9a9a55"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Spatial Transcriptomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             78
           </span>
@@ -2022,21 +2022,21 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
         <div
           aria-label="Epigenomics: 100"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-1gv1y2q-LegendIcon ezuih623"
+            class="css-e8rnel-LegendIcon ezuih623"
             color="#7eb570"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Epigenomics
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             100
           </span>
@@ -2046,21 +2046,21 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           aria-haspopup="true"
           aria-label="Other (4): 270"
           aria-pressed="false"
-          class="css-1fwuwu6-LegendItem ezuih624"
+          class="css-15ci9m1-LegendItem ezuih624"
           role="button"
           tabindex="0"
         >
           <div
-            class="css-h9tagg-LegendIcon ezuih623"
+            class="css-55fg2q-LegendIcon ezuih623"
             color="#8ac2d2"
           />
           <span
-            class="css-1h1b9ui-LegendLabel ezuih622"
+            class="css-1apzfui-LegendLabel ezuih622"
           >
             Other (4)
           </span>
           <span
-            class="css-mhgay5-LegendValue ezuih621"
+            class="css-n6k7ig-LegendValue ezuih621"
           >
             270
           </span>

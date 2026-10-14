@@ -346,12 +346,12 @@ describe("<Legend />", () => {
       { name: "Hidden 2", value: 20 },
     ];
 
-    it("groups overflow items under an Other entry that opens a menu", () => {
+    it("groups overflow items under an entry that opens a menu", () => {
       render(<Legend items={sampleItems} overflowItems={overflowItems} />);
 
       expect(screen.queryByText("Hidden 1")).not.toBeInTheDocument();
 
-      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other \(2\)/ }));
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: "Other" }));
 
       expect(screen.getByText("Hidden 1")).toBeInTheDocument();
       expect(screen.getByText("Hidden 2")).toBeInTheDocument();
@@ -374,7 +374,7 @@ describe("<Legend />", () => {
       const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other/ });
       fireEvent.click(otherEntry);
       expect(handleClick).toHaveBeenCalledWith(
-        expect.objectContaining({ name: "Other (2)" }),
+        expect.objectContaining({ name: "Other" }),
         LEGEND_OVERFLOW_INDEX
       );
       expect(handleSelectionChange).not.toHaveBeenCalled();
@@ -384,7 +384,7 @@ describe("<Legend />", () => {
       expect(handleClick).toHaveBeenLastCalledWith(overflowItems[1], 4);
     });
 
-    it("marks the Other entry as pressed when a hidden item is selected", () => {
+    it("marks the grouped entry as pressed when a hidden item is selected", () => {
       render(
         <Legend
           items={sampleItems}
@@ -397,7 +397,7 @@ describe("<Legend />", () => {
       expect(otherEntry).toHaveAttribute(ARIA_PRESSED, ARIA_PRESSED_TRUE);
     });
 
-    it("applies overflowItem overrides to the grouped entry", () => {
+    it("displays the overflowItem name and value exactly as given", () => {
       render(
         <Legend
           items={sampleItems}

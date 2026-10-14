@@ -739,17 +739,18 @@ describe("<StackedBarChart />", () => {
       { name: "Epsilon", value: 4 },
     ];
 
-    it("groups items past maxVisibleItems into an Other entry with their total", () => {
+    it("groups items past maxVisibleItems under remainingLabel with their total", () => {
       render(
         <StackedBarChart
           data={manyItems}
           maxVisibleItems={3}
+          remainingLabel="Other"
           legendValueFormat="count"
         />
       );
 
       expect(
-        screen.getByRole(BUTTON_ROLE, { name: "Other (2): 10" })
+        screen.getByRole(BUTTON_ROLE, { name: "Other: 10" })
       ).toBeInTheDocument();
       expect(screen.queryByText("Delta")).not.toBeInTheDocument();
     });
@@ -761,12 +762,13 @@ describe("<StackedBarChart />", () => {
         <StackedBarChart
           data={manyItems}
           maxVisibleItems={3}
+          remainingLabel="Other"
           selectedIndices={[]}
           onSelectionChange={handleSelectionChange}
         />
       );
 
-      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other \(2\)/ }));
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other/ }));
       fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Epsilon/ }));
 
       expect(handleSelectionChange).toHaveBeenCalledWith([4], [manyItems[4]]);
@@ -786,9 +788,11 @@ describe("<StackedBarChart />", () => {
         />
       );
 
-      expect(screen.getByText("Remaining")).toBeInTheDocument();
-
-      const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other \(2\)/ });
+      // Both the cumulative remaining entry and the grouped entry use the label
+      const [remainingEntry, otherEntry] = screen.getAllByRole(BUTTON_ROLE, {
+        name: /Remaining/,
+      });
+      expect(remainingEntry).toHaveAttribute("aria-disabled", "true");
       expect(otherEntry).toHaveAttribute("aria-pressed", "true");
 
       fireEvent.click(otherEntry);

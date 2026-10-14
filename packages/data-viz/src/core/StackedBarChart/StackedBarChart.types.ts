@@ -145,7 +145,8 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    */
   maxAmount?: number;
   /**
-   * Label for the remaining/unknown segment in cumulative mode
+   * Label for the remaining/unknown segment in cumulative mode, and for the
+   * grouped segment created by maxVisibleItems. Displayed exactly as given
    * @default "Remaining"
    */
   remainingLabel?: string;
@@ -166,16 +167,11 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   colorGeneratorOptions?: DiscreteColorGeneratorOptions;
   /**
    * Maximum number of items shown as their own segment and legend entry.
-   * Items past this count are grouped into a single "Other (N)" segment whose
-   * legend entry opens a menu listing them. Selection indices still refer to
-   * positions in `data`.
+   * Items past this count are grouped into a single segment labeled with
+   * remainingLabel whose legend entry opens a menu listing them. Selection
+   * indices still refer to positions in `data`.
    */
   maxVisibleItems?: number;
-  /**
-   * Label for the grouped overflow item, rendered as "<label> (N)"
-   * @default "Other"
-   */
-  overflowLabel?: string;
   /**
    * Color for the grouped overflow segment. Generated with the palette if omitted
    */

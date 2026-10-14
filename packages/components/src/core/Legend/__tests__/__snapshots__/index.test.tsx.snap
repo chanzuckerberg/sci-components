@@ -2,21 +2,21 @@
 
 exports[`<Legend /> > Default story renders snapshot 1`] = `
 <div
-  class="css-1awyp41-LegendContainer ezuih625"
+  class="css-qrrplm-LegendContainer ezuih625"
 >
   <div
     aria-label="H. sapiens: 3212"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-shdqgc-LegendIcon ezuih623"
+      class="css-21x60r-LegendIcon ezuih623"
       color="#615da2"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       H. sapiens
     </span>
@@ -24,16 +24,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="M. musculus: 130"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-6nxyfq-LegendIcon ezuih623"
+      class="css-dhhvl2-LegendIcon ezuih623"
       color="#9e5798"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       M. musculus
     </span>
@@ -41,16 +41,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="C. Jacques: 89"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1rk7kiu-LegendIcon ezuih623"
+      class="css-roojss-LegendIcon ezuih623"
       color="#b76278"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       C. Jacques
     </span>
@@ -58,16 +58,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="D. rerio: 65"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-18glw64-LegendIcon ezuih623"
+      class="css-154ygdq-LegendIcon ezuih623"
       color="#b27c5a"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       D. rerio
     </span>
@@ -75,16 +75,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="M. mulatta: 45"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-3fuew5-LegendIcon ezuih623"
+      class="css-1yidkaz-LegendIcon ezuih623"
       color="#9e9554"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       M. mulatta
     </span>
@@ -92,16 +92,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="P. mirabillis: 34"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-xn6335-LegendIcon ezuih623"
+      class="css-1rztd84-LegendIcon ezuih623"
       color="#89ab60"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       P. mirabillis
     </span>
@@ -109,16 +109,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="V. cholerae: 12"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1oudfow-LegendIcon ezuih623"
+      class="css-at6cn8-LegendIcon ezuih623"
       color="#78bc7f"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       V. cholerae
     </span>
@@ -126,16 +126,16 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
   <div
     aria-label="Other (17): 40"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-h9tagg-LegendIcon ezuih623"
+      class="css-55fg2q-LegendIcon ezuih623"
       color="#8ac2d2"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       Other (17)
     </span>
@@ -148,26 +148,26 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-1awyp41-LegendContainer ezuih625"
+    class="css-qrrplm-LegendContainer ezuih625"
   >
     <div
       aria-label="H. sapiens: 3212"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-shdqgc-LegendIcon ezuih623"
+        class="css-21x60r-LegendIcon ezuih623"
         color="#615da2"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         H. sapiens
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         3,212
       </span>
@@ -175,21 +175,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="M. musculus: 130"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-6nxyfq-LegendIcon ezuih623"
+        class="css-dhhvl2-LegendIcon ezuih623"
         color="#9e5798"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         M. musculus
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         130
       </span>
@@ -197,21 +197,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="C. Jacques: 89"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1rk7kiu-LegendIcon ezuih623"
+        class="css-roojss-LegendIcon ezuih623"
         color="#b76278"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         C. Jacques
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         89
       </span>
@@ -219,21 +219,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="D. rerio: 65"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-18glw64-LegendIcon ezuih623"
+        class="css-154ygdq-LegendIcon ezuih623"
         color="#b27c5a"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         D. rerio
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         65
       </span>
@@ -241,21 +241,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="M. mulatta: 45"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-3fuew5-LegendIcon ezuih623"
+        class="css-1yidkaz-LegendIcon ezuih623"
         color="#9e9554"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         M. mulatta
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         45
       </span>
@@ -263,21 +263,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="P. mirabillis: 34"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-xn6335-LegendIcon ezuih623"
+        class="css-1rztd84-LegendIcon ezuih623"
         color="#89ab60"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         P. mirabillis
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         34
       </span>
@@ -285,21 +285,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="V. cholerae: 12"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1oudfow-LegendIcon ezuih623"
+        class="css-at6cn8-LegendIcon ezuih623"
         color="#78bc7f"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         V. cholerae
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         12
       </span>
@@ -307,21 +307,21 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-label="Other (17): 40"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-h9tagg-LegendIcon ezuih623"
+        class="css-55fg2q-LegendIcon ezuih623"
         color="#8ac2d2"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         Other (17)
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         40
       </span>
@@ -331,20 +331,20 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       aria-haspopup="true"
       aria-label="Other (5): 40"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-13yzq9k-LegendIcon ezuih623"
+        class="css-6plgot-LegendIcon ezuih623"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         Other (5)
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         40
       </span>
@@ -391,26 +391,26 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-1awyp41-LegendContainer ezuih625"
+    class="css-qrrplm-LegendContainer ezuih625"
   >
     <div
       aria-label="H. sapiens: 3212"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-shdqgc-LegendIcon ezuih623"
+        class="css-21x60r-LegendIcon ezuih623"
         color="#615da2"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         H. sapiens
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         3,212
       </span>
@@ -418,21 +418,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="M. musculus: 130"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-6nxyfq-LegendIcon ezuih623"
+        class="css-dhhvl2-LegendIcon ezuih623"
         color="#9e5798"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         M. musculus
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         130
       </span>
@@ -440,21 +440,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="C. Jacques: 89"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1rk7kiu-LegendIcon ezuih623"
+        class="css-roojss-LegendIcon ezuih623"
         color="#b76278"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         C. Jacques
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         89
       </span>
@@ -462,21 +462,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="D. rerio: 65"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-18glw64-LegendIcon ezuih623"
+        class="css-154ygdq-LegendIcon ezuih623"
         color="#b27c5a"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         D. rerio
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         65
       </span>
@@ -484,21 +484,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="M. mulatta: 45"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-3fuew5-LegendIcon ezuih623"
+        class="css-1yidkaz-LegendIcon ezuih623"
         color="#9e9554"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         M. mulatta
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         45
       </span>
@@ -506,21 +506,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="P. mirabillis: 34"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-xn6335-LegendIcon ezuih623"
+        class="css-1rztd84-LegendIcon ezuih623"
         color="#89ab60"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         P. mirabillis
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         34
       </span>
@@ -528,21 +528,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="V. cholerae: 12"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-1oudfow-LegendIcon ezuih623"
+        class="css-at6cn8-LegendIcon ezuih623"
         color="#78bc7f"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         V. cholerae
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         12
       </span>
@@ -550,21 +550,21 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
     <div
       aria-label="Other (17): 40"
       aria-pressed="false"
-      class="css-1fwuwu6-LegendItem ezuih624"
+      class="css-15ci9m1-LegendItem ezuih624"
       role="button"
       tabindex="0"
     >
       <div
-        class="css-h9tagg-LegendIcon ezuih623"
+        class="css-55fg2q-LegendIcon ezuih623"
         color="#8ac2d2"
       />
       <span
-        class="css-1h1b9ui-LegendLabel ezuih622"
+        class="css-1apzfui-LegendLabel ezuih622"
       >
         Other (17)
       </span>
       <span
-        class="css-mhgay5-LegendValue ezuih621"
+        class="css-n6k7ig-LegendValue ezuih621"
       >
         40
       </span>
@@ -608,26 +608,26 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
 
 exports[`<Legend /> > WithValues story renders snapshot 1`] = `
 <div
-  class="css-1awyp41-LegendContainer ezuih625"
+  class="css-qrrplm-LegendContainer ezuih625"
 >
   <div
     aria-label="H. sapiens: 3212"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-shdqgc-LegendIcon ezuih623"
+      class="css-21x60r-LegendIcon ezuih623"
       color="#615da2"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       H. sapiens
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       3,212
     </span>
@@ -635,21 +635,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="M. musculus: 130"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-6nxyfq-LegendIcon ezuih623"
+      class="css-dhhvl2-LegendIcon ezuih623"
       color="#9e5798"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       M. musculus
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       130
     </span>
@@ -657,21 +657,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="C. Jacques: 89"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1rk7kiu-LegendIcon ezuih623"
+      class="css-roojss-LegendIcon ezuih623"
       color="#b76278"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       C. Jacques
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       89
     </span>
@@ -679,21 +679,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="D. rerio: 65"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-18glw64-LegendIcon ezuih623"
+      class="css-154ygdq-LegendIcon ezuih623"
       color="#b27c5a"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       D. rerio
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       65
     </span>
@@ -701,21 +701,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="M. mulatta: 45"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-3fuew5-LegendIcon ezuih623"
+      class="css-1yidkaz-LegendIcon ezuih623"
       color="#9e9554"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       M. mulatta
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       45
     </span>
@@ -723,21 +723,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="P. mirabillis: 34"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-xn6335-LegendIcon ezuih623"
+      class="css-1rztd84-LegendIcon ezuih623"
       color="#89ab60"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       P. mirabillis
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       34
     </span>
@@ -745,21 +745,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="V. cholerae: 12"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-1oudfow-LegendIcon ezuih623"
+      class="css-at6cn8-LegendIcon ezuih623"
       color="#78bc7f"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       V. cholerae
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       12
     </span>
@@ -767,21 +767,21 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
   <div
     aria-label="Other (17): 40"
     aria-pressed="false"
-    class="css-1fwuwu6-LegendItem ezuih624"
+    class="css-15ci9m1-LegendItem ezuih624"
     role="button"
     tabindex="0"
   >
     <div
-      class="css-h9tagg-LegendIcon ezuih623"
+      class="css-55fg2q-LegendIcon ezuih623"
       color="#8ac2d2"
     />
     <span
-      class="css-1h1b9ui-LegendLabel ezuih622"
+      class="css-1apzfui-LegendLabel ezuih622"
     >
       Other (17)
     </span>
     <span
-      class="css-mhgay5-LegendValue ezuih621"
+      class="css-n6k7ig-LegendValue ezuih621"
     >
       40
     </span>

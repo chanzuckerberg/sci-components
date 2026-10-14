@@ -373,7 +373,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     unit,
     colorGeneratorOptions,
     maxVisibleItems,
-    overflowLabel = "Other",
     overflowColor,
     ...rest
   } = props;
@@ -399,7 +398,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     return [
       ...data.slice(0, visibleCount),
       {
-        name: `${overflowLabel} (${hiddenItems.length})`,
+        name: remainingLabel,
         value: hiddenItems.reduce((sum, item) => sum + item.value, 0),
         color: overflowColor,
       },
@@ -409,7 +408,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     hiddenItems,
     hasOverflow,
     visibleCount,
-    overflowLabel,
+    remainingLabel,
     overflowColor,
   ]);
 

@@ -63,13 +63,13 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    */
   hoveredIndex?: number | null;
   /**
-   * Items grouped under a single "Other (N)" entry whose click opens a menu listing them.
+   * Items grouped under a single entry whose click opens a menu listing them.
    * Their indices continue after `items` (`items.length + i`) in `selectedIndices` and
    * callbacks; the grouped entry itself reports `LEGEND_OVERFLOW_INDEX`.
    */
   overflowItems?: LegendItemData[];
   /**
-   * Overrides for the grouped entry. Name defaults to "Other (N)".
+   * The grouped entry. Its name is displayed as given; defaults to "Other".
    */
-  overflowItem?: Partial<LegendItemData>;
+  overflowItem?: LegendItemData;
 }

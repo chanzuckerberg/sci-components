@@ -56,14 +56,7 @@ export default {
         type: "number",
       },
       description:
-        "Items past this count are grouped into an 'Other (N)' segment whose legend entry opens a menu listing them",
-    },
-    overflowLabel: {
-      control: {
-        type: "text",
-      },
-      description:
-        "Label for the grouped overflow item, rendered as '<label> (N)'",
+        "Items past this count are grouped into a single segment labeled with remainingLabel whose legend entry opens a menu listing them",
     },
     maxAmount: {
       control: {
@@ -100,7 +93,8 @@ export default {
       control: {
         type: "text",
       },
-      description: "Label for the remaining/unknown segment in cumulative mode",
+      description:
+        "Label for the remaining segment in cumulative mode and for the grouped segment created by maxVisibleItems",
     },
     remainingUnit: {
       control: {
@@ -249,6 +243,7 @@ export const WithOverflowMenu = {
   args: {
     data: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
     maxVisibleItems: 5,
+    remainingLabel: "Other (4)",
     legendValueFormat: "count",
     showLegend: true,
     showLegendValues: true,

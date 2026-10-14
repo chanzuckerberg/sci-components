@@ -147,10 +147,7 @@ const Legend = (props: LegendProps): JSX.Element => {
     onItemClick?.(item, index);
   };
 
-  const overflowEntry: LegendItemData = {
-    name: `Other (${overflowItems.length})`,
-    ...overflowItem,
-  };
+  const overflowEntry: LegendItemData = { name: "Other", ...overflowItem };
   const isOverflowSelected = selectedIndices.some((i) => i >= overflowStart);
   const isOverflowHovered =
     hoveredIndex === LEGEND_OVERFLOW_INDEX ||
