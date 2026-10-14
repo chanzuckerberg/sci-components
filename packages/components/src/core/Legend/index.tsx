@@ -59,9 +59,13 @@ const Legend = (props: LegendProps): JSX.Element => {
 
     if (onSelectionChange) {
       const isSelected = selectedIndices.includes(index);
-      const newSelectedIndices = isSelected
-        ? selectedIndices.filter((i) => i !== index)
-        : [...selectedIndices, index];
+      let newSelectedIndices: number[];
+
+      if (isSelected) {
+        newSelectedIndices = selectedIndices.filter((i) => i !== index);
+      } else {
+        newSelectedIndices = [...selectedIndices, index];
+      }
 
       onSelectionChange(newSelectedIndices);
     }
