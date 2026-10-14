@@ -86,12 +86,10 @@ const Legend = (props: LegendProps): JSX.Element => {
     onItemClick?.(item, index);
   };
 
+  // The grouped entry is rendered as the last item; hover and selection on
+  // any menu item count toward it
   const overflowEntry: LegendItemData = { name: "Other", ...overflowItem };
-  const isOverflowSelected = selectedIndices.some(
-    (i) => i >= overflowEntryIndex
-  );
-  const isOverflowHovered =
-    hoveredIndex !== null && hoveredIndex >= overflowEntryIndex;
+  const entries = hasOverflow ? [...items, overflowEntry] : items;
 
   const handleOverflowSelectionChange = (indices: number[]) => {
     onSelectionChange?.([
@@ -103,9 +101,14 @@ const Legend = (props: LegendProps): JSX.Element => {
   return (
     <>
       <LegendContainer {...rest}>
-        {items.map((item, index) => {
-          const isHovered = hoveredIndex === index;
-          const isSelected = selectedIndices.includes(index);
+        {entries.map((item, index) => {
+          const isOverflowEntry = hasOverflow && index === overflowEntryIndex;
+          const isHovered = isOverflowEntry
+            ? hoveredIndex !== null && hoveredIndex >= index
+            : hoveredIndex === index;
+          const isSelected = isOverflowEntry
+            ? selectedIndices.some((i) => i >= index)
+            : selectedIndices.includes(index);
           const itemColor = colors?.[index] || item.color || fallbackColor;
 
           return (
@@ -113,12 +116,20 @@ const Legend = (props: LegendProps): JSX.Element => {
               key={`${item.name}-${index}`}
               onMouseEnter={() => handleMouseEnter(item, index)}
               onMouseLeave={() => handleMouseLeave(item, index)}
-              onClick={() => handleClick(item, index)}
+              onClick={(event) => {
+                if (!isOverflowEntry) return handleClick(item, index);
+                setOverflowAnchor(event.currentTarget);
+                onItemClick?.(item, index);
+              }}
               role="button"
               tabIndex={item.disabled ? -1 : 0}
               aria-label={`${item.name}${item.value ? `: ${item.value}` : ""}`}
               aria-pressed={isSelected}
               aria-disabled={item.disabled}
+              aria-haspopup={isOverflowEntry ? "true" : undefined}
+              aria-expanded={
+                isOverflowEntry ? overflowAnchor !== null : undefined
+              }
               isSelected={isSelected}
               disabled={item.disabled}
               isHovered={isHovered}
@@ -138,41 +149,6 @@ const Legend = (props: LegendProps): JSX.Element => {
             </LegendItem>
           );
         })}
-        {hasOverflow && (
-          <LegendItem
-            onMouseEnter={() =>
-              handleMouseEnter(overflowEntry, overflowEntryIndex)
-            }
-            onMouseLeave={() =>
-              handleMouseLeave(overflowEntry, overflowEntryIndex)
-            }
-            onClick={(event) => {
-              setOverflowAnchor(event.currentTarget);
-              onItemClick?.(overflowEntry, overflowEntryIndex);
-            }}
-            role="button"
-            tabIndex={0}
-            aria-label={`${overflowEntry.name}${overflowEntry.value ? `: ${overflowEntry.value}` : ""}`}
-            aria-pressed={isOverflowSelected}
-            aria-haspopup="true"
-            aria-expanded={overflowAnchor !== null}
-            isSelected={isOverflowSelected}
-            isHovered={isOverflowHovered}
-          >
-            <LegendIcon
-              color={overflowEntry.color || fallbackColor}
-              isDimmed={getIsDimmed(isOverflowHovered, isOverflowSelected)}
-            />
-            <LegendLabel>{overflowEntry.name}</LegendLabel>
-            {showValues && overflowEntry.value !== undefined && (
-              <LegendValue>
-                {typeof overflowEntry.value === "number"
-                  ? overflowEntry.value.toLocaleString()
-                  : overflowEntry.value}
-              </LegendValue>
-            )}
-          </LegendItem>
-        )}
       </LegendContainer>
       {hasOverflow && (
         <StyledLegendPopover
