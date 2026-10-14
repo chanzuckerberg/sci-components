@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
+import { popoverClasses } from "@mui/material";
 import {
   CommonThemeProps,
   fontBodyMediumXxxxs,
   fontBodyXxxxs,
   getCorners,
+  getShadows,
   getSpaces,
   getSemanticColors,
 } from "../styles";
+import Popover from "../Popover";
 
 export const LegendContainer = styled("div")`
   display: flex;
@@ -15,8 +18,8 @@ export const LegendContainer = styled("div")`
 
   ${(props: CommonThemeProps) => {
     const spaces = getSpaces(props);
-    // Negative margin cancels the item padding so the first item's swatch
-    // and text sit flush with the chart edge while hover backgrounds keep padding
+    // Negative margin cancels the item padding so the first swatch and text
+    // sit flush with the chart edge while hover backgrounds keep their padding
     return `
       column-gap: ${spaces?.xxs}px;
       row-gap: ${spaces?.xxxs}px;
@@ -105,4 +108,23 @@ export const LegendValue = styled("span")<LegendTextProps>`
       margin-left: ${spaces?.xxs}px;
     `;
   }}
+`;
+
+export const StyledLegendPopover = styled(Popover)`
+  & .${popoverClasses.paper} {
+    ${(props: CommonThemeProps) => {
+      const spaces = getSpaces(props);
+      const corners = getCorners(props);
+      const shadows = getShadows(props);
+
+      // Adds back the nested legend negative margins so the visual inset
+      // stays at spaces.s
+      return `
+        max-width: 480px;
+        padding: ${(spaces?.s ?? 0) + (spaces?.xxxs ?? 0)}px ${(spaces?.s ?? 0) + (spaces?.xxs ?? 0)}px;
+        border-radius: ${corners?.xl}px;
+        box-shadow: ${shadows?.l};
+      `;
+    }}
+  }
 `;

@@ -51,6 +51,20 @@ export default {
       mapping: DATA_OPTIONS,
       options: Object.keys(DATA_OPTIONS),
     },
+    maxVisibleItems: {
+      control: {
+        type: "number",
+      },
+      description:
+        "Items past this count are grouped into an 'Other (N)' segment whose legend entry opens a menu listing them",
+    },
+    overflowLabel: {
+      control: {
+        type: "text",
+      },
+      description:
+        "Label for the grouped overflow item, rendered as '<label> (N)'",
+    },
     maxAmount: {
       control: {
         type: "number",
@@ -224,6 +238,22 @@ export const CumulativeWithSelectionHideBehavior = {
     maxAmount: 700,
     legendValueFormat: "count",
     selectionBehavior: "hide",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
+  },
+};
+
+export const WithOverflowMenu = {
+  render: WithSelectionStory,
+  args: {
+    data: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
+    maxVisibleItems: 5,
+    legendValueFormat: "count",
+    showLegend: true,
+    showLegendValues: true,
+    title: "Domain",
+    width: "360px",
     colorGeneratorOptions: {
       ...DEFAULT_COLOR_GENERATOR_OPTIONS,
     },

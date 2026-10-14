@@ -2,7 +2,7 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { render, screen, fireEvent } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import Legend from "../index";
+import Legend, { LEGEND_OVERFLOW_INDEX } from "../index";
 
 const { Test } = composeStories(stories);
 
@@ -338,6 +338,79 @@ describe("<Legend />", () => {
     expect(screen.getByText("Item A")).toBeInTheDocument();
     expect(screen.getByText("Item B")).toBeInTheDocument();
     // No values should be displayed since they're undefined
+  });
+
+  describe("overflow menu", () => {
+    const overflowItems = [
+      { name: "Hidden 1", value: 10 },
+      { name: "Hidden 2", value: 20 },
+    ];
+
+    it("groups overflow items under an Other entry that opens a menu", () => {
+      render(<Legend items={sampleItems} overflowItems={overflowItems} />);
+
+      expect(screen.queryByText("Hidden 1")).not.toBeInTheDocument();
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other \(2\)/ }));
+
+      expect(screen.getByText("Hidden 1")).toBeInTheDocument();
+      expect(screen.getByText("Hidden 2")).toBeInTheDocument();
+    });
+
+    it("reports overflow item indices after the visible items", () => {
+      const handleSelectionChange = vi.fn();
+      const handleClick = vi.fn();
+
+      render(
+        <Legend
+          items={sampleItems}
+          overflowItems={overflowItems}
+          selectedIndices={[0]}
+          onSelectionChange={handleSelectionChange}
+          onItemClick={handleClick}
+        />
+      );
+
+      const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other/ });
+      fireEvent.click(otherEntry);
+      expect(handleClick).toHaveBeenCalledWith(
+        expect.objectContaining({ name: "Other (2)" }),
+        LEGEND_OVERFLOW_INDEX
+      );
+      expect(handleSelectionChange).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Hidden 2/ }));
+      expect(handleSelectionChange).toHaveBeenCalledWith([0, 4]);
+      expect(handleClick).toHaveBeenLastCalledWith(overflowItems[1], 4);
+    });
+
+    it("marks the Other entry as pressed when a hidden item is selected", () => {
+      render(
+        <Legend
+          items={sampleItems}
+          overflowItems={overflowItems}
+          selectedIndices={[3]}
+        />
+      );
+
+      const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other/ });
+      expect(otherEntry).toHaveAttribute(ARIA_PRESSED, ARIA_PRESSED_TRUE);
+    });
+
+    it("applies overflowItem overrides to the grouped entry", () => {
+      render(
+        <Legend
+          items={sampleItems}
+          overflowItems={overflowItems}
+          overflowItem={{ name: "More", value: 30 }}
+          showValues
+        />
+      );
+
+      expect(
+        screen.getByRole(BUTTON_ROLE, { name: "More: 30" })
+      ).toBeInTheDocument();
+    });
   });
 
   it("calls both onItemClick and onSelectionChange when both are provided", () => {

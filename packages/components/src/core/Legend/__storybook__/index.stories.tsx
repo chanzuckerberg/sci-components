@@ -99,6 +99,21 @@ export const WithSelection: Story = {
   },
 };
 
+export const WithOverflowMenu: Story = {
+  render: LegendSelectionWithTheme,
+  args: {
+    showValues: true,
+    overflowItems: [
+      { name: "G. gallus", color: "#975bd4" },
+      { name: "X. laevis", color: "#5b70d4" },
+      { name: "C. elegans", color: "#7ad1d9" },
+      { name: "D. melanogaster", color: "#7dd889" },
+      { name: "S. cerevisiae", color: "#a2d96a" },
+    ],
+    overflowItem: { value: 40 },
+  },
+};
+
 // Test
 
 export const Test = {

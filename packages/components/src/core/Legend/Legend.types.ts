@@ -62,4 +62,14 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    * External control for hovered index (for bidirectional hover with charts)
    */
   hoveredIndex?: number | null;
+  /**
+   * Items grouped under a single "Other (N)" entry whose click opens a menu listing them.
+   * Their indices continue after `items` (`items.length + i`) in `selectedIndices` and
+   * callbacks; the grouped entry itself reports `LEGEND_OVERFLOW_INDEX`.
+   */
+  overflowItems?: LegendItemData[];
+  /**
+   * Overrides for the grouped entry. Name defaults to "Other (N)".
+   */
+  overflowItem?: Partial<LegendItemData>;
 }

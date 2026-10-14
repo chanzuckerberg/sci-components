@@ -729,4 +729,79 @@ describe("<StackedBarChart />", () => {
       expect(handleLegendItemClick).not.toHaveBeenCalled();
     });
   });
+
+  describe("maxVisibleItems", () => {
+    const manyItems = [
+      { name: "Alpha", value: 50 },
+      { name: "Beta", value: 30 },
+      { name: "Gamma", value: 10 },
+      { name: "Delta", value: 6 },
+      { name: "Epsilon", value: 4 },
+    ];
+
+    it("groups items past maxVisibleItems into an Other entry with their total", () => {
+      render(
+        <StackedBarChart
+          data={manyItems}
+          maxVisibleItems={3}
+          legendValueFormat="count"
+        />
+      );
+
+      expect(
+        screen.getByRole(BUTTON_ROLE, { name: "Other (2): 10" })
+      ).toBeInTheDocument();
+      expect(screen.queryByText("Delta")).not.toBeInTheDocument();
+    });
+
+    it("opens a menu of hidden items that select by their data index", () => {
+      const handleSelectionChange = vi.fn();
+
+      render(
+        <StackedBarChart
+          data={manyItems}
+          maxVisibleItems={3}
+          selectedIndices={[]}
+          onSelectionChange={handleSelectionChange}
+        />
+      );
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other \(2\)/ }));
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Epsilon/ }));
+
+      expect(handleSelectionChange).toHaveBeenCalledWith([4], [manyItems[4]]);
+    });
+
+    it("keeps hidden selections mapped around the remaining entry in cumulative mode", () => {
+      const handleSelectionChange = vi.fn();
+
+      render(
+        <StackedBarChart
+          data={manyItems}
+          maxVisibleItems={3}
+          mode="cumulative"
+          maxAmount={200}
+          selectedIndices={[3]}
+          onSelectionChange={handleSelectionChange}
+        />
+      );
+
+      expect(screen.getByText("Remaining")).toBeInTheDocument();
+
+      const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other \(2\)/ });
+      expect(otherEntry).toHaveAttribute("aria-pressed", "true");
+
+      fireEvent.click(otherEntry);
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Delta/ }));
+
+      expect(handleSelectionChange).toHaveBeenCalledWith([], []);
+    });
+
+    it("renders every item individually when maxVisibleItems is not exceeded", () => {
+      render(<StackedBarChart data={manyItems} maxVisibleItems={5} />);
+
+      expect(screen.queryByText(/Other/)).not.toBeInTheDocument();
+      expect(screen.getByText("Epsilon")).toBeInTheDocument();
+    });
+  });
 });

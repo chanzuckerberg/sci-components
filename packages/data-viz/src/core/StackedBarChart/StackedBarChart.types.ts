@@ -164,4 +164,20 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    * Options for the color generator
    */
   colorGeneratorOptions?: DiscreteColorGeneratorOptions;
+  /**
+   * Maximum number of items shown as their own segment and legend entry.
+   * Items past this count are grouped into a single "Other (N)" segment whose
+   * legend entry opens a menu listing them. Selection indices still refer to
+   * positions in `data`.
+   */
+  maxVisibleItems?: number;
+  /**
+   * Label for the grouped overflow item, rendered as "<label> (N)"
+   * @default "Other"
+   */
+  overflowLabel?: string;
+  /**
+   * Color for the grouped overflow segment. Generated with the palette if omitted
+   */
+  overflowColor?: string;
 }

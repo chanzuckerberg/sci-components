@@ -9,6 +9,7 @@ import {
 import {
   generateDiscreteColors,
   getMode,
+  LEGEND_OVERFLOW_INDEX,
   Legend,
   SDSTheme,
   Tag,
@@ -371,6 +372,9 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingUnit,
     unit,
     colorGeneratorOptions,
+    maxVisibleItems,
+    overflowLabel = "Other",
+    overflowColor,
     ...rest
   } = props;
 
@@ -378,6 +382,36 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const barHeight = Math.max(1, barHeightProp);
 
   const theme = useTheme() as SDSTheme;
+
+  // Items past maxVisibleItems collapse into one "Other" segment and legend
+  // entry. Selection and hover indices keep referring to positions in `data`.
+  const visibleCount =
+    maxVisibleItems !== undefined && maxVisibleItems < data.length
+      ? Math.max(0, maxVisibleItems)
+      : data.length;
+  const hiddenItems = useMemo(
+    () => data.slice(visibleCount),
+    [data, visibleCount]
+  );
+  const hasOverflow = hiddenItems.length > 0;
+  const chartData = useMemo<StackedBarChartDataItem[]>(() => {
+    if (!hasOverflow) return data;
+    return [
+      ...data.slice(0, visibleCount),
+      {
+        name: `${overflowLabel} (${hiddenItems.length})`,
+        value: hiddenItems.reduce((sum, item) => sum + item.value, 0),
+        color: overflowColor,
+      },
+    ];
+  }, [
+    data,
+    hiddenItems,
+    hasOverflow,
+    visibleCount,
+    overflowLabel,
+    overflowColor,
+  ]);
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
@@ -419,8 +453,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Effect to manage auto-generated colors
   useEffect(() => {
-    const autoItems = data.filter((item) => !item.color);
-    const currentDataKeys = new Set(data.map((item) => item.name));
+    const autoItems = chartData.filter((item) => !item.color);
+    const currentDataKeys = new Set(chartData.map((item) => item.name));
     const previousDataKeys = previousDataKeysRef.current;
     const previousColorOptions = previousColorOptionsRef.current;
 
@@ -470,7 +504,19 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
+  }, [chartData, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
+
+  // Hidden items only appear as swatches in the overflow menu
+  const hiddenColors = useMemo(
+    () =>
+      hasOverflow
+        ? generateDiscreteColors(hiddenItems.length, {
+            ...(colorGeneratorOptions || {}),
+            isDarkMode,
+          })
+        : [],
+    [hasOverflow, hiddenItems.length, colorGeneratorOptions, isDarkMode]
+  );
 
   // Calculate display badge value
   const displayBadge =
@@ -503,7 +549,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
   const dataWithPercentages: AnimatedItem[] = useMemo(() => {
-    return data.map((item, index) => {
+    return chartData.map((item, index) => {
       const resolvedColor =
         item.color ||
         autoColorMap.get(item.name) ||
@@ -515,12 +561,20 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         percentage:
           effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
         key: item.name, // Use name as stable key for tracking
-        originalIndex: index, // Track original index for selection
+        originalIndex:
+          hasOverflow && index === visibleCount ? LEGEND_OVERFLOW_INDEX : index,
         isEntering: false,
         isExiting: false,
       };
     });
-  }, [data, effectiveMaxAmount, autoColorMap, theme]);
+  }, [
+    chartData,
+    hasOverflow,
+    visibleCount,
+    effectiveMaxAmount,
+    autoColorMap,
+    theme,
+  ]);
 
   // Handle data change animations for enters/exits.
   useEffect(() => {
@@ -579,11 +633,34 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     };
   }, [dataWithPercentages, remainingPercentage]);
 
-  // Create a Set for O(1) lookups of selected indices
-  const selectedIndicesSet = useMemo(
-    () => new Set(selectedIndices),
-    [selectedIndices]
+  // Hidden items share the "Other" segment, so hover and selection styling
+  // operate on chart indices where every hidden index maps to that segment
+  const toChartIndex = useCallback(
+    (index: number) =>
+      hasOverflow && index >= visibleCount ? LEGEND_OVERFLOW_INDEX : index,
+    [hasOverflow, visibleCount]
   );
+  const hoveredChartIndex =
+    hoveredIndex === null ? null : toChartIndex(hoveredIndex);
+  const selectedChartIndices = useMemo(
+    () => new Set(selectedIndices.map(toChartIndex)),
+    [selectedIndices, toChartIndex]
+  );
+
+  // In hide mode only the selected hidden items should size the Other segment
+  const itemsForSelection = useMemo(() => {
+    if (!hasOverflow || selectedIndices.length === 0) return animatedItems;
+    const selectedHiddenValue = hiddenItems.reduce(
+      (sum, item, index) =>
+        selectedIndices.includes(visibleCount + index) ? sum + item.value : sum,
+      0
+    );
+    return animatedItems.map((item) =>
+      item.originalIndex === LEGEND_OVERFLOW_INDEX
+        ? { ...item, value: selectedHiddenValue }
+        : item
+    );
+  }, [animatedItems, hasOverflow, hiddenItems, selectedIndices, visibleCount]);
 
   // Apply selection styling for hide mode
   // This modifies percentages but keeps all items (including hidden ones at 0%)
@@ -592,8 +669,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     useMemo(
       () =>
         applySelectionStyling(
-          animatedItems,
-          selectedIndicesSet,
+          itemsForSelection,
+          selectedChartIndices,
           selectionBehavior,
           mode,
           hasRemaining,
@@ -602,8 +679,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           remainingValue
         ),
       [
-        animatedItems,
-        selectedIndicesSet,
+        itemsForSelection,
+        selectedChartIndices,
         selectionBehavior,
         mode,
         hasRemaining,
@@ -626,18 +703,23 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   // Use updated remaining values when in hide mode with selections
   const legendItems = useMemo(
     () =>
-      buildLegendItems(dataWithPercentages, {
-        showLegendValues,
-        legendValueFormat,
-        unit,
-        hasRemaining,
-        showLegend,
-        remainingValue: displayRemainingValue,
-        remainingPercentage: displayRemainingPercentage,
-        remainingLabel,
-        remainingUnit,
-        theme,
-      }),
+      buildLegendItems(
+        dataWithPercentages.filter(
+          (item) => item.originalIndex !== LEGEND_OVERFLOW_INDEX
+        ),
+        {
+          showLegendValues,
+          legendValueFormat,
+          unit,
+          hasRemaining,
+          showLegend,
+          remainingValue: displayRemainingValue,
+          remainingPercentage: displayRemainingPercentage,
+          remainingLabel,
+          remainingUnit,
+          theme,
+        }
+      ),
     [
       dataWithPercentages,
       showLegendValues,
@@ -653,34 +735,50 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     ]
   );
 
+  // The legend lists visible items, then the remaining entry (cumulative mode),
+  // then the overflow group. Hidden data indices therefore shift past the
+  // remaining entry in the legend's index space.
+  const legendOffset = hasRemaining ? 1 : 0;
+  const toLegendIndex = useCallback(
+    (index: number) => (index >= visibleCount ? index + legendOffset : index),
+    [visibleCount, legendOffset]
+  );
+  const fromLegendIndex = useCallback(
+    (index: number) => (index > visibleCount ? index - legendOffset : index),
+    [visibleCount, legendOffset]
+  );
+
   // Handle legend item hover and leave
   const handleLegendItemHover = useCallback(
-    (_item: LegendItemData, index: number) => {
+    (_item: LegendItemData, legendIndex: number) => {
+      const index = fromLegendIndex(legendIndex);
       setHoveredIndex(index);
       if (onLegendItemMouseEnter && data[index]) {
         onLegendItemMouseEnter(data[index], index);
       }
     },
-    [onLegendItemMouseEnter, data]
+    [onLegendItemMouseEnter, data, fromLegendIndex]
   );
   const handleLegendItemLeave = useCallback(
-    (_item: LegendItemData, index: number) => {
+    (_item: LegendItemData, legendIndex: number) => {
+      const index = fromLegendIndex(legendIndex);
       setHoveredIndex(null);
       if (onLegendItemMouseLeave && data[index]) {
         onLegendItemMouseLeave(data[index], index);
       }
     },
-    [onLegendItemMouseLeave, data]
+    [onLegendItemMouseLeave, data, fromLegendIndex]
   );
 
   // Handle legend item click
   const handleLegendItemClickInternal = useCallback(
-    (_item: LegendItemData, index: number) => {
+    (_item: LegendItemData, legendIndex: number) => {
+      const index = fromLegendIndex(legendIndex);
       if (onLegendItemClick && data[index]) {
         onLegendItemClick(data[index], index);
       }
     },
-    [onLegendItemClick, data]
+    [onLegendItemClick, data, fromLegendIndex]
   );
 
   // Handle selection change - reusable logic for both segment and legend
@@ -707,7 +805,23 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       // Handle selection change
       if (!onSelectionChange) return;
 
-      const isSelected = selectedIndicesSet.has(index);
+      // The Other segment selects or clears every hidden item at once
+      if (index === LEGEND_OVERFLOW_INDEX) {
+        const anyHiddenSelected = selectedIndices.some(
+          (i) => i >= visibleCount
+        );
+        handleSelectionChange(
+          anyHiddenSelected
+            ? selectedIndices.filter((i) => i < visibleCount)
+            : [
+                ...selectedIndices,
+                ...hiddenItems.map((_, i) => visibleCount + i),
+              ]
+        );
+        return;
+      }
+
+      const isSelected = selectedChartIndices.has(index);
       const newSelectedIndices = isSelected
         ? selectedIndices.filter((i) => i !== index)
         : [...selectedIndices, index];
@@ -719,9 +833,37 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       onSegmentClick,
       data,
       selectedIndices,
-      selectedIndicesSet,
+      selectedChartIndices,
+      hiddenItems,
+      visibleCount,
       handleSelectionChange,
     ]
+  );
+
+  const overflowAnimatedItem = dataWithPercentages.find(
+    (item) => item.originalIndex === LEGEND_OVERFLOW_INDEX
+  );
+  const overflowLegendItem = overflowAnimatedItem && {
+    name: overflowAnimatedItem.name,
+    color: overflowAnimatedItem.color,
+    value: calculateLegendValue(
+      overflowAnimatedItem,
+      showLegendValues,
+      legendValueFormat,
+      unit
+    ),
+  };
+  const overflowLegendItems = useMemo<LegendItemData[]>(
+    () =>
+      hiddenItems.map((item, index) => ({
+        name: item.name,
+        color:
+          item.color ||
+          hiddenColors[index] ||
+          theme?.palette?.sds?.base?.ornamentSecondary,
+        disabled: item.disabled,
+      })),
+    [hiddenItems, hiddenColors, theme]
   );
 
   // Calculate the last visible segment (percentage > 0)
@@ -745,8 +887,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           const isLastVisible = index === lastVisibleIndex && !hasRemaining;
           return renderBarSegment(item, {
             barHeight,
-            hoveredIndex,
-            selectedIndicesSet,
+            hoveredIndex: hoveredChartIndex,
+            selectedIndicesSet: selectedChartIndices,
             selectionBehavior,
             isLast: isLastVisible,
             onMouseEnter: () => {
@@ -789,17 +931,23 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       {showLegend && (
         <Legend
           items={legendItems}
+          overflowItems={overflowLegendItems}
+          overflowItem={overflowLegendItem}
           showValues={showLegendValues}
           onItemMouseEnter={handleLegendItemHover}
           onItemMouseLeave={handleLegendItemLeave}
           onItemClick={
             onLegendItemClick ? handleLegendItemClickInternal : undefined
           }
-          selectedIndices={selectedIndices}
+          selectedIndices={selectedIndices.map(toLegendIndex)}
           onSelectionChange={
-            onSelectionChange ? handleSelectionChange : undefined
+            onSelectionChange
+              ? (indices) => handleSelectionChange(indices.map(fromLegendIndex))
+              : undefined
           }
-          hoveredIndex={hoveredIndex}
+          hoveredIndex={
+            hoveredIndex === null ? null : toLegendIndex(hoveredIndex)
+          }
         />
       )}
     </StyledStackedBarChartWrapper>
