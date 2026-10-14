@@ -39,8 +39,6 @@ const Legend = (props: LegendProps): JSX.Element => {
   // Use external hoveredIndex if provided, otherwise use internal state
   const hoveredIndex = externalHoveredIndex ?? internalHoveredIndex;
 
-  // The grouped entry takes the index after `items`; overflow items follow it
-  const overflowEntryIndex = items.length;
   const overflowStart = items.length + 1;
   const hasOverflow = overflowMenuItems.length > 0;
 
@@ -93,7 +91,7 @@ const Legend = (props: LegendProps): JSX.Element => {
     <>
       <LegendContainer {...rest}>
         {entries.map((item, index) => {
-          const isOverflowEntry = hasOverflow && index === overflowEntryIndex;
+          const isOverflowEntry = hasOverflow && index === items.length;
           const isHovered = isOverflowEntry
             ? hoveredIndex !== null && hoveredIndex >= index
             : hoveredIndex === index;
