@@ -456,12 +456,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   }, [chartData, hiddenItems, hasOverflow, hasRemaining]);
   const generateColorMap = useCallback(
     (items: StackedBarChartDataItem[]): Map<string, string> =>
-      new Map(
-        items.map((item, index) => [
-          item.name,
-          getDiscreteColor(index, items.length),
-        ])
-      ),
+      new Map(items.map((item, index) => [item.name, getDiscreteColor(index)])),
     []
   );
 
