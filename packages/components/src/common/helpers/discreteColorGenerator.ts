@@ -8,7 +8,7 @@ export interface DiscreteColorGeneratorOptions {
   isDarkMode?: boolean;
   /**
    * Starting hue in degrees (0-360)
-   * @default 240
+   * @default 250
    */
   start?: number;
   /**
