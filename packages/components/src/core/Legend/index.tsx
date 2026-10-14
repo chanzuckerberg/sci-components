@@ -102,19 +102,19 @@ const Legend = (props: LegendProps): JSX.Element => {
           const isSelected = isOverflowEntry
             ? selectedIndices.some((i) => i >= index)
             : selectedIndices.includes(index);
-          const itemColor = colors?.[index] || item.color || fallbackColor;
-
-        // Dim if:
-        // - Never dim disabled items (e.g., remaining segment)
-        // - When hovering: dim items that are neither hovered nor selected
-        // - When not hovering: dim items that are not selected (if there are selections)
-        const isDimmed = item.disabled
+            
+          // Dim if:
+          // - Never dim disabled items (e.g., remaining segment)
+          // - When hovering: dim items that are neither hovered nor selected
+          // - When not hovering: dim items that are not selected (if there are selections)
+          const isDimmed = item.disabled
           ? false
           : hoveredIndex !== null
-            ? !isHovered && !isSelected
-            : hasSelection && !isSelected;
-
-        // Determine color: use colors prop, then item color, then fallback to gray
+          ? !isHovered && !isSelected
+          : hasSelection && !isSelected;
+          
+          // Determine color: use colors prop, then item color, then fallback to gray
+          const itemColor = colors?.[index] || item.color || fallbackColor;
 
           return (
             <LegendItem
