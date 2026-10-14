@@ -77,8 +77,8 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
   overflowItem?: LegendItemData;
   /**
    * Items grouped under a single entry whose click opens a menu listing them.
-   * Their indices continue after `items` (`items.length + i`) in `selectedIndices` and
-   * callbacks; the grouped entry itself reports `LEGEND_OVERFLOW_INDEX`.
+   * In `selectedIndices` and callbacks the grouped entry is index `items.length`
+   * and grouped item i is `items.length + 1 + i`.
    */
   overflowMenuItems?: LegendItemData[];
 }

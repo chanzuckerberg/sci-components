@@ -2,7 +2,7 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { render, screen, fireEvent } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
-import Legend, { LEGEND_OVERFLOW_INDEX } from "../index";
+import Legend from "../index";
 
 const { Test } = composeStories(stories);
 
@@ -375,13 +375,13 @@ describe("<Legend />", () => {
       fireEvent.click(otherEntry);
       expect(handleClick).toHaveBeenCalledWith(
         expect.objectContaining({ name: "Other" }),
-        LEGEND_OVERFLOW_INDEX
+        sampleItems.length
       );
       expect(handleSelectionChange).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Hidden 2/ }));
-      expect(handleSelectionChange).toHaveBeenCalledWith([0, 4]);
-      expect(handleClick).toHaveBeenLastCalledWith(overflowItems[1], 4);
+      expect(handleSelectionChange).toHaveBeenCalledWith([0, 5]);
+      expect(handleClick).toHaveBeenLastCalledWith(overflowItems[1], 5);
     });
 
     it("marks the grouped entry as pressed when a hidden item is selected", () => {
@@ -389,7 +389,7 @@ describe("<Legend />", () => {
         <Legend
           items={sampleItems}
           overflowMenuItems={overflowItems}
-          selectedIndices={[3]}
+          selectedIndices={[4]}
         />
       );
 

@@ -11,12 +11,6 @@ import { SDSTheme } from "../styles";
 import { useTheme } from "@mui/material";
 import { LegendItemData, LegendProps } from "./Legend.types";
 
-/**
- * Index reported in callbacks for the grouped entry created by `overflowItems`.
- * Grouped items themselves use `items.length + i`.
- */
-export const LEGEND_OVERFLOW_INDEX = -1;
-
 const Legend = (props: LegendProps): JSX.Element => {
   const {
     items,
@@ -49,8 +43,9 @@ const Legend = (props: LegendProps): JSX.Element => {
   // Gray fallback color
   const fallbackColor = theme?.palette?.sds?.base?.ornamentSecondary;
 
-  // Overflow items continue the index space after `items`
-  const overflowStart = items.length;
+  // The grouped entry takes the index after `items`; overflow items follow it
+  const overflowEntryIndex = items.length;
+  const overflowStart = items.length + 1;
   const hasOverflow = overflowMenuItems.length > 0;
 
   const getIsDimmed = (
@@ -92,10 +87,11 @@ const Legend = (props: LegendProps): JSX.Element => {
   };
 
   const overflowEntry: LegendItemData = { name: "Other", ...overflowItem };
-  const isOverflowSelected = selectedIndices.some((i) => i >= overflowStart);
+  const isOverflowSelected = selectedIndices.some(
+    (i) => i >= overflowEntryIndex
+  );
   const isOverflowHovered =
-    hoveredIndex === LEGEND_OVERFLOW_INDEX ||
-    (hoveredIndex !== null && hoveredIndex >= overflowStart);
+    hoveredIndex !== null && hoveredIndex >= overflowEntryIndex;
 
   const handleOverflowSelectionChange = (indices: number[]) => {
     onSelectionChange?.([
@@ -145,14 +141,14 @@ const Legend = (props: LegendProps): JSX.Element => {
         {hasOverflow && (
           <LegendItem
             onMouseEnter={() =>
-              handleMouseEnter(overflowEntry, LEGEND_OVERFLOW_INDEX)
+              handleMouseEnter(overflowEntry, overflowEntryIndex)
             }
             onMouseLeave={() =>
-              handleMouseLeave(overflowEntry, LEGEND_OVERFLOW_INDEX)
+              handleMouseLeave(overflowEntry, overflowEntryIndex)
             }
             onClick={(event) => {
               setOverflowAnchor(event.currentTarget);
-              onItemClick?.(overflowEntry, LEGEND_OVERFLOW_INDEX);
+              onItemClick?.(overflowEntry, overflowEntryIndex);
             }}
             role="button"
             tabIndex={0}
