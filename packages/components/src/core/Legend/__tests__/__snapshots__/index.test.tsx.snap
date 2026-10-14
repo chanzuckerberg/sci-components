@@ -329,7 +329,7 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
     <div
       aria-expanded="false"
       aria-haspopup="true"
-      aria-label="Other (5): 40"
+      aria-label="Other: 40"
       aria-pressed="false"
       class="css-15ci9m1-LegendItem ezuih624"
       role="button"
@@ -341,7 +341,7 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       <span
         class="css-1apzfui-LegendLabel ezuih622"
       >
-        Other (5)
+        Other
       </span>
       <span
         class="css-n6k7ig-LegendValue ezuih621"

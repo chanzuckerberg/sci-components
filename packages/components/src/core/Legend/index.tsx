@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import {
   LegendContainer,
   LegendIcon,
@@ -16,62 +16,6 @@ import { LegendItemData, LegendProps } from "./Legend.types";
  * Grouped items themselves use `items.length + i`.
  */
 export const LEGEND_OVERFLOW_INDEX = -1;
-
-interface LegendEntryProps {
-  item: LegendItemData;
-  color: string;
-  isSelected: boolean;
-  isHovered: boolean;
-  isDimmed: boolean;
-  showValues: boolean;
-  isMenuOpen?: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-  onClick: (event: MouseEvent<HTMLDivElement>) => void;
-}
-
-const LegendEntry = (props: LegendEntryProps): JSX.Element => {
-  const {
-    item,
-    color,
-    isSelected,
-    isHovered,
-    isDimmed,
-    showValues,
-    isMenuOpen,
-    onMouseEnter,
-    onMouseLeave,
-    onClick,
-  } = props;
-
-  return (
-    <LegendItem
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={onClick}
-      role="button"
-      tabIndex={item.disabled ? -1 : 0}
-      aria-label={`${item.name}${item.value ? `: ${item.value}` : ""}`}
-      aria-pressed={isSelected}
-      aria-disabled={item.disabled}
-      aria-haspopup={isMenuOpen === undefined ? undefined : "true"}
-      aria-expanded={isMenuOpen}
-      isSelected={isSelected}
-      disabled={item.disabled}
-      isHovered={isHovered}
-    >
-      <LegendIcon color={color} isDimmed={isDimmed} />
-      <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
-      {showValues && item.value !== undefined && (
-        <LegendValue disabled={item.disabled}>
-          {typeof item.value === "number"
-            ? item.value.toLocaleString()
-            : item.value}
-        </LegendValue>
-      )}
-    </LegendItem>
-  );
-};
 
 const Legend = (props: LegendProps): JSX.Element => {
   const {
@@ -166,31 +110,40 @@ const Legend = (props: LegendProps): JSX.Element => {
         {items.map((item, index) => {
           const isHovered = hoveredIndex === index;
           const isSelected = selectedIndices.includes(index);
+          const itemColor = colors?.[index] || item.color || fallbackColor;
 
           return (
-            <LegendEntry
+            <LegendItem
               key={`${item.name}-${index}`}
-              item={item}
-              color={colors?.[index] || item.color || fallbackColor}
-              isHovered={isHovered}
-              isSelected={isSelected}
-              isDimmed={getIsDimmed(isHovered, isSelected, item.disabled)}
-              showValues={showValues}
               onMouseEnter={() => handleMouseEnter(item, index)}
               onMouseLeave={() => handleMouseLeave(item, index)}
               onClick={() => handleClick(item, index)}
-            />
+              role="button"
+              tabIndex={item.disabled ? -1 : 0}
+              aria-label={`${item.name}${item.value ? `: ${item.value}` : ""}`}
+              aria-pressed={isSelected}
+              aria-disabled={item.disabled}
+              isSelected={isSelected}
+              disabled={item.disabled}
+              isHovered={isHovered}
+            >
+              <LegendIcon
+                color={itemColor}
+                isDimmed={getIsDimmed(isHovered, isSelected, item.disabled)}
+              />
+              <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
+              {showValues && item.value !== undefined && (
+                <LegendValue disabled={item.disabled}>
+                  {typeof item.value === "number"
+                    ? item.value.toLocaleString()
+                    : item.value}
+                </LegendValue>
+              )}
+            </LegendItem>
           );
         })}
         {hasOverflow && (
-          <LegendEntry
-            item={overflowEntry}
-            color={overflowEntry.color || fallbackColor}
-            isHovered={isOverflowHovered}
-            isSelected={isOverflowSelected}
-            isDimmed={getIsDimmed(isOverflowHovered, isOverflowSelected)}
-            showValues={showValues}
-            isMenuOpen={overflowAnchor !== null}
+          <LegendItem
             onMouseEnter={() =>
               handleMouseEnter(overflowEntry, LEGEND_OVERFLOW_INDEX)
             }
@@ -201,7 +154,28 @@ const Legend = (props: LegendProps): JSX.Element => {
               setOverflowAnchor(event.currentTarget);
               onItemClick?.(overflowEntry, LEGEND_OVERFLOW_INDEX);
             }}
-          />
+            role="button"
+            tabIndex={0}
+            aria-label={`${overflowEntry.name}${overflowEntry.value ? `: ${overflowEntry.value}` : ""}`}
+            aria-pressed={isOverflowSelected}
+            aria-haspopup="true"
+            aria-expanded={overflowAnchor !== null}
+            isSelected={isOverflowSelected}
+            isHovered={isOverflowHovered}
+          >
+            <LegendIcon
+              color={overflowEntry.color || fallbackColor}
+              isDimmed={getIsDimmed(isOverflowHovered, isOverflowSelected)}
+            />
+            <LegendLabel>{overflowEntry.name}</LegendLabel>
+            {showValues && overflowEntry.value !== undefined && (
+              <LegendValue>
+                {typeof overflowEntry.value === "number"
+                  ? overflowEntry.value.toLocaleString()
+                  : overflowEntry.value}
+              </LegendValue>
+            )}
+          </LegendItem>
         )}
       </LegendContainer>
       {hasOverflow && (

@@ -110,7 +110,7 @@ export const WithOverflowMenu: Story = {
       { name: "D. melanogaster", color: "#7dd889" },
       { name: "S. cerevisiae", color: "#a2d96a" },
     ],
-    overflowItem: { name: "Other (5)", value: 40 },
+    overflowItem: { name: "Other", value: 40 },
   },
 };
 
