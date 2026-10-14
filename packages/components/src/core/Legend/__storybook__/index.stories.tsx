@@ -103,7 +103,7 @@ export const WithOverflowMenu: Story = {
   render: LegendSelectionWithTheme,
   args: {
     showValues: true,
-    overflowItems: [
+    overflowMenuItems: [
       { name: "G. gallus", color: "#975bd4" },
       { name: "X. laevis", color: "#5b70d4" },
       { name: "C. elegans", color: "#7ad1d9" },

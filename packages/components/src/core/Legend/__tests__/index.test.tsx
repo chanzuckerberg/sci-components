@@ -347,7 +347,7 @@ describe("<Legend />", () => {
     ];
 
     it("groups overflow items under an entry that opens a menu", () => {
-      render(<Legend items={sampleItems} overflowItems={overflowItems} />);
+      render(<Legend items={sampleItems} overflowMenuItems={overflowItems} />);
 
       expect(screen.queryByText("Hidden 1")).not.toBeInTheDocument();
 
@@ -364,7 +364,7 @@ describe("<Legend />", () => {
       render(
         <Legend
           items={sampleItems}
-          overflowItems={overflowItems}
+          overflowMenuItems={overflowItems}
           selectedIndices={[0]}
           onSelectionChange={handleSelectionChange}
           onItemClick={handleClick}
@@ -388,7 +388,7 @@ describe("<Legend />", () => {
       render(
         <Legend
           items={sampleItems}
-          overflowItems={overflowItems}
+          overflowMenuItems={overflowItems}
           selectedIndices={[3]}
         />
       );
@@ -401,7 +401,7 @@ describe("<Legend />", () => {
       render(
         <Legend
           items={sampleItems}
-          overflowItems={overflowItems}
+          overflowMenuItems={overflowItems}
           overflowItem={{ name: "More", value: 30 }}
           showValues
         />

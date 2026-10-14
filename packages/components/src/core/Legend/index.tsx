@@ -28,8 +28,8 @@ const Legend = (props: LegendProps): JSX.Element => {
     selectedIndices = [],
     onSelectionChange,
     hoveredIndex: externalHoveredIndex,
-    overflowItems = [],
     overflowItem,
+    overflowMenuItems = [],
     ...rest
   } = props;
 
@@ -51,7 +51,7 @@ const Legend = (props: LegendProps): JSX.Element => {
 
   // Overflow items continue the index space after `items`
   const overflowStart = items.length;
-  const hasOverflow = overflowItems.length > 0;
+  const hasOverflow = overflowMenuItems.length > 0;
 
   const getIsDimmed = (
     isHovered: boolean,
@@ -185,7 +185,7 @@ const Legend = (props: LegendProps): JSX.Element => {
           onClose={() => setOverflowAnchor(null)}
         >
           <Legend
-            items={overflowItems}
+            items={overflowMenuItems}
             selectedIndices={selectedIndices
               .filter((i) => i >= overflowStart)
               .map((i) => i - overflowStart)}
