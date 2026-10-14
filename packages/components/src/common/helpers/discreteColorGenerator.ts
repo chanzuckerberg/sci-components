@@ -7,9 +7,8 @@ export interface DiscreteColorGeneratorOptions {
    */
   isDarkMode?: boolean;
   /**
-   * Starting hue in degrees (0-360). The default starts the cycle at red
-   * and moves through orange, green, and blue into purple
-   * @default 0
+   * Starting hue in degrees (0-360)
+   * @default 240
    */
   start?: number;
   /**
@@ -48,7 +47,7 @@ export const generateDiscreteColors = (
 
   const {
     isDarkMode = false,
-    start = 0,
+    start = 240,
     rotations = 0.85,
     gamma = 1,
     lightness = [0.4, 0.7],

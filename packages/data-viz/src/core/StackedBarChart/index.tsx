@@ -7,8 +7,7 @@ import {
   useMemo,
 } from "react";
 import {
-  generateDiscreteColors,
-  getMode,
+  getDiscreteColor,
   LEGEND_OVERFLOW_INDEX,
   Legend,
   SDSTheme,
@@ -371,7 +370,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingLabel = "Remaining",
     remainingUnit,
     unit,
-    colorGeneratorOptions,
     maxVisibleItems,
     overflowColor,
     ...rest
@@ -421,61 +419,31 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     useState<number>(0);
   const previousProcessedRef = useRef<AnimatedItem[]>([]);
   const previousDataKeysRef = useRef<Set<string>>(new Set());
-  const previousColorOptionsRef = useRef<{
-    options: typeof colorGeneratorOptions;
-    isDarkMode: boolean;
-  } | null>(null);
-
-  // Detect dark mode from theme
-  const isDarkMode = useMemo(() => getMode({ theme }) === "dark", [theme]);
-
-  // Helper to generate color map for auto items
-  const generateColorMap = useCallback(
-    (items: StackedBarChartDataItem[]): Map<string, string> => {
-      const palette = generateDiscreteColors(items.length, {
-        ...(colorGeneratorOptions || {}),
-        isDarkMode,
-      });
-
-      const newColorMap = new Map<string, string>();
-      items.forEach((item, index) => {
-        newColorMap.set(
-          item.name,
-          palette[index] || theme?.palette?.sds?.base?.ornamentSecondary
-        );
-      });
-
-      return newColorMap;
-    },
-    [colorGeneratorOptions, isDarkMode, theme]
-  );
 
   // Visible items, the grouped item, then hidden items take consecutive
-  // slots in one palette, so the overflow menu continues the chart's cycle
+  // positions in one color cycle, so the overflow menu continues the chart
   const colorItems = useMemo(
     () => (hasOverflow ? [...chartData, ...hiddenItems] : chartData),
     [chartData, hiddenItems, hasOverflow]
   );
+  const generateColorMap = useCallback(
+    (items: StackedBarChartDataItem[]): Map<string, string> =>
+      new Map(
+        items.map((item, index) => [
+          item.name,
+          getDiscreteColor(index, items.length),
+        ])
+      ),
+    []
+  );
 
-  // Effect to manage auto-generated colors
+  // Assign colors to items without one. Colors are only reassigned when new
+  // items appear, so removing an item keeps the other colors stable.
   useEffect(() => {
     const autoItems = colorItems.filter((item) => !item.color);
     const currentDataKeys = new Set(colorItems.map((item) => item.name));
     const previousDataKeys = previousDataKeysRef.current;
-    const previousColorOptions = previousColorOptionsRef.current;
-
-    // Check if color generation options changed
-    const colorOptionsChanged =
-      !previousColorOptions ||
-      previousColorOptions.isDarkMode !== isDarkMode ||
-      previousColorOptions.options !== colorGeneratorOptions;
-
-    // Update refs
     previousDataKeysRef.current = currentDataKeys;
-    previousColorOptionsRef.current = {
-      options: colorGeneratorOptions,
-      isDarkMode,
-    };
 
     if (autoItems.length === 0) {
       if (autoColorMap.size > 0) {
@@ -488,8 +456,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       (item) => !previousDataKeys.has(item.name)
     );
 
-    const shouldRegenerateColors =
-      autoColorMap.size === 0 || hasNewItems || colorOptionsChanged;
+    const shouldRegenerateColors = autoColorMap.size === 0 || hasNewItems;
 
     if (shouldRegenerateColors) {
       setAutoColorMap(generateColorMap(autoItems));
@@ -510,7 +477,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorItems, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
+  }, [colorItems, generateColorMap]);
 
   // Calculate display badge value
   const displayBadge =

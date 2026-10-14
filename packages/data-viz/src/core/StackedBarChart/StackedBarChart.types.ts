@@ -1,7 +1,4 @@
-import {
-  DiscreteColorGeneratorOptions,
-  TooltipTableContentProps,
-} from "@czi-sds/components";
+import { TooltipTableContentProps } from "@czi-sds/components";
 import { HTMLAttributes } from "react";
 
 export interface StackedBarChartDataItem {
@@ -15,7 +12,7 @@ export interface StackedBarChartDataItem {
   value: number;
   /**
    * Color for the segment (hex or CSS color)
-   * If not provided, colors will be automatically generated using cubehelix palette
+   * If not provided, colors are assigned from DISCRETE_COLORS in order
    */
   color?: string;
   /**
@@ -161,10 +158,6 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    * Only shown when mode is "cumulative"
    */
   unit?: string;
-  /**
-   * Options for the color generator
-   */
-  colorGeneratorOptions?: DiscreteColorGeneratorOptions;
   /**
    * Maximum number of items shown as their own segment and legend entry.
    * Items past this count are grouped into a single segment labeled with
