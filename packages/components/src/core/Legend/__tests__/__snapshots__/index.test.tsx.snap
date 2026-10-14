@@ -12,8 +12,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-21x60r-LegendIcon ezuih623"
-      color="#615da2"
+      class="css-a69xeg-LegendIcon ezuih623"
+      color="#985248"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -29,8 +29,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-dhhvl2-LegendIcon ezuih623"
-      color="#9e5798"
+      class="css-31xa1o-LegendIcon ezuih623"
+      color="#8c6a37"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -46,8 +46,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-roojss-LegendIcon ezuih623"
-      color="#b76278"
+      class="css-12jzlk3-LegendIcon ezuih623"
+      color="#7a7e36"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -63,8 +63,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-154ygdq-LegendIcon ezuih623"
-      color="#b27c5a"
+      class="css-1y9zkk2-LegendIcon ezuih623"
+      color="#688f41"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -80,8 +80,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1yidkaz-LegendIcon ezuih623"
-      color="#9e9554"
+      class="css-1f0x6g8-LegendIcon ezuih623"
+      color="#599d59"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -97,8 +97,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1rztd84-LegendIcon ezuih623"
-      color="#89ab60"
+      class="css-6t4by2-LegendIcon ezuih623"
+      color="#53a88a"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -114,8 +114,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-at6cn8-LegendIcon ezuih623"
-      color="#78bc7f"
+      class="css-1g0mnl5-LegendIcon ezuih623"
+      color="#b396dd"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -131,8 +131,8 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-55fg2q-LegendIcon ezuih623"
-      color="#8ac2d2"
+      class="css-13lvzhz-LegendIcon ezuih623"
+      color="#dc99c8"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -158,8 +158,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-21x60r-LegendIcon ezuih623"
-        color="#615da2"
+        class="css-a69xeg-LegendIcon ezuih623"
+        color="#985248"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -180,8 +180,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-dhhvl2-LegendIcon ezuih623"
-        color="#9e5798"
+        class="css-31xa1o-LegendIcon ezuih623"
+        color="#8c6a37"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -202,8 +202,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-roojss-LegendIcon ezuih623"
-        color="#b76278"
+        class="css-12jzlk3-LegendIcon ezuih623"
+        color="#7a7e36"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -224,8 +224,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-154ygdq-LegendIcon ezuih623"
-        color="#b27c5a"
+        class="css-1y9zkk2-LegendIcon ezuih623"
+        color="#688f41"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -246,8 +246,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1yidkaz-LegendIcon ezuih623"
-        color="#9e9554"
+        class="css-1f0x6g8-LegendIcon ezuih623"
+        color="#599d59"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -268,8 +268,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1rztd84-LegendIcon ezuih623"
-        color="#89ab60"
+        class="css-6t4by2-LegendIcon ezuih623"
+        color="#53a88a"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -290,8 +290,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-at6cn8-LegendIcon ezuih623"
-        color="#78bc7f"
+        class="css-1g0mnl5-LegendIcon ezuih623"
+        color="#b396dd"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -312,8 +312,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-55fg2q-LegendIcon ezuih623"
-        color="#8ac2d2"
+        class="css-13lvzhz-LegendIcon ezuih623"
+        color="#dc99c8"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -401,8 +401,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-21x60r-LegendIcon ezuih623"
-        color="#615da2"
+        class="css-a69xeg-LegendIcon ezuih623"
+        color="#985248"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -423,8 +423,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-dhhvl2-LegendIcon ezuih623"
-        color="#9e5798"
+        class="css-31xa1o-LegendIcon ezuih623"
+        color="#8c6a37"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -445,8 +445,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-roojss-LegendIcon ezuih623"
-        color="#b76278"
+        class="css-12jzlk3-LegendIcon ezuih623"
+        color="#7a7e36"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -467,8 +467,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-154ygdq-LegendIcon ezuih623"
-        color="#b27c5a"
+        class="css-1y9zkk2-LegendIcon ezuih623"
+        color="#688f41"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -489,8 +489,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1yidkaz-LegendIcon ezuih623"
-        color="#9e9554"
+        class="css-1f0x6g8-LegendIcon ezuih623"
+        color="#599d59"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -511,8 +511,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-1rztd84-LegendIcon ezuih623"
-        color="#89ab60"
+        class="css-6t4by2-LegendIcon ezuih623"
+        color="#53a88a"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -533,8 +533,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-at6cn8-LegendIcon ezuih623"
-        color="#78bc7f"
+        class="css-1g0mnl5-LegendIcon ezuih623"
+        color="#b396dd"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -555,8 +555,8 @@ exports[`<Legend /> > WithSelection story renders snapshot 1`] = `
       tabindex="0"
     >
       <div
-        class="css-55fg2q-LegendIcon ezuih623"
-        color="#8ac2d2"
+        class="css-13lvzhz-LegendIcon ezuih623"
+        color="#dc99c8"
       />
       <span
         class="css-1apzfui-LegendLabel ezuih622"
@@ -618,8 +618,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-21x60r-LegendIcon ezuih623"
-      color="#615da2"
+      class="css-a69xeg-LegendIcon ezuih623"
+      color="#985248"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -640,8 +640,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-dhhvl2-LegendIcon ezuih623"
-      color="#9e5798"
+      class="css-31xa1o-LegendIcon ezuih623"
+      color="#8c6a37"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -662,8 +662,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-roojss-LegendIcon ezuih623"
-      color="#b76278"
+      class="css-12jzlk3-LegendIcon ezuih623"
+      color="#7a7e36"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -684,8 +684,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-154ygdq-LegendIcon ezuih623"
-      color="#b27c5a"
+      class="css-1y9zkk2-LegendIcon ezuih623"
+      color="#688f41"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -706,8 +706,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1yidkaz-LegendIcon ezuih623"
-      color="#9e9554"
+      class="css-1f0x6g8-LegendIcon ezuih623"
+      color="#599d59"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -728,8 +728,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-1rztd84-LegendIcon ezuih623"
-      color="#89ab60"
+      class="css-6t4by2-LegendIcon ezuih623"
+      color="#53a88a"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -750,8 +750,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-at6cn8-LegendIcon ezuih623"
-      color="#78bc7f"
+      class="css-1g0mnl5-LegendIcon ezuih623"
+      color="#b396dd"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"
@@ -772,8 +772,8 @@ exports[`<Legend /> > WithValues story renders snapshot 1`] = `
     tabindex="0"
   >
     <div
-      class="css-55fg2q-LegendIcon ezuih623"
-      color="#8ac2d2"
+      class="css-13lvzhz-LegendIcon ezuih623"
+      color="#dc99c8"
     />
     <span
       class="css-1apzfui-LegendLabel ezuih622"

@@ -450,10 +450,17 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     [colorGeneratorOptions, isDarkMode, theme]
   );
 
+  // Visible items, the grouped item, then hidden items take consecutive
+  // slots in one palette, so the overflow menu continues the chart's cycle
+  const colorItems = useMemo(
+    () => (hasOverflow ? [...chartData, ...hiddenItems] : chartData),
+    [chartData, hiddenItems, hasOverflow]
+  );
+
   // Effect to manage auto-generated colors
   useEffect(() => {
-    const autoItems = chartData.filter((item) => !item.color);
-    const currentDataKeys = new Set(chartData.map((item) => item.name));
+    const autoItems = colorItems.filter((item) => !item.color);
+    const currentDataKeys = new Set(colorItems.map((item) => item.name));
     const previousDataKeys = previousDataKeysRef.current;
     const previousColorOptions = previousColorOptionsRef.current;
 
@@ -503,19 +510,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartData, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
-
-  // Hidden items only appear as swatches in the overflow menu
-  const hiddenColors = useMemo(
-    () =>
-      hasOverflow
-        ? generateDiscreteColors(hiddenItems.length, {
-            ...(colorGeneratorOptions || {}),
-            isDarkMode,
-          })
-        : [],
-    [hasOverflow, hiddenItems.length, colorGeneratorOptions, isDarkMode]
-  );
+  }, [colorItems, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
 
   // Calculate display badge value
   const displayBadge =
@@ -854,15 +849,15 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   };
   const overflowLegendItems = useMemo<LegendItemData[]>(
     () =>
-      hiddenItems.map((item, index) => ({
+      hiddenItems.map((item) => ({
         name: item.name,
         color:
           item.color ||
-          hiddenColors[index] ||
+          autoColorMap.get(item.name) ||
           theme?.palette?.sds?.base?.ornamentSecondary,
         disabled: item.disabled,
       })),
-    [hiddenItems, hiddenColors, theme]
+    [hiddenItems, autoColorMap, theme]
   );
 
   // Calculate the last visible segment (percentage > 0)

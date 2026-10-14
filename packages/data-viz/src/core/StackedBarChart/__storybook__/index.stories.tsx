@@ -152,7 +152,6 @@ export default {
 } as Meta;
 
 const DEFAULT_COLOR_GENERATOR_OPTIONS = {
-  start: 240,
   lightness: [0.4, 0.7],
   correctLightness: true,
   rotations: 0.85,

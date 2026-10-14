@@ -34,8 +34,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
         width="360px"
       >
         <div
-          class="css-jmr7v9-BarSegment eja2e931"
-          color="#615da2"
+          class="css-xac6qc-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -43,8 +43,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         />
         <div
-          class="css-16uyhiw-BarSegment eja2e931"
-          color="#a45894"
+          class="css-1cwut30-BarSegment eja2e931"
+          color="#896d36"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -52,8 +52,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         />
         <div
-          class="css-1vs72h2-BarSegment eja2e931"
-          color="#b96a6c"
+          class="css-xparv-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -61,8 +61,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         />
         <div
-          class="css-qztpym-BarSegment eja2e931"
-          color="#a98954"
+          class="css-8lhk3q-BarSegment eja2e931"
+          color="#60964b"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -70,8 +70,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         />
         <div
-          class="css-1i9tf0l-BarSegment eja2e931"
-          color="#90a45a"
+          class="css-jmfsmx-BarSegment eja2e931"
+          color="#53a574"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -79,15 +79,15 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         />
         <div
-          class="css-fp5dbs-BarSegment eja2e931"
-          color="#7ab978"
+          class="css-122o3xr-BarSegment eja2e931"
+          color="#a798dd"
           data-hide="false"
           height="8"
           opacity="1"
         />
         <div
-          class="css-alujf0-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-1hcgp6q-BarSegment eja2e931"
+          color="#dc99c8"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -112,8 +112,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -134,8 +134,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-2o0lxg-LegendIcon ezuih623"
-            color="#a45894"
+            class="css-zuo6z2-LegendIcon ezuih623"
+            color="#896d36"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -156,8 +156,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-5h1k1x-LegendIcon ezuih623"
-            color="#b96a6c"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -178,8 +178,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-jf6bkr-LegendIcon ezuih623"
-            color="#a98954"
+            class="css-vxbhkr-LegendIcon ezuih623"
+            color="#60964b"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -200,8 +200,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-itmxbz-LegendIcon ezuih623"
-            color="#90a45a"
+            class="css-1yowyqj-LegendIcon ezuih623"
+            color="#53a574"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -222,8 +222,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-1ygq6i6-LegendIcon ezuih623"
-            color="#7ab978"
+            class="css-1eagqjc-LegendIcon ezuih623"
+            color="#a798dd"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -244,8 +244,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders 
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-13lvzhz-LegendIcon ezuih623"
+            color="#dc99c8"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -357,8 +357,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
         width="360px"
       >
         <div
-          class="css-jmr7v9-BarSegment eja2e931"
-          color="#615da2"
+          class="css-xac6qc-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -366,8 +366,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         />
         <div
-          class="css-16uyhiw-BarSegment eja2e931"
-          color="#a45894"
+          class="css-1cwut30-BarSegment eja2e931"
+          color="#896d36"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -375,8 +375,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         />
         <div
-          class="css-1vs72h2-BarSegment eja2e931"
-          color="#b96a6c"
+          class="css-xparv-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -384,8 +384,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         />
         <div
-          class="css-qztpym-BarSegment eja2e931"
-          color="#a98954"
+          class="css-8lhk3q-BarSegment eja2e931"
+          color="#60964b"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -393,8 +393,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         />
         <div
-          class="css-1i9tf0l-BarSegment eja2e931"
-          color="#90a45a"
+          class="css-jmfsmx-BarSegment eja2e931"
+          color="#53a574"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -402,15 +402,15 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         />
         <div
-          class="css-fp5dbs-BarSegment eja2e931"
-          color="#7ab978"
+          class="css-122o3xr-BarSegment eja2e931"
+          color="#a798dd"
           data-hide="false"
           height="8"
           opacity="1"
         />
         <div
-          class="css-alujf0-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-1hcgp6q-BarSegment eja2e931"
+          color="#dc99c8"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -435,8 +435,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -457,8 +457,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-2o0lxg-LegendIcon ezuih623"
-            color="#a45894"
+            class="css-zuo6z2-LegendIcon ezuih623"
+            color="#896d36"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -479,8 +479,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-5h1k1x-LegendIcon ezuih623"
-            color="#b96a6c"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -501,8 +501,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-jf6bkr-LegendIcon ezuih623"
-            color="#a98954"
+            class="css-vxbhkr-LegendIcon ezuih623"
+            color="#60964b"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -523,8 +523,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-itmxbz-LegendIcon ezuih623"
-            color="#90a45a"
+            class="css-1yowyqj-LegendIcon ezuih623"
+            color="#53a574"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -545,8 +545,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-1ygq6i6-LegendIcon ezuih623"
-            color="#7ab978"
+            class="css-1eagqjc-LegendIcon ezuih623"
+            color="#a798dd"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -567,8 +567,8 @@ exports[`<StackedBarChart /> > CumulativeWithSelectionHideBehavior story renders
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-13lvzhz-LegendIcon ezuih623"
+            color="#dc99c8"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -680,8 +680,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
         width="360px"
       >
         <div
-          class="css-148qao7-BarSegment eja2e931"
-          color="#615da2"
+          class="css-1tcwk2q-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -689,8 +689,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1dyqyuz-BarSegment eja2e931"
-          color="#a45894"
+          class="css-2okf42-BarSegment eja2e931"
+          color="#896d36"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -698,8 +698,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-127zf1e-BarSegment eja2e931"
-          color="#b96a6c"
+          class="css-pfp75q-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -707,8 +707,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-vil50i-BarSegment eja2e931"
-          color="#a98954"
+          class="css-1s8sw7r-BarSegment eja2e931"
+          color="#60964b"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -716,8 +716,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1n8yf3p-BarSegment eja2e931"
-          color="#90a45a"
+          class="css-1k34jb1-BarSegment eja2e931"
+          color="#53a574"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -725,15 +725,15 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1be8tdm-BarSegment eja2e931"
-          color="#7ab978"
+          class="css-15xo2x4-BarSegment eja2e931"
+          color="#a798dd"
           data-hide="false"
           height="8"
           opacity="1"
         />
         <div
-          class="css-i5wbbq-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-ah4atg-BarSegment eja2e931"
+          color="#dc99c8"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -758,8 +758,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -780,8 +780,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-2o0lxg-LegendIcon ezuih623"
-            color="#a45894"
+            class="css-zuo6z2-LegendIcon ezuih623"
+            color="#896d36"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -802,8 +802,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-5h1k1x-LegendIcon ezuih623"
-            color="#b96a6c"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -824,8 +824,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-jf6bkr-LegendIcon ezuih623"
-            color="#a98954"
+            class="css-vxbhkr-LegendIcon ezuih623"
+            color="#60964b"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -846,8 +846,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-itmxbz-LegendIcon ezuih623"
-            color="#90a45a"
+            class="css-1yowyqj-LegendIcon ezuih623"
+            color="#53a574"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -868,8 +868,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1ygq6i6-LegendIcon ezuih623"
-            color="#7ab978"
+            class="css-1eagqjc-LegendIcon ezuih623"
+            color="#a798dd"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -890,8 +890,8 @@ exports[`<StackedBarChart /> > Default story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-13lvzhz-LegendIcon ezuih623"
+            color="#dc99c8"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -944,8 +944,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
         width="360px"
       >
         <div
-          class="css-148qao7-BarSegment eja2e931"
-          color="#615da2"
+          class="css-1tcwk2q-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -953,8 +953,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         />
         <div
-          class="css-1dyqyuz-BarSegment eja2e931"
-          color="#a45894"
+          class="css-2okf42-BarSegment eja2e931"
+          color="#896d36"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -962,8 +962,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         />
         <div
-          class="css-127zf1e-BarSegment eja2e931"
-          color="#b96a6c"
+          class="css-pfp75q-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -971,8 +971,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         />
         <div
-          class="css-vil50i-BarSegment eja2e931"
-          color="#a98954"
+          class="css-1s8sw7r-BarSegment eja2e931"
+          color="#60964b"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -980,8 +980,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         />
         <div
-          class="css-1n8yf3p-BarSegment eja2e931"
-          color="#90a45a"
+          class="css-1k34jb1-BarSegment eja2e931"
+          color="#53a574"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -989,15 +989,15 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         />
         <div
-          class="css-1be8tdm-BarSegment eja2e931"
-          color="#7ab978"
+          class="css-15xo2x4-BarSegment eja2e931"
+          color="#a798dd"
           data-hide="false"
           height="8"
           opacity="1"
         />
         <div
-          class="css-i5wbbq-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-ah4atg-BarSegment eja2e931"
+          color="#dc99c8"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1022,8 +1022,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1044,8 +1044,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-2o0lxg-LegendIcon ezuih623"
-            color="#a45894"
+            class="css-zuo6z2-LegendIcon ezuih623"
+            color="#896d36"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1066,8 +1066,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-5h1k1x-LegendIcon ezuih623"
-            color="#b96a6c"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1088,8 +1088,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-jf6bkr-LegendIcon ezuih623"
-            color="#a98954"
+            class="css-vxbhkr-LegendIcon ezuih623"
+            color="#60964b"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1110,8 +1110,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-itmxbz-LegendIcon ezuih623"
-            color="#90a45a"
+            class="css-1yowyqj-LegendIcon ezuih623"
+            color="#53a574"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1132,8 +1132,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-1ygq6i6-LegendIcon ezuih623"
-            color="#7ab978"
+            class="css-1eagqjc-LegendIcon ezuih623"
+            color="#a798dd"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1154,8 +1154,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionDimBehavior story render
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-13lvzhz-LegendIcon ezuih623"
+            color="#dc99c8"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1242,8 +1242,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
         width="360px"
       >
         <div
-          class="css-148qao7-BarSegment eja2e931"
-          color="#615da2"
+          class="css-1tcwk2q-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1251,8 +1251,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         />
         <div
-          class="css-1dyqyuz-BarSegment eja2e931"
-          color="#a45894"
+          class="css-2okf42-BarSegment eja2e931"
+          color="#896d36"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1260,8 +1260,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         />
         <div
-          class="css-127zf1e-BarSegment eja2e931"
-          color="#b96a6c"
+          class="css-pfp75q-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1269,8 +1269,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         />
         <div
-          class="css-vil50i-BarSegment eja2e931"
-          color="#a98954"
+          class="css-1s8sw7r-BarSegment eja2e931"
+          color="#60964b"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1278,8 +1278,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         />
         <div
-          class="css-1n8yf3p-BarSegment eja2e931"
-          color="#90a45a"
+          class="css-1k34jb1-BarSegment eja2e931"
+          color="#53a574"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1287,15 +1287,15 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         />
         <div
-          class="css-1be8tdm-BarSegment eja2e931"
-          color="#7ab978"
+          class="css-15xo2x4-BarSegment eja2e931"
+          color="#a798dd"
           data-hide="false"
           height="8"
           opacity="1"
         />
         <div
-          class="css-i5wbbq-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-ah4atg-BarSegment eja2e931"
+          color="#dc99c8"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1320,8 +1320,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1342,8 +1342,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-2o0lxg-LegendIcon ezuih623"
-            color="#a45894"
+            class="css-zuo6z2-LegendIcon ezuih623"
+            color="#896d36"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1364,8 +1364,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-5h1k1x-LegendIcon ezuih623"
-            color="#b96a6c"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1386,8 +1386,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-jf6bkr-LegendIcon ezuih623"
-            color="#a98954"
+            class="css-vxbhkr-LegendIcon ezuih623"
+            color="#60964b"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1408,8 +1408,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-itmxbz-LegendIcon ezuih623"
-            color="#90a45a"
+            class="css-1yowyqj-LegendIcon ezuih623"
+            color="#53a574"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1430,8 +1430,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-1ygq6i6-LegendIcon ezuih623"
-            color="#7ab978"
+            class="css-1eagqjc-LegendIcon ezuih623"
+            color="#a798dd"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1452,8 +1452,8 @@ exports[`<StackedBarChart /> > ProportionalWithSelectionHideBehavior story rende
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-13lvzhz-LegendIcon ezuih623"
+            color="#dc99c8"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1540,8 +1540,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         width="360px"
       >
         <div
-          class="css-148qao7-BarSegment eja2e931"
-          color="#615da2"
+          class="css-1tcwk2q-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1549,8 +1549,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1dyqyuz-BarSegment eja2e931"
-          color="#a45894"
+          class="css-2okf42-BarSegment eja2e931"
+          color="#896d36"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1558,8 +1558,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-127zf1e-BarSegment eja2e931"
-          color="#b96a6c"
+          class="css-pfp75q-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1567,8 +1567,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-vil50i-BarSegment eja2e931"
-          color="#a98954"
+          class="css-1s8sw7r-BarSegment eja2e931"
+          color="#60964b"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1576,8 +1576,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1n8yf3p-BarSegment eja2e931"
-          color="#90a45a"
+          class="css-1k34jb1-BarSegment eja2e931"
+          color="#53a574"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1585,15 +1585,15 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1be8tdm-BarSegment eja2e931"
-          color="#7ab978"
+          class="css-15xo2x4-BarSegment eja2e931"
+          color="#a798dd"
           data-hide="false"
           height="8"
           opacity="1"
         />
         <div
-          class="css-i5wbbq-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-ah4atg-BarSegment eja2e931"
+          color="#dc99c8"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1618,8 +1618,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1640,8 +1640,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-2o0lxg-LegendIcon ezuih623"
-            color="#a45894"
+            class="css-zuo6z2-LegendIcon ezuih623"
+            color="#896d36"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1662,8 +1662,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-5h1k1x-LegendIcon ezuih623"
-            color="#b96a6c"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1684,8 +1684,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-jf6bkr-LegendIcon ezuih623"
-            color="#a98954"
+            class="css-vxbhkr-LegendIcon ezuih623"
+            color="#60964b"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1706,8 +1706,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-itmxbz-LegendIcon ezuih623"
-            color="#90a45a"
+            class="css-1yowyqj-LegendIcon ezuih623"
+            color="#53a574"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1728,8 +1728,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1ygq6i6-LegendIcon ezuih623"
-            color="#7ab978"
+            class="css-1eagqjc-LegendIcon ezuih623"
+            color="#a798dd"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1750,8 +1750,8 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-13lvzhz-LegendIcon ezuih623"
+            color="#dc99c8"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1870,8 +1870,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
         width="360px"
       >
         <div
-          class="css-v44vh1-BarSegment eja2e931"
-          color="#615da2"
+          class="css-vnh417-BarSegment eja2e931"
+          color="#985248"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1879,8 +1879,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-1ksw2gd-BarSegment eja2e931"
-          color="#ab598d"
+          class="css-pddfr3-BarSegment eja2e931"
+          color="#8f6539"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1888,8 +1888,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-ec86bk-BarSegment eja2e931"
-          color="#b5765f"
+          class="css-1pq34nx-BarSegment eja2e931"
+          color="#827535"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1897,8 +1897,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-v68196-BarSegment eja2e931"
-          color="#9a9a55"
+          class="css-119lmil-BarSegment eja2e931"
+          color="#748439"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1906,8 +1906,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-4ihxyj-BarSegment eja2e931"
-          color="#7eb570"
+          class="css-pd35fa-BarSegment eja2e931"
+          color="#679143"
           data-hide="false"
           data-mui-internal-clone-element="true"
           height="8"
@@ -1915,8 +1915,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         />
         <div
-          class="css-ngwfam-BarSegment eja2e931"
-          color="#8ac2d2"
+          class="css-1ffzr9y-BarSegment eja2e931"
+          color="#5b9c55"
           data-hide="false"
           height="8"
           opacity="1"
@@ -1939,8 +1939,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
+            class="css-a69xeg-LegendIcon ezuih623"
+            color="#985248"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1961,8 +1961,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-1vkafx8-LegendIcon ezuih623"
-            color="#ab598d"
+            class="css-jei0ri-LegendIcon ezuih623"
+            color="#8f6539"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -1983,8 +1983,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-169auc0-LegendIcon ezuih623"
-            color="#b5765f"
+            class="css-lq5ux5-LegendIcon ezuih623"
+            color="#827535"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -2005,8 +2005,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-12ouozh-LegendIcon ezuih623"
-            color="#9a9a55"
+            class="css-ii0vgc-LegendIcon ezuih623"
+            color="#748439"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -2027,8 +2027,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-e8rnel-LegendIcon ezuih623"
-            color="#7eb570"
+            class="css-j2qszk-LegendIcon ezuih623"
+            color="#679143"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
@@ -2051,8 +2051,8 @@ exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
           tabindex="0"
         >
           <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
+            class="css-115awm1-LegendIcon ezuih623"
+            color="#5b9c55"
           />
           <span
             class="css-1apzfui-LegendLabel ezuih622"
