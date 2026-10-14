@@ -38,10 +38,6 @@ const Legend = (props: LegendProps): JSX.Element => {
 
   // Use external hoveredIndex if provided, otherwise use internal state
   const hoveredIndex = externalHoveredIndex ?? internalHoveredIndex;
-  const hasSelection = selectedIndices.length > 0;
-
-  // Gray fallback color
-  const fallbackColor = theme?.palette?.sds?.base?.ornamentSecondary;
 
   // The grouped entry takes the index after `items`; overflow items follow it
   const overflowEntryIndex = items.length;
@@ -87,6 +83,11 @@ const Legend = (props: LegendProps): JSX.Element => {
       ...indices.map((i) => i + overflowStart),
     ]);
   };
+
+  const hasSelection = selectedIndices.length > 0;
+
+  // Gray fallback color
+  const fallbackColor = theme?.palette?.sds?.base?.ornamentSecondary;
 
   return (
     <>
