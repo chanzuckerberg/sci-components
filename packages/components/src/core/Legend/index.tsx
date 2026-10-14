@@ -48,16 +48,6 @@ const Legend = (props: LegendProps): JSX.Element => {
   const overflowStart = items.length + 1;
   const hasOverflow = overflowMenuItems.length > 0;
 
-  const getIsDimmed = (
-    isHovered: boolean,
-    isSelected: boolean,
-    disabled?: boolean
-  ) => {
-    if (disabled) return false;
-    if (hoveredIndex !== null) return !isHovered && !isSelected;
-    return hasSelection && !isSelected;
-  };
-
   const handleMouseEnter = (item: LegendItemData, index: number) => {
     if (item.disabled) return;
     setInternalHoveredIndex(index);
@@ -111,6 +101,18 @@ const Legend = (props: LegendProps): JSX.Element => {
             : selectedIndices.includes(index);
           const itemColor = colors?.[index] || item.color || fallbackColor;
 
+        // Dim if:
+        // - Never dim disabled items (e.g., remaining segment)
+        // - When hovering: dim items that are neither hovered nor selected
+        // - When not hovering: dim items that are not selected (if there are selections)
+        const isDimmed = item.disabled
+          ? false
+          : hoveredIndex !== null
+            ? !isHovered && !isSelected
+            : hasSelection && !isSelected;
+
+        // Determine color: use colors prop, then item color, then fallback to gray
+
           return (
             <LegendItem
               key={`${item.name}-${index}`}
@@ -136,7 +138,7 @@ const Legend = (props: LegendProps): JSX.Element => {
             >
               <LegendIcon
                 color={itemColor}
-                isDimmed={getIsDimmed(isHovered, isSelected, item.disabled)}
+                isDimmed={isDimmed}
               />
               <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
               {showValues && item.value !== undefined && (
