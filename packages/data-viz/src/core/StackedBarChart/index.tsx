@@ -250,10 +250,9 @@ const buildLegendItems = (
       // Count format
       // Use remainingUnit or global unit (never a custom unit from data items)
       const effectiveRemainingUnit = remainingUnit || unit || "";
-      const formattedRemaining = remainingValue.toLocaleString();
       remainingValueDisplay = effectiveRemainingUnit
-        ? `${formattedRemaining} ${effectiveRemainingUnit}`
-        : formattedRemaining;
+        ? `${remainingValue.toLocaleString()} ${effectiveRemainingUnit}`
+        : `${remainingValue.toLocaleString()}`;
     }
 
     legendItems.push({
