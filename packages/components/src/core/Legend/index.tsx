@@ -96,20 +96,6 @@ const Legend = (props: LegendProps): JSX.Element => {
   // Gray fallback color
   const fallbackColor = theme?.palette?.sds?.base?.ornamentSecondary;
 
-  // Dim if:
-  // - Never dim disabled items (e.g., remaining segment)
-  // - When hovering: dim items that are neither hovered nor selected
-  // - When not hovering: dim items that are not selected (if there are selections)
-  const getIsDimmed = (
-    isHovered: boolean,
-    isSelected: boolean,
-    disabled?: boolean
-  ) => {
-    if (disabled) return false;
-    if (hoveredIndex !== null) return !isHovered && !isSelected;
-    return hasSelection && !isSelected;
-  };
-
   return (
     <>
       <LegendContainer {...rest}>
@@ -122,7 +108,16 @@ const Legend = (props: LegendProps): JSX.Element => {
           const isSelected = opensMenu
             ? selectedIndices.some((i) => i >= index)
             : selectedIndices.includes(index);
-          const isDimmed = getIsDimmed(isHovered, isSelected, item.disabled);
+          
+          // Dim if:
+          // - Never dim disabled items (e.g., remaining segment)
+          // - When hovering: dim items that are neither hovered nor selected
+          // - When not hovering: dim items that are not selected (if there are selections)
+          const isDimmed = item.disabled
+            ? false
+            : hoveredIndex !== null
+              ? !isHovered && !isSelected
+              : hasSelection && !isSelected;
 
           // Determine color: use colors prop, then item color, then fallback to gray
           const itemColor = colors?.[index] || item.color || fallbackColor;
