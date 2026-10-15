@@ -101,6 +101,7 @@ const Legend = (props: LegendProps): JSX.Element => {
       <LegendContainer {...rest}>
         {items.map((item, index) => {
           const opensMenu = isOverflowTrigger(index);
+          
           // Hovering or selecting a menu item also counts for the trigger
           const isHovered = opensMenu
             ? hoveredIndex !== null && hoveredIndex >= index
