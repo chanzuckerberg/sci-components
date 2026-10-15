@@ -243,7 +243,7 @@ export const WithOverflowMenu = {
   args: {
     data: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
     maxVisibleItems: 5,
-    remainingLabel: "Other (4)",
+    remainingLabel: "Other",
     legendValueFormat: "count",
     showLegend: true,
     showLegendValues: true,
