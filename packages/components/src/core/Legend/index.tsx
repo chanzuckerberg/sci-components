@@ -38,9 +38,9 @@ const Legend = (props: LegendProps): JSX.Element => {
 
   // When menu items are given, the final item opens the menu. Menu item
   // indices continue after `items`.
-  const hasMenu = lastItemMenuItems.length > 0;
-  const menuStart = items.length;
-  const isMenuTrigger = (index: number) => hasMenu && index === menuStart - 1;
+  const hasOverflowMenu = lastItemMenuItems.length > 0;
+  const overflowItemIndex = items.length;
+  const isOverflowTrigger = (index: number) => hasOverflowMenu && index === overflowItemIndex - 1;
 
   const handleMouseEnter = (item: LegendItemData, index: number) => {
     if (item.disabled) return;
@@ -61,7 +61,7 @@ const Legend = (props: LegendProps): JSX.Element => {
   ) => {
     if (item.disabled) return;
 
-    if (isMenuTrigger(index)) {
+    if (isOverflowTrigger(index)) {
       setMenuAnchor(event.currentTarget);
       onItemClick?.(item, index);
       return;
@@ -86,8 +86,8 @@ const Legend = (props: LegendProps): JSX.Element => {
 
   const handleMenuSelectionChange = (indices: number[]) => {
     onSelectionChange?.([
-      ...selectedIndices.filter((i) => i < menuStart),
-      ...indices.map((i) => i + menuStart),
+      ...selectedIndices.filter((i) => i < overflowItemIndex),
+      ...indices.map((i) => i + overflowItemIndex),
     ]);
   };
 
@@ -114,7 +114,7 @@ const Legend = (props: LegendProps): JSX.Element => {
     <>
       <LegendContainer {...rest}>
         {items.map((item, index) => {
-          const opensMenu = isMenuTrigger(index);
+          const opensMenu = isOverflowTrigger(index);
           // Hovering or selecting a menu item also counts for the trigger
           const isHovered = opensMenu
             ? hoveredIndex !== null && hoveredIndex >= index
@@ -157,7 +157,7 @@ const Legend = (props: LegendProps): JSX.Element => {
           );
         })}
       </LegendContainer>
-      {hasMenu && (
+      {hasOverflowMenu && (
         <StyledLegendPopover
           open={menuAnchor !== null}
           anchorEl={menuAnchor}
@@ -166,25 +166,25 @@ const Legend = (props: LegendProps): JSX.Element => {
           <Legend
             items={lastItemMenuItems}
             selectedIndices={selectedIndices
-              .filter((i) => i >= menuStart)
-              .map((i) => i - menuStart)}
+              .filter((i) => i >= overflowItemIndex)
+              .map((i) => i - overflowItemIndex)}
             onSelectionChange={
               onSelectionChange ? handleMenuSelectionChange : undefined
             }
             hoveredIndex={
-              hoveredIndex !== null && hoveredIndex >= menuStart
-                ? hoveredIndex - menuStart
+              hoveredIndex !== null && hoveredIndex >= overflowItemIndex
+                ? hoveredIndex - overflowItemIndex
                 : null
             }
             onItemMouseEnter={(item, index) =>
-              handleMouseEnter(item, index + menuStart)
+              handleMouseEnter(item, index + overflowItemIndex)
             }
             onItemMouseLeave={(item, index) =>
-              handleMouseLeave(item, index + menuStart)
+              handleMouseLeave(item, index + overflowItemIndex)
             }
             onItemClick={
               onItemClick
-                ? (item, index) => onItemClick(item, index + menuStart)
+                ? (item, index) => onItemClick(item, index + overflowItemIndex)
                 : undefined
             }
           />
