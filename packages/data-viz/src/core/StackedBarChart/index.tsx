@@ -397,37 +397,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     [data, visibleCount]
   );
 
-  // Calculate totals and remaining segments for cumulative mode
-  const {
-    effectiveMaxAmount,
-    hasRemaining,
-    remainingValue,
-    remainingPercentage,
-  } = useMemo(() => {
-    const total = data.reduce((sum, item) => sum + item.value, 0);
-    const visibleTotal = chartData.reduce((sum, item) => sum + item.value, 0);
-    const maxAmountValue =
-      mode === "cumulative" && maxAmount ? maxAmount : total;
-    const hasRemainingSegment =
-      mode === "cumulative" && visibleTotal < maxAmountValue;
-    const remaining = hasRemainingSegment ? maxAmountValue - visibleTotal : 0;
-    const remainingPct = hasRemainingSegment
-      ? (remaining / maxAmountValue) * 100
-      : 0;
-
-    return {
-      effectiveMaxAmount: maxAmountValue,
-      hasRemaining: hasRemainingSegment,
-      remainingValue: remaining,
-      remainingPercentage: remainingPct,
-    };
-  }, [data, chartData, mode, maxAmount]);
-
-  // The remaining segment stands in for the hidden items. It has no data
-  // entry, so it takes the index after `data`.
-  const hasOverflow = hasRemaining && hiddenItems.length > 0;
-  const overflowIndex = data.length;
-
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
   const [autoColorMap, setAutoColorMap] = useState<Map<string, string>>(
@@ -521,6 +490,41 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartData, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
 
+  // Calculate display badge value
+  const displayBadge =
+    badge ?? calculateBadgeText(data.length, selectedIndices.length);
+
+  // Calculate totals and remaining segments for cumulative mode
+  const {
+    effectiveMaxAmount,
+    hasRemaining,
+    remainingValue,
+    remainingPercentage,
+  } = useMemo(() => {
+    const total = data.reduce((sum, item) => sum + item.value, 0);
+    const visibleTotal = chartData.reduce((sum, item) => sum + item.value, 0);
+    const maxAmountValue =
+      mode === "cumulative" && maxAmount ? maxAmount : total;
+    const hasRemainingSegment =
+      mode === "cumulative" && visibleTotal < maxAmountValue;
+    const remaining = hasRemainingSegment ? maxAmountValue - visibleTotal : 0;
+    const remainingPct = hasRemainingSegment
+      ? (remaining / maxAmountValue) * 100
+      : 0;
+
+    return {
+      effectiveMaxAmount: maxAmountValue,
+      hasRemaining: hasRemainingSegment,
+      remainingValue: remaining,
+      remainingPercentage: remainingPct,
+    };
+  }, [data, chartData, mode, maxAmount]);
+
+  // The remaining segment stands in for the hidden items. It has no data
+  // entry, so it takes the index after `data`.
+  const hasOverflow = hasRemaining && hiddenItems.length > 0;
+  const overflowIndex = data.length;
+
   // Hidden items only appear as swatches in the overflow menu
   const hiddenColors = useMemo(
     () =>
@@ -532,10 +536,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         : [],
     [hasOverflow, hiddenItems.length, colorGeneratorOptions, isDarkMode]
   );
-
-  // Calculate display badge value
-  const displayBadge =
-    badge ?? calculateBadgeText(data.length, selectedIndices.length);
 
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
