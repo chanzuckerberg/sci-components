@@ -56,7 +56,7 @@ export default {
         type: "number",
       },
       description:
-        "Items past this count are grouped into a single segment labeled with remainingLabel whose legend entry opens a menu listing them",
+        "Items past this count are cut off. In cumulative mode they fold into the remaining segment, whose legend entry opens a menu listing them",
     },
     maxAmount: {
       control: {
@@ -238,10 +238,11 @@ export const CumulativeWithSelectionHideBehavior = {
   },
 };
 
-export const WithOverflowMenu = {
+export const CumulativeWithRemainingMenu = {
   render: WithSelectionStory,
   args: {
     data: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
+    mode: "cumulative",
     maxVisibleItems: 5,
     remainingLabel: "Other",
     legendValueFormat: "count",

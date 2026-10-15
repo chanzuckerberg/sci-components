@@ -65,7 +65,9 @@ const calculateLegendValue = (
 
   // Count format: show value with optional unit
   const effectiveUnit = item.unit || globalUnit;
-  return effectiveUnit ? `${item.value.toLocaleString()} ${effectiveUnit}` : `${item.value}`;
+  return effectiveUnit
+    ? `${item.value.toLocaleString()} ${effectiveUnit}`
+    : `${item.value}`;
 };
 
 // Helper: Get segment opacity based on hover and selection state
@@ -210,6 +212,7 @@ const buildLegendItems = (
     remainingPercentage: number;
     remainingLabel: string;
     remainingUnit?: string;
+    remainingDisabled: boolean;
     theme: SDSTheme;
   }
 ): LegendItemData[] => {
@@ -223,6 +226,7 @@ const buildLegendItems = (
     remainingPercentage,
     remainingLabel,
     remainingUnit,
+    remainingDisabled,
     theme,
   } = options;
 
@@ -259,7 +263,7 @@ const buildLegendItems = (
       name: remainingLabel,
       value: remainingValueDisplay,
       color: theme?.palette?.sds?.base?.backgroundTertiary,
-      disabled: true,
+      disabled: remainingDisabled,
     });
   }
 
@@ -369,7 +373,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     unit,
     colorGeneratorOptions,
     maxVisibleItems,
-    overflowColor,
     ...rest
   } = props;
 
@@ -378,37 +381,21 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const theme = useTheme() as SDSTheme;
 
-  // Items past maxVisibleItems collapse into one "Other" segment and legend
-  // entry. Selection and hover indices keep referring to positions in `data`.
+  // Items past maxVisibleItems are cut off. In cumulative mode their values
+  // fold into the remaining segment, whose legend entry opens a menu listing
+  // them. Selection and hover indices keep referring to positions in `data`.
   const visibleCount =
     maxVisibleItems !== undefined && maxVisibleItems < data.length
       ? Math.max(0, maxVisibleItems)
       : data.length;
+  const chartData = useMemo(
+    () => data.slice(0, visibleCount),
+    [data, visibleCount]
+  );
   const hiddenItems = useMemo(
     () => data.slice(visibleCount),
     [data, visibleCount]
   );
-  const hasOverflow = hiddenItems.length > 0;
-  // The grouped item has no data entry, so it takes the index after `data`
-  const overflowIndex = data.length;
-  const chartData = useMemo<StackedBarChartDataItem[]>(() => {
-    if (!hasOverflow) return data;
-    return [
-      ...data.slice(0, visibleCount),
-      {
-        name: remainingLabel,
-        value: hiddenItems.reduce((sum, item) => sum + item.value, 0),
-        color: overflowColor,
-      },
-    ];
-  }, [
-    data,
-    hiddenItems,
-    hasOverflow,
-    visibleCount,
-    remainingLabel,
-    overflowColor,
-  ]);
 
   // Calculate totals and remaining segments for cumulative mode
   const {
@@ -418,10 +405,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingPercentage,
   } = useMemo(() => {
     const total = data.reduce((sum, item) => sum + item.value, 0);
+    const visibleTotal = chartData.reduce((sum, item) => sum + item.value, 0);
     const maxAmountValue =
-      mode === "cumulative" && maxAmount ? maxAmount : total;
-    const hasRemainingSegment = mode === "cumulative" && total < maxAmountValue;
-    const remaining = hasRemainingSegment ? maxAmountValue - total : 0;
+      mode === "cumulative" ? maxAmount || total : visibleTotal;
+    const hasRemainingSegment =
+      mode === "cumulative" && visibleTotal < maxAmountValue;
+    const remaining = hasRemainingSegment ? maxAmountValue - visibleTotal : 0;
     const remainingPct = hasRemainingSegment
       ? (remaining / maxAmountValue) * 100
       : 0;
@@ -432,7 +421,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       remainingValue: remaining,
       remainingPercentage: remainingPct,
     };
-  }, [data, mode, maxAmount]);
+  }, [data, chartData, mode, maxAmount]);
+
+  // The remaining segment stands in for the hidden items. It has no data
+  // entry, so it takes the index after `data`.
+  const hasOverflow = hasRemaining && hiddenItems.length > 0;
+  const overflowIndex = data.length;
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
@@ -558,21 +552,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         percentage:
           effectiveMaxAmount > 0 ? (item.value / effectiveMaxAmount) * 100 : 0,
         key: item.name, // Use name as stable key for tracking
-        originalIndex:
-          hasOverflow && index === visibleCount ? overflowIndex : index,
+        originalIndex: index, // Track original index for selection
         isEntering: false,
         isExiting: false,
       };
     });
-  }, [
-    chartData,
-    hasOverflow,
-    visibleCount,
-    overflowIndex,
-    effectiveMaxAmount,
-    autoColorMap,
-    theme,
-  ]);
+  }, [chartData, effectiveMaxAmount, autoColorMap, theme]);
 
   // Handle data change animations for enters/exits.
   useEffect(() => {
@@ -631,7 +616,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     };
   }, [dataWithPercentages, remainingPercentage]);
 
-  // Hidden items share the "Other" segment, so hover and selection styling
+  // Hidden items share the remaining segment, so hover and selection styling
   // operate on chart indices where every hidden index maps to that segment
   const toChartIndex = useCallback(
     (index: number) =>
@@ -645,28 +630,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     [selectedIndices, toChartIndex]
   );
 
-  // In hide mode only the selected hidden items should size the Other segment
-  const itemsForSelection = useMemo(() => {
-    if (!hasOverflow || selectedIndices.length === 0) return animatedItems;
-    const selectedHiddenValue = hiddenItems.reduce(
-      (sum, item, index) =>
-        selectedIndices.includes(visibleCount + index) ? sum + item.value : sum,
-      0
-    );
-    return animatedItems.map((item) =>
-      item.originalIndex === overflowIndex
-        ? { ...item, value: selectedHiddenValue }
-        : item
-    );
-  }, [
-    animatedItems,
-    hasOverflow,
-    hiddenItems,
-    selectedIndices,
-    visibleCount,
-    overflowIndex,
-  ]);
-
   // Apply selection styling for hide mode
   // This modifies percentages but keeps all items (including hidden ones at 0%)
   // so animations continue to work smoothly
@@ -674,7 +637,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     useMemo(
       () =>
         applySelectionStyling(
-          itemsForSelection,
+          animatedItems,
           selectedChartIndices,
           selectionBehavior,
           mode,
@@ -684,7 +647,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           remainingValue
         ),
       [
-        itemsForSelection,
+        animatedItems,
         selectedChartIndices,
         selectionBehavior,
         mode,
@@ -704,15 +667,11 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     ? updatedRemainingValue
     : remainingValue;
 
-  // Convert data to legend items format (always use full data, not filtered)
+  // Convert data to legend items format
   // Use updated remaining values when in hide mode with selections
-  // The grouped item goes last so clicking it opens the menu of hidden items
-  const legendItems = useMemo(() => {
-    const items = buildLegendItems(
-      dataWithPercentages.filter(
-        (item) => item.originalIndex !== overflowIndex
-      ),
-      {
+  const legendItems = useMemo(
+    () =>
+      buildLegendItems(dataWithPercentages, {
         showLegendValues,
         legendValueFormat,
         unit,
@@ -722,61 +681,40 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         remainingPercentage: displayRemainingPercentage,
         remainingLabel,
         remainingUnit,
+        remainingDisabled: !hasOverflow,
         theme,
-      }
-    );
-    const overflowAnimatedItem = dataWithPercentages.find(
-      (item) => item.originalIndex === overflowIndex
-    );
-    if (overflowAnimatedItem !== undefined) {
-      items.push({
-        name: overflowAnimatedItem.name,
-        color: overflowAnimatedItem.color,
-        value: calculateLegendValue(
-          overflowAnimatedItem,
-          showLegendValues,
-          legendValueFormat,
-          unit
-        ),
-      });
-    }
-    return items;
-  }, [
-    dataWithPercentages,
-    overflowIndex,
-    showLegendValues,
-    legendValueFormat,
-    unit,
-    hasRemaining,
-    showLegend,
-    displayRemainingValue,
-    displayRemainingPercentage,
-    remainingLabel,
-    remainingUnit,
-    theme,
-  ]);
+      }),
+    [
+      dataWithPercentages,
+      showLegendValues,
+      legendValueFormat,
+      unit,
+      hasRemaining,
+      showLegend,
+      displayRemainingValue,
+      displayRemainingPercentage,
+      remainingLabel,
+      remainingUnit,
+      hasOverflow,
+      theme,
+    ]
+  );
 
-  // Legend order is visible items, the remaining entry (cumulative mode), the
-  // grouped entry, then hidden items. Map data indices to and from that order.
-  const legendOffset = hasRemaining ? 1 : 0;
-  const groupLegendIndex = visibleCount + legendOffset;
+  // Legend order is visible items, the remaining entry, then the menu of
+  // hidden items. Map data indices to and from that order.
   const toLegendIndex = useCallback(
     (index: number) => {
       if (!hasOverflow || index < visibleCount) return index;
-      return index === overflowIndex
-        ? groupLegendIndex
-        : index + legendOffset + 1;
+      return index === overflowIndex ? visibleCount : index + 1;
     },
-    [hasOverflow, visibleCount, overflowIndex, groupLegendIndex, legendOffset]
+    [hasOverflow, visibleCount, overflowIndex]
   );
   const fromLegendIndex = useCallback(
     (index: number) => {
-      if (!hasOverflow || index < groupLegendIndex) return index;
-      return index === groupLegendIndex
-        ? overflowIndex
-        : index - legendOffset - 1;
+      if (!hasOverflow || index < visibleCount) return index;
+      return index === visibleCount ? overflowIndex : index - 1;
     },
-    [hasOverflow, groupLegendIndex, overflowIndex, legendOffset]
+    [hasOverflow, visibleCount, overflowIndex]
   );
 
   // Handle legend item hover and leave
@@ -836,22 +774,6 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       // Handle selection change
       if (!onSelectionChange) return;
 
-      // The Other segment selects or clears every hidden item at once
-      if (index === overflowIndex) {
-        const anyHiddenSelected = selectedIndices.some(
-          (i) => i >= visibleCount
-        );
-        handleSelectionChange(
-          anyHiddenSelected
-            ? selectedIndices.filter((i) => i < visibleCount)
-            : [
-                ...selectedIndices,
-                ...hiddenItems.map((_, i) => visibleCount + i),
-              ]
-        );
-        return;
-      }
-
       const isSelected = selectedChartIndices.has(index);
       const newSelectedIndices = isSelected
         ? selectedIndices.filter((i) => i !== index)
@@ -862,27 +784,26 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     [
       onSelectionChange,
       onSegmentClick,
-      overflowIndex,
       data,
       selectedIndices,
       selectedChartIndices,
-      hiddenItems,
-      visibleCount,
       handleSelectionChange,
     ]
   );
 
-  const overflowMenuLegendItems = useMemo<LegendItemData[]>(
+  const remainingMenuItems = useMemo<LegendItemData[]>(
     () =>
-      hiddenItems.map((item, index) => ({
-        name: item.name,
-        color:
-          item.color ||
-          hiddenColors[index] ||
-          theme?.palette?.sds?.base?.ornamentSecondary,
-        disabled: item.disabled,
-      })),
-    [hiddenItems, hiddenColors, theme]
+      hasOverflow
+        ? hiddenItems.map((item, index) => ({
+            name: item.name,
+            color:
+              item.color ||
+              hiddenColors[index] ||
+              theme?.palette?.sds?.base?.ornamentSecondary,
+            disabled: item.disabled,
+          }))
+        : [],
+    [hasOverflow, hiddenItems, hiddenColors, theme]
   );
 
   // Calculate the last visible segment (percentage > 0)
@@ -941,7 +862,16 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             percentage={displayRemainingPercentage}
             height={barHeight}
             isLast={true}
-            opacity={1}
+            opacity={
+              hasOverflow
+                ? getSegmentOpacity(
+                    overflowIndex,
+                    hoveredChartIndex,
+                    selectedChartIndices,
+                    selectionBehavior
+                  )
+                : 1
+            }
             disabled={true}
           />
         )}
@@ -950,7 +880,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       {showLegend && (
         <Legend
           items={legendItems}
-          lastItemMenuItems={overflowMenuLegendItems}
+          lastItemMenuItems={remainingMenuItems}
           showValues={showLegendValues}
           onItemMouseEnter={handleLegendItemHover}
           onItemMouseLeave={handleLegendItemLeave}

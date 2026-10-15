@@ -1,5 +1,267 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`<StackedBarChart /> > CumulativeWithRemainingMenu story renders snapshot 1`] = `
+<div
+  style="margin: 150px;"
+>
+  <div
+    class="css-1nt6foq-ChartWrapper eja2e935"
+    width="360px"
+  >
+    <div
+      class="css-neq72u-TitleContainer eja2e934"
+    >
+      <div
+        class="css-1dt8abz-ChartTitle eja2e933"
+      >
+        Domain
+      </div>
+      <div
+        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+      >
+        <span
+          class="MuiChip-label css-1dybbl5-MuiChip-label"
+        >
+          9
+        </span>
+      </div>
+    </div>
+    <div
+      class="css-19pda0y-StyledStackedBarChartWrapper eja2e930"
+    >
+      <div
+        class="css-1pjjpkj-BarContainer eja2e932"
+        width="360px"
+      >
+        <div
+          class="css-v44vh1-BarSegment eja2e931"
+          color="#615da2"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="8"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-n8h564-BarSegment eja2e931"
+          color="#b35e81"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="8"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-n75s52-BarSegment eja2e931"
+          color="#a98954"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="8"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-umeyjj-BarSegment eja2e931"
+          color="#84af65"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="8"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-1f7fyrd-BarSegment eja2e931"
+          color="#8ac2d2"
+          data-hide="false"
+          data-mui-internal-clone-element="true"
+          height="8"
+          opacity="1"
+          tabindex="0"
+        />
+        <div
+          class="css-107bgoz-BarSegment eja2e931"
+          disabled=""
+          height="8"
+          opacity="1"
+        />
+      </div>
+      <div
+        class="css-qrrplm-LegendContainer ezuih625"
+      >
+        <div
+          aria-label="Transcriptomic: 117"
+          aria-pressed="false"
+          class="css-15ci9m1-LegendItem ezuih624"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-21x60r-LegendIcon ezuih623"
+            color="#615da2"
+          />
+          <span
+            class="css-1apzfui-LegendLabel ezuih622"
+          >
+            Transcriptomic
+          </span>
+          <span
+            class="css-n6k7ig-LegendValue ezuih621"
+          >
+            117
+          </span>
+        </div>
+        <div
+          aria-label="Imaging: 61"
+          aria-pressed="false"
+          class="css-15ci9m1-LegendItem ezuih624"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-11xuja4-LegendIcon ezuih623"
+            color="#b35e81"
+          />
+          <span
+            class="css-1apzfui-LegendLabel ezuih622"
+          >
+            Imaging
+          </span>
+          <span
+            class="css-n6k7ig-LegendValue ezuih621"
+          >
+            61
+          </span>
+        </div>
+        <div
+          aria-label="Proteomics: 15"
+          aria-pressed="false"
+          class="css-15ci9m1-LegendItem ezuih624"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-jf6bkr-LegendIcon ezuih623"
+            color="#a98954"
+          />
+          <span
+            class="css-1apzfui-LegendLabel ezuih622"
+          >
+            Proteomics
+          </span>
+          <span
+            class="css-n6k7ig-LegendValue ezuih621"
+          >
+            15
+          </span>
+        </div>
+        <div
+          aria-label="Spatial Transcriptomics: 78"
+          aria-pressed="false"
+          class="css-15ci9m1-LegendItem ezuih624"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-rqemqq-LegendIcon ezuih623"
+            color="#84af65"
+          />
+          <span
+            class="css-1apzfui-LegendLabel ezuih622"
+          >
+            Spatial Transcriptomics
+          </span>
+          <span
+            class="css-n6k7ig-LegendValue ezuih621"
+          >
+            78
+          </span>
+        </div>
+        <div
+          aria-label="Epigenomics: 100"
+          aria-pressed="false"
+          class="css-15ci9m1-LegendItem ezuih624"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-55fg2q-LegendIcon ezuih623"
+            color="#8ac2d2"
+          />
+          <span
+            class="css-1apzfui-LegendLabel ezuih622"
+          >
+            Epigenomics
+          </span>
+          <span
+            class="css-n6k7ig-LegendValue ezuih621"
+          >
+            100
+          </span>
+        </div>
+        <div
+          aria-disabled="false"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Other: 270"
+          aria-pressed="false"
+          class="css-15ci9m1-LegendItem ezuih624"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="css-6plgot-LegendIcon ezuih623"
+          />
+          <span
+            class="css-1apzfui-LegendLabel ezuih622"
+          >
+            Other
+          </span>
+          <span
+            class="css-n6k7ig-LegendValue ezuih621"
+          >
+            270
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="margin-top: 40px;"
+  >
+    <div
+      style="display: flex; gap: 8px; margin-bottom: 12px;"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        >
+          Select All
+        </span>
+      </button>
+      <button
+        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        >
+          Clear Selection
+        </span>
+      </button>
+    </div>
+    <div
+      style="display: flex; flex-wrap: wrap; gap: 4px;"
+    />
+  </div>
+</div>
+`;
+
 exports[`<StackedBarChart /> > CumulativeWithSelectionDimBehavior story renders snapshot 1`] = `
 <div
   style="margin: 150px;"
@@ -1832,275 +2094,6 @@ exports[`<StackedBarChart /> > WithMouseEvents story renders snapshot 1`] = `
         No events yet. Hover or click on segments or legend items to see events.
       </div>
     </div>
-  </div>
-</div>
-`;
-
-exports[`<StackedBarChart /> > WithOverflowMenu story renders snapshot 1`] = `
-<div
-  style="margin: 150px;"
->
-  <div
-    class="css-1nt6foq-ChartWrapper eja2e935"
-    width="360px"
-  >
-    <div
-      class="css-neq72u-TitleContainer eja2e934"
-    >
-      <div
-        class="css-1dt8abz-ChartTitle eja2e933"
-      >
-        Domain
-      </div>
-      <div
-        class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
-      >
-        <span
-          class="MuiChip-label css-1dybbl5-MuiChip-label"
-        >
-          9
-        </span>
-      </div>
-    </div>
-    <div
-      class="css-19pda0y-StyledStackedBarChartWrapper eja2e930"
-    >
-      <div
-        class="css-1pjjpkj-BarContainer eja2e932"
-        width="360px"
-      >
-        <div
-          class="css-v44vh1-BarSegment eja2e931"
-          color="#615da2"
-          data-hide="false"
-          data-mui-internal-clone-element="true"
-          height="8"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-1ksw2gd-BarSegment eja2e931"
-          color="#ab598d"
-          data-hide="false"
-          data-mui-internal-clone-element="true"
-          height="8"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-ec86bk-BarSegment eja2e931"
-          color="#b5765f"
-          data-hide="false"
-          data-mui-internal-clone-element="true"
-          height="8"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-v68196-BarSegment eja2e931"
-          color="#9a9a55"
-          data-hide="false"
-          data-mui-internal-clone-element="true"
-          height="8"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-4ihxyj-BarSegment eja2e931"
-          color="#7eb570"
-          data-hide="false"
-          data-mui-internal-clone-element="true"
-          height="8"
-          opacity="1"
-          tabindex="0"
-        />
-        <div
-          class="css-ngwfam-BarSegment eja2e931"
-          color="#8ac2d2"
-          data-hide="false"
-          height="8"
-          opacity="1"
-        />
-        <div
-          class="css-i70t99-BarSegment eja2e931"
-          disabled=""
-          height="8"
-          opacity="1"
-        />
-      </div>
-      <div
-        class="css-qrrplm-LegendContainer ezuih625"
-      >
-        <div
-          aria-label="Transcriptomic: 117"
-          aria-pressed="false"
-          class="css-15ci9m1-LegendItem ezuih624"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-21x60r-LegendIcon ezuih623"
-            color="#615da2"
-          />
-          <span
-            class="css-1apzfui-LegendLabel ezuih622"
-          >
-            Transcriptomic
-          </span>
-          <span
-            class="css-n6k7ig-LegendValue ezuih621"
-          >
-            117
-          </span>
-        </div>
-        <div
-          aria-label="Imaging: 61"
-          aria-pressed="false"
-          class="css-15ci9m1-LegendItem ezuih624"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-1vkafx8-LegendIcon ezuih623"
-            color="#ab598d"
-          />
-          <span
-            class="css-1apzfui-LegendLabel ezuih622"
-          >
-            Imaging
-          </span>
-          <span
-            class="css-n6k7ig-LegendValue ezuih621"
-          >
-            61
-          </span>
-        </div>
-        <div
-          aria-label="Proteomics: 15"
-          aria-pressed="false"
-          class="css-15ci9m1-LegendItem ezuih624"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-169auc0-LegendIcon ezuih623"
-            color="#b5765f"
-          />
-          <span
-            class="css-1apzfui-LegendLabel ezuih622"
-          >
-            Proteomics
-          </span>
-          <span
-            class="css-n6k7ig-LegendValue ezuih621"
-          >
-            15
-          </span>
-        </div>
-        <div
-          aria-label="Spatial Transcriptomics: 78"
-          aria-pressed="false"
-          class="css-15ci9m1-LegendItem ezuih624"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-12ouozh-LegendIcon ezuih623"
-            color="#9a9a55"
-          />
-          <span
-            class="css-1apzfui-LegendLabel ezuih622"
-          >
-            Spatial Transcriptomics
-          </span>
-          <span
-            class="css-n6k7ig-LegendValue ezuih621"
-          >
-            78
-          </span>
-        </div>
-        <div
-          aria-label="Epigenomics: 100"
-          aria-pressed="false"
-          class="css-15ci9m1-LegendItem ezuih624"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-e8rnel-LegendIcon ezuih623"
-            color="#7eb570"
-          />
-          <span
-            class="css-1apzfui-LegendLabel ezuih622"
-          >
-            Epigenomics
-          </span>
-          <span
-            class="css-n6k7ig-LegendValue ezuih621"
-          >
-            100
-          </span>
-        </div>
-        <div
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Other (4): 270"
-          aria-pressed="false"
-          class="css-15ci9m1-LegendItem ezuih624"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="css-55fg2q-LegendIcon ezuih623"
-            color="#8ac2d2"
-          />
-          <span
-            class="css-1apzfui-LegendLabel ezuih622"
-          >
-            Other (4)
-          </span>
-          <span
-            class="css-n6k7ig-LegendValue ezuih621"
-          >
-            270
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    style="margin-top: 40px;"
-  >
-    <div
-      style="display: flex; gap: 8px; margin-bottom: 12px;"
-    >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
-        tabindex="0"
-        type="button"
-      >
-        <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
-        >
-          Select All
-        </span>
-      </button>
-      <button
-        class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
-        disabled=""
-        tabindex="-1"
-        type="button"
-      >
-        <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
-        >
-          Clear Selection
-        </span>
-      </button>
-    </div>
-    <div
-      style="display: flex; flex-wrap: wrap; gap: 4px;"
-    />
   </div>
 </div>
 `;

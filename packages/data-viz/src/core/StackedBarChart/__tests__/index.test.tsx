@@ -739,11 +739,22 @@ describe("<StackedBarChart />", () => {
       { name: "Epsilon", value: 4 },
     ];
 
-    it("groups items past maxVisibleItems under remainingLabel with their total", () => {
+    it("cuts off items past maxVisibleItems in proportional mode", () => {
+      render(<StackedBarChart data={manyItems} maxVisibleItems={3} />);
+
+      expect(screen.queryByText("Delta")).not.toBeInTheDocument();
+      expect(screen.queryByRole(BUTTON_ROLE, { name: /Remaining/ })).toBeNull();
+      expect(
+        screen.getByRole(BUTTON_ROLE, { name: /Gamma/ })
+      ).not.toHaveAttribute("aria-haspopup");
+    });
+
+    it("folds hidden items into the remaining entry in cumulative mode", () => {
       render(
         <StackedBarChart
           data={manyItems}
           maxVisibleItems={3}
+          mode="cumulative"
           remainingLabel="Other"
           legendValueFormat="count"
         />
@@ -755,13 +766,14 @@ describe("<StackedBarChart />", () => {
       expect(screen.queryByText("Delta")).not.toBeInTheDocument();
     });
 
-    it("opens a menu of hidden items that select by their data index", () => {
+    it("opens a menu of hidden items from the remaining entry that select by data index", () => {
       const handleSelectionChange = vi.fn();
 
       render(
         <StackedBarChart
           data={manyItems}
           maxVisibleItems={3}
+          mode="cumulative"
           remainingLabel="Other"
           selectedIndices={[]}
           onSelectionChange={handleSelectionChange}
@@ -774,7 +786,7 @@ describe("<StackedBarChart />", () => {
       expect(handleSelectionChange).toHaveBeenCalledWith([4], [manyItems[4]]);
     });
 
-    it("keeps hidden selections mapped around the remaining entry in cumulative mode", () => {
+    it("marks the remaining entry as pressed when a hidden item is selected", () => {
       const handleSelectionChange = vi.fn();
 
       render(
@@ -788,14 +800,12 @@ describe("<StackedBarChart />", () => {
         />
       );
 
-      // Both the cumulative remaining entry and the grouped entry use the label
-      const [remainingEntry, otherEntry] = screen.getAllByRole(BUTTON_ROLE, {
+      const remainingEntry = screen.getByRole(BUTTON_ROLE, {
         name: /Remaining/,
       });
-      expect(remainingEntry).toHaveAttribute("aria-disabled", "true");
-      expect(otherEntry).toHaveAttribute("aria-pressed", "true");
+      expect(remainingEntry).toHaveAttribute("aria-pressed", "true");
 
-      fireEvent.click(otherEntry);
+      fireEvent.click(remainingEntry);
       fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Delta/ }));
 
       expect(handleSelectionChange).toHaveBeenCalledWith([], []);
@@ -804,7 +814,6 @@ describe("<StackedBarChart />", () => {
     it("renders every item individually when maxVisibleItems is not exceeded", () => {
       render(<StackedBarChart data={manyItems} maxVisibleItems={5} />);
 
-      expect(screen.queryByText(/Other/)).not.toBeInTheDocument();
       expect(screen.getByText("Epsilon")).toBeInTheDocument();
     });
   });
