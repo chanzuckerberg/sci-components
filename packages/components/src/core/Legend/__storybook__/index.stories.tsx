@@ -99,6 +99,20 @@ export const WithSelection: Story = {
   },
 };
 
+export const WithLastItemMenu: Story = {
+  render: LegendSelectionWithTheme,
+  args: {
+    showValues: true,
+    lastItemMenuItems: [
+      { name: "G. gallus", color: "#975bd4" },
+      { name: "X. laevis", color: "#5b70d4" },
+      { name: "C. elegans", color: "#7ad1d9" },
+      { name: "D. melanogaster", color: "#7dd889" },
+      { name: "S. cerevisiae", color: "#a2d96a" },
+    ],
+  },
+};
+
 // Test
 
 export const Test = {

@@ -340,6 +340,61 @@ describe("<Legend />", () => {
     // No values should be displayed since they're undefined
   });
 
+  describe("last item menu", () => {
+    const itemsWithOther = [...sampleItems, { name: "Other", value: 30 }];
+    const menuItems = [
+      { name: "Hidden 1", value: 10 },
+      { name: "Hidden 2", value: 20 },
+    ];
+
+    it("opens a menu of the given items when the final item is clicked", () => {
+      render(<Legend items={itemsWithOther} lastItemMenuItems={menuItems} />);
+
+      expect(screen.queryByText("Hidden 1")).not.toBeInTheDocument();
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other/ }));
+
+      expect(screen.getByText("Hidden 1")).toBeInTheDocument();
+      expect(screen.getByText("Hidden 2")).toBeInTheDocument();
+    });
+
+    it("reports menu item indices after the items", () => {
+      const handleSelectionChange = vi.fn();
+      const handleClick = vi.fn();
+
+      render(
+        <Legend
+          items={itemsWithOther}
+          lastItemMenuItems={menuItems}
+          selectedIndices={[0]}
+          onSelectionChange={handleSelectionChange}
+          onItemClick={handleClick}
+        />
+      );
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other/ }));
+      expect(handleClick).toHaveBeenCalledWith(itemsWithOther[3], 3);
+      expect(handleSelectionChange).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Hidden 2/ }));
+      expect(handleSelectionChange).toHaveBeenCalledWith([0, 5]);
+      expect(handleClick).toHaveBeenLastCalledWith(menuItems[1], 5);
+    });
+
+    it("marks the final item as pressed when a menu item is selected", () => {
+      render(
+        <Legend
+          items={itemsWithOther}
+          lastItemMenuItems={menuItems}
+          selectedIndices={[4]}
+        />
+      );
+
+      const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other/ });
+      expect(otherEntry).toHaveAttribute(ARIA_PRESSED, ARIA_PRESSED_TRUE);
+    });
+  });
+
   it("calls both onItemClick and onSelectionChange when both are provided", () => {
     const handleClick = vi.fn();
     const handleSelectionChange = vi.fn();

@@ -729,4 +729,94 @@ describe("<StackedBarChart />", () => {
       expect(handleLegendItemClick).not.toHaveBeenCalled();
     });
   });
+
+  describe("maxItems", () => {
+    const manyItems = [
+      { name: "Alpha", value: 50 },
+      { name: "Beta", value: 30 },
+      { name: "Gamma", value: 10 },
+      { name: "Delta", value: 6 },
+      { name: "Epsilon", value: 4 },
+    ];
+
+    it("ignores maxItems in proportional mode", () => {
+      render(<StackedBarChart data={manyItems} maxItems={3} />);
+
+      expect(screen.getByText("Epsilon")).toBeInTheDocument();
+      expect(screen.queryByRole(BUTTON_ROLE, { name: /Remaining/ })).toBeNull();
+      expect(
+        screen.getByRole(BUTTON_ROLE, { name: /Epsilon/ })
+      ).not.toHaveAttribute("aria-haspopup");
+    });
+
+    it("folds hidden items into the remaining entry in cumulative mode", () => {
+      render(
+        <StackedBarChart
+          data={manyItems}
+          maxItems={3}
+          mode="cumulative"
+          remainingLabel="Other"
+          legendValueFormat="count"
+        />
+      );
+
+      expect(
+        screen.getByRole(BUTTON_ROLE, { name: "Other: 10" })
+      ).toBeInTheDocument();
+      expect(screen.queryByText("Delta")).not.toBeInTheDocument();
+    });
+
+    it("opens a menu of hidden items from the remaining entry that select by data index", () => {
+      const handleSelectionChange = vi.fn();
+
+      render(
+        <StackedBarChart
+          data={manyItems}
+          maxItems={3}
+          mode="cumulative"
+          remainingLabel="Other"
+          selectedIndices={[]}
+          onSelectionChange={handleSelectionChange}
+        />
+      );
+
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other/ }));
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Epsilon/ }));
+
+      expect(handleSelectionChange).toHaveBeenCalledWith([4], [manyItems[4]]);
+    });
+
+    it("marks the remaining entry as pressed when a hidden item is selected", () => {
+      const handleSelectionChange = vi.fn();
+
+      render(
+        <StackedBarChart
+          data={manyItems}
+          maxItems={3}
+          mode="cumulative"
+          maxAmount={200}
+          selectedIndices={[3]}
+          onSelectionChange={handleSelectionChange}
+        />
+      );
+
+      const remainingEntry = screen.getByRole(BUTTON_ROLE, {
+        name: /Remaining/,
+      });
+      expect(remainingEntry).toHaveAttribute("aria-pressed", "true");
+
+      fireEvent.click(remainingEntry);
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Delta/ }));
+
+      expect(handleSelectionChange).toHaveBeenCalledWith([], []);
+    });
+
+    it("renders every item individually when maxItems is not exceeded", () => {
+      render(
+        <StackedBarChart data={manyItems} mode="cumulative" maxItems={5} />
+      );
+
+      expect(screen.getByText("Epsilon")).toBeInTheDocument();
+    });
+  });
 });
