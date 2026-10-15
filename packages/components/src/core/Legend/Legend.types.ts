@@ -72,10 +72,10 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    */
   hoveredIndex?: number | null;
   /**
-   * Items listed in a menu that opens when the final item in `items` is clicked,
-   * instead of toggling its selection. In `selectedIndices` and callbacks, menu
-   * item i is index `items.length + i`. Hovering or selecting a menu item also
-   * highlights the final item.
+   * Items in popover that appears when last item is clicked. This can be used for
+   * displaying "remaining" items that are not rendered in main legend.
+   * 
+   * Empty means no popover is created.
    */
   lastItemMenuItems?: LegendItemData[];
 }
