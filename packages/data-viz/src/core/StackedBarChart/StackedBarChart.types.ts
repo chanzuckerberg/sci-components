@@ -145,6 +145,12 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    */
   maxAmount?: number;
   /**
+   * Maximum number of items shown as their own segment (used only in "cumulative" mode)
+   * If provided and there are more items, the rest fold into the gray "remaining" segment
+   * and clicking its legend entry opens a menu listing them
+   */
+  maxItems?: number;
+  /**
    * Label for the remaining/unknown segment in cumulative mode
    * @default "Remaining"
    */
@@ -164,11 +170,4 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    * Options for the color generator
    */
   colorGeneratorOptions?: DiscreteColorGeneratorOptions;
-  /**
-   * Maximum number of items shown as their own segment and legend entry.
-   * Items past this count are cut off. In cumulative mode their values fold
-   * into the remaining segment, and clicking the remaining legend entry opens
-   * a menu listing them. Selection indices still refer to positions in `data`.
-   */
-  maxVisibleItems?: number;
 }

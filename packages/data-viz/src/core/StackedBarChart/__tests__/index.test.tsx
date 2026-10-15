@@ -730,7 +730,7 @@ describe("<StackedBarChart />", () => {
     });
   });
 
-  describe("maxVisibleItems", () => {
+  describe("maxItems", () => {
     const manyItems = [
       { name: "Alpha", value: 50 },
       { name: "Beta", value: 30 },
@@ -739,13 +739,13 @@ describe("<StackedBarChart />", () => {
       { name: "Epsilon", value: 4 },
     ];
 
-    it("cuts off items past maxVisibleItems in proportional mode", () => {
-      render(<StackedBarChart data={manyItems} maxVisibleItems={3} />);
+    it("ignores maxItems in proportional mode", () => {
+      render(<StackedBarChart data={manyItems} maxItems={3} />);
 
-      expect(screen.queryByText("Delta")).not.toBeInTheDocument();
+      expect(screen.getByText("Epsilon")).toBeInTheDocument();
       expect(screen.queryByRole(BUTTON_ROLE, { name: /Remaining/ })).toBeNull();
       expect(
-        screen.getByRole(BUTTON_ROLE, { name: /Gamma/ })
+        screen.getByRole(BUTTON_ROLE, { name: /Epsilon/ })
       ).not.toHaveAttribute("aria-haspopup");
     });
 
@@ -753,7 +753,7 @@ describe("<StackedBarChart />", () => {
       render(
         <StackedBarChart
           data={manyItems}
-          maxVisibleItems={3}
+          maxItems={3}
           mode="cumulative"
           remainingLabel="Other"
           legendValueFormat="count"
@@ -772,7 +772,7 @@ describe("<StackedBarChart />", () => {
       render(
         <StackedBarChart
           data={manyItems}
-          maxVisibleItems={3}
+          maxItems={3}
           mode="cumulative"
           remainingLabel="Other"
           selectedIndices={[]}
@@ -792,7 +792,7 @@ describe("<StackedBarChart />", () => {
       render(
         <StackedBarChart
           data={manyItems}
-          maxVisibleItems={3}
+          maxItems={3}
           mode="cumulative"
           maxAmount={200}
           selectedIndices={[3]}
@@ -811,8 +811,10 @@ describe("<StackedBarChart />", () => {
       expect(handleSelectionChange).toHaveBeenCalledWith([], []);
     });
 
-    it("renders every item individually when maxVisibleItems is not exceeded", () => {
-      render(<StackedBarChart data={manyItems} maxVisibleItems={5} />);
+    it("renders every item individually when maxItems is not exceeded", () => {
+      render(
+        <StackedBarChart data={manyItems} mode="cumulative" maxItems={5} />
+      );
 
       expect(screen.getByText("Epsilon")).toBeInTheDocument();
     });

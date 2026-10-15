@@ -372,7 +372,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingUnit,
     unit,
     colorGeneratorOptions,
-    maxVisibleItems,
+    maxItems,
     ...rest
   } = props;
 
@@ -381,12 +381,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const theme = useTheme() as SDSTheme;
 
-  // Items past maxVisibleItems are cut off. In cumulative mode their values
-  // fold into the remaining segment, whose legend entry opens a menu listing
-  // them. Selection and hover indices keep referring to positions in `data`.
+  // In cumulative mode, items past maxItems fold into the remaining segment,
+  // whose legend entry opens a menu listing them. Selection and hover indices
+  // keep referring to positions in `data`.
   const visibleCount =
-    maxVisibleItems !== undefined && maxVisibleItems < data.length
-      ? Math.max(0, maxVisibleItems)
+    mode === "cumulative" && maxItems !== undefined && maxItems < data.length
+      ? Math.max(0, maxItems)
       : data.length;
   const chartData = useMemo(
     () => data.slice(0, visibleCount),
@@ -407,7 +407,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     const total = data.reduce((sum, item) => sum + item.value, 0);
     const visibleTotal = chartData.reduce((sum, item) => sum + item.value, 0);
     const maxAmountValue =
-      mode === "cumulative" ? maxAmount || total : visibleTotal;
+      mode === "cumulative" && maxAmount ? maxAmount : total;
     const hasRemainingSegment =
       mode === "cumulative" && visibleTotal < maxAmountValue;
     const remaining = hasRemainingSegment ? maxAmountValue - visibleTotal : 0;

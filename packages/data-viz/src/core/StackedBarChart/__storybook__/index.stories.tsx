@@ -51,19 +51,19 @@ export default {
       mapping: DATA_OPTIONS,
       options: Object.keys(DATA_OPTIONS),
     },
-    maxVisibleItems: {
-      control: {
-        type: "number",
-      },
-      description:
-        "Items past this count are cut off. In cumulative mode they fold into the remaining segment, whose legend entry opens a menu listing them",
-    },
     maxAmount: {
       control: {
         type: "number",
       },
       description:
         "Maximum amount for the bar (used only in 'cumulative' mode). If not provided, defaults to sum of all values",
+    },
+    maxItems: {
+      control: {
+        type: "number",
+      },
+      description:
+        "Maximum number of items shown as their own segment (used only in 'cumulative' mode). The rest fold into the remaining segment, whose legend entry opens a menu listing them",
     },
     mode: {
       control: {
@@ -93,8 +93,7 @@ export default {
       control: {
         type: "text",
       },
-      description:
-        "Label for the remaining segment in cumulative mode and for the grouped segment created by maxVisibleItems",
+      description: "Label for the remaining/unknown segment in cumulative mode",
     },
     remainingUnit: {
       control: {
@@ -243,7 +242,7 @@ export const CumulativeWithRemainingMenu = {
   args: {
     data: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
     mode: "cumulative",
-    maxVisibleItems: 5,
+    maxItems: 5,
     remainingLabel: "Other",
     legendValueFormat: "count",
     showLegend: true,
