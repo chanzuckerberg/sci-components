@@ -94,6 +94,10 @@ const VERIFIED_TABLE_TYPES = new Map<string, Set<string>>([
   // and `paper`, and the component reads only the latter two. The page lists
   // the keys that work and says so.
   ["Dialog", new Set(["classes"])],
+  // The parser expands `GenomeSelection` into its four members, which is 120
+  // characters of union in a table cell. The page names the exported alias and
+  // spells the union out under its own heading.
+  ["GenomeTrack", new Set(["selection"])],
   ["InputSearch", new Set(["label"])],
 ]);
 

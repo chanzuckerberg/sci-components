@@ -79,6 +79,11 @@
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/DropdownMenu/__storybook__/docs/content.html"
   },
+  "GenomeTrack": {
+    "file": "GenomeTrack.md",
+    "package": "@czi-sds/data-viz",
+    "source": "packages/data-viz/src/core/GenomeTrack/__storybook__/docs/content.html"
+  },
   "HeatmapChart": {
     "file": "HeatmapChart.md",
     "package": "@czi-sds/data-viz",
