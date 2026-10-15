@@ -525,7 +525,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const hasOverflow = hasRemaining && hiddenItems.length > 0;
   const overflowIndex = data.length;
 
-  // Hidden items only appear as swatches in the overflow menu
+  // Hidden items only appear in overflow menu
   const hiddenColors = useMemo(
     () =>
       hasOverflow
