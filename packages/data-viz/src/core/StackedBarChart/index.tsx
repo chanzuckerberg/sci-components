@@ -212,7 +212,7 @@ const buildLegendItems = (
     remainingPercentage: number;
     remainingLabel: string;
     remainingUnit?: string;
-    remainingDisabled: boolean;
+    remainingOpensMenu: boolean;
     theme: SDSTheme;
   }
 ): LegendItemData[] => {
@@ -226,7 +226,7 @@ const buildLegendItems = (
     remainingPercentage,
     remainingLabel,
     remainingUnit,
-    remainingDisabled,
+    remainingOpensMenu,
     theme,
   } = options;
 
@@ -263,7 +263,7 @@ const buildLegendItems = (
       name: remainingLabel,
       value: remainingValueDisplay,
       color: theme?.palette?.sds?.base?.backgroundTertiary,
-      disabled: remainingDisabled,
+      disabled: !remainingOpensMenu,
     });
   }
 
@@ -681,7 +681,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         remainingPercentage: displayRemainingPercentage,
         remainingLabel,
         remainingUnit,
-        remainingDisabled: !hasOverflow,
+        remainingOpensMenu: hasOverflow,
         theme,
       }),
     [
