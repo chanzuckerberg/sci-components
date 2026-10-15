@@ -135,6 +135,12 @@ export default {
       description:
         "Width of the chart - accepts any CSS width value (e.g., '100%', '20vw', '300px', or number for pixels)",
     },
+    colorGeneratorOptions: {
+      control: {
+        type: "object",
+      },
+      description: "Options for the color generator",
+    },
   },
   component: StackedBarChart,
   parameters: {
@@ -145,11 +151,22 @@ export default {
   title: "Data Viz/StackedBarChart",
 } as Meta;
 
+const DEFAULT_COLOR_GENERATOR_OPTIONS = {
+  start: 240,
+  lightness: [0.4, 0.7],
+  correctLightness: true,
+  rotations: 0.85,
+  gamma: 1,
+};
+
 export const Default = {
   args: {
     data: STACKED_BAR_CHART_DATA,
     title: "Domain",
     width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -162,6 +179,9 @@ export const ProportionalWithSelectionDimBehavior = {
     showLegendValues: true,
     title: "Domain",
     width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -177,6 +197,9 @@ export const CumulativeWithSelectionDimBehavior = {
     width: "360px",
     maxAmount: 700,
     legendValueFormat: "count",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -190,6 +213,9 @@ export const ProportionalWithSelectionHideBehavior = {
     selectionBehavior: "hide",
     title: "Domain",
     width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -206,6 +232,9 @@ export const CumulativeWithSelectionHideBehavior = {
     maxAmount: 700,
     legendValueFormat: "count",
     selectionBehavior: "hide",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -220,6 +249,9 @@ export const WithOverflowMenu = {
     showLegendValues: true,
     title: "Domain",
     width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 
@@ -231,6 +263,9 @@ export const WithMouseEvents = {
     showLegendValues: true,
     title: "Mouse Events Demo",
     width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
   },
 };
 

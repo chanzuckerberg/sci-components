@@ -7,7 +7,8 @@ import {
   useMemo,
 } from "react";
 import {
-  getDiscreteColor,
+  generateDiscreteColors,
+  getMode,
   Legend,
   SDSTheme,
   Tag,
@@ -28,9 +29,6 @@ import {
   StackedBarChartDataItem,
   StackedBarChartProps,
 } from "./StackedBarChart.types";
-
-// Color map key for the cumulative remaining segment, which has no data item
-const REMAINING_COLOR_KEY = "__remaining__";
 
 // Type for tracking items with animation state
 type AnimatedItem = StackedBarChartDataItem & {
@@ -213,7 +211,7 @@ const buildLegendItems = (
     remainingPercentage: number;
     remainingLabel: string;
     remainingUnit?: string;
-    remainingColor?: string;
+    theme: SDSTheme;
   }
 ): LegendItemData[] => {
   const {
@@ -226,7 +224,7 @@ const buildLegendItems = (
     remainingPercentage,
     remainingLabel,
     remainingUnit,
-    remainingColor,
+    theme,
   } = options;
 
   const legendItems: LegendItemData[] = dataWithPercentages.map((item) => ({
@@ -262,7 +260,7 @@ const buildLegendItems = (
     legendItems.push({
       name: remainingLabel,
       value: remainingValueDisplay,
-      color: remainingColor,
+      color: theme?.palette?.sds?.base?.backgroundTertiary,
       disabled: true,
     });
   }
@@ -371,6 +369,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingLabel = "Remaining",
     remainingUnit,
     unit,
+    colorGeneratorOptions,
     maxVisibleItems,
     overflowColor,
     ...rest
@@ -446,27 +445,54 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     useState<number>(0);
   const previousProcessedRef = useRef<AnimatedItem[]>([]);
   const previousDataKeysRef = useRef<Set<string>>(new Set());
+  const previousColorOptionsRef = useRef<{
+    options: typeof colorGeneratorOptions;
+    isDarkMode: boolean;
+  } | null>(null);
 
-  // Visible items, the grouped item, hidden items, then the remaining segment
-  // take consecutive positions in one color cycle
-  const colorItems = useMemo(() => {
-    const items = hasOverflow ? [...chartData, ...hiddenItems] : [...chartData];
-    if (hasRemaining) items.push({ name: REMAINING_COLOR_KEY, value: 0 });
-    return items;
-  }, [chartData, hiddenItems, hasOverflow, hasRemaining]);
+  // Detect dark mode from theme
+  const isDarkMode = useMemo(() => getMode({ theme }) === "dark", [theme]);
+
+  // Helper to generate color map for auto items
   const generateColorMap = useCallback(
-    (items: StackedBarChartDataItem[]): Map<string, string> =>
-      new Map(items.map((item, index) => [item.name, getDiscreteColor(index)])),
-    []
+    (items: StackedBarChartDataItem[]): Map<string, string> => {
+      const palette = generateDiscreteColors(items.length, {
+        ...(colorGeneratorOptions || {}),
+        isDarkMode,
+      });
+
+      const newColorMap = new Map<string, string>();
+      items.forEach((item, index) => {
+        newColorMap.set(
+          item.name,
+          palette[index] || theme?.palette?.sds?.base?.ornamentSecondary
+        );
+      });
+
+      return newColorMap;
+    },
+    [colorGeneratorOptions, isDarkMode, theme]
   );
 
-  // Assign colors to items without one. Colors are only reassigned when new
-  // items appear, so removing an item keeps the other colors stable.
+  // Effect to manage auto-generated colors
   useEffect(() => {
-    const autoItems = colorItems.filter((item) => !item.color);
-    const currentDataKeys = new Set(colorItems.map((item) => item.name));
+    const autoItems = chartData.filter((item) => !item.color);
+    const currentDataKeys = new Set(chartData.map((item) => item.name));
     const previousDataKeys = previousDataKeysRef.current;
+    const previousColorOptions = previousColorOptionsRef.current;
+
+    // Check if color generation options changed
+    const colorOptionsChanged =
+      !previousColorOptions ||
+      previousColorOptions.isDarkMode !== isDarkMode ||
+      previousColorOptions.options !== colorGeneratorOptions;
+
+    // Update refs
     previousDataKeysRef.current = currentDataKeys;
+    previousColorOptionsRef.current = {
+      options: colorGeneratorOptions,
+      isDarkMode,
+    };
 
     if (autoItems.length === 0) {
       if (autoColorMap.size > 0) {
@@ -479,7 +505,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       (item) => !previousDataKeys.has(item.name)
     );
 
-    const shouldRegenerateColors = autoColorMap.size === 0 || hasNewItems;
+    const shouldRegenerateColors =
+      autoColorMap.size === 0 || hasNewItems || colorOptionsChanged;
 
     if (shouldRegenerateColors) {
       setAutoColorMap(generateColorMap(autoItems));
@@ -500,11 +527,19 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [colorItems, generateColorMap]);
+  }, [chartData, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
 
-  const remainingColor =
-    autoColorMap.get(REMAINING_COLOR_KEY) ??
-    theme?.palette?.sds?.base?.backgroundTertiary;
+  // Hidden items only appear as swatches in the overflow menu
+  const hiddenColors = useMemo(
+    () =>
+      hasOverflow
+        ? generateDiscreteColors(hiddenItems.length, {
+            ...(colorGeneratorOptions || {}),
+            isDarkMode,
+          })
+        : [],
+    [hasOverflow, hiddenItems.length, colorGeneratorOptions, isDarkMode]
+  );
 
   // Calculate display badge value
   const displayBadge =
@@ -689,7 +724,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         remainingPercentage: displayRemainingPercentage,
         remainingLabel,
         remainingUnit,
-        remainingColor,
+        theme,
       }
     );
     const overflowAnimatedItem = dataWithPercentages.find(
@@ -720,7 +755,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     displayRemainingPercentage,
     remainingLabel,
     remainingUnit,
-    remainingColor,
+    theme,
   ]);
 
   // Legend order is visible items, the remaining entry (cumulative mode), the
@@ -841,15 +876,15 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   const overflowMenuLegendItems = useMemo<LegendItemData[]>(
     () =>
-      hiddenItems.map((item) => ({
+      hiddenItems.map((item, index) => ({
         name: item.name,
         color:
           item.color ||
-          autoColorMap.get(item.name) ||
+          hiddenColors[index] ||
           theme?.palette?.sds?.base?.ornamentSecondary,
         disabled: item.disabled,
       })),
-    [hiddenItems, autoColorMap, theme]
+    [hiddenItems, hiddenColors, theme]
   );
 
   // Calculate the last visible segment (percentage > 0)
@@ -904,7 +939,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         {previousProcessedRef.current.length > 0 && (
           <BarSegment
             key="remaining"
-            color={remainingColor}
+            color={theme?.palette?.sds?.base?.backgroundTertiary}
             percentage={displayRemainingPercentage}
             height={barHeight}
             isLast={true}
