@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import {
   LegendContainer,
   LegendIcon,
@@ -22,8 +22,7 @@ const Legend = (props: LegendProps): JSX.Element => {
     selectedIndices = [],
     onSelectionChange,
     hoveredIndex: externalHoveredIndex,
-    overflowItem,
-    overflowMenuItems = [],
+    lastItemMenuItems = [],
     ...rest
   } = props;
 
@@ -32,15 +31,16 @@ const Legend = (props: LegendProps): JSX.Element => {
   const [internalHoveredIndex, setInternalHoveredIndex] = useState<
     number | null
   >(null);
-  const [overflowAnchor, setOverflowAnchor] = useState<HTMLElement | null>(
-    null
-  );
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
 
   // Use external hoveredIndex if provided, otherwise use internal state
   const hoveredIndex = externalHoveredIndex ?? internalHoveredIndex;
 
-  const overflowStart = items.length + 1;
-  const hasOverflow = overflowMenuItems.length > 0;
+  // When menu items are given, the final item opens the menu. Menu item
+  // indices continue after `items`.
+  const hasMenu = lastItemMenuItems.length > 0;
+  const menuStart = items.length;
+  const isMenuTrigger = (index: number) => hasMenu && index === menuStart - 1;
 
   const handleMouseEnter = (item: LegendItemData, index: number) => {
     if (item.disabled) return;
@@ -54,8 +54,18 @@ const Legend = (props: LegendProps): JSX.Element => {
     onItemMouseLeave?.(item, index);
   };
 
-  const handleClick = (item: LegendItemData, index: number) => {
+  const handleClick = (
+    item: LegendItemData,
+    index: number,
+    event: MouseEvent<HTMLElement>
+  ) => {
     if (item.disabled) return;
+
+    if (isMenuTrigger(index)) {
+      setMenuAnchor(event.currentTarget);
+      onItemClick?.(item, index);
+      return;
+    }
 
     if (onSelectionChange) {
       const isSelected = selectedIndices.includes(index);
@@ -74,15 +84,10 @@ const Legend = (props: LegendProps): JSX.Element => {
     onItemClick?.(item, index);
   };
 
-  // The grouped entry is rendered as the last item; hover and selection on
-  // any menu item count toward it
-  const overflowEntry: LegendItemData = { name: "Other", ...overflowItem };
-  const entries = hasOverflow ? [...items, overflowEntry] : items;
-
-  const handleOverflowSelectionChange = (indices: number[]) => {
+  const handleMenuSelectionChange = (indices: number[]) => {
     onSelectionChange?.([
-      ...selectedIndices.filter((i) => i < overflowStart),
-      ...indices.map((i) => i + overflowStart),
+      ...selectedIndices.filter((i) => i < menuStart),
+      ...indices.map((i) => i + menuStart),
     ]);
   };
 
@@ -91,28 +96,34 @@ const Legend = (props: LegendProps): JSX.Element => {
   // Gray fallback color
   const fallbackColor = theme?.palette?.sds?.base?.ornamentSecondary;
 
+  // Dim if:
+  // - Never dim disabled items (e.g., remaining segment)
+  // - When hovering: dim items that are neither hovered nor selected
+  // - When not hovering: dim items that are not selected (if there are selections)
+  const getIsDimmed = (
+    isHovered: boolean,
+    isSelected: boolean,
+    disabled?: boolean
+  ) => {
+    if (disabled) return false;
+    if (hoveredIndex !== null) return !isHovered && !isSelected;
+    return hasSelection && !isSelected;
+  };
+
   return (
     <>
       <LegendContainer {...rest}>
-        {entries.map((item, index) => {
-          const isOverflowEntry = hasOverflow && index === items.length;
-          const isHovered = isOverflowEntry
+        {items.map((item, index) => {
+          const opensMenu = isMenuTrigger(index);
+          // Hovering or selecting a menu item also counts for the trigger
+          const isHovered = opensMenu
             ? hoveredIndex !== null && hoveredIndex >= index
             : hoveredIndex === index;
-          const isSelected = isOverflowEntry
+          const isSelected = opensMenu
             ? selectedIndices.some((i) => i >= index)
             : selectedIndices.includes(index);
-            
-          // Dim if:
-          // - Never dim disabled items (e.g., remaining segment)
-          // - When hovering: dim items that are neither hovered nor selected
-          // - When not hovering: dim items that are not selected (if there are selections)
-          const isDimmed = item.disabled
-          ? false
-          : hoveredIndex !== null
-          ? !isHovered && !isSelected
-          : hasSelection && !isSelected;
-          
+          const isDimmed = getIsDimmed(isHovered, isSelected, item.disabled);
+
           // Determine color: use colors prop, then item color, then fallback to gray
           const itemColor = colors?.[index] || item.color || fallbackColor;
 
@@ -121,28 +132,19 @@ const Legend = (props: LegendProps): JSX.Element => {
               key={`${item.name}-${index}`}
               onMouseEnter={() => handleMouseEnter(item, index)}
               onMouseLeave={() => handleMouseLeave(item, index)}
-              onClick={(event) => {
-                if (!isOverflowEntry) return handleClick(item, index);
-                setOverflowAnchor(event.currentTarget);
-                onItemClick?.(item, index);
-              }}
+              onClick={(event) => handleClick(item, index, event)}
               role="button"
               tabIndex={item.disabled ? -1 : 0}
               aria-label={`${item.name}${item.value ? `: ${item.value}` : ""}`}
               aria-pressed={isSelected}
               aria-disabled={item.disabled}
-              aria-haspopup={isOverflowEntry ? "true" : undefined}
-              aria-expanded={
-                isOverflowEntry ? overflowAnchor !== null : undefined
-              }
+              aria-haspopup={opensMenu ? "true" : undefined}
+              aria-expanded={opensMenu ? menuAnchor !== null : undefined}
               isSelected={isSelected}
               disabled={item.disabled}
               isHovered={isHovered}
             >
-              <LegendIcon
-                color={itemColor}
-                isDimmed={isDimmed}
-              />
+              <LegendIcon color={itemColor} isDimmed={isDimmed} />
               <LegendLabel disabled={item.disabled}>{item.name}</LegendLabel>
               {showValues && item.value !== undefined && (
                 <LegendValue disabled={item.disabled}>
@@ -155,34 +157,34 @@ const Legend = (props: LegendProps): JSX.Element => {
           );
         })}
       </LegendContainer>
-      {hasOverflow && (
+      {hasMenu && (
         <StyledLegendPopover
-          open={overflowAnchor !== null}
-          anchorEl={overflowAnchor}
-          onClose={() => setOverflowAnchor(null)}
+          open={menuAnchor !== null}
+          anchorEl={menuAnchor}
+          onClose={() => setMenuAnchor(null)}
         >
           <Legend
-            items={overflowMenuItems}
+            items={lastItemMenuItems}
             selectedIndices={selectedIndices
-              .filter((i) => i >= overflowStart)
-              .map((i) => i - overflowStart)}
+              .filter((i) => i >= menuStart)
+              .map((i) => i - menuStart)}
             onSelectionChange={
-              onSelectionChange ? handleOverflowSelectionChange : undefined
+              onSelectionChange ? handleMenuSelectionChange : undefined
             }
             hoveredIndex={
-              hoveredIndex !== null && hoveredIndex >= overflowStart
-                ? hoveredIndex - overflowStart
+              hoveredIndex !== null && hoveredIndex >= menuStart
+                ? hoveredIndex - menuStart
                 : null
             }
             onItemMouseEnter={(item, index) =>
-              handleMouseEnter(item, index + overflowStart)
+              handleMouseEnter(item, index + menuStart)
             }
             onItemMouseLeave={(item, index) =>
-              handleMouseLeave(item, index + overflowStart)
+              handleMouseLeave(item, index + menuStart)
             }
             onItemClick={
               onItemClick
-                ? (item, index) => onItemClick(item, index + overflowStart)
+                ? (item, index) => onItemClick(item, index + menuStart)
                 : undefined
             }
           />

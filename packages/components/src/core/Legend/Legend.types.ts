@@ -72,13 +72,10 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    */
   hoveredIndex?: number | null;
   /**
-   * The grouped entry. Its name is displayed as given; defaults to "Other".
+   * Items listed in a menu that opens when the final item in `items` is clicked,
+   * instead of toggling its selection. In `selectedIndices` and callbacks, menu
+   * item i is index `items.length + i`. Hovering or selecting a menu item also
+   * highlights the final item.
    */
-  overflowItem?: LegendItemData;
-  /**
-   * Items grouped under a single entry whose click opens a menu listing them.
-   * In `selectedIndices` and callbacks the grouped entry is index `items.length`
-   * and grouped item i is `items.length + 1 + i`.
-   */
-  overflowMenuItems?: LegendItemData[];
+  lastItemMenuItems?: LegendItemData[];
 }

@@ -143,7 +143,7 @@ exports[`<Legend /> > Default story renders snapshot 1`] = `
 </div>
 `;
 
-exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
+exports[`<Legend /> > WithLastItemMenu story renders snapshot 1`] = `
 <div
   style="width: 400px;"
 >
@@ -305,6 +305,8 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
       </span>
     </div>
     <div
+      aria-expanded="false"
+      aria-haspopup="true"
       aria-label="Other (17): 40"
       aria-pressed="false"
       class="css-15ci9m1-LegendItem ezuih624"
@@ -319,29 +321,6 @@ exports[`<Legend /> > WithOverflowMenu story renders snapshot 1`] = `
         class="css-1apzfui-LegendLabel ezuih622"
       >
         Other (17)
-      </span>
-      <span
-        class="css-n6k7ig-LegendValue ezuih621"
-      >
-        40
-      </span>
-    </div>
-    <div
-      aria-expanded="false"
-      aria-haspopup="true"
-      aria-label="Other: 40"
-      aria-pressed="false"
-      class="css-15ci9m1-LegendItem ezuih624"
-      role="button"
-      tabindex="0"
-    >
-      <div
-        class="css-6plgot-LegendIcon ezuih623"
-      />
-      <span
-        class="css-1apzfui-LegendLabel ezuih622"
-      >
-        Other
       </span>
       <span
         class="css-n6k7ig-LegendValue ezuih621"

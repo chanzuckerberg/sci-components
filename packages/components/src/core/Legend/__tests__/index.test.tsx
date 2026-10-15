@@ -340,76 +340,58 @@ describe("<Legend />", () => {
     // No values should be displayed since they're undefined
   });
 
-  describe("overflow menu", () => {
-    const overflowItems = [
+  describe("last item menu", () => {
+    const itemsWithOther = [...sampleItems, { name: "Other", value: 30 }];
+    const menuItems = [
       { name: "Hidden 1", value: 10 },
       { name: "Hidden 2", value: 20 },
     ];
 
-    it("groups overflow items under an entry that opens a menu", () => {
-      render(<Legend items={sampleItems} overflowMenuItems={overflowItems} />);
+    it("opens a menu of the given items when the final item is clicked", () => {
+      render(<Legend items={itemsWithOther} lastItemMenuItems={menuItems} />);
 
       expect(screen.queryByText("Hidden 1")).not.toBeInTheDocument();
 
-      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: "Other" }));
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other/ }));
 
       expect(screen.getByText("Hidden 1")).toBeInTheDocument();
       expect(screen.getByText("Hidden 2")).toBeInTheDocument();
     });
 
-    it("reports overflow item indices after the visible items", () => {
+    it("reports menu item indices after the items", () => {
       const handleSelectionChange = vi.fn();
       const handleClick = vi.fn();
 
       render(
         <Legend
-          items={sampleItems}
-          overflowMenuItems={overflowItems}
+          items={itemsWithOther}
+          lastItemMenuItems={menuItems}
           selectedIndices={[0]}
           onSelectionChange={handleSelectionChange}
           onItemClick={handleClick}
         />
       );
 
-      const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other/ });
-      fireEvent.click(otherEntry);
-      expect(handleClick).toHaveBeenCalledWith(
-        expect.objectContaining({ name: "Other" }),
-        sampleItems.length
-      );
+      fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Other/ }));
+      expect(handleClick).toHaveBeenCalledWith(itemsWithOther[3], 3);
       expect(handleSelectionChange).not.toHaveBeenCalled();
 
       fireEvent.click(screen.getByRole(BUTTON_ROLE, { name: /Hidden 2/ }));
       expect(handleSelectionChange).toHaveBeenCalledWith([0, 5]);
-      expect(handleClick).toHaveBeenLastCalledWith(overflowItems[1], 5);
+      expect(handleClick).toHaveBeenLastCalledWith(menuItems[1], 5);
     });
 
-    it("marks the grouped entry as pressed when a hidden item is selected", () => {
+    it("marks the final item as pressed when a menu item is selected", () => {
       render(
         <Legend
-          items={sampleItems}
-          overflowMenuItems={overflowItems}
+          items={itemsWithOther}
+          lastItemMenuItems={menuItems}
           selectedIndices={[4]}
         />
       );
 
       const otherEntry = screen.getByRole(BUTTON_ROLE, { name: /Other/ });
       expect(otherEntry).toHaveAttribute(ARIA_PRESSED, ARIA_PRESSED_TRUE);
-    });
-
-    it("displays the overflowItem name and value exactly as given", () => {
-      render(
-        <Legend
-          items={sampleItems}
-          overflowMenuItems={overflowItems}
-          overflowItem={{ name: "More", value: 30 }}
-          showValues
-        />
-      );
-
-      expect(
-        screen.getByRole(BUTTON_ROLE, { name: "More: 30" })
-      ).toBeInTheDocument();
     });
   });
 

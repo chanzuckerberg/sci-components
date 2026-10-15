@@ -673,40 +673,55 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Convert data to legend items format (always use full data, not filtered)
   // Use updated remaining values when in hide mode with selections
-  const legendItems = useMemo(
-    () =>
-      buildLegendItems(
-        dataWithPercentages.filter(
-          (item) => item.originalIndex !== overflowIndex
-        ),
-        {
+  // The grouped item goes last so clicking it opens the menu of hidden items
+  const legendItems = useMemo(() => {
+    const items = buildLegendItems(
+      dataWithPercentages.filter(
+        (item) => item.originalIndex !== overflowIndex
+      ),
+      {
+        showLegendValues,
+        legendValueFormat,
+        unit,
+        hasRemaining,
+        showLegend,
+        remainingValue: displayRemainingValue,
+        remainingPercentage: displayRemainingPercentage,
+        remainingLabel,
+        remainingUnit,
+        remainingColor,
+      }
+    );
+    const overflowAnimatedItem = dataWithPercentages.find(
+      (item) => item.originalIndex === overflowIndex
+    );
+    if (overflowAnimatedItem) {
+      items.push({
+        name: overflowAnimatedItem.name,
+        color: overflowAnimatedItem.color,
+        value: calculateLegendValue(
+          overflowAnimatedItem,
           showLegendValues,
           legendValueFormat,
-          unit,
-          hasRemaining,
-          showLegend,
-          remainingValue: displayRemainingValue,
-          remainingPercentage: displayRemainingPercentage,
-          remainingLabel,
-          remainingUnit,
-          remainingColor,
-        }
-      ),
-    [
-      dataWithPercentages,
-      overflowIndex,
-      showLegendValues,
-      legendValueFormat,
-      unit,
-      hasRemaining,
-      showLegend,
-      displayRemainingValue,
-      displayRemainingPercentage,
-      remainingLabel,
-      remainingUnit,
-      remainingColor,
-    ]
-  );
+          unit
+        ),
+      });
+    }
+    return items;
+  }, [
+    dataWithPercentages,
+    overflowIndex,
+    showLegendValues,
+    legendValueFormat,
+    unit,
+    hasRemaining,
+    showLegend,
+    displayRemainingValue,
+    displayRemainingPercentage,
+    remainingLabel,
+    remainingUnit,
+    remainingColor,
+  ]);
 
   // Legend order is visible items, the remaining entry (cumulative mode), the
   // grouped entry, then hidden items. Map data indices to and from that order.
@@ -824,20 +839,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     ]
   );
 
-  const overflowAnimatedItem = dataWithPercentages.find(
-    (item) => item.originalIndex === overflowIndex
-  );
-  const overflowLegendItem = overflowAnimatedItem && {
-    name: overflowAnimatedItem.name,
-    color: overflowAnimatedItem.color,
-    value: calculateLegendValue(
-      overflowAnimatedItem,
-      showLegendValues,
-      legendValueFormat,
-      unit
-    ),
-  };
-  const overflowLegendItems = useMemo<LegendItemData[]>(
+  const overflowMenuLegendItems = useMemo<LegendItemData[]>(
     () =>
       hiddenItems.map((item) => ({
         name: item.name,
@@ -915,8 +917,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       {showLegend && (
         <Legend
           items={legendItems}
-          overflowMenuItems={overflowLegendItems}
-          overflowItem={overflowLegendItem}
+          lastItemMenuItems={overflowMenuLegendItems}
           showValues={showLegendValues}
           onItemMouseEnter={handleLegendItemHover}
           onItemMouseLeave={handleLegendItemLeave}
