@@ -3,10 +3,5 @@ import React from "react";
 import { noop } from "@components/src/common/utils";
 
 const TagFilterNameSpaceTest = (props: TagFilterProps) => {
-  return (
-    <>
-      <TagFilter label="Label" onDelete={noop} />
-      <TagFilter label="Label" onDelete={noop} sdsStyle="outline" />
-    </>
-  );
+  return <TagFilter label="Label" onDelete={noop} />;
 };

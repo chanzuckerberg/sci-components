@@ -1,36 +1,38 @@
-# TagFilter
+# Chip
 
 ## Source Code
 
-The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TagFilter/index.tsx).
+The component's source code in the SDS codebase can be found [here](https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Chip/index.tsx).
 
 ## Import
 
 **React TypeScript**
 
 ```tsx
-import { TagFilter } from "@czi-sds/components";
+import { Chip } from "@czi-sds/components";
 ```
+
+> **Coming from TagFilter?** Chip is the reworked TagFilter, renamed in SDS 25. The previous TagFilter still ships unchanged, and deprecated, so nothing breaks until you move to Chip. "Migrating from TagFilter" below covers what changes when you do.
 
 ## Code examples
 
-### Default TagFilter
+### Default Chip
 
 A row of applied filters, solid and outlined, each removing itself from the page's state through `onDelete`. The row is a named group, which tells screen reader users what the chips are removing.
 
-**Example: DefaultTagFilter**
+**Example: DefaultChip**
 
 ```tsx
-// TagFilter is the chip that comes off: onDelete is required, and removing the
-// chip from your own state is what makes it disappear. The whole chip is the
-// remove control, so a click anywhere on it, Enter or Space, and Backspace or
-// Delete all call onDelete.
+// Chip is the tag that comes off: onDelete is required, and removing the chip
+// from your own state is what makes it disappear. The whole chip is the remove
+// control, so a click anywhere on it, Enter or Space, and Backspace or Delete
+// all call onDelete.
 //
 // Each chip is one tab stop, named "Remove" followed by its label. sdsStyle picks
 // between the solid accent fill and the outlined one.
 
 import {
-  TagFilter,
+  Chip,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
@@ -78,7 +80,7 @@ function App() {
     <div className="app">
       <Row aria-label="Applied filters" role="group">
         {filters.map((filter, index) => (
-          <TagFilter
+          <Chip
             key={filter}
             label={filter}
             onDelete={() => remove(filter)}
@@ -101,7 +103,7 @@ export default App;
 
 ## SDS vs MUI
 
-TagFilter is the design's Chip. It is built on the SDS Tag, and so on MUI's Chip, but it exists for one job: showing which Filters are applied and letting them be taken off again:
+Chip is built on the SDS Tag, and so on MUI's Chip, but it exists for one job: showing which Filters are applied and letting them be taken off again:
 
 - **onDelete is required.** MUI treats it as the switch that decides whether a chip can be deleted; here removal is the chip's whole purpose, so the handler has to be there. Removing the chip from your own state is what makes it disappear.
 
@@ -119,11 +121,32 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 - Each chip is a single button and a single tab stop. It answers a click, Enter and Space, and also Backspace and Delete, and every one of them calls `onDelete`. The X is decorative and hidden from screen readers.
 
-- The chip is named "Remove" followed by its label, such as "Remove Lung", so the name says what activating it does. Pass `aria-label` to word it differently, for instance in another language. A row of filters is still worth wrapping in a group with a name of its own; the example below uses `role="group"` with an `aria-label`.
+- The chip is named "Remove" followed by its label, such as "Remove Lung", so the name says what activating it does. Pass `aria-label` to word it differently, for instance in another language. A row of filters is still worth wrapping in a group with a name of its own; the example above uses `role="group"` with an `aria-label`.
 
 - Removing a chip takes the focused element out of the page, so move focus somewhere sensible afterwards, such as the next chip or the filter control that added it.
 
 - Like a Tag, a chip does not wrap: a long filter value is cut off with an ellipsis. Keep the values short, or shorten them yourself so the part that survives is the part that matters.
+
+## Migrating from TagFilter
+
+`TagFilter` is deprecated but still exported, with the look and behavior it had in SDS 24, so an app can upgrade first and move to Chip later. The props are the same, so the move starts with the name:
+
+**React TypeScript**
+
+```tsx
+// Before
+<TagFilter label="Lung" onDelete={handleDelete} />
+// After
+<Chip label="Lung" onDelete={handleDelete} />
+```
+
+Then check each call site for what behaves differently:
+
+- **The whole chip removes the filter,** not only the X. An `onClick` that also removed the filter now removes it twice; drop it and keep `onDelete`.
+
+- **One tab stop instead of two.** The X is no longer a button of its own. Tests that looked for a button named "Delete Tag" should look for the chip, named "Remove" followed by its label.
+
+- **The new design:** a regular-weight 13px label and 6px padding, and a choice of `sdsStyle`.
 
 ## Props
 

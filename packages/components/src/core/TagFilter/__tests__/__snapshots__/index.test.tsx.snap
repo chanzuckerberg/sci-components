@@ -4,6 +4,79 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
 <div
   style="display: inline-grid; grid-column-gap: 24px; grid-row-gap: 24px; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
 >
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standard ez44obe0 css-1x9srip-MuiPaper-root-MuiAlert-root-StyledCallout"
+    intent="negative"
+    role="alert"
+    style="--Paper-shadow: none; opacity: 1; transform: none; transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+  >
+    <div
+      class="MuiAlert-icon css-vab54s-MuiAlert-icon"
+    >
+      <div
+        class="css-1q8yjse-StyledIcon emi0zh40"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          data-file-name="IconExclamationMarkCircleSmall"
+          data-testid="IconExclamationMarkCircleSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiAlert-message css-zioonp-MuiAlert-message"
+    >
+      <div
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root e183mai80 css-ppxm1n-MuiTypography-root-MuiAlertTitle-root-StyledCalloutTitle"
+      >
+        Deprecated!
+      </div>
+      <div
+        class="css-v6lit4-StyledCalloutBody e1uu77bg0"
+      >
+        The 
+        <strong>
+          TagFilter
+        </strong>
+         component is deprecated!
+        <br />
+        Please use 
+        <strong>
+          Chip
+        </strong>
+         component instead.
+      </div>
+    </div>
+    <div
+      class="MuiAlert-action css-rgppqo-MuiAlert-action"
+    >
+      <button
+        aria-label="Close"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeSmall css-38cjb0-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-120dh41-MuiSvgIcon-root"
+          data-testid="CloseIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
   <div>
     <button
       class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
@@ -14,41 +87,47 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
       <span
         class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
-        Remove the filter by clicking on it
+        Delete the tag by clicking on its icon
       </span>
     </button>
   </div>
   <div>
     <div
-      aria-label="Remove TagFilter"
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-deletable e19crzu0 esrfbz40 css-mq5agt-MuiButtonBase-root-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-stateColors-interactiveStyles-stateColors-StyledTag-StyledTagFilter-StyledTagFilter"
-      role="button"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable e19crzu0 e47sx6f0 css-1tw0gg6-MuiButtonBase-root-MuiChip-root-StyledTagLegacy-tagSizeS-createTypeCss-square-withHover-StyledTagLegacy-StyledTag-StyledTag"
+      role="none presentation"
       tabindex="0"
     >
       <span
         class="MuiChip-label css-1dybbl5-MuiChip-label"
       >
-        <span
-          class="SdsTag-labelText"
-        >
-          TagFilter
-        </span>
+        TagFilter
       </span>
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <button
+        aria-label="Delete Tag"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary MuiChip-deleteIcon et5j5k2 css-xhz0g7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
+        tabindex="0"
+        type="button"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconXMarkSmall"
-          data-testid="IconXMarkSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+        <span
+          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        >
+          <div
+            class="css-1q8yjse-StyledIcon emi0zh40"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+              data-file-name="IconXMarkSmall"
+              data-testid="IconXMarkSmall"
+              fillcontrast="white"
+              focusable="false"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+            />
+          </div>
+        </span>
+      </button>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Legend from "../../index";
-import TagFilter from "@components/src/core/TagFilter";
+import Chip from "@components/src/core/Chip";
 import Button from "@components/src/core/Button";
 
 export default function WithSelectionStory(
@@ -43,7 +43,7 @@ export default function WithSelectionStory(
         <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {selectedIndices.length > 0 &&
             selectedIndices.map((i) => (
-              <TagFilter
+              <Chip
                 key={i}
                 label={props.items?.[i]?.name || ""}
                 onDelete={() => handleRemoveTag(i)}

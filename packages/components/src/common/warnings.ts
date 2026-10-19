@@ -6,7 +6,6 @@ export enum SDSWarningTypes {
   ButtonDropdownV2Destructive = "buttonDropdownV2Destructive",
   ButtonToggleMissingIconProp = "buttonToggleMissingIconProp",
   ButtonGroupVerticalOrientation = "ButtonGroupVerticalOrientation",
-  ChipDeprecated = "chipDeprecated",
   MenuSelectDeprecated = "menuSelectDeprecated",
   TooltipInvertStyle = "tooltipInvertStyle",
   ContentCardActionsOnlyButtons = "contentCardActionsOnlyButtons",
@@ -49,10 +48,6 @@ export const SDS_WARNINGS = {
     hasWarned: false,
     message:
       "Warning: ButtonGroup vertical orientation is only available when all buttons are icon-only. Falling back to horizontal orientation.",
-  },
-  [SDSWarningTypes.ChipDeprecated]: {
-    hasWarned: false,
-    message: "Warning: <Chip /> will be deprecated and replaced with <Tag />",
   },
   [SDSWarningTypes.MenuSelectDeprecated]: {
     hasWarned: false,

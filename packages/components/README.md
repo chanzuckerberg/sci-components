@@ -31,7 +31,7 @@ yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/ma
 
 ## Migrating to SDS 25.0.0
 
-SDS `25.0.0` is a **breaking release** that reworks `Tag` and `TagFilter` and adds `@phosphor-icons/react` as a peer dependency. The previous Tag ships as the deprecated `TagLegacy`:
+SDS `25.0.0` is a **breaking release** that reworks `Tag`, ships the reworked filter chip as `Chip` (replacing the long-deprecated old `Chip`), and adds `@phosphor-icons/react` as a peer dependency. The previous Tag ships as the deprecated `TagLegacy`, and `TagFilter` is deprecated but unchanged:
 
 → [Migration guide](https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-25.0.0.md)
 

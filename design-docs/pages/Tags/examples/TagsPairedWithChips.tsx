@@ -4,8 +4,8 @@
 
 import {
   Button,
+  Chip,
   Tag,
-  TagFilter,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
@@ -71,7 +71,7 @@ function App() {
           <Caption>Applied filters</Caption>
           <Row aria-label="Applied filters" role="group">
             {filters.map((filter) => (
-              <TagFilter
+              <Chip
                 key={filter}
                 label={filter}
                 onDelete={() =>

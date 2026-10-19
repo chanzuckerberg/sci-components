@@ -2,7 +2,7 @@
 // Hover over a Chip and press it to see its states; clicking it removes it.
 
 import {
-  TagFilter,
+  Chip,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
@@ -45,11 +45,8 @@ function App() {
   return (
     <div className="app">
       <Row aria-label="Chip styles" role="group">
-        <TagFilter
-          label="Solid"
-          onDelete={() => setRemoved((count) => count + 1)}
-        />
-        <TagFilter
+        <Chip label="Solid" onDelete={() => setRemoved((count) => count + 1)} />
+        <Chip
           label="Outline"
           onDelete={() => setRemoved((count) => count + 1)}
           sdsStyle="outline"

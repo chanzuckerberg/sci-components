@@ -1,9 +1,9 @@
-// A Tag labels the element it sits beside. A Chip, TagFilter in code, shows a
-// condition the user has applied and comes off when it is clicked.
+// A Tag labels the element it sits beside. A Chip shows a condition the user has
+// applied and comes off when it is clicked.
 
 import {
+  Chip,
   Tag,
-  TagFilter,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
@@ -74,7 +74,7 @@ function App() {
           <Caption>Chip</Caption>
           <Row aria-label="Applied filters" role="group">
             {filters.map((filter) => (
-              <TagFilter
+              <Chip
                 key={filter}
                 label={filter}
                 onDelete={() =>

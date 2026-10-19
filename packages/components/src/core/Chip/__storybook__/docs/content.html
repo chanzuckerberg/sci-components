@@ -1,9 +1,9 @@
-<h1>TagFilter</h1>
+<h1>Chip</h1>
 <h2>Source Code</h2>
 <p>
   The component's source code in the SDS codebase can be found
   <a
-    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/TagFilter/index.tsx"
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Chip/index.tsx"
   >
     here
   </a>
@@ -13,23 +13,30 @@
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-tsx">import { TagFilter } from "@czi-sds/components";</code></pre>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Chip } from "@czi-sds/components";</code></pre>
   </figure>
 </div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Coming from TagFilter?</strong>
+    Chip is the reworked TagFilter, renamed in SDS 25. The previous TagFilter
+    still ships unchanged, and deprecated, so nothing breaks until you move to
+    Chip. "Migrating from TagFilter" below covers what changes when you do.
+  </p>
+</div>
 <h2>Code examples</h2>
-<h3>Default TagFilter</h3>
+<h3>Default Chip</h3>
 <p>
   A row of applied filters, solid and outlined, each removing itself from the
   page's state through <code>onDelete</code>. The row is a named group, which
   tells screen reader users what the chips are removing.
 </p>
-<div
-  class="sds-doc-example"
-  data-example="core/TagFilter/DefaultTagFilter"
-></div>
+<div class="sds-doc-example" data-example="core/Chip/DefaultChip"></div>
 <h2>SDS vs MUI</h2>
 <p>
-  TagFilter is the design's Chip. It is built on the SDS
+  Chip is built on the SDS
   <a href="./?path=/docs/components-tag--documentation" target="_top">Tag</a>,
   and so on MUI's Chip, but it exists for one job: showing which
   <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
@@ -92,7 +99,7 @@
       The chip is named "Remove" followed by its label, such as "Remove Lung",
       so the name says what activating it does. Pass <code>aria-label</code> to
       word it differently, for instance in another language. A row of filters is
-      still worth wrapping in a group with a name of its own; the example below
+      still worth wrapping in a group with a name of its own; the example above
       uses <code>role="group"</code> with an <code>aria-label</code>.
     </p>
   </li>
@@ -108,6 +115,46 @@
       Like a Tag, a chip does not wrap: a long filter value is cut off with an
       ellipsis. Keep the values short, or shorten them yourself so the part that
       survives is the part that matters.
+    </p>
+  </li>
+</ul>
+<h2>Migrating from TagFilter</h2>
+<p>
+  <code>TagFilter</code> is deprecated but still exported, with the look and
+  behavior it had in SDS 24, so an app can upgrade first and move to Chip later.
+  The props are the same, so the move starts with the name:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">// Before
+&lt;TagFilter label="Lung" onDelete={handleDelete} /&gt;
+// After
+&lt;Chip label="Lung" onDelete={handleDelete} /&gt;</code></pre>
+  </figure>
+</div>
+<p>Then check each call site for what behaves differently:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>The whole chip removes the filter,</strong>
+      not only the X. An <code>onClick</code> that also removed the filter now
+      removes it twice; drop it and keep <code>onDelete</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>One tab stop instead of two.</strong>
+      The X is no longer a button of its own. Tests that looked for a button
+      named "Delete Tag" should look for the chip, named "Remove" followed by
+      its label.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The new design:</strong>
+      a regular-weight 13px label and 6px padding, and a choice of
+      <code>sdsStyle</code>.
     </p>
   </li>
 </ul>

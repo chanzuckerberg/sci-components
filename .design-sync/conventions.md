@@ -23,7 +23,7 @@ SDS components take **`sds`-prefixed props** that select on-brand variants. Neve
 with ad-hoc CSS; pick the variant prop. The vocabulary is per-component (read each
 `components/<group>/<Name>/<Name>.prompt.md` for exact unions), but the shape is consistent:
 
-- `sdsStyle` — the visual treatment. Button: `"outline" | "solid" | "minimal"`. Tag and TagFilter: `"solid" | "outline"`. Callout: `"persistent" | "expandable" | "dismissible"`.
+- `sdsStyle` — the visual treatment. Button: `"outline" | "solid" | "minimal"`. Tag and Chip: `"solid" | "outline"`. Callout: `"persistent" | "expandable" | "dismissible"`.
 - `sdsType` — the visual role, usually `"primary" | "secondary"` (Button adds `"destructive"`). Tag has no `sdsType`.
 - `sdsSize` — scale where offered, e.g. Icon `"xxs" | "xs" | "s" | "l" | "xl"`; MUI-derived controls use `size="small" | "medium" | "large"` (Tag: `"small" | "medium"`).
 - **intent / semantic color is a separate prop**, not `sdsType`: Callout takes `intent="negative"|"notice"|"positive"|"accent"|"info"`; Tag takes `color="accent"|"beta"|"info"|"negative"|"neutral"|"notice"|"positive"`; Icon takes `color="blue"|"gray"|"green"|"purple"|"red"|"yellow"|"indigo"`.

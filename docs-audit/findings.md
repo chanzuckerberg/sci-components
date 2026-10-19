@@ -612,9 +612,9 @@ in `style.ts`, including that `sdsStyle` also decides MUI's `underline`.
 Severity: none. Status: nothing to audit.
 
 The deprecated components (`ButtonLegacy`, `ButtonDropdownLegacy`,
-`ButtonToggleLegacy`, `Chip`, `Alert`, `MenuSelect`, `ButtonIcon`) have stories
-but no documentation page, and the data-viz Overview page is an installation
-guide with no props table.
+`ButtonToggleLegacy`, `TagLegacy`, `TagFilter`, `Alert`, `MenuSelect`,
+`ButtonIcon`) have stories but no documentation page, and the data-viz Overview
+page is an installation guide with no props table.
 
 ## Pre-existing type errors in the docs toolkit
 

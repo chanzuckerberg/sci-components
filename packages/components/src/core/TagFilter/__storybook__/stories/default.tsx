@@ -3,6 +3,8 @@ import { useState } from "react";
 import { TAG_FILTER_DEFAULT_STYLES } from "../constants";
 import RawTagFilter from "@components/src/core/TagFilter";
 import Button from "@components/src/core/Button";
+import Callout from "@components/src/core/Callout";
+import Icon from "@components/src/core/Icon";
 
 export const TagFilter = (props: Args): JSX.Element => {
   const { label } = props;
@@ -14,6 +16,19 @@ export const TagFilter = (props: Args): JSX.Element => {
 
   return (
     <div style={TAG_FILTER_DEFAULT_STYLES as React.CSSProperties}>
+      <Callout
+        intent="negative"
+        title="Deprecated!"
+        sdsStyle="persistent"
+        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        body={
+          <>
+            The <strong>TagFilter</strong> component is deprecated!
+            <br />
+            Please use <strong>Chip</strong> component instead.
+          </>
+        }
+      />
       <div>
         <Button
           disabled={visible}
@@ -21,7 +36,9 @@ export const TagFilter = (props: Args): JSX.Element => {
           sdsStyle="minimal"
           sdsType={visible ? "secondary" : "primary"}
         >
-          {visible ? "Remove the filter by clicking on it" : "Click to reset"}
+          {visible
+            ? "Delete the tag by clicking on its icon"
+            : "Click to reset"}
         </Button>
       </div>
 

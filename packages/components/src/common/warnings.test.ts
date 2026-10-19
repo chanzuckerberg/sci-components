@@ -14,15 +14,15 @@ describe("showWarningIfFirstOccurence", () => {
   });
 
   it("shows warning on first call", () => {
-    showWarningIfFirstOccurence(SDSWarningTypes.ChipDeprecated);
+    showWarningIfFirstOccurence(SDSWarningTypes.MenuSelectDeprecated);
 
     expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   });
 
   it("does not show warning on subsequent calls", () => {
-    showWarningIfFirstOccurence(SDSWarningTypes.ChipDeprecated);
-    showWarningIfFirstOccurence(SDSWarningTypes.ChipDeprecated);
-    showWarningIfFirstOccurence(SDSWarningTypes.ChipDeprecated);
+    showWarningIfFirstOccurence(SDSWarningTypes.MenuSelectDeprecated);
+    showWarningIfFirstOccurence(SDSWarningTypes.MenuSelectDeprecated);
+    showWarningIfFirstOccurence(SDSWarningTypes.MenuSelectDeprecated);
 
     expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
   });

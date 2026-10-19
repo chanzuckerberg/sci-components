@@ -2,27 +2,8 @@
   "TagFilter": {
     "props": {
       "label": {
-        "defaultValue": "- (required)",
         "description": "The filter's text. Cut off with an ellipsis when there is not room for it.",
         "isRequired": true,
-        "type": "string"
-      },
-      "sdsStyle": {
-        "defaultValue": "solid",
-        "description": "`solid` fills the chip with the accent color. `outline` tints it and\ndraws the label, the X and a 1px border in the accent color.",
-        "isRequired": false,
-        "type": "\"outline\" | \"solid\""
-      },
-      "onDelete": {
-        "defaultValue": "- (required)",
-        "description": "Runs when the chip is clicked or activated with Enter or Space, and when\nBackspace or Delete is pressed on it. Drop the filter from your state\nhere; the component does not remove itself.",
-        "isRequired": true,
-        "type": "(event: any) => void"
-      },
-      "aria-label": {
-        "defaultValue": "Remove {label}",
-        "description": "The chip's accessible name, \"Remove\" followed by the label unless set.\nOverride it to word the removal differently.",
-        "isRequired": false,
         "type": "string"
       }
     }

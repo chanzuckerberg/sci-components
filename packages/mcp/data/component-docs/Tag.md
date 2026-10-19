@@ -687,7 +687,7 @@ export default App;
 
 ## SDS vs MUI
 
-SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS ones. SDS also splits the Chip's two jobs in two: Tag labels something, and TagFilter is the chip that can be removed. The differences from MUI are these:
+SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS ones. SDS also splits the Chip's two jobs in two: Tag labels something, and Chip is the one that can be removed. The differences from MUI are these:
 
 - `sdsStyle`: `"solid"` (default) fills the tag with the intent color and sets the label white; `"outline"` tints the fill and draws the label, the icons and a 1px border in the intent color. It replaces MUI's `variant`, which Tag does not take.
 
@@ -701,7 +701,7 @@ SDS Tag wraps MUI's Chip and replaces its palette, sizing and shape with SDS one
 
 - **Interactive styling follows behavior:** the hover and pressed states, the pointer cursor and the focus ring appear only on a tag with an `onClick` or an `href`, or one set `clickable`. A tag that only labels something has none of them.
 
-- **onDelete works, but TagFilter is the removable tag:** a Tag given `onDelete` becomes deletable and draws MUI's Cancel icon at the tag's icon size. Reach for TagFilter when a tag needs to come off.
+- **onDelete works, but Chip is the removable tag:** a Tag given `onDelete` becomes deletable and draws MUI's Cancel icon at the tag's icon size. Reach for Chip when a tag needs to come off.
 
 ## MUI Documentation
 
@@ -758,4 +758,4 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `rel`          | `string`                                                                                                                                            | -            | The link's relationship to the current page.                                                                                                                                                                        |
 | `disabled`     | `boolean`                                                                                                                                           | `false`      | Greys the tag out. On a clickable tag or a link it also takes the tag out of the tab order.                                                                                                                         |
 | `onClick`      | `(event) => void`                                                                                                                                   | -            | MUI's prop. Makes the tag a button: a tab stop that answers Enter and Space, with hover and pressed states.                                                                                                         |
-| `onDelete`     | `(event) => void`                                                                                                                                   | -            | MUI's prop. Adds a delete control, drawn with MUI's Cancel icon. Use TagFilter for a removable tag instead.                                                                                                         |
+| `onDelete`     | `(event) => void`                                                                                                                                   | -            | MUI's prop. Adds a delete control, drawn with MUI's Cancel icon. Use Chip for a removable tag instead.                                                                                                              |

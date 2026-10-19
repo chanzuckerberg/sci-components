@@ -20,7 +20,7 @@ NOTE: Since most of the czi-sds components are built on top of Material UI's equ
 
 ## Migrating to SDS 25.0.0 (Tag rework)
 
-SDS `25.0.0` is a **breaking release** that reworks `Tag` and `TagFilter` to the new design and makes `@phosphor-icons/react` a peer dependency of `@czi-sds/components`. The previous Tag still ships as the deprecated `TagLegacy`, so an app can switch its imports first and migrate each usage afterwards. Follow the step-by-step guide in [migration-docs/migrate-to-25.0.0.md](./migration-docs/migrate-to-25.0.0.md).
+SDS `25.0.0` is a **breaking release** that reworks `Tag` to the new design, ships the reworked filter chip as `Chip`, removes the long-deprecated old `Chip`, and makes `@phosphor-icons/react` a peer dependency of `@czi-sds/components`. The previous Tag still ships as the deprecated `TagLegacy`, and `TagFilter` still ships unchanged, deprecated, so an app can upgrade first and migrate each usage afterwards. Follow the step-by-step guide in [migration-docs/migrate-to-25.0.0.md](./migration-docs/migrate-to-25.0.0.md).
 
 ## Migrating to SDS 24.0.0 (Material UI v9)
 

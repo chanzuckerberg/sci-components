@@ -1,13 +1,13 @@
-// TagFilter is the chip that comes off: onDelete is required, and removing the
-// chip from your own state is what makes it disappear. The whole chip is the
-// remove control, so a click anywhere on it, Enter or Space, and Backspace or
-// Delete all call onDelete.
+// Chip is the tag that comes off: onDelete is required, and removing the chip
+// from your own state is what makes it disappear. The whole chip is the remove
+// control, so a click anywhere on it, Enter or Space, and Backspace or Delete
+// all call onDelete.
 //
 // Each chip is one tab stop, named "Remove" followed by its label. sdsStyle picks
 // between the solid accent fill and the outlined one.
 
 import {
-  TagFilter,
+  Chip,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
@@ -55,7 +55,7 @@ function App() {
     <div className="app">
       <Row aria-label="Applied filters" role="group">
         {filters.map((filter, index) => (
-          <TagFilter
+          <Chip
             key={filter}
             label={filter}
             onDelete={() => remove(filter)}
