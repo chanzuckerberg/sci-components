@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-sd2jqk--.js";import{t as r}from"./Icon-BM9ZgXhf.js";import{t as i}from"./src-m5eIhrsi.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(r,{sdsIcon:`InfoCircle`,sdsSize:`l`})})}var o;e((()=>{i(),o=t(n())}))();export{a as default};
