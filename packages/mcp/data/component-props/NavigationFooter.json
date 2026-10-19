@@ -38,9 +38,9 @@
         "type": "string"
       },
       "tagColor": {
-        "description": "The Tag's color. A tuple sets the label, background, and icon colors by hand.",
+        "description": "The intent of the small, solid Tag beside the title. A tuple sets the label, background, and icon colors by hand.",
         "isRequired": false,
-        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
+        "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\" | \"beta\" | \"neutral\" | [string, string] | [string, string, string]"
       },
       "title": {
         "description": "The main title displayed in the footer.",

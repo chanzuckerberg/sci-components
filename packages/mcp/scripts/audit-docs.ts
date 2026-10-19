@@ -66,7 +66,6 @@ const NOT_REALLY_PROPS = new Map<string, Set<string>>([
   ["InputSearch", new Set(["customTheme"])],
   ["NavigationJumpTo", new Set(["isSubItem"])],
   ["Pagination", new Set(["disabled", "selected"])],
-  ["Tag", new Set(["tagColor"])],
   ["DropdownMenu", new Set(["count", "icon", "isMultiColumn"])],
   ["InputDropdown", new Set(["children", "size"])],
 ]);

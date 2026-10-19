@@ -114,27 +114,9 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
             flexWrap: "wrap",
           }}
         >
-          <Tag
-            label="bug"
-            sdsStyle="square"
-            sdsType="secondary"
-            color="negative"
-            hover={false}
-          />
-          <Tag
-            label="feature"
-            sdsStyle="square"
-            sdsType="secondary"
-            color="positive"
-            hover={false}
-          />
-          <Tag
-            label="refactor"
-            sdsStyle="square"
-            sdsType="secondary"
-            color="notice"
-            hover={false}
-          />
+          <Tag label="bug" sdsStyle="outline" color="negative" />
+          <Tag label="feature" sdsStyle="outline" color="positive" />
+          <Tag label="refactor" sdsStyle="outline" color="notice" />
         </div>
       </div>
     ),

@@ -14,47 +14,41 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
       <span
         class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
       >
-        Delete the tag by clicking on its icon
+        Remove the filter by clicking on it
       </span>
     </button>
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable e19crzu0 esrfbz40 css-au4g5-MuiButtonBase-root-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-withHover-StyledTag-StyledTag-StyledTag"
-      role="none presentation"
+      aria-label="Remove TagFilter"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-deletable e19crzu0 esrfbz40 css-mq5agt-MuiButtonBase-root-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-stateColors-interactiveStyles-stateColors-StyledTag-StyledTagFilter-StyledTagFilter"
+      role="button"
       tabindex="0"
     >
       <span
         class="MuiChip-label css-1dybbl5-MuiChip-label"
       >
-        TagFilter
-      </span>
-      <button
-        aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary MuiChip-deleteIcon et5j5k2 css-xhz0g7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
-        tabindex="0"
-        type="button"
-      >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="SdsTag-labelText"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconXMarkSmall"
-              data-testid="IconXMarkSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
-            />
-          </div>
+          TagFilter
         </span>
-      </button>
+      </span>
+      <div
+        class="css-1q8yjse-StyledIcon emi0zh40"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          data-file-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
     </div>
   </div>
 </div>

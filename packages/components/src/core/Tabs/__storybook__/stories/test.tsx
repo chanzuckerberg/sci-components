@@ -70,10 +70,8 @@ function BetaTagWithCount() {
       <StyledTabCountWrapper>123</StyledTabCountWrapper>
       <Tag
         label="BETA"
-        hover={false}
         color="beta"
-        sdsStyle="rounded"
-        sdsType="primary"
+        size="small"
         style={{ margin: "0 0 2px 0" }}
       />
     </>

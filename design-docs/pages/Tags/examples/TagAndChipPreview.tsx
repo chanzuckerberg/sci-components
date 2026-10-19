@@ -1,28 +1,17 @@
-// color carries the tag's intent. Six names are available, and neutral is what a
-// tag falls back to when the prop is left out.
-//
-// sdsType picks how that intent is drawn: primary fills the tag with the intent
-// color and sets the label white, secondary tints the fill and keeps the label in
-// the intent color behind a matching border.
+// A Tag labels the element it sits beside. A Chip, TagFilter in code, shows a
+// condition the user has applied and comes off when it is clicked.
 
 import {
   Tag,
+  TagFilter,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
   type CommonThemeProps,
-  type SdsTagColorType,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
-
-const INTENTS: Extract<SdsTagColorType, string>[] = [
-  "info",
-  "positive",
-  "notice",
-  "negative",
-  "neutral",
-  "beta",
-];
+import { SparkleIcon } from "@phosphor-icons/react";
+import { useState } from "react";
 
 const Stack = styled.div<CommonThemeProps>`
   ${(props) => {
@@ -41,9 +30,11 @@ const Row = styled.div<CommonThemeProps>`
     const spaces = getSpaces(props);
 
     return `
+      align-items: center;
       display: flex;
       flex-wrap: wrap;
       gap: ${spaces?.s}px;
+      min-height: 24px;
     `;
   }}
 `;
@@ -62,34 +53,35 @@ const Caption = styled.p<CommonThemeProps>`
   }}
 `;
 
+const FILTERS = ["Homo sapiens", "Lung"];
+
 function App() {
+  const [filters, setFilters] = useState(FILTERS);
+
   return (
     <div className="app">
       <Stack>
         <div>
-          <Caption>Primary</Caption>
+          <Caption>Tag</Caption>
           <Row>
-            {INTENTS.map((intent) => (
-              <Tag
-                color={intent}
-                key={intent}
-                label={intent}
-                sdsStyle="rounded"
-              />
-            ))}
+            <Tag color="positive" label="Published" />
+            <Tag color="info" label="In review" sdsStyle="outline" />
+            <Tag color="accent" icon={<SparkleIcon />} label="Generated" />
           </Row>
         </div>
 
         <div>
-          <Caption>Secondary</Caption>
-          <Row>
-            {INTENTS.map((intent) => (
-              <Tag
-                color={intent}
-                key={intent}
-                label={intent}
-                sdsStyle="rounded"
-                sdsType="secondary"
+          <Caption>Chip</Caption>
+          <Row aria-label="Applied filters" role="group">
+            {filters.map((filter) => (
+              <TagFilter
+                key={filter}
+                label={filter}
+                onDelete={() =>
+                  setFilters((current) =>
+                    current.filter((item) => item !== filter)
+                  )
+                }
               />
             ))}
           </Row>

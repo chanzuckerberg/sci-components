@@ -133,12 +133,16 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              Chemistry
+              <span
+                class="SdsTag-labelText"
+              >
+                Chemistry
+              </span>
             </span>
           </div>
         </div>
@@ -209,48 +213,68 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
           style="display: flex; gap: 4px; flex-wrap: wrap;"
         >
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              info
+              <span
+                class="SdsTag-labelText"
+              >
+                info
+              </span>
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              notice
+              <span
+                class="SdsTag-labelText"
+              >
+                notice
+              </span>
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              beta
+              <span
+                class="SdsTag-labelText"
+              >
+                beta
+              </span>
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              negative
+              <span
+                class="SdsTag-labelText"
+              >
+                negative
+              </span>
             </span>
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              positive
+              <span
+                class="SdsTag-labelText"
+              >
+                positive
+              </span>
             </span>
           </div>
         </div>
@@ -302,12 +326,16 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              Downloadable Content
+              <span
+                class="SdsTag-labelText"
+              >
+                Downloadable Content
+              </span>
             </span>
           </div>
         </div>
@@ -524,12 +552,16 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
             />
           </div>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary esrfbz40 css-e8q7rh-MuiChip-root-StyledTag-tagSizeS-createTypeCss-createTypeCss-rounded-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
             <span
               class="MuiChip-label css-1dybbl5-MuiChip-label"
             >
-              Disease
+              <span
+                class="SdsTag-labelText"
+              >
+                Disease
+              </span>
             </span>
           </div>
         </div>

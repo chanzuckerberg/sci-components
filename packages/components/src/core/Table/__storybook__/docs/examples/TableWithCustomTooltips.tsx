@@ -123,9 +123,7 @@ const columns = [
                 ? "positive"
                 : "negative"
           }
-          sdsStyle="rounded"
-          sdsType="secondary"
-          hover={false}
+          sdsStyle="outline"
         />
       </CellComponent>
     ),

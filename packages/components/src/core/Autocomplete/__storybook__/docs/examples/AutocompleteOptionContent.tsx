@@ -37,20 +37,8 @@ const OPTIONS: DefaultAutocompleteOption[] = [
       <div>
         Available labels
         <div style={{ display: "flex", gap: 4, marginTop: 4 }}>
-          <Tag
-            color="positive"
-            hover={false}
-            label="curated"
-            sdsStyle="square"
-            sdsType="secondary"
-          />
-          <Tag
-            color="notice"
-            hover={false}
-            label="draft"
-            sdsStyle="square"
-            sdsType="secondary"
-          />
+          <Tag color="positive" label="curated" sdsStyle="outline" />
+          <Tag color="notice" label="draft" sdsStyle="outline" />
         </div>
       </div>
     ),

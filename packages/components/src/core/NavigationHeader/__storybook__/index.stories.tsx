@@ -1,7 +1,10 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta, StoryContext } from "@storybook/react-vite";
 import { NavigationHeader } from "./stories/default";
-import { TAG_PANEL_COLORS } from "@components/src/core/Tag/__storybook__/constants";
+import {
+  TAG_PANEL_COLORS,
+  TAG_PANEL_COLOR_LABELS,
+} from "@components/src/core/Tag/__storybook__/constants";
 import {
   RESEARCH,
   NAVIGATION_HEADER_EXCLUDED_CONTROLS,
@@ -175,14 +178,7 @@ export default {
     },
     tagColor: {
       control: {
-        labels: [
-          "info",
-          "positive",
-          "notice",
-          "negative",
-          "beta",
-          "Custom colors for Label, Background, Icon",
-        ],
+        labels: TAG_PANEL_COLOR_LABELS,
         type: "select",
       },
       description: "Color of the tag.",

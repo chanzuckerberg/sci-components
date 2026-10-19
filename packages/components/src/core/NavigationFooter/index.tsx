@@ -151,7 +151,7 @@ function NavigationFooter({
       >
         {logo}
         {title && <p>{title}</p>}
-        {tag && <Tag tagColor={tagColor} label={tag} hover={false} />}
+        {tag && <Tag color={tagColor} label={tag} size="small" />}
       </StyledLogoWrapper>
     );
 

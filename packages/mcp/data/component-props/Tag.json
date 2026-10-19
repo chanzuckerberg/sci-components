@@ -3,49 +3,70 @@
     "props": {
       "color": {
         "defaultValue": "neutral",
-        "description": "The tag's intent, given either as one of the six names or as CSS colors: [label color, background color]: the icon stays white [label color, background color, icon color]",
+        "description": "One of the seven intents, or CSS colors for a tag the intents do not\ncover: `[label, background]` or `[label, background, icon]`. The icon\ntakes the label color when the third value is left out.",
         "isRequired": false,
-        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"neutral\" | \"beta\" | [string, string] | [string, string, string]"
+        "type": "\"info\" | \"accent\" | \"negative\" | \"notice\" | \"positive\" | \"beta\" | \"neutral\" | [string, string] | [string, string, string]"
       },
-      "hover": {
-        "defaultValue": true,
-        "description": "Whether the tag responds to the pointer with a darker fill and a pointer cursor. False removes the tag from pointer events altogether, which also keeps a surrounding Tooltip from opening.",
+      "disabled": {
+        "defaultValue": false,
+        "description": "Greys the tag out. On a clickable tag or a link it also takes the tag out\nof the tab order.",
         "isRequired": false,
         "type": "boolean"
       },
+      "href": {
+        "description": "Turns the tag into a link. It renders as an `<a>` unless `component`\nsays otherwise, as with a router's link component.",
+        "isRequired": false,
+        "type": "string"
+      },
       "icon": {
-        "description": "Icon element.",
+        "description": "An icon on the leading edge, usually a Phosphor or `@czi-sds/icons` icon.\nThe tag draws it at its own icon size and color.",
         "isRequired": false,
         "type": "ReactElement"
       },
+      "iconOnly": {
+        "defaultValue": false,
+        "description": "Draws only the icon, in a square tag. The label is hidden from view but\nstays the tag's accessible name. Has no effect without an icon.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "label": {
         "defaultValue": "- (required)",
-        "description": "The tag's text, and its accessible name. It is cut off with an ellipsis\nrather than wrapped, so keep it to a word or two.",
+        "description": "The tag's text, and its accessible name. It is cut off with an ellipsis\nrather than wrapped, so keep it to a word or two. An icon-only tag still\nneeds it: the text is hidden from view but read by screen readers.",
         "isRequired": true,
         "type": "string"
       },
       "onClick": {
-        "description": "MUI's prop. Makes the tag a button: a tab stop that answers Enter and Space.",
+        "description": "MUI's prop. Makes the tag a button: a tab stop that answers Enter and Space, with hover and pressed states.",
         "isRequired": false,
         "type": "function"
       },
-      "sdsSize": {
-        "defaultValue": "s",
-        "description": "The size of the tag: an 11px label with a 12px icon, or a 13px label with a 24px icon. A large tag has to have an icon.",
-        "isRequired": false,
-        "type": "\"s\" | \"l\""
-      },
       "sdsStyle": {
-        "defaultValue": "square",
-        "description": "The shape of the tag. The design guidance treats rounded as the default for the system, so it is usually worth passing.",
+        "defaultValue": "solid",
+        "description": "`solid` fills the tag with the intent color. `outline` tints the fill and\ndraws the label, the icons and a 1px border in the intent color.",
         "isRequired": false,
-        "type": "\"square\" | \"rounded\""
+        "type": "\"outline\" | \"solid\""
       },
-      "sdsType": {
-        "defaultValue": "primary",
-        "description": "primary fills the tag with the intent color and sets the label white. secondary tints the fill and keeps the label and a 1px border in the intent color.",
+      "showLinkIcon": {
+        "defaultValue": false,
+        "description": "Adds an arrow after the label to say the tag leads somewhere. Usually\npaired with `href`, though a tag can be a link without it.",
         "isRequired": false,
-        "type": "\"primary\" | \"secondary\""
+        "type": "boolean"
+      },
+      "size": {
+        "defaultValue": "medium",
+        "description": "`medium` is 24px tall with a 13px label and 12px icons, `small` is 20px\ntall with a 10px label and 10px icons.",
+        "isRequired": false,
+        "type": "\"small\" | \"medium\""
+      },
+      "target": {
+        "description": "Where the link opens. `_blank` also sets `rel=\"noopener noreferrer\"`.",
+        "isRequired": false,
+        "type": "string & {} | \"_self\" | \"_blank\" | \"_parent\" | \"_top\""
+      },
+      "rel": {
+        "description": "The link's relationship to the current page.",
+        "isRequired": false,
+        "type": "string"
       },
       "onDelete": {
         "description": "Callback fired when the delete icon is clicked.\nIf set, the delete icon will be shown.",

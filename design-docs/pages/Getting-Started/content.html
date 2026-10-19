@@ -198,8 +198,9 @@
       <p>
         The components themselves and the theme they read their colors, spacing
         and typography from. Start here: an app installs this package whether or
-        not it uses either of the others. Its overview covers installation, the
-        five exports the package ships, and the theme setup an app does once.
+        not it uses either of the others, along with its peer dependencies,
+        which include Phosphor. Its overview covers installation, the five
+        exports the package ships, and the theme setup an app does once.
       </p>
     </td>
   </tr>
@@ -232,9 +233,10 @@
         The icons SDS draws itself, either because
         <a href="https://phosphoricons.com" target="_blank">Phosphor</a>
         has no equivalent or because we want our own version of one it does
-        have. Phosphor covers the rest of the icon set and is installed
-        alongside it. The two are the same kind of component, so the only
-        difference between them is where an icon is imported from.
+        have. Phosphor covers the rest of the icon set and is already installed
+        as a peer of <code>@czi-sds/components</code>. The two are the same kind
+        of component, so the only difference between them is where an icon is
+        imported from.
       </p>
     </td>
   </tr>

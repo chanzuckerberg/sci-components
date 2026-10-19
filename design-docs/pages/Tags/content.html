@@ -1,43 +1,23 @@
 <h1>Tags</h1>
 <p>
-  Tags are used to label the status of certain elements or in conjunction with
-  filters to indicate which have been applied when viewing datasets.
+  Tags communicate a status related to the element they are paired with. Chips
+  show which conditions, such as filters or search parameters, the user has
+  applied to a dataset.
 </p>
 <h2>Tag Components</h2>
 <p>
-  There are two types of Tags: standard and filter. Filter Tags are used in
-  conjunction with the
+  There are two components. The <strong>Tag</strong> labels an element or
+  communicates a status associated with it, and can be used throughout the UI.
+  The <strong>Chip</strong> (<code>TagFilter</code> in code) is used together
+  with
   <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
-    >Filter</a
+    >Filters</a
   >
-  component to indicate which filters have been applied to a given dataset.
-  Standard Tags come in two styles, Rounded and Square, and can be used
-  throughout the UI whenever there's a need to label an element or communicate a
-  status associated with it.
+  to show which conditions have been applied, and the user removes a condition
+  by clicking its Chip.
 </p>
 <h3>Visual Preview</h3>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Preview_Guidelines_Tag</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/62e22a0078b4495f.png"
-        alt="Preview_Guidelines_Tag"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Preview_Guidelines_TagFilter</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/130fa05cc1de8569.png"
-        alt="Preview_Guidelines_TagFilter"
-      />
-    </figure>
-  </figure>
-</div>
+<div class="sds-doc-example" data-example="Tags/TagAndChipPreview"></div>
 <hr />
 <h2>Tag</h2>
 <ul class="sds-doc-status">
@@ -45,1052 +25,256 @@
   <li data-status="ready">Meets Accessibility</li>
   <li data-status="ready">In Code</li>
 </ul>
+<h3>Overview</h3>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Tags can be used throughout the UI to communicate conditional statuses
+      related to the elements they are paired with.
+    </p>
+  </li>
+  <li>
+    <p>
+      Tags can optionally function as links that navigate to a new page when
+      clicked. This is not a separate type, but the same type with that
+      functionality enabled. In code, a Tag becomes a link by being given a URL,
+      and an optional arrow icon can communicate that the Tag has an embedded
+      link. In Figma, the arrow icon can be toggled on or off; it is optional,
+      and the Tag can function as a link without it.
+    </p>
+  </li>
+  <li>
+    <p>
+      When paired with Chips or Toggle Buttons, Tags can communicate which
+      elements within the UI the Chip or Toggle Button is affecting, such as
+      which elements a filter condition is being applied to. This is indicated
+      by shifting the affected Tags to the beginning of the list of other Tags.
+    </p>
+  </li>
+  <li>
+    <p>
+      To return a Tag to its default position in a list of other Tags, users
+      must remove the Chip or toggle off the Toggle Button that Tag is paired
+      with. Clicking on a Tag does not remove the corresponding Chip or toggle
+      off the corresponding Toggle Button.
+    </p>
+  </li>
+</ul>
+<div class="sds-doc-example" data-example="Tags/TagsPairedWithChips"></div>
+<hr />
 <h3>Tag Styles</h3>
 <p>
-  The two available Tag styles are shown below, demonstrated here using the
-  primary type. There are five intents that Tags can communicate. See the
-  <a href="./?path=/docs/design-documentation-genes-tags--docs" target="_top"
-    >Intent Variations</a
-  >
-  section below for more details.
+  There are two styles. <strong>Solid</strong> fills the Tag with the intent
+  color and is the stronger of the two. <strong>Outline</strong> uses a tinted
+  fill with the label, icons and a thin border in the intent color, for Tags
+  that should sit back in a busy layout. Both are shown below with text, text
+  with an icon, the link arrow, and an icon on its own.
 </p>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Tag_Rounded</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/6f8c04f1f6e91ca2.png" alt="Tag_Rounded" />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Tag_Square</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/bffd8b6ccdc69f2c.png" alt="Tag_Square" />
-    </figure>
-  </figure>
-</div>
+<div class="sds-doc-example" data-example="Tags/TagStyles"></div>
 <hr />
-<h3>Tag – Rounded</h3>
+<h3>Sizes and Content</h3>
 <p>
-  Tag – Rounded is the default style used across applications, however if an
-  alternate style is needed, use
-  <a href="./?path=/docs/design-documentation-genes-tags--docs" target="_top"
-    >Tag – Square</a
-  >
-  .
-</p>
-<h4>Primary</h4>
-<p>
-  Use Tag – Primary in conjunction with the primary or most important content.
-  Include an icon when needing to provide additional context to users of what
-  content the Tag is connected to.
+  Tags come in medium and small. Use medium by default, and small where space is
+  tight, such as in navigation or beside a tab's label. Each size can hold text,
+  text with an icon, or an icon alone.
 </p>
 <div
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
     <strong>Note:</strong>
-    An icon must be included when using the large variant.
+    The icon-only variant is square, with cornerM (4px) corners, whereas the
+    text and text with icon variants are pill-shaped, with cornerRounded (20px)
+    corners. An icon-only Tag still needs a label in code, which screen readers
+    read; pair it with a Tooltip that shows the label to sighted users.
   </p>
 </div>
-<table class="sds-doc-table">
-  <tr>
-    <td><p>Default</p></td>
-    <td><p>Hover</p></td>
-    <td><p>Pressed</p></td>
-  </tr>
-</table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Small_No Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/63f3a4041233fa03.png"
-        alt="Tag_Primary_Rounded_Small_No Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Small_No Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/44fc92e917876ac1.png"
-        alt="Tag_Primary_Rounded_Small_No Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Small_No Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/8c17ada941d24a99.png"
-        alt="Tag_Primary_Rounded_Small_No Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Small_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/6280b926bbc221a6.png"
-        alt="Tag_Primary_Rounded_Small_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Small_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/373a03ac1bdd7642.png"
-        alt="Tag_Primary_Rounded_Small_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Small_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/af49195cc2bca8ba.png"
-        alt="Tag_Primary_Rounded_Small_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Large_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/011c544c5a9bb229.png"
-        alt="Tag_Primary_Rounded_Large_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Large_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/88287440bd1a861b.png"
-        alt="Tag_Primary_Rounded_Large_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Rounded_Large_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/d26db4189e775c7f.png"
-        alt="Tag_Primary_Rounded_Large_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-</div>
-<h4>Secondary</h4>
-<p>
-  Use Tag – Secondary in conjunction with secondary or less important content.
-  Include an icon when needing to provide additional context to users of what
-  content the Tag is connected to.
-</p>
-<div
-  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    An icon must be included when using the large variant.
-  </p>
-</div>
-<table class="sds-doc-table">
-  <tr>
-    <td><p>Default</p></td>
-    <td><p>Hover</p></td>
-    <td><p>Pressed</p></td>
-  </tr>
-</table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Small_No Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/54800cb8792c56ce.png"
-        alt="Tag_Secondary_Rounded_Small_No Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Small_No Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/44fc92e917876ac1.png"
-        alt="Tag_Secondary_Rounded_Small_No Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Small_No Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/8c17ada941d24a99.png"
-        alt="Tag_Secondary_Rounded_Small_No Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Small_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/2245132277d475b3.png"
-        alt="Tag_Secondary_Rounded_Small_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Small_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/373a03ac1bdd7642.png"
-        alt="Tag_Secondary_Rounded_Small_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Small_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/af49195cc2bca8ba.png"
-        alt="Tag_Secondary_Rounded_Small_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Large_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/08dfe2ecc90833cb.png"
-        alt="Tag_Secondary_Rounded_Large_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Large_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/88287440bd1a861b.png"
-        alt="Tag_Secondary_Rounded_Large_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Rounded_Large_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/d26db4189e775c7f.png"
-        alt="Tag_Secondary_Rounded_Large_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-</div>
+<div class="sds-doc-example" data-example="Tags/TagSizesAndContent"></div>
 <hr />
-<h3>Tag – Square</h3>
+<h3>Tag States</h3>
 <p>
-  Tag – Square is to be used when an alternate Tag style is needed as determined
-  by the product designer.
+  A Tag that does something when clicked, such as a link or a Tag that filters,
+  has default, hover, pressed and disabled states. A Tag that only labels
+  something stays in its default state and does not respond to the pointer.
 </p>
-<h4>Primary</h4>
-<p>
-  Use Tag – Primary in conjunction with the primary or most important content.
-  Include an icon when needing to provide additional context to users of what
-  content the Tag is connected to.
-</p>
-<div
-  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    An icon must be included when using the large variant.
-  </p>
-</div>
-<table class="sds-doc-table">
-  <tr>
-    <td><p>Default</p></td>
-    <td><p>Hover</p></td>
-    <td><p>Pressed</p></td>
-  </tr>
-</table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Small_No Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/eb1871a3d7533a64.png"
-        alt="Tag_Primary_Square_Small_No Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Small_No Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/9654387b7437bfea.png"
-        alt="Tag_Primary_Square_Small_No Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Small_No Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/0267ac6229f25470.png"
-        alt="Tag_Primary_Square_Small_No Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Small_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/24f3c38b544bc3c3.png"
-        alt="Tag_Primary_Square_Small_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Small_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/08bb595d8df65f4e.png"
-        alt="Tag_Primary_Square_Small_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Small_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/a2bb1a3d1675250e.png"
-        alt="Tag_Primary_Square_Small_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Large_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/a2e2cc3b79cd96f6.png"
-        alt="Tag_Primary_Square_Large_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Large_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/d713dba0842682c8.png"
-        alt="Tag_Primary_Square_Large_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Square_Large_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/33c7daace364ebe7.png"
-        alt="Tag_Primary_Square_Large_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-</div>
-<h4>Secondary</h4>
-<p>
-  Use Tag – Secondary in conjunction with secondary or less important content.
-  Include an icon when needing to provide additional context to users of what
-  content the Tag is connected to.
-</p>
-<div
-  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
->
-  <p>
-    <strong>Note:</strong>
-    An icon must be included when using the large variant.
-  </p>
-</div>
-<table class="sds-doc-table">
-  <tr>
-    <td><p>Default</p></td>
-    <td><p>Hover</p></td>
-    <td><p>Pressed</p></td>
-  </tr>
-</table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Small_No Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/7c0b7af48f8c6011.png"
-        alt="Tag_Secondary_Square_Small_No Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Small_No Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/9654387b7437bfea.png"
-        alt="Tag_Secondary_Square_Small_No Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Small_No Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/0267ac6229f25470.png"
-        alt="Tag_Secondary_Square_Small_No Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Small_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/9a1a4b58e08d90d0.png"
-        alt="Tag_Secondary_Square_Small_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Small_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/08bb595d8df65f4e.png"
-        alt="Tag_Secondary_Square_Small_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Small_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/a2bb1a3d1675250e.png"
-        alt="Tag_Secondary_Square_Small_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Large_Icon_Default</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/3f8ae15b4c24ee55.png"
-        alt="Tag_Secondary_Square_Large_Icon_Default"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Large_Icon_Hover</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/d713dba0842682c8.png"
-        alt="Tag_Secondary_Square_Large_Icon_Hover"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Square_Large_Icon_Pressed</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/33c7daace364ebe7.png"
-        alt="Tag_Secondary_Square_Large_Icon_Pressed"
-      />
-    </figure>
-  </figure>
-</div>
+<div class="sds-doc-example" data-example="Tags/TagStates"></div>
 <hr />
-<h3>Tag Spacing</h3>
-<p>
-  These rules establish how much margin should exist between and around
-  elements.
-</p>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Tag Spacing</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/27eea033a79a6fad.png" alt="Tag Spacing" />
-    </figure>
-  </figure>
-</div>
+<h3>Spacing, Sizing, and Fonts</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p></p></td>
+    <td><p>Medium</p></td>
+    <td><p>Small</p></td>
+  </tr>
+  <tr>
+    <td><p>Font</p></td>
+    <td><p>fontBodyXs (13px)</p></td>
+    <td><p>fontBodyXxxxs (10px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Height</p></td>
+    <td><p>24px</p></td>
+    <td><p>20px</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon size</p></td>
+    <td><p>XS (12px × 12px)</p></td>
+    <td><p>XXS (10px × 10px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Left / right padding, text and text + icon</p></td>
+    <td><p>spaceS (8px)</p></td>
+    <td><p>spaceS (8px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Left / right padding, icon only</p></td>
+    <td><p>spaceXs (6px)</p></td>
+    <td><p>5px</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon / text padding</p></td>
+    <td><p>spaceXxs (4px)</p></td>
+    <td><p>spaceXxs (4px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Border radius, text and text + icon</p></td>
+    <td><p>cornerRounded (20px)</p></td>
+    <td><p>cornerRounded (20px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Border radius, icon only</p></td>
+    <td><p>cornerM (4px)</p></td>
+    <td><p>cornerM (4px)</p></td>
+  </tr>
+</table>
 <hr />
 <h3>Intent Variations</h3>
 <p>
-  There are six different intents that Tags can communicate (Beta, Info,
-  Negative, None, Notice, and Positive), indicated with the use of color.
+  There are seven intents that Tags can communicate (Accent, Beta, Info,
+  Negative, Neutral, Notice and Positive), indicated with color. Color is never
+  the only signal: the label has to say what the intent means.
 </p>
-<p>
-  Each intent is demonstrated below using the default state of the rounded
-  variant for reference. Regardless of variant, the colors used are the same.
-</p>
-<h4>Primary</h4>
+<div class="sds-doc-example" data-example="Tags/TagIntents"></div>
+<h4>Color tokens: solid</h4>
+<p><em>Intent</em> stands for the Tag's intent, such as Accent or Negative.</p>
 <table class="sds-doc-table">
   <tr>
-    <td><p>Beta</p></td>
-    <td><p>Info</p></td>
-    <td><p>Negative</p></td>
-    <td><p>None</p></td>
-    <td><p>Notice</p></td>
-    <td><p>Positive</p></td>
+    <td><p>State</p></td>
+    <td><p>Fill</p></td>
+    <td><p>Text</p></td>
+    <td><p>Ornament</p></td>
+  </tr>
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Intent.fill-primary</p></td>
+    <td><p>Base.text-on-fill</p></td>
+    <td><p>Base.ornament-on-fill</p></td>
+  </tr>
+  <tr>
+    <td><p>Hover</p></td>
+    <td><p>Intent.fill-interaction</p></td>
+    <td><p>Base.text-primary-inverse</p></td>
+    <td><p>Base.ornament-primary-inverse</p></td>
+  </tr>
+  <tr>
+    <td><p>Pressed</p></td>
+    <td><p>Intent.fill-pressed</p></td>
+    <td><p>Base.text-primary-inverse</p></td>
+    <td><p>Base.ornament-primary-inverse</p></td>
+  </tr>
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>Base.fill-disabled</p></td>
+    <td><p>Base.text-disabled</p></td>
+    <td><p>Base.ornament-disabled</p></td>
   </tr>
 </table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_No Icon_Intent_Beta</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/522854136cb4be8c.png"
-        alt="Tag_Primary_Small_No Icon_Intent_Beta"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_No Icon_Intent_Info</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/63f3a4041233fa03.png"
-        alt="Tag_Primary_Small_No Icon_Intent_Info"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_No Icon_Intent_Negative</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/3d80806e55c4c6cb.png"
-        alt="Tag_Primary_Small_No Icon_Intent_Negative"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_No Icon_Intent_None</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/761757d104e527bf.png"
-        alt="Tag_Primary_Small_No Icon_Intent_None"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_No Icon_Intent_Notice</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/daa69ee1d5ae29b5.png"
-        alt="Tag_Primary_Small_No Icon_Intent_Notice"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_No Icon_Intent_Positive</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/7ece73b134d9347c.png"
-        alt="Tag_Primary_Small_No Icon_Intent_Positive"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Tag_Primary_Small_Icon_Intent_Beta</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/be4a00439fcd5409.png"
-        alt="Tag_Primary_Small_Icon_Intent_Beta"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Tag_Primary_Small_Icon_Intent_Info</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/6280b926bbc221a6.png"
-        alt="Tag_Primary_Small_Icon_Intent_Info"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_Icon_Intent_Negative</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/783fe67e6e43bcce.png"
-        alt="Tag_Primary_Small_Icon_Intent_Negative"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Tag_Primary_Small_Icon_Intent_None</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/457c3d984e5655a3.png"
-        alt="Tag_Primary_Small_Icon_Intent_None"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_Icon_Intent_Notice</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/bc14399af99acef4.png"
-        alt="Tag_Primary_Small_Icon_Intent_Notice"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Small_Icon_Intent_Positive</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/273836b26a2254d4.png"
-        alt="Tag_Primary_Small_Icon_Intent_Positive"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Large_No Icon_Intent_Beta</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/3a0aaf505018e885.png"
-        alt="Tag_Primary_Large_No Icon_Intent_Beta"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Large_No Icon_Intent_Info</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/011c544c5a9bb229.png"
-        alt="Tag_Primary_Large_No Icon_Intent_Info"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Large_No Icon_Intent_Negative</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/cafd7fc39614b23e.png"
-        alt="Tag_Primary_Large_No Icon_Intent_Negative"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Large_No Icon_Intent_None</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/9b74f12850024b50.png"
-        alt="Tag_Primary_Large_No Icon_Intent_None"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Large_No Icon_Intent_Notice</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/ba40a5a6a55af8d8.png"
-        alt="Tag_Primary_Large_No Icon_Intent_Notice"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Primary_Large_No Icon_Intent_Positive</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/4c487eebd8ba0738.png"
-        alt="Tag_Primary_Large_No Icon_Intent_Positive"
-      />
-    </figure>
-  </figure>
-</div>
-<h4>Secondary</h4>
+<h4>Color tokens: outline</h4>
 <table class="sds-doc-table">
   <tr>
-    <td><p>Beta</p></td>
-    <td><p>Info</p></td>
-    <td><p>Negative</p></td>
+    <td><p>State</p></td>
+    <td><p>Fill</p></td>
+    <td><p>Text and ornament</p></td>
+    <td><p>Border</p></td>
+  </tr>
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Intent.fill-secondary (Accent.surface-secondary for Accent)</p></td>
+    <td><p>Intent.foreground</p></td>
+    <td>
+      <p>
+        Intent.foreground at 28% opacity, 56% in dark mode (indigo600 for
+        Accent)
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Hover</p></td>
+    <td><p>Unchanged</p></td>
+    <td><p>Intent.foreground-interaction</p></td>
+    <td><p>Intent.foreground-interaction</p></td>
+  </tr>
+  <tr>
+    <td><p>Pressed</p></td>
+    <td><p>Unchanged</p></td>
+    <td><p>Intent.foreground-pressed</p></td>
+    <td><p>Intent.foreground-pressed</p></td>
+  </tr>
+  <tr>
+    <td><p>Disabled</p></td>
     <td><p>None</p></td>
-    <td><p>Notice</p></td>
-    <td><p>Positive</p></td>
+    <td><p>Base.text-disabled, Base.ornament-disabled</p></td>
+    <td><p>Base.border-primary-disabled</p></td>
   </tr>
 </table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_No Icon_Intent_Beta</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/2c70743f53a2fc58.png"
-        alt="Tag_Secondary_Small_No Icon_Intent_Beta"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_No Icon_Intent_Info</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/54800cb8792c56ce.png"
-        alt="Tag_Secondary_Small_No Icon_Intent_Info"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_No Icon_Intent_Negative</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/a4178e841d93b16c.png"
-        alt="Tag_Secondary_Small_No Icon_Intent_Negative"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_No Icon_Intent_None</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/48e69b611cf9d56e.png"
-        alt="Tag_Secondary_Small_No Icon_Intent_None"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_No Icon_Intent_Notice</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/aeb20a0f4924b9ac.png"
-        alt="Tag_Secondary_Small_No Icon_Intent_Notice"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_No Icon_Intent_Positive</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/9335d92f9c3f8fc3.png"
-        alt="Tag_Secondary_Small_No Icon_Intent_Positive"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_Icon_Intent_Beta</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/54a00a6af50f1abf.png"
-        alt="Tag_Secondary_Small_Icon_Intent_Beta"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_Icon_Intent_Info</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/2245132277d475b3.png"
-        alt="Tag_Secondary_Small_Icon_Intent_Info"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_Icon_Intent_Negative</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/89be10d520667349.png"
-        alt="Tag_Secondary_Small_Icon_Intent_Negative"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_Icon_Intent_None</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/131e893335c85a7e.png"
-        alt="Tag_Secondary_Small_Icon_Intent_None"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_Icon_Intent_Notice</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/e571d6887a45722b.png"
-        alt="Tag_Secondary_Small_Icon_Intent_Notice"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Small_Icon_Intent_Positive</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/8ebf543b00853ce4.png"
-        alt="Tag_Secondary_Small_Icon_Intent_Positive"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Large_No Icon_Intent_Beta</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/fb4390997ff72e7a.png"
-        alt="Tag_Secondary_Large_No Icon_Intent_Beta"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Large_No Icon_Intent_Info</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/08dfe2ecc90833cb.png"
-        alt="Tag_Secondary_Large_No Icon_Intent_Info"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Large_No Icon_Intent_Negative</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/d555c30130652a1f.png"
-        alt="Tag_Secondary_Large_No Icon_Intent_Negative"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Large_No Icon_Intent_None</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/31b9000e65bd020f.png"
-        alt="Tag_Secondary_Large_No Icon_Intent_None"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Large_No Icon_Intent_Notice</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/b934149d87f878ea.png"
-        alt="Tag_Secondary_Large_No Icon_Intent_Notice"
-      />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption>
-      <strong>Tag_Secondary_Large_No Icon_Intent_Positive</strong>
-    </figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img
-        src="design-assets/6ae3d19e1ca1ae30.png"
-        alt="Tag_Secondary_Large_No Icon_Intent_Positive"
-      />
-    </figure>
-  </figure>
-</div>
 <hr />
-<h2>Filter Tag</h2>
+<h2>Chip</h2>
 <ul class="sds-doc-status">
   <li data-status="ready">In Figma</li>
   <li data-status="ready">Meets Accessibility</li>
   <li data-status="ready">In Code</li>
 </ul>
-<hr />
 <h3>Overview</h3>
 <p>
-  Used Filter Tag in conjunction with
-  <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
-    >Filters</a
-  >
-  to communicate that the dataset is being filtered on the parameter indicated
-  on the Filter Tag. Users click on the Xmark
-  <a href="./?path=/docs/design-documentation-bases-icons--docs" target="_top"
-    >icon</a
-  >
-  to remove that parameter from the group of filters being applied.
+  The Chip is used exclusively to communicate that the user has applied a
+  condition to a dataset or collection of information, such as a filter or a
+  search parameter. Users remove a Chip by clicking on it. It comes in the same
+  solid and outline styles as the Tag, always in the Accent intent, with
+  default, hover and pressed states.
 </p>
+<div class="sds-doc-example" data-example="Tags/ChipStyles"></div>
+<h3>Chip Spacing, Sizing, and Fonts</h3>
 <table class="sds-doc-table">
   <tr>
-    <td><p>Default</p></td>
-    <td><p>Hover</p></td>
-    <td><p>Pressed</p></td>
+    <td><p></p></td>
+    <td><p>Chip</p></td>
+  </tr>
+  <tr>
+    <td><p>Font</p></td>
+    <td><p>fontBodyXs (13px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Height</p></td>
+    <td><p>24px</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon size (XMark)</p></td>
+    <td><p>XS (12px × 12px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Left / right padding</p></td>
+    <td><p>spaceXs (6px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon / text padding</p></td>
+    <td><p>spaceXxs (4px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Border radius</p></td>
+    <td><p>cornerM (4px)</p></td>
   </tr>
 </table>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>TagFilter_Default</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/130fa05cc1de8569.png" alt="TagFilter_Default" />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>TagFilter_Hover</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/fcc4e1afd535f72f.png" alt="TagFilter_Hover" />
-    </figure>
-  </figure>
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>TagFilter_Pressed</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/26809263ad04d6f6.png" alt="TagFilter_Pressed" />
-    </figure>
-  </figure>
-</div>
-<hr />
-<h3>Filter Tag Spacing</h3>
 <p>
-  These rules establish how much margin should exist between and around
-  elements.
+  The Chip's colors are the Accent rows of the Tag's solid and outline color
+  tokens above, for the default, hover and pressed states.
 </p>
-<div
-  class="sds-doc-design-uploads sds-doc-item-layout-column sds-doc-component-alignment-center"
->
-  <figure class="sds-doc-design-upload" role="group">
-    <figcaption><strong>Filter Tag spacing</strong></figcaption>
-    <figure class="sds-doc-design-upload-image">
-      <img src="design-assets/9b67b9c05accec51.png" alt="Filter Tag spacing" />
-    </figure>
-  </figure>
-</div>

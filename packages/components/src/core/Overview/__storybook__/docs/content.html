@@ -81,7 +81,23 @@ yarn add @czi-sds/components</code></pre>
   class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
 >
   <p>
-    <strong>Upgrading an existing app?</strong>
+    <strong>Upgrading from SDS 24?</strong>
+    SDS 25.0.0 reworks Tag and TagFilter, keeps the previous Tag as the
+    deprecated <code>TagLegacy</code>, and adds
+    <code>@phosphor-icons/react</code> as a peer dependency. The
+    <a
+      href="https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-25.0.0.md"
+    >
+      migration guide
+    </a>
+    maps every old Tag prop to its replacement.
+  </p>
+</div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Upgrading from an older version?</strong>
     SDS 24.0.0 is a breaking release that moves the Material UI peer dependency
     from v5 to v9. The
     <a
@@ -108,6 +124,7 @@ yarn add @czi-sds/components</code></pre>
   "@emotion/styled": "^11.11.0",
   "@mui/icons-material": "^9.0.0",
   "@mui/material": "^9.0.0",
+  "@phosphor-icons/react": "^2.1.10",
   "@tanstack/react-table": "^8.21.3",
   "react": "&gt;=18.0.0",
   "react-dom": "&gt;=18.0.0"
@@ -119,16 +136,17 @@ yarn add @czi-sds/components</code></pre>
   <figure>
     <figcaption>Shell</figcaption>
     <pre><code class="sds-doc-codeblock-content language-sh">// with npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @tanstack/react-table react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react @tanstack/react-table react react-dom
 // with yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @tanstack/react-table react react-dom</code></pre>
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react @tanstack/react-table react react-dom</code></pre>
   </figure>
 </div>
 <p>
-  Icons are installed separately. SDS uses
-  <a href="https://phosphoricons.com" target="_blank">Phosphor Icons</a>, plus
+  SDS uses
+  <a href="https://phosphoricons.com" target="_blank">Phosphor Icons</a>, which
+  this package now lists as a peer dependency, plus
   <code>@czi-sds/icons</code>
-  for the icons SDS draws itself, and the
+  for the icons SDS draws itself. Install the latter separately; the
   <a href="./?path=/docs/icons-overview--documentation" target="_top">Icons</a>
   documentation covers both. The <code>Icon</code> component this package still
   exports is deprecated.
@@ -136,7 +154,7 @@ yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/ma
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>Shell</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-sh">npm i @phosphor-icons/react @czi-sds/icons</code></pre>
+    <pre><code class="sds-doc-codeblock-content language-sh">npm i @czi-sds/icons</code></pre>
   </figure>
 </div>
 <div

@@ -331,9 +331,8 @@ const ControlPanel = () => {
             <Tag
               color="neutral"
               label="SHIFT"
-              sdsStyle="square"
-              sdsType="secondary"
-              hover={false}
+              sdsStyle="outline"
+              size="small"
             />{" "}
             key!
           </>

@@ -14,19 +14,26 @@ Peer dependencies:
 @emotion/styled
 @mui/icons-material
 @mui/material
+@phosphor-icons/react
 react
 react-dom
 ```
 
 ```bash
 # npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
 
 # yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
 ```
 
 > **React 18 note:** Material UI ships `react-is@19`. If your app uses React 18, pin `react-is` to match (Yarn `resolutions` / npm `overrides`), e.g. `"react-is": "^18.3.1"`.
+
+## Migrating to SDS 25.0.0
+
+SDS `25.0.0` is a **breaking release** that reworks `Tag` and `TagFilter` and adds `@phosphor-icons/react` as a peer dependency. The previous Tag ships as the deprecated `TagLegacy`:
+
+→ [Migration guide](https://github.com/chanzuckerberg/sci-components/blob/main/migration-docs/migrate-to-25.0.0.md)
 
 ## Migrating to SDS 24.0.0
 

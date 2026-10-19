@@ -1,0 +1,198 @@
+# Migration Guide: SDS 25.0.0 (Tag rework)
+
+This guide is for upgrading **`@czi-sds/components@24.x`** to **`@czi-sds/components@25.0.0`**. This is a **breaking release** with three changes:
+
+1. **`Tag` has a new API** that follows the reworked design: `sdsStyle` is `"solid"` or `"outline"`, sizes are `"small"` and `"medium"`, a new `"accent"` intent, a disabled state, icon-only tags, and links with an optional arrow. The previous component still ships as **`TagLegacy`**, deprecated.
+2. **`TagFilter` follows the new Chip design**: it gains `sdsStyle`, and the whole chip is now the remove control.
+3. **`@phosphor-icons/react` is a peer dependency** of `@czi-sds/components`.
+
+> If you are still on SDS 23 or older, follow [migrate-to-24.0.0.md](./migrate-to-24.0.0.md) first. This guide assumes Material UI v9.
+
+---
+
+## Table of contents
+
+1. [For AI coding agents — read first](#for-ai-coding-agents--read-first)
+2. [At a glance](#at-a-glance)
+3. [Step 1 — Update dependencies](#step-1--update-dependencies)
+4. [Step 2 — Choose a pace: migrate now, or switch to `TagLegacy` first](#step-2--choose-a-pace-migrate-now-or-switch-to-taglegacy-first)
+5. [Step 3 — Migrate `Tag` props](#step-3--migrate-tag-props)
+6. [Step 4 — Check `TagFilter` call sites](#step-4--check-tagfilter-call-sites)
+7. [Step 5 — Components that render a Tag for you](#step-5--components-that-render-a-tag-for-you)
+8. [Search patterns to locate every affected call site](#search-patterns-to-locate-every-affected-call-site)
+9. [Verification checklist / definition of done](#verification-checklist--definition-of-done)
+
+---
+
+## For AI coding agents — read first
+
+You are upgrading a **consumer project** that depends on `@czi-sds/components@24.x` to **`@czi-sds/components@25.0.0` or later**. Follow this playbook top to bottom.
+
+### Objective
+
+Make the consumer project install SDS 25 with its peer dependencies and compile, build and test cleanly, by updating **only the consumer's own code and config** to the new `Tag` and `TagFilter` APIs.
+
+### Operating rules (guardrails)
+
+1. **Scope:** only edit files in the consumer project. Never edit files inside `node_modules`, and never edit SDS internals.
+2. **Let the type-checker drive the work.** The removed `Tag` props (`sdsType`, `sdsSize`, `hover`, `tagColor`) and the removed `sdsStyle` values (`"rounded"`, `"square"`) are all type errors in SDS 25, so `tsc --noEmit` lists every call site.
+3. **Apply the mapping per call site.** The table in [Step 3](#step-3--migrate-tag-props) is mechanical, with one judgement call: the size. See the note under the table.
+4. **Preserve behavior.** Do not change what a tag does when clicked, or add or remove click handlers, while migrating its props.
+5. **Ask before scope changes.** If a call site styles the tag's internals (MUI class names such as `.MuiChip-label`), report it rather than guessing: the DOM inside the tag changed.
+
+### Do NOT change (avoid over-migrating)
+
+- ❌ **Don't rename `sdsStyle` on other components.** Button, ButtonToggle, Callout and NavigationHeader have their own `sdsStyle` values. Only `Tag`'s changed.
+- ❌ **Don't touch `color` on a Tag.** Intents and custom color tuples keep working. `"accent"` is new, nothing was removed.
+- ❌ **Don't rename `tagColor` on `NavigationHeader` or `NavigationFooter`.** It is their own prop, unchanged. Only a `tagColor` passed directly to `<Tag>` has to become `color`.
+- ❌ **Don't swap `TagLegacy` into code that already uses the new `Tag` API.** `TagLegacy` only accepts the old props.
+
+### The workflow (follow in this order)
+
+1. **Update dependencies — [Step 1](#step-1--update-dependencies)**, then install.
+2. **Decide the pace — [Step 2](#step-2--choose-a-pace-migrate-now-or-switch-to-taglegacy-first).** Either migrate every call site now, or rename imports to `TagLegacy` to compile immediately and migrate later.
+3. **Inventory — [search patterns](#search-patterns-to-locate-every-affected-call-site).**
+4. **Fix until the type-checker is clean — [Steps 3](#step-3--migrate-tag-props)–[5](#step-5--components-that-render-a-tag-for-you).**
+5. **Build, test, and look at the result — [Verification](#verification-checklist--definition-of-done).** Tags change size and shape, so check the screens that show them.
+
+---
+
+## At a glance
+
+| Area                    | Before (SDS 24)                                   | After (SDS 25)                                                           |
+| ----------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
+| `@phosphor-icons/react` | optional, for icons only                          | **required peer** of `@czi-sds/components` (`^2.1.10`)                   |
+| `Tag` style             | `sdsType="primary" \| "secondary"`                | `sdsStyle="solid" \| "outline"`                                          |
+| `Tag` shape             | `sdsStyle="square" \| "rounded"` (square default) | automatic: pill-shaped, square only when `iconOnly`                      |
+| `Tag` size              | `sdsSize="s" \| "l"` (`"l"` required an icon)     | `size="small" \| "medium"` (medium default, icon optional)               |
+| `Tag` intents           | six                                               | seven, adds `"accent"`                                                   |
+| `Tag` hover             | on for every tag unless `hover={false}`           | only on a tag with `onClick`, `href` or `clickable`                      |
+| `Tag` links             | not supported                                     | `href`, `target`, `rel`, and `showLinkIcon` for the arrow                |
+| `Tag` icon-only         | not supported                                     | `iconOnly`                                                               |
+| Old `Tag`               | —                                                 | `TagLegacy`, deprecated                                                  |
+| `TagFilter`             | one look; only the X removes it; two tab stops    | `sdsStyle="solid" \| "outline"`; the whole chip removes it; one tab stop |
+
+---
+
+## Step 1 — Update dependencies
+
+Bump SDS and add Phosphor:
+
+```bash
+# npm
+npm i @czi-sds/components@^25 @phosphor-icons/react@^2.1.10
+
+# yarn
+yarn add @czi-sds/components@^25 @phosphor-icons/react@^2.1.10
+```
+
+If the project also uses `@czi-sds/data-viz`, update it to a release that accepts `@czi-sds/components@25`.
+
+---
+
+## Step 2 — Choose a pace: migrate now, or switch to `TagLegacy` first
+
+`TagLegacy` is the SDS 24 Tag under a new name, with the same props and the same look. Renaming the import is enough to compile on SDS 25 without touching any props:
+
+```diff
+- import { Tag } from "@czi-sds/components";
++ import { TagLegacy as Tag } from "@czi-sds/components";
+```
+
+The type names moved with it: `TagProps` became `TagLegacyProps`, `SdsTagProps` became `SdsTagLegacyProps`, and `SdsTagColorType` (the six-intent version) became `SdsTagLegacyColorType`.
+
+`TagLegacy` receives no design updates and will be removed in a future major version, so treat it as a stopgap and migrate to `Tag` ([Step 3](#step-3--migrate-tag-props)) when you can.
+
+---
+
+## Step 3 — Migrate `Tag` props
+
+| Old (SDS 24 / `TagLegacy`)                          | New (SDS 25 `Tag`)                                                      |
+| --------------------------------------------------- | ----------------------------------------------------------------------- |
+| `sdsType="primary"`                                 | remove it (`sdsStyle="solid"` is the default)                           |
+| `sdsType="secondary"`                               | `sdsStyle="outline"`                                                    |
+| `sdsStyle="rounded"`                                | remove it                                                               |
+| `sdsStyle="square"`                                 | remove it                                                               |
+| `sdsSize="s"`                                       | `size="small"`                                                          |
+| `sdsSize="l"`                                       | remove it (`size="medium"` is the default, and no longer needs an icon) |
+| `hover={false}`                                     | remove it (a tag without `onClick` or `href` is static)                 |
+| `hover` / `hover={true}` on a tag that does nothing | remove it, or give the tag the `onClick` it was meant to have           |
+| `tagColor={...}`                                    | `color={...}`                                                           |
+| `color={[label, background]}` with an icon          | unchanged; the icon now takes the label color instead of white          |
+
+```diff
+- <Tag label="Active" color="positive" sdsStyle="rounded" sdsType="secondary" hover={false} />
++ <Tag label="Active" color="positive" sdsStyle="outline" />
+```
+
+**The size is a judgement call.** A tag that used the old default (`"s"`, 20px tall with an 11px label) becomes a medium tag (24px with a 13px label) unless you pass `size="small"` (20px with a 10px label). Keep the new default wherever there is room. Pass `size="small"` where the extra height would break a layout: navigation bars, tab labels, tags set inline in a line of text, and dense table rows.
+
+### Icons
+
+The tag now sizes and colors its icon itself (12px in a medium tag, 10px in a small one), so pass a bare icon. Phosphor and `@czi-sds/icons` icons are the recommended choice. The deprecated SDS `Icon` still works if the icon exists at a small size:
+
+```diff
+- <Tag icon={<Icon sdsIcon="Virus" sdsSize="l" />} label="Virus" sdsSize="l" />
++ <Tag icon={<VirusIcon />} label="Virus" />
+```
+
+`VirusIcon` above comes from `@phosphor-icons/react`.
+
+### Styling overrides
+
+The markup inside a tag changed: the label text now sits in a `span.SdsTag-labelText` inside MUI's `.MuiChip-label`, and the link arrow uses the class `SdsTag-linkIcon`. If the project overrides those internals with CSS, re-check those overrides.
+
+---
+
+## Step 4 — Check `TagFilter` call sites
+
+`TagFilter`'s props are compatible, so nothing fails to compile. Its behavior changed, though:
+
+- **The whole chip removes the filter.** A click anywhere on it calls `onDelete`, not only a click on the X. If a call site gave `TagFilter` an `onClick` for some other purpose, that handler still runs, but `onDelete` now runs right after it.
+- **One tab stop instead of two.** The X is no longer a separate button. The chip is a button named "Remove {label}". Pass `aria-label` to change the wording, for instance to translate it. Tests that looked for a button named "Delete Tag" need to look for the chip instead.
+- **New `sdsStyle`.** `"solid"` (default) is the accent fill; `"outline"` is the outlined variant.
+
+```diff
+- screen.getByRole("button", { name: "Delete Tag" })
++ screen.getByRole("button", { name: "Remove Lung" })
+```
+
+---
+
+## Step 5 — Components that render a Tag for you
+
+- **`NavigationHeader` and `NavigationFooter`** draw their title tag (`tag`, `tagColor`) and their nav-item tags with the new Tag, as small solid tags. `tagColor` now also accepts `"accent"`. No changes are needed at the call site.
+- **Types:** `NavigationFooter`'s `tagColor` is typed as `SdsTagColorType` rather than `TagProps["tagColor"]`, which no longer exists. Code that reached for `TagProps["tagColor"]` should use `SdsTagColorType`.
+
+---
+
+## Search patterns to locate every affected call site
+
+```bash
+# Every Tag call site (the type-checker will flag the ones with removed props)
+rg -n "<Tag\b" --glob '!**/node_modules/**'
+
+# Removed props and values on Tag
+rg -n "sdsType=|sdsSize=|hover=\{|tagColor=|sdsStyle=\"(rounded|square)\"" --glob '!**/node_modules/**'
+
+# Type names that moved
+rg -n "\b(TagProps|SdsTagProps|SdsTagColorType)\b" --glob '!**/node_modules/**'
+
+# TagFilter call sites and tests that looked for the old X button
+rg -n "<TagFilter\b|Delete Tag" --glob '!**/node_modules/**'
+
+# CSS that reaches into a tag's internals
+rg -n "MuiChip-(label|icon|deleteIcon)" --glob '!**/node_modules/**'
+```
+
+---
+
+## Verification checklist / definition of done
+
+- [ ] `@czi-sds/components` resolves to `25.x` and `@phosphor-icons/react` is installed.
+- [ ] `tsc --noEmit` (or the project's type-check script) reports no errors.
+- [ ] No `<Tag>` call site passes `sdsType`, `sdsSize`, `hover`, `tagColor`, or `sdsStyle="rounded" | "square"`. `TagLegacy` call sites are the only exception.
+- [ ] Tags that should respond to clicks have an `onClick` or an `href`; tags that only label something have neither.
+- [ ] Screens that show tags were checked by eye: heights, the pill shape, and any place that now needs `size="small"`.
+- [ ] `TagFilter` tests and handlers account for whole-chip removal and the "Remove {label}" name.
+- [ ] The build and the test suite pass.

@@ -1,4 +1,8 @@
-export const TAG_FILTER_EXCLUDED_CONTROLS = ["label"];
+export const TAG_FILTER_EXCLUDED_CONTROLS = ["label", "sdsStyle"];
+
+export const TAG_FILTER_COLOR_CONTRAST_RULE = "color-contrast";
+
+export const TAG_FILTER_SDS_STYLES = ["solid", "outline"];
 
 export const TAG_FILTER_DEFAULT_STYLES = {
   display: "inline-grid",
@@ -8,11 +12,18 @@ export const TAG_FILTER_DEFAULT_STYLES = {
   gridTemplateRows: "repeat(1, 1fr)",
 };
 
-export const TAG_FILTER_PSEUDO_STATES = ["default", "hover", "active", "focus"];
+export const TAG_FILTER_PSEUDO_STATES = [
+  "default",
+  "hover",
+  "active",
+  "focus-visible",
+];
 
-export const TAG_FILTER_LABEL_STYLE = {
+export const TAG_FILTER_GRID_STYLE = {
+  alignItems: "center",
+  columnGap: 32,
+  display: "grid",
   fontFamily: "sans-serif",
-  fontSize: "0.67em",
-  fontWeight: "normal",
-  margin: "20px 0 10px",
+  gridTemplateColumns: `max-content repeat(${TAG_FILTER_PSEUDO_STATES.length}, max-content)`,
+  rowGap: 16,
 };

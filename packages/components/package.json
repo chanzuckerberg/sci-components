@@ -70,6 +70,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^9.0.0",
     "@mui/material": "^9.0.0",
+    "@phosphor-icons/react": "^2.1.10",
     "@tanstack/react-table": "^8.21.3",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"

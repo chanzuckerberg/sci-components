@@ -101,13 +101,7 @@ export function Test() {
           <div style={{ display: "block" }}>
             <StyledStoryHeading>Lorem ipsum dolor</StyledStoryHeading>
             <StyledStoryBody>{SHORT_LOREM_IPSUM}</StyledStoryBody>
-            <Tag
-              color="neutral"
-              label="Tertiary"
-              sdsStyle="rounded"
-              sdsType="primary"
-              hover={false}
-            />
+            <Tag color="neutral" label="Tertiary" />
           </div>
         </RawCellComponent>
       </StyledDashedBorder>

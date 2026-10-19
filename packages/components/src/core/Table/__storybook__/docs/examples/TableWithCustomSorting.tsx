@@ -171,10 +171,8 @@ const columns: ColumnDef<Person>[] = [
         <CellComponent verticalAlign="center">
           <Tag
             color={STATUS_COLORS[status]}
-            hover={false}
             label={status}
-            sdsStyle="rounded"
-            sdsType="secondary"
+            sdsStyle="outline"
           />
         </CellComponent>
       );

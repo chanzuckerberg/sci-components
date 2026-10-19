@@ -68,12 +68,7 @@ function App() {
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
                 <Icon sdsSize="xl" sdsIcon="Flask" />
-                <Tag
-                  color="info"
-                  label="Chemistry"
-                  sdsStyle="rounded"
-                  sdsType="secondary"
-                />
+                <Tag color="info" label="Chemistry" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
             <CellBasic
@@ -95,8 +90,7 @@ function App() {
                     key={item}
                     color={item as SdsTagColorType}
                     label={item as string}
-                    sdsStyle="rounded"
-                    sdsType="secondary"
+                    sdsStyle="outline"
                   />
                 )
               )}
@@ -114,8 +108,7 @@ function App() {
                 <Tag
                   color="info"
                   label="Downloadable Content"
-                  sdsStyle="rounded"
-                  sdsType="secondary"
+                  sdsStyle="outline"
                 />
               </StyledIconCell>
             </CellComponent>
@@ -157,12 +150,7 @@ function App() {
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
                 <Icon sdsSize="xl" sdsIcon="Bacteria" />
-                <Tag
-                  color="negative"
-                  label="Disease"
-                  sdsStyle="rounded"
-                  sdsType="secondary"
-                />
+                <Tag color="negative" label="Disease" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
             <CellBasic
@@ -561,10 +549,8 @@ const columns: ColumnDef<Person>[] = [
         <CellComponent verticalAlign="center">
           <Tag
             color={STATUS_COLORS[status]}
-            hover={false}
             label={status}
-            sdsStyle="rounded"
-            sdsType="secondary"
+            sdsStyle="outline"
           />
         </CellComponent>
       );
@@ -793,9 +779,7 @@ const columns = [
                 ? "positive"
                 : "negative"
           }
-          sdsStyle="rounded"
-          sdsType="secondary"
-          hover={false}
+          sdsStyle="outline"
         />
       </CellComponent>
     ),
@@ -1061,10 +1045,8 @@ const columns: ColumnDef<Person>[] = [
         <CellComponent verticalAlign="center">
           <Tag
             color={STATUS_COLORS[status]}
-            hover={false}
             label={status}
-            sdsStyle="rounded"
-            sdsType="secondary"
+            sdsStyle="outline"
           />
         </CellComponent>
       );
@@ -1609,10 +1591,8 @@ const columns: ColumnDef<Person>[] = [
         <CellComponent verticalAlign="center">
           <Tag
             color={STATUS_COLORS[status]}
-            hover={false}
             label={status}
-            sdsStyle="rounded"
-            sdsType="secondary"
+            sdsStyle="outline"
           />
         </CellComponent>
       );
@@ -1892,10 +1872,8 @@ const columns: ColumnDef<Person>[] = [
         <CellComponent verticalAlign="center">
           <Tag
             color={STATUS_COLORS[status]}
-            hover={false}
             label={status}
-            sdsStyle="rounded"
-            sdsType="secondary"
+            sdsStyle="outline"
           />
         </CellComponent>
       );

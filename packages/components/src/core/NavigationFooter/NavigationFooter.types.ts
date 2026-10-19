@@ -1,5 +1,5 @@
 import { ReactNode, ElementType } from "react";
-import { TagProps } from "../Tag";
+import { SdsTagColorType } from "../Tag";
 
 export interface NavigationFooterNavItem {
   label: string;
@@ -25,7 +25,7 @@ export interface NavigationFooterProps {
   navItems?: NavigationFooterNavItem[];
   navLinks?: NavigationFooterNavItem[];
   tag?: string;
-  tagColor?: TagProps["tagColor"];
+  tagColor?: SdsTagColorType;
   title?: string;
 }
 

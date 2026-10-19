@@ -13,24 +13,9 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
       <div>
         Available Labels:
         <div style={{ marginTop: 10 }}>
-          <Tag
-            label="bug"
-            sdsStyle="rounded"
-            sdsType="secondary"
-            color="negative"
-          />
-          <Tag
-            label="feature"
-            sdsStyle="rounded"
-            sdsType="secondary"
-            color="notice"
-          />
-          <Tag
-            label="refactor"
-            sdsStyle="rounded"
-            sdsType="secondary"
-            color="neutral"
-          />
+          <Tag label="bug" sdsStyle="outline" color="negative" />
+          <Tag label="feature" sdsStyle="outline" color="notice" />
+          <Tag label="refactor" sdsStyle="outline" color="neutral" />
         </div>
       </div>
     ),

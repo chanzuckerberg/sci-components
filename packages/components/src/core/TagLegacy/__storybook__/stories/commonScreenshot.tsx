@@ -1,7 +1,7 @@
 import { Args } from "@storybook/react-vite";
 import React from "react";
-import RawTag from "@components/src/core/Tag";
-import { ExtraTagProps } from "@components/src/core/Tag/style";
+import RawTag from "@components/src/core/TagLegacy";
+import { ExtraTagLegacyProps } from "@components/src/core/TagLegacy/style";
 import {
   TAG_DISPLAY_CONTENTS_STYLES,
   TAG_SDS_STYLES,
@@ -16,8 +16,8 @@ export function CommonScreenshotTestDemo({
   types,
 }: {
   props: Args;
-  colors: ExtraTagProps["tagColor"][];
-  types: ExtraTagProps["sdsType"][];
+  colors: ExtraTagLegacyProps["tagColor"][];
+  types: ExtraTagLegacyProps["sdsType"][];
 }): JSX.Element {
   // loop through all TAG_SDS_STYLES
   return (
@@ -44,9 +44,9 @@ function TagStyle({
   sdsStyle,
   props,
 }: {
-  colors: ExtraTagProps["tagColor"][];
-  types: ExtraTagProps["sdsType"][];
-  sdsStyle: ExtraTagProps["sdsStyle"];
+  colors: ExtraTagLegacyProps["tagColor"][];
+  types: ExtraTagLegacyProps["sdsType"][];
+  sdsStyle: ExtraTagLegacyProps["sdsStyle"];
   props: Args;
 }) {
   const LEVEL_STYLE: React.CSSProperties = {
@@ -89,9 +89,9 @@ function TagColor({
   types,
   props,
 }: {
-  sdsStyle: ExtraTagProps["sdsStyle"];
-  color: ExtraTagProps["tagColor"];
-  types: ExtraTagProps["sdsType"][];
+  sdsStyle: ExtraTagLegacyProps["sdsStyle"];
+  color: ExtraTagLegacyProps["tagColor"];
+  types: ExtraTagLegacyProps["sdsType"][];
   props: Args;
 }) {
   const LABEL_STYLE: React.CSSProperties = {
@@ -131,9 +131,9 @@ function TagType({
   sdsType,
   props,
 }: {
-  sdsStyle: ExtraTagProps["sdsStyle"];
-  color: ExtraTagProps["tagColor"];
-  sdsType: ExtraTagProps["sdsType"];
+  sdsStyle: ExtraTagLegacyProps["sdsStyle"];
+  color: ExtraTagLegacyProps["tagColor"];
+  sdsType: ExtraTagLegacyProps["sdsType"];
   props: Args;
 }) {
   const LABEL_STYLE: React.CSSProperties = {
@@ -172,9 +172,9 @@ function TagIcon({
   icon,
   props,
 }: {
-  sdsStyle: ExtraTagProps["sdsStyle"];
-  color: ExtraTagProps["tagColor"];
-  sdsType: ExtraTagProps["sdsType"];
+  sdsStyle: ExtraTagLegacyProps["sdsStyle"];
+  color: ExtraTagLegacyProps["tagColor"];
+  sdsType: ExtraTagLegacyProps["sdsType"];
   icon: (typeof TAG_SCREENSHOT_ICON_OPTIONS)[number];
   props: Args;
 }) {
@@ -210,9 +210,9 @@ function TagIcon({
 
 // loop through all PSEUDO_STATES + create headers for TAG_HOVER_OPTIONS, PSEUDO_STATES
 function TagState(props: {
-  sdsStyle: ExtraTagProps["sdsStyle"];
-  color: ExtraTagProps["tagColor"];
-  sdsType: ExtraTagProps["sdsType"];
+  sdsStyle: ExtraTagLegacyProps["sdsStyle"];
+  color: ExtraTagLegacyProps["tagColor"];
+  sdsType: ExtraTagLegacyProps["sdsType"];
   icon: (typeof TAG_SCREENSHOT_ICON_OPTIONS)[number];
   hover: (typeof TAG_HOVER_OPTIONS)[number];
 }) {

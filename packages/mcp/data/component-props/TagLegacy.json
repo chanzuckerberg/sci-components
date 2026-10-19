@@ -1,0 +1,40 @@
+{
+  "TagLegacy": {
+    "props": {
+      "color": {
+        "isRequired": false,
+        "type": "\"info\" | \"negative\" | \"notice\" | \"positive\" | \"beta\" | \"neutral\" | [string, string] | [string, string, string]"
+      },
+      "hover": {
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "icon": {
+        "description": "Icon element.",
+        "isRequired": false,
+        "type": "ReactElement"
+      },
+      "label": {
+        "description": "The tag's text, and its accessible name. It is cut off with an ellipsis\nrather than wrapped, so keep it to a word or two.",
+        "isRequired": true,
+        "type": "string"
+      },
+      "onClick": {
+        "isRequired": false,
+        "type": "function"
+      },
+      "sdsSize": {
+        "isRequired": false,
+        "type": "\"s\" | \"l\""
+      },
+      "sdsStyle": {
+        "isRequired": false,
+        "type": "\"square\" | \"rounded\""
+      },
+      "sdsType": {
+        "isRequired": false,
+        "type": "\"primary\" | \"secondary\""
+      }
+    }
+  }
+}

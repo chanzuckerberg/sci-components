@@ -18,6 +18,10 @@ The documentation is authored in this repository, so it ships and versions with 
 
 NOTE: Since most of the czi-sds components are built on top of Material UI's equivalent, it's also super useful to use their [API documentation](https://mui.com/) to learn about what you can do with the components. Many czi-sds components are style wrappers that pass props through to the MUI component without modifying them.
 
+## Migrating to SDS 25.0.0 (Tag rework)
+
+SDS `25.0.0` is a **breaking release** that reworks `Tag` and `TagFilter` to the new design and makes `@phosphor-icons/react` a peer dependency of `@czi-sds/components`. The previous Tag still ships as the deprecated `TagLegacy`, so an app can switch its imports first and migrate each usage afterwards. Follow the step-by-step guide in [migration-docs/migrate-to-25.0.0.md](./migration-docs/migrate-to-25.0.0.md).
+
 ## Migrating to SDS 24.0.0 (Material UI v9)
 
 SDS `24.0.0` is a **breaking release** that moves the Material UI peer dependency from v5 to v9. If you are upgrading an existing app from an older `@czi-sds/components` version, follow the step-by-step guide in [migration-docs/migrate-to-24.0.0.md](./migration-docs/migrate-to-24.0.0.md). If a newer version of SDS is published, install that one instead. The same MUI v9 migration steps apply.
@@ -32,6 +36,7 @@ That guide covers dependency updates, MUI import and prop API changes (`slots` /
   "@emotion/styled"
   "@mui/icons-material"
   "@mui/material"
+  "@phosphor-icons/react"
   "react"
   "react-dom"
 ```
@@ -40,18 +45,18 @@ To install @czi-sds/components and the dependencies:
 
 ```
 // with npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
 
 // with yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
 ```
 
 ### Icons
 
-SDS uses [Phosphor Icons](https://phosphoricons.com). Install Phosphor for the icon set, and `@czi-sds/icons` for the icons SDS draws itself. They are kept there either because Phosphor has no equivalent, or because Phosphor has something close and SDS wants its own version.
+SDS uses [Phosphor Icons](https://phosphoricons.com). Phosphor is a peer dependency of `@czi-sds/components`, so the install above already brings in the icon set. Install `@czi-sds/icons` as well for the icons SDS draws itself. They are kept there either because Phosphor has no equivalent, or because Phosphor has something close and SDS wants its own version.
 
 ```
-npm i @phosphor-icons/react @czi-sds/icons
+npm i @czi-sds/icons
 ```
 
 ```tsx

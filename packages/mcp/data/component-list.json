@@ -54,6 +54,7 @@
     "Tabs",
     "Tag",
     "TagFilter",
+    "TagLegacy",
     "Tooltip",
     "TooltipCondensed",
     "TooltipTable"

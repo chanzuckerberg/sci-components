@@ -362,7 +362,7 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           <StyledTag
             label={tag as string}
             color={tagColor as SdsTagColorType}
-            hover={false}
+            size="small"
           />
         )}
       </UnifiedNavItem>

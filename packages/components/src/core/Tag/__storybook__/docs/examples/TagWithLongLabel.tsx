@@ -1,10 +1,7 @@
-// A tag never wraps: it stretches to its label and then, in a container too narrow
-// for it, cuts the label off with an ellipsis. The text that is cut is not
+// A tag never wraps: it stretches to its label and then, in a container too
+// narrow for it, cuts the label off with an ellipsis. The text that is cut is not
 // available anywhere else, so a tag that can hold a long value belongs in a
 // Tooltip that carries the whole thing.
-//
-// The tooltip only works because the tag still receives pointer events. Adding
-// hover={false} to quiet the hover styling would silence the tooltip with it.
 
 import {
   Tag,
@@ -33,10 +30,11 @@ const Stack = styled.div<CommonThemeProps>`
 const NarrowColumn = styled.div<CommonThemeProps>`
   ${(props) => {
     const semanticColors = getSemanticColors(props);
+    const spaces = getSpaces(props);
 
     return `
       border: 1px dashed ${semanticColors?.base?.divider};
-      padding: 4px;
+      padding: ${spaces?.xxs}px;
       width: 160px;
     `;
   }}
@@ -62,7 +60,7 @@ function App() {
       <Stack>
         <div>
           <Caption>Room for the whole label</Caption>
-          <Tag label={LABEL} sdsStyle="rounded" />
+          <Tag label={LABEL} />
         </div>
 
         <div>
@@ -71,7 +69,7 @@ function App() {
           </Caption>
           <NarrowColumn>
             <Tooltip placement="top" title={LABEL}>
-              <Tag label={LABEL} sdsStyle="rounded" />
+              <Tag label={LABEL} />
             </Tooltip>
           </NarrowColumn>
         </div>

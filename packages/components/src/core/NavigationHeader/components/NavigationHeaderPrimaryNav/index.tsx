@@ -477,7 +477,7 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             <StyledTag
               label={tag as string}
               color={tagColor as SdsTagColorType}
-              hover={false}
+              size="small"
             />
           )}
         </StyledLabel>

@@ -56,13 +56,7 @@ export function Default() {
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="Flask" />
-              <Tag
-                color="info"
-                label="Chemistry"
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
-              />
+              <Tag color="info" label="Chemistry" sdsStyle="outline" />
             </StyledIconCell>
           </CellComponent>
           <CellBasic
@@ -91,9 +85,7 @@ export function Default() {
                     key={item}
                     color={item as any}
                     label={item}
-                    sdsStyle="rounded"
-                    sdsType="secondary"
-                    hover={false}
+                    sdsStyle="outline"
                   />
                 )
               )}
@@ -113,9 +105,7 @@ export function Default() {
               <Tag
                 color="info"
                 label="Downloadable Content"
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
+                sdsStyle="outline"
               />
             </StyledIconCell>
           </CellComponent>
@@ -163,13 +153,7 @@ export function Default() {
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="Virus" />
-              <Tag
-                color="negative"
-                label="Disease"
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
-              />
+              <Tag color="negative" label="Disease" sdsStyle="outline" />
             </StyledIconCell>
           </CellComponent>
           <CellBasic

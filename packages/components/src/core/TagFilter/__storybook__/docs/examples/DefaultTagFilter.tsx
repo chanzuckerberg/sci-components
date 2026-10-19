@@ -1,10 +1,10 @@
-// TagFilter is the tag that comes off: onDelete is required, and removing the tag
-// from your own state is what makes it disappear. Everything about how it looks is
-// fixed (the accent fill, the square shape, and the small X), so there are no
-// style props to pass.
+// TagFilter is the chip that comes off: onDelete is required, and removing the
+// chip from your own state is what makes it disappear. The whole chip is the
+// remove control, so a click anywhere on it, Enter or Space, and Backspace or
+// Delete all call onDelete.
 //
-// Both the tag and its X are focusable, so each filter is two tab stops: Backspace
-// or Delete on the tag removes it, and so does Enter on the X.
+// Each chip is one tab stop, named "Remove" followed by its label. sdsStyle picks
+// between the solid accent fill and the outlined one.
 
 import {
   TagFilter,
@@ -27,7 +27,7 @@ const Row = styled.div<CommonThemeProps>`
       flex-wrap: wrap;
       gap: ${spaces?.s}px;
       margin-bottom: ${spaces?.m}px;
-      min-height: 28px;
+      min-height: 24px;
     `;
   }}
 `;
@@ -48,16 +48,18 @@ const Readout = styled.p<CommonThemeProps>`
 function App() {
   const [filters, setFilters] = useState(FILTERS);
 
+  const remove = (filter: string) =>
+    setFilters((current) => current.filter((item) => item !== filter));
+
   return (
     <div className="app">
       <Row aria-label="Applied filters" role="group">
-        {filters.map((filter) => (
+        {filters.map((filter, index) => (
           <TagFilter
             key={filter}
             label={filter}
-            onDelete={() =>
-              setFilters((current) => current.filter((item) => item !== filter))
-            }
+            onDelete={() => remove(filter)}
+            sdsStyle={index % 2 === 0 ? "solid" : "outline"}
           />
         ))}
       </Row>

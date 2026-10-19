@@ -497,13 +497,18 @@ do nothing.
 
 ### `tagColor` is the styled prop behind `color`
 
-Severity: low. Status: not fixed, left undocumented.
+Severity: low. Status: fixed in SDS 25 for `Tag`; still present in `TagLegacy`.
 
-`TagProps` includes `ExtraTagProps`, so `tagColor` is public, and because the
-component spreads `{...props}` after setting `tagColor={color}`, passing it
-directly wins over `color`. Two names for one thing, one of them undocumented.
-The custom-color mapping the page describes - `[label, background, icon]` -
-now has a test.
+`TagProps` included `ExtraTagProps`, so `tagColor` was public, and because the
+component spread `{...props}` after setting `tagColor={color}`, passing it
+directly won over `color`. Two names for one thing, one of them undocumented.
+
+The reworked `Tag` keeps its style props out of `TagProps`, so `color` is the
+only name, and `NavigationFooter`, the one caller that passed `tagColor`, now
+passes `color`. The previous component ships unchanged as the deprecated
+`TagLegacy`, leak included; it has no documentation page, so the audit no
+longer checks it. The custom-color mapping - `[label, background, icon]` - has
+a test on both.
 
 ## ContentCard
 

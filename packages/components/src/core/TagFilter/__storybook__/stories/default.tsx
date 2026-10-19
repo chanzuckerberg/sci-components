@@ -21,9 +21,7 @@ export const TagFilter = (props: Args): JSX.Element => {
           sdsStyle="minimal"
           sdsType={visible ? "secondary" : "primary"}
         >
-          {visible
-            ? "Delete the tag by clicking on its icon"
-            : "Click to reset"}
+          {visible ? "Remove the filter by clicking on it" : "Click to reset"}
         </Button>
       </div>
 

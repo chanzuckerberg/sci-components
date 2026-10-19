@@ -1,49 +1,53 @@
 import { Args, Meta } from "@storybook/react-vite";
 import {
-  TAG_COLORS,
   TAG_COLOR_CONTRAST_RULE,
   TAG_EXCLUDED_CONTROLS,
-  TAG_HOVER_OPTIONS,
+  TAG_HREF_LABELS,
+  TAG_HREF_OPTIONS,
+  TAG_ICON_LABELS,
   TAG_ICONS,
-  TAG_ICONS_LABELS,
+  TAG_ON_CLICK_LABELS,
   TAG_ON_CLICK_OPTIONS,
+  TAG_PANEL_COLOR_LABELS,
   TAG_PANEL_COLORS,
   TAG_SDS_STYLES,
-  TAG_SDS_TYPES,
+  TAG_SIZES,
 } from "./constants";
 import { Tag } from "./stories/default";
-import { ScreenshotTestDemo } from "./stories/mainScreenshot";
-import { GrayPrimaryScreenshotTestDemo } from "./stories/grayPrimaryScreenshot";
-import { SuccessWarningScreenshotTestDemo } from "./stories/successWarningScreenshot";
+import { ScreenshotTestDemo } from "./stories/screenshot";
 import { TestDemo } from "./stories/test";
 
 export default {
   argTypes: {
     color: {
       control: {
-        labels: [
-          "info",
-          "positive",
-          "notice",
-          "negative",
-          "beta",
-          "Custom colors for Label, Background, Icon",
-        ],
+        labels: TAG_PANEL_COLOR_LABELS,
         type: "select",
       },
       mapping: TAG_PANEL_COLORS,
       options: Object.keys(TAG_PANEL_COLORS),
     },
-    hover: {
+    disabled: {
       control: { type: "boolean" },
+    },
+    href: {
+      control: {
+        labels: TAG_HREF_LABELS,
+        type: "select",
+      },
+      mapping: TAG_HREF_OPTIONS,
+      options: Object.keys(TAG_HREF_OPTIONS),
     },
     icon: {
       control: {
-        labels: TAG_ICONS_LABELS,
+        labels: TAG_ICON_LABELS,
         type: "select",
       },
       mapping: TAG_ICONS,
       options: Object.keys(TAG_ICONS),
+    },
+    iconOnly: {
+      control: { type: "boolean" },
     },
     label: {
       control: { type: "text" },
@@ -51,28 +55,29 @@ export default {
     },
     onClick: {
       control: {
-        labels: ["() => {}", "undefined"],
+        labels: TAG_ON_CLICK_LABELS,
         type: "select",
       },
       mapping: TAG_ON_CLICK_OPTIONS,
       options: Object.keys(TAG_ON_CLICK_OPTIONS),
     },
-    sdsSize: {
-      control: { type: "radio" },
-      options: ["s", "l"],
-    },
     sdsStyle: {
       control: { type: "radio" },
-      options: ["rounded", "square"],
+      options: TAG_SDS_STYLES,
     },
-    sdsType: {
+    showLinkIcon: {
+      control: { type: "boolean" },
+    },
+    size: {
       control: { type: "radio" },
-      options: ["primary", "secondary"],
+      options: TAG_SIZES,
     },
   },
   component: Tag,
   parameters: {
     a11y: {
+      // Several intents, and the disabled state, measure under axe's 4.5:1
+      // contrast threshold with the colors the design specifies.
       config: { rules: [{ enabled: false, id: TAG_COLOR_CONTRAST_RULE }] },
     },
   },
@@ -83,24 +88,18 @@ export default {
 
 export const Default = {
   args: {
-    hover: true,
+    disabled: false,
+    iconOnly: false,
     label: "Label",
-    sdsSize: "s",
-    sdsStyle: "square",
-    sdsType: "primary",
+    sdsStyle: "solid",
+    showLinkIcon: false,
+    size: "medium",
   },
 };
 
 // Screenshot tests
 
 export const ScreenshotTest = {
-  args: {
-    color: TAG_COLORS[0],
-    hover: TAG_HOVER_OPTIONS[0],
-    label: "Label",
-    sdsStyle: TAG_SDS_STYLES[0],
-    sdsType: TAG_SDS_TYPES[0],
-  },
   parameters: {
     controls: {
       exclude: TAG_EXCLUDED_CONTROLS,
@@ -109,26 +108,14 @@ export const ScreenshotTest = {
       skip: true,
     },
   },
-
-  render: (props: Args): JSX.Element => <ScreenshotTestDemo {...props} />,
+  render: (): JSX.Element => <ScreenshotTestDemo />,
 };
 
-export const GrayPrimaryScreenshotTest = {
-  args: {
-    color: TAG_COLORS[0],
-    hover: TAG_HOVER_OPTIONS[0],
-    label: "Label",
-    sdsStyle: TAG_SDS_STYLES[0],
-    sdsType: TAG_SDS_TYPES[0],
+export const ScreenshotTestDark = {
+  globals: {
+    theme: "dark",
   },
   parameters: {
-    a11y: {
-      // `color-contrast` is disabled for this test because design tested it with
-      // APCA and determined these colors pass, our test just isn't able to use APCA
-      // yet; this color was pulled into its own story so the remaining colors can be
-      // tested separately
-      config: { rules: [{ enabled: false, id: TAG_COLOR_CONTRAST_RULE }] },
-    },
     controls: {
       exclude: TAG_EXCLUDED_CONTROLS,
     },
@@ -136,39 +123,7 @@ export const GrayPrimaryScreenshotTest = {
       skip: true,
     },
   },
-
-  render: (props: Args): JSX.Element => (
-    <GrayPrimaryScreenshotTestDemo {...props} />
-  ),
-};
-
-export const SuccessWarningScreenshotTest = {
-  args: {
-    color: TAG_COLORS[0],
-    hover: TAG_HOVER_OPTIONS[0],
-    label: "Label",
-    sdsStyle: TAG_SDS_STYLES[0],
-    sdsType: TAG_SDS_TYPES[0],
-  },
-  parameters: {
-    a11y: {
-      // `color-contrast` is disabled for this test because it is now a known
-      // issue and design will work on adjusting the colors so that they pass;
-      // these colors were pulled into their own story so the remaining colors
-      // can be tested separately
-      config: { rules: [{ enabled: false, id: TAG_COLOR_CONTRAST_RULE }] },
-    },
-    controls: {
-      exclude: TAG_EXCLUDED_CONTROLS,
-    },
-    snapshot: {
-      skip: true,
-    },
-  },
-
-  render: (props: Args): JSX.Element => (
-    <SuccessWarningScreenshotTestDemo {...props} />
-  ),
+  render: (): JSX.Element => <ScreenshotTestDemo />,
 };
 
 // Test

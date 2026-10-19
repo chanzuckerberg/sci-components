@@ -48,9 +48,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = [
   <EmptySlotRight key="componentSlotRight-0">Empty Slot</EmptySlotRight>,
   <Tag
     label="lorem ipsum"
-    hover={false}
-    sdsStyle="rounded"
-    sdsType="secondary"
+    sdsStyle="outline"
     style={{ margin: 0 }}
     key="componentSlotRight-1"
   />,
@@ -96,19 +94,9 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = [
   undefined,
   <EmptySlotBottom key="componentSlotBottom-0">Empty Slot</EmptySlotBottom>,
   <div key="componentSlotBottom-1" style={{ display: "flex", gap: "4px" }}>
-    <Tag
-      label="lorem ipsum"
-      hover={false}
-      sdsStyle="rounded"
-      sdsType="secondary"
-    />
-    <Tag label="dollor" hover={false} sdsStyle="rounded" sdsType="secondary" />
-    <Tag
-      label="sit amet"
-      hover={false}
-      sdsStyle="rounded"
-      sdsType="secondary"
-    />
+    <Tag label="lorem ipsum" sdsStyle="outline" />
+    <Tag label="dollor" sdsStyle="outline" />
+    <Tag label="sit amet" sdsStyle="outline" />
   </div>,
   <ButtonIconsGroupBottom
     key="componentSlotBottom-2"
