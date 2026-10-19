@@ -45,7 +45,7 @@ export default {
     },
     onRowSelect: {
       control: {
-        labels: ["log selected rows", "none"],
+        labels: { log: "log selected rows" },
         type: "select",
       },
       description: "Callback function when rows are selected",

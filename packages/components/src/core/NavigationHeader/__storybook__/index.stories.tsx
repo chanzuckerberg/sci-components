@@ -46,7 +46,7 @@ export default {
     },
     logo: {
       control: {
-        labels: ["Logo Placeholder", "Empty"],
+        labels: { placeholder: "Logo Placeholder", empty: "Empty" },
         type: "select",
       },
       description: "The logo to display in the navigation header.",
@@ -175,14 +175,7 @@ export default {
     },
     tagColor: {
       control: {
-        labels: [
-          "info",
-          "positive",
-          "notice",
-          "negative",
-          "beta",
-          "Custom colors for Label, Background, Icon",
-        ],
+        labels: { custom: "Custom colors for Label, Background, Icon" },
         type: "select",
       },
       description: "Color of the tag.",
@@ -229,7 +222,7 @@ export const DropdownStyle = {
       disableScrollLock: true,
     },
     backgroundAppearance: "matchBackground",
-    logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
+    logo: NAVIGATION_HEADER_LOGO_OPTIONS.placeholder,
     logoUrl: "https://chanzuckerberg.com",
     isSticky: true,
     primaryNavItems: [

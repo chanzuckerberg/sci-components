@@ -36,13 +36,9 @@ export default {
     },
     onClick: { action: BUTTON_ACTIONS.onClick },
     sdsSize: {
-      control: {
-        labels: BUTTON_SDS_SIZE,
-        type: "select",
-      },
+      control: { type: "select" },
       if: { arg: "sdsStyle", eq: "icon" },
-      mapping: BUTTON_SDS_SIZE,
-      options: Object.keys(BUTTON_SDS_SIZE),
+      options: BUTTON_SDS_SIZE,
     },
     sdsStyle: {
       control: { type: "select" },

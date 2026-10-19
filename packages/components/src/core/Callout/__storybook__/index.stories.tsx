@@ -28,12 +28,12 @@ export default {
     },
     icon: {
       control: {
-        labels: [
-          "Custom SVG Icon",
-          "Custom SDS Icon",
-          "SDS Icon: Book",
-          "SDS Icon: Check Circle",
-        ],
+        labels: {
+          customSvgIcon: "Custom SVG Icon",
+          customSdsIcon: "Custom SDS Icon",
+          book: "SDS Icon: Book",
+          checkCircle: "SDS Icon: Check Circle",
+        },
         type: "select",
       },
       defaultValue: { summary: "-" },
@@ -49,15 +49,11 @@ export default {
       options: ["accent", "info", "negative", "positive", "notice"],
     },
     sdsStyle: {
-      control: {
-        labels: ["persistent", "expandable", "dismissible"],
-        type: "select",
-      },
+      control: { type: "select" },
       defaultValue: { summary: "persistent" },
       description:
         "The style of the Callout determines its behavior: Persistent Callouts are always visible, Expandable Callouts can be toggled to show or hide extra content, and Dismissible Callouts can be closed by the user.",
-      mapping: CALLOUT_SDS_STYLE_OPTIONS,
-      options: Object.keys(CALLOUT_SDS_STYLE_OPTIONS),
+      options: CALLOUT_SDS_STYLE_OPTIONS,
     },
     title: {
       control: { type: "text" },

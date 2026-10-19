@@ -16,7 +16,7 @@ export default {
   argTypes: {
     groupBy: {
       control: {
-        labels: ["No group by", "Group by section names"],
+        labels: { none: "No group by", section: "Group by section names" },
         type: "select",
       },
       mapping: AUTOCOMPLETE_GROUP_BY_OPTIONS,
@@ -37,7 +37,7 @@ export default {
     },
     onChange: {
       control: {
-        labels: ["Noop", "console.log(value)"],
+        labels: { noop: "Noop", log: "console.log(value)" },
         type: "select",
       },
       mapping: AUTOCOMPLETE_ON_CHANGE_OPTIONS,
@@ -45,7 +45,11 @@ export default {
     },
     options: {
       control: {
-        labels: ["One Column", "Two Columns", "Three Columns"],
+        labels: {
+          oneColumn: "One Column",
+          twoColumns: "Two Columns",
+          threeColumns: "Three Columns",
+        },
         type: "select",
       },
       mapping: AUTOCOMPLETE_DATA_OPTIONS,
@@ -81,11 +85,11 @@ export default {
 
 export const Default = {
   args: {
-    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS[1],
+    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS.section,
     keepSearchOnSelect: true,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
-    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS[1],
+    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS.log,
     search: true,
   },
   parameters: {
@@ -99,11 +103,11 @@ export const Default = {
 
 export const SingleColumn = {
   args: {
-    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS[1],
+    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS.section,
     keepSearchOnSelect: false,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
-    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS[1],
+    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS.log,
     options: AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
     search: true,
   },
@@ -121,11 +125,11 @@ export const SingleColumn = {
 
 export const MultiColumn = {
   args: {
-    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS[1],
+    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS.section,
     keepSearchOnSelect: false,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
-    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS[1],
+    onChange: AUTOCOMPLETE_ON_CHANGE_OPTIONS.log,
     options: AUTOCOMPLETE_MULTI_COLUMN_OPTIONS,
     search: true,
   },
@@ -143,11 +147,11 @@ export const MultiColumn = {
 
 export const ControlledOpen = {
   args: {
-    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS[1],
+    groupBy: AUTOCOMPLETE_GROUP_BY_OPTIONS.section,
     keepSearchOnSelect: true,
     label: AUTOCOMPLETE_LABEL,
     multiple: true,
-    options: AUTOCOMPLETE_DATA_OPTIONS[1],
+    options: AUTOCOMPLETE_DATA_OPTIONS.twoColumns,
     search: true,
   },
   parameters: {

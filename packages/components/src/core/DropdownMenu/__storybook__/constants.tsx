@@ -22,20 +22,23 @@ export const DROPDOWN_MENU_POPPER_POSITION = "bottom-start";
 
 export const DROPDOWN_MENU_POPPER_WIDTH = 160;
 
-export const DROPDOWN_MENU_GROUP_BY_OPTIONS = [
-  undefined,
-  (option: DefaultAutocompleteOption) => option.section as string,
-];
+export const DROPDOWN_MENU_GROUP_BY_OPTIONS = {
+  none: undefined,
+  section: (option: DefaultAutocompleteOption) => option.section as string,
+};
 
-export const DROPDOWN_MENU_DATA_OPTIONS = [
-  AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
-  [AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0], AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1]],
-  [
+export const DROPDOWN_MENU_DATA_OPTIONS = {
+  oneColumn: AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+  twoColumns: [
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
+  ],
+  threeColumns: [
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[2],
   ],
-];
+};
 
 export const DROPDOWN_MENU_LIVE_PREVIEW_ROW_STYLES = {
   display: "grid",

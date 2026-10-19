@@ -206,7 +206,10 @@ export default {
 export const Default = {
   args: {
     boundingBox: true,
-    buttons: [CONTENT_CARD_BUTTONS_OPTIONS[0], CONTENT_CARD_BUTTONS_OPTIONS[2]],
+    buttons: [
+      CONTENT_CARD_BUTTONS_OPTIONS.primary,
+      CONTENT_CARD_BUTTONS_OPTIONS.minimal,
+    ],
     buttonsPosition: "left",
     clickableCard: false,
     clickableCardProps: {
@@ -214,8 +217,8 @@ export const Default = {
       href: "https://chanzuckerberg.com",
     },
     decorativeBorder: false,
-    icon: CONTENT_CARD_ICON_OPTIONS[1],
-    image: CONTENT_CARD_IMAGE_OPTIONS[4],
+    icon: CONTENT_CARD_ICON_OPTIONS.compass,
+    image: CONTENT_CARD_IMAGE_OPTIONS.image,
     imagePadding: false,
     imagePosition: "left",
     metadataText: "Metadata Text",

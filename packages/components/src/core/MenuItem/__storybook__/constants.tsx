@@ -12,11 +12,13 @@ export const MENU_ITEM_EXCLUDED_CONTROLS = [
   "selected",
 ];
 
-export const MENU_ITEM_ICON_OPTIONS = [
-  "Gear",
-  <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
-  <CustomSvgIcon key="customSvgIcon" sx={{ height: 14, width: 14 }} />,
-];
+export const MENU_ITEM_ICON_OPTIONS = {
+  gear: "Gear",
+  customSdsIcon: <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  customSvgIcon: (
+    <CustomSvgIcon key="customSvgIcon" sx={{ height: 14, width: 14 }} />
+  ),
+};
 
 export const MENU_ITEM_MULTI_SELECT_OPTIONS = [false, true];
 export const MENU_ITEM_SDS_STYLE_OPTIONS = ["determinate", "indeterminate"];

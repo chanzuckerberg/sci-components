@@ -40,12 +40,8 @@ export default {
     },
     onClick: { action: BUTTON_ACTIONS.onClick },
     size: {
-      control: {
-        labels: BUTTON_SDS_SIZE,
-        type: INLINE_RADIO,
-      },
-      mapping: BUTTON_SDS_SIZE,
-      options: Object.keys(BUTTON_SDS_SIZE),
+      control: { type: INLINE_RADIO },
+      options: BUTTON_SDS_SIZE,
     },
     sdsStyle: {
       control: { type: INLINE_RADIO },

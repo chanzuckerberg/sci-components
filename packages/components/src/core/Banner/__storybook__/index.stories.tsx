@@ -22,12 +22,12 @@ export default {
     },
     icon: {
       control: {
-        labels: [
-          "SDS Icon: Check Circle",
-          "SDS Icon: Info Circle",
-          "Custom SDS Icon",
-          "Custom SVG Icon",
-        ],
+        labels: {
+          checkCircle: "SDS Icon: Check Circle",
+          infoCircle: "SDS Icon: Info Circle",
+          customSdsIcon: "Custom SDS Icon",
+          customSvgIcon: "Custom SVG Icon",
+        },
         type: "select",
       },
       mapping: BANNER_ICON_OPTIONS,

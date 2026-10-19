@@ -17,7 +17,11 @@ export default {
     },
     icon: {
       control: {
-        labels: ["SDS Icon: Gear", "Custom SDS Icon", "Custom SVG Icon"],
+        labels: {
+          gear: "SDS Icon: Gear",
+          customSdsIcon: "Custom SDS Icon",
+          customSvgIcon: "Custom SVG Icon",
+        },
         type: "select",
       },
       mapping: MENU_ITEM_ICON_OPTIONS,

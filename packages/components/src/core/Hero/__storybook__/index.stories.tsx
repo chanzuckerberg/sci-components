@@ -204,7 +204,7 @@ export const Default = {
 
 export const FullFeatured = {
   args: {
-    backgroundFill: HERO_BACKGROUND_FILL_OPTIONS[3],
+    backgroundFill: HERO_BACKGROUND_FILL_OPTIONS.image,
     darkeningMask: true,
     darkeningMaskColor: "#000000",
     darkeningMaskOpacity: 0.5,
@@ -228,7 +228,7 @@ export const FullFeatured = {
     overlayContentWidth: "50%",
     overlayContentPosition: "left",
     textAlignment: "left",
-    overlayMedia: HERO_OVERLAY_MEDIA_OPTIONS[1],
+    overlayMedia: HERO_OVERLAY_MEDIA_OPTIONS.image,
     overlayMediaPosition: "right",
     overlayMediaMaxHeight: "200px",
     overlayMediaMaxWidth: "400px",

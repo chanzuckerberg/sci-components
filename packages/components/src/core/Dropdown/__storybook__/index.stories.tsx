@@ -28,12 +28,8 @@ export default {
       },
     },
     buttonPosition: {
-      control: {
-        labels: ["left", "right"],
-        type: "select",
-      },
-      mapping: DROPDOWN_BUTTON_POSITION_OPTIONS,
-      options: Object.keys(DROPDOWN_BUTTON_POSITION_OPTIONS),
+      control: { type: "select" },
+      options: DROPDOWN_BUTTON_POSITION_OPTIONS,
     },
     buttons: {
       control: {
@@ -68,7 +64,7 @@ export default {
     },
     onChange: {
       control: {
-        labels: ["NOOP", "Log value on change"],
+        labels: { noop: "NOOP", log: "Log value on change" },
         type: "select",
       },
       mapping: DROPDOWN_ON_CHANGE_OPTIONS,
@@ -76,7 +72,7 @@ export default {
     },
     onClose: {
       control: {
-        labels: ["NOOP", "console.log('Closed!')"],
+        labels: { noop: "NOOP", log: "console.log('Closed!')" },
         type: "select",
       },
       mapping: DROPDOWN_ON_CLOSE_OPTIONS,
@@ -84,7 +80,11 @@ export default {
     },
     options: {
       control: {
-        labels: ["One Column", "Two Columns", "Three Columns"],
+        labels: {
+          oneColumn: "One Column",
+          twoColumns: "Two Columns",
+          threeColumns: "Three Columns",
+        },
         type: "select",
       },
       mapping: DROPDOWN_DATA_OPTIONS,
@@ -121,7 +121,7 @@ export const Default = {
     isTriggerChangeOnOptionClick: false,
     label: DROPDOWN_LABEL,
     multiple: true,
-    options: DROPDOWN_DATA_OPTIONS[0],
+    options: DROPDOWN_DATA_OPTIONS.oneColumn,
     search: true,
     title: "Dropdown Title",
   },
@@ -138,7 +138,7 @@ export const MultiColumnWithButtons = {
     isTriggerChangeOnOptionClick: false,
     label: DROPDOWN_LABEL,
     multiple: true,
-    options: DROPDOWN_DATA_OPTIONS[2],
+    options: DROPDOWN_DATA_OPTIONS.threeColumns,
     search: true,
     title: "Multi-Column Dropdown Title",
   },

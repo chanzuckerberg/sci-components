@@ -27,7 +27,7 @@ export default {
     },
     logo: {
       control: {
-        labels: ["Logo Placeholder", "None"],
+        labels: { placeholder: "Logo Placeholder", none: "None" },
         type: "select",
       },
       mapping: NAVIGATION_FOOTER_LOGO_OPTIONS,
@@ -47,14 +47,7 @@ export default {
     },
     tagColor: {
       control: {
-        labels: [
-          "info",
-          "positive",
-          "notice",
-          "negative",
-          "beta",
-          "Custom colors for Label, Background, Icon",
-        ],
+        labels: { custom: "Custom colors for Label, Background, Icon" },
         type: "select",
       },
       mapping: TAG_PANEL_COLORS,
@@ -89,7 +82,7 @@ export const Default = {
         url: "https://example.com/2",
       },
     ],
-    logo: NAVIGATION_FOOTER_LOGO_OPTIONS[0],
+    logo: NAVIGATION_FOOTER_LOGO_OPTIONS.placeholder,
     logoUrl: "https://example.com",
     navItems: Array.from(Array(5)).map<NavigationFooterNavItem>((_, idx) => ({
       component: "a",

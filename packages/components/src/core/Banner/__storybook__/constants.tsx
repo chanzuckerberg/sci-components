@@ -18,9 +18,11 @@ export const BANNER_EXCLUDED_CONTROLS = [
 
 export const BANNER_TEXT = "Banner text lorem ipsum dolor mit";
 
-export const BANNER_ICON_OPTIONS = [
-  "CheckCircle",
-  "InfoCircle",
-  <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
-  <CustomSvgIcon key="customSvgIcon" style={{ height: 16, width: 16 }} />,
-];
+export const BANNER_ICON_OPTIONS = {
+  checkCircle: "CheckCircle",
+  infoCircle: "InfoCircle",
+  customSdsIcon: <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  customSvgIcon: (
+    <CustomSvgIcon key="customSvgIcon" style={{ height: 16, width: 16 }} />
+  ),
+};

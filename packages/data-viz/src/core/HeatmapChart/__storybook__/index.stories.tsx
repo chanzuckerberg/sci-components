@@ -12,11 +12,11 @@ export default {
   argTypes: {
     axisPointer: {
       control: {
-        labels: [
-          "No axis pointer",
-          "Show axis pointer on mousemove",
-          "Show axis pointer on click",
-        ],
+        labels: {
+          none: "No axis pointer",
+          mousemove: "Show axis pointer on mousemove",
+          click: "Show axis pointer on click",
+        },
         type: "select",
       },
       mapping: HEATMAP_AXIS_POINTER_OPTIONS,
@@ -29,21 +29,25 @@ export default {
     },
     echartsRendererMode: {
       control: {
-        labels: ["Canvas", "SVG"],
+        labels: { canvas: "Canvas", svg: "SVG" },
         type: "select",
       },
       options: ["canvas", "svg"],
     },
     symbol: {
       control: {
-        labels: ["Circle", "Rectangle", "Round Rectangle"],
+        labels: {
+          circle: "Circle",
+          rect: "Rectangle",
+          roundRect: "Round Rectangle",
+        },
         type: "select",
       },
       options: ["circle", "rect", "roundRect"],
     },
     tooltip: {
       control: {
-        labels: ["No tooltip", "Show Tooltip"],
+        labels: { none: "No tooltip", visible: "Show Tooltip" },
         type: "select",
       },
       mapping: HEATMAP_TOOLTIP_OPTIONS,
@@ -66,7 +70,7 @@ export default {
 
 export const Default = {
   args: {
-    axisPointer: HEATMAP_AXIS_POINTER_OPTIONS[1],
+    axisPointer: HEATMAP_AXIS_POINTER_OPTIONS.mousemove,
     camera: {
       active: true,
       height: 20,
@@ -74,7 +78,7 @@ export const Default = {
     },
     echartsRendererMode: "svg",
     symbol: "circle",
-    tooltip: HEATMAP_TOOLTIP_OPTIONS[1],
+    tooltip: HEATMAP_TOOLTIP_OPTIONS.visible,
   },
   parameters: {
     snapshot: {

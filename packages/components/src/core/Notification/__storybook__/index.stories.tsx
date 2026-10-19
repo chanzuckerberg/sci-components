@@ -19,7 +19,7 @@ export default {
     },
     buttonOnClick: {
       control: {
-        labels: ["() => {}", "undefined"],
+        labels: { action: "() => {}", none: "undefined" },
         type: "select",
       },
       mapping: NOTIFICATION_BUTTON_ON_CLICK_OPTIONS,
@@ -31,12 +31,12 @@ export default {
     },
     icon: {
       control: {
-        labels: [
-          "Custom SVG Icon",
-          "Custom SDS Icon",
-          "SDS Icon: Book",
-          "SDS Icon: Check Circle",
-        ],
+        labels: {
+          customSvgIcon: "Custom SVG Icon",
+          customSdsIcon: "Custom SDS Icon",
+          book: "SDS Icon: Book",
+          checkCircle: "SDS Icon: Check Circle",
+        },
         type: "select",
       },
       mapping: NOTIFICATION_ICON_OPTIONS,
@@ -48,7 +48,7 @@ export default {
     },
     onClose: {
       control: {
-        labels: ["() => {}", "undefined"],
+        labels: { action: "() => {}", none: "undefined" },
         type: "select",
       },
       mapping: NOTIFICATION_ON_CLICK_OPTIONS,

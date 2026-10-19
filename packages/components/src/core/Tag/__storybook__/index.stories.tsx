@@ -21,14 +21,7 @@ export default {
   argTypes: {
     color: {
       control: {
-        labels: [
-          "info",
-          "positive",
-          "notice",
-          "negative",
-          "beta",
-          "Custom colors for Label, Background, Icon",
-        ],
+        labels: { custom: "Custom colors for Label, Background, Icon" },
         type: "select",
       },
       mapping: TAG_PANEL_COLORS,
@@ -51,7 +44,7 @@ export default {
     },
     onClick: {
       control: {
-        labels: ["() => {}", "undefined"],
+        labels: { action: "() => {}", none: "undefined" },
         type: "select",
       },
       mapping: TAG_ON_CLICK_OPTIONS,

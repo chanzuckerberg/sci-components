@@ -26,20 +26,20 @@ export const BUTTON_ICON_PSEUDO_STATES = [
   "focus",
 ];
 
-export const BUTTON_ICON_ICON_OPTIONS = [
-  "InfoCircle",
-  "DotsHorizontal",
-  "Virus",
-  "XMark",
-  <CustomSdsIcon key="customSdsIcon" />,
-  <CustomSvgIcon key="customIcon" />,
-];
+export const BUTTON_ICON_ICON_OPTIONS = {
+  infoCircle: "InfoCircle",
+  dotsHorizontal: "DotsHorizontal",
+  virus: "Virus",
+  xMark: "XMark",
+  customSdsIcon: <CustomSdsIcon key="customSdsIcon" />,
+  customSvgIcon: <CustomSvgIcon key="customIcon" />,
+};
 
-export const BUTTON_ICON_ICON_LABELS = [
-  "SDS Icon: InfoCircle",
-  "SDS Icon: DotsHorizontal",
-  "SDS Icon: Virus",
-  "SDS Icon: XMark",
-  "Custom SDS Icon",
-  "Custom Icon",
-];
+export const BUTTON_ICON_ICON_LABELS = {
+  infoCircle: "SDS Icon: InfoCircle",
+  dotsHorizontal: "SDS Icon: DotsHorizontal",
+  virus: "SDS Icon: Virus",
+  xMark: "SDS Icon: XMark",
+  customSdsIcon: "Custom SDS Icon",
+  customSvgIcon: "Custom Icon",
+};

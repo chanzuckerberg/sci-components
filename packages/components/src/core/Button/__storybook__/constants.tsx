@@ -34,27 +34,31 @@ export const BUTTON_SDS_TYPES = ["primary", "secondary", "destructive"];
 
 export const BUTTON_TEXT = "Label";
 
-export const BUTTON_ICON_OPTIONS = [
-  undefined,
-  <Icon key="xmark" sdsIcon="XMark" sdsSize="s" />,
-  <Icon key="download" sdsIcon="Download" sdsSize="s" />,
-  <Icon key="copy" sdsIcon="Copy" sdsSize="s" />,
-  <Icon key="dotsHorizontal" sdsIcon="DotsHorizontal" sdsSize="s" />,
-  <Icon key="cube" sdsIcon="Cube" sdsSize="s" />,
-  <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
-  <CustomSvgIcon key="customIcon" style={{ height: "16px", width: "16px" }} />,
-];
+export const BUTTON_ICON_OPTIONS = {
+  none: undefined,
+  xMark: <Icon key="xmark" sdsIcon="XMark" sdsSize="s" />,
+  download: <Icon key="download" sdsIcon="Download" sdsSize="s" />,
+  copy: <Icon key="copy" sdsIcon="Copy" sdsSize="s" />,
+  dotsHorizontal: (
+    <Icon key="dotsHorizontal" sdsIcon="DotsHorizontal" sdsSize="s" />
+  ),
+  cube: <Icon key="cube" sdsIcon="Cube" sdsSize="s" />,
+  customSdsIcon: <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  customSvgIcon: (
+    <CustomSvgIcon key="customIcon" style={{ height: "16px", width: "16px" }} />
+  ),
+};
 
-export const BUTTON_ICON_LABELS = [
-  "No Icon",
-  "SDS Icon: XMark",
-  "SDS Icon: Download",
-  "SDS Icon: Copy",
-  "SDS Icon: DotsHorizontal",
-  "SDS Icon: Cube",
-  "Custom SDS Icon",
-  "Custom SVG Icon",
-];
+export const BUTTON_ICON_LABELS = {
+  none: "No Icon",
+  xMark: "SDS Icon: XMark",
+  download: "SDS Icon: Download",
+  copy: "SDS Icon: Copy",
+  dotsHorizontal: "SDS Icon: DotsHorizontal",
+  cube: "SDS Icon: Cube",
+  customSdsIcon: "Custom SDS Icon",
+  customSvgIcon: "Custom SVG Icon",
+};
 
 export const BUTTON_DISABLED_OPTIONS = [false, true];
 

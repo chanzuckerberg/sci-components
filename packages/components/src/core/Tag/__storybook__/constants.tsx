@@ -14,25 +14,25 @@ export const TAG_EXCLUDED_CONTROLS = [
   "icon",
 ];
 
-export const TAG_ICONS = [
-  undefined,
-  "CheckCircle",
-  "Loading",
-  "ExclamationMarkCircle",
-  "Person",
-  <WbSunny key="WBSunny" />,
-  <CustomSvgIcon key="CustomSvgIcon" />,
-];
+export const TAG_ICONS = {
+  none: undefined,
+  checkCircle: "CheckCircle",
+  loading: "Loading",
+  exclamationMarkCircle: "ExclamationMarkCircle",
+  person: "Person",
+  wbSunny: <WbSunny key="WBSunny" />,
+  customSvgIcon: <CustomSvgIcon key="CustomSvgIcon" />,
+};
 
-export const TAG_ICONS_LABELS = [
-  "No Icon",
-  "SDS Check Circle",
-  "SDS Loading",
-  "SDS Exclamation Mark",
-  "SDS Person",
-  "MUI Wb Sunny",
-  "Custom SVG Icon",
-];
+export const TAG_ICONS_LABELS = {
+  none: "No Icon",
+  checkCircle: "SDS Check Circle",
+  loading: "SDS Loading",
+  exclamationMarkCircle: "SDS Exclamation Mark",
+  person: "SDS Person",
+  wbSunny: "MUI Wb Sunny",
+  customSvgIcon: "Custom SVG Icon",
+};
 
 export const TAG_SDS_STYLES: ExtraTagProps["sdsStyle"][] = [
   "rounded",
@@ -44,27 +44,30 @@ export const TAG_SDS_TYPES: ExtraTagProps["sdsType"][] = [
   "secondary",
 ];
 
-export const TAG_ON_CLICK_OPTIONS = [action("onClick"), undefined];
+export const TAG_ON_CLICK_OPTIONS = {
+  action: action("onClick"),
+  none: undefined,
+};
 
 export const TAG_COLOR_CONTRAST_RULE = "color-contrast";
 
-export const TAG_PANEL_COLORS: ExtraTagProps["tagColor"][] = [
-  "info",
-  "positive",
-  "notice",
-  "negative",
-  "beta",
-  ["#000000", "#C65FA7", "#FFD400"],
-];
+export const TAG_PANEL_COLORS: Record<string, ExtraTagProps["tagColor"]> = {
+  info: "info",
+  positive: "positive",
+  notice: "notice",
+  negative: "negative",
+  beta: "beta",
+  custom: ["#000000", "#C65FA7", "#FFD400"],
+};
 
 export const TAG_SANS_SERIF_STYLE = { fontFamily: "sans-serif" };
 
 // use PANEL_COLORS to generate colors for ScreenshotTest ...
 // ... but for now it can't include "success" or "warning" colors because they fail a11y tests due to known design issues
-export const TAG_COLORS: ExtraTagProps["tagColor"][] = TAG_PANEL_COLORS.slice(
-  0,
-  8
-).splice(2, 2);
+export const TAG_COLORS: ExtraTagProps["tagColor"][] = [
+  TAG_PANEL_COLORS.notice,
+  TAG_PANEL_COLORS.negative,
+];
 
 export const TAG_LIVE_PREVIEW_STYLES = {
   display: "inline-grid",

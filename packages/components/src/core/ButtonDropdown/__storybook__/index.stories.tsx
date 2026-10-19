@@ -61,7 +61,7 @@ export const Default = {
     backgroundOnHover: true,
     children: "Label",
     disabled: false,
-    startIcon: BUTTON_DROPDOWN_ICON_OPTIONS[0],
+    startIcon: BUTTON_DROPDOWN_ICON_OPTIONS.download,
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
     size: "large",
     sdsStyle: "solid",

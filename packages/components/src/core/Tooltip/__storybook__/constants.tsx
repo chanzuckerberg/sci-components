@@ -53,16 +53,18 @@ export const TOOLTIP_MID_LABEL: React.CSSProperties = {
   paddingTop: 10,
 };
 
-export const TOOLTIP_COMPONENT_SLOT_OPTIONS = [
-  <CustomComponentSlot key="component-slot" />,
-  <Link
-    href="https://www.google.com"
-    sdsSize="xs"
-    fontWeight="bold"
-    sdsStyle="dashed"
-    key="link"
-  >
-    Lorem ipsum dollor sit amet
-  </Link>,
-  null,
-];
+export const TOOLTIP_COMPONENT_SLOT_OPTIONS = {
+  placeholder: <CustomComponentSlot key="component-slot" />,
+  link: (
+    <Link
+      href="https://www.google.com"
+      sdsSize="xs"
+      fontWeight="bold"
+      sdsStyle="dashed"
+      key="link"
+    >
+      Lorem ipsum dollor sit amet
+    </Link>
+  ),
+  empty: null,
+};

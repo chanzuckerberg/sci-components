@@ -15,7 +15,11 @@ export default {
     },
     componentSlot: {
       control: {
-        labels: ["Component Placeholder", "Sample Link", "Empty"],
+        labels: {
+          placeholder: "Component Placeholder",
+          link: "Sample Link",
+          empty: "Empty",
+        },
         type: "select",
       },
       mapping: TOOLTIP_COMPONENT_SLOT_OPTIONS,

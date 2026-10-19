@@ -39,7 +39,7 @@ export default {
     },
     onChange: {
       control: {
-        labels: ["Noop", "console.log(value)"],
+        labels: { noop: "Noop", log: "console.log(value)" },
         type: "select",
       },
       mapping: COMPLEX_FILTER_ON_CHANGE_OPTIONS,
@@ -47,7 +47,11 @@ export default {
     },
     options: {
       control: {
-        labels: ["One Column", "Two Columns", "Three Columns"],
+        labels: {
+          oneColumn: "One Column",
+          twoColumns: "Two Columns",
+          threeColumns: "Three Columns",
+        },
         type: "select",
       },
       mapping: AUTOCOMPLETE_DATA_OPTIONS,
@@ -59,12 +63,8 @@ export default {
       },
     },
     buttonPosition: {
-      control: {
-        labels: ["left", "right"],
-        type: "select",
-      },
-      mapping: DROPDOWN_BUTTON_POSITION_OPTIONS,
-      options: Object.keys(DROPDOWN_BUTTON_POSITION_OPTIONS),
+      control: { type: "select" },
+      options: DROPDOWN_BUTTON_POSITION_OPTIONS,
     },
     buttons: {
       control: {
@@ -92,7 +92,7 @@ export const Default = {
     isTriggerChangeOnOptionClick: false,
     label: "Click Target",
     multiple: true,
-    onChange: COMPLEX_FILTER_ON_CHANGE_OPTIONS[1],
+    onChange: COMPLEX_FILTER_ON_CHANGE_OPTIONS.log,
     search: true,
     buttonPosition: "left",
     buttons: false,

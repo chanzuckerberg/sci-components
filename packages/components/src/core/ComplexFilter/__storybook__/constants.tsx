@@ -8,13 +8,13 @@ export const COMPLEX_FILTER_EXCLUDED_CONTROLS = [
   "keepSearchOnSelect",
 ];
 
-export const COMPLEX_FILTER_ON_CHANGE_OPTIONS = [
+export const COMPLEX_FILTER_ON_CHANGE_OPTIONS = {
   noop,
-  (value: never) => {
+  log: (value: never) => {
     // eslint-disable-next-line no-console
     console.log(value);
   },
-];
+};
 
 export const COMPLEX_FILTER_LIVE_PREVIEW_STYLES = {
   display: "grid",

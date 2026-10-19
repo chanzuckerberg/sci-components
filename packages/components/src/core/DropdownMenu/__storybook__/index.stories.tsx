@@ -17,7 +17,7 @@ export default {
     },
     groupBy: {
       control: {
-        labels: ["No group by", "Group by section names"],
+        labels: { none: "No group by", section: "Group by section names" },
         type: "select",
       },
       mapping: DROPDOWN_MENU_GROUP_BY_OPTIONS,
@@ -40,7 +40,11 @@ export default {
     },
     options: {
       control: {
-        labels: ["One Column", "Two Columns", "Three Columns"],
+        labels: {
+          oneColumn: "One Column",
+          twoColumns: "Two Columns",
+          threeColumns: "Three Columns",
+        },
         type: "select",
       },
       mapping: DROPDOWN_MENU_DATA_OPTIONS,
@@ -88,11 +92,11 @@ export default {
 
 export const Default = {
   args: {
-    groupBy: DROPDOWN_MENU_GROUP_BY_OPTIONS[1],
+    groupBy: DROPDOWN_MENU_GROUP_BY_OPTIONS.section,
     keepSearchOnSelect: true,
     multiple: true,
     open: true,
-    options: DROPDOWN_MENU_DATA_OPTIONS[0],
+    options: DROPDOWN_MENU_DATA_OPTIONS.oneColumn,
     search: true,
     title: DROPDOWN_MENU_LABEL,
     width: 300,
@@ -103,11 +107,11 @@ export const Default = {
 
 export const MultiColumn = {
   args: {
-    groupBy: DROPDOWN_MENU_GROUP_BY_OPTIONS[1],
+    groupBy: DROPDOWN_MENU_GROUP_BY_OPTIONS.section,
     keepSearchOnSelect: true,
     multiple: true,
     open: true,
-    options: DROPDOWN_MENU_DATA_OPTIONS[2],
+    options: DROPDOWN_MENU_DATA_OPTIONS.threeColumns,
     search: true,
     title: DROPDOWN_MENU_LABEL,
   },

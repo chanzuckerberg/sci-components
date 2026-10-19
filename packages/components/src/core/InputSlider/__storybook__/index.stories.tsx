@@ -29,10 +29,7 @@ export default {
       },
     },
     valueLabelDisplay: {
-      control: {
-        labels: ["auto", "off", "on"],
-        type: "select",
-      },
+      control: { type: "select" },
       options: ["auto", "off", "on"],
     },
   },

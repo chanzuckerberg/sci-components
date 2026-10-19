@@ -65,7 +65,7 @@ export const Default = {
     children: "Label",
     backgroundAppearance: "matchBackground",
     disabled: false,
-    startIcon: BUTTON_DROPDOWN_ICON_OPTIONS[0],
+    startIcon: BUTTON_DROPDOWN_ICON_OPTIONS.download,
     size: "large",
     sdsType: "primary",
     sdsStyle: "outline",
