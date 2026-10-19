@@ -20,21 +20,37 @@ export default {
       control: {
         type: "object",
       },
-      description: "Props to pass to the underlying InputDropdown component",
+      description:
+        "Passed straight to the InputDropdown that opens the filter. Note that supplying it replaces the default, so a filter that should stay minimal needs sdsStyle passed again alongside whatever else it sets.",
+      table: {
+        defaultValue: { summary: '{ sdsStyle: "minimal" }' },
+      },
     },
     isTriggerChangeOnOptionClick: {
       control: {
         type: "boolean",
+      },
+      description:
+        "Determines whether changes are triggered in real-time upon clicking an option.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     label: {
       control: {
         type: "text",
       },
+      description:
+        "Sets the label of the filter, shown both when closed and open.",
     },
     multiple: {
       control: {
         type: "boolean",
+      },
+      description:
+        "Defines whether multiple selections can be made from the filter simultaneously, or only one.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     onChange: {
@@ -42,6 +58,8 @@ export default {
         labels: { noop: "Noop", log: "console.log(value)" },
         type: "select",
       },
+      description:
+        "Function to set what happens when a new value is set via the filter.",
       mapping: COMPLEX_FILTER_ON_CHANGE_OPTIONS,
       options: Object.keys(COMPLEX_FILTER_ON_CHANGE_OPTIONS),
     },
@@ -54,6 +72,8 @@ export default {
         },
         type: "select",
       },
+      description:
+        "The items to filter by. Passing the multi-column shape lays the menu out in named columns instead of one list.",
       mapping: AUTOCOMPLETE_DATA_OPTIONS,
       options: Object.keys(AUTOCOMPLETE_DATA_OPTIONS),
     },
@@ -61,14 +81,29 @@ export default {
       control: {
         type: "boolean",
       },
+      description:
+        "Provides a search bar at the top of the filter from which users can narrow the list of menu items.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     buttonPosition: {
       control: { type: "select" },
+      description:
+        "Which side of the menu footer the Apply and Cancel buttons sit on. It only applies alongside buttons.",
       options: DROPDOWN_BUTTON_POSITION_OPTIONS,
+      table: {
+        defaultValue: { summary: "right" },
+      },
     },
     buttons: {
       control: {
         type: "boolean",
+      },
+      description:
+        "Puts Apply and Cancel buttons at the foot of the menu, so selections take effect only once Apply is pressed.",
+      table: {
+        defaultValue: { summary: "true" },
       },
     },
   },

@@ -6,25 +6,30 @@ export default {
   argTypes: {
     autoDismiss: {
       control: { type: "select" },
-      defaultValue: { summary: "false" },
       description:
         "If set to a number, the callout will automatically dismiss after that many milliseconds. If set to true, the callout will automatically dismiss after 8000 milliseconds.",
       options: [true, false, 4000, 12000, 20000],
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     body: {
       control: { type: "text" },
-      defaultValue: { summary: "-" },
       description: "The body text of the callout.",
     },
     hideBody: {
       control: { type: "boolean" },
-      defaultValue: { summary: "false" },
       description: "If true, the body of the callout will be hidden.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     hideTitle: {
       control: { type: "boolean" },
-      defaultValue: { summary: "false" },
       description: "If true, the title of the callout will be hidden.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     icon: {
       control: {
@@ -36,7 +41,6 @@ export default {
         },
         type: "select",
       },
-      defaultValue: { summary: "-" },
       description:
         "The icon displayed in the Callout. By default, each Callout intent is paired with a corresponding SDS icon.",
       mapping: CALLOUT_ICON_OPTIONS,
@@ -44,29 +48,27 @@ export default {
     },
     intent: {
       control: { type: "radio" },
-      defaultValue: { summary: "info" },
       description: "The intent of the callout.",
       options: ["accent", "info", "negative", "positive", "notice"],
+      table: {
+        defaultValue: { summary: "info" },
+      },
     },
     sdsStyle: {
       control: { type: "select" },
-      defaultValue: { summary: "persistent" },
       description:
         "The style of the Callout determines its behavior: Persistent Callouts are always visible, Expandable Callouts can be toggled to show or hide extra content, and Dismissible Callouts can be closed by the user.",
       options: CALLOUT_SDS_STYLE_OPTIONS,
+      table: {
+        defaultValue: { summary: "persistent" },
+      },
     },
     title: {
       control: { type: "text" },
-      defaultValue: { summary: "-" },
       description: "The title of the callout.",
     },
   },
   component: Callout,
-  parameters: {
-    controls: {
-      expanded: true,
-    },
-  },
   title: "Components/Callout",
 } as Meta;
 

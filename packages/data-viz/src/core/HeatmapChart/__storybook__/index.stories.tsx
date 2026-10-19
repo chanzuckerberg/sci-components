@@ -19,12 +19,22 @@ export default {
         },
         type: "select",
       },
+      description:
+        "The crosshair following the pointer. One object applies to both axes; a two-entry array configures them separately. See https://echarts.apache.org/en/option.html#axisPointer.",
       mapping: HEATMAP_AXIS_POINTER_OPTIONS,
       options: Object.keys(HEATMAP_AXIS_POINTER_OPTIONS),
+      table: {
+        defaultValue: { summary: "hidden" },
+      },
     },
     camera: {
       control: {
         type: "object",
+      },
+      description:
+        "Renders only a window of the grid, measured in cells, and lets the pointer pan it, so very large heatmaps stay fast. Sizes are ignored unless `active` is true, and default to 40 × 20 cells.",
+      table: {
+        defaultValue: { summary: "inactive" },
       },
     },
     echartsRendererMode: {
@@ -32,7 +42,12 @@ export default {
         labels: { canvas: "Canvas", svg: "SVG" },
         type: "select",
       },
+      description:
+        "Which renderer ECharts initialises with. Canvas copes better with very large grids. Changing it rebuilds the chart.",
       options: ["canvas", "svg"],
+      table: {
+        defaultValue: { summary: "svg" },
+      },
     },
     symbol: {
       control: {
@@ -43,13 +58,20 @@ export default {
         },
         type: "select",
       },
+      description:
+        "The shape of a cell. Circles turn the grid into a dot plot, where diameter can carry a second measurement.",
       options: ["circle", "rect", "roundRect"],
+      table: {
+        defaultValue: { summary: "rect" },
+      },
     },
     tooltip: {
       control: {
         labels: { none: "No tooltip", visible: "Show Tooltip" },
         type: "select",
       },
+      description:
+        "Story-only: an ECharts tooltip config that the story passes through the chart's options. It switches between no tooltip and one showing the hovered cell's x, y and value.",
       mapping: HEATMAP_TOOLTIP_OPTIONS,
       options: Object.keys(HEATMAP_TOOLTIP_OPTIONS),
     },

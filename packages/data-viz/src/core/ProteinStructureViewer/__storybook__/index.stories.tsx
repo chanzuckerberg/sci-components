@@ -55,15 +55,31 @@ const VIEWER_CHECKS = {
 
 export default {
   argTypes: {
+    structure: {
+      control: { type: "text" },
+      description: "Structure to render, as raw PDB or mmCIF (PDBx) text.",
+    },
     backgroundColor: {
       control: { type: "color" },
       description:
         "Canvas background. Defaults to near-black in dark mode and white in light mode.",
+      table: {
+        defaultValue: { summary: "near-black (dark mode), white (light mode)" },
+      },
     },
     chainColors: {
       control: { type: "object" },
       description:
         "Color per chain, by chainId. Applies only while chain coloring is what the structure is painted with, which is when neither plddt nor residueOverlay is set.",
+    },
+    plddt: {
+      control: { type: "object" },
+      description:
+        "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When supplied the structure is colored by pLDDT unless `residueOverlay` takes over. A `null` entry, and every residue past the end, reads as unscored and is painted neutral rather than at the bottom of the scale.",
+    },
+    residueOverlay: {
+      control: { type: "object" },
+      description: "Per-residue values that override pLDDT coloring while set.",
     },
     hiddenChains: {
       control: { type: "object" },
@@ -85,12 +101,18 @@ export default {
       description:
         "Who draws the structure. external parses it and leaves the canvas empty for a scene drawn in onReady. Read once at creation.",
       options: ["managed", "external"],
+      table: {
+        defaultValue: { summary: "managed" },
+      },
     },
     colorBy: {
       control: { type: "select" },
       description:
         "What paints the structure. Left undefined it follows what is supplied: residueOverlay, then plddt, then chain colors.",
       options: [undefined, "chain", "plddt", "overlay"],
+      table: {
+        defaultValue: { summary: "follows what is supplied" },
+      },
     },
     highlights: {
       control: { type: "object" },
@@ -118,40 +140,64 @@ export default {
       description:
         "How the polymer is drawn. surface is one molecular surface over the visible chains.",
       options: ["cartoon", "surface"],
+      table: {
+        defaultValue: { summary: "cartoon" },
+      },
     },
     disableChainHighlightOnHover: {
       control: { type: "boolean" },
       description:
         "Stop other chains from dimming in the 3D view while a chain's name is pointed at, in the legend or the sequence panel.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     showChainLegend: {
       control: { type: "boolean" },
       description:
         "Show the chain legend. Ignored on a single-chain structure.",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     showAxes: {
       control: { type: "boolean" },
       description:
         "Show the orientation axes widget and the reset-camera button",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     showLegend: {
       control: { type: "boolean" },
       description:
         "Show the stats and color scale legend overlaid on the viewer",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     sequenceViewerBackgroundColor: {
       control: { type: "color" },
       description:
         "Sequence panel background. Defaults to the theme's primary surface.",
+      table: {
+        defaultValue: { summary: "the theme's primary surface" },
+      },
     },
     sequenceViewerHeight: {
       control: { type: "text" },
       description:
         "Sequence panel height, as a CSS length such as 200px or 40%, or a number of pixels. Unset, it takes max(104px, 30%), growing to max(134px, 32%) once the viewer is 880px wide or more.",
+      table: {
+        defaultValue: { summary: "max(104px, 30%)" },
+      },
     },
     showSequenceViewer: {
       control: { type: "boolean" },
       description: "Show the sequence panel pinned along the bottom",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     stats: {
       control: { type: "object" },

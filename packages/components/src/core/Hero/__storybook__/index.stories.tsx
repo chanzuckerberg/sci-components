@@ -35,26 +35,36 @@ export default {
         type: "boolean",
       },
       description: "Whether to display the darkening mask",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     darkeningMaskColor: {
       control: {
         type: "color",
-        defaultValue: "#000",
       },
       description: "The color of the darkening mask",
+      table: {
+        defaultValue: { summary: "#000000" },
+      },
     },
     darkeningMaskOpacity: {
       control: {
         type: "number",
-        defaultValue: 0,
       },
-      description: "The opacity of the darkening mask",
+      description: "The opacity of the darkening mask, from 0 to 1",
+      table: {
+        defaultValue: { summary: "0" },
+      },
     },
     darkeningVignette: {
       control: {
         type: "boolean",
       },
       description: "Whether to display the darkening vignette",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     hasInvertTextColor: {
       control: {
@@ -62,6 +72,9 @@ export default {
       },
       description:
         "Whether to set the text in the light color, for a dark backdrop",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     headerFontSize: {
       control: {
@@ -69,6 +82,9 @@ export default {
       },
       options: ["s", "m", "l"],
       description: "The font size of the header text",
+      table: {
+        defaultValue: { summary: "m" },
+      },
     },
     headerText: {
       control: {
@@ -82,6 +98,9 @@ export default {
         type: "text",
       },
       description: "The height of the hero container",
+      table: {
+        defaultValue: { summary: "fit-content" },
+      },
     },
     overlayContainerMinMargin: {
       control: {
@@ -89,12 +108,20 @@ export default {
       },
       description:
         "The margin of the hero container, supports an object with small, medium, and large values",
+      table: {
+        defaultValue: {
+          summary: '{ small: "24px", medium: "40px", large: "120px" }',
+        },
+      },
     },
     overlayContentWidth: {
       control: {
         type: "text",
       },
       description: "The width of the overlay content",
+      table: {
+        defaultValue: { summary: "100%" },
+      },
     },
     overlayContentPosition: {
       control: {
@@ -112,6 +139,9 @@ export default {
         "bottom-right",
       ],
       description: "The position of the overlay content",
+      table: {
+        defaultValue: { summary: "center" },
+      },
     },
     overlayMedia: {
       control: {
@@ -141,18 +171,23 @@ export default {
         "bottom-right",
       ],
       description: "The position of the overlay media",
+      table: {
+        defaultValue: { summary: "center" },
+      },
     },
     overlayMediaMaxHeight: {
       control: {
         type: "text",
       },
-      description: "The maximum height of the overlay media",
+      description:
+        "Sets the height of the overlay media layer outright rather than a maximum, despite the name.",
     },
     overlayMediaMaxWidth: {
       control: {
         type: "text",
       },
-      description: "The maximum width of the overlay media",
+      description:
+        "Sets the width of the overlay media layer outright rather than a maximum, despite the name. Without it the layer has no width.",
     },
     overlayMediaMargin: {
       control: {
@@ -160,6 +195,9 @@ export default {
       },
       description:
         "The margin of the overlay media, supports a single string or an object with small, medium, and large values",
+      table: {
+        defaultValue: { summary: "0" },
+      },
     },
     textAlignment: {
       control: {

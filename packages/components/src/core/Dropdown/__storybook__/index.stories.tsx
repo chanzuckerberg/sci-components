@@ -21,45 +21,88 @@ export default {
       control: {
         type: "object",
       },
+      description:
+        "These props are directly passed to the underlying DropdownMenu component, customizing its behavior. It is also the way to reach the menu's PopperComponent, PaperComponent and placement.",
     },
     InputDropdownProps: {
       control: {
         type: "object",
       },
+      description:
+        "These props are directly passed to the underlying InputDropdown component, customizing its behavior.",
     },
     buttonPosition: {
       control: { type: "select" },
+      description:
+        "Specifies the position of the Apply/Cancel buttons at the Dropdown footer.",
       options: DROPDOWN_BUTTON_POSITION_OPTIONS,
+      table: {
+        defaultValue: { summary: "right" },
+      },
     },
     buttons: {
       control: {
         type: "boolean",
+      },
+      description:
+        "When set to true, a set of Apply/Cancel buttons will be displayed at the Dropdown footer.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     closeOnBlur: {
       control: {
         type: "boolean",
       },
+      description:
+        "When set to true, the Dropdown will automatically close when a click occurs outside of it. It defaults to false when buttons is true, because closing on blur discards the selections that have not been applied.",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     disabled: {
       control: {
         type: "boolean",
+      },
+      description: "If `true`, the component is disabled.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     isSearchAutoFocus: {
       control: {
         type: "boolean",
       },
-      defaultValue: true,
+      description:
+        "Puts the cursor in the search input as the menu opens. It only applies alongside search.",
+      table: {
+        defaultValue: { summary: "true" },
+      },
+    },
+    isTriggerChangeOnOptionClick: {
+      control: {
+        type: "boolean",
+      },
+      description:
+        "When set to true, changes in Dropdown selections are applied in real-time to the react state.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     label: {
       control: {
         type: "text",
       },
+      description: "The label of the Dropdown.",
     },
     multiple: {
       control: {
         type: "boolean",
+      },
+      description:
+        "If `true`, `value` must be an array and the menu will support multiple selections.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     onChange: {
@@ -67,6 +110,7 @@ export default {
         labels: { noop: "NOOP", log: "Log value on change" },
         type: "select",
       },
+      description: "Callback fired when the value changes.",
       mapping: DROPDOWN_ON_CHANGE_OPTIONS,
       options: Object.keys(DROPDOWN_ON_CHANGE_OPTIONS),
     },
@@ -75,6 +119,7 @@ export default {
         labels: { noop: "NOOP", log: "console.log('Closed!')" },
         type: "select",
       },
+      description: "Callback fired when the popup requests to be closed.",
       mapping: DROPDOWN_ON_CLOSE_OPTIONS,
       options: Object.keys(DROPDOWN_ON_CLOSE_OPTIONS),
     },
@@ -87,6 +132,8 @@ export default {
         },
         type: "select",
       },
+      description:
+        "An array of options to be displayed as MenuItems within the Dropdown.",
       mapping: DROPDOWN_DATA_OPTIONS,
       options: Object.keys(DROPDOWN_DATA_OPTIONS),
     },
@@ -94,12 +141,17 @@ export default {
       control: {
         type: "boolean",
       },
-      defaultValue: true,
+      description:
+        "When set to true, a search input is displayed at the top of the Dropdown for filtering options.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     title: {
       control: {
         type: "text",
       },
+      description: "A heading shown at the top of the menu.",
     },
   },
   component: Dropdown,

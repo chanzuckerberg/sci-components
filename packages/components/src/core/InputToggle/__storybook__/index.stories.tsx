@@ -8,18 +8,32 @@ export default {
   argTypes: {
     disabled: {
       control: { type: "boolean" },
+      description: "If `true`, the component is disabled.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     offLabel: {
       control: { type: "text" },
-      defaultValue: "Off",
+      description: "The text displayed within the InputToggle when it's off.",
+      table: {
+        defaultValue: { summary: "Off" },
+      },
     },
     onLabel: {
       control: { type: "text" },
-      defaultValue: "On",
+      description: "The text displayed within the InputToggle when it's on.",
+      table: {
+        defaultValue: { summary: "On" },
+      },
     },
     width: {
       control: { type: "number" },
-      defaultValue: 62,
+      description:
+        "Controls the width of the InputToggle element, in pixels. Increase it when custom labels do not fit.",
+      table: {
+        defaultValue: { summary: "62" },
+      },
     },
   },
   component: InputToggle,

@@ -17,31 +17,53 @@ export default {
     border: {
       control: "boolean",
       description: "Show border",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     columns: {
       control: false,
       description:
         "Table column definitions with React components - not editable in controls",
     },
+    data: {
+      control: "object",
+      description: "Array of data objects to display in the table rows",
+    },
     enableColumnFiltering: {
       control: "boolean",
       description: "Enable column filtering",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     enableGlobalFiltering: {
       control: "boolean",
       description: "Enable global search",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     enablePagination: {
       control: "boolean",
       description: "Enable pagination",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     enableRowSelection: {
       control: "boolean",
       description: "Enable row selection with checkboxes",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     enableSorting: {
       control: "boolean",
       description: "Enable column sorting",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     onRowSelect: {
       control: {
@@ -59,11 +81,17 @@ export default {
     shouldPinSelectRowToLeft: {
       control: "boolean",
       description: "Pin the select row to the left",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     sdsStyle: {
       control: "inline-radio",
       description: "Style of the table",
       options: ["lined", "striped"],
+      table: {
+        defaultValue: { summary: "lined" },
+      },
     },
     tableOptions: {
       control: "object",
@@ -73,6 +101,13 @@ export default {
     tableRowProps: {
       control: "object",
       description: "Props to pass to the table row",
+    },
+    tableWidth: {
+      control: "text",
+      description: "Sets the width of the table container",
+      table: {
+        defaultValue: { summary: "100%" },
+      },
     },
   },
   component: PreComposedTable,

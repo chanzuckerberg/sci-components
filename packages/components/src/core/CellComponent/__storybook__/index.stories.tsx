@@ -8,14 +8,24 @@ export default {
   argTypes: {
     horizontalAlign: {
       control: { type: "select" },
+      description: "Specifies the horizontal alignment of the cell content.",
       options: ["left", "center", "right"],
+      table: {
+        defaultValue: { summary: "left" },
+      },
     },
     verticalAlign: {
       control: { type: "select" },
+      description: "Specifies the vertical alignment of the cell content.",
       options: ["top", "center", "bottom"],
+      table: {
+        defaultValue: { summary: "top" },
+      },
     },
     width: {
       control: { type: "text" },
+      description:
+        "Lands on the rendered cell as the HTML width attribute, so a number is read as pixels. Browsers treat it as the width of the whole column, and take it as a minimum rather than a promise.",
     },
   },
   component: CellComponent,

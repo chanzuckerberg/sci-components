@@ -19,27 +19,51 @@ export default {
         labels: { none: "No group by", section: "Group by section names" },
         type: "select",
       },
+      description:
+        "If provided, the options will be grouped under the returned string. The groupBy value is also used as the text for group headings when `renderGroup` is not provided.",
       mapping: AUTOCOMPLETE_GROUP_BY_OPTIONS,
       options: Object.keys(AUTOCOMPLETE_GROUP_BY_OPTIONS),
     },
     intent: {
       control: { type: "radio" },
+      description:
+        "Validation styling on the search field. Single column only; the multi-column field does not take it.",
       options: ["default", "negative", "notice", "positive"],
+      table: {
+        defaultValue: { summary: "default" },
+      },
     },
     keepSearchOnSelect: {
       control: { type: "boolean" },
+      description:
+        "For a multi-select, leaves the typed text in place after a selection instead of clearing it.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     label: {
       control: { type: "text" },
+      description:
+        'The search field\'s label and placeholder. It defaults to "Search" when the options are laid out in columns.',
+      table: {
+        defaultValue: { summary: "Label" },
+      },
     },
     multiple: {
       control: { type: "boolean" },
+      description:
+        "If `true`, `value` must be an array and the menu will support multiple selections.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     onChange: {
       control: {
         labels: { noop: "Noop", log: "console.log(value)" },
         type: "select",
       },
+      description:
+        "Fired on every selection change with the whole value. `details.option` is the one that just changed.",
       mapping: AUTOCOMPLETE_ON_CHANGE_OPTIONS,
       options: Object.keys(AUTOCOMPLETE_ON_CHANGE_OPTIONS),
     },
@@ -52,6 +76,8 @@ export default {
         },
         type: "select",
       },
+      description:
+        "The options, or an array of named columns each with their own options.",
       mapping: AUTOCOMPLETE_DATA_OPTIONS,
       options: Object.keys(AUTOCOMPLETE_DATA_OPTIONS),
     },

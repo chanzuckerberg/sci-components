@@ -13,18 +13,31 @@ export default {
       },
       description:
         "If true, clicking on the backdrop will close the panel. Only applies to overlay panels.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     position: {
       control: {
         type: "select",
       },
+      description:
+        'Which edge the panel is attached to. A basic panel takes "left" or "right"; an overlay adds "bottom".',
       options: ["left", "right", "bottom"],
+      table: {
+        defaultValue: { summary: "left" },
+      },
     },
     sdsType: {
       control: {
         type: "select",
       },
+      description:
+        '"basic" sits in the page and stays until you close it; "overlay" floats over the page with a header and close button. It also decides which other props apply, so TypeScript needs it spelled out even though the component falls back to "basic".',
       options: ["basic", "overlay"],
+      table: {
+        defaultValue: { summary: "basic" },
+      },
     },
     transitionDuration: {
       control: {
@@ -32,10 +45,18 @@ export default {
       },
       description:
         "How long the Panel takes to slide in and out, in milliseconds. Accepts a single number or `{ enter, exit }`. Defaults to 225ms in and 195ms out; `0` removes the animation.",
+      table: {
+        defaultValue: { summary: "{ enter: 225, exit: 195 }" },
+      },
     },
     width: {
       control: {
         type: "text",
+      },
+      description:
+        "How wide the panel is, or how tall it is when positioned along the bottom. Numbers are read as pixels. Values below the default are ignored, since the panel keeps that as its minimum in both directions.",
+      table: {
+        defaultValue: { summary: "240 (basic), 320 (overlay)" },
       },
     },
   },

@@ -29,18 +29,27 @@ export default {
       },
       description:
         "Badge text to display next to the title. If not provided, shows dynamic count based on selection",
+      table: {
+        defaultValue: { summary: 'the selection count, e.g. "3 of 7"' },
+      },
     },
     hideBadge: {
       control: {
         type: "boolean",
       },
       description: "Hide the badge when true",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     barHeight: {
       control: {
         type: "number",
       },
       description: "Height of the bar in pixels",
+      table: {
+        defaultValue: { summary: "16" },
+      },
     },
     data: {
       control: {
@@ -57,6 +66,9 @@ export default {
       },
       description:
         "Maximum amount for the bar (used only in 'cumulative' mode). If not provided, defaults to sum of all values",
+      table: {
+        defaultValue: { summary: "sum of all values" },
+      },
     },
     mode: {
       control: {
@@ -65,6 +77,9 @@ export default {
       description:
         "Chart mode: 'proportional' (segments fill entire bar) or 'cumulative' (segments sized based on maxAmount)",
       options: ["proportional", "cumulative"],
+      table: {
+        defaultValue: { summary: "proportional" },
+      },
     },
     legendValueFormat: {
       control: {
@@ -73,6 +88,9 @@ export default {
       description:
         "Format for legend values: 'percentage' shows percentage of the item in the bar chart (e.g., '20%'), 'count' shows the count from the data object with the unit defined by the unit prop",
       options: ["percentage", "count"],
+      table: {
+        defaultValue: { summary: "percentage" },
+      },
     },
     selectionBehavior: {
       control: {
@@ -81,31 +99,46 @@ export default {
       description:
         "Behavior to apply when items are selected: 'dim' makes non-selected segments semi-transparent (20% opacity), 'hide' removes non-selected segments from the bar chart",
       options: ["dim", "hide"],
+      table: {
+        defaultValue: { summary: "dim" },
+      },
     },
     remainingLabel: {
       control: {
         type: "text",
       },
       description: "Label for the remaining/unknown segment in cumulative mode",
+      table: {
+        defaultValue: { summary: "Remaining" },
+      },
     },
     remainingUnit: {
       control: {
         type: "text",
       },
       description:
-        "Unit to display with the remaining segment value. If not provided, uses the unit from the first data item",
+        "Unit to display with the remaining segment value. If not provided, uses the chart's unit prop; a unit set on an individual data item is never used here",
+      table: {
+        defaultValue: { summary: "unit" },
+      },
     },
     showLegend: {
       control: {
         type: "boolean",
       },
       description: "Show/hide the legend at the bottom",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     showLegendValues: {
       control: {
         type: "boolean",
       },
       description: "Show percentage values in the custom legend",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     title: {
       control: {
@@ -126,6 +159,9 @@ export default {
       },
       description:
         "Width of the chart - accepts any CSS width value (e.g., '100%', '20vw', '300px', or number for pixels)",
+      table: {
+        defaultValue: { summary: "100%" },
+      },
     },
     colorGeneratorOptions: {
       control: {
@@ -135,11 +171,6 @@ export default {
     },
   },
   component: StackedBarChart,
-  parameters: {
-    controls: {
-      expanded: true,
-    },
-  },
   title: "Data Viz/StackedBarChart",
 } as Meta;
 

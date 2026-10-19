@@ -13,22 +13,40 @@ export default {
   argTypes: {
     backgroundAppearance: {
       control: { type: INLINE_RADIO },
+      description:
+        'Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to "dark" when the button is placed on a dark background in light mode.',
       options: ["matchBackground", "dark"],
+      table: {
+        defaultValue: { summary: "matchBackground" },
+      },
     },
     backgroundOnHover: {
       control: { type: "boolean" },
+      description:
+        'Only applies when sdsStyle is "minimal". When false, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text.',
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     children: {
       control: { type: "text" },
+      description:
+        "The button label. The trailing chevron is only rendered when a label is present.",
     },
     disabled: {
       control: { type: "boolean" },
+      description: "Disables the button when set to true.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     startIcon: {
       control: {
         labels: BUTTON_DROPDOWN_ICON_LABELS,
         type: "select",
       },
+      description:
+        'An optional icon placed before the label. Pass the SDS Icon component, for example `<Icon sdsIcon="Download" sdsSize="s" />`.',
       mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
       options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
@@ -36,17 +54,31 @@ export default {
       control: {
         type: INLINE_RADIO,
       },
+      description:
+        "Size of the button. Also sets the size of the trailing chevron.",
       options: ["small", "medium", "large"],
+      table: {
+        defaultValue: { summary: "large" },
+      },
     },
     sdsStyle: {
       control: { type: INLINE_RADIO },
+      description: "Style of the button. Same values as Button.",
       options: ["solid", "outline", "minimal"],
       required: true,
+      table: {
+        defaultValue: { summary: "solid" },
+      },
     },
     sdsType: {
       control: { type: INLINE_RADIO },
+      description:
+        'Color scheme of the button. Unlike Button, "destructive" is not supported.',
       options: ["primary", "secondary"],
       required: true,
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
   },
   component: ButtonDropdown,

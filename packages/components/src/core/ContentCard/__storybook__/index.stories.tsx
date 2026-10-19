@@ -228,11 +228,6 @@ export const Default = {
     titleText: "Title Text",
     visualElementType: "image",
   },
-  parameters: {
-    controls: {
-      expanded: true,
-    },
-  },
 };
 
 // Test

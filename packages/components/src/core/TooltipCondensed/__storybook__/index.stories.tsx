@@ -6,9 +6,20 @@ export default {
   argTypes: {
     indicator: {
       control: { type: "boolean" },
+      description: "Draws a 12px round dot before the text.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     indicatorColor: {
       control: { type: "color" },
+      description:
+        "The dot's colour, as a CSS colour. Without it the dot occupies its space but cannot be seen.",
+    },
+    title: {
+      control: { type: "text" },
+      description:
+        "The label to show. Pass null when the content is coming through componentSlot instead.",
     },
   },
   component: TooltipCondensed,

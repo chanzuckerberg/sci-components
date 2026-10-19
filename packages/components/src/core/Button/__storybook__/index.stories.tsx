@@ -18,16 +18,36 @@ export default {
       control: {
         type: "boolean",
       },
+      description:
+        'Only applies when sdsStyle is "minimal". When false, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text.',
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     backgroundAppearance: {
       control: {
         type: INLINE_RADIO,
       },
+      description:
+        'Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to "dark" when the button is placed on a dark background in light mode.',
       options: ["matchBackground", "dark"],
+      table: {
+        defaultValue: { summary: "matchBackground" },
+      },
     },
     children: {
       control: {
         type: "text",
+      },
+      description: "The content of the button, usually its label.",
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+      description: "If `true`, the component is disabled.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     endIcon: {
@@ -35,27 +55,44 @@ export default {
         labels: BUTTON_ICON_LABELS,
         type: "select",
       },
+      description: "Element placed after the children.",
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
     },
     onClick: { action: BUTTON_ACTIONS.onClick },
     size: {
       control: { type: INLINE_RADIO },
+      description:
+        "The size of the component. `small` is equivalent to the dense button styling.",
       options: BUTTON_SDS_SIZE,
+      table: {
+        defaultValue: { summary: "large" },
+      },
     },
     sdsStyle: {
       control: { type: INLINE_RADIO },
+      description:
+        "Style of the button, in descending order of emphasis. Solid is filled, outline draws a 1px border over a transparent background, and minimal is text only.",
       options: BUTTON_SDS_STYLES,
+      table: {
+        defaultValue: { summary: "solid" },
+      },
     },
     sdsType: {
       control: { type: INLINE_RADIO },
+      description:
+        "Color scheme of the button within the chosen style. Primary uses the accent color, secondary is neutral, and destructive signals an irreversible action.",
       options: BUTTON_SDS_TYPES,
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
     startIcon: {
       control: {
         labels: BUTTON_ICON_LABELS,
         type: "select",
       },
+      description: "Element placed before the children.",
       mapping: BUTTON_ICON_OPTIONS,
       options: Object.keys(BUTTON_ICON_OPTIONS),
     },

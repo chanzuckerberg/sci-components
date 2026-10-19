@@ -78,6 +78,11 @@ export default {
         },
       },
     },
+    initialActivePrimaryNavKey: {
+      control: { type: "text" },
+      description:
+        "Story-only: the key of the primary nav item the drawer demo starts with marked active. The demo tracks the active item itself after that.",
+    },
     isSticky: {
       control: { type: "boolean" },
       description:
@@ -288,9 +293,6 @@ export const DropdownStyle = {
     title: "Title",
   },
   parameters: {
-    controls: {
-      expanded: true,
-    },
     layout: "fullscreen",
   },
 };
@@ -324,9 +326,6 @@ export const DrawerStyle = {
     initialActivePrimaryNavKey: "home",
   },
   parameters: {
-    controls: {
-      expanded: true,
-    },
     layout: "fullscreen",
   },
   render: (args: Args, context: StoryContext) => {
@@ -401,9 +400,6 @@ export const WithTopComponent = {
       config: {
         rules: [{ enabled: false, id: "landmark-no-duplicate-banner" }],
       },
-    },
-    controls: {
-      expanded: true,
     },
     layout: "fullscreen",
   },

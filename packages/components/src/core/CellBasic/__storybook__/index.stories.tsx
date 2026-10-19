@@ -16,25 +16,28 @@ export default {
   argTypes: {
     horizontalAlign: {
       control: { type: "select" },
-      defaultValue: { summary: "left" },
       description: "Horizontal alignment of the cell",
       options: ["left", "right"],
+      table: {
+        defaultValue: { summary: "left" },
+      },
     },
     icon: {
       control: {
         labels: CELL_BASIC_ICON_LABELS,
         type: "select",
       },
-      defaultValue: { summary: "null" },
       description: "Icon to be displayed",
       mapping: CELL_BASIC_ICON_OPTIONS,
       options: Object.keys(CELL_BASIC_ICON_OPTIONS),
     },
     iconVerticalAlign: {
       control: { type: "select" },
-      defaultValue: { summary: "top" },
       description: "Vertical alignment of the icon",
       options: ["top", "center", "bottom"],
+      table: {
+        defaultValue: { summary: "top" },
+      },
     },
     primaryText: {
       control: { type: "text" },
@@ -45,10 +48,8 @@ export default {
         labels: CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_LABELS,
         type: "select",
       },
-      defaultValue: { summary: "null" },
-      description: `Component slot below primary text. This will only show if 
-        there is no secondary or tertiary text. Remove the default values of 
-        secondary and tertiary text to see this in action.`,
+      description:
+        "Component slot below primary text. This will only show if there is no secondary or tertiary text. Remove the default values of secondary and tertiary text to see this in action.",
       mapping: CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS,
       options: Object.keys(
         CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS
@@ -59,7 +60,6 @@ export default {
         labels: CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_LABELS,
         type: "select",
       },
-      defaultValue: { summary: "null" },
       description: "Component slot to the right of primary text",
       mapping: CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS,
       options: Object.keys(
@@ -68,8 +68,10 @@ export default {
     },
     primaryTextWrapLineCount: {
       control: { type: "number" },
-      defaultValue: { summary: "3" },
       description: "Number of lines to wrap the primary text",
+      table: {
+        defaultValue: { summary: "3" },
+      },
     },
     secondaryText: {
       control: { type: "text" },
@@ -77,54 +79,68 @@ export default {
     },
     secondaryTextWrapLineCount: {
       control: { type: "number" },
-      defaultValue: { summary: "1" },
       description: "Number of lines to wrap the secondary text",
+      table: {
+        defaultValue: { summary: "1" },
+      },
     },
     shouldShowTooltipOnHover: {
       control: { type: "boolean" },
-      defaultValue: { summary: "true" },
       description: "Show tooltip on hover",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     shouldShowUnderlineOnHover: {
       control: { type: "boolean" },
-      defaultValue: { summary: "false" },
       description: "Show underline for the primary text on hover",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     shouldTextWrap: {
       control: { type: "boolean" },
-      defaultValue: { summary: "true" },
       description: "Wrap text",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     tabularNums: {
       control: { type: "boolean" },
-      defaultValue: { summary: "true" },
       description: "Whether to display the primary text in tabular numbers",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     tertiaryText: {
       control: { type: "text" },
-      defaultValue: { summary: "null" },
       description: "Tertiary text to be displayed",
     },
     tertiaryTextWrapLineCount: {
       control: { type: "number" },
-      defaultValue: { summary: "1" },
       description: "Number of lines to wrap the tertiary text",
+      table: {
+        defaultValue: { summary: "1" },
+      },
     },
     tooltipProps: {
       control: { type: "object" },
-      defaultValue: { summary: "null" },
       description: "Props for the tooltip",
     },
     verticalAlign: {
       control: { type: "select" },
-      defaultValue: { summary: "top" },
       description: "Vertical alignment of the cell",
       options: ["top", "center", "bottom"],
+      table: {
+        defaultValue: { summary: "top" },
+      },
     },
     width: {
       control: { type: "text" },
-      defaultValue: { summary: "auto" },
       description: "Width of the cell",
+      table: {
+        defaultValue: { summary: "auto" },
+      },
     },
   },
   component: CellBasic,
@@ -141,9 +157,6 @@ export default {
           { enabled: false, id: "listitem" },
         ],
       },
-    },
-    controls: {
-      expanded: true,
     },
   },
   title: "Components/Table/CellBasic",
