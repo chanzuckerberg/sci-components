@@ -11,9 +11,7 @@ import { useEffect, useMemo, useState } from "react";
 import { STORY_WIDTH } from "../constants";
 import { makeFeatureOverview } from "../mockGenomeTrackData";
 
-/**
- * Story wrapper that owns viewport and selection the way a shell would.
- */
+/** Story wrapper that controls viewport and selection. */
 export const GenomeTrack = (props: Args): JSX.Element => {
   const { data, ...rest } = props;
 

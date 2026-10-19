@@ -1,6 +1,4 @@
-// One window of a genome, drawn as three stacked rows over a shared bp axis:
-// reference annotations, predicted segments, and the activation trace.
-//
+// Annotations, segments, and an activation trace over a shared bp axis.
 // Drag to pan, scroll to zoom, hover a block for its tooltip.
 
 import {
@@ -11,14 +9,12 @@ import {
   SegmentBlock,
 } from "@czi-sds/data-viz";
 
-// A 289 bp window on the E. coli K-12 chromosome. Every coordinate in the
-// payload is 1-based and inclusive, the way a GFF writes them.
+// Coordinates are 1-based and inclusive.
 const START = 45462;
 const END = 45750;
 const SPAN = END - START + 1;
 
-// Reference genes. These deliberately do not tile the window: annotation
-// coverage is patchy, and the gaps between blocks are intergenic space.
+// Annotations may leave gaps between blocks.
 const ANNOTATIONS: AnnotationBlock[] = [
   {
     end: 45551,
@@ -52,9 +48,7 @@ const ANNOTATIONS: AnnotationBlock[] = [
   },
 ];
 
-// Segments from the segmentation pipeline. Unlike annotations these tile the
-// window exhaustively — they abut, never overlap, and leave no gaps. Strand is
-// always "." because the signal they come from is unstranded.
+// Segments tile the window with no gaps or overlaps. Strand is always ".".
 const SEGMENTS: SegmentBlock[] = [
   {
     category: "+CDS",
@@ -101,9 +95,7 @@ const SEGMENTS: SegmentBlock[] = [
   },
 ];
 
-// One activation value per base, high inside the ranges the feature fires in
-// and near zero elsewhere. The server sends these already max-pooled onto
-// `bins`; the arithmetic here only stands in for that.
+// Stand-in activation values, one per base.
 function trace(homes: number[][]): number[] {
   return Array.from({ length: SPAN }, (_, index) => {
     const bp = START + index;
@@ -123,12 +115,11 @@ const VALUES = trace([
   [45677, 45750],
 ]);
 
-// Traces are listed highest-scoring first; the activation row draws the first.
+// The activation row draws the first trace.
 const FEATURES: FeatureTrace[] = [
   {
     feature_id: 13492,
-    // Fraction of the segment's bases where this feature is active. Defined
-    // against the segment, not the window, so it survives pan and zoom.
+    // Fraction of the segment's bases where this feature is active.
     pct_of_segment: 0.78,
     peak: Math.max(...VALUES),
     score: 4.21,
@@ -139,8 +130,7 @@ const FEATURES: FeatureTrace[] = [
 
 const DATA: GenomeTrackData = {
   annotations: ANNOTATIONS,
-  // `stride: 1` means unpooled: one value per base. A wider window comes back
-  // with a larger stride and correspondingly fewer values.
+  // `stride: 1` means one value per base.
   bins: { end: END, n_bins: SPAN, start: START, stride: 1 },
   caps: {
     available_features: 22,

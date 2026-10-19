@@ -1,15 +1,5 @@
 import { resolvePalette, withAlpha } from "../utils/palette";
 
-/**
- * The drawing palette.
- *
- * Mostly a mapping from theme tokens to canvas colors, which is not worth
- * asserting key by key. What is worth asserting is the handful of places where
- * two entries have to agree with each other, or where a value's *form* matters
- * to the code that consumes it — both of which are invisible until something
- * renders wrong.
- */
-
 describe("resolvePalette", () => {
   it("draws the sequence band and the minimap bar in the same grey", () => {
     const palette = resolvePalette(null);

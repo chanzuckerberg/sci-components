@@ -1,8 +1,5 @@
-// The features row: one labelled row per trace, each a bar per bin.
-//
-// Bar heights are normalized per trace, so every row uses its full height and a
-// weak feature stays legible. The cost is that heights cannot be compared
-// between rows; hover a bar for the absolute value.
+// One row per trace, one bar per bin. Bar heights are normalized per trace;
+// hover a bar for its absolute value.
 
 import {
   FeatureNote,
@@ -49,10 +46,7 @@ const SEGMENTS: SegmentBlock[] = [
   },
 ];
 
-/**
- * A feature that fires inside the ranges it favours and is silent elsewhere.
- * Real values arrive max-pooled from the server; this stands in for them.
- */
+/** A stand-in trace that is active inside `homes` and zero elsewhere. */
 function trace(
   featureId: number,
   score: number,
@@ -62,8 +56,7 @@ function trace(
     const bp = START + index;
     const firing = homes.some(([from, to]) => bp >= from && bp <= to);
 
-    // Silent bins are exactly zero, not a small number: the row draws no bar
-    // for a zero, and a floor would make silence look like faint signal.
+    // A zero draws no bar.
     return firing
       ? Number((0.35 + 0.6 * Math.abs(Math.sin(index / 6))).toFixed(3))
       : 0;
@@ -79,7 +72,7 @@ function trace(
   };
 }
 
-// Highest-scoring first. The track draws them in this order and never re-sorts.
+// The track draws traces in this order.
 const FEATURES: FeatureTrace[] = [
   trace(13492, 4.21, [
     [45462, 45540],
@@ -93,9 +86,7 @@ const FEATURES: FeatureTrace[] = [
   trace(4118, 1.62, [[45677, 45750]]),
 ];
 
-/**
- * Descriptions for two of the four. Keyed by `String(feature_id)`.
- */
+/** Keyed by `String(feature_id)`. */
 const FEATURE_NOTES: Record<string, FeatureNote> = {
   "12305": {
     cluster: 1,

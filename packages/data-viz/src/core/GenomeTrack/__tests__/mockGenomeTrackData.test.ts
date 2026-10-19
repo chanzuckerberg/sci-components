@@ -3,14 +3,6 @@ import {
   makeMockGenomeTrackData,
 } from "../__storybook__/mockGenomeTrackData";
 
-/**
- * The fixture generator gets its own tests.
- *
- * A fixture that drifts between runs makes every snapshot flaky, and a fixture
- * that violates the wire contract teaches the component to handle data the
- * server will never send.
- */
-
 describe("makeMockGenomeTrackData", () => {
   it("is deterministic for a given seed", () => {
     const a = makeMockGenomeTrackData({ seed: 7 });
@@ -60,7 +52,6 @@ describe("makeMockGenomeTrackData", () => {
     expect(data.segments[data.segments.length - 1].end).toBe(data.locus.end);
 
     data.segments.slice(1).forEach((segment, index) => {
-      // Abutting, never overlapping and never leaving a gap.
       expect(segment.start).toBe(data.segments[index].end + 1);
     });
   });
@@ -96,10 +87,6 @@ describe("makeMockGenomeTrackData", () => {
     });
   });
 
-  /**
-   * The fixture has to contain both shapes of overlap or the annotation lanes
-   * are never exercised by anything but a hand-written test.
-   */
   it("overlaps some annotations, the way a real GFF does", () => {
     const annotations = makeMockGenomeTrackData().annotations ?? [];
     const overlapping = annotations.filter((annotation, index) =>
@@ -160,8 +147,6 @@ describe("makeMockGenomeTrackData", () => {
     const a = makeFeatureOverview(13_492);
     const b = makeFeatureOverview(5_912);
 
-    // Keyed off the feature id, so selecting the same feature twice draws the
-    // same thing and two features are visibly different.
     expect(a.values).toEqual(makeFeatureOverview(13_492).values);
     expect(a.values).not.toEqual(b.values);
     expect(a.feature_id).toBe(13_492);

@@ -17,15 +17,6 @@ import {
   zoomAt,
 } from "../utils/scale";
 
-/**
- * Coordinate math is tested exhaustively because its bugs are silent.
- *
- * A trace drawn one bin to the left, or an inclusive range treated as
- * exclusive, still renders as a perfectly plausible genome browser. Nothing
- * about the picture says it is wrong, so the arithmetic gets asserted directly
- * rather than through the component.
- */
-
 const WINDOW = { end: 45_750, start: 45_462 };
 const WIDTH = 800;
 
@@ -64,7 +55,6 @@ describe("blockRect", () => {
   it("covers the far edge of the last base in an inclusive range", () => {
     const rect = blockRect(scale, WINDOW.start, WINDOW.start);
 
-    // One base wide, not zero: the classic inclusive-range off-by-one.
     expect(rect?.width).toBeCloseTo(WIDTH / 289, 6);
   });
 
@@ -84,8 +74,7 @@ describe("blockRect", () => {
     const wide = createScale({ end: 245_461, start: 45_462 }, WIDTH);
     const rect = blockRect(wide, 100_000, 100_002, 2);
 
-    // 3 bp in a 200 kb window is far under a pixel. Widening it is what stops
-    // small annotations from silently disappearing.
+    // 3 bp in a 200 kb window is far under a pixel.
     expect(rect?.width).toBe(2);
   });
 });
@@ -110,8 +99,7 @@ describe("bin indexing", () => {
   });
 
   it("clamps the final partial bin into range", () => {
-    // The window is 289 bases over a stride of 10, so the last bin is partial
-    // and floor division would index past `n_bins`.
+    // 289 bases over a stride of 10 leaves a partial last bin.
     expect(bpToBinIndex(bins, bins.end)).toBe(28);
   });
 
@@ -171,8 +159,7 @@ describe("zoomAt", () => {
     const zoomed = zoomAt(scale, WINDOW, anchorPx, 0.5);
     const after = pxToBp(createScale(zoomed, WIDTH), anchorPx);
 
-    // Within a base: the viewport is rounded to integers, so exact equality is
-    // not available and would not be meaningful.
+    // The viewport is rounded to integers.
     expect(Math.abs(after - before)).toBeLessThanOrEqual(1);
   });
 
@@ -185,14 +172,7 @@ describe("zoomAt", () => {
   });
 });
 
-/**
- * The bp form, which is what the minimap's band is dragged with.
- *
- * A drag across the plot converts pixels through the viewport's scale; a drag
- * of the minimap's band converts them through the chromosome's, where one pixel
- * is thousands of bases. Only the bp shift is common, so that is where the
- * clamping lives.
- */
+/** Used when dragging the minimap band. */
 describe("panByBp", () => {
   const viewport = { end: 45_561, start: 45_502 };
 
@@ -204,8 +184,6 @@ describe("panByBp", () => {
   });
 
   it("moves the window the same way the drag went", () => {
-    // Unlike the plot's inverted pan: the band follows the pointer, so a
-    // rightward drag has to move the window right.
     expect(panByBp(viewport, WINDOW, 500).start).toBeGreaterThan(
       viewport.start
     );
@@ -239,7 +217,7 @@ describe("panBy", () => {
 });
 
 describe("minimapBand", () => {
-  // Human chr22 across an 800 px bar: one pixel is about 64 kb.
+  // About 64 kb per pixel.
   const chromosome = createScale({ end: 50_818_468, start: 1 }, 800);
 
   it("draws a window far narrower than a pixel at the floor width", () => {

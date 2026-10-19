@@ -29,17 +29,9 @@ import {
   rowLabelHeight,
 } from "../utils/layout";
 
-/**
- * Component tests focus on what a canvas cannot show.
- *
- * jsdom has no 2D context, so nothing here asserts pixels — that is Chromatic's
- * job. What is testable, and what actually protects a user, is the DOM the
- * component renders alongside the canvas: the header's authoritative
- * coordinates, the accessible table, and the states that replace the plot
- * entirely.
- */
+// jsdom has no 2D canvas context, so these tests assert on the DOM only.
 
-/** The header title with nothing selected. Shared by several assertions. */
+/** The header title with nothing selected. */
 const TITLE = "fixX · E. coli K-12";
 
 const ROW_OPTIONS = {
@@ -52,24 +44,20 @@ const ROW_OPTIONS = {
   tracks: ["annotations", "segments", "features"] as TrackKind[],
 };
 
-/** An organism with no annotation coverage: `annotations` is null, not empty. */
+/** No annotation coverage: `annotations` is null, not empty. */
 const NO_ANNOTATIONS = makeMockGenomeTrackData({ withAnnotations: false });
 
 describe("<GenomeTrack />", () => {
   it("states the organism and the exact range in the header", () => {
     render(<GenomeTrack data={DEFAULT_TRACK_DATA} />);
 
-    // Scoped to the header: the same range also appears in the accessible
-    // table, and an unscoped query would match both.
+    // Scoped to the header because the range also appears in the table.
     expect(screen.getByTestId(TEST_IDS.title)).toHaveTextContent(TITLE);
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
       "45,462–45,750"
     );
   });
 
-  /**
-   * The header is the only place that names the selected feature.
-   */
   describe("the selected feature in the header", () => {
     const first = DEFAULT_TRACK_DATA.features[0];
 
@@ -116,9 +104,7 @@ describe("<GenomeTrack />", () => {
         />
       );
 
-      // A re-fetch re-ranks the features, so panning can drop the selected one
-      // while the minimap still draws its trace. Falling back to the id keeps
-      // the header and the minimap agreeing about whose signal is on screen.
+      // Falls back to the feature id.
       expect(screen.getByTestId(TEST_IDS.title)).toHaveTextContent(
         "Feature 999999"
       );
@@ -409,8 +395,6 @@ describe("<GenomeTrack />", () => {
       />
     );
 
-    // The header names the segment the payload covers and how long it is, so
-    // it does not change as the user pans within it.
     expect(screen.getByTestId(TEST_IDS.range)).toHaveTextContent(
       "45,462–45,750 · 289 bp"
     );
@@ -471,7 +455,6 @@ describe("<GenomeTrack />", () => {
       Object.assign(navigator, { clipboard: { writeText } });
     });
 
-    /** Opens the menu and picks one of its two items. */
     async function chooseCopy(testId: string): Promise<void> {
       await userEvent.click(screen.getByTestId(COPY_TEST_ID));
       await userEvent.click(screen.getByTestId(testId));
@@ -488,7 +471,6 @@ describe("<GenomeTrack />", () => {
 
       await chooseCopy(COPY_VISIBLE_TEST_ID);
 
-      // Ten bases of the payload's 289, taken from the front of the window.
       expect(writeText).toHaveBeenCalledWith(
         DEFAULT_TRACK_DATA.sequence?.slice(0, 10)
       );
@@ -532,8 +514,6 @@ describe("<GenomeTrack />", () => {
 
       await userEvent.click(screen.getByTestId(COPY_TEST_ID));
 
-      // Two items that would copy identical text is a choice without a
-      // difference, and inviting it suggests there is one.
       expect(screen.getByTestId(COPY_FULL_TEST_ID)).toHaveAttribute(
         "aria-disabled",
         "true"
@@ -571,7 +551,6 @@ describe("<GenomeTrack />", () => {
 
       await chooseCopy(COPY_VISIBLE_TEST_ID);
 
-      // A tick for a copy that did not happen is worse than no feedback.
       expect(
         screen.queryByRole("button", { name: "Sequence copied" })
       ).not.toBeInTheDocument();
@@ -597,8 +576,7 @@ describe("<GenomeTrack />", () => {
     it("is absent when the payload carries no sequence", () => {
       render(<GenomeTrack data={POOLED_TRACK_DATA} tracks={["sequence"]} />);
 
-      // A 40 kb window exceeds `caps.max_sequence_window`, so there is no
-      // sequence row and nothing to copy.
+      // A 40 kb window exceeds `caps.max_sequence_window`.
       expect(screen.queryByTestId(COPY_TEST_ID)).not.toBeInTheDocument();
     });
   });
@@ -617,7 +595,7 @@ function sectionKinds(rows: TrackRow[]): TrackKind[] {
 }
 
 describe("re-fetching on zoom", () => {
-  /** The plot, which is the element that takes keyboard navigation. */
+  /** The plot takes keyboard navigation. */
   const plot = () => screen.getByRole("img", { name: /Genome track/ });
 
   async function zoomOutFully(): Promise<void> {
@@ -908,11 +886,9 @@ describe("section names", () => {
         );
       });
 
-      // Room for the rule and the button, with clearance either side.
       expect(ROW_LABEL_HEIGHT[density]).toBeGreaterThan(1 + BUTTON[density]);
     });
 
-    // Still tighter in a card than in the standalone view.
     expect(ROW_LABEL_HEIGHT.compact).toBeLessThan(ROW_LABEL_HEIGHT.comfortable);
   });
 
@@ -933,7 +909,6 @@ describe("section names", () => {
   it("gives an unnamed section no line at all", () => {
     (["comfortable", "compact"] as const).forEach((density) => {
       expect(rowLabelHeight("minimap", density, true)).toBe(0);
-      // And labels off means no line anywhere.
       expect(rowLabelHeight("sequence", density, false)).toBe(0);
     });
   });
@@ -1055,7 +1030,6 @@ describe("row layout", () => {
       tracks: ["features"],
     });
 
-    // One name for the section, not one per row.
     expect(rows.map((row) => row.label)).toEqual([
       "Features",
       ...Array(rows.length - 1).fill(""),
@@ -1095,8 +1069,6 @@ describe("row layout", () => {
     expect(rowAt(rows, target.y)).toBe(target);
     expect(rowAt(rows, target.y + target.height - 1)).toBe(target);
 
-    // The gap after the first row belongs to no row, so a pointer there has to
-    // clear the tooltip rather than keep the last thing it found.
     expect(rowAt(rows, target.y + target.height + 1)).toBeNull();
     expect(rowAt(rows, -1)).toBeNull();
     expect(rowAt(rows, rows[rows.length - 1].y + 1000)).toBeNull();
@@ -1118,13 +1090,12 @@ describe("row layout", () => {
       tracks: ["annotations"],
     });
 
-    // The fixture contains a nested tRNA, so it cannot fit in one lane.
+    // The fixture contains a nested tRNA.
     expect(rows.length).toBeGreaterThan(1);
     expect(rows.map((row) => row.laneIndex)).toEqual(
       rows.map((_, index) => index)
     );
 
-    // Every annotation is drawn exactly once, in exactly one lane.
     const drawn = rows.flatMap((row) => row.laneBlocks ?? []);
 
     expect(new Set(drawn.map((block) => block.id)).size).toBe(
@@ -1143,8 +1114,6 @@ describe("row layout", () => {
   });
 
   it("keeps a single labelled lane when nothing overlaps", () => {
-    // The row is as tall as the data needs and no taller: a window without
-    // overlaps has to look exactly as it did before lanes existed.
     const annotations = (DEFAULT_TRACK_DATA.annotations ?? []).slice(0, 1);
     const { rows } = layoutRows(
       { ...DEFAULT_TRACK_DATA, annotations },
@@ -1156,8 +1125,7 @@ describe("row layout", () => {
   });
 
   it("draws an empty annotations row, because [] is not null", () => {
-    // `[]` means the organism was annotated and this window has no genes;
-    // `null` means nobody looked. The first is a row, the second is not.
+    // `[]` means no genes in this window; `null` means no annotation coverage.
     const { rows } = layoutRows(
       { ...DEFAULT_TRACK_DATA, annotations: [] },
       { ...ROW_OPTIONS, tracks: ["annotations"] }
@@ -1177,8 +1145,6 @@ describe("row layout", () => {
     expect(capped.rows).toHaveLength(1);
     expect(capped.annotationOverflow).toBeGreaterThan(0);
 
-    // Nothing is dropped at the default cap, which is the case that matters:
-    // a real payload must not lose a gene to the ceiling.
     expect(layoutRows(DEFAULT_TRACK_DATA, ROW_OPTIONS).annotationOverflow).toBe(
       0
     );
@@ -1298,10 +1264,8 @@ describe("dragging the minimap band", () => {
   const barY = minimap.y + minimap.height / 2;
   const plot = () => screen.getByRole("img", { name: /Genome track/ });
 
-  // jsdom does no layout, implements no pointer capture, and has no
-  // PointerEvent, which would drop `clientX` from every event fired below.
-  // With a real width the track draws, so the canvas needs a context that
-  // accepts every call; the pixels are not what these tests are about.
+  // jsdom has no layout, pointer capture, PointerEvent, or canvas context, so
+  // these are stubbed.
   const inertContext = new Proxy(
     {},
     {
@@ -1361,7 +1325,6 @@ describe("dragging the minimap band", () => {
 
     const last = onViewportChange.mock.lastCall?.[0];
 
-    // One window's width past the window is where the halo used to stop it.
     expect(last.start).toBeGreaterThan(locus.end + span);
     expect(last.start).toBeCloseTo(
       locus.start + 400 * chromosome.bpPerPx,

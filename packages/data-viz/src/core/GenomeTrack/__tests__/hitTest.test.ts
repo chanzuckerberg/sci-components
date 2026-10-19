@@ -4,14 +4,6 @@ import { hitTest, selectionForHit, seriesId } from "../utils/hitTest";
 import { layoutRows } from "../utils/layout";
 import { bpToPx, createScale } from "../utils/scale";
 
-/**
- * Hit-testing has to agree with what was drawn.
- *
- * A click at the pixel where a block was drawn has to return
- * that block, and a click in a gap has to return nothing rather than the last
- * thing found.
- */
-
 const WIDTH = 800;
 const OPTIONS = {
   blockRowHeight: 28,
@@ -29,7 +21,7 @@ const scale = createScale(
   WIDTH
 );
 
-/** Centre of a row, so a hit is not decided by a rounding edge. */
+/** Centre of a row, away from rounding edges. */
 function rowCenter(kind: string): number {
   const row = layout.rows.find((candidate) => candidate.kind === kind);
 
@@ -97,8 +89,7 @@ describe("hitTest", () => {
 
     expect(hit?.kind).toBe("trace");
     expect(hit).toHaveProperty("value");
-    // The reported range is the bin's, so a tooltip cannot claim single-base
-    // precision for a pooled value.
+    // The reported range is the whole bin's.
     expect(hit!.end).toBeGreaterThanOrEqual(hit!.start);
   });
 
@@ -136,8 +127,6 @@ describe("hitTest", () => {
           lane.y + lane.height / 2
         );
 
-        // Within a lane blocks cannot overlap, so a midpoint resolves to that
-        // block and no other. Across lanes, y is what tells them apart.
         expect(hit?.id).toBe(annotation.id);
       });
     });
@@ -185,17 +174,12 @@ describe("hitTest", () => {
 
     const [hostLane, nestedLane] = nestedLayout.rows;
 
-    // The host, on both sides of the nested block. 800 is the interesting one:
-    // inside `outer` but past `inner`'s end, which a search that assumed
-    // `end` order across nested blocks would step over.
+    // 800 is inside `outer` but past `inner`'s end.
     expect(at(200, hostLane)?.id).toBe("outer");
     expect(at(800, hostLane)?.id).toBe("outer");
 
-    // The nested block, which a flat row could not reach at all.
     expect(at(450, nestedLane)?.id).toBe("inner");
 
-    // And its lane is empty either side of it, rather than reporting the host
-    // from a row the host is not drawn in.
     expect(at(200, nestedLane)).toBeNull();
     expect(at(800, nestedLane)).toBeNull();
   });
@@ -224,8 +208,7 @@ describe("hitTest", () => {
   });
 
   it("finds a block whose pixel width is below the pointer's precision", () => {
-    // 200 kb window: every segment is a fraction of a pixel wide, and without
-    // the slack allowance they would be visible but unclickable.
+    // 200 kb window: every segment is under a pixel wide.
     const wideData = DEFAULT_TRACK_DATA;
     const wideScale = createScale(
       { end: wideData.locus.start + 200_000, start: wideData.locus.start },
@@ -244,9 +227,6 @@ describe("hitTest", () => {
   });
 });
 
-/**
- * What a click on a hit should select.
- */
 describe("selectionForHit", () => {
   const annotation = DEFAULT_TRACK_DATA.annotations?.[0];
   const feature = DEFAULT_TRACK_DATA.features[0];
@@ -305,13 +285,8 @@ describe("selectionForHit", () => {
   });
 });
 
-/**
- * The segments row's blocks must be hoverable whatever order the payload lists
- * them in.
- */
 describe("segments arriving in an unhelpful order", () => {
-  // Named by drawn position, so an assertion reads as "the leftmost block",
-  // independently of the order the payload happened to list them in.
+  // Named by drawn position, not payload order.
   const FIRST = "seg:first";
   const SECOND = "seg:second";
   const THIRD = "seg:third";

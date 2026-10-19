@@ -1,11 +1,5 @@
-// The compact variant, as a comparison row would use it: two loci side by
-// side, each in its own card.
-//
-// Four props do the work. `density="compact"` tightens every row and drops the
-// captions and tick labels, `showRowLabels={false}` drops the section names,
-// `blockRowHeight` shrinks the blocks, and `disableNavigation` keeps a card
-// from swallowing the page's scroll. Selection and the keyboard controls still
-// work with navigation off — only wheel-zoom and drag-pan are turned off.
+// Compact tracks for two loci side by side. `disableNavigation` turns off
+// wheel-zoom and drag-pan so a card doesn't capture page scroll.
 
 import {
   AnnotationBlock,
@@ -15,7 +9,6 @@ import {
 } from "@czi-sds/data-viz";
 import { CSSProperties } from "react";
 
-/** Two windows built from the same shape, so the cards are comparable. */
 function buildWindow(options: {
   accession: string;
   gene: string;
@@ -172,8 +165,6 @@ function App() {
             density="compact"
             disableNavigation
             showRowLabels={false}
-            // The payload carries an activation trace as well; which rows to
-            // draw is a display choice, so the cards leave it out.
             tracks={["annotations", "segments"]}
           />
         </div>

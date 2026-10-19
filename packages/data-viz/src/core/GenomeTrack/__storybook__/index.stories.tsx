@@ -86,10 +86,7 @@ export const Default = {
   args: DEFAULT_ARGS,
 };
 
-/**
- * The same window with navigation pinned to the payload, which is what
- * `navigationMargin={0}` does.
- */
+/** Navigation limited to the loaded window. */
 export const PinnedToThePayload = {
   args: { ...DEFAULT_ARGS, navigationMargin: 0 },
 };
@@ -102,9 +99,7 @@ export const Refreshing = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA, refreshing: true },
 };
 
-/**
- * A 40 kb window, wide enough that the server pools the trace.
- */
+/** A 40 kb window with a pooled trace. */
 export const PooledWindow = {
   args: { ...DEFAULT_ARGS, data: POOLED_TRACK_DATA },
 };

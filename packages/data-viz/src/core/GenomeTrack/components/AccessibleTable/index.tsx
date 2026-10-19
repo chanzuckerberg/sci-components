@@ -10,36 +10,13 @@ interface AccessibleTableProps {
   rows: TrackRow[];
   /** Id used by the plot's `aria-describedby`. */
   id: string;
-  /**
-   * Annotations the lane cap left undrawn.
-   *
-   * The table lists them anyway — it describes the payload, and an annotation
-   * that did not fit is still in the region. The count is stated so a reader is
-   * not left thinking the plot and the table describe the same set.
-   */
+  /** Annotations the lane cap left undrawn; the table still lists them. */
   annotationOverflow: number;
 }
 
 /**
- * The track's contents as a real table, for assistive technology.
- *
- * This is not a nicety bolted on afterwards: a canvas exposes nothing to a
- * screen reader, so without this the component is a blank region and the data
- * is simply unavailable. It renders inside a visually hidden container and
- * mirrors the rows the canvas drew — including which ones, so a reader is never
- * told about a row that is not on screen.
- *
- * It describes the whole payload window rather than the current viewport. That
- * is deliberate: panning is a visual affordance, and a reader stepping through
- * a table wants the region the tool returned, not whatever happens to be
- * scrolled into view.
- */
-/*
- * Memoized because the track re-renders on every pointer move and every pan
- * frame, and this is its heaviest child: one row per annotation and per segment
- * — thousands at a wide window — plus an argmax over each trace. Its props are
- * the payload and the memoized layout rows, both referentially stable across
- * those renders, so it now renders once per payload.
+ * The track's contents as a table for screen readers, covering the whole
+ * payload window rather than the current viewport.
  */
 const AccessibleTableImpl = ({
   annotationOverflow,
@@ -129,13 +106,7 @@ const AccessibleTableImpl = ({
         </table>
       )}
 
-      {/*
-       * Lists every trace the payload carries, not only the ones drawn: a
-       * reader stepping through a table wants what the tool returned, and
-       * `maxFeatureRows` is a limit on vertical space rather than on what is
-       * worth knowing. The truncation note below says when the server itself
-       * held some back.
-       */}
+      {/* Every trace in the payload, including those past `maxFeatureRows`. */}
       {kinds.has("features") && (
         <table>
           <caption>Top features by activation</caption>
@@ -149,9 +120,6 @@ const AccessibleTableImpl = ({
           </thead>
           <tbody>
             {featureTraces(data).map((trace) => {
-              // One pass, and no spread: `Math.max(...values)` pushes every bin
-              // onto the argument stack, which throws for a long enough trace
-              // and costs two full scans paired with `indexOf`.
               const peakIndex = argMax(trace.values);
 
               return (

@@ -1,12 +1,5 @@
-// The three states that replace the plot entirely. Each is a prop rather than
-// something the caller renders instead of the track, so the surrounding layout
-// does not have to change as a window loads, fails, or is cleared.
-//
-// `loading` draws a skeleton shaped like the rows in `tracks`, so the layout
-// does not jump when the data lands. `error` takes a typed tool error: the code
-// chooses the headline and the server's message is shown underneath, so a
-// missing activation cache reads differently from a region nobody precomputed.
-// An unrecognised code falls back to the message alone.
+// Loading, error, and empty states. The error `code` picks the headline and
+// `message` is shown underneath.
 
 import { GenomeTrack } from "@czi-sds/data-viz";
 

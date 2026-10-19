@@ -8,14 +8,7 @@ import {
 } from "@czi-sds/data-viz";
 import React from "react";
 
-/**
- * Namespace check: every type a consumer needs has to be reachable from the
- * package root, not just from a deep path inside it.
- *
- * This file is typechecked, never run. It fails the build if the public surface
- * stops being usable the way a consumer would use it — which is not something
- * the component's own tests can catch, since they import by relative path.
- */
+/** Typechecked only: public types must be importable from the package root. */
 
 const DATA: GenomeTrackData = {
   annotations: [
@@ -107,7 +100,7 @@ const GenomeTrackNameSpaceTest = (props: GenomeTrackProps) => {
       {/* Minimal usage */}
       <GenomeTrack data={DATA} />
 
-      {/* Controlled viewport and selection, as a shell would drive it */}
+      {/* Controlled viewport and selection */}
       <GenomeTrack
         data={DATA}
         onSelectionChange={(next) => console.log(next)}

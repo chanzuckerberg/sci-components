@@ -1,13 +1,5 @@
 import { HTMLAttributes } from "react";
 
-/**
- * Wire types for `GenomeTrack`.
- *
- * Props are `camelCase`, as everywhere else in the library. The rule is: data
- * that crossed the network keeps the server's shape; anything a React caller
- * types by hand follows house style.
- */
-
 /** Which SAE produced the activations, and how big its feature space is. */
 export interface ModelRef {
   /** e.g. "esmgsedd-mvp". A `feature_id` is only meaningful alongside this. */
@@ -20,24 +12,20 @@ export interface ModelRef {
 /** Where in a genome the window sits. Coordinates are 1-based inclusive. */
 export interface Locus {
   organism: string;
-  /** Display form of `organism`, e.g. "E. coli K-12". Server-supplied. */
+  /** Display form of `organism`, e.g. "E. coli K-12". */
   organism_label?: string;
   accession: string;
   chrom: string;
-  /** 1-based inclusive. */
   start: number;
-  /** 1-based inclusive. */
   end: number;
   genome_length: number;
   gene?: string;
 }
 
 /**
- * Maps trace index to genomic coordinates.
- *
- * Long windows are max-pooled server-side, so index `i` of every `values` array
- * covers `[start + i * stride, min(end, start + (i + 1) * stride - 1)]`. Max
- * rather than mean, so a single-base peak survives pooling.
+ * Maps trace index to genomic coordinates. Index `i` of every `values` array
+ * covers `[start + i * stride, min(end, start + (i + 1) * stride - 1)]`, and
+ * long windows are max-pooled.
  */
 export interface BinAxis {
   start: number;
@@ -62,12 +50,9 @@ export interface AnnotationBlock {
   locus_tag?: string;
 }
 
-/**
- * A precomputed segment: an interval the segmentation pipeline cut from the
- * activation signal, with the category it voted for.
- */
+/** An interval cut from the activation signal, with its predicted category. */
 export interface SegmentBlock {
-  /** Namespaced `segment_id` — pass back to segment-keyed tools unchanged. */
+  /** Namespaced segment id; pass it back to the server unchanged. */
   id: string;
   start: number;
   end: number;
@@ -75,7 +60,7 @@ export interface SegmentBlock {
   /** +CDS | -CDS | intergenic | SINE | unknown | ... */
   category: string;
   predicted_label: string | null;
-  /** kNN vote share, 0-1. Null when the run cast no vote for this segment. */
+  /** kNN vote share, 0-1. Null when no vote was cast for this segment. */
   predicted_support: number | null;
   /** Nearest neighbor's product, when one was resolved. */
   predicted_top?: string;
@@ -92,8 +77,7 @@ export interface FeatureTrace {
   score_kind: "peak" | "zscore";
   /**
    * Fraction of the segment's nucleotides where this feature is active, 0-1.
-   * Defined against the segment rather than the window, so it is stable under
-   * pan and zoom. Null when the window is not segment-aligned.
+   * Null when the window is not segment-aligned.
    */
   pct_of_segment: number | null;
   /** Length equals `bins.n_bins`. */
@@ -122,22 +106,14 @@ export interface ClusterTrace {
   values: number[];
 }
 
-/**
- * Chromosome-scale context for the minimap row.
- *
- * **Only `chrom_length` is read.** That one number is what widens the minimap
- * from the payload's window to the whole chromosome, and what bounds
- * navigation.
- */
+/** Chromosome-scale context for the minimap. Only `chrom_length` is read. */
 export interface MinimapOverview {
   chrom: string;
   chrom_length: number;
   bins: BinAxis;
 }
 
-/**
- * One feature's activation across the whole chromosome, for the minimap.
- */
+/** One feature's activation across the whole chromosome, for the minimap. */
 export interface FeatureOverview {
   feature_id: number;
   bins: BinAxis;
@@ -155,10 +131,7 @@ export interface TrackCaps {
   /** Knowledge-base coverage, out of `sae.n_features`. */
   described_features: number;
   labelled_clusters: number;
-  /**
-   * Whether this organism can produce a minimap at all. Distinguishes "omitted
-   * because you already have it" from "this deployment cannot draw it".
-   */
+  /** Whether this organism can produce a minimap at all. */
   overview_available: boolean;
 }
 
@@ -168,25 +141,19 @@ export interface GenomeTrackData {
   sae: ModelRef;
   locus: Locus;
   /**
-   * Window nucleotides, 5' to 3', length `locus.end - locus.start + 1`. Null
-   * when the window exceeds `caps.max_sequence_window` or the genome's sequence
-   * file is unavailable — the track degrades rather than breaking.
+   * Window nucleotides, 5' to 3'. Null when the window exceeds
+   * `caps.max_sequence_window` or the sequence is unavailable.
    */
   sequence: string | null;
   bins: BinAxis;
   /**
-   * Null means this deployment cannot draw a minimap, or that the caller
-   * already holds one. `caps.overview_available` tells the two apart.
+   * Null when no minimap is available or the caller already has one;
+   * `caps.overview_available` tells the two apart.
    */
   overview: MinimapOverview | null;
-  /**
-   * Chromosome-wide activation for the currently selected feature.
-   */
+  /** Chromosome-wide activation for the currently selected feature. */
   feature_overview?: FeatureOverview | null;
-  /**
-   * Null (not `[]`) means this organism has no annotation coverage at all —
-   * "nobody looked", which is different from "nothing here".
-   */
+  /** Null means no annotation coverage; `[]` means none in this window. */
   annotations: AnnotationBlock[] | null;
   segments: SegmentBlock[];
   /**
@@ -202,12 +169,10 @@ export interface GenomeTrackData {
   caps: TrackCaps;
 }
 
-/**
- * How the features are ranked, and what `score` on each trace means.
- */
+/** How the features are ranked, and what `score` on each trace means. */
 export type ActivationRanking = "peak" | "zscore";
 
-/** Rows the track can draw, in the order they are listed on the `tracks` prop. */
+/** Rows the track can draw. */
 export type TrackKind =
   | "annotations"
   | "features"
@@ -215,22 +180,19 @@ export type TrackKind =
   | "segments"
   | "sequence";
 
-/** The visible bp range. 1-based inclusive, like every other coordinate. */
+/** The visible bp range, 1-based inclusive. */
 export interface GenomeViewport {
   start: number;
   end: number;
 }
 
-/**
- * Cross-component selection.
- */
 export type GenomeSelection =
   | { kind: "block"; id: string }
   | { kind: "range"; end: number; start: number }
   | { kind: "row"; id: string }
   | { kind: "series"; id: string };
 
-/** A typed tool error, rendered as a first-class state rather than a toast. */
+/** A typed error, rendered in place of the track. */
 export interface TrackError {
   code: string;
   message: string;
@@ -243,67 +205,52 @@ export interface GenomeTrackProps extends Omit<
   /** The window to draw. Null renders the empty state. */
   data: GenomeTrackData | null;
   /**
-   * Rows to draw, top to bottom. An ordered array rather than a set of boolean
-   * props, which is how the design's several frames come out of one component.
+   * Rows to draw, top to bottom.
    * @default ["minimap", "sequence", "annotations", "segments", "features"]
    */
   tracks?: TrackKind[];
   /**
-   * Visible range. Controlled when supplied — pan and zoom then report through
-   * `onViewportChange` and change nothing until the prop comes back. Omit for
-   * uncontrolled, where the component owns the range and starts at the
-   * payload's full window.
+   * Visible range. When supplied, pan and zoom only report through
+   * `onViewportChange`; omit it to start at the payload's full window.
    */
   viewport?: GenomeViewport;
   /**
-   * How far outside the loaded window pan and zoom may go, as a multiple of
-   * that window's span. Zero pins the viewport to the payload.
-   *
-   * Only applies when the payload carries an `overview`; without a chromosome
-   * length there is nothing to navigate into and the window is the hard limit.
+   * How far past the loaded window pan and zoom may go, as a multiple of its
+   * span. Applies only when the payload has an `overview`.
    * @default 1
    */
   navigationMargin?: number;
-  /** Called on pan and zoom. A shell typically re-fetches from this. */
+  /** Called on pan and zoom. */
   onViewportChange?: (viewport: GenomeViewport) => void;
   /**
-   * How the features are ranked, shown in the features section's dropdown.
-   *
-   * The dropdown is drawn only when `onRankingChange` is supplied — a control
-   * nobody is listening to does nothing when used.
+   * How the features are ranked. The dropdown shows only when
+   * `onRankingChange` is supplied.
    * @default "zscore"
    */
   ranking?: ActivationRanking;
-  /** Called when the user picks a ranking. A shell re-fetches from this. */
+  /** Called when the user picks a ranking. */
   onRankingChange?: (ranking: ActivationRanking) => void;
   /** Controlled selection. */
   selection?: GenomeSelection | null;
   onSelectionChange?: (selection: GenomeSelection | null) => void;
   /**
-   * Height of one block row, in px: a segment row, or one lane of the
-   * annotations row. The minimap and sequence rows size themselves from
-   * `density`, and the features rows have a prop of their own.
+   * Height in px of a segment row or of one annotation lane.
    * @default 16
    */
   blockRowHeight?: number;
   /**
-   * Cap on how many lanes the annotations row may use, one block deep each.
-   *
-   * Blocks that do not fit are left undrawn rather than stacked into the last
-   * lane, and stay listed in the accessible table. Reaching this cap is worth
-   * knowing about: it means the plot is not showing everything.
+   * Maximum number of annotation lanes. Blocks that do not fit are not drawn
+   * but stay in the accessible table.
    * @default 4
    */
   maxAnnotationLanes?: number;
   /**
-   * Height of one feature's bars in the features row, in px, not counting the
-   * space above them that the feature's name occupies.
+   * Height in px of one feature's bars, not counting its name above them.
    * @default 24
    */
   featureRowHeight?: number;
   /**
-   * How many traces the features row draws, `pinned` first and then `features`
-   * in the payload's own rank order.
+   * How many traces the features row draws, `pinned` first, then `features`.
    * @default 8
    */
   maxFeatureRows?: number;
@@ -313,24 +260,21 @@ export interface GenomeTrackProps extends Omit<
    */
   showRowLabels?: boolean;
   /**
-   * Comfortable is the standalone view; compact tightens every row and drops
-   * the labels and captions.
+   * Compact tightens every row and drops the labels and captions.
    * @default "comfortable"
    */
   density?: "comfortable" | "compact";
   /** Render the skeleton instead of the data. */
   loading?: boolean;
   /**
-   * A fetch is in flight for data the track is already showing something for.
+   * A fetch is in flight while the current data is still shown.
    * @default false
    */
   refreshing?: boolean;
   /** Render a typed error state instead of the data. */
   error?: TrackError | null;
   /**
-   * Disable wheel-zoom and drag-pan. The track still reports selection, and the
-   * keyboard controls still work — this only turns off pointer navigation, for
-   * a card that should not capture scroll.
+   * Disable wheel-zoom and drag-pan. Selection and keyboard still work.
    * @default false
    */
   disableNavigation?: boolean;

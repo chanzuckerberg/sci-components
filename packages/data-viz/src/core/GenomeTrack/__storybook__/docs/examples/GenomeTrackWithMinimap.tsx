@@ -1,5 +1,4 @@
-// The minimap: the whole chromosome as a bar, with the loaded window outlined
-// and the visible range banded inside it.
+// The minimap shows the chromosome, the loaded window, and the visible range.
 
 import {
   AnnotationBlock,

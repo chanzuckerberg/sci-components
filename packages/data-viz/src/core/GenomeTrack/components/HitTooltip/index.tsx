@@ -11,13 +11,8 @@ import { TrackRow } from "../../utils/layout";
 import { GenomeScale, bpToPx } from "../../utils/scale";
 
 /**
- * Where the tooltip's left edge goes, in px from the plot's left edge.
- *
- * Centred over the hovered block wherever it fits, and slid inward just far
- * enough to stay inside the plot where it does not — near either end of the
- * axis a centred box would hang off the side and be clipped. A box wider than
- * the plot is pinned to its left edge, where `max-width` has already made it no
- * wider than the plot.
+ * The tooltip's left edge in px: centred on the hit, then shifted to stay
+ * inside the plot.
  */
 export function tooltipLeft(
   center: number,
@@ -39,21 +34,8 @@ interface HitTooltipProps {
 }
 
 /**
- * Tooltip for the hovered block or bin.
- *
- * Positioned by hand rather than by a popper: the anchor is a point inside a
- * canvas, not an element, so there is nothing for a popper to attach to. It is
- * `aria-hidden` because the accessible table already carries every value it
- * shows — announcing it again would read the same data twice, once without
- * structure.
- *
- * The range it prints is the *bin's* range for a trace hit, not a single base.
- * A pooled bin covers `stride` bases and reporting one of them would claim
- * precision the payload does not have.
- *
- * Its width is measured once it has rendered, because where it can go depends
- * on how wide its text made it. A layout effect runs before the browser paints,
- * so the first, unmeasured position is never seen.
+ * Tooltip for the hovered block or bin. For a trace it shows the bin's whole
+ * range. Hidden from screen readers, which get the accessible table instead.
  */
 export const HitTooltip = ({
   hit,
@@ -64,6 +46,7 @@ export const HitTooltip = ({
   const box = useRef<HTMLDivElement>(null);
   const [boxWidth, setBoxWidth] = useState(0);
 
+  // Measure before paint so the tooltip never shows at an unclamped position.
   useLayoutEffect(() => {
     setBoxWidth(box.current?.offsetWidth ?? 0);
   }, [hit, width]);

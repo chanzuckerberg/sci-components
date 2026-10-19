@@ -28,17 +28,7 @@ import {
   ticksFor,
 } from "../utils/format";
 
-/**
- * The draw passes, exercised against a recording stub context.
- *
- * jsdom has no 2D context, so the component's renderer effect bails out under
- * test and the drawing code would otherwise have zero coverage — the largest
- * untested surface in the component. A stub cannot check what the pixels look
- * like (that is Chromatic's job) but it can check the things that are logic
- * rather than appearance: that a pass draws at all, that it stays inside its
- * row, that it skips work it should skip, and that it does not throw on the
- * degenerate inputs a real payload produces.
- */
+// jsdom has no 2D canvas context, so draw passes run against a stub.
 
 interface Call {
   args: number[];
@@ -46,11 +36,8 @@ interface Call {
 }
 
 /**
- * Minimal recording `CanvasRenderingContext2D`.
- *
- * Only the members the renderers touch are implemented; anything else would be
- * dead weight. `measureText` returns a width proportional to the string length,
- * which is enough for the label-fitting logic to behave realistically.
+ * Records the `CanvasRenderingContext2D` calls the renderers make.
+ * `measureText` returns a width proportional to string length.
  */
 function createStubContext(): {
   calls: Call[];
@@ -120,7 +107,6 @@ const CATEGORY_PALETTE = segmentPalette(
 );
 
 const WIDTH = 800;
-/** Shared because three passes assert the same containment property. */
 const INSIDE_ROW = "stays inside its row";
 const ROW: TrackRow = { height: 28, kind: "annotations", label: "", y: 40 };
 
@@ -151,14 +137,7 @@ function makeDraw(overrides: Partial<DrawContext> = {}): {
   };
 }
 
-/**
- * Every y coordinate the pass drew at.
- *
- * All four recorded ops take y as their second argument, so no per-op handling
- * is needed. `Number.isFinite` filters NaN, which is the thing these assertions
- * are really guarding against — a NaN coordinate draws nothing and throws
- * nothing, so it would otherwise pass silently.
- */
+/** Every finite y coordinate the pass drew at, so NaN fails the assertions. */
 function drawnYs(calls: Call[]): number[] {
   return calls
     .filter((call) =>
@@ -207,8 +186,6 @@ describe("drawAnnotations", () => {
 
     drawAnnotations(draw, DEFAULT_TRACK_DATA.annotations ?? []);
 
-    // Fewer fills than annotations: the ones outside the window are skipped
-    // rather than drawn off-canvas.
     expect(
       recorder.calls.filter((call) => call.op === "fill").length
     ).toBeLessThan((DEFAULT_TRACK_DATA.annotations ?? []).length);
@@ -256,8 +233,6 @@ describe("drawSegments", () => {
     drawSegments(draw, DEFAULT_TRACK_DATA.segments, CATEGORY_PALETTE);
 
     recorder.texts.forEach((entry) => {
-      // A namespaced id is 40+ characters and would never fit; the full id is
-      // in the tooltip and the accessible table instead.
       expect(entry.text).not.toContain("mock-sae:");
     });
   });
@@ -266,8 +241,6 @@ describe("drawSegments", () => {
 describe("segmentLabel", () => {
   it("combines the trailing id part with the category", () => {
     expect(segmentLabel(DEFAULT_TRACK_DATA.segments[0])).toMatch(
-      // The category comes from the payload's enum, so the label is the
-      // short id plus whatever that category is called.
       /^seg_\d{5} \S+$/
     );
   });
@@ -283,7 +256,7 @@ describe("drawSequence", () => {
   it("draws one letter per base when bases are wide enough", () => {
     const { draw, recorder } = makeDraw({
       row: { height: 18, kind: "sequence", label: "", y: 20 },
-      // 40 bases across 800 px is 20 px per base, comfortably readable.
+      // 20 px per base.
       scale: createScale({ end: 45_501, start: 45_462 }, WIDTH),
     });
 
@@ -303,8 +276,7 @@ describe("drawSequence", () => {
 
     drawSequence(draw, DEFAULT_TRACK_DATA.sequence ?? "", 45_462);
 
-    // 289 bases across 800 px is under 3 px each: crushed glyphs would suggest
-    // the component is broken, where a band says "zoom in to read this".
+    // Under 3 px per base.
     expect(recorder.texts).toHaveLength(0);
     expect(recorder.calls.some((call) => call.op === "fillRect")).toBe(true);
   });
@@ -313,8 +285,7 @@ describe("drawSequence", () => {
     const sequence = DEFAULT_TRACK_DATA.sequence ?? "";
     const { draw, recorder } = makeDraw({
       row: { height: 18, kind: "sequence", label: "", y: 20 },
-      // The payload's 289 bases centred in a window four times as wide, which
-      // is what a zoom-out past the loaded window looks like.
+      // Zoomed out past the loaded window.
       scale: createScale({ end: 46_100, start: 45_000 }, WIDTH),
     });
 
@@ -322,10 +293,6 @@ describe("drawSequence", () => {
 
     const band = recorder.calls.find((call) => call.op === "fillRect");
 
-    // Filling the row's full width drew "there is sequence here" across
-    // coordinates that have none — contradicting the wash over the same
-    // region. The band has to start where the sequence does and stop where it
-    // ends.
     expect(band?.args[0]).toBeGreaterThan(0);
     expect(band?.args[2]).toBeLessThan(WIDTH);
     expect(band?.args[2] ?? 0).toBeCloseTo(
@@ -351,8 +318,7 @@ describe("drawSequence", () => {
       scale: createScale({ end: 45_501, start: 45_462 }, WIDTH),
     });
 
-    // A payload whose sequence is shorter than its window: the server capped it
-    // but the window did not shrink. Drawing `undefined` letters is the bug.
+    // A sequence shorter than its window.
     drawSequence(draw, "ACGT", 45_462);
 
     expect(recorder.texts).toHaveLength(4);
@@ -364,11 +330,7 @@ describe("drawMinimap", () => {
     end: DEFAULT_TRACK_DATA.locus.end,
     start: DEFAULT_TRACK_DATA.locus.start,
   };
-  /**
-   * Sized from the layout's own constants rather than a literal, so the row the
-   * renderer is handed is the row the layout would build. A hard-coded height
-   * here silently stops matching the moment the layout changes.
-   */
+  /** Sized from the layout's constants so it matches the real row. */
   function minimapRow(density: "comfortable" | "compact"): TrackRow {
     return {
       height:
@@ -383,30 +345,14 @@ describe("drawMinimap", () => {
 
   const MINIMAP_ROW = minimapRow("comfortable");
 
-  /**
-   * Minimap content with no chromosome context: the extent is the payload's own
-   * window, which is what the row falls back to when the shell has no overview.
-   * That was the row's only behaviour before it spanned chromosomes, so these
-   * cases are also the regression tests for the fallback.
-   */
+  /** No chromosome overview: the extent is the payload's own window. */
   const NO_OVERVIEW = {
     extent: BOUNDS,
     feature: null,
     window: BOUNDS,
   };
 
-  /**
-   * The rule under the bar, with a notch at every label.
-   *
-   * The labels are spaced by a round coordinate interval rather than by pixels,
-   * so without a notch a reader has to guess which part of the bar each number
-   * points at. Asserted through the recorded path operations because the notch
-   * positions are the whole point — a rule with no notches, or notches that
-   * drift off the tick coordinates, both still draw something.
-   */
   describe("tick axis", () => {
-    // Derived from the layout's own constants, so the gap under the bar cannot
-    // change in one place and be asserted at the old offset here.
     const AXIS_Y =
       30 +
       MINIMAP_RANGE_HEIGHT.comfortable +
@@ -426,7 +372,7 @@ describe("drawMinimap", () => {
         tickInterval(NO_OVERVIEW.extent.end - NO_OVERVIEW.extent.start + 1, 6)
       );
 
-      // One horizontal rule plus one notch per tick, in a single stroked path.
+      // One rule plus one notch per tick.
       expect(ticks.length).toBeGreaterThan(1);
       expect(moves).toHaveLength(ticks.length + 1);
       expect(lines).toHaveLength(ticks.length + 1);
@@ -434,20 +380,17 @@ describe("drawMinimap", () => {
         recorder.calls.filter((call) => call.op === "stroke")
       ).toHaveLength(1);
 
-      // The rule spans the plot, at the bar's lower edge.
       expect(moves[0].args[0]).toBe(0);
       expect(lines[0].args[0]).toBe(WIDTH);
       expect(moves[0].args[1]).toBe(AXIS_Y + 0.5);
 
-      // Every notch hangs below the rule rather than above it.
+      // Notches hang below the rule, at their tick's x.
       moves.slice(1).forEach((move, index) => {
         expect(move.args[1]).toBe(AXIS_Y + 0.5);
         expect(lines[index + 1].args[1]).toBeGreaterThan(AXIS_Y + 0.5);
-        // And sits on its own tick's x, not the rule's.
         expect(lines[index + 1].args[0]).toBe(move.args[0]);
       });
 
-      // Inside the plot, with the ends allowed to reach the rule's ends.
       moves.slice(1).forEach((move) => {
         expect(move.args[0]).toBeGreaterThanOrEqual(0);
         expect(move.args[0]).toBeLessThanOrEqual(WIDTH);
@@ -467,7 +410,6 @@ describe("drawMinimap", () => {
     });
   });
 
-  /** The viewport band: the last `fillRect` the pass makes. */
   function windowRect(recorder: ReturnType<typeof createStubContext>) {
     const rects = recorder.calls.filter((call) => call.op === "fillRect");
     const last = rects[rects.length - 1];
@@ -478,8 +420,7 @@ describe("drawMinimap", () => {
   it("fills the whole track when nothing is zoomed", () => {
     const { draw, recorder } = makeDraw({ row: MINIMAP_ROW });
 
-    // The scale in `makeDraw` is the full payload window, so the viewport and
-    // the extent are the same range.
+    // The default scale is the full payload window.
     drawMinimap(draw, NO_OVERVIEW);
 
     expect(windowRect(recorder).width).toBeCloseTo(WIDTH, 0);
@@ -497,9 +438,6 @@ describe("drawMinimap", () => {
     const box = windowRect(recorder);
     const span = BOUNDS.end - BOUNDS.start + 1;
 
-    // The invariant the row exists for: the box's position and width within
-    // the bar are the viewport's position and width within the extent. Stated
-    // as fractions rather than pixels, since pixels are the thing under test.
     expect(box.x / WIDTH).toBeCloseTo((view.start - BOUNDS.start) / span, 3);
     expect(box.width / WIDTH).toBeCloseTo(
       (view.end - view.start + 1) / span,
@@ -515,9 +453,6 @@ describe("drawMinimap", () => {
 
     drawMinimap(draw, NO_OVERVIEW);
 
-    // 20 bases of 289 is 55 px here, but the same window inside a 40 kb extent
-    // is a fraction of a pixel. The floor is what stops the indicator
-    // disappearing exactly when a user is most lost.
     expect(windowRect(recorder).width).toBeGreaterThanOrEqual(3);
   });
 
@@ -542,26 +477,15 @@ describe("drawMinimap", () => {
 
     drawMinimap(draw, NO_OVERVIEW);
 
-    // The bp count sits here rather than in the header, which names the
-    // segment: this caption is the one that travels with the band, so it is
-    // where "how much of it you are looking at" belongs.
     expect(
       recorder.texts.some((label) => label.text === "45,500–45,560 · 61 bp")
     ).toBe(true);
   });
 
-  /**
-   * The band keeps all four borders at the end of the axis.
-   *
-   * `bandX` holds the band inside the plot, so panning to the chromosome's end
-   * puts its right edge exactly on the plot's. A stroke centred a pixel past
-   * the fill then falls outside the canvas and that border silently vanishes,
-   * leaving a band that looks open on one side.
-   */
   it("keeps the band's border inside the plot at the end of the axis", () => {
     const { draw, recorder } = makeDraw({
       row: MINIMAP_ROW,
-      // The last slice of the extent, so the band is flush right.
+      // Band flush right.
       scale: createScale({ end: BOUNDS.end, start: BOUNDS.end - 19 }, WIDTH),
     });
 
@@ -571,7 +495,6 @@ describe("drawMinimap", () => {
     const [x, , width] = stroke?.args ?? [];
 
     expect(stroke).toBeDefined();
-    // Both vertical edges land on a device pixel column the canvas has.
     expect(x).toBeGreaterThanOrEqual(0.5);
     expect(x + width).toBeLessThanOrEqual(WIDTH - 0.5);
   });
@@ -586,7 +509,6 @@ describe("drawMinimap", () => {
 
     const caption = recorder.texts.find((label) => label.text.includes("–"));
 
-    // Centred on a band at x=0, the caption would start off the left edge.
     expect(caption?.x).toBeGreaterThan(0);
   });
 
@@ -598,8 +520,7 @@ describe("drawMinimap", () => {
 
     drawMinimap(draw, NO_OVERVIEW);
 
-    // A tick past the right edge of the viewport has to appear, or the box has
-    // nothing to be positioned against.
+    // A tick past the viewport's right edge.
     expect(recorder.texts.some((label) => label.text.includes("45,700"))).toBe(
       true
     );
@@ -627,11 +548,6 @@ describe("drawMinimap", () => {
     });
   });
 
-  /**
-   * The chromosome-spanning row, which is the shape the design asks for and
-   * the one a re-fetching track needs: the band has to stay meaningful while
-   * the payload window moves underneath it.
-   */
   describe("over a chromosome", () => {
     const overview = DEFAULT_TRACK_DATA.overview as MinimapOverview;
     const CHROMOSOME = {
@@ -648,9 +564,7 @@ describe("drawMinimap", () => {
 
       drawMinimap(draw, CHROMOSOME);
 
-      // 45 kb into 4.6 Mb is about 1% across the bar. Before the row spanned
-      // the chromosome this same input filled it end to end, which is the
-      // regression this pins.
+      // 45 kb into 4.6 Mb is about 1% across the bar.
       expect(windowRect(recorder).x / WIDTH).toBeCloseTo(
         BOUNDS.start / overview.chrom_length,
         2
@@ -665,12 +579,11 @@ describe("drawMinimap", () => {
 
       drawMinimap(draw, CHROMOSOME);
 
-      // 289 bp of 4.6 Mb is six hundredths of a pixel. At chromosome scale the
-      // minimum width is the normal case, not an edge case.
+      // 289 bp of 4.6 Mb is far under a pixel.
       expect(windowRect(recorder).width).toBeGreaterThanOrEqual(3);
     });
 
-    /** One feature's chromosome-wide trace, as the shell fetches on selection. */
+    /** One feature's chromosome-wide trace. */
     const FEATURE: FeatureOverview = {
       bins: overview.bins,
       feature_id: 13_492,
@@ -684,10 +597,7 @@ describe("drawMinimap", () => {
 
       drawMinimap(draw, CHROMOSOME);
 
-      // The track, and the viewport band on top of it — exactly one band. At
-      // chromosome scale a loaded-window outline or a coarse chromosome band
-      // would collapse to the 3 px floor and land on the viewport band as an
-      // indistinguishable grey mark.
+      // The track plus the viewport band.
       expect(
         recorder.calls.filter((call) => call.op === "fillRect")
       ).toHaveLength(2);
@@ -701,7 +611,7 @@ describe("drawMinimap", () => {
 
       drawMinimap(draw, { ...CHROMOSOME, feature: FEATURE });
 
-      // One column per firing bin, on top of the track and the viewport band.
+      // One column per firing bin, plus the track and the viewport band.
       const firing = FEATURE.values.filter((value) => value > 0).length;
 
       expect(
@@ -709,15 +619,6 @@ describe("drawMinimap", () => {
       ).toHaveLength(2 + firing);
     });
 
-    /**
-     * A window-scoped trace lands on the window's slice of the bar.
-     *
-     * Selecting a feature always puts its signal on the minimap: with no
-     * chromosome-wide trace fetched, the component falls back to the feature's
-     * own window trace. That only tells the truth if the renderer places it by
-     * its bin axis rather than stretching it across the bar — otherwise a few
-     * hundred bases of activation would be drawn as though it spanned megabases.
-     */
     it("places a window-scoped trace over the window, not the whole bar", () => {
       const { draw, recorder } = makeDraw({ row: MINIMAP_ROW });
       const windowBins = {
@@ -736,7 +637,7 @@ describe("drawMinimap", () => {
         },
       });
 
-      // The track and the band are the first two fills; the rest are the trace.
+      // The first two fills are the track and the band.
       const columns = recorder.calls
         .filter((call) => call.op === "fillRect")
         .slice(2)
@@ -744,8 +645,6 @@ describe("drawMinimap", () => {
 
       expect(columns).toHaveLength(windowBins.n_bins);
 
-      // Every column sits inside the window's own pixels, which at chromosome
-      // scale is a sliver near the left edge rather than the whole width.
       const left = bpToPx(createScale(CHROMOSOME.extent, WIDTH), BOUNDS.start);
       const right = bpToPx(createScale(CHROMOSOME.extent, WIDTH), BOUNDS.end);
 
@@ -762,7 +661,7 @@ describe("drawMinimap", () => {
 
       drawMinimap(draw, CHROMOSOME);
 
-      // Megabase ticks, which only exist if the row is spanning a chromosome.
+      // Megabase ticks.
       expect(recorder.texts.some((label) => /M$/.test(label.text))).toBe(true);
     });
 
@@ -785,8 +684,6 @@ describe("drawMinimap", () => {
         feature: { ...FEATURE, values: FEATURE.values.map(() => 0) },
       });
 
-      // A feature that never fires normalizes by zero. The row has to draw a
-      // flat bar rather than NaN rects, which draw nothing and throw nothing.
       drawnYs(recorder.calls).forEach((y) =>
         expect(Number.isNaN(y)).toBe(false)
       );
@@ -834,13 +731,11 @@ describe("drawOutsideWindow", () => {
 
     expect(rects).toHaveLength(1);
 
-    // The left half of the viewport is unloaded, so the tint starts at the
-    // plot's left edge and stops halfway.
+    // The left half of the viewport is unloaded.
     expect(rects[0].args[0]).toBe(0);
     expect(rects[0].args[2]).toBeCloseTo(WIDTH / 2, 0);
 
-    // And it is confined to the band, not the whole canvas: the minimap draws
-    // on the chromosome, so washing it would mark an unrelated region.
+    // Confined to the band.
     expect(rects[0].args[1]).toBe(BANDS[0].top);
     expect(rects[0].args[3]).toBe(BANDS[0].bottom - BANDS[0].top);
   });
@@ -856,11 +751,7 @@ describe("drawOutsideWindow", () => {
       recorder.calls.find((call) => call.op === "moveTo")?.args[0] ??
       Number.NaN;
 
-    // Both windows stop halfway across the viewport, so both rules land at the
-    // midpoint — within a pixel, since the rule is drawn on a half-pixel to
-    // land crisply and the range is inclusive. The point is that it marks the
-    // coordinate where the data stops, not the edge of the tinted region: at
-    // the plot's own edge it would be indistinguishable from a border.
+    // Both rules land within a pixel of the midpoint, where the data stops.
     [ruleX(left), ruleX(right)].forEach((x) => {
       expect(Math.abs(x - WIDTH / 2)).toBeLessThan(2);
     });
@@ -893,14 +784,7 @@ describe("drawOutsideWindow", () => {
 });
 
 describe("drawFeatureBars", () => {
-  /**
-   * The y axis: one number, the trace's own maximum, at the top of its bars.
-   *
-   * Overlaid rather than inset, which is the property worth pinning. Every row
-   * shares one bp axis measured from the plot's left edge, so insetting the
-   * features rows alone would put a bar at a different x from the annotation
-   * block covering the same base.
-   */
+  /** The y axis label: the trace's maximum, overlaid above its bars. */
   describe("the y axis", () => {
     const trace = DEFAULT_TRACK_DATA.features[0];
 
@@ -919,7 +803,7 @@ describe("drawFeatureBars", () => {
         (FEATURE_ROW.axisInset ?? 0);
 
       expect(label).toBeDefined();
-      // Baseline 1 px above the bars, in the strip reserved for it.
+      // Baseline 1 px above the bars.
       expect(FEATURE_ROW.axisInset).toBeGreaterThan(0);
       expect(label?.y).toBe(barsTop - 1);
     });
@@ -935,9 +819,7 @@ describe("drawFeatureBars", () => {
       const bars = recorder.calls.filter((call) => call.op === "fillRect");
       const tallestTop = Math.min(...bars.map((bar) => bar.args[1]));
 
-      // The bars are normalized to the trace's own peak, so the tallest one
-      // reaches the top of its band every time. Drawn over them the label was
-      // never occasionally obscured — it was always obscured.
+      // The tallest bar always reaches the top of its band.
       expect(label?.y).toBeLessThan(tallestTop);
     });
 
@@ -951,8 +833,6 @@ describe("drawFeatureBars", () => {
       );
       const bars = recorder.calls.filter((call) => call.op === "fillRect");
 
-      // x = 0 for the label, and the bars still start from 0 too: the label
-      // overlays them rather than shifting the coordinate system.
       expect(label?.x).toBe(0);
       expect(Math.min(...bars.map((bar) => bar.args[0]))).toBeLessThan(1);
     });
@@ -965,8 +845,6 @@ describe("drawFeatureBars", () => {
 
       drawFeatureBars(draw, trace, DEFAULT_TRACK_DATA.bins);
 
-      // Compact drops the trace names; the axis goes with them rather than
-      // being the one piece of text left in a thumbnail.
       expect(recorder.texts).toHaveLength(0);
     });
 
@@ -983,14 +861,7 @@ describe("drawFeatureBars", () => {
     });
   });
 
-  /** A features sub-row as the layout builds one: bars under a label band. */
-  /**
-   * A real features row from the layout rather than a hand-written one.
-   *
-   * The row carries two insets the renderer has to subtract — the trace's name
-   * and the y axis — and a fixture that omitted either would let the bars and
-   * the label agree with each other while both disagreed with what ships.
-   */
+  /** A features sub-row built by the layout, with label and axis insets. */
   const FEATURE_ROW: TrackRow = layoutRows(DEFAULT_TRACK_DATA, {
     blockRowHeight: 16,
     density: "comfortable",
@@ -1023,8 +894,6 @@ describe("drawFeatureBars", () => {
       { end: 4, n_bins: 4, start: 1, stride: 1 }
     );
 
-    // A 1 px stub for silence would read as a faint signal, which across a
-    // mostly-quiet trace looks like noise the feature does not have.
     expect(recorder.calls.some((call) => call.op === "fillRect")).toBe(false);
   });
 
@@ -1039,8 +908,6 @@ describe("drawFeatureBars", () => {
 
     const top = FEATURE_ROW.y + (FEATURE_ROW.labelInset ?? 0);
 
-    // The label is DOM text drawn over this row, so a bar reaching into the
-    // inset would run underneath the name rather than beside it.
     recorder.calls
       .filter((call) => call.op === "fillRect")
       .forEach((call) => {
@@ -1064,8 +931,6 @@ describe("drawFeatureBars", () => {
       DEFAULT_TRACK_DATA.bins
     );
 
-    // Without the baseline an all-zero row is indistinguishable from a row
-    // whose draw pass failed. A zero peak must not divide either.
     expect(recorder.calls.some((call) => call.op === "fillRect")).toBe(false);
     expect(recorder.calls.some((call) => call.op === "stroke")).toBe(true);
     expect(drawnYs(recorder.calls).every(Number.isFinite)).toBe(true);
@@ -1080,9 +945,7 @@ describe("drawFeatureBars", () => {
       { end: 2, n_bins: 2, start: 1, stride: 1 }
     );
 
-    // Not even a baseline: a baseline claims "this feature is silent across
-    // this window", and a payload whose bins do not reach the window has said
-    // nothing about it either way.
+    // Not even a baseline.
     expect(recorder.calls).toHaveLength(0);
   });
 });

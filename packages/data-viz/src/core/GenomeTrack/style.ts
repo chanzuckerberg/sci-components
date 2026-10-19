@@ -16,10 +16,6 @@ import {
 import styled from "@emotion/styled";
 import { withAlpha } from "./utils/palette";
 
-/**
- * Layout scaffolding for the track.
- */
-
 interface DensityProps extends CommonThemeProps {
   density: "comfortable" | "compact";
 }
@@ -35,11 +31,7 @@ interface FeatureLabelProps extends CommonThemeProps {
 }
 
 interface RowLabelProps extends CommonThemeProps {
-  /**
-   * Whether to rule off the section above.
-   *
-   * False for the first section and for the minimap.
-   */
+  /** Whether to draw a divider above the section. */
   withSeparator: boolean;
 }
 
@@ -49,9 +41,7 @@ export const TrackRoot = styled("div")`
   container-type: inline-size;
 `;
 
-/**
- * Header carrying the organism and the exact coordinate range.
- */
+/** Header with the organism and the coordinate range. */
 export const TrackHeader = styled("div")`
   ${fontBodyXxs}
 
@@ -71,9 +61,7 @@ export const TrackHeader = styled("div")`
   }}
 `;
 
-/**
- * Gene, organism, and the selected feature's name.
- */
+/** Gene, organism, and the selected feature's name. */
 export const TrackHeaderTitle = styled("span")`
   ${fontBodySemiboldXxs}
 
@@ -95,18 +83,14 @@ export const TrackHeaderRange = styled("span")`
   }}
 `;
 
-/**
- * Row that holds the canvas and the controls layered over it.
- */
+/** Holds the canvas and the controls layered over it. */
 export const TrackBody = styled("div")`
   position: relative;
   display: flex;
   align-items: stretch;
 `;
 
-/**
- * A section's name, on its own line above the rows it labels.
- */
+/** A section's name, on its own line above its rows. */
 export const TrackRowLabel = styled("div")`
   ${fontBodySemiboldXxxxs}
 
@@ -133,13 +117,7 @@ export const TrackRowLabel = styled("div")`
   }}
 `;
 
-/**
- * Canvas wrapper.
- *
- * `touch-action: none` is required, not cosmetic: without it a touch drag
- * scrolls the page instead of panning the track, and the pointer events never
- * reach the handler.
- */
+/** Canvas wrapper. `touch-action: none` makes touch drags pan, not scroll. */
 export const TrackPlot = styled("div")`
   position: relative;
   flex: 1 1 auto;
@@ -170,9 +148,7 @@ export const TrackPlot = styled("div")`
   }
 `;
 
-/**
- * A feature's name, sitting above its bars inside the plot area.
- */
+/** A feature's name, above its bars inside the plot. */
 export const TrackFeatureLabel = styled("div")`
   position: absolute;
   left: 0;
@@ -196,11 +172,7 @@ export const TrackFeatureLabel = styled("div")`
   }}
 `;
 
-/**
- * Holds an interactive control against the right edge of a section's header
- * line — the sequence row's copy button, the features section's ranking
- * dropdown.
- */
+/** Holds a control at the right edge of a section's header line. */
 export const TrackOverlayControl = styled("div")`
   position: absolute;
   right: 0;
@@ -210,14 +182,8 @@ export const TrackOverlayControl = styled("div")`
 `;
 
 /**
- * The copy control: an SDS minimal button whose icon takes the accent ramp on
- * interaction.
- *
- * SDS has no variant that does this, which is why there is an override here at
- * all.
- *
- * `&&` doubles the class to out-specify SDS's own `&:hover svg` rather than
- * relying on stylesheet insertion order, which composition does not guarantee.
+ * Copy button whose icon takes the accent colours on interaction. `&&` raises
+ * specificity above SDS's own `&:hover svg`.
  */
 export const TrackSequenceCopyButton = styled(Button)`
   ${(props: CommonThemeProps) => {
@@ -239,9 +205,7 @@ export const TrackSequenceCopyButton = styled(Button)`
   }}
 `;
 
-/**
- * The segment category key, in the band the layout reserved under that row.
- */
+/** The segment category legend, under the segments row. */
 export const TrackLegend = styled("div")`
   ${fontBodyXxxxs}
 
@@ -278,9 +242,7 @@ interface SwatchProps extends CommonThemeProps {
   striped: boolean;
 }
 
-/**
- * A category's swatch: its color, diagonally striped on the negative strand.
- */
+/** A category's swatch, striped for the negative strand. */
 export const TrackLegendSwatch = styled("span")`
   width: 10px;
   height: 10px;
@@ -306,18 +268,12 @@ export const TrackLegendSwatch = styled("span")`
   }}
 `;
 
-/**
- * Tooltip for the hovered block or bin.
- */
+/** Tooltip for the hovered block or bin. */
 export const TrackTooltip = styled("div")`
   position: absolute;
   z-index: 2;
   pointer-events: none;
-  /*
-   * Its own text's width, up to a cap, rather than shrink-to-fit: an absolute
-   * box otherwise narrows as it nears the right edge, so the width the
-   * placement measured would change with the placement it chose.
-   */
+  /* Fixed to its content width so it doesn't shrink near the right edge. */
   width: max-content;
   max-width: min(320px, 100%);
   overflow-wrap: anywhere;
@@ -359,9 +315,7 @@ export const TrackTooltipDetail = styled("div")`
     `color: ${getSemanticColors(props)?.base?.textSecondary};`}
 `;
 
-/**
- * Coordinate row.
- */
+/** Coordinate row. */
 export const TrackTooltipRange = styled("div")`
   ${fontCodeXs}
 
@@ -371,9 +325,7 @@ export const TrackTooltipRange = styled("div")`
     `color: ${getSemanticColors(props)?.base?.textSecondary};`}
 `;
 
-/**
- * Visually hidden container for the accessible table.
- */
+/** Visually hidden container for the accessible table. */
 export const VisuallyHidden = styled("div")`
   position: absolute;
   width: 1px;
@@ -419,9 +371,7 @@ export const TrackMessageTitle = styled("div")`
   }}
 `;
 
-/**
- * Indeterminate bar across the top of the plot while a re-fetch is in flight.
- */
+/** Indeterminate bar above the plot while a re-fetch is in flight. */
 export const TrackProgress = styled("div")`
   position: absolute;
   bottom: 100%;

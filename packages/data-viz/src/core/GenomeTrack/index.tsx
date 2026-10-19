@@ -74,11 +74,7 @@ function rowKey(row: TrackRow): string {
   return `${row.kind}-${row.traceId ?? row.laneIndex ?? 0}`;
 }
 
-/**
- * The header's coordinate readout.
- *
- * ex: NC_000913.3 45,000–85,000 · 40 kb · 21 bp/point
- */
+/** e.g. "NC_000913.3 45,000–85,000 · 40 kb · 21 bp/point" */
 function headerCoordinates(
   data: GenomeTrackData,
   window: GenomeViewport
@@ -92,9 +88,6 @@ function headerCoordinates(
     .join(" · ");
 }
 
-/**
- * The slice of sequence visible at the current zoom level
- */
 function sliceVisible(data: GenomeTrackData, viewport: GenomeViewport): string {
   if (!data.sequence) return "";
 
@@ -107,9 +100,8 @@ function sliceVisible(data: GenomeTrackData, viewport: GenomeViewport): string {
 }
 
 /**
- * The selected feature's activation for the minimap, or null when nothing is
- * selected. Prefers the chromosome-wide `feature_overview`, and falls back to
- * the feature's own window trace when there is none.
+ * The selected feature's minimap signal: `feature_overview` when it matches,
+ * otherwise the feature's window trace.
  */
 function selectedFeatureSignal(
   data: GenomeTrackData | null,
@@ -133,16 +125,10 @@ function selectedFeatureSignal(
     : null;
 }
 
-/**
- * The selected trace's `feature_id`, or null when no feature is selected.
- */
 function selectedFeatureId(selectedSeriesId: string | null): number | null {
   return selectedSeriesId ? featureIdFromSeries(selectedSeriesId) : null;
 }
 
-/**
- * Display name for the selected feature, or null when none is selected.
- */
 function selectedFeatureName(
   data: GenomeTrackData,
   selectedSeriesId: string | null
@@ -158,7 +144,7 @@ function selectedFeatureName(
   return trace ? featureLabel(data, trace) : `Feature ${featureId}`;
 }
 
-/** The categories the window actually contains, or none without a payload. */
+/** The segment categories present in the window. */
 function legendFor(
   data: GenomeTrackData | null,
   categories: SegmentPalette
@@ -168,18 +154,12 @@ function legendFor(
   return presentCategories(data.segments, data.segment_categories, categories);
 }
 
-/**
- * The first row of a section, which is where a control mounted on that
- * section's line — the ranking dropdown, the sequence copy button — positions
- * itself.
- */
+/** The first row of a section, where that section's header controls sit. */
 function headerRowFor(rows: TrackRow[], kind: TrackKind): TrackRow | undefined {
   return rows.find((row) => row.kind === kind);
 }
 
-/**
- * The category key for the segments row.
- */
+/** The category key for the segments row. */
 function SegmentLegend({
   items,
   top,
@@ -201,9 +181,7 @@ function SegmentLegend({
   );
 }
 
-/**
- * Section names, each on the line the layout reserved above its rows.
- */
+/** Section names, each on the line reserved above its rows. */
 function RowLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
   return (
     <>
@@ -226,12 +204,7 @@ function RowLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
   );
 }
 
-/**
- * Feature names, drawn inside the plot above their own bars.
- *
- * The one label that does not sit on a section's header line: there is one name
- * per trace and only one header per section.
- */
+/** Feature names, drawn inside the plot above their own bars. */
 function FeatureLabels({
   rows,
   selectedTraceId,
@@ -257,19 +230,9 @@ function FeatureLabels({
   );
 }
 
-/**
- * Test ids for the DOM the component renders around the canvas.
- *
- * Exported rather than left as string literals because these are the only way a
- * consumer can assert on this component: the plot is a canvas, so there is no
- * accessible node for a gene block or a trace value. Everything a test can read
- * comes from the header, the states, or the accessible table.
- */
+/** Test ids for the DOM rendered around the canvas. */
 export const TEST_IDS = {
   legend: "genome-track-legend",
-  // Taken from `TrackStates` rather than retyped: those two ids are what that
-  // module actually renders, so a literal here that drifted from it would make
-  // an assertion silently query nothing.
   message: STATE_TEST_IDS.message,
   progress: "genome-track-progress",
   range: "genome-track-range",
@@ -278,12 +241,7 @@ export const TEST_IDS = {
   title: "genome-track-title",
 } as const;
 
-/**
- * Copy for the error codes the component renders as first-class states.
- *
- * Anything not listed falls back to the server's own message, which is more
- * useful than a generic apology that hides what happened.
- */
+/** Headlines for known error codes; others show only the server's message. */
 const ERROR_COPY: Record<string, string> = {
   dependency_unavailable:
     "Some tracks are unavailable for this genome because the activation cache is not loaded.",
@@ -296,25 +254,8 @@ const ERROR_COPY: Record<string, string> = {
 
 /**
  * Genome browser track: a shared bp axis with stacked rows for reference
- * annotations, predicted segments, and SAE feature activation.
- *
- * The component is presentational and does no I/O. It takes a window of data
- * and reports what the user did to it — pan, zoom, select — leaving the caller
- * to decide whether that means a re-fetch. That is what lets one implementation
- * serve a React app, an MCP App iframe, and a static HTML snapshot: only the
- * shell around it changes.
- *
- * Rendering is a single 2D canvas with a DOM overlay, rather than a charting
- * library. A genome axis is not a cartesian chart — 1-based inclusive ranges,
- * strand-aware glyphs, and a viewport shared across stacked rows would all have
- * to be reimplemented on top of one — and a dozen chart instances for a dozen
- * rows costs a dozen resize observers for what is one coordinate system drawn
- * repeatedly.
- *
- * Text stays in the DOM wherever it can. Canvas text is invisible to
- * find-in-page, unselectable, and ignores a reader's font settings, so the
- * header, the row labels, the tooltip, and the accessible table are all real
- * elements; only tick labels and on-block labels are drawn.
+ * annotations, predicted segments, and SAE feature activation. It does no
+ * fetching; pan, zoom, and selection are reported to the caller.
  */
 const GenomeTrack = forwardRef(
   (props: GenomeTrackProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
@@ -347,30 +288,14 @@ const GenomeTrack = forwardRef(
       [theme]
     );
 
-    /**
-     * Category colours for the segments row.
-     *
-     * Rebuilt when the theme mode changes as well as when the enum does: the
-     * SDS generator reverses its ramp for dark mode, so the colours are a
-     * function of both. Keyed off `segment_categories` rather than `data` so a
-     * window re-fetch does not repaint every block — the enum is global and
-     * does not change when the window does.
-     */
+    // Depends on `segment_categories`, not `data`, so a new window does not
+    // recolour every block.
     const segmentCategories = useMemo(
       () =>
         segmentPalette(data?.segment_categories, getMode({ theme }) === "dark"),
       [data?.segment_categories, theme]
     );
 
-    /**
-     * The legend's entries, which change only with the payload.
-     *
-     * Memoized because `presentCategories` builds a set over every segment —
-     * thousands at a wide window — and the component re-renders on every
-     * pointer move and every pan frame. Computed inline it also handed the
-     * legend a fresh array each time, re-rendering it for a list that had not
-     * changed.
-     */
     const legendItems = useMemo(
       () => legendFor(data, segmentCategories),
       [data, segmentCategories]
@@ -381,8 +306,7 @@ const GenomeTrack = forwardRef(
     const { dpr, width } = useCanvasSize(plotRef);
     const tableId = `sds-genome-track-${useId()}`;
 
-    // Retained across window re-fetches: the overview is chromosome-scale, so
-    // a shell fetches it once per accession and omits it thereafter.
+    // Kept across payloads, which may omit an overview already sent.
     const overview = useRetainedOverview(data);
 
     const extents = useMemo<TrackExtents>(
@@ -397,8 +321,7 @@ const GenomeTrack = forwardRef(
       [data, overview, navigationMargin]
     );
 
-    // Clamped to the chromosome, not the navigable halo: the minimap travels
-    // the whole extent, and each plot gesture applies `gestureBounds` itself.
+    // Clamped to the whole chromosome; plot gestures are bounded by `bounds`.
     const { navigate, viewport } = useViewport(
       extents.extent,
       extents.window,
@@ -446,15 +369,10 @@ const GenomeTrack = forwardRef(
       [viewport, width]
     );
 
-    // Blocks and feature traces are both selectable, and the two uses differ:
-    // the renderer outlines a selected *block*, while navigation only needs to
-    // know which id is currently selected so a second click toggles it off.
     const selectedBlockId = selection?.kind === "block" ? selection.id : null;
     const selectedSeriesId = selection?.kind === "series" ? selection.id : null;
 
-    // Memoized because the fallback returns a fresh object, and the canvas
-    // effect lists this in its dependencies — an unstable identity would
-    // redraw the whole plot on every render, including every pointer move.
+    // Memoized so the canvas does not redraw on every render.
     const featureOverview = useMemo(
       () => selectedFeatureSignal(data, selectedSeriesId),
       [data, selectedSeriesId]
@@ -462,20 +380,16 @@ const GenomeTrack = forwardRef(
     const selectedTraceId = selectedFeatureId(selectedSeriesId);
 
     const { handlers, hit, isDragging } = useTrackNavigation({
-      // The loaded window plus its margin, not the whole chromosome: zooming
-      // out of a re-fetched window has to work, but outrunning the data by an
-      // unbounded factor squeezes every row into a sliver.
       bounds,
       data,
       disabled: disableNavigation,
-      // What the minimap's bar spans, so its band can be dragged along it.
       extent: extents.extent,
       navigate,
       onSelectionChange,
       plotRef,
       rows: layout.rows,
       scale,
-      // Any kind, so a second click on the same block or feature clears it.
+      // A second click on the selected block or feature clears it.
       selectedId: selectedBlockId ?? selectedSeriesId,
       viewport,
     });
@@ -504,8 +418,6 @@ const GenomeTrack = forwardRef(
             blockRowHeight={blockRowHeight}
             density={density}
             featureLabelHeight={
-              // Name plus y axis: the two strips the layout puts above the
-              // bars, so the skeleton is the height the data will land at.
               FEATURE_LABEL_HEIGHT[density] + ACTIVATION_AXIS_HEIGHT[density]
             }
             featureRowHeight={featureRowHeight}
@@ -538,8 +450,6 @@ const GenomeTrack = forwardRef(
     const range = formatRange(viewport.start, viewport.end);
     const coordinates = headerCoordinates(data, extents.window);
 
-    // The hit names its own row by index, which is the only thing that works
-    // once the features stack means several rows share a kind.
     const tooltipRow = hit ? layout.rows[hit.rowIndex] : undefined;
 
     const sequenceRow = headerRowFor(layout.rows, "sequence");
@@ -550,12 +460,6 @@ const GenomeTrack = forwardRef(
       <TrackRoot data-testid={TEST_IDS.root} ref={ref} {...rest}>
         <TrackHeader>
           <TrackHeaderTitle data-testid={TEST_IDS.title}>
-            {/*
-             * Gene, organism, and the selected feature, whichever of the
-             * three there are. Joined from a filtered list rather than
-             * nested ternaries, which is what keeps the separators right as
-             * parts come and go.
-             */}
             {[locus.gene, organism, selectedFeatureName(data, selectedSeriesId)]
               .filter(Boolean)
               .join(" · ")}
@@ -574,9 +478,7 @@ const GenomeTrack = forwardRef(
             isDragging={isDragging}
             ref={plotRef}
             role="img"
-            // Only when a click would do something: the selection callbacks are
-            // optional, and a hand over a plot nobody is listening to promises
-            // an interaction that cannot happen.
+            // Pointer cursor only when a click would do something.
             selectable={hit !== null && onSelectionChange !== undefined}
             tabIndex={0}
             {...handlers}
@@ -616,9 +518,7 @@ const GenomeTrack = forwardRef(
               density={density}
               fullRange={formatRange(extents.window.start, extents.window.end)}
               fullSequence={data.sequence ?? ""}
-              // On the section's own header line, beside its name. Falls back
-              // to centring on the row when labels are off, where there is no
-              // header line to sit on.
+              // On the section's header line, or centred on the row if none.
               height={sequenceRow.headerHeight || sequenceRow.height}
               top={sequenceRow.y - (sequenceRow.headerHeight ?? 0)}
               visibleRange={range}

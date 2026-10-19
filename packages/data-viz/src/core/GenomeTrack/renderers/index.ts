@@ -36,25 +36,16 @@ import {
   minimapBand,
 } from "../utils/scale";
 
-/**
- * Canvas draw passes, one per row kind.
- *
- * Each is a pure function of (context, scale, row, data, palette): none of them
- * read component state or the DOM, which is what makes them testable against a
- * stub context and what keeps redraw cheap enough to run inside a
- * `requestAnimationFrame` on every pan frame.
- */
+/** Canvas draw passes, one per row kind. Each is a pure function. */
 
-/** Typeface stack for canvas text. Mirrors the SDS body font. */
+/** Mirrors the SDS body font. */
 const FONT_STACK =
   '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
 
-/** Monospace stack for the sequence ruler. No webfont: the app fetches nothing. */
+/** System fonts only, so no webfont is fetched. */
 const MONO_STACK = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
 
-/**
- * Height of a tick notch under the minimap's bar, in px.
- */
+/** Height of a tick notch under the minimap's bar, in px. */
 const AXIS_NOTCH_HEIGHT = 3;
 
 /** Below this width a block gets no label, only its rectangle. */
@@ -74,21 +65,14 @@ export interface DrawContext {
   palette: TrackPalette;
   row: TrackRow;
   scale: GenomeScale;
-  /** Id of the block under the pointer, when any. */
   hoveredId: string | null;
-  /** Id of the selected block, when any. */
   selectedId: string | null;
   density: "comfortable" | "compact";
 }
 
 /**
- * Strand-aware block path.
- *
- * A `+` block points right and a `-` block points left, which is the redundant
- * non-color cue the accessibility rules require for strand — color alone would
- * leave strand unreadable to a colorblind reader, and strand is not decoration.
- * Blocks too narrow for an arrowhead degrade to a plain rectangle rather than
- * to a triangle that misreports the block's extent.
+ * Block outline: `+` points right, `-` points left. Blocks too narrow for an
+ * arrowhead are drawn as plain rectangles.
  */
 function blockPath(
   ctx: CanvasRenderingContext2D,
@@ -121,38 +105,16 @@ function blockPath(
   ctx.closePath();
 }
 
-/**
- * Diagonal-stripe tile size and line weight, in px.
- *
- * Sized against `blockRowHeight`, which defaults to 16: at a 6 px tile the
- * stripes read as a texture across a block that height, where a coarser tile
- * would show only one or two lines and look like a glitch.
- */
+/** Diagonal-stripe tile size and line weight, in px. */
 const STRIPE_TILE = 6;
 const STRIPE_WIDTH = 2;
 
-/**
- * Cache of stripe patterns, keyed by fill colour.
- *
- * Module-level and unbounded in principle, bounded in practice by the number of
- * categories in the ramp — a handful. Rebuilding a pattern per block per frame
- * would allocate an offscreen canvas thousands of times during a pan.
- */
+/** Stripe patterns keyed by fill colour; one entry per segment category. */
 const stripePatterns = new Map<string, CanvasPattern | null>();
 
 /**
- * A 45° striped version of `color`, for the negative strand.
- *
- * Colour carries the category and pattern carries the strand, so the stripes
- * are drawn *over* the category's own fill rather than replacing it — the block
- * has to stay recognisably the same hue as its positive-strand counterpart. The
- * stripe itself is translucent black or white, whichever contrasts with the
- * fill, so the texture is visible on both ends of the ramp.
- *
- * Returns null when a pattern cannot be made — no `document`, or a context the
- * browser refuses — and the caller falls back to the solid fill. A solid block
- * misreports strand, which the arrowhead still carries, where a failed draw
- * would lose the block entirely.
+ * `color` with 45° stripes over it, for the negative strand. Returns null when
+ * a pattern cannot be made, so the caller falls back to the solid fill.
  */
 function stripedFill(
   ctx: CanvasRenderingContext2D,
@@ -166,10 +128,7 @@ function stripedFill(
     typeof document === "undefined" ? null : document.createElement("canvas");
   const tileCtx = tile?.getContext("2d") ?? null;
 
-  // A capability check rather than a null check, because jsdom hands back a
-  // context object that is not null and has almost none of the methods on it.
-  // Checking for the one we call first is what keeps this from throwing under
-  // test, the same way the renderer effect bails on a context it cannot use.
+  // jsdom returns a non-null context with almost no methods on it.
   const usable =
     tile &&
     tileCtx &&
@@ -252,9 +211,7 @@ function drawBlock(
   ctx.fillText(fitted, rect.x + rect.width / 2, row.y + height / 2);
 }
 
-/**
- * Sequence ruler: one letter per base, drawn only when bases are wide enough.
- */
+/** Sequence ruler: one letter per base, when bases are wide enough. */
 export function drawSequence(
   draw: DrawContext,
   sequence: string,
@@ -301,31 +258,13 @@ export function drawSequence(
 export interface MinimapContent {
   /** The range the bar spans: the chromosome when one is known. */
   extent: { end: number; start: number };
-  /**
-   * The selected feature's chromosome-wide trace, already matched against the
-   * selection by the caller. Null draws the bar with no signal in it, which is
-   * the row's resting state.
-   */
+  /** The selected feature's chromosome-wide trace; null draws no signal. */
   feature: FeatureOverview | null;
 }
 
 /**
- * One feature's activation across the chromosome, inside the bar.
- *
- * The signal here is a feature the *user picked* by clicking its row, not a
- * maximum pooled across a set they did not choose. A pooled trace answers
- * "where on this chromosome is anything happening", which sounds useful and in
- * practice lights up most of a bacterial chromosome — every bin is the max over
- * eight features, so almost none of them are quiet, and the row reads as noise.
- * One feature's trace answers a question someone actually asked.
- *
- * Normalized to its own maximum, because the quantity is only meaningful
- * relative to the rest of the chromosome.
- *
- * Drawn as 1 px columns rather than a path: at a thousand bins across eight
- * hundred pixels the bins are sub-pixel, so a polyline would spend its time
- * anti-aliasing between points that are already closer together than the
- * display can resolve.
+ * One feature's activation across the chromosome, normalized to its own
+ * maximum and drawn as 1 px columns.
  */
 function drawFeatureSignal(
   draw: DrawContext,
@@ -335,9 +274,7 @@ function drawFeatureSignal(
   barHeight: number
 ): void {
   const { ctx, palette } = draw;
-  // Not `Math.max(...values)`: this is a chromosome-wide array, and spreading
-  // it onto the argument stack risks a RangeError as well as costing a scan on
-  // every redraw — including the hover redraws where the minimap is unchanged.
+  // Not `Math.max(...values)`: spreading a large array can throw a RangeError.
   const peak = maxOf(feature.values);
 
   if (peak <= 0) return;
@@ -359,30 +296,8 @@ function drawFeatureSignal(
 }
 
 /**
- * Minimap row: where the viewport sits inside the chromosome.
- *
- * This is the only pass that does not draw on the shared viewport scale. Every
- * other row maps the visible range across the plot; this one maps the *extent*
- * across the plot and draws the visible range as a band inside it. So it builds
- * a second scale of its own and uses that for everything including its ticks —
- * the coordinates under a minimap describe the extent, not the viewport, or the
- * band would have nothing to be positioned against.
- *
- * It draws two ranges, and only two:
- *
- * 1. The **extent** — the bar itself, carrying the selected feature's
- *    activation across the chromosome when there is a selection and the shell
- *    has fetched that feature's trace. No selection means no signal: the row's
- *    resting state is a bar and one band.
- * 2. The **viewport** — the filled band, the one thing on this row that says
- *    where you are. Translucent, so a signal underneath still reads through
- *    it; at chromosome scale the band covers a fraction of a pixel and an
- *    opaque one would delete the only informative pixel in it.
- *
- * Nothing else is marked. At chromosome scale everything collapses to the 3 px
- * floor, so a loaded-window outline or a coarse chromosome landmark would land
- * on the viewport band as an indistinguishable grey mark. The loaded window is
- * stated in the header and shown by the wash over the plot.
+ * Minimap row: the whole extent as a bar, with the viewport as a translucent
+ * band inside it. Unlike other rows, it draws on its own scale over the extent.
  */
 export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
   const { ctx, density, palette, row, scale } = draw;
@@ -405,18 +320,13 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
     ctx.fillRect(band.x, barTop, band.width, barHeight);
     ctx.strokeStyle = palette.minimapWindow;
     ctx.lineWidth = 1;
-    // Inset by a pixel on both axes, which is what keeps the 1 px stroke on
-    // the fill's own edges. Without it the right edge is centred a pixel past
-    // the fill, and `minimapBand` can put the band flush against the plot's
-    // right side — so at the end of the axis that edge falls outside the canvas
-    // and the band loses its border entirely.
+    // Inset so the 1 px stroke stays inside the fill and on the canvas.
     ctx.strokeRect(band.x + 0.5, barTop + 0.5, band.width - 1, barHeight - 1);
   }
 
   ctx.font = `10px ${FONT_STACK}`;
 
-  // The band's range, captioned above it and centred on it, so the number
-  // travels with the thing it describes rather than living only in the header.
+  // Caption the band's range above it.
   if (band && rangeHeight > 0) {
     const label = `${formatRange(scale.start, scale.end)} · ${formatSpan(
       scale.end - scale.start + 1
@@ -428,8 +338,7 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
     ctx.textBaseline = "top";
     ctx.textAlign = "center";
 
-    // Clamped rather than centred blindly: a band against either edge would
-    // otherwise caption itself off the side of the plot.
+    // Clamp so a band near either edge keeps its caption on the plot.
     ctx.fillText(
       label,
       Math.min(Math.max(center, width / 2), scale.width - width / 2),
@@ -482,20 +391,8 @@ export function drawMinimap(draw: DrawContext, content: MinimapContent): void {
 }
 
 /**
- * Tints the part of the plot the payload does not cover.
- *
- * Once the viewport can extend past the loaded window, the rows outside it draw
- * nothing — and nothing is indistinguishable from a genuinely empty stretch of
- * genome. That is the one failure a payload-honesty rule cannot allow: "no genes
- * and no signal here" is a claim about the chromosome, where the truth is only
- * "not fetched yet". So the dead region is washed out and bounded by a rule at
- * the coordinate where the data stops.
- *
- * Drawn over y *bands* rather than over the whole canvas, because the minimap
- * has to be excluded: it draws on the extent rather than on the viewport, so
- * "outside the loaded window" is a position inside its bar, not a region of the
- * plot. Washing it would tint an unrelated slice of the chromosome. The minimap
- * states the same fact in its own coordinates by outlining the loaded window.
+ * Tints the part of the plot the payload does not cover, so unloaded regions
+ * don't look like empty genome. `bands` exclude the minimap.
  */
 export function drawOutsideWindow(
   ctx: CanvasRenderingContext2D,
@@ -511,8 +408,7 @@ export function drawOutsideWindow(
 
     if (!rect) return;
 
-    // The rule goes on the edge that faces the data, which is the one that
-    // marks where it stops.
+    // Draw the rule on the edge that faces the loaded data.
     const edge = gap.start <= scale.start ? rect.x + rect.width : rect.x;
 
     bands.forEach(({ bottom, top }) => {
@@ -545,32 +441,16 @@ export function drawAnnotations(
   });
 }
 
-/**
- * Segment row: the intervals the segmentation pipeline cut, labelled with the
- * category it voted for and coloured by it.
- *
- * The colour comes from the category's position in the payload's full enum, so
- * it is the same in every window — see `segmentPalette`. The label's colour
- * comes with it, since a generated ramp runs light enough that white text on
- * its pale end fails contrast.
- *
- * The label is `id`-derived rather than the raw namespaced `segment_id`, which
- * is 40+ characters and would never fit. The full id is in the tooltip and the
- * accessible table.
- */
+/** Segment row: blocks coloured by category, striped on the negative strand. */
 export function drawSegments(
   draw: DrawContext,
   segments: SegmentBlock[],
   categories: SegmentPalette
 ): void {
   segments.forEach((segment) => {
-    // Null for a category outside the enum, which happens whenever the
-    // segmentation gains one the payload's enum has not caught up with.
+    // Null for a category outside the payload's enum.
     const color = categories.fill(segment.category);
 
-    // Colour is the category and stripes are the negative strand. A category
-    // the enum does not carry takes the row's single accent fill, since an
-    // uncoloured block is a better answer than an invisible one.
     const fill = !color
       ? draw.palette.segment
       : categories.isStriped(segment.category)
@@ -588,27 +468,8 @@ export function drawSegments(
 }
 
 /**
- * The features row's y axis: its maximum, at the top of the bars.
- *
- * One number, because that is the whole axis. Zero is left unlabelled — the
- * bars sit on a drawn baseline, so the bottom of the row is already obviously
- * zero, and a second label would spend a third of a short row restating it.
- *
- * It sits *above* the bars, in the strip `ACTIVATION_AXIS_HEIGHT` reserves,
- * with its baseline 1 px clear of the tallest bar. Drawn over the bars instead
- * it collided every time rather than occasionally: the bars are normalized to
- * the trace's own peak, so the tallest one reaches the top of the band by
- * definition and occupies exactly the pixels the number needs.
- *
- * Still at x = 0 rather than inset beside the bars. Every row of the track
- * shares one bp axis measured from the plot's left edge — an annotation block
- * and a feature bar at the same base sit at the same x — and insetting the
- * features rows alone would break that for those rows only, which is the class
- * of error that renders as plausible-looking science.
- *
- * Canvas rather than DOM, unlike the row and trace names: this is a data
- * annotation on the same footing as the minimap's tick labels, and the
- * accessible table already reports every trace's peak in text.
+ * The features row's y axis: its maximum, drawn in the strip above the bars.
+ * Zero is unlabelled because the baseline already marks it.
  */
 function drawActivationAxis(
   draw: DrawContext,
@@ -619,43 +480,21 @@ function drawActivationAxis(
   const { ctx, density, palette } = draw;
   const label = formatActivation(peak);
 
-  // Compact drops the trace names, and the axis goes with them rather than
-  // being the one piece of text left in a thumbnail-sized card — where a 10 px
-  // label would also be a third of the row's height.
+  // Compact density hides the axis along with the trace names.
   if (!label || density === "compact") return;
 
   ctx.fillStyle = palette.axisText;
   ctx.font = `10px ${FONT_STACK}`;
   ctx.textAlign = "left";
-  // Alphabetic rather than bottom: digits sit on the alphabetic baseline, so
-  // this puts the glyphs' underside 1 px above the bars. A bottom baseline
-  // would reserve descender space no digit uses and open a visible gap.
+  // Digits sit on the alphabetic baseline; "bottom" leaves a descender gap.
   ctx.textBaseline = "alphabetic";
   ctx.fillText(label, 0, top - AXIS_LABEL_GAP);
 }
 
 /**
- * One row of the features stack: a feature's activation as a bar per bin.
- *
- * Bars rather than the activation row's filled area, per the design, and the
- * difference is not only cosmetic. A filled area implies a continuous signal
- * you can read between the points; a bar chart says each bin is a discrete
- * measurement, which is what a pooled maximum actually is. At `stride: 1` the
- * bars are one base wide and the distinction stops mattering; at `stride: 21`
- * it is the honest picture.
- *
- * **Normalized to the trace's own peak, not to a peak shared across the
- * stack.** This is the row's one real compromise. Per-trace scaling means every
- * row uses its full height, so the shape of a weak feature is legible — but it
- * also means bar heights cannot be compared between rows, and nothing on screen
- * says so. A shared scale would make the rows comparable and flatten every
- * feature below the strongest into a line, which for a rank-ordered list is
- * most of them. The design shows rows of comparable height, so it assumes
- * per-trace; the tooltip carries the absolute value for anyone who needs to
- * compare two rows for real.
- *
- * Normalizing to `trace.peak` — the whole window's maximum — rather than to the
- * visible slice is what keeps bar heights from rescaling as the user pans.
+ * One row of the features stack: a bar per bin, scaled to the trace's own peak
+ * over the whole window so heights don't change while panning. Heights are not
+ * comparable between rows.
  */
 export function drawFeatureBars(
   draw: DrawContext,
@@ -673,8 +512,7 @@ export function drawFeatureBars(
 
   if (first === null || last === null || height <= 0) return;
 
-  // Baseline before the bars, so a feature that is silent across the whole
-  // window still reads as a row rather than as a gap where a draw failed.
+  // Baseline, so a silent feature still shows as a row.
   ctx.strokeStyle = palette.axis;
   ctx.lineWidth = 1;
   ctx.beginPath();
@@ -691,17 +529,12 @@ export function drawFeatureBars(
   for (let index = first; index <= last; index += 1) {
     const value = trace.values[index] ?? 0;
 
-    // A zero bin gets no bar. Drawing a 1 px stub for it would make silence
-    // look like a faint signal, which across a mostly-quiet trace reads as
-    // noise the feature does not have.
     if (value <= 0) continue;
 
     const x = bpToPx(scale, binIndexToBp(bins, index));
     const span = bpToPx(scale, binIndexToBp(bins, index + 1)) - x;
 
-    // The gap comes out of the bar only while there is a bar to spare. Below
-    // about two pixels a bin would vanish into its own gap, so it keeps a solid
-    // column instead — the same reason `blockRect` has a minimum width.
+    // Narrow bins drop the gap so they don't vanish.
     const width = span > BAR_GAP * 2 ? span - BAR_GAP : Math.max(span, 1);
     const barHeight = Math.max((value / peak) * height, 1);
 

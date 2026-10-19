@@ -9,10 +9,7 @@ import {
   SegmentBlock,
 } from "../GenomeTrack.types";
 
-/**
- * mulberry32. Small, fast, and good enough for shaping test data — chosen for
- * being reproducible across engines, which `Math.random` is not.
- */
+/** Seeded mulberry32 PRNG, so fixtures are reproducible. */
 function createRandom(seed: number): () => number {
   let state = seed >>> 0;
 
@@ -28,7 +25,7 @@ function createRandom(seed: number): () => number {
   };
 }
 
-/** Gene names that read as prokaryotic without naming anything real. */
+/** Made-up prokaryotic-style gene names. */
 const GENE_STEMS = [
   "fixX",
   "yhbW",
@@ -96,7 +93,7 @@ const SEGMENT_CATEGORIES = [
 const CATEGORIES = SEGMENT_CATEGORIES.slice(0, 6);
 
 export interface MockGenomeTrackOptions {
-  /** Same seed gives the same payload, always. @default 20260921 */
+  /** Same seed gives the same payload. @default 20260921 */
   seed?: number;
   /** Window start, 1-based inclusive. @default 45462 */
   start?: number;
@@ -107,8 +104,7 @@ export interface MockGenomeTrackOptions {
   /** Include the nucleotide sequence. @default true */
   withSequence?: boolean;
   /**
-   * Include reference annotations. False emits `null`, which is the "this
-   * organism has no annotation coverage" case rather than "no genes here".
+   * Include reference annotations. False emits `null` (no annotation coverage).
    * @default true
    */
   withAnnotations?: boolean;
@@ -135,9 +131,7 @@ function makeBins(start: number, end: number, maxPoints: number): BinAxis {
   return { end, n_bins: Math.ceil(span / stride), start, stride };
 }
 
-/**
- * Contiguous segments tiling the window.
- */
+/** Contiguous segments tiling the window. */
 function makeSegments(
   random: () => number,
   start: number,
@@ -183,10 +177,7 @@ function makeSegments(
   return segments;
 }
 
-/**
- * Reference annotations: a few genes with intergenic space between them, some
- * of them overlapping.
- */
+/** A few genes with gaps between them, some overlapping. */
 function makeAnnotations(
   random: () => number,
   start: number,
@@ -210,8 +201,7 @@ function makeAnnotations(
       id: `ann_${index}`,
       kind: random() > 0.85 ? "tRNA" : "CDS",
       locus_tag: `b${String(1000 + index * 7).padStart(4, "0")}`,
-      // The first annotation is the gene the locus names, so the header and the
-      // plot agree — the payload claims to be centred on it.
+      // The first annotation is the locus gene.
       name: index === 0 ? gene : GENE_STEMS[index % GENE_STEMS.length],
       product: PRODUCTS[index % PRODUCTS.length],
       strand: random() > 0.45 ? "+" : "-",
@@ -228,8 +218,7 @@ function makeAnnotations(
 
   const host = annotations[0];
 
-  // A tRNA nested inside the first gene, positioned off its middle so it clears
-  // both ends and is a strict subset.
+  // A tRNA nested strictly inside the first gene.
   if (host && host.end - host.start > 40) {
     const hostLength = host.end - host.start + 1;
     const nestedStart = host.start + Math.round(hostLength * 0.45);
@@ -249,9 +238,7 @@ function makeAnnotations(
   return annotations.sort((a, b) => a.start - b.start);
 }
 
-/**
- * Chromosome-scale overview for the minimap row.
- */
+/** Chromosome-scale overview for the minimap row. */
 function makeOverview(chrom: string, chromLength: number): MinimapOverview {
   const nBins = 1_000;
   const stride = Math.ceil(chromLength / nBins);
@@ -263,9 +250,7 @@ function makeOverview(chrom: string, chromLength: number): MinimapOverview {
   };
 }
 
-/**
- * One feature's activation across the chromosome, for the minimap.
- */
+/** One feature's activation across the chromosome, for the minimap. */
 export function makeFeatureOverview(
   featureId: number,
   chromLength = 4_641_652
@@ -297,9 +282,7 @@ export function makeFeatureOverview(
   };
 }
 
-/**
- * Activation traces whose peaks land inside segments.
- */
+/** Activation traces whose peaks land inside segments. */
 function makeFeatures(
   random: () => number,
   bins: BinAxis,
@@ -308,8 +291,7 @@ function makeFeatures(
 ): FeatureTrace[] {
   return Array.from({ length: count }, (_, featureIndex) => {
     const values = Array.from({ length: bins.n_bins }, () => 0);
-    // Each feature favours a couple of segments, the way a real feature fires
-    // in some contexts and not others.
+    // Each feature fires in one or two segments.
     const homeCount = 1 + Math.floor(random() * 2);
     const homes = Array.from(
       { length: homeCount },
@@ -367,7 +349,7 @@ function makeFeatureNotes(
   return notes;
 }
 
-/** Nucleotides for the window. GC content is uniform; nothing reads it. */
+/** Random nucleotides for the window. */
 function makeSequence(random: () => number, length: number): string {
   const bases = "ACGT";
   let sequence = "";
@@ -379,9 +361,7 @@ function makeSequence(random: () => number, length: number): string {
   return sequence;
 }
 
-/**
- * Builds one synthetic track payload.
- */
+/** Builds one synthetic track payload. */
 export function makeMockGenomeTrackData(
   options: MockGenomeTrackOptions = {}
 ): GenomeTrackData {
@@ -450,8 +430,7 @@ export function makeMockGenomeTrackData(
     schema_version: 1,
     segment_categories: SEGMENT_CATEGORIES,
     segments,
-    // A window wider than the cap gets no sequence, exactly as the server
-    // behaves — which is how the degraded path gets exercised without a flag.
+    // Windows wider than the cap get no sequence.
     sequence:
       withSequence && span <= maxSequenceWindow
         ? makeSequence(random, span)

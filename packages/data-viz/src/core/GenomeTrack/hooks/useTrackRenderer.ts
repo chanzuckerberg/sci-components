@@ -19,14 +19,7 @@ import { TrackPalette } from "../utils/palette";
 import { GenomeScale } from "../utils/scale";
 import { SegmentPalette } from "../utils/segmentColors";
 
-/**
- * Drives the canvas.
- *
- * Kept out of the component for two reasons. It is the only imperative code in
- * the component, so isolating it keeps the render function declarative; and it
- * has a long, precise dependency list — miss one and the canvas silently shows
- * stale data, which is far harder to notice than a stale DOM node.
- */
+/** Options for `useTrackRenderer`, which draws every row onto the canvas. */
 export interface UseTrackRendererOptions {
   canvasRef: RefObject<HTMLCanvasElement>;
   data: GenomeTrackData | null;
@@ -34,14 +27,11 @@ export interface UseTrackRendererOptions {
   dpr: number;
   /** The navigable extent and the window the payload covers. */
   extents: TrackExtents;
-  /**
-   * The selected feature's chromosome-wide trace, already matched against the
-   * selection. Null draws the minimap with no signal in it.
-   */
+  /** The selected feature's chromosome-wide trace; null draws no signal. */
   featureOverview: FeatureOverview | null;
   /** Total canvas height, from the layout pass. */
   height: number;
-  /** Category colours for the segments row, from the payload's full enum. */
+  /** Category colours for the segments row. */
   segmentCategories: SegmentPalette;
   hoveredId: string | null;
   palette: TrackPalette;
@@ -51,13 +41,7 @@ export interface UseTrackRendererOptions {
   width: number;
 }
 
-/**
- * Dispatches one row to its draw pass.
- *
- * Outside the effect so the effect stays a list of dependencies and a loop:
- * every row kind that lands adds a case here rather than another branch inside
- * the hook.
- */
+/** Dispatches one row to its draw pass. */
 function drawRow(
   draw: DrawContext,
   data: GenomeTrackData,
@@ -68,8 +52,7 @@ function drawRow(
 ): void {
   switch (draw.row.kind) {
     case "annotations":
-      // One lane's worth, not the whole payload: the row is one of several
-      // lanes the layout packed the annotations into, and it carries its own.
+      // Each annotation row is one packed lane and carries its own blocks.
       drawAnnotations(draw, draw.row.laneBlocks ?? []);
       break;
     case "features": {
@@ -85,8 +68,7 @@ function drawRow(
       });
       break;
     case "segments":
-      // The row's own blocks, sorted by `end` in the layout pass, so the canvas
-      // and the hit-test are looking at one list rather than two orderings.
+      // Same list, sorted by `end`, that the hit-test uses.
       drawSegments(
         draw,
         draw.row.segmentBlocks ?? data.segments,
@@ -126,20 +108,12 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
 
     const ctx = canvas.getContext("2d");
 
-    // jsdom returns null here. Bailing out rather than throwing is what lets
-    // the component render its DOM — header, accessible table, states — under
-    // test, which is the part worth asserting on anyway.
+    // Null under jsdom.
     if (!ctx) return;
 
-    // Size the backing store in device pixels and the element in CSS pixels,
-    // then scale the context once. Everything downstream works in CSS pixels
-    // without knowing the ratio.
-    //
-    // Only on an actual size change. Assigning `canvas.width` or `.height`
-    // discards and re-zeroes the whole bitmap *even when the value is
-    // unchanged* — at 1200 px × dpr 2 over a 600 px track that is an ~11 MB
-    // allocation, and this effect re-runs on every pan frame and every hover.
-    // `clearRect` below is what actually needs to happen per frame.
+    // Backing store in device pixels, drawing in CSS pixels. Only assign on a
+    // real change: setting `canvas.width`/`.height` reallocates the bitmap even
+    // when the value is the same.
     const backingWidth = Math.round(width * dpr);
     const backingHeight = Math.round(height * dpr);
 
@@ -149,8 +123,7 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       canvas.style.height = `${height}px`;
     }
 
-    // Unconditional: a resize above resets the context's transform, and
-    // re-setting it when nothing resized costs nothing.
+    // Always reset: resizing the canvas clears the transform.
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, width, height);
 
@@ -163,8 +136,6 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       selectedId,
     };
 
-    // Once, not per features row: `featureTraces` concatenates `pinned` and
-    // `features`, and the stack calls `drawRow` once per trace.
     const traces = featureTraces(data);
 
     rows.forEach((row) =>
@@ -178,8 +149,7 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       )
     );
 
-    // Last, so the wash sits over every row it applies to rather than under
-    // the blocks it is meant to explain the absence of.
+    // Last, so the wash sits over the rows.
     drawOutsideWindow(
       ctx,
       palette,

@@ -1,11 +1,6 @@
-// Selection is controlled, and domain-free: clicking a block emits
-// `{ kind: "block", id }` and nothing else. The id is one the caller already
-// holds — an annotation's `id` or a segment's namespaced `segment_id` — so the
-// track never has to know what a selection means. Resolving it back to a
-// record, and deciding what to show, is the shell's job.
-//
-// Clicking the selected block again, or clicking empty space, emits `null`,
-// which is what lets a detail panel be closed from the plot.
+// Clicking a block emits `{ kind: "block", id }`, where `id` is the
+// annotation's `id` or the segment's `segment_id`. Clicking the selected block
+// again, or empty space, emits `null`.
 
 import {
   AnnotationBlock,
@@ -193,8 +188,7 @@ function App() {
       <GenomeTrack
         data={DATA}
         onSelectionChange={setSelection}
-        // A shell typically re-fetches from here, asking the tool for the new
-        // range. This one only records it, since the whole payload is local.
+        // Re-fetch data for the new range here if needed.
         onViewportChange={setViewport}
         selection={selection}
         viewport={viewport}

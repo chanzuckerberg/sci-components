@@ -12,10 +12,6 @@ import {
 } from "../utils/extent";
 import { TrackRow, layoutRows, viewportBands } from "../utils/layout";
 
-/**
- * The extent model, which is what makes re-fetching on zoom possible.
- */
-
 const OPTIONS = {
   blockRowHeight: 28,
   density: "comfortable" as const,
@@ -32,8 +28,6 @@ describe("trackExtents", () => {
       DEFAULT_TRACK_DATA.overview
     );
 
-    // The chromosome is wider than the window, which is the observable form of
-    // "this extent came from the overview" now that no row reads a flag for it.
     expect(extent.start).toBeLessThanOrEqual(window.start);
     expect(extent.end).toBeGreaterThan(window.end);
     expect(extent).toEqual({
@@ -41,8 +35,6 @@ describe("trackExtents", () => {
       start: 1,
     });
 
-    // The window is still the payload's, and is far narrower. That gap is the
-    // room the user has to zoom out into.
     expect(window).toEqual({
       end: DEFAULT_TRACK_DATA.locus.end,
       start: DEFAULT_TRACK_DATA.locus.start,
@@ -75,9 +67,6 @@ describe("trackExtents", () => {
   });
 });
 
-/**
- * The bound on how far the viewport may outrun its data.
- */
 describe("navigable bounds", () => {
   const { locus, overview } = DEFAULT_TRACK_DATA;
   const windowSpan = locus.end - locus.start + 1;

@@ -1,9 +1,5 @@
-// The sequence ruler, added by listing "sequence" first in `tracks`.
-//
-// Letters are only drawn once bases are about 7 px wide. Below that the row
-// falls back to a solid band rather than an unreadable smear, so this example
-// opens on a 61 bp slice of the payload's 289 bp window. Zoom out and the band
-// takes over; zoom back in and the letters return.
+// Letters are drawn once bases are about 7 px wide, so this example opens
+// zoomed in. Zoom out and the row becomes a solid band.
 
 import {
   AnnotationBlock,
@@ -19,9 +15,8 @@ const START = 45462;
 const END = 45750;
 const SPAN = END - START + 1;
 
-// Stand-in nucleotides. A real payload carries the window's actual sequence,
-// 5' to 3', with one character per base — and `null` instead once the window is
-// wider than `caps.max_sequence_window`, which is why the row can disappear.
+// Stand-in nucleotides, one per base. `sequence` is `null` for windows wider
+// than `caps.max_sequence_window`.
 const SEQUENCE = Array.from(
   { length: SPAN },
   (_, index) => "ACGT"[(index * 7 + (index % 5)) % 4]
@@ -139,8 +134,7 @@ const DATA: GenomeTrackData = {
 };
 
 function App() {
-  // Supplying `viewport` makes the range controlled: pan and zoom report
-  // through `onViewportChange` and change nothing until the prop comes back.
+  // Controlled viewport: pan and zoom report through `onViewportChange`.
   const [viewport, setViewport] = useState<GenomeViewport>({
     end: 45560,
     start: 45500,
