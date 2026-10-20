@@ -20,28 +20,31 @@ export const DROPDOWN_EXCLUDED_CONTROLS = [
   "isSearchAutoFocus",
 ];
 
-export const DROPDOWN_ON_CHANGE_OPTIONS = [
+export const DROPDOWN_ON_CHANGE_OPTIONS = {
   noop,
-  (value: never) => {
+  log: (value: never) => {
     // eslint-disable-next-line no-console
     console.log(value);
   },
-];
-export const DROPDOWN_ON_CLOSE_OPTIONS = [
+};
+export const DROPDOWN_ON_CLOSE_OPTIONS = {
   noop,
-  () => {
+  log: () => {
     // eslint-disable-next-line no-console
     console.log("Closed!");
   },
-];
+};
 export const DROPDOWN_BUTTON_POSITION_OPTIONS = ["left", "right"];
-export const DROPDOWN_DATA_OPTIONS = [
-  AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
-  [AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0], AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1]],
-  [
+export const DROPDOWN_DATA_OPTIONS = {
+  oneColumn: AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+  twoColumns: [
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
+  ],
+  threeColumns: [
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[2],
   ],
-];
+};
 export const DROPDOWN_LABEL = "Click Target";

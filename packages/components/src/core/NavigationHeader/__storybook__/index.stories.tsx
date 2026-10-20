@@ -46,7 +46,7 @@ export default {
     },
     logo: {
       control: {
-        labels: ["Logo Placeholder", "Empty"],
+        labels: { placeholder: "Logo Placeholder", empty: "Empty" },
         type: "select",
       },
       description: "The logo to display in the navigation header.",
@@ -77,6 +77,11 @@ export default {
           summary: "-",
         },
       },
+    },
+    initialActivePrimaryNavKey: {
+      control: { type: "text" },
+      description:
+        "Story-only: the key of the primary nav item the drawer demo starts with marked active. The demo tracks the active item itself after that.",
     },
     isSticky: {
       control: { type: "boolean" },
@@ -175,14 +180,7 @@ export default {
     },
     tagColor: {
       control: {
-        labels: [
-          "info",
-          "positive",
-          "notice",
-          "negative",
-          "beta",
-          "Custom colors for Label, Background, Icon",
-        ],
+        labels: { custom: "Custom colors for Label, Background, Icon" },
         type: "select",
       },
       description: "Color of the tag.",
@@ -229,7 +227,7 @@ export const DropdownStyle = {
       disableScrollLock: true,
     },
     backgroundAppearance: "matchBackground",
-    logo: NAVIGATION_HEADER_LOGO_OPTIONS[0],
+    logo: NAVIGATION_HEADER_LOGO_OPTIONS.placeholder,
     logoUrl: "https://chanzuckerberg.com",
     isSticky: true,
     primaryNavItems: [
@@ -295,9 +293,6 @@ export const DropdownStyle = {
     title: "Title",
   },
   parameters: {
-    controls: {
-      expanded: true,
-    },
     layout: "fullscreen",
   },
 };
@@ -331,9 +326,6 @@ export const DrawerStyle = {
     initialActivePrimaryNavKey: "home",
   },
   parameters: {
-    controls: {
-      expanded: true,
-    },
     layout: "fullscreen",
   },
   render: (args: Args, context: StoryContext) => {
@@ -408,9 +400,6 @@ export const WithTopComponent = {
       config: {
         rules: [{ enabled: false, id: "landmark-no-duplicate-banner" }],
       },
-    },
-    controls: {
-      expanded: true,
     },
     layout: "fullscreen",
   },

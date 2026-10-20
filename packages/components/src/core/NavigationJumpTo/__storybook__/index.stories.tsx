@@ -11,20 +11,23 @@ export default {
   argTypes: {
     items: {
       control: { require: true, type: "object" },
-      defaultValue: { summary: "-" },
       description:
         "An array of object containing a title for the Navigation Tab and a ref to the section div.",
     },
     offsetTop: {
-      control: { description: "wew", type: "number" },
-      defaultValue: { summary: "0" },
+      control: { type: "number" },
       description:
         "To apply the offsetTop to the component, please refresh the page.",
+      table: {
+        defaultValue: { summary: "0" },
+      },
     },
     width: {
       control: { type: "text" },
-      defaultValue: { summary: "100%" },
       description: "The width of the component.",
+      table: {
+        defaultValue: { summary: "100%" },
+      },
     },
   },
   component: NavigationJumpTo,
@@ -70,7 +73,6 @@ export const Default = {
         ],
       },
     },
-    controls: { expanded: true },
   },
   render: (args: Args) => <NavigationJumpTo {...args} />,
 };
@@ -92,7 +94,6 @@ export const JumpToNavDemo = {
     },
     controls: {
       exclude: ["items"],
-      expanded: true,
     },
   },
   render: (args: Args) => <NavigationJumpToDemo {...args} />,

@@ -8,6 +8,8 @@ export default {
   argTypes: {
     label: {
       control: { type: "text" },
+      description:
+        "The filter's text. Cut off with an ellipsis when there is not room for it.",
       required: true,
     },
   },

@@ -25,15 +25,13 @@ const meta: Meta<typeof DefaultStory> = {
         type: "boolean",
       },
       description: "Show values in the legend",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
   },
   component: DefaultStory,
   title: "Components/Legend",
-  parameters: {
-    controls: {
-      expanded: true,
-    },
-  },
 };
 
 export default meta;
