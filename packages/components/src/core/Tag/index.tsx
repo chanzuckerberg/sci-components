@@ -128,7 +128,11 @@ const Tag = forwardRef(
           <>
             <span className={TAG_LABEL_TEXT_CLASS}>{label}</span>
             {showLinkIcon && !isIconOnly && (
-              <ArrowUpRightIcon aria-hidden className={TAG_LINK_ICON_CLASS} />
+              <ArrowUpRightIcon
+                weight="bold"
+                aria-hidden
+                className={TAG_LINK_ICON_CLASS}
+              />
             )}
           </>
         }

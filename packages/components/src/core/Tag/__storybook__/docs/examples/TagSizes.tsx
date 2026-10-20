@@ -57,12 +57,30 @@ function App() {
         <Group>
           <Caption>medium</Caption>
           <Tag color="accent" label="Annotated" />
-          <Tag color="accent" icon={<SparkleIcon />} label="Annotated" />
           <Tag
             color="accent"
-            icon={<SparkleIcon />}
+            icon={<SparkleIcon weight="fill" />}
+            label="Annotated"
+          />
+          <Tag
+            color="accent"
+            icon={<SparkleIcon weight="fill" />}
             iconOnly
             label="Annotated"
+          />
+          <Tag color="accent" label="Annotated" sdsStyle="outline" />
+          <Tag
+            color="accent"
+            icon={<SparkleIcon weight="fill" />}
+            label="Annotated"
+            sdsStyle="outline"
+          />
+          <Tag
+            color="accent"
+            icon={<SparkleIcon weight="fill" />}
+            iconOnly
+            label="Annotated"
+            sdsStyle="outline"
           />
         </Group>
 
@@ -71,16 +89,37 @@ function App() {
           <Tag color="accent" label="Annotated" size="small" />
           <Tag
             color="accent"
-            icon={<SparkleIcon />}
+            icon={<SparkleIcon weight="fill" />}
             label="Annotated"
             size="small"
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon />}
+            icon={<SparkleIcon weight="fill" />}
             iconOnly
             label="Annotated"
             size="small"
+          />
+          <Tag
+            color="accent"
+            label="Annotated"
+            size="small"
+            sdsStyle="outline"
+          />
+          <Tag
+            color="accent"
+            icon={<SparkleIcon weight="fill" />}
+            label="Annotated"
+            size="small"
+            sdsStyle="outline"
+          />
+          <Tag
+            color="accent"
+            icon={<SparkleIcon weight="fill" />}
+            iconOnly
+            label="Annotated"
+            size="small"
+            sdsStyle="outline"
           />
         </Group>
       </Stack>

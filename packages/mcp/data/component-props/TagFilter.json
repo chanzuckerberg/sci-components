@@ -5,6 +5,11 @@
         "description": "The filter's text. Cut off with an ellipsis when there is not room for it.",
         "isRequired": true,
         "type": "string"
+      },
+      "onDelete": {
+        "description": "Runs when the X is clicked or activated, and when Backspace or Delete is\npressed on the tag. Drop the filter from your state here; the component\ndoes not remove itself.",
+        "isRequired": true,
+        "type": "(event: any) => void"
       }
     }
   }

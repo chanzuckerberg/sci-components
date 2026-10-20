@@ -10,6 +10,10 @@ export default {
       control: { type: "text" },
       required: true,
     },
+    onDelete: {
+      control: false,
+      required: true,
+    },
   },
   component: TagFilter,
   title: "Deprecated/TagFilter",

@@ -22,9 +22,12 @@ const VARIANTS = [
   { name: "text", props: {} },
   {
     name: "text + icon + link",
-    props: { icon: <SparkleIcon />, showLinkIcon: true },
+    props: { icon: <SparkleIcon weight="fill" />, showLinkIcon: true },
   },
-  { name: "icon only", props: { icon: <SparkleIcon />, iconOnly: true } },
+  {
+    name: "icon only",
+    props: { icon: <SparkleIcon weight="fill" />, iconOnly: true },
+  },
 ];
 
 const PAGE_STYLE: CSSProperties = {

@@ -1,4 +1,4 @@
-export const TAG_FILTER_EXCLUDED_CONTROLS = ["label"];
+export const TAG_FILTER_EXCLUDED_CONTROLS = ["label", "onDelete"];
 
 export const TAG_FILTER_PSEUDO_STATES = ["default", "hover", "active", "focus"];
 
