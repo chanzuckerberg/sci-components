@@ -1,0 +1,5 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{t as n}from"./react-CK_LJ1AD.js";import{Ao as r,Eo as i,gn as a,ko as o}from"./iframe-8L1H2VAU.js";import{t as s}from"./src-B2XYyUY1.js";import{t as c}from"./Tag-DgB8Mr-M.js";import{n as l,t as u}from"./Tabs-DakYcCxF.js";function d(){let[e,t]=(0,f.useState)(0);return(0,p.jsx)(`div`,{className:`app`,children:(0,p.jsxs)(l,{"aria-label":`Project contents`,onChange:(e,n)=>{t(n)},underlined:!0,value:e,children:[(0,p.jsx)(u,{count:4,label:`Samples`}),(0,p.jsx)(u,{count:0,label:`Contributors`}),(0,p.jsx)(u,{count:(0,p.jsxs)(m,{children:[`14`,(0,p.jsx)(c,{color:`beta`,label:`BETA`,sdsStyle:`rounded`,sdsType:`secondary`})]}),label:`Analyses`})]})})}var f,p,m;e((()=>{r(),s(),f=t(n()),p=t(i()),m=o(`span`,{target:`e1dt3ceg0`})(e=>`
+      align-items: center;
+      display: inline-flex;
+      gap: ${a(e)?.s}px;
+    `,`;`)}))();export{d as default};

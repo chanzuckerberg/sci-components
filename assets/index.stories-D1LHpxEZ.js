@@ -1,0 +1,54 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{t as n}from"./react-CK_LJ1AD.js";import{Ao as r,Eo as i,Hn as a,Ur as o,ko as s}from"./iframe-8L1H2VAU.js";import{a as c,n as l}from"./utils-BxIa431Z.js";import{n as u,t as d}from"./MenuItem-DK9b9Vi2.js";import{n as f,t as p}from"./customSdsIcon-KZ55RhX8.js";import{n as m,t as h}from"./customSvgIcon-FL7KVyDY.js";var g,_,v,y,b,x,S,C,w,T,E=e((()=>{f(),m(),g=t(i()),_=[`name`,`column`,`disabled`,`isMultiSelect`,`icon`,`sdsIconProps`,`sdsStyle`,`selected`],v={gear:`Gear`,customSdsIcon:(0,g.jsx)(p,{sdsSize:`s`},`customSdsIcon`),customSvgIcon:(0,g.jsx)(h,{sx:{height:14,width:14}},`customSvgIcon`)},y=[!1,!0],b=[`determinate`,`indeterminate`],x=[void 0,`123`],S=[void 0,`Gear`],C=[!1,!0],w=[!1,!0],T=[`default`,`hover`,`active`,`focus`]})),D,O=e((()=>{r(),D=s(`div`,{target:`e1d4dpqk0`})({name:`xu0q36`,styles:`width:250px`})})),k,A,j=e((()=>{a(),u(),O(),k=t(i()),A=e=>{let{name:t}=e;return(0,k.jsx)(D,{children:(0,k.jsx)(o,{disablePadding:!0,children:(0,k.jsx)(d,{"data-testid":`MenuItem`,...e,children:t})})})}})),M,N,P,F=e((()=>{a(),E(),u(),M=t(i()),N=t(n()),P=e=>{let t={display:`contents`},n={borderStyle:`solid none none none`,gridColumn:`1 / 6`,justifySelf:`stretch`,paddingTop:10};return(0,M.jsx)(M.Fragment,{children:y.map(e=>(0,M.jsx)(r,{isMultiSelect:e},String(e)))});function r({isMultiSelect:e}){return(0,M.jsxs)(`div`,{style:{columnGap:`20px`,display:`inline-grid`,fontFamily:`sans-serif`,marginRight:`50px`},children:[(0,M.jsxs)(`p`,{style:{fontSize:`2em`,gridColumn:`1 / 6`,marginBottom:10},children:[`Multi-select: `,(0,M.jsx)(`b`,{children:e?`yes`:`no`})]}),x.map(t=>(0,M.jsx)(i,{isMultiSelect:e,column:t},String(t)))]})}function i({isMultiSelect:e,column:r}){return(0,M.jsxs)(`div`,{style:t,children:[(0,M.jsxs)(`p`,{style:{...n,alignSelf:`end`,borderWidth:`3px`,fontSize:`1.17em`,margin:`0 0 15px 0`},children:[`Column: `,(0,M.jsx)(`b`,{children:r?`yes`:`no`})]}),S.map(t=>(0,M.jsx)(a,{isMultiSelect:e,column:r,sdsIcon:t},String(t)))]})}function a({isMultiSelect:e,column:r,sdsIcon:i}){return(0,M.jsxs)(`div`,{style:t,children:[(0,M.jsxs)(`p`,{style:{...n,alignSelf:`end`,borderWidth:`2px`,fontSize:`1em`,margin:`0 0 15px 0`},children:[`Icon: `,(0,M.jsx)(`b`,{children:i?`yes`:`no`})]}),C.map(t=>(0,M.jsx)(s,{isMultiSelect:e,column:r,sdsIcon:i,selected:t},String(t)))]})}function s({isMultiSelect:e,column:r,sdsIcon:i,selected:a}){return(0,M.jsxs)(`div`,{style:t,children:[(0,M.jsxs)(`p`,{style:{...n,alignSelf:`end`,borderWidth:`1px`,fontSize:`0.83em`,margin:`0 0 10px 0`},children:[`Selected: `,(0,M.jsx)(`b`,{children:a?`true`:`false`})]}),b.map(t=>(0,M.jsx)(c,{isMultiSelect:e,column:r,sdsIcon:i,selected:a,sdsStyle:t},String(t)))]})}function c({isMultiSelect:e,column:r,sdsIcon:i,selected:a,sdsStyle:o}){return(0,M.jsxs)(`div`,{style:t,children:[(0,M.jsxs)(`p`,{style:{...n,alignSelf:`end`,borderWidth:`1px`,fontSize:`0.83em`,margin:`0 0 10px 0`},children:[`SdsStyle: `,(0,M.jsx)(`b`,{children:o})]}),w.map(t=>(0,M.jsx)(l,{isMultiSelect:e,column:r,sdsIcon:i,selected:a,sdsStyle:o,disabled:t},String(t)))]})}function l({isMultiSelect:n,column:r,sdsIcon:i,selected:a,sdsStyle:s,disabled:c}){let l={marginBottom:20},u={fontSize:`0.67em`,margin:`10px 0 20px 0`};return(0,M.jsx)(`div`,{style:t,children:T.map(t=>(0,M.jsx)(o,{role:`menu`,component:`div`,disablePadding:!0,style:l,children:(c===!1||c===!0&&t==="default")&&(0,M.jsxs)(M.Fragment,{children:[(0,M.jsxs)(`p`,{style:u,children:[c?`Disabled: `:`State: `,(0,M.jsx)(`b`,{children:c?`true`:t})]}),(0,N.createElement)(d,{...e,"data-testid":`menu-item`,isMultiSelect:n,column:r,icon:i,selected:a,sdsStyle:s,disabled:c,className:`pseudo-${t}`,key:t},`Name`)]})},t))})}}})),I,L,R,z,B,V,H;e((()=>{E(),j(),F(),c(),I=t(i()),L={argTypes:{column:{control:{type:`text`},description:`The column prop determines the content displayed in the right column of the menu item. This content can be customized to provide additional information or context for the menu item.`},disabled:{control:{type:`boolean`},description:"If `true`, the component is disabled.",table:{defaultValue:{summary:`false`}}},icon:{control:{labels:{gear:`SDS Icon: Gear`,customSdsIcon:`Custom SDS Icon`,customSvgIcon:`Custom SVG Icon`},type:`select`},description:`The icon shown at the start of the item, either the name of an SDS icon or an element of your own. Only icons that come in a small size can be named here.`,mapping:v,options:Object.keys(v)},isMultiSelect:{control:{type:`boolean`},description:`When true, designates that the menu item supports multi-select functionality.`,table:{defaultValue:{summary:`false`}}},name:{control:{type:`text`},description:`Story-only: the item's text, which the story renders as the MenuItem's children.`},sdsIconProps:{control:{type:`object`},description:`Enables you to pass additional props to customize the SDS icon within the menu item.`},sdsStyle:{control:{type:l},description:`Determines the style of the menu item, whether it is determinate or indeterminate.`,options:[`determinate`,`indeterminate`],table:{defaultValue:{summary:`determinate`}}},sdsType:{control:{type:l},description:`An "action" item leaves out the selection mark at its start, for a menu whose items run a command rather than choose a value.`,options:[`default`,`action`],table:{defaultValue:{summary:`default`}}},selected:{control:{type:`boolean`},description:"If `true`, the component is selected.",table:{defaultValue:{summary:`false`}}}},component:A,parameters:{a11y:{config:{rules:[{enabled:!1,id:`aria-required-parent`}]}}},title:`Components/Dropdowns/MenuItem`},R={args:{column:`123,456`,disabled:!1,isMultiSelect:!1,name:`Text here`,sdsIconProps:{color:`blue`},sdsStyle:`determinate`,sdsType:`default`,selected:!1}},z={args:{column:`123,456`,disabled:!1,isMultiSelect:!1,name:`Text here`,sdsIconProps:{color:`blue`},sdsStyle:`determinate`,sdsType:`action`,selected:!1}},B={args:{name:`Text here`},parameters:{controls:{exclude:_},snapshot:{skip:!0}},render:e=>(0,I.jsx)(P,{...e})},V={args:{column:`123`,name:`Test text`},parameters:{controls:{exclude:_},snapshot:{skip:!0}},render:e=>(0,I.jsx)(A,{...e})},H=[`Default`,`ActionType`,`ScreenshotTest`,`Test`],R.parameters={...R.parameters,docs:{...R.parameters?.docs,source:{originalSource:`{
+  args: {
+    column: "123,456",
+    disabled: false,
+    isMultiSelect: false,
+    name: "Text here",
+    sdsIconProps: {
+      color: "blue"
+    },
+    sdsStyle: "determinate",
+    sdsType: "default",
+    selected: false
+  }
+}`,...R.parameters?.docs?.source}}},z.parameters={...z.parameters,docs:{...z.parameters?.docs,source:{originalSource:`{
+  args: {
+    column: "123,456",
+    disabled: false,
+    isMultiSelect: false,
+    name: "Text here",
+    sdsIconProps: {
+      color: "blue"
+    },
+    sdsStyle: "determinate",
+    sdsType: "action",
+    selected: false
+  }
+}`,...z.parameters?.docs?.source}}},B.parameters={...B.parameters,docs:{...B.parameters?.docs,source:{originalSource:`{
+  args: {
+    name: "Text here"
+  },
+  parameters: {
+    controls: {
+      exclude: MENU_ITEM_EXCLUDED_CONTROLS
+    },
+    snapshot: {
+      skip: true
+    }
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />
+}`,...B.parameters?.docs?.source}}},V.parameters={...V.parameters,docs:{...V.parameters?.docs,source:{originalSource:`{
+  args: {
+    column: "123",
+    name: "Test text"
+  },
+  parameters: {
+    controls: {
+      exclude: MENU_ITEM_EXCLUDED_CONTROLS
+    },
+    snapshot: {
+      skip: true
+    }
+  },
+  render: (args: Args) => <MenuItem {...args} />
+}`,...V.parameters?.docs?.source}}}}))();export{z as ActionType,R as Default,B as ScreenshotTest,V as Test,H as __namedExportsOrder,L as default};

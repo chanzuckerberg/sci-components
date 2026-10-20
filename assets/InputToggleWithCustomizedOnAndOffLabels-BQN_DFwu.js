@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-xPQekRTU.js";import{Eo as n}from"./iframe-8L1H2VAU.js";import{t as r}from"./src-B2XYyUY1.js";import{t as i}from"./InputToggle-DozI0GoM.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(i,{onLabel:`Start`,offLabel:`Finish`,width:72})})}var o;e((()=>{r(),o=t(n())}))();export{a as default};
