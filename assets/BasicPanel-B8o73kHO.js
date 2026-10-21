@@ -1,6 +1,0 @@
-import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./react-B-4JnjsC.js";import{Hr as r,Vr as i}from"./material-DlyzFPof.js";import{t as a}from"./jsx-runtime-cM__dR4X.js";import{Ut as o,f as s}from"./iframe-DhUGD016.js";import{t as c}from"./Icon-1J9Ma-VV.js";import{t as l}from"./Button-Du033jZN.js";import{t as u}from"./src-Dl7X9U7d.js";import{t as d}from"./Panel-CCRKLWb6.js";function f(){let[e,t]=(0,m.useState)(!0);return(0,p.jsx)(`div`,{className:`app`,children:(0,p.jsxs)(g,{children:[(0,p.jsx)(d,{open:e,sdsType:`basic`,width:h,children:`Filters, dataset pickers, and anything else that changes what the page shows.`}),(0,p.jsxs)(_,{shifted:e,children:[(0,p.jsx)(l,{onClick:()=>t(e=>!e),sdsStyle:`solid`,sdsType:`primary`,startIcon:(0,p.jsx)(c,{sdsIcon:`Filter`,sdsSize:`s`}),children:e?`Hide filters`:`Show filters`}),(0,p.jsx)(`p`,{children:`The page's own content moves aside for a basic panel, so the two never overlap.`})]})]})})}var p,m,h,g,_;t((()=>{r(),p=e(a()),u(),m=e(n()),h=280,g=i(`div`,{target:`e1e48cc51`})({name:`1e7g49u`,styles:`height:320px;overflow:clip;transform:translateZ(0)`}),_=i(`div`,{target:`e1e48cc50`})(s,` `,e=>`
-      color: ${o(e)?.base?.textPrimary};
-      margin-left: ${e.shifted?`${h}px`:`0`};
-      padding: 50px;
-      transition: margin-left 225ms ease-out;
-    `,`;`)}))();export{f as default};
