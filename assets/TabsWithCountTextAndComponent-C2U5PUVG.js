@@ -1,0 +1,5 @@
+import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./react-B-4JnjsC.js";import{Br as r,Vr as i}from"./material-CSBxm0C2.js";import{t as a}from"./jsx-runtime-cM__dR4X.js";import{Gt as o}from"./iframe-Cd8QHZze.js";import{t as s}from"./src-BDqRJLOx.js";import{t as c}from"./Tag-CXawBRNu.js";import{n as l,t as u}from"./Tabs-BiGHGeqQ.js";function d(){let[e,t]=(0,f.useState)(0);return(0,p.jsx)(`div`,{className:`app`,children:(0,p.jsxs)(l,{"aria-label":`Project contents`,onChange:(e,n)=>{t(n)},underlined:!0,value:e,children:[(0,p.jsx)(u,{count:4,label:`Samples`}),(0,p.jsx)(u,{count:0,label:`Contributors`}),(0,p.jsx)(u,{count:(0,p.jsxs)(m,{children:[`14`,(0,p.jsx)(c,{color:`beta`,label:`BETA`,sdsStyle:`rounded`,sdsType:`secondary`})]}),label:`Analyses`})]})})}var f,p,m;t((()=>{i(),s(),f=e(n()),p=e(a()),m=r(`span`,{target:`e1dt3ceg0`})(e=>`
+      align-items: center;
+      display: inline-flex;
+      gap: ${o(e)?.s}px;
+    `,`;`)}))();export{d as default};

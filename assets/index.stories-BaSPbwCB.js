@@ -1,0 +1,13 @@
+import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./react-B-4JnjsC.js";import{t as r}from"./jsx-runtime-cM__dR4X.js";import{n as i,t as a}from"./Button-CYJU6j-k.js";import{n as o,t as s}from"./MenuItem-Dks7Nd4_.js";import{n as c,t as l}from"./Menu-CzOmaOjJ.js";var u,d,f,p=t((()=>{u=e(n()),i(),o(),c(),d=e(r()),f=e=>{let[t,n]=u.useState(null),r=!!t,i=e=>{n(e.currentTarget)},o=()=>{n(null)};return(0,d.jsxs)(`div`,{children:[(0,d.jsx)(a,{id:`basic-button`,size:`large`,sdsStyle:`minimal`,sdsType:`primary`,onClick:i,"aria-controls":r?`basic-menu`:void 0,"aria-haspopup":`true`,"aria-expanded":r?!0:void 0,children:`Click me!`}),(0,d.jsxs)(l,{id:`basic-menu`,anchorEl:t,keepMounted:!0,open:r,onClose:o,slotProps:{list:{"aria-labelledby":`basic-button`}},role:`listbox`,...e,children:[(0,d.jsx)(s,{onClick:o,children:`Contact us`}),(0,d.jsx)(s,{onClick:o,children:`Terms of Use`}),(0,d.jsx)(s,{onClick:o,children:`Privacy Policy`}),(0,d.jsx)(s,{onClick:o,children:`Logout`})]})]})}})),m,h,g,_;t((()=>{p(),m={argTypes:{anchorOrigin:{control:{type:`object`},description:"The point on the anchor element that the menu attaches to, as `{ vertical, horizontal }`.",table:{defaultValue:{summary:`{ vertical: "bottom", horizontal: "center" }`}}},column:{control:{type:`text`},description:`Not a Menu prop: the story passes it through to the menu's root element, where it has no visible effect. The right-hand column text is set on each MenuItem.`},transformOrigin:{control:{type:`object`},description:"The point on the menu that lines up with the anchor origin, as `{ vertical, horizontal }`.",table:{defaultValue:{summary:`{ vertical: "top", horizontal: "center" }`}}}},component:f,title:`Components/Dropdowns/Menu`},h={},g={args:{anchorOrigin:{horizontal:`right`,vertical:`bottom`},column:`column value`,transformOrigin:{horizontal:`right`,vertical:`top`}}},_=[`Default`,`CustomPlacement`],h.parameters={...h.parameters,docs:{...h.parameters?.docs,source:{originalSource:`{}`,...h.parameters?.docs?.source}}},g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`{
+  args: {
+    anchorOrigin: {
+      horizontal: "right",
+      vertical: "bottom"
+    },
+    column: "column value",
+    transformOrigin: {
+      horizontal: "right",
+      vertical: "top"
+    }
+  }
+}`,...g.parameters?.docs?.source}}}}))();export{g as CustomPlacement,h as Default,_ as __namedExportsOrder,m as default};
