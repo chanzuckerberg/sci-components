@@ -10,7 +10,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
-import { SparkleIcon } from "@phosphor-icons/react";
+import { StackIcon } from "@phosphor-icons/react";
 
 const Stack = styled.div<CommonThemeProps>`
   ${(props) => {
@@ -59,25 +59,25 @@ function App() {
           <Tag color="accent" label="Annotated" />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             label="Annotated"
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Annotated"
           />
           <Tag color="accent" label="Annotated" sdsStyle="outline" />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             label="Annotated"
             sdsStyle="outline"
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Annotated"
             sdsStyle="outline"
@@ -89,13 +89,13 @@ function App() {
           <Tag color="accent" label="Annotated" size="small" />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             label="Annotated"
             size="small"
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Annotated"
             size="small"
@@ -108,14 +108,14 @@ function App() {
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             label="Annotated"
             size="small"
             sdsStyle="outline"
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon weight="fill" />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Annotated"
             size="small"

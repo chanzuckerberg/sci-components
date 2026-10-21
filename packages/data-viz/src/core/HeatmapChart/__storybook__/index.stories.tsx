@@ -12,40 +12,66 @@ export default {
   argTypes: {
     axisPointer: {
       control: {
-        labels: [
-          "No axis pointer",
-          "Show axis pointer on mousemove",
-          "Show axis pointer on click",
-        ],
+        labels: {
+          none: "No axis pointer",
+          mousemove: "Show axis pointer on mousemove",
+          click: "Show axis pointer on click",
+        },
         type: "select",
       },
+      description:
+        "The crosshair following the pointer. One object applies to both axes; a two-entry array configures them separately. See https://echarts.apache.org/en/option.html#axisPointer.",
       mapping: HEATMAP_AXIS_POINTER_OPTIONS,
       options: Object.keys(HEATMAP_AXIS_POINTER_OPTIONS),
+      table: {
+        defaultValue: { summary: "hidden" },
+      },
     },
     camera: {
       control: {
         type: "object",
       },
+      description:
+        "Renders only a window of the grid, measured in cells, and lets the pointer pan it, so very large heatmaps stay fast. Sizes are ignored unless `active` is true, and default to 40 × 20 cells.",
+      table: {
+        defaultValue: { summary: "inactive" },
+      },
     },
     echartsRendererMode: {
       control: {
-        labels: ["Canvas", "SVG"],
+        labels: { canvas: "Canvas", svg: "SVG" },
         type: "select",
       },
+      description:
+        "Which renderer ECharts initialises with. Canvas copes better with very large grids. Changing it rebuilds the chart.",
       options: ["canvas", "svg"],
+      table: {
+        defaultValue: { summary: "svg" },
+      },
     },
     symbol: {
       control: {
-        labels: ["Circle", "Rectangle", "Round Rectangle"],
+        labels: {
+          circle: "Circle",
+          rect: "Rectangle",
+          roundRect: "Round Rectangle",
+        },
         type: "select",
       },
+      description:
+        "The shape of a cell. Circles turn the grid into a dot plot, where diameter can carry a second measurement.",
       options: ["circle", "rect", "roundRect"],
+      table: {
+        defaultValue: { summary: "rect" },
+      },
     },
     tooltip: {
       control: {
-        labels: ["No tooltip", "Show Tooltip"],
+        labels: { none: "No tooltip", visible: "Show Tooltip" },
         type: "select",
       },
+      description:
+        "Story-only: an ECharts tooltip config that the story passes through the chart's options. It switches between no tooltip and one showing the hovered cell's x, y and value.",
       mapping: HEATMAP_TOOLTIP_OPTIONS,
       options: Object.keys(HEATMAP_TOOLTIP_OPTIONS),
     },
@@ -66,7 +92,7 @@ export default {
 
 export const Default = {
   args: {
-    axisPointer: HEATMAP_AXIS_POINTER_OPTIONS[1],
+    axisPointer: HEATMAP_AXIS_POINTER_OPTIONS.mousemove,
     camera: {
       active: true,
       height: 20,
@@ -74,7 +100,7 @@ export const Default = {
     },
     echartsRendererMode: "svg",
     symbol: "circle",
-    tooltip: HEATMAP_TOOLTIP_OPTIONS[1],
+    tooltip: HEATMAP_TOOLTIP_OPTIONS.visible,
   },
   parameters: {
     snapshot: {

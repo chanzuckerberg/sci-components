@@ -29,45 +29,64 @@ export const TAG_CUSTOM_COLORS: SdsTagColorType = [
   "#b26f00",
 ];
 
-export const TAG_PANEL_COLORS: SdsTagColorType[] = [
-  ...TAG_INTENTS,
-  TAG_CUSTOM_COLORS,
-];
+export const TAG_PANEL_COLORS: Record<string, SdsTagColorType> = {
+  accent: "accent",
+  beta: "beta",
+  info: "info",
+  negative: "negative",
+  neutral: "neutral",
+  notice: "notice",
+  positive: "positive",
+  custom: TAG_CUSTOM_COLORS,
+};
 
-export const TAG_PANEL_COLOR_LABELS = [
-  ...TAG_INTENTS,
-  "Custom colors for Label, Background, Icon",
-];
+export const TAG_PANEL_COLOR_LABELS = {
+  custom: "Custom colors for Label, Background, Icon",
+};
 
 export const TAG_SDS_STYLES: SdsTagStyle[] = ["solid", "outline"];
 
 export const TAG_SIZES: SdsTagSize[] = ["medium", "small"];
 
-export const TAG_ICONS = [
-  undefined,
-  <SparkleIcon key="Sparkle" />,
-  <CheckCircleIcon key="CheckCircle" />,
-  <WarningCircleIcon key="WarningCircle" />,
-  <UserIcon key="User" />,
-  <Icon sdsIcon="CheckCircle" sdsSize="xs" key="SdsCheckCircle" />,
-];
+export const TAG_ICONS = {
+  none: undefined,
+  sparkle: <SparkleIcon key="Sparkle" />,
+  checkCircle: <CheckCircleIcon key="CheckCircle" />,
+  warningCircle: <WarningCircleIcon key="WarningCircle" />,
+  user: <UserIcon key="User" />,
+  sdsCheckCircle: (
+    <Icon sdsIcon="CheckCircle" sdsSize="xs" key="SdsCheckCircle" />
+  ),
+};
 
-export const TAG_ICON_LABELS = [
-  "No icon",
-  "Phosphor Sparkle",
-  "Phosphor CheckCircle",
-  "Phosphor WarningCircle",
-  "Phosphor User",
-  "SDS Icon CheckCircle (deprecated Icon)",
-];
+export const TAG_ICON_LABELS = {
+  none: "No icon",
+  sparkle: "Phosphor Sparkle",
+  checkCircle: "Phosphor CheckCircle",
+  warningCircle: "Phosphor WarningCircle",
+  user: "Phosphor User",
+  sdsCheckCircle: "SDS Icon CheckCircle (deprecated Icon)",
+};
 
-export const TAG_ON_CLICK_OPTIONS = [undefined, action("onClick")];
+export const TAG_ON_CLICK_OPTIONS = {
+  none: undefined,
+  action: action("onClick"),
+};
 
-export const TAG_ON_CLICK_LABELS = ["undefined", "() => {}"];
+export const TAG_ON_CLICK_LABELS = {
+  none: "undefined",
+  action: "() => {}",
+};
 
-export const TAG_HREF_OPTIONS = [undefined, "https://sds.czi.design"];
+export const TAG_HREF_OPTIONS = {
+  none: undefined,
+  sdsSite: "https://sds.czi.design",
+};
 
-export const TAG_HREF_LABELS = ["undefined", "https://sds.czi.design"];
+export const TAG_HREF_LABELS = {
+  none: "undefined",
+  sdsSite: "https://sds.czi.design",
+};
 
 export const TAG_COLOR_CONTRAST_RULE = "color-contrast";
 

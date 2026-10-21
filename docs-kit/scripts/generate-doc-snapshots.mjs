@@ -58,13 +58,15 @@ const SECTION = "Docs Snapshots";
 
 /**
  * Pages Chromatic will not capture. It refuses a snapshot larger than 25
- * million pixels, and at the 1,200px width it captures at, these two run past
- * 26,000px tall — the longest pages in the documentation by a wide margin, and
- * the only two over the line. Capturing them means splitting them up, so until
+ * million pixels, which at the 1,200px width it captures at is a page about
+ * 20,800px tall. The two design pages run past 26,000px, and the
+ * ProteinStructureViewer page, with eight live viewers and their source, has
+ * grown to just over the line. Capturing them means splitting them up, so until
  * that is worth doing they are left out and reviewed in the published
  * Storybook as they were before.
  */
 const TOO_TALL = new Set([
+  "Data Viz/ProteinStructureViewer",
   "Design Documentation/Bases/Colors",
   "Design Documentation/Bases/Typography",
 ]);
@@ -266,7 +268,7 @@ export function generateDocSnapshots() {
   process.stdout.write(
     `Wrote ${written} documentation snapshot ${written === 1 ? "story" : "stories"} to docs-kit/generated` +
       (omitted.length > 0
-        ? `, leaving out ${omitted.join(" and ")} as too tall for Chromatic to capture\n`
+        ? `, leaving out ${new Intl.ListFormat("en").format(omitted)} as too tall for Chromatic to capture\n`
         : "\n")
   );
 

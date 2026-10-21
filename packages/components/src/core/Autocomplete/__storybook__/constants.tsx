@@ -16,18 +16,18 @@ export const AUTOCOMPLETE_EXCLUDED_CONTROLS = [
   "onChange",
 ];
 
-export const AUTOCOMPLETE_ON_CHANGE_OPTIONS = [
+export const AUTOCOMPLETE_ON_CHANGE_OPTIONS = {
   noop,
-  (event: unknown, value: unknown) => {
+  log: (event: unknown, value: unknown) => {
     // eslint-disable-next-line no-console
     console.log(value);
   },
-];
+};
 
-export const AUTOCOMPLETE_GROUP_BY_OPTIONS = [
-  undefined,
-  (option: DefaultAutocompleteOption) => option.section as string,
-];
+export const AUTOCOMPLETE_GROUP_BY_OPTIONS = {
+  none: undefined,
+  section: (option: DefaultAutocompleteOption) => option.section as string,
+};
 
 export const AUTOCOMPLETE_WRAPPER_STYLES = {
   width: 280,
@@ -37,12 +37,15 @@ export const AUTOCOMPLETE_DIV_MARGIN = "10px 0 0 0";
 
 export const AUTOCOMPLETE_LABEL = "Search by label";
 
-export const AUTOCOMPLETE_DATA_OPTIONS = [
-  AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
-  [AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0], AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1]],
-  [
+export const AUTOCOMPLETE_DATA_OPTIONS = {
+  oneColumn: AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS,
+  twoColumns: [
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
+    AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
+  ],
+  threeColumns: [
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[0],
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[1],
     AUTOCOMPLETE_MULTI_COLUMN_OPTIONS[2],
   ],
-];
+};

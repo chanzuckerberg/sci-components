@@ -1,4 +1,4 @@
-import { SparkleIcon } from "@phosphor-icons/react";
+import { StackIcon } from "@phosphor-icons/react";
 import { CSSProperties, Fragment } from "react";
 import RawTag from "@components/src/core/Tag";
 import { SdsTagColorType, SdsTagStyle } from "@components/src/core/Tag/style";
@@ -22,11 +22,11 @@ const VARIANTS = [
   { name: "text", props: {} },
   {
     name: "text + icon + link",
-    props: { icon: <SparkleIcon weight="fill" />, showLinkIcon: true },
+    props: { icon: <StackIcon weight="fill" />, showLinkIcon: true },
   },
   {
     name: "icon only",
-    props: { icon: <SparkleIcon weight="fill" />, iconOnly: true },
+    props: { icon: <StackIcon weight="fill" />, iconOnly: true },
   },
 ];
 

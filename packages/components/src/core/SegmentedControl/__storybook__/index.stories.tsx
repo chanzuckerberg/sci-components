@@ -10,6 +10,8 @@ export default {
       control: {
         type: "object",
       },
+      description:
+        "One entry per segment, in the order they appear. Each entry needs a `value`, and can take an `icon`, a `label`, `tooltipProps` and `disabled`.",
     },
   },
   component: SegmentedControl,

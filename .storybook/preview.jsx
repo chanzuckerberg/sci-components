@@ -57,6 +57,9 @@ const preview = {
     // Removes the change background button since it's controlled by the theme toggle
     backgrounds: { disabled: true },
 
+    // Shows each control's description and default value next to it
+    controls: { expanded: true },
+
     docs: { theme: docsTheme },
 
     options: {

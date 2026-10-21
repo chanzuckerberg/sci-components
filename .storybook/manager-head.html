@@ -36,7 +36,7 @@
   #storybook-explorer-menu a[data-selected="true"]:hover {
     background-color: #eee;
     color: #000;
-    font-weight: 600;
+    -webkit-text-stroke: 0.5px currentColor;
   }
 
   #storybook-explorer-menu a[data-selected="true"] svg {
@@ -53,7 +53,7 @@
 
   #storybook-explorer-menu .sidebar-subheading > button {
     font-size: 12px !important;
-    font-weight: 600 !important;
+    -webkit-text-stroke: 0.5px currentColor !important;
     text-transform: uppercase !important;
     color: #000 !important;
     letter-spacing: 0 !important;
@@ -99,7 +99,22 @@
   #storybook-explorer-menu .sidebar-item[data-selected="true"] {
     background-color: rgba(192, 192, 192, 0.15) !important;
     color: black;
-    font-weight: 600;
+    font-weight: normal !important;
+  }
+
+  #storybook-explorer-menu .sidebar-item[data-selected="true"] {
+    -webkit-text-stroke: 0.5px currentColor;
+  }
+
+  /*
+   * Hover thickens the label with a stroke rather than a heavier weight: Inter's
+   * semibold glyphs are wider than its regular ones, so a name that only just
+   * fits would wrap onto another line under the pointer and push every item
+   * below it down. A stroke changes how the text is painted, not the room it
+   * takes.
+   */
+  #storybook-explorer-menu .sidebar-item:not([data-selected="true"]):hover {
+    -webkit-text-stroke: 0.5px currentColor;
   }
 
   #storybook-explorer-menu .sidebar-item button,

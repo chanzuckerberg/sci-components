@@ -7,8 +7,15 @@ import { ScreenReaderDemo } from "./stories/screenReader";
 
 export default {
   argTypes: {
+    "aria-label": {
+      control: { type: "text" },
+      description:
+        'Replaces what a screen reader announces for the status region, for example "Loading cell types". The visible text still reads "Loading". Without it, assistive technology announces the visible word.',
+    },
     sdsStyle: {
       control: { type: "select" },
+      description:
+        "Chooses between the minimal and tag variants. It has no default: leaving it out is a type error, and an indicator built without it renders unstyled.",
       options: ["minimal", "tag"],
     },
   },

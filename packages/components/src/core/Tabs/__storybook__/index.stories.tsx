@@ -7,23 +7,26 @@ export default {
   argTypes: {
     items: {
       control: { required: true, type: "object" },
-      defaultValue: { summary: "-" },
       description:
         "Here is an array of objects, each comprising a label and count for the tabs. Please note that this is specific to Storybook. In an actual implementation, it is recommended to pass the tabs as children of the Tabs component.",
     },
     sdsSize: {
       control: { type: "select" },
-      defaultValue: { summary: "large" },
       description: "The size of the label text on every tab in the group",
       options: ["large", "small"],
+      table: {
+        defaultValue: { summary: "large" },
+      },
     },
     underlined: {
       control: {
         type: "boolean",
       },
-      defaultValue: { summary: "false" },
       description:
         "Whether a divider runs under the full width of the tab group",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
   },
   component: Tabs,
@@ -32,7 +35,6 @@ export default {
     // delay allows for font to load and prevents chromatic from constantly creating new baselines
     // https://github.com/mui/material-ui/blob/v4.x/packages/material-ui/src/Tabs/Tabs.js#L194
     chromatic: { delay: 10000 },
-    controls: { expanded: true },
   },
   title: "Components/Tabs",
 } as Meta;

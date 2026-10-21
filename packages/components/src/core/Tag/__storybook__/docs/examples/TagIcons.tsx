@@ -13,7 +13,7 @@ import {
   getSpaces,
   type CommonThemeProps,
 } from "@czi-sds/components";
-import { SparklesIcon } from "@czi-sds/icons";
+import { StackIcon } from "@phosphor-icons/react";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import styled from "@emotion/styled";
 
@@ -34,7 +34,11 @@ function App() {
   return (
     <div className="app">
       <Row>
-        <Tag color="accent" icon={<SparklesIcon />} label="Generated" />
+        <Tag
+          color="accent"
+          icon={<StackIcon weight="fill" />}
+          label="Generated"
+        />
 
         <Tag
           color="positive"
@@ -46,7 +50,7 @@ function App() {
         <Tooltip placement="top" title="Generated">
           <Tag
             color="accent"
-            icon={<SparklesIcon />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Generated"
           />
