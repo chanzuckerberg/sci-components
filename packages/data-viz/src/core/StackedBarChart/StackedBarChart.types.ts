@@ -66,7 +66,7 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Height of the bar in pixels. Values below 1 are clamped to 1, so the bar
    * cannot disappear.
-   * @default 16
+   * @default 8
    */
   barHeight?: number;
   /**
@@ -150,6 +150,12 @@ export interface StackedBarChartProps extends HTMLAttributes<HTMLDivElement> {
    * between it and the sum of the data is drawn as the Remaining segment.
    */
   maxAmount?: number;
+  /**
+   * Cumulative mode only. How many items are drawn as their own segment. The
+   * rest fold into the Remaining segment, whose legend item opens a menu
+   * listing them.
+   */
+  maxItems?: number;
   /**
    * Name of the grey gap segment in cumulative mode.
    * @default "Remaining"

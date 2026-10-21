@@ -11,6 +11,7 @@ import {
   getMode,
   Legend,
   SDSTheme,
+  Tag,
   Tooltip,
   TooltipTable,
   type LegendItemData,
@@ -20,7 +21,6 @@ import {
   ChartWrapper,
   BarContainer,
   BarSegment,
-  StyledBadge,
   TitleContainer,
   StyledStackedBarChartWrapper,
 } from "./style";
@@ -65,7 +65,9 @@ const calculateLegendValue = (
 
   // Count format: show value with optional unit
   const effectiveUnit = item.unit || globalUnit;
-  return effectiveUnit ? `${item.value} ${effectiveUnit}` : `${item.value}`;
+  return effectiveUnit
+    ? `${item.value.toLocaleString()} ${effectiveUnit}`
+    : `${item.value}`;
 };
 
 // Helper: Get segment opacity based on hover and selection state
@@ -210,6 +212,7 @@ const buildLegendItems = (
     remainingPercentage: number;
     remainingLabel: string;
     remainingUnit?: string;
+    remainingOpensMenu: boolean;
     theme: SDSTheme;
   }
 ): LegendItemData[] => {
@@ -223,6 +226,7 @@ const buildLegendItems = (
     remainingPercentage,
     remainingLabel,
     remainingUnit,
+    remainingOpensMenu,
     theme,
   } = options;
 
@@ -251,15 +255,15 @@ const buildLegendItems = (
       // Use remainingUnit or global unit (never a custom unit from data items)
       const effectiveRemainingUnit = remainingUnit || unit || "";
       remainingValueDisplay = effectiveRemainingUnit
-        ? `${remainingValue} ${effectiveRemainingUnit}`
-        : `${remainingValue}`;
+        ? `${remainingValue.toLocaleString()} ${effectiveRemainingUnit}`
+        : `${remainingValue.toLocaleString()}`;
     }
 
     legendItems.push({
       name: remainingLabel,
       value: remainingValueDisplay,
       color: theme?.palette?.sds?.base?.backgroundTertiary,
-      disabled: true,
+      disabled: !remainingOpensMenu,
     });
   }
 
@@ -349,7 +353,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     hideBadge = false,
     data,
     width = "100%",
-    barHeight: barHeightProp = 16,
+    barHeight: barHeightProp = 8,
     showLegend = true,
     showLegendValues = true,
     legendValueFormat = "percentage",
@@ -368,6 +372,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingUnit,
     unit,
     colorGeneratorOptions,
+    maxItems,
     ...rest
   } = props;
 
@@ -375,6 +380,22 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
   const barHeight = Math.max(1, barHeightProp);
 
   const theme = useTheme() as SDSTheme;
+
+  // In cumulative mode, items past maxItems fold into the remaining segment,
+  // whose legend entry opens a menu listing them. Selection and hover indices
+  // keep referring to positions in `data`.
+  const visibleCount =
+    mode === "cumulative" && maxItems !== undefined && maxItems < data.length
+      ? Math.max(0, maxItems)
+      : data.length;
+  const chartData = useMemo(
+    () => data.slice(0, visibleCount),
+    [data, visibleCount]
+  );
+  const hiddenItems = useMemo(
+    () => data.slice(visibleCount),
+    [data, visibleCount]
+  );
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [animatedItems, setAnimatedItems] = useState<AnimatedItem[]>([]);
@@ -416,8 +437,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
 
   // Effect to manage auto-generated colors
   useEffect(() => {
-    const autoItems = data.filter((item) => !item.color);
-    const currentDataKeys = new Set(data.map((item) => item.name));
+    const autoItems = chartData.filter((item) => !item.color);
+    const currentDataKeys = new Set(chartData.map((item) => item.name));
     const previousDataKeys = previousDataKeysRef.current;
     const previousColorOptions = previousColorOptionsRef.current;
 
@@ -467,7 +488,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
+  }, [chartData, colorGeneratorOptions, isDarkMode, theme, generateColorMap]);
 
   // Calculate display badge value
   const displayBadge =
@@ -481,10 +502,12 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     remainingPercentage,
   } = useMemo(() => {
     const total = data.reduce((sum, item) => sum + item.value, 0);
+    const visibleTotal = chartData.reduce((sum, item) => sum + item.value, 0);
     const maxAmountValue =
       mode === "cumulative" && maxAmount ? maxAmount : total;
-    const hasRemainingSegment = mode === "cumulative" && total < maxAmountValue;
-    const remaining = hasRemainingSegment ? maxAmountValue - total : 0;
+    const hasRemainingSegment =
+      mode === "cumulative" && visibleTotal < maxAmountValue;
+    const remaining = hasRemainingSegment ? maxAmountValue - visibleTotal : 0;
     const remainingPct = hasRemainingSegment
       ? (remaining / maxAmountValue) * 100
       : 0;
@@ -495,12 +518,29 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       remainingValue: remaining,
       remainingPercentage: remainingPct,
     };
-  }, [data, mode, maxAmount]);
+  }, [data, chartData, mode, maxAmount]);
+
+  // The remaining segment stands in for the hidden items. It has no data
+  // entry, so it takes the index after `data`.
+  const hasOverflow = hasRemaining && hiddenItems.length > 0;
+  const overflowIndex = data.length;
+
+  // Hidden items only appear in overflow menu
+  const hiddenColors = useMemo(
+    () =>
+      hasOverflow
+        ? generateDiscreteColors(hiddenItems.length, {
+            ...(colorGeneratorOptions || {}),
+            isDarkMode,
+          })
+        : [],
+    [hasOverflow, hiddenItems.length, colorGeneratorOptions, isDarkMode]
+  );
 
   // Calculate percentages and assign colors for each segment
   // default to ornament secondary color if no color is provided
   const dataWithPercentages: AnimatedItem[] = useMemo(() => {
-    return data.map((item, index) => {
+    return chartData.map((item, index) => {
       const resolvedColor =
         item.color ||
         autoColorMap.get(item.name) ||
@@ -517,7 +557,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         isExiting: false,
       };
     });
-  }, [data, effectiveMaxAmount, autoColorMap, theme]);
+  }, [chartData, effectiveMaxAmount, autoColorMap, theme]);
 
   // Handle data change animations for enters/exits.
   useEffect(() => {
@@ -576,10 +616,18 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     };
   }, [dataWithPercentages, remainingPercentage]);
 
-  // Create a Set for O(1) lookups of selected indices
-  const selectedIndicesSet = useMemo(
-    () => new Set(selectedIndices),
-    [selectedIndices]
+  // Hidden items share the remaining segment, so hover and selection styling
+  // operate on chart indices where every hidden index maps to that segment
+  const toChartIndex = useCallback(
+    (index: number) =>
+      hasOverflow && index >= visibleCount ? overflowIndex : index,
+    [hasOverflow, visibleCount, overflowIndex]
+  );
+  const hoveredChartIndex =
+    hoveredIndex === null ? null : toChartIndex(hoveredIndex);
+  const selectedChartIndices = useMemo(
+    () => new Set(selectedIndices.map(toChartIndex)),
+    [selectedIndices, toChartIndex]
   );
 
   // Apply selection styling for hide mode
@@ -590,7 +638,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       () =>
         applySelectionStyling(
           animatedItems,
-          selectedIndicesSet,
+          selectedChartIndices,
           selectionBehavior,
           mode,
           hasRemaining,
@@ -600,7 +648,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         ),
       [
         animatedItems,
-        selectedIndicesSet,
+        selectedChartIndices,
         selectionBehavior,
         mode,
         hasRemaining,
@@ -619,7 +667,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
     ? updatedRemainingValue
     : remainingValue;
 
-  // Convert data to legend items format (always use full data, not filtered)
+  // Convert data to legend items format
   // Use updated remaining values when in hide mode with selections
   const legendItems = useMemo(
     () =>
@@ -633,6 +681,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         remainingPercentage: displayRemainingPercentage,
         remainingLabel,
         remainingUnit,
+        remainingOpensMenu: hasOverflow,
         theme,
       }),
     [
@@ -646,38 +695,59 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       displayRemainingPercentage,
       remainingLabel,
       remainingUnit,
+      hasOverflow,
       theme,
     ]
   );
 
+  // Legend order is visible items, the remaining entry, then the menu of
+  // hidden items. Map data indices to and from that order.
+  const toLegendIndex = useCallback(
+    (index: number) => {
+      if (!hasOverflow || index < visibleCount) return index;
+      return index === overflowIndex ? visibleCount : index + 1;
+    },
+    [hasOverflow, visibleCount, overflowIndex]
+  );
+  const fromLegendIndex = useCallback(
+    (index: number) => {
+      if (!hasOverflow || index < visibleCount) return index;
+      return index === visibleCount ? overflowIndex : index - 1;
+    },
+    [hasOverflow, visibleCount, overflowIndex]
+  );
+
   // Handle legend item hover and leave
   const handleLegendItemHover = useCallback(
-    (_item: LegendItemData, index: number) => {
+    (_item: LegendItemData, legendIndex: number) => {
+      const index = fromLegendIndex(legendIndex);
       setHoveredIndex(index);
       if (onLegendItemMouseEnter && data[index]) {
         onLegendItemMouseEnter(data[index], index);
       }
     },
-    [onLegendItemMouseEnter, data]
+    [onLegendItemMouseEnter, data, fromLegendIndex]
   );
   const handleLegendItemLeave = useCallback(
-    (_item: LegendItemData, index: number) => {
+    (_item: LegendItemData, legendIndex: number) => {
+      const index = fromLegendIndex(legendIndex);
       setHoveredIndex(null);
       if (onLegendItemMouseLeave && data[index]) {
         onLegendItemMouseLeave(data[index], index);
       }
     },
-    [onLegendItemMouseLeave, data]
+    [onLegendItemMouseLeave, data, fromLegendIndex]
   );
 
   // Handle legend item click
   const handleLegendItemClickInternal = useCallback(
-    (_item: LegendItemData, index: number) => {
+    (_item: LegendItemData, legendIndex: number) => {
+      const index = fromLegendIndex(legendIndex);
       if (onLegendItemClick && data[index]) {
         onLegendItemClick(data[index], index);
       }
     },
-    [onLegendItemClick, data]
+    [onLegendItemClick, data, fromLegendIndex]
   );
 
   // Handle selection change - reusable logic for both segment and legend
@@ -704,7 +774,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       // Handle selection change
       if (!onSelectionChange) return;
 
-      const isSelected = selectedIndicesSet.has(index);
+      const isSelected = selectedChartIndices.has(index);
       const newSelectedIndices = isSelected
         ? selectedIndices.filter((i) => i !== index)
         : [...selectedIndices, index];
@@ -716,9 +786,24 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       onSegmentClick,
       data,
       selectedIndices,
-      selectedIndicesSet,
+      selectedChartIndices,
       handleSelectionChange,
     ]
+  );
+
+  const remainingMenuItems = useMemo<LegendItemData[]>(
+    () =>
+      hasOverflow
+        ? hiddenItems.map((item, index) => ({
+            name: item.name,
+            color:
+              item.color ||
+              hiddenColors[index] ||
+              theme?.palette?.sds?.base?.ornamentSecondary,
+            disabled: item.disabled,
+          }))
+        : [],
+    [hasOverflow, hiddenItems, hiddenColors, theme]
   );
 
   // Calculate the last visible segment (percentage > 0)
@@ -742,8 +827,8 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
           const isLastVisible = index === lastVisibleIndex && !hasRemaining;
           return renderBarSegment(item, {
             barHeight,
-            hoveredIndex,
-            selectedIndicesSet,
+            hoveredIndex: hoveredChartIndex,
+            selectedIndicesSet: selectedChartIndices,
             selectionBehavior,
             isLast: isLastVisible,
             onMouseEnter: () => {
@@ -777,7 +862,16 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
             percentage={displayRemainingPercentage}
             height={barHeight}
             isLast={true}
-            opacity={1}
+            opacity={
+              hasOverflow
+                ? getSegmentOpacity(
+                    overflowIndex,
+                    hoveredChartIndex,
+                    selectedChartIndices,
+                    selectionBehavior
+                  )
+                : 1
+            }
             disabled={true}
           />
         )}
@@ -786,17 +880,22 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       {showLegend && (
         <Legend
           items={legendItems}
+          lastItemMenuItems={remainingMenuItems}
           showValues={showLegendValues}
           onItemMouseEnter={handleLegendItemHover}
           onItemMouseLeave={handleLegendItemLeave}
           onItemClick={
             onLegendItemClick ? handleLegendItemClickInternal : undefined
           }
-          selectedIndices={selectedIndices}
+          selectedIndices={selectedIndices.map(toLegendIndex)}
           onSelectionChange={
-            onSelectionChange ? handleSelectionChange : undefined
+            onSelectionChange
+              ? (indices) => handleSelectionChange(indices.map(fromLegendIndex))
+              : undefined
           }
-          hoveredIndex={hoveredIndex}
+          hoveredIndex={
+            hoveredIndex === null ? null : toLegendIndex(hoveredIndex)
+          }
         />
       )}
     </StyledStackedBarChartWrapper>
@@ -817,7 +916,13 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       <TitleContainer>
         <ChartTitle>{title}</ChartTitle>
         {!hideBadge && displayBadge && (
-          <StyledBadge>{displayBadge}</StyledBadge>
+          <Tag
+            label={displayBadge}
+            sdsType="secondary"
+            sdsStyle="rounded"
+            color="neutral"
+            hover={false}
+          />
         )}
       </TitleContainer>
       {chartContent}
