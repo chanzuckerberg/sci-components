@@ -54,6 +54,11 @@
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/CellHeader/__storybook__/docs/content.html"
   },
+  "Chip": {
+    "file": "Chip.md",
+    "package": "@czi-sds/components",
+    "source": "packages/components/src/core/Chip/__storybook__/docs/content.html"
+  },
   "ComplexFilter": {
     "file": "ComplexFilter.md",
     "package": "@czi-sds/components",
@@ -243,11 +248,6 @@
     "file": "Tag.md",
     "package": "@czi-sds/components",
     "source": "packages/components/src/core/Tag/__storybook__/docs/content.html"
-  },
-  "TagFilter": {
-    "file": "TagFilter.md",
-    "package": "@czi-sds/components",
-    "source": "packages/components/src/core/TagFilter/__storybook__/docs/content.html"
   },
   "Tooltip": {
     "file": "Tooltip.md",

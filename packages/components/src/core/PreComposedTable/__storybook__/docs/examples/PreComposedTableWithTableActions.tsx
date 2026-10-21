@@ -223,10 +223,8 @@ const COLUMNS: ColumnDef<Employee>[] = [
       <CellComponent as={as} style={style}>
         <Tag
           color={getValue() === "Active" ? "positive" : "negative"}
-          hover={false}
           label={getValue() as string}
-          sdsStyle="rounded"
-          sdsType="secondary"
+          sdsStyle="outline"
         />
       </CellComponent>
     ),

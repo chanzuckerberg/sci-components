@@ -12,9 +12,13 @@ export default {
         "The filter's text. Cut off with an ellipsis when there is not room for it.",
       required: true,
     },
+    onDelete: {
+      control: false,
+      required: true,
+    },
   },
   component: TagFilter,
-  title: "Components/TagFilter",
+  title: "Deprecated/TagFilter",
 } as Meta;
 
 // Default

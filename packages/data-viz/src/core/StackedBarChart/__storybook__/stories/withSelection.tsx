@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Args } from "@storybook/react-vite";
-import { Button, TagFilter } from "@czi-sds/components";
+import { Button, Chip } from "@czi-sds/components";
 import RawStackedBarChart from "../../index";
 import { StackedBarChartDataItem } from "../../StackedBarChart.types";
 
@@ -68,7 +68,7 @@ export default function WithSelectionStory(args: Args): JSX.Element {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
           {selectedIndices.length > 0 &&
             selectedIndices.map((i) => (
-              <TagFilter
+              <Chip
                 key={i}
                 label={data[i]?.name || ""}
                 onDelete={() => handleRemoveTag(i)}

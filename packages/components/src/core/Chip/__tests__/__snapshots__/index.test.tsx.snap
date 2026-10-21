@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Chip /> > Default story renders snapshot 1`] = `
+<div
+  style="display: inline-grid; grid-column-gap: 24px; grid-row-gap: 24px; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr);"
+>
+  <div>
+    <button
+      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+      disabled=""
+      tabindex="-1"
+      type="button"
+    >
+      <span
+        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      >
+        Remove the chip by clicking on it
+      </span>
+    </button>
+  </div>
+  <div>
+    <div
+      aria-label="Remove Chip"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-clickable MuiChip-deletable edxh7710 esrfbz40 css-k0ylpn-MuiButtonBase-root-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-stateColors-interactiveStyles-stateColors-StyledTag-StyledChip-StyledChip"
+      role="button"
+      tabindex="0"
+    >
+      <span
+        class="MuiChip-label css-1dybbl5-MuiChip-label"
+      >
+        <span
+          class="SdsTag-labelText"
+        >
+          Chip
+        </span>
+      </span>
+      <div
+        class="css-1q8yjse-StyledIcon emi0zh40"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
+          data-file-name="IconXMarkSmall"
+          data-testid="IconXMarkSmall"
+          fillcontrast="white"
+          focusable="false"
+          height="16"
+          viewBox="0 0 16 16"
+          width="16"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

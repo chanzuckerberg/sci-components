@@ -45,12 +45,7 @@ function App() {
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
                 <Icon sdsSize="xl" sdsIcon="Flask" />
-                <Tag
-                  color="info"
-                  label="Chemistry"
-                  sdsStyle="rounded"
-                  sdsType="secondary"
-                />
+                <Tag color="info" label="Chemistry" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
             <CellBasic
@@ -72,8 +67,7 @@ function App() {
                     key={item}
                     color={item as SdsTagColorType}
                     label={item as string}
-                    sdsStyle="rounded"
-                    sdsType="secondary"
+                    sdsStyle="outline"
                   />
                 )
               )}
@@ -91,8 +85,7 @@ function App() {
                 <Tag
                   color="info"
                   label="Downloadable Content"
-                  sdsStyle="rounded"
-                  sdsType="secondary"
+                  sdsStyle="outline"
                 />
               </StyledIconCell>
             </CellComponent>
@@ -134,12 +127,7 @@ function App() {
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
                 <Icon sdsSize="xl" sdsIcon="Bacteria" />
-                <Tag
-                  color="negative"
-                  label="Disease"
-                  sdsStyle="rounded"
-                  sdsType="secondary"
-                />
+                <Tag color="negative" label="Disease" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
             <CellBasic

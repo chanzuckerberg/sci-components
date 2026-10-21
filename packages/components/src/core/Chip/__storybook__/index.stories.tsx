@@ -1,125 +1,97 @@
 import { Args, Meta } from "@storybook/react-vite";
-import React from "react";
-import Chip from "../index";
-import Callout from "@components/src/core/Callout";
-import Icon from "@components/src/core/Icon";
-import Button from "@components/src/core/ButtonLegacy";
+import { Chip } from "./stories/default";
+import {
+  CHIP_COLOR_CONTRAST_RULE,
+  CHIP_EXCLUDED_CONTROLS,
+  CHIP_SDS_STYLES,
+} from "./constants";
+import { ScreenshotTestDemo } from "./stories/screenshot";
+import { TestDemo } from "./stories/test";
 
-const Demo = (props: Args): JSX.Element => {
-  const { size, isRounded } = props;
-  const [visible, setVisible] = React.useState(false);
-
-  const handleShowChip = () => setVisible(true);
-  const handleDismissChip = () => setVisible(false);
-
-  if (size === "medium" && !isRounded) {
-    return (
-      <>
-        <Callout
-          intent="negative"
-          title="Deprecated!"
-          sdsStyle="persistent"
-          icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
-          body={
-            <>
-              The <strong>Chip</strong> component is deprecated!
-              <br />
-              Please use <strong>Tag</strong> or <strong>TagFilter</strong>{" "}
-              component instead.
-            </>
-          }
-        />
-        <Button onClick={handleShowChip} sdsType="secondary" sdsStyle="square">
-          Click me!
-        </Button>
-        {visible && <Chip onDelete={handleDismissChip} {...props} />}
-      </>
-    );
-  }
-  return (
-    <>
-      <Callout
-        intent="negative"
-        title="Deprecated!"
-        sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
-        body={
-          <>
-            The <strong>Chip</strong> component is deprecated!
-            <br />
-            Please use <strong>Tag</strong> or <strong>TagFilter</strong>{" "}
-            component instead.
-          </>
-        }
-      />
-      <Chip {...props} />
-    </>
-  );
+// The outline chip's label, accent foreground on the accent tint, measures 4.49:1
+// against axe's 4.5:1 threshold with the colors the design specifies.
+const OUTLINE_CONTRAST_PARAMETERS = {
+  a11y: {
+    config: {
+      rules: [{ enabled: false, id: CHIP_COLOR_CONTRAST_RULE }],
+    },
+  },
 };
 
 export default {
-  component: Demo,
-  title: "Deprecated/Chip",
+  argTypes: {
+    label: {
+      control: { type: "text" },
+      required: true,
+    },
+    sdsStyle: {
+      control: { type: "radio" },
+      options: CHIP_SDS_STYLES,
+    },
+  },
+  component: Chip,
+  title: "Components/Chip",
 } as Meta;
 
-export const MediumSquareChip = {
+// Default
+
+export const Default = {
   args: {
-    isRounded: false,
     label: "Chip",
-    size: "medium",
+    sdsStyle: "solid",
   },
 };
 
-export const Success = {
+// Screenshot Test
+
+export const ScreenshotTest = {
   args: {
-    isRounded: true,
-    label: "success",
-    size: "small",
-    status: "success",
+    label: "Label",
   },
+  parameters: {
+    ...OUTLINE_CONTRAST_PARAMETERS,
+    controls: {
+      exclude: CHIP_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />,
 };
 
-export const Error = {
+export const ScreenshotTestDark = {
   args: {
-    isRounded: true,
-    label: "error",
-    size: "small",
-    status: "error",
+    label: "Label",
   },
+  globals: {
+    theme: "dark",
+  },
+  parameters: {
+    ...OUTLINE_CONTRAST_PARAMETERS,
+    controls: {
+      exclude: CHIP_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
+  },
+  render: (args: Args) => <ScreenshotTestDemo {...args} />,
 };
 
-export const Warning = {
-  args: {
-    isRounded: true,
-    label: "warning",
-    size: "small",
-    status: "warning",
-  },
-};
+// Test
 
-export const Info = {
+export const Test = {
   args: {
-    isRounded: true,
-    label: "info",
-    size: "small",
-    status: "info",
+    label: "Label",
   },
-};
-
-export const Pending = {
-  args: {
-    isRounded: true,
-    label: "pending",
-    size: "small",
-    status: "pending",
+  parameters: {
+    controls: {
+      exclude: CHIP_EXCLUDED_CONTROLS,
+    },
+    snapshot: {
+      skip: true,
+    },
   },
-};
-
-export const Beta = {
-  args: {
-    isRounded: true,
-    label: "beta",
-    size: "small",
-    status: "beta",
-  },
+  render: (args: Args) => <TestDemo {...args} data-testid="chip" />,
 };

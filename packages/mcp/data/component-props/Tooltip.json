@@ -17,6 +17,11 @@
         "isRequired": false,
         "type": "\"bottom\" | \"left\" | \"right\" | \"top\" | \"auto\" | \"auto-start\" | \"auto-end\" | \"top-start\" | \"top-end\" | \"bottom-start\" | \"bottom-end\" | \"right-start\" | \"right-end\" | \"left-start\" | \"left-end\""
       },
+      "subtitle": {
+        "description": "A smaller, dimmer second line under the title, for a detail such as how to use what the tooltip points at.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
       "textAlign": {
         "defaultValue": "center, or left when wide",
         "description": "Overrides the alignment the width would pick.",
@@ -33,11 +38,6 @@
         "description": "Caps the tooltip at 250px or 550px. Wide also left-aligns the text.",
         "isRequired": false,
         "type": "\"default\" | \"wide\""
-      },
-      "subtitle": {
-        "description": "A smaller, dimmer second line under the title, for a detail such as how to use what the tooltip points at.",
-        "isRequired": false,
-        "type": "ReactNode"
       },
       "arrow": {
         "defaultValue": false,
