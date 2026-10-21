@@ -161,7 +161,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
-import { SparkleIcon } from "@phosphor-icons/react";
+import { StackIcon } from "@phosphor-icons/react";
 
 const Stack = styled.div<CommonThemeProps>`
   ${(props) => {
@@ -208,12 +208,30 @@ function App() {
         <Group>
           <Caption>medium</Caption>
           <Tag color="accent" label="Annotated" />
-          <Tag color="accent" icon={<SparkleIcon />} label="Annotated" />
           <Tag
             color="accent"
-            icon={<SparkleIcon />}
+            icon={<StackIcon weight="fill" />}
+            label="Annotated"
+          />
+          <Tag
+            color="accent"
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Annotated"
+          />
+          <Tag color="accent" label="Annotated" sdsStyle="outline" />
+          <Tag
+            color="accent"
+            icon={<StackIcon weight="fill" />}
+            label="Annotated"
+            sdsStyle="outline"
+          />
+          <Tag
+            color="accent"
+            icon={<StackIcon weight="fill" />}
+            iconOnly
+            label="Annotated"
+            sdsStyle="outline"
           />
         </Group>
 
@@ -222,16 +240,37 @@ function App() {
           <Tag color="accent" label="Annotated" size="small" />
           <Tag
             color="accent"
-            icon={<SparkleIcon />}
+            icon={<StackIcon weight="fill" />}
             label="Annotated"
             size="small"
           />
           <Tag
             color="accent"
-            icon={<SparkleIcon />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Annotated"
             size="small"
+          />
+          <Tag
+            color="accent"
+            label="Annotated"
+            size="small"
+            sdsStyle="outline"
+          />
+          <Tag
+            color="accent"
+            icon={<StackIcon weight="fill" />}
+            label="Annotated"
+            size="small"
+            sdsStyle="outline"
+          />
+          <Tag
+            color="accent"
+            icon={<StackIcon weight="fill" />}
+            iconOnly
+            label="Annotated"
+            size="small"
+            sdsStyle="outline"
           />
         </Group>
       </Stack>
@@ -264,7 +303,7 @@ import {
   getSpaces,
   type CommonThemeProps,
 } from "@czi-sds/components";
-import { SparklesIcon } from "@czi-sds/icons";
+import { StackIcon } from "@phosphor-icons/react";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import styled from "@emotion/styled";
 
@@ -285,7 +324,11 @@ function App() {
   return (
     <div className="app">
       <Row>
-        <Tag color="accent" icon={<SparklesIcon />} label="Generated" />
+        <Tag
+          color="accent"
+          icon={<StackIcon weight="fill" />}
+          label="Generated"
+        />
 
         <Tag
           color="positive"
@@ -297,7 +340,7 @@ function App() {
         <Tooltip placement="top" title="Generated">
           <Tag
             color="accent"
-            icon={<SparklesIcon />}
+            icon={<StackIcon weight="fill" />}
             iconOnly
             label="Generated"
           />

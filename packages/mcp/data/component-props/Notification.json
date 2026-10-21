@@ -17,6 +17,15 @@
         "isRequired": false,
         "type": "\"left\" | \"right\""
       },
+      "buttonText": {
+        "description": "The label of the action button shown beneath the content. It only renders alongside buttonOnClick.",
+        "isRequired": false,
+        "type": "string"
+      },
+      "extraContent": {
+        "isRequired": false,
+        "type": "boolean"
+      },
       "icon": {
         "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`.",
         "isRequired": false,
@@ -52,11 +61,6 @@
         "description": "Hides the Notification when set to true. Changing it back to false brings the Notification back, which is how a dismissed Notification is restored.",
         "isRequired": false,
         "type": "boolean"
-      },
-      "buttonText": {
-        "description": "The label of the action button shown beneath the content. It only renders alongside buttonOnClick.",
-        "isRequired": false,
-        "type": "string"
       }
     }
   }
