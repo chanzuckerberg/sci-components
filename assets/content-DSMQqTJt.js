@@ -1,0 +1,280 @@
+import{n as e}from"./rolldown-runtime-DaJ6WEGw.js";var t,n=e((()=>{t=`<h1>Tags</h1>
+<p>
+  Tags communicate a status related to the element they are paired with. Chips
+  show which conditions, such as filters or search parameters, the user has
+  applied to a dataset.
+</p>
+<h2>Tag Components</h2>
+<p>
+  There are two components. The <strong>Tag</strong> labels an element or
+  communicates a status associated with it, and can be used throughout the UI.
+  The <strong>Chip</strong> is used together with
+  <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
+    >Filters</a
+  >
+  to show which conditions have been applied, and the user removes a condition
+  by clicking its Chip.
+</p>
+<h3>Visual Preview</h3>
+<div class="sds-doc-example" data-example="Tags/TagAndChipPreview"></div>
+<hr />
+<h2>Tag</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Overview</h3>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Tags can be used throughout the UI to communicate conditional statuses
+      related to the elements they are paired with.
+    </p>
+  </li>
+  <li>
+    <p>
+      Tags can optionally function as links that navigate to a new page when
+      clicked. This is not a separate type, but the same type with that
+      functionality enabled. In code, a Tag becomes a link by being given a URL,
+      and an optional arrow icon can communicate that the Tag has an embedded
+      link. In Figma, the arrow icon can be toggled on or off; it is optional,
+      and the Tag can function as a link without it.
+    </p>
+  </li>
+  <li>
+    <p>
+      When paired with Chips or Toggle Buttons, Tags can communicate which
+      elements within the UI the Chip or Toggle Button is affecting, such as
+      which elements a filter condition is being applied to. This is indicated
+      by shifting the affected Tags to the beginning of the list of other Tags.
+    </p>
+  </li>
+  <li>
+    <p>
+      To return a Tag to its default position in a list of other Tags, users
+      must remove the Chip or toggle off the Toggle Button that Tag is paired
+      with. Clicking on a Tag does not remove the corresponding Chip or toggle
+      off the corresponding Toggle Button.
+    </p>
+  </li>
+</ul>
+<div class="sds-doc-example" data-example="Tags/TagsPairedWithChips"></div>
+<hr />
+<h3>Tag Styles</h3>
+<p>
+  There are two styles. <strong>Solid</strong> fills the Tag with the intent
+  color and is the stronger of the two. <strong>Outline</strong> uses a tinted
+  fill with the label, icons and a thin border in the intent color, for Tags
+  that should sit back in a busy layout. Both are shown below with text, text
+  with an icon, the link arrow, and an icon on its own.
+</p>
+<div class="sds-doc-example" data-example="Tags/TagStyles"></div>
+<hr />
+<h3>Sizes and Content</h3>
+<p>
+  Tags come in medium and small. Use medium by default, and small where space is
+  tight, such as in navigation or beside a tab's label. Each size can hold text,
+  text with an icon, or an icon alone.
+</p>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Note:</strong>
+    The icon-only variant is square, with cornerM (4px) corners, whereas the
+    text and text with icon variants are pill-shaped, with cornerRounded (20px)
+    corners. An icon-only Tag still needs a label in code, which screen readers
+    read; pair it with a Tooltip that shows the label to sighted users.
+  </p>
+</div>
+<div class="sds-doc-example" data-example="Tags/TagSizesAndContent"></div>
+<hr />
+<h3>Tag States</h3>
+<p>
+  A Tag that does something when clicked, such as a link or a Tag that filters,
+  has default, hover, pressed and disabled states. A Tag that only labels
+  something stays in its default state and does not respond to the pointer.
+</p>
+<div class="sds-doc-example" data-example="Tags/TagStates"></div>
+<hr />
+<h3>Spacing, Sizing, and Fonts</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p></p></td>
+    <td><p>Medium</p></td>
+    <td><p>Small</p></td>
+  </tr>
+  <tr>
+    <td><p>Font</p></td>
+    <td><p>fontBodyXs (13px)</p></td>
+    <td><p>fontBodyXxxxs (10px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Height</p></td>
+    <td><p>24px</p></td>
+    <td><p>20px</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon size</p></td>
+    <td><p>XS (12px × 12px)</p></td>
+    <td><p>XXS (10px × 10px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Left / right padding, text and text + icon</p></td>
+    <td><p>spaceS (8px)</p></td>
+    <td><p>spaceS (8px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Left / right padding, icon only</p></td>
+    <td><p>spaceXs (6px)</p></td>
+    <td><p>5px</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon / text padding</p></td>
+    <td><p>spaceXxs (4px)</p></td>
+    <td><p>spaceXxs (4px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Border radius, text and text + icon</p></td>
+    <td><p>cornerRounded (20px)</p></td>
+    <td><p>cornerRounded (20px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Border radius, icon only</p></td>
+    <td><p>cornerM (4px)</p></td>
+    <td><p>cornerM (4px)</p></td>
+  </tr>
+</table>
+<hr />
+<h3>Intent Variations</h3>
+<p>
+  There are seven intents that Tags can communicate (Accent, Beta, Info,
+  Negative, Neutral, Notice and Positive), indicated with color. Color is never
+  the only signal: the label has to say what the intent means.
+</p>
+<div class="sds-doc-example" data-example="Tags/TagIntents"></div>
+<h4>Color tokens: solid</h4>
+<p><em>Intent</em> stands for the Tag's intent, such as Accent or Negative.</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>State</p></td>
+    <td><p>Fill</p></td>
+    <td><p>Text</p></td>
+    <td><p>Ornament</p></td>
+  </tr>
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Intent.fill-primary</p></td>
+    <td><p>Base.text-on-fill</p></td>
+    <td><p>Base.ornament-on-fill</p></td>
+  </tr>
+  <tr>
+    <td><p>Hover</p></td>
+    <td><p>Intent.fill-interaction</p></td>
+    <td><p>Base.text-primary-inverse</p></td>
+    <td><p>Base.ornament-primary-inverse</p></td>
+  </tr>
+  <tr>
+    <td><p>Pressed</p></td>
+    <td><p>Intent.fill-pressed</p></td>
+    <td><p>Base.text-primary-inverse</p></td>
+    <td><p>Base.ornament-primary-inverse</p></td>
+  </tr>
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>Base.fill-disabled</p></td>
+    <td><p>Base.text-disabled</p></td>
+    <td><p>Base.ornament-disabled</p></td>
+  </tr>
+</table>
+<h4>Color tokens: outline</h4>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>State</p></td>
+    <td><p>Fill</p></td>
+    <td><p>Text and ornament</p></td>
+    <td><p>Border</p></td>
+  </tr>
+  <tr>
+    <td><p>Default</p></td>
+    <td><p>Intent.fill-secondary (Accent.surface-secondary for Accent)</p></td>
+    <td><p>Intent.foreground</p></td>
+    <td>
+      <p>
+        Intent.foreground at 28% opacity, 56% in dark mode (indigo600 for
+        Accent)
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Hover</p></td>
+    <td><p>Unchanged</p></td>
+    <td><p>Intent.foreground-interaction</p></td>
+    <td><p>Intent.foreground-interaction</p></td>
+  </tr>
+  <tr>
+    <td><p>Pressed</p></td>
+    <td><p>Unchanged</p></td>
+    <td><p>Intent.foreground-pressed</p></td>
+    <td><p>Intent.foreground-pressed</p></td>
+  </tr>
+  <tr>
+    <td><p>Disabled</p></td>
+    <td><p>None</p></td>
+    <td><p>Base.text-disabled, Base.ornament-disabled</p></td>
+    <td><p>Base.border-primary-disabled</p></td>
+  </tr>
+</table>
+<hr />
+<h2>Chip</h2>
+<ul class="sds-doc-status">
+  <li data-status="ready">In Figma</li>
+  <li data-status="ready">Meets Accessibility</li>
+  <li data-status="ready">In Code</li>
+</ul>
+<h3>Overview</h3>
+<p>
+  The Chip is used exclusively to communicate that the user has applied a
+  condition to a dataset or collection of information, such as a filter or a
+  search parameter. Users remove a Chip by clicking on it. It comes in the same
+  solid and outline styles as the Tag, always in the Accent intent, with
+  default, hover and pressed states.
+</p>
+<div class="sds-doc-example" data-example="Tags/ChipStyles"></div>
+<h3>Chip Spacing, Sizing, and Fonts</h3>
+<table class="sds-doc-table">
+  <tr>
+    <td><p></p></td>
+    <td><p>Chip</p></td>
+  </tr>
+  <tr>
+    <td><p>Font</p></td>
+    <td><p>fontBodyXs (13px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Height</p></td>
+    <td><p>24px</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon size (XMark)</p></td>
+    <td><p>XS (12px × 12px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Left / right padding</p></td>
+    <td><p>spaceXs (6px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Icon / text padding</p></td>
+    <td><p>spaceXxs (4px)</p></td>
+  </tr>
+  <tr>
+    <td><p>Border radius</p></td>
+    <td><p>cornerM (4px)</p></td>
+  </tr>
+</table>
+<p>
+  The Chip's colors are the Accent rows of the Tag's solid and outline color
+  tokens above, for the default, hover and pressed states.
+</p>
+`}));export{n,t};

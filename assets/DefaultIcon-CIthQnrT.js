@@ -1,0 +1,1 @@
+import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./jsx-runtime-cM__dR4X.js";import{t as r}from"./Icon-1J9Ma-VV.js";import{t as i}from"./src-Dl7X9U7d.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(r,{sdsIcon:`InfoCircle`,sdsSize:`l`})})}var o;t((()=>{i(),o=e(n())}))();export{a as default};

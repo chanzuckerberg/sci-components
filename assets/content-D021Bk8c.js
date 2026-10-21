@@ -1,0 +1,245 @@
+import{n as e}from"./rolldown-runtime-DaJ6WEGw.js";var t,n=e((()=>{t=`<h1>Chip</h1>
+<h2>Source Code</h2>
+<p>
+  The component's source code in the SDS codebase can be found
+  <a
+    href="https://github.com/chanzuckerberg/sci-components/blob/main/packages/components/src/core/Chip/index.tsx"
+  >
+    here
+  </a>
+  .
+</p>
+<h2>Import</h2>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">import { Chip } from "@czi-sds/components";</code></pre>
+  </figure>
+</div>
+<div
+  class="sds-doc-callout sds-doc-callout-background-3 sds-doc-callout-full-width"
+>
+  <p>
+    <strong>Coming from TagFilter?</strong>
+    Chip is the reworked TagFilter, renamed in SDS 25. The previous TagFilter
+    still ships unchanged, and deprecated, so nothing breaks until you move to
+    Chip. "Migrating from TagFilter" below covers what changes when you do.
+  </p>
+</div>
+<h2>Code examples</h2>
+<h3>Default Chip</h3>
+<p>
+  A row of applied filters, solid and outlined, each removing itself from the
+  page's state through <code>onDelete</code>. The row is a named group, which
+  tells screen reader users what the chips are removing.
+</p>
+<div class="sds-doc-example" data-example="core/Chip/DefaultChip"></div>
+<h2>SDS vs MUI</h2>
+<p>
+  Chip is built on the SDS
+  <a href="./?path=/docs/components-tag--documentation" target="_top">Tag</a>,
+  and so on MUI's Chip, but it exists for one job: showing which
+  <a href="./?path=/docs/design-documentation-dna-filters--docs" target="_top"
+    >Filters</a
+  >
+  are applied and letting them be taken off again:
+</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>onDelete is required.</strong>
+      MUI treats it as the switch that decides whether a chip can be deleted;
+      here removal is the chip's whole purpose, so the handler has to be there.
+      Removing the chip from your own state is what makes it disappear.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The whole chip removes it:</strong>
+      a click anywhere on the chip calls <code>onDelete</code>, not only a click
+      on the X. An <code>onClick</code> of your own runs first.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>sdsStyle</code>: <code>"solid"</code> (default) fills the chip with
+      the accent color; <code>"outline"</code> tints it and draws the label, the
+      X and a 1px border in the accent color. Everything else about the look is
+      fixed: the accent intent, the medium size, the 4px corners and the 12px X.
+      Tag's <code>color</code>, <code>size</code>, <code>href</code> and
+      <code>showLinkIcon</code> are not part of the type.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The X cannot be swapped:</strong>
+      SDS applies its own <code>deleteIcon</code> after your props, so a
+      <code>deleteIcon</code> of your own is ignored without a warning.
+    </p>
+  </li>
+</ul>
+<h2>MUI Documentation</h2>
+<p>
+  Documentation for the underlying MUI component can be found
+  <a href="https://mui.com/material-ui/react-chip/">here</a>
+  .
+</p>
+<h2>Behavior and accessibility</h2>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      Each chip is a single button and a single tab stop. It answers a click,
+      Enter and Space, and also Backspace and Delete, and every one of them
+      calls <code>onDelete</code>. The X is decorative and hidden from screen
+      readers.
+    </p>
+  </li>
+  <li>
+    <p>
+      The chip is named "Remove" followed by its label, such as "Remove Lung",
+      so the name says what activating it does. Pass <code>aria-label</code> to
+      word it differently, for instance in another language. A row of filters is
+      still worth wrapping in a group with a name of its own; the example above
+      uses <code>role="group"</code> with an <code>aria-label</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      Removing a chip takes the focused element out of the page, so move focus
+      somewhere sensible afterwards, such as the next chip or the filter control
+      that added it.
+    </p>
+  </li>
+  <li>
+    <p>
+      Like a Tag, a chip does not wrap: a long filter value is cut off with an
+      ellipsis. Keep the values short, or shorten them yourself so the part that
+      survives is the part that matters.
+    </p>
+  </li>
+</ul>
+<h2>Migrating from TagFilter</h2>
+<p>
+  <code>TagFilter</code> is deprecated but still exported, with the look and
+  behavior it had in SDS 24, so an app can upgrade first and move to Chip later.
+  The props are the same, so the move starts with the name:
+</p>
+<div class="sds-doc-code-snippet">
+  <figure>
+    <figcaption>React TypeScript</figcaption>
+    <pre><code class="sds-doc-codeblock-content language-tsx">// Before
+&lt;TagFilter label="Lung" onDelete={handleDelete} /&gt;
+// After
+&lt;Chip label="Lung" onDelete={handleDelete} /&gt;</code></pre>
+  </figure>
+</div>
+<p>Then check each call site for what behaves differently:</p>
+<ul class="sds-doc-bullet-list">
+  <li>
+    <p>
+      <strong>The whole chip removes the filter,</strong>
+      not only the X. An <code>onClick</code> that also removed the filter now
+      removes it twice; drop it and keep <code>onDelete</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>One tab stop instead of two.</strong>
+      The X is no longer a button of its own. Tests that looked for a button
+      named "Delete Tag" should look for the chip, named "Remove" followed by
+      its label.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>The new design:</strong>
+      a regular-weight 13px label and 6px padding, and a choice of
+      <code>sdsStyle</code>.
+    </p>
+  </li>
+</ul>
+<h2>Props</h2>
+<p>
+  Any custom SDS props and MUI props required for implementation are found on
+  the table below. See the MUI documentation for additional optional props.
+</p>
+<table class="sds-doc-table">
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>Type</p></td>
+    <td><p>Default</p></td>
+    <td><p>Description</p></td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        The filter's text. Cut off with an ellipsis when there is not room for
+        it.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>onDelete</code></p>
+    </td>
+    <td>
+      <p><code>function</code></p>
+    </td>
+    <td><p>- (required)</p></td>
+    <td>
+      <p>
+        Runs when the chip is clicked or activated with Enter or Space, and when
+        Backspace or Delete is pressed on it. Drop the filter from your state
+        here; the component does not remove itself.
+      </p>
+      <p>
+        <strong>Signature:</strong>
+        <code>function(event: SyntheticEvent) =&gt; void</code>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>sdsStyle</code></p>
+    </td>
+    <td>
+      <p><code>"solid"</code> |</p>
+      <p><code>"outline"</code></p>
+    </td>
+    <td>
+      <p><code>"solid"</code></p>
+    </td>
+    <td>
+      <p>
+        <code>solid</code> fills the chip with the accent color.
+        <code>outline</code> tints it and draws the label, the X and a 1px
+        border in the accent color.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><code>aria-label</code></p>
+    </td>
+    <td>
+      <p><code>string</code></p>
+    </td>
+    <td>
+      <p><code>"Remove {label}"</code></p>
+    </td>
+    <td>
+      <p>
+        The chip's accessible name, "Remove" followed by the label unless set.
+        Override it to word the removal differently.
+      </p>
+    </td>
+  </tr>
+</table>
+`}));export{n,t};

@@ -1,3 +1,0 @@
-import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{Br as n,Vr as r,_n as i,t as a}from"./material-CSBxm0C2.js";import{t as o}from"./jsx-runtime-cM__dR4X.js";import{F as s,Gt as c,t as l}from"./iframe-Cd8QHZze.js";var u,d,f=t((()=>{r(),a(),l(),u=s(`m`),d=n(i,{target:`ed4d6mk0`})(`&.MuiListSubheader-root{`,u,` line-height:unset;color:unset;`,e=>`
-        margin-bottom: ${c(e)?.l}px;
-      `,`;}`)})),p,m,h=t((()=>{f(),p=e(o()),m=e=>(0,p.jsx)(d,{disableGutters:!0,...e})}));export{h as n,m as t};

@@ -1,7 +1,0 @@
-import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./react-B-4JnjsC.js";import{Br as r,Vr as i}from"./material-CSBxm0C2.js";import{t as a}from"./jsx-runtime-cM__dR4X.js";import{L as o,Ut as s,f as c}from"./iframe-Cd8QHZze.js";import{t as l}from"./Icon-CwTC5jeH.js";import{t as u}from"./Button-CYJU6j-k.js";import{t as d}from"./src-BDqRJLOx.js";import{t as f}from"./Panel-CChsTM4v.js";function p(){let[e,t]=(0,m.useState)(!1),[n,r]=(0,m.useState)(null);return(0,h.jsx)(`div`,{className:`app`,children:(0,h.jsxs)(g,{ref:r,children:[(0,h.jsx)(u,{onClick:()=>t(!0),sdsStyle:`solid`,sdsType:`primary`,startIcon:(0,h.jsx)(l,{sdsIcon:`InfoCircle`,sdsSize:`s`}),children:`Show details`}),(0,h.jsx)(`p`,{children:`An overlay panel reads a piece of the page rather than changing it, so the content underneath stays where it is.`}),n&&(0,h.jsx)(f,{closeButtonOnClick:()=>t(!1),HeaderComponent:(0,h.jsx)(_,{children:`Sample details`}),isBackdropClickEnabled:!0,ModalProps:{container:n},onClose:()=>t(!1),open:e,position:`right`,sdsType:`overlay`,slotProps:{transition:{container:n}},children:`Collection date, tissue, and the rest of the record for whichever row the page has selected.`})]})})}var m,h,g,_;t((()=>{i(),d(),m=e(n()),h=e(a()),g=r(`div`,{target:`em8mr8u1`})(c,` `,e=>`
-      color: ${s(e)?.base?.textPrimary};
-      height: 340px;
-      overflow: clip;
-      padding: 50px;
-      transform: translateZ(0);
-    `,`;`),_=r(`h3`,{target:`em8mr8u0`})(o,` margin:0;`)}))();export{p as default};
