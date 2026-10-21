@@ -36,13 +36,13 @@ function App() {
       <Row>
         <Tag
           color="accent"
-          icon={<StackIcon weight="fill" />}
+          icon={<StackIcon weight="bold" />}
           label="Generated"
         />
 
         <Tag
           color="positive"
-          icon={<CheckCircleIcon />}
+          icon={<CheckCircleIcon weight="bold" />}
           label="Verified"
           sdsStyle="outline"
         />
@@ -50,7 +50,7 @@ function App() {
         <Tooltip placement="top" title="Generated">
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Generated"
           />

@@ -413,10 +413,11 @@ Severity: low. Status: not fixed, left undocumented.
 `NotificationProps.extraContent?: boolean` is a switch the story uses to render
 more content of its own. The component deletes it from the props it forwards
 (`delete passedProps.extraContent`), which is the giveaway: it belongs in the
-story's args, not in the component's public type. Its control has been removed
-from the story so the props data no longer publishes it; the screenshot story
-still drives its own extra paragraph from an arg of the same name. Removing the
-field from `NotificationProps` is the remaining half.
+story's args, not in the component's public type. Its control is declared on
+the Default story rather than the meta, whose `argTypes` are what the props
+data publishes, so it stays out of the props data; the screenshot story still
+drives its own extra paragraph from an arg of the same name. Removing the field
+from `NotificationProps` is the remaining half.
 
 ## Callout and Notification
 

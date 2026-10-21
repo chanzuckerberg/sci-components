@@ -45,11 +45,6 @@ export default {
       description:
         "The label of the action button shown beneath the content. It only renders alongside buttonOnClick.",
     },
-    extraContent: {
-      control: { type: "boolean" },
-      description:
-        "Story-only: adds a paragraph and a small table beneath the message, to show how the Notification grows with its content.",
-    },
     icon: {
       control: {
         labels: {
@@ -106,6 +101,16 @@ export default {
 // Default
 
 export const Default = {
+  // Declared on this story rather than the meta: NotificationProps still
+  // declares extraContent, so a control on the meta would be published as one
+  // of the component's props in the MCP props data.
+  argTypes: {
+    extraContent: {
+      control: { type: "boolean" },
+      description:
+        "Story-only: adds a paragraph and a small table beneath the message, to show how the Notification grows with its content.",
+    },
+  },
   args: {
     autoDismiss: false,
     buttonPosition: "right",

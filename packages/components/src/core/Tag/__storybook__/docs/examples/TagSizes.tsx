@@ -59,25 +59,25 @@ function App() {
           <Tag color="accent" label="Annotated" />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
           />
           <Tag color="accent" label="Annotated" sdsStyle="outline" />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
             sdsStyle="outline"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
             sdsStyle="outline"
@@ -89,13 +89,13 @@ function App() {
           <Tag color="accent" label="Annotated" size="small" />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
             size="small"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
             size="small"
@@ -108,14 +108,14 @@ function App() {
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
             size="small"
             sdsStyle="outline"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
             size="small"

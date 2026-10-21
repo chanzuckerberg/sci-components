@@ -22,11 +22,11 @@ const VARIANTS = [
   { name: "text", props: {} },
   {
     name: "text + icon + link",
-    props: { icon: <StackIcon weight="fill" />, showLinkIcon: true },
+    props: { icon: <StackIcon weight="bold" />, showLinkIcon: true },
   },
   {
     name: "icon only",
-    props: { icon: <StackIcon weight="fill" />, iconOnly: true },
+    props: { icon: <StackIcon weight="bold" />, iconOnly: true },
   },
 ];
 

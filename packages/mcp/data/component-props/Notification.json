@@ -22,10 +22,6 @@
         "isRequired": false,
         "type": "string"
       },
-      "extraContent": {
-        "isRequired": false,
-        "type": "boolean"
-      },
       "icon": {
         "description": "Override the icon displayed before the children.\nUnless provided, the icon is mapped to the value of the `severity` prop.\nSet to `false` to remove the `icon`.",
         "isRequired": false,
