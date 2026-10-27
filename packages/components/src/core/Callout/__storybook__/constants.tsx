@@ -13,12 +13,12 @@ export const CALLOUT_EXCLUDED_CONTROLS = [
   "body",
 ];
 
-export const CALLOUT_ICON_OPTIONS = [
-  <CustomSvgIcon key="customSdsIcon" />,
-  <CustomSdsIcon key="customSvgIcon" />,
-  "Book",
-  "CheckCircle",
-];
+export const CALLOUT_ICON_OPTIONS = {
+  customSvgIcon: <CustomSvgIcon key="customSdsIcon" />,
+  customSdsIcon: <CustomSdsIcon key="customSvgIcon" />,
+  book: "Book",
+  checkCircle: "CheckCircle",
+};
 
 export const CALLOUT_SDS_STYLE_OPTIONS = [
   "persistent",

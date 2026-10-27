@@ -18,30 +18,53 @@ export default {
       control: {
         type: INLINE_RADIO,
       },
+      description:
+        "Tells the group which surface it sits on so it can pick colors with enough contrast.",
       options: ["matchBackground", "dark"],
+      table: {
+        defaultValue: { summary: "matchBackground" },
+      },
     },
     disabled: {
       control: {
         type: "boolean",
+      },
+      description: "If `true`, the component is disabled.",
+      table: {
+        defaultValue: { summary: "false" },
       },
     },
     orientation: {
       control: {
         type: INLINE_RADIO,
       },
+      description:
+        "The component orientation (layout flow direction). Vertical is only available when every button in the group is icon-only.",
       options: BUTTON_GROUP_ORIENTATIONS,
+      table: {
+        defaultValue: { summary: "horizontal" },
+      },
     },
     size: {
       control: {
         type: INLINE_RADIO,
       },
+      description:
+        "Size of the group. It is injected into each Button and ButtonToggle child, so setting size on an individual button has no effect.",
       options: BUTTON_GROUP_SDS_SIZE,
+      table: {
+        defaultValue: { summary: "large" },
+      },
     },
     sdsType: {
       control: {
         type: INLINE_RADIO,
       },
+      description: "Color scheme applied to every button in the group.",
       options: BUTTON_GROUP_SDS_TYPES,
+      table: {
+        defaultValue: { summary: "primary" },
+      },
     },
   },
   component: ButtonGroup,

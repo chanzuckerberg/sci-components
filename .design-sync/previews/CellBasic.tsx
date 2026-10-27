@@ -74,19 +74,9 @@ const SlotRightIconGroup = (
 
 const SlotBottomTagGroup = (
   <div style={{ display: "flex", gap: "4px" }}>
-    <Tag
-      label="lorem ipsum"
-      hover={false}
-      sdsStyle="rounded"
-      sdsType="secondary"
-    />
-    <Tag label="dollor" hover={false} sdsStyle="rounded" sdsType="secondary" />
-    <Tag
-      label="sit amet"
-      hover={false}
-      sdsStyle="rounded"
-      sdsType="secondary"
-    />
+    <Tag label="lorem ipsum" sdsStyle="outline" />
+    <Tag label="dollor" sdsStyle="outline" />
+    <Tag label="sit amet" sdsStyle="outline" />
   </div>
 );
 
@@ -215,9 +205,7 @@ export function Test() {
             primaryTextComponentSlotRight={
               <Tag
                 label="lorem ipsum"
-                hover={false}
-                sdsStyle="rounded"
-                sdsType="secondary"
+                sdsStyle="outline"
                 style={{ margin: 0 }}
               />
             }

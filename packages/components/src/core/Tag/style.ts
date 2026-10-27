@@ -1,332 +1,344 @@
 import { css, SerializedStyles } from "@emotion/react";
-import { alpha, Chip, darken } from "@mui/material";
 import styled from "@emotion/styled";
+import { alpha, Chip, emphasize } from "@mui/material";
+import { ElementType } from "react";
 import {
   CommonThemeProps,
-  defaultTheme,
   focusVisibleA11yStyle,
   fontBodyXs,
-  fontBodyXxxs,
-  fontHeaderXs,
+  fontBodyXxxxs,
+  getColors,
   getCorners,
   getIconSizes,
+  getMode,
   getSemanticColors,
   getSpaces,
-  IntentColor,
-  SDSPalette,
-  SDSTheme,
 } from "@components/src/core/styles";
 
-export type SdsTagColorType =
+export type SdsTagIntent =
+  | "accent"
+  | "beta"
   | "info"
-  | "positive"
-  | "notice"
   | "negative"
   | "neutral"
-  | "beta"
+  | "notice"
+  | "positive";
+
+export type SdsTagColorType =
+  | SdsTagIntent
   | [string, string]
   | [string, string, string];
 
-interface ExtraSmallTagProps extends CommonThemeProps {
-  hover?: boolean;
-  sdsType?: "primary" | "secondary";
-  sdsStyle?: "square" | "rounded";
-  sdsSize?: "s";
+export type SdsTagStyle = "solid" | "outline";
+
+export type SdsTagSize = "small" | "medium";
+
+export const TAG_LABEL_TEXT_CLASS = "SdsTag-labelText";
+export const TAG_LINK_ICON_CLASS = "SdsTag-linkIcon";
+
+const TAG_HEIGHTS: Record<SdsTagSize, number> = {
+  medium: 24,
+  small: 20,
+};
+
+const OUTLINE_BORDER_OPACITY = { dark: 0.56, light: 0.28 };
+
+export interface ExtraTagProps extends CommonThemeProps {
+  iconOnly?: boolean;
+  isInteractive?: boolean;
+  sdsStyle?: SdsTagStyle;
+  size?: SdsTagSize;
   tagColor?: SdsTagColorType;
-  icon?: JSX.Element;
-}
-interface ExtraLargeTagProps extends CommonThemeProps {
-  hover?: boolean;
-  sdsType?: "primary" | "secondary";
-  sdsStyle?: "square" | "rounded";
-  sdsSize?: "l";
-  tagColor?: SdsTagColorType;
-  icon: JSX.Element;
-}
-export type ExtraTagProps = ExtraSmallTagProps | ExtraLargeTagProps;
-
-const tagSizeS = (props: ExtraTagProps): SerializedStyles => {
-  const spaces = getSpaces(props);
-  const iconSizes = getIconSizes(props);
-  const semanticColors = getSemanticColors(props);
-
-  return css`
-    height: unset;
-
-    .MuiChip-label {
-      ${fontBodyXxxs(props)}
-      padding: 0;
-    }
-
-    .MuiSvgIcon-root {
-      height: ${iconSizes?.xs.height}px;
-      width: ${iconSizes?.xs.width}px;
-      margin: 0 ${spaces?.xxs}px 0 0;
-    }
-
-    .MuiChip-deleteIcon {
-      ${fontHeaderXs(props)}
-      color: ${semanticColors?.base?.ornamentPrimaryInverse};
-      margin: 0 0 0 ${spaces?.xxs}px;
-      height: ${iconSizes?.s.height}px;
-      width: ${iconSizes?.s.width}px;
-    }
-  `;
-};
-
-const tagSizeL = (props: ExtraTagProps): SerializedStyles => {
-  const spaces = getSpaces(props);
-  const iconSizes = getIconSizes(props);
-  const semanticColors = getSemanticColors(props);
-
-  return css`
-    height: unset;
-
-    .MuiChip-label {
-      ${fontBodyXs(props)}
-      padding: 0;
-    }
-
-    .MuiSvgIcon-root {
-      height: ${iconSizes?.l.height}px;
-      width: ${iconSizes?.l.width}px;
-      margin: 0 ${spaces?.xxs}px 0 0px;
-    }
-
-    .MuiChip-deleteIcon {
-      ${fontHeaderXs(props)}
-      color: ${semanticColors?.base?.ornamentPrimaryInverse};
-      margin: 0 0 0 ${spaces?.xxs}px;
-      height: ${iconSizes?.s.height}px;
-      width: ${iconSizes?.s.width}px;
-    }
-  `;
-};
-
-const rounded = (props: ExtraTagProps): SerializedStyles => {
-  const corners = getCorners(props);
-  const spaces = getSpaces(props);
-
-  const { sdsSize = "s", icon } = props;
-
-  const topBottomPadding =
-    sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
-  const rightPadding = sdsSize === "l" && icon ? spaces?.s : spaces?.xs;
-
-  return css`
-    border-radius: ${corners?.rounded}px;
-    padding: ${topBottomPadding}px ${rightPadding}px ${topBottomPadding}px
-      ${spaces?.xs}px;
-
-    &:after {
-      content: "";
-      border-radius: ${corners?.rounded}px;
-    }
-  `;
-};
-
-const square = (props: ExtraTagProps): SerializedStyles => {
-  const corners = getCorners(props);
-  const spaces = getSpaces(props);
-
-  const { sdsSize = "s", icon } = props;
-
-  const topBottomPadding =
-    sdsSize === "s" ? spaces?.xxxs : icon ? spaces?.xxs : spaces?.xs;
-
-  return css`
-    border-radius: ${corners?.m}px;
-    padding: ${topBottomPadding}px ${spaces?.xs}px;
-
-    &:after {
-      content: "";
-      border-radius: ${corners?.m}px;
-    }
-  `;
-};
-
-const withHover = (props: ExtraTagProps): SerializedStyles => {
-  const semanticColors = getSemanticColors(props);
-
-  return css`
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:hover,
-    &:focus-visible {
-      color: ${semanticColors?.base?.textPrimaryInverse};
-    }
-  `;
-};
-
-const primary = (props: ExtraTagProps): SerializedStyles | undefined => {
-  return createTypeCss(props, "primary");
-};
-
-const secondary = (props: ExtraTagProps): SerializedStyles | undefined => {
-  return createTypeCss(props, "secondary");
-};
-
-function generatePrimaryTagColors(
-  intent: Extract<SdsTagColorType, string> | null,
-  colors: string[],
-  semanticColors: SDSPalette | null
-) {
-  const effectiveIntent = intent || "neutral";
-  const intentColors = semanticColors?.[effectiveIntent];
-  const hasCustomColors = colors.length >= 2;
-
-  return {
-    background: hasCustomColors ? colors[1] : intentColors?.fillPrimary,
-    backgroundClicked: hasCustomColors
-      ? darken(colors[1], 0.3)
-      : intentColors?.fillPressed,
-    backgroundHover: hasCustomColors
-      ? darken(colors[1], 0.15)
-      : intentColors?.fillInteraction,
-    iconColor: hasCustomColors
-      ? colors[2]
-      : semanticColors?.base?.ornamentOnFill,
-    label: colors.length > 0 ? colors[0] : semanticColors?.base?.textOnFill,
-    borderColor: alpha(semanticColors?.neutral?.foreground || "#000", 0.6),
-  };
 }
 
-function getSecondaryBorderColor(
-  effectiveIntent: string,
-  theme: SDSTheme,
-  intentColors?: IntentColor
-) {
-  if (!theme || !theme.palette)
-    return alpha(intentColors?.foreground || "#000", 0.6);
-  if (effectiveIntent === "negative" && theme.palette.mode === "dark")
-    return alpha(intentColors?.foreground || "#000", 0.65);
-  if (effectiveIntent === "notice" && theme.palette.mode === "light")
-    return alpha(intentColors?.foreground || "#000", 0.85);
-  return alpha(intentColors?.foreground || "#000", 0.6);
+interface TagRootProps {
+  component?: ElementType;
+  href?: string;
+  rel?: string;
+  target?: string;
 }
 
-function generateSecondaryTagColors(
-  intent: Extract<SdsTagColorType, string> | null,
-  colors: string[],
-  semanticColors: SDSPalette | null,
-  theme: SDSTheme = defaultTheme
-) {
-  const effectiveIntent = intent || "neutral";
-  const intentColors = semanticColors?.[effectiveIntent];
-  const hasCustomColors = colors.length >= 2;
-
-  return {
-    background: hasCustomColors ? colors[1] : intentColors?.fillSecondary,
-    backgroundClicked: hasCustomColors
-      ? darken(colors[1], 0.3)
-      : intentColors?.fillPressed,
-    backgroundHover: hasCustomColors
-      ? darken(colors[1], 0.15)
-      : intentColors?.fillInteraction,
-    iconColor: hasCustomColors ? colors[2] : intentColors?.foreground,
-    label: colors.length > 0 ? colors[0] : intentColors?.foreground,
-    borderColor: hasCustomColors
-      ? alpha(colors[1], 0.6)
-      : getSecondaryBorderColor(effectiveIntent, theme, intentColors),
-  };
+interface TagStateColors {
+  background?: string;
+  border?: string;
+  icon?: string;
+  label?: string;
 }
 
-function createTypeCss(
+interface TagColors {
+  disabled: TagStateColors;
+  hover: TagStateColors;
+  pressed: TagStateColors;
+  rest: TagStateColors;
+}
+
+/**
+ * MUI's color helpers throw on anything they cannot parse, such as a named
+ * color or a CSS variable, so a custom color they cannot read is used as given.
+ */
+function safely(
+  transform: (color: string, amount: number) => string,
+  color: string,
+  amount: number
+): string {
+  try {
+    return transform(color, amount);
+  } catch {
+    return color;
+  }
+}
+
+function disabledColors(
   props: ExtraTagProps,
-  type: NonNullable<ExtraTagProps["sdsType"]>
-): SerializedStyles | undefined {
+  sdsStyle: SdsTagStyle
+): TagStateColors {
+  const base = getSemanticColors(props)?.base;
+
+  return {
+    background: sdsStyle === "solid" ? base?.fillDisabled : "transparent",
+    border: sdsStyle === "outline" ? base?.borderPrimaryDisabled : undefined,
+    icon: base?.ornamentDisabled,
+    label: base?.textDisabled,
+  };
+}
+
+function intentColors(
+  props: ExtraTagProps,
+  intent: SdsTagIntent,
+  sdsStyle: SdsTagStyle
+): TagColors {
   const semanticColors = getSemanticColors(props);
+  const base = semanticColors?.base;
+  const palette = semanticColors?.[intent];
+  const disabled = disabledColors(props, sdsStyle);
 
-  const intent = typeof props.tagColor === "string" ? props.tagColor : null;
-  const colors = Array.isArray(props.tagColor) ? [...props.tagColor] : [];
+  if (sdsStyle === "solid") {
+    const onInteraction = {
+      icon: base?.ornamentPrimaryInverse,
+      label: base?.textPrimaryInverse,
+    };
 
-  const typeToColors = {
-    primary: generatePrimaryTagColors(intent, colors, semanticColors),
-    secondary: generateSecondaryTagColors(
-      intent,
-      colors,
-      semanticColors,
-      props.theme
-    ),
+    return {
+      disabled,
+      hover: { background: palette?.fillInteraction, ...onInteraction },
+      pressed: { background: palette?.fillPressed, ...onInteraction },
+      rest: {
+        background: palette?.fillPrimary,
+        icon: base?.ornamentOnFill,
+        label: base?.textOnFill,
+      },
+    };
+  }
+
+  const background =
+    intent === "accent"
+      ? semanticColors?.accent?.surfaceSecondary
+      : semanticColors?.[intent]?.fillSecondary;
+
+  // Accent's foreground sits a step lighter than its border in light mode.
+  const borderBase =
+    intent === "accent" ? getColors(props)?.indigo[600] : palette?.foreground;
+
+  const opacity = OUTLINE_BORDER_OPACITY[getMode(props)];
+
+  const stateOf = (color?: string) => ({
+    background,
+    border: color,
+    icon: color,
+    label: color,
+  });
+
+  return {
+    disabled,
+    hover: stateOf(palette?.foregroundInteraction),
+    pressed: stateOf(palette?.foregroundPressed),
+    rest: {
+      ...stateOf(palette?.foreground),
+      border: borderBase ? safely(alpha, borderBase, opacity) : undefined,
+    },
+  };
+}
+
+function customColors(
+  props: ExtraTagProps,
+  [label, background, icon = label]:
+    | [string, string]
+    | [string, string, string],
+  sdsStyle: SdsTagStyle
+): TagColors {
+  const disabled = disabledColors(props, sdsStyle);
+
+  if (sdsStyle === "solid") {
+    const rest = { background, icon, label };
+
+    return {
+      disabled,
+      hover: { ...rest, background: safely(emphasize, background, 0.15) },
+      pressed: { ...rest, background: safely(emphasize, background, 0.3) },
+      rest,
+    };
+  }
+
+  const opacity = OUTLINE_BORDER_OPACITY[getMode(props)];
+  const rest = {
+    background,
+    border: safely(alpha, label, opacity),
+    icon,
+    label,
   };
 
-  const typeColors = typeToColors[type];
+  return {
+    disabled,
+    hover: { ...rest, border: label },
+    pressed: {
+      ...rest,
+      background: safely(emphasize, background, 0.15),
+      border: label,
+    },
+    rest,
+  };
+}
 
+function stateColors({
+  background,
+  border,
+  icon,
+  label,
+}: TagStateColors): SerializedStyles {
   return css`
+    background-color: ${background};
+    box-shadow: ${border ? `inset 0 0 0 1px ${border}` : "none"};
+    color: ${label};
+
+    .MuiChip-label {
+      color: ${label};
+    }
+
+    .MuiChip-icon,
+    .MuiChip-deleteIcon,
+    .${TAG_LINK_ICON_CLASS} {
+      color: ${icon};
+      fill: ${icon};
+    }
+  `;
+}
+
+function interactiveStyles(
+  props: ExtraTagProps,
+  colors: TagColors
+): SerializedStyles {
+  return css`
+    cursor: pointer;
+
     ${focusVisibleA11yStyle(props)}
 
-    ${type === "secondary" &&
-    css`
-      box-shadow: inset 0 0 0 1px ${typeColors.borderColor};
-    `}
-    background-color: ${typeColors.background};
-    position: relative;
-
-    .MuiChip-label {
-      color: ${typeColors.label};
-    }
-
-    svg {
-      fill: ${typeColors.iconColor};
-    }
-
     &:hover,
-    &:active {
-      box-shadow: none;
-      .MuiChip-label {
-        color: ${semanticColors?.base?.textPrimaryInverse};
-      }
-
-      svg {
-        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
-      }
-    }
-
-    &:hover {
-      background-color: ${typeColors.backgroundHover};
-    }
-
-    &:active {
-      background-color: ${typeColors.backgroundClicked};
-    }
-
     &.Mui-focusVisible {
-      background-color: ${typeColors.backgroundHover};
+      ${stateColors(colors.hover)}
+    }
+
+    &:active {
+      ${stateColors(colors.pressed)}
     }
   `;
 }
 
-const typeToCss = {
-  primary,
-  secondary,
-};
+function sizeStyles(props: ExtraTagProps): SerializedStyles {
+  const { iconOnly = false, size = "medium" } = props;
 
-const doNotForwardProps = [
-  "sdsType",
-  "sdsStyle",
-  "sdsSize",
-  "tagColor",
-  "hover",
-];
+  const spaces = getSpaces(props);
+  const corners = getCorners(props);
+  const iconSizes = getIconSizes(props);
+
+  const height = TAG_HEIGHTS[size];
+  const iconSize = size === "small" ? iconSizes?.xxs : iconSizes?.xs;
+
+  return css`
+    ${size === "small" ? fontBodyXxxxs(props) : fontBodyXs(props)}
+
+    gap: ${spaces?.xxs}px;
+    height: ${height}px;
+
+    ${iconOnly
+      ? css`
+          border-radius: ${corners?.m}px;
+          padding: 0;
+          width: ${height}px;
+        `
+      : css`
+          border-radius: ${corners?.rounded}px;
+          padding: 0 ${spaces?.s}px;
+        `}
+
+    .MuiChip-icon,
+    .MuiChip-deleteIcon,
+    .${TAG_LINK_ICON_CLASS} {
+      flex-shrink: 0;
+      height: ${iconSize?.height}px;
+      margin: 0;
+      width: ${iconSize?.width}px;
+    }
+
+    .MuiChip-label {
+      align-items: center;
+      display: flex;
+      gap: ${spaces?.xxs}px;
+      min-width: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .${TAG_LABEL_TEXT_CLASS} {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    ${iconOnly &&
+    css`
+      .MuiChip-label {
+        border: 0;
+        clip-path: inset(50%);
+        height: 1px;
+        margin: -1px;
+        position: absolute;
+        width: 1px;
+      }
+    `}
+  `;
+}
+
+const doNotForwardProps = ["iconOnly", "isInteractive", "sdsStyle", "tagColor"];
 
 export const StyledTag = styled(Chip, {
   shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
+})<ExtraTagProps & TagRootProps>`
   border: none;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;
 
   ${(props: ExtraTagProps) => {
-    const { hover = true, sdsType, sdsStyle, sdsSize = "s" } = props;
+    const {
+      isInteractive = false,
+      sdsStyle = "solid",
+      tagColor = "neutral",
+    } = props;
 
-    const isRounded = sdsStyle === "rounded";
-    const type = sdsType || "primary";
+    const colors = Array.isArray(tagColor)
+      ? customColors(props, tagColor, sdsStyle)
+      : intentColors(props, tagColor, sdsStyle);
 
     return css`
-      ${sdsSize === "l" ? tagSizeL(props) : tagSizeS(props)}
-      ${typeToCss[type](props)}
-      ${isRounded ? rounded(props) : square(props)}
-      ${hover ? withHover(props) : `pointer-events: none;`}
+      ${sizeStyles(props)}
+      ${stateColors(colors.rest)}
+      ${isInteractive && interactiveStyles(props, colors)}
+
+      &.Mui-disabled {
+        opacity: 1;
+        ${stateColors(colors.disabled)}
+      }
     `;
   }}
 `;

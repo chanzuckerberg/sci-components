@@ -1,12 +1,4 @@
-export const TAG_FILTER_EXCLUDED_CONTROLS = ["label"];
-
-export const TAG_FILTER_DEFAULT_STYLES = {
-  display: "inline-grid",
-  gridColumnGap: 24,
-  gridRowGap: 24,
-  gridTemplateColumns: "repeat(1, 1fr)",
-  gridTemplateRows: "repeat(1, 1fr)",
-};
+export const TAG_FILTER_EXCLUDED_CONTROLS = ["label", "onDelete"];
 
 export const TAG_FILTER_PSEUDO_STATES = ["default", "hover", "active", "focus"];
 

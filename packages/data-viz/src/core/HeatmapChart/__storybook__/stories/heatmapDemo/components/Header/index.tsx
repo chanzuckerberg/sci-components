@@ -8,9 +8,9 @@ const TooltipTag = ({ label }: { label: string }) => {
   return (
     <Tag
       label={label}
-      hover={false}
       color="neutral"
-      sdsType="secondary"
+      sdsStyle="outline"
+      size="small"
       style={{ margin: "-2px 4px 0 0" }}
     />
   );

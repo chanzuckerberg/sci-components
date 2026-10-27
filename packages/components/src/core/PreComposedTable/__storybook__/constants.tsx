@@ -197,9 +197,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
         <Tag
           label={getValue() as string}
           color={(getValue() as string) === "Active" ? "positive" : "negative"}
-          sdsStyle="rounded"
-          sdsType="secondary"
-          hover={false}
+          sdsStyle="outline"
         />
       </CellComponent>
     ),
@@ -400,9 +398,7 @@ export const COLUMNS_WITH_SELECTIVE_FILTERS: ColumnDef<DataType>[] = [
         <Tag
           label={getValue() as string}
           color={(getValue() as string) === "Active" ? "positive" : "negative"}
-          sdsStyle="rounded"
-          sdsType="secondary"
-          hover={false}
+          sdsStyle="outline"
         />
       </CellComponent>
     ),
@@ -563,9 +559,7 @@ export const COLUMNS_WITH_CUSTOM_FILTERS: ColumnDef<DataType>[] = [
         <Tag
           label={getValue() as string}
           color={(getValue() as string) === "Active" ? "positive" : "negative"}
-          sdsStyle="rounded"
-          sdsType="secondary"
-          hover={false}
+          sdsStyle="outline"
         />
       </CellComponent>
     ),
@@ -641,12 +635,12 @@ export const COLUMNS_WITH_CUSTOM_FILTERS: ColumnDef<DataType>[] = [
   },
 ];
 
-export const TABLE_ON_ROW_SELECT_OPTIONS = [
-  (selectedRows: unknown) => {
+export const TABLE_ON_ROW_SELECT_OPTIONS = {
+  log: (selectedRows: unknown) => {
     console.log(selectedRows);
   },
-  undefined,
-];
+  none: undefined,
+};
 
 export const PRE_COMPOSED_TABLE_EXCLUDED_CONTROLS = [
   "data",

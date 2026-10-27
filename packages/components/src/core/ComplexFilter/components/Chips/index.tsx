@@ -1,6 +1,6 @@
 import { AutocompleteValue } from "@mui/material/useAutocomplete";
 import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete/components/AutocompleteBase";
-import TagFilter from "@components/src/core/TagFilter";
+import Chip from "@components/src/core/Chip";
 import { checkIfSingleColumn } from "../../utils";
 
 interface Props<
@@ -99,12 +99,7 @@ const Chips = <
   return (
     <>
       {chipLabels.map((label) => (
-        <TagFilter
-          key={label}
-          label={label}
-          onDelete={() => onDelete(label)}
-          onClick={() => onDelete(label)}
-        />
+        <Chip key={label} label={label} onDelete={() => onDelete(label)} />
       ))}
     </>
   );

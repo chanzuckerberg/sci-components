@@ -11,14 +11,31 @@ export default {
   argTypes: {
     contentAlert: {
       control: { type: "select" },
+      description:
+        "A note above the whole table, for a caveat about the numbers. Takes an element, so it can hold a link. The story switches between a sample string, a sample element and none.",
       options: ["String", "Element", "None"],
+    },
+    data: {
+      control: { type: "object" },
+      description:
+        "The sections, drawn in order and separated by dividers. A section's label heads it, its dataRows fill it, and disabled greys the whole block.",
     },
     itemAlign: {
       control: { type: "radio" },
+      description:
+        "Which side of its column each value sits on. Right lines numbers up with each other.",
       options: ["right", "left"],
+      table: {
+        defaultValue: { summary: "right" },
+      },
     },
     showSectionHeader: {
       control: { type: "boolean" },
+      description:
+        "Whether section labels are drawn. False hides all of them; the dividers between sections stay.",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
   },
   component: TooltipTableContent,

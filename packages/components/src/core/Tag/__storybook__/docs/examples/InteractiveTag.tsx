@@ -1,11 +1,9 @@
 // A tag with an onClick becomes a button: it takes a tab stop, answers Enter and
-// Space, and reports its label as its name. Use it for a tag that filters or
-// navigates, not for one that only labels something.
+// Space, reports its label as its name, and darkens under the pointer. A tag with
+// neither an onClick nor an href is static: no role, no tab stop and no hover
+// state, so it reads as a label rather than a control.
 //
-// Every tag darkens under the pointer and shows a pointer cursor by default,
-// including one that does nothing. hover={false} turns that off, and with it all
-// pointer events, so a static tag stops looking clickable, but it also stops
-// answering the mouse and stops triggering a Tooltip wrapped around it.
+// disabled greys a clickable tag out and takes it out of the tab order.
 
 import {
   Tag,
@@ -80,13 +78,22 @@ function App() {
             color="info"
             label="Filter by species"
             onClick={() => setClicks((count) => count + 1)}
-            sdsStyle="rounded"
           />
         </Group>
 
         <Group>
           <Caption>Static</Caption>
-          <Tag hover={false} label="Read-only label" sdsStyle="rounded" />
+          <Tag label="Read-only label" />
+        </Group>
+
+        <Group>
+          <Caption>Disabled</Caption>
+          <Tag
+            color="info"
+            disabled
+            label="Filter by tissue"
+            onClick={() => setClicks((count) => count + 1)}
+          />
         </Group>
 
         <Readout>
