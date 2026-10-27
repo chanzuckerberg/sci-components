@@ -63,7 +63,7 @@ const calculateLegendValue = (
     return `${Math.round(item.percentage)}%`;
   }
 
-  return `${item.value.toLocaleString()} ${item.unit ?? globalUnit}`.trim();
+  return `${item.value.toLocaleString()} ${item.unit ?? globalUnit ?? ""}`.trim();
 };
 
 // Helper: Get segment opacity based on hover and selection state
