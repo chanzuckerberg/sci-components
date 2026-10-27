@@ -918,10 +918,9 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
         {!hideBadge && displayBadge && (
           <Tag
             label={displayBadge}
-            sdsType="secondary"
-            sdsStyle="rounded"
+            sdsStyle="outline"
             color="neutral"
-            hover={false}
+            size="small"
           />
         )}
       </TitleContainer>
