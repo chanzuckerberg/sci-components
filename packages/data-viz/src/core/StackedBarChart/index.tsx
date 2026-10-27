@@ -63,11 +63,7 @@ const calculateLegendValue = (
     return `${Math.round(item.percentage)}%`;
   }
 
-  // Count format: show value with optional unit
-  const effectiveUnit = item.unit || globalUnit;
-  return effectiveUnit
-    ? `${item.value.toLocaleString()} ${effectiveUnit}`
-    : `${item.value}`;
+  return `${item.value.toLocaleString()} ${item.unit ?? globalUnit}`.trim();
 };
 
 // Helper: Get segment opacity based on hover and selection state
@@ -796,6 +792,7 @@ const StackedBarChart = (props: StackedBarChartProps): JSX.Element => {
       hasOverflow
         ? hiddenItems.map((item, index) => ({
             name: item.name,
+            value: item.value,
             color:
               item.color ||
               hiddenColors[index] ||

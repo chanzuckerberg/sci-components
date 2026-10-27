@@ -161,6 +161,7 @@ const Legend = (props: LegendProps): JSX.Element => {
         >
           <Legend
             items={lastItemMenuItems}
+            showValues={showValues}
             selectedIndices={selectedIndices
               .filter((i) => i >= overflowItemIndex)
               .map((i) => i - overflowItemIndex)}
