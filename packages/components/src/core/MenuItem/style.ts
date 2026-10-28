@@ -1,4 +1,3 @@
-import { Remove } from "@mui/icons-material";
 import { MenuItem, menuItemClasses, MenuItemProps } from "@mui/material";
 import styled from "@emotion/styled";
 import { fontBodyXs } from "@components/src/core/styles/common/mixins/fonts";
@@ -235,32 +234,6 @@ export const DotIcon = styled("svg")`
 
     return `
       color: ${selected ? selectedColor : "transparent"};
-    `;
-  }}
-`;
-
-export const StyledMinus = styled(Remove, {
-  shouldForwardProp: (prop) => prop !== "selected",
-})<StyledIconType>`
-  ${(props) => {
-    const { selected, disabled } = props;
-
-    const semanticColors = getSemanticColors(props);
-    const iconSizes = getIconSizes(props);
-
-    const selectedColor = disabled
-      ? semanticColors?.base?.ornamentDisabled
-      : semanticColors?.base?.ornamentPrimary;
-
-    return `
-      color: ${selected ? selectedColor : "transparent"};
-      padding: 0;
-      height: ${iconSizes?.s.height}px;
-      width: ${iconSizes?.s.width}px;
-
-      &.MuiCheckbox-colorPrimary.Mui-checked:hover {
-        background-color: transparent;
-      }
     `;
   }}
 `;

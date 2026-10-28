@@ -34,7 +34,6 @@ That guide covers dependency updates, MUI import and prop API changes (`slots` /
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@mui/icons-material"
   "@mui/material"
   "@phosphor-icons/react"
   "react"
@@ -45,10 +44,10 @@ To install @czi-sds/components and the dependencies:
 
 ```
 // with npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @phosphor-icons/react react react-dom
 
 // with yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @phosphor-icons/react react react-dom
 ```
 
 ### Icons
