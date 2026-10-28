@@ -1,38 +1,17 @@
 import {
-  Button,
   CommonThemeProps,
-  fontBodyMediumXxs,
   fontBodySemiboldXxs,
-  fontBodySemiboldXxxxs,
-  fontBodyXxxs,
-  fontBodyXxxxs,
   fontBodyXxs,
   fontCodeXs,
-  getCorners,
   getSemanticColors,
-  getShadows,
   getSpaces,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
-import { withAlpha } from "./utils/palette";
-
-interface DensityProps extends CommonThemeProps {
-  density: "comfortable" | "compact";
-}
 
 interface PlotProps extends CommonThemeProps {
   interactive: boolean;
   isDragging: boolean;
   selectable: boolean;
-}
-
-interface FeatureLabelProps extends CommonThemeProps {
-  selected: boolean;
-}
-
-interface RowLabelProps extends CommonThemeProps {
-  /** Whether to draw a divider above the section. */
-  withSeparator: boolean;
 }
 
 export const TrackRoot = styled("div")`
@@ -90,33 +69,6 @@ export const TrackBody = styled("div")`
   align-items: stretch;
 `;
 
-/** A section's name, on its own line above its rows. */
-export const TrackRowLabel = styled("div")`
-  ${fontBodySemiboldXxxxs}
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  ${(props: RowLabelProps) => {
-    const semanticColors = getSemanticColors(props);
-
-    return `
-      color: ${semanticColors?.base?.textTertiary};
-      ${
-        props.withSeparator
-          ? `border-top: 1px solid ${semanticColors?.base?.divider};`
-          : ""
-      }
-    `;
-  }}
-`;
-
 /** Canvas wrapper. `touch-action: none` makes touch drags pan, not scroll. */
 export const TrackPlot = styled("div")`
   position: relative;
@@ -148,30 +100,6 @@ export const TrackPlot = styled("div")`
   }
 `;
 
-/** A feature's name, above its bars inside the plot. */
-export const TrackFeatureLabel = styled("div")`
-  position: absolute;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  ${(props: FeatureLabelProps) =>
-    props.selected ? fontBodySemiboldXxxxs(props) : fontBodyXxxxs(props)}
-
-  ${(props: FeatureLabelProps) => {
-    const semanticColors = getSemanticColors(props);
-
-    return `color: ${
-      props.selected
-        ? semanticColors?.base?.textPrimary
-        : semanticColors?.base?.textSecondary
-    };`;
-  }}
-`;
-
 /** Holds a control at the right edge of a section's header line. */
 export const TrackOverlayControl = styled("div")`
   position: absolute;
@@ -179,150 +107,6 @@ export const TrackOverlayControl = styled("div")`
   display: flex;
   align-items: center;
   pointer-events: auto;
-`;
-
-/**
- * Copy button whose icon takes the accent colours on interaction. `&&` raises
- * specificity above SDS's own `&:hover svg`.
- */
-export const TrackSequenceCopyButton = styled(Button)`
-  ${(props: CommonThemeProps) => {
-    const semanticColors = getSemanticColors(props);
-
-    return `
-      &&:hover svg {
-        color: ${semanticColors?.accent?.foregroundInteraction};
-      }
-
-      &&:focus-visible svg {
-        color: ${semanticColors?.accent?.foreground};
-      }
-
-      &&:active svg {
-        color: ${semanticColors?.accent?.foregroundPressed};
-      }
-    `;
-  }}
-`;
-
-/** The segment category legend, under the segments row. */
-export const TrackLegend = styled("div")`
-  ${fontBodyXxxxs}
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  pointer-events: none;
-
-  ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
-
-    return `
-      color: ${getSemanticColors(props)?.base?.textSecondary};
-      gap: ${spaces?.xxs}px ${spaces?.m}px;
-      padding-top: ${spaces?.xs}px;
-    `;
-  }}
-`;
-
-/** One key entry: its swatch and the category's name. */
-export const TrackLegendItem = styled("span")`
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-
-  ${(props: CommonThemeProps) => `gap: ${getSpaces(props)?.xxs}px;`}
-`;
-
-interface SwatchProps extends CommonThemeProps {
-  swatchColor: string;
-  striped: boolean;
-}
-
-/** A category's swatch, striped for the negative strand. */
-export const TrackLegendSwatch = styled("span")`
-  width: 10px;
-  height: 10px;
-  flex: 0 0 auto;
-
-  ${(props: SwatchProps) => {
-    const corners = getCorners(props);
-    const stripe = "rgba(255, 255, 255, 0.55)";
-
-    return `
-      border-radius: ${corners?.s}px;
-      background-color: ${props.swatchColor};
-      ${
-        props.striped
-          ? `background-image: repeating-linear-gradient(
-               45deg,
-               ${stripe} 0 2px,
-               transparent 2px 6px
-             );`
-          : ""
-      }
-    `;
-  }}
-`;
-
-/** Tooltip for the hovered block or bin. */
-export const TrackTooltip = styled("div")`
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  /* Fixed to its content width so it doesn't shrink near the right edge. */
-  width: max-content;
-  max-width: min(320px, 100%);
-  overflow-wrap: anywhere;
-
-  ${(props: CommonThemeProps) => {
-    const corners = getCorners(props);
-    const semanticColors = getSemanticColors(props);
-    const shadows = getShadows(props);
-    const spaces = getSpaces(props);
-
-    return `
-      background-color: ${semanticColors?.base?.surfacePrimary};
-      color: ${semanticColors?.base?.textPrimary};
-      border-radius: ${corners?.m}px;
-      box-shadow: ${shadows?.m};
-      outline: 1px solid ${withAlpha(
-        semanticColors?.base?.borderSecondary ?? "#000000",
-        0.15
-      )};
-      padding: ${spaces?.xxs}px ${spaces?.s}px;
-      transform: translateY(-100%);
-    `;
-  }}
-`;
-
-/** Headline row: the block's name, or the feature and its binned value. */
-export const TrackTooltipTitle = styled("div")`
-  ${fontBodyMediumXxs}
-
-  ${(props: CommonThemeProps) =>
-    `color: ${getSemanticColors(props)?.base?.textPrimary};`}
-`;
-
-/** Supporting row: a product, or a predicted label and its support. */
-export const TrackTooltipDetail = styled("div")`
-  ${fontBodyXxxs}
-
-  ${(props: CommonThemeProps) =>
-    `color: ${getSemanticColors(props)?.base?.textSecondary};`}
-`;
-
-/** Coordinate row. */
-export const TrackTooltipRange = styled("div")`
-  ${fontCodeXs}
-
-  white-space: nowrap;
-
-  ${(props: CommonThemeProps) =>
-    `color: ${getSemanticColors(props)?.base?.textSecondary};`}
 `;
 
 /** Visually hidden container for the accessible table. */
@@ -336,39 +120,6 @@ export const VisuallyHidden = styled("div")`
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
-`;
-
-/** Shared shell for the loading, empty, and error states. */
-export const TrackMessage = styled("div")`
-  ${fontBodyXxs}
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  ${(props: DensityProps) => {
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      color: ${semanticColors?.base?.textPrimary};
-      background-color: ${semanticColors?.base?.surfaceSecondary};
-      border-radius: 4px;
-      padding: ${spaces?.l}px ${spaces?.m}px;
-      min-height: ${props.density === "compact" ? 48 : 96}px;
-    `;
-  }}
-`;
-
-export const TrackMessageTitle = styled("div")`
-  ${fontBodySemiboldXxs}
-
-  ${(props: CommonThemeProps) => {
-    const semanticColors = getSemanticColors(props);
-
-    return `color: ${semanticColors?.base?.textPrimary};`;
-  }}
 `;
 
 /** Indeterminate bar above the plot while a re-fetch is in flight. */
@@ -413,35 +164,6 @@ export const TrackProgress = styled("div")`
     }
     100% {
       transform: translateX(250%);
-    }
-  }
-`;
-
-/** Skeleton bar used by the loading state, one per requested row. */
-export const TrackSkeletonRow = styled("div")`
-  border-radius: 4px;
-
-  ${(props: CommonThemeProps) => {
-    const semanticColors = getSemanticColors(props);
-    const spaces = getSpaces(props);
-
-    return `
-      background-color: ${semanticColors?.base?.fillSecondary};
-      margin-bottom: ${spaces?.xs}px;
-    `;
-  }}
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: sds-genome-track-pulse 1.4s ease-in-out infinite;
-  }
-
-  @keyframes sds-genome-track-pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.55;
     }
   }
 `;

@@ -1,6 +1,13 @@
 import { DEFAULT_TRACK_DATA } from "../__storybook__/constants";
 import { TrackKind } from "../GenomeTrack.types";
-import { hitTest, selectionForHit, seriesId } from "../utils/hitTest";
+import {
+  blockAt,
+  hitTest,
+  keyboardItems,
+  selectionForHit,
+  seriesId,
+  stepItem,
+} from "../utils/hitTest";
 import { layoutRows } from "../utils/layout";
 import { bpToPx, createScale } from "../utils/scale";
 
@@ -345,5 +352,86 @@ describe("segments arriving in an unhelpful order", () => {
     );
 
     expect(hit?.id).toBe(expected);
+  });
+});
+
+describe("blockAt", () => {
+  const contiguous = [
+    { end: 100, id: "a", start: 1 },
+    { end: 200, id: "b", start: 101 },
+  ];
+
+  it("prefers the block containing the base over a neighbour within tolerance", () => {
+    expect(blockAt(contiguous, 102, 2)?.id).toBe("b");
+    expect(blockAt(contiguous, 99, 2)?.id).toBe("a");
+  });
+
+  it("falls back to tolerance only where no block contains the base", () => {
+    const gapped = [
+      { end: 100, id: "a", start: 1 },
+      { end: 200, id: "b", start: 110 },
+    ];
+
+    expect(blockAt(gapped, 102, 2)?.id).toBe("a");
+    expect(blockAt(gapped, 105, 2)).toBeNull();
+  });
+});
+
+describe("keyboard selection", () => {
+  const viewport = {
+    end: DEFAULT_TRACK_DATA.locus.end,
+    start: DEFAULT_TRACK_DATA.locus.start,
+  };
+  const items = keyboardItems(DEFAULT_TRACK_DATA, layout.rows, viewport);
+
+  it("steps through rows top to bottom and blocks left to right", () => {
+    const rowIndexes = items.map((item) => item.rowIndex);
+
+    expect(rowIndexes).toEqual([...rowIndexes].sort((a, b) => a - b));
+    expect(items.some((item) => item.kind === "annotation")).toBe(true);
+    expect(items.some((item) => item.kind === "segment")).toBe(true);
+    expect(items.some((item) => item.kind === "trace")).toBe(true);
+  });
+
+  it("puts each feature row at its highest bin in view", () => {
+    const trace = items.find((item) => item.kind === "trace");
+
+    if (!trace || trace.kind !== "trace") throw new Error("No feature item");
+
+    const values = DEFAULT_TRACK_DATA.features.find(
+      (candidate) => seriesId(candidate.feature_id) === trace.id
+    )?.values;
+
+    expect(trace.value).toBe(Math.max(...(values ?? [])));
+  });
+
+  it("leaves out blocks outside the viewport", () => {
+    const segment = DEFAULT_TRACK_DATA.segments[0];
+    const narrow = keyboardItems(DEFAULT_TRACK_DATA, layout.rows, {
+      end: segment.end,
+      start: segment.start,
+    });
+
+    expect(
+      narrow.filter((item) => item.kind === "segment").map((item) => item.id)
+    ).toEqual([segment.id]);
+  });
+
+  it("wraps forwards and backwards, starting from either end", () => {
+    const first = items[0];
+    const last = items[items.length - 1];
+
+    expect(stepItem(items, null, 1)).toBe(first);
+    expect(stepItem(items, null, -1)).toBe(last);
+    expect(stepItem(items, last, 1)).toBe(first);
+    expect(stepItem(items, first, -1)).toBe(last);
+    expect(stepItem([], null, 1)).toBeNull();
+  });
+
+  it("selects the focused item the way a click would", () => {
+    expect(selectionForHit(items[0], null)).toEqual({
+      id: items[0].id,
+      kind: items[0].kind === "trace" ? "series" : "block",
+    });
   });
 });

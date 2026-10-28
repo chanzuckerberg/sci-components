@@ -1,5 +1,5 @@
 import { TrackError, TrackKind } from "../../GenomeTrack.types";
-import { TrackMessage, TrackMessageTitle, TrackSkeletonRow } from "../../style";
+import { TrackMessage, TrackMessageTitle, TrackSkeletonRow } from "./style";
 import { rowLabelHeight } from "../../utils/layout";
 
 /** The states that replace the plot entirely. */

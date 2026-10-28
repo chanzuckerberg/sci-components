@@ -4,7 +4,7 @@ import {
   TrackTooltipDetail,
   TrackTooltipRange,
   TrackTooltipTitle,
-} from "../../style";
+} from "./style";
 import { formatRange } from "../../utils/format";
 import { TrackHit } from "../../utils/hitTest";
 import { TrackRow } from "../../utils/layout";

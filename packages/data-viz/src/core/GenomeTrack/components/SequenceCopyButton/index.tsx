@@ -2,7 +2,8 @@ import { Menu, MenuItem } from "@czi-sds/components";
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { copyText } from "../../../../common/copyText";
-import { TrackOverlayControl, TrackSequenceCopyButton } from "../../style";
+import { TrackOverlayControl } from "../../style";
+import { TrackSequenceCopyButton } from "./style";
 
 /** How long the tick shows after a copy. */
 const CONFIRM_MS = 2000;

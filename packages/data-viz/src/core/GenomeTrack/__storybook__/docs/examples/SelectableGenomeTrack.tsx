@@ -168,9 +168,13 @@ function describe(selection: GenomeSelection | null): string {
 
   const segment = SEGMENTS.find((block) => block.id === selection.id);
   if (segment) {
-    return `${segment.category} ${segment.start}–${segment.end} · ${
-      segment.predicted_label ?? "Unlabelled"
-    } at ${Math.round(segment.predicted_support * 100)}% support`;
+    const label = segment.predicted_label ?? "Unlabelled";
+    const support =
+      segment.predicted_support === null
+        ? ""
+        : ` at ${Math.round(segment.predicted_support * 100)}% support`;
+
+    return `${segment.category} ${segment.start}–${segment.end} · ${label}${support}`;
   }
 
   return selection.id;

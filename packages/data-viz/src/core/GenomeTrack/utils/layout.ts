@@ -424,3 +424,8 @@ export function rowIndexAt(rows: TrackRow[], y: number): number {
 export function rowAt(rows: TrackRow[], y: number): TrackRow | null {
   return rows[rowIndexAt(rows, y)] ?? null;
 }
+
+/** A stable React key for a row. */
+export function rowKey(row: TrackRow): string {
+  return `${row.kind}-${row.traceId ?? row.laneIndex ?? 0}`;
+}

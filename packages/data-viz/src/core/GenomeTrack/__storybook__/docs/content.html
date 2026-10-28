@@ -177,9 +177,7 @@
   the chromosome as a bar and the visible range as a band inside it. Zoom in and
   the band narrows; pan and it slides.
 </p>
-<p>
-  It draws two ranges:
-</p>
+<p>It draws two ranges:</p>
 <ul>
   <li>
     <p>
@@ -244,9 +242,10 @@
   One letter per base, and a copy control on the section's header line beside
   its name. It opens a menu with two choices rather than copying straight away:
   <strong>Copy Visible Segment</strong> and <strong>Copy Full Segment</strong>.
-  Both items name the range they would copy: "Copy Visible Segment (45,500–45,600)". The full
-  item is disabled when the payload is already entirely on screen, since two
-  items copying identical text is a choice without a difference.
+  Both items name the range they would copy: "Copy Visible Segment
+  (45,500–45,600)". The full item is disabled when the payload is already
+  entirely on screen, since two items copying identical text is a choice without
+  a difference.
 </p>
 <h2>The features row</h2>
 <p>
@@ -414,6 +413,31 @@
     <td><p>Home</p></td>
     <td><p>Returns to the payload's full window.</p></td>
   </tr>
+  <tr>
+    <td>
+      <p><code>]</code>, <code>[</code></p>
+    </td>
+    <td>
+      <p>
+        Moves to the next or previous item in view — each annotation and segment
+        left to right, then each feature row at its highest bin — and shows it
+        as the pointer would: outlined, with its tooltip.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Enter, Space</p></td>
+    <td>
+      <p>
+        Selects that item through <code>onSelectionChange</code>, or clears it
+        if it is already selected.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Escape</p></td>
+    <td><p>Clears the selection.</p></td>
+  </tr>
 </table>
 <p>
   Any other key falls through without <code>preventDefault</code>, so the page's
@@ -436,8 +460,10 @@
 </p>
 <p>
   The plot is a tab stop and takes focus on click, so the keyboard controls are
-  available without a separate control to reach them, and strand is drawn as a
-  block's shape as well as its color.
+  available without a separate control to reach them. Everything a click selects
+  can also be selected from the keyboard, with <code>[</code>,
+  <code>]</code> and Enter. Strand is drawn as a block's shape as well as its
+  color.
 </p>
 <h2>Theming</h2>
 <p>
@@ -515,8 +541,8 @@
       </p>
       <p>
         May extend past the payload's window, by up to
-        <code>navigationMargin</code> — a shell that re-fetches a narrower window
-        at a finer stride needs the user to be able to zoom back out, and
+        <code>navigationMargin</code> — a shell that re-fetches a narrower
+        window at a finer stride needs the user to be able to zoom back out, and
         clamping to the payload would make each zoom-in permanent. The rows wash
         out the coordinates they have no data for. Supplied as a prop it is not
         clamped at all: controlled means the caller owns it, and only pan and
@@ -665,12 +691,11 @@
     <td>
       <p>
         Draw each section's name on a line above its rows, with a separator
-        ruling off whatever sits above. The minimap is unnamed either way.
-        Above the row rather than in a left-hand gutter, so a name has the
-        plot's full width instead of a fixed column that the axis could use and
-        that truncates the longer names anyway. The trade is vertical — each
-        section costs a line. False for the compact variant, which has room for
-        neither.
+        ruling off whatever sits above. The minimap is unnamed either way. Above
+        the row rather than in a left-hand gutter, so a name has the plot's full
+        width instead of a fixed column that the axis could use and that
+        truncates the longer names anyway. The trade is vertical — each section
+        costs a line. False for the compact variant, which has room for neither.
       </p>
     </td>
   </tr>
@@ -746,9 +771,9 @@
       <p>
         How the features are ranked, shown in a dropdown on the features
         section's header line — "Z-Score" and "Raw" respectively. These are the
-        tool's own <code>rank_by</code> values, so a shell can pass the callback's
-        argument straight through; "Raw" is the label for <code>peak</code>, not
-        a value the server accepts.
+        tool's own <code>rank_by</code> values, so a shell can pass the
+        callback's argument straight through; "Raw" is the label for
+        <code>peak</code>, not a value the server accepts.
       </p>
       <p>
         Controlled with no internal fallback, because it is a fetch parameter

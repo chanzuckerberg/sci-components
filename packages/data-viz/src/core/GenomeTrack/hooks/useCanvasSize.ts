@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 /** A container's CSS width and the device pixel ratio, kept up to date. */
 export interface CanvasSize {
@@ -11,12 +11,14 @@ export interface CanvasSize {
 /** Caps canvas backing-store memory. */
 const MAX_DPR = 3;
 
-export function useCanvasSize(ref: RefObject<HTMLElement>): CanvasSize {
+/**
+ * Takes the element rather than a ref, so measuring starts whenever an element
+ * mounts, including one that replaces a loading or error state.
+ */
+export function useCanvasSize(element: HTMLElement | null): CanvasSize {
   const [size, setSize] = useState<CanvasSize>({ dpr: 1, width: 0 });
 
   useEffect(() => {
-    const element = ref.current;
-
     if (!element) return;
 
     const read = () => {
@@ -50,7 +52,7 @@ export function useCanvasSize(ref: RefObject<HTMLElement>): CanvasSize {
       observer.disconnect();
       query?.removeEventListener?.("change", read);
     };
-  }, [ref]);
+  }, [element]);
 
   return size;
 }

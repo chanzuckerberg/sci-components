@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from "react";
+import { useEffect } from "react";
 import {
   FeatureOverview,
   FeatureTrace,
@@ -21,7 +21,8 @@ import { SegmentPalette } from "../utils/segmentColors";
 
 /** Options for `useTrackRenderer`, which draws every row onto the canvas. */
 export interface UseTrackRendererOptions {
-  canvasRef: RefObject<HTMLCanvasElement>;
+  /** The element, so drawing reruns when a new canvas mounts. */
+  canvas: HTMLCanvasElement | null;
   data: GenomeTrackData | null;
   density: "comfortable" | "compact";
   dpr: number;
@@ -85,7 +86,7 @@ function drawRow(
 
 export function useTrackRenderer(options: UseTrackRendererOptions): void {
   const {
-    canvasRef,
+    canvas,
     data,
     density,
     dpr,
@@ -102,8 +103,6 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
   } = options;
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-
     if (!canvas || !data || width === 0) return;
 
     const ctx = canvas.getContext("2d");
@@ -158,7 +157,7 @@ export function useTrackRenderer(options: UseTrackRendererOptions): void {
       uncoveredRanges(scale, extents.window)
     );
   }, [
-    canvasRef,
+    canvas,
     data,
     density,
     dpr,

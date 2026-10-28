@@ -4,6 +4,7 @@ import {
   FeatureTrace,
   GenomeSelection,
   GenomeTrackData,
+  GenomeViewport,
   SegmentBlock,
 } from "../GenomeTrack.types";
 import { TrackRow, featureNote, featureTraces, rowIndexAt } from "./layout";
@@ -75,11 +76,8 @@ function firstCandidate(
   return lo;
 }
 
-/**
- * First block containing `bp`, or null. `slack` widens the test so very narrow
- * blocks stay clickable.
- */
-function blockAt<T extends { end: number; start: number }>(
+/** First block within `slack` bases of `bp`, or null. */
+function blockWithin<T extends { end: number; start: number }>(
   blocks: T[],
   bp: number,
   slack: number
@@ -92,6 +90,18 @@ function blockAt<T extends { end: number; start: number }>(
   }
 
   return null;
+}
+
+/**
+ * The block containing `bp`, or failing that the nearest within `slack` bases,
+ * so very narrow blocks stay clickable without stealing from a neighbour.
+ */
+export function blockAt<T extends { end: number; start: number }>(
+  blocks: T[],
+  bp: number,
+  slack: number
+): T | null {
+  return blockWithin(blocks, bp, 0) ?? blockWithin(blocks, bp, slack);
 }
 
 function annotationHit(
@@ -226,4 +236,107 @@ export function hitTest(
     default:
       return null;
   }
+}
+
+/** The bp of a trace's highest bin inside the viewport, or null if none overlaps it. */
+function peakBp(
+  trace: FeatureTrace,
+  bins: BinAxis,
+  viewport: GenomeViewport
+): number | null {
+  let peak: number | null = null;
+  let best = -Infinity;
+
+  trace.values.forEach((value, index) => {
+    const range = binIndexToRange(bins, index);
+
+    if (range.end < viewport.start || range.start > viewport.end) return;
+    if (value > best) {
+      best = value;
+      peak = Math.max(range.start, viewport.start);
+    }
+  });
+
+  return peak;
+}
+
+/** A feature row's keyboard item: its trace at the highest bin in view. */
+function featureItem(
+  data: GenomeTrackData,
+  trace: FeatureTrace | undefined,
+  viewport: GenomeViewport,
+  rowIndex: number
+): TraceHit | null {
+  const bp = trace ? peakBp(trace, data.bins, viewport) : null;
+
+  if (!trace || bp === null) return null;
+
+  return traceHit(trace, data.bins, bp, traceDetail(data, trace), rowIndex);
+}
+
+/**
+ * What keyboard focus steps through, top to bottom: each block row's blocks in
+ * the viewport, left to right, and each feature row at its highest bin.
+ */
+export function keyboardItems(
+  data: GenomeTrackData,
+  rows: TrackRow[],
+  viewport: GenomeViewport
+): TrackHit[] {
+  const traces = featureTraces(data);
+  const items: TrackHit[] = [];
+  const visible = (block: { end: number; start: number }) =>
+    block.end >= viewport.start && block.start <= viewport.end;
+
+  rows.forEach((row, rowIndex) => {
+    switch (row.kind) {
+      case "annotations":
+        (row.laneBlocks ?? []).forEach((block) => {
+          if (visible(block)) items.push(annotationHit(block, rowIndex));
+        });
+        break;
+      case "segments":
+        (row.segmentBlocks ?? []).forEach((block) => {
+          if (visible(block)) items.push(segmentHit(block, rowIndex));
+        });
+        break;
+      case "features": {
+        const hit = featureItem(
+          data,
+          traces[row.traceIndex ?? 0],
+          viewport,
+          rowIndex
+        );
+
+        if (hit) items.push(hit);
+        break;
+      }
+      default:
+        break;
+    }
+  });
+
+  return items;
+}
+
+/** The item `step` places after `current`, wrapping; the first or last if `current` is not one. */
+export function stepItem(
+  items: TrackHit[],
+  current: TrackHit | null,
+  step: 1 | -1
+): TrackHit | null {
+  if (items.length === 0) return null;
+
+  const index = current
+    ? items.findIndex(
+        (item) =>
+          item.kind === current.kind &&
+          item.id === current.id &&
+          item.rowIndex === current.rowIndex
+      )
+    : -1;
+
+  if (index === -1) return step === 1 ? items[0] : items[items.length - 1];
+
+  return items[(index + step + items.length) % items.length];
 }

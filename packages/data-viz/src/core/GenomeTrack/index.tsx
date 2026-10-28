@@ -1,9 +1,19 @@
 import { getMode, getSemanticColors } from "@czi-sds/components";
 import { useTheme } from "@mui/material/styles";
-import { ForwardedRef, forwardRef, memo, useId, useMemo, useRef } from "react";
+import {
+  ForwardedRef,
+  forwardRef,
+  memo,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { AccessibleTable } from "./components/AccessibleTable";
+import { FeatureLabels } from "./components/FeatureLabels";
 import { HitTooltip } from "./components/HitTooltip";
 import { RankingDropdown } from "./components/RankingDropdown";
+import { RowLabels } from "./components/RowLabels";
+import { LEGEND_TEST_ID, SegmentLegend } from "./components/SegmentLegend";
 import { SequenceCopyButton } from "./components/SequenceCopyButton";
 import {
   STATE_TEST_IDS,
@@ -25,17 +35,12 @@ import { useTrackRenderer } from "./hooks/useTrackRenderer";
 import { useViewport } from "./hooks/useViewport";
 import {
   TrackBody,
-  TrackFeatureLabel,
   TrackHeader,
   TrackHeaderRange,
   TrackHeaderTitle,
-  TrackLegend,
-  TrackLegendItem,
-  TrackLegendSwatch,
   TrackPlot,
   TrackProgress,
   TrackRoot,
-  TrackRowLabel,
   VisuallyHidden,
 } from "./style";
 import { TrackExtents, gestureBounds, trackExtents } from "./utils/extent";
@@ -69,10 +74,6 @@ const DEFAULT_TRACKS: TrackKind[] = [
   "segments",
   "features",
 ];
-
-function rowKey(row: TrackRow): string {
-  return `${row.kind}-${row.traceId ?? row.laneIndex ?? 0}`;
-}
 
 /** e.g. "NC_000913.3 45,000–85,000 · 40 kb · 21 bp/point" */
 function headerCoordinates(
@@ -159,80 +160,9 @@ function headerRowFor(rows: TrackRow[], kind: TrackKind): TrackRow | undefined {
   return rows.find((row) => row.kind === kind);
 }
 
-/** The category key for the segments row. */
-function SegmentLegend({
-  items,
-  top,
-}: {
-  items: CategoryKey[];
-  top: number | null;
-}): JSX.Element | null {
-  if (top === null || items.length === 0) return null;
-
-  return (
-    <TrackLegend aria-hidden data-testid={TEST_IDS.legend} style={{ top }}>
-      {items.map((item) => (
-        <TrackLegendItem key={item.name}>
-          <TrackLegendSwatch striped={item.striped} swatchColor={item.color} />
-          {item.name}
-        </TrackLegendItem>
-      ))}
-    </TrackLegend>
-  );
-}
-
-/** Section names, each on the line reserved above its rows. */
-function RowLabels({ rows }: { rows: TrackRow[] }): JSX.Element {
-  return (
-    <>
-      {rows.map((row, index) =>
-        row.label && row.headerHeight ? (
-          <TrackRowLabel
-            aria-hidden
-            key={rowKey(row)}
-            style={{
-              height: row.headerHeight,
-              top: row.y - (row.headerHeight ?? 0),
-            }}
-            withSeparator={index > 0}
-          >
-            {row.label}
-          </TrackRowLabel>
-        ) : null
-      )}
-    </>
-  );
-}
-
-/** Feature names, drawn inside the plot above their own bars. */
-function FeatureLabels({
-  rows,
-  selectedTraceId,
-}: {
-  rows: TrackRow[];
-  selectedTraceId: number | null;
-}): JSX.Element {
-  return (
-    <>
-      {rows
-        .filter((row) => row.traceLabel)
-        .map((row) => (
-          <TrackFeatureLabel
-            aria-hidden
-            key={rowKey(row)}
-            selected={row.traceId === selectedTraceId}
-            style={{ top: row.y }}
-          >
-            {row.traceLabel}
-          </TrackFeatureLabel>
-        ))}
-    </>
-  );
-}
-
 /** Test ids for the DOM rendered around the canvas. */
 export const TEST_IDS = {
-  legend: "genome-track-legend",
+  legend: LEGEND_TEST_ID,
   message: STATE_TEST_IDS.message,
   progress: "genome-track-progress",
   range: "genome-track-range",
@@ -301,9 +231,11 @@ const GenomeTrack = forwardRef(
       [data, segmentCategories]
     );
 
-    const plotRef = useRef<HTMLDivElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const { dpr, width } = useCanvasSize(plotRef);
+    // State rather than refs, so the hooks below rerun when the plot mounts
+    // after a loading, error, or empty state.
+    const [plot, setPlot] = useState<HTMLDivElement | null>(null);
+    const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
+    const { dpr, width } = useCanvasSize(plot);
     const tableId = `sds-genome-track-${useId()}`;
 
     // Kept across payloads, which may omit an overview already sent.
@@ -386,7 +318,7 @@ const GenomeTrack = forwardRef(
       extent: extents.extent,
       navigate,
       onSelectionChange,
-      plotRef,
+      plot,
       rows: layout.rows,
       scale,
       // A second click on the selected block or feature clears it.
@@ -395,7 +327,7 @@ const GenomeTrack = forwardRef(
     });
 
     useTrackRenderer({
-      canvasRef,
+      canvas,
       data,
       density,
       dpr,
@@ -476,14 +408,14 @@ const GenomeTrack = forwardRef(
             aria-label={`Genome track for ${organism}, ${locus.chrom} ${range}`}
             interactive={!disableNavigation}
             isDragging={isDragging}
-            ref={plotRef}
+            ref={setPlot}
             role="img"
             // Pointer cursor only when a click would do something.
             selectable={hit !== null && onSelectionChange !== undefined}
             tabIndex={0}
             {...handlers}
           >
-            <canvas ref={canvasRef} />
+            <canvas ref={setCanvas} />
 
             {refreshing && <TrackProgress data-testid={TEST_IDS.progress} />}
 
