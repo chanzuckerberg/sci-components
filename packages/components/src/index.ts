@@ -123,6 +123,8 @@ export * from "./core/Tag";
 export { default as Tag } from "./core/Tag";
 export * from "./core/TagFilter";
 export { default as TagFilter } from "./core/TagFilter";
+export * from "./core/TagLegacy";
+export { default as TagLegacy } from "./core/TagLegacy";
 export * from "./core/Tooltip";
 export { default as Tooltip } from "./core/Tooltip";
 export * from "./core/TooltipCondensed";

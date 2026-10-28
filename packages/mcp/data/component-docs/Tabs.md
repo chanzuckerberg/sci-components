@@ -157,12 +157,7 @@ function App() {
           count={
             <CountWithTag>
               14
-              <Tag
-                color="beta"
-                label="BETA"
-                sdsStyle="rounded"
-                sdsType="secondary"
-              />
+              <Tag color="beta" label="BETA" sdsStyle="outline" size="small" />
             </CountWithTag>
           }
           label="Analyses"

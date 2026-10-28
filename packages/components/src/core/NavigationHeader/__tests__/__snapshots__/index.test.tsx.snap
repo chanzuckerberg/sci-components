@@ -320,12 +320,16 @@ exports[`<NavigationHeader /> > DropdownStyle story renders snapshot 1`] = `
             Title
           </p>
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary e1bn4x3g23 esrfbz40 css-3knmbm-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault e1bn4x3g23 esrfbz40 css-e8cuc4-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag-StyledTag"
           >
             <span
-              class="MuiChip-label css-1dybbl5-MuiChip-label"
+              class="MuiChip-label css-eccknh-MuiChip-label"
             >
-              Tag
+              <span
+                class="SdsTag-labelText"
+              >
+                Tag
+              </span>
             </span>
           </div>
         </div>
@@ -385,12 +389,16 @@ exports[`<NavigationHeader /> > DropdownStyle story renders snapshot 1`] = `
                 Primary
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary etq4jsl1 esrfbz40 css-x973d8-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
+                class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault etq4jsl1 esrfbz40 css-11ojrli-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag-StyledTag"
               >
                 <span
-                  class="MuiChip-label css-1dybbl5-MuiChip-label"
+                  class="MuiChip-label css-eccknh-MuiChip-label"
                 >
-                  Tag
+                  <span
+                    class="SdsTag-labelText"
+                  >
+                    Tag
+                  </span>
                 </span>
               </div>
             </span>
@@ -565,12 +573,16 @@ exports[`<NavigationHeader /> > DropdownStyle story renders snapshot 1`] = `
         >
           Secondary
           <div
-            class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary es7myp0 esrfbz40 css-10ffi5v-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
+            class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault es7myp0 esrfbz40 css-79krkl-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag-StyledTag"
           >
             <span
-              class="MuiChip-label css-1dybbl5-MuiChip-label"
+              class="MuiChip-label css-eccknh-MuiChip-label"
             >
-              2
+              <span
+                class="SdsTag-labelText"
+              >
+                2
+              </span>
             </span>
           </div>
         </span>
@@ -728,12 +740,16 @@ exports[`<NavigationHeader /> > matches the snapshot 1`] = `
               Title
             </p>
             <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary e1bn4x3g23 esrfbz40 css-3knmbm-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
+              class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault e1bn4x3g23 esrfbz40 css-e8cuc4-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag-StyledTag"
             >
               <span
-                class="MuiChip-label css-1dybbl5-MuiChip-label"
+                class="MuiChip-label css-eccknh-MuiChip-label"
               >
-                Tag
+                <span
+                  class="SdsTag-labelText"
+                >
+                  Tag
+                </span>
               </span>
             </div>
           </div>
@@ -793,12 +809,16 @@ exports[`<NavigationHeader /> > matches the snapshot 1`] = `
                   Primary
                 </div>
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary etq4jsl1 esrfbz40 css-x973d8-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault etq4jsl1 esrfbz40 css-11ojrli-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag-StyledTag"
                 >
                   <span
-                    class="MuiChip-label css-1dybbl5-MuiChip-label"
+                    class="MuiChip-label css-eccknh-MuiChip-label"
                   >
-                    Tag
+                    <span
+                      class="SdsTag-labelText"
+                    >
+                      Tag
+                    </span>
                   </span>
                 </div>
               </span>
@@ -973,12 +993,16 @@ exports[`<NavigationHeader /> > matches the snapshot 1`] = `
           >
             Secondary
             <div
-              class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary es7myp0 esrfbz40 css-10ffi5v-MuiChip-root-StyledTag-tagSizeS-createTypeCss-square-StyledTag-StyledTag"
+              class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault es7myp0 esrfbz40 css-79krkl-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag-StyledTag"
             >
               <span
-                class="MuiChip-label css-1dybbl5-MuiChip-label"
+                class="MuiChip-label css-eccknh-MuiChip-label"
               >
-                2
+                <span
+                  class="SdsTag-labelText"
+                >
+                  2
+                </span>
               </span>
             </div>
           </span>

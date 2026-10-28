@@ -66,7 +66,7 @@ When it comes to styling Material UI's components, generally the following strat
    `;
    ```
 
-   💡 You can find the full `@czi-sds/components` `<Chip />` implementation [here](../src/core/Chip/index.tsx)
+   💡 You can find the `@czi-sds/components` `<Tag />` styles, which target MUI Chip's `.MuiChip-label` this way, [here](../src/core/Tag/style.ts)
 
    You can also find all the CSS API for the MUI component under the CSS section of its API page.
 

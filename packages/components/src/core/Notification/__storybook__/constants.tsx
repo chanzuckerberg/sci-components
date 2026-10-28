@@ -16,17 +16,20 @@ export const NOTIFICATION_EXCLUDED_CONTROLS = [
   "label",
 ];
 
-export const NOTIFICATION_ICON_OPTIONS = [
-  <CustomSvgIcon key="customSdsIcon" />,
-  <CustomSdsIcon key="customSvgIcon" />,
-  "Book",
-  "CheckCircle",
-];
-export const NOTIFICATION_BUTTON_ON_CLICK_OPTIONS = [
-  action("onClick"),
-  undefined,
-];
-export const NOTIFICATION_ON_CLICK_OPTIONS = [action("onClick"), undefined];
+export const NOTIFICATION_ICON_OPTIONS = {
+  customSvgIcon: <CustomSvgIcon key="customSdsIcon" />,
+  customSdsIcon: <CustomSdsIcon key="customSvgIcon" />,
+  book: "Book",
+  checkCircle: "CheckCircle",
+};
+export const NOTIFICATION_BUTTON_ON_CLICK_OPTIONS = {
+  action: action("onClick"),
+  none: undefined,
+};
+export const NOTIFICATION_ON_CLICK_OPTIONS = {
+  action: action("onClick"),
+  none: undefined,
+};
 
 export const NOTIFICATION_INTENT_OPTIONS: NotificationProps["intent"][] = [
   "info",

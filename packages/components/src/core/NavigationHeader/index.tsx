@@ -285,7 +285,7 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
             <StyledTitleTagWrapper>
               {title && <p>{title}</p>}
 
-              {tag && <StyledTag color={tagColor} label={tag} hover={false} />}
+              {tag && <StyledTag color={tagColor} label={tag} size="small" />}
             </StyledTitleTagWrapper>
           )}
         </StyledTitleContainer>

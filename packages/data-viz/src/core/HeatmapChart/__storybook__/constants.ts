@@ -296,9 +296,9 @@ export const HEATMAP_ITEM_STYLE = {
   opacity: 1,
 };
 
-export const HEATMAP_TOOLTIP_OPTIONS = [
-  { show: false },
-  {
+export const HEATMAP_TOOLTIP_OPTIONS = {
+  none: { show: false },
+  visible: {
     enterable: true,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     formatter: function (param: any) {
@@ -312,21 +312,21 @@ export const HEATMAP_TOOLTIP_OPTIONS = [
     },
     show: true,
   },
-];
+};
 
-export const HEATMAP_AXIS_POINTER_OPTIONS = [
-  {
+export const HEATMAP_AXIS_POINTER_OPTIONS = {
+  none: {
     show: false,
     type: "none",
   },
-  {
+  mousemove: {
     show: true,
     triggerOn: "mousemove",
     type: "none",
   },
-  {
+  click: {
     show: true,
     triggerOn: "click",
     type: "none",
   },
-];
+};

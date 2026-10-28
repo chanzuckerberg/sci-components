@@ -8,7 +8,7 @@ import {
   getSemanticColors,
   getSpaces,
 } from "@components/src/core/styles";
-import Tag from "@components/src/core/Tag";
+import TagLegacy from "@components/src/core/TagLegacy";
 
 export interface TagFilterExtraProps extends CommonThemeProps {
   label: string;
@@ -16,7 +16,7 @@ export interface TagFilterExtraProps extends CommonThemeProps {
   onDelete: React.EventHandler<any>;
 }
 
-export const StyledTag = styled(Tag)`
+export const StyledTag = styled(TagLegacy)`
   ${(props: TagFilterExtraProps) => {
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);

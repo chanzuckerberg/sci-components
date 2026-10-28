@@ -17,7 +17,7 @@ import {
   getCorners,
   getShadows,
 } from "@components/src/core/styles";
-import TagFilter from "@components/src/core/TagFilter";
+import Chip from "@components/src/core/Chip";
 
 const StyledPopper = styled(Popper)`
   ${(props: CommonThemeProps) => {
@@ -243,9 +243,7 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
   if (!multiple) {
     const { name } = value as never;
 
-    return (
-      <TagFilter label={name} onDelete={onDelete} style={{ marginTop: 4 }} />
-    );
+    return <Chip label={name} onDelete={onDelete} style={{ marginTop: 4 }} />;
   }
 
   return (
@@ -254,7 +252,7 @@ function Chips({ value, multiple, onDelete }: ChipsProps): JSX.Element | null {
         const { name } = item;
 
         return (
-          <TagFilter
+          <Chip
             key={name}
             label={name}
             onDelete={() => onDelete(item)}

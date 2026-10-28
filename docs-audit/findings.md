@@ -413,10 +413,11 @@ Severity: low. Status: not fixed, left undocumented.
 `NotificationProps.extraContent?: boolean` is a switch the story uses to render
 more content of its own. The component deletes it from the props it forwards
 (`delete passedProps.extraContent`), which is the giveaway: it belongs in the
-story's args, not in the component's public type. Its control has been removed
-from the story so the props data no longer publishes it; the screenshot story
-still drives its own extra paragraph from an arg of the same name. Removing the
-field from `NotificationProps` is the remaining half.
+story's args, not in the component's public type. Its control is declared on
+the Default story rather than the meta, whose `argTypes` are what the props
+data publishes, so it stays out of the props data; the screenshot story still
+drives its own extra paragraph from an arg of the same name. Removing the field
+from `NotificationProps` is the remaining half.
 
 ## Callout and Notification
 
@@ -497,13 +498,18 @@ do nothing.
 
 ### `tagColor` is the styled prop behind `color`
 
-Severity: low. Status: not fixed, left undocumented.
+Severity: low. Status: fixed in SDS 25 for `Tag`; still present in `TagLegacy`.
 
-`TagProps` includes `ExtraTagProps`, so `tagColor` is public, and because the
-component spreads `{...props}` after setting `tagColor={color}`, passing it
-directly wins over `color`. Two names for one thing, one of them undocumented.
-The custom-color mapping the page describes - `[label, background, icon]` -
-now has a test.
+`TagProps` included `ExtraTagProps`, so `tagColor` was public, and because the
+component spread `{...props}` after setting `tagColor={color}`, passing it
+directly won over `color`. Two names for one thing, one of them undocumented.
+
+The reworked `Tag` keeps its style props out of `TagProps`, so `color` is the
+only name, and `NavigationFooter`, the one caller that passed `tagColor`, now
+passes `color`. The previous component ships unchanged as the deprecated
+`TagLegacy`, leak included; it has no documentation page, so the audit no
+longer checks it. The custom-color mapping - `[label, background, icon]` - has
+a test on both.
 
 ## ContentCard
 
@@ -607,9 +613,9 @@ in `style.ts`, including that `sdsStyle` also decides MUI's `underline`.
 Severity: none. Status: nothing to audit.
 
 The deprecated components (`ButtonLegacy`, `ButtonDropdownLegacy`,
-`ButtonToggleLegacy`, `Chip`, `Alert`, `MenuSelect`, `ButtonIcon`) have stories
-but no documentation page, and the data-viz Overview page is an installation
-guide with no props table.
+`ButtonToggleLegacy`, `TagLegacy`, `TagFilter`, `Alert`, `MenuSelect`,
+`ButtonIcon`) have stories but no documentation page, and the data-viz Overview
+page is an installation guide with no props table.
 
 ## Pre-existing type errors in the docs toolkit
 

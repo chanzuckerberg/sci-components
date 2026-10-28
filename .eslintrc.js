@@ -62,39 +62,6 @@ module.exports = {
       },
     },
     {
-      /**
-       * The published source of the components library, as opposed to the
-       * stories, tests and documentation examples alongside it, which Storybook
-       * builds and nobody installs.
-       *
-       * Phosphor is a peer of `@czi-sds/icons` and `@czi-sds/data-viz`, so both
-       * may import it: their consumers are already told to install it. It is
-       * not a peer of `@czi-sds/components`, so an import here would either
-       * bundle Phosphor or add an install nobody asked for.
-       */
-      excludedFiles: [
-        "packages/*/src/**/__storybook__/**",
-        "packages/*/src/**/__tests__/**",
-        "packages/*/src/**/*.stories.tsx",
-        "packages/*/src/**/*.figma.tsx",
-      ],
-      files: ["packages/components/src/**/*.{ts,tsx}"],
-      rules: {
-        "no-restricted-imports": [
-          "error",
-          {
-            patterns: [
-              {
-                group: ["@phosphor-icons/react", "@phosphor-icons/react/*"],
-                message:
-                  "Phosphor is not a peer of @czi-sds/components, so importing it here would either bundle it or force an install nobody asked for. Use src/core/Icon, or add the icon to packages/icons, which consumers install alongside Phosphor itself.",
-              },
-            ],
-          },
-        ],
-      },
-    },
-    {
       files: ["**/*.cjs"],
       parserOptions: {
         sourceType: "script",

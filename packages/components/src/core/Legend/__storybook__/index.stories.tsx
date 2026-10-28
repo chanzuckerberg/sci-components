@@ -25,15 +25,13 @@ const meta: Meta<typeof DefaultStory> = {
         type: "boolean",
       },
       description: "Show values in the legend",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
   },
   component: DefaultStory,
   title: "Components/Legend",
-  parameters: {
-    controls: {
-      expanded: true,
-    },
-  },
 };
 
 export default meta;
@@ -96,6 +94,20 @@ export const WithSelection: Story = {
   render: LegendSelectionWithTheme,
   args: {
     showValues: true,
+  },
+};
+
+export const WithLastItemMenu: Story = {
+  render: LegendSelectionWithTheme,
+  args: {
+    showValues: true,
+    lastItemMenuItems: [
+      { name: "G. gallus", color: "#975bd4" },
+      { name: "X. laevis", color: "#5b70d4" },
+      { name: "C. elegans", color: "#7ad1d9" },
+      { name: "D. melanogaster", color: "#7dd889" },
+      { name: "S. cerevisiae", color: "#a2d96a" },
+    ],
   },
 };
 

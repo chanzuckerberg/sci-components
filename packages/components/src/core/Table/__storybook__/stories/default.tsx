@@ -35,13 +35,7 @@ export const Table = (props: Args): JSX.Element => {
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="Flask" />
-              <Tag
-                color="info"
-                label="Chemistry"
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
-              />
+              <Tag color="info" label="Chemistry" sdsStyle="outline" />
             </StyledIconCell>
           </CellComponent>
           <CellBasic
@@ -70,9 +64,7 @@ export const Table = (props: Args): JSX.Element => {
                     key={item}
                     color={item as SdsTagColorType}
                     label={item as string}
-                    sdsStyle="rounded"
-                    sdsType="secondary"
-                    hover={false}
+                    sdsStyle="outline"
                   />
                 )
               )}
@@ -92,9 +84,7 @@ export const Table = (props: Args): JSX.Element => {
               <Tag
                 color="info"
                 label="Downloadable Content"
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
+                sdsStyle="outline"
               />
             </StyledIconCell>
           </CellComponent>
@@ -137,13 +127,7 @@ export const Table = (props: Args): JSX.Element => {
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
               <Icon sdsSize="xl" sdsIcon="Virus" />
-              <Tag
-                color="negative"
-                label="Disease"
-                sdsStyle="rounded"
-                sdsType="secondary"
-                hover={false}
-              />
+              <Tag color="negative" label="Disease" sdsStyle="outline" />
             </StyledIconCell>
           </CellComponent>
           <CellBasic

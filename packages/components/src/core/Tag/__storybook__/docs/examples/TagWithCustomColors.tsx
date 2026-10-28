@@ -1,19 +1,20 @@
 // color also takes a tuple of CSS colors for a tag the intents do not cover:
-// [label, background] or [label, background, icon].
+// [label, background] or [label, background, icon]. The icon takes the label
+// color when the third value is left out, and an outline tag draws its border
+// from the label color too.
 //
-// The two-value form does not touch the icon, which stays white and disappears on
-// a light background (the first tag below). A tag with an icon wants the
-// three-value form, and the contrast of whatever colors you pick is on you, since
-// SDS only guarantees it for its own intents.
+// The contrast of whatever colors you pick is on you, since SDS only guarantees
+// it for its own intents.
 
-import { Icon, Tag } from "@czi-sds/components";
-import styled from "@emotion/styled";
 import {
+  Tag,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
   type CommonThemeProps,
 } from "@czi-sds/components";
+import styled from "@emotion/styled";
+import { StarIcon } from "@phosphor-icons/react";
 
 const Stack = styled.div<CommonThemeProps>`
   ${(props) => {
@@ -61,10 +62,8 @@ function App() {
           <Caption>[label, background]</Caption>
           <Tag
             color={["#3b2f00", "#ffe6a0"]}
-            icon={<Icon sdsIcon="Star" sdsSize="l" />}
-            label="Icon left white"
-            sdsSize="l"
-            sdsStyle="rounded"
+            icon={<StarIcon />}
+            label="Icon takes the label color"
           />
         </Group>
 
@@ -72,19 +71,17 @@ function App() {
           <Caption>[label, background, icon]</Caption>
           <Tag
             color={["#3b2f00", "#ffe6a0", "#b26f00"]}
-            icon={<Icon sdsIcon="Star" sdsSize="l" />}
-            label="Icon colored too"
-            sdsSize="l"
-            sdsStyle="rounded"
+            icon={<StarIcon />}
+            label="Icon colored on its own"
           />
         </Group>
 
         <Group>
-          <Caption>No icon, two values</Caption>
+          <Caption>Outline</Caption>
           <Tag
-            color={["#3b2f00", "#ffe6a0"]}
-            label="Label and background"
-            sdsStyle="rounded"
+            color={["#3b2f00", "#fff8e0"]}
+            label="Border from the label"
+            sdsStyle="outline"
           />
         </Group>
       </Stack>

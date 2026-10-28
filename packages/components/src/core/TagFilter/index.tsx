@@ -23,8 +23,9 @@ export type TagFilterProps = SdsTagFilterProps;
 
 /**
  * @see https://mui.com/material-ui/react-chip/
+ *
+ * @deprecated Use Chip instead. TagFilter will be removed in a future release.
  */
-
 const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
   return (
     <StyledTag

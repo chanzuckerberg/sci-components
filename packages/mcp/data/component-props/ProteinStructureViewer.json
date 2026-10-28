@@ -1,6 +1,12 @@
 {
   "ProteinStructureViewer": {
     "props": {
+      "structure": {
+        "defaultValue": "- (required)",
+        "description": "Structure to render, as raw PDB or mmCIF (PDBx) text.",
+        "isRequired": true,
+        "type": "string"
+      },
       "backgroundColor": {
         "description": "Canvas background, as `#RRGGBB`. Defaults to the SDS theme's base\nbackground, so the canvas follows the surrounding page in both modes.",
         "isRequired": false,
@@ -10,6 +16,16 @@
         "description": "Color per chain, by `chainId`, as `#RRGGBB`. Chains left out fall back to\nthe viewer's palette. Only visible while chain coloring is what is on\nscreen: when `colorBy` says so, or, left undefined, when neither `plddt`\nnor `residueOverlay` is set.",
         "isRequired": false,
         "type": "Record<string, string>"
+      },
+      "plddt": {
+        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover. A `null` entry, and every residue past the end, reads as unscored\nand is painted neutral rather than at the bottom of the scale.",
+        "isRequired": false,
+        "type": "(number | null)[] | null"
+      },
+      "residueOverlay": {
+        "description": "Per-residue values that override pLDDT coloring while set.",
+        "isRequired": false,
+        "type": "ResidueValueOverlay | null"
       },
       "hiddenChains": {
         "description": "Chains hidden from the 3D view, by `chainId`. Leave undefined to let the\nviewer own visibility itself, which is what the chain legend's toggles\ndrive; passing it takes that over, and the toggles then only report.",
@@ -92,6 +108,11 @@
         "isRequired": false,
         "type": "string"
       },
+      "sequenceViewerHeight": {
+        "description": "Height of the sequence panel, as any CSS length; a number is read as\npixels, and a percentage is of the viewer's own height. The 3D view and the\nlegend move up to make room for it. Ignored while `showSequenceViewer` is\noff.\n\nLeft undefined, the panel takes `max(104px, 30%)` of the viewer, growing to\n`max(134px, 32%)` once the viewer is 880px wide or more. A height set here\nholds at every width.",
+        "isRequired": false,
+        "type": "string | number"
+      },
       "showSequenceViewer": {
         "defaultValue": true,
         "description": "Show the sequence panel pinned along the bottom of the viewer.",
@@ -102,22 +123,6 @@
         "description": "Up to three whole-structure stats shown along the bottom. A null entry\nreserves its column without rendering anything, so the columns never shift\nas values come and go.",
         "isRequired": false,
         "type": "(StructureStat | null)[]"
-      },
-      "structure": {
-        "defaultValue": "- (required)",
-        "description": "Structure to render, as raw PDB or mmCIF (PDBx) text.",
-        "isRequired": true,
-        "type": "string"
-      },
-      "plddt": {
-        "description": "Per-residue pLDDT confidence on a 0-1 scale, ordered by residue. When\nsupplied the structure is colored by pLDDT unless `residueOverlay` takes\nover. A `null` entry, and every residue past the end, reads as unscored\nand is painted neutral rather than at the bottom of the scale.",
-        "isRequired": false,
-        "type": "(number | null)[] | null"
-      },
-      "residueOverlay": {
-        "description": "Per-residue values that override pLDDT coloring while set.",
-        "isRequired": false,
-        "type": "ResidueValueOverlay | null"
       },
       "selection": {
         "description": "What is selected, or null when nothing is. Leave undefined to let the\nviewer own the selection, so clicking a residue zooms in on it with no\nstate on the consumer's side; passing it takes that over, and a click then\nmoves the camera only once `onSelectionChange` is echoed back here.\n\nEither way the camera frames whatever the selection covers, and clearing\nit zooms back out to the default view. Residues are drawn in\nball-and-stick over the cartoon; whole chains are left as they are and the\nchains around them dim, the same as hovering a chain's name.",
