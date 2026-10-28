@@ -1,8 +1,0 @@
-import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{Hr as n,Mr as r,Vr as i,t as a}from"./material-DlyzFPof.js";import{t as o}from"./jsx-runtime-cM__dR4X.js";import{Gt as s,Ut as c,Vt as l,b as u}from"./iframe-BwNEaAUe.js";import{t as d}from"./src-DixujUAe.js";import{r as f,t as p}from"./discreteColorGenerator-DgnA1zCO.js";function m(){let e=r(),t=p(g.length,{isDarkMode:l({theme:e})===`dark`});return(0,h.jsx)(`div`,{className:`app`,children:(0,h.jsxs)(v,{children:[(0,h.jsxs)(`div`,{style:{maxWidth:`320px`},children:[(0,h.jsx)(y,{children:`A generated palette, with counts`}),(0,h.jsx)(f,{colors:t,items:g,showValues:!0})]}),(0,h.jsxs)(`div`,{style:{maxWidth:`320px`},children:[(0,h.jsx)(y,{children:`A color on each item, with shares`}),(0,h.jsx)(f,{items:_,showValues:!0})]})]})})}var h,g,_,v,y;t((()=>{n(),d(),a(),h=e(o()),g=[{name:`H. sapiens`,value:3212},{name:`M. musculus`,value:130},{name:`C. jacchus`,value:89},{name:`D. rerio`,value:65},{name:`M. mulatta`,value:45}],_=[{color:`#0B6CCC`,name:`Passed`,value:`68%`},{color:`#F5C700`,name:`Flagged`,value:`19%`},{color:`#C41E3A`,name:`Failed`,value:`8%`},{disabled:!0,name:`Not run`,value:`5%`}],v=i(`div`,{target:`ehkldtr1`})(e=>`
-      display: flex;
-      flex-wrap: wrap;
-      gap: ${s(e)?.xxl}px;
-    `,`;`),y=i(`p`,{target:`ehkldtr0`})(u,` `,e=>{let t=c(e),n=s(e);return`
-      color: ${t?.base?.textSecondary};
-      margin: 0 0 ${n?.s}px;
-    `},`;`)}))();export{m as default};

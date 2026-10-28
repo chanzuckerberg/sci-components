@@ -1,4 +1,0 @@
-import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./react-B-4JnjsC.js";import{Hr as r,Vr as i}from"./material-DlyzFPof.js";import{t as a}from"./jsx-runtime-cM__dR4X.js";import{Gt as o,Ut as s,b as c}from"./iframe-BwNEaAUe.js";import{t as l}from"./src-DixujUAe.js";import{t as u}from"./SegmentedControl-B2ZDrNYh.js";function d(){let[e,t]=(0,f.useState)(`Table`);return(0,p.jsxs)(`div`,{className:`app`,children:[(0,p.jsx)(u,{buttonDefinition:m,onChange:(e,n)=>{n!==null&&t(n)},value:e}),(0,p.jsxs)(h,{children:[`Showing the `,e.toLowerCase(),` view`]})]})}var f,p,m,h;t((()=>{r(),l(),f=e(n()),p=e(a()),m=[{icon:`List`,value:`List`},{icon:`Table`,value:`Table`},{icon:`TreeVertical`,value:`Tree`}],h=i(`p`,{target:`e15jbfls0`})(c,` `,e=>{let t=s(e),n=o(e);return`
-      color: ${t?.base?.textSecondary};
-      margin: ${n?.m}px 0 0;
-    `},`;`)}))();export{d as default};
