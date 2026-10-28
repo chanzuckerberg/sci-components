@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.2.1...@czi-sds/components@25.0.0) (2026-10-28)
+
+- feat(Tag)!: rework Tag and Chip to the new design (#1220) ([ee85976](https://github.com/chanzuckerberg/sci-components/commit/ee8597686e2359152cda35c9a3c3a3c0a9c9e16a)), closes [#1220](https://github.com/chanzuckerberg/sci-components/issues/1220)
+
+### Features
+
+- Stacked bar chart updates ([#1219](https://github.com/chanzuckerberg/sci-components/issues/1219)) ([f42b229](https://github.com/chanzuckerberg/sci-components/commit/f42b22940f361d9819a3945e14ffd0de19d1417d))
+
+### BREAKING CHANGES
+
+- Tag's API changed (sdsStyle solid/outline, size small/medium; sdsType, sdsSize,
+  hover and square/rounded removed). The old component is exported as the deprecated TagLegacy.
+  TagFilter is removed by clicking anywhere on the chip and is a single tab stop.
+  @phosphor-icons/react is now a peer dependency of @czi-sds/components.
+
+- fix(chip): fix storybook stories
+
+- fix(snapshots): update test snapshots
+
+- fix(tag): fix code review feedback
+
+- fix(mcp): update mcp resources
+
+- fix(tag): fix test failings
+
 ## [24.2.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/components@24.2.0...@czi-sds/components@24.2.1) (2026-09-18)
 
 ### Bug Fixes
