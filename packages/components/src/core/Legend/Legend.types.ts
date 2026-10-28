@@ -71,4 +71,11 @@ export interface LegendProps extends HTMLAttributes<HTMLDivElement> {
    * external highlight.
    */
   hoveredIndex?: number | null;
+  /**
+   * Items in popover that appears when last item is clicked. This can be used for
+   * displaying "remaining" items that are not rendered in main legend.
+   * 
+   * Empty means no popover is created.
+   */
+  lastItemMenuItems?: LegendItemData[];
 }
