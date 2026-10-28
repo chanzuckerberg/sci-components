@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.2...@czi-sds/mcp@0.21.0) (2026-10-28)
+
+- feat(Tag)!: rework Tag and Chip to the new design (#1220) ([ee85976](https://github.com/chanzuckerberg/sci-components/commit/ee8597686e2359152cda35c9a3c3a3c0a9c9e16a)), closes [#1220](https://github.com/chanzuckerberg/sci-components/issues/1220)
+
+### BREAKING CHANGES
+
+- Tag's API changed (sdsStyle solid/outline, size small/medium; sdsType, sdsSize,
+  hover and square/rounded removed). The old component is exported as the deprecated TagLegacy.
+  TagFilter is removed by clicking anywhere on the chip and is a single tab stop.
+  @phosphor-icons/react is now a peer dependency of @czi-sds/components.
+
+- fix(chip): fix storybook stories
+
+- fix(snapshots): update test snapshots
+
+- fix(tag): fix code review feedback
+
+- fix(mcp): update mcp resources
+
+- fix(tag): fix test failings
+
 ## [0.20.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.1...@czi-sds/mcp@0.20.2) (2026-09-25)
 
 **Note:** Version bump only for package @czi-sds/mcp
