@@ -1,1 +1,0 @@
-import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./jsx-runtime-cM__dR4X.js";import{t as r}from"./Button-2LRnNJDR.js";import{t as i}from"./src-DFn0vHw8.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(r,{sdsType:`primary`,children:`Label`})})}var o;t((()=>{i(),o=e(n())}))();export{a as default};

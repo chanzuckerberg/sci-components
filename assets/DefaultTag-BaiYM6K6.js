@@ -1,0 +1,1 @@
+import{a as e,n as t}from"./rolldown-runtime-DaJ6WEGw.js";import{t as n}from"./jsx-runtime-cM__dR4X.js";import{t as r}from"./src-DeWZsJ23.js";import{t as i}from"./Tag-BSfB3BZM.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(i,{label:`Science Design System`})})}var o;t((()=>{r(),o=e(n())}))();export{a as default};
