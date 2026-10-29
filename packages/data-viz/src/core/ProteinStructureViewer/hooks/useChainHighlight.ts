@@ -1,3 +1,4 @@
+import { EmptyLoci } from "molstar/lib/mol-model/loci";
 import { Structure } from "molstar/lib/mol-model/structure";
 import {
   clearStructureTransparency,
@@ -6,6 +7,7 @@ import {
 import type { StructureComponentRef } from "molstar/lib/mol-plugin-state/manager/structure/hierarchy-state";
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { RefObject, useCallback, useEffect, useRef } from "react";
+import { lociOutsideChains } from "../utils/residueLoci";
 
 /**
  * How transparent the other chains go while one is pointed at.
@@ -24,7 +26,11 @@ export const CHAIN_DIM_TRANSPARENCY = 0.65;
  * part name and stopping at the comma is what keeps `A` from also matching the
  * chain named `AA`.
  */
-const COMPONENT_CHAIN_ID = /structure-component-(?:polymer|ligand)-([^,]+)/;
+const COMPONENT_CHAIN_ID =
+  /structure-component-(?:polymer|ligand|highlight)-([^,]+)/;
+
+/** The one component spanning chains: the surface over the visible ones. */
+const SURFACE_COMPONENT = /structure-component-surface(?:,|$)/;
 
 interface UseChainHighlightOptions {
   pluginRef: RefObject<PluginUIContext | null>;
@@ -37,19 +43,31 @@ interface UseChainHighlightOptions {
   /**
    * Counts the structures loaded into the plugin. A load rewrites the state
    * tree the dimming was written into, so it has to be laid down again after
-   * one - which is what a `plddt` array arriving late comes down to.
+   * one.
    */
   loadCount: number;
+  /**
+   * Counts the times the scene replaced components without a load - a surface
+   * rebuilt, highlights redrawn - which loses their dimming the same way.
+   */
+  sceneVersion: number;
 }
+
+type ComponentKeyed = Pick<StructureComponentRef, "key"> & {
+  cell: { transform: { ref: string } };
+};
 
 /** The chain a component was built for, or undefined if it is not a chain's. */
 export function componentChainId(
-  component: Pick<StructureComponentRef, "key"> & {
-    cell: { transform: { ref: string } };
-  }
+  component: ComponentKeyed
 ): string | undefined {
   const key = component.key ?? component.cell.transform.ref;
   return COMPONENT_CHAIN_ID.exec(key)?.[1];
+}
+
+/** True for the surface, which draws every visible chain in one component. */
+function isSurfaceComponent(component: ComponentKeyed): boolean {
+  return SURFACE_COMPONENT.test(component.key ?? component.cell.transform.ref);
 }
 
 /** Every chain component of every loaded structure, polymers and ligands. */
@@ -91,14 +109,28 @@ async function dimChainsOutside(
     const chainId = componentChainId(component);
     return chainId !== undefined && !lit.has(chainId);
   });
-  if (dimmed.length === 0) return true;
 
-  await setStructureTransparency(
-    plugin,
-    dimmed,
-    CHAIN_DIM_TRANSPARENCY,
-    async (structure) => Structure.toStructureElementLoci(structure)
-  );
+  if (dimmed.length > 0) {
+    await setStructureTransparency(
+      plugin,
+      dimmed,
+      CHAIN_DIM_TRANSPARENCY,
+      async (structure) => Structure.toStructureElementLoci(structure)
+    );
+  }
+
+  // The surface is one component over every visible chain, so it cannot be
+  // dimmed whole; the part of it drawn over the other chains is dimmed instead.
+  const surfaces = components.filter(isSurfaceComponent);
+
+  if (surfaces.length > 0) {
+    await setStructureTransparency(
+      plugin,
+      surfaces,
+      CHAIN_DIM_TRANSPARENCY,
+      async (structure) => lociOutsideChains(structure, lit) ?? EmptyLoci
+    );
+  }
 
   return true;
 }
@@ -128,6 +160,7 @@ export function useChainHighlight({
   hiddenChains,
   loadCount,
   pluginRef,
+  sceneVersion,
   selectedChains,
 }: UseChainHighlightOptions): (chainId: string | null) => void {
   const hoveredRef = useRef<string | null>(null);
@@ -207,11 +240,12 @@ export function useChainHighlight({
     void settle();
   }, [disabled, hiddenChains, selectedChains, settle]);
 
-  // A load leaves a structure with no dimming on it, whatever was on the last.
+  // A load leaves a structure with no dimming on it, whatever was on the last,
+  // and so does a scene that replaced the components it was written into.
   useEffect(() => {
     shownRef.current = chainsKey(new Set<string>());
     void settle();
-  }, [loadCount, settle]);
+  }, [loadCount, sceneVersion, settle]);
 
   return highlightChain;
 }

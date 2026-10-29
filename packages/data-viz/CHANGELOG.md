@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.5.0...@czi-sds/data-viz@2.5.1) (2026-09-27)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** add SequenceViewerHeight Prop ([#1209](https://github.com/chanzuckerberg/sci-components/issues/1209)) ([3256c82](https://github.com/chanzuckerberg/sci-components/commit/3256c82cbdeea99d7eea5ad14b2878f7d6c9b348))
+
+# [2.5.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.3...@czi-sds/data-viz@2.5.0) (2026-09-25)
+
+### Features
+
+- **proteinstructureviewer:** headless scene API and structure image rendering ([df7ba67](https://github.com/chanzuckerberg/sci-components/commit/df7ba67d0e73deb129e46967496c8f4f368c7fa1))
+- **proteinstructureviewer:** plugin lifecycle, external scene mode and capture hooks ([7dba2cc](https://github.com/chanzuckerberg/sci-components/commit/7dba2ccbeabe388a6908c569da608e20a4f2258d))
+- **proteinstructureviewer:** representation, highlights, colorBy, pLDDT gaps and camera props ([2b1e2ad](https://github.com/chanzuckerberg/sci-components/commit/2b1e2ad3e8d26c8bfabbd2ec9819d3f7114eb427))
+
+## [2.4.3](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.2...@czi-sds/data-viz@2.4.3) (2026-09-25)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** fix Camera Zooming on Selection ([a227421](https://github.com/chanzuckerberg/sci-components/commit/a227421e5f5c2cf89261cbd9f1e9bd495b9a92ce))
+
+## [2.4.2](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.1...@czi-sds/data-viz@2.4.2) (2026-09-18)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** fix styles ([#1199](https://github.com/chanzuckerberg/sci-components/issues/1199)) ([669c879](https://github.com/chanzuckerberg/sci-components/commit/669c8794685bcc53f8f39898803155218660c2e7))
+
+## [2.4.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.4.0...@czi-sds/data-viz@2.4.1) (2026-09-18)
+
+### Bug Fixes
+
+- **data-viz:** force residue tooltip text color inline ([#1196](https://github.com/chanzuckerberg/sci-components/issues/1196)) ([f6c0bcd](https://github.com/chanzuckerberg/sci-components/commit/f6c0bcdc02463b3bfd83cb96973902eacf5b2abe))
+- declare sideEffects on components and data-viz ([#1195](https://github.com/chanzuckerberg/sci-components/issues/1195)) ([e441206](https://github.com/chanzuckerberg/sci-components/commit/e4412064d02d9cd11fdd8325ba3171dccecbe350)), closes [#1193](https://github.com/chanzuckerberg/sci-components/issues/1193)
+- **proteinstructureviewer:** fix button styles ([#1197](https://github.com/chanzuckerberg/sci-components/issues/1197)) ([68b725f](https://github.com/chanzuckerberg/sci-components/commit/68b725f732b3e4b0fb86b7469c0e2224dda5547b))
+
+# [2.4.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.3.0...@czi-sds/data-viz@2.4.0) (2026-09-17)
+
+### Features
+
+- data viz subpath exports ([#1193](https://github.com/chanzuckerberg/sci-components/issues/1193)) ([621e827](https://github.com/chanzuckerberg/sci-components/commit/621e8276d7ce0df5006c690e4ed3684a0c8b950b))
+
+# [2.3.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.1.1...@czi-sds/data-viz@2.3.0) (2026-09-17)
+
+### Bug Fixes
+
+- **proteinstructureviewer:** synchronize chain selection and hover effects ([991c0cd](https://github.com/chanzuckerberg/sci-components/commit/991c0cdf6ab0dbd0aaed44eb1680ffcf0d836d53))
+
+### Features
+
+- **proteinstructureviewer:** add PDBx and mmCIF support ([18de9cc](https://github.com/chanzuckerberg/sci-components/commit/18de9cc6bb8229eb115413c076804f146fbae9d7))
+- **ProteinStructureViewer:** Improve multi chain support + Ligands and IONs ([#1188](https://github.com/chanzuckerberg/sci-components/issues/1188)) ([9744389](https://github.com/chanzuckerberg/sci-components/commit/9744389aa0839d5a1d5963936207fe7c4639d3e9))
+
 # [2.2.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.1.1...@czi-sds/data-viz@2.2.0) (2026-09-15)
 
 ### Features

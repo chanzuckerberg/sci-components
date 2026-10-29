@@ -46,7 +46,7 @@ export const TestDemo = (): JSX.Element => (
         <StyledCellBasic
           primaryText="Primary Text"
           primaryTextComponentSlotRight={
-            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS[2]
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS.tag
           }
           secondaryText="Secondary Text"
           tertiaryText="Tertiary Text"
@@ -55,7 +55,7 @@ export const TestDemo = (): JSX.Element => (
         <StyledCellBasic
           primaryText="Primary Text"
           primaryTextComponentSlotRight={
-            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS[3]
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS.iconGroup
           }
           shouldShowTooltipOnHover={false}
           secondaryText="Secondary Text"
@@ -66,24 +66,24 @@ export const TestDemo = (): JSX.Element => (
         <StyledCellBasic
           primaryText="Primary Text"
           primaryTextComponentSlotBottom={
-            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS[2]
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS.tagGroup
           }
           shouldShowTooltipOnHover={false}
         />
         <StyledCellBasic
           primaryText="Primary Text"
           primaryTextComponentSlotBottom={
-            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS[3]
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS.iconGroup
           }
           shouldShowTooltipOnHover={false}
         />
         <StyledCellBasic
           primaryText="Primary Text"
           primaryTextComponentSlotBottom={
-            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS[2]
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS.tagGroup
           }
           primaryTextComponentSlotRight={
-            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS[3]
+            CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS.iconGroup
           }
           shouldShowTooltipOnHover={false}
         />

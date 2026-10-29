@@ -4,6 +4,7 @@ import {
 } from "molstar/lib/mol-model/structure";
 import { Color } from "molstar/lib/mol-util/color";
 import { themeColor } from "./color";
+import type { ResidueColorOverrides } from "./residueColorOverrides";
 
 /** Mol* color theme name under which per-chain coloring is registered. */
 export const CHAIN_COLOR_THEME_NAME = "chain-color";
@@ -15,7 +16,7 @@ const DEFAULT_CHAIN_COLOR = Color.fromRgb(128, 128, 128);
 /** Chain coloring state the theme reads on every render. */
 interface ChainColorState {
   /** Chain id to `#RRGGBB`. */
-  colors: Map<string, string>;
+  colors: ReadonlyMap<string, string>;
   /**
    * Bumped on every update and handed to Mol* as the theme's `contextHash`, so
    * it re-renders instead of serving colors from its per-model property cache.
@@ -27,7 +28,7 @@ export interface ChainColorTheme {
   /** Provider to register on a plugin's color theme registry. */
   provider: unknown;
   /** Replaces the chain colors and invalidates Mol*'s cache. */
-  setState: (colors: Map<string, string>) => void;
+  setState: (colors: ReadonlyMap<string, string>) => void;
 }
 
 /**
@@ -41,9 +42,11 @@ export interface ChainColorTheme {
  * Created per plugin instance, and its state read live inside `color()`, for
  * the same reasons as the residue value theme beside it: several viewers can
  * color chains differently on one page, and recoloring does not rebuild the
- * structure.
+ * structure. `overrides` paints single residues - the highlights - over it.
  */
-export function createChainColorTheme(): ChainColorTheme {
+export function createChainColorTheme(
+  overrides?: ResidueColorOverrides
+): ChainColorTheme {
   const state: ChainColorState = { colors: new Map(), version: 0 };
 
   const provider = {
@@ -51,6 +54,7 @@ export function createChainColorTheme(): ChainColorTheme {
     defaultValues: {},
     factory() {
       const { colors } = state;
+      const overrideColors = overrides?.current;
       const parsed = new Map<string, Color>();
 
       // Parsed once per factory call rather than per element: `color()` runs
@@ -65,6 +69,11 @@ export function createChainColorTheme(): ChainColorTheme {
           if (!StructureElement.Location.is(location)) {
             return DEFAULT_CHAIN_COLOR;
           }
+
+          const override = overrideColors?.get(
+            StructureProperties.residue.key(location)
+          );
+          if (override !== undefined) return override;
 
           const chainId = StructureProperties.chain.auth_asym_id(location);
 

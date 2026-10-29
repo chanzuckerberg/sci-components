@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 interface ViewerRootProps {
   showSequenceViewer: boolean;
+  sequenceViewerHeight?: number | string;
 }
 
 /** Smallest box in which Mol* can still lay out a usable viewport. */
@@ -16,17 +17,37 @@ const MIN_WIDTH = 200;
 export const VIEWER_CONTAINER_NAME = "sds-structure-viewer";
 
 /**
- * Height reserved for the sequence panel along the bottom, and the viewer
- * width above which it grows. Measured against the container above rather than
- * the page, so a viewer embedded in a wider page sizes to the room it has.
+ * Height reserved for the sequence panel along the bottom when the consumer
+ * sets none, and the viewer width above which it grows. Measured against the
+ * container above rather than the page, so a viewer embedded in a wider page
+ * sizes to the room it has.
  *
- * The legend sits directly on top of the panel and offsets itself by these
- * same three values, so it reads them from here rather than restating them.
- * Copies that drifted would leave the legend floating off the panel.
+ * The legend sits directly on top of the panel and offsets itself by the same
+ * heights at the same breakpoint, so it reads them from here rather than
+ * restating them. Copies that drifted would leave the legend floating off the
+ * panel.
  */
-export const SEQUENCE_HEIGHT = "max(104px, 30%)";
-export const SEQUENCE_HEIGHT_WIDE = "max(134px, 32%)";
+const SEQUENCE_HEIGHT = "max(104px, 30%)";
+const SEQUENCE_HEIGHT_WIDE = "max(134px, 32%)";
 export const WIDE_VIEWER = 880;
+
+/**
+ * The sequence panel's height below `WIDE_VIEWER` and at or above it. A height
+ * the consumer sets holds at every width, a number is read as pixels, and an
+ * empty string leaves the defaults in place, as it would in a React style.
+ */
+export function sequenceHeights(height?: number | string): {
+  base: string;
+  wide: string;
+} {
+  if (height === undefined || height === "") {
+    return { base: SEQUENCE_HEIGHT, wide: SEQUENCE_HEIGHT_WIDE };
+  }
+
+  const css = typeof height === "number" ? `${height}px` : height;
+
+  return { base: css, wide: css };
+}
 
 /**
  * The element Mol* mounts into.
@@ -106,20 +127,21 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
   /*
    * Mol* puts the sequence panel in its "top" region; move it to the bottom and
    * shrink the main viewport region to match, so the structure sits above the
-   * sequence rather than behind it. The panel grows on wider viewers, and the
-   * viewport region's offset follows it.
+   * sequence rather than behind it. The panel grows on wider viewers unless the
+   * consumer has set its height, and the viewport region's offset follows it.
    */
   ${(props: ViewerRootProps) => {
-    const { showSequenceViewer } = props;
-    const mainBottom = showSequenceViewer ? SEQUENCE_HEIGHT : "0";
-    const mainBottomWide = showSequenceViewer ? SEQUENCE_HEIGHT_WIDE : "0";
+    const { sequenceViewerHeight, showSequenceViewer } = props;
+    const height = sequenceHeights(sequenceViewerHeight);
+    const mainBottom = showSequenceViewer ? height.base : "0";
+    const mainBottomWide = showSequenceViewer ? height.wide : "0";
 
     return `
       .msp-plugin .msp-layout-region.msp-layout-top {
         display: ${showSequenceViewer ? "block" : "none"} !important;
         position: absolute !important;
         inset: auto 0 0 0 !important;
-        height: ${SEQUENCE_HEIGHT} !important;
+        height: ${height.base} !important;
       }
 
       .msp-plugin .msp-layout-region.msp-layout-main {
@@ -132,7 +154,7 @@ export const ViewerRoot = styled("div")<ViewerRootProps>`
 
       @container ${VIEWER_CONTAINER_NAME} (min-width: ${WIDE_VIEWER}px) {
         .msp-plugin .msp-layout-region.msp-layout-top {
-          height: ${SEQUENCE_HEIGHT_WIDE} !important;
+          height: ${height.wide} !important;
         }
 
         .msp-plugin .msp-layout-region.msp-layout-main {

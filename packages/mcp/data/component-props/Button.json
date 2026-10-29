@@ -18,6 +18,12 @@
         "isRequired": false,
         "type": "ReactNode"
       },
+      "disabled": {
+        "defaultValue": false,
+        "description": "If `true`, the component is disabled.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "endIcon": {
         "description": "Element placed after the children.",
         "isRequired": false,
@@ -50,12 +56,6 @@
         "description": "Element placed before the children.",
         "isRequired": false,
         "type": "ReactNode"
-      },
-      "disabled": {
-        "defaultValue": false,
-        "description": "If `true`, the component is disabled.",
-        "isRequired": false,
-        "type": "boolean"
       },
       "href": {
         "description": "The URL to link to when the button is clicked.\nIf defined, an `a` element will be used as the root node.",

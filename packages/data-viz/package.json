@@ -1,6 +1,6 @@
 {
   "name": "@czi-sds/data-viz",
-  "version": "2.2.0",
+  "version": "2.5.1",
   "main": "dist/index.cjs.js",
   "types": "dist/index.cjs.d.ts",
   "module": "dist/index.esm.js",
@@ -33,6 +33,16 @@
       "require": {
         "types": "./dist/HeatmapChart.cjs.d.ts",
         "default": "./dist/HeatmapChart.cjs.js"
+      }
+    },
+    "./ProteinStructureScene": {
+      "import": {
+        "types": "./dist/ProteinStructureScene.esm.d.ts",
+        "default": "./dist/ProteinStructureScene.esm.js"
+      },
+      "require": {
+        "types": "./dist/ProteinStructureScene.cjs.d.ts",
+        "default": "./dist/ProteinStructureScene.cjs.js"
       }
     },
     "./ProteinStructureViewer": {
@@ -68,6 +78,7 @@
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
+  "sideEffects": false,
   "author": "",
   "homepage": "https://github.com/chanzuckerberg/sci-components/tree/main/packages/sci-data-viz#readme",
   "description": "2023 Science Initiative Data Visualization Component Library",
@@ -120,7 +131,7 @@
     "namespace-check": "tsc --p tsconfig-namespace-check.json"
   },
   "peerDependencies": {
-    "@czi-sds/components": "^24.0.0",
+    "@czi-sds/components": "^25.0.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^9.0.0",
     "@phosphor-icons/react": "^2.1.10",

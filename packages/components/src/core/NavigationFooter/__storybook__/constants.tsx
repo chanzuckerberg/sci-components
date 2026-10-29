@@ -34,12 +34,14 @@ export function ExampleLogo({
   );
 }
 
-export const NAVIGATION_FOOTER_LOGO_OPTIONS = [
-  <ExampleLogo key="logo" width={64} height={24}>
-    Logo Slot
-  </ExampleLogo>,
-  null,
-];
+export const NAVIGATION_FOOTER_LOGO_OPTIONS = {
+  placeholder: (
+    <ExampleLogo key="logo" width={64} height={24}>
+      Logo Slot
+    </ExampleLogo>
+  ),
+  none: null,
+};
 
 export const NAVIGATION_FOOTER_EXCLUDED_CONTROLS = [
   "hasInvertedStyle",

@@ -35,8 +35,9 @@ const ResidueTooltip = forwardRef<ResidueTooltipHandle>((_props, ref) => {
     label: "",
   });
   const theme = useTheme();
-  const residueTooltipBackgroundColor = getSemanticColors({ theme })?.base
-    ?.backgroundPrimary;
+  const semanticColors = getSemanticColors({ theme });
+  const residueTooltipBackgroundColor = semanticColors?.base?.backgroundPrimary;
+  const residueTooltipTextColor = semanticColors?.base?.textPrimary;
 
   useImperativeHandle(
     ref,
@@ -72,8 +73,15 @@ const ResidueTooltip = forwardRef<ResidueTooltipHandle>((_props, ref) => {
           ],
         },
         tooltip: {
+          // The text color is set inline alongside the background rather than
+          // left to the SDS Tooltip's own class. Only the background is forced
+          // here, so a host app whose cascade outranks that class -- an emotion
+          // cache inside a CSS layer, say -- keeps MUI's default white text,
+          // which pairs with MUI's default dark surface and disappears against
+          // this light one.
           style: {
             backgroundColor: residueTooltipBackgroundColor,
+            color: residueTooltipTextColor,
           },
         },
         arrow: {

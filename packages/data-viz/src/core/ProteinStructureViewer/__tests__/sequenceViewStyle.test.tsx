@@ -82,15 +82,20 @@ describe("sequence panel surfaces", () => {
     expect(panel.getAttribute("backgroundcolor")).toBeNull();
   });
 
-  it("starts the scroll fade from the override", () => {
-    // The fade masks residues scrolling under the header, so it has to begin
-    // at whatever the panel is painted with. jsdom does not resolve
-    // pseudo-element styles, hence reading the injected rule.
+  it("starts both scroll fades from the override", () => {
+    // The fades mask residues scrolling under the header and off the bottom
+    // edge, so they have to begin at whatever the panel is painted with. jsdom
+    // does not resolve pseudo-element styles, hence reading the injected rule.
     paint(<SequenceScroller backgroundColor={CUSTOM} data-testid="surface" />);
 
     const css = injectedCss();
+    const custom = CUSTOM.replace(/\s+/g, "");
 
     expect(css).toContain("::before");
-    expect(css).toContain(`${CUSTOM.replace(/\s+/g, "")},transparent)`);
+    expect(css).toContain("::after");
+    // `to bottom` is the default direction, which jsdom drops when it
+    // serializes the rule back out.
+    expect(css).toContain(`linear-gradient(${custom},transparent)`);
+    expect(css).toContain(`linear-gradient(totop,${custom},transparent)`);
   });
 });

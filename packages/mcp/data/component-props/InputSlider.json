@@ -1,6 +1,11 @@
 {
   "InputSlider": {
     "props": {
+      "defaultValue": {
+        "description": "The default value. Use when the component is not controlled.",
+        "isRequired": false,
+        "type": "number | number[]"
+      },
       "disabled": {
         "defaultValue": false,
         "description": "If `true`, the component is disabled.",
@@ -36,11 +41,6 @@
         "description": "Controls when the value label is displayed:\n\n- `auto` the value label will display when the thumb is hovered or focused.\n- `on` will display persistently.\n- `off` will never display.",
         "isRequired": false,
         "type": "\"off\" | \"on\" | \"auto\""
-      },
-      "defaultValue": {
-        "description": "The default value. Use when the component is not controlled.",
-        "isRequired": false,
-        "type": "number | number[]"
       },
       "value": {
         "description": "The value of the slider.\nFor ranged sliders, provide an array with two values.",

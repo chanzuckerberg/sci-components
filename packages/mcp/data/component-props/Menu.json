@@ -1,0 +1,74 @@
+{
+  "Menu": {
+    "props": {
+      "anchorOrigin": {
+        "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}",
+        "description": "This is the point on the anchor where the popover's\n`anchorEl` will attach to. This is not used when the\nanchorReference is 'anchorPosition'.\n\nOptions:\nvertical: [top, center, bottom];\nhorizontal: [left, center, right].",
+        "isRequired": false,
+        "type": "PopoverOrigin"
+      },
+      "transformOrigin": {
+        "defaultValue": "{\nvertical: top,\nhorizontal: left,\n}",
+        "description": "This is the point on the popover which\nwill attach to the anchor's origin.\n\nOptions:\nvertical: [top, center, bottom, x(px)];\nhorizontal: [left, center, right, x(px)].",
+        "isRequired": false,
+        "type": "PopoverOrigin"
+      },
+      "open": {
+        "description": "If `true`, the component is shown.",
+        "isRequired": true,
+        "type": "boolean"
+      },
+      "anchorEl": {
+        "description": "An HTML element, or a function that returns one.\nIt's used to set the position of the menu.",
+        "isRequired": false,
+        "type": "Element | PopoverVirtualElement | () => Element | PopoverVirtualElement | null | null"
+      },
+      "children": {
+        "description": "Menu contents, normally `MenuItem`s.",
+        "isRequired": false,
+        "type": "ReactNode"
+      },
+      "onClose": {
+        "description": "Callback fired when the component requests to be closed.\n@param event The event source of the callback.\n@param reason Can be: `\"escapeKeyDown\"`, `\"backdropClick\"`, `\"tabKeyDown\"`.",
+        "isRequired": false,
+        "type": "(event: {}, reason: \"backdropClick\" | \"escapeKeyDown\") => void"
+      },
+      "variant": {
+        "defaultValue": "selectedMenu",
+        "description": "The variant to use. Use `menu` to prevent selected items from impacting the initial focus.",
+        "isRequired": false,
+        "type": "\"menu\" | \"selectedMenu\""
+      },
+      "autoFocus": {
+        "defaultValue": true,
+        "description": "If `true` (Default) will focus the `[role=\"menu\"]` if no focusable child is found. Disabled\nchildren are not focusable. If you set this prop to `false` focus will be placed\non the parent modal container. This has severe accessibility implications\nand should only be considered if you manage focus otherwise.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "slotProps": {
+        "defaultValue": {},
+        "description": "The props used for each slot inside.",
+        "isRequired": false,
+        "type": "{ root?: SlotProps<ElementType<ModalProps, keyof IntrinsicElements>, MenuRootSlotPropsOverrides, MenuOwnerState> | undefined; paper?: SlotProps<...> | undefined; list?: SlotProps<...> | undefined; transition?: SlotComponentProps<...> | undefined; backdrop?: SlotProps<...> | undefined; }"
+      },
+      "keepMounted": {
+        "defaultValue": false,
+        "description": "Always keep the children in the DOM.\nThis prop can be useful in SEO situation or\nwhen you want to maximize the responsiveness of the Modal.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "disablePortal": {
+        "defaultValue": false,
+        "description": "The `children` will be under the DOM hierarchy of the parent component.",
+        "isRequired": false,
+        "type": "boolean"
+      },
+      "transitionDuration": {
+        "defaultValue": "auto",
+        "description": "The length of the transition in `ms`, or 'auto'",
+        "isRequired": false,
+        "type": "number | { appear?: number | undefined; enter?: number | undefined; exit?: number | undefined; } | \"auto\""
+      }
+    }
+  }
+}

@@ -1,6 +1,18 @@
 import type { PluginUIContext } from "molstar/lib/mol-plugin-ui/context";
 import { BehaviorSubject } from "rxjs";
-import { downloadStructureImage } from "../utils/screenshot";
+import {
+  captureStructureImage,
+  downloadStructureImage,
+  exportStructureImage,
+} from "../utils/screenshot";
+
+/**
+ * Where an image goes when a consumer renders it but nothing delivers it: the
+ * same Mol* helper the stock download ends in.
+ */
+const saveFile = vi.hoisted(() => vi.fn());
+
+vi.mock("molstar/lib/mol-util/download", () => ({ download: saveFile }));
 
 /**
  * The capture button's plumbing. Mol*'s screenshot helper renders its own pass
@@ -9,6 +21,14 @@ import { downloadStructureImage } from "../utils/screenshot";
  * taken back off again.
  */
 const PAINTED = 0xabcdef;
+
+/** The eight bytes every PNG opens with, as the helper's data URI carries them. */
+const PNG_DATA_URI = "data:image/png;base64,iVBORw0KGgo=";
+
+/** What Mol* names an image after, from the loaded structure's entry id. */
+const DERIVED_FILENAME = "1CRN.png";
+
+const CAPTURE_FAILED = "capture failed";
 
 function stubPlugin(options: { noHelper?: boolean; failing?: boolean } = {}) {
   const values = new BehaviorSubject<Record<string, unknown>>({
@@ -20,8 +40,15 @@ function stubPlugin(options: { noHelper?: boolean; failing?: boolean } = {}) {
   });
 
   const download = vi.fn(async () => {
-    if (options.failing) throw new Error("capture failed");
+    if (options.failing) throw new Error(CAPTURE_FAILED);
   });
+
+  const getImageDataUri = vi.fn(async () => {
+    if (options.failing) throw new Error(CAPTURE_FAILED);
+    return PNG_DATA_URI;
+  });
+
+  const getFilename = vi.fn((extension: string) => `1CRN${extension}`);
 
   /** Every backgroundColor written to the canvas, in order. */
   const backgrounds: unknown[] = [];
@@ -38,12 +65,15 @@ function stubPlugin(options: { noHelper?: boolean; failing?: boolean } = {}) {
     helpers: {
       viewportScreenshot: options.noHelper
         ? undefined
-        : { behaviors: { values }, download },
+        : { behaviors: { values }, download, getFilename, getImageDataUri },
     },
   };
 
-  return { backgrounds, download, plugin, values };
+  return { backgrounds, download, getImageDataUri, plugin, values };
 }
+
+const asPlugin = (plugin: ReturnType<typeof stubPlugin>["plugin"]) =>
+  plugin as unknown as PluginUIContext;
 
 const run = (
   plugin: ReturnType<typeof stubPlugin>["plugin"],
@@ -122,7 +152,7 @@ describe("downloadStructureImage", () => {
     const { backgrounds, plugin } = stubPlugin({ failing: true });
 
     await expect(run(plugin, { backgroundColor: "#102030" })).rejects.toThrow(
-      "capture failed"
+      CAPTURE_FAILED
     );
 
     expect(backgrounds[backgrounds.length - 1]).toBe(PAINTED);
@@ -142,5 +172,128 @@ describe("downloadStructureImage", () => {
       run(plugin, { backgroundColor: "#102030" })
     ).resolves.toBeUndefined();
     expect(backgrounds).toEqual([]);
+  });
+});
+
+/**
+ * The capture button hands off to `render` and `deliver` when a consumer takes
+ * them over: a sandboxed host blocks the download a click would start, and a
+ * consumer may need an image the presets do not describe.
+ */
+describe("exportStructureImage", () => {
+  beforeEach(() => saveFile.mockClear());
+
+  it("keeps the stock download when nothing takes it over", async () => {
+    const { download, getImageDataUri, plugin } = stubPlugin();
+
+    await exportStructureImage(asPlugin(plugin), { filename: "crambin" });
+
+    expect(download).toHaveBeenCalledWith("crambin");
+    expect(getImageDataUri).not.toHaveBeenCalled();
+  });
+
+  it("delivers the viewer's own capture in place of a download", async () => {
+    const { download, plugin } = stubPlugin();
+    const deliver = vi.fn();
+
+    await exportStructureImage(asPlugin(plugin), { deliver });
+
+    expect(download).not.toHaveBeenCalled();
+    expect(saveFile).not.toHaveBeenCalled();
+
+    const [image, filename] = deliver.mock.calls[0] as [Blob, string];
+    expect(image.type).toBe("image/png");
+    // Decoded, not handed over as the text of the data URI.
+    expect(image.size).toBe(8);
+    expect(filename).toBe(DERIVED_FILENAME);
+  });
+
+  it("names a delivered image after filename, extension included", async () => {
+    const { plugin } = stubPlugin();
+    const deliver = vi.fn();
+
+    await exportStructureImage(asPlugin(plugin), {
+      deliver,
+      filename: "crambin",
+    });
+
+    expect(deliver).toHaveBeenCalledWith(expect.any(Blob), "crambin.png");
+  });
+
+  it("captures a delivered image with the settings asked for", async () => {
+    const { backgrounds, plugin, values } = stubPlugin();
+
+    await exportStructureImage(asPlugin(plugin), {
+      backgroundColor: "#102030",
+      deliver: vi.fn(),
+      resolution: "high",
+    });
+
+    expect(values.value.resolution).toEqual({ name: "ultra-hd", params: {} });
+    expect(values.value.transparent).toBe(false);
+    expect(backgrounds[backgrounds.length - 1]).toBe(PAINTED);
+  });
+
+  it("delivers what render produced in place of the viewer's capture", async () => {
+    const { getImageDataUri, plugin } = stubPlugin();
+    const rendered = new Blob(["bounded"], { type: "image/png" });
+    const render = vi.fn(async () => rendered);
+    const deliver = vi.fn();
+
+    await exportStructureImage(asPlugin(plugin), { deliver, render });
+
+    expect(render).toHaveBeenCalledWith(plugin);
+    expect(getImageDataUri).not.toHaveBeenCalled();
+    expect(deliver).toHaveBeenCalledWith(rendered, DERIVED_FILENAME);
+  });
+
+  it("downloads what render produced when nothing delivers it", async () => {
+    const { download, plugin } = stubPlugin();
+    const rendered = new Blob(["bounded"], { type: "image/png" });
+
+    await exportStructureImage(asPlugin(plugin), {
+      filename: "crambin",
+      render: async () => rendered,
+    });
+
+    expect(download).not.toHaveBeenCalled();
+    expect(saveFile).toHaveBeenCalledWith(rendered, "crambin.png");
+  });
+
+  it("restores the canvas when a delivered capture fails", async () => {
+    const { backgrounds, plugin } = stubPlugin({ failing: true });
+    const deliver = vi.fn();
+
+    await expect(
+      exportStructureImage(asPlugin(plugin), {
+        backgroundColor: "#102030",
+        deliver,
+      })
+    ).rejects.toThrow(CAPTURE_FAILED);
+
+    expect(deliver).not.toHaveBeenCalled();
+    expect(backgrounds[backgrounds.length - 1]).toBe(PAINTED);
+  });
+
+  it("passes on a failure to deliver", async () => {
+    const { plugin } = stubPlugin();
+
+    await expect(
+      exportStructureImage(asPlugin(plugin), {
+        deliver: async () => {
+          throw new Error("The host declined the file");
+        },
+      })
+    ).rejects.toThrow("The host declined the file");
+  });
+});
+
+describe("captureStructureImage", () => {
+  it("refuses a plugin with no screenshot helper to capture with", async () => {
+    const { plugin } = stubPlugin({ noHelper: true });
+
+    await expect(captureStructureImage(asPlugin(plugin))).rejects.toThrow(
+      "no screenshot helper"
+    );
   });
 });

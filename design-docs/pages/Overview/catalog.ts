@@ -131,6 +131,11 @@ export const catalog: CatalogCategory[] = [
         example: "core/Autocomplete/DefaultAutocomplete",
       },
       {
+        name: "Chip",
+        docs: "components-chip",
+        example: "core/Chip/DefaultChip",
+      },
+      {
         name: "ComplexFilter",
         docs: "components-dropdowns-complexfilter",
         example: "core/ComplexFilter/DefaultComplexFilter",
@@ -185,11 +190,6 @@ export const catalog: CatalogCategory[] = [
         name: "InputToggle",
         docs: "components-inputs-inputtoggle",
         example: "core/InputToggle/DefaultInputToggle",
-      },
-      {
-        name: "TagFilter",
-        docs: "components-tagfilter",
-        example: "core/TagFilter/DefaultTagFilter",
       },
     ],
   },

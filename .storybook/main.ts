@@ -222,8 +222,12 @@ const config: StorybookConfig = {
       "molstar/lib/mol-plugin/behavior",
       "molstar/lib/mol-plugin/behavior/dynamic/selection/structure-focus-representation",
       "molstar/lib/mol-plugin/behavior/static/state",
+      "molstar/lib/mol-plugin/context",
+      "molstar/lib/mol-plugin/spec",
       "molstar/lib/mol-script/language/builder",
+      "molstar/lib/mol-script/runtime/query/compiler",
       "molstar/lib/mol-theme/label",
+      "molstar/lib/mol-util/download",
     ];
 
     return viteConfig;

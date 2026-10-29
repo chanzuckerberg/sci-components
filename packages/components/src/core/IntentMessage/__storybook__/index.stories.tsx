@@ -28,25 +28,33 @@ export default {
   argTypes: {
     autoOrder: {
       control: { type: "boolean" },
-      defaultValue: { summary: "true" },
       description:
         "If true, displays messages in order of severity (negative, notice, positive).",
+      table: {
+        defaultValue: { summary: "true" },
+      },
     },
     border: {
       control: { type: "boolean" },
-      defaultValue: { summary: "false" },
       description: "If true, displays a colored border on the left.",
+      table: {
+        defaultValue: { summary: "false" },
+      },
     },
     messages: {
       control: { type: "object" },
-      defaultValue: defaultMessages,
       description: "Array of messages to display.",
+      table: {
+        defaultValue: { summary: "[]" },
+      },
     },
     orderBy: {
       control: { type: "object" },
-      defaultValue: { summary: '["negative", "notice", "positive"]' },
       description:
-        "Array defining custom priority order for sorting messages. Only used if autoOrder is true.",
+        "Array defining a custom severity order. It sets the sort order when autoOrder is true, and decides which intent colors the border either way.",
+      table: {
+        defaultValue: { summary: '["negative", "notice", "positive"]' },
+      },
     },
   },
   component: IntentMessageDemo,

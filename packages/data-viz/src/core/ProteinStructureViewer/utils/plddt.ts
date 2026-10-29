@@ -1,11 +1,5 @@
-import { CustomElementProperty } from "molstar/lib/mol-model-props/common/custom-element-property";
-import type { ElementIndex, Model } from "molstar/lib/mol-model/structure";
-import { Color } from "molstar/lib/mol-util/color";
-import { ColorScale, sampleSteppedScale } from "../../../common/colorScales";
+import { ColorScale } from "../../../common/colorScales";
 import { detectStructureFormat, type StructureFormat } from "./structureFormat";
-
-/** Mol* color theme name under which pLDDT coloring is registered. */
-export const PLDDT_THEME_NAME = "plddt-bfactor";
 
 /**
  * AlphaFold's pLDDT confidence bands. Thresholds are on the 0-1 scale that
@@ -32,18 +26,6 @@ const PLDDT_BANDS =
  * carries the whole key instead.
  */
 export const PLDDT_BAND_COLORS = PLDDT_BANDS.map((stop) => stop.color);
-
-const DEFAULT_PLDDT_COLOR = Color.fromRgb(128, 128, 128);
-
-/**
- * Maps a pLDDT confidence score on the 0-100 B-factor scale to its band color.
- * `PLDDT_COLOR_SCALE` thresholds are on the 0-1 scale, so the score is
- * normalized before it is sampled.
- */
-function plddtToColor(value: number): Color {
-  const [r, g, b] = sampleSteppedScale(PLDDT_BANDS, value / 100);
-  return Color.fromRgb(r, g, b);
-}
 
 /**
  * Rewrites a PDB file's B-factor column with pLDDT scores so Mol* can read them
@@ -334,29 +316,3 @@ export function injectPlddt(
     ? injectPlddtIntoMmcif(data, plddtValues)
     : injectPlddtIntoPdb(data, plddtValues);
 }
-
-/**
- * Mol* color theme that reads pLDDT scores out of the B-factor column, paired
- * with `injectPlddt`. Registered per plugin instance.
- */
-export const PlddtColoring = CustomElementProperty.create<number>({
-  coloring: {
-    defaultColor: DEFAULT_PLDDT_COLOR,
-    getColor(e: number) {
-      return plddtToColor(e);
-    },
-  },
-  getData(model: Model) {
-    const map = new Map<ElementIndex, number>();
-    const atomCount = model.atomicHierarchy.atoms._rowCount;
-    for (let i = 0; i < atomCount; i++) {
-      map.set(
-        i as ElementIndex,
-        model.atomicConformation.B_iso_or_equiv.value(i)
-      );
-    }
-    return { value: map };
-  },
-  label: "pLDDT",
-  name: PLDDT_THEME_NAME,
-});

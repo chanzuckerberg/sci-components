@@ -53,6 +53,7 @@ const dtsOptions = { compilerOptions: { noEmitOnError: false }, eager: true };
 const entryModules = {
   GenomeTrack: "src/entries/GenomeTrack.ts",
   HeatmapChart: "src/entries/HeatmapChart.ts",
+  ProteinStructureScene: "src/entries/ProteinStructureScene.ts",
   ProteinStructureViewer: "src/entries/ProteinStructureViewer.ts",
   StackedBarChart: "src/entries/StackedBarChart.ts",
   colorScales: "src/entries/colorScales.ts",

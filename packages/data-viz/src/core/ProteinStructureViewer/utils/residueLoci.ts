@@ -147,6 +147,21 @@ export function lociForResidueIndex(
   return lociForSelection(plugin, { residues: [residueIndex] });
 }
 
+/**
+ * Every atom on chains other than the named ones, within one structure - what
+ * dimming a component that spans chains dims, leaving the lit chains as they
+ * are.
+ */
+export function lociOutsideChains(
+  structure: Structure,
+  chains: ReadonlySet<string>
+): StructureElement.Loci | undefined {
+  return lociMatching(
+    structure,
+    (location) => !chains.has(StructureProperties.chain.auth_asym_id(location))
+  );
+}
+
 /** Every atom of a set of residues, within one structure. */
 export function lociForResidueIndices(
   structure: Structure,

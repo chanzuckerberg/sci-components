@@ -41,6 +41,12 @@
         "isRequired": false,
         "type": "boolean"
       },
+      "isTriggerChangeOnOptionClick": {
+        "defaultValue": false,
+        "description": "When set to true, changes in Dropdown selections are applied in real-time to the react state.",
+        "isRequired": false,
+        "type": "boolean"
+      },
       "label": {
         "description": "The label of the Dropdown.",
         "isRequired": true,
@@ -77,12 +83,6 @@
         "description": "A heading shown at the top of the menu.",
         "isRequired": false,
         "type": "string"
-      },
-      "isTriggerChangeOnOptionClick": {
-        "defaultValue": false,
-        "description": "When set to true, changes in Dropdown selections are applied in real-time to the react state.",
-        "isRequired": false,
-        "type": "boolean"
       },
       "value": {
         "description": "The value of the autocomplete.\n\nThe value must have reference equality with the option in order to be selected.\nYou can customize the equality behavior with the `isOptionEqualToValue` prop.",

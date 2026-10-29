@@ -114,10 +114,11 @@ export interface UseSelectionFocusOptions {
  * chains around them instead, in `useChainHighlight`.
  *
  * The click subscription only reports the selection it was given, so a click
- * moves the camera only once the consumer accepts it and echoes it back -
- * which is what the prop being controlled is supposed to mean. Clicking still
- * marks immediately, through Mol*'s own focus behavior, so the structure
- * responds to a click whether or not the consumer wires the prop up.
+ * moves the camera only once whoever owns the selection accepts it: the
+ * consumer echoing it back when `selection` is controlled, the viewer itself
+ * when it is not. Clicking still marks immediately, through Mol*'s own focus
+ * behavior, so the structure responds to a click even when a consumer
+ * controlling the selection declines it.
  */
 export function useSelectionFocus({
   hiddenChains,

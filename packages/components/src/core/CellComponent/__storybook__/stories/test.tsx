@@ -33,9 +33,6 @@ export const TestDemo = (props: Args): JSX.Element => {
               color="neutral"
               data-testid="Child"
               label="Tertiary"
-              sdsStyle="rounded"
-              sdsType="primary"
-              hover={false}
               {...props}
             />
           </div>

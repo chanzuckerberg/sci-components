@@ -6,10 +6,9 @@ import {
   getSpaces,
 } from "@czi-sds/components";
 import {
-  SEQUENCE_HEIGHT,
-  SEQUENCE_HEIGHT_WIDE,
   VIEWER_CONTAINER_NAME,
   WIDE_VIEWER,
+  sequenceHeights,
 } from "../../style";
 import { LEGEND_WIDTH } from "../ColorScaleLegend/style";
 
@@ -21,6 +20,7 @@ const STAT_COLUMN_WIDTH = "4.5rem";
 
 interface LegendOverlayProps extends CommonThemeProps {
   showSequenceViewer: boolean;
+  sequenceViewerHeight?: number | string;
 }
 
 /**
@@ -40,13 +40,14 @@ export const LegendOverlay = styled("div")<LegendOverlayProps>`
 
   ${(props: LegendOverlayProps) => {
     const spaces = getSpaces(props);
-    const { showSequenceViewer } = props;
+    const { sequenceViewerHeight, showSequenceViewer } = props;
+    const height = sequenceHeights(sequenceViewerHeight);
 
     return `
       right: ${spaces?.m}px;
       gap: ${spaces?.xs}px;
       padding-bottom: ${spaces?.m}px;
-      bottom: ${showSequenceViewer ? SEQUENCE_HEIGHT : "0"};
+      bottom: ${showSequenceViewer ? height.base : "0"};
 
       /*
        * Track the sequence panel as it grows on wider viewers. The panel is
@@ -54,7 +55,7 @@ export const LegendOverlay = styled("div")<LegendOverlayProps>`
        * would part the legend from it on a viewer narrower than its page.
        */
       @container ${VIEWER_CONTAINER_NAME} (min-width: ${WIDE_VIEWER}px) {
-        bottom: ${showSequenceViewer ? SEQUENCE_HEIGHT_WIDE : "0"};
+        bottom: ${showSequenceViewer ? height.wide : "0"};
       }
 
       /* Spacer balancing the axes widget pinned in the opposite corner. */

@@ -55,6 +55,8 @@ export interface StructureLegendProps {
   valueLabel?: string;
   /** Whether the sequence panel is taking up the bottom of the viewer. */
   showSequenceViewer: boolean;
+  /** The sequence panel's height, as the viewer was given it. */
+  sequenceViewerHeight?: number | string;
   hoveredResidue?: ResidueReadout | null;
   selectedResidue?: ResidueReadout | null;
   /** Chains to list beside the color key. Empty to list none. */
@@ -141,6 +143,7 @@ export default function StructureLegend({
   scaleTooltipProps,
   selectedChains,
   selectedResidue = null,
+  sequenceViewerHeight,
   showSequenceViewer,
   stats,
   valueLabel,
@@ -174,7 +177,10 @@ export default function StructureLegend({
   ];
 
   return (
-    <LegendOverlay showSequenceViewer={showSequenceViewer}>
+    <LegendOverlay
+      sequenceViewerHeight={sequenceViewerHeight}
+      showSequenceViewer={showSequenceViewer}
+    >
       <StatsGrid>
         {Array.from({ length: SLOT_COUNT }, (_, i) => {
           const slot = slots[i] ?? null;
