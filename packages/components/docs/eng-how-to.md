@@ -24,7 +24,6 @@ yarn add @czi-sds/components
   "@emotion/css"
   "@emotion/react"
   "@emotion/styled"
-  "@mui/icons-material"
   "@mui/material"
   "react"
   "react-dom"
@@ -34,10 +33,10 @@ To install the dependencies:
 
 ```
 // with npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material react react-dom
 
 // with yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material react react-dom
 ```
 
 > **React 18 (or below) note:** Material UI (a peer dependency) ships `react-is@19`. If your app uses React 18 or below, pin `react-is` to match your React version to avoid runtime errors in prop-type checks. For example, with React 18 add the following to your `package.json` (use `resolutions` for Yarn, `overrides` for npm/pnpm):
