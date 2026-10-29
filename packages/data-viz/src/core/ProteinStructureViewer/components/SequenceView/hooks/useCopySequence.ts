@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { COPIED_FEEDBACK_MS } from "../constants";
-import { copyText } from "../utils/copyText";
+import { copyText } from "../../../../../common/copyText";
 import { sequenceTextFromEntries } from "../utils/sequenceText";
 import type { SequenceWrapperEntry } from "./useSequenceWrappers";
 
