@@ -15,6 +15,16 @@
         "default": "./dist/index.cjs.js"
       }
     },
+    "./GenomeTrack": {
+      "import": {
+        "types": "./dist/GenomeTrack.esm.d.ts",
+        "default": "./dist/GenomeTrack.esm.js"
+      },
+      "require": {
+        "types": "./dist/GenomeTrack.cjs.d.ts",
+        "default": "./dist/GenomeTrack.cjs.js"
+      }
+    },
     "./HeatmapChart": {
       "import": {
         "types": "./dist/HeatmapChart.esm.d.ts",
