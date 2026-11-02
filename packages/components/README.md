@@ -12,7 +12,6 @@ Peer dependencies:
 @emotion/css
 @emotion/react
 @emotion/styled
-@mui/icons-material
 @mui/material
 @phosphor-icons/react
 react
@@ -21,10 +20,10 @@ react-dom
 
 ```bash
 # npm
-npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
+npm i @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @phosphor-icons/react react react-dom
 
 # yarn
-yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @mui/icons-material @phosphor-icons/react react react-dom
+yarn add @czi-sds/components @emotion/css @emotion/react @emotion/styled @mui/material @phosphor-icons/react react react-dom
 ```
 
 > **React 18 note:** Material UI ships `react-is@19`. If your app uses React 18, pin `react-is` to match (Yarn `resolutions` / npm `overrides`), e.g. `"react-is": "^18.3.1"`.
