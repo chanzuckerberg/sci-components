@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@3.0.0...@czi-sds/data-viz@3.1.0) (2026-11-02)
+
+### Bug Fixes
+
+- Remove MUI Icons as a dependency ([#1230](https://github.com/chanzuckerberg/sci-components/issues/1230)) ([8b1b3a3](https://github.com/chanzuckerberg/sci-components/commit/8b1b3a3aa30b8ac2f4a2830906b99e87262c50ea))
+
+### Features
+
+- **genome track:** adding new GenomeTrack component ([#1194](https://github.com/chanzuckerberg/sci-components/issues/1194)) ([6bb7f40](https://github.com/chanzuckerberg/sci-components/commit/6bb7f408aed09030a16212c5507d572fc35448b9)), closes [#333333](https://github.com/chanzuckerberg/sci-components/issues/333333) [#000000](https://github.com/chanzuckerberg/sci-components/issues/000000) [#f3f3f3](https://github.com/chanzuckerberg/sci-components/issues/f3f3f3)
+
+# [3.0.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.5.1...@czi-sds/data-viz@3.0.0) (2026-10-28)
+
+- feat(Tag)!: rework Tag and Chip to the new design (#1220) ([ee85976](https://github.com/chanzuckerberg/sci-components/commit/ee8597686e2359152cda35c9a3c3a3c0a9c9e16a)), closes [#1220](https://github.com/chanzuckerberg/sci-components/issues/1220)
+
+### Features
+
+- Stacked bar chart updates ([#1219](https://github.com/chanzuckerberg/sci-components/issues/1219)) ([f42b229](https://github.com/chanzuckerberg/sci-components/commit/f42b22940f361d9819a3945e14ffd0de19d1417d))
+
+### BREAKING CHANGES
+
+- Tag's API changed (sdsStyle solid/outline, size small/medium; sdsType, sdsSize,
+  hover and square/rounded removed). The old component is exported as the deprecated TagLegacy.
+  TagFilter is removed by clicking anywhere on the chip and is a single tab stop.
+  @phosphor-icons/react is now a peer dependency of @czi-sds/components.
+
+- fix(chip): fix storybook stories
+
+- fix(snapshots): update test snapshots
+
+- fix(tag): fix code review feedback
+
+- fix(mcp): update mcp resources
+
+- fix(tag): fix test failings
+
 ## [2.5.1](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/data-viz@2.5.0...@czi-sds/data-viz@2.5.1) (2026-09-27)
 
 ### Bug Fixes
