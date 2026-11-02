@@ -1,0 +1,5 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./react-9SMi-QmY.js";import{t as r}from"./jsx-runtime-f3rHp9ZU.js";import{Gt as i,io as a,ro as o}from"./iframe-BPFLG940.js";import{t as s}from"./src-DGdb4UFx.js";import{t as c}from"./Tag-D5JaNLkP.js";import{n as l,t as u}from"./Tabs-BFhbWA1J.js";function d(){let[e,t]=(0,f.useState)(0);return(0,p.jsx)(`div`,{className:`app`,children:(0,p.jsxs)(l,{"aria-label":`Project contents`,onChange:(e,n)=>{t(n)},underlined:!0,value:e,children:[(0,p.jsx)(u,{count:4,label:`Samples`}),(0,p.jsx)(u,{count:0,label:`Contributors`}),(0,p.jsx)(u,{count:(0,p.jsxs)(m,{children:[`14`,(0,p.jsx)(c,{color:`beta`,label:`BETA`,sdsStyle:`outline`,size:`small`})]}),label:`Analyses`})]})})}var f,p,m;e((()=>{a(),s(),f=t(n()),p=t(r()),m=o(`span`,{target:`e1dt3ceg0`})(e=>`
+      align-items: center;
+      display: inline-flex;
+      gap: ${i(e)?.s}px;
+    `,`;`)}))();export{d as default};

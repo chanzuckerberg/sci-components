@@ -1,0 +1,6 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./react-9SMi-QmY.js";import{t as r}from"./jsx-runtime-f3rHp9ZU.js";import{Ut as i,f as a,io as o,ro as s}from"./iframe-BPFLG940.js";import{t as c}from"./Icon-DpYImm5o.js";import{t as l}from"./Button-CvZmp_f8.js";import{t as u}from"./src-DGdb4UFx.js";import{t as d}from"./Panel-Dl6aTn_G.js";function f(){let[e,t]=(0,m.useState)(!0);return(0,p.jsx)(`div`,{className:`app`,children:(0,p.jsxs)(g,{children:[(0,p.jsx)(d,{open:e,sdsType:`basic`,width:h,children:`Filters, dataset pickers, and anything else that changes what the page shows.`}),(0,p.jsxs)(_,{shifted:e,children:[(0,p.jsx)(l,{onClick:()=>t(e=>!e),sdsStyle:`solid`,sdsType:`primary`,startIcon:(0,p.jsx)(c,{sdsIcon:`Filter`,sdsSize:`s`}),children:e?`Hide filters`:`Show filters`}),(0,p.jsx)(`p`,{children:`The page's own content moves aside for a basic panel, so the two never overlap.`})]})]})})}var p,m,h,g,_;e((()=>{o(),p=t(r()),u(),m=t(n()),h=280,g=s(`div`,{target:`e1e48cc51`})({name:`1e7g49u`,styles:`height:320px;overflow:clip;transform:translateZ(0)`}),_=s(`div`,{target:`e1e48cc50`})(a,` `,e=>`
+      color: ${i(e)?.base?.textPrimary};
+      margin-left: ${e.shifted?`${h}px`:`0`};
+      padding: 50px;
+      transition: margin-left 225ms ease-out;
+    `,`;`)}))();export{f as default};

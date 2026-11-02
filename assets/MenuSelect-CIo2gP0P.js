@@ -1,0 +1,13 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./react-9SMi-QmY.js";import{t as r}from"./jsx-runtime-f3rHp9ZU.js";import{Er as i,Gt as a,Na as o,_n as s,io as c,ki as l,ro as u,t as d,vr as f}from"./iframe-BPFLG940.js";import{n as p,t as m}from"./Icon-DpYImm5o.js";import{n as h,t as g}from"./Button-CvZmp_f8.js";import{a as _,s as v}from"./utils-DEYthYrx.js";import{n as y,r as b,t as x}from"./warnings-B9GVZ91K.js";import{n as S,t as C}from"./InputSearch-DcUsgonP.js";import{n as w,t as T}from"./MenuItem-83B7DwTY.js";var E,D,O,k,A,j=e((()=>{c(),s(),S(),w(),d(),E=u(T,{target:`ezmiyu43`})({name:`1d3w5wq`,styles:`width:100%`}),D=[`search`,`InputBaseProps`,`keepSearchOnSelect`],O=u(l,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu42`})(({search:e})=>!e&&`height: 0; margin: 0 !important;`,` width:100%;`),k=u(`div`,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu41`})(e=>{let{search:t}=e;return t?`
+      margin: ${a(e)?.s}px;
+    `:`
+        border: 0;
+        padding: 0;
+
+        white-space: nowrap;
+
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        margin: 0;
+      `},`;`),A=u(C,{shouldForwardProp:e=>!D.includes(e),target:`ezmiyu40`})(`&&{margin:0;caret-color:`,({search:e})=>e?`auto`:`transparent`,`;.`,o.root,`{width:100%;padding:0;padding-right:14px!important;}}`)})),M,N,P,F=e((()=>{s(),M=t(n()),_(),y(),h(),j(),p(),N=t(r()),P=e=>{let{keepSearchOnSelect:t=!0,multiple:n=!1,getOptionLabel:r=_,renderValue:a=y,renderOption:o=S,disableCloseOnSelect:s=n,noOptionsText:c=`No options`,search:l=!1,InputBaseProps:u={},onInputChange:d=v}=e,[p,h]=(0,M.useState)(``);return b(x.MenuSelectDeprecated),(0,N.jsx)(O,{clearOnBlur:!1,open:!0,disableCloseOnSelect:s,disablePortal:!0,renderValue:a,noOptionsText:c,renderOption:o,slots:{listbox:f},getOptionLabel:r,inputValue:p,renderInput:e=>(0,N.jsx)(k,{search:l,children:(0,N.jsx)(A,{id:`location-search`,label:`Search for a location`,placeholder:`Search`,ref:e.slotProps.input.ref,search:l,autoFocus:!0,onKeyDown:e=>{e.key===`Backspace`&&e.stopPropagation()},slotProps:{htmlInput:e.slotProps.htmlInput,input:{inputMode:l?`text`:`none`,...e.slotProps.input.ref,endAdornment:(0,N.jsx)(i,{position:`end`,children:(0,N.jsx)(g,{size:`large`,sdsType:`secondary`,sdsStyle:`minimal`,backgroundOnHover:!1,children:(0,N.jsx)(m,{sdsIcon:`Search`,sdsSize:`s`})})})}},...u})}),...e,onInputChange:(e,n,r)=>{e&&e.type===`blur`?h(``):(r!==`reset`||r===`reset`&&!t)&&h(n),d&&d(e,n,r)}});function _(e){return typeof e==`object`&&`name`in e?e.name:e.toString()}function y(){return null}function S(e,t,{selected:r}){return(0,N.jsx)(E,{component:`li`,isMultiSelect:n,selected:r,...e,children:t.name})}}}));export{F as n,P as t};

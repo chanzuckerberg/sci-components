@@ -1,0 +1,3 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./jsx-runtime-f3rHp9ZU.js";import{F as r,Gt as i,Ni as a,_n as o,io as s,ro as c,t as l}from"./iframe-BPFLG940.js";var u,d,f=e((()=>{s(),o(),l(),u=r(`m`),d=c(a,{target:`ed4d6mk0`})(`&.MuiListSubheader-root{`,u,` line-height:unset;color:unset;`,e=>`
+        margin-bottom: ${i(e)?.l}px;
+      `,`;}`)})),p,m,h=e((()=>{f(),p=t(n()),m=e=>(0,p.jsx)(d,{disableGutters:!0,...e})}));export{h as n,m as t};

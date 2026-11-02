@@ -1,0 +1,1 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./jsx-runtime-f3rHp9ZU.js";import{t as r}from"./src-DGdb4UFx.js";import{t as i}from"./InputRadio-DkZSjDM0.js";function a(){return(0,o.jsx)(`div`,{className:`app`,children:(0,o.jsx)(i,{label:`Label`,value:`label`})})}var o;e((()=>{r(),o=t(n())}))();export{a as default};

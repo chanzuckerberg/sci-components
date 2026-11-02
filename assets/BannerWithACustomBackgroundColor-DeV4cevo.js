@@ -1,0 +1,3 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./jsx-runtime-f3rHp9ZU.js";import{Ka as r,va as i}from"./iframe-BPFLG940.js";import{t as a}from"./src-DGdb4UFx.js";import{t as o}from"./Banner-StiIscV1.js";function s(){return(0,c.jsx)(`div`,{className:`app`,children:(0,c.jsx)(l,{sdsType:`primary`,children:`Lorem ipsum dolor sit amet, consectetur adipiscing elit.`})})}var c,l;e((()=>{i(),a(),c=t(n()),l=r(o)`
+  background-color: Crimson;
+`}))();export{s as default};

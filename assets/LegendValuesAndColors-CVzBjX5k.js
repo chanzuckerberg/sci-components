@@ -1,0 +1,8 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./jsx-runtime-f3rHp9ZU.js";import{Gt as r,Ja as i,Ut as a,Vt as o,_n as s,b as c,io as l,ro as u}from"./iframe-BPFLG940.js";import{t as d}from"./src-DGdb4UFx.js";import{a as f,t as p}from"./discreteColorGenerator-P2_J9T_-.js";function m(){let e=i(),t=p(g.length,{isDarkMode:o({theme:e})===`dark`});return(0,h.jsx)(`div`,{className:`app`,children:(0,h.jsxs)(v,{children:[(0,h.jsxs)(`div`,{style:{maxWidth:`320px`},children:[(0,h.jsx)(y,{children:`A generated palette, with counts`}),(0,h.jsx)(f,{colors:t,items:g,showValues:!0})]}),(0,h.jsxs)(`div`,{style:{maxWidth:`320px`},children:[(0,h.jsx)(y,{children:`A color on each item, with shares`}),(0,h.jsx)(f,{items:_,showValues:!0})]})]})})}var h,g,_,v,y;e((()=>{l(),d(),s(),h=t(n()),g=[{name:`H. sapiens`,value:3212},{name:`M. musculus`,value:130},{name:`C. jacchus`,value:89},{name:`D. rerio`,value:65},{name:`M. mulatta`,value:45}],_=[{color:`#0B6CCC`,name:`Passed`,value:`68%`},{color:`#F5C700`,name:`Flagged`,value:`19%`},{color:`#C41E3A`,name:`Failed`,value:`8%`},{disabled:!0,name:`Not run`,value:`5%`}],v=u(`div`,{target:`ehkldtr1`})(e=>`
+      display: flex;
+      flex-wrap: wrap;
+      gap: ${r(e)?.xxl}px;
+    `,`;`),y=u(`p`,{target:`ehkldtr0`})(c,` `,e=>{let t=a(e),n=r(e);return`
+      color: ${t?.base?.textSecondary};
+      margin: 0 0 ${n?.s}px;
+    `},`;`)}))();export{m as default};

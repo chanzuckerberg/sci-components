@@ -1,0 +1,6 @@
+import{i as e,s as t}from"./preload-helper-BdFrVu1K.js";import{t as n}from"./react-9SMi-QmY.js";import{t as r}from"./jsx-runtime-f3rHp9ZU.js";import{Gt as i,Ut as a,f as o,io as s,ro as c}from"./iframe-BPFLG940.js";import{t as l}from"./src-DGdb4UFx.js";import{n as u,t as d}from"./Tabs-BFhbWA1J.js";function f(){let[e,t]=(0,p.useState)(0),n=(e,n)=>{t(n)},r=h[e];return(0,m.jsxs)(`div`,{className:`app`,children:[(0,m.jsx)(u,{"aria-label":`Project sections`,onChange:n,underlined:!0,value:e,children:h.map(e=>(0,m.jsx)(d,{"aria-controls":`${e.id}-panel`,id:`${e.id}-tab`,label:e.label},e.id))}),(0,m.jsx)(g,{"aria-labelledby":`${r.id}-tab`,id:`${r.id}-panel`,role:`tabpanel`,tabIndex:0,children:r.body})]})}var p,m,h,g;e((()=>{s(),l(),p=t(n()),m=t(r()),h=[{body:`12 samples collected between March and June, 3 of them flagged for re-sequencing.`,id:`samples`,label:`Samples`},{body:`Two runs on the NovaSeq X, both passing the coverage threshold of 30x.`,id:`runs`,label:`Sequencing runs`},{body:`A differential expression analysis finished last week and is ready to download.`,id:`analyses`,label:`Analyses`}],g=c(`div`,{target:`e16km1z60`})(o,` `,e=>{let t=a(e),n=i(e);return`
+      border: 1px solid ${t?.base?.divider};
+      border-radius: 4px;
+      color: ${t?.base?.textPrimary};
+      padding: ${n?.l}px;
+    `},`;`)}))();export{f as default};
