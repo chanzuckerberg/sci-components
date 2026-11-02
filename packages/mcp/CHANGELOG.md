@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.21.0...@czi-sds/mcp@0.22.0) (2026-11-02)
+
+### Features
+
+- **genome track:** adding new GenomeTrack component ([#1194](https://github.com/chanzuckerberg/sci-components/issues/1194)) ([6bb7f40](https://github.com/chanzuckerberg/sci-components/commit/6bb7f408aed09030a16212c5507d572fc35448b9)), closes [#333333](https://github.com/chanzuckerberg/sci-components/issues/333333) [#000000](https://github.com/chanzuckerberg/sci-components/issues/000000) [#f3f3f3](https://github.com/chanzuckerberg/sci-components/issues/f3f3f3)
+
 # [0.21.0](https://github.com/chanzuckerberg/sci-components/compare/@czi-sds/mcp@0.20.2...@czi-sds/mcp@0.21.0) (2026-10-28)
 
 - feat(Tag)!: rework Tag and Chip to the new design (#1220) ([ee85976](https://github.com/chanzuckerberg/sci-components/commit/ee8597686e2359152cda35c9a3c3a3c0a9c9e16a)), closes [#1220](https://github.com/chanzuckerberg/sci-components/issues/1220)
