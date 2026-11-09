@@ -1,6 +1,14 @@
 import { AlertProps, Grow } from "@mui/material";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  CheckCircleIcon,
+  InfoIcon,
+  WarningCircleIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
-import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { StyledCallout } from "./style";
 import CalloutTitle from "./components/CalloutTitle";
 import CalloutBody from "./components/CalloutBody";
@@ -20,8 +28,12 @@ export type CalloutSdsStyleType = "persistent" | "expandable" | "dismissible";
 export interface CalloutProps {
   autoDismiss?: boolean | number;
   dismissed?: boolean;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+  /**
+   * Icon displayed to the left of the Callout title, usually a Phosphor or
+   * `@czi-sds/icons` icon. The Callout draws it at its own size and color.
+   * Defaults to the icon for the current `intent`.
+   */
+  icon?: React.ReactElement;
   intent: CalloutIntentType;
   sdsStage?: typeof SDS_STAGE_CLOSED | typeof SDS_STAGE_OPEN;
   title?: string;
@@ -46,7 +58,6 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
     autoDismiss,
     dismissed,
     icon,
-    sdsIconProps,
     intent,
     sdsStage = SDS_STAGE_OPEN,
     title,
@@ -78,27 +89,15 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
   };
 
   const getIcon = () => {
-    if (icon !== undefined) {
-      if (typeof icon !== "string") {
-        return icon;
-      } else {
-        return (
-          <Icon
-            sdsSize="s"
-            sdsIcon={icon as keyof IconNameToSizes}
-            {...sdsIconProps}
-          />
-        );
-      }
-    } else {
-      switch (intent) {
-        case "positive":
-          return <Icon sdsSize="s" sdsIcon="CheckCircle" />;
-        case "info":
-          return <Icon sdsSize="s" sdsIcon="InfoCircle" />;
-        default:
-          return <Icon sdsSize="s" sdsIcon="ExclamationMarkCircle" />;
-      }
+    if (icon !== undefined) return icon;
+
+    switch (intent) {
+      case "positive":
+        return <CheckCircleIcon {...INTERNAL_ICON_PROPS} size={16} />;
+      case "info":
+        return <InfoIcon {...INTERNAL_ICON_PROPS} size={16} />;
+      default:
+        return <WarningCircleIcon {...INTERNAL_ICON_PROPS} size={16} />;
     }
   };
 
@@ -115,7 +114,11 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
           sdsStyle="minimal"
           backgroundOnHover={false}
         >
-          <Icon sdsIcon={collapsed ? "ChevronDown" : "ChevronUp"} sdsSize="s" />
+          {collapsed ? (
+            <CaretDownIcon {...INTERNAL_ICON_PROPS} size={16} />
+          ) : (
+            <CaretUpIcon {...INTERNAL_ICON_PROPS} size={16} />
+          )}
         </Button>
       );
     } else if (sdsStyle === "dismissible") {
@@ -128,7 +131,7 @@ const Callout = (props: ExposedCalloutProps): JSX.Element => {
           size="large"
           backgroundOnHover={false}
         >
-          <Icon sdsIcon="XMark" sdsSize="s" />
+          <XIcon {...INTERNAL_ICON_PROPS} size={16} />
         </Button>
       );
     }

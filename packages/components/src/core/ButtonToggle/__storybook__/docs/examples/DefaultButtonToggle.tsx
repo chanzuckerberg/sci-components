@@ -1,5 +1,6 @@
 import * as React from "react";
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   const [toggle, setToggle] = React.useState(false);
@@ -10,7 +11,7 @@ function App() {
         sdsStyle="outline"
         sdsType="primary"
         sdsStage={toggle ? "on" : "off"}
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
         onClick={() => setToggle((prev) => !prev)}
       >
         Label

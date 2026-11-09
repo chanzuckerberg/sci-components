@@ -10,22 +10,22 @@ exports[`<MenuItem /> > ActionType story renders snapshot 1`] = `
     tabindex="-1"
   >
     <li
-      class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-rhhfy4-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
+      class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-4k5eh8-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
       data-testid="MenuItem"
       name="Text here"
       role="menuitem"
       tabindex="0"
     >
       <span
-        class="css-1n9ctx1-ContentWrapper eanvvd47"
+        class="css-jeyp0a-ContentWrapper eanvvd47"
       >
         <span
-          class="primary-text css-thmp3l-TextWrapper eanvvd46"
+          class="primary-text css-2dzi6p-TextWrapper eanvvd46"
         >
           Text here
         </span>
         <span
-          class="css-124og80-ColumnWrapper eanvvd44"
+          class="css-ngnxg8-ColumnWrapper eanvvd44"
         >
           123,456
         </span>
@@ -45,17 +45,17 @@ exports[`<MenuItem /> > Default story renders snapshot 1`] = `
     tabindex="-1"
   >
     <li
-      class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-rhhfy4-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
+      class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters eanvvd48 css-4k5eh8-MuiButtonBase-root-MuiMenuItem-root-StyledMenuItem"
       data-testid="MenuItem"
       name="Text here"
       role="menuitem"
       tabindex="0"
     >
       <span
-        class="css-1lf0xyc-StyledIconWrapper eanvvd43"
+        class="css-1ki8m4r-StyledIconWrapper eanvvd43"
       >
         <svg
-          class="css-h1xpme-DotIcon eanvvd41"
+          class="css-v7z2q8-DotIcon eanvvd40"
           fill="currentColor"
           height="12"
           viewBox="0 0 12 12"
@@ -70,15 +70,15 @@ exports[`<MenuItem /> > Default story renders snapshot 1`] = `
         </svg>
       </span>
       <span
-        class="css-1n9ctx1-ContentWrapper eanvvd47"
+        class="css-jeyp0a-ContentWrapper eanvvd47"
       >
         <span
-          class="primary-text css-thmp3l-TextWrapper eanvvd46"
+          class="primary-text css-2dzi6p-TextWrapper eanvvd46"
         >
           Text here
         </span>
         <span
-          class="css-124og80-ColumnWrapper eanvvd44"
+          class="css-ngnxg8-ColumnWrapper eanvvd44"
         >
           123,456
         </span>

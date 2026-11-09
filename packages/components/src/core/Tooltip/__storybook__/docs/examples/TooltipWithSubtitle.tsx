@@ -5,8 +5,9 @@
 // The trigger needs its own accessible name. An icon-only button gets one from
 // aria-label, and it needs one because the tooltip text is not a substitute.
 
-import { Button, Icon, Tooltip } from "@czi-sds/components";
+import { Button, Tooltip } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const Stage = styled.div`
   align-items: center;
@@ -29,7 +30,7 @@ function App() {
             sdsStyle="minimal"
             sdsType="secondary"
           >
-            <Icon sdsIcon="InfoCircle" sdsSize="s" />
+            <InfoIcon weight="bold" />
           </Button>
         </Tooltip>
       </Stage>

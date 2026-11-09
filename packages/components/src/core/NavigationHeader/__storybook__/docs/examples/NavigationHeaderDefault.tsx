@@ -3,7 +3,6 @@
 // so the header owns the markup for every row.
 
 import {
-  Icon,
   NavigationHeader,
   getSemanticColors,
   type CommonThemeProps,
@@ -11,6 +10,7 @@ import {
   type NavigationHeaderSecondaryNavItem,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { UserIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Logo = styled.div<CommonThemeProps>`
@@ -68,7 +68,7 @@ function App() {
         buttons={[
           { children: "Sign in", sdsStyle: "outline", sdsType: "primary" },
           {
-            children: <Icon sdsIcon="Person" sdsSize="s" />,
+            children: <UserIcon weight="bold" />,
             onClick: () => console.log("Profile clicked"),
             sdsStyle: "minimal",
             sdsType: "secondary",

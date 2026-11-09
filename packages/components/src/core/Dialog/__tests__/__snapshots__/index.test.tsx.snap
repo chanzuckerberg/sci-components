@@ -2,12 +2,12 @@
 
 exports[`<Dialog /> > Default story renders snapshot 1`] = `
 <button
-  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1kzxwx6-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-sudp89-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
   tabindex="0"
   type="button"
 >
   <span
-    class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+    class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
   >
     Open 
     M
@@ -23,28 +23,25 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 1`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-13nxpnc-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-o0llid-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        aria-hidden="true"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 256 256"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconXMarkSmall"
-          data-testid="IconXMarkSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
+        <path
+          d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"
         />
-      </div>
+      </svg>
     </span>
   </button>
   <p
@@ -80,23 +77,23 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 3`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1jxxukx-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Secondary Action
     </span>
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Primary Action
     </span>
@@ -112,28 +109,25 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 4`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-11tm4ud-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-9uo6kh-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        aria-hidden="true"
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 256 256"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconXMarkLarge"
-          data-testid="IconXMarkLarge"
-          fillcontrast="white"
-          focusable="false"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+        <path
+          d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"
         />
-      </div>
+      </svg>
     </span>
   </button>
   <p
@@ -169,23 +163,23 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 6`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1jxxukx-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Secondary Action
     </span>
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Primary Action
     </span>
@@ -201,28 +195,25 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 7`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-rc3nh-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-18lhsrz-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        aria-hidden="true"
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 256 256"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconXMarkLarge"
-          data-testid="IconXMarkLarge"
-          fillcontrast="white"
-          focusable="false"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+        <path
+          d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"
         />
-      </div>
+      </svg>
     </span>
   </button>
   <p
@@ -258,23 +249,23 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 9`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1jxxukx-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Secondary Action
     </span>
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Primary Action
     </span>
@@ -290,28 +281,25 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 10`] = `
 >
   <button
     aria-label="Close"
-    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-rc3nh-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary e1fdmmfb0 et5j5k2 css-18lhsrz-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        aria-hidden="true"
+        fill="currentColor"
+        height="32"
+        viewBox="0 0 256 256"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconXMarkLarge"
-          data-testid="IconXMarkLarge"
-          fillcontrast="white"
-          focusable="false"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
+        <path
+          d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"
         />
-      </div>
+      </svg>
     </span>
   </button>
   <p
@@ -347,23 +335,23 @@ exports[`<Dialog /> > Dialog all sizes match the snapshots 12`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1jxxukx-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Secondary Action
     </span>
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Primary Action
     </span>
@@ -377,23 +365,23 @@ exports[`<Dialog /> > renders Dialog left positioned buttons 1`] = `
   data-testid="dialog-actions"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Primary Action
     </span>
   </button>
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1ydqmdp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1jxxukx-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Secondary Action
     </span>

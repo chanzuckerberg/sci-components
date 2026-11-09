@@ -2,7 +2,6 @@ import { MenuList } from "@mui/material";
 import { ReactNode } from "react";
 import { AccordionHeader } from "@components/src/core/Accordion";
 import MenuItem from "@components/src/core/MenuItem";
-import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import { groupItemsBySection } from "../../utils";
 import {
   StyledAccordionDetails,
@@ -87,13 +86,7 @@ function renderDrawerStyleItem(
     >
       {!icon && <EmptyIcon hasDetails={hasCaption} />}
       {icon && (
-        <StyledIconWrapper iconSize={iconSize}>
-          {typeof icon === "string" ? (
-            <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize={iconSize} />
-          ) : (
-            icon
-          )}
-        </StyledIconWrapper>
+        <StyledIconWrapper iconSize={iconSize}>{icon}</StyledIconWrapper>
       )}
       <StyledDrawerNavItemContent>
         <StyledDrawerNavItemText

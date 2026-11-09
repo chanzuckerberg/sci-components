@@ -1,10 +1,12 @@
-import { IconNameToSizes } from "@components/src/core/Icon";
-
 export type IntentMessageIntent = "negative" | "notice" | "positive";
 
 export interface IntentMessageItem {
   intent: IntentMessageIntent;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  /**
+   * Replaces the default icon, usually with a Phosphor or `@czi-sds/icons`
+   * icon. It is drawn at 12px, and its fill is overridden by the intent color.
+   */
+  icon?: React.ReactElement;
   text: string;
 }
 

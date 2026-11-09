@@ -37,11 +37,6 @@
         "isRequired": false,
         "type": "(event: SyntheticEvent<Element, Event>) => void"
       },
-      "sdsIconProps": {
-        "description": "Props forwarded to the Icon component when icon is given as a name.",
-        "isRequired": false,
-        "type": "Partial<IconProps>"
-      },
       "slideDirection": {
         "defaultValue": "left",
         "description": "Required. The side the Notification slides in from and back out towards. The component falls back to \"left\", but the prop is not optional, so pass it explicitly.",

@@ -6,6 +6,7 @@ import {
   HTMLAttributeAnchorTarget,
   ReactElement,
 } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import {
   SdsTagColorType,
   SdsTagIntent,
@@ -129,8 +130,7 @@ const Tag = forwardRef(
             <span className={TAG_LABEL_TEXT_CLASS}>{label}</span>
             {showLinkIcon && !isIconOnly && (
               <ArrowUpRightIcon
-                weight="bold"
-                aria-hidden
+                {...INTERNAL_ICON_PROPS}
                 className={TAG_LINK_ICON_CLASS}
               />
             )}

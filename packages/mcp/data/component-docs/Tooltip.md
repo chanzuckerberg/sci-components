@@ -68,8 +68,9 @@ A second line under the title, in smaller and dimmer text, for a detail that wou
 // The trigger needs its own accessible name. An icon-only button gets one from
 // aria-label, and it needs one because the tooltip text is not a substitute.
 
-import { Button, Icon, Tooltip } from "@czi-sds/components";
+import { Button, Tooltip } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const Stage = styled.div`
   align-items: center;
@@ -92,7 +93,7 @@ function App() {
             sdsStyle="minimal"
             sdsType="secondary"
           >
-            <Icon sdsIcon="InfoCircle" sdsSize="s" />
+            <InfoIcon weight="bold" />
           </Button>
         </Tooltip>
       </Stage>
@@ -116,7 +117,6 @@ Both widths side by side. The default caps the tooltip at 250px; the wide one ho
 
 import {
   Button,
-  Icon,
   Tooltip,
   fontBodyXs,
   getSemanticColors,
@@ -124,6 +124,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const LONG_TEXT =
   "Reads are aligned to the reference genome with minimap2, then filtered to remove duplicates and anything below the mapping quality threshold set for the project.";
@@ -170,7 +171,7 @@ function App() {
               sdsStyle="minimal"
               sdsType="secondary"
             >
-              <Icon sdsIcon="InfoCircle" sdsSize="s" />
+              <InfoIcon weight="bold" />
             </Button>
           </Tooltip>
           Default width
@@ -183,7 +184,7 @@ function App() {
               sdsStyle="minimal"
               sdsType="secondary"
             >
-              <Icon sdsIcon="InfoCircle" sdsSize="s" />
+              <InfoIcon weight="bold" />
             </Button>
           </Tooltip>
           Wide
@@ -215,7 +216,6 @@ Four of the twelve placements, and what `arrowOffset` does to the arrow: it sets
 
 import {
   Button,
-  Icon,
   Tooltip,
   fontBodyXs,
   getSemanticColors,
@@ -224,6 +224,7 @@ import {
   type TooltipProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const PLACEMENTS: TooltipProps["placement"][] = [
   "top",
@@ -275,7 +276,7 @@ function App() {
                 sdsStyle="minimal"
                 sdsType="secondary"
               >
-                <Icon sdsIcon="InfoCircle" sdsSize="s" />
+                <InfoIcon weight="bold" />
               </Button>
             </Tooltip>
             {placement}
@@ -293,7 +294,7 @@ function App() {
               sdsStyle="minimal"
               sdsType="secondary"
             >
-              <Icon sdsIcon="InfoCircle" sdsSize="s" />
+              <InfoIcon weight="bold" />
             </Button>
           </Tooltip>
           arrowOffset
@@ -326,7 +327,6 @@ Content that is not a string goes in `componentSlot`, under the title. The point
 
 import {
   Button,
-  Icon,
   Tooltip,
   focusVisibleA11yStyle,
   fontBodyXs,
@@ -336,6 +336,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const Stage = styled.div`
   align-items: center;
@@ -437,7 +438,7 @@ function App() {
             sdsStyle="minimal"
             sdsType="secondary"
           >
-            <Icon sdsIcon="InfoCircle" sdsSize="s" />
+            <InfoIcon weight="bold" />
           </Button>
         </Tooltip>
       </Stage>

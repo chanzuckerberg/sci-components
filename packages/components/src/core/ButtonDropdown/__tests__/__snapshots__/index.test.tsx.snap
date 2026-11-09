@@ -2,55 +2,48 @@
 
 exports[`<ButtonDropdown /> > Default story renders snapshot 1`] = `
 <div
-  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-1wu5ifg-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+    class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
     tabindex="0"
     type="button"
   >
     <span
       class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconDownloadSmall"
-          data-testid="IconDownloadSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
+        <path
+          d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
         />
-      </div>
+      </svg>
     </span>
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Label
     </span>
     <span
       class="MuiButton-icon MuiButton-endIcon css-3155yg-MuiButton-endIcon"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        aria-hidden="true"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 256 256"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconChevronDownSmall"
-          data-testid="IconChevronDownSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
+        <path
+          d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
         />
-      </div>
+      </svg>
     </span>
   </button>
 </div>

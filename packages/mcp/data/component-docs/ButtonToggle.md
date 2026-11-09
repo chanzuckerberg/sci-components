@@ -22,7 +22,8 @@ This example has the minimum props needed for the ButtonToggle component. Becaus
 
 ```tsx
 import * as React from "react";
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   const [toggle, setToggle] = React.useState(false);
@@ -33,7 +34,7 @@ function App() {
         sdsStyle="outline"
         sdsType="primary"
         sdsStage={toggle ? "on" : "off"}
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
         onClick={() => setToggle((prev) => !prev)}
       >
         Label
@@ -63,7 +64,8 @@ This example shows the two styles a toggle is designed around, `"outline"` and `
 // The stages below are fixed rather than driven from state, so both can be seen
 // without clicking.
 
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -72,7 +74,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Outline off
       </ButtonToggle>
@@ -81,7 +83,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Outline on
       </ButtonToggle>
@@ -90,7 +92,7 @@ function App() {
         sdsStage="off"
         sdsStyle="minimal"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Minimal off
       </ButtonToggle>
@@ -99,7 +101,7 @@ function App() {
         sdsStage="on"
         sdsStyle="minimal"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Minimal on
       </ButtonToggle>
@@ -120,7 +122,8 @@ This example shows the two color schemes available through `sdsType`, which is w
 // The type decides what the on stage looks like: primary fills with the accent
 // color, secondary stays neutral. Both stages are shown for each.
 
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -129,7 +132,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Primary off
       </ButtonToggle>
@@ -138,7 +141,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Primary on
       </ButtonToggle>
@@ -147,7 +150,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Secondary off
       </ButtonToggle>
@@ -156,7 +159,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Secondary on
       </ButtonToggle>
@@ -174,7 +177,8 @@ This example shows the three sizes available through the `size` prop.
 **Example: ButtonToggleSizes**
 
 ```tsx
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -185,7 +189,7 @@ function App() {
       <ButtonToggle
         size="large"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Large
       </ButtonToggle>
@@ -193,7 +197,7 @@ function App() {
       <ButtonToggle
         size="medium"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Medium
       </ButtonToggle>
@@ -201,7 +205,7 @@ function App() {
       <ButtonToggle
         size="small"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Small
       </ButtonToggle>
@@ -224,7 +228,8 @@ This example shows the form a toggle usually takes. Leaving `children` out is wh
 // so each one needs an aria-label of its own.
 
 import { useState } from "react";
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { EyeIcon, FunnelSimpleIcon } from "@phosphor-icons/react";
 
 function App() {
   const [labels, setLabels] = useState(true);
@@ -237,7 +242,7 @@ function App() {
         sdsStage={labels ? "on" : "off"}
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="EyeOpen" sdsSize="s" />}
+        startIcon={<EyeIcon weight="bold" />}
         onClick={() => setLabels((previous) => !previous)}
       />
 
@@ -246,7 +251,7 @@ function App() {
         sdsStage={filters ? "on" : "off"}
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Filter" sdsSize="s" />}
+        startIcon={<FunnelSimpleIcon weight="bold" />}
         onClick={() => setFilters((previous) => !previous)}
       />
     </div>
@@ -269,12 +274,12 @@ This example shows `backgroundAppearance="dark"`, which tells the toggle it sits
 
 import {
   ButtonToggle,
-  Icon,
   getCorners,
   getSemanticColors,
   getSpaces,
 } from "@czi-sds/components";
 import { useTheme } from "@mui/material/styles";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   const theme = useTheme();
@@ -299,7 +304,7 @@ function App() {
           sdsStage="off"
           sdsStyle="outline"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+          startIcon={<ListIcon weight="bold" />}
         >
           Off
         </ButtonToggle>
@@ -309,7 +314,7 @@ function App() {
           sdsStage="on"
           sdsStyle="outline"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+          startIcon={<ListIcon weight="bold" />}
         >
           On
         </ButtonToggle>
@@ -319,7 +324,7 @@ function App() {
           sdsStage="on"
           sdsStyle="minimal"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+          startIcon={<ListIcon weight="bold" />}
         >
           Minimal on
         </ButtonToggle>
@@ -339,13 +344,14 @@ This example shows icon-only toggles collected into a ButtonGroup, each tracking
 
 ```tsx
 import * as React from "react";
-import { ButtonGroup, ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonGroup, ButtonToggle } from "@czi-sds/components";
+import { CodeIcon, CopyIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const TOGGLES = [
-  { icon: "Search", label: "Search" },
-  { icon: "Copy", label: "Copy" },
-  { icon: "Code", label: "Code" },
-] as const;
+  { icon: <MagnifyingGlassIcon weight="bold" />, label: "Search" },
+  { icon: <CopyIcon weight="bold" />, label: "Copy" },
+  { icon: <CodeIcon weight="bold" />, label: "Code" },
+];
 
 function App() {
   const [active, setActive] = React.useState<Record<string, boolean>>({});
@@ -360,7 +366,7 @@ function App() {
             sdsStyle="outline"
             sdsType="secondary"
             sdsStage={active[label] ? "on" : "off"}
-            startIcon={<Icon sdsIcon={icon} sdsSize="s" />}
+            startIcon={icon}
             onClick={() =>
               setActive((prev) => ({ ...prev, [label]: !prev[label] }))
             }
@@ -384,7 +390,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 | Name                   | Type                                    | Default             | Description                                                                                                                                                                                                                                                                                                                                                                                          |
 | ---------------------- | --------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `startIcon`            | `ReactElement`                          | -                   | **Required.** The icon displayed within the component. Pass the SDS Icon component, for example `<Icon sdsIcon="Search" sdsSize="s" />`.                                                                                                                                                                                                                                                             |
+| `startIcon`            | `ReactElement`                          | -                   | **Required.** The icon displayed within the component, usually a Phosphor or `@czi-sds/icons` icon, for example `<MagnifyingGlassIcon weight="bold" />`.                                                                                                                                                                                                                                             |
 | `sdsStage`             | `"on"` \| `"off"`                       | `"off"`             | Controls the toggle stage. The component is fully controlled, so keep this value in state and update it from `onClick`.                                                                                                                                                                                                                                                                              |
 | `sdsStyle`             | `"solid"` \| `"outline"` \| `"minimal"` | `"solid"`           | Style of the button. ButtonToggle inherits Button's default of `"solid"`, but toggles are designed around `"outline"` and `"minimal"`, so set one of those explicitly.                                                                                                                                                                                                                               |
 | `sdsType`              | `"primary" \| "secondary"`              | `"primary"`         | Color scheme of the button. Primary uses the accent color in the on stage, secondary stays neutral. Set it explicitly: the on stage resolves its colors before Button applies this default, so an omitted value draws the neutral treatment over a button that is otherwise primary. Button's `"destructive"` is inherited by the type but has no on-stage treatment, so it should not be used here. |

@@ -28,7 +28,6 @@ A dropdown-style header with a logo, title, tag, a text item and a dropdown item
 // so the header owns the markup for every row.
 
 import {
-  Icon,
   NavigationHeader,
   getSemanticColors,
   type CommonThemeProps,
@@ -36,6 +35,7 @@ import {
   type NavigationHeaderSecondaryNavItem,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { UserIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Logo = styled.div<CommonThemeProps>`
@@ -93,7 +93,7 @@ function App() {
         buttons={[
           { children: "Sign in", sdsStyle: "outline", sdsType: "primary" },
           {
-            children: <Icon sdsIcon="Person" sdsSize="s" />,
+            children: <UserIcon weight="bold" />,
             onClick: () => console.log("Profile clicked"),
             sdsStyle: "minimal",
             sdsType: "secondary",
@@ -202,6 +202,12 @@ import {
   type NavigationHeaderPrimaryNavItem,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import {
+  CodeIcon,
+  FlaskIcon,
+  GridNineIcon,
+  MagnifyingGlassIcon,
+} from "@phosphor-icons/react";
 import { ThemeProvider, createTheme, useTheme } from "@mui/material/styles";
 import { useMemo, useRef, useState } from "react";
 
@@ -241,25 +247,25 @@ const primaryNavItems: NavigationHeaderPrimaryNavItem<string>[] = [
     items: [
       {
         details: "Every public dataset",
-        icon: "Search",
+        icon: <MagnifyingGlassIcon weight="bold" />,
         label: "Browse datasets",
         section: "Data",
       },
       {
         details: "Pull data from the command line",
-        icon: "Code",
+        icon: <CodeIcon weight="bold" />,
         label: "API reference",
         section: "Data",
       },
       {
         details: "Single-cell multiomic data",
-        icon: "Grid",
+        icon: <GridNineIcon weight="bold" />,
         label: "CZ CELLxGENE",
         section: "Repositories",
       },
       {
         details: "3D sub-cellular tomograms",
-        icon: "Flask",
+        icon: <FlaskIcon weight="bold" />,
         label: "CryoET",
         section: "Repositories",
       },
@@ -478,17 +484,17 @@ Primary and secondary items share the same shape. Both are a union keyed on `ite
 
 ## DropdownItem
 
-| Name        | Type                                      | Default | Description                                                                                                                                                                         |
-| ----------- | ----------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `label`     | `ReactNode`                               | -       | The row's text.                                                                                                                                                                     |
-| `details`   | `string`                                  | -       | A caption under the label, drawn only when `sdsStyle` is `"drawer"`. In dropdown style it lands on the element as an attribute and shows nothing.                                   |
-| `icon`      | `keyof IconNameToSizes` \| `ReactElement` | -       | An icon for the row, drawn only when `sdsStyle` is `"drawer"`. A named icon renders at 24px when the row has details and 16px when it does not, so the name has to offer that size. |
-| `section`   | `string`                                  | -       | Groups rows under a heading. Rows are grouped by this value in the order the sections first appear.                                                                                 |
-| `onClick`   | `(event: React.MouseEvent) => void`       | -       | Runs on click, then the menu closes.                                                                                                                                                |
-| `href`      | `string`                                  | -       | Turns the row into a link to this URL.                                                                                                                                              |
-| `component` | `ElementType`                             | -       | What the link renders as, for routing through something other than an anchor.                                                                                                       |
-| `target`    | `string`                                  | -       | Where the link opens, for example `"_blank"`.                                                                                                                                       |
-| `rel`       | `string`                                  | -       | The link's relationship to the target, for example `"noreferrer"`.                                                                                                                  |
+| Name        | Type                                | Default | Description                                                                                                                                                                                             |
+| ----------- | ----------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`     | `ReactNode`                         | -       | The row's text.                                                                                                                                                                                         |
+| `details`   | `string`                            | -       | A caption under the label, drawn only when `sdsStyle` is `"drawer"`. In dropdown style it lands on the element as an attribute and shows nothing.                                                       |
+| `icon`      | `ReactElement`                      | -       | An icon for the row, usually a Phosphor or `@czi-sds/icons` icon, drawn only when `sdsStyle` is `"drawer"`. It renders at 24px when the row has details and 16px when it does not, in the accent color. |
+| `section`   | `string`                            | -       | Groups rows under a heading. Rows are grouped by this value in the order the sections first appear.                                                                                                     |
+| `onClick`   | `(event: React.MouseEvent) => void` | -       | Runs on click, then the menu closes.                                                                                                                                                                    |
+| `href`      | `string`                            | -       | Turns the row into a link to this URL.                                                                                                                                                                  |
+| `component` | `ElementType`                       | -       | What the link renders as, for routing through something other than an anchor.                                                                                                                           |
+| `target`    | `string`                            | -       | Where the link opens, for example `"_blank"`.                                                                                                                                                           |
+| `rel`       | `string`                            | -       | The link's relationship to the target, for example `"noreferrer"`.                                                                                                                                      |
 
 ## SectionProps and ActionItem
 

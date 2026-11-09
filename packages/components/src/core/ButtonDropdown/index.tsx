@@ -1,6 +1,7 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import React, { ForwardedRef } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import Button from "@components/src/core/Button";
-import Icon from "../Icon";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -26,9 +27,9 @@ const ButtonDropdown = React.forwardRef(
     }
 
     const endIcon = children ? (
-      <Icon
-        sdsIcon="ChevronDown"
-        sdsSize={size === "large" ? "s" : size === "medium" ? "xs" : "xxs"}
+      <CaretDownIcon
+        {...INTERNAL_ICON_PROPS}
+        size={size === "large" ? 16 : size === "medium" ? 12 : 10}
       />
     ) : null;
 

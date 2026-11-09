@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { MenuItem } from "@czi-sds/components";
-import { MenuList } from "@mui/material";
+import { MenuItem, getColors } from "@czi-sds/components";
+import { MenuList, useTheme } from "@mui/material";
+import { GearIcon } from "@phosphor-icons/react";
 
 function App() {
   const [selected, setSelected] = useState(false);
+  const colors = getColors({ theme: useTheme() });
 
   const handleClick = () => {
     setSelected((prev) => !prev);
@@ -15,10 +17,7 @@ function App() {
         <MenuItem
           isMultiSelect
           column="Column Value"
-          sdsIcon="Gear"
-          sdsIconProps={{
-            color: "purple",
-          }}
+          icon={<GearIcon weight="bold" color={colors?.purple[500]} />}
           selected={selected}
           onClick={handleClick}
         >

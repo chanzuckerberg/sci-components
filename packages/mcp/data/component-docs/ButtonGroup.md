@@ -21,16 +21,17 @@ This example has the minimum props needed for the ButtonGroup component. Buttons
 **Example: DefaultButtonGroup**
 
 ```tsx
-import { Button, ButtonGroup, Icon } from "@czi-sds/components";
+import { Button, ButtonGroup } from "@czi-sds/components";
+import { CopyIcon, DownloadSimpleIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app">
       <ButtonGroup>
         <Button aria-label="Download">
-          <Icon sdsIcon="Download" sdsSize="s" />
+          <DownloadSimpleIcon weight="bold" />
         </Button>
-        <Button startIcon={<Icon sdsIcon="Copy" sdsSize="s" />}>Copy</Button>
+        <Button startIcon={<CopyIcon weight="bold" />}>Copy</Button>
         <Button>Label</Button>
       </ButtonGroup>
     </div>
@@ -121,32 +122,37 @@ This example shows an icon-only group in both orientations. Vertical is only ava
 ```tsx
 // Vertical orientation is only honored when every button is icon-only
 
-import { Button, ButtonGroup, Icon } from "@czi-sds/components";
+import { Button, ButtonGroup } from "@czi-sds/components";
+import {
+  MagnifyingGlassIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app" style={{ display: "flex", gap: "32px" }}>
       <ButtonGroup sdsType="secondary">
         <Button aria-label="Search">
-          <Icon sdsIcon="Search" sdsSize="s" />
+          <MagnifyingGlassIcon weight="bold" />
         </Button>
         <Button aria-label="Edit">
-          <Icon sdsIcon="Edit" sdsSize="s" />
+          <PencilSimpleIcon weight="bold" />
         </Button>
         <Button aria-label="Delete">
-          <Icon sdsIcon="TrashCan" sdsSize="s" />
+          <TrashIcon weight="bold" />
         </Button>
       </ButtonGroup>
 
       <ButtonGroup sdsType="secondary" orientation="vertical">
         <Button aria-label="Search">
-          <Icon sdsIcon="Search" sdsSize="s" />
+          <MagnifyingGlassIcon weight="bold" />
         </Button>
         <Button aria-label="Edit">
-          <Icon sdsIcon="Edit" sdsSize="s" />
+          <PencilSimpleIcon weight="bold" />
         </Button>
         <Button aria-label="Delete">
-          <Icon sdsIcon="TrashCan" sdsSize="s" />
+          <TrashIcon weight="bold" />
         </Button>
       </ButtonGroup>
     </div>
@@ -167,13 +173,14 @@ This example shows a group of ButtonToggle components rather than Buttons, which
 // actions into a set of switches. Each toggle owns its state through sdsStage.
 
 import { useState } from "react";
-import { ButtonGroup, ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonGroup, ButtonToggle } from "@czi-sds/components";
+import { CodeIcon, CopyIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const TOGGLES = [
-  { icon: "Search", label: "Search" },
-  { icon: "Copy", label: "Copy" },
-  { icon: "Code", label: "Code" },
-] as const;
+  { icon: <MagnifyingGlassIcon weight="bold" />, label: "Search" },
+  { icon: <CopyIcon weight="bold" />, label: "Copy" },
+  { icon: <CodeIcon weight="bold" />, label: "Code" },
+];
 
 function App() {
   const [active, setActive] = useState<Record<string, boolean>>({
@@ -189,7 +196,7 @@ function App() {
             aria-label={label}
             sdsStage={active[label] ? "on" : "off"}
             sdsStyle="outline"
-            startIcon={<Icon sdsIcon={icon} sdsSize="s" />}
+            startIcon={icon}
             onClick={() =>
               setActive((previous) => ({
                 ...previous,

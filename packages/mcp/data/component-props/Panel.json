@@ -48,7 +48,7 @@
         "type": "function"
       },
       "CloseButtonComponent": {
-        "defaultValue": "<Button sdsStyle=minimal sdsType=secondary size=large backgroundOnHover={false} aria-label=Panel Toggle> <Icon sdsIcon=XMark sdsSize=l /> </Button>",
+        "defaultValue": "<Button sdsStyle=minimal sdsType=secondary size=large backgroundOnHover={false} aria-label=Panel Toggle> <XIcon weight=bold /> </Button>",
         "description": "Overlay only. Replaces the close button. Clicks are handled by the wrapper around it, so it needs no handler of its own.",
         "isRequired": false,
         "type": "ReactNode"

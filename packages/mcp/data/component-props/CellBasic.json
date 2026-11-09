@@ -8,7 +8,7 @@
         "type": "\"left\" | \"right\""
       },
       "icon": {
-        "description": "Places an icon to the left of the cell text. Expects an SDS Icon or another SVG element.",
+        "description": "Places an icon to the left of the cell text, usually a Phosphor or @czi-sds/icons icon, or another SVG element. It renders at the size it is given.",
         "isRequired": false,
         "type": "ReactElement"
       },

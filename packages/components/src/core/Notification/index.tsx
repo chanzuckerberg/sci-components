@@ -1,7 +1,13 @@
 import { AlertProps, Box, Slide } from "@mui/material";
+import {
+  CheckCircleIcon,
+  InfoIcon,
+  WarningCircleIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import Button from "@components/src/core/Button";
-import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
 import {
   StyledButtonWrapper,
   StyledCloseButton,
@@ -24,8 +30,12 @@ export interface NotificationProps {
   slideDirection: "left" | "right";
   extraContent?: boolean;
   intent: NotificationIntentType;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+  /**
+   * Icon displayed to the left of the content, usually a Phosphor or
+   * `@czi-sds/icons` icon. The Notification draws it at its own size and color.
+   * Defaults to the icon for the current `intent`.
+   */
+  icon?: React.ReactElement;
 }
 
 export type ExposedNotificationProps = AlertProps & NotificationProps;
@@ -44,7 +54,6 @@ const Notification = ({
   buttonText,
   buttonPosition,
   icon,
-  sdsIconProps,
   ...rest
 }: ExposedNotificationProps): JSX.Element => {
   const [hide, setHide] = useState(dismissed);
@@ -70,27 +79,15 @@ const Notification = ({
   };
 
   const getIcon = () => {
-    if (icon !== undefined) {
-      if (typeof icon !== "string") {
-        return icon;
-      } else {
-        return (
-          <Icon
-            sdsSize="s"
-            sdsIcon={icon as keyof IconNameToSizes}
-            {...sdsIconProps}
-          />
-        );
-      }
-    } else {
-      switch (intent) {
-        case "positive":
-          return <Icon sdsSize="s" sdsIcon="CheckCircle" />;
-        case "info":
-          return <Icon sdsSize="s" sdsIcon="InfoCircle" />;
-        default:
-          return <Icon sdsSize="s" sdsIcon="ExclamationMarkCircle" />;
-      }
+    if (icon !== undefined) return icon;
+
+    switch (intent) {
+      case "positive":
+        return <CheckCircleIcon {...INTERNAL_ICON_PROPS} size={16} />;
+      case "info":
+        return <InfoIcon {...INTERNAL_ICON_PROPS} size={16} />;
+      default:
+        return <WarningCircleIcon {...INTERNAL_ICON_PROPS} size={16} />;
     }
   };
 
@@ -115,7 +112,7 @@ const Notification = ({
                   data-testid="notificationCloseButton"
                   backgroundOnHover={false}
                 >
-                  <Icon sdsIcon="XMark" sdsSize="s" />
+                  <XIcon {...INTERNAL_ICON_PROPS} size={16} />
                 </StyledCloseButton>
               ) : null
             }

@@ -105,11 +105,12 @@ Style Dictionary generates tokens in multiple formats:
 
 ## Icon System
 
-### Adding New Icons
+The `Icon` component (`src/core/Icon`) is deprecated. Components and stories use Phosphor icons from `@phosphor-icons/react` (a peer dependency) in the `bold` weight, or the icons SDS draws itself from `@czi-sds/icons` (`packages/icons`).
 
-1. **Add SVG:** Place new icon SVG in `src/common/svgs/` following naming convention `IconNameSize.svg`
-2. **Update Map:** Add import and mapping in `src/core/Icon/map.ts`
-3. **Size Convention:** Icons come in `Small` (16px) and `Large` (24px) variants
+- **Icons a component draws itself** (close buttons, carets, intent icons) spread `INTERNAL_ICON_PROPS` from `src/common/utils` and pass a size: `<XIcon {...INTERNAL_ICON_PROPS} size={16} />`. That sets `weight="bold"`, `color="currentColor"` and `aria-hidden`, so an app's `IconContext` cannot restyle them.
+- **Icon props take elements**, never icon names. A component that shows an icon it is given sizes and colors it in its own CSS, targeting `svg`.
+- **Icon-only buttons:** `isIconOnlyChild` in `src/core/Button/style.ts` recognizes Phosphor and `@czi-sds/icons` icons by their `<Name>Icon` display name.
+- **New icons** come from Phosphor. An icon Phosphor does not have, or one design wants its own drawing of, goes into `@czi-sds/icons`, never into `src/common/svgs`. See `docs/how-to-add-icon.md`.
 
 ## Theme System
 

@@ -11,7 +11,6 @@
 
 import {
   Button,
-  Icon,
   Tooltip,
   focusVisibleA11yStyle,
   fontBodyXs,
@@ -21,6 +20,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const Stage = styled.div`
   align-items: center;
@@ -122,7 +122,7 @@ function App() {
             sdsStyle="minimal"
             sdsType="secondary"
           >
-            <Icon sdsIcon="InfoCircle" sdsSize="s" />
+            <InfoIcon weight="bold" />
           </Button>
         </Tooltip>
       </Stage>

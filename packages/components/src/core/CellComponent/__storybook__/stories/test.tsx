@@ -11,7 +11,12 @@ import InputRadio from "@components/src/core/InputRadio";
 import { CELL_COMPONENT_TEST_PLACEMENT_STYLES } from "../constants";
 import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
+import { SparkleIcon, SparklesIcon } from "@czi-sds/icons";
+import {
+  ChartBarIcon,
+  DownloadSimpleIcon,
+  GearIcon,
+} from "@phosphor-icons/react";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (
@@ -76,16 +81,16 @@ export const TestDemo = (props: Args): JSX.Element => {
           >
             <div style={{ display: "flex", gap: "0px" }}>
               <Button sdsStyle="minimal" size="medium">
-                <Icon sdsIcon="Sparkles" sdsSize="xs" />
+                <SparklesIcon weight="bold" />
               </Button>
               <Button sdsStyle="minimal" size="medium">
-                <Icon sdsIcon="Gear" sdsSize="xs" />
+                <GearIcon weight="bold" />
               </Button>
               <Button sdsStyle="minimal" size="medium">
-                <Icon sdsIcon="BarChartVertical3" sdsSize="xs" />
+                <ChartBarIcon weight="bold" />
               </Button>
               <Button sdsStyle="minimal" size="medium">
-                <Icon sdsIcon="Download" sdsSize="xs" />
+                <DownloadSimpleIcon weight="bold" />
               </Button>
             </div>
           </CellComponent>
@@ -101,18 +106,18 @@ export const TestDemo = (props: Args): JSX.Element => {
               <Button
                 sdsStyle="solid"
                 sdsType="primary"
-                startIcon={<Icon sdsIcon="Download" sdsSize="xs" />}
+                startIcon={<DownloadSimpleIcon weight="bold" />}
               >
                 Label
               </Button>
               <Button sdsStyle="solid" size="large">
-                <Icon sdsIcon="Sparkles" sdsSize="xs" />
+                <SparklesIcon weight="bold" />
               </Button>
               <Button sdsStyle="solid" size="large">
-                <Icon sdsIcon="BarChartVertical3" sdsSize="xs" />
+                <ChartBarIcon weight="bold" />
               </Button>
               <Button sdsStyle="solid" size="large">
-                <Icon sdsIcon="Download" sdsSize="xs" />
+                <DownloadSimpleIcon weight="bold" />
               </Button>
             </div>
           </CellComponent>
@@ -128,14 +133,14 @@ export const TestDemo = (props: Args): JSX.Element => {
               <Button
                 sdsStyle="outline"
                 sdsType="primary"
-                startIcon={<Icon sdsIcon="Sparkle" sdsSize="xs" />}
+                startIcon={<SparkleIcon weight="bold" />}
               >
                 Label
               </Button>
               <Button
                 sdsStyle="outline"
                 sdsType="secondary"
-                startIcon={<Icon sdsIcon="Sparkles" sdsSize="xs" />}
+                startIcon={<SparklesIcon weight="bold" />}
               >
                 Label
               </Button>

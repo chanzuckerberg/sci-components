@@ -1,6 +1,7 @@
 import { AccordionSummaryProps as RawAccordionSummaryProps } from "@mui/material";
+import { CaretDownIcon } from "@phosphor-icons/react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { StyledAccordionHeader, StyledSubtitle } from "./style";
-import Icon from "@components/src/core/Icon";
 
 export interface SdsAccordionHeaderProps {
   subtitle?: string;
@@ -16,7 +17,12 @@ const AccordionHeader = (props: AccordionHeaderProps) => {
   return (
     <StyledAccordionHeader
       chevronSize={chevronSize}
-      expandIcon={<Icon sdsIcon="ChevronDown" sdsSize={chevronSize} />}
+      expandIcon={
+        <CaretDownIcon
+          {...INTERNAL_ICON_PROPS}
+          size={chevronSize === "s" ? 16 : 12}
+        />
+      }
       {...rest}
     >
       {children}

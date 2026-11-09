@@ -1,12 +1,17 @@
 import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
+import {
   SegmentedControl,
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 
 const VIEWS: SingleButtonDefinition[] = [
-  { icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
-  { icon: "TreeVertical", value: "Tree" },
+  { icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
+  { icon: <GitBranchIcon weight="bold" />, value: "Tree" },
 ];
 
 function App() {

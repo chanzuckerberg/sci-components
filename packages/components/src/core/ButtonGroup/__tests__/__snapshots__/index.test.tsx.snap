@@ -2,7 +2,7 @@
 
 exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
 <div
-  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-1wu5ifg-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
     class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
@@ -10,106 +10,90 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
   >
     <button
       aria-label="Search"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-firstButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-firstButton css-1jfyo0g-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconSearchSmall"
-            data-testid="IconSearchSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
     <button
       aria-label="Copy"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-1jfyo0g-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconCopySmall"
-            data-testid="IconCopySmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
     <button
       aria-label="Code"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-middleButton css-1jfyo0g-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconCodeSmall"
-            data-testid="IconCodeSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M71.68,97.22,34.74,128l36.94,30.78a12,12,0,1,1-15.36,18.44l-48-40a12,12,0,0,1,0-18.44l48-40A12,12,0,0,1,71.68,97.22Zm176,21.56-48-40a12,12,0,1,0-15.36,18.44L221.26,128l-36.94,30.78a12,12,0,1,0,15.36,18.44l48-40a12,12,0,0,0,0-18.44ZM164.1,28.72a12,12,0,0,0-15.38,7.18l-64,176a12,12,0,0,0,7.18,15.37A11.79,11.79,0,0,0,96,228a12,12,0,0,0,11.28-7.9l64-176A12,12,0,0,0,164.1,28.72Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
     <button
       aria-label="Cube"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-lastButton css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 MuiButtonGroup-lastButton css-1jfyo0g-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconCubeSmall"
-            data-testid="IconCubeSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
   </div>
@@ -118,7 +102,7 @@ exports[`<ButtonGroup /> > ButtonToggles story renders snapshot 1`] = `
 
 exports[`<ButtonGroup /> > Default story renders snapshot 1`] = `
 <div
-  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-1wu5ifg-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
     class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
@@ -126,67 +110,59 @@ exports[`<ButtonGroup /> > Default story renders snapshot 1`] = `
   >
     <button
       aria-label="Download"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconDownloadSmall"
-            data-testid="IconDownloadSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
     <button
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
         class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconDownloadSmall"
-            data-testid="IconDownloadSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
           />
-        </div>
+        </svg>
       </span>
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
         Label
       </span>
     </button>
     <button
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
         Label
       </span>
@@ -197,7 +173,7 @@ exports[`<ButtonGroup /> > Default story renders snapshot 1`] = `
 
 exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
 <div
-  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-1wu5ifg-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
     style="display: flex; flex-direction: column; gap: 12px;"
@@ -208,133 +184,115 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconDownloadSmall"
-              data-testid="IconDownloadSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCopySmall"
-              data-testid="IconCopySmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCubeSmall"
-              data-testid="IconCubeSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconGithubSmall"
-              data-testid="IconGithubSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              clip-rule="evenodd"
+              d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+              fill-rule="evenodd"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconEditSmall"
-              data-testid="IconEditSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
     </div>
@@ -344,133 +302,115 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconDownloadSmall"
-              data-testid="IconDownloadSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCopySmall"
-              data-testid="IconCopySmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCubeSmall"
-              data-testid="IconCubeSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconGithubSmall"
-              data-testid="IconGithubSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              clip-rule="evenodd"
+              d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+              fill-rule="evenodd"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconEditSmall"
-              data-testid="IconEditSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
     </div>
@@ -480,134 +420,116 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconDownloadSmall"
-              data-testid="IconDownloadSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCopySmall"
-              data-testid="IconCopySmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCubeSmall"
-              data-testid="IconCubeSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconGithubSmall"
-              data-testid="IconGithubSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              clip-rule="evenodd"
+              d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+              fill-rule="evenodd"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconEditSmall"
-              data-testid="IconEditSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
     </div>
@@ -617,133 +539,115 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
     >
       <button
         aria-label="Download"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconDownloadSmall"
-              data-testid="IconDownloadSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Copy"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCopySmall"
-              data-testid="IconCopySmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Cube"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconCubeSmall"
-              data-testid="IconCubeSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Github"
-        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconGithubSmall"
-              data-testid="IconGithubSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              clip-rule="evenodd"
+              d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+              fill-rule="evenodd"
             />
-          </div>
+          </svg>
         </span>
       </button>
       <button
         aria-label="Edit"
-        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+        class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconEditSmall"
-              data-testid="IconEditSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
     </div>
@@ -756,133 +660,115 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconDownloadSmall"
-                data-testid="IconDownloadSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCopySmall"
-                data-testid="IconCopySmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCubeSmall"
-                data-testid="IconCubeSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconGithubSmall"
-                data-testid="IconGithubSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                clip-rule="evenodd"
+                d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+                fill-rule="evenodd"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconEditSmall"
-                data-testid="IconEditSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
       </div>
@@ -892,133 +778,115 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconDownloadSmall"
-                data-testid="IconDownloadSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCopySmall"
-                data-testid="IconCopySmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCubeSmall"
-                data-testid="IconCubeSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconGithubSmall"
-                data-testid="IconGithubSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                clip-rule="evenodd"
+                d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+                fill-rule="evenodd"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconEditSmall"
-                data-testid="IconEditSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
       </div>
@@ -1028,134 +896,116 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconDownloadSmall"
-                data-testid="IconDownloadSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCopySmall"
-                data-testid="IconCopySmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCubeSmall"
-                data-testid="IconCubeSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconGithubSmall"
-                data-testid="IconGithubSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                clip-rule="evenodd"
+                d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+                fill-rule="evenodd"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconEditSmall"
-                data-testid="IconEditSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
       </div>
@@ -1165,133 +1015,115 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
       >
         <button
           aria-label="Download"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconDownloadSmall"
-                data-testid="IconDownloadSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Copy"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCopySmall"
-                data-testid="IconCopySmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Cube"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconCubeSmall"
-                data-testid="IconCubeSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M225.6,62.64l-88-48.17a19.91,19.91,0,0,0-19.2,0l-88,48.17A20,20,0,0,0,20,80.19v95.62a20,20,0,0,0,10.4,17.55l88,48.17a19.89,19.89,0,0,0,19.2,0l88-48.17A20,20,0,0,0,236,175.81V80.19A20,20,0,0,0,225.6,62.64ZM128,36.57,200,76,128,115.4,56,76ZM44,96.79l72,39.4v76.67L44,173.44Zm96,116.07V136.19l72-39.4v76.65Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Github"
-          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           tabindex="0"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconGithubSmall"
-                data-testid="IconGithubSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                clip-rule="evenodd"
+                d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+                fill-rule="evenodd"
               />
-            </div>
+            </svg>
           </span>
         </button>
         <button
           aria-label="Edit"
-          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+          class="MuiButtonBase-root Mui-disabled MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <span
-            class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+            class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
           >
-            <div
-              class="css-1q8yjse-StyledIcon emi0zh40"
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-                data-file-name="IconEditSmall"
-                data-testid="IconEditSmall"
-                fillcontrast="white"
-                focusable="false"
-                height="16"
-                viewBox="0 0 16 16"
-                width="16"
+              <path
+                d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
               />
-            </div>
+            </svg>
           </span>
         </button>
       </div>
@@ -1302,7 +1134,7 @@ exports[`<ButtonGroup /> > DisabledButtons story renders snapshot 1`] = `
 
 exports[`<ButtonGroup /> > IconOnly story renders snapshot 1`] = `
 <div
-  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-1wu5ifg-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <div
     class="MuiButtonGroup-root MuiButtonGroup-outlined MuiButtonGroup-horizontal MuiButtonGroup-colorPrimary e1jymmfx0 css-vbn61t-MuiButtonGroup-root-StyledButtonGroup-GeneralButtonGroupStyles-PrimaryButtonGroupStyles-LargeButtonGroupStyles-StyledButtonGroup"
@@ -1310,80 +1142,68 @@ exports[`<ButtonGroup /> > IconOnly story renders snapshot 1`] = `
   >
     <button
       aria-label="Download"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-firstButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconDownloadSmall"
-            data-testid="IconDownloadSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
     <button
       aria-label="Copy"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-middleButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconCopySmall"
-            data-testid="IconCopySmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M216,28H88A12,12,0,0,0,76,40V76H40A12,12,0,0,0,28,88V216a12,12,0,0,0,12,12H168a12,12,0,0,0,12-12V180h36a12,12,0,0,0,12-12V40A12,12,0,0,0,216,28ZM156,204H52V100H156Zm48-48H180V88a12,12,0,0,0-12-12H100V52H204Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
     <button
       aria-label="Edit"
-      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-4u7llv-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root MuiButtonGroup-grouped MuiButton-root MuiButton-contained MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 MuiButtonGroup-lastButton css-egg1o-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconEditSmall"
-            data-testid="IconEditSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M230.14,70.54,185.46,25.85a20,20,0,0,0-28.29,0L33.86,149.17A19.85,19.85,0,0,0,28,163.31V208a20,20,0,0,0,20,20H92.69a19.86,19.86,0,0,0,14.14-5.86L230.14,98.82a20,20,0,0,0,0-28.28ZM91,204H52V165l84-84,39,39ZM192,103,153,64l18.34-18.34,39,39Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
   </div>

@@ -9,7 +9,6 @@ import {
   type ReactElement,
 } from "react";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 import SegmentedControl from "@components/src/core/SegmentedControl";
 import { Theme } from "@components/src/core/styles";
 import { useThemeMode, type ThemeMode } from "@sds-docs/useThemeMode";
@@ -40,9 +39,13 @@ import {
   TitleLink,
 } from "./style";
 import {
+  ArrowsClockwiseIcon,
+  CheckCircleIcon,
+  CodeIcon,
   DesktopIcon,
   DeviceMobileCameraIcon,
   MoonIcon,
+  ShareNetworkIcon,
   SunDimIcon,
 } from "@phosphor-icons/react";
 
@@ -166,7 +169,7 @@ export function Playground(): ReactElement {
                 sdsStyle="minimal"
                 sdsType="secondary"
                 size="medium"
-                startIcon={<Icon sdsIcon="Code" sdsSize="s" />}
+                startIcon={<CodeIcon weight="bold" />}
               >
                 Format
               </Button>
@@ -175,7 +178,7 @@ export function Playground(): ReactElement {
                 sdsStyle="minimal"
                 sdsType="secondary"
                 size="medium"
-                startIcon={<Icon sdsIcon="Refresh" sdsSize="s" />}
+                startIcon={<ArrowsClockwiseIcon weight="bold" />}
               >
                 Reset
               </Button>
@@ -185,10 +188,11 @@ export function Playground(): ReactElement {
                 sdsType="secondary"
                 size="medium"
                 startIcon={
-                  <Icon
-                    sdsIcon={hasCopied ? "CheckCircle" : "Share"}
-                    sdsSize="l"
-                  />
+                  hasCopied ? (
+                    <CheckCircleIcon weight="bold" />
+                  ) : (
+                    <ShareNetworkIcon weight="bold" />
+                  )
                 }
               >
                 {hasCopied ? "Copied" : "Share"}

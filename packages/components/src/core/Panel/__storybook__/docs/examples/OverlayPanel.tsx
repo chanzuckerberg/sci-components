@@ -17,7 +17,6 @@
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   fontHeaderM,
@@ -25,6 +24,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Stage = styled.div<CommonThemeProps>`
@@ -59,7 +59,7 @@ function App() {
           onClick={() => setOpen(true)}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          startIcon={<InfoIcon weight="bold" />}
         >
           Show details
         </Button>

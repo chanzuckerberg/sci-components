@@ -1,5 +1,5 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import { forwardRef } from "react";
-import Icon from "@components/src/core/Icon";
 import {
   IconWrapper,
   LabelWrapper,
@@ -10,7 +10,11 @@ import {
   StyledInputDropdown,
   StyledLabel,
 } from "./style";
-import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
+import {
+  EMPTY_OBJECT,
+  INTERNAL_ICON_PROPS,
+  cn,
+} from "@components/src/common/utils";
 
 export type InputDropdownProps = SdsInputDropdownProps & {
   classes?: {
@@ -126,9 +130,9 @@ const InputDropdown = forwardRef<HTMLButtonElement, InputDropdownProps>(
             )}
           </div>
           <IconWrapper className={cn(iconWrapperClassName)}>
-            <Icon
-              sdsIcon="ChevronDown"
-              sdsSize="xs"
+            <CaretDownIcon
+              {...INTERNAL_ICON_PROPS}
+              size={12}
               className={cn(chevronIconClassName)}
             />
           </IconWrapper>

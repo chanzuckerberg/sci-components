@@ -2,8 +2,8 @@ import { generateSnapshots } from "@chanzuckerberg/story-utils";
 import { composeStories } from "@storybook/react-vite";
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
+import { CaretLeftIcon } from "@phosphor-icons/react";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 
 // Returns a component that already contain all decorators from story level, meta level and global level.
 const { Test } = composeStories(stories);
@@ -35,7 +35,7 @@ describe("<Panel />", () => {
             sdsType="secondary"
             data-testid="panel-close-button"
           >
-            <Icon sdsIcon="ChevronLeft" sdsSize="l" />
+            <CaretLeftIcon weight="bold" />
           </Button>
         }
       />
@@ -91,7 +91,7 @@ describe("<Panel />", () => {
             sdsType="secondary"
             data-testid="panel-close-button"
           >
-            <Icon sdsIcon="ChevronLeft" sdsSize="l" />
+            <CaretLeftIcon weight="bold" />
           </Button>
         }
       />

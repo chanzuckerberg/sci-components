@@ -1,4 +1,6 @@
+import { CaretDownIcon } from "@phosphor-icons/react";
 import React, { ForwardedRef } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import ButtonLegacy, {
   ButtonLegacyProps,
   ButtonLegacySize,
@@ -63,7 +65,7 @@ const ButtonDropdownLegacy = React.forwardRef(
       return (
         <ButtonLegacy
           {...props}
-          endIcon={<Icon sdsIcon="ChevronDown" sdsSize="xs" />}
+          endIcon={<CaretDownIcon {...INTERNAL_ICON_PROPS} size={12} />}
           sdsStyle={sdsStyle}
           ref={ref}
           startIcon={iconItem()}

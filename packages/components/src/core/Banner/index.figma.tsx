@@ -15,9 +15,6 @@ figma.connect(
   {
     props: {
       // These props were automatically mapped based on your linked code:
-      icon: figma.enum("state (x icon)", {
-        hover: "House",
-      }),
       // dismissed: figma.boolean("dismissible?"),
       dismissible: figma.boolean("dismissible?"),
       intent: figma.enum("intent", {
@@ -32,13 +29,13 @@ figma.connect(
         secondary: "secondary",
       }),
       // No matching props could be found for these Figma properties:
+      // "stateXIcon": figma.enum('state (x icon)', { "hover": "hover" }),
       // "dismissible": figma.boolean('dismissible?'),
       // "showContentSlot": figma.boolean('showContentSlot?'),
       // "slotContent": figma.instance('↪️ slotContent')
     },
     example: (props) => (
       <Banner
-        icon={props.icon}
         // dismissed={props.dismissed}
         dismissible={props.dismissible}
         intent={props.intent}

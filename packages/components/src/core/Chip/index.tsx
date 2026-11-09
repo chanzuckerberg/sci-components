@@ -1,5 +1,6 @@
+import { XIcon } from "@phosphor-icons/react";
 import React, { ForwardedRef, forwardRef } from "react";
-import Icon from "../Icon";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { TagProps } from "../Tag";
 import { StyledChip } from "./style";
 
@@ -55,7 +56,7 @@ const Chip = forwardRef(
         aria-label={ariaLabel ?? `Remove ${label}`}
         {...rest}
         color="accent"
-        deleteIcon={<Icon sdsIcon="XMark" sdsSize="xs" />}
+        deleteIcon={<XIcon {...INTERNAL_ICON_PROPS} size={12} />}
         label={label}
         onClick={handleClick}
         onDelete={onDelete}

@@ -1,4 +1,5 @@
 import { TextFieldProps as RawTextFieldSearchProps } from "@mui/material";
+import { MagnifyingGlassIcon, XCircleIcon } from "@phosphor-icons/react";
 import React, { forwardRef, useRef, useState } from "react";
 import Button from "@components/src/core/Button";
 import {
@@ -8,8 +9,11 @@ import {
   StyledSearchBase,
 } from "./style";
 import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
-import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
-import Icon from "../Icon";
+import {
+  EMPTY_OBJECT,
+  INTERNAL_ICON_PROPS,
+  cn,
+} from "@components/src/common/utils";
 
 export interface AccessibleInputSearchProps {
   label: string;
@@ -165,7 +169,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                     disabled={disabled}
                     backgroundOnHover={false}
                   >
-                    <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                    <XCircleIcon {...INTERNAL_ICON_PROPS} size={16} />
                   </Button>
                 </StyledInputAdornment>
               ) : null,
@@ -184,7 +188,7 @@ const InputSearch = forwardRef<HTMLDivElement, InputSearchProps>(
                     backgroundOnHover={false}
                     className={cn(searchButtonClassName)}
                   >
-                    <Icon sdsIcon="Search" sdsSize="s" />
+                    <MagnifyingGlassIcon {...INTERNAL_ICON_PROPS} size={16} />
                   </Button>
                 </StyledInputAdornment>
               ),

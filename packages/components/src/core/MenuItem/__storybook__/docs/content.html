@@ -40,22 +40,21 @@
 <div class="sds-doc-example" data-example="core/MenuItem/DefaultMenuItem"></div>
 <h3><strong>Multi-Select MenuItem with Icon</strong></h3>
 <p>
-  This example showcases a multi-select MenuItem component featuring an SDS Icon
-  and a distinct column value.
+  This example showcases a multi-select MenuItem component featuring a Phosphor
+  icon in a custom color and a distinct column value.
 </p>
 <div
   class="sds-doc-callout sds-doc-callout-background-1 sds-doc-callout-full-width"
 >
   <p>
     <strong>SDS Tip:</strong>
-    MenuItem exclusively accepts SDS Icons in xs and s sizes. To explore a
-    comprehensive list of SDS icons and their available sizes, refer to the
-    <a
-      href="https://chanzuckerberg.github.io/sci-components/?path=/story/components-icon--icon-bank"
-    >
-      IconBank page
+    MenuItem draws its icon at 16px, in blue unless the icon sets a
+    <code>color</code> of its own. Any Phosphor or
+    <code>@czi-sds/icons</code> icon works; see the
+    <a href="./?path=/docs/icons-overview--documentation" target="_top">
+      Icons
     </a>
-    within Storybook.
+    page for where to find them.
   </p>
 </div>
 <div
@@ -139,48 +138,14 @@
       <p><code>icon</code></p>
     </td>
     <td>
-      <p><code>IconName</code> |</p>
       <p><code>ReactElement</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        The icon shown at the start of the item, either the name of an SDS icon
-        or an element of your own. Only icons that come in a small size can be
-        named here.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>sdsIcon</code></p>
-    </td>
-    <td>
-      <p><code>IconName</code> |</p>
-      <p><code>ReactElement</code></p>
-    </td>
-    <td><p>-</p></td>
-    <td>
-      <p>
-        <strong>Deprecated.</strong>
-        Use <code>icon</code> instead. It is the former name of that prop, kept
-        until the next major version, and <code>icon</code> wins where both are
-        given.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>sdsIconProps</code></p>
-    </td>
-    <td>
-      <p><code>function</code></p>
-    </td>
-    <td><p>-</p></td>
-    <td>
-      <p>
-        Enables you to pass additional props to customize the SDS icon within
-        the menu item.
+        The icon shown at the start of the item, usually a Phosphor or
+        <code>@czi-sds/icons</code> icon. The item draws it at its own size, in
+        blue unless the icon sets a <code>color</code>.
       </p>
     </td>
   </tr>

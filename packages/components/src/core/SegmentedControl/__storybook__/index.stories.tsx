@@ -1,3 +1,9 @@
+import {
+  ListBulletsIcon,
+  ListIcon,
+  TableIcon,
+  UsersIcon,
+} from "@phosphor-icons/react";
 import { Args, Meta } from "@storybook/react-vite";
 import { SegmentedControl } from "./stories/default";
 import { SEGMENTED_CONTROL_EXCLUDED_CONTROLS } from "./constants";
@@ -24,22 +30,22 @@ export const Default = {
   args: {
     buttonDefinition: [
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List A",
         value: "A",
       },
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List B",
         value: "B",
       },
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List C",
         value: "C",
       },
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List D",
         value: "D",
       },
@@ -54,23 +60,23 @@ export const WithDisabledButton = {
   args: {
     buttonDefinition: [
       {
-        icon: "LinesHorizontal3",
+        icon: <ListIcon weight="bold" />,
         tooltipText: "List A",
         value: "A",
       },
       {
         disabled: true,
-        icon: "LinesHorizontal3",
+        icon: <ListIcon weight="bold" />,
         tooltipText: "List B",
         value: "B",
       },
       {
-        icon: "LinesHorizontal3",
+        icon: <ListIcon weight="bold" />,
         tooltipText: "List C",
         value: "C",
       },
       {
-        icon: "LinesHorizontal3",
+        icon: <ListIcon weight="bold" />,
         tooltipText: "List D",
         value: "D",
       },
@@ -126,17 +132,17 @@ export const WithTooltipHidden = {
   args: {
     buttonDefinition: [
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         shouldShowTooltip: false,
         value: "A",
       },
       {
-        icon: "Table",
+        icon: <TableIcon weight="bold" />,
         shouldShowTooltip: false,
         value: "B",
       },
       {
-        icon: "People",
+        icon: <UsersIcon weight="bold" />,
         value: "C",
       },
     ],
@@ -150,7 +156,7 @@ export const WithCustomTooltipProps = {
   args: {
     buttonDefinition: [
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipProps: {
           subtitle: "View items as a list",
           title: "List View",
@@ -158,7 +164,7 @@ export const WithCustomTooltipProps = {
         value: "A",
       },
       {
-        icon: "Table",
+        icon: <TableIcon weight="bold" />,
         tooltipProps: {
           subtitle: "View items in a table",
           title: "Table View",
@@ -166,7 +172,7 @@ export const WithCustomTooltipProps = {
         value: "B",
       },
       {
-        icon: "People",
+        icon: <UsersIcon weight="bold" />,
         tooltipText: "People View",
         tooltipProps: {
           subtitle: "tooltipText overrides tooltipProps.title",
@@ -185,22 +191,22 @@ export const ControlledSegmentedControl = {
   args: {
     buttonDefinition: [
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List A",
         value: "A",
       },
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List B",
         value: "B",
       },
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List C",
         value: "C",
       },
       {
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" />,
         tooltipText: "List D",
         value: "D",
       },
@@ -214,10 +220,26 @@ export const ControlledSegmentedControl = {
 export const Test = {
   args: {
     buttonDefinition: [
-      { icon: "List", tooltipText: "List A", value: "A" },
-      { icon: "List", tooltipText: "List B", value: "B" },
-      { icon: "Table", tooltipText: "Table", value: "Table" },
-      { icon: "People", tooltipText: "People", value: "People" },
+      {
+        icon: <ListBulletsIcon weight="bold" />,
+        tooltipText: "List A",
+        value: "A",
+      },
+      {
+        icon: <ListBulletsIcon weight="bold" />,
+        tooltipText: "List B",
+        value: "B",
+      },
+      {
+        icon: <TableIcon weight="bold" />,
+        tooltipText: "Table",
+        value: "Table",
+      },
+      {
+        icon: <UsersIcon weight="bold" />,
+        tooltipText: "People",
+        value: "People",
+      },
     ],
   },
   parameters: {

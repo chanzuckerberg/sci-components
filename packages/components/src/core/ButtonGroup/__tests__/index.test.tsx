@@ -1,11 +1,11 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { DownloadSimpleIcon } from "@phosphor-icons/react";
 import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
 import ButtonGroup from "..";
 import Button from "../../Button";
 import ButtonToggle from "../../ButtonToggle";
-import Icon from "../../Icon";
 
 const { Test } = composeStories(stories);
 
@@ -91,7 +91,7 @@ describe("<ButtonGroup />", () => {
       <ButtonGroup size="small">
         <ButtonToggle
           size="large"
-          startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+          startIcon={<DownloadSimpleIcon weight="bold" />}
         />
       </ButtonGroup>
     );

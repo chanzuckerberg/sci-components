@@ -1,7 +1,8 @@
 // The type decides what the on stage looks like: primary fills with the accent
 // color, secondary stays neutral. Both stages are shown for each.
 
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Primary off
       </ButtonToggle>
@@ -19,7 +20,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Primary on
       </ButtonToggle>
@@ -28,7 +29,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Secondary off
       </ButtonToggle>
@@ -37,7 +38,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Secondary on
       </ButtonToggle>

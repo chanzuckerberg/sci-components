@@ -210,25 +210,25 @@ function App() {
           <Tag color="accent" label="Annotated" />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
           />
           <Tag color="accent" label="Annotated" sdsStyle="outline" />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
             sdsStyle="outline"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
             sdsStyle="outline"
@@ -240,13 +240,13 @@ function App() {
           <Tag color="accent" label="Annotated" size="small" />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
             size="small"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
             size="small"
@@ -259,14 +259,14 @@ function App() {
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             label="Annotated"
             size="small"
             sdsStyle="outline"
           />
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Annotated"
             size="small"
@@ -326,13 +326,13 @@ function App() {
       <Row>
         <Tag
           color="accent"
-          icon={<StackIcon weight="fill" />}
+          icon={<StackIcon weight="bold" />}
           label="Generated"
         />
 
         <Tag
           color="positive"
-          icon={<CheckCircleIcon />}
+          icon={<CheckCircleIcon weight="bold" />}
           label="Verified"
           sdsStyle="outline"
         />
@@ -340,7 +340,7 @@ function App() {
         <Tooltip placement="top" title="Generated">
           <Tag
             color="accent"
-            icon={<StackIcon weight="fill" />}
+            icon={<StackIcon weight="bold" />}
             iconOnly
             label="Generated"
           />

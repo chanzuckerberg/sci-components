@@ -32,15 +32,15 @@ export default {
     icon: {
       control: {
         labels: {
-          checkCircle: "SDS Icon: Check Circle",
-          infoCircle: "SDS Icon: Info Circle",
-          customSdsIcon: "Custom SDS Icon",
+          checkCircle: "Phosphor CheckCircle",
+          infoCircle: "Phosphor Info",
+          sparkles: "@czi-sds/icons Sparkles",
           customSvgIcon: "Custom SVG Icon",
         },
         type: "select",
       },
       description:
-        'The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, "positive" shows "CheckCircle", "negative" and "notice" show "ExclamationMarkCircle", and every other intent shows "InfoCircle".',
+        'An icon element, usually a Phosphor or `@czi-sds/icons` icon, shown in place of the icon the intent would pick. The Banner draws it at its own size and color. Without it, "positive" shows `CheckCircleIcon`, "negative" and "notice" show `WarningCircleIcon`, and every other intent shows `InfoIcon`.',
       mapping: BANNER_ICON_OPTIONS,
       options: Object.keys(BANNER_ICON_OPTIONS),
     },
@@ -54,12 +54,6 @@ export default {
       },
     },
     onClose: { action: BANNER_ACTIONS.onClose },
-    sdsIconProps: {
-      control: {
-        type: "object",
-      },
-      description: "Additional props to be passed to the icon component.",
-    },
     sdsType: {
       control: { type: INLINE_RADIO },
       description:

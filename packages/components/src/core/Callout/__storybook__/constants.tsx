@@ -1,4 +1,5 @@
-import CustomSdsIcon from "@components/src/common/storybook/svg/customSdsIcon";
+import { SparklesIcon } from "@czi-sds/icons";
+import { BookIcon, CheckCircleIcon } from "@phosphor-icons/react";
 import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
 
 export const CALLOUT_EXCLUDED_CONTROLS = [
@@ -14,10 +15,10 @@ export const CALLOUT_EXCLUDED_CONTROLS = [
 ];
 
 export const CALLOUT_ICON_OPTIONS = {
-  customSvgIcon: <CustomSvgIcon key="customSdsIcon" />,
-  customSdsIcon: <CustomSdsIcon key="customSvgIcon" />,
-  book: "Book",
-  checkCircle: "CheckCircle",
+  customSvgIcon: <CustomSvgIcon key="customSvgIcon" />,
+  sparkles: <SparklesIcon key="sparkles" weight="bold" />,
+  book: <BookIcon key="book" weight="bold" />,
+  checkCircle: <CheckCircleIcon key="checkCircle" weight="bold" />,
 };
 
 export const CALLOUT_SDS_STYLE_OPTIONS = [

@@ -14,8 +14,8 @@ import {
 import { TestDemo } from "./stories/test";
 import { WithTopComponentSlotDemo } from "./stories/withTopComponentSlot";
 import { DrawerStyleDemo } from "./stories/drawerStyle";
+import { UserIcon } from "@phosphor-icons/react";
 import { INLINE_RADIO } from "@components/src/common/utils";
-import Icon from "@components/src/core/Icon";
 
 export default {
   argTypes: {
@@ -221,7 +221,7 @@ export const DropdownStyle = {
       {
         sdsStyle: "minimal",
         sdsType: "primary",
-        children: <Icon sdsIcon="Person" sdsSize="s" />,
+        children: <UserIcon weight="bold" />,
         onClick: () => alert("clicked on my profile"),
       },
     ],
@@ -314,7 +314,7 @@ export const DrawerStyle = {
         sdsStyle: "minimal",
         sdsType: "secondary",
         size: "large",
-        children: <Icon sdsIcon="Person" sdsSize="s" />,
+        children: <UserIcon weight="bold" />,
         onClick: () => alert("clicked on my profile"),
       },
     ],
@@ -347,7 +347,7 @@ export const WithTopComponent = {
         sdsStyle: "outline",
       },
       {
-        children: <Icon sdsIcon="Person" sdsSize="s" />,
+        children: <UserIcon weight="bold" />,
         onClick: () => alert("clicked on my profile"),
       },
     ],

@@ -35,14 +35,14 @@ export default {
       control: {
         labels: {
           customSvgIcon: "Custom SVG Icon",
-          customSdsIcon: "Custom SDS Icon",
-          book: "SDS Icon: Book",
-          checkCircle: "SDS Icon: Check Circle",
+          sparkles: "@czi-sds/icons Sparkles",
+          book: "Phosphor Book",
+          checkCircle: "Phosphor CheckCircle",
         },
         type: "select",
       },
       description:
-        "The icon displayed in the Callout. By default, each Callout intent is paired with a corresponding SDS icon.",
+        "An icon element, usually a Phosphor or `@czi-sds/icons` icon, shown in place of the icon the intent would pick. The Callout draws it at its own size and color. By default, each Callout intent is paired with a corresponding icon.",
       mapping: CALLOUT_ICON_OPTIONS,
       options: Object.keys(CALLOUT_ICON_OPTIONS),
     },

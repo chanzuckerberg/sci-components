@@ -19,9 +19,9 @@
         "type": "string"
       },
       "icon": {
-        "description": "An SDS icon name, drawn at the small size, or an SVG element of your own for artwork SDS does not carry. Size an element you pass to 16px and fill it with currentColor so it follows the selection.",
+        "description": "An icon element, usually a Phosphor or @czi-sds/icons icon. The control draws it at 16px. An SVG of your own should fill with currentColor so it follows the selection.",
         "isRequired": false,
-        "type": "keyof IconNameToSizes | React.ReactElement"
+        "type": "React.ReactElement"
       },
       "label": {
         "description": "Text for the segment, used instead of an icon. It becomes the segment's accessible name and the tooltip's fallback text.",
