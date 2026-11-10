@@ -198,6 +198,11 @@ export const catalog: CatalogCategory[] = [
     title: "Data Visualization",
     entries: [
       {
+        name: "GenomeTrack",
+        docs: "data-viz-genometrack",
+        example: "data-viz/GenomeTrack/DefaultGenomeTrack",
+      },
+      {
         name: "HeatmapChart",
         docs: "data-viz-heatmapchart",
         example: "data-viz/HeatmapChart/DefaultHeatmapChart",

@@ -70,6 +70,13 @@ export default {
         defaultValue: { summary: "sum of all values" },
       },
     },
+    maxItems: {
+      control: {
+        type: "number",
+      },
+      description:
+        "Maximum number of items shown as their own segment (used only in 'cumulative' mode). The rest fold into the remaining segment, whose legend entry opens a menu listing them",
+    },
     mode: {
       control: {
         type: "select",
@@ -196,7 +203,6 @@ export const Default = {
 export const ProportionalWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "proportional",
     showLegend: true,
@@ -212,7 +218,6 @@ export const ProportionalWithSelectionDimBehavior = {
 export const CumulativeWithSelectionDimBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
     unit: "datasets",
@@ -231,7 +236,6 @@ export const CumulativeWithSelectionDimBehavior = {
 export const ProportionalWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "proportional",
     showLegend: true,
@@ -248,7 +252,6 @@ export const ProportionalWithSelectionHideBehavior = {
 export const CumulativeWithSelectionHideBehavior = {
   render: WithSelectionStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     mode: "cumulative",
     unit: "datasets",
@@ -265,10 +268,27 @@ export const CumulativeWithSelectionHideBehavior = {
   },
 };
 
+export const CumulativeWithRemainingMenu = {
+  render: WithSelectionStory,
+  args: {
+    data: STACKED_BAR_CHART_DATA_MORE_CATEGORIES,
+    mode: "cumulative",
+    maxItems: 5,
+    remainingLabel: "Other",
+    legendValueFormat: "count",
+    showLegend: true,
+    showLegendValues: true,
+    title: "Domain",
+    width: "360px",
+    colorGeneratorOptions: {
+      ...DEFAULT_COLOR_GENERATOR_OPTIONS,
+    },
+  },
+};
+
 export const WithMouseEvents = {
   render: WithMouseEventsStory,
   args: {
-    barHeight: 16,
     data: STACKED_BAR_CHART_DATA,
     showLegend: true,
     showLegendValues: true,

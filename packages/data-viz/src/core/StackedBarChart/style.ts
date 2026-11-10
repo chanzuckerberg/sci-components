@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import {
   CommonThemeProps,
-  fontTabularSemiboldXxxxs,
-  fontHeaderS,
+  fontBodyMediumXs,
   getCorners,
   getSpaces,
   getSemanticColors,
@@ -27,35 +26,18 @@ export const TitleContainer = styled("div")`
     const spaces = getSpaces(props);
     return `
       gap: ${spaces?.s}px;
-      margin-bottom: ${spaces?.l}px;
+      margin-bottom: ${spaces?.s}px;
     `;
   }}
 `;
 
 export const ChartTitle = styled("div")`
-  ${fontHeaderS}
+  ${fontBodyMediumXs}
 
   ${(props: CommonThemeProps) => {
     const semanticColors = getSemanticColors(props);
     return `
       color: ${semanticColors?.base?.textPrimary};
-    `;
-  }}
-`;
-
-export const StyledBadge = styled("div")`
-  ${fontTabularSemiboldXxxxs}
-
-  ${(props: CommonThemeProps) => {
-    const spaces = getSpaces(props);
-    const corners = getCorners(props);
-    const semanticColors = getSemanticColors(props);
-
-    return `
-      padding: ${spaces?.xxxs}px ${spaces?.xxs}px;
-      border-radius: ${corners?.m}px;
-      background-color: ${semanticColors?.base?.backgroundTertiary};
-      color: ${semanticColors?.base?.textSecondary};
     `;
   }}
 `;
@@ -77,11 +59,10 @@ export const BarContainer = styled("div")<BarContainerProps>`
 
     return `
       display: flex;
-      border-radius: ${corners?.s}px;
+      border-radius: ${corners?.m}px;
       width: ${finalWidth};
       height: ${barHeight}px;
       background-color: ${isEmpty ? semanticColors?.base?.backgroundTertiary : "transparent"};
-      overflow: hidden;
     `;
   }}
 `;
@@ -101,6 +82,7 @@ export const BarSegment = styled("div")<BarSegmentProps>`
     const { color, height, percentage, opacity, disabled, isLast } = props;
 
     const spaces = getSpaces(props);
+    const corners = getCorners(props);
     const gap = spaces?.xxxs || 0;
 
     // Add gap as margin-right for spacing between segments
@@ -110,6 +92,7 @@ export const BarSegment = styled("div")<BarSegmentProps>`
 
     return `
       background-color: ${color};
+      border-radius: ${corners?.m}px;
       height: ${height}px;
       flex-grow: ${percentage};
       flex-basis: 0;
@@ -130,7 +113,7 @@ export const StyledStackedBarChartWrapper = styled("div")`
     return `
       display: flex;
       flex-direction: column;
-      gap: ${spaces?.m}px;
+      gap: ${spaces?.s}px;
     `;
   }}
 `;
