@@ -1,3 +1,4 @@
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import {
   TOOLTIP_MID_LABEL,
   TOOLTIP_ARROW_OFFSET_OPTIONS,
@@ -8,7 +9,6 @@ import {
 } from "../constants";
 import RawTooltip from "@components/src/core/Tooltip";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 
 export const ScreenshotTestDemo = (): JSX.Element => {
   const LEVEL_STYLE: React.CSSProperties = {
@@ -147,7 +147,7 @@ export const ScreenshotTestDemo = (): JSX.Element => {
                   sdsType="secondary"
                   tabIndex={0}
                 >
-                  <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+                  <WarningCircleIcon weight="bold" />
                 </Button>
               </RawTooltip>
             </div>

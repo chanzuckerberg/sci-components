@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { InfoIcon } from "@phosphor-icons/react";
 import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
@@ -79,9 +80,11 @@ describe("<ButtonToggle />", () => {
   });
 
   it("renders with startIcon prop", () => {
-    render(<Test {...Test.args} startIcon="InfoCircle" />);
+    render(<Test {...Test.args} startIcon={<InfoIcon />} />);
     const buttonElement = screen.getByTestId(BUTTON_TOGGLE_TEST_ID);
-    expect(buttonElement).toBeInTheDocument();
+    expect(
+      buttonElement.querySelector(".MuiButton-startIcon svg")
+    ).toBeTruthy();
   });
 
   it("renders with backgroundOnHover prop", () => {

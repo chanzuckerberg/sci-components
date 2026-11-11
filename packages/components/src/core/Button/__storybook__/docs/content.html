@@ -89,40 +89,37 @@
     </p>
   </li>
 </ul>
-<p>
-  Icons can be used in both MUI and SDS Button component, but are called in
-  slightly different ways:
-</p>
+<p>Icons are passed to the SDS Button the same way as to MUI's Button:</p>
 <ul class="sds-doc-bullet-list">
   <li>
     <p>
       <code>startIcon</code> and <code>endIcon</code>: Both of these props are
-      supported by both MUI and SDS's Buttons. However, MUI expects the prop to
-      receive an individual icon as its own component (for example
-      <code>startIcon={&lt;DeleteIcon /&gt;}</code>), whereas SDS takes the Icon
-      component which references which specific icon to call, as one of its
-      props, as such:
+      supported by both MUI and SDS's Buttons, and both take an individual icon
+      as its own component. Where MUI's examples use its own icons (for example
+      <code>startIcon={&lt;DeleteIcon /&gt;}</code>), SDS uses Phosphor or
+      <code>@czi-sds/icons</code> icons, which the Button sizes and colors for
+      you:
     </p>
   </li>
 </ul>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-tsx">startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</code></pre>
+    <pre><code class="sds-doc-codeblock-content language-tsx">startIcon={&lt;DownloadSimpleIcon weight="bold" /&gt;}</code></pre>
   </figure>
 </div>
 <p>
-  To render an icon-only button, pass a single Icon component as the button's
-  child instead of using <code>startIcon</code> or <code>endIcon</code>. The
-  Button detects the icon-only child and adjusts its padding to stay square.
-  Remember to give the button an <code>aria-label</code>, since it has no text
-  for screen readers to announce:
+  To render an icon-only button, pass a single icon as the button's child
+  instead of using <code>startIcon</code> or <code>endIcon</code>. The Button
+  detects the icon-only child and adjusts its padding to stay square. Remember
+  to give the button an <code>aria-label</code>, since it has no text for screen
+  readers to announce:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
     <pre><code class="sds-doc-codeblock-content language-tsx">&lt;Button aria-label="Download"&gt;
-  &lt;Icon sdsIcon="Download" sdsSize="s" /&gt;
+  &lt;DownloadSimpleIcon weight="bold" /&gt;
 &lt;/Button&gt;</code></pre>
   </figure>
 </div>
@@ -275,8 +272,10 @@
     <td><p>-</p></td>
     <td>
       <p>
-        An icon placed before the label. Pass the SDS Icon component, for
-        example <code>&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;</code>.
+        An icon placed before the label, usually a Phosphor or
+        <code>@czi-sds/icons</code> icon, for example
+        <code>&lt;DownloadSimpleIcon weight="bold" /&gt;</code>. The button
+        sizes and colors it.
       </p>
     </td>
   </tr>
@@ -300,9 +299,8 @@
     <td><p>-</p></td>
     <td>
       <p>
-        The button label. Passing a single Icon component as the only child
-        renders an icon-only button, which the component detects and pads
-        symmetrically.
+        The button label. Passing a single icon as the only child renders an
+        icon-only button, which the component detects and pads symmetrically.
       </p>
     </td>
   </tr>

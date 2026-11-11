@@ -1,5 +1,11 @@
+import {
+  CheckCircleIcon,
+  InfoIcon,
+  WarningCircleIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import React, { ForwardedRef, forwardRef, useState } from "react";
-import Icon, { IconNameToSizes, IconProps } from "@components/src/core/Icon";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import {
   BannerExtraProps,
   Centered,
@@ -17,8 +23,12 @@ export type BannerIntentType =
 
 export interface BannerProps extends BannerExtraProps {
   children: React.ReactNode;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSizes>>;
+  /**
+   * An icon element, usually a Phosphor or `@czi-sds/icons` icon, shown in
+   * place of the icon the intent would pick. The Banner draws it at its own
+   * size and color.
+   */
+  icon?: React.ReactElement;
   dismissed?: boolean;
   dismissible?: boolean;
   onClose?: (e: React.MouseEvent) => void;
@@ -36,7 +46,6 @@ const Banner = forwardRef(function Banner(
     onClose,
     sdsType,
     icon,
-    sdsIconProps,
     intent = "info",
     ...rest
   } = props;
@@ -54,29 +63,17 @@ const Banner = forwardRef(function Banner(
   };
 
   const iconItem = () => {
-    if (icon) {
-      if (typeof icon !== "string") {
-        return icon;
-      } else {
-        return <Icon sdsIcon={icon} sdsSize="s" {...sdsIconProps} />;
-      }
-    } else {
-      switch (intent) {
-        case "positive":
-          return <Icon sdsIcon="CheckCircle" sdsSize="s" {...sdsIconProps} />;
-        case "negative":
-        case "notice":
-          return (
-            <Icon
-              sdsIcon="ExclamationMarkCircle"
-              sdsSize="s"
-              {...sdsIconProps}
-            />
-          );
-        case "info":
-        default:
-          return <Icon sdsIcon="InfoCircle" sdsSize="s" {...sdsIconProps} />;
-      }
+    if (icon) return icon;
+
+    switch (intent) {
+      case "positive":
+        return <CheckCircleIcon {...INTERNAL_ICON_PROPS} size={16} />;
+      case "negative":
+      case "notice":
+        return <WarningCircleIcon {...INTERNAL_ICON_PROPS} size={16} />;
+      case "info":
+      default:
+        return <InfoIcon {...INTERNAL_ICON_PROPS} size={16} />;
     }
   };
 
@@ -104,7 +101,7 @@ const Banner = forwardRef(function Banner(
           backgroundOnHover={false}
           onClick={handleClose}
         >
-          <Icon sdsIcon="XMark" sdsSize="s" />
+          <XIcon {...INTERNAL_ICON_PROPS} size={16} />
         </StyledButton>
       )}
     </StyledBanner>

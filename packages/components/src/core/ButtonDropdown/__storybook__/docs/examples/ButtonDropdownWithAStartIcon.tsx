@@ -1,11 +1,12 @@
-import { ButtonDropdown, Icon } from "@czi-sds/components";
+import { VirusIcon } from "@phosphor-icons/react";
+import { ButtonDropdown } from "@czi-sds/components";
 
 function App() {
   return (
     <div className="app">
       <ButtonDropdown
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="Bacteria" sdsSize="s" />}
+        startIcon={<VirusIcon weight="bold" />}
       >
         Bacteria Types
       </ButtonDropdown>

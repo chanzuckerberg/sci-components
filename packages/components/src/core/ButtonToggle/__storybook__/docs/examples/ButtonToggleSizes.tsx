@@ -1,4 +1,5 @@
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <ButtonToggle
         size="large"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Large
       </ButtonToggle>
@@ -17,7 +18,7 @@ function App() {
       <ButtonToggle
         size="medium"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Medium
       </ButtonToggle>
@@ -25,7 +26,7 @@ function App() {
       <ButtonToggle
         size="small"
         sdsStyle="outline"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Small
       </ButtonToggle>

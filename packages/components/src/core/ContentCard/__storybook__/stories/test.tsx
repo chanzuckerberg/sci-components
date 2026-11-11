@@ -5,14 +5,14 @@ import ContentCard, {
   ContentCardActions,
   ContentCardBody,
 } from "@components/src/core/ContentCard";
-import Icon from "@components/src/core/Icon";
+import { CompassIcon } from "@phosphor-icons/react";
 
 export const TestDemo = (props: Args): JSX.Element => {
   return (
     <ContentCard
       data-testid="content-card"
       visualElementType="icon"
-      icon={<Icon sdsIcon="Compass" sdsSize="xl" />}
+      icon={<CompassIcon weight="bold" size={32} />}
       titleText="Content Card Title"
       subtitleText="Content Card Subtitle"
       metadataText="Content Card Metadata"

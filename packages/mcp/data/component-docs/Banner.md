@@ -166,19 +166,24 @@ export default App;
 
 ### Banner with a custom icon
 
-This example replaces the icon chosen by the intent with a named SDS icon.
+This example replaces the icon chosen by the intent with a Phosphor icon. The Banner draws the icon you pass at its own size and in the intent's color.
 
 **Example: BannerWithACustomIcon**
 
 ```tsx
-// Replacing the intent's default icon with any SDS icon
+// Replacing the intent's default icon with any Phosphor or @czi-sds/icons icon
 
+import { VirusIcon } from "@phosphor-icons/react";
 import { Banner } from "@czi-sds/components";
 
 function App() {
   return (
     <div className="app">
-      <Banner sdsType="secondary" intent="accent" icon="Bacteria">
+      <Banner
+        sdsType="secondary"
+        intent="accent"
+        icon={<VirusIcon weight="bold" />}
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </Banner>
     </div>
@@ -219,13 +224,12 @@ export default App;
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name           | Type                                                                 | Default  | Description                                                                                                                                                                                                                                                                                         |
-| -------------- | -------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sdsType`      | `"primary"` \| `"secondary"`                                         | -        | Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.                                                                       |
-| `children`     | `ReactNode`                                                          | -        | Required. The content of the Banner, laid out beside the icon and centered in the space left by the close button.                                                                                                                                                                                   |
-| `intent`       | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | `"info"` | The intent color of the Banner component, which also selects the default icon.                                                                                                                                                                                                                      |
-| `dismissible`  | `boolean`                                                            | `true`   | If `true`, the banner can be dismissed by the user. This is what controls whether the close button is rendered.                                                                                                                                                                                     |
-| `dismissed`    | `boolean`                                                            | -        | If `true`, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state. Passing any value, `false` included, takes that over: the close button then only fires `onClose`, and the Banner closes when you set `dismissed` to `true`. |
-| `onClose`      | `function`                                                           | -        | Callback fired when the user clicks the close button. **Signature:** `function(event: React.MouseEvent) => void` - `event` The event source of the callback.                                                                                                                                        |
-| `icon`         | `keyof IconNameToSizes` \| `ReactElement<CustomSVGProps>`            | -        | The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, `"positive"` shows `"CheckCircle"`, `"negative"` and `"notice"` show `"ExclamationMarkCircle"`, and every other intent shows `"InfoCircle"`.                                        |
-| `sdsIconProps` | `Partial<IconProps<keyof IconNameToSizes>>`                          | -        | Additional props to be passed to the icon component.                                                                                                                                                                                                                                                |
+| Name          | Type                                                                 | Default  | Description                                                                                                                                                                                                                                                                                                     |
+| ------------- | -------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sdsType`     | `"primary"` \| `"secondary"`                                         | -        | Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.                                                                                   |
+| `children`    | `ReactNode`                                                          | -        | Required. The content of the Banner, laid out beside the icon and centered in the space left by the close button.                                                                                                                                                                                               |
+| `intent`      | `"accent"` \| `"info"` \| `"negative"` \| `"notice"` \| `"positive"` | `"info"` | The intent color of the Banner component, which also selects the default icon.                                                                                                                                                                                                                                  |
+| `dismissible` | `boolean`                                                            | `true`   | If `true`, the banner can be dismissed by the user. This is what controls whether the close button is rendered.                                                                                                                                                                                                 |
+| `dismissed`   | `boolean`                                                            | -        | If `true`, the banner has been dismissed and renders nothing. Leave this unset to let the Banner keep track of its own dismissed state. Passing any value, `false` included, takes that over: the close button then only fires `onClose`, and the Banner closes when you set `dismissed` to `true`.             |
+| `onClose`     | `function`                                                           | -        | Callback fired when the user clicks the close button. **Signature:** `function(event: React.MouseEvent) => void` - `event` The event source of the callback.                                                                                                                                                    |
+| `icon`        | `ReactElement`                                                       | -        | An icon element, usually a Phosphor or `@czi-sds/icons` icon, shown in place of the icon the intent would pick. The Banner draws it at its own size and color. Without it, `"positive"` shows `CheckCircleIcon`, `"negative"` and `"notice"` show `WarningCircleIcon`, and every other intent shows `InfoIcon`. |

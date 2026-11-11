@@ -24,12 +24,16 @@ import React, {
   useState,
 } from "react";
 import { useForkRef } from "@mui/material/utils";
-import { EMPTY_OBJECT, noop } from "@components/src/common/utils";
+import { MagnifyingGlassIcon, XCircleIcon } from "@phosphor-icons/react";
+import {
+  EMPTY_OBJECT,
+  INTERNAL_ICON_PROPS,
+  noop,
+} from "@components/src/common/utils";
 import Button from "@components/src/core/Button";
-import Icon, { IconProps } from "@components/src/core/Icon";
 import { InputSearchProps } from "@components/src/core/InputSearch";
 import { StyledInputAdornment } from "@components/src/core/InputSearch/style";
-import MenuItem, { IconNameToSmallSizes } from "@components/src/core/MenuItem";
+import MenuItem from "@components/src/core/MenuItem";
 import { SDSTheme } from "@components/src/core/styles";
 import {
   InputBaseWrapper,
@@ -54,8 +58,7 @@ interface AutocompleteOptionGeneral {
 export interface AutocompleteOptionBasic extends AutocompleteOptionGeneral {
   count?: number; // An optional count associated with the option.
   details?: string; // An optional string for additional details.
-  icon?: keyof IconNameToSmallSizes | React.ReactElement<CustomSVGProps>; // An optional icon key.
-  sdsIconProps?: Partial<IconProps<keyof IconNameToSmallSizes>>; // Optional properties for the associated icon.
+  icon?: React.ReactElement; // An optional icon, drawn by the MenuItem at its own size.
 }
 
 // (masoudmanson): Represents an autocomplete option that includes a custom React component.
@@ -350,7 +353,7 @@ const AutocompleteBase = <
                       sdsStyle="minimal"
                       backgroundOnHover={false}
                     >
-                      <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                      <XCircleIcon {...INTERNAL_ICON_PROPS} size={16} />
                     </Button>
                   )}
                 </StyledInputAdornment>
@@ -374,7 +377,7 @@ const AutocompleteBase = <
                     sdsStyle="minimal"
                     backgroundOnHover={false}
                   >
-                    <Icon sdsIcon="Search" sdsSize="s" />
+                    <MagnifyingGlassIcon {...INTERNAL_ICON_PROPS} size={16} />
                   </Button>
                 </StyledInputAdornment>
               ),
@@ -489,7 +492,6 @@ const AutocompleteBase = <
       details,
       count,
       icon,
-      sdsIconProps,
       disabled: optionDisabled,
       ...restOptionProps
     } = option;
@@ -518,7 +520,6 @@ const AutocompleteBase = <
         column={count}
         disabled={optionDisabled || optionProps["aria-disabled"] === true}
         icon={icon}
-        sdsIconProps={sdsIconProps}
         isMultiSelect={multiple}
         selected={selected}
         {...optionProps}

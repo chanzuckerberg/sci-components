@@ -25,7 +25,7 @@
         "type": "boolean"
       },
       "startIcon": {
-        "description": "An optional icon placed before the label. Pass the SDS Icon component, for example <Icon sdsIcon=\"Download\" sdsSize=\"s\" />.",
+        "description": "An optional icon placed before the label, usually a Phosphor or @czi-sds/icons icon, for example <DownloadSimpleIcon weight=\"bold\" />. The button sizes and colors it.",
         "isRequired": false,
         "type": "ReactNode"
       },

@@ -1,6 +1,10 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
+import { DownloadSimpleIcon, PushPinSimpleIcon } from "@phosphor-icons/react";
+
+const ICON_GRAY = "#969696";
+
 export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
   {
     name: "Copy",
@@ -19,27 +23,19 @@ export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
     section: "Default",
   },
   {
-    icon: "Pin",
+    icon: <PushPinSimpleIcon weight="bold" color={ICON_GRAY} />,
     name: "Pin",
     onClick: () => {
       console.log("Pinned Successfully!");
-    },
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
     },
     sdsType: "action",
     section: "With Icon",
   },
   {
-    icon: "Download",
+    icon: <DownloadSimpleIcon weight="bold" color={ICON_GRAY} />,
     name: "Download",
     onClick: () => {
       console.log("Download Started!");
-    },
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
     },
     sdsType: "action",
     section: "With Icon",
@@ -64,28 +60,20 @@ export const AUTOCOMPLETE_ACTION_TYPE_OPTIONS = [
   },
   {
     count: "⌘ ⌥ P",
-    icon: "Pin",
+    icon: <PushPinSimpleIcon weight="bold" color={ICON_GRAY} />,
     name: "Pin",
     onClick: () => {
       console.log("Pinned Successfully!");
-    },
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
     },
     sdsType: "action",
     section: "With Icon and Shortcut",
   },
   {
     count: "⌘ ⌥ D",
-    icon: "Download",
+    icon: <DownloadSimpleIcon weight="bold" color={ICON_GRAY} />,
     name: "Download",
     onClick: () => {
       console.log("Download Started!");
-    },
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
     },
     sdsType: "action",
     section: "With Icon and Shortcut",

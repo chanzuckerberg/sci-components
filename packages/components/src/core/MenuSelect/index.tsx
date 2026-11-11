@@ -7,8 +7,9 @@ import {
   InputAdornment,
   MenuList,
 } from "@mui/material";
+import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import React, { useState } from "react";
-import { noop } from "@components/src/common/utils";
+import { INTERNAL_ICON_PROPS, noop } from "@components/src/common/utils";
 import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
@@ -22,7 +23,6 @@ import {
   StyledMenuInputSearch,
   StyledMenuItem,
 } from "./style";
-import Icon from "../Icon";
 // (thuang): This requires option to have a `name` property.
 export interface DefaultMenuSelectOption {
   name: string;
@@ -136,7 +136,7 @@ const MenuSelect = <
                       sdsStyle="minimal"
                       backgroundOnHover={false}
                     >
-                      <Icon sdsIcon="Search" sdsSize="s" />
+                      <MagnifyingGlassIcon {...INTERNAL_ICON_PROPS} size={16} />
                     </Button>
                   </InputAdornment>
                 ),

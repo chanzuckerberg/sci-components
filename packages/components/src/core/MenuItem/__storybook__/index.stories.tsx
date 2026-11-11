@@ -24,14 +24,14 @@ export default {
     icon: {
       control: {
         labels: {
-          gear: "SDS Icon: Gear",
-          customSdsIcon: "Custom SDS Icon",
+          gear: "Phosphor Gear",
+          sparkles: "@czi-sds/icons Sparkles",
           customSvgIcon: "Custom SVG Icon",
         },
         type: "select",
       },
       description:
-        "The icon shown at the start of the item, either the name of an SDS icon or an element of your own. Only icons that come in a small size can be named here.",
+        "The icon shown at the start of the item, usually a Phosphor or `@czi-sds/icons` icon. The item draws it at its own size, in blue unless the icon sets a `color`.",
       mapping: MENU_ITEM_ICON_OPTIONS,
       options: Object.keys(MENU_ITEM_ICON_OPTIONS),
     },
@@ -47,13 +47,6 @@ export default {
       control: { type: "text" },
       description:
         "Story-only: the item's text, which the story renders as the MenuItem's children.",
-    },
-    sdsIconProps: {
-      control: {
-        type: "object",
-      },
-      description:
-        "Enables you to pass additional props to customize the SDS icon within the menu item.",
     },
     sdsStyle: {
       control: {
@@ -102,9 +95,6 @@ export const Default = {
     disabled: false,
     isMultiSelect: false,
     name: "Text here",
-    sdsIconProps: {
-      color: "blue",
-    },
     sdsStyle: "determinate",
     sdsType: "default",
     selected: false,
@@ -119,9 +109,6 @@ export const ActionType = {
     disabled: false,
     isMultiSelect: false,
     name: "Text here",
-    sdsIconProps: {
-      color: "blue",
-    },
     sdsStyle: "determinate",
     sdsType: "action",
     selected: false,

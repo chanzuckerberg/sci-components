@@ -158,28 +158,34 @@ export default App;
 
 ### Custom Icons
 
-An icon can be given by name or as an element. Names are rendered at xs, so pass an element when you need a different size.
+An icon is given as an element, usually a Phosphor or `@czi-sds/icons` icon. The message draws it at 12px in the intent color.
 
 **Example: IntentMessageCustomIcons**
 
 ```tsx
-// icon takes either an SDS icon name or an element. A name is always rendered at
-// xs, so it has to be an icon that offers that size. Either way the fill is
-// forced to the intent color.
+// icon takes an element, usually a Phosphor or @czi-sds/icons icon. The message
+// draws it at 12px and forces its fill to the intent color, whatever size or
+// color the icon was given.
 
-import { Icon, IntentMessage, IntentMessageItem } from "@czi-sds/components";
+import { GitHubIcon, SparkleIcon } from "@czi-sds/icons";
+import { LockIcon } from "@phosphor-icons/react";
+import { IntentMessage, IntentMessageItem } from "@czi-sds/components";
 
 const MESSAGES: IntentMessageItem[] = [
-  { icon: "Github", intent: "notice", text: "Named SDS icon, rendered at xs" },
   {
-    icon: <Icon sdsIcon="Sparkle" sdsSize="s" />,
-    intent: "positive",
-    text: "An Icon element, so you choose the size",
+    icon: <GitHubIcon weight="bold" />,
+    intent: "notice",
+    text: "An icon from @czi-sds/icons",
   },
   {
-    icon: <Icon sdsIcon="Lock" sdsSize="xs" />,
+    icon: <SparkleIcon weight="bold" size={24} />,
+    intent: "positive",
+    text: "Drawn at 12px whatever size it is given",
+  },
+  {
+    icon: <LockIcon weight="bold" color="#000000" />,
     intent: "negative",
-    text: "The icon color follows the intent, not the Icon color prop",
+    text: "The icon color follows the intent, not the icon's color prop",
   },
 ];
 
@@ -264,9 +270,9 @@ The guidelines above describe two Figma constructs: an Intent Message built into
 
 - The border is drawn just outside the wrapper, 8px to the left of its edge. Leave room for it, or a parent with no left padding will clip it.
 
-- An icon passed by name always renders at the xs size, so it has to be an icon that offers xs. A name that does not logs an error and renders nothing. Pass an Icon element instead when you need another size.
+- The icon is always drawn at 12px, so the `size` prop on an icon you pass in has no effect.
 
-- The icon fill is forced to the intent color, so the `color` prop on an Icon element you pass in has no effect.
+- The icon fill is forced to the intent color, so the `color` prop on an icon you pass in has no effect.
 
 - The messages are plain text with no ARIA wiring, so assistive technology does not connect them to the Input. When a message needs to be announced, render IntentMessage beside the Input and point the Input's `aria-describedby` at a wrapper around it, as in the last example below.
 
@@ -286,8 +292,8 @@ That is the whole prop surface. `IntentMessageProps` does not extend the DOM att
 
 ### IntentMessageItem
 
-| Name     | Type                                    | Default                                                               | Description                                                                                                                                |
-| -------- | --------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `intent` | `"negative" \| "notice" \| "positive"`  | -                                                                     | Required. Sets the text color, the icon color, and this message's place in the ranking.                                                    |
-| `text`   | `string`                                | -                                                                     | Required. The message copy. Long text wraps.                                                                                               |
-| `icon`   | `keyof IconNameToSizes \| ReactElement` | `"CheckCircle"` for `"positive"`, `"ExclamationMarkCircle"` otherwise | Replaces the default icon. A name renders at xs; an element is rendered as given, though its fill is still overridden by the intent color. |
+| Name     | Type                                   | Default                                                           | Description                                                                                                                                       |
+| -------- | -------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `intent` | `"negative" \| "notice" \| "positive"` | -                                                                 | Required. Sets the text color, the icon color, and this message's place in the ranking.                                                           |
+| `text`   | `string`                               | -                                                                 | Required. The message copy. Long text wraps.                                                                                                      |
+| `icon`   | `ReactElement`                         | `CheckCircleIcon` for `"positive"`, `WarningCircleIcon` otherwise | Replaces the default icon, usually with a Phosphor or `@czi-sds/icons` icon. It is drawn at 12px, and its fill is overridden by the intent color. |

@@ -1,8 +1,9 @@
+import { DotsThreeIcon } from "@phosphor-icons/react";
 import React, { useState } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import MenuItem from "@components/src/core/MenuItem";
 import { StyledPage, StyledPaginationButton } from "../../style";
 import { StyledPaginationDropdownMenu } from "./style";
-import Icon from "@components/src/core/Icon";
 
 interface PageListDropdownProps {
   pageList: number[];
@@ -33,7 +34,7 @@ const PageListDropdown = (props: PageListDropdownProps) => {
         sdsType="secondary"
         backgroundOnHover={false}
       >
-        <Icon sdsIcon="DotsHorizontal" sdsSize="s" />
+        <DotsThreeIcon {...INTERNAL_ICON_PROPS} size={16} />
       </StyledPaginationButton>
       <StyledPaginationDropdownMenu
         anchorEl={anchorEl}

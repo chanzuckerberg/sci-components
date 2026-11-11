@@ -1,18 +1,16 @@
-import { Button, Icon } from "@czi-sds/components";
+import { Button } from "@czi-sds/components";
+import { CaretRightIcon, DownloadSimpleIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app" style={{ display: "flex", gap: "16px" }}>
       <Button
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+        startIcon={<DownloadSimpleIcon weight="bold" />}
       >
         Download
       </Button>
-      <Button
-        sdsType="secondary"
-        endIcon={<Icon sdsIcon="ChevronRight" sdsSize="s" />}
-      >
+      <Button sdsType="secondary" endIcon={<CaretRightIcon weight="bold" />}>
         Next
       </Button>
     </div>

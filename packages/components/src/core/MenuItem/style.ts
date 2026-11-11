@@ -1,5 +1,6 @@
 import { MenuItem, menuItemClasses, MenuItemProps } from "@mui/material";
 import styled from "@emotion/styled";
+import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import { fontBodyXs } from "@components/src/core/styles/common/mixins/fonts";
 import {
   CommonThemeProps,
@@ -8,7 +9,6 @@ import {
   getSemanticColors,
   getSpaces,
 } from "@components/src/core/styles";
-import Icon from "../Icon";
 
 export interface MenuItemExtraProps extends CommonThemeProps, MenuItemProps {}
 
@@ -42,7 +42,7 @@ export const StyledMenuItem = styled(MenuItem)`
         }
       }
 
-      &.${menuItemClasses.root} .MuiSvgIcon-root {
+      &.${menuItemClasses.root} svg {
         align-self: flex-start;
       }
 
@@ -57,7 +57,7 @@ export const StyledMenuItem = styled(MenuItem)`
           background-color: ${semanticColors?.base?.fillPrimaryInteraction} !important;
         }
 
-        ${StyledIcon}, ${DotIcon} {
+        ${StyledCheckIcon}, ${StyledMinusIcon}, ${DotIcon} {
           color: ${selected ? semanticColors?.base?.ornamentPrimary : semanticColors?.base?.ornamentSecondary};
         }
       }
@@ -68,7 +68,7 @@ export const StyledMenuItem = styled(MenuItem)`
 
       &:hover {
         background-color: ${semanticColors?.base?.fillPrimaryInteraction};
-        ${StyledIcon}, ${DotIcon} {
+        ${StyledCheckIcon}, ${StyledMinusIcon}, ${DotIcon} {
           color: ${selected ? semanticColors?.base?.ornamentPrimary : semanticColors?.base?.ornamentSecondary};
         }
       }
@@ -81,12 +81,12 @@ export const StyledMenuItem = styled(MenuItem)`
       }
 
       &:active {
-        ${StyledIcon}, ${DotIcon} {
+        ${StyledCheckIcon}, ${StyledMinusIcon}, ${DotIcon} {
           color: ${semanticColors?.base?.ornamentPrimary};
         }
 
         &:active {
-          ${StyledIcon}, ${DotIcon} {
+          ${StyledCheckIcon}, ${StyledMinusIcon}, ${DotIcon} {
             color: ${semanticColors?.base?.ornamentPrimary};
           }
         }
@@ -149,14 +149,18 @@ export const StyledMenuItemIcon = styled("span")`
     const spaces = getSpaces(props);
     const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
+    const disabledColor = semanticColors?.base?.ornamentDisabled;
 
     return `
       margin-right: ${spaces?.xs}px;
       margin-top: ${spaces?.xxxs}px;
       height: ${iconSizes?.s.height}px;
+      color: ${semanticColors?.accent?.ornament};
 
-      .MuiSvgIcon-root {
-        ${disabled ? `color: ${semanticColors?.base?.ornamentDisabled};` : null};
+      svg {
+        height: ${iconSizes?.s.height}px;
+        width: ${iconSizes?.s.width}px;
+        ${disabled ? `color: ${disabledColor}; fill: ${disabledColor};` : ""}
       }
     `;
   }}
@@ -208,19 +212,30 @@ interface StyledIconProps extends CommonThemeProps {
   disabled?: boolean;
 }
 
-export const StyledIcon = styled(Icon)`
-  ${(props: StyledIconProps) => {
-    const { selected, disabled } = props;
-    const semanticColors = getSemanticColors(props);
+const selectionIconStyles = (props: StyledIconProps) => {
+  const { selected, disabled } = props;
+  const semanticColors = getSemanticColors(props);
 
-    const selectedColor = disabled
-      ? semanticColors?.base?.ornamentDisabled
-      : semanticColors?.base?.ornamentPrimary;
+  const selectedColor = disabled
+    ? semanticColors?.base?.ornamentDisabled
+    : semanticColors?.base?.ornamentPrimary;
 
-    return `
-      color: ${selected ? selectedColor : "transparent"};
-    `;
-  }}
+  return `
+    color: ${selected ? selectedColor : "transparent"};
+  `;
+};
+
+const selectionIconOptions = {
+  shouldForwardProp: (prop: string) =>
+    prop !== "selected" && prop !== "disabled",
+};
+
+export const StyledCheckIcon = styled(CheckIcon, selectionIconOptions)`
+  ${selectionIconStyles}
+`;
+
+export const StyledMinusIcon = styled(MinusIcon, selectionIconOptions)`
+  ${selectionIconStyles}
 `;
 
 export const DotIcon = styled("svg")`

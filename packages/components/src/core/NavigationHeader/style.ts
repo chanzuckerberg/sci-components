@@ -515,7 +515,7 @@ const NarrowButtonStyles = (props: ExtraHeaderProps): SerializedStyles => {
       top: -${spaces?.xxxl}px;
     }
 
-    .MuiButton-icon .MuiSvgIcon-root {
+    .MuiButton-icon svg {
       width: ${sizes?.l.width}px;
       height: ${sizes?.l.height}px;
     }
@@ -1037,7 +1037,10 @@ export const StyledHoverDrawerItemIcon = styled("div", {
   ${(props: ExtraHeaderProps & { hasIcon?: boolean; hasDetails?: boolean }) => {
     const semanticColors = getSemanticColors(props);
     const spaces = getSpaces(props);
+    const iconSizes = getIconSizes(props);
     const { hasDetails } = props;
+
+    const iconSize = hasDetails ? iconSizes?.l : iconSizes?.s;
 
     return css`
       display: flex;
@@ -1048,6 +1051,8 @@ export const StyledHoverDrawerItemIcon = styled("div", {
 
       svg {
         color: ${semanticColors?.accent?.foreground};
+        height: ${iconSize?.height}px;
+        width: ${iconSize?.width}px;
       }
     `;
   }}

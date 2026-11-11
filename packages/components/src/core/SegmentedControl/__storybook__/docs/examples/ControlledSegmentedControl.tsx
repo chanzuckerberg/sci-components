@@ -14,12 +14,17 @@ import {
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 
 const VIEWS: SingleButtonDefinition[] = [
-  { icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
-  { icon: "TreeVertical", value: "Tree" },
+  { icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
+  { icon: <GitBranchIcon weight="bold" />, value: "Tree" },
 ];
 
 const Readout = styled.p<CommonThemeProps>`

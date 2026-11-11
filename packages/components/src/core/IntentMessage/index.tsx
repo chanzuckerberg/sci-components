@@ -1,5 +1,6 @@
+import { CheckCircleIcon, WarningCircleIcon } from "@phosphor-icons/react";
 import React from "react";
-import Icon, { IconNameToSizes } from "@components/src/core/Icon";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import {
   IntentMessageIntent,
   IntentMessageItem,
@@ -58,20 +59,15 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
 
   const getIcon = (item: IntentMessageItem) => {
     const { icon, intent } = item;
-    if (icon) {
-      if (typeof icon !== "string") {
-        return icon;
-      }
-      return <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="xs" />;
-    }
+    if (icon) return icon;
 
     switch (intent) {
       case "positive":
-        return <Icon sdsIcon="CheckCircle" sdsSize="xs" />;
+        return <CheckCircleIcon {...INTERNAL_ICON_PROPS} size={12} />;
       case "negative":
       case "notice":
       default:
-        return <Icon sdsIcon="ExclamationMarkCircle" sdsSize="xs" />;
+        return <WarningCircleIcon {...INTERNAL_ICON_PROPS} size={12} />;
     }
   };
 

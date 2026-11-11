@@ -9,7 +9,8 @@
 // The stages below are fixed rather than driven from state, so both can be seen
 // without clicking.
 
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         sdsStage="off"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Outline off
       </ButtonToggle>
@@ -27,7 +28,7 @@ function App() {
         sdsStage="on"
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Outline on
       </ButtonToggle>
@@ -36,7 +37,7 @@ function App() {
         sdsStage="off"
         sdsStyle="minimal"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Minimal off
       </ButtonToggle>
@@ -45,7 +46,7 @@ function App() {
         sdsStage="on"
         sdsStyle="minimal"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+        startIcon={<ListIcon weight="bold" />}
       >
         Minimal on
       </ButtonToggle>

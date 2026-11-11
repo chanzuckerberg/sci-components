@@ -3,8 +3,8 @@ import {
   NavigationHeader,
   ButtonProps,
 } from "@czi-sds/components";
+import { UserIcon } from "@phosphor-icons/react";
 import { useState } from "react";
-import Icon from "@components/src/core/Icon";
 
 const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
   const [activePrimaryNavKey, setActivePrimaryNavKey] = useState("1");
@@ -25,7 +25,7 @@ const NavigationHederNameSpaceTest = (props: NavigationHeaderProps) => {
           {
             sdsStyle: "minimal",
             sdsType: "primary",
-            children: <Icon sdsIcon="Person" sdsSize="s" />,
+            children: <UserIcon weight="bold" />,
             onClick: () => alert("clicked on my profile"),
           },
         ] as Partial<ButtonProps>[]

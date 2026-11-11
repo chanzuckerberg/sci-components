@@ -1,14 +1,27 @@
 import { SegmentedControl, SegmentedControlProps } from "@czi-sds/components";
+import { ListBulletsIcon, TableIcon, UsersIcon } from "@phosphor-icons/react";
 import React from "react";
 
 const SegmentedControlNameSpaceTest = (props: SegmentedControlProps) => {
   return (
     <SegmentedControl
       buttonDefinition={[
-        { icon: "List", tooltipText: "List A", value: "A" },
-        { icon: "List", tooltipText: "List B", value: "B" },
-        { icon: "Table", tooltipText: "Table", value: "C" },
-        { icon: "People", tooltipText: "People", value: "D" },
+        {
+          icon: <ListBulletsIcon weight="bold" />,
+          tooltipText: "List A",
+          value: "A",
+        },
+        {
+          icon: <ListBulletsIcon weight="bold" />,
+          tooltipText: "List B",
+          value: "B",
+        },
+        { icon: <TableIcon weight="bold" />, tooltipText: "Table", value: "C" },
+        {
+          icon: <UsersIcon weight="bold" />,
+          tooltipText: "People",
+          value: "D",
+        },
       ]}
     />
   );

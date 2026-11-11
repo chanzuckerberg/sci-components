@@ -2,13 +2,14 @@
 // actions into a set of switches. Each toggle owns its state through sdsStage.
 
 import { useState } from "react";
-import { ButtonGroup, ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonGroup, ButtonToggle } from "@czi-sds/components";
+import { CodeIcon, CopyIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const TOGGLES = [
-  { icon: "Search", label: "Search" },
-  { icon: "Copy", label: "Copy" },
-  { icon: "Code", label: "Code" },
-] as const;
+  { icon: <MagnifyingGlassIcon weight="bold" />, label: "Search" },
+  { icon: <CopyIcon weight="bold" />, label: "Copy" },
+  { icon: <CodeIcon weight="bold" />, label: "Code" },
+];
 
 function App() {
   const [active, setActive] = useState<Record<string, boolean>>({
@@ -24,7 +25,7 @@ function App() {
             aria-label={label}
             sdsStage={active[label] ? "on" : "off"}
             sdsStyle="outline"
-            startIcon={<Icon sdsIcon={icon} sdsSize="s" />}
+            startIcon={icon}
             onClick={() =>
               setActive((previous) => ({
                 ...previous,

@@ -31,13 +31,13 @@ These rules guide Claude Code when translating Figma designs to code using the C
 ### SDS Component Priority
 
 - **Always prefer SDS components** over custom implementations
-- Import from `@czi-sds/components`: `import { Button, Icon, Link } from "@czi-sds/components"`
-- Use SDS-specific props: `sdsStyle`, `sdsType`, `sdsSize`, `sdsIcon`
+- Import from `@czi-sds/components`: `import { Button, Link } from "@czi-sds/components"`
+- Use SDS-specific props: `sdsStyle`, `sdsType`, `sdsSize`
 
 ### Common Figma → SDS Mappings
 
 - **Figma Buttons** → `<Button sdsStyle="square|rounded|minimal" sdsType="primary|secondary">`
-- **Figma Icons** → `<Icon sdsIcon="IconName" sdsSize="xs|s|m|l|xl">`
+- **Figma Icons** → Phosphor icons from `@phosphor-icons/react` in the bold weight, `<MagnifyingGlassIcon weight="bold" size={16} />`, or the icons SDS draws itself from `@czi-sds/icons`. SDS icon sizes are 10, 12, 16, 24 and 32 pixels. The deprecated `Icon` component is not used for new code, and component icon props take an icon element, never an icon name
 - **Figma Input Fields** → `<InputText>`, `<InputSlider>`, `<Autocomplete>`
 - **Figma Cards/Containers** → Use SDS spacing classes with `<div>` elements
 
@@ -73,13 +73,14 @@ These rules guide Claude Code when translating Figma designs to code using the C
 ### Good - Using SDS Values
 
 ```tsx
-import { Button, Icon } from "@czi-sds/components";
+import { Button } from "@czi-sds/components";
+import { FloppyDiskIcon } from "@phosphor-icons/react";
 
 <div className="flex items-center gap-sds-m p-sds-l">
   <Button sdsStyle="square" sdsType="primary" className="font-sds-semibold">
     Save Changes
   </Button>
-  <Icon sdsIcon="Save" sdsSize="s" />
+  <FloppyDiskIcon weight="bold" size={16} />
 </div>;
 ```
 

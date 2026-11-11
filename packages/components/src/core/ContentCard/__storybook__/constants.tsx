@@ -1,5 +1,5 @@
 import { CardMedia } from "@mui/material";
-import Icon from "@components/src/core/Icon";
+import { CaretRightIcon, ChatsIcon, CompassIcon } from "@phosphor-icons/react";
 import Button from "@components/src/core/Button";
 
 export const CONTENT_CARD_EXCLUDED_CONTROLS = [
@@ -68,7 +68,7 @@ export const CONTENT_CARD_BUTTONS_OPTIONS = {
       sdsStyle="minimal"
       sdsType="primary"
       key="minimal-with-icon"
-      endIcon={<Icon sdsIcon="ChevronRight" sdsSize="xs" />}
+      endIcon={<CaretRightIcon weight="bold" />}
     >
       Minimal Button
     </Button>
@@ -118,6 +118,6 @@ export const CONTENT_CARD_ICON_LABELS = {
 
 export const CONTENT_CARD_ICON_OPTIONS = {
   none: null,
-  compass: <Icon sdsIcon="Compass" sdsSize="xl" key="icon" />,
-  speechBubbles: <Icon sdsIcon="SpeechBubbles" sdsSize="xl" key="icon" />,
+  compass: <CompassIcon weight="bold" size={32} key="icon" />,
+  speechBubbles: <ChatsIcon weight="bold" size={32} key="icon" />,
 };

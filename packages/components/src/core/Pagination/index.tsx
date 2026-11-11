@@ -1,4 +1,10 @@
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  DotsThreeIcon,
+} from "@phosphor-icons/react";
 import { forwardRef } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import PageListDropdown from "./components/PageListDropdown";
 import {
   Page,
@@ -8,7 +14,6 @@ import {
   StyledPaginationChevronList,
 } from "./style";
 import { usePagination } from "./usePagination";
-import Icon from "@components/src/core/Icon";
 
 export interface PaginationInternalProps {
   onPageChange: (page: number) => void;
@@ -57,7 +62,7 @@ const PaginationPageList = (
             sdsStyle="minimal"
             sdsType="primary"
           >
-            <Icon sdsIcon="DotsHorizontal" sdsSize="s" />
+            <DotsThreeIcon {...INTERNAL_ICON_PROPS} size={16} />
           </StyledPaginationButton>
         </Page>
       );
@@ -113,6 +118,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
     return (
       <StyledPagination ref={ref} {...props}>
         <StyledPaginationChevronList
+          aria-label="Previous page"
           data-order="first"
           key="prevPage"
           disabled={currentPage === 1}
@@ -121,7 +127,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           tabIndex={0}
           sdsStyle={sdsStyle}
         >
-          <Icon aria-label="Previous page" sdsIcon="ChevronLeft" sdsSize="xs" />
+          <CaretLeftIcon {...INTERNAL_ICON_PROPS} size={12} />
         </StyledPaginationChevronList>
 
         {PaginationPageList(
@@ -133,6 +139,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
         )}
 
         <StyledPaginationChevronList
+          aria-label="Next page"
           data-order="last"
           key="onNextPage"
           disabled={currentPage === lastPage}
@@ -141,7 +148,7 @@ const Pagination = forwardRef<HTMLUListElement, PaginationProps>(
           tabIndex={0}
           sdsStyle={sdsStyle}
         >
-          <Icon aria-label="Next page" sdsIcon="ChevronRight" sdsSize="xs" />
+          <CaretRightIcon {...INTERNAL_ICON_PROPS} size={12} />
         </StyledPaginationChevronList>
       </StyledPagination>
     );

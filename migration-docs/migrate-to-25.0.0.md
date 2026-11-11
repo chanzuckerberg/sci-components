@@ -1,11 +1,12 @@
-# Migration Guide: SDS 25.0.0 (Tag rework)
+# Migration Guide: SDS 25.0.0 (Tag rework, Phosphor icons)
 
-This guide is for upgrading **`@czi-sds/components@24.x`** to **`@czi-sds/components@25.0.0`**. This is a **breaking release** with four changes:
+This guide is for upgrading **`@czi-sds/components@24.x`** to **`@czi-sds/components@25.0.0`**. This is a **breaking release** with five changes:
 
 1. **`Tag` has a new API** that follows the reworked design: `sdsStyle` is `"solid"` or `"outline"`, sizes are `"small"` and `"medium"`, a new `"accent"` intent, a disabled state, icon-only tags, and links with an optional arrow. The previous component still ships as **`TagLegacy`**, deprecated.
 2. **The filter chip is now `Chip`.** The reworked design for removable filter chips ships as `Chip`, with `sdsStyle` and the whole chip as the remove control. **`TagFilter` still ships unchanged**, deprecated, so moving to `Chip` can wait.
 3. **The old `Chip` is removed.** It had been deprecated for many releases, and its name now belongs to the filter chip.
 4. **`@phosphor-icons/react` is a peer dependency** of `@czi-sds/components`.
+5. **Icon props take elements, not icon names.** `Callout`, `Notification`, `Banner`, `IntentMessage`, `SegmentedControl`, `MenuItem` (and the Autocomplete and Dropdown options it renders), `NavigationHeader` dropdown items and `ButtonToggle` no longer accept an SDS icon name such as `icon="InfoCircle"`, and `sdsIconProps` is gone. Pass an icon element instead, usually a Phosphor icon. The icons SDS components draw themselves (close buttons, chevrons, intent icons and so on) are now Phosphor icons in the bold weight.
 
 > If you are still on SDS 23 or older, follow [migrate-to-24.0.0.md](./migrate-to-24.0.0.md) first. This guide assumes Material UI v9.
 
@@ -21,8 +22,9 @@ This guide is for upgrading **`@czi-sds/components@24.x`** to **`@czi-sds/compon
 6. [Step 4 — Replace the removed `Chip`](#step-4--replace-the-removed-chip)
 7. [Step 5 — Move from `TagFilter` to `Chip` (optional)](#step-5--move-from-tagfilter-to-chip-optional)
 8. [Step 6 — Components that render a Tag or a Chip for you](#step-6--components-that-render-a-tag-or-a-chip-for-you)
-9. [Search patterns to locate every affected call site](#search-patterns-to-locate-every-affected-call-site)
-10. [Verification checklist / definition of done](#verification-checklist--definition-of-done)
+9. [Step 7 — Pass icon elements instead of icon names](#step-7--pass-icon-elements-instead-of-icon-names)
+10. [Search patterns to locate every affected call site](#search-patterns-to-locate-every-affected-call-site)
+11. [Verification checklist / definition of done](#verification-checklist--definition-of-done)
 
 ---
 
@@ -32,12 +34,12 @@ You are upgrading a **consumer project** that depends on `@czi-sds/components@24
 
 ### Objective
 
-Make the consumer project install SDS 25 with its peer dependencies and compile, build and test cleanly, by updating **only the consumer's own code and config** to the new `Tag` API and away from the removed `Chip`. Moving `TagFilter` call sites to `Chip` is optional; do it only if the task asks for it.
+Make the consumer project install SDS 25 with its peer dependencies and compile, build and test cleanly, by updating **only the consumer's own code and config** to the new `Tag` API, away from the removed `Chip`, and to icon elements wherever an SDS component was given an icon name. Moving `TagFilter` call sites to `Chip` is optional; do it only if the task asks for it.
 
 ### Operating rules (guardrails)
 
 1. **Scope:** only edit files in the consumer project. Never edit files inside `node_modules`, and never edit SDS internals.
-2. **Let the type-checker drive the work.** The removed `Tag` props (`sdsType`, `sdsSize`, `hover`, `tagColor`) and the removed `sdsStyle` values (`"rounded"`, `"square"`) are all type errors in SDS 25, and so is a call site of the old `Chip` (its `status` and `isRounded` props are gone, and `onDelete` is now required). `tsc --noEmit` lists every one.
+2. **Let the type-checker drive the work.** The removed `Tag` props (`sdsType`, `sdsSize`, `hover`, `tagColor`) and the removed `sdsStyle` values (`"rounded"`, `"square"`) are all type errors in SDS 25, and so is a call site of the old `Chip` (its `status` and `isRounded` props are gone, and `onDelete` is now required), an icon name passed to an `icon` prop, and `sdsIconProps`. `tsc --noEmit` lists every one.
 3. **Apply the mapping per call site.** The table in [Step 3](#step-3--migrate-tag-props) is mechanical, with one judgement call: the size. See the note under the table.
 4. **Preserve behavior.** Do not change what a tag does when clicked, or add or remove click handlers, while migrating its props.
 5. **Ask before scope changes.** If a call site styles the tag's internals (MUI class names such as `.MuiChip-label`), report it rather than guessing: the DOM inside the tag changed.
@@ -49,6 +51,8 @@ Make the consumer project install SDS 25 with its peer dependencies and compile,
 - ❌ **Don't rename `tagColor` on `NavigationHeader` or `NavigationFooter`.** It is their own prop, unchanged. Only a `tagColor` passed directly to `<Tag>` has to become `color`.
 - ❌ **Don't swap `TagLegacy` into code that already uses the new `Tag` API.** `TagLegacy` only accepts the old props.
 - ❌ **Don't rename `TagFilter` to `Chip` with a find-and-replace.** `TagFilter` keeps working. The new `Chip` removes itself when clicked anywhere and is one tab stop, so a call site that moves needs the checks in [Step 5](#step-5--move-from-tagfilter-to-chip-optional).
+- ❌ **Don't rewrite every `<Icon>` in the project.** The deprecated `Icon` component still ships and still works. Only icon _names_ handed to an SDS component prop have to change in this release; moving standalone `<Icon>` elements to Phosphor can wait.
+- ❌ **Don't change icon props on the legacy components.** `ButtonLegacy`, `ButtonDropdownLegacy`, `ButtonToggleLegacy` and `ButtonIcon` still accept icon names and `sdsIconProps`.
 
 ### The workflow (follow in this order)
 
@@ -57,25 +61,28 @@ Make the consumer project install SDS 25 with its peer dependencies and compile,
 3. **Inventory — [search patterns](#search-patterns-to-locate-every-affected-call-site).**
 4. **Fix until the type-checker is clean — [Step 3](#step-3--migrate-tag-props) for Tag and [Step 4](#step-4--replace-the-removed-chip) for the old Chip.**
 5. **Optionally, move `TagFilter` to `Chip` — [Step 5](#step-5--move-from-tagfilter-to-chip-optional).**
-6. **Build, test, and look at the result — [Verification](#verification-checklist--definition-of-done).** Tags change size and shape, so check the screens that show them.
+6. **Replace icon names with icon elements — [Step 7](#step-7--pass-icon-elements-instead-of-icon-names).**
+7. **Build, test, and look at the result — [Verification](#verification-checklist--definition-of-done).** Tags change size and shape, and SDS's own icons are now Phosphor icons, so check the screens that show them.
 
 ---
 
 ## At a glance
 
-| Area                    | Before (SDS 24)                                   | After (SDS 25)                                                                                               |
-| ----------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `@phosphor-icons/react` | optional, for icons only                          | **required peer** of `@czi-sds/components` (`^2.1.10`)                                                       |
-| `Tag` style             | `sdsType="primary" \| "secondary"`                | `sdsStyle="solid" \| "outline"`                                                                              |
-| `Tag` shape             | `sdsStyle="square" \| "rounded"` (square default) | automatic: pill-shaped, square only when `iconOnly`                                                          |
-| `Tag` size              | `sdsSize="s" \| "l"` (`"l"` required an icon)     | `size="small" \| "medium"` (medium default, icon optional)                                                   |
-| `Tag` intents           | six                                               | seven, adds `"accent"`                                                                                       |
-| `Tag` hover             | on for every tag unless `hover={false}`           | only on a tag with `onClick`, `href` or `clickable`                                                          |
-| `Tag` links             | not supported                                     | `href`, `target`, `rel`, and `showLinkIcon` for the arrow                                                    |
-| `Tag` icon-only         | not supported                                     | `iconOnly`                                                                                                   |
-| Old `Tag`               | —                                                 | `TagLegacy`, deprecated                                                                                      |
-| `TagFilter`             | the filter chip                                   | unchanged, deprecated in favor of `Chip`                                                                     |
-| `Chip`                  | deprecated status chip (`status`, `isRounded`)    | **removed**; the name now belongs to the reworked filter chip (`sdsStyle`, whole-chip removal, one tab stop) |
+| Area                    | Before (SDS 24)                                     | After (SDS 25)                                                                                               |
+| ----------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `@phosphor-icons/react` | optional, for icons only                            | **required peer** of `@czi-sds/components` (`^2.1.10`)                                                       |
+| `Tag` style             | `sdsType="primary" \| "secondary"`                  | `sdsStyle="solid" \| "outline"`                                                                              |
+| `Tag` shape             | `sdsStyle="square" \| "rounded"` (square default)   | automatic: pill-shaped, square only when `iconOnly`                                                          |
+| `Tag` size              | `sdsSize="s" \| "l"` (`"l"` required an icon)       | `size="small" \| "medium"` (medium default, icon optional)                                                   |
+| `Tag` intents           | six                                                 | seven, adds `"accent"`                                                                                       |
+| `Tag` hover             | on for every tag unless `hover={false}`             | only on a tag with `onClick`, `href` or `clickable`                                                          |
+| `Tag` links             | not supported                                       | `href`, `target`, `rel`, and `showLinkIcon` for the arrow                                                    |
+| `Tag` icon-only         | not supported                                       | `iconOnly`                                                                                                   |
+| Old `Tag`               | —                                                   | `TagLegacy`, deprecated                                                                                      |
+| `TagFilter`             | the filter chip                                     | unchanged, deprecated in favor of `Chip`                                                                     |
+| `Chip`                  | deprecated status chip (`status`, `isRounded`)      | **removed**; the name now belongs to the reworked filter chip (`sdsStyle`, whole-chip removal, one tab stop) |
+| Icon props              | an SDS icon name or an element, plus `sdsIconProps` | **an element only**, usually a Phosphor icon; `sdsIconProps` removed                                         |
+| SDS's own icons         | SDS `Icon`                                          | Phosphor icons, bold weight                                                                                  |
 
 ---
 
@@ -92,6 +99,8 @@ yarn add @czi-sds/components@^25 @phosphor-icons/react@^2.1.10
 ```
 
 If the project also uses `@czi-sds/data-viz`, update it to a release that accepts `@czi-sds/components@25`.
+
+If the project needs one of the icons SDS draws itself (see [Step 7](#step-7--pass-icon-elements-instead-of-icon-names)), also add `@czi-sds/icons`.
 
 ---
 
@@ -207,6 +216,82 @@ The types follow: `TagFilterProps` becomes `ChipProps` and `SdsTagFilterProps` b
 
 ---
 
+## Step 7 — Pass icon elements instead of icon names
+
+SDS icons come from Phosphor now. Every component prop that took the name of an SDS icon takes an icon element instead, and the component draws that element at its own size:
+
+| Component                           | Prop                      | Before (SDS 24)                                         | After (SDS 25)                                      |
+| ----------------------------------- | ------------------------- | ------------------------------------------------------- | --------------------------------------------------- |
+| `Callout`, `Notification`, `Banner` | `icon`                    | `icon="Book"`, `sdsIconProps={...}`                     | `icon={<BookIcon weight="bold" />}`                 |
+| `IntentMessage`                     | `messages[].icon`         | `icon: "Github"`                                        | `icon: <GitHubIcon />`                              |
+| `SegmentedControl`                  | `buttonDefinition[].icon` | `icon: "List"`                                          | `icon: <ListBulletsIcon weight="bold" />`           |
+| `MenuItem`                          | `icon`                    | `icon="Gear"` or `sdsIcon="Gear"`, `sdsIconProps={...}` | `icon={<GearIcon weight="bold" />}`                 |
+| `Autocomplete`, `Dropdown` options  | `icon`                    | `{ icon: "Copy", sdsIconProps: {...} }`                 | `{ icon: <CopyIcon weight="bold" /> }`              |
+| `NavigationHeader` dropdown items   | `icon`                    | `icon: "Search"`                                        | `icon: <MagnifyingGlassIcon weight="bold" />`       |
+| `ButtonToggle`                      | `startIcon`               | typed to allow a name, which rendered as text           | an element: `<MagnifyingGlassIcon weight="bold" />` |
+
+`GitHubIcon` comes from `@czi-sds/icons`; the rest come from `@phosphor-icons/react`.
+
+```diff
+- <Callout intent="info" icon="Book" sdsIconProps={{ color: "blue" }} title="Read me" />
++ <Callout intent="info" icon={<BookIcon weight="bold" />} title="Read me" />
+```
+
+Also removed:
+
+- **`sdsIconProps`** on every component in the table. It styled named icons only.
+- **`MenuItem`'s `sdsIcon`**, the deprecated former name of `icon`.
+- **The `MenuItemProps` generic and `IconNameToSmallSizes`.** `MenuItemProps<"Gear">` is now `MenuItemProps`.
+
+### Finding the replacement for a name
+
+Search [phosphoricons.com](https://phosphoricons.com) for anything not listed here. Check the Icons / Custom Icons page in Storybook first: an icon SDS draws itself is imported from `@czi-sds/icons` rather than replaced with a Phosphor lookalike. The icons SDS components used most map like this:
+
+| SDS name                                                                          | Replacement                                                                              |
+| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `XMark`, `XMarkCircle`                                                            | `XIcon`, `XCircleIcon`                                                                   |
+| `CheckCircle`, `InfoCircle`                                                       | `CheckCircleIcon`, `InfoIcon`                                                            |
+| `ExclamationMarkCircle`                                                           | `WarningCircleIcon`                                                                      |
+| `ChevronDown`, `ChevronUp`, `ChevronLeft`, `ChevronRight`                         | `CaretDownIcon`, `CaretUpIcon`, `CaretLeftIcon`, `CaretRightIcon`                        |
+| `Search`, `SearchLinesHorizontal3`                                                | `MagnifyingGlassIcon`, `ListMagnifyingGlassIcon`                                         |
+| `DotsHorizontal`, `LinesHorizontal3`, `List`                                      | `DotsThreeIcon`, `ListIcon`, `ListBulletsIcon`                                           |
+| `Check`, `Minus`                                                                  | `CheckIcon`, `MinusIcon`                                                                 |
+| `Download`, `Edit`, `TrashCan`, `Refresh`                                         | `DownloadSimpleIcon`, `PencilSimpleIcon`, `TrashIcon`, `ArrowsClockwiseIcon`             |
+| `Filter`, `Pin`, `Share`, `Save`, `EyeOpen`                                       | `FunnelSimpleIcon`, `PushPinSimpleIcon`, `ShareNetworkIcon`, `FloppyDiskIcon`, `EyeIcon` |
+| `Person`, `People`, `SpeechBubbles`, `Cli`                                        | `UserIcon`, `UsersIcon`, `ChatsIcon`, `TerminalWindowIcon`                               |
+| `BarChartVertical3`, `BarChartVertical4`                                          | `ChartBarIcon`                                                                           |
+| `TreeVertical`, `TreeHorizontal`                                                  | `GitBranchIcon`, `TreeStructureIcon`                                                     |
+| `CirclesOverlap2`, `Grid`, `LightBulb`, `Bacteria`                                | `IntersectIcon`, `GridNineIcon`, `LightbulbIcon`, `VirusIcon`                            |
+| `Copy`, `Table`, `Cube`, `Code`, `Book`, `Flask`, `Gear`, `Link`, `Lock`, `Virus` | the same name with `Icon` added: `CopyIcon`, `TableIcon`, ...                            |
+| `Github`, `Sparkle`, `Sparkles`                                                   | `GitHubIcon`, `SparkleIcon`, `SparklesIcon` from `@czi-sds/icons`                        |
+
+SDS uses the `bold` weight throughout, so pass `weight="bold"` to match.
+
+### Size and color
+
+- **Don't pass `size`** to an icon going into these props. `Callout`, `Notification`, `Banner`, `SegmentedControl` and `MenuItem` draw it at 16px, `IntentMessage` at 12px, and the `NavigationHeader` drawer at 24px when the item has `details` and 16px when it does not.
+- **`Callout`, `Notification`, `Banner` and `IntentMessage` color the icon** with the intent, as before, so a `color` on the icon has no effect there.
+- **`MenuItem` draws its icon in blue** unless the icon sets a `color`, which is the color named icons had by default. To keep a color that came from `sdsIconProps`, read it from the theme and pass it to the icon:
+
+  ```diff
+  - <MenuItem icon="Gear" sdsIconProps={{ color: "purple" }}>Settings</MenuItem>
+  + <MenuItem icon={<GearIcon weight="bold" color={getColors({ theme })?.purple[500]} />}>
+  +   Settings
+  + </MenuItem>
+  ```
+
+  `getColors` comes from `@czi-sds/components` and `theme` from MUI's `useTheme()`. The `--sds-color-*` CSS variables work too where the app loads them.
+
+### Icons the components draw themselves
+
+Close buttons, chevrons, the intent icons, search and clear buttons, checkbox marks, pagination arrows and the narrow header's menu button now render Phosphor icons in the bold weight. Nothing changes at the call site, but:
+
+- **CSS that reached into an SDS component** through MUI's `.MuiSvgIcon-root` class no longer matches those icons. Target `svg` instead.
+- **Pagination's arrows are labelled** "Previous page" and "Next page", on the list items that act as the buttons.
+- **`LoadingIndicator` is unchanged** and still draws the SDS loading spinner.
+
+---
+
 ## Search patterns to locate every affected call site
 
 ```bash
@@ -227,6 +312,15 @@ rg -n "<TagFilter\b|TagFilterProps|Delete Tag" --glob '!**/node_modules/**'
 
 # CSS that reaches into a tag's internals
 rg -n "MuiChip-(label|icon|deleteIcon)" --glob '!**/node_modules/**'
+
+# Icon names and sdsIconProps passed to SDS components (legacy components still accept them)
+rg -n "icon=\"[A-Z]|icon: \"[A-Z]|startIcon=\"[A-Z]|sdsIcon=|sdsIconProps" --glob '!**/node_modules/**'
+
+# Types that were removed or changed
+rg -n "IconNameToSmallSizes|MenuItemProps<" --glob '!**/node_modules/**'
+
+# CSS that styles SDS's own icons through MUI's SvgIcon class
+rg -n "MuiSvgIcon-root" --glob '!**/node_modules/**'
 ```
 
 ---
@@ -240,4 +334,7 @@ rg -n "MuiChip-(label|icon|deleteIcon)" --glob '!**/node_modules/**'
 - [ ] Tags that should respond to clicks have an `onClick` or an `href`; tags that only label something have neither.
 - [ ] Screens that show tags were checked by eye: heights, the pill shape, and any place that now needs `size="small"`.
 - [ ] `TagFilter` call sites either stay as they are or moved to `Chip`, with handlers and tests updated for whole-chip removal and the "Remove {label}" name.
+- [ ] No SDS component other than the legacy ones receives an icon name or `sdsIconProps`; every `icon` prop gets an element.
+- [ ] Icons whose color came from `sdsIconProps` pass that color to the icon element instead.
+- [ ] CSS that styled SDS's own icons through `.MuiSvgIcon-root` targets `svg` instead.
 - [ ] The build and the test suite pass.

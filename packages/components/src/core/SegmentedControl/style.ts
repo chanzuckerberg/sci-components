@@ -10,6 +10,7 @@ import {
   CommonThemeProps,
   fontBodyMediumS,
   getCorners,
+  getIconSizes,
   getSemanticColors,
   getSpaces,
 } from "@components/src/core/styles";
@@ -91,6 +92,17 @@ export const StyledToggleButton = styled(ToggleButton, {
 
 export const StyledToggleButtonIcon = styled("div")`
   line-height: 0px;
+
+  ${(props: CommonThemeProps) => {
+    const iconSizes = getIconSizes(props);
+
+    return `
+      svg {
+        height: ${iconSizes?.s.height}px;
+        width: ${iconSizes?.s.width}px;
+      }
+    `;
+  }}
 `;
 
 export const StyledToggleButtonLabel = styled("div")`

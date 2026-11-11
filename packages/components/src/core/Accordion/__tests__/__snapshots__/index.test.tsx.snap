@@ -24,21 +24,18 @@ exports[`<Accordion /> > Default story renders snapshot 1`] = `
       <span
         class="MuiAccordionSummary-expandIconWrapper css-1wqf3nl-MuiAccordionSummary-expandIconWrapper"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconChevronDownSmall"
-            data-testid="IconChevronDownSmall"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
   </h3>

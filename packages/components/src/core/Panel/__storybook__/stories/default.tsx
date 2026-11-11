@@ -6,7 +6,7 @@ import Callout from "@components/src/core/Callout";
 import RawPanel from "@components/src/core/Panel";
 import { PanelProps } from "../../Panel.types";
 import ButtonToggle from "@components/src/core/ButtonToggle";
-import Icon from "@components/src/core/Icon";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const InvalidBasicPanelPropsError = (
   <Callout
@@ -96,7 +96,7 @@ export const Panel = (props: Args): JSX.Element => {
       <Main sdsType={sdsType} open={open} {...props}>
         <ButtonToggle
           aria-label="button-toggle"
-          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          startIcon={<InfoIcon weight="bold" />}
           size="large"
           sdsType="primary"
           sdsStyle="minimal"

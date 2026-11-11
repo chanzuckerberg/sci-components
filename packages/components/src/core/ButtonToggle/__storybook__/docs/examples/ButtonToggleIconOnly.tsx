@@ -3,7 +3,8 @@
 // so each one needs an aria-label of its own.
 
 import { useState } from "react";
-import { ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonToggle } from "@czi-sds/components";
+import { EyeIcon, FunnelSimpleIcon } from "@phosphor-icons/react";
 
 function App() {
   const [labels, setLabels] = useState(true);
@@ -16,7 +17,7 @@ function App() {
         sdsStage={labels ? "on" : "off"}
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="EyeOpen" sdsSize="s" />}
+        startIcon={<EyeIcon weight="bold" />}
         onClick={() => setLabels((previous) => !previous)}
       />
 
@@ -25,7 +26,7 @@ function App() {
         sdsStage={filters ? "on" : "off"}
         sdsStyle="outline"
         sdsType="primary"
-        startIcon={<Icon sdsIcon="Filter" sdsSize="s" />}
+        startIcon={<FunnelSimpleIcon weight="bold" />}
         onClick={() => setFilters((previous) => !previous)}
       />
     </div>

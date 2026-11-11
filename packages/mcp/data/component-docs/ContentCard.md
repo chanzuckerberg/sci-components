@@ -142,19 +142,20 @@ This example swaps the image for an icon. The `image` and `icon` props are mutua
 **Example: ContentCardWithAnIcon**
 
 ```tsx
-import { ContentCard, ContentCardBody, Icon } from "@czi-sds/components";
+import { ContentCard, ContentCardBody } from "@czi-sds/components";
+import { CompassIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app">
       <ContentCard
         visualElementType="icon"
-        icon={<Icon sdsIcon="Compass" sdsSize="xl" />}
+        icon={<CompassIcon weight="bold" size={32} />}
         titleText="Icon instead of an image"
         subtitleText="The icon sits to the left of the content"
       >
         <ContentCardBody>
-          Set visualElementType to icon and pass any Icon element. The icon and
+          Set visualElementType to icon and pass any icon element. The icon and
           image props are mutually exclusive.
         </ContentCardBody>
       </ContentCard>
@@ -278,8 +279,8 @@ import {
   ContentCard,
   ContentCardActions,
   ContentCardBody,
-  Icon,
 } from "@czi-sds/components";
+import { CaretRightIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -304,7 +305,7 @@ function App() {
           <Button
             sdsStyle="minimal"
             sdsType="primary"
-            endIcon={<Icon sdsIcon="ChevronRight" sdsSize="xs" />}
+            endIcon={<CaretRightIcon weight="bold" />}
           >
             Learn more
           </Button>

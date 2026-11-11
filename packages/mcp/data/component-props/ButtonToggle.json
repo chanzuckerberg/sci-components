@@ -19,7 +19,7 @@
         "type": "boolean"
       },
       "startIcon": {
-        "description": "Required. The icon displayed within the component. Pass the SDS Icon\ncomponent, for example `<Icon sdsIcon=\"Search\" sdsSize=\"s\" />`.",
+        "description": "Required. The icon displayed within the component, usually a Phosphor or\n`@czi-sds/icons` icon, for example `<MagnifyingGlassIcon weight=\"bold\" />`.",
         "isRequired": true,
         "type": "ReactElement"
       },

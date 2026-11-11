@@ -11,95 +11,91 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
       class="css-1lwppi3-StyledTableRow euwrjwp0"
     >
       <th
-        class="css-n4krcj-StyledTableHeader eyijci12"
+        class="css-1v7rwwd-StyledTableHeader eyijci12"
       >
         <div
-          class="css-lxy8ce-StyledCellHeaderContainer eyijci10"
+          class="css-3a3cql-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Category
           </div>
         </div>
       </th>
       <th
-        class="css-248xwi-StyledTableHeader eyijci12"
+        class="css-1q9q7xy-StyledTableHeader eyijci12"
       >
         <div
-          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
+          class="css-pk6s9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Active Header
           </div>
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            aria-hidden="true"
+            class="css-adq74m-StyledSortDescendingIcon eyijci13"
+            fill="currentColor"
+            height="12"
+            viewBox="0 0 256 256"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-t01z5n-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
             />
-          </div>
+          </svg>
         </div>
       </th>
       <th
-        class="css-248xwi-StyledTableHeader eyijci12"
+        class="css-1q9q7xy-StyledTableHeader eyijci12"
       >
         <div
-          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
+          class="css-pk6s9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             A very long table header title to test sort icon positioning
           </div>
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            aria-hidden="true"
+            class="css-dk0qse-StyledSortDescendingIcon eyijci13"
+            fill="currentColor"
+            height="12"
+            viewBox="0 0 256 256"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1va415t-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
             />
-          </div>
+          </svg>
         </div>
       </th>
       <th
-        class="css-1ojj6rc-StyledTableHeader eyijci12"
+        class="css-iqx4gq-StyledTableHeader eyijci12"
       >
         <div
-          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
+          class="css-pk6s9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Component
           </div>
         </div>
       </th>
       <th
-        class="css-5zqrvi-StyledTableHeader eyijci12"
+        class="css-1mhyfxl-StyledTableHeader eyijci12"
       >
         <div
-          class="css-1itna59-StyledCellHeaderContainer eyijci10"
+          class="css-b9ljjz-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Right Aligned and Not sortable
           </div>
@@ -117,21 +113,21 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         <div
           class="css-1w62mu0-StyledIconCell e1dckcjm0"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="32"
+            viewBox="0 0 256 256"
+            width="32"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconFlaskLarge"
-              data-testid="IconFlaskLarge"
-              fillcontrast="white"
-              focusable="false"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
+            <path
+              d="M208,216H48a8,8,0,0,1-6.86-12.12l30.48-50.8h0c13.23-2.48,32-1.41,56.37,10.92,32.25,16.33,54.75,12.91,67.5,7.65h0l19.34,32.23A8,8,0,0,1,208,216Z"
+              opacity="0.2"
             />
-          </div>
+            <path
+              d="M221.69,199.77,160,96.92V40h8a8,8,0,0,0,0-16H88a8,8,0,0,0,0,16h8V96.92L34.31,199.77A16,16,0,0,0,48,224H208a16,16,0,0,0,13.72-24.23ZM110.86,103.25A7.93,7.93,0,0,0,112,99.14V40h32V99.14a7.93,7.93,0,0,0,1.14,4.11L183.36,167c-12,2.37-29.07,1.37-51.75-10.11-15.91-8.05-31.05-12.32-45.22-12.81ZM48,208l28.54-47.58c14.25-1.73,30.31,1.85,47.82,10.72,19,9.61,35,12.88,48,12.88a69.89,69.89,0,0,0,19.55-2.7L208,208Z"
+            />
+          </svg>
           <div
             class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
@@ -310,21 +306,17 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         <div
           class="css-1w62mu0-StyledIconCell e1dckcjm0"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="32"
+            viewBox="0 0 256 256"
+            width="32"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconDownloadLarge"
-              data-testid="IconDownloadLarge"
-              fillcontrast="white"
-              focusable="false"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
+            <path
+              d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
             />
-          </div>
+          </svg>
           <div
             class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
@@ -536,21 +528,17 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
         <div
           class="css-1w62mu0-StyledIconCell e1dckcjm0"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            fill="currentColor"
+            height="32"
+            viewBox="0 0 256 256"
+            width="32"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconVirusLarge"
-              data-testid="IconVirusLarge"
-              fillcontrast="white"
-              focusable="false"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
+            <path
+              d="M108,128a20,20,0,1,1,20-20A20,20,0,0,1,108,128Zm60-20a20,20,0,1,0,20,20A20,20,0,0,0,168,108Zm-40,40a20,20,0,1,0,20,20A20,20,0,0,0,128,148Zm124-20a12,12,0,0,1-12,12H227.28a99.62,99.62,0,0,1-20.62,49.69l9.83,9.82a12,12,0,0,1-17,17l-9.82-9.83A99.62,99.62,0,0,1,140,227.28V240a12,12,0,0,1-24,0V227.28a99.62,99.62,0,0,1-49.69-20.62l-9.82,9.83a12,12,0,0,1-17-17l9.83-9.82A99.62,99.62,0,0,1,28.72,140H16a12,12,0,0,1,0-24H28.72A99.62,99.62,0,0,1,49.34,66.31l-9.83-9.82a12,12,0,0,1,17-17l9.82,9.83A99.62,99.62,0,0,1,116,28.72V16a12,12,0,0,1,24,0V28.72a99.62,99.62,0,0,1,49.69,20.62l9.82-9.83a12,12,0,0,1,17,17l-9.83,9.82A99.62,99.62,0,0,1,227.28,116H240A12,12,0,0,1,252,128Zm-48,0a76,76,0,1,0-76,76A76.08,76.08,0,0,0,204,128Z"
             />
-          </div>
+          </svg>
           <div
             class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault esrfbz40 css-19bwtqy-MuiChip-root-StyledTag-sizeStyles-sizeStyles-stateColors-stateColors-StyledTag"
           >
@@ -621,21 +609,17 @@ exports[`<Table /> > Default story renders snapshot 1`] = `
       <td
         class="cell-component css-z123il-StyledCellComponentData e173l55i0"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          fill="currentColor"
+          height="24"
+          viewBox="0 0 256 256"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconBacteriaLarge"
-            data-testid="IconBacteriaLarge"
-            fillcontrast="white"
-            focusable="false"
-            height="24"
-            viewBox="0 0 24 24"
-            width="24"
+          <path
+            d="M108,128a20,20,0,1,1,20-20A20,20,0,0,1,108,128Zm60-20a20,20,0,1,0,20,20A20,20,0,0,0,168,108Zm-40,40a20,20,0,1,0,20,20A20,20,0,0,0,128,148Zm124-20a12,12,0,0,1-12,12H227.28a99.62,99.62,0,0,1-20.62,49.69l9.83,9.82a12,12,0,0,1-17,17l-9.82-9.83A99.62,99.62,0,0,1,140,227.28V240a12,12,0,0,1-24,0V227.28a99.62,99.62,0,0,1-49.69-20.62l-9.82,9.83a12,12,0,0,1-17-17l9.83-9.82A99.62,99.62,0,0,1,28.72,140H16a12,12,0,0,1,0-24H28.72A99.62,99.62,0,0,1,49.34,66.31l-9.83-9.82a12,12,0,0,1,17-17l9.82,9.83A99.62,99.62,0,0,1,116,28.72V16a12,12,0,0,1,24,0V28.72a99.62,99.62,0,0,1,49.69,20.62l9.82-9.83a12,12,0,0,1,17,17l-9.83,9.82A99.62,99.62,0,0,1,227.28,116H240A12,12,0,0,1,252,128Zm-48,0a76,76,0,1,0-76,76A76.08,76.08,0,0,0,204,128Z"
           />
-        </div>
+        </svg>
       </td>
       <td
         class="css-17soa78-StyledTableData ekxclbn1"

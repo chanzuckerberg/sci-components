@@ -1,6 +1,7 @@
+import { XIcon } from "@phosphor-icons/react";
 import { ForwardedRef, forwardRef } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { StyledButton } from "./style";
-import Icon from "@components/src/core/Icon";
 
 const DIALOG_SIZE_TO_BUTTON_SIZE: {
   [key: string]: "small" | "medium" | "large";
@@ -12,12 +13,12 @@ const DIALOG_SIZE_TO_BUTTON_SIZE: {
 };
 
 const DIALOG_SIZE_TO_ICON_SIZE: {
-  [key: string]: "s" | "l" | "xl";
+  [key: string]: number;
 } = {
-  l: "xl",
-  m: "l",
-  s: "l",
-  xs: "s",
+  l: 32,
+  m: 24,
+  s: 24,
+  xs: 16,
 };
 
 interface CloseButtonProps {
@@ -33,7 +34,7 @@ const CloseButton = forwardRef(function CloseButton(
   const { dialogSize = "m", onClick, className, ...rest } = props;
 
   const size = DIALOG_SIZE_TO_BUTTON_SIZE[dialogSize] ?? "large";
-  const iconSize = DIALOG_SIZE_TO_ICON_SIZE[dialogSize] ?? "l";
+  const iconSize = DIALOG_SIZE_TO_ICON_SIZE[dialogSize] ?? 24;
 
   return (
     <StyledButton
@@ -47,7 +48,7 @@ const CloseButton = forwardRef(function CloseButton(
       className={className}
       {...rest}
     >
-      <Icon sdsIcon="XMark" sdsSize={iconSize} />
+      <XIcon {...INTERNAL_ICON_PROPS} size={iconSize} />
     </StyledButton>
   );
 });

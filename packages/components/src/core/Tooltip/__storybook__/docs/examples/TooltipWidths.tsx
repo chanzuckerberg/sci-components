@@ -4,7 +4,6 @@
 
 import {
   Button,
-  Icon,
   Tooltip,
   fontBodyXs,
   getSemanticColors,
@@ -12,6 +11,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const LONG_TEXT =
   "Reads are aligned to the reference genome with minimap2, then filtered to remove duplicates and anything below the mapping quality threshold set for the project.";
@@ -58,7 +58,7 @@ function App() {
               sdsStyle="minimal"
               sdsType="secondary"
             >
-              <Icon sdsIcon="InfoCircle" sdsSize="s" />
+              <InfoIcon weight="bold" />
             </Button>
           </Tooltip>
           Default width
@@ -71,7 +71,7 @@ function App() {
               sdsStyle="minimal"
               sdsType="secondary"
             >
-              <Icon sdsIcon="InfoCircle" sdsSize="s" />
+              <InfoIcon weight="bold" />
             </Button>
           </Tooltip>
           Wide

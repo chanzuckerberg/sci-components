@@ -3,7 +3,7 @@
 exports[`<TagFilter /> > Default story renders snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standard ez44obe0 css-1x9srip-MuiPaper-root-MuiAlert-root-StyledCallout"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standard ez44obe0 css-gtlhb5-MuiPaper-root-MuiAlert-root-StyledCallout"
     intent="negative"
     role="alert"
     style="--Paper-shadow: none; opacity: 1; transform: none; transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
@@ -77,7 +77,7 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
   </div>
   <div>
     <div
-      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable e19crzu0 e47sx6f0 css-1tw0gg6-MuiButtonBase-root-MuiChip-root-StyledTagLegacy-tagSizeS-createTypeCss-square-withHover-StyledTagLegacy-StyledTag-StyledTag"
+      class="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorPrimary MuiChip-deletable e19crzu0 e47sx6f0 css-if7755-MuiButtonBase-root-MuiChip-root-StyledTagLegacy-tagSizeS-createTypeCss-square-withHover-StyledTagLegacy-StyledTag-StyledTag"
       role="none presentation"
       tabindex="0"
     >
@@ -88,28 +88,25 @@ exports[`<TagFilter /> > Default story renders snapshot 1`] = `
       </span>
       <button
         aria-label="Delete Tag"
-        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary MuiChip-deleteIcon et5j5k2 css-xhz0g7-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeMedium MuiButton-colorPrimary MuiChip-deleteIcon et5j5k2 css-1yvrhcb-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-MediumButtonStyles-StyledButton"
         tabindex="0"
         type="button"
       >
         <span
-          class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+          class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
         >
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            aria-hidden="true"
+            fill="currentColor"
+            height="16"
+            viewBox="0 0 256 256"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-              data-file-name="IconXMarkSmall"
-              data-testid="IconXMarkSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"
             />
-          </div>
+          </svg>
         </span>
       </button>
     </div>

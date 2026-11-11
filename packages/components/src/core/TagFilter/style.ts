@@ -37,13 +37,10 @@ export const StyledTag = styled(TagLegacy)`
         height: ${iconSizes?.xs?.height}px !important;
       }
 
-      .MuiSvgIcon-root {
+      svg {
         margin: 0;
         width: ${iconSizes?.xs?.width}px !important;
         height: ${iconSizes?.xs?.height}px !important;
-      }
-
-      svg {
         z-index: auto;
       }
 

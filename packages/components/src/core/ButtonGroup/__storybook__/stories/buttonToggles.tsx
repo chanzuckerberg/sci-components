@@ -1,16 +1,21 @@
 import { Args } from "@storybook/react-vite";
 import React, { useState } from "react";
+import {
+  CodeIcon,
+  CopyIcon,
+  CubeIcon,
+  MagnifyingGlassIcon,
+} from "@phosphor-icons/react";
 import RawButtonGroup from "@components/src/core/ButtonGroup";
 import ButtonToggle from "@components/src/core/ButtonToggle";
-import Icon from "@components/src/core/Icon";
 import { StyledBackgroundAppearanceWrapper } from "@components/src/core/Button/style";
 
 const BUTTON_TOGGLES = [
-  { ariaLabel: "Search", icon: "Search" },
-  { ariaLabel: "Copy", icon: "Copy" },
-  { ariaLabel: "Code", icon: "Code" },
-  { ariaLabel: "Cube", icon: "Cube" },
-] as const;
+  { ariaLabel: "Search", icon: <MagnifyingGlassIcon weight="bold" /> },
+  { ariaLabel: "Copy", icon: <CopyIcon weight="bold" /> },
+  { ariaLabel: "Code", icon: <CodeIcon weight="bold" /> },
+  { ariaLabel: "Cube", icon: <CubeIcon weight="bold" /> },
+];
 
 export const ButtonGroupButtonToggles = (props: Args): JSX.Element => {
   const { size, ...rest } = props;
@@ -34,7 +39,7 @@ export const ButtonGroupButtonToggles = (props: Args): JSX.Element => {
           <ButtonToggle
             key={ariaLabel}
             aria-label={ariaLabel}
-            startIcon={<Icon sdsIcon={icon} sdsSize="s" />}
+            startIcon={icon}
             sdsStage={activeToggles[ariaLabel] ? "on" : "off"}
             sdsStyle="outline"
             sdsType={props.sdsType}

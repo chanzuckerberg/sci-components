@@ -1,8 +1,8 @@
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
 import { ThemeProvider } from "@mui/material/styles";
+import { CopyIcon } from "@phosphor-icons/react";
 import { useEffect, useState, type ReactElement } from "react";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 import Tooltip from "@components/src/core/Tooltip";
 import { Theme } from "@components/src/core/styles";
 import { CODE_COPY_CLASS } from "./constants";
@@ -74,7 +74,7 @@ export function CopyCodeButton({ getCode }: CopyCodeButtonProps): ReactElement {
               sdsType="secondary"
               size="medium"
             >
-              <Icon sdsIcon="Copy" sdsSize="s" />
+              <CopyIcon weight="bold" />
             </Button>
           </Tooltip>
         </div>

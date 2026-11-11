@@ -1,11 +1,17 @@
+import { SparklesIcon } from "@czi-sds/icons";
+import {
+  CopyIcon,
+  CubeIcon,
+  DotsThreeIcon,
+  DownloadSimpleIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import { action } from "storybook/actions";
-import CustomSdsIcon from "@components/src/common/storybook/svg/customSdsIcon";
 import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
 import {
   SDSSizes,
   SDSTypes,
 } from "@components/src/core/ButtonIcon/__storybook__/types";
-import Icon from "@components/src/core/Icon";
 
 export const BUTTON_EXCLUDED_CONTROLS = [
   "endIcon",
@@ -18,7 +24,6 @@ export const BUTTON_EXCLUDED_CONTROLS = [
   "disabled",
   "sdsSize",
   "icon",
-  "sdsIconProps",
   "isAllCaps",
   "backgroundOnHover",
   "size",
@@ -36,14 +41,12 @@ export const BUTTON_TEXT = "Label";
 
 export const BUTTON_ICON_OPTIONS = {
   none: undefined,
-  xMark: <Icon key="xmark" sdsIcon="XMark" sdsSize="s" />,
-  download: <Icon key="download" sdsIcon="Download" sdsSize="s" />,
-  copy: <Icon key="copy" sdsIcon="Copy" sdsSize="s" />,
-  dotsHorizontal: (
-    <Icon key="dotsHorizontal" sdsIcon="DotsHorizontal" sdsSize="s" />
-  ),
-  cube: <Icon key="cube" sdsIcon="Cube" sdsSize="s" />,
-  customSdsIcon: <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  x: <XIcon key="x" weight="bold" />,
+  download: <DownloadSimpleIcon key="download" weight="bold" />,
+  copy: <CopyIcon key="copy" weight="bold" />,
+  dotsThree: <DotsThreeIcon key="dotsThree" weight="bold" />,
+  cube: <CubeIcon key="cube" weight="bold" />,
+  sparkles: <SparklesIcon key="sparkles" weight="bold" />,
   customSvgIcon: (
     <CustomSvgIcon key="customIcon" style={{ height: "16px", width: "16px" }} />
   ),
@@ -51,12 +54,12 @@ export const BUTTON_ICON_OPTIONS = {
 
 export const BUTTON_ICON_LABELS = {
   none: "No Icon",
-  xMark: "SDS Icon: XMark",
-  download: "SDS Icon: Download",
-  copy: "SDS Icon: Copy",
-  dotsHorizontal: "SDS Icon: DotsHorizontal",
-  cube: "SDS Icon: Cube",
-  customSdsIcon: "Custom SDS Icon",
+  x: "Phosphor X",
+  download: "Phosphor DownloadSimple",
+  copy: "Phosphor Copy",
+  dotsThree: "Phosphor DotsThree",
+  cube: "Phosphor Cube",
+  sparkles: "@czi-sds/icons Sparkles",
   customSvgIcon: "Custom SVG Icon",
 };
 
@@ -72,8 +75,6 @@ export const BUTTON_PSEUDO_STATES = [
 export const BUTTON_ACTIONS = {
   onClick: action("onClick"),
 };
-
-export const SCREENSHOT_BUTTON_ICON_OPTIONS = [undefined, "Download"];
 
 export const SCREENSHOT_BUTTON_SDS_STYLES = ["rounded", "square", "minimal"];
 

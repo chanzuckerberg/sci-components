@@ -44,7 +44,7 @@
       "value": {
         "description": "The selection. An array when multiple, and a record keyed by column name when there is more than one column.",
         "isRequired": false,
-        "type": "string | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent> | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic> | Record<string | number | symbol, AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>> | (T | AutocompleteFreeSoloValueMapping<FreeSolo>)[] | AutocompleteOptionBasic & { component?: undefined; } | AutocompleteOptionComponent & { details?: undefined; icon?: undefined; count?: undefined; sdsIconProps?: undefined; } | null"
+        "type": "string | Exclusive<AutocompleteOptionBasic, AutocompleteOptionComponent> | Exclusive<AutocompleteOptionComponent, AutocompleteOptionBasic> | Record<string | number | symbol, AutocompleteValue<T, Multiple, DisableClearable, FreeSolo>> | (T | AutocompleteFreeSoloValueMapping<FreeSolo>)[] | AutocompleteOptionBasic & { component?: undefined; } | AutocompleteOptionComponent & { details?: undefined; icon?: undefined; count?: undefined; } | null"
       },
       "onInputChange": {
         "description": "Callback fired when the input value changes.\n@param event The event source of the callback.\n@param value The new value of the text input.\n@param reason Can be: `\"input\"` (user input), `\"reset\"` (programmatic change), `\"clear\"`, `\"blur\"`, `\"selectOption\"`, `\"removeOption\"`",

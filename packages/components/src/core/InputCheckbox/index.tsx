@@ -1,4 +1,5 @@
 import { CheckboxProps as MUICheckboxProps } from "@mui/material";
+import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import {
   CheckboxExtraProps,
   StyledCheckbox,
@@ -7,10 +8,13 @@ import {
   StyledCheckboxDefaultIcon,
   StyledCheckboxLabel,
   StyledFormControlLabel,
-  StyledIcon,
   StyledLabelContainer,
 } from "./styles";
-import { EMPTY_OBJECT, cn } from "@components/src/common/utils";
+import {
+  EMPTY_OBJECT,
+  INTERNAL_ICON_PROPS,
+  cn,
+} from "@components/src/common/utils";
 
 export interface CheckboxContentProps extends Omit<
   MUICheckboxProps,
@@ -122,7 +126,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
             <StyledCheckboxCheckedIcon
               className={cn(checkboxCheckedIconClassName)}
             >
-              <StyledIcon sdsIcon="Check" sdsSize="xs" />
+              <CheckIcon {...INTERNAL_ICON_PROPS} size={12} />
             </StyledCheckboxCheckedIcon>
           }
           icon={
@@ -135,7 +139,7 @@ const InputCheckbox = (props: CheckboxProps): JSX.Element => {
             <StyledCheckboxCheckedIcon
               className={cn(checkboxIndeterminateIconClassName)}
             >
-              <StyledIcon sdsIcon="Minus" sdsSize="xs" />
+              <MinusIcon {...INTERNAL_ICON_PROPS} size={12} />
             </StyledCheckboxCheckedIcon>
           }
           intent={intent}
