@@ -86,7 +86,7 @@
     "lint-staged": "^15.2.0",
     "lodash": "^4.17.21",
     "monaco-editor": "^0.56.0",
-    "playwright": "^1.60.0",
+    "playwright": "^1.65.1",
     "postcss": "8.5.26",
     "postcss-styled-syntax": "^0.7.2",
     "prettier": "^3.1.1",
