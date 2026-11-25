@@ -18,6 +18,7 @@ export { ExpandIcon } from "./icons/Expand";
 export { FoldIcon } from "./icons/Fold";
 export { GenerateIcon } from "./icons/Generate";
 export { GitHubIcon } from "./icons/GitHub";
+export { LoadingIcon } from "./icons/Loading";
 export { MaximizeSmallIcon } from "./icons/MaximizeSmall";
 export { MinimizeSmallIcon } from "./icons/MinimizeSmall";
 export { PredictIcon } from "./icons/Predict";

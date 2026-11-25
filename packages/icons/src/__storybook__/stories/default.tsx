@@ -15,8 +15,8 @@ const icons = sdsIcons as unknown as Record<string, Icon>;
 
 /**
  * `icon` is the story's own control rather than a prop: there is no single icon
- * component to point the controls at, so the story picks one of the sixteen and
- * hands it everything else as-is.
+ * component to point the controls at, so the story picks one of the seventeen
+ * and hands it everything else as-is.
  */
 export const IconDemo = (props: Args): JSX.Element => {
   const { icon, ...iconProps } = props;

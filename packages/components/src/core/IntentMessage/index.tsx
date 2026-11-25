@@ -24,17 +24,6 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
     ...rest
   } = props;
 
-  // const priorities = React.useMemo(() => {
-  //   return orderBy
-  //     ? orderBy.reduce(
-  //         (acc, intent, index) => {
-  //           acc[intent] = index;
-  //           return acc;
-  //         },
-  //         {} as Record<IntentMessageIntent, number>
-  //       )
-  //     : DEFAULT_INTENT_PRIORITY;
-  // }, [orderBy]);
   const priorities = orderBy
     ? Object.fromEntries(orderBy.map((value, index) => [value, index]))
     : DEFAULT_INTENT_PRIORITY;
@@ -90,7 +79,7 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
       {children}
       {sortedMessages.map((message, index) => (
         <StyledMessageItem key={index} intent={message.intent}>
-          {getIcon(message)}
+          <span>{getIcon(message)}</span>
           <span>{message.text}</span>
         </StyledMessageItem>
       ))}
