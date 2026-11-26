@@ -82,7 +82,7 @@ Make the consumer project install SDS 25 with its peer dependencies and compile,
 | `TagFilter`             | the filter chip                                     | unchanged, deprecated in favor of `Chip`                                                                     |
 | `Chip`                  | deprecated status chip (`status`, `isRounded`)      | **removed**; the name now belongs to the reworked filter chip (`sdsStyle`, whole-chip removal, one tab stop) |
 | Icon props              | an SDS icon name or an element, plus `sdsIconProps` | **an element only**, usually a Phosphor icon; `sdsIconProps` removed                                         |
-| SDS's own icons         | SDS `Icon`                                          | Phosphor icons, bold weight                                                                                  |
+| SDS's own icons         | SDS `Icon`                                          | Phosphor icons, bold weight; the loading spinner is `LoadingIcon` from `@czi-sds/icons`                      |
 
 ---
 
@@ -288,7 +288,7 @@ Close buttons, chevrons, the intent icons, search and clear buttons, checkbox ma
 
 - **CSS that reached into an SDS component** through MUI's `.MuiSvgIcon-root` class no longer matches those icons. Target `svg` instead.
 - **Pagination's arrows are labelled** "Previous page" and "Next page", on the list items that act as the buttons.
-- **`LoadingIndicator` is unchanged** and still draws the SDS loading spinner.
+- **`LoadingIndicator` has a new spinner**, `LoadingIcon` from `@czi-sds/icons`: a ring of rays whose gap steps around in 45° ticks. It ships inside `@czi-sds/components`, so there is nothing to install, and it keeps the indicator's size and color. The `.MuiSvgIcon-root` note above applies to it as well.
 
 ---
 
