@@ -1,8 +1,8 @@
 import { Args } from "@storybook/react-vite";
 import React from "react";
+import { DownloadSimpleIcon, InfoIcon } from "@phosphor-icons/react";
 import RawButtonGroup from "@components/src/core/ButtonGroup";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 import { StyledBackgroundAppearanceWrapper } from "@components/src/core/Button/style";
 import Callout from "@components/src/core/Callout";
 
@@ -18,7 +18,7 @@ export const ButtonGroup = (props: Args): JSX.Element => {
           intent="notice"
           title="Notice!"
           sdsStyle="persistent"
-          icon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          icon={<InfoIcon weight="bold" />}
           body={
             <>
               The <strong>Vertical</strong> orientation is only available when
@@ -31,11 +31,9 @@ export const ButtonGroup = (props: Args): JSX.Element => {
       )}
       <RawButtonGroup {...rest} size={size}>
         <Button aria-label="Download">
-          <Icon sdsIcon="Download" sdsSize="s" />
+          <DownloadSimpleIcon weight="bold" />
         </Button>
-        <Button startIcon={<Icon sdsIcon="Download" sdsSize="s" />}>
-          Label
-        </Button>
+        <Button startIcon={<DownloadSimpleIcon weight="bold" />}>Label</Button>
         <Button>Label</Button>
       </RawButtonGroup>
     </StyledBackgroundAppearanceWrapper>

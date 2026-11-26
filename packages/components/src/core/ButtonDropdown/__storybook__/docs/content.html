@@ -86,17 +86,17 @@
 ></div>
 <h2>SDS vs MUI</h2>
 <p>
-  The SDS ButtonDropdown component is the regular Button component with a
-  ChevronDown icon added after the label text, via the MUI
-  <code>endIcon</code> prop. The chevron is only added when the button has a
-  label, and its size follows the <code>size</code> prop. A
-  <code>startIcon</code> is optional; when used, it takes the Icon component,
-  which references the specific icon to call as one of its props, like so:
+  The SDS ButtonDropdown component is the regular Button component with a caret
+  icon added after the label text, via the MUI <code>endIcon</code> prop. The
+  caret is only added when the button has a label, and its size follows the
+  <code>size</code> prop. A <code>startIcon</code> is optional; when used, it
+  takes an icon element, usually a Phosphor or <code>@czi-sds/icons</code> icon,
+  like so:
 </p>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-tsx">startIcon={&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;}</code></pre>
+    <pre><code class="sds-doc-codeblock-content language-tsx">startIcon={&lt;DownloadSimpleIcon weight="bold" /&gt;}</code></pre>
   </figure>
 </div>
 <p>
@@ -228,8 +228,10 @@
     <td><p>-</p></td>
     <td>
       <p>
-        An optional icon placed before the label. Pass the SDS Icon component,
-        for example <code>&lt;Icon sdsIcon="Download" sdsSize="s" /&gt;</code>.
+        An optional icon placed before the label, usually a Phosphor or
+        <code>@czi-sds/icons</code> icon, for example
+        <code>&lt;DownloadSimpleIcon weight="bold" /&gt;</code>. The button
+        sizes and colors it.
       </p>
     </td>
   </tr>

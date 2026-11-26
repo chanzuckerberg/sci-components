@@ -18,6 +18,12 @@ import {
   type NavigationHeaderPrimaryNavItem,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import {
+  CodeIcon,
+  FlaskIcon,
+  GridNineIcon,
+  MagnifyingGlassIcon,
+} from "@phosphor-icons/react";
 import { ThemeProvider, createTheme, useTheme } from "@mui/material/styles";
 import { useMemo, useRef, useState } from "react";
 
@@ -57,25 +63,25 @@ const primaryNavItems: NavigationHeaderPrimaryNavItem<string>[] = [
     items: [
       {
         details: "Every public dataset",
-        icon: "Search",
+        icon: <MagnifyingGlassIcon weight="bold" />,
         label: "Browse datasets",
         section: "Data",
       },
       {
         details: "Pull data from the command line",
-        icon: "Code",
+        icon: <CodeIcon weight="bold" />,
         label: "API reference",
         section: "Data",
       },
       {
         details: "Single-cell multiomic data",
-        icon: "Grid",
+        icon: <GridNineIcon weight="bold" />,
         label: "CZ CELLxGENE",
         section: "Repositories",
       },
       {
         details: "3D sub-cellular tomograms",
-        icon: "Flask",
+        icon: <FlaskIcon weight="bold" />,
         label: "CryoET",
         section: "Repositories",
       },

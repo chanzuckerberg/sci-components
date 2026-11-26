@@ -1,3 +1,5 @@
+import type { IconProps } from "@phosphor-icons/react";
+
 export const noop = (): void => {};
 
 export const toKebabCase = (str: string) =>
@@ -6,6 +8,21 @@ export const toKebabCase = (str: string) =>
 export const EMPTY_OBJECT = {};
 
 export const INLINE_RADIO = "inline-radio";
+
+/**
+ * Props for the Phosphor icons SDS components draw themselves. Setting the
+ * weight and color on the icon keeps an app's `IconContext` from restyling
+ * component internals, and `aria-hidden` matches MUI's SvgIcon, which the
+ * deprecated Icon rendered hidden from screen readers.
+ */
+export const INTERNAL_ICON_PROPS: Pick<
+  IconProps,
+  "aria-hidden" | "color" | "weight"
+> = {
+  "aria-hidden": true,
+  color: "currentColor",
+  weight: "bold",
+};
 
 /**
  * (masoudmanson):

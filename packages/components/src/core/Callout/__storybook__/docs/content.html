@@ -61,8 +61,9 @@
 <h3>Callout with a custom icon</h3>
 <p>
   This example replaces the icon that the <code>intent</code> would otherwise
-  choose. The <code>icon</code> prop takes either an SDS icon name or an
-  element.
+  choose. The <code>icon</code> prop takes an icon element, usually a Phosphor
+  or <code>@czi-sds/icons</code> icon, and the Callout draws it at its own size
+  and color.
 </p>
 <div
   class="sds-doc-example"
@@ -136,15 +137,14 @@
       Like with MUI's Alert, SDS's Callout also shows an icon to the left of the
       title text. It is chosen automatically from the <code>intent</code> (see
       the first bullet) and can be overridden with the <code>icon</code> prop,
-      which takes either the name of an SDS icon or a custom SVG element:
+      which takes an icon element, such as a Phosphor icon:
     </p>
   </li>
 </ul>
 <div class="sds-doc-code-snippet">
   <figure>
     <figcaption>React TypeScript</figcaption>
-    <pre><code class="sds-doc-codeblock-content language-tsx">icon="Book"
-icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
+    <pre><code class="sds-doc-codeblock-content language-tsx">icon={&lt;BookIcon weight="bold" /&gt;}</code></pre>
   </figure>
 </div>
 <p>
@@ -310,33 +310,18 @@ icon={&lt;Icon sdsSize="s" sdsIcon="Book" /&gt;}</code></pre>
       <p><code>icon</code></p>
     </td>
     <td>
-      <p><code>SDSIcon | React.ReactElement&lt;CustomSVGProps&gt;</code></p>
+      <p><code>ReactElement</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        Icon displayed to the left of the Callout title, given either as an SDS
-        icon name or as an element. Defaults to the icon for the current
-        <code>intent</code>: <code>"CheckCircle"</code> for
-        <code>"positive"</code>, <code>"InfoCircle"</code> for
-        <code>"info"</code>, and <code>"ExclamationMarkCircle"</code> for
-        <code>"accent"</code>, <code>"notice"</code>, and
-        <code>"negative"</code>.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>sdsIconProps</code></p>
-    </td>
-    <td>
-      <p><code>Partial&lt;IconProps&gt;</code></p>
-    </td>
-    <td><p>-</p></td>
-    <td>
-      <p>
-        Props forwarded to the Icon component when <code>icon</code> is given as
-        a name.
+        Icon displayed to the left of the Callout title, usually a Phosphor or
+        <code>@czi-sds/icons</code> icon. The Callout draws it at its own size
+        and color. Defaults to the icon for the current <code>intent</code>:
+        <code>CheckCircleIcon</code> for <code>"positive"</code>,
+        <code>InfoIcon</code> for <code>"info"</code>, and
+        <code>WarningCircleIcon</code> for <code>"accent"</code>,
+        <code>"notice"</code>, and <code>"negative"</code>.
       </p>
     </td>
   </tr>

@@ -1,12 +1,22 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
-import Icon from "@components/src/core/Icon";
-import CustomSdsIcon from "./svg/customSdsIcon";
+import {
+  CaretRightIcon,
+  CopyIcon,
+  GitBranchIcon,
+  LightbulbIcon,
+  LinkIcon,
+  ListBulletsIcon,
+  PuzzlePieceIcon,
+  VirusIcon,
+} from "@phosphor-icons/react";
 import CustomSvgIcon from "./svg/customSvgIcon";
+
+const ICON_GRAY = "#969696";
 
 export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
   {
-    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
+    icon: <CaretRightIcon weight="bold" />,
     name: "Column One",
     options: [
       {
@@ -37,7 +47,7 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     width: 260,
   },
   {
-    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
+    icon: <CaretRightIcon weight="bold" />,
     name: "Column Two",
     options: [
       {
@@ -67,12 +77,12 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
     width: 260,
   },
   {
-    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
+    icon: <CaretRightIcon weight="bold" />,
     name: "Column Three",
     options: [
       {
-        icon: <CustomSdsIcon sdsSize="s" color="green" shade={400} />,
-        name: "Custom SDS Icon",
+        icon: <VirusIcon weight="bold" color="#50b96d" />,
+        name: "Custom Phosphor Icon",
         section: "With Icon",
       },
       {
@@ -81,54 +91,30 @@ export const AUTOCOMPLETE_MULTI_COLUMN_OPTIONS = [
         section: "With Icon",
       },
       {
-        icon: "PuzzlePiece",
+        icon: <PuzzlePieceIcon weight="bold" color={ICON_GRAY} />,
         name: "Puzzle Piece",
-        sdsIconProps: {
-          color: "gray",
-          shade: 500,
-        },
       },
       {
         count: 10,
-        icon: "Copy",
+        icon: <CopyIcon weight="bold" color={ICON_GRAY} />,
         name: "Copy",
-        sdsIconProps: {
-          color: "gray",
-          shade: 500,
-        },
       },
       {
-        icon: "LightBulb",
+        icon: <LightbulbIcon weight="bold" color={ICON_GRAY} />,
         name: "Light Bulb",
-        sdsIconProps: {
-          color: "gray",
-          shade: 500,
-        },
       },
       {
         count: 6,
-        icon: "List",
+        icon: <ListBulletsIcon weight="bold" color={ICON_GRAY} />,
         name: "List",
-        sdsIconProps: {
-          color: "gray",
-          shade: 500,
-        },
       },
       {
-        icon: "TreeVertical",
+        icon: <GitBranchIcon weight="bold" color={ICON_GRAY} />,
         name: "Vertical Tree",
-        sdsIconProps: {
-          color: "gray",
-          shade: 500,
-        },
       },
       {
-        icon: "Link",
+        icon: <LinkIcon weight="bold" color={ICON_GRAY} />,
         name: "Link",
-        sdsIconProps: {
-          color: "gray",
-          shade: 500,
-        },
       },
     ],
     width: 200,

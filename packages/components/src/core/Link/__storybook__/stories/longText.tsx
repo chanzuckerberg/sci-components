@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
 import Callout from "@components/src/core/Callout";
-import Icon from "@components/src/core/Icon";
 import RawLink from "@components/src/core/Link";
 
 export const LongerTextDemo = (): JSX.Element => {
@@ -11,7 +11,7 @@ export const LongerTextDemo = (): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        icon={<WarningCircleIcon weight="bold" />}
         body={
           <>
             The <strong>Link</strong> component is deprecated!

@@ -23,7 +23,6 @@ import {
   CellBasic,
   CellComponent,
   CellHeader,
-  Icon,
   PreComposedTable,
   Tag,
   getSpaces,
@@ -31,6 +30,7 @@ import {
   type PreComposedTableRef,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { DownloadSimpleIcon, PencilSimpleIcon } from "@phosphor-icons/react";
 import type {
   CellContext,
   ColumnDef,
@@ -284,7 +284,7 @@ const COLUMNS: ColumnDef<Employee>[] = [
           sdsStyle="minimal"
           sdsType="secondary"
         >
-          <Icon sdsIcon="Edit" sdsSize="s" />
+          <PencilSimpleIcon weight="bold" />
         </Button>
         <Button
           aria-label={`Download ${row.original.name}`}
@@ -292,7 +292,7 @@ const COLUMNS: ColumnDef<Employee>[] = [
           sdsStyle="minimal"
           sdsType="secondary"
         >
-          <Icon sdsIcon="Download" sdsSize="s" />
+          <DownloadSimpleIcon weight="bold" />
         </Button>
       </CellComponent>
     ),

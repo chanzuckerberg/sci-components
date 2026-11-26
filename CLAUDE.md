@@ -85,7 +85,7 @@ This is a Lerna monorepo with two packages: `@czi-sds/components` and `@czi-sds/
 2. **Storybook**: Stories are required for all components
 3. **Testing**: Unit tests and snapshots required
 4. **Design Tokens**: Stored in `src/common/styles-dictionary/design-tokens/`
-5. **Icons**: SVG icons in `src/common/svgs/` with corresponding entries in `src/core/Icon/map.ts`
+5. **Icons**: Phosphor icons from `@phosphor-icons/react` in the `bold` weight, plus the icons SDS draws itself in `packages/icons` (`@czi-sds/icons`). The `Icon` component and its SVGs in `src/common/svgs/` are deprecated
 
 ## Versioning and NPM Publishing
 

@@ -54,11 +54,6 @@
         "isRequired": false,
         "type": "ReactNode"
       },
-      "sdsIconProps": {
-        "description": "Props forwarded to the Icon component when icon is given as a name.",
-        "isRequired": false,
-        "type": "Partial<IconProps>"
-      },
       "sdsStage": {
         "defaultValue": "open",
         "description": "The stage an expandable Callout starts in. It is only the initial value; the chevron takes over from there.",

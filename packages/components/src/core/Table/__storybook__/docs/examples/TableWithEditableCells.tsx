@@ -11,7 +11,6 @@ import {
   Button,
   CellComponent,
   CellHeader,
-  Icon,
   Table,
   TableHeader,
   TableRow,
@@ -25,6 +24,7 @@ import {
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
 import { faker } from "@faker-js/faker";
+import { ArrowsClockwiseIcon } from "@phosphor-icons/react";
 import {
   flexRender,
   getCoreRowModel,
@@ -234,7 +234,7 @@ function App() {
           }}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Refresh" sdsSize="s" />}
+          startIcon={<ArrowsClockwiseIcon weight="bold" />}
         >
           Replace the data
         </Button>

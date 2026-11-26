@@ -36,8 +36,40 @@ type ButtonExtraProps = ButtonProps &
   };
 
 /**
+ * Phosphor and `@czi-sds/icons` name every icon `<Name>Icon`, as the SDS Icon
+ * is named `Icon`, and `styled()` wraps the name it is given, as in
+ * `Styled(XIcon)`.
+ */
+const ICON_NAME_PATTERN = /Icon\)*$/;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isIconComponent = (type: any): boolean => {
+  if (!type || (typeof type !== "function" && typeof type !== "object")) {
+    return false;
+  }
+
+  const names = [
+    type.displayName,
+    type.name,
+    type.render?.displayName,
+    type.render?.name,
+  ];
+
+  if (
+    names.some(
+      (name) => typeof name === "string" && ICON_NAME_PATTERN.test(name)
+    )
+  ) {
+    return true;
+  }
+
+  // React.memo keeps the component it wraps in `type`.
+  return type.type !== undefined && isIconComponent(type.type);
+};
+
+/**
  * Helper function to check if children is a single Icon element (not text or other content).
- * This detects both the SDS Icon component and raw SVG elements.
+ * This detects raw SVG elements, Phosphor and `@czi-sds/icons` icons, and the SDS Icon component.
  */
 export const isIconOnlyChild = (children: ReactNode): boolean => {
   const childArray = Children.toArray(children);
@@ -48,35 +80,18 @@ export const isIconOnlyChild = (children: ReactNode): boolean => {
   const child = childArray[0];
   if (!isValidElement(child)) return false;
 
-  // Check if it's an Icon component or SVG element
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const childType = child.type as any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const childProps = child.props as any;
 
   // Check for SVG string type (intrinsic element)
-  if (childType === "svg") return true;
+  if (child.type === "svg") return true;
 
   // Check for SDS Icon component by its specific props (sdsIcon and sdsSize)
   if (childProps?.sdsIcon !== undefined && childProps?.sdsSize !== undefined) {
     return true;
   }
 
-  // Check for Icon component (function or forwardRef component)
-  if (typeof childType === "function") {
-    return childType.name === "Icon" || childType.displayName === "Icon";
-  }
-
-  // Check for forwardRef components (which have a render property)
-  if (typeof childType === "object" && childType !== null) {
-    return (
-      childType.displayName === "Icon" ||
-      childType.render?.name === "Icon" ||
-      childType.render?.displayName === "Icon"
-    );
-  }
-
-  return false;
+  return isIconComponent(child.type);
 };
 
 const GeneralButtonStyles = (props: ButtonExtraProps): SerializedStyles => {

@@ -10,7 +10,6 @@
 
 import {
   Button,
-  Icon,
   Tooltip,
   fontBodyXs,
   getSemanticColors,
@@ -19,6 +18,7 @@ import {
   type TooltipProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 
 const PLACEMENTS: TooltipProps["placement"][] = [
   "top",
@@ -70,7 +70,7 @@ function App() {
                 sdsStyle="minimal"
                 sdsType="secondary"
               >
-                <Icon sdsIcon="InfoCircle" sdsSize="s" />
+                <InfoIcon weight="bold" />
               </Button>
             </Tooltip>
             {placement}
@@ -88,7 +88,7 @@ function App() {
               sdsStyle="minimal"
               sdsType="secondary"
             >
-              <Icon sdsIcon="InfoCircle" sdsSize="s" />
+              <InfoIcon weight="bold" />
             </Button>
           </Tooltip>
           arrowOffset

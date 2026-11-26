@@ -9,10 +9,10 @@
 // One search field sits above all the columns and filters them together.
 // groupBy is ignored here: sections and columns do not combine.
 
+import { CaretRightIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import {
   Autocomplete,
-  Icon,
   fontBodyXs,
   getSemanticColors,
   getSpaces,
@@ -28,7 +28,7 @@ type Option = DefaultAutocompleteOption;
 
 const COLUMNS: AutocompleteMultiColumnOption<Option, true, false, false>[] = [
   {
-    icon: <Icon sdsIcon="ChevronRight" sdsSize="xs" />,
+    icon: <CaretRightIcon weight="bold" />,
     name: "Tissue",
     options: [
       { name: "Blood" },

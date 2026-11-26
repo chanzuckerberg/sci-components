@@ -14,7 +14,6 @@ import {
   getSpaces,
 } from "@components/src/core/styles";
 import { SDSPalette, fontBodyXs, fontBodyXxs } from "../styles";
-import Icon from "../Icon";
 
 export interface CheckboxExtraProps extends CommonThemeProps {
   intent?: "default" | "negative" | "notice" | "positive";
@@ -28,17 +27,6 @@ const intentToColor = {
   notice: "notice",
   positive: "positive",
 };
-
-export const StyledIcon = styled(Icon)`
-  ${(props: CheckboxExtraProps) => {
-    const iconSizes = getIconSizes(props);
-
-    return `
-      height: ${iconSizes?.xs.height}px;
-      width: ${iconSizes?.xs.width}px;
-    `;
-  }}
-`;
 
 export const StyledCheckboxDefaultIcon = styled("span")`
   ${(props: CheckboxExtraProps) => {
@@ -72,8 +60,10 @@ export const StyledCheckboxCheckedIcon = styled("div")`
       border-radius: 2px;
       background-color: ${semanticColors?.accent?.foreground};
 
-      ${StyledIcon} {
-        fill: ${semanticColors?.base?.ornamentPrimaryInverse};
+      svg {
+        height: ${iconSizes?.xs.height}px;
+        width: ${iconSizes?.xs.width}px;
+        color: ${semanticColors?.base?.ornamentPrimaryInverse};
       }
     `;
   }}

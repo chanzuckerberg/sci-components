@@ -2,10 +2,10 @@
 
 exports[`<InputCheckbox /> > Default story renders snapshot 1`] = `
 <label
-  class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e79l7n50 css-1jhu33w-MuiFormControlLabel-root-StyledFormControlLabel"
+  class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e79l7n50 css-12mzk1-MuiFormControlLabel-root-StyledFormControlLabel"
 >
   <span
-    class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium e79l7n54 css-1bigfm2-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root-StyledCheckbox"
+    class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorDefault MuiCheckbox-sizeMedium e79l7n54 css-3vzdgg-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root-StyledCheckbox"
     intent="default"
     label="Label"
   >
@@ -15,7 +15,7 @@ exports[`<InputCheckbox /> > Default story renders snapshot 1`] = `
       type="checkbox"
     />
     <span
-      class="css-12udfv5-StyledCheckboxDefaultIcon e79l7n56"
+      class="css-1g8gxrc-StyledCheckboxDefaultIcon e79l7n56"
       font-size="medium"
     />
   </span>
@@ -23,15 +23,15 @@ exports[`<InputCheckbox /> > Default story renders snapshot 1`] = `
     class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
   >
     <span
-      class="css-13fz3c5-StyledLabelContainer e79l7n53"
+      class="css-n5dknb-StyledLabelContainer e79l7n53"
     >
       <span
-        class="css-15yq1d7-StyledCheckboxLabel e79l7n52"
+        class="css-1h2fjnl-StyledCheckboxLabel e79l7n52"
       >
         Label
       </span>
       <span
-        class="css-r50e2u-StyledCheckboxCaption e79l7n51"
+        class="css-shcb0q-StyledCheckboxCaption e79l7n51"
       >
         Caption
       </span>

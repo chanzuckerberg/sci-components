@@ -2,7 +2,6 @@ import {
   CellBasic,
   CellComponent,
   CellHeader,
-  Icon,
   InputRadio,
   Tag,
   Table,
@@ -11,6 +10,11 @@ import {
   SdsTagColorType,
 } from "@czi-sds/components";
 import { styled, RadioGroup } from "@mui/material";
+import {
+  DownloadSimpleIcon,
+  FlaskIcon,
+  VirusIcon,
+} from "@phosphor-icons/react";
 
 function App() {
   const StyledIconCell = styled("div")`
@@ -44,7 +48,7 @@ function App() {
           <TableRow>
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
-                <Icon sdsSize="xl" sdsIcon="Flask" />
+                <FlaskIcon size={32} weight="bold" />
                 <Tag color="info" label="Chemistry" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
@@ -81,7 +85,7 @@ function App() {
           <TableRow>
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
-                <Icon sdsSize="xl" sdsIcon="Download" />
+                <DownloadSimpleIcon size={32} weight="bold" />
                 <Tag
                   color="info"
                   label="Downloadable Content"
@@ -126,7 +130,7 @@ function App() {
           >
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
-                <Icon sdsSize="xl" sdsIcon="Bacteria" />
+                <VirusIcon size={32} weight="bold" />
                 <Tag color="negative" label="Disease" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
@@ -143,7 +147,7 @@ function App() {
               verticalAlign="center"
             />
             <CellComponent verticalAlign="center">
-              <Icon sdsSize="l" sdsIcon="Virus" />
+              <VirusIcon size={24} weight="bold" />
             </CellComponent>
             <CellBasic
               primaryText="0.4"

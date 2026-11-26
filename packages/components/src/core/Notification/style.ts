@@ -4,6 +4,7 @@ import {
   CommonThemeProps,
   fontBody,
   getCorners,
+  getIconSizes,
   getSemanticColors,
   getShadows,
   getSpaces,
@@ -32,6 +33,7 @@ export const StyledNotification = styled(Alert, {
     const spaces = getSpaces(props);
     const shadows = getShadows(props);
     const corners = getCorners(props);
+    const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
 
     const iconColor = semanticColors?.[intent]?.ornament ?? "black";
@@ -66,6 +68,10 @@ export const StyledNotification = styled(Alert, {
         margin-top: ${spaces?.xxxs}px;
         margin-right: ${spaces?.s}px;
         padding: 0;
+        svg {
+          height: ${iconSizes?.s.height}px;
+          width: ${iconSizes?.s.width}px;
+        }
         path {
           fill: ${iconColor};
         }

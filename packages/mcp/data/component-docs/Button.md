@@ -110,21 +110,19 @@ This example shows a Secondary button component with an icon, placed before the 
 **Example: ButtonIcon**
 
 ```tsx
-import { Button, Icon } from "@czi-sds/components";
+import { Button } from "@czi-sds/components";
+import { CaretRightIcon, DownloadSimpleIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app" style={{ display: "flex", gap: "16px" }}>
       <Button
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+        startIcon={<DownloadSimpleIcon weight="bold" />}
       >
         Download
       </Button>
-      <Button
-        sdsType="secondary"
-        endIcon={<Icon sdsIcon="ChevronRight" sdsSize="s" />}
-      >
+      <Button sdsType="secondary" endIcon={<CaretRightIcon weight="bold" />}>
         Next
       </Button>
     </div>
@@ -141,19 +139,20 @@ This example shows icon-only buttons, created by passing a single Icon component
 **Example: IconButton**
 
 ```tsx
-import { Button, Icon } from "@czi-sds/components";
+import { Button } from "@czi-sds/components";
+import { CopyIcon, DownloadSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app" style={{ display: "flex", gap: "16px" }}>
       <Button aria-label="Download">
-        <Icon sdsIcon="Download" sdsSize="s" />
+        <DownloadSimpleIcon weight="bold" />
       </Button>
       <Button sdsStyle="outline" sdsType="secondary" aria-label="Copy">
-        <Icon sdsIcon="Copy" sdsSize="s" />
+        <CopyIcon weight="bold" />
       </Button>
       <Button sdsStyle="minimal" sdsType="secondary" aria-label="Delete">
-        <Icon sdsIcon="TrashCan" sdsSize="s" />
+        <TrashIcon weight="bold" />
       </Button>
     </div>
   );
@@ -172,23 +171,23 @@ The following props are available to MUI's Button component, but produce no effe
 
 - `disableElevation`: The SDS Button component doesn't have a visual "elevation" or shadowed treatment by default (which this prop disables for MUI's Button). Setting `disableElevation={false}` will not render the MUI default elevation treatment.
 
-Icons can be used in both MUI and SDS Button component, but are called in slightly different ways:
+Icons are passed to the SDS Button the same way as to MUI's Button:
 
-- `startIcon` and `endIcon`: Both of these props are supported by both MUI and SDS's Buttons. However, MUI expects the prop to receive an individual icon as its own component (for example `startIcon={<DeleteIcon />}`), whereas SDS takes the Icon component which references which specific icon to call, as one of its props, as such:
+- `startIcon` and `endIcon`: Both of these props are supported by both MUI and SDS's Buttons, and both take an individual icon as its own component. Where MUI's examples use its own icons (for example `startIcon={<DeleteIcon />}`), SDS uses Phosphor or `@czi-sds/icons` icons, which the Button sizes and colors for you:
 
 **React TypeScript**
 
 ```tsx
-startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+startIcon={<DownloadSimpleIcon weight="bold" />}
 ```
 
-To render an icon-only button, pass a single Icon component as the button's child instead of using `startIcon` or `endIcon`. The Button detects the icon-only child and adjusts its padding to stay square. Remember to give the button an `aria-label`, since it has no text for screen readers to announce:
+To render an icon-only button, pass a single icon as the button's child instead of using `startIcon` or `endIcon`. The Button detects the icon-only child and adjusts its padding to stay square. Remember to give the button an `aria-label`, since it has no text for screen readers to announce:
 
 **React TypeScript**
 
 ```tsx
 <Button aria-label="Download">
-  <Icon sdsIcon="Download" sdsSize="s" />
+  <DownloadSimpleIcon weight="bold" />
 </Button>
 ```
 
@@ -215,9 +214,9 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `size`                 | `"small"` \| `"medium"` \| `"large"`            | `"large"`           | Size of the button. Drives the height, padding, type ramp, and icon size, each of which also adapts at the `md` breakpoint.                                                  |
 | `backgroundOnHover`    | `boolean`                                       | `true`              | Only applies when `sdsStyle` is `"minimal"`. When `false`, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text. |
 | `backgroundAppearance` | `"matchBackground" \| "dark"`                   | `"matchBackground"` | Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to `"dark"` when the button is placed on a dark background in light mode.       |
-| `startIcon`            | `ReactNode`                                     | -                   | An icon placed before the label. Pass the SDS Icon component, for example `<Icon sdsIcon="Download" sdsSize="s" />`.                                                         |
+| `startIcon`            | `ReactNode`                                     | -                   | An icon placed before the label, usually a Phosphor or `@czi-sds/icons` icon, for example `<DownloadSimpleIcon weight="bold" />`. The button sizes and colors it.            |
 | `endIcon`              | `ReactNode`                                     | -                   | An icon placed after the label.                                                                                                                                              |
-| `children`             | `ReactNode`                                     | -                   | The button label. Passing a single Icon component as the only child renders an icon-only button, which the component detects and pads symmetrically.                         |
+| `children`             | `ReactNode`                                     | -                   | The button label. Passing a single icon as the only child renders an icon-only button, which the component detects and pads symmetrically.                                   |
 | `disabled`             | `boolean`                                       | `false`             | Disables the button when set to `true`.                                                                                                                                      |
 | `onClick`              | `(event: React.MouseEvent) => void`             | -                   | Callback fired when the button is clicked.                                                                                                                                   |
 | `href`                 | `string`                                        | -                   | Renders the button as an anchor pointing at the given URL. Pair it with `target` to control where the link opens.                                                            |

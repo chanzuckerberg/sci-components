@@ -4,12 +4,12 @@
 
 import {
   ButtonToggle,
-  Icon,
   getCorners,
   getSemanticColors,
   getSpaces,
 } from "@czi-sds/components";
 import { useTheme } from "@mui/material/styles";
+import { ListIcon } from "@phosphor-icons/react";
 
 function App() {
   const theme = useTheme();
@@ -34,7 +34,7 @@ function App() {
           sdsStage="off"
           sdsStyle="outline"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+          startIcon={<ListIcon weight="bold" />}
         >
           Off
         </ButtonToggle>
@@ -44,7 +44,7 @@ function App() {
           sdsStage="on"
           sdsStyle="outline"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+          startIcon={<ListIcon weight="bold" />}
         >
           On
         </ButtonToggle>
@@ -54,7 +54,7 @@ function App() {
           sdsStage="on"
           sdsStyle="minimal"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="LinesHorizontal3" sdsSize="s" />}
+          startIcon={<ListIcon weight="bold" />}
         >
           Minimal on
         </ButtonToggle>

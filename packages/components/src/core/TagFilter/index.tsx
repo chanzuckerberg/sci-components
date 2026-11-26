@@ -1,8 +1,9 @@
 import { ChipProps } from "@mui/material";
+import { XIcon } from "@phosphor-icons/react";
 import React from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { StyledTag } from "./style";
 import Button from "../Button";
-import Icon from "../Icon";
 
 export interface SdsTagFilterProps extends Omit<
   ChipProps,
@@ -39,7 +40,7 @@ const TagFilter = (props: SdsTagFilterProps): JSX.Element => {
           size="medium"
           backgroundOnHover={false}
         >
-          <Icon sdsIcon="XMark" sdsSize="s" />
+          <XIcon {...INTERNAL_ICON_PROPS} size={16} />
         </Button>
       }
       color="info"

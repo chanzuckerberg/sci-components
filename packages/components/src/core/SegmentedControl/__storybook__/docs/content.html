@@ -66,8 +66,8 @@
 ></div>
 <h3>A segment with its own artwork</h3>
 <p>
-  <code>icon</code> takes an SVG element as well as an SDS icon name, which
-  covers artwork the SDS set does not carry.
+  <code>icon</code> takes any element, so artwork that neither Phosphor nor
+  <code>@czi-sds/icons</code> carries works as well as an icon from either set.
 </p>
 <div
   class="sds-doc-example"
@@ -329,15 +329,14 @@
       <p><code>icon</code></p>
     </td>
     <td>
-      <p><code>keyof IconNameToSizes</code> |</p>
       <p><code>React.ReactElement</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        An SDS icon name, drawn at the small size, or an SVG element of your own
-        for artwork SDS does not carry. Size an element you pass to 16px and
-        fill it with currentColor so it follows the selection.
+        An icon element, usually a Phosphor or <code>@czi-sds/icons</code> icon.
+        The control draws it at 16px. An SVG of your own should fill with
+        currentColor so it follows the selection.
       </p>
     </td>
   </tr>

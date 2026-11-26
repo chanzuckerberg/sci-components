@@ -157,6 +157,7 @@ export const StyledIconWrapper = styled("div", {
 
     const size = props.iconSize === "l" ? "24px" : "16px";
     const spaces = getSpaces(props);
+    const semanticColors = getSemanticColors(props);
 
     return css`
       flex-shrink: 0;
@@ -167,6 +168,7 @@ export const StyledIconWrapper = styled("div", {
       justify-content: center;
       padding: 0 ${iconSize === "l" ? 0 : spaces?.xxs}px;
       box-sizing: content-box;
+      color: ${semanticColors?.accent?.foreground};
     `;
   }}
 `;

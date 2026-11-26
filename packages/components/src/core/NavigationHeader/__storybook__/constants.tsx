@@ -1,4 +1,20 @@
 /* eslint-disable sonarjs/no-duplicate-string */
+import { SparkleIcon } from "@czi-sds/icons";
+import {
+  BookIcon,
+  ChartBarIcon,
+  ChatsIcon,
+  CodeIcon,
+  FlaskIcon,
+  InfoIcon,
+  LightbulbIcon,
+  LinkIcon,
+  MagnifyingGlassIcon,
+  PackageIcon,
+  RocketIcon,
+  TerminalWindowIcon,
+  UsersIcon,
+} from "@phosphor-icons/react";
 import CellByGeneIcon from "@components/src/common/storybook/svg/CellByGeneIcon";
 import CryoEtIcon from "@components/src/common/storybook/svg/CryoEtIcon";
 import { CustomNavigationLogo } from "./stories/default";
@@ -16,7 +32,7 @@ export const PRODUCTS = (mode: "light" | "dark" = "light") => [
     onClick: () => console.log("Browse Datasets clicked"),
     section: "Data",
     details: "Explore all datasets",
-    icon: "Search",
+    icon: <MagnifyingGlassIcon weight="bold" />,
     href: "https://www.google.com",
     target: "_blank",
     component: "a",
@@ -26,14 +42,14 @@ export const PRODUCTS = (mode: "light" | "dark" = "light") => [
     onClick: () => console.log("API Reference clicked"),
     section: "Data",
     details: "Use our CLI or API to access data",
-    icon: "Code",
+    icon: <CodeIcon weight="bold" />,
   },
   {
     label: "Contribute a Dataset",
     onClick: () => console.log("Contribute a Dataset clicked"),
     section: "Data",
     details: "Share your dataset with the community",
-    icon: "Rocket",
+    icon: <RocketIcon weight="bold" />,
   },
   {
     label: "CZ CELL×GENE",
@@ -53,25 +69,25 @@ export const PRODUCTS = (mode: "light" | "dark" = "light") => [
     label: "scBaseCamp",
     onClick: () => console.log("scBaseCamp clicked"),
     section: "Featured Data",
-    icon: "Sparkle",
+    icon: <SparkleIcon weight="bold" />,
   },
   {
     label: "Billion Cell Project",
     onClick: () => console.log("Billion Cell Project clicked"),
     section: "Featured Data",
-    icon: "Sparkle",
+    icon: <SparkleIcon weight="bold" />,
   },
   {
     label: "CELL×STATE",
     onClick: () => console.log("CELL×STATE clicked"),
     section: "Featured Data",
-    icon: "Sparkle",
+    icon: <SparkleIcon weight="bold" />,
   },
   {
     label: "Open Cell Microscopy Images",
     onClick: () => console.log("Open Cell Microscopy Images clicked"),
     section: "Featured Data",
-    icon: "Sparkle",
+    icon: <SparkleIcon weight="bold" />,
   },
 ];
 
@@ -81,28 +97,28 @@ export const SERVICES = [
     onClick: () => console.log("Technical Support clicked"),
     section: "Support",
     details: "Get help from our expert team",
-    icon: "InfoCircle",
+    icon: <InfoIcon weight="bold" />,
   },
   {
     label: "Community Forum",
     onClick: () => console.log("Community Forum clicked"),
     section: "Support",
     details: "Connect with other users and share insights",
-    icon: "People",
+    icon: <UsersIcon weight="bold" />,
   },
   {
     label: "Documentation",
     onClick: () => console.log("Documentation clicked"),
     section: "Support",
     details: "Comprehensive guides and tutorials",
-    icon: "Book",
+    icon: <BookIcon weight="bold" />,
   },
   {
     label: "Workshops",
     onClick: () => console.log("Workshops clicked"),
     section: "Training",
     details: "Live instructor-led sessions",
-    icon: "SpeechBubbles",
+    icon: <ChatsIcon weight="bold" />,
   },
   {
     label: "Online Courses",
@@ -121,13 +137,13 @@ export const SERVICES = [
     section: "Consulting",
     details:
       "Custom development services for your project needs and goals with a team of experts in the field of single-cell biology and single-cell genomics data analysis.",
-    icon: "Code",
+    icon: <CodeIcon weight="bold" />,
   },
   {
     label: "Integration Services",
     onClick: () => console.log("Integration Services clicked"),
     section: "Consulting",
-    icon: "Link",
+    icon: <LinkIcon weight="bold" />,
   },
   {
     label: "Data Analysis Consulting",
@@ -143,7 +159,7 @@ export const RESEARCH = [
     section: "Research",
     details:
       "Explore data portals, software packages, and hardware from the BioHub Network",
-    icon: "Flask",
+    icon: <FlaskIcon weight="bold" />,
   },
   {
     label: "Tech Blog",
@@ -151,7 +167,7 @@ export const RESEARCH = [
     section: "Writing",
     details:
       "Read about recent technology advancements from the BioHub Network",
-    icon: "LightBulb",
+    icon: <LightbulbIcon weight="bold" />,
   },
 ];
 
@@ -162,7 +178,7 @@ export const BENCHMARKS = [
     section: "Benchmarks",
     details:
       "Web-based interface to explore and compare model performance on benchmark tasks",
-    icon: "BarChartVertical3",
+    icon: <ChartBarIcon weight="bold" />,
   },
   {
     label: "Benchmark Package",
@@ -170,7 +186,7 @@ export const BENCHMARKS = [
     section: "Benchmarks",
     details:
       "Modular Python benchmarking package that’s easy to integrate with experiment-tracking tools like TensorBoard or MLflow",
-    icon: "Package",
+    icon: <PackageIcon weight="bold" />,
   },
   {
     label: "Benchmark CLI",
@@ -178,6 +194,6 @@ export const BENCHMARKS = [
     section: "Benchmarks",
     details:
       "Command-line tool to reproducibly evaluate models against curated datasets, tasks, and metrics",
-    icon: "Cli",
+    icon: <TerminalWindowIcon weight="bold" />,
   },
 ];

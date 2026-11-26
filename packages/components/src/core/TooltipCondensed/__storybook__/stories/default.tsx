@@ -1,6 +1,6 @@
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { Args } from "@storybook/react-vite";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 import RawTooltipCondensed from "@components/src/core/TooltipCondensed";
 
 export const TooltipCondensed = (props: Args): JSX.Element => {
@@ -24,7 +24,7 @@ export const TooltipCondensed = (props: Args): JSX.Element => {
             sdsStyle="minimal"
             sdsType="primary"
           >
-            <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+            <WarningCircleIcon weight="bold" />
           </Button>
         </RawTooltipCondensed>
         <p>Hover over the info icon to view the tooltip.</p>

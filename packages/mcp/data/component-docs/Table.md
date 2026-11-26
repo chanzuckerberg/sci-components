@@ -25,7 +25,6 @@ import {
   CellBasic,
   CellComponent,
   CellHeader,
-  Icon,
   InputRadio,
   Tag,
   Table,
@@ -34,6 +33,11 @@ import {
   SdsTagColorType,
 } from "@czi-sds/components";
 import { styled, RadioGroup } from "@mui/material";
+import {
+  DownloadSimpleIcon,
+  FlaskIcon,
+  VirusIcon,
+} from "@phosphor-icons/react";
 
 function App() {
   const StyledIconCell = styled("div")`
@@ -67,7 +71,7 @@ function App() {
           <TableRow>
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
-                <Icon sdsSize="xl" sdsIcon="Flask" />
+                <FlaskIcon size={32} weight="bold" />
                 <Tag color="info" label="Chemistry" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
@@ -104,7 +108,7 @@ function App() {
           <TableRow>
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
-                <Icon sdsSize="xl" sdsIcon="Download" />
+                <DownloadSimpleIcon size={32} weight="bold" />
                 <Tag
                   color="info"
                   label="Downloadable Content"
@@ -149,7 +153,7 @@ function App() {
           >
             <CellComponent verticalAlign="center" horizontalAlign="center">
               <StyledIconCell>
-                <Icon sdsSize="xl" sdsIcon="Bacteria" />
+                <VirusIcon size={32} weight="bold" />
                 <Tag color="negative" label="Disease" sdsStyle="outline" />
               </StyledIconCell>
             </CellComponent>
@@ -166,7 +170,7 @@ function App() {
               verticalAlign="center"
             />
             <CellComponent verticalAlign="center">
-              <Icon sdsSize="l" sdsIcon="Virus" />
+              <VirusIcon size={24} weight="bold" />
             </CellComponent>
             <CellBasic
               primaryText="0.4"
@@ -392,7 +396,6 @@ import {
   CellBasic,
   CellComponent,
   CellHeader,
-  Icon,
   Table,
   TableHeader,
   TableRow,
@@ -403,6 +406,13 @@ import {
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
 import { faker } from "@faker-js/faker";
+import {
+  ChartBarIcon,
+  DotsThreeIcon,
+  DownloadSimpleIcon,
+  TreeStructureIcon,
+  UserIcon,
+} from "@phosphor-icons/react";
 import {
   flexRender,
   getCoreRowModel,
@@ -461,11 +471,11 @@ const ActionList = styled.ul<CommonThemeProps>`
 `;
 
 const ACTIONS = [
-  { icon: "TreeHorizontal", label: "View lineage" },
-  { icon: "BarChartVertical3", label: "View chart" },
-  { icon: "Download", label: "Download" },
-  { icon: "DotsHorizontal", label: "More actions" },
-] as const;
+  { icon: <TreeStructureIcon weight="bold" />, label: "View lineage" },
+  { icon: <ChartBarIcon weight="bold" />, label: "View chart" },
+  { icon: <DownloadSimpleIcon weight="bold" />, label: "Download" },
+  { icon: <DotsThreeIcon weight="bold" />, label: "More actions" },
+];
 
 function sortableHeader(header: HeaderContext<Person, unknown>, name: string) {
   const sorted = header.column.getIsSorted();
@@ -498,7 +508,7 @@ const columns: ColumnDef<Person>[] = [
     accessorKey: "firstName",
     cell: (cell) => (
       <CellBasic
-        icon={<Icon sdsIcon="Person" sdsSize="s" />}
+        icon={<UserIcon size={16} weight="bold" />}
         iconVerticalAlign="center"
         primaryText={cell.getValue() as string}
         shouldShowTooltipOnHover={false}
@@ -582,13 +592,13 @@ const columns: ColumnDef<Person>[] = [
       <CellComponent horizontalAlign="right" verticalAlign="center">
         <ActionList>
           {ACTIONS.map((action) => (
-            <li key={action.icon}>
+            <li key={action.label}>
               <Button
                 aria-label={action.label}
                 sdsStyle="minimal"
                 sdsType="secondary"
               >
-                <Icon sdsIcon={action.icon} sdsSize="s" />
+                {action.icon}
               </Button>
             </li>
           ))}
@@ -1204,7 +1214,6 @@ import {
   Button,
   CellComponent,
   CellHeader,
-  Icon,
   Table,
   TableHeader,
   TableRow,
@@ -1218,6 +1227,7 @@ import {
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
 import { faker } from "@faker-js/faker";
+import { ArrowsClockwiseIcon } from "@phosphor-icons/react";
 import {
   flexRender,
   getCoreRowModel,
@@ -1427,7 +1437,7 @@ function App() {
           }}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Refresh" sdsSize="s" />}
+          startIcon={<ArrowsClockwiseIcon weight="bold" />}
         >
           Replace the data
         </Button>

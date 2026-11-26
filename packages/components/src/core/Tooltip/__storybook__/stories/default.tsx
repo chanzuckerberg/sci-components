@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { Args } from "@storybook/react-vite";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 import { getSemanticColors } from "@components/src/core/styles";
 import RawTooltip from "@components/src/core/Tooltip";
 
@@ -48,7 +48,7 @@ export const Tooltip = (props: Args): JSX.Element => {
             sdsStyle="minimal"
             size="large"
           >
-            <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+            <WarningCircleIcon weight="bold" />
           </Button>
         </RawTooltip>
       </div>

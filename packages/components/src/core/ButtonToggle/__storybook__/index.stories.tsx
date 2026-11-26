@@ -1,5 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { Args, Meta } from "@storybook/react-vite";
+import { InfoIcon } from "@phosphor-icons/react";
 import { ButtonToggle } from "./stories/default";
 import { BUTTON_TOGGLE_EXCLUDED_CONTROLS } from "./constants";
 import { TestDemo } from "./stories/test";
@@ -41,7 +42,7 @@ export default {
         type: "select",
       },
       description:
-        'Required. The icon displayed within the component. Pass the SDS Icon component, for example `<Icon sdsIcon="Search" sdsSize="s" />`.',
+        'Required. The icon displayed within the component, usually a Phosphor or `@czi-sds/icons` icon, for example `<MagnifyingGlassIcon weight="bold" />`.',
       mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
       options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
@@ -116,5 +117,7 @@ export const Test = {
       skip: true,
     },
   },
-  render: (args: Args) => <TestDemo startIcon="InfoCircle" {...args} />,
+  render: (args: Args) => (
+    <TestDemo startIcon={<InfoIcon weight="bold" />} {...args} />
+  ),
 };

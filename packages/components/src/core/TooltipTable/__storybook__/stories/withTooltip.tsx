@@ -1,6 +1,6 @@
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { Args } from "@storybook/react-vite";
 import Button from "@components/src/core/Button";
-import Icon from "@components/src/core/Icon";
 import Link from "@components/src/core/Link";
 import TooltipCondensed from "@components/src/core/TooltipCondensed";
 import RawTooltipTableContent from "@components/src/core/TooltipTable";
@@ -45,7 +45,7 @@ export const WithinTooltipDemo = (props: Args): JSX.Element => {
             sdsStyle="minimal"
             sdsType="primary"
           >
-            <Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />
+            <WarningCircleIcon weight="bold" />
           </Button>
         </TooltipCondensed>
       </div>

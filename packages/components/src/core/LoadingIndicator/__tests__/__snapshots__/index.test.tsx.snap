@@ -5,21 +5,27 @@ exports[`<LoadingIndicator /> > CustomAriaLabel story renders snapshot 1`] = `
   aria-label="Loading"
   class="css-14f0y2v-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
 >
-  <div
-    class="css-1q8yjse-StyledIcon emi0zh40"
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    height="24"
+    viewBox="0 0 256 256"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-      data-file-name="IconLoadingLarge"
-      data-testid="IconLoadingLarge"
-      fillcontrast="white"
-      focusable="false"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    />
-  </div>
+    <path
+      d="M120 32L120 64A8 8 0 0 0 136 64L136 32A8 8 0 0 0 120 32ZM224 120L192 120A8 8 0 0 0 192 136L224 136A8 8 0 0 0 224 120ZM201.537 190.223L178.907 167.593A8 8 0 0 0 167.593 178.907L190.223 201.537A8 8 0 0 0 201.537 190.223ZM136 224L136 192A8 8 0 0 0 120 192L120 224A8 8 0 0 0 136 224ZM65.777 201.537L88.407 178.907A8 8 0 0 0 77.093 167.593L54.463 190.223A8 8 0 0 0 65.777 201.537ZM32 136L64 136A8 8 0 0 0 64 120L32 120A8 8 0 0 0 32 136ZM54.463 65.777L77.093 88.407A8 8 0 0 0 88.407 77.093L65.777 54.463A8 8 0 0 0 54.463 65.777Z"
+    >
+      <animatetransform
+        attributeName="transform"
+        calcMode="discrete"
+        dur="1s"
+        repeatCount="indefinite"
+        type="rotate"
+        values="0 128 128;45 128 128;90 128 128;135 128 128;180 128 128;225 128 128;270 128 128;315 128 128"
+      />
+    </path>
+  </svg>
   <span
     aria-label="Loading cats list..."
     aria-live="polite"
@@ -36,21 +42,27 @@ exports[`<LoadingIndicator /> > Default story renders snapshot 1`] = `
   aria-label="Loading"
   class="css-14f0y2v-StyledLoadingIndicator-style-minimal-StyledLoadingIndicator egvgfho0"
 >
-  <div
-    class="css-1q8yjse-StyledIcon emi0zh40"
+  <svg
+    aria-hidden="true"
+    fill="currentColor"
+    height="24"
+    viewBox="0 0 256 256"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-      data-file-name="IconLoadingLarge"
-      data-testid="IconLoadingLarge"
-      fillcontrast="white"
-      focusable="false"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    />
-  </div>
+    <path
+      d="M120 32L120 64A8 8 0 0 0 136 64L136 32A8 8 0 0 0 120 32ZM224 120L192 120A8 8 0 0 0 192 136L224 136A8 8 0 0 0 224 120ZM201.537 190.223L178.907 167.593A8 8 0 0 0 167.593 178.907L190.223 201.537A8 8 0 0 0 201.537 190.223ZM136 224L136 192A8 8 0 0 0 120 192L120 224A8 8 0 0 0 136 224ZM65.777 201.537L88.407 178.907A8 8 0 0 0 77.093 167.593L54.463 190.223A8 8 0 0 0 65.777 201.537ZM32 136L64 136A8 8 0 0 0 64 120L32 120A8 8 0 0 0 32 136ZM54.463 65.777L77.093 88.407A8 8 0 0 0 88.407 77.093L65.777 54.463A8 8 0 0 0 54.463 65.777Z"
+    >
+      <animatetransform
+        attributeName="transform"
+        calcMode="discrete"
+        dur="1s"
+        repeatCount="indefinite"
+        type="rotate"
+        values="0 128 128;45 128 128;90 128 128;135 128 128;180 128 128;225 128 128;270 128 128;315 128 128"
+      />
+    </path>
+  </svg>
   <span
     aria-live="polite"
     class="css-knm78x-StyledText egvgfho1"

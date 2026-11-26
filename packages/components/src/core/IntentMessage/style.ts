@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {
   CommonThemeProps,
   fontBodySemiboldXxxs,
+  getIconSizes,
   getSemanticColors,
   getSpaces,
 } from "@components/src/core/styles";
@@ -51,6 +52,7 @@ export const StyledMessageItem = styled.div<
 
   ${(props) => {
     const spaces = getSpaces(props);
+    const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
     const intentColors = semanticColors?.[props.intent];
 
@@ -60,6 +62,8 @@ export const StyledMessageItem = styled.div<
 
       svg {
         margin-top: ${spaces?.xxxs}px;
+        height: ${iconSizes?.xs.height}px;
+        width: ${iconSizes?.xs.width}px;
         fill: ${intentColors?.foreground};
         path {
           fill: ${intentColors?.foreground};

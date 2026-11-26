@@ -1,8 +1,18 @@
 // (masoudmanson): The unit tests rely on the content in this file; do not alter it!
 
+import {
+  CopyIcon,
+  GitBranchIcon,
+  LightbulbIcon,
+  LinkIcon,
+  ListBulletsIcon,
+  PuzzlePieceIcon,
+  VirusIcon,
+} from "@phosphor-icons/react";
 import Tag from "@components/src/core/Tag";
-import CustomSdsIcon from "./svg/customSdsIcon";
 import CustomSvgIcon from "./svg/customSvgIcon";
+
+const ICON_GRAY = "#969696";
 
 export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
   {
@@ -36,8 +46,8 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "name with details",
   },
   {
-    icon: <CustomSdsIcon sdsSize="s" color="green" shade={400} />,
-    name: "Custom SDS Icon",
+    icon: <VirusIcon weight="bold" color="#50b96d" />,
+    name: "Custom Phosphor Icon",
     section: "With Icon",
   },
   {
@@ -46,59 +56,35 @@ export const AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS = [
     section: "With Icon",
   },
   {
-    icon: "PuzzlePiece",
+    icon: <PuzzlePieceIcon weight="bold" color={ICON_GRAY} />,
     name: "Puzzle Piece",
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
-    },
     section: "With Icon",
   },
   {
     count: 10,
-    icon: "Copy",
+    icon: <CopyIcon weight="bold" color={ICON_GRAY} />,
     name: "Copy",
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
-    },
     section: "With Icon",
   },
   {
-    icon: "LightBulb",
+    icon: <LightbulbIcon weight="bold" color={ICON_GRAY} />,
     name: "Light Bulb",
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
-    },
     section: "With Icon",
   },
   {
     count: 6,
-    icon: "List",
+    icon: <ListBulletsIcon weight="bold" color={ICON_GRAY} />,
     name: "List",
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
-    },
     section: "With Icon",
   },
   {
-    icon: "TreeVertical",
+    icon: <GitBranchIcon weight="bold" color={ICON_GRAY} />,
     name: "Vertical Tree",
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
-    },
     section: "With Icon",
   },
   {
-    icon: "Link",
+    icon: <LinkIcon weight="bold" color={ICON_GRAY} />,
     name: "Link",
-    sdsIconProps: {
-      color: "gray",
-      shade: 500,
-    },
     section: "With Icon",
   },
   {

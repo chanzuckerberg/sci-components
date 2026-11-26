@@ -12,6 +12,7 @@ import {
   FoldIcon,
   GenerateIcon,
   GitHubIcon,
+  LoadingIcon,
   MaximizeSmallIcon,
   MinimizeSmallIcon,
   PredictIcon,
@@ -40,6 +41,7 @@ const IconsNameSpaceTest = (props: IconProps) => {
       <FoldIcon size="1.5rem" />
       <GenerateIcon className="custom" />
       <GitHubIcon onClick={() => undefined} />
+      <LoadingIcon aria-hidden />
       <MaximizeSmallIcon {...props} />
       <MinimizeSmallIcon size={32} color="currentColor" weight="duotone" />
       <PredictIcon />

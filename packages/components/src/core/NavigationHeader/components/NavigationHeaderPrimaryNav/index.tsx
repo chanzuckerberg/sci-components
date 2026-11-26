@@ -11,9 +11,10 @@ import {
 } from "../style";
 import Menu from "@components/src/core/Menu";
 import MenuItem from "@components/src/core/MenuItem";
-import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import { SDSTheme } from "@components/src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
+import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { groupItemsBySection } from "../../utils";
 import {
   StyledMegaMenuDrawer,
@@ -45,7 +46,12 @@ export interface TextNavigationHeaderPrimaryNavItem<
 export interface DropdownItem {
   label: ReactNode;
   details?: string;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  /**
+   * An icon for the row, usually a Phosphor or `@czi-sds/icons` icon, drawn
+   * only when `sdsStyle` is `"drawer"`. It renders at 24px when the row has
+   * details and 16px when it does not, in the accent color.
+   */
+  icon?: React.ReactElement;
   section?: string;
   onClick?: (event: React.MouseEvent) => void;
   component?: React.ElementType;
@@ -252,10 +258,11 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             >
               {label as ReactNode}
             </StyledLabelTextWrapperShadow>
-            <Icon
-              sdsIcon={isDrawerOpen ? "ChevronUp" : "ChevronDown"}
-              sdsSize="xs"
-            />
+            {isDrawerOpen ? (
+              <CaretUpIcon {...INTERNAL_ICON_PROPS} size={12} />
+            ) : (
+              <CaretDownIcon {...INTERNAL_ICON_PROPS} size={12} />
+            )}
           </StyledLabel>
         </UnifiedNavItem>
       </StyledHoverDrawerContainer>
@@ -308,10 +315,11 @@ export default function NavigationHeaderPrimaryNav<T extends string>({
             >
               {label as ReactNode}
             </StyledLabelTextWrapperShadow>
-            <Icon
-              sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
-              sdsSize="xs"
-            />
+            {isDropdownOpen ? (
+              <CaretUpIcon {...INTERNAL_ICON_PROPS} size={12} />
+            ) : (
+              <CaretDownIcon {...INTERNAL_ICON_PROPS} size={12} />
+            )}
           </StyledLabel>
         </UnifiedNavItem>
 

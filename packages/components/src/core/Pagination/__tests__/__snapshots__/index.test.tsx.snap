@@ -2,116 +2,109 @@
 
 exports[`<Pagination /> > Default story renders snapshot 1`] = `
 <ul
-  class="css-e7ujim-StyledPagination e61vbx2"
+  class="css-17gzvtd-StyledPagination e61vbx2"
 >
   <li
-    class="css-1hvygon-StyledPaginationChevronList e61vbx3"
+    aria-label="Previous page"
+    class="css-xtevy6-StyledPaginationChevronList e61vbx3"
     data-order="first"
     disabled=""
     tabindex="0"
   >
-    <div
-      class="css-1q8yjse-StyledIcon emi0zh40"
+    <svg
+      aria-hidden="true"
+      fill="currentColor"
+      height="12"
+      viewBox="0 0 256 256"
+      width="12"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-        data-file-name="IconChevronLeftSmall"
-        data-testid="IconChevronLeftSmall"
-        fillcontrast="white"
-        focusable="false"
-        height="16"
-        viewBox="0 0 16 16"
-        width="16"
+      <path
+        d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"
       />
-    </div>
+    </svg>
   </li>
   <li
-    class="css-xlc3d1-Page-selectedPageStyle-Page e61vbx1"
+    class="css-1892ubl-Page-selectedPageStyle-Page e61vbx1"
     tabindex="0"
   >
     1
   </li>
   <li
-    class="css-cg06y2-Page-Page e61vbx1"
+    class="css-uxkqmy-Page-Page e61vbx1"
     tabindex="0"
   >
     2
   </li>
   <li
-    class="css-cg06y2-Page-Page e61vbx1"
+    class="css-uxkqmy-Page-Page e61vbx1"
     tabindex="0"
   >
     3
   </li>
   <li
-    class="css-cg06y2-Page-Page e61vbx1"
+    class="css-uxkqmy-Page-Page e61vbx1"
     tabindex="0"
   >
     4
   </li>
   <li
-    class="css-cg06y2-Page-Page e61vbx1"
+    class="css-uxkqmy-Page-Page e61vbx1"
     tabindex="0"
   >
     5
   </li>
   <li
-    class="css-lj7v6u-Page-Page-StyledPage e61vbx0"
+    class="css-11zwsxb-Page-Page-StyledPage e61vbx0"
   >
     <button
       aria-label="Go to a page"
-      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e61vbx4 et5j5k2 css-15ng4ux-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledPaginationButton"
+      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-sizeSmall MuiButton-colorPrimary e61vbx4 et5j5k2 css-1nys4t4-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-SmallButtonStyles-StyledButton-StyledPaginationButton"
       tabindex="0"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
-        <div
-          class="css-1q8yjse-StyledIcon emi0zh40"
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          height="16"
+          viewBox="0 0 256 256"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-            data-file-name="IconDotsHorizontal3Small"
-            data-testid="IconDotsHorizontal3Small"
-            fillcontrast="white"
-            focusable="false"
-            height="16"
-            viewBox="0 0 16 16"
-            width="16"
+          <path
+            d="M144,128a16,16,0,1,1-16-16A16,16,0,0,1,144,128ZM60,112a16,16,0,1,0,16,16A16,16,0,0,0,60,112Zm136,0a16,16,0,1,0,16,16A16,16,0,0,0,196,112Z"
           />
-        </div>
+        </svg>
       </span>
     </button>
   </li>
   <li
-    class="css-cg06y2-Page-Page e61vbx1"
+    class="css-uxkqmy-Page-Page e61vbx1"
     tabindex="0"
   >
     20
   </li>
   <li
-    class="css-1ufgxwc-StyledPaginationChevronList e61vbx3"
+    aria-label="Next page"
+    class="css-q1hccx-StyledPaginationChevronList e61vbx3"
     data-order="last"
     tabindex="0"
   >
-    <div
-      class="css-1q8yjse-StyledIcon emi0zh40"
+    <svg
+      aria-hidden="true"
+      fill="currentColor"
+      height="12"
+      viewBox="0 0 256 256"
+      width="12"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-        data-file-name="IconChevronRightSmall"
-        data-testid="IconChevronRightSmall"
-        fillcontrast="white"
-        focusable="false"
-        height="16"
-        viewBox="0 0 16 16"
-        width="16"
+      <path
+        d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"
       />
-    </div>
+    </svg>
   </li>
 </ul>
 `;

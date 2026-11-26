@@ -1,10 +1,10 @@
 import React from "react";
 import { Column, ColumnDef, RowData } from "@tanstack/react-table";
+import { DownloadSimpleIcon, PencilSimpleIcon } from "@phosphor-icons/react";
 import Button from "@components/src/core/Button";
 import CellBasic from "@components/src/core/CellBasic";
 import CellComponent from "@components/src/core/CellComponent";
 import CellHeader from "@components/src/core/CellHeader";
-import Icon from "@components/src/core/Icon";
 import InputText from "@components/src/core/InputText";
 import Link from "@components/src/core/Link";
 import Tag from "@components/src/core/Tag";
@@ -307,7 +307,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
             aria-label={`Edit ${row.original.name}`}
             onClick={() => console.log("Edit", row.original)}
           >
-            <Icon sdsIcon="Edit" sdsSize="s" />
+            <PencilSimpleIcon weight="bold" />
           </Button>
           <Button
             sdsStyle="minimal"
@@ -316,7 +316,7 @@ export const COLUMNS_DEFINITION: ColumnDef<DataType>[] = [
             aria-label={`More options for ${row.original.name}`}
             onClick={() => console.log("Downlaod", row.original)}
           >
-            <Icon sdsIcon="Download" sdsSize="s" />
+            <DownloadSimpleIcon weight="bold" />
           </Button>
         </div>
       </CellComponent>

@@ -1,9 +1,18 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import styled from "@emotion/styled";
+import { AtlasIcon } from "@czi-sds/icons";
+import { DownloadSimpleIcon, XIcon } from "@phosphor-icons/react";
 import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
+import Icon from "@components/src/core/Icon";
+import { isIconOnlyChild } from "../style";
 import * as stories from "../__storybook__/index.stories";
 
 const { Test } = composeStories(stories);
+
+const StyledXIcon = styled(XIcon)`
+  color: red;
+`;
 
 const BUTTON_TEST_ID = "button";
 
@@ -77,21 +86,27 @@ describe("<Button />", () => {
   });
 
   it("renders with startIcon prop", () => {
-    render(<Test {...Test.args} startIcon="Download" />);
+    render(<Test {...Test.args} startIcon={<DownloadSimpleIcon />} />);
     const buttonElement = screen.getByTestId(BUTTON_TEST_ID);
-    expect(buttonElement).toBeInTheDocument();
+    expect(buttonElement.querySelector("svg")).toBeInTheDocument();
   });
 
   it("renders with endIcon prop", () => {
-    render(<Test {...Test.args} endIcon="Download" />);
+    render(<Test {...Test.args} endIcon={<DownloadSimpleIcon />} />);
     const buttonElement = screen.getByTestId(BUTTON_TEST_ID);
-    expect(buttonElement).toBeInTheDocument();
+    expect(buttonElement.querySelector("svg")).toBeInTheDocument();
   });
 
   it("renders with both startIcon and endIcon props", () => {
-    render(<Test {...Test.args} startIcon="Download" endIcon="XMark" />);
+    render(
+      <Test
+        {...Test.args}
+        startIcon={<DownloadSimpleIcon />}
+        endIcon={<XIcon />}
+      />
+    );
     const buttonElement = screen.getByTestId(BUTTON_TEST_ID);
-    expect(buttonElement).toBeInTheDocument();
+    expect(buttonElement.querySelectorAll("svg")).toHaveLength(2);
   });
 
   it("renders with backgroundOnHover prop", () => {
@@ -111,5 +126,30 @@ describe("<Button />", () => {
     const buttonElement = screen.getByTestId(BUTTON_TEST_ID);
     expect(buttonElement).toBeInTheDocument();
     expect(buttonElement).toHaveTextContent("Click Me");
+  });
+});
+
+describe("isIconOnlyChild", () => {
+  it("recognizes a Phosphor icon", () => {
+    expect(isIconOnlyChild(<XIcon />)).toBe(true);
+  });
+
+  it("recognizes an @czi-sds/icons icon", () => {
+    expect(isIconOnlyChild(<AtlasIcon />)).toBe(true);
+  });
+
+  it("recognizes a styled Phosphor icon", () => {
+    expect(isIconOnlyChild(<StyledXIcon />)).toBe(true);
+  });
+
+  it("recognizes the deprecated SDS Icon and a raw svg", () => {
+    expect(isIconOnlyChild(<Icon sdsIcon="XMark" sdsSize="s" />)).toBe(true);
+    expect(isIconOnlyChild(<svg />)).toBe(true);
+  });
+
+  it("rejects text, other elements, and an icon next to a label", () => {
+    expect(isIconOnlyChild("Label")).toBe(false);
+    expect(isIconOnlyChild(<span>Label</span>)).toBe(false);
+    expect(isIconOnlyChild([<XIcon key="icon" />, "Label"])).toBe(false);
   });
 });

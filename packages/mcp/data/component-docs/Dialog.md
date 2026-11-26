@@ -524,10 +524,13 @@ import {
   DialogTitle,
   DialogTitleSubtitle,
   DialogTitleTitle,
-  Icon,
+  getColors,
 } from "@czi-sds/components";
+import { useTheme } from "@mui/material";
+import { CheckCircleIcon } from "@phosphor-icons/react";
 
 function App() {
+  const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   function handleClose() {
@@ -555,11 +558,10 @@ function App() {
               textAlign: "center",
             }}
           >
-            <Icon
-              sdsIcon="CheckCircle"
-              sdsSize="xl"
-              color="green"
-              shade={400}
+            <CheckCircleIcon
+              color={getColors({ theme })?.green[400]}
+              size={32}
+              weight="bold"
             />
             <DialogTitleTitle sdsSize="s">Upload complete</DialogTitleTitle>
             <DialogTitleSubtitle sdsSize="s">

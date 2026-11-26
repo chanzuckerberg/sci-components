@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { ListIcon, XIcon } from "@phosphor-icons/react";
 import {
   StyledButtonSection,
   StyledDrawer,
@@ -31,9 +32,8 @@ import {
 } from "./style";
 import NavigationHeaderPrimaryNav from "./components/NavigationHeaderPrimaryNav";
 import NavigationHeaderSecondaryNav from "./components/NavigationHeaderSecondaryNav";
-import Icon from "../Icon";
 import { NavigationHeaderProps } from "./NavigationHeader.types";
-import { mergeRefs } from "@components/src/common/utils";
+import { INTERNAL_ICON_PROPS, mergeRefs } from "@components/src/common/utils";
 import ElevationScroll from "./components/ElevationScroll";
 import { getMode } from "../styles";
 import { isIconOnlyChild } from "../Button/style";
@@ -534,10 +534,11 @@ const NavigationHeader = forwardRef<HTMLDivElement, NavigationHeaderProps>(
               onClick={() => setDrawerOpen((prev) => !prev)}
               hasInvertedStyle={hasInvertedStyle}
             >
-              <Icon
-                sdsSize="l"
-                sdsIcon={drawerOpen ? "XMark" : "LinesHorizontal3"}
-              />
+              {drawerOpen ? (
+                <XIcon {...INTERNAL_ICON_PROPS} size={24} />
+              ) : (
+                <ListIcon {...INTERNAL_ICON_PROPS} size={24} />
+              )}
             </StyledNarrowHamburgerMenuButton>
           )}
         </StyledToolbar>

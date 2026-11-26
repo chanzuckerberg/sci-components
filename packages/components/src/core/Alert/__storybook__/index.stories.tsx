@@ -1,13 +1,13 @@
 import { CheckCircleOutlined } from "@mui/icons-material";
 import { Snackbar, Button as MUIButton } from "@mui/material";
 import styled from "@emotion/styled";
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { Args, Meta } from "@storybook/react-vite";
 import React from "react";
 import Button from "@components/src/core/ButtonLegacy";
 import { defaultTheme } from "@components/src/core/styles/common/defaultTheme";
 import Alert from "../index";
 import Callout from "@components/src/core/Callout";
-import Icon from "@components/src/core/Icon";
 
 const DismissButton = styled(MUIButton)`
   margin-left: -${defaultTheme.spacing(3)}px;
@@ -29,7 +29,7 @@ const Demo = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        icon={<WarningCircleIcon weight="bold" />}
         body={
           <>
             The <strong>Alert</strong> component is deprecated!
@@ -84,7 +84,7 @@ export const SnackbarAlert = () => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        icon={<WarningCircleIcon weight="bold" />}
         body={
           <>
             The <strong>Alert</strong> component is deprecated!

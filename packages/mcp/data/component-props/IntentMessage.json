@@ -41,10 +41,10 @@
         "type": "string"
       },
       "icon": {
-        "defaultValue": "CheckCircle for positive, ExclamationMarkCircle otherwise",
-        "description": "Replaces the default icon. A name renders at xs; an element is rendered as given, though its fill is still overridden by the intent color.",
+        "defaultValue": "CheckCircleIcon for positive, WarningCircleIcon otherwise",
+        "description": "Replaces the default icon, usually with a Phosphor or @czi-sds/icons icon. It is drawn at 12px, and its fill is overridden by the intent color.",
         "isRequired": false,
-        "type": "keyof IconNameToSizes | ReactElement"
+        "type": "ReactElement"
       }
     }
   }

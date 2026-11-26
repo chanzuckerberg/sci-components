@@ -18,7 +18,7 @@
         "type": "boolean"
       },
       "icon": {
-        "description": "The name of an SDS icon, or a custom SVG element, shown in place of the icon the intent would pick. Without it, \"positive\" shows \"CheckCircle\", \"negative\" and \"notice\" show \"ExclamationMarkCircle\", and every other intent shows \"InfoCircle\".",
+        "description": "An icon element, usually a Phosphor or `@czi-sds/icons` icon, shown in\nplace of the icon the intent would pick. The Banner draws it at its own\nsize and color.",
         "isRequired": false,
         "type": "ReactElement"
       },
@@ -32,11 +32,6 @@
         "description": "Callback fired when the user clicks the close button. Signature: function(event: React.MouseEvent) => void event The event source of the callback.",
         "isRequired": false,
         "type": "function"
-      },
-      "sdsIconProps": {
-        "description": "Additional props to be passed to the icon component.",
-        "isRequired": false,
-        "type": "Partial<IconProps<keyof IconNameToSizes>>"
       },
       "sdsType": {
         "description": "Required. The primary variant fills the Banner with the intent's primary surface color and uses the on-fill text color. The secondary variant uses the intent's secondary surface color with the standard primary text color.",

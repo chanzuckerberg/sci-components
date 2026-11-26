@@ -1,4 +1,13 @@
-import Icon from "@components/src/core/Icon";
+import {
+  ChartBarIcon,
+  CopyIcon,
+  DownloadSimpleIcon,
+  FlaskIcon,
+  LightbulbIcon,
+  ListMagnifyingGlassIcon,
+  TreeStructureIcon,
+  VirusIcon,
+} from "@phosphor-icons/react";
 import Tag from "@components/src/core/Tag";
 import Button from "@components/src/core/Button";
 import {
@@ -29,10 +38,10 @@ export const CELL_BASIC_EXCLUDED_CONTROLS = [
 
 export const CELL_BASIC_ICON_OPTIONS = {
   none: undefined,
-  download: <Icon sdsSize="xs" sdsIcon="Download" key="download" />,
-  lightBulb: <Icon sdsSize="s" sdsIcon="LightBulb" key="lightBulb" />,
-  bacteria: <Icon sdsSize="l" sdsIcon="Bacteria" key="bacteria" />,
-  flask: <Icon sdsSize="xl" sdsIcon="Flask" key="flask" />,
+  download: <DownloadSimpleIcon weight="bold" size={12} key="download" />,
+  lightBulb: <LightbulbIcon weight="bold" size={16} key="lightBulb" />,
+  bacteria: <VirusIcon weight="bold" size={24} key="bacteria" />,
+  flask: <FlaskIcon weight="bold" size={32} key="flask" />,
 };
 
 export const CELL_BASIC_ICON_LABELS = {
@@ -64,7 +73,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = {
         sdsType="primary"
         sdsStyle="minimal"
       >
-        <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
+        <ChartBarIcon weight="bold" />
       </Button>
       <Button
         aria-label="Copy"
@@ -72,7 +81,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = {
         sdsStyle="minimal"
         size="large"
       >
-        <Icon sdsIcon="Copy" sdsSize="s" />
+        <CopyIcon weight="bold" />
       </Button>
       <Button
         aria-label="Search Lines Horizontal 3"
@@ -80,7 +89,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = {
         sdsType="primary"
         sdsStyle="minimal"
       >
-        <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
+        <ListMagnifyingGlassIcon weight="bold" />
       </Button>
       <Button
         aria-label="Download"
@@ -88,7 +97,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS = {
         sdsType="primary"
         sdsStyle="minimal"
       >
-        <Icon sdsIcon="Download" sdsSize="s" />
+        <DownloadSimpleIcon weight="bold" />
       </Button>
     </ButtonIconsGroupRight>
   ),
@@ -125,7 +134,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = {
         sdsStyle="minimal"
         backgroundOnHover={false}
       >
-        <Icon sdsIcon="BarChartVertical4" sdsSize="s" />
+        <ChartBarIcon weight="bold" />
       </Button>
       <Button
         aria-label="Copy"
@@ -134,7 +143,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = {
         sdsStyle="minimal"
         backgroundOnHover={false}
       >
-        <Icon sdsIcon="Copy" sdsSize="s" />
+        <CopyIcon weight="bold" />
       </Button>
       <Button
         aria-label="Search Lines Horizontal 3"
@@ -143,7 +152,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = {
         sdsStyle="minimal"
         backgroundOnHover={false}
       >
-        <Icon sdsIcon="SearchLinesHorizontal3" sdsSize="s" />
+        <ListMagnifyingGlassIcon weight="bold" />
       </Button>
       <Button
         aria-label="Tree Horizontal"
@@ -152,7 +161,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = {
         sdsStyle="minimal"
         backgroundOnHover={false}
       >
-        <Icon sdsIcon="TreeHorizontal" sdsSize="s" />
+        <TreeStructureIcon weight="bold" />
       </Button>
       <Button
         aria-label="Download"
@@ -161,7 +170,7 @@ export const CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS = {
         sdsStyle="minimal"
         backgroundOnHover={false}
       >
-        <Icon sdsIcon="Download" sdsSize="s" />
+        <DownloadSimpleIcon weight="bold" />
       </Button>
     </ButtonIconsGroupBottom>
   ),

@@ -10,7 +10,9 @@ import {
   PopperProps,
   useTheme,
 } from "@mui/material";
+import { MagnifyingGlassIcon, XCircleIcon } from "@phosphor-icons/react";
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import {
   AutocompleteMultiColumnOption,
   AutocompleteMultiColumnValue,
@@ -33,7 +35,6 @@ import {
 } from "./style";
 import useDetectUserTabbing from "@components/src/common/helpers/userTabbing";
 import { VerticalDivider } from "./components/VerticalDivider";
-import Icon from "@components/src/core/Icon";
 
 interface ExtraAutocompleteMultiColumnProps<
   T,
@@ -238,7 +239,7 @@ const AutocompleteMultiColumn = <
                       onClick={clearInput}
                       backgroundOnHover={false}
                     >
-                      <Icon sdsIcon="XMarkCircle" sdsSize="s" />
+                      <XCircleIcon {...INTERNAL_ICON_PROPS} size={16} />
                     </Button>
                   )}
                 </StyledInputAdornment>
@@ -257,7 +258,7 @@ const AutocompleteMultiColumn = <
                     sdsStyle="minimal"
                     backgroundOnHover={false}
                   >
-                    <Icon sdsIcon="Search" sdsSize="s" />
+                    <MagnifyingGlassIcon {...INTERNAL_ICON_PROPS} size={16} />
                   </Button>
                 </StyledInputAdornment>
               ),

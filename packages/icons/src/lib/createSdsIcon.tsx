@@ -11,8 +11,19 @@ import type { Icon, IconWeight } from "@phosphor-icons/react";
  * `iconBaseIsResolvable` in `__tests__/createSdsIcon.test.tsx` fails loudly if
  * this path ever moves.
  */
-import IconBase from "@phosphor-icons/react/dist/lib/IconBase";
+import * as iconBaseModule from "@phosphor-icons/react/dist/lib/IconBase";
 import { forwardRef, type ReactElement } from "react";
+
+/*
+ * Under `require`, Phosphor's `exports` map resolves that path to its whole
+ * CommonJS bundle instead, where `IconBase` is a named export and there is no
+ * default. Reading it through a second binding keeps bundlers from warning that
+ * the ES module has no such export.
+ */
+const commonJsShape = iconBaseModule as unknown as {
+  IconBase?: typeof iconBaseModule.default;
+};
+const IconBase = commonJsShape.IconBase ?? iconBaseModule.default;
 
 const WEIGHTS: IconWeight[] = [
   "thin",

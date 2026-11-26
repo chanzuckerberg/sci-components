@@ -1,6 +1,7 @@
+import { XIcon } from "@phosphor-icons/react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import Button from "@components/src/core/Button";
 import { StyledPanelHeaderClose } from "./style";
-import Icon from "@components/src/core/Icon";
 
 export interface PanelHeaderCloseProps {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -22,7 +23,7 @@ const PanelHeaderClose = (props: PanelHeaderCloseProps) => {
           size="large"
           backgroundOnHover={false}
         >
-          <Icon sdsIcon="XMark" sdsSize="l" />
+          <XIcon {...INTERNAL_ICON_PROPS} size={24} />
         </Button>
       )}
     </StyledPanelHeaderClose>

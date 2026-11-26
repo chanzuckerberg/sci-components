@@ -1,5 +1,6 @@
+import { CheckCircleIcon, WarningCircleIcon } from "@phosphor-icons/react";
 import React from "react";
-import Icon, { IconNameToSizes } from "@components/src/core/Icon";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import {
   IntentMessageIntent,
   IntentMessageItem,
@@ -23,17 +24,6 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
     ...rest
   } = props;
 
-  // const priorities = React.useMemo(() => {
-  //   return orderBy
-  //     ? orderBy.reduce(
-  //         (acc, intent, index) => {
-  //           acc[intent] = index;
-  //           return acc;
-  //         },
-  //         {} as Record<IntentMessageIntent, number>
-  //       )
-  //     : DEFAULT_INTENT_PRIORITY;
-  // }, [orderBy]);
   const priorities = orderBy
     ? Object.fromEntries(orderBy.map((value, index) => [value, index]))
     : DEFAULT_INTENT_PRIORITY;
@@ -58,20 +48,15 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
 
   const getIcon = (item: IntentMessageItem) => {
     const { icon, intent } = item;
-    if (icon) {
-      if (typeof icon !== "string") {
-        return icon;
-      }
-      return <Icon sdsIcon={icon as keyof IconNameToSizes} sdsSize="xs" />;
-    }
+    if (icon) return icon;
 
     switch (intent) {
       case "positive":
-        return <Icon sdsIcon="CheckCircle" sdsSize="xs" />;
+        return <CheckCircleIcon {...INTERNAL_ICON_PROPS} size={12} />;
       case "negative":
       case "notice":
       default:
-        return <Icon sdsIcon="ExclamationMarkCircle" sdsSize="xs" />;
+        return <WarningCircleIcon {...INTERNAL_ICON_PROPS} size={12} />;
     }
   };
 
@@ -94,7 +79,7 @@ const IntentMessage = (props: IntentMessageProps): JSX.Element => {
       {children}
       {sortedMessages.map((message, index) => (
         <StyledMessageItem key={index} intent={message.intent}>
-          {getIcon(message)}
+          <span>{getIcon(message)}</span>
           <span>{message.text}</span>
         </StyledMessageItem>
       ))}

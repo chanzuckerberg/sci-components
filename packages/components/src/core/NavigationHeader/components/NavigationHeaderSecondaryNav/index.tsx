@@ -10,10 +10,11 @@ import { StyledTag } from "./style";
 import { UnifiedNavItem } from "../shared/UnifiedNavItem";
 import { SdsTagColorType } from "@components/src/core/Tag";
 import Menu from "@components/src/core/Menu";
-import Icon from "@components/src/core/Icon";
 import MenuItem from "@components/src/core/MenuItem";
 import { SDSTheme } from "@components/src/core/styles";
 import { MenuProps, useTheme } from "@mui/material";
+import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import { DropdownItem, SectionProps } from "../NavigationHeaderPrimaryNav";
 import { groupItemsBySection } from "../../utils";
 import {
@@ -176,10 +177,11 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           <StyledLabelTextWrapperShadow aria-hidden="true" isNarrow={isNarrow}>
             {label as ReactNode}
           </StyledLabelTextWrapperShadow>
-          <Icon
-            sdsIcon={isDrawerOpen ? "ChevronUp" : "ChevronDown"}
-            sdsSize="xs"
-          />
+          {isDrawerOpen ? (
+            <CaretUpIcon {...INTERNAL_ICON_PROPS} size={12} />
+          ) : (
+            <CaretDownIcon {...INTERNAL_ICON_PROPS} size={12} />
+          )}
         </UnifiedNavItem>
       </StyledHoverDrawerContainer>
     );
@@ -218,10 +220,11 @@ export default function NavigationHeaderSecondaryNav<T extends string>({
           <StyledLabelTextWrapperShadow aria-hidden="true" isNarrow={isNarrow}>
             {label as ReactNode}
           </StyledLabelTextWrapperShadow>
-          <Icon
-            sdsIcon={isDropdownOpen ? "ChevronUp" : "ChevronDown"}
-            sdsSize="xs"
-          />
+          {isDropdownOpen ? (
+            <CaretUpIcon {...INTERNAL_ICON_PROPS} size={12} />
+          ) : (
+            <CaretDownIcon {...INTERNAL_ICON_PROPS} size={12} />
+          )}
         </UnifiedNavItem>
 
         <Menu

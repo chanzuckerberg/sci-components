@@ -8,8 +8,8 @@ import {
 import { Args, Meta } from "@storybook/react-vite";
 import React, { SyntheticEvent, useState } from "react";
 import RawMenuSelect, { DefaultMenuSelectOption } from "../index";
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import Callout from "@components/src/core/Callout";
-import Icon from "@components/src/core/Icon";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import {
   CommonThemeProps,
@@ -125,7 +125,7 @@ const MenuSelect = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        icon={<WarningCircleIcon weight="bold" />}
         body={
           <>
             The <strong>MenuSelect</strong> component is deprecated!

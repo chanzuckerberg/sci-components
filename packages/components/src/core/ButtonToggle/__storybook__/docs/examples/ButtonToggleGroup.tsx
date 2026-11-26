@@ -1,11 +1,12 @@
 import * as React from "react";
-import { ButtonGroup, ButtonToggle, Icon } from "@czi-sds/components";
+import { ButtonGroup, ButtonToggle } from "@czi-sds/components";
+import { CodeIcon, CopyIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 
 const TOGGLES = [
-  { icon: "Search", label: "Search" },
-  { icon: "Copy", label: "Copy" },
-  { icon: "Code", label: "Code" },
-] as const;
+  { icon: <MagnifyingGlassIcon weight="bold" />, label: "Search" },
+  { icon: <CopyIcon weight="bold" />, label: "Copy" },
+  { icon: <CodeIcon weight="bold" />, label: "Code" },
+];
 
 function App() {
   const [active, setActive] = React.useState<Record<string, boolean>>({});
@@ -20,7 +21,7 @@ function App() {
             sdsStyle="outline"
             sdsType="secondary"
             sdsStage={active[label] ? "on" : "off"}
-            startIcon={<Icon sdsIcon={icon} sdsSize="s" />}
+            startIcon={icon}
             onClick={() =>
               setActive((prev) => ({ ...prev, [label]: !prev[label] }))
             }

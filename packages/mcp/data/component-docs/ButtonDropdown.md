@@ -109,14 +109,15 @@ This example shows how to incorporate a starting icon within a ButtonDropdown co
 **Example: ButtonDropdownWithAStartIcon**
 
 ```tsx
-import { ButtonDropdown, Icon } from "@czi-sds/components";
+import { VirusIcon } from "@phosphor-icons/react";
+import { ButtonDropdown } from "@czi-sds/components";
 
 function App() {
   return (
     <div className="app">
       <ButtonDropdown
         sdsType="secondary"
-        startIcon={<Icon sdsIcon="Bacteria" sdsSize="s" />}
+        startIcon={<VirusIcon weight="bold" />}
       >
         Bacteria Types
       </ButtonDropdown>
@@ -219,12 +220,12 @@ export default App;
 
 ## SDS vs MUI
 
-The SDS ButtonDropdown component is the regular Button component with a ChevronDown icon added after the label text, via the MUI `endIcon` prop. The chevron is only added when the button has a label, and its size follows the `size` prop. A `startIcon` is optional; when used, it takes the Icon component, which references the specific icon to call as one of its props, like so:
+The SDS ButtonDropdown component is the regular Button component with a caret icon added after the label text, via the MUI `endIcon` prop. The caret is only added when the button has a label, and its size follows the `size` prop. A `startIcon` is optional; when used, it takes an icon element, usually a Phosphor or `@czi-sds/icons` icon, like so:
 
 **React TypeScript**
 
 ```tsx
-startIcon={<Icon sdsIcon="Download" sdsSize="s" />}
+startIcon={<DownloadSimpleIcon weight="bold" />}
 ```
 
 whereas MUI expects the prop to receive an individual icon as its own component (for example `startIcon={<DeleteIcon />}`).
@@ -248,7 +249,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `size`                 | `"small"` \| `"medium"` \| `"large"`    | `"large"`           | Size of the button. Also sets the size of the trailing chevron.                                                                                                              |
 | `backgroundOnHover`    | `boolean`                               | `true`              | Only applies when `sdsStyle` is `"minimal"`. When `false`, the button drops its padding and renders no background on hover or press, so it sits flush with surrounding text. |
 | `backgroundAppearance` | `"matchBackground" \| "dark"`           | `"matchBackground"` | Tells the button which surface it sits on so it can pick colors with enough contrast. Set it to `"dark"` when the button is placed on a dark background in light mode.       |
-| `startIcon`            | `ReactNode`                             | -                   | An optional icon placed before the label. Pass the SDS Icon component, for example `<Icon sdsIcon="Download" sdsSize="s" />`.                                                |
+| `startIcon`            | `ReactNode`                             | -                   | An optional icon placed before the label, usually a Phosphor or `@czi-sds/icons` icon, for example `<DownloadSimpleIcon weight="bold" />`. The button sizes and colors it.   |
 | `children`             | `ReactNode`                             | -                   | The button label. The trailing chevron is only rendered when a label is present.                                                                                             |
 | `disabled`             | `boolean`                               | `false`             | Disables the button when set to `true`.                                                                                                                                      |
 | `onClick`              | `(event: React.MouseEvent) => void`     | -                   | Callback fired when the button is clicked. Typically used to open the associated menu.                                                                                       |

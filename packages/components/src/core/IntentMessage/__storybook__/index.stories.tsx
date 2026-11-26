@@ -3,7 +3,7 @@ import { IntentMessageDemo } from "./stories/default";
 import { CheckboxDemo } from "./stories/checkbox";
 import { PasswordDemo } from "./stories/password";
 import { ScreenshotTestDemo } from "./stories/screenshot";
-import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
+import { GitHubIcon } from "@czi-sds/icons";
 
 const defaultMessages = [
   {
@@ -16,11 +16,10 @@ const defaultMessages = [
     intent: "positive",
     text: "This is a very long positive message supposed to be wrapped into multiple lines.",
   },
-  { intent: "notice", text: "With custom SDS icon", icon: "Github" },
   {
-    intent: "positive",
-    text: "With custom icon",
-    icon: <CustomSvgIcon sx={{ height: 12, width: 12 }} />,
+    intent: "notice",
+    text: "With custom SDS icon",
+    icon: <GitHubIcon weight="bold" />,
   },
 ];
 

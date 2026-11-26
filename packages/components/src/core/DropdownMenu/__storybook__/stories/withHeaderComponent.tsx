@@ -1,11 +1,11 @@
 import { AutocompleteValue } from "@mui/material/useAutocomplete";
+import { DownloadSimpleIcon, InfoIcon } from "@phosphor-icons/react";
 import { Args } from "@storybook/react-vite";
 import { useEffect, useRef, useState } from "react";
 import { AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS } from "@components/src/common/storybook/AUTOCOMPLETE_SINGLE_COLUMN_OPTIONS";
 import { DefaultAutocompleteOption } from "@components/src/core/Autocomplete";
 import Button from "@components/src/core/Button";
 import RawDropdownMenu from "@components/src/core/DropdownMenu";
-import Icon from "@components/src/core/Icon";
 
 export const WithHeaderComponentDemo = <
   T extends DefaultAutocompleteOption,
@@ -39,20 +39,22 @@ export const WithHeaderComponentDemo = <
   const CustomHeaderComponent = () => (
     <div style={{ alignItems: "center", display: "flex", gap: 8 }}>
       <Button
+        aria-label="More information"
         sdsStyle="minimal"
         backgroundOnHover={false}
         size="large"
         sdsType="secondary"
       >
-        <Icon sdsIcon="InfoCircle" sdsSize="s" />
+        <InfoIcon weight="bold" />
       </Button>
       <Button
+        aria-label="Download"
         sdsStyle="minimal"
         backgroundOnHover={false}
         size="large"
         sdsType="secondary"
       >
-        <Icon sdsIcon="Download" sdsSize="s" />
+        <DownloadSimpleIcon weight="bold" />
       </Button>
     </div>
   );

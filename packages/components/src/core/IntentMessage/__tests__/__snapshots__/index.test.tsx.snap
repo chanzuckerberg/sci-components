@@ -5,13 +5,13 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-f1w972-StyledIntentMessage em85jr71"
+    class="css-1sgt9k6-StyledIntentMessage em85jr71"
   >
     <label
-      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e79l7n50 css-1jhu33w-MuiFormControlLabel-root-StyledFormControlLabel"
+      class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd e79l7n50 css-12mzk1-MuiFormControlLabel-root-StyledFormControlLabel"
     >
       <span
-        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium e79l7n54 css-czzhzi-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root-StyledCheckbox"
+        class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium MuiCheckbox-root MuiCheckbox-colorPrimary MuiCheckbox-sizeMedium e79l7n54 css-1e9k67h-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root-StyledCheckbox"
         intent="negative"
         label="Input Element Group Label"
       >
@@ -22,7 +22,7 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
           type="checkbox"
         />
         <span
-          class="css-12udfv5-StyledCheckboxDefaultIcon e79l7n56"
+          class="css-1g8gxrc-StyledCheckboxDefaultIcon e79l7n56"
           font-size="medium"
         />
       </span>
@@ -30,15 +30,15 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
         class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-rizt0-MuiTypography-root"
       >
         <span
-          class="css-13fz3c5-StyledLabelContainer e79l7n53"
+          class="css-n5dknb-StyledLabelContainer e79l7n53"
         >
           <span
-            class="css-15yq1d7-StyledCheckboxLabel e79l7n52"
+            class="css-1h2fjnl-StyledCheckboxLabel e79l7n52"
           >
             Input Element Group Label
           </span>
           <span
-            class="css-r50e2u-StyledCheckboxCaption e79l7n51"
+            class="css-shcb0q-StyledCheckboxCaption e79l7n51"
           >
             Caption
           </span>
@@ -46,23 +46,22 @@ exports[`IntentMessage > Checkbox story renders snapshot 1`] = `
       </span>
     </label>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconExclamationMarkCircleSmall"
-          data-testid="IconExclamationMarkCircleSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm-12-80V80a12,12,0,0,1,24,0v52a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,172Z"
+          />
+        </svg>
+      </span>
       <span>
         This is a negative message
       </span>
@@ -76,7 +75,7 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-f1w972-StyledIntentMessage em85jr71"
+    class="css-1sgt9k6-StyledIntentMessage em85jr71"
   >
     <div>
       <div
@@ -112,135 +111,109 @@ exports[`IntentMessage > Default story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconExclamationMarkCircleSmall"
-          data-testid="IconExclamationMarkCircleSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm-12-80V80a12,12,0,0,1,24,0v52a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,172Z"
+          />
+        </svg>
+      </span>
       <span>
         This is a negative message
       </span>
     </div>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconExclamationMarkCircleSmall"
-          data-testid="IconExclamationMarkCircleSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm-12-80V80a12,12,0,0,1,24,0v52a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,172Z"
+          />
+        </svg>
+      </span>
       <span>
         This is a notice message
       </span>
     </div>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconGithubSmall"
-          data-testid="IconGithubSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M127.9872 4.265624C59.66992 4.265624 4.265624 59.66288 4.265624 128.0032C4.265624 182.664 39.71568 229.0432 88.884 245.4128C95.0744 246.544 97.3304 242.7248 97.3304 239.4432C97.3304 236.5024 97.224 228.7248 97.1632 218.4016C62.7464 225.8768 55.4848 201.8128 55.4848 201.8128C49.85616 187.5168 41.74384 183.712 41.74384 183.712C30.5096 176.04 42.59456 176.192 42.59456 176.192C55.01392 177.0656 61.54624 188.9456 61.54624 188.9456C72.5832 207.8512 90.5096 202.3888 97.5584 199.2208C98.6824 191.2304 101.8808 185.776 105.4128 182.6864C77.93808 179.5552 49.05104 168.9456 49.05104 121.5312C49.05104 108.0184 53.87456 96.9816 61.78928 88.3296C60.51328 85.2 56.2672 72.62128 63.00464 55.58352C63.00464 55.58352 73.38816 52.25648 97.0264 68.26096C106.8936 65.51888 117.4824 64.15168 128.0024 64.0984C138.5152 64.15168 149.0968 65.51888 158.9792 68.26096C182.6016 52.25648 192.9696 55.58352 192.9696 55.58352C199.7232 72.62128 195.4768 85.2 194.2096 88.3296C202.1376 96.9816 206.9232 108.0184 206.9232 121.5312C206.9232 169.0672 177.9904 179.5264 150.4336 182.5872C154.8696 186.408 158.8272 193.9584 158.8272 205.504C158.8272 222.04 158.6752 235.3856 158.6752 239.4432C158.6752 242.7536 160.9088 246.6048 167.1824 245.3968C216.312 228.9984 251.7328 182.6544 251.7328 128.0032C251.7328 59.66288 196.3264 4.265624 127.9872 4.265624Z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
       <span>
         With custom SDS icon
       </span>
     </div>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconCheckCircleSmall"
-          data-testid="IconCheckCircleSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"
+          />
+        </svg>
+      </span>
       <span>
         This is a positive message
       </span>
     </div>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconCheckCircleSmall"
-          data-testid="IconCheckCircleSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"
+          />
+        </svg>
+      </span>
       <span>
         This is a very long positive message supposed to be wrapped into multiple lines.
-      </span>
-    </div>
-    <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
-    >
-      <svg
-        aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorPrimary MuiSvgIcon-fontSizeMedium css-1iggtbh-MuiSvgIcon-root"
-        focusable="false"
-        viewBox="0 0 512 512"
-      >
-        <path
-          d="M458.872,256.078c-17.529-26.644-41.771-52.681-70.79-76.4c-3.469-21.271-8.392-41.554-14.672-60.373 c53.195-0.169,87.024,22.59,72.415,73.747c-0.631,2.21-0.052,4.584,1.508,6.27c6.904,7.458,13.366,15.038,19.341,22.705 c3.073,3.943,9.293,3.121,11.202-1.498c32.302-78.145-10.047-146.718-120.43-140.279c-0.031,0.001-0.062,0.004-0.093,0.007 c-0.013-0.028-0.028-0.055-0.041-0.083c-53.56-106.69-148.783-106.875-202.496-0.688C40.555,73.469-15.599,151.807,52.904,255.924 c0.018,0.028,0.038,0.055,0.056,0.084c-67.012,100.563-16.503,183.6,101.482,175.776c0.008,0.016,0.014,0.03,0.022,0.046 c53.515,106.6,148.97,107.133,202.766,0.164C470.406,437.597,528.418,361.778,458.872,256.078z M138.187,119.848 c-6.226,18.763-11.107,38.972-14.546,60.159c-16.562,13.617-31.69,28.038-44.907,42.876 C38.058,152.559,74.283,120.168,138.187,119.848z M117.998,274.703c-5.69-6.007-11.138-12.226-16.31-18.65 c5.142-6.327,10.591-12.465,16.297-18.416C117.543,249.588,117.518,261.961,117.998,274.703z M78.682,289.361 c13.172,14.872,28.299,29.301,45.012,42.962c3.477,21.316,8.412,41.64,14.711,60.491 C67.963,392.674,43.078,352.627,78.682,289.361z M333.074,123.155c2.657,7.176,5.083,14.639,7.271,22.352 c-9.094-5.698-18.999-11.49-30.114-17.469C317.999,126.092,325.631,124.461,333.074,123.155z M315.549,85.768 c-19.762,3.974-39.653,9.827-59.258,17.221c-20.847-8.122-40.797-14.035-59.637-17.942 C232.529,25.172,278.658,23.544,315.549,85.768z M178.643,123.321c7.447,1.231,15.082,2.784,22.854,4.655 c-10.25,5.498-20.295,11.364-30.069,17.544C173.601,137.861,176.01,130.45,178.643,123.321z M178.794,389.096 c-2.692-7.253-5.148-14.8-7.362-22.603c9.524,5.966,19.569,11.81,30.503,17.666C194.064,386.139,186.334,387.787,178.794,389.096z M196.051,425.931c19.213-4.025,38.998-9.881,58.808-17.323c21.078,8.168,41.325,14.107,60.474,17.991 C278.773,487.933,232.398,487.509,196.051,425.931z M333.091,388.798c-7.661-1.267-15.52-2.879-23.521-4.823 c10.453-5.508,20.759-11.419,30.837-17.698C338.208,374.051,335.765,381.569,333.091,388.798z M351.321,311.775 c-29.889,22.661-63.024,41.092-95.899,54.615c-32.493-13.173-65.228-31.205-94.845-53.695 c-4.587-35.626-4.895-74.801-0.105-112.588c29.851-22.504,63.071-40.834,96.05-54.314c32.446,13.161,65.124,31.155,94.688,53.581 C355.863,235.562,356.016,274.655,351.321,311.775z M410.019,255.868c-5.135,6.281-10.554,12.377-16.218,18.285 c0.449-12.289,0.444-24.538-0.018-36.832C399.446,243.294,404.869,249.48,410.019,255.868z M373.55,392.273 c6.215-18.706,11.092-38.85,14.536-59.969c16.428-13.394,31.608-27.808,45.054-43.017 C473.701,359.55,437.451,391.95,373.55,392.273z"
-        />
-         
-        <path
-          d="M255.888,202.24c-29.643,0-53.76,24.117-53.76,53.76c0,29.643,24.117,53.76,53.76,53.76s53.76-24.117,53.76-53.76 C309.649,226.357,285.531,202.24,255.888,202.24z"
-        />
-         
-      </svg>
-      <span>
-        With custom icon
       </span>
     </div>
   </div>
@@ -252,7 +225,7 @@ exports[`IntentMessage > Password story renders snapshot 1`] = `
   style="width: 400px;"
 >
   <div
-    class="css-f1w972-StyledIntentMessage em85jr71"
+    class="css-1sgt9k6-StyledIntentMessage em85jr71"
   >
     <div>
       <label
@@ -294,23 +267,22 @@ exports[`IntentMessage > Password story renders snapshot 1`] = `
       </div>
     </div>
     <div
-      class="css-3o4wz8-StyledMessageItem em85jr70"
+      class="css-1ph0f2j-StyledMessageItem em85jr70"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
-      >
+      <span>
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconExclamationMarkCircleSmall"
-          data-testid="IconExclamationMarkCircleSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
-        />
-      </div>
+          fill="currentColor"
+          height="12"
+          viewBox="0 0 256 256"
+          width="12"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128,20A108,108,0,1,0,236,128,108.12,108.12,0,0,0,128,20Zm0,192a84,84,0,1,1,84-84A84.09,84.09,0,0,1,128,212Zm-12-80V80a12,12,0,0,1,24,0v52a12,12,0,0,1-24,0Zm28,40a16,16,0,1,1-16-16A16,16,0,0,1,144,172Z"
+          />
+        </svg>
+      </span>
       <span>
         This is a negative message
       </span>

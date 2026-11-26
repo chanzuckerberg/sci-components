@@ -92,13 +92,13 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
         <p style={LABEL_STYLE}>
           Column: <b>{column ? "yes" : "no"}</b>
         </p>
-        {MENU_ITEM_SCREENSHOT_ICON_OPTIONS.map((sdsIcon) => {
+        {MENU_ITEM_SCREENSHOT_ICON_OPTIONS.map((icon) => {
           return (
             <MenuItemIcon
               isMultiSelect={isMultiSelect}
               column={column}
-              sdsIcon={sdsIcon}
-              key={String(sdsIcon)}
+              icon={icon}
+              key={icon ? "icon" : "no-icon"}
             />
           );
         })}
@@ -110,11 +110,11 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   function MenuItemIcon({
     isMultiSelect,
     column,
-    sdsIcon,
+    icon,
   }: {
     isMultiSelect: (typeof MENU_ITEM_MULTI_SELECT_OPTIONS)[number];
     column: (typeof MENU_ITEM_COLUMN_OPTIONS)[number];
-    sdsIcon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
+    icon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
   }) {
     const LABEL_STYLE: React.CSSProperties = {
       ...MID_LABEL,
@@ -126,14 +126,14 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
     return (
       <div style={DISPLAY_CONTENTS}>
         <p style={LABEL_STYLE}>
-          Icon: <b>{sdsIcon ? "yes" : "no"}</b>
+          Icon: <b>{icon ? "yes" : "no"}</b>
         </p>
         {MENU_ITEM_SELECTED_OPTIONS.map((selected) => {
           return (
             <MenuItemSelected
               isMultiSelect={isMultiSelect}
               column={column}
-              sdsIcon={sdsIcon}
+              icon={icon}
               selected={selected}
               key={String(selected)}
             />
@@ -147,12 +147,12 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   function MenuItemSelected({
     isMultiSelect,
     column,
-    sdsIcon,
+    icon,
     selected,
   }: {
     isMultiSelect: (typeof MENU_ITEM_MULTI_SELECT_OPTIONS)[number];
     column: (typeof MENU_ITEM_COLUMN_OPTIONS)[number];
-    sdsIcon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
+    icon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
     selected: (typeof MENU_ITEM_SELECTED_OPTIONS)[number];
   }) {
     const LABEL_STYLE: React.CSSProperties = {
@@ -172,7 +172,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
             <MenuItemStyles
               isMultiSelect={isMultiSelect}
               column={column}
-              sdsIcon={sdsIcon}
+              icon={icon}
               selected={selected}
               sdsStyle={sdsStyle}
               key={String(sdsStyle)}
@@ -187,13 +187,13 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   function MenuItemStyles({
     isMultiSelect,
     column,
-    sdsIcon,
+    icon,
     selected,
     sdsStyle,
   }: {
     isMultiSelect: (typeof MENU_ITEM_MULTI_SELECT_OPTIONS)[number];
     column: (typeof MENU_ITEM_COLUMN_OPTIONS)[number];
-    sdsIcon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
+    icon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
     selected: (typeof MENU_ITEM_SELECTED_OPTIONS)[number];
     sdsStyle: (typeof MENU_ITEM_SDS_STYLE_OPTIONS)[number];
   }) {
@@ -214,9 +214,9 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
             <MenuItemDisabled
               isMultiSelect={isMultiSelect}
               column={column}
-              sdsIcon={sdsIcon}
+              icon={icon}
               selected={selected}
-              sdsStyle={sdsStyle as MenuItemProps<"Gear">["sdsStyle"]}
+              sdsStyle={sdsStyle as MenuItemProps["sdsStyle"]}
               disabled={disabled}
               key={String(disabled)}
             />
@@ -230,16 +230,16 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
   function MenuItemDisabled({
     isMultiSelect,
     column,
-    sdsIcon,
+    icon,
     selected,
     sdsStyle,
     disabled,
   }: {
     isMultiSelect: (typeof MENU_ITEM_MULTI_SELECT_OPTIONS)[number];
     column: (typeof MENU_ITEM_COLUMN_OPTIONS)[number];
-    sdsIcon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
+    icon: (typeof MENU_ITEM_SCREENSHOT_ICON_OPTIONS)[number];
     selected: (typeof MENU_ITEM_SELECTED_OPTIONS)[number];
-    sdsStyle: MenuItemProps<"Gear">["sdsStyle"];
+    sdsStyle: MenuItemProps["sdsStyle"];
     disabled: (typeof MENU_ITEM_DISABLED_OPTIONS)[number];
   }) {
     const LEVEL_STYLE: React.CSSProperties = {
@@ -275,7 +275,7 @@ export const ScreenshotTestDemo = (props: Args): JSX.Element => {
                     data-testid="menu-item"
                     isMultiSelect={isMultiSelect}
                     column={column}
-                    icon={sdsIcon}
+                    icon={icon}
                     selected={selected}
                     sdsStyle={sdsStyle}
                     disabled={disabled}

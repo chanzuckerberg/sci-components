@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { DownloadSimpleIcon } from "@phosphor-icons/react";
 import { composeStories } from "@storybook/react-vite";
 import { cleanup, render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
@@ -72,9 +73,11 @@ describe("<ButtonDropdown />", () => {
   });
 
   it("renders with startIcon prop", () => {
-    render(<Test {...Test.args} startIcon="Download" />);
+    render(<Test {...Test.args} startIcon={<DownloadSimpleIcon />} />);
     const buttonElement = screen.getByTestId(BUTTON_DROPDOWN_TEST_ID);
-    expect(buttonElement).toBeInTheDocument();
+    expect(
+      buttonElement.querySelector(".MuiButton-startIcon svg")
+    ).toBeTruthy();
   });
 
   it("renders with backgroundOnHover prop", () => {

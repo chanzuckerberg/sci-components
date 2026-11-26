@@ -1,7 +1,12 @@
+import { SparklesIcon } from "@czi-sds/icons";
+import {
+  CopyIcon,
+  DownloadSimpleIcon,
+  IntersectIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 import { action } from "storybook/actions";
-import CustomSdsIcon from "@components/src/common/storybook/svg/customSdsIcon";
 import CustomSvgIcon from "@components/src/common/storybook/svg/customSvgIcon";
-import Icon from "@components/src/core/Icon";
 
 export const BUTTON_DROPDOWN_EXCLUDED_CONTROLS = [
   "disabled",
@@ -21,23 +26,21 @@ export const BUTTON_DROPDOWN_ACTIONS = {
 };
 
 export const BUTTON_DROPDOWN_ICON_OPTIONS = {
-  download: <Icon key="download" sdsIcon="Download" sdsSize="s" />,
-  copy: <Icon key="copy" sdsIcon="Copy" sdsSize="s" />,
-  circlesOverlap2: (
-    <Icon key="circlesOverlap2" sdsIcon="CirclesOverlap2" sdsSize="s" />
-  ),
-  trashCan: <Icon key="trashCan" sdsIcon="TrashCan" sdsSize="s" />,
-  customSdsIcon: <CustomSdsIcon key="customSdsIcon" sdsSize="s" />,
+  download: <DownloadSimpleIcon key="download" weight="bold" />,
+  copy: <CopyIcon key="copy" weight="bold" />,
+  intersect: <IntersectIcon key="intersect" weight="bold" />,
+  trash: <TrashIcon key="trash" weight="bold" />,
+  sparkles: <SparklesIcon key="sparkles" weight="bold" />,
   customSvgIcon: (
     <CustomSvgIcon key="customIcon" style={{ height: "16px", width: "16px" }} />
   ),
 };
 
 export const BUTTON_DROPDOWN_ICON_LABELS = {
-  download: "SDS Icon: Download",
-  copy: "SDS Icon: Copy",
-  circlesOverlap2: "SDS Icon: CirclesOverlap2",
-  trashCan: "SDS Icon: TrashCan",
-  customSdsIcon: "Custom SDS Icon",
+  download: "Phosphor DownloadSimple",
+  copy: "Phosphor Copy",
+  intersect: "Phosphor Intersect",
+  trash: "Phosphor Trash",
+  sparkles: "@czi-sds/icons Sparkles",
   customSvgIcon: "Custom SVG Icon",
 };

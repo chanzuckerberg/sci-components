@@ -1,20 +1,26 @@
-// icon takes either an SDS icon name or an element. A name is always rendered at
-// xs, so it has to be an icon that offers that size. Either way the fill is
-// forced to the intent color.
+// icon takes an element, usually a Phosphor or @czi-sds/icons icon. The message
+// draws it at 12px and forces its fill to the intent color, whatever size or
+// color the icon was given.
 
-import { Icon, IntentMessage, IntentMessageItem } from "@czi-sds/components";
+import { GitHubIcon, SparkleIcon } from "@czi-sds/icons";
+import { LockIcon } from "@phosphor-icons/react";
+import { IntentMessage, IntentMessageItem } from "@czi-sds/components";
 
 const MESSAGES: IntentMessageItem[] = [
-  { icon: "Github", intent: "notice", text: "Named SDS icon, rendered at xs" },
   {
-    icon: <Icon sdsIcon="Sparkle" sdsSize="s" />,
-    intent: "positive",
-    text: "An Icon element, so you choose the size",
+    icon: <GitHubIcon weight="bold" />,
+    intent: "notice",
+    text: "An icon from @czi-sds/icons",
   },
   {
-    icon: <Icon sdsIcon="Lock" sdsSize="xs" />,
+    icon: <SparkleIcon weight="bold" size={24} />,
+    intent: "positive",
+    text: "Drawn at 12px whatever size it is given",
+  },
+  {
+    icon: <LockIcon weight="bold" color="#000000" />,
     intent: "negative",
-    text: "The icon color follows the intent, not the Icon color prop",
+    text: "The icon color follows the intent, not the icon's color prop",
   },
 ];
 

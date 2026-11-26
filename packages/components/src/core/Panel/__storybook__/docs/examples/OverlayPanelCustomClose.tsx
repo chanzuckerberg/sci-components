@@ -1,7 +1,7 @@
 // CloseButtonComponent replaces the default X. The click handler stays on
 // closeButtonOnClick, which the panel attaches to the wrapper around whatever
 // you pass, so the replacement needs no onClick of its own. The wrapper also
-// forces any icon inside a button to 24px, so sdsSize on it has no effect.
+// forces any icon inside a button to 24px, so size on it has no effect.
 //
 // Stage, ModalProps.container and the transition's container are here only to
 // keep the panel and its slide inside the example frame, as in the examples
@@ -9,7 +9,6 @@
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   fontHeaderM,
@@ -17,6 +16,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { GearIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Stage = styled.div<CommonThemeProps>`
@@ -65,7 +65,7 @@ function App() {
           onClick={() => setOpen(true)}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Gear" sdsSize="s" />}
+          startIcon={<GearIcon weight="bold" />}
         >
           Show settings
         </Button>

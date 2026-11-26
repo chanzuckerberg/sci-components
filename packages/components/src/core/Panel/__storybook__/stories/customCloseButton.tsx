@@ -4,7 +4,7 @@ import RawPanel from "@components/src/core/Panel";
 import Button from "@components/src/core/Button";
 import { Box, Typography } from "@mui/material";
 import { LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
-import Icon from "@components/src/core/Icon";
+import { CaretLeftIcon, InfoIcon } from "@phosphor-icons/react";
 import ButtonToggle from "@components/src/core/ButtonToggle";
 
 export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
@@ -15,7 +15,7 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
       <Box sx={{ padding: 4 }}>
         <ButtonToggle
           aria-label="button-toggle"
-          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          startIcon={<InfoIcon weight="bold" />}
           size="large"
           sdsType="primary"
           sdsStyle="minimal"
@@ -49,7 +49,7 @@ export const CustomHeaderAndCloseButtonDemo = (props: Args): JSX.Element => {
             aria-label="Panel Toggle"
             backgroundOnHover={false}
           >
-            <Icon sdsIcon="ChevronLeft" sdsSize="l" />
+            <CaretLeftIcon weight="bold" />
           </Button>
         }
         data-testid="panel"

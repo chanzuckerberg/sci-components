@@ -1,6 +1,6 @@
+import { WarningCircleIcon } from "@phosphor-icons/react";
 import { Args } from "@storybook/react-vite";
 import Callout from "@components/src/core/Callout";
-import Icon from "@components/src/core/Icon";
 import RawLink from "@components/src/core/Link";
 
 export const Link = (props: Args): JSX.Element => {
@@ -11,7 +11,7 @@ export const Link = (props: Args): JSX.Element => {
         intent="negative"
         title="Deprecated!"
         sdsStyle="persistent"
-        icon={<Icon sdsIcon="ExclamationMarkCircle" sdsSize="s" />}
+        icon={<WarningCircleIcon weight="bold" />}
         body={
           <>
             The <strong>Link</strong> component is deprecated!

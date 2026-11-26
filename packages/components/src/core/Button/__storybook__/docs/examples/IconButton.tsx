@@ -1,16 +1,17 @@
-import { Button, Icon } from "@czi-sds/components";
+import { Button } from "@czi-sds/components";
+import { CopyIcon, DownloadSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app" style={{ display: "flex", gap: "16px" }}>
       <Button aria-label="Download">
-        <Icon sdsIcon="Download" sdsSize="s" />
+        <DownloadSimpleIcon weight="bold" />
       </Button>
       <Button sdsStyle="outline" sdsType="secondary" aria-label="Copy">
-        <Icon sdsIcon="Copy" sdsSize="s" />
+        <CopyIcon weight="bold" />
       </Button>
       <Button sdsStyle="minimal" sdsType="secondary" aria-label="Delete">
-        <Icon sdsIcon="TrashCan" sdsSize="s" />
+        <TrashIcon weight="bold" />
       </Button>
     </div>
   );

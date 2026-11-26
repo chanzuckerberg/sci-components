@@ -1,4 +1,5 @@
-import Icon from "@components/src/core/Icon";
+import { LoadingIcon } from "@czi-sds/icons";
+import { INTERNAL_ICON_PROPS } from "@components/src/common/utils";
 import {
   LoadingIndicatorProps as RawLoadingIndicatorProps,
   StyledLoadingIndicator,
@@ -15,7 +16,7 @@ const LoadingIndicator = ({
 }: LoadingIndicatorProps): JSX.Element => {
   return (
     <StyledLoadingIndicator sdsStyle={sdsStyle} aria-label="Loading">
-      <Icon sdsIcon="Loading" sdsSize="l" />
+      <LoadingIcon {...INTERNAL_ICON_PROPS} size={24} />
       <StyledText aria-label={ariaLabel} aria-live="polite" role="status">
         Loading
       </StyledText>

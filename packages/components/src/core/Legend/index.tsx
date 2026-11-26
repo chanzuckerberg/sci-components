@@ -40,7 +40,8 @@ const Legend = (props: LegendProps): JSX.Element => {
   // indices continue after `items`.
   const hasOverflowMenu = lastItemMenuItems.length > 0;
   const overflowItemIndex = items.length;
-  const isOverflowTrigger = (index: number) => hasOverflowMenu && index === overflowItemIndex - 1;
+  const isOverflowTrigger = (index: number) =>
+    hasOverflowMenu && index === overflowItemIndex - 1;
 
   const handleMouseEnter = (item: LegendItemData, index: number) => {
     if (item.disabled) return;
@@ -101,7 +102,7 @@ const Legend = (props: LegendProps): JSX.Element => {
       <LegendContainer {...rest}>
         {items.map((item, index) => {
           const opensMenu = isOverflowTrigger(index);
-          
+
           // Hovering or selecting a menu item also counts for the trigger
           const isHovered = opensMenu
             ? hoveredIndex !== null && hoveredIndex >= index
@@ -109,7 +110,7 @@ const Legend = (props: LegendProps): JSX.Element => {
           const isSelected = opensMenu
             ? selectedIndices.some((i) => i >= index)
             : selectedIndices.includes(index);
-          
+
           // Dim if:
           // - Never dim disabled items (e.g., remaining segment)
           // - When hovering: dim items that are neither hovered nor selected

@@ -22,14 +22,19 @@ Three icon segments, left uncontrolled so the control tracks the selection itsel
 
 ```tsx
 import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
+import {
   SegmentedControl,
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 
 const VIEWS: SingleButtonDefinition[] = [
-  { icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
-  { icon: "TreeVertical", value: "Tree" },
+  { icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
+  { icon: <GitBranchIcon weight="bold" />, value: "Tree" },
 ];
 
 function App() {
@@ -103,12 +108,17 @@ import {
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 
 const VIEWS: SingleButtonDefinition[] = [
-  { icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
-  { icon: "TreeVertical", value: "Tree" },
+  { icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
+  { icon: <GitBranchIcon weight="bold" />, value: "Tree" },
 ];
 
 const Readout = styled.p<CommonThemeProps>`
@@ -171,11 +181,16 @@ import {
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
 
 const VIEWS: SingleButtonDefinition[] = [
-  { disabled: true, icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
-  { icon: "TreeVertical", value: "Tree" },
+  { disabled: true, icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
+  { icon: <GitBranchIcon weight="bold" />, value: "Tree" },
 ];
 
 const Row = styled.div<CommonThemeProps>`
@@ -254,13 +269,18 @@ export default App;
 // the console, and overrides tooltipProps.title when both are set.
 
 import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
+import {
   SegmentedControl,
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 
 const VIEWS: SingleButtonDefinition[] = [
   {
-    icon: "List",
+    icon: <ListBulletsIcon weight="bold" />,
     tooltipProps: {
       subtitle: "One row per sample, sorted by collection date",
       title: "List",
@@ -268,7 +288,7 @@ const VIEWS: SingleButtonDefinition[] = [
     value: "List",
   },
   {
-    icon: "Table",
+    icon: <TableIcon weight="bold" />,
     tooltipProps: {
       subtitle: "Every measured field, side by side",
       title: "Table",
@@ -276,7 +296,7 @@ const VIEWS: SingleButtonDefinition[] = [
     value: "Table",
   },
   {
-    icon: "TreeVertical",
+    icon: <GitBranchIcon weight="bold" />,
     tooltipProps: { placement: "bottom", title: "Tree, explained below" },
     value: "Tree",
   },
@@ -295,16 +315,16 @@ export default App;
 
 ### A segment with its own artwork
 
-`icon` takes an SVG element as well as an SDS icon name, which covers artwork the SDS set does not carry.
+`icon` takes any element, so artwork that neither Phosphor nor `@czi-sds/icons` carries works as well as an icon from either set.
 
 **Example: SegmentedControlCustomIcon**
 
 ```tsx
-// icon takes an SVG element as well as an SDS icon name, which covers artwork the
-// SDS set does not carry and icons it only draws at 24px. The element is rendered
-// as it is given, so size it to 16px yourself and fill it with currentColor so it
-// picks up the segment's colour as the selection moves.
+// icon takes any element, so artwork that neither Phosphor nor @czi-sds/icons
+// carries works too. The control draws it at 16px; fill it with currentColor so
+// it picks up the segment's colour as the selection moves.
 
+import { ListBulletsIcon, TableIcon } from "@phosphor-icons/react";
 import {
   SegmentedControl,
   type SingleButtonDefinition,
@@ -317,8 +337,8 @@ const HexagonIcon = (
 );
 
 const VIEWS: SingleButtonDefinition[] = [
-  { icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
+  { icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
   { icon: HexagonIcon, value: "Cells" },
 ];
 
@@ -385,12 +405,12 @@ Any custom SDS props and MUI props required for implementation are found on the 
 
 The shape of each entry in `buttonDefinition`.
 
-| Name                | Type                                            | Default      | Description                                                                                                                                                                                                                                          |
-| ------------------- | ----------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`             | `string`                                        | - (required) | Identifies the segment in `value` and `onChange`. On an icon-only segment it is also the accessible name and the tooltip's fallback text, so keep it readable.                                                                                       |
-| `icon`              | `keyof IconNameToSizes` \| `React.ReactElement` | -            | An SDS icon name, drawn at the small size, or an SVG element of your own for artwork SDS does not carry. Size an element you pass to 16px and fill it with currentColor so it follows the selection.                                                 |
-| `label`             | `string`                                        | -            | Text for the segment, used instead of an icon. It becomes the segment's accessible name and the tooltip's fallback text.                                                                                                                             |
-| `disabled`          | `boolean`                                       | `false`      | Turns the segment off. Disabled segments show no tooltip and are skipped when an uncontrolled control picks its starting selection.                                                                                                                  |
-| `shouldShowTooltip` | `boolean`                                       | `true`       | Whether the segment has a tooltip. Worth turning off for a labelled segment, whose tooltip would only repeat the label.                                                                                                                              |
-| `tooltipProps`      | `Partial<Omit<TooltipProps, "children">>`       | -            | Passed to the segment's Tooltip, so it takes a title, a subtitle, a placement, and the rest of the Tooltip API. Without a title, the tooltip falls back to the label or the value. Note that the title is not used as the segment's accessible name. |
-| `tooltipText`       | `string`                                        | -            | Deprecated in favour of `tooltipProps`, and logs a warning. It sets the tooltip's title, overriding `tooltipProps.title` when both are given, and it is the one tooltip prop that also sets the segment's accessible name.                           |
+| Name                | Type                                      | Default      | Description                                                                                                                                                                                                                                          |
+| ------------------- | ----------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`             | `string`                                  | - (required) | Identifies the segment in `value` and `onChange`. On an icon-only segment it is also the accessible name and the tooltip's fallback text, so keep it readable.                                                                                       |
+| `icon`              | `React.ReactElement`                      | -            | An icon element, usually a Phosphor or `@czi-sds/icons` icon. The control draws it at 16px. An SVG of your own should fill with currentColor so it follows the selection.                                                                            |
+| `label`             | `string`                                  | -            | Text for the segment, used instead of an icon. It becomes the segment's accessible name and the tooltip's fallback text.                                                                                                                             |
+| `disabled`          | `boolean`                                 | `false`      | Turns the segment off. Disabled segments show no tooltip and are skipped when an uncontrolled control picks its starting selection.                                                                                                                  |
+| `shouldShowTooltip` | `boolean`                                 | `true`       | Whether the segment has a tooltip. Worth turning off for a labelled segment, whose tooltip would only repeat the label.                                                                                                                              |
+| `tooltipProps`      | `Partial<Omit<TooltipProps, "children">>` | -            | Passed to the segment's Tooltip, so it takes a title, a subtitle, a placement, and the rest of the Tooltip API. Without a title, the tooltip falls back to the label or the value. Note that the title is not used as the segment's accessible name. |
+| `tooltipText`       | `string`                                  | -            | Deprecated in favour of `tooltipProps`, and logs a warning. It sets the tooltip's title, overriding `tooltipProps.title` when both are given, and it is the one tooltip prop that also sets the segment's accessible name.                           |

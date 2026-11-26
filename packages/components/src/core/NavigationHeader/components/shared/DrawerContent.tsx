@@ -1,4 +1,3 @@
-import Icon from "@components/src/core/Icon";
 import {
   StyledHoverDrawerColumnHeader,
   StyledHoverDrawerItem,
@@ -57,26 +56,17 @@ export default function DrawerContent({
 
     const hasDetails = !!details;
     const hasIcon = !!icon;
-    const iconSize = hasDetails ? "l" : "s";
 
     const renderIcon = () => {
       // Based on primaryNav: return EmptyIcon when no icon
       if (!icon) return <EmptyIcon hasDetails={hasDetails} />;
-
-      const iconContent =
-        typeof icon !== "string" ? (
-          icon
-        ) : (
-          // Based on primaryNav: include color="indigo"
-          <Icon sdsIcon={icon} sdsSize={iconSize} color="indigo" />
-        );
 
       return (
         <StyledHoverDrawerItemIcon
           hasDetails={hasDetails}
           hasInvertedStyle={hasInvertedStyle}
         >
-          {iconContent}
+          {icon}
         </StyledHoverDrawerItemIcon>
       );
     };

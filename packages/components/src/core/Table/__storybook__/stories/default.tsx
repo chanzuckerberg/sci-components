@@ -1,18 +1,25 @@
-import { RadioGroup } from "@mui/material";
+import { RadioGroup, useTheme } from "@mui/material";
+import {
+  DownloadSimpleIcon,
+  FlaskIcon,
+  VirusIcon,
+} from "@phosphor-icons/react";
 import { Args } from "@storybook/react-vite";
 import CellBasic from "@components/src/core/CellBasic";
 import CellComponent from "@components/src/core/CellComponent";
 import CellHeader from "@components/src/core/CellHeader";
-import Icon from "@components/src/core/Icon";
 import InputRadio from "@components/src/core/InputRadio";
 import TableHeader from "@components/src/core/TableHeader";
 import TableRow from "@components/src/core/TableRow";
 import Tag from "@components/src/core/Tag";
 import { SdsTagColorType } from "@components/src/core/Tag/style";
 import RawTable from "@components/src/core/Table";
+import { getSemanticColors } from "@components/src/core/styles";
 import { StyledIconCell } from "../style";
 
 export const Table = (props: Args): JSX.Element => {
+  const semanticColors = getSemanticColors({ theme: useTheme() });
+
   return (
     <RawTable {...props}>
       <TableHeader>
@@ -34,7 +41,11 @@ export const Table = (props: Args): JSX.Element => {
         <TableRow>
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
-              <Icon sdsSize="xl" sdsIcon="Flask" />
+              <FlaskIcon
+                color={semanticColors?.accent?.ornament}
+                size={32}
+                weight="duotone"
+              />
               <Tag color="info" label="Chemistry" sdsStyle="outline" />
             </StyledIconCell>
           </CellComponent>
@@ -80,7 +91,11 @@ export const Table = (props: Args): JSX.Element => {
         <TableRow>
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
-              <Icon sdsSize="xl" sdsIcon="Download" />
+              <DownloadSimpleIcon
+                size={32}
+                weight="bold"
+                color={semanticColors?.accent?.ornament}
+              />
               <Tag
                 color="info"
                 label="Downloadable Content"
@@ -126,7 +141,11 @@ export const Table = (props: Args): JSX.Element => {
         >
           <CellComponent verticalAlign="center" horizontalAlign="center">
             <StyledIconCell>
-              <Icon sdsSize="xl" sdsIcon="Virus" />
+              <VirusIcon
+                size={32}
+                weight="bold"
+                color={semanticColors?.accent?.ornament}
+              />
               <Tag color="negative" label="Disease" sdsStyle="outline" />
             </StyledIconCell>
           </CellComponent>
@@ -143,7 +162,7 @@ export const Table = (props: Args): JSX.Element => {
             verticalAlign="center"
           />
           <CellComponent verticalAlign="center">
-            <Icon sdsSize="l" sdsIcon="Bacteria" />
+            <VirusIcon size={24} weight="bold" />
           </CellComponent>
           <CellBasic
             primaryText="0.4"

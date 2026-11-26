@@ -11,13 +11,13 @@
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   getSemanticColors,
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { FunnelSimpleIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const PANEL_WIDTH = 280;
@@ -59,7 +59,7 @@ function App() {
             onClick={() => setOpen((prev) => !prev)}
             sdsStyle="solid"
             sdsType="primary"
-            startIcon={<Icon sdsIcon="Filter" sdsSize="s" />}
+            startIcon={<FunnelSimpleIcon weight="bold" />}
           >
             {open ? "Hide filters" : "Show filters"}
           </Button>

@@ -6,13 +6,13 @@ exports[`<Chip /> > Default story renders snapshot 1`] = `
 >
   <div>
     <button
-      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-1v2hn6p-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
+      class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-sizeLarge MuiButton-colorPrimary et5j5k2 css-98gv7w-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-SecondaryButtonStyles-LargeButtonStyles-StyledButton"
       disabled=""
       tabindex="-1"
       type="button"
     >
       <span
-        class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+        class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
       >
         Remove the chip by clicking on it
       </span>
@@ -34,21 +34,19 @@ exports[`<Chip /> > Default story renders snapshot 1`] = `
           Chip
         </span>
       </span>
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        aria-hidden="true"
+        class="MuiChip-deleteIcon"
+        fill="currentColor"
+        height="12"
+        viewBox="0 0 256 256"
+        width="12"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-deleteIcon emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconXMarkSmall"
-          data-testid="IconXMarkSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
+        <path
+          d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"
         />
-      </div>
+      </svg>
     </div>
   </div>
 </div>

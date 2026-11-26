@@ -1,5 +1,6 @@
-// Replacing the intent's default icon with any SDS icon
+// Replacing the intent's default icon with any Phosphor or @czi-sds/icons icon
 
+import { VirusIcon } from "@phosphor-icons/react";
 import { Callout } from "@czi-sds/components";
 
 function App() {
@@ -7,9 +8,9 @@ function App() {
     <div className="app">
       <Callout
         intent="accent"
-        icon="Bacteria"
+        icon={<VirusIcon weight="bold" />}
         title="Custom icon"
-        body="Pass an icon name to swap the icon the intent would otherwise pick."
+        body="Pass an icon element to swap the icon the intent would otherwise pick."
       />
     </div>
   );

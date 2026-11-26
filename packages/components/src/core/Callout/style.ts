@@ -9,6 +9,7 @@ import {
   CommonThemeProps,
   fontBodyXs,
   getCorners,
+  getIconSizes,
   getPalette,
   getSemanticColors,
   getSpaces,
@@ -39,6 +40,7 @@ export const StyledCallout = styled(Alert, {
 
     const spaces = getSpaces(props);
     const corners = getCorners(props);
+    const iconSizes = getIconSizes(props);
     const palette = getPalette(props);
     const semanticColors = getSemanticColors(props);
 
@@ -58,6 +60,11 @@ export const StyledCallout = styled(Alert, {
         margin-top: ${(hideBody && sdsStyle === "expandable" && collapsed) || (hideBody && sdsStyle !== "expandable") ? 0 : spaces?.xxxs}px;
         margin-right: ${spaces?.s}px;
         padding: 0;
+
+        svg {
+          height: ${iconSizes?.s.height}px;
+          width: ${iconSizes?.s.width}px;
+        }
 
         path {
           fill: ${iconColor};

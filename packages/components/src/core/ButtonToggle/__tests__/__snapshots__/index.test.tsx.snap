@@ -2,35 +2,31 @@
 
 exports[`<ButtonToggle /> > Default story renders snapshot 1`] = `
 <div
-  class="css-13iras6-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
+  class="css-1wu5ifg-StyledBackgroundAppearanceWrapper-StyledBackgroundAppearanceWrapper et5j5k0"
 >
   <button
     aria-label="button-toggle"
-    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-quh3tp-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-sizeLarge MuiButton-colorPrimary euuolxv0 et5j5k2 css-1jfyo0g-MuiButtonBase-root-MuiButton-root-StyledButton-GeneralButtonStyles-PrimaryButtonStyles-LargeButtonStyles-StyledButton-StyledButtonToggle"
     tabindex="0"
     type="button"
   >
     <span
       class="MuiButton-icon MuiButton-startIcon css-1d1erjx-MuiButton-startIcon"
     >
-      <div
-        class="css-1q8yjse-StyledIcon emi0zh40"
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emi0zh41 css-thg7jc-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon"
-          data-file-name="IconDownloadSmall"
-          data-testid="IconDownloadSmall"
-          fillcontrast="white"
-          focusable="false"
-          height="16"
-          viewBox="0 0 16 16"
-          width="16"
+        <path
+          d="M228,144v64a12,12,0,0,1-12,12H40a12,12,0,0,1-12-12V144a12,12,0,0,1,24,0v52H204V144a12,12,0,0,1,24,0Zm-108.49,8.49a12,12,0,0,0,17,0l40-40a12,12,0,0,0-17-17L140,115V32a12,12,0,0,0-24,0v83L96.49,95.51a12,12,0,0,0-17,17Z"
         />
-      </div>
+      </svg>
     </span>
     <span
-      class="css-1vy3uni-StyledChildren-StyledChildren et5j5k1"
+      class="css-o3nwr6-StyledChildren-StyledChildren et5j5k1"
     >
       Label
     </span>

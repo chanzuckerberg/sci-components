@@ -36,13 +36,13 @@ A persistent panel on the left, with the page's content shifted by the same widt
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   getSemanticColors,
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { FunnelSimpleIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const PANEL_WIDTH = 280;
@@ -84,7 +84,7 @@ function App() {
             onClick={() => setOpen((prev) => !prev)}
             sdsStyle="solid"
             sdsType="primary"
-            startIcon={<Icon sdsIcon="Filter" sdsSize="s" />}
+            startIcon={<FunnelSimpleIcon weight="bold" />}
           >
             {open ? "Hide filters" : "Show filters"}
           </Button>
@@ -128,7 +128,6 @@ An overlay panel on the right with a header, the default close button, and `isBa
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   fontHeaderM,
@@ -136,6 +135,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { InfoIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Stage = styled.div<CommonThemeProps>`
@@ -170,7 +170,7 @@ function App() {
           onClick={() => setOpen(true)}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          startIcon={<InfoIcon weight="bold" />}
         >
           Show details
         </Button>
@@ -229,7 +229,6 @@ The bottom position spans the full width, and the `width` prop becomes the panel
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   fontHeaderM,
@@ -237,6 +236,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { TableIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Stage = styled.div<CommonThemeProps>`
@@ -284,7 +284,7 @@ function App() {
           onClick={() => setOpen(true)}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Table" sdsSize="s" />}
+          startIcon={<TableIcon weight="bold" />}
         >
           Show table
         </Button>
@@ -327,7 +327,7 @@ export default App;
 // CloseButtonComponent replaces the default X. The click handler stays on
 // closeButtonOnClick, which the panel attaches to the wrapper around whatever
 // you pass, so the replacement needs no onClick of its own. The wrapper also
-// forces any icon inside a button to 24px, so sdsSize on it has no effect.
+// forces any icon inside a button to 24px, so size on it has no effect.
 //
 // Stage, ModalProps.container and the transition's container are here only to
 // keep the panel and its slide inside the example frame, as in the examples
@@ -335,7 +335,6 @@ export default App;
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   fontHeaderM,
@@ -343,6 +342,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { GearIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Stage = styled.div<CommonThemeProps>`
@@ -391,7 +391,7 @@ function App() {
           onClick={() => setOpen(true)}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Gear" sdsSize="s" />}
+          startIcon={<GearIcon weight="bold" />}
         >
           Show settings
         </Button>
@@ -620,17 +620,17 @@ Documentation for the underlying MUI component can be found [here](https://mui.c
 
 Any custom SDS props and MUI props required for implementation are found on the table below. See the MUI documentation for additional optional props.
 
-| Name                     | Type                                                                 | Default                                                                                                                                                                         | Description                                                                                                                                                                                                                                                     |
-| ------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sdsType`                | `"basic" \| "overlay"`                                               | - (required)                                                                                                                                                                    | `"basic"` sits in the page and stays until you close it; `"overlay"` floats over the page with a header and close button. It also decides which of the props below apply, so TypeScript needs it spelled out even though the component falls back to `"basic"`. |
-| `open`                   | `boolean`                                                            | `false`                                                                                                                                                                         | Whether the panel is showing. The panel never changes this itself, so hold it in your own state.                                                                                                                                                                |
-| `position`               | `"left"` \| `"right"` \| `"bottom"` (overlay only)                   | `"left"`                                                                                                                                                                        | Which edge the panel is attached to. A basic panel takes `"left"` or `"right"`; an overlay adds `"bottom"`.                                                                                                                                                     |
-| `width`                  | `number \| string`                                                   | `240` (basic) `320` (overlay)                                                                                                                                                   | How wide the panel is, or how tall it is when positioned along the bottom. Numbers are read as pixels. Values below the default are ignored, since the panel keeps that as its minimum in both directions.                                                      |
-| `HeaderComponent`        | `React.ReactNode`                                                    | -                                                                                                                                                                               | Overlay only. Fills the header bar beside the close button. Leave it out and the bar holds the close button alone.                                                                                                                                              |
-| `closeButtonOnClick`     | `React.MouseEventHandler<HTMLDivElement>`                            | -                                                                                                                                                                               | Overlay only. Runs when the header's close control is clicked. Without it, the control does nothing.                                                                                                                                                            |
-| `CloseButtonComponent`   | `React.ReactNode`                                                    | `<Button` `sdsStyle="minimal"` `sdsType="secondary"` `size="large"` `backgroundOnHover={false}` `aria-label="Panel Toggle">` `<Icon sdsIcon="XMark" sdsSize="l" />` `</Button>` | Overlay only. Replaces the close button. Clicks are handled by the wrapper around it, so it needs no handler of its own.                                                                                                                                        |
-| `isBackdropClickEnabled` | `boolean`                                                            | `false`                                                                                                                                                                         | Overlay only in practice. Adds an invisible backdrop so a click outside the panel reaches `onClose`. Left off, clicks pass through to the page.                                                                                                                 |
-| `onClose`                | `(event, reason) => void`                                            | -                                                                                                                                                                               | MUI's Drawer callback, fired on a backdrop click and on Escape while focus is inside the panel. It does not fire for the header's close button, which reports through `closeButtonOnClick`.                                                                     |
-| `transitionDuration`     | `number` \| `{ appear?: number,` `enter?: number,` `exit?: number }` | `{ enter: 225, exit: 195 }`                                                                                                                                                     | How long the panel takes to slide in and out, in milliseconds. The Panel keeps MUI's drawer timings instead of the much shorter ones in the SDS theme, which a surface this large arrives too quickly to read as motion. Pass `0` for no animation.             |
-| `ModalProps`             | `ModalProps`                                                         | -                                                                                                                                                                               | Passed to the Modal behind an overlay panel, except for `disableEnforceFocus` and `disableScrollLock`, which SDS pins to `true`.                                                                                                                                |
-| `slotProps`              | `DrawerProps["slotProps"]`                                           | `{ backdrop: { invisible: true },` `paper: { aria-label: "Panel" } }`                                                                                                           | Merged with the SDS defaults slot by slot, so a paper `aria-label` or `aria-labelledby` of your own replaces the default name while the rest of the defaults survive.                                                                                           |
+| Name                     | Type                                                                 | Default                                                                                                                                                            | Description                                                                                                                                                                                                                                                     |
+| ------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sdsType`                | `"basic" \| "overlay"`                                               | - (required)                                                                                                                                                       | `"basic"` sits in the page and stays until you close it; `"overlay"` floats over the page with a header and close button. It also decides which of the props below apply, so TypeScript needs it spelled out even though the component falls back to `"basic"`. |
+| `open`                   | `boolean`                                                            | `false`                                                                                                                                                            | Whether the panel is showing. The panel never changes this itself, so hold it in your own state.                                                                                                                                                                |
+| `position`               | `"left"` \| `"right"` \| `"bottom"` (overlay only)                   | `"left"`                                                                                                                                                           | Which edge the panel is attached to. A basic panel takes `"left"` or `"right"`; an overlay adds `"bottom"`.                                                                                                                                                     |
+| `width`                  | `number \| string`                                                   | `240` (basic) `320` (overlay)                                                                                                                                      | How wide the panel is, or how tall it is when positioned along the bottom. Numbers are read as pixels. Values below the default are ignored, since the panel keeps that as its minimum in both directions.                                                      |
+| `HeaderComponent`        | `React.ReactNode`                                                    | -                                                                                                                                                                  | Overlay only. Fills the header bar beside the close button. Leave it out and the bar holds the close button alone.                                                                                                                                              |
+| `closeButtonOnClick`     | `React.MouseEventHandler<HTMLDivElement>`                            | -                                                                                                                                                                  | Overlay only. Runs when the header's close control is clicked. Without it, the control does nothing.                                                                                                                                                            |
+| `CloseButtonComponent`   | `React.ReactNode`                                                    | `<Button` `sdsStyle="minimal"` `sdsType="secondary"` `size="large"` `backgroundOnHover={false}` `aria-label="Panel Toggle">` `<XIcon weight="bold" />` `</Button>` | Overlay only. Replaces the close button. Clicks are handled by the wrapper around it, so it needs no handler of its own.                                                                                                                                        |
+| `isBackdropClickEnabled` | `boolean`                                                            | `false`                                                                                                                                                            | Overlay only in practice. Adds an invisible backdrop so a click outside the panel reaches `onClose`. Left off, clicks pass through to the page.                                                                                                                 |
+| `onClose`                | `(event, reason) => void`                                            | -                                                                                                                                                                  | MUI's Drawer callback, fired on a backdrop click and on Escape while focus is inside the panel. It does not fire for the header's close button, which reports through `closeButtonOnClick`.                                                                     |
+| `transitionDuration`     | `number` \| `{ appear?: number,` `enter?: number,` `exit?: number }` | `{ enter: 225, exit: 195 }`                                                                                                                                        | How long the panel takes to slide in and out, in milliseconds. The Panel keeps MUI's drawer timings instead of the much shorter ones in the SDS theme, which a surface this large arrives too quickly to read as motion. Pass `0` for no animation.             |
+| `ModalProps`             | `ModalProps`                                                         | -                                                                                                                                                                  | Passed to the Modal behind an overlay panel, except for `disableEnforceFocus` and `disableScrollLock`, which SDS pins to `true`.                                                                                                                                |
+| `slotProps`              | `DrawerProps["slotProps"]`                                           | `{ backdrop: { invisible: true },` `paper: { aria-label: "Panel" } }`                                                                                              | Merged with the SDS defaults slot by slot, so a paper `aria-label` or `aria-labelledby` of your own replaces the default name while the rest of the defaults survive.                                                                                           |

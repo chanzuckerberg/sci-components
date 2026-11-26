@@ -49,14 +49,14 @@ export default {
       control: {
         labels: {
           customSvgIcon: "Custom SVG Icon",
-          customSdsIcon: "Custom SDS Icon",
-          book: "SDS Icon: Book",
-          checkCircle: "SDS Icon: Check Circle",
+          sparkles: "@czi-sds/icons Sparkles",
+          book: "Phosphor Book",
+          checkCircle: "Phosphor CheckCircle",
         },
         type: "select",
       },
       description:
-        "Override the icon displayed before the children. Unless provided, the icon follows the intent. Set to `false` to remove the icon.",
+        "Override the icon displayed before the children with an icon element, usually a Phosphor or `@czi-sds/icons` icon. The Notification draws it at its own size and color. Unless provided, the icon follows the intent.",
       mapping: NOTIFICATION_ICON_OPTIONS,
       options: Object.keys(NOTIFICATION_ICON_OPTIONS),
     },
@@ -78,11 +78,6 @@ export default {
         "Callback fired when the component requests to be closed. When provided and no `action` prop is set, a close icon button is displayed that triggers the callback when clicked.",
       mapping: NOTIFICATION_ON_CLICK_OPTIONS,
       options: Object.keys(NOTIFICATION_ON_CLICK_OPTIONS),
-    },
-    sdsIconProps: {
-      control: { type: "object" },
-      description:
-        "Props forwarded to the Icon component when icon is given as a name.",
     },
     slideDirection: {
       control: { type: INLINE_RADIO },

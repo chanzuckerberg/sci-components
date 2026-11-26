@@ -32,8 +32,7 @@ describe("<CellHeader />", () => {
   it("renders a sort icon when header is active and hover is true", async () => {
     render(<Test hover={true} />);
     const headerCellElement = screen.getByTestId("CellHeader");
-    const sortIcon =
-      headerCellElement.getElementsByClassName("MuiSvgIcon-root")[0];
+    const sortIcon = headerCellElement.querySelector("svg");
     expect(sortIcon).toBeTruthy();
   });
 
@@ -61,6 +60,6 @@ describe("<CellHeader />", () => {
   it("draws no sort icon while hover is false", () => {
     render(<Test hover={false} />);
     const cell = screen.getByTestId("CellHeader");
-    expect(cell.getElementsByClassName("MuiSvgIcon-root")).toHaveLength(0);
+    expect(cell.querySelectorAll("svg")).toHaveLength(0);
   });
 });

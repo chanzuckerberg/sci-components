@@ -4,7 +4,6 @@ import {
   SDSWarningTypes,
   showWarningIfFirstOccurence,
 } from "@components/src/common/warnings";
-import Icon, { IconNameToSizes } from "@components/src/core/Icon";
 import Tooltip, { TooltipProps } from "@components/src/core/Tooltip";
 import {
   StyledSegmentedControl,
@@ -17,7 +16,12 @@ import {
 // first item in array first button, etc
 export interface SingleButtonDefinition {
   disabled?: boolean;
-  icon?: keyof IconNameToSizes | React.ReactElement<CustomSVGProps>;
+  /**
+   * An icon element, usually a Phosphor or `@czi-sds/icons` icon. The control
+   * draws it at 16px. An SVG of your own should fill with currentColor so it
+   * follows the selection.
+   */
+  icon?: React.ReactElement;
   label?: string;
   shouldShowTooltip?: boolean;
   tooltipProps?: Partial<Omit<TooltipProps, "children">>;
@@ -104,18 +108,10 @@ const SegmentedControl = (props: SegmentedControlProps) => {
           );
         }
 
-        const iconItem = icon ? (
-          typeof icon !== "string" ? (
-            icon
-          ) : (
-            <Icon sdsIcon={icon} sdsSize="s" />
-          )
-        ) : null;
-
         const buttonContent = label ? (
           <StyledToggleButtonLabel>{label}</StyledToggleButtonLabel>
-        ) : iconItem ? (
-          <StyledToggleButtonIcon>{iconItem}</StyledToggleButtonIcon>
+        ) : icon ? (
+          <StyledToggleButtonIcon>{icon}</StyledToggleButtonIcon>
         ) : (
           <StyledToggleButtonLabel>{buttonValue}</StyledToggleButtonLabel>
         );

@@ -1,5 +1,5 @@
+import { DownloadSimpleIcon } from "@phosphor-icons/react";
 import { Args, Meta } from "@storybook/react-vite";
-import Icon from "@components/src/core/Icon";
 import {
   BUTTON_DROPDOWN_ACTIONS,
   BUTTON_DROPDOWN_EXCLUDED_CONTROLS,
@@ -46,7 +46,7 @@ export default {
         type: "select",
       },
       description:
-        'An optional icon placed before the label. Pass the SDS Icon component, for example `<Icon sdsIcon="Download" sdsSize="s" />`.',
+        'An optional icon placed before the label, usually a Phosphor or `@czi-sds/icons` icon, for example `<DownloadSimpleIcon weight="bold" />`. The button sizes and colors it.',
       mapping: BUTTON_DROPDOWN_ICON_OPTIONS,
       options: Object.keys(BUTTON_DROPDOWN_ICON_OPTIONS),
     },
@@ -107,7 +107,7 @@ export const Test = {
   args: {
     backgroundAppearance: "matchBackground",
     disabled: false,
-    startIcon: <Icon sdsIcon="Download" sdsSize="s" />,
+    startIcon: <DownloadSimpleIcon weight="bold" />,
     onClick: BUTTON_DROPDOWN_ACTIONS.onClick,
     sdsStyle: "solid",
     size: "large",

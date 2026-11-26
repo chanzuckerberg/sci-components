@@ -1,13 +1,14 @@
-import { Button, ButtonGroup, Icon } from "@czi-sds/components";
+import { Button, ButtonGroup } from "@czi-sds/components";
+import { CopyIcon, DownloadSimpleIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
     <div className="app">
       <ButtonGroup>
         <Button aria-label="Download">
-          <Icon sdsIcon="Download" sdsSize="s" />
+          <DownloadSimpleIcon weight="bold" />
         </Button>
-        <Button startIcon={<Icon sdsIcon="Copy" sdsSize="s" />}>Copy</Button>
+        <Button startIcon={<CopyIcon weight="bold" />}>Copy</Button>
         <Button>Label</Button>
       </ButtonGroup>
     </div>

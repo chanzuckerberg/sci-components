@@ -1,8 +1,8 @@
-// icon takes an SVG element as well as an SDS icon name, which covers artwork the
-// SDS set does not carry and icons it only draws at 24px. The element is rendered
-// as it is given, so size it to 16px yourself and fill it with currentColor so it
-// picks up the segment's colour as the selection moves.
+// icon takes any element, so artwork that neither Phosphor nor @czi-sds/icons
+// carries works too. The control draws it at 16px; fill it with currentColor so
+// it picks up the segment's colour as the selection moves.
 
+import { ListBulletsIcon, TableIcon } from "@phosphor-icons/react";
 import {
   SegmentedControl,
   type SingleButtonDefinition,
@@ -15,8 +15,8 @@ const HexagonIcon = (
 );
 
 const VIEWS: SingleButtonDefinition[] = [
-  { icon: "List", value: "List" },
-  { icon: "Table", value: "Table" },
+  { icon: <ListBulletsIcon weight="bold" />, value: "List" },
+  { icon: <TableIcon weight="bold" />, value: "Table" },
   { icon: HexagonIcon, value: "Cells" },
 ];
 

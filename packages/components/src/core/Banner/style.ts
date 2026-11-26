@@ -3,6 +3,7 @@ import Button, { ButtonProps } from "@components/src/core/Button";
 import {
   CommonThemeProps,
   fontBodyS,
+  getIconSizes,
   getSemanticColors,
   getSpaces,
 } from "@components/src/core/styles";
@@ -38,6 +39,7 @@ export const IconWrapper = styled("div", {
     const { bannerType, intent = "info" } = props;
 
     const spaces = getSpaces(props);
+    const iconSizes = getIconSizes(props);
     const semanticColors = getSemanticColors(props);
 
     const iconColor =
@@ -52,6 +54,8 @@ export const IconWrapper = styled("div", {
       margin-right: ${spaces?.m}px;
       svg {
         fill: ${iconColor};
+        height: ${iconSizes?.s.height}px;
+        width: ${iconSizes?.s.width}px;
       }
     `;
   }}

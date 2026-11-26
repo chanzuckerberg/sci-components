@@ -50,7 +50,8 @@
 <div class="sds-doc-example" data-example="core/Banner/BannerIntents"></div>
 <h3>Banner with a custom icon</h3>
 <p>
-  This example replaces the icon chosen by the intent with a named SDS icon.
+  This example replaces the icon chosen by the intent with a Phosphor icon. The
+  Banner draws the icon you pass at its own size and in the intent's color.
 </p>
 <div
   class="sds-doc-example"
@@ -197,31 +198,21 @@
       <p><code>icon</code></p>
     </td>
     <td>
-      <p><code>keyof IconNameToSizes</code> |</p>
-      <p><code>ReactElement&lt;CustomSVGProps&gt;</code></p>
+      <p><code>ReactElement</code></p>
     </td>
     <td><p>-</p></td>
     <td>
       <p>
-        The name of an SDS icon, or a custom SVG element, shown in place of the
-        icon the intent would pick.
+        An icon element, usually a Phosphor or <code>@czi-sds/icons</code> icon,
+        shown in place of the icon the intent would pick. The Banner draws it at
+        its own size and color.
       </p>
       <p>
-        Without it, <code>"positive"</code> shows <code>"CheckCircle"</code>,
+        Without it, <code>"positive"</code> shows <code>CheckCircleIcon</code>,
         <code>"negative"</code> and <code>"notice"</code> show
-        <code>"ExclamationMarkCircle"</code>, and every other intent shows
-        <code>"InfoCircle"</code>.
+        <code>WarningCircleIcon</code>, and every other intent shows
+        <code>InfoIcon</code>.
       </p>
     </td>
-  </tr>
-  <tr>
-    <td>
-      <p><code>sdsIconProps</code></p>
-    </td>
-    <td>
-      <p><code>Partial&lt;IconProps&lt;keyof IconNameToSizes&gt;&gt;</code></p>
-    </td>
-    <td><p>-</p></td>
-    <td><p>Additional props to be passed to the icon component.</p></td>
   </tr>
 </table>

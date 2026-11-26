@@ -9,87 +9,81 @@ exports[`<TableHeader /> > Default story renders snapshot 1`] = `
       class="css-1lwppi3-StyledTableRow euwrjwp0"
     >
       <th
-        class="css-248xwi-StyledTableHeader eyijci12"
+        class="css-1q9q7xy-StyledTableHeader eyijci12"
       >
         <div
-          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
+          class="css-pk6s9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Column 1
           </div>
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            aria-hidden="true"
+            class="css-adq74m-StyledSortDescendingIcon eyijci13"
+            fill="currentColor"
+            height="12"
+            viewBox="0 0 256 256"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-t01z5n-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
             />
-          </div>
+          </svg>
         </div>
       </th>
       <th
-        class="css-248xwi-StyledTableHeader eyijci12"
+        class="css-1q9q7xy-StyledTableHeader eyijci12"
       >
         <div
-          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
+          class="css-pk6s9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Column 2
           </div>
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            aria-hidden="true"
+            class="css-dk0qse-StyledSortDescendingIcon eyijci13"
+            fill="currentColor"
+            height="12"
+            viewBox="0 0 256 256"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1va415t-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
             />
-          </div>
+          </svg>
         </div>
       </th>
       <th
-        class="css-248xwi-StyledTableHeader eyijci12"
+        class="css-1q9q7xy-StyledTableHeader eyijci12"
       >
         <div
-          class="css-11a4qx9-StyledCellHeaderContainer eyijci10"
+          class="css-pk6s9-StyledCellHeaderContainer eyijci10"
         >
           <div
-            class="css-g2t64b-StyledCellHeaderText eyijci11"
+            class="css-fe0uwx-StyledCellHeaderText eyijci11"
           >
             Column 3
           </div>
-          <div
-            class="css-1q8yjse-StyledIcon emi0zh40"
+          <svg
+            aria-hidden="true"
+            class="css-dk0qse-StyledSortDescendingIcon eyijci13"
+            fill="currentColor"
+            height="12"
+            viewBox="0 0 256 256"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium eyijci13 emi0zh41 css-1va415t-MuiSvgIcon-root-StyledSvgIcon-StyledSvgIcon-StyledSortingIcon"
-              data-file-name="IconChevronDownSmall"
-              data-testid="IconChevronDownSmall"
-              fillcontrast="white"
-              focusable="false"
-              height="16"
-              viewBox="0 0 16 16"
-              width="16"
+            <path
+              d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z"
             />
-          </div>
+          </svg>
         </div>
       </th>
     </tr>

@@ -3,7 +3,7 @@ import { Args } from "@storybook/react-vite";
 import RawPanel from "@components/src/core/Panel";
 import { Box, Typography } from "@mui/material";
 import { LONG_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
-import Icon from "@components/src/core/Icon";
+import { InfoIcon } from "@phosphor-icons/react";
 import ButtonToggle from "@components/src/core/ButtonToggle";
 
 export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
@@ -14,7 +14,7 @@ export const ScrollBehaviorDemo = (props: Args): JSX.Element => {
       <Box sx={{ paddingBottom: 4 }}>
         <ButtonToggle
           aria-label="button-toggle"
-          startIcon={<Icon sdsIcon="InfoCircle" sdsSize="s" />}
+          startIcon={<InfoIcon weight="bold" />}
           size="large"
           sdsType="primary"
           sdsStyle="minimal"

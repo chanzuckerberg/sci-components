@@ -5,8 +5,8 @@ import {
   ContentCard,
   ContentCardActions,
   ContentCardBody,
-  Icon,
 } from "@czi-sds/components";
+import { CaretRightIcon } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
           <Button
             sdsStyle="minimal"
             sdsType="primary"
-            endIcon={<Icon sdsIcon="ChevronRight" sdsSize="xs" />}
+            endIcon={<CaretRightIcon weight="bold" />}
           >
             Learn more
           </Button>

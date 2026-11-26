@@ -1,4 +1,5 @@
 import { generateSnapshots } from "@chanzuckerberg/story-utils";
+import { GitHubIcon } from "@czi-sds/icons";
 import { composeStories } from "@storybook/react-vite";
 import { render, screen } from "@testing-library/react";
 import * as stories from "../__storybook__/index.stories";
@@ -17,13 +18,13 @@ describe("IntentMessage", () => {
   it("renders custom icon when provided", () => {
     const customMessage = [
       {
-        icon: "Github" as const,
+        icon: <GitHubIcon data-testid="custom-icon" />,
         intent: "notice" as const,
         text: "Custom Icon Message",
       },
     ];
     render(<Test messages={customMessage} />);
-    expect(screen.getByTestId("IconGithubSmall")).toBeInTheDocument();
+    expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
   });
 
   it("renders with custom React element icon", () => {
@@ -47,10 +48,17 @@ describe("IntentMessage", () => {
       { intent: "notice" as const, text: "Notice" },
     ];
     render(<Test messages={messages} />);
-    expect(screen.getAllByTestId("IconCheckCircleSmall")).toHaveLength(1);
-    expect(
-      screen.getAllByTestId("IconExclamationMarkCircleSmall")
-    ).toHaveLength(3);
+
+    const iconOf = (text: string) =>
+      screen
+        .getByText(text)
+        .parentElement?.querySelector("svg path")
+        ?.getAttribute("d");
+
+    expect(iconOf("Positive")).toBeTruthy();
+    expect(iconOf("Negative")).toBe(iconOf("Info"));
+    expect(iconOf("Notice")).toBe(iconOf("Info"));
+    expect(iconOf("Positive")).not.toBe(iconOf("Info"));
   });
 
   it("renders with no border when border prop is false", () => {

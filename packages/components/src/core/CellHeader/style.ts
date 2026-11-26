@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
+import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import {
   CommonThemeProps,
   fontHeaderS,
   getSemanticColors,
   getSpaces,
 } from "@components/src/core/styles";
-import Icon from "@components/src/core/Icon";
 
 export interface CellHeaderExtraProps extends CommonThemeProps {
   active?: boolean;
@@ -32,23 +32,34 @@ const doNotForwardProps = [
   "shouldTruncate",
 ];
 
-export const StyledSortingIcon = styled(Icon, {
-  shouldForwardProp: (prop) => !doNotForwardProps.includes(prop as string),
-})`
-  ${(props: CellHeaderExtraProps) => {
-    const { active = false, hideSortIcon } = props;
+const sortingIconStyles = (props: CellHeaderExtraProps) => {
+  const { active = false, hideSortIcon } = props;
 
-    const spaces = getSpaces(props);
-    const semanticColors = getSemanticColors(props);
+  const spaces = getSpaces(props);
+  const semanticColors = getSemanticColors(props);
 
-    return `
-      margin-left: ${spaces?.s}px;
-      margin-bottom: ${spaces?.xxs}px;
-      color: ${active ? semanticColors?.accent?.foreground : "transparent"};
-      display: ${hideSortIcon ? (active ? "block" : "none") : "block"};
-      outline: none !important;
-    `;
-  }}
+  return `
+    margin-left: ${spaces?.s}px;
+    margin-bottom: ${spaces?.xxs}px;
+    color: ${active ? semanticColors?.accent?.foreground : "transparent"};
+    display: ${hideSortIcon ? (active ? "block" : "none") : "block"};
+    outline: none !important;
+  `;
+};
+
+const sortingIconOptions = {
+  shouldForwardProp: (prop: string) => !doNotForwardProps.includes(prop),
+};
+
+export const StyledSortAscendingIcon = styled(CaretUpIcon, sortingIconOptions)`
+  ${sortingIconStyles}
+`;
+
+export const StyledSortDescendingIcon = styled(
+  CaretDownIcon,
+  sortingIconOptions
+)`
+  ${sortingIconStyles}
 `;
 
 const ShouldTruncate = () => {

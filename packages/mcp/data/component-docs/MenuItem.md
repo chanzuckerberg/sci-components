@@ -41,19 +41,21 @@ export default App;
 
 ### **Multi-Select MenuItem with Icon**
 
-This example showcases a multi-select MenuItem component featuring an SDS Icon and a distinct column value.
+This example showcases a multi-select MenuItem component featuring a Phosphor icon in a custom color and a distinct column value.
 
-> **SDS Tip:** MenuItem exclusively accepts SDS Icons in xs and s sizes. To explore a comprehensive list of SDS icons and their available sizes, refer to the [IconBank page](https://chanzuckerberg.github.io/sci-components/?path=/story/components-icon--icon-bank) within Storybook.
+> **SDS Tip:** MenuItem draws its icon at 16px, in blue unless the icon sets a `color` of its own. Any Phosphor or `@czi-sds/icons` icon works; see the Icons page for where to find them.
 
 **Example: MultiSelectMenuItemWithIcon**
 
 ```tsx
 import { useState } from "react";
-import { MenuItem } from "@czi-sds/components";
-import { MenuList } from "@mui/material";
+import { MenuItem, getColors } from "@czi-sds/components";
+import { MenuList, useTheme } from "@mui/material";
+import { GearIcon } from "@phosphor-icons/react";
 
 function App() {
   const [selected, setSelected] = useState(false);
+  const colors = getColors({ theme: useTheme() });
 
   const handleClick = () => {
     setSelected((prev) => !prev);
@@ -65,10 +67,7 @@ function App() {
         <MenuItem
           isMultiSelect
           column="Column Value"
-          sdsIcon="Gear"
-          sdsIconProps={{
-            color: "purple",
-          }}
+          icon={<GearIcon weight="bold" color={colors?.purple[500]} />}
           selected={selected}
           onClick={handleClick}
         >
@@ -92,9 +91,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `children`      | `ReactNode`                          | -               | Main content of the MenuItem.                                                                                                                                                           |
 | `disabled`      | `boolean`                            | `false`         | When set to `true`, the `disabled` prop indicates that the menu item is disabled and not interactable.                                                                                  |
 | `isMultiSelect` | `boolean`                            | `false`         | When `true`, designates that the menu item supports multi-select functionality.                                                                                                         |
-| `icon`          | `IconName` \| `ReactElement`         | -               | The icon shown at the start of the item, either the name of an SDS icon or an element of your own. Only icons that come in a small size can be named here.                              |
-| `sdsIcon`       | `IconName` \| `ReactElement`         | -               | **Deprecated.** Use `icon` instead. It is the former name of that prop, kept until the next major version, and `icon` wins where both are given.                                        |
-| `sdsIconProps`  | `function`                           | -               | Enables you to pass additional props to customize the SDS icon within the menu item.                                                                                                    |
+| `icon`          | `ReactElement`                       | -               | The icon shown at the start of the item, usually a Phosphor or `@czi-sds/icons` icon. The item draws it at its own size, in blue unless the icon sets a `color`.                        |
 | `sdsStyle`      | `"determinate"` \| `"indeterminate"` | `"determinate"` | Determines the style of the menu item, whether it is determinate or indeterminate.                                                                                                      |
 | `sdsType`       | `"default"` \| `"action"`            | `"default"`     | An `"action"` item leaves out the selection mark at its start, for a menu whose items run a command rather than choose a value.                                                         |
 | `selected`      | `boolean`                            | `false`         | When set to `true`, the `selected` prop signifies that the menu item is currently selected.                                                                                             |

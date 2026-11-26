@@ -51,14 +51,18 @@ table {
 
 ### CellBasic with Icon and Text Wrap
 
-This example highlights a CellBasic component featuring an SDS icon and lengthy texts for Primary, Secondary, and Tertiary content, all thoughtfully wrapped for optimal presentation.
+This example highlights a CellBasic component featuring a Phosphor icon and lengthy texts for Primary, Secondary, and Tertiary content, all thoughtfully wrapped for optimal presentation.
 
 **Example: CellBasicWithIconAndTextWrap**
 
 ```tsx
-import { CellBasic, Icon } from "@czi-sds/components";
+import { CellBasic, getColors } from "@czi-sds/components";
+import { useTheme } from "@mui/material";
+import { VirusIcon } from "@phosphor-icons/react";
 
 function App() {
+  const theme = useTheme();
+
   const TableCellStyle = {
     maxWidth: 160,
     width: 160,
@@ -73,7 +77,13 @@ function App() {
               primaryText="Primary Text that is longer than expected."
               secondaryText="Secondary Text that is londer than expected."
               tertiaryText="Tertiary Text that is lonegrt than expected."
-              icon={<Icon sdsIcon="Bacteria" sdsSize="l" color="yellow" />}
+              icon={
+                <VirusIcon
+                  weight="bold"
+                  size={24}
+                  color={getColors({ theme })?.yellow[500]}
+                />
+              }
               style={TableCellStyle}
               tooltipProps={{
                 placement: "right",
@@ -98,7 +108,7 @@ Any custom SDS props and MUI props required for implementation are found on the 
 | `as`                             | `React.ElementType`                             | `"td"`   | The element the cell renders as. Use `"th"` for a row header cell inside `tbody`.                                                                                                                                            |
 | `extraRightPadding`              | `number`                                        | `0`      | Extra pixels of right padding, added only when `horizontalAlign` is `"right"`. Useful for leaving room for a scrollbar or a pinned column edge.                                                                              |
 | `horizontalAlign`                | `"left"` \| `"right"`                           | `"left"` | Horizontal alignment of cell content. There is no `"center"`. Use CellComponent if a cell needs centered content.                                                                                                            |
-| `icon`                           | `React.ReactElement<CustomSVGProps>`            | -        | Places an icon to the left of the cell text. Expects an SDS Icon or another SVG element.                                                                                                                                     |
+| `icon`                           | `React.ReactElement<CustomSVGProps>`            | -        | Places an icon to the left of the cell text, usually a Phosphor or `@czi-sds/icons` icon, or another SVG element. It renders at the size it is given.                                                                        |
 | `link`                           | `string`                                        | -        | Wraps the cell content in an anchor pointing here. The text keeps the cell's own color rather than link styling.                                                                                                             |
 | `linkComponent`                  | `React.ElementType`                             | -        | The component the link renders as, for routers that supply their own link (React Router's Link, for example).                                                                                                                |
 | `linkProps`                      | `React.AnchorHTMLAttributes<HTMLAnchorElement>` | -        | Props passed to the anchor rendered by `link`.                                                                                                                                                                               |

@@ -1,5 +1,5 @@
 import { SHORT_LOREM_IPSUM } from "@components/src/common/storybook/loremIpsum";
-import Icon from "@components/src/core/Icon";
+import { VirusIcon } from "@phosphor-icons/react";
 import {
   CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_BOTTOM_OPTIONS,
   CELL_BASIC_PRIMARY_TEXT_COMPONENT_SLOT_RIGHT_OPTIONS,
@@ -41,7 +41,7 @@ export const TestDemo = (): JSX.Element => (
           secondaryText="Secondary Text"
           tertiaryText="Tertiary Text"
           shouldShowTooltipOnHover={false}
-          icon={<Icon sdsSize="l" sdsIcon="Bacteria" />}
+          icon={<VirusIcon weight="bold" size={24} />}
         />
         <StyledCellBasic
           primaryText="Primary Text"

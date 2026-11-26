@@ -16,7 +16,6 @@
 
 import {
   Button,
-  Icon,
   Panel,
   fontBodyS,
   fontHeaderM,
@@ -24,6 +23,7 @@ import {
   type CommonThemeProps,
 } from "@czi-sds/components";
 import styled from "@emotion/styled";
+import { TableIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 
 const Stage = styled.div<CommonThemeProps>`
@@ -71,7 +71,7 @@ function App() {
           onClick={() => setOpen(true)}
           sdsStyle="solid"
           sdsType="primary"
-          startIcon={<Icon sdsIcon="Table" sdsSize="s" />}
+          startIcon={<TableIcon weight="bold" />}
         >
           Show table
         </Button>

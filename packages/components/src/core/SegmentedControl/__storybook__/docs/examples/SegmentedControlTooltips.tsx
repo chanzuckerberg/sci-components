@@ -9,13 +9,18 @@
 // the console, and overrides tooltipProps.title when both are set.
 
 import {
+  GitBranchIcon,
+  ListBulletsIcon,
+  TableIcon,
+} from "@phosphor-icons/react";
+import {
   SegmentedControl,
   type SingleButtonDefinition,
 } from "@czi-sds/components";
 
 const VIEWS: SingleButtonDefinition[] = [
   {
-    icon: "List",
+    icon: <ListBulletsIcon weight="bold" />,
     tooltipProps: {
       subtitle: "One row per sample, sorted by collection date",
       title: "List",
@@ -23,7 +28,7 @@ const VIEWS: SingleButtonDefinition[] = [
     value: "List",
   },
   {
-    icon: "Table",
+    icon: <TableIcon weight="bold" />,
     tooltipProps: {
       subtitle: "Every measured field, side by side",
       title: "Table",
@@ -31,7 +36,7 @@ const VIEWS: SingleButtonDefinition[] = [
     value: "Table",
   },
   {
-    icon: "TreeVertical",
+    icon: <GitBranchIcon weight="bold" />,
     tooltipProps: { placement: "bottom", title: "Tree, explained below" },
     value: "Tree",
   },
